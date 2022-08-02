@@ -122,7 +122,6 @@ class WireTransfer(BaseModel):
     status: Literal[
         "canceled",
         "requires_attention",
-        "flagged_by_operator",
         "pending_approval",
         "rejected",
         "reversed",

@@ -376,7 +376,15 @@ class DeclinedTransactionSourceCardDecline(BaseModel):
 
     merchant_state: Optional[str]
 
-    reason: Literal["card_not_active", "entity_not_active", "group_locked", "insufficient_funds", "breaches_limit"]
+    reason: Literal[
+        "card_not_active",
+        "entity_not_active",
+        "group_locked",
+        "insufficient_funds",
+        "breaches_limit",
+        "webhook_declined",
+        "webhook_timed_out",
+    ]
     """Why the transaction was declined."""
 
 
@@ -531,7 +539,13 @@ class DeclinedTransactionSource(BaseModel):
     """
 
     category: Literal[
-        "ach_decline", "card_decline", "check_decline", "international_ach_decline", "card_route_decline", "other"
+        "ach_decline",
+        "card_decline",
+        "check_decline",
+        "inbound_real_time_payments_transfer_decline",
+        "international_ach_decline",
+        "card_route_decline",
+        "other",
     ]
     """The type of decline that took place.
 

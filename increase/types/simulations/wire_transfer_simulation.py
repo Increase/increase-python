@@ -824,6 +824,7 @@ class TransactionSource(BaseModel):
         "inbound_ach_transfer",
         "inbound_check",
         "inbound_international_ach_transfer",
+        "inbound_real_time_payments_transfer_confirmation",
         "inbound_wire_drawdown_payment_reversal",
         "inbound_wire_drawdown_payment",
         "inbound_wire_reversal",

@@ -21,7 +21,9 @@ class DepositRejection(BaseModel):
     currency.
     """
 
-    reason: Literal["incomplete_image", "duplicate", "poor_image_quality", "incorrect_amount", "unknown"]
+    reason: Literal[
+        "incomplete_image", "duplicate", "poor_image_quality", "incorrect_amount", "incorrect_recipient", "unknown"
+    ]
     """Why the check deposit was rejected."""
 
     rejected_at: str
