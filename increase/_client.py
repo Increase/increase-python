@@ -55,6 +55,8 @@ class Increase(SyncAPIClient):
     groups: resources.Groups
     oauth_connections: resources.OauthConnections
     check_deposits: resources.CheckDeposits
+    routing_numbers: resources.RoutingNumbers
+    account_statements: resources.AccountStatements
     simulations: resources.Simulations
 
     def __init__(
@@ -120,6 +122,8 @@ class Increase(SyncAPIClient):
         self.groups = resources.Groups(self)
         self.oauth_connections = resources.OauthConnections(self)
         self.check_deposits = resources.CheckDeposits(self)
+        self.routing_numbers = resources.RoutingNumbers(self)
+        self.account_statements = resources.AccountStatements(self)
         self.simulations = resources.Simulations(self)
 
     @property
@@ -152,6 +156,8 @@ class AsyncIncrease(AsyncAPIClient):
     groups: resources.AsyncGroups
     oauth_connections: resources.AsyncOauthConnections
     check_deposits: resources.AsyncCheckDeposits
+    routing_numbers: resources.AsyncRoutingNumbers
+    account_statements: resources.AsyncAccountStatements
     simulations: resources.AsyncSimulations
 
     def __init__(
@@ -217,6 +223,8 @@ class AsyncIncrease(AsyncAPIClient):
         self.groups = resources.AsyncGroups(self)
         self.oauth_connections = resources.AsyncOauthConnections(self)
         self.check_deposits = resources.AsyncCheckDeposits(self)
+        self.routing_numbers = resources.AsyncRoutingNumbers(self)
+        self.account_statements = resources.AsyncAccountStatements(self)
         self.simulations = resources.AsyncSimulations(self)
 
     @property

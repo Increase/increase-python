@@ -15,8 +15,10 @@ from .check_deposits import CheckDeposits, AsyncCheckDeposits
 from .wire_transfers import WireTransfers, AsyncWireTransfers
 from .account_numbers import AccountNumbers, AsyncAccountNumbers
 from .check_transfers import CheckTransfers, AsyncCheckTransfers
+from .routing_numbers import RoutingNumbers, AsyncRoutingNumbers
 from .account_transfers import AccountTransfers, AsyncAccountTransfers
 from .oauth_connections import OauthConnections, AsyncOauthConnections
+from .account_statements import AccountStatements, AsyncAccountStatements
 from .event_subscriptions import EventSubscriptions, AsyncEventSubscriptions
 from .ach_prenotifications import ACHPrenotifications, AsyncACHPrenotifications
 from .pending_transactions import PendingTransactions, AsyncPendingTransactions
@@ -63,6 +65,10 @@ __all__ = [
     "AsyncOauthConnections",
     "CheckDeposits",
     "AsyncCheckDeposits",
+    "RoutingNumbers",
+    "AsyncRoutingNumbers",
+    "AccountStatements",
+    "AsyncAccountStatements",
     "Simulations",
     "AsyncSimulations",
 ]

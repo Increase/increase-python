@@ -15,10 +15,12 @@ from .check_deposit import CheckDeposit as CheckDeposit
 from .wire_transfer import WireTransfer as WireTransfer
 from .account_number import AccountNumber as AccountNumber
 from .check_transfer import CheckTransfer as CheckTransfer
+from .routing_number import RoutingNumber as RoutingNumber
 from .account_transfer import AccountTransfer as AccountTransfer
 from .card_list_params import CardListParams as CardListParams
 from .file_list_params import FileListParams as FileListParams
 from .oauth_connection import OauthConnection as OauthConnection
+from .account_statement import AccountStatement as AccountStatement
 from .event_list_params import EventListParams as EventListParams
 from .limit_list_params import LimitListParams as LimitListParams
 from .card_create_params import CardCreateParams as CardCreateParams
@@ -50,6 +52,9 @@ from .card_dispute_create_params import (
 from .check_transfer_list_params import (
     CheckTransferListParams as CheckTransferListParams,
 )
+from .routing_number_list_params import (
+    RoutingNumberListParams as RoutingNumberListParams,
+)
 from .check_deposit_create_params import (
     CheckDepositCreateParams as CheckDepositCreateParams,
 )
@@ -73,6 +78,9 @@ from .check_transfer_create_params import (
 )
 from .oauth_connection_list_params import (
     OauthConnectionListParams as OauthConnectionListParams,
+)
+from .account_statement_list_params import (
+    AccountStatementListParams as AccountStatementListParams,
 )
 from .account_transfer_create_params import (
     AccountTransferCreateParams as AccountTransferCreateParams,
