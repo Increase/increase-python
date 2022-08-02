@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from typing import Optional
 from typing_extensions import Required, TypedDict
 
 __all__ = ["BillingAddress", "CardCreateParams"]
@@ -21,7 +20,7 @@ class BillingAddress(TypedDict, total=False):
     state: Required[str]
     """The US state of the billing address."""
 
-    line2: Optional[str]
+    line2: str
     """The second line of the billing address."""
 
 
@@ -29,8 +28,8 @@ class CardCreateParams(TypedDict, total=False):
     account_id: Required[str]
     """The Account the card should belong to."""
 
-    billing_address: Optional[BillingAddress]
+    billing_address: BillingAddress
     """The card's billing address."""
 
-    description: Optional[str]
+    description: str
     """The description you choose to give the card."""

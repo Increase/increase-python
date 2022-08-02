@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from typing import Optional
 from typing_extensions import Literal, Required, TypedDict
 
 __all__ = ["LimitCreateParams"]
@@ -21,5 +20,5 @@ class LimitCreateParams(TypedDict, total=False):
     value: Required[int]
     """The value to test the limit against."""
 
-    interval: Optional[Literal["transaction", "day", "week", "month", "year", "all_time"]]
+    interval: Literal["transaction", "day", "week", "month", "year", "all_time"]
     """The interval for the metric. Required if `metric` is `count` or `volume`."""

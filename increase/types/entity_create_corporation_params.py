@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import List
 from typing_extensions import Literal, Required, TypedDict
 
 __all__ = ["BeneficialOwners", "EntityCreateCorporationParams"]
@@ -42,7 +42,7 @@ class BeneficialOwners(TypedDict, total=False):
     social_security_number_last4: Required[str]
     """The last four digits of the beneficial owner's Social Security Number (SSN)."""
 
-    address_line2: Optional[str]
+    address_line2: str
     """The second line of the beneficial owner's address.
 
     This might be the floor or room number.
@@ -77,26 +77,26 @@ class EntityCreateCorporationParams(TypedDict, total=False):
     corporation's state of incorporation.
     """
 
-    address_line2: Optional[str]
+    address_line2: str
     """The second line of the corporation's address.
 
     This might be the floor or room number.
     """
 
-    beneficial_owners: Optional[List[BeneficialOwners]]
+    beneficial_owners: List[BeneficialOwners]
     """The identifying details of anyone owning 25% or more of the corporation."""
 
-    ss4_file_id: Optional[str]
+    ss4_file_id: str
     """
     The identifier of the File containing the SS4 form submitted to the IRS
     (optional, must specify tax_id if absent).
     """
 
-    tax_id: Optional[str]
+    tax_id: str
     """
     The Employer Identification Number (EIN) for the corporation (optional, must
     specify ss4_file_id if absent).
     """
 
-    website: Optional[str]
+    website: str
     """The website of the corporation."""

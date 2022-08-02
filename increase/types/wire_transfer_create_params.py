@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from typing import Optional
 from typing_extensions import Required, TypedDict
 
 __all__ = ["WireTransferCreateParams"]
@@ -27,14 +26,14 @@ class WireTransferCreateParams(TypedDict, total=False):
     destination account.
     """
 
-    beneficiary_address_line1: Optional[str]
+    beneficiary_address_line1: str
     """The beneficiary's address line 1."""
 
-    beneficiary_address_line2: Optional[str]
+    beneficiary_address_line2: str
     """The beneficiary's address line 2."""
 
-    beneficiary_address_line3: Optional[str]
+    beneficiary_address_line3: str
     """The beneficiary's address line 3."""
 
-    beneficiary_name: Optional[str]
+    beneficiary_name: str
     """The beneficiary's name."""

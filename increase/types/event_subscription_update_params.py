@@ -2,12 +2,11 @@
 
 from __future__ import annotations
 
-from typing import Optional
 from typing_extensions import Literal, TypedDict
 
 __all__ = ["EventSubscriptionUpdateParams"]
 
 
 class EventSubscriptionUpdateParams(TypedDict, total=False):
-    status: Optional[Literal["active", "disabled", "deleted"]]
+    status: Literal["active", "disabled", "deleted"]
     """The status to update the Event Subscription with."""

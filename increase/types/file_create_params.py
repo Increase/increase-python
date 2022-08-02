@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from typing import Optional
 from typing_extensions import Literal, Required, TypedDict
 
 from .._types import FileTypes
@@ -22,5 +21,5 @@ class FileCreateParams(TypedDict, total=False):
     purpose: Required[Literal["check_image_front", "check_image_back", "form_ss_4", "identity_document", "other"]]
     """What the File will be used for in Increase's systems."""
 
-    description: Optional[str]
+    description: str
     """The description you choose to give the File."""

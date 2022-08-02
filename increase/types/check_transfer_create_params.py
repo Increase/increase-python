@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from typing import Optional
 from typing_extensions import Required, TypedDict
 
 __all__ = ["CheckTransferCreateParams"]
@@ -33,5 +32,5 @@ class CheckTransferCreateParams(TypedDict, total=False):
     recipient_name: Required[str]
     """The name that will be printed on the check."""
 
-    address_line2: Optional[str]
+    address_line2: str
     """The second line of the address of the check's destination."""

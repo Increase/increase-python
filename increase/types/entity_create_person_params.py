@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from typing import Optional
 from typing_extensions import Required, TypedDict
 
 __all__ = ["EntityCreatePersonParams"]
@@ -36,7 +35,7 @@ class EntityCreatePersonParams(TypedDict, total=False):
     social_security_number_last4: Required[str]
     """The last four digits of the person's Social Security Number (SSN)."""
 
-    address_line2: Optional[str]
+    address_line2: str
     """The second line of the person's address.
 
     This might be the floor or room number.
