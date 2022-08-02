@@ -56,7 +56,7 @@ class TestEventSubscriptions:
     def test_method_list_with_optional_params(self) -> None:
         resource = self.client.event_subscriptions.list(
             {
-                "cursor": "x",
+                "cursor": "string",
                 "limit": 0,
             },
         )
@@ -108,7 +108,7 @@ class TestAsyncEventSubscriptions:
     async def test_method_list_with_optional_params(self) -> None:
         resource = await self.client.event_subscriptions.list(
             {
-                "cursor": "x",
+                "cursor": "string",
                 "limit": 0,
             },
         )

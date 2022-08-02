@@ -27,7 +27,7 @@ class TestEvents:
     def test_method_list_with_optional_params(self) -> None:
         resource = self.client.events.list(
             {
-                "cursor": "x",
+                "cursor": "string",
                 "limit": 0,
                 "associated_object_id": "string",
                 "created_at": {
@@ -58,7 +58,7 @@ class TestAsyncEvents:
     async def test_method_list_with_optional_params(self) -> None:
         resource = await self.client.events.list(
             {
-                "cursor": "x",
+                "cursor": "string",
                 "limit": 0,
                 "associated_object_id": "string",
                 "created_at": {

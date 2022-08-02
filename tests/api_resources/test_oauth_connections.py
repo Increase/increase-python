@@ -27,7 +27,7 @@ class TestOauthConnections:
     def test_method_list_with_optional_params(self) -> None:
         resource = self.client.oauth_connections.list(
             {
-                "cursor": "x",
+                "cursor": "string",
                 "limit": 0,
             },
         )
@@ -50,7 +50,7 @@ class TestAsyncOauthConnections:
     async def test_method_list_with_optional_params(self) -> None:
         resource = await self.client.oauth_connections.list(
             {
-                "cursor": "x",
+                "cursor": "string",
                 "limit": 0,
             },
         )

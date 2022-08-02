@@ -27,7 +27,7 @@ class TestPendingTransactions:
     def test_method_list_with_optional_params(self) -> None:
         resource = self.client.pending_transactions.list(
             {
-                "cursor": "x",
+                "cursor": "string",
                 "limit": 0,
                 "account_id": "string",
                 "route_id": "string",
@@ -54,7 +54,7 @@ class TestAsyncPendingTransactions:
     async def test_method_list_with_optional_params(self) -> None:
         resource = await self.client.pending_transactions.list(
             {
-                "cursor": "x",
+                "cursor": "string",
                 "limit": 0,
                 "account_id": "string",
                 "route_id": "string",

@@ -27,7 +27,7 @@ class TestDeclinedTransactions:
     def test_method_list_with_optional_params(self) -> None:
         resource = self.client.declined_transactions.list(
             {
-                "cursor": "x",
+                "cursor": "string",
                 "limit": 0,
                 "account_id": "string",
                 "route_id": "string",
@@ -58,7 +58,7 @@ class TestAsyncDeclinedTransactions:
     async def test_method_list_with_optional_params(self) -> None:
         resource = await self.client.declined_transactions.list(
             {
-                "cursor": "x",
+                "cursor": "string",
                 "limit": 0,
                 "account_id": "string",
                 "route_id": "string",

@@ -49,7 +49,7 @@ class TestAccountTransfers:
     def test_method_list_with_optional_params(self) -> None:
         resource = self.client.account_transfers.list(
             {
-                "cursor": "x",
+                "cursor": "string",
                 "limit": 0,
                 "account_id": "string",
                 "created_at": {
@@ -101,7 +101,7 @@ class TestAsyncAccountTransfers:
     async def test_method_list_with_optional_params(self) -> None:
         resource = await self.client.account_transfers.list(
             {
-                "cursor": "x",
+                "cursor": "string",
                 "limit": 0,
                 "account_id": "string",
                 "created_at": {

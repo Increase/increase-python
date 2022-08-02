@@ -61,7 +61,7 @@ class TestACHTransfers:
     def test_method_list_with_optional_params(self) -> None:
         resource = self.client.ach_transfers.list(
             {
-                "cursor": "x",
+                "cursor": "string",
                 "limit": 0,
                 "account_id": "string",
                 "created_at": {
@@ -125,7 +125,7 @@ class TestAsyncACHTransfers:
     async def test_method_list_with_optional_params(self) -> None:
         resource = await self.client.ach_transfers.list(
             {
-                "cursor": "x",
+                "cursor": "string",
                 "limit": 0,
                 "account_id": "string",
                 "created_at": {

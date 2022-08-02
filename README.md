@@ -58,7 +58,6 @@ async def main():
     })
     print(account.id)
 
-
 asyncio.run(main())
 ```
 

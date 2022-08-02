@@ -62,7 +62,7 @@ class TestLimits:
     def test_method_list_with_optional_params(self) -> None:
         resource = self.client.limits.list(
             {
-                "cursor": "x",
+                "cursor": "string",
                 "limit": 0,
                 "model_id": "x",
                 "status": "x",
@@ -122,7 +122,7 @@ class TestAsyncLimits:
     async def test_method_list_with_optional_params(self) -> None:
         resource = await self.client.limits.list(
             {
-                "cursor": "x",
+                "cursor": "string",
                 "limit": 0,
                 "model_id": "x",
                 "status": "x",

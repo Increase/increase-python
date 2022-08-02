@@ -44,7 +44,7 @@ class TestAccounts:
     def test_method_list_with_optional_params(self) -> None:
         resource = self.client.accounts.list(
             {
-                "cursor": "x",
+                "cursor": "string",
                 "limit": 0,
                 "entity_id": "string",
                 "status": "open",
@@ -91,7 +91,7 @@ class TestAsyncAccounts:
     async def test_method_list_with_optional_params(self) -> None:
         resource = await self.client.accounts.list(
             {
-                "cursor": "x",
+                "cursor": "string",
                 "limit": 0,
                 "entity_id": "string",
                 "status": "open",

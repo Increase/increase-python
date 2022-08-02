@@ -27,7 +27,7 @@ class TestEntities:
     def test_method_list_with_optional_params(self) -> None:
         resource = self.client.entities.list(
             {
-                "cursor": "x",
+                "cursor": "string",
                 "limit": 0,
             },
         )
@@ -144,7 +144,7 @@ class TestAsyncEntities:
     async def test_method_list_with_optional_params(self) -> None:
         resource = await self.client.entities.list(
             {
-                "cursor": "x",
+                "cursor": "string",
                 "limit": 0,
             },
         )

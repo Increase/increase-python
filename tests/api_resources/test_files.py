@@ -50,7 +50,7 @@ class TestFiles:
     def test_method_list_with_optional_params(self) -> None:
         resource = self.client.files.list(
             {
-                "cursor": "x",
+                "cursor": "string",
                 "limit": 0,
                 "created_at": {
                     "after": "2019-12-27T18:11:19.117Z",
@@ -101,7 +101,7 @@ class TestAsyncFiles:
     async def test_method_list_with_optional_params(self) -> None:
         resource = await self.client.files.list(
             {
-                "cursor": "x",
+                "cursor": "string",
                 "limit": 0,
                 "created_at": {
                     "after": "2019-12-27T18:11:19.117Z",

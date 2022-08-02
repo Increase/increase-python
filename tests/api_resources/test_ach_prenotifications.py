@@ -55,7 +55,7 @@ class TestACHPrenotifications:
     def test_method_list_with_optional_params(self) -> None:
         resource = self.client.ach_prenotifications.list(
             {
-                "cursor": "x",
+                "cursor": "string",
                 "limit": 0,
                 "created_at": {
                     "after": "2019-12-27T18:11:19.117Z",
@@ -112,7 +112,7 @@ class TestAsyncACHPrenotifications:
     async def test_method_list_with_optional_params(self) -> None:
         resource = await self.client.ach_prenotifications.list(
             {
-                "cursor": "x",
+                "cursor": "string",
                 "limit": 0,
                 "created_at": {
                     "after": "2019-12-27T18:11:19.117Z",

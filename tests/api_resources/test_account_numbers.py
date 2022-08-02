@@ -62,7 +62,7 @@ class TestAccountNumbers:
     def test_method_list_with_optional_params(self) -> None:
         resource = self.client.account_numbers.list(
             {
-                "cursor": "x",
+                "cursor": "string",
                 "limit": 0,
                 "status": "active",
                 "account_id": "string",
@@ -122,7 +122,7 @@ class TestAsyncAccountNumbers:
     async def test_method_list_with_optional_params(self) -> None:
         resource = await self.client.account_numbers.list(
             {
-                "cursor": "x",
+                "cursor": "string",
                 "limit": 0,
                 "status": "active",
                 "account_id": "string",
