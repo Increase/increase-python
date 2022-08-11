@@ -1,8 +1,8 @@
 # File generated from our OpenAPI spec by Stainless.
 
-from typing import Union
+from typing import Union, Optional
 
-from .._types import NOT_GIVEN, Headers, Timeout, NotGiven
+from .._types import NOT_GIVEN, Query, Headers, Timeout, NotGiven
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
@@ -22,8 +22,9 @@ class EventSubscriptions(SyncAPIResource):
         headers: Union[Headers, NotGiven] = NOT_GIVEN,
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+        query: Optional[Query] = None,
     ) -> EventSubscription:
-        options = make_request_options(headers, max_retries, timeout)
+        options = make_request_options(headers, max_retries, timeout, query)
         return self._post(
             "/event_subscriptions",
             body=body,
@@ -38,8 +39,9 @@ class EventSubscriptions(SyncAPIResource):
         headers: Union[Headers, NotGiven] = NOT_GIVEN,
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+        query: Optional[Query] = None,
     ) -> EventSubscription:
-        options = make_request_options(headers, max_retries, timeout)
+        options = make_request_options(headers, max_retries, timeout, query)
         return self._get(
             f"/event_subscriptions/{event_subscription_id}",
             options=options,
@@ -54,8 +56,9 @@ class EventSubscriptions(SyncAPIResource):
         headers: Union[Headers, NotGiven] = NOT_GIVEN,
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+        query: Optional[Query] = None,
     ) -> EventSubscription:
-        options = make_request_options(headers, max_retries, timeout)
+        options = make_request_options(headers, max_retries, timeout, query)
         return self._patch(
             f"/event_subscriptions/{event_subscription_id}",
             body=body,
@@ -71,11 +74,10 @@ class EventSubscriptions(SyncAPIResource):
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
     ) -> SyncPage[EventSubscription]:
-        options = make_request_options(headers, max_retries, timeout)
+        options = make_request_options(headers, max_retries, timeout, query)
         return self._get_api_list(
             "/event_subscriptions",
             page=SyncPage[EventSubscription],
-            query=query,
             options=options,
             model=EventSubscription,
         )
@@ -89,8 +91,9 @@ class AsyncEventSubscriptions(AsyncAPIResource):
         headers: Union[Headers, NotGiven] = NOT_GIVEN,
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+        query: Optional[Query] = None,
     ) -> EventSubscription:
-        options = make_request_options(headers, max_retries, timeout)
+        options = make_request_options(headers, max_retries, timeout, query)
         return await self._post(
             "/event_subscriptions",
             body=body,
@@ -105,8 +108,9 @@ class AsyncEventSubscriptions(AsyncAPIResource):
         headers: Union[Headers, NotGiven] = NOT_GIVEN,
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+        query: Optional[Query] = None,
     ) -> EventSubscription:
-        options = make_request_options(headers, max_retries, timeout)
+        options = make_request_options(headers, max_retries, timeout, query)
         return await self._get(
             f"/event_subscriptions/{event_subscription_id}",
             options=options,
@@ -121,8 +125,9 @@ class AsyncEventSubscriptions(AsyncAPIResource):
         headers: Union[Headers, NotGiven] = NOT_GIVEN,
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+        query: Optional[Query] = None,
     ) -> EventSubscription:
-        options = make_request_options(headers, max_retries, timeout)
+        options = make_request_options(headers, max_retries, timeout, query)
         return await self._patch(
             f"/event_subscriptions/{event_subscription_id}",
             body=body,
@@ -138,11 +143,10 @@ class AsyncEventSubscriptions(AsyncAPIResource):
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
     ) -> AsyncPaginator[EventSubscription, AsyncPage[EventSubscription]]:
-        options = make_request_options(headers, max_retries, timeout)
+        options = make_request_options(headers, max_retries, timeout, query)
         return self._get_api_list(
             "/event_subscriptions",
             page=AsyncPage[EventSubscription],
-            query=query,
             options=options,
             model=EventSubscription,
         )

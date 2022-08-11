@@ -25,11 +25,10 @@ class RoutingNumbers(SyncAPIResource):
         You can use this API to confirm if a routing number is valid, such as when a
         user is providing you with bank account details.
         """
-        options = make_request_options(headers, max_retries, timeout)
+        options = make_request_options(headers, max_retries, timeout, query)
         return self._get_api_list(
             "/routing_numbers",
             page=SyncPage[RoutingNumber],
-            query=query,
             options=options,
             model=RoutingNumber,
         )
@@ -48,11 +47,10 @@ class AsyncRoutingNumbers(AsyncAPIResource):
         You can use this API to confirm if a routing number is valid, such as when a
         user is providing you with bank account details.
         """
-        options = make_request_options(headers, max_retries, timeout)
+        options = make_request_options(headers, max_retries, timeout, query)
         return self._get_api_list(
             "/routing_numbers",
             page=AsyncPage[RoutingNumber],
-            query=query,
             options=options,
             model=RoutingNumber,
         )

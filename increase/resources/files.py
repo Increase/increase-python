@@ -1,8 +1,8 @@
 # File generated from our OpenAPI spec by Stainless.
 
-from typing import Any, Dict, Union, cast
+from typing import Any, Dict, Union, Optional, cast
 
-from .._types import NOT_GIVEN, Headers, Timeout, NotGiven
+from .._types import NOT_GIVEN, Query, Headers, Timeout, NotGiven
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from ..types.file import *
@@ -21,6 +21,7 @@ class Files(SyncAPIResource):
         headers: Union[Headers, NotGiven] = NOT_GIVEN,
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+        query: Optional[Query] = None,
     ) -> File:
         """
         To upload a file to Increase, you'll need to send a request of Content-Type
@@ -35,7 +36,7 @@ class Files(SyncAPIResource):
         # This cast is required because otherwise mypy will complain
         # about a Required key being deleted from a TypedDict.
         files = {"file": cast(Dict[str, object], body).pop("file")}
-        options = make_request_options(headers, max_retries, timeout)
+        options = make_request_options(headers, max_retries, timeout, query)
         # The cast to Any is required because of https://github.com/microsoft/pyright/issues/3526
         return self._post(
             "/files",
@@ -52,8 +53,9 @@ class Files(SyncAPIResource):
         headers: Union[Headers, NotGiven] = NOT_GIVEN,
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+        query: Optional[Query] = None,
     ) -> File:
-        options = make_request_options(headers, max_retries, timeout)
+        options = make_request_options(headers, max_retries, timeout, query)
         return self._get(
             f"/files/{file_id}",
             options=options,
@@ -68,11 +70,10 @@ class Files(SyncAPIResource):
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
     ) -> SyncPage[File]:
-        options = make_request_options(headers, max_retries, timeout)
+        options = make_request_options(headers, max_retries, timeout, query)
         return self._get_api_list(
             "/files",
             page=SyncPage[File],
-            query=query,
             options=options,
             model=File,
         )
@@ -86,6 +87,7 @@ class AsyncFiles(AsyncAPIResource):
         headers: Union[Headers, NotGiven] = NOT_GIVEN,
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+        query: Optional[Query] = None,
     ) -> File:
         """
         To upload a file to Increase, you'll need to send a request of Content-Type
@@ -100,7 +102,7 @@ class AsyncFiles(AsyncAPIResource):
         # This cast is required because otherwise mypy will complain
         # about a Required key being deleted from a TypedDict.
         files = {"file": cast(Dict[str, object], body).pop("file")}
-        options = make_request_options(headers, max_retries, timeout)
+        options = make_request_options(headers, max_retries, timeout, query)
         # The cast to Any is required because of https://github.com/microsoft/pyright/issues/3526
         return await self._post(
             "/files",
@@ -117,8 +119,9 @@ class AsyncFiles(AsyncAPIResource):
         headers: Union[Headers, NotGiven] = NOT_GIVEN,
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+        query: Optional[Query] = None,
     ) -> File:
-        options = make_request_options(headers, max_retries, timeout)
+        options = make_request_options(headers, max_retries, timeout, query)
         return await self._get(
             f"/files/{file_id}",
             options=options,
@@ -133,11 +136,10 @@ class AsyncFiles(AsyncAPIResource):
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
     ) -> AsyncPaginator[File, AsyncPage[File]]:
-        options = make_request_options(headers, max_retries, timeout)
+        options = make_request_options(headers, max_retries, timeout, query)
         return self._get_api_list(
             "/files",
             page=AsyncPage[File],
-            query=query,
             options=options,
             model=File,
         )

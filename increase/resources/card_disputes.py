@@ -1,8 +1,8 @@
 # File generated from our OpenAPI spec by Stainless.
 
-from typing import Union
+from typing import Union, Optional
 
-from .._types import NOT_GIVEN, Headers, Timeout, NotGiven
+from .._types import NOT_GIVEN, Query, Headers, Timeout, NotGiven
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
@@ -21,8 +21,9 @@ class CardDisputes(SyncAPIResource):
         headers: Union[Headers, NotGiven] = NOT_GIVEN,
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+        query: Optional[Query] = None,
     ) -> CardDispute:
-        options = make_request_options(headers, max_retries, timeout)
+        options = make_request_options(headers, max_retries, timeout, query)
         return self._post(
             "/card_disputes",
             body=body,
@@ -37,8 +38,9 @@ class CardDisputes(SyncAPIResource):
         headers: Union[Headers, NotGiven] = NOT_GIVEN,
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+        query: Optional[Query] = None,
     ) -> CardDispute:
-        options = make_request_options(headers, max_retries, timeout)
+        options = make_request_options(headers, max_retries, timeout, query)
         return self._get(
             f"/card_disputes/{card_dispute_id}",
             options=options,
@@ -53,11 +55,10 @@ class CardDisputes(SyncAPIResource):
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
     ) -> SyncPage[CardDispute]:
-        options = make_request_options(headers, max_retries, timeout)
+        options = make_request_options(headers, max_retries, timeout, query)
         return self._get_api_list(
             "/card_disputes",
             page=SyncPage[CardDispute],
-            query=query,
             options=options,
             model=CardDispute,
         )
@@ -71,8 +72,9 @@ class AsyncCardDisputes(AsyncAPIResource):
         headers: Union[Headers, NotGiven] = NOT_GIVEN,
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+        query: Optional[Query] = None,
     ) -> CardDispute:
-        options = make_request_options(headers, max_retries, timeout)
+        options = make_request_options(headers, max_retries, timeout, query)
         return await self._post(
             "/card_disputes",
             body=body,
@@ -87,8 +89,9 @@ class AsyncCardDisputes(AsyncAPIResource):
         headers: Union[Headers, NotGiven] = NOT_GIVEN,
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+        query: Optional[Query] = None,
     ) -> CardDispute:
-        options = make_request_options(headers, max_retries, timeout)
+        options = make_request_options(headers, max_retries, timeout, query)
         return await self._get(
             f"/card_disputes/{card_dispute_id}",
             options=options,
@@ -103,11 +106,10 @@ class AsyncCardDisputes(AsyncAPIResource):
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
     ) -> AsyncPaginator[CardDispute, AsyncPage[CardDispute]]:
-        options = make_request_options(headers, max_retries, timeout)
+        options = make_request_options(headers, max_retries, timeout, query)
         return self._get_api_list(
             "/card_disputes",
             page=AsyncPage[CardDispute],
-            query=query,
             options=options,
             model=CardDispute,
         )

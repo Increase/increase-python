@@ -1,8 +1,8 @@
 # File generated from our OpenAPI spec by Stainless.
 
-from typing import Union
+from typing import Union, Optional
 
-from .._types import NOT_GIVEN, Headers, Timeout, NotGiven
+from .._types import NOT_GIVEN, Query, Headers, Timeout, NotGiven
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
@@ -22,8 +22,9 @@ class Entities(SyncAPIResource):
         headers: Union[Headers, NotGiven] = NOT_GIVEN,
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+        query: Optional[Query] = None,
     ) -> Entity:
-        options = make_request_options(headers, max_retries, timeout)
+        options = make_request_options(headers, max_retries, timeout, query)
         return self._get(
             f"/entities/{entity_id}",
             options=options,
@@ -38,11 +39,10 @@ class Entities(SyncAPIResource):
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
     ) -> SyncPage[Entity]:
-        options = make_request_options(headers, max_retries, timeout)
+        options = make_request_options(headers, max_retries, timeout, query)
         return self._get_api_list(
             "/entities",
             page=SyncPage[Entity],
-            query=query,
             options=options,
             model=Entity,
         )
@@ -54,8 +54,9 @@ class Entities(SyncAPIResource):
         headers: Union[Headers, NotGiven] = NOT_GIVEN,
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+        query: Optional[Query] = None,
     ) -> Entity:
-        options = make_request_options(headers, max_retries, timeout)
+        options = make_request_options(headers, max_retries, timeout, query)
         return self._post(
             "/entities/corporations",
             body=body,
@@ -70,8 +71,9 @@ class Entities(SyncAPIResource):
         headers: Union[Headers, NotGiven] = NOT_GIVEN,
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+        query: Optional[Query] = None,
     ) -> Entity:
-        options = make_request_options(headers, max_retries, timeout)
+        options = make_request_options(headers, max_retries, timeout, query)
         return self._post(
             "/entities/natural_people",
             body=body,
@@ -88,8 +90,9 @@ class AsyncEntities(AsyncAPIResource):
         headers: Union[Headers, NotGiven] = NOT_GIVEN,
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+        query: Optional[Query] = None,
     ) -> Entity:
-        options = make_request_options(headers, max_retries, timeout)
+        options = make_request_options(headers, max_retries, timeout, query)
         return await self._get(
             f"/entities/{entity_id}",
             options=options,
@@ -104,11 +107,10 @@ class AsyncEntities(AsyncAPIResource):
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
     ) -> AsyncPaginator[Entity, AsyncPage[Entity]]:
-        options = make_request_options(headers, max_retries, timeout)
+        options = make_request_options(headers, max_retries, timeout, query)
         return self._get_api_list(
             "/entities",
             page=AsyncPage[Entity],
-            query=query,
             options=options,
             model=Entity,
         )
@@ -120,8 +122,9 @@ class AsyncEntities(AsyncAPIResource):
         headers: Union[Headers, NotGiven] = NOT_GIVEN,
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+        query: Optional[Query] = None,
     ) -> Entity:
-        options = make_request_options(headers, max_retries, timeout)
+        options = make_request_options(headers, max_retries, timeout, query)
         return await self._post(
             "/entities/corporations",
             body=body,
@@ -136,8 +139,9 @@ class AsyncEntities(AsyncAPIResource):
         headers: Union[Headers, NotGiven] = NOT_GIVEN,
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+        query: Optional[Query] = None,
     ) -> Entity:
-        options = make_request_options(headers, max_retries, timeout)
+        options = make_request_options(headers, max_retries, timeout, query)
         return await self._post(
             "/entities/natural_people",
             body=body,

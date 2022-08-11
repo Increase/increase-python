@@ -1,8 +1,8 @@
 # File generated from our OpenAPI spec by Stainless.
 
-from typing import Union
+from typing import Union, Optional
 
-from .._types import NOT_GIVEN, Headers, Timeout, NotGiven
+from .._types import NOT_GIVEN, Query, Headers, Timeout, NotGiven
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
@@ -21,8 +21,9 @@ class Accounts(SyncAPIResource):
         headers: Union[Headers, NotGiven] = NOT_GIVEN,
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+        query: Optional[Query] = None,
     ) -> Account:
-        options = make_request_options(headers, max_retries, timeout)
+        options = make_request_options(headers, max_retries, timeout, query)
         return self._post(
             "/accounts",
             body=body,
@@ -37,8 +38,9 @@ class Accounts(SyncAPIResource):
         headers: Union[Headers, NotGiven] = NOT_GIVEN,
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+        query: Optional[Query] = None,
     ) -> Account:
-        options = make_request_options(headers, max_retries, timeout)
+        options = make_request_options(headers, max_retries, timeout, query)
         return self._get(
             f"/accounts/{account_id}",
             options=options,
@@ -53,11 +55,10 @@ class Accounts(SyncAPIResource):
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
     ) -> SyncPage[Account]:
-        options = make_request_options(headers, max_retries, timeout)
+        options = make_request_options(headers, max_retries, timeout, query)
         return self._get_api_list(
             "/accounts",
             page=SyncPage[Account],
-            query=query,
             options=options,
             model=Account,
         )
@@ -69,8 +70,9 @@ class Accounts(SyncAPIResource):
         headers: Union[Headers, NotGiven] = NOT_GIVEN,
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+        query: Optional[Query] = None,
     ) -> Account:
-        options = make_request_options(headers, max_retries, timeout)
+        options = make_request_options(headers, max_retries, timeout, query)
         return self._post(
             f"/accounts/{account_id}/close",
             options=options,
@@ -86,8 +88,9 @@ class AsyncAccounts(AsyncAPIResource):
         headers: Union[Headers, NotGiven] = NOT_GIVEN,
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+        query: Optional[Query] = None,
     ) -> Account:
-        options = make_request_options(headers, max_retries, timeout)
+        options = make_request_options(headers, max_retries, timeout, query)
         return await self._post(
             "/accounts",
             body=body,
@@ -102,8 +105,9 @@ class AsyncAccounts(AsyncAPIResource):
         headers: Union[Headers, NotGiven] = NOT_GIVEN,
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+        query: Optional[Query] = None,
     ) -> Account:
-        options = make_request_options(headers, max_retries, timeout)
+        options = make_request_options(headers, max_retries, timeout, query)
         return await self._get(
             f"/accounts/{account_id}",
             options=options,
@@ -118,11 +122,10 @@ class AsyncAccounts(AsyncAPIResource):
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
     ) -> AsyncPaginator[Account, AsyncPage[Account]]:
-        options = make_request_options(headers, max_retries, timeout)
+        options = make_request_options(headers, max_retries, timeout, query)
         return self._get_api_list(
             "/accounts",
             page=AsyncPage[Account],
-            query=query,
             options=options,
             model=Account,
         )
@@ -134,8 +137,9 @@ class AsyncAccounts(AsyncAPIResource):
         headers: Union[Headers, NotGiven] = NOT_GIVEN,
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+        query: Optional[Query] = None,
     ) -> Account:
-        options = make_request_options(headers, max_retries, timeout)
+        options = make_request_options(headers, max_retries, timeout, query)
         return await self._post(
             f"/accounts/{account_id}/close",
             options=options,
