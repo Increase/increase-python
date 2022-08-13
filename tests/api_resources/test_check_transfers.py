@@ -14,10 +14,13 @@ api_key = os.environ.get("API_KEY", "something1234")
 
 
 class TestCheckTransfers:
-    client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+    strict_client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+    loose_client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=False)
+    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
 
-    def test_method_create(self) -> None:
-        resource = self.client.check_transfers.create(
+    @parametrize
+    def test_method_create(self, client: Increase) -> None:
+        resource = client.check_transfers.create(
             {
                 "account_id": "account_in71c4amph0vgo2qllky",
                 "address_line1": "33 Liberty Street",
@@ -31,8 +34,9 @@ class TestCheckTransfers:
         )
         assert isinstance(resource, CheckTransfer)
 
-    def test_method_create_with_optional_params(self) -> None:
-        resource = self.client.check_transfers.create(
+    @parametrize
+    def test_method_create_with_optional_params(self, client: Increase) -> None:
+        resource = client.check_transfers.create(
             {
                 "account_id": "account_in71c4amph0vgo2qllky",
                 "address_line1": "33 Liberty Street",
@@ -47,18 +51,21 @@ class TestCheckTransfers:
         )
         assert isinstance(resource, CheckTransfer)
 
-    def test_method_retrieve(self) -> None:
-        resource = self.client.check_transfers.retrieve(
+    @parametrize
+    def test_method_retrieve(self, client: Increase) -> None:
+        resource = client.check_transfers.retrieve(
             "string",
         )
         assert isinstance(resource, CheckTransfer)
 
-    def test_method_list(self) -> None:
-        resource = self.client.check_transfers.list()
+    @parametrize
+    def test_method_list(self, client: Increase) -> None:
+        resource = client.check_transfers.list()
         assert isinstance(resource, SyncPage)
 
-    def test_method_list_with_optional_params(self) -> None:
-        resource = self.client.check_transfers.list(
+    @parametrize
+    def test_method_list_with_optional_params(self, client: Increase) -> None:
+        resource = client.check_transfers.list(
             {
                 "cursor": "string",
                 "limit": 0,
@@ -74,18 +81,22 @@ class TestCheckTransfers:
         assert isinstance(resource, SyncPage)
 
     @pytest.mark.skip(reason="Prism doesn't accept no request body being sent but returns 415 if it is sent")
-    def test_method_stop_payment(self) -> None:
-        resource = self.client.check_transfers.stop_payment(
+    @parametrize
+    def test_method_stop_payment(self, client: Increase) -> None:
+        resource = client.check_transfers.stop_payment(
             "string",
         )
         assert isinstance(resource, CheckTransfer)
 
 
 class TestAsyncCheckTransfers:
-    client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+    strict_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+    loose_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=False)
+    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
 
-    async def test_method_create(self) -> None:
-        resource = await self.client.check_transfers.create(
+    @parametrize
+    async def test_method_create(self, client: AsyncIncrease) -> None:
+        resource = await client.check_transfers.create(
             {
                 "account_id": "account_in71c4amph0vgo2qllky",
                 "address_line1": "33 Liberty Street",
@@ -99,8 +110,9 @@ class TestAsyncCheckTransfers:
         )
         assert isinstance(resource, CheckTransfer)
 
-    async def test_method_create_with_optional_params(self) -> None:
-        resource = await self.client.check_transfers.create(
+    @parametrize
+    async def test_method_create_with_optional_params(self, client: AsyncIncrease) -> None:
+        resource = await client.check_transfers.create(
             {
                 "account_id": "account_in71c4amph0vgo2qllky",
                 "address_line1": "33 Liberty Street",
@@ -115,18 +127,21 @@ class TestAsyncCheckTransfers:
         )
         assert isinstance(resource, CheckTransfer)
 
-    async def test_method_retrieve(self) -> None:
-        resource = await self.client.check_transfers.retrieve(
+    @parametrize
+    async def test_method_retrieve(self, client: AsyncIncrease) -> None:
+        resource = await client.check_transfers.retrieve(
             "string",
         )
         assert isinstance(resource, CheckTransfer)
 
-    async def test_method_list(self) -> None:
-        resource = await self.client.check_transfers.list()
+    @parametrize
+    async def test_method_list(self, client: AsyncIncrease) -> None:
+        resource = await client.check_transfers.list()
         assert isinstance(resource, AsyncPage)
 
-    async def test_method_list_with_optional_params(self) -> None:
-        resource = await self.client.check_transfers.list(
+    @parametrize
+    async def test_method_list_with_optional_params(self, client: AsyncIncrease) -> None:
+        resource = await client.check_transfers.list(
             {
                 "cursor": "string",
                 "limit": 0,
@@ -142,8 +157,9 @@ class TestAsyncCheckTransfers:
         assert isinstance(resource, AsyncPage)
 
     @pytest.mark.skip(reason="Prism doesn't accept no request body being sent but returns 415 if it is sent")
-    async def test_method_stop_payment(self) -> None:
-        resource = await self.client.check_transfers.stop_payment(
+    @parametrize
+    async def test_method_stop_payment(self, client: AsyncIncrease) -> None:
+        resource = await client.check_transfers.stop_payment(
             "string",
         )
         assert isinstance(resource, CheckTransfer)

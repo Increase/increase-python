@@ -3,6 +3,8 @@ from __future__ import annotations
 
 import os
 
+import pytest
+
 from increase import Increase, AsyncIncrease
 from increase.pagination import SyncPage, AsyncPage
 from increase.types.card import *
@@ -13,16 +15,20 @@ api_key = os.environ.get("API_KEY", "something1234")
 
 
 class TestCards:
-    client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+    strict_client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+    loose_client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=False)
+    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
 
-    def test_method_create(self) -> None:
-        resource = self.client.cards.create(
+    @parametrize
+    def test_method_create(self, client: Increase) -> None:
+        resource = client.cards.create(
             {"account_id": "account_in71c4amph0vgo2qllky"},
         )
         assert isinstance(resource, Card)
 
-    def test_method_create_with_optional_params(self) -> None:
-        resource = self.client.cards.create(
+    @parametrize
+    def test_method_create_with_optional_params(self, client: Increase) -> None:
+        resource = client.cards.create(
             {
                 "account_id": "account_in71c4amph0vgo2qllky",
                 "description": "Card for Ian Crease",
@@ -37,21 +43,24 @@ class TestCards:
         )
         assert isinstance(resource, Card)
 
-    def test_method_retrieve(self) -> None:
-        resource = self.client.cards.retrieve(
+    @parametrize
+    def test_method_retrieve(self, client: Increase) -> None:
+        resource = client.cards.retrieve(
             "string",
         )
         assert isinstance(resource, Card)
 
-    def test_method_update(self) -> None:
-        resource = self.client.cards.update(
+    @parametrize
+    def test_method_update(self, client: Increase) -> None:
+        resource = client.cards.update(
             "string",
             {},
         )
         assert isinstance(resource, Card)
 
-    def test_method_update_with_optional_params(self) -> None:
-        resource = self.client.cards.update(
+    @parametrize
+    def test_method_update_with_optional_params(self, client: Increase) -> None:
+        resource = client.cards.update(
             "string",
             {
                 "description": "New description",
@@ -67,12 +76,14 @@ class TestCards:
         )
         assert isinstance(resource, Card)
 
-    def test_method_list(self) -> None:
-        resource = self.client.cards.list()
+    @parametrize
+    def test_method_list(self, client: Increase) -> None:
+        resource = client.cards.list()
         assert isinstance(resource, SyncPage)
 
-    def test_method_list_with_optional_params(self) -> None:
-        resource = self.client.cards.list(
+    @parametrize
+    def test_method_list_with_optional_params(self, client: Increase) -> None:
+        resource = client.cards.list(
             {
                 "cursor": "string",
                 "limit": 0,
@@ -87,24 +98,29 @@ class TestCards:
         )
         assert isinstance(resource, SyncPage)
 
-    def test_method_retrieve_sensitive_details(self) -> None:
-        resource = self.client.cards.retrieve_sensitive_details(
+    @parametrize
+    def test_method_retrieve_sensitive_details(self, client: Increase) -> None:
+        resource = client.cards.retrieve_sensitive_details(
             "string",
         )
         assert isinstance(resource, CardDetails)
 
 
 class TestAsyncCards:
-    client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+    strict_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+    loose_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=False)
+    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
 
-    async def test_method_create(self) -> None:
-        resource = await self.client.cards.create(
+    @parametrize
+    async def test_method_create(self, client: AsyncIncrease) -> None:
+        resource = await client.cards.create(
             {"account_id": "account_in71c4amph0vgo2qllky"},
         )
         assert isinstance(resource, Card)
 
-    async def test_method_create_with_optional_params(self) -> None:
-        resource = await self.client.cards.create(
+    @parametrize
+    async def test_method_create_with_optional_params(self, client: AsyncIncrease) -> None:
+        resource = await client.cards.create(
             {
                 "account_id": "account_in71c4amph0vgo2qllky",
                 "description": "Card for Ian Crease",
@@ -119,21 +135,24 @@ class TestAsyncCards:
         )
         assert isinstance(resource, Card)
 
-    async def test_method_retrieve(self) -> None:
-        resource = await self.client.cards.retrieve(
+    @parametrize
+    async def test_method_retrieve(self, client: AsyncIncrease) -> None:
+        resource = await client.cards.retrieve(
             "string",
         )
         assert isinstance(resource, Card)
 
-    async def test_method_update(self) -> None:
-        resource = await self.client.cards.update(
+    @parametrize
+    async def test_method_update(self, client: AsyncIncrease) -> None:
+        resource = await client.cards.update(
             "string",
             {},
         )
         assert isinstance(resource, Card)
 
-    async def test_method_update_with_optional_params(self) -> None:
-        resource = await self.client.cards.update(
+    @parametrize
+    async def test_method_update_with_optional_params(self, client: AsyncIncrease) -> None:
+        resource = await client.cards.update(
             "string",
             {
                 "description": "New description",
@@ -149,12 +168,14 @@ class TestAsyncCards:
         )
         assert isinstance(resource, Card)
 
-    async def test_method_list(self) -> None:
-        resource = await self.client.cards.list()
+    @parametrize
+    async def test_method_list(self, client: AsyncIncrease) -> None:
+        resource = await client.cards.list()
         assert isinstance(resource, AsyncPage)
 
-    async def test_method_list_with_optional_params(self) -> None:
-        resource = await self.client.cards.list(
+    @parametrize
+    async def test_method_list_with_optional_params(self, client: AsyncIncrease) -> None:
+        resource = await client.cards.list(
             {
                 "cursor": "string",
                 "limit": 0,
@@ -169,8 +190,9 @@ class TestAsyncCards:
         )
         assert isinstance(resource, AsyncPage)
 
-    async def test_method_retrieve_sensitive_details(self) -> None:
-        resource = await self.client.cards.retrieve_sensitive_details(
+    @parametrize
+    async def test_method_retrieve_sensitive_details(self, client: AsyncIncrease) -> None:
+        resource = await client.cards.retrieve_sensitive_details(
             "string",
         )
         assert isinstance(resource, CardDetails)

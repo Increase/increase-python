@@ -3,6 +3,8 @@ from __future__ import annotations
 
 import os
 
+import pytest
+
 from increase import Increase, AsyncIncrease
 from increase.pagination import SyncPage, AsyncPage
 from increase.types.pending_transaction import *
@@ -12,20 +14,25 @@ api_key = os.environ.get("API_KEY", "something1234")
 
 
 class TestPendingTransactions:
-    client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+    strict_client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+    loose_client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=False)
+    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
 
-    def test_method_retrieve(self) -> None:
-        resource = self.client.pending_transactions.retrieve(
+    @parametrize
+    def test_method_retrieve(self, client: Increase) -> None:
+        resource = client.pending_transactions.retrieve(
             "string",
         )
         assert isinstance(resource, PendingTransaction)
 
-    def test_method_list(self) -> None:
-        resource = self.client.pending_transactions.list()
+    @parametrize
+    def test_method_list(self, client: Increase) -> None:
+        resource = client.pending_transactions.list()
         assert isinstance(resource, SyncPage)
 
-    def test_method_list_with_optional_params(self) -> None:
-        resource = self.client.pending_transactions.list(
+    @parametrize
+    def test_method_list_with_optional_params(self, client: Increase) -> None:
+        resource = client.pending_transactions.list(
             {
                 "cursor": "string",
                 "limit": 0,
@@ -39,20 +46,25 @@ class TestPendingTransactions:
 
 
 class TestAsyncPendingTransactions:
-    client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+    strict_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+    loose_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=False)
+    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
 
-    async def test_method_retrieve(self) -> None:
-        resource = await self.client.pending_transactions.retrieve(
+    @parametrize
+    async def test_method_retrieve(self, client: AsyncIncrease) -> None:
+        resource = await client.pending_transactions.retrieve(
             "string",
         )
         assert isinstance(resource, PendingTransaction)
 
-    async def test_method_list(self) -> None:
-        resource = await self.client.pending_transactions.list()
+    @parametrize
+    async def test_method_list(self, client: AsyncIncrease) -> None:
+        resource = await client.pending_transactions.list()
         assert isinstance(resource, AsyncPage)
 
-    async def test_method_list_with_optional_params(self) -> None:
-        resource = await self.client.pending_transactions.list(
+    @parametrize
+    async def test_method_list_with_optional_params(self, client: AsyncIncrease) -> None:
+        resource = await client.pending_transactions.list(
             {
                 "cursor": "string",
                 "limit": 0,

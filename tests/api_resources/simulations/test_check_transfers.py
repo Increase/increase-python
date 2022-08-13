@@ -13,22 +13,28 @@ api_key = os.environ.get("API_KEY", "something1234")
 
 
 class TestCheckTransfers:
-    client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+    strict_client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+    loose_client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=False)
+    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
 
     @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
-    def test_method_mail(self) -> None:
-        resource = self.client.simulations.check_transfers.mail(
+    @parametrize
+    def test_method_mail(self, client: Increase) -> None:
+        resource = client.simulations.check_transfers.mail(
             "string",
         )
         assert isinstance(resource, CheckTransfer)
 
 
 class TestAsyncCheckTransfers:
-    client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+    strict_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+    loose_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=False)
+    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
 
     @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
-    async def test_method_mail(self) -> None:
-        resource = await self.client.simulations.check_transfers.mail(
+    @parametrize
+    async def test_method_mail(self, client: AsyncIncrease) -> None:
+        resource = await client.simulations.check_transfers.mail(
             "string",
         )
         assert isinstance(resource, CheckTransfer)

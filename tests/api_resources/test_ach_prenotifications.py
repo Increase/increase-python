@@ -3,6 +3,8 @@ from __future__ import annotations
 
 import os
 
+import pytest
+
 from increase import Increase, AsyncIncrease
 from increase.pagination import SyncPage, AsyncPage
 from increase.types.ach_prenotification import *
@@ -12,10 +14,13 @@ api_key = os.environ.get("API_KEY", "something1234")
 
 
 class TestACHPrenotifications:
-    client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+    strict_client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+    loose_client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=False)
+    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
 
-    def test_method_create(self) -> None:
-        resource = self.client.ach_prenotifications.create(
+    @parametrize
+    def test_method_create(self, client: Increase) -> None:
+        resource = client.ach_prenotifications.create(
             {
                 "account_number": "987654321",
                 "routing_number": "101050001",
@@ -23,8 +28,9 @@ class TestACHPrenotifications:
         )
         assert isinstance(resource, ACHPrenotification)
 
-    def test_method_create_with_optional_params(self) -> None:
-        resource = self.client.ach_prenotifications.create(
+    @parametrize
+    def test_method_create_with_optional_params(self, client: Increase) -> None:
+        resource = client.ach_prenotifications.create(
             {
                 "account_number": "987654321",
                 "addendum": "x",
@@ -42,18 +48,21 @@ class TestACHPrenotifications:
         )
         assert isinstance(resource, ACHPrenotification)
 
-    def test_method_retrieve(self) -> None:
-        resource = self.client.ach_prenotifications.retrieve(
+    @parametrize
+    def test_method_retrieve(self, client: Increase) -> None:
+        resource = client.ach_prenotifications.retrieve(
             "string",
         )
         assert isinstance(resource, ACHPrenotification)
 
-    def test_method_list(self) -> None:
-        resource = self.client.ach_prenotifications.list()
+    @parametrize
+    def test_method_list(self, client: Increase) -> None:
+        resource = client.ach_prenotifications.list()
         assert isinstance(resource, SyncPage)
 
-    def test_method_list_with_optional_params(self) -> None:
-        resource = self.client.ach_prenotifications.list(
+    @parametrize
+    def test_method_list_with_optional_params(self, client: Increase) -> None:
+        resource = client.ach_prenotifications.list(
             {
                 "cursor": "string",
                 "limit": 0,
@@ -69,10 +78,13 @@ class TestACHPrenotifications:
 
 
 class TestAsyncACHPrenotifications:
-    client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+    strict_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+    loose_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=False)
+    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
 
-    async def test_method_create(self) -> None:
-        resource = await self.client.ach_prenotifications.create(
+    @parametrize
+    async def test_method_create(self, client: AsyncIncrease) -> None:
+        resource = await client.ach_prenotifications.create(
             {
                 "account_number": "987654321",
                 "routing_number": "101050001",
@@ -80,8 +92,9 @@ class TestAsyncACHPrenotifications:
         )
         assert isinstance(resource, ACHPrenotification)
 
-    async def test_method_create_with_optional_params(self) -> None:
-        resource = await self.client.ach_prenotifications.create(
+    @parametrize
+    async def test_method_create_with_optional_params(self, client: AsyncIncrease) -> None:
+        resource = await client.ach_prenotifications.create(
             {
                 "account_number": "987654321",
                 "addendum": "x",
@@ -99,18 +112,21 @@ class TestAsyncACHPrenotifications:
         )
         assert isinstance(resource, ACHPrenotification)
 
-    async def test_method_retrieve(self) -> None:
-        resource = await self.client.ach_prenotifications.retrieve(
+    @parametrize
+    async def test_method_retrieve(self, client: AsyncIncrease) -> None:
+        resource = await client.ach_prenotifications.retrieve(
             "string",
         )
         assert isinstance(resource, ACHPrenotification)
 
-    async def test_method_list(self) -> None:
-        resource = await self.client.ach_prenotifications.list()
+    @parametrize
+    async def test_method_list(self, client: AsyncIncrease) -> None:
+        resource = await client.ach_prenotifications.list()
         assert isinstance(resource, AsyncPage)
 
-    async def test_method_list_with_optional_params(self) -> None:
-        resource = await self.client.ach_prenotifications.list(
+    @parametrize
+    async def test_method_list_with_optional_params(self, client: AsyncIncrease) -> None:
+        resource = await client.ach_prenotifications.list(
             {
                 "cursor": "string",
                 "limit": 0,

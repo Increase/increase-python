@@ -3,6 +3,8 @@ from __future__ import annotations
 
 import os
 
+import pytest
+
 from increase import Increase, AsyncIncrease
 from increase.pagination import SyncPage, AsyncPage
 from increase.types.entity import *
@@ -12,20 +14,25 @@ api_key = os.environ.get("API_KEY", "something1234")
 
 
 class TestEntities:
-    client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+    strict_client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+    loose_client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=False)
+    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
 
-    def test_method_retrieve(self) -> None:
-        resource = self.client.entities.retrieve(
+    @parametrize
+    def test_method_retrieve(self, client: Increase) -> None:
+        resource = client.entities.retrieve(
             "string",
         )
         assert isinstance(resource, Entity)
 
-    def test_method_list(self) -> None:
-        resource = self.client.entities.list()
+    @parametrize
+    def test_method_list(self, client: Increase) -> None:
+        resource = client.entities.list()
         assert isinstance(resource, SyncPage)
 
-    def test_method_list_with_optional_params(self) -> None:
-        resource = self.client.entities.list(
+    @parametrize
+    def test_method_list_with_optional_params(self, client: Increase) -> None:
+        resource = client.entities.list(
             {
                 "cursor": "string",
                 "limit": 0,
@@ -33,8 +40,9 @@ class TestEntities:
         )
         assert isinstance(resource, SyncPage)
 
-    def test_method_create_corporation(self) -> None:
-        resource = self.client.entities.create_corporation(
+    @parametrize
+    def test_method_create_corporation(self, client: Increase) -> None:
+        resource = client.entities.create_corporation(
             {
                 "address_line1": "33 Liberty Street",
                 "address_city": "New York",
@@ -46,8 +54,9 @@ class TestEntities:
         )
         assert isinstance(resource, Entity)
 
-    def test_method_create_corporation_with_optional_params(self) -> None:
-        resource = self.client.entities.create_corporation(
+    @parametrize
+    def test_method_create_corporation_with_optional_params(self, client: Increase) -> None:
+        resource = client.entities.create_corporation(
             {
                 "address_line1": "33 Liberty Street",
                 "address_line2": "x",
@@ -98,8 +107,9 @@ class TestEntities:
         )
         assert isinstance(resource, Entity)
 
-    def test_method_create_person(self) -> None:
-        resource = self.client.entities.create_person(
+    @parametrize
+    def test_method_create_person(self, client: Increase) -> None:
+        resource = client.entities.create_person(
             {
                 "address_line1": "33 Liberty Street",
                 "address_city": "New York",
@@ -112,8 +122,9 @@ class TestEntities:
         )
         assert isinstance(resource, Entity)
 
-    def test_method_create_person_with_optional_params(self) -> None:
-        resource = self.client.entities.create_person(
+    @parametrize
+    def test_method_create_person_with_optional_params(self, client: Increase) -> None:
+        resource = client.entities.create_person(
             {
                 "address_line1": "33 Liberty Street",
                 "address_line2": "x",
@@ -129,20 +140,25 @@ class TestEntities:
 
 
 class TestAsyncEntities:
-    client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+    strict_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+    loose_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=False)
+    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
 
-    async def test_method_retrieve(self) -> None:
-        resource = await self.client.entities.retrieve(
+    @parametrize
+    async def test_method_retrieve(self, client: AsyncIncrease) -> None:
+        resource = await client.entities.retrieve(
             "string",
         )
         assert isinstance(resource, Entity)
 
-    async def test_method_list(self) -> None:
-        resource = await self.client.entities.list()
+    @parametrize
+    async def test_method_list(self, client: AsyncIncrease) -> None:
+        resource = await client.entities.list()
         assert isinstance(resource, AsyncPage)
 
-    async def test_method_list_with_optional_params(self) -> None:
-        resource = await self.client.entities.list(
+    @parametrize
+    async def test_method_list_with_optional_params(self, client: AsyncIncrease) -> None:
+        resource = await client.entities.list(
             {
                 "cursor": "string",
                 "limit": 0,
@@ -150,8 +166,9 @@ class TestAsyncEntities:
         )
         assert isinstance(resource, AsyncPage)
 
-    async def test_method_create_corporation(self) -> None:
-        resource = await self.client.entities.create_corporation(
+    @parametrize
+    async def test_method_create_corporation(self, client: AsyncIncrease) -> None:
+        resource = await client.entities.create_corporation(
             {
                 "address_line1": "33 Liberty Street",
                 "address_city": "New York",
@@ -163,8 +180,9 @@ class TestAsyncEntities:
         )
         assert isinstance(resource, Entity)
 
-    async def test_method_create_corporation_with_optional_params(self) -> None:
-        resource = await self.client.entities.create_corporation(
+    @parametrize
+    async def test_method_create_corporation_with_optional_params(self, client: AsyncIncrease) -> None:
+        resource = await client.entities.create_corporation(
             {
                 "address_line1": "33 Liberty Street",
                 "address_line2": "x",
@@ -215,8 +233,9 @@ class TestAsyncEntities:
         )
         assert isinstance(resource, Entity)
 
-    async def test_method_create_person(self) -> None:
-        resource = await self.client.entities.create_person(
+    @parametrize
+    async def test_method_create_person(self, client: AsyncIncrease) -> None:
+        resource = await client.entities.create_person(
             {
                 "address_line1": "33 Liberty Street",
                 "address_city": "New York",
@@ -229,8 +248,9 @@ class TestAsyncEntities:
         )
         assert isinstance(resource, Entity)
 
-    async def test_method_create_person_with_optional_params(self) -> None:
-        resource = await self.client.entities.create_person(
+    @parametrize
+    async def test_method_create_person_with_optional_params(self, client: AsyncIncrease) -> None:
+        resource = await client.entities.create_person(
             {
                 "address_line1": "33 Liberty Street",
                 "address_line2": "x",

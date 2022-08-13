@@ -3,6 +3,8 @@ from __future__ import annotations
 
 import os
 
+import pytest
+
 from increase import Increase, AsyncIncrease
 from increase.pagination import SyncPage, AsyncPage
 from increase.types.account_number import *
@@ -12,10 +14,13 @@ api_key = os.environ.get("API_KEY", "something1234")
 
 
 class TestAccountNumbers:
-    client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+    strict_client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+    loose_client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=False)
+    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
 
-    def test_method_create(self) -> None:
-        resource = self.client.account_numbers.create(
+    @parametrize
+    def test_method_create(self, client: Increase) -> None:
+        resource = client.account_numbers.create(
             {
                 "account_id": "account_in71c4amph0vgo2qllky",
                 "name": "Rent payments",
@@ -23,8 +28,9 @@ class TestAccountNumbers:
         )
         assert isinstance(resource, AccountNumber)
 
-    def test_method_create_with_optional_params(self) -> None:
-        resource = self.client.account_numbers.create(
+    @parametrize
+    def test_method_create_with_optional_params(self, client: Increase) -> None:
+        resource = client.account_numbers.create(
             {
                 "account_id": "account_in71c4amph0vgo2qllky",
                 "name": "Rent payments",
@@ -32,21 +38,24 @@ class TestAccountNumbers:
         )
         assert isinstance(resource, AccountNumber)
 
-    def test_method_retrieve(self) -> None:
-        resource = self.client.account_numbers.retrieve(
+    @parametrize
+    def test_method_retrieve(self, client: Increase) -> None:
+        resource = client.account_numbers.retrieve(
             "string",
         )
         assert isinstance(resource, AccountNumber)
 
-    def test_method_update(self) -> None:
-        resource = self.client.account_numbers.update(
+    @parametrize
+    def test_method_update(self, client: Increase) -> None:
+        resource = client.account_numbers.update(
             "string",
             {},
         )
         assert isinstance(resource, AccountNumber)
 
-    def test_method_update_with_optional_params(self) -> None:
-        resource = self.client.account_numbers.update(
+    @parametrize
+    def test_method_update_with_optional_params(self, client: Increase) -> None:
+        resource = client.account_numbers.update(
             "string",
             {
                 "name": "x",
@@ -55,12 +64,14 @@ class TestAccountNumbers:
         )
         assert isinstance(resource, AccountNumber)
 
-    def test_method_list(self) -> None:
-        resource = self.client.account_numbers.list()
+    @parametrize
+    def test_method_list(self, client: Increase) -> None:
+        resource = client.account_numbers.list()
         assert isinstance(resource, SyncPage)
 
-    def test_method_list_with_optional_params(self) -> None:
-        resource = self.client.account_numbers.list(
+    @parametrize
+    def test_method_list_with_optional_params(self, client: Increase) -> None:
+        resource = client.account_numbers.list(
             {
                 "cursor": "string",
                 "limit": 0,
@@ -72,10 +83,13 @@ class TestAccountNumbers:
 
 
 class TestAsyncAccountNumbers:
-    client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+    strict_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+    loose_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=False)
+    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
 
-    async def test_method_create(self) -> None:
-        resource = await self.client.account_numbers.create(
+    @parametrize
+    async def test_method_create(self, client: AsyncIncrease) -> None:
+        resource = await client.account_numbers.create(
             {
                 "account_id": "account_in71c4amph0vgo2qllky",
                 "name": "Rent payments",
@@ -83,8 +97,9 @@ class TestAsyncAccountNumbers:
         )
         assert isinstance(resource, AccountNumber)
 
-    async def test_method_create_with_optional_params(self) -> None:
-        resource = await self.client.account_numbers.create(
+    @parametrize
+    async def test_method_create_with_optional_params(self, client: AsyncIncrease) -> None:
+        resource = await client.account_numbers.create(
             {
                 "account_id": "account_in71c4amph0vgo2qllky",
                 "name": "Rent payments",
@@ -92,21 +107,24 @@ class TestAsyncAccountNumbers:
         )
         assert isinstance(resource, AccountNumber)
 
-    async def test_method_retrieve(self) -> None:
-        resource = await self.client.account_numbers.retrieve(
+    @parametrize
+    async def test_method_retrieve(self, client: AsyncIncrease) -> None:
+        resource = await client.account_numbers.retrieve(
             "string",
         )
         assert isinstance(resource, AccountNumber)
 
-    async def test_method_update(self) -> None:
-        resource = await self.client.account_numbers.update(
+    @parametrize
+    async def test_method_update(self, client: AsyncIncrease) -> None:
+        resource = await client.account_numbers.update(
             "string",
             {},
         )
         assert isinstance(resource, AccountNumber)
 
-    async def test_method_update_with_optional_params(self) -> None:
-        resource = await self.client.account_numbers.update(
+    @parametrize
+    async def test_method_update_with_optional_params(self, client: AsyncIncrease) -> None:
+        resource = await client.account_numbers.update(
             "string",
             {
                 "name": "x",
@@ -115,12 +133,14 @@ class TestAsyncAccountNumbers:
         )
         assert isinstance(resource, AccountNumber)
 
-    async def test_method_list(self) -> None:
-        resource = await self.client.account_numbers.list()
+    @parametrize
+    async def test_method_list(self, client: AsyncIncrease) -> None:
+        resource = await client.account_numbers.list()
         assert isinstance(resource, AsyncPage)
 
-    async def test_method_list_with_optional_params(self) -> None:
-        resource = await self.client.account_numbers.list(
+    @parametrize
+    async def test_method_list_with_optional_params(self, client: AsyncIncrease) -> None:
+        resource = await client.account_numbers.list(
             {
                 "cursor": "string",
                 "limit": 0,

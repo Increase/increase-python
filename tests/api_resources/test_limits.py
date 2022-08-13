@@ -3,6 +3,8 @@ from __future__ import annotations
 
 import os
 
+import pytest
+
 from increase import Increase, AsyncIncrease
 from increase.pagination import SyncPage, AsyncPage
 from increase.types.limit import *
@@ -12,10 +14,13 @@ api_key = os.environ.get("API_KEY", "something1234")
 
 
 class TestLimits:
-    client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+    strict_client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+    loose_client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=False)
+    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
 
-    def test_method_create(self) -> None:
-        resource = self.client.limits.create(
+    @parametrize
+    def test_method_create(self, client: Increase) -> None:
+        resource = client.limits.create(
             {
                 "metric": "volume",
                 "model_id": "account0",
@@ -24,8 +29,9 @@ class TestLimits:
         )
         assert isinstance(resource, Limit)
 
-    def test_method_create_with_optional_params(self) -> None:
-        resource = self.client.limits.create(
+    @parametrize
+    def test_method_create_with_optional_params(self, client: Increase) -> None:
+        resource = client.limits.create(
             {
                 "metric": "volume",
                 "interval": "month",
@@ -35,32 +41,37 @@ class TestLimits:
         )
         assert isinstance(resource, Limit)
 
-    def test_method_retrieve(self) -> None:
-        resource = self.client.limits.retrieve(
+    @parametrize
+    def test_method_retrieve(self, client: Increase) -> None:
+        resource = client.limits.retrieve(
             "string",
         )
         assert isinstance(resource, Limit)
 
-    def test_method_update(self) -> None:
-        resource = self.client.limits.update(
-            "string",
-            {"status": "inactive"},
-        )
-        assert isinstance(resource, Limit)
-
-    def test_method_update_with_optional_params(self) -> None:
-        resource = self.client.limits.update(
+    @parametrize
+    def test_method_update(self, client: Increase) -> None:
+        resource = client.limits.update(
             "string",
             {"status": "inactive"},
         )
         assert isinstance(resource, Limit)
 
-    def test_method_list(self) -> None:
-        resource = self.client.limits.list()
+    @parametrize
+    def test_method_update_with_optional_params(self, client: Increase) -> None:
+        resource = client.limits.update(
+            "string",
+            {"status": "inactive"},
+        )
+        assert isinstance(resource, Limit)
+
+    @parametrize
+    def test_method_list(self, client: Increase) -> None:
+        resource = client.limits.list()
         assert isinstance(resource, SyncPage)
 
-    def test_method_list_with_optional_params(self) -> None:
-        resource = self.client.limits.list(
+    @parametrize
+    def test_method_list_with_optional_params(self, client: Increase) -> None:
+        resource = client.limits.list(
             {
                 "cursor": "string",
                 "limit": 0,
@@ -72,10 +83,13 @@ class TestLimits:
 
 
 class TestAsyncLimits:
-    client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+    strict_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+    loose_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=False)
+    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
 
-    async def test_method_create(self) -> None:
-        resource = await self.client.limits.create(
+    @parametrize
+    async def test_method_create(self, client: AsyncIncrease) -> None:
+        resource = await client.limits.create(
             {
                 "metric": "volume",
                 "model_id": "account0",
@@ -84,8 +98,9 @@ class TestAsyncLimits:
         )
         assert isinstance(resource, Limit)
 
-    async def test_method_create_with_optional_params(self) -> None:
-        resource = await self.client.limits.create(
+    @parametrize
+    async def test_method_create_with_optional_params(self, client: AsyncIncrease) -> None:
+        resource = await client.limits.create(
             {
                 "metric": "volume",
                 "interval": "month",
@@ -95,32 +110,37 @@ class TestAsyncLimits:
         )
         assert isinstance(resource, Limit)
 
-    async def test_method_retrieve(self) -> None:
-        resource = await self.client.limits.retrieve(
+    @parametrize
+    async def test_method_retrieve(self, client: AsyncIncrease) -> None:
+        resource = await client.limits.retrieve(
             "string",
         )
         assert isinstance(resource, Limit)
 
-    async def test_method_update(self) -> None:
-        resource = await self.client.limits.update(
-            "string",
-            {"status": "inactive"},
-        )
-        assert isinstance(resource, Limit)
-
-    async def test_method_update_with_optional_params(self) -> None:
-        resource = await self.client.limits.update(
+    @parametrize
+    async def test_method_update(self, client: AsyncIncrease) -> None:
+        resource = await client.limits.update(
             "string",
             {"status": "inactive"},
         )
         assert isinstance(resource, Limit)
 
-    async def test_method_list(self) -> None:
-        resource = await self.client.limits.list()
+    @parametrize
+    async def test_method_update_with_optional_params(self, client: AsyncIncrease) -> None:
+        resource = await client.limits.update(
+            "string",
+            {"status": "inactive"},
+        )
+        assert isinstance(resource, Limit)
+
+    @parametrize
+    async def test_method_list(self, client: AsyncIncrease) -> None:
+        resource = await client.limits.list()
         assert isinstance(resource, AsyncPage)
 
-    async def test_method_list_with_optional_params(self) -> None:
-        resource = await self.client.limits.list(
+    @parametrize
+    async def test_method_list_with_optional_params(self, client: AsyncIncrease) -> None:
+        resource = await client.limits.list(
             {
                 "cursor": "string",
                 "limit": 0,

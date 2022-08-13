@@ -3,6 +3,8 @@ from __future__ import annotations
 
 import os
 
+import pytest
+
 from increase import Increase, AsyncIncrease
 from increase.pagination import SyncPage, AsyncPage
 from increase.types.card_dispute import *
@@ -12,10 +14,13 @@ api_key = os.environ.get("API_KEY", "something1234")
 
 
 class TestCardDisputes:
-    client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+    strict_client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+    loose_client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=False)
+    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
 
-    def test_method_create(self) -> None:
-        resource = self.client.card_disputes.create(
+    @parametrize
+    def test_method_create(self, client: Increase) -> None:
+        resource = client.card_disputes.create(
             {
                 "disputed_transaction_id": "transaction_uyrp7fld2ium70oa7oi",
                 "explanation": "Unauthorized recurring transaction.",
@@ -23,8 +28,9 @@ class TestCardDisputes:
         )
         assert isinstance(resource, CardDispute)
 
-    def test_method_create_with_optional_params(self) -> None:
-        resource = self.client.card_disputes.create(
+    @parametrize
+    def test_method_create_with_optional_params(self, client: Increase) -> None:
+        resource = client.card_disputes.create(
             {
                 "disputed_transaction_id": "transaction_uyrp7fld2ium70oa7oi",
                 "explanation": "Unauthorized recurring transaction.",
@@ -32,18 +38,21 @@ class TestCardDisputes:
         )
         assert isinstance(resource, CardDispute)
 
-    def test_method_retrieve(self) -> None:
-        resource = self.client.card_disputes.retrieve(
+    @parametrize
+    def test_method_retrieve(self, client: Increase) -> None:
+        resource = client.card_disputes.retrieve(
             "string",
         )
         assert isinstance(resource, CardDispute)
 
-    def test_method_list(self) -> None:
-        resource = self.client.card_disputes.list()
+    @parametrize
+    def test_method_list(self, client: Increase) -> None:
+        resource = client.card_disputes.list()
         assert isinstance(resource, SyncPage)
 
-    def test_method_list_with_optional_params(self) -> None:
-        resource = self.client.card_disputes.list(
+    @parametrize
+    def test_method_list_with_optional_params(self, client: Increase) -> None:
+        resource = client.card_disputes.list(
             {
                 "cursor": "string",
                 "limit": 0,
@@ -60,10 +69,13 @@ class TestCardDisputes:
 
 
 class TestAsyncCardDisputes:
-    client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+    strict_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+    loose_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=False)
+    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
 
-    async def test_method_create(self) -> None:
-        resource = await self.client.card_disputes.create(
+    @parametrize
+    async def test_method_create(self, client: AsyncIncrease) -> None:
+        resource = await client.card_disputes.create(
             {
                 "disputed_transaction_id": "transaction_uyrp7fld2ium70oa7oi",
                 "explanation": "Unauthorized recurring transaction.",
@@ -71,8 +83,9 @@ class TestAsyncCardDisputes:
         )
         assert isinstance(resource, CardDispute)
 
-    async def test_method_create_with_optional_params(self) -> None:
-        resource = await self.client.card_disputes.create(
+    @parametrize
+    async def test_method_create_with_optional_params(self, client: AsyncIncrease) -> None:
+        resource = await client.card_disputes.create(
             {
                 "disputed_transaction_id": "transaction_uyrp7fld2ium70oa7oi",
                 "explanation": "Unauthorized recurring transaction.",
@@ -80,18 +93,21 @@ class TestAsyncCardDisputes:
         )
         assert isinstance(resource, CardDispute)
 
-    async def test_method_retrieve(self) -> None:
-        resource = await self.client.card_disputes.retrieve(
+    @parametrize
+    async def test_method_retrieve(self, client: AsyncIncrease) -> None:
+        resource = await client.card_disputes.retrieve(
             "string",
         )
         assert isinstance(resource, CardDispute)
 
-    async def test_method_list(self) -> None:
-        resource = await self.client.card_disputes.list()
+    @parametrize
+    async def test_method_list(self, client: AsyncIncrease) -> None:
+        resource = await client.card_disputes.list()
         assert isinstance(resource, AsyncPage)
 
-    async def test_method_list_with_optional_params(self) -> None:
-        resource = await self.client.card_disputes.list(
+    @parametrize
+    async def test_method_list_with_optional_params(self, client: AsyncIncrease) -> None:
+        resource = await client.card_disputes.list(
             {
                 "cursor": "string",
                 "limit": 0,

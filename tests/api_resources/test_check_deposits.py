@@ -3,6 +3,8 @@ from __future__ import annotations
 
 import os
 
+import pytest
+
 from increase import Increase, AsyncIncrease
 from increase.pagination import SyncPage, AsyncPage
 from increase.types.check_deposit import *
@@ -12,10 +14,13 @@ api_key = os.environ.get("API_KEY", "something1234")
 
 
 class TestCheckDeposits:
-    client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+    strict_client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+    loose_client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=False)
+    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
 
-    def test_method_create(self) -> None:
-        resource = self.client.check_deposits.create(
+    @parametrize
+    def test_method_create(self, client: Increase) -> None:
+        resource = client.check_deposits.create(
             {
                 "account_id": "account_in71c4amph0vgo2qllky",
                 "amount": 1000,
@@ -26,8 +31,9 @@ class TestCheckDeposits:
         )
         assert isinstance(resource, CheckDeposit)
 
-    def test_method_create_with_optional_params(self) -> None:
-        resource = self.client.check_deposits.create(
+    @parametrize
+    def test_method_create_with_optional_params(self, client: Increase) -> None:
+        resource = client.check_deposits.create(
             {
                 "account_id": "account_in71c4amph0vgo2qllky",
                 "amount": 1000,
@@ -38,18 +44,21 @@ class TestCheckDeposits:
         )
         assert isinstance(resource, CheckDeposit)
 
-    def test_method_retrieve(self) -> None:
-        resource = self.client.check_deposits.retrieve(
+    @parametrize
+    def test_method_retrieve(self, client: Increase) -> None:
+        resource = client.check_deposits.retrieve(
             "string",
         )
         assert isinstance(resource, CheckDeposit)
 
-    def test_method_list(self) -> None:
-        resource = self.client.check_deposits.list()
+    @parametrize
+    def test_method_list(self, client: Increase) -> None:
+        resource = client.check_deposits.list()
         assert isinstance(resource, SyncPage)
 
-    def test_method_list_with_optional_params(self) -> None:
-        resource = self.client.check_deposits.list(
+    @parametrize
+    def test_method_list_with_optional_params(self, client: Increase) -> None:
+        resource = client.check_deposits.list(
             {
                 "cursor": "string",
                 "limit": 0,
@@ -66,10 +75,13 @@ class TestCheckDeposits:
 
 
 class TestAsyncCheckDeposits:
-    client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+    strict_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+    loose_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=False)
+    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
 
-    async def test_method_create(self) -> None:
-        resource = await self.client.check_deposits.create(
+    @parametrize
+    async def test_method_create(self, client: AsyncIncrease) -> None:
+        resource = await client.check_deposits.create(
             {
                 "account_id": "account_in71c4amph0vgo2qllky",
                 "amount": 1000,
@@ -80,8 +92,9 @@ class TestAsyncCheckDeposits:
         )
         assert isinstance(resource, CheckDeposit)
 
-    async def test_method_create_with_optional_params(self) -> None:
-        resource = await self.client.check_deposits.create(
+    @parametrize
+    async def test_method_create_with_optional_params(self, client: AsyncIncrease) -> None:
+        resource = await client.check_deposits.create(
             {
                 "account_id": "account_in71c4amph0vgo2qllky",
                 "amount": 1000,
@@ -92,18 +105,21 @@ class TestAsyncCheckDeposits:
         )
         assert isinstance(resource, CheckDeposit)
 
-    async def test_method_retrieve(self) -> None:
-        resource = await self.client.check_deposits.retrieve(
+    @parametrize
+    async def test_method_retrieve(self, client: AsyncIncrease) -> None:
+        resource = await client.check_deposits.retrieve(
             "string",
         )
         assert isinstance(resource, CheckDeposit)
 
-    async def test_method_list(self) -> None:
-        resource = await self.client.check_deposits.list()
+    @parametrize
+    async def test_method_list(self, client: AsyncIncrease) -> None:
+        resource = await client.check_deposits.list()
         assert isinstance(resource, AsyncPage)
 
-    async def test_method_list_with_optional_params(self) -> None:
-        resource = await self.client.check_deposits.list(
+    @parametrize
+    async def test_method_list_with_optional_params(self, client: AsyncIncrease) -> None:
+        resource = await client.check_deposits.list(
             {
                 "cursor": "string",
                 "limit": 0,

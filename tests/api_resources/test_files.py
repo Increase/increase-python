@@ -14,11 +14,14 @@ api_key = os.environ.get("API_KEY", "something1234")
 
 
 class TestFiles:
-    client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+    strict_client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+    loose_client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=False)
+    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
 
     @pytest.mark.skip(reason="file upload tests are broken on the Prism mock server")
-    def test_method_create(self) -> None:
-        resource = self.client.files.create(
+    @parametrize
+    def test_method_create(self, client: Increase) -> None:
+        resource = client.files.create(
             {
                 "file": b"raw file contents",
                 "purpose": "check_image_front",
@@ -27,8 +30,9 @@ class TestFiles:
         assert isinstance(resource, File)
 
     @pytest.mark.skip(reason="file upload tests are broken on the Prism mock server")
-    def test_method_create_with_optional_params(self) -> None:
-        resource = self.client.files.create(
+    @parametrize
+    def test_method_create_with_optional_params(self, client: Increase) -> None:
+        resource = client.files.create(
             {
                 "file": b"raw file contents",
                 "description": "x",
@@ -37,18 +41,21 @@ class TestFiles:
         )
         assert isinstance(resource, File)
 
-    def test_method_retrieve(self) -> None:
-        resource = self.client.files.retrieve(
+    @parametrize
+    def test_method_retrieve(self, client: Increase) -> None:
+        resource = client.files.retrieve(
             "string",
         )
         assert isinstance(resource, File)
 
-    def test_method_list(self) -> None:
-        resource = self.client.files.list()
+    @parametrize
+    def test_method_list(self, client: Increase) -> None:
+        resource = client.files.list()
         assert isinstance(resource, SyncPage)
 
-    def test_method_list_with_optional_params(self) -> None:
-        resource = self.client.files.list(
+    @parametrize
+    def test_method_list_with_optional_params(self, client: Increase) -> None:
+        resource = client.files.list(
             {
                 "cursor": "string",
                 "limit": 0,
@@ -65,11 +72,14 @@ class TestFiles:
 
 
 class TestAsyncFiles:
-    client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+    strict_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+    loose_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=False)
+    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
 
     @pytest.mark.skip(reason="file upload tests are broken on the Prism mock server")
-    async def test_method_create(self) -> None:
-        resource = await self.client.files.create(
+    @parametrize
+    async def test_method_create(self, client: AsyncIncrease) -> None:
+        resource = await client.files.create(
             {
                 "file": b"raw file contents",
                 "purpose": "check_image_front",
@@ -78,8 +88,9 @@ class TestAsyncFiles:
         assert isinstance(resource, File)
 
     @pytest.mark.skip(reason="file upload tests are broken on the Prism mock server")
-    async def test_method_create_with_optional_params(self) -> None:
-        resource = await self.client.files.create(
+    @parametrize
+    async def test_method_create_with_optional_params(self, client: AsyncIncrease) -> None:
+        resource = await client.files.create(
             {
                 "file": b"raw file contents",
                 "description": "x",
@@ -88,18 +99,21 @@ class TestAsyncFiles:
         )
         assert isinstance(resource, File)
 
-    async def test_method_retrieve(self) -> None:
-        resource = await self.client.files.retrieve(
+    @parametrize
+    async def test_method_retrieve(self, client: AsyncIncrease) -> None:
+        resource = await client.files.retrieve(
             "string",
         )
         assert isinstance(resource, File)
 
-    async def test_method_list(self) -> None:
-        resource = await self.client.files.list()
+    @parametrize
+    async def test_method_list(self, client: AsyncIncrease) -> None:
+        resource = await client.files.list()
         assert isinstance(resource, AsyncPage)
 
-    async def test_method_list_with_optional_params(self) -> None:
-        resource = await self.client.files.list(
+    @parametrize
+    async def test_method_list_with_optional_params(self, client: AsyncIncrease) -> None:
+        resource = await client.files.list(
             {
                 "cursor": "string",
                 "limit": 0,
