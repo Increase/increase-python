@@ -131,8 +131,8 @@ class Increase(SyncAPIClient):
         return Querystring(nested_format="dots", array_format="comma")
 
     @property
-    def default_headers(self) -> Dict[str, str]:
-        return {**super().default_headers, "Authorization": f"Bearer {self.api_key}"}
+    def auth_headers(self) -> Dict[str, str]:
+        return {"Authorization": f"Bearer {self.api_key}"}
 
 
 class AsyncIncrease(AsyncAPIClient):
@@ -232,8 +232,8 @@ class AsyncIncrease(AsyncAPIClient):
         return Querystring(nested_format="dots", array_format="comma")
 
     @property
-    def default_headers(self) -> Dict[str, str]:
-        return {**super().default_headers, "Authorization": f"Bearer {self.api_key}"}
+    def auth_headers(self) -> Dict[str, str]:
+        return {"Authorization": f"Bearer {self.api_key}"}
 
 
 Client = Increase

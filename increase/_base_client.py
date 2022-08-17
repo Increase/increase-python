@@ -364,11 +364,16 @@ class BaseClient:
         return Querystring()
 
     @property
+    def auth_headers(self) -> Dict[str, str]:
+        return {}
+
+    @property
     def default_headers(self) -> Dict[str, str]:
         return {
             "Content-Type": "application/json",
             "User-Agent": self.user_agent,
             "X-Stainless-Client-User-Agent": self.platform_properties(),
+            **self.auth_headers,
         }
 
     @property
