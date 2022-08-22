@@ -29,7 +29,7 @@ increase = Increase(
 )
 
 account = increase.accounts.create({
-    "name": "Jane Doe",
+    "name": "My First Increase Account",
 })
 
 print(account.id)
@@ -54,7 +54,7 @@ increase = AsyncIncrease(
 
 async def main():
     account = await increase.accounts.create({
-        "name": "Jane Doe"
+        "name": "My First Increase Account"
     })
     print(account.id)
 
