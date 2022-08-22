@@ -6,7 +6,7 @@ from .._types import NOT_GIVEN, Headers, Timeout, NotGiven
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.routing_number import *
+from ..types.routing_number import RoutingNumber
 from ..types.routing_number_list_params import RoutingNumberListParams
 
 __all__ = ["RoutingNumbers", "AsyncRoutingNumbers"]

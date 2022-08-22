@@ -6,7 +6,7 @@ from .._types import NOT_GIVEN, Query, Headers, Timeout, NotGiven
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.account_transfer import *
+from ..types.account_transfer import AccountTransfer
 from ..types.account_transfer_list_params import AccountTransferListParams
 from ..types.account_transfer_create_params import AccountTransferCreateParams
 

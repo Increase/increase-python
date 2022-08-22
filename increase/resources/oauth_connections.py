@@ -6,7 +6,7 @@ from .._types import NOT_GIVEN, Query, Headers, Timeout, NotGiven
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.oauth_connection import *
+from ..types.oauth_connection import OauthConnection
 from ..types.oauth_connection_list_params import OauthConnectionListParams
 
 __all__ = ["OauthConnections", "AsyncOauthConnections"]

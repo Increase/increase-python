@@ -6,7 +6,7 @@ from .._types import NOT_GIVEN, Query, Headers, Timeout, NotGiven
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.pending_transaction import *
+from ..types.pending_transaction import PendingTransaction
 from ..types.pending_transaction_list_params import PendingTransactionListParams
 
 __all__ = ["PendingTransactions", "AsyncPendingTransactions"]

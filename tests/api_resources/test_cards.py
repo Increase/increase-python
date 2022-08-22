@@ -7,8 +7,8 @@ import pytest
 
 from increase import Increase, AsyncIncrease
 from increase.pagination import SyncPage, AsyncPage
-from increase.types.card import *
-from increase.types.card_detail import *
+from increase.types.card import Card
+from increase.types.card_detail import CardDetails
 
 base_url = os.environ.get("API_BASE_URL", "http://127.0.0.1:4010")
 api_key = os.environ.get("API_KEY", "something1234")

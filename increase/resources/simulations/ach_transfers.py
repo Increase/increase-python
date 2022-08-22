@@ -5,8 +5,8 @@ from typing import Union, Optional
 from ..._types import NOT_GIVEN, Query, Headers, Timeout, NotGiven
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._base_client import make_request_options
-from ...types.simulations.ach_tranfer import *
-from ...types.simulations.ach_transfer_simulation import *
+from ...types.simulations.ach_tranfer import ACHTranfer
+from ...types.simulations.ach_transfer_simulation import ACHTransferSimulation
 from ...types.simulations.ach_transfer_create_inbound_params import (
     ACHTransferCreateInboundParams,
 )

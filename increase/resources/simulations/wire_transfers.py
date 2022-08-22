@@ -5,7 +5,7 @@ from typing import Union, Optional
 from ..._types import NOT_GIVEN, Query, Headers, Timeout, NotGiven
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._base_client import make_request_options
-from ...types.simulations.wire_transfer_simulation import *
+from ...types.simulations.wire_transfer_simulation import WireTransferSimulation
 from ...types.simulations.wire_transfer_create_inbound_params import (
     WireTransferCreateInboundParams,
 )

@@ -5,7 +5,7 @@ from typing import Union, Optional
 from ..._types import NOT_GIVEN, Query, Headers, Timeout, NotGiven
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._base_client import make_request_options
-from ...types.simulations.account_transfer import *
+from ...types.simulations.account_transfer import AccountTransfer
 
 __all__ = ["AccountTransfers", "AsyncAccountTransfers"]
 

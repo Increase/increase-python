@@ -6,7 +6,7 @@ from .._types import NOT_GIVEN, Query, Headers, Timeout, NotGiven
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.ach_prenotification import *
+from ..types.ach_prenotification import ACHPrenotification
 from ..types.ach_prenotification_list_params import ACHPrenotificationListParams
 from ..types.ach_prenotification_create_params import ACHPrenotificationCreateParams
 

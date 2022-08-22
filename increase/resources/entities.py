@@ -6,7 +6,7 @@ from .._types import NOT_GIVEN, Query, Headers, Timeout, NotGiven
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.entity import *
+from ..types.entity import Entity
 from ..types.entity_list_params import EntityListParams
 from ..types.entity_create_person_params import EntityCreatePersonParams
 from ..types.entity_create_corporation_params import EntityCreateCorporationParams

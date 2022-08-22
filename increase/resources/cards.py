@@ -5,9 +5,9 @@ from typing import Union, Optional
 from .._types import NOT_GIVEN, Query, Headers, Timeout, NotGiven
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
-from ..types.card import *
+from ..types.card import Card
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.card_detail import *
+from ..types.card_detail import CardDetails
 from ..types.card_list_params import CardListParams
 from ..types.card_create_params import CardCreateParams
 from ..types.card_update_params import CardUpdateParams

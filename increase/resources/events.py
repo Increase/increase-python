@@ -5,7 +5,7 @@ from typing import Union, Optional
 from .._types import NOT_GIVEN, Query, Headers, Timeout, NotGiven
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
-from ..types.event import *
+from ..types.event import Event
 from .._base_client import AsyncPaginator, make_request_options
 from ..types.event_list_params import EventListParams
 

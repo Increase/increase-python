@@ -5,7 +5,7 @@ from typing import Any, Dict, Union, Optional, cast
 from .._types import NOT_GIVEN, Query, Headers, Timeout, NotGiven
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
-from ..types.file import *
+from ..types.file import File
 from .._base_client import AsyncPaginator, make_request_options
 from ..types.file_list_params import FileListParams
 from ..types.file_create_params import FileCreateParams
