@@ -1,6 +1,8 @@
 # File generated from our OpenAPI spec by Stainless.
 
-from typing import Union, Optional
+from __future__ import annotations
+
+from typing import TYPE_CHECKING, Union, Optional
 
 from ..._types import NOT_GIVEN, Query, Headers, Timeout, NotGiven
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -10,6 +12,9 @@ from ...types.simulations.ach_transfer_simulation import ACHTransferSimulation
 from ...types.simulations.ach_transfer_create_inbound_params import (
     ACHTransferCreateInboundParams,
 )
+
+if TYPE_CHECKING:
+    pass
 
 __all__ = ["ACHTransfers", "AsyncACHTransfers"]
 

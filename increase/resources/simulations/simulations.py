@@ -1,14 +1,19 @@
 # File generated from our OpenAPI spec by Stainless.
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 
 from .cards import Cards, AsyncCards
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from .ach_transfers import ACHTransfers, AsyncACHTransfers
-from ..._base_client import SyncAPIClient, AsyncAPIClient
 from .check_deposits import CheckDeposits, AsyncCheckDeposits
 from .wire_transfers import WireTransfers, AsyncWireTransfers
 from .check_transfers import CheckTransfers, AsyncCheckTransfers
 from .account_transfers import AccountTransfers, AsyncAccountTransfers
+
+if TYPE_CHECKING:
+    from ..._client import Increase, AsyncIncrease
 
 __all__ = ["Simulations", "AsyncSimulations"]
 
@@ -21,7 +26,7 @@ class Simulations(SyncAPIResource):
     wire_transfers: WireTransfers
     cards: Cards
 
-    def __init__(self, client: SyncAPIClient) -> None:
+    def __init__(self, client: Increase) -> None:
         super().__init__(client)
         self.account_transfers = AccountTransfers(client)
         self.ach_transfers = ACHTransfers(client)
@@ -39,7 +44,7 @@ class AsyncSimulations(AsyncAPIResource):
     wire_transfers: AsyncWireTransfers
     cards: AsyncCards
 
-    def __init__(self, client: AsyncAPIClient) -> None:
+    def __init__(self, client: AsyncIncrease) -> None:
         super().__init__(client)
         self.account_transfers = AsyncAccountTransfers(client)
         self.ach_transfers = AsyncACHTransfers(client)

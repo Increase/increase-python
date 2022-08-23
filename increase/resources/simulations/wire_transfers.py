@@ -1,6 +1,8 @@
 # File generated from our OpenAPI spec by Stainless.
 
-from typing import Union, Optional
+from __future__ import annotations
+
+from typing import TYPE_CHECKING, Union, Optional
 
 from ..._types import NOT_GIVEN, Query, Headers, Timeout, NotGiven
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -9,6 +11,9 @@ from ...types.simulations.wire_transfer_simulation import WireTransferSimulation
 from ...types.simulations.wire_transfer_create_inbound_params import (
     WireTransferCreateInboundParams,
 )
+
+if TYPE_CHECKING:
+    pass
 
 __all__ = ["WireTransfers", "AsyncWireTransfers"]
 

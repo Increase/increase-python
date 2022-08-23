@@ -1,6 +1,8 @@
 # File generated from our OpenAPI spec by Stainless.
 
-from typing import Union, Optional
+from __future__ import annotations
+
+from typing import TYPE_CHECKING, Union, Optional
 
 from ..._types import NOT_GIVEN, Query, Headers, Timeout, NotGiven
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -11,6 +13,9 @@ from ...types.simulations.card_settlement_params import CardSettlementParams
 from ...types.simulations.card_authorization_simulation import (
     CardAuthorizationSimulation,
 )
+
+if TYPE_CHECKING:
+    pass
 
 __all__ = ["Cards", "AsyncCards"]
 

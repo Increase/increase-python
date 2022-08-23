@@ -1,12 +1,15 @@
 from __future__ import annotations
 
-from ._base_client import SyncAPIClient, AsyncAPIClient
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from ._client import Increase, AsyncIncrease
 
 
 class SyncAPIResource:
-    _client: SyncAPIClient
+    _client: Increase
 
-    def __init__(self, client: SyncAPIClient):
+    def __init__(self, client: Increase) -> None:
         self._client = client
         self._get = client.get
         self._post = client.post
@@ -17,9 +20,9 @@ class SyncAPIResource:
 
 
 class AsyncAPIResource:
-    _client: AsyncAPIClient
+    _client: AsyncIncrease
 
-    def __init__(self, client: AsyncAPIClient):
+    def __init__(self, client: AsyncIncrease) -> None:
         self._client = client
         self._get = client.get
         self._post = client.post

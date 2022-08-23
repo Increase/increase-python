@@ -1,5 +1,7 @@
 # File generated from our OpenAPI spec by Stainless.
 
+from __future__ import annotations
+
 from typing import Union, Optional
 
 from .._types import NOT_GIVEN, Query, Headers, Timeout, NotGiven
