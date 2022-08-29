@@ -6,7 +6,7 @@ import os
 import pytest
 
 from increase import Increase, AsyncIncrease
-from increase.types.simulations.ach_tranfer import ACHTranfer
+from increase.types.simulations.ach_transfer import ACHTransfer
 from increase.types.simulations.ach_transfer_simulation import ACHTransferSimulation
 
 base_url = os.environ.get("API_BASE_URL", "http://127.0.0.1:4010")
@@ -44,7 +44,7 @@ class TestACHTransfers:
         resource = client.simulations.ach_transfers.return_(
             "string",
         )
-        assert isinstance(resource, ACHTranfer)
+        assert isinstance(resource, ACHTransfer)
 
     @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
@@ -52,7 +52,7 @@ class TestACHTransfers:
         resource = client.simulations.ach_transfers.submit(
             "string",
         )
-        assert isinstance(resource, ACHTranfer)
+        assert isinstance(resource, ACHTransfer)
 
 
 class TestAsyncACHTransfers:
@@ -86,7 +86,7 @@ class TestAsyncACHTransfers:
         resource = await client.simulations.ach_transfers.return_(
             "string",
         )
-        assert isinstance(resource, ACHTranfer)
+        assert isinstance(resource, ACHTransfer)
 
     @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
@@ -94,4 +94,4 @@ class TestAsyncACHTransfers:
         resource = await client.simulations.ach_transfers.submit(
             "string",
         )
-        assert isinstance(resource, ACHTranfer)
+        assert isinstance(resource, ACHTransfer)

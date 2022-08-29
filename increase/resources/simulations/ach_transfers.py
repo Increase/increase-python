@@ -7,7 +7,7 @@ from typing import TYPE_CHECKING, Union, Optional
 from ..._types import NOT_GIVEN, Query, Headers, Timeout, NotGiven
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._base_client import make_request_options
-from ...types.simulations.ach_tranfer import ACHTranfer
+from ...types.simulations.ach_transfer import ACHTransfer
 from ...types.simulations.ach_transfer_simulation import ACHTransferSimulation
 from ...types.simulations.ach_transfer_create_inbound_params import (
     ACHTransferCreateInboundParams,
@@ -51,7 +51,7 @@ class ACHTransfers(SyncAPIResource):
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         query: Optional[Query] = None,
-    ) -> ACHTranfer:
+    ) -> ACHTransfer:
         """
         Simulates the return of an ACH Transfer by the Federal Reserve due to error
         conditions. This will also create a Transaction to account for the returned
@@ -61,7 +61,7 @@ class ACHTransfers(SyncAPIResource):
         return self._post(
             f"/simulations/ach_transfers/{ach_transfer_id}/return",
             options=options,
-            cast_to=ACHTranfer,
+            cast_to=ACHTransfer,
         )
 
     def submit(
@@ -72,7 +72,7 @@ class ACHTransfers(SyncAPIResource):
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         query: Optional[Query] = None,
-    ) -> ACHTranfer:
+    ) -> ACHTransfer:
         """Simulates the submission of an ACH Transfer to the Federal Reserve.
 
         This transfer must first have a `status` of `pending_approval` or
@@ -82,7 +82,7 @@ class ACHTransfers(SyncAPIResource):
         return self._post(
             f"/simulations/ach_transfers/{ach_transfer_id}/submit",
             options=options,
-            cast_to=ACHTranfer,
+            cast_to=ACHTransfer,
         )
 
 
@@ -118,7 +118,7 @@ class AsyncACHTransfers(AsyncAPIResource):
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         query: Optional[Query] = None,
-    ) -> ACHTranfer:
+    ) -> ACHTransfer:
         """
         Simulates the return of an ACH Transfer by the Federal Reserve due to error
         conditions. This will also create a Transaction to account for the returned
@@ -128,7 +128,7 @@ class AsyncACHTransfers(AsyncAPIResource):
         return await self._post(
             f"/simulations/ach_transfers/{ach_transfer_id}/return",
             options=options,
-            cast_to=ACHTranfer,
+            cast_to=ACHTransfer,
         )
 
     async def submit(
@@ -139,7 +139,7 @@ class AsyncACHTransfers(AsyncAPIResource):
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         query: Optional[Query] = None,
-    ) -> ACHTranfer:
+    ) -> ACHTransfer:
         """Simulates the submission of an ACH Transfer to the Federal Reserve.
 
         This transfer must first have a `status` of `pending_approval` or
@@ -149,5 +149,5 @@ class AsyncACHTransfers(AsyncAPIResource):
         return await self._post(
             f"/simulations/ach_transfers/{ach_transfer_id}/submit",
             options=options,
-            cast_to=ACHTranfer,
+            cast_to=ACHTransfer,
         )

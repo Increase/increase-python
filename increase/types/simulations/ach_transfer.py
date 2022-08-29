@@ -5,9 +5,9 @@ from typing_extensions import Literal
 
 from pydantic import Field
 
-from .._models import BaseModel
+from ..._models import BaseModel
 
-__all__ = ["Approval", "Cancellation", "NotificationOfChange", "Return", "Submission", "ACHTranfer"]
+__all__ = ["Approval", "Cancellation", "NotificationOfChange", "Return", "Submission", "ACHTransfer"]
 
 
 class Approval(BaseModel):
@@ -85,7 +85,7 @@ class Submission(BaseModel):
     """The trace number for the submission."""
 
 
-class ACHTranfer(BaseModel):
+class ACHTransfer(BaseModel):
     account_id: str
     """The Account to which the transfer belongs."""
 

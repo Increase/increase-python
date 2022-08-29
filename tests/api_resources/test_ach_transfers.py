@@ -7,7 +7,7 @@ import pytest
 
 from increase import Increase, AsyncIncrease
 from increase.pagination import SyncPage, AsyncPage
-from increase.types.ach_tranfer import ACHTranfer
+from increase.types.ach_transfer import ACHTransfer
 
 base_url = os.environ.get("API_BASE_URL", "http://127.0.0.1:4010")
 api_key = os.environ.get("API_KEY", "something1234")
@@ -29,7 +29,7 @@ class TestACHTransfers:
                 "statement_descriptor": "New ACH transfer",
             },
         )
-        assert isinstance(resource, ACHTranfer)
+        assert isinstance(resource, ACHTransfer)
 
     @parametrize
     def test_method_create_with_optional_params(self, client: Increase) -> None:
@@ -52,14 +52,14 @@ class TestACHTransfers:
                 "statement_descriptor": "New ACH transfer",
             },
         )
-        assert isinstance(resource, ACHTranfer)
+        assert isinstance(resource, ACHTransfer)
 
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         resource = client.ach_transfers.retrieve(
             "string",
         )
-        assert isinstance(resource, ACHTranfer)
+        assert isinstance(resource, ACHTransfer)
 
     @parametrize
     def test_method_list(self, client: Increase) -> None:
@@ -100,7 +100,7 @@ class TestAsyncACHTransfers:
                 "statement_descriptor": "New ACH transfer",
             },
         )
-        assert isinstance(resource, ACHTranfer)
+        assert isinstance(resource, ACHTransfer)
 
     @parametrize
     async def test_method_create_with_optional_params(self, client: AsyncIncrease) -> None:
@@ -123,14 +123,14 @@ class TestAsyncACHTransfers:
                 "statement_descriptor": "New ACH transfer",
             },
         )
-        assert isinstance(resource, ACHTranfer)
+        assert isinstance(resource, ACHTransfer)
 
     @parametrize
     async def test_method_retrieve(self, client: AsyncIncrease) -> None:
         resource = await client.ach_transfers.retrieve(
             "string",
         )
-        assert isinstance(resource, ACHTranfer)
+        assert isinstance(resource, ACHTransfer)
 
     @parametrize
     async def test_method_list(self, client: AsyncIncrease) -> None:

@@ -1,7 +1,7 @@
 # File generated from our OpenAPI spec by Stainless.
 
-from .ach_tranfer import ACHTranfer as ACHTranfer
 from .transaction import Transaction as Transaction
+from .ach_transfer import ACHTransfer as ACHTransfer
 from .check_deposit import CheckDeposit as CheckDeposit
 from .check_transfer import CheckTransfer as CheckTransfer
 from .account_transfer import AccountTransfer as AccountTransfer

@@ -8,7 +8,7 @@ from .._types import NOT_GIVEN, Query, Headers, Timeout, NotGiven
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.ach_tranfer import ACHTranfer
+from ..types.ach_transfer import ACHTransfer
 from ..types.ach_transfer_list_params import ACHTransferListParams
 from ..types.ach_transfer_create_params import ACHTransferCreateParams
 
@@ -24,13 +24,13 @@ class ACHTransfers(SyncAPIResource):
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         query: Optional[Query] = None,
-    ) -> ACHTranfer:
+    ) -> ACHTransfer:
         options = make_request_options(headers, max_retries, timeout, query)
         return self._post(
             "/ach_transfers",
             body=body,
             options=options,
-            cast_to=ACHTranfer,
+            cast_to=ACHTransfer,
         )
 
     def retrieve(
@@ -41,12 +41,12 @@ class ACHTransfers(SyncAPIResource):
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         query: Optional[Query] = None,
-    ) -> ACHTranfer:
+    ) -> ACHTransfer:
         options = make_request_options(headers, max_retries, timeout, query)
         return self._get(
             f"/ach_transfers/{ach_transfer_id}",
             options=options,
-            cast_to=ACHTranfer,
+            cast_to=ACHTransfer,
         )
 
     def list(
@@ -56,13 +56,13 @@ class ACHTransfers(SyncAPIResource):
         headers: Union[Headers, NotGiven] = NOT_GIVEN,
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
-    ) -> SyncPage[ACHTranfer]:
+    ) -> SyncPage[ACHTransfer]:
         options = make_request_options(headers, max_retries, timeout, query)
         return self._get_api_list(
             "/ach_transfers",
-            page=SyncPage[ACHTranfer],
+            page=SyncPage[ACHTransfer],
             options=options,
-            model=ACHTranfer,
+            model=ACHTransfer,
         )
 
 
@@ -75,13 +75,13 @@ class AsyncACHTransfers(AsyncAPIResource):
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         query: Optional[Query] = None,
-    ) -> ACHTranfer:
+    ) -> ACHTransfer:
         options = make_request_options(headers, max_retries, timeout, query)
         return await self._post(
             "/ach_transfers",
             body=body,
             options=options,
-            cast_to=ACHTranfer,
+            cast_to=ACHTransfer,
         )
 
     async def retrieve(
@@ -92,12 +92,12 @@ class AsyncACHTransfers(AsyncAPIResource):
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         query: Optional[Query] = None,
-    ) -> ACHTranfer:
+    ) -> ACHTransfer:
         options = make_request_options(headers, max_retries, timeout, query)
         return await self._get(
             f"/ach_transfers/{ach_transfer_id}",
             options=options,
-            cast_to=ACHTranfer,
+            cast_to=ACHTransfer,
         )
 
     def list(
@@ -107,11 +107,11 @@ class AsyncACHTransfers(AsyncAPIResource):
         headers: Union[Headers, NotGiven] = NOT_GIVEN,
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
-    ) -> AsyncPaginator[ACHTranfer, AsyncPage[ACHTranfer]]:
+    ) -> AsyncPaginator[ACHTransfer, AsyncPage[ACHTransfer]]:
         options = make_request_options(headers, max_retries, timeout, query)
         return self._get_api_list(
             "/ach_transfers",
-            page=AsyncPage[ACHTranfer],
+            page=AsyncPage[ACHTransfer],
             options=options,
-            model=ACHTranfer,
+            model=ACHTransfer,
         )
