@@ -48,7 +48,8 @@ typeCheckingMode = "strict"
 pythonVersion = "3.7"
 
 exclude = [
-    "_dev"
+    "_dev",
+    ".venv"
 ]
 reportImportCycles = false
 
