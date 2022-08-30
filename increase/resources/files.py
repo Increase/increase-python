@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 
-from typing import Any, Dict, Union, Optional, cast
+from typing import Union, Optional
 
 from .._types import NOT_GIVEN, Query, Headers, Timeout, NotGiven
+from .._utils import extract_files
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from ..types.file import File
@@ -30,20 +31,21 @@ class Files(SyncAPIResource):
         `multipart/form-data`. The request should contain the file you would like to
         upload, as well as the parameters for creating a file.
         """
-        # It should be noted that the actual Content-Type header that will be
-        # sent to the server will contain a `boundary` parameter, e.g.
-        # multipart/form-data; boundary=---abc--
-        headers = {"Content-Type": "multipart/form-data", **(headers or {})}
+        # Make a copy of the input so that our internal mutations (extracting files)
+        # don't incidentally mutate the user's dictionary.
+        body = body.copy()
+        files = extract_files(body, paths=[["file"]])
+        if files:
+            # It should be noted that the actual Content-Type header that will be
+            # sent to the server will contain a `boundary` parameter, e.g.
+            # multipart/form-data; boundary=---abc--
+            headers = {"Content-Type": "multipart/form-data", **(headers or {})}
 
-        # This cast is required because otherwise mypy will complain
-        # about a Required key being deleted from a TypedDict.
-        files = {"file": cast(Dict[str, object], body).pop("file")}
         options = make_request_options(headers, max_retries, timeout, query)
-        # The cast to Any is required because of https://github.com/microsoft/pyright/issues/3526
         return self._post(
             "/files",
             body=body,
-            files=cast(Any, files),
+            files=files,
             options=options,
             cast_to=File,
         )
@@ -96,20 +98,21 @@ class AsyncFiles(AsyncAPIResource):
         `multipart/form-data`. The request should contain the file you would like to
         upload, as well as the parameters for creating a file.
         """
-        # It should be noted that the actual Content-Type header that will be
-        # sent to the server will contain a `boundary` parameter, e.g.
-        # multipart/form-data; boundary=---abc--
-        headers = {"Content-Type": "multipart/form-data", **(headers or {})}
+        # Make a copy of the input so that our internal mutations (extracting files)
+        # don't incidentally mutate the user's dictionary.
+        body = body.copy()
+        files = extract_files(body, paths=[["file"]])
+        if files:
+            # It should be noted that the actual Content-Type header that will be
+            # sent to the server will contain a `boundary` parameter, e.g.
+            # multipart/form-data; boundary=---abc--
+            headers = {"Content-Type": "multipart/form-data", **(headers or {})}
 
-        # This cast is required because otherwise mypy will complain
-        # about a Required key being deleted from a TypedDict.
-        files = {"file": cast(Dict[str, object], body).pop("file")}
         options = make_request_options(headers, max_retries, timeout, query)
-        # The cast to Any is required because of https://github.com/microsoft/pyright/issues/3526
         return await self._post(
             "/files",
             body=body,
-            files=cast(Any, files),
+            files=files,
             options=options,
             cast_to=File,
         )
