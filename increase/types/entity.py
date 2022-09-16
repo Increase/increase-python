@@ -55,6 +55,9 @@ class EntitySetupSubmissionCorporationBeneficialOwners(BaseModel):
     submitted_address_zip: str
     """The ZIP code of the person's address."""
 
+    submitted_company_title: Optional[str]
+    """This person's role or title within the entity."""
+
     submitted_date_of_birth: str
     """The person's date of birth in YYYY-MM-DD format."""
 

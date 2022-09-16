@@ -7,6 +7,10 @@ from .check_deposits import CheckDeposits, AsyncCheckDeposits
 from .wire_transfers import WireTransfers, AsyncWireTransfers
 from .check_transfers import CheckTransfers, AsyncCheckTransfers
 from .account_transfers import AccountTransfers, AsyncAccountTransfers
+from .real_time_payments_transfers import (
+    RealTimePaymentsTransfers,
+    AsyncRealTimePaymentsTransfers,
+)
 
 __all__ = [
     "AccountTransfers",
@@ -21,6 +25,8 @@ __all__ = [
     "AsyncWireTransfers",
     "Cards",
     "AsyncCards",
+    "RealTimePaymentsTransfers",
+    "AsyncRealTimePaymentsTransfers",
     "Simulations",
     "AsyncSimulations",
 ]

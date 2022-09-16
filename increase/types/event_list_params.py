@@ -61,6 +61,7 @@ _CategoryReservedKeywords = TypedDict(
                 "declined_transaction.created",
                 "entity.created",
                 "entity.updated",
+                "external_account.created",
                 "file.created",
                 "group.updated",
                 "group.heartbeat",

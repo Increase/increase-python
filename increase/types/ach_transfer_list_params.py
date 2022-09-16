@@ -42,6 +42,9 @@ class ACHTransferListParams(TypedDict, total=False):
     cursor: str
     """Return the page of entries after this one."""
 
+    external_account_id: str
+    """Filter ACH Transfers to those made to the specified External Account."""
+
     limit: int
     """Limit the size of the list that is returned.
 

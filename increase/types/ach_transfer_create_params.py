@@ -11,9 +11,6 @@ class ACHTransferCreateParams(TypedDict, total=False):
     account_id: Required[str]
     """The identifier for the account that will send the transfer."""
 
-    account_number: Required[str]
-    """The account number for the destination account."""
-
     amount: Required[int]
     """The transfer amount in cents.
 
@@ -22,17 +19,14 @@ class ACHTransferCreateParams(TypedDict, total=False):
     receiving account.
     """
 
-    routing_number: Required[str]
-    """
-    The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-    destination account.
-    """
-
     statement_descriptor: Required[str]
     """The description you choose to give the transfer.
 
     This will be shown to the recipient.
     """
+
+    account_number: str
+    """The account number for the destination account."""
 
     addendum: str
     """Additional information that will be sent to the recipient."""
@@ -55,6 +49,13 @@ class ACHTransferCreateParams(TypedDict, total=False):
     [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
     """
 
+    external_account_id: str
+    """The ID of an External Account to initiate a transfer to.
+
+    If this parameter is provided, `account_number`, `routing_number`, and `funding`
+    must be absent.
+    """
+
     funding: Literal["checking", "savings"]
     """The type of the account to which the transfer will be sent."""
 
@@ -65,6 +66,12 @@ class ACHTransferCreateParams(TypedDict, total=False):
     """The name of the transfer recipient.
 
     This value is information and not verified by the recipient's bank.
+    """
+
+    routing_number: str
+    """
+    The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
+    destination account.
     """
 
     standard_entry_class_code: Literal[

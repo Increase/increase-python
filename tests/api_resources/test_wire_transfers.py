@@ -23,8 +23,6 @@ class TestWireTransfers:
         resource = client.wire_transfers.create(
             {
                 "account_id": "account_in71c4amph0vgo2qllky",
-                "account_number": "987654321",
-                "routing_number": "101050001",
                 "amount": 100,
                 "message_to_recipient": "New account transfer",
             },
@@ -38,6 +36,7 @@ class TestWireTransfers:
                 "account_id": "account_in71c4amph0vgo2qllky",
                 "account_number": "987654321",
                 "routing_number": "101050001",
+                "external_account_id": "string",
                 "amount": 100,
                 "message_to_recipient": "New account transfer",
                 "beneficiary_name": "Ian Crease",
@@ -67,6 +66,7 @@ class TestWireTransfers:
                 "cursor": "string",
                 "limit": 0,
                 "account_id": "string",
+                "external_account_id": "string",
                 "created_at": {
                     "after": "2019-12-27T18:11:19.117Z",
                     "before": "2019-12-27T18:11:19.117Z",
@@ -104,8 +104,6 @@ class TestAsyncWireTransfers:
         resource = await client.wire_transfers.create(
             {
                 "account_id": "account_in71c4amph0vgo2qllky",
-                "account_number": "987654321",
-                "routing_number": "101050001",
                 "amount": 100,
                 "message_to_recipient": "New account transfer",
             },
@@ -119,6 +117,7 @@ class TestAsyncWireTransfers:
                 "account_id": "account_in71c4amph0vgo2qllky",
                 "account_number": "987654321",
                 "routing_number": "101050001",
+                "external_account_id": "string",
                 "amount": 100,
                 "message_to_recipient": "New account transfer",
                 "beneficiary_name": "Ian Crease",
@@ -148,6 +147,7 @@ class TestAsyncWireTransfers:
                 "cursor": "string",
                 "limit": 0,
                 "account_id": "string",
+                "external_account_id": "string",
                 "created_at": {
                     "after": "2019-12-27T18:11:19.117Z",
                     "before": "2019-12-27T18:11:19.117Z",

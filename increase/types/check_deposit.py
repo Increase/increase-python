@@ -54,10 +54,11 @@ class DepositReturn(BaseModel):
         "duplicate_submission",
         "insufficient_funds",
         "no_account",
+        "not_authorized",
+        "stale_dated",
+        "unknown_reason",
         "unmatched_details",
         "unreadable_image",
-        "unknown_reason",
-        "not_authorized",
     ]
 
     returned_at: str

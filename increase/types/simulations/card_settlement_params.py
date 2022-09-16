@@ -16,3 +16,9 @@ class CardSettlementParams(TypedDict, total=False):
     The identifier of the Pending Transaction for the Card Authorization you wish to
     settle.
     """
+
+    amount: int
+    """The amount to be settled.
+
+    This defaults to the amount of the Pending Transaction being settled.
+    """

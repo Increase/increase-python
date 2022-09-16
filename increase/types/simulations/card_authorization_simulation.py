@@ -19,6 +19,7 @@ __all__ = [
     "DeclinedTransactionSourceACHDecline",
     "DeclinedTransactionSourceCardDecline",
     "DeclinedTransactionSourceCheckDecline",
+    "DeclinedTransactionSourceInboundRealTimePaymentsTransferDecline",
     "DeclinedTransactionSourceInternationalACHDecline",
     "DeclinedTransactionSourceCardRouteDecline",
     "DeclinedTransactionSource",
@@ -412,6 +413,48 @@ class DeclinedTransactionSourceCheckDecline(BaseModel):
     """Why the check was declined."""
 
 
+class DeclinedTransactionSourceInboundRealTimePaymentsTransferDecline(BaseModel):
+    amount: int
+    """The declined amount in the minor unit of the destination account currency.
+
+    For dollars, for example, this is cents.
+    """
+
+    creditor_name: str
+    """The name the sender of the transfer specified as the recipient of the transfer."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined
+    transfer's currency. This will always be "USD" for a Real Time Payments
+    transfer.
+    """
+
+    debtor_account_number: str
+    """The account number of the account that sent the transfer."""
+
+    debtor_name: str
+    """The name provided by the sender of the transfer."""
+
+    debtor_routing_number: str
+    """The routing number of the account that sent the transfer."""
+
+    reason: Literal[
+        "account_number_canceled",
+        "account_number_disabled",
+        "group_locked",
+        "entity_not_active",
+        "real_time_payments_not_enabled",
+    ]
+    """Why the transfer was declined."""
+
+    remittance_information: Optional[str]
+    """Additional information included with the transfer."""
+
+    transaction_identification: str
+    """The Real Time Payments network identification of the declined transfer."""
+
+
 class DeclinedTransactionSourceInternationalACHDecline(BaseModel):
     amount: int
     """The declined amount in the minor unit of the destination account currency.
@@ -558,6 +601,15 @@ class DeclinedTransactionSource(BaseModel):
 
     This field will be present in the JSON response if and only if `category` is
     equal to `check_decline`.
+    """
+
+    inbound_real_time_payments_transfer_decline: Optional[
+        DeclinedTransactionSourceInboundRealTimePaymentsTransferDecline
+    ]
+    """A Inbound Real Time Payments Transfer Decline object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `inbound_real_time_payments_transfer_decline`.
     """
 
     international_ach_decline: Optional[DeclinedTransactionSourceInternationalACHDecline]

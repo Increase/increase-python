@@ -25,6 +25,7 @@ __all__ = [
     "SourceInboundACHTransfer",
     "SourceInboundCheck",
     "SourceInboundInternationalACHTransfer",
+    "SourceInboundRealTimePaymentsTransferConfirmation",
     "SourceInboundWireDrawdownPaymentReversal",
     "SourceInboundWireDrawdownPayment",
     "SourceInboundWireReversal",
@@ -214,6 +215,9 @@ class SourceCardSettlement(BaseModel):
 
     merchant_state: Optional[str]
 
+    pending_transaction_id: Optional[str]
+    """The identifier of the Pending Transaction associated with this Transaction."""
+
     type: Literal["card_settlement"]
     """A constant representing the object's type.
 
@@ -259,10 +263,11 @@ class SourceCheckDepositReturn(BaseModel):
         "duplicate_submission",
         "insufficient_funds",
         "no_account",
+        "not_authorized",
+        "stale_dated",
+        "unknown_reason",
         "unmatched_details",
         "unreadable_image",
-        "unknown_reason",
-        "not_authorized",
     ]
 
     returned_at: str
@@ -481,6 +486,38 @@ class SourceInboundInternationalACHTransfer(BaseModel):
     receiving_depository_financial_institution_name: str
 
     trace_number: str
+
+
+class SourceInboundRealTimePaymentsTransferConfirmation(BaseModel):
+    amount: int
+    """The amount in the minor unit of the transfer's currency.
+
+    For dollars, for example, this is cents.
+    """
+
+    creditor_name: str
+    """The name the sender of the transfer specified as the recipient of the transfer."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's
+    currency. This will always be "USD" for a Real Time Payments transfer.
+    """
+
+    debtor_account_number: str
+    """The account number of the account that sent the transfer."""
+
+    debtor_name: str
+    """The name provided by the sender of the transfer."""
+
+    debtor_routing_number: str
+    """The routing number of the account that sent the transfer."""
+
+    remittance_information: Optional[str]
+    """Additional information included with the transfer."""
+
+    transaction_identification: str
+    """The Real Time Payments network identification of the transfer"""
 
 
 class SourceInboundWireDrawdownPaymentReversal(BaseModel):
@@ -913,6 +950,13 @@ class Source(BaseModel):
 
     This field will be present in the JSON response if and only if `category` is
     equal to `inbound_international_ach_transfer`.
+    """
+
+    inbound_real_time_payments_transfer_confirmation: Optional[SourceInboundRealTimePaymentsTransferConfirmation]
+    """A Inbound Real Time Payments Transfer Confirmation object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `inbound_real_time_payments_transfer_confirmation`.
     """
 
     inbound_wire_drawdown_payment: Optional[SourceInboundWireDrawdownPayment]

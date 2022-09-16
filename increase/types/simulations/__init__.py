@@ -18,3 +18,9 @@ from .ach_transfer_create_inbound_params import (
 from .wire_transfer_create_inbound_params import (
     WireTransferCreateInboundParams as WireTransferCreateInboundParams,
 )
+from .real_time_payments_transfer_create_inbound_params import (
+    RealTimePaymentsTransferCreateInboundParams as RealTimePaymentsTransferCreateInboundParams,
+)
+from .inbound_real_time_payments_transfer_simulation_result import (
+    InboundRealTimePaymentsTransferSimulationResult as InboundRealTimePaymentsTransferSimulationResult,
+)

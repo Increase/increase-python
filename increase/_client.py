@@ -39,6 +39,7 @@ class Increase(SyncAPIClient):
     account_numbers: resources.AccountNumbers
     cards: resources.Cards
     card_disputes: resources.CardDisputes
+    external_accounts: resources.ExternalAccounts
     transactions: resources.Transactions
     pending_transactions: resources.PendingTransactions
     declined_transactions: resources.DeclinedTransactions
@@ -110,6 +111,7 @@ class Increase(SyncAPIClient):
         self.account_numbers = resources.AccountNumbers(self)
         self.cards = resources.Cards(self)
         self.card_disputes = resources.CardDisputes(self)
+        self.external_accounts = resources.ExternalAccounts(self)
         self.transactions = resources.Transactions(self)
         self.pending_transactions = resources.PendingTransactions(self)
         self.declined_transactions = resources.DeclinedTransactions(self)
@@ -144,6 +146,7 @@ class AsyncIncrease(AsyncAPIClient):
     account_numbers: resources.AsyncAccountNumbers
     cards: resources.AsyncCards
     card_disputes: resources.AsyncCardDisputes
+    external_accounts: resources.AsyncExternalAccounts
     transactions: resources.AsyncTransactions
     pending_transactions: resources.AsyncPendingTransactions
     declined_transactions: resources.AsyncDeclinedTransactions
@@ -215,6 +218,7 @@ class AsyncIncrease(AsyncAPIClient):
         self.account_numbers = resources.AsyncAccountNumbers(self)
         self.cards = resources.AsyncCards(self)
         self.card_disputes = resources.AsyncCardDisputes(self)
+        self.external_accounts = resources.AsyncExternalAccounts(self)
         self.transactions = resources.AsyncTransactions(self)
         self.pending_transactions = resources.AsyncPendingTransactions(self)
         self.declined_transactions = resources.AsyncDeclinedTransactions(self)

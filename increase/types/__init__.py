@@ -18,6 +18,7 @@ from .check_transfer import CheckTransfer as CheckTransfer
 from .routing_number import RoutingNumber as RoutingNumber
 from .account_transfer import AccountTransfer as AccountTransfer
 from .card_list_params import CardListParams as CardListParams
+from .external_account import ExternalAccount as ExternalAccount
 from .file_list_params import FileListParams as FileListParams
 from .oauth_connection import OauthConnection as OauthConnection
 from .account_statement import AccountStatement as AccountStatement
@@ -76,6 +77,9 @@ from .account_transfer_list_params import (
 from .check_transfer_create_params import (
     CheckTransferCreateParams as CheckTransferCreateParams,
 )
+from .external_account_list_params import (
+    ExternalAccountListParams as ExternalAccountListParams,
+)
 from .oauth_connection_list_params import (
     OauthConnectionListParams as OauthConnectionListParams,
 )
@@ -87,6 +91,12 @@ from .account_transfer_create_params import (
 )
 from .event_subscription_list_params import (
     EventSubscriptionListParams as EventSubscriptionListParams,
+)
+from .external_account_create_params import (
+    ExternalAccountCreateParams as ExternalAccountCreateParams,
+)
+from .external_account_update_params import (
+    ExternalAccountUpdateParams as ExternalAccountUpdateParams,
 )
 from .ach_prenotification_list_params import (
     ACHPrenotificationListParams as ACHPrenotificationListParams,

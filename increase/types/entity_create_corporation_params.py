@@ -48,6 +48,9 @@ class BeneficialOwners(TypedDict, total=False):
     This might be the floor or room number.
     """
 
+    company_title: str
+    """This person's role or title within the entity."""
+
 
 class EntityCreateCorporationParams(TypedDict, total=False):
     address_city: Required[str]

@@ -23,9 +23,7 @@ class TestACHTransfers:
         resource = client.ach_transfers.create(
             {
                 "account_id": "account_in71c4amph0vgo2qllky",
-                "account_number": "987654321",
                 "amount": 100,
-                "routing_number": "101050001",
                 "statement_descriptor": "New ACH transfer",
             },
         )
@@ -44,6 +42,7 @@ class TestACHTransfers:
                 "company_entry_description": "x",
                 "company_name": "x",
                 "effective_date": "2019-12-27T18:11:19.117Z",
+                "external_account_id": "string",
                 "funding": "checking",
                 "individual_id": "x",
                 "individual_name": "x",
@@ -73,6 +72,7 @@ class TestACHTransfers:
                 "cursor": "string",
                 "limit": 0,
                 "account_id": "string",
+                "external_account_id": "string",
                 "created_at": {
                     "after": "2019-12-27T18:11:19.117Z",
                     "before": "2019-12-27T18:11:19.117Z",
@@ -94,9 +94,7 @@ class TestAsyncACHTransfers:
         resource = await client.ach_transfers.create(
             {
                 "account_id": "account_in71c4amph0vgo2qllky",
-                "account_number": "987654321",
                 "amount": 100,
-                "routing_number": "101050001",
                 "statement_descriptor": "New ACH transfer",
             },
         )
@@ -115,6 +113,7 @@ class TestAsyncACHTransfers:
                 "company_entry_description": "x",
                 "company_name": "x",
                 "effective_date": "2019-12-27T18:11:19.117Z",
+                "external_account_id": "string",
                 "funding": "checking",
                 "individual_id": "x",
                 "individual_name": "x",
@@ -144,6 +143,7 @@ class TestAsyncACHTransfers:
                 "cursor": "string",
                 "limit": 0,
                 "account_id": "string",
+                "external_account_id": "string",
                 "created_at": {
                     "after": "2019-12-27T18:11:19.117Z",
                     "before": "2019-12-27T18:11:19.117Z",

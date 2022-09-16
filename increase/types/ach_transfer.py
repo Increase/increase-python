@@ -127,6 +127,9 @@ class ACHTransfer(BaseModel):
     currency. For ACH transfers this is always equal to `usd`.
     """
 
+    external_account_id: Optional[str]
+    """The identifier of the External Account the transfer was made to, if any."""
+
     id: str
     """The ACH transfer's identifier."""
 

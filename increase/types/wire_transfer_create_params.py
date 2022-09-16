@@ -11,20 +11,14 @@ class WireTransferCreateParams(TypedDict, total=False):
     account_id: Required[str]
     """The identifier for the account that will send the transfer."""
 
-    account_number: Required[str]
-    """The account number for the destination account."""
-
     amount: Required[int]
     """The transfer amount in cents."""
 
     message_to_recipient: Required[str]
     """The message that will show on the recipient's bank statement."""
 
-    routing_number: Required[str]
-    """
-    The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-    destination account.
-    """
+    account_number: str
+    """The account number for the destination account."""
 
     beneficiary_address_line1: str
     """The beneficiary's address line 1."""
@@ -37,3 +31,16 @@ class WireTransferCreateParams(TypedDict, total=False):
 
     beneficiary_name: str
     """The beneficiary's name."""
+
+    external_account_id: str
+    """The ID of an External Account to initiate a transfer to.
+
+    If this parameter is provided, `account_number` and `routing_number` must be
+    absent.
+    """
+
+    routing_number: str
+    """
+    The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
+    destination account.
+    """

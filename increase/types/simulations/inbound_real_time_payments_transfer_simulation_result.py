@@ -47,7 +47,7 @@ __all__ = [
     "DeclinedTransactionSourceCardRouteDecline",
     "DeclinedTransactionSource",
     "DeclinedTransaction",
-    "ACHTransferSimulation",
+    "InboundRealTimePaymentsTransferSimulationResult",
 ]
 
 
@@ -1455,23 +1455,25 @@ class DeclinedTransaction(BaseModel):
     """
 
 
-class ACHTransferSimulation(BaseModel):
+class InboundRealTimePaymentsTransferSimulationResult(BaseModel):
     declined_transaction: Optional[DeclinedTransaction]
     """
-    If the ACH Transfer attempt fails, this will contain the resulting
-    [Declined Transaction](#declined-transactions) object. The Declined
-    Transaction's `source` will be of `category: inbound_ach_transfer`.
+    If the Real Time Payments Transfer attempt fails, this will contain the
+    resulting [Declined Transaction](#declined-transactions) object. The Declined
+    Transaction's `source` will be of
+    `category: inbound_real_time_payments_transfer_decline`.
     """
 
     transaction: Optional[Transaction]
     """
-    If the ACH Transfer attempt succeeds, this will contain the resulting
-    [Transaction](#transactions) object. The Transaction's `source` will be of
-    `category: inbound_ach_transfer`.
+    If the Real Time Payments Transfer attempt succeeds, this will contain the
+    resulting [Transaction](#transactions) object. The Transaction's `source` will
+    be of `category: inbound_real_time_payments_transfer_confirmation`.
     """
 
-    type: Literal["inbound_ach_transfer_simulation_result"]
+    type: Literal["inbound_real_time_payments_transfer_simulation_result"]
     """A constant representing the object's type.
 
-    For this resource it will always be `inbound_ach_transfer_simulation_result`.
+    For this resource it will always be
+    `inbound_real_time_payments_transfer_simulation_result`.
     """

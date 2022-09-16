@@ -5,7 +5,12 @@ from typing_extensions import Literal
 
 from ..._models import BaseModel
 
-__all__ = ["StopPaymentRequest", "CheckTransfer"]
+__all__ = ["Submission", "StopPaymentRequest", "CheckTransfer"]
+
+
+class Submission(BaseModel):
+    check_number: str
+    """The identitying number of the check."""
 
 
 class StopPaymentRequest(BaseModel):
@@ -95,6 +100,9 @@ class CheckTransfer(BaseModel):
     After a stop-payment is requested on the check, this will contain supplemental
     details.
     """
+
+    submission: Optional[Submission]
+    """After the transfer is submitted, this will contain supplemental details."""
 
     submitted_at: Optional[str]
     """
