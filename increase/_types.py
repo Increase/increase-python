@@ -63,7 +63,7 @@ else:
 class RequestOptions(TypedDict, total=False):
     headers: Headers
     max_retries: int
-    timeout: Union[float, Timeout, None]
+    timeout: float | Timeout | None
     params: Query
 
 

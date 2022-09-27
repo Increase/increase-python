@@ -632,8 +632,9 @@ class SyncAPIClient(BaseClient):
         model: Type[ModelT],
         page: Type[SyncPageT],
         options: RequestOptions = {},
+        method: str = "get",
     ) -> SyncPageT:
-        opts = FinalRequestOptions.construct(method="get", url=path, **options)
+        opts = FinalRequestOptions.construct(method=method, url=path, **options)
         return self.request_api_list(model, page, opts)
 
 
@@ -792,8 +793,9 @@ class AsyncAPIClient(BaseClient):
         model: Type[ModelT],
         page: Type[AsyncPageT],
         options: RequestOptions = {},
+        method: str = "get",
     ) -> AsyncPaginator[ModelT, AsyncPageT]:
-        opts = FinalRequestOptions.construct(method="get", url=path, **options)
+        opts = FinalRequestOptions.construct(method=method, url=path, **options)
         return self.request_api_list(model, page, opts)
 
 
