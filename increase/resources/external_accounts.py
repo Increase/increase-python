@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Union, Optional
 
 from .._types import NOT_GIVEN, Query, Headers, Timeout, NotGiven
+from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
@@ -29,7 +30,7 @@ class ExternalAccounts(SyncAPIResource):
         options = make_request_options(headers, max_retries, timeout, query)
         return self._post(
             "/external_accounts",
-            body=body,
+            body=maybe_transform(body, ExternalAccountCreateParams),
             options=options,
             cast_to=ExternalAccount,
         )
@@ -63,7 +64,7 @@ class ExternalAccounts(SyncAPIResource):
         options = make_request_options(headers, max_retries, timeout, query)
         return self._patch(
             f"/external_accounts/{external_account_id}",
-            body=body,
+            body=maybe_transform(body, ExternalAccountUpdateParams),
             options=options,
             cast_to=ExternalAccount,
         )
@@ -76,7 +77,7 @@ class ExternalAccounts(SyncAPIResource):
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
     ) -> SyncPage[ExternalAccount]:
-        options = make_request_options(headers, max_retries, timeout, query)
+        options = make_request_options(headers, max_retries, timeout, maybe_transform(query, ExternalAccountListParams))
         return self._get_api_list(
             "/external_accounts",
             page=SyncPage[ExternalAccount],
@@ -98,7 +99,7 @@ class AsyncExternalAccounts(AsyncAPIResource):
         options = make_request_options(headers, max_retries, timeout, query)
         return await self._post(
             "/external_accounts",
-            body=body,
+            body=maybe_transform(body, ExternalAccountCreateParams),
             options=options,
             cast_to=ExternalAccount,
         )
@@ -132,7 +133,7 @@ class AsyncExternalAccounts(AsyncAPIResource):
         options = make_request_options(headers, max_retries, timeout, query)
         return await self._patch(
             f"/external_accounts/{external_account_id}",
-            body=body,
+            body=maybe_transform(body, ExternalAccountUpdateParams),
             options=options,
             cast_to=ExternalAccount,
         )
@@ -145,7 +146,7 @@ class AsyncExternalAccounts(AsyncAPIResource):
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
     ) -> AsyncPaginator[ExternalAccount, AsyncPage[ExternalAccount]]:
-        options = make_request_options(headers, max_retries, timeout, query)
+        options = make_request_options(headers, max_retries, timeout, maybe_transform(query, ExternalAccountListParams))
         return self._get_api_list(
             "/external_accounts",
             page=AsyncPage[ExternalAccount],

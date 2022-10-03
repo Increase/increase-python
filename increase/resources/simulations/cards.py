@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Union, Optional
 
 from ..._types import NOT_GIVEN, Query, Headers, Timeout, NotGiven
+from ..._utils import maybe_transform
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._base_client import make_request_options
 from ...types.simulations.transaction import Transaction
@@ -31,7 +32,7 @@ class Cards(SyncAPIResource):
         options = make_request_options(headers, max_retries, timeout, query)
         return self._post(
             "/simulations/card_authorizations",
-            body=body,
+            body=maybe_transform(body, CardAuthorizeParams),
             options=options,
             cast_to=CardAuthorizationSimulation,
         )
@@ -49,7 +50,7 @@ class Cards(SyncAPIResource):
         options = make_request_options(headers, max_retries, timeout, query)
         return self._post(
             "/simulations/card_settlements",
-            body=body,
+            body=maybe_transform(body, CardSettlementParams),
             options=options,
             cast_to=Transaction,
         )
@@ -69,7 +70,7 @@ class AsyncCards(AsyncAPIResource):
         options = make_request_options(headers, max_retries, timeout, query)
         return await self._post(
             "/simulations/card_authorizations",
-            body=body,
+            body=maybe_transform(body, CardAuthorizeParams),
             options=options,
             cast_to=CardAuthorizationSimulation,
         )
@@ -87,7 +88,7 @@ class AsyncCards(AsyncAPIResource):
         options = make_request_options(headers, max_retries, timeout, query)
         return await self._post(
             "/simulations/card_settlements",
-            body=body,
+            body=maybe_transform(body, CardSettlementParams),
             options=options,
             cast_to=Transaction,
         )

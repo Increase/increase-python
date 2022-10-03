@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Union, Optional
 
 from .._types import NOT_GIVEN, Query, Headers, Timeout, NotGiven
+from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
@@ -28,7 +29,7 @@ class CheckTransfers(SyncAPIResource):
         options = make_request_options(headers, max_retries, timeout, query)
         return self._post(
             "/check_transfers",
-            body=body,
+            body=maybe_transform(body, CheckTransferCreateParams),
             options=options,
             cast_to=CheckTransfer,
         )
@@ -57,7 +58,7 @@ class CheckTransfers(SyncAPIResource):
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
     ) -> SyncPage[CheckTransfer]:
-        options = make_request_options(headers, max_retries, timeout, query)
+        options = make_request_options(headers, max_retries, timeout, maybe_transform(query, CheckTransferListParams))
         return self._get_api_list(
             "/check_transfers",
             page=SyncPage[CheckTransfer],
@@ -95,7 +96,7 @@ class AsyncCheckTransfers(AsyncAPIResource):
         options = make_request_options(headers, max_retries, timeout, query)
         return await self._post(
             "/check_transfers",
-            body=body,
+            body=maybe_transform(body, CheckTransferCreateParams),
             options=options,
             cast_to=CheckTransfer,
         )
@@ -124,7 +125,7 @@ class AsyncCheckTransfers(AsyncAPIResource):
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
     ) -> AsyncPaginator[CheckTransfer, AsyncPage[CheckTransfer]]:
-        options = make_request_options(headers, max_retries, timeout, query)
+        options = make_request_options(headers, max_retries, timeout, maybe_transform(query, CheckTransferListParams))
         return self._get_api_list(
             "/check_transfers",
             page=AsyncPage[CheckTransfer],

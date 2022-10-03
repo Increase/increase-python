@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Union, Optional
 
 from .._types import NOT_GIVEN, Query, Headers, Timeout, NotGiven
+from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from ..types.limit import Limit
@@ -29,7 +30,7 @@ class Limits(SyncAPIResource):
         options = make_request_options(headers, max_retries, timeout, query)
         return self._post(
             "/limits",
-            body=body,
+            body=maybe_transform(body, LimitCreateParams),
             options=options,
             cast_to=Limit,
         )
@@ -63,7 +64,7 @@ class Limits(SyncAPIResource):
         options = make_request_options(headers, max_retries, timeout, query)
         return self._patch(
             f"/limits/{limit_id}",
-            body=body,
+            body=maybe_transform(body, LimitUpdateParams),
             options=options,
             cast_to=Limit,
         )
@@ -76,7 +77,7 @@ class Limits(SyncAPIResource):
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
     ) -> SyncPage[Limit]:
-        options = make_request_options(headers, max_retries, timeout, query)
+        options = make_request_options(headers, max_retries, timeout, maybe_transform(query, LimitListParams))
         return self._get_api_list(
             "/limits",
             page=SyncPage[Limit],
@@ -98,7 +99,7 @@ class AsyncLimits(AsyncAPIResource):
         options = make_request_options(headers, max_retries, timeout, query)
         return await self._post(
             "/limits",
-            body=body,
+            body=maybe_transform(body, LimitCreateParams),
             options=options,
             cast_to=Limit,
         )
@@ -132,7 +133,7 @@ class AsyncLimits(AsyncAPIResource):
         options = make_request_options(headers, max_retries, timeout, query)
         return await self._patch(
             f"/limits/{limit_id}",
-            body=body,
+            body=maybe_transform(body, LimitUpdateParams),
             options=options,
             cast_to=Limit,
         )
@@ -145,7 +146,7 @@ class AsyncLimits(AsyncAPIResource):
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
     ) -> AsyncPaginator[Limit, AsyncPage[Limit]]:
-        options = make_request_options(headers, max_retries, timeout, query)
+        options = make_request_options(headers, max_retries, timeout, maybe_transform(query, LimitListParams))
         return self._get_api_list(
             "/limits",
             page=AsyncPage[Limit],

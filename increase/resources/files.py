@@ -5,7 +5,7 @@ from __future__ import annotations
 from typing import Union, Optional
 
 from .._types import NOT_GIVEN, Query, Headers, Timeout, NotGiven
-from .._utils import extract_files
+from .._utils import extract_files, maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from ..types.file import File
@@ -44,7 +44,7 @@ class Files(SyncAPIResource):
         options = make_request_options(headers, max_retries, timeout, query)
         return self._post(
             "/files",
-            body=body,
+            body=maybe_transform(body, FileCreateParams),
             files=files,
             options=options,
             cast_to=File,
@@ -74,7 +74,7 @@ class Files(SyncAPIResource):
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
     ) -> SyncPage[File]:
-        options = make_request_options(headers, max_retries, timeout, query)
+        options = make_request_options(headers, max_retries, timeout, maybe_transform(query, FileListParams))
         return self._get_api_list(
             "/files",
             page=SyncPage[File],
@@ -111,7 +111,7 @@ class AsyncFiles(AsyncAPIResource):
         options = make_request_options(headers, max_retries, timeout, query)
         return await self._post(
             "/files",
-            body=body,
+            body=maybe_transform(body, FileCreateParams),
             files=files,
             options=options,
             cast_to=File,
@@ -141,7 +141,7 @@ class AsyncFiles(AsyncAPIResource):
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
     ) -> AsyncPaginator[File, AsyncPage[File]]:
-        options = make_request_options(headers, max_retries, timeout, query)
+        options = make_request_options(headers, max_retries, timeout, maybe_transform(query, FileListParams))
         return self._get_api_list(
             "/files",
             page=AsyncPage[File],

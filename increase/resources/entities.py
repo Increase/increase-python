@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Union, Optional
 
 from .._types import NOT_GIVEN, Query, Headers, Timeout, NotGiven
+from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
@@ -41,7 +42,7 @@ class Entities(SyncAPIResource):
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
     ) -> SyncPage[Entity]:
-        options = make_request_options(headers, max_retries, timeout, query)
+        options = make_request_options(headers, max_retries, timeout, maybe_transform(query, EntityListParams))
         return self._get_api_list(
             "/entities",
             page=SyncPage[Entity],
@@ -61,7 +62,7 @@ class Entities(SyncAPIResource):
         options = make_request_options(headers, max_retries, timeout, query)
         return self._post(
             "/entities/corporations",
-            body=body,
+            body=maybe_transform(body, EntityCreateCorporationParams),
             options=options,
             cast_to=Entity,
         )
@@ -78,7 +79,7 @@ class Entities(SyncAPIResource):
         options = make_request_options(headers, max_retries, timeout, query)
         return self._post(
             "/entities/natural_people",
-            body=body,
+            body=maybe_transform(body, EntityCreatePersonParams),
             options=options,
             cast_to=Entity,
         )
@@ -109,7 +110,7 @@ class AsyncEntities(AsyncAPIResource):
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
     ) -> AsyncPaginator[Entity, AsyncPage[Entity]]:
-        options = make_request_options(headers, max_retries, timeout, query)
+        options = make_request_options(headers, max_retries, timeout, maybe_transform(query, EntityListParams))
         return self._get_api_list(
             "/entities",
             page=AsyncPage[Entity],
@@ -129,7 +130,7 @@ class AsyncEntities(AsyncAPIResource):
         options = make_request_options(headers, max_retries, timeout, query)
         return await self._post(
             "/entities/corporations",
-            body=body,
+            body=maybe_transform(body, EntityCreateCorporationParams),
             options=options,
             cast_to=Entity,
         )
@@ -146,7 +147,7 @@ class AsyncEntities(AsyncAPIResource):
         options = make_request_options(headers, max_retries, timeout, query)
         return await self._post(
             "/entities/natural_people",
-            body=body,
+            body=maybe_transform(body, EntityCreatePersonParams),
             options=options,
             cast_to=Entity,
         )

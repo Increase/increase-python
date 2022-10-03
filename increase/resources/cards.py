@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Union, Optional
 
 from .._types import NOT_GIVEN, Query, Headers, Timeout, NotGiven
+from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from ..types.card import Card
@@ -30,7 +31,7 @@ class Cards(SyncAPIResource):
         options = make_request_options(headers, max_retries, timeout, query)
         return self._post(
             "/cards",
-            body=body,
+            body=maybe_transform(body, CardCreateParams),
             options=options,
             cast_to=Card,
         )
@@ -64,7 +65,7 @@ class Cards(SyncAPIResource):
         options = make_request_options(headers, max_retries, timeout, query)
         return self._patch(
             f"/cards/{card_id}",
-            body=body,
+            body=maybe_transform(body, CardUpdateParams),
             options=options,
             cast_to=Card,
         )
@@ -77,7 +78,7 @@ class Cards(SyncAPIResource):
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
     ) -> SyncPage[Card]:
-        options = make_request_options(headers, max_retries, timeout, query)
+        options = make_request_options(headers, max_retries, timeout, maybe_transform(query, CardListParams))
         return self._get_api_list(
             "/cards",
             page=SyncPage[Card],
@@ -115,7 +116,7 @@ class AsyncCards(AsyncAPIResource):
         options = make_request_options(headers, max_retries, timeout, query)
         return await self._post(
             "/cards",
-            body=body,
+            body=maybe_transform(body, CardCreateParams),
             options=options,
             cast_to=Card,
         )
@@ -149,7 +150,7 @@ class AsyncCards(AsyncAPIResource):
         options = make_request_options(headers, max_retries, timeout, query)
         return await self._patch(
             f"/cards/{card_id}",
-            body=body,
+            body=maybe_transform(body, CardUpdateParams),
             options=options,
             cast_to=Card,
         )
@@ -162,7 +163,7 @@ class AsyncCards(AsyncAPIResource):
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
     ) -> AsyncPaginator[Card, AsyncPage[Card]]:
-        options = make_request_options(headers, max_retries, timeout, query)
+        options = make_request_options(headers, max_retries, timeout, maybe_transform(query, CardListParams))
         return self._get_api_list(
             "/cards",
             page=AsyncPage[Card],

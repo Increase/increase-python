@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Union
 
 from .._types import NOT_GIVEN, Headers, Timeout, NotGiven
+from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
@@ -27,7 +28,7 @@ class RoutingNumbers(SyncAPIResource):
         You can use this API to confirm if a routing number is valid, such as when a
         user is providing you with bank account details.
         """
-        options = make_request_options(headers, max_retries, timeout, query)
+        options = make_request_options(headers, max_retries, timeout, maybe_transform(query, RoutingNumberListParams))
         return self._get_api_list(
             "/routing_numbers",
             page=SyncPage[RoutingNumber],
@@ -49,7 +50,7 @@ class AsyncRoutingNumbers(AsyncAPIResource):
         You can use this API to confirm if a routing number is valid, such as when a
         user is providing you with bank account details.
         """
-        options = make_request_options(headers, max_retries, timeout, query)
+        options = make_request_options(headers, max_retries, timeout, maybe_transform(query, RoutingNumberListParams))
         return self._get_api_list(
             "/routing_numbers",
             page=AsyncPage[RoutingNumber],

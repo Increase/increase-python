@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Union, Optional
 
 from .._types import NOT_GIVEN, Query, Headers, Timeout, NotGiven
+from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
@@ -28,7 +29,7 @@ class CheckDeposits(SyncAPIResource):
         options = make_request_options(headers, max_retries, timeout, query)
         return self._post(
             "/check_deposits",
-            body=body,
+            body=maybe_transform(body, CheckDepositCreateParams),
             options=options,
             cast_to=CheckDeposit,
         )
@@ -57,7 +58,7 @@ class CheckDeposits(SyncAPIResource):
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
     ) -> SyncPage[CheckDeposit]:
-        options = make_request_options(headers, max_retries, timeout, query)
+        options = make_request_options(headers, max_retries, timeout, maybe_transform(query, CheckDepositListParams))
         return self._get_api_list(
             "/check_deposits",
             page=SyncPage[CheckDeposit],
@@ -79,7 +80,7 @@ class AsyncCheckDeposits(AsyncAPIResource):
         options = make_request_options(headers, max_retries, timeout, query)
         return await self._post(
             "/check_deposits",
-            body=body,
+            body=maybe_transform(body, CheckDepositCreateParams),
             options=options,
             cast_to=CheckDeposit,
         )
@@ -108,7 +109,7 @@ class AsyncCheckDeposits(AsyncAPIResource):
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
     ) -> AsyncPaginator[CheckDeposit, AsyncPage[CheckDeposit]]:
-        options = make_request_options(headers, max_retries, timeout, query)
+        options = make_request_options(headers, max_retries, timeout, maybe_transform(query, CheckDepositListParams))
         return self._get_api_list(
             "/check_deposits",
             page=AsyncPage[CheckDeposit],

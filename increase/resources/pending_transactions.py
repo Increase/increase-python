@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Union, Optional
 
 from .._types import NOT_GIVEN, Query, Headers, Timeout, NotGiven
+from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
@@ -39,7 +40,9 @@ class PendingTransactions(SyncAPIResource):
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
     ) -> SyncPage[PendingTransaction]:
-        options = make_request_options(headers, max_retries, timeout, query)
+        options = make_request_options(
+            headers, max_retries, timeout, maybe_transform(query, PendingTransactionListParams)
+        )
         return self._get_api_list(
             "/pending_transactions",
             page=SyncPage[PendingTransaction],
@@ -73,7 +76,9 @@ class AsyncPendingTransactions(AsyncAPIResource):
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
     ) -> AsyncPaginator[PendingTransaction, AsyncPage[PendingTransaction]]:
-        options = make_request_options(headers, max_retries, timeout, query)
+        options = make_request_options(
+            headers, max_retries, timeout, maybe_transform(query, PendingTransactionListParams)
+        )
         return self._get_api_list(
             "/pending_transactions",
             page=AsyncPage[PendingTransaction],

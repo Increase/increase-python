@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Union, Optional
 
 from .._types import NOT_GIVEN, Query, Headers, Timeout, NotGiven
+from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
@@ -29,7 +30,7 @@ class EventSubscriptions(SyncAPIResource):
         options = make_request_options(headers, max_retries, timeout, query)
         return self._post(
             "/event_subscriptions",
-            body=body,
+            body=maybe_transform(body, EventSubscriptionCreateParams),
             options=options,
             cast_to=EventSubscription,
         )
@@ -63,7 +64,7 @@ class EventSubscriptions(SyncAPIResource):
         options = make_request_options(headers, max_retries, timeout, query)
         return self._patch(
             f"/event_subscriptions/{event_subscription_id}",
-            body=body,
+            body=maybe_transform(body, EventSubscriptionUpdateParams),
             options=options,
             cast_to=EventSubscription,
         )
@@ -76,7 +77,9 @@ class EventSubscriptions(SyncAPIResource):
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
     ) -> SyncPage[EventSubscription]:
-        options = make_request_options(headers, max_retries, timeout, query)
+        options = make_request_options(
+            headers, max_retries, timeout, maybe_transform(query, EventSubscriptionListParams)
+        )
         return self._get_api_list(
             "/event_subscriptions",
             page=SyncPage[EventSubscription],
@@ -98,7 +101,7 @@ class AsyncEventSubscriptions(AsyncAPIResource):
         options = make_request_options(headers, max_retries, timeout, query)
         return await self._post(
             "/event_subscriptions",
-            body=body,
+            body=maybe_transform(body, EventSubscriptionCreateParams),
             options=options,
             cast_to=EventSubscription,
         )
@@ -132,7 +135,7 @@ class AsyncEventSubscriptions(AsyncAPIResource):
         options = make_request_options(headers, max_retries, timeout, query)
         return await self._patch(
             f"/event_subscriptions/{event_subscription_id}",
-            body=body,
+            body=maybe_transform(body, EventSubscriptionUpdateParams),
             options=options,
             cast_to=EventSubscription,
         )
@@ -145,7 +148,9 @@ class AsyncEventSubscriptions(AsyncAPIResource):
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
     ) -> AsyncPaginator[EventSubscription, AsyncPage[EventSubscription]]:
-        options = make_request_options(headers, max_retries, timeout, query)
+        options = make_request_options(
+            headers, max_retries, timeout, maybe_transform(query, EventSubscriptionListParams)
+        )
         return self._get_api_list(
             "/event_subscriptions",
             page=AsyncPage[EventSubscription],

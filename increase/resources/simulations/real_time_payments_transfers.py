@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Union, Optional
 
 from ..._types import NOT_GIVEN, Query, Headers, Timeout, NotGiven
+from ..._utils import maybe_transform
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._base_client import make_request_options
 from ...types.simulations.real_time_payments_transfer_create_inbound_params import (
@@ -31,7 +32,7 @@ class RealTimePaymentsTransfers(SyncAPIResource):
         options = make_request_options(headers, max_retries, timeout, query)
         return self._post(
             "/simulations/inbound_real_time_payments_transfers",
-            body=body,
+            body=maybe_transform(body, RealTimePaymentsTransferCreateInboundParams),
             options=options,
             cast_to=InboundRealTimePaymentsTransferSimulationResult,
         )
@@ -51,7 +52,7 @@ class AsyncRealTimePaymentsTransfers(AsyncAPIResource):
         options = make_request_options(headers, max_retries, timeout, query)
         return await self._post(
             "/simulations/inbound_real_time_payments_transfers",
-            body=body,
+            body=maybe_transform(body, RealTimePaymentsTransferCreateInboundParams),
             options=options,
             cast_to=InboundRealTimePaymentsTransferSimulationResult,
         )

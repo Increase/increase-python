@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Union, Optional
 
 from ..._types import NOT_GIVEN, Query, Headers, Timeout, NotGiven
+from ..._utils import maybe_transform
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._base_client import make_request_options
 from ...types.simulations.wire_transfer_simulation import WireTransferSimulation
@@ -29,7 +30,7 @@ class WireTransfers(SyncAPIResource):
         options = make_request_options(headers, max_retries, timeout, query)
         return self._post(
             "/simulations/inbound_wire_transfers",
-            body=body,
+            body=maybe_transform(body, WireTransferCreateInboundParams),
             options=options,
             cast_to=WireTransferSimulation,
         )
@@ -49,7 +50,7 @@ class AsyncWireTransfers(AsyncAPIResource):
         options = make_request_options(headers, max_retries, timeout, query)
         return await self._post(
             "/simulations/inbound_wire_transfers",
-            body=body,
+            body=maybe_transform(body, WireTransferCreateInboundParams),
             options=options,
             cast_to=WireTransferSimulation,
         )
