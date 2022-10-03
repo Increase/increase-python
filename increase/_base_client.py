@@ -44,6 +44,7 @@ from ._types import (
     ProxiesTypes,
     RequestFiles,
     RequestOptions,
+    UnknownResponse,
     ModelBuilderProtocol,
 )
 from ._utils import is_dict
@@ -61,7 +62,10 @@ AsyncPageT = TypeVar("AsyncPageT", bound="BaseAsyncPage[Any]")
 
 
 PageParamsT = TypeVar("PageParamsT", bound=Query)
-ResponseT = TypeVar("ResponseT", bound=Union[BaseModel, ModelBuilderProtocol, str, None, httpx.Response])
+ResponseT = TypeVar(
+    "ResponseT",
+    bound=Union[BaseModel, ModelBuilderProtocol, str, None, httpx.Response, UnknownResponse],
+)
 
 _T = TypeVar("_T")
 _T_co = TypeVar("_T_co", covariant=True)
@@ -358,10 +362,8 @@ class BaseClient:
         # to be safe as we have handled all the types that could be bound to the
         # `ResponseT` TypeVar, however if that TypeVar is ever updated in the future, then
         # this function would become unsafe but a type checker would not report an error.
-        if not issubclass(cast_to, BaseModel):
+        if cast_to is not UnknownResponse and not issubclass(cast_to, BaseModel):
             raise RuntimeError(f"Invalid state, expected {cast_to} to be a subclass type of {BaseModel}.")
-
-        model_cls = cast(Type[BaseModel], cast_to)
 
         # split is required to handle cases where additional information is included
         # in the response, e.g. application/json; charset=utf-8
@@ -372,9 +374,14 @@ class BaseClient:
             )
 
         data = response.json()
+
+        if cast_to is UnknownResponse:
+            return cast(ResponseT, data)
+
         if issubclass(cast_to, ModelBuilderProtocol):
             return cast(ResponseT, cast_to.build(response=response, data=data))
 
+        model_cls = cast(Type[BaseModel], cast_to)
         if self._strict_response_validation:
             return cast(ResponseT, model_cls(**data))
 
