@@ -4,10 +4,39 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-__all__ = ["AccountStatementListParams"]
+__all__ = ["StatementPeriodStart", "AccountStatementListParams"]
+
+
+class StatementPeriodStart(TypedDict, total=False):
+    after: str
+    """
+    Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+    timestamp.
+    """
+
+    before: str
+    """
+    Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+    timestamp.
+    """
+
+    on_or_after: str
+    """
+    Return results on or after this
+    [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+    """
+
+    on_or_before: str
+    """
+    Return results on or before this
+    [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+    """
 
 
 class AccountStatementListParams(TypedDict, total=False):
+    account_id: str
+    """Filter Account Statements to those belonging to the specified Account."""
+
     cursor: str
     """Return the page of entries after this one."""
 
@@ -16,3 +45,5 @@ class AccountStatementListParams(TypedDict, total=False):
 
     The default (and maximum) is 100 objects.
     """
+
+    statement_period_start: StatementPeriodStart

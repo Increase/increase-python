@@ -35,7 +35,10 @@ from .limit_create_params import LimitCreateParams as LimitCreateParams
 from .limit_update_params import LimitUpdateParams as LimitUpdateParams
 from .pending_transaction import PendingTransaction as PendingTransaction
 from .declined_transaction import DeclinedTransaction as DeclinedTransaction
+from .entity_create_params import EntityCreateParams as EntityCreateParams
 from .account_create_params import AccountCreateParams as AccountCreateParams
+from .account_update_params import AccountUpdateParams as AccountUpdateParams
+from .wire_drawdown_request import WireDrawdownRequest as WireDrawdownRequest
 from .transaction_list_params import TransactionListParams as TransactionListParams
 from .ach_transfer_list_params import ACHTransferListParams as ACHTransferListParams
 from .card_dispute_list_params import CardDisputeListParams as CardDisputeListParams
@@ -58,9 +61,6 @@ from .routing_number_list_params import (
 )
 from .check_deposit_create_params import (
     CheckDepositCreateParams as CheckDepositCreateParams,
-)
-from .entity_create_person_params import (
-    EntityCreatePersonParams as EntityCreatePersonParams,
 )
 from .wire_transfer_create_params import (
     WireTransferCreateParams as WireTransferCreateParams,
@@ -107,9 +107,6 @@ from .pending_transaction_list_params import (
 from .declined_transaction_list_params import (
     DeclinedTransactionListParams as DeclinedTransactionListParams,
 )
-from .entity_create_corporation_params import (
-    EntityCreateCorporationParams as EntityCreateCorporationParams,
-)
 from .event_subscription_create_params import (
     EventSubscriptionCreateParams as EventSubscriptionCreateParams,
 )
@@ -118,4 +115,10 @@ from .event_subscription_update_params import (
 )
 from .ach_prenotification_create_params import (
     ACHPrenotificationCreateParams as ACHPrenotificationCreateParams,
+)
+from .wire_drawdown_request_list_params import (
+    WireDrawdownRequestListParams as WireDrawdownRequestListParams,
+)
+from .wire_drawdown_request_create_params import (
+    WireDrawdownRequestCreateParams as WireDrawdownRequestCreateParams,
 )

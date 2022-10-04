@@ -12,6 +12,7 @@ from .._base_client import AsyncPaginator, make_request_options
 from ..types.account import Account
 from ..types.account_list_params import AccountListParams
 from ..types.account_create_params import AccountCreateParams
+from ..types.account_update_params import AccountUpdateParams
 
 __all__ = ["Accounts", "AsyncAccounts"]
 
@@ -46,6 +47,24 @@ class Accounts(SyncAPIResource):
         options = make_request_options(headers, max_retries, timeout, query)
         return self._get(
             f"/accounts/{account_id}",
+            options=options,
+            cast_to=Account,
+        )
+
+    def update(
+        self,
+        account_id: str,
+        body: AccountUpdateParams,
+        *,
+        headers: Union[Headers, NotGiven] = NOT_GIVEN,
+        max_retries: Union[int, NotGiven] = NOT_GIVEN,
+        timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+        query: Optional[Query] = None,
+    ) -> Account:
+        options = make_request_options(headers, max_retries, timeout, query)
+        return self._patch(
+            f"/accounts/{account_id}",
+            body=maybe_transform(body, AccountUpdateParams),
             options=options,
             cast_to=Account,
         )
@@ -113,6 +132,24 @@ class AsyncAccounts(AsyncAPIResource):
         options = make_request_options(headers, max_retries, timeout, query)
         return await self._get(
             f"/accounts/{account_id}",
+            options=options,
+            cast_to=Account,
+        )
+
+    async def update(
+        self,
+        account_id: str,
+        body: AccountUpdateParams,
+        *,
+        headers: Union[Headers, NotGiven] = NOT_GIVEN,
+        max_retries: Union[int, NotGiven] = NOT_GIVEN,
+        timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+        query: Optional[Query] = None,
+    ) -> Account:
+        options = make_request_options(headers, max_retries, timeout, query)
+        return await self._patch(
+            f"/accounts/{account_id}",
+            body=maybe_transform(body, AccountUpdateParams),
             options=options,
             cast_to=Account,
         )

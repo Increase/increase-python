@@ -18,7 +18,18 @@ class FileCreateParams(TypedDict, total=False):
     transfers for the multipart/form-data protocol.
     """
 
-    purpose: Required[Literal["check_image_front", "check_image_back", "form_ss_4", "identity_document", "other"]]
+    purpose: Required[
+        Literal[
+            "check_image_front",
+            "check_image_back",
+            "form_ss_4",
+            "identity_document",
+            "other",
+            "trust_formation_document",
+            "digital_wallet_artwork",
+            "digital_wallet_app_icon",
+        ]
+    ]
     """What the File will be used for in Increase's systems."""
 
     description: str

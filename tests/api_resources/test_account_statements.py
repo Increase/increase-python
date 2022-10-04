@@ -36,6 +36,13 @@ class TestAccountStatements:
             {
                 "cursor": "string",
                 "limit": 0,
+                "account_id": "string",
+                "statement_period_start": {
+                    "after": "2019-12-27T18:11:19.117Z",
+                    "before": "2019-12-27T18:11:19.117Z",
+                    "on_or_after": "2019-12-27T18:11:19.117Z",
+                    "on_or_before": "2019-12-27T18:11:19.117Z",
+                },
             },
         )
         assert isinstance(resource, SyncPage)
@@ -64,6 +71,13 @@ class TestAsyncAccountStatements:
             {
                 "cursor": "string",
                 "limit": 0,
+                "account_id": "string",
+                "statement_period_start": {
+                    "after": "2019-12-27T18:11:19.117Z",
+                    "before": "2019-12-27T18:11:19.117Z",
+                    "on_or_after": "2019-12-27T18:11:19.117Z",
+                    "on_or_before": "2019-12-27T18:11:19.117Z",
+                },
             },
         )
         assert isinstance(resource, AsyncPage)

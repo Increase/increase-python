@@ -43,6 +43,22 @@ class TestAccounts:
         assert isinstance(resource, Account)
 
     @parametrize
+    def test_method_update(self, client: Increase) -> None:
+        resource = client.accounts.update(
+            "string",
+            {},
+        )
+        assert isinstance(resource, Account)
+
+    @parametrize
+    def test_method_update_with_optional_params(self, client: Increase) -> None:
+        resource = client.accounts.update(
+            "string",
+            {"name": "My renamed account"},
+        )
+        assert isinstance(resource, Account)
+
+    @parametrize
     def test_method_list(self, client: Increase) -> None:
         resource = client.accounts.list()
         assert isinstance(resource, SyncPage)
@@ -94,6 +110,22 @@ class TestAsyncAccounts:
     async def test_method_retrieve(self, client: AsyncIncrease) -> None:
         resource = await client.accounts.retrieve(
             "string",
+        )
+        assert isinstance(resource, Account)
+
+    @parametrize
+    async def test_method_update(self, client: AsyncIncrease) -> None:
+        resource = await client.accounts.update(
+            "string",
+            {},
+        )
+        assert isinstance(resource, Account)
+
+    @parametrize
+    async def test_method_update_with_optional_params(self, client: AsyncIncrease) -> None:
+        resource = await client.accounts.update(
+            "string",
+            {"name": "My renamed account"},
         )
         assert isinstance(resource, Account)
 

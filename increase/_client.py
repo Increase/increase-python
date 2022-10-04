@@ -50,6 +50,7 @@ class Increase(SyncAPIClient):
     wire_transfers: resources.WireTransfers
     check_transfers: resources.CheckTransfers
     entities: resources.Entities
+    wire_drawdown_requests: resources.WireDrawdownRequests
     events: resources.Events
     event_subscriptions: resources.EventSubscriptions
     files: resources.Files
@@ -122,6 +123,7 @@ class Increase(SyncAPIClient):
         self.wire_transfers = resources.WireTransfers(self)
         self.check_transfers = resources.CheckTransfers(self)
         self.entities = resources.Entities(self)
+        self.wire_drawdown_requests = resources.WireDrawdownRequests(self)
         self.events = resources.Events(self)
         self.event_subscriptions = resources.EventSubscriptions(self)
         self.files = resources.Files(self)
@@ -157,6 +159,7 @@ class AsyncIncrease(AsyncAPIClient):
     wire_transfers: resources.AsyncWireTransfers
     check_transfers: resources.AsyncCheckTransfers
     entities: resources.AsyncEntities
+    wire_drawdown_requests: resources.AsyncWireDrawdownRequests
     events: resources.AsyncEvents
     event_subscriptions: resources.AsyncEventSubscriptions
     files: resources.AsyncFiles
@@ -229,6 +232,7 @@ class AsyncIncrease(AsyncAPIClient):
         self.wire_transfers = resources.AsyncWireTransfers(self)
         self.check_transfers = resources.AsyncCheckTransfers(self)
         self.entities = resources.AsyncEntities(self)
+        self.wire_drawdown_requests = resources.AsyncWireDrawdownRequests(self)
         self.events = resources.AsyncEvents(self)
         self.event_subscriptions = resources.AsyncEventSubscriptions(self)
         self.files = resources.AsyncFiles(self)

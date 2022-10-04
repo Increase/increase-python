@@ -9,110 +9,114 @@ from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.entity import Entity
-from ..types.entity_list_params import EntityListParams
-from ..types.entity_create_params import EntityCreateParams
+from ..types.wire_drawdown_request import WireDrawdownRequest
+from ..types.wire_drawdown_request_list_params import WireDrawdownRequestListParams
+from ..types.wire_drawdown_request_create_params import WireDrawdownRequestCreateParams
 
-__all__ = ["Entities", "AsyncEntities"]
+__all__ = ["WireDrawdownRequests", "AsyncWireDrawdownRequests"]
 
 
-class Entities(SyncAPIResource):
+class WireDrawdownRequests(SyncAPIResource):
     def create(
         self,
-        body: EntityCreateParams,
+        body: WireDrawdownRequestCreateParams,
         *,
         headers: Union[Headers, NotGiven] = NOT_GIVEN,
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         query: Optional[Query] = None,
-    ) -> Entity:
+    ) -> WireDrawdownRequest:
         options = make_request_options(headers, max_retries, timeout, query)
         return self._post(
-            "/entities",
-            body=maybe_transform(body, EntityCreateParams),
+            "/wire_drawdown_requests",
+            body=maybe_transform(body, WireDrawdownRequestCreateParams),
             options=options,
-            cast_to=Entity,
+            cast_to=WireDrawdownRequest,
         )
 
     def retrieve(
         self,
-        entity_id: str,
+        wire_drawdown_request_id: str,
         *,
         headers: Union[Headers, NotGiven] = NOT_GIVEN,
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         query: Optional[Query] = None,
-    ) -> Entity:
+    ) -> WireDrawdownRequest:
         options = make_request_options(headers, max_retries, timeout, query)
         return self._get(
-            f"/entities/{entity_id}",
+            f"/wire_drawdown_requests/{wire_drawdown_request_id}",
             options=options,
-            cast_to=Entity,
+            cast_to=WireDrawdownRequest,
         )
 
     def list(
         self,
-        query: EntityListParams = {},
+        query: WireDrawdownRequestListParams = {},
         *,
         headers: Union[Headers, NotGiven] = NOT_GIVEN,
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
-    ) -> SyncPage[Entity]:
-        options = make_request_options(headers, max_retries, timeout, maybe_transform(query, EntityListParams))
+    ) -> SyncPage[WireDrawdownRequest]:
+        options = make_request_options(
+            headers, max_retries, timeout, maybe_transform(query, WireDrawdownRequestListParams)
+        )
         return self._get_api_list(
-            "/entities",
-            page=SyncPage[Entity],
+            "/wire_drawdown_requests",
+            page=SyncPage[WireDrawdownRequest],
             options=options,
-            model=Entity,
+            model=WireDrawdownRequest,
         )
 
 
-class AsyncEntities(AsyncAPIResource):
+class AsyncWireDrawdownRequests(AsyncAPIResource):
     async def create(
         self,
-        body: EntityCreateParams,
+        body: WireDrawdownRequestCreateParams,
         *,
         headers: Union[Headers, NotGiven] = NOT_GIVEN,
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         query: Optional[Query] = None,
-    ) -> Entity:
+    ) -> WireDrawdownRequest:
         options = make_request_options(headers, max_retries, timeout, query)
         return await self._post(
-            "/entities",
-            body=maybe_transform(body, EntityCreateParams),
+            "/wire_drawdown_requests",
+            body=maybe_transform(body, WireDrawdownRequestCreateParams),
             options=options,
-            cast_to=Entity,
+            cast_to=WireDrawdownRequest,
         )
 
     async def retrieve(
         self,
-        entity_id: str,
+        wire_drawdown_request_id: str,
         *,
         headers: Union[Headers, NotGiven] = NOT_GIVEN,
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         query: Optional[Query] = None,
-    ) -> Entity:
+    ) -> WireDrawdownRequest:
         options = make_request_options(headers, max_retries, timeout, query)
         return await self._get(
-            f"/entities/{entity_id}",
+            f"/wire_drawdown_requests/{wire_drawdown_request_id}",
             options=options,
-            cast_to=Entity,
+            cast_to=WireDrawdownRequest,
         )
 
     def list(
         self,
-        query: EntityListParams = {},
+        query: WireDrawdownRequestListParams = {},
         *,
         headers: Union[Headers, NotGiven] = NOT_GIVEN,
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
-    ) -> AsyncPaginator[Entity, AsyncPage[Entity]]:
-        options = make_request_options(headers, max_retries, timeout, maybe_transform(query, EntityListParams))
+    ) -> AsyncPaginator[WireDrawdownRequest, AsyncPage[WireDrawdownRequest]]:
+        options = make_request_options(
+            headers, max_retries, timeout, maybe_transform(query, WireDrawdownRequestListParams)
+        )
         return self._get_api_list(
-            "/entities",
-            page=AsyncPage[Entity],
+            "/wire_drawdown_requests",
+            page=AsyncPage[WireDrawdownRequest],
             options=options,
-            model=Entity,
+            model=WireDrawdownRequest,
         )

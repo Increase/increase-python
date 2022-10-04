@@ -46,6 +46,9 @@ _PurposeReservedKeywords = TypedDict(
                 "identity_document",
                 "increase_statement",
                 "other",
+                "trust_formation_document",
+                "digital_wallet_artwork",
+                "digital_wallet_app_icon",
             ]
         ],
     },

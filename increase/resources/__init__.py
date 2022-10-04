@@ -24,6 +24,7 @@ from .event_subscriptions import EventSubscriptions, AsyncEventSubscriptions
 from .ach_prenotifications import ACHPrenotifications, AsyncACHPrenotifications
 from .pending_transactions import PendingTransactions, AsyncPendingTransactions
 from .declined_transactions import DeclinedTransactions, AsyncDeclinedTransactions
+from .wire_drawdown_requests import WireDrawdownRequests, AsyncWireDrawdownRequests
 
 __all__ = [
     "Accounts",
@@ -56,6 +57,8 @@ __all__ = [
     "AsyncCheckTransfers",
     "Entities",
     "AsyncEntities",
+    "WireDrawdownRequests",
+    "AsyncWireDrawdownRequests",
     "Events",
     "AsyncEvents",
     "EventSubscriptions",
