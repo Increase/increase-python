@@ -1,12 +1,21 @@
 # File generated from our OpenAPI spec by Stainless.
 
+from __future__ import annotations
+
 import os
 from typing import Dict, Union, Optional
 from typing_extensions import Literal
 
 from . import resources
 from ._qs import Querystring
-from ._types import Timeout, Transport, ProxiesTypes, RequestOptions
+from ._types import (
+    NOT_GIVEN,
+    Timeout,
+    NotGiven,
+    Transport,
+    ProxiesTypes,
+    RequestOptions,
+)
 from ._version import __version__
 from ._base_client import (
     DEFAULT_TIMEOUT,
@@ -142,6 +151,32 @@ class Increase(SyncAPIClient):
     def auth_headers(self) -> Dict[str, str]:
         return {"Authorization": f"Bearer {self.api_key}"}
 
+    def copy(
+        self,
+        *,
+        api_key: str | None = None,
+        base_url: str | None = None,
+        timeout: float | Timeout | None | NotGiven = NOT_GIVEN,
+        max_retries: int | NotGiven = NOT_GIVEN,
+    ) -> Increase:
+        """
+        Create a new client instance re-using the same options given to the current client with optional overriding.
+
+        It should be noted that this does not share the underlying httpx client class which may lead
+        to performance issues.
+        """
+        # TODO: share the same httpx client between instances
+        return self.__class__(
+            base_url=base_url or str(self.base_url),
+            api_key=api_key or self.api_key,
+            timeout=self.timeout if isinstance(timeout, NotGiven) else timeout,
+            max_retries=self.max_retries if isinstance(max_retries, NotGiven) else max_retries,
+        )
+
+    # Alias for `copy` for nicer inline usage, e.g.
+    # client.with_options(timeout=10).foo.create(...)
+    with_options = copy
+
 
 class AsyncIncrease(AsyncAPIClient):
     accounts: resources.AsyncAccounts
@@ -250,6 +285,32 @@ class AsyncIncrease(AsyncAPIClient):
     @property
     def auth_headers(self) -> Dict[str, str]:
         return {"Authorization": f"Bearer {self.api_key}"}
+
+    def copy(
+        self,
+        *,
+        api_key: str | None = None,
+        base_url: str | None = None,
+        timeout: float | Timeout | None | NotGiven = NOT_GIVEN,
+        max_retries: int | NotGiven = NOT_GIVEN,
+    ) -> AsyncIncrease:
+        """
+        Create a new client instance re-using the same options given to the current client with optional overriding.
+
+        It should be noted that this does not share the underlying httpx client class which may lead
+        to performance issues.
+        """
+        # TODO: share the same httpx client between instances
+        return self.__class__(
+            base_url=base_url or str(self.base_url),
+            api_key=api_key or self.api_key,
+            timeout=self.timeout if isinstance(timeout, NotGiven) else timeout,
+            max_retries=self.max_retries if isinstance(max_retries, NotGiven) else max_retries,
+        )
+
+    # Alias for `copy` for nicer inline usage, e.g.
+    # client.with_options(timeout=10).foo.create(...)
+    with_options = copy
 
 
 Client = Increase
