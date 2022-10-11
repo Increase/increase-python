@@ -70,6 +70,9 @@ class Increase(SyncAPIClient):
     account_statements: resources.AccountStatements
     simulations: resources.Simulations
 
+    # client options
+    api_key: str
+
     def __init__(
         self,
         *,
@@ -98,7 +101,7 @@ class Increase(SyncAPIClient):
         """
         api_key = api_key or os.environ.get("INCREASE_API_KEY", "")
         if not api_key:
-            raise Exception("No API key provided")
+            raise Exception("No api_key argument provided")
 
         if base_url is None:
             try:
@@ -109,13 +112,14 @@ class Increase(SyncAPIClient):
         super().__init__(
             version=__version__,
             base_url=base_url,
-            api_key=api_key,
             max_retries=max_retries,
             timeout=timeout,
             transport=transport,
             proxies=proxies,
             _strict_response_validation=_strict_response_validation,
         )
+
+        self.api_key = api_key
 
         self.accounts = resources.Accounts(self)
         self.account_numbers = resources.AccountNumbers(self)
@@ -205,6 +209,9 @@ class AsyncIncrease(AsyncAPIClient):
     account_statements: resources.AsyncAccountStatements
     simulations: resources.AsyncSimulations
 
+    # client options
+    api_key: str
+
     def __init__(
         self,
         *,
@@ -233,7 +240,7 @@ class AsyncIncrease(AsyncAPIClient):
         """
         api_key = api_key or os.environ.get("INCREASE_API_KEY", "")
         if not api_key:
-            raise Exception("No API key provided")
+            raise Exception("No api_key argument provided")
 
         if base_url is None:
             try:
@@ -244,13 +251,14 @@ class AsyncIncrease(AsyncAPIClient):
         super().__init__(
             version=__version__,
             base_url=base_url,
-            api_key=api_key,
             max_retries=max_retries,
             timeout=timeout,
             transport=transport,
             proxies=proxies,
             _strict_response_validation=_strict_response_validation,
         )
+
+        self.api_key = api_key
 
         self.accounts = resources.AsyncAccounts(self)
         self.account_numbers = resources.AsyncAccountNumbers(self)

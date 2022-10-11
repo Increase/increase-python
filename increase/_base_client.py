@@ -216,7 +216,6 @@ class BaseAsyncPage(BasePage[ModelT, Query], Generic[ModelT]):
 class BaseClient:
     _client: httpx.Client | httpx.AsyncClient
     _version: str
-    api_key: str
     max_retries: int
     timeout: Union[float, Timeout, None]
     _strict_response_validation: bool
@@ -225,13 +224,11 @@ class BaseClient:
     def __init__(
         self,
         version: str,
-        api_key: str,
         _strict_response_validation: bool,
         max_retries: int = DEFAULT_MAX_RETRIES,
         timeout: Union[float, Timeout, None] = DEFAULT_TIMEOUT,
     ) -> None:
         self._version = version
-        self.api_key = api_key
         self.max_retries = max_retries
         self.timeout = timeout
         self._strict_response_validation = _strict_response_validation
@@ -375,6 +372,9 @@ class BaseClient:
 
         data = response.json()
 
+        if data is None:
+            return cast(ResponseT, None)
+
         if cast_to is UnknownResponse:
             return cast(ResponseT, data)
 
@@ -496,14 +496,18 @@ class SyncAPIClient(BaseClient):
         *,
         version: str,
         base_url: str,
-        api_key: str,
         max_retries: int = DEFAULT_MAX_RETRIES,
         timeout: Union[float, Timeout, None] = DEFAULT_TIMEOUT,
         transport: Optional[Transport] = None,
         proxies: Optional[ProxiesTypes] = None,
         _strict_response_validation: bool,
     ) -> None:
-        super().__init__(version, api_key, _strict_response_validation, max_retries, timeout)
+        super().__init__(
+            version=version,
+            timeout=timeout,
+            max_retries=max_retries,
+            _strict_response_validation=_strict_response_validation,
+        )
         self._client = httpx.Client(
             base_url=base_url,
             timeout=timeout,
@@ -653,14 +657,18 @@ class AsyncAPIClient(BaseClient):
         *,
         version: str,
         base_url: str,
-        api_key: str,
         _strict_response_validation: bool,
         max_retries: int = DEFAULT_MAX_RETRIES,
         timeout: Union[float, Timeout, None] = DEFAULT_TIMEOUT,
         transport: Optional[Transport] = None,
         proxies: Optional[ProxiesTypes] = None,
     ) -> None:
-        super().__init__(version, api_key, _strict_response_validation, max_retries, timeout)
+        super().__init__(
+            version=version,
+            timeout=timeout,
+            max_retries=max_retries,
+            _strict_response_validation=_strict_response_validation,
+        )
         self._client = httpx.AsyncClient(
             base_url=base_url,
             timeout=timeout,
