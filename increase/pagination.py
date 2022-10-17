@@ -3,10 +3,9 @@
 from typing import List, Generic, TypeVar, Optional
 from typing_extensions import TypedDict
 
-from pydantic import BaseModel
-
 from ._types import ModelT
-from ._base_client import BasePage, BaseSyncPage, BaseAsyncPage
+from ._models import BaseModel
+from ._base_client import BasePage, PageInfo, BaseSyncPage, BaseAsyncPage
 
 __all__ = ["PageParams", "SyncPage", "AsyncPage"]
 
@@ -31,12 +30,12 @@ class SyncPage(BaseSyncPage[ModelT], BasePage[ModelT, PageParams], Generic[Model
     def _get_page_items(self) -> List[ModelT]:
         return self.data
 
-    def next_page_params(self) -> Optional[PageParams]:
+    def next_page_info(self) -> Optional[PageInfo]:
         cursor = self.next_cursor
         if not cursor:
             return None
 
-        return {"cursor": cursor}
+        return PageInfo(params={"cursor": cursor})
 
 
 class AsyncPage(BaseAsyncPage[ModelT], BasePage[ModelT, PageParams], Generic[ModelT]):
@@ -46,9 +45,9 @@ class AsyncPage(BaseAsyncPage[ModelT], BasePage[ModelT, PageParams], Generic[Mod
     def _get_page_items(self) -> List[ModelT]:
         return self.data
 
-    def next_page_params(self) -> Optional[PageParams]:
+    def next_page_info(self) -> Optional[PageInfo]:
         cursor = self.next_cursor
         if not cursor:
             return None
 
-        return {"cursor": cursor}
+        return PageInfo(params={"cursor": cursor})
