@@ -5,7 +5,7 @@ from __future__ import annotations
 from typing import Union, Optional
 
 from .._types import NOT_GIVEN, Query, Headers, Timeout, NotGiven
-from .._utils import extract_files, maybe_transform
+from .._utils import extract_files, maybe_transform, deepcopy_minimal
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from ..types.file import File
@@ -33,7 +33,7 @@ class Files(SyncAPIResource):
         """
         # Make a copy of the input so that our internal mutations (extracting files)
         # don't incidentally mutate the user's dictionary.
-        body = body.copy()
+        body = deepcopy_minimal(body)
         files = extract_files(body, paths=[["file"]])
         if files:
             # It should be noted that the actual Content-Type header that will be
@@ -100,7 +100,7 @@ class AsyncFiles(AsyncAPIResource):
         """
         # Make a copy of the input so that our internal mutations (extracting files)
         # don't incidentally mutate the user's dictionary.
-        body = body.copy()
+        body = deepcopy_minimal(body)
         files = extract_files(body, paths=[["file"]])
         if files:
             # It should be noted that the actual Content-Type header that will be

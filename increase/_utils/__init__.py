@@ -5,6 +5,7 @@ from ._utils import is_mapping as is_mapping
 from ._utils import is_list_type as is_list_type
 from ._utils import extract_files as extract_files
 from ._utils import is_union_type as is_union_type
+from ._utils import deepcopy_minimal as deepcopy_minimal
 from ._utils import extract_type_arg as extract_type_arg
 from ._utils import is_required_type as is_required_type
 from ._utils import is_annotated_type as is_annotated_type

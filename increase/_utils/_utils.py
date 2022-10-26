@@ -139,3 +139,18 @@ def extract_type_arg(typ: type, index: int) -> type:
         return cast(type, args[index])
     except IndexError:
         raise RuntimeError(f"Expected type {typ} to have a type argument at index {index} but it did not")
+
+
+def deepcopy_minimal(item: _T) -> _T:
+    """Minimal reimplementation of copy.deepcopy() that will only copy certain object types:
+
+    - mappings, e.g. `dict`
+    - list
+
+    This is done for performance reasons.
+    """
+    if is_mapping(item):
+        return cast(_T, {k: deepcopy_minimal(v) for k, v in item.items()})
+    if is_list(item):
+        return cast(_T, [deepcopy_minimal(entry) for entry in item])
+    return item
