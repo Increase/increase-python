@@ -22,31 +22,27 @@ class TestWireDrawdownRequests:
     @parametrize
     def test_method_create(self, client: Increase) -> None:
         resource = client.wire_drawdown_requests.create(
-            {
-                "account_number_id": "account_number_v18nkfqm6afpsrvy82b2",
-                "amount": 10000,
-                "message_to_recipient": "Invoice 29582",
-                "recipient_account_number": "987654321",
-                "recipient_routing_number": "101050001",
-            },
+            account_number_id="string",
+            amount=0,
+            message_to_recipient="x",
+            recipient_account_number="x",
+            recipient_routing_number="x",
         )
         assert isinstance(resource, WireDrawdownRequest)
 
     @pytest.mark.skip(reason="Prism tests are broken")
     @parametrize
-    def test_method_create_with_optional_params(self, client: Increase) -> None:
+    def test_method_create_with_all_params(self, client: Increase) -> None:
         resource = client.wire_drawdown_requests.create(
-            {
-                "account_number_id": "account_number_v18nkfqm6afpsrvy82b2",
-                "amount": 10000,
-                "message_to_recipient": "Invoice 29582",
-                "recipient_account_number": "987654321",
-                "recipient_routing_number": "101050001",
-                "recipient_name": "Ian Crease",
-                "recipient_address_line1": "33 Liberty Street",
-                "recipient_address_line2": "New York, NY, 10045",
-                "recipient_address_line3": "x",
-            },
+            account_number_id="string",
+            amount=0,
+            message_to_recipient="x",
+            recipient_account_number="x",
+            recipient_routing_number="x",
+            recipient_name="x",
+            recipient_address_line1="x",
+            recipient_address_line2="x",
+            recipient_address_line3="x",
         )
         assert isinstance(resource, WireDrawdownRequest)
 
@@ -63,12 +59,10 @@ class TestWireDrawdownRequests:
         assert isinstance(resource, SyncPage)
 
     @parametrize
-    def test_method_list_with_optional_params(self, client: Increase) -> None:
+    def test_method_list_with_all_params(self, client: Increase) -> None:
         resource = client.wire_drawdown_requests.list(
-            {
-                "cursor": "string",
-                "limit": 0,
-            },
+            cursor="string",
+            limit=0,
         )
         assert isinstance(resource, SyncPage)
 
@@ -82,31 +76,27 @@ class TestAsyncWireDrawdownRequests:
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
         resource = await client.wire_drawdown_requests.create(
-            {
-                "account_number_id": "account_number_v18nkfqm6afpsrvy82b2",
-                "amount": 10000,
-                "message_to_recipient": "Invoice 29582",
-                "recipient_account_number": "987654321",
-                "recipient_routing_number": "101050001",
-            },
+            account_number_id="string",
+            amount=0,
+            message_to_recipient="x",
+            recipient_account_number="x",
+            recipient_routing_number="x",
         )
         assert isinstance(resource, WireDrawdownRequest)
 
     @pytest.mark.skip(reason="Prism tests are broken")
     @parametrize
-    async def test_method_create_with_optional_params(self, client: AsyncIncrease) -> None:
+    async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         resource = await client.wire_drawdown_requests.create(
-            {
-                "account_number_id": "account_number_v18nkfqm6afpsrvy82b2",
-                "amount": 10000,
-                "message_to_recipient": "Invoice 29582",
-                "recipient_account_number": "987654321",
-                "recipient_routing_number": "101050001",
-                "recipient_name": "Ian Crease",
-                "recipient_address_line1": "33 Liberty Street",
-                "recipient_address_line2": "New York, NY, 10045",
-                "recipient_address_line3": "x",
-            },
+            account_number_id="string",
+            amount=0,
+            message_to_recipient="x",
+            recipient_account_number="x",
+            recipient_routing_number="x",
+            recipient_name="x",
+            recipient_address_line1="x",
+            recipient_address_line2="x",
+            recipient_address_line3="x",
         )
         assert isinstance(resource, WireDrawdownRequest)
 
@@ -123,11 +113,9 @@ class TestAsyncWireDrawdownRequests:
         assert isinstance(resource, AsyncPage)
 
     @parametrize
-    async def test_method_list_with_optional_params(self, client: AsyncIncrease) -> None:
+    async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
         resource = await client.wire_drawdown_requests.list(
-            {
-                "cursor": "string",
-                "limit": 0,
-            },
+            cursor="string",
+            limit=0,
         )
         assert isinstance(resource, AsyncPage)

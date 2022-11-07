@@ -22,22 +22,18 @@ class TestFiles:
     @parametrize
     def test_method_create(self, client: Increase) -> None:
         resource = client.files.create(
-            {
-                "file": b"raw file contents",
-                "purpose": "check_image_front",
-            },
+            file=b"raw file contents",
+            purpose="check_image_front",
         )
         assert isinstance(resource, File)
 
     @pytest.mark.skip(reason="file upload tests are broken on the Prism mock server")
     @parametrize
-    def test_method_create_with_optional_params(self, client: Increase) -> None:
+    def test_method_create_with_all_params(self, client: Increase) -> None:
         resource = client.files.create(
-            {
-                "file": b"raw file contents",
-                "description": "x",
-                "purpose": "check_image_front",
-            },
+            file=b"raw file contents",
+            description="x",
+            purpose="check_image_front",
         )
         assert isinstance(resource, File)
 
@@ -54,19 +50,17 @@ class TestFiles:
         assert isinstance(resource, SyncPage)
 
     @parametrize
-    def test_method_list_with_optional_params(self, client: Increase) -> None:
+    def test_method_list_with_all_params(self, client: Increase) -> None:
         resource = client.files.list(
-            {
-                "cursor": "string",
-                "limit": 0,
-                "created_at": {
-                    "after": "2019-12-27T18:11:19.117Z",
-                    "before": "2019-12-27T18:11:19.117Z",
-                    "on_or_after": "2019-12-27T18:11:19.117Z",
-                    "on_or_before": "2019-12-27T18:11:19.117Z",
-                },
-                "purpose": {"in": ["check_image_front", "check_image_front", "check_image_front"]},
+            cursor="string",
+            limit=0,
+            created_at={
+                "after": "2019-12-27T18:11:19.117Z",
+                "before": "2019-12-27T18:11:19.117Z",
+                "on_or_after": "2019-12-27T18:11:19.117Z",
+                "on_or_before": "2019-12-27T18:11:19.117Z",
             },
+            purpose={"in": ["check_image_front", "check_image_front", "check_image_front"]},
         )
         assert isinstance(resource, SyncPage)
 
@@ -80,22 +74,18 @@ class TestAsyncFiles:
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
         resource = await client.files.create(
-            {
-                "file": b"raw file contents",
-                "purpose": "check_image_front",
-            },
+            file=b"raw file contents",
+            purpose="check_image_front",
         )
         assert isinstance(resource, File)
 
     @pytest.mark.skip(reason="file upload tests are broken on the Prism mock server")
     @parametrize
-    async def test_method_create_with_optional_params(self, client: AsyncIncrease) -> None:
+    async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         resource = await client.files.create(
-            {
-                "file": b"raw file contents",
-                "description": "x",
-                "purpose": "check_image_front",
-            },
+            file=b"raw file contents",
+            description="x",
+            purpose="check_image_front",
         )
         assert isinstance(resource, File)
 
@@ -112,18 +102,16 @@ class TestAsyncFiles:
         assert isinstance(resource, AsyncPage)
 
     @parametrize
-    async def test_method_list_with_optional_params(self, client: AsyncIncrease) -> None:
+    async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
         resource = await client.files.list(
-            {
-                "cursor": "string",
-                "limit": 0,
-                "created_at": {
-                    "after": "2019-12-27T18:11:19.117Z",
-                    "before": "2019-12-27T18:11:19.117Z",
-                    "on_or_after": "2019-12-27T18:11:19.117Z",
-                    "on_or_before": "2019-12-27T18:11:19.117Z",
-                },
-                "purpose": {"in": ["check_image_front", "check_image_front", "check_image_front"]},
+            cursor="string",
+            limit=0,
+            created_at={
+                "after": "2019-12-27T18:11:19.117Z",
+                "before": "2019-12-27T18:11:19.117Z",
+                "on_or_after": "2019-12-27T18:11:19.117Z",
+                "on_or_before": "2019-12-27T18:11:19.117Z",
             },
+            purpose={"in": ["check_image_front", "check_image_front", "check_image_front"]},
         )
         assert isinstance(resource, AsyncPage)

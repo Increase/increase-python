@@ -31,12 +31,10 @@ class TestOauthConnections:
         assert isinstance(resource, SyncPage)
 
     @parametrize
-    def test_method_list_with_optional_params(self, client: Increase) -> None:
+    def test_method_list_with_all_params(self, client: Increase) -> None:
         resource = client.oauth_connections.list(
-            {
-                "cursor": "string",
-                "limit": 0,
-            },
+            cursor="string",
+            limit=0,
         )
         assert isinstance(resource, SyncPage)
 
@@ -59,11 +57,9 @@ class TestAsyncOauthConnections:
         assert isinstance(resource, AsyncPage)
 
     @parametrize
-    async def test_method_list_with_optional_params(self, client: AsyncIncrease) -> None:
+    async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
         resource = await client.oauth_connections.list(
-            {
-                "cursor": "string",
-                "limit": 0,
-            },
+            cursor="string",
+            limit=0,
         )
         assert isinstance(resource, AsyncPage)

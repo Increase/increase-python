@@ -1054,8 +1054,8 @@ class Transaction(BaseModel):
     """
 
     description: str
-    """
-    For a Transaction related to a transfer, this is the description you provide.
+    """For a Transaction related to a transfer, this is the description you provide.
+
     For a Transaction related to a payment, this is the description the vendor
     provides.
     """

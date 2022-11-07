@@ -20,18 +20,16 @@ class TestRoutingNumbers:
     @parametrize
     def test_method_list(self, client: Increase) -> None:
         resource = client.routing_numbers.list(
-            {"routing_number": "xxxxxxxxx"},
+            routing_number="xxxxxxxxx",
         )
         assert isinstance(resource, SyncPage)
 
     @parametrize
-    def test_method_list_with_optional_params(self, client: Increase) -> None:
+    def test_method_list_with_all_params(self, client: Increase) -> None:
         resource = client.routing_numbers.list(
-            {
-                "cursor": "string",
-                "limit": 0,
-                "routing_number": "xxxxxxxxx",
-            },
+            cursor="string",
+            limit=0,
+            routing_number="xxxxxxxxx",
         )
         assert isinstance(resource, SyncPage)
 
@@ -44,17 +42,15 @@ class TestAsyncRoutingNumbers:
     @parametrize
     async def test_method_list(self, client: AsyncIncrease) -> None:
         resource = await client.routing_numbers.list(
-            {"routing_number": "xxxxxxxxx"},
+            routing_number="xxxxxxxxx",
         )
         assert isinstance(resource, AsyncPage)
 
     @parametrize
-    async def test_method_list_with_optional_params(self, client: AsyncIncrease) -> None:
+    async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
         resource = await client.routing_numbers.list(
-            {
-                "cursor": "string",
-                "limit": 0,
-                "routing_number": "xxxxxxxxx",
-            },
+            cursor="string",
+            limit=0,
+            routing_number="xxxxxxxxx",
         )
         assert isinstance(resource, AsyncPage)

@@ -22,20 +22,16 @@ class TestRealTimePaymentsTransfers:
     @parametrize
     def test_method_create_inbound(self, client: Increase) -> None:
         resource = client.simulations.real_time_payments_transfers.create_inbound(
-            {
-                "account_number_id": "account_number_v18nkfqm6afpsrvy82b2",
-                "amount": 1000,
-            },
+            account_number_id="string",
+            amount=0,
         )
         assert isinstance(resource, InboundRealTimePaymentsTransferSimulationResult)
 
     @parametrize
-    def test_method_create_inbound_with_optional_params(self, client: Increase) -> None:
+    def test_method_create_inbound_with_all_params(self, client: Increase) -> None:
         resource = client.simulations.real_time_payments_transfers.create_inbound(
-            {
-                "account_number_id": "account_number_v18nkfqm6afpsrvy82b2",
-                "amount": 1000,
-            },
+            account_number_id="string",
+            amount=0,
         )
         assert isinstance(resource, InboundRealTimePaymentsTransferSimulationResult)
 
@@ -48,19 +44,15 @@ class TestAsyncRealTimePaymentsTransfers:
     @parametrize
     async def test_method_create_inbound(self, client: AsyncIncrease) -> None:
         resource = await client.simulations.real_time_payments_transfers.create_inbound(
-            {
-                "account_number_id": "account_number_v18nkfqm6afpsrvy82b2",
-                "amount": 1000,
-            },
+            account_number_id="string",
+            amount=0,
         )
         assert isinstance(resource, InboundRealTimePaymentsTransferSimulationResult)
 
     @parametrize
-    async def test_method_create_inbound_with_optional_params(self, client: AsyncIncrease) -> None:
+    async def test_method_create_inbound_with_all_params(self, client: AsyncIncrease) -> None:
         resource = await client.simulations.real_time_payments_transfers.create_inbound(
-            {
-                "account_number_id": "account_number_v18nkfqm6afpsrvy82b2",
-                "amount": 1000,
-            },
+            account_number_id="string",
+            amount=0,
         )
         assert isinstance(resource, InboundRealTimePaymentsTransferSimulationResult)

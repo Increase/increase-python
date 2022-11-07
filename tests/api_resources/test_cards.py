@@ -8,7 +8,7 @@ import pytest
 from increase import Increase, AsyncIncrease
 from increase.pagination import SyncPage, AsyncPage
 from increase.types.card import Card
-from increase.types.card_detail import CardDetails
+from increase.types.card_details import CardDetails
 
 base_url = os.environ.get("API_BASE_URL", "http://127.0.0.1:4010")
 api_key = os.environ.get("API_KEY", "something1234")
@@ -22,23 +22,21 @@ class TestCards:
     @parametrize
     def test_method_create(self, client: Increase) -> None:
         resource = client.cards.create(
-            {"account_id": "account_in71c4amph0vgo2qllky"},
+            account_id="string",
         )
         assert isinstance(resource, Card)
 
     @parametrize
-    def test_method_create_with_optional_params(self, client: Increase) -> None:
+    def test_method_create_with_all_params(self, client: Increase) -> None:
         resource = client.cards.create(
-            {
-                "account_id": "account_in71c4amph0vgo2qllky",
-                "description": "Card for Ian Crease",
-                "billing_address": {
-                    "line1": "x",
-                    "line2": "x",
-                    "city": "x",
-                    "state": "x",
-                    "postal_code": "x",
-                },
+            account_id="string",
+            description="x",
+            billing_address={
+                "line1": "x",
+                "line2": "x",
+                "city": "x",
+                "state": "x",
+                "postal_code": "x",
             },
         )
         assert isinstance(resource, Card)
@@ -54,24 +52,21 @@ class TestCards:
     def test_method_update(self, client: Increase) -> None:
         resource = client.cards.update(
             "string",
-            {},
         )
         assert isinstance(resource, Card)
 
     @parametrize
-    def test_method_update_with_optional_params(self, client: Increase) -> None:
+    def test_method_update_with_all_params(self, client: Increase) -> None:
         resource = client.cards.update(
             "string",
-            {
-                "description": "New description",
-                "status": "active",
-                "billing_address": {
-                    "line1": "x",
-                    "line2": "x",
-                    "city": "x",
-                    "state": "x",
-                    "postal_code": "x",
-                },
+            description="x",
+            status="active",
+            billing_address={
+                "line1": "x",
+                "line2": "x",
+                "city": "x",
+                "state": "x",
+                "postal_code": "x",
             },
         )
         assert isinstance(resource, Card)
@@ -82,18 +77,16 @@ class TestCards:
         assert isinstance(resource, SyncPage)
 
     @parametrize
-    def test_method_list_with_optional_params(self, client: Increase) -> None:
+    def test_method_list_with_all_params(self, client: Increase) -> None:
         resource = client.cards.list(
-            {
-                "cursor": "string",
-                "limit": 0,
-                "account_id": "string",
-                "created_at": {
-                    "after": "2019-12-27T18:11:19.117Z",
-                    "before": "2019-12-27T18:11:19.117Z",
-                    "on_or_after": "2019-12-27T18:11:19.117Z",
-                    "on_or_before": "2019-12-27T18:11:19.117Z",
-                },
+            cursor="string",
+            limit=0,
+            account_id="string",
+            created_at={
+                "after": "2019-12-27T18:11:19.117Z",
+                "before": "2019-12-27T18:11:19.117Z",
+                "on_or_after": "2019-12-27T18:11:19.117Z",
+                "on_or_before": "2019-12-27T18:11:19.117Z",
             },
         )
         assert isinstance(resource, SyncPage)
@@ -114,23 +107,21 @@ class TestAsyncCards:
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
         resource = await client.cards.create(
-            {"account_id": "account_in71c4amph0vgo2qllky"},
+            account_id="string",
         )
         assert isinstance(resource, Card)
 
     @parametrize
-    async def test_method_create_with_optional_params(self, client: AsyncIncrease) -> None:
+    async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         resource = await client.cards.create(
-            {
-                "account_id": "account_in71c4amph0vgo2qllky",
-                "description": "Card for Ian Crease",
-                "billing_address": {
-                    "line1": "x",
-                    "line2": "x",
-                    "city": "x",
-                    "state": "x",
-                    "postal_code": "x",
-                },
+            account_id="string",
+            description="x",
+            billing_address={
+                "line1": "x",
+                "line2": "x",
+                "city": "x",
+                "state": "x",
+                "postal_code": "x",
             },
         )
         assert isinstance(resource, Card)
@@ -146,24 +137,21 @@ class TestAsyncCards:
     async def test_method_update(self, client: AsyncIncrease) -> None:
         resource = await client.cards.update(
             "string",
-            {},
         )
         assert isinstance(resource, Card)
 
     @parametrize
-    async def test_method_update_with_optional_params(self, client: AsyncIncrease) -> None:
+    async def test_method_update_with_all_params(self, client: AsyncIncrease) -> None:
         resource = await client.cards.update(
             "string",
-            {
-                "description": "New description",
-                "status": "active",
-                "billing_address": {
-                    "line1": "x",
-                    "line2": "x",
-                    "city": "x",
-                    "state": "x",
-                    "postal_code": "x",
-                },
+            description="x",
+            status="active",
+            billing_address={
+                "line1": "x",
+                "line2": "x",
+                "city": "x",
+                "state": "x",
+                "postal_code": "x",
             },
         )
         assert isinstance(resource, Card)
@@ -174,18 +162,16 @@ class TestAsyncCards:
         assert isinstance(resource, AsyncPage)
 
     @parametrize
-    async def test_method_list_with_optional_params(self, client: AsyncIncrease) -> None:
+    async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
         resource = await client.cards.list(
-            {
-                "cursor": "string",
-                "limit": 0,
-                "account_id": "string",
-                "created_at": {
-                    "after": "2019-12-27T18:11:19.117Z",
-                    "before": "2019-12-27T18:11:19.117Z",
-                    "on_or_after": "2019-12-27T18:11:19.117Z",
-                    "on_or_before": "2019-12-27T18:11:19.117Z",
-                },
+            cursor="string",
+            limit=0,
+            account_id="string",
+            created_at={
+                "after": "2019-12-27T18:11:19.117Z",
+                "before": "2019-12-27T18:11:19.117Z",
+                "on_or_after": "2019-12-27T18:11:19.117Z",
+                "on_or_before": "2019-12-27T18:11:19.117Z",
             },
         )
         assert isinstance(resource, AsyncPage)

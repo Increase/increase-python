@@ -21,17 +21,15 @@ class TestEventSubscriptions:
     @parametrize
     def test_method_create(self, client: Increase) -> None:
         resource = client.event_subscriptions.create(
-            {"url": "https://website.com/webhooks"},
+            url="string",
         )
         assert isinstance(resource, EventSubscription)
 
     @parametrize
-    def test_method_create_with_optional_params(self, client: Increase) -> None:
+    def test_method_create_with_all_params(self, client: Increase) -> None:
         resource = client.event_subscriptions.create(
-            {
-                "url": "https://website.com/webhooks",
-                "shared_secret": "x",
-            },
+            url="string",
+            shared_secret="x",
         )
         assert isinstance(resource, EventSubscription)
 
@@ -46,15 +44,14 @@ class TestEventSubscriptions:
     def test_method_update(self, client: Increase) -> None:
         resource = client.event_subscriptions.update(
             "string",
-            {},
         )
         assert isinstance(resource, EventSubscription)
 
     @parametrize
-    def test_method_update_with_optional_params(self, client: Increase) -> None:
+    def test_method_update_with_all_params(self, client: Increase) -> None:
         resource = client.event_subscriptions.update(
             "string",
-            {"status": "active"},
+            status="active",
         )
         assert isinstance(resource, EventSubscription)
 
@@ -64,12 +61,10 @@ class TestEventSubscriptions:
         assert isinstance(resource, SyncPage)
 
     @parametrize
-    def test_method_list_with_optional_params(self, client: Increase) -> None:
+    def test_method_list_with_all_params(self, client: Increase) -> None:
         resource = client.event_subscriptions.list(
-            {
-                "cursor": "string",
-                "limit": 0,
-            },
+            cursor="string",
+            limit=0,
         )
         assert isinstance(resource, SyncPage)
 
@@ -82,17 +77,15 @@ class TestAsyncEventSubscriptions:
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
         resource = await client.event_subscriptions.create(
-            {"url": "https://website.com/webhooks"},
+            url="string",
         )
         assert isinstance(resource, EventSubscription)
 
     @parametrize
-    async def test_method_create_with_optional_params(self, client: AsyncIncrease) -> None:
+    async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         resource = await client.event_subscriptions.create(
-            {
-                "url": "https://website.com/webhooks",
-                "shared_secret": "x",
-            },
+            url="string",
+            shared_secret="x",
         )
         assert isinstance(resource, EventSubscription)
 
@@ -107,15 +100,14 @@ class TestAsyncEventSubscriptions:
     async def test_method_update(self, client: AsyncIncrease) -> None:
         resource = await client.event_subscriptions.update(
             "string",
-            {},
         )
         assert isinstance(resource, EventSubscription)
 
     @parametrize
-    async def test_method_update_with_optional_params(self, client: AsyncIncrease) -> None:
+    async def test_method_update_with_all_params(self, client: AsyncIncrease) -> None:
         resource = await client.event_subscriptions.update(
             "string",
-            {"status": "active"},
+            status="active",
         )
         assert isinstance(resource, EventSubscription)
 
@@ -125,11 +117,9 @@ class TestAsyncEventSubscriptions:
         assert isinstance(resource, AsyncPage)
 
     @parametrize
-    async def test_method_list_with_optional_params(self, client: AsyncIncrease) -> None:
+    async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
         resource = await client.event_subscriptions.list(
-            {
-                "cursor": "string",
-                "limit": 0,
-            },
+            cursor="string",
+            limit=0,
         )
         assert isinstance(resource, AsyncPage)

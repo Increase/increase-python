@@ -21,174 +21,28 @@ class TestEntities:
     @parametrize
     def test_method_create(self, client: Increase) -> None:
         resource = client.entities.create(
-            {"structure": "corporation"},
+            structure="corporation",
         )
         assert isinstance(resource, Entity)
 
     @parametrize
-    def test_method_create_with_optional_params(self, client: Increase) -> None:
+    def test_method_create_with_all_params(self, client: Increase) -> None:
         resource = client.entities.create(
-            {
-                "structure": "corporation",
-                "corporation": {
-                    "name": "National Phonograph Company",
-                    "website": "https://example.com",
-                    "tax_identifier": "602214076",
-                    "incorporation_state": "NY",
-                    "address": {
-                        "line1": "33 Liberty Street",
-                        "line2": "x",
-                        "city": "New York",
-                        "state": "NY",
-                        "zip": "10045",
-                    },
-                    "beneficial_owners": [
-                        {
-                            "individual": {
-                                "name": "x",
-                                "date_of_birth": "2019-12-27T18:11:19.117Z",
-                                "address": {
-                                    "line1": "x",
-                                    "line2": "x",
-                                    "city": "x",
-                                    "state": "x",
-                                    "zip": "x",
-                                },
-                                "identification": {
-                                    "method": "social_security_number",
-                                    "number": "x",
-                                    "country": "x",
-                                },
-                            },
-                            "company_title": "x",
-                            "prong": "ownership",
-                        },
-                        {
-                            "individual": {
-                                "name": "x",
-                                "date_of_birth": "2019-12-27T18:11:19.117Z",
-                                "address": {
-                                    "line1": "x",
-                                    "line2": "x",
-                                    "city": "x",
-                                    "state": "x",
-                                    "zip": "x",
-                                },
-                                "identification": {
-                                    "method": "social_security_number",
-                                    "number": "x",
-                                    "country": "x",
-                                },
-                            },
-                            "company_title": "x",
-                            "prong": "ownership",
-                        },
-                        {
-                            "individual": {
-                                "name": "x",
-                                "date_of_birth": "2019-12-27T18:11:19.117Z",
-                                "address": {
-                                    "line1": "x",
-                                    "line2": "x",
-                                    "city": "x",
-                                    "state": "x",
-                                    "zip": "x",
-                                },
-                                "identification": {
-                                    "method": "social_security_number",
-                                    "number": "x",
-                                    "country": "x",
-                                },
-                            },
-                            "company_title": "x",
-                            "prong": "ownership",
-                        },
-                    ],
+            structure="corporation",
+            corporation={
+                "name": "x",
+                "website": "string",
+                "tax_identifier": "x",
+                "incorporation_state": "x",
+                "address": {
+                    "line1": "x",
+                    "line2": "x",
+                    "city": "x",
+                    "state": "x",
+                    "zip": "x",
                 },
-                "natural_person": {
-                    "name": "x",
-                    "date_of_birth": "2019-12-27T18:11:19.117Z",
-                    "address": {
-                        "line1": "x",
-                        "line2": "x",
-                        "city": "x",
-                        "state": "x",
-                        "zip": "x",
-                    },
-                    "identification": {
-                        "method": "social_security_number",
-                        "number": "x",
-                        "country": "x",
-                    },
-                },
-                "joint": {
-                    "name": "x",
-                    "individuals": [
-                        {
-                            "name": "x",
-                            "date_of_birth": "2019-12-27T18:11:19.117Z",
-                            "address": {
-                                "line1": "x",
-                                "line2": "x",
-                                "city": "x",
-                                "state": "x",
-                                "zip": "x",
-                            },
-                            "identification": {
-                                "method": "social_security_number",
-                                "number": "x",
-                                "country": "x",
-                            },
-                        },
-                        {
-                            "name": "x",
-                            "date_of_birth": "2019-12-27T18:11:19.117Z",
-                            "address": {
-                                "line1": "x",
-                                "line2": "x",
-                                "city": "x",
-                                "state": "x",
-                                "zip": "x",
-                            },
-                            "identification": {
-                                "method": "social_security_number",
-                                "number": "x",
-                                "country": "x",
-                            },
-                        },
-                        {
-                            "name": "x",
-                            "date_of_birth": "2019-12-27T18:11:19.117Z",
-                            "address": {
-                                "line1": "x",
-                                "line2": "x",
-                                "city": "x",
-                                "state": "x",
-                                "zip": "x",
-                            },
-                            "identification": {
-                                "method": "social_security_number",
-                                "number": "x",
-                                "country": "x",
-                            },
-                        },
-                    ],
-                },
-                "trust": {
-                    "name": "x",
-                    "category": "revocable",
-                    "tax_identifier": "x",
-                    "formation_state": "x",
-                    "address": {
-                        "line1": "x",
-                        "line2": "x",
-                        "city": "x",
-                        "state": "x",
-                        "zip": "x",
-                    },
-                    "formation_document_file_id": "string",
-                    "trustee": {
-                        "structure": "individual",
+                "beneficial_owners": [
+                    {
                         "individual": {
                             "name": "x",
                             "date_of_birth": "2019-12-27T18:11:19.117Z",
@@ -205,8 +59,136 @@ class TestEntities:
                                 "country": "x",
                             },
                         },
+                        "company_title": "x",
+                        "prong": "ownership",
                     },
-                    "grantor": {
+                    {
+                        "individual": {
+                            "name": "x",
+                            "date_of_birth": "2019-12-27T18:11:19.117Z",
+                            "address": {
+                                "line1": "x",
+                                "line2": "x",
+                                "city": "x",
+                                "state": "x",
+                                "zip": "x",
+                            },
+                            "identification": {
+                                "method": "social_security_number",
+                                "number": "x",
+                                "country": "x",
+                            },
+                        },
+                        "company_title": "x",
+                        "prong": "ownership",
+                    },
+                    {
+                        "individual": {
+                            "name": "x",
+                            "date_of_birth": "2019-12-27T18:11:19.117Z",
+                            "address": {
+                                "line1": "x",
+                                "line2": "x",
+                                "city": "x",
+                                "state": "x",
+                                "zip": "x",
+                            },
+                            "identification": {
+                                "method": "social_security_number",
+                                "number": "x",
+                                "country": "x",
+                            },
+                        },
+                        "company_title": "x",
+                        "prong": "ownership",
+                    },
+                ],
+            },
+            natural_person={
+                "name": "x",
+                "date_of_birth": "2019-12-27T18:11:19.117Z",
+                "address": {
+                    "line1": "x",
+                    "line2": "x",
+                    "city": "x",
+                    "state": "x",
+                    "zip": "x",
+                },
+                "identification": {
+                    "method": "social_security_number",
+                    "number": "x",
+                    "country": "x",
+                },
+            },
+            joint={
+                "name": "x",
+                "individuals": [
+                    {
+                        "name": "x",
+                        "date_of_birth": "2019-12-27T18:11:19.117Z",
+                        "address": {
+                            "line1": "x",
+                            "line2": "x",
+                            "city": "x",
+                            "state": "x",
+                            "zip": "x",
+                        },
+                        "identification": {
+                            "method": "social_security_number",
+                            "number": "x",
+                            "country": "x",
+                        },
+                    },
+                    {
+                        "name": "x",
+                        "date_of_birth": "2019-12-27T18:11:19.117Z",
+                        "address": {
+                            "line1": "x",
+                            "line2": "x",
+                            "city": "x",
+                            "state": "x",
+                            "zip": "x",
+                        },
+                        "identification": {
+                            "method": "social_security_number",
+                            "number": "x",
+                            "country": "x",
+                        },
+                    },
+                    {
+                        "name": "x",
+                        "date_of_birth": "2019-12-27T18:11:19.117Z",
+                        "address": {
+                            "line1": "x",
+                            "line2": "x",
+                            "city": "x",
+                            "state": "x",
+                            "zip": "x",
+                        },
+                        "identification": {
+                            "method": "social_security_number",
+                            "number": "x",
+                            "country": "x",
+                        },
+                    },
+                ],
+            },
+            trust={
+                "name": "x",
+                "category": "revocable",
+                "tax_identifier": "x",
+                "formation_state": "x",
+                "address": {
+                    "line1": "x",
+                    "line2": "x",
+                    "city": "x",
+                    "state": "x",
+                    "zip": "x",
+                },
+                "formation_document_file_id": "string",
+                "trustee": {
+                    "structure": "individual",
+                    "individual": {
                         "name": "x",
                         "date_of_birth": "2019-12-27T18:11:19.117Z",
                         "address": {
@@ -223,8 +205,24 @@ class TestEntities:
                         },
                     },
                 },
-                "description": "x",
+                "grantor": {
+                    "name": "x",
+                    "date_of_birth": "2019-12-27T18:11:19.117Z",
+                    "address": {
+                        "line1": "x",
+                        "line2": "x",
+                        "city": "x",
+                        "state": "x",
+                        "zip": "x",
+                    },
+                    "identification": {
+                        "method": "social_security_number",
+                        "number": "x",
+                        "country": "x",
+                    },
+                },
             },
+            description="x",
         )
         assert isinstance(resource, Entity)
 
@@ -241,12 +239,10 @@ class TestEntities:
         assert isinstance(resource, SyncPage)
 
     @parametrize
-    def test_method_list_with_optional_params(self, client: Increase) -> None:
+    def test_method_list_with_all_params(self, client: Increase) -> None:
         resource = client.entities.list(
-            {
-                "cursor": "string",
-                "limit": 0,
-            },
+            cursor="string",
+            limit=0,
         )
         assert isinstance(resource, SyncPage)
 
@@ -259,174 +255,28 @@ class TestAsyncEntities:
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
         resource = await client.entities.create(
-            {"structure": "corporation"},
+            structure="corporation",
         )
         assert isinstance(resource, Entity)
 
     @parametrize
-    async def test_method_create_with_optional_params(self, client: AsyncIncrease) -> None:
+    async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         resource = await client.entities.create(
-            {
-                "structure": "corporation",
-                "corporation": {
-                    "name": "National Phonograph Company",
-                    "website": "https://example.com",
-                    "tax_identifier": "602214076",
-                    "incorporation_state": "NY",
-                    "address": {
-                        "line1": "33 Liberty Street",
-                        "line2": "x",
-                        "city": "New York",
-                        "state": "NY",
-                        "zip": "10045",
-                    },
-                    "beneficial_owners": [
-                        {
-                            "individual": {
-                                "name": "x",
-                                "date_of_birth": "2019-12-27T18:11:19.117Z",
-                                "address": {
-                                    "line1": "x",
-                                    "line2": "x",
-                                    "city": "x",
-                                    "state": "x",
-                                    "zip": "x",
-                                },
-                                "identification": {
-                                    "method": "social_security_number",
-                                    "number": "x",
-                                    "country": "x",
-                                },
-                            },
-                            "company_title": "x",
-                            "prong": "ownership",
-                        },
-                        {
-                            "individual": {
-                                "name": "x",
-                                "date_of_birth": "2019-12-27T18:11:19.117Z",
-                                "address": {
-                                    "line1": "x",
-                                    "line2": "x",
-                                    "city": "x",
-                                    "state": "x",
-                                    "zip": "x",
-                                },
-                                "identification": {
-                                    "method": "social_security_number",
-                                    "number": "x",
-                                    "country": "x",
-                                },
-                            },
-                            "company_title": "x",
-                            "prong": "ownership",
-                        },
-                        {
-                            "individual": {
-                                "name": "x",
-                                "date_of_birth": "2019-12-27T18:11:19.117Z",
-                                "address": {
-                                    "line1": "x",
-                                    "line2": "x",
-                                    "city": "x",
-                                    "state": "x",
-                                    "zip": "x",
-                                },
-                                "identification": {
-                                    "method": "social_security_number",
-                                    "number": "x",
-                                    "country": "x",
-                                },
-                            },
-                            "company_title": "x",
-                            "prong": "ownership",
-                        },
-                    ],
+            structure="corporation",
+            corporation={
+                "name": "x",
+                "website": "string",
+                "tax_identifier": "x",
+                "incorporation_state": "x",
+                "address": {
+                    "line1": "x",
+                    "line2": "x",
+                    "city": "x",
+                    "state": "x",
+                    "zip": "x",
                 },
-                "natural_person": {
-                    "name": "x",
-                    "date_of_birth": "2019-12-27T18:11:19.117Z",
-                    "address": {
-                        "line1": "x",
-                        "line2": "x",
-                        "city": "x",
-                        "state": "x",
-                        "zip": "x",
-                    },
-                    "identification": {
-                        "method": "social_security_number",
-                        "number": "x",
-                        "country": "x",
-                    },
-                },
-                "joint": {
-                    "name": "x",
-                    "individuals": [
-                        {
-                            "name": "x",
-                            "date_of_birth": "2019-12-27T18:11:19.117Z",
-                            "address": {
-                                "line1": "x",
-                                "line2": "x",
-                                "city": "x",
-                                "state": "x",
-                                "zip": "x",
-                            },
-                            "identification": {
-                                "method": "social_security_number",
-                                "number": "x",
-                                "country": "x",
-                            },
-                        },
-                        {
-                            "name": "x",
-                            "date_of_birth": "2019-12-27T18:11:19.117Z",
-                            "address": {
-                                "line1": "x",
-                                "line2": "x",
-                                "city": "x",
-                                "state": "x",
-                                "zip": "x",
-                            },
-                            "identification": {
-                                "method": "social_security_number",
-                                "number": "x",
-                                "country": "x",
-                            },
-                        },
-                        {
-                            "name": "x",
-                            "date_of_birth": "2019-12-27T18:11:19.117Z",
-                            "address": {
-                                "line1": "x",
-                                "line2": "x",
-                                "city": "x",
-                                "state": "x",
-                                "zip": "x",
-                            },
-                            "identification": {
-                                "method": "social_security_number",
-                                "number": "x",
-                                "country": "x",
-                            },
-                        },
-                    ],
-                },
-                "trust": {
-                    "name": "x",
-                    "category": "revocable",
-                    "tax_identifier": "x",
-                    "formation_state": "x",
-                    "address": {
-                        "line1": "x",
-                        "line2": "x",
-                        "city": "x",
-                        "state": "x",
-                        "zip": "x",
-                    },
-                    "formation_document_file_id": "string",
-                    "trustee": {
-                        "structure": "individual",
+                "beneficial_owners": [
+                    {
                         "individual": {
                             "name": "x",
                             "date_of_birth": "2019-12-27T18:11:19.117Z",
@@ -443,8 +293,136 @@ class TestAsyncEntities:
                                 "country": "x",
                             },
                         },
+                        "company_title": "x",
+                        "prong": "ownership",
                     },
-                    "grantor": {
+                    {
+                        "individual": {
+                            "name": "x",
+                            "date_of_birth": "2019-12-27T18:11:19.117Z",
+                            "address": {
+                                "line1": "x",
+                                "line2": "x",
+                                "city": "x",
+                                "state": "x",
+                                "zip": "x",
+                            },
+                            "identification": {
+                                "method": "social_security_number",
+                                "number": "x",
+                                "country": "x",
+                            },
+                        },
+                        "company_title": "x",
+                        "prong": "ownership",
+                    },
+                    {
+                        "individual": {
+                            "name": "x",
+                            "date_of_birth": "2019-12-27T18:11:19.117Z",
+                            "address": {
+                                "line1": "x",
+                                "line2": "x",
+                                "city": "x",
+                                "state": "x",
+                                "zip": "x",
+                            },
+                            "identification": {
+                                "method": "social_security_number",
+                                "number": "x",
+                                "country": "x",
+                            },
+                        },
+                        "company_title": "x",
+                        "prong": "ownership",
+                    },
+                ],
+            },
+            natural_person={
+                "name": "x",
+                "date_of_birth": "2019-12-27T18:11:19.117Z",
+                "address": {
+                    "line1": "x",
+                    "line2": "x",
+                    "city": "x",
+                    "state": "x",
+                    "zip": "x",
+                },
+                "identification": {
+                    "method": "social_security_number",
+                    "number": "x",
+                    "country": "x",
+                },
+            },
+            joint={
+                "name": "x",
+                "individuals": [
+                    {
+                        "name": "x",
+                        "date_of_birth": "2019-12-27T18:11:19.117Z",
+                        "address": {
+                            "line1": "x",
+                            "line2": "x",
+                            "city": "x",
+                            "state": "x",
+                            "zip": "x",
+                        },
+                        "identification": {
+                            "method": "social_security_number",
+                            "number": "x",
+                            "country": "x",
+                        },
+                    },
+                    {
+                        "name": "x",
+                        "date_of_birth": "2019-12-27T18:11:19.117Z",
+                        "address": {
+                            "line1": "x",
+                            "line2": "x",
+                            "city": "x",
+                            "state": "x",
+                            "zip": "x",
+                        },
+                        "identification": {
+                            "method": "social_security_number",
+                            "number": "x",
+                            "country": "x",
+                        },
+                    },
+                    {
+                        "name": "x",
+                        "date_of_birth": "2019-12-27T18:11:19.117Z",
+                        "address": {
+                            "line1": "x",
+                            "line2": "x",
+                            "city": "x",
+                            "state": "x",
+                            "zip": "x",
+                        },
+                        "identification": {
+                            "method": "social_security_number",
+                            "number": "x",
+                            "country": "x",
+                        },
+                    },
+                ],
+            },
+            trust={
+                "name": "x",
+                "category": "revocable",
+                "tax_identifier": "x",
+                "formation_state": "x",
+                "address": {
+                    "line1": "x",
+                    "line2": "x",
+                    "city": "x",
+                    "state": "x",
+                    "zip": "x",
+                },
+                "formation_document_file_id": "string",
+                "trustee": {
+                    "structure": "individual",
+                    "individual": {
                         "name": "x",
                         "date_of_birth": "2019-12-27T18:11:19.117Z",
                         "address": {
@@ -461,8 +439,24 @@ class TestAsyncEntities:
                         },
                     },
                 },
-                "description": "x",
+                "grantor": {
+                    "name": "x",
+                    "date_of_birth": "2019-12-27T18:11:19.117Z",
+                    "address": {
+                        "line1": "x",
+                        "line2": "x",
+                        "city": "x",
+                        "state": "x",
+                        "zip": "x",
+                    },
+                    "identification": {
+                        "method": "social_security_number",
+                        "number": "x",
+                        "country": "x",
+                    },
+                },
             },
+            description="x",
         )
         assert isinstance(resource, Entity)
 
@@ -479,11 +473,9 @@ class TestAsyncEntities:
         assert isinstance(resource, AsyncPage)
 
     @parametrize
-    async def test_method_list_with_optional_params(self, client: AsyncIncrease) -> None:
+    async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
         resource = await client.entities.list(
-            {
-                "cursor": "string",
-                "limit": 0,
-            },
+            cursor="string",
+            limit=0,
         )
         assert isinstance(resource, AsyncPage)

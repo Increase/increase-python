@@ -21,26 +21,22 @@ class TestCheckDeposits:
     @parametrize
     def test_method_create(self, client: Increase) -> None:
         resource = client.check_deposits.create(
-            {
-                "account_id": "account_in71c4amph0vgo2qllky",
-                "amount": 1000,
-                "currency": "USD",
-                "front_image_file_id": "file_hkv175ovmc2tb2v2zbrm",
-                "back_image_file_id": "file_26khfk98mzfz90a11oqx",
-            },
+            account_id="string",
+            amount=0,
+            currency="x",
+            front_image_file_id="string",
+            back_image_file_id="string",
         )
         assert isinstance(resource, CheckDeposit)
 
     @parametrize
-    def test_method_create_with_optional_params(self, client: Increase) -> None:
+    def test_method_create_with_all_params(self, client: Increase) -> None:
         resource = client.check_deposits.create(
-            {
-                "account_id": "account_in71c4amph0vgo2qllky",
-                "amount": 1000,
-                "currency": "USD",
-                "front_image_file_id": "file_hkv175ovmc2tb2v2zbrm",
-                "back_image_file_id": "file_26khfk98mzfz90a11oqx",
-            },
+            account_id="string",
+            amount=0,
+            currency="x",
+            front_image_file_id="string",
+            back_image_file_id="string",
         )
         assert isinstance(resource, CheckDeposit)
 
@@ -57,18 +53,16 @@ class TestCheckDeposits:
         assert isinstance(resource, SyncPage)
 
     @parametrize
-    def test_method_list_with_optional_params(self, client: Increase) -> None:
+    def test_method_list_with_all_params(self, client: Increase) -> None:
         resource = client.check_deposits.list(
-            {
-                "cursor": "string",
-                "limit": 0,
-                "account_id": "string",
-                "created_at": {
-                    "after": "2019-12-27T18:11:19.117Z",
-                    "before": "2019-12-27T18:11:19.117Z",
-                    "on_or_after": "2019-12-27T18:11:19.117Z",
-                    "on_or_before": "2019-12-27T18:11:19.117Z",
-                },
+            cursor="string",
+            limit=0,
+            account_id="string",
+            created_at={
+                "after": "2019-12-27T18:11:19.117Z",
+                "before": "2019-12-27T18:11:19.117Z",
+                "on_or_after": "2019-12-27T18:11:19.117Z",
+                "on_or_before": "2019-12-27T18:11:19.117Z",
             },
         )
         assert isinstance(resource, SyncPage)
@@ -82,26 +76,22 @@ class TestAsyncCheckDeposits:
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
         resource = await client.check_deposits.create(
-            {
-                "account_id": "account_in71c4amph0vgo2qllky",
-                "amount": 1000,
-                "currency": "USD",
-                "front_image_file_id": "file_hkv175ovmc2tb2v2zbrm",
-                "back_image_file_id": "file_26khfk98mzfz90a11oqx",
-            },
+            account_id="string",
+            amount=0,
+            currency="x",
+            front_image_file_id="string",
+            back_image_file_id="string",
         )
         assert isinstance(resource, CheckDeposit)
 
     @parametrize
-    async def test_method_create_with_optional_params(self, client: AsyncIncrease) -> None:
+    async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         resource = await client.check_deposits.create(
-            {
-                "account_id": "account_in71c4amph0vgo2qllky",
-                "amount": 1000,
-                "currency": "USD",
-                "front_image_file_id": "file_hkv175ovmc2tb2v2zbrm",
-                "back_image_file_id": "file_26khfk98mzfz90a11oqx",
-            },
+            account_id="string",
+            amount=0,
+            currency="x",
+            front_image_file_id="string",
+            back_image_file_id="string",
         )
         assert isinstance(resource, CheckDeposit)
 
@@ -118,18 +108,16 @@ class TestAsyncCheckDeposits:
         assert isinstance(resource, AsyncPage)
 
     @parametrize
-    async def test_method_list_with_optional_params(self, client: AsyncIncrease) -> None:
+    async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
         resource = await client.check_deposits.list(
-            {
-                "cursor": "string",
-                "limit": 0,
-                "account_id": "string",
-                "created_at": {
-                    "after": "2019-12-27T18:11:19.117Z",
-                    "before": "2019-12-27T18:11:19.117Z",
-                    "on_or_after": "2019-12-27T18:11:19.117Z",
-                    "on_or_before": "2019-12-27T18:11:19.117Z",
-                },
+            cursor="string",
+            limit=0,
+            account_id="string",
+            created_at={
+                "after": "2019-12-27T18:11:19.117Z",
+                "before": "2019-12-27T18:11:19.117Z",
+                "on_or_after": "2019-12-27T18:11:19.117Z",
+                "on_or_before": "2019-12-27T18:11:19.117Z",
             },
         )
         assert isinstance(resource, AsyncPage)

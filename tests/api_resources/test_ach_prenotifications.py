@@ -21,30 +21,26 @@ class TestACHPrenotifications:
     @parametrize
     def test_method_create(self, client: Increase) -> None:
         resource = client.ach_prenotifications.create(
-            {
-                "account_number": "987654321",
-                "routing_number": "101050001",
-            },
+            account_number="x",
+            routing_number="xxxxxxxxx",
         )
         assert isinstance(resource, ACHPrenotification)
 
     @parametrize
-    def test_method_create_with_optional_params(self, client: Increase) -> None:
+    def test_method_create_with_all_params(self, client: Increase) -> None:
         resource = client.ach_prenotifications.create(
-            {
-                "account_number": "987654321",
-                "addendum": "x",
-                "company_descriptive_date": "x",
-                "company_discretionary_data": "x",
-                "company_entry_description": "x",
-                "company_name": "x",
-                "credit_debit_indicator": "credit",
-                "effective_date": "2019-12-27T18:11:19.117Z",
-                "individual_id": "x",
-                "individual_name": "x",
-                "routing_number": "101050001",
-                "standard_entry_class_code": "corporate_credit_or_debit",
-            },
+            account_number="x",
+            addendum="x",
+            company_descriptive_date="x",
+            company_discretionary_data="x",
+            company_entry_description="x",
+            company_name="x",
+            credit_debit_indicator="credit",
+            effective_date="2019-12-27T18:11:19.117Z",
+            individual_id="x",
+            individual_name="x",
+            routing_number="xxxxxxxxx",
+            standard_entry_class_code="corporate_credit_or_debit",
         )
         assert isinstance(resource, ACHPrenotification)
 
@@ -61,17 +57,15 @@ class TestACHPrenotifications:
         assert isinstance(resource, SyncPage)
 
     @parametrize
-    def test_method_list_with_optional_params(self, client: Increase) -> None:
+    def test_method_list_with_all_params(self, client: Increase) -> None:
         resource = client.ach_prenotifications.list(
-            {
-                "cursor": "string",
-                "limit": 0,
-                "created_at": {
-                    "after": "2019-12-27T18:11:19.117Z",
-                    "before": "2019-12-27T18:11:19.117Z",
-                    "on_or_after": "2019-12-27T18:11:19.117Z",
-                    "on_or_before": "2019-12-27T18:11:19.117Z",
-                },
+            cursor="string",
+            limit=0,
+            created_at={
+                "after": "2019-12-27T18:11:19.117Z",
+                "before": "2019-12-27T18:11:19.117Z",
+                "on_or_after": "2019-12-27T18:11:19.117Z",
+                "on_or_before": "2019-12-27T18:11:19.117Z",
             },
         )
         assert isinstance(resource, SyncPage)
@@ -85,30 +79,26 @@ class TestAsyncACHPrenotifications:
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
         resource = await client.ach_prenotifications.create(
-            {
-                "account_number": "987654321",
-                "routing_number": "101050001",
-            },
+            account_number="x",
+            routing_number="xxxxxxxxx",
         )
         assert isinstance(resource, ACHPrenotification)
 
     @parametrize
-    async def test_method_create_with_optional_params(self, client: AsyncIncrease) -> None:
+    async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         resource = await client.ach_prenotifications.create(
-            {
-                "account_number": "987654321",
-                "addendum": "x",
-                "company_descriptive_date": "x",
-                "company_discretionary_data": "x",
-                "company_entry_description": "x",
-                "company_name": "x",
-                "credit_debit_indicator": "credit",
-                "effective_date": "2019-12-27T18:11:19.117Z",
-                "individual_id": "x",
-                "individual_name": "x",
-                "routing_number": "101050001",
-                "standard_entry_class_code": "corporate_credit_or_debit",
-            },
+            account_number="x",
+            addendum="x",
+            company_descriptive_date="x",
+            company_discretionary_data="x",
+            company_entry_description="x",
+            company_name="x",
+            credit_debit_indicator="credit",
+            effective_date="2019-12-27T18:11:19.117Z",
+            individual_id="x",
+            individual_name="x",
+            routing_number="xxxxxxxxx",
+            standard_entry_class_code="corporate_credit_or_debit",
         )
         assert isinstance(resource, ACHPrenotification)
 
@@ -125,17 +115,15 @@ class TestAsyncACHPrenotifications:
         assert isinstance(resource, AsyncPage)
 
     @parametrize
-    async def test_method_list_with_optional_params(self, client: AsyncIncrease) -> None:
+    async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
         resource = await client.ach_prenotifications.list(
-            {
-                "cursor": "string",
-                "limit": 0,
-                "created_at": {
-                    "after": "2019-12-27T18:11:19.117Z",
-                    "before": "2019-12-27T18:11:19.117Z",
-                    "on_or_after": "2019-12-27T18:11:19.117Z",
-                    "on_or_before": "2019-12-27T18:11:19.117Z",
-                },
+            cursor="string",
+            limit=0,
+            created_at={
+                "after": "2019-12-27T18:11:19.117Z",
+                "before": "2019-12-27T18:11:19.117Z",
+                "on_or_after": "2019-12-27T18:11:19.117Z",
+                "on_or_before": "2019-12-27T18:11:19.117Z",
             },
         )
         assert isinstance(resource, AsyncPage)

@@ -21,23 +21,19 @@ class TestExternalAccounts:
     @parametrize
     def test_method_create(self, client: Increase) -> None:
         resource = client.external_accounts.create(
-            {
-                "routing_number": "101050001",
-                "account_number": "987654321",
-                "description": "Landlord",
-            },
+            routing_number="xxxxxxxxx",
+            account_number="x",
+            description="x",
         )
         assert isinstance(resource, ExternalAccount)
 
     @parametrize
-    def test_method_create_with_optional_params(self, client: Increase) -> None:
+    def test_method_create_with_all_params(self, client: Increase) -> None:
         resource = client.external_accounts.create(
-            {
-                "routing_number": "101050001",
-                "account_number": "987654321",
-                "funding": "checking",
-                "description": "Landlord",
-            },
+            routing_number="xxxxxxxxx",
+            account_number="x",
+            funding="checking",
+            description="x",
         )
         assert isinstance(resource, ExternalAccount)
 
@@ -52,15 +48,14 @@ class TestExternalAccounts:
     def test_method_update(self, client: Increase) -> None:
         resource = client.external_accounts.update(
             "string",
-            {},
         )
         assert isinstance(resource, ExternalAccount)
 
     @parametrize
-    def test_method_update_with_optional_params(self, client: Increase) -> None:
+    def test_method_update_with_all_params(self, client: Increase) -> None:
         resource = client.external_accounts.update(
             "string",
-            {"description": "New description"},
+            description="x",
         )
         assert isinstance(resource, ExternalAccount)
 
@@ -70,12 +65,10 @@ class TestExternalAccounts:
         assert isinstance(resource, SyncPage)
 
     @parametrize
-    def test_method_list_with_optional_params(self, client: Increase) -> None:
+    def test_method_list_with_all_params(self, client: Increase) -> None:
         resource = client.external_accounts.list(
-            {
-                "cursor": "string",
-                "limit": 0,
-            },
+            cursor="string",
+            limit=0,
         )
         assert isinstance(resource, SyncPage)
 
@@ -88,23 +81,19 @@ class TestAsyncExternalAccounts:
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
         resource = await client.external_accounts.create(
-            {
-                "routing_number": "101050001",
-                "account_number": "987654321",
-                "description": "Landlord",
-            },
+            routing_number="xxxxxxxxx",
+            account_number="x",
+            description="x",
         )
         assert isinstance(resource, ExternalAccount)
 
     @parametrize
-    async def test_method_create_with_optional_params(self, client: AsyncIncrease) -> None:
+    async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         resource = await client.external_accounts.create(
-            {
-                "routing_number": "101050001",
-                "account_number": "987654321",
-                "funding": "checking",
-                "description": "Landlord",
-            },
+            routing_number="xxxxxxxxx",
+            account_number="x",
+            funding="checking",
+            description="x",
         )
         assert isinstance(resource, ExternalAccount)
 
@@ -119,15 +108,14 @@ class TestAsyncExternalAccounts:
     async def test_method_update(self, client: AsyncIncrease) -> None:
         resource = await client.external_accounts.update(
             "string",
-            {},
         )
         assert isinstance(resource, ExternalAccount)
 
     @parametrize
-    async def test_method_update_with_optional_params(self, client: AsyncIncrease) -> None:
+    async def test_method_update_with_all_params(self, client: AsyncIncrease) -> None:
         resource = await client.external_accounts.update(
             "string",
-            {"description": "New description"},
+            description="x",
         )
         assert isinstance(resource, ExternalAccount)
 
@@ -137,11 +125,9 @@ class TestAsyncExternalAccounts:
         assert isinstance(resource, AsyncPage)
 
     @parametrize
-    async def test_method_list_with_optional_params(self, client: AsyncIncrease) -> None:
+    async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
         resource = await client.external_accounts.list(
-            {
-                "cursor": "string",
-                "limit": 0,
-            },
+            cursor="string",
+            limit=0,
         )
         assert isinstance(resource, AsyncPage)

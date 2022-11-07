@@ -23,41 +23,33 @@ class TestCards:
     @parametrize
     def test_method_authorize(self, client: Increase) -> None:
         resource = client.simulations.cards.authorize(
-            {
-                "amount": 1000,
-                "card_id": "card_oubs0hwk5rn6knuecxg2",
-            },
+            amount=0,
+            card_id="string",
         )
         assert isinstance(resource, CardAuthorizationSimulation)
 
     @parametrize
-    def test_method_authorize_with_optional_params(self, client: Increase) -> None:
+    def test_method_authorize_with_all_params(self, client: Increase) -> None:
         resource = client.simulations.cards.authorize(
-            {
-                "amount": 1000,
-                "card_id": "card_oubs0hwk5rn6knuecxg2",
-            },
+            amount=0,
+            card_id="string",
         )
         assert isinstance(resource, CardAuthorizationSimulation)
 
     @parametrize
     def test_method_settlement(self, client: Increase) -> None:
         resource = client.simulations.cards.settlement(
-            {
-                "card_id": "card_oubs0hwk5rn6knuecxg2",
-                "pending_transaction_id": "pending_transaction_k1sfetcau2qbvjbzgju4",
-            },
+            card_id="string",
+            pending_transaction_id="string",
         )
         assert isinstance(resource, Transaction)
 
     @parametrize
-    def test_method_settlement_with_optional_params(self, client: Increase) -> None:
+    def test_method_settlement_with_all_params(self, client: Increase) -> None:
         resource = client.simulations.cards.settlement(
-            {
-                "card_id": "card_oubs0hwk5rn6knuecxg2",
-                "pending_transaction_id": "pending_transaction_k1sfetcau2qbvjbzgju4",
-                "amount": 0,
-            },
+            card_id="string",
+            pending_transaction_id="string",
+            amount=0,
         )
         assert isinstance(resource, Transaction)
 
@@ -70,40 +62,32 @@ class TestAsyncCards:
     @parametrize
     async def test_method_authorize(self, client: AsyncIncrease) -> None:
         resource = await client.simulations.cards.authorize(
-            {
-                "amount": 1000,
-                "card_id": "card_oubs0hwk5rn6knuecxg2",
-            },
+            amount=0,
+            card_id="string",
         )
         assert isinstance(resource, CardAuthorizationSimulation)
 
     @parametrize
-    async def test_method_authorize_with_optional_params(self, client: AsyncIncrease) -> None:
+    async def test_method_authorize_with_all_params(self, client: AsyncIncrease) -> None:
         resource = await client.simulations.cards.authorize(
-            {
-                "amount": 1000,
-                "card_id": "card_oubs0hwk5rn6knuecxg2",
-            },
+            amount=0,
+            card_id="string",
         )
         assert isinstance(resource, CardAuthorizationSimulation)
 
     @parametrize
     async def test_method_settlement(self, client: AsyncIncrease) -> None:
         resource = await client.simulations.cards.settlement(
-            {
-                "card_id": "card_oubs0hwk5rn6knuecxg2",
-                "pending_transaction_id": "pending_transaction_k1sfetcau2qbvjbzgju4",
-            },
+            card_id="string",
+            pending_transaction_id="string",
         )
         assert isinstance(resource, Transaction)
 
     @parametrize
-    async def test_method_settlement_with_optional_params(self, client: AsyncIncrease) -> None:
+    async def test_method_settlement_with_all_params(self, client: AsyncIncrease) -> None:
         resource = await client.simulations.cards.settlement(
-            {
-                "card_id": "card_oubs0hwk5rn6knuecxg2",
-                "pending_transaction_id": "pending_transaction_k1sfetcau2qbvjbzgju4",
-                "amount": 0,
-            },
+            card_id="string",
+            pending_transaction_id="string",
+            amount=0,
         )
         assert isinstance(resource, Transaction)

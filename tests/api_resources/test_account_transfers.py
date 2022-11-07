@@ -21,24 +21,20 @@ class TestAccountTransfers:
     @parametrize
     def test_method_create(self, client: Increase) -> None:
         resource = client.account_transfers.create(
-            {
-                "account_id": "account_in71c4amph0vgo2qllky",
-                "amount": 100,
-                "description": "Creating liquidity",
-                "destination_account_id": "account_uf16sut2ct5bevmq3eh",
-            },
+            account_id="string",
+            amount=0,
+            description="x",
+            destination_account_id="string",
         )
         assert isinstance(resource, AccountTransfer)
 
     @parametrize
-    def test_method_create_with_optional_params(self, client: Increase) -> None:
+    def test_method_create_with_all_params(self, client: Increase) -> None:
         resource = client.account_transfers.create(
-            {
-                "account_id": "account_in71c4amph0vgo2qllky",
-                "amount": 100,
-                "description": "Creating liquidity",
-                "destination_account_id": "account_uf16sut2ct5bevmq3eh",
-            },
+            account_id="string",
+            amount=0,
+            description="x",
+            destination_account_id="string",
         )
         assert isinstance(resource, AccountTransfer)
 
@@ -55,18 +51,16 @@ class TestAccountTransfers:
         assert isinstance(resource, SyncPage)
 
     @parametrize
-    def test_method_list_with_optional_params(self, client: Increase) -> None:
+    def test_method_list_with_all_params(self, client: Increase) -> None:
         resource = client.account_transfers.list(
-            {
-                "cursor": "string",
-                "limit": 0,
-                "account_id": "string",
-                "created_at": {
-                    "after": "2019-12-27T18:11:19.117Z",
-                    "before": "2019-12-27T18:11:19.117Z",
-                    "on_or_after": "2019-12-27T18:11:19.117Z",
-                    "on_or_before": "2019-12-27T18:11:19.117Z",
-                },
+            cursor="string",
+            limit=0,
+            account_id="string",
+            created_at={
+                "after": "2019-12-27T18:11:19.117Z",
+                "before": "2019-12-27T18:11:19.117Z",
+                "on_or_after": "2019-12-27T18:11:19.117Z",
+                "on_or_before": "2019-12-27T18:11:19.117Z",
             },
         )
         assert isinstance(resource, SyncPage)
@@ -80,24 +74,20 @@ class TestAsyncAccountTransfers:
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
         resource = await client.account_transfers.create(
-            {
-                "account_id": "account_in71c4amph0vgo2qllky",
-                "amount": 100,
-                "description": "Creating liquidity",
-                "destination_account_id": "account_uf16sut2ct5bevmq3eh",
-            },
+            account_id="string",
+            amount=0,
+            description="x",
+            destination_account_id="string",
         )
         assert isinstance(resource, AccountTransfer)
 
     @parametrize
-    async def test_method_create_with_optional_params(self, client: AsyncIncrease) -> None:
+    async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         resource = await client.account_transfers.create(
-            {
-                "account_id": "account_in71c4amph0vgo2qllky",
-                "amount": 100,
-                "description": "Creating liquidity",
-                "destination_account_id": "account_uf16sut2ct5bevmq3eh",
-            },
+            account_id="string",
+            amount=0,
+            description="x",
+            destination_account_id="string",
         )
         assert isinstance(resource, AccountTransfer)
 
@@ -114,18 +104,16 @@ class TestAsyncAccountTransfers:
         assert isinstance(resource, AsyncPage)
 
     @parametrize
-    async def test_method_list_with_optional_params(self, client: AsyncIncrease) -> None:
+    async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
         resource = await client.account_transfers.list(
-            {
-                "cursor": "string",
-                "limit": 0,
-                "account_id": "string",
-                "created_at": {
-                    "after": "2019-12-27T18:11:19.117Z",
-                    "before": "2019-12-27T18:11:19.117Z",
-                    "on_or_after": "2019-12-27T18:11:19.117Z",
-                    "on_or_before": "2019-12-27T18:11:19.117Z",
-                },
+            cursor="string",
+            limit=0,
+            account_id="string",
+            created_at={
+                "after": "2019-12-27T18:11:19.117Z",
+                "before": "2019-12-27T18:11:19.117Z",
+                "on_or_after": "2019-12-27T18:11:19.117Z",
+                "on_or_before": "2019-12-27T18:11:19.117Z",
             },
         )
         assert isinstance(resource, AsyncPage)

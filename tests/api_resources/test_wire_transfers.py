@@ -21,29 +21,25 @@ class TestWireTransfers:
     @parametrize
     def test_method_create(self, client: Increase) -> None:
         resource = client.wire_transfers.create(
-            {
-                "account_id": "account_in71c4amph0vgo2qllky",
-                "amount": 100,
-                "message_to_recipient": "New account transfer",
-            },
+            account_id="string",
+            amount=0,
+            message_to_recipient="x",
         )
         assert isinstance(resource, WireTransfer)
 
     @parametrize
-    def test_method_create_with_optional_params(self, client: Increase) -> None:
+    def test_method_create_with_all_params(self, client: Increase) -> None:
         resource = client.wire_transfers.create(
-            {
-                "account_id": "account_in71c4amph0vgo2qllky",
-                "account_number": "987654321",
-                "routing_number": "101050001",
-                "external_account_id": "string",
-                "amount": 100,
-                "message_to_recipient": "New account transfer",
-                "beneficiary_name": "Ian Crease",
-                "beneficiary_address_line1": "33 Liberty Street",
-                "beneficiary_address_line2": "New York",
-                "beneficiary_address_line3": "NY 10045",
-            },
+            account_id="string",
+            account_number="x",
+            routing_number="xxxxxxxxx",
+            external_account_id="string",
+            amount=0,
+            message_to_recipient="x",
+            beneficiary_name="x",
+            beneficiary_address_line1="x",
+            beneficiary_address_line2="x",
+            beneficiary_address_line3="x",
         )
         assert isinstance(resource, WireTransfer)
 
@@ -60,19 +56,17 @@ class TestWireTransfers:
         assert isinstance(resource, SyncPage)
 
     @parametrize
-    def test_method_list_with_optional_params(self, client: Increase) -> None:
+    def test_method_list_with_all_params(self, client: Increase) -> None:
         resource = client.wire_transfers.list(
-            {
-                "cursor": "string",
-                "limit": 0,
-                "account_id": "string",
-                "external_account_id": "string",
-                "created_at": {
-                    "after": "2019-12-27T18:11:19.117Z",
-                    "before": "2019-12-27T18:11:19.117Z",
-                    "on_or_after": "2019-12-27T18:11:19.117Z",
-                    "on_or_before": "2019-12-27T18:11:19.117Z",
-                },
+            cursor="string",
+            limit=0,
+            account_id="string",
+            external_account_id="string",
+            created_at={
+                "after": "2019-12-27T18:11:19.117Z",
+                "before": "2019-12-27T18:11:19.117Z",
+                "on_or_after": "2019-12-27T18:11:19.117Z",
+                "on_or_before": "2019-12-27T18:11:19.117Z",
             },
         )
         assert isinstance(resource, SyncPage)
@@ -102,29 +96,25 @@ class TestAsyncWireTransfers:
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
         resource = await client.wire_transfers.create(
-            {
-                "account_id": "account_in71c4amph0vgo2qllky",
-                "amount": 100,
-                "message_to_recipient": "New account transfer",
-            },
+            account_id="string",
+            amount=0,
+            message_to_recipient="x",
         )
         assert isinstance(resource, WireTransfer)
 
     @parametrize
-    async def test_method_create_with_optional_params(self, client: AsyncIncrease) -> None:
+    async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         resource = await client.wire_transfers.create(
-            {
-                "account_id": "account_in71c4amph0vgo2qllky",
-                "account_number": "987654321",
-                "routing_number": "101050001",
-                "external_account_id": "string",
-                "amount": 100,
-                "message_to_recipient": "New account transfer",
-                "beneficiary_name": "Ian Crease",
-                "beneficiary_address_line1": "33 Liberty Street",
-                "beneficiary_address_line2": "New York",
-                "beneficiary_address_line3": "NY 10045",
-            },
+            account_id="string",
+            account_number="x",
+            routing_number="xxxxxxxxx",
+            external_account_id="string",
+            amount=0,
+            message_to_recipient="x",
+            beneficiary_name="x",
+            beneficiary_address_line1="x",
+            beneficiary_address_line2="x",
+            beneficiary_address_line3="x",
         )
         assert isinstance(resource, WireTransfer)
 
@@ -141,19 +131,17 @@ class TestAsyncWireTransfers:
         assert isinstance(resource, AsyncPage)
 
     @parametrize
-    async def test_method_list_with_optional_params(self, client: AsyncIncrease) -> None:
+    async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
         resource = await client.wire_transfers.list(
-            {
-                "cursor": "string",
-                "limit": 0,
-                "account_id": "string",
-                "external_account_id": "string",
-                "created_at": {
-                    "after": "2019-12-27T18:11:19.117Z",
-                    "before": "2019-12-27T18:11:19.117Z",
-                    "on_or_after": "2019-12-27T18:11:19.117Z",
-                    "on_or_before": "2019-12-27T18:11:19.117Z",
-                },
+            cursor="string",
+            limit=0,
+            account_id="string",
+            external_account_id="string",
+            created_at={
+                "after": "2019-12-27T18:11:19.117Z",
+                "before": "2019-12-27T18:11:19.117Z",
+                "on_or_after": "2019-12-27T18:11:19.117Z",
+                "on_or_before": "2019-12-27T18:11:19.117Z",
             },
         )
         assert isinstance(resource, AsyncPage)

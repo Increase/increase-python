@@ -31,16 +31,14 @@ class TestPendingTransactions:
         assert isinstance(resource, SyncPage)
 
     @parametrize
-    def test_method_list_with_optional_params(self, client: Increase) -> None:
+    def test_method_list_with_all_params(self, client: Increase) -> None:
         resource = client.pending_transactions.list(
-            {
-                "cursor": "string",
-                "limit": 0,
-                "account_id": "string",
-                "route_id": "string",
-                "source_id": "string",
-                "status": {"in": ["pending", "pending", "pending"]},
-            },
+            cursor="string",
+            limit=0,
+            account_id="string",
+            route_id="string",
+            source_id="string",
+            status={"in": ["pending", "pending", "pending"]},
         )
         assert isinstance(resource, SyncPage)
 
@@ -63,15 +61,13 @@ class TestAsyncPendingTransactions:
         assert isinstance(resource, AsyncPage)
 
     @parametrize
-    async def test_method_list_with_optional_params(self, client: AsyncIncrease) -> None:
+    async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
         resource = await client.pending_transactions.list(
-            {
-                "cursor": "string",
-                "limit": 0,
-                "account_id": "string",
-                "route_id": "string",
-                "source_id": "string",
-                "status": {"in": ["pending", "pending", "pending"]},
-            },
+            cursor="string",
+            limit=0,
+            account_id="string",
+            route_id="string",
+            source_id="string",
+            status={"in": ["pending", "pending", "pending"]},
         )
         assert isinstance(resource, AsyncPage)

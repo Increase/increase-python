@@ -21,17 +21,15 @@ class TestAccounts:
     @parametrize
     def test_method_create(self, client: Increase) -> None:
         resource = client.accounts.create(
-            {"name": "New Account!"},
+            name="x",
         )
         assert isinstance(resource, Account)
 
     @parametrize
-    def test_method_create_with_optional_params(self, client: Increase) -> None:
+    def test_method_create_with_all_params(self, client: Increase) -> None:
         resource = client.accounts.create(
-            {
-                "entity_id": "string",
-                "name": "New Account!",
-            },
+            entity_id="string",
+            name="x",
         )
         assert isinstance(resource, Account)
 
@@ -46,15 +44,14 @@ class TestAccounts:
     def test_method_update(self, client: Increase) -> None:
         resource = client.accounts.update(
             "string",
-            {},
         )
         assert isinstance(resource, Account)
 
     @parametrize
-    def test_method_update_with_optional_params(self, client: Increase) -> None:
+    def test_method_update_with_all_params(self, client: Increase) -> None:
         resource = client.accounts.update(
             "string",
-            {"name": "My renamed account"},
+            name="x",
         )
         assert isinstance(resource, Account)
 
@@ -64,14 +61,12 @@ class TestAccounts:
         assert isinstance(resource, SyncPage)
 
     @parametrize
-    def test_method_list_with_optional_params(self, client: Increase) -> None:
+    def test_method_list_with_all_params(self, client: Increase) -> None:
         resource = client.accounts.list(
-            {
-                "cursor": "string",
-                "limit": 0,
-                "entity_id": "string",
-                "status": "open",
-            },
+            cursor="string",
+            limit=0,
+            entity_id="string",
+            status="open",
         )
         assert isinstance(resource, SyncPage)
 
@@ -92,17 +87,15 @@ class TestAsyncAccounts:
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
         resource = await client.accounts.create(
-            {"name": "New Account!"},
+            name="x",
         )
         assert isinstance(resource, Account)
 
     @parametrize
-    async def test_method_create_with_optional_params(self, client: AsyncIncrease) -> None:
+    async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         resource = await client.accounts.create(
-            {
-                "entity_id": "string",
-                "name": "New Account!",
-            },
+            entity_id="string",
+            name="x",
         )
         assert isinstance(resource, Account)
 
@@ -117,15 +110,14 @@ class TestAsyncAccounts:
     async def test_method_update(self, client: AsyncIncrease) -> None:
         resource = await client.accounts.update(
             "string",
-            {},
         )
         assert isinstance(resource, Account)
 
     @parametrize
-    async def test_method_update_with_optional_params(self, client: AsyncIncrease) -> None:
+    async def test_method_update_with_all_params(self, client: AsyncIncrease) -> None:
         resource = await client.accounts.update(
             "string",
-            {"name": "My renamed account"},
+            name="x",
         )
         assert isinstance(resource, Account)
 
@@ -135,14 +127,12 @@ class TestAsyncAccounts:
         assert isinstance(resource, AsyncPage)
 
     @parametrize
-    async def test_method_list_with_optional_params(self, client: AsyncIncrease) -> None:
+    async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
         resource = await client.accounts.list(
-            {
-                "cursor": "string",
-                "limit": 0,
-                "entity_id": "string",
-                "status": "open",
-            },
+            cursor="string",
+            limit=0,
+            entity_id="string",
+            status="open",
         )
         assert isinstance(resource, AsyncPage)
 

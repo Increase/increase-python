@@ -28,9 +28,9 @@ increase = Increase(
     environment="sandbox",
 )
 
-account = increase.accounts.create({
-    "name": "My First Increase Account",
-})
+account = increase.accounts.create(
+    name="My First Increase Account",
+)
 print(account.id)
 ```
 
@@ -51,11 +51,13 @@ increase = AsyncIncrease(
     environment="sandbox",
 )
 
+
 async def main():
-    account = await increase.accounts.create({
-        "name": "My First Increase Account",
-    })
+    account = await increase.accounts.create(
+        name="My First Increase Account",
+    )
     print(account.id)
+
 
 asyncio.run(main())
 ```
@@ -64,7 +66,7 @@ Functionality between the synchronous and asynchronous clients are otherwise ide
 
 ## Using Types
 
-Request parameters are [TypedDicts](https://docs.python.org/3/library/typing.html#typing.TypedDict), while responses are [Pydantic](https://pydantic-docs.helpmanual.io/) models. This helps provide autocomplete and documentation within your editor.
+Nested request parameters are [TypedDicts](https://docs.python.org/3/library/typing.html#typing.TypedDict), while responses are [Pydantic](https://pydantic-docs.helpmanual.io/) models. This helps provide autocomplete and documentation within your editor.
 
 If you would like to see type errors in VS Code to help catch bugs earlier, set `python.analysis.typeCheckingMode` to `"basic"`.
 
@@ -95,12 +97,14 @@ import increase
 
 increase = AsyncIncrease()
 
+
 async def main() -> None:
     all_accounts = []
     # Iterate through items across all pages, issuing requests as needed.
     async for account in increase.accounts.list():
         all_accounts.append(account)
     print(all_accounts)
+
 
 asyncio.run(main())
 ```
@@ -123,7 +127,7 @@ Or just work directly with the returned data:
 ```python
 first_page = await increase.accounts.list()
 
-print(f"next page cursor: {first_page.next_cursor}") # => "next page cursor: ..."
+print(f"next page cursor: {first_page.next_cursor}")  # => "next page cursor: ..."
 for account in first_page.data:
     print(account.balance)
 
@@ -139,11 +143,11 @@ from increase import Increase
 
 increase = Increase()
 
-increase.accounts.create({
-    "foo": {
+increase.accounts.create(
+    foo={
         "bar": True
     },
-})
+)
 ```
 
 ## Handling errors
@@ -161,12 +165,12 @@ from increase import Increase
 increase = Increase()
 
 try:
-    increase.accounts.create({
-        "naem": "Oops",
-    })
+    increase.accounts.create(
+        naem="Oops",
+    )
 except increase.APIConnectionError as e:
     print("The server could not be reached")
-    print(e.__cause__) # an underlying Exception, likely raised within httpx.
+    print(e.__cause__)  # an underlying Exception, likely raised within httpx.
 except increase.RateLimitError as e:
     print("A 429 status code was received; we should back off a bit.")
 except increase.APIStatusError as e:
@@ -206,9 +210,9 @@ increase = Increase(
 )
 
 # Or, configure per-request:
-increase.accounts.create({
-    "name": "Jack",
-}, max_retries=5);
+increase.with_options(max_retries=5).accounts.create(
+    name="Jack",
+)
 ```
 
 ### Timeouts
@@ -231,9 +235,9 @@ increase = Increase(
 )
 
 # Override per-request:
-increase.accounts.list({
-    "status": "open",
-}, timeout=5 * 1000)
+increase.with_options(timeout=5 * 1000).accounts.list(
+    status="open",
+)
 ```
 
 On timeout, an `APITimeoutError` is thrown.

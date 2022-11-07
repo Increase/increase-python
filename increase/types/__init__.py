@@ -7,9 +7,9 @@ from .group import Group as Group
 from .limit import Limit as Limit
 from .entity import Entity as Entity
 from .account import Account as Account
-from .card_detail import CardDetails as CardDetails
 from .transaction import Transaction as Transaction
 from .ach_transfer import ACHTransfer as ACHTransfer
+from .card_details import CardDetails as CardDetails
 from .card_dispute import CardDispute as CardDispute
 from .check_deposit import CheckDeposit as CheckDeposit
 from .wire_transfer import WireTransfer as WireTransfer

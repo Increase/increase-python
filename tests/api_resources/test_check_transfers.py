@@ -21,33 +21,29 @@ class TestCheckTransfers:
     @parametrize
     def test_method_create(self, client: Increase) -> None:
         resource = client.check_transfers.create(
-            {
-                "account_id": "account_in71c4amph0vgo2qllky",
-                "address_line1": "33 Liberty Street",
-                "address_city": "New York",
-                "address_state": "NY",
-                "address_zip": "10045",
-                "amount": 1000,
-                "message": "Check payment",
-                "recipient_name": "Ian Crease",
-            },
+            account_id="string",
+            address_line1="x",
+            address_city="x",
+            address_state="x",
+            address_zip="x",
+            amount=0,
+            message="x",
+            recipient_name="x",
         )
         assert isinstance(resource, CheckTransfer)
 
     @parametrize
-    def test_method_create_with_optional_params(self, client: Increase) -> None:
+    def test_method_create_with_all_params(self, client: Increase) -> None:
         resource = client.check_transfers.create(
-            {
-                "account_id": "account_in71c4amph0vgo2qllky",
-                "address_line1": "33 Liberty Street",
-                "address_line2": "x",
-                "address_city": "New York",
-                "address_state": "NY",
-                "address_zip": "10045",
-                "amount": 1000,
-                "message": "Check payment",
-                "recipient_name": "Ian Crease",
-            },
+            account_id="string",
+            address_line1="x",
+            address_line2="x",
+            address_city="x",
+            address_state="x",
+            address_zip="x",
+            amount=0,
+            message="x",
+            recipient_name="x",
         )
         assert isinstance(resource, CheckTransfer)
 
@@ -64,18 +60,16 @@ class TestCheckTransfers:
         assert isinstance(resource, SyncPage)
 
     @parametrize
-    def test_method_list_with_optional_params(self, client: Increase) -> None:
+    def test_method_list_with_all_params(self, client: Increase) -> None:
         resource = client.check_transfers.list(
-            {
-                "cursor": "string",
-                "limit": 0,
-                "account_id": "string",
-                "created_at": {
-                    "after": "2019-12-27T18:11:19.117Z",
-                    "before": "2019-12-27T18:11:19.117Z",
-                    "on_or_after": "2019-12-27T18:11:19.117Z",
-                    "on_or_before": "2019-12-27T18:11:19.117Z",
-                },
+            cursor="string",
+            limit=0,
+            account_id="string",
+            created_at={
+                "after": "2019-12-27T18:11:19.117Z",
+                "before": "2019-12-27T18:11:19.117Z",
+                "on_or_after": "2019-12-27T18:11:19.117Z",
+                "on_or_before": "2019-12-27T18:11:19.117Z",
             },
         )
         assert isinstance(resource, SyncPage)
@@ -97,33 +91,29 @@ class TestAsyncCheckTransfers:
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
         resource = await client.check_transfers.create(
-            {
-                "account_id": "account_in71c4amph0vgo2qllky",
-                "address_line1": "33 Liberty Street",
-                "address_city": "New York",
-                "address_state": "NY",
-                "address_zip": "10045",
-                "amount": 1000,
-                "message": "Check payment",
-                "recipient_name": "Ian Crease",
-            },
+            account_id="string",
+            address_line1="x",
+            address_city="x",
+            address_state="x",
+            address_zip="x",
+            amount=0,
+            message="x",
+            recipient_name="x",
         )
         assert isinstance(resource, CheckTransfer)
 
     @parametrize
-    async def test_method_create_with_optional_params(self, client: AsyncIncrease) -> None:
+    async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         resource = await client.check_transfers.create(
-            {
-                "account_id": "account_in71c4amph0vgo2qllky",
-                "address_line1": "33 Liberty Street",
-                "address_line2": "x",
-                "address_city": "New York",
-                "address_state": "NY",
-                "address_zip": "10045",
-                "amount": 1000,
-                "message": "Check payment",
-                "recipient_name": "Ian Crease",
-            },
+            account_id="string",
+            address_line1="x",
+            address_line2="x",
+            address_city="x",
+            address_state="x",
+            address_zip="x",
+            amount=0,
+            message="x",
+            recipient_name="x",
         )
         assert isinstance(resource, CheckTransfer)
 
@@ -140,18 +130,16 @@ class TestAsyncCheckTransfers:
         assert isinstance(resource, AsyncPage)
 
     @parametrize
-    async def test_method_list_with_optional_params(self, client: AsyncIncrease) -> None:
+    async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
         resource = await client.check_transfers.list(
-            {
-                "cursor": "string",
-                "limit": 0,
-                "account_id": "string",
-                "created_at": {
-                    "after": "2019-12-27T18:11:19.117Z",
-                    "before": "2019-12-27T18:11:19.117Z",
-                    "on_or_after": "2019-12-27T18:11:19.117Z",
-                    "on_or_before": "2019-12-27T18:11:19.117Z",
-                },
+            cursor="string",
+            limit=0,
+            account_id="string",
+            created_at={
+                "after": "2019-12-27T18:11:19.117Z",
+                "before": "2019-12-27T18:11:19.117Z",
+                "on_or_after": "2019-12-27T18:11:19.117Z",
+                "on_or_before": "2019-12-27T18:11:19.117Z",
             },
         )
         assert isinstance(resource, AsyncPage)
