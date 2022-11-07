@@ -5,11 +5,11 @@ from __future__ import annotations
 import warnings
 from typing import Any, Union, Optional, cast, overload
 
+from ...types import shared
 from ..._types import NOT_GIVEN, Body, Query, Headers, Timeout, NotGiven
 from ..._utils import required_args
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._base_client import make_request_options
-from ...types.shared import InboundDigitalWalletTokenRequestSimulationResult
 from ...types.simulations.digital_wallet_token_request_create_params import (
     DigitalWalletTokenRequestCreateParams,
 )
@@ -33,7 +33,7 @@ class DigitalWalletTokenRequests(SyncAPIResource):
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         query: Optional[Query] = None,
-    ) -> InboundDigitalWalletTokenRequestSimulationResult:
+    ) -> shared.InboundDigitalWalletTokenRequestSimulationResult:
         """
         Simulates a user attempting add a Card to a digital wallet such as Apple Pay.
 
@@ -63,7 +63,7 @@ class DigitalWalletTokenRequests(SyncAPIResource):
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         query: Optional[Query] = None,
-    ) -> InboundDigitalWalletTokenRequestSimulationResult:
+    ) -> shared.InboundDigitalWalletTokenRequestSimulationResult:
         """Simulates a user attempting add a Card to a digital wallet such as Apple Pay."""
         ...
 
@@ -83,7 +83,7 @@ class DigitalWalletTokenRequests(SyncAPIResource):
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         query: Optional[Query] = None,
-    ) -> InboundDigitalWalletTokenRequestSimulationResult:
+    ) -> shared.InboundDigitalWalletTokenRequestSimulationResult:
         """
         Simulates a user attempting add a Card to a digital wallet such as Apple Pay.
 
@@ -129,7 +129,7 @@ class DigitalWalletTokenRequests(SyncAPIResource):
                 timeout=timeout,
                 query=query,
             ),
-            cast_to=InboundDigitalWalletTokenRequestSimulationResult,
+            cast_to=shared.InboundDigitalWalletTokenRequestSimulationResult,
         )
 
 
@@ -149,7 +149,7 @@ class AsyncDigitalWalletTokenRequests(AsyncAPIResource):
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         query: Optional[Query] = None,
-    ) -> InboundDigitalWalletTokenRequestSimulationResult:
+    ) -> shared.InboundDigitalWalletTokenRequestSimulationResult:
         """
         Simulates a user attempting add a Card to a digital wallet such as Apple Pay.
 
@@ -179,7 +179,7 @@ class AsyncDigitalWalletTokenRequests(AsyncAPIResource):
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         query: Optional[Query] = None,
-    ) -> InboundDigitalWalletTokenRequestSimulationResult:
+    ) -> shared.InboundDigitalWalletTokenRequestSimulationResult:
         """Simulates a user attempting add a Card to a digital wallet such as Apple Pay."""
         ...
 
@@ -199,7 +199,7 @@ class AsyncDigitalWalletTokenRequests(AsyncAPIResource):
         max_retries: Union[int, NotGiven] = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         query: Optional[Query] = None,
-    ) -> InboundDigitalWalletTokenRequestSimulationResult:
+    ) -> shared.InboundDigitalWalletTokenRequestSimulationResult:
         """
         Simulates a user attempting add a Card to a digital wallet such as Apple Pay.
 
@@ -245,5 +245,5 @@ class AsyncDigitalWalletTokenRequests(AsyncAPIResource):
                 timeout=timeout,
                 query=query,
             ),
-            cast_to=InboundDigitalWalletTokenRequestSimulationResult,
+            cast_to=shared.InboundDigitalWalletTokenRequestSimulationResult,
         )
