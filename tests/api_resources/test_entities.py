@@ -22,6 +22,7 @@ class TestEntities:
     def test_method_create(self, client: Increase) -> None:
         resource = client.entities.create(
             structure="corporation",
+            relationship="affiliated",
         )
         assert isinstance(resource, Entity)
 
@@ -56,7 +57,11 @@ class TestEntities:
                             "identification": {
                                 "method": "social_security_number",
                                 "number": "x",
-                                "country": "x",
+                                "passport": {
+                                    "file_id": "string",
+                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "country": "x",
+                                },
                             },
                         },
                         "company_title": "x",
@@ -76,7 +81,11 @@ class TestEntities:
                             "identification": {
                                 "method": "social_security_number",
                                 "number": "x",
-                                "country": "x",
+                                "passport": {
+                                    "file_id": "string",
+                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "country": "x",
+                                },
                             },
                         },
                         "company_title": "x",
@@ -96,7 +105,11 @@ class TestEntities:
                             "identification": {
                                 "method": "social_security_number",
                                 "number": "x",
-                                "country": "x",
+                                "passport": {
+                                    "file_id": "string",
+                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "country": "x",
+                                },
                             },
                         },
                         "company_title": "x",
@@ -117,7 +130,11 @@ class TestEntities:
                 "identification": {
                     "method": "social_security_number",
                     "number": "x",
-                    "country": "x",
+                    "passport": {
+                        "file_id": "string",
+                        "expiration_date": "2019-12-27T18:11:19.117Z",
+                        "country": "x",
+                    },
                 },
             },
             joint={
@@ -136,7 +153,11 @@ class TestEntities:
                         "identification": {
                             "method": "social_security_number",
                             "number": "x",
-                            "country": "x",
+                            "passport": {
+                                "file_id": "string",
+                                "expiration_date": "2019-12-27T18:11:19.117Z",
+                                "country": "x",
+                            },
                         },
                     },
                     {
@@ -152,7 +173,11 @@ class TestEntities:
                         "identification": {
                             "method": "social_security_number",
                             "number": "x",
-                            "country": "x",
+                            "passport": {
+                                "file_id": "string",
+                                "expiration_date": "2019-12-27T18:11:19.117Z",
+                                "country": "x",
+                            },
                         },
                     },
                     {
@@ -168,7 +193,11 @@ class TestEntities:
                         "identification": {
                             "method": "social_security_number",
                             "number": "x",
-                            "country": "x",
+                            "passport": {
+                                "file_id": "string",
+                                "expiration_date": "2019-12-27T18:11:19.117Z",
+                                "country": "x",
+                            },
                         },
                     },
                 ],
@@ -201,7 +230,11 @@ class TestEntities:
                         "identification": {
                             "method": "social_security_number",
                             "number": "x",
-                            "country": "x",
+                            "passport": {
+                                "file_id": "string",
+                                "expiration_date": "2019-12-27T18:11:19.117Z",
+                                "country": "x",
+                            },
                         },
                     },
                 },
@@ -218,11 +251,16 @@ class TestEntities:
                     "identification": {
                         "method": "social_security_number",
                         "number": "x",
-                        "country": "x",
+                        "passport": {
+                            "file_id": "string",
+                            "expiration_date": "2019-12-27T18:11:19.117Z",
+                            "country": "x",
+                        },
                     },
                 },
             },
             description="x",
+            relationship="affiliated",
         )
         assert isinstance(resource, Entity)
 
@@ -256,6 +294,7 @@ class TestAsyncEntities:
     async def test_method_create(self, client: AsyncIncrease) -> None:
         resource = await client.entities.create(
             structure="corporation",
+            relationship="affiliated",
         )
         assert isinstance(resource, Entity)
 
@@ -290,7 +329,11 @@ class TestAsyncEntities:
                             "identification": {
                                 "method": "social_security_number",
                                 "number": "x",
-                                "country": "x",
+                                "passport": {
+                                    "file_id": "string",
+                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "country": "x",
+                                },
                             },
                         },
                         "company_title": "x",
@@ -310,7 +353,11 @@ class TestAsyncEntities:
                             "identification": {
                                 "method": "social_security_number",
                                 "number": "x",
-                                "country": "x",
+                                "passport": {
+                                    "file_id": "string",
+                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "country": "x",
+                                },
                             },
                         },
                         "company_title": "x",
@@ -330,7 +377,11 @@ class TestAsyncEntities:
                             "identification": {
                                 "method": "social_security_number",
                                 "number": "x",
-                                "country": "x",
+                                "passport": {
+                                    "file_id": "string",
+                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "country": "x",
+                                },
                             },
                         },
                         "company_title": "x",
@@ -351,7 +402,11 @@ class TestAsyncEntities:
                 "identification": {
                     "method": "social_security_number",
                     "number": "x",
-                    "country": "x",
+                    "passport": {
+                        "file_id": "string",
+                        "expiration_date": "2019-12-27T18:11:19.117Z",
+                        "country": "x",
+                    },
                 },
             },
             joint={
@@ -370,7 +425,11 @@ class TestAsyncEntities:
                         "identification": {
                             "method": "social_security_number",
                             "number": "x",
-                            "country": "x",
+                            "passport": {
+                                "file_id": "string",
+                                "expiration_date": "2019-12-27T18:11:19.117Z",
+                                "country": "x",
+                            },
                         },
                     },
                     {
@@ -386,7 +445,11 @@ class TestAsyncEntities:
                         "identification": {
                             "method": "social_security_number",
                             "number": "x",
-                            "country": "x",
+                            "passport": {
+                                "file_id": "string",
+                                "expiration_date": "2019-12-27T18:11:19.117Z",
+                                "country": "x",
+                            },
                         },
                     },
                     {
@@ -402,7 +465,11 @@ class TestAsyncEntities:
                         "identification": {
                             "method": "social_security_number",
                             "number": "x",
-                            "country": "x",
+                            "passport": {
+                                "file_id": "string",
+                                "expiration_date": "2019-12-27T18:11:19.117Z",
+                                "country": "x",
+                            },
                         },
                     },
                 ],
@@ -435,7 +502,11 @@ class TestAsyncEntities:
                         "identification": {
                             "method": "social_security_number",
                             "number": "x",
-                            "country": "x",
+                            "passport": {
+                                "file_id": "string",
+                                "expiration_date": "2019-12-27T18:11:19.117Z",
+                                "country": "x",
+                            },
                         },
                     },
                 },
@@ -452,11 +523,16 @@ class TestAsyncEntities:
                     "identification": {
                         "method": "social_security_number",
                         "number": "x",
-                        "country": "x",
+                        "passport": {
+                            "file_id": "string",
+                            "expiration_date": "2019-12-27T18:11:19.117Z",
+                            "country": "x",
+                        },
                     },
                 },
             },
             description="x",
+            relationship="affiliated",
         )
         assert isinstance(resource, Entity)
 

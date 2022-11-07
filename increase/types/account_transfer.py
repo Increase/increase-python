@@ -52,7 +52,7 @@ class AccountTransfer(BaseModel):
     the transfer was created.
     """
 
-    currency: str
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
     account currency.

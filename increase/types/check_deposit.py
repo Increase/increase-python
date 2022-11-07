@@ -5,7 +5,33 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["DepositRejection", "DepositReturn", "CheckDeposit"]
+__all__ = ["DepositAcceptance", "DepositRejection", "DepositReturn", "CheckDeposit"]
+
+
+class DepositAcceptance(BaseModel):
+    account_number: str
+    """The account number printed on the check."""
+
+    amount: int
+    """The amount to be deposited in the minor unit of the transaction's currency.
+
+    For dollars, for example, this is cents.
+    """
+
+    auxiliary_on_us: Optional[str]
+    """An additional line of metadata printed on the check.
+
+    This typically includes the check number.
+    """
+
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+    transaction's currency.
+    """
+
+    routing_number: str
+    """The routing number printed on the check."""
 
 
 class DepositRejection(BaseModel):
@@ -15,7 +41,7 @@ class DepositRejection(BaseModel):
     For dollars, for example, this is cents.
     """
 
-    currency: str
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
     currency.
@@ -43,7 +69,7 @@ class DepositReturn(BaseModel):
     check_deposit_id: str
     """The identifier of the Check Deposit that was returned."""
 
-    currency: str
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
     transaction's currency.
@@ -56,6 +82,7 @@ class DepositReturn(BaseModel):
         "no_account",
         "not_authorized",
         "stale_dated",
+        "stop_payment",
         "unknown_reason",
         "unmatched_details",
         "unreadable_image",
@@ -93,8 +120,14 @@ class CheckDeposit(BaseModel):
     the transfer was created.
     """
 
-    currency: str
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the deposit."""
+
+    deposit_acceptance: Optional[DepositAcceptance]
+    """
+    If your deposit is successfully parsed and accepted by Increase, this will
+    contain details of the parsed check.
+    """
 
     deposit_rejection: Optional[DepositRejection]
     """

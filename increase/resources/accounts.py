@@ -25,6 +25,7 @@ class Accounts(SyncAPIResource):
         self,
         *,
         entity_id: str | NotGiven = NOT_GIVEN,
+        informational_entity_id: str | NotGiven = NOT_GIVEN,
         name: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -40,6 +41,9 @@ class Accounts(SyncAPIResource):
         """
         Args:
           entity_id: The identifier for the Entity that will own the Account.
+
+          informational_entity_id: The identifier of an Entity that, while not owning the Account, is associated
+              with its activity. Its relationship to your group must be `informational`.
 
           name: The name you choose for the Account.
 
@@ -75,6 +79,7 @@ class Accounts(SyncAPIResource):
         body: AccountCreateParams | None = None,
         *,
         entity_id: str | NotGiven = NOT_GIVEN,
+        informational_entity_id: str | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -93,6 +98,9 @@ class Accounts(SyncAPIResource):
               instead.
 
           entity_id: The identifier for the Entity that will own the Account.
+
+          informational_entity_id: The identifier of an Entity that, while not owning the Account, is associated
+              with its activity. Its relationship to your group must be `informational`.
 
           name: The name you choose for the Account.
 
@@ -122,6 +130,7 @@ class Accounts(SyncAPIResource):
                 Any,
                 {
                     "entity_id": entity_id,
+                    "informational_entity_id": informational_entity_id,
                     "name": name,
                 },
             )
@@ -457,6 +466,7 @@ class AsyncAccounts(AsyncAPIResource):
         self,
         *,
         entity_id: str | NotGiven = NOT_GIVEN,
+        informational_entity_id: str | NotGiven = NOT_GIVEN,
         name: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -472,6 +482,9 @@ class AsyncAccounts(AsyncAPIResource):
         """
         Args:
           entity_id: The identifier for the Entity that will own the Account.
+
+          informational_entity_id: The identifier of an Entity that, while not owning the Account, is associated
+              with its activity. Its relationship to your group must be `informational`.
 
           name: The name you choose for the Account.
 
@@ -507,6 +520,7 @@ class AsyncAccounts(AsyncAPIResource):
         body: AccountCreateParams | None = None,
         *,
         entity_id: str | NotGiven = NOT_GIVEN,
+        informational_entity_id: str | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -525,6 +539,9 @@ class AsyncAccounts(AsyncAPIResource):
               instead.
 
           entity_id: The identifier for the Entity that will own the Account.
+
+          informational_entity_id: The identifier of an Entity that, while not owning the Account, is associated
+              with its activity. Its relationship to your group must be `informational`.
 
           name: The name you choose for the Account.
 
@@ -554,6 +571,7 @@ class AsyncAccounts(AsyncAPIResource):
                 Any,
                 {
                     "entity_id": entity_id,
+                    "informational_entity_id": informational_entity_id,
                     "name": name,
                 },
             )

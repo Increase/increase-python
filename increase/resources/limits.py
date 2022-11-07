@@ -45,8 +45,8 @@ class Limits(SyncAPIResource):
 
           interval: The interval for the metric. Required if `metric` is `count` or `volume`.
 
-          model_id: The identifier of the Account, Card, or Account Number you wish to associate the
-              limit with.
+          model_id: The identifier of the Account or Account Number you wish to associate the limit
+              with.
 
           value: The value to test the limit against.
 
@@ -105,8 +105,8 @@ class Limits(SyncAPIResource):
 
           interval: The interval for the metric. Required if `metric` is `count` or `volume`.
 
-          model_id: The identifier of the Account, Card, or Account Number you wish to associate the
-              limit with.
+          model_id: The identifier of the Account or Account Number you wish to associate the limit
+              with.
 
           value: The value to test the limit against.
 
@@ -458,8 +458,8 @@ class AsyncLimits(AsyncAPIResource):
 
           interval: The interval for the metric. Required if `metric` is `count` or `volume`.
 
-          model_id: The identifier of the Account, Card, or Account Number you wish to associate the
-              limit with.
+          model_id: The identifier of the Account or Account Number you wish to associate the limit
+              with.
 
           value: The value to test the limit against.
 
@@ -518,8 +518,8 @@ class AsyncLimits(AsyncAPIResource):
 
           interval: The interval for the metric. Required if `metric` is `count` or `volume`.
 
-          model_id: The identifier of the Account, Card, or Account Number you wish to associate the
-              limit with.
+          model_id: The identifier of the Account or Account Number you wish to associate the limit
+              with.
 
           value: The value to test the limit against.
 

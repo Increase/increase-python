@@ -59,7 +59,7 @@ class SourceCardDecline(BaseModel):
     For dollars, for example, this is cents.
     """
 
-    currency: str
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
     account currency.
@@ -123,7 +123,7 @@ class SourceInboundRealTimePaymentsTransferDecline(BaseModel):
     creditor_name: str
     """The name the sender of the transfer specified as the recipient of the transfer."""
 
-    currency: str
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined
     transfer's currency. This will always be "USD" for a Real Time Payments
@@ -240,7 +240,7 @@ class SourceCardRouteDecline(BaseModel):
     For dollars, for example, this is cents.
     """
 
-    currency: str
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
     account currency.
@@ -334,7 +334,7 @@ class DeclinedTransaction(BaseModel):
     Transaction occured.
     """
 
-    currency: str
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Declined
     Transaction's currency. This will match the currency on the Declined

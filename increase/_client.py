@@ -46,6 +46,7 @@ ENVIRONMENTS: Dict[str, str] = {
 class Increase(SyncAPIClient):
     accounts: resources.Accounts
     account_numbers: resources.AccountNumbers
+    real_time_decisions: resources.RealTimeDecisions
     cards: resources.Cards
     card_disputes: resources.CardDisputes
     external_accounts: resources.ExternalAccounts
@@ -131,6 +132,7 @@ class Increase(SyncAPIClient):
 
         self.accounts = resources.Accounts(self)
         self.account_numbers = resources.AccountNumbers(self)
+        self.real_time_decisions = resources.RealTimeDecisions(self)
         self.cards = resources.Cards(self)
         self.card_disputes = resources.CardDisputes(self)
         self.external_accounts = resources.ExternalAccounts(self)
@@ -219,6 +221,7 @@ class Increase(SyncAPIClient):
 class AsyncIncrease(AsyncAPIClient):
     accounts: resources.AsyncAccounts
     account_numbers: resources.AsyncAccountNumbers
+    real_time_decisions: resources.AsyncRealTimeDecisions
     cards: resources.AsyncCards
     card_disputes: resources.AsyncCardDisputes
     external_accounts: resources.AsyncExternalAccounts
@@ -304,6 +307,7 @@ class AsyncIncrease(AsyncAPIClient):
 
         self.accounts = resources.AsyncAccounts(self)
         self.account_numbers = resources.AsyncAccountNumbers(self)
+        self.real_time_decisions = resources.AsyncRealTimeDecisions(self)
         self.cards = resources.AsyncCards(self)
         self.card_disputes = resources.AsyncCardDisputes(self)
         self.external_accounts = resources.AsyncExternalAccounts(self)

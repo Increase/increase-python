@@ -58,7 +58,7 @@ class CheckTransfer(BaseModel):
     the transfer was created.
     """
 
-    currency: str
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
     currency.
@@ -80,18 +80,17 @@ class CheckTransfer(BaseModel):
     """The name that will be printed on the check."""
 
     status: Literal[
+        "pending_approval",
         "pending_submission",
         "submitting",
-        "pending_mailing",
-        "canceled",
-        "requires_attention",
-        "flagged_by_operator",
-        "mailed",
-        "pending_approval",
-        "rejected",
         "submitted",
+        "pending_mailing",
+        "mailed",
+        "canceled",
         "deposited",
         "stopped",
+        "rejected",
+        "requires_attention",
     ]
     """The lifecycle status of the transfer."""
 

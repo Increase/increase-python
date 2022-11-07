@@ -28,6 +28,7 @@ class FileCreateParams(TypedDict, total=False):
             "trust_formation_document",
             "digital_wallet_artwork",
             "digital_wallet_app_icon",
+            "entity_supplemental_document",
         ]
     ]
     """What the File will be used for in Increase's systems."""

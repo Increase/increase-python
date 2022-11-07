@@ -73,10 +73,7 @@ class CorporationBeneficialOwnersIndividualAddress(BaseModel):
 
 
 class CorporationBeneficialOwnersIndividualIdentification(BaseModel):
-    country: str
-    """The country that issued the provided identification number."""
-
-    method: Literal["social_security_number", "passport"]
+    method: Literal["social_security_number", "individual_taxpayer_identification_number", "passport"]
     """A method that can be used to verify the individual's identity."""
 
     number_last4: str
@@ -158,10 +155,7 @@ class NaturalPersonAddress(BaseModel):
 
 
 class NaturalPersonIdentification(BaseModel):
-    country: str
-    """The country that issued the provided identification number."""
-
-    method: Literal["social_security_number", "passport"]
+    method: Literal["social_security_number", "individual_taxpayer_identification_number", "passport"]
     """A method that can be used to verify the individual's identity."""
 
     number_last4: str
@@ -206,10 +200,7 @@ class JointIndividualsAddress(BaseModel):
 
 
 class JointIndividualsIdentification(BaseModel):
-    country: str
-    """The country that issued the provided identification number."""
-
-    method: Literal["social_security_number", "passport"]
+    method: Literal["social_security_number", "individual_taxpayer_identification_number", "passport"]
     """A method that can be used to verify the individual's identity."""
 
     number_last4: str
@@ -282,10 +273,7 @@ class TrustTrusteeIndividualAddress(BaseModel):
 
 
 class TrustTrusteeIndividualIdentification(BaseModel):
-    country: str
-    """The country that issued the provided identification number."""
-
-    method: Literal["social_security_number", "passport"]
+    method: Literal["social_security_number", "individual_taxpayer_identification_number", "passport"]
     """A method that can be used to verify the individual's identity."""
 
     number_last4: str
@@ -341,10 +329,7 @@ class TrustGrantorAddress(BaseModel):
 
 
 class TrustGrantorIdentification(BaseModel):
-    country: str
-    """The country that issued the provided identification number."""
-
-    method: Literal["social_security_number", "passport"]
+    method: Literal["social_security_number", "individual_taxpayer_identification_number", "passport"]
     """A method that can be used to verify the individual's identity."""
 
     number_last4: str
@@ -421,6 +406,9 @@ class Entity(BaseModel):
 
     Will be present if `structure` is equal to `natural_person`.
     """
+
+    relationship: Literal["affiliated", "informational", "unaffiliated"]
+    """The relationship between your group and the entity."""
 
     structure: Literal["corporation", "natural_person", "joint", "trust"]
     """The entity's legal structure."""

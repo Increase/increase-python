@@ -13,3 +13,9 @@ class AccountCreateParams(TypedDict, total=False):
 
     entity_id: str
     """The identifier for the Entity that will own the Account."""
+
+    informational_entity_id: str
+    """
+    The identifier of an Entity that, while not owning the Account, is associated
+    with its activity. Its relationship to your group must be `informational`.
+    """

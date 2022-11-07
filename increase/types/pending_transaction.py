@@ -26,7 +26,7 @@ class SourceAccountTransferInstruction(BaseModel):
     For dollars, for example, this is cents.
     """
 
-    currency: str
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
     account currency.
@@ -54,7 +54,7 @@ class SourceCardAuthorization(BaseModel):
     For dollars, for example, this is cents.
     """
 
-    currency: str
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
     transaction's currency.
@@ -84,7 +84,7 @@ class SourceCheckDepositInstruction(BaseModel):
     was deposited.
     """
 
-    currency: str
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
     transaction's currency.
@@ -104,7 +104,7 @@ class SourceCheckTransferInstruction(BaseModel):
     For dollars, for example, this is cents.
     """
 
-    currency: str
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
     currency.
@@ -121,7 +121,7 @@ class SourceCardRouteAuthorization(BaseModel):
     For dollars, for example, this is cents.
     """
 
-    currency: str
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
     transaction's currency.
@@ -262,7 +262,7 @@ class PendingTransaction(BaseModel):
     Transaction occured.
     """
 
-    currency: str
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Pending
     Transaction's currency. This will match the currency on the Pending
@@ -279,7 +279,7 @@ class PendingTransaction(BaseModel):
     id: str
     """The Pending Transaction identifier."""
 
-    route_id: str
+    route_id: Optional[str]
     """The identifier for the route this Pending Transaction came through.
 
     Routes are things like cards and ACH details.

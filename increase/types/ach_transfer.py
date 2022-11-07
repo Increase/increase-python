@@ -121,7 +121,7 @@ class ACHTransfer(BaseModel):
     the transfer was created.
     """
 
-    currency: str
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
     currency. For ACH transfers this is always equal to `usd`.
@@ -152,14 +152,7 @@ class ACHTransfer(BaseModel):
     """The descriptor that will show on the recipient's bank statement."""
 
     status: Literal[
-        "pending_approval",
-        "pending_submission",
-        "rejected",
-        "returned",
-        "canceled",
-        "requires_attention",
-        "flagged_by_operator",
-        "submitted",
+        "pending_approval", "canceled", "pending_submission", "submitted", "returned", "requires_attention", "rejected"
     ]
     """The lifecycle status of the transfer."""
 

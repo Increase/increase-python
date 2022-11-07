@@ -30,6 +30,7 @@ class Entities(SyncAPIResource):
         joint: entity_create_params.Joint | NotGiven = NOT_GIVEN,
         trust: entity_create_params.Trust | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
+        relationship: Literal["affiliated", "informational", "unaffiliated"],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -59,6 +60,8 @@ class Entities(SyncAPIResource):
 
           description: The description you choose to give the entity.
 
+          relationship: The relationship between your group and the entity.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -85,7 +88,7 @@ class Entities(SyncAPIResource):
     ) -> Entity:
         ...
 
-    @required_args(["body"], ["structure"])
+    @required_args(["body"], ["structure", "relationship"])
     def create(
         self,
         body: EntityCreateParams | None = None,
@@ -96,6 +99,7 @@ class Entities(SyncAPIResource):
         joint: entity_create_params.Joint | NotGiven = NOT_GIVEN,
         trust: entity_create_params.Trust | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
+        relationship: Literal["affiliated", "informational", "unaffiliated"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -128,6 +132,8 @@ class Entities(SyncAPIResource):
 
           description: The description you choose to give the entity.
 
+          relationship: The relationship between your group and the entity.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -159,6 +165,7 @@ class Entities(SyncAPIResource):
                     "joint": joint,
                     "trust": trust,
                     "description": description,
+                    "relationship": relationship,
                 },
             )
 
@@ -337,6 +344,7 @@ class AsyncEntities(AsyncAPIResource):
         joint: entity_create_params.Joint | NotGiven = NOT_GIVEN,
         trust: entity_create_params.Trust | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
+        relationship: Literal["affiliated", "informational", "unaffiliated"],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -366,6 +374,8 @@ class AsyncEntities(AsyncAPIResource):
 
           description: The description you choose to give the entity.
 
+          relationship: The relationship between your group and the entity.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -392,7 +402,7 @@ class AsyncEntities(AsyncAPIResource):
     ) -> Entity:
         ...
 
-    @required_args(["body"], ["structure"])
+    @required_args(["body"], ["structure", "relationship"])
     async def create(
         self,
         body: EntityCreateParams | None = None,
@@ -403,6 +413,7 @@ class AsyncEntities(AsyncAPIResource):
         joint: entity_create_params.Joint | NotGiven = NOT_GIVEN,
         trust: entity_create_params.Trust | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
+        relationship: Literal["affiliated", "informational", "unaffiliated"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -435,6 +446,8 @@ class AsyncEntities(AsyncAPIResource):
 
           description: The description you choose to give the entity.
 
+          relationship: The relationship between your group and the entity.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -466,6 +479,7 @@ class AsyncEntities(AsyncAPIResource):
                     "joint": joint,
                     "trust": trust,
                     "description": description,
+                    "relationship": relationship,
                 },
             )
 

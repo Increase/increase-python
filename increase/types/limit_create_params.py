@@ -13,8 +13,8 @@ class LimitCreateParams(TypedDict, total=False):
 
     model_id: Required[str]
     """
-    The identifier of the Account, Card, or Account Number you wish to associate the
-    limit with.
+    The identifier of the Account or Account Number you wish to associate the limit
+    with.
     """
 
     value: Required[int]

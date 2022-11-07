@@ -98,7 +98,7 @@ class WireTransfer(BaseModel):
     the transfer was created.
     """
 
-    currency: str
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
     currency. For wire transfers this is always equal to `usd`.
@@ -123,14 +123,7 @@ class WireTransfer(BaseModel):
     """The American Bankers' Association (ABA) Routing Transit Number (RTN)."""
 
     status: Literal[
-        "canceled",
-        "requires_attention",
-        "pending_approval",
-        "rejected",
-        "reversed",
-        "complete",
-        "pending_creating",
-        "pending_sending",
+        "canceled", "requires_attention", "pending_approval", "rejected", "reversed", "complete", "pending_creating"
     ]
     """The lifecycle status of the transfer."""
 

@@ -29,6 +29,7 @@ class TestAccounts:
     def test_method_create_with_all_params(self, client: Increase) -> None:
         resource = client.accounts.create(
             entity_id="string",
+            informational_entity_id="string",
             name="x",
         )
         assert isinstance(resource, Account)
@@ -95,6 +96,7 @@ class TestAsyncAccounts:
     async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         resource = await client.accounts.create(
             entity_id="string",
+            informational_entity_id="string",
             name="x",
         )
         assert isinstance(resource, Account)

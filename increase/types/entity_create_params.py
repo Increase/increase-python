@@ -8,23 +8,28 @@ from typing_extensions import Literal, Required, TypedDict
 __all__ = [
     "CorporationAddress",
     "CorporationBeneficialOwnersIndividualAddress",
+    "CorporationBeneficialOwnersIndividualIdentificationPassport",
     "CorporationBeneficialOwnersIndividualIdentification",
     "CorporationBeneficialOwnersIndividual",
     "CorporationBeneficialOwners",
     "Corporation",
     "NaturalPersonAddress",
+    "NaturalPersonIdentificationPassport",
     "NaturalPersonIdentification",
     "NaturalPerson",
     "JointIndividualsAddress",
+    "JointIndividualsIdentificationPassport",
     "JointIndividualsIdentification",
     "JointIndividuals",
     "Joint",
     "TrustAddress",
     "TrustTrusteeIndividualAddress",
+    "TrustTrusteeIndividualIdentificationPassport",
     "TrustTrusteeIndividualIdentification",
     "TrustTrusteeIndividual",
     "TrustTrustee",
     "TrustGrantorAddress",
+    "TrustGrantorIdentificationPassport",
     "TrustGrantorIdentification",
     "TrustGrantor",
     "Trust",
@@ -72,18 +77,32 @@ class CorporationBeneficialOwnersIndividualAddress(TypedDict, total=False):
     """The second line of the address. This might be the floor or room number."""
 
 
+class CorporationBeneficialOwnersIndividualIdentificationPassport(TypedDict, total=False):
+    country: Required[str]
+    """The country that issued the passport."""
+
+    expiration_date: Required[str]
+    """The passport's expiration date in YYYY-MM-DD format."""
+
+    file_id: Required[str]
+    """The identifier of the File containing the passport."""
+
+
 class CorporationBeneficialOwnersIndividualIdentification(TypedDict, total=False):
+    method: Required[Literal["social_security_number", "individual_taxpayer_identification_number", "passport"]]
+    """A method that can be used to verify the individual's identity."""
+
     number: Required[str]
     """
     An identification number that can be used to verify the individual's identity,
     such as a social security number.
     """
 
-    country: str
-    """The country that issued the provided identification number."""
+    passport: CorporationBeneficialOwnersIndividualIdentificationPassport
+    """Information about the passport used for identification.
 
-    method: Literal["social_security_number", "passport"]
-    """A method that can be used to verify the individual's identity."""
+    Required if `method` is equal to `passport`.
+    """
 
 
 class CorporationBeneficialOwnersIndividual(TypedDict, total=False):
@@ -157,18 +176,32 @@ class NaturalPersonAddress(TypedDict, total=False):
     """The second line of the address. This might be the floor or room number."""
 
 
+class NaturalPersonIdentificationPassport(TypedDict, total=False):
+    country: Required[str]
+    """The country that issued the passport."""
+
+    expiration_date: Required[str]
+    """The passport's expiration date in YYYY-MM-DD format."""
+
+    file_id: Required[str]
+    """The identifier of the File containing the passport."""
+
+
 class NaturalPersonIdentification(TypedDict, total=False):
+    method: Required[Literal["social_security_number", "individual_taxpayer_identification_number", "passport"]]
+    """A method that can be used to verify the individual's identity."""
+
     number: Required[str]
     """
     An identification number that can be used to verify the individual's identity,
     such as a social security number.
     """
 
-    country: str
-    """The country that issued the provided identification number."""
+    passport: NaturalPersonIdentificationPassport
+    """Information about the passport used for identification.
 
-    method: Literal["social_security_number", "passport"]
-    """A method that can be used to verify the individual's identity."""
+    Required if `method` is equal to `passport`.
+    """
 
 
 class NaturalPerson(TypedDict, total=False):
@@ -205,18 +238,32 @@ class JointIndividualsAddress(TypedDict, total=False):
     """The second line of the address. This might be the floor or room number."""
 
 
+class JointIndividualsIdentificationPassport(TypedDict, total=False):
+    country: Required[str]
+    """The country that issued the passport."""
+
+    expiration_date: Required[str]
+    """The passport's expiration date in YYYY-MM-DD format."""
+
+    file_id: Required[str]
+    """The identifier of the File containing the passport."""
+
+
 class JointIndividualsIdentification(TypedDict, total=False):
+    method: Required[Literal["social_security_number", "individual_taxpayer_identification_number", "passport"]]
+    """A method that can be used to verify the individual's identity."""
+
     number: Required[str]
     """
     An identification number that can be used to verify the individual's identity,
     such as a social security number.
     """
 
-    country: str
-    """The country that issued the provided identification number."""
+    passport: JointIndividualsIdentificationPassport
+    """Information about the passport used for identification.
 
-    method: Literal["social_security_number", "passport"]
-    """A method that can be used to verify the individual's identity."""
+    Required if `method` is equal to `passport`.
+    """
 
 
 class JointIndividuals(TypedDict, total=False):
@@ -281,18 +328,32 @@ class TrustTrusteeIndividualAddress(TypedDict, total=False):
     """The second line of the address. This might be the floor or room number."""
 
 
+class TrustTrusteeIndividualIdentificationPassport(TypedDict, total=False):
+    country: Required[str]
+    """The country that issued the passport."""
+
+    expiration_date: Required[str]
+    """The passport's expiration date in YYYY-MM-DD format."""
+
+    file_id: Required[str]
+    """The identifier of the File containing the passport."""
+
+
 class TrustTrusteeIndividualIdentification(TypedDict, total=False):
+    method: Required[Literal["social_security_number", "individual_taxpayer_identification_number", "passport"]]
+    """A method that can be used to verify the individual's identity."""
+
     number: Required[str]
     """
     An identification number that can be used to verify the individual's identity,
     such as a social security number.
     """
 
-    country: str
-    """The country that issued the provided identification number."""
+    passport: TrustTrusteeIndividualIdentificationPassport
+    """Information about the passport used for identification.
 
-    method: Literal["social_security_number", "passport"]
-    """A method that can be used to verify the individual's identity."""
+    Required if `method` is equal to `passport`.
+    """
 
 
 class TrustTrusteeIndividual(TypedDict, total=False):
@@ -340,18 +401,32 @@ class TrustGrantorAddress(TypedDict, total=False):
     """The second line of the address. This might be the floor or room number."""
 
 
+class TrustGrantorIdentificationPassport(TypedDict, total=False):
+    country: Required[str]
+    """The country that issued the passport."""
+
+    expiration_date: Required[str]
+    """The passport's expiration date in YYYY-MM-DD format."""
+
+    file_id: Required[str]
+    """The identifier of the File containing the passport."""
+
+
 class TrustGrantorIdentification(TypedDict, total=False):
+    method: Required[Literal["social_security_number", "individual_taxpayer_identification_number", "passport"]]
+    """A method that can be used to verify the individual's identity."""
+
     number: Required[str]
     """
     An identification number that can be used to verify the individual's identity,
     such as a social security number.
     """
 
-    country: str
-    """The country that issued the provided identification number."""
+    passport: TrustGrantorIdentificationPassport
+    """Information about the passport used for identification.
 
-    method: Literal["social_security_number", "passport"]
-    """A method that can be used to verify the individual's identity."""
+    Required if `method` is equal to `passport`.
+    """
 
 
 class TrustGrantor(TypedDict, total=False):
@@ -405,6 +480,9 @@ class Trust(TypedDict, total=False):
 
 
 class EntityCreateParams(TypedDict, total=False):
+    relationship: Required[Literal["affiliated", "informational", "unaffiliated"]]
+    """The relationship between your group and the entity."""
+
     structure: Required[Literal["corporation", "natural_person", "joint", "trust"]]
     """The type of Entity to create."""
 

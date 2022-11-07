@@ -21,7 +21,7 @@ class Account(BaseModel):
     was created.
     """
 
-    currency: str
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account
     currency.
@@ -32,6 +32,12 @@ class Account(BaseModel):
 
     id: str
     """The Account identifier."""
+
+    informational_entity_id: Optional[str]
+    """
+    The identifier of an Entity that, while not owning the Account, is associated
+    with its activity.
+    """
 
     interest_accrued: str
     """

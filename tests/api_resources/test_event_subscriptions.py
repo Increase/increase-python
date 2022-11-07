@@ -30,6 +30,7 @@ class TestEventSubscriptions:
         resource = client.event_subscriptions.create(
             url="string",
             shared_secret="x",
+            selected_event_category="account.created",
         )
         assert isinstance(resource, EventSubscription)
 
@@ -86,6 +87,7 @@ class TestAsyncEventSubscriptions:
         resource = await client.event_subscriptions.create(
             url="string",
             shared_secret="x",
+            selected_event_category="account.created",
         )
         assert isinstance(resource, EventSubscription)
 

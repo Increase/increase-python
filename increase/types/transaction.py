@@ -33,6 +33,7 @@ __all__ = [
     "SourceInternalSource",
     "SourceCardRouteRefund",
     "SourceCardRouteSettlement",
+    "SourceSampleFunds",
     "SourceWireDrawdownPaymentIntention",
     "SourceWireDrawdownPaymentRejection",
     "SourceWireTransferIntention",
@@ -49,7 +50,7 @@ class SourceAccountTransferIntention(BaseModel):
     For dollars, for example, this is cents.
     """
 
-    currency: str
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
     account currency.
@@ -179,7 +180,7 @@ class SourceCardRefund(BaseModel):
     card_settlement_transaction_id: Optional[str]
     """The identifier for the Transaction this refunds, if any."""
 
-    currency: str
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
     transaction's currency.
@@ -199,7 +200,7 @@ class SourceCardSettlement(BaseModel):
     For dollars, for example, this is cents.
     """
 
-    currency: str
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
     transaction's currency.
@@ -235,7 +236,7 @@ class SourceCheckDepositAcceptance(BaseModel):
     check_deposit_id: str
     """The ID of the Check Deposit that led to the Transaction."""
 
-    currency: str
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
     transaction's currency.
@@ -252,7 +253,7 @@ class SourceCheckDepositReturn(BaseModel):
     check_deposit_id: str
     """The identifier of the Check Deposit that was returned."""
 
-    currency: str
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
     transaction's currency.
@@ -265,6 +266,7 @@ class SourceCheckDepositReturn(BaseModel):
         "no_account",
         "not_authorized",
         "stale_dated",
+        "stop_payment",
         "unknown_reason",
         "unmatched_details",
         "unreadable_image",
@@ -302,7 +304,7 @@ class SourceCheckTransferIntention(BaseModel):
     amount: int
     """The transfer amount in USD cents."""
 
-    currency: str
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
     currency.
@@ -344,7 +346,7 @@ class SourceDisputeResolution(BaseModel):
     For dollars, for example, this is cents.
     """
 
-    currency: str
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
     transaction's currency.
@@ -403,7 +405,7 @@ class SourceInboundCheck(BaseModel):
 
     check_rear_image_file_id: Optional[str]
 
-    currency: str
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
     transaction's currency.
@@ -498,7 +500,7 @@ class SourceInboundRealTimePaymentsTransferConfirmation(BaseModel):
     creditor_name: str
     """The name the sender of the transfer specified as the recipient of the transfer."""
 
-    currency: str
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's
     currency. This will always be "USD" for a Real Time Payments transfer.
@@ -664,13 +666,22 @@ class SourceInternalSource(BaseModel):
     For dollars, for example, this is cents.
     """
 
-    currency: str
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
     currency.
     """
 
-    reason: Literal["cashback", "error", "error_correction", "fees", "interest", "sample_funds"]
+    reason: Literal[
+        "cashback",
+        "empyreal_adjustment",
+        "error",
+        "error_correction",
+        "fees",
+        "interest",
+        "sample_funds",
+        "sample_funds_return",
+    ]
 
 
 class SourceCardRouteRefund(BaseModel):
@@ -680,7 +691,7 @@ class SourceCardRouteRefund(BaseModel):
     For dollars, for example, this is cents.
     """
 
-    currency: str
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the refund
     currency.
@@ -706,7 +717,7 @@ class SourceCardRouteSettlement(BaseModel):
     For dollars, for example, this is cents.
     """
 
-    currency: str
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the settlement
     currency.
@@ -723,6 +734,11 @@ class SourceCardRouteSettlement(BaseModel):
     merchant_descriptor: str
 
     merchant_state: Optional[str]
+
+
+class SourceSampleFunds(BaseModel):
+    originator: str
+    """Where the sample funds came from."""
 
 
 class SourceWireDrawdownPaymentIntention(BaseModel):
@@ -994,7 +1010,7 @@ class Source(BaseModel):
     equal to `internal_source`.
     """
 
-    sample_funds: Optional[object]
+    sample_funds: Optional[SourceSampleFunds]
     """A Sample Funds object.
 
     This field will be present in the JSON response if and only if `category` is
@@ -1046,7 +1062,7 @@ class Transaction(BaseModel):
     Transaction occured.
     """
 
-    currency: str
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
     Transaction's currency. This will match the currency on the Transcation's
@@ -1063,7 +1079,7 @@ class Transaction(BaseModel):
     id: str
     """The Transaction identifier."""
 
-    route_id: str
+    route_id: Optional[str]
     """The identifier for the route this Transaction came through.
 
     Routes are things like cards and ACH details.

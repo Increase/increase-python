@@ -35,7 +35,7 @@ class PendingTransactionSourceAccountTransferInstruction(BaseModel):
     For dollars, for example, this is cents.
     """
 
-    currency: str
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
     account currency.
@@ -63,7 +63,7 @@ class PendingTransactionSourceCardAuthorization(BaseModel):
     For dollars, for example, this is cents.
     """
 
-    currency: str
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
     transaction's currency.
@@ -93,7 +93,7 @@ class PendingTransactionSourceCheckDepositInstruction(BaseModel):
     was deposited.
     """
 
-    currency: str
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
     transaction's currency.
@@ -113,7 +113,7 @@ class PendingTransactionSourceCheckTransferInstruction(BaseModel):
     For dollars, for example, this is cents.
     """
 
-    currency: str
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
     currency.
@@ -130,7 +130,7 @@ class PendingTransactionSourceCardRouteAuthorization(BaseModel):
     For dollars, for example, this is cents.
     """
 
-    currency: str
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
     transaction's currency.
@@ -271,7 +271,7 @@ class PendingTransaction(BaseModel):
     Transaction occured.
     """
 
-    currency: str
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Pending
     Transaction's currency. This will match the currency on the Pending
@@ -288,7 +288,7 @@ class PendingTransaction(BaseModel):
     id: str
     """The Pending Transaction identifier."""
 
-    route_id: str
+    route_id: Optional[str]
     """The identifier for the route this Pending Transaction came through.
 
     Routes are things like cards and ACH details.
@@ -359,7 +359,7 @@ class DeclinedTransactionSourceCardDecline(BaseModel):
     For dollars, for example, this is cents.
     """
 
-    currency: str
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
     account currency.
@@ -423,7 +423,7 @@ class DeclinedTransactionSourceInboundRealTimePaymentsTransferDecline(BaseModel)
     creditor_name: str
     """The name the sender of the transfer specified as the recipient of the transfer."""
 
-    currency: str
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined
     transfer's currency. This will always be "USD" for a Real Time Payments
@@ -540,7 +540,7 @@ class DeclinedTransactionSourceCardRouteDecline(BaseModel):
     For dollars, for example, this is cents.
     """
 
-    currency: str
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
     account currency.
@@ -636,7 +636,7 @@ class DeclinedTransaction(BaseModel):
     Transaction occured.
     """
 
-    currency: str
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Declined
     Transaction's currency. This will match the currency on the Declined

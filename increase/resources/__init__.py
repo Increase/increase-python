@@ -21,6 +21,7 @@ from .external_accounts import ExternalAccounts, AsyncExternalAccounts
 from .oauth_connections import OauthConnections, AsyncOauthConnections
 from .account_statements import AccountStatements, AsyncAccountStatements
 from .event_subscriptions import EventSubscriptions, AsyncEventSubscriptions
+from .real_time_decisions import RealTimeDecisions, AsyncRealTimeDecisions
 from .ach_prenotifications import ACHPrenotifications, AsyncACHPrenotifications
 from .pending_transactions import PendingTransactions, AsyncPendingTransactions
 from .declined_transactions import DeclinedTransactions, AsyncDeclinedTransactions
@@ -31,6 +32,8 @@ __all__ = [
     "AsyncAccounts",
     "AccountNumbers",
     "AsyncAccountNumbers",
+    "RealTimeDecisions",
+    "AsyncRealTimeDecisions",
     "Cards",
     "AsyncCards",
     "CardDisputes",
