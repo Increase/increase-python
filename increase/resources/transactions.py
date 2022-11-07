@@ -2,12 +2,16 @@
 
 from __future__ import annotations
 
+import warnings
+from typing import Any, Union, Optional, cast, overload
+
 from ..types import transaction_list_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import NOT_GIVEN, Body, Query, Headers, Timeout, NotGiven
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
 from ..types.transaction import Transaction
+from ..types.transaction_list_params import TransactionListParams
 
 __all__ = ["Transactions", "AsyncTransactions"]
 
@@ -22,13 +26,34 @@ class Transactions(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        # deprecated options params
+        headers: Union[Headers, NotGiven] = NOT_GIVEN,
+        max_retries: Union[int, NotGiven] = NOT_GIVEN,
+        timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+        query: Optional[Query] = None,
     ) -> Transaction:
+        if query is not None:
+            warnings.warn(
+                "The `query` argument is deprecated. Please use `extra_query` instead",
+                DeprecationWarning,
+                stacklevel=3,
+            )
+
         return self._get(
             f"/transactions/{transaction_id}",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                headers=headers,
+                max_retries=max_retries,
+                timeout=timeout,
+                query=query,
+            ),
             cast_to=Transaction,
         )
 
+    @overload
     def list(
         self,
         *,
@@ -42,6 +67,10 @@ class Transactions(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        # deprecated options params
+        headers: Union[Headers, NotGiven] = NOT_GIVEN,
+        max_retries: Union[int, NotGiven] = NOT_GIVEN,
+        timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
     ) -> SyncPage[Transaction]:
         """
         Args:
@@ -60,6 +89,84 @@ class Transactions(SyncAPIResource):
 
           extra_body: Add additional JSON properties to the request
         """
+        ...
+
+    @overload
+    def list(
+        self,
+        query: TransactionListParams = {},
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        # deprecated options params
+        headers: Union[Headers, NotGiven] = NOT_GIVEN,
+        max_retries: Union[int, NotGiven] = NOT_GIVEN,
+        timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+    ) -> SyncPage[Transaction]:
+        ...
+
+    def list(
+        self,
+        query: TransactionListParams | None = None,
+        *,
+        cursor: str | NotGiven = NOT_GIVEN,
+        limit: int | NotGiven = NOT_GIVEN,
+        account_id: str | NotGiven = NOT_GIVEN,
+        route_id: str | NotGiven = NOT_GIVEN,
+        created_at: transaction_list_params.CreatedAt | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        # deprecated options params
+        headers: Union[Headers, NotGiven] = NOT_GIVEN,
+        max_retries: Union[int, NotGiven] = NOT_GIVEN,
+        timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+    ) -> SyncPage[Transaction]:
+        """
+        Args:
+          query: Deprecated TypedDict parameter, this is being replaced with explicit kwargs
+              instead.
+
+          cursor: Return the page of entries after this one.
+
+          limit: Limit the size of the list that is returned. The default (and maximum) is 100
+              objects.
+
+          account_id: Filter Transactions for those belonging to the specified Account.
+
+          route_id: Filter Transactions for those belonging to the specified route.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+        """
+        if query is not None:
+            warnings.warn(
+                "Passing parameters as a dictionary is deprecated and will be removed in the future",
+                DeprecationWarning,
+                stacklevel=2,
+            )
+        else:
+            # cast to Any is required because the NotGiven types make this expression incompatible
+            # with the standard TransactionListParams type.
+            query = cast(
+                Any,
+                {
+                    "cursor": cursor,
+                    "limit": limit,
+                    "account_id": account_id,
+                    "route_id": route_id,
+                    "created_at": created_at,
+                },
+            )
+
         return self._get_api_list(
             "/transactions",
             page=SyncPage[Transaction],
@@ -67,13 +174,10 @@ class Transactions(SyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
-                query={
-                    "cursor": cursor,
-                    "limit": limit,
-                    "account_id": account_id,
-                    "route_id": route_id,
-                    "created_at": created_at,
-                },
+                headers=headers,
+                max_retries=max_retries,
+                timeout=timeout,
+                query=query,
             ),
             model=Transaction,
         )
@@ -89,13 +193,34 @@ class AsyncTransactions(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        # deprecated options params
+        headers: Union[Headers, NotGiven] = NOT_GIVEN,
+        max_retries: Union[int, NotGiven] = NOT_GIVEN,
+        timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+        query: Optional[Query] = None,
     ) -> Transaction:
+        if query is not None:
+            warnings.warn(
+                "The `query` argument is deprecated. Please use `extra_query` instead",
+                DeprecationWarning,
+                stacklevel=3,
+            )
+
         return await self._get(
             f"/transactions/{transaction_id}",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                headers=headers,
+                max_retries=max_retries,
+                timeout=timeout,
+                query=query,
+            ),
             cast_to=Transaction,
         )
 
+    @overload
     def list(
         self,
         *,
@@ -109,6 +234,10 @@ class AsyncTransactions(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        # deprecated options params
+        headers: Union[Headers, NotGiven] = NOT_GIVEN,
+        max_retries: Union[int, NotGiven] = NOT_GIVEN,
+        timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
     ) -> AsyncPaginator[Transaction, AsyncPage[Transaction]]:
         """
         Args:
@@ -127,6 +256,84 @@ class AsyncTransactions(AsyncAPIResource):
 
           extra_body: Add additional JSON properties to the request
         """
+        ...
+
+    @overload
+    def list(
+        self,
+        query: TransactionListParams = {},
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        # deprecated options params
+        headers: Union[Headers, NotGiven] = NOT_GIVEN,
+        max_retries: Union[int, NotGiven] = NOT_GIVEN,
+        timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+    ) -> AsyncPaginator[Transaction, AsyncPage[Transaction]]:
+        ...
+
+    def list(
+        self,
+        query: TransactionListParams | None = None,
+        *,
+        cursor: str | NotGiven = NOT_GIVEN,
+        limit: int | NotGiven = NOT_GIVEN,
+        account_id: str | NotGiven = NOT_GIVEN,
+        route_id: str | NotGiven = NOT_GIVEN,
+        created_at: transaction_list_params.CreatedAt | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        # deprecated options params
+        headers: Union[Headers, NotGiven] = NOT_GIVEN,
+        max_retries: Union[int, NotGiven] = NOT_GIVEN,
+        timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+    ) -> AsyncPaginator[Transaction, AsyncPage[Transaction]]:
+        """
+        Args:
+          query: Deprecated TypedDict parameter, this is being replaced with explicit kwargs
+              instead.
+
+          cursor: Return the page of entries after this one.
+
+          limit: Limit the size of the list that is returned. The default (and maximum) is 100
+              objects.
+
+          account_id: Filter Transactions for those belonging to the specified Account.
+
+          route_id: Filter Transactions for those belonging to the specified route.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+        """
+        if query is not None:
+            warnings.warn(
+                "Passing parameters as a dictionary is deprecated and will be removed in the future",
+                DeprecationWarning,
+                stacklevel=2,
+            )
+        else:
+            # cast to Any is required because the NotGiven types make this expression incompatible
+            # with the standard TransactionListParams type.
+            query = cast(
+                Any,
+                {
+                    "cursor": cursor,
+                    "limit": limit,
+                    "account_id": account_id,
+                    "route_id": route_id,
+                    "created_at": created_at,
+                },
+            )
+
         return self._get_api_list(
             "/transactions",
             page=AsyncPage[Transaction],
@@ -134,13 +341,10 @@ class AsyncTransactions(AsyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
-                query={
-                    "cursor": cursor,
-                    "limit": limit,
-                    "account_id": account_id,
-                    "route_id": route_id,
-                    "created_at": created_at,
-                },
+                headers=headers,
+                max_retries=max_retries,
+                timeout=timeout,
+                query=query,
             ),
             model=Transaction,
         )
