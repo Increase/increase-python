@@ -20,10 +20,10 @@ __all__ = [
     "JointIndividuals",
     "Joint",
     "TrustAddress",
-    "TrustTrusteeIndividualAddress",
-    "TrustTrusteeIndividualIdentification",
-    "TrustTrusteeIndividual",
-    "TrustTrustee",
+    "TrustTrusteesIndividualAddress",
+    "TrustTrusteesIndividualIdentification",
+    "TrustTrusteesIndividual",
+    "TrustTrustees",
     "TrustGrantorAddress",
     "TrustGrantorIdentification",
     "TrustGrantor",
@@ -252,7 +252,7 @@ class TrustAddress(BaseModel):
     """The ZIP code of the address."""
 
 
-class TrustTrusteeIndividualAddress(BaseModel):
+class TrustTrusteesIndividualAddress(BaseModel):
     city: str
     """The city of the address."""
 
@@ -272,7 +272,7 @@ class TrustTrusteeIndividualAddress(BaseModel):
     """The ZIP code of the address."""
 
 
-class TrustTrusteeIndividualIdentification(BaseModel):
+class TrustTrusteesIndividualIdentification(BaseModel):
     method: Literal["social_security_number", "individual_taxpayer_identification_number", "passport"]
     """A method that can be used to verify the individual's identity."""
 
@@ -283,29 +283,29 @@ class TrustTrusteeIndividualIdentification(BaseModel):
     """
 
 
-class TrustTrusteeIndividual(BaseModel):
-    address: TrustTrusteeIndividualAddress
+class TrustTrusteesIndividual(BaseModel):
+    address: TrustTrusteesIndividualAddress
     """The person's address."""
 
     date_of_birth: str
     """The person's date of birth in YYYY-MM-DD format."""
 
-    identification: TrustTrusteeIndividualIdentification
+    identification: TrustTrusteesIndividualIdentification
     """A means of verifying the person's identity."""
 
     name: str
     """The person's legal name."""
 
 
-class TrustTrustee(BaseModel):
-    individual: Optional[TrustTrusteeIndividual]
+class TrustTrustees(BaseModel):
+    individual: Optional[TrustTrusteesIndividual]
     """The individual trustee of the trust.
 
     Will be present if the trustee's `structure` is equal to `individual`.
     """
 
     structure: Literal["individual"]
-    """The structure of the trust's trustee. Will always be equal to `individual`."""
+    """The structure of the trustee. Will always be equal to `individual`."""
 
 
 class TrustGrantorAddress(BaseModel):
@@ -378,8 +378,8 @@ class Trust(BaseModel):
     tax_identifier: Optional[str]
     """The Employer Identification Number (EIN) of the trust itself."""
 
-    trustee: TrustTrustee
-    """The trustee of the trust."""
+    trustees: List[TrustTrustees]
+    """The trustees of the trust."""
 
 
 class Entity(BaseModel):

@@ -23,11 +23,11 @@ __all__ = [
     "JointIndividuals",
     "Joint",
     "TrustAddress",
-    "TrustTrusteeIndividualAddress",
-    "TrustTrusteeIndividualIdentificationPassport",
-    "TrustTrusteeIndividualIdentification",
-    "TrustTrusteeIndividual",
-    "TrustTrustee",
+    "TrustTrusteesIndividualAddress",
+    "TrustTrusteesIndividualIdentificationPassport",
+    "TrustTrusteesIndividualIdentification",
+    "TrustTrusteesIndividual",
+    "TrustTrustees",
     "TrustGrantorAddress",
     "TrustGrantorIdentificationPassport",
     "TrustGrantorIdentification",
@@ -308,7 +308,7 @@ class TrustAddress(TypedDict, total=False):
     """The second line of the address. This might be the floor or room number."""
 
 
-class TrustTrusteeIndividualAddress(TypedDict, total=False):
+class TrustTrusteesIndividualAddress(TypedDict, total=False):
     city: Required[str]
     """The city of the address."""
 
@@ -328,7 +328,7 @@ class TrustTrusteeIndividualAddress(TypedDict, total=False):
     """The second line of the address. This might be the floor or room number."""
 
 
-class TrustTrusteeIndividualIdentificationPassport(TypedDict, total=False):
+class TrustTrusteesIndividualIdentificationPassport(TypedDict, total=False):
     country: Required[str]
     """The country that issued the passport."""
 
@@ -339,7 +339,7 @@ class TrustTrusteeIndividualIdentificationPassport(TypedDict, total=False):
     """The identifier of the File containing the passport."""
 
 
-class TrustTrusteeIndividualIdentification(TypedDict, total=False):
+class TrustTrusteesIndividualIdentification(TypedDict, total=False):
     method: Required[Literal["social_security_number", "individual_taxpayer_identification_number", "passport"]]
     """A method that can be used to verify the individual's identity."""
 
@@ -349,32 +349,32 @@ class TrustTrusteeIndividualIdentification(TypedDict, total=False):
     such as a social security number.
     """
 
-    passport: TrustTrusteeIndividualIdentificationPassport
+    passport: TrustTrusteesIndividualIdentificationPassport
     """Information about the passport used for identification.
 
     Required if `method` is equal to `passport`.
     """
 
 
-class TrustTrusteeIndividual(TypedDict, total=False):
-    address: Required[TrustTrusteeIndividualAddress]
+class TrustTrusteesIndividual(TypedDict, total=False):
+    address: Required[TrustTrusteesIndividualAddress]
     """The individual's address."""
 
     date_of_birth: Required[str]
     """The person's date of birth in YYYY-MM-DD format."""
 
-    identification: Required[TrustTrusteeIndividualIdentification]
+    identification: Required[TrustTrusteesIndividualIdentification]
     """A means of verifying the person's identity."""
 
     name: Required[str]
     """The person's legal name."""
 
 
-class TrustTrustee(TypedDict, total=False):
+class TrustTrustees(TypedDict, total=False):
     structure: Required[Literal["individual"]]
-    """The structure of the trust's trustee."""
+    """The structure of the trustee."""
 
-    individual: TrustTrusteeIndividual
+    individual: TrustTrusteesIndividual
     """Details of the individual trustee.
 
     Required when the trustee `structure` is equal to `individual`.
@@ -457,8 +457,8 @@ class Trust(TypedDict, total=False):
     name: Required[str]
     """The legal name of the trust."""
 
-    trustee: Required[TrustTrustee]
-    """The trustee of the trust."""
+    trustees: Required[List[TrustTrustees]]
+    """The trustees of the trust."""
 
     formation_document_file_id: str
     """The identifier of the File containing the formation document of the trust."""
