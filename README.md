@@ -150,6 +150,40 @@ increase.accounts.create(
 )
 ```
 
+## File Uploads
+
+Request parameters that correspond to file uploads can be passed as `bytes` or a tuple of `(filename, contents, media type)`.
+
+```python
+from pathlib import Path
+from increase import Increase
+
+increase = Increase()
+
+contents = Path("my/file.txt").read_bytes()
+increase.files.create(
+    file=contents,
+    purpose="other",
+)
+```
+
+The async client uses the exact same interface. This example uses `aiofiles` to asynchronously read the file contents but you can use whatever method you would like.
+
+```python
+import aiofiles
+from increase import Increase
+
+increase = Increase()
+
+async with aiofiles.open("pytest.ini", mode="rb") as f:
+    contents = await f.read()
+
+await increase.files.create(
+    file=contents,
+    purpose="other",
+)
+```
+
 ## Handling errors
 
 When the library is unable to connect to the API (e.g., due to network connection problems or a timeout), a subclass of `increase.APIConnectionError` is raised.
