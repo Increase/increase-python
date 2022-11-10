@@ -70,6 +70,12 @@ class SourceCardAuthorization(BaseModel):
 
     merchant_descriptor: str
 
+    real_time_decision_id: Optional[str]
+    """
+    The identifier of the Real-Time Decision sent to approve or decline this
+    transaction.
+    """
+
 
 class SourceCheckDepositInstruction(BaseModel):
     amount: int

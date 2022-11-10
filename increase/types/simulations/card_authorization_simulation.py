@@ -79,6 +79,12 @@ class PendingTransactionSourceCardAuthorization(BaseModel):
 
     merchant_descriptor: str
 
+    real_time_decision_id: Optional[str]
+    """
+    The identifier of the Real-Time Decision sent to approve or decline this
+    transaction.
+    """
+
 
 class PendingTransactionSourceCheckDepositInstruction(BaseModel):
     amount: int
@@ -376,6 +382,12 @@ class DeclinedTransactionSourceCardDecline(BaseModel):
     merchant_descriptor: str
 
     merchant_state: Optional[str]
+
+    real_time_decision_id: Optional[str]
+    """
+    The identifier of the Real-Time Decision sent to approve or decline this
+    transaction.
+    """
 
     reason: Literal[
         "card_not_active",

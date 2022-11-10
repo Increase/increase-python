@@ -1174,6 +1174,12 @@ class DeclinedTransactionSourceCardDecline(BaseModel):
 
     merchant_state: Optional[str]
 
+    real_time_decision_id: Optional[str]
+    """
+    The identifier of the Real-Time Decision sent to approve or decline this
+    transaction.
+    """
+
     reason: Literal[
         "card_not_active",
         "entity_not_active",

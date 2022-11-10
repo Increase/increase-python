@@ -36,7 +36,8 @@ class RoutingNumbers(SyncAPIResource):
     ) -> SyncPage[RoutingNumber]:
         """
         You can use this API to confirm if a routing number is valid, such as when a
-        user is providing you with bank account details.
+        user is providing you with bank account details. In Sandbox, the only valid
+        routing number for this method is 110000000.
 
         Args:
           cursor: Return the page of entries after this one.
@@ -71,7 +72,8 @@ class RoutingNumbers(SyncAPIResource):
     ) -> SyncPage[RoutingNumber]:
         """
         You can use this API to confirm if a routing number is valid, such as when a
-        user is providing you with bank account details.
+        user is providing you with bank account details. In Sandbox, the only valid
+        routing number for this method is 110000000.
         """
         ...
 
@@ -95,7 +97,8 @@ class RoutingNumbers(SyncAPIResource):
     ) -> SyncPage[RoutingNumber]:
         """
         You can use this API to confirm if a routing number is valid, such as when a
-        user is providing you with bank account details.
+        user is providing you with bank account details. In Sandbox, the only valid
+        routing number for this method is 110000000.
 
         Args:
           query: Deprecated TypedDict parameter, this is being replaced with explicit kwargs
@@ -168,7 +171,8 @@ class AsyncRoutingNumbers(AsyncAPIResource):
     ) -> AsyncPaginator[RoutingNumber, AsyncPage[RoutingNumber]]:
         """
         You can use this API to confirm if a routing number is valid, such as when a
-        user is providing you with bank account details.
+        user is providing you with bank account details. In Sandbox, the only valid
+        routing number for this method is 110000000.
 
         Args:
           cursor: Return the page of entries after this one.
@@ -203,7 +207,8 @@ class AsyncRoutingNumbers(AsyncAPIResource):
     ) -> AsyncPaginator[RoutingNumber, AsyncPage[RoutingNumber]]:
         """
         You can use this API to confirm if a routing number is valid, such as when a
-        user is providing you with bank account details.
+        user is providing you with bank account details. In Sandbox, the only valid
+        routing number for this method is 110000000.
         """
         ...
 
@@ -227,7 +232,8 @@ class AsyncRoutingNumbers(AsyncAPIResource):
     ) -> AsyncPaginator[RoutingNumber, AsyncPage[RoutingNumber]]:
         """
         You can use this API to confirm if a routing number is valid, such as when a
-        user is providing you with bank account details.
+        user is providing you with bank account details. In Sandbox, the only valid
+        routing number for this method is 110000000.
 
         Args:
           query: Deprecated TypedDict parameter, this is being replaced with explicit kwargs
