@@ -29,6 +29,7 @@ class Cards(SyncAPIResource):
         account_id: str,
         description: str | NotGiven = NOT_GIVEN,
         billing_address: card_create_params.BillingAddress | NotGiven = NOT_GIVEN,
+        digital_wallet: card_create_params.DigitalWallet | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -47,6 +48,10 @@ class Cards(SyncAPIResource):
           description: The description you choose to give the card.
 
           billing_address: The card's billing address.
+
+          digital_wallet: The contact information used in the two-factor steps for digital wallet card
+              creation. At least one field must be present to complete the digital wallet
+              steps.
 
           extra_headers: Send extra headers
 
@@ -82,6 +87,7 @@ class Cards(SyncAPIResource):
         account_id: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         billing_address: card_create_params.BillingAddress | NotGiven = NOT_GIVEN,
+        digital_wallet: card_create_params.DigitalWallet | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -103,6 +109,10 @@ class Cards(SyncAPIResource):
           description: The description you choose to give the card.
 
           billing_address: The card's billing address.
+
+          digital_wallet: The contact information used in the two-factor steps for digital wallet card
+              creation. At least one field must be present to complete the digital wallet
+              steps.
 
           extra_headers: Send extra headers
 
@@ -132,6 +142,7 @@ class Cards(SyncAPIResource):
                     "account_id": account_id,
                     "description": description,
                     "billing_address": billing_address,
+                    "digital_wallet": digital_wallet,
                 },
             )
 
@@ -194,6 +205,7 @@ class Cards(SyncAPIResource):
         description: str | NotGiven = NOT_GIVEN,
         status: Literal["active", "disabled", "canceled"] | NotGiven = NOT_GIVEN,
         billing_address: card_update_params.BillingAddress | NotGiven = NOT_GIVEN,
+        digital_wallet: card_update_params.DigitalWallet | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -212,6 +224,10 @@ class Cards(SyncAPIResource):
           status: The status to update the Card with.
 
           billing_address: The card's updated billing address.
+
+          digital_wallet: The contact information used in the two-factor steps for digital wallet card
+              creation. At least one field must be present to complete the digital wallet
+              steps.
 
           extra_headers: Send extra headers
 
@@ -248,6 +264,7 @@ class Cards(SyncAPIResource):
         description: str | NotGiven = NOT_GIVEN,
         status: Literal["active", "disabled", "canceled"] | NotGiven = NOT_GIVEN,
         billing_address: card_update_params.BillingAddress | NotGiven = NOT_GIVEN,
+        digital_wallet: card_update_params.DigitalWallet | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -269,6 +286,10 @@ class Cards(SyncAPIResource):
           status: The status to update the Card with.
 
           billing_address: The card's updated billing address.
+
+          digital_wallet: The contact information used in the two-factor steps for digital wallet card
+              creation. At least one field must be present to complete the digital wallet
+              steps.
 
           extra_headers: Send extra headers
 
@@ -298,6 +319,7 @@ class Cards(SyncAPIResource):
                     "description": description,
                     "status": status,
                     "billing_address": billing_address,
+                    "digital_wallet": digital_wallet,
                 },
             )
 
@@ -483,6 +505,7 @@ class AsyncCards(AsyncAPIResource):
         account_id: str,
         description: str | NotGiven = NOT_GIVEN,
         billing_address: card_create_params.BillingAddress | NotGiven = NOT_GIVEN,
+        digital_wallet: card_create_params.DigitalWallet | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -501,6 +524,10 @@ class AsyncCards(AsyncAPIResource):
           description: The description you choose to give the card.
 
           billing_address: The card's billing address.
+
+          digital_wallet: The contact information used in the two-factor steps for digital wallet card
+              creation. At least one field must be present to complete the digital wallet
+              steps.
 
           extra_headers: Send extra headers
 
@@ -536,6 +563,7 @@ class AsyncCards(AsyncAPIResource):
         account_id: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         billing_address: card_create_params.BillingAddress | NotGiven = NOT_GIVEN,
+        digital_wallet: card_create_params.DigitalWallet | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -557,6 +585,10 @@ class AsyncCards(AsyncAPIResource):
           description: The description you choose to give the card.
 
           billing_address: The card's billing address.
+
+          digital_wallet: The contact information used in the two-factor steps for digital wallet card
+              creation. At least one field must be present to complete the digital wallet
+              steps.
 
           extra_headers: Send extra headers
 
@@ -586,6 +618,7 @@ class AsyncCards(AsyncAPIResource):
                     "account_id": account_id,
                     "description": description,
                     "billing_address": billing_address,
+                    "digital_wallet": digital_wallet,
                 },
             )
 
@@ -648,6 +681,7 @@ class AsyncCards(AsyncAPIResource):
         description: str | NotGiven = NOT_GIVEN,
         status: Literal["active", "disabled", "canceled"] | NotGiven = NOT_GIVEN,
         billing_address: card_update_params.BillingAddress | NotGiven = NOT_GIVEN,
+        digital_wallet: card_update_params.DigitalWallet | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -666,6 +700,10 @@ class AsyncCards(AsyncAPIResource):
           status: The status to update the Card with.
 
           billing_address: The card's updated billing address.
+
+          digital_wallet: The contact information used in the two-factor steps for digital wallet card
+              creation. At least one field must be present to complete the digital wallet
+              steps.
 
           extra_headers: Send extra headers
 
@@ -702,6 +740,7 @@ class AsyncCards(AsyncAPIResource):
         description: str | NotGiven = NOT_GIVEN,
         status: Literal["active", "disabled", "canceled"] | NotGiven = NOT_GIVEN,
         billing_address: card_update_params.BillingAddress | NotGiven = NOT_GIVEN,
+        digital_wallet: card_update_params.DigitalWallet | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -723,6 +762,10 @@ class AsyncCards(AsyncAPIResource):
           status: The status to update the Card with.
 
           billing_address: The card's updated billing address.
+
+          digital_wallet: The contact information used in the two-factor steps for digital wallet card
+              creation. At least one field must be present to complete the digital wallet
+              steps.
 
           extra_headers: Send extra headers
 
@@ -752,6 +795,7 @@ class AsyncCards(AsyncAPIResource):
                     "description": description,
                     "status": status,
                     "billing_address": billing_address,
+                    "digital_wallet": digital_wallet,
                 },
             )
 

@@ -5,7 +5,7 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["BillingAddress", "Card"]
+__all__ = ["BillingAddress", "DigitalWallet", "Card"]
 
 
 class BillingAddress(BaseModel):
@@ -25,6 +25,20 @@ class BillingAddress(BaseModel):
     """The US state of the billing address."""
 
 
+class DigitalWallet(BaseModel):
+    email: Optional[str]
+    """
+    An email address that can be used to verify the cardholder via one-time passcode
+    over email.
+    """
+
+    phone: Optional[str]
+    """
+    A phone number that can be used to verify the cardholder via one-time passcode
+    over SMS.
+    """
+
+
 class Card(BaseModel):
     account_id: str
     """The identifier for the account this card belongs to."""
@@ -40,6 +54,13 @@ class Card(BaseModel):
 
     description: Optional[str]
     """The card's description for display purposes."""
+
+    digital_wallet: Optional[DigitalWallet]
+    """
+    The contact information used in the two-factor steps for digital wallet card
+    creation. At least one field must be present to complete the digital wallet
+    steps.
+    """
 
     expiration_month: str
     """The month the card expires in MM format (e.g., August is 08)."""
