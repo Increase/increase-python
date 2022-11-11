@@ -106,7 +106,9 @@ class Increase(SyncAPIClient):
         """
         api_key = api_key or os.environ.get("INCREASE_API_KEY", "")
         if not api_key:
-            raise Exception("No api_key argument provided")
+            raise Exception(
+                "The api_key client option must be set either by passing api_key to the client or by setting the INCREASE_API_KEY environment variable"
+            )
 
         self._environment = environment
 
@@ -281,7 +283,9 @@ class AsyncIncrease(AsyncAPIClient):
         """
         api_key = api_key or os.environ.get("INCREASE_API_KEY", "")
         if not api_key:
-            raise Exception("No api_key argument provided")
+            raise Exception(
+                "The api_key client option must be set either by passing api_key to the client or by setting the INCREASE_API_KEY environment variable"
+            )
 
         self._environment = environment
 
