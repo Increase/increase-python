@@ -1,56 +1,13 @@
 # File generated from our OpenAPI spec by Stainless.
 
-from typing import Optional
+from typing import Optional, Union, List, Dict, Any
 from typing_extensions import Literal
-
+from pydantic import Field
 from ..._models import BaseModel
 
-__all__ = [
-    "TransactionSourceAccountTransferIntention",
-    "TransactionSourceACHCheckConversionReturn",
-    "TransactionSourceACHCheckConversion",
-    "TransactionSourceACHTransferIntention",
-    "TransactionSourceACHTransferRejection",
-    "TransactionSourceACHTransferReturn",
-    "TransactionSourceCardDisputeAcceptance",
-    "TransactionSourceCardRefund",
-    "TransactionSourceCardSettlement",
-    "TransactionSourceCheckDepositAcceptance",
-    "TransactionSourceCheckDepositReturn",
-    "TransactionSourceCheckTransferIntention",
-    "TransactionSourceCheckTransferRejection",
-    "TransactionSourceCheckTransferStopPaymentRequest",
-    "TransactionSourceDisputeResolution",
-    "TransactionSourceEmpyrealCashDeposit",
-    "TransactionSourceInboundACHTransfer",
-    "TransactionSourceInboundCheck",
-    "TransactionSourceInboundInternationalACHTransfer",
-    "TransactionSourceInboundRealTimePaymentsTransferConfirmation",
-    "TransactionSourceInboundWireDrawdownPaymentReversal",
-    "TransactionSourceInboundWireDrawdownPayment",
-    "TransactionSourceInboundWireReversal",
-    "TransactionSourceInboundWireTransfer",
-    "TransactionSourceInternalSource",
-    "TransactionSourceCardRouteRefund",
-    "TransactionSourceCardRouteSettlement",
-    "TransactionSourceSampleFunds",
-    "TransactionSourceWireDrawdownPaymentIntention",
-    "TransactionSourceWireDrawdownPaymentRejection",
-    "TransactionSourceWireTransferIntention",
-    "TransactionSourceWireTransferRejection",
-    "TransactionSource",
-    "Transaction",
-    "DeclinedTransactionSourceACHDecline",
-    "DeclinedTransactionSourceCardDecline",
-    "DeclinedTransactionSourceCheckDecline",
-    "DeclinedTransactionSourceInboundRealTimePaymentsTransferDecline",
-    "DeclinedTransactionSourceInternationalACHDecline",
-    "DeclinedTransactionSourceCardRouteDecline",
-    "DeclinedTransactionSource",
-    "DeclinedTransaction",
-    "InboundRealTimePaymentsTransferSimulationResult",
-]
+from ...types import shared
 
+__all__ = ["TransactionSourceAccountTransferIntention", "TransactionSourceACHCheckConversionReturn", "TransactionSourceACHCheckConversion", "TransactionSourceACHTransferIntention", "TransactionSourceACHTransferRejection", "TransactionSourceACHTransferReturn", "TransactionSourceCardDisputeAcceptance", "TransactionSourceCardRefund", "TransactionSourceCardSettlement", "TransactionSourceCheckDepositAcceptance", "TransactionSourceCheckDepositReturn", "TransactionSourceCheckTransferIntention", "TransactionSourceCheckTransferRejection", "TransactionSourceCheckTransferStopPaymentRequest", "TransactionSourceDisputeResolution", "TransactionSourceEmpyrealCashDeposit", "TransactionSourceInboundACHTransfer", "TransactionSourceInboundCheck", "TransactionSourceInboundInternationalACHTransfer", "TransactionSourceInboundRealTimePaymentsTransferConfirmation", "TransactionSourceInboundWireDrawdownPaymentReversal", "TransactionSourceInboundWireDrawdownPayment", "TransactionSourceInboundWireReversal", "TransactionSourceInboundWireTransfer", "TransactionSourceInternalSource", "TransactionSourceCardRouteRefund", "TransactionSourceCardRouteSettlement", "TransactionSourceSampleFunds", "TransactionSourceWireDrawdownPaymentIntention", "TransactionSourceWireDrawdownPaymentRejection", "TransactionSourceWireTransferIntention", "TransactionSourceWireTransferRejection", "TransactionSource", "Transaction", "DeclinedTransactionSourceACHDecline", "DeclinedTransactionSourceCardDecline", "DeclinedTransactionSourceCheckDecline", "DeclinedTransactionSourceInboundRealTimePaymentsTransferDecline", "DeclinedTransactionSourceInternationalACHDecline", "DeclinedTransactionSourceCardRouteDecline", "DeclinedTransactionSource", "DeclinedTransaction", "InboundRealTimePaymentsTransferSimulationResult"]
 
 class TransactionSourceAccountTransferIntention(BaseModel):
     amount: int
@@ -77,7 +34,6 @@ class TransactionSourceAccountTransferIntention(BaseModel):
     transfer_id: str
     """The identifier of the Account Transfer that led to this Pending Transaction."""
 
-
 class TransactionSourceACHCheckConversionReturn(BaseModel):
     amount: int
     """The amount in the minor unit of the transaction's currency.
@@ -88,7 +44,6 @@ class TransactionSourceACHCheckConversionReturn(BaseModel):
     return_reason_code: str
     """Why the transfer was returned."""
 
-
 class TransactionSourceACHCheckConversion(BaseModel):
     amount: int
     """The amount in the minor unit of the transaction's currency.
@@ -98,7 +53,6 @@ class TransactionSourceACHCheckConversion(BaseModel):
 
     file_id: str
     """The identifier of the File containing an image of the returned check."""
-
 
 class TransactionSourceACHTransferIntention(BaseModel):
     account_number: str
@@ -116,11 +70,9 @@ class TransactionSourceACHTransferIntention(BaseModel):
     transfer_id: str
     """The identifier of the ACH Transfer that led to this Transaction."""
 
-
 class TransactionSourceACHTransferRejection(BaseModel):
     transfer_id: str
     """The identifier of the ACH Transfer that led to this Transaction."""
-
 
 class TransactionSourceACHTransferReturn(BaseModel):
     created_at: str
@@ -129,30 +81,7 @@ class TransactionSourceACHTransferReturn(BaseModel):
     the transfer was created.
     """
 
-    return_reason_code: Literal[
-        "insufficient_fund",
-        "no_account",
-        "account_closed",
-        "invalid_account_number_structure",
-        "account_frozen_entry_returned_per_ofac_instruction",
-        "credit_entry_refused_by_receiver",
-        "unauthorized_debit_to_consumer_account_using_corporate_sec_code",
-        "corporate_customer_advised_not_authorized",
-        "payment_stopped",
-        "non_transaction_account",
-        "uncollected_funds",
-        "routing_number_check_digit_error",
-        "customer_advised_unauthorized_improper_ineligible_or_incomplete",
-        "amount_field_error",
-        "authorization_revoked_by_customer",
-        "invalid_ach_routing_number",
-        "file_record_edit_criteria",
-        "enr_invalid_individual_name",
-        "returned_per_odfi_request",
-        "addenda_error",
-        "limited_participation_dfi",
-        "other",
-    ]
+    return_reason_code: Literal["insufficient_fund", "no_account", "account_closed", "invalid_account_number_structure", "account_frozen_entry_returned_per_ofac_instruction", "credit_entry_refused_by_receiver", "unauthorized_debit_to_consumer_account_using_corporate_sec_code", "corporate_customer_advised_not_authorized", "payment_stopped", "non_transaction_account", "uncollected_funds", "routing_number_check_digit_error", "customer_advised_unauthorized_improper_ineligible_or_incomplete", "amount_field_error", "authorization_revoked_by_customer", "invalid_ach_routing_number", "file_record_edit_criteria", "enr_invalid_individual_name", "returned_per_odfi_request", "addenda_error", "limited_participation_dfi", "other"]
     """Why the ACH Transfer was returned."""
 
     transaction_id: str
@@ -160,7 +89,6 @@ class TransactionSourceACHTransferReturn(BaseModel):
 
     transfer_id: str
     """The identifier of the ACH Transfer associated with this return."""
-
 
 class TransactionSourceCardDisputeAcceptance(BaseModel):
     accepted_at: str
@@ -177,7 +105,6 @@ class TransactionSourceCardDisputeAcceptance(BaseModel):
     The identifier of the Transaction that was created to return the disputed funds
     to your account.
     """
-
 
 class TransactionSourceCardRefund(BaseModel):
     amount: int
@@ -200,7 +127,6 @@ class TransactionSourceCardRefund(BaseModel):
 
     For this resource it will always be `card_refund`.
     """
-
 
 class TransactionSourceCardSettlement(BaseModel):
     amount: int
@@ -234,7 +160,6 @@ class TransactionSourceCardSettlement(BaseModel):
     For this resource it will always be `card_settlement`.
     """
 
-
 class TransactionSourceCheckDepositAcceptance(BaseModel):
     amount: int
     """The amount in the minor unit of the transaction's currency.
@@ -250,7 +175,6 @@ class TransactionSourceCheckDepositAcceptance(BaseModel):
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
     transaction's currency.
     """
-
 
 class TransactionSourceCheckDepositReturn(BaseModel):
     amount: int
@@ -268,18 +192,7 @@ class TransactionSourceCheckDepositReturn(BaseModel):
     transaction's currency.
     """
 
-    return_reason: Literal[
-        "ach_conversion_not_supported",
-        "duplicate_submission",
-        "insufficient_funds",
-        "no_account",
-        "not_authorized",
-        "stale_dated",
-        "stop_payment",
-        "unknown_reason",
-        "unmatched_details",
-        "unreadable_image",
-    ]
+    return_reason: Literal["ach_conversion_not_supported", "duplicate_submission", "insufficient_funds", "no_account", "not_authorized", "stale_dated", "stop_payment", "unknown_reason", "unmatched_details", "unreadable_image"]
 
     returned_at: str
     """
@@ -292,7 +205,6 @@ class TransactionSourceCheckDepositReturn(BaseModel):
     The identifier of the transaction that reversed the original check deposit
     transaction.
     """
-
 
 class TransactionSourceCheckTransferIntention(BaseModel):
     address_city: str
@@ -325,11 +237,9 @@ class TransactionSourceCheckTransferIntention(BaseModel):
     transfer_id: str
     """The identifier of the Check Transfer with which this is associated."""
 
-
 class TransactionSourceCheckTransferRejection(BaseModel):
     transfer_id: str
     """The identifier of the Check Transfer that led to this Transaction."""
-
 
 class TransactionSourceCheckTransferStopPaymentRequest(BaseModel):
     requested_at: str
@@ -347,7 +257,6 @@ class TransactionSourceCheckTransferStopPaymentRequest(BaseModel):
     For this resource it will always be `check_transfer_stop_payment_request`.
     """
 
-
 class TransactionSourceDisputeResolution(BaseModel):
     amount: int
     """The amount in the minor unit of the transaction's currency.
@@ -364,7 +273,6 @@ class TransactionSourceDisputeResolution(BaseModel):
     disputed_transaction_id: str
     """The identifier of the Transaction that was disputed."""
 
-
 class TransactionSourceEmpyrealCashDeposit(BaseModel):
     amount: int
     """The amount in the minor unit of the transaction's currency.
@@ -375,7 +283,6 @@ class TransactionSourceEmpyrealCashDeposit(BaseModel):
     bag_id: str
 
     deposit_date: str
-
 
 class TransactionSourceInboundACHTransfer(BaseModel):
     amount: int
@@ -400,7 +307,6 @@ class TransactionSourceInboundACHTransfer(BaseModel):
 
     trace_number: str
 
-
 class TransactionSourceInboundCheck(BaseModel):
     amount: int
     """The declined amount in the minor unit of the destination account currency.
@@ -419,7 +325,6 @@ class TransactionSourceInboundCheck(BaseModel):
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
     transaction's currency.
     """
-
 
 class TransactionSourceInboundInternationalACHTransfer(BaseModel):
     amount: int
@@ -498,7 +403,6 @@ class TransactionSourceInboundInternationalACHTransfer(BaseModel):
 
     trace_number: str
 
-
 class TransactionSourceInboundRealTimePaymentsTransferConfirmation(BaseModel):
     amount: int
     """The amount in the minor unit of the transfer's currency.
@@ -529,7 +433,6 @@ class TransactionSourceInboundRealTimePaymentsTransferConfirmation(BaseModel):
 
     transaction_identification: str
     """The Real Time Payments network identification of the transfer"""
-
 
 class TransactionSourceInboundWireDrawdownPaymentReversal(BaseModel):
     amount: int
@@ -562,7 +465,6 @@ class TransactionSourceInboundWireDrawdownPaymentReversal(BaseModel):
     previous_message_input_source: str
     """The Fedwire input source identifier for the wire transfer that was reversed."""
 
-
 class TransactionSourceInboundWireDrawdownPayment(BaseModel):
     amount: int
     """The amount in the minor unit of the transaction's currency.
@@ -593,7 +495,6 @@ class TransactionSourceInboundWireDrawdownPayment(BaseModel):
     originator_name: Optional[str]
 
     originator_to_beneficiary_information: Optional[str]
-
 
 class TransactionSourceInboundWireReversal(BaseModel):
     amount: int
@@ -635,7 +536,6 @@ class TransactionSourceInboundWireReversal(BaseModel):
     institution.
     """
 
-
 class TransactionSourceInboundWireTransfer(BaseModel):
     amount: int
     """The amount in the minor unit of the transaction's currency.
@@ -667,7 +567,6 @@ class TransactionSourceInboundWireTransfer(BaseModel):
 
     originator_to_beneficiary_information: Optional[str]
 
-
 class TransactionSourceInternalSource(BaseModel):
     amount: int
     """The amount in the minor unit of the transaction's currency.
@@ -681,17 +580,7 @@ class TransactionSourceInternalSource(BaseModel):
     currency.
     """
 
-    reason: Literal[
-        "cashback",
-        "empyreal_adjustment",
-        "error",
-        "error_correction",
-        "fees",
-        "interest",
-        "sample_funds",
-        "sample_funds_return",
-    ]
-
+    reason: Literal["cashback", "empyreal_adjustment", "error", "error_correction", "fees", "interest", "sample_funds", "sample_funds_return"]
 
 class TransactionSourceCardRouteRefund(BaseModel):
     amount: int
@@ -718,7 +607,6 @@ class TransactionSourceCardRouteRefund(BaseModel):
 
     merchant_state: Optional[str]
 
-
 class TransactionSourceCardRouteSettlement(BaseModel):
     amount: int
     """The settled amount in the minor unit of the settlement currency.
@@ -744,11 +632,9 @@ class TransactionSourceCardRouteSettlement(BaseModel):
 
     merchant_state: Optional[str]
 
-
 class TransactionSourceSampleFunds(BaseModel):
     originator: str
     """Where the sample funds came from."""
-
 
 class TransactionSourceWireDrawdownPaymentIntention(BaseModel):
     account_number: str
@@ -762,10 +648,8 @@ class TransactionSourceWireDrawdownPaymentIntention(BaseModel):
 
     transfer_id: str
 
-
 class TransactionSourceWireDrawdownPaymentRejection(BaseModel):
     transfer_id: str
-
 
 class TransactionSourceWireTransferIntention(BaseModel):
     account_number: str
@@ -782,10 +666,8 @@ class TransactionSourceWireTransferIntention(BaseModel):
 
     transfer_id: str
 
-
 class TransactionSourceWireTransferRejection(BaseModel):
     transfer_id: str
-
 
 class TransactionSource(BaseModel):
     account_transfer_intention: Optional[TransactionSourceAccountTransferIntention]
@@ -865,42 +747,7 @@ class TransactionSource(BaseModel):
     equal to `card_settlement`.
     """
 
-    category: Literal[
-        "account_transfer_intention",
-        "ach_check_conversion_return",
-        "ach_check_conversion",
-        "ach_transfer_intention",
-        "ach_transfer_rejection",
-        "ach_transfer_return",
-        "card_dispute_acceptance",
-        "card_refund",
-        "card_settlement",
-        "check_deposit_acceptance",
-        "check_deposit_return",
-        "check_transfer_intention",
-        "check_transfer_rejection",
-        "check_transfer_stop_payment_request",
-        "dispute_resolution",
-        "empyreal_cash_deposit",
-        "inbound_ach_transfer",
-        "inbound_check",
-        "inbound_international_ach_transfer",
-        "inbound_real_time_payments_transfer_confirmation",
-        "inbound_wire_drawdown_payment_reversal",
-        "inbound_wire_drawdown_payment",
-        "inbound_wire_reversal",
-        "inbound_wire_transfer",
-        "internal_source",
-        "card_route_refund",
-        "card_route_settlement",
-        "real_time_payments_transfer_acknowledgement",
-        "sample_funds",
-        "wire_drawdown_payment_intention",
-        "wire_drawdown_payment_rejection",
-        "wire_transfer_intention",
-        "wire_transfer_rejection",
-        "other",
-    ]
+    category: Literal["account_transfer_intention", "ach_check_conversion_return", "ach_check_conversion", "ach_transfer_intention", "ach_transfer_rejection", "ach_transfer_return", "card_dispute_acceptance", "card_refund", "card_settlement", "check_deposit_acceptance", "check_deposit_return", "check_transfer_intention", "check_transfer_rejection", "check_transfer_stop_payment_request", "dispute_resolution", "empyreal_cash_deposit", "inbound_ach_transfer", "inbound_check", "inbound_international_ach_transfer", "inbound_real_time_payments_transfer_confirmation", "inbound_wire_drawdown_payment_reversal", "inbound_wire_drawdown_payment", "inbound_wire_reversal", "inbound_wire_transfer", "internal_source", "card_route_refund", "card_route_settlement", "real_time_payments_transfer_acknowledgement", "sample_funds", "wire_drawdown_payment_intention", "wire_drawdown_payment_rejection", "wire_transfer_intention", "wire_transfer_rejection", "other"]
     """The type of transaction that took place.
 
     We may add additional possible values for this enum over time; your application
@@ -977,9 +824,7 @@ class TransactionSource(BaseModel):
     equal to `inbound_international_ach_transfer`.
     """
 
-    inbound_real_time_payments_transfer_confirmation: Optional[
-        TransactionSourceInboundRealTimePaymentsTransferConfirmation
-    ]
+    inbound_real_time_payments_transfer_confirmation: Optional[TransactionSourceInboundRealTimePaymentsTransferConfirmation]
     """A Inbound Real Time Payments Transfer Confirmation object.
 
     This field will be present in the JSON response if and only if `category` is
@@ -1056,7 +901,6 @@ class TransactionSource(BaseModel):
     equal to `wire_transfer_rejection`.
     """
 
-
 class Transaction(BaseModel):
     account_id: str
     """The identifier for the Account the Transaction belongs to."""
@@ -1113,7 +957,6 @@ class Transaction(BaseModel):
     For this resource it will always be `transaction`.
     """
 
-
 class DeclinedTransactionSourceACHDecline(BaseModel):
     amount: int
     """The declined amount in the minor unit of the destination account currency.
@@ -1129,17 +972,7 @@ class DeclinedTransactionSourceACHDecline(BaseModel):
 
     originator_company_name: str
 
-    reason: Literal[
-        "ach_route_canceled",
-        "ach_route_disabled",
-        "no_ach_route",
-        "breaches_limit",
-        "credit_entry_refused_by_receiver",
-        "group_locked",
-        "entity_not_active",
-        "insufficient_funds",
-        "originator_request",
-    ]
+    reason: Literal["ach_route_canceled", "ach_route_disabled", "no_ach_route", "breaches_limit", "credit_entry_refused_by_receiver", "group_locked", "entity_not_active", "insufficient_funds", "originator_request"]
     """Why the ACH transfer was declined."""
 
     receiver_id_number: Optional[str]
@@ -1147,7 +980,6 @@ class DeclinedTransactionSourceACHDecline(BaseModel):
     receiver_name: Optional[str]
 
     trace_number: str
-
 
 class DeclinedTransactionSourceCardDecline(BaseModel):
     amount: int
@@ -1180,17 +1012,8 @@ class DeclinedTransactionSourceCardDecline(BaseModel):
     transaction.
     """
 
-    reason: Literal[
-        "card_not_active",
-        "entity_not_active",
-        "group_locked",
-        "insufficient_funds",
-        "breaches_limit",
-        "webhook_declined",
-        "webhook_timed_out",
-    ]
+    reason: Literal["card_not_active", "entity_not_active", "group_locked", "insufficient_funds", "breaches_limit", "webhook_declined", "webhook_timed_out"]
     """Why the transaction was declined."""
-
 
 class DeclinedTransactionSourceCheckDecline(BaseModel):
     amount: int
@@ -1201,20 +1024,8 @@ class DeclinedTransactionSourceCheckDecline(BaseModel):
 
     auxiliary_on_us: Optional[str]
 
-    reason: Literal[
-        "ach_route_canceled",
-        "ach_route_disabled",
-        "breaches_limit",
-        "entity_not_active",
-        "group_locked",
-        "insufficient_funds",
-        "unable_to_locate_account",
-        "unable_to_process",
-        "refer_to_image",
-        "stop_payment_requested",
-    ]
+    reason: Literal["ach_route_canceled", "ach_route_disabled", "breaches_limit", "entity_not_active", "group_locked", "insufficient_funds", "unable_to_locate_account", "unable_to_process", "refer_to_image", "stop_payment_requested"]
     """Why the check was declined."""
-
 
 class DeclinedTransactionSourceInboundRealTimePaymentsTransferDecline(BaseModel):
     amount: int
@@ -1242,13 +1053,7 @@ class DeclinedTransactionSourceInboundRealTimePaymentsTransferDecline(BaseModel)
     debtor_routing_number: str
     """The routing number of the account that sent the transfer."""
 
-    reason: Literal[
-        "account_number_canceled",
-        "account_number_disabled",
-        "group_locked",
-        "entity_not_active",
-        "real_time_payments_not_enabled",
-    ]
+    reason: Literal["account_number_canceled", "account_number_disabled", "group_locked", "entity_not_active", "real_time_payments_not_enabled"]
     """Why the transfer was declined."""
 
     remittance_information: Optional[str]
@@ -1256,7 +1061,6 @@ class DeclinedTransactionSourceInboundRealTimePaymentsTransferDecline(BaseModel)
 
     transaction_identification: str
     """The Real Time Payments network identification of the declined transfer."""
-
 
 class DeclinedTransactionSourceInternationalACHDecline(BaseModel):
     amount: int
@@ -1335,7 +1139,6 @@ class DeclinedTransactionSourceInternationalACHDecline(BaseModel):
 
     trace_number: str
 
-
 class DeclinedTransactionSourceCardRouteDecline(BaseModel):
     amount: int
     """The declined amount in the minor unit of the destination account currency.
@@ -1361,7 +1164,6 @@ class DeclinedTransactionSourceCardRouteDecline(BaseModel):
 
     merchant_state: Optional[str]
 
-
 class DeclinedTransactionSource(BaseModel):
     ach_decline: Optional[DeclinedTransactionSourceACHDecline]
     """A ACH Decline object.
@@ -1384,15 +1186,7 @@ class DeclinedTransactionSource(BaseModel):
     equal to `card_route_decline`.
     """
 
-    category: Literal[
-        "ach_decline",
-        "card_decline",
-        "check_decline",
-        "inbound_real_time_payments_transfer_decline",
-        "international_ach_decline",
-        "card_route_decline",
-        "other",
-    ]
+    category: Literal["ach_decline", "card_decline", "check_decline", "inbound_real_time_payments_transfer_decline", "international_ach_decline", "card_route_decline", "other"]
     """The type of decline that took place.
 
     We may add additional possible values for this enum over time; your application
@@ -1406,9 +1200,7 @@ class DeclinedTransactionSource(BaseModel):
     equal to `check_decline`.
     """
 
-    inbound_real_time_payments_transfer_decline: Optional[
-        DeclinedTransactionSourceInboundRealTimePaymentsTransferDecline
-    ]
+    inbound_real_time_payments_transfer_decline: Optional[DeclinedTransactionSourceInboundRealTimePaymentsTransferDecline]
     """A Inbound Real Time Payments Transfer Decline object.
 
     This field will be present in the JSON response if and only if `category` is
@@ -1421,7 +1213,6 @@ class DeclinedTransactionSource(BaseModel):
     This field will be present in the JSON response if and only if `category` is
     equal to `international_ach_decline`.
     """
-
 
 class DeclinedTransaction(BaseModel):
     account_id: str
@@ -1475,7 +1266,6 @@ class DeclinedTransaction(BaseModel):
 
     For this resource it will always be `declined_transaction`.
     """
-
 
 class InboundRealTimePaymentsTransferSimulationResult(BaseModel):
     declined_transaction: Optional[DeclinedTransaction]

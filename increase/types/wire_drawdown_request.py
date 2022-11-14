@@ -1,12 +1,13 @@
 # File generated from our OpenAPI spec by Stainless.
 
-from typing import Optional
+from typing import Optional, Union, List, Dict, Any
 from typing_extensions import Literal
-
+from pydantic import Field
 from .._models import BaseModel
 
-__all__ = ["Submission", "WireDrawdownRequest"]
+from ..types import shared
 
+__all__ = ["Submission", "WireDrawdownRequest"]
 
 class Submission(BaseModel):
     input_message_accountability_data: str
@@ -14,7 +15,6 @@ class Submission(BaseModel):
     The input message accountability data (IMAD) uniquely identifying the submission
     with Fedwire.
     """
-
 
 class WireDrawdownRequest(BaseModel):
     account_number_id: str

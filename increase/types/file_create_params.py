@@ -1,13 +1,13 @@
 # File generated from our OpenAPI spec by Stainless.
 
 from __future__ import annotations
-
-from typing_extensions import Literal, Required, TypedDict
-
+from typing import List, Union, Dict, Optional
+from typing_extensions import Literal, TypedDict, Required, Annotated
 from .._types import FileTypes
+from .._utils import PropertyInfo
+from ..types import shared_params
 
 __all__ = ["FileCreateParams"]
-
 
 class FileCreateParams(TypedDict, total=False):
     file: Required[FileTypes]
@@ -18,19 +18,7 @@ class FileCreateParams(TypedDict, total=False):
     transfers for the multipart/form-data protocol.
     """
 
-    purpose: Required[
-        Literal[
-            "check_image_front",
-            "check_image_back",
-            "form_ss_4",
-            "identity_document",
-            "other",
-            "trust_formation_document",
-            "digital_wallet_artwork",
-            "digital_wallet_app_icon",
-            "entity_supplemental_document",
-        ]
-    ]
+    purpose: Required[Literal["check_image_front", "check_image_back", "form_ss_4", "identity_document", "other", "trust_formation_document", "digital_wallet_artwork", "digital_wallet_app_icon", "entity_supplemental_document"]]
     """What the File will be used for in Increase's systems."""
 
     description: str

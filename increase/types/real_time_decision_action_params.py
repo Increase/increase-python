@@ -1,23 +1,17 @@
 # File generated from our OpenAPI spec by Stainless.
 
 from __future__ import annotations
+from typing import List, Union, Dict, Optional
+from typing_extensions import Literal, TypedDict, Required, Annotated
+from .._types import FileTypes
+from .._utils import PropertyInfo
+from ..types import shared_params
 
-from typing_extensions import Literal, Required, TypedDict
-
-__all__ = [
-    "CardAuthorization",
-    "DigitalWalletTokenApproval",
-    "DigitalWalletTokenDecline",
-    "DigitalWalletToken",
-    "DigitalWalletAuthentication",
-    "RealTimeDecisionActionParams",
-]
-
+__all__ = ["CardAuthorization", "DigitalWalletTokenApproval", "DigitalWalletTokenDecline", "DigitalWalletToken", "DigitalWalletAuthentication", "RealTimeDecisionActionParams"]
 
 class CardAuthorization(TypedDict, total=False):
     decision: Required[Literal["approve", "decline"]]
     """Whether the card authorization should be approved or declined."""
-
 
 class DigitalWalletTokenApproval(TypedDict, total=False):
     card_profile_id: Required[str]
@@ -35,14 +29,12 @@ class DigitalWalletTokenApproval(TypedDict, total=False):
     over SMS.
     """
 
-
 class DigitalWalletTokenDecline(TypedDict, total=False):
     reason: str
     """Why the tokenization attempt was declined.
 
     This is for logging purposes only and is not displayed to the end-user.
     """
-
 
 class DigitalWalletToken(TypedDict, total=False):
     approval: DigitalWalletTokenApproval
@@ -57,11 +49,9 @@ class DigitalWalletToken(TypedDict, total=False):
     about the decline.
     """
 
-
 class DigitalWalletAuthentication(TypedDict, total=False):
     result: Required[Literal["success", "failure"]]
     """Whether your application was able to deliver the one-time passcode."""
-
 
 class RealTimeDecisionActionParams(TypedDict, total=False):
     card_authorization: CardAuthorization

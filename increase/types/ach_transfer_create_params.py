@@ -1,11 +1,13 @@
 # File generated from our OpenAPI spec by Stainless.
 
 from __future__ import annotations
-
-from typing_extensions import Literal, Required, TypedDict
+from typing import List, Union, Dict, Optional
+from typing_extensions import Literal, TypedDict, Required, Annotated
+from .._types import FileTypes
+from .._utils import PropertyInfo
+from ..types import shared_params
 
 __all__ = ["ACHTransferCreateParams"]
-
 
 class ACHTransferCreateParams(TypedDict, total=False):
     account_id: Required[str]
@@ -74,7 +76,5 @@ class ACHTransferCreateParams(TypedDict, total=False):
     destination account.
     """
 
-    standard_entry_class_code: Literal[
-        "corporate_credit_or_debit", "prearranged_payments_and_deposit", "internet_initiated"
-    ]
+    standard_entry_class_code: Literal["corporate_credit_or_debit", "prearranged_payments_and_deposit", "internet_initiated"]
     """The Standard Entry Class (SEC) code to use for the transfer."""

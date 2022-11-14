@@ -1,12 +1,13 @@
 # File generated from our OpenAPI spec by Stainless.
 
-from typing import Optional
+from typing import Optional, Union, List, Dict, Any
 from typing_extensions import Literal
-
+from pydantic import Field
 from .._models import BaseModel
 
-__all__ = ["File"]
+from ..types import shared
 
+__all__ = ["File"]
 
 class File(BaseModel):
     created_at: str
@@ -30,19 +31,7 @@ class File(BaseModel):
     id: str
     """The File's identifier."""
 
-    purpose: Literal[
-        "check_image_front",
-        "check_image_back",
-        "form_1099_int",
-        "form_ss_4",
-        "identity_document",
-        "increase_statement",
-        "other",
-        "trust_formation_document",
-        "digital_wallet_artwork",
-        "digital_wallet_app_icon",
-        "entity_supplemental_document",
-    ]
+    purpose: Literal["check_image_front", "check_image_back", "form_1099_int", "form_ss_4", "identity_document", "increase_statement", "other", "trust_formation_document", "digital_wallet_artwork", "digital_wallet_app_icon", "entity_supplemental_document"]
     """What the File will be used for.
 
     We may add additional possible values for this enum over time; your application

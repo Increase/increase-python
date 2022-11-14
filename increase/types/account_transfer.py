@@ -1,12 +1,13 @@
 # File generated from our OpenAPI spec by Stainless.
 
-from typing import Optional
+from typing import Optional, Union, List, Dict, Any
 from typing_extensions import Literal
-
+from pydantic import Field
 from .._models import BaseModel
 
-__all__ = ["Approval", "Cancellation", "AccountTransfer"]
+from ..types import shared
 
+__all__ = ["Approval", "Cancellation", "AccountTransfer"]
 
 class Approval(BaseModel):
     approved_at: str
@@ -15,14 +16,12 @@ class Approval(BaseModel):
     the transfer was approved.
     """
 
-
 class Cancellation(BaseModel):
     canceled_at: str
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the Transfer was canceled.
     """
-
 
 class AccountTransfer(BaseModel):
     account_id: str
@@ -73,9 +72,7 @@ class AccountTransfer(BaseModel):
     network: Literal["account"]
     """The transfer's network."""
 
-    status: Literal[
-        "pending_submission", "pending_approval", "canceled", "requires_attention", "flagged_by_operator", "complete"
-    ]
+    status: Literal["pending_submission", "pending_approval", "canceled", "requires_attention", "flagged_by_operator", "complete"]
     """The lifecycle status of the transfer."""
 
     template_id: Optional[str]

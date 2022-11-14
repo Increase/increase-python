@@ -3,37 +3,38 @@
 from __future__ import annotations
 
 import warnings
-from typing import Any, Union, Optional, cast, overload
+from typing import Optional, Union, List, Dict, Any, Mapping, cast, overload
+from typing_extensions import Literal
 
-from ..._types import NOT_GIVEN, Body, Query, Headers, Timeout, NotGiven
-from ..._utils import required_args
+from ..._utils import extract_files, maybe_transform, required_args, deprecated_positional_args, deepcopy_minimal
+from ..._types import NotGiven, Timeout, Headers, NoneType, Query, Body, NOT_GIVEN, UnknownResponse, FileTypes
+from ..._base_client import AsyncPaginator, make_request_options, strip_not_given
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._base_client import make_request_options
+from ..._base_client import SyncAPIClient, AsyncAPIClient
+from ...types import shared_params
+
 from ...types.simulations.account_statement import AccountStatement
-from ...types.simulations.account_statement_create_params import (
-    AccountStatementCreateParams,
-)
+from ...types.simulations import account_statement_create_params
+from ...types.simulations.account_statement_create_params import AccountStatementCreateParams
 
 __all__ = ["AccountStatements", "AsyncAccountStatements"]
 
-
 class AccountStatements(SyncAPIResource):
+
     @overload
-    def create(
-        self,
-        *,
-        account_id: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        # deprecated options params
-        headers: Union[Headers, NotGiven] = NOT_GIVEN,
-        max_retries: Union[int, NotGiven] = NOT_GIVEN,
-        timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
-        query: Optional[Query] = None,
-    ) -> AccountStatement:
+    def create(self,
+    *,
+    account_id: str,
+    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+    # The extra values given here take precedence over values defined on the client or passed to this method.
+    extra_headers: Headers | None = None,
+    extra_query: Query | None = None,
+    extra_body: Body | None = None,
+    # deprecated options params
+    headers: Union[Headers, NotGiven] = NOT_GIVEN,
+    max_retries: Union[int, NotGiven] = NOT_GIVEN,
+    timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+    query: Optional[Query] = None,) -> AccountStatement:
         """
         Simulates an Account Statement being created for an account.
 
@@ -49,41 +50,37 @@ class AccountStatements(SyncAPIResource):
         ...
 
     @overload
-    def create(
-        self,
-        body: AccountStatementCreateParams,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        # deprecated options params
-        headers: Union[Headers, NotGiven] = NOT_GIVEN,
-        max_retries: Union[int, NotGiven] = NOT_GIVEN,
-        timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
-        query: Optional[Query] = None,
-    ) -> AccountStatement:
+    def create(self,
+    body: AccountStatementCreateParams,
+    *,
+    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+    # The extra values given here take precedence over values defined on the client or passed to this method.
+    extra_headers: Headers | None = None,
+    extra_query: Query | None = None,
+    extra_body: Body | None = None,
+    # deprecated options params
+    headers: Union[Headers, NotGiven] = NOT_GIVEN,
+    max_retries: Union[int, NotGiven] = NOT_GIVEN,
+    timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+    query: Optional[Query] = None,) -> AccountStatement:
         """Simulates an Account Statement being created for an account."""
         ...
 
     @required_args(["body"], ["account_id"])
-    def create(
-        self,
-        body: AccountStatementCreateParams | None = None,
-        *,
-        account_id: str | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        # deprecated options params
-        headers: Union[Headers, NotGiven] = NOT_GIVEN,
-        max_retries: Union[int, NotGiven] = NOT_GIVEN,
-        timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
-        query: Optional[Query] = None,
-    ) -> AccountStatement:
+    def create(self,
+    body: AccountStatementCreateParams | None = None,
+    *,
+    account_id: str | NotGiven = NOT_GIVEN,
+    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+    # The extra values given here take precedence over values defined on the client or passed to this method.
+    extra_headers: Headers | None = None,
+    extra_query: Query | None = None,
+    extra_body: Body | None = None,
+    # deprecated options params
+    headers: Union[Headers, NotGiven] = NOT_GIVEN,
+    max_retries: Union[int, NotGiven] = NOT_GIVEN,
+    timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+    query: Optional[Query] = None,) -> AccountStatement:
         """
         Simulates an Account Statement being created for an account.
 
@@ -100,56 +97,48 @@ class AccountStatements(SyncAPIResource):
           extra_body: Add additional JSON properties to the request
         """
         if query is not None:
-            warnings.warn(
-                "The `query` argument is deprecated. Please use `extra_query` instead",
-                DeprecationWarning,
-                stacklevel=3,
-            )
+          warnings.warn(
+            "The `query` argument is deprecated. Please use `extra_query` instead",
+            DeprecationWarning,
+            stacklevel=3,
+        )
 
         if body is not None:
-            warnings.warn(
-                "Passing parameters as a dictionary is deprecated and will be removed in the future",
-                DeprecationWarning,
-                stacklevel=2,
-            )
+          warnings.warn(
+            "Passing parameters as a dictionary is deprecated and will be removed in the future",
+            DeprecationWarning,
+            stacklevel=2,
+          )
         else:
-            # cast to Any is required because the NotGiven types make this expression incompatible
-            # with the standard AccountStatementCreateParams type.
-            body = cast(Any, {"account_id": account_id})
+          # cast to Any is required because the NotGiven types make this expression incompatible
+          # with the standard AccountStatementCreateParams type.
+          body = cast(Any, {
+            "account_id": account_id
+        })
 
         return self._post(
             "/simulations/account_statements",
             body=body,
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                headers=headers,
-                max_retries=max_retries,
-                timeout=timeout,
-                query=query,
-            ),
-            cast_to=AccountStatement,
+            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, headers=headers, max_retries=max_retries, timeout=timeout, query=query),
+            cast_to = AccountStatement,
         )
 
-
 class AsyncAccountStatements(AsyncAPIResource):
+
     @overload
-    async def create(
-        self,
-        *,
-        account_id: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        # deprecated options params
-        headers: Union[Headers, NotGiven] = NOT_GIVEN,
-        max_retries: Union[int, NotGiven] = NOT_GIVEN,
-        timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
-        query: Optional[Query] = None,
-    ) -> AccountStatement:
+    async def create(self,
+    *,
+    account_id: str,
+    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+    # The extra values given here take precedence over values defined on the client or passed to this method.
+    extra_headers: Headers | None = None,
+    extra_query: Query | None = None,
+    extra_body: Body | None = None,
+    # deprecated options params
+    headers: Union[Headers, NotGiven] = NOT_GIVEN,
+    max_retries: Union[int, NotGiven] = NOT_GIVEN,
+    timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+    query: Optional[Query] = None,) -> AccountStatement:
         """
         Simulates an Account Statement being created for an account.
 
@@ -165,41 +154,37 @@ class AsyncAccountStatements(AsyncAPIResource):
         ...
 
     @overload
-    async def create(
-        self,
-        body: AccountStatementCreateParams,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        # deprecated options params
-        headers: Union[Headers, NotGiven] = NOT_GIVEN,
-        max_retries: Union[int, NotGiven] = NOT_GIVEN,
-        timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
-        query: Optional[Query] = None,
-    ) -> AccountStatement:
+    async def create(self,
+    body: AccountStatementCreateParams,
+    *,
+    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+    # The extra values given here take precedence over values defined on the client or passed to this method.
+    extra_headers: Headers | None = None,
+    extra_query: Query | None = None,
+    extra_body: Body | None = None,
+    # deprecated options params
+    headers: Union[Headers, NotGiven] = NOT_GIVEN,
+    max_retries: Union[int, NotGiven] = NOT_GIVEN,
+    timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+    query: Optional[Query] = None,) -> AccountStatement:
         """Simulates an Account Statement being created for an account."""
         ...
 
     @required_args(["body"], ["account_id"])
-    async def create(
-        self,
-        body: AccountStatementCreateParams | None = None,
-        *,
-        account_id: str | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        # deprecated options params
-        headers: Union[Headers, NotGiven] = NOT_GIVEN,
-        max_retries: Union[int, NotGiven] = NOT_GIVEN,
-        timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
-        query: Optional[Query] = None,
-    ) -> AccountStatement:
+    async def create(self,
+    body: AccountStatementCreateParams | None = None,
+    *,
+    account_id: str | NotGiven = NOT_GIVEN,
+    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+    # The extra values given here take precedence over values defined on the client or passed to this method.
+    extra_headers: Headers | None = None,
+    extra_query: Query | None = None,
+    extra_body: Body | None = None,
+    # deprecated options params
+    headers: Union[Headers, NotGiven] = NOT_GIVEN,
+    max_retries: Union[int, NotGiven] = NOT_GIVEN,
+    timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+    query: Optional[Query] = None,) -> AccountStatement:
         """
         Simulates an Account Statement being created for an account.
 
@@ -216,34 +201,28 @@ class AsyncAccountStatements(AsyncAPIResource):
           extra_body: Add additional JSON properties to the request
         """
         if query is not None:
-            warnings.warn(
-                "The `query` argument is deprecated. Please use `extra_query` instead",
-                DeprecationWarning,
-                stacklevel=3,
-            )
+          warnings.warn(
+            "The `query` argument is deprecated. Please use `extra_query` instead",
+            DeprecationWarning,
+            stacklevel=3,
+        )
 
         if body is not None:
-            warnings.warn(
-                "Passing parameters as a dictionary is deprecated and will be removed in the future",
-                DeprecationWarning,
-                stacklevel=2,
-            )
+          warnings.warn(
+            "Passing parameters as a dictionary is deprecated and will be removed in the future",
+            DeprecationWarning,
+            stacklevel=2,
+          )
         else:
-            # cast to Any is required because the NotGiven types make this expression incompatible
-            # with the standard AccountStatementCreateParams type.
-            body = cast(Any, {"account_id": account_id})
+          # cast to Any is required because the NotGiven types make this expression incompatible
+          # with the standard AccountStatementCreateParams type.
+          body = cast(Any, {
+            "account_id": account_id
+        })
 
         return await self._post(
             "/simulations/account_statements",
             body=body,
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                headers=headers,
-                max_retries=max_retries,
-                timeout=timeout,
-                query=query,
-            ),
-            cast_to=AccountStatement,
+            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, headers=headers, max_retries=max_retries, timeout=timeout, query=query),
+            cast_to = AccountStatement,
         )

@@ -6,12 +6,12 @@ import os
 import pytest
 
 from increase import Increase, AsyncIncrease
-from increase.pagination import SyncPage, AsyncPage
+from increase.pagination import AsyncPage, SyncPage
+
 from increase.types.pending_transaction import PendingTransaction
 
 base_url = os.environ.get("API_BASE_URL", "http://127.0.0.1:4010")
 api_key = os.environ.get("API_KEY", "something1234")
-
 
 class TestPendingTransactions:
     strict_client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=True)
@@ -38,11 +38,11 @@ class TestPendingTransactions:
             account_id="string",
             route_id="string",
             source_id="string",
-            status={"in": ["pending", "pending", "pending"]},
+            status={
+                "in": ["pending", "pending", "pending"]
+            },
         )
         assert isinstance(resource, SyncPage)
-
-
 class TestAsyncPendingTransactions:
     strict_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
     loose_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=False)
@@ -68,6 +68,8 @@ class TestAsyncPendingTransactions:
             account_id="string",
             route_id="string",
             source_id="string",
-            status={"in": ["pending", "pending", "pending"]},
+            status={
+                "in": ["pending", "pending", "pending"]
+            },
         )
         assert isinstance(resource, AsyncPage)

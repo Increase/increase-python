@@ -1,11 +1,12 @@
 from __future__ import annotations
 
-from typing import Any, List, Tuple, Union, Mapping, TypeVar
-from urllib.parse import parse_qs, urlencode
+from typing import Mapping, List, Tuple, TypeVar, Union, Any
 from typing_extensions import Literal, get_args
+from urllib.parse import urlencode, parse_qs
 
 from ._types import NOT_GIVEN, NotGiven, NotGivenOr
 from ._utils import flatten
+
 
 _T = TypeVar("_T")
 

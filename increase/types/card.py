@@ -1,12 +1,13 @@
 # File generated from our OpenAPI spec by Stainless.
 
-from typing import Optional
+from typing import Optional, Union, List, Dict, Any
 from typing_extensions import Literal
-
+from pydantic import Field
 from .._models import BaseModel
 
-__all__ = ["BillingAddress", "DigitalWallet", "Card"]
+from ..types import shared
 
+__all__ = ["BillingAddress", "DigitalWallet", "Card"]
 
 class BillingAddress(BaseModel):
     city: Optional[str]
@@ -24,7 +25,6 @@ class BillingAddress(BaseModel):
     state: Optional[str]
     """The US state of the billing address."""
 
-
 class DigitalWallet(BaseModel):
     email: Optional[str]
     """
@@ -37,7 +37,6 @@ class DigitalWallet(BaseModel):
     A phone number that can be used to verify the cardholder via one-time passcode
     over SMS.
     """
-
 
 class Card(BaseModel):
     account_id: str

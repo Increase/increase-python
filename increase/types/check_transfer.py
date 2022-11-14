@@ -1,17 +1,17 @@
 # File generated from our OpenAPI spec by Stainless.
 
-from typing import Optional
+from typing import Optional, Union, List, Dict, Any
 from typing_extensions import Literal
-
+from pydantic import Field
 from .._models import BaseModel
 
-__all__ = ["Submission", "StopPaymentRequest", "CheckTransfer"]
+from ..types import shared
 
+__all__ = ["Submission", "StopPaymentRequest", "CheckTransfer"]
 
 class Submission(BaseModel):
     check_number: str
     """The identitying number of the check."""
-
 
 class StopPaymentRequest(BaseModel):
     requested_at: str
@@ -28,7 +28,6 @@ class StopPaymentRequest(BaseModel):
 
     For this resource it will always be `check_transfer_stop_payment_request`.
     """
-
 
 class CheckTransfer(BaseModel):
     account_id: str
@@ -79,19 +78,7 @@ class CheckTransfer(BaseModel):
     recipient_name: str
     """The name that will be printed on the check."""
 
-    status: Literal[
-        "pending_approval",
-        "pending_submission",
-        "submitting",
-        "submitted",
-        "pending_mailing",
-        "mailed",
-        "canceled",
-        "deposited",
-        "stopped",
-        "rejected",
-        "requires_attention",
-    ]
+    status: Literal["pending_approval", "pending_submission", "submitting", "submitted", "pending_mailing", "mailed", "canceled", "deposited", "stopped", "rejected", "requires_attention"]
     """The lifecycle status of the transfer."""
 
     stop_payment_request: Optional[StopPaymentRequest]

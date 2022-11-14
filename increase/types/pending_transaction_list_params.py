@@ -1,24 +1,20 @@
 # File generated from our OpenAPI spec by Stainless.
 
 from __future__ import annotations
-
-from typing import List
-from typing_extensions import Literal, TypedDict
+from typing import List, Union, Dict, Optional
+from typing_extensions import Literal, TypedDict, Required, Annotated
+from .._types import FileTypes
+from .._utils import PropertyInfo
+from ..types import shared_params
 
 __all__ = ["Status", "PendingTransactionListParams"]
 
-_StatusReservedKeywords = TypedDict(
-    "_StatusReservedKeywords",
-    {
-        "in": List[Literal["pending", "complete"]],
-    },
-    total=False,
-)
-
+_StatusReservedKeywords = TypedDict("_StatusReservedKeywords", {
+    "in": List[Literal["pending", "complete"]],
+}, total=False)
 
 class Status(_StatusReservedKeywords):
     pass
-
 
 class PendingTransactionListParams(TypedDict, total=False):
     account_id: str

@@ -1,41 +1,13 @@
 # File generated from our OpenAPI spec by Stainless.
 
 from __future__ import annotations
+from typing import List, Union, Dict, Optional
+from typing_extensions import Literal, TypedDict, Required, Annotated
+from .._types import FileTypes
+from .._utils import PropertyInfo
+from ..types import shared_params
 
-from typing import List
-from typing_extensions import Literal, Required, TypedDict
-
-__all__ = [
-    "CorporationAddress",
-    "CorporationBeneficialOwnersIndividualAddress",
-    "CorporationBeneficialOwnersIndividualIdentificationPassport",
-    "CorporationBeneficialOwnersIndividualIdentification",
-    "CorporationBeneficialOwnersIndividual",
-    "CorporationBeneficialOwners",
-    "Corporation",
-    "NaturalPersonAddress",
-    "NaturalPersonIdentificationPassport",
-    "NaturalPersonIdentification",
-    "NaturalPerson",
-    "JointIndividualsAddress",
-    "JointIndividualsIdentificationPassport",
-    "JointIndividualsIdentification",
-    "JointIndividuals",
-    "Joint",
-    "TrustAddress",
-    "TrustTrusteesIndividualAddress",
-    "TrustTrusteesIndividualIdentificationPassport",
-    "TrustTrusteesIndividualIdentification",
-    "TrustTrusteesIndividual",
-    "TrustTrustees",
-    "TrustGrantorAddress",
-    "TrustGrantorIdentificationPassport",
-    "TrustGrantorIdentification",
-    "TrustGrantor",
-    "Trust",
-    "EntityCreateParams",
-]
-
+__all__ = ["CorporationAddress", "CorporationBeneficialOwnersIndividualAddress", "CorporationBeneficialOwnersIndividualIdentificationPassport", "CorporationBeneficialOwnersIndividualIdentification", "CorporationBeneficialOwnersIndividual", "CorporationBeneficialOwners", "Corporation", "NaturalPersonAddress", "NaturalPersonIdentificationPassport", "NaturalPersonIdentification", "NaturalPerson", "JointIndividualsAddress", "JointIndividualsIdentificationPassport", "JointIndividualsIdentification", "JointIndividuals", "Joint", "TrustAddress", "TrustTrusteesIndividualAddress", "TrustTrusteesIndividualIdentificationPassport", "TrustTrusteesIndividualIdentification", "TrustTrusteesIndividual", "TrustTrustees", "TrustGrantorAddress", "TrustGrantorIdentificationPassport", "TrustGrantorIdentification", "TrustGrantor", "Trust", "EntityCreateParams"]
 
 class CorporationAddress(TypedDict, total=False):
     city: Required[str]
@@ -56,7 +28,6 @@ class CorporationAddress(TypedDict, total=False):
     line2: str
     """The second line of the address. This might be the floor or room number."""
 
-
 class CorporationBeneficialOwnersIndividualAddress(TypedDict, total=False):
     city: Required[str]
     """The city of the address."""
@@ -76,7 +47,6 @@ class CorporationBeneficialOwnersIndividualAddress(TypedDict, total=False):
     line2: str
     """The second line of the address. This might be the floor or room number."""
 
-
 class CorporationBeneficialOwnersIndividualIdentificationPassport(TypedDict, total=False):
     country: Required[str]
     """The country that issued the passport."""
@@ -86,7 +56,6 @@ class CorporationBeneficialOwnersIndividualIdentificationPassport(TypedDict, tot
 
     file_id: Required[str]
     """The identifier of the File containing the passport."""
-
 
 class CorporationBeneficialOwnersIndividualIdentification(TypedDict, total=False):
     method: Required[Literal["social_security_number", "individual_taxpayer_identification_number", "passport"]]
@@ -104,7 +73,6 @@ class CorporationBeneficialOwnersIndividualIdentification(TypedDict, total=False
     Required if `method` is equal to `passport`.
     """
 
-
 class CorporationBeneficialOwnersIndividual(TypedDict, total=False):
     address: Required[CorporationBeneficialOwnersIndividualAddress]
     """The individual's address."""
@@ -118,7 +86,6 @@ class CorporationBeneficialOwnersIndividual(TypedDict, total=False):
     name: Required[str]
     """The person's legal name."""
 
-
 class CorporationBeneficialOwners(TypedDict, total=False):
     individual: Required[CorporationBeneficialOwnersIndividual]
     """Personal details for the beneficial owner."""
@@ -128,7 +95,6 @@ class CorporationBeneficialOwners(TypedDict, total=False):
 
     company_title: str
     """This person's role or title within the entity."""
-
 
 class Corporation(TypedDict, total=False):
     address: Required[CorporationAddress]
@@ -155,7 +121,6 @@ class Corporation(TypedDict, total=False):
     website: str
     """The website of the corporation."""
 
-
 class NaturalPersonAddress(TypedDict, total=False):
     city: Required[str]
     """The city of the address."""
@@ -175,7 +140,6 @@ class NaturalPersonAddress(TypedDict, total=False):
     line2: str
     """The second line of the address. This might be the floor or room number."""
 
-
 class NaturalPersonIdentificationPassport(TypedDict, total=False):
     country: Required[str]
     """The country that issued the passport."""
@@ -185,7 +149,6 @@ class NaturalPersonIdentificationPassport(TypedDict, total=False):
 
     file_id: Required[str]
     """The identifier of the File containing the passport."""
-
 
 class NaturalPersonIdentification(TypedDict, total=False):
     method: Required[Literal["social_security_number", "individual_taxpayer_identification_number", "passport"]]
@@ -203,7 +166,6 @@ class NaturalPersonIdentification(TypedDict, total=False):
     Required if `method` is equal to `passport`.
     """
 
-
 class NaturalPerson(TypedDict, total=False):
     address: Required[NaturalPersonAddress]
     """The individual's address."""
@@ -216,7 +178,6 @@ class NaturalPerson(TypedDict, total=False):
 
     name: Required[str]
     """The person's legal name."""
-
 
 class JointIndividualsAddress(TypedDict, total=False):
     city: Required[str]
@@ -237,7 +198,6 @@ class JointIndividualsAddress(TypedDict, total=False):
     line2: str
     """The second line of the address. This might be the floor or room number."""
 
-
 class JointIndividualsIdentificationPassport(TypedDict, total=False):
     country: Required[str]
     """The country that issued the passport."""
@@ -247,7 +207,6 @@ class JointIndividualsIdentificationPassport(TypedDict, total=False):
 
     file_id: Required[str]
     """The identifier of the File containing the passport."""
-
 
 class JointIndividualsIdentification(TypedDict, total=False):
     method: Required[Literal["social_security_number", "individual_taxpayer_identification_number", "passport"]]
@@ -265,7 +224,6 @@ class JointIndividualsIdentification(TypedDict, total=False):
     Required if `method` is equal to `passport`.
     """
 
-
 class JointIndividuals(TypedDict, total=False):
     address: Required[JointIndividualsAddress]
     """The individual's address."""
@@ -279,14 +237,12 @@ class JointIndividuals(TypedDict, total=False):
     name: Required[str]
     """The person's legal name."""
 
-
 class Joint(TypedDict, total=False):
     individuals: Required[List[JointIndividuals]]
     """The two individuals that share control of the entity."""
 
     name: str
     """The name of the joint entity."""
-
 
 class TrustAddress(TypedDict, total=False):
     city: Required[str]
@@ -307,7 +263,6 @@ class TrustAddress(TypedDict, total=False):
     line2: str
     """The second line of the address. This might be the floor or room number."""
 
-
 class TrustTrusteesIndividualAddress(TypedDict, total=False):
     city: Required[str]
     """The city of the address."""
@@ -327,7 +282,6 @@ class TrustTrusteesIndividualAddress(TypedDict, total=False):
     line2: str
     """The second line of the address. This might be the floor or room number."""
 
-
 class TrustTrusteesIndividualIdentificationPassport(TypedDict, total=False):
     country: Required[str]
     """The country that issued the passport."""
@@ -337,7 +291,6 @@ class TrustTrusteesIndividualIdentificationPassport(TypedDict, total=False):
 
     file_id: Required[str]
     """The identifier of the File containing the passport."""
-
 
 class TrustTrusteesIndividualIdentification(TypedDict, total=False):
     method: Required[Literal["social_security_number", "individual_taxpayer_identification_number", "passport"]]
@@ -355,7 +308,6 @@ class TrustTrusteesIndividualIdentification(TypedDict, total=False):
     Required if `method` is equal to `passport`.
     """
 
-
 class TrustTrusteesIndividual(TypedDict, total=False):
     address: Required[TrustTrusteesIndividualAddress]
     """The individual's address."""
@@ -369,7 +321,6 @@ class TrustTrusteesIndividual(TypedDict, total=False):
     name: Required[str]
     """The person's legal name."""
 
-
 class TrustTrustees(TypedDict, total=False):
     structure: Required[Literal["individual"]]
     """The structure of the trustee."""
@@ -379,7 +330,6 @@ class TrustTrustees(TypedDict, total=False):
 
     Required when the trustee `structure` is equal to `individual`.
     """
-
 
 class TrustGrantorAddress(TypedDict, total=False):
     city: Required[str]
@@ -400,7 +350,6 @@ class TrustGrantorAddress(TypedDict, total=False):
     line2: str
     """The second line of the address. This might be the floor or room number."""
 
-
 class TrustGrantorIdentificationPassport(TypedDict, total=False):
     country: Required[str]
     """The country that issued the passport."""
@@ -410,7 +359,6 @@ class TrustGrantorIdentificationPassport(TypedDict, total=False):
 
     file_id: Required[str]
     """The identifier of the File containing the passport."""
-
 
 class TrustGrantorIdentification(TypedDict, total=False):
     method: Required[Literal["social_security_number", "individual_taxpayer_identification_number", "passport"]]
@@ -428,7 +376,6 @@ class TrustGrantorIdentification(TypedDict, total=False):
     Required if `method` is equal to `passport`.
     """
 
-
 class TrustGrantor(TypedDict, total=False):
     address: Required[TrustGrantorAddress]
     """The individual's address."""
@@ -441,7 +388,6 @@ class TrustGrantor(TypedDict, total=False):
 
     name: Required[str]
     """The person's legal name."""
-
 
 class Trust(TypedDict, total=False):
     address: Required[TrustAddress]
@@ -477,7 +423,6 @@ class Trust(TypedDict, total=False):
 
     Required if `category` is equal to `irrevocable`.
     """
-
 
 class EntityCreateParams(TypedDict, total=False):
     relationship: Required[Literal["affiliated", "informational", "unaffiliated"]]

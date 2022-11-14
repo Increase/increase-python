@@ -1,11 +1,13 @@
 # File generated from our OpenAPI spec by Stainless.
 
+from typing import Optional, Union, List, Dict, Any
 from typing_extensions import Literal
-
+from pydantic import Field
 from .._models import BaseModel
 
-__all__ = ["OauthConnection"]
+from ..types import shared
 
+__all__ = ["OauthConnection"]
 
 class OauthConnection(BaseModel):
     created_at: str

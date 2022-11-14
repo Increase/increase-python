@@ -1,9 +1,10 @@
-from typing import Any, Dict, List, Optional, cast
+from typing import List, Optional, Dict, Any, cast
 
 import pytest
 from pydantic import Field
 
 from increase._models import BaseModel
+
 
 # TODO: test mismatched input and  field types
 

@@ -1,12 +1,13 @@
 # File generated from our OpenAPI spec by Stainless.
 
-from typing import Optional
+from typing import Optional, Union, List, Dict, Any
 from typing_extensions import Literal
-
+from pydantic import Field
 from .._models import BaseModel
 
-__all__ = ["Acceptance", "Rejection", "CardDispute"]
+from ..types import shared
 
+__all__ = ["Acceptance", "Rejection", "CardDispute"]
 
 class Acceptance(BaseModel):
     accepted_at: str
@@ -24,7 +25,6 @@ class Acceptance(BaseModel):
     to your account.
     """
 
-
 class Rejection(BaseModel):
     card_dispute_id: str
     """The identifier of the Card Dispute that was rejected."""
@@ -37,7 +37,6 @@ class Rejection(BaseModel):
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the Card Dispute was rejected.
     """
-
 
 class CardDispute(BaseModel):
     acceptance: Optional[Acceptance]

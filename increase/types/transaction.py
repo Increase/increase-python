@@ -1,47 +1,13 @@
 # File generated from our OpenAPI spec by Stainless.
 
-from typing import Optional
+from typing import Optional, Union, List, Dict, Any
 from typing_extensions import Literal
-
+from pydantic import Field
 from .._models import BaseModel
 
-__all__ = [
-    "SourceAccountTransferIntention",
-    "SourceACHCheckConversionReturn",
-    "SourceACHCheckConversion",
-    "SourceACHTransferIntention",
-    "SourceACHTransferRejection",
-    "SourceACHTransferReturn",
-    "SourceCardDisputeAcceptance",
-    "SourceCardRefund",
-    "SourceCardSettlement",
-    "SourceCheckDepositAcceptance",
-    "SourceCheckDepositReturn",
-    "SourceCheckTransferIntention",
-    "SourceCheckTransferRejection",
-    "SourceCheckTransferStopPaymentRequest",
-    "SourceDisputeResolution",
-    "SourceEmpyrealCashDeposit",
-    "SourceInboundACHTransfer",
-    "SourceInboundCheck",
-    "SourceInboundInternationalACHTransfer",
-    "SourceInboundRealTimePaymentsTransferConfirmation",
-    "SourceInboundWireDrawdownPaymentReversal",
-    "SourceInboundWireDrawdownPayment",
-    "SourceInboundWireReversal",
-    "SourceInboundWireTransfer",
-    "SourceInternalSource",
-    "SourceCardRouteRefund",
-    "SourceCardRouteSettlement",
-    "SourceSampleFunds",
-    "SourceWireDrawdownPaymentIntention",
-    "SourceWireDrawdownPaymentRejection",
-    "SourceWireTransferIntention",
-    "SourceWireTransferRejection",
-    "Source",
-    "Transaction",
-]
+from ..types import shared
 
+__all__ = ["SourceAccountTransferIntention", "SourceACHCheckConversionReturn", "SourceACHCheckConversion", "SourceACHTransferIntention", "SourceACHTransferRejection", "SourceACHTransferReturn", "SourceCardDisputeAcceptance", "SourceCardRefund", "SourceCardSettlement", "SourceCheckDepositAcceptance", "SourceCheckDepositReturn", "SourceCheckTransferIntention", "SourceCheckTransferRejection", "SourceCheckTransferStopPaymentRequest", "SourceDisputeResolution", "SourceEmpyrealCashDeposit", "SourceInboundACHTransfer", "SourceInboundCheck", "SourceInboundInternationalACHTransfer", "SourceInboundRealTimePaymentsTransferConfirmation", "SourceInboundWireDrawdownPaymentReversal", "SourceInboundWireDrawdownPayment", "SourceInboundWireReversal", "SourceInboundWireTransfer", "SourceInternalSource", "SourceCardRouteRefund", "SourceCardRouteSettlement", "SourceSampleFunds", "SourceWireDrawdownPaymentIntention", "SourceWireDrawdownPaymentRejection", "SourceWireTransferIntention", "SourceWireTransferRejection", "Source", "Transaction"]
 
 class SourceAccountTransferIntention(BaseModel):
     amount: int
@@ -68,7 +34,6 @@ class SourceAccountTransferIntention(BaseModel):
     transfer_id: str
     """The identifier of the Account Transfer that led to this Pending Transaction."""
 
-
 class SourceACHCheckConversionReturn(BaseModel):
     amount: int
     """The amount in the minor unit of the transaction's currency.
@@ -79,7 +44,6 @@ class SourceACHCheckConversionReturn(BaseModel):
     return_reason_code: str
     """Why the transfer was returned."""
 
-
 class SourceACHCheckConversion(BaseModel):
     amount: int
     """The amount in the minor unit of the transaction's currency.
@@ -89,7 +53,6 @@ class SourceACHCheckConversion(BaseModel):
 
     file_id: str
     """The identifier of the File containing an image of the returned check."""
-
 
 class SourceACHTransferIntention(BaseModel):
     account_number: str
@@ -107,11 +70,9 @@ class SourceACHTransferIntention(BaseModel):
     transfer_id: str
     """The identifier of the ACH Transfer that led to this Transaction."""
 
-
 class SourceACHTransferRejection(BaseModel):
     transfer_id: str
     """The identifier of the ACH Transfer that led to this Transaction."""
-
 
 class SourceACHTransferReturn(BaseModel):
     created_at: str
@@ -120,30 +81,7 @@ class SourceACHTransferReturn(BaseModel):
     the transfer was created.
     """
 
-    return_reason_code: Literal[
-        "insufficient_fund",
-        "no_account",
-        "account_closed",
-        "invalid_account_number_structure",
-        "account_frozen_entry_returned_per_ofac_instruction",
-        "credit_entry_refused_by_receiver",
-        "unauthorized_debit_to_consumer_account_using_corporate_sec_code",
-        "corporate_customer_advised_not_authorized",
-        "payment_stopped",
-        "non_transaction_account",
-        "uncollected_funds",
-        "routing_number_check_digit_error",
-        "customer_advised_unauthorized_improper_ineligible_or_incomplete",
-        "amount_field_error",
-        "authorization_revoked_by_customer",
-        "invalid_ach_routing_number",
-        "file_record_edit_criteria",
-        "enr_invalid_individual_name",
-        "returned_per_odfi_request",
-        "addenda_error",
-        "limited_participation_dfi",
-        "other",
-    ]
+    return_reason_code: Literal["insufficient_fund", "no_account", "account_closed", "invalid_account_number_structure", "account_frozen_entry_returned_per_ofac_instruction", "credit_entry_refused_by_receiver", "unauthorized_debit_to_consumer_account_using_corporate_sec_code", "corporate_customer_advised_not_authorized", "payment_stopped", "non_transaction_account", "uncollected_funds", "routing_number_check_digit_error", "customer_advised_unauthorized_improper_ineligible_or_incomplete", "amount_field_error", "authorization_revoked_by_customer", "invalid_ach_routing_number", "file_record_edit_criteria", "enr_invalid_individual_name", "returned_per_odfi_request", "addenda_error", "limited_participation_dfi", "other"]
     """Why the ACH Transfer was returned."""
 
     transaction_id: str
@@ -151,7 +89,6 @@ class SourceACHTransferReturn(BaseModel):
 
     transfer_id: str
     """The identifier of the ACH Transfer associated with this return."""
-
 
 class SourceCardDisputeAcceptance(BaseModel):
     accepted_at: str
@@ -168,7 +105,6 @@ class SourceCardDisputeAcceptance(BaseModel):
     The identifier of the Transaction that was created to return the disputed funds
     to your account.
     """
-
 
 class SourceCardRefund(BaseModel):
     amount: int
@@ -191,7 +127,6 @@ class SourceCardRefund(BaseModel):
 
     For this resource it will always be `card_refund`.
     """
-
 
 class SourceCardSettlement(BaseModel):
     amount: int
@@ -225,7 +160,6 @@ class SourceCardSettlement(BaseModel):
     For this resource it will always be `card_settlement`.
     """
 
-
 class SourceCheckDepositAcceptance(BaseModel):
     amount: int
     """The amount in the minor unit of the transaction's currency.
@@ -241,7 +175,6 @@ class SourceCheckDepositAcceptance(BaseModel):
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
     transaction's currency.
     """
-
 
 class SourceCheckDepositReturn(BaseModel):
     amount: int
@@ -259,18 +192,7 @@ class SourceCheckDepositReturn(BaseModel):
     transaction's currency.
     """
 
-    return_reason: Literal[
-        "ach_conversion_not_supported",
-        "duplicate_submission",
-        "insufficient_funds",
-        "no_account",
-        "not_authorized",
-        "stale_dated",
-        "stop_payment",
-        "unknown_reason",
-        "unmatched_details",
-        "unreadable_image",
-    ]
+    return_reason: Literal["ach_conversion_not_supported", "duplicate_submission", "insufficient_funds", "no_account", "not_authorized", "stale_dated", "stop_payment", "unknown_reason", "unmatched_details", "unreadable_image"]
 
     returned_at: str
     """
@@ -283,7 +205,6 @@ class SourceCheckDepositReturn(BaseModel):
     The identifier of the transaction that reversed the original check deposit
     transaction.
     """
-
 
 class SourceCheckTransferIntention(BaseModel):
     address_city: str
@@ -316,11 +237,9 @@ class SourceCheckTransferIntention(BaseModel):
     transfer_id: str
     """The identifier of the Check Transfer with which this is associated."""
 
-
 class SourceCheckTransferRejection(BaseModel):
     transfer_id: str
     """The identifier of the Check Transfer that led to this Transaction."""
-
 
 class SourceCheckTransferStopPaymentRequest(BaseModel):
     requested_at: str
@@ -338,7 +257,6 @@ class SourceCheckTransferStopPaymentRequest(BaseModel):
     For this resource it will always be `check_transfer_stop_payment_request`.
     """
 
-
 class SourceDisputeResolution(BaseModel):
     amount: int
     """The amount in the minor unit of the transaction's currency.
@@ -355,7 +273,6 @@ class SourceDisputeResolution(BaseModel):
     disputed_transaction_id: str
     """The identifier of the Transaction that was disputed."""
 
-
 class SourceEmpyrealCashDeposit(BaseModel):
     amount: int
     """The amount in the minor unit of the transaction's currency.
@@ -366,7 +283,6 @@ class SourceEmpyrealCashDeposit(BaseModel):
     bag_id: str
 
     deposit_date: str
-
 
 class SourceInboundACHTransfer(BaseModel):
     amount: int
@@ -391,7 +307,6 @@ class SourceInboundACHTransfer(BaseModel):
 
     trace_number: str
 
-
 class SourceInboundCheck(BaseModel):
     amount: int
     """The declined amount in the minor unit of the destination account currency.
@@ -410,7 +325,6 @@ class SourceInboundCheck(BaseModel):
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
     transaction's currency.
     """
-
 
 class SourceInboundInternationalACHTransfer(BaseModel):
     amount: int
@@ -489,7 +403,6 @@ class SourceInboundInternationalACHTransfer(BaseModel):
 
     trace_number: str
 
-
 class SourceInboundRealTimePaymentsTransferConfirmation(BaseModel):
     amount: int
     """The amount in the minor unit of the transfer's currency.
@@ -520,7 +433,6 @@ class SourceInboundRealTimePaymentsTransferConfirmation(BaseModel):
 
     transaction_identification: str
     """The Real Time Payments network identification of the transfer"""
-
 
 class SourceInboundWireDrawdownPaymentReversal(BaseModel):
     amount: int
@@ -553,7 +465,6 @@ class SourceInboundWireDrawdownPaymentReversal(BaseModel):
     previous_message_input_source: str
     """The Fedwire input source identifier for the wire transfer that was reversed."""
 
-
 class SourceInboundWireDrawdownPayment(BaseModel):
     amount: int
     """The amount in the minor unit of the transaction's currency.
@@ -584,7 +495,6 @@ class SourceInboundWireDrawdownPayment(BaseModel):
     originator_name: Optional[str]
 
     originator_to_beneficiary_information: Optional[str]
-
 
 class SourceInboundWireReversal(BaseModel):
     amount: int
@@ -626,7 +536,6 @@ class SourceInboundWireReversal(BaseModel):
     institution.
     """
 
-
 class SourceInboundWireTransfer(BaseModel):
     amount: int
     """The amount in the minor unit of the transaction's currency.
@@ -658,7 +567,6 @@ class SourceInboundWireTransfer(BaseModel):
 
     originator_to_beneficiary_information: Optional[str]
 
-
 class SourceInternalSource(BaseModel):
     amount: int
     """The amount in the minor unit of the transaction's currency.
@@ -672,17 +580,7 @@ class SourceInternalSource(BaseModel):
     currency.
     """
 
-    reason: Literal[
-        "cashback",
-        "empyreal_adjustment",
-        "error",
-        "error_correction",
-        "fees",
-        "interest",
-        "sample_funds",
-        "sample_funds_return",
-    ]
-
+    reason: Literal["cashback", "empyreal_adjustment", "error", "error_correction", "fees", "interest", "sample_funds", "sample_funds_return"]
 
 class SourceCardRouteRefund(BaseModel):
     amount: int
@@ -709,7 +607,6 @@ class SourceCardRouteRefund(BaseModel):
 
     merchant_state: Optional[str]
 
-
 class SourceCardRouteSettlement(BaseModel):
     amount: int
     """The settled amount in the minor unit of the settlement currency.
@@ -735,11 +632,9 @@ class SourceCardRouteSettlement(BaseModel):
 
     merchant_state: Optional[str]
 
-
 class SourceSampleFunds(BaseModel):
     originator: str
     """Where the sample funds came from."""
-
 
 class SourceWireDrawdownPaymentIntention(BaseModel):
     account_number: str
@@ -753,10 +648,8 @@ class SourceWireDrawdownPaymentIntention(BaseModel):
 
     transfer_id: str
 
-
 class SourceWireDrawdownPaymentRejection(BaseModel):
     transfer_id: str
-
 
 class SourceWireTransferIntention(BaseModel):
     account_number: str
@@ -773,10 +666,8 @@ class SourceWireTransferIntention(BaseModel):
 
     transfer_id: str
 
-
 class SourceWireTransferRejection(BaseModel):
     transfer_id: str
-
 
 class Source(BaseModel):
     account_transfer_intention: Optional[SourceAccountTransferIntention]
@@ -856,42 +747,7 @@ class Source(BaseModel):
     equal to `card_settlement`.
     """
 
-    category: Literal[
-        "account_transfer_intention",
-        "ach_check_conversion_return",
-        "ach_check_conversion",
-        "ach_transfer_intention",
-        "ach_transfer_rejection",
-        "ach_transfer_return",
-        "card_dispute_acceptance",
-        "card_refund",
-        "card_settlement",
-        "check_deposit_acceptance",
-        "check_deposit_return",
-        "check_transfer_intention",
-        "check_transfer_rejection",
-        "check_transfer_stop_payment_request",
-        "dispute_resolution",
-        "empyreal_cash_deposit",
-        "inbound_ach_transfer",
-        "inbound_check",
-        "inbound_international_ach_transfer",
-        "inbound_real_time_payments_transfer_confirmation",
-        "inbound_wire_drawdown_payment_reversal",
-        "inbound_wire_drawdown_payment",
-        "inbound_wire_reversal",
-        "inbound_wire_transfer",
-        "internal_source",
-        "card_route_refund",
-        "card_route_settlement",
-        "real_time_payments_transfer_acknowledgement",
-        "sample_funds",
-        "wire_drawdown_payment_intention",
-        "wire_drawdown_payment_rejection",
-        "wire_transfer_intention",
-        "wire_transfer_rejection",
-        "other",
-    ]
+    category: Literal["account_transfer_intention", "ach_check_conversion_return", "ach_check_conversion", "ach_transfer_intention", "ach_transfer_rejection", "ach_transfer_return", "card_dispute_acceptance", "card_refund", "card_settlement", "check_deposit_acceptance", "check_deposit_return", "check_transfer_intention", "check_transfer_rejection", "check_transfer_stop_payment_request", "dispute_resolution", "empyreal_cash_deposit", "inbound_ach_transfer", "inbound_check", "inbound_international_ach_transfer", "inbound_real_time_payments_transfer_confirmation", "inbound_wire_drawdown_payment_reversal", "inbound_wire_drawdown_payment", "inbound_wire_reversal", "inbound_wire_transfer", "internal_source", "card_route_refund", "card_route_settlement", "real_time_payments_transfer_acknowledgement", "sample_funds", "wire_drawdown_payment_intention", "wire_drawdown_payment_rejection", "wire_transfer_intention", "wire_transfer_rejection", "other"]
     """The type of transaction that took place.
 
     We may add additional possible values for this enum over time; your application
@@ -1044,7 +900,6 @@ class Source(BaseModel):
     This field will be present in the JSON response if and only if `category` is
     equal to `wire_transfer_rejection`.
     """
-
 
 class Transaction(BaseModel):
     account_id: str

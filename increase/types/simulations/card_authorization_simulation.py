@@ -1,32 +1,13 @@
 # File generated from our OpenAPI spec by Stainless.
 
-from typing import Optional
+from typing import Optional, Union, List, Dict, Any
 from typing_extensions import Literal
-
+from pydantic import Field
 from ..._models import BaseModel
 
-__all__ = [
-    "PendingTransactionSourceAccountTransferInstruction",
-    "PendingTransactionSourceACHTransferInstruction",
-    "PendingTransactionSourceCardAuthorization",
-    "PendingTransactionSourceCheckDepositInstruction",
-    "PendingTransactionSourceCheckTransferInstruction",
-    "PendingTransactionSourceCardRouteAuthorization",
-    "PendingTransactionSourceWireDrawdownPaymentInstruction",
-    "PendingTransactionSourceWireTransferInstruction",
-    "PendingTransactionSource",
-    "PendingTransaction",
-    "DeclinedTransactionSourceACHDecline",
-    "DeclinedTransactionSourceCardDecline",
-    "DeclinedTransactionSourceCheckDecline",
-    "DeclinedTransactionSourceInboundRealTimePaymentsTransferDecline",
-    "DeclinedTransactionSourceInternationalACHDecline",
-    "DeclinedTransactionSourceCardRouteDecline",
-    "DeclinedTransactionSource",
-    "DeclinedTransaction",
-    "CardAuthorizationSimulation",
-]
+from ...types import shared
 
+__all__ = ["PendingTransactionSourceAccountTransferInstruction", "PendingTransactionSourceACHTransferInstruction", "PendingTransactionSourceCardAuthorization", "PendingTransactionSourceCheckDepositInstruction", "PendingTransactionSourceCheckTransferInstruction", "PendingTransactionSourceCardRouteAuthorization", "PendingTransactionSourceWireDrawdownPaymentInstruction", "PendingTransactionSourceWireTransferInstruction", "PendingTransactionSource", "PendingTransaction", "DeclinedTransactionSourceACHDecline", "DeclinedTransactionSourceCardDecline", "DeclinedTransactionSourceCheckDecline", "DeclinedTransactionSourceInboundRealTimePaymentsTransferDecline", "DeclinedTransactionSourceInternationalACHDecline", "DeclinedTransactionSourceCardRouteDecline", "DeclinedTransactionSource", "DeclinedTransaction", "CardAuthorizationSimulation"]
 
 class PendingTransactionSourceAccountTransferInstruction(BaseModel):
     amount: int
@@ -44,7 +25,6 @@ class PendingTransactionSourceAccountTransferInstruction(BaseModel):
     transfer_id: str
     """The identifier of the Account Transfer that led to this Pending Transaction."""
 
-
 class PendingTransactionSourceACHTransferInstruction(BaseModel):
     amount: int
     """The pending amount in the minor unit of the transaction's currency.
@@ -54,7 +34,6 @@ class PendingTransactionSourceACHTransferInstruction(BaseModel):
 
     transfer_id: str
     """The identifier of the ACH Transfer that led to this Pending Transaction."""
-
 
 class PendingTransactionSourceCardAuthorization(BaseModel):
     amount: int
@@ -85,7 +64,6 @@ class PendingTransactionSourceCardAuthorization(BaseModel):
     transaction.
     """
 
-
 class PendingTransactionSourceCheckDepositInstruction(BaseModel):
     amount: int
     """The pending amount in the minor unit of the transaction's currency.
@@ -111,7 +89,6 @@ class PendingTransactionSourceCheckDepositInstruction(BaseModel):
     was deposited.
     """
 
-
 class PendingTransactionSourceCheckTransferInstruction(BaseModel):
     amount: int
     """The pending amount in the minor unit of the transaction's currency.
@@ -127,7 +104,6 @@ class PendingTransactionSourceCheckTransferInstruction(BaseModel):
 
     transfer_id: str
     """The identifier of the Check Transfer that led to this Pending Transaction."""
-
 
 class PendingTransactionSourceCardRouteAuthorization(BaseModel):
     amount: int
@@ -154,7 +130,6 @@ class PendingTransactionSourceCardRouteAuthorization(BaseModel):
 
     merchant_state: Optional[str]
 
-
 class PendingTransactionSourceWireDrawdownPaymentInstruction(BaseModel):
     account_number: str
 
@@ -167,7 +142,6 @@ class PendingTransactionSourceWireDrawdownPaymentInstruction(BaseModel):
     message_to_recipient: str
 
     routing_number: str
-
 
 class PendingTransactionSourceWireTransferInstruction(BaseModel):
     account_number: str
@@ -183,7 +157,6 @@ class PendingTransactionSourceWireTransferInstruction(BaseModel):
     routing_number: str
 
     transfer_id: str
-
 
 class PendingTransactionSource(BaseModel):
     account_transfer_instruction: Optional[PendingTransactionSourceAccountTransferInstruction]
@@ -214,18 +187,7 @@ class PendingTransactionSource(BaseModel):
     equal to `card_route_authorization`.
     """
 
-    category: Literal[
-        "account_transfer_instruction",
-        "ach_transfer_instruction",
-        "card_authorization",
-        "check_deposit_instruction",
-        "check_transfer_instruction",
-        "card_route_authorization",
-        "real_time_payments_transfer_instruction",
-        "wire_drawdown_payment_instruction",
-        "wire_transfer_instruction",
-        "other",
-    ]
+    category: Literal["account_transfer_instruction", "ach_transfer_instruction", "card_authorization", "check_deposit_instruction", "check_transfer_instruction", "card_route_authorization", "real_time_payments_transfer_instruction", "wire_drawdown_payment_instruction", "wire_transfer_instruction", "other"]
     """The type of transaction that took place.
 
     We may add additional possible values for this enum over time; your application
@@ -259,7 +221,6 @@ class PendingTransactionSource(BaseModel):
     This field will be present in the JSON response if and only if `category` is
     equal to `wire_transfer_instruction`.
     """
-
 
 class PendingTransaction(BaseModel):
     account_id: str
@@ -322,7 +283,6 @@ class PendingTransaction(BaseModel):
     For this resource it will always be `pending_transaction`.
     """
 
-
 class DeclinedTransactionSourceACHDecline(BaseModel):
     amount: int
     """The declined amount in the minor unit of the destination account currency.
@@ -338,17 +298,7 @@ class DeclinedTransactionSourceACHDecline(BaseModel):
 
     originator_company_name: str
 
-    reason: Literal[
-        "ach_route_canceled",
-        "ach_route_disabled",
-        "no_ach_route",
-        "breaches_limit",
-        "credit_entry_refused_by_receiver",
-        "group_locked",
-        "entity_not_active",
-        "insufficient_funds",
-        "originator_request",
-    ]
+    reason: Literal["ach_route_canceled", "ach_route_disabled", "no_ach_route", "breaches_limit", "credit_entry_refused_by_receiver", "group_locked", "entity_not_active", "insufficient_funds", "originator_request"]
     """Why the ACH transfer was declined."""
 
     receiver_id_number: Optional[str]
@@ -356,7 +306,6 @@ class DeclinedTransactionSourceACHDecline(BaseModel):
     receiver_name: Optional[str]
 
     trace_number: str
-
 
 class DeclinedTransactionSourceCardDecline(BaseModel):
     amount: int
@@ -389,17 +338,8 @@ class DeclinedTransactionSourceCardDecline(BaseModel):
     transaction.
     """
 
-    reason: Literal[
-        "card_not_active",
-        "entity_not_active",
-        "group_locked",
-        "insufficient_funds",
-        "breaches_limit",
-        "webhook_declined",
-        "webhook_timed_out",
-    ]
+    reason: Literal["card_not_active", "entity_not_active", "group_locked", "insufficient_funds", "breaches_limit", "webhook_declined", "webhook_timed_out"]
     """Why the transaction was declined."""
-
 
 class DeclinedTransactionSourceCheckDecline(BaseModel):
     amount: int
@@ -410,20 +350,8 @@ class DeclinedTransactionSourceCheckDecline(BaseModel):
 
     auxiliary_on_us: Optional[str]
 
-    reason: Literal[
-        "ach_route_canceled",
-        "ach_route_disabled",
-        "breaches_limit",
-        "entity_not_active",
-        "group_locked",
-        "insufficient_funds",
-        "unable_to_locate_account",
-        "unable_to_process",
-        "refer_to_image",
-        "stop_payment_requested",
-    ]
+    reason: Literal["ach_route_canceled", "ach_route_disabled", "breaches_limit", "entity_not_active", "group_locked", "insufficient_funds", "unable_to_locate_account", "unable_to_process", "refer_to_image", "stop_payment_requested"]
     """Why the check was declined."""
-
 
 class DeclinedTransactionSourceInboundRealTimePaymentsTransferDecline(BaseModel):
     amount: int
@@ -451,13 +379,7 @@ class DeclinedTransactionSourceInboundRealTimePaymentsTransferDecline(BaseModel)
     debtor_routing_number: str
     """The routing number of the account that sent the transfer."""
 
-    reason: Literal[
-        "account_number_canceled",
-        "account_number_disabled",
-        "group_locked",
-        "entity_not_active",
-        "real_time_payments_not_enabled",
-    ]
+    reason: Literal["account_number_canceled", "account_number_disabled", "group_locked", "entity_not_active", "real_time_payments_not_enabled"]
     """Why the transfer was declined."""
 
     remittance_information: Optional[str]
@@ -465,7 +387,6 @@ class DeclinedTransactionSourceInboundRealTimePaymentsTransferDecline(BaseModel)
 
     transaction_identification: str
     """The Real Time Payments network identification of the declined transfer."""
-
 
 class DeclinedTransactionSourceInternationalACHDecline(BaseModel):
     amount: int
@@ -544,7 +465,6 @@ class DeclinedTransactionSourceInternationalACHDecline(BaseModel):
 
     trace_number: str
 
-
 class DeclinedTransactionSourceCardRouteDecline(BaseModel):
     amount: int
     """The declined amount in the minor unit of the destination account currency.
@@ -570,7 +490,6 @@ class DeclinedTransactionSourceCardRouteDecline(BaseModel):
 
     merchant_state: Optional[str]
 
-
 class DeclinedTransactionSource(BaseModel):
     ach_decline: Optional[DeclinedTransactionSourceACHDecline]
     """A ACH Decline object.
@@ -593,15 +512,7 @@ class DeclinedTransactionSource(BaseModel):
     equal to `card_route_decline`.
     """
 
-    category: Literal[
-        "ach_decline",
-        "card_decline",
-        "check_decline",
-        "inbound_real_time_payments_transfer_decline",
-        "international_ach_decline",
-        "card_route_decline",
-        "other",
-    ]
+    category: Literal["ach_decline", "card_decline", "check_decline", "inbound_real_time_payments_transfer_decline", "international_ach_decline", "card_route_decline", "other"]
     """The type of decline that took place.
 
     We may add additional possible values for this enum over time; your application
@@ -615,9 +526,7 @@ class DeclinedTransactionSource(BaseModel):
     equal to `check_decline`.
     """
 
-    inbound_real_time_payments_transfer_decline: Optional[
-        DeclinedTransactionSourceInboundRealTimePaymentsTransferDecline
-    ]
+    inbound_real_time_payments_transfer_decline: Optional[DeclinedTransactionSourceInboundRealTimePaymentsTransferDecline]
     """A Inbound Real Time Payments Transfer Decline object.
 
     This field will be present in the JSON response if and only if `category` is
@@ -630,7 +539,6 @@ class DeclinedTransactionSource(BaseModel):
     This field will be present in the JSON response if and only if `category` is
     equal to `international_ach_decline`.
     """
-
 
 class DeclinedTransaction(BaseModel):
     account_id: str
@@ -684,7 +592,6 @@ class DeclinedTransaction(BaseModel):
 
     For this resource it will always be `declined_transaction`.
     """
-
 
 class CardAuthorizationSimulation(BaseModel):
     declined_transaction: Optional[DeclinedTransaction]

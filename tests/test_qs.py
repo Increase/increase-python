@@ -1,5 +1,5 @@
-from typing import Any, cast
 from functools import partial
+from typing import Any, cast
 from urllib.parse import unquote
 
 import pytest

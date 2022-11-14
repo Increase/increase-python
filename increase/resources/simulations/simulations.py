@@ -2,30 +2,32 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
+import warnings
+from typing import Optional, Union, List, Dict, Any, Mapping, cast, overload
+from typing_extensions import Literal
 
-from .cards import Cards, AsyncCards
+from ..._utils import extract_files, maybe_transform, required_args, deprecated_positional_args, deepcopy_minimal
+from ..._types import NotGiven, Timeout, Headers, NoneType, Query, Body, NOT_GIVEN, UnknownResponse, FileTypes
+from ..._base_client import AsyncPaginator, make_request_options, strip_not_given
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from .ach_transfers import ACHTransfers, AsyncACHTransfers
-from .check_deposits import CheckDeposits, AsyncCheckDeposits
-from .wire_transfers import WireTransfers, AsyncWireTransfers
-from .check_transfers import CheckTransfers, AsyncCheckTransfers
+from ..._base_client import SyncAPIClient, AsyncAPIClient
+from ...types import shared_params
+
 from .account_transfers import AccountTransfers, AsyncAccountTransfers
 from .account_statements import AccountStatements, AsyncAccountStatements
-from .real_time_payments_transfers import (
-    RealTimePaymentsTransfers,
-    AsyncRealTimePaymentsTransfers,
-)
-from .digital_wallet_token_requests import (
-    DigitalWalletTokenRequests,
-    AsyncDigitalWalletTokenRequests,
-)
+from .ach_transfers import ACHTransfers, AsyncACHTransfers
+from .check_transfers import CheckTransfers, AsyncCheckTransfers
+from .digital_wallet_token_requests import DigitalWalletTokenRequests, AsyncDigitalWalletTokenRequests
+from .check_deposits import CheckDeposits, AsyncCheckDeposits
+from .wire_transfers import WireTransfers, AsyncWireTransfers
+from .cards import Cards, AsyncCards
+from .real_time_payments_transfers import RealTimePaymentsTransfers, AsyncRealTimePaymentsTransfers
+from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from ..._client import Increase, AsyncIncrease
+  from ..._client import AsyncIncrease, Increase
 
 __all__ = ["Simulations", "AsyncSimulations"]
-
 
 class Simulations(SyncAPIResource):
     account_transfers: AccountTransfers
@@ -49,7 +51,6 @@ class Simulations(SyncAPIResource):
         self.wire_transfers = WireTransfers(client)
         self.cards = Cards(client)
         self.real_time_payments_transfers = RealTimePaymentsTransfers(client)
-
 
 class AsyncSimulations(AsyncAPIResource):
     account_transfers: AsyncAccountTransfers

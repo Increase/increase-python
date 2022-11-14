@@ -1,21 +1,11 @@
 from __future__ import annotations
 
-from typing import (
-    IO,
-    TYPE_CHECKING,
-    Dict,
-    Type,
-    Tuple,
-    Union,
-    Mapping,
-    TypeVar,
-    Optional,
-    Sequence,
-)
-from typing_extensions import Literal, Protocol, TypedDict, runtime_checkable
+from typing import TYPE_CHECKING, IO, Mapping, TypeVar, Dict, Tuple, Type, Sequence, Optional, Union
+from typing_extensions import TypedDict, Literal, Protocol, runtime_checkable
 
 import pydantic
-from httpx import Proxy, Timeout, Response, BaseTransport
+from httpx import Timeout, BaseTransport, Proxy, Response
+
 
 Transport = BaseTransport
 Query = Mapping[str, object]
