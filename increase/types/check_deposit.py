@@ -1,13 +1,12 @@
 # File generated from our OpenAPI spec by Stainless.
 
-from typing import Optional, Union, List, Dict, Any
+from typing import Optional
 from typing_extensions import Literal
-from pydantic import Field
+
 from .._models import BaseModel
 
-from ..types import shared
-
 __all__ = ["DepositAcceptance", "DepositRejection", "DepositReturn", "CheckDeposit"]
+
 
 class DepositAcceptance(BaseModel):
     account_number: str
@@ -34,6 +33,7 @@ class DepositAcceptance(BaseModel):
     routing_number: str
     """The routing number printed on the check."""
 
+
 class DepositRejection(BaseModel):
     amount: int
     """The rejected amount in the minor unit of check's currency.
@@ -47,7 +47,9 @@ class DepositRejection(BaseModel):
     currency.
     """
 
-    reason: Literal["incomplete_image", "duplicate", "poor_image_quality", "incorrect_amount", "incorrect_recipient", "unknown"]
+    reason: Literal[
+        "incomplete_image", "duplicate", "poor_image_quality", "incorrect_amount", "incorrect_recipient", "unknown"
+    ]
     """Why the check deposit was rejected."""
 
     rejected_at: str
@@ -55,6 +57,7 @@ class DepositRejection(BaseModel):
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the check deposit was rejected.
     """
+
 
 class DepositReturn(BaseModel):
     amount: int
@@ -72,7 +75,18 @@ class DepositReturn(BaseModel):
     transaction's currency.
     """
 
-    return_reason: Literal["ach_conversion_not_supported", "duplicate_submission", "insufficient_funds", "no_account", "not_authorized", "stale_dated", "stop_payment", "unknown_reason", "unmatched_details", "unreadable_image"]
+    return_reason: Literal[
+        "ach_conversion_not_supported",
+        "duplicate_submission",
+        "insufficient_funds",
+        "no_account",
+        "not_authorized",
+        "stale_dated",
+        "stop_payment",
+        "unknown_reason",
+        "unmatched_details",
+        "unreadable_image",
+    ]
 
     returned_at: str
     """
@@ -85,6 +99,7 @@ class DepositReturn(BaseModel):
     The identifier of the transaction that reversed the original check deposit
     transaction.
     """
+
 
 class CheckDeposit(BaseModel):
     account_id: str

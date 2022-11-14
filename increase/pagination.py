@@ -1,20 +1,16 @@
 # File generated from our OpenAPI spec by Stainless.
 
-import re
-from typing import Optional, TypeVar, List, Generic, Dict, Any, Type, Mapping, cast
-from typing_extensions import TypedDict, Literal, Annotated
+from typing import List, Generic, TypeVar, Optional
+from typing_extensions import TypedDict
 
-from httpx import URL, Response
-from pydantic import Field
-
-from ._models import BaseModel
 from ._types import ModelT
-from ._utils import PropertyInfo
-from ._base_client import BasePage, BaseSyncPage, BaseAsyncPage, PageInfo
+from ._models import BaseModel
+from ._base_client import BasePage, PageInfo, BaseSyncPage, BaseAsyncPage
 
 __all__ = ["PageParams", "SyncPage", "AsyncPage"]
 
-_BaseModelT = TypeVar('_BaseModelT', bound=BaseModel)
+_BaseModelT = TypeVar("_BaseModelT", bound=BaseModel)
+
 
 class PageParams(TypedDict, total=False):
     cursor: str
@@ -25,6 +21,7 @@ class PageParams(TypedDict, total=False):
 
     The default (and maximum) is 100 objects.
     """
+
 
 class SyncPage(BaseSyncPage[ModelT], BasePage[ModelT, PageParams], Generic[ModelT]):
     data: List[ModelT]
@@ -38,9 +35,8 @@ class SyncPage(BaseSyncPage[ModelT], BasePage[ModelT, PageParams], Generic[Model
         if not cursor:
             return None
 
-        return PageInfo(params={
-            "cursor": cursor
-        })
+        return PageInfo(params={"cursor": cursor})
+
 
 class AsyncPage(BaseAsyncPage[ModelT], BasePage[ModelT, PageParams], Generic[ModelT]):
     data: List[ModelT]
@@ -54,6 +50,4 @@ class AsyncPage(BaseAsyncPage[ModelT], BasePage[ModelT, PageParams], Generic[Mod
         if not cursor:
             return None
 
-        return PageInfo(params={
-            "cursor": cursor
-        })
+        return PageInfo(params={"cursor": cursor})

@@ -1,8 +1,10 @@
 from __future__ import annotations
+
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-  from ._client import AsyncIncrease, Increase
+    from ._client import Increase, AsyncIncrease
+
 
 class SyncAPIResource:
     _client: Increase
@@ -15,6 +17,7 @@ class SyncAPIResource:
         self._put = client.put
         self._delete = client.delete
         self._get_api_list = client.get_api_list
+
 
 class AsyncAPIResource:
     _client: AsyncIncrease

@@ -1,13 +1,14 @@
 # File generated from our OpenAPI spec by Stainless.
 
-from typing import Optional, Union, List, Dict, Any
+from typing import Optional
 from typing_extensions import Literal
+
 from pydantic import Field
+
 from .._models import BaseModel
 
-from ..types import shared
-
 __all__ = ["Approval", "Cancellation", "NotificationOfChange", "Return", "Submission", "ACHTransfer"]
+
 
 class Approval(BaseModel):
     approved_at: str
@@ -16,12 +17,14 @@ class Approval(BaseModel):
     the transfer was approved.
     """
 
+
 class Cancellation(BaseModel):
     canceled_at: str
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the Transfer was canceled.
     """
+
 
 class NotificationOfChange(BaseModel):
     change_code: str
@@ -36,6 +39,7 @@ class NotificationOfChange(BaseModel):
     the notification occurred.
     """
 
+
 class Return(BaseModel):
     created_at: str
     """
@@ -43,7 +47,30 @@ class Return(BaseModel):
     the transfer was created.
     """
 
-    return_reason_code: Literal["insufficient_fund", "no_account", "account_closed", "invalid_account_number_structure", "account_frozen_entry_returned_per_ofac_instruction", "credit_entry_refused_by_receiver", "unauthorized_debit_to_consumer_account_using_corporate_sec_code", "corporate_customer_advised_not_authorized", "payment_stopped", "non_transaction_account", "uncollected_funds", "routing_number_check_digit_error", "customer_advised_unauthorized_improper_ineligible_or_incomplete", "amount_field_error", "authorization_revoked_by_customer", "invalid_ach_routing_number", "file_record_edit_criteria", "enr_invalid_individual_name", "returned_per_odfi_request", "addenda_error", "limited_participation_dfi", "other"]
+    return_reason_code: Literal[
+        "insufficient_fund",
+        "no_account",
+        "account_closed",
+        "invalid_account_number_structure",
+        "account_frozen_entry_returned_per_ofac_instruction",
+        "credit_entry_refused_by_receiver",
+        "unauthorized_debit_to_consumer_account_using_corporate_sec_code",
+        "corporate_customer_advised_not_authorized",
+        "payment_stopped",
+        "non_transaction_account",
+        "uncollected_funds",
+        "routing_number_check_digit_error",
+        "customer_advised_unauthorized_improper_ineligible_or_incomplete",
+        "amount_field_error",
+        "authorization_revoked_by_customer",
+        "invalid_ach_routing_number",
+        "file_record_edit_criteria",
+        "enr_invalid_individual_name",
+        "returned_per_odfi_request",
+        "addenda_error",
+        "limited_participation_dfi",
+        "other",
+    ]
     """Why the ACH Transfer was returned."""
 
     transaction_id: str
@@ -52,9 +79,11 @@ class Return(BaseModel):
     transfer_id: str
     """The identifier of the ACH Transfer associated with this return."""
 
+
 class Submission(BaseModel):
     trace_number: str
     """The trace number for the submission."""
+
 
 class ACHTransfer(BaseModel):
     account_id: str
@@ -113,7 +142,7 @@ class ACHTransfer(BaseModel):
     should use different details, this will contain those details.
     """
 
-    return_: Optional[Return] = Field(alias='return')
+    return_: Optional[Return] = Field(alias="return")
     """If your transfer is returned, this will contain details of the return."""
 
     routing_number: str
@@ -122,7 +151,9 @@ class ACHTransfer(BaseModel):
     statement_descriptor: str
     """The descriptor that will show on the recipient's bank statement."""
 
-    status: Literal["pending_approval", "canceled", "pending_submission", "submitted", "returned", "requires_attention", "rejected"]
+    status: Literal[
+        "pending_approval", "canceled", "pending_submission", "submitted", "returned", "requires_attention", "rejected"
+    ]
     """The lifecycle status of the transfer."""
 
     submission: Optional[Submission]

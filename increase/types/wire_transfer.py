@@ -1,13 +1,12 @@
 # File generated from our OpenAPI spec by Stainless.
 
-from typing import Optional, Union, List, Dict, Any
+from typing import Optional
 from typing_extensions import Literal
-from pydantic import Field
+
 from .._models import BaseModel
 
-from ..types import shared
-
 __all__ = ["Approval", "Cancellation", "Reversal", "Submission", "WireTransfer"]
+
 
 class Approval(BaseModel):
     approved_at: str
@@ -16,12 +15,14 @@ class Approval(BaseModel):
     the transfer was approved.
     """
 
+
 class Cancellation(BaseModel):
     canceled_at: str
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the Transfer was canceled.
     """
+
 
 class Reversal(BaseModel):
     amount: int
@@ -63,9 +64,11 @@ class Reversal(BaseModel):
     institution.
     """
 
+
 class Submission(BaseModel):
     input_message_accountability_data: str
     """The accountability data for the submission."""
+
 
 class WireTransfer(BaseModel):
     account_id: str
@@ -119,7 +122,9 @@ class WireTransfer(BaseModel):
     routing_number: str
     """The American Bankers' Association (ABA) Routing Transit Number (RTN)."""
 
-    status: Literal["canceled", "requires_attention", "pending_approval", "rejected", "reversed", "complete", "pending_creating"]
+    status: Literal[
+        "canceled", "requires_attention", "pending_approval", "rejected", "reversed", "complete", "pending_creating"
+    ]
     """The lifecycle status of the transfer."""
 
     submission: Optional[Submission]

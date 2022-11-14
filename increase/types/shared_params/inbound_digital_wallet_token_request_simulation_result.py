@@ -1,15 +1,17 @@
 # File generated from our OpenAPI spec by Stainless.
 
 from __future__ import annotations
-from typing import Optional, Union, List, Dict
-from typing_extensions import Literal, TypedDict, Required, Annotated
 
-from .._utils import PropertyInfo
+from typing import Optional
+from typing_extensions import Literal, Required, TypedDict
 
 __all__ = ["InboundDigitalWalletTokenRequestSimulationResult"]
 
+
 class InboundDigitalWalletTokenRequestSimulationResult(TypedDict, total=False):
-    decline_reason: Required[Optional[Literal["card_not_active", "no_verification_method", "webhook_timed_out", "webhook_declined"]]]
+    decline_reason: Required[
+        Optional[Literal["card_not_active", "no_verification_method", "webhook_timed_out", "webhook_declined"]]
+    ]
     """
     If the simulated tokenization attempt was declined, this field contains details
     as to why.

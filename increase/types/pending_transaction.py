@@ -1,13 +1,23 @@
 # File generated from our OpenAPI spec by Stainless.
 
-from typing import Optional, Union, List, Dict, Any
+from typing import Optional
 from typing_extensions import Literal
-from pydantic import Field
+
 from .._models import BaseModel
 
-from ..types import shared
+__all__ = [
+    "SourceAccountTransferInstruction",
+    "SourceACHTransferInstruction",
+    "SourceCardAuthorization",
+    "SourceCheckDepositInstruction",
+    "SourceCheckTransferInstruction",
+    "SourceCardRouteAuthorization",
+    "SourceWireDrawdownPaymentInstruction",
+    "SourceWireTransferInstruction",
+    "Source",
+    "PendingTransaction",
+]
 
-__all__ = ["SourceAccountTransferInstruction", "SourceACHTransferInstruction", "SourceCardAuthorization", "SourceCheckDepositInstruction", "SourceCheckTransferInstruction", "SourceCardRouteAuthorization", "SourceWireDrawdownPaymentInstruction", "SourceWireTransferInstruction", "Source", "PendingTransaction"]
 
 class SourceAccountTransferInstruction(BaseModel):
     amount: int
@@ -25,6 +35,7 @@ class SourceAccountTransferInstruction(BaseModel):
     transfer_id: str
     """The identifier of the Account Transfer that led to this Pending Transaction."""
 
+
 class SourceACHTransferInstruction(BaseModel):
     amount: int
     """The pending amount in the minor unit of the transaction's currency.
@@ -34,6 +45,7 @@ class SourceACHTransferInstruction(BaseModel):
 
     transfer_id: str
     """The identifier of the ACH Transfer that led to this Pending Transaction."""
+
 
 class SourceCardAuthorization(BaseModel):
     amount: int
@@ -64,6 +76,7 @@ class SourceCardAuthorization(BaseModel):
     transaction.
     """
 
+
 class SourceCheckDepositInstruction(BaseModel):
     amount: int
     """The pending amount in the minor unit of the transaction's currency.
@@ -89,6 +102,7 @@ class SourceCheckDepositInstruction(BaseModel):
     was deposited.
     """
 
+
 class SourceCheckTransferInstruction(BaseModel):
     amount: int
     """The pending amount in the minor unit of the transaction's currency.
@@ -104,6 +118,7 @@ class SourceCheckTransferInstruction(BaseModel):
 
     transfer_id: str
     """The identifier of the Check Transfer that led to this Pending Transaction."""
+
 
 class SourceCardRouteAuthorization(BaseModel):
     amount: int
@@ -130,6 +145,7 @@ class SourceCardRouteAuthorization(BaseModel):
 
     merchant_state: Optional[str]
 
+
 class SourceWireDrawdownPaymentInstruction(BaseModel):
     account_number: str
 
@@ -142,6 +158,7 @@ class SourceWireDrawdownPaymentInstruction(BaseModel):
     message_to_recipient: str
 
     routing_number: str
+
 
 class SourceWireTransferInstruction(BaseModel):
     account_number: str
@@ -157,6 +174,7 @@ class SourceWireTransferInstruction(BaseModel):
     routing_number: str
 
     transfer_id: str
+
 
 class Source(BaseModel):
     account_transfer_instruction: Optional[SourceAccountTransferInstruction]
@@ -187,7 +205,18 @@ class Source(BaseModel):
     equal to `card_route_authorization`.
     """
 
-    category: Literal["account_transfer_instruction", "ach_transfer_instruction", "card_authorization", "check_deposit_instruction", "check_transfer_instruction", "card_route_authorization", "real_time_payments_transfer_instruction", "wire_drawdown_payment_instruction", "wire_transfer_instruction", "other"]
+    category: Literal[
+        "account_transfer_instruction",
+        "ach_transfer_instruction",
+        "card_authorization",
+        "check_deposit_instruction",
+        "check_transfer_instruction",
+        "card_route_authorization",
+        "real_time_payments_transfer_instruction",
+        "wire_drawdown_payment_instruction",
+        "wire_transfer_instruction",
+        "other",
+    ]
     """The type of transaction that took place.
 
     We may add additional possible values for this enum over time; your application
@@ -221,6 +250,7 @@ class Source(BaseModel):
     This field will be present in the JSON response if and only if `category` is
     equal to `wire_transfer_instruction`.
     """
+
 
 class PendingTransaction(BaseModel):
     account_id: str

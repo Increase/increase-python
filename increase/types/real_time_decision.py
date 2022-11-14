@@ -1,13 +1,12 @@
 # File generated from our OpenAPI spec by Stainless.
 
-from typing import Optional, Union, List, Dict, Any
+from typing import Optional
 from typing_extensions import Literal
-from pydantic import Field
+
 from .._models import BaseModel
 
-from ..types import shared
-
 __all__ = ["CardAuthorization", "DigitalWalletToken", "DigitalWalletAuthentication", "RealTimeDecision"]
+
 
 class CardAuthorization(BaseModel):
     account_id: str
@@ -65,6 +64,7 @@ class CardAuthorization(BaseModel):
     transaction will be settled in.
     """
 
+
 class DigitalWalletToken(BaseModel):
     card_id: str
     """The identifier of the Card that is being tokenized."""
@@ -74,6 +74,7 @@ class DigitalWalletToken(BaseModel):
 
     digital_wallet: Literal["apple_pay", "google_pay"]
     """The digital wallet app being used."""
+
 
 class DigitalWalletAuthentication(BaseModel):
     card_id: str
@@ -100,11 +101,14 @@ class DigitalWalletAuthentication(BaseModel):
     result: Optional[Literal["success", "failure"]]
     """Whether your application successfully delivered the one-time passcode."""
 
+
 class RealTimeDecision(BaseModel):
     card_authorization: Optional[CardAuthorization]
     """Fields related to a card authorization."""
 
-    category: Literal["card_authorization_requested", "digital_wallet_token_requested", "digital_wallet_authentication_requested"]
+    category: Literal[
+        "card_authorization_requested", "digital_wallet_token_requested", "digital_wallet_authentication_requested"
+    ]
     """The category of the Real-Time Decision."""
 
     created_at: str

@@ -1,13 +1,11 @@
 # File generated from our OpenAPI spec by Stainless.
 
 from __future__ import annotations
-from typing import List, Union, Dict, Optional
-from typing_extensions import Literal, TypedDict, Required, Annotated
-from .._types import FileTypes
-from .._utils import PropertyInfo
-from ..types import shared_params
+
+from typing_extensions import TypedDict
 
 __all__ = ["CreatedAt", "WireTransferListParams"]
+
 
 class CreatedAt(TypedDict, total=False):
     after: str
@@ -33,6 +31,7 @@ class CreatedAt(TypedDict, total=False):
     Return results on or before this
     [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
     """
+
 
 class WireTransferListParams(TypedDict, total=False):
     account_id: str

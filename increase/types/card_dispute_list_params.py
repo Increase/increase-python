@@ -1,13 +1,12 @@
 # File generated from our OpenAPI spec by Stainless.
 
 from __future__ import annotations
-from typing import List, Union, Dict, Optional
-from typing_extensions import Literal, TypedDict, Required, Annotated
-from .._types import FileTypes
-from .._utils import PropertyInfo
-from ..types import shared_params
+
+from typing import List
+from typing_extensions import Literal, TypedDict
 
 __all__ = ["CreatedAt", "Status", "CardDisputeListParams"]
+
 
 class CreatedAt(TypedDict, total=False):
     after: str
@@ -34,12 +33,19 @@ class CreatedAt(TypedDict, total=False):
     [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
     """
 
-_StatusReservedKeywords = TypedDict("_StatusReservedKeywords", {
-    "in": List[Literal["pending_reviewing", "accepted", "rejected"]],
-}, total=False)
+
+_StatusReservedKeywords = TypedDict(
+    "_StatusReservedKeywords",
+    {
+        "in": List[Literal["pending_reviewing", "accepted", "rejected"]],
+    },
+    total=False,
+)
+
 
 class Status(_StatusReservedKeywords):
     pass
+
 
 class CardDisputeListParams(TypedDict, total=False):
     created_at: CreatedAt

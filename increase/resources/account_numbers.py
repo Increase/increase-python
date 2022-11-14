@@ -3,43 +3,40 @@
 from __future__ import annotations
 
 import warnings
-from typing import Optional, Union, List, Dict, Any, Mapping, cast, overload
+from typing import Any, Union, Optional, cast, overload
 from typing_extensions import Literal
 
-from .._utils import extract_files, maybe_transform, required_args, deprecated_positional_args, deepcopy_minimal
-from .._types import NotGiven, Timeout, Headers, NoneType, Query, Body, NOT_GIVEN, UnknownResponse, FileTypes
-from .._base_client import AsyncPaginator, make_request_options, strip_not_given
+from .._types import NOT_GIVEN, Body, Query, Headers, Timeout, NotGiven
+from .._utils import required_args
 from .._resource import SyncAPIResource, AsyncAPIResource
-from .._base_client import SyncAPIClient, AsyncAPIClient
-from ..types import shared_params
-from ..pagination import AsyncPage, SyncPage
+from ..pagination import SyncPage, AsyncPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.account_number import AccountNumber
-from ..types import account_number_create_params
-from ..types.account_number_create_params import AccountNumberCreateParams
-from ..types import account_number_update_params
-from ..types.account_number_update_params import AccountNumberUpdateParams
-from ..types import account_number_list_params
 from ..types.account_number_list_params import AccountNumberListParams
+from ..types.account_number_create_params import AccountNumberCreateParams
+from ..types.account_number_update_params import AccountNumberUpdateParams
 
 __all__ = ["AccountNumbers", "AsyncAccountNumbers"]
 
-class AccountNumbers(SyncAPIResource):
 
+class AccountNumbers(SyncAPIResource):
     @overload
-    def create(self,
-    *,
-    account_id: str,
-    name: str,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    # deprecated options params
-    headers: Union[Headers, NotGiven] = NOT_GIVEN,
-    max_retries: Union[int, NotGiven] = NOT_GIVEN,
-    timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
-    query: Optional[Query] = None,) -> AccountNumber:
+    def create(
+        self,
+        *,
+        account_id: str,
+        name: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        # deprecated options params
+        headers: Union[Headers, NotGiven] = NOT_GIVEN,
+        max_retries: Union[int, NotGiven] = NOT_GIVEN,
+        timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+        query: Optional[Query] = None,
+    ) -> AccountNumber:
         """
         Args:
           account_id: The Account the Account Number should belong to.
@@ -55,37 +52,41 @@ class AccountNumbers(SyncAPIResource):
         ...
 
     @overload
-    def create(self,
-    body: AccountNumberCreateParams,
-    *,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    # deprecated options params
-    headers: Union[Headers, NotGiven] = NOT_GIVEN,
-    max_retries: Union[int, NotGiven] = NOT_GIVEN,
-    timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
-    query: Optional[Query] = None,) -> AccountNumber:
+    def create(
+        self,
+        body: AccountNumberCreateParams,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        # deprecated options params
+        headers: Union[Headers, NotGiven] = NOT_GIVEN,
+        max_retries: Union[int, NotGiven] = NOT_GIVEN,
+        timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+        query: Optional[Query] = None,
+    ) -> AccountNumber:
         ...
 
     @required_args(["body"], ["account_id", "name"])
-    def create(self,
-    body: AccountNumberCreateParams | None = None,
-    *,
-    account_id: str | NotGiven = NOT_GIVEN,
-    name: str | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    # deprecated options params
-    headers: Union[Headers, NotGiven] = NOT_GIVEN,
-    max_retries: Union[int, NotGiven] = NOT_GIVEN,
-    timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
-    query: Optional[Query] = None,) -> AccountNumber:
+    def create(
+        self,
+        body: AccountNumberCreateParams | None = None,
+        *,
+        account_id: str | NotGiven = NOT_GIVEN,
+        name: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        # deprecated options params
+        headers: Union[Headers, NotGiven] = NOT_GIVEN,
+        max_retries: Union[int, NotGiven] = NOT_GIVEN,
+        timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+        query: Optional[Query] = None,
+    ) -> AccountNumber:
         """
         Args:
           body: Deprecated TypedDict parameter, this is being replaced with explicit kwargs
@@ -102,75 +103,98 @@ class AccountNumbers(SyncAPIResource):
           extra_body: Add additional JSON properties to the request
         """
         if query is not None:
-          warnings.warn(
-            "The `query` argument is deprecated. Please use `extra_query` instead",
-            DeprecationWarning,
-            stacklevel=3,
-        )
+            warnings.warn(
+                "The `query` argument is deprecated. Please use `extra_query` instead",
+                DeprecationWarning,
+                stacklevel=3,
+            )
 
         if body is not None:
-          warnings.warn(
-            "Passing parameters as a dictionary is deprecated and will be removed in the future",
-            DeprecationWarning,
-            stacklevel=2,
-          )
+            warnings.warn(
+                "Passing parameters as a dictionary is deprecated and will be removed in the future",
+                DeprecationWarning,
+                stacklevel=2,
+            )
         else:
-          # cast to Any is required because the NotGiven types make this expression incompatible
-          # with the standard AccountNumberCreateParams type.
-          body = cast(Any, {
-            "account_id": account_id,
-            "name": name,
-        })
+            # cast to Any is required because the NotGiven types make this expression incompatible
+            # with the standard AccountNumberCreateParams type.
+            body = cast(
+                Any,
+                {
+                    "account_id": account_id,
+                    "name": name,
+                },
+            )
 
         return self._post(
             "/account_numbers",
             body=body,
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, headers=headers, max_retries=max_retries, timeout=timeout, query=query),
-            cast_to = AccountNumber,
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                headers=headers,
+                max_retries=max_retries,
+                timeout=timeout,
+                query=query,
+            ),
+            cast_to=AccountNumber,
         )
 
-    def retrieve(self,
-    account_number_id: str,
-    *,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    # deprecated options params
-    headers: Union[Headers, NotGiven] = NOT_GIVEN,
-    max_retries: Union[int, NotGiven] = NOT_GIVEN,
-    timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
-    query: Optional[Query] = None,) -> AccountNumber:
+    def retrieve(
+        self,
+        account_number_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        # deprecated options params
+        headers: Union[Headers, NotGiven] = NOT_GIVEN,
+        max_retries: Union[int, NotGiven] = NOT_GIVEN,
+        timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+        query: Optional[Query] = None,
+    ) -> AccountNumber:
         if query is not None:
-          warnings.warn(
-            "The `query` argument is deprecated. Please use `extra_query` instead",
-            DeprecationWarning,
-            stacklevel=3,
-        )
+            warnings.warn(
+                "The `query` argument is deprecated. Please use `extra_query` instead",
+                DeprecationWarning,
+                stacklevel=3,
+            )
 
         return self._get(
-            f'/account_numbers/{account_number_id}',
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, headers=headers, max_retries=max_retries, timeout=timeout, query=query),
-            cast_to = AccountNumber,
+            f"/account_numbers/{account_number_id}",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                headers=headers,
+                max_retries=max_retries,
+                timeout=timeout,
+                query=query,
+            ),
+            cast_to=AccountNumber,
         )
 
     @overload
-    def update(self,
-    account_number_id: str,
-    *,
-    name: str | NotGiven = NOT_GIVEN,
-    status: Literal["active", "disabled", "canceled"] | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    # deprecated options params
-    headers: Union[Headers, NotGiven] = NOT_GIVEN,
-    max_retries: Union[int, NotGiven] = NOT_GIVEN,
-    timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
-    query: Optional[Query] = None,) -> AccountNumber:
+    def update(
+        self,
+        account_number_id: str,
+        *,
+        name: str | NotGiven = NOT_GIVEN,
+        status: Literal["active", "disabled", "canceled"] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        # deprecated options params
+        headers: Union[Headers, NotGiven] = NOT_GIVEN,
+        max_retries: Union[int, NotGiven] = NOT_GIVEN,
+        timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+        query: Optional[Query] = None,
+    ) -> AccountNumber:
         """
         Args:
           name: The name you choose for the Account Number.
@@ -186,38 +210,42 @@ class AccountNumbers(SyncAPIResource):
         ...
 
     @overload
-    def update(self,
-    account_number_id: str,
-    body: AccountNumberUpdateParams,
-    *,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    # deprecated options params
-    headers: Union[Headers, NotGiven] = NOT_GIVEN,
-    max_retries: Union[int, NotGiven] = NOT_GIVEN,
-    timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
-    query: Optional[Query] = None,) -> AccountNumber:
+    def update(
+        self,
+        account_number_id: str,
+        body: AccountNumberUpdateParams,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        # deprecated options params
+        headers: Union[Headers, NotGiven] = NOT_GIVEN,
+        max_retries: Union[int, NotGiven] = NOT_GIVEN,
+        timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+        query: Optional[Query] = None,
+    ) -> AccountNumber:
         ...
 
-    def update(self,
-    account_number_id: str,
-    body: AccountNumberUpdateParams | None = None,
-    *,
-    name: str | NotGiven = NOT_GIVEN,
-    status: Literal["active", "disabled", "canceled"] | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    # deprecated options params
-    headers: Union[Headers, NotGiven] = NOT_GIVEN,
-    max_retries: Union[int, NotGiven] = NOT_GIVEN,
-    timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
-    query: Optional[Query] = None,) -> AccountNumber:
+    def update(
+        self,
+        account_number_id: str,
+        body: AccountNumberUpdateParams | None = None,
+        *,
+        name: str | NotGiven = NOT_GIVEN,
+        status: Literal["active", "disabled", "canceled"] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        # deprecated options params
+        headers: Union[Headers, NotGiven] = NOT_GIVEN,
+        max_retries: Union[int, NotGiven] = NOT_GIVEN,
+        timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+        query: Optional[Query] = None,
+    ) -> AccountNumber:
         """
         Args:
           body: Deprecated TypedDict parameter, this is being replaced with explicit kwargs
@@ -234,49 +262,62 @@ class AccountNumbers(SyncAPIResource):
           extra_body: Add additional JSON properties to the request
         """
         if query is not None:
-          warnings.warn(
-            "The `query` argument is deprecated. Please use `extra_query` instead",
-            DeprecationWarning,
-            stacklevel=3,
-        )
+            warnings.warn(
+                "The `query` argument is deprecated. Please use `extra_query` instead",
+                DeprecationWarning,
+                stacklevel=3,
+            )
 
         if body is not None:
-          warnings.warn(
-            "Passing parameters as a dictionary is deprecated and will be removed in the future",
-            DeprecationWarning,
-            stacklevel=2,
-          )
+            warnings.warn(
+                "Passing parameters as a dictionary is deprecated and will be removed in the future",
+                DeprecationWarning,
+                stacklevel=2,
+            )
         else:
-          # cast to Any is required because the NotGiven types make this expression incompatible
-          # with the standard AccountNumberUpdateParams type.
-          body = cast(Any, {
-            "name": name,
-            "status": status,
-        })
+            # cast to Any is required because the NotGiven types make this expression incompatible
+            # with the standard AccountNumberUpdateParams type.
+            body = cast(
+                Any,
+                {
+                    "name": name,
+                    "status": status,
+                },
+            )
 
         return self._patch(
-            f'/account_numbers/{account_number_id}',
+            f"/account_numbers/{account_number_id}",
             body=body,
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, headers=headers, max_retries=max_retries, timeout=timeout, query=query),
-            cast_to = AccountNumber,
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                headers=headers,
+                max_retries=max_retries,
+                timeout=timeout,
+                query=query,
+            ),
+            cast_to=AccountNumber,
         )
 
     @overload
-    def list(self,
-    *,
-    cursor: str | NotGiven = NOT_GIVEN,
-    limit: int | NotGiven = NOT_GIVEN,
-    status: Literal["active", "disabled", "canceled"] | NotGiven = NOT_GIVEN,
-    account_id: str | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    # deprecated options params
-    headers: Union[Headers, NotGiven] = NOT_GIVEN,
-    max_retries: Union[int, NotGiven] = NOT_GIVEN,
-    timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,) -> SyncPage[AccountNumber]:
+    def list(
+        self,
+        *,
+        cursor: str | NotGiven = NOT_GIVEN,
+        limit: int | NotGiven = NOT_GIVEN,
+        status: Literal["active", "disabled", "canceled"] | NotGiven = NOT_GIVEN,
+        account_id: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        # deprecated options params
+        headers: Union[Headers, NotGiven] = NOT_GIVEN,
+        max_retries: Union[int, NotGiven] = NOT_GIVEN,
+        timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+    ) -> SyncPage[AccountNumber]:
         """
         Args:
           cursor: Return the page of entries after this one.
@@ -297,36 +338,40 @@ class AccountNumbers(SyncAPIResource):
         ...
 
     @overload
-    def list(self,
-    query: AccountNumberListParams = {},
-    *,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    # deprecated options params
-    headers: Union[Headers, NotGiven] = NOT_GIVEN,
-    max_retries: Union[int, NotGiven] = NOT_GIVEN,
-    timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,) -> SyncPage[AccountNumber]:
+    def list(
+        self,
+        query: AccountNumberListParams = {},
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        # deprecated options params
+        headers: Union[Headers, NotGiven] = NOT_GIVEN,
+        max_retries: Union[int, NotGiven] = NOT_GIVEN,
+        timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+    ) -> SyncPage[AccountNumber]:
         ...
 
-    def list(self,
-    query: AccountNumberListParams | None = None,
-    *,
-    cursor: str | NotGiven = NOT_GIVEN,
-    limit: int | NotGiven = NOT_GIVEN,
-    status: Literal["active", "disabled", "canceled"] | NotGiven = NOT_GIVEN,
-    account_id: str | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    # deprecated options params
-    headers: Union[Headers, NotGiven] = NOT_GIVEN,
-    max_retries: Union[int, NotGiven] = NOT_GIVEN,
-    timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,) -> SyncPage[AccountNumber]:
+    def list(
+        self,
+        query: AccountNumberListParams | None = None,
+        *,
+        cursor: str | NotGiven = NOT_GIVEN,
+        limit: int | NotGiven = NOT_GIVEN,
+        status: Literal["active", "disabled", "canceled"] | NotGiven = NOT_GIVEN,
+        account_id: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        # deprecated options params
+        headers: Union[Headers, NotGiven] = NOT_GIVEN,
+        max_retries: Union[int, NotGiven] = NOT_GIVEN,
+        timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+    ) -> SyncPage[AccountNumber]:
         """
         Args:
           query: Deprecated TypedDict parameter, this is being replaced with explicit kwargs
@@ -348,45 +393,58 @@ class AccountNumbers(SyncAPIResource):
           extra_body: Add additional JSON properties to the request
         """
         if query is not None:
-          warnings.warn(
-            "Passing parameters as a dictionary is deprecated and will be removed in the future",
-            DeprecationWarning,
-            stacklevel=2,
-          )
+            warnings.warn(
+                "Passing parameters as a dictionary is deprecated and will be removed in the future",
+                DeprecationWarning,
+                stacklevel=2,
+            )
         else:
-          # cast to Any is required because the NotGiven types make this expression incompatible
-          # with the standard AccountNumberListParams type.
-          query = cast(Any, {
-            "cursor": cursor,
-            "limit": limit,
-            "status": status,
-            "account_id": account_id,
-        })
+            # cast to Any is required because the NotGiven types make this expression incompatible
+            # with the standard AccountNumberListParams type.
+            query = cast(
+                Any,
+                {
+                    "cursor": cursor,
+                    "limit": limit,
+                    "status": status,
+                    "account_id": account_id,
+                },
+            )
 
         return self._get_api_list(
             "/account_numbers",
-            page = SyncPage[AccountNumber],
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, headers=headers, max_retries=max_retries, timeout=timeout, query=query),
-            model = AccountNumber,
+            page=SyncPage[AccountNumber],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                headers=headers,
+                max_retries=max_retries,
+                timeout=timeout,
+                query=query,
+            ),
+            model=AccountNumber,
         )
 
-class AsyncAccountNumbers(AsyncAPIResource):
 
+class AsyncAccountNumbers(AsyncAPIResource):
     @overload
-    async def create(self,
-    *,
-    account_id: str,
-    name: str,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    # deprecated options params
-    headers: Union[Headers, NotGiven] = NOT_GIVEN,
-    max_retries: Union[int, NotGiven] = NOT_GIVEN,
-    timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
-    query: Optional[Query] = None,) -> AccountNumber:
+    async def create(
+        self,
+        *,
+        account_id: str,
+        name: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        # deprecated options params
+        headers: Union[Headers, NotGiven] = NOT_GIVEN,
+        max_retries: Union[int, NotGiven] = NOT_GIVEN,
+        timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+        query: Optional[Query] = None,
+    ) -> AccountNumber:
         """
         Args:
           account_id: The Account the Account Number should belong to.
@@ -402,37 +460,41 @@ class AsyncAccountNumbers(AsyncAPIResource):
         ...
 
     @overload
-    async def create(self,
-    body: AccountNumberCreateParams,
-    *,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    # deprecated options params
-    headers: Union[Headers, NotGiven] = NOT_GIVEN,
-    max_retries: Union[int, NotGiven] = NOT_GIVEN,
-    timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
-    query: Optional[Query] = None,) -> AccountNumber:
+    async def create(
+        self,
+        body: AccountNumberCreateParams,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        # deprecated options params
+        headers: Union[Headers, NotGiven] = NOT_GIVEN,
+        max_retries: Union[int, NotGiven] = NOT_GIVEN,
+        timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+        query: Optional[Query] = None,
+    ) -> AccountNumber:
         ...
 
     @required_args(["body"], ["account_id", "name"])
-    async def create(self,
-    body: AccountNumberCreateParams | None = None,
-    *,
-    account_id: str | NotGiven = NOT_GIVEN,
-    name: str | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    # deprecated options params
-    headers: Union[Headers, NotGiven] = NOT_GIVEN,
-    max_retries: Union[int, NotGiven] = NOT_GIVEN,
-    timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
-    query: Optional[Query] = None,) -> AccountNumber:
+    async def create(
+        self,
+        body: AccountNumberCreateParams | None = None,
+        *,
+        account_id: str | NotGiven = NOT_GIVEN,
+        name: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        # deprecated options params
+        headers: Union[Headers, NotGiven] = NOT_GIVEN,
+        max_retries: Union[int, NotGiven] = NOT_GIVEN,
+        timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+        query: Optional[Query] = None,
+    ) -> AccountNumber:
         """
         Args:
           body: Deprecated TypedDict parameter, this is being replaced with explicit kwargs
@@ -449,75 +511,98 @@ class AsyncAccountNumbers(AsyncAPIResource):
           extra_body: Add additional JSON properties to the request
         """
         if query is not None:
-          warnings.warn(
-            "The `query` argument is deprecated. Please use `extra_query` instead",
-            DeprecationWarning,
-            stacklevel=3,
-        )
+            warnings.warn(
+                "The `query` argument is deprecated. Please use `extra_query` instead",
+                DeprecationWarning,
+                stacklevel=3,
+            )
 
         if body is not None:
-          warnings.warn(
-            "Passing parameters as a dictionary is deprecated and will be removed in the future",
-            DeprecationWarning,
-            stacklevel=2,
-          )
+            warnings.warn(
+                "Passing parameters as a dictionary is deprecated and will be removed in the future",
+                DeprecationWarning,
+                stacklevel=2,
+            )
         else:
-          # cast to Any is required because the NotGiven types make this expression incompatible
-          # with the standard AccountNumberCreateParams type.
-          body = cast(Any, {
-            "account_id": account_id,
-            "name": name,
-        })
+            # cast to Any is required because the NotGiven types make this expression incompatible
+            # with the standard AccountNumberCreateParams type.
+            body = cast(
+                Any,
+                {
+                    "account_id": account_id,
+                    "name": name,
+                },
+            )
 
         return await self._post(
             "/account_numbers",
             body=body,
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, headers=headers, max_retries=max_retries, timeout=timeout, query=query),
-            cast_to = AccountNumber,
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                headers=headers,
+                max_retries=max_retries,
+                timeout=timeout,
+                query=query,
+            ),
+            cast_to=AccountNumber,
         )
 
-    async def retrieve(self,
-    account_number_id: str,
-    *,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    # deprecated options params
-    headers: Union[Headers, NotGiven] = NOT_GIVEN,
-    max_retries: Union[int, NotGiven] = NOT_GIVEN,
-    timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
-    query: Optional[Query] = None,) -> AccountNumber:
+    async def retrieve(
+        self,
+        account_number_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        # deprecated options params
+        headers: Union[Headers, NotGiven] = NOT_GIVEN,
+        max_retries: Union[int, NotGiven] = NOT_GIVEN,
+        timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+        query: Optional[Query] = None,
+    ) -> AccountNumber:
         if query is not None:
-          warnings.warn(
-            "The `query` argument is deprecated. Please use `extra_query` instead",
-            DeprecationWarning,
-            stacklevel=3,
-        )
+            warnings.warn(
+                "The `query` argument is deprecated. Please use `extra_query` instead",
+                DeprecationWarning,
+                stacklevel=3,
+            )
 
         return await self._get(
-            f'/account_numbers/{account_number_id}',
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, headers=headers, max_retries=max_retries, timeout=timeout, query=query),
-            cast_to = AccountNumber,
+            f"/account_numbers/{account_number_id}",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                headers=headers,
+                max_retries=max_retries,
+                timeout=timeout,
+                query=query,
+            ),
+            cast_to=AccountNumber,
         )
 
     @overload
-    async def update(self,
-    account_number_id: str,
-    *,
-    name: str | NotGiven = NOT_GIVEN,
-    status: Literal["active", "disabled", "canceled"] | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    # deprecated options params
-    headers: Union[Headers, NotGiven] = NOT_GIVEN,
-    max_retries: Union[int, NotGiven] = NOT_GIVEN,
-    timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
-    query: Optional[Query] = None,) -> AccountNumber:
+    async def update(
+        self,
+        account_number_id: str,
+        *,
+        name: str | NotGiven = NOT_GIVEN,
+        status: Literal["active", "disabled", "canceled"] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        # deprecated options params
+        headers: Union[Headers, NotGiven] = NOT_GIVEN,
+        max_retries: Union[int, NotGiven] = NOT_GIVEN,
+        timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+        query: Optional[Query] = None,
+    ) -> AccountNumber:
         """
         Args:
           name: The name you choose for the Account Number.
@@ -533,38 +618,42 @@ class AsyncAccountNumbers(AsyncAPIResource):
         ...
 
     @overload
-    async def update(self,
-    account_number_id: str,
-    body: AccountNumberUpdateParams,
-    *,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    # deprecated options params
-    headers: Union[Headers, NotGiven] = NOT_GIVEN,
-    max_retries: Union[int, NotGiven] = NOT_GIVEN,
-    timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
-    query: Optional[Query] = None,) -> AccountNumber:
+    async def update(
+        self,
+        account_number_id: str,
+        body: AccountNumberUpdateParams,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        # deprecated options params
+        headers: Union[Headers, NotGiven] = NOT_GIVEN,
+        max_retries: Union[int, NotGiven] = NOT_GIVEN,
+        timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+        query: Optional[Query] = None,
+    ) -> AccountNumber:
         ...
 
-    async def update(self,
-    account_number_id: str,
-    body: AccountNumberUpdateParams | None = None,
-    *,
-    name: str | NotGiven = NOT_GIVEN,
-    status: Literal["active", "disabled", "canceled"] | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    # deprecated options params
-    headers: Union[Headers, NotGiven] = NOT_GIVEN,
-    max_retries: Union[int, NotGiven] = NOT_GIVEN,
-    timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
-    query: Optional[Query] = None,) -> AccountNumber:
+    async def update(
+        self,
+        account_number_id: str,
+        body: AccountNumberUpdateParams | None = None,
+        *,
+        name: str | NotGiven = NOT_GIVEN,
+        status: Literal["active", "disabled", "canceled"] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        # deprecated options params
+        headers: Union[Headers, NotGiven] = NOT_GIVEN,
+        max_retries: Union[int, NotGiven] = NOT_GIVEN,
+        timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+        query: Optional[Query] = None,
+    ) -> AccountNumber:
         """
         Args:
           body: Deprecated TypedDict parameter, this is being replaced with explicit kwargs
@@ -581,49 +670,62 @@ class AsyncAccountNumbers(AsyncAPIResource):
           extra_body: Add additional JSON properties to the request
         """
         if query is not None:
-          warnings.warn(
-            "The `query` argument is deprecated. Please use `extra_query` instead",
-            DeprecationWarning,
-            stacklevel=3,
-        )
+            warnings.warn(
+                "The `query` argument is deprecated. Please use `extra_query` instead",
+                DeprecationWarning,
+                stacklevel=3,
+            )
 
         if body is not None:
-          warnings.warn(
-            "Passing parameters as a dictionary is deprecated and will be removed in the future",
-            DeprecationWarning,
-            stacklevel=2,
-          )
+            warnings.warn(
+                "Passing parameters as a dictionary is deprecated and will be removed in the future",
+                DeprecationWarning,
+                stacklevel=2,
+            )
         else:
-          # cast to Any is required because the NotGiven types make this expression incompatible
-          # with the standard AccountNumberUpdateParams type.
-          body = cast(Any, {
-            "name": name,
-            "status": status,
-        })
+            # cast to Any is required because the NotGiven types make this expression incompatible
+            # with the standard AccountNumberUpdateParams type.
+            body = cast(
+                Any,
+                {
+                    "name": name,
+                    "status": status,
+                },
+            )
 
         return await self._patch(
-            f'/account_numbers/{account_number_id}',
+            f"/account_numbers/{account_number_id}",
             body=body,
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, headers=headers, max_retries=max_retries, timeout=timeout, query=query),
-            cast_to = AccountNumber,
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                headers=headers,
+                max_retries=max_retries,
+                timeout=timeout,
+                query=query,
+            ),
+            cast_to=AccountNumber,
         )
 
     @overload
-    def list(self,
-    *,
-    cursor: str | NotGiven = NOT_GIVEN,
-    limit: int | NotGiven = NOT_GIVEN,
-    status: Literal["active", "disabled", "canceled"] | NotGiven = NOT_GIVEN,
-    account_id: str | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    # deprecated options params
-    headers: Union[Headers, NotGiven] = NOT_GIVEN,
-    max_retries: Union[int, NotGiven] = NOT_GIVEN,
-    timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,) -> AsyncPaginator[AccountNumber, AsyncPage[AccountNumber]]:
+    def list(
+        self,
+        *,
+        cursor: str | NotGiven = NOT_GIVEN,
+        limit: int | NotGiven = NOT_GIVEN,
+        status: Literal["active", "disabled", "canceled"] | NotGiven = NOT_GIVEN,
+        account_id: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        # deprecated options params
+        headers: Union[Headers, NotGiven] = NOT_GIVEN,
+        max_retries: Union[int, NotGiven] = NOT_GIVEN,
+        timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+    ) -> AsyncPaginator[AccountNumber, AsyncPage[AccountNumber]]:
         """
         Args:
           cursor: Return the page of entries after this one.
@@ -644,36 +746,40 @@ class AsyncAccountNumbers(AsyncAPIResource):
         ...
 
     @overload
-    def list(self,
-    query: AccountNumberListParams = {},
-    *,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    # deprecated options params
-    headers: Union[Headers, NotGiven] = NOT_GIVEN,
-    max_retries: Union[int, NotGiven] = NOT_GIVEN,
-    timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,) -> AsyncPaginator[AccountNumber, AsyncPage[AccountNumber]]:
+    def list(
+        self,
+        query: AccountNumberListParams = {},
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        # deprecated options params
+        headers: Union[Headers, NotGiven] = NOT_GIVEN,
+        max_retries: Union[int, NotGiven] = NOT_GIVEN,
+        timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+    ) -> AsyncPaginator[AccountNumber, AsyncPage[AccountNumber]]:
         ...
 
-    def list(self,
-    query: AccountNumberListParams | None = None,
-    *,
-    cursor: str | NotGiven = NOT_GIVEN,
-    limit: int | NotGiven = NOT_GIVEN,
-    status: Literal["active", "disabled", "canceled"] | NotGiven = NOT_GIVEN,
-    account_id: str | NotGiven = NOT_GIVEN,
-    # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-    # The extra values given here take precedence over values defined on the client or passed to this method.
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-    # deprecated options params
-    headers: Union[Headers, NotGiven] = NOT_GIVEN,
-    max_retries: Union[int, NotGiven] = NOT_GIVEN,
-    timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,) -> AsyncPaginator[AccountNumber, AsyncPage[AccountNumber]]:
+    def list(
+        self,
+        query: AccountNumberListParams | None = None,
+        *,
+        cursor: str | NotGiven = NOT_GIVEN,
+        limit: int | NotGiven = NOT_GIVEN,
+        status: Literal["active", "disabled", "canceled"] | NotGiven = NOT_GIVEN,
+        account_id: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        # deprecated options params
+        headers: Union[Headers, NotGiven] = NOT_GIVEN,
+        max_retries: Union[int, NotGiven] = NOT_GIVEN,
+        timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
+    ) -> AsyncPaginator[AccountNumber, AsyncPage[AccountNumber]]:
         """
         Args:
           query: Deprecated TypedDict parameter, this is being replaced with explicit kwargs
@@ -695,24 +801,35 @@ class AsyncAccountNumbers(AsyncAPIResource):
           extra_body: Add additional JSON properties to the request
         """
         if query is not None:
-          warnings.warn(
-            "Passing parameters as a dictionary is deprecated and will be removed in the future",
-            DeprecationWarning,
-            stacklevel=2,
-          )
+            warnings.warn(
+                "Passing parameters as a dictionary is deprecated and will be removed in the future",
+                DeprecationWarning,
+                stacklevel=2,
+            )
         else:
-          # cast to Any is required because the NotGiven types make this expression incompatible
-          # with the standard AccountNumberListParams type.
-          query = cast(Any, {
-            "cursor": cursor,
-            "limit": limit,
-            "status": status,
-            "account_id": account_id,
-        })
+            # cast to Any is required because the NotGiven types make this expression incompatible
+            # with the standard AccountNumberListParams type.
+            query = cast(
+                Any,
+                {
+                    "cursor": cursor,
+                    "limit": limit,
+                    "status": status,
+                    "account_id": account_id,
+                },
+            )
 
         return self._get_api_list(
             "/account_numbers",
-            page = AsyncPage[AccountNumber],
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, headers=headers, max_retries=max_retries, timeout=timeout, query=query),
-            model = AccountNumber,
+            page=AsyncPage[AccountNumber],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                headers=headers,
+                max_retries=max_retries,
+                timeout=timeout,
+                query=query,
+            ),
+            model=AccountNumber,
         )

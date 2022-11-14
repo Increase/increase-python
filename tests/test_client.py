@@ -9,41 +9,46 @@ from typing import Dict, cast
 
 import httpx
 import pytest
+
 from increase import Increase, AsyncIncrease
+from increase._types import NOT_GIVEN, Query, Headers, Timeout, NotGiven
 from increase._models import FinalRequestOptions
-from increase._types import NOT_GIVEN, Headers, NotGiven, Query, Timeout
-from increase._base_client import BaseClient, RequestOptions, make_request_options as _make_request_options
+from increase._base_client import BaseClient, RequestOptions
+from increase._base_client import make_request_options as _make_request_options
 
 base_url = os.environ.get("API_BASE_URL", "http://127.0.0.1:4010")
 api_key = os.environ.get("API_KEY", "something1234")
 
+
 def _get_params(client: BaseClient) -> dict[str, str]:
-  request = client.build_request(FinalRequestOptions(method="get", url='/foo'))
-  url = httpx.URL(request.url)
-  return dict(url.params)
+    request = client.build_request(FinalRequestOptions(method="get", url="/foo"))
+    url = httpx.URL(request.url)
+    return dict(url.params)
+
 
 # Wrapper over the standard `make_request_options()` that makes every argument optional
 # for convenience. We don't want to do the same for the standard `make_request_options()` function
 # as it might let bugs slip through if we ever forget to pass in an option.
 def make_request_options(
-  headers: Headers | NotGiven = NOT_GIVEN,
-  max_retries: int | NotGiven = NOT_GIVEN,
-  timeout: float | Timeout | None | NotGiven = NOT_GIVEN,
-  query: Query | None = None,
-  *,
-  extra_headers: Headers | None = None,
-  extra_query: Query | None = None,
-  extra_body: Query | None = None,
+    headers: Headers | NotGiven = NOT_GIVEN,
+    max_retries: int | NotGiven = NOT_GIVEN,
+    timeout: float | Timeout | None | NotGiven = NOT_GIVEN,
+    query: Query | None = None,
+    *,
+    extra_headers: Headers | None = None,
+    extra_query: Query | None = None,
+    extra_body: Query | None = None,
 ) -> RequestOptions:
     return _make_request_options(
-      headers=headers,
-      max_retries=max_retries,
-      timeout=timeout,
-      query=query,
-      extra_headers=extra_headers,
-      extra_query=extra_query,
-      extra_body=extra_body,
+        headers=headers,
+        max_retries=max_retries,
+        timeout=timeout,
+        query=query,
+        extra_headers=extra_headers,
+        extra_query=extra_query,
+        extra_body=extra_body,
     )
+
 
 class TestIncrease:
     client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=True)
@@ -78,58 +83,58 @@ class TestIncrease:
         assert isinstance(self.client.timeout, httpx.Timeout)
 
     def test_copy_default_headers(self) -> None:
-        client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=True, default_headers={
-            "X-Foo": "bar"
-        })
-        assert client.default_headers['X-Foo'] == 'bar'
+        client = Increase(
+            base_url=base_url, api_key=api_key, _strict_response_validation=True, default_headers={"X-Foo": "bar"}
+        )
+        assert client.default_headers["X-Foo"] == "bar"
 
         # does not override the already given value when not specified
         copied = client.copy()
-        assert copied.default_headers['X-Foo'] == 'bar'
+        assert copied.default_headers["X-Foo"] == "bar"
 
         # merges already given headers
-        copied = client.copy(default_headers={'X-Bar': 'stainless'})
-        assert copied.default_headers['X-Foo'] == 'bar'
-        assert copied.default_headers['X-Bar'] == 'stainless'
+        copied = client.copy(default_headers={"X-Bar": "stainless"})
+        assert copied.default_headers["X-Foo"] == "bar"
+        assert copied.default_headers["X-Bar"] == "stainless"
 
         # uses new values for any already given headers
-        copied = client.copy(default_headers={'X-Foo': 'stainless'})
-        assert copied.default_headers['X-Foo'] == 'stainless'
+        copied = client.copy(default_headers={"X-Foo": "stainless"})
+        assert copied.default_headers["X-Foo"] == "stainless"
 
         # set_default_headers
 
         # completely overrides already set values
         copied = client.copy(set_default_headers={})
-        assert copied.default_headers.get('X-Foo') is None
+        assert copied.default_headers.get("X-Foo") is None
 
-        copied = client.copy(set_default_headers={'X-Bar': 'Robert'})
-        assert copied.default_headers['X-Bar'] == 'Robert'
+        copied = client.copy(set_default_headers={"X-Bar": "Robert"})
+        assert copied.default_headers["X-Bar"] == "Robert"
 
         with pytest.raises(
-          ValueError,
-          match='`default_headers` and `set_default_headers` arguments are mutually exclusive',
+            ValueError,
+            match="`default_headers` and `set_default_headers` arguments are mutually exclusive",
         ):
-          client.copy(set_default_headers={}, default_headers={'X-Foo': 'Bar'})
+            client.copy(set_default_headers={}, default_headers={"X-Foo": "Bar"})
 
     def test_copy_default_query(self) -> None:
-        client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=True, default_query={
-            "foo": "bar"
-        })
-        assert _get_params(client)['foo'] == 'bar'
+        client = Increase(
+            base_url=base_url, api_key=api_key, _strict_response_validation=True, default_query={"foo": "bar"}
+        )
+        assert _get_params(client)["foo"] == "bar"
 
         # does not override the already given value when not specified
         copied = client.copy()
-        assert _get_params(copied)['foo'] == 'bar'
+        assert _get_params(copied)["foo"] == "bar"
 
         # merges already given params
-        copied = client.copy(default_query={'bar': 'stainless'})
+        copied = client.copy(default_query={"bar": "stainless"})
         params = _get_params(copied)
-        assert params['foo'] == 'bar'
-        assert params['bar'] == 'stainless'
+        assert params["foo"] == "bar"
+        assert params["bar"] == "stainless"
 
         # uses new values for any already given headers
-        copied = client.copy(default_query={'foo': 'stainless'})
-        assert _get_params(copied)['foo'] == 'stainless'
+        copied = client.copy(default_query={"foo": "stainless"})
+        assert _get_params(copied)["foo"] == "stainless"
 
         # set_default_query
 
@@ -137,21 +142,21 @@ class TestIncrease:
         copied = client.copy(set_default_query={})
         assert _get_params(copied) == {}
 
-        copied = client.copy(set_default_query={'bar': 'Robert'})
-        assert _get_params(copied)['bar'] == 'Robert'
+        copied = client.copy(set_default_query={"bar": "Robert"})
+        assert _get_params(copied)["bar"] == "Robert"
 
         with pytest.raises(
-          ValueError,
-          # TODO: update
-          match='`default_query` and `set_default_query` arguments are mutually exclusive',
+            ValueError,
+            # TODO: update
+            match="`default_query` and `set_default_query` arguments are mutually exclusive",
         ):
-          client.copy(set_default_query={}, default_query={'foo': 'Bar'})
+            client.copy(set_default_query={}, default_query={"foo": "Bar"})
 
     def test_copy_signature(self) -> None:
         # ensure the same parameters that can be passed to the client are defined in the `.copy()` method
         init_signature = inspect.signature(
-          # mypy doesn't like that we access the `__init__` property.
-          self.client.__init__,  # type: ignore[misc]
+            # mypy doesn't like that we access the `__init__` property.
+            self.client.__init__,  # type: ignore[misc]
         )
         copy_signature = inspect.signature(self.client.copy)
         exclude_params = {"transport", "proxies", "_strict_response_validation"}
@@ -164,26 +169,31 @@ class TestIncrease:
             assert copy_param is not None, f"copy() signature is missing the {name} param"
 
     def test_default_headers_option(self) -> None:
-        client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=True, default_headers={
-            "X-Foo": "bar"
-        })
-        request = client.build_request(FinalRequestOptions(method="get", url='/foo'))
-        assert request.headers.get('x-foo') == 'bar'
-        assert request.headers.get('x-stainless-lang') == 'python'
+        client = Increase(
+            base_url=base_url, api_key=api_key, _strict_response_validation=True, default_headers={"X-Foo": "bar"}
+        )
+        request = client.build_request(FinalRequestOptions(method="get", url="/foo"))
+        assert request.headers.get("x-foo") == "bar"
+        assert request.headers.get("x-stainless-lang") == "python"
 
-        client2 = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=True, default_headers={
-            "X-Foo": "stainless",
-            "X-Stainless-Lang": "my-overriding-header",
-        })
-        request = client2.build_request(FinalRequestOptions(method="get", url='/foo'))
-        assert request.headers.get('x-foo') == 'stainless'
-        assert request.headers.get('x-stainless-lang') == 'my-overriding-header'
+        client2 = Increase(
+            base_url=base_url,
+            api_key=api_key,
+            _strict_response_validation=True,
+            default_headers={
+                "X-Foo": "stainless",
+                "X-Stainless-Lang": "my-overriding-header",
+            },
+        )
+        request = client2.build_request(FinalRequestOptions(method="get", url="/foo"))
+        assert request.headers.get("x-foo") == "stainless"
+        assert request.headers.get("x-stainless-lang") == "my-overriding-header"
 
     def test_default_query_option(self) -> None:
-        client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=True, default_query={
-            "query_param": "bar"
-        })
-        request = client.build_request(FinalRequestOptions(method="get", url='/foo'))
+        client = Increase(
+            base_url=base_url, api_key=api_key, _strict_response_validation=True, default_query={"query_param": "bar"}
+        )
+        request = client.build_request(FinalRequestOptions(method="get", url="/foo"))
         url = httpx.URL(request.url)
         assert dict(url.params) == {"query_param": "bar"}
 
@@ -195,7 +205,7 @@ class TestIncrease:
             )
         )
         url = httpx.URL(request.url)
-        assert dict(url.params) == {'foo': 'baz', "query_param": "overriden"}
+        assert dict(url.params) == {"foo": "baz", "query_param": "overriden"}
 
     def test_request_extra_json(self) -> None:
         request = self.client.build_request(
@@ -293,7 +303,7 @@ class TestIncrease:
             ),
         )
         params = cast(Dict[str, str], dict(request.url.params))
-        assert params == {'bar': '1', 'foo': '2'}
+        assert params == {"bar": "1", "foo": "2"}
 
         # `extra_query` takes priority over `query` when keys clash
         request = self.client.build_request(
@@ -307,7 +317,9 @@ class TestIncrease:
             ),
         )
         params = cast(Dict[str, str], dict(request.url.params))
-        assert params == {'foo': '2'}
+        assert params == {"foo": "2"}
+
+
 class TestAsyncIncrease:
     client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
 
@@ -341,58 +353,58 @@ class TestAsyncIncrease:
         assert isinstance(self.client.timeout, httpx.Timeout)
 
     def test_copy_default_headers(self) -> None:
-        client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True, default_headers={
-            "X-Foo": "bar"
-        })
-        assert client.default_headers['X-Foo'] == 'bar'
+        client = AsyncIncrease(
+            base_url=base_url, api_key=api_key, _strict_response_validation=True, default_headers={"X-Foo": "bar"}
+        )
+        assert client.default_headers["X-Foo"] == "bar"
 
         # does not override the already given value when not specified
         copied = client.copy()
-        assert copied.default_headers['X-Foo'] == 'bar'
+        assert copied.default_headers["X-Foo"] == "bar"
 
         # merges already given headers
-        copied = client.copy(default_headers={'X-Bar': 'stainless'})
-        assert copied.default_headers['X-Foo'] == 'bar'
-        assert copied.default_headers['X-Bar'] == 'stainless'
+        copied = client.copy(default_headers={"X-Bar": "stainless"})
+        assert copied.default_headers["X-Foo"] == "bar"
+        assert copied.default_headers["X-Bar"] == "stainless"
 
         # uses new values for any already given headers
-        copied = client.copy(default_headers={'X-Foo': 'stainless'})
-        assert copied.default_headers['X-Foo'] == 'stainless'
+        copied = client.copy(default_headers={"X-Foo": "stainless"})
+        assert copied.default_headers["X-Foo"] == "stainless"
 
         # set_default_headers
 
         # completely overrides already set values
         copied = client.copy(set_default_headers={})
-        assert copied.default_headers.get('X-Foo') is None
+        assert copied.default_headers.get("X-Foo") is None
 
-        copied = client.copy(set_default_headers={'X-Bar': 'Robert'})
-        assert copied.default_headers['X-Bar'] == 'Robert'
+        copied = client.copy(set_default_headers={"X-Bar": "Robert"})
+        assert copied.default_headers["X-Bar"] == "Robert"
 
         with pytest.raises(
-          ValueError,
-          match='`default_headers` and `set_default_headers` arguments are mutually exclusive',
+            ValueError,
+            match="`default_headers` and `set_default_headers` arguments are mutually exclusive",
         ):
-          client.copy(set_default_headers={}, default_headers={'X-Foo': 'Bar'})
+            client.copy(set_default_headers={}, default_headers={"X-Foo": "Bar"})
 
     def test_copy_default_query(self) -> None:
-        client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True, default_query={
-            "foo": "bar"
-        })
-        assert _get_params(client)['foo'] == 'bar'
+        client = AsyncIncrease(
+            base_url=base_url, api_key=api_key, _strict_response_validation=True, default_query={"foo": "bar"}
+        )
+        assert _get_params(client)["foo"] == "bar"
 
         # does not override the already given value when not specified
         copied = client.copy()
-        assert _get_params(copied)['foo'] == 'bar'
+        assert _get_params(copied)["foo"] == "bar"
 
         # merges already given params
-        copied = client.copy(default_query={'bar': 'stainless'})
+        copied = client.copy(default_query={"bar": "stainless"})
         params = _get_params(copied)
-        assert params['foo'] == 'bar'
-        assert params['bar'] == 'stainless'
+        assert params["foo"] == "bar"
+        assert params["bar"] == "stainless"
 
         # uses new values for any already given headers
-        copied = client.copy(default_query={'foo': 'stainless'})
-        assert _get_params(copied)['foo'] == 'stainless'
+        copied = client.copy(default_query={"foo": "stainless"})
+        assert _get_params(copied)["foo"] == "stainless"
 
         # set_default_query
 
@@ -400,21 +412,21 @@ class TestAsyncIncrease:
         copied = client.copy(set_default_query={})
         assert _get_params(copied) == {}
 
-        copied = client.copy(set_default_query={'bar': 'Robert'})
-        assert _get_params(copied)['bar'] == 'Robert'
+        copied = client.copy(set_default_query={"bar": "Robert"})
+        assert _get_params(copied)["bar"] == "Robert"
 
         with pytest.raises(
-          ValueError,
-          # TODO: update
-          match='`default_query` and `set_default_query` arguments are mutually exclusive',
+            ValueError,
+            # TODO: update
+            match="`default_query` and `set_default_query` arguments are mutually exclusive",
         ):
-          client.copy(set_default_query={}, default_query={'foo': 'Bar'})
+            client.copy(set_default_query={}, default_query={"foo": "Bar"})
 
     def test_copy_signature(self) -> None:
         # ensure the same parameters that can be passed to the client are defined in the `.copy()` method
         init_signature = inspect.signature(
-          # mypy doesn't like that we access the `__init__` property.
-          self.client.__init__,  # type: ignore[misc]
+            # mypy doesn't like that we access the `__init__` property.
+            self.client.__init__,  # type: ignore[misc]
         )
         copy_signature = inspect.signature(self.client.copy)
         exclude_params = {"transport", "proxies", "_strict_response_validation"}
@@ -427,26 +439,31 @@ class TestAsyncIncrease:
             assert copy_param is not None, f"copy() signature is missing the {name} param"
 
     def test_default_headers_option(self) -> None:
-        client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True, default_headers={
-            "X-Foo": "bar"
-        })
-        request = client.build_request(FinalRequestOptions(method="get", url='/foo'))
-        assert request.headers.get('x-foo') == 'bar'
-        assert request.headers.get('x-stainless-lang') == 'python'
+        client = AsyncIncrease(
+            base_url=base_url, api_key=api_key, _strict_response_validation=True, default_headers={"X-Foo": "bar"}
+        )
+        request = client.build_request(FinalRequestOptions(method="get", url="/foo"))
+        assert request.headers.get("x-foo") == "bar"
+        assert request.headers.get("x-stainless-lang") == "python"
 
-        client2 = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True, default_headers={
-            "X-Foo": "stainless",
-            "X-Stainless-Lang": "my-overriding-header",
-        })
-        request = client2.build_request(FinalRequestOptions(method="get", url='/foo'))
-        assert request.headers.get('x-foo') == 'stainless'
-        assert request.headers.get('x-stainless-lang') == 'my-overriding-header'
+        client2 = AsyncIncrease(
+            base_url=base_url,
+            api_key=api_key,
+            _strict_response_validation=True,
+            default_headers={
+                "X-Foo": "stainless",
+                "X-Stainless-Lang": "my-overriding-header",
+            },
+        )
+        request = client2.build_request(FinalRequestOptions(method="get", url="/foo"))
+        assert request.headers.get("x-foo") == "stainless"
+        assert request.headers.get("x-stainless-lang") == "my-overriding-header"
 
     def test_default_query_option(self) -> None:
-        client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True, default_query={
-            "query_param": "bar"
-        })
-        request = client.build_request(FinalRequestOptions(method="get", url='/foo'))
+        client = AsyncIncrease(
+            base_url=base_url, api_key=api_key, _strict_response_validation=True, default_query={"query_param": "bar"}
+        )
+        request = client.build_request(FinalRequestOptions(method="get", url="/foo"))
         url = httpx.URL(request.url)
         assert dict(url.params) == {"query_param": "bar"}
 
@@ -458,7 +475,7 @@ class TestAsyncIncrease:
             )
         )
         url = httpx.URL(request.url)
-        assert dict(url.params) == {'foo': 'baz', "query_param": "overriden"}
+        assert dict(url.params) == {"foo": "baz", "query_param": "overriden"}
 
     def test_request_extra_json(self) -> None:
         request = self.client.build_request(
@@ -556,7 +573,7 @@ class TestAsyncIncrease:
             ),
         )
         params = cast(Dict[str, str], dict(request.url.params))
-        assert params == {'bar': '1', 'foo': '2'}
+        assert params == {"bar": "1", "foo": "2"}
 
         # `extra_query` takes priority over `query` when keys clash
         request = self.client.build_request(
@@ -570,4 +587,4 @@ class TestAsyncIncrease:
             ),
         )
         params = cast(Dict[str, str], dict(request.url.params))
-        assert params == {'foo': '2'}
+        assert params == {"foo": "2"}

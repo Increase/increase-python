@@ -1,13 +1,11 @@
 # File generated from our OpenAPI spec by Stainless.
 
 from __future__ import annotations
-from typing import List, Union, Dict, Optional
-from typing_extensions import Literal, TypedDict, Required, Annotated
-from .._types import FileTypes
-from .._utils import PropertyInfo
-from ..types import shared_params
+
+from typing_extensions import Literal, Required, TypedDict
 
 __all__ = ["BillingAddress", "DigitalWallet", "CardUpdateParams"]
+
 
 class BillingAddress(TypedDict, total=False):
     city: Required[str]
@@ -25,6 +23,7 @@ class BillingAddress(TypedDict, total=False):
     line2: str
     """The second line of the billing address."""
 
+
 class DigitalWallet(TypedDict, total=False):
     email: str
     """
@@ -37,6 +36,7 @@ class DigitalWallet(TypedDict, total=False):
     A phone number that can be used to verify the cardholder via one-time passcode
     over SMS.
     """
+
 
 class CardUpdateParams(TypedDict, total=False):
     billing_address: BillingAddress

@@ -1,13 +1,12 @@
 # File generated from our OpenAPI spec by Stainless.
 
 from __future__ import annotations
-from typing import List, Union, Dict, Optional
-from typing_extensions import Literal, TypedDict, Required, Annotated
-from .._types import FileTypes
-from .._utils import PropertyInfo
-from ..types import shared_params
+
+from typing import List
+from typing_extensions import Literal, TypedDict
 
 __all__ = ["CreatedAt", "Category", "EventListParams"]
+
 
 class CreatedAt(TypedDict, total=False):
     after: str
@@ -34,12 +33,63 @@ class CreatedAt(TypedDict, total=False):
     [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
     """
 
-_CategoryReservedKeywords = TypedDict("_CategoryReservedKeywords", {
-    "in": List[Literal["account.created", "account.updated", "account_number.created", "account_number.updated", "account_statement.created", "account_transfer.created", "account_transfer.updated", "ach_prenotification.created", "ach_prenotification.updated", "ach_transfer.created", "ach_transfer.updated", "card.created", "card.updated", "card_dispute.created", "card_dispute.updated", "check_deposit.created", "check_deposit.updated", "check_transfer.created", "check_transfer.updated", "declined_transaction.created", "document.created", "entity.created", "entity.updated", "external_account.created", "file.created", "group.updated", "group.heartbeat", "oauth_connection.created", "oauth_connection.deactivated", "pending_transaction.created", "pending_transaction.updated", "real_time_decision.card_authorization_requested", "real_time_decision.digital_wallet_token_requested", "real_time_decision.digital_wallet_authentication_requested", "real_time_payments_transfer.created", "real_time_payments_transfer.updated", "transaction.created", "wire_drawdown_request.created", "wire_drawdown_request.updated", "wire_transfer.created", "wire_transfer.updated"]],
-}, total=False)
+
+_CategoryReservedKeywords = TypedDict(
+    "_CategoryReservedKeywords",
+    {
+        "in": List[
+            Literal[
+                "account.created",
+                "account.updated",
+                "account_number.created",
+                "account_number.updated",
+                "account_statement.created",
+                "account_transfer.created",
+                "account_transfer.updated",
+                "ach_prenotification.created",
+                "ach_prenotification.updated",
+                "ach_transfer.created",
+                "ach_transfer.updated",
+                "card.created",
+                "card.updated",
+                "card_dispute.created",
+                "card_dispute.updated",
+                "check_deposit.created",
+                "check_deposit.updated",
+                "check_transfer.created",
+                "check_transfer.updated",
+                "declined_transaction.created",
+                "document.created",
+                "entity.created",
+                "entity.updated",
+                "external_account.created",
+                "file.created",
+                "group.updated",
+                "group.heartbeat",
+                "oauth_connection.created",
+                "oauth_connection.deactivated",
+                "pending_transaction.created",
+                "pending_transaction.updated",
+                "real_time_decision.card_authorization_requested",
+                "real_time_decision.digital_wallet_token_requested",
+                "real_time_decision.digital_wallet_authentication_requested",
+                "real_time_payments_transfer.created",
+                "real_time_payments_transfer.updated",
+                "transaction.created",
+                "wire_drawdown_request.created",
+                "wire_drawdown_request.updated",
+                "wire_transfer.created",
+                "wire_transfer.updated",
+            ]
+        ],
+    },
+    total=False,
+)
+
 
 class Category(_CategoryReservedKeywords):
     pass
+
 
 class EventListParams(TypedDict, total=False):
     associated_object_id: str

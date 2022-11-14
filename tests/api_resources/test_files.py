@@ -6,12 +6,12 @@ import os
 import pytest
 
 from increase import Increase, AsyncIncrease
-from increase.pagination import AsyncPage, SyncPage
-
+from increase.pagination import SyncPage, AsyncPage
 from increase.types.file import File
 
 base_url = os.environ.get("API_BASE_URL", "http://127.0.0.1:4010")
 api_key = os.environ.get("API_KEY", "something1234")
+
 
 class TestFiles:
     strict_client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=True)
@@ -22,7 +22,7 @@ class TestFiles:
     @parametrize
     def test_method_create(self, client: Increase) -> None:
         resource = client.files.create(
-            file=b'raw file contents',
+            file=b"raw file contents",
             purpose="check_image_front",
         )
         assert isinstance(resource, File)
@@ -31,7 +31,7 @@ class TestFiles:
     @parametrize
     def test_method_create_with_all_params(self, client: Increase) -> None:
         resource = client.files.create(
-            file=b'raw file contents',
+            file=b"raw file contents",
             description="x",
             purpose="check_image_front",
         )
@@ -60,11 +60,11 @@ class TestFiles:
                 "on_or_after": "2019-12-27T18:11:19.117Z",
                 "on_or_before": "2019-12-27T18:11:19.117Z",
             },
-            purpose={
-                "in": ["check_image_front", "check_image_front", "check_image_front"]
-            },
+            purpose={"in": ["check_image_front", "check_image_front", "check_image_front"]},
         )
         assert isinstance(resource, SyncPage)
+
+
 class TestAsyncFiles:
     strict_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
     loose_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=False)
@@ -74,7 +74,7 @@ class TestAsyncFiles:
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
         resource = await client.files.create(
-            file=b'raw file contents',
+            file=b"raw file contents",
             purpose="check_image_front",
         )
         assert isinstance(resource, File)
@@ -83,7 +83,7 @@ class TestAsyncFiles:
     @parametrize
     async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         resource = await client.files.create(
-            file=b'raw file contents',
+            file=b"raw file contents",
             description="x",
             purpose="check_image_front",
         )
@@ -112,8 +112,6 @@ class TestAsyncFiles:
                 "on_or_after": "2019-12-27T18:11:19.117Z",
                 "on_or_before": "2019-12-27T18:11:19.117Z",
             },
-            purpose={
-                "in": ["check_image_front", "check_image_front", "check_image_front"]
-            },
+            purpose={"in": ["check_image_front", "check_image_front", "check_image_front"]},
         )
         assert isinstance(resource, AsyncPage)

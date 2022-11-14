@@ -1,13 +1,12 @@
 # File generated from our OpenAPI spec by Stainless.
 
-from typing import Optional, Union, List, Dict, Any
+from typing import Optional
 from typing_extensions import Literal
-from pydantic import Field
+
 from .._models import BaseModel
 
-from ..types import shared
-
 __all__ = ["EventSubscription"]
+
 
 class EventSubscription(BaseModel):
     created_at: str
@@ -16,7 +15,51 @@ class EventSubscription(BaseModel):
     id: str
     """The event subscription identifier."""
 
-    selected_event_category: Optional[Literal["account.created", "account.updated", "account_number.created", "account_number.updated", "account_statement.created", "account_transfer.created", "account_transfer.updated", "ach_prenotification.created", "ach_prenotification.updated", "ach_transfer.created", "ach_transfer.updated", "card.created", "card.updated", "card_dispute.created", "card_dispute.updated", "check_deposit.created", "check_deposit.updated", "check_transfer.created", "check_transfer.updated", "declined_transaction.created", "document.created", "entity.created", "entity.updated", "external_account.created", "file.created", "group.updated", "group.heartbeat", "oauth_connection.created", "oauth_connection.deactivated", "pending_transaction.created", "pending_transaction.updated", "real_time_decision.card_authorization_requested", "real_time_decision.digital_wallet_token_requested", "real_time_decision.digital_wallet_authentication_requested", "real_time_payments_transfer.created", "real_time_payments_transfer.updated", "transaction.created", "wire_drawdown_request.created", "wire_drawdown_request.updated", "wire_transfer.created", "wire_transfer.updated"]]
+    selected_event_category: Optional[
+        Literal[
+            "account.created",
+            "account.updated",
+            "account_number.created",
+            "account_number.updated",
+            "account_statement.created",
+            "account_transfer.created",
+            "account_transfer.updated",
+            "ach_prenotification.created",
+            "ach_prenotification.updated",
+            "ach_transfer.created",
+            "ach_transfer.updated",
+            "card.created",
+            "card.updated",
+            "card_dispute.created",
+            "card_dispute.updated",
+            "check_deposit.created",
+            "check_deposit.updated",
+            "check_transfer.created",
+            "check_transfer.updated",
+            "declined_transaction.created",
+            "document.created",
+            "entity.created",
+            "entity.updated",
+            "external_account.created",
+            "file.created",
+            "group.updated",
+            "group.heartbeat",
+            "oauth_connection.created",
+            "oauth_connection.deactivated",
+            "pending_transaction.created",
+            "pending_transaction.updated",
+            "real_time_decision.card_authorization_requested",
+            "real_time_decision.digital_wallet_token_requested",
+            "real_time_decision.digital_wallet_authentication_requested",
+            "real_time_payments_transfer.created",
+            "real_time_payments_transfer.updated",
+            "transaction.created",
+            "wire_drawdown_request.created",
+            "wire_drawdown_request.updated",
+            "wire_transfer.created",
+            "wire_transfer.updated",
+        ]
+    ]
     """
     If specified, this subscription will only receive webhooks for Events with the
     specified `category`.

@@ -1,13 +1,11 @@
 # File generated from our OpenAPI spec by Stainless.
 
 from __future__ import annotations
-from typing import List, Union, Dict, Optional
-from typing_extensions import Literal, TypedDict, Required, Annotated
-from .._types import FileTypes
-from .._utils import PropertyInfo
-from ..types import shared_params
+
+from typing_extensions import TypedDict
 
 __all__ = ["ExternalAccountListParams"]
+
 
 class ExternalAccountListParams(TypedDict, total=False):
     cursor: str

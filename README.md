@@ -51,11 +51,13 @@ increase = AsyncIncrease(
     environment="sandbox",
 )
 
+
 async def main():
     account = await increase.accounts.create(
         name="My First Increase Account",
     )
     print(account.id)
+
 
 asyncio.run(main())
 ```
@@ -95,12 +97,14 @@ import increase
 
 increase = AsyncIncrease()
 
+
 async def main() -> None:
     all_accounts = []
     # Iterate through items across all pages, issuing requests as needed.
     async for account in increase.accounts.list():
         all_accounts.append(account)
     print(all_accounts)
+
 
 asyncio.run(main())
 ```
@@ -123,7 +127,7 @@ Or just work directly with the returned data:
 ```python
 first_page = await increase.accounts.list()
 
-print(f"next page cursor: {first_page.next_cursor}") # => "next page cursor: ..."
+print(f"next page cursor: {first_page.next_cursor}")  # => "next page cursor: ..."
 for account in first_page.data:
     print(account.balance)
 
@@ -156,7 +160,7 @@ from increase import Increase
 
 increase = Increase()
 
-contents = Path('my/file.txt').read_bytes()
+contents = Path("my/file.txt").read_bytes()
 increase.files.create(
     file=contents,
     purpose="other",
@@ -171,8 +175,8 @@ from increase import Increase
 
 increase = Increase()
 
-async with aiofiles.open('pytest.ini', mode='rb') as f:
-  contents = await f.read()
+async with aiofiles.open("pytest.ini", mode="rb") as f:
+    contents = await f.read()
 
 await increase.files.create(
     file=contents,
@@ -200,7 +204,7 @@ try:
     )
 except increase.APIConnectionError as e:
     print("The server could not be reached")
-    print(e.__cause__) # an underlying Exception, likely raised within httpx.
+    print(e.__cause__)  # an underlying Exception, likely raised within httpx.
 except increase.RateLimitError as e:
     print("A 429 status code was received; we should back off a bit.")
 except increase.APIStatusError as e:
@@ -240,9 +244,9 @@ increase = Increase(
 )
 
 # Or, configure per-request:
-increase.with_options(max_retries = 5).accounts.create(
+increase.with_options(max_retries=5).accounts.create(
     name="Jack",
-);
+)
 ```
 
 ### Timeouts
@@ -265,7 +269,7 @@ increase = Increase(
 )
 
 # Override per-request:
-increase.with_options(timeout = 5 * 1000).accounts.list(
+increase.with_options(timeout=5 * 1000).accounts.list(
     status="open",
 )
 ```

@@ -35,6 +35,7 @@ from pydantic import PrivateAttr
 from . import _base_exceptions as exceptions
 from ._qs import Querystring
 from ._types import (
+    NOT_GIVEN,
     Omit,
     Query,
     ModelT,
@@ -48,8 +49,6 @@ from ._types import (
     RequestOptions,
     UnknownResponse,
     ModelBuilderProtocol,
-    NOT_GIVEN,
-    NotGiven,
 )
 from ._utils import is_dict, is_mapping
 from ._models import BaseModel, GenericModel, FinalRequestOptions
