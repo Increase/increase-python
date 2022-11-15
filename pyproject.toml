@@ -7,7 +7,7 @@ authors = ["Increase <dev-feedback@increase.com>"]
 license = "Apache-2.0"
 repository = "https://github.com/increase/increase-python"
 packages = [
-  { include = "increase" }
+  { include = "increase", from = "src" }
 ]
 
 [tool.poetry.dependencies]
