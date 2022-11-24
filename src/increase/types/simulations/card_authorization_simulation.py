@@ -69,6 +69,12 @@ class PendingTransactionSourceCardAuthorization(BaseModel):
     transaction's currency.
     """
 
+    digital_wallet_token_id: Optional[str]
+    """
+    If the authorization was made via a Digital Wallet Token (such as an Apple Pay
+    purchase), the identifier of the token that was used.
+    """
+
     merchant_acceptor_id: str
 
     merchant_category_code: str
@@ -369,6 +375,12 @@ class DeclinedTransactionSourceCardDecline(BaseModel):
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
     account currency.
+    """
+
+    digital_wallet_token_id: Optional[str]
+    """
+    If the authorization was attempted using a Digital Wallet Token (such as an
+    Apple Pay purchase), the identifier of the token that was used.
     """
 
     merchant_acceptor_id: str

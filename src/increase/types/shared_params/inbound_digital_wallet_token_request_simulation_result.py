@@ -17,6 +17,12 @@ class InboundDigitalWalletTokenRequestSimulationResult(TypedDict, total=False):
     as to why.
     """
 
+    digital_wallet_token_id: Required[Optional[str]]
+    """
+    If the simulated tokenization attempt was accepted, this field contains the id
+    of the Digital Wallet Token that was created.
+    """
+
     type: Required[Literal["inbound_digital_wallet_token_request_simulation_result"]]
     """A constant representing the object's type.
 

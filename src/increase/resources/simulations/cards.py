@@ -18,20 +18,25 @@ class Cards(SyncAPIResource):
         self,
         *,
         amount: int,
-        card_id: str,
+        card_id: str | NotGiven = NOT_GIVEN,
+        digital_wallet_token_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> CardAuthorizationSimulation:
-        """
-        Simulates activity on a Card.
+        """Simulates activity on a Card.
+
+        You can pass either a Card id or a Digital Wallet
+        Token id to simulate the two different ways purchases can be made.
 
         Args:
           amount: The authorization amount in cents.
 
           card_id: The identifier of the Card to be authorized.
+
+          digital_wallet_token_id: The identifier of the Digital Wallet Token to be authorized.
 
           extra_headers: Send extra headers
 
@@ -44,6 +49,7 @@ class Cards(SyncAPIResource):
             body={
                 "amount": amount,
                 "card_id": card_id,
+                "digital_wallet_token_id": digital_wallet_token_id,
             },
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=CardAuthorizationSimulation,
@@ -96,20 +102,25 @@ class AsyncCards(AsyncAPIResource):
         self,
         *,
         amount: int,
-        card_id: str,
+        card_id: str | NotGiven = NOT_GIVEN,
+        digital_wallet_token_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> CardAuthorizationSimulation:
-        """
-        Simulates activity on a Card.
+        """Simulates activity on a Card.
+
+        You can pass either a Card id or a Digital Wallet
+        Token id to simulate the two different ways purchases can be made.
 
         Args:
           amount: The authorization amount in cents.
 
           card_id: The identifier of the Card to be authorized.
+
+          digital_wallet_token_id: The identifier of the Digital Wallet Token to be authorized.
 
           extra_headers: Send extra headers
 
@@ -122,6 +133,7 @@ class AsyncCards(AsyncAPIResource):
             body={
                 "amount": amount,
                 "card_id": card_id,
+                "digital_wallet_token_id": digital_wallet_token_id,
             },
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=CardAuthorizationSimulation,

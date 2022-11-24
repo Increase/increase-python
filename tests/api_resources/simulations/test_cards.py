@@ -24,7 +24,6 @@ class TestCards:
     def test_method_authorize(self, client: Increase) -> None:
         resource = client.simulations.cards.authorize(
             amount=0,
-            card_id="string",
         )
         assert isinstance(resource, CardAuthorizationSimulation)
 
@@ -33,6 +32,7 @@ class TestCards:
         resource = client.simulations.cards.authorize(
             amount=0,
             card_id="string",
+            digital_wallet_token_id="string",
         )
         assert isinstance(resource, CardAuthorizationSimulation)
 
@@ -63,7 +63,6 @@ class TestAsyncCards:
     async def test_method_authorize(self, client: AsyncIncrease) -> None:
         resource = await client.simulations.cards.authorize(
             amount=0,
-            card_id="string",
         )
         assert isinstance(resource, CardAuthorizationSimulation)
 
@@ -72,6 +71,7 @@ class TestAsyncCards:
         resource = await client.simulations.cards.authorize(
             amount=0,
             card_id="string",
+            digital_wallet_token_id="string",
         )
         assert isinstance(resource, CardAuthorizationSimulation)
 

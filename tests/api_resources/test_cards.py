@@ -41,6 +41,7 @@ class TestCards:
             digital_wallet={
                 "email": "x",
                 "phone": "x",
+                "card_profile_id": "string",
             },
         )
         assert isinstance(resource, Card)
@@ -75,6 +76,7 @@ class TestCards:
             digital_wallet={
                 "email": "x",
                 "phone": "x",
+                "card_profile_id": "string",
             },
         )
         assert isinstance(resource, Card)
@@ -134,6 +136,7 @@ class TestAsyncCards:
             digital_wallet={
                 "email": "x",
                 "phone": "x",
+                "card_profile_id": "string",
             },
         )
         assert isinstance(resource, Card)
@@ -168,6 +171,7 @@ class TestAsyncCards:
             digital_wallet={
                 "email": "x",
                 "phone": "x",
+                "card_profile_id": "string",
             },
         )
         assert isinstance(resource, Card)

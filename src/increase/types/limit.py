@@ -22,9 +22,9 @@ class Limit(BaseModel):
     """The metric for the Limit."""
 
     model_id: str
-    """The identifier of the Account Number or Account the Limit applies to."""
+    """The identifier of the Account Number, Account, or Card the Limit applies to."""
 
-    model_type: Literal["account", "account_number"]
+    model_type: Literal["account", "account_number", "card"]
     """The type of the model you wish to associate the Limit with."""
 
     status: Literal["active", "inactive"]

@@ -14,6 +14,7 @@ from .transaction import Transaction as Transaction
 from .ach_transfer import ACHTransfer as ACHTransfer
 from .card_details import CardDetails as CardDetails
 from .card_dispute import CardDispute as CardDispute
+from .card_profile import CardProfile as CardProfile
 from .check_deposit import CheckDeposit as CheckDeposit
 from .wire_transfer import WireTransfer as WireTransfer
 from .account_number import AccountNumber as AccountNumber
@@ -39,6 +40,7 @@ from .limit_create_params import LimitCreateParams as LimitCreateParams
 from .limit_update_params import LimitUpdateParams as LimitUpdateParams
 from .pending_transaction import PendingTransaction as PendingTransaction
 from .declined_transaction import DeclinedTransaction as DeclinedTransaction
+from .digital_wallet_token import DigitalWalletToken as DigitalWalletToken
 from .entity_create_params import EntityCreateParams as EntityCreateParams
 from .account_create_params import AccountCreateParams as AccountCreateParams
 from .account_update_params import AccountUpdateParams as AccountUpdateParams
@@ -46,6 +48,7 @@ from .wire_drawdown_request import WireDrawdownRequest as WireDrawdownRequest
 from .transaction_list_params import TransactionListParams as TransactionListParams
 from .ach_transfer_list_params import ACHTransferListParams as ACHTransferListParams
 from .card_dispute_list_params import CardDisputeListParams as CardDisputeListParams
+from .card_profile_list_params import CardProfileListParams as CardProfileListParams
 from .check_deposit_list_params import CheckDepositListParams as CheckDepositListParams
 from .wire_transfer_list_params import WireTransferListParams as WireTransferListParams
 from .account_number_list_params import (
@@ -56,6 +59,9 @@ from .ach_transfer_create_params import (
 )
 from .card_dispute_create_params import (
     CardDisputeCreateParams as CardDisputeCreateParams,
+)
+from .card_profile_create_params import (
+    CardProfileCreateParams as CardProfileCreateParams,
 )
 from .check_transfer_list_params import (
     CheckTransferListParams as CheckTransferListParams,
@@ -110,6 +116,9 @@ from .pending_transaction_list_params import (
 )
 from .declined_transaction_list_params import (
     DeclinedTransactionListParams as DeclinedTransactionListParams,
+)
+from .digital_wallet_token_list_params import (
+    DigitalWalletTokenListParams as DigitalWalletTokenListParams,
 )
 from .event_subscription_create_params import (
     EventSubscriptionCreateParams as EventSubscriptionCreateParams,

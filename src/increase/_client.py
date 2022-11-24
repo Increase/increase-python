@@ -49,7 +49,9 @@ class Increase(SyncAPIClient):
     real_time_decisions: resources.RealTimeDecisions
     cards: resources.Cards
     card_disputes: resources.CardDisputes
+    card_profiles: resources.CardProfiles
     external_accounts: resources.ExternalAccounts
+    digital_wallet_tokens: resources.DigitalWalletTokens
     transactions: resources.Transactions
     pending_transactions: resources.PendingTransactions
     declined_transactions: resources.DeclinedTransactions
@@ -137,7 +139,9 @@ class Increase(SyncAPIClient):
         self.real_time_decisions = resources.RealTimeDecisions(self)
         self.cards = resources.Cards(self)
         self.card_disputes = resources.CardDisputes(self)
+        self.card_profiles = resources.CardProfiles(self)
         self.external_accounts = resources.ExternalAccounts(self)
+        self.digital_wallet_tokens = resources.DigitalWalletTokens(self)
         self.transactions = resources.Transactions(self)
         self.pending_transactions = resources.PendingTransactions(self)
         self.declined_transactions = resources.DeclinedTransactions(self)
@@ -226,7 +230,9 @@ class AsyncIncrease(AsyncAPIClient):
     real_time_decisions: resources.AsyncRealTimeDecisions
     cards: resources.AsyncCards
     card_disputes: resources.AsyncCardDisputes
+    card_profiles: resources.AsyncCardProfiles
     external_accounts: resources.AsyncExternalAccounts
+    digital_wallet_tokens: resources.AsyncDigitalWalletTokens
     transactions: resources.AsyncTransactions
     pending_transactions: resources.AsyncPendingTransactions
     declined_transactions: resources.AsyncDeclinedTransactions
@@ -314,7 +320,9 @@ class AsyncIncrease(AsyncAPIClient):
         self.real_time_decisions = resources.AsyncRealTimeDecisions(self)
         self.cards = resources.AsyncCards(self)
         self.card_disputes = resources.AsyncCardDisputes(self)
+        self.card_profiles = resources.AsyncCardProfiles(self)
         self.external_accounts = resources.AsyncExternalAccounts(self)
+        self.digital_wallet_tokens = resources.AsyncDigitalWalletTokens(self)
         self.transactions = resources.AsyncTransactions(self)
         self.pending_transactions = resources.AsyncPendingTransactions(self)
         self.declined_transactions = resources.AsyncDeclinedTransactions(self)

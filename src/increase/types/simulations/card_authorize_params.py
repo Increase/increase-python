@@ -11,5 +11,8 @@ class CardAuthorizeParams(TypedDict, total=False):
     amount: Required[int]
     """The authorization amount in cents."""
 
-    card_id: Required[str]
+    card_id: str
     """The identifier of the Card to be authorized."""
+
+    digital_wallet_token_id: str
+    """The identifier of the Digital Wallet Token to be authorized."""

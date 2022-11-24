@@ -26,6 +26,12 @@ class BillingAddress(BaseModel):
 
 
 class DigitalWallet(BaseModel):
+    card_profile_id: Optional[str]
+    """The card profile assigned to this digital card.
+
+    Card profiles may also be assigned at the program level.
+    """
+
     email: Optional[str]
     """
     An email address that can be used to verify the cardholder via one-time passcode

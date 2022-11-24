@@ -25,6 +25,12 @@ class BillingAddress(TypedDict, total=False):
 
 
 class DigitalWallet(TypedDict, total=False):
+    card_profile_id: str
+    """The card profile assigned to this digital card.
+
+    Card profiles may also be assigned at the program level.
+    """
+
     email: str
     """
     An email address that can be used to verify the cardholder via one-time passcode

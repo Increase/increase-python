@@ -11,6 +11,7 @@ from .simulations import Simulations, AsyncSimulations
 from .transactions import Transactions, AsyncTransactions
 from .ach_transfers import ACHTransfers, AsyncACHTransfers
 from .card_disputes import CardDisputes, AsyncCardDisputes
+from .card_profiles import CardProfiles, AsyncCardProfiles
 from .check_deposits import CheckDeposits, AsyncCheckDeposits
 from .wire_transfers import WireTransfers, AsyncWireTransfers
 from .account_numbers import AccountNumbers, AsyncAccountNumbers
@@ -25,6 +26,7 @@ from .real_time_decisions import RealTimeDecisions, AsyncRealTimeDecisions
 from .ach_prenotifications import ACHPrenotifications, AsyncACHPrenotifications
 from .pending_transactions import PendingTransactions, AsyncPendingTransactions
 from .declined_transactions import DeclinedTransactions, AsyncDeclinedTransactions
+from .digital_wallet_tokens import DigitalWalletTokens, AsyncDigitalWalletTokens
 from .wire_drawdown_requests import WireDrawdownRequests, AsyncWireDrawdownRequests
 
 __all__ = [
@@ -38,8 +40,12 @@ __all__ = [
     "AsyncCards",
     "CardDisputes",
     "AsyncCardDisputes",
+    "CardProfiles",
+    "AsyncCardProfiles",
     "ExternalAccounts",
     "AsyncExternalAccounts",
+    "DigitalWalletTokens",
+    "AsyncDigitalWalletTokens",
     "Transactions",
     "AsyncTransactions",
     "PendingTransactions",

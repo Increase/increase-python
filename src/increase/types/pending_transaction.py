@@ -60,6 +60,12 @@ class SourceCardAuthorization(BaseModel):
     transaction's currency.
     """
 
+    digital_wallet_token_id: Optional[str]
+    """
+    If the authorization was made via a Digital Wallet Token (such as an Apple Pay
+    purchase), the identifier of the token that was used.
+    """
+
     merchant_acceptor_id: str
 
     merchant_category_code: str

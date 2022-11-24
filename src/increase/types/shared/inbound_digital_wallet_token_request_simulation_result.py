@@ -18,6 +18,12 @@ class InboundDigitalWalletTokenRequestSimulationResult(BaseModel):
     as to why.
     """
 
+    digital_wallet_token_id: Optional[str]
+    """
+    If the simulated tokenization attempt was accepted, this field contains the id
+    of the Digital Wallet Token that was created.
+    """
+
     type: Literal["inbound_digital_wallet_token_request_simulation_result"]
     """A constant representing the object's type.
 

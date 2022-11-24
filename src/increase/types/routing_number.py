@@ -8,8 +8,14 @@ __all__ = ["RoutingNumber"]
 
 
 class RoutingNumber(BaseModel):
+    ach_transfers: Literal["supported", "not_supported"]
+    """This routing number's support for ACH Transfers."""
+
     name: str
     """The name of the financial institution belonging to a routing number."""
+
+    real_time_payments_transfers: Literal["supported", "not_supported"]
+    """This routing number's support for Real Time Payments Transfers."""
 
     routing_number: str
     """The nine digit routing number identifier."""
@@ -19,3 +25,6 @@ class RoutingNumber(BaseModel):
 
     For this resource it will always be `routing_number`.
     """
+
+    wire_transfers: Literal["supported", "not_supported"]
+    """This routing number's support for Wire Transfers."""
