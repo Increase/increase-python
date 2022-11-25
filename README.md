@@ -76,7 +76,7 @@ List methods in the Increase API are paginated.
 
 This library provides auto-paginating iterators with each list response, so you do not have to request successive pages manually:
 
-```py
+```python
 import increase
 
 increase = Increase()
@@ -109,8 +109,7 @@ async def main() -> None:
 asyncio.run(main())
 ```
 
-Alternatively, you can use the `.has_next_page()`, `.next_page_params()`,
-or `.get_next_page()` methods for more granular control working with pages:
+Alternatively, you can use the `.has_next_page()`, `.next_page_info()`, or `.get_next_page()` methods for more granular control working with pages:
 
 ```python
 first_page = await increase.accounts.list()
