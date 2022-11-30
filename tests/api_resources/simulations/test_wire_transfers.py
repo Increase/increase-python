@@ -25,14 +25,6 @@ class TestWireTransfers:
         )
         assert isinstance(resource, WireTransferSimulation)
 
-    @parametrize
-    def test_method_create_inbound_with_all_params(self, client: Increase) -> None:
-        resource = client.simulations.wire_transfers.create_inbound(
-            account_number_id="string",
-            amount=0,
-        )
-        assert isinstance(resource, WireTransferSimulation)
-
 
 class TestAsyncWireTransfers:
     strict_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
@@ -41,14 +33,6 @@ class TestAsyncWireTransfers:
 
     @parametrize
     async def test_method_create_inbound(self, client: AsyncIncrease) -> None:
-        resource = await client.simulations.wire_transfers.create_inbound(
-            account_number_id="string",
-            amount=0,
-        )
-        assert isinstance(resource, WireTransferSimulation)
-
-    @parametrize
-    async def test_method_create_inbound_with_all_params(self, client: AsyncIncrease) -> None:
         resource = await client.simulations.wire_transfers.create_inbound(
             account_number_id="string",
             amount=0,

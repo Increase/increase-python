@@ -24,13 +24,6 @@ class TestDigitalWalletTokenRequests:
         )
         assert isinstance(resource, shared.InboundDigitalWalletTokenRequestSimulationResult)
 
-    @parametrize
-    def test_method_create_with_all_params(self, client: Increase) -> None:
-        resource = client.simulations.digital_wallet_token_requests.create(
-            card_id="string",
-        )
-        assert isinstance(resource, shared.InboundDigitalWalletTokenRequestSimulationResult)
-
 
 class TestAsyncDigitalWalletTokenRequests:
     strict_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
@@ -39,13 +32,6 @@ class TestAsyncDigitalWalletTokenRequests:
 
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
-        resource = await client.simulations.digital_wallet_token_requests.create(
-            card_id="string",
-        )
-        assert isinstance(resource, shared.InboundDigitalWalletTokenRequestSimulationResult)
-
-    @parametrize
-    async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         resource = await client.simulations.digital_wallet_token_requests.create(
             card_id="string",
         )

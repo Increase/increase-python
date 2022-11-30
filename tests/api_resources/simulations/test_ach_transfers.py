@@ -26,14 +26,6 @@ class TestACHTransfers:
         )
         assert isinstance(resource, ACHTransferSimulation)
 
-    @parametrize
-    def test_method_create_inbound_with_all_params(self, client: Increase) -> None:
-        resource = client.simulations.ach_transfers.create_inbound(
-            account_number_id="string",
-            amount=0,
-        )
-        assert isinstance(resource, ACHTransferSimulation)
-
     @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
     def test_method_return(self, client: Increase) -> None:
@@ -58,14 +50,6 @@ class TestAsyncACHTransfers:
 
     @parametrize
     async def test_method_create_inbound(self, client: AsyncIncrease) -> None:
-        resource = await client.simulations.ach_transfers.create_inbound(
-            account_number_id="string",
-            amount=0,
-        )
-        assert isinstance(resource, ACHTransferSimulation)
-
-    @parametrize
-    async def test_method_create_inbound_with_all_params(self, client: AsyncIncrease) -> None:
         resource = await client.simulations.ach_transfers.create_inbound(
             account_number_id="string",
             amount=0,

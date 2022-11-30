@@ -27,14 +27,6 @@ class TestCardDisputes:
         assert isinstance(resource, CardDispute)
 
     @parametrize
-    def test_method_create_with_all_params(self, client: Increase) -> None:
-        resource = client.card_disputes.create(
-            disputed_transaction_id="string",
-            explanation="x",
-        )
-        assert isinstance(resource, CardDispute)
-
-    @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         resource = client.card_disputes.retrieve(
             "string",
@@ -69,14 +61,6 @@ class TestAsyncCardDisputes:
 
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
-        resource = await client.card_disputes.create(
-            disputed_transaction_id="string",
-            explanation="x",
-        )
-        assert isinstance(resource, CardDispute)
-
-    @parametrize
-    async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         resource = await client.card_disputes.create(
             disputed_transaction_id="string",
             explanation="x",

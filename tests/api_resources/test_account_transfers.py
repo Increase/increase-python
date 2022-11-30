@@ -29,16 +29,6 @@ class TestAccountTransfers:
         assert isinstance(resource, AccountTransfer)
 
     @parametrize
-    def test_method_create_with_all_params(self, client: Increase) -> None:
-        resource = client.account_transfers.create(
-            account_id="string",
-            amount=0,
-            description="x",
-            destination_account_id="string",
-        )
-        assert isinstance(resource, AccountTransfer)
-
-    @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         resource = client.account_transfers.retrieve(
             "string",
@@ -73,16 +63,6 @@ class TestAsyncAccountTransfers:
 
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
-        resource = await client.account_transfers.create(
-            account_id="string",
-            amount=0,
-            description="x",
-            destination_account_id="string",
-        )
-        assert isinstance(resource, AccountTransfer)
-
-    @parametrize
-    async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         resource = await client.account_transfers.create(
             account_id="string",
             amount=0,

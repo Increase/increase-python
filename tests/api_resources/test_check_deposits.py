@@ -30,17 +30,6 @@ class TestCheckDeposits:
         assert isinstance(resource, CheckDeposit)
 
     @parametrize
-    def test_method_create_with_all_params(self, client: Increase) -> None:
-        resource = client.check_deposits.create(
-            account_id="string",
-            amount=0,
-            currency="x",
-            front_image_file_id="string",
-            back_image_file_id="string",
-        )
-        assert isinstance(resource, CheckDeposit)
-
-    @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         resource = client.check_deposits.retrieve(
             "string",
@@ -75,17 +64,6 @@ class TestAsyncCheckDeposits:
 
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
-        resource = await client.check_deposits.create(
-            account_id="string",
-            amount=0,
-            currency="x",
-            front_image_file_id="string",
-            back_image_file_id="string",
-        )
-        assert isinstance(resource, CheckDeposit)
-
-    @parametrize
-    async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         resource = await client.check_deposits.create(
             account_id="string",
             amount=0,

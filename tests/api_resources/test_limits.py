@@ -53,14 +53,6 @@ class TestLimits:
         assert isinstance(resource, Limit)
 
     @parametrize
-    def test_method_update_with_all_params(self, client: Increase) -> None:
-        resource = client.limits.update(
-            "string",
-            status="inactive",
-        )
-        assert isinstance(resource, Limit)
-
-    @parametrize
     def test_method_list(self, client: Increase) -> None:
         resource = client.limits.list()
         assert isinstance(resource, SyncPage)
@@ -109,14 +101,6 @@ class TestAsyncLimits:
 
     @parametrize
     async def test_method_update(self, client: AsyncIncrease) -> None:
-        resource = await client.limits.update(
-            "string",
-            status="inactive",
-        )
-        assert isinstance(resource, Limit)
-
-    @parametrize
-    async def test_method_update_with_all_params(self, client: AsyncIncrease) -> None:
         resource = await client.limits.update(
             "string",
             status="inactive",

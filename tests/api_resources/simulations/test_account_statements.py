@@ -24,13 +24,6 @@ class TestAccountStatements:
         )
         assert isinstance(resource, AccountStatement)
 
-    @parametrize
-    def test_method_create_with_all_params(self, client: Increase) -> None:
-        resource = client.simulations.account_statements.create(
-            account_id="string",
-        )
-        assert isinstance(resource, AccountStatement)
-
 
 class TestAsyncAccountStatements:
     strict_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
@@ -39,13 +32,6 @@ class TestAsyncAccountStatements:
 
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
-        resource = await client.simulations.account_statements.create(
-            account_id="string",
-        )
-        assert isinstance(resource, AccountStatement)
-
-    @parametrize
-    async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         resource = await client.simulations.account_statements.create(
             account_id="string",
         )
