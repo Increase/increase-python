@@ -1,9 +1,10 @@
 # File generated from our OpenAPI spec by Stainless.
+from __future__ import annotations
 
 from typing import List, Optional
 from typing_extensions import Literal
 
-from .._models import BaseModel
+from ..._models import BaseModel
 
 __all__ = [
     "CorporationAddress",
@@ -28,6 +29,7 @@ __all__ = [
     "TrustGrantorIdentification",
     "TrustGrantor",
     "Trust",
+    "SupplementalDocuments",
     "Entity",
 ]
 
@@ -382,6 +384,11 @@ class Trust(BaseModel):
     """The trustees of the trust."""
 
 
+class SupplementalDocuments(BaseModel):
+    file_id: str
+    """The File containing the document."""
+
+
 class Entity(BaseModel):
     corporation: Optional[Corporation]
     """Details of the corporation entity.
@@ -412,6 +419,9 @@ class Entity(BaseModel):
 
     structure: Literal["corporation", "natural_person", "joint", "trust"]
     """The entity's legal structure."""
+
+    supplemental_documents: List[SupplementalDocuments]
+    """Additional documentation associated with the entity."""
 
     trust: Optional[Trust]
     """Details of the trust entity.

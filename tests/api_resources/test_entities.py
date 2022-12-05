@@ -6,8 +6,8 @@ import os
 import pytest
 
 from increase import Increase, AsyncIncrease
+from increase.types import shared
 from increase.pagination import SyncPage, AsyncPage
-from increase.types.entity import Entity
 
 base_url = os.environ.get("API_BASE_URL", "http://127.0.0.1:4010")
 api_key = os.environ.get("API_KEY", "something1234")
@@ -24,7 +24,7 @@ class TestEntities:
             structure="corporation",
             relationship="affiliated",
         )
-        assert isinstance(resource, Entity)
+        assert isinstance(resource, shared.Entity)
 
     @parametrize
     def test_method_create_with_all_params(self, client: Increase) -> None:
@@ -309,15 +309,16 @@ class TestEntities:
             },
             description="x",
             relationship="affiliated",
+            supplemental_documents=[{"file_id": "string"}, {"file_id": "string"}, {"file_id": "string"}],
         )
-        assert isinstance(resource, Entity)
+        assert isinstance(resource, shared.Entity)
 
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         resource = client.entities.retrieve(
             "string",
         )
-        assert isinstance(resource, Entity)
+        assert isinstance(resource, shared.Entity)
 
     @parametrize
     def test_method_list(self, client: Increase) -> None:
@@ -344,7 +345,7 @@ class TestAsyncEntities:
             structure="corporation",
             relationship="affiliated",
         )
-        assert isinstance(resource, Entity)
+        assert isinstance(resource, shared.Entity)
 
     @parametrize
     async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
@@ -629,15 +630,16 @@ class TestAsyncEntities:
             },
             description="x",
             relationship="affiliated",
+            supplemental_documents=[{"file_id": "string"}, {"file_id": "string"}, {"file_id": "string"}],
         )
-        assert isinstance(resource, Entity)
+        assert isinstance(resource, shared.Entity)
 
     @parametrize
     async def test_method_retrieve(self, client: AsyncIncrease) -> None:
         resource = await client.entities.retrieve(
             "string",
         )
-        assert isinstance(resource, Entity)
+        assert isinstance(resource, shared.Entity)
 
     @parametrize
     async def test_method_list(self, client: AsyncIncrease) -> None:

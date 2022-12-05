@@ -2,6 +2,7 @@
 
 from .transaction import Transaction as Transaction
 from .ach_transfer import ACHTransfer as ACHTransfer
+from .card_dispute import CardDispute as CardDispute
 from .check_deposit import CheckDeposit as CheckDeposit
 from .check_transfer import CheckTransfer as CheckTransfer
 from .account_transfer import AccountTransfer as AccountTransfer
@@ -10,6 +11,9 @@ from .card_authorize_params import CardAuthorizeParams as CardAuthorizeParams
 from .card_settlement_params import CardSettlementParams as CardSettlementParams
 from .ach_transfer_simulation import ACHTransferSimulation as ACHTransferSimulation
 from .wire_transfer_simulation import WireTransferSimulation as WireTransferSimulation
+from .card_dispute_action_params import (
+    CardDisputeActionParams as CardDisputeActionParams,
+)
 from .card_authorization_simulation import (
     CardAuthorizationSimulation as CardAuthorizationSimulation,
 )

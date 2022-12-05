@@ -2,19 +2,29 @@
 
 from __future__ import annotations
 
+from typing import TYPE_CHECKING, List
 from typing_extensions import Literal
 
-from ..types import entity_create_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from .._resource import SyncAPIResource, AsyncAPIResource
-from ..pagination import SyncPage, AsyncPage
-from .._base_client import AsyncPaginator, make_request_options
-from ..types.entity import Entity
+from ...types import shared, entity_create_params
+from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._resource import SyncAPIResource, AsyncAPIResource
+from ...pagination import SyncPage, AsyncPage
+from ..._base_client import AsyncPaginator, make_request_options
+from .supplemental_documents import SupplementalDocuments, AsyncSupplementalDocuments
+
+if TYPE_CHECKING:
+    from ..._client import Increase, AsyncIncrease
 
 __all__ = ["Entities", "AsyncEntities"]
 
 
 class Entities(SyncAPIResource):
+    supplemental_documents: SupplementalDocuments
+
+    def __init__(self, client: Increase) -> None:
+        super().__init__(client)
+        self.supplemental_documents = SupplementalDocuments(client)
+
     def create(
         self,
         *,
@@ -25,12 +35,13 @@ class Entities(SyncAPIResource):
         trust: entity_create_params.Trust | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         relationship: Literal["affiliated", "informational", "unaffiliated"],
+        supplemental_documents: List[entity_create_params.SupplementalDocuments] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-    ) -> Entity:
+    ) -> shared.Entity:
         """
         Args:
           structure: The type of Entity to create.
@@ -50,6 +61,8 @@ class Entities(SyncAPIResource):
           description: The description you choose to give the entity.
 
           relationship: The relationship between your group and the entity.
+
+          supplemental_documents: Additional documentation associated with the entity.
 
           extra_headers: Send extra headers
 
@@ -67,9 +80,10 @@ class Entities(SyncAPIResource):
                 "trust": trust,
                 "description": description,
                 "relationship": relationship,
+                "supplemental_documents": supplemental_documents,
             },
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
-            cast_to=Entity,
+            cast_to=shared.Entity,
         )
 
     def retrieve(
@@ -81,11 +95,11 @@ class Entities(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-    ) -> Entity:
+    ) -> shared.Entity:
         return self._get(
             f"/entities/{entity_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
-            cast_to=Entity,
+            cast_to=shared.Entity,
         )
 
     def list(
@@ -98,7 +112,7 @@ class Entities(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-    ) -> SyncPage[Entity]:
+    ) -> SyncPage[shared.Entity]:
         """
         Args:
           cursor: Return the page of entries after this one.
@@ -114,7 +128,7 @@ class Entities(SyncAPIResource):
         """
         return self._get_api_list(
             "/entities",
-            page=SyncPage[Entity],
+            page=SyncPage[shared.Entity],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -124,11 +138,17 @@ class Entities(SyncAPIResource):
                     "limit": limit,
                 },
             ),
-            model=Entity,
+            model=shared.Entity,
         )
 
 
 class AsyncEntities(AsyncAPIResource):
+    supplemental_documents: AsyncSupplementalDocuments
+
+    def __init__(self, client: AsyncIncrease) -> None:
+        super().__init__(client)
+        self.supplemental_documents = AsyncSupplementalDocuments(client)
+
     async def create(
         self,
         *,
@@ -139,12 +159,13 @@ class AsyncEntities(AsyncAPIResource):
         trust: entity_create_params.Trust | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         relationship: Literal["affiliated", "informational", "unaffiliated"],
+        supplemental_documents: List[entity_create_params.SupplementalDocuments] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-    ) -> Entity:
+    ) -> shared.Entity:
         """
         Args:
           structure: The type of Entity to create.
@@ -165,6 +186,8 @@ class AsyncEntities(AsyncAPIResource):
 
           relationship: The relationship between your group and the entity.
 
+          supplemental_documents: Additional documentation associated with the entity.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -181,9 +204,10 @@ class AsyncEntities(AsyncAPIResource):
                 "trust": trust,
                 "description": description,
                 "relationship": relationship,
+                "supplemental_documents": supplemental_documents,
             },
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
-            cast_to=Entity,
+            cast_to=shared.Entity,
         )
 
     async def retrieve(
@@ -195,11 +219,11 @@ class AsyncEntities(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-    ) -> Entity:
+    ) -> shared.Entity:
         return await self._get(
             f"/entities/{entity_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
-            cast_to=Entity,
+            cast_to=shared.Entity,
         )
 
     def list(
@@ -212,7 +236,7 @@ class AsyncEntities(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-    ) -> AsyncPaginator[Entity, AsyncPage[Entity]]:
+    ) -> AsyncPaginator[shared.Entity, AsyncPage[shared.Entity]]:
         """
         Args:
           cursor: Return the page of entries after this one.
@@ -228,7 +252,7 @@ class AsyncEntities(AsyncAPIResource):
         """
         return self._get_api_list(
             "/entities",
-            page=AsyncPage[Entity],
+            page=AsyncPage[shared.Entity],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -238,5 +262,5 @@ class AsyncEntities(AsyncAPIResource):
                     "limit": limit,
                 },
             ),
-            model=Entity,
+            model=shared.Entity,
         )

@@ -7,6 +7,7 @@ from typing import TYPE_CHECKING
 from .cards import Cards, AsyncCards
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from .ach_transfers import ACHTransfers, AsyncACHTransfers
+from .card_disputes import CardDisputes, AsyncCardDisputes
 from .check_deposits import CheckDeposits, AsyncCheckDeposits
 from .wire_transfers import WireTransfers, AsyncWireTransfers
 from .check_transfers import CheckTransfers, AsyncCheckTransfers
@@ -31,6 +32,7 @@ class Simulations(SyncAPIResource):
     account_transfers: AccountTransfers
     account_statements: AccountStatements
     ach_transfers: ACHTransfers
+    card_disputes: CardDisputes
     check_transfers: CheckTransfers
     digital_wallet_token_requests: DigitalWalletTokenRequests
     check_deposits: CheckDeposits
@@ -43,6 +45,7 @@ class Simulations(SyncAPIResource):
         self.account_transfers = AccountTransfers(client)
         self.account_statements = AccountStatements(client)
         self.ach_transfers = ACHTransfers(client)
+        self.card_disputes = CardDisputes(client)
         self.check_transfers = CheckTransfers(client)
         self.digital_wallet_token_requests = DigitalWalletTokenRequests(client)
         self.check_deposits = CheckDeposits(client)
@@ -55,6 +58,7 @@ class AsyncSimulations(AsyncAPIResource):
     account_transfers: AsyncAccountTransfers
     account_statements: AsyncAccountStatements
     ach_transfers: AsyncACHTransfers
+    card_disputes: AsyncCardDisputes
     check_transfers: AsyncCheckTransfers
     digital_wallet_token_requests: AsyncDigitalWalletTokenRequests
     check_deposits: AsyncCheckDeposits
@@ -67,6 +71,7 @@ class AsyncSimulations(AsyncAPIResource):
         self.account_transfers = AsyncAccountTransfers(client)
         self.account_statements = AsyncAccountStatements(client)
         self.ach_transfers = AsyncACHTransfers(client)
+        self.card_disputes = AsyncCardDisputes(client)
         self.check_transfers = AsyncCheckTransfers(client)
         self.digital_wallet_token_requests = AsyncDigitalWalletTokenRequests(client)
         self.check_deposits = AsyncCheckDeposits(client)

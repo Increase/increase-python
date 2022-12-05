@@ -2,39 +2,34 @@
 
 from __future__ import annotations
 
-from typing import List
+from typing import List, Optional
 from typing_extensions import Literal, Required, TypedDict
 
 __all__ = [
     "CorporationAddress",
     "CorporationBeneficialOwnersIndividualAddress",
-    "CorporationBeneficialOwnersIndividualIdentificationPassport",
     "CorporationBeneficialOwnersIndividualIdentification",
     "CorporationBeneficialOwnersIndividual",
     "CorporationBeneficialOwners",
     "Corporation",
     "NaturalPersonAddress",
-    "NaturalPersonIdentificationPassport",
     "NaturalPersonIdentification",
     "NaturalPerson",
     "JointIndividualsAddress",
-    "JointIndividualsIdentificationPassport",
     "JointIndividualsIdentification",
     "JointIndividuals",
     "Joint",
     "TrustAddress",
     "TrustTrusteesIndividualAddress",
-    "TrustTrusteesIndividualIdentificationPassport",
     "TrustTrusteesIndividualIdentification",
     "TrustTrusteesIndividual",
     "TrustTrustees",
     "TrustGrantorAddress",
-    "TrustGrantorIdentificationPassport",
     "TrustGrantorIdentification",
     "TrustGrantor",
     "Trust",
     "SupplementalDocuments",
-    "EntityCreateParams",
+    "Entity",
 ]
 
 
@@ -43,7 +38,10 @@ class CorporationAddress(TypedDict, total=False):
     """The city of the address."""
 
     line1: Required[str]
-    """The first line of the address. This is usually the street number and street."""
+    """The first line of the address."""
+
+    line2: Required[Optional[str]]
+    """The second line of the address."""
 
     state: Required[str]
     """
@@ -53,9 +51,6 @@ class CorporationAddress(TypedDict, total=False):
 
     zip: Required[str]
     """The ZIP code of the address."""
-
-    line2: str
-    """The second line of the address. This might be the floor or room number."""
 
 
 class CorporationBeneficialOwnersIndividualAddress(TypedDict, total=False):
@@ -63,7 +58,10 @@ class CorporationBeneficialOwnersIndividualAddress(TypedDict, total=False):
     """The city of the address."""
 
     line1: Required[str]
-    """The first line of the address. This is usually the street number and street."""
+    """The first line of the address."""
+
+    line2: Required[Optional[str]]
+    """The second line of the address."""
 
     state: Required[str]
     """
@@ -74,41 +72,21 @@ class CorporationBeneficialOwnersIndividualAddress(TypedDict, total=False):
     zip: Required[str]
     """The ZIP code of the address."""
 
-    line2: str
-    """The second line of the address. This might be the floor or room number."""
-
-
-class CorporationBeneficialOwnersIndividualIdentificationPassport(TypedDict, total=False):
-    country: Required[str]
-    """The country that issued the passport."""
-
-    expiration_date: Required[str]
-    """The passport's expiration date in YYYY-MM-DD format."""
-
-    file_id: Required[str]
-    """The identifier of the File containing the passport."""
-
 
 class CorporationBeneficialOwnersIndividualIdentification(TypedDict, total=False):
     method: Required[Literal["social_security_number", "individual_taxpayer_identification_number", "passport"]]
     """A method that can be used to verify the individual's identity."""
 
-    number: Required[str]
+    number_last4: Required[str]
     """
-    An identification number that can be used to verify the individual's identity,
-    such as a social security number.
-    """
-
-    passport: CorporationBeneficialOwnersIndividualIdentificationPassport
-    """Information about the passport used for identification.
-
-    Required if `method` is equal to `passport`.
+    The last 4 digits of the identification number that can be used to verify the
+    individual's identity.
     """
 
 
 class CorporationBeneficialOwnersIndividual(TypedDict, total=False):
     address: Required[CorporationBeneficialOwnersIndividualAddress]
-    """The individual's address."""
+    """The person's address."""
 
     date_of_birth: Required[str]
     """The person's date of birth in YYYY-MM-DD format."""
@@ -121,14 +99,14 @@ class CorporationBeneficialOwnersIndividual(TypedDict, total=False):
 
 
 class CorporationBeneficialOwners(TypedDict, total=False):
+    company_title: Required[Optional[str]]
+    """This person's role or title within the entity."""
+
     individual: Required[CorporationBeneficialOwnersIndividual]
     """Personal details for the beneficial owner."""
 
     prong: Required[Literal["ownership", "control"]]
     """Why this person is considered a beneficial owner of the entity."""
-
-    company_title: str
-    """This person's role or title within the entity."""
 
 
 class Corporation(TypedDict, total=False):
@@ -141,19 +119,19 @@ class Corporation(TypedDict, total=False):
     corporation.
     """
 
-    name: Required[str]
-    """The legal name of the corporation."""
-
-    tax_identifier: Required[str]
-    """The Employer Identification Number (EIN) for the corporation."""
-
-    incorporation_state: str
+    incorporation_state: Required[Optional[str]]
     """
     The two-letter United States Postal Service (USPS) abbreviation for the
     corporation's state of incorporation.
     """
 
-    website: str
+    name: Required[str]
+    """The legal name of the corporation."""
+
+    tax_identifier: Required[Optional[str]]
+    """The Employer Identification Number (EIN) for the corporation."""
+
+    website: Required[Optional[str]]
     """The website of the corporation."""
 
 
@@ -162,7 +140,10 @@ class NaturalPersonAddress(TypedDict, total=False):
     """The city of the address."""
 
     line1: Required[str]
-    """The first line of the address. This is usually the street number and street."""
+    """The first line of the address."""
+
+    line2: Required[Optional[str]]
+    """The second line of the address."""
 
     state: Required[str]
     """
@@ -173,41 +154,21 @@ class NaturalPersonAddress(TypedDict, total=False):
     zip: Required[str]
     """The ZIP code of the address."""
 
-    line2: str
-    """The second line of the address. This might be the floor or room number."""
-
-
-class NaturalPersonIdentificationPassport(TypedDict, total=False):
-    country: Required[str]
-    """The country that issued the passport."""
-
-    expiration_date: Required[str]
-    """The passport's expiration date in YYYY-MM-DD format."""
-
-    file_id: Required[str]
-    """The identifier of the File containing the passport."""
-
 
 class NaturalPersonIdentification(TypedDict, total=False):
     method: Required[Literal["social_security_number", "individual_taxpayer_identification_number", "passport"]]
     """A method that can be used to verify the individual's identity."""
 
-    number: Required[str]
+    number_last4: Required[str]
     """
-    An identification number that can be used to verify the individual's identity,
-    such as a social security number.
-    """
-
-    passport: NaturalPersonIdentificationPassport
-    """Information about the passport used for identification.
-
-    Required if `method` is equal to `passport`.
+    The last 4 digits of the identification number that can be used to verify the
+    individual's identity.
     """
 
 
 class NaturalPerson(TypedDict, total=False):
     address: Required[NaturalPersonAddress]
-    """The individual's address."""
+    """The person's address."""
 
     date_of_birth: Required[str]
     """The person's date of birth in YYYY-MM-DD format."""
@@ -224,7 +185,10 @@ class JointIndividualsAddress(TypedDict, total=False):
     """The city of the address."""
 
     line1: Required[str]
-    """The first line of the address. This is usually the street number and street."""
+    """The first line of the address."""
+
+    line2: Required[Optional[str]]
+    """The second line of the address."""
 
     state: Required[str]
     """
@@ -235,41 +199,21 @@ class JointIndividualsAddress(TypedDict, total=False):
     zip: Required[str]
     """The ZIP code of the address."""
 
-    line2: str
-    """The second line of the address. This might be the floor or room number."""
-
-
-class JointIndividualsIdentificationPassport(TypedDict, total=False):
-    country: Required[str]
-    """The country that issued the passport."""
-
-    expiration_date: Required[str]
-    """The passport's expiration date in YYYY-MM-DD format."""
-
-    file_id: Required[str]
-    """The identifier of the File containing the passport."""
-
 
 class JointIndividualsIdentification(TypedDict, total=False):
     method: Required[Literal["social_security_number", "individual_taxpayer_identification_number", "passport"]]
     """A method that can be used to verify the individual's identity."""
 
-    number: Required[str]
+    number_last4: Required[str]
     """
-    An identification number that can be used to verify the individual's identity,
-    such as a social security number.
-    """
-
-    passport: JointIndividualsIdentificationPassport
-    """Information about the passport used for identification.
-
-    Required if `method` is equal to `passport`.
+    The last 4 digits of the identification number that can be used to verify the
+    individual's identity.
     """
 
 
 class JointIndividuals(TypedDict, total=False):
     address: Required[JointIndividualsAddress]
-    """The individual's address."""
+    """The person's address."""
 
     date_of_birth: Required[str]
     """The person's date of birth in YYYY-MM-DD format."""
@@ -285,8 +229,8 @@ class Joint(TypedDict, total=False):
     individuals: Required[List[JointIndividuals]]
     """The two individuals that share control of the entity."""
 
-    name: str
-    """The name of the joint entity."""
+    name: Required[str]
+    """The entity's name."""
 
 
 class TrustAddress(TypedDict, total=False):
@@ -294,7 +238,10 @@ class TrustAddress(TypedDict, total=False):
     """The city of the address."""
 
     line1: Required[str]
-    """The first line of the address. This is usually the street number and street."""
+    """The first line of the address."""
+
+    line2: Required[Optional[str]]
+    """The second line of the address."""
 
     state: Required[str]
     """
@@ -304,9 +251,6 @@ class TrustAddress(TypedDict, total=False):
 
     zip: Required[str]
     """The ZIP code of the address."""
-
-    line2: str
-    """The second line of the address. This might be the floor or room number."""
 
 
 class TrustTrusteesIndividualAddress(TypedDict, total=False):
@@ -314,7 +258,10 @@ class TrustTrusteesIndividualAddress(TypedDict, total=False):
     """The city of the address."""
 
     line1: Required[str]
-    """The first line of the address. This is usually the street number and street."""
+    """The first line of the address."""
+
+    line2: Required[Optional[str]]
+    """The second line of the address."""
 
     state: Required[str]
     """
@@ -325,41 +272,21 @@ class TrustTrusteesIndividualAddress(TypedDict, total=False):
     zip: Required[str]
     """The ZIP code of the address."""
 
-    line2: str
-    """The second line of the address. This might be the floor or room number."""
-
-
-class TrustTrusteesIndividualIdentificationPassport(TypedDict, total=False):
-    country: Required[str]
-    """The country that issued the passport."""
-
-    expiration_date: Required[str]
-    """The passport's expiration date in YYYY-MM-DD format."""
-
-    file_id: Required[str]
-    """The identifier of the File containing the passport."""
-
 
 class TrustTrusteesIndividualIdentification(TypedDict, total=False):
     method: Required[Literal["social_security_number", "individual_taxpayer_identification_number", "passport"]]
     """A method that can be used to verify the individual's identity."""
 
-    number: Required[str]
+    number_last4: Required[str]
     """
-    An identification number that can be used to verify the individual's identity,
-    such as a social security number.
-    """
-
-    passport: TrustTrusteesIndividualIdentificationPassport
-    """Information about the passport used for identification.
-
-    Required if `method` is equal to `passport`.
+    The last 4 digits of the identification number that can be used to verify the
+    individual's identity.
     """
 
 
 class TrustTrusteesIndividual(TypedDict, total=False):
     address: Required[TrustTrusteesIndividualAddress]
-    """The individual's address."""
+    """The person's address."""
 
     date_of_birth: Required[str]
     """The person's date of birth in YYYY-MM-DD format."""
@@ -372,14 +299,14 @@ class TrustTrusteesIndividual(TypedDict, total=False):
 
 
 class TrustTrustees(TypedDict, total=False):
-    structure: Required[Literal["individual"]]
-    """The structure of the trustee."""
+    individual: Required[Optional[TrustTrusteesIndividual]]
+    """The individual trustee of the trust.
 
-    individual: TrustTrusteesIndividual
-    """Details of the individual trustee.
-
-    Required when the trustee `structure` is equal to `individual`.
+    Will be present if the trustee's `structure` is equal to `individual`.
     """
+
+    structure: Required[Literal["individual"]]
+    """The structure of the trustee. Will always be equal to `individual`."""
 
 
 class TrustGrantorAddress(TypedDict, total=False):
@@ -387,7 +314,10 @@ class TrustGrantorAddress(TypedDict, total=False):
     """The city of the address."""
 
     line1: Required[str]
-    """The first line of the address. This is usually the street number and street."""
+    """The first line of the address."""
+
+    line2: Required[Optional[str]]
+    """The second line of the address."""
 
     state: Required[str]
     """
@@ -398,41 +328,21 @@ class TrustGrantorAddress(TypedDict, total=False):
     zip: Required[str]
     """The ZIP code of the address."""
 
-    line2: str
-    """The second line of the address. This might be the floor or room number."""
-
-
-class TrustGrantorIdentificationPassport(TypedDict, total=False):
-    country: Required[str]
-    """The country that issued the passport."""
-
-    expiration_date: Required[str]
-    """The passport's expiration date in YYYY-MM-DD format."""
-
-    file_id: Required[str]
-    """The identifier of the File containing the passport."""
-
 
 class TrustGrantorIdentification(TypedDict, total=False):
     method: Required[Literal["social_security_number", "individual_taxpayer_identification_number", "passport"]]
     """A method that can be used to verify the individual's identity."""
 
-    number: Required[str]
+    number_last4: Required[str]
     """
-    An identification number that can be used to verify the individual's identity,
-    such as a social security number.
-    """
-
-    passport: TrustGrantorIdentificationPassport
-    """Information about the passport used for identification.
-
-    Required if `method` is equal to `passport`.
+    The last 4 digits of the identification number that can be used to verify the
+    individual's identity.
     """
 
 
 class TrustGrantor(TypedDict, total=False):
     address: Required[TrustGrantorAddress]
-    """The individual's address."""
+    """The person's address."""
 
     date_of_birth: Required[str]
     """The person's date of birth in YYYY-MM-DD format."""
@@ -449,75 +359,77 @@ class Trust(TypedDict, total=False):
     """The trust's address."""
 
     category: Required[Literal["revocable", "irrevocable"]]
-    """Whether the trust is `revocable` or `irrevocable`.
+    """Whether the trust is `revocable` or `irrevocable`."""
 
-    Irrevocable trusts require their own Employer Identification Number. Revocable
-    trusts require information about the individual `grantor` who created the trust.
-    """
+    formation_document_file_id: Required[Optional[str]]
+    """The ID for the File containing the formation document of the trust."""
 
-    name: Required[str]
-    """The legal name of the trust."""
-
-    trustees: Required[List[TrustTrustees]]
-    """The trustees of the trust."""
-
-    formation_document_file_id: str
-    """The identifier of the File containing the formation document of the trust."""
-
-    formation_state: str
+    formation_state: Required[Optional[str]]
     """
     The two-letter United States Postal Service (USPS) abbreviation for the state in
     which the trust was formed.
     """
 
-    grantor: TrustGrantor
-    """The grantor of the trust. Required if `category` is equal to `revocable`."""
+    grantor: Required[Optional[TrustGrantor]]
+    """The grantor of the trust. Will be present if the `category` is `revocable`."""
 
-    tax_identifier: str
-    """The Employer Identification Number (EIN) for the trust.
+    name: Required[str]
+    """The trust's name"""
 
-    Required if `category` is equal to `irrevocable`.
-    """
+    tax_identifier: Required[Optional[str]]
+    """The Employer Identification Number (EIN) of the trust itself."""
+
+    trustees: Required[List[TrustTrustees]]
+    """The trustees of the trust."""
 
 
 class SupplementalDocuments(TypedDict, total=False):
     file_id: Required[str]
-    """The identifier of the File containing the document."""
+    """The File containing the document."""
 
 
-class EntityCreateParams(TypedDict, total=False):
+class Entity(TypedDict, total=False):
+    corporation: Required[Optional[Corporation]]
+    """Details of the corporation entity.
+
+    Will be present if `structure` is equal to `corporation`.
+    """
+
+    description: Required[Optional[str]]
+    """The entity's description for display purposes."""
+
+    id: Required[str]
+    """The entity's identifier."""
+
+    joint: Required[Optional[Joint]]
+    """Details of the joint entity.
+
+    Will be present if `structure` is equal to `joint`.
+    """
+
+    natural_person: Required[Optional[NaturalPerson]]
+    """Details of the natural person entity.
+
+    Will be present if `structure` is equal to `natural_person`.
+    """
+
     relationship: Required[Literal["affiliated", "informational", "unaffiliated"]]
     """The relationship between your group and the entity."""
 
     structure: Required[Literal["corporation", "natural_person", "joint", "trust"]]
-    """The type of Entity to create."""
+    """The entity's legal structure."""
 
-    corporation: Corporation
-    """Details of the corporation entity to create.
-
-    Required if `structure` is equal to `corporation`.
-    """
-
-    description: str
-    """The description you choose to give the entity."""
-
-    joint: Joint
-    """Details of the joint entity to create.
-
-    Required if `structure` is equal to `joint`.
-    """
-
-    natural_person: NaturalPerson
-    """Details of the natural person entity to create.
-
-    Required if `structure` is equal to `natural_person`.
-    """
-
-    supplemental_documents: List[SupplementalDocuments]
+    supplemental_documents: Required[List[SupplementalDocuments]]
     """Additional documentation associated with the entity."""
 
-    trust: Trust
-    """Details of the trust entity to create.
+    trust: Required[Optional[Trust]]
+    """Details of the trust entity.
 
-    Required if `structure` is equal to `trust`.
+    Will be present if `structure` is equal to `trust`.
+    """
+
+    type: Required[Literal["entity"]]
+    """A constant representing the object's type.
+
+    For this resource it will always be `entity`.
     """
