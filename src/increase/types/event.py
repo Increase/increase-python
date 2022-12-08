@@ -35,6 +35,8 @@ class Event(BaseModel):
         "check_transfer.created",
         "check_transfer.updated",
         "declined_transaction.created",
+        "digital_wallet_token.created",
+        "digital_wallet_token.updated",
         "document.created",
         "entity.created",
         "entity.updated",

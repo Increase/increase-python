@@ -48,7 +48,13 @@ class DepositRejection(BaseModel):
     """
 
     reason: Literal[
-        "incomplete_image", "duplicate", "poor_image_quality", "incorrect_amount", "incorrect_recipient", "unknown"
+        "incomplete_image",
+        "duplicate",
+        "poor_image_quality",
+        "incorrect_amount",
+        "incorrect_recipient",
+        "not_eligible_for_mobile_deposit",
+        "unknown",
     ]
     """Why the check deposit was rejected."""
 
