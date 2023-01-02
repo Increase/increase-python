@@ -7,7 +7,7 @@ import pytest
 
 from increase import Increase, AsyncIncrease
 from increase.pagination import SyncPage, AsyncPage
-from increase.types.oauth_connection import OauthConnection
+from increase.types.oauth_connection import OAuthConnection
 
 base_url = os.environ.get("API_BASE_URL", "http://127.0.0.1:4010")
 api_key = os.environ.get("API_KEY", "something1234")
@@ -23,7 +23,7 @@ class TestOauthConnections:
         resource = client.oauth_connections.retrieve(
             "string",
         )
-        assert isinstance(resource, OauthConnection)
+        assert isinstance(resource, OAuthConnection)
 
     @parametrize
     def test_method_list(self, client: Increase) -> None:
@@ -49,7 +49,7 @@ class TestAsyncOauthConnections:
         resource = await client.oauth_connections.retrieve(
             "string",
         )
-        assert isinstance(resource, OauthConnection)
+        assert isinstance(resource, OAuthConnection)
 
     @parametrize
     async def test_method_list(self, client: AsyncIncrease) -> None:

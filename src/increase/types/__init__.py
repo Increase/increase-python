@@ -24,7 +24,7 @@ from .account_transfer import AccountTransfer as AccountTransfer
 from .card_list_params import CardListParams as CardListParams
 from .external_account import ExternalAccount as ExternalAccount
 from .file_list_params import FileListParams as FileListParams
-from .oauth_connection import OauthConnection as OauthConnection
+from .oauth_connection import OAuthConnection as OAuthConnection
 from .account_statement import AccountStatement as AccountStatement
 from .event_list_params import EventListParams as EventListParams
 from .limit_list_params import LimitListParams as LimitListParams
@@ -91,7 +91,7 @@ from .external_account_list_params import (
     ExternalAccountListParams as ExternalAccountListParams,
 )
 from .oauth_connection_list_params import (
-    OauthConnectionListParams as OauthConnectionListParams,
+    OAuthConnectionListParams as OAuthConnectionListParams,
 )
 from .account_statement_list_params import (
     AccountStatementListParams as AccountStatementListParams,
