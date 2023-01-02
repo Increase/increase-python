@@ -6,6 +6,7 @@ import os
 import pytest
 
 from increase import Increase, AsyncIncrease
+
 from increase.types.simulations.account_transfer import AccountTransfer
 
 base_url = os.environ.get("API_BASE_URL", "http://127.0.0.1:4010")

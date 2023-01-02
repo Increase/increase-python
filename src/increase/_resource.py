@@ -1,9 +1,8 @@
 from __future__ import annotations
-
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from ._client import Increase, AsyncIncrease
+    from ._client import AsyncIncrease, Increase
 
 
 class SyncAPIResource:

@@ -6,7 +6,8 @@ import os
 import pytest
 
 from increase import Increase, AsyncIncrease
-from increase.pagination import SyncPage, AsyncPage
+from increase.pagination import AsyncPage, SyncPage
+
 from increase.types.check_transfer import CheckTransfer
 
 base_url = os.environ.get("API_BASE_URL", "http://127.0.0.1:4010")

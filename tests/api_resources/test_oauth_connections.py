@@ -6,7 +6,8 @@ import os
 import pytest
 
 from increase import Increase, AsyncIncrease
-from increase.pagination import SyncPage, AsyncPage
+from increase.pagination import AsyncPage, SyncPage
+
 from increase.types.oauth_connection import OAuthConnection
 
 base_url = os.environ.get("API_BASE_URL", "http://127.0.0.1:4010")

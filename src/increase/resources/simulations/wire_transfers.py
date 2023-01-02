@@ -2,9 +2,11 @@
 
 from __future__ import annotations
 
-from ..._types import Body, Query, Headers
-from ..._resource import SyncAPIResource, AsyncAPIResource
+
+from ..._types import Body, Headers, Query
 from ..._base_client import make_request_options
+from ..._resource import SyncAPIResource, AsyncAPIResource
+
 from ...types.simulations.wire_transfer_simulation import WireTransferSimulation
 
 __all__ = ["WireTransfers", "AsyncWireTransfers"]

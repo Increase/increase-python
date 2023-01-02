@@ -6,14 +6,14 @@ from typing_extensions import get_args, get_type_hints
 from pydantic.typing import is_typeddict
 
 from ._utils import (
-    is_list,
-    is_mapping,
-    is_list_type,
-    is_union_type,
-    extract_type_arg,
-    is_required_type,
     is_annotated_type,
     strip_annotated_type,
+    is_list_type,
+    is_required_type,
+    is_union_type,
+    extract_type_arg,
+    is_mapping,
+    is_list,
 )
 
 _T = TypeVar("_T")
