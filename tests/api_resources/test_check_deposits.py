@@ -6,8 +6,7 @@ import os
 import pytest
 
 from increase import Increase, AsyncIncrease
-from increase.pagination import AsyncPage, SyncPage
-
+from increase.pagination import SyncPage, AsyncPage
 from increase.types.check_deposit import CheckDeposit
 
 base_url = os.environ.get("API_BASE_URL", "http://127.0.0.1:4010")

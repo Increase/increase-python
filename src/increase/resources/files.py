@@ -5,13 +5,13 @@ from __future__ import annotations
 from typing import Mapping, cast
 from typing_extensions import Literal
 
-from .._utils import deepcopy_minimal, extract_files
-from .._types import Body, FileTypes, Headers, NOT_GIVEN, NotGiven, Query
-from .._base_client import AsyncPaginator, make_request_options
-from .._resource import SyncAPIResource, AsyncAPIResource
-from ..pagination import AsyncPage, SyncPage
-from ..types.file import File
 from ..types import file_list_params
+from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven, FileTypes
+from .._utils import extract_files, deepcopy_minimal
+from .._resource import SyncAPIResource, AsyncAPIResource
+from ..pagination import SyncPage, AsyncPage
+from ..types.file import File
+from .._base_client import AsyncPaginator, make_request_options
 
 __all__ = ["Files", "AsyncFiles"]
 

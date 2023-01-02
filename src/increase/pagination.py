@@ -1,11 +1,10 @@
 # File generated from our OpenAPI spec by Stainless.
 
-from typing import Generic, List, Optional, TypeVar
+from typing import List, Generic, TypeVar, Optional
 
-
-from ._models import BaseModel
 from ._types import ModelT
-from ._base_client import BasePage, BaseSyncPage, BaseAsyncPage, PageInfo
+from ._models import BaseModel
+from ._base_client import BasePage, PageInfo, BaseSyncPage, BaseAsyncPage
 
 __all__ = ["SyncPage", "AsyncPage"]
 

@@ -2,12 +2,10 @@
 
 from __future__ import annotations
 
-
-from ..._types import Body, Headers, Query
-from ..._base_client import make_request_options
-from ..._resource import SyncAPIResource, AsyncAPIResource
-
 from ...types import shared
+from ..._types import Body, Query, Headers
+from ..._resource import SyncAPIResource, AsyncAPIResource
+from ..._base_client import make_request_options
 
 __all__ = ["SupplementalDocuments", "AsyncSupplementalDocuments"]
 

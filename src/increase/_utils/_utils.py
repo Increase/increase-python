@@ -2,13 +2,12 @@ from __future__ import annotations
 
 import inspect
 import functools
-from typing import Callable, Iterable, Mapping, Sequence, TypeVar, Any, cast, overload
-from typing_extensions import TypeGuard, Annotated, Required, get_origin, get_args
+from typing import Any, Mapping, TypeVar, Callable, Iterable, Sequence, cast, overload
+from typing_extensions import Required, Annotated, TypeGuard, get_args, get_origin
 
 from pydantic.typing import is_union as _is_union
 
-from .._types import FileTypes, NotGiven
-
+from .._types import NotGiven, FileTypes
 
 _T = TypeVar("_T")
 CallableT = TypeVar("CallableT", bound=Callable[..., Any])

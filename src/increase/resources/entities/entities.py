@@ -2,20 +2,18 @@
 
 from __future__ import annotations
 
-from typing import List
+from typing import TYPE_CHECKING, List
 from typing_extensions import Literal
 
-from ..._types import Body, Headers, NOT_GIVEN, NotGiven, Query
-from ..._base_client import AsyncPaginator, make_request_options
+from ...types import shared, entity_create_params
+from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ...pagination import AsyncPage, SyncPage
-from ...types import shared
-from ...types import entity_create_params
+from ...pagination import SyncPage, AsyncPage
+from ..._base_client import AsyncPaginator, make_request_options
 from .supplemental_documents import SupplementalDocuments, AsyncSupplementalDocuments
-from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from ..._client import AsyncIncrease, Increase
+    from ..._client import Increase, AsyncIncrease
 
 __all__ = ["Entities", "AsyncEntities"]
 

@@ -6,8 +6,7 @@ import os
 import pytest
 
 from increase import Increase, AsyncIncrease
-from increase.pagination import AsyncPage, SyncPage
-
+from increase.pagination import SyncPage, AsyncPage
 from increase.types.card import Card
 from increase.types.card_details import CardDetails
 

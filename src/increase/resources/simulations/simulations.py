@@ -2,23 +2,28 @@
 
 from __future__ import annotations
 
-
-from ..._resource import SyncAPIResource, AsyncAPIResource
-
-from .account_transfers import AccountTransfers, AsyncAccountTransfers
-from .account_statements import AccountStatements, AsyncAccountStatements
-from .ach_transfers import ACHTransfers, AsyncACHTransfers
-from .card_disputes import CardDisputes, AsyncCardDisputes
-from .check_transfers import CheckTransfers, AsyncCheckTransfers
-from .digital_wallet_token_requests import DigitalWalletTokenRequests, AsyncDigitalWalletTokenRequests
-from .check_deposits import CheckDeposits, AsyncCheckDeposits
-from .wire_transfers import WireTransfers, AsyncWireTransfers
-from .cards import Cards, AsyncCards
-from .real_time_payments_transfers import RealTimePaymentsTransfers, AsyncRealTimePaymentsTransfers
 from typing import TYPE_CHECKING
 
+from .cards import Cards, AsyncCards
+from ..._resource import SyncAPIResource, AsyncAPIResource
+from .ach_transfers import ACHTransfers, AsyncACHTransfers
+from .card_disputes import CardDisputes, AsyncCardDisputes
+from .check_deposits import CheckDeposits, AsyncCheckDeposits
+from .wire_transfers import WireTransfers, AsyncWireTransfers
+from .check_transfers import CheckTransfers, AsyncCheckTransfers
+from .account_transfers import AccountTransfers, AsyncAccountTransfers
+from .account_statements import AccountStatements, AsyncAccountStatements
+from .real_time_payments_transfers import (
+    RealTimePaymentsTransfers,
+    AsyncRealTimePaymentsTransfers,
+)
+from .digital_wallet_token_requests import (
+    DigitalWalletTokenRequests,
+    AsyncDigitalWalletTokenRequests,
+)
+
 if TYPE_CHECKING:
-    from ..._client import AsyncIncrease, Increase
+    from ..._client import Increase, AsyncIncrease
 
 __all__ = ["Simulations", "AsyncSimulations"]
 

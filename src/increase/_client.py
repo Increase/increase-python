@@ -3,15 +3,26 @@
 from __future__ import annotations
 
 import os
-from typing import Dict, Mapping, Optional, Union
+from typing import Dict, Union, Mapping, Optional
 from typing_extensions import Literal
 
-
-from ._types import NOT_GIVEN, NotGiven, ProxiesTypes, RequestOptions, Timeout, Transport
-from ._base_client import AsyncAPIClient, DEFAULT_MAX_RETRIES, DEFAULT_TIMEOUT, SyncAPIClient
 from . import resources
-from ._version import __version__
 from ._qs import Querystring
+from ._types import (
+    NOT_GIVEN,
+    Timeout,
+    NotGiven,
+    Transport,
+    ProxiesTypes,
+    RequestOptions,
+)
+from ._version import __version__
+from ._base_client import (
+    DEFAULT_TIMEOUT,
+    DEFAULT_MAX_RETRIES,
+    SyncAPIClient,
+    AsyncAPIClient,
+)
 
 __all__ = [
     "Increase",

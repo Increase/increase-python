@@ -5,12 +5,17 @@ from typing_extensions import final
 
 import pydantic
 import pydantic.generics
-from pydantic.typing import is_literal_type, get_origin, is_union, is_none_type, get_args
 from pydantic.fields import SHAPE_DICT
+from pydantic.typing import (
+    get_args,
+    is_union,
+    get_origin,
+    is_none_type,
+    is_literal_type,
+)
 
-from ._utils import is_mapping, is_list, strip_not_given
-from ._types import ModelT, Timeout, NotGiven, Query, Headers, RequestFiles
-
+from ._types import Query, ModelT, Headers, Timeout, NotGiven, RequestFiles
+from ._utils import is_list, is_mapping, strip_not_given
 
 __all__ = ["BaseModel", "GenericModel"]
 

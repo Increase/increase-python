@@ -6,7 +6,6 @@ import os
 import pytest
 
 from increase import Increase, AsyncIncrease
-
 from increase.types.simulations.inbound_real_time_payments_transfer_simulation_result import (
     InboundRealTimePaymentsTransferSimulationResult,
 )

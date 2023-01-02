@@ -2,13 +2,11 @@
 
 from __future__ import annotations
 
-
-from .._types import Body, Headers, NOT_GIVEN, NotGiven, Query
-from .._base_client import make_request_options
-from .._resource import SyncAPIResource, AsyncAPIResource
-
-from ..types.real_time_decision import RealTimeDecision
 from ..types import real_time_decision_action_params
+from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._resource import SyncAPIResource, AsyncAPIResource
+from .._base_client import make_request_options
+from ..types.real_time_decision import RealTimeDecision
 
 __all__ = ["RealTimeDecisions", "AsyncRealTimeDecisions"]
 

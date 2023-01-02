@@ -3,6 +3,7 @@ from __future__ import annotations
 from typing import Sequence
 
 import pytest
+
 from increase._types import FileTypes
 from increase._utils import extract_files
 
