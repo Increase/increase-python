@@ -6,12 +6,12 @@ from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.oauth_connection import OAuthConnection
+from ..types.oauth_connection import OauthConnection
 
-__all__ = ["OAuthConnections", "AsyncOauthConnections"]
+__all__ = ["OauthConnections", "AsyncOauthConnections"]
 
 
-class OAuthConnections(SyncAPIResource):
+class OauthConnections(SyncAPIResource):
     def retrieve(
         self,
         oauth_connection_id: str,
@@ -21,11 +21,11 @@ class OAuthConnections(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-    ) -> OAuthConnection:
+    ) -> OauthConnection:
         return self._get(
             f"/oauth_connections/{oauth_connection_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
-            cast_to=OAuthConnection,
+            cast_to=OauthConnection,
         )
 
     def list(
@@ -38,7 +38,7 @@ class OAuthConnections(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-    ) -> SyncPage[OAuthConnection]:
+    ) -> SyncPage[OauthConnection]:
         """
         Args:
           cursor: Return the page of entries after this one.
@@ -54,7 +54,7 @@ class OAuthConnections(SyncAPIResource):
         """
         return self._get_api_list(
             "/oauth_connections",
-            page=SyncPage[OAuthConnection],
+            page=SyncPage[OauthConnection],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -64,7 +64,7 @@ class OAuthConnections(SyncAPIResource):
                     "limit": limit,
                 },
             ),
-            model=OAuthConnection,
+            model=OauthConnection,
         )
 
 
@@ -78,11 +78,11 @@ class AsyncOauthConnections(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-    ) -> OAuthConnection:
+    ) -> OauthConnection:
         return await self._get(
             f"/oauth_connections/{oauth_connection_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
-            cast_to=OAuthConnection,
+            cast_to=OauthConnection,
         )
 
     def list(
@@ -95,7 +95,7 @@ class AsyncOauthConnections(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-    ) -> AsyncPaginator[OAuthConnection, AsyncPage[OAuthConnection]]:
+    ) -> AsyncPaginator[OauthConnection, AsyncPage[OauthConnection]]:
         """
         Args:
           cursor: Return the page of entries after this one.
@@ -111,7 +111,7 @@ class AsyncOauthConnections(AsyncAPIResource):
         """
         return self._get_api_list(
             "/oauth_connections",
-            page=AsyncPage[OAuthConnection],
+            page=AsyncPage[OauthConnection],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -121,5 +121,5 @@ class AsyncOauthConnections(AsyncAPIResource):
                     "limit": limit,
                 },
             ),
-            model=OAuthConnection,
+            model=OauthConnection,
         )

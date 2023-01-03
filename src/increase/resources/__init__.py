@@ -19,7 +19,7 @@ from .check_transfers import CheckTransfers, AsyncCheckTransfers
 from .routing_numbers import RoutingNumbers, AsyncRoutingNumbers
 from .account_transfers import AccountTransfers, AsyncAccountTransfers
 from .external_accounts import ExternalAccounts, AsyncExternalAccounts
-from .oauth_connections import OAuthConnections, AsyncOauthConnections
+from .oauth_connections import OauthConnections, AsyncOauthConnections
 from .account_statements import AccountStatements, AsyncAccountStatements
 from .event_subscriptions import EventSubscriptions, AsyncEventSubscriptions
 from .real_time_decisions import RealTimeDecisions, AsyncRealTimeDecisions
@@ -76,7 +76,7 @@ __all__ = [
     "AsyncFiles",
     "Groups",
     "AsyncGroups",
-    "OAuthConnections",
+    "OauthConnections",
     "AsyncOauthConnections",
     "CheckDeposits",
     "AsyncCheckDeposits",

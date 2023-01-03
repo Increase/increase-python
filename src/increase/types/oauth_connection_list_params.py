@@ -4,10 +4,10 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-__all__ = ["OAuthConnectionListParams"]
+__all__ = ["OauthConnectionListParams"]
 
 
-class OAuthConnectionListParams(TypedDict, total=False):
+class OauthConnectionListParams(TypedDict, total=False):
     cursor: str
     """Return the page of entries after this one."""
 

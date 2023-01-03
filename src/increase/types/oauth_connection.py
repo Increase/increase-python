@@ -4,10 +4,10 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["OAuthConnection"]
+__all__ = ["OauthConnection"]
 
 
-class OAuthConnection(BaseModel):
+class OauthConnection(BaseModel):
     created_at: str
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth

@@ -67,7 +67,7 @@ class Increase(SyncAPIClient):
     event_subscriptions: resources.EventSubscriptions
     files: resources.Files
     groups: resources.Groups
-    oauth_connections: resources.OAuthConnections
+    oauth_connections: resources.OauthConnections
     check_deposits: resources.CheckDeposits
     routing_numbers: resources.RoutingNumbers
     account_statements: resources.AccountStatements
@@ -157,7 +157,7 @@ class Increase(SyncAPIClient):
         self.event_subscriptions = resources.EventSubscriptions(self)
         self.files = resources.Files(self)
         self.groups = resources.Groups(self)
-        self.oauth_connections = resources.OAuthConnections(self)
+        self.oauth_connections = resources.OauthConnections(self)
         self.check_deposits = resources.CheckDeposits(self)
         self.routing_numbers = resources.RoutingNumbers(self)
         self.account_statements = resources.AccountStatements(self)
