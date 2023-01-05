@@ -1,5 +1,7 @@
 # File generated from our OpenAPI spec by Stainless.
 
+from __future__ import annotations
+
 from .card import Card as Card
 from .file import File as File
 from .event import Event as Event

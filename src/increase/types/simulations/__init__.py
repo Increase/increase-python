@@ -1,5 +1,7 @@
 # File generated from our OpenAPI spec by Stainless.
 
+from __future__ import annotations
+
 from .transaction import Transaction as Transaction
 from .ach_transfer import ACHTransfer as ACHTransfer
 from .card_dispute import CardDispute as CardDispute

@@ -25,16 +25,16 @@ from ._base_client import (
 )
 
 __all__ = [
-    "Increase",
-    "AsyncIncrease",
-    "Client",
-    "AsyncClient",
     "ENVIRONMENTS",
     "Timeout",
     "Transport",
     "ProxiesTypes",
     "RequestOptions",
     "resources",
+    "Increase",
+    "AsyncIncrease",
+    "Client",
+    "AsyncClient",
 ]
 
 ENVIRONMENTS: Dict[str, str] = {
