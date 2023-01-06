@@ -23,6 +23,7 @@ class DeclinedTransactions(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> DeclinedTransaction:
+        """Retrieve a Declined Transaction"""
         return self._get(
             f"/declined_transactions/{declined_transaction_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
@@ -44,6 +45,8 @@ class DeclinedTransactions(SyncAPIResource):
         extra_body: Body | None = None,
     ) -> SyncPage[DeclinedTransaction]:
         """
+        List Declined Transactions
+
         Args:
           cursor: Return the page of entries after this one.
 
@@ -90,6 +93,7 @@ class AsyncDeclinedTransactions(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> DeclinedTransaction:
+        """Retrieve a Declined Transaction"""
         return await self._get(
             f"/declined_transactions/{declined_transaction_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
@@ -111,6 +115,8 @@ class AsyncDeclinedTransactions(AsyncAPIResource):
         extra_body: Body | None = None,
     ) -> AsyncPaginator[DeclinedTransaction, AsyncPage[DeclinedTransaction]]:
         """
+        List Declined Transactions
+
         Args:
           cursor: Return the page of entries after this one.
 

@@ -23,6 +23,8 @@ class SupplementalDocuments(SyncAPIResource):
         extra_body: Body | None = None,
     ) -> shared.Entity:
         """
+        Create a supplemental document for an Entity
+
         Args:
           file_id: The identifier of the File containing the document.
 
@@ -53,6 +55,8 @@ class AsyncSupplementalDocuments(AsyncAPIResource):
         extra_body: Body | None = None,
     ) -> shared.Entity:
         """
+        Create a supplemental document for an Entity
+
         Args:
           file_id: The identifier of the File containing the document.
 

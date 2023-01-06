@@ -28,6 +28,8 @@ class ExternalAccounts(SyncAPIResource):
         extra_body: Body | None = None,
     ) -> ExternalAccount:
         """
+        Create an External Account
+
         Args:
           routing_number: The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
               destination account.
@@ -66,6 +68,7 @@ class ExternalAccounts(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> ExternalAccount:
+        """Retrieve an External Account"""
         return self._get(
             f"/external_accounts/{external_account_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
@@ -84,6 +87,8 @@ class ExternalAccounts(SyncAPIResource):
         extra_body: Body | None = None,
     ) -> ExternalAccount:
         """
+        Update an External Account
+
         Args:
           description: The description you choose to give the external account.
 
@@ -112,6 +117,8 @@ class ExternalAccounts(SyncAPIResource):
         extra_body: Body | None = None,
     ) -> SyncPage[ExternalAccount]:
         """
+        List External Accounts
+
         Args:
           cursor: Return the page of entries after this one.
 
@@ -155,6 +162,8 @@ class AsyncExternalAccounts(AsyncAPIResource):
         extra_body: Body | None = None,
     ) -> ExternalAccount:
         """
+        Create an External Account
+
         Args:
           routing_number: The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
               destination account.
@@ -193,6 +202,7 @@ class AsyncExternalAccounts(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> ExternalAccount:
+        """Retrieve an External Account"""
         return await self._get(
             f"/external_accounts/{external_account_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
@@ -211,6 +221,8 @@ class AsyncExternalAccounts(AsyncAPIResource):
         extra_body: Body | None = None,
     ) -> ExternalAccount:
         """
+        Update an External Account
+
         Args:
           description: The description you choose to give the external account.
 
@@ -239,6 +251,8 @@ class AsyncExternalAccounts(AsyncAPIResource):
         extra_body: Body | None = None,
     ) -> AsyncPaginator[ExternalAccount, AsyncPage[ExternalAccount]]:
         """
+        List External Accounts
+
         Args:
           cursor: Return the page of entries after this one.
 

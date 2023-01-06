@@ -23,6 +23,7 @@ class PendingTransactions(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> PendingTransaction:
+        """Retrieve a Pending Transaction"""
         return self._get(
             f"/pending_transactions/{pending_transaction_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
@@ -45,6 +46,8 @@ class PendingTransactions(SyncAPIResource):
         extra_body: Body | None = None,
     ) -> SyncPage[PendingTransaction]:
         """
+        List Pending Transactions
+
         Args:
           cursor: Return the page of entries after this one.
 
@@ -94,6 +97,7 @@ class AsyncPendingTransactions(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> PendingTransaction:
+        """Retrieve a Pending Transaction"""
         return await self._get(
             f"/pending_transactions/{pending_transaction_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
@@ -116,6 +120,8 @@ class AsyncPendingTransactions(AsyncAPIResource):
         extra_body: Body | None = None,
     ) -> AsyncPaginator[PendingTransaction, AsyncPage[PendingTransaction]]:
         """
+        List Pending Transactions
+
         Args:
           cursor: Return the page of entries after this one.
 

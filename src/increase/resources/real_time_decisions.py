@@ -22,6 +22,7 @@ class RealTimeDecisions(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> RealTimeDecision:
+        """Retrieve a Real-Time Decision"""
         return self._get(
             f"/real_time_decisions/{real_time_decision_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
@@ -43,6 +44,8 @@ class RealTimeDecisions(SyncAPIResource):
         extra_body: Body | None = None,
     ) -> RealTimeDecision:
         """
+        Action a Real-Time Decision
+
         Args:
           card_authorization: If the Real-Time Decision relates to a card authorization attempt, this object
               contains your response to the authorization.
@@ -82,6 +85,7 @@ class AsyncRealTimeDecisions(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> RealTimeDecision:
+        """Retrieve a Real-Time Decision"""
         return await self._get(
             f"/real_time_decisions/{real_time_decision_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
@@ -103,6 +107,8 @@ class AsyncRealTimeDecisions(AsyncAPIResource):
         extra_body: Body | None = None,
     ) -> RealTimeDecision:
         """
+        Action a Real-Time Decision
+
         Args:
           card_authorization: If the Real-Time Decision relates to a card authorization attempt, this object
               contains your response to the authorization.

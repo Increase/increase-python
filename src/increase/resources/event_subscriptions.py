@@ -72,6 +72,8 @@ class EventSubscriptions(SyncAPIResource):
         extra_body: Body | None = None,
     ) -> EventSubscription:
         """
+        Create an Event Subscription
+
         Args:
           url: The URL you'd like us to send webhooks to.
 
@@ -108,6 +110,7 @@ class EventSubscriptions(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> EventSubscription:
+        """Retrieve an Event Subscription"""
         return self._get(
             f"/event_subscriptions/{event_subscription_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
@@ -126,6 +129,8 @@ class EventSubscriptions(SyncAPIResource):
         extra_body: Body | None = None,
     ) -> EventSubscription:
         """
+        Update an Event Subscription
+
         Args:
           status: The status to update the Event Subscription with.
 
@@ -154,6 +159,8 @@ class EventSubscriptions(SyncAPIResource):
         extra_body: Body | None = None,
     ) -> SyncPage[EventSubscription]:
         """
+        List Event Subscriptions
+
         Args:
           cursor: Return the page of entries after this one.
 
@@ -241,6 +248,8 @@ class AsyncEventSubscriptions(AsyncAPIResource):
         extra_body: Body | None = None,
     ) -> EventSubscription:
         """
+        Create an Event Subscription
+
         Args:
           url: The URL you'd like us to send webhooks to.
 
@@ -277,6 +286,7 @@ class AsyncEventSubscriptions(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> EventSubscription:
+        """Retrieve an Event Subscription"""
         return await self._get(
             f"/event_subscriptions/{event_subscription_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
@@ -295,6 +305,8 @@ class AsyncEventSubscriptions(AsyncAPIResource):
         extra_body: Body | None = None,
     ) -> EventSubscription:
         """
+        Update an Event Subscription
+
         Args:
           status: The status to update the Event Subscription with.
 
@@ -323,6 +335,8 @@ class AsyncEventSubscriptions(AsyncAPIResource):
         extra_body: Body | None = None,
     ) -> AsyncPaginator[EventSubscription, AsyncPage[EventSubscription]]:
         """
+        List Event Subscriptions
+
         Args:
           cursor: Return the page of entries after this one.
 

@@ -25,6 +25,8 @@ class CardProfiles(SyncAPIResource):
         extra_body: Body | None = None,
     ) -> CardProfile:
         """
+        Create a Card Profile
+
         Args:
           description: A description you can use to identify the Card Profile.
 
@@ -57,6 +59,7 @@ class CardProfiles(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> CardProfile:
+        """Retrieve a Card Profile"""
         return self._get(
             f"/card_profiles/{card_profile_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
@@ -76,6 +79,8 @@ class CardProfiles(SyncAPIResource):
         extra_body: Body | None = None,
     ) -> SyncPage[CardProfile]:
         """
+        List Card Profiles
+
         Args:
           cursor: Return the page of entries after this one.
 
@@ -118,6 +123,8 @@ class AsyncCardProfiles(AsyncAPIResource):
         extra_body: Body | None = None,
     ) -> CardProfile:
         """
+        Create a Card Profile
+
         Args:
           description: A description you can use to identify the Card Profile.
 
@@ -150,6 +157,7 @@ class AsyncCardProfiles(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> CardProfile:
+        """Retrieve a Card Profile"""
         return await self._get(
             f"/card_profiles/{card_profile_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
@@ -169,6 +177,8 @@ class AsyncCardProfiles(AsyncAPIResource):
         extra_body: Body | None = None,
     ) -> AsyncPaginator[CardProfile, AsyncPage[CardProfile]]:
         """
+        List Card Profiles
+
         Args:
           cursor: Return the page of entries after this one.
 

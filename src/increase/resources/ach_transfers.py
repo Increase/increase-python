@@ -44,6 +44,8 @@ class ACHTransfers(SyncAPIResource):
         extra_body: Body | None = None,
     ) -> ACHTransfer:
         """
+        Create an ACH Transfer
+
         Args:
           account_id: The identifier for the account that will send the transfer.
 
@@ -124,6 +126,7 @@ class ACHTransfers(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> ACHTransfer:
+        """Retrieve an ACH Transfer"""
         return self._get(
             f"/ach_transfers/{ach_transfer_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
@@ -145,6 +148,8 @@ class ACHTransfers(SyncAPIResource):
         extra_body: Body | None = None,
     ) -> SyncPage[ACHTransfer]:
         """
+        List ACH Transfers
+
         Args:
           cursor: Return the page of entries after this one.
 
@@ -210,6 +215,8 @@ class AsyncACHTransfers(AsyncAPIResource):
         extra_body: Body | None = None,
     ) -> ACHTransfer:
         """
+        Create an ACH Transfer
+
         Args:
           account_id: The identifier for the account that will send the transfer.
 
@@ -290,6 +297,7 @@ class AsyncACHTransfers(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> ACHTransfer:
+        """Retrieve an ACH Transfer"""
         return await self._get(
             f"/ach_transfers/{ach_transfer_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
@@ -311,6 +319,8 @@ class AsyncACHTransfers(AsyncAPIResource):
         extra_body: Body | None = None,
     ) -> AsyncPaginator[ACHTransfer, AsyncPage[ACHTransfer]]:
         """
+        List ACH Transfers
+
         Args:
           cursor: Return the page of entries after this one.
 

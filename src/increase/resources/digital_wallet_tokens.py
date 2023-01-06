@@ -23,6 +23,7 @@ class DigitalWalletTokens(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> DigitalWalletToken:
+        """Retrieve a Digital Wallet Token"""
         return self._get(
             f"/digital_wallet_tokens/{digital_wallet_token_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
@@ -43,6 +44,8 @@ class DigitalWalletTokens(SyncAPIResource):
         extra_body: Body | None = None,
     ) -> SyncPage[DigitalWalletToken]:
         """
+        List Digital Wallet Tokens
+
         Args:
           cursor: Return the page of entries after this one.
 
@@ -86,6 +89,7 @@ class AsyncDigitalWalletTokens(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> DigitalWalletToken:
+        """Retrieve a Digital Wallet Token"""
         return await self._get(
             f"/digital_wallet_tokens/{digital_wallet_token_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
@@ -106,6 +110,8 @@ class AsyncDigitalWalletTokens(AsyncAPIResource):
         extra_body: Body | None = None,
     ) -> AsyncPaginator[DigitalWalletToken, AsyncPage[DigitalWalletToken]]:
         """
+        List Digital Wallet Tokens
+
         Args:
           cursor: Return the page of entries after this one.
 

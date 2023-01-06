@@ -43,6 +43,8 @@ class Entities(SyncAPIResource):
         extra_body: Body | None = None,
     ) -> shared.Entity:
         """
+        Create an Entity
+
         Args:
           structure: The type of Entity to create.
 
@@ -96,6 +98,7 @@ class Entities(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> shared.Entity:
+        """Retrieve an Entity"""
         return self._get(
             f"/entities/{entity_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
@@ -114,6 +117,8 @@ class Entities(SyncAPIResource):
         extra_body: Body | None = None,
     ) -> SyncPage[shared.Entity]:
         """
+        List Entities
+
         Args:
           cursor: Return the page of entries after this one.
 
@@ -167,6 +172,8 @@ class AsyncEntities(AsyncAPIResource):
         extra_body: Body | None = None,
     ) -> shared.Entity:
         """
+        Create an Entity
+
         Args:
           structure: The type of Entity to create.
 
@@ -220,6 +227,7 @@ class AsyncEntities(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> shared.Entity:
+        """Retrieve an Entity"""
         return await self._get(
             f"/entities/{entity_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
@@ -238,6 +246,8 @@ class AsyncEntities(AsyncAPIResource):
         extra_body: Body | None = None,
     ) -> AsyncPaginator[shared.Entity, AsyncPage[shared.Entity]]:
         """
+        List Entities
+
         Args:
           cursor: Return the page of entries after this one.
 

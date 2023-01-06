@@ -27,6 +27,8 @@ class AccountTransfers(SyncAPIResource):
         extra_body: Body | None = None,
     ) -> AccountTransfer:
         """
+        Create an Account Transfer
+
         Args:
           account_id: The identifier for the account that will send the transfer.
 
@@ -65,6 +67,7 @@ class AccountTransfers(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> AccountTransfer:
+        """Retrieve an Account Transfer"""
         return self._get(
             f"/account_transfers/{account_transfer_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
@@ -85,6 +88,8 @@ class AccountTransfers(SyncAPIResource):
         extra_body: Body | None = None,
     ) -> SyncPage[AccountTransfer]:
         """
+        List Account Transfers
+
         Args:
           cursor: Return the page of entries after this one.
 
@@ -132,6 +137,8 @@ class AsyncAccountTransfers(AsyncAPIResource):
         extra_body: Body | None = None,
     ) -> AccountTransfer:
         """
+        Create an Account Transfer
+
         Args:
           account_id: The identifier for the account that will send the transfer.
 
@@ -170,6 +177,7 @@ class AsyncAccountTransfers(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> AccountTransfer:
+        """Retrieve an Account Transfer"""
         return await self._get(
             f"/account_transfers/{account_transfer_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
@@ -190,6 +198,8 @@ class AsyncAccountTransfers(AsyncAPIResource):
         extra_body: Body | None = None,
     ) -> AsyncPaginator[AccountTransfer, AsyncPage[AccountTransfer]]:
         """
+        List Account Transfers
+
         Args:
           cursor: Return the page of entries after this one.
 

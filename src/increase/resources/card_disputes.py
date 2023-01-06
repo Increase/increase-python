@@ -24,10 +24,11 @@ class CardDisputes(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> CardDispute:
-        """Args:
-          disputed_transaction_id: The Transaction you wish to dispute.
+        """
+        Create a Card Dispute
 
-        This Transaction must have a `source_type`
+        Args:
+          disputed_transaction_id: The Transaction you wish to dispute. This Transaction must have a `source_type`
               of `card_settlement`.
 
           explanation: Why you are disputing this Transaction.
@@ -58,6 +59,7 @@ class CardDisputes(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> CardDispute:
+        """Retrieve a Card Dispute"""
         return self._get(
             f"/card_disputes/{card_dispute_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
@@ -78,6 +80,8 @@ class CardDisputes(SyncAPIResource):
         extra_body: Body | None = None,
     ) -> SyncPage[CardDispute]:
         """
+        List Card Disputes
+
         Args:
           cursor: Return the page of entries after this one.
 
@@ -120,10 +124,11 @@ class AsyncCardDisputes(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> CardDispute:
-        """Args:
-          disputed_transaction_id: The Transaction you wish to dispute.
+        """
+        Create a Card Dispute
 
-        This Transaction must have a `source_type`
+        Args:
+          disputed_transaction_id: The Transaction you wish to dispute. This Transaction must have a `source_type`
               of `card_settlement`.
 
           explanation: Why you are disputing this Transaction.
@@ -154,6 +159,7 @@ class AsyncCardDisputes(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> CardDispute:
+        """Retrieve a Card Dispute"""
         return await self._get(
             f"/card_disputes/{card_dispute_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
@@ -174,6 +180,8 @@ class AsyncCardDisputes(AsyncAPIResource):
         extra_body: Body | None = None,
     ) -> AsyncPaginator[CardDispute, AsyncPage[CardDispute]]:
         """
+        List Card Disputes
+
         Args:
           cursor: Return the page of entries after this one.
 

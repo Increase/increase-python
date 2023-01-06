@@ -30,6 +30,8 @@ class Cards(SyncAPIResource):
         extra_body: Body | None = None,
     ) -> Card:
         """
+        Create a Card
+
         Args:
           account_id: The Account the card should belong to.
 
@@ -69,6 +71,7 @@ class Cards(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> Card:
+        """Retrieve a Card"""
         return self._get(
             f"/cards/{card_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
@@ -90,6 +93,8 @@ class Cards(SyncAPIResource):
         extra_body: Body | None = None,
     ) -> Card:
         """
+        Update a Card
+
         Args:
           description: The description you choose to give the card.
 
@@ -133,6 +138,8 @@ class Cards(SyncAPIResource):
         extra_body: Body | None = None,
     ) -> SyncPage[Card]:
         """
+        List Cards
+
         Args:
           cursor: Return the page of entries after this one.
 
@@ -174,6 +181,7 @@ class Cards(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> CardDetails:
+        """Retrieve sensitive details for a Card"""
         return self._get(
             f"/cards/{card_id}/details",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
@@ -196,6 +204,8 @@ class AsyncCards(AsyncAPIResource):
         extra_body: Body | None = None,
     ) -> Card:
         """
+        Create a Card
+
         Args:
           account_id: The Account the card should belong to.
 
@@ -235,6 +245,7 @@ class AsyncCards(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> Card:
+        """Retrieve a Card"""
         return await self._get(
             f"/cards/{card_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
@@ -256,6 +267,8 @@ class AsyncCards(AsyncAPIResource):
         extra_body: Body | None = None,
     ) -> Card:
         """
+        Update a Card
+
         Args:
           description: The description you choose to give the card.
 
@@ -299,6 +312,8 @@ class AsyncCards(AsyncAPIResource):
         extra_body: Body | None = None,
     ) -> AsyncPaginator[Card, AsyncPage[Card]]:
         """
+        List Cards
+
         Args:
           cursor: Return the page of entries after this one.
 
@@ -340,6 +355,7 @@ class AsyncCards(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> CardDetails:
+        """Retrieve sensitive details for a Card"""
         return await self._get(
             f"/cards/{card_id}/details",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),

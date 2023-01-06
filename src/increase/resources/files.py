@@ -91,6 +91,7 @@ class Files(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> File:
+        """Retrieve a File"""
         return self._get(
             f"/files/{file_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
@@ -111,6 +112,8 @@ class Files(SyncAPIResource):
         extra_body: Body | None = None,
     ) -> SyncPage[File]:
         """
+        List Files
+
         Args:
           cursor: Return the page of entries after this one.
 
@@ -216,6 +219,7 @@ class AsyncFiles(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> File:
+        """Retrieve a File"""
         return await self._get(
             f"/files/{file_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
@@ -236,6 +240,8 @@ class AsyncFiles(AsyncAPIResource):
         extra_body: Body | None = None,
     ) -> AsyncPaginator[File, AsyncPage[File]]:
         """
+        List Files
+
         Args:
           cursor: Return the page of entries after this one.
 

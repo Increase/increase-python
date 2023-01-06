@@ -23,6 +23,7 @@ class AccountStatements(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> AccountStatement:
+        """Retrieve an Account Statement"""
         return self._get(
             f"/account_statements/{account_statement_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
@@ -43,6 +44,8 @@ class AccountStatements(SyncAPIResource):
         extra_body: Body | None = None,
     ) -> SyncPage[AccountStatement]:
         """
+        List Account Statements
+
         Args:
           cursor: Return the page of entries after this one.
 
@@ -86,6 +89,7 @@ class AsyncAccountStatements(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> AccountStatement:
+        """Retrieve an Account Statement"""
         return await self._get(
             f"/account_statements/{account_statement_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
@@ -106,6 +110,8 @@ class AsyncAccountStatements(AsyncAPIResource):
         extra_body: Body | None = None,
     ) -> AsyncPaginator[AccountStatement, AsyncPage[AccountStatement]]:
         """
+        List Account Statements
+
         Args:
           cursor: Return the page of entries after this one.
 

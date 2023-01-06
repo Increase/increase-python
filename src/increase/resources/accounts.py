@@ -27,6 +27,8 @@ class Accounts(SyncAPIResource):
         extra_body: Body | None = None,
     ) -> Account:
         """
+        Create an Account
+
         Args:
           entity_id: The identifier for the Entity that will own the Account.
 
@@ -62,6 +64,7 @@ class Accounts(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> Account:
+        """Retrieve an Account"""
         return self._get(
             f"/accounts/{account_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
@@ -80,6 +83,8 @@ class Accounts(SyncAPIResource):
         extra_body: Body | None = None,
     ) -> Account:
         """
+        Update an Account
+
         Args:
           name: The new name of the Account.
 
@@ -110,6 +115,8 @@ class Accounts(SyncAPIResource):
         extra_body: Body | None = None,
     ) -> SyncPage[Account]:
         """
+        List Accounts
+
         Args:
           cursor: Return the page of entries after this one.
 
@@ -153,6 +160,7 @@ class Accounts(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> Account:
+        """Close an Account"""
         return self._post(
             f"/accounts/{account_id}/close",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
@@ -174,6 +182,8 @@ class AsyncAccounts(AsyncAPIResource):
         extra_body: Body | None = None,
     ) -> Account:
         """
+        Create an Account
+
         Args:
           entity_id: The identifier for the Entity that will own the Account.
 
@@ -209,6 +219,7 @@ class AsyncAccounts(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> Account:
+        """Retrieve an Account"""
         return await self._get(
             f"/accounts/{account_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
@@ -227,6 +238,8 @@ class AsyncAccounts(AsyncAPIResource):
         extra_body: Body | None = None,
     ) -> Account:
         """
+        Update an Account
+
         Args:
           name: The new name of the Account.
 
@@ -257,6 +270,8 @@ class AsyncAccounts(AsyncAPIResource):
         extra_body: Body | None = None,
     ) -> AsyncPaginator[Account, AsyncPage[Account]]:
         """
+        List Accounts
+
         Args:
           cursor: Return the page of entries after this one.
 
@@ -300,6 +315,7 @@ class AsyncAccounts(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> Account:
+        """Close an Account"""
         return await self._post(
             f"/accounts/{account_id}/close",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),

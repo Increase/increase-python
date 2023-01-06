@@ -28,6 +28,8 @@ class Limits(SyncAPIResource):
         extra_body: Body | None = None,
     ) -> Limit:
         """
+        Create a Limit
+
         Args:
           metric: The metric for the limit.
 
@@ -66,6 +68,7 @@ class Limits(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> Limit:
+        """Retrieve a Limit"""
         return self._get(
             f"/limits/{limit_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
@@ -84,6 +87,8 @@ class Limits(SyncAPIResource):
         extra_body: Body | None = None,
     ) -> Limit:
         """
+        Update a Limit
+
         Args:
           status: The status to update the limit with.
 
@@ -114,6 +119,8 @@ class Limits(SyncAPIResource):
         extra_body: Body | None = None,
     ) -> SyncPage[Limit]:
         """
+        List Limits
+
         Args:
           cursor: Return the page of entries after this one.
 
@@ -163,6 +170,8 @@ class AsyncLimits(AsyncAPIResource):
         extra_body: Body | None = None,
     ) -> Limit:
         """
+        Create a Limit
+
         Args:
           metric: The metric for the limit.
 
@@ -201,6 +210,7 @@ class AsyncLimits(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> Limit:
+        """Retrieve a Limit"""
         return await self._get(
             f"/limits/{limit_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
@@ -219,6 +229,8 @@ class AsyncLimits(AsyncAPIResource):
         extra_body: Body | None = None,
     ) -> Limit:
         """
+        Update a Limit
+
         Args:
           status: The status to update the limit with.
 
@@ -249,6 +261,8 @@ class AsyncLimits(AsyncAPIResource):
         extra_body: Body | None = None,
     ) -> AsyncPaginator[Limit, AsyncPage[Limit]]:
         """
+        List Limits
+
         Args:
           cursor: Return the page of entries after this one.
 

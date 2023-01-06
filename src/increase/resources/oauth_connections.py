@@ -22,6 +22,7 @@ class OauthConnections(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> OauthConnection:
+        """Retrieve an OAuth Connection"""
         return self._get(
             f"/oauth_connections/{oauth_connection_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
@@ -40,6 +41,8 @@ class OauthConnections(SyncAPIResource):
         extra_body: Body | None = None,
     ) -> SyncPage[OauthConnection]:
         """
+        List OAuth Connections
+
         Args:
           cursor: Return the page of entries after this one.
 
@@ -79,6 +82,7 @@ class AsyncOauthConnections(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> OauthConnection:
+        """Retrieve an OAuth Connection"""
         return await self._get(
             f"/oauth_connections/{oauth_connection_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
@@ -97,6 +101,8 @@ class AsyncOauthConnections(AsyncAPIResource):
         extra_body: Body | None = None,
     ) -> AsyncPaginator[OauthConnection, AsyncPage[OauthConnection]]:
         """
+        List OAuth Connections
+
         Args:
           cursor: Return the page of entries after this one.
 

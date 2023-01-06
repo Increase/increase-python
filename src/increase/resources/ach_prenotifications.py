@@ -40,6 +40,8 @@ class ACHPrenotifications(SyncAPIResource):
         extra_body: Body | None = None,
     ) -> ACHPrenotification:
         """
+        Create an ACH Prenotification
+
         Args:
           account_number: The account number for the destination account.
 
@@ -104,6 +106,7 @@ class ACHPrenotifications(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> ACHPrenotification:
+        """Retrieve an ACH Prenotification"""
         return self._get(
             f"/ach_prenotifications/{ach_prenotification_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
@@ -123,6 +126,8 @@ class ACHPrenotifications(SyncAPIResource):
         extra_body: Body | None = None,
     ) -> SyncPage[ACHPrenotification]:
         """
+        List ACH Prenotifications
+
         Args:
           cursor: Return the page of entries after this one.
 
@@ -178,6 +183,8 @@ class AsyncACHPrenotifications(AsyncAPIResource):
         extra_body: Body | None = None,
     ) -> ACHPrenotification:
         """
+        Create an ACH Prenotification
+
         Args:
           account_number: The account number for the destination account.
 
@@ -242,6 +249,7 @@ class AsyncACHPrenotifications(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> ACHPrenotification:
+        """Retrieve an ACH Prenotification"""
         return await self._get(
             f"/ach_prenotifications/{ach_prenotification_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
@@ -261,6 +269,8 @@ class AsyncACHPrenotifications(AsyncAPIResource):
         extra_body: Body | None = None,
     ) -> AsyncPaginator[ACHPrenotification, AsyncPage[ACHPrenotification]]:
         """
+        List ACH Prenotifications
+
         Args:
           cursor: Return the page of entries after this one.
 

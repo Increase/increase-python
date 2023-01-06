@@ -32,6 +32,8 @@ class CheckTransfers(SyncAPIResource):
         extra_body: Body | None = None,
     ) -> CheckTransfer:
         """
+        Create a Check Transfer
+
         Args:
           account_id: The identifier for the account that will send the transfer.
 
@@ -84,6 +86,7 @@ class CheckTransfers(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> CheckTransfer:
+        """Retrieve a Check Transfer"""
         return self._get(
             f"/check_transfers/{check_transfer_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
@@ -104,6 +107,8 @@ class CheckTransfers(SyncAPIResource):
         extra_body: Body | None = None,
     ) -> SyncPage[CheckTransfer]:
         """
+        List Check Transfers
+
         Args:
           cursor: Return the page of entries after this one.
 
@@ -145,6 +150,7 @@ class CheckTransfers(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> CheckTransfer:
+        """Request a stop payment on a Check Transfer"""
         return self._post(
             f"/check_transfers/{check_transfer_id}/stop_payment",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
@@ -172,6 +178,8 @@ class AsyncCheckTransfers(AsyncAPIResource):
         extra_body: Body | None = None,
     ) -> CheckTransfer:
         """
+        Create a Check Transfer
+
         Args:
           account_id: The identifier for the account that will send the transfer.
 
@@ -224,6 +232,7 @@ class AsyncCheckTransfers(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> CheckTransfer:
+        """Retrieve a Check Transfer"""
         return await self._get(
             f"/check_transfers/{check_transfer_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
@@ -244,6 +253,8 @@ class AsyncCheckTransfers(AsyncAPIResource):
         extra_body: Body | None = None,
     ) -> AsyncPaginator[CheckTransfer, AsyncPage[CheckTransfer]]:
         """
+        List Check Transfers
+
         Args:
           cursor: Return the page of entries after this one.
 
@@ -285,6 +296,7 @@ class AsyncCheckTransfers(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> CheckTransfer:
+        """Request a stop payment on a Check Transfer"""
         return await self._post(
             f"/check_transfers/{check_transfer_id}/stop_payment",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),

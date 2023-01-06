@@ -33,6 +33,8 @@ class WireTransfers(SyncAPIResource):
         extra_body: Body | None = None,
     ) -> WireTransfer:
         """
+        Create a Wire Transfer
+
         Args:
           account_id: The identifier for the account that will send the transfer.
 
@@ -90,6 +92,7 @@ class WireTransfers(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> WireTransfer:
+        """Retrieve a Wire Transfer"""
         return self._get(
             f"/wire_transfers/{wire_transfer_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
@@ -111,6 +114,8 @@ class WireTransfers(SyncAPIResource):
         extra_body: Body | None = None,
     ) -> SyncPage[WireTransfer]:
         """
+        List Wire Transfers
+
         Args:
           cursor: Return the page of entries after this one.
 
@@ -209,6 +214,8 @@ class AsyncWireTransfers(AsyncAPIResource):
         extra_body: Body | None = None,
     ) -> WireTransfer:
         """
+        Create a Wire Transfer
+
         Args:
           account_id: The identifier for the account that will send the transfer.
 
@@ -266,6 +273,7 @@ class AsyncWireTransfers(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> WireTransfer:
+        """Retrieve a Wire Transfer"""
         return await self._get(
             f"/wire_transfers/{wire_transfer_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
@@ -287,6 +295,8 @@ class AsyncWireTransfers(AsyncAPIResource):
         extra_body: Body | None = None,
     ) -> AsyncPaginator[WireTransfer, AsyncPage[WireTransfer]]:
         """
+        List Wire Transfers
+
         Args:
           cursor: Return the page of entries after this one.
 

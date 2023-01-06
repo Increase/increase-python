@@ -31,6 +31,8 @@ class WireDrawdownRequests(SyncAPIResource):
         extra_body: Body | None = None,
     ) -> WireDrawdownRequest:
         """
+        Create a Wire Drawdown Request
+
         Args:
           account_number_id: The Account Number to which the recipient should send funds.
 
@@ -83,6 +85,7 @@ class WireDrawdownRequests(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> WireDrawdownRequest:
+        """Retrieve a Wire Drawdown Request"""
         return self._get(
             f"/wire_drawdown_requests/{wire_drawdown_request_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
@@ -101,6 +104,8 @@ class WireDrawdownRequests(SyncAPIResource):
         extra_body: Body | None = None,
     ) -> SyncPage[WireDrawdownRequest]:
         """
+        List Wire Drawdown Requests
+
         Args:
           cursor: Return the page of entries after this one.
 
@@ -149,6 +154,8 @@ class AsyncWireDrawdownRequests(AsyncAPIResource):
         extra_body: Body | None = None,
     ) -> WireDrawdownRequest:
         """
+        Create a Wire Drawdown Request
+
         Args:
           account_number_id: The Account Number to which the recipient should send funds.
 
@@ -201,6 +208,7 @@ class AsyncWireDrawdownRequests(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> WireDrawdownRequest:
+        """Retrieve a Wire Drawdown Request"""
         return await self._get(
             f"/wire_drawdown_requests/{wire_drawdown_request_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
@@ -219,6 +227,8 @@ class AsyncWireDrawdownRequests(AsyncAPIResource):
         extra_body: Body | None = None,
     ) -> AsyncPaginator[WireDrawdownRequest, AsyncPage[WireDrawdownRequest]]:
         """
+        List Wire Drawdown Requests
+
         Args:
           cursor: Return the page of entries after this one.
 

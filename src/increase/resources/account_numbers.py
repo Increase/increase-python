@@ -26,6 +26,8 @@ class AccountNumbers(SyncAPIResource):
         extra_body: Body | None = None,
     ) -> AccountNumber:
         """
+        Create an Account Number
+
         Args:
           account_id: The Account the Account Number should belong to.
 
@@ -57,6 +59,7 @@ class AccountNumbers(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> AccountNumber:
+        """Retrieve an Account Number"""
         return self._get(
             f"/account_numbers/{account_number_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
@@ -76,6 +79,8 @@ class AccountNumbers(SyncAPIResource):
         extra_body: Body | None = None,
     ) -> AccountNumber:
         """
+        Update an Account Number
+
         Args:
           name: The name you choose for the Account Number.
 
@@ -111,6 +116,8 @@ class AccountNumbers(SyncAPIResource):
         extra_body: Body | None = None,
     ) -> SyncPage[AccountNumber]:
         """
+        List Account Numbers
+
         Args:
           cursor: Return the page of entries after this one.
 
@@ -158,6 +165,8 @@ class AsyncAccountNumbers(AsyncAPIResource):
         extra_body: Body | None = None,
     ) -> AccountNumber:
         """
+        Create an Account Number
+
         Args:
           account_id: The Account the Account Number should belong to.
 
@@ -189,6 +198,7 @@ class AsyncAccountNumbers(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> AccountNumber:
+        """Retrieve an Account Number"""
         return await self._get(
             f"/account_numbers/{account_number_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
@@ -208,6 +218,8 @@ class AsyncAccountNumbers(AsyncAPIResource):
         extra_body: Body | None = None,
     ) -> AccountNumber:
         """
+        Update an Account Number
+
         Args:
           name: The name you choose for the Account Number.
 
@@ -243,6 +255,8 @@ class AsyncAccountNumbers(AsyncAPIResource):
         extra_body: Body | None = None,
     ) -> AsyncPaginator[AccountNumber, AsyncPage[AccountNumber]]:
         """
+        List Account Numbers
+
         Args:
           cursor: Return the page of entries after this one.
 

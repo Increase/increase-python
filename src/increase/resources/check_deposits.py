@@ -28,6 +28,8 @@ class CheckDeposits(SyncAPIResource):
         extra_body: Body | None = None,
     ) -> CheckDeposit:
         """
+        Create a Check Deposit
+
         Args:
           account_id: The identifier for the Account to deposit the check in.
 
@@ -69,6 +71,7 @@ class CheckDeposits(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> CheckDeposit:
+        """Retrieve a Check Deposit"""
         return self._get(
             f"/check_deposits/{check_deposit_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
@@ -89,6 +92,8 @@ class CheckDeposits(SyncAPIResource):
         extra_body: Body | None = None,
     ) -> SyncPage[CheckDeposit]:
         """
+        List Check Deposits
+
         Args:
           cursor: Return the page of entries after this one.
 
@@ -137,6 +142,8 @@ class AsyncCheckDeposits(AsyncAPIResource):
         extra_body: Body | None = None,
     ) -> CheckDeposit:
         """
+        Create a Check Deposit
+
         Args:
           account_id: The identifier for the Account to deposit the check in.
 
@@ -178,6 +185,7 @@ class AsyncCheckDeposits(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> CheckDeposit:
+        """Retrieve a Check Deposit"""
         return await self._get(
             f"/check_deposits/{check_deposit_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
@@ -198,6 +206,8 @@ class AsyncCheckDeposits(AsyncAPIResource):
         extra_body: Body | None = None,
     ) -> AsyncPaginator[CheckDeposit, AsyncPage[CheckDeposit]]:
         """
+        List Check Deposits
+
         Args:
           cursor: Return the page of entries after this one.
 
