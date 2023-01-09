@@ -86,7 +86,7 @@ all_accounts = []
 for account in increase.accounts.list():
     # Do something with account here
     all_accounts.append(account)
-return all_accounts
+print(all_accounts)
 ```
 
 Or, asynchronously:
