@@ -4,13 +4,17 @@ from __future__ import annotations
 
 from typing_extensions import Literal
 
-from ..types import card_list_params, card_create_params, card_update_params
+from ..types import (
+    Card,
+    CardDetails,
+    card_list_params,
+    card_create_params,
+    card_update_params,
+)
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
-from ..types.card import Card
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.card_details import CardDetails
 
 __all__ = ["Cards", "AsyncCards"]
 

@@ -4,11 +4,11 @@ from __future__ import annotations
 
 from typing_extensions import Literal
 
+from ..types import AccountNumber
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.account_number import AccountNumber
 
 __all__ = ["AccountNumbers", "AsyncAccountNumbers"]
 

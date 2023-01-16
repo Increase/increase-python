@@ -2,12 +2,11 @@
 
 from __future__ import annotations
 
-from ..types import check_transfer_list_params
+from ..types import CheckTransfer, check_transfer_list_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.check_transfer import CheckTransfer
 
 __all__ = ["CheckTransfers", "AsyncCheckTransfers"]
 

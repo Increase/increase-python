@@ -1,9 +1,3 @@
-# Shared Types
-
-```python
-from increase.types import Entity, InboundDigitalWalletTokenRequestSimulationResult
-```
-
 # Accounts
 
 Types:
@@ -257,21 +251,15 @@ from increase.types import Entity
 
 Methods:
 
-- <code title="post /entities">client.entities.<a href="./src/increase/resources/entities/entities.py">create</a>(\*\*<a href="src/increase/types/entity_create_params.py">params</a>) -> <a href="./src/increase/types/shared/entity.py">shared.Entity</a></code>
-- <code title="get /entities/{entity_id}">client.entities.<a href="./src/increase/resources/entities/entities.py">retrieve</a>(entity_id) -> <a href="./src/increase/types/shared/entity.py">shared.Entity</a></code>
-- <code title="get /entities">client.entities.<a href="./src/increase/resources/entities/entities.py">list</a>(\*\*<a href="src/increase/types/entity_list_params.py">params</a>) -> <a href="./src/increase/types/shared/entity.py">SyncPage[shared.Entity]</a></code>
+- <code title="post /entities">client.entities.<a href="./src/increase/resources/entities/entities.py">create</a>(\*\*<a href="src/increase/types/entity_create_params.py">params</a>) -> <a href="./src/increase/types/entity.py">Entity</a></code>
+- <code title="get /entities/{entity_id}">client.entities.<a href="./src/increase/resources/entities/entities.py">retrieve</a>(entity_id) -> <a href="./src/increase/types/entity.py">Entity</a></code>
+- <code title="get /entities">client.entities.<a href="./src/increase/resources/entities/entities.py">list</a>(\*\*<a href="src/increase/types/entity_list_params.py">params</a>) -> <a href="./src/increase/types/entity.py">SyncPage[Entity]</a></code>
 
 ## SupplementalDocuments
 
-Types:
-
-```python
-from increase.types.entities import Entity
-```
-
 Methods:
 
-- <code title="post /entities/{entity_id}/supplemental_documents">client.entities.supplemental_documents.<a href="./src/increase/resources/entities/supplemental_documents.py">create</a>(entity_id, \*\*<a href="src/increase/types/entities/supplemental_document_create_params.py">params</a>) -> <a href="./src/increase/types/shared/entity.py">shared.Entity</a></code>
+- <code title="post /entities/{entity_id}/supplemental_documents">client.entities.supplemental_documents.<a href="./src/increase/resources/entities/supplemental_documents.py">create</a>(entity_id, \*\*<a href="src/increase/types/entities/supplemental_document_create_params.py">params</a>) -> <a href="./src/increase/types/entity.py">Entity</a></code>
 
 # WireDrawdownRequests
 
@@ -364,9 +352,9 @@ from increase.types import CheckDeposit
 
 Methods:
 
-- <code title="post /check_deposits">client.check_deposits.<a href="./src/increase/resources/check_deposits.py">create</a>(\*\*<a href="src/increase/types/check_deposit_create_params.py">params</a>) -> <a href="./src/increase/types/simulations/check_deposit.py">CheckDeposit</a></code>
-- <code title="get /check_deposits/{check_deposit_id}">client.check_deposits.<a href="./src/increase/resources/check_deposits.py">retrieve</a>(check_deposit_id) -> <a href="./src/increase/types/simulations/check_deposit.py">CheckDeposit</a></code>
-- <code title="get /check_deposits">client.check_deposits.<a href="./src/increase/resources/check_deposits.py">list</a>(\*\*<a href="src/increase/types/check_deposit_list_params.py">params</a>) -> <a href="./src/increase/types/simulations/check_deposit.py">SyncPage[CheckDeposit]</a></code>
+- <code title="post /check_deposits">client.check_deposits.<a href="./src/increase/resources/check_deposits.py">create</a>(\*\*<a href="src/increase/types/check_deposit_create_params.py">params</a>) -> <a href="./src/increase/types/check_deposit.py">CheckDeposit</a></code>
+- <code title="get /check_deposits/{check_deposit_id}">client.check_deposits.<a href="./src/increase/resources/check_deposits.py">retrieve</a>(check_deposit_id) -> <a href="./src/increase/types/check_deposit.py">CheckDeposit</a></code>
+- <code title="get /check_deposits">client.check_deposits.<a href="./src/increase/resources/check_deposits.py">list</a>(\*\*<a href="src/increase/types/check_deposit_list_params.py">params</a>) -> <a href="./src/increase/types/check_deposit.py">SyncPage[CheckDeposit]</a></code>
 
 # RoutingNumbers
 
@@ -397,23 +385,11 @@ Methods:
 
 ## AccountTransfers
 
-Types:
-
-```python
-from increase.types.simulations import AccountTransfer
-```
-
 Methods:
 
 - <code title="post /simulations/account_transfers/{account_transfer_id}/complete">client.simulations.account_transfers.<a href="./src/increase/resources/simulations/account_transfers.py">complete</a>(account_transfer_id) -> <a href="./src/increase/types/account_transfer.py">AccountTransfer</a></code>
 
 ## AccountStatements
-
-Types:
-
-```python
-from increase.types.simulations import AccountStatement
-```
 
 Methods:
 
@@ -424,7 +400,7 @@ Methods:
 Types:
 
 ```python
-from increase.types.simulations import ACHTransferSimulation, ACHTransfer
+from increase.types.simulations import ACHTransferSimulation
 ```
 
 Methods:
@@ -435,23 +411,11 @@ Methods:
 
 ## CardDisputes
 
-Types:
-
-```python
-from increase.types.simulations import CardDispute
-```
-
 Methods:
 
 - <code title="post /simulations/card_disputes/{card_dispute_id}/action">client.simulations.card_disputes.<a href="./src/increase/resources/simulations/card_disputes.py">action</a>(card_dispute_id, \*\*<a href="src/increase/types/simulations/card_dispute_action_params.py">params</a>) -> <a href="./src/increase/types/card_dispute.py">CardDispute</a></code>
 
 ## CheckTransfers
-
-Types:
-
-```python
-from increase.types.simulations import CheckTransfer
-```
 
 Methods:
 
@@ -462,25 +426,19 @@ Methods:
 Types:
 
 ```python
-from increase.types.simulations import InboundDigitalWalletTokenRequestSimulationResult
+from increase.types.simulations import DigitalWalletTokenRequestCreateResponse
 ```
 
 Methods:
 
-- <code title="post /simulations/digital_wallet_token_requests">client.simulations.digital_wallet_token_requests.<a href="./src/increase/resources/simulations/digital_wallet_token_requests.py">create</a>(\*\*<a href="src/increase/types/simulations/digital_wallet_token_request_create_params.py">params</a>) -> <a href="./src/increase/types/shared/inbound_digital_wallet_token_request_simulation_result.py">shared.InboundDigitalWalletTokenRequestSimulationResult</a></code>
+- <code title="post /simulations/digital_wallet_token_requests">client.simulations.digital_wallet_token_requests.<a href="./src/increase/resources/simulations/digital_wallet_token_requests.py">create</a>(\*\*<a href="src/increase/types/simulations/digital_wallet_token_request_create_params.py">params</a>) -> <a href="./src/increase/types/simulations/digital_wallet_token_request_create_response.py">DigitalWalletTokenRequestCreateResponse</a></code>
 
 ## CheckDeposits
 
-Types:
-
-```python
-from increase.types.simulations import CheckDeposit
-```
-
 Methods:
 
-- <code title="post /simulations/check_deposits/{check_deposit_id}/reject">client.simulations.check_deposits.<a href="./src/increase/resources/simulations/check_deposits.py">reject</a>(check_deposit_id) -> <a href="./src/increase/types/simulations/check_deposit.py">CheckDeposit</a></code>
-- <code title="post /simulations/check_deposits/{check_deposit_id}/submit">client.simulations.check_deposits.<a href="./src/increase/resources/simulations/check_deposits.py">submit</a>(check_deposit_id) -> <a href="./src/increase/types/simulations/check_deposit.py">CheckDeposit</a></code>
+- <code title="post /simulations/check_deposits/{check_deposit_id}/reject">client.simulations.check_deposits.<a href="./src/increase/resources/simulations/check_deposits.py">reject</a>(check_deposit_id) -> <a href="./src/increase/types/check_deposit.py">CheckDeposit</a></code>
+- <code title="post /simulations/check_deposits/{check_deposit_id}/submit">client.simulations.check_deposits.<a href="./src/increase/resources/simulations/check_deposits.py">submit</a>(check_deposit_id) -> <a href="./src/increase/types/check_deposit.py">CheckDeposit</a></code>
 
 ## WireTransfers
 
@@ -499,7 +457,7 @@ Methods:
 Types:
 
 ```python
-from increase.types.simulations import CardAuthorizationSimulation, Transaction
+from increase.types.simulations import CardAuthorizationSimulation
 ```
 
 Methods:

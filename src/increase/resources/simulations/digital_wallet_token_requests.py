@@ -2,10 +2,10 @@
 
 from __future__ import annotations
 
-from ...types import shared
 from ..._types import Body, Query, Headers
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._base_client import make_request_options
+from ...types.simulations import DigitalWalletTokenRequestCreateResponse
 
 __all__ = ["DigitalWalletTokenRequests", "AsyncDigitalWalletTokenRequests"]
 
@@ -20,7 +20,7 @@ class DigitalWalletTokenRequests(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-    ) -> shared.InboundDigitalWalletTokenRequestSimulationResult:
+    ) -> DigitalWalletTokenRequestCreateResponse:
         """
         Simulates a user attempting add a Card to a digital wallet such as Apple Pay.
 
@@ -37,7 +37,7 @@ class DigitalWalletTokenRequests(SyncAPIResource):
             "/simulations/digital_wallet_token_requests",
             body={"card_id": card_id},
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
-            cast_to=shared.InboundDigitalWalletTokenRequestSimulationResult,
+            cast_to=DigitalWalletTokenRequestCreateResponse,
         )
 
 
@@ -51,7 +51,7 @@ class AsyncDigitalWalletTokenRequests(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-    ) -> shared.InboundDigitalWalletTokenRequestSimulationResult:
+    ) -> DigitalWalletTokenRequestCreateResponse:
         """
         Simulates a user attempting add a Card to a digital wallet such as Apple Pay.
 
@@ -68,5 +68,5 @@ class AsyncDigitalWalletTokenRequests(AsyncAPIResource):
             "/simulations/digital_wallet_token_requests",
             body={"card_id": card_id},
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
-            cast_to=shared.InboundDigitalWalletTokenRequestSimulationResult,
+            cast_to=DigitalWalletTokenRequestCreateResponse,
         )

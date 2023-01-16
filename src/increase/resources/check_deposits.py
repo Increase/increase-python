@@ -2,12 +2,11 @@
 
 from __future__ import annotations
 
-from ..types import check_deposit_list_params
+from ..types import CheckDeposit, check_deposit_list_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.check_deposit import CheckDeposit
 
 __all__ = ["CheckDeposits", "AsyncCheckDeposits"]
 

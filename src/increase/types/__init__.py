@@ -7,10 +7,7 @@ from .file import File as File
 from .event import Event as Event
 from .group import Group as Group
 from .limit import Limit as Limit
-from .shared import Entity as Entity
-from .shared import (
-    InboundDigitalWalletTokenRequestSimulationResult as InboundDigitalWalletTokenRequestSimulationResult,
-)
+from .entity import Entity as Entity
 from .account import Account as Account
 from .transaction import Transaction as Transaction
 from .ach_transfer import ACHTransfer as ACHTransfer

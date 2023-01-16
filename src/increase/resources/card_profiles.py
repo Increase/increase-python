@@ -2,12 +2,11 @@
 
 from __future__ import annotations
 
-from ..types import card_profile_list_params, card_profile_create_params
+from ..types import CardProfile, card_profile_list_params, card_profile_create_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.card_profile import CardProfile
 
 __all__ = ["CardProfiles", "AsyncCardProfiles"]
 

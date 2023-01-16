@@ -2,13 +2,11 @@
 
 from __future__ import annotations
 
+from ...types import Transaction
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._base_client import make_request_options
-from ...types.simulations.transaction import Transaction
-from ...types.simulations.card_authorization_simulation import (
-    CardAuthorizationSimulation,
-)
+from ...types.simulations import CardAuthorizationSimulation
 
 __all__ = ["Cards", "AsyncCards"]
 

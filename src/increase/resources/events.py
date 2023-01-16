@@ -2,11 +2,10 @@
 
 from __future__ import annotations
 
-from ..types import event_list_params
+from ..types import Event, event_list_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
-from ..types.event import Event
 from .._base_client import AsyncPaginator, make_request_options
 
 __all__ = ["Events", "AsyncEvents"]

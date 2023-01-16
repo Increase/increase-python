@@ -1,16 +1,14 @@
 # File generated from our OpenAPI spec by Stainless.
 
-from __future__ import annotations
-
 from typing import Optional
 from typing_extensions import Literal
 
 from ..._models import BaseModel
 
-__all__ = ["InboundDigitalWalletTokenRequestSimulationResult"]
+__all__ = ["DigitalWalletTokenRequestCreateResponse"]
 
 
-class InboundDigitalWalletTokenRequestSimulationResult(BaseModel):
+class DigitalWalletTokenRequestCreateResponse(BaseModel):
     decline_reason: Optional[
         Literal["card_not_active", "no_verification_method", "webhook_timed_out", "webhook_declined"]
     ]

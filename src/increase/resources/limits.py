@@ -4,10 +4,10 @@ from __future__ import annotations
 
 from typing_extensions import Literal
 
+from ..types import Limit
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
-from ..types.limit import Limit
 from .._base_client import AsyncPaginator, make_request_options
 
 __all__ = ["Limits", "AsyncLimits"]

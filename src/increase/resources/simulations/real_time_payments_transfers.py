@@ -5,9 +5,7 @@ from __future__ import annotations
 from ..._types import Body, Query, Headers
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._base_client import make_request_options
-from ...types.simulations.inbound_real_time_payments_transfer_simulation_result import (
-    InboundRealTimePaymentsTransferSimulationResult,
-)
+from ...types.simulations import InboundRealTimePaymentsTransferSimulationResult
 
 __all__ = ["RealTimePaymentsTransfers", "AsyncRealTimePaymentsTransfers"]
 

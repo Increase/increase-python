@@ -2,10 +2,10 @@
 
 from __future__ import annotations
 
+from ...types import CheckDeposit
 from ..._types import Body, Query, Headers
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._base_client import make_request_options
-from ...types.simulations.check_deposit import CheckDeposit
 
 __all__ = ["CheckDeposits", "AsyncCheckDeposits"]
 

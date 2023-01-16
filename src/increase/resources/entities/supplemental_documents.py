@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from ...types import shared
+from ...types import Entity
 from ..._types import Body, Query, Headers
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._base_client import make_request_options
@@ -21,7 +21,7 @@ class SupplementalDocuments(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-    ) -> shared.Entity:
+    ) -> Entity:
         """
         Create a supplemental document for an Entity
 
@@ -38,7 +38,7 @@ class SupplementalDocuments(SyncAPIResource):
             f"/entities/{entity_id}/supplemental_documents",
             body={"file_id": file_id},
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
-            cast_to=shared.Entity,
+            cast_to=Entity,
         )
 
 
@@ -53,7 +53,7 @@ class AsyncSupplementalDocuments(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-    ) -> shared.Entity:
+    ) -> Entity:
         """
         Create a supplemental document for an Entity
 
@@ -70,5 +70,5 @@ class AsyncSupplementalDocuments(AsyncAPIResource):
             f"/entities/{entity_id}/supplemental_documents",
             body={"file_id": file_id},
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
-            cast_to=shared.Entity,
+            cast_to=Entity,
         )

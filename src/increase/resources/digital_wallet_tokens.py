@@ -2,12 +2,11 @@
 
 from __future__ import annotations
 
-from ..types import digital_wallet_token_list_params
+from ..types import DigitalWalletToken, digital_wallet_token_list_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.digital_wallet_token import DigitalWalletToken
 
 __all__ = ["DigitalWalletTokens", "AsyncDigitalWalletTokens"]
 

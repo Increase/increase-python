@@ -7,7 +7,7 @@ import os
 import pytest
 
 from increase import Increase, AsyncIncrease
-from increase.types.simulations.check_transfer import CheckTransfer
+from increase.types import CheckTransfer
 
 base_url = os.environ.get("API_BASE_URL", "http://127.0.0.1:4010")
 api_key = os.environ.get("API_KEY", "something1234")

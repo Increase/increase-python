@@ -5,7 +5,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, List
 from typing_extensions import Literal
 
-from ...types import shared, entity_create_params
+from ...types import Entity, entity_create_params
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ...pagination import SyncPage, AsyncPage
@@ -41,7 +41,7 @@ class Entities(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-    ) -> shared.Entity:
+    ) -> Entity:
         """
         Create an Entity
 
@@ -85,7 +85,7 @@ class Entities(SyncAPIResource):
                 "supplemental_documents": supplemental_documents,
             },
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
-            cast_to=shared.Entity,
+            cast_to=Entity,
         )
 
     def retrieve(
@@ -97,12 +97,12 @@ class Entities(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-    ) -> shared.Entity:
+    ) -> Entity:
         """Retrieve an Entity"""
         return self._get(
             f"/entities/{entity_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
-            cast_to=shared.Entity,
+            cast_to=Entity,
         )
 
     def list(
@@ -115,7 +115,7 @@ class Entities(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-    ) -> SyncPage[shared.Entity]:
+    ) -> SyncPage[Entity]:
         """
         List Entities
 
@@ -133,7 +133,7 @@ class Entities(SyncAPIResource):
         """
         return self._get_api_list(
             "/entities",
-            page=SyncPage[shared.Entity],
+            page=SyncPage[Entity],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -143,7 +143,7 @@ class Entities(SyncAPIResource):
                     "limit": limit,
                 },
             ),
-            model=shared.Entity,
+            model=Entity,
         )
 
 
@@ -170,7 +170,7 @@ class AsyncEntities(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-    ) -> shared.Entity:
+    ) -> Entity:
         """
         Create an Entity
 
@@ -214,7 +214,7 @@ class AsyncEntities(AsyncAPIResource):
                 "supplemental_documents": supplemental_documents,
             },
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
-            cast_to=shared.Entity,
+            cast_to=Entity,
         )
 
     async def retrieve(
@@ -226,12 +226,12 @@ class AsyncEntities(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-    ) -> shared.Entity:
+    ) -> Entity:
         """Retrieve an Entity"""
         return await self._get(
             f"/entities/{entity_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
-            cast_to=shared.Entity,
+            cast_to=Entity,
         )
 
     def list(
@@ -244,7 +244,7 @@ class AsyncEntities(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-    ) -> AsyncPaginator[shared.Entity, AsyncPage[shared.Entity]]:
+    ) -> AsyncPaginator[Entity, AsyncPage[Entity]]:
         """
         List Entities
 
@@ -262,7 +262,7 @@ class AsyncEntities(AsyncAPIResource):
         """
         return self._get_api_list(
             "/entities",
-            page=AsyncPage[shared.Entity],
+            page=AsyncPage[Entity],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -272,5 +272,5 @@ class AsyncEntities(AsyncAPIResource):
                     "limit": limit,
                 },
             ),
-            model=shared.Entity,
+            model=Entity,
         )

@@ -7,7 +7,7 @@ import os
 import pytest
 
 from increase import Increase, AsyncIncrease
-from increase.types import shared
+from increase.types.simulations import DigitalWalletTokenRequestCreateResponse
 
 base_url = os.environ.get("API_BASE_URL", "http://127.0.0.1:4010")
 api_key = os.environ.get("API_KEY", "something1234")
@@ -23,7 +23,7 @@ class TestDigitalWalletTokenRequests:
         resource = client.simulations.digital_wallet_token_requests.create(
             card_id="string",
         )
-        assert isinstance(resource, shared.InboundDigitalWalletTokenRequestSimulationResult)
+        assert isinstance(resource, DigitalWalletTokenRequestCreateResponse)
 
 
 class TestAsyncDigitalWalletTokenRequests:
@@ -36,4 +36,4 @@ class TestAsyncDigitalWalletTokenRequests:
         resource = await client.simulations.digital_wallet_token_requests.create(
             card_id="string",
         )
-        assert isinstance(resource, shared.InboundDigitalWalletTokenRequestSimulationResult)
+        assert isinstance(resource, DigitalWalletTokenRequestCreateResponse)

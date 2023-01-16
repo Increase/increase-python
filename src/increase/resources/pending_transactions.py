@@ -2,12 +2,11 @@
 
 from __future__ import annotations
 
-from ..types import pending_transaction_list_params
+from ..types import PendingTransaction, pending_transaction_list_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.pending_transaction import PendingTransaction
 
 __all__ = ["PendingTransactions", "AsyncPendingTransactions"]
 

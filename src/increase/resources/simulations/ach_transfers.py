@@ -2,11 +2,11 @@
 
 from __future__ import annotations
 
+from ...types import ACHTransfer
 from ..._types import Body, Query, Headers
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._base_client import make_request_options
-from ...types.simulations.ach_transfer import ACHTransfer
-from ...types.simulations.ach_transfer_simulation import ACHTransferSimulation
+from ...types.simulations import ACHTransferSimulation
 
 __all__ = ["ACHTransfers", "AsyncACHTransfers"]
 
