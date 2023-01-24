@@ -68,6 +68,9 @@ class ACHTransferCreateParams(TypedDict, total=False):
     This value is information and not verified by the recipient's bank.
     """
 
+    require_approval: bool
+    """Whether the transfer requires explicit approval via the dashboard or API."""
+
     routing_number: str
     """
     The American Bankers' Association (ABA) Routing Transit Number (RTN) for the

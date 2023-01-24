@@ -30,6 +30,7 @@ class ACHTransfers(SyncAPIResource):
         funding: Literal["checking", "savings"] | NotGiven = NOT_GIVEN,
         individual_id: str | NotGiven = NOT_GIVEN,
         individual_name: str | NotGiven = NOT_GIVEN,
+        require_approval: bool | NotGiven = NOT_GIVEN,
         routing_number: str | NotGiven = NOT_GIVEN,
         standard_entry_class_code: Literal[
             "corporate_credit_or_debit", "prearranged_payments_and_deposit", "internet_initiated"
@@ -77,6 +78,8 @@ class ACHTransfers(SyncAPIResource):
           individual_name: The name of the transfer recipient. This value is information and not verified
               by the recipient's bank.
 
+          require_approval: Whether the transfer requires explicit approval via the dashboard or API.
+
           routing_number: The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
               destination account.
 
@@ -107,6 +110,7 @@ class ACHTransfers(SyncAPIResource):
                 "funding": funding,
                 "individual_id": individual_id,
                 "individual_name": individual_name,
+                "require_approval": require_approval,
                 "routing_number": routing_number,
                 "standard_entry_class_code": standard_entry_class_code,
                 "statement_descriptor": statement_descriptor,
@@ -183,6 +187,40 @@ class ACHTransfers(SyncAPIResource):
             model=ACHTransfer,
         )
 
+    def approve(
+        self,
+        ach_transfer_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+    ) -> ACHTransfer:
+        """Approve an ACH Transfer"""
+        return self._post(
+            f"/ach_transfers/{ach_transfer_id}/approve",
+            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            cast_to=ACHTransfer,
+        )
+
+    def cancel(
+        self,
+        ach_transfer_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+    ) -> ACHTransfer:
+        """Cancel a pending ACH Transfer"""
+        return self._post(
+            f"/ach_transfers/{ach_transfer_id}/cancel",
+            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            cast_to=ACHTransfer,
+        )
+
 
 class AsyncACHTransfers(AsyncAPIResource):
     async def create(
@@ -201,6 +239,7 @@ class AsyncACHTransfers(AsyncAPIResource):
         funding: Literal["checking", "savings"] | NotGiven = NOT_GIVEN,
         individual_id: str | NotGiven = NOT_GIVEN,
         individual_name: str | NotGiven = NOT_GIVEN,
+        require_approval: bool | NotGiven = NOT_GIVEN,
         routing_number: str | NotGiven = NOT_GIVEN,
         standard_entry_class_code: Literal[
             "corporate_credit_or_debit", "prearranged_payments_and_deposit", "internet_initiated"
@@ -248,6 +287,8 @@ class AsyncACHTransfers(AsyncAPIResource):
           individual_name: The name of the transfer recipient. This value is information and not verified
               by the recipient's bank.
 
+          require_approval: Whether the transfer requires explicit approval via the dashboard or API.
+
           routing_number: The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
               destination account.
 
@@ -278,6 +319,7 @@ class AsyncACHTransfers(AsyncAPIResource):
                 "funding": funding,
                 "individual_id": individual_id,
                 "individual_name": individual_name,
+                "require_approval": require_approval,
                 "routing_number": routing_number,
                 "standard_entry_class_code": standard_entry_class_code,
                 "statement_descriptor": statement_descriptor,
@@ -352,4 +394,38 @@ class AsyncACHTransfers(AsyncAPIResource):
                 },
             ),
             model=ACHTransfer,
+        )
+
+    async def approve(
+        self,
+        ach_transfer_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+    ) -> ACHTransfer:
+        """Approve an ACH Transfer"""
+        return await self._post(
+            f"/ach_transfers/{ach_transfer_id}/approve",
+            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            cast_to=ACHTransfer,
+        )
+
+    async def cancel(
+        self,
+        ach_transfer_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+    ) -> ACHTransfer:
+        """Cancel a pending ACH Transfer"""
+        return await self._post(
+            f"/ach_transfers/{ach_transfer_id}/cancel",
+            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            cast_to=ACHTransfer,
         )

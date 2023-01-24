@@ -9,6 +9,7 @@ from .group import Group as Group
 from .limit import Limit as Limit
 from .entity import Entity as Entity
 from .account import Account as Account
+from .document import Document as Document
 from .transaction import Transaction as Transaction
 from .ach_transfer import ACHTransfer as ACHTransfer
 from .card_details import CardDetails as CardDetails
@@ -40,6 +41,7 @@ from .limit_update_params import LimitUpdateParams as LimitUpdateParams
 from .pending_transaction import PendingTransaction as PendingTransaction
 from .declined_transaction import DeclinedTransaction as DeclinedTransaction
 from .digital_wallet_token import DigitalWalletToken as DigitalWalletToken
+from .document_list_params import DocumentListParams as DocumentListParams
 from .entity_create_params import EntityCreateParams as EntityCreateParams
 from .account_create_params import AccountCreateParams as AccountCreateParams
 from .account_update_params import AccountUpdateParams as AccountUpdateParams

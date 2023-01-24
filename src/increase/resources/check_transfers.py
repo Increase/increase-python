@@ -2,7 +2,11 @@
 
 from __future__ import annotations
 
-from ..types import CheckTransfer, check_transfer_list_params
+from ..types import (
+    CheckTransfer,
+    check_transfer_list_params,
+    check_transfer_create_params,
+)
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
@@ -21,9 +25,11 @@ class CheckTransfers(SyncAPIResource):
         address_city: str,
         address_state: str,
         address_zip: str,
+        return_address: check_transfer_create_params.ReturnAddress | NotGiven = NOT_GIVEN,
         amount: int,
         message: str,
         recipient_name: str,
+        require_approval: bool | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -46,11 +52,16 @@ class CheckTransfers(SyncAPIResource):
 
           address_zip: The postal code of the check's destination.
 
+          return_address: The return address to be printed on the check. If omitted this will default to
+              the address of the Entity of the Account used to make the Check Transfer.
+
           amount: The transfer amount in cents.
 
           message: The descriptor that will be printed on the check.
 
           recipient_name: The name that will be printed on the check.
+
+          require_approval: Whether the transfer requires explicit approval via the dashboard or API.
 
           extra_headers: Send extra headers
 
@@ -67,9 +78,11 @@ class CheckTransfers(SyncAPIResource):
                 "address_city": address_city,
                 "address_state": address_state,
                 "address_zip": address_zip,
+                "return_address": return_address,
                 "amount": amount,
                 "message": message,
                 "recipient_name": recipient_name,
+                "require_approval": require_approval,
             },
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=CheckTransfer,
@@ -139,6 +152,40 @@ class CheckTransfers(SyncAPIResource):
             model=CheckTransfer,
         )
 
+    def approve(
+        self,
+        check_transfer_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+    ) -> CheckTransfer:
+        """Approve a Check Transfer"""
+        return self._post(
+            f"/check_transfers/{check_transfer_id}/approve",
+            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            cast_to=CheckTransfer,
+        )
+
+    def cancel(
+        self,
+        check_transfer_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+    ) -> CheckTransfer:
+        """Cancel a pending Check Transfer"""
+        return self._post(
+            f"/check_transfers/{check_transfer_id}/cancel",
+            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            cast_to=CheckTransfer,
+        )
+
     def stop_payment(
         self,
         check_transfer_id: str,
@@ -167,9 +214,11 @@ class AsyncCheckTransfers(AsyncAPIResource):
         address_city: str,
         address_state: str,
         address_zip: str,
+        return_address: check_transfer_create_params.ReturnAddress | NotGiven = NOT_GIVEN,
         amount: int,
         message: str,
         recipient_name: str,
+        require_approval: bool | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -192,11 +241,16 @@ class AsyncCheckTransfers(AsyncAPIResource):
 
           address_zip: The postal code of the check's destination.
 
+          return_address: The return address to be printed on the check. If omitted this will default to
+              the address of the Entity of the Account used to make the Check Transfer.
+
           amount: The transfer amount in cents.
 
           message: The descriptor that will be printed on the check.
 
           recipient_name: The name that will be printed on the check.
+
+          require_approval: Whether the transfer requires explicit approval via the dashboard or API.
 
           extra_headers: Send extra headers
 
@@ -213,9 +267,11 @@ class AsyncCheckTransfers(AsyncAPIResource):
                 "address_city": address_city,
                 "address_state": address_state,
                 "address_zip": address_zip,
+                "return_address": return_address,
                 "amount": amount,
                 "message": message,
                 "recipient_name": recipient_name,
+                "require_approval": require_approval,
             },
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=CheckTransfer,
@@ -283,6 +339,40 @@ class AsyncCheckTransfers(AsyncAPIResource):
                 },
             ),
             model=CheckTransfer,
+        )
+
+    async def approve(
+        self,
+        check_transfer_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+    ) -> CheckTransfer:
+        """Approve a Check Transfer"""
+        return await self._post(
+            f"/check_transfers/{check_transfer_id}/approve",
+            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            cast_to=CheckTransfer,
+        )
+
+    async def cancel(
+        self,
+        check_transfer_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+    ) -> CheckTransfer:
+        """Cancel a pending Check Transfer"""
+        return await self._post(
+            f"/check_transfers/{check_transfer_id}/cancel",
+            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            cast_to=CheckTransfer,
         )
 
     async def stop_payment(

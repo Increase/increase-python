@@ -22,8 +22,9 @@ class CheckDeposits(SyncAPIResource):
         extra_body: Body | None = None,
     ) -> CheckDeposit:
         """
-        Simulates the rejection of a Check Deposit by Increase due to factors like poor
-        image quality. This Check Deposit must first have a `status` of `pending`.
+        Simulates the rejection of a [Check Deposit](#check-deposits) by Increase due to
+        factors like poor image quality. This Check Deposit must first have a `status`
+        of `pending`.
         """
         return self._post(
             f"/simulations/check_deposits/{check_deposit_id}/reject",
@@ -41,10 +42,9 @@ class CheckDeposits(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> CheckDeposit:
-        """Simulates the submission of a Check Deposit to the Federal Reserve.
-
-        This Check
-        Deposit must first have a `status` of `pending`.
+        """
+        Simulates the submission of a [Check Deposit](#check-deposits) to the Federal
+        Reserve. This Check Deposit must first have a `status` of `pending`.
         """
         return self._post(
             f"/simulations/check_deposits/{check_deposit_id}/submit",
@@ -65,8 +65,9 @@ class AsyncCheckDeposits(AsyncAPIResource):
         extra_body: Body | None = None,
     ) -> CheckDeposit:
         """
-        Simulates the rejection of a Check Deposit by Increase due to factors like poor
-        image quality. This Check Deposit must first have a `status` of `pending`.
+        Simulates the rejection of a [Check Deposit](#check-deposits) by Increase due to
+        factors like poor image quality. This Check Deposit must first have a `status`
+        of `pending`.
         """
         return await self._post(
             f"/simulations/check_deposits/{check_deposit_id}/reject",
@@ -84,10 +85,9 @@ class AsyncCheckDeposits(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> CheckDeposit:
-        """Simulates the submission of a Check Deposit to the Federal Reserve.
-
-        This Check
-        Deposit must first have a `status` of `pending`.
+        """
+        Simulates the submission of a [Check Deposit](#check-deposits) to the Federal
+        Reserve. This Check Deposit must first have a `status` of `pending`.
         """
         return await self._post(
             f"/simulations/check_deposits/{check_deposit_id}/submit",

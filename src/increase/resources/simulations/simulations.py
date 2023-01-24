@@ -5,7 +5,9 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 from .cards import Cards, AsyncCards
+from .documents import Documents, AsyncDocuments
 from ..._resource import SyncAPIResource, AsyncAPIResource
+from .card_refunds import CardRefunds, AsyncCardRefunds
 from .ach_transfers import ACHTransfers, AsyncACHTransfers
 from .card_disputes import CardDisputes, AsyncCardDisputes
 from .check_deposits import CheckDeposits, AsyncCheckDeposits
@@ -33,7 +35,9 @@ class Simulations(SyncAPIResource):
     account_statements: AccountStatements
     ach_transfers: ACHTransfers
     card_disputes: CardDisputes
+    card_refunds: CardRefunds
     check_transfers: CheckTransfers
+    documents: Documents
     digital_wallet_token_requests: DigitalWalletTokenRequests
     check_deposits: CheckDeposits
     wire_transfers: WireTransfers
@@ -46,7 +50,9 @@ class Simulations(SyncAPIResource):
         self.account_statements = AccountStatements(client)
         self.ach_transfers = ACHTransfers(client)
         self.card_disputes = CardDisputes(client)
+        self.card_refunds = CardRefunds(client)
         self.check_transfers = CheckTransfers(client)
+        self.documents = Documents(client)
         self.digital_wallet_token_requests = DigitalWalletTokenRequests(client)
         self.check_deposits = CheckDeposits(client)
         self.wire_transfers = WireTransfers(client)
@@ -59,7 +65,9 @@ class AsyncSimulations(AsyncAPIResource):
     account_statements: AsyncAccountStatements
     ach_transfers: AsyncACHTransfers
     card_disputes: AsyncCardDisputes
+    card_refunds: AsyncCardRefunds
     check_transfers: AsyncCheckTransfers
+    documents: AsyncDocuments
     digital_wallet_token_requests: AsyncDigitalWalletTokenRequests
     check_deposits: AsyncCheckDeposits
     wire_transfers: AsyncWireTransfers
@@ -72,7 +80,9 @@ class AsyncSimulations(AsyncAPIResource):
         self.account_statements = AsyncAccountStatements(client)
         self.ach_transfers = AsyncACHTransfers(client)
         self.card_disputes = AsyncCardDisputes(client)
+        self.card_refunds = AsyncCardRefunds(client)
         self.check_transfers = AsyncCheckTransfers(client)
+        self.documents = AsyncDocuments(client)
         self.digital_wallet_token_requests = AsyncDigitalWalletTokenRequests(client)
         self.check_deposits = AsyncCheckDeposits(client)
         self.wire_transfers = AsyncWireTransfers(client)

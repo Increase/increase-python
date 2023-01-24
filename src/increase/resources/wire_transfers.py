@@ -21,10 +21,11 @@ class WireTransfers(SyncAPIResource):
         external_account_id: str | NotGiven = NOT_GIVEN,
         amount: int,
         message_to_recipient: str,
-        beneficiary_name: str | NotGiven = NOT_GIVEN,
+        beneficiary_name: str,
         beneficiary_address_line1: str | NotGiven = NOT_GIVEN,
         beneficiary_address_line2: str | NotGiven = NOT_GIVEN,
         beneficiary_address_line3: str | NotGiven = NOT_GIVEN,
+        require_approval: bool | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -57,6 +58,8 @@ class WireTransfers(SyncAPIResource):
 
           beneficiary_address_line3: The beneficiary's address line 3.
 
+          require_approval: Whether the transfer requires explicit approval via the dashboard or API.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -76,6 +79,7 @@ class WireTransfers(SyncAPIResource):
                 "beneficiary_address_line1": beneficiary_address_line1,
                 "beneficiary_address_line2": beneficiary_address_line2,
                 "beneficiary_address_line3": beneficiary_address_line3,
+                "require_approval": require_approval,
             },
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=WireTransfer,
@@ -149,6 +153,40 @@ class WireTransfers(SyncAPIResource):
             model=WireTransfer,
         )
 
+    def approve(
+        self,
+        wire_transfer_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+    ) -> WireTransfer:
+        """Approve a Wire Transfer"""
+        return self._post(
+            f"/wire_transfers/{wire_transfer_id}/approve",
+            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            cast_to=WireTransfer,
+        )
+
+    def cancel(
+        self,
+        wire_transfer_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+    ) -> WireTransfer:
+        """Cancel a pending Wire Transfer"""
+        return self._post(
+            f"/wire_transfers/{wire_transfer_id}/cancel",
+            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            cast_to=WireTransfer,
+        )
+
     def reverse(
         self,
         wire_transfer_id: str,
@@ -160,9 +198,10 @@ class WireTransfers(SyncAPIResource):
         extra_body: Body | None = None,
     ) -> WireTransfer:
         """
-        Simulates the reversal of an Wire Transfer by the Federal Reserve due to error
-        conditions. This will also create a Transaction to account for the returned
-        funds. This transfer must first have a `status` of `complete`.
+        Simulates the reversal of a [Wire Transfer](#wire-transfers) by the Federal
+        Reserve due to error conditions. This will also create a
+        [Transaction](#transaction) to account for the returned funds. This Wire
+        Transfer must first have a `status` of `complete`.'
         """
         return self._post(
             f"/simulations/wire_transfers/{wire_transfer_id}/reverse",
@@ -180,10 +219,10 @@ class WireTransfers(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> WireTransfer:
-        """Simulates the submission of a Wire Transfer to the Federal Reserve.
-
-        This
-        transfer must first have a `status` of `pending_approval` or `pending_creating`.
+        """
+        Simulates the submission of a [Wire Transfer](#wire-transfers) to the Federal
+        Reserve. This transfer must first have a `status` of `pending_approval` or
+        `pending_creating`.
         """
         return self._post(
             f"/simulations/wire_transfers/{wire_transfer_id}/submit",
@@ -202,10 +241,11 @@ class AsyncWireTransfers(AsyncAPIResource):
         external_account_id: str | NotGiven = NOT_GIVEN,
         amount: int,
         message_to_recipient: str,
-        beneficiary_name: str | NotGiven = NOT_GIVEN,
+        beneficiary_name: str,
         beneficiary_address_line1: str | NotGiven = NOT_GIVEN,
         beneficiary_address_line2: str | NotGiven = NOT_GIVEN,
         beneficiary_address_line3: str | NotGiven = NOT_GIVEN,
+        require_approval: bool | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -238,6 +278,8 @@ class AsyncWireTransfers(AsyncAPIResource):
 
           beneficiary_address_line3: The beneficiary's address line 3.
 
+          require_approval: Whether the transfer requires explicit approval via the dashboard or API.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -257,6 +299,7 @@ class AsyncWireTransfers(AsyncAPIResource):
                 "beneficiary_address_line1": beneficiary_address_line1,
                 "beneficiary_address_line2": beneficiary_address_line2,
                 "beneficiary_address_line3": beneficiary_address_line3,
+                "require_approval": require_approval,
             },
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=WireTransfer,
@@ -330,6 +373,40 @@ class AsyncWireTransfers(AsyncAPIResource):
             model=WireTransfer,
         )
 
+    async def approve(
+        self,
+        wire_transfer_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+    ) -> WireTransfer:
+        """Approve a Wire Transfer"""
+        return await self._post(
+            f"/wire_transfers/{wire_transfer_id}/approve",
+            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            cast_to=WireTransfer,
+        )
+
+    async def cancel(
+        self,
+        wire_transfer_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+    ) -> WireTransfer:
+        """Cancel a pending Wire Transfer"""
+        return await self._post(
+            f"/wire_transfers/{wire_transfer_id}/cancel",
+            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            cast_to=WireTransfer,
+        )
+
     async def reverse(
         self,
         wire_transfer_id: str,
@@ -341,9 +418,10 @@ class AsyncWireTransfers(AsyncAPIResource):
         extra_body: Body | None = None,
     ) -> WireTransfer:
         """
-        Simulates the reversal of an Wire Transfer by the Federal Reserve due to error
-        conditions. This will also create a Transaction to account for the returned
-        funds. This transfer must first have a `status` of `complete`.
+        Simulates the reversal of a [Wire Transfer](#wire-transfers) by the Federal
+        Reserve due to error conditions. This will also create a
+        [Transaction](#transaction) to account for the returned funds. This Wire
+        Transfer must first have a `status` of `complete`.'
         """
         return await self._post(
             f"/simulations/wire_transfers/{wire_transfer_id}/reverse",
@@ -361,10 +439,10 @@ class AsyncWireTransfers(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> WireTransfer:
-        """Simulates the submission of a Wire Transfer to the Federal Reserve.
-
-        This
-        transfer must first have a `status` of `pending_approval` or `pending_creating`.
+        """
+        Simulates the submission of a [Wire Transfer](#wire-transfers) to the Federal
+        Reserve. This transfer must first have a `status` of `pending_approval` or
+        `pending_creating`.
         """
         return await self._post(
             f"/simulations/wire_transfers/{wire_transfer_id}/submit",

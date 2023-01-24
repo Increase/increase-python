@@ -2,31 +2,33 @@
 
 from __future__ import annotations
 
+from ...types import Transaction
 from ..._types import Body, Query, Headers
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._base_client import make_request_options
-from ...types.simulations import DigitalWalletTokenRequestCreateResponse
 
-__all__ = ["DigitalWalletTokenRequests", "AsyncDigitalWalletTokenRequests"]
+__all__ = ["CardRefunds", "AsyncCardRefunds"]
 
 
-class DigitalWalletTokenRequests(SyncAPIResource):
+class CardRefunds(SyncAPIResource):
     def create(
         self,
         *,
-        card_id: str,
+        transaction_id: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-    ) -> DigitalWalletTokenRequestCreateResponse:
-        """
-        Simulates a user attempting add a [Card](#cards) to a digital wallet such as
-        Apple Pay.
+    ) -> Transaction:
+        """Simulates refunding a card transaction.
+
+        The full value of the original sandbox
+        transaction is refunded.
 
         Args:
-          card_id: The identifier of the Card to be authorized.
+          transaction_id: The identifier for the Transaction to refund. The Transaction's source must have
+              a category of card_settlement.
 
           extra_headers: Send extra headers
 
@@ -35,30 +37,32 @@ class DigitalWalletTokenRequests(SyncAPIResource):
           extra_body: Add additional JSON properties to the request
         """
         return self._post(
-            "/simulations/digital_wallet_token_requests",
-            body={"card_id": card_id},
+            "/simulations/card_refunds",
+            body={"transaction_id": transaction_id},
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
-            cast_to=DigitalWalletTokenRequestCreateResponse,
+            cast_to=Transaction,
         )
 
 
-class AsyncDigitalWalletTokenRequests(AsyncAPIResource):
+class AsyncCardRefunds(AsyncAPIResource):
     async def create(
         self,
         *,
-        card_id: str,
+        transaction_id: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-    ) -> DigitalWalletTokenRequestCreateResponse:
-        """
-        Simulates a user attempting add a [Card](#cards) to a digital wallet such as
-        Apple Pay.
+    ) -> Transaction:
+        """Simulates refunding a card transaction.
+
+        The full value of the original sandbox
+        transaction is refunded.
 
         Args:
-          card_id: The identifier of the Card to be authorized.
+          transaction_id: The identifier for the Transaction to refund. The Transaction's source must have
+              a category of card_settlement.
 
           extra_headers: Send extra headers
 
@@ -67,8 +71,8 @@ class AsyncDigitalWalletTokenRequests(AsyncAPIResource):
           extra_body: Add additional JSON properties to the request
         """
         return await self._post(
-            "/simulations/digital_wallet_token_requests",
-            body={"card_id": card_id},
+            "/simulations/card_refunds",
+            body={"transaction_id": transaction_id},
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
-            cast_to=DigitalWalletTokenRequestCreateResponse,
+            cast_to=Transaction,
         )

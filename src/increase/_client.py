@@ -59,6 +59,7 @@ class Increase(SyncAPIClient):
     account_transfers: resources.AccountTransfers
     ach_transfers: resources.ACHTransfers
     ach_prenotifications: resources.ACHPrenotifications
+    documents: resources.Documents
     wire_transfers: resources.WireTransfers
     check_transfers: resources.CheckTransfers
     entities: resources.Entities
@@ -149,6 +150,7 @@ class Increase(SyncAPIClient):
         self.account_transfers = resources.AccountTransfers(self)
         self.ach_transfers = resources.ACHTransfers(self)
         self.ach_prenotifications = resources.ACHPrenotifications(self)
+        self.documents = resources.Documents(self)
         self.wire_transfers = resources.WireTransfers(self)
         self.check_transfers = resources.CheckTransfers(self)
         self.entities = resources.Entities(self)
@@ -240,6 +242,7 @@ class AsyncIncrease(AsyncAPIClient):
     account_transfers: resources.AsyncAccountTransfers
     ach_transfers: resources.AsyncACHTransfers
     ach_prenotifications: resources.AsyncACHPrenotifications
+    documents: resources.AsyncDocuments
     wire_transfers: resources.AsyncWireTransfers
     check_transfers: resources.AsyncCheckTransfers
     entities: resources.AsyncEntities
@@ -330,6 +333,7 @@ class AsyncIncrease(AsyncAPIClient):
         self.account_transfers = resources.AsyncAccountTransfers(self)
         self.ach_transfers = resources.AsyncACHTransfers(self)
         self.ach_prenotifications = resources.AsyncACHPrenotifications(self)
+        self.documents = resources.AsyncDocuments(self)
         self.wire_transfers = resources.AsyncWireTransfers(self)
         self.check_transfers = resources.AsyncCheckTransfers(self)
         self.entities = resources.AsyncEntities(self)

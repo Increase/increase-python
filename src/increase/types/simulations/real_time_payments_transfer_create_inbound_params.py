@@ -16,3 +16,20 @@ class RealTimePaymentsTransferCreateInboundParams(TypedDict, total=False):
 
     amount: Required[int]
     """The transfer amount in USD cents. Must be positive."""
+
+    debtor_account_number: str
+    """The account number of the account that sent the transfer."""
+
+    debtor_name: str
+    """The name provided by the sender of the transfer."""
+
+    debtor_routing_number: str
+    """The routing number of the account that sent the transfer."""
+
+    remittance_information: str
+    """Additional information included with the transfer."""
+
+    request_for_payment_id: str
+    """
+    The identifier of a pending Request for Payment that this transfer will fulfill.
+    """

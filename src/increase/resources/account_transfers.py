@@ -19,6 +19,7 @@ class AccountTransfers(SyncAPIResource):
         amount: int,
         description: str,
         destination_account_id: str,
+        require_approval: bool | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -38,6 +39,8 @@ class AccountTransfers(SyncAPIResource):
 
           destination_account_id: The identifier for the account that will receive the transfer.
 
+          require_approval: Whether the transfer requires explicit approval via the dashboard or API.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -51,6 +54,7 @@ class AccountTransfers(SyncAPIResource):
                 "amount": amount,
                 "description": description,
                 "destination_account_id": destination_account_id,
+                "require_approval": require_approval,
             },
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=AccountTransfer,
@@ -120,6 +124,40 @@ class AccountTransfers(SyncAPIResource):
             model=AccountTransfer,
         )
 
+    def approve(
+        self,
+        account_transfer_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+    ) -> AccountTransfer:
+        """Approve an Account Transfer"""
+        return self._post(
+            f"/account_transfers/{account_transfer_id}/approve",
+            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            cast_to=AccountTransfer,
+        )
+
+    def cancel(
+        self,
+        account_transfer_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+    ) -> AccountTransfer:
+        """Cancel an Account Transfer"""
+        return self._post(
+            f"/account_transfers/{account_transfer_id}/cancel",
+            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            cast_to=AccountTransfer,
+        )
+
 
 class AsyncAccountTransfers(AsyncAPIResource):
     async def create(
@@ -129,6 +167,7 @@ class AsyncAccountTransfers(AsyncAPIResource):
         amount: int,
         description: str,
         destination_account_id: str,
+        require_approval: bool | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -148,6 +187,8 @@ class AsyncAccountTransfers(AsyncAPIResource):
 
           destination_account_id: The identifier for the account that will receive the transfer.
 
+          require_approval: Whether the transfer requires explicit approval via the dashboard or API.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -161,6 +202,7 @@ class AsyncAccountTransfers(AsyncAPIResource):
                 "amount": amount,
                 "description": description,
                 "destination_account_id": destination_account_id,
+                "require_approval": require_approval,
             },
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=AccountTransfer,
@@ -228,4 +270,38 @@ class AsyncAccountTransfers(AsyncAPIResource):
                 },
             ),
             model=AccountTransfer,
+        )
+
+    async def approve(
+        self,
+        account_transfer_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+    ) -> AccountTransfer:
+        """Approve an Account Transfer"""
+        return await self._post(
+            f"/account_transfers/{account_transfer_id}/approve",
+            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            cast_to=AccountTransfer,
+        )
+
+    async def cancel(
+        self,
+        account_transfer_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+    ) -> AccountTransfer:
+        """Cancel an Account Transfer"""
+        return await self._post(
+            f"/account_transfers/{account_transfer_id}/cancel",
+            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            cast_to=AccountTransfer,
         )

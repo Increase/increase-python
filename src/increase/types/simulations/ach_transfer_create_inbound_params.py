@@ -18,3 +18,18 @@ class ACHTransferCreateInboundParams(TypedDict, total=False):
     account. A negative amount originates a debit transfer pulling funds from the
     receiving account.
     """
+
+    company_descriptive_date: str
+    """The description of the date of the transfer."""
+
+    company_discretionary_data: str
+    """Data associated with the transfer set by the sender."""
+
+    company_entry_description: str
+    """The description of the transfer set by the sender."""
+
+    company_id: str
+    """The sender's company id."""
+
+    company_name: str
+    """The name of the sender."""

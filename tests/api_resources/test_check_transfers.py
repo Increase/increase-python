@@ -42,9 +42,18 @@ class TestCheckTransfers:
             address_city="x",
             address_state="x",
             address_zip="x",
+            return_address={
+                "name": "x",
+                "line1": "x",
+                "line2": "x",
+                "city": "x",
+                "state": "x",
+                "zip": "x",
+            },
             amount=0,
             message="x",
             recipient_name="x",
+            require_approval=True,
         )
         assert isinstance(resource, CheckTransfer)
 
@@ -74,6 +83,20 @@ class TestCheckTransfers:
             },
         )
         assert isinstance(resource, SyncPage)
+
+    @parametrize
+    def test_method_approve(self, client: Increase) -> None:
+        resource = client.check_transfers.approve(
+            "string",
+        )
+        assert isinstance(resource, CheckTransfer)
+
+    @parametrize
+    def test_method_cancel(self, client: Increase) -> None:
+        resource = client.check_transfers.cancel(
+            "string",
+        )
+        assert isinstance(resource, CheckTransfer)
 
     @pytest.mark.skip(reason="Prism doesn't accept no request body being sent but returns 415 if it is sent")
     @parametrize
@@ -112,9 +135,18 @@ class TestAsyncCheckTransfers:
             address_city="x",
             address_state="x",
             address_zip="x",
+            return_address={
+                "name": "x",
+                "line1": "x",
+                "line2": "x",
+                "city": "x",
+                "state": "x",
+                "zip": "x",
+            },
             amount=0,
             message="x",
             recipient_name="x",
+            require_approval=True,
         )
         assert isinstance(resource, CheckTransfer)
 
@@ -144,6 +176,20 @@ class TestAsyncCheckTransfers:
             },
         )
         assert isinstance(resource, AsyncPage)
+
+    @parametrize
+    async def test_method_approve(self, client: AsyncIncrease) -> None:
+        resource = await client.check_transfers.approve(
+            "string",
+        )
+        assert isinstance(resource, CheckTransfer)
+
+    @parametrize
+    async def test_method_cancel(self, client: AsyncIncrease) -> None:
+        resource = await client.check_transfers.cancel(
+            "string",
+        )
+        assert isinstance(resource, CheckTransfer)
 
     @pytest.mark.skip(reason="Prism doesn't accept no request body being sent but returns 415 if it is sent")
     @parametrize

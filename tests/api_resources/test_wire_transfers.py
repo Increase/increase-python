@@ -25,6 +25,7 @@ class TestWireTransfers:
             account_id="string",
             amount=0,
             message_to_recipient="x",
+            beneficiary_name="x",
         )
         assert isinstance(resource, WireTransfer)
 
@@ -41,6 +42,7 @@ class TestWireTransfers:
             beneficiary_address_line1="x",
             beneficiary_address_line2="x",
             beneficiary_address_line3="x",
+            require_approval=True,
         )
         assert isinstance(resource, WireTransfer)
 
@@ -72,6 +74,20 @@ class TestWireTransfers:
         )
         assert isinstance(resource, SyncPage)
 
+    @parametrize
+    def test_method_approve(self, client: Increase) -> None:
+        resource = client.wire_transfers.approve(
+            "string",
+        )
+        assert isinstance(resource, WireTransfer)
+
+    @parametrize
+    def test_method_cancel(self, client: Increase) -> None:
+        resource = client.wire_transfers.cancel(
+            "string",
+        )
+        assert isinstance(resource, WireTransfer)
+
     @pytest.mark.skip(reason="Prism tests are broken")
     @parametrize
     def test_method_reverse(self, client: Increase) -> None:
@@ -100,6 +116,7 @@ class TestAsyncWireTransfers:
             account_id="string",
             amount=0,
             message_to_recipient="x",
+            beneficiary_name="x",
         )
         assert isinstance(resource, WireTransfer)
 
@@ -116,6 +133,7 @@ class TestAsyncWireTransfers:
             beneficiary_address_line1="x",
             beneficiary_address_line2="x",
             beneficiary_address_line3="x",
+            require_approval=True,
         )
         assert isinstance(resource, WireTransfer)
 
@@ -146,6 +164,20 @@ class TestAsyncWireTransfers:
             },
         )
         assert isinstance(resource, AsyncPage)
+
+    @parametrize
+    async def test_method_approve(self, client: AsyncIncrease) -> None:
+        resource = await client.wire_transfers.approve(
+            "string",
+        )
+        assert isinstance(resource, WireTransfer)
+
+    @parametrize
+    async def test_method_cancel(self, client: AsyncIncrease) -> None:
+        resource = await client.wire_transfers.cancel(
+            "string",
+        )
+        assert isinstance(resource, WireTransfer)
 
     @pytest.mark.skip(reason="Prism tests are broken")
     @parametrize

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from ..._types import Body, Query, Headers
+from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._base_client import make_request_options
 from ...types.simulations import WireTransferSimulation
@@ -16,6 +16,19 @@ class WireTransfers(SyncAPIResource):
         *,
         account_number_id: str,
         amount: int,
+        beneficiary_address_line1: str | NotGiven = NOT_GIVEN,
+        beneficiary_address_line2: str | NotGiven = NOT_GIVEN,
+        beneficiary_address_line3: str | NotGiven = NOT_GIVEN,
+        beneficiary_name: str | NotGiven = NOT_GIVEN,
+        beneficiary_reference: str | NotGiven = NOT_GIVEN,
+        originator_address_line1: str | NotGiven = NOT_GIVEN,
+        originator_address_line2: str | NotGiven = NOT_GIVEN,
+        originator_address_line3: str | NotGiven = NOT_GIVEN,
+        originator_name: str | NotGiven = NOT_GIVEN,
+        originator_to_beneficiary_information_line1: str | NotGiven = NOT_GIVEN,
+        originator_to_beneficiary_information_line2: str | NotGiven = NOT_GIVEN,
+        originator_to_beneficiary_information_line3: str | NotGiven = NOT_GIVEN,
+        originator_to_beneficiary_information_line4: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -23,12 +36,51 @@ class WireTransfers(SyncAPIResource):
         extra_body: Body | None = None,
     ) -> WireTransferSimulation:
         """
-        Simulates an inbound Wire transfer to your account.
+        Simulates an inbound Wire Transfer to your account.
 
         Args:
           account_number_id: The identifier of the Account Number the inbound Wire Transfer is for.
 
           amount: The transfer amount in cents. Must be positive.
+
+          beneficiary_address_line1: The sending bank will set beneficiary_address_line1 in production. You can
+              simulate any value here.
+
+          beneficiary_address_line2: The sending bank will set beneficiary_address_line2 in production. You can
+              simulate any value here.
+
+          beneficiary_address_line3: The sending bank will set beneficiary_address_line3 in production. You can
+              simulate any value here.
+
+          beneficiary_name: The sending bank will set beneficiary_name in production. You can simulate any
+              value here.
+
+          beneficiary_reference: The sending bank will set beneficiary_reference in production. You can simulate
+              any value here.
+
+          originator_address_line1: The sending bank will set originator_address_line1 in production. You can
+              simulate any value here.
+
+          originator_address_line2: The sending bank will set originator_address_line2 in production. You can
+              simulate any value here.
+
+          originator_address_line3: The sending bank will set originator_address_line3 in production. You can
+              simulate any value here.
+
+          originator_name: The sending bank will set originator_name in production. You can simulate any
+              value here.
+
+          originator_to_beneficiary_information_line1: The sending bank will set originator_to_beneficiary_information_line1 in
+              production. You can simulate any value here.
+
+          originator_to_beneficiary_information_line2: The sending bank will set originator_to_beneficiary_information_line2 in
+              production. You can simulate any value here.
+
+          originator_to_beneficiary_information_line3: The sending bank will set originator_to_beneficiary_information_line3 in
+              production. You can simulate any value here.
+
+          originator_to_beneficiary_information_line4: The sending bank will set originator_to_beneficiary_information_line4 in
+              production. You can simulate any value here.
 
           extra_headers: Send extra headers
 
@@ -41,6 +93,19 @@ class WireTransfers(SyncAPIResource):
             body={
                 "account_number_id": account_number_id,
                 "amount": amount,
+                "beneficiary_address_line1": beneficiary_address_line1,
+                "beneficiary_address_line2": beneficiary_address_line2,
+                "beneficiary_address_line3": beneficiary_address_line3,
+                "beneficiary_name": beneficiary_name,
+                "beneficiary_reference": beneficiary_reference,
+                "originator_address_line1": originator_address_line1,
+                "originator_address_line2": originator_address_line2,
+                "originator_address_line3": originator_address_line3,
+                "originator_name": originator_name,
+                "originator_to_beneficiary_information_line1": originator_to_beneficiary_information_line1,
+                "originator_to_beneficiary_information_line2": originator_to_beneficiary_information_line2,
+                "originator_to_beneficiary_information_line3": originator_to_beneficiary_information_line3,
+                "originator_to_beneficiary_information_line4": originator_to_beneficiary_information_line4,
             },
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=WireTransferSimulation,
@@ -53,6 +118,19 @@ class AsyncWireTransfers(AsyncAPIResource):
         *,
         account_number_id: str,
         amount: int,
+        beneficiary_address_line1: str | NotGiven = NOT_GIVEN,
+        beneficiary_address_line2: str | NotGiven = NOT_GIVEN,
+        beneficiary_address_line3: str | NotGiven = NOT_GIVEN,
+        beneficiary_name: str | NotGiven = NOT_GIVEN,
+        beneficiary_reference: str | NotGiven = NOT_GIVEN,
+        originator_address_line1: str | NotGiven = NOT_GIVEN,
+        originator_address_line2: str | NotGiven = NOT_GIVEN,
+        originator_address_line3: str | NotGiven = NOT_GIVEN,
+        originator_name: str | NotGiven = NOT_GIVEN,
+        originator_to_beneficiary_information_line1: str | NotGiven = NOT_GIVEN,
+        originator_to_beneficiary_information_line2: str | NotGiven = NOT_GIVEN,
+        originator_to_beneficiary_information_line3: str | NotGiven = NOT_GIVEN,
+        originator_to_beneficiary_information_line4: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -60,12 +138,51 @@ class AsyncWireTransfers(AsyncAPIResource):
         extra_body: Body | None = None,
     ) -> WireTransferSimulation:
         """
-        Simulates an inbound Wire transfer to your account.
+        Simulates an inbound Wire Transfer to your account.
 
         Args:
           account_number_id: The identifier of the Account Number the inbound Wire Transfer is for.
 
           amount: The transfer amount in cents. Must be positive.
+
+          beneficiary_address_line1: The sending bank will set beneficiary_address_line1 in production. You can
+              simulate any value here.
+
+          beneficiary_address_line2: The sending bank will set beneficiary_address_line2 in production. You can
+              simulate any value here.
+
+          beneficiary_address_line3: The sending bank will set beneficiary_address_line3 in production. You can
+              simulate any value here.
+
+          beneficiary_name: The sending bank will set beneficiary_name in production. You can simulate any
+              value here.
+
+          beneficiary_reference: The sending bank will set beneficiary_reference in production. You can simulate
+              any value here.
+
+          originator_address_line1: The sending bank will set originator_address_line1 in production. You can
+              simulate any value here.
+
+          originator_address_line2: The sending bank will set originator_address_line2 in production. You can
+              simulate any value here.
+
+          originator_address_line3: The sending bank will set originator_address_line3 in production. You can
+              simulate any value here.
+
+          originator_name: The sending bank will set originator_name in production. You can simulate any
+              value here.
+
+          originator_to_beneficiary_information_line1: The sending bank will set originator_to_beneficiary_information_line1 in
+              production. You can simulate any value here.
+
+          originator_to_beneficiary_information_line2: The sending bank will set originator_to_beneficiary_information_line2 in
+              production. You can simulate any value here.
+
+          originator_to_beneficiary_information_line3: The sending bank will set originator_to_beneficiary_information_line3 in
+              production. You can simulate any value here.
+
+          originator_to_beneficiary_information_line4: The sending bank will set originator_to_beneficiary_information_line4 in
+              production. You can simulate any value here.
 
           extra_headers: Send extra headers
 
@@ -78,6 +195,19 @@ class AsyncWireTransfers(AsyncAPIResource):
             body={
                 "account_number_id": account_number_id,
                 "amount": amount,
+                "beneficiary_address_line1": beneficiary_address_line1,
+                "beneficiary_address_line2": beneficiary_address_line2,
+                "beneficiary_address_line3": beneficiary_address_line3,
+                "beneficiary_name": beneficiary_name,
+                "beneficiary_reference": beneficiary_reference,
+                "originator_address_line1": originator_address_line1,
+                "originator_address_line2": originator_address_line2,
+                "originator_address_line3": originator_address_line3,
+                "originator_name": originator_name,
+                "originator_to_beneficiary_information_line1": originator_to_beneficiary_information_line1,
+                "originator_to_beneficiary_information_line2": originator_to_beneficiary_information_line2,
+                "originator_to_beneficiary_information_line3": originator_to_beneficiary_information_line3,
+                "originator_to_beneficiary_information_line4": originator_to_beneficiary_information_line4,
             },
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=WireTransferSimulation,

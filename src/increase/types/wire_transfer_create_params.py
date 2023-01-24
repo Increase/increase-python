@@ -14,6 +14,9 @@ class WireTransferCreateParams(TypedDict, total=False):
     amount: Required[int]
     """The transfer amount in cents."""
 
+    beneficiary_name: Required[str]
+    """The beneficiary's name."""
+
     message_to_recipient: Required[str]
     """The message that will show on the recipient's bank statement."""
 
@@ -29,15 +32,15 @@ class WireTransferCreateParams(TypedDict, total=False):
     beneficiary_address_line3: str
     """The beneficiary's address line 3."""
 
-    beneficiary_name: str
-    """The beneficiary's name."""
-
     external_account_id: str
     """The ID of an External Account to initiate a transfer to.
 
     If this parameter is provided, `account_number` and `routing_number` must be
     absent.
     """
+
+    require_approval: bool
+    """Whether the transfer requires explicit approval via the dashboard or API."""
 
     routing_number: str
     """

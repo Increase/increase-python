@@ -55,6 +55,7 @@ class TestEntities:
                                 "state": "x",
                                 "zip": "x",
                             },
+                            "confirmed_no_us_tax_id": True,
                             "identification": {
                                 "method": "social_security_number",
                                 "number": "x",
@@ -62,6 +63,11 @@ class TestEntities:
                                     "file_id": "string",
                                     "expiration_date": "2019-12-27T18:11:19.117Z",
                                     "country": "x",
+                                },
+                                "drivers_license": {
+                                    "file_id": "string",
+                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "state": "x",
                                 },
                             },
                         },
@@ -79,6 +85,7 @@ class TestEntities:
                                 "state": "x",
                                 "zip": "x",
                             },
+                            "confirmed_no_us_tax_id": True,
                             "identification": {
                                 "method": "social_security_number",
                                 "number": "x",
@@ -86,6 +93,11 @@ class TestEntities:
                                     "file_id": "string",
                                     "expiration_date": "2019-12-27T18:11:19.117Z",
                                     "country": "x",
+                                },
+                                "drivers_license": {
+                                    "file_id": "string",
+                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "state": "x",
                                 },
                             },
                         },
@@ -103,6 +115,7 @@ class TestEntities:
                                 "state": "x",
                                 "zip": "x",
                             },
+                            "confirmed_no_us_tax_id": True,
                             "identification": {
                                 "method": "social_security_number",
                                 "number": "x",
@@ -110,6 +123,11 @@ class TestEntities:
                                     "file_id": "string",
                                     "expiration_date": "2019-12-27T18:11:19.117Z",
                                     "country": "x",
+                                },
+                                "drivers_license": {
+                                    "file_id": "string",
+                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "state": "x",
                                 },
                             },
                         },
@@ -128,6 +146,7 @@ class TestEntities:
                     "state": "x",
                     "zip": "x",
                 },
+                "confirmed_no_us_tax_id": True,
                 "identification": {
                     "method": "social_security_number",
                     "number": "x",
@@ -135,6 +154,11 @@ class TestEntities:
                         "file_id": "string",
                         "expiration_date": "2019-12-27T18:11:19.117Z",
                         "country": "x",
+                    },
+                    "drivers_license": {
+                        "file_id": "string",
+                        "expiration_date": "2019-12-27T18:11:19.117Z",
+                        "state": "x",
                     },
                 },
             },
@@ -151,6 +175,7 @@ class TestEntities:
                             "state": "x",
                             "zip": "x",
                         },
+                        "confirmed_no_us_tax_id": True,
                         "identification": {
                             "method": "social_security_number",
                             "number": "x",
@@ -158,6 +183,11 @@ class TestEntities:
                                 "file_id": "string",
                                 "expiration_date": "2019-12-27T18:11:19.117Z",
                                 "country": "x",
+                            },
+                            "drivers_license": {
+                                "file_id": "string",
+                                "expiration_date": "2019-12-27T18:11:19.117Z",
+                                "state": "x",
                             },
                         },
                     },
@@ -171,6 +201,7 @@ class TestEntities:
                             "state": "x",
                             "zip": "x",
                         },
+                        "confirmed_no_us_tax_id": True,
                         "identification": {
                             "method": "social_security_number",
                             "number": "x",
@@ -178,6 +209,11 @@ class TestEntities:
                                 "file_id": "string",
                                 "expiration_date": "2019-12-27T18:11:19.117Z",
                                 "country": "x",
+                            },
+                            "drivers_license": {
+                                "file_id": "string",
+                                "expiration_date": "2019-12-27T18:11:19.117Z",
+                                "state": "x",
                             },
                         },
                     },
@@ -191,6 +227,7 @@ class TestEntities:
                             "state": "x",
                             "zip": "x",
                         },
+                        "confirmed_no_us_tax_id": True,
                         "identification": {
                             "method": "social_security_number",
                             "number": "x",
@@ -198,6 +235,11 @@ class TestEntities:
                                 "file_id": "string",
                                 "expiration_date": "2019-12-27T18:11:19.117Z",
                                 "country": "x",
+                            },
+                            "drivers_license": {
+                                "file_id": "string",
+                                "expiration_date": "2019-12-27T18:11:19.117Z",
+                                "state": "x",
                             },
                         },
                     },
@@ -229,6 +271,7 @@ class TestEntities:
                                 "state": "x",
                                 "zip": "x",
                             },
+                            "confirmed_no_us_tax_id": True,
                             "identification": {
                                 "method": "social_security_number",
                                 "number": "x",
@@ -236,6 +279,11 @@ class TestEntities:
                                     "file_id": "string",
                                     "expiration_date": "2019-12-27T18:11:19.117Z",
                                     "country": "x",
+                                },
+                                "drivers_license": {
+                                    "file_id": "string",
+                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "state": "x",
                                 },
                             },
                         },
@@ -252,6 +300,7 @@ class TestEntities:
                                 "state": "x",
                                 "zip": "x",
                             },
+                            "confirmed_no_us_tax_id": True,
                             "identification": {
                                 "method": "social_security_number",
                                 "number": "x",
@@ -259,6 +308,11 @@ class TestEntities:
                                     "file_id": "string",
                                     "expiration_date": "2019-12-27T18:11:19.117Z",
                                     "country": "x",
+                                },
+                                "drivers_license": {
+                                    "file_id": "string",
+                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "state": "x",
                                 },
                             },
                         },
@@ -275,6 +329,7 @@ class TestEntities:
                                 "state": "x",
                                 "zip": "x",
                             },
+                            "confirmed_no_us_tax_id": True,
                             "identification": {
                                 "method": "social_security_number",
                                 "number": "x",
@@ -282,6 +337,11 @@ class TestEntities:
                                     "file_id": "string",
                                     "expiration_date": "2019-12-27T18:11:19.117Z",
                                     "country": "x",
+                                },
+                                "drivers_license": {
+                                    "file_id": "string",
+                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "state": "x",
                                 },
                             },
                         },
@@ -297,6 +357,7 @@ class TestEntities:
                         "state": "x",
                         "zip": "x",
                     },
+                    "confirmed_no_us_tax_id": True,
                     "identification": {
                         "method": "social_security_number",
                         "number": "x",
@@ -304,6 +365,11 @@ class TestEntities:
                             "file_id": "string",
                             "expiration_date": "2019-12-27T18:11:19.117Z",
                             "country": "x",
+                        },
+                        "drivers_license": {
+                            "file_id": "string",
+                            "expiration_date": "2019-12-27T18:11:19.117Z",
+                            "state": "x",
                         },
                     },
                 },
@@ -376,6 +442,7 @@ class TestAsyncEntities:
                                 "state": "x",
                                 "zip": "x",
                             },
+                            "confirmed_no_us_tax_id": True,
                             "identification": {
                                 "method": "social_security_number",
                                 "number": "x",
@@ -383,6 +450,11 @@ class TestAsyncEntities:
                                     "file_id": "string",
                                     "expiration_date": "2019-12-27T18:11:19.117Z",
                                     "country": "x",
+                                },
+                                "drivers_license": {
+                                    "file_id": "string",
+                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "state": "x",
                                 },
                             },
                         },
@@ -400,6 +472,7 @@ class TestAsyncEntities:
                                 "state": "x",
                                 "zip": "x",
                             },
+                            "confirmed_no_us_tax_id": True,
                             "identification": {
                                 "method": "social_security_number",
                                 "number": "x",
@@ -407,6 +480,11 @@ class TestAsyncEntities:
                                     "file_id": "string",
                                     "expiration_date": "2019-12-27T18:11:19.117Z",
                                     "country": "x",
+                                },
+                                "drivers_license": {
+                                    "file_id": "string",
+                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "state": "x",
                                 },
                             },
                         },
@@ -424,6 +502,7 @@ class TestAsyncEntities:
                                 "state": "x",
                                 "zip": "x",
                             },
+                            "confirmed_no_us_tax_id": True,
                             "identification": {
                                 "method": "social_security_number",
                                 "number": "x",
@@ -431,6 +510,11 @@ class TestAsyncEntities:
                                     "file_id": "string",
                                     "expiration_date": "2019-12-27T18:11:19.117Z",
                                     "country": "x",
+                                },
+                                "drivers_license": {
+                                    "file_id": "string",
+                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "state": "x",
                                 },
                             },
                         },
@@ -449,6 +533,7 @@ class TestAsyncEntities:
                     "state": "x",
                     "zip": "x",
                 },
+                "confirmed_no_us_tax_id": True,
                 "identification": {
                     "method": "social_security_number",
                     "number": "x",
@@ -456,6 +541,11 @@ class TestAsyncEntities:
                         "file_id": "string",
                         "expiration_date": "2019-12-27T18:11:19.117Z",
                         "country": "x",
+                    },
+                    "drivers_license": {
+                        "file_id": "string",
+                        "expiration_date": "2019-12-27T18:11:19.117Z",
+                        "state": "x",
                     },
                 },
             },
@@ -472,6 +562,7 @@ class TestAsyncEntities:
                             "state": "x",
                             "zip": "x",
                         },
+                        "confirmed_no_us_tax_id": True,
                         "identification": {
                             "method": "social_security_number",
                             "number": "x",
@@ -479,6 +570,11 @@ class TestAsyncEntities:
                                 "file_id": "string",
                                 "expiration_date": "2019-12-27T18:11:19.117Z",
                                 "country": "x",
+                            },
+                            "drivers_license": {
+                                "file_id": "string",
+                                "expiration_date": "2019-12-27T18:11:19.117Z",
+                                "state": "x",
                             },
                         },
                     },
@@ -492,6 +588,7 @@ class TestAsyncEntities:
                             "state": "x",
                             "zip": "x",
                         },
+                        "confirmed_no_us_tax_id": True,
                         "identification": {
                             "method": "social_security_number",
                             "number": "x",
@@ -499,6 +596,11 @@ class TestAsyncEntities:
                                 "file_id": "string",
                                 "expiration_date": "2019-12-27T18:11:19.117Z",
                                 "country": "x",
+                            },
+                            "drivers_license": {
+                                "file_id": "string",
+                                "expiration_date": "2019-12-27T18:11:19.117Z",
+                                "state": "x",
                             },
                         },
                     },
@@ -512,6 +614,7 @@ class TestAsyncEntities:
                             "state": "x",
                             "zip": "x",
                         },
+                        "confirmed_no_us_tax_id": True,
                         "identification": {
                             "method": "social_security_number",
                             "number": "x",
@@ -519,6 +622,11 @@ class TestAsyncEntities:
                                 "file_id": "string",
                                 "expiration_date": "2019-12-27T18:11:19.117Z",
                                 "country": "x",
+                            },
+                            "drivers_license": {
+                                "file_id": "string",
+                                "expiration_date": "2019-12-27T18:11:19.117Z",
+                                "state": "x",
                             },
                         },
                     },
@@ -550,6 +658,7 @@ class TestAsyncEntities:
                                 "state": "x",
                                 "zip": "x",
                             },
+                            "confirmed_no_us_tax_id": True,
                             "identification": {
                                 "method": "social_security_number",
                                 "number": "x",
@@ -557,6 +666,11 @@ class TestAsyncEntities:
                                     "file_id": "string",
                                     "expiration_date": "2019-12-27T18:11:19.117Z",
                                     "country": "x",
+                                },
+                                "drivers_license": {
+                                    "file_id": "string",
+                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "state": "x",
                                 },
                             },
                         },
@@ -573,6 +687,7 @@ class TestAsyncEntities:
                                 "state": "x",
                                 "zip": "x",
                             },
+                            "confirmed_no_us_tax_id": True,
                             "identification": {
                                 "method": "social_security_number",
                                 "number": "x",
@@ -580,6 +695,11 @@ class TestAsyncEntities:
                                     "file_id": "string",
                                     "expiration_date": "2019-12-27T18:11:19.117Z",
                                     "country": "x",
+                                },
+                                "drivers_license": {
+                                    "file_id": "string",
+                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "state": "x",
                                 },
                             },
                         },
@@ -596,6 +716,7 @@ class TestAsyncEntities:
                                 "state": "x",
                                 "zip": "x",
                             },
+                            "confirmed_no_us_tax_id": True,
                             "identification": {
                                 "method": "social_security_number",
                                 "number": "x",
@@ -603,6 +724,11 @@ class TestAsyncEntities:
                                     "file_id": "string",
                                     "expiration_date": "2019-12-27T18:11:19.117Z",
                                     "country": "x",
+                                },
+                                "drivers_license": {
+                                    "file_id": "string",
+                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "state": "x",
                                 },
                             },
                         },
@@ -618,6 +744,7 @@ class TestAsyncEntities:
                         "state": "x",
                         "zip": "x",
                     },
+                    "confirmed_no_us_tax_id": True,
                     "identification": {
                         "method": "social_security_number",
                         "number": "x",
@@ -625,6 +752,11 @@ class TestAsyncEntities:
                             "file_id": "string",
                             "expiration_date": "2019-12-27T18:11:19.117Z",
                             "country": "x",
+                        },
+                        "drivers_license": {
+                            "file_id": "string",
+                            "expiration_date": "2019-12-27T18:11:19.117Z",
+                            "state": "x",
                         },
                     },
                 },

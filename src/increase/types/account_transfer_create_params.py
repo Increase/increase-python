@@ -22,3 +22,6 @@ class AccountTransferCreateParams(TypedDict, total=False):
 
     destination_account_id: Required[str]
     """The identifier for the account that will receive the transfer."""
+
+    require_approval: bool
+    """Whether the transfer requires explicit approval via the dashboard or API."""

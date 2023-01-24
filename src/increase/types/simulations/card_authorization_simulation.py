@@ -11,6 +11,7 @@ __all__ = [
     "PendingTransactionSourceCardAuthorization",
     "PendingTransactionSourceCheckDepositInstruction",
     "PendingTransactionSourceCheckTransferInstruction",
+    "PendingTransactionSourceInboundFundsHold",
     "PendingTransactionSourceCardRouteAuthorization",
     "PendingTransactionSourceWireDrawdownPaymentInstruction",
     "PendingTransactionSourceWireTransferInstruction",
@@ -135,6 +136,35 @@ class PendingTransactionSourceCheckTransferInstruction(BaseModel):
     """The identifier of the Check Transfer that led to this Pending Transaction."""
 
 
+class PendingTransactionSourceInboundFundsHold(BaseModel):
+    amount: int
+    """The held amount in the minor unit of the account's currency.
+
+    For dollars, for example, this is cents.
+    """
+
+    automatically_releases_at: str
+    """When the hold will be released automatically.
+
+    Certain conditions may cause it to be released before this time.
+    """
+
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
+    currency.
+    """
+
+    held_transaction_id: Optional[str]
+    """The ID of the Transaction for which funds were held."""
+
+    released_at: Optional[str]
+    """When the hold was released (if it has been released)."""
+
+    status: Literal["held", "complete"]
+    """The status of the hold."""
+
+
 class PendingTransactionSourceCardRouteAuthorization(BaseModel):
     amount: int
     """The pending amount in the minor unit of the transaction's currency.
@@ -226,6 +256,7 @@ class PendingTransactionSource(BaseModel):
         "card_authorization",
         "check_deposit_instruction",
         "check_transfer_instruction",
+        "inbound_funds_hold",
         "card_route_authorization",
         "real_time_payments_transfer_instruction",
         "wire_drawdown_payment_instruction",
@@ -250,6 +281,13 @@ class PendingTransactionSource(BaseModel):
 
     This field will be present in the JSON response if and only if `category` is
     equal to `check_transfer_instruction`.
+    """
+
+    inbound_funds_hold: Optional[PendingTransactionSourceInboundFundsHold]
+    """A Inbound Funds Hold object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `inbound_funds_hold`.
     """
 
     wire_drawdown_payment_instruction: Optional[PendingTransactionSourceWireDrawdownPaymentInstruction]
@@ -347,12 +385,13 @@ class DeclinedTransactionSourceACHDecline(BaseModel):
     reason: Literal[
         "ach_route_canceled",
         "ach_route_disabled",
-        "no_ach_route",
         "breaches_limit",
         "credit_entry_refused_by_receiver",
-        "group_locked",
+        "duplicate_return",
         "entity_not_active",
+        "group_locked",
         "insufficient_funds",
+        "no_ach_route",
         "originator_request",
     ]
     """Why the ACH transfer was declined."""
@@ -406,6 +445,7 @@ class DeclinedTransactionSourceCardDecline(BaseModel):
         "entity_not_active",
         "group_locked",
         "insufficient_funds",
+        "transaction_not_allowed",
         "breaches_limit",
         "webhook_declined",
         "webhook_timed_out",
@@ -433,6 +473,7 @@ class DeclinedTransactionSourceCheckDecline(BaseModel):
         "unable_to_process",
         "refer_to_image",
         "stop_payment_requested",
+        "returned",
     ]
     """Why the check was declined."""
 
@@ -673,7 +714,7 @@ class DeclinedTransaction(BaseModel):
     id: str
     """The Declined Transaction identifier."""
 
-    route_id: str
+    route_id: Optional[str]
     """The identifier for the route this Declined Transaction came through.
 
     Routes are things like cards and ACH details.

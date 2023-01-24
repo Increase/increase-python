@@ -20,6 +20,9 @@ class WireDrawdownRequestCreateParams(TypedDict, total=False):
     recipient_account_number: Required[str]
     """The drawdown request's recipient's account number."""
 
+    recipient_name: Required[str]
+    """The drawdown request's recipient's name."""
+
     recipient_routing_number: Required[str]
     """The drawdown request's recipient's routing number."""
 
@@ -31,6 +34,3 @@ class WireDrawdownRequestCreateParams(TypedDict, total=False):
 
     recipient_address_line3: str
     """Line 3 of the drawdown request's recipient's address."""
-
-    recipient_name: str
-    """The drawdown request's recipient's name."""

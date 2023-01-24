@@ -5,14 +5,28 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["Account"]
+__all__ = ["Balances", "Account"]
+
+
+class Balances(BaseModel):
+    available_balance: int
+    """
+    The Account's available balance, representing the current balance less any open
+    Pending Transactions on the Account.
+    """
+
+    current_balance: int
+    """
+    The Account's current balance, representing the sum of all posted Transactions
+    on the Account.
+    """
 
 
 class Account(BaseModel):
-    balance: int
-    """The current balance of the Account in the minor unit of the currency.
+    balances: Balances
+    """The Account's balances in the minor unit of its currency.
 
-    For dollars, for example, this is cents.
+    For dollars, for example, these values will represent cents.
     """
 
     created_at: str

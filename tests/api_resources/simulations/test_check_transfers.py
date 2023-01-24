@@ -18,6 +18,13 @@ class TestCheckTransfers:
     loose_client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=False)
     parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
 
+    @parametrize
+    def test_method_deposit(self, client: Increase) -> None:
+        resource = client.simulations.check_transfers.deposit(
+            "string",
+        )
+        assert isinstance(resource, CheckTransfer)
+
     @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
     def test_method_mail(self, client: Increase) -> None:
@@ -31,6 +38,13 @@ class TestAsyncCheckTransfers:
     strict_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
     loose_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=False)
     parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
+
+    @parametrize
+    async def test_method_deposit(self, client: AsyncIncrease) -> None:
+        resource = await client.simulations.check_transfers.deposit(
+            "string",
+        )
+        assert isinstance(resource, CheckTransfer)
 
     @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize

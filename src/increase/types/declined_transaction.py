@@ -35,12 +35,13 @@ class SourceACHDecline(BaseModel):
     reason: Literal[
         "ach_route_canceled",
         "ach_route_disabled",
-        "no_ach_route",
         "breaches_limit",
         "credit_entry_refused_by_receiver",
-        "group_locked",
+        "duplicate_return",
         "entity_not_active",
+        "group_locked",
         "insufficient_funds",
+        "no_ach_route",
         "originator_request",
     ]
     """Why the ACH transfer was declined."""
@@ -94,6 +95,7 @@ class SourceCardDecline(BaseModel):
         "entity_not_active",
         "group_locked",
         "insufficient_funds",
+        "transaction_not_allowed",
         "breaches_limit",
         "webhook_declined",
         "webhook_timed_out",
@@ -121,6 +123,7 @@ class SourceCheckDecline(BaseModel):
         "unable_to_process",
         "refer_to_image",
         "stop_payment_requested",
+        "returned",
     ]
     """Why the check was declined."""
 
@@ -359,7 +362,7 @@ class DeclinedTransaction(BaseModel):
     id: str
     """The Declined Transaction identifier."""
 
-    route_id: str
+    route_id: Optional[str]
     """The identifier for the route this Declined Transaction came through.
 
     Routes are things like cards and ACH details.

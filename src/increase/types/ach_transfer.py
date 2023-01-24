@@ -69,6 +69,7 @@ class Return(BaseModel):
         "returned_per_odfi_request",
         "addenda_error",
         "limited_participation_dfi",
+        "incorrectly_coded_outbound_international_payment",
         "other",
     ]
     """Why the ACH Transfer was returned."""
@@ -81,6 +82,9 @@ class Return(BaseModel):
 
 
 class Submission(BaseModel):
+    submitted_at: str
+    """When the ACH transfer was sent to FedACH."""
+
     trace_number: str
     """The trace number for the submission."""
 
@@ -115,6 +119,18 @@ class ACHTransfer(BaseModel):
     approved, this will contain details of the cancellation.
     """
 
+    company_descriptive_date: Optional[str]
+    """The description of the date of the transfer."""
+
+    company_discretionary_data: Optional[str]
+    """The data you chose to associate with the transfer."""
+
+    company_entry_description: Optional[str]
+    """The description of the transfer you set to be shown to the recipient."""
+
+    company_name: Optional[str]
+    """The name by which the recipient knows you."""
+
     created_at: str
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -130,8 +146,20 @@ class ACHTransfer(BaseModel):
     external_account_id: Optional[str]
     """The identifier of the External Account the transfer was made to, if any."""
 
+    funding: Literal["checking", "savings"]
+    """The type of the account to which the transfer will be sent."""
+
     id: str
     """The ACH transfer's identifier."""
+
+    individual_id: Optional[str]
+    """Your identifer for the transfer recipient."""
+
+    individual_name: Optional[str]
+    """The name of the transfer recipient.
+
+    This value is information and not verified by the recipient's bank.
+    """
 
     network: Literal["ach"]
     """The transfer's network."""
@@ -147,6 +175,11 @@ class ACHTransfer(BaseModel):
 
     routing_number: str
     """The American Bankers' Association (ABA) Routing Transit Number (RTN)."""
+
+    standard_entry_class_code: Literal[
+        "corporate_credit_or_debit", "prearranged_payments_and_deposit", "internet_initiated"
+    ]
+    """The Standard Entry Class (SEC) code to use for the transfer."""
 
     statement_descriptor: str
     """The descriptor that will show on the recipient's bank statement."""

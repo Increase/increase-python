@@ -24,6 +24,9 @@ class DepositAcceptance(BaseModel):
     This typically includes the check number.
     """
 
+    check_deposit_id: str
+    """The ID of the Check Deposit that was accepted."""
+
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the

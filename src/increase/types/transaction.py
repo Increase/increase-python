@@ -18,6 +18,7 @@ __all__ = [
     "SourceCheckDepositAcceptance",
     "SourceCheckDepositReturn",
     "SourceCheckTransferIntention",
+    "SourceCheckTransferReturn",
     "SourceCheckTransferRejection",
     "SourceCheckTransferStopPaymentRequest",
     "SourceDisputeResolution",
@@ -142,6 +143,7 @@ class SourceACHTransferReturn(BaseModel):
         "returned_per_odfi_request",
         "addenda_error",
         "limited_participation_dfi",
+        "incorrectly_coded_outbound_international_payment",
         "other",
     ]
     """Why the ACH Transfer was returned."""
@@ -195,7 +197,7 @@ class SourceCardRefund(BaseModel):
 
 class SourceCardSettlement(BaseModel):
     amount: int
-    """The pending amount in the minor unit of the transaction's currency.
+    """The amount in the minor unit of the transaction's settlement currency.
 
     For dollars, for example, this is cents.
     """
@@ -203,7 +205,7 @@ class SourceCardSettlement(BaseModel):
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-    transaction's currency.
+    transaction's settlement currency.
     """
 
     merchant_category_code: str
@@ -219,6 +221,15 @@ class SourceCardSettlement(BaseModel):
     pending_transaction_id: Optional[str]
     """The identifier of the Pending Transaction associated with this Transaction."""
 
+    presentment_amount: int
+    """The amount in the minor unit of the transaction's presentment currency."""
+
+    presentment_currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+    transaction's presentment currency.
+    """
+
     type: Literal["card_settlement"]
     """A constant representing the object's type.
 
@@ -227,20 +238,32 @@ class SourceCardSettlement(BaseModel):
 
 
 class SourceCheckDepositAcceptance(BaseModel):
+    account_number: str
+    """The account number printed on the check."""
+
     amount: int
-    """The amount in the minor unit of the transaction's currency.
+    """The amount to be deposited in the minor unit of the transaction's currency.
 
     For dollars, for example, this is cents.
     """
 
+    auxiliary_on_us: Optional[str]
+    """An additional line of metadata printed on the check.
+
+    This typically includes the check number.
+    """
+
     check_deposit_id: str
-    """The ID of the Check Deposit that led to the Transaction."""
+    """The ID of the Check Deposit that was accepted."""
 
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
     transaction's currency.
     """
+
+    routing_number: str
+    """The routing number printed on the check."""
 
 
 class SourceCheckDepositReturn(BaseModel):
@@ -315,6 +338,14 @@ class SourceCheckTransferIntention(BaseModel):
 
     transfer_id: str
     """The identifier of the Check Transfer with which this is associated."""
+
+
+class SourceCheckTransferReturn(BaseModel):
+    file_id: Optional[str]
+    """If available, a document with additional information about the return."""
+
+    transfer_id: str
+    """The identifier of the returned Check Transfer."""
 
 
 class SourceCheckTransferRejection(BaseModel):
@@ -658,6 +689,14 @@ class SourceInboundWireTransfer(BaseModel):
 
     originator_to_beneficiary_information: Optional[str]
 
+    originator_to_beneficiary_information_line1: Optional[str]
+
+    originator_to_beneficiary_information_line2: Optional[str]
+
+    originator_to_beneficiary_information_line3: Optional[str]
+
+    originator_to_beneficiary_information_line4: Optional[str]
+
 
 class SourceInternalSource(BaseModel):
     amount: int
@@ -869,6 +908,7 @@ class Source(BaseModel):
         "check_deposit_acceptance",
         "check_deposit_return",
         "check_transfer_intention",
+        "check_transfer_return",
         "check_transfer_rejection",
         "check_transfer_stop_payment_request",
         "dispute_resolution",
@@ -924,6 +964,13 @@ class Source(BaseModel):
 
     This field will be present in the JSON response if and only if `category` is
     equal to `check_transfer_rejection`.
+    """
+
+    check_transfer_return: Optional[SourceCheckTransferReturn]
+    """A Check Transfer Return object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `check_transfer_return`.
     """
 
     check_transfer_stop_payment_request: Optional[SourceCheckTransferStopPaymentRequest]

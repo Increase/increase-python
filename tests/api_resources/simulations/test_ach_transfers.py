@@ -27,11 +27,33 @@ class TestACHTransfers:
         )
         assert isinstance(resource, ACHTransferSimulation)
 
+    @parametrize
+    def test_method_create_inbound_with_all_params(self, client: Increase) -> None:
+        resource = client.simulations.ach_transfers.create_inbound(
+            account_number_id="string",
+            amount=0,
+            company_descriptive_date="x",
+            company_discretionary_data="x",
+            company_entry_description="x",
+            company_name="x",
+            company_id="x",
+        )
+        assert isinstance(resource, ACHTransferSimulation)
+
     @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
     def test_method_return(self, client: Increase) -> None:
         resource = client.simulations.ach_transfers.return_(
             "string",
+        )
+        assert isinstance(resource, ACHTransfer)
+
+    @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
+    @parametrize
+    def test_method_return_with_all_params(self, client: Increase) -> None:
+        resource = client.simulations.ach_transfers.return_(
+            "string",
+            reason="insufficient_fund",
         )
         assert isinstance(resource, ACHTransfer)
 
@@ -57,11 +79,33 @@ class TestAsyncACHTransfers:
         )
         assert isinstance(resource, ACHTransferSimulation)
 
+    @parametrize
+    async def test_method_create_inbound_with_all_params(self, client: AsyncIncrease) -> None:
+        resource = await client.simulations.ach_transfers.create_inbound(
+            account_number_id="string",
+            amount=0,
+            company_descriptive_date="x",
+            company_discretionary_data="x",
+            company_entry_description="x",
+            company_name="x",
+            company_id="x",
+        )
+        assert isinstance(resource, ACHTransferSimulation)
+
     @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
     async def test_method_return(self, client: AsyncIncrease) -> None:
         resource = await client.simulations.ach_transfers.return_(
             "string",
+        )
+        assert isinstance(resource, ACHTransfer)
+
+    @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
+    @parametrize
+    async def test_method_return_with_all_params(self, client: AsyncIncrease) -> None:
+        resource = await client.simulations.ach_transfers.return_(
+            "string",
+            reason="insufficient_fund",
         )
         assert isinstance(resource, ACHTransfer)
 

@@ -50,6 +50,8 @@ class EventSubscriptionCreateParams(TypedDict, total=False):
         "real_time_decision.digital_wallet_authentication_requested",
         "real_time_payments_transfer.created",
         "real_time_payments_transfer.updated",
+        "real_time_payments_request_for_payment.created",
+        "real_time_payments_request_for_payment.updated",
         "transaction.created",
         "wire_drawdown_request.created",
         "wire_drawdown_request.updated",

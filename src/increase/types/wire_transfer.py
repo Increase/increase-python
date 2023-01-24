@@ -69,6 +69,9 @@ class Submission(BaseModel):
     input_message_accountability_data: str
     """The accountability data for the submission."""
 
+    submitted_at: str
+    """When this wire transfer was submitted to Fedwire."""
+
 
 class WireTransfer(BaseModel):
     account_id: str
@@ -85,6 +88,18 @@ class WireTransfer(BaseModel):
     If your account requires approvals for transfers and the transfer was approved,
     this will contain details of the approval.
     """
+
+    beneficiary_address_line1: Optional[str]
+    """The beneficiary's address line 1."""
+
+    beneficiary_address_line2: Optional[str]
+    """The beneficiary's address line 2."""
+
+    beneficiary_address_line3: Optional[str]
+    """The beneficiary's address line 3."""
+
+    beneficiary_name: Optional[str]
+    """The beneficiary's name."""
 
     cancellation: Optional[Cancellation]
     """

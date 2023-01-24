@@ -7,6 +7,7 @@ from .groups import Groups, AsyncGroups
 from .limits import Limits, AsyncLimits
 from .accounts import Accounts, AsyncAccounts
 from .entities import Entities, AsyncEntities
+from .documents import Documents, AsyncDocuments
 from .simulations import Simulations, AsyncSimulations
 from .transactions import Transactions, AsyncTransactions
 from .ach_transfers import ACHTransfers, AsyncACHTransfers
@@ -60,6 +61,8 @@ __all__ = [
     "AsyncACHTransfers",
     "ACHPrenotifications",
     "AsyncACHPrenotifications",
+    "Documents",
+    "AsyncDocuments",
     "WireTransfers",
     "AsyncWireTransfers",
     "CheckTransfers",

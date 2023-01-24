@@ -5,7 +5,27 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["Submission", "StopPaymentRequest", "CheckTransfer"]
+__all__ = ["ReturnAddress", "Submission", "StopPaymentRequest", "Deposit", "CheckTransfer"]
+
+
+class ReturnAddress(BaseModel):
+    city: Optional[str]
+    """The city of the address."""
+
+    line1: Optional[str]
+    """The first line of the address."""
+
+    line2: Optional[str]
+    """The second line of the address."""
+
+    name: Optional[str]
+    """The name of the address."""
+
+    state: Optional[str]
+    """The US state of the address."""
+
+    zip: Optional[str]
+    """The postal code of the address."""
 
 
 class Submission(BaseModel):
@@ -27,6 +47,20 @@ class StopPaymentRequest(BaseModel):
     """A constant representing the object's type.
 
     For this resource it will always be `check_transfer_stop_payment_request`.
+    """
+
+
+class Deposit(BaseModel):
+    back_image_file_id: Optional[str]
+    """The ID for the File containing the image of the rear of the check."""
+
+    front_image_file_id: Optional[str]
+    """The ID for the File containing the image of the front of the check."""
+
+    type: Literal["check_transfer_deposit"]
+    """A constant representing the object's type.
+
+    For this resource it will always be `check_transfer_deposit`.
     """
 
 
@@ -64,6 +98,9 @@ class CheckTransfer(BaseModel):
     currency.
     """
 
+    deposit: Optional[Deposit]
+    """After a check transfer is deposited, this will contain supplemental details."""
+
     id: str
     """The Check transfer's identifier."""
 
@@ -79,6 +116,9 @@ class CheckTransfer(BaseModel):
     recipient_name: str
     """The name that will be printed on the check."""
 
+    return_address: Optional[ReturnAddress]
+    """The return address to be printed on the check."""
+
     status: Literal[
         "pending_approval",
         "pending_submission",
@@ -89,6 +129,7 @@ class CheckTransfer(BaseModel):
         "canceled",
         "deposited",
         "stopped",
+        "returned",
         "rejected",
         "requires_attention",
     ]

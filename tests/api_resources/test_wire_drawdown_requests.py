@@ -28,6 +28,7 @@ class TestWireDrawdownRequests:
             message_to_recipient="x",
             recipient_account_number="x",
             recipient_routing_number="x",
+            recipient_name="x",
         )
         assert isinstance(resource, WireDrawdownRequest)
 
@@ -82,6 +83,7 @@ class TestAsyncWireDrawdownRequests:
             message_to_recipient="x",
             recipient_account_number="x",
             recipient_routing_number="x",
+            recipient_name="x",
         )
         assert isinstance(resource, WireDrawdownRequest)
 

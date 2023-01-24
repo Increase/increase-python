@@ -9,27 +9,32 @@ __all__ = [
     "CorporationAddress",
     "CorporationBeneficialOwnersIndividualAddress",
     "CorporationBeneficialOwnersIndividualIdentificationPassport",
+    "CorporationBeneficialOwnersIndividualIdentificationDriversLicense",
     "CorporationBeneficialOwnersIndividualIdentification",
     "CorporationBeneficialOwnersIndividual",
     "CorporationBeneficialOwners",
     "Corporation",
     "NaturalPersonAddress",
     "NaturalPersonIdentificationPassport",
+    "NaturalPersonIdentificationDriversLicense",
     "NaturalPersonIdentification",
     "NaturalPerson",
     "JointIndividualsAddress",
     "JointIndividualsIdentificationPassport",
+    "JointIndividualsIdentificationDriversLicense",
     "JointIndividualsIdentification",
     "JointIndividuals",
     "Joint",
     "TrustAddress",
     "TrustTrusteesIndividualAddress",
     "TrustTrusteesIndividualIdentificationPassport",
+    "TrustTrusteesIndividualIdentificationDriversLicense",
     "TrustTrusteesIndividualIdentification",
     "TrustTrusteesIndividual",
     "TrustTrustees",
     "TrustGrantorAddress",
     "TrustGrantorIdentificationPassport",
+    "TrustGrantorIdentificationDriversLicense",
     "TrustGrantorIdentification",
     "TrustGrantor",
     "Trust",
@@ -89,14 +94,33 @@ class CorporationBeneficialOwnersIndividualIdentificationPassport(TypedDict, tot
     """The identifier of the File containing the passport."""
 
 
+class CorporationBeneficialOwnersIndividualIdentificationDriversLicense(TypedDict, total=False):
+    expiration_date: Required[str]
+    """The driver's license's expiration date in YYYY-MM-DD format."""
+
+    file_id: Required[str]
+    """The identifier of the File containing the driver's license."""
+
+    state: Required[str]
+    """The state that issued the provided driver's license."""
+
+
 class CorporationBeneficialOwnersIndividualIdentification(TypedDict, total=False):
-    method: Required[Literal["social_security_number", "individual_taxpayer_identification_number", "passport"]]
+    method: Required[
+        Literal["social_security_number", "individual_taxpayer_identification_number", "passport", "drivers_license"]
+    ]
     """A method that can be used to verify the individual's identity."""
 
     number: Required[str]
     """
     An identification number that can be used to verify the individual's identity,
     such as a social security number.
+    """
+
+    drivers_license: CorporationBeneficialOwnersIndividualIdentificationDriversLicense
+    """Information about the United States driver's license used for identification.
+
+    Required if `method` is equal to `drivers_license`.
     """
 
     passport: CorporationBeneficialOwnersIndividualIdentificationPassport
@@ -118,6 +142,13 @@ class CorporationBeneficialOwnersIndividual(TypedDict, total=False):
 
     name: Required[str]
     """The person's legal name."""
+
+    confirmed_no_us_tax_id: bool
+    """
+    The identification method for an individual can only be a passport or driver's
+    license if you've confirmed they do not have a US tax id (either a Social
+    Security Number or Individual Taxpayer Identification Number).
+    """
 
 
 class CorporationBeneficialOwners(TypedDict, total=False):
@@ -188,14 +219,33 @@ class NaturalPersonIdentificationPassport(TypedDict, total=False):
     """The identifier of the File containing the passport."""
 
 
+class NaturalPersonIdentificationDriversLicense(TypedDict, total=False):
+    expiration_date: Required[str]
+    """The driver's license's expiration date in YYYY-MM-DD format."""
+
+    file_id: Required[str]
+    """The identifier of the File containing the driver's license."""
+
+    state: Required[str]
+    """The state that issued the provided driver's license."""
+
+
 class NaturalPersonIdentification(TypedDict, total=False):
-    method: Required[Literal["social_security_number", "individual_taxpayer_identification_number", "passport"]]
+    method: Required[
+        Literal["social_security_number", "individual_taxpayer_identification_number", "passport", "drivers_license"]
+    ]
     """A method that can be used to verify the individual's identity."""
 
     number: Required[str]
     """
     An identification number that can be used to verify the individual's identity,
     such as a social security number.
+    """
+
+    drivers_license: NaturalPersonIdentificationDriversLicense
+    """Information about the United States driver's license used for identification.
+
+    Required if `method` is equal to `drivers_license`.
     """
 
     passport: NaturalPersonIdentificationPassport
@@ -217,6 +267,13 @@ class NaturalPerson(TypedDict, total=False):
 
     name: Required[str]
     """The person's legal name."""
+
+    confirmed_no_us_tax_id: bool
+    """
+    The identification method for an individual can only be a passport or driver's
+    license if you've confirmed they do not have a US tax id (either a Social
+    Security Number or Individual Taxpayer Identification Number).
+    """
 
 
 class JointIndividualsAddress(TypedDict, total=False):
@@ -250,14 +307,33 @@ class JointIndividualsIdentificationPassport(TypedDict, total=False):
     """The identifier of the File containing the passport."""
 
 
+class JointIndividualsIdentificationDriversLicense(TypedDict, total=False):
+    expiration_date: Required[str]
+    """The driver's license's expiration date in YYYY-MM-DD format."""
+
+    file_id: Required[str]
+    """The identifier of the File containing the driver's license."""
+
+    state: Required[str]
+    """The state that issued the provided driver's license."""
+
+
 class JointIndividualsIdentification(TypedDict, total=False):
-    method: Required[Literal["social_security_number", "individual_taxpayer_identification_number", "passport"]]
+    method: Required[
+        Literal["social_security_number", "individual_taxpayer_identification_number", "passport", "drivers_license"]
+    ]
     """A method that can be used to verify the individual's identity."""
 
     number: Required[str]
     """
     An identification number that can be used to verify the individual's identity,
     such as a social security number.
+    """
+
+    drivers_license: JointIndividualsIdentificationDriversLicense
+    """Information about the United States driver's license used for identification.
+
+    Required if `method` is equal to `drivers_license`.
     """
 
     passport: JointIndividualsIdentificationPassport
@@ -279,6 +355,13 @@ class JointIndividuals(TypedDict, total=False):
 
     name: Required[str]
     """The person's legal name."""
+
+    confirmed_no_us_tax_id: bool
+    """
+    The identification method for an individual can only be a passport or driver's
+    license if you've confirmed they do not have a US tax id (either a Social
+    Security Number or Individual Taxpayer Identification Number).
+    """
 
 
 class Joint(TypedDict, total=False):
@@ -340,14 +423,33 @@ class TrustTrusteesIndividualIdentificationPassport(TypedDict, total=False):
     """The identifier of the File containing the passport."""
 
 
+class TrustTrusteesIndividualIdentificationDriversLicense(TypedDict, total=False):
+    expiration_date: Required[str]
+    """The driver's license's expiration date in YYYY-MM-DD format."""
+
+    file_id: Required[str]
+    """The identifier of the File containing the driver's license."""
+
+    state: Required[str]
+    """The state that issued the provided driver's license."""
+
+
 class TrustTrusteesIndividualIdentification(TypedDict, total=False):
-    method: Required[Literal["social_security_number", "individual_taxpayer_identification_number", "passport"]]
+    method: Required[
+        Literal["social_security_number", "individual_taxpayer_identification_number", "passport", "drivers_license"]
+    ]
     """A method that can be used to verify the individual's identity."""
 
     number: Required[str]
     """
     An identification number that can be used to verify the individual's identity,
     such as a social security number.
+    """
+
+    drivers_license: TrustTrusteesIndividualIdentificationDriversLicense
+    """Information about the United States driver's license used for identification.
+
+    Required if `method` is equal to `drivers_license`.
     """
 
     passport: TrustTrusteesIndividualIdentificationPassport
@@ -369,6 +471,13 @@ class TrustTrusteesIndividual(TypedDict, total=False):
 
     name: Required[str]
     """The person's legal name."""
+
+    confirmed_no_us_tax_id: bool
+    """
+    The identification method for an individual can only be a passport or driver's
+    license if you've confirmed they do not have a US tax id (either a Social
+    Security Number or Individual Taxpayer Identification Number).
+    """
 
 
 class TrustTrustees(TypedDict, total=False):
@@ -413,14 +522,33 @@ class TrustGrantorIdentificationPassport(TypedDict, total=False):
     """The identifier of the File containing the passport."""
 
 
+class TrustGrantorIdentificationDriversLicense(TypedDict, total=False):
+    expiration_date: Required[str]
+    """The driver's license's expiration date in YYYY-MM-DD format."""
+
+    file_id: Required[str]
+    """The identifier of the File containing the driver's license."""
+
+    state: Required[str]
+    """The state that issued the provided driver's license."""
+
+
 class TrustGrantorIdentification(TypedDict, total=False):
-    method: Required[Literal["social_security_number", "individual_taxpayer_identification_number", "passport"]]
+    method: Required[
+        Literal["social_security_number", "individual_taxpayer_identification_number", "passport", "drivers_license"]
+    ]
     """A method that can be used to verify the individual's identity."""
 
     number: Required[str]
     """
     An identification number that can be used to verify the individual's identity,
     such as a social security number.
+    """
+
+    drivers_license: TrustGrantorIdentificationDriversLicense
+    """Information about the United States driver's license used for identification.
+
+    Required if `method` is equal to `drivers_license`.
     """
 
     passport: TrustGrantorIdentificationPassport
@@ -442,6 +570,13 @@ class TrustGrantor(TypedDict, total=False):
 
     name: Required[str]
     """The person's legal name."""
+
+    confirmed_no_us_tax_id: bool
+    """
+    The identification method for an individual can only be a passport or driver's
+    license if you've confirmed they do not have a US tax id (either a Social
+    Security Number or Individual Taxpayer Identification Number).
+    """
 
 
 class Trust(TypedDict, total=False):

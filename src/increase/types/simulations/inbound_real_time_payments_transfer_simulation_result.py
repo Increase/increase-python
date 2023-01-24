@@ -18,6 +18,7 @@ __all__ = [
     "TransactionSourceCheckDepositAcceptance",
     "TransactionSourceCheckDepositReturn",
     "TransactionSourceCheckTransferIntention",
+    "TransactionSourceCheckTransferReturn",
     "TransactionSourceCheckTransferRejection",
     "TransactionSourceCheckTransferStopPaymentRequest",
     "TransactionSourceDisputeResolution",
@@ -151,6 +152,7 @@ class TransactionSourceACHTransferReturn(BaseModel):
         "returned_per_odfi_request",
         "addenda_error",
         "limited_participation_dfi",
+        "incorrectly_coded_outbound_international_payment",
         "other",
     ]
     """Why the ACH Transfer was returned."""
@@ -204,7 +206,7 @@ class TransactionSourceCardRefund(BaseModel):
 
 class TransactionSourceCardSettlement(BaseModel):
     amount: int
-    """The pending amount in the minor unit of the transaction's currency.
+    """The amount in the minor unit of the transaction's settlement currency.
 
     For dollars, for example, this is cents.
     """
@@ -212,7 +214,7 @@ class TransactionSourceCardSettlement(BaseModel):
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-    transaction's currency.
+    transaction's settlement currency.
     """
 
     merchant_category_code: str
@@ -228,6 +230,15 @@ class TransactionSourceCardSettlement(BaseModel):
     pending_transaction_id: Optional[str]
     """The identifier of the Pending Transaction associated with this Transaction."""
 
+    presentment_amount: int
+    """The amount in the minor unit of the transaction's presentment currency."""
+
+    presentment_currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+    transaction's presentment currency.
+    """
+
     type: Literal["card_settlement"]
     """A constant representing the object's type.
 
@@ -236,20 +247,32 @@ class TransactionSourceCardSettlement(BaseModel):
 
 
 class TransactionSourceCheckDepositAcceptance(BaseModel):
+    account_number: str
+    """The account number printed on the check."""
+
     amount: int
-    """The amount in the minor unit of the transaction's currency.
+    """The amount to be deposited in the minor unit of the transaction's currency.
 
     For dollars, for example, this is cents.
     """
 
+    auxiliary_on_us: Optional[str]
+    """An additional line of metadata printed on the check.
+
+    This typically includes the check number.
+    """
+
     check_deposit_id: str
-    """The ID of the Check Deposit that led to the Transaction."""
+    """The ID of the Check Deposit that was accepted."""
 
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
     transaction's currency.
     """
+
+    routing_number: str
+    """The routing number printed on the check."""
 
 
 class TransactionSourceCheckDepositReturn(BaseModel):
@@ -324,6 +347,14 @@ class TransactionSourceCheckTransferIntention(BaseModel):
 
     transfer_id: str
     """The identifier of the Check Transfer with which this is associated."""
+
+
+class TransactionSourceCheckTransferReturn(BaseModel):
+    file_id: Optional[str]
+    """If available, a document with additional information about the return."""
+
+    transfer_id: str
+    """The identifier of the returned Check Transfer."""
 
 
 class TransactionSourceCheckTransferRejection(BaseModel):
@@ -667,6 +698,14 @@ class TransactionSourceInboundWireTransfer(BaseModel):
 
     originator_to_beneficiary_information: Optional[str]
 
+    originator_to_beneficiary_information_line1: Optional[str]
+
+    originator_to_beneficiary_information_line2: Optional[str]
+
+    originator_to_beneficiary_information_line3: Optional[str]
+
+    originator_to_beneficiary_information_line4: Optional[str]
+
 
 class TransactionSourceInternalSource(BaseModel):
     amount: int
@@ -878,6 +917,7 @@ class TransactionSource(BaseModel):
         "check_deposit_acceptance",
         "check_deposit_return",
         "check_transfer_intention",
+        "check_transfer_return",
         "check_transfer_rejection",
         "check_transfer_stop_payment_request",
         "dispute_resolution",
@@ -933,6 +973,13 @@ class TransactionSource(BaseModel):
 
     This field will be present in the JSON response if and only if `category` is
     equal to `check_transfer_rejection`.
+    """
+
+    check_transfer_return: Optional[TransactionSourceCheckTransferReturn]
+    """A Check Transfer Return object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `check_transfer_return`.
     """
 
     check_transfer_stop_payment_request: Optional[TransactionSourceCheckTransferStopPaymentRequest]
@@ -1132,12 +1179,13 @@ class DeclinedTransactionSourceACHDecline(BaseModel):
     reason: Literal[
         "ach_route_canceled",
         "ach_route_disabled",
-        "no_ach_route",
         "breaches_limit",
         "credit_entry_refused_by_receiver",
-        "group_locked",
+        "duplicate_return",
         "entity_not_active",
+        "group_locked",
         "insufficient_funds",
+        "no_ach_route",
         "originator_request",
     ]
     """Why the ACH transfer was declined."""
@@ -1191,6 +1239,7 @@ class DeclinedTransactionSourceCardDecline(BaseModel):
         "entity_not_active",
         "group_locked",
         "insufficient_funds",
+        "transaction_not_allowed",
         "breaches_limit",
         "webhook_declined",
         "webhook_timed_out",
@@ -1218,6 +1267,7 @@ class DeclinedTransactionSourceCheckDecline(BaseModel):
         "unable_to_process",
         "refer_to_image",
         "stop_payment_requested",
+        "returned",
     ]
     """Why the check was declined."""
 
@@ -1458,7 +1508,7 @@ class DeclinedTransaction(BaseModel):
     id: str
     """The Declined Transaction identifier."""
 
-    route_id: str
+    route_id: Optional[str]
     """The identifier for the route this Declined Transaction came through.
 
     Routes are things like cards and ACH details.

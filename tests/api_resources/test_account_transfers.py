@@ -30,6 +30,17 @@ class TestAccountTransfers:
         assert isinstance(resource, AccountTransfer)
 
     @parametrize
+    def test_method_create_with_all_params(self, client: Increase) -> None:
+        resource = client.account_transfers.create(
+            account_id="string",
+            amount=0,
+            description="x",
+            destination_account_id="string",
+            require_approval=True,
+        )
+        assert isinstance(resource, AccountTransfer)
+
+    @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         resource = client.account_transfers.retrieve(
             "string",
@@ -56,6 +67,20 @@ class TestAccountTransfers:
         )
         assert isinstance(resource, SyncPage)
 
+    @parametrize
+    def test_method_approve(self, client: Increase) -> None:
+        resource = client.account_transfers.approve(
+            "string",
+        )
+        assert isinstance(resource, AccountTransfer)
+
+    @parametrize
+    def test_method_cancel(self, client: Increase) -> None:
+        resource = client.account_transfers.cancel(
+            "string",
+        )
+        assert isinstance(resource, AccountTransfer)
+
 
 class TestAsyncAccountTransfers:
     strict_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
@@ -69,6 +94,17 @@ class TestAsyncAccountTransfers:
             amount=0,
             description="x",
             destination_account_id="string",
+        )
+        assert isinstance(resource, AccountTransfer)
+
+    @parametrize
+    async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
+        resource = await client.account_transfers.create(
+            account_id="string",
+            amount=0,
+            description="x",
+            destination_account_id="string",
+            require_approval=True,
         )
         assert isinstance(resource, AccountTransfer)
 
@@ -98,3 +134,17 @@ class TestAsyncAccountTransfers:
             },
         )
         assert isinstance(resource, AsyncPage)
+
+    @parametrize
+    async def test_method_approve(self, client: AsyncIncrease) -> None:
+        resource = await client.account_transfers.approve(
+            "string",
+        )
+        assert isinstance(resource, AccountTransfer)
+
+    @parametrize
+    async def test_method_cancel(self, client: AsyncIncrease) -> None:
+        resource = await client.account_transfers.cancel(
+            "string",
+        )
+        assert isinstance(resource, AccountTransfer)

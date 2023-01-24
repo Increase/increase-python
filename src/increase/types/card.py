@@ -68,10 +68,10 @@ class Card(BaseModel):
     steps.
     """
 
-    expiration_month: str
-    """The month the card expires in MM format (e.g., August is 08)."""
+    expiration_month: int
+    """The month the card expires in M format (e.g., August is 8)."""
 
-    expiration_year: str
+    expiration_year: int
     """The year the card expires in YYYY format (e.g., 2025)."""
 
     id: str

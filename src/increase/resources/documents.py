@@ -2,31 +2,31 @@
 
 from __future__ import annotations
 
-from ..types import Transaction, transaction_list_params
+from ..types import Document, document_list_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
 
-__all__ = ["Transactions", "AsyncTransactions"]
+__all__ = ["Documents", "AsyncDocuments"]
 
 
-class Transactions(SyncAPIResource):
+class Documents(SyncAPIResource):
     def retrieve(
         self,
-        transaction_id: str,
+        document_id: str,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-    ) -> Transaction:
-        """Retrieve a Transaction"""
+    ) -> Document:
+        """Retrieve a Document"""
         return self._get(
-            f"/transactions/{transaction_id}",
+            f"/documents/{document_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
-            cast_to=Transaction,
+            cast_to=Document,
         )
 
     def list(
@@ -34,18 +34,17 @@ class Transactions(SyncAPIResource):
         *,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
-        account_id: str | NotGiven = NOT_GIVEN,
-        route_id: str | NotGiven = NOT_GIVEN,
-        created_at: transaction_list_params.CreatedAt | NotGiven = NOT_GIVEN,
-        category: transaction_list_params.Category | NotGiven = NOT_GIVEN,
+        entity_id: str | NotGiven = NOT_GIVEN,
+        category: document_list_params.Category | NotGiven = NOT_GIVEN,
+        created_at: document_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-    ) -> SyncPage[Transaction]:
+    ) -> SyncPage[Document]:
         """
-        List Transactions
+        List Documents
 
         Args:
           cursor: Return the page of entries after this one.
@@ -53,9 +52,7 @@ class Transactions(SyncAPIResource):
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
 
-          account_id: Filter Transactions for those belonging to the specified Account.
-
-          route_id: Filter Transactions for those belonging to the specified route.
+          entity_id: Filter Documents to ones belonging to the specified Entity.
 
           extra_headers: Send extra headers
 
@@ -64,8 +61,8 @@ class Transactions(SyncAPIResource):
           extra_body: Add additional JSON properties to the request
         """
         return self._get_api_list(
-            "/transactions",
-            page=SyncPage[Transaction],
+            "/documents",
+            page=SyncPage[Document],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -73,32 +70,31 @@ class Transactions(SyncAPIResource):
                 query={
                     "cursor": cursor,
                     "limit": limit,
-                    "account_id": account_id,
-                    "route_id": route_id,
-                    "created_at": created_at,
+                    "entity_id": entity_id,
                     "category": category,
+                    "created_at": created_at,
                 },
             ),
-            model=Transaction,
+            model=Document,
         )
 
 
-class AsyncTransactions(AsyncAPIResource):
+class AsyncDocuments(AsyncAPIResource):
     async def retrieve(
         self,
-        transaction_id: str,
+        document_id: str,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-    ) -> Transaction:
-        """Retrieve a Transaction"""
+    ) -> Document:
+        """Retrieve a Document"""
         return await self._get(
-            f"/transactions/{transaction_id}",
+            f"/documents/{document_id}",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
-            cast_to=Transaction,
+            cast_to=Document,
         )
 
     def list(
@@ -106,18 +102,17 @@ class AsyncTransactions(AsyncAPIResource):
         *,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
-        account_id: str | NotGiven = NOT_GIVEN,
-        route_id: str | NotGiven = NOT_GIVEN,
-        created_at: transaction_list_params.CreatedAt | NotGiven = NOT_GIVEN,
-        category: transaction_list_params.Category | NotGiven = NOT_GIVEN,
+        entity_id: str | NotGiven = NOT_GIVEN,
+        category: document_list_params.Category | NotGiven = NOT_GIVEN,
+        created_at: document_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-    ) -> AsyncPaginator[Transaction, AsyncPage[Transaction]]:
+    ) -> AsyncPaginator[Document, AsyncPage[Document]]:
         """
-        List Transactions
+        List Documents
 
         Args:
           cursor: Return the page of entries after this one.
@@ -125,9 +120,7 @@ class AsyncTransactions(AsyncAPIResource):
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
 
-          account_id: Filter Transactions for those belonging to the specified Account.
-
-          route_id: Filter Transactions for those belonging to the specified route.
+          entity_id: Filter Documents to ones belonging to the specified Entity.
 
           extra_headers: Send extra headers
 
@@ -136,8 +129,8 @@ class AsyncTransactions(AsyncAPIResource):
           extra_body: Add additional JSON properties to the request
         """
         return self._get_api_list(
-            "/transactions",
-            page=AsyncPage[Transaction],
+            "/documents",
+            page=AsyncPage[Document],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -145,11 +138,10 @@ class AsyncTransactions(AsyncAPIResource):
                 query={
                     "cursor": cursor,
                     "limit": limit,
-                    "account_id": account_id,
-                    "route_id": route_id,
-                    "created_at": created_at,
+                    "entity_id": entity_id,
                     "category": category,
+                    "created_at": created_at,
                 },
             ),
-            model=Transaction,
+            model=Document,
         )

@@ -181,6 +181,8 @@ Methods:
 - <code title="post /account_transfers">client.account_transfers.<a href="./src/increase/resources/account_transfers.py">create</a>(\*\*<a href="src/increase/types/account_transfer_create_params.py">params</a>) -> <a href="./src/increase/types/account_transfer.py">AccountTransfer</a></code>
 - <code title="get /account_transfers/{account_transfer_id}">client.account_transfers.<a href="./src/increase/resources/account_transfers.py">retrieve</a>(account_transfer_id) -> <a href="./src/increase/types/account_transfer.py">AccountTransfer</a></code>
 - <code title="get /account_transfers">client.account_transfers.<a href="./src/increase/resources/account_transfers.py">list</a>(\*\*<a href="src/increase/types/account_transfer_list_params.py">params</a>) -> <a href="./src/increase/types/account_transfer.py">SyncPage[AccountTransfer]</a></code>
+- <code title="post /account_transfers/{account_transfer_id}/approve">client.account_transfers.<a href="./src/increase/resources/account_transfers.py">approve</a>(account_transfer_id) -> <a href="./src/increase/types/account_transfer.py">AccountTransfer</a></code>
+- <code title="post /account_transfers/{account_transfer_id}/cancel">client.account_transfers.<a href="./src/increase/resources/account_transfers.py">cancel</a>(account_transfer_id) -> <a href="./src/increase/types/account_transfer.py">AccountTransfer</a></code>
 
 # ACHTransfers
 
@@ -195,6 +197,8 @@ Methods:
 - <code title="post /ach_transfers">client.ach_transfers.<a href="./src/increase/resources/ach_transfers.py">create</a>(\*\*<a href="src/increase/types/ach_transfer_create_params.py">params</a>) -> <a href="./src/increase/types/ach_transfer.py">ACHTransfer</a></code>
 - <code title="get /ach_transfers/{ach_transfer_id}">client.ach_transfers.<a href="./src/increase/resources/ach_transfers.py">retrieve</a>(ach_transfer_id) -> <a href="./src/increase/types/ach_transfer.py">ACHTransfer</a></code>
 - <code title="get /ach_transfers">client.ach_transfers.<a href="./src/increase/resources/ach_transfers.py">list</a>(\*\*<a href="src/increase/types/ach_transfer_list_params.py">params</a>) -> <a href="./src/increase/types/ach_transfer.py">SyncPage[ACHTransfer]</a></code>
+- <code title="post /ach_transfers/{ach_transfer_id}/approve">client.ach_transfers.<a href="./src/increase/resources/ach_transfers.py">approve</a>(ach_transfer_id) -> <a href="./src/increase/types/ach_transfer.py">ACHTransfer</a></code>
+- <code title="post /ach_transfers/{ach_transfer_id}/cancel">client.ach_transfers.<a href="./src/increase/resources/ach_transfers.py">cancel</a>(ach_transfer_id) -> <a href="./src/increase/types/ach_transfer.py">ACHTransfer</a></code>
 
 # ACHPrenotifications
 
@@ -210,6 +214,19 @@ Methods:
 - <code title="get /ach_prenotifications/{ach_prenotification_id}">client.ach_prenotifications.<a href="./src/increase/resources/ach_prenotifications.py">retrieve</a>(ach_prenotification_id) -> <a href="./src/increase/types/ach_prenotification.py">ACHPrenotification</a></code>
 - <code title="get /ach_prenotifications">client.ach_prenotifications.<a href="./src/increase/resources/ach_prenotifications.py">list</a>(\*\*<a href="src/increase/types/ach_prenotification_list_params.py">params</a>) -> <a href="./src/increase/types/ach_prenotification.py">SyncPage[ACHPrenotification]</a></code>
 
+# Documents
+
+Types:
+
+```python
+from increase.types import Document
+```
+
+Methods:
+
+- <code title="get /documents/{document_id}">client.documents.<a href="./src/increase/resources/documents.py">retrieve</a>(document_id) -> <a href="./src/increase/types/document.py">Document</a></code>
+- <code title="get /documents">client.documents.<a href="./src/increase/resources/documents.py">list</a>(\*\*<a href="src/increase/types/document_list_params.py">params</a>) -> <a href="./src/increase/types/document.py">SyncPage[Document]</a></code>
+
 # WireTransfers
 
 Types:
@@ -223,6 +240,8 @@ Methods:
 - <code title="post /wire_transfers">client.wire_transfers.<a href="./src/increase/resources/wire_transfers.py">create</a>(\*\*<a href="src/increase/types/wire_transfer_create_params.py">params</a>) -> <a href="./src/increase/types/wire_transfer.py">WireTransfer</a></code>
 - <code title="get /wire_transfers/{wire_transfer_id}">client.wire_transfers.<a href="./src/increase/resources/wire_transfers.py">retrieve</a>(wire_transfer_id) -> <a href="./src/increase/types/wire_transfer.py">WireTransfer</a></code>
 - <code title="get /wire_transfers">client.wire_transfers.<a href="./src/increase/resources/wire_transfers.py">list</a>(\*\*<a href="src/increase/types/wire_transfer_list_params.py">params</a>) -> <a href="./src/increase/types/wire_transfer.py">SyncPage[WireTransfer]</a></code>
+- <code title="post /wire_transfers/{wire_transfer_id}/approve">client.wire_transfers.<a href="./src/increase/resources/wire_transfers.py">approve</a>(wire_transfer_id) -> <a href="./src/increase/types/wire_transfer.py">WireTransfer</a></code>
+- <code title="post /wire_transfers/{wire_transfer_id}/cancel">client.wire_transfers.<a href="./src/increase/resources/wire_transfers.py">cancel</a>(wire_transfer_id) -> <a href="./src/increase/types/wire_transfer.py">WireTransfer</a></code>
 - <code title="post /simulations/wire_transfers/{wire_transfer_id}/reverse">client.wire_transfers.<a href="./src/increase/resources/wire_transfers.py">reverse</a>(wire_transfer_id) -> <a href="./src/increase/types/wire_transfer.py">WireTransfer</a></code>
 - <code title="post /simulations/wire_transfers/{wire_transfer_id}/submit">client.wire_transfers.<a href="./src/increase/resources/wire_transfers.py">submit</a>(wire_transfer_id) -> <a href="./src/increase/types/wire_transfer.py">WireTransfer</a></code>
 
@@ -239,6 +258,8 @@ Methods:
 - <code title="post /check_transfers">client.check_transfers.<a href="./src/increase/resources/check_transfers.py">create</a>(\*\*<a href="src/increase/types/check_transfer_create_params.py">params</a>) -> <a href="./src/increase/types/check_transfer.py">CheckTransfer</a></code>
 - <code title="get /check_transfers/{check_transfer_id}">client.check_transfers.<a href="./src/increase/resources/check_transfers.py">retrieve</a>(check_transfer_id) -> <a href="./src/increase/types/check_transfer.py">CheckTransfer</a></code>
 - <code title="get /check_transfers">client.check_transfers.<a href="./src/increase/resources/check_transfers.py">list</a>(\*\*<a href="src/increase/types/check_transfer_list_params.py">params</a>) -> <a href="./src/increase/types/check_transfer.py">SyncPage[CheckTransfer]</a></code>
+- <code title="post /check_transfers/{check_transfer_id}/approve">client.check_transfers.<a href="./src/increase/resources/check_transfers.py">approve</a>(check_transfer_id) -> <a href="./src/increase/types/check_transfer.py">CheckTransfer</a></code>
+- <code title="post /check_transfers/{check_transfer_id}/cancel">client.check_transfers.<a href="./src/increase/resources/check_transfers.py">cancel</a>(check_transfer_id) -> <a href="./src/increase/types/check_transfer.py">CheckTransfer</a></code>
 - <code title="post /check_transfers/{check_transfer_id}/stop_payment">client.check_transfers.<a href="./src/increase/resources/check_transfers.py">stop_payment</a>(check_transfer_id) -> <a href="./src/increase/types/check_transfer.py">CheckTransfer</a></code>
 
 # Entities
@@ -406,7 +427,7 @@ from increase.types.simulations import ACHTransferSimulation
 Methods:
 
 - <code title="post /simulations/inbound_ach_transfers">client.simulations.ach_transfers.<a href="./src/increase/resources/simulations/ach_transfers.py">create_inbound</a>(\*\*<a href="src/increase/types/simulations/ach_transfer_create_inbound_params.py">params</a>) -> <a href="./src/increase/types/simulations/ach_transfer_simulation.py">ACHTransferSimulation</a></code>
-- <code title="post /simulations/ach_transfers/{ach_transfer_id}/return">client.simulations.ach*transfers.<a href="./src/increase/resources/simulations/ach_transfers.py">return*</a>(ach_transfer_id) -> <a href="./src/increase/types/ach_transfer.py">ACHTransfer</a></code>
+- <code title="post /simulations/ach_transfers/{ach_transfer_id}/return">client.simulations.ach*transfers.<a href="./src/increase/resources/simulations/ach_transfers.py">return*</a>(ach_transfer_id, \*\*<a href="src/increase/types/simulations/ach_transfer_return_params.py">params</a>) -> <a href="./src/increase/types/ach_transfer.py">ACHTransfer</a></code>
 - <code title="post /simulations/ach_transfers/{ach_transfer_id}/submit">client.simulations.ach_transfers.<a href="./src/increase/resources/simulations/ach_transfers.py">submit</a>(ach_transfer_id) -> <a href="./src/increase/types/ach_transfer.py">ACHTransfer</a></code>
 
 ## CardDisputes
@@ -415,11 +436,24 @@ Methods:
 
 - <code title="post /simulations/card_disputes/{card_dispute_id}/action">client.simulations.card_disputes.<a href="./src/increase/resources/simulations/card_disputes.py">action</a>(card_dispute_id, \*\*<a href="src/increase/types/simulations/card_dispute_action_params.py">params</a>) -> <a href="./src/increase/types/card_dispute.py">CardDispute</a></code>
 
+## CardRefunds
+
+Methods:
+
+- <code title="post /simulations/card_refunds">client.simulations.card_refunds.<a href="./src/increase/resources/simulations/card_refunds.py">create</a>(\*\*<a href="src/increase/types/simulations/card_refund_create_params.py">params</a>) -> <a href="./src/increase/types/transaction.py">Transaction</a></code>
+
 ## CheckTransfers
 
 Methods:
 
+- <code title="post /simulations/check_transfers/{check_transfer_id}/deposit">client.simulations.check_transfers.<a href="./src/increase/resources/simulations/check_transfers.py">deposit</a>(check_transfer_id) -> <a href="./src/increase/types/check_transfer.py">CheckTransfer</a></code>
 - <code title="post /simulations/check_transfers/{check_transfer_id}/mail">client.simulations.check_transfers.<a href="./src/increase/resources/simulations/check_transfers.py">mail</a>(check_transfer_id) -> <a href="./src/increase/types/check_transfer.py">CheckTransfer</a></code>
+
+## Documents
+
+Methods:
+
+- <code title="post /simulations/documents">client.simulations.documents.<a href="./src/increase/resources/simulations/documents.py">create</a>(\*\*<a href="src/increase/types/simulations/document_create_params.py">params</a>) -> <a href="./src/increase/types/document.py">Document</a></code>
 
 ## DigitalWalletTokenRequests
 

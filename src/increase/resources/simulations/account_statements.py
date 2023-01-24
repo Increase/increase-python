@@ -22,7 +22,8 @@ class AccountStatements(SyncAPIResource):
         extra_body: Body | None = None,
     ) -> AccountStatement:
         """
-        Simulates an Account Statement being created for an account.
+        Simulates an [Account Statement](#account-statements) being created for an
+        account. In production, Account Statements are generated once per month.
 
         Args:
           account_id: The identifier of the Account the statement is for.
@@ -53,7 +54,8 @@ class AsyncAccountStatements(AsyncAPIResource):
         extra_body: Body | None = None,
     ) -> AccountStatement:
         """
-        Simulates an Account Statement being created for an account.
+        Simulates an [Account Statement](#account-statements) being created for an
+        account. In production, Account Statements are generated once per month.
 
         Args:
           account_id: The identifier of the Account the statement is for.

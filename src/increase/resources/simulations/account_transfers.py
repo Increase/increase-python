@@ -21,10 +21,11 @@ class AccountTransfers(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> AccountTransfer:
-        """Simulates the completion of an Account Transfer.
-
-        This transfer must first have a
-        `status` of `pending_approval`.
+        """
+        If your account is configured to require approval for each transfer, this
+        endpoint simulates the approval of an [Account Transfer](#account-transfers).
+        You can also approve sandbox Account Transfers in the dashboard. This transfer
+        must first have a `status` of `pending_approval`.
         """
         return self._post(
             f"/simulations/account_transfers/{account_transfer_id}/complete",
@@ -44,10 +45,11 @@ class AsyncAccountTransfers(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> AccountTransfer:
-        """Simulates the completion of an Account Transfer.
-
-        This transfer must first have a
-        `status` of `pending_approval`.
+        """
+        If your account is configured to require approval for each transfer, this
+        endpoint simulates the approval of an [Account Transfer](#account-transfers).
+        You can also approve sandbox Account Transfers in the dashboard. This transfer
+        must first have a `status` of `pending_approval`.
         """
         return await self._post(
             f"/simulations/account_transfers/{account_transfer_id}/complete",

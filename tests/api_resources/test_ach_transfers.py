@@ -44,6 +44,7 @@ class TestACHTransfers:
             funding="checking",
             individual_id="x",
             individual_name="x",
+            require_approval=True,
             routing_number="xxxxxxxxx",
             standard_entry_class_code="corporate_credit_or_debit",
             statement_descriptor="x",
@@ -78,6 +79,20 @@ class TestACHTransfers:
         )
         assert isinstance(resource, SyncPage)
 
+    @parametrize
+    def test_method_approve(self, client: Increase) -> None:
+        resource = client.ach_transfers.approve(
+            "string",
+        )
+        assert isinstance(resource, ACHTransfer)
+
+    @parametrize
+    def test_method_cancel(self, client: Increase) -> None:
+        resource = client.ach_transfers.cancel(
+            "string",
+        )
+        assert isinstance(resource, ACHTransfer)
+
 
 class TestAsyncACHTransfers:
     strict_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
@@ -109,6 +124,7 @@ class TestAsyncACHTransfers:
             funding="checking",
             individual_id="x",
             individual_name="x",
+            require_approval=True,
             routing_number="xxxxxxxxx",
             standard_entry_class_code="corporate_credit_or_debit",
             statement_descriptor="x",
@@ -142,3 +158,17 @@ class TestAsyncACHTransfers:
             },
         )
         assert isinstance(resource, AsyncPage)
+
+    @parametrize
+    async def test_method_approve(self, client: AsyncIncrease) -> None:
+        resource = await client.ach_transfers.approve(
+            "string",
+        )
+        assert isinstance(resource, ACHTransfer)
+
+    @parametrize
+    async def test_method_cancel(self, client: AsyncIncrease) -> None:
+        resource = await client.ach_transfers.cancel(
+            "string",
+        )
+        assert isinstance(resource, ACHTransfer)
