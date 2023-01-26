@@ -34,3 +34,6 @@ class ExternalAccount(BaseModel):
 
     For this resource it will always be `external_account`.
     """
+
+    verification_status: Literal["unverified", "pending", "verified"]
+    """If you have verified ownership of the External Account."""

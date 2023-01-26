@@ -9,7 +9,7 @@ __all__ = ["ACHTransferCreateParams"]
 
 class ACHTransferCreateParams(TypedDict, total=False):
     account_id: Required[str]
-    """The identifier for the account that will send the transfer."""
+    """The Increase identifier for the account that will send the transfer."""
 
     amount: Required[int]
     """The transfer amount in cents.
@@ -20,28 +20,48 @@ class ACHTransferCreateParams(TypedDict, total=False):
     """
 
     statement_descriptor: Required[str]
-    """The description you choose to give the transfer.
+    """A description you choose to give the transfer.
 
-    This will be shown to the recipient.
+    This will be saved with the transfer details, displayed in the dashboard, and
+    returned by the API. If `individual_name` and `company_name` are not explicitly
+    set by this API, the `statement_descriptor` will be sent in those fields to the
+    receiving bank to help the customer recognize the transfer. You are highly
+    encouraged to pass `individual_name` and `company_name` instead of relying on
+    this fallback.
     """
 
     account_number: str
     """The account number for the destination account."""
 
     addendum: str
-    """Additional information that will be sent to the recipient."""
+    """Additional information that will be sent to the recipient.
+
+    This is included in the transfer data sent to the receiving bank.
+    """
 
     company_descriptive_date: str
-    """The description of the date of the transfer."""
+    """The description of the date of the transfer, usually in the format `YYYYMMDD`.
+
+    This is included in the transfer data sent to the receiving bank.
+    """
 
     company_discretionary_data: str
-    """The data you choose to associate with the transfer."""
+    """The data you choose to associate with the transfer.
+
+    This is included in the transfer data sent to the receiving bank.
+    """
 
     company_entry_description: str
-    """The description of the transfer you wish to be shown to the recipient."""
+    """A description of the transfer.
+
+    This is included in the transfer data sent to the receiving bank.
+    """
 
     company_name: str
-    """The name by which the recipient knows you."""
+    """The name by which the recipient knows you.
+
+    This is included in the transfer data sent to the receiving bank.
+    """
 
     effective_date: str
     """
@@ -65,7 +85,7 @@ class ACHTransferCreateParams(TypedDict, total=False):
     individual_name: str
     """The name of the transfer recipient.
 
-    This value is information and not verified by the recipient's bank.
+    This value is informational and not verified by the recipient's bank.
     """
 
     require_approval: bool

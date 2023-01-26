@@ -285,6 +285,7 @@ class TransactionSourceCheckDepositReturn(BaseModel):
 
     return_reason: Literal[
         "ach_conversion_not_supported",
+        "closed_account",
         "duplicate_submission",
         "insufficient_funds",
         "no_account",

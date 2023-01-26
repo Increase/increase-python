@@ -47,23 +47,28 @@ class ACHTransfers(SyncAPIResource):
         Create an ACH Transfer
 
         Args:
-          account_id: The identifier for the account that will send the transfer.
+          account_id: The Increase identifier for the account that will send the transfer.
 
           account_number: The account number for the destination account.
 
-          addendum: Additional information that will be sent to the recipient.
+          addendum: Additional information that will be sent to the recipient. This is included in
+              the transfer data sent to the receiving bank.
 
           amount: The transfer amount in cents. A positive amount originates a credit transfer
               pushing funds to the receiving account. A negative amount originates a debit
               transfer pulling funds from the receiving account.
 
-          company_descriptive_date: The description of the date of the transfer.
+          company_descriptive_date: The description of the date of the transfer, usually in the format `YYYYMMDD`.
+              This is included in the transfer data sent to the receiving bank.
 
-          company_discretionary_data: The data you choose to associate with the transfer.
+          company_discretionary_data: The data you choose to associate with the transfer. This is included in the
+              transfer data sent to the receiving bank.
 
-          company_entry_description: The description of the transfer you wish to be shown to the recipient.
+          company_entry_description: A description of the transfer. This is included in the transfer data sent to the
+              receiving bank.
 
-          company_name: The name by which the recipient knows you.
+          company_name: The name by which the recipient knows you. This is included in the transfer data
+              sent to the receiving bank.
 
           effective_date: The transfer effective date in
               [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
@@ -75,7 +80,7 @@ class ACHTransfers(SyncAPIResource):
 
           individual_id: Your identifer for the transfer recipient.
 
-          individual_name: The name of the transfer recipient. This value is information and not verified
+          individual_name: The name of the transfer recipient. This value is informational and not verified
               by the recipient's bank.
 
           require_approval: Whether the transfer requires explicit approval via the dashboard or API.
@@ -85,8 +90,12 @@ class ACHTransfers(SyncAPIResource):
 
           standard_entry_class_code: The Standard Entry Class (SEC) code to use for the transfer.
 
-          statement_descriptor: The description you choose to give the transfer. This will be shown to the
-              recipient.
+          statement_descriptor: A description you choose to give the transfer. This will be saved with the
+              transfer details, displayed in the dashboard, and returned by the API. If
+              `individual_name` and `company_name` are not explicitly set by this API, the
+              `statement_descriptor` will be sent in those fields to the receiving bank to
+              help the customer recognize the transfer. You are highly encouraged to pass
+              `individual_name` and `company_name` instead of relying on this fallback.
 
           extra_headers: Send extra headers
 
@@ -256,23 +265,28 @@ class AsyncACHTransfers(AsyncAPIResource):
         Create an ACH Transfer
 
         Args:
-          account_id: The identifier for the account that will send the transfer.
+          account_id: The Increase identifier for the account that will send the transfer.
 
           account_number: The account number for the destination account.
 
-          addendum: Additional information that will be sent to the recipient.
+          addendum: Additional information that will be sent to the recipient. This is included in
+              the transfer data sent to the receiving bank.
 
           amount: The transfer amount in cents. A positive amount originates a credit transfer
               pushing funds to the receiving account. A negative amount originates a debit
               transfer pulling funds from the receiving account.
 
-          company_descriptive_date: The description of the date of the transfer.
+          company_descriptive_date: The description of the date of the transfer, usually in the format `YYYYMMDD`.
+              This is included in the transfer data sent to the receiving bank.
 
-          company_discretionary_data: The data you choose to associate with the transfer.
+          company_discretionary_data: The data you choose to associate with the transfer. This is included in the
+              transfer data sent to the receiving bank.
 
-          company_entry_description: The description of the transfer you wish to be shown to the recipient.
+          company_entry_description: A description of the transfer. This is included in the transfer data sent to the
+              receiving bank.
 
-          company_name: The name by which the recipient knows you.
+          company_name: The name by which the recipient knows you. This is included in the transfer data
+              sent to the receiving bank.
 
           effective_date: The transfer effective date in
               [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
@@ -284,7 +298,7 @@ class AsyncACHTransfers(AsyncAPIResource):
 
           individual_id: Your identifer for the transfer recipient.
 
-          individual_name: The name of the transfer recipient. This value is information and not verified
+          individual_name: The name of the transfer recipient. This value is informational and not verified
               by the recipient's bank.
 
           require_approval: Whether the transfer requires explicit approval via the dashboard or API.
@@ -294,8 +308,12 @@ class AsyncACHTransfers(AsyncAPIResource):
 
           standard_entry_class_code: The Standard Entry Class (SEC) code to use for the transfer.
 
-          statement_descriptor: The description you choose to give the transfer. This will be shown to the
-              recipient.
+          statement_descriptor: A description you choose to give the transfer. This will be saved with the
+              transfer details, displayed in the dashboard, and returned by the API. If
+              `individual_name` and `company_name` are not explicitly set by this API, the
+              `statement_descriptor` will be sent in those fields to the receiving bank to
+              help the customer recognize the transfer. You are highly encouraged to pass
+              `individual_name` and `company_name` instead of relying on this fallback.
 
           extra_headers: Send extra headers
 
