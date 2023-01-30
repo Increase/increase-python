@@ -24,7 +24,7 @@ class CardAuthorization(BaseModel):
     is transacting with.
     """
 
-    merchant_category_code: str
+    merchant_category_code: Optional[str]
     """
     The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
     card is transacting with.
@@ -33,11 +33,29 @@ class CardAuthorization(BaseModel):
     merchant_city: Optional[str]
     """The city the merchant resides in."""
 
-    merchant_country: str
+    merchant_country: Optional[str]
     """The country the merchant resides in."""
 
     merchant_descriptor: str
     """The merchant descriptor of the merchant the card is transacting with."""
+
+    point_of_service_entry_mode: Optional[
+        Literal[
+            "manual",
+            "magnetic_stripe_no_cvv",
+            "optical_code",
+            "integrated_circuit_card",
+            "contactless",
+            "credential_on_file",
+            "magnetic_stripe",
+            "contactless_magnetic_stripe",
+            "integrated_circuit_card_no_cvv",
+        ]
+    ]
+    """
+    The method used to enter the cardholder's primary account number and card
+    expiration date
+    """
 
     presentment_amount: int
     """

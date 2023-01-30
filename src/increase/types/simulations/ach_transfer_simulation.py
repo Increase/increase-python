@@ -1184,6 +1184,7 @@ class DeclinedTransactionSourceACHDecline(BaseModel):
         "credit_entry_refused_by_receiver",
         "duplicate_return",
         "entity_not_active",
+        "transaction_not_allowed",
         "group_locked",
         "insufficient_funds",
         "no_ach_route",
@@ -1218,16 +1219,46 @@ class DeclinedTransactionSourceCardDecline(BaseModel):
     """
 
     merchant_acceptor_id: str
+    """
+    The merchant identifier (commonly abbreviated as MID) of the merchant the card
+    is transacting with.
+    """
 
     merchant_category_code: Optional[str]
+    """
+    The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
+    card is transacting with.
+    """
 
     merchant_city: Optional[str]
+    """The city the merchant resides in."""
 
     merchant_country: Optional[str]
+    """The country the merchant resides in."""
 
     merchant_descriptor: str
+    """The merchant descriptor of the merchant the card is transacting with."""
 
     merchant_state: Optional[str]
+    """The state the merchant resides in."""
+
+    point_of_service_entry_mode: Optional[
+        Literal[
+            "manual",
+            "magnetic_stripe_no_cvv",
+            "optical_code",
+            "integrated_circuit_card",
+            "contactless",
+            "credential_on_file",
+            "magnetic_stripe",
+            "contactless_magnetic_stripe",
+            "integrated_circuit_card_no_cvv",
+        ]
+    ]
+    """
+    The method used to enter the cardholder's primary account number and card
+    expiration date
+    """
 
     real_time_decision_id: Optional[str]
     """
