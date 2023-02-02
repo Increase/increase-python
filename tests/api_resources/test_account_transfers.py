@@ -23,7 +23,7 @@ class TestAccountTransfers:
     def test_method_create(self, client: Increase) -> None:
         resource = client.account_transfers.create(
             account_id="string",
-            amount=0,
+            amount=1,
             description="x",
             destination_account_id="string",
         )
@@ -33,7 +33,7 @@ class TestAccountTransfers:
     def test_method_create_with_all_params(self, client: Increase) -> None:
         resource = client.account_transfers.create(
             account_id="string",
-            amount=0,
+            amount=1,
             description="x",
             destination_account_id="string",
             require_approval=True,
@@ -91,7 +91,7 @@ class TestAsyncAccountTransfers:
     async def test_method_create(self, client: AsyncIncrease) -> None:
         resource = await client.account_transfers.create(
             account_id="string",
-            amount=0,
+            amount=1,
             description="x",
             destination_account_id="string",
         )
@@ -101,7 +101,7 @@ class TestAsyncAccountTransfers:
     async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         resource = await client.account_transfers.create(
             account_id="string",
-            amount=0,
+            amount=1,
             description="x",
             destination_account_id="string",
             require_approval=True,

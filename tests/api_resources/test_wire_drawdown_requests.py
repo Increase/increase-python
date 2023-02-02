@@ -24,7 +24,7 @@ class TestWireDrawdownRequests:
     def test_method_create(self, client: Increase) -> None:
         resource = client.wire_drawdown_requests.create(
             account_number_id="string",
-            amount=0,
+            amount=1,
             message_to_recipient="x",
             recipient_account_number="x",
             recipient_routing_number="x",
@@ -37,7 +37,7 @@ class TestWireDrawdownRequests:
     def test_method_create_with_all_params(self, client: Increase) -> None:
         resource = client.wire_drawdown_requests.create(
             account_number_id="string",
-            amount=0,
+            amount=1,
             message_to_recipient="x",
             recipient_account_number="x",
             recipient_routing_number="x",
@@ -79,7 +79,7 @@ class TestAsyncWireDrawdownRequests:
     async def test_method_create(self, client: AsyncIncrease) -> None:
         resource = await client.wire_drawdown_requests.create(
             account_number_id="string",
-            amount=0,
+            amount=1,
             message_to_recipient="x",
             recipient_account_number="x",
             recipient_routing_number="x",
@@ -92,7 +92,7 @@ class TestAsyncWireDrawdownRequests:
     async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         resource = await client.wire_drawdown_requests.create(
             account_number_id="string",
-            amount=0,
+            amount=1,
             message_to_recipient="x",
             recipient_account_number="x",
             recipient_routing_number="x",

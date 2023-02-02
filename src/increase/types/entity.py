@@ -75,7 +75,7 @@ class CorporationBeneficialOwnersIndividualAddress(BaseModel):
 
 class CorporationBeneficialOwnersIndividualIdentification(BaseModel):
     method: Literal[
-        "social_security_number", "individual_taxpayer_identification_number", "passport", "drivers_license"
+        "social_security_number", "individual_taxpayer_identification_number", "passport", "drivers_license", "other"
     ]
     """A method that can be used to verify the individual's identity."""
 
@@ -159,7 +159,7 @@ class NaturalPersonAddress(BaseModel):
 
 class NaturalPersonIdentification(BaseModel):
     method: Literal[
-        "social_security_number", "individual_taxpayer_identification_number", "passport", "drivers_license"
+        "social_security_number", "individual_taxpayer_identification_number", "passport", "drivers_license", "other"
     ]
     """A method that can be used to verify the individual's identity."""
 
@@ -206,7 +206,7 @@ class JointIndividualsAddress(BaseModel):
 
 class JointIndividualsIdentification(BaseModel):
     method: Literal[
-        "social_security_number", "individual_taxpayer_identification_number", "passport", "drivers_license"
+        "social_security_number", "individual_taxpayer_identification_number", "passport", "drivers_license", "other"
     ]
     """A method that can be used to verify the individual's identity."""
 
@@ -281,7 +281,7 @@ class TrustTrusteesIndividualAddress(BaseModel):
 
 class TrustTrusteesIndividualIdentification(BaseModel):
     method: Literal[
-        "social_security_number", "individual_taxpayer_identification_number", "passport", "drivers_license"
+        "social_security_number", "individual_taxpayer_identification_number", "passport", "drivers_license", "other"
     ]
     """A method that can be used to verify the individual's identity."""
 
@@ -339,7 +339,7 @@ class TrustGrantorAddress(BaseModel):
 
 class TrustGrantorIdentification(BaseModel):
     method: Literal[
-        "social_security_number", "individual_taxpayer_identification_number", "passport", "drivers_license"
+        "social_security_number", "individual_taxpayer_identification_number", "passport", "drivers_license", "other"
     ]
     """A method that can be used to verify the individual's identity."""
 

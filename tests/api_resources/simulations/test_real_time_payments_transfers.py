@@ -22,7 +22,7 @@ class TestRealTimePaymentsTransfers:
     def test_method_create_inbound(self, client: Increase) -> None:
         resource = client.simulations.real_time_payments_transfers.create_inbound(
             account_number_id="string",
-            amount=0,
+            amount=1,
         )
         assert isinstance(resource, InboundRealTimePaymentsTransferSimulationResult)
 
@@ -30,7 +30,7 @@ class TestRealTimePaymentsTransfers:
     def test_method_create_inbound_with_all_params(self, client: Increase) -> None:
         resource = client.simulations.real_time_payments_transfers.create_inbound(
             account_number_id="string",
-            amount=0,
+            amount=1,
             request_for_payment_id="string",
             debtor_name="x",
             debtor_account_number="x",
@@ -49,7 +49,7 @@ class TestAsyncRealTimePaymentsTransfers:
     async def test_method_create_inbound(self, client: AsyncIncrease) -> None:
         resource = await client.simulations.real_time_payments_transfers.create_inbound(
             account_number_id="string",
-            amount=0,
+            amount=1,
         )
         assert isinstance(resource, InboundRealTimePaymentsTransferSimulationResult)
 
@@ -57,7 +57,7 @@ class TestAsyncRealTimePaymentsTransfers:
     async def test_method_create_inbound_with_all_params(self, client: AsyncIncrease) -> None:
         resource = await client.simulations.real_time_payments_transfers.create_inbound(
             account_number_id="string",
-            amount=0,
+            amount=1,
             request_for_payment_id="string",
             debtor_name="x",
             debtor_account_number="x",

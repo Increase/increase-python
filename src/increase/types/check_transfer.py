@@ -111,7 +111,10 @@ class CheckTransfer(BaseModel):
     """
 
     message: str
-    """The descriptor that is printed on the check."""
+    """The descriptor that will be printed on the memo field on the check."""
+
+    note: Optional[str]
+    """The descriptor that will be printed on the letter included with the check."""
 
     recipient_name: str
     """The name that will be printed on the check."""

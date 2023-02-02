@@ -166,7 +166,7 @@ class TransactionSourceCardDisputeAcceptance(BaseModel):
     card_dispute_id: str
     """The identifier of the Card Dispute that was accepted."""
 
-    transaction_id: str
+    transaction_id: Optional[str]
     """
     The identifier of the Transaction that was created to return the disputed funds
     to your account.

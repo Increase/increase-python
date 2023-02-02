@@ -47,13 +47,16 @@ class CheckTransferCreateParams(TypedDict, total=False):
     """The transfer amount in cents."""
 
     message: Required[str]
-    """The descriptor that will be printed on the check."""
+    """The descriptor that will be printed on the memo field on the check."""
 
     recipient_name: Required[str]
     """The name that will be printed on the check."""
 
     address_line2: str
     """The second line of the address of the check's destination."""
+
+    note: str
+    """The descriptor that will be printed on the letter included with the check."""
 
     require_approval: bool
     """Whether the transfer requires explicit approval via the dashboard or API."""

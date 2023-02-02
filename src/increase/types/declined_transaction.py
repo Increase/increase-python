@@ -3,10 +3,13 @@
 from typing import Optional
 from typing_extensions import Literal
 
+from ..types import shared
 from .._models import BaseModel
 
 __all__ = [
     "SourceACHDecline",
+    "SourceCardDeclineNetworkDetailsVisa",
+    "SourceCardDeclineNetworkDetails",
     "SourceCardDecline",
     "SourceCheckDecline",
     "SourceInboundRealTimePaymentsTransferDecline",
@@ -54,6 +57,19 @@ class SourceACHDecline(BaseModel):
     trace_number: str
 
 
+class SourceCardDeclineNetworkDetailsVisa(BaseModel):
+    point_of_service_entry_mode: Optional[shared.PointOfServiceEntryMode]
+    """
+    The method used to enter the cardholder's primary account number and card
+    expiration date
+    """
+
+
+class SourceCardDeclineNetworkDetails(BaseModel):
+    visa: SourceCardDeclineNetworkDetailsVisa
+    """Fields specific to the `visa` network"""
+
+
 class SourceCardDecline(BaseModel):
     amount: int
     """The declined amount in the minor unit of the destination account currency.
@@ -97,23 +113,11 @@ class SourceCardDecline(BaseModel):
     merchant_state: Optional[str]
     """The state the merchant resides in."""
 
-    point_of_service_entry_mode: Optional[
-        Literal[
-            "manual",
-            "magnetic_stripe_no_cvv",
-            "optical_code",
-            "integrated_circuit_card",
-            "contactless",
-            "credential_on_file",
-            "magnetic_stripe",
-            "contactless_magnetic_stripe",
-            "integrated_circuit_card_no_cvv",
-        ]
-    ]
-    """
-    The method used to enter the cardholder's primary account number and card
-    expiration date
-    """
+    network: Literal["visa"]
+    """The payment network used to process this card authorization"""
+
+    network_details: SourceCardDeclineNetworkDetails
+    """Fields specific to the `network`"""
 
     real_time_decision_id: Optional[str]
     """

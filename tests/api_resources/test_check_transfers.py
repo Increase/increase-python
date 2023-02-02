@@ -27,7 +27,7 @@ class TestCheckTransfers:
             address_city="x",
             address_state="x",
             address_zip="x",
-            amount=0,
+            amount=1,
             message="x",
             recipient_name="x",
         )
@@ -50,8 +50,9 @@ class TestCheckTransfers:
                 "state": "x",
                 "zip": "x",
             },
-            amount=0,
+            amount=1,
             message="x",
+            note="x",
             recipient_name="x",
             require_approval=True,
         )
@@ -120,7 +121,7 @@ class TestAsyncCheckTransfers:
             address_city="x",
             address_state="x",
             address_zip="x",
-            amount=0,
+            amount=1,
             message="x",
             recipient_name="x",
         )
@@ -143,8 +144,9 @@ class TestAsyncCheckTransfers:
                 "state": "x",
                 "zip": "x",
             },
-            amount=0,
+            amount=1,
             message="x",
+            note="x",
             recipient_name="x",
             require_approval=True,
         )

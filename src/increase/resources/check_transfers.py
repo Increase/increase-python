@@ -28,6 +28,7 @@ class CheckTransfers(SyncAPIResource):
         return_address: check_transfer_create_params.ReturnAddress | NotGiven = NOT_GIVEN,
         amount: int,
         message: str,
+        note: str | NotGiven = NOT_GIVEN,
         recipient_name: str,
         require_approval: bool | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -57,7 +58,9 @@ class CheckTransfers(SyncAPIResource):
 
           amount: The transfer amount in cents.
 
-          message: The descriptor that will be printed on the check.
+          message: The descriptor that will be printed on the memo field on the check.
+
+          note: The descriptor that will be printed on the letter included with the check.
 
           recipient_name: The name that will be printed on the check.
 
@@ -81,6 +84,7 @@ class CheckTransfers(SyncAPIResource):
                 "return_address": return_address,
                 "amount": amount,
                 "message": message,
+                "note": note,
                 "recipient_name": recipient_name,
                 "require_approval": require_approval,
             },
@@ -217,6 +221,7 @@ class AsyncCheckTransfers(AsyncAPIResource):
         return_address: check_transfer_create_params.ReturnAddress | NotGiven = NOT_GIVEN,
         amount: int,
         message: str,
+        note: str | NotGiven = NOT_GIVEN,
         recipient_name: str,
         require_approval: bool | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -246,7 +251,9 @@ class AsyncCheckTransfers(AsyncAPIResource):
 
           amount: The transfer amount in cents.
 
-          message: The descriptor that will be printed on the check.
+          message: The descriptor that will be printed on the memo field on the check.
+
+          note: The descriptor that will be printed on the letter included with the check.
 
           recipient_name: The name that will be printed on the check.
 
@@ -270,6 +277,7 @@ class AsyncCheckTransfers(AsyncAPIResource):
                 "return_address": return_address,
                 "amount": amount,
                 "message": message,
+                "note": note,
                 "recipient_name": recipient_name,
                 "require_approval": require_approval,
             },

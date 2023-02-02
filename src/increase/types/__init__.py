@@ -8,6 +8,7 @@ from .event import Event as Event
 from .group import Group as Group
 from .limit import Limit as Limit
 from .entity import Entity as Entity
+from .shared import PointOfServiceEntryMode as PointOfServiceEntryMode
 from .account import Account as Account
 from .document import Document as Document
 from .transaction import Transaction as Transaction

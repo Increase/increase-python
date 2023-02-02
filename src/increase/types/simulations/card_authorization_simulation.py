@@ -3,11 +3,14 @@
 from typing import Optional
 from typing_extensions import Literal
 
+from ...types import shared
 from ..._models import BaseModel
 
 __all__ = [
     "PendingTransactionSourceAccountTransferInstruction",
     "PendingTransactionSourceACHTransferInstruction",
+    "PendingTransactionSourceCardAuthorizationNetworkDetailsVisa",
+    "PendingTransactionSourceCardAuthorizationNetworkDetails",
     "PendingTransactionSourceCardAuthorization",
     "PendingTransactionSourceCheckDepositInstruction",
     "PendingTransactionSourceCheckTransferInstruction",
@@ -18,6 +21,8 @@ __all__ = [
     "PendingTransactionSource",
     "PendingTransaction",
     "DeclinedTransactionSourceACHDecline",
+    "DeclinedTransactionSourceCardDeclineNetworkDetailsVisa",
+    "DeclinedTransactionSourceCardDeclineNetworkDetails",
     "DeclinedTransactionSourceCardDecline",
     "DeclinedTransactionSourceCheckDecline",
     "DeclinedTransactionSourceInboundRealTimePaymentsTransferDecline",
@@ -55,6 +60,19 @@ class PendingTransactionSourceACHTransferInstruction(BaseModel):
 
     transfer_id: str
     """The identifier of the ACH Transfer that led to this Pending Transaction."""
+
+
+class PendingTransactionSourceCardAuthorizationNetworkDetailsVisa(BaseModel):
+    point_of_service_entry_mode: Optional[shared.PointOfServiceEntryMode]
+    """
+    The method used to enter the cardholder's primary account number and card
+    expiration date
+    """
+
+
+class PendingTransactionSourceCardAuthorizationNetworkDetails(BaseModel):
+    visa: PendingTransactionSourceCardAuthorizationNetworkDetailsVisa
+    """Fields specific to the `visa` network"""
 
 
 class PendingTransactionSourceCardAuthorization(BaseModel):
@@ -97,23 +115,11 @@ class PendingTransactionSourceCardAuthorization(BaseModel):
     merchant_descriptor: str
     """The merchant descriptor of the merchant the card is transacting with."""
 
-    point_of_service_entry_mode: Optional[
-        Literal[
-            "manual",
-            "magnetic_stripe_no_cvv",
-            "optical_code",
-            "integrated_circuit_card",
-            "contactless",
-            "credential_on_file",
-            "magnetic_stripe",
-            "contactless_magnetic_stripe",
-            "integrated_circuit_card_no_cvv",
-        ]
-    ]
-    """
-    The method used to enter the cardholder's primary account number and card
-    expiration date
-    """
+    network: Literal["visa"]
+    """The payment network used to process this card authorization"""
+
+    network_details: PendingTransactionSourceCardAuthorizationNetworkDetails
+    """Fields specific to the `network`"""
 
     real_time_decision_id: Optional[str]
     """
@@ -433,6 +439,19 @@ class DeclinedTransactionSourceACHDecline(BaseModel):
     trace_number: str
 
 
+class DeclinedTransactionSourceCardDeclineNetworkDetailsVisa(BaseModel):
+    point_of_service_entry_mode: Optional[shared.PointOfServiceEntryMode]
+    """
+    The method used to enter the cardholder's primary account number and card
+    expiration date
+    """
+
+
+class DeclinedTransactionSourceCardDeclineNetworkDetails(BaseModel):
+    visa: DeclinedTransactionSourceCardDeclineNetworkDetailsVisa
+    """Fields specific to the `visa` network"""
+
+
 class DeclinedTransactionSourceCardDecline(BaseModel):
     amount: int
     """The declined amount in the minor unit of the destination account currency.
@@ -476,23 +495,11 @@ class DeclinedTransactionSourceCardDecline(BaseModel):
     merchant_state: Optional[str]
     """The state the merchant resides in."""
 
-    point_of_service_entry_mode: Optional[
-        Literal[
-            "manual",
-            "magnetic_stripe_no_cvv",
-            "optical_code",
-            "integrated_circuit_card",
-            "contactless",
-            "credential_on_file",
-            "magnetic_stripe",
-            "contactless_magnetic_stripe",
-            "integrated_circuit_card_no_cvv",
-        ]
-    ]
-    """
-    The method used to enter the cardholder's primary account number and card
-    expiration date
-    """
+    network: Literal["visa"]
+    """The payment network used to process this card authorization"""
+
+    network_details: DeclinedTransactionSourceCardDeclineNetworkDetails
+    """Fields specific to the `network`"""
 
     real_time_decision_id: Optional[str]
     """

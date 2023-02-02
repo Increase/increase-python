@@ -10,6 +10,7 @@ __all__ = [
     "CorporationBeneficialOwnersIndividualAddress",
     "CorporationBeneficialOwnersIndividualIdentificationPassport",
     "CorporationBeneficialOwnersIndividualIdentificationDriversLicense",
+    "CorporationBeneficialOwnersIndividualIdentificationOther",
     "CorporationBeneficialOwnersIndividualIdentification",
     "CorporationBeneficialOwnersIndividual",
     "CorporationBeneficialOwners",
@@ -17,11 +18,13 @@ __all__ = [
     "NaturalPersonAddress",
     "NaturalPersonIdentificationPassport",
     "NaturalPersonIdentificationDriversLicense",
+    "NaturalPersonIdentificationOther",
     "NaturalPersonIdentification",
     "NaturalPerson",
     "JointIndividualsAddress",
     "JointIndividualsIdentificationPassport",
     "JointIndividualsIdentificationDriversLicense",
+    "JointIndividualsIdentificationOther",
     "JointIndividualsIdentification",
     "JointIndividuals",
     "Joint",
@@ -29,12 +32,14 @@ __all__ = [
     "TrustTrusteesIndividualAddress",
     "TrustTrusteesIndividualIdentificationPassport",
     "TrustTrusteesIndividualIdentificationDriversLicense",
+    "TrustTrusteesIndividualIdentificationOther",
     "TrustTrusteesIndividualIdentification",
     "TrustTrusteesIndividual",
     "TrustTrustees",
     "TrustGrantorAddress",
     "TrustGrantorIdentificationPassport",
     "TrustGrantorIdentificationDriversLicense",
+    "TrustGrantorIdentificationOther",
     "TrustGrantorIdentification",
     "TrustGrantor",
     "Trust",
@@ -105,9 +110,32 @@ class CorporationBeneficialOwnersIndividualIdentificationDriversLicense(TypedDic
     """The state that issued the provided driver's license."""
 
 
+class CorporationBeneficialOwnersIndividualIdentificationOther(TypedDict, total=False):
+    country: Required[str]
+    """
+    The two-character ISO 3166-1 code representing the country that issued the
+    document.
+    """
+
+    description: Required[str]
+    """A description of the document submitted."""
+
+    file_id: Required[str]
+    """The identifier of the File containing the document."""
+
+    expiration_date: str
+    """The document's expiration date in YYYY-MM-DD format."""
+
+
 class CorporationBeneficialOwnersIndividualIdentification(TypedDict, total=False):
     method: Required[
-        Literal["social_security_number", "individual_taxpayer_identification_number", "passport", "drivers_license"]
+        Literal[
+            "social_security_number",
+            "individual_taxpayer_identification_number",
+            "passport",
+            "drivers_license",
+            "other",
+        ]
     ]
     """A method that can be used to verify the individual's identity."""
 
@@ -121,6 +149,12 @@ class CorporationBeneficialOwnersIndividualIdentification(TypedDict, total=False
     """Information about the United States driver's license used for identification.
 
     Required if `method` is equal to `drivers_license`.
+    """
+
+    other: CorporationBeneficialOwnersIndividualIdentificationOther
+    """Information about the identification document provided.
+
+    Required if `method` is equal to `other`.
     """
 
     passport: CorporationBeneficialOwnersIndividualIdentificationPassport
@@ -145,9 +179,10 @@ class CorporationBeneficialOwnersIndividual(TypedDict, total=False):
 
     confirmed_no_us_tax_id: bool
     """
-    The identification method for an individual can only be a passport or driver's
-    license if you've confirmed they do not have a US tax id (either a Social
-    Security Number or Individual Taxpayer Identification Number).
+    The identification method for an individual can only be a passport, driver's
+    license, or other document if you've confirmed the individual does not have a US
+    tax id (either a Social Security Number or Individual Taxpayer Identification
+    Number).
     """
 
 
@@ -230,9 +265,32 @@ class NaturalPersonIdentificationDriversLicense(TypedDict, total=False):
     """The state that issued the provided driver's license."""
 
 
+class NaturalPersonIdentificationOther(TypedDict, total=False):
+    country: Required[str]
+    """
+    The two-character ISO 3166-1 code representing the country that issued the
+    document.
+    """
+
+    description: Required[str]
+    """A description of the document submitted."""
+
+    file_id: Required[str]
+    """The identifier of the File containing the document."""
+
+    expiration_date: str
+    """The document's expiration date in YYYY-MM-DD format."""
+
+
 class NaturalPersonIdentification(TypedDict, total=False):
     method: Required[
-        Literal["social_security_number", "individual_taxpayer_identification_number", "passport", "drivers_license"]
+        Literal[
+            "social_security_number",
+            "individual_taxpayer_identification_number",
+            "passport",
+            "drivers_license",
+            "other",
+        ]
     ]
     """A method that can be used to verify the individual's identity."""
 
@@ -246,6 +304,12 @@ class NaturalPersonIdentification(TypedDict, total=False):
     """Information about the United States driver's license used for identification.
 
     Required if `method` is equal to `drivers_license`.
+    """
+
+    other: NaturalPersonIdentificationOther
+    """Information about the identification document provided.
+
+    Required if `method` is equal to `other`.
     """
 
     passport: NaturalPersonIdentificationPassport
@@ -270,9 +334,10 @@ class NaturalPerson(TypedDict, total=False):
 
     confirmed_no_us_tax_id: bool
     """
-    The identification method for an individual can only be a passport or driver's
-    license if you've confirmed they do not have a US tax id (either a Social
-    Security Number or Individual Taxpayer Identification Number).
+    The identification method for an individual can only be a passport, driver's
+    license, or other document if you've confirmed the individual does not have a US
+    tax id (either a Social Security Number or Individual Taxpayer Identification
+    Number).
     """
 
 
@@ -318,9 +383,32 @@ class JointIndividualsIdentificationDriversLicense(TypedDict, total=False):
     """The state that issued the provided driver's license."""
 
 
+class JointIndividualsIdentificationOther(TypedDict, total=False):
+    country: Required[str]
+    """
+    The two-character ISO 3166-1 code representing the country that issued the
+    document.
+    """
+
+    description: Required[str]
+    """A description of the document submitted."""
+
+    file_id: Required[str]
+    """The identifier of the File containing the document."""
+
+    expiration_date: str
+    """The document's expiration date in YYYY-MM-DD format."""
+
+
 class JointIndividualsIdentification(TypedDict, total=False):
     method: Required[
-        Literal["social_security_number", "individual_taxpayer_identification_number", "passport", "drivers_license"]
+        Literal[
+            "social_security_number",
+            "individual_taxpayer_identification_number",
+            "passport",
+            "drivers_license",
+            "other",
+        ]
     ]
     """A method that can be used to verify the individual's identity."""
 
@@ -334,6 +422,12 @@ class JointIndividualsIdentification(TypedDict, total=False):
     """Information about the United States driver's license used for identification.
 
     Required if `method` is equal to `drivers_license`.
+    """
+
+    other: JointIndividualsIdentificationOther
+    """Information about the identification document provided.
+
+    Required if `method` is equal to `other`.
     """
 
     passport: JointIndividualsIdentificationPassport
@@ -358,9 +452,10 @@ class JointIndividuals(TypedDict, total=False):
 
     confirmed_no_us_tax_id: bool
     """
-    The identification method for an individual can only be a passport or driver's
-    license if you've confirmed they do not have a US tax id (either a Social
-    Security Number or Individual Taxpayer Identification Number).
+    The identification method for an individual can only be a passport, driver's
+    license, or other document if you've confirmed the individual does not have a US
+    tax id (either a Social Security Number or Individual Taxpayer Identification
+    Number).
     """
 
 
@@ -434,9 +529,32 @@ class TrustTrusteesIndividualIdentificationDriversLicense(TypedDict, total=False
     """The state that issued the provided driver's license."""
 
 
+class TrustTrusteesIndividualIdentificationOther(TypedDict, total=False):
+    country: Required[str]
+    """
+    The two-character ISO 3166-1 code representing the country that issued the
+    document.
+    """
+
+    description: Required[str]
+    """A description of the document submitted."""
+
+    file_id: Required[str]
+    """The identifier of the File containing the document."""
+
+    expiration_date: str
+    """The document's expiration date in YYYY-MM-DD format."""
+
+
 class TrustTrusteesIndividualIdentification(TypedDict, total=False):
     method: Required[
-        Literal["social_security_number", "individual_taxpayer_identification_number", "passport", "drivers_license"]
+        Literal[
+            "social_security_number",
+            "individual_taxpayer_identification_number",
+            "passport",
+            "drivers_license",
+            "other",
+        ]
     ]
     """A method that can be used to verify the individual's identity."""
 
@@ -450,6 +568,12 @@ class TrustTrusteesIndividualIdentification(TypedDict, total=False):
     """Information about the United States driver's license used for identification.
 
     Required if `method` is equal to `drivers_license`.
+    """
+
+    other: TrustTrusteesIndividualIdentificationOther
+    """Information about the identification document provided.
+
+    Required if `method` is equal to `other`.
     """
 
     passport: TrustTrusteesIndividualIdentificationPassport
@@ -474,9 +598,10 @@ class TrustTrusteesIndividual(TypedDict, total=False):
 
     confirmed_no_us_tax_id: bool
     """
-    The identification method for an individual can only be a passport or driver's
-    license if you've confirmed they do not have a US tax id (either a Social
-    Security Number or Individual Taxpayer Identification Number).
+    The identification method for an individual can only be a passport, driver's
+    license, or other document if you've confirmed the individual does not have a US
+    tax id (either a Social Security Number or Individual Taxpayer Identification
+    Number).
     """
 
 
@@ -533,9 +658,32 @@ class TrustGrantorIdentificationDriversLicense(TypedDict, total=False):
     """The state that issued the provided driver's license."""
 
 
+class TrustGrantorIdentificationOther(TypedDict, total=False):
+    country: Required[str]
+    """
+    The two-character ISO 3166-1 code representing the country that issued the
+    document.
+    """
+
+    description: Required[str]
+    """A description of the document submitted."""
+
+    file_id: Required[str]
+    """The identifier of the File containing the document."""
+
+    expiration_date: str
+    """The document's expiration date in YYYY-MM-DD format."""
+
+
 class TrustGrantorIdentification(TypedDict, total=False):
     method: Required[
-        Literal["social_security_number", "individual_taxpayer_identification_number", "passport", "drivers_license"]
+        Literal[
+            "social_security_number",
+            "individual_taxpayer_identification_number",
+            "passport",
+            "drivers_license",
+            "other",
+        ]
     ]
     """A method that can be used to verify the individual's identity."""
 
@@ -549,6 +697,12 @@ class TrustGrantorIdentification(TypedDict, total=False):
     """Information about the United States driver's license used for identification.
 
     Required if `method` is equal to `drivers_license`.
+    """
+
+    other: TrustGrantorIdentificationOther
+    """Information about the identification document provided.
+
+    Required if `method` is equal to `other`.
     """
 
     passport: TrustGrantorIdentificationPassport
@@ -573,9 +727,10 @@ class TrustGrantor(TypedDict, total=False):
 
     confirmed_no_us_tax_id: bool
     """
-    The identification method for an individual can only be a passport or driver's
-    license if you've confirmed they do not have a US tax id (either a Social
-    Security Number or Individual Taxpayer Identification Number).
+    The identification method for an individual can only be a passport, driver's
+    license, or other document if you've confirmed the individual does not have a US
+    tax id (either a Social Security Number or Individual Taxpayer Identification
+    Number).
     """
 
 
@@ -645,7 +800,9 @@ class EntityCreateParams(TypedDict, total=False):
     natural_person: NaturalPerson
     """Details of the natural person entity to create.
 
-    Required if `structure` is equal to `natural_person`.
+    Required if `structure` is equal to `natural_person`. Natural people entities
+    should be submitted with `social_security_number` or
+    `individual_taxpayer_identification_number` identification methods.
     """
 
     supplemental_documents: List[SupplementalDocuments]

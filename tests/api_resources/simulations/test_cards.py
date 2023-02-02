@@ -22,14 +22,14 @@ class TestCards:
     @parametrize
     def test_method_authorize(self, client: Increase) -> None:
         resource = client.simulations.cards.authorize(
-            amount=0,
+            amount=1,
         )
         assert isinstance(resource, CardAuthorizationSimulation)
 
     @parametrize
     def test_method_authorize_with_all_params(self, client: Increase) -> None:
         resource = client.simulations.cards.authorize(
-            amount=0,
+            amount=1,
             card_id="string",
             digital_wallet_token_id="string",
         )
@@ -48,7 +48,7 @@ class TestCards:
         resource = client.simulations.cards.settlement(
             card_id="string",
             pending_transaction_id="string",
-            amount=0,
+            amount=1,
         )
         assert isinstance(resource, Transaction)
 
@@ -61,14 +61,14 @@ class TestAsyncCards:
     @parametrize
     async def test_method_authorize(self, client: AsyncIncrease) -> None:
         resource = await client.simulations.cards.authorize(
-            amount=0,
+            amount=1,
         )
         assert isinstance(resource, CardAuthorizationSimulation)
 
     @parametrize
     async def test_method_authorize_with_all_params(self, client: AsyncIncrease) -> None:
         resource = await client.simulations.cards.authorize(
-            amount=0,
+            amount=1,
             card_id="string",
             digital_wallet_token_id="string",
         )
@@ -87,6 +87,6 @@ class TestAsyncCards:
         resource = await client.simulations.cards.settlement(
             card_id="string",
             pending_transaction_id="string",
-            amount=0,
+            amount=1,
         )
         assert isinstance(resource, Transaction)

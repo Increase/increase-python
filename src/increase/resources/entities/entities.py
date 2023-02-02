@@ -52,7 +52,9 @@ class Entities(SyncAPIResource):
               `corporation`.
 
           natural_person: Details of the natural person entity to create. Required if `structure` is equal
-              to `natural_person`.
+              to `natural_person`. Natural people entities should be submitted with
+              `social_security_number` or `individual_taxpayer_identification_number`
+              identification methods.
 
           joint: Details of the joint entity to create. Required if `structure` is equal to
               `joint`.
@@ -181,7 +183,9 @@ class AsyncEntities(AsyncAPIResource):
               `corporation`.
 
           natural_person: Details of the natural person entity to create. Required if `structure` is equal
-              to `natural_person`.
+              to `natural_person`. Natural people entities should be submitted with
+              `social_security_number` or `individual_taxpayer_identification_number`
+              identification methods.
 
           joint: Details of the joint entity to create. Required if `structure` is equal to
               `joint`.

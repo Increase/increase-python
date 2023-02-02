@@ -23,7 +23,7 @@ class TestWireTransfers:
     def test_method_create(self, client: Increase) -> None:
         resource = client.wire_transfers.create(
             account_id="string",
-            amount=0,
+            amount=1,
             message_to_recipient="x",
             beneficiary_name="x",
         )
@@ -36,7 +36,7 @@ class TestWireTransfers:
             account_number="x",
             routing_number="xxxxxxxxx",
             external_account_id="string",
-            amount=0,
+            amount=1,
             message_to_recipient="x",
             beneficiary_name="x",
             beneficiary_address_line1="x",
@@ -114,7 +114,7 @@ class TestAsyncWireTransfers:
     async def test_method_create(self, client: AsyncIncrease) -> None:
         resource = await client.wire_transfers.create(
             account_id="string",
-            amount=0,
+            amount=1,
             message_to_recipient="x",
             beneficiary_name="x",
         )
@@ -127,7 +127,7 @@ class TestAsyncWireTransfers:
             account_number="x",
             routing_number="xxxxxxxxx",
             external_account_id="string",
-            amount=0,
+            amount=1,
             message_to_recipient="x",
             beneficiary_name="x",
             beneficiary_address_line1="x",

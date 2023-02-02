@@ -1,3 +1,9 @@
+# Shared Types
+
+```python
+from increase.types import PointOfServiceEntryMode
+```
+
 # Accounts
 
 Types:

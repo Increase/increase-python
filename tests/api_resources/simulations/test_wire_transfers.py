@@ -22,7 +22,7 @@ class TestWireTransfers:
     def test_method_create_inbound(self, client: Increase) -> None:
         resource = client.simulations.wire_transfers.create_inbound(
             account_number_id="string",
-            amount=0,
+            amount=1,
         )
         assert isinstance(resource, WireTransferSimulation)
 
@@ -30,7 +30,7 @@ class TestWireTransfers:
     def test_method_create_inbound_with_all_params(self, client: Increase) -> None:
         resource = client.simulations.wire_transfers.create_inbound(
             account_number_id="string",
-            amount=0,
+            amount=1,
             beneficiary_address_line1="x",
             beneficiary_address_line2="x",
             beneficiary_address_line3="x",
@@ -57,7 +57,7 @@ class TestAsyncWireTransfers:
     async def test_method_create_inbound(self, client: AsyncIncrease) -> None:
         resource = await client.simulations.wire_transfers.create_inbound(
             account_number_id="string",
-            amount=0,
+            amount=1,
         )
         assert isinstance(resource, WireTransferSimulation)
 
@@ -65,7 +65,7 @@ class TestAsyncWireTransfers:
     async def test_method_create_inbound_with_all_params(self, client: AsyncIncrease) -> None:
         resource = await client.simulations.wire_transfers.create_inbound(
             account_number_id="string",
-            amount=0,
+            amount=1,
             beneficiary_address_line1="x",
             beneficiary_address_line2="x",
             beneficiary_address_line3="x",
