@@ -23,6 +23,10 @@ from .digital_wallet_token_requests import (
     DigitalWalletTokenRequests,
     AsyncDigitalWalletTokenRequests,
 )
+from .inbound_wire_drawdown_requests import (
+    InboundWireDrawdownRequests,
+    AsyncInboundWireDrawdownRequests,
+)
 
 if TYPE_CHECKING:
     from ..._client import Increase, AsyncIncrease
@@ -40,6 +44,7 @@ class Simulations(SyncAPIResource):
     documents: Documents
     digital_wallet_token_requests: DigitalWalletTokenRequests
     check_deposits: CheckDeposits
+    inbound_wire_drawdown_requests: InboundWireDrawdownRequests
     wire_transfers: WireTransfers
     cards: Cards
     real_time_payments_transfers: RealTimePaymentsTransfers
@@ -55,6 +60,7 @@ class Simulations(SyncAPIResource):
         self.documents = Documents(client)
         self.digital_wallet_token_requests = DigitalWalletTokenRequests(client)
         self.check_deposits = CheckDeposits(client)
+        self.inbound_wire_drawdown_requests = InboundWireDrawdownRequests(client)
         self.wire_transfers = WireTransfers(client)
         self.cards = Cards(client)
         self.real_time_payments_transfers = RealTimePaymentsTransfers(client)
@@ -70,6 +76,7 @@ class AsyncSimulations(AsyncAPIResource):
     documents: AsyncDocuments
     digital_wallet_token_requests: AsyncDigitalWalletTokenRequests
     check_deposits: AsyncCheckDeposits
+    inbound_wire_drawdown_requests: AsyncInboundWireDrawdownRequests
     wire_transfers: AsyncWireTransfers
     cards: AsyncCards
     real_time_payments_transfers: AsyncRealTimePaymentsTransfers
@@ -85,6 +92,7 @@ class AsyncSimulations(AsyncAPIResource):
         self.documents = AsyncDocuments(client)
         self.digital_wallet_token_requests = AsyncDigitalWalletTokenRequests(client)
         self.check_deposits = AsyncCheckDeposits(client)
+        self.inbound_wire_drawdown_requests = AsyncInboundWireDrawdownRequests(client)
         self.wire_transfers = AsyncWireTransfers(client)
         self.cards = AsyncCards(client)
         self.real_time_payments_transfers = AsyncRealTimePaymentsTransfers(client)

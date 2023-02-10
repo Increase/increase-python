@@ -250,7 +250,7 @@ class SourceCheckDepositAcceptance(BaseModel):
     auxiliary_on_us: Optional[str]
     """An additional line of metadata printed on the check.
 
-    This typically includes the check number.
+    This typically includes the check number for business checks.
     """
 
     check_deposit_id: str
@@ -264,6 +264,13 @@ class SourceCheckDepositAcceptance(BaseModel):
 
     routing_number: str
     """The routing number printed on the check."""
+
+    serial_number: Optional[str]
+    """The check serial number, if present, for consumer checks.
+
+    For business checks, the serial number is usually in the `auxiliary_on_us`
+    field.
+    """
 
 
 class SourceCheckDepositReturn(BaseModel):
@@ -713,6 +720,7 @@ class SourceInternalSource(BaseModel):
     """
 
     reason: Literal[
+        "bank_migration",
         "cashback",
         "empyreal_adjustment",
         "error",
@@ -922,6 +930,7 @@ class Source(BaseModel):
         "inbound_wire_drawdown_payment",
         "inbound_wire_reversal",
         "inbound_wire_transfer",
+        "internal_general_ledger_transaction",
         "internal_source",
         "card_route_refund",
         "card_route_settlement",

@@ -29,6 +29,9 @@ from .wire_transfer_create_inbound_params import (
 from .digital_wallet_token_request_create_params import (
     DigitalWalletTokenRequestCreateParams as DigitalWalletTokenRequestCreateParams,
 )
+from .inbound_wire_drawdown_request_create_params import (
+    InboundWireDrawdownRequestCreateParams as InboundWireDrawdownRequestCreateParams,
+)
 from .digital_wallet_token_request_create_response import (
     DigitalWalletTokenRequestCreateResponse as DigitalWalletTokenRequestCreateResponse,
 )

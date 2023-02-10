@@ -288,6 +288,19 @@ Methods:
 
 - <code title="post /entities/{entity_id}/supplemental_documents">client.entities.supplemental_documents.<a href="./src/increase/resources/entities/supplemental_documents.py">create</a>(entity_id, \*\*<a href="src/increase/types/entities/supplemental_document_create_params.py">params</a>) -> <a href="./src/increase/types/entity.py">Entity</a></code>
 
+# InboundWireDrawdownRequests
+
+Types:
+
+```python
+from increase.types import InboundWireDrawdownRequest
+```
+
+Methods:
+
+- <code title="get /inbound_wire_drawdown_requests/{inbound_wire_drawdown_request_id}">client.inbound_wire_drawdown_requests.<a href="./src/increase/resources/inbound_wire_drawdown_requests.py">retrieve</a>(inbound_wire_drawdown_request_id) -> <a href="./src/increase/types/inbound_wire_drawdown_request.py">InboundWireDrawdownRequest</a></code>
+- <code title="get /inbound_wire_drawdown_requests">client.inbound_wire_drawdown_requests.<a href="./src/increase/resources/inbound_wire_drawdown_requests.py">list</a>(\*\*<a href="src/increase/types/inbound_wire_drawdown_request_list_params.py">params</a>) -> <a href="./src/increase/types/inbound_wire_drawdown_request.py">SyncPage[InboundWireDrawdownRequest]</a></code>
+
 # WireDrawdownRequests
 
 Types:
@@ -479,6 +492,12 @@ Methods:
 
 - <code title="post /simulations/check_deposits/{check_deposit_id}/reject">client.simulations.check_deposits.<a href="./src/increase/resources/simulations/check_deposits.py">reject</a>(check_deposit_id) -> <a href="./src/increase/types/check_deposit.py">CheckDeposit</a></code>
 - <code title="post /simulations/check_deposits/{check_deposit_id}/submit">client.simulations.check_deposits.<a href="./src/increase/resources/simulations/check_deposits.py">submit</a>(check_deposit_id) -> <a href="./src/increase/types/check_deposit.py">CheckDeposit</a></code>
+
+## InboundWireDrawdownRequests
+
+Methods:
+
+- <code title="post /simulations/inbound_wire_drawdown_requests">client.simulations.inbound_wire_drawdown_requests.<a href="./src/increase/resources/simulations/inbound_wire_drawdown_requests.py">create</a>(\*\*<a href="src/increase/types/simulations/inbound_wire_drawdown_request_create_params.py">params</a>) -> <a href="./src/increase/types/inbound_wire_drawdown_request.py">InboundWireDrawdownRequest</a></code>
 
 ## WireTransfers
 

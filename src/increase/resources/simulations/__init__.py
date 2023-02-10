@@ -19,6 +19,10 @@ from .digital_wallet_token_requests import (
     DigitalWalletTokenRequests,
     AsyncDigitalWalletTokenRequests,
 )
+from .inbound_wire_drawdown_requests import (
+    InboundWireDrawdownRequests,
+    AsyncInboundWireDrawdownRequests,
+)
 
 __all__ = [
     "AccountTransfers",
@@ -39,6 +43,8 @@ __all__ = [
     "AsyncDigitalWalletTokenRequests",
     "CheckDeposits",
     "AsyncCheckDeposits",
+    "InboundWireDrawdownRequests",
+    "AsyncInboundWireDrawdownRequests",
     "WireTransfers",
     "AsyncWireTransfers",
     "Cards",

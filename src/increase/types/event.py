@@ -44,6 +44,7 @@ class Event(BaseModel):
         "file.created",
         "group.updated",
         "group.heartbeat",
+        "inbound_wire_drawdown_request.created",
         "oauth_connection.created",
         "oauth_connection.deactivated",
         "pending_transaction.created",

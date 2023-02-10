@@ -80,7 +80,7 @@ class Card(BaseModel):
     last4: str
     """The last 4 digits of the Card's Primary Account Number."""
 
-    status: Optional[Literal["active", "disabled", "canceled"]]
+    status: Literal["active", "disabled", "canceled"]
     """This indicates if payments can be made with the card."""
 
     type: Literal["card"]

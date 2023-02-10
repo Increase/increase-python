@@ -29,6 +29,10 @@ from .pending_transactions import PendingTransactions, AsyncPendingTransactions
 from .declined_transactions import DeclinedTransactions, AsyncDeclinedTransactions
 from .digital_wallet_tokens import DigitalWalletTokens, AsyncDigitalWalletTokens
 from .wire_drawdown_requests import WireDrawdownRequests, AsyncWireDrawdownRequests
+from .inbound_wire_drawdown_requests import (
+    InboundWireDrawdownRequests,
+    AsyncInboundWireDrawdownRequests,
+)
 
 __all__ = [
     "Accounts",
@@ -69,6 +73,8 @@ __all__ = [
     "AsyncCheckTransfers",
     "Entities",
     "AsyncEntities",
+    "InboundWireDrawdownRequests",
+    "AsyncInboundWireDrawdownRequests",
     "WireDrawdownRequests",
     "AsyncWireDrawdownRequests",
     "Events",

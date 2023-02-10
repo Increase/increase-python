@@ -262,7 +262,7 @@ class TransactionSourceCheckDepositAcceptance(BaseModel):
     auxiliary_on_us: Optional[str]
     """An additional line of metadata printed on the check.
 
-    This typically includes the check number.
+    This typically includes the check number for business checks.
     """
 
     check_deposit_id: str
@@ -276,6 +276,13 @@ class TransactionSourceCheckDepositAcceptance(BaseModel):
 
     routing_number: str
     """The routing number printed on the check."""
+
+    serial_number: Optional[str]
+    """The check serial number, if present, for consumer checks.
+
+    For business checks, the serial number is usually in the `auxiliary_on_us`
+    field.
+    """
 
 
 class TransactionSourceCheckDepositReturn(BaseModel):
@@ -725,6 +732,7 @@ class TransactionSourceInternalSource(BaseModel):
     """
 
     reason: Literal[
+        "bank_migration",
         "cashback",
         "empyreal_adjustment",
         "error",
@@ -934,6 +942,7 @@ class TransactionSource(BaseModel):
         "inbound_wire_drawdown_payment",
         "inbound_wire_reversal",
         "inbound_wire_transfer",
+        "internal_general_ledger_transaction",
         "internal_source",
         "card_route_refund",
         "card_route_settlement",
@@ -1203,6 +1212,24 @@ class DeclinedTransactionSourceACHDecline(BaseModel):
 
 
 class DeclinedTransactionSourceCardDeclineNetworkDetailsVisa(BaseModel):
+    electronic_commerce_indicator: Optional[
+        Literal[
+            "mail_phone_order",
+            "recurring",
+            "installment",
+            "unknown_mail_phone_order",
+            "secure_electronic_commerce",
+            "non_authenticated_security_transaction_at_3ds_capable_merchant",
+            "non_authenticated_security_transaction",
+            "non_secure_transaction",
+        ]
+    ]
+    """
+    For electronic commerce transactions, this identifies the level of security used
+    in obtaining the customer's payment credential. For mail or telephone order
+    transactions, identifies the type of mail or telephone order.
+    """
+
     point_of_service_entry_mode: Optional[shared.PointOfServiceEntryMode]
     """
     The method used to enter the cardholder's primary account number and card

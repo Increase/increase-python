@@ -98,6 +98,9 @@ from .oauth_connection_list_params import (
 from .account_statement_list_params import (
     AccountStatementListParams as AccountStatementListParams,
 )
+from .inbound_wire_drawdown_request import (
+    InboundWireDrawdownRequest as InboundWireDrawdownRequest,
+)
 from .account_transfer_create_params import (
     AccountTransferCreateParams as AccountTransferCreateParams,
 )
@@ -139,4 +142,7 @@ from .wire_drawdown_request_list_params import (
 )
 from .wire_drawdown_request_create_params import (
     WireDrawdownRequestCreateParams as WireDrawdownRequestCreateParams,
+)
+from .inbound_wire_drawdown_request_list_params import (
+    InboundWireDrawdownRequestListParams as InboundWireDrawdownRequestListParams,
 )
