@@ -35,7 +35,7 @@ class Entities(SyncAPIResource):
         trust: entity_create_params.Trust | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         relationship: Literal["affiliated", "informational", "unaffiliated"],
-        supplemental_documents: List[entity_create_params.SupplementalDocuments] | NotGiven = NOT_GIVEN,
+        supplemental_documents: List[entity_create_params.SupplementalDocument] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -166,7 +166,7 @@ class AsyncEntities(AsyncAPIResource):
         trust: entity_create_params.Trust | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         relationship: Literal["affiliated", "informational", "unaffiliated"],
-        supplemental_documents: List[entity_create_params.SupplementalDocuments] | NotGiven = NOT_GIVEN,
+        supplemental_documents: List[entity_create_params.SupplementalDocument] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,

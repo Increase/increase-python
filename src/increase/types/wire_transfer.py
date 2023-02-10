@@ -5,7 +5,7 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["Approval", "Cancellation", "Reversal", "Submission", "WireTransfer"]
+__all__ = ["WireTransfer", "Approval", "Cancellation", "Reversal", "Submission"]
 
 
 class Approval(BaseModel):

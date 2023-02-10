@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-__all__ = ["CreatedAt", "CheckDepositListParams"]
+__all__ = ["CheckDepositListParams", "CreatedAt"]
 
 
 class CreatedAt(TypedDict, total=False):

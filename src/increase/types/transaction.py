@@ -6,6 +6,8 @@ from typing_extensions import Literal
 from .._models import BaseModel
 
 __all__ = [
+    "Transaction",
+    "Source",
     "SourceAccountTransferIntention",
     "SourceACHCheckConversionReturn",
     "SourceACHCheckConversion",
@@ -39,8 +41,6 @@ __all__ = [
     "SourceWireDrawdownPaymentRejection",
     "SourceWireTransferIntention",
     "SourceWireTransferRejection",
-    "Source",
-    "Transaction",
 ]
 
 

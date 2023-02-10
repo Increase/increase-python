@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing_extensions import Required, TypedDict
 
-__all__ = ["ReturnAddress", "CheckTransferCreateParams"]
+__all__ = ["CheckTransferCreateParams", "ReturnAddress"]
 
 
 class ReturnAddress(TypedDict, total=False):

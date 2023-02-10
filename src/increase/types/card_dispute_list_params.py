@@ -5,7 +5,7 @@ from __future__ import annotations
 from typing import List
 from typing_extensions import Literal, TypedDict
 
-__all__ = ["CreatedAt", "Status", "CardDisputeListParams"]
+__all__ = ["CardDisputeListParams", "CreatedAt", "Status"]
 
 
 class CreatedAt(TypedDict, total=False):
@@ -43,7 +43,7 @@ _StatusReservedKeywords = TypedDict(
 )
 
 
-class Status(_StatusReservedKeywords):
+class Status(_StatusReservedKeywords, total=False):
     pass
 
 

@@ -5,7 +5,7 @@ from __future__ import annotations
 from typing import List
 from typing_extensions import Literal, TypedDict
 
-__all__ = ["CreatedAt", "Purpose", "FileListParams"]
+__all__ = ["FileListParams", "CreatedAt", "Purpose"]
 
 
 class CreatedAt(TypedDict, total=False):
@@ -57,7 +57,7 @@ _PurposeReservedKeywords = TypedDict(
 )
 
 
-class Purpose(_PurposeReservedKeywords):
+class Purpose(_PurposeReservedKeywords, total=False):
     pass
 
 

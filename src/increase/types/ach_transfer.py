@@ -7,7 +7,7 @@ from pydantic import Field
 
 from .._models import BaseModel
 
-__all__ = ["Approval", "Cancellation", "NotificationOfChange", "Return", "Submission", "ACHTransfer"]
+__all__ = ["ACHTransfer", "Approval", "Cancellation", "NotificationOfChange", "Return", "Submission"]
 
 
 class Approval(BaseModel):

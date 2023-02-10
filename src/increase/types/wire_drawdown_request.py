@@ -5,7 +5,7 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["Submission", "WireDrawdownRequest"]
+__all__ = ["WireDrawdownRequest", "Submission"]
 
 
 class Submission(BaseModel):

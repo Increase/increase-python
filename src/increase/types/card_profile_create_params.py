@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing_extensions import Required, TypedDict
 
-__all__ = ["DigitalWalletsTextColor", "DigitalWallets", "CardProfileCreateParams"]
+__all__ = ["CardProfileCreateParams", "DigitalWallets", "DigitalWalletsTextColor"]
 
 
 class DigitalWalletsTextColor(TypedDict, total=False):

@@ -6,45 +6,45 @@ from typing import List
 from typing_extensions import Literal, Required, TypedDict
 
 __all__ = [
-    "CorporationAddress",
-    "CorporationBeneficialOwnersIndividualAddress",
-    "CorporationBeneficialOwnersIndividualIdentificationPassport",
-    "CorporationBeneficialOwnersIndividualIdentificationDriversLicense",
-    "CorporationBeneficialOwnersIndividualIdentificationOther",
-    "CorporationBeneficialOwnersIndividualIdentification",
-    "CorporationBeneficialOwnersIndividual",
-    "CorporationBeneficialOwners",
+    "EntityCreateParams",
     "Corporation",
+    "CorporationAddress",
+    "CorporationBeneficialOwner",
+    "CorporationBeneficialOwnerIndividual",
+    "CorporationBeneficialOwnerIndividualAddress",
+    "CorporationBeneficialOwnerIndividualIdentification",
+    "CorporationBeneficialOwnerIndividualIdentificationPassport",
+    "CorporationBeneficialOwnerIndividualIdentificationDriversLicense",
+    "CorporationBeneficialOwnerIndividualIdentificationOther",
+    "NaturalPerson",
     "NaturalPersonAddress",
+    "NaturalPersonIdentification",
     "NaturalPersonIdentificationPassport",
     "NaturalPersonIdentificationDriversLicense",
     "NaturalPersonIdentificationOther",
-    "NaturalPersonIdentification",
-    "NaturalPerson",
-    "JointIndividualsAddress",
-    "JointIndividualsIdentificationPassport",
-    "JointIndividualsIdentificationDriversLicense",
-    "JointIndividualsIdentificationOther",
-    "JointIndividualsIdentification",
-    "JointIndividuals",
     "Joint",
+    "JointIndividual",
+    "JointIndividualAddress",
+    "JointIndividualIdentification",
+    "JointIndividualIdentificationPassport",
+    "JointIndividualIdentificationDriversLicense",
+    "JointIndividualIdentificationOther",
+    "Trust",
     "TrustAddress",
-    "TrustTrusteesIndividualAddress",
-    "TrustTrusteesIndividualIdentificationPassport",
-    "TrustTrusteesIndividualIdentificationDriversLicense",
-    "TrustTrusteesIndividualIdentificationOther",
-    "TrustTrusteesIndividualIdentification",
-    "TrustTrusteesIndividual",
-    "TrustTrustees",
+    "TrustTrustee",
+    "TrustTrusteeIndividual",
+    "TrustTrusteeIndividualAddress",
+    "TrustTrusteeIndividualIdentification",
+    "TrustTrusteeIndividualIdentificationPassport",
+    "TrustTrusteeIndividualIdentificationDriversLicense",
+    "TrustTrusteeIndividualIdentificationOther",
+    "TrustGrantor",
     "TrustGrantorAddress",
+    "TrustGrantorIdentification",
     "TrustGrantorIdentificationPassport",
     "TrustGrantorIdentificationDriversLicense",
     "TrustGrantorIdentificationOther",
-    "TrustGrantorIdentification",
-    "TrustGrantor",
-    "Trust",
-    "SupplementalDocuments",
-    "EntityCreateParams",
+    "SupplementalDocument",
 ]
 
 
@@ -68,7 +68,7 @@ class CorporationAddress(TypedDict, total=False):
     """The second line of the address. This might be the floor or room number."""
 
 
-class CorporationBeneficialOwnersIndividualAddress(TypedDict, total=False):
+class CorporationBeneficialOwnerIndividualAddress(TypedDict, total=False):
     city: Required[str]
     """The city of the address."""
 
@@ -88,7 +88,7 @@ class CorporationBeneficialOwnersIndividualAddress(TypedDict, total=False):
     """The second line of the address. This might be the floor or room number."""
 
 
-class CorporationBeneficialOwnersIndividualIdentificationPassport(TypedDict, total=False):
+class CorporationBeneficialOwnerIndividualIdentificationPassport(TypedDict, total=False):
     country: Required[str]
     """The country that issued the passport."""
 
@@ -99,7 +99,7 @@ class CorporationBeneficialOwnersIndividualIdentificationPassport(TypedDict, tot
     """The identifier of the File containing the passport."""
 
 
-class CorporationBeneficialOwnersIndividualIdentificationDriversLicense(TypedDict, total=False):
+class CorporationBeneficialOwnerIndividualIdentificationDriversLicense(TypedDict, total=False):
     expiration_date: Required[str]
     """The driver's license's expiration date in YYYY-MM-DD format."""
 
@@ -110,7 +110,7 @@ class CorporationBeneficialOwnersIndividualIdentificationDriversLicense(TypedDic
     """The state that issued the provided driver's license."""
 
 
-class CorporationBeneficialOwnersIndividualIdentificationOther(TypedDict, total=False):
+class CorporationBeneficialOwnerIndividualIdentificationOther(TypedDict, total=False):
     country: Required[str]
     """
     The two-character ISO 3166-1 code representing the country that issued the
@@ -127,7 +127,7 @@ class CorporationBeneficialOwnersIndividualIdentificationOther(TypedDict, total=
     """The document's expiration date in YYYY-MM-DD format."""
 
 
-class CorporationBeneficialOwnersIndividualIdentification(TypedDict, total=False):
+class CorporationBeneficialOwnerIndividualIdentification(TypedDict, total=False):
     method: Required[
         Literal[
             "social_security_number",
@@ -145,33 +145,33 @@ class CorporationBeneficialOwnersIndividualIdentification(TypedDict, total=False
     such as a social security number.
     """
 
-    drivers_license: CorporationBeneficialOwnersIndividualIdentificationDriversLicense
+    drivers_license: CorporationBeneficialOwnerIndividualIdentificationDriversLicense
     """Information about the United States driver's license used for identification.
 
     Required if `method` is equal to `drivers_license`.
     """
 
-    other: CorporationBeneficialOwnersIndividualIdentificationOther
+    other: CorporationBeneficialOwnerIndividualIdentificationOther
     """Information about the identification document provided.
 
     Required if `method` is equal to `other`.
     """
 
-    passport: CorporationBeneficialOwnersIndividualIdentificationPassport
+    passport: CorporationBeneficialOwnerIndividualIdentificationPassport
     """Information about the passport used for identification.
 
     Required if `method` is equal to `passport`.
     """
 
 
-class CorporationBeneficialOwnersIndividual(TypedDict, total=False):
-    address: Required[CorporationBeneficialOwnersIndividualAddress]
+class CorporationBeneficialOwnerIndividual(TypedDict, total=False):
+    address: Required[CorporationBeneficialOwnerIndividualAddress]
     """The individual's address."""
 
     date_of_birth: Required[str]
     """The person's date of birth in YYYY-MM-DD format."""
 
-    identification: Required[CorporationBeneficialOwnersIndividualIdentification]
+    identification: Required[CorporationBeneficialOwnerIndividualIdentification]
     """A means of verifying the person's identity."""
 
     name: Required[str]
@@ -186,8 +186,8 @@ class CorporationBeneficialOwnersIndividual(TypedDict, total=False):
     """
 
 
-class CorporationBeneficialOwners(TypedDict, total=False):
-    individual: Required[CorporationBeneficialOwnersIndividual]
+class CorporationBeneficialOwner(TypedDict, total=False):
+    individual: Required[CorporationBeneficialOwnerIndividual]
     """Personal details for the beneficial owner."""
 
     prong: Required[Literal["ownership", "control"]]
@@ -201,7 +201,7 @@ class Corporation(TypedDict, total=False):
     address: Required[CorporationAddress]
     """The corporation's address."""
 
-    beneficial_owners: Required[List[CorporationBeneficialOwners]]
+    beneficial_owners: Required[List[CorporationBeneficialOwner]]
     """
     The identifying details of anyone controlling or owning 25% or more of the
     corporation.
@@ -341,7 +341,7 @@ class NaturalPerson(TypedDict, total=False):
     """
 
 
-class JointIndividualsAddress(TypedDict, total=False):
+class JointIndividualAddress(TypedDict, total=False):
     city: Required[str]
     """The city of the address."""
 
@@ -361,7 +361,7 @@ class JointIndividualsAddress(TypedDict, total=False):
     """The second line of the address. This might be the floor or room number."""
 
 
-class JointIndividualsIdentificationPassport(TypedDict, total=False):
+class JointIndividualIdentificationPassport(TypedDict, total=False):
     country: Required[str]
     """The country that issued the passport."""
 
@@ -372,7 +372,7 @@ class JointIndividualsIdentificationPassport(TypedDict, total=False):
     """The identifier of the File containing the passport."""
 
 
-class JointIndividualsIdentificationDriversLicense(TypedDict, total=False):
+class JointIndividualIdentificationDriversLicense(TypedDict, total=False):
     expiration_date: Required[str]
     """The driver's license's expiration date in YYYY-MM-DD format."""
 
@@ -383,7 +383,7 @@ class JointIndividualsIdentificationDriversLicense(TypedDict, total=False):
     """The state that issued the provided driver's license."""
 
 
-class JointIndividualsIdentificationOther(TypedDict, total=False):
+class JointIndividualIdentificationOther(TypedDict, total=False):
     country: Required[str]
     """
     The two-character ISO 3166-1 code representing the country that issued the
@@ -400,7 +400,7 @@ class JointIndividualsIdentificationOther(TypedDict, total=False):
     """The document's expiration date in YYYY-MM-DD format."""
 
 
-class JointIndividualsIdentification(TypedDict, total=False):
+class JointIndividualIdentification(TypedDict, total=False):
     method: Required[
         Literal[
             "social_security_number",
@@ -418,33 +418,33 @@ class JointIndividualsIdentification(TypedDict, total=False):
     such as a social security number.
     """
 
-    drivers_license: JointIndividualsIdentificationDriversLicense
+    drivers_license: JointIndividualIdentificationDriversLicense
     """Information about the United States driver's license used for identification.
 
     Required if `method` is equal to `drivers_license`.
     """
 
-    other: JointIndividualsIdentificationOther
+    other: JointIndividualIdentificationOther
     """Information about the identification document provided.
 
     Required if `method` is equal to `other`.
     """
 
-    passport: JointIndividualsIdentificationPassport
+    passport: JointIndividualIdentificationPassport
     """Information about the passport used for identification.
 
     Required if `method` is equal to `passport`.
     """
 
 
-class JointIndividuals(TypedDict, total=False):
-    address: Required[JointIndividualsAddress]
+class JointIndividual(TypedDict, total=False):
+    address: Required[JointIndividualAddress]
     """The individual's address."""
 
     date_of_birth: Required[str]
     """The person's date of birth in YYYY-MM-DD format."""
 
-    identification: Required[JointIndividualsIdentification]
+    identification: Required[JointIndividualIdentification]
     """A means of verifying the person's identity."""
 
     name: Required[str]
@@ -460,7 +460,7 @@ class JointIndividuals(TypedDict, total=False):
 
 
 class Joint(TypedDict, total=False):
-    individuals: Required[List[JointIndividuals]]
+    individuals: Required[List[JointIndividual]]
     """The two individuals that share control of the entity."""
 
     name: str
@@ -487,7 +487,7 @@ class TrustAddress(TypedDict, total=False):
     """The second line of the address. This might be the floor or room number."""
 
 
-class TrustTrusteesIndividualAddress(TypedDict, total=False):
+class TrustTrusteeIndividualAddress(TypedDict, total=False):
     city: Required[str]
     """The city of the address."""
 
@@ -507,7 +507,7 @@ class TrustTrusteesIndividualAddress(TypedDict, total=False):
     """The second line of the address. This might be the floor or room number."""
 
 
-class TrustTrusteesIndividualIdentificationPassport(TypedDict, total=False):
+class TrustTrusteeIndividualIdentificationPassport(TypedDict, total=False):
     country: Required[str]
     """The country that issued the passport."""
 
@@ -518,7 +518,7 @@ class TrustTrusteesIndividualIdentificationPassport(TypedDict, total=False):
     """The identifier of the File containing the passport."""
 
 
-class TrustTrusteesIndividualIdentificationDriversLicense(TypedDict, total=False):
+class TrustTrusteeIndividualIdentificationDriversLicense(TypedDict, total=False):
     expiration_date: Required[str]
     """The driver's license's expiration date in YYYY-MM-DD format."""
 
@@ -529,7 +529,7 @@ class TrustTrusteesIndividualIdentificationDriversLicense(TypedDict, total=False
     """The state that issued the provided driver's license."""
 
 
-class TrustTrusteesIndividualIdentificationOther(TypedDict, total=False):
+class TrustTrusteeIndividualIdentificationOther(TypedDict, total=False):
     country: Required[str]
     """
     The two-character ISO 3166-1 code representing the country that issued the
@@ -546,7 +546,7 @@ class TrustTrusteesIndividualIdentificationOther(TypedDict, total=False):
     """The document's expiration date in YYYY-MM-DD format."""
 
 
-class TrustTrusteesIndividualIdentification(TypedDict, total=False):
+class TrustTrusteeIndividualIdentification(TypedDict, total=False):
     method: Required[
         Literal[
             "social_security_number",
@@ -564,33 +564,33 @@ class TrustTrusteesIndividualIdentification(TypedDict, total=False):
     such as a social security number.
     """
 
-    drivers_license: TrustTrusteesIndividualIdentificationDriversLicense
+    drivers_license: TrustTrusteeIndividualIdentificationDriversLicense
     """Information about the United States driver's license used for identification.
 
     Required if `method` is equal to `drivers_license`.
     """
 
-    other: TrustTrusteesIndividualIdentificationOther
+    other: TrustTrusteeIndividualIdentificationOther
     """Information about the identification document provided.
 
     Required if `method` is equal to `other`.
     """
 
-    passport: TrustTrusteesIndividualIdentificationPassport
+    passport: TrustTrusteeIndividualIdentificationPassport
     """Information about the passport used for identification.
 
     Required if `method` is equal to `passport`.
     """
 
 
-class TrustTrusteesIndividual(TypedDict, total=False):
-    address: Required[TrustTrusteesIndividualAddress]
+class TrustTrusteeIndividual(TypedDict, total=False):
+    address: Required[TrustTrusteeIndividualAddress]
     """The individual's address."""
 
     date_of_birth: Required[str]
     """The person's date of birth in YYYY-MM-DD format."""
 
-    identification: Required[TrustTrusteesIndividualIdentification]
+    identification: Required[TrustTrusteeIndividualIdentification]
     """A means of verifying the person's identity."""
 
     name: Required[str]
@@ -605,11 +605,11 @@ class TrustTrusteesIndividual(TypedDict, total=False):
     """
 
 
-class TrustTrustees(TypedDict, total=False):
+class TrustTrustee(TypedDict, total=False):
     structure: Required[Literal["individual"]]
     """The structure of the trustee."""
 
-    individual: TrustTrusteesIndividual
+    individual: TrustTrusteeIndividual
     """Details of the individual trustee.
 
     Required when the trustee `structure` is equal to `individual`.
@@ -748,7 +748,7 @@ class Trust(TypedDict, total=False):
     name: Required[str]
     """The legal name of the trust."""
 
-    trustees: Required[List[TrustTrustees]]
+    trustees: Required[List[TrustTrustee]]
     """The trustees of the trust."""
 
     formation_document_file_id: str
@@ -770,7 +770,7 @@ class Trust(TypedDict, total=False):
     """
 
 
-class SupplementalDocuments(TypedDict, total=False):
+class SupplementalDocument(TypedDict, total=False):
     file_id: Required[str]
     """The identifier of the File containing the document."""
 
@@ -805,7 +805,7 @@ class EntityCreateParams(TypedDict, total=False):
     `individual_taxpayer_identification_number` identification methods.
     """
 
-    supplemental_documents: List[SupplementalDocuments]
+    supplemental_documents: List[SupplementalDocument]
     """Additional documentation associated with the entity."""
 
     trust: Trust

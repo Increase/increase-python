@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-__all__ = ["StatementPeriodStart", "AccountStatementListParams"]
+__all__ = ["AccountStatementListParams", "StatementPeriodStart"]
 
 
 class StatementPeriodStart(TypedDict, total=False):

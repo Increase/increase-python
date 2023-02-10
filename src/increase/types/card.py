@@ -5,7 +5,7 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["BillingAddress", "DigitalWallet", "Card"]
+__all__ = ["Card", "BillingAddress", "DigitalWallet"]
 
 
 class BillingAddress(BaseModel):

@@ -6,30 +6,30 @@ from typing_extensions import Literal
 from .._models import BaseModel
 
 __all__ = [
-    "CorporationAddress",
-    "CorporationBeneficialOwnersIndividualAddress",
-    "CorporationBeneficialOwnersIndividualIdentification",
-    "CorporationBeneficialOwnersIndividual",
-    "CorporationBeneficialOwners",
+    "Entity",
     "Corporation",
+    "CorporationAddress",
+    "CorporationBeneficialOwner",
+    "CorporationBeneficialOwnerIndividual",
+    "CorporationBeneficialOwnerIndividualAddress",
+    "CorporationBeneficialOwnerIndividualIdentification",
+    "NaturalPerson",
     "NaturalPersonAddress",
     "NaturalPersonIdentification",
-    "NaturalPerson",
-    "JointIndividualsAddress",
-    "JointIndividualsIdentification",
-    "JointIndividuals",
     "Joint",
+    "JointIndividual",
+    "JointIndividualAddress",
+    "JointIndividualIdentification",
+    "Trust",
     "TrustAddress",
-    "TrustTrusteesIndividualAddress",
-    "TrustTrusteesIndividualIdentification",
-    "TrustTrusteesIndividual",
-    "TrustTrustees",
+    "TrustTrustee",
+    "TrustTrusteeIndividual",
+    "TrustTrusteeIndividualAddress",
+    "TrustTrusteeIndividualIdentification",
+    "TrustGrantor",
     "TrustGrantorAddress",
     "TrustGrantorIdentification",
-    "TrustGrantor",
-    "Trust",
-    "SupplementalDocuments",
-    "Entity",
+    "SupplementalDocument",
 ]
 
 
@@ -53,7 +53,7 @@ class CorporationAddress(BaseModel):
     """The ZIP code of the address."""
 
 
-class CorporationBeneficialOwnersIndividualAddress(BaseModel):
+class CorporationBeneficialOwnerIndividualAddress(BaseModel):
     city: str
     """The city of the address."""
 
@@ -73,7 +73,7 @@ class CorporationBeneficialOwnersIndividualAddress(BaseModel):
     """The ZIP code of the address."""
 
 
-class CorporationBeneficialOwnersIndividualIdentification(BaseModel):
+class CorporationBeneficialOwnerIndividualIdentification(BaseModel):
     method: Literal[
         "social_security_number", "individual_taxpayer_identification_number", "passport", "drivers_license", "other"
     ]
@@ -86,25 +86,25 @@ class CorporationBeneficialOwnersIndividualIdentification(BaseModel):
     """
 
 
-class CorporationBeneficialOwnersIndividual(BaseModel):
-    address: CorporationBeneficialOwnersIndividualAddress
+class CorporationBeneficialOwnerIndividual(BaseModel):
+    address: CorporationBeneficialOwnerIndividualAddress
     """The person's address."""
 
     date_of_birth: str
     """The person's date of birth in YYYY-MM-DD format."""
 
-    identification: CorporationBeneficialOwnersIndividualIdentification
+    identification: CorporationBeneficialOwnerIndividualIdentification
     """A means of verifying the person's identity."""
 
     name: str
     """The person's legal name."""
 
 
-class CorporationBeneficialOwners(BaseModel):
+class CorporationBeneficialOwner(BaseModel):
     company_title: Optional[str]
     """This person's role or title within the entity."""
 
-    individual: CorporationBeneficialOwnersIndividual
+    individual: CorporationBeneficialOwnerIndividual
     """Personal details for the beneficial owner."""
 
     prong: Literal["ownership", "control"]
@@ -115,7 +115,7 @@ class Corporation(BaseModel):
     address: CorporationAddress
     """The corporation's address."""
 
-    beneficial_owners: List[CorporationBeneficialOwners]
+    beneficial_owners: List[CorporationBeneficialOwner]
     """
     The identifying details of anyone controlling or owning 25% or more of the
     corporation.
@@ -184,7 +184,7 @@ class NaturalPerson(BaseModel):
     """The person's legal name."""
 
 
-class JointIndividualsAddress(BaseModel):
+class JointIndividualAddress(BaseModel):
     city: str
     """The city of the address."""
 
@@ -204,7 +204,7 @@ class JointIndividualsAddress(BaseModel):
     """The ZIP code of the address."""
 
 
-class JointIndividualsIdentification(BaseModel):
+class JointIndividualIdentification(BaseModel):
     method: Literal[
         "social_security_number", "individual_taxpayer_identification_number", "passport", "drivers_license", "other"
     ]
@@ -217,14 +217,14 @@ class JointIndividualsIdentification(BaseModel):
     """
 
 
-class JointIndividuals(BaseModel):
-    address: JointIndividualsAddress
+class JointIndividual(BaseModel):
+    address: JointIndividualAddress
     """The person's address."""
 
     date_of_birth: str
     """The person's date of birth in YYYY-MM-DD format."""
 
-    identification: JointIndividualsIdentification
+    identification: JointIndividualIdentification
     """A means of verifying the person's identity."""
 
     name: str
@@ -232,7 +232,7 @@ class JointIndividuals(BaseModel):
 
 
 class Joint(BaseModel):
-    individuals: List[JointIndividuals]
+    individuals: List[JointIndividual]
     """The two individuals that share control of the entity."""
 
     name: str
@@ -259,7 +259,7 @@ class TrustAddress(BaseModel):
     """The ZIP code of the address."""
 
 
-class TrustTrusteesIndividualAddress(BaseModel):
+class TrustTrusteeIndividualAddress(BaseModel):
     city: str
     """The city of the address."""
 
@@ -279,7 +279,7 @@ class TrustTrusteesIndividualAddress(BaseModel):
     """The ZIP code of the address."""
 
 
-class TrustTrusteesIndividualIdentification(BaseModel):
+class TrustTrusteeIndividualIdentification(BaseModel):
     method: Literal[
         "social_security_number", "individual_taxpayer_identification_number", "passport", "drivers_license", "other"
     ]
@@ -292,22 +292,22 @@ class TrustTrusteesIndividualIdentification(BaseModel):
     """
 
 
-class TrustTrusteesIndividual(BaseModel):
-    address: TrustTrusteesIndividualAddress
+class TrustTrusteeIndividual(BaseModel):
+    address: TrustTrusteeIndividualAddress
     """The person's address."""
 
     date_of_birth: str
     """The person's date of birth in YYYY-MM-DD format."""
 
-    identification: TrustTrusteesIndividualIdentification
+    identification: TrustTrusteeIndividualIdentification
     """A means of verifying the person's identity."""
 
     name: str
     """The person's legal name."""
 
 
-class TrustTrustees(BaseModel):
-    individual: Optional[TrustTrusteesIndividual]
+class TrustTrustee(BaseModel):
+    individual: Optional[TrustTrusteeIndividual]
     """The individual trustee of the trust.
 
     Will be present if the trustee's `structure` is equal to `individual`.
@@ -389,11 +389,11 @@ class Trust(BaseModel):
     tax_identifier: Optional[str]
     """The Employer Identification Number (EIN) of the trust itself."""
 
-    trustees: List[TrustTrustees]
+    trustees: List[TrustTrustee]
     """The trustees of the trust."""
 
 
-class SupplementalDocuments(BaseModel):
+class SupplementalDocument(BaseModel):
     file_id: str
     """The File containing the document."""
 
@@ -429,7 +429,7 @@ class Entity(BaseModel):
     structure: Literal["corporation", "natural_person", "joint", "trust"]
     """The entity's legal structure."""
 
-    supplemental_documents: List[SupplementalDocuments]
+    supplemental_documents: List[SupplementalDocument]
     """Additional documentation associated with the entity."""
 
     trust: Optional[Trust]

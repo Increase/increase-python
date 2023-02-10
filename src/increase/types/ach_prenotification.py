@@ -5,7 +5,7 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["PrenotificationReturn", "ACHPrenotification"]
+__all__ = ["ACHPrenotification", "PrenotificationReturn"]
 
 
 class PrenotificationReturn(BaseModel):

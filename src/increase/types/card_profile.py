@@ -5,7 +5,7 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["DigitalWalletsTextColor", "DigitalWallets", "CardProfile"]
+__all__ = ["CardProfile", "DigitalWallets", "DigitalWalletsTextColor"]
 
 
 class DigitalWalletsTextColor(BaseModel):
