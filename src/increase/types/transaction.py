@@ -409,7 +409,7 @@ class SourceEmpyrealCashDeposit(BaseModel):
 
 class SourceInboundACHTransfer(BaseModel):
     amount: int
-    """The declined amount in the minor unit of the destination account currency.
+    """The amount in the minor unit of the destination account currency.
 
     For dollars, for example, this is cents.
     """
@@ -433,7 +433,7 @@ class SourceInboundACHTransfer(BaseModel):
 
 class SourceInboundCheck(BaseModel):
     amount: int
-    """The declined amount in the minor unit of the destination account currency.
+    """The amount in the minor unit of the destination account currency.
 
     For dollars, for example, this is cents.
     """
@@ -453,7 +453,7 @@ class SourceInboundCheck(BaseModel):
 
 class SourceInboundInternationalACHTransfer(BaseModel):
     amount: int
-    """The declined amount in the minor unit of the destination account currency.
+    """The amount in the minor unit of the destination account currency.
 
     For dollars, for example, this is cents.
     """

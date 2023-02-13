@@ -2,9 +2,22 @@
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import List
+from typing_extensions import Literal, TypedDict
 
-__all__ = ["ExternalAccountListParams"]
+__all__ = ["ExternalAccountListParams", "Status"]
+
+_StatusReservedKeywords = TypedDict(
+    "_StatusReservedKeywords",
+    {
+        "in": List[Literal["active", "archived"]],
+    },
+    total=False,
+)
+
+
+class Status(_StatusReservedKeywords, total=False):
+    pass
 
 
 class ExternalAccountListParams(TypedDict, total=False):
@@ -16,3 +29,5 @@ class ExternalAccountListParams(TypedDict, total=False):
 
     The default (and maximum) is 100 objects.
     """
+
+    status: Status

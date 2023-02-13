@@ -47,7 +47,7 @@ class TestEntities:
                     {
                         "individual": {
                             "name": "x",
-                            "date_of_birth": "2019-12-27T18:11:19.117Z",
+                            "date_of_birth": "2019-12-27",
                             "address": {
                                 "line1": "x",
                                 "line2": "x",
@@ -61,18 +61,18 @@ class TestEntities:
                                 "number": "x",
                                 "passport": {
                                     "file_id": "string",
-                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "expiration_date": "2019-12-27",
                                     "country": "x",
                                 },
                                 "drivers_license": {
                                     "file_id": "string",
-                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "expiration_date": "2019-12-27",
                                     "state": "x",
                                 },
                                 "other": {
                                     "country": "x",
                                     "description": "x",
-                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "expiration_date": "2019-12-27",
                                     "file_id": "string",
                                 },
                             },
@@ -83,7 +83,7 @@ class TestEntities:
                     {
                         "individual": {
                             "name": "x",
-                            "date_of_birth": "2019-12-27T18:11:19.117Z",
+                            "date_of_birth": "2019-12-27",
                             "address": {
                                 "line1": "x",
                                 "line2": "x",
@@ -97,18 +97,18 @@ class TestEntities:
                                 "number": "x",
                                 "passport": {
                                     "file_id": "string",
-                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "expiration_date": "2019-12-27",
                                     "country": "x",
                                 },
                                 "drivers_license": {
                                     "file_id": "string",
-                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "expiration_date": "2019-12-27",
                                     "state": "x",
                                 },
                                 "other": {
                                     "country": "x",
                                     "description": "x",
-                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "expiration_date": "2019-12-27",
                                     "file_id": "string",
                                 },
                             },
@@ -119,7 +119,7 @@ class TestEntities:
                     {
                         "individual": {
                             "name": "x",
-                            "date_of_birth": "2019-12-27T18:11:19.117Z",
+                            "date_of_birth": "2019-12-27",
                             "address": {
                                 "line1": "x",
                                 "line2": "x",
@@ -133,18 +133,18 @@ class TestEntities:
                                 "number": "x",
                                 "passport": {
                                     "file_id": "string",
-                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "expiration_date": "2019-12-27",
                                     "country": "x",
                                 },
                                 "drivers_license": {
                                     "file_id": "string",
-                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "expiration_date": "2019-12-27",
                                     "state": "x",
                                 },
                                 "other": {
                                     "country": "x",
                                     "description": "x",
-                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "expiration_date": "2019-12-27",
                                     "file_id": "string",
                                 },
                             },
@@ -156,7 +156,7 @@ class TestEntities:
             },
             natural_person={
                 "name": "x",
-                "date_of_birth": "2019-12-27T18:11:19.117Z",
+                "date_of_birth": "2019-12-27",
                 "address": {
                     "line1": "x",
                     "line2": "x",
@@ -170,18 +170,18 @@ class TestEntities:
                     "number": "x",
                     "passport": {
                         "file_id": "string",
-                        "expiration_date": "2019-12-27T18:11:19.117Z",
+                        "expiration_date": "2019-12-27",
                         "country": "x",
                     },
                     "drivers_license": {
                         "file_id": "string",
-                        "expiration_date": "2019-12-27T18:11:19.117Z",
+                        "expiration_date": "2019-12-27",
                         "state": "x",
                     },
                     "other": {
                         "country": "x",
                         "description": "x",
-                        "expiration_date": "2019-12-27T18:11:19.117Z",
+                        "expiration_date": "2019-12-27",
                         "file_id": "string",
                     },
                 },
@@ -191,7 +191,7 @@ class TestEntities:
                 "individuals": [
                     {
                         "name": "x",
-                        "date_of_birth": "2019-12-27T18:11:19.117Z",
+                        "date_of_birth": "2019-12-27",
                         "address": {
                             "line1": "x",
                             "line2": "x",
@@ -205,25 +205,25 @@ class TestEntities:
                             "number": "x",
                             "passport": {
                                 "file_id": "string",
-                                "expiration_date": "2019-12-27T18:11:19.117Z",
+                                "expiration_date": "2019-12-27",
                                 "country": "x",
                             },
                             "drivers_license": {
                                 "file_id": "string",
-                                "expiration_date": "2019-12-27T18:11:19.117Z",
+                                "expiration_date": "2019-12-27",
                                 "state": "x",
                             },
                             "other": {
                                 "country": "x",
                                 "description": "x",
-                                "expiration_date": "2019-12-27T18:11:19.117Z",
+                                "expiration_date": "2019-12-27",
                                 "file_id": "string",
                             },
                         },
                     },
                     {
                         "name": "x",
-                        "date_of_birth": "2019-12-27T18:11:19.117Z",
+                        "date_of_birth": "2019-12-27",
                         "address": {
                             "line1": "x",
                             "line2": "x",
@@ -237,25 +237,25 @@ class TestEntities:
                             "number": "x",
                             "passport": {
                                 "file_id": "string",
-                                "expiration_date": "2019-12-27T18:11:19.117Z",
+                                "expiration_date": "2019-12-27",
                                 "country": "x",
                             },
                             "drivers_license": {
                                 "file_id": "string",
-                                "expiration_date": "2019-12-27T18:11:19.117Z",
+                                "expiration_date": "2019-12-27",
                                 "state": "x",
                             },
                             "other": {
                                 "country": "x",
                                 "description": "x",
-                                "expiration_date": "2019-12-27T18:11:19.117Z",
+                                "expiration_date": "2019-12-27",
                                 "file_id": "string",
                             },
                         },
                     },
                     {
                         "name": "x",
-                        "date_of_birth": "2019-12-27T18:11:19.117Z",
+                        "date_of_birth": "2019-12-27",
                         "address": {
                             "line1": "x",
                             "line2": "x",
@@ -269,18 +269,18 @@ class TestEntities:
                             "number": "x",
                             "passport": {
                                 "file_id": "string",
-                                "expiration_date": "2019-12-27T18:11:19.117Z",
+                                "expiration_date": "2019-12-27",
                                 "country": "x",
                             },
                             "drivers_license": {
                                 "file_id": "string",
-                                "expiration_date": "2019-12-27T18:11:19.117Z",
+                                "expiration_date": "2019-12-27",
                                 "state": "x",
                             },
                             "other": {
                                 "country": "x",
                                 "description": "x",
-                                "expiration_date": "2019-12-27T18:11:19.117Z",
+                                "expiration_date": "2019-12-27",
                                 "file_id": "string",
                             },
                         },
@@ -305,7 +305,7 @@ class TestEntities:
                         "structure": "individual",
                         "individual": {
                             "name": "x",
-                            "date_of_birth": "2019-12-27T18:11:19.117Z",
+                            "date_of_birth": "2019-12-27",
                             "address": {
                                 "line1": "x",
                                 "line2": "x",
@@ -319,18 +319,18 @@ class TestEntities:
                                 "number": "x",
                                 "passport": {
                                     "file_id": "string",
-                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "expiration_date": "2019-12-27",
                                     "country": "x",
                                 },
                                 "drivers_license": {
                                     "file_id": "string",
-                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "expiration_date": "2019-12-27",
                                     "state": "x",
                                 },
                                 "other": {
                                     "country": "x",
                                     "description": "x",
-                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "expiration_date": "2019-12-27",
                                     "file_id": "string",
                                 },
                             },
@@ -340,7 +340,7 @@ class TestEntities:
                         "structure": "individual",
                         "individual": {
                             "name": "x",
-                            "date_of_birth": "2019-12-27T18:11:19.117Z",
+                            "date_of_birth": "2019-12-27",
                             "address": {
                                 "line1": "x",
                                 "line2": "x",
@@ -354,18 +354,18 @@ class TestEntities:
                                 "number": "x",
                                 "passport": {
                                     "file_id": "string",
-                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "expiration_date": "2019-12-27",
                                     "country": "x",
                                 },
                                 "drivers_license": {
                                     "file_id": "string",
-                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "expiration_date": "2019-12-27",
                                     "state": "x",
                                 },
                                 "other": {
                                     "country": "x",
                                     "description": "x",
-                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "expiration_date": "2019-12-27",
                                     "file_id": "string",
                                 },
                             },
@@ -375,7 +375,7 @@ class TestEntities:
                         "structure": "individual",
                         "individual": {
                             "name": "x",
-                            "date_of_birth": "2019-12-27T18:11:19.117Z",
+                            "date_of_birth": "2019-12-27",
                             "address": {
                                 "line1": "x",
                                 "line2": "x",
@@ -389,18 +389,18 @@ class TestEntities:
                                 "number": "x",
                                 "passport": {
                                     "file_id": "string",
-                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "expiration_date": "2019-12-27",
                                     "country": "x",
                                 },
                                 "drivers_license": {
                                     "file_id": "string",
-                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "expiration_date": "2019-12-27",
                                     "state": "x",
                                 },
                                 "other": {
                                     "country": "x",
                                     "description": "x",
-                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "expiration_date": "2019-12-27",
                                     "file_id": "string",
                                 },
                             },
@@ -409,7 +409,7 @@ class TestEntities:
                 ],
                 "grantor": {
                     "name": "x",
-                    "date_of_birth": "2019-12-27T18:11:19.117Z",
+                    "date_of_birth": "2019-12-27",
                     "address": {
                         "line1": "x",
                         "line2": "x",
@@ -423,18 +423,18 @@ class TestEntities:
                         "number": "x",
                         "passport": {
                             "file_id": "string",
-                            "expiration_date": "2019-12-27T18:11:19.117Z",
+                            "expiration_date": "2019-12-27",
                             "country": "x",
                         },
                         "drivers_license": {
                             "file_id": "string",
-                            "expiration_date": "2019-12-27T18:11:19.117Z",
+                            "expiration_date": "2019-12-27",
                             "state": "x",
                         },
                         "other": {
                             "country": "x",
                             "description": "x",
-                            "expiration_date": "2019-12-27T18:11:19.117Z",
+                            "expiration_date": "2019-12-27",
                             "file_id": "string",
                         },
                     },
@@ -500,7 +500,7 @@ class TestAsyncEntities:
                     {
                         "individual": {
                             "name": "x",
-                            "date_of_birth": "2019-12-27T18:11:19.117Z",
+                            "date_of_birth": "2019-12-27",
                             "address": {
                                 "line1": "x",
                                 "line2": "x",
@@ -514,18 +514,18 @@ class TestAsyncEntities:
                                 "number": "x",
                                 "passport": {
                                     "file_id": "string",
-                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "expiration_date": "2019-12-27",
                                     "country": "x",
                                 },
                                 "drivers_license": {
                                     "file_id": "string",
-                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "expiration_date": "2019-12-27",
                                     "state": "x",
                                 },
                                 "other": {
                                     "country": "x",
                                     "description": "x",
-                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "expiration_date": "2019-12-27",
                                     "file_id": "string",
                                 },
                             },
@@ -536,7 +536,7 @@ class TestAsyncEntities:
                     {
                         "individual": {
                             "name": "x",
-                            "date_of_birth": "2019-12-27T18:11:19.117Z",
+                            "date_of_birth": "2019-12-27",
                             "address": {
                                 "line1": "x",
                                 "line2": "x",
@@ -550,18 +550,18 @@ class TestAsyncEntities:
                                 "number": "x",
                                 "passport": {
                                     "file_id": "string",
-                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "expiration_date": "2019-12-27",
                                     "country": "x",
                                 },
                                 "drivers_license": {
                                     "file_id": "string",
-                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "expiration_date": "2019-12-27",
                                     "state": "x",
                                 },
                                 "other": {
                                     "country": "x",
                                     "description": "x",
-                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "expiration_date": "2019-12-27",
                                     "file_id": "string",
                                 },
                             },
@@ -572,7 +572,7 @@ class TestAsyncEntities:
                     {
                         "individual": {
                             "name": "x",
-                            "date_of_birth": "2019-12-27T18:11:19.117Z",
+                            "date_of_birth": "2019-12-27",
                             "address": {
                                 "line1": "x",
                                 "line2": "x",
@@ -586,18 +586,18 @@ class TestAsyncEntities:
                                 "number": "x",
                                 "passport": {
                                     "file_id": "string",
-                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "expiration_date": "2019-12-27",
                                     "country": "x",
                                 },
                                 "drivers_license": {
                                     "file_id": "string",
-                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "expiration_date": "2019-12-27",
                                     "state": "x",
                                 },
                                 "other": {
                                     "country": "x",
                                     "description": "x",
-                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "expiration_date": "2019-12-27",
                                     "file_id": "string",
                                 },
                             },
@@ -609,7 +609,7 @@ class TestAsyncEntities:
             },
             natural_person={
                 "name": "x",
-                "date_of_birth": "2019-12-27T18:11:19.117Z",
+                "date_of_birth": "2019-12-27",
                 "address": {
                     "line1": "x",
                     "line2": "x",
@@ -623,18 +623,18 @@ class TestAsyncEntities:
                     "number": "x",
                     "passport": {
                         "file_id": "string",
-                        "expiration_date": "2019-12-27T18:11:19.117Z",
+                        "expiration_date": "2019-12-27",
                         "country": "x",
                     },
                     "drivers_license": {
                         "file_id": "string",
-                        "expiration_date": "2019-12-27T18:11:19.117Z",
+                        "expiration_date": "2019-12-27",
                         "state": "x",
                     },
                     "other": {
                         "country": "x",
                         "description": "x",
-                        "expiration_date": "2019-12-27T18:11:19.117Z",
+                        "expiration_date": "2019-12-27",
                         "file_id": "string",
                     },
                 },
@@ -644,7 +644,7 @@ class TestAsyncEntities:
                 "individuals": [
                     {
                         "name": "x",
-                        "date_of_birth": "2019-12-27T18:11:19.117Z",
+                        "date_of_birth": "2019-12-27",
                         "address": {
                             "line1": "x",
                             "line2": "x",
@@ -658,25 +658,25 @@ class TestAsyncEntities:
                             "number": "x",
                             "passport": {
                                 "file_id": "string",
-                                "expiration_date": "2019-12-27T18:11:19.117Z",
+                                "expiration_date": "2019-12-27",
                                 "country": "x",
                             },
                             "drivers_license": {
                                 "file_id": "string",
-                                "expiration_date": "2019-12-27T18:11:19.117Z",
+                                "expiration_date": "2019-12-27",
                                 "state": "x",
                             },
                             "other": {
                                 "country": "x",
                                 "description": "x",
-                                "expiration_date": "2019-12-27T18:11:19.117Z",
+                                "expiration_date": "2019-12-27",
                                 "file_id": "string",
                             },
                         },
                     },
                     {
                         "name": "x",
-                        "date_of_birth": "2019-12-27T18:11:19.117Z",
+                        "date_of_birth": "2019-12-27",
                         "address": {
                             "line1": "x",
                             "line2": "x",
@@ -690,25 +690,25 @@ class TestAsyncEntities:
                             "number": "x",
                             "passport": {
                                 "file_id": "string",
-                                "expiration_date": "2019-12-27T18:11:19.117Z",
+                                "expiration_date": "2019-12-27",
                                 "country": "x",
                             },
                             "drivers_license": {
                                 "file_id": "string",
-                                "expiration_date": "2019-12-27T18:11:19.117Z",
+                                "expiration_date": "2019-12-27",
                                 "state": "x",
                             },
                             "other": {
                                 "country": "x",
                                 "description": "x",
-                                "expiration_date": "2019-12-27T18:11:19.117Z",
+                                "expiration_date": "2019-12-27",
                                 "file_id": "string",
                             },
                         },
                     },
                     {
                         "name": "x",
-                        "date_of_birth": "2019-12-27T18:11:19.117Z",
+                        "date_of_birth": "2019-12-27",
                         "address": {
                             "line1": "x",
                             "line2": "x",
@@ -722,18 +722,18 @@ class TestAsyncEntities:
                             "number": "x",
                             "passport": {
                                 "file_id": "string",
-                                "expiration_date": "2019-12-27T18:11:19.117Z",
+                                "expiration_date": "2019-12-27",
                                 "country": "x",
                             },
                             "drivers_license": {
                                 "file_id": "string",
-                                "expiration_date": "2019-12-27T18:11:19.117Z",
+                                "expiration_date": "2019-12-27",
                                 "state": "x",
                             },
                             "other": {
                                 "country": "x",
                                 "description": "x",
-                                "expiration_date": "2019-12-27T18:11:19.117Z",
+                                "expiration_date": "2019-12-27",
                                 "file_id": "string",
                             },
                         },
@@ -758,7 +758,7 @@ class TestAsyncEntities:
                         "structure": "individual",
                         "individual": {
                             "name": "x",
-                            "date_of_birth": "2019-12-27T18:11:19.117Z",
+                            "date_of_birth": "2019-12-27",
                             "address": {
                                 "line1": "x",
                                 "line2": "x",
@@ -772,18 +772,18 @@ class TestAsyncEntities:
                                 "number": "x",
                                 "passport": {
                                     "file_id": "string",
-                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "expiration_date": "2019-12-27",
                                     "country": "x",
                                 },
                                 "drivers_license": {
                                     "file_id": "string",
-                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "expiration_date": "2019-12-27",
                                     "state": "x",
                                 },
                                 "other": {
                                     "country": "x",
                                     "description": "x",
-                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "expiration_date": "2019-12-27",
                                     "file_id": "string",
                                 },
                             },
@@ -793,7 +793,7 @@ class TestAsyncEntities:
                         "structure": "individual",
                         "individual": {
                             "name": "x",
-                            "date_of_birth": "2019-12-27T18:11:19.117Z",
+                            "date_of_birth": "2019-12-27",
                             "address": {
                                 "line1": "x",
                                 "line2": "x",
@@ -807,18 +807,18 @@ class TestAsyncEntities:
                                 "number": "x",
                                 "passport": {
                                     "file_id": "string",
-                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "expiration_date": "2019-12-27",
                                     "country": "x",
                                 },
                                 "drivers_license": {
                                     "file_id": "string",
-                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "expiration_date": "2019-12-27",
                                     "state": "x",
                                 },
                                 "other": {
                                     "country": "x",
                                     "description": "x",
-                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "expiration_date": "2019-12-27",
                                     "file_id": "string",
                                 },
                             },
@@ -828,7 +828,7 @@ class TestAsyncEntities:
                         "structure": "individual",
                         "individual": {
                             "name": "x",
-                            "date_of_birth": "2019-12-27T18:11:19.117Z",
+                            "date_of_birth": "2019-12-27",
                             "address": {
                                 "line1": "x",
                                 "line2": "x",
@@ -842,18 +842,18 @@ class TestAsyncEntities:
                                 "number": "x",
                                 "passport": {
                                     "file_id": "string",
-                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "expiration_date": "2019-12-27",
                                     "country": "x",
                                 },
                                 "drivers_license": {
                                     "file_id": "string",
-                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "expiration_date": "2019-12-27",
                                     "state": "x",
                                 },
                                 "other": {
                                     "country": "x",
                                     "description": "x",
-                                    "expiration_date": "2019-12-27T18:11:19.117Z",
+                                    "expiration_date": "2019-12-27",
                                     "file_id": "string",
                                 },
                             },
@@ -862,7 +862,7 @@ class TestAsyncEntities:
                 ],
                 "grantor": {
                     "name": "x",
-                    "date_of_birth": "2019-12-27T18:11:19.117Z",
+                    "date_of_birth": "2019-12-27",
                     "address": {
                         "line1": "x",
                         "line2": "x",
@@ -876,18 +876,18 @@ class TestAsyncEntities:
                         "number": "x",
                         "passport": {
                             "file_id": "string",
-                            "expiration_date": "2019-12-27T18:11:19.117Z",
+                            "expiration_date": "2019-12-27",
                             "country": "x",
                         },
                         "drivers_license": {
                             "file_id": "string",
-                            "expiration_date": "2019-12-27T18:11:19.117Z",
+                            "expiration_date": "2019-12-27",
                             "state": "x",
                         },
                         "other": {
                             "country": "x",
                             "description": "x",
-                            "expiration_date": "2019-12-27T18:11:19.117Z",
+                            "expiration_date": "2019-12-27",
                             "file_id": "string",
                         },
                     },

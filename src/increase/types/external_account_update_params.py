@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import Literal, TypedDict
 
 __all__ = ["ExternalAccountUpdateParams"]
 
@@ -10,3 +10,6 @@ __all__ = ["ExternalAccountUpdateParams"]
 class ExternalAccountUpdateParams(TypedDict, total=False):
     description: str
     """The description you choose to give the external account."""
+
+    status: Literal["active", "archived"]
+    """The status of the External Account."""

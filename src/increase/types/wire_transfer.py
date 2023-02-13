@@ -125,7 +125,7 @@ class WireTransfer(BaseModel):
     id: str
     """The wire transfer's identifier."""
 
-    message_to_recipient: str
+    message_to_recipient: Optional[str]
     """The message that will show on the recipient's bank statement."""
 
     network: Literal["wire"]

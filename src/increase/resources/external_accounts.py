@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing_extensions import Literal
 
-from ..types import ExternalAccount
+from ..types import ExternalAccount, external_account_list_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
@@ -80,6 +80,7 @@ class ExternalAccounts(SyncAPIResource):
         external_account_id: str,
         *,
         description: str | NotGiven = NOT_GIVEN,
+        status: Literal["active", "archived"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -92,6 +93,8 @@ class ExternalAccounts(SyncAPIResource):
         Args:
           description: The description you choose to give the external account.
 
+          status: The status of the External Account.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -100,7 +103,10 @@ class ExternalAccounts(SyncAPIResource):
         """
         return self._patch(
             f"/external_accounts/{external_account_id}",
-            body={"description": description},
+            body={
+                "description": description,
+                "status": status,
+            },
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=ExternalAccount,
         )
@@ -110,6 +116,7 @@ class ExternalAccounts(SyncAPIResource):
         *,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
+        status: external_account_list_params.Status | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -141,6 +148,7 @@ class ExternalAccounts(SyncAPIResource):
                 query={
                     "cursor": cursor,
                     "limit": limit,
+                    "status": status,
                 },
             ),
             model=ExternalAccount,
@@ -214,6 +222,7 @@ class AsyncExternalAccounts(AsyncAPIResource):
         external_account_id: str,
         *,
         description: str | NotGiven = NOT_GIVEN,
+        status: Literal["active", "archived"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -226,6 +235,8 @@ class AsyncExternalAccounts(AsyncAPIResource):
         Args:
           description: The description you choose to give the external account.
 
+          status: The status of the External Account.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -234,7 +245,10 @@ class AsyncExternalAccounts(AsyncAPIResource):
         """
         return await self._patch(
             f"/external_accounts/{external_account_id}",
-            body={"description": description},
+            body={
+                "description": description,
+                "status": status,
+            },
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=ExternalAccount,
         )
@@ -244,6 +258,7 @@ class AsyncExternalAccounts(AsyncAPIResource):
         *,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
+        status: external_account_list_params.Status | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -275,6 +290,7 @@ class AsyncExternalAccounts(AsyncAPIResource):
                 query={
                     "cursor": cursor,
                     "limit": limit,
+                    "status": status,
                 },
             ),
             model=ExternalAccount,

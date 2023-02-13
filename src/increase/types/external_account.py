@@ -29,6 +29,9 @@ class ExternalAccount(BaseModel):
     routing_number: str
     """The American Bankers' Association (ABA) Routing Transit Number (RTN)."""
 
+    status: Literal["active", "archived"]
+    """The External Account's status."""
+
     type: Literal["external_account"]
     """A constant representing the object's type.
 

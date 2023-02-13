@@ -57,6 +57,7 @@ class TestExternalAccounts:
         resource = client.external_accounts.update(
             "string",
             description="x",
+            status="active",
         )
         assert isinstance(resource, ExternalAccount)
 
@@ -70,6 +71,7 @@ class TestExternalAccounts:
         resource = client.external_accounts.list(
             cursor="string",
             limit=0,
+            status={"in": ["active", "active", "active"]},
         )
         assert isinstance(resource, SyncPage)
 
@@ -117,6 +119,7 @@ class TestAsyncExternalAccounts:
         resource = await client.external_accounts.update(
             "string",
             description="x",
+            status="active",
         )
         assert isinstance(resource, ExternalAccount)
 
@@ -130,5 +133,6 @@ class TestAsyncExternalAccounts:
         resource = await client.external_accounts.list(
             cursor="string",
             limit=0,
+            status={"in": ["active", "active", "active"]},
         )
         assert isinstance(resource, AsyncPage)

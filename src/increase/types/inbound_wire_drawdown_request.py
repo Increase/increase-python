@@ -39,7 +39,7 @@ class InboundWireDrawdownRequest(BaseModel):
     id: str
     """The Wire drawdown request identifier."""
 
-    message_to_recipient: str
+    message_to_recipient: Optional[str]
     """A message from the drawdown request's originator."""
 
     originator_account_number: str
