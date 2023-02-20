@@ -206,7 +206,7 @@ class ACHTransfers(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> ACHTransfer:
-        """Approve an ACH Transfer"""
+        """Approves an ACH Transfer in a pending_approval state."""
         return self._post(
             f"/ach_transfers/{ach_transfer_id}/approve",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
@@ -223,7 +223,7 @@ class ACHTransfers(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> ACHTransfer:
-        """Cancel a pending ACH Transfer"""
+        """Cancels an ACH Transfer in a pending_approval state."""
         return self._post(
             f"/ach_transfers/{ach_transfer_id}/cancel",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
@@ -424,7 +424,7 @@ class AsyncACHTransfers(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> ACHTransfer:
-        """Approve an ACH Transfer"""
+        """Approves an ACH Transfer in a pending_approval state."""
         return await self._post(
             f"/ach_transfers/{ach_transfer_id}/approve",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
@@ -441,7 +441,7 @@ class AsyncACHTransfers(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
     ) -> ACHTransfer:
-        """Cancel a pending ACH Transfer"""
+        """Cancels an ACH Transfer in a pending_approval state."""
         return await self._post(
             f"/ach_transfers/{ach_transfer_id}/cancel",
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
