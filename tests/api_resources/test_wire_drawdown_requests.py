@@ -7,6 +7,7 @@ import os
 import pytest
 
 from increase import Increase, AsyncIncrease
+from tests.utils import assert_matches_type
 from increase.types import WireDrawdownRequest
 from increase.pagination import SyncPage, AsyncPage
 
@@ -22,7 +23,7 @@ class TestWireDrawdownRequests:
     @pytest.mark.skip(reason="Prism tests are broken")
     @parametrize
     def test_method_create(self, client: Increase) -> None:
-        resource = client.wire_drawdown_requests.create(
+        wire_drawdown_request = client.wire_drawdown_requests.create(
             account_number_id="string",
             amount=1,
             message_to_recipient="x",
@@ -30,12 +31,12 @@ class TestWireDrawdownRequests:
             recipient_routing_number="x",
             recipient_name="x",
         )
-        assert isinstance(resource, WireDrawdownRequest)
+        assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are broken")
     @parametrize
     def test_method_create_with_all_params(self, client: Increase) -> None:
-        resource = client.wire_drawdown_requests.create(
+        wire_drawdown_request = client.wire_drawdown_requests.create(
             account_number_id="string",
             amount=1,
             message_to_recipient="x",
@@ -46,27 +47,27 @@ class TestWireDrawdownRequests:
             recipient_address_line2="x",
             recipient_address_line3="x",
         )
-        assert isinstance(resource, WireDrawdownRequest)
+        assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
 
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
-        resource = client.wire_drawdown_requests.retrieve(
+        wire_drawdown_request = client.wire_drawdown_requests.retrieve(
             "string",
         )
-        assert isinstance(resource, WireDrawdownRequest)
+        assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
 
     @parametrize
     def test_method_list(self, client: Increase) -> None:
-        resource = client.wire_drawdown_requests.list()
-        assert isinstance(resource, SyncPage)
+        wire_drawdown_request = client.wire_drawdown_requests.list()
+        assert_matches_type(SyncPage[WireDrawdownRequest], wire_drawdown_request, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
-        resource = client.wire_drawdown_requests.list(
+        wire_drawdown_request = client.wire_drawdown_requests.list(
             cursor="string",
             limit=0,
         )
-        assert isinstance(resource, SyncPage)
+        assert_matches_type(SyncPage[WireDrawdownRequest], wire_drawdown_request, path=["response"])
 
 
 class TestAsyncWireDrawdownRequests:
@@ -77,7 +78,7 @@ class TestAsyncWireDrawdownRequests:
     @pytest.mark.skip(reason="Prism tests are broken")
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
-        resource = await client.wire_drawdown_requests.create(
+        wire_drawdown_request = await client.wire_drawdown_requests.create(
             account_number_id="string",
             amount=1,
             message_to_recipient="x",
@@ -85,12 +86,12 @@ class TestAsyncWireDrawdownRequests:
             recipient_routing_number="x",
             recipient_name="x",
         )
-        assert isinstance(resource, WireDrawdownRequest)
+        assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are broken")
     @parametrize
     async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
-        resource = await client.wire_drawdown_requests.create(
+        wire_drawdown_request = await client.wire_drawdown_requests.create(
             account_number_id="string",
             amount=1,
             message_to_recipient="x",
@@ -101,24 +102,24 @@ class TestAsyncWireDrawdownRequests:
             recipient_address_line2="x",
             recipient_address_line3="x",
         )
-        assert isinstance(resource, WireDrawdownRequest)
+        assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
 
     @parametrize
     async def test_method_retrieve(self, client: AsyncIncrease) -> None:
-        resource = await client.wire_drawdown_requests.retrieve(
+        wire_drawdown_request = await client.wire_drawdown_requests.retrieve(
             "string",
         )
-        assert isinstance(resource, WireDrawdownRequest)
+        assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
 
     @parametrize
     async def test_method_list(self, client: AsyncIncrease) -> None:
-        resource = await client.wire_drawdown_requests.list()
-        assert isinstance(resource, AsyncPage)
+        wire_drawdown_request = await client.wire_drawdown_requests.list()
+        assert_matches_type(AsyncPage[WireDrawdownRequest], wire_drawdown_request, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
-        resource = await client.wire_drawdown_requests.list(
+        wire_drawdown_request = await client.wire_drawdown_requests.list(
             cursor="string",
             limit=0,
         )
-        assert isinstance(resource, AsyncPage)
+        assert_matches_type(AsyncPage[WireDrawdownRequest], wire_drawdown_request, path=["response"])

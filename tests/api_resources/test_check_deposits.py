@@ -7,6 +7,7 @@ import os
 import pytest
 
 from increase import Increase, AsyncIncrease
+from tests.utils import assert_matches_type
 from increase.types import CheckDeposit
 from increase.pagination import SyncPage, AsyncPage
 
@@ -21,30 +22,30 @@ class TestCheckDeposits:
 
     @parametrize
     def test_method_create(self, client: Increase) -> None:
-        resource = client.check_deposits.create(
+        check_deposit = client.check_deposits.create(
             account_id="string",
             amount=0,
             currency="x",
             front_image_file_id="string",
             back_image_file_id="string",
         )
-        assert isinstance(resource, CheckDeposit)
+        assert_matches_type(CheckDeposit, check_deposit, path=["response"])
 
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
-        resource = client.check_deposits.retrieve(
+        check_deposit = client.check_deposits.retrieve(
             "string",
         )
-        assert isinstance(resource, CheckDeposit)
+        assert_matches_type(CheckDeposit, check_deposit, path=["response"])
 
     @parametrize
     def test_method_list(self, client: Increase) -> None:
-        resource = client.check_deposits.list()
-        assert isinstance(resource, SyncPage)
+        check_deposit = client.check_deposits.list()
+        assert_matches_type(SyncPage[CheckDeposit], check_deposit, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
-        resource = client.check_deposits.list(
+        check_deposit = client.check_deposits.list(
             cursor="string",
             limit=0,
             account_id="string",
@@ -55,7 +56,7 @@ class TestCheckDeposits:
                 "on_or_before": "2019-12-27T18:11:19.117Z",
             },
         )
-        assert isinstance(resource, SyncPage)
+        assert_matches_type(SyncPage[CheckDeposit], check_deposit, path=["response"])
 
 
 class TestAsyncCheckDeposits:
@@ -65,30 +66,30 @@ class TestAsyncCheckDeposits:
 
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
-        resource = await client.check_deposits.create(
+        check_deposit = await client.check_deposits.create(
             account_id="string",
             amount=0,
             currency="x",
             front_image_file_id="string",
             back_image_file_id="string",
         )
-        assert isinstance(resource, CheckDeposit)
+        assert_matches_type(CheckDeposit, check_deposit, path=["response"])
 
     @parametrize
     async def test_method_retrieve(self, client: AsyncIncrease) -> None:
-        resource = await client.check_deposits.retrieve(
+        check_deposit = await client.check_deposits.retrieve(
             "string",
         )
-        assert isinstance(resource, CheckDeposit)
+        assert_matches_type(CheckDeposit, check_deposit, path=["response"])
 
     @parametrize
     async def test_method_list(self, client: AsyncIncrease) -> None:
-        resource = await client.check_deposits.list()
-        assert isinstance(resource, AsyncPage)
+        check_deposit = await client.check_deposits.list()
+        assert_matches_type(AsyncPage[CheckDeposit], check_deposit, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
-        resource = await client.check_deposits.list(
+        check_deposit = await client.check_deposits.list(
             cursor="string",
             limit=0,
             account_id="string",
@@ -99,4 +100,4 @@ class TestAsyncCheckDeposits:
                 "on_or_before": "2019-12-27T18:11:19.117Z",
             },
         )
-        assert isinstance(resource, AsyncPage)
+        assert_matches_type(AsyncPage[CheckDeposit], check_deposit, path=["response"])

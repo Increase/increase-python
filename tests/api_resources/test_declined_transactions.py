@@ -7,6 +7,7 @@ import os
 import pytest
 
 from increase import Increase, AsyncIncrease
+from tests.utils import assert_matches_type
 from increase.types import DeclinedTransaction
 from increase.pagination import SyncPage, AsyncPage
 
@@ -21,19 +22,19 @@ class TestDeclinedTransactions:
 
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
-        resource = client.declined_transactions.retrieve(
+        declined_transaction = client.declined_transactions.retrieve(
             "string",
         )
-        assert isinstance(resource, DeclinedTransaction)
+        assert_matches_type(DeclinedTransaction, declined_transaction, path=["response"])
 
     @parametrize
     def test_method_list(self, client: Increase) -> None:
-        resource = client.declined_transactions.list()
-        assert isinstance(resource, SyncPage)
+        declined_transaction = client.declined_transactions.list()
+        assert_matches_type(SyncPage[DeclinedTransaction], declined_transaction, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
-        resource = client.declined_transactions.list(
+        declined_transaction = client.declined_transactions.list(
             cursor="string",
             limit=0,
             account_id="string",
@@ -45,7 +46,7 @@ class TestDeclinedTransactions:
                 "on_or_before": "2019-12-27T18:11:19.117Z",
             },
         )
-        assert isinstance(resource, SyncPage)
+        assert_matches_type(SyncPage[DeclinedTransaction], declined_transaction, path=["response"])
 
 
 class TestAsyncDeclinedTransactions:
@@ -55,19 +56,19 @@ class TestAsyncDeclinedTransactions:
 
     @parametrize
     async def test_method_retrieve(self, client: AsyncIncrease) -> None:
-        resource = await client.declined_transactions.retrieve(
+        declined_transaction = await client.declined_transactions.retrieve(
             "string",
         )
-        assert isinstance(resource, DeclinedTransaction)
+        assert_matches_type(DeclinedTransaction, declined_transaction, path=["response"])
 
     @parametrize
     async def test_method_list(self, client: AsyncIncrease) -> None:
-        resource = await client.declined_transactions.list()
-        assert isinstance(resource, AsyncPage)
+        declined_transaction = await client.declined_transactions.list()
+        assert_matches_type(AsyncPage[DeclinedTransaction], declined_transaction, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
-        resource = await client.declined_transactions.list(
+        declined_transaction = await client.declined_transactions.list(
             cursor="string",
             limit=0,
             account_id="string",
@@ -79,4 +80,4 @@ class TestAsyncDeclinedTransactions:
                 "on_or_before": "2019-12-27T18:11:19.117Z",
             },
         )
-        assert isinstance(resource, AsyncPage)
+        assert_matches_type(AsyncPage[DeclinedTransaction], declined_transaction, path=["response"])

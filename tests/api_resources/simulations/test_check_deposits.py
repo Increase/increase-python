@@ -7,6 +7,7 @@ import os
 import pytest
 
 from increase import Increase, AsyncIncrease
+from tests.utils import assert_matches_type
 from increase.types import CheckDeposit
 
 base_url = os.environ.get("API_BASE_URL", "http://127.0.0.1:4010")
@@ -21,18 +22,18 @@ class TestCheckDeposits:
     @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
     def test_method_reject(self, client: Increase) -> None:
-        resource = client.simulations.check_deposits.reject(
+        check_deposit = client.simulations.check_deposits.reject(
             "string",
         )
-        assert isinstance(resource, CheckDeposit)
+        assert_matches_type(CheckDeposit, check_deposit, path=["response"])
 
     @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
     def test_method_submit(self, client: Increase) -> None:
-        resource = client.simulations.check_deposits.submit(
+        check_deposit = client.simulations.check_deposits.submit(
             "string",
         )
-        assert isinstance(resource, CheckDeposit)
+        assert_matches_type(CheckDeposit, check_deposit, path=["response"])
 
 
 class TestAsyncCheckDeposits:
@@ -43,15 +44,15 @@ class TestAsyncCheckDeposits:
     @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
     async def test_method_reject(self, client: AsyncIncrease) -> None:
-        resource = await client.simulations.check_deposits.reject(
+        check_deposit = await client.simulations.check_deposits.reject(
             "string",
         )
-        assert isinstance(resource, CheckDeposit)
+        assert_matches_type(CheckDeposit, check_deposit, path=["response"])
 
     @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
     async def test_method_submit(self, client: AsyncIncrease) -> None:
-        resource = await client.simulations.check_deposits.submit(
+        check_deposit = await client.simulations.check_deposits.submit(
             "string",
         )
-        assert isinstance(resource, CheckDeposit)
+        assert_matches_type(CheckDeposit, check_deposit, path=["response"])

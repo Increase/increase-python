@@ -7,6 +7,7 @@ import os
 import pytest
 
 from increase import Increase, AsyncIncrease
+from tests.utils import assert_matches_type
 from increase.types import Transaction
 
 base_url = os.environ.get("API_BASE_URL", "http://127.0.0.1:4010")
@@ -20,10 +21,10 @@ class TestCardRefunds:
 
     @parametrize
     def test_method_create(self, client: Increase) -> None:
-        resource = client.simulations.card_refunds.create(
+        card_refund = client.simulations.card_refunds.create(
             transaction_id="string",
         )
-        assert isinstance(resource, Transaction)
+        assert_matches_type(Transaction, card_refund, path=["response"])
 
 
 class TestAsyncCardRefunds:
@@ -33,7 +34,7 @@ class TestAsyncCardRefunds:
 
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
-        resource = await client.simulations.card_refunds.create(
+        card_refund = await client.simulations.card_refunds.create(
             transaction_id="string",
         )
-        assert isinstance(resource, Transaction)
+        assert_matches_type(Transaction, card_refund, path=["response"])

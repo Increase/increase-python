@@ -7,6 +7,7 @@ import os
 import pytest
 
 from increase import Increase, AsyncIncrease
+from tests.utils import assert_matches_type
 from increase.types.simulations import InboundRealTimePaymentsTransferSimulationResult
 
 base_url = os.environ.get("API_BASE_URL", "http://127.0.0.1:4010")
@@ -20,15 +21,17 @@ class TestRealTimePaymentsTransfers:
 
     @parametrize
     def test_method_create_inbound(self, client: Increase) -> None:
-        resource = client.simulations.real_time_payments_transfers.create_inbound(
+        real_time_payments_transfer = client.simulations.real_time_payments_transfers.create_inbound(
             account_number_id="string",
             amount=1,
         )
-        assert isinstance(resource, InboundRealTimePaymentsTransferSimulationResult)
+        assert_matches_type(
+            InboundRealTimePaymentsTransferSimulationResult, real_time_payments_transfer, path=["response"]
+        )
 
     @parametrize
     def test_method_create_inbound_with_all_params(self, client: Increase) -> None:
-        resource = client.simulations.real_time_payments_transfers.create_inbound(
+        real_time_payments_transfer = client.simulations.real_time_payments_transfers.create_inbound(
             account_number_id="string",
             amount=1,
             request_for_payment_id="string",
@@ -37,7 +40,9 @@ class TestRealTimePaymentsTransfers:
             debtor_routing_number="xxxxxxxxx",
             remittance_information="x",
         )
-        assert isinstance(resource, InboundRealTimePaymentsTransferSimulationResult)
+        assert_matches_type(
+            InboundRealTimePaymentsTransferSimulationResult, real_time_payments_transfer, path=["response"]
+        )
 
 
 class TestAsyncRealTimePaymentsTransfers:
@@ -47,15 +52,17 @@ class TestAsyncRealTimePaymentsTransfers:
 
     @parametrize
     async def test_method_create_inbound(self, client: AsyncIncrease) -> None:
-        resource = await client.simulations.real_time_payments_transfers.create_inbound(
+        real_time_payments_transfer = await client.simulations.real_time_payments_transfers.create_inbound(
             account_number_id="string",
             amount=1,
         )
-        assert isinstance(resource, InboundRealTimePaymentsTransferSimulationResult)
+        assert_matches_type(
+            InboundRealTimePaymentsTransferSimulationResult, real_time_payments_transfer, path=["response"]
+        )
 
     @parametrize
     async def test_method_create_inbound_with_all_params(self, client: AsyncIncrease) -> None:
-        resource = await client.simulations.real_time_payments_transfers.create_inbound(
+        real_time_payments_transfer = await client.simulations.real_time_payments_transfers.create_inbound(
             account_number_id="string",
             amount=1,
             request_for_payment_id="string",
@@ -64,4 +71,6 @@ class TestAsyncRealTimePaymentsTransfers:
             debtor_routing_number="xxxxxxxxx",
             remittance_information="x",
         )
-        assert isinstance(resource, InboundRealTimePaymentsTransferSimulationResult)
+        assert_matches_type(
+            InboundRealTimePaymentsTransferSimulationResult, real_time_payments_transfer, path=["response"]
+        )

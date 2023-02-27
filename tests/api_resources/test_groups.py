@@ -7,6 +7,7 @@ import os
 import pytest
 
 from increase import Increase, AsyncIncrease
+from tests.utils import assert_matches_type
 from increase.types import Group
 
 base_url = os.environ.get("API_BASE_URL", "http://127.0.0.1:4010")
@@ -20,8 +21,8 @@ class TestGroups:
 
     @parametrize
     def test_method_retrieve_details(self, client: Increase) -> None:
-        resource = client.groups.retrieve_details()
-        assert isinstance(resource, Group)
+        group = client.groups.retrieve_details()
+        assert_matches_type(Group, group, path=["response"])
 
 
 class TestAsyncGroups:
@@ -31,5 +32,5 @@ class TestAsyncGroups:
 
     @parametrize
     async def test_method_retrieve_details(self, client: AsyncIncrease) -> None:
-        resource = await client.groups.retrieve_details()
-        assert isinstance(resource, Group)
+        group = await client.groups.retrieve_details()
+        assert_matches_type(Group, group, path=["response"])

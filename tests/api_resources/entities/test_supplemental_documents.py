@@ -7,6 +7,7 @@ import os
 import pytest
 
 from increase import Increase, AsyncIncrease
+from tests.utils import assert_matches_type
 from increase.types import Entity
 
 base_url = os.environ.get("API_BASE_URL", "http://127.0.0.1:4010")
@@ -20,11 +21,11 @@ class TestSupplementalDocuments:
 
     @parametrize
     def test_method_create(self, client: Increase) -> None:
-        resource = client.entities.supplemental_documents.create(
+        supplemental_document = client.entities.supplemental_documents.create(
             "string",
             file_id="string",
         )
-        assert isinstance(resource, Entity)
+        assert_matches_type(Entity, supplemental_document, path=["response"])
 
 
 class TestAsyncSupplementalDocuments:
@@ -34,8 +35,8 @@ class TestAsyncSupplementalDocuments:
 
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
-        resource = await client.entities.supplemental_documents.create(
+        supplemental_document = await client.entities.supplemental_documents.create(
             "string",
             file_id="string",
         )
-        assert isinstance(resource, Entity)
+        assert_matches_type(Entity, supplemental_document, path=["response"])

@@ -7,6 +7,7 @@ import os
 import pytest
 
 from increase import Increase, AsyncIncrease
+from tests.utils import assert_matches_type
 from increase.types import InboundWireDrawdownRequest
 from increase.pagination import SyncPage, AsyncPage
 
@@ -21,23 +22,23 @@ class TestInboundWireDrawdownRequests:
 
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
-        resource = client.inbound_wire_drawdown_requests.retrieve(
+        inbound_wire_drawdown_request = client.inbound_wire_drawdown_requests.retrieve(
             "string",
         )
-        assert isinstance(resource, InboundWireDrawdownRequest)
+        assert_matches_type(InboundWireDrawdownRequest, inbound_wire_drawdown_request, path=["response"])
 
     @parametrize
     def test_method_list(self, client: Increase) -> None:
-        resource = client.inbound_wire_drawdown_requests.list()
-        assert isinstance(resource, SyncPage)
+        inbound_wire_drawdown_request = client.inbound_wire_drawdown_requests.list()
+        assert_matches_type(SyncPage[InboundWireDrawdownRequest], inbound_wire_drawdown_request, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
-        resource = client.inbound_wire_drawdown_requests.list(
+        inbound_wire_drawdown_request = client.inbound_wire_drawdown_requests.list(
             cursor="string",
             limit=0,
         )
-        assert isinstance(resource, SyncPage)
+        assert_matches_type(SyncPage[InboundWireDrawdownRequest], inbound_wire_drawdown_request, path=["response"])
 
 
 class TestAsyncInboundWireDrawdownRequests:
@@ -47,20 +48,20 @@ class TestAsyncInboundWireDrawdownRequests:
 
     @parametrize
     async def test_method_retrieve(self, client: AsyncIncrease) -> None:
-        resource = await client.inbound_wire_drawdown_requests.retrieve(
+        inbound_wire_drawdown_request = await client.inbound_wire_drawdown_requests.retrieve(
             "string",
         )
-        assert isinstance(resource, InboundWireDrawdownRequest)
+        assert_matches_type(InboundWireDrawdownRequest, inbound_wire_drawdown_request, path=["response"])
 
     @parametrize
     async def test_method_list(self, client: AsyncIncrease) -> None:
-        resource = await client.inbound_wire_drawdown_requests.list()
-        assert isinstance(resource, AsyncPage)
+        inbound_wire_drawdown_request = await client.inbound_wire_drawdown_requests.list()
+        assert_matches_type(AsyncPage[InboundWireDrawdownRequest], inbound_wire_drawdown_request, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
-        resource = await client.inbound_wire_drawdown_requests.list(
+        inbound_wire_drawdown_request = await client.inbound_wire_drawdown_requests.list(
             cursor="string",
             limit=0,
         )
-        assert isinstance(resource, AsyncPage)
+        assert_matches_type(AsyncPage[InboundWireDrawdownRequest], inbound_wire_drawdown_request, path=["response"])

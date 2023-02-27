@@ -7,6 +7,7 @@ import os
 import pytest
 
 from increase import Increase, AsyncIncrease
+from tests.utils import assert_matches_type
 from increase.types import PendingTransaction
 from increase.pagination import SyncPage, AsyncPage
 
@@ -21,19 +22,19 @@ class TestPendingTransactions:
 
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
-        resource = client.pending_transactions.retrieve(
+        pending_transaction = client.pending_transactions.retrieve(
             "string",
         )
-        assert isinstance(resource, PendingTransaction)
+        assert_matches_type(PendingTransaction, pending_transaction, path=["response"])
 
     @parametrize
     def test_method_list(self, client: Increase) -> None:
-        resource = client.pending_transactions.list()
-        assert isinstance(resource, SyncPage)
+        pending_transaction = client.pending_transactions.list()
+        assert_matches_type(SyncPage[PendingTransaction], pending_transaction, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
-        resource = client.pending_transactions.list(
+        pending_transaction = client.pending_transactions.list(
             cursor="string",
             limit=0,
             account_id="string",
@@ -41,7 +42,7 @@ class TestPendingTransactions:
             source_id="string",
             status={"in": ["pending", "pending", "pending"]},
         )
-        assert isinstance(resource, SyncPage)
+        assert_matches_type(SyncPage[PendingTransaction], pending_transaction, path=["response"])
 
 
 class TestAsyncPendingTransactions:
@@ -51,19 +52,19 @@ class TestAsyncPendingTransactions:
 
     @parametrize
     async def test_method_retrieve(self, client: AsyncIncrease) -> None:
-        resource = await client.pending_transactions.retrieve(
+        pending_transaction = await client.pending_transactions.retrieve(
             "string",
         )
-        assert isinstance(resource, PendingTransaction)
+        assert_matches_type(PendingTransaction, pending_transaction, path=["response"])
 
     @parametrize
     async def test_method_list(self, client: AsyncIncrease) -> None:
-        resource = await client.pending_transactions.list()
-        assert isinstance(resource, AsyncPage)
+        pending_transaction = await client.pending_transactions.list()
+        assert_matches_type(AsyncPage[PendingTransaction], pending_transaction, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
-        resource = await client.pending_transactions.list(
+        pending_transaction = await client.pending_transactions.list(
             cursor="string",
             limit=0,
             account_id="string",
@@ -71,4 +72,4 @@ class TestAsyncPendingTransactions:
             source_id="string",
             status={"in": ["pending", "pending", "pending"]},
         )
-        assert isinstance(resource, AsyncPage)
+        assert_matches_type(AsyncPage[PendingTransaction], pending_transaction, path=["response"])

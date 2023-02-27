@@ -7,6 +7,7 @@ import os
 import pytest
 
 from increase import Increase, AsyncIncrease
+from tests.utils import assert_matches_type
 from increase.types import Entity
 from increase.pagination import SyncPage, AsyncPage
 
@@ -21,15 +22,15 @@ class TestEntities:
 
     @parametrize
     def test_method_create(self, client: Increase) -> None:
-        resource = client.entities.create(
+        entity = client.entities.create(
             structure="corporation",
             relationship="affiliated",
         )
-        assert isinstance(resource, Entity)
+        assert_matches_type(Entity, entity, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: Increase) -> None:
-        resource = client.entities.create(
+        entity = client.entities.create(
             structure="corporation",
             corporation={
                 "name": "x",
@@ -444,27 +445,27 @@ class TestEntities:
             relationship="affiliated",
             supplemental_documents=[{"file_id": "string"}, {"file_id": "string"}, {"file_id": "string"}],
         )
-        assert isinstance(resource, Entity)
+        assert_matches_type(Entity, entity, path=["response"])
 
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
-        resource = client.entities.retrieve(
+        entity = client.entities.retrieve(
             "string",
         )
-        assert isinstance(resource, Entity)
+        assert_matches_type(Entity, entity, path=["response"])
 
     @parametrize
     def test_method_list(self, client: Increase) -> None:
-        resource = client.entities.list()
-        assert isinstance(resource, SyncPage)
+        entity = client.entities.list()
+        assert_matches_type(SyncPage[Entity], entity, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
-        resource = client.entities.list(
+        entity = client.entities.list(
             cursor="string",
             limit=0,
         )
-        assert isinstance(resource, SyncPage)
+        assert_matches_type(SyncPage[Entity], entity, path=["response"])
 
 
 class TestAsyncEntities:
@@ -474,15 +475,15 @@ class TestAsyncEntities:
 
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
-        resource = await client.entities.create(
+        entity = await client.entities.create(
             structure="corporation",
             relationship="affiliated",
         )
-        assert isinstance(resource, Entity)
+        assert_matches_type(Entity, entity, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
-        resource = await client.entities.create(
+        entity = await client.entities.create(
             structure="corporation",
             corporation={
                 "name": "x",
@@ -897,24 +898,24 @@ class TestAsyncEntities:
             relationship="affiliated",
             supplemental_documents=[{"file_id": "string"}, {"file_id": "string"}, {"file_id": "string"}],
         )
-        assert isinstance(resource, Entity)
+        assert_matches_type(Entity, entity, path=["response"])
 
     @parametrize
     async def test_method_retrieve(self, client: AsyncIncrease) -> None:
-        resource = await client.entities.retrieve(
+        entity = await client.entities.retrieve(
             "string",
         )
-        assert isinstance(resource, Entity)
+        assert_matches_type(Entity, entity, path=["response"])
 
     @parametrize
     async def test_method_list(self, client: AsyncIncrease) -> None:
-        resource = await client.entities.list()
-        assert isinstance(resource, AsyncPage)
+        entity = await client.entities.list()
+        assert_matches_type(AsyncPage[Entity], entity, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
-        resource = await client.entities.list(
+        entity = await client.entities.list(
             cursor="string",
             limit=0,
         )
-        assert isinstance(resource, AsyncPage)
+        assert_matches_type(AsyncPage[Entity], entity, path=["response"])

@@ -7,6 +7,7 @@ import os
 import pytest
 
 from increase import Increase, AsyncIncrease
+from tests.utils import assert_matches_type
 from increase.types import CardDispute
 from increase.pagination import SyncPage, AsyncPage
 
@@ -21,27 +22,27 @@ class TestCardDisputes:
 
     @parametrize
     def test_method_create(self, client: Increase) -> None:
-        resource = client.card_disputes.create(
+        card_dispute = client.card_disputes.create(
             disputed_transaction_id="string",
             explanation="x",
         )
-        assert isinstance(resource, CardDispute)
+        assert_matches_type(CardDispute, card_dispute, path=["response"])
 
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
-        resource = client.card_disputes.retrieve(
+        card_dispute = client.card_disputes.retrieve(
             "string",
         )
-        assert isinstance(resource, CardDispute)
+        assert_matches_type(CardDispute, card_dispute, path=["response"])
 
     @parametrize
     def test_method_list(self, client: Increase) -> None:
-        resource = client.card_disputes.list()
-        assert isinstance(resource, SyncPage)
+        card_dispute = client.card_disputes.list()
+        assert_matches_type(SyncPage[CardDispute], card_dispute, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
-        resource = client.card_disputes.list(
+        card_dispute = client.card_disputes.list(
             cursor="string",
             limit=0,
             created_at={
@@ -52,7 +53,7 @@ class TestCardDisputes:
             },
             status={"in": ["pending_reviewing", "pending_reviewing", "pending_reviewing"]},
         )
-        assert isinstance(resource, SyncPage)
+        assert_matches_type(SyncPage[CardDispute], card_dispute, path=["response"])
 
 
 class TestAsyncCardDisputes:
@@ -62,27 +63,27 @@ class TestAsyncCardDisputes:
 
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
-        resource = await client.card_disputes.create(
+        card_dispute = await client.card_disputes.create(
             disputed_transaction_id="string",
             explanation="x",
         )
-        assert isinstance(resource, CardDispute)
+        assert_matches_type(CardDispute, card_dispute, path=["response"])
 
     @parametrize
     async def test_method_retrieve(self, client: AsyncIncrease) -> None:
-        resource = await client.card_disputes.retrieve(
+        card_dispute = await client.card_disputes.retrieve(
             "string",
         )
-        assert isinstance(resource, CardDispute)
+        assert_matches_type(CardDispute, card_dispute, path=["response"])
 
     @parametrize
     async def test_method_list(self, client: AsyncIncrease) -> None:
-        resource = await client.card_disputes.list()
-        assert isinstance(resource, AsyncPage)
+        card_dispute = await client.card_disputes.list()
+        assert_matches_type(AsyncPage[CardDispute], card_dispute, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
-        resource = await client.card_disputes.list(
+        card_dispute = await client.card_disputes.list(
             cursor="string",
             limit=0,
             created_at={
@@ -93,4 +94,4 @@ class TestAsyncCardDisputes:
             },
             status={"in": ["pending_reviewing", "pending_reviewing", "pending_reviewing"]},
         )
-        assert isinstance(resource, AsyncPage)
+        assert_matches_type(AsyncPage[CardDispute], card_dispute, path=["response"])

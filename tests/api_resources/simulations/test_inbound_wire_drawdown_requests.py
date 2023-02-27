@@ -7,6 +7,7 @@ import os
 import pytest
 
 from increase import Increase, AsyncIncrease
+from tests.utils import assert_matches_type
 from increase.types import InboundWireDrawdownRequest
 
 base_url = os.environ.get("API_BASE_URL", "http://127.0.0.1:4010")
@@ -20,7 +21,7 @@ class TestInboundWireDrawdownRequests:
 
     @parametrize
     def test_method_create(self, client: Increase) -> None:
-        resource = client.simulations.inbound_wire_drawdown_requests.create(
+        inbound_wire_drawdown_request = client.simulations.inbound_wire_drawdown_requests.create(
             recipient_account_number_id="string",
             originator_account_number="x",
             originator_routing_number="x",
@@ -30,11 +31,11 @@ class TestInboundWireDrawdownRequests:
             currency="x",
             message_to_recipient="x",
         )
-        assert isinstance(resource, InboundWireDrawdownRequest)
+        assert_matches_type(InboundWireDrawdownRequest, inbound_wire_drawdown_request, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: Increase) -> None:
-        resource = client.simulations.inbound_wire_drawdown_requests.create(
+        inbound_wire_drawdown_request = client.simulations.inbound_wire_drawdown_requests.create(
             recipient_account_number_id="string",
             originator_account_number="x",
             originator_routing_number="x",
@@ -56,7 +57,7 @@ class TestInboundWireDrawdownRequests:
             beneficiary_address_line2="x",
             beneficiary_address_line3="x",
         )
-        assert isinstance(resource, InboundWireDrawdownRequest)
+        assert_matches_type(InboundWireDrawdownRequest, inbound_wire_drawdown_request, path=["response"])
 
 
 class TestAsyncInboundWireDrawdownRequests:
@@ -66,7 +67,7 @@ class TestAsyncInboundWireDrawdownRequests:
 
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
-        resource = await client.simulations.inbound_wire_drawdown_requests.create(
+        inbound_wire_drawdown_request = await client.simulations.inbound_wire_drawdown_requests.create(
             recipient_account_number_id="string",
             originator_account_number="x",
             originator_routing_number="x",
@@ -76,11 +77,11 @@ class TestAsyncInboundWireDrawdownRequests:
             currency="x",
             message_to_recipient="x",
         )
-        assert isinstance(resource, InboundWireDrawdownRequest)
+        assert_matches_type(InboundWireDrawdownRequest, inbound_wire_drawdown_request, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
-        resource = await client.simulations.inbound_wire_drawdown_requests.create(
+        inbound_wire_drawdown_request = await client.simulations.inbound_wire_drawdown_requests.create(
             recipient_account_number_id="string",
             originator_account_number="x",
             originator_routing_number="x",
@@ -102,4 +103,4 @@ class TestAsyncInboundWireDrawdownRequests:
             beneficiary_address_line2="x",
             beneficiary_address_line3="x",
         )
-        assert isinstance(resource, InboundWireDrawdownRequest)
+        assert_matches_type(InboundWireDrawdownRequest, inbound_wire_drawdown_request, path=["response"])

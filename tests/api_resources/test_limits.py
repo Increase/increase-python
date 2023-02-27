@@ -7,6 +7,7 @@ import os
 import pytest
 
 from increase import Increase, AsyncIncrease
+from tests.utils import assert_matches_type
 from increase.types import Limit
 from increase.pagination import SyncPage, AsyncPage
 
@@ -21,52 +22,52 @@ class TestLimits:
 
     @parametrize
     def test_method_create(self, client: Increase) -> None:
-        resource = client.limits.create(
+        limit = client.limits.create(
             metric="count",
             model_id="x",
             value=0,
         )
-        assert isinstance(resource, Limit)
+        assert_matches_type(Limit, limit, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: Increase) -> None:
-        resource = client.limits.create(
+        limit = client.limits.create(
             metric="count",
             interval="transaction",
             model_id="x",
             value=0,
         )
-        assert isinstance(resource, Limit)
+        assert_matches_type(Limit, limit, path=["response"])
 
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
-        resource = client.limits.retrieve(
+        limit = client.limits.retrieve(
             "string",
         )
-        assert isinstance(resource, Limit)
+        assert_matches_type(Limit, limit, path=["response"])
 
     @parametrize
     def test_method_update(self, client: Increase) -> None:
-        resource = client.limits.update(
+        limit = client.limits.update(
             "string",
             status="inactive",
         )
-        assert isinstance(resource, Limit)
+        assert_matches_type(Limit, limit, path=["response"])
 
     @parametrize
     def test_method_list(self, client: Increase) -> None:
-        resource = client.limits.list()
-        assert isinstance(resource, SyncPage)
+        limit = client.limits.list()
+        assert_matches_type(SyncPage[Limit], limit, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
-        resource = client.limits.list(
+        limit = client.limits.list(
             cursor="string",
             limit=0,
             model_id="x",
             status="x",
         )
-        assert isinstance(resource, SyncPage)
+        assert_matches_type(SyncPage[Limit], limit, path=["response"])
 
 
 class TestAsyncLimits:
@@ -76,49 +77,49 @@ class TestAsyncLimits:
 
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
-        resource = await client.limits.create(
+        limit = await client.limits.create(
             metric="count",
             model_id="x",
             value=0,
         )
-        assert isinstance(resource, Limit)
+        assert_matches_type(Limit, limit, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
-        resource = await client.limits.create(
+        limit = await client.limits.create(
             metric="count",
             interval="transaction",
             model_id="x",
             value=0,
         )
-        assert isinstance(resource, Limit)
+        assert_matches_type(Limit, limit, path=["response"])
 
     @parametrize
     async def test_method_retrieve(self, client: AsyncIncrease) -> None:
-        resource = await client.limits.retrieve(
+        limit = await client.limits.retrieve(
             "string",
         )
-        assert isinstance(resource, Limit)
+        assert_matches_type(Limit, limit, path=["response"])
 
     @parametrize
     async def test_method_update(self, client: AsyncIncrease) -> None:
-        resource = await client.limits.update(
+        limit = await client.limits.update(
             "string",
             status="inactive",
         )
-        assert isinstance(resource, Limit)
+        assert_matches_type(Limit, limit, path=["response"])
 
     @parametrize
     async def test_method_list(self, client: AsyncIncrease) -> None:
-        resource = await client.limits.list()
-        assert isinstance(resource, AsyncPage)
+        limit = await client.limits.list()
+        assert_matches_type(AsyncPage[Limit], limit, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
-        resource = await client.limits.list(
+        limit = await client.limits.list(
             cursor="string",
             limit=0,
             model_id="x",
             status="x",
         )
-        assert isinstance(resource, AsyncPage)
+        assert_matches_type(AsyncPage[Limit], limit, path=["response"])

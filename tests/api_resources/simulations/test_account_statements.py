@@ -7,6 +7,7 @@ import os
 import pytest
 
 from increase import Increase, AsyncIncrease
+from tests.utils import assert_matches_type
 from increase.types import AccountStatement
 
 base_url = os.environ.get("API_BASE_URL", "http://127.0.0.1:4010")
@@ -20,10 +21,10 @@ class TestAccountStatements:
 
     @parametrize
     def test_method_create(self, client: Increase) -> None:
-        resource = client.simulations.account_statements.create(
+        account_statement = client.simulations.account_statements.create(
             account_id="string",
         )
-        assert isinstance(resource, AccountStatement)
+        assert_matches_type(AccountStatement, account_statement, path=["response"])
 
 
 class TestAsyncAccountStatements:
@@ -33,7 +34,7 @@ class TestAsyncAccountStatements:
 
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
-        resource = await client.simulations.account_statements.create(
+        account_statement = await client.simulations.account_statements.create(
             account_id="string",
         )
-        assert isinstance(resource, AccountStatement)
+        assert_matches_type(AccountStatement, account_statement, path=["response"])

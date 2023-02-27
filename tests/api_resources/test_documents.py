@@ -7,6 +7,7 @@ import os
 import pytest
 
 from increase import Increase, AsyncIncrease
+from tests.utils import assert_matches_type
 from increase.types import Document
 from increase.pagination import SyncPage, AsyncPage
 
@@ -21,19 +22,19 @@ class TestDocuments:
 
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
-        resource = client.documents.retrieve(
+        document = client.documents.retrieve(
             "string",
         )
-        assert isinstance(resource, Document)
+        assert_matches_type(Document, document, path=["response"])
 
     @parametrize
     def test_method_list(self, client: Increase) -> None:
-        resource = client.documents.list()
-        assert isinstance(resource, SyncPage)
+        document = client.documents.list()
+        assert_matches_type(SyncPage[Document], document, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
-        resource = client.documents.list(
+        document = client.documents.list(
             cursor="string",
             limit=0,
             entity_id="string",
@@ -45,7 +46,7 @@ class TestDocuments:
                 "on_or_before": "2019-12-27T18:11:19.117Z",
             },
         )
-        assert isinstance(resource, SyncPage)
+        assert_matches_type(SyncPage[Document], document, path=["response"])
 
 
 class TestAsyncDocuments:
@@ -55,19 +56,19 @@ class TestAsyncDocuments:
 
     @parametrize
     async def test_method_retrieve(self, client: AsyncIncrease) -> None:
-        resource = await client.documents.retrieve(
+        document = await client.documents.retrieve(
             "string",
         )
-        assert isinstance(resource, Document)
+        assert_matches_type(Document, document, path=["response"])
 
     @parametrize
     async def test_method_list(self, client: AsyncIncrease) -> None:
-        resource = await client.documents.list()
-        assert isinstance(resource, AsyncPage)
+        document = await client.documents.list()
+        assert_matches_type(AsyncPage[Document], document, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
-        resource = await client.documents.list(
+        document = await client.documents.list(
             cursor="string",
             limit=0,
             entity_id="string",
@@ -79,4 +80,4 @@ class TestAsyncDocuments:
                 "on_or_before": "2019-12-27T18:11:19.117Z",
             },
         )
-        assert isinstance(resource, AsyncPage)
+        assert_matches_type(AsyncPage[Document], document, path=["response"])

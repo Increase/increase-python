@@ -7,6 +7,7 @@ import os
 import pytest
 
 from increase import Increase, AsyncIncrease
+from tests.utils import assert_matches_type
 from increase.types import ACHTransfer
 from increase.types.simulations import ACHTransferSimulation
 
@@ -21,15 +22,15 @@ class TestACHTransfers:
 
     @parametrize
     def test_method_create_inbound(self, client: Increase) -> None:
-        resource = client.simulations.ach_transfers.create_inbound(
+        ach_transfer = client.simulations.ach_transfers.create_inbound(
             account_number_id="string",
             amount=0,
         )
-        assert isinstance(resource, ACHTransferSimulation)
+        assert_matches_type(ACHTransferSimulation, ach_transfer, path=["response"])
 
     @parametrize
     def test_method_create_inbound_with_all_params(self, client: Increase) -> None:
-        resource = client.simulations.ach_transfers.create_inbound(
+        ach_transfer = client.simulations.ach_transfers.create_inbound(
             account_number_id="string",
             amount=0,
             company_descriptive_date="x",
@@ -38,32 +39,32 @@ class TestACHTransfers:
             company_name="x",
             company_id="x",
         )
-        assert isinstance(resource, ACHTransferSimulation)
+        assert_matches_type(ACHTransferSimulation, ach_transfer, path=["response"])
 
     @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
     def test_method_return(self, client: Increase) -> None:
-        resource = client.simulations.ach_transfers.return_(
+        ach_transfer = client.simulations.ach_transfers.return_(
             "string",
         )
-        assert isinstance(resource, ACHTransfer)
+        assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
 
     @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
     def test_method_return_with_all_params(self, client: Increase) -> None:
-        resource = client.simulations.ach_transfers.return_(
+        ach_transfer = client.simulations.ach_transfers.return_(
             "string",
             reason="insufficient_fund",
         )
-        assert isinstance(resource, ACHTransfer)
+        assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
 
     @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
     def test_method_submit(self, client: Increase) -> None:
-        resource = client.simulations.ach_transfers.submit(
+        ach_transfer = client.simulations.ach_transfers.submit(
             "string",
         )
-        assert isinstance(resource, ACHTransfer)
+        assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
 
 
 class TestAsyncACHTransfers:
@@ -73,15 +74,15 @@ class TestAsyncACHTransfers:
 
     @parametrize
     async def test_method_create_inbound(self, client: AsyncIncrease) -> None:
-        resource = await client.simulations.ach_transfers.create_inbound(
+        ach_transfer = await client.simulations.ach_transfers.create_inbound(
             account_number_id="string",
             amount=0,
         )
-        assert isinstance(resource, ACHTransferSimulation)
+        assert_matches_type(ACHTransferSimulation, ach_transfer, path=["response"])
 
     @parametrize
     async def test_method_create_inbound_with_all_params(self, client: AsyncIncrease) -> None:
-        resource = await client.simulations.ach_transfers.create_inbound(
+        ach_transfer = await client.simulations.ach_transfers.create_inbound(
             account_number_id="string",
             amount=0,
             company_descriptive_date="x",
@@ -90,29 +91,29 @@ class TestAsyncACHTransfers:
             company_name="x",
             company_id="x",
         )
-        assert isinstance(resource, ACHTransferSimulation)
+        assert_matches_type(ACHTransferSimulation, ach_transfer, path=["response"])
 
     @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
     async def test_method_return(self, client: AsyncIncrease) -> None:
-        resource = await client.simulations.ach_transfers.return_(
+        ach_transfer = await client.simulations.ach_transfers.return_(
             "string",
         )
-        assert isinstance(resource, ACHTransfer)
+        assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
 
     @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
     async def test_method_return_with_all_params(self, client: AsyncIncrease) -> None:
-        resource = await client.simulations.ach_transfers.return_(
+        ach_transfer = await client.simulations.ach_transfers.return_(
             "string",
             reason="insufficient_fund",
         )
-        assert isinstance(resource, ACHTransfer)
+        assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
 
     @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
     async def test_method_submit(self, client: AsyncIncrease) -> None:
-        resource = await client.simulations.ach_transfers.submit(
+        ach_transfer = await client.simulations.ach_transfers.submit(
             "string",
         )
-        assert isinstance(resource, ACHTransfer)
+        assert_matches_type(ACHTransfer, ach_transfer, path=["response"])

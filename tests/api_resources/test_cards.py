@@ -7,6 +7,7 @@ import os
 import pytest
 
 from increase import Increase, AsyncIncrease
+from tests.utils import assert_matches_type
 from increase.types import Card, CardDetails
 from increase.pagination import SyncPage, AsyncPage
 
@@ -21,14 +22,14 @@ class TestCards:
 
     @parametrize
     def test_method_create(self, client: Increase) -> None:
-        resource = client.cards.create(
+        card = client.cards.create(
             account_id="string",
         )
-        assert isinstance(resource, Card)
+        assert_matches_type(Card, card, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: Increase) -> None:
-        resource = client.cards.create(
+        card = client.cards.create(
             account_id="string",
             description="x",
             billing_address={
@@ -44,25 +45,25 @@ class TestCards:
                 "card_profile_id": "string",
             },
         )
-        assert isinstance(resource, Card)
+        assert_matches_type(Card, card, path=["response"])
 
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
-        resource = client.cards.retrieve(
+        card = client.cards.retrieve(
             "string",
         )
-        assert isinstance(resource, Card)
+        assert_matches_type(Card, card, path=["response"])
 
     @parametrize
     def test_method_update(self, client: Increase) -> None:
-        resource = client.cards.update(
+        card = client.cards.update(
             "string",
         )
-        assert isinstance(resource, Card)
+        assert_matches_type(Card, card, path=["response"])
 
     @parametrize
     def test_method_update_with_all_params(self, client: Increase) -> None:
-        resource = client.cards.update(
+        card = client.cards.update(
             "string",
             description="x",
             status="active",
@@ -79,16 +80,16 @@ class TestCards:
                 "card_profile_id": "string",
             },
         )
-        assert isinstance(resource, Card)
+        assert_matches_type(Card, card, path=["response"])
 
     @parametrize
     def test_method_list(self, client: Increase) -> None:
-        resource = client.cards.list()
-        assert isinstance(resource, SyncPage)
+        card = client.cards.list()
+        assert_matches_type(SyncPage[Card], card, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
-        resource = client.cards.list(
+        card = client.cards.list(
             cursor="string",
             limit=0,
             account_id="string",
@@ -99,14 +100,14 @@ class TestCards:
                 "on_or_before": "2019-12-27T18:11:19.117Z",
             },
         )
-        assert isinstance(resource, SyncPage)
+        assert_matches_type(SyncPage[Card], card, path=["response"])
 
     @parametrize
     def test_method_retrieve_sensitive_details(self, client: Increase) -> None:
-        resource = client.cards.retrieve_sensitive_details(
+        card = client.cards.retrieve_sensitive_details(
             "string",
         )
-        assert isinstance(resource, CardDetails)
+        assert_matches_type(CardDetails, card, path=["response"])
 
 
 class TestAsyncCards:
@@ -116,14 +117,14 @@ class TestAsyncCards:
 
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
-        resource = await client.cards.create(
+        card = await client.cards.create(
             account_id="string",
         )
-        assert isinstance(resource, Card)
+        assert_matches_type(Card, card, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
-        resource = await client.cards.create(
+        card = await client.cards.create(
             account_id="string",
             description="x",
             billing_address={
@@ -139,25 +140,25 @@ class TestAsyncCards:
                 "card_profile_id": "string",
             },
         )
-        assert isinstance(resource, Card)
+        assert_matches_type(Card, card, path=["response"])
 
     @parametrize
     async def test_method_retrieve(self, client: AsyncIncrease) -> None:
-        resource = await client.cards.retrieve(
+        card = await client.cards.retrieve(
             "string",
         )
-        assert isinstance(resource, Card)
+        assert_matches_type(Card, card, path=["response"])
 
     @parametrize
     async def test_method_update(self, client: AsyncIncrease) -> None:
-        resource = await client.cards.update(
+        card = await client.cards.update(
             "string",
         )
-        assert isinstance(resource, Card)
+        assert_matches_type(Card, card, path=["response"])
 
     @parametrize
     async def test_method_update_with_all_params(self, client: AsyncIncrease) -> None:
-        resource = await client.cards.update(
+        card = await client.cards.update(
             "string",
             description="x",
             status="active",
@@ -174,16 +175,16 @@ class TestAsyncCards:
                 "card_profile_id": "string",
             },
         )
-        assert isinstance(resource, Card)
+        assert_matches_type(Card, card, path=["response"])
 
     @parametrize
     async def test_method_list(self, client: AsyncIncrease) -> None:
-        resource = await client.cards.list()
-        assert isinstance(resource, AsyncPage)
+        card = await client.cards.list()
+        assert_matches_type(AsyncPage[Card], card, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
-        resource = await client.cards.list(
+        card = await client.cards.list(
             cursor="string",
             limit=0,
             account_id="string",
@@ -194,11 +195,11 @@ class TestAsyncCards:
                 "on_or_before": "2019-12-27T18:11:19.117Z",
             },
         )
-        assert isinstance(resource, AsyncPage)
+        assert_matches_type(AsyncPage[Card], card, path=["response"])
 
     @parametrize
     async def test_method_retrieve_sensitive_details(self, client: AsyncIncrease) -> None:
-        resource = await client.cards.retrieve_sensitive_details(
+        card = await client.cards.retrieve_sensitive_details(
             "string",
         )
-        assert isinstance(resource, CardDetails)
+        assert_matches_type(CardDetails, card, path=["response"])

@@ -7,6 +7,7 @@ import os
 import pytest
 
 from increase import Increase, AsyncIncrease
+from tests.utils import assert_matches_type
 from increase.types import AccountTransfer
 
 base_url = os.environ.get("API_BASE_URL", "http://127.0.0.1:4010")
@@ -21,10 +22,10 @@ class TestAccountTransfers:
     @pytest.mark.skip(reason="Prism tests are broken")
     @parametrize
     def test_method_complete(self, client: Increase) -> None:
-        resource = client.simulations.account_transfers.complete(
+        account_transfer = client.simulations.account_transfers.complete(
             "string",
         )
-        assert isinstance(resource, AccountTransfer)
+        assert_matches_type(AccountTransfer, account_transfer, path=["response"])
 
 
 class TestAsyncAccountTransfers:
@@ -35,7 +36,7 @@ class TestAsyncAccountTransfers:
     @pytest.mark.skip(reason="Prism tests are broken")
     @parametrize
     async def test_method_complete(self, client: AsyncIncrease) -> None:
-        resource = await client.simulations.account_transfers.complete(
+        account_transfer = await client.simulations.account_transfers.complete(
             "string",
         )
-        assert isinstance(resource, AccountTransfer)
+        assert_matches_type(AccountTransfer, account_transfer, path=["response"])

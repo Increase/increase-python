@@ -7,6 +7,7 @@ import os
 import pytest
 
 from increase import Increase, AsyncIncrease
+from tests.utils import assert_matches_type
 from increase.types import AccountStatement
 from increase.pagination import SyncPage, AsyncPage
 
@@ -21,19 +22,19 @@ class TestAccountStatements:
 
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
-        resource = client.account_statements.retrieve(
+        account_statement = client.account_statements.retrieve(
             "string",
         )
-        assert isinstance(resource, AccountStatement)
+        assert_matches_type(AccountStatement, account_statement, path=["response"])
 
     @parametrize
     def test_method_list(self, client: Increase) -> None:
-        resource = client.account_statements.list()
-        assert isinstance(resource, SyncPage)
+        account_statement = client.account_statements.list()
+        assert_matches_type(SyncPage[AccountStatement], account_statement, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
-        resource = client.account_statements.list(
+        account_statement = client.account_statements.list(
             cursor="string",
             limit=0,
             account_id="string",
@@ -44,7 +45,7 @@ class TestAccountStatements:
                 "on_or_before": "2019-12-27T18:11:19.117Z",
             },
         )
-        assert isinstance(resource, SyncPage)
+        assert_matches_type(SyncPage[AccountStatement], account_statement, path=["response"])
 
 
 class TestAsyncAccountStatements:
@@ -54,19 +55,19 @@ class TestAsyncAccountStatements:
 
     @parametrize
     async def test_method_retrieve(self, client: AsyncIncrease) -> None:
-        resource = await client.account_statements.retrieve(
+        account_statement = await client.account_statements.retrieve(
             "string",
         )
-        assert isinstance(resource, AccountStatement)
+        assert_matches_type(AccountStatement, account_statement, path=["response"])
 
     @parametrize
     async def test_method_list(self, client: AsyncIncrease) -> None:
-        resource = await client.account_statements.list()
-        assert isinstance(resource, AsyncPage)
+        account_statement = await client.account_statements.list()
+        assert_matches_type(AsyncPage[AccountStatement], account_statement, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
-        resource = await client.account_statements.list(
+        account_statement = await client.account_statements.list(
             cursor="string",
             limit=0,
             account_id="string",
@@ -77,4 +78,4 @@ class TestAsyncAccountStatements:
                 "on_or_before": "2019-12-27T18:11:19.117Z",
             },
         )
-        assert isinstance(resource, AsyncPage)
+        assert_matches_type(AsyncPage[AccountStatement], account_statement, path=["response"])

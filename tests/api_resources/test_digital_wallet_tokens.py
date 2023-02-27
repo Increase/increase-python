@@ -7,6 +7,7 @@ import os
 import pytest
 
 from increase import Increase, AsyncIncrease
+from tests.utils import assert_matches_type
 from increase.types import DigitalWalletToken
 from increase.pagination import SyncPage, AsyncPage
 
@@ -21,19 +22,19 @@ class TestDigitalWalletTokens:
 
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
-        resource = client.digital_wallet_tokens.retrieve(
+        digital_wallet_token = client.digital_wallet_tokens.retrieve(
             "string",
         )
-        assert isinstance(resource, DigitalWalletToken)
+        assert_matches_type(DigitalWalletToken, digital_wallet_token, path=["response"])
 
     @parametrize
     def test_method_list(self, client: Increase) -> None:
-        resource = client.digital_wallet_tokens.list()
-        assert isinstance(resource, SyncPage)
+        digital_wallet_token = client.digital_wallet_tokens.list()
+        assert_matches_type(SyncPage[DigitalWalletToken], digital_wallet_token, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
-        resource = client.digital_wallet_tokens.list(
+        digital_wallet_token = client.digital_wallet_tokens.list(
             cursor="string",
             limit=0,
             card_id="string",
@@ -44,7 +45,7 @@ class TestDigitalWalletTokens:
                 "on_or_before": "2019-12-27T18:11:19.117Z",
             },
         )
-        assert isinstance(resource, SyncPage)
+        assert_matches_type(SyncPage[DigitalWalletToken], digital_wallet_token, path=["response"])
 
 
 class TestAsyncDigitalWalletTokens:
@@ -54,19 +55,19 @@ class TestAsyncDigitalWalletTokens:
 
     @parametrize
     async def test_method_retrieve(self, client: AsyncIncrease) -> None:
-        resource = await client.digital_wallet_tokens.retrieve(
+        digital_wallet_token = await client.digital_wallet_tokens.retrieve(
             "string",
         )
-        assert isinstance(resource, DigitalWalletToken)
+        assert_matches_type(DigitalWalletToken, digital_wallet_token, path=["response"])
 
     @parametrize
     async def test_method_list(self, client: AsyncIncrease) -> None:
-        resource = await client.digital_wallet_tokens.list()
-        assert isinstance(resource, AsyncPage)
+        digital_wallet_token = await client.digital_wallet_tokens.list()
+        assert_matches_type(AsyncPage[DigitalWalletToken], digital_wallet_token, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
-        resource = await client.digital_wallet_tokens.list(
+        digital_wallet_token = await client.digital_wallet_tokens.list(
             cursor="string",
             limit=0,
             card_id="string",
@@ -77,4 +78,4 @@ class TestAsyncDigitalWalletTokens:
                 "on_or_before": "2019-12-27T18:11:19.117Z",
             },
         )
-        assert isinstance(resource, AsyncPage)
+        assert_matches_type(AsyncPage[DigitalWalletToken], digital_wallet_token, path=["response"])

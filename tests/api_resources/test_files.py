@@ -7,6 +7,7 @@ import os
 import pytest
 
 from increase import Increase, AsyncIncrease
+from tests.utils import assert_matches_type
 from increase.types import File
 from increase.pagination import SyncPage, AsyncPage
 
@@ -22,37 +23,37 @@ class TestFiles:
     @pytest.mark.skip(reason="file upload tests are broken on the Prism mock server")
     @parametrize
     def test_method_create(self, client: Increase) -> None:
-        resource = client.files.create(
+        file = client.files.create(
             file=b"raw file contents",
             purpose="check_image_front",
         )
-        assert isinstance(resource, File)
+        assert_matches_type(File, file, path=["response"])
 
     @pytest.mark.skip(reason="file upload tests are broken on the Prism mock server")
     @parametrize
     def test_method_create_with_all_params(self, client: Increase) -> None:
-        resource = client.files.create(
+        file = client.files.create(
             file=b"raw file contents",
             description="x",
             purpose="check_image_front",
         )
-        assert isinstance(resource, File)
+        assert_matches_type(File, file, path=["response"])
 
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
-        resource = client.files.retrieve(
+        file = client.files.retrieve(
             "string",
         )
-        assert isinstance(resource, File)
+        assert_matches_type(File, file, path=["response"])
 
     @parametrize
     def test_method_list(self, client: Increase) -> None:
-        resource = client.files.list()
-        assert isinstance(resource, SyncPage)
+        file = client.files.list()
+        assert_matches_type(SyncPage[File], file, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
-        resource = client.files.list(
+        file = client.files.list(
             cursor="string",
             limit=0,
             created_at={
@@ -63,7 +64,7 @@ class TestFiles:
             },
             purpose={"in": ["check_image_front", "check_image_front", "check_image_front"]},
         )
-        assert isinstance(resource, SyncPage)
+        assert_matches_type(SyncPage[File], file, path=["response"])
 
 
 class TestAsyncFiles:
@@ -74,37 +75,37 @@ class TestAsyncFiles:
     @pytest.mark.skip(reason="file upload tests are broken on the Prism mock server")
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
-        resource = await client.files.create(
+        file = await client.files.create(
             file=b"raw file contents",
             purpose="check_image_front",
         )
-        assert isinstance(resource, File)
+        assert_matches_type(File, file, path=["response"])
 
     @pytest.mark.skip(reason="file upload tests are broken on the Prism mock server")
     @parametrize
     async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
-        resource = await client.files.create(
+        file = await client.files.create(
             file=b"raw file contents",
             description="x",
             purpose="check_image_front",
         )
-        assert isinstance(resource, File)
+        assert_matches_type(File, file, path=["response"])
 
     @parametrize
     async def test_method_retrieve(self, client: AsyncIncrease) -> None:
-        resource = await client.files.retrieve(
+        file = await client.files.retrieve(
             "string",
         )
-        assert isinstance(resource, File)
+        assert_matches_type(File, file, path=["response"])
 
     @parametrize
     async def test_method_list(self, client: AsyncIncrease) -> None:
-        resource = await client.files.list()
-        assert isinstance(resource, AsyncPage)
+        file = await client.files.list()
+        assert_matches_type(AsyncPage[File], file, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
-        resource = await client.files.list(
+        file = await client.files.list(
             cursor="string",
             limit=0,
             created_at={
@@ -115,4 +116,4 @@ class TestAsyncFiles:
             },
             purpose={"in": ["check_image_front", "check_image_front", "check_image_front"]},
         )
-        assert isinstance(resource, AsyncPage)
+        assert_matches_type(AsyncPage[File], file, path=["response"])

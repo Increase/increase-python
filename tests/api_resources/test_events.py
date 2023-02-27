@@ -7,6 +7,7 @@ import os
 import pytest
 
 from increase import Increase, AsyncIncrease
+from tests.utils import assert_matches_type
 from increase.types import Event
 from increase.pagination import SyncPage, AsyncPage
 
@@ -21,19 +22,19 @@ class TestEvents:
 
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
-        resource = client.events.retrieve(
+        event = client.events.retrieve(
             "string",
         )
-        assert isinstance(resource, Event)
+        assert_matches_type(Event, event, path=["response"])
 
     @parametrize
     def test_method_list(self, client: Increase) -> None:
-        resource = client.events.list()
-        assert isinstance(resource, SyncPage)
+        event = client.events.list()
+        assert_matches_type(SyncPage[Event], event, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
-        resource = client.events.list(
+        event = client.events.list(
             cursor="string",
             limit=0,
             associated_object_id="string",
@@ -45,7 +46,7 @@ class TestEvents:
             },
             category={"in": ["account.created", "account.created", "account.created"]},
         )
-        assert isinstance(resource, SyncPage)
+        assert_matches_type(SyncPage[Event], event, path=["response"])
 
 
 class TestAsyncEvents:
@@ -55,19 +56,19 @@ class TestAsyncEvents:
 
     @parametrize
     async def test_method_retrieve(self, client: AsyncIncrease) -> None:
-        resource = await client.events.retrieve(
+        event = await client.events.retrieve(
             "string",
         )
-        assert isinstance(resource, Event)
+        assert_matches_type(Event, event, path=["response"])
 
     @parametrize
     async def test_method_list(self, client: AsyncIncrease) -> None:
-        resource = await client.events.list()
-        assert isinstance(resource, AsyncPage)
+        event = await client.events.list()
+        assert_matches_type(AsyncPage[Event], event, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
-        resource = await client.events.list(
+        event = await client.events.list(
             cursor="string",
             limit=0,
             associated_object_id="string",
@@ -79,4 +80,4 @@ class TestAsyncEvents:
             },
             category={"in": ["account.created", "account.created", "account.created"]},
         )
-        assert isinstance(resource, AsyncPage)
+        assert_matches_type(AsyncPage[Event], event, path=["response"])

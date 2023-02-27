@@ -7,6 +7,7 @@ import os
 import pytest
 
 from increase import Increase, AsyncIncrease
+from tests.utils import assert_matches_type
 from increase.types.simulations import DigitalWalletTokenRequestCreateResponse
 
 base_url = os.environ.get("API_BASE_URL", "http://127.0.0.1:4010")
@@ -20,10 +21,10 @@ class TestDigitalWalletTokenRequests:
 
     @parametrize
     def test_method_create(self, client: Increase) -> None:
-        resource = client.simulations.digital_wallet_token_requests.create(
+        digital_wallet_token_request = client.simulations.digital_wallet_token_requests.create(
             card_id="string",
         )
-        assert isinstance(resource, DigitalWalletTokenRequestCreateResponse)
+        assert_matches_type(DigitalWalletTokenRequestCreateResponse, digital_wallet_token_request, path=["response"])
 
 
 class TestAsyncDigitalWalletTokenRequests:
@@ -33,7 +34,7 @@ class TestAsyncDigitalWalletTokenRequests:
 
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
-        resource = await client.simulations.digital_wallet_token_requests.create(
+        digital_wallet_token_request = await client.simulations.digital_wallet_token_requests.create(
             card_id="string",
         )
-        assert isinstance(resource, DigitalWalletTokenRequestCreateResponse)
+        assert_matches_type(DigitalWalletTokenRequestCreateResponse, digital_wallet_token_request, path=["response"])

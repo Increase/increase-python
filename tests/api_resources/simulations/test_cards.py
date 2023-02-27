@@ -7,6 +7,7 @@ import os
 import pytest
 
 from increase import Increase, AsyncIncrease
+from tests.utils import assert_matches_type
 from increase.types import Transaction
 from increase.types.simulations import CardAuthorizationSimulation
 
@@ -21,36 +22,36 @@ class TestCards:
 
     @parametrize
     def test_method_authorize(self, client: Increase) -> None:
-        resource = client.simulations.cards.authorize(
+        card = client.simulations.cards.authorize(
             amount=1,
         )
-        assert isinstance(resource, CardAuthorizationSimulation)
+        assert_matches_type(CardAuthorizationSimulation, card, path=["response"])
 
     @parametrize
     def test_method_authorize_with_all_params(self, client: Increase) -> None:
-        resource = client.simulations.cards.authorize(
+        card = client.simulations.cards.authorize(
             amount=1,
             card_id="string",
             digital_wallet_token_id="string",
         )
-        assert isinstance(resource, CardAuthorizationSimulation)
+        assert_matches_type(CardAuthorizationSimulation, card, path=["response"])
 
     @parametrize
     def test_method_settlement(self, client: Increase) -> None:
-        resource = client.simulations.cards.settlement(
+        card = client.simulations.cards.settlement(
             card_id="string",
             pending_transaction_id="string",
         )
-        assert isinstance(resource, Transaction)
+        assert_matches_type(Transaction, card, path=["response"])
 
     @parametrize
     def test_method_settlement_with_all_params(self, client: Increase) -> None:
-        resource = client.simulations.cards.settlement(
+        card = client.simulations.cards.settlement(
             card_id="string",
             pending_transaction_id="string",
             amount=1,
         )
-        assert isinstance(resource, Transaction)
+        assert_matches_type(Transaction, card, path=["response"])
 
 
 class TestAsyncCards:
@@ -60,33 +61,33 @@ class TestAsyncCards:
 
     @parametrize
     async def test_method_authorize(self, client: AsyncIncrease) -> None:
-        resource = await client.simulations.cards.authorize(
+        card = await client.simulations.cards.authorize(
             amount=1,
         )
-        assert isinstance(resource, CardAuthorizationSimulation)
+        assert_matches_type(CardAuthorizationSimulation, card, path=["response"])
 
     @parametrize
     async def test_method_authorize_with_all_params(self, client: AsyncIncrease) -> None:
-        resource = await client.simulations.cards.authorize(
+        card = await client.simulations.cards.authorize(
             amount=1,
             card_id="string",
             digital_wallet_token_id="string",
         )
-        assert isinstance(resource, CardAuthorizationSimulation)
+        assert_matches_type(CardAuthorizationSimulation, card, path=["response"])
 
     @parametrize
     async def test_method_settlement(self, client: AsyncIncrease) -> None:
-        resource = await client.simulations.cards.settlement(
+        card = await client.simulations.cards.settlement(
             card_id="string",
             pending_transaction_id="string",
         )
-        assert isinstance(resource, Transaction)
+        assert_matches_type(Transaction, card, path=["response"])
 
     @parametrize
     async def test_method_settlement_with_all_params(self, client: AsyncIncrease) -> None:
-        resource = await client.simulations.cards.settlement(
+        card = await client.simulations.cards.settlement(
             card_id="string",
             pending_transaction_id="string",
             amount=1,
         )
-        assert isinstance(resource, Transaction)
+        assert_matches_type(Transaction, card, path=["response"])

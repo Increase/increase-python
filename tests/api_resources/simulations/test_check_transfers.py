@@ -7,6 +7,7 @@ import os
 import pytest
 
 from increase import Increase, AsyncIncrease
+from tests.utils import assert_matches_type
 from increase.types import CheckTransfer
 
 base_url = os.environ.get("API_BASE_URL", "http://127.0.0.1:4010")
@@ -20,18 +21,18 @@ class TestCheckTransfers:
 
     @parametrize
     def test_method_deposit(self, client: Increase) -> None:
-        resource = client.simulations.check_transfers.deposit(
+        check_transfer = client.simulations.check_transfers.deposit(
             "string",
         )
-        assert isinstance(resource, CheckTransfer)
+        assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
     @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
     def test_method_mail(self, client: Increase) -> None:
-        resource = client.simulations.check_transfers.mail(
+        check_transfer = client.simulations.check_transfers.mail(
             "string",
         )
-        assert isinstance(resource, CheckTransfer)
+        assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
 
 class TestAsyncCheckTransfers:
@@ -41,15 +42,15 @@ class TestAsyncCheckTransfers:
 
     @parametrize
     async def test_method_deposit(self, client: AsyncIncrease) -> None:
-        resource = await client.simulations.check_transfers.deposit(
+        check_transfer = await client.simulations.check_transfers.deposit(
             "string",
         )
-        assert isinstance(resource, CheckTransfer)
+        assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
     @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
     async def test_method_mail(self, client: AsyncIncrease) -> None:
-        resource = await client.simulations.check_transfers.mail(
+        check_transfer = await client.simulations.check_transfers.mail(
             "string",
         )
-        assert isinstance(resource, CheckTransfer)
+        assert_matches_type(CheckTransfer, check_transfer, path=["response"])

@@ -7,6 +7,7 @@ import os
 import pytest
 
 from increase import Increase, AsyncIncrease
+from tests.utils import assert_matches_type
 from increase.types.simulations import WireTransferSimulation
 
 base_url = os.environ.get("API_BASE_URL", "http://127.0.0.1:4010")
@@ -20,15 +21,15 @@ class TestWireTransfers:
 
     @parametrize
     def test_method_create_inbound(self, client: Increase) -> None:
-        resource = client.simulations.wire_transfers.create_inbound(
+        wire_transfer = client.simulations.wire_transfers.create_inbound(
             account_number_id="string",
             amount=1,
         )
-        assert isinstance(resource, WireTransferSimulation)
+        assert_matches_type(WireTransferSimulation, wire_transfer, path=["response"])
 
     @parametrize
     def test_method_create_inbound_with_all_params(self, client: Increase) -> None:
-        resource = client.simulations.wire_transfers.create_inbound(
+        wire_transfer = client.simulations.wire_transfers.create_inbound(
             account_number_id="string",
             amount=1,
             beneficiary_address_line1="x",
@@ -45,7 +46,7 @@ class TestWireTransfers:
             originator_to_beneficiary_information_line3="x",
             originator_to_beneficiary_information_line4="x",
         )
-        assert isinstance(resource, WireTransferSimulation)
+        assert_matches_type(WireTransferSimulation, wire_transfer, path=["response"])
 
 
 class TestAsyncWireTransfers:
@@ -55,15 +56,15 @@ class TestAsyncWireTransfers:
 
     @parametrize
     async def test_method_create_inbound(self, client: AsyncIncrease) -> None:
-        resource = await client.simulations.wire_transfers.create_inbound(
+        wire_transfer = await client.simulations.wire_transfers.create_inbound(
             account_number_id="string",
             amount=1,
         )
-        assert isinstance(resource, WireTransferSimulation)
+        assert_matches_type(WireTransferSimulation, wire_transfer, path=["response"])
 
     @parametrize
     async def test_method_create_inbound_with_all_params(self, client: AsyncIncrease) -> None:
-        resource = await client.simulations.wire_transfers.create_inbound(
+        wire_transfer = await client.simulations.wire_transfers.create_inbound(
             account_number_id="string",
             amount=1,
             beneficiary_address_line1="x",
@@ -80,4 +81,4 @@ class TestAsyncWireTransfers:
             originator_to_beneficiary_information_line3="x",
             originator_to_beneficiary_information_line4="x",
         )
-        assert isinstance(resource, WireTransferSimulation)
+        assert_matches_type(WireTransferSimulation, wire_transfer, path=["response"])

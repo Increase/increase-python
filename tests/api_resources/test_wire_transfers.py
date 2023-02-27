@@ -7,6 +7,7 @@ import os
 import pytest
 
 from increase import Increase, AsyncIncrease
+from tests.utils import assert_matches_type
 from increase.types import WireTransfer
 from increase.pagination import SyncPage, AsyncPage
 
@@ -21,17 +22,17 @@ class TestWireTransfers:
 
     @parametrize
     def test_method_create(self, client: Increase) -> None:
-        resource = client.wire_transfers.create(
+        wire_transfer = client.wire_transfers.create(
             account_id="string",
             amount=1,
             message_to_recipient="x",
             beneficiary_name="x",
         )
-        assert isinstance(resource, WireTransfer)
+        assert_matches_type(WireTransfer, wire_transfer, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: Increase) -> None:
-        resource = client.wire_transfers.create(
+        wire_transfer = client.wire_transfers.create(
             account_id="string",
             account_number="x",
             routing_number="xxxxxxxxx",
@@ -44,23 +45,23 @@ class TestWireTransfers:
             beneficiary_address_line3="x",
             require_approval=True,
         )
-        assert isinstance(resource, WireTransfer)
+        assert_matches_type(WireTransfer, wire_transfer, path=["response"])
 
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
-        resource = client.wire_transfers.retrieve(
+        wire_transfer = client.wire_transfers.retrieve(
             "string",
         )
-        assert isinstance(resource, WireTransfer)
+        assert_matches_type(WireTransfer, wire_transfer, path=["response"])
 
     @parametrize
     def test_method_list(self, client: Increase) -> None:
-        resource = client.wire_transfers.list()
-        assert isinstance(resource, SyncPage)
+        wire_transfer = client.wire_transfers.list()
+        assert_matches_type(SyncPage[WireTransfer], wire_transfer, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
-        resource = client.wire_transfers.list(
+        wire_transfer = client.wire_transfers.list(
             cursor="string",
             limit=0,
             account_id="string",
@@ -72,37 +73,37 @@ class TestWireTransfers:
                 "on_or_before": "2019-12-27T18:11:19.117Z",
             },
         )
-        assert isinstance(resource, SyncPage)
+        assert_matches_type(SyncPage[WireTransfer], wire_transfer, path=["response"])
 
     @parametrize
     def test_method_approve(self, client: Increase) -> None:
-        resource = client.wire_transfers.approve(
+        wire_transfer = client.wire_transfers.approve(
             "string",
         )
-        assert isinstance(resource, WireTransfer)
+        assert_matches_type(WireTransfer, wire_transfer, path=["response"])
 
     @parametrize
     def test_method_cancel(self, client: Increase) -> None:
-        resource = client.wire_transfers.cancel(
+        wire_transfer = client.wire_transfers.cancel(
             "string",
         )
-        assert isinstance(resource, WireTransfer)
+        assert_matches_type(WireTransfer, wire_transfer, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are broken")
     @parametrize
     def test_method_reverse(self, client: Increase) -> None:
-        resource = client.wire_transfers.reverse(
+        wire_transfer = client.wire_transfers.reverse(
             "string",
         )
-        assert isinstance(resource, WireTransfer)
+        assert_matches_type(WireTransfer, wire_transfer, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are broken")
     @parametrize
     def test_method_submit(self, client: Increase) -> None:
-        resource = client.wire_transfers.submit(
+        wire_transfer = client.wire_transfers.submit(
             "string",
         )
-        assert isinstance(resource, WireTransfer)
+        assert_matches_type(WireTransfer, wire_transfer, path=["response"])
 
 
 class TestAsyncWireTransfers:
@@ -112,17 +113,17 @@ class TestAsyncWireTransfers:
 
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
-        resource = await client.wire_transfers.create(
+        wire_transfer = await client.wire_transfers.create(
             account_id="string",
             amount=1,
             message_to_recipient="x",
             beneficiary_name="x",
         )
-        assert isinstance(resource, WireTransfer)
+        assert_matches_type(WireTransfer, wire_transfer, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
-        resource = await client.wire_transfers.create(
+        wire_transfer = await client.wire_transfers.create(
             account_id="string",
             account_number="x",
             routing_number="xxxxxxxxx",
@@ -135,23 +136,23 @@ class TestAsyncWireTransfers:
             beneficiary_address_line3="x",
             require_approval=True,
         )
-        assert isinstance(resource, WireTransfer)
+        assert_matches_type(WireTransfer, wire_transfer, path=["response"])
 
     @parametrize
     async def test_method_retrieve(self, client: AsyncIncrease) -> None:
-        resource = await client.wire_transfers.retrieve(
+        wire_transfer = await client.wire_transfers.retrieve(
             "string",
         )
-        assert isinstance(resource, WireTransfer)
+        assert_matches_type(WireTransfer, wire_transfer, path=["response"])
 
     @parametrize
     async def test_method_list(self, client: AsyncIncrease) -> None:
-        resource = await client.wire_transfers.list()
-        assert isinstance(resource, AsyncPage)
+        wire_transfer = await client.wire_transfers.list()
+        assert_matches_type(AsyncPage[WireTransfer], wire_transfer, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
-        resource = await client.wire_transfers.list(
+        wire_transfer = await client.wire_transfers.list(
             cursor="string",
             limit=0,
             account_id="string",
@@ -163,34 +164,34 @@ class TestAsyncWireTransfers:
                 "on_or_before": "2019-12-27T18:11:19.117Z",
             },
         )
-        assert isinstance(resource, AsyncPage)
+        assert_matches_type(AsyncPage[WireTransfer], wire_transfer, path=["response"])
 
     @parametrize
     async def test_method_approve(self, client: AsyncIncrease) -> None:
-        resource = await client.wire_transfers.approve(
+        wire_transfer = await client.wire_transfers.approve(
             "string",
         )
-        assert isinstance(resource, WireTransfer)
+        assert_matches_type(WireTransfer, wire_transfer, path=["response"])
 
     @parametrize
     async def test_method_cancel(self, client: AsyncIncrease) -> None:
-        resource = await client.wire_transfers.cancel(
+        wire_transfer = await client.wire_transfers.cancel(
             "string",
         )
-        assert isinstance(resource, WireTransfer)
+        assert_matches_type(WireTransfer, wire_transfer, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are broken")
     @parametrize
     async def test_method_reverse(self, client: AsyncIncrease) -> None:
-        resource = await client.wire_transfers.reverse(
+        wire_transfer = await client.wire_transfers.reverse(
             "string",
         )
-        assert isinstance(resource, WireTransfer)
+        assert_matches_type(WireTransfer, wire_transfer, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are broken")
     @parametrize
     async def test_method_submit(self, client: AsyncIncrease) -> None:
-        resource = await client.wire_transfers.submit(
+        wire_transfer = await client.wire_transfers.submit(
             "string",
         )
-        assert isinstance(resource, WireTransfer)
+        assert_matches_type(WireTransfer, wire_transfer, path=["response"])

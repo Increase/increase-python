@@ -7,6 +7,7 @@ import os
 import pytest
 
 from increase import Increase, AsyncIncrease
+from tests.utils import assert_matches_type
 from increase.types import ACHTransfer
 from increase.pagination import SyncPage, AsyncPage
 
@@ -21,16 +22,16 @@ class TestACHTransfers:
 
     @parametrize
     def test_method_create(self, client: Increase) -> None:
-        resource = client.ach_transfers.create(
+        ach_transfer = client.ach_transfers.create(
             account_id="string",
             amount=0,
             statement_descriptor="x",
         )
-        assert isinstance(resource, ACHTransfer)
+        assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: Increase) -> None:
-        resource = client.ach_transfers.create(
+        ach_transfer = client.ach_transfers.create(
             account_id="string",
             account_number="x",
             addendum="x",
@@ -49,23 +50,23 @@ class TestACHTransfers:
             standard_entry_class_code="corporate_credit_or_debit",
             statement_descriptor="x",
         )
-        assert isinstance(resource, ACHTransfer)
+        assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
 
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
-        resource = client.ach_transfers.retrieve(
+        ach_transfer = client.ach_transfers.retrieve(
             "string",
         )
-        assert isinstance(resource, ACHTransfer)
+        assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
 
     @parametrize
     def test_method_list(self, client: Increase) -> None:
-        resource = client.ach_transfers.list()
-        assert isinstance(resource, SyncPage)
+        ach_transfer = client.ach_transfers.list()
+        assert_matches_type(SyncPage[ACHTransfer], ach_transfer, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
-        resource = client.ach_transfers.list(
+        ach_transfer = client.ach_transfers.list(
             cursor="string",
             limit=0,
             account_id="string",
@@ -77,21 +78,21 @@ class TestACHTransfers:
                 "on_or_before": "2019-12-27T18:11:19.117Z",
             },
         )
-        assert isinstance(resource, SyncPage)
+        assert_matches_type(SyncPage[ACHTransfer], ach_transfer, path=["response"])
 
     @parametrize
     def test_method_approve(self, client: Increase) -> None:
-        resource = client.ach_transfers.approve(
+        ach_transfer = client.ach_transfers.approve(
             "string",
         )
-        assert isinstance(resource, ACHTransfer)
+        assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
 
     @parametrize
     def test_method_cancel(self, client: Increase) -> None:
-        resource = client.ach_transfers.cancel(
+        ach_transfer = client.ach_transfers.cancel(
             "string",
         )
-        assert isinstance(resource, ACHTransfer)
+        assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
 
 
 class TestAsyncACHTransfers:
@@ -101,16 +102,16 @@ class TestAsyncACHTransfers:
 
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
-        resource = await client.ach_transfers.create(
+        ach_transfer = await client.ach_transfers.create(
             account_id="string",
             amount=0,
             statement_descriptor="x",
         )
-        assert isinstance(resource, ACHTransfer)
+        assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
-        resource = await client.ach_transfers.create(
+        ach_transfer = await client.ach_transfers.create(
             account_id="string",
             account_number="x",
             addendum="x",
@@ -129,23 +130,23 @@ class TestAsyncACHTransfers:
             standard_entry_class_code="corporate_credit_or_debit",
             statement_descriptor="x",
         )
-        assert isinstance(resource, ACHTransfer)
+        assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
 
     @parametrize
     async def test_method_retrieve(self, client: AsyncIncrease) -> None:
-        resource = await client.ach_transfers.retrieve(
+        ach_transfer = await client.ach_transfers.retrieve(
             "string",
         )
-        assert isinstance(resource, ACHTransfer)
+        assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
 
     @parametrize
     async def test_method_list(self, client: AsyncIncrease) -> None:
-        resource = await client.ach_transfers.list()
-        assert isinstance(resource, AsyncPage)
+        ach_transfer = await client.ach_transfers.list()
+        assert_matches_type(AsyncPage[ACHTransfer], ach_transfer, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
-        resource = await client.ach_transfers.list(
+        ach_transfer = await client.ach_transfers.list(
             cursor="string",
             limit=0,
             account_id="string",
@@ -157,18 +158,18 @@ class TestAsyncACHTransfers:
                 "on_or_before": "2019-12-27T18:11:19.117Z",
             },
         )
-        assert isinstance(resource, AsyncPage)
+        assert_matches_type(AsyncPage[ACHTransfer], ach_transfer, path=["response"])
 
     @parametrize
     async def test_method_approve(self, client: AsyncIncrease) -> None:
-        resource = await client.ach_transfers.approve(
+        ach_transfer = await client.ach_transfers.approve(
             "string",
         )
-        assert isinstance(resource, ACHTransfer)
+        assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
 
     @parametrize
     async def test_method_cancel(self, client: AsyncIncrease) -> None:
-        resource = await client.ach_transfers.cancel(
+        ach_transfer = await client.ach_transfers.cancel(
             "string",
         )
-        assert isinstance(resource, ACHTransfer)
+        assert_matches_type(ACHTransfer, ach_transfer, path=["response"])

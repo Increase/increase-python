@@ -7,6 +7,7 @@ import os
 import pytest
 
 from increase import Increase, AsyncIncrease
+from tests.utils import assert_matches_type
 from increase.types import OauthConnection
 from increase.pagination import SyncPage, AsyncPage
 
@@ -21,23 +22,23 @@ class TestOauthConnections:
 
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
-        resource = client.oauth_connections.retrieve(
+        oauth_connection = client.oauth_connections.retrieve(
             "string",
         )
-        assert isinstance(resource, OauthConnection)
+        assert_matches_type(OauthConnection, oauth_connection, path=["response"])
 
     @parametrize
     def test_method_list(self, client: Increase) -> None:
-        resource = client.oauth_connections.list()
-        assert isinstance(resource, SyncPage)
+        oauth_connection = client.oauth_connections.list()
+        assert_matches_type(SyncPage[OauthConnection], oauth_connection, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
-        resource = client.oauth_connections.list(
+        oauth_connection = client.oauth_connections.list(
             cursor="string",
             limit=0,
         )
-        assert isinstance(resource, SyncPage)
+        assert_matches_type(SyncPage[OauthConnection], oauth_connection, path=["response"])
 
 
 class TestAsyncOauthConnections:
@@ -47,20 +48,20 @@ class TestAsyncOauthConnections:
 
     @parametrize
     async def test_method_retrieve(self, client: AsyncIncrease) -> None:
-        resource = await client.oauth_connections.retrieve(
+        oauth_connection = await client.oauth_connections.retrieve(
             "string",
         )
-        assert isinstance(resource, OauthConnection)
+        assert_matches_type(OauthConnection, oauth_connection, path=["response"])
 
     @parametrize
     async def test_method_list(self, client: AsyncIncrease) -> None:
-        resource = await client.oauth_connections.list()
-        assert isinstance(resource, AsyncPage)
+        oauth_connection = await client.oauth_connections.list()
+        assert_matches_type(AsyncPage[OauthConnection], oauth_connection, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
-        resource = await client.oauth_connections.list(
+        oauth_connection = await client.oauth_connections.list(
             cursor="string",
             limit=0,
         )
-        assert isinstance(resource, AsyncPage)
+        assert_matches_type(AsyncPage[OauthConnection], oauth_connection, path=["response"])

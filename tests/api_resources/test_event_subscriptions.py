@@ -7,6 +7,7 @@ import os
 import pytest
 
 from increase import Increase, AsyncIncrease
+from tests.utils import assert_matches_type
 from increase.types import EventSubscription
 from increase.pagination import SyncPage, AsyncPage
 
@@ -21,54 +22,54 @@ class TestEventSubscriptions:
 
     @parametrize
     def test_method_create(self, client: Increase) -> None:
-        resource = client.event_subscriptions.create(
+        event_subscription = client.event_subscriptions.create(
             url="string",
         )
-        assert isinstance(resource, EventSubscription)
+        assert_matches_type(EventSubscription, event_subscription, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: Increase) -> None:
-        resource = client.event_subscriptions.create(
+        event_subscription = client.event_subscriptions.create(
             url="string",
             shared_secret="x",
             selected_event_category="account.created",
         )
-        assert isinstance(resource, EventSubscription)
+        assert_matches_type(EventSubscription, event_subscription, path=["response"])
 
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
-        resource = client.event_subscriptions.retrieve(
+        event_subscription = client.event_subscriptions.retrieve(
             "string",
         )
-        assert isinstance(resource, EventSubscription)
+        assert_matches_type(EventSubscription, event_subscription, path=["response"])
 
     @parametrize
     def test_method_update(self, client: Increase) -> None:
-        resource = client.event_subscriptions.update(
+        event_subscription = client.event_subscriptions.update(
             "string",
         )
-        assert isinstance(resource, EventSubscription)
+        assert_matches_type(EventSubscription, event_subscription, path=["response"])
 
     @parametrize
     def test_method_update_with_all_params(self, client: Increase) -> None:
-        resource = client.event_subscriptions.update(
+        event_subscription = client.event_subscriptions.update(
             "string",
             status="active",
         )
-        assert isinstance(resource, EventSubscription)
+        assert_matches_type(EventSubscription, event_subscription, path=["response"])
 
     @parametrize
     def test_method_list(self, client: Increase) -> None:
-        resource = client.event_subscriptions.list()
-        assert isinstance(resource, SyncPage)
+        event_subscription = client.event_subscriptions.list()
+        assert_matches_type(SyncPage[EventSubscription], event_subscription, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
-        resource = client.event_subscriptions.list(
+        event_subscription = client.event_subscriptions.list(
             cursor="string",
             limit=0,
         )
-        assert isinstance(resource, SyncPage)
+        assert_matches_type(SyncPage[EventSubscription], event_subscription, path=["response"])
 
 
 class TestAsyncEventSubscriptions:
@@ -78,51 +79,51 @@ class TestAsyncEventSubscriptions:
 
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
-        resource = await client.event_subscriptions.create(
+        event_subscription = await client.event_subscriptions.create(
             url="string",
         )
-        assert isinstance(resource, EventSubscription)
+        assert_matches_type(EventSubscription, event_subscription, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
-        resource = await client.event_subscriptions.create(
+        event_subscription = await client.event_subscriptions.create(
             url="string",
             shared_secret="x",
             selected_event_category="account.created",
         )
-        assert isinstance(resource, EventSubscription)
+        assert_matches_type(EventSubscription, event_subscription, path=["response"])
 
     @parametrize
     async def test_method_retrieve(self, client: AsyncIncrease) -> None:
-        resource = await client.event_subscriptions.retrieve(
+        event_subscription = await client.event_subscriptions.retrieve(
             "string",
         )
-        assert isinstance(resource, EventSubscription)
+        assert_matches_type(EventSubscription, event_subscription, path=["response"])
 
     @parametrize
     async def test_method_update(self, client: AsyncIncrease) -> None:
-        resource = await client.event_subscriptions.update(
+        event_subscription = await client.event_subscriptions.update(
             "string",
         )
-        assert isinstance(resource, EventSubscription)
+        assert_matches_type(EventSubscription, event_subscription, path=["response"])
 
     @parametrize
     async def test_method_update_with_all_params(self, client: AsyncIncrease) -> None:
-        resource = await client.event_subscriptions.update(
+        event_subscription = await client.event_subscriptions.update(
             "string",
             status="active",
         )
-        assert isinstance(resource, EventSubscription)
+        assert_matches_type(EventSubscription, event_subscription, path=["response"])
 
     @parametrize
     async def test_method_list(self, client: AsyncIncrease) -> None:
-        resource = await client.event_subscriptions.list()
-        assert isinstance(resource, AsyncPage)
+        event_subscription = await client.event_subscriptions.list()
+        assert_matches_type(AsyncPage[EventSubscription], event_subscription, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
-        resource = await client.event_subscriptions.list(
+        event_subscription = await client.event_subscriptions.list(
             cursor="string",
             limit=0,
         )
-        assert isinstance(resource, AsyncPage)
+        assert_matches_type(AsyncPage[EventSubscription], event_subscription, path=["response"])

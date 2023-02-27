@@ -7,6 +7,7 @@ import os
 import pytest
 
 from increase import Increase, AsyncIncrease
+from tests.utils import assert_matches_type
 from increase.types import Account
 from increase.pagination import SyncPage, AsyncPage
 
@@ -21,64 +22,64 @@ class TestAccounts:
 
     @parametrize
     def test_method_create(self, client: Increase) -> None:
-        resource = client.accounts.create(
+        account = client.accounts.create(
             name="x",
         )
-        assert isinstance(resource, Account)
+        assert_matches_type(Account, account, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: Increase) -> None:
-        resource = client.accounts.create(
+        account = client.accounts.create(
             entity_id="string",
             informational_entity_id="string",
             name="x",
         )
-        assert isinstance(resource, Account)
+        assert_matches_type(Account, account, path=["response"])
 
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
-        resource = client.accounts.retrieve(
+        account = client.accounts.retrieve(
             "string",
         )
-        assert isinstance(resource, Account)
+        assert_matches_type(Account, account, path=["response"])
 
     @parametrize
     def test_method_update(self, client: Increase) -> None:
-        resource = client.accounts.update(
+        account = client.accounts.update(
             "string",
         )
-        assert isinstance(resource, Account)
+        assert_matches_type(Account, account, path=["response"])
 
     @parametrize
     def test_method_update_with_all_params(self, client: Increase) -> None:
-        resource = client.accounts.update(
+        account = client.accounts.update(
             "string",
             name="x",
         )
-        assert isinstance(resource, Account)
+        assert_matches_type(Account, account, path=["response"])
 
     @parametrize
     def test_method_list(self, client: Increase) -> None:
-        resource = client.accounts.list()
-        assert isinstance(resource, SyncPage)
+        account = client.accounts.list()
+        assert_matches_type(SyncPage[Account], account, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
-        resource = client.accounts.list(
+        account = client.accounts.list(
             cursor="string",
             limit=0,
             entity_id="string",
             status="open",
         )
-        assert isinstance(resource, SyncPage)
+        assert_matches_type(SyncPage[Account], account, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are broken")
     @parametrize
     def test_method_close(self, client: Increase) -> None:
-        resource = client.accounts.close(
+        account = client.accounts.close(
             "string",
         )
-        assert isinstance(resource, Account)
+        assert_matches_type(Account, account, path=["response"])
 
 
 class TestAsyncAccounts:
@@ -88,61 +89,61 @@ class TestAsyncAccounts:
 
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
-        resource = await client.accounts.create(
+        account = await client.accounts.create(
             name="x",
         )
-        assert isinstance(resource, Account)
+        assert_matches_type(Account, account, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
-        resource = await client.accounts.create(
+        account = await client.accounts.create(
             entity_id="string",
             informational_entity_id="string",
             name="x",
         )
-        assert isinstance(resource, Account)
+        assert_matches_type(Account, account, path=["response"])
 
     @parametrize
     async def test_method_retrieve(self, client: AsyncIncrease) -> None:
-        resource = await client.accounts.retrieve(
+        account = await client.accounts.retrieve(
             "string",
         )
-        assert isinstance(resource, Account)
+        assert_matches_type(Account, account, path=["response"])
 
     @parametrize
     async def test_method_update(self, client: AsyncIncrease) -> None:
-        resource = await client.accounts.update(
+        account = await client.accounts.update(
             "string",
         )
-        assert isinstance(resource, Account)
+        assert_matches_type(Account, account, path=["response"])
 
     @parametrize
     async def test_method_update_with_all_params(self, client: AsyncIncrease) -> None:
-        resource = await client.accounts.update(
+        account = await client.accounts.update(
             "string",
             name="x",
         )
-        assert isinstance(resource, Account)
+        assert_matches_type(Account, account, path=["response"])
 
     @parametrize
     async def test_method_list(self, client: AsyncIncrease) -> None:
-        resource = await client.accounts.list()
-        assert isinstance(resource, AsyncPage)
+        account = await client.accounts.list()
+        assert_matches_type(AsyncPage[Account], account, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
-        resource = await client.accounts.list(
+        account = await client.accounts.list(
             cursor="string",
             limit=0,
             entity_id="string",
             status="open",
         )
-        assert isinstance(resource, AsyncPage)
+        assert_matches_type(AsyncPage[Account], account, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are broken")
     @parametrize
     async def test_method_close(self, client: AsyncIncrease) -> None:
-        resource = await client.accounts.close(
+        account = await client.accounts.close(
             "string",
         )
-        assert isinstance(resource, Account)
+        assert_matches_type(Account, account, path=["response"])

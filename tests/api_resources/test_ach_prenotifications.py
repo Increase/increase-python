@@ -7,6 +7,7 @@ import os
 import pytest
 
 from increase import Increase, AsyncIncrease
+from tests.utils import assert_matches_type
 from increase.types import ACHPrenotification
 from increase.pagination import SyncPage, AsyncPage
 
@@ -21,15 +22,15 @@ class TestACHPrenotifications:
 
     @parametrize
     def test_method_create(self, client: Increase) -> None:
-        resource = client.ach_prenotifications.create(
+        ach_prenotification = client.ach_prenotifications.create(
             account_number="x",
             routing_number="xxxxxxxxx",
         )
-        assert isinstance(resource, ACHPrenotification)
+        assert_matches_type(ACHPrenotification, ach_prenotification, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: Increase) -> None:
-        resource = client.ach_prenotifications.create(
+        ach_prenotification = client.ach_prenotifications.create(
             account_number="x",
             addendum="x",
             company_descriptive_date="x",
@@ -43,23 +44,23 @@ class TestACHPrenotifications:
             routing_number="xxxxxxxxx",
             standard_entry_class_code="corporate_credit_or_debit",
         )
-        assert isinstance(resource, ACHPrenotification)
+        assert_matches_type(ACHPrenotification, ach_prenotification, path=["response"])
 
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
-        resource = client.ach_prenotifications.retrieve(
+        ach_prenotification = client.ach_prenotifications.retrieve(
             "string",
         )
-        assert isinstance(resource, ACHPrenotification)
+        assert_matches_type(ACHPrenotification, ach_prenotification, path=["response"])
 
     @parametrize
     def test_method_list(self, client: Increase) -> None:
-        resource = client.ach_prenotifications.list()
-        assert isinstance(resource, SyncPage)
+        ach_prenotification = client.ach_prenotifications.list()
+        assert_matches_type(SyncPage[ACHPrenotification], ach_prenotification, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
-        resource = client.ach_prenotifications.list(
+        ach_prenotification = client.ach_prenotifications.list(
             cursor="string",
             limit=0,
             created_at={
@@ -69,7 +70,7 @@ class TestACHPrenotifications:
                 "on_or_before": "2019-12-27T18:11:19.117Z",
             },
         )
-        assert isinstance(resource, SyncPage)
+        assert_matches_type(SyncPage[ACHPrenotification], ach_prenotification, path=["response"])
 
 
 class TestAsyncACHPrenotifications:
@@ -79,15 +80,15 @@ class TestAsyncACHPrenotifications:
 
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
-        resource = await client.ach_prenotifications.create(
+        ach_prenotification = await client.ach_prenotifications.create(
             account_number="x",
             routing_number="xxxxxxxxx",
         )
-        assert isinstance(resource, ACHPrenotification)
+        assert_matches_type(ACHPrenotification, ach_prenotification, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
-        resource = await client.ach_prenotifications.create(
+        ach_prenotification = await client.ach_prenotifications.create(
             account_number="x",
             addendum="x",
             company_descriptive_date="x",
@@ -101,23 +102,23 @@ class TestAsyncACHPrenotifications:
             routing_number="xxxxxxxxx",
             standard_entry_class_code="corporate_credit_or_debit",
         )
-        assert isinstance(resource, ACHPrenotification)
+        assert_matches_type(ACHPrenotification, ach_prenotification, path=["response"])
 
     @parametrize
     async def test_method_retrieve(self, client: AsyncIncrease) -> None:
-        resource = await client.ach_prenotifications.retrieve(
+        ach_prenotification = await client.ach_prenotifications.retrieve(
             "string",
         )
-        assert isinstance(resource, ACHPrenotification)
+        assert_matches_type(ACHPrenotification, ach_prenotification, path=["response"])
 
     @parametrize
     async def test_method_list(self, client: AsyncIncrease) -> None:
-        resource = await client.ach_prenotifications.list()
-        assert isinstance(resource, AsyncPage)
+        ach_prenotification = await client.ach_prenotifications.list()
+        assert_matches_type(AsyncPage[ACHPrenotification], ach_prenotification, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
-        resource = await client.ach_prenotifications.list(
+        ach_prenotification = await client.ach_prenotifications.list(
             cursor="string",
             limit=0,
             created_at={
@@ -127,4 +128,4 @@ class TestAsyncACHPrenotifications:
                 "on_or_before": "2019-12-27T18:11:19.117Z",
             },
         )
-        assert isinstance(resource, AsyncPage)
+        assert_matches_type(AsyncPage[ACHPrenotification], ach_prenotification, path=["response"])

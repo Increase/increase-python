@@ -7,6 +7,7 @@ import os
 import pytest
 
 from increase import Increase, AsyncIncrease
+from tests.utils import assert_matches_type
 from increase.types import CardDispute
 
 base_url = os.environ.get("API_BASE_URL", "http://127.0.0.1:4010")
@@ -20,20 +21,20 @@ class TestCardDisputes:
 
     @parametrize
     def test_method_action(self, client: Increase) -> None:
-        resource = client.simulations.card_disputes.action(
+        card_dispute = client.simulations.card_disputes.action(
             "string",
             status="accepted",
         )
-        assert isinstance(resource, CardDispute)
+        assert_matches_type(CardDispute, card_dispute, path=["response"])
 
     @parametrize
     def test_method_action_with_all_params(self, client: Increase) -> None:
-        resource = client.simulations.card_disputes.action(
+        card_dispute = client.simulations.card_disputes.action(
             "string",
             status="accepted",
             explanation="x",
         )
-        assert isinstance(resource, CardDispute)
+        assert_matches_type(CardDispute, card_dispute, path=["response"])
 
 
 class TestAsyncCardDisputes:
@@ -43,17 +44,17 @@ class TestAsyncCardDisputes:
 
     @parametrize
     async def test_method_action(self, client: AsyncIncrease) -> None:
-        resource = await client.simulations.card_disputes.action(
+        card_dispute = await client.simulations.card_disputes.action(
             "string",
             status="accepted",
         )
-        assert isinstance(resource, CardDispute)
+        assert_matches_type(CardDispute, card_dispute, path=["response"])
 
     @parametrize
     async def test_method_action_with_all_params(self, client: AsyncIncrease) -> None:
-        resource = await client.simulations.card_disputes.action(
+        card_dispute = await client.simulations.card_disputes.action(
             "string",
             status="accepted",
             explanation="x",
         )
-        assert isinstance(resource, CardDispute)
+        assert_matches_type(CardDispute, card_dispute, path=["response"])

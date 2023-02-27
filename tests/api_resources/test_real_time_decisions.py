@@ -7,6 +7,7 @@ import os
 import pytest
 
 from increase import Increase, AsyncIncrease
+from tests.utils import assert_matches_type
 from increase.types import RealTimeDecision
 
 base_url = os.environ.get("API_BASE_URL", "http://127.0.0.1:4010")
@@ -20,21 +21,21 @@ class TestRealTimeDecisions:
 
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
-        resource = client.real_time_decisions.retrieve(
+        real_time_decision = client.real_time_decisions.retrieve(
             "string",
         )
-        assert isinstance(resource, RealTimeDecision)
+        assert_matches_type(RealTimeDecision, real_time_decision, path=["response"])
 
     @parametrize
     def test_method_action(self, client: Increase) -> None:
-        resource = client.real_time_decisions.action(
+        real_time_decision = client.real_time_decisions.action(
             "string",
         )
-        assert isinstance(resource, RealTimeDecision)
+        assert_matches_type(RealTimeDecision, real_time_decision, path=["response"])
 
     @parametrize
     def test_method_action_with_all_params(self, client: Increase) -> None:
-        resource = client.real_time_decisions.action(
+        real_time_decision = client.real_time_decisions.action(
             "string",
             card_authorization={"decision": "approve"},
             digital_wallet_token={
@@ -47,7 +48,7 @@ class TestRealTimeDecisions:
             },
             digital_wallet_authentication={"result": "success"},
         )
-        assert isinstance(resource, RealTimeDecision)
+        assert_matches_type(RealTimeDecision, real_time_decision, path=["response"])
 
 
 class TestAsyncRealTimeDecisions:
@@ -57,21 +58,21 @@ class TestAsyncRealTimeDecisions:
 
     @parametrize
     async def test_method_retrieve(self, client: AsyncIncrease) -> None:
-        resource = await client.real_time_decisions.retrieve(
+        real_time_decision = await client.real_time_decisions.retrieve(
             "string",
         )
-        assert isinstance(resource, RealTimeDecision)
+        assert_matches_type(RealTimeDecision, real_time_decision, path=["response"])
 
     @parametrize
     async def test_method_action(self, client: AsyncIncrease) -> None:
-        resource = await client.real_time_decisions.action(
+        real_time_decision = await client.real_time_decisions.action(
             "string",
         )
-        assert isinstance(resource, RealTimeDecision)
+        assert_matches_type(RealTimeDecision, real_time_decision, path=["response"])
 
     @parametrize
     async def test_method_action_with_all_params(self, client: AsyncIncrease) -> None:
-        resource = await client.real_time_decisions.action(
+        real_time_decision = await client.real_time_decisions.action(
             "string",
             card_authorization={"decision": "approve"},
             digital_wallet_token={
@@ -84,4 +85,4 @@ class TestAsyncRealTimeDecisions:
             },
             digital_wallet_authentication={"result": "success"},
         )
-        assert isinstance(resource, RealTimeDecision)
+        assert_matches_type(RealTimeDecision, real_time_decision, path=["response"])

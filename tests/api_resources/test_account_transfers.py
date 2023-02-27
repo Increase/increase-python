@@ -7,6 +7,7 @@ import os
 import pytest
 
 from increase import Increase, AsyncIncrease
+from tests.utils import assert_matches_type
 from increase.types import AccountTransfer
 from increase.pagination import SyncPage, AsyncPage
 
@@ -21,40 +22,40 @@ class TestAccountTransfers:
 
     @parametrize
     def test_method_create(self, client: Increase) -> None:
-        resource = client.account_transfers.create(
+        account_transfer = client.account_transfers.create(
             account_id="string",
             amount=1,
             description="x",
             destination_account_id="string",
         )
-        assert isinstance(resource, AccountTransfer)
+        assert_matches_type(AccountTransfer, account_transfer, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: Increase) -> None:
-        resource = client.account_transfers.create(
+        account_transfer = client.account_transfers.create(
             account_id="string",
             amount=1,
             description="x",
             destination_account_id="string",
             require_approval=True,
         )
-        assert isinstance(resource, AccountTransfer)
+        assert_matches_type(AccountTransfer, account_transfer, path=["response"])
 
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
-        resource = client.account_transfers.retrieve(
+        account_transfer = client.account_transfers.retrieve(
             "string",
         )
-        assert isinstance(resource, AccountTransfer)
+        assert_matches_type(AccountTransfer, account_transfer, path=["response"])
 
     @parametrize
     def test_method_list(self, client: Increase) -> None:
-        resource = client.account_transfers.list()
-        assert isinstance(resource, SyncPage)
+        account_transfer = client.account_transfers.list()
+        assert_matches_type(SyncPage[AccountTransfer], account_transfer, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
-        resource = client.account_transfers.list(
+        account_transfer = client.account_transfers.list(
             cursor="string",
             limit=0,
             account_id="string",
@@ -65,21 +66,21 @@ class TestAccountTransfers:
                 "on_or_before": "2019-12-27T18:11:19.117Z",
             },
         )
-        assert isinstance(resource, SyncPage)
+        assert_matches_type(SyncPage[AccountTransfer], account_transfer, path=["response"])
 
     @parametrize
     def test_method_approve(self, client: Increase) -> None:
-        resource = client.account_transfers.approve(
+        account_transfer = client.account_transfers.approve(
             "string",
         )
-        assert isinstance(resource, AccountTransfer)
+        assert_matches_type(AccountTransfer, account_transfer, path=["response"])
 
     @parametrize
     def test_method_cancel(self, client: Increase) -> None:
-        resource = client.account_transfers.cancel(
+        account_transfer = client.account_transfers.cancel(
             "string",
         )
-        assert isinstance(resource, AccountTransfer)
+        assert_matches_type(AccountTransfer, account_transfer, path=["response"])
 
 
 class TestAsyncAccountTransfers:
@@ -89,40 +90,40 @@ class TestAsyncAccountTransfers:
 
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
-        resource = await client.account_transfers.create(
+        account_transfer = await client.account_transfers.create(
             account_id="string",
             amount=1,
             description="x",
             destination_account_id="string",
         )
-        assert isinstance(resource, AccountTransfer)
+        assert_matches_type(AccountTransfer, account_transfer, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
-        resource = await client.account_transfers.create(
+        account_transfer = await client.account_transfers.create(
             account_id="string",
             amount=1,
             description="x",
             destination_account_id="string",
             require_approval=True,
         )
-        assert isinstance(resource, AccountTransfer)
+        assert_matches_type(AccountTransfer, account_transfer, path=["response"])
 
     @parametrize
     async def test_method_retrieve(self, client: AsyncIncrease) -> None:
-        resource = await client.account_transfers.retrieve(
+        account_transfer = await client.account_transfers.retrieve(
             "string",
         )
-        assert isinstance(resource, AccountTransfer)
+        assert_matches_type(AccountTransfer, account_transfer, path=["response"])
 
     @parametrize
     async def test_method_list(self, client: AsyncIncrease) -> None:
-        resource = await client.account_transfers.list()
-        assert isinstance(resource, AsyncPage)
+        account_transfer = await client.account_transfers.list()
+        assert_matches_type(AsyncPage[AccountTransfer], account_transfer, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
-        resource = await client.account_transfers.list(
+        account_transfer = await client.account_transfers.list(
             cursor="string",
             limit=0,
             account_id="string",
@@ -133,18 +134,18 @@ class TestAsyncAccountTransfers:
                 "on_or_before": "2019-12-27T18:11:19.117Z",
             },
         )
-        assert isinstance(resource, AsyncPage)
+        assert_matches_type(AsyncPage[AccountTransfer], account_transfer, path=["response"])
 
     @parametrize
     async def test_method_approve(self, client: AsyncIncrease) -> None:
-        resource = await client.account_transfers.approve(
+        account_transfer = await client.account_transfers.approve(
             "string",
         )
-        assert isinstance(resource, AccountTransfer)
+        assert_matches_type(AccountTransfer, account_transfer, path=["response"])
 
     @parametrize
     async def test_method_cancel(self, client: AsyncIncrease) -> None:
-        resource = await client.account_transfers.cancel(
+        account_transfer = await client.account_transfers.cancel(
             "string",
         )
-        assert isinstance(resource, AccountTransfer)
+        assert_matches_type(AccountTransfer, account_transfer, path=["response"])
