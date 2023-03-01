@@ -6,8 +6,10 @@ from typing_extensions import Literal
 
 from ...types import CardDispute
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._utils import maybe_transform
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._base_client import make_request_options
+from ...types.simulations import card_dispute_action_params
 
 __all__ = ["CardDisputes", "AsyncCardDisputes"]
 
@@ -44,10 +46,13 @@ class CardDisputes(SyncAPIResource):
         """
         return self._post(
             f"/simulations/card_disputes/{card_dispute_id}/action",
-            body={
-                "status": status,
-                "explanation": explanation,
-            },
+            body=maybe_transform(
+                {
+                    "status": status,
+                    "explanation": explanation,
+                },
+                card_dispute_action_params.CardDisputeActionParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=CardDispute,
         )
@@ -85,10 +90,13 @@ class AsyncCardDisputes(AsyncAPIResource):
         """
         return await self._post(
             f"/simulations/card_disputes/{card_dispute_id}/action",
-            body={
-                "status": status,
-                "explanation": explanation,
-            },
+            body=maybe_transform(
+                {
+                    "status": status,
+                    "explanation": explanation,
+                },
+                card_dispute_action_params.CardDisputeActionParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=CardDispute,
         )

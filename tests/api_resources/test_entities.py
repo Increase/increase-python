@@ -9,6 +9,7 @@ import pytest
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
 from increase.types import Entity
+from increase._utils import parse_date
 from increase.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("API_BASE_URL", "http://127.0.0.1:4010")
@@ -48,7 +49,7 @@ class TestEntities:
                     {
                         "individual": {
                             "name": "x",
-                            "date_of_birth": "2019-12-27",
+                            "date_of_birth": parse_date("2019-12-27"),
                             "address": {
                                 "line1": "x",
                                 "line2": "x",
@@ -62,18 +63,18 @@ class TestEntities:
                                 "number": "x",
                                 "passport": {
                                     "file_id": "string",
-                                    "expiration_date": "2019-12-27",
+                                    "expiration_date": parse_date("2019-12-27"),
                                     "country": "x",
                                 },
                                 "drivers_license": {
                                     "file_id": "string",
-                                    "expiration_date": "2019-12-27",
+                                    "expiration_date": parse_date("2019-12-27"),
                                     "state": "x",
                                 },
                                 "other": {
                                     "country": "x",
                                     "description": "x",
-                                    "expiration_date": "2019-12-27",
+                                    "expiration_date": parse_date("2019-12-27"),
                                     "file_id": "string",
                                 },
                             },
@@ -84,7 +85,7 @@ class TestEntities:
                     {
                         "individual": {
                             "name": "x",
-                            "date_of_birth": "2019-12-27",
+                            "date_of_birth": parse_date("2019-12-27"),
                             "address": {
                                 "line1": "x",
                                 "line2": "x",
@@ -98,18 +99,18 @@ class TestEntities:
                                 "number": "x",
                                 "passport": {
                                     "file_id": "string",
-                                    "expiration_date": "2019-12-27",
+                                    "expiration_date": parse_date("2019-12-27"),
                                     "country": "x",
                                 },
                                 "drivers_license": {
                                     "file_id": "string",
-                                    "expiration_date": "2019-12-27",
+                                    "expiration_date": parse_date("2019-12-27"),
                                     "state": "x",
                                 },
                                 "other": {
                                     "country": "x",
                                     "description": "x",
-                                    "expiration_date": "2019-12-27",
+                                    "expiration_date": parse_date("2019-12-27"),
                                     "file_id": "string",
                                 },
                             },
@@ -120,7 +121,7 @@ class TestEntities:
                     {
                         "individual": {
                             "name": "x",
-                            "date_of_birth": "2019-12-27",
+                            "date_of_birth": parse_date("2019-12-27"),
                             "address": {
                                 "line1": "x",
                                 "line2": "x",
@@ -134,18 +135,18 @@ class TestEntities:
                                 "number": "x",
                                 "passport": {
                                     "file_id": "string",
-                                    "expiration_date": "2019-12-27",
+                                    "expiration_date": parse_date("2019-12-27"),
                                     "country": "x",
                                 },
                                 "drivers_license": {
                                     "file_id": "string",
-                                    "expiration_date": "2019-12-27",
+                                    "expiration_date": parse_date("2019-12-27"),
                                     "state": "x",
                                 },
                                 "other": {
                                     "country": "x",
                                     "description": "x",
-                                    "expiration_date": "2019-12-27",
+                                    "expiration_date": parse_date("2019-12-27"),
                                     "file_id": "string",
                                 },
                             },
@@ -157,7 +158,7 @@ class TestEntities:
             },
             natural_person={
                 "name": "x",
-                "date_of_birth": "2019-12-27",
+                "date_of_birth": parse_date("2019-12-27"),
                 "address": {
                     "line1": "x",
                     "line2": "x",
@@ -171,18 +172,18 @@ class TestEntities:
                     "number": "x",
                     "passport": {
                         "file_id": "string",
-                        "expiration_date": "2019-12-27",
+                        "expiration_date": parse_date("2019-12-27"),
                         "country": "x",
                     },
                     "drivers_license": {
                         "file_id": "string",
-                        "expiration_date": "2019-12-27",
+                        "expiration_date": parse_date("2019-12-27"),
                         "state": "x",
                     },
                     "other": {
                         "country": "x",
                         "description": "x",
-                        "expiration_date": "2019-12-27",
+                        "expiration_date": parse_date("2019-12-27"),
                         "file_id": "string",
                     },
                 },
@@ -192,7 +193,7 @@ class TestEntities:
                 "individuals": [
                     {
                         "name": "x",
-                        "date_of_birth": "2019-12-27",
+                        "date_of_birth": parse_date("2019-12-27"),
                         "address": {
                             "line1": "x",
                             "line2": "x",
@@ -206,25 +207,25 @@ class TestEntities:
                             "number": "x",
                             "passport": {
                                 "file_id": "string",
-                                "expiration_date": "2019-12-27",
+                                "expiration_date": parse_date("2019-12-27"),
                                 "country": "x",
                             },
                             "drivers_license": {
                                 "file_id": "string",
-                                "expiration_date": "2019-12-27",
+                                "expiration_date": parse_date("2019-12-27"),
                                 "state": "x",
                             },
                             "other": {
                                 "country": "x",
                                 "description": "x",
-                                "expiration_date": "2019-12-27",
+                                "expiration_date": parse_date("2019-12-27"),
                                 "file_id": "string",
                             },
                         },
                     },
                     {
                         "name": "x",
-                        "date_of_birth": "2019-12-27",
+                        "date_of_birth": parse_date("2019-12-27"),
                         "address": {
                             "line1": "x",
                             "line2": "x",
@@ -238,25 +239,25 @@ class TestEntities:
                             "number": "x",
                             "passport": {
                                 "file_id": "string",
-                                "expiration_date": "2019-12-27",
+                                "expiration_date": parse_date("2019-12-27"),
                                 "country": "x",
                             },
                             "drivers_license": {
                                 "file_id": "string",
-                                "expiration_date": "2019-12-27",
+                                "expiration_date": parse_date("2019-12-27"),
                                 "state": "x",
                             },
                             "other": {
                                 "country": "x",
                                 "description": "x",
-                                "expiration_date": "2019-12-27",
+                                "expiration_date": parse_date("2019-12-27"),
                                 "file_id": "string",
                             },
                         },
                     },
                     {
                         "name": "x",
-                        "date_of_birth": "2019-12-27",
+                        "date_of_birth": parse_date("2019-12-27"),
                         "address": {
                             "line1": "x",
                             "line2": "x",
@@ -270,18 +271,18 @@ class TestEntities:
                             "number": "x",
                             "passport": {
                                 "file_id": "string",
-                                "expiration_date": "2019-12-27",
+                                "expiration_date": parse_date("2019-12-27"),
                                 "country": "x",
                             },
                             "drivers_license": {
                                 "file_id": "string",
-                                "expiration_date": "2019-12-27",
+                                "expiration_date": parse_date("2019-12-27"),
                                 "state": "x",
                             },
                             "other": {
                                 "country": "x",
                                 "description": "x",
-                                "expiration_date": "2019-12-27",
+                                "expiration_date": parse_date("2019-12-27"),
                                 "file_id": "string",
                             },
                         },
@@ -306,7 +307,7 @@ class TestEntities:
                         "structure": "individual",
                         "individual": {
                             "name": "x",
-                            "date_of_birth": "2019-12-27",
+                            "date_of_birth": parse_date("2019-12-27"),
                             "address": {
                                 "line1": "x",
                                 "line2": "x",
@@ -320,18 +321,18 @@ class TestEntities:
                                 "number": "x",
                                 "passport": {
                                     "file_id": "string",
-                                    "expiration_date": "2019-12-27",
+                                    "expiration_date": parse_date("2019-12-27"),
                                     "country": "x",
                                 },
                                 "drivers_license": {
                                     "file_id": "string",
-                                    "expiration_date": "2019-12-27",
+                                    "expiration_date": parse_date("2019-12-27"),
                                     "state": "x",
                                 },
                                 "other": {
                                     "country": "x",
                                     "description": "x",
-                                    "expiration_date": "2019-12-27",
+                                    "expiration_date": parse_date("2019-12-27"),
                                     "file_id": "string",
                                 },
                             },
@@ -341,7 +342,7 @@ class TestEntities:
                         "structure": "individual",
                         "individual": {
                             "name": "x",
-                            "date_of_birth": "2019-12-27",
+                            "date_of_birth": parse_date("2019-12-27"),
                             "address": {
                                 "line1": "x",
                                 "line2": "x",
@@ -355,18 +356,18 @@ class TestEntities:
                                 "number": "x",
                                 "passport": {
                                     "file_id": "string",
-                                    "expiration_date": "2019-12-27",
+                                    "expiration_date": parse_date("2019-12-27"),
                                     "country": "x",
                                 },
                                 "drivers_license": {
                                     "file_id": "string",
-                                    "expiration_date": "2019-12-27",
+                                    "expiration_date": parse_date("2019-12-27"),
                                     "state": "x",
                                 },
                                 "other": {
                                     "country": "x",
                                     "description": "x",
-                                    "expiration_date": "2019-12-27",
+                                    "expiration_date": parse_date("2019-12-27"),
                                     "file_id": "string",
                                 },
                             },
@@ -376,7 +377,7 @@ class TestEntities:
                         "structure": "individual",
                         "individual": {
                             "name": "x",
-                            "date_of_birth": "2019-12-27",
+                            "date_of_birth": parse_date("2019-12-27"),
                             "address": {
                                 "line1": "x",
                                 "line2": "x",
@@ -390,18 +391,18 @@ class TestEntities:
                                 "number": "x",
                                 "passport": {
                                     "file_id": "string",
-                                    "expiration_date": "2019-12-27",
+                                    "expiration_date": parse_date("2019-12-27"),
                                     "country": "x",
                                 },
                                 "drivers_license": {
                                     "file_id": "string",
-                                    "expiration_date": "2019-12-27",
+                                    "expiration_date": parse_date("2019-12-27"),
                                     "state": "x",
                                 },
                                 "other": {
                                     "country": "x",
                                     "description": "x",
-                                    "expiration_date": "2019-12-27",
+                                    "expiration_date": parse_date("2019-12-27"),
                                     "file_id": "string",
                                 },
                             },
@@ -410,7 +411,7 @@ class TestEntities:
                 ],
                 "grantor": {
                     "name": "x",
-                    "date_of_birth": "2019-12-27",
+                    "date_of_birth": parse_date("2019-12-27"),
                     "address": {
                         "line1": "x",
                         "line2": "x",
@@ -424,18 +425,18 @@ class TestEntities:
                         "number": "x",
                         "passport": {
                             "file_id": "string",
-                            "expiration_date": "2019-12-27",
+                            "expiration_date": parse_date("2019-12-27"),
                             "country": "x",
                         },
                         "drivers_license": {
                             "file_id": "string",
-                            "expiration_date": "2019-12-27",
+                            "expiration_date": parse_date("2019-12-27"),
                             "state": "x",
                         },
                         "other": {
                             "country": "x",
                             "description": "x",
-                            "expiration_date": "2019-12-27",
+                            "expiration_date": parse_date("2019-12-27"),
                             "file_id": "string",
                         },
                     },
@@ -501,7 +502,7 @@ class TestAsyncEntities:
                     {
                         "individual": {
                             "name": "x",
-                            "date_of_birth": "2019-12-27",
+                            "date_of_birth": parse_date("2019-12-27"),
                             "address": {
                                 "line1": "x",
                                 "line2": "x",
@@ -515,18 +516,18 @@ class TestAsyncEntities:
                                 "number": "x",
                                 "passport": {
                                     "file_id": "string",
-                                    "expiration_date": "2019-12-27",
+                                    "expiration_date": parse_date("2019-12-27"),
                                     "country": "x",
                                 },
                                 "drivers_license": {
                                     "file_id": "string",
-                                    "expiration_date": "2019-12-27",
+                                    "expiration_date": parse_date("2019-12-27"),
                                     "state": "x",
                                 },
                                 "other": {
                                     "country": "x",
                                     "description": "x",
-                                    "expiration_date": "2019-12-27",
+                                    "expiration_date": parse_date("2019-12-27"),
                                     "file_id": "string",
                                 },
                             },
@@ -537,7 +538,7 @@ class TestAsyncEntities:
                     {
                         "individual": {
                             "name": "x",
-                            "date_of_birth": "2019-12-27",
+                            "date_of_birth": parse_date("2019-12-27"),
                             "address": {
                                 "line1": "x",
                                 "line2": "x",
@@ -551,18 +552,18 @@ class TestAsyncEntities:
                                 "number": "x",
                                 "passport": {
                                     "file_id": "string",
-                                    "expiration_date": "2019-12-27",
+                                    "expiration_date": parse_date("2019-12-27"),
                                     "country": "x",
                                 },
                                 "drivers_license": {
                                     "file_id": "string",
-                                    "expiration_date": "2019-12-27",
+                                    "expiration_date": parse_date("2019-12-27"),
                                     "state": "x",
                                 },
                                 "other": {
                                     "country": "x",
                                     "description": "x",
-                                    "expiration_date": "2019-12-27",
+                                    "expiration_date": parse_date("2019-12-27"),
                                     "file_id": "string",
                                 },
                             },
@@ -573,7 +574,7 @@ class TestAsyncEntities:
                     {
                         "individual": {
                             "name": "x",
-                            "date_of_birth": "2019-12-27",
+                            "date_of_birth": parse_date("2019-12-27"),
                             "address": {
                                 "line1": "x",
                                 "line2": "x",
@@ -587,18 +588,18 @@ class TestAsyncEntities:
                                 "number": "x",
                                 "passport": {
                                     "file_id": "string",
-                                    "expiration_date": "2019-12-27",
+                                    "expiration_date": parse_date("2019-12-27"),
                                     "country": "x",
                                 },
                                 "drivers_license": {
                                     "file_id": "string",
-                                    "expiration_date": "2019-12-27",
+                                    "expiration_date": parse_date("2019-12-27"),
                                     "state": "x",
                                 },
                                 "other": {
                                     "country": "x",
                                     "description": "x",
-                                    "expiration_date": "2019-12-27",
+                                    "expiration_date": parse_date("2019-12-27"),
                                     "file_id": "string",
                                 },
                             },
@@ -610,7 +611,7 @@ class TestAsyncEntities:
             },
             natural_person={
                 "name": "x",
-                "date_of_birth": "2019-12-27",
+                "date_of_birth": parse_date("2019-12-27"),
                 "address": {
                     "line1": "x",
                     "line2": "x",
@@ -624,18 +625,18 @@ class TestAsyncEntities:
                     "number": "x",
                     "passport": {
                         "file_id": "string",
-                        "expiration_date": "2019-12-27",
+                        "expiration_date": parse_date("2019-12-27"),
                         "country": "x",
                     },
                     "drivers_license": {
                         "file_id": "string",
-                        "expiration_date": "2019-12-27",
+                        "expiration_date": parse_date("2019-12-27"),
                         "state": "x",
                     },
                     "other": {
                         "country": "x",
                         "description": "x",
-                        "expiration_date": "2019-12-27",
+                        "expiration_date": parse_date("2019-12-27"),
                         "file_id": "string",
                     },
                 },
@@ -645,7 +646,7 @@ class TestAsyncEntities:
                 "individuals": [
                     {
                         "name": "x",
-                        "date_of_birth": "2019-12-27",
+                        "date_of_birth": parse_date("2019-12-27"),
                         "address": {
                             "line1": "x",
                             "line2": "x",
@@ -659,25 +660,25 @@ class TestAsyncEntities:
                             "number": "x",
                             "passport": {
                                 "file_id": "string",
-                                "expiration_date": "2019-12-27",
+                                "expiration_date": parse_date("2019-12-27"),
                                 "country": "x",
                             },
                             "drivers_license": {
                                 "file_id": "string",
-                                "expiration_date": "2019-12-27",
+                                "expiration_date": parse_date("2019-12-27"),
                                 "state": "x",
                             },
                             "other": {
                                 "country": "x",
                                 "description": "x",
-                                "expiration_date": "2019-12-27",
+                                "expiration_date": parse_date("2019-12-27"),
                                 "file_id": "string",
                             },
                         },
                     },
                     {
                         "name": "x",
-                        "date_of_birth": "2019-12-27",
+                        "date_of_birth": parse_date("2019-12-27"),
                         "address": {
                             "line1": "x",
                             "line2": "x",
@@ -691,25 +692,25 @@ class TestAsyncEntities:
                             "number": "x",
                             "passport": {
                                 "file_id": "string",
-                                "expiration_date": "2019-12-27",
+                                "expiration_date": parse_date("2019-12-27"),
                                 "country": "x",
                             },
                             "drivers_license": {
                                 "file_id": "string",
-                                "expiration_date": "2019-12-27",
+                                "expiration_date": parse_date("2019-12-27"),
                                 "state": "x",
                             },
                             "other": {
                                 "country": "x",
                                 "description": "x",
-                                "expiration_date": "2019-12-27",
+                                "expiration_date": parse_date("2019-12-27"),
                                 "file_id": "string",
                             },
                         },
                     },
                     {
                         "name": "x",
-                        "date_of_birth": "2019-12-27",
+                        "date_of_birth": parse_date("2019-12-27"),
                         "address": {
                             "line1": "x",
                             "line2": "x",
@@ -723,18 +724,18 @@ class TestAsyncEntities:
                             "number": "x",
                             "passport": {
                                 "file_id": "string",
-                                "expiration_date": "2019-12-27",
+                                "expiration_date": parse_date("2019-12-27"),
                                 "country": "x",
                             },
                             "drivers_license": {
                                 "file_id": "string",
-                                "expiration_date": "2019-12-27",
+                                "expiration_date": parse_date("2019-12-27"),
                                 "state": "x",
                             },
                             "other": {
                                 "country": "x",
                                 "description": "x",
-                                "expiration_date": "2019-12-27",
+                                "expiration_date": parse_date("2019-12-27"),
                                 "file_id": "string",
                             },
                         },
@@ -759,7 +760,7 @@ class TestAsyncEntities:
                         "structure": "individual",
                         "individual": {
                             "name": "x",
-                            "date_of_birth": "2019-12-27",
+                            "date_of_birth": parse_date("2019-12-27"),
                             "address": {
                                 "line1": "x",
                                 "line2": "x",
@@ -773,18 +774,18 @@ class TestAsyncEntities:
                                 "number": "x",
                                 "passport": {
                                     "file_id": "string",
-                                    "expiration_date": "2019-12-27",
+                                    "expiration_date": parse_date("2019-12-27"),
                                     "country": "x",
                                 },
                                 "drivers_license": {
                                     "file_id": "string",
-                                    "expiration_date": "2019-12-27",
+                                    "expiration_date": parse_date("2019-12-27"),
                                     "state": "x",
                                 },
                                 "other": {
                                     "country": "x",
                                     "description": "x",
-                                    "expiration_date": "2019-12-27",
+                                    "expiration_date": parse_date("2019-12-27"),
                                     "file_id": "string",
                                 },
                             },
@@ -794,7 +795,7 @@ class TestAsyncEntities:
                         "structure": "individual",
                         "individual": {
                             "name": "x",
-                            "date_of_birth": "2019-12-27",
+                            "date_of_birth": parse_date("2019-12-27"),
                             "address": {
                                 "line1": "x",
                                 "line2": "x",
@@ -808,18 +809,18 @@ class TestAsyncEntities:
                                 "number": "x",
                                 "passport": {
                                     "file_id": "string",
-                                    "expiration_date": "2019-12-27",
+                                    "expiration_date": parse_date("2019-12-27"),
                                     "country": "x",
                                 },
                                 "drivers_license": {
                                     "file_id": "string",
-                                    "expiration_date": "2019-12-27",
+                                    "expiration_date": parse_date("2019-12-27"),
                                     "state": "x",
                                 },
                                 "other": {
                                     "country": "x",
                                     "description": "x",
-                                    "expiration_date": "2019-12-27",
+                                    "expiration_date": parse_date("2019-12-27"),
                                     "file_id": "string",
                                 },
                             },
@@ -829,7 +830,7 @@ class TestAsyncEntities:
                         "structure": "individual",
                         "individual": {
                             "name": "x",
-                            "date_of_birth": "2019-12-27",
+                            "date_of_birth": parse_date("2019-12-27"),
                             "address": {
                                 "line1": "x",
                                 "line2": "x",
@@ -843,18 +844,18 @@ class TestAsyncEntities:
                                 "number": "x",
                                 "passport": {
                                     "file_id": "string",
-                                    "expiration_date": "2019-12-27",
+                                    "expiration_date": parse_date("2019-12-27"),
                                     "country": "x",
                                 },
                                 "drivers_license": {
                                     "file_id": "string",
-                                    "expiration_date": "2019-12-27",
+                                    "expiration_date": parse_date("2019-12-27"),
                                     "state": "x",
                                 },
                                 "other": {
                                     "country": "x",
                                     "description": "x",
-                                    "expiration_date": "2019-12-27",
+                                    "expiration_date": parse_date("2019-12-27"),
                                     "file_id": "string",
                                 },
                             },
@@ -863,7 +864,7 @@ class TestAsyncEntities:
                 ],
                 "grantor": {
                     "name": "x",
-                    "date_of_birth": "2019-12-27",
+                    "date_of_birth": parse_date("2019-12-27"),
                     "address": {
                         "line1": "x",
                         "line2": "x",
@@ -877,18 +878,18 @@ class TestAsyncEntities:
                         "number": "x",
                         "passport": {
                             "file_id": "string",
-                            "expiration_date": "2019-12-27",
+                            "expiration_date": parse_date("2019-12-27"),
                             "country": "x",
                         },
                         "drivers_license": {
                             "file_id": "string",
-                            "expiration_date": "2019-12-27",
+                            "expiration_date": parse_date("2019-12-27"),
                             "state": "x",
                         },
                         "other": {
                             "country": "x",
                             "description": "x",
-                            "expiration_date": "2019-12-27",
+                            "expiration_date": parse_date("2019-12-27"),
                             "file_id": "string",
                         },
                     },

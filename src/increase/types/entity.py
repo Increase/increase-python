@@ -1,6 +1,7 @@
 # File generated from our OpenAPI spec by Stainless.
 
 from typing import List, Optional
+from datetime import date
 from typing_extensions import Literal
 
 from .._models import BaseModel
@@ -90,7 +91,7 @@ class CorporationBeneficialOwnerIndividual(BaseModel):
     address: CorporationBeneficialOwnerIndividualAddress
     """The person's address."""
 
-    date_of_birth: str
+    date_of_birth: date
     """The person's date of birth in YYYY-MM-DD format."""
 
     identification: CorporationBeneficialOwnerIndividualIdentification
@@ -174,7 +175,7 @@ class NaturalPerson(BaseModel):
     address: NaturalPersonAddress
     """The person's address."""
 
-    date_of_birth: str
+    date_of_birth: date
     """The person's date of birth in YYYY-MM-DD format."""
 
     identification: NaturalPersonIdentification
@@ -221,7 +222,7 @@ class JointIndividual(BaseModel):
     address: JointIndividualAddress
     """The person's address."""
 
-    date_of_birth: str
+    date_of_birth: date
     """The person's date of birth in YYYY-MM-DD format."""
 
     identification: JointIndividualIdentification
@@ -296,7 +297,7 @@ class TrustTrusteeIndividual(BaseModel):
     address: TrustTrusteeIndividualAddress
     """The person's address."""
 
-    date_of_birth: str
+    date_of_birth: date
     """The person's date of birth in YYYY-MM-DD format."""
 
     identification: TrustTrusteeIndividualIdentification
@@ -354,7 +355,7 @@ class TrustGrantor(BaseModel):
     address: TrustGrantorAddress
     """The person's address."""
 
-    date_of_birth: str
+    date_of_birth: date
     """The person's date of birth in YYYY-MM-DD format."""
 
     identification: TrustGrantorIdentification

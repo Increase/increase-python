@@ -1,5 +1,6 @@
 # File generated from our OpenAPI spec by Stainless.
 
+from datetime import datetime
 from typing_extensions import Literal
 
 from .._models import BaseModel
@@ -11,7 +12,7 @@ class AccountStatement(BaseModel):
     account_id: str
     """The identifier for the Account this Account Statement belongs to."""
 
-    created_at: str
+    created_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
     Statement was created.
@@ -29,13 +30,13 @@ class AccountStatement(BaseModel):
     starting_balance: int
     """The Account's balance at the start of its statement period."""
 
-    statement_period_end: str
+    statement_period_end: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time representing the end
     of the period the Account Statement covers.
     """
 
-    statement_period_start: str
+    statement_period_start: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time representing the
     start of the period the Account Statement covers.

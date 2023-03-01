@@ -9,6 +9,7 @@ import pytest
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
 from increase.types import ACHTransfer
+from increase._utils import parse_date, parse_datetime
 from increase.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("API_BASE_URL", "http://127.0.0.1:4010")
@@ -40,7 +41,7 @@ class TestACHTransfers:
             company_discretionary_data="x",
             company_entry_description="x",
             company_name="x",
-            effective_date="2019-12-27",
+            effective_date=parse_date("2019-12-27"),
             external_account_id="string",
             funding="checking",
             individual_id="x",
@@ -72,10 +73,10 @@ class TestACHTransfers:
             account_id="string",
             external_account_id="string",
             created_at={
-                "after": "2019-12-27T18:11:19.117Z",
-                "before": "2019-12-27T18:11:19.117Z",
-                "on_or_after": "2019-12-27T18:11:19.117Z",
-                "on_or_before": "2019-12-27T18:11:19.117Z",
+                "after": parse_datetime("2019-12-27T18:11:19.117Z"),
+                "before": parse_datetime("2019-12-27T18:11:19.117Z"),
+                "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
+                "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
         )
         assert_matches_type(SyncPage[ACHTransfer], ach_transfer, path=["response"])
@@ -120,7 +121,7 @@ class TestAsyncACHTransfers:
             company_discretionary_data="x",
             company_entry_description="x",
             company_name="x",
-            effective_date="2019-12-27",
+            effective_date=parse_date("2019-12-27"),
             external_account_id="string",
             funding="checking",
             individual_id="x",
@@ -152,10 +153,10 @@ class TestAsyncACHTransfers:
             account_id="string",
             external_account_id="string",
             created_at={
-                "after": "2019-12-27T18:11:19.117Z",
-                "before": "2019-12-27T18:11:19.117Z",
-                "on_or_after": "2019-12-27T18:11:19.117Z",
-                "on_or_before": "2019-12-27T18:11:19.117Z",
+                "after": parse_datetime("2019-12-27T18:11:19.117Z"),
+                "before": parse_datetime("2019-12-27T18:11:19.117Z"),
+                "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
+                "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
         )
         assert_matches_type(AsyncPage[ACHTransfer], ach_transfer, path=["response"])

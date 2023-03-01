@@ -2,10 +2,13 @@
 
 from __future__ import annotations
 
+from typing import Union
+from datetime import date
 from typing_extensions import Literal
 
-from ..types import ACHTransfer, ach_transfer_list_params
+from ..types import ACHTransfer, ach_transfer_list_params, ach_transfer_create_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
@@ -25,7 +28,7 @@ class ACHTransfers(SyncAPIResource):
         company_discretionary_data: str | NotGiven = NOT_GIVEN,
         company_entry_description: str | NotGiven = NOT_GIVEN,
         company_name: str | NotGiven = NOT_GIVEN,
-        effective_date: str | NotGiven = NOT_GIVEN,
+        effective_date: Union[str, date] | NotGiven = NOT_GIVEN,
         external_account_id: str | NotGiven = NOT_GIVEN,
         funding: Literal["checking", "savings"] | NotGiven = NOT_GIVEN,
         individual_id: str | NotGiven = NOT_GIVEN,
@@ -105,25 +108,28 @@ class ACHTransfers(SyncAPIResource):
         """
         return self._post(
             "/ach_transfers",
-            body={
-                "account_id": account_id,
-                "account_number": account_number,
-                "addendum": addendum,
-                "amount": amount,
-                "company_descriptive_date": company_descriptive_date,
-                "company_discretionary_data": company_discretionary_data,
-                "company_entry_description": company_entry_description,
-                "company_name": company_name,
-                "effective_date": effective_date,
-                "external_account_id": external_account_id,
-                "funding": funding,
-                "individual_id": individual_id,
-                "individual_name": individual_name,
-                "require_approval": require_approval,
-                "routing_number": routing_number,
-                "standard_entry_class_code": standard_entry_class_code,
-                "statement_descriptor": statement_descriptor,
-            },
+            body=maybe_transform(
+                {
+                    "account_id": account_id,
+                    "account_number": account_number,
+                    "addendum": addendum,
+                    "amount": amount,
+                    "company_descriptive_date": company_descriptive_date,
+                    "company_discretionary_data": company_discretionary_data,
+                    "company_entry_description": company_entry_description,
+                    "company_name": company_name,
+                    "effective_date": effective_date,
+                    "external_account_id": external_account_id,
+                    "funding": funding,
+                    "individual_id": individual_id,
+                    "individual_name": individual_name,
+                    "require_approval": require_approval,
+                    "routing_number": routing_number,
+                    "standard_entry_class_code": standard_entry_class_code,
+                    "statement_descriptor": statement_descriptor,
+                },
+                ach_transfer_create_params.ACHTransferCreateParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=ACHTransfer,
         )
@@ -185,13 +191,16 @@ class ACHTransfers(SyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
-                query={
-                    "cursor": cursor,
-                    "limit": limit,
-                    "account_id": account_id,
-                    "external_account_id": external_account_id,
-                    "created_at": created_at,
-                },
+                query=maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "limit": limit,
+                        "account_id": account_id,
+                        "external_account_id": external_account_id,
+                        "created_at": created_at,
+                    },
+                    ach_transfer_list_params.ACHTransferListParams,
+                ),
             ),
             model=ACHTransfer,
         )
@@ -243,7 +252,7 @@ class AsyncACHTransfers(AsyncAPIResource):
         company_discretionary_data: str | NotGiven = NOT_GIVEN,
         company_entry_description: str | NotGiven = NOT_GIVEN,
         company_name: str | NotGiven = NOT_GIVEN,
-        effective_date: str | NotGiven = NOT_GIVEN,
+        effective_date: Union[str, date] | NotGiven = NOT_GIVEN,
         external_account_id: str | NotGiven = NOT_GIVEN,
         funding: Literal["checking", "savings"] | NotGiven = NOT_GIVEN,
         individual_id: str | NotGiven = NOT_GIVEN,
@@ -323,25 +332,28 @@ class AsyncACHTransfers(AsyncAPIResource):
         """
         return await self._post(
             "/ach_transfers",
-            body={
-                "account_id": account_id,
-                "account_number": account_number,
-                "addendum": addendum,
-                "amount": amount,
-                "company_descriptive_date": company_descriptive_date,
-                "company_discretionary_data": company_discretionary_data,
-                "company_entry_description": company_entry_description,
-                "company_name": company_name,
-                "effective_date": effective_date,
-                "external_account_id": external_account_id,
-                "funding": funding,
-                "individual_id": individual_id,
-                "individual_name": individual_name,
-                "require_approval": require_approval,
-                "routing_number": routing_number,
-                "standard_entry_class_code": standard_entry_class_code,
-                "statement_descriptor": statement_descriptor,
-            },
+            body=maybe_transform(
+                {
+                    "account_id": account_id,
+                    "account_number": account_number,
+                    "addendum": addendum,
+                    "amount": amount,
+                    "company_descriptive_date": company_descriptive_date,
+                    "company_discretionary_data": company_discretionary_data,
+                    "company_entry_description": company_entry_description,
+                    "company_name": company_name,
+                    "effective_date": effective_date,
+                    "external_account_id": external_account_id,
+                    "funding": funding,
+                    "individual_id": individual_id,
+                    "individual_name": individual_name,
+                    "require_approval": require_approval,
+                    "routing_number": routing_number,
+                    "standard_entry_class_code": standard_entry_class_code,
+                    "statement_descriptor": statement_descriptor,
+                },
+                ach_transfer_create_params.ACHTransferCreateParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=ACHTransfer,
         )
@@ -403,13 +415,16 @@ class AsyncACHTransfers(AsyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
-                query={
-                    "cursor": cursor,
-                    "limit": limit,
-                    "account_id": account_id,
-                    "external_account_id": external_account_id,
-                    "created_at": created_at,
-                },
+                query=maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "limit": limit,
+                        "account_id": account_id,
+                        "external_account_id": external_account_id,
+                        "created_at": created_at,
+                    },
+                    ach_transfer_list_params.ACHTransferListParams,
+                ),
             ),
             model=ACHTransfer,
         )

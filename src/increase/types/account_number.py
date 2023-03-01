@@ -1,5 +1,6 @@
 # File generated from our OpenAPI spec by Stainless.
 
+from datetime import datetime
 from typing_extensions import Literal
 
 from .._models import BaseModel
@@ -14,7 +15,7 @@ class AccountNumber(BaseModel):
     account_number: str
     """The account number."""
 
-    created_at: str
+    created_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
     Number was created.

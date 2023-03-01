@@ -1,6 +1,7 @@
 # File generated from our OpenAPI spec by Stainless.
 
 from typing import Optional
+from datetime import datetime
 from typing_extensions import Literal
 
 from .._models import BaseModel
@@ -12,7 +13,7 @@ class Document(BaseModel):
     category: Literal["form_1099_int"]
     """The type of document."""
 
-    created_at: str
+    created_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the
     Document was created.

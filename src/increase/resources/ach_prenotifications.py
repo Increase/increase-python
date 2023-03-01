@@ -2,10 +2,17 @@
 
 from __future__ import annotations
 
+from typing import Union
+from datetime import date
 from typing_extensions import Literal
 
-from ..types import ACHPrenotification, ach_prenotification_list_params
+from ..types import (
+    ACHPrenotification,
+    ach_prenotification_list_params,
+    ach_prenotification_create_params,
+)
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
@@ -24,7 +31,7 @@ class ACHPrenotifications(SyncAPIResource):
         company_entry_description: str | NotGiven = NOT_GIVEN,
         company_name: str | NotGiven = NOT_GIVEN,
         credit_debit_indicator: Literal["credit", "debit"] | NotGiven = NOT_GIVEN,
-        effective_date: str | NotGiven = NOT_GIVEN,
+        effective_date: Union[str, date] | NotGiven = NOT_GIVEN,
         individual_id: str | NotGiven = NOT_GIVEN,
         individual_name: str | NotGiven = NOT_GIVEN,
         routing_number: str,
@@ -77,20 +84,23 @@ class ACHPrenotifications(SyncAPIResource):
         """
         return self._post(
             "/ach_prenotifications",
-            body={
-                "account_number": account_number,
-                "addendum": addendum,
-                "company_descriptive_date": company_descriptive_date,
-                "company_discretionary_data": company_discretionary_data,
-                "company_entry_description": company_entry_description,
-                "company_name": company_name,
-                "credit_debit_indicator": credit_debit_indicator,
-                "effective_date": effective_date,
-                "individual_id": individual_id,
-                "individual_name": individual_name,
-                "routing_number": routing_number,
-                "standard_entry_class_code": standard_entry_class_code,
-            },
+            body=maybe_transform(
+                {
+                    "account_number": account_number,
+                    "addendum": addendum,
+                    "company_descriptive_date": company_descriptive_date,
+                    "company_discretionary_data": company_discretionary_data,
+                    "company_entry_description": company_entry_description,
+                    "company_name": company_name,
+                    "credit_debit_indicator": credit_debit_indicator,
+                    "effective_date": effective_date,
+                    "individual_id": individual_id,
+                    "individual_name": individual_name,
+                    "routing_number": routing_number,
+                    "standard_entry_class_code": standard_entry_class_code,
+                },
+                ach_prenotification_create_params.ACHPrenotificationCreateParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=ACHPrenotification,
         )
@@ -146,11 +156,14 @@ class ACHPrenotifications(SyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
-                query={
-                    "cursor": cursor,
-                    "limit": limit,
-                    "created_at": created_at,
-                },
+                query=maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "limit": limit,
+                        "created_at": created_at,
+                    },
+                    ach_prenotification_list_params.ACHPrenotificationListParams,
+                ),
             ),
             model=ACHPrenotification,
         )
@@ -167,7 +180,7 @@ class AsyncACHPrenotifications(AsyncAPIResource):
         company_entry_description: str | NotGiven = NOT_GIVEN,
         company_name: str | NotGiven = NOT_GIVEN,
         credit_debit_indicator: Literal["credit", "debit"] | NotGiven = NOT_GIVEN,
-        effective_date: str | NotGiven = NOT_GIVEN,
+        effective_date: Union[str, date] | NotGiven = NOT_GIVEN,
         individual_id: str | NotGiven = NOT_GIVEN,
         individual_name: str | NotGiven = NOT_GIVEN,
         routing_number: str,
@@ -220,20 +233,23 @@ class AsyncACHPrenotifications(AsyncAPIResource):
         """
         return await self._post(
             "/ach_prenotifications",
-            body={
-                "account_number": account_number,
-                "addendum": addendum,
-                "company_descriptive_date": company_descriptive_date,
-                "company_discretionary_data": company_discretionary_data,
-                "company_entry_description": company_entry_description,
-                "company_name": company_name,
-                "credit_debit_indicator": credit_debit_indicator,
-                "effective_date": effective_date,
-                "individual_id": individual_id,
-                "individual_name": individual_name,
-                "routing_number": routing_number,
-                "standard_entry_class_code": standard_entry_class_code,
-            },
+            body=maybe_transform(
+                {
+                    "account_number": account_number,
+                    "addendum": addendum,
+                    "company_descriptive_date": company_descriptive_date,
+                    "company_discretionary_data": company_discretionary_data,
+                    "company_entry_description": company_entry_description,
+                    "company_name": company_name,
+                    "credit_debit_indicator": credit_debit_indicator,
+                    "effective_date": effective_date,
+                    "individual_id": individual_id,
+                    "individual_name": individual_name,
+                    "routing_number": routing_number,
+                    "standard_entry_class_code": standard_entry_class_code,
+                },
+                ach_prenotification_create_params.ACHPrenotificationCreateParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=ACHPrenotification,
         )
@@ -289,11 +305,14 @@ class AsyncACHPrenotifications(AsyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
-                query={
-                    "cursor": cursor,
-                    "limit": limit,
-                    "created_at": created_at,
-                },
+                query=maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "limit": limit,
+                        "created_at": created_at,
+                    },
+                    ach_prenotification_list_params.ACHPrenotificationListParams,
+                ),
             ),
             model=ACHPrenotification,
         )

@@ -5,8 +5,9 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, List
 from typing_extensions import Literal
 
-from ...types import Entity, entity_create_params
+from ...types import Entity, entity_list_params, entity_create_params
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._utils import maybe_transform
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ...pagination import SyncPage, AsyncPage
 from ..._base_client import AsyncPaginator, make_request_options
@@ -76,16 +77,19 @@ class Entities(SyncAPIResource):
         """
         return self._post(
             "/entities",
-            body={
-                "structure": structure,
-                "corporation": corporation,
-                "natural_person": natural_person,
-                "joint": joint,
-                "trust": trust,
-                "description": description,
-                "relationship": relationship,
-                "supplemental_documents": supplemental_documents,
-            },
+            body=maybe_transform(
+                {
+                    "structure": structure,
+                    "corporation": corporation,
+                    "natural_person": natural_person,
+                    "joint": joint,
+                    "trust": trust,
+                    "description": description,
+                    "relationship": relationship,
+                    "supplemental_documents": supplemental_documents,
+                },
+                entity_create_params.EntityCreateParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=Entity,
         )
@@ -140,10 +144,13 @@ class Entities(SyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
-                query={
-                    "cursor": cursor,
-                    "limit": limit,
-                },
+                query=maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "limit": limit,
+                    },
+                    entity_list_params.EntityListParams,
+                ),
             ),
             model=Entity,
         )
@@ -207,16 +214,19 @@ class AsyncEntities(AsyncAPIResource):
         """
         return await self._post(
             "/entities",
-            body={
-                "structure": structure,
-                "corporation": corporation,
-                "natural_person": natural_person,
-                "joint": joint,
-                "trust": trust,
-                "description": description,
-                "relationship": relationship,
-                "supplemental_documents": supplemental_documents,
-            },
+            body=maybe_transform(
+                {
+                    "structure": structure,
+                    "corporation": corporation,
+                    "natural_person": natural_person,
+                    "joint": joint,
+                    "trust": trust,
+                    "description": description,
+                    "relationship": relationship,
+                    "supplemental_documents": supplemental_documents,
+                },
+                entity_create_params.EntityCreateParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=Entity,
         )
@@ -271,10 +281,13 @@ class AsyncEntities(AsyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
-                query={
-                    "cursor": cursor,
-                    "limit": limit,
-                },
+                query=maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "limit": limit,
+                    },
+                    entity_list_params.EntityListParams,
+                ),
             ),
             model=Entity,
         )

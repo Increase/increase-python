@@ -1,6 +1,7 @@
 # File generated from our OpenAPI spec by Stainless.
 
 from typing import Optional
+from datetime import datetime
 from typing_extensions import Literal
 
 from .._models import BaseModel
@@ -46,7 +47,7 @@ class DigitalWallets(BaseModel):
 
 
 class CardProfile(BaseModel):
-    created_at: str
+    created_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the Card Dispute was created.

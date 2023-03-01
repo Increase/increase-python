@@ -4,8 +4,14 @@ from __future__ import annotations
 
 from typing_extensions import Literal
 
-from ..types import Account
+from ..types import (
+    Account,
+    account_list_params,
+    account_create_params,
+    account_update_params,
+)
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
@@ -45,11 +51,14 @@ class Accounts(SyncAPIResource):
         """
         return self._post(
             "/accounts",
-            body={
-                "entity_id": entity_id,
-                "informational_entity_id": informational_entity_id,
-                "name": name,
-            },
+            body=maybe_transform(
+                {
+                    "entity_id": entity_id,
+                    "informational_entity_id": informational_entity_id,
+                    "name": name,
+                },
+                account_create_params.AccountCreateParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=Account,
         )
@@ -96,7 +105,7 @@ class Accounts(SyncAPIResource):
         """
         return self._patch(
             f"/accounts/{account_id}",
-            body={"name": name},
+            body=maybe_transform({"name": name}, account_update_params.AccountUpdateParams),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=Account,
         )
@@ -140,12 +149,15 @@ class Accounts(SyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
-                query={
-                    "cursor": cursor,
-                    "limit": limit,
-                    "entity_id": entity_id,
-                    "status": status,
-                },
+                query=maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "limit": limit,
+                        "entity_id": entity_id,
+                        "status": status,
+                    },
+                    account_list_params.AccountListParams,
+                ),
             ),
             model=Account,
         )
@@ -200,11 +212,14 @@ class AsyncAccounts(AsyncAPIResource):
         """
         return await self._post(
             "/accounts",
-            body={
-                "entity_id": entity_id,
-                "informational_entity_id": informational_entity_id,
-                "name": name,
-            },
+            body=maybe_transform(
+                {
+                    "entity_id": entity_id,
+                    "informational_entity_id": informational_entity_id,
+                    "name": name,
+                },
+                account_create_params.AccountCreateParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=Account,
         )
@@ -251,7 +266,7 @@ class AsyncAccounts(AsyncAPIResource):
         """
         return await self._patch(
             f"/accounts/{account_id}",
-            body={"name": name},
+            body=maybe_transform({"name": name}, account_update_params.AccountUpdateParams),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=Account,
         )
@@ -295,12 +310,15 @@ class AsyncAccounts(AsyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
-                query={
-                    "cursor": cursor,
-                    "limit": limit,
-                    "entity_id": entity_id,
-                    "status": status,
-                },
+                query=maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "limit": limit,
+                        "entity_id": entity_id,
+                        "status": status,
+                    },
+                    account_list_params.AccountListParams,
+                ),
             ),
             model=Account,
         )

@@ -1,5 +1,6 @@
 # File generated from our OpenAPI spec by Stainless.
 
+from datetime import datetime
 from typing_extensions import Literal
 
 from .._models import BaseModel
@@ -8,7 +9,7 @@ __all__ = ["OauthConnection"]
 
 
 class OauthConnection(BaseModel):
-    created_at: str
+    created_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth
     Connection was created.

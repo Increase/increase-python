@@ -4,8 +4,10 @@ from __future__ import annotations
 
 from ...types import InboundWireDrawdownRequest
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._utils import maybe_transform
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._base_client import make_request_options
+from ...types.simulations import inbound_wire_drawdown_request_create_params
 
 __all__ = ["InboundWireDrawdownRequests", "AsyncInboundWireDrawdownRequests"]
 
@@ -99,28 +101,31 @@ class InboundWireDrawdownRequests(SyncAPIResource):
         """
         return self._post(
             "/simulations/inbound_wire_drawdown_requests",
-            body={
-                "recipient_account_number_id": recipient_account_number_id,
-                "originator_account_number": originator_account_number,
-                "originator_routing_number": originator_routing_number,
-                "beneficiary_account_number": beneficiary_account_number,
-                "beneficiary_routing_number": beneficiary_routing_number,
-                "amount": amount,
-                "currency": currency,
-                "message_to_recipient": message_to_recipient,
-                "originator_to_beneficiary_information_line1": originator_to_beneficiary_information_line1,
-                "originator_to_beneficiary_information_line2": originator_to_beneficiary_information_line2,
-                "originator_to_beneficiary_information_line3": originator_to_beneficiary_information_line3,
-                "originator_to_beneficiary_information_line4": originator_to_beneficiary_information_line4,
-                "originator_name": originator_name,
-                "originator_address_line1": originator_address_line1,
-                "originator_address_line2": originator_address_line2,
-                "originator_address_line3": originator_address_line3,
-                "beneficiary_name": beneficiary_name,
-                "beneficiary_address_line1": beneficiary_address_line1,
-                "beneficiary_address_line2": beneficiary_address_line2,
-                "beneficiary_address_line3": beneficiary_address_line3,
-            },
+            body=maybe_transform(
+                {
+                    "recipient_account_number_id": recipient_account_number_id,
+                    "originator_account_number": originator_account_number,
+                    "originator_routing_number": originator_routing_number,
+                    "beneficiary_account_number": beneficiary_account_number,
+                    "beneficiary_routing_number": beneficiary_routing_number,
+                    "amount": amount,
+                    "currency": currency,
+                    "message_to_recipient": message_to_recipient,
+                    "originator_to_beneficiary_information_line1": originator_to_beneficiary_information_line1,
+                    "originator_to_beneficiary_information_line2": originator_to_beneficiary_information_line2,
+                    "originator_to_beneficiary_information_line3": originator_to_beneficiary_information_line3,
+                    "originator_to_beneficiary_information_line4": originator_to_beneficiary_information_line4,
+                    "originator_name": originator_name,
+                    "originator_address_line1": originator_address_line1,
+                    "originator_address_line2": originator_address_line2,
+                    "originator_address_line3": originator_address_line3,
+                    "beneficiary_name": beneficiary_name,
+                    "beneficiary_address_line1": beneficiary_address_line1,
+                    "beneficiary_address_line2": beneficiary_address_line2,
+                    "beneficiary_address_line3": beneficiary_address_line3,
+                },
+                inbound_wire_drawdown_request_create_params.InboundWireDrawdownRequestCreateParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=InboundWireDrawdownRequest,
         )
@@ -215,28 +220,31 @@ class AsyncInboundWireDrawdownRequests(AsyncAPIResource):
         """
         return await self._post(
             "/simulations/inbound_wire_drawdown_requests",
-            body={
-                "recipient_account_number_id": recipient_account_number_id,
-                "originator_account_number": originator_account_number,
-                "originator_routing_number": originator_routing_number,
-                "beneficiary_account_number": beneficiary_account_number,
-                "beneficiary_routing_number": beneficiary_routing_number,
-                "amount": amount,
-                "currency": currency,
-                "message_to_recipient": message_to_recipient,
-                "originator_to_beneficiary_information_line1": originator_to_beneficiary_information_line1,
-                "originator_to_beneficiary_information_line2": originator_to_beneficiary_information_line2,
-                "originator_to_beneficiary_information_line3": originator_to_beneficiary_information_line3,
-                "originator_to_beneficiary_information_line4": originator_to_beneficiary_information_line4,
-                "originator_name": originator_name,
-                "originator_address_line1": originator_address_line1,
-                "originator_address_line2": originator_address_line2,
-                "originator_address_line3": originator_address_line3,
-                "beneficiary_name": beneficiary_name,
-                "beneficiary_address_line1": beneficiary_address_line1,
-                "beneficiary_address_line2": beneficiary_address_line2,
-                "beneficiary_address_line3": beneficiary_address_line3,
-            },
+            body=maybe_transform(
+                {
+                    "recipient_account_number_id": recipient_account_number_id,
+                    "originator_account_number": originator_account_number,
+                    "originator_routing_number": originator_routing_number,
+                    "beneficiary_account_number": beneficiary_account_number,
+                    "beneficiary_routing_number": beneficiary_routing_number,
+                    "amount": amount,
+                    "currency": currency,
+                    "message_to_recipient": message_to_recipient,
+                    "originator_to_beneficiary_information_line1": originator_to_beneficiary_information_line1,
+                    "originator_to_beneficiary_information_line2": originator_to_beneficiary_information_line2,
+                    "originator_to_beneficiary_information_line3": originator_to_beneficiary_information_line3,
+                    "originator_to_beneficiary_information_line4": originator_to_beneficiary_information_line4,
+                    "originator_name": originator_name,
+                    "originator_address_line1": originator_address_line1,
+                    "originator_address_line2": originator_address_line2,
+                    "originator_address_line3": originator_address_line3,
+                    "beneficiary_name": beneficiary_name,
+                    "beneficiary_address_line1": beneficiary_address_line1,
+                    "beneficiary_address_line2": beneficiary_address_line2,
+                    "beneficiary_address_line3": beneficiary_address_line3,
+                },
+                inbound_wire_drawdown_request_create_params.InboundWireDrawdownRequestCreateParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=InboundWireDrawdownRequest,
         )

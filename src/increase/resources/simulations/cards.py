@@ -4,9 +4,14 @@ from __future__ import annotations
 
 from ...types import Transaction
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._utils import maybe_transform
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._base_client import make_request_options
-from ...types.simulations import CardAuthorizationSimulation
+from ...types.simulations import (
+    CardAuthorizationSimulation,
+    card_authorize_params,
+    card_settlement_params,
+)
 
 __all__ = ["Cards", "AsyncCards"]
 
@@ -49,11 +54,14 @@ class Cards(SyncAPIResource):
         """
         return self._post(
             "/simulations/card_authorizations",
-            body={
-                "amount": amount,
-                "card_id": card_id,
-                "digital_wallet_token_id": digital_wallet_token_id,
-            },
+            body=maybe_transform(
+                {
+                    "amount": amount,
+                    "card_id": card_id,
+                    "digital_wallet_token_id": digital_wallet_token_id,
+                },
+                card_authorize_params.CardAuthorizeParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=CardAuthorizationSimulation,
         )
@@ -95,11 +103,14 @@ class Cards(SyncAPIResource):
         """
         return self._post(
             "/simulations/card_settlements",
-            body={
-                "card_id": card_id,
-                "pending_transaction_id": pending_transaction_id,
-                "amount": amount,
-            },
+            body=maybe_transform(
+                {
+                    "card_id": card_id,
+                    "pending_transaction_id": pending_transaction_id,
+                    "amount": amount,
+                },
+                card_settlement_params.CardSettlementParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=Transaction,
         )
@@ -143,11 +154,14 @@ class AsyncCards(AsyncAPIResource):
         """
         return await self._post(
             "/simulations/card_authorizations",
-            body={
-                "amount": amount,
-                "card_id": card_id,
-                "digital_wallet_token_id": digital_wallet_token_id,
-            },
+            body=maybe_transform(
+                {
+                    "amount": amount,
+                    "card_id": card_id,
+                    "digital_wallet_token_id": digital_wallet_token_id,
+                },
+                card_authorize_params.CardAuthorizeParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=CardAuthorizationSimulation,
         )
@@ -189,11 +203,14 @@ class AsyncCards(AsyncAPIResource):
         """
         return await self._post(
             "/simulations/card_settlements",
-            body={
-                "card_id": card_id,
-                "pending_transaction_id": pending_transaction_id,
-                "amount": amount,
-            },
+            body=maybe_transform(
+                {
+                    "card_id": card_id,
+                    "pending_transaction_id": pending_transaction_id,
+                    "amount": amount,
+                },
+                card_settlement_params.CardSettlementParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=Transaction,
         )

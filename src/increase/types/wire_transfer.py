@@ -1,6 +1,7 @@
 # File generated from our OpenAPI spec by Stainless.
 
 from typing import Optional
+from datetime import date, datetime
 from typing_extensions import Literal
 
 from .._models import BaseModel
@@ -9,7 +10,7 @@ __all__ = ["WireTransfer", "Approval", "Cancellation", "Reversal", "Submission"]
 
 
 class Approval(BaseModel):
-    approved_at: str
+    approved_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the transfer was approved.
@@ -17,7 +18,7 @@ class Approval(BaseModel):
 
 
 class Cancellation(BaseModel):
-    canceled_at: str
+    canceled_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the Transfer was canceled.
@@ -34,7 +35,7 @@ class Reversal(BaseModel):
     financial_institution_to_financial_institution_information: Optional[str]
     """Additional financial institution information included in the wire reversal."""
 
-    input_cycle_date: str
+    input_cycle_date: date
     """The Fedwire cycle date for the wire reversal."""
 
     input_message_accountability_data: str
@@ -46,7 +47,7 @@ class Reversal(BaseModel):
     input_source: str
     """The Fedwire input source identifier."""
 
-    previous_message_input_cycle_date: str
+    previous_message_input_cycle_date: date
     """The Fedwire cycle date for the wire transfer that was reversed."""
 
     previous_message_input_message_accountability_data: str
@@ -69,7 +70,7 @@ class Submission(BaseModel):
     input_message_accountability_data: str
     """The accountability data for the submission."""
 
-    submitted_at: str
+    submitted_at: datetime
     """When this wire transfer was submitted to Fedwire."""
 
 
@@ -107,7 +108,7 @@ class WireTransfer(BaseModel):
     approved, this will contain details of the cancellation.
     """
 
-    created_at: str
+    created_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the transfer was created.

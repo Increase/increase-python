@@ -2,8 +2,13 @@
 
 from __future__ import annotations
 
-from ..types import AccountTransfer, account_transfer_list_params
+from ..types import (
+    AccountTransfer,
+    account_transfer_list_params,
+    account_transfer_create_params,
+)
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
@@ -49,13 +54,16 @@ class AccountTransfers(SyncAPIResource):
         """
         return self._post(
             "/account_transfers",
-            body={
-                "account_id": account_id,
-                "amount": amount,
-                "description": description,
-                "destination_account_id": destination_account_id,
-                "require_approval": require_approval,
-            },
+            body=maybe_transform(
+                {
+                    "account_id": account_id,
+                    "amount": amount,
+                    "description": description,
+                    "destination_account_id": destination_account_id,
+                    "require_approval": require_approval,
+                },
+                account_transfer_create_params.AccountTransferCreateParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=AccountTransfer,
         )
@@ -114,12 +122,15 @@ class AccountTransfers(SyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
-                query={
-                    "cursor": cursor,
-                    "limit": limit,
-                    "account_id": account_id,
-                    "created_at": created_at,
-                },
+                query=maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "limit": limit,
+                        "account_id": account_id,
+                        "created_at": created_at,
+                    },
+                    account_transfer_list_params.AccountTransferListParams,
+                ),
             ),
             model=AccountTransfer,
         )
@@ -197,13 +208,16 @@ class AsyncAccountTransfers(AsyncAPIResource):
         """
         return await self._post(
             "/account_transfers",
-            body={
-                "account_id": account_id,
-                "amount": amount,
-                "description": description,
-                "destination_account_id": destination_account_id,
-                "require_approval": require_approval,
-            },
+            body=maybe_transform(
+                {
+                    "account_id": account_id,
+                    "amount": amount,
+                    "description": description,
+                    "destination_account_id": destination_account_id,
+                    "require_approval": require_approval,
+                },
+                account_transfer_create_params.AccountTransferCreateParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=AccountTransfer,
         )
@@ -262,12 +276,15 @@ class AsyncAccountTransfers(AsyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
-                query={
-                    "cursor": cursor,
-                    "limit": limit,
-                    "account_id": account_id,
-                    "created_at": created_at,
-                },
+                query=maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "limit": limit,
+                        "account_id": account_id,
+                        "created_at": created_at,
+                    },
+                    account_transfer_list_params.AccountTransferListParams,
+                ),
             ),
             model=AccountTransfer,
         )

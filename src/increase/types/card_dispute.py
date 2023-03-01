@@ -1,6 +1,7 @@
 # File generated from our OpenAPI spec by Stainless.
 
 from typing import Optional
+from datetime import datetime
 from typing_extensions import Literal
 
 from .._models import BaseModel
@@ -9,7 +10,7 @@ __all__ = ["CardDispute", "Acceptance", "Rejection"]
 
 
 class Acceptance(BaseModel):
-    accepted_at: str
+    accepted_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the Card Dispute was accepted.
@@ -32,7 +33,7 @@ class Rejection(BaseModel):
     explanation: str
     """Why the Card Dispute was rejected."""
 
-    rejected_at: str
+    rejected_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the Card Dispute was rejected.
@@ -46,7 +47,7 @@ class CardDispute(BaseModel):
     successful dispute.
     """
 
-    created_at: str
+    created_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the Card Dispute was created.

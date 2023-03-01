@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from ..types import DeclinedTransaction, declined_transaction_list_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
@@ -69,13 +70,16 @@ class DeclinedTransactions(SyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
-                query={
-                    "cursor": cursor,
-                    "limit": limit,
-                    "account_id": account_id,
-                    "route_id": route_id,
-                    "created_at": created_at,
-                },
+                query=maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "limit": limit,
+                        "account_id": account_id,
+                        "route_id": route_id,
+                        "created_at": created_at,
+                    },
+                    declined_transaction_list_params.DeclinedTransactionListParams,
+                ),
             ),
             model=DeclinedTransaction,
         )
@@ -139,13 +143,16 @@ class AsyncDeclinedTransactions(AsyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
-                query={
-                    "cursor": cursor,
-                    "limit": limit,
-                    "account_id": account_id,
-                    "route_id": route_id,
-                    "created_at": created_at,
-                },
+                query=maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "limit": limit,
+                        "account_id": account_id,
+                        "route_id": route_id,
+                        "created_at": created_at,
+                    },
+                    declined_transaction_list_params.DeclinedTransactionListParams,
+                ),
             ),
             model=DeclinedTransaction,
         )

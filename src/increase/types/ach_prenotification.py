@@ -1,6 +1,7 @@
 # File generated from our OpenAPI spec by Stainless.
 
 from typing import Optional
+from datetime import datetime
 from typing_extensions import Literal
 
 from .._models import BaseModel
@@ -9,7 +10,7 @@ __all__ = ["ACHPrenotification", "PrenotificationReturn"]
 
 
 class PrenotificationReturn(BaseModel):
-    created_at: str
+    created_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the Prenotification was returned.
@@ -38,7 +39,7 @@ class ACHPrenotification(BaseModel):
     company_name: Optional[str]
     """The name by which you know the company."""
 
-    created_at: str
+    created_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the prenotification was created.
@@ -47,7 +48,7 @@ class ACHPrenotification(BaseModel):
     credit_debit_indicator: Optional[Literal["credit", "debit"]]
     """If the notification is for a future credit or debit."""
 
-    effective_date: Optional[str]
+    effective_date: Optional[datetime]
     """
     The effective date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
     """

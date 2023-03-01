@@ -6,9 +6,14 @@ from typing_extensions import Literal
 
 from ...types import ACHTransfer
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._utils import maybe_transform
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._base_client import make_request_options
-from ...types.simulations import ACHTransferSimulation
+from ...types.simulations import (
+    ACHTransferSimulation,
+    ach_transfer_return_params,
+    ach_transfer_create_inbound_params,
+)
 
 __all__ = ["ACHTransfers", "AsyncACHTransfers"]
 
@@ -64,15 +69,18 @@ class ACHTransfers(SyncAPIResource):
         """
         return self._post(
             "/simulations/inbound_ach_transfers",
-            body={
-                "account_number_id": account_number_id,
-                "amount": amount,
-                "company_descriptive_date": company_descriptive_date,
-                "company_discretionary_data": company_discretionary_data,
-                "company_entry_description": company_entry_description,
-                "company_name": company_name,
-                "company_id": company_id,
-            },
+            body=maybe_transform(
+                {
+                    "account_number_id": account_number_id,
+                    "amount": amount,
+                    "company_descriptive_date": company_descriptive_date,
+                    "company_discretionary_data": company_discretionary_data,
+                    "company_entry_description": company_entry_description,
+                    "company_name": company_name,
+                    "company_id": company_id,
+                },
+                ach_transfer_create_inbound_params.ACHTransferCreateInboundParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=ACHTransferSimulation,
         )
@@ -130,7 +138,7 @@ class ACHTransfers(SyncAPIResource):
         """
         return self._post(
             f"/simulations/ach_transfers/{ach_transfer_id}/return",
-            body={"reason": reason},
+            body=maybe_transform({"reason": reason}, ach_transfer_return_params.ACHTransferReturnParams),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=ACHTransfer,
         )
@@ -211,15 +219,18 @@ class AsyncACHTransfers(AsyncAPIResource):
         """
         return await self._post(
             "/simulations/inbound_ach_transfers",
-            body={
-                "account_number_id": account_number_id,
-                "amount": amount,
-                "company_descriptive_date": company_descriptive_date,
-                "company_discretionary_data": company_discretionary_data,
-                "company_entry_description": company_entry_description,
-                "company_name": company_name,
-                "company_id": company_id,
-            },
+            body=maybe_transform(
+                {
+                    "account_number_id": account_number_id,
+                    "amount": amount,
+                    "company_descriptive_date": company_descriptive_date,
+                    "company_discretionary_data": company_discretionary_data,
+                    "company_entry_description": company_entry_description,
+                    "company_name": company_name,
+                    "company_id": company_id,
+                },
+                ach_transfer_create_inbound_params.ACHTransferCreateInboundParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=ACHTransferSimulation,
         )
@@ -277,7 +288,7 @@ class AsyncACHTransfers(AsyncAPIResource):
         """
         return await self._post(
             f"/simulations/ach_transfers/{ach_transfer_id}/return",
-            body={"reason": reason},
+            body=maybe_transform({"reason": reason}, ach_transfer_return_params.ACHTransferReturnParams),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=ACHTransfer,
         )

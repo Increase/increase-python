@@ -2,8 +2,11 @@
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import Literal, Required, TypedDict
+from typing import List, Union
+from datetime import date
+from typing_extensions import Literal, Required, Annotated, TypedDict
+
+from .._utils import PropertyInfo
 
 __all__ = [
     "EntityCreateParams",
@@ -92,7 +95,7 @@ class CorporationBeneficialOwnerIndividualIdentificationPassport(TypedDict, tota
     country: Required[str]
     """The country that issued the passport."""
 
-    expiration_date: Required[str]
+    expiration_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """The passport's expiration date in YYYY-MM-DD format."""
 
     file_id: Required[str]
@@ -100,7 +103,7 @@ class CorporationBeneficialOwnerIndividualIdentificationPassport(TypedDict, tota
 
 
 class CorporationBeneficialOwnerIndividualIdentificationDriversLicense(TypedDict, total=False):
-    expiration_date: Required[str]
+    expiration_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """The driver's license's expiration date in YYYY-MM-DD format."""
 
     file_id: Required[str]
@@ -123,7 +126,7 @@ class CorporationBeneficialOwnerIndividualIdentificationOther(TypedDict, total=F
     file_id: Required[str]
     """The identifier of the File containing the document."""
 
-    expiration_date: str
+    expiration_date: Annotated[Union[str, date], PropertyInfo(format="iso8601")]
     """The document's expiration date in YYYY-MM-DD format."""
 
 
@@ -168,7 +171,7 @@ class CorporationBeneficialOwnerIndividual(TypedDict, total=False):
     address: Required[CorporationBeneficialOwnerIndividualAddress]
     """The individual's address."""
 
-    date_of_birth: Required[str]
+    date_of_birth: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """The person's date of birth in YYYY-MM-DD format."""
 
     identification: Required[CorporationBeneficialOwnerIndividualIdentification]
@@ -247,7 +250,7 @@ class NaturalPersonIdentificationPassport(TypedDict, total=False):
     country: Required[str]
     """The country that issued the passport."""
 
-    expiration_date: Required[str]
+    expiration_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """The passport's expiration date in YYYY-MM-DD format."""
 
     file_id: Required[str]
@@ -255,7 +258,7 @@ class NaturalPersonIdentificationPassport(TypedDict, total=False):
 
 
 class NaturalPersonIdentificationDriversLicense(TypedDict, total=False):
-    expiration_date: Required[str]
+    expiration_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """The driver's license's expiration date in YYYY-MM-DD format."""
 
     file_id: Required[str]
@@ -278,7 +281,7 @@ class NaturalPersonIdentificationOther(TypedDict, total=False):
     file_id: Required[str]
     """The identifier of the File containing the document."""
 
-    expiration_date: str
+    expiration_date: Annotated[Union[str, date], PropertyInfo(format="iso8601")]
     """The document's expiration date in YYYY-MM-DD format."""
 
 
@@ -323,7 +326,7 @@ class NaturalPerson(TypedDict, total=False):
     address: Required[NaturalPersonAddress]
     """The individual's address."""
 
-    date_of_birth: Required[str]
+    date_of_birth: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """The person's date of birth in YYYY-MM-DD format."""
 
     identification: Required[NaturalPersonIdentification]
@@ -365,7 +368,7 @@ class JointIndividualIdentificationPassport(TypedDict, total=False):
     country: Required[str]
     """The country that issued the passport."""
 
-    expiration_date: Required[str]
+    expiration_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """The passport's expiration date in YYYY-MM-DD format."""
 
     file_id: Required[str]
@@ -373,7 +376,7 @@ class JointIndividualIdentificationPassport(TypedDict, total=False):
 
 
 class JointIndividualIdentificationDriversLicense(TypedDict, total=False):
-    expiration_date: Required[str]
+    expiration_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """The driver's license's expiration date in YYYY-MM-DD format."""
 
     file_id: Required[str]
@@ -396,7 +399,7 @@ class JointIndividualIdentificationOther(TypedDict, total=False):
     file_id: Required[str]
     """The identifier of the File containing the document."""
 
-    expiration_date: str
+    expiration_date: Annotated[Union[str, date], PropertyInfo(format="iso8601")]
     """The document's expiration date in YYYY-MM-DD format."""
 
 
@@ -441,7 +444,7 @@ class JointIndividual(TypedDict, total=False):
     address: Required[JointIndividualAddress]
     """The individual's address."""
 
-    date_of_birth: Required[str]
+    date_of_birth: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """The person's date of birth in YYYY-MM-DD format."""
 
     identification: Required[JointIndividualIdentification]
@@ -511,7 +514,7 @@ class TrustTrusteeIndividualIdentificationPassport(TypedDict, total=False):
     country: Required[str]
     """The country that issued the passport."""
 
-    expiration_date: Required[str]
+    expiration_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """The passport's expiration date in YYYY-MM-DD format."""
 
     file_id: Required[str]
@@ -519,7 +522,7 @@ class TrustTrusteeIndividualIdentificationPassport(TypedDict, total=False):
 
 
 class TrustTrusteeIndividualIdentificationDriversLicense(TypedDict, total=False):
-    expiration_date: Required[str]
+    expiration_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """The driver's license's expiration date in YYYY-MM-DD format."""
 
     file_id: Required[str]
@@ -542,7 +545,7 @@ class TrustTrusteeIndividualIdentificationOther(TypedDict, total=False):
     file_id: Required[str]
     """The identifier of the File containing the document."""
 
-    expiration_date: str
+    expiration_date: Annotated[Union[str, date], PropertyInfo(format="iso8601")]
     """The document's expiration date in YYYY-MM-DD format."""
 
 
@@ -587,7 +590,7 @@ class TrustTrusteeIndividual(TypedDict, total=False):
     address: Required[TrustTrusteeIndividualAddress]
     """The individual's address."""
 
-    date_of_birth: Required[str]
+    date_of_birth: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """The person's date of birth in YYYY-MM-DD format."""
 
     identification: Required[TrustTrusteeIndividualIdentification]
@@ -640,7 +643,7 @@ class TrustGrantorIdentificationPassport(TypedDict, total=False):
     country: Required[str]
     """The country that issued the passport."""
 
-    expiration_date: Required[str]
+    expiration_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """The passport's expiration date in YYYY-MM-DD format."""
 
     file_id: Required[str]
@@ -648,7 +651,7 @@ class TrustGrantorIdentificationPassport(TypedDict, total=False):
 
 
 class TrustGrantorIdentificationDriversLicense(TypedDict, total=False):
-    expiration_date: Required[str]
+    expiration_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """The driver's license's expiration date in YYYY-MM-DD format."""
 
     file_id: Required[str]
@@ -671,7 +674,7 @@ class TrustGrantorIdentificationOther(TypedDict, total=False):
     file_id: Required[str]
     """The identifier of the File containing the document."""
 
-    expiration_date: str
+    expiration_date: Annotated[Union[str, date], PropertyInfo(format="iso8601")]
     """The document's expiration date in YYYY-MM-DD format."""
 
 
@@ -716,7 +719,7 @@ class TrustGrantor(TypedDict, total=False):
     address: Required[TrustGrantorAddress]
     """The individual's address."""
 
-    date_of_birth: Required[str]
+    date_of_birth: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """The person's date of birth in YYYY-MM-DD format."""
 
     identification: Required[TrustGrantorIdentification]

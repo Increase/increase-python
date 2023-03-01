@@ -4,8 +4,10 @@ from __future__ import annotations
 
 from ...types import Transaction
 from ..._types import Body, Query, Headers
+from ..._utils import maybe_transform
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._base_client import make_request_options
+from ...types.simulations import card_refund_create_params
 
 __all__ = ["CardRefunds", "AsyncCardRefunds"]
 
@@ -38,7 +40,7 @@ class CardRefunds(SyncAPIResource):
         """
         return self._post(
             "/simulations/card_refunds",
-            body={"transaction_id": transaction_id},
+            body=maybe_transform({"transaction_id": transaction_id}, card_refund_create_params.CardRefundCreateParams),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=Transaction,
         )
@@ -72,7 +74,7 @@ class AsyncCardRefunds(AsyncAPIResource):
         """
         return await self._post(
             "/simulations/card_refunds",
-            body={"transaction_id": transaction_id},
+            body=maybe_transform({"transaction_id": transaction_id}, card_refund_create_params.CardRefundCreateParams),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=Transaction,
         )
