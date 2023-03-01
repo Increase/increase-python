@@ -4,8 +4,14 @@ from __future__ import annotations
 
 from typing_extensions import Literal
 
-from ..types import ExternalAccount, external_account_list_params
+from ..types import (
+    ExternalAccount,
+    external_account_list_params,
+    external_account_create_params,
+    external_account_update_params,
+)
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
@@ -48,12 +54,15 @@ class ExternalAccounts(SyncAPIResource):
         """
         return self._post(
             "/external_accounts",
-            body={
-                "routing_number": routing_number,
-                "account_number": account_number,
-                "funding": funding,
-                "description": description,
-            },
+            body=maybe_transform(
+                {
+                    "routing_number": routing_number,
+                    "account_number": account_number,
+                    "funding": funding,
+                    "description": description,
+                },
+                external_account_create_params.ExternalAccountCreateParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=ExternalAccount,
         )
@@ -103,10 +112,13 @@ class ExternalAccounts(SyncAPIResource):
         """
         return self._patch(
             f"/external_accounts/{external_account_id}",
-            body={
-                "description": description,
-                "status": status,
-            },
+            body=maybe_transform(
+                {
+                    "description": description,
+                    "status": status,
+                },
+                external_account_update_params.ExternalAccountUpdateParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=ExternalAccount,
         )
@@ -145,11 +157,14 @@ class ExternalAccounts(SyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
-                query={
-                    "cursor": cursor,
-                    "limit": limit,
-                    "status": status,
-                },
+                query=maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "limit": limit,
+                        "status": status,
+                    },
+                    external_account_list_params.ExternalAccountListParams,
+                ),
             ),
             model=ExternalAccount,
         )
@@ -190,12 +205,15 @@ class AsyncExternalAccounts(AsyncAPIResource):
         """
         return await self._post(
             "/external_accounts",
-            body={
-                "routing_number": routing_number,
-                "account_number": account_number,
-                "funding": funding,
-                "description": description,
-            },
+            body=maybe_transform(
+                {
+                    "routing_number": routing_number,
+                    "account_number": account_number,
+                    "funding": funding,
+                    "description": description,
+                },
+                external_account_create_params.ExternalAccountCreateParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=ExternalAccount,
         )
@@ -245,10 +263,13 @@ class AsyncExternalAccounts(AsyncAPIResource):
         """
         return await self._patch(
             f"/external_accounts/{external_account_id}",
-            body={
-                "description": description,
-                "status": status,
-            },
+            body=maybe_transform(
+                {
+                    "description": description,
+                    "status": status,
+                },
+                external_account_update_params.ExternalAccountUpdateParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=ExternalAccount,
         )
@@ -287,11 +308,14 @@ class AsyncExternalAccounts(AsyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
-                query={
-                    "cursor": cursor,
-                    "limit": limit,
-                    "status": status,
-                },
+                query=maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "limit": limit,
+                        "status": status,
+                    },
+                    external_account_list_params.ExternalAccountListParams,
+                ),
             ),
             model=ExternalAccount,
         )

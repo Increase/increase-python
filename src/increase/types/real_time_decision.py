@@ -1,6 +1,7 @@
 # File generated from our OpenAPI spec by Stainless.
 
 from typing import Optional
+from datetime import datetime
 from typing_extensions import Literal
 
 from ..types import shared
@@ -166,7 +167,7 @@ class RealTimeDecision(BaseModel):
     ]
     """The category of the Real-Time Decision."""
 
-    created_at: str
+    created_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the Real-Time Decision was created.
@@ -184,7 +185,7 @@ class RealTimeDecision(BaseModel):
     status: Literal["pending", "responded", "timed_out"]
     """The status of the Real-Time Decision."""
 
-    timeout_at: str
+    timeout_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     your application can no longer respond to the Real-Time Decision.

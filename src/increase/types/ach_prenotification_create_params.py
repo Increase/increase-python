@@ -2,7 +2,11 @@
 
 from __future__ import annotations
 
-from typing_extensions import Literal, Required, TypedDict
+from typing import Union
+from datetime import date
+from typing_extensions import Literal, Required, Annotated, TypedDict
+
+from .._utils import PropertyInfo
 
 __all__ = ["ACHPrenotificationCreateParams"]
 
@@ -35,7 +39,7 @@ class ACHPrenotificationCreateParams(TypedDict, total=False):
     credit_debit_indicator: Literal["credit", "debit"]
     """Whether the Prenotification is for a future debit or credit."""
 
-    effective_date: str
+    effective_date: Annotated[Union[str, date], PropertyInfo(format="iso8601")]
     """
     The transfer effective date in
     [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.

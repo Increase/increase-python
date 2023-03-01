@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from ..types import CardProfile, card_profile_list_params, card_profile_create_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
@@ -40,10 +41,13 @@ class CardProfiles(SyncAPIResource):
         """
         return self._post(
             "/card_profiles",
-            body={
-                "description": description,
-                "digital_wallets": digital_wallets,
-            },
+            body=maybe_transform(
+                {
+                    "description": description,
+                    "digital_wallets": digital_wallets,
+                },
+                card_profile_create_params.CardProfileCreateParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=CardProfile,
         )
@@ -99,11 +103,14 @@ class CardProfiles(SyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
-                query={
-                    "cursor": cursor,
-                    "limit": limit,
-                    "status": status,
-                },
+                query=maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "limit": limit,
+                        "status": status,
+                    },
+                    card_profile_list_params.CardProfileListParams,
+                ),
             ),
             model=CardProfile,
         )
@@ -138,10 +145,13 @@ class AsyncCardProfiles(AsyncAPIResource):
         """
         return await self._post(
             "/card_profiles",
-            body={
-                "description": description,
-                "digital_wallets": digital_wallets,
-            },
+            body=maybe_transform(
+                {
+                    "description": description,
+                    "digital_wallets": digital_wallets,
+                },
+                card_profile_create_params.CardProfileCreateParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=CardProfile,
         )
@@ -197,11 +207,14 @@ class AsyncCardProfiles(AsyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
-                query={
-                    "cursor": cursor,
-                    "limit": limit,
-                    "status": status,
-                },
+                query=maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "limit": limit,
+                        "status": status,
+                    },
+                    card_profile_list_params.CardProfileListParams,
+                ),
             ),
             model=CardProfile,
         )

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from ..types import AccountStatement, account_statement_list_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
@@ -66,12 +67,15 @@ class AccountStatements(SyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
-                query={
-                    "cursor": cursor,
-                    "limit": limit,
-                    "account_id": account_id,
-                    "statement_period_start": statement_period_start,
-                },
+                query=maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "limit": limit,
+                        "account_id": account_id,
+                        "statement_period_start": statement_period_start,
+                    },
+                    account_statement_list_params.AccountStatementListParams,
+                ),
             ),
             model=AccountStatement,
         )
@@ -132,12 +136,15 @@ class AsyncAccountStatements(AsyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
-                query={
-                    "cursor": cursor,
-                    "limit": limit,
-                    "account_id": account_id,
-                    "statement_period_start": statement_period_start,
-                },
+                query=maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "limit": limit,
+                        "account_id": account_id,
+                        "statement_period_start": statement_period_start,
+                    },
+                    account_statement_list_params.AccountStatementListParams,
+                ),
             ),
             model=AccountStatement,
         )

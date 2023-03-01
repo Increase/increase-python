@@ -4,8 +4,10 @@ from __future__ import annotations
 
 from ...types import Entity
 from ..._types import Body, Query, Headers
+from ..._utils import maybe_transform
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._base_client import make_request_options
+from ...types.entities import supplemental_document_create_params
 
 __all__ = ["SupplementalDocuments", "AsyncSupplementalDocuments"]
 
@@ -36,7 +38,9 @@ class SupplementalDocuments(SyncAPIResource):
         """
         return self._post(
             f"/entities/{entity_id}/supplemental_documents",
-            body={"file_id": file_id},
+            body=maybe_transform(
+                {"file_id": file_id}, supplemental_document_create_params.SupplementalDocumentCreateParams
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=Entity,
         )
@@ -68,7 +72,9 @@ class AsyncSupplementalDocuments(AsyncAPIResource):
         """
         return await self._post(
             f"/entities/{entity_id}/supplemental_documents",
-            body={"file_id": file_id},
+            body=maybe_transform(
+                {"file_id": file_id}, supplemental_document_create_params.SupplementalDocumentCreateParams
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=Entity,
         )

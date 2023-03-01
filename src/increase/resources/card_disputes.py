@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 
-from ..types import CardDispute, card_dispute_list_params
+from ..types import CardDispute, card_dispute_list_params, card_dispute_create_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
@@ -40,10 +41,13 @@ class CardDisputes(SyncAPIResource):
         """
         return self._post(
             "/card_disputes",
-            body={
-                "disputed_transaction_id": disputed_transaction_id,
-                "explanation": explanation,
-            },
+            body=maybe_transform(
+                {
+                    "disputed_transaction_id": disputed_transaction_id,
+                    "explanation": explanation,
+                },
+                card_dispute_create_params.CardDisputeCreateParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=CardDispute,
         )
@@ -100,12 +104,15 @@ class CardDisputes(SyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
-                query={
-                    "cursor": cursor,
-                    "limit": limit,
-                    "created_at": created_at,
-                    "status": status,
-                },
+                query=maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "limit": limit,
+                        "created_at": created_at,
+                        "status": status,
+                    },
+                    card_dispute_list_params.CardDisputeListParams,
+                ),
             ),
             model=CardDispute,
         )
@@ -140,10 +147,13 @@ class AsyncCardDisputes(AsyncAPIResource):
         """
         return await self._post(
             "/card_disputes",
-            body={
-                "disputed_transaction_id": disputed_transaction_id,
-                "explanation": explanation,
-            },
+            body=maybe_transform(
+                {
+                    "disputed_transaction_id": disputed_transaction_id,
+                    "explanation": explanation,
+                },
+                card_dispute_create_params.CardDisputeCreateParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=CardDispute,
         )
@@ -200,12 +210,15 @@ class AsyncCardDisputes(AsyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
-                query={
-                    "cursor": cursor,
-                    "limit": limit,
-                    "created_at": created_at,
-                    "status": status,
-                },
+                query=maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "limit": limit,
+                        "created_at": created_at,
+                        "status": status,
+                    },
+                    card_dispute_list_params.CardDisputeListParams,
+                ),
             ),
             model=CardDispute,
         )

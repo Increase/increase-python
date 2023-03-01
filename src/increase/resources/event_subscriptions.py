@@ -4,8 +4,14 @@ from __future__ import annotations
 
 from typing_extensions import Literal
 
-from ..types import EventSubscription
+from ..types import (
+    EventSubscription,
+    event_subscription_list_params,
+    event_subscription_create_params,
+    event_subscription_update_params,
+)
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
@@ -94,11 +100,14 @@ class EventSubscriptions(SyncAPIResource):
         """
         return self._post(
             "/event_subscriptions",
-            body={
-                "url": url,
-                "shared_secret": shared_secret,
-                "selected_event_category": selected_event_category,
-            },
+            body=maybe_transform(
+                {
+                    "url": url,
+                    "shared_secret": shared_secret,
+                    "selected_event_category": selected_event_category,
+                },
+                event_subscription_create_params.EventSubscriptionCreateParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=EventSubscription,
         )
@@ -145,7 +154,7 @@ class EventSubscriptions(SyncAPIResource):
         """
         return self._patch(
             f"/event_subscriptions/{event_subscription_id}",
-            body={"status": status},
+            body=maybe_transform({"status": status}, event_subscription_update_params.EventSubscriptionUpdateParams),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=EventSubscription,
         )
@@ -183,10 +192,13 @@ class EventSubscriptions(SyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
-                query={
-                    "cursor": cursor,
-                    "limit": limit,
-                },
+                query=maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "limit": limit,
+                    },
+                    event_subscription_list_params.EventSubscriptionListParams,
+                ),
             ),
             model=EventSubscription,
         )
@@ -273,11 +285,14 @@ class AsyncEventSubscriptions(AsyncAPIResource):
         """
         return await self._post(
             "/event_subscriptions",
-            body={
-                "url": url,
-                "shared_secret": shared_secret,
-                "selected_event_category": selected_event_category,
-            },
+            body=maybe_transform(
+                {
+                    "url": url,
+                    "shared_secret": shared_secret,
+                    "selected_event_category": selected_event_category,
+                },
+                event_subscription_create_params.EventSubscriptionCreateParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=EventSubscription,
         )
@@ -324,7 +339,7 @@ class AsyncEventSubscriptions(AsyncAPIResource):
         """
         return await self._patch(
             f"/event_subscriptions/{event_subscription_id}",
-            body={"status": status},
+            body=maybe_transform({"status": status}, event_subscription_update_params.EventSubscriptionUpdateParams),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=EventSubscription,
         )
@@ -362,10 +377,13 @@ class AsyncEventSubscriptions(AsyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
-                query={
-                    "cursor": cursor,
-                    "limit": limit,
-                },
+                query=maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "limit": limit,
+                    },
+                    event_subscription_list_params.EventSubscriptionListParams,
+                ),
             ),
             model=EventSubscription,
         )

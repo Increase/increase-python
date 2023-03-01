@@ -2,8 +2,13 @@
 
 from __future__ import annotations
 
-from ..types import WireDrawdownRequest
+from ..types import (
+    WireDrawdownRequest,
+    wire_drawdown_request_list_params,
+    wire_drawdown_request_create_params,
+)
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
@@ -60,17 +65,20 @@ class WireDrawdownRequests(SyncAPIResource):
         """
         return self._post(
             "/wire_drawdown_requests",
-            body={
-                "account_number_id": account_number_id,
-                "amount": amount,
-                "message_to_recipient": message_to_recipient,
-                "recipient_account_number": recipient_account_number,
-                "recipient_routing_number": recipient_routing_number,
-                "recipient_name": recipient_name,
-                "recipient_address_line1": recipient_address_line1,
-                "recipient_address_line2": recipient_address_line2,
-                "recipient_address_line3": recipient_address_line3,
-            },
+            body=maybe_transform(
+                {
+                    "account_number_id": account_number_id,
+                    "amount": amount,
+                    "message_to_recipient": message_to_recipient,
+                    "recipient_account_number": recipient_account_number,
+                    "recipient_routing_number": recipient_routing_number,
+                    "recipient_name": recipient_name,
+                    "recipient_address_line1": recipient_address_line1,
+                    "recipient_address_line2": recipient_address_line2,
+                    "recipient_address_line3": recipient_address_line3,
+                },
+                wire_drawdown_request_create_params.WireDrawdownRequestCreateParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=WireDrawdownRequest,
         )
@@ -125,10 +133,13 @@ class WireDrawdownRequests(SyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
-                query={
-                    "cursor": cursor,
-                    "limit": limit,
-                },
+                query=maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "limit": limit,
+                    },
+                    wire_drawdown_request_list_params.WireDrawdownRequestListParams,
+                ),
             ),
             model=WireDrawdownRequest,
         )
@@ -183,17 +194,20 @@ class AsyncWireDrawdownRequests(AsyncAPIResource):
         """
         return await self._post(
             "/wire_drawdown_requests",
-            body={
-                "account_number_id": account_number_id,
-                "amount": amount,
-                "message_to_recipient": message_to_recipient,
-                "recipient_account_number": recipient_account_number,
-                "recipient_routing_number": recipient_routing_number,
-                "recipient_name": recipient_name,
-                "recipient_address_line1": recipient_address_line1,
-                "recipient_address_line2": recipient_address_line2,
-                "recipient_address_line3": recipient_address_line3,
-            },
+            body=maybe_transform(
+                {
+                    "account_number_id": account_number_id,
+                    "amount": amount,
+                    "message_to_recipient": message_to_recipient,
+                    "recipient_account_number": recipient_account_number,
+                    "recipient_routing_number": recipient_routing_number,
+                    "recipient_name": recipient_name,
+                    "recipient_address_line1": recipient_address_line1,
+                    "recipient_address_line2": recipient_address_line2,
+                    "recipient_address_line3": recipient_address_line3,
+                },
+                wire_drawdown_request_create_params.WireDrawdownRequestCreateParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=WireDrawdownRequest,
         )
@@ -248,10 +262,13 @@ class AsyncWireDrawdownRequests(AsyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
-                query={
-                    "cursor": cursor,
-                    "limit": limit,
-                },
+                query=maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "limit": limit,
+                    },
+                    wire_drawdown_request_list_params.WireDrawdownRequestListParams,
+                ),
             ),
             model=WireDrawdownRequest,
         )

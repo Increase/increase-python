@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 
-from ..types import RoutingNumber
+from ..types import RoutingNumber, routing_number_list_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
@@ -51,11 +52,14 @@ class RoutingNumbers(SyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
-                query={
-                    "cursor": cursor,
-                    "limit": limit,
-                    "routing_number": routing_number,
-                },
+                query=maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "limit": limit,
+                        "routing_number": routing_number,
+                    },
+                    routing_number_list_params.RoutingNumberListParams,
+                ),
             ),
             model=RoutingNumber,
         )
@@ -101,11 +105,14 @@ class AsyncRoutingNumbers(AsyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
-                query={
-                    "cursor": cursor,
-                    "limit": limit,
-                    "routing_number": routing_number,
-                },
+                query=maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "limit": limit,
+                        "routing_number": routing_number,
+                    },
+                    routing_number_list_params.RoutingNumberListParams,
+                ),
             ),
             model=RoutingNumber,
         )

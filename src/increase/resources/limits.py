@@ -4,8 +4,9 @@ from __future__ import annotations
 
 from typing_extensions import Literal
 
-from ..types import Limit
+from ..types import Limit, limit_list_params, limit_create_params, limit_update_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
@@ -48,12 +49,15 @@ class Limits(SyncAPIResource):
         """
         return self._post(
             "/limits",
-            body={
-                "metric": metric,
-                "interval": interval,
-                "model_id": model_id,
-                "value": value,
-            },
+            body=maybe_transform(
+                {
+                    "metric": metric,
+                    "interval": interval,
+                    "model_id": model_id,
+                    "value": value,
+                },
+                limit_create_params.LimitCreateParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=Limit,
         )
@@ -100,7 +104,7 @@ class Limits(SyncAPIResource):
         """
         return self._patch(
             f"/limits/{limit_id}",
-            body={"status": status},
+            body=maybe_transform({"status": status}, limit_update_params.LimitUpdateParams),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=Limit,
         )
@@ -144,12 +148,15 @@ class Limits(SyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
-                query={
-                    "cursor": cursor,
-                    "limit": limit,
-                    "model_id": model_id,
-                    "status": status,
-                },
+                query=maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "limit": limit,
+                        "model_id": model_id,
+                        "status": status,
+                    },
+                    limit_list_params.LimitListParams,
+                ),
             ),
             model=Limit,
         )
@@ -190,12 +197,15 @@ class AsyncLimits(AsyncAPIResource):
         """
         return await self._post(
             "/limits",
-            body={
-                "metric": metric,
-                "interval": interval,
-                "model_id": model_id,
-                "value": value,
-            },
+            body=maybe_transform(
+                {
+                    "metric": metric,
+                    "interval": interval,
+                    "model_id": model_id,
+                    "value": value,
+                },
+                limit_create_params.LimitCreateParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=Limit,
         )
@@ -242,7 +252,7 @@ class AsyncLimits(AsyncAPIResource):
         """
         return await self._patch(
             f"/limits/{limit_id}",
-            body={"status": status},
+            body=maybe_transform({"status": status}, limit_update_params.LimitUpdateParams),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=Limit,
         )
@@ -286,12 +296,15 @@ class AsyncLimits(AsyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
-                query={
-                    "cursor": cursor,
-                    "limit": limit,
-                    "model_id": model_id,
-                    "status": status,
-                },
+                query=maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "limit": limit,
+                        "model_id": model_id,
+                        "status": status,
+                    },
+                    limit_list_params.LimitListParams,
+                ),
             ),
             model=Limit,
         )

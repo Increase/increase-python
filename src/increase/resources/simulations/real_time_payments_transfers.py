@@ -3,9 +3,13 @@
 from __future__ import annotations
 
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._utils import maybe_transform
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._base_client import make_request_options
-from ...types.simulations import InboundRealTimePaymentsTransferSimulationResult
+from ...types.simulations import (
+    InboundRealTimePaymentsTransferSimulationResult,
+    real_time_payments_transfer_create_inbound_params,
+)
 
 __all__ = ["RealTimePaymentsTransfers", "AsyncRealTimePaymentsTransfers"]
 
@@ -56,15 +60,18 @@ class RealTimePaymentsTransfers(SyncAPIResource):
         """
         return self._post(
             "/simulations/inbound_real_time_payments_transfers",
-            body={
-                "account_number_id": account_number_id,
-                "amount": amount,
-                "request_for_payment_id": request_for_payment_id,
-                "debtor_name": debtor_name,
-                "debtor_account_number": debtor_account_number,
-                "debtor_routing_number": debtor_routing_number,
-                "remittance_information": remittance_information,
-            },
+            body=maybe_transform(
+                {
+                    "account_number_id": account_number_id,
+                    "amount": amount,
+                    "request_for_payment_id": request_for_payment_id,
+                    "debtor_name": debtor_name,
+                    "debtor_account_number": debtor_account_number,
+                    "debtor_routing_number": debtor_routing_number,
+                    "remittance_information": remittance_information,
+                },
+                real_time_payments_transfer_create_inbound_params.RealTimePaymentsTransferCreateInboundParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=InboundRealTimePaymentsTransferSimulationResult,
         )
@@ -116,15 +123,18 @@ class AsyncRealTimePaymentsTransfers(AsyncAPIResource):
         """
         return await self._post(
             "/simulations/inbound_real_time_payments_transfers",
-            body={
-                "account_number_id": account_number_id,
-                "amount": amount,
-                "request_for_payment_id": request_for_payment_id,
-                "debtor_name": debtor_name,
-                "debtor_account_number": debtor_account_number,
-                "debtor_routing_number": debtor_routing_number,
-                "remittance_information": remittance_information,
-            },
+            body=maybe_transform(
+                {
+                    "account_number_id": account_number_id,
+                    "amount": amount,
+                    "request_for_payment_id": request_for_payment_id,
+                    "debtor_name": debtor_name,
+                    "debtor_account_number": debtor_account_number,
+                    "debtor_routing_number": debtor_routing_number,
+                    "remittance_information": remittance_information,
+                },
+                real_time_payments_transfer_create_inbound_params.RealTimePaymentsTransferCreateInboundParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=InboundRealTimePaymentsTransferSimulationResult,
         )

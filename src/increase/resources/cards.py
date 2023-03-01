@@ -12,6 +12,7 @@ from ..types import (
     card_update_params,
 )
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
@@ -55,12 +56,15 @@ class Cards(SyncAPIResource):
         """
         return self._post(
             "/cards",
-            body={
-                "account_id": account_id,
-                "description": description,
-                "billing_address": billing_address,
-                "digital_wallet": digital_wallet,
-            },
+            body=maybe_transform(
+                {
+                    "account_id": account_id,
+                    "description": description,
+                    "billing_address": billing_address,
+                    "digital_wallet": digital_wallet,
+                },
+                card_create_params.CardCreateParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=Card,
         )
@@ -118,12 +122,15 @@ class Cards(SyncAPIResource):
         """
         return self._patch(
             f"/cards/{card_id}",
-            body={
-                "description": description,
-                "status": status,
-                "billing_address": billing_address,
-                "digital_wallet": digital_wallet,
-            },
+            body=maybe_transform(
+                {
+                    "description": description,
+                    "status": status,
+                    "billing_address": billing_address,
+                    "digital_wallet": digital_wallet,
+                },
+                card_update_params.CardUpdateParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=Card,
         )
@@ -165,12 +172,15 @@ class Cards(SyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
-                query={
-                    "cursor": cursor,
-                    "limit": limit,
-                    "account_id": account_id,
-                    "created_at": created_at,
-                },
+                query=maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "limit": limit,
+                        "account_id": account_id,
+                        "created_at": created_at,
+                    },
+                    card_list_params.CardListParams,
+                ),
             ),
             model=Card,
         )
@@ -229,12 +239,15 @@ class AsyncCards(AsyncAPIResource):
         """
         return await self._post(
             "/cards",
-            body={
-                "account_id": account_id,
-                "description": description,
-                "billing_address": billing_address,
-                "digital_wallet": digital_wallet,
-            },
+            body=maybe_transform(
+                {
+                    "account_id": account_id,
+                    "description": description,
+                    "billing_address": billing_address,
+                    "digital_wallet": digital_wallet,
+                },
+                card_create_params.CardCreateParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=Card,
         )
@@ -292,12 +305,15 @@ class AsyncCards(AsyncAPIResource):
         """
         return await self._patch(
             f"/cards/{card_id}",
-            body={
-                "description": description,
-                "status": status,
-                "billing_address": billing_address,
-                "digital_wallet": digital_wallet,
-            },
+            body=maybe_transform(
+                {
+                    "description": description,
+                    "status": status,
+                    "billing_address": billing_address,
+                    "digital_wallet": digital_wallet,
+                },
+                card_update_params.CardUpdateParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=Card,
         )
@@ -339,12 +355,15 @@ class AsyncCards(AsyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
-                query={
-                    "cursor": cursor,
-                    "limit": limit,
-                    "account_id": account_id,
-                    "created_at": created_at,
-                },
+                query=maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "limit": limit,
+                        "account_id": account_id,
+                        "created_at": created_at,
+                    },
+                    card_list_params.CardListParams,
+                ),
             ),
             model=Card,
         )

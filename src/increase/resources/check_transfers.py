@@ -8,6 +8,7 @@ from ..types import (
     check_transfer_create_params,
 )
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
@@ -74,20 +75,23 @@ class CheckTransfers(SyncAPIResource):
         """
         return self._post(
             "/check_transfers",
-            body={
-                "account_id": account_id,
-                "address_line1": address_line1,
-                "address_line2": address_line2,
-                "address_city": address_city,
-                "address_state": address_state,
-                "address_zip": address_zip,
-                "return_address": return_address,
-                "amount": amount,
-                "message": message,
-                "note": note,
-                "recipient_name": recipient_name,
-                "require_approval": require_approval,
-            },
+            body=maybe_transform(
+                {
+                    "account_id": account_id,
+                    "address_line1": address_line1,
+                    "address_line2": address_line2,
+                    "address_city": address_city,
+                    "address_state": address_state,
+                    "address_zip": address_zip,
+                    "return_address": return_address,
+                    "amount": amount,
+                    "message": message,
+                    "note": note,
+                    "recipient_name": recipient_name,
+                    "require_approval": require_approval,
+                },
+                check_transfer_create_params.CheckTransferCreateParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=CheckTransfer,
         )
@@ -146,12 +150,15 @@ class CheckTransfers(SyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
-                query={
-                    "cursor": cursor,
-                    "limit": limit,
-                    "account_id": account_id,
-                    "created_at": created_at,
-                },
+                query=maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "limit": limit,
+                        "account_id": account_id,
+                        "created_at": created_at,
+                    },
+                    check_transfer_list_params.CheckTransferListParams,
+                ),
             ),
             model=CheckTransfer,
         )
@@ -267,20 +274,23 @@ class AsyncCheckTransfers(AsyncAPIResource):
         """
         return await self._post(
             "/check_transfers",
-            body={
-                "account_id": account_id,
-                "address_line1": address_line1,
-                "address_line2": address_line2,
-                "address_city": address_city,
-                "address_state": address_state,
-                "address_zip": address_zip,
-                "return_address": return_address,
-                "amount": amount,
-                "message": message,
-                "note": note,
-                "recipient_name": recipient_name,
-                "require_approval": require_approval,
-            },
+            body=maybe_transform(
+                {
+                    "account_id": account_id,
+                    "address_line1": address_line1,
+                    "address_line2": address_line2,
+                    "address_city": address_city,
+                    "address_state": address_state,
+                    "address_zip": address_zip,
+                    "return_address": return_address,
+                    "amount": amount,
+                    "message": message,
+                    "note": note,
+                    "recipient_name": recipient_name,
+                    "require_approval": require_approval,
+                },
+                check_transfer_create_params.CheckTransferCreateParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=CheckTransfer,
         )
@@ -339,12 +349,15 @@ class AsyncCheckTransfers(AsyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
-                query={
-                    "cursor": cursor,
-                    "limit": limit,
-                    "account_id": account_id,
-                    "created_at": created_at,
-                },
+                query=maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "limit": limit,
+                        "account_id": account_id,
+                        "created_at": created_at,
+                    },
+                    check_transfer_list_params.CheckTransferListParams,
+                ),
             ),
             model=CheckTransfer,
         )

@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 
-from ..types import OauthConnection
+from ..types import OauthConnection, oauth_connection_list_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
@@ -62,10 +63,13 @@ class OauthConnections(SyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
-                query={
-                    "cursor": cursor,
-                    "limit": limit,
-                },
+                query=maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "limit": limit,
+                    },
+                    oauth_connection_list_params.OauthConnectionListParams,
+                ),
             ),
             model=OauthConnection,
         )
@@ -122,10 +126,13 @@ class AsyncOauthConnections(AsyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
-                query={
-                    "cursor": cursor,
-                    "limit": limit,
-                },
+                query=maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "limit": limit,
+                    },
+                    oauth_connection_list_params.OauthConnectionListParams,
+                ),
             ),
             model=OauthConnection,
         )

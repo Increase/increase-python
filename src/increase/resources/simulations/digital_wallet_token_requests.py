@@ -3,9 +3,13 @@
 from __future__ import annotations
 
 from ..._types import Body, Query, Headers
+from ..._utils import maybe_transform
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._base_client import make_request_options
-from ...types.simulations import DigitalWalletTokenRequestCreateResponse
+from ...types.simulations import (
+    DigitalWalletTokenRequestCreateResponse,
+    digital_wallet_token_request_create_params,
+)
 
 __all__ = ["DigitalWalletTokenRequests", "AsyncDigitalWalletTokenRequests"]
 
@@ -36,7 +40,9 @@ class DigitalWalletTokenRequests(SyncAPIResource):
         """
         return self._post(
             "/simulations/digital_wallet_token_requests",
-            body={"card_id": card_id},
+            body=maybe_transform(
+                {"card_id": card_id}, digital_wallet_token_request_create_params.DigitalWalletTokenRequestCreateParams
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=DigitalWalletTokenRequestCreateResponse,
         )
@@ -68,7 +74,9 @@ class AsyncDigitalWalletTokenRequests(AsyncAPIResource):
         """
         return await self._post(
             "/simulations/digital_wallet_token_requests",
-            body={"card_id": card_id},
+            body=maybe_transform(
+                {"card_id": card_id}, digital_wallet_token_request_create_params.DigitalWalletTokenRequestCreateParams
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=DigitalWalletTokenRequestCreateResponse,
         )

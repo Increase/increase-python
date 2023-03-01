@@ -1,6 +1,7 @@
 # File generated from our OpenAPI spec by Stainless.
 
 from typing import Optional
+from datetime import datetime
 from typing_extensions import Literal
 
 from .._models import BaseModel
@@ -9,7 +10,7 @@ __all__ = ["AccountTransfer", "Approval", "Cancellation"]
 
 
 class Approval(BaseModel):
-    approved_at: str
+    approved_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the transfer was approved.
@@ -17,7 +18,7 @@ class Approval(BaseModel):
 
 
 class Cancellation(BaseModel):
-    canceled_at: str
+    canceled_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the Transfer was canceled.
@@ -46,7 +47,7 @@ class AccountTransfer(BaseModel):
     approved, this will contain details of the cancellation.
     """
 
-    created_at: str
+    created_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the transfer was created.

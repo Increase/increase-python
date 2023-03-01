@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 
-from ..types import WireTransfer, wire_transfer_list_params
+from ..types import WireTransfer, wire_transfer_list_params, wire_transfer_create_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
@@ -68,19 +69,22 @@ class WireTransfers(SyncAPIResource):
         """
         return self._post(
             "/wire_transfers",
-            body={
-                "account_id": account_id,
-                "account_number": account_number,
-                "routing_number": routing_number,
-                "external_account_id": external_account_id,
-                "amount": amount,
-                "message_to_recipient": message_to_recipient,
-                "beneficiary_name": beneficiary_name,
-                "beneficiary_address_line1": beneficiary_address_line1,
-                "beneficiary_address_line2": beneficiary_address_line2,
-                "beneficiary_address_line3": beneficiary_address_line3,
-                "require_approval": require_approval,
-            },
+            body=maybe_transform(
+                {
+                    "account_id": account_id,
+                    "account_number": account_number,
+                    "routing_number": routing_number,
+                    "external_account_id": external_account_id,
+                    "amount": amount,
+                    "message_to_recipient": message_to_recipient,
+                    "beneficiary_name": beneficiary_name,
+                    "beneficiary_address_line1": beneficiary_address_line1,
+                    "beneficiary_address_line2": beneficiary_address_line2,
+                    "beneficiary_address_line3": beneficiary_address_line3,
+                    "require_approval": require_approval,
+                },
+                wire_transfer_create_params.WireTransferCreateParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=WireTransfer,
         )
@@ -142,13 +146,16 @@ class WireTransfers(SyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
-                query={
-                    "cursor": cursor,
-                    "limit": limit,
-                    "account_id": account_id,
-                    "external_account_id": external_account_id,
-                    "created_at": created_at,
-                },
+                query=maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "limit": limit,
+                        "account_id": account_id,
+                        "external_account_id": external_account_id,
+                        "created_at": created_at,
+                    },
+                    wire_transfer_list_params.WireTransferListParams,
+                ),
             ),
             model=WireTransfer,
         )
@@ -288,19 +295,22 @@ class AsyncWireTransfers(AsyncAPIResource):
         """
         return await self._post(
             "/wire_transfers",
-            body={
-                "account_id": account_id,
-                "account_number": account_number,
-                "routing_number": routing_number,
-                "external_account_id": external_account_id,
-                "amount": amount,
-                "message_to_recipient": message_to_recipient,
-                "beneficiary_name": beneficiary_name,
-                "beneficiary_address_line1": beneficiary_address_line1,
-                "beneficiary_address_line2": beneficiary_address_line2,
-                "beneficiary_address_line3": beneficiary_address_line3,
-                "require_approval": require_approval,
-            },
+            body=maybe_transform(
+                {
+                    "account_id": account_id,
+                    "account_number": account_number,
+                    "routing_number": routing_number,
+                    "external_account_id": external_account_id,
+                    "amount": amount,
+                    "message_to_recipient": message_to_recipient,
+                    "beneficiary_name": beneficiary_name,
+                    "beneficiary_address_line1": beneficiary_address_line1,
+                    "beneficiary_address_line2": beneficiary_address_line2,
+                    "beneficiary_address_line3": beneficiary_address_line3,
+                    "require_approval": require_approval,
+                },
+                wire_transfer_create_params.WireTransferCreateParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=WireTransfer,
         )
@@ -362,13 +372,16 @@ class AsyncWireTransfers(AsyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
-                query={
-                    "cursor": cursor,
-                    "limit": limit,
-                    "account_id": account_id,
-                    "external_account_id": external_account_id,
-                    "created_at": created_at,
-                },
+                query=maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "limit": limit,
+                        "account_id": account_id,
+                        "external_account_id": external_account_id,
+                        "created_at": created_at,
+                    },
+                    wire_transfer_list_params.WireTransferListParams,
+                ),
             ),
             model=WireTransfer,
         )

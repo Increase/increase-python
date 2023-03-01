@@ -2,7 +2,11 @@
 
 from __future__ import annotations
 
-from typing_extensions import Literal, Required, TypedDict
+from typing import Union
+from datetime import date
+from typing_extensions import Literal, Required, Annotated, TypedDict
+
+from .._utils import PropertyInfo
 
 __all__ = ["ACHTransferCreateParams"]
 
@@ -63,7 +67,7 @@ class ACHTransferCreateParams(TypedDict, total=False):
     This is included in the transfer data sent to the receiving bank.
     """
 
-    effective_date: str
+    effective_date: Annotated[Union[str, date], PropertyInfo(format="iso8601")]
     """
     The transfer effective date in
     [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.

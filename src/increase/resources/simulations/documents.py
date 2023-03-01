@@ -4,8 +4,10 @@ from __future__ import annotations
 
 from ...types import Document
 from ..._types import Body, Query, Headers
+from ..._utils import maybe_transform
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._base_client import make_request_options
+from ...types.simulations import document_create_params
 
 __all__ = ["Documents", "AsyncDocuments"]
 
@@ -35,7 +37,7 @@ class Documents(SyncAPIResource):
         """
         return self._post(
             "/simulations/documents",
-            body={"account_id": account_id},
+            body=maybe_transform({"account_id": account_id}, document_create_params.DocumentCreateParams),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=Document,
         )
@@ -66,7 +68,7 @@ class AsyncDocuments(AsyncAPIResource):
         """
         return await self._post(
             "/simulations/documents",
-            body={"account_id": account_id},
+            body=maybe_transform({"account_id": account_id}, document_create_params.DocumentCreateParams),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=Document,
         )

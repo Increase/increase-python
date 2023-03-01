@@ -1,6 +1,7 @@
 # File generated from our OpenAPI spec by Stainless.
 
 from typing import Optional
+from datetime import datetime
 from typing_extensions import Literal
 
 from .._models import BaseModel
@@ -34,7 +35,7 @@ class Submission(BaseModel):
 
 
 class StopPaymentRequest(BaseModel):
-    requested_at: str
+    requested_at: datetime
     """The time the stop-payment was requested."""
 
     transaction_id: str
@@ -86,7 +87,7 @@ class CheckTransfer(BaseModel):
     amount: int
     """The transfer amount in USD cents."""
 
-    created_at: str
+    created_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the transfer was created.
@@ -104,7 +105,7 @@ class CheckTransfer(BaseModel):
     id: str
     """The Check transfer's identifier."""
 
-    mailed_at: Optional[str]
+    mailed_at: Optional[datetime]
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the check was mailed.
@@ -147,7 +148,7 @@ class CheckTransfer(BaseModel):
     submission: Optional[Submission]
     """After the transfer is submitted, this will contain supplemental details."""
 
-    submitted_at: Optional[str]
+    submitted_at: Optional[datetime]
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the check was submitted.

@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 
-from ..types import CheckDeposit, check_deposit_list_params
+from ..types import CheckDeposit, check_deposit_list_params, check_deposit_create_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
@@ -49,13 +50,16 @@ class CheckDeposits(SyncAPIResource):
         """
         return self._post(
             "/check_deposits",
-            body={
-                "account_id": account_id,
-                "amount": amount,
-                "currency": currency,
-                "front_image_file_id": front_image_file_id,
-                "back_image_file_id": back_image_file_id,
-            },
+            body=maybe_transform(
+                {
+                    "account_id": account_id,
+                    "amount": amount,
+                    "currency": currency,
+                    "front_image_file_id": front_image_file_id,
+                    "back_image_file_id": back_image_file_id,
+                },
+                check_deposit_create_params.CheckDepositCreateParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=CheckDeposit,
         )
@@ -114,12 +118,15 @@ class CheckDeposits(SyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
-                query={
-                    "cursor": cursor,
-                    "limit": limit,
-                    "account_id": account_id,
-                    "created_at": created_at,
-                },
+                query=maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "limit": limit,
+                        "account_id": account_id,
+                        "created_at": created_at,
+                    },
+                    check_deposit_list_params.CheckDepositListParams,
+                ),
             ),
             model=CheckDeposit,
         )
@@ -163,13 +170,16 @@ class AsyncCheckDeposits(AsyncAPIResource):
         """
         return await self._post(
             "/check_deposits",
-            body={
-                "account_id": account_id,
-                "amount": amount,
-                "currency": currency,
-                "front_image_file_id": front_image_file_id,
-                "back_image_file_id": back_image_file_id,
-            },
+            body=maybe_transform(
+                {
+                    "account_id": account_id,
+                    "amount": amount,
+                    "currency": currency,
+                    "front_image_file_id": front_image_file_id,
+                    "back_image_file_id": back_image_file_id,
+                },
+                check_deposit_create_params.CheckDepositCreateParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=CheckDeposit,
         )
@@ -228,12 +238,15 @@ class AsyncCheckDeposits(AsyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
-                query={
-                    "cursor": cursor,
-                    "limit": limit,
-                    "account_id": account_id,
-                    "created_at": created_at,
-                },
+                query=maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "limit": limit,
+                        "account_id": account_id,
+                        "created_at": created_at,
+                    },
+                    check_deposit_list_params.CheckDepositListParams,
+                ),
             ),
             model=CheckDeposit,
         )

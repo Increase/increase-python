@@ -5,9 +5,9 @@ from __future__ import annotations
 from typing import Mapping, cast
 from typing_extensions import Literal
 
-from ..types import File, file_list_params
+from ..types import File, file_list_params, file_create_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven, FileTypes
-from .._utils import extract_files, deepcopy_minimal
+from .._utils import extract_files, maybe_transform, deepcopy_minimal
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
@@ -74,7 +74,7 @@ class Files(SyncAPIResource):
 
         return self._post(
             "/files",
-            body=body,
+            body=maybe_transform(body, file_create_params.FileCreateParams),
             files=files,
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=File,
@@ -132,12 +132,15 @@ class Files(SyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
-                query={
-                    "cursor": cursor,
-                    "limit": limit,
-                    "created_at": created_at,
-                    "purpose": purpose,
-                },
+                query=maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "limit": limit,
+                        "created_at": created_at,
+                        "purpose": purpose,
+                    },
+                    file_list_params.FileListParams,
+                ),
             ),
             model=File,
         )
@@ -202,7 +205,7 @@ class AsyncFiles(AsyncAPIResource):
 
         return await self._post(
             "/files",
-            body=body,
+            body=maybe_transform(body, file_create_params.FileCreateParams),
             files=files,
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=File,
@@ -260,12 +263,15 @@ class AsyncFiles(AsyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
-                query={
-                    "cursor": cursor,
-                    "limit": limit,
-                    "created_at": created_at,
-                    "purpose": purpose,
-                },
+                query=maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "limit": limit,
+                        "created_at": created_at,
+                        "purpose": purpose,
+                    },
+                    file_list_params.FileListParams,
+                ),
             ),
             model=File,
         )

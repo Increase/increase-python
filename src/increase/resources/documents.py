@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from ..types import Document, document_list_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
@@ -67,13 +68,16 @@ class Documents(SyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
-                query={
-                    "cursor": cursor,
-                    "limit": limit,
-                    "entity_id": entity_id,
-                    "category": category,
-                    "created_at": created_at,
-                },
+                query=maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "limit": limit,
+                        "entity_id": entity_id,
+                        "category": category,
+                        "created_at": created_at,
+                    },
+                    document_list_params.DocumentListParams,
+                ),
             ),
             model=Document,
         )
@@ -135,13 +139,16 @@ class AsyncDocuments(AsyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
-                query={
-                    "cursor": cursor,
-                    "limit": limit,
-                    "entity_id": entity_id,
-                    "category": category,
-                    "created_at": created_at,
-                },
+                query=maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "limit": limit,
+                        "entity_id": entity_id,
+                        "category": category,
+                        "created_at": created_at,
+                    },
+                    document_list_params.DocumentListParams,
+                ),
             ),
             model=Document,
         )

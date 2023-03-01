@@ -1,6 +1,7 @@
 # File generated from our OpenAPI spec by Stainless.
 
 from typing import Optional
+from datetime import datetime
 from typing_extensions import Literal
 
 from pydantic import Field
@@ -11,7 +12,7 @@ __all__ = ["ACHTransfer", "Approval", "Cancellation", "NotificationOfChange", "R
 
 
 class Approval(BaseModel):
-    approved_at: str
+    approved_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the transfer was approved.
@@ -19,7 +20,7 @@ class Approval(BaseModel):
 
 
 class Cancellation(BaseModel):
-    canceled_at: str
+    canceled_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the Transfer was canceled.
@@ -33,7 +34,7 @@ class NotificationOfChange(BaseModel):
     corrected_data: str
     """The corrected data."""
 
-    created_at: str
+    created_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the notification occurred.
@@ -41,7 +42,7 @@ class NotificationOfChange(BaseModel):
 
 
 class Return(BaseModel):
-    created_at: str
+    created_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the transfer was created.
@@ -82,7 +83,7 @@ class Return(BaseModel):
 
 
 class Submission(BaseModel):
-    submitted_at: str
+    submitted_at: datetime
     """When the ACH transfer was sent to FedACH."""
 
     trace_number: str
@@ -131,7 +132,7 @@ class ACHTransfer(BaseModel):
     company_name: Optional[str]
     """The name by which the recipient knows you."""
 
-    created_at: str
+    created_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the transfer was created.

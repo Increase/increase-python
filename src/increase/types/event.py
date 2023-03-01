@@ -1,5 +1,6 @@
 # File generated from our OpenAPI spec by Stainless.
 
+from datetime import datetime
 from typing_extensions import Literal
 
 from .._models import BaseModel
@@ -68,7 +69,7 @@ class Event(BaseModel):
     should be able to handle such additions gracefully.
     """
 
-    created_at: str
+    created_at: datetime
     """The time the Event was created."""
 
     id: str

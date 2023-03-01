@@ -3,9 +3,13 @@
 from __future__ import annotations
 
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._utils import maybe_transform
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._base_client import make_request_options
-from ...types.simulations import WireTransferSimulation
+from ...types.simulations import (
+    WireTransferSimulation,
+    wire_transfer_create_inbound_params,
+)
 
 __all__ = ["WireTransfers", "AsyncWireTransfers"]
 
@@ -90,23 +94,26 @@ class WireTransfers(SyncAPIResource):
         """
         return self._post(
             "/simulations/inbound_wire_transfers",
-            body={
-                "account_number_id": account_number_id,
-                "amount": amount,
-                "beneficiary_address_line1": beneficiary_address_line1,
-                "beneficiary_address_line2": beneficiary_address_line2,
-                "beneficiary_address_line3": beneficiary_address_line3,
-                "beneficiary_name": beneficiary_name,
-                "beneficiary_reference": beneficiary_reference,
-                "originator_address_line1": originator_address_line1,
-                "originator_address_line2": originator_address_line2,
-                "originator_address_line3": originator_address_line3,
-                "originator_name": originator_name,
-                "originator_to_beneficiary_information_line1": originator_to_beneficiary_information_line1,
-                "originator_to_beneficiary_information_line2": originator_to_beneficiary_information_line2,
-                "originator_to_beneficiary_information_line3": originator_to_beneficiary_information_line3,
-                "originator_to_beneficiary_information_line4": originator_to_beneficiary_information_line4,
-            },
+            body=maybe_transform(
+                {
+                    "account_number_id": account_number_id,
+                    "amount": amount,
+                    "beneficiary_address_line1": beneficiary_address_line1,
+                    "beneficiary_address_line2": beneficiary_address_line2,
+                    "beneficiary_address_line3": beneficiary_address_line3,
+                    "beneficiary_name": beneficiary_name,
+                    "beneficiary_reference": beneficiary_reference,
+                    "originator_address_line1": originator_address_line1,
+                    "originator_address_line2": originator_address_line2,
+                    "originator_address_line3": originator_address_line3,
+                    "originator_name": originator_name,
+                    "originator_to_beneficiary_information_line1": originator_to_beneficiary_information_line1,
+                    "originator_to_beneficiary_information_line2": originator_to_beneficiary_information_line2,
+                    "originator_to_beneficiary_information_line3": originator_to_beneficiary_information_line3,
+                    "originator_to_beneficiary_information_line4": originator_to_beneficiary_information_line4,
+                },
+                wire_transfer_create_inbound_params.WireTransferCreateInboundParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=WireTransferSimulation,
         )
@@ -192,23 +199,26 @@ class AsyncWireTransfers(AsyncAPIResource):
         """
         return await self._post(
             "/simulations/inbound_wire_transfers",
-            body={
-                "account_number_id": account_number_id,
-                "amount": amount,
-                "beneficiary_address_line1": beneficiary_address_line1,
-                "beneficiary_address_line2": beneficiary_address_line2,
-                "beneficiary_address_line3": beneficiary_address_line3,
-                "beneficiary_name": beneficiary_name,
-                "beneficiary_reference": beneficiary_reference,
-                "originator_address_line1": originator_address_line1,
-                "originator_address_line2": originator_address_line2,
-                "originator_address_line3": originator_address_line3,
-                "originator_name": originator_name,
-                "originator_to_beneficiary_information_line1": originator_to_beneficiary_information_line1,
-                "originator_to_beneficiary_information_line2": originator_to_beneficiary_information_line2,
-                "originator_to_beneficiary_information_line3": originator_to_beneficiary_information_line3,
-                "originator_to_beneficiary_information_line4": originator_to_beneficiary_information_line4,
-            },
+            body=maybe_transform(
+                {
+                    "account_number_id": account_number_id,
+                    "amount": amount,
+                    "beneficiary_address_line1": beneficiary_address_line1,
+                    "beneficiary_address_line2": beneficiary_address_line2,
+                    "beneficiary_address_line3": beneficiary_address_line3,
+                    "beneficiary_name": beneficiary_name,
+                    "beneficiary_reference": beneficiary_reference,
+                    "originator_address_line1": originator_address_line1,
+                    "originator_address_line2": originator_address_line2,
+                    "originator_address_line3": originator_address_line3,
+                    "originator_name": originator_name,
+                    "originator_to_beneficiary_information_line1": originator_to_beneficiary_information_line1,
+                    "originator_to_beneficiary_information_line2": originator_to_beneficiary_information_line2,
+                    "originator_to_beneficiary_information_line3": originator_to_beneficiary_information_line3,
+                    "originator_to_beneficiary_information_line4": originator_to_beneficiary_information_line4,
+                },
+                wire_transfer_create_inbound_params.WireTransferCreateInboundParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=WireTransferSimulation,
         )

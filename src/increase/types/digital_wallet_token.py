@@ -1,5 +1,6 @@
 # File generated from our OpenAPI spec by Stainless.
 
+from datetime import datetime
 from typing_extensions import Literal
 
 from .._models import BaseModel
@@ -11,7 +12,7 @@ class DigitalWalletToken(BaseModel):
     card_id: str
     """The identifier for the Card this Digital Wallet Token belongs to."""
 
-    created_at: str
+    created_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the Card was created.

@@ -4,8 +4,14 @@ from __future__ import annotations
 
 from typing_extensions import Literal
 
-from ..types import AccountNumber
+from ..types import (
+    AccountNumber,
+    account_number_list_params,
+    account_number_create_params,
+    account_number_update_params,
+)
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
@@ -41,10 +47,13 @@ class AccountNumbers(SyncAPIResource):
         """
         return self._post(
             "/account_numbers",
-            body={
-                "account_id": account_id,
-                "name": name,
-            },
+            body=maybe_transform(
+                {
+                    "account_id": account_id,
+                    "name": name,
+                },
+                account_number_create_params.AccountNumberCreateParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=AccountNumber,
         )
@@ -94,10 +103,13 @@ class AccountNumbers(SyncAPIResource):
         """
         return self._patch(
             f"/account_numbers/{account_number_id}",
-            body={
-                "name": name,
-                "status": status,
-            },
+            body=maybe_transform(
+                {
+                    "name": name,
+                    "status": status,
+                },
+                account_number_update_params.AccountNumberUpdateParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=AccountNumber,
         )
@@ -141,12 +153,15 @@ class AccountNumbers(SyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
-                query={
-                    "cursor": cursor,
-                    "limit": limit,
-                    "status": status,
-                    "account_id": account_id,
-                },
+                query=maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "limit": limit,
+                        "status": status,
+                        "account_id": account_id,
+                    },
+                    account_number_list_params.AccountNumberListParams,
+                ),
             ),
             model=AccountNumber,
         )
@@ -180,10 +195,13 @@ class AsyncAccountNumbers(AsyncAPIResource):
         """
         return await self._post(
             "/account_numbers",
-            body={
-                "account_id": account_id,
-                "name": name,
-            },
+            body=maybe_transform(
+                {
+                    "account_id": account_id,
+                    "name": name,
+                },
+                account_number_create_params.AccountNumberCreateParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=AccountNumber,
         )
@@ -233,10 +251,13 @@ class AsyncAccountNumbers(AsyncAPIResource):
         """
         return await self._patch(
             f"/account_numbers/{account_number_id}",
-            body={
-                "name": name,
-                "status": status,
-            },
+            body=maybe_transform(
+                {
+                    "name": name,
+                    "status": status,
+                },
+                account_number_update_params.AccountNumberUpdateParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=AccountNumber,
         )
@@ -280,12 +301,15 @@ class AsyncAccountNumbers(AsyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
-                query={
-                    "cursor": cursor,
-                    "limit": limit,
-                    "status": status,
-                    "account_id": account_id,
-                },
+                query=maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "limit": limit,
+                        "status": status,
+                        "account_id": account_id,
+                    },
+                    account_number_list_params.AccountNumberListParams,
+                ),
             ),
             model=AccountNumber,
         )

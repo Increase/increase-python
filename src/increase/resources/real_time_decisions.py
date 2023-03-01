@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from ..types import RealTimeDecision, real_time_decision_action_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._base_client import make_request_options
 
@@ -63,11 +64,14 @@ class RealTimeDecisions(SyncAPIResource):
         """
         return self._post(
             f"/real_time_decisions/{real_time_decision_id}/action",
-            body={
-                "card_authorization": card_authorization,
-                "digital_wallet_token": digital_wallet_token,
-                "digital_wallet_authentication": digital_wallet_authentication,
-            },
+            body=maybe_transform(
+                {
+                    "card_authorization": card_authorization,
+                    "digital_wallet_token": digital_wallet_token,
+                    "digital_wallet_authentication": digital_wallet_authentication,
+                },
+                real_time_decision_action_params.RealTimeDecisionActionParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=RealTimeDecision,
         )
@@ -126,11 +130,14 @@ class AsyncRealTimeDecisions(AsyncAPIResource):
         """
         return await self._post(
             f"/real_time_decisions/{real_time_decision_id}/action",
-            body={
-                "card_authorization": card_authorization,
-                "digital_wallet_token": digital_wallet_token,
-                "digital_wallet_authentication": digital_wallet_authentication,
-            },
+            body=maybe_transform(
+                {
+                    "card_authorization": card_authorization,
+                    "digital_wallet_token": digital_wallet_token,
+                    "digital_wallet_authentication": digital_wallet_authentication,
+                },
+                real_time_decision_action_params.RealTimeDecisionActionParams,
+            ),
             options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
             cast_to=RealTimeDecision,
         )

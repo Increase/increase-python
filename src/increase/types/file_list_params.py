@@ -2,32 +2,35 @@
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import Literal, TypedDict
+from typing import List, Union
+from datetime import datetime
+from typing_extensions import Literal, Annotated, TypedDict
+
+from .._utils import PropertyInfo
 
 __all__ = ["FileListParams", "CreatedAt", "Purpose"]
 
 
 class CreatedAt(TypedDict, total=False):
-    after: str
+    after: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
     """
     Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
     timestamp.
     """
 
-    before: str
+    before: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
     """
     Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
     timestamp.
     """
 
-    on_or_after: str
+    on_or_after: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
     """
     Return results on or after this
     [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
     """
 
-    on_or_before: str
+    on_or_before: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
     """
     Return results on or before this
     [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.

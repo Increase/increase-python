@@ -1,6 +1,7 @@
 # File generated from our OpenAPI spec by Stainless.
 
 from typing import Optional
+from datetime import date, datetime
 from typing_extensions import Literal
 
 from ...types import shared
@@ -127,7 +128,7 @@ class TransactionSourceACHTransferRejection(BaseModel):
 
 
 class TransactionSourceACHTransferReturn(BaseModel):
-    created_at: str
+    created_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the transfer was created.
@@ -168,7 +169,7 @@ class TransactionSourceACHTransferReturn(BaseModel):
 
 
 class TransactionSourceCardDisputeAcceptance(BaseModel):
-    accepted_at: str
+    accepted_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the Card Dispute was accepted.
@@ -315,7 +316,7 @@ class TransactionSourceCheckDepositReturn(BaseModel):
         "unreadable_image",
     ]
 
-    returned_at: str
+    returned_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the check deposit was returned.
@@ -374,7 +375,7 @@ class TransactionSourceCheckTransferRejection(BaseModel):
 
 
 class TransactionSourceCheckTransferStopPaymentRequest(BaseModel):
-    requested_at: str
+    requested_at: datetime
     """The time the stop-payment was requested."""
 
     transaction_id: str
@@ -416,7 +417,7 @@ class TransactionSourceEmpyrealCashDeposit(BaseModel):
 
     bag_id: str
 
-    deposit_date: str
+    deposit_date: datetime
 
 
 class TransactionSourceInboundACHTransfer(BaseModel):
@@ -580,7 +581,7 @@ class TransactionSourceInboundWireDrawdownPaymentReversal(BaseModel):
     description: str
     """The description on the reversal message from Fedwire."""
 
-    input_cycle_date: str
+    input_cycle_date: date
     """The Fedwire cycle date for the wire reversal."""
 
     input_message_accountability_data: str
@@ -592,7 +593,7 @@ class TransactionSourceInboundWireDrawdownPaymentReversal(BaseModel):
     input_source: str
     """The Fedwire input source identifier."""
 
-    previous_message_input_cycle_date: str
+    previous_message_input_cycle_date: date
     """The Fedwire cycle date for the wire transfer that was reversed."""
 
     previous_message_input_message_accountability_data: str
@@ -647,7 +648,7 @@ class TransactionSourceInboundWireReversal(BaseModel):
     financial_institution_to_financial_institution_information: Optional[str]
     """Additional financial institution information included in the wire reversal."""
 
-    input_cycle_date: str
+    input_cycle_date: date
     """The Fedwire cycle date for the wire reversal."""
 
     input_message_accountability_data: str
@@ -659,7 +660,7 @@ class TransactionSourceInboundWireReversal(BaseModel):
     input_source: str
     """The Fedwire input source identifier."""
 
-    previous_message_input_cycle_date: str
+    previous_message_input_cycle_date: date
     """The Fedwire cycle date for the wire transfer that was reversed."""
 
     previous_message_input_message_accountability_data: str
@@ -1127,7 +1128,7 @@ class Transaction(BaseModel):
     For dollars, for example, this is cents.
     """
 
-    created_at: str
+    created_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which the
     Transaction occured.
@@ -1554,7 +1555,7 @@ class DeclinedTransaction(BaseModel):
     For dollars, for example, this is cents.
     """
 
-    created_at: str
+    created_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which the
     Transaction occured.
