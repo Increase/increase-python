@@ -206,6 +206,20 @@ Methods:
 - <code title="post /ach_transfers/{ach_transfer_id}/approve">client.ach_transfers.<a href="./src/increase/resources/ach_transfers.py">approve</a>(ach_transfer_id) -> <a href="./src/increase/types/ach_transfer.py">ACHTransfer</a></code>
 - <code title="post /ach_transfers/{ach_transfer_id}/cancel">client.ach_transfers.<a href="./src/increase/resources/ach_transfers.py">cancel</a>(ach_transfer_id) -> <a href="./src/increase/types/ach_transfer.py">ACHTransfer</a></code>
 
+# InboundACHTransferReturns
+
+Types:
+
+```python
+from increase.types import InboundACHTransferReturn
+```
+
+Methods:
+
+- <code title="post /inbound_ach_transfer_returns">client.inbound_ach_transfer_returns.<a href="./src/increase/resources/inbound_ach_transfer_returns.py">create</a>(\*\*<a href="src/increase/types/inbound_ach_transfer_return_create_params.py">params</a>) -> <a href="./src/increase/types/inbound_ach_transfer_return.py">InboundACHTransferReturn</a></code>
+- <code title="get /inbound_ach_transfer_returns/{inbound_ach_transfer_return_id}">client.inbound_ach_transfer_returns.<a href="./src/increase/resources/inbound_ach_transfer_returns.py">retrieve</a>(inbound_ach_transfer_return_id) -> <a href="./src/increase/types/inbound_ach_transfer_return.py">InboundACHTransferReturn</a></code>
+- <code title="get /inbound_ach_transfer_returns">client.inbound_ach_transfer_returns.<a href="./src/increase/resources/inbound_ach_transfer_returns.py">list</a>(\*\*<a href="src/increase/types/inbound_ach_transfer_return_list_params.py">params</a>) -> <a href="./src/increase/types/inbound_ach_transfer_return.py">SyncPage[InboundACHTransferReturn]</a></code>
+
 # ACHPrenotifications
 
 Types:
@@ -491,6 +505,7 @@ Methods:
 Methods:
 
 - <code title="post /simulations/check_deposits/{check_deposit_id}/reject">client.simulations.check_deposits.<a href="./src/increase/resources/simulations/check_deposits.py">reject</a>(check_deposit_id) -> <a href="./src/increase/types/check_deposit.py">CheckDeposit</a></code>
+- <code title="post /simulations/check_deposits/{check_deposit_id}/return">client.simulations.check*deposits.<a href="./src/increase/resources/simulations/check_deposits.py">return*</a>(check_deposit_id) -> <a href="./src/increase/types/check_deposit.py">CheckDeposit</a></code>
 - <code title="post /simulations/check_deposits/{check_deposit_id}/submit">client.simulations.check_deposits.<a href="./src/increase/resources/simulations/check_deposits.py">submit</a>(check_deposit_id) -> <a href="./src/increase/types/check_deposit.py">CheckDeposit</a></code>
 
 ## InboundWireDrawdownRequests

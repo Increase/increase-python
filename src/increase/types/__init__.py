@@ -74,6 +74,9 @@ from .routing_number_list_params import (
 from .check_deposit_create_params import (
     CheckDepositCreateParams as CheckDepositCreateParams,
 )
+from .inbound_ach_transfer_return import (
+    InboundACHTransferReturn as InboundACHTransferReturn,
+)
 from .wire_transfer_create_params import (
     WireTransferCreateParams as WireTransferCreateParams,
 )
@@ -142,6 +145,12 @@ from .wire_drawdown_request_list_params import (
 )
 from .wire_drawdown_request_create_params import (
     WireDrawdownRequestCreateParams as WireDrawdownRequestCreateParams,
+)
+from .inbound_ach_transfer_return_list_params import (
+    InboundACHTransferReturnListParams as InboundACHTransferReturnListParams,
+)
+from .inbound_ach_transfer_return_create_params import (
+    InboundACHTransferReturnCreateParams as InboundACHTransferReturnCreateParams,
 )
 from .inbound_wire_drawdown_request_list_params import (
     InboundWireDrawdownRequestListParams as InboundWireDrawdownRequestListParams,

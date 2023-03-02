@@ -71,6 +71,8 @@ _CategoryReservedKeywords = TypedDict(
                 "file.created",
                 "group.updated",
                 "group.heartbeat",
+                "inbound_ach_transfer_return.created",
+                "inbound_ach_transfer_return.updated",
                 "inbound_wire_drawdown_request.created",
                 "oauth_connection.created",
                 "oauth_connection.deactivated",

@@ -34,6 +34,7 @@ __all__ = [
     "SourceInboundWireDrawdownPayment",
     "SourceInboundWireReversal",
     "SourceInboundWireTransfer",
+    "SourceInterestPayment",
     "SourceInternalSource",
     "SourceCardRouteRefund",
     "SourceCardRouteSettlement",
@@ -707,6 +708,29 @@ class SourceInboundWireTransfer(BaseModel):
     originator_to_beneficiary_information_line4: Optional[str]
 
 
+class SourceInterestPayment(BaseModel):
+    accrued_on_account_id: Optional[str]
+    """The account on which the interest was accrued."""
+
+    amount: int
+    """The amount in the minor unit of the transaction's currency.
+
+    For dollars, for example, this is cents.
+    """
+
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
+    currency.
+    """
+
+    period_end: datetime
+    """The end of the period for which this transaction paid interest."""
+
+    period_start: datetime
+    """The start of the period for which this transaction paid interest."""
+
+
 class SourceInternalSource(BaseModel):
     amount: int
     """The amount in the minor unit of the transaction's currency.
@@ -924,6 +948,7 @@ class Source(BaseModel):
         "dispute_resolution",
         "empyreal_cash_deposit",
         "inbound_ach_transfer",
+        "inbound_ach_transfer_return_intention",
         "inbound_check",
         "inbound_international_ach_transfer",
         "inbound_real_time_payments_transfer_confirmation",
@@ -931,6 +956,7 @@ class Source(BaseModel):
         "inbound_wire_drawdown_payment",
         "inbound_wire_reversal",
         "inbound_wire_transfer",
+        "interest_payment",
         "internal_general_ledger_transaction",
         "internal_source",
         "card_route_refund",
@@ -1059,6 +1085,13 @@ class Source(BaseModel):
 
     This field will be present in the JSON response if and only if `category` is
     equal to `inbound_wire_transfer`.
+    """
+
+    interest_payment: Optional[SourceInterestPayment]
+    """A Interest Payment object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `interest_payment`.
     """
 
     internal_source: Optional[SourceInternalSource]

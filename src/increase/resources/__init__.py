@@ -29,6 +29,10 @@ from .pending_transactions import PendingTransactions, AsyncPendingTransactions
 from .declined_transactions import DeclinedTransactions, AsyncDeclinedTransactions
 from .digital_wallet_tokens import DigitalWalletTokens, AsyncDigitalWalletTokens
 from .wire_drawdown_requests import WireDrawdownRequests, AsyncWireDrawdownRequests
+from .inbound_ach_transfer_returns import (
+    InboundACHTransferReturns,
+    AsyncInboundACHTransferReturns,
+)
 from .inbound_wire_drawdown_requests import (
     InboundWireDrawdownRequests,
     AsyncInboundWireDrawdownRequests,
@@ -63,6 +67,8 @@ __all__ = [
     "AsyncAccountTransfers",
     "ACHTransfers",
     "AsyncACHTransfers",
+    "InboundACHTransferReturns",
+    "AsyncInboundACHTransferReturns",
     "ACHPrenotifications",
     "AsyncACHPrenotifications",
     "Documents",

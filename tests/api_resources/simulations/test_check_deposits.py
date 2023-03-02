@@ -27,6 +27,13 @@ class TestCheckDeposits:
         )
         assert_matches_type(CheckDeposit, check_deposit, path=["response"])
 
+    @parametrize
+    def test_method_return(self, client: Increase) -> None:
+        check_deposit = client.simulations.check_deposits.return_(
+            "string",
+        )
+        assert_matches_type(CheckDeposit, check_deposit, path=["response"])
+
     @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
     def test_method_submit(self, client: Increase) -> None:
@@ -45,6 +52,13 @@ class TestAsyncCheckDeposits:
     @parametrize
     async def test_method_reject(self, client: AsyncIncrease) -> None:
         check_deposit = await client.simulations.check_deposits.reject(
+            "string",
+        )
+        assert_matches_type(CheckDeposit, check_deposit, path=["response"])
+
+    @parametrize
+    async def test_method_return(self, client: AsyncIncrease) -> None:
+        check_deposit = await client.simulations.check_deposits.return_(
             "string",
         )
         assert_matches_type(CheckDeposit, check_deposit, path=["response"])
