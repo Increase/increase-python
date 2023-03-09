@@ -34,9 +34,9 @@ class RealTimeDecisions(SyncAPIResource):
         real_time_decision_id: str,
         *,
         card_authorization: real_time_decision_action_params.CardAuthorization | NotGiven = NOT_GIVEN,
-        digital_wallet_token: real_time_decision_action_params.DigitalWalletToken | NotGiven = NOT_GIVEN,
         digital_wallet_authentication: real_time_decision_action_params.DigitalWalletAuthentication
         | NotGiven = NOT_GIVEN,
+        digital_wallet_token: real_time_decision_action_params.DigitalWalletToken | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -50,11 +50,11 @@ class RealTimeDecisions(SyncAPIResource):
           card_authorization: If the Real-Time Decision relates to a card authorization attempt, this object
               contains your response to the authorization.
 
-          digital_wallet_token: If the Real-Time Decision relates to a digital wallet token provisioning
-              attempt, this object contains your response to the attempt.
-
           digital_wallet_authentication: If the Real-Time Decision relates to a digital wallet authentication attempt,
               this object contains your response to the authentication.
+
+          digital_wallet_token: If the Real-Time Decision relates to a digital wallet token provisioning
+              attempt, this object contains your response to the attempt.
 
           extra_headers: Send extra headers
 
@@ -100,9 +100,9 @@ class AsyncRealTimeDecisions(AsyncAPIResource):
         real_time_decision_id: str,
         *,
         card_authorization: real_time_decision_action_params.CardAuthorization | NotGiven = NOT_GIVEN,
-        digital_wallet_token: real_time_decision_action_params.DigitalWalletToken | NotGiven = NOT_GIVEN,
         digital_wallet_authentication: real_time_decision_action_params.DigitalWalletAuthentication
         | NotGiven = NOT_GIVEN,
+        digital_wallet_token: real_time_decision_action_params.DigitalWalletToken | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -116,11 +116,11 @@ class AsyncRealTimeDecisions(AsyncAPIResource):
           card_authorization: If the Real-Time Decision relates to a card authorization attempt, this object
               contains your response to the authorization.
 
-          digital_wallet_token: If the Real-Time Decision relates to a digital wallet token provisioning
-              attempt, this object contains your response to the attempt.
-
           digital_wallet_authentication: If the Real-Time Decision relates to a digital wallet authentication attempt,
               this object contains your response to the authentication.
+
+          digital_wallet_token: If the Real-Time Decision relates to a digital wallet token provisioning
+              attempt, this object contains your response to the attempt.
 
           extra_headers: Send extra headers
 

@@ -16,9 +16,9 @@ class RoutingNumbers(SyncAPIResource):
     def list(
         self,
         *,
+        routing_number: str,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
-        routing_number: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -32,12 +32,12 @@ class RoutingNumbers(SyncAPIResource):
         valid routing number for this method is 110000000.
 
         Args:
+          routing_number: Filter financial institutions by routing number.
+
           cursor: Return the page of entries after this one.
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
-
-          routing_number: Filter financial institutions by routing number.
 
           extra_headers: Send extra headers
 
@@ -69,9 +69,9 @@ class AsyncRoutingNumbers(AsyncAPIResource):
     def list(
         self,
         *,
+        routing_number: str,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
-        routing_number: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -85,12 +85,12 @@ class AsyncRoutingNumbers(AsyncAPIResource):
         valid routing number for this method is 110000000.
 
         Args:
+          routing_number: Filter financial institutions by routing number.
+
           cursor: Return the page of entries after this one.
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
-
-          routing_number: Filter financial institutions by routing number.
 
           extra_headers: Send extra headers
 

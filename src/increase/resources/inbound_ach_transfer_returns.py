@@ -22,7 +22,6 @@ class InboundACHTransferReturns(SyncAPIResource):
     def create(
         self,
         *,
-        transaction_id: str,
         reason: Literal[
             "authorization_revoked_by_customer",
             "payment_stopped",
@@ -33,6 +32,7 @@ class InboundACHTransferReturns(SyncAPIResource):
             "duplicate_entry",
             "corporate_customer_advised_not_authorized",
         ],
+        transaction_id: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -43,11 +43,11 @@ class InboundACHTransferReturns(SyncAPIResource):
         Create an ACH Return
 
         Args:
-          transaction_id: The transaction identifier of the Inbound ACH Transfer to return to the
-              originating financial institution.
-
           reason: The reason why this transfer will be returned. The most usual return codes are
               `payment_stopped` for debits and `credit_entry_refused_by_receiver` for credits.
+
+          transaction_id: The transaction identifier of the Inbound ACH Transfer to return to the
+              originating financial institution.
 
           extra_headers: Send extra headers
 
@@ -134,7 +134,6 @@ class AsyncInboundACHTransferReturns(AsyncAPIResource):
     async def create(
         self,
         *,
-        transaction_id: str,
         reason: Literal[
             "authorization_revoked_by_customer",
             "payment_stopped",
@@ -145,6 +144,7 @@ class AsyncInboundACHTransferReturns(AsyncAPIResource):
             "duplicate_entry",
             "corporate_customer_advised_not_authorized",
         ],
+        transaction_id: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -155,11 +155,11 @@ class AsyncInboundACHTransferReturns(AsyncAPIResource):
         Create an ACH Return
 
         Args:
-          transaction_id: The transaction identifier of the Inbound ACH Transfer to return to the
-              originating financial institution.
-
           reason: The reason why this transfer will be returned. The most usual return codes are
               `payment_stopped` for debits and `credit_entry_refused_by_receiver` for credits.
+
+          transaction_id: The transaction identifier of the Inbound ACH Transfer to return to the
+              originating financial institution.
 
           extra_headers: Send extra headers
 

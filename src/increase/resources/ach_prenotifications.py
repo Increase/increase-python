@@ -25,6 +25,7 @@ class ACHPrenotifications(SyncAPIResource):
         self,
         *,
         account_number: str,
+        routing_number: str,
         addendum: str | NotGiven = NOT_GIVEN,
         company_descriptive_date: str | NotGiven = NOT_GIVEN,
         company_discretionary_data: str | NotGiven = NOT_GIVEN,
@@ -34,7 +35,6 @@ class ACHPrenotifications(SyncAPIResource):
         effective_date: Union[str, date] | NotGiven = NOT_GIVEN,
         individual_id: str | NotGiven = NOT_GIVEN,
         individual_name: str | NotGiven = NOT_GIVEN,
-        routing_number: str,
         standard_entry_class_code: Literal[
             "corporate_credit_or_debit", "prearranged_payments_and_deposit", "internet_initiated"
         ]
@@ -50,6 +50,9 @@ class ACHPrenotifications(SyncAPIResource):
 
         Args:
           account_number: The account number for the destination account.
+
+          routing_number: The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
+              destination account.
 
           addendum: Additional information that will be sent to the recipient.
 
@@ -70,9 +73,6 @@ class ACHPrenotifications(SyncAPIResource):
 
           individual_name: The name of the transfer recipient. This value is information and not verified
               by the recipient's bank.
-
-          routing_number: The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-              destination account.
 
           standard_entry_class_code: The Standard Entry Class (SEC) code to use for the ACH Prenotification.
 
@@ -125,9 +125,9 @@ class ACHPrenotifications(SyncAPIResource):
     def list(
         self,
         *,
+        created_at: ach_prenotification_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
-        created_at: ach_prenotification_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -174,6 +174,7 @@ class AsyncACHPrenotifications(AsyncAPIResource):
         self,
         *,
         account_number: str,
+        routing_number: str,
         addendum: str | NotGiven = NOT_GIVEN,
         company_descriptive_date: str | NotGiven = NOT_GIVEN,
         company_discretionary_data: str | NotGiven = NOT_GIVEN,
@@ -183,7 +184,6 @@ class AsyncACHPrenotifications(AsyncAPIResource):
         effective_date: Union[str, date] | NotGiven = NOT_GIVEN,
         individual_id: str | NotGiven = NOT_GIVEN,
         individual_name: str | NotGiven = NOT_GIVEN,
-        routing_number: str,
         standard_entry_class_code: Literal[
             "corporate_credit_or_debit", "prearranged_payments_and_deposit", "internet_initiated"
         ]
@@ -199,6 +199,9 @@ class AsyncACHPrenotifications(AsyncAPIResource):
 
         Args:
           account_number: The account number for the destination account.
+
+          routing_number: The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
+              destination account.
 
           addendum: Additional information that will be sent to the recipient.
 
@@ -219,9 +222,6 @@ class AsyncACHPrenotifications(AsyncAPIResource):
 
           individual_name: The name of the transfer recipient. This value is information and not verified
               by the recipient's bank.
-
-          routing_number: The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-              destination account.
 
           standard_entry_class_code: The Standard Entry Class (SEC) code to use for the ACH Prenotification.
 
@@ -274,9 +274,9 @@ class AsyncACHPrenotifications(AsyncAPIResource):
     def list(
         self,
         *,
+        created_at: ach_prenotification_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
-        created_at: ach_prenotification_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,

@@ -21,9 +21,10 @@ class ACHTransfers(SyncAPIResource):
         self,
         *,
         account_id: str,
+        amount: int,
+        statement_descriptor: str,
         account_number: str | NotGiven = NOT_GIVEN,
         addendum: str | NotGiven = NOT_GIVEN,
-        amount: int,
         company_descriptive_date: str | NotGiven = NOT_GIVEN,
         company_discretionary_data: str | NotGiven = NOT_GIVEN,
         company_entry_description: str | NotGiven = NOT_GIVEN,
@@ -39,7 +40,6 @@ class ACHTransfers(SyncAPIResource):
             "corporate_credit_or_debit", "prearranged_payments_and_deposit", "internet_initiated"
         ]
         | NotGiven = NOT_GIVEN,
-        statement_descriptor: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -52,14 +52,21 @@ class ACHTransfers(SyncAPIResource):
         Args:
           account_id: The Increase identifier for the account that will send the transfer.
 
+          amount: The transfer amount in cents. A positive amount originates a credit transfer
+              pushing funds to the receiving account. A negative amount originates a debit
+              transfer pulling funds from the receiving account.
+
+          statement_descriptor: A description you choose to give the transfer. This will be saved with the
+              transfer details, displayed in the dashboard, and returned by the API. If
+              `individual_name` and `company_name` are not explicitly set by this API, the
+              `statement_descriptor` will be sent in those fields to the receiving bank to
+              help the customer recognize the transfer. You are highly encouraged to pass
+              `individual_name` and `company_name` instead of relying on this fallback.
+
           account_number: The account number for the destination account.
 
           addendum: Additional information that will be sent to the recipient. This is included in
               the transfer data sent to the receiving bank.
-
-          amount: The transfer amount in cents. A positive amount originates a credit transfer
-              pushing funds to the receiving account. A negative amount originates a debit
-              transfer pulling funds from the receiving account.
 
           company_descriptive_date: The description of the date of the transfer, usually in the format `YYYYMMDD`.
               This is included in the transfer data sent to the receiving bank.
@@ -92,13 +99,6 @@ class ACHTransfers(SyncAPIResource):
               destination account.
 
           standard_entry_class_code: The Standard Entry Class (SEC) code to use for the transfer.
-
-          statement_descriptor: A description you choose to give the transfer. This will be saved with the
-              transfer details, displayed in the dashboard, and returned by the API. If
-              `individual_name` and `company_name` are not explicitly set by this API, the
-              `statement_descriptor` will be sent in those fields to the receiving bank to
-              help the customer recognize the transfer. You are highly encouraged to pass
-              `individual_name` and `company_name` instead of relying on this fallback.
 
           extra_headers: Send extra headers
 
@@ -154,11 +154,11 @@ class ACHTransfers(SyncAPIResource):
     def list(
         self,
         *,
-        cursor: str | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
         account_id: str | NotGiven = NOT_GIVEN,
-        external_account_id: str | NotGiven = NOT_GIVEN,
         created_at: ach_transfer_list_params.CreatedAt | NotGiven = NOT_GIVEN,
+        cursor: str | NotGiven = NOT_GIVEN,
+        external_account_id: str | NotGiven = NOT_GIVEN,
+        limit: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -169,14 +169,14 @@ class ACHTransfers(SyncAPIResource):
         List ACH Transfers
 
         Args:
+          account_id: Filter ACH Transfers to those that originated from the specified Account.
+
           cursor: Return the page of entries after this one.
+
+          external_account_id: Filter ACH Transfers to those made to the specified External Account.
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
-
-          account_id: Filter ACH Transfers to those that originated from the specified Account.
-
-          external_account_id: Filter ACH Transfers to those made to the specified External Account.
 
           extra_headers: Send extra headers
 
@@ -245,9 +245,10 @@ class AsyncACHTransfers(AsyncAPIResource):
         self,
         *,
         account_id: str,
+        amount: int,
+        statement_descriptor: str,
         account_number: str | NotGiven = NOT_GIVEN,
         addendum: str | NotGiven = NOT_GIVEN,
-        amount: int,
         company_descriptive_date: str | NotGiven = NOT_GIVEN,
         company_discretionary_data: str | NotGiven = NOT_GIVEN,
         company_entry_description: str | NotGiven = NOT_GIVEN,
@@ -263,7 +264,6 @@ class AsyncACHTransfers(AsyncAPIResource):
             "corporate_credit_or_debit", "prearranged_payments_and_deposit", "internet_initiated"
         ]
         | NotGiven = NOT_GIVEN,
-        statement_descriptor: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -276,14 +276,21 @@ class AsyncACHTransfers(AsyncAPIResource):
         Args:
           account_id: The Increase identifier for the account that will send the transfer.
 
+          amount: The transfer amount in cents. A positive amount originates a credit transfer
+              pushing funds to the receiving account. A negative amount originates a debit
+              transfer pulling funds from the receiving account.
+
+          statement_descriptor: A description you choose to give the transfer. This will be saved with the
+              transfer details, displayed in the dashboard, and returned by the API. If
+              `individual_name` and `company_name` are not explicitly set by this API, the
+              `statement_descriptor` will be sent in those fields to the receiving bank to
+              help the customer recognize the transfer. You are highly encouraged to pass
+              `individual_name` and `company_name` instead of relying on this fallback.
+
           account_number: The account number for the destination account.
 
           addendum: Additional information that will be sent to the recipient. This is included in
               the transfer data sent to the receiving bank.
-
-          amount: The transfer amount in cents. A positive amount originates a credit transfer
-              pushing funds to the receiving account. A negative amount originates a debit
-              transfer pulling funds from the receiving account.
 
           company_descriptive_date: The description of the date of the transfer, usually in the format `YYYYMMDD`.
               This is included in the transfer data sent to the receiving bank.
@@ -316,13 +323,6 @@ class AsyncACHTransfers(AsyncAPIResource):
               destination account.
 
           standard_entry_class_code: The Standard Entry Class (SEC) code to use for the transfer.
-
-          statement_descriptor: A description you choose to give the transfer. This will be saved with the
-              transfer details, displayed in the dashboard, and returned by the API. If
-              `individual_name` and `company_name` are not explicitly set by this API, the
-              `statement_descriptor` will be sent in those fields to the receiving bank to
-              help the customer recognize the transfer. You are highly encouraged to pass
-              `individual_name` and `company_name` instead of relying on this fallback.
 
           extra_headers: Send extra headers
 
@@ -378,11 +378,11 @@ class AsyncACHTransfers(AsyncAPIResource):
     def list(
         self,
         *,
-        cursor: str | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
         account_id: str | NotGiven = NOT_GIVEN,
-        external_account_id: str | NotGiven = NOT_GIVEN,
         created_at: ach_transfer_list_params.CreatedAt | NotGiven = NOT_GIVEN,
+        cursor: str | NotGiven = NOT_GIVEN,
+        external_account_id: str | NotGiven = NOT_GIVEN,
+        limit: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -393,14 +393,14 @@ class AsyncACHTransfers(AsyncAPIResource):
         List ACH Transfers
 
         Args:
+          account_id: Filter ACH Transfers to those that originated from the specified Account.
+
           cursor: Return the page of entries after this one.
+
+          external_account_id: Filter ACH Transfers to those made to the specified External Account.
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
-
-          account_id: Filter ACH Transfers to those that originated from the specified Account.
-
-          external_account_id: Filter ACH Transfers to those made to the specified External Account.
 
           extra_headers: Send extra headers
 

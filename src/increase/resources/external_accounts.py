@@ -23,10 +23,10 @@ class ExternalAccounts(SyncAPIResource):
     def create(
         self,
         *,
-        routing_number: str,
         account_number: str,
-        funding: Literal["checking", "savings", "other"] | NotGiven = NOT_GIVEN,
         description: str,
+        routing_number: str,
+        funding: Literal["checking", "savings", "other"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -37,14 +37,14 @@ class ExternalAccounts(SyncAPIResource):
         Create an External Account
 
         Args:
+          account_number: The account number for the destination account.
+
+          description: The name you choose for the Account.
+
           routing_number: The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
               destination account.
 
-          account_number: The account number for the destination account.
-
           funding: The type of the destination account. Defaults to `checking`.
-
-          description: The name you choose for the Account.
 
           extra_headers: Send extra headers
 
@@ -174,10 +174,10 @@ class AsyncExternalAccounts(AsyncAPIResource):
     async def create(
         self,
         *,
-        routing_number: str,
         account_number: str,
-        funding: Literal["checking", "savings", "other"] | NotGiven = NOT_GIVEN,
         description: str,
+        routing_number: str,
+        funding: Literal["checking", "savings", "other"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -188,14 +188,14 @@ class AsyncExternalAccounts(AsyncAPIResource):
         Create an External Account
 
         Args:
+          account_number: The account number for the destination account.
+
+          description: The name you choose for the Account.
+
           routing_number: The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
               destination account.
 
-          account_number: The account number for the destination account.
-
           funding: The type of the destination account. Defaults to `checking`.
-
-          description: The name you choose for the Account.
 
           extra_headers: Send extra headers
 

@@ -24,7 +24,6 @@ class EventSubscriptions(SyncAPIResource):
         self,
         *,
         url: str,
-        shared_secret: str | NotGiven = NOT_GIVEN,
         selected_event_category: Literal[
             "account.created",
             "account.updated",
@@ -76,6 +75,7 @@ class EventSubscriptions(SyncAPIResource):
             "wire_transfer.updated",
         ]
         | NotGiven = NOT_GIVEN,
+        shared_secret: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -88,11 +88,11 @@ class EventSubscriptions(SyncAPIResource):
         Args:
           url: The URL you'd like us to send webhooks to.
 
-          shared_secret: The key that will be used to sign webhooks. If no value is passed, a random
-              string will be used as default.
-
           selected_event_category: If specified, this subscription will only receive webhooks for Events with the
               specified `category`.
+
+          shared_secret: The key that will be used to sign webhooks. If no value is passed, a random
+              string will be used as default.
 
           extra_headers: Send extra headers
 
@@ -211,7 +211,6 @@ class AsyncEventSubscriptions(AsyncAPIResource):
         self,
         *,
         url: str,
-        shared_secret: str | NotGiven = NOT_GIVEN,
         selected_event_category: Literal[
             "account.created",
             "account.updated",
@@ -263,6 +262,7 @@ class AsyncEventSubscriptions(AsyncAPIResource):
             "wire_transfer.updated",
         ]
         | NotGiven = NOT_GIVEN,
+        shared_secret: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -275,11 +275,11 @@ class AsyncEventSubscriptions(AsyncAPIResource):
         Args:
           url: The URL you'd like us to send webhooks to.
 
-          shared_secret: The key that will be used to sign webhooks. If no value is passed, a random
-              string will be used as default.
-
           selected_event_category: If specified, this subscription will only receive webhooks for Events with the
               specified `category`.
+
+          shared_secret: The key that will be used to sign webhooks. If no value is passed, a random
+              string will be used as default.
 
           extra_headers: Send extra headers
 

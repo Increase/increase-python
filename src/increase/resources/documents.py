@@ -33,11 +33,11 @@ class Documents(SyncAPIResource):
     def list(
         self,
         *,
-        cursor: str | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        entity_id: str | NotGiven = NOT_GIVEN,
         category: document_list_params.Category | NotGiven = NOT_GIVEN,
         created_at: document_list_params.CreatedAt | NotGiven = NOT_GIVEN,
+        cursor: str | NotGiven = NOT_GIVEN,
+        entity_id: str | NotGiven = NOT_GIVEN,
+        limit: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -50,10 +50,10 @@ class Documents(SyncAPIResource):
         Args:
           cursor: Return the page of entries after this one.
 
+          entity_id: Filter Documents to ones belonging to the specified Entity.
+
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
-
-          entity_id: Filter Documents to ones belonging to the specified Entity.
 
           extra_headers: Send extra headers
 
@@ -104,11 +104,11 @@ class AsyncDocuments(AsyncAPIResource):
     def list(
         self,
         *,
-        cursor: str | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        entity_id: str | NotGiven = NOT_GIVEN,
         category: document_list_params.Category | NotGiven = NOT_GIVEN,
         created_at: document_list_params.CreatedAt | NotGiven = NOT_GIVEN,
+        cursor: str | NotGiven = NOT_GIVEN,
+        entity_id: str | NotGiven = NOT_GIVEN,
+        limit: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -121,10 +121,10 @@ class AsyncDocuments(AsyncAPIResource):
         Args:
           cursor: Return the page of entries after this one.
 
+          entity_id: Filter Documents to ones belonging to the specified Entity.
+
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
-
-          entity_id: Filter Documents to ones belonging to the specified Entity.
 
           extra_headers: Send extra headers
 

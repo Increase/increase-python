@@ -33,9 +33,9 @@ class PendingTransactions(SyncAPIResource):
     def list(
         self,
         *,
+        account_id: str | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
-        account_id: str | NotGiven = NOT_GIVEN,
         route_id: str | NotGiven = NOT_GIVEN,
         source_id: str | NotGiven = NOT_GIVEN,
         status: pending_transaction_list_params.Status | NotGiven = NOT_GIVEN,
@@ -49,12 +49,12 @@ class PendingTransactions(SyncAPIResource):
         List Pending Transactions
 
         Args:
+          account_id: Filter pending transactions to those belonging to the specified Account.
+
           cursor: Return the page of entries after this one.
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
-
-          account_id: Filter pending transactions to those belonging to the specified Account.
 
           route_id: Filter pending transactions to those belonging to the specified Route.
 
@@ -110,9 +110,9 @@ class AsyncPendingTransactions(AsyncAPIResource):
     def list(
         self,
         *,
+        account_id: str | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
-        account_id: str | NotGiven = NOT_GIVEN,
         route_id: str | NotGiven = NOT_GIVEN,
         source_id: str | NotGiven = NOT_GIVEN,
         status: pending_transaction_list_params.Status | NotGiven = NOT_GIVEN,
@@ -126,12 +126,12 @@ class AsyncPendingTransactions(AsyncAPIResource):
         List Pending Transactions
 
         Args:
+          account_id: Filter pending transactions to those belonging to the specified Account.
+
           cursor: Return the page of entries after this one.
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
-
-          account_id: Filter pending transactions to those belonging to the specified Account.
 
           route_id: Filter pending transactions to those belonging to the specified Route.
 

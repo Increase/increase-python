@@ -20,7 +20,6 @@ class Files(SyncAPIResource):
         self,
         *,
         file: FileTypes,
-        description: str | NotGiven = NOT_GIVEN,
         purpose: Literal[
             "check_image_front",
             "check_image_back",
@@ -32,6 +31,7 @@ class Files(SyncAPIResource):
             "digital_wallet_app_icon",
             "entity_supplemental_document",
         ],
+        description: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -48,9 +48,9 @@ class Files(SyncAPIResource):
               [RFC 7578](https://datatracker.ietf.org/doc/html/rfc7578) which defines file
               transfers for the multipart/form-data protocol.
 
-          description: The description you choose to give the File.
-
           purpose: What the File will be used for in Increase's systems.
+
+          description: The description you choose to give the File.
 
           extra_headers: Send extra headers
 
@@ -100,9 +100,9 @@ class Files(SyncAPIResource):
     def list(
         self,
         *,
+        created_at: file_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
-        created_at: file_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         purpose: file_list_params.Purpose | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -151,7 +151,6 @@ class AsyncFiles(AsyncAPIResource):
         self,
         *,
         file: FileTypes,
-        description: str | NotGiven = NOT_GIVEN,
         purpose: Literal[
             "check_image_front",
             "check_image_back",
@@ -163,6 +162,7 @@ class AsyncFiles(AsyncAPIResource):
             "digital_wallet_app_icon",
             "entity_supplemental_document",
         ],
+        description: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -179,9 +179,9 @@ class AsyncFiles(AsyncAPIResource):
               [RFC 7578](https://datatracker.ietf.org/doc/html/rfc7578) which defines file
               transfers for the multipart/form-data protocol.
 
-          description: The description you choose to give the File.
-
           purpose: What the File will be used for in Increase's systems.
+
+          description: The description you choose to give the File.
 
           extra_headers: Send extra headers
 
@@ -231,9 +231,9 @@ class AsyncFiles(AsyncAPIResource):
     def list(
         self,
         *,
+        created_at: file_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
-        created_at: file_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         purpose: file_list_params.Purpose | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.

@@ -117,10 +117,10 @@ class AccountNumbers(SyncAPIResource):
     def list(
         self,
         *,
+        account_id: str | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         status: Literal["active", "disabled", "canceled"] | NotGiven = NOT_GIVEN,
-        account_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -131,14 +131,14 @@ class AccountNumbers(SyncAPIResource):
         List Account Numbers
 
         Args:
+          account_id: Filter Account Numbers to those belonging to the specified Account.
+
           cursor: Return the page of entries after this one.
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
 
           status: The status to retrieve Account Numbers for.
-
-          account_id: Filter Account Numbers to those belonging to the specified Account.
 
           extra_headers: Send extra headers
 
@@ -265,10 +265,10 @@ class AsyncAccountNumbers(AsyncAPIResource):
     def list(
         self,
         *,
+        account_id: str | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         status: Literal["active", "disabled", "canceled"] | NotGiven = NOT_GIVEN,
-        account_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -279,14 +279,14 @@ class AsyncAccountNumbers(AsyncAPIResource):
         List Account Numbers
 
         Args:
+          account_id: Filter Account Numbers to those belonging to the specified Account.
+
           cursor: Return the page of entries after this one.
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
 
           status: The status to retrieve Account Numbers for.
-
-          account_id: Filter Account Numbers to those belonging to the specified Account.
 
           extra_headers: Send extra headers
 

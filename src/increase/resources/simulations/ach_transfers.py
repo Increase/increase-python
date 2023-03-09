@@ -27,8 +27,8 @@ class ACHTransfers(SyncAPIResource):
         company_descriptive_date: str | NotGiven = NOT_GIVEN,
         company_discretionary_data: str | NotGiven = NOT_GIVEN,
         company_entry_description: str | NotGiven = NOT_GIVEN,
-        company_name: str | NotGiven = NOT_GIVEN,
         company_id: str | NotGiven = NOT_GIVEN,
+        company_name: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -57,9 +57,9 @@ class ACHTransfers(SyncAPIResource):
 
           company_entry_description: The description of the transfer set by the sender.
 
-          company_name: The name of the sender.
-
           company_id: The sender's company id.
+
+          company_name: The name of the sender.
 
           extra_headers: Send extra headers
 
@@ -177,8 +177,8 @@ class AsyncACHTransfers(AsyncAPIResource):
         company_descriptive_date: str | NotGiven = NOT_GIVEN,
         company_discretionary_data: str | NotGiven = NOT_GIVEN,
         company_entry_description: str | NotGiven = NOT_GIVEN,
-        company_name: str | NotGiven = NOT_GIVEN,
         company_id: str | NotGiven = NOT_GIVEN,
+        company_name: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -207,9 +207,9 @@ class AsyncACHTransfers(AsyncAPIResource):
 
           company_entry_description: The description of the transfer set by the sender.
 
-          company_name: The name of the sender.
-
           company_id: The sender's company id.
+
+          company_name: The name of the sender.
 
           extra_headers: Send extra headers
 

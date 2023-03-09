@@ -29,14 +29,14 @@ class Entities(SyncAPIResource):
     def create(
         self,
         *,
+        relationship: Literal["affiliated", "informational", "unaffiliated"],
         structure: Literal["corporation", "natural_person", "joint", "trust"],
         corporation: entity_create_params.Corporation | NotGiven = NOT_GIVEN,
-        natural_person: entity_create_params.NaturalPerson | NotGiven = NOT_GIVEN,
-        joint: entity_create_params.Joint | NotGiven = NOT_GIVEN,
-        trust: entity_create_params.Trust | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
-        relationship: Literal["affiliated", "informational", "unaffiliated"],
+        joint: entity_create_params.Joint | NotGiven = NOT_GIVEN,
+        natural_person: entity_create_params.NaturalPerson | NotGiven = NOT_GIVEN,
         supplemental_documents: List[entity_create_params.SupplementalDocument] | NotGiven = NOT_GIVEN,
+        trust: entity_create_params.Trust | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -47,27 +47,27 @@ class Entities(SyncAPIResource):
         Create an Entity
 
         Args:
+          relationship: The relationship between your group and the entity.
+
           structure: The type of Entity to create.
 
           corporation: Details of the corporation entity to create. Required if `structure` is equal to
               `corporation`.
+
+          description: The description you choose to give the entity.
+
+          joint: Details of the joint entity to create. Required if `structure` is equal to
+              `joint`.
 
           natural_person: Details of the natural person entity to create. Required if `structure` is equal
               to `natural_person`. Natural people entities should be submitted with
               `social_security_number` or `individual_taxpayer_identification_number`
               identification methods.
 
-          joint: Details of the joint entity to create. Required if `structure` is equal to
-              `joint`.
+          supplemental_documents: Additional documentation associated with the entity.
 
           trust: Details of the trust entity to create. Required if `structure` is equal to
               `trust`.
-
-          description: The description you choose to give the entity.
-
-          relationship: The relationship between your group and the entity.
-
-          supplemental_documents: Additional documentation associated with the entity.
 
           extra_headers: Send extra headers
 
@@ -166,14 +166,14 @@ class AsyncEntities(AsyncAPIResource):
     async def create(
         self,
         *,
+        relationship: Literal["affiliated", "informational", "unaffiliated"],
         structure: Literal["corporation", "natural_person", "joint", "trust"],
         corporation: entity_create_params.Corporation | NotGiven = NOT_GIVEN,
-        natural_person: entity_create_params.NaturalPerson | NotGiven = NOT_GIVEN,
-        joint: entity_create_params.Joint | NotGiven = NOT_GIVEN,
-        trust: entity_create_params.Trust | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
-        relationship: Literal["affiliated", "informational", "unaffiliated"],
+        joint: entity_create_params.Joint | NotGiven = NOT_GIVEN,
+        natural_person: entity_create_params.NaturalPerson | NotGiven = NOT_GIVEN,
         supplemental_documents: List[entity_create_params.SupplementalDocument] | NotGiven = NOT_GIVEN,
+        trust: entity_create_params.Trust | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -184,27 +184,27 @@ class AsyncEntities(AsyncAPIResource):
         Create an Entity
 
         Args:
+          relationship: The relationship between your group and the entity.
+
           structure: The type of Entity to create.
 
           corporation: Details of the corporation entity to create. Required if `structure` is equal to
               `corporation`.
+
+          description: The description you choose to give the entity.
+
+          joint: Details of the joint entity to create. Required if `structure` is equal to
+              `joint`.
 
           natural_person: Details of the natural person entity to create. Required if `structure` is equal
               to `natural_person`. Natural people entities should be submitted with
               `social_security_number` or `individual_taxpayer_identification_number`
               identification methods.
 
-          joint: Details of the joint entity to create. Required if `structure` is equal to
-              `joint`.
+          supplemental_documents: Additional documentation associated with the entity.
 
           trust: Details of the trust entity to create. Required if `structure` is equal to
               `trust`.
-
-          description: The description you choose to give the entity.
-
-          relationship: The relationship between your group and the entity.
-
-          supplemental_documents: Additional documentation associated with the entity.
 
           extra_headers: Send extra headers
 

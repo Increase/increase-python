@@ -24,8 +24,8 @@ class WireDrawdownRequests(SyncAPIResource):
         amount: int,
         message_to_recipient: str,
         recipient_account_number: str,
-        recipient_routing_number: str,
         recipient_name: str,
+        recipient_routing_number: str,
         recipient_address_line1: str | NotGiven = NOT_GIVEN,
         recipient_address_line2: str | NotGiven = NOT_GIVEN,
         recipient_address_line3: str | NotGiven = NOT_GIVEN,
@@ -47,9 +47,9 @@ class WireDrawdownRequests(SyncAPIResource):
 
           recipient_account_number: The drawdown request's recipient's account number.
 
-          recipient_routing_number: The drawdown request's recipient's routing number.
-
           recipient_name: The drawdown request's recipient's name.
+
+          recipient_routing_number: The drawdown request's recipient's routing number.
 
           recipient_address_line1: Line 1 of the drawdown request's recipient's address.
 
@@ -153,8 +153,8 @@ class AsyncWireDrawdownRequests(AsyncAPIResource):
         amount: int,
         message_to_recipient: str,
         recipient_account_number: str,
-        recipient_routing_number: str,
         recipient_name: str,
+        recipient_routing_number: str,
         recipient_address_line1: str | NotGiven = NOT_GIVEN,
         recipient_address_line2: str | NotGiven = NOT_GIVEN,
         recipient_address_line3: str | NotGiven = NOT_GIVEN,
@@ -176,9 +176,9 @@ class AsyncWireDrawdownRequests(AsyncAPIResource):
 
           recipient_account_number: The drawdown request's recipient's account number.
 
-          recipient_routing_number: The drawdown request's recipient's routing number.
-
           recipient_name: The drawdown request's recipient's name.
+
+          recipient_routing_number: The drawdown request's recipient's routing number.
 
           recipient_address_line1: Line 1 of the drawdown request's recipient's address.
 

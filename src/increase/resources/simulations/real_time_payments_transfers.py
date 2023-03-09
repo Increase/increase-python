@@ -20,11 +20,11 @@ class RealTimePaymentsTransfers(SyncAPIResource):
         *,
         account_number_id: str,
         amount: int,
-        request_for_payment_id: str | NotGiven = NOT_GIVEN,
-        debtor_name: str | NotGiven = NOT_GIVEN,
         debtor_account_number: str | NotGiven = NOT_GIVEN,
+        debtor_name: str | NotGiven = NOT_GIVEN,
         debtor_routing_number: str | NotGiven = NOT_GIVEN,
         remittance_information: str | NotGiven = NOT_GIVEN,
+        request_for_payment_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -42,15 +42,15 @@ class RealTimePaymentsTransfers(SyncAPIResource):
 
           amount: The transfer amount in USD cents. Must be positive.
 
-          request_for_payment_id: The identifier of a pending Request for Payment that this transfer will fulfill.
+          debtor_account_number: The account number of the account that sent the transfer.
 
           debtor_name: The name provided by the sender of the transfer.
-
-          debtor_account_number: The account number of the account that sent the transfer.
 
           debtor_routing_number: The routing number of the account that sent the transfer.
 
           remittance_information: Additional information included with the transfer.
+
+          request_for_payment_id: The identifier of a pending Request for Payment that this transfer will fulfill.
 
           extra_headers: Send extra headers
 
@@ -83,11 +83,11 @@ class AsyncRealTimePaymentsTransfers(AsyncAPIResource):
         *,
         account_number_id: str,
         amount: int,
-        request_for_payment_id: str | NotGiven = NOT_GIVEN,
-        debtor_name: str | NotGiven = NOT_GIVEN,
         debtor_account_number: str | NotGiven = NOT_GIVEN,
+        debtor_name: str | NotGiven = NOT_GIVEN,
         debtor_routing_number: str | NotGiven = NOT_GIVEN,
         remittance_information: str | NotGiven = NOT_GIVEN,
+        request_for_payment_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -105,15 +105,15 @@ class AsyncRealTimePaymentsTransfers(AsyncAPIResource):
 
           amount: The transfer amount in USD cents. Must be positive.
 
-          request_for_payment_id: The identifier of a pending Request for Payment that this transfer will fulfill.
+          debtor_account_number: The account number of the account that sent the transfer.
 
           debtor_name: The name provided by the sender of the transfer.
-
-          debtor_account_number: The account number of the account that sent the transfer.
 
           debtor_routing_number: The routing number of the account that sent the transfer.
 
           remittance_information: Additional information included with the transfer.
+
+          request_for_payment_id: The identifier of a pending Request for Payment that this transfer will fulfill.
 
           extra_headers: Send extra headers
 

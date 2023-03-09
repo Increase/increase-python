@@ -17,16 +17,16 @@ class WireTransfers(SyncAPIResource):
         self,
         *,
         account_id: str,
-        account_number: str | NotGiven = NOT_GIVEN,
-        routing_number: str | NotGiven = NOT_GIVEN,
-        external_account_id: str | NotGiven = NOT_GIVEN,
         amount: int,
-        message_to_recipient: str,
         beneficiary_name: str,
+        message_to_recipient: str,
+        account_number: str | NotGiven = NOT_GIVEN,
         beneficiary_address_line1: str | NotGiven = NOT_GIVEN,
         beneficiary_address_line2: str | NotGiven = NOT_GIVEN,
         beneficiary_address_line3: str | NotGiven = NOT_GIVEN,
+        external_account_id: str | NotGiven = NOT_GIVEN,
         require_approval: bool | NotGiven = NOT_GIVEN,
+        routing_number: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -39,19 +39,13 @@ class WireTransfers(SyncAPIResource):
         Args:
           account_id: The identifier for the account that will send the transfer.
 
-          account_number: The account number for the destination account.
-
-          routing_number: The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-              destination account.
-
-          external_account_id: The ID of an External Account to initiate a transfer to. If this parameter is
-              provided, `account_number` and `routing_number` must be absent.
-
           amount: The transfer amount in cents.
+
+          beneficiary_name: The beneficiary's name.
 
           message_to_recipient: The message that will show on the recipient's bank statement.
 
-          beneficiary_name: The beneficiary's name.
+          account_number: The account number for the destination account.
 
           beneficiary_address_line1: The beneficiary's address line 1.
 
@@ -59,7 +53,13 @@ class WireTransfers(SyncAPIResource):
 
           beneficiary_address_line3: The beneficiary's address line 3.
 
+          external_account_id: The ID of an External Account to initiate a transfer to. If this parameter is
+              provided, `account_number` and `routing_number` must be absent.
+
           require_approval: Whether the transfer requires explicit approval via the dashboard or API.
+
+          routing_number: The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
+              destination account.
 
           extra_headers: Send extra headers
 
@@ -109,11 +109,11 @@ class WireTransfers(SyncAPIResource):
     def list(
         self,
         *,
-        cursor: str | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
         account_id: str | NotGiven = NOT_GIVEN,
-        external_account_id: str | NotGiven = NOT_GIVEN,
         created_at: wire_transfer_list_params.CreatedAt | NotGiven = NOT_GIVEN,
+        cursor: str | NotGiven = NOT_GIVEN,
+        external_account_id: str | NotGiven = NOT_GIVEN,
+        limit: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -124,14 +124,14 @@ class WireTransfers(SyncAPIResource):
         List Wire Transfers
 
         Args:
+          account_id: Filter Wire Transfers to those belonging to the specified Account.
+
           cursor: Return the page of entries after this one.
+
+          external_account_id: Filter Wire Transfers to those made to the specified External Account.
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
-
-          account_id: Filter Wire Transfers to those belonging to the specified Account.
-
-          external_account_id: Filter Wire Transfers to those made to the specified External Account.
 
           extra_headers: Send extra headers
 
@@ -243,16 +243,16 @@ class AsyncWireTransfers(AsyncAPIResource):
         self,
         *,
         account_id: str,
-        account_number: str | NotGiven = NOT_GIVEN,
-        routing_number: str | NotGiven = NOT_GIVEN,
-        external_account_id: str | NotGiven = NOT_GIVEN,
         amount: int,
-        message_to_recipient: str,
         beneficiary_name: str,
+        message_to_recipient: str,
+        account_number: str | NotGiven = NOT_GIVEN,
         beneficiary_address_line1: str | NotGiven = NOT_GIVEN,
         beneficiary_address_line2: str | NotGiven = NOT_GIVEN,
         beneficiary_address_line3: str | NotGiven = NOT_GIVEN,
+        external_account_id: str | NotGiven = NOT_GIVEN,
         require_approval: bool | NotGiven = NOT_GIVEN,
+        routing_number: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -265,19 +265,13 @@ class AsyncWireTransfers(AsyncAPIResource):
         Args:
           account_id: The identifier for the account that will send the transfer.
 
-          account_number: The account number for the destination account.
-
-          routing_number: The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-              destination account.
-
-          external_account_id: The ID of an External Account to initiate a transfer to. If this parameter is
-              provided, `account_number` and `routing_number` must be absent.
-
           amount: The transfer amount in cents.
+
+          beneficiary_name: The beneficiary's name.
 
           message_to_recipient: The message that will show on the recipient's bank statement.
 
-          beneficiary_name: The beneficiary's name.
+          account_number: The account number for the destination account.
 
           beneficiary_address_line1: The beneficiary's address line 1.
 
@@ -285,7 +279,13 @@ class AsyncWireTransfers(AsyncAPIResource):
 
           beneficiary_address_line3: The beneficiary's address line 3.
 
+          external_account_id: The ID of an External Account to initiate a transfer to. If this parameter is
+              provided, `account_number` and `routing_number` must be absent.
+
           require_approval: Whether the transfer requires explicit approval via the dashboard or API.
+
+          routing_number: The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
+              destination account.
 
           extra_headers: Send extra headers
 
@@ -335,11 +335,11 @@ class AsyncWireTransfers(AsyncAPIResource):
     def list(
         self,
         *,
-        cursor: str | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
         account_id: str | NotGiven = NOT_GIVEN,
-        external_account_id: str | NotGiven = NOT_GIVEN,
         created_at: wire_transfer_list_params.CreatedAt | NotGiven = NOT_GIVEN,
+        cursor: str | NotGiven = NOT_GIVEN,
+        external_account_id: str | NotGiven = NOT_GIVEN,
+        limit: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -350,14 +350,14 @@ class AsyncWireTransfers(AsyncAPIResource):
         List Wire Transfers
 
         Args:
+          account_id: Filter Wire Transfers to those belonging to the specified Account.
+
           cursor: Return the page of entries after this one.
+
+          external_account_id: Filter Wire Transfers to those made to the specified External Account.
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
-
-          account_id: Filter Wire Transfers to those belonging to the specified Account.
-
-          external_account_id: Filter Wire Transfers to those made to the specified External Account.
 
           extra_headers: Send extra headers
 

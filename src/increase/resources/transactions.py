@@ -33,12 +33,12 @@ class Transactions(SyncAPIResource):
     def list(
         self,
         *,
+        account_id: str | NotGiven = NOT_GIVEN,
+        category: transaction_list_params.Category | NotGiven = NOT_GIVEN,
+        created_at: transaction_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
-        account_id: str | NotGiven = NOT_GIVEN,
         route_id: str | NotGiven = NOT_GIVEN,
-        created_at: transaction_list_params.CreatedAt | NotGiven = NOT_GIVEN,
-        category: transaction_list_params.Category | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -49,12 +49,12 @@ class Transactions(SyncAPIResource):
         List Transactions
 
         Args:
+          account_id: Filter Transactions for those belonging to the specified Account.
+
           cursor: Return the page of entries after this one.
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
-
-          account_id: Filter Transactions for those belonging to the specified Account.
 
           route_id: Filter Transactions for those belonging to the specified route.
 
@@ -108,12 +108,12 @@ class AsyncTransactions(AsyncAPIResource):
     def list(
         self,
         *,
+        account_id: str | NotGiven = NOT_GIVEN,
+        category: transaction_list_params.Category | NotGiven = NOT_GIVEN,
+        created_at: transaction_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
-        account_id: str | NotGiven = NOT_GIVEN,
         route_id: str | NotGiven = NOT_GIVEN,
-        created_at: transaction_list_params.CreatedAt | NotGiven = NOT_GIVEN,
-        category: transaction_list_params.Category | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -124,12 +124,12 @@ class AsyncTransactions(AsyncAPIResource):
         List Transactions
 
         Args:
+          account_id: Filter Transactions for those belonging to the specified Account.
+
           cursor: Return the page of entries after this one.
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
-
-          account_id: Filter Transactions for those belonging to the specified Account.
 
           route_id: Filter Transactions for those belonging to the specified route.
 

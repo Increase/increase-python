@@ -33,10 +33,10 @@ class DigitalWalletTokens(SyncAPIResource):
     def list(
         self,
         *,
-        cursor: str | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
         card_id: str | NotGiven = NOT_GIVEN,
         created_at: digital_wallet_token_list_params.CreatedAt | NotGiven = NOT_GIVEN,
+        cursor: str | NotGiven = NOT_GIVEN,
+        limit: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -47,12 +47,12 @@ class DigitalWalletTokens(SyncAPIResource):
         List Digital Wallet Tokens
 
         Args:
+          card_id: Filter Digital Wallet Tokens to ones belonging to the specified Card.
+
           cursor: Return the page of entries after this one.
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
-
-          card_id: Filter Digital Wallet Tokens to ones belonging to the specified Card.
 
           extra_headers: Send extra headers
 
@@ -102,10 +102,10 @@ class AsyncDigitalWalletTokens(AsyncAPIResource):
     def list(
         self,
         *,
-        cursor: str | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
         card_id: str | NotGiven = NOT_GIVEN,
         created_at: digital_wallet_token_list_params.CreatedAt | NotGiven = NOT_GIVEN,
+        cursor: str | NotGiven = NOT_GIVEN,
+        limit: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -116,12 +116,12 @@ class AsyncDigitalWalletTokens(AsyncAPIResource):
         List Digital Wallet Tokens
 
         Args:
+          card_id: Filter Digital Wallet Tokens to ones belonging to the specified Card.
+
           cursor: Return the page of entries after this one.
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
-
-          card_id: Filter Digital Wallet Tokens to ones belonging to the specified Card.
 
           extra_headers: Send extra headers
 

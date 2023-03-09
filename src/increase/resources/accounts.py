@@ -23,9 +23,9 @@ class Accounts(SyncAPIResource):
     def create(
         self,
         *,
+        name: str,
         entity_id: str | NotGiven = NOT_GIVEN,
         informational_entity_id: str | NotGiven = NOT_GIVEN,
-        name: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -36,12 +36,12 @@ class Accounts(SyncAPIResource):
         Create an Account
 
         Args:
+          name: The name you choose for the Account.
+
           entity_id: The identifier for the Entity that will own the Account.
 
           informational_entity_id: The identifier of an Entity that, while not owning the Account, is associated
               with its activity. Its relationship to your group must be `informational`.
-
-          name: The name you choose for the Account.
 
           extra_headers: Send extra headers
 
@@ -114,8 +114,8 @@ class Accounts(SyncAPIResource):
         self,
         *,
         cursor: str | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
         entity_id: str | NotGiven = NOT_GIVEN,
+        limit: int | NotGiven = NOT_GIVEN,
         status: Literal["open", "closed"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -129,10 +129,10 @@ class Accounts(SyncAPIResource):
         Args:
           cursor: Return the page of entries after this one.
 
+          entity_id: Filter Accounts for those belonging to the specified Entity.
+
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
-
-          entity_id: Filter Accounts for those belonging to the specified Entity.
 
           status: Filter Accounts for those with the specified status.
 
@@ -184,9 +184,9 @@ class AsyncAccounts(AsyncAPIResource):
     async def create(
         self,
         *,
+        name: str,
         entity_id: str | NotGiven = NOT_GIVEN,
         informational_entity_id: str | NotGiven = NOT_GIVEN,
-        name: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -197,12 +197,12 @@ class AsyncAccounts(AsyncAPIResource):
         Create an Account
 
         Args:
+          name: The name you choose for the Account.
+
           entity_id: The identifier for the Entity that will own the Account.
 
           informational_entity_id: The identifier of an Entity that, while not owning the Account, is associated
               with its activity. Its relationship to your group must be `informational`.
-
-          name: The name you choose for the Account.
 
           extra_headers: Send extra headers
 
@@ -275,8 +275,8 @@ class AsyncAccounts(AsyncAPIResource):
         self,
         *,
         cursor: str | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
         entity_id: str | NotGiven = NOT_GIVEN,
+        limit: int | NotGiven = NOT_GIVEN,
         status: Literal["open", "closed"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -290,10 +290,10 @@ class AsyncAccounts(AsyncAPIResource):
         Args:
           cursor: Return the page of entries after this one.
 
+          entity_id: Filter Accounts for those belonging to the specified Entity.
+
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
-
-          entity_id: Filter Accounts for those belonging to the specified Entity.
 
           status: Filter Accounts for those with the specified status.
 

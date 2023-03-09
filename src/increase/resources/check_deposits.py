@@ -18,9 +18,9 @@ class CheckDeposits(SyncAPIResource):
         *,
         account_id: str,
         amount: int,
+        back_image_file_id: str,
         currency: str,
         front_image_file_id: str,
-        back_image_file_id: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -36,11 +36,11 @@ class CheckDeposits(SyncAPIResource):
           amount: The deposit amount in the minor unit of the account currency. For dollars, for
               example, this is cents.
 
+          back_image_file_id: The File containing the check's back image.
+
           currency: The currency to use for the deposit.
 
           front_image_file_id: The File containing the check's front image.
-
-          back_image_file_id: The File containing the check's back image.
 
           extra_headers: Send extra headers
 
@@ -84,10 +84,10 @@ class CheckDeposits(SyncAPIResource):
     def list(
         self,
         *,
-        cursor: str | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
         account_id: str | NotGiven = NOT_GIVEN,
         created_at: check_deposit_list_params.CreatedAt | NotGiven = NOT_GIVEN,
+        cursor: str | NotGiven = NOT_GIVEN,
+        limit: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -98,12 +98,12 @@ class CheckDeposits(SyncAPIResource):
         List Check Deposits
 
         Args:
+          account_id: Filter Check Deposits to those belonging to the specified Account.
+
           cursor: Return the page of entries after this one.
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
-
-          account_id: Filter Check Deposits to those belonging to the specified Account.
 
           extra_headers: Send extra headers
 
@@ -138,9 +138,9 @@ class AsyncCheckDeposits(AsyncAPIResource):
         *,
         account_id: str,
         amount: int,
+        back_image_file_id: str,
         currency: str,
         front_image_file_id: str,
-        back_image_file_id: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -156,11 +156,11 @@ class AsyncCheckDeposits(AsyncAPIResource):
           amount: The deposit amount in the minor unit of the account currency. For dollars, for
               example, this is cents.
 
+          back_image_file_id: The File containing the check's back image.
+
           currency: The currency to use for the deposit.
 
           front_image_file_id: The File containing the check's front image.
-
-          back_image_file_id: The File containing the check's back image.
 
           extra_headers: Send extra headers
 
@@ -204,10 +204,10 @@ class AsyncCheckDeposits(AsyncAPIResource):
     def list(
         self,
         *,
-        cursor: str | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
         account_id: str | NotGiven = NOT_GIVEN,
         created_at: check_deposit_list_params.CreatedAt | NotGiven = NOT_GIVEN,
+        cursor: str | NotGiven = NOT_GIVEN,
+        limit: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -218,12 +218,12 @@ class AsyncCheckDeposits(AsyncAPIResource):
         List Check Deposits
 
         Args:
+          account_id: Filter Check Deposits to those belonging to the specified Account.
+
           cursor: Return the page of entries after this one.
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
-
-          account_id: Filter Check Deposits to those belonging to the specified Account.
 
           extra_headers: Send extra headers
 

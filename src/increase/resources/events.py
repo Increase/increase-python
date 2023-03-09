@@ -33,11 +33,11 @@ class Events(SyncAPIResource):
     def list(
         self,
         *,
+        associated_object_id: str | NotGiven = NOT_GIVEN,
+        category: event_list_params.Category | NotGiven = NOT_GIVEN,
+        created_at: event_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
-        associated_object_id: str | NotGiven = NOT_GIVEN,
-        created_at: event_list_params.CreatedAt | NotGiven = NOT_GIVEN,
-        category: event_list_params.Category | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -48,12 +48,12 @@ class Events(SyncAPIResource):
         List Events
 
         Args:
+          associated_object_id: Filter Events to those belonging to the object with the provided identifier.
+
           cursor: Return the page of entries after this one.
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
-
-          associated_object_id: Filter Events to those belonging to the object with the provided identifier.
 
           extra_headers: Send extra headers
 
@@ -104,11 +104,11 @@ class AsyncEvents(AsyncAPIResource):
     def list(
         self,
         *,
+        associated_object_id: str | NotGiven = NOT_GIVEN,
+        category: event_list_params.Category | NotGiven = NOT_GIVEN,
+        created_at: event_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
-        associated_object_id: str | NotGiven = NOT_GIVEN,
-        created_at: event_list_params.CreatedAt | NotGiven = NOT_GIVEN,
-        category: event_list_params.Category | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -119,12 +119,12 @@ class AsyncEvents(AsyncAPIResource):
         List Events
 
         Args:
+          associated_object_id: Filter Events to those belonging to the object with the provided identifier.
+
           cursor: Return the page of entries after this one.
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
-
-          associated_object_id: Filter Events to those belonging to the object with the provided identifier.
 
           extra_headers: Send extra headers
 

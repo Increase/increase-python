@@ -21,17 +21,17 @@ class CheckTransfers(SyncAPIResource):
         self,
         *,
         account_id: str,
-        address_line1: str,
-        address_line2: str | NotGiven = NOT_GIVEN,
         address_city: str,
+        address_line1: str,
         address_state: str,
         address_zip: str,
-        return_address: check_transfer_create_params.ReturnAddress | NotGiven = NOT_GIVEN,
         amount: int,
         message: str,
-        note: str | NotGiven = NOT_GIVEN,
         recipient_name: str,
+        address_line2: str | NotGiven = NOT_GIVEN,
+        note: str | NotGiven = NOT_GIVEN,
         require_approval: bool | NotGiven = NOT_GIVEN,
+        return_address: check_transfer_create_params.ReturnAddress | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -44,28 +44,28 @@ class CheckTransfers(SyncAPIResource):
         Args:
           account_id: The identifier for the account that will send the transfer.
 
-          address_line1: The street address of the check's destination.
-
-          address_line2: The second line of the address of the check's destination.
-
           address_city: The city of the check's destination.
+
+          address_line1: The street address of the check's destination.
 
           address_state: The state of the check's destination.
 
           address_zip: The postal code of the check's destination.
 
-          return_address: The return address to be printed on the check. If omitted this will default to
-              the address of the Entity of the Account used to make the Check Transfer.
-
           amount: The transfer amount in cents.
 
           message: The descriptor that will be printed on the memo field on the check.
 
-          note: The descriptor that will be printed on the letter included with the check.
-
           recipient_name: The name that will be printed on the check.
 
+          address_line2: The second line of the address of the check's destination.
+
+          note: The descriptor that will be printed on the letter included with the check.
+
           require_approval: Whether the transfer requires explicit approval via the dashboard or API.
+
+          return_address: The return address to be printed on the check. If omitted this will default to
+              the address of the Entity of the Account used to make the Check Transfer.
 
           extra_headers: Send extra headers
 
@@ -116,10 +116,10 @@ class CheckTransfers(SyncAPIResource):
     def list(
         self,
         *,
-        cursor: str | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
         account_id: str | NotGiven = NOT_GIVEN,
         created_at: check_transfer_list_params.CreatedAt | NotGiven = NOT_GIVEN,
+        cursor: str | NotGiven = NOT_GIVEN,
+        limit: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -130,12 +130,12 @@ class CheckTransfers(SyncAPIResource):
         List Check Transfers
 
         Args:
+          account_id: Filter Check Transfers to those that originated from the specified Account.
+
           cursor: Return the page of entries after this one.
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
-
-          account_id: Filter Check Transfers to those that originated from the specified Account.
 
           extra_headers: Send extra headers
 
@@ -220,17 +220,17 @@ class AsyncCheckTransfers(AsyncAPIResource):
         self,
         *,
         account_id: str,
-        address_line1: str,
-        address_line2: str | NotGiven = NOT_GIVEN,
         address_city: str,
+        address_line1: str,
         address_state: str,
         address_zip: str,
-        return_address: check_transfer_create_params.ReturnAddress | NotGiven = NOT_GIVEN,
         amount: int,
         message: str,
-        note: str | NotGiven = NOT_GIVEN,
         recipient_name: str,
+        address_line2: str | NotGiven = NOT_GIVEN,
+        note: str | NotGiven = NOT_GIVEN,
         require_approval: bool | NotGiven = NOT_GIVEN,
+        return_address: check_transfer_create_params.ReturnAddress | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -243,28 +243,28 @@ class AsyncCheckTransfers(AsyncAPIResource):
         Args:
           account_id: The identifier for the account that will send the transfer.
 
-          address_line1: The street address of the check's destination.
-
-          address_line2: The second line of the address of the check's destination.
-
           address_city: The city of the check's destination.
+
+          address_line1: The street address of the check's destination.
 
           address_state: The state of the check's destination.
 
           address_zip: The postal code of the check's destination.
 
-          return_address: The return address to be printed on the check. If omitted this will default to
-              the address of the Entity of the Account used to make the Check Transfer.
-
           amount: The transfer amount in cents.
 
           message: The descriptor that will be printed on the memo field on the check.
 
-          note: The descriptor that will be printed on the letter included with the check.
-
           recipient_name: The name that will be printed on the check.
 
+          address_line2: The second line of the address of the check's destination.
+
+          note: The descriptor that will be printed on the letter included with the check.
+
           require_approval: Whether the transfer requires explicit approval via the dashboard or API.
+
+          return_address: The return address to be printed on the check. If omitted this will default to
+              the address of the Entity of the Account used to make the Check Transfer.
 
           extra_headers: Send extra headers
 
@@ -315,10 +315,10 @@ class AsyncCheckTransfers(AsyncAPIResource):
     def list(
         self,
         *,
-        cursor: str | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
         account_id: str | NotGiven = NOT_GIVEN,
         created_at: check_transfer_list_params.CreatedAt | NotGiven = NOT_GIVEN,
+        cursor: str | NotGiven = NOT_GIVEN,
+        limit: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -329,12 +329,12 @@ class AsyncCheckTransfers(AsyncAPIResource):
         List Check Transfers
 
         Args:
+          account_id: Filter Check Transfers to those that originated from the specified Account.
+
           cursor: Return the page of entries after this one.
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
-
-          account_id: Filter Check Transfers to those that originated from the specified Account.
 
           extra_headers: Send extra headers
 

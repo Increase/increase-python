@@ -19,9 +19,9 @@ class Limits(SyncAPIResource):
         self,
         *,
         metric: Literal["count", "volume"],
-        interval: Literal["transaction", "day", "week", "month", "year", "all_time"] | NotGiven = NOT_GIVEN,
         model_id: str,
         value: int,
+        interval: Literal["transaction", "day", "week", "month", "year", "all_time"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -34,12 +34,12 @@ class Limits(SyncAPIResource):
         Args:
           metric: The metric for the limit.
 
-          interval: The interval for the metric. Required if `metric` is `count` or `volume`.
-
           model_id: The identifier of the Account or Account Number you wish to associate the limit
               with.
 
           value: The value to test the limit against.
+
+          interval: The interval for the metric. Required if `metric` is `count` or `volume`.
 
           extra_headers: Send extra headers
 
@@ -167,9 +167,9 @@ class AsyncLimits(AsyncAPIResource):
         self,
         *,
         metric: Literal["count", "volume"],
-        interval: Literal["transaction", "day", "week", "month", "year", "all_time"] | NotGiven = NOT_GIVEN,
         model_id: str,
         value: int,
+        interval: Literal["transaction", "day", "week", "month", "year", "all_time"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -182,12 +182,12 @@ class AsyncLimits(AsyncAPIResource):
         Args:
           metric: The metric for the limit.
 
-          interval: The interval for the metric. Required if `metric` is `count` or `volume`.
-
           model_id: The identifier of the Account or Account Number you wish to associate the limit
               with.
 
           value: The value to test the limit against.
+
+          interval: The interval for the metric. Required if `metric` is `count` or `volume`.
 
           extra_headers: Send extra headers
 
