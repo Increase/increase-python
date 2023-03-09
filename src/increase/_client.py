@@ -9,6 +9,7 @@ from typing_extensions import Literal
 import httpx
 
 from . import resources
+from . import _exceptions as exceptions
 from ._qs import Querystring
 from ._types import (
     NOT_GIVEN,
@@ -18,6 +19,7 @@ from ._types import (
     ProxiesTypes,
     RequestOptions,
 )
+from ._utils import is_mapping
 from ._version import __version__
 from ._base_client import (
     DEFAULT_LIMITS,
@@ -239,6 +241,70 @@ class Increase(SyncAPIClient):
     # client.with_options(timeout=10).foo.create(...)
     with_options = copy
 
+    def _make_status_error(
+        self,
+        err_msg: str,
+        *,
+        body: object,
+        request: httpx.Request,
+        response: httpx.Response,
+    ) -> exceptions.APIStatusError:
+        if not is_mapping(body):
+            return super()._make_status_error(err_msg, request=request, response=response, body=body)
+
+        type_ = body.get("type")
+        if type_ == "invalid_parameters_error":
+            return exceptions.InvalidParametersError(err_msg, request=request, response=response, body=body)
+
+        if type_ == "malformed_request_error":
+            return exceptions.MalformedRequestError(err_msg, request=request, response=response, body=body)
+
+        if type_ == "invalid_api_key_error":
+            return exceptions.InvalidAPIKeyError(err_msg, request=request, response=response, body=body)
+
+        if type_ == "environment_mismatch_error":
+            return exceptions.EnvironmentMismatchError(err_msg, request=request, response=response, body=body)
+
+        if type_ == "insufficient_permissions_error":
+            return exceptions.InsufficientPermissionsError(err_msg, request=request, response=response, body=body)
+
+        if type_ == "private_feature_error":
+            return exceptions.PrivateFeatureError(err_msg, request=request, response=response, body=body)
+
+        if type_ == "api_method_not_found_error":
+            return exceptions.APIMethodNotFoundError(err_msg, request=request, response=response, body=body)
+
+        if type_ == "object_not_found_error":
+            return exceptions.ObjectNotFoundError(err_msg, request=request, response=response, body=body)
+
+        if type_ == "idempotency_conflict_error":
+            return exceptions.IdempotencyConflictError(err_msg, request=request, response=response, body=body)
+
+        if type_ == "invalid_operation_error":
+            return exceptions.InvalidOperationError(err_msg, request=request, response=response, body=body)
+
+        if type_ == "idempotency_unprocessable_error":
+            return exceptions.IdempotencyUnprocessableError(err_msg, request=request, response=response, body=body)
+
+        if type_ == "rate_limited_error":
+            return exceptions.RateLimitedError(err_msg, request=request, response=response, body=body)
+
+        if type_ == "internal_server_error":
+            return exceptions.InternalServerError(err_msg, request=request, response=response, body=body)
+        if response.status_code == 500:
+            return exceptions.InternalServerError(
+                err_msg,
+                request=request,
+                response=response,
+                body={
+                    "type": "internal_server_error",
+                    "title": "",
+                    "detail": None,
+                    "status": 500,
+                },
+            )
+        return super()._make_status_error(err_msg, request=request, response=response, body=body)
+
 
 class AsyncIncrease(AsyncAPIClient):
     accounts: resources.AsyncAccounts
@@ -432,6 +498,70 @@ class AsyncIncrease(AsyncAPIClient):
     # Alias for `copy` for nicer inline usage, e.g.
     # client.with_options(timeout=10).foo.create(...)
     with_options = copy
+
+    def _make_status_error(
+        self,
+        err_msg: str,
+        *,
+        body: object,
+        request: httpx.Request,
+        response: httpx.Response,
+    ) -> exceptions.APIStatusError:
+        if not is_mapping(body):
+            return super()._make_status_error(err_msg, request=request, response=response, body=body)
+
+        type_ = body.get("type")
+        if type_ == "invalid_parameters_error":
+            return exceptions.InvalidParametersError(err_msg, request=request, response=response, body=body)
+
+        if type_ == "malformed_request_error":
+            return exceptions.MalformedRequestError(err_msg, request=request, response=response, body=body)
+
+        if type_ == "invalid_api_key_error":
+            return exceptions.InvalidAPIKeyError(err_msg, request=request, response=response, body=body)
+
+        if type_ == "environment_mismatch_error":
+            return exceptions.EnvironmentMismatchError(err_msg, request=request, response=response, body=body)
+
+        if type_ == "insufficient_permissions_error":
+            return exceptions.InsufficientPermissionsError(err_msg, request=request, response=response, body=body)
+
+        if type_ == "private_feature_error":
+            return exceptions.PrivateFeatureError(err_msg, request=request, response=response, body=body)
+
+        if type_ == "api_method_not_found_error":
+            return exceptions.APIMethodNotFoundError(err_msg, request=request, response=response, body=body)
+
+        if type_ == "object_not_found_error":
+            return exceptions.ObjectNotFoundError(err_msg, request=request, response=response, body=body)
+
+        if type_ == "idempotency_conflict_error":
+            return exceptions.IdempotencyConflictError(err_msg, request=request, response=response, body=body)
+
+        if type_ == "invalid_operation_error":
+            return exceptions.InvalidOperationError(err_msg, request=request, response=response, body=body)
+
+        if type_ == "idempotency_unprocessable_error":
+            return exceptions.IdempotencyUnprocessableError(err_msg, request=request, response=response, body=body)
+
+        if type_ == "rate_limited_error":
+            return exceptions.RateLimitedError(err_msg, request=request, response=response, body=body)
+
+        if type_ == "internal_server_error":
+            return exceptions.InternalServerError(err_msg, request=request, response=response, body=body)
+        if response.status_code == 500:
+            return exceptions.InternalServerError(
+                err_msg,
+                request=request,
+                response=response,
+                body={
+                    "type": "internal_server_error",
+                    "title": "",
+                    "detail": None,
+                    "status": 500,
+                },
+            )
+        return super()._make_status_error(err_msg, request=request, response=response, body=body)
 
 
 Client = Increase
