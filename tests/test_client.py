@@ -12,10 +12,8 @@ import pytest
 from respx import MockRouter
 
 from increase import Increase, AsyncIncrease
-from increase._types import Body, Query, Headers
 from increase._models import BaseModel, FinalRequestOptions
-from increase._base_client import BaseClient, RequestOptions
-from increase._base_client import make_request_options as _make_request_options
+from increase._base_client import BaseClient, make_request_options
 
 base_url = os.environ.get("API_BASE_URL", "http://127.0.0.1:4010")
 api_key = os.environ.get("API_KEY", "something1234")
@@ -25,24 +23,6 @@ def _get_params(client: BaseClient) -> dict[str, str]:
     request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
     url = httpx.URL(request.url)
     return dict(url.params)
-
-
-# Wrapper over the standard `make_request_options()` that makes every argument optional
-# for convenience. We don't want to do the same for the standard `make_request_options()` function
-# as it might let bugs slip through if we ever forget to pass in an option.
-def make_request_options(
-    query: Query | None = None,
-    *,
-    extra_headers: Headers | None = None,
-    extra_query: Query | None = None,
-    extra_body: Body | None = None,
-) -> RequestOptions:
-    return _make_request_options(
-        query=query,
-        extra_headers=extra_headers,
-        extra_query=extra_query,
-        extra_body=extra_body,
-    )
 
 
 class TestIncrease:
