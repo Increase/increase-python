@@ -37,6 +37,7 @@ class Files(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> File:
         """
         To upload a file to Increase, you'll need to send a request of Content-Type
@@ -57,6 +58,8 @@ class Files(SyncAPIResource):
           extra_query: Add additional query parameters to the request
 
           extra_body: Add additional JSON properties to the request
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         body = deepcopy_minimal(
             {
@@ -76,7 +79,12 @@ class Files(SyncAPIResource):
             "/files",
             body=maybe_transform(body, file_create_params.FileCreateParams),
             files=files,
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=File,
         )
 
@@ -168,6 +176,7 @@ class AsyncFiles(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> File:
         """
         To upload a file to Increase, you'll need to send a request of Content-Type
@@ -188,6 +197,8 @@ class AsyncFiles(AsyncAPIResource):
           extra_query: Add additional query parameters to the request
 
           extra_body: Add additional JSON properties to the request
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         body = deepcopy_minimal(
             {
@@ -207,7 +218,12 @@ class AsyncFiles(AsyncAPIResource):
             "/files",
             body=maybe_transform(body, file_create_params.FileCreateParams),
             files=files,
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=File,
         )
 

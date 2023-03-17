@@ -26,6 +26,7 @@ class CheckDeposits(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> CheckDeposit:
         """
         Create a Check Deposit
@@ -47,6 +48,8 @@ class CheckDeposits(SyncAPIResource):
           extra_query: Add additional query parameters to the request
 
           extra_body: Add additional JSON properties to the request
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return self._post(
             "/check_deposits",
@@ -60,7 +63,12 @@ class CheckDeposits(SyncAPIResource):
                 },
                 check_deposit_create_params.CheckDepositCreateParams,
             ),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=CheckDeposit,
         )
 
@@ -146,6 +154,7 @@ class AsyncCheckDeposits(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> CheckDeposit:
         """
         Create a Check Deposit
@@ -167,6 +176,8 @@ class AsyncCheckDeposits(AsyncAPIResource):
           extra_query: Add additional query parameters to the request
 
           extra_body: Add additional JSON properties to the request
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return await self._post(
             "/check_deposits",
@@ -180,7 +191,12 @@ class AsyncCheckDeposits(AsyncAPIResource):
                 },
                 check_deposit_create_params.CheckDepositCreateParams,
             ),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=CheckDeposit,
         )
 

@@ -32,6 +32,7 @@ class ExternalAccounts(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> ExternalAccount:
         """
         Create an External Account
@@ -51,6 +52,8 @@ class ExternalAccounts(SyncAPIResource):
           extra_query: Add additional query parameters to the request
 
           extra_body: Add additional JSON properties to the request
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return self._post(
             "/external_accounts",
@@ -63,7 +66,12 @@ class ExternalAccounts(SyncAPIResource):
                 },
                 external_account_create_params.ExternalAccountCreateParams,
             ),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=ExternalAccount,
         )
 
@@ -95,6 +103,7 @@ class ExternalAccounts(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> ExternalAccount:
         """
         Update an External Account
@@ -109,6 +118,8 @@ class ExternalAccounts(SyncAPIResource):
           extra_query: Add additional query parameters to the request
 
           extra_body: Add additional JSON properties to the request
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return self._patch(
             f"/external_accounts/{external_account_id}",
@@ -119,7 +130,12 @@ class ExternalAccounts(SyncAPIResource):
                 },
                 external_account_update_params.ExternalAccountUpdateParams,
             ),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=ExternalAccount,
         )
 
@@ -183,6 +199,7 @@ class AsyncExternalAccounts(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> ExternalAccount:
         """
         Create an External Account
@@ -202,6 +219,8 @@ class AsyncExternalAccounts(AsyncAPIResource):
           extra_query: Add additional query parameters to the request
 
           extra_body: Add additional JSON properties to the request
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return await self._post(
             "/external_accounts",
@@ -214,7 +233,12 @@ class AsyncExternalAccounts(AsyncAPIResource):
                 },
                 external_account_create_params.ExternalAccountCreateParams,
             ),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=ExternalAccount,
         )
 
@@ -246,6 +270,7 @@ class AsyncExternalAccounts(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> ExternalAccount:
         """
         Update an External Account
@@ -260,6 +285,8 @@ class AsyncExternalAccounts(AsyncAPIResource):
           extra_query: Add additional query parameters to the request
 
           extra_body: Add additional JSON properties to the request
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return await self._patch(
             f"/external_accounts/{external_account_id}",
@@ -270,7 +297,12 @@ class AsyncExternalAccounts(AsyncAPIResource):
                 },
                 external_account_update_params.ExternalAccountUpdateParams,
             ),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=ExternalAccount,
         )
 

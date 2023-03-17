@@ -20,6 +20,7 @@ class CheckDeposits(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> CheckDeposit:
         """
         Simulates the rejection of a [Check Deposit](#check-deposits) by Increase due to
@@ -28,7 +29,12 @@ class CheckDeposits(SyncAPIResource):
         """
         return self._post(
             f"/simulations/check_deposits/{check_deposit_id}/reject",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=CheckDeposit,
         )
 
@@ -41,6 +47,7 @@ class CheckDeposits(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> CheckDeposit:
         """Simulates the return of a [Check Deposit](#check-deposits).
 
@@ -49,7 +56,12 @@ class CheckDeposits(SyncAPIResource):
         """
         return self._post(
             f"/simulations/check_deposits/{check_deposit_id}/return",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=CheckDeposit,
         )
 
@@ -62,6 +74,7 @@ class CheckDeposits(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> CheckDeposit:
         """
         Simulates the submission of a [Check Deposit](#check-deposits) to the Federal
@@ -69,7 +82,12 @@ class CheckDeposits(SyncAPIResource):
         """
         return self._post(
             f"/simulations/check_deposits/{check_deposit_id}/submit",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=CheckDeposit,
         )
 
@@ -84,6 +102,7 @@ class AsyncCheckDeposits(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> CheckDeposit:
         """
         Simulates the rejection of a [Check Deposit](#check-deposits) by Increase due to
@@ -92,7 +111,12 @@ class AsyncCheckDeposits(AsyncAPIResource):
         """
         return await self._post(
             f"/simulations/check_deposits/{check_deposit_id}/reject",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=CheckDeposit,
         )
 
@@ -105,6 +129,7 @@ class AsyncCheckDeposits(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> CheckDeposit:
         """Simulates the return of a [Check Deposit](#check-deposits).
 
@@ -113,7 +138,12 @@ class AsyncCheckDeposits(AsyncAPIResource):
         """
         return await self._post(
             f"/simulations/check_deposits/{check_deposit_id}/return",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=CheckDeposit,
         )
 
@@ -126,6 +156,7 @@ class AsyncCheckDeposits(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> CheckDeposit:
         """
         Simulates the submission of a [Check Deposit](#check-deposits) to the Federal
@@ -133,6 +164,11 @@ class AsyncCheckDeposits(AsyncAPIResource):
         """
         return await self._post(
             f"/simulations/check_deposits/{check_deposit_id}/submit",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=CheckDeposit,
         )

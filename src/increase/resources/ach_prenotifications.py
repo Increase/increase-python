@@ -44,6 +44,7 @@ class ACHPrenotifications(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> ACHPrenotification:
         """
         Create an ACH Prenotification
@@ -81,6 +82,8 @@ class ACHPrenotifications(SyncAPIResource):
           extra_query: Add additional query parameters to the request
 
           extra_body: Add additional JSON properties to the request
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return self._post(
             "/ach_prenotifications",
@@ -101,7 +104,12 @@ class ACHPrenotifications(SyncAPIResource):
                 },
                 ach_prenotification_create_params.ACHPrenotificationCreateParams,
             ),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=ACHPrenotification,
         )
 
@@ -193,6 +201,7 @@ class AsyncACHPrenotifications(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> ACHPrenotification:
         """
         Create an ACH Prenotification
@@ -230,6 +239,8 @@ class AsyncACHPrenotifications(AsyncAPIResource):
           extra_query: Add additional query parameters to the request
 
           extra_body: Add additional JSON properties to the request
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return await self._post(
             "/ach_prenotifications",
@@ -250,7 +261,12 @@ class AsyncACHPrenotifications(AsyncAPIResource):
                 },
                 ach_prenotification_create_params.ACHPrenotificationCreateParams,
             ),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=ACHPrenotification,
         )
 

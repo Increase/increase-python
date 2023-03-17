@@ -145,6 +145,8 @@ class Increase(SyncAPIClient):
 
         self.api_key = api_key
 
+        self._idempotency_header = "Idempotency-Key"
+
         self.accounts = resources.Accounts(self)
         self.account_numbers = resources.AccountNumbers(self)
         self.real_time_decisions = resources.RealTimeDecisions(self)
@@ -402,6 +404,8 @@ class AsyncIncrease(AsyncAPIClient):
         )
 
         self.api_key = api_key
+
+        self._idempotency_header = "Idempotency-Key"
 
         self.accounts = resources.AsyncAccounts(self)
         self.account_numbers = resources.AsyncAccountNumbers(self)

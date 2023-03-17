@@ -30,6 +30,7 @@ class RealTimePaymentsTransfers(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> InboundRealTimePaymentsTransferSimulationResult:
         """Simulates an inbound Real Time Payments transfer to your account.
 
@@ -57,6 +58,8 @@ class RealTimePaymentsTransfers(SyncAPIResource):
           extra_query: Add additional query parameters to the request
 
           extra_body: Add additional JSON properties to the request
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return self._post(
             "/simulations/inbound_real_time_payments_transfers",
@@ -72,7 +75,12 @@ class RealTimePaymentsTransfers(SyncAPIResource):
                 },
                 real_time_payments_transfer_create_inbound_params.RealTimePaymentsTransferCreateInboundParams,
             ),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=InboundRealTimePaymentsTransferSimulationResult,
         )
 
@@ -93,6 +101,7 @@ class AsyncRealTimePaymentsTransfers(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> InboundRealTimePaymentsTransferSimulationResult:
         """Simulates an inbound Real Time Payments transfer to your account.
 
@@ -120,6 +129,8 @@ class AsyncRealTimePaymentsTransfers(AsyncAPIResource):
           extra_query: Add additional query parameters to the request
 
           extra_body: Add additional JSON properties to the request
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return await self._post(
             "/simulations/inbound_real_time_payments_transfers",
@@ -135,6 +146,11 @@ class AsyncRealTimePaymentsTransfers(AsyncAPIResource):
                 },
                 real_time_payments_transfer_create_inbound_params.RealTimePaymentsTransferCreateInboundParams,
             ),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=InboundRealTimePaymentsTransferSimulationResult,
         )

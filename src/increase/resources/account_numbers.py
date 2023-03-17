@@ -30,6 +30,7 @@ class AccountNumbers(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> AccountNumber:
         """
         Create an Account Number
@@ -44,6 +45,8 @@ class AccountNumbers(SyncAPIResource):
           extra_query: Add additional query parameters to the request
 
           extra_body: Add additional JSON properties to the request
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return self._post(
             "/account_numbers",
@@ -54,7 +57,12 @@ class AccountNumbers(SyncAPIResource):
                 },
                 account_number_create_params.AccountNumberCreateParams,
             ),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=AccountNumber,
         )
 
@@ -86,6 +94,7 @@ class AccountNumbers(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> AccountNumber:
         """
         Update an Account Number
@@ -100,6 +109,8 @@ class AccountNumbers(SyncAPIResource):
           extra_query: Add additional query parameters to the request
 
           extra_body: Add additional JSON properties to the request
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return self._patch(
             f"/account_numbers/{account_number_id}",
@@ -110,7 +121,12 @@ class AccountNumbers(SyncAPIResource):
                 },
                 account_number_update_params.AccountNumberUpdateParams,
             ),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=AccountNumber,
         )
 
@@ -178,6 +194,7 @@ class AsyncAccountNumbers(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> AccountNumber:
         """
         Create an Account Number
@@ -192,6 +209,8 @@ class AsyncAccountNumbers(AsyncAPIResource):
           extra_query: Add additional query parameters to the request
 
           extra_body: Add additional JSON properties to the request
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return await self._post(
             "/account_numbers",
@@ -202,7 +221,12 @@ class AsyncAccountNumbers(AsyncAPIResource):
                 },
                 account_number_create_params.AccountNumberCreateParams,
             ),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=AccountNumber,
         )
 
@@ -234,6 +258,7 @@ class AsyncAccountNumbers(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> AccountNumber:
         """
         Update an Account Number
@@ -248,6 +273,8 @@ class AsyncAccountNumbers(AsyncAPIResource):
           extra_query: Add additional query parameters to the request
 
           extra_body: Add additional JSON properties to the request
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return await self._patch(
             f"/account_numbers/{account_number_id}",
@@ -258,7 +285,12 @@ class AsyncAccountNumbers(AsyncAPIResource):
                 },
                 account_number_update_params.AccountNumberUpdateParams,
             ),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=AccountNumber,
         )
 

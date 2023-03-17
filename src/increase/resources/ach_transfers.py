@@ -45,6 +45,7 @@ class ACHTransfers(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> ACHTransfer:
         """
         Create an ACH Transfer
@@ -105,6 +106,8 @@ class ACHTransfers(SyncAPIResource):
           extra_query: Add additional query parameters to the request
 
           extra_body: Add additional JSON properties to the request
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return self._post(
             "/ach_transfers",
@@ -130,7 +133,12 @@ class ACHTransfers(SyncAPIResource):
                 },
                 ach_transfer_create_params.ACHTransferCreateParams,
             ),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=ACHTransfer,
         )
 
@@ -214,11 +222,17 @@ class ACHTransfers(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> ACHTransfer:
         """Approves an ACH Transfer in a pending_approval state."""
         return self._post(
             f"/ach_transfers/{ach_transfer_id}/approve",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=ACHTransfer,
         )
 
@@ -231,11 +245,17 @@ class ACHTransfers(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> ACHTransfer:
         """Cancels an ACH Transfer in a pending_approval state."""
         return self._post(
             f"/ach_transfers/{ach_transfer_id}/cancel",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=ACHTransfer,
         )
 
@@ -269,6 +289,7 @@ class AsyncACHTransfers(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> ACHTransfer:
         """
         Create an ACH Transfer
@@ -329,6 +350,8 @@ class AsyncACHTransfers(AsyncAPIResource):
           extra_query: Add additional query parameters to the request
 
           extra_body: Add additional JSON properties to the request
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return await self._post(
             "/ach_transfers",
@@ -354,7 +377,12 @@ class AsyncACHTransfers(AsyncAPIResource):
                 },
                 ach_transfer_create_params.ACHTransferCreateParams,
             ),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=ACHTransfer,
         )
 
@@ -438,11 +466,17 @@ class AsyncACHTransfers(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> ACHTransfer:
         """Approves an ACH Transfer in a pending_approval state."""
         return await self._post(
             f"/ach_transfers/{ach_transfer_id}/approve",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=ACHTransfer,
         )
 
@@ -455,10 +489,16 @@ class AsyncACHTransfers(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> ACHTransfer:
         """Cancels an ACH Transfer in a pending_approval state."""
         return await self._post(
             f"/ach_transfers/{ach_transfer_id}/cancel",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=ACHTransfer,
         )

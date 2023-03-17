@@ -34,6 +34,7 @@ class ACHTransfers(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> ACHTransferSimulation:
         """Simulates an inbound ACH transfer to your account.
 
@@ -66,6 +67,8 @@ class ACHTransfers(SyncAPIResource):
           extra_query: Add additional query parameters to the request
 
           extra_body: Add additional JSON properties to the request
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return self._post(
             "/simulations/inbound_ach_transfers",
@@ -81,7 +84,12 @@ class ACHTransfers(SyncAPIResource):
                 },
                 ach_transfer_create_inbound_params.ACHTransferCreateInboundParams,
             ),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=ACHTransferSimulation,
         )
 
@@ -120,6 +128,7 @@ class ACHTransfers(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> ACHTransfer:
         """
         Simulates the return of an [ACH Transfer](#ach-transfers) by the Federal Reserve
@@ -135,11 +144,18 @@ class ACHTransfers(SyncAPIResource):
           extra_query: Add additional query parameters to the request
 
           extra_body: Add additional JSON properties to the request
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return self._post(
             f"/simulations/ach_transfers/{ach_transfer_id}/return",
             body=maybe_transform({"reason": reason}, ach_transfer_return_params.ACHTransferReturnParams),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=ACHTransfer,
         )
 
@@ -152,6 +168,7 @@ class ACHTransfers(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> ACHTransfer:
         """
         Simulates the submission of an [ACH Transfer](#ach-transfers) to the Federal
@@ -163,7 +180,12 @@ class ACHTransfers(SyncAPIResource):
         """
         return self._post(
             f"/simulations/ach_transfers/{ach_transfer_id}/submit",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=ACHTransfer,
         )
 
@@ -184,6 +206,7 @@ class AsyncACHTransfers(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> ACHTransferSimulation:
         """Simulates an inbound ACH transfer to your account.
 
@@ -216,6 +239,8 @@ class AsyncACHTransfers(AsyncAPIResource):
           extra_query: Add additional query parameters to the request
 
           extra_body: Add additional JSON properties to the request
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return await self._post(
             "/simulations/inbound_ach_transfers",
@@ -231,7 +256,12 @@ class AsyncACHTransfers(AsyncAPIResource):
                 },
                 ach_transfer_create_inbound_params.ACHTransferCreateInboundParams,
             ),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=ACHTransferSimulation,
         )
 
@@ -270,6 +300,7 @@ class AsyncACHTransfers(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> ACHTransfer:
         """
         Simulates the return of an [ACH Transfer](#ach-transfers) by the Federal Reserve
@@ -285,11 +316,18 @@ class AsyncACHTransfers(AsyncAPIResource):
           extra_query: Add additional query parameters to the request
 
           extra_body: Add additional JSON properties to the request
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return await self._post(
             f"/simulations/ach_transfers/{ach_transfer_id}/return",
             body=maybe_transform({"reason": reason}, ach_transfer_return_params.ACHTransferReturnParams),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=ACHTransfer,
         )
 
@@ -302,6 +340,7 @@ class AsyncACHTransfers(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> ACHTransfer:
         """
         Simulates the submission of an [ACH Transfer](#ach-transfers) to the Federal
@@ -313,6 +352,11 @@ class AsyncACHTransfers(AsyncAPIResource):
         """
         return await self._post(
             f"/simulations/ach_transfers/{ach_transfer_id}/submit",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=ACHTransfer,
         )

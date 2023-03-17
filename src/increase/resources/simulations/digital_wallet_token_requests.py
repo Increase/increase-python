@@ -24,6 +24,7 @@ class DigitalWalletTokenRequests(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> DigitalWalletTokenRequestCreateResponse:
         """
         Simulates a user attempting add a [Card](#cards) to a digital wallet such as
@@ -37,13 +38,20 @@ class DigitalWalletTokenRequests(SyncAPIResource):
           extra_query: Add additional query parameters to the request
 
           extra_body: Add additional JSON properties to the request
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return self._post(
             "/simulations/digital_wallet_token_requests",
             body=maybe_transform(
                 {"card_id": card_id}, digital_wallet_token_request_create_params.DigitalWalletTokenRequestCreateParams
             ),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=DigitalWalletTokenRequestCreateResponse,
         )
 
@@ -58,6 +66,7 @@ class AsyncDigitalWalletTokenRequests(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> DigitalWalletTokenRequestCreateResponse:
         """
         Simulates a user attempting add a [Card](#cards) to a digital wallet such as
@@ -71,12 +80,19 @@ class AsyncDigitalWalletTokenRequests(AsyncAPIResource):
           extra_query: Add additional query parameters to the request
 
           extra_body: Add additional JSON properties to the request
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return await self._post(
             "/simulations/digital_wallet_token_requests",
             body=maybe_transform(
                 {"card_id": card_id}, digital_wallet_token_request_create_params.DigitalWalletTokenRequestCreateParams
             ),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=DigitalWalletTokenRequestCreateResponse,
         )

@@ -37,6 +37,7 @@ class CheckTransfers(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> CheckTransfer:
         """
         Create a Check Transfer
@@ -72,6 +73,8 @@ class CheckTransfers(SyncAPIResource):
           extra_query: Add additional query parameters to the request
 
           extra_body: Add additional JSON properties to the request
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return self._post(
             "/check_transfers",
@@ -92,7 +95,12 @@ class CheckTransfers(SyncAPIResource):
                 },
                 check_transfer_create_params.CheckTransferCreateParams,
             ),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=CheckTransfer,
         )
 
@@ -172,11 +180,17 @@ class CheckTransfers(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> CheckTransfer:
         """Approve a Check Transfer"""
         return self._post(
             f"/check_transfers/{check_transfer_id}/approve",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=CheckTransfer,
         )
 
@@ -189,11 +203,17 @@ class CheckTransfers(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> CheckTransfer:
         """Cancel a pending Check Transfer"""
         return self._post(
             f"/check_transfers/{check_transfer_id}/cancel",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=CheckTransfer,
         )
 
@@ -206,11 +226,17 @@ class CheckTransfers(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> CheckTransfer:
         """Request a stop payment on a Check Transfer"""
         return self._post(
             f"/check_transfers/{check_transfer_id}/stop_payment",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=CheckTransfer,
         )
 
@@ -236,6 +262,7 @@ class AsyncCheckTransfers(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> CheckTransfer:
         """
         Create a Check Transfer
@@ -271,6 +298,8 @@ class AsyncCheckTransfers(AsyncAPIResource):
           extra_query: Add additional query parameters to the request
 
           extra_body: Add additional JSON properties to the request
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return await self._post(
             "/check_transfers",
@@ -291,7 +320,12 @@ class AsyncCheckTransfers(AsyncAPIResource):
                 },
                 check_transfer_create_params.CheckTransferCreateParams,
             ),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=CheckTransfer,
         )
 
@@ -371,11 +405,17 @@ class AsyncCheckTransfers(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> CheckTransfer:
         """Approve a Check Transfer"""
         return await self._post(
             f"/check_transfers/{check_transfer_id}/approve",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=CheckTransfer,
         )
 
@@ -388,11 +428,17 @@ class AsyncCheckTransfers(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> CheckTransfer:
         """Cancel a pending Check Transfer"""
         return await self._post(
             f"/check_transfers/{check_transfer_id}/cancel",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=CheckTransfer,
         )
 
@@ -405,10 +451,16 @@ class AsyncCheckTransfers(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> CheckTransfer:
         """Request a stop payment on a Check Transfer"""
         return await self._post(
             f"/check_transfers/{check_transfer_id}/stop_payment",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=CheckTransfer,
         )

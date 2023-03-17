@@ -42,6 +42,7 @@ class RealTimeDecisions(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> RealTimeDecision:
         """
         Action a Real-Time Decision
@@ -61,6 +62,8 @@ class RealTimeDecisions(SyncAPIResource):
           extra_query: Add additional query parameters to the request
 
           extra_body: Add additional JSON properties to the request
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return self._post(
             f"/real_time_decisions/{real_time_decision_id}/action",
@@ -72,7 +75,12 @@ class RealTimeDecisions(SyncAPIResource):
                 },
                 real_time_decision_action_params.RealTimeDecisionActionParams,
             ),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=RealTimeDecision,
         )
 
@@ -108,6 +116,7 @@ class AsyncRealTimeDecisions(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> RealTimeDecision:
         """
         Action a Real-Time Decision
@@ -127,6 +136,8 @@ class AsyncRealTimeDecisions(AsyncAPIResource):
           extra_query: Add additional query parameters to the request
 
           extra_body: Add additional JSON properties to the request
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return await self._post(
             f"/real_time_decisions/{real_time_decision_id}/action",
@@ -138,6 +149,11 @@ class AsyncRealTimeDecisions(AsyncAPIResource):
                 },
                 real_time_decision_action_params.RealTimeDecisionActionParams,
             ),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=RealTimeDecision,
         )

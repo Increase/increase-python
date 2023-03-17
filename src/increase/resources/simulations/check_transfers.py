@@ -20,6 +20,7 @@ class CheckTransfers(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> CheckTransfer:
         """Simulates a [Check Transfer](#check-transfers) being deposited at a bank.
 
@@ -28,7 +29,12 @@ class CheckTransfers(SyncAPIResource):
         """
         return self._post(
             f"/simulations/check_transfers/{check_transfer_id}/deposit",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=CheckTransfer,
         )
 
@@ -41,6 +47,7 @@ class CheckTransfers(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> CheckTransfer:
         """
         Simulates the mailing of a [Check Transfer](#check-transfers), which happens
@@ -49,7 +56,12 @@ class CheckTransfers(SyncAPIResource):
         """
         return self._post(
             f"/simulations/check_transfers/{check_transfer_id}/mail",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=CheckTransfer,
         )
 
@@ -64,6 +76,7 @@ class AsyncCheckTransfers(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> CheckTransfer:
         """Simulates a [Check Transfer](#check-transfers) being deposited at a bank.
 
@@ -72,7 +85,12 @@ class AsyncCheckTransfers(AsyncAPIResource):
         """
         return await self._post(
             f"/simulations/check_transfers/{check_transfer_id}/deposit",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=CheckTransfer,
         )
 
@@ -85,6 +103,7 @@ class AsyncCheckTransfers(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> CheckTransfer:
         """
         Simulates the mailing of a [Check Transfer](#check-transfers), which happens
@@ -93,6 +112,11 @@ class AsyncCheckTransfers(AsyncAPIResource):
         """
         return await self._post(
             f"/simulations/check_transfers/{check_transfer_id}/mail",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=CheckTransfer,
         )

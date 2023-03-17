@@ -41,6 +41,7 @@ class InboundWireDrawdownRequests(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> InboundWireDrawdownRequest:
         """
         Simulates the receival of an
@@ -98,6 +99,8 @@ class InboundWireDrawdownRequests(SyncAPIResource):
           extra_query: Add additional query parameters to the request
 
           extra_body: Add additional JSON properties to the request
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return self._post(
             "/simulations/inbound_wire_drawdown_requests",
@@ -126,7 +129,12 @@ class InboundWireDrawdownRequests(SyncAPIResource):
                 },
                 inbound_wire_drawdown_request_create_params.InboundWireDrawdownRequestCreateParams,
             ),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=InboundWireDrawdownRequest,
         )
 
@@ -160,6 +168,7 @@ class AsyncInboundWireDrawdownRequests(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> InboundWireDrawdownRequest:
         """
         Simulates the receival of an
@@ -217,6 +226,8 @@ class AsyncInboundWireDrawdownRequests(AsyncAPIResource):
           extra_query: Add additional query parameters to the request
 
           extra_body: Add additional JSON properties to the request
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return await self._post(
             "/simulations/inbound_wire_drawdown_requests",
@@ -245,6 +256,11 @@ class AsyncInboundWireDrawdownRequests(AsyncAPIResource):
                 },
                 inbound_wire_drawdown_request_create_params.InboundWireDrawdownRequestCreateParams,
             ),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=InboundWireDrawdownRequest,
         )

@@ -30,6 +30,7 @@ class AccountTransfers(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> AccountTransfer:
         """
         Create an Account Transfer
@@ -51,6 +52,8 @@ class AccountTransfers(SyncAPIResource):
           extra_query: Add additional query parameters to the request
 
           extra_body: Add additional JSON properties to the request
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return self._post(
             "/account_transfers",
@@ -64,7 +67,12 @@ class AccountTransfers(SyncAPIResource):
                 },
                 account_transfer_create_params.AccountTransferCreateParams,
             ),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=AccountTransfer,
         )
 
@@ -144,11 +152,17 @@ class AccountTransfers(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> AccountTransfer:
         """Approve an Account Transfer"""
         return self._post(
             f"/account_transfers/{account_transfer_id}/approve",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=AccountTransfer,
         )
 
@@ -161,11 +175,17 @@ class AccountTransfers(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> AccountTransfer:
         """Cancel an Account Transfer"""
         return self._post(
             f"/account_transfers/{account_transfer_id}/cancel",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=AccountTransfer,
         )
 
@@ -184,6 +204,7 @@ class AsyncAccountTransfers(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> AccountTransfer:
         """
         Create an Account Transfer
@@ -205,6 +226,8 @@ class AsyncAccountTransfers(AsyncAPIResource):
           extra_query: Add additional query parameters to the request
 
           extra_body: Add additional JSON properties to the request
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return await self._post(
             "/account_transfers",
@@ -218,7 +241,12 @@ class AsyncAccountTransfers(AsyncAPIResource):
                 },
                 account_transfer_create_params.AccountTransferCreateParams,
             ),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=AccountTransfer,
         )
 
@@ -298,11 +326,17 @@ class AsyncAccountTransfers(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> AccountTransfer:
         """Approve an Account Transfer"""
         return await self._post(
             f"/account_transfers/{account_transfer_id}/approve",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=AccountTransfer,
         )
 
@@ -315,10 +349,16 @@ class AsyncAccountTransfers(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> AccountTransfer:
         """Cancel an Account Transfer"""
         return await self._post(
             f"/account_transfers/{account_transfer_id}/cancel",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=AccountTransfer,
         )

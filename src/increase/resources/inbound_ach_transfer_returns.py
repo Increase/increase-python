@@ -38,6 +38,7 @@ class InboundACHTransferReturns(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> InboundACHTransferReturn:
         """
         Create an ACH Return
@@ -54,6 +55,8 @@ class InboundACHTransferReturns(SyncAPIResource):
           extra_query: Add additional query parameters to the request
 
           extra_body: Add additional JSON properties to the request
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return self._post(
             "/inbound_ach_transfer_returns",
@@ -64,7 +67,12 @@ class InboundACHTransferReturns(SyncAPIResource):
                 },
                 inbound_ach_transfer_return_create_params.InboundACHTransferReturnCreateParams,
             ),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=InboundACHTransferReturn,
         )
 
@@ -150,6 +158,7 @@ class AsyncInboundACHTransferReturns(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> InboundACHTransferReturn:
         """
         Create an ACH Return
@@ -166,6 +175,8 @@ class AsyncInboundACHTransferReturns(AsyncAPIResource):
           extra_query: Add additional query parameters to the request
 
           extra_body: Add additional JSON properties to the request
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return await self._post(
             "/inbound_ach_transfer_returns",
@@ -176,7 +187,12 @@ class AsyncInboundACHTransferReturns(AsyncAPIResource):
                 },
                 inbound_ach_transfer_return_create_params.InboundACHTransferReturnCreateParams,
             ),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=InboundACHTransferReturn,
         )
 

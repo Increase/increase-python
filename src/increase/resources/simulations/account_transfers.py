@@ -20,6 +20,7 @@ class AccountTransfers(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> AccountTransfer:
         """
         If your account is configured to require approval for each transfer, this
@@ -29,7 +30,12 @@ class AccountTransfers(SyncAPIResource):
         """
         return self._post(
             f"/simulations/account_transfers/{account_transfer_id}/complete",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=AccountTransfer,
         )
 
@@ -44,6 +50,7 @@ class AsyncAccountTransfers(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> AccountTransfer:
         """
         If your account is configured to require approval for each transfer, this
@@ -53,6 +60,11 @@ class AsyncAccountTransfers(AsyncAPIResource):
         """
         return await self._post(
             f"/simulations/account_transfers/{account_transfer_id}/complete",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=AccountTransfer,
         )

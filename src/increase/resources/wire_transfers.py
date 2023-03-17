@@ -32,6 +32,7 @@ class WireTransfers(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> WireTransfer:
         """
         Create a Wire Transfer
@@ -66,6 +67,8 @@ class WireTransfers(SyncAPIResource):
           extra_query: Add additional query parameters to the request
 
           extra_body: Add additional JSON properties to the request
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return self._post(
             "/wire_transfers",
@@ -85,7 +88,12 @@ class WireTransfers(SyncAPIResource):
                 },
                 wire_transfer_create_params.WireTransferCreateParams,
             ),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=WireTransfer,
         )
 
@@ -169,11 +177,17 @@ class WireTransfers(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> WireTransfer:
         """Approve a Wire Transfer"""
         return self._post(
             f"/wire_transfers/{wire_transfer_id}/approve",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=WireTransfer,
         )
 
@@ -186,11 +200,17 @@ class WireTransfers(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> WireTransfer:
         """Cancel a pending Wire Transfer"""
         return self._post(
             f"/wire_transfers/{wire_transfer_id}/cancel",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=WireTransfer,
         )
 
@@ -203,6 +223,7 @@ class WireTransfers(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> WireTransfer:
         """
         Simulates the reversal of a [Wire Transfer](#wire-transfers) by the Federal
@@ -212,7 +233,12 @@ class WireTransfers(SyncAPIResource):
         """
         return self._post(
             f"/simulations/wire_transfers/{wire_transfer_id}/reverse",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=WireTransfer,
         )
 
@@ -225,6 +251,7 @@ class WireTransfers(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> WireTransfer:
         """
         Simulates the submission of a [Wire Transfer](#wire-transfers) to the Federal
@@ -233,7 +260,12 @@ class WireTransfers(SyncAPIResource):
         """
         return self._post(
             f"/simulations/wire_transfers/{wire_transfer_id}/submit",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=WireTransfer,
         )
 
@@ -258,6 +290,7 @@ class AsyncWireTransfers(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> WireTransfer:
         """
         Create a Wire Transfer
@@ -292,6 +325,8 @@ class AsyncWireTransfers(AsyncAPIResource):
           extra_query: Add additional query parameters to the request
 
           extra_body: Add additional JSON properties to the request
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return await self._post(
             "/wire_transfers",
@@ -311,7 +346,12 @@ class AsyncWireTransfers(AsyncAPIResource):
                 },
                 wire_transfer_create_params.WireTransferCreateParams,
             ),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=WireTransfer,
         )
 
@@ -395,11 +435,17 @@ class AsyncWireTransfers(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> WireTransfer:
         """Approve a Wire Transfer"""
         return await self._post(
             f"/wire_transfers/{wire_transfer_id}/approve",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=WireTransfer,
         )
 
@@ -412,11 +458,17 @@ class AsyncWireTransfers(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> WireTransfer:
         """Cancel a pending Wire Transfer"""
         return await self._post(
             f"/wire_transfers/{wire_transfer_id}/cancel",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=WireTransfer,
         )
 
@@ -429,6 +481,7 @@ class AsyncWireTransfers(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> WireTransfer:
         """
         Simulates the reversal of a [Wire Transfer](#wire-transfers) by the Federal
@@ -438,7 +491,12 @@ class AsyncWireTransfers(AsyncAPIResource):
         """
         return await self._post(
             f"/simulations/wire_transfers/{wire_transfer_id}/reverse",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=WireTransfer,
         )
 
@@ -451,6 +509,7 @@ class AsyncWireTransfers(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> WireTransfer:
         """
         Simulates the submission of a [Wire Transfer](#wire-transfers) to the Federal
@@ -459,6 +518,11 @@ class AsyncWireTransfers(AsyncAPIResource):
         """
         return await self._post(
             f"/simulations/wire_transfers/{wire_transfer_id}/submit",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=WireTransfer,
         )

@@ -26,6 +26,7 @@ class CardDisputes(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> CardDispute:
         """
         After a [Card Dispute](#card-disputes) is created in production, the dispute
@@ -43,6 +44,8 @@ class CardDisputes(SyncAPIResource):
           extra_query: Add additional query parameters to the request
 
           extra_body: Add additional JSON properties to the request
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return self._post(
             f"/simulations/card_disputes/{card_dispute_id}/action",
@@ -53,7 +56,12 @@ class CardDisputes(SyncAPIResource):
                 },
                 card_dispute_action_params.CardDisputeActionParams,
             ),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=CardDispute,
         )
 
@@ -70,6 +78,7 @@ class AsyncCardDisputes(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        idempotency_key: str | None = None,
     ) -> CardDispute:
         """
         After a [Card Dispute](#card-disputes) is created in production, the dispute
@@ -87,6 +96,8 @@ class AsyncCardDisputes(AsyncAPIResource):
           extra_query: Add additional query parameters to the request
 
           extra_body: Add additional JSON properties to the request
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return await self._post(
             f"/simulations/card_disputes/{card_dispute_id}/action",
@@ -97,6 +108,11 @@ class AsyncCardDisputes(AsyncAPIResource):
                 },
                 card_dispute_action_params.CardDisputeActionParams,
             ),
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                idempotency_key=idempotency_key,
+            ),
             cast_to=CardDispute,
         )
