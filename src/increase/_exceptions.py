@@ -52,14 +52,14 @@ __all__ = [
 class InvalidParametersError(exceptions.BadRequestError):
     detail: Optional[str]
 
+    errors: List[object]
+    """All errors related to parsing the request parameters."""
+
     status: Literal[400]
 
     title: str
 
     type: Literal["invalid_parameters_error"]
-
-    errors: Optional[List[object]]
-    """All errors related to parsing the request parameters."""
 
     def __init__(self, message: str, *, body: object, request: httpx.Request, response: httpx.Response) -> None:
         data = cast(Mapping[str, object], body if is_mapping(body) else {})

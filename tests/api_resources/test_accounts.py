@@ -31,6 +31,7 @@ class TestAccounts:
     def test_method_create_with_all_params(self, client: Increase) -> None:
         account = client.accounts.create(
             entity_id="string",
+            program_id="string",
             informational_entity_id="string",
             name="x",
         )
@@ -98,6 +99,7 @@ class TestAsyncAccounts:
     async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         account = await client.accounts.create(
             entity_id="string",
+            program_id="string",
             informational_entity_id="string",
             name="x",
         )

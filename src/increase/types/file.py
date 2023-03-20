@@ -43,6 +43,7 @@ class File(BaseModel):
         "digital_wallet_artwork",
         "digital_wallet_app_icon",
         "entity_supplemental_document",
+        "export",
     ]
     """What the File will be used for.
 

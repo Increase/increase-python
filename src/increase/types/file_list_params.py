@@ -53,6 +53,7 @@ _PurposeReservedKeywords = TypedDict(
                 "digital_wallet_artwork",
                 "digital_wallet_app_icon",
                 "entity_supplemental_document",
+                "export",
             ]
         ],
     },

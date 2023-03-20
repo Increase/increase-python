@@ -6,7 +6,7 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["CheckTransfer", "ReturnAddress", "Submission", "StopPaymentRequest", "Deposit"]
+__all__ = ["CheckTransfer", "ReturnAddress", "Submission", "StopPaymentRequest", "Deposit", "ReturnDetails"]
 
 
 class ReturnAddress(BaseModel):
@@ -63,6 +63,17 @@ class Deposit(BaseModel):
 
     For this resource it will always be `check_transfer_deposit`.
     """
+
+
+class ReturnDetails(BaseModel):
+    file_id: Optional[str]
+    """If available, a document with additional information about the return."""
+
+    reason: Literal["mail_delivery_failure", "refused_by_recipient"]
+    """The reason why the check was returned."""
+
+    transfer_id: str
+    """The identifier of the returned Check Transfer."""
 
 
 class CheckTransfer(BaseModel):
@@ -122,6 +133,13 @@ class CheckTransfer(BaseModel):
 
     return_address: Optional[ReturnAddress]
     """The return address to be printed on the check."""
+
+    return_details: Optional[ReturnDetails]
+    """After a check transfer is returned, this will contain supplemental details.
+
+    A check transfer is returned when the receiver mails a never deposited check
+    back to the bank printed on the check.
+    """
 
     status: Literal[
         "pending_approval",
