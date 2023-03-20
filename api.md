@@ -481,6 +481,7 @@ Methods:
 
 - <code title="post /simulations/check_transfers/{check_transfer_id}/deposit">client.simulations.check_transfers.<a href="./src/increase/resources/simulations/check_transfers.py">deposit</a>(check_transfer_id) -> <a href="./src/increase/types/check_transfer.py">CheckTransfer</a></code>
 - <code title="post /simulations/check_transfers/{check_transfer_id}/mail">client.simulations.check_transfers.<a href="./src/increase/resources/simulations/check_transfers.py">mail</a>(check_transfer_id) -> <a href="./src/increase/types/check_transfer.py">CheckTransfer</a></code>
+- <code title="post /simulations/check_transfers/{check_transfer_id}/return">client.simulations.check*transfers.<a href="./src/increase/resources/simulations/check_transfers.py">return*</a>(check_transfer_id, \*\*<a href="src/increase/types/simulations/check_transfer_return_params.py">params</a>) -> <a href="./src/increase/types/check_transfer.py">CheckTransfer</a></code>
 
 ## Documents
 

@@ -366,6 +366,9 @@ class TransactionSourceCheckTransferReturn(BaseModel):
     file_id: Optional[str]
     """If available, a document with additional information about the return."""
 
+    reason: Literal["mail_delivery_failure", "refused_by_recipient"]
+    """The reason why the check was returned."""
+
     transfer_id: str
     """The identifier of the returned Check Transfer."""
 
@@ -1342,6 +1345,7 @@ class DeclinedTransactionSourceCardDecline(BaseModel):
         "webhook_declined",
         "webhook_timed_out",
         "declined_by_stand_in_processing",
+        "invalid_physical_card",
     ]
     """Why the transaction was declined."""
 
