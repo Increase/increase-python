@@ -4,7 +4,7 @@ from typing import Optional
 from datetime import datetime
 from typing_extensions import Literal
 
-from pydantic import Field
+from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
@@ -171,7 +171,7 @@ class ACHTransfer(BaseModel):
     should use different details, this will contain those details.
     """
 
-    return_: Optional[Return] = Field(alias="return")
+    return_: Optional[Return] = FieldInfo(alias="return")
     """If your transfer is returned, this will contain details of the return."""
 
     routing_number: str
