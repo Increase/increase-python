@@ -1179,7 +1179,7 @@ class Transaction(BaseModel):
     Routes are things like cards and ACH details.
     """
 
-    route_type: Optional[str]
+    route_type: Optional[Literal["account_number", "card"]]
     """The type of the route this Transaction came through."""
 
     source: Source
