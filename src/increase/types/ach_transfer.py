@@ -1,7 +1,7 @@
 # File generated from our OpenAPI spec by Stainless.
 
 from typing import Optional
-from datetime import datetime
+from datetime import date, datetime
 from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
@@ -142,6 +142,12 @@ class ACHTransfer(BaseModel):
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
     currency. For ACH transfers this is always equal to `usd`.
+    """
+
+    effective_date: Optional[date]
+    """
+    The transfer effective date in
+    [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
     """
 
     external_account_id: Optional[str]

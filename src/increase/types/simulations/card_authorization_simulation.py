@@ -401,7 +401,7 @@ class PendingTransaction(BaseModel):
     Routes are things like cards and ACH details.
     """
 
-    route_type: Optional[str]
+    route_type: Optional[Literal["account_number", "card"]]
     """The type of the route this Pending Transaction came through."""
 
     source: PendingTransactionSource
@@ -584,6 +584,7 @@ class DeclinedTransactionSourceCheckDecline(BaseModel):
         "refer_to_image",
         "stop_payment_requested",
         "returned",
+        "duplicate_presentment",
     ]
     """Why the check was declined."""
 
@@ -830,7 +831,7 @@ class DeclinedTransaction(BaseModel):
     Routes are things like cards and ACH details.
     """
 
-    route_type: Optional[str]
+    route_type: Optional[Literal["account_number", "card"]]
     """The type of the route this Declined Transaction came through."""
 
     source: DeclinedTransactionSource
