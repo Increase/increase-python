@@ -181,8 +181,9 @@ class Increase(SyncAPIClient):
         return Querystring(nested_format="dots", array_format="comma")
 
     @property
-    def auth_headers(self) -> Dict[str, str]:
-        return {"Authorization": f"Bearer {self.api_key}"}
+    def auth_headers(self) -> dict[str, str]:
+        api_key = self.api_key
+        return {"Authorization": f"Bearer {api_key}"}
 
     def copy(
         self,
@@ -441,8 +442,9 @@ class AsyncIncrease(AsyncAPIClient):
         return Querystring(nested_format="dots", array_format="comma")
 
     @property
-    def auth_headers(self) -> Dict[str, str]:
-        return {"Authorization": f"Bearer {self.api_key}"}
+    def auth_headers(self) -> dict[str, str]:
+        api_key = self.api_key
+        return {"Authorization": f"Bearer {api_key}"}
 
     def copy(
         self,
