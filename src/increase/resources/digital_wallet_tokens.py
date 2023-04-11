@@ -22,11 +22,14 @@ class DigitalWalletTokens(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> DigitalWalletToken:
         """Retrieve a Digital Wallet Token"""
         return self._get(
             f"/digital_wallet_tokens/{digital_wallet_token_id}",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
             cast_to=DigitalWalletToken,
         )
 
@@ -42,6 +45,7 @@ class DigitalWalletTokens(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> SyncPage[DigitalWalletToken]:
         """
         List Digital Wallet Tokens
@@ -59,6 +63,8 @@ class DigitalWalletTokens(SyncAPIResource):
           extra_query: Add additional query parameters to the request
 
           extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get_api_list(
             "/digital_wallet_tokens",
@@ -67,6 +73,7 @@ class DigitalWalletTokens(SyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
+                timeout=timeout,
                 query=maybe_transform(
                     {
                         "cursor": cursor,
@@ -91,11 +98,14 @@ class AsyncDigitalWalletTokens(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> DigitalWalletToken:
         """Retrieve a Digital Wallet Token"""
         return await self._get(
             f"/digital_wallet_tokens/{digital_wallet_token_id}",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
             cast_to=DigitalWalletToken,
         )
 
@@ -111,6 +121,7 @@ class AsyncDigitalWalletTokens(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> AsyncPaginator[DigitalWalletToken, AsyncPage[DigitalWalletToken]]:
         """
         List Digital Wallet Tokens
@@ -128,6 +139,8 @@ class AsyncDigitalWalletTokens(AsyncAPIResource):
           extra_query: Add additional query parameters to the request
 
           extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get_api_list(
             "/digital_wallet_tokens",
@@ -136,6 +149,7 @@ class AsyncDigitalWalletTokens(AsyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
+                timeout=timeout,
                 query=maybe_transform(
                     {
                         "cursor": cursor,
