@@ -44,6 +44,7 @@ class ACHPrenotifications(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        timeout: float | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> ACHPrenotification:
         """
@@ -83,6 +84,8 @@ class ACHPrenotifications(SyncAPIResource):
 
           extra_body: Add additional JSON properties to the request
 
+          timeout: Override the client-level default timeout for this request, in seconds
+
           idempotency_key: Specify a custom idempotency key for this request
         """
         return self._post(
@@ -108,6 +111,7 @@ class ACHPrenotifications(SyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
+                timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
             cast_to=ACHPrenotification,
@@ -122,11 +126,14 @@ class ACHPrenotifications(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> ACHPrenotification:
         """Retrieve an ACH Prenotification"""
         return self._get(
             f"/ach_prenotifications/{ach_prenotification_id}",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
             cast_to=ACHPrenotification,
         )
 
@@ -141,6 +148,7 @@ class ACHPrenotifications(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> SyncPage[ACHPrenotification]:
         """
         List ACH Prenotifications
@@ -156,6 +164,8 @@ class ACHPrenotifications(SyncAPIResource):
           extra_query: Add additional query parameters to the request
 
           extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get_api_list(
             "/ach_prenotifications",
@@ -164,6 +174,7 @@ class ACHPrenotifications(SyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
+                timeout=timeout,
                 query=maybe_transform(
                     {
                         "cursor": cursor,
@@ -201,6 +212,7 @@ class AsyncACHPrenotifications(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        timeout: float | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> ACHPrenotification:
         """
@@ -240,6 +252,8 @@ class AsyncACHPrenotifications(AsyncAPIResource):
 
           extra_body: Add additional JSON properties to the request
 
+          timeout: Override the client-level default timeout for this request, in seconds
+
           idempotency_key: Specify a custom idempotency key for this request
         """
         return await self._post(
@@ -265,6 +279,7 @@ class AsyncACHPrenotifications(AsyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
+                timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
             cast_to=ACHPrenotification,
@@ -279,11 +294,14 @@ class AsyncACHPrenotifications(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> ACHPrenotification:
         """Retrieve an ACH Prenotification"""
         return await self._get(
             f"/ach_prenotifications/{ach_prenotification_id}",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
             cast_to=ACHPrenotification,
         )
 
@@ -298,6 +316,7 @@ class AsyncACHPrenotifications(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> AsyncPaginator[ACHPrenotification, AsyncPage[ACHPrenotification]]:
         """
         List ACH Prenotifications
@@ -313,6 +332,8 @@ class AsyncACHPrenotifications(AsyncAPIResource):
           extra_query: Add additional query parameters to the request
 
           extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get_api_list(
             "/ach_prenotifications",
@@ -321,6 +342,7 @@ class AsyncACHPrenotifications(AsyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
+                timeout=timeout,
                 query=maybe_transform(
                     {
                         "cursor": cursor,

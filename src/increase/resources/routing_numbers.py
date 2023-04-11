@@ -24,6 +24,7 @@ class RoutingNumbers(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> SyncPage[RoutingNumber]:
         """
         You can use this API to confirm if a routing number is valid, such as when a
@@ -44,6 +45,8 @@ class RoutingNumbers(SyncAPIResource):
           extra_query: Add additional query parameters to the request
 
           extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get_api_list(
             "/routing_numbers",
@@ -52,6 +55,7 @@ class RoutingNumbers(SyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
+                timeout=timeout,
                 query=maybe_transform(
                     {
                         "cursor": cursor,
@@ -77,6 +81,7 @@ class AsyncRoutingNumbers(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> AsyncPaginator[RoutingNumber, AsyncPage[RoutingNumber]]:
         """
         You can use this API to confirm if a routing number is valid, such as when a
@@ -97,6 +102,8 @@ class AsyncRoutingNumbers(AsyncAPIResource):
           extra_query: Add additional query parameters to the request
 
           extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get_api_list(
             "/routing_numbers",
@@ -105,6 +112,7 @@ class AsyncRoutingNumbers(AsyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
+                timeout=timeout,
                 query=maybe_transform(
                     {
                         "cursor": cursor,

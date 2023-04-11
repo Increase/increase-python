@@ -22,11 +22,14 @@ class DeclinedTransactions(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> DeclinedTransaction:
         """Retrieve a Declined Transaction"""
         return self._get(
             f"/declined_transactions/{declined_transaction_id}",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
             cast_to=DeclinedTransaction,
         )
 
@@ -43,6 +46,7 @@ class DeclinedTransactions(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> SyncPage[DeclinedTransaction]:
         """
         List Declined Transactions
@@ -62,6 +66,8 @@ class DeclinedTransactions(SyncAPIResource):
           extra_query: Add additional query parameters to the request
 
           extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get_api_list(
             "/declined_transactions",
@@ -70,6 +76,7 @@ class DeclinedTransactions(SyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
+                timeout=timeout,
                 query=maybe_transform(
                     {
                         "cursor": cursor,
@@ -95,11 +102,14 @@ class AsyncDeclinedTransactions(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> DeclinedTransaction:
         """Retrieve a Declined Transaction"""
         return await self._get(
             f"/declined_transactions/{declined_transaction_id}",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
             cast_to=DeclinedTransaction,
         )
 
@@ -116,6 +126,7 @@ class AsyncDeclinedTransactions(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> AsyncPaginator[DeclinedTransaction, AsyncPage[DeclinedTransaction]]:
         """
         List Declined Transactions
@@ -135,6 +146,8 @@ class AsyncDeclinedTransactions(AsyncAPIResource):
           extra_query: Add additional query parameters to the request
 
           extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get_api_list(
             "/declined_transactions",
@@ -143,6 +156,7 @@ class AsyncDeclinedTransactions(AsyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
+                timeout=timeout,
                 query=maybe_transform(
                     {
                         "cursor": cursor,

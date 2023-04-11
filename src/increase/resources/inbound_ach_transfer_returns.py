@@ -38,6 +38,7 @@ class InboundACHTransferReturns(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        timeout: float | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> InboundACHTransferReturn:
         """
@@ -56,6 +57,8 @@ class InboundACHTransferReturns(SyncAPIResource):
 
           extra_body: Add additional JSON properties to the request
 
+          timeout: Override the client-level default timeout for this request, in seconds
+
           idempotency_key: Specify a custom idempotency key for this request
         """
         return self._post(
@@ -71,6 +74,7 @@ class InboundACHTransferReturns(SyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
+                timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
             cast_to=InboundACHTransferReturn,
@@ -85,11 +89,14 @@ class InboundACHTransferReturns(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> InboundACHTransferReturn:
         """Retrieve an Inbound ACH Transfer Return"""
         return self._get(
             f"/inbound_ach_transfer_returns/{inbound_ach_transfer_return_id}",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
             cast_to=InboundACHTransferReturn,
         )
 
@@ -103,6 +110,7 @@ class InboundACHTransferReturns(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> SyncPage[InboundACHTransferReturn]:
         """
         List Inbound ACH Transfer Returns
@@ -118,6 +126,8 @@ class InboundACHTransferReturns(SyncAPIResource):
           extra_query: Add additional query parameters to the request
 
           extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get_api_list(
             "/inbound_ach_transfer_returns",
@@ -126,6 +136,7 @@ class InboundACHTransferReturns(SyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
+                timeout=timeout,
                 query=maybe_transform(
                     {
                         "cursor": cursor,
@@ -158,6 +169,7 @@ class AsyncInboundACHTransferReturns(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        timeout: float | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> InboundACHTransferReturn:
         """
@@ -176,6 +188,8 @@ class AsyncInboundACHTransferReturns(AsyncAPIResource):
 
           extra_body: Add additional JSON properties to the request
 
+          timeout: Override the client-level default timeout for this request, in seconds
+
           idempotency_key: Specify a custom idempotency key for this request
         """
         return await self._post(
@@ -191,6 +205,7 @@ class AsyncInboundACHTransferReturns(AsyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
+                timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
             cast_to=InboundACHTransferReturn,
@@ -205,11 +220,14 @@ class AsyncInboundACHTransferReturns(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> InboundACHTransferReturn:
         """Retrieve an Inbound ACH Transfer Return"""
         return await self._get(
             f"/inbound_ach_transfer_returns/{inbound_ach_transfer_return_id}",
-            options=make_request_options(extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
             cast_to=InboundACHTransferReturn,
         )
 
@@ -223,6 +241,7 @@ class AsyncInboundACHTransferReturns(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
+        timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> AsyncPaginator[InboundACHTransferReturn, AsyncPage[InboundACHTransferReturn]]:
         """
         List Inbound ACH Transfer Returns
@@ -238,6 +257,8 @@ class AsyncInboundACHTransferReturns(AsyncAPIResource):
           extra_query: Add additional query parameters to the request
 
           extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get_api_list(
             "/inbound_ach_transfer_returns",
@@ -246,6 +267,7 @@ class AsyncInboundACHTransferReturns(AsyncAPIResource):
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
+                timeout=timeout,
                 query=maybe_transform(
                     {
                         "cursor": cursor,
