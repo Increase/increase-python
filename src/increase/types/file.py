@@ -42,6 +42,7 @@ class File(BaseModel):
         "trust_formation_document",
         "digital_wallet_artwork",
         "digital_wallet_app_icon",
+        "document_request",
         "entity_supplemental_document",
         "export",
     ]

@@ -18,6 +18,7 @@ __all__ = [
     "SourceCardDisputeAcceptance",
     "SourceCardRefund",
     "SourceCardSettlement",
+    "SourceCardRevenuePayment",
     "SourceCheckDepositAcceptance",
     "SourceCheckDepositReturn",
     "SourceCheckTransferIntention",
@@ -26,6 +27,7 @@ __all__ = [
     "SourceCheckTransferStopPaymentRequest",
     "SourceDisputeResolution",
     "SourceEmpyrealCashDeposit",
+    "SourceFeePayment",
     "SourceInboundACHTransfer",
     "SourceInboundCheck",
     "SourceInboundInternationalACHTransfer",
@@ -38,6 +40,7 @@ __all__ = [
     "SourceInternalSource",
     "SourceCardRouteRefund",
     "SourceCardRouteSettlement",
+    "SourceRealTimePaymentsTransferAcknowledgement",
     "SourceSampleFunds",
     "SourceWireDrawdownPaymentIntention",
     "SourceWireDrawdownPaymentRejection",
@@ -167,7 +170,7 @@ class SourceCardDisputeAcceptance(BaseModel):
     card_dispute_id: str
     """The identifier of the Card Dispute that was accepted."""
 
-    transaction_id: Optional[str]
+    transaction_id: str
     """
     The identifier of the Transaction that was created to return the disputed funds
     to your account.
@@ -190,6 +193,24 @@ class SourceCardRefund(BaseModel):
     transaction's currency.
     """
 
+    id: str
+    """The Card Refund identifier."""
+
+    merchant_category_code: str
+    """The 4-digit MCC describing the merchant's business."""
+
+    merchant_city: Optional[str]
+    """The city the merchant resides in."""
+
+    merchant_country: str
+    """The country the merchant resides in."""
+
+    merchant_name: Optional[str]
+    """The name of the merchant."""
+
+    merchant_state: Optional[str]
+    """The state the merchant resides in."""
+
     type: Literal["card_refund"]
     """A constant representing the object's type.
 
@@ -204,21 +225,35 @@ class SourceCardSettlement(BaseModel):
     For dollars, for example, this is cents.
     """
 
+    card_authorization: Optional[str]
+    """
+    The Card Authorization that was created prior to this Card Settlement, if on
+    exists.
+    """
+
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
     transaction's settlement currency.
     """
 
+    id: str
+    """The Card Settlement identifier."""
+
     merchant_category_code: str
+    """The 4-digit MCC describing the merchant's business."""
 
     merchant_city: Optional[str]
+    """The city the merchant resides in."""
 
     merchant_country: str
+    """The country the merchant resides in."""
 
     merchant_name: Optional[str]
+    """The name of the merchant."""
 
     merchant_state: Optional[str]
+    """The state the merchant resides in."""
 
     pending_transaction_id: Optional[str]
     """The identifier of the Pending Transaction associated with this Transaction."""
@@ -237,6 +272,29 @@ class SourceCardSettlement(BaseModel):
 
     For this resource it will always be `card_settlement`.
     """
+
+
+class SourceCardRevenuePayment(BaseModel):
+    amount: int
+    """The amount in the minor unit of the transaction's currency.
+
+    For dollars, for example, this is cents.
+    """
+
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
+    currency.
+    """
+
+    period_end: datetime
+    """The end of the period for which this transaction paid interest."""
+
+    period_start: datetime
+    """The start of the period for which this transaction paid interest."""
+
+    transacted_on_account_id: Optional[str]
+    """The account the card belonged to."""
 
 
 class SourceCheckDepositAcceptance(BaseModel):
@@ -410,6 +468,20 @@ class SourceEmpyrealCashDeposit(BaseModel):
     bag_id: str
 
     deposit_date: datetime
+
+
+class SourceFeePayment(BaseModel):
+    amount: int
+    """The amount in the minor unit of the transaction's currency.
+
+    For dollars, for example, this is cents.
+    """
+
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
+    currency.
+    """
 
 
 class SourceInboundACHTransfer(BaseModel):
@@ -812,6 +884,23 @@ class SourceCardRouteSettlement(BaseModel):
     merchant_state: Optional[str]
 
 
+class SourceRealTimePaymentsTransferAcknowledgement(BaseModel):
+    amount: int
+    """The transfer amount in USD cents."""
+
+    destination_account_number: str
+    """The destination account number."""
+
+    destination_routing_number: str
+    """The American Bankers' Association (ABA) Routing Transit Number (RTN)."""
+
+    remittance_information: str
+    """Unstructured information that will show on the recipient's bank statement."""
+
+    transfer_id: str
+    """The identifier of the Real Time Payments Transfer that led to this Transaction."""
+
+
 class SourceSampleFunds(BaseModel):
     originator: str
     """Where the sample funds came from."""
@@ -911,6 +1000,13 @@ class Source(BaseModel):
     equal to `card_refund`.
     """
 
+    card_revenue_payment: Optional[SourceCardRevenuePayment]
+    """A Card Revenue Payment object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `card_revenue_payment`.
+    """
+
     card_route_refund: Optional[SourceCardRouteRefund]
     """A Deprecated Card Refund object.
 
@@ -942,6 +1038,7 @@ class Source(BaseModel):
         "card_dispute_acceptance",
         "card_refund",
         "card_settlement",
+        "card_revenue_payment",
         "check_deposit_acceptance",
         "check_deposit_return",
         "check_transfer_intention",
@@ -950,6 +1047,7 @@ class Source(BaseModel):
         "check_transfer_stop_payment_request",
         "dispute_resolution",
         "empyreal_cash_deposit",
+        "fee_payment",
         "inbound_ach_transfer",
         "inbound_ach_transfer_return_intention",
         "inbound_check",
@@ -1034,6 +1132,13 @@ class Source(BaseModel):
     equal to `empyreal_cash_deposit`.
     """
 
+    fee_payment: Optional[SourceFeePayment]
+    """A Fee Payment object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `fee_payment`.
+    """
+
     inbound_ach_transfer: Optional[SourceInboundACHTransfer]
     """A Inbound ACH Transfer object.
 
@@ -1102,6 +1207,13 @@ class Source(BaseModel):
 
     This field will be present in the JSON response if and only if `category` is
     equal to `internal_source`.
+    """
+
+    real_time_payments_transfer_acknowledgement: Optional[SourceRealTimePaymentsTransferAcknowledgement]
+    """A Real Time Payments Transfer Acknowledgement object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `real_time_payments_transfer_acknowledgement`.
     """
 
     sample_funds: Optional[SourceSampleFunds]

@@ -29,6 +29,8 @@ class Event(BaseModel):
         "ach_transfer.updated",
         "card.created",
         "card.updated",
+        "card_payment.created",
+        "card_payment.updated",
         "card_dispute.created",
         "card_dispute.updated",
         "check_deposit.created",

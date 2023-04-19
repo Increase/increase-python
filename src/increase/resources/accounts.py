@@ -144,6 +144,7 @@ class Accounts(SyncAPIResource):
     def list(
         self,
         *,
+        created_at: account_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         entity_id: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
@@ -190,6 +191,7 @@ class Accounts(SyncAPIResource):
                         "limit": limit,
                         "entity_id": entity_id,
                         "status": status,
+                        "created_at": created_at,
                     },
                     account_list_params.AccountListParams,
                 ),
@@ -348,6 +350,7 @@ class AsyncAccounts(AsyncAPIResource):
     def list(
         self,
         *,
+        created_at: account_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         entity_id: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
@@ -394,6 +397,7 @@ class AsyncAccounts(AsyncAPIResource):
                         "limit": limit,
                         "entity_id": entity_id,
                         "status": status,
+                        "created_at": created_at,
                     },
                     account_list_params.AccountListParams,
                 ),

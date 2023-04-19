@@ -128,7 +128,7 @@ first_page = await increase.accounts.list()
 
 print(f"next page cursor: {first_page.next_cursor}")  # => "next page cursor: ..."
 for account in first_page.data:
-    print(account.balances)
+    print(account.created_at)
 
 # Remove `await` for non-async usage.
 ```

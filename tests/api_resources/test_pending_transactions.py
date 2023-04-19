@@ -9,6 +9,7 @@ import pytest
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
 from increase.types import PendingTransaction
+from increase._utils import parse_datetime
 from increase.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("API_BASE_URL", "http://127.0.0.1:4010")
@@ -41,6 +42,12 @@ class TestPendingTransactions:
             route_id="string",
             source_id="string",
             status={"in": ["pending", "pending", "pending"]},
+            created_at={
+                "after": parse_datetime("2019-12-27T18:11:19.117Z"),
+                "before": parse_datetime("2019-12-27T18:11:19.117Z"),
+                "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
+                "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
+            },
         )
         assert_matches_type(SyncPage[PendingTransaction], pending_transaction, path=["response"])
 
@@ -71,5 +78,11 @@ class TestAsyncPendingTransactions:
             route_id="string",
             source_id="string",
             status={"in": ["pending", "pending", "pending"]},
+            created_at={
+                "after": parse_datetime("2019-12-27T18:11:19.117Z"),
+                "before": parse_datetime("2019-12-27T18:11:19.117Z"),
+                "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
+                "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
+            },
         )
         assert_matches_type(AsyncPage[PendingTransaction], pending_transaction, path=["response"])

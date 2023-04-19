@@ -49,13 +49,17 @@ class Increase(SyncAPIClient):
     accounts: resources.Accounts
     account_numbers: resources.AccountNumbers
     real_time_decisions: resources.RealTimeDecisions
+    real_time_payments_transfers: resources.RealTimePaymentsTransfers
+    balance_lookups: resources.BalanceLookups
     cards: resources.Cards
     card_disputes: resources.CardDisputes
     card_profiles: resources.CardProfiles
     external_accounts: resources.ExternalAccounts
+    exports: resources.Exports
     digital_wallet_tokens: resources.DigitalWalletTokens
     transactions: resources.Transactions
     pending_transactions: resources.PendingTransactions
+    programs: resources.Programs
     declined_transactions: resources.DeclinedTransactions
     limits: resources.Limits
     account_transfers: resources.AccountTransfers
@@ -147,13 +151,17 @@ class Increase(SyncAPIClient):
         self.accounts = resources.Accounts(self)
         self.account_numbers = resources.AccountNumbers(self)
         self.real_time_decisions = resources.RealTimeDecisions(self)
+        self.real_time_payments_transfers = resources.RealTimePaymentsTransfers(self)
+        self.balance_lookups = resources.BalanceLookups(self)
         self.cards = resources.Cards(self)
         self.card_disputes = resources.CardDisputes(self)
         self.card_profiles = resources.CardProfiles(self)
         self.external_accounts = resources.ExternalAccounts(self)
+        self.exports = resources.Exports(self)
         self.digital_wallet_tokens = resources.DigitalWalletTokens(self)
         self.transactions = resources.Transactions(self)
         self.pending_transactions = resources.PendingTransactions(self)
+        self.programs = resources.Programs(self)
         self.declined_transactions = resources.DeclinedTransactions(self)
         self.limits = resources.Limits(self)
         self.account_transfers = resources.AccountTransfers(self)
@@ -310,13 +318,17 @@ class AsyncIncrease(AsyncAPIClient):
     accounts: resources.AsyncAccounts
     account_numbers: resources.AsyncAccountNumbers
     real_time_decisions: resources.AsyncRealTimeDecisions
+    real_time_payments_transfers: resources.AsyncRealTimePaymentsTransfers
+    balance_lookups: resources.AsyncBalanceLookups
     cards: resources.AsyncCards
     card_disputes: resources.AsyncCardDisputes
     card_profiles: resources.AsyncCardProfiles
     external_accounts: resources.AsyncExternalAccounts
+    exports: resources.AsyncExports
     digital_wallet_tokens: resources.AsyncDigitalWalletTokens
     transactions: resources.AsyncTransactions
     pending_transactions: resources.AsyncPendingTransactions
+    programs: resources.AsyncPrograms
     declined_transactions: resources.AsyncDeclinedTransactions
     limits: resources.AsyncLimits
     account_transfers: resources.AsyncAccountTransfers
@@ -408,13 +420,17 @@ class AsyncIncrease(AsyncAPIClient):
         self.accounts = resources.AsyncAccounts(self)
         self.account_numbers = resources.AsyncAccountNumbers(self)
         self.real_time_decisions = resources.AsyncRealTimeDecisions(self)
+        self.real_time_payments_transfers = resources.AsyncRealTimePaymentsTransfers(self)
+        self.balance_lookups = resources.AsyncBalanceLookups(self)
         self.cards = resources.AsyncCards(self)
         self.card_disputes = resources.AsyncCardDisputes(self)
         self.card_profiles = resources.AsyncCardProfiles(self)
         self.external_accounts = resources.AsyncExternalAccounts(self)
+        self.exports = resources.AsyncExports(self)
         self.digital_wallet_tokens = resources.AsyncDigitalWalletTokens(self)
         self.transactions = resources.AsyncTransactions(self)
         self.pending_transactions = resources.AsyncPendingTransactions(self)
+        self.programs = resources.AsyncPrograms(self)
         self.declined_transactions = resources.AsyncDeclinedTransactions(self)
         self.limits = resources.AsyncLimits(self)
         self.account_transfers = resources.AsyncAccountTransfers(self)

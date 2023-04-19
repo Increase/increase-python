@@ -2,14 +2,46 @@
 
 from __future__ import annotations
 
-from typing_extensions import Literal, TypedDict
+from typing import Union
+from datetime import datetime
+from typing_extensions import Literal, Annotated, TypedDict
 
-__all__ = ["AccountNumberListParams"]
+from .._utils import PropertyInfo
+
+__all__ = ["AccountNumberListParams", "CreatedAt"]
+
+
+class CreatedAt(TypedDict, total=False):
+    after: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
+    """
+    Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+    timestamp.
+    """
+
+    before: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
+    """
+    Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+    timestamp.
+    """
+
+    on_or_after: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
+    """
+    Return results on or after this
+    [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+    """
+
+    on_or_before: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
+    """
+    Return results on or before this
+    [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+    """
 
 
 class AccountNumberListParams(TypedDict, total=False):
     account_id: str
     """Filter Account Numbers to those belonging to the specified Account."""
+
+    created_at: CreatedAt
 
     cursor: str
     """Return the page of entries after this one."""

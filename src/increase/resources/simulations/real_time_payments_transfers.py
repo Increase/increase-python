@@ -2,12 +2,14 @@
 
 from __future__ import annotations
 
+from ...types import RealTimePaymentsTransfer
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._base_client import make_request_options
 from ...types.simulations import (
     InboundRealTimePaymentsTransferSimulationResult,
+    real_time_payments_transfer_complete_params,
     real_time_payments_transfer_create_inbound_params,
 )
 
@@ -15,6 +17,53 @@ __all__ = ["RealTimePaymentsTransfers", "AsyncRealTimePaymentsTransfers"]
 
 
 class RealTimePaymentsTransfers(SyncAPIResource):
+    def complete(
+        self,
+        real_time_payments_transfer_id: str,
+        *,
+        rejection: real_time_payments_transfer_complete_params.Rejection | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> RealTimePaymentsTransfer:
+        """
+        Simulates submission of a Real Time Payments transfer and handling the response
+        from the destination financial institution. This transfer must first have a
+        `status` of `pending_submission`.
+
+        Args:
+          rejection: If set, the simulation will reject the transfer.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        return self._post(
+            f"/simulations/real_time_payments_transfers/{real_time_payments_transfer_id}/complete",
+            body=maybe_transform(
+                {"rejection": rejection},
+                real_time_payments_transfer_complete_params.RealTimePaymentsTransferCompleteParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=RealTimePaymentsTransfer,
+        )
+
     def create_inbound(
         self,
         *,
@@ -90,6 +139,53 @@ class RealTimePaymentsTransfers(SyncAPIResource):
 
 
 class AsyncRealTimePaymentsTransfers(AsyncAPIResource):
+    async def complete(
+        self,
+        real_time_payments_transfer_id: str,
+        *,
+        rejection: real_time_payments_transfer_complete_params.Rejection | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> RealTimePaymentsTransfer:
+        """
+        Simulates submission of a Real Time Payments transfer and handling the response
+        from the destination financial institution. This transfer must first have a
+        `status` of `pending_submission`.
+
+        Args:
+          rejection: If set, the simulation will reject the transfer.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        return await self._post(
+            f"/simulations/real_time_payments_transfers/{real_time_payments_transfer_id}/complete",
+            body=maybe_transform(
+                {"rejection": rejection},
+                real_time_payments_transfer_complete_params.RealTimePaymentsTransferCompleteParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=RealTimePaymentsTransfer,
+        )
+
     async def create_inbound(
         self,
         *,
