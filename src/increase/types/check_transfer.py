@@ -172,9 +172,6 @@ class CheckTransfer(BaseModel):
     the check was submitted.
     """
 
-    template_id: Optional[str]
-    """If the transfer was created from a template, this will be the template's ID."""
-
     transaction_id: Optional[str]
     """The ID for the transaction caused by the transfer."""
 

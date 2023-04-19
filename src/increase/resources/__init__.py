@@ -5,8 +5,10 @@ from .files import Files, AsyncFiles
 from .events import Events, AsyncEvents
 from .groups import Groups, AsyncGroups
 from .limits import Limits, AsyncLimits
+from .exports import Exports, AsyncExports
 from .accounts import Accounts, AsyncAccounts
 from .entities import Entities, AsyncEntities
+from .programs import Programs, AsyncPrograms
 from .documents import Documents, AsyncDocuments
 from .simulations import Simulations, AsyncSimulations
 from .transactions import Transactions, AsyncTransactions
@@ -16,6 +18,7 @@ from .card_profiles import CardProfiles, AsyncCardProfiles
 from .check_deposits import CheckDeposits, AsyncCheckDeposits
 from .wire_transfers import WireTransfers, AsyncWireTransfers
 from .account_numbers import AccountNumbers, AsyncAccountNumbers
+from .balance_lookups import BalanceLookups, AsyncBalanceLookups
 from .check_transfers import CheckTransfers, AsyncCheckTransfers
 from .routing_numbers import RoutingNumbers, AsyncRoutingNumbers
 from .account_transfers import AccountTransfers, AsyncAccountTransfers
@@ -33,6 +36,10 @@ from .inbound_ach_transfer_returns import (
     InboundACHTransferReturns,
     AsyncInboundACHTransferReturns,
 )
+from .real_time_payments_transfers import (
+    RealTimePaymentsTransfers,
+    AsyncRealTimePaymentsTransfers,
+)
 from .inbound_wire_drawdown_requests import (
     InboundWireDrawdownRequests,
     AsyncInboundWireDrawdownRequests,
@@ -45,6 +52,10 @@ __all__ = [
     "AsyncAccountNumbers",
     "RealTimeDecisions",
     "AsyncRealTimeDecisions",
+    "RealTimePaymentsTransfers",
+    "AsyncRealTimePaymentsTransfers",
+    "BalanceLookups",
+    "AsyncBalanceLookups",
     "Cards",
     "AsyncCards",
     "CardDisputes",
@@ -53,12 +64,16 @@ __all__ = [
     "AsyncCardProfiles",
     "ExternalAccounts",
     "AsyncExternalAccounts",
+    "Exports",
+    "AsyncExports",
     "DigitalWalletTokens",
     "AsyncDigitalWalletTokens",
     "Transactions",
     "AsyncTransactions",
     "PendingTransactions",
     "AsyncPendingTransactions",
+    "Programs",
+    "AsyncPrograms",
     "DeclinedTransactions",
     "AsyncDeclinedTransactions",
     "Limits",

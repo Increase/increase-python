@@ -19,6 +19,7 @@ __all__ = [
     "SourceCheckTransferInstruction",
     "SourceInboundFundsHold",
     "SourceCardRouteAuthorization",
+    "SourceRealTimePaymentsTransferInstruction",
     "SourceWireDrawdownPaymentInstruction",
     "SourceWireTransferInstruction",
 ]
@@ -102,6 +103,9 @@ class SourceCardAuthorization(BaseModel):
     purchase), the identifier of the token that was used.
     """
 
+    id: str
+    """The Card Authorization identifier."""
+
     merchant_acceptor_id: str
     """
     The merchant identifier (commonly abbreviated as MID) of the merchant the card
@@ -133,6 +137,12 @@ class SourceCardAuthorization(BaseModel):
     """
     The identifier of the Real-Time Decision sent to approve or decline this
     transaction.
+    """
+
+    type: Literal["card_authorization"]
+    """A constant representing the object's type.
+
+    For this resource it will always be `card_authorization`.
     """
 
 
@@ -195,6 +205,12 @@ class SourceInboundFundsHold(BaseModel):
     Certain conditions may cause it to be released before this time.
     """
 
+    created_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the hold
+    was created.
+    """
+
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
@@ -203,6 +219,9 @@ class SourceInboundFundsHold(BaseModel):
 
     held_transaction_id: Optional[str]
     """The ID of the Transaction for which funds were held."""
+
+    pending_transaction_id: Optional[str]
+    """The ID of the Pending Transaction representing the held funds."""
 
     released_at: Optional[datetime]
     """When the hold was released (if it has been released)."""
@@ -235,6 +254,20 @@ class SourceCardRouteAuthorization(BaseModel):
     merchant_descriptor: str
 
     merchant_state: Optional[str]
+
+
+class SourceRealTimePaymentsTransferInstruction(BaseModel):
+    amount: int
+    """The pending amount in the minor unit of the transaction's currency.
+
+    For dollars, for example, this is cents.
+    """
+
+    transfer_id: str
+    """
+    The identifier of the Real Time Payments Transfer that led to this Pending
+    Transaction.
+    """
 
 
 class SourceWireDrawdownPaymentInstruction(BaseModel):
@@ -336,6 +369,13 @@ class Source(BaseModel):
     equal to `inbound_funds_hold`.
     """
 
+    real_time_payments_transfer_instruction: Optional[SourceRealTimePaymentsTransferInstruction]
+    """A Real Time Payments Transfer Instruction object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `real_time_payments_transfer_instruction`.
+    """
+
     wire_drawdown_payment_instruction: Optional[SourceWireDrawdownPaymentInstruction]
     """A Wire Drawdown Payment Instruction object.
 
@@ -359,6 +399,12 @@ class PendingTransaction(BaseModel):
     """The Pending Transaction amount in the minor unit of its currency.
 
     For dollars, for example, this is cents.
+    """
+
+    completed_at: Optional[datetime]
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which the Pending
+    Transaction was completed.
     """
 
     created_at: datetime

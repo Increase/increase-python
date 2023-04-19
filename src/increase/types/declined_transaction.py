@@ -43,11 +43,12 @@ class SourceACHDecline(BaseModel):
         "credit_entry_refused_by_receiver",
         "duplicate_return",
         "entity_not_active",
-        "transaction_not_allowed",
         "group_locked",
         "insufficient_funds",
+        "misrouted_return",
         "no_ach_route",
         "originator_request",
+        "transaction_not_allowed",
     ]
     """Why the ACH transfer was declined."""
 
@@ -156,6 +157,7 @@ class SourceCardDecline(BaseModel):
         "webhook_timed_out",
         "declined_by_stand_in_processing",
         "invalid_physical_card",
+        "missing_original_authorization",
     ]
     """Why the transaction was declined."""
 
@@ -182,6 +184,7 @@ class SourceCheckDecline(BaseModel):
         "stop_payment_requested",
         "returned",
         "duplicate_presentment",
+        "not_authorized",
     ]
     """Why the check was declined."""
 

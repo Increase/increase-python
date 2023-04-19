@@ -16,12 +16,24 @@ class Approval(BaseModel):
     the transfer was approved.
     """
 
+    approved_by: Optional[str]
+    """
+    If the Transfer was approved by a user in the dashboard, the email address of
+    that user.
+    """
+
 
 class Cancellation(BaseModel):
     canceled_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the Transfer was canceled.
+    """
+
+    canceled_by: Optional[str]
+    """
+    If the Transfer was canceled by a user in the dashboard, the email address of
+    that user.
     """
 
 
@@ -74,13 +86,8 @@ class AccountTransfer(BaseModel):
     network: Literal["account"]
     """The transfer's network."""
 
-    status: Literal[
-        "pending_submission", "pending_approval", "canceled", "requires_attention", "flagged_by_operator", "complete"
-    ]
+    status: Literal["pending_approval", "canceled", "complete"]
     """The lifecycle status of the transfer."""
-
-    template_id: Optional[str]
-    """If the transfer was created from a template, this will be the template's ID."""
 
     transaction_id: Optional[str]
     """The ID for the transaction funding the transfer."""

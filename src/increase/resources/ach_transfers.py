@@ -70,7 +70,7 @@ class ACHTransfers(SyncAPIResource):
           addendum: Additional information that will be sent to the recipient. This is included in
               the transfer data sent to the receiving bank.
 
-          company_descriptive_date: The description of the date of the transfer, usually in the format `YYYYMMDD`.
+          company_descriptive_date: The description of the date of the transfer, usually in the format `YYMMDD`.
               This is included in the transfer data sent to the receiving bank.
 
           company_discretionary_data: The data you choose to associate with the transfer. This is included in the
@@ -329,7 +329,7 @@ class AsyncACHTransfers(AsyncAPIResource):
           addendum: Additional information that will be sent to the recipient. This is included in
               the transfer data sent to the receiving bank.
 
-          company_descriptive_date: The description of the date of the transfer, usually in the format `YYYYMMDD`.
+          company_descriptive_date: The description of the date of the transfer, usually in the format `YYMMDD`.
               This is included in the transfer data sent to the receiving bank.
 
           company_discretionary_data: The data you choose to associate with the transfer. This is included in the

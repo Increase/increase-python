@@ -18,12 +18,24 @@ class Approval(BaseModel):
     the transfer was approved.
     """
 
+    approved_by: Optional[str]
+    """
+    If the Transfer was approved by a user in the dashboard, the email address of
+    that user.
+    """
+
 
 class Cancellation(BaseModel):
     canceled_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the Transfer was canceled.
+    """
+
+    canceled_by: Optional[str]
+    """
+    If the Transfer was canceled by a user in the dashboard, the email address of
+    that user.
     """
 
 
@@ -192,7 +204,14 @@ class ACHTransfer(BaseModel):
     """The descriptor that will show on the recipient's bank statement."""
 
     status: Literal[
-        "pending_approval", "canceled", "pending_submission", "submitted", "returned", "requires_attention", "rejected"
+        "pending_approval",
+        "canceled",
+        "pending_reviewing",
+        "pending_submission",
+        "submitted",
+        "returned",
+        "requires_attention",
+        "rejected",
     ]
     """The lifecycle status of the transfer."""
 
@@ -201,9 +220,6 @@ class ACHTransfer(BaseModel):
     After the transfer is submitted to FedACH, this will contain supplemental
     details.
     """
-
-    template_id: Optional[str]
-    """If the transfer was created from a template, this will be the template's ID."""
 
     transaction_id: Optional[str]
     """The ID for the transaction funding the transfer."""

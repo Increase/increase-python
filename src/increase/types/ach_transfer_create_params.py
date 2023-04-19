@@ -44,7 +44,7 @@ class ACHTransferCreateParams(TypedDict, total=False):
     """
 
     company_descriptive_date: str
-    """The description of the date of the transfer, usually in the format `YYYYMMDD`.
+    """The description of the date of the transfer, usually in the format `YYMMDD`.
 
     This is included in the transfer data sent to the receiving bank.
     """

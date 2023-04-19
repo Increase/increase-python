@@ -20,11 +20,17 @@ from .check_transfer_return_params import (
 from .card_authorization_simulation import (
     CardAuthorizationSimulation as CardAuthorizationSimulation,
 )
+from .interest_payment_create_params import (
+    InterestPaymentCreateParams as InterestPaymentCreateParams,
+)
 from .account_statement_create_params import (
     AccountStatementCreateParams as AccountStatementCreateParams,
 )
 from .ach_transfer_create_inbound_params import (
     ACHTransferCreateInboundParams as ACHTransferCreateInboundParams,
+)
+from .interest_payment_simulation_result import (
+    InterestPaymentSimulationResult as InterestPaymentSimulationResult,
 )
 from .wire_transfer_create_inbound_params import (
     WireTransferCreateInboundParams as WireTransferCreateInboundParams,
@@ -34,6 +40,9 @@ from .digital_wallet_token_request_create_params import (
 )
 from .inbound_wire_drawdown_request_create_params import (
     InboundWireDrawdownRequestCreateParams as InboundWireDrawdownRequestCreateParams,
+)
+from .real_time_payments_transfer_complete_params import (
+    RealTimePaymentsTransferCompleteParams as RealTimePaymentsTransferCompleteParams,
 )
 from .digital_wallet_token_request_create_response import (
     DigitalWalletTokenRequestCreateResponse as DigitalWalletTokenRequestCreateResponse,

@@ -10,6 +10,7 @@ from .check_deposits import CheckDeposits, AsyncCheckDeposits
 from .wire_transfers import WireTransfers, AsyncWireTransfers
 from .check_transfers import CheckTransfers, AsyncCheckTransfers
 from .account_transfers import AccountTransfers, AsyncAccountTransfers
+from .interest_payments import InterestPayments, AsyncInterestPayments
 from .account_statements import AccountStatements, AsyncAccountStatements
 from .real_time_payments_transfers import (
     RealTimePaymentsTransfers,
@@ -45,6 +46,8 @@ __all__ = [
     "AsyncCheckDeposits",
     "InboundWireDrawdownRequests",
     "AsyncInboundWireDrawdownRequests",
+    "InterestPayments",
+    "AsyncInterestPayments",
     "WireTransfers",
     "AsyncWireTransfers",
     "Cards",

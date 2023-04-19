@@ -14,6 +14,7 @@ from .check_deposits import CheckDeposits, AsyncCheckDeposits
 from .wire_transfers import WireTransfers, AsyncWireTransfers
 from .check_transfers import CheckTransfers, AsyncCheckTransfers
 from .account_transfers import AccountTransfers, AsyncAccountTransfers
+from .interest_payments import InterestPayments, AsyncInterestPayments
 from .account_statements import AccountStatements, AsyncAccountStatements
 from .real_time_payments_transfers import (
     RealTimePaymentsTransfers,
@@ -45,6 +46,7 @@ class Simulations(SyncAPIResource):
     digital_wallet_token_requests: DigitalWalletTokenRequests
     check_deposits: CheckDeposits
     inbound_wire_drawdown_requests: InboundWireDrawdownRequests
+    interest_payments: InterestPayments
     wire_transfers: WireTransfers
     cards: Cards
     real_time_payments_transfers: RealTimePaymentsTransfers
@@ -61,6 +63,7 @@ class Simulations(SyncAPIResource):
         self.digital_wallet_token_requests = DigitalWalletTokenRequests(client)
         self.check_deposits = CheckDeposits(client)
         self.inbound_wire_drawdown_requests = InboundWireDrawdownRequests(client)
+        self.interest_payments = InterestPayments(client)
         self.wire_transfers = WireTransfers(client)
         self.cards = Cards(client)
         self.real_time_payments_transfers = RealTimePaymentsTransfers(client)
@@ -77,6 +80,7 @@ class AsyncSimulations(AsyncAPIResource):
     digital_wallet_token_requests: AsyncDigitalWalletTokenRequests
     check_deposits: AsyncCheckDeposits
     inbound_wire_drawdown_requests: AsyncInboundWireDrawdownRequests
+    interest_payments: AsyncInterestPayments
     wire_transfers: AsyncWireTransfers
     cards: AsyncCards
     real_time_payments_transfers: AsyncRealTimePaymentsTransfers
@@ -93,6 +97,7 @@ class AsyncSimulations(AsyncAPIResource):
         self.digital_wallet_token_requests = AsyncDigitalWalletTokenRequests(client)
         self.check_deposits = AsyncCheckDeposits(client)
         self.inbound_wire_drawdown_requests = AsyncInboundWireDrawdownRequests(client)
+        self.interest_payments = AsyncInterestPayments(client)
         self.wire_transfers = AsyncWireTransfers(client)
         self.cards = AsyncCards(client)
         self.real_time_payments_transfers = AsyncRealTimePaymentsTransfers(client)

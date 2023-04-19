@@ -6,30 +6,10 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["Account", "Balances"]
-
-
-class Balances(BaseModel):
-    available_balance: int
-    """
-    The Account's available balance, representing the current balance less any open
-    Pending Transactions on the Account.
-    """
-
-    current_balance: int
-    """
-    The Account's current balance, representing the sum of all posted Transactions
-    on the Account.
-    """
+__all__ = ["Account"]
 
 
 class Account(BaseModel):
-    balances: Balances
-    """The Account's balances in the minor unit of its currency.
-
-    For dollars, for example, these values will represent cents.
-    """
-
     created_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account

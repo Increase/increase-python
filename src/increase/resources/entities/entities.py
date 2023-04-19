@@ -129,6 +129,7 @@ class Entities(SyncAPIResource):
     def list(
         self,
         *,
+        created_at: entity_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -167,6 +168,7 @@ class Entities(SyncAPIResource):
                     {
                         "cursor": cursor,
                         "limit": limit,
+                        "created_at": created_at,
                     },
                     entity_list_params.EntityListParams,
                 ),
@@ -285,6 +287,7 @@ class AsyncEntities(AsyncAPIResource):
     def list(
         self,
         *,
+        created_at: entity_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -323,6 +326,7 @@ class AsyncEntities(AsyncAPIResource):
                     {
                         "cursor": cursor,
                         "limit": limit,
+                        "created_at": created_at,
                     },
                     entity_list_params.EntityListParams,
                 ),
