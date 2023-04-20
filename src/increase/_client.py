@@ -48,6 +48,9 @@ ENVIRONMENTS: Dict[str, str] = {
 class Increase(SyncAPIClient):
     accounts: resources.Accounts
     account_numbers: resources.AccountNumbers
+    bookkeeping_accounts: resources.BookkeepingAccounts
+    bookkeeping_entry_sets: resources.BookkeepingEntrySets
+    bookkeeping_entries: resources.BookkeepingEntries
     real_time_decisions: resources.RealTimeDecisions
     real_time_payments_transfers: resources.RealTimePaymentsTransfers
     balance_lookups: resources.BalanceLookups
@@ -150,6 +153,9 @@ class Increase(SyncAPIClient):
 
         self.accounts = resources.Accounts(self)
         self.account_numbers = resources.AccountNumbers(self)
+        self.bookkeeping_accounts = resources.BookkeepingAccounts(self)
+        self.bookkeeping_entry_sets = resources.BookkeepingEntrySets(self)
+        self.bookkeeping_entries = resources.BookkeepingEntries(self)
         self.real_time_decisions = resources.RealTimeDecisions(self)
         self.real_time_payments_transfers = resources.RealTimePaymentsTransfers(self)
         self.balance_lookups = resources.BalanceLookups(self)
@@ -317,6 +323,9 @@ class Increase(SyncAPIClient):
 class AsyncIncrease(AsyncAPIClient):
     accounts: resources.AsyncAccounts
     account_numbers: resources.AsyncAccountNumbers
+    bookkeeping_accounts: resources.AsyncBookkeepingAccounts
+    bookkeeping_entry_sets: resources.AsyncBookkeepingEntrySets
+    bookkeeping_entries: resources.AsyncBookkeepingEntries
     real_time_decisions: resources.AsyncRealTimeDecisions
     real_time_payments_transfers: resources.AsyncRealTimePaymentsTransfers
     balance_lookups: resources.AsyncBalanceLookups
@@ -419,6 +428,9 @@ class AsyncIncrease(AsyncAPIClient):
 
         self.accounts = resources.AsyncAccounts(self)
         self.account_numbers = resources.AsyncAccountNumbers(self)
+        self.bookkeeping_accounts = resources.AsyncBookkeepingAccounts(self)
+        self.bookkeeping_entry_sets = resources.AsyncBookkeepingEntrySets(self)
+        self.bookkeeping_entries = resources.AsyncBookkeepingEntries(self)
         self.real_time_decisions = resources.AsyncRealTimeDecisions(self)
         self.real_time_payments_transfers = resources.AsyncRealTimePaymentsTransfers(self)
         self.balance_lookups = resources.AsyncBalanceLookups(self)

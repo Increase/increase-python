@@ -40,7 +40,7 @@ class TestDocuments:
             limit=0,
             entity_id="string",
             category={
-                "in": ["anti_money_laundering_policy", "anti_money_laundering_policy", "anti_money_laundering_policy"]
+                "in": ["account_opening_disclosures", "account_opening_disclosures", "account_opening_disclosures"]
             },
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -76,7 +76,7 @@ class TestAsyncDocuments:
             limit=0,
             entity_id="string",
             category={
-                "in": ["anti_money_laundering_policy", "anti_money_laundering_policy", "anti_money_laundering_policy"]
+                "in": ["account_opening_disclosures", "account_opening_disclosures", "account_opening_disclosures"]
             },
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),

@@ -41,6 +41,12 @@ class Reversal(BaseModel):
     amount: int
     """The amount that was reversed."""
 
+    created_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+    the reversal was created.
+    """
+
     description: str
     """The description on the reversal message from Fedwire."""
 
@@ -76,6 +82,9 @@ class Reversal(BaseModel):
     Information included in the wire reversal for the receiving financial
     institution.
     """
+
+    transaction_id: Optional[str]
+    """The ID for the Transaction associated with the transfer reversal."""
 
 
 class Submission(BaseModel):

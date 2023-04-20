@@ -35,6 +35,43 @@ Methods:
 - <code title="patch /account_numbers/{account_number_id}">client.account_numbers.<a href="./src/increase/resources/account_numbers.py">update</a>(account_number_id, \*\*<a href="src/increase/types/account_number_update_params.py">params</a>) -> <a href="./src/increase/types/account_number.py">AccountNumber</a></code>
 - <code title="get /account_numbers">client.account_numbers.<a href="./src/increase/resources/account_numbers.py">list</a>(\*\*<a href="src/increase/types/account_number_list_params.py">params</a>) -> <a href="./src/increase/types/account_number.py">SyncPage[AccountNumber]</a></code>
 
+# BookkeepingAccounts
+
+Types:
+
+```python
+from increase.types import BookkeepingAccount
+```
+
+Methods:
+
+- <code title="post /bookkeeping_accounts">client.bookkeeping_accounts.<a href="./src/increase/resources/bookkeeping_accounts.py">create</a>(\*\*<a href="src/increase/types/bookkeeping_account_create_params.py">params</a>) -> <a href="./src/increase/types/bookkeeping_account.py">BookkeepingAccount</a></code>
+- <code title="get /bookkeeping_accounts">client.bookkeeping_accounts.<a href="./src/increase/resources/bookkeeping_accounts.py">list</a>(\*\*<a href="src/increase/types/bookkeeping_account_list_params.py">params</a>) -> <a href="./src/increase/types/bookkeeping_account.py">SyncPage[BookkeepingAccount]</a></code>
+
+# BookkeepingEntrySets
+
+Types:
+
+```python
+from increase.types import BookkeepingEntrySet
+```
+
+Methods:
+
+- <code title="post /bookkeeping_entry_sets">client.bookkeeping_entry_sets.<a href="./src/increase/resources/bookkeeping_entry_sets.py">create</a>(\*\*<a href="src/increase/types/bookkeeping_entry_set_create_params.py">params</a>) -> <a href="./src/increase/types/bookkeeping_entry_set.py">BookkeepingEntrySet</a></code>
+
+# BookkeepingEntries
+
+Types:
+
+```python
+from increase.types import BookkeepingEntry
+```
+
+Methods:
+
+- <code title="get /bookkeeping_entries">client.bookkeeping_entries.<a href="./src/increase/resources/bookkeeping_entries.py">list</a>(\*\*<a href="src/increase/types/bookkeeping_entry_list_params.py">params</a>) -> <a href="./src/increase/types/bookkeeping_entry.py">SyncPage[BookkeepingEntry]</a></code>
+
 # RealTimeDecisions
 
 Types:

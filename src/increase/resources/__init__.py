@@ -25,12 +25,15 @@ from .account_transfers import AccountTransfers, AsyncAccountTransfers
 from .external_accounts import ExternalAccounts, AsyncExternalAccounts
 from .oauth_connections import OauthConnections, AsyncOauthConnections
 from .account_statements import AccountStatements, AsyncAccountStatements
+from .bookkeeping_entries import BookkeepingEntries, AsyncBookkeepingEntries
 from .event_subscriptions import EventSubscriptions, AsyncEventSubscriptions
 from .real_time_decisions import RealTimeDecisions, AsyncRealTimeDecisions
 from .ach_prenotifications import ACHPrenotifications, AsyncACHPrenotifications
+from .bookkeeping_accounts import BookkeepingAccounts, AsyncBookkeepingAccounts
 from .pending_transactions import PendingTransactions, AsyncPendingTransactions
 from .declined_transactions import DeclinedTransactions, AsyncDeclinedTransactions
 from .digital_wallet_tokens import DigitalWalletTokens, AsyncDigitalWalletTokens
+from .bookkeeping_entry_sets import BookkeepingEntrySets, AsyncBookkeepingEntrySets
 from .wire_drawdown_requests import WireDrawdownRequests, AsyncWireDrawdownRequests
 from .inbound_ach_transfer_returns import (
     InboundACHTransferReturns,
@@ -50,6 +53,12 @@ __all__ = [
     "AsyncAccounts",
     "AccountNumbers",
     "AsyncAccountNumbers",
+    "BookkeepingAccounts",
+    "AsyncBookkeepingAccounts",
+    "BookkeepingEntrySets",
+    "AsyncBookkeepingEntrySets",
+    "BookkeepingEntries",
+    "AsyncBookkeepingEntries",
     "RealTimeDecisions",
     "AsyncRealTimeDecisions",
     "RealTimePaymentsTransfers",

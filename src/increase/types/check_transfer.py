@@ -6,7 +6,16 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["CheckTransfer", "ReturnAddress", "Submission", "StopPaymentRequest", "Deposit", "ReturnDetails"]
+__all__ = [
+    "CheckTransfer",
+    "ReturnAddress",
+    "Approval",
+    "Cancellation",
+    "Submission",
+    "StopPaymentRequest",
+    "Deposit",
+    "ReturnDetails",
+]
 
 
 class ReturnAddress(BaseModel):
@@ -29,9 +38,40 @@ class ReturnAddress(BaseModel):
     """The postal code of the address."""
 
 
+class Approval(BaseModel):
+    approved_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+    the transfer was approved.
+    """
+
+    approved_by: Optional[str]
+    """
+    If the Transfer was approved by a user in the dashboard, the email address of
+    that user.
+    """
+
+
+class Cancellation(BaseModel):
+    canceled_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+    the Transfer was canceled.
+    """
+
+    canceled_by: Optional[str]
+    """
+    If the Transfer was canceled by a user in the dashboard, the email address of
+    that user.
+    """
+
+
 class Submission(BaseModel):
     check_number: str
     """The identitying number of the check."""
+
+    submitted_at: datetime
+    """When this check transfer was submitted to our check printer."""
 
 
 class StopPaymentRequest(BaseModel):
@@ -55,6 +95,9 @@ class Deposit(BaseModel):
     back_image_file_id: Optional[str]
     """The ID for the File containing the image of the rear of the check."""
 
+    deposited_at: datetime
+    """When the check was deposited."""
+
     front_image_file_id: Optional[str]
     """The ID for the File containing the image of the front of the check."""
 
@@ -71,6 +114,18 @@ class ReturnDetails(BaseModel):
 
     reason: Literal["mail_delivery_failure", "refused_by_recipient"]
     """The reason why the check was returned."""
+
+    returned_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+    the check was returned.
+    """
+
+    transaction_id: Optional[str]
+    """
+    The identifier of the Transaction that was created to credit you for the
+    returned check.
+    """
 
     transfer_id: str
     """The identifier of the returned Check Transfer."""
@@ -97,6 +152,18 @@ class CheckTransfer(BaseModel):
 
     amount: int
     """The transfer amount in USD cents."""
+
+    approval: Optional[Approval]
+    """
+    If your account requires approvals for transfers and the transfer was approved,
+    this will contain details of the approval.
+    """
+
+    cancellation: Optional[Cancellation]
+    """
+    If your account requires approvals for transfers and the transfer was not
+    approved, this will contain details of the cancellation.
+    """
 
     created_at: datetime
     """
@@ -144,7 +211,6 @@ class CheckTransfer(BaseModel):
     status: Literal[
         "pending_approval",
         "pending_submission",
-        "submitting",
         "submitted",
         "pending_mailing",
         "mailed",
