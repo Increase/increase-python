@@ -416,6 +416,18 @@ class TransactionSourceCheckTransferReturn(BaseModel):
     reason: Literal["mail_delivery_failure", "refused_by_recipient"]
     """The reason why the check was returned."""
 
+    returned_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+    the check was returned.
+    """
+
+    transaction_id: Optional[str]
+    """
+    The identifier of the Transaction that was created to credit you for the
+    returned check.
+    """
+
     transfer_id: str
     """The identifier of the returned Check Transfer."""
 
@@ -707,6 +719,12 @@ class TransactionSourceInboundWireReversal(BaseModel):
     amount: int
     """The amount that was reversed."""
 
+    created_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+    the reversal was created.
+    """
+
     description: str
     """The description on the reversal message from Fedwire."""
 
@@ -742,6 +760,9 @@ class TransactionSourceInboundWireReversal(BaseModel):
     Information included in the wire reversal for the receiving financial
     institution.
     """
+
+    transaction_id: Optional[str]
+    """The ID for the Transaction associated with the transfer reversal."""
 
 
 class TransactionSourceInboundWireTransfer(BaseModel):

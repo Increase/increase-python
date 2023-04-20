@@ -57,6 +57,8 @@ class CardCreateParams(TypedDict, total=False):
     digital_wallet: DigitalWallet
     """
     The contact information used in the two-factor steps for digital wallet card
-    creation. At least one field must be present to complete the digital wallet
-    steps.
+    creation. To add the card to a digital wallet, you may supply an email or phone
+    number with this request. Otherwise, subscribe and then action a Real Time
+    Decision with the category `digital_wallet_token_requested` or
+    `digital_wallet_authentication_requested`.
     """

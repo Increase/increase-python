@@ -29,6 +29,7 @@ from .external_account import ExternalAccount as ExternalAccount
 from .file_list_params import FileListParams as FileListParams
 from .oauth_connection import OauthConnection as OauthConnection
 from .account_statement import AccountStatement as AccountStatement
+from .bookkeeping_entry import BookkeepingEntry as BookkeepingEntry
 from .event_list_params import EventListParams as EventListParams
 from .limit_list_params import LimitListParams as LimitListParams
 from .card_create_params import CardCreateParams as CardCreateParams
@@ -40,6 +41,7 @@ from .file_create_params import FileCreateParams as FileCreateParams
 from .real_time_decision import RealTimeDecision as RealTimeDecision
 from .account_list_params import AccountListParams as AccountListParams
 from .ach_prenotification import ACHPrenotification as ACHPrenotification
+from .bookkeeping_account import BookkeepingAccount as BookkeepingAccount
 from .limit_create_params import LimitCreateParams as LimitCreateParams
 from .limit_update_params import LimitUpdateParams as LimitUpdateParams
 from .pending_transaction import PendingTransaction as PendingTransaction
@@ -51,6 +53,7 @@ from .entity_create_params import EntityCreateParams as EntityCreateParams
 from .export_create_params import ExportCreateParams as ExportCreateParams
 from .account_create_params import AccountCreateParams as AccountCreateParams
 from .account_update_params import AccountUpdateParams as AccountUpdateParams
+from .bookkeeping_entry_set import BookkeepingEntrySet as BookkeepingEntrySet
 from .wire_drawdown_request import WireDrawdownRequest as WireDrawdownRequest
 from .transaction_list_params import TransactionListParams as TransactionListParams
 from .ach_transfer_list_params import ACHTransferListParams as ACHTransferListParams
@@ -112,6 +115,9 @@ from .oauth_connection_list_params import (
 from .account_statement_list_params import (
     AccountStatementListParams as AccountStatementListParams,
 )
+from .bookkeeping_entry_list_params import (
+    BookkeepingEntryListParams as BookkeepingEntryListParams,
+)
 from .inbound_wire_drawdown_request import (
     InboundWireDrawdownRequest as InboundWireDrawdownRequest,
 )
@@ -132,6 +138,9 @@ from .external_account_update_params import (
 )
 from .ach_prenotification_list_params import (
     ACHPrenotificationListParams as ACHPrenotificationListParams,
+)
+from .bookkeeping_account_list_params import (
+    BookkeepingAccountListParams as BookkeepingAccountListParams,
 )
 from .pending_transaction_list_params import (
     PendingTransactionListParams as PendingTransactionListParams,
@@ -154,8 +163,14 @@ from .real_time_decision_action_params import (
 from .ach_prenotification_create_params import (
     ACHPrenotificationCreateParams as ACHPrenotificationCreateParams,
 )
+from .bookkeeping_account_create_params import (
+    BookkeepingAccountCreateParams as BookkeepingAccountCreateParams,
+)
 from .wire_drawdown_request_list_params import (
     WireDrawdownRequestListParams as WireDrawdownRequestListParams,
+)
+from .bookkeeping_entry_set_create_params import (
+    BookkeepingEntrySetCreateParams as BookkeepingEntrySetCreateParams,
 )
 from .wire_drawdown_request_create_params import (
     WireDrawdownRequestCreateParams as WireDrawdownRequestCreateParams,

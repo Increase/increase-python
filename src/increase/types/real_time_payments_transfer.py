@@ -6,10 +6,44 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["RealTimePaymentsTransfer", "Submission", "Rejection"]
+__all__ = ["RealTimePaymentsTransfer", "Approval", "Cancellation", "Submission", "Rejection"]
+
+
+class Approval(BaseModel):
+    approved_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+    the transfer was approved.
+    """
+
+    approved_by: Optional[str]
+    """
+    If the Transfer was approved by a user in the dashboard, the email address of
+    that user.
+    """
+
+
+class Cancellation(BaseModel):
+    canceled_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+    the Transfer was canceled.
+    """
+
+    canceled_by: Optional[str]
+    """
+    If the Transfer was canceled by a user in the dashboard, the email address of
+    that user.
+    """
 
 
 class Submission(BaseModel):
+    submitted_at: Optional[datetime]
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+    the transfer was submitted to The Clearing House.
+    """
+
     transaction_identification: str
     """The Real Time Payments network identification of the transfer."""
 
@@ -49,6 +83,12 @@ class Rejection(BaseModel):
     Real Time Payments network.
     """
 
+    rejected_at: Optional[datetime]
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+    the transfer was rejected.
+    """
+
 
 class RealTimePaymentsTransfer(BaseModel):
     account_id: str
@@ -56,6 +96,18 @@ class RealTimePaymentsTransfer(BaseModel):
 
     amount: int
     """The transfer amount in USD cents."""
+
+    approval: Optional[Approval]
+    """
+    If your account requires approvals for transfers and the transfer was approved,
+    this will contain details of the approval.
+    """
+
+    cancellation: Optional[Cancellation]
+    """
+    If your account requires approvals for transfers and the transfer was not
+    approved, this will contain details of the cancellation.
+    """
 
     created_at: datetime
     """
