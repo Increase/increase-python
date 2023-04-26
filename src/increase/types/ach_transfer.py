@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless.
 
-from typing import Optional
+from typing import List, Optional
 from datetime import date, datetime
 from typing_extensions import Literal
 
@@ -8,7 +8,7 @@ from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["ACHTransfer", "Approval", "Cancellation", "NotificationOfChange", "Return", "Submission"]
+__all__ = ["ACHTransfer", "Approval", "Cancellation", "NotificationsOfChange", "Return", "Submission"]
 
 
 class Approval(BaseModel):
@@ -39,7 +39,7 @@ class Cancellation(BaseModel):
     """
 
 
-class NotificationOfChange(BaseModel):
+class NotificationsOfChange(BaseModel):
     change_code: str
     """The type of change that occurred."""
 
@@ -183,7 +183,7 @@ class ACHTransfer(BaseModel):
     network: Literal["ach"]
     """The transfer's network."""
 
-    notification_of_change: Optional[NotificationOfChange]
+    notifications_of_change: List[NotificationsOfChange]
     """
     If the receiving bank accepts the transfer but notifies that future transfers
     should use different details, this will contain those details.

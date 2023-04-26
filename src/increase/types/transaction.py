@@ -196,6 +196,12 @@ class SourceCardRefund(BaseModel):
     id: str
     """The Card Refund identifier."""
 
+    merchant_acceptor_id: Optional[str]
+    """
+    The merchant identifier (commonly abbreviated as MID) of the merchant the card
+    is transacting with.
+    """
+
     merchant_category_code: str
     """The 4-digit MCC describing the merchant's business."""
 
@@ -239,6 +245,12 @@ class SourceCardSettlement(BaseModel):
 
     id: str
     """The Card Settlement identifier."""
+
+    merchant_acceptor_id: Optional[str]
+    """
+    The merchant identifier (commonly abbreviated as MID) of the merchant the card
+    is transacting with.
+    """
 
     merchant_category_code: str
     """The 4-digit MCC describing the merchant's business."""

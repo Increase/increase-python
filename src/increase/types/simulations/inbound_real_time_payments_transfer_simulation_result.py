@@ -208,6 +208,12 @@ class TransactionSourceCardRefund(BaseModel):
     id: str
     """The Card Refund identifier."""
 
+    merchant_acceptor_id: Optional[str]
+    """
+    The merchant identifier (commonly abbreviated as MID) of the merchant the card
+    is transacting with.
+    """
+
     merchant_category_code: str
     """The 4-digit MCC describing the merchant's business."""
 
@@ -251,6 +257,12 @@ class TransactionSourceCardSettlement(BaseModel):
 
     id: str
     """The Card Settlement identifier."""
+
+    merchant_acceptor_id: Optional[str]
+    """
+    The merchant identifier (commonly abbreviated as MID) of the merchant the card
+    is transacting with.
+    """
 
     merchant_category_code: str
     """The 4-digit MCC describing the merchant's business."""
@@ -1475,6 +1487,7 @@ class DeclinedTransactionSourceCardDecline(BaseModel):
         "insufficient_funds",
         "cvv2_mismatch",
         "transaction_not_allowed",
+        "breaches_internal_limit",
         "breaches_limit",
         "webhook_declined",
         "webhook_timed_out",
