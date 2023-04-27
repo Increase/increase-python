@@ -12,7 +12,7 @@ dt = datetime.fromisoformat("2023-02-25T18:20:35+00:00")
 
 # both `datetime` instances or datetime strings can be passed as a request param
 page = client.events.list(limit=1, created_at={"after": dt})
-assert len(page.data) == 1
+print(f"Received page with {len(page.data)} items")
 
 page = client.events.list(limit=1, created_at={"after": dt.isoformat()})
-assert len(page.data) == 1
+print(f"Received page with {len(page.data)} items")
