@@ -196,9 +196,6 @@ class TransactionSourceCardRefund(BaseModel):
     For dollars, for example, this is cents.
     """
 
-    card_settlement_transaction_id: Optional[str]
-    """The identifier for the Transaction this refunds, if any."""
-
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the

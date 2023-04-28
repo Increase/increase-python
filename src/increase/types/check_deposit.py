@@ -65,6 +65,7 @@ class DepositRejection(BaseModel):
         "incorrect_amount",
         "incorrect_recipient",
         "not_eligible_for_mobile_deposit",
+        "missing_required_data_elements",
         "unknown",
     ]
     """Why the check deposit was rejected."""
