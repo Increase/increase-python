@@ -772,6 +772,9 @@ class SourceInboundWireReversal(BaseModel):
     transaction_id: Optional[str]
     """The ID for the Transaction associated with the transfer reversal."""
 
+    wire_transfer_id: str
+    """The ID for the Wire Transfer that is being reversed."""
+
 
 class SourceInboundWireTransfer(BaseModel):
     amount: int

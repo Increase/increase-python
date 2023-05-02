@@ -784,6 +784,9 @@ class TransactionSourceInboundWireReversal(BaseModel):
     transaction_id: Optional[str]
     """The ID for the Transaction associated with the transfer reversal."""
 
+    wire_transfer_id: str
+    """The ID for the Wire Transfer that is being reversed."""
+
 
 class TransactionSourceInboundWireTransfer(BaseModel):
     amount: int
@@ -1551,6 +1554,7 @@ class DeclinedTransactionSourceInboundRealTimePaymentsTransferDecline(BaseModel)
     reason: Literal[
         "account_number_canceled",
         "account_number_disabled",
+        "account_restricted",
         "group_locked",
         "entity_not_active",
         "real_time_payments_not_enabled",
