@@ -8,5 +8,5 @@ __all__ = ["CheckTransferReturnParams"]
 
 
 class CheckTransferReturnParams(TypedDict, total=False):
-    reason: Required[Literal["mail_delivery_failure", "refused_by_recipient"]]
+    reason: Required[Literal["mail_delivery_failure", "refused_by_recipient", "returned_not_authorized"]]
     """The reason why the Check Transfer was returned to Increase."""

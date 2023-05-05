@@ -433,7 +433,7 @@ class TransactionSourceCheckTransferReturn(BaseModel):
     file_id: Optional[str]
     """If available, a document with additional information about the return."""
 
-    reason: Literal["mail_delivery_failure", "refused_by_recipient"]
+    reason: Literal["mail_delivery_failure", "refused_by_recipient", "returned_not_authorized"]
     """The reason why the check was returned."""
 
     returned_at: datetime
@@ -1521,6 +1521,7 @@ class DeclinedTransactionSourceCheckDecline(BaseModel):
         "returned",
         "duplicate_presentment",
         "not_authorized",
+        "altered_or_fictitious",
     ]
     """Why the check was declined."""
 

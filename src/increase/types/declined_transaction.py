@@ -186,6 +186,7 @@ class SourceCheckDecline(BaseModel):
         "returned",
         "duplicate_presentment",
         "not_authorized",
+        "altered_or_fictitious",
     ]
     """Why the check was declined."""
 

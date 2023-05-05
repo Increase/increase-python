@@ -52,6 +52,7 @@ _CategoryReservedKeywords = TypedDict(
                 "network_security_diagram",
                 "onboarding_questionnaire",
                 "penetration_test_report",
+                "platform_compliance_metrics_submission",
                 "program_risk_assessment",
                 "security_audit_report",
                 "servicing_policy",
