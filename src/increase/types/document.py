@@ -49,6 +49,7 @@ class Document(BaseModel):
         "onboarding_questionnaire",
         "penetration_test_report",
         "platform_compliance_metrics_submission",
+        "consumer_platform_compliance_metrics_submission",
         "program_risk_assessment",
         "security_audit_report",
         "servicing_policy",

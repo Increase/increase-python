@@ -867,11 +867,13 @@ class TransactionSourceInternalSource(BaseModel):
     reason: Literal[
         "bank_migration",
         "cashback",
+        "collection_receivable",
         "empyreal_adjustment",
         "error",
         "error_correction",
         "fees",
         "interest",
+        "negative_balance_forgiveness",
         "sample_funds",
         "sample_funds_return",
     ]
@@ -1090,7 +1092,6 @@ class TransactionSource(BaseModel):
         "check_transfer_return",
         "check_transfer_rejection",
         "check_transfer_stop_payment_request",
-        "collection_receivable",
         "dispute_resolution",
         "empyreal_cash_deposit",
         "fee_payment",
