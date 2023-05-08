@@ -137,14 +137,14 @@ for account in first_page.data:
 
 Nested parameters are dictionaries, typed using `TypedDict`, for example:
 
-```py
+```python
 from increase import Increase
 
 increase = Increase()
 
 increase.accounts.create(
     foo={
-        "bar": True
+        "bar": True,
     },
 )
 ```
