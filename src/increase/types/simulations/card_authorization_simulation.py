@@ -33,6 +33,7 @@ __all__ = [
     "DeclinedTransactionSourceInboundRealTimePaymentsTransferDecline",
     "DeclinedTransactionSourceInternationalACHDecline",
     "DeclinedTransactionSourceCardRouteDecline",
+    "DeclinedTransactionSourceWireDecline",
 ]
 
 
@@ -787,6 +788,54 @@ class DeclinedTransactionSourceCardRouteDecline(BaseModel):
     merchant_state: Optional[str]
 
 
+class DeclinedTransactionSourceWireDecline(BaseModel):
+    amount: int
+    """The declined amount in the minor unit of the destination account currency.
+
+    For dollars, for example, this is cents.
+    """
+
+    beneficiary_address_line1: Optional[str]
+
+    beneficiary_address_line2: Optional[str]
+
+    beneficiary_address_line3: Optional[str]
+
+    beneficiary_name: Optional[str]
+
+    beneficiary_reference: Optional[str]
+
+    description: str
+
+    input_message_accountability_data: Optional[str]
+
+    originator_address_line1: Optional[str]
+
+    originator_address_line2: Optional[str]
+
+    originator_address_line3: Optional[str]
+
+    originator_name: Optional[str]
+
+    originator_to_beneficiary_information_line1: Optional[str]
+
+    originator_to_beneficiary_information_line2: Optional[str]
+
+    originator_to_beneficiary_information_line3: Optional[str]
+
+    originator_to_beneficiary_information_line4: Optional[str]
+
+    reason: Literal[
+        "account_number_canceled",
+        "account_number_disabled",
+        "entity_not_active",
+        "group_locked",
+        "no_account_number",
+        "transaction_not_allowed",
+    ]
+    """Why the wire transfer was declined."""
+
+
 class DeclinedTransactionSource(BaseModel):
     ach_decline: Optional[DeclinedTransactionSourceACHDecline]
     """A ACH Decline object.
@@ -816,6 +865,7 @@ class DeclinedTransactionSource(BaseModel):
         "inbound_real_time_payments_transfer_decline",
         "international_ach_decline",
         "card_route_decline",
+        "wire_decline",
         "other",
     ]
     """The type of decline that took place.
@@ -845,6 +895,13 @@ class DeclinedTransactionSource(BaseModel):
 
     This field will be present in the JSON response if and only if `category` is
     equal to `international_ach_decline`.
+    """
+
+    wire_decline: Optional[DeclinedTransactionSourceWireDecline]
+    """A Wire Decline object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `wire_decline`.
     """
 
 
