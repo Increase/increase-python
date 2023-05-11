@@ -145,6 +145,9 @@ class PendingTransactionSourceCardAuthorization(BaseModel):
     network_details: PendingTransactionSourceCardAuthorizationNetworkDetails
     """Fields specific to the `network`"""
 
+    pending_transaction_id: Optional[str]
+    """The identifier of the Pending Transaction associated with this Transaction."""
+
     real_time_decision_id: Optional[str]
     """
     The identifier of the Real-Time Decision sent to approve or decline this
