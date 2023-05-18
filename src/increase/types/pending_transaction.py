@@ -103,6 +103,12 @@ class SourceCardAuthorization(BaseModel):
     purchase), the identifier of the token that was used.
     """
 
+    expires_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) when this authorization
+    will expire and the pending transaction will be released.
+    """
+
     id: str
     """The Card Authorization identifier."""
 
