@@ -111,4 +111,7 @@ class TransactionListParams(TypedDict, total=False):
     """
 
     route_id: str
-    """Filter Transactions for those belonging to the specified route."""
+    """Filter Transactions for those belonging to the specified route.
+
+    This could be a Card ID or an Account Number ID.
+    """
