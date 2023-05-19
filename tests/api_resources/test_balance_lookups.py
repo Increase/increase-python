@@ -9,6 +9,7 @@ import pytest
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
 from increase.types import BalanceLookupLookupResponse
+from increase._utils import parse_datetime
 
 base_url = os.environ.get("API_BASE_URL", "http://127.0.0.1:4010")
 api_key = os.environ.get("API_KEY", "something1234")
@@ -26,6 +27,14 @@ class TestBalanceLookups:
         )
         assert_matches_type(BalanceLookupLookupResponse, balance_lookup, path=["response"])
 
+    @parametrize
+    def test_method_lookup_with_all_params(self, client: Increase) -> None:
+        balance_lookup = client.balance_lookups.lookup(
+            account_id="string",
+            at_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(BalanceLookupLookupResponse, balance_lookup, path=["response"])
+
 
 class TestAsyncBalanceLookups:
     strict_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
@@ -36,5 +45,13 @@ class TestAsyncBalanceLookups:
     async def test_method_lookup(self, client: AsyncIncrease) -> None:
         balance_lookup = await client.balance_lookups.lookup(
             account_id="string",
+        )
+        assert_matches_type(BalanceLookupLookupResponse, balance_lookup, path=["response"])
+
+    @parametrize
+    async def test_method_lookup_with_all_params(self, client: AsyncIncrease) -> None:
+        balance_lookup = await client.balance_lookups.lookup(
+            account_id="string",
+            at_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(BalanceLookupLookupResponse, balance_lookup, path=["response"])
