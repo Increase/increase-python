@@ -2,6 +2,9 @@
 
 from __future__ import annotations
 
+from typing import Union
+from datetime import datetime
+
 from ..types import BalanceLookupLookupResponse, balance_lookup_lookup_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
@@ -16,6 +19,7 @@ class BalanceLookups(SyncAPIResource):
         self,
         *,
         account_id: str,
+        at_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -30,6 +34,8 @@ class BalanceLookups(SyncAPIResource):
         Args:
           account_id: The Account to query the balance for.
 
+          at_time: The moment to query the balance at. If not set, returns the current balances.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -42,7 +48,13 @@ class BalanceLookups(SyncAPIResource):
         """
         return self._post(
             "/balance_lookups",
-            body=maybe_transform({"account_id": account_id}, balance_lookup_lookup_params.BalanceLookupLookupParams),
+            body=maybe_transform(
+                {
+                    "account_id": account_id,
+                    "at_time": at_time,
+                },
+                balance_lookup_lookup_params.BalanceLookupLookupParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -59,6 +71,7 @@ class AsyncBalanceLookups(AsyncAPIResource):
         self,
         *,
         account_id: str,
+        at_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -73,6 +86,8 @@ class AsyncBalanceLookups(AsyncAPIResource):
         Args:
           account_id: The Account to query the balance for.
 
+          at_time: The moment to query the balance at. If not set, returns the current balances.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -85,7 +100,13 @@ class AsyncBalanceLookups(AsyncAPIResource):
         """
         return await self._post(
             "/balance_lookups",
-            body=maybe_transform({"account_id": account_id}, balance_lookup_lookup_params.BalanceLookupLookupParams),
+            body=maybe_transform(
+                {
+                    "account_id": account_id,
+                    "at_time": at_time,
+                },
+                balance_lookup_lookup_params.BalanceLookupLookupParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
