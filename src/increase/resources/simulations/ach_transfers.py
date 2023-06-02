@@ -82,8 +82,8 @@ class ACHTransfers(SyncAPIResource):
                     "company_descriptive_date": company_descriptive_date,
                     "company_discretionary_data": company_discretionary_data,
                     "company_entry_description": company_entry_description,
-                    "company_name": company_name,
                     "company_id": company_id,
+                    "company_name": company_name,
                 },
                 ach_transfer_create_inbound_params.ACHTransferCreateInboundParams,
             ),
@@ -141,6 +141,8 @@ class ACHTransfers(SyncAPIResource):
         the returned funds. This transfer must first have a `status` of `submitted`.
 
         Args:
+          ach_transfer_id: The identifier of the ACH Transfer you wish to return.
+
           reason: The reason why the Federal Reserve or destination bank returned this transfer.
               Defaults to `no_account`.
 
@@ -186,6 +188,19 @@ class ACHTransfers(SyncAPIResource):
         Federal Reserve three times per day on weekdays. Since sandbox ACH Transfers are
         not submitted to the Federal Reserve, this endpoint allows you to skip that
         delay and transition the ACH Transfer to a status of `submitted`.
+
+        Args:
+          ach_transfer_id: The identifier of the ACH Transfer you wish to submit.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return self._post(
             f"/simulations/ach_transfers/{ach_transfer_id}/submit",
@@ -264,8 +279,8 @@ class AsyncACHTransfers(AsyncAPIResource):
                     "company_descriptive_date": company_descriptive_date,
                     "company_discretionary_data": company_discretionary_data,
                     "company_entry_description": company_entry_description,
-                    "company_name": company_name,
                     "company_id": company_id,
+                    "company_name": company_name,
                 },
                 ach_transfer_create_inbound_params.ACHTransferCreateInboundParams,
             ),
@@ -323,6 +338,8 @@ class AsyncACHTransfers(AsyncAPIResource):
         the returned funds. This transfer must first have a `status` of `submitted`.
 
         Args:
+          ach_transfer_id: The identifier of the ACH Transfer you wish to return.
+
           reason: The reason why the Federal Reserve or destination bank returned this transfer.
               Defaults to `no_account`.
 
@@ -368,6 +385,19 @@ class AsyncACHTransfers(AsyncAPIResource):
         Federal Reserve three times per day on weekdays. Since sandbox ACH Transfers are
         not submitted to the Federal Reserve, this endpoint allows you to skip that
         delay and transition the ACH Transfer to a status of `submitted`.
+
+        Args:
+          ach_transfer_id: The identifier of the ACH Transfer you wish to submit.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return await self._post(
             f"/simulations/ach_transfers/{ach_transfer_id}/submit",

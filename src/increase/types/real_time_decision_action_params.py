@@ -7,16 +7,41 @@ from typing_extensions import Literal, Required, TypedDict
 __all__ = [
     "RealTimeDecisionActionParams",
     "CardAuthorization",
+    "DigitalWalletAuthentication",
     "DigitalWalletToken",
     "DigitalWalletTokenApproval",
     "DigitalWalletTokenDecline",
-    "DigitalWalletAuthentication",
 ]
+
+
+class RealTimeDecisionActionParams(TypedDict, total=False):
+    card_authorization: CardAuthorization
+    """
+    If the Real-Time Decision relates to a card authorization attempt, this object
+    contains your response to the authorization.
+    """
+
+    digital_wallet_authentication: DigitalWalletAuthentication
+    """
+    If the Real-Time Decision relates to a digital wallet authentication attempt,
+    this object contains your response to the authentication.
+    """
+
+    digital_wallet_token: DigitalWalletToken
+    """
+    If the Real-Time Decision relates to a digital wallet token provisioning
+    attempt, this object contains your response to the attempt.
+    """
 
 
 class CardAuthorization(TypedDict, total=False):
     decision: Required[Literal["approve", "decline"]]
     """Whether the card authorization should be approved or declined."""
+
+
+class DigitalWalletAuthentication(TypedDict, total=False):
+    result: Required[Literal["success", "failure"]]
+    """Whether your application was able to deliver the one-time passcode."""
 
 
 class DigitalWalletTokenApproval(TypedDict, total=False):
@@ -55,29 +80,4 @@ class DigitalWalletToken(TypedDict, total=False):
     """
     If your application declines the provisioning attempt, this contains details
     about the decline.
-    """
-
-
-class DigitalWalletAuthentication(TypedDict, total=False):
-    result: Required[Literal["success", "failure"]]
-    """Whether your application was able to deliver the one-time passcode."""
-
-
-class RealTimeDecisionActionParams(TypedDict, total=False):
-    card_authorization: CardAuthorization
-    """
-    If the Real-Time Decision relates to a card authorization attempt, this object
-    contains your response to the authorization.
-    """
-
-    digital_wallet_authentication: DigitalWalletAuthentication
-    """
-    If the Real-Time Decision relates to a digital wallet authentication attempt,
-    this object contains your response to the authentication.
-    """
-
-    digital_wallet_token: DigitalWalletToken
-    """
-    If the Real-Time Decision relates to a digital wallet token provisioning
-    attempt, this object contains your response to the attempt.
     """

@@ -38,6 +38,7 @@ class TestRealTimeDecisions:
         real_time_decision = client.real_time_decisions.action(
             "string",
             card_authorization={"decision": "approve"},
+            digital_wallet_authentication={"result": "success"},
             digital_wallet_token={
                 "approval": {
                     "card_profile_id": "string",
@@ -46,7 +47,6 @@ class TestRealTimeDecisions:
                 },
                 "decline": {"reason": "x"},
             },
-            digital_wallet_authentication={"result": "success"},
         )
         assert_matches_type(RealTimeDecision, real_time_decision, path=["response"])
 
@@ -75,6 +75,7 @@ class TestAsyncRealTimeDecisions:
         real_time_decision = await client.real_time_decisions.action(
             "string",
             card_authorization={"decision": "approve"},
+            digital_wallet_authentication={"result": "success"},
             digital_wallet_token={
                 "approval": {
                     "card_profile_id": "string",
@@ -83,6 +84,5 @@ class TestAsyncRealTimeDecisions:
                 },
                 "decline": {"reason": "x"},
             },
-            digital_wallet_authentication={"result": "success"},
         )
         assert_matches_type(RealTimeDecision, real_time_decision, path=["response"])

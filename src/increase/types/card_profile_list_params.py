@@ -7,18 +7,6 @@ from typing_extensions import Literal, TypedDict
 
 __all__ = ["CardProfileListParams", "Status"]
 
-_StatusReservedKeywords = TypedDict(
-    "_StatusReservedKeywords",
-    {
-        "in": List[Literal["pending", "rejected", "active", "archived"]],
-    },
-    total=False,
-)
-
-
-class Status(_StatusReservedKeywords, total=False):
-    pass
-
 
 class CardProfileListParams(TypedDict, total=False):
     cursor: str
@@ -31,3 +19,16 @@ class CardProfileListParams(TypedDict, total=False):
     """
 
     status: Status
+
+
+_StatusReservedKeywords = TypedDict(
+    "_StatusReservedKeywords",
+    {
+        "in": List[Literal["pending", "rejected", "active", "archived"]],
+    },
+    total=False,
+)
+
+
+class Status(_StatusReservedKeywords, total=False):
+    pass

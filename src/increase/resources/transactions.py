@@ -24,7 +24,20 @@ class Transactions(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> Transaction:
-        """Retrieve a Transaction"""
+        """
+        Retrieve a Transaction
+
+        Args:
+          transaction_id: The identifier of the Transaction to retrieve.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return self._get(
             f"/transactions/{transaction_id}",
             options=make_request_options(
@@ -81,12 +94,12 @@ class Transactions(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "account_id": account_id,
+                        "category": category,
+                        "created_at": created_at,
                         "cursor": cursor,
                         "limit": limit,
-                        "account_id": account_id,
                         "route_id": route_id,
-                        "created_at": created_at,
-                        "category": category,
                     },
                     transaction_list_params.TransactionListParams,
                 ),
@@ -107,7 +120,20 @@ class AsyncTransactions(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> Transaction:
-        """Retrieve a Transaction"""
+        """
+        Retrieve a Transaction
+
+        Args:
+          transaction_id: The identifier of the Transaction to retrieve.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return await self._get(
             f"/transactions/{transaction_id}",
             options=make_request_options(
@@ -164,12 +190,12 @@ class AsyncTransactions(AsyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "account_id": account_id,
+                        "category": category,
+                        "created_at": created_at,
                         "cursor": cursor,
                         "limit": limit,
-                        "account_id": account_id,
                         "route_id": route_id,
-                        "created_at": created_at,
-                        "category": category,
                     },
                     transaction_list_params.TransactionListParams,
                 ),

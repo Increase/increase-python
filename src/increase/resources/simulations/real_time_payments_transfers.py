@@ -36,6 +36,8 @@ class RealTimePaymentsTransfers(SyncAPIResource):
         `status` of `pending_submission`.
 
         Args:
+          real_time_payments_transfer_id: The identifier of the Real Time Payments Transfer you wish to complete.
+
           rejection: If set, the simulation will reject the transfer.
 
           extra_headers: Send extra headers
@@ -119,11 +121,11 @@ class RealTimePaymentsTransfers(SyncAPIResource):
                 {
                     "account_number_id": account_number_id,
                     "amount": amount,
-                    "request_for_payment_id": request_for_payment_id,
-                    "debtor_name": debtor_name,
                     "debtor_account_number": debtor_account_number,
+                    "debtor_name": debtor_name,
                     "debtor_routing_number": debtor_routing_number,
                     "remittance_information": remittance_information,
+                    "request_for_payment_id": request_for_payment_id,
                 },
                 real_time_payments_transfer_create_inbound_params.RealTimePaymentsTransferCreateInboundParams,
             ),
@@ -158,6 +160,8 @@ class AsyncRealTimePaymentsTransfers(AsyncAPIResource):
         `status` of `pending_submission`.
 
         Args:
+          real_time_payments_transfer_id: The identifier of the Real Time Payments Transfer you wish to complete.
+
           rejection: If set, the simulation will reject the transfer.
 
           extra_headers: Send extra headers
@@ -241,11 +245,11 @@ class AsyncRealTimePaymentsTransfers(AsyncAPIResource):
                 {
                     "account_number_id": account_number_id,
                     "amount": amount,
-                    "request_for_payment_id": request_for_payment_id,
-                    "debtor_name": debtor_name,
                     "debtor_account_number": debtor_account_number,
+                    "debtor_name": debtor_name,
                     "debtor_routing_number": debtor_routing_number,
                     "remittance_information": remittance_information,
+                    "request_for_payment_id": request_for_payment_id,
                 },
                 real_time_payments_transfer_create_inbound_params.RealTimePaymentsTransferCreateInboundParams,
             ),

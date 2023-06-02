@@ -31,8 +31,8 @@ class TestEventSubscriptions:
     def test_method_create_with_all_params(self, client: Increase) -> None:
         event_subscription = client.event_subscriptions.create(
             url="string",
-            shared_secret="x",
             selected_event_category="account.created",
+            shared_secret="x",
         )
         assert_matches_type(EventSubscription, event_subscription, path=["response"])
 
@@ -88,8 +88,8 @@ class TestAsyncEventSubscriptions:
     async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         event_subscription = await client.event_subscriptions.create(
             url="string",
-            shared_secret="x",
             selected_event_category="account.created",
+            shared_secret="x",
         )
         assert_matches_type(EventSubscription, event_subscription, path=["response"])
 

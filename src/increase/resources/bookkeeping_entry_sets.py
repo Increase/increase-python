@@ -54,9 +54,9 @@ class BookkeepingEntrySets(SyncAPIResource):
             "/bookkeeping_entry_sets",
             body=maybe_transform(
                 {
+                    "entries": entries,
                     "date": date,
                     "transaction_id": transaction_id,
-                    "entries": entries,
                 },
                 bookkeeping_entry_set_create_params.BookkeepingEntrySetCreateParams,
             ),
@@ -111,9 +111,9 @@ class AsyncBookkeepingEntrySets(AsyncAPIResource):
             "/bookkeeping_entry_sets",
             body=maybe_transform(
                 {
+                    "entries": entries,
                     "date": date,
                     "transaction_id": transaction_id,
-                    "entries": entries,
                 },
                 bookkeeping_entry_set_create_params.BookkeepingEntrySetCreateParams,
             ),

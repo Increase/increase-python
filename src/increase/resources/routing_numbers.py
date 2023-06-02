@@ -58,9 +58,9 @@ class RoutingNumbers(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "routing_number": routing_number,
                         "cursor": cursor,
                         "limit": limit,
-                        "routing_number": routing_number,
                     },
                     routing_number_list_params.RoutingNumberListParams,
                 ),
@@ -115,9 +115,9 @@ class AsyncRoutingNumbers(AsyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "routing_number": routing_number,
                         "cursor": cursor,
                         "limit": limit,
-                        "routing_number": routing_number,
                     },
                     routing_number_list_params.RoutingNumberListParams,
                 ),

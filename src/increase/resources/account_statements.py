@@ -24,7 +24,20 @@ class AccountStatements(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> AccountStatement:
-        """Retrieve an Account Statement"""
+        """
+        Retrieve an Account Statement
+
+        Args:
+          account_statement_id: The identifier of the Account Statement to retrieve.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return self._get(
             f"/account_statements/{account_statement_id}",
             options=make_request_options(
@@ -76,9 +89,9 @@ class AccountStatements(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "account_id": account_id,
                         "cursor": cursor,
                         "limit": limit,
-                        "account_id": account_id,
                         "statement_period_start": statement_period_start,
                     },
                     account_statement_list_params.AccountStatementListParams,
@@ -100,7 +113,20 @@ class AsyncAccountStatements(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> AccountStatement:
-        """Retrieve an Account Statement"""
+        """
+        Retrieve an Account Statement
+
+        Args:
+          account_statement_id: The identifier of the Account Statement to retrieve.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return await self._get(
             f"/account_statements/{account_statement_id}",
             options=make_request_options(
@@ -152,9 +178,9 @@ class AsyncAccountStatements(AsyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "account_id": account_id,
                         "cursor": cursor,
                         "limit": limit,
-                        "account_id": account_id,
                         "statement_period_start": statement_period_start,
                     },
                     account_statement_list_params.AccountStatementListParams,

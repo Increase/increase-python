@@ -36,8 +36,8 @@ class TestACHTransfers:
             company_descriptive_date="x",
             company_discretionary_data="x",
             company_entry_description="x",
-            company_name="x",
             company_id="x",
+            company_name="x",
         )
         assert_matches_type(ACHTransferSimulation, ach_transfer, path=["response"])
 
@@ -88,8 +88,8 @@ class TestAsyncACHTransfers:
             company_descriptive_date="x",
             company_discretionary_data="x",
             company_entry_description="x",
-            company_name="x",
             company_id="x",
+            company_name="x",
         )
         assert_matches_type(ACHTransferSimulation, ach_transfer, path=["response"])
 

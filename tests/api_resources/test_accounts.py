@@ -31,10 +31,10 @@ class TestAccounts:
     @parametrize
     def test_method_create_with_all_params(self, client: Increase) -> None:
         account = client.accounts.create(
-            entity_id="string",
-            program_id="string",
-            informational_entity_id="string",
             name="x",
+            entity_id="string",
+            informational_entity_id="string",
+            program_id="string",
         )
         assert_matches_type(Account, account, path=["response"])
 
@@ -68,16 +68,16 @@ class TestAccounts:
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
         account = client.accounts.list(
-            cursor="string",
-            limit=0,
-            entity_id="string",
-            status="open",
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
+            cursor="string",
+            entity_id="string",
+            limit=0,
+            status="open",
         )
         assert_matches_type(SyncPage[Account], account, path=["response"])
 
@@ -105,10 +105,10 @@ class TestAsyncAccounts:
     @parametrize
     async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         account = await client.accounts.create(
-            entity_id="string",
-            program_id="string",
-            informational_entity_id="string",
             name="x",
+            entity_id="string",
+            informational_entity_id="string",
+            program_id="string",
         )
         assert_matches_type(Account, account, path=["response"])
 
@@ -142,16 +142,16 @@ class TestAsyncAccounts:
     @parametrize
     async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
         account = await client.accounts.list(
-            cursor="string",
-            limit=0,
-            entity_id="string",
-            status="open",
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
+            cursor="string",
+            entity_id="string",
+            limit=0,
+            status="open",
         )
         assert_matches_type(AsyncPage[Account], account, path=["response"])
 

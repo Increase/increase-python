@@ -26,8 +26,8 @@ class TestWireTransfers:
         wire_transfer = client.wire_transfers.create(
             account_id="string",
             amount=1,
-            message_to_recipient="x",
             beneficiary_name="x",
+            message_to_recipient="x",
         )
         assert_matches_type(WireTransfer, wire_transfer, path=["response"])
 
@@ -35,16 +35,16 @@ class TestWireTransfers:
     def test_method_create_with_all_params(self, client: Increase) -> None:
         wire_transfer = client.wire_transfers.create(
             account_id="string",
-            account_number="x",
-            routing_number="xxxxxxxxx",
-            external_account_id="string",
             amount=1,
-            message_to_recipient="x",
             beneficiary_name="x",
+            message_to_recipient="x",
+            account_number="x",
             beneficiary_address_line1="x",
             beneficiary_address_line2="x",
             beneficiary_address_line3="x",
+            external_account_id="string",
             require_approval=True,
+            routing_number="xxxxxxxxx",
         )
         assert_matches_type(WireTransfer, wire_transfer, path=["response"])
 
@@ -63,16 +63,16 @@ class TestWireTransfers:
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
         wire_transfer = client.wire_transfers.list(
-            cursor="string",
-            limit=0,
             account_id="string",
-            external_account_id="string",
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
+            cursor="string",
+            external_account_id="string",
+            limit=0,
         )
         assert_matches_type(SyncPage[WireTransfer], wire_transfer, path=["response"])
 
@@ -117,8 +117,8 @@ class TestAsyncWireTransfers:
         wire_transfer = await client.wire_transfers.create(
             account_id="string",
             amount=1,
-            message_to_recipient="x",
             beneficiary_name="x",
+            message_to_recipient="x",
         )
         assert_matches_type(WireTransfer, wire_transfer, path=["response"])
 
@@ -126,16 +126,16 @@ class TestAsyncWireTransfers:
     async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         wire_transfer = await client.wire_transfers.create(
             account_id="string",
-            account_number="x",
-            routing_number="xxxxxxxxx",
-            external_account_id="string",
             amount=1,
-            message_to_recipient="x",
             beneficiary_name="x",
+            message_to_recipient="x",
+            account_number="x",
             beneficiary_address_line1="x",
             beneficiary_address_line2="x",
             beneficiary_address_line3="x",
+            external_account_id="string",
             require_approval=True,
+            routing_number="xxxxxxxxx",
         )
         assert_matches_type(WireTransfer, wire_transfer, path=["response"])
 
@@ -154,16 +154,16 @@ class TestAsyncWireTransfers:
     @parametrize
     async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
         wire_transfer = await client.wire_transfers.list(
-            cursor="string",
-            limit=0,
             account_id="string",
-            external_account_id="string",
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
+            cursor="string",
+            external_account_id="string",
+            limit=0,
         )
         assert_matches_type(AsyncPage[WireTransfer], wire_transfer, path=["response"])
 

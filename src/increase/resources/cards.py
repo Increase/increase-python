@@ -67,8 +67,8 @@ class Cards(SyncAPIResource):
             body=maybe_transform(
                 {
                     "account_id": account_id,
-                    "description": description,
                     "billing_address": billing_address,
+                    "description": description,
                     "digital_wallet": digital_wallet,
                 },
                 card_create_params.CardCreateParams,
@@ -94,7 +94,20 @@ class Cards(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> Card:
-        """Retrieve a Card"""
+        """
+        Retrieve a Card
+
+        Args:
+          card_id: The identifier of the Card.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return self._get(
             f"/cards/{card_id}",
             options=make_request_options(
@@ -123,6 +136,8 @@ class Cards(SyncAPIResource):
         Update a Card
 
         Args:
+          card_id: The card identifier.
+
           billing_address: The card's updated billing address.
 
           description: The description you choose to give the card.
@@ -147,10 +162,10 @@ class Cards(SyncAPIResource):
             f"/cards/{card_id}",
             body=maybe_transform(
                 {
-                    "description": description,
-                    "status": status,
                     "billing_address": billing_address,
+                    "description": description,
                     "digital_wallet": digital_wallet,
+                    "status": status,
                 },
                 card_update_params.CardUpdateParams,
             ),
@@ -207,10 +222,10 @@ class Cards(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "cursor": cursor,
-                        "limit": limit,
                         "account_id": account_id,
                         "created_at": created_at,
+                        "cursor": cursor,
+                        "limit": limit,
                     },
                     card_list_params.CardListParams,
                 ),
@@ -229,7 +244,20 @@ class Cards(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> CardDetails:
-        """Retrieve sensitive details for a Card"""
+        """
+        Retrieve sensitive details for a Card
+
+        Args:
+          card_id: The identifier of the Card to retrieve details for.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return self._get(
             f"/cards/{card_id}/details",
             options=make_request_options(
@@ -286,8 +314,8 @@ class AsyncCards(AsyncAPIResource):
             body=maybe_transform(
                 {
                     "account_id": account_id,
-                    "description": description,
                     "billing_address": billing_address,
+                    "description": description,
                     "digital_wallet": digital_wallet,
                 },
                 card_create_params.CardCreateParams,
@@ -313,7 +341,20 @@ class AsyncCards(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> Card:
-        """Retrieve a Card"""
+        """
+        Retrieve a Card
+
+        Args:
+          card_id: The identifier of the Card.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return await self._get(
             f"/cards/{card_id}",
             options=make_request_options(
@@ -342,6 +383,8 @@ class AsyncCards(AsyncAPIResource):
         Update a Card
 
         Args:
+          card_id: The card identifier.
+
           billing_address: The card's updated billing address.
 
           description: The description you choose to give the card.
@@ -366,10 +409,10 @@ class AsyncCards(AsyncAPIResource):
             f"/cards/{card_id}",
             body=maybe_transform(
                 {
-                    "description": description,
-                    "status": status,
                     "billing_address": billing_address,
+                    "description": description,
                     "digital_wallet": digital_wallet,
+                    "status": status,
                 },
                 card_update_params.CardUpdateParams,
             ),
@@ -426,10 +469,10 @@ class AsyncCards(AsyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "cursor": cursor,
-                        "limit": limit,
                         "account_id": account_id,
                         "created_at": created_at,
+                        "cursor": cursor,
+                        "limit": limit,
                     },
                     card_list_params.CardListParams,
                 ),
@@ -448,7 +491,20 @@ class AsyncCards(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> CardDetails:
-        """Retrieve sensitive details for a Card"""
+        """
+        Retrieve sensitive details for a Card
+
+        Args:
+          card_id: The identifier of the Card to retrieve details for.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return await self._get(
             f"/cards/{card_id}/details",
             options=make_request_options(

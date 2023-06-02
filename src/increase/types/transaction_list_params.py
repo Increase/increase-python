@@ -8,32 +8,30 @@ from typing_extensions import Literal, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
-__all__ = ["TransactionListParams", "CreatedAt", "Category"]
+__all__ = ["TransactionListParams", "Category", "CreatedAt"]
 
 
-class CreatedAt(TypedDict, total=False):
-    after: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
-    """
-    Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-    timestamp.
+class TransactionListParams(TypedDict, total=False):
+    account_id: str
+    """Filter Transactions for those belonging to the specified Account."""
+
+    category: Category
+
+    created_at: CreatedAt
+
+    cursor: str
+    """Return the page of entries after this one."""
+
+    limit: int
+    """Limit the size of the list that is returned.
+
+    The default (and maximum) is 100 objects.
     """
 
-    before: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
-    """
-    Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-    timestamp.
-    """
+    route_id: str
+    """Filter Transactions for those belonging to the specified route.
 
-    on_or_after: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
-    """
-    Return results on or after this
-    [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-    """
-
-    on_or_before: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
-    """
-    Return results on or before this
-    [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+    This could be a Card ID or an Account Number ID.
     """
 
 
@@ -93,25 +91,27 @@ class Category(_CategoryReservedKeywords, total=False):
     pass
 
 
-class TransactionListParams(TypedDict, total=False):
-    account_id: str
-    """Filter Transactions for those belonging to the specified Account."""
-
-    category: Category
-
-    created_at: CreatedAt
-
-    cursor: str
-    """Return the page of entries after this one."""
-
-    limit: int
-    """Limit the size of the list that is returned.
-
-    The default (and maximum) is 100 objects.
+class CreatedAt(TypedDict, total=False):
+    after: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
+    """
+    Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+    timestamp.
     """
 
-    route_id: str
-    """Filter Transactions for those belonging to the specified route.
+    before: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
+    """
+    Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+    timestamp.
+    """
 
-    This could be a Card ID or an Account Number ID.
+    on_or_after: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
+    """
+    Return results on or after this
+    [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+    """
+
+    on_or_before: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
+    """
+    Return results on or before this
+    [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
     """

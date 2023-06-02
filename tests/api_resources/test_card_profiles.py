@@ -34,6 +34,27 @@ class TestCardProfiles:
         assert_matches_type(CardProfile, card_profile, path=["response"])
 
     @parametrize
+    def test_method_create_with_all_params(self, client: Increase) -> None:
+        card_profile = client.card_profiles.create(
+            description="x",
+            digital_wallets={
+                "text_color": {
+                    "red": 0,
+                    "green": 0,
+                    "blue": 0,
+                },
+                "issuer_name": "x",
+                "card_description": "x",
+                "contact_website": "string",
+                "contact_email": "x",
+                "contact_phone": "x",
+                "background_image_file_id": "string",
+                "app_icon_file_id": "string",
+            },
+        )
+        assert_matches_type(CardProfile, card_profile, path=["response"])
+
+    @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         card_profile = client.card_profiles.retrieve(
             "string",
@@ -67,6 +88,27 @@ class TestAsyncCardProfiles:
             digital_wallets={
                 "issuer_name": "x",
                 "card_description": "x",
+                "background_image_file_id": "string",
+                "app_icon_file_id": "string",
+            },
+        )
+        assert_matches_type(CardProfile, card_profile, path=["response"])
+
+    @parametrize
+    async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
+        card_profile = await client.card_profiles.create(
+            description="x",
+            digital_wallets={
+                "text_color": {
+                    "red": 0,
+                    "green": 0,
+                    "blue": 0,
+                },
+                "issuer_name": "x",
+                "card_description": "x",
+                "contact_website": "string",
+                "contact_email": "x",
+                "contact_phone": "x",
                 "background_image_file_id": "string",
                 "app_icon_file_id": "string",
             },

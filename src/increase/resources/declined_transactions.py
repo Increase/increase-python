@@ -24,7 +24,20 @@ class DeclinedTransactions(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> DeclinedTransaction:
-        """Retrieve a Declined Transaction"""
+        """
+        Retrieve a Declined Transaction
+
+        Args:
+          declined_transaction_id: The identifier of the Declined Transaction.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return self._get(
             f"/declined_transactions/{declined_transaction_id}",
             options=make_request_options(
@@ -79,11 +92,11 @@ class DeclinedTransactions(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "account_id": account_id,
+                        "created_at": created_at,
                         "cursor": cursor,
                         "limit": limit,
-                        "account_id": account_id,
                         "route_id": route_id,
-                        "created_at": created_at,
                     },
                     declined_transaction_list_params.DeclinedTransactionListParams,
                 ),
@@ -104,7 +117,20 @@ class AsyncDeclinedTransactions(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> DeclinedTransaction:
-        """Retrieve a Declined Transaction"""
+        """
+        Retrieve a Declined Transaction
+
+        Args:
+          declined_transaction_id: The identifier of the Declined Transaction.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return await self._get(
             f"/declined_transactions/{declined_transaction_id}",
             options=make_request_options(
@@ -159,11 +185,11 @@ class AsyncDeclinedTransactions(AsyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "account_id": account_id,
+                        "created_at": created_at,
                         "cursor": cursor,
                         "limit": limit,
-                        "account_id": account_id,
                         "route_id": route_id,
-                        "created_at": created_at,
                     },
                     declined_transaction_list_params.DeclinedTransactionListParams,
                 ),

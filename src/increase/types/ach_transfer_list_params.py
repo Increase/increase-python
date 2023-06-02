@@ -11,6 +11,25 @@ from .._utils import PropertyInfo
 __all__ = ["ACHTransferListParams", "CreatedAt"]
 
 
+class ACHTransferListParams(TypedDict, total=False):
+    account_id: str
+    """Filter ACH Transfers to those that originated from the specified Account."""
+
+    created_at: CreatedAt
+
+    cursor: str
+    """Return the page of entries after this one."""
+
+    external_account_id: str
+    """Filter ACH Transfers to those made to the specified External Account."""
+
+    limit: int
+    """Limit the size of the list that is returned.
+
+    The default (and maximum) is 100 objects.
+    """
+
+
 class CreatedAt(TypedDict, total=False):
     after: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
     """
@@ -34,23 +53,4 @@ class CreatedAt(TypedDict, total=False):
     """
     Return results on or before this
     [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-    """
-
-
-class ACHTransferListParams(TypedDict, total=False):
-    account_id: str
-    """Filter ACH Transfers to those that originated from the specified Account."""
-
-    created_at: CreatedAt
-
-    cursor: str
-    """Return the page of entries after this one."""
-
-    external_account_id: str
-    """Filter ACH Transfers to those made to the specified External Account."""
-
-    limit: int
-    """Limit the size of the list that is returned.
-
-    The default (and maximum) is 100 objects.
     """

@@ -78,16 +78,16 @@ class WireTransfers(SyncAPIResource):
             body=maybe_transform(
                 {
                     "account_id": account_id,
-                    "account_number": account_number,
-                    "routing_number": routing_number,
-                    "external_account_id": external_account_id,
                     "amount": amount,
-                    "message_to_recipient": message_to_recipient,
                     "beneficiary_name": beneficiary_name,
+                    "message_to_recipient": message_to_recipient,
+                    "account_number": account_number,
                     "beneficiary_address_line1": beneficiary_address_line1,
                     "beneficiary_address_line2": beneficiary_address_line2,
                     "beneficiary_address_line3": beneficiary_address_line3,
+                    "external_account_id": external_account_id,
                     "require_approval": require_approval,
+                    "routing_number": routing_number,
                 },
                 wire_transfer_create_params.WireTransferCreateParams,
             ),
@@ -112,7 +112,20 @@ class WireTransfers(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> WireTransfer:
-        """Retrieve a Wire Transfer"""
+        """
+        Retrieve a Wire Transfer
+
+        Args:
+          wire_transfer_id: The identifier of the Wire Transfer.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return self._get(
             f"/wire_transfers/{wire_transfer_id}",
             options=make_request_options(
@@ -167,11 +180,11 @@ class WireTransfers(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "cursor": cursor,
-                        "limit": limit,
                         "account_id": account_id,
-                        "external_account_id": external_account_id,
                         "created_at": created_at,
+                        "cursor": cursor,
+                        "external_account_id": external_account_id,
+                        "limit": limit,
                     },
                     wire_transfer_list_params.WireTransferListParams,
                 ),
@@ -191,7 +204,22 @@ class WireTransfers(SyncAPIResource):
         timeout: float | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> WireTransfer:
-        """Approve a Wire Transfer"""
+        """
+        Approve a Wire Transfer
+
+        Args:
+          wire_transfer_id: The identifier of the Wire Transfer to approve.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
         return self._post(
             f"/wire_transfers/{wire_transfer_id}/approve",
             options=make_request_options(
@@ -216,7 +244,22 @@ class WireTransfers(SyncAPIResource):
         timeout: float | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> WireTransfer:
-        """Cancel a pending Wire Transfer"""
+        """
+        Cancel a pending Wire Transfer
+
+        Args:
+          wire_transfer_id: The identifier of the pending Wire Transfer to cancel.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
         return self._post(
             f"/wire_transfers/{wire_transfer_id}/cancel",
             options=make_request_options(
@@ -246,6 +289,19 @@ class WireTransfers(SyncAPIResource):
         Reserve due to error conditions. This will also create a
         [Transaction](#transaction) to account for the returned funds. This Wire
         Transfer must first have a `status` of `complete`.'
+
+        Args:
+          wire_transfer_id: The identifier of the Wire Transfer you wish to reverse.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return self._post(
             f"/simulations/wire_transfers/{wire_transfer_id}/reverse",
@@ -275,6 +331,19 @@ class WireTransfers(SyncAPIResource):
         Simulates the submission of a [Wire Transfer](#wire-transfers) to the Federal
         Reserve. This transfer must first have a `status` of `pending_approval` or
         `pending_creating`.
+
+        Args:
+          wire_transfer_id: The identifier of the Wire Transfer you wish to submit.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return self._post(
             f"/simulations/wire_transfers/{wire_transfer_id}/submit",
@@ -355,16 +424,16 @@ class AsyncWireTransfers(AsyncAPIResource):
             body=maybe_transform(
                 {
                     "account_id": account_id,
-                    "account_number": account_number,
-                    "routing_number": routing_number,
-                    "external_account_id": external_account_id,
                     "amount": amount,
-                    "message_to_recipient": message_to_recipient,
                     "beneficiary_name": beneficiary_name,
+                    "message_to_recipient": message_to_recipient,
+                    "account_number": account_number,
                     "beneficiary_address_line1": beneficiary_address_line1,
                     "beneficiary_address_line2": beneficiary_address_line2,
                     "beneficiary_address_line3": beneficiary_address_line3,
+                    "external_account_id": external_account_id,
                     "require_approval": require_approval,
+                    "routing_number": routing_number,
                 },
                 wire_transfer_create_params.WireTransferCreateParams,
             ),
@@ -389,7 +458,20 @@ class AsyncWireTransfers(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> WireTransfer:
-        """Retrieve a Wire Transfer"""
+        """
+        Retrieve a Wire Transfer
+
+        Args:
+          wire_transfer_id: The identifier of the Wire Transfer.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return await self._get(
             f"/wire_transfers/{wire_transfer_id}",
             options=make_request_options(
@@ -444,11 +526,11 @@ class AsyncWireTransfers(AsyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "cursor": cursor,
-                        "limit": limit,
                         "account_id": account_id,
-                        "external_account_id": external_account_id,
                         "created_at": created_at,
+                        "cursor": cursor,
+                        "external_account_id": external_account_id,
+                        "limit": limit,
                     },
                     wire_transfer_list_params.WireTransferListParams,
                 ),
@@ -468,7 +550,22 @@ class AsyncWireTransfers(AsyncAPIResource):
         timeout: float | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> WireTransfer:
-        """Approve a Wire Transfer"""
+        """
+        Approve a Wire Transfer
+
+        Args:
+          wire_transfer_id: The identifier of the Wire Transfer to approve.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
         return await self._post(
             f"/wire_transfers/{wire_transfer_id}/approve",
             options=make_request_options(
@@ -493,7 +590,22 @@ class AsyncWireTransfers(AsyncAPIResource):
         timeout: float | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> WireTransfer:
-        """Cancel a pending Wire Transfer"""
+        """
+        Cancel a pending Wire Transfer
+
+        Args:
+          wire_transfer_id: The identifier of the pending Wire Transfer to cancel.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
         return await self._post(
             f"/wire_transfers/{wire_transfer_id}/cancel",
             options=make_request_options(
@@ -523,6 +635,19 @@ class AsyncWireTransfers(AsyncAPIResource):
         Reserve due to error conditions. This will also create a
         [Transaction](#transaction) to account for the returned funds. This Wire
         Transfer must first have a `status` of `complete`.'
+
+        Args:
+          wire_transfer_id: The identifier of the Wire Transfer you wish to reverse.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return await self._post(
             f"/simulations/wire_transfers/{wire_transfer_id}/reverse",
@@ -552,6 +677,19 @@ class AsyncWireTransfers(AsyncAPIResource):
         Simulates the submission of a [Wire Transfer](#wire-transfers) to the Federal
         Reserve. This transfer must first have a `status` of `pending_approval` or
         `pending_creating`.
+
+        Args:
+          wire_transfer_id: The identifier of the Wire Transfer you wish to submit.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return await self._post(
             f"/simulations/wire_transfers/{wire_transfer_id}/submit",

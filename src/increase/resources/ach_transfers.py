@@ -117,9 +117,10 @@ class ACHTransfers(SyncAPIResource):
             body=maybe_transform(
                 {
                     "account_id": account_id,
+                    "amount": amount,
+                    "statement_descriptor": statement_descriptor,
                     "account_number": account_number,
                     "addendum": addendum,
-                    "amount": amount,
                     "company_descriptive_date": company_descriptive_date,
                     "company_discretionary_data": company_discretionary_data,
                     "company_entry_description": company_entry_description,
@@ -132,7 +133,6 @@ class ACHTransfers(SyncAPIResource):
                     "require_approval": require_approval,
                     "routing_number": routing_number,
                     "standard_entry_class_code": standard_entry_class_code,
-                    "statement_descriptor": statement_descriptor,
                 },
                 ach_transfer_create_params.ACHTransferCreateParams,
             ),
@@ -157,7 +157,20 @@ class ACHTransfers(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> ACHTransfer:
-        """Retrieve an ACH Transfer"""
+        """
+        Retrieve an ACH Transfer
+
+        Args:
+          ach_transfer_id: The identifier of the ACH Transfer.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return self._get(
             f"/ach_transfers/{ach_transfer_id}",
             options=make_request_options(
@@ -212,11 +225,11 @@ class ACHTransfers(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "cursor": cursor,
-                        "limit": limit,
                         "account_id": account_id,
-                        "external_account_id": external_account_id,
                         "created_at": created_at,
+                        "cursor": cursor,
+                        "external_account_id": external_account_id,
+                        "limit": limit,
                     },
                     ach_transfer_list_params.ACHTransferListParams,
                 ),
@@ -236,7 +249,22 @@ class ACHTransfers(SyncAPIResource):
         timeout: float | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> ACHTransfer:
-        """Approves an ACH Transfer in a pending_approval state."""
+        """
+        Approves an ACH Transfer in a pending_approval state.
+
+        Args:
+          ach_transfer_id: The identifier of the ACH Transfer to approve.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
         return self._post(
             f"/ach_transfers/{ach_transfer_id}/approve",
             options=make_request_options(
@@ -261,7 +289,22 @@ class ACHTransfers(SyncAPIResource):
         timeout: float | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> ACHTransfer:
-        """Cancels an ACH Transfer in a pending_approval state."""
+        """
+        Cancels an ACH Transfer in a pending_approval state.
+
+        Args:
+          ach_transfer_id: The identifier of the pending ACH Transfer to cancel.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
         return self._post(
             f"/ach_transfers/{ach_transfer_id}/cancel",
             options=make_request_options(
@@ -376,9 +419,10 @@ class AsyncACHTransfers(AsyncAPIResource):
             body=maybe_transform(
                 {
                     "account_id": account_id,
+                    "amount": amount,
+                    "statement_descriptor": statement_descriptor,
                     "account_number": account_number,
                     "addendum": addendum,
-                    "amount": amount,
                     "company_descriptive_date": company_descriptive_date,
                     "company_discretionary_data": company_discretionary_data,
                     "company_entry_description": company_entry_description,
@@ -391,7 +435,6 @@ class AsyncACHTransfers(AsyncAPIResource):
                     "require_approval": require_approval,
                     "routing_number": routing_number,
                     "standard_entry_class_code": standard_entry_class_code,
-                    "statement_descriptor": statement_descriptor,
                 },
                 ach_transfer_create_params.ACHTransferCreateParams,
             ),
@@ -416,7 +459,20 @@ class AsyncACHTransfers(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> ACHTransfer:
-        """Retrieve an ACH Transfer"""
+        """
+        Retrieve an ACH Transfer
+
+        Args:
+          ach_transfer_id: The identifier of the ACH Transfer.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return await self._get(
             f"/ach_transfers/{ach_transfer_id}",
             options=make_request_options(
@@ -471,11 +527,11 @@ class AsyncACHTransfers(AsyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "cursor": cursor,
-                        "limit": limit,
                         "account_id": account_id,
-                        "external_account_id": external_account_id,
                         "created_at": created_at,
+                        "cursor": cursor,
+                        "external_account_id": external_account_id,
+                        "limit": limit,
                     },
                     ach_transfer_list_params.ACHTransferListParams,
                 ),
@@ -495,7 +551,22 @@ class AsyncACHTransfers(AsyncAPIResource):
         timeout: float | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> ACHTransfer:
-        """Approves an ACH Transfer in a pending_approval state."""
+        """
+        Approves an ACH Transfer in a pending_approval state.
+
+        Args:
+          ach_transfer_id: The identifier of the ACH Transfer to approve.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
         return await self._post(
             f"/ach_transfers/{ach_transfer_id}/approve",
             options=make_request_options(
@@ -520,7 +591,22 @@ class AsyncACHTransfers(AsyncAPIResource):
         timeout: float | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> ACHTransfer:
-        """Cancels an ACH Transfer in a pending_approval state."""
+        """
+        Cancels an ACH Transfer in a pending_approval state.
+
+        Args:
+          ach_transfer_id: The identifier of the pending ACH Transfer to cancel.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
         return await self._post(
             f"/ach_transfers/{ach_transfer_id}/cancel",
             options=make_request_options(

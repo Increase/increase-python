@@ -19,12 +19,6 @@ __all__ = [
     "CorporationBeneficialOwnerIndividualIdentificationPassport",
     "CorporationBeneficialOwnerIndividualIdentificationDriversLicense",
     "CorporationBeneficialOwnerIndividualIdentificationOther",
-    "NaturalPerson",
-    "NaturalPersonAddress",
-    "NaturalPersonIdentification",
-    "NaturalPersonIdentificationPassport",
-    "NaturalPersonIdentificationDriversLicense",
-    "NaturalPersonIdentificationOther",
     "Joint",
     "JointIndividual",
     "JointIndividualAddress",
@@ -32,6 +26,13 @@ __all__ = [
     "JointIndividualIdentificationPassport",
     "JointIndividualIdentificationDriversLicense",
     "JointIndividualIdentificationOther",
+    "NaturalPerson",
+    "NaturalPersonAddress",
+    "NaturalPersonIdentification",
+    "NaturalPersonIdentificationPassport",
+    "NaturalPersonIdentificationDriversLicense",
+    "NaturalPersonIdentificationOther",
+    "SupplementalDocument",
     "Trust",
     "TrustAddress",
     "TrustTrustee",
@@ -47,8 +48,47 @@ __all__ = [
     "TrustGrantorIdentificationPassport",
     "TrustGrantorIdentificationDriversLicense",
     "TrustGrantorIdentificationOther",
-    "SupplementalDocument",
 ]
+
+
+class EntityCreateParams(TypedDict, total=False):
+    relationship: Required[Literal["affiliated", "informational", "unaffiliated"]]
+    """The relationship between your group and the entity."""
+
+    structure: Required[Literal["corporation", "natural_person", "joint", "trust"]]
+    """The type of Entity to create."""
+
+    corporation: Corporation
+    """Details of the corporation entity to create.
+
+    Required if `structure` is equal to `corporation`.
+    """
+
+    description: str
+    """The description you choose to give the entity."""
+
+    joint: Joint
+    """Details of the joint entity to create.
+
+    Required if `structure` is equal to `joint`.
+    """
+
+    natural_person: NaturalPerson
+    """Details of the natural person entity to create.
+
+    Required if `structure` is equal to `natural_person`. Natural people entities
+    should be submitted with `social_security_number` or
+    `individual_taxpayer_identification_number` identification methods.
+    """
+
+    supplemental_documents: List[SupplementalDocument]
+    """Additional documentation associated with the entity."""
+
+    trust: Trust
+    """Details of the trust entity to create.
+
+    Required if `structure` is equal to `trust`.
+    """
 
 
 class CorporationAddress(TypedDict, total=False):
@@ -226,124 +266,6 @@ class Corporation(TypedDict, total=False):
     """The website of the corporation."""
 
 
-class NaturalPersonAddress(TypedDict, total=False):
-    city: Required[str]
-    """The city of the address."""
-
-    line1: Required[str]
-    """The first line of the address. This is usually the street number and street."""
-
-    state: Required[str]
-    """
-    The two-letter United States Postal Service (USPS) abbreviation for the state of
-    the address.
-    """
-
-    zip: Required[str]
-    """The ZIP code of the address."""
-
-    line2: str
-    """The second line of the address. This might be the floor or room number."""
-
-
-class NaturalPersonIdentificationPassport(TypedDict, total=False):
-    country: Required[str]
-    """The country that issued the passport."""
-
-    expiration_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
-    """The passport's expiration date in YYYY-MM-DD format."""
-
-    file_id: Required[str]
-    """The identifier of the File containing the passport."""
-
-
-class NaturalPersonIdentificationDriversLicense(TypedDict, total=False):
-    expiration_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
-    """The driver's license's expiration date in YYYY-MM-DD format."""
-
-    file_id: Required[str]
-    """The identifier of the File containing the driver's license."""
-
-    state: Required[str]
-    """The state that issued the provided driver's license."""
-
-
-class NaturalPersonIdentificationOther(TypedDict, total=False):
-    country: Required[str]
-    """
-    The two-character ISO 3166-1 code representing the country that issued the
-    document.
-    """
-
-    description: Required[str]
-    """A description of the document submitted."""
-
-    file_id: Required[str]
-    """The identifier of the File containing the document."""
-
-    expiration_date: Annotated[Union[str, date], PropertyInfo(format="iso8601")]
-    """The document's expiration date in YYYY-MM-DD format."""
-
-
-class NaturalPersonIdentification(TypedDict, total=False):
-    method: Required[
-        Literal[
-            "social_security_number",
-            "individual_taxpayer_identification_number",
-            "passport",
-            "drivers_license",
-            "other",
-        ]
-    ]
-    """A method that can be used to verify the individual's identity."""
-
-    number: Required[str]
-    """
-    An identification number that can be used to verify the individual's identity,
-    such as a social security number.
-    """
-
-    drivers_license: NaturalPersonIdentificationDriversLicense
-    """Information about the United States driver's license used for identification.
-
-    Required if `method` is equal to `drivers_license`.
-    """
-
-    other: NaturalPersonIdentificationOther
-    """Information about the identification document provided.
-
-    Required if `method` is equal to `other`.
-    """
-
-    passport: NaturalPersonIdentificationPassport
-    """Information about the passport used for identification.
-
-    Required if `method` is equal to `passport`.
-    """
-
-
-class NaturalPerson(TypedDict, total=False):
-    address: Required[NaturalPersonAddress]
-    """The individual's address."""
-
-    date_of_birth: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
-    """The person's date of birth in YYYY-MM-DD format."""
-
-    identification: Required[NaturalPersonIdentification]
-    """A means of verifying the person's identity."""
-
-    name: Required[str]
-    """The person's legal name."""
-
-    confirmed_no_us_tax_id: bool
-    """
-    The identification method for an individual can only be a passport, driver's
-    license, or other document if you've confirmed the individual does not have a US
-    tax id (either a Social Security Number or Individual Taxpayer Identification
-    Number).
-    """
-
-
 class JointIndividualAddress(TypedDict, total=False):
     city: Required[str]
     """The city of the address."""
@@ -468,6 +390,129 @@ class Joint(TypedDict, total=False):
 
     name: str
     """The name of the joint entity."""
+
+
+class NaturalPersonAddress(TypedDict, total=False):
+    city: Required[str]
+    """The city of the address."""
+
+    line1: Required[str]
+    """The first line of the address. This is usually the street number and street."""
+
+    state: Required[str]
+    """
+    The two-letter United States Postal Service (USPS) abbreviation for the state of
+    the address.
+    """
+
+    zip: Required[str]
+    """The ZIP code of the address."""
+
+    line2: str
+    """The second line of the address. This might be the floor or room number."""
+
+
+class NaturalPersonIdentificationPassport(TypedDict, total=False):
+    country: Required[str]
+    """The country that issued the passport."""
+
+    expiration_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
+    """The passport's expiration date in YYYY-MM-DD format."""
+
+    file_id: Required[str]
+    """The identifier of the File containing the passport."""
+
+
+class NaturalPersonIdentificationDriversLicense(TypedDict, total=False):
+    expiration_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
+    """The driver's license's expiration date in YYYY-MM-DD format."""
+
+    file_id: Required[str]
+    """The identifier of the File containing the driver's license."""
+
+    state: Required[str]
+    """The state that issued the provided driver's license."""
+
+
+class NaturalPersonIdentificationOther(TypedDict, total=False):
+    country: Required[str]
+    """
+    The two-character ISO 3166-1 code representing the country that issued the
+    document.
+    """
+
+    description: Required[str]
+    """A description of the document submitted."""
+
+    file_id: Required[str]
+    """The identifier of the File containing the document."""
+
+    expiration_date: Annotated[Union[str, date], PropertyInfo(format="iso8601")]
+    """The document's expiration date in YYYY-MM-DD format."""
+
+
+class NaturalPersonIdentification(TypedDict, total=False):
+    method: Required[
+        Literal[
+            "social_security_number",
+            "individual_taxpayer_identification_number",
+            "passport",
+            "drivers_license",
+            "other",
+        ]
+    ]
+    """A method that can be used to verify the individual's identity."""
+
+    number: Required[str]
+    """
+    An identification number that can be used to verify the individual's identity,
+    such as a social security number.
+    """
+
+    drivers_license: NaturalPersonIdentificationDriversLicense
+    """Information about the United States driver's license used for identification.
+
+    Required if `method` is equal to `drivers_license`.
+    """
+
+    other: NaturalPersonIdentificationOther
+    """Information about the identification document provided.
+
+    Required if `method` is equal to `other`.
+    """
+
+    passport: NaturalPersonIdentificationPassport
+    """Information about the passport used for identification.
+
+    Required if `method` is equal to `passport`.
+    """
+
+
+class NaturalPerson(TypedDict, total=False):
+    address: Required[NaturalPersonAddress]
+    """The individual's address."""
+
+    date_of_birth: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
+    """The person's date of birth in YYYY-MM-DD format."""
+
+    identification: Required[NaturalPersonIdentification]
+    """A means of verifying the person's identity."""
+
+    name: Required[str]
+    """The person's legal name."""
+
+    confirmed_no_us_tax_id: bool
+    """
+    The identification method for an individual can only be a passport, driver's
+    license, or other document if you've confirmed the individual does not have a US
+    tax id (either a Social Security Number or Individual Taxpayer Identification
+    Number).
+    """
+
+
+class SupplementalDocument(TypedDict, total=False):
+    file_id: Required[str]
+    """The identifier of the File containing the document."""
 
 
 class TrustAddress(TypedDict, total=False):
@@ -770,49 +815,4 @@ class Trust(TypedDict, total=False):
     """The Employer Identification Number (EIN) for the trust.
 
     Required if `category` is equal to `irrevocable`.
-    """
-
-
-class SupplementalDocument(TypedDict, total=False):
-    file_id: Required[str]
-    """The identifier of the File containing the document."""
-
-
-class EntityCreateParams(TypedDict, total=False):
-    relationship: Required[Literal["affiliated", "informational", "unaffiliated"]]
-    """The relationship between your group and the entity."""
-
-    structure: Required[Literal["corporation", "natural_person", "joint", "trust"]]
-    """The type of Entity to create."""
-
-    corporation: Corporation
-    """Details of the corporation entity to create.
-
-    Required if `structure` is equal to `corporation`.
-    """
-
-    description: str
-    """The description you choose to give the entity."""
-
-    joint: Joint
-    """Details of the joint entity to create.
-
-    Required if `structure` is equal to `joint`.
-    """
-
-    natural_person: NaturalPerson
-    """Details of the natural person entity to create.
-
-    Required if `structure` is equal to `natural_person`. Natural people entities
-    should be submitted with `social_security_number` or
-    `individual_taxpayer_identification_number` identification methods.
-    """
-
-    supplemental_documents: List[SupplementalDocument]
-    """Additional documentation associated with the entity."""
-
-    trust: Trust
-    """Details of the trust entity to create.
-
-    Required if `structure` is equal to `trust`.
     """

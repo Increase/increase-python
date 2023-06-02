@@ -62,10 +62,10 @@ class ExternalAccounts(SyncAPIResource):
             "/external_accounts",
             body=maybe_transform(
                 {
-                    "routing_number": routing_number,
                     "account_number": account_number,
-                    "funding": funding,
                     "description": description,
+                    "routing_number": routing_number,
+                    "funding": funding,
                 },
                 external_account_create_params.ExternalAccountCreateParams,
             ),
@@ -90,7 +90,20 @@ class ExternalAccounts(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> ExternalAccount:
-        """Retrieve an External Account"""
+        """
+        Retrieve an External Account
+
+        Args:
+          external_account_id: The identifier of the External Account.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return self._get(
             f"/external_accounts/{external_account_id}",
             options=make_request_options(
@@ -117,6 +130,8 @@ class ExternalAccounts(SyncAPIResource):
         Update an External Account
 
         Args:
+          external_account_id: The external account identifier.
+
           description: The description you choose to give the external account.
 
           status: The status of the External Account.
@@ -244,10 +259,10 @@ class AsyncExternalAccounts(AsyncAPIResource):
             "/external_accounts",
             body=maybe_transform(
                 {
-                    "routing_number": routing_number,
                     "account_number": account_number,
-                    "funding": funding,
                     "description": description,
+                    "routing_number": routing_number,
+                    "funding": funding,
                 },
                 external_account_create_params.ExternalAccountCreateParams,
             ),
@@ -272,7 +287,20 @@ class AsyncExternalAccounts(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> ExternalAccount:
-        """Retrieve an External Account"""
+        """
+        Retrieve an External Account
+
+        Args:
+          external_account_id: The identifier of the External Account.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return await self._get(
             f"/external_accounts/{external_account_id}",
             options=make_request_options(
@@ -299,6 +327,8 @@ class AsyncExternalAccounts(AsyncAPIResource):
         Update an External Account
 
         Args:
+          external_account_id: The external account identifier.
+
           description: The description you choose to give the external account.
 
           status: The status of the External Account.

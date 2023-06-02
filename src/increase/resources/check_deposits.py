@@ -60,9 +60,9 @@ class CheckDeposits(SyncAPIResource):
                 {
                     "account_id": account_id,
                     "amount": amount,
+                    "back_image_file_id": back_image_file_id,
                     "currency": currency,
                     "front_image_file_id": front_image_file_id,
-                    "back_image_file_id": back_image_file_id,
                 },
                 check_deposit_create_params.CheckDepositCreateParams,
             ),
@@ -87,7 +87,20 @@ class CheckDeposits(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> CheckDeposit:
-        """Retrieve a Check Deposit"""
+        """
+        Retrieve a Check Deposit
+
+        Args:
+          check_deposit_id: The identifier of the Check Deposit to retrieve.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return self._get(
             f"/check_deposits/{check_deposit_id}",
             options=make_request_options(
@@ -139,10 +152,10 @@ class CheckDeposits(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "cursor": cursor,
-                        "limit": limit,
                         "account_id": account_id,
                         "created_at": created_at,
+                        "cursor": cursor,
+                        "limit": limit,
                     },
                     check_deposit_list_params.CheckDepositListParams,
                 ),
@@ -199,9 +212,9 @@ class AsyncCheckDeposits(AsyncAPIResource):
                 {
                     "account_id": account_id,
                     "amount": amount,
+                    "back_image_file_id": back_image_file_id,
                     "currency": currency,
                     "front_image_file_id": front_image_file_id,
-                    "back_image_file_id": back_image_file_id,
                 },
                 check_deposit_create_params.CheckDepositCreateParams,
             ),
@@ -226,7 +239,20 @@ class AsyncCheckDeposits(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> CheckDeposit:
-        """Retrieve a Check Deposit"""
+        """
+        Retrieve a Check Deposit
+
+        Args:
+          check_deposit_id: The identifier of the Check Deposit to retrieve.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return await self._get(
             f"/check_deposits/{check_deposit_id}",
             options=make_request_options(
@@ -278,10 +304,10 @@ class AsyncCheckDeposits(AsyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "cursor": cursor,
-                        "limit": limit,
                         "account_id": account_id,
                         "created_at": created_at,
+                        "cursor": cursor,
+                        "limit": limit,
                     },
                     check_deposit_list_params.CheckDepositListParams,
                 ),

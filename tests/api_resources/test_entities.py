@@ -24,14 +24,15 @@ class TestEntities:
     @parametrize
     def test_method_create(self, client: Increase) -> None:
         entity = client.entities.create(
-            structure="corporation",
             relationship="affiliated",
+            structure="corporation",
         )
         assert_matches_type(Entity, entity, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: Increase) -> None:
         entity = client.entities.create(
+            relationship="affiliated",
             structure="corporation",
             corporation={
                 "name": "x",
@@ -156,38 +157,7 @@ class TestEntities:
                     },
                 ],
             },
-            natural_person={
-                "name": "x",
-                "date_of_birth": parse_date("2019-12-27"),
-                "address": {
-                    "line1": "x",
-                    "line2": "x",
-                    "city": "x",
-                    "state": "x",
-                    "zip": "x",
-                },
-                "confirmed_no_us_tax_id": True,
-                "identification": {
-                    "method": "social_security_number",
-                    "number": "xxxx",
-                    "passport": {
-                        "file_id": "string",
-                        "expiration_date": parse_date("2019-12-27"),
-                        "country": "x",
-                    },
-                    "drivers_license": {
-                        "file_id": "string",
-                        "expiration_date": parse_date("2019-12-27"),
-                        "state": "x",
-                    },
-                    "other": {
-                        "country": "x",
-                        "description": "x",
-                        "expiration_date": parse_date("2019-12-27"),
-                        "file_id": "string",
-                    },
-                },
-            },
+            description="x",
             joint={
                 "name": "x",
                 "individuals": [
@@ -289,6 +259,39 @@ class TestEntities:
                     },
                 ],
             },
+            natural_person={
+                "name": "x",
+                "date_of_birth": parse_date("2019-12-27"),
+                "address": {
+                    "line1": "x",
+                    "line2": "x",
+                    "city": "x",
+                    "state": "x",
+                    "zip": "x",
+                },
+                "confirmed_no_us_tax_id": True,
+                "identification": {
+                    "method": "social_security_number",
+                    "number": "xxxx",
+                    "passport": {
+                        "file_id": "string",
+                        "expiration_date": parse_date("2019-12-27"),
+                        "country": "x",
+                    },
+                    "drivers_license": {
+                        "file_id": "string",
+                        "expiration_date": parse_date("2019-12-27"),
+                        "state": "x",
+                    },
+                    "other": {
+                        "country": "x",
+                        "description": "x",
+                        "expiration_date": parse_date("2019-12-27"),
+                        "file_id": "string",
+                    },
+                },
+            },
+            supplemental_documents=[{"file_id": "string"}, {"file_id": "string"}, {"file_id": "string"}],
             trust={
                 "name": "x",
                 "category": "revocable",
@@ -442,9 +445,6 @@ class TestEntities:
                     },
                 },
             },
-            description="x",
-            relationship="affiliated",
-            supplemental_documents=[{"file_id": "string"}, {"file_id": "string"}, {"file_id": "string"}],
         )
         assert_matches_type(Entity, entity, path=["response"])
 
@@ -463,14 +463,14 @@ class TestEntities:
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
         entity = client.entities.list(
-            cursor="string",
-            limit=0,
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
+            cursor="string",
+            limit=0,
         )
         assert_matches_type(SyncPage[Entity], entity, path=["response"])
 
@@ -483,14 +483,15 @@ class TestAsyncEntities:
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
         entity = await client.entities.create(
-            structure="corporation",
             relationship="affiliated",
+            structure="corporation",
         )
         assert_matches_type(Entity, entity, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         entity = await client.entities.create(
+            relationship="affiliated",
             structure="corporation",
             corporation={
                 "name": "x",
@@ -615,38 +616,7 @@ class TestAsyncEntities:
                     },
                 ],
             },
-            natural_person={
-                "name": "x",
-                "date_of_birth": parse_date("2019-12-27"),
-                "address": {
-                    "line1": "x",
-                    "line2": "x",
-                    "city": "x",
-                    "state": "x",
-                    "zip": "x",
-                },
-                "confirmed_no_us_tax_id": True,
-                "identification": {
-                    "method": "social_security_number",
-                    "number": "xxxx",
-                    "passport": {
-                        "file_id": "string",
-                        "expiration_date": parse_date("2019-12-27"),
-                        "country": "x",
-                    },
-                    "drivers_license": {
-                        "file_id": "string",
-                        "expiration_date": parse_date("2019-12-27"),
-                        "state": "x",
-                    },
-                    "other": {
-                        "country": "x",
-                        "description": "x",
-                        "expiration_date": parse_date("2019-12-27"),
-                        "file_id": "string",
-                    },
-                },
-            },
+            description="x",
             joint={
                 "name": "x",
                 "individuals": [
@@ -748,6 +718,39 @@ class TestAsyncEntities:
                     },
                 ],
             },
+            natural_person={
+                "name": "x",
+                "date_of_birth": parse_date("2019-12-27"),
+                "address": {
+                    "line1": "x",
+                    "line2": "x",
+                    "city": "x",
+                    "state": "x",
+                    "zip": "x",
+                },
+                "confirmed_no_us_tax_id": True,
+                "identification": {
+                    "method": "social_security_number",
+                    "number": "xxxx",
+                    "passport": {
+                        "file_id": "string",
+                        "expiration_date": parse_date("2019-12-27"),
+                        "country": "x",
+                    },
+                    "drivers_license": {
+                        "file_id": "string",
+                        "expiration_date": parse_date("2019-12-27"),
+                        "state": "x",
+                    },
+                    "other": {
+                        "country": "x",
+                        "description": "x",
+                        "expiration_date": parse_date("2019-12-27"),
+                        "file_id": "string",
+                    },
+                },
+            },
+            supplemental_documents=[{"file_id": "string"}, {"file_id": "string"}, {"file_id": "string"}],
             trust={
                 "name": "x",
                 "category": "revocable",
@@ -901,9 +904,6 @@ class TestAsyncEntities:
                     },
                 },
             },
-            description="x",
-            relationship="affiliated",
-            supplemental_documents=[{"file_id": "string"}, {"file_id": "string"}, {"file_id": "string"}],
         )
         assert_matches_type(Entity, entity, path=["response"])
 
@@ -922,13 +922,13 @@ class TestAsyncEntities:
     @parametrize
     async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
         entity = await client.entities.list(
-            cursor="string",
-            limit=0,
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
+            cursor="string",
+            limit=0,
         )
         assert_matches_type(AsyncPage[Entity], entity, path=["response"])

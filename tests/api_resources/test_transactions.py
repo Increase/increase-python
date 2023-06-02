@@ -36,17 +36,17 @@ class TestTransactions:
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
         transaction = client.transactions.list(
-            cursor="string",
-            limit=0,
             account_id="string",
-            route_id="string",
+            category={"in": ["account_transfer_intention", "account_transfer_intention", "account_transfer_intention"]},
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
-            category={"in": ["account_transfer_intention", "account_transfer_intention", "account_transfer_intention"]},
+            cursor="string",
+            limit=0,
+            route_id="string",
         )
         assert_matches_type(SyncPage[Transaction], transaction, path=["response"])
 
@@ -71,16 +71,16 @@ class TestAsyncTransactions:
     @parametrize
     async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
         transaction = await client.transactions.list(
-            cursor="string",
-            limit=0,
             account_id="string",
-            route_id="string",
+            category={"in": ["account_transfer_intention", "account_transfer_intention", "account_transfer_intention"]},
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
-            category={"in": ["account_transfer_intention", "account_transfer_intention", "account_transfer_intention"]},
+            cursor="string",
+            limit=0,
+            route_id="string",
         )
         assert_matches_type(AsyncPage[Transaction], transaction, path=["response"])

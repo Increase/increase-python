@@ -36,8 +36,6 @@ class TestDigitalWalletTokens:
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
         digital_wallet_token = client.digital_wallet_tokens.list(
-            cursor="string",
-            limit=0,
             card_id="string",
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -45,6 +43,8 @@ class TestDigitalWalletTokens:
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
+            cursor="string",
+            limit=0,
         )
         assert_matches_type(SyncPage[DigitalWalletToken], digital_wallet_token, path=["response"])
 
@@ -69,8 +69,6 @@ class TestAsyncDigitalWalletTokens:
     @parametrize
     async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
         digital_wallet_token = await client.digital_wallet_tokens.list(
-            cursor="string",
-            limit=0,
             card_id="string",
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -78,5 +76,7 @@ class TestAsyncDigitalWalletTokens:
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
+            cursor="string",
+            limit=0,
         )
         assert_matches_type(AsyncPage[DigitalWalletToken], digital_wallet_token, path=["response"])
