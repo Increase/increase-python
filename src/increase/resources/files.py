@@ -68,8 +68,8 @@ class Files(SyncAPIResource):
         body = deepcopy_minimal(
             {
                 "file": file,
-                "description": description,
                 "purpose": purpose,
+                "description": description,
             }
         )
         files = extract_files(cast(Mapping[str, object], body), paths=[["file"]])
@@ -104,7 +104,20 @@ class Files(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> File:
-        """Retrieve a File"""
+        """
+        Retrieve a File
+
+        Args:
+          file_id: The identifier of the File.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return self._get(
             f"/files/{file_id}",
             options=make_request_options(
@@ -154,9 +167,9 @@ class Files(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "created_at": created_at,
                         "cursor": cursor,
                         "limit": limit,
-                        "created_at": created_at,
                         "purpose": purpose,
                     },
                     file_list_params.FileListParams,
@@ -219,8 +232,8 @@ class AsyncFiles(AsyncAPIResource):
         body = deepcopy_minimal(
             {
                 "file": file,
-                "description": description,
                 "purpose": purpose,
+                "description": description,
             }
         )
         files = extract_files(cast(Mapping[str, object], body), paths=[["file"]])
@@ -255,7 +268,20 @@ class AsyncFiles(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> File:
-        """Retrieve a File"""
+        """
+        Retrieve a File
+
+        Args:
+          file_id: The identifier of the File.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return await self._get(
             f"/files/{file_id}",
             options=make_request_options(
@@ -305,9 +331,9 @@ class AsyncFiles(AsyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "created_at": created_at,
                         "cursor": cursor,
                         "limit": limit,
-                        "created_at": created_at,
                         "purpose": purpose,
                     },
                     file_list_params.FileListParams,

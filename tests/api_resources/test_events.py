@@ -36,16 +36,16 @@ class TestEvents:
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
         event = client.events.list(
-            cursor="string",
-            limit=0,
             associated_object_id="string",
+            category={"in": ["account.created", "account.created", "account.created"]},
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
-            category={"in": ["account.created", "account.created", "account.created"]},
+            cursor="string",
+            limit=0,
         )
         assert_matches_type(SyncPage[Event], event, path=["response"])
 
@@ -70,15 +70,15 @@ class TestAsyncEvents:
     @parametrize
     async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
         event = await client.events.list(
-            cursor="string",
-            limit=0,
             associated_object_id="string",
+            category={"in": ["account.created", "account.created", "account.created"]},
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
-            category={"in": ["account.created", "account.created", "account.created"]},
+            cursor="string",
+            limit=0,
         )
         assert_matches_type(AsyncPage[Event], event, path=["response"])

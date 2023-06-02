@@ -34,9 +34,10 @@ class TestACHTransfers:
     def test_method_create_with_all_params(self, client: Increase) -> None:
         ach_transfer = client.ach_transfers.create(
             account_id="string",
+            amount=0,
+            statement_descriptor="x",
             account_number="x",
             addendum="x",
-            amount=0,
             company_descriptive_date="x",
             company_discretionary_data="x",
             company_entry_description="x",
@@ -49,7 +50,6 @@ class TestACHTransfers:
             require_approval=True,
             routing_number="xxxxxxxxx",
             standard_entry_class_code="corporate_credit_or_debit",
-            statement_descriptor="x",
         )
         assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
 
@@ -68,16 +68,16 @@ class TestACHTransfers:
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
         ach_transfer = client.ach_transfers.list(
-            cursor="string",
-            limit=0,
             account_id="string",
-            external_account_id="string",
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
+            cursor="string",
+            external_account_id="string",
+            limit=0,
         )
         assert_matches_type(SyncPage[ACHTransfer], ach_transfer, path=["response"])
 
@@ -114,9 +114,10 @@ class TestAsyncACHTransfers:
     async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         ach_transfer = await client.ach_transfers.create(
             account_id="string",
+            amount=0,
+            statement_descriptor="x",
             account_number="x",
             addendum="x",
-            amount=0,
             company_descriptive_date="x",
             company_discretionary_data="x",
             company_entry_description="x",
@@ -129,7 +130,6 @@ class TestAsyncACHTransfers:
             require_approval=True,
             routing_number="xxxxxxxxx",
             standard_entry_class_code="corporate_credit_or_debit",
-            statement_descriptor="x",
         )
         assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
 
@@ -148,16 +148,16 @@ class TestAsyncACHTransfers:
     @parametrize
     async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
         ach_transfer = await client.ach_transfers.list(
-            cursor="string",
-            limit=0,
             account_id="string",
-            external_account_id="string",
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
+            cursor="string",
+            external_account_id="string",
+            limit=0,
         )
         assert_matches_type(AsyncPage[ACHTransfer], ach_transfer, path=["response"])
 

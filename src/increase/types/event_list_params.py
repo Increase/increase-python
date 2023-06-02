@@ -8,32 +8,24 @@ from typing_extensions import Literal, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
-__all__ = ["EventListParams", "CreatedAt", "Category"]
+__all__ = ["EventListParams", "Category", "CreatedAt"]
 
 
-class CreatedAt(TypedDict, total=False):
-    after: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
-    """
-    Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-    timestamp.
-    """
+class EventListParams(TypedDict, total=False):
+    associated_object_id: str
+    """Filter Events to those belonging to the object with the provided identifier."""
 
-    before: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
-    """
-    Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-    timestamp.
-    """
+    category: Category
 
-    on_or_after: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
-    """
-    Return results on or after this
-    [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-    """
+    created_at: CreatedAt
 
-    on_or_before: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
-    """
-    Return results on or before this
-    [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+    cursor: str
+    """Return the page of entries after this one."""
+
+    limit: int
+    """Limit the size of the list that is returned.
+
+    The default (and maximum) is 100 objects.
     """
 
 
@@ -103,19 +95,27 @@ class Category(_CategoryReservedKeywords, total=False):
     pass
 
 
-class EventListParams(TypedDict, total=False):
-    associated_object_id: str
-    """Filter Events to those belonging to the object with the provided identifier."""
+class CreatedAt(TypedDict, total=False):
+    after: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
+    """
+    Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+    timestamp.
+    """
 
-    category: Category
+    before: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
+    """
+    Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+    timestamp.
+    """
 
-    created_at: CreatedAt
+    on_or_after: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
+    """
+    Return results on or after this
+    [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+    """
 
-    cursor: str
-    """Return the page of entries after this one."""
-
-    limit: int
-    """Limit the size of the list that is returned.
-
-    The default (and maximum) is 100 objects.
+    on_or_before: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
+    """
+    Return results on or before this
+    [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
     """

@@ -85,14 +85,14 @@ class Entities(SyncAPIResource):
             "/entities",
             body=maybe_transform(
                 {
+                    "relationship": relationship,
                     "structure": structure,
                     "corporation": corporation,
-                    "natural_person": natural_person,
-                    "joint": joint,
-                    "trust": trust,
                     "description": description,
-                    "relationship": relationship,
+                    "joint": joint,
+                    "natural_person": natural_person,
                     "supplemental_documents": supplemental_documents,
+                    "trust": trust,
                 },
                 entity_create_params.EntityCreateParams,
             ),
@@ -117,7 +117,20 @@ class Entities(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> Entity:
-        """Retrieve an Entity"""
+        """
+        Retrieve an Entity
+
+        Args:
+          entity_id: The identifier of the Entity to retrieve.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return self._get(
             f"/entities/{entity_id}",
             options=make_request_options(
@@ -166,9 +179,9 @@ class Entities(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "created_at": created_at,
                         "cursor": cursor,
                         "limit": limit,
-                        "created_at": created_at,
                     },
                     entity_list_params.EntityListParams,
                 ),
@@ -243,14 +256,14 @@ class AsyncEntities(AsyncAPIResource):
             "/entities",
             body=maybe_transform(
                 {
+                    "relationship": relationship,
                     "structure": structure,
                     "corporation": corporation,
-                    "natural_person": natural_person,
-                    "joint": joint,
-                    "trust": trust,
                     "description": description,
-                    "relationship": relationship,
+                    "joint": joint,
+                    "natural_person": natural_person,
                     "supplemental_documents": supplemental_documents,
+                    "trust": trust,
                 },
                 entity_create_params.EntityCreateParams,
             ),
@@ -275,7 +288,20 @@ class AsyncEntities(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> Entity:
-        """Retrieve an Entity"""
+        """
+        Retrieve an Entity
+
+        Args:
+          entity_id: The identifier of the Entity to retrieve.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return await self._get(
             f"/entities/{entity_id}",
             options=make_request_options(
@@ -324,9 +350,9 @@ class AsyncEntities(AsyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "created_at": created_at,
                         "cursor": cursor,
                         "limit": limit,
-                        "created_at": created_at,
                     },
                     entity_list_params.EntityListParams,
                 ),

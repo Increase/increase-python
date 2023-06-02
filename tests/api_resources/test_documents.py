@@ -36,9 +36,6 @@ class TestDocuments:
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
         document = client.documents.list(
-            cursor="string",
-            limit=0,
-            entity_id="string",
             category={
                 "in": ["account_opening_disclosures", "account_opening_disclosures", "account_opening_disclosures"]
             },
@@ -48,6 +45,9 @@ class TestDocuments:
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
+            cursor="string",
+            entity_id="string",
+            limit=0,
         )
         assert_matches_type(SyncPage[Document], document, path=["response"])
 
@@ -72,9 +72,6 @@ class TestAsyncDocuments:
     @parametrize
     async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
         document = await client.documents.list(
-            cursor="string",
-            limit=0,
-            entity_id="string",
             category={
                 "in": ["account_opening_disclosures", "account_opening_disclosures", "account_opening_disclosures"]
             },
@@ -84,5 +81,8 @@ class TestAsyncDocuments:
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
+            cursor="string",
+            entity_id="string",
+            limit=0,
         )
         assert_matches_type(AsyncPage[Document], document, path=["response"])

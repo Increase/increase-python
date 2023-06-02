@@ -36,9 +36,9 @@ class TestAccountStatements:
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
         account_statement = client.account_statements.list(
+            account_id="string",
             cursor="string",
             limit=0,
-            account_id="string",
             statement_period_start={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -69,9 +69,9 @@ class TestAsyncAccountStatements:
     @parametrize
     async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
         account_statement = await client.account_statements.list(
+            account_id="string",
             cursor="string",
             limit=0,
-            account_id="string",
             statement_period_start={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),

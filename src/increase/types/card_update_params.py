@@ -7,6 +7,24 @@ from typing_extensions import Literal, Required, TypedDict
 __all__ = ["CardUpdateParams", "BillingAddress", "DigitalWallet"]
 
 
+class CardUpdateParams(TypedDict, total=False):
+    billing_address: BillingAddress
+    """The card's updated billing address."""
+
+    description: str
+    """The description you choose to give the card."""
+
+    digital_wallet: DigitalWallet
+    """
+    The contact information used in the two-factor steps for digital wallet card
+    creation. At least one field must be present to complete the digital wallet
+    steps.
+    """
+
+    status: Literal["active", "disabled", "canceled"]
+    """The status to update the Card with."""
+
+
 class BillingAddress(TypedDict, total=False):
     city: Required[str]
     """The city of the billing address."""
@@ -42,21 +60,3 @@ class DigitalWallet(TypedDict, total=False):
     A phone number that can be used to verify the cardholder via one-time passcode
     over SMS.
     """
-
-
-class CardUpdateParams(TypedDict, total=False):
-    billing_address: BillingAddress
-    """The card's updated billing address."""
-
-    description: str
-    """The description you choose to give the card."""
-
-    digital_wallet: DigitalWallet
-    """
-    The contact information used in the two-factor steps for digital wallet card
-    creation. At least one field must be present to complete the digital wallet
-    steps.
-    """
-
-    status: Literal["active", "disabled", "canceled"]
-    """The status to update the Card with."""

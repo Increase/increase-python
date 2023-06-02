@@ -24,7 +24,20 @@ class Events(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> Event:
-        """Retrieve an Event"""
+        """
+        Retrieve an Event
+
+        Args:
+          event_id: The identifier of the Event.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return self._get(
             f"/events/{event_id}",
             options=make_request_options(
@@ -77,11 +90,11 @@ class Events(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "associated_object_id": associated_object_id,
+                        "category": category,
+                        "created_at": created_at,
                         "cursor": cursor,
                         "limit": limit,
-                        "associated_object_id": associated_object_id,
-                        "created_at": created_at,
-                        "category": category,
                     },
                     event_list_params.EventListParams,
                 ),
@@ -102,7 +115,20 @@ class AsyncEvents(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> Event:
-        """Retrieve an Event"""
+        """
+        Retrieve an Event
+
+        Args:
+          event_id: The identifier of the Event.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return await self._get(
             f"/events/{event_id}",
             options=make_request_options(
@@ -155,11 +181,11 @@ class AsyncEvents(AsyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "associated_object_id": associated_object_id,
+                        "category": category,
+                        "created_at": created_at,
                         "cursor": cursor,
                         "limit": limit,
-                        "associated_object_id": associated_object_id,
-                        "created_at": created_at,
-                        "category": category,
                     },
                     event_list_params.EventListParams,
                 ),

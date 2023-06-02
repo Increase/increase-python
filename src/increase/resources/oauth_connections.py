@@ -24,7 +24,20 @@ class OauthConnections(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> OauthConnection:
-        """Retrieve an OAuth Connection"""
+        """
+        Retrieve an OAuth Connection
+
+        Args:
+          oauth_connection_id: The identifier of the OAuth Connection.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return self._get(
             f"/oauth_connections/{oauth_connection_id}",
             options=make_request_options(
@@ -94,7 +107,20 @@ class AsyncOauthConnections(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> OauthConnection:
-        """Retrieve an OAuth Connection"""
+        """
+        Retrieve an OAuth Connection
+
+        Args:
+          oauth_connection_id: The identifier of the OAuth Connection.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return await self._get(
             f"/oauth_connections/{oauth_connection_id}",
             options=make_request_options(

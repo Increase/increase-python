@@ -11,6 +11,22 @@ from .._utils import PropertyInfo
 __all__ = ["AccountStatementListParams", "StatementPeriodStart"]
 
 
+class AccountStatementListParams(TypedDict, total=False):
+    account_id: str
+    """Filter Account Statements to those belonging to the specified Account."""
+
+    cursor: str
+    """Return the page of entries after this one."""
+
+    limit: int
+    """Limit the size of the list that is returned.
+
+    The default (and maximum) is 100 objects.
+    """
+
+    statement_period_start: StatementPeriodStart
+
+
 class StatementPeriodStart(TypedDict, total=False):
     after: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
     """
@@ -35,19 +51,3 @@ class StatementPeriodStart(TypedDict, total=False):
     Return results on or before this
     [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
     """
-
-
-class AccountStatementListParams(TypedDict, total=False):
-    account_id: str
-    """Filter Account Statements to those belonging to the specified Account."""
-
-    cursor: str
-    """Return the page of entries after this one."""
-
-    limit: int
-    """Limit the size of the list that is returned.
-
-    The default (and maximum) is 100 objects.
-    """
-
-    statement_period_start: StatementPeriodStart

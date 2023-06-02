@@ -62,10 +62,10 @@ class Accounts(SyncAPIResource):
             "/accounts",
             body=maybe_transform(
                 {
-                    "entity_id": entity_id,
-                    "program_id": program_id,
-                    "informational_entity_id": informational_entity_id,
                     "name": name,
+                    "entity_id": entity_id,
+                    "informational_entity_id": informational_entity_id,
+                    "program_id": program_id,
                 },
                 account_create_params.AccountCreateParams,
             ),
@@ -90,7 +90,20 @@ class Accounts(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> Account:
-        """Retrieve an Account"""
+        """
+        Retrieve an Account
+
+        Args:
+          account_id: The identifier of the Account to retrieve.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return self._get(
             f"/accounts/{account_id}",
             options=make_request_options(
@@ -116,6 +129,8 @@ class Accounts(SyncAPIResource):
         Update an Account
 
         Args:
+          account_id: The identifier of the Account to update.
+
           name: The new name of the Account.
 
           extra_headers: Send extra headers
@@ -187,11 +202,11 @@ class Accounts(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "cursor": cursor,
-                        "limit": limit,
-                        "entity_id": entity_id,
-                        "status": status,
                         "created_at": created_at,
+                        "cursor": cursor,
+                        "entity_id": entity_id,
+                        "limit": limit,
+                        "status": status,
                     },
                     account_list_params.AccountListParams,
                 ),
@@ -211,7 +226,22 @@ class Accounts(SyncAPIResource):
         timeout: float | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Account:
-        """Close an Account"""
+        """
+        Close an Account
+
+        Args:
+          account_id: The identifier of the Account to close.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
         return self._post(
             f"/accounts/{account_id}/close",
             options=make_request_options(
@@ -268,10 +298,10 @@ class AsyncAccounts(AsyncAPIResource):
             "/accounts",
             body=maybe_transform(
                 {
-                    "entity_id": entity_id,
-                    "program_id": program_id,
-                    "informational_entity_id": informational_entity_id,
                     "name": name,
+                    "entity_id": entity_id,
+                    "informational_entity_id": informational_entity_id,
+                    "program_id": program_id,
                 },
                 account_create_params.AccountCreateParams,
             ),
@@ -296,7 +326,20 @@ class AsyncAccounts(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> Account:
-        """Retrieve an Account"""
+        """
+        Retrieve an Account
+
+        Args:
+          account_id: The identifier of the Account to retrieve.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return await self._get(
             f"/accounts/{account_id}",
             options=make_request_options(
@@ -322,6 +365,8 @@ class AsyncAccounts(AsyncAPIResource):
         Update an Account
 
         Args:
+          account_id: The identifier of the Account to update.
+
           name: The new name of the Account.
 
           extra_headers: Send extra headers
@@ -393,11 +438,11 @@ class AsyncAccounts(AsyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "cursor": cursor,
-                        "limit": limit,
-                        "entity_id": entity_id,
-                        "status": status,
                         "created_at": created_at,
+                        "cursor": cursor,
+                        "entity_id": entity_id,
+                        "limit": limit,
+                        "status": status,
                     },
                     account_list_params.AccountListParams,
                 ),
@@ -417,7 +462,22 @@ class AsyncAccounts(AsyncAPIResource):
         timeout: float | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Account:
-        """Close an Account"""
+        """
+        Close an Account
+
+        Args:
+          account_id: The identifier of the Account to close.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
         return await self._post(
             f"/accounts/{account_id}/close",
             options=make_request_options(

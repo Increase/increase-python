@@ -23,19 +23,19 @@ class TestExternalAccounts:
     @parametrize
     def test_method_create(self, client: Increase) -> None:
         external_account = client.external_accounts.create(
-            routing_number="xxxxxxxxx",
             account_number="x",
             description="x",
+            routing_number="xxxxxxxxx",
         )
         assert_matches_type(ExternalAccount, external_account, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: Increase) -> None:
         external_account = client.external_accounts.create(
-            routing_number="xxxxxxxxx",
             account_number="x",
-            funding="checking",
             description="x",
+            routing_number="xxxxxxxxx",
+            funding="checking",
         )
         assert_matches_type(ExternalAccount, external_account, path=["response"])
 
@@ -85,19 +85,19 @@ class TestAsyncExternalAccounts:
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
         external_account = await client.external_accounts.create(
-            routing_number="xxxxxxxxx",
             account_number="x",
             description="x",
+            routing_number="xxxxxxxxx",
         )
         assert_matches_type(ExternalAccount, external_account, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         external_account = await client.external_accounts.create(
-            routing_number="xxxxxxxxx",
             account_number="x",
-            funding="checking",
             description="x",
+            routing_number="xxxxxxxxx",
+            funding="checking",
         )
         assert_matches_type(ExternalAccount, external_account, path=["response"])
 

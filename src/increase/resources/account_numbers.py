@@ -81,7 +81,20 @@ class AccountNumbers(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> AccountNumber:
-        """Retrieve an Account Number"""
+        """
+        Retrieve an Account Number
+
+        Args:
+          account_number_id: The identifier of the Account Number to retrieve.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return self._get(
             f"/account_numbers/{account_number_id}",
             options=make_request_options(
@@ -108,6 +121,8 @@ class AccountNumbers(SyncAPIResource):
         Update an Account Number
 
         Args:
+          account_number_id: The identifier of the Account Number.
+
           name: The name you choose for the Account Number.
 
           status: This indicates if transfers can be made to the Account Number.
@@ -187,11 +202,11 @@ class AccountNumbers(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "account_id": account_id,
+                        "created_at": created_at,
                         "cursor": cursor,
                         "limit": limit,
                         "status": status,
-                        "account_id": account_id,
-                        "created_at": created_at,
                     },
                     account_number_list_params.AccountNumberListParams,
                 ),
@@ -262,7 +277,20 @@ class AsyncAccountNumbers(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> AccountNumber:
-        """Retrieve an Account Number"""
+        """
+        Retrieve an Account Number
+
+        Args:
+          account_number_id: The identifier of the Account Number to retrieve.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return await self._get(
             f"/account_numbers/{account_number_id}",
             options=make_request_options(
@@ -289,6 +317,8 @@ class AsyncAccountNumbers(AsyncAPIResource):
         Update an Account Number
 
         Args:
+          account_number_id: The identifier of the Account Number.
+
           name: The name you choose for the Account Number.
 
           status: This indicates if transfers can be made to the Account Number.
@@ -368,11 +398,11 @@ class AsyncAccountNumbers(AsyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "account_id": account_id,
+                        "created_at": created_at,
                         "cursor": cursor,
                         "limit": limit,
                         "status": status,
-                        "account_id": account_id,
-                        "created_at": created_at,
                     },
                     account_number_list_params.AccountNumberListParams,
                 ),

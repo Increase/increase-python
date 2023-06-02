@@ -30,6 +30,8 @@ class SupplementalDocuments(SyncAPIResource):
         Create a supplemental document for an Entity
 
         Args:
+          entity_id: The identifier of the Entity to retrieve.
+
           file_id: The identifier of the File containing the document.
 
           extra_headers: Send extra headers
@@ -76,6 +78,8 @@ class AsyncSupplementalDocuments(AsyncAPIResource):
         Create a supplemental document for an Entity
 
         Args:
+          entity_id: The identifier of the Entity to retrieve.
+
           file_id: The identifier of the File containing the document.
 
           extra_headers: Send extra headers

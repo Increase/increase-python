@@ -27,6 +27,19 @@ class CheckDeposits(SyncAPIResource):
         Simulates the rejection of a [Check Deposit](#check-deposits) by Increase due to
         factors like poor image quality. This Check Deposit must first have a `status`
         of `pending`.
+
+        Args:
+          check_deposit_id: The identifier of the Check Deposit you wish to reject.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return self._post(
             f"/simulations/check_deposits/{check_deposit_id}/reject",
@@ -56,6 +69,19 @@ class CheckDeposits(SyncAPIResource):
 
         This Check Deposit
         must first have a `status` of `submitted`.
+
+        Args:
+          check_deposit_id: The identifier of the Check Deposit you wish to return.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return self._post(
             f"/simulations/check_deposits/{check_deposit_id}/return",
@@ -84,6 +110,19 @@ class CheckDeposits(SyncAPIResource):
         """
         Simulates the submission of a [Check Deposit](#check-deposits) to the Federal
         Reserve. This Check Deposit must first have a `status` of `pending`.
+
+        Args:
+          check_deposit_id: The identifier of the Check Deposit you wish to submit.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return self._post(
             f"/simulations/check_deposits/{check_deposit_id}/submit",
@@ -115,6 +154,19 @@ class AsyncCheckDeposits(AsyncAPIResource):
         Simulates the rejection of a [Check Deposit](#check-deposits) by Increase due to
         factors like poor image quality. This Check Deposit must first have a `status`
         of `pending`.
+
+        Args:
+          check_deposit_id: The identifier of the Check Deposit you wish to reject.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return await self._post(
             f"/simulations/check_deposits/{check_deposit_id}/reject",
@@ -144,6 +196,19 @@ class AsyncCheckDeposits(AsyncAPIResource):
 
         This Check Deposit
         must first have a `status` of `submitted`.
+
+        Args:
+          check_deposit_id: The identifier of the Check Deposit you wish to return.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return await self._post(
             f"/simulations/check_deposits/{check_deposit_id}/return",
@@ -172,6 +237,19 @@ class AsyncCheckDeposits(AsyncAPIResource):
         """
         Simulates the submission of a [Check Deposit](#check-deposits) to the Federal
         Reserve. This Check Deposit must first have a `status` of `pending`.
+
+        Args:
+          check_deposit_id: The identifier of the Check Deposit you wish to submit.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return await self._post(
             f"/simulations/check_deposits/{check_deposit_id}/submit",

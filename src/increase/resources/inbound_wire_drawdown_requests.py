@@ -27,7 +27,20 @@ class InboundWireDrawdownRequests(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> InboundWireDrawdownRequest:
-        """Retrieve an Inbound Wire Drawdown Request"""
+        """
+        Retrieve an Inbound Wire Drawdown Request
+
+        Args:
+          inbound_wire_drawdown_request_id: The identifier of the Inbound Wire Drawdown Request to retrieve.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return self._get(
             f"/inbound_wire_drawdown_requests/{inbound_wire_drawdown_request_id}",
             options=make_request_options(
@@ -97,7 +110,20 @@ class AsyncInboundWireDrawdownRequests(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> InboundWireDrawdownRequest:
-        """Retrieve an Inbound Wire Drawdown Request"""
+        """
+        Retrieve an Inbound Wire Drawdown Request
+
+        Args:
+          inbound_wire_drawdown_request_id: The identifier of the Inbound Wire Drawdown Request to retrieve.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return await self._get(
             f"/inbound_wire_drawdown_requests/{inbound_wire_drawdown_request_id}",
             options=make_request_options(

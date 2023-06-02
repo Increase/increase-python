@@ -7,26 +7,6 @@ from typing_extensions import Required, TypedDict
 __all__ = ["CheckTransferCreateParams", "ReturnAddress"]
 
 
-class ReturnAddress(TypedDict, total=False):
-    city: Required[str]
-    """The city of the return address."""
-
-    line1: Required[str]
-    """The first line of the return address."""
-
-    name: Required[str]
-    """The name of the return address."""
-
-    state: Required[str]
-    """The US state of the return address."""
-
-    zip: Required[str]
-    """The postal code of the return address."""
-
-    line2: str
-    """The second line of the return address."""
-
-
 class CheckTransferCreateParams(TypedDict, total=False):
     account_id: Required[str]
     """The identifier for the account that will send the transfer."""
@@ -67,3 +47,23 @@ class CheckTransferCreateParams(TypedDict, total=False):
     If omitted this will default to the address of the Entity of the Account used to
     make the Check Transfer.
     """
+
+
+class ReturnAddress(TypedDict, total=False):
+    city: Required[str]
+    """The city of the return address."""
+
+    line1: Required[str]
+    """The first line of the return address."""
+
+    name: Required[str]
+    """The name of the return address."""
+
+    state: Required[str]
+    """The US state of the return address."""
+
+    zip: Required[str]
+    """The postal code of the return address."""
+
+    line2: str
+    """The second line of the return address."""

@@ -8,19 +8,31 @@ from typing_extensions import Literal, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
-__all__ = ["PendingTransactionListParams", "Status", "CreatedAt"]
-
-_StatusReservedKeywords = TypedDict(
-    "_StatusReservedKeywords",
-    {
-        "in": List[Literal["pending", "complete"]],
-    },
-    total=False,
-)
+__all__ = ["PendingTransactionListParams", "CreatedAt", "Status"]
 
 
-class Status(_StatusReservedKeywords, total=False):
-    pass
+class PendingTransactionListParams(TypedDict, total=False):
+    account_id: str
+    """Filter pending transactions to those belonging to the specified Account."""
+
+    created_at: CreatedAt
+
+    cursor: str
+    """Return the page of entries after this one."""
+
+    limit: int
+    """Limit the size of the list that is returned.
+
+    The default (and maximum) is 100 objects.
+    """
+
+    route_id: str
+    """Filter pending transactions to those belonging to the specified Route."""
+
+    source_id: str
+    """Filter pending transactions to those caused by the specified source."""
+
+    status: Status
 
 
 class CreatedAt(TypedDict, total=False):
@@ -49,25 +61,14 @@ class CreatedAt(TypedDict, total=False):
     """
 
 
-class PendingTransactionListParams(TypedDict, total=False):
-    account_id: str
-    """Filter pending transactions to those belonging to the specified Account."""
+_StatusReservedKeywords = TypedDict(
+    "_StatusReservedKeywords",
+    {
+        "in": List[Literal["pending", "complete"]],
+    },
+    total=False,
+)
 
-    created_at: CreatedAt
 
-    cursor: str
-    """Return the page of entries after this one."""
-
-    limit: int
-    """Limit the size of the list that is returned.
-
-    The default (and maximum) is 100 objects.
-    """
-
-    route_id: str
-    """Filter pending transactions to those belonging to the specified Route."""
-
-    source_id: str
-    """Filter pending transactions to those caused by the specified source."""
-
-    status: Status
+class Status(_StatusReservedKeywords, total=False):
+    pass

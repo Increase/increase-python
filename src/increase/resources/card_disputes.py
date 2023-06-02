@@ -75,7 +75,20 @@ class CardDisputes(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> CardDispute:
-        """Retrieve a Card Dispute"""
+        """
+        Retrieve a Card Dispute
+
+        Args:
+          card_dispute_id: The identifier of the Card Dispute.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return self._get(
             f"/card_disputes/{card_dispute_id}",
             options=make_request_options(
@@ -125,9 +138,9 @@ class CardDisputes(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "created_at": created_at,
                         "cursor": cursor,
                         "limit": limit,
-                        "created_at": created_at,
                         "status": status,
                     },
                     card_dispute_list_params.CardDisputeListParams,
@@ -200,7 +213,20 @@ class AsyncCardDisputes(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> CardDispute:
-        """Retrieve a Card Dispute"""
+        """
+        Retrieve a Card Dispute
+
+        Args:
+          card_dispute_id: The identifier of the Card Dispute.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return await self._get(
             f"/card_disputes/{card_dispute_id}",
             options=make_request_options(
@@ -250,9 +276,9 @@ class AsyncCardDisputes(AsyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "created_at": created_at,
                         "cursor": cursor,
                         "limit": limit,
-                        "created_at": created_at,
                         "status": status,
                     },
                     card_dispute_list_params.CardDisputeListParams,

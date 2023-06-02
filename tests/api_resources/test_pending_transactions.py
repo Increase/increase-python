@@ -36,18 +36,18 @@ class TestPendingTransactions:
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
         pending_transaction = client.pending_transactions.list(
-            cursor="string",
-            limit=0,
             account_id="string",
-            route_id="string",
-            source_id="string",
-            status={"in": ["pending", "pending", "pending"]},
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
+            cursor="string",
+            limit=0,
+            route_id="string",
+            source_id="string",
+            status={"in": ["pending", "pending", "pending"]},
         )
         assert_matches_type(SyncPage[PendingTransaction], pending_transaction, path=["response"])
 
@@ -72,17 +72,17 @@ class TestAsyncPendingTransactions:
     @parametrize
     async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
         pending_transaction = await client.pending_transactions.list(
-            cursor="string",
-            limit=0,
             account_id="string",
-            route_id="string",
-            source_id="string",
-            status={"in": ["pending", "pending", "pending"]},
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
+            cursor="string",
+            limit=0,
+            route_id="string",
+            source_id="string",
+            status={"in": ["pending", "pending", "pending"]},
         )
         assert_matches_type(AsyncPage[PendingTransaction], pending_transaction, path=["response"])

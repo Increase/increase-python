@@ -58,9 +58,9 @@ class Limits(SyncAPIResource):
             body=maybe_transform(
                 {
                     "metric": metric,
-                    "interval": interval,
                     "model_id": model_id,
                     "value": value,
+                    "interval": interval,
                 },
                 limit_create_params.LimitCreateParams,
             ),
@@ -85,7 +85,20 @@ class Limits(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> Limit:
-        """Retrieve a Limit"""
+        """
+        Retrieve a Limit
+
+        Args:
+          limit_id: The identifier of the Limit to retrieve.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return self._get(
             f"/limits/{limit_id}",
             options=make_request_options(
@@ -111,6 +124,8 @@ class Limits(SyncAPIResource):
         Update a Limit
 
         Args:
+          limit_id: The limit to update.
+
           status: The status to update the limit with.
 
           extra_headers: Send extra headers
@@ -237,9 +252,9 @@ class AsyncLimits(AsyncAPIResource):
             body=maybe_transform(
                 {
                     "metric": metric,
-                    "interval": interval,
                     "model_id": model_id,
                     "value": value,
+                    "interval": interval,
                 },
                 limit_create_params.LimitCreateParams,
             ),
@@ -264,7 +279,20 @@ class AsyncLimits(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> Limit:
-        """Retrieve a Limit"""
+        """
+        Retrieve a Limit
+
+        Args:
+          limit_id: The identifier of the Limit to retrieve.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return await self._get(
             f"/limits/{limit_id}",
             options=make_request_options(
@@ -290,6 +318,8 @@ class AsyncLimits(AsyncAPIResource):
         Update a Limit
 
         Args:
+          limit_id: The limit to update.
+
           status: The status to update the limit with.
 
           extra_headers: Send extra headers

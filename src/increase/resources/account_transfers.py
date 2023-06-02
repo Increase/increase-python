@@ -91,7 +91,20 @@ class AccountTransfers(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> AccountTransfer:
-        """Retrieve an Account Transfer"""
+        """
+        Retrieve an Account Transfer
+
+        Args:
+          account_transfer_id: The identifier of the Account Transfer.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return self._get(
             f"/account_transfers/{account_transfer_id}",
             options=make_request_options(
@@ -143,10 +156,10 @@ class AccountTransfers(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "cursor": cursor,
-                        "limit": limit,
                         "account_id": account_id,
                         "created_at": created_at,
+                        "cursor": cursor,
+                        "limit": limit,
                     },
                     account_transfer_list_params.AccountTransferListParams,
                 ),
@@ -166,7 +179,22 @@ class AccountTransfers(SyncAPIResource):
         timeout: float | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> AccountTransfer:
-        """Approve an Account Transfer"""
+        """
+        Approve an Account Transfer
+
+        Args:
+          account_transfer_id: The identifier of the Account Transfer to approve.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
         return self._post(
             f"/account_transfers/{account_transfer_id}/approve",
             options=make_request_options(
@@ -191,7 +219,22 @@ class AccountTransfers(SyncAPIResource):
         timeout: float | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> AccountTransfer:
-        """Cancel an Account Transfer"""
+        """
+        Cancel an Account Transfer
+
+        Args:
+          account_transfer_id: The identifier of the pending Account Transfer to cancel.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
         return self._post(
             f"/account_transfers/{account_transfer_id}/cancel",
             options=make_request_options(
@@ -280,7 +323,20 @@ class AsyncAccountTransfers(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> AccountTransfer:
-        """Retrieve an Account Transfer"""
+        """
+        Retrieve an Account Transfer
+
+        Args:
+          account_transfer_id: The identifier of the Account Transfer.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return await self._get(
             f"/account_transfers/{account_transfer_id}",
             options=make_request_options(
@@ -332,10 +388,10 @@ class AsyncAccountTransfers(AsyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "cursor": cursor,
-                        "limit": limit,
                         "account_id": account_id,
                         "created_at": created_at,
+                        "cursor": cursor,
+                        "limit": limit,
                     },
                     account_transfer_list_params.AccountTransferListParams,
                 ),
@@ -355,7 +411,22 @@ class AsyncAccountTransfers(AsyncAPIResource):
         timeout: float | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> AccountTransfer:
-        """Approve an Account Transfer"""
+        """
+        Approve an Account Transfer
+
+        Args:
+          account_transfer_id: The identifier of the Account Transfer to approve.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
         return await self._post(
             f"/account_transfers/{account_transfer_id}/approve",
             options=make_request_options(
@@ -380,7 +451,22 @@ class AsyncAccountTransfers(AsyncAPIResource):
         timeout: float | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> AccountTransfer:
-        """Cancel an Account Transfer"""
+        """
+        Cancel an Account Transfer
+
+        Args:
+          account_transfer_id: The identifier of the pending Account Transfer to cancel.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
         return await self._post(
             f"/account_transfers/{account_transfer_id}/cancel",
             options=make_request_options(

@@ -30,9 +30,9 @@ class TestRoutingNumbers:
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
         routing_number = client.routing_numbers.list(
+            routing_number="xxxxxxxxx",
             cursor="string",
             limit=0,
-            routing_number="xxxxxxxxx",
         )
         assert_matches_type(SyncPage[RoutingNumber], routing_number, path=["response"])
 
@@ -52,8 +52,8 @@ class TestAsyncRoutingNumbers:
     @parametrize
     async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
         routing_number = await client.routing_numbers.list(
+            routing_number="xxxxxxxxx",
             cursor="string",
             limit=0,
-            routing_number="xxxxxxxxx",
         )
         assert_matches_type(AsyncPage[RoutingNumber], routing_number, path=["response"])

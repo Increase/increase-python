@@ -7,6 +7,26 @@ from typing_extensions import Required, TypedDict
 __all__ = ["CardCreateParams", "BillingAddress", "DigitalWallet"]
 
 
+class CardCreateParams(TypedDict, total=False):
+    account_id: Required[str]
+    """The Account the card should belong to."""
+
+    billing_address: BillingAddress
+    """The card's billing address."""
+
+    description: str
+    """The description you choose to give the card."""
+
+    digital_wallet: DigitalWallet
+    """
+    The contact information used in the two-factor steps for digital wallet card
+    creation. To add the card to a digital wallet, you may supply an email or phone
+    number with this request. Otherwise, subscribe and then action a Real Time
+    Decision with the category `digital_wallet_token_requested` or
+    `digital_wallet_authentication_requested`.
+    """
+
+
 class BillingAddress(TypedDict, total=False):
     city: Required[str]
     """The city of the billing address."""
@@ -41,24 +61,4 @@ class DigitalWallet(TypedDict, total=False):
     """
     A phone number that can be used to verify the cardholder via one-time passcode
     over SMS.
-    """
-
-
-class CardCreateParams(TypedDict, total=False):
-    account_id: Required[str]
-    """The Account the card should belong to."""
-
-    billing_address: BillingAddress
-    """The card's billing address."""
-
-    description: str
-    """The description you choose to give the card."""
-
-    digital_wallet: DigitalWallet
-    """
-    The contact information used in the two-factor steps for digital wallet card
-    creation. To add the card to a digital wallet, you may supply an email or phone
-    number with this request. Otherwise, subscribe and then action a Real Time
-    Decision with the category `digital_wallet_token_requested` or
-    `digital_wallet_authentication_requested`.
     """

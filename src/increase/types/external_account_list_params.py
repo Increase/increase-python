@@ -7,18 +7,6 @@ from typing_extensions import Literal, TypedDict
 
 __all__ = ["ExternalAccountListParams", "Status"]
 
-_StatusReservedKeywords = TypedDict(
-    "_StatusReservedKeywords",
-    {
-        "in": List[Literal["active", "archived"]],
-    },
-    total=False,
-)
-
-
-class Status(_StatusReservedKeywords, total=False):
-    pass
-
 
 class ExternalAccountListParams(TypedDict, total=False):
     cursor: str
@@ -31,3 +19,16 @@ class ExternalAccountListParams(TypedDict, total=False):
     """
 
     status: Status
+
+
+_StatusReservedKeywords = TypedDict(
+    "_StatusReservedKeywords",
+    {
+        "in": List[Literal["active", "archived"]],
+    },
+    total=False,
+)
+
+
+class Status(_StatusReservedKeywords, total=False):
+    pass

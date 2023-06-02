@@ -7,6 +7,18 @@ from typing_extensions import Required, TypedDict
 __all__ = ["CardProfileCreateParams", "DigitalWallets", "DigitalWalletsTextColor"]
 
 
+class CardProfileCreateParams(TypedDict, total=False):
+    description: Required[str]
+    """A description you can use to identify the Card Profile."""
+
+    digital_wallets: Required[DigitalWallets]
+    """How Cards should appear in digital wallets such as Apple Pay.
+
+    Different wallets will use these values to render card artwork appropriately for
+    their app.
+    """
+
+
 class DigitalWalletsTextColor(TypedDict, total=False):
     blue: Required[int]
     """The value of the blue channel in the RGB color."""
@@ -42,15 +54,3 @@ class DigitalWallets(TypedDict, total=False):
 
     text_color: DigitalWalletsTextColor
     """The Card's text color, specified as an RGB triple. The default is white."""
-
-
-class CardProfileCreateParams(TypedDict, total=False):
-    description: Required[str]
-    """A description you can use to identify the Card Profile."""
-
-    digital_wallets: Required[DigitalWallets]
-    """How Cards should appear in digital wallets such as Apple Pay.
-
-    Different wallets will use these values to render card artwork appropriately for
-    their app.
-    """

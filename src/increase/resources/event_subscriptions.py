@@ -113,8 +113,8 @@ class EventSubscriptions(SyncAPIResource):
             body=maybe_transform(
                 {
                     "url": url,
-                    "shared_secret": shared_secret,
                     "selected_event_category": selected_event_category,
+                    "shared_secret": shared_secret,
                 },
                 event_subscription_create_params.EventSubscriptionCreateParams,
             ),
@@ -139,7 +139,20 @@ class EventSubscriptions(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> EventSubscription:
-        """Retrieve an Event Subscription"""
+        """
+        Retrieve an Event Subscription
+
+        Args:
+          event_subscription_id: The identifier of the Event Subscription.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return self._get(
             f"/event_subscriptions/{event_subscription_id}",
             options=make_request_options(
@@ -165,6 +178,8 @@ class EventSubscriptions(SyncAPIResource):
         Update an Event Subscription
 
         Args:
+          event_subscription_id: The identifier of the Event Subscription.
+
           status: The status to update the Event Subscription with.
 
           extra_headers: Send extra headers
@@ -333,8 +348,8 @@ class AsyncEventSubscriptions(AsyncAPIResource):
             body=maybe_transform(
                 {
                     "url": url,
-                    "shared_secret": shared_secret,
                     "selected_event_category": selected_event_category,
+                    "shared_secret": shared_secret,
                 },
                 event_subscription_create_params.EventSubscriptionCreateParams,
             ),
@@ -359,7 +374,20 @@ class AsyncEventSubscriptions(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> EventSubscription:
-        """Retrieve an Event Subscription"""
+        """
+        Retrieve an Event Subscription
+
+        Args:
+          event_subscription_id: The identifier of the Event Subscription.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return await self._get(
             f"/event_subscriptions/{event_subscription_id}",
             options=make_request_options(
@@ -385,6 +413,8 @@ class AsyncEventSubscriptions(AsyncAPIResource):
         Update an Event Subscription
 
         Args:
+          event_subscription_id: The identifier of the Event Subscription.
+
           status: The status to update the Event Subscription with.
 
           extra_headers: Send extra headers
