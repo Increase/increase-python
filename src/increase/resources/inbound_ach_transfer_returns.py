@@ -65,8 +65,8 @@ class InboundACHTransferReturns(SyncAPIResource):
             "/inbound_ach_transfer_returns",
             body=maybe_transform(
                 {
-                    "transaction_id": transaction_id,
                     "reason": reason,
+                    "transaction_id": transaction_id,
                 },
                 inbound_ach_transfer_return_create_params.InboundACHTransferReturnCreateParams,
             ),
@@ -91,7 +91,20 @@ class InboundACHTransferReturns(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> InboundACHTransferReturn:
-        """Retrieve an Inbound ACH Transfer Return"""
+        """
+        Retrieve an Inbound ACH Transfer Return
+
+        Args:
+          inbound_ach_transfer_return_id: The identifier of the Inbound ACH Transfer Return to retrieve.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return self._get(
             f"/inbound_ach_transfer_returns/{inbound_ach_transfer_return_id}",
             options=make_request_options(
@@ -196,8 +209,8 @@ class AsyncInboundACHTransferReturns(AsyncAPIResource):
             "/inbound_ach_transfer_returns",
             body=maybe_transform(
                 {
-                    "transaction_id": transaction_id,
                     "reason": reason,
+                    "transaction_id": transaction_id,
                 },
                 inbound_ach_transfer_return_create_params.InboundACHTransferReturnCreateParams,
             ),
@@ -222,7 +235,20 @@ class AsyncInboundACHTransferReturns(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> InboundACHTransferReturn:
-        """Retrieve an Inbound ACH Transfer Return"""
+        """
+        Retrieve an Inbound ACH Transfer Return
+
+        Args:
+          inbound_ach_transfer_return_id: The identifier of the Inbound ACH Transfer Return to retrieve.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return await self._get(
             f"/inbound_ach_transfer_returns/{inbound_ach_transfer_return_id}",
             options=make_request_options(

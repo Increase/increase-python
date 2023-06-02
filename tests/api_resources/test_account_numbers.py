@@ -60,9 +60,6 @@ class TestAccountNumbers:
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
         account_number = client.account_numbers.list(
-            cursor="string",
-            limit=0,
-            status="active",
             account_id="string",
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -70,6 +67,9 @@ class TestAccountNumbers:
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
+            cursor="string",
+            limit=0,
+            status="active",
         )
         assert_matches_type(SyncPage[AccountNumber], account_number, path=["response"])
 
@@ -118,9 +118,6 @@ class TestAsyncAccountNumbers:
     @parametrize
     async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
         account_number = await client.account_numbers.list(
-            cursor="string",
-            limit=0,
-            status="active",
             account_id="string",
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -128,5 +125,8 @@ class TestAsyncAccountNumbers:
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
+            cursor="string",
+            limit=0,
+            status="active",
         )
         assert_matches_type(AsyncPage[AccountNumber], account_number, path=["response"])

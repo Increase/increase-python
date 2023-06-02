@@ -23,8 +23,8 @@ class TestInboundACHTransferReturns:
     @parametrize
     def test_method_create(self, client: Increase) -> None:
         inbound_ach_transfer_return = client.inbound_ach_transfer_returns.create(
-            transaction_id="string",
             reason="authorization_revoked_by_customer",
+            transaction_id="string",
         )
         assert_matches_type(InboundACHTransferReturn, inbound_ach_transfer_return, path=["response"])
 
@@ -57,8 +57,8 @@ class TestAsyncInboundACHTransferReturns:
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
         inbound_ach_transfer_return = await client.inbound_ach_transfer_returns.create(
-            transaction_id="string",
             reason="authorization_revoked_by_customer",
+            transaction_id="string",
         )
         assert_matches_type(InboundACHTransferReturn, inbound_ach_transfer_return, path=["response"])
 

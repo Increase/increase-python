@@ -7,6 +7,11 @@ from typing_extensions import Literal, Required, TypedDict
 __all__ = ["RealTimePaymentsTransferCompleteParams", "Rejection"]
 
 
+class RealTimePaymentsTransferCompleteParams(TypedDict, total=False):
+    rejection: Rejection
+    """If set, the simulation will reject the transfer."""
+
+
 class Rejection(TypedDict, total=False):
     reject_reason_code: Required[
         Literal[
@@ -34,8 +39,3 @@ class Rejection(TypedDict, total=False):
         ]
     ]
     """The reason code that the simulated rejection will have."""
-
-
-class RealTimePaymentsTransferCompleteParams(TypedDict, total=False):
-    rejection: Rejection
-    """If set, the simulation will reject the transfer."""

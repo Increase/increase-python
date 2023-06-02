@@ -28,6 +28,19 @@ class AccountTransfers(SyncAPIResource):
         endpoint simulates the approval of an [Account Transfer](#account-transfers).
         You can also approve sandbox Account Transfers in the dashboard. This transfer
         must first have a `status` of `pending_approval`.
+
+        Args:
+          account_transfer_id: The identifier of the Account Transfer you wish to complete.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return self._post(
             f"/simulations/account_transfers/{account_transfer_id}/complete",
@@ -60,6 +73,19 @@ class AsyncAccountTransfers(AsyncAPIResource):
         endpoint simulates the approval of an [Account Transfer](#account-transfers).
         You can also approve sandbox Account Transfers in the dashboard. This transfer
         must first have a `status` of `pending_approval`.
+
+        Args:
+          account_transfer_id: The identifier of the Account Transfer you wish to complete.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return await self._post(
             f"/simulations/account_transfers/{account_transfer_id}/complete",

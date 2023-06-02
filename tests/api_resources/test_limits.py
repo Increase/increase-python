@@ -33,9 +33,9 @@ class TestLimits:
     def test_method_create_with_all_params(self, client: Increase) -> None:
         limit = client.limits.create(
             metric="count",
-            interval="transaction",
             model_id="x",
             value=0,
+            interval="transaction",
         )
         assert_matches_type(Limit, limit, path=["response"])
 
@@ -88,9 +88,9 @@ class TestAsyncLimits:
     async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         limit = await client.limits.create(
             metric="count",
-            interval="transaction",
             model_id="x",
             value=0,
+            interval="transaction",
         )
         assert_matches_type(Limit, limit, path=["response"])
 

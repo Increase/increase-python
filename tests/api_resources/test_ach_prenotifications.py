@@ -33,6 +33,7 @@ class TestACHPrenotifications:
     def test_method_create_with_all_params(self, client: Increase) -> None:
         ach_prenotification = client.ach_prenotifications.create(
             account_number="x",
+            routing_number="xxxxxxxxx",
             addendum="x",
             company_descriptive_date="x",
             company_discretionary_data="x",
@@ -42,7 +43,6 @@ class TestACHPrenotifications:
             effective_date=parse_date("2019-12-27"),
             individual_id="x",
             individual_name="x",
-            routing_number="xxxxxxxxx",
             standard_entry_class_code="corporate_credit_or_debit",
         )
         assert_matches_type(ACHPrenotification, ach_prenotification, path=["response"])
@@ -62,14 +62,14 @@ class TestACHPrenotifications:
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
         ach_prenotification = client.ach_prenotifications.list(
-            cursor="string",
-            limit=0,
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
+            cursor="string",
+            limit=0,
         )
         assert_matches_type(SyncPage[ACHPrenotification], ach_prenotification, path=["response"])
 
@@ -91,6 +91,7 @@ class TestAsyncACHPrenotifications:
     async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         ach_prenotification = await client.ach_prenotifications.create(
             account_number="x",
+            routing_number="xxxxxxxxx",
             addendum="x",
             company_descriptive_date="x",
             company_discretionary_data="x",
@@ -100,7 +101,6 @@ class TestAsyncACHPrenotifications:
             effective_date=parse_date("2019-12-27"),
             individual_id="x",
             individual_name="x",
-            routing_number="xxxxxxxxx",
             standard_entry_class_code="corporate_credit_or_debit",
         )
         assert_matches_type(ACHPrenotification, ach_prenotification, path=["response"])
@@ -120,13 +120,13 @@ class TestAsyncACHPrenotifications:
     @parametrize
     async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
         ach_prenotification = await client.ach_prenotifications.list(
-            cursor="string",
-            limit=0,
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
+            cursor="string",
+            limit=0,
         )
         assert_matches_type(AsyncPage[ACHPrenotification], ach_prenotification, path=["response"])

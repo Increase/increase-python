@@ -24,7 +24,20 @@ class DigitalWalletTokens(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> DigitalWalletToken:
-        """Retrieve a Digital Wallet Token"""
+        """
+        Retrieve a Digital Wallet Token
+
+        Args:
+          digital_wallet_token_id: The identifier of the Digital Wallet Token.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return self._get(
             f"/digital_wallet_tokens/{digital_wallet_token_id}",
             options=make_request_options(
@@ -76,10 +89,10 @@ class DigitalWalletTokens(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "cursor": cursor,
-                        "limit": limit,
                         "card_id": card_id,
                         "created_at": created_at,
+                        "cursor": cursor,
+                        "limit": limit,
                     },
                     digital_wallet_token_list_params.DigitalWalletTokenListParams,
                 ),
@@ -100,7 +113,20 @@ class AsyncDigitalWalletTokens(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> DigitalWalletToken:
-        """Retrieve a Digital Wallet Token"""
+        """
+        Retrieve a Digital Wallet Token
+
+        Args:
+          digital_wallet_token_id: The identifier of the Digital Wallet Token.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return await self._get(
             f"/digital_wallet_tokens/{digital_wallet_token_id}",
             options=make_request_options(
@@ -152,10 +178,10 @@ class AsyncDigitalWalletTokens(AsyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "cursor": cursor,
-                        "limit": limit,
                         "card_id": card_id,
                         "created_at": created_at,
+                        "cursor": cursor,
+                        "limit": limit,
                     },
                     digital_wallet_token_list_params.DigitalWalletTokenListParams,
                 ),

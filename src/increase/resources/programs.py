@@ -24,7 +24,20 @@ class Programs(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> Program:
-        """Retrieve a Program"""
+        """
+        Retrieve a Program
+
+        Args:
+          program_id: The identifier of the Program to retrieve.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return self._get(
             f"/programs/{program_id}",
             options=make_request_options(
@@ -94,7 +107,20 @@ class AsyncPrograms(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> Program:
-        """Retrieve a Program"""
+        """
+        Retrieve a Program
+
+        Args:
+          program_id: The identifier of the Program to retrieve.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return await self._get(
             f"/programs/{program_id}",
             options=make_request_options(

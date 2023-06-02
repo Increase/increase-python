@@ -36,6 +36,8 @@ class CardDisputes(SyncAPIResource):
         be actioned one time and must have a status of `pending_reviewing`.
 
         Args:
+          card_dispute_id: The dispute you would like to action.
+
           status: The status to move the dispute to.
 
           explanation: Why the dispute was rejected. Not required for accepting disputes.
@@ -92,6 +94,8 @@ class AsyncCardDisputes(AsyncAPIResource):
         be actioned one time and must have a status of `pending_reviewing`.
 
         Args:
+          card_dispute_id: The dispute you would like to action.
+
           status: The status to move the dispute to.
 
           explanation: Why the dispute was rejected. Not required for accepting disputes.

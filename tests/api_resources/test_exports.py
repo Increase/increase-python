@@ -32,7 +32,7 @@ class TestExports:
     def test_method_create_with_all_params(self, client: Increase) -> None:
         export = client.exports.create(
             category="transaction_csv",
-            transaction_csv={
+            balance_csv={
                 "account_id": "string",
                 "created_at": {
                     "after": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -41,7 +41,7 @@ class TestExports:
                     "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
                 },
             },
-            balance_csv={
+            transaction_csv={
                 "account_id": "string",
                 "created_at": {
                     "after": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -90,7 +90,7 @@ class TestAsyncExports:
     async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         export = await client.exports.create(
             category="transaction_csv",
-            transaction_csv={
+            balance_csv={
                 "account_id": "string",
                 "created_at": {
                     "after": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -99,7 +99,7 @@ class TestAsyncExports:
                     "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
                 },
             },
-            balance_csv={
+            transaction_csv={
                 "account_id": "string",
                 "created_at": {
                     "after": parse_datetime("2019-12-27T18:11:19.117Z"),

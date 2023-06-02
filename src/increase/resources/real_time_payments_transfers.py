@@ -74,13 +74,13 @@ class RealTimePaymentsTransfers(SyncAPIResource):
             "/real_time_payments_transfers",
             body=maybe_transform(
                 {
+                    "amount": amount,
+                    "creditor_name": creditor_name,
+                    "remittance_information": remittance_information,
                     "source_account_number_id": source_account_number_id,
                     "destination_account_number": destination_account_number,
                     "destination_routing_number": destination_routing_number,
                     "external_account_id": external_account_id,
-                    "amount": amount,
-                    "creditor_name": creditor_name,
-                    "remittance_information": remittance_information,
                     "require_approval": require_approval,
                 },
                 real_time_payments_transfer_create_params.RealTimePaymentsTransferCreateParams,
@@ -106,7 +106,20 @@ class RealTimePaymentsTransfers(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> RealTimePaymentsTransfer:
-        """Retrieve a Real Time Payments Transfer"""
+        """
+        Retrieve a Real Time Payments Transfer
+
+        Args:
+          real_time_payments_transfer_id: The identifier of the Real Time Payments Transfer.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return self._get(
             f"/real_time_payments_transfers/{real_time_payments_transfer_id}",
             options=make_request_options(
@@ -162,11 +175,11 @@ class RealTimePaymentsTransfers(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "cursor": cursor,
-                        "limit": limit,
                         "account_id": account_id,
-                        "external_account_id": external_account_id,
                         "created_at": created_at,
+                        "cursor": cursor,
+                        "external_account_id": external_account_id,
+                        "limit": limit,
                     },
                     real_time_payments_transfer_list_params.RealTimePaymentsTransferListParams,
                 ),
@@ -233,13 +246,13 @@ class AsyncRealTimePaymentsTransfers(AsyncAPIResource):
             "/real_time_payments_transfers",
             body=maybe_transform(
                 {
+                    "amount": amount,
+                    "creditor_name": creditor_name,
+                    "remittance_information": remittance_information,
                     "source_account_number_id": source_account_number_id,
                     "destination_account_number": destination_account_number,
                     "destination_routing_number": destination_routing_number,
                     "external_account_id": external_account_id,
-                    "amount": amount,
-                    "creditor_name": creditor_name,
-                    "remittance_information": remittance_information,
                     "require_approval": require_approval,
                 },
                 real_time_payments_transfer_create_params.RealTimePaymentsTransferCreateParams,
@@ -265,7 +278,20 @@ class AsyncRealTimePaymentsTransfers(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> RealTimePaymentsTransfer:
-        """Retrieve a Real Time Payments Transfer"""
+        """
+        Retrieve a Real Time Payments Transfer
+
+        Args:
+          real_time_payments_transfer_id: The identifier of the Real Time Payments Transfer.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return await self._get(
             f"/real_time_payments_transfers/{real_time_payments_transfer_id}",
             options=make_request_options(
@@ -321,11 +347,11 @@ class AsyncRealTimePaymentsTransfers(AsyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "cursor": cursor,
-                        "limit": limit,
                         "account_id": account_id,
-                        "external_account_id": external_account_id,
                         "created_at": created_at,
+                        "cursor": cursor,
+                        "external_account_id": external_account_id,
+                        "limit": limit,
                     },
                     real_time_payments_transfer_list_params.RealTimePaymentsTransferListParams,
                 ),

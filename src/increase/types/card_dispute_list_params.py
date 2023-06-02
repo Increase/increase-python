@@ -11,6 +11,21 @@ from .._utils import PropertyInfo
 __all__ = ["CardDisputeListParams", "CreatedAt", "Status"]
 
 
+class CardDisputeListParams(TypedDict, total=False):
+    created_at: CreatedAt
+
+    cursor: str
+    """Return the page of entries after this one."""
+
+    limit: int
+    """Limit the size of the list that is returned.
+
+    The default (and maximum) is 100 objects.
+    """
+
+    status: Status
+
+
 class CreatedAt(TypedDict, total=False):
     after: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
     """
@@ -48,18 +63,3 @@ _StatusReservedKeywords = TypedDict(
 
 class Status(_StatusReservedKeywords, total=False):
     pass
-
-
-class CardDisputeListParams(TypedDict, total=False):
-    created_at: CreatedAt
-
-    cursor: str
-    """Return the page of entries after this one."""
-
-    limit: int
-    """Limit the size of the list that is returned.
-
-    The default (and maximum) is 100 objects.
-    """
-
-    status: Status

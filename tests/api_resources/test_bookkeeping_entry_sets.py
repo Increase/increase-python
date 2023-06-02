@@ -43,8 +43,6 @@ class TestBookkeepingEntrySets:
     @parametrize
     def test_method_create_with_all_params(self, client: Increase) -> None:
         bookkeeping_entry_set = client.bookkeeping_entry_sets.create(
-            date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            transaction_id="string",
             entries=[
                 {
                     "account_id": "string",
@@ -59,6 +57,8 @@ class TestBookkeepingEntrySets:
                     "amount": 0,
                 },
             ],
+            date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            transaction_id="string",
         )
         assert_matches_type(BookkeepingEntrySet, bookkeeping_entry_set, path=["response"])
 
@@ -91,8 +91,6 @@ class TestAsyncBookkeepingEntrySets:
     @parametrize
     async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         bookkeeping_entry_set = await client.bookkeeping_entry_sets.create(
-            date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            transaction_id="string",
             entries=[
                 {
                     "account_id": "string",
@@ -107,5 +105,7 @@ class TestAsyncBookkeepingEntrySets:
                     "amount": 0,
                 },
             ],
+            date=parse_datetime("2019-12-27T18:11:19.117Z"),
+            transaction_id="string",
         )
         assert_matches_type(BookkeepingEntrySet, bookkeeping_entry_set, path=["response"])

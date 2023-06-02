@@ -24,7 +24,20 @@ class PendingTransactions(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> PendingTransaction:
-        """Retrieve a Pending Transaction"""
+        """
+        Retrieve a Pending Transaction
+
+        Args:
+          pending_transaction_id: The identifier of the Pending Transaction.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return self._get(
             f"/pending_transactions/{pending_transaction_id}",
             options=make_request_options(
@@ -83,13 +96,13 @@ class PendingTransactions(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "account_id": account_id,
+                        "created_at": created_at,
                         "cursor": cursor,
                         "limit": limit,
-                        "account_id": account_id,
                         "route_id": route_id,
                         "source_id": source_id,
                         "status": status,
-                        "created_at": created_at,
                     },
                     pending_transaction_list_params.PendingTransactionListParams,
                 ),
@@ -110,7 +123,20 @@ class AsyncPendingTransactions(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> PendingTransaction:
-        """Retrieve a Pending Transaction"""
+        """
+        Retrieve a Pending Transaction
+
+        Args:
+          pending_transaction_id: The identifier of the Pending Transaction.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return await self._get(
             f"/pending_transactions/{pending_transaction_id}",
             options=make_request_options(
@@ -169,13 +195,13 @@ class AsyncPendingTransactions(AsyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "account_id": account_id,
+                        "created_at": created_at,
                         "cursor": cursor,
                         "limit": limit,
-                        "account_id": account_id,
                         "route_id": route_id,
                         "source_id": source_id,
                         "status": status,
-                        "created_at": created_at,
                     },
                     pending_transaction_list_params.PendingTransactionListParams,
                 ),

@@ -84,17 +84,17 @@ class CheckTransfers(SyncAPIResource):
             body=maybe_transform(
                 {
                     "account_id": account_id,
-                    "address_line1": address_line1,
-                    "address_line2": address_line2,
                     "address_city": address_city,
+                    "address_line1": address_line1,
                     "address_state": address_state,
                     "address_zip": address_zip,
-                    "return_address": return_address,
                     "amount": amount,
                     "message": message,
-                    "note": note,
                     "recipient_name": recipient_name,
+                    "address_line2": address_line2,
+                    "note": note,
                     "require_approval": require_approval,
+                    "return_address": return_address,
                 },
                 check_transfer_create_params.CheckTransferCreateParams,
             ),
@@ -119,7 +119,20 @@ class CheckTransfers(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> CheckTransfer:
-        """Retrieve a Check Transfer"""
+        """
+        Retrieve a Check Transfer
+
+        Args:
+          check_transfer_id: The identifier of the Check Transfer.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return self._get(
             f"/check_transfers/{check_transfer_id}",
             options=make_request_options(
@@ -171,10 +184,10 @@ class CheckTransfers(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "cursor": cursor,
-                        "limit": limit,
                         "account_id": account_id,
                         "created_at": created_at,
+                        "cursor": cursor,
+                        "limit": limit,
                     },
                     check_transfer_list_params.CheckTransferListParams,
                 ),
@@ -194,7 +207,22 @@ class CheckTransfers(SyncAPIResource):
         timeout: float | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> CheckTransfer:
-        """Approve a Check Transfer"""
+        """
+        Approve a Check Transfer
+
+        Args:
+          check_transfer_id: The identifier of the Check Transfer to approve.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
         return self._post(
             f"/check_transfers/{check_transfer_id}/approve",
             options=make_request_options(
@@ -219,7 +247,22 @@ class CheckTransfers(SyncAPIResource):
         timeout: float | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> CheckTransfer:
-        """Cancel a pending Check Transfer"""
+        """
+        Cancel a pending Check Transfer
+
+        Args:
+          check_transfer_id: The identifier of the pending Check Transfer to cancel.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
         return self._post(
             f"/check_transfers/{check_transfer_id}/cancel",
             options=make_request_options(
@@ -244,7 +287,22 @@ class CheckTransfers(SyncAPIResource):
         timeout: float | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> CheckTransfer:
-        """Request a stop payment on a Check Transfer"""
+        """
+        Request a stop payment on a Check Transfer
+
+        Args:
+          check_transfer_id: The identifier of the Check Transfer.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
         return self._post(
             f"/check_transfers/{check_transfer_id}/stop_payment",
             options=make_request_options(
@@ -326,17 +384,17 @@ class AsyncCheckTransfers(AsyncAPIResource):
             body=maybe_transform(
                 {
                     "account_id": account_id,
-                    "address_line1": address_line1,
-                    "address_line2": address_line2,
                     "address_city": address_city,
+                    "address_line1": address_line1,
                     "address_state": address_state,
                     "address_zip": address_zip,
-                    "return_address": return_address,
                     "amount": amount,
                     "message": message,
-                    "note": note,
                     "recipient_name": recipient_name,
+                    "address_line2": address_line2,
+                    "note": note,
                     "require_approval": require_approval,
+                    "return_address": return_address,
                 },
                 check_transfer_create_params.CheckTransferCreateParams,
             ),
@@ -361,7 +419,20 @@ class AsyncCheckTransfers(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> CheckTransfer:
-        """Retrieve a Check Transfer"""
+        """
+        Retrieve a Check Transfer
+
+        Args:
+          check_transfer_id: The identifier of the Check Transfer.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return await self._get(
             f"/check_transfers/{check_transfer_id}",
             options=make_request_options(
@@ -413,10 +484,10 @@ class AsyncCheckTransfers(AsyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "cursor": cursor,
-                        "limit": limit,
                         "account_id": account_id,
                         "created_at": created_at,
+                        "cursor": cursor,
+                        "limit": limit,
                     },
                     check_transfer_list_params.CheckTransferListParams,
                 ),
@@ -436,7 +507,22 @@ class AsyncCheckTransfers(AsyncAPIResource):
         timeout: float | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> CheckTransfer:
-        """Approve a Check Transfer"""
+        """
+        Approve a Check Transfer
+
+        Args:
+          check_transfer_id: The identifier of the Check Transfer to approve.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
         return await self._post(
             f"/check_transfers/{check_transfer_id}/approve",
             options=make_request_options(
@@ -461,7 +547,22 @@ class AsyncCheckTransfers(AsyncAPIResource):
         timeout: float | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> CheckTransfer:
-        """Cancel a pending Check Transfer"""
+        """
+        Cancel a pending Check Transfer
+
+        Args:
+          check_transfer_id: The identifier of the pending Check Transfer to cancel.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
         return await self._post(
             f"/check_transfers/{check_transfer_id}/cancel",
             options=make_request_options(
@@ -486,7 +587,22 @@ class AsyncCheckTransfers(AsyncAPIResource):
         timeout: float | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> CheckTransfer:
-        """Request a stop payment on a Check Transfer"""
+        """
+        Request a stop payment on a Check Transfer
+
+        Args:
+          check_transfer_id: The identifier of the Check Transfer.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
         return await self._post(
             f"/check_transfers/{check_transfer_id}/stop_payment",
             options=make_request_options(

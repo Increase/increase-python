@@ -32,7 +32,6 @@ class TestCards:
     def test_method_create_with_all_params(self, client: Increase) -> None:
         card = client.cards.create(
             account_id="string",
-            description="x",
             billing_address={
                 "line1": "x",
                 "line2": "x",
@@ -40,6 +39,7 @@ class TestCards:
                 "state": "x",
                 "postal_code": "x",
             },
+            description="x",
             digital_wallet={
                 "email": "x",
                 "phone": "x",
@@ -66,8 +66,6 @@ class TestCards:
     def test_method_update_with_all_params(self, client: Increase) -> None:
         card = client.cards.update(
             "string",
-            description="x",
-            status="active",
             billing_address={
                 "line1": "x",
                 "line2": "x",
@@ -75,11 +73,13 @@ class TestCards:
                 "state": "x",
                 "postal_code": "x",
             },
+            description="x",
             digital_wallet={
                 "email": "x",
                 "phone": "x",
                 "card_profile_id": "string",
             },
+            status="active",
         )
         assert_matches_type(Card, card, path=["response"])
 
@@ -91,8 +91,6 @@ class TestCards:
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
         card = client.cards.list(
-            cursor="string",
-            limit=0,
             account_id="string",
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -100,6 +98,8 @@ class TestCards:
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
+            cursor="string",
+            limit=0,
         )
         assert_matches_type(SyncPage[Card], card, path=["response"])
 
@@ -127,7 +127,6 @@ class TestAsyncCards:
     async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         card = await client.cards.create(
             account_id="string",
-            description="x",
             billing_address={
                 "line1": "x",
                 "line2": "x",
@@ -135,6 +134,7 @@ class TestAsyncCards:
                 "state": "x",
                 "postal_code": "x",
             },
+            description="x",
             digital_wallet={
                 "email": "x",
                 "phone": "x",
@@ -161,8 +161,6 @@ class TestAsyncCards:
     async def test_method_update_with_all_params(self, client: AsyncIncrease) -> None:
         card = await client.cards.update(
             "string",
-            description="x",
-            status="active",
             billing_address={
                 "line1": "x",
                 "line2": "x",
@@ -170,11 +168,13 @@ class TestAsyncCards:
                 "state": "x",
                 "postal_code": "x",
             },
+            description="x",
             digital_wallet={
                 "email": "x",
                 "phone": "x",
                 "card_profile_id": "string",
             },
+            status="active",
         )
         assert_matches_type(Card, card, path=["response"])
 
@@ -186,8 +186,6 @@ class TestAsyncCards:
     @parametrize
     async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
         card = await client.cards.list(
-            cursor="string",
-            limit=0,
             account_id="string",
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -195,6 +193,8 @@ class TestAsyncCards:
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
+            cursor="string",
+            limit=0,
         )
         assert_matches_type(AsyncPage[Card], card, path=["response"])
 

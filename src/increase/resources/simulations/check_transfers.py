@@ -31,6 +31,19 @@ class CheckTransfers(SyncAPIResource):
 
         This
         transfer must first have a `status` of `mailed`.
+
+        Args:
+          check_transfer_id: The identifier of the Check Transfer you wish to mark deposited.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return self._post(
             f"/simulations/check_transfers/{check_transfer_id}/deposit",
@@ -60,6 +73,19 @@ class CheckTransfers(SyncAPIResource):
         Simulates the mailing of a [Check Transfer](#check-transfers), which happens
         once per weekday in production but can be sped up in sandbox. This transfer must
         first have a `status` of `pending_approval` or `pending_submission`.
+
+        Args:
+          check_transfer_id: The identifier of the Check Transfer you wish to mail.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return self._post(
             f"/simulations/check_transfers/{check_transfer_id}/mail",
@@ -91,6 +117,8 @@ class CheckTransfers(SyncAPIResource):
         Increase. This transfer must first have a `status` of `mailed`.
 
         Args:
+          check_transfer_id: The identifier of the Check Transfer you wish to mark returned.
+
           reason: The reason why the Check Transfer was returned to Increase.
 
           extra_headers: Send extra headers
@@ -134,6 +162,19 @@ class AsyncCheckTransfers(AsyncAPIResource):
 
         This
         transfer must first have a `status` of `mailed`.
+
+        Args:
+          check_transfer_id: The identifier of the Check Transfer you wish to mark deposited.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return await self._post(
             f"/simulations/check_transfers/{check_transfer_id}/deposit",
@@ -163,6 +204,19 @@ class AsyncCheckTransfers(AsyncAPIResource):
         Simulates the mailing of a [Check Transfer](#check-transfers), which happens
         once per weekday in production but can be sped up in sandbox. This transfer must
         first have a `status` of `pending_approval` or `pending_submission`.
+
+        Args:
+          check_transfer_id: The identifier of the Check Transfer you wish to mail.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
         """
         return await self._post(
             f"/simulations/check_transfers/{check_transfer_id}/mail",
@@ -194,6 +248,8 @@ class AsyncCheckTransfers(AsyncAPIResource):
         Increase. This transfer must first have a `status` of `mailed`.
 
         Args:
+          check_transfer_id: The identifier of the Check Transfer you wish to mark returned.
+
           reason: The reason why the Check Transfer was returned to Increase.
 
           extra_headers: Send extra headers

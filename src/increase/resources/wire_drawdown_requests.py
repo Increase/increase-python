@@ -77,8 +77,8 @@ class WireDrawdownRequests(SyncAPIResource):
                     "amount": amount,
                     "message_to_recipient": message_to_recipient,
                     "recipient_account_number": recipient_account_number,
-                    "recipient_routing_number": recipient_routing_number,
                     "recipient_name": recipient_name,
+                    "recipient_routing_number": recipient_routing_number,
                     "recipient_address_line1": recipient_address_line1,
                     "recipient_address_line2": recipient_address_line2,
                     "recipient_address_line3": recipient_address_line3,
@@ -106,7 +106,20 @@ class WireDrawdownRequests(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> WireDrawdownRequest:
-        """Retrieve a Wire Drawdown Request"""
+        """
+        Retrieve a Wire Drawdown Request
+
+        Args:
+          wire_drawdown_request_id: The identifier of the Wire Drawdown Request to retrieve.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return self._get(
             f"/wire_drawdown_requests/{wire_drawdown_request_id}",
             options=make_request_options(
@@ -225,8 +238,8 @@ class AsyncWireDrawdownRequests(AsyncAPIResource):
                     "amount": amount,
                     "message_to_recipient": message_to_recipient,
                     "recipient_account_number": recipient_account_number,
-                    "recipient_routing_number": recipient_routing_number,
                     "recipient_name": recipient_name,
+                    "recipient_routing_number": recipient_routing_number,
                     "recipient_address_line1": recipient_address_line1,
                     "recipient_address_line2": recipient_address_line2,
                     "recipient_address_line3": recipient_address_line3,
@@ -254,7 +267,20 @@ class AsyncWireDrawdownRequests(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> WireDrawdownRequest:
-        """Retrieve a Wire Drawdown Request"""
+        """
+        Retrieve a Wire Drawdown Request
+
+        Args:
+          wire_drawdown_request_id: The identifier of the Wire Drawdown Request to retrieve.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return await self._get(
             f"/wire_drawdown_requests/{wire_drawdown_request_id}",
             options=make_request_options(

@@ -50,11 +50,11 @@ class TestRealTimePaymentsTransfers:
         real_time_payments_transfer = client.simulations.real_time_payments_transfers.create_inbound(
             account_number_id="string",
             amount=1,
-            request_for_payment_id="string",
-            debtor_name="x",
             debtor_account_number="x",
+            debtor_name="x",
             debtor_routing_number="xxxxxxxxx",
             remittance_information="x",
+            request_for_payment_id="string",
         )
         assert_matches_type(
             InboundRealTimePaymentsTransferSimulationResult, real_time_payments_transfer, path=["response"]
@@ -96,11 +96,11 @@ class TestAsyncRealTimePaymentsTransfers:
         real_time_payments_transfer = await client.simulations.real_time_payments_transfers.create_inbound(
             account_number_id="string",
             amount=1,
-            request_for_payment_id="string",
-            debtor_name="x",
             debtor_account_number="x",
+            debtor_name="x",
             debtor_routing_number="xxxxxxxxx",
             remittance_information="x",
+            request_for_payment_id="string",
         )
         assert_matches_type(
             InboundRealTimePaymentsTransferSimulationResult, real_time_payments_transfer, path=["response"]

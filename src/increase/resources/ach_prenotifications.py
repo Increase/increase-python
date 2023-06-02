@@ -93,6 +93,7 @@ class ACHPrenotifications(SyncAPIResource):
             body=maybe_transform(
                 {
                     "account_number": account_number,
+                    "routing_number": routing_number,
                     "addendum": addendum,
                     "company_descriptive_date": company_descriptive_date,
                     "company_discretionary_data": company_discretionary_data,
@@ -102,7 +103,6 @@ class ACHPrenotifications(SyncAPIResource):
                     "effective_date": effective_date,
                     "individual_id": individual_id,
                     "individual_name": individual_name,
-                    "routing_number": routing_number,
                     "standard_entry_class_code": standard_entry_class_code,
                 },
                 ach_prenotification_create_params.ACHPrenotificationCreateParams,
@@ -128,7 +128,20 @@ class ACHPrenotifications(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> ACHPrenotification:
-        """Retrieve an ACH Prenotification"""
+        """
+        Retrieve an ACH Prenotification
+
+        Args:
+          ach_prenotification_id: The identifier of the ACH Prenotification to retrieve.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return self._get(
             f"/ach_prenotifications/{ach_prenotification_id}",
             options=make_request_options(
@@ -177,9 +190,9 @@ class ACHPrenotifications(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "created_at": created_at,
                         "cursor": cursor,
                         "limit": limit,
-                        "created_at": created_at,
                     },
                     ach_prenotification_list_params.ACHPrenotificationListParams,
                 ),
@@ -261,6 +274,7 @@ class AsyncACHPrenotifications(AsyncAPIResource):
             body=maybe_transform(
                 {
                     "account_number": account_number,
+                    "routing_number": routing_number,
                     "addendum": addendum,
                     "company_descriptive_date": company_descriptive_date,
                     "company_discretionary_data": company_discretionary_data,
@@ -270,7 +284,6 @@ class AsyncACHPrenotifications(AsyncAPIResource):
                     "effective_date": effective_date,
                     "individual_id": individual_id,
                     "individual_name": individual_name,
-                    "routing_number": routing_number,
                     "standard_entry_class_code": standard_entry_class_code,
                 },
                 ach_prenotification_create_params.ACHPrenotificationCreateParams,
@@ -296,7 +309,20 @@ class AsyncACHPrenotifications(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> ACHPrenotification:
-        """Retrieve an ACH Prenotification"""
+        """
+        Retrieve an ACH Prenotification
+
+        Args:
+          ach_prenotification_id: The identifier of the ACH Prenotification to retrieve.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return await self._get(
             f"/ach_prenotifications/{ach_prenotification_id}",
             options=make_request_options(
@@ -345,9 +371,9 @@ class AsyncACHPrenotifications(AsyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "created_at": created_at,
                         "cursor": cursor,
                         "limit": limit,
-                        "created_at": created_at,
                     },
                     ach_prenotification_list_params.ACHPrenotificationListParams,
                 ),

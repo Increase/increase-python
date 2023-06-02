@@ -60,10 +60,10 @@ class BookkeepingAccounts(SyncAPIResource):
             "/bookkeeping_accounts",
             body=maybe_transform(
                 {
+                    "name": name,
+                    "account_id": account_id,
                     "compliance_category": compliance_category,
                     "entity_id": entity_id,
-                    "account_id": account_id,
-                    "name": name,
                 },
                 bookkeeping_account_create_params.BookkeepingAccountCreateParams,
             ),
@@ -168,10 +168,10 @@ class AsyncBookkeepingAccounts(AsyncAPIResource):
             "/bookkeeping_accounts",
             body=maybe_transform(
                 {
+                    "name": name,
+                    "account_id": account_id,
                     "compliance_category": compliance_category,
                     "entity_id": entity_id,
-                    "account_id": account_id,
-                    "name": name,
                 },
                 bookkeeping_account_create_params.BookkeepingAccountCreateParams,
             ),

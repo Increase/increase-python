@@ -28,8 +28,8 @@ class TestWireDrawdownRequests:
             amount=1,
             message_to_recipient="x",
             recipient_account_number="x",
-            recipient_routing_number="x",
             recipient_name="x",
+            recipient_routing_number="x",
         )
         assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
 
@@ -41,8 +41,8 @@ class TestWireDrawdownRequests:
             amount=1,
             message_to_recipient="x",
             recipient_account_number="x",
-            recipient_routing_number="x",
             recipient_name="x",
+            recipient_routing_number="x",
             recipient_address_line1="x",
             recipient_address_line2="x",
             recipient_address_line3="x",
@@ -83,8 +83,8 @@ class TestAsyncWireDrawdownRequests:
             amount=1,
             message_to_recipient="x",
             recipient_account_number="x",
-            recipient_routing_number="x",
             recipient_name="x",
+            recipient_routing_number="x",
         )
         assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
 
@@ -96,8 +96,8 @@ class TestAsyncWireDrawdownRequests:
             amount=1,
             message_to_recipient="x",
             recipient_account_number="x",
-            recipient_routing_number="x",
             recipient_name="x",
+            recipient_routing_number="x",
             recipient_address_line1="x",
             recipient_address_line2="x",
             recipient_address_line3="x",

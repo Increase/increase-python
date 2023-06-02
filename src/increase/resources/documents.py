@@ -24,7 +24,20 @@ class Documents(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> Document:
-        """Retrieve a Document"""
+        """
+        Retrieve a Document
+
+        Args:
+          document_id: The identifier of the Document to retrieve.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return self._get(
             f"/documents/{document_id}",
             options=make_request_options(
@@ -77,11 +90,11 @@ class Documents(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "cursor": cursor,
-                        "limit": limit,
-                        "entity_id": entity_id,
                         "category": category,
                         "created_at": created_at,
+                        "cursor": cursor,
+                        "entity_id": entity_id,
+                        "limit": limit,
                     },
                     document_list_params.DocumentListParams,
                 ),
@@ -102,7 +115,20 @@ class AsyncDocuments(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> Document:
-        """Retrieve a Document"""
+        """
+        Retrieve a Document
+
+        Args:
+          document_id: The identifier of the Document to retrieve.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return await self._get(
             f"/documents/{document_id}",
             options=make_request_options(
@@ -155,11 +181,11 @@ class AsyncDocuments(AsyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "cursor": cursor,
-                        "limit": limit,
-                        "entity_id": entity_id,
                         "category": category,
                         "created_at": created_at,
+                        "cursor": cursor,
+                        "entity_id": entity_id,
+                        "limit": limit,
                     },
                     document_list_params.DocumentListParams,
                 ),

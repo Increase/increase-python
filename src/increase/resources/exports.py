@@ -56,8 +56,8 @@ class Exports(SyncAPIResource):
             body=maybe_transform(
                 {
                     "category": category,
-                    "transaction_csv": transaction_csv,
                     "balance_csv": balance_csv,
+                    "transaction_csv": transaction_csv,
                 },
                 export_create_params.ExportCreateParams,
             ),
@@ -82,7 +82,20 @@ class Exports(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> Export:
-        """Retrieve an Export"""
+        """
+        Retrieve an Export
+
+        Args:
+          export_id: The identifier of the Export to retrieve.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return self._get(
             f"/exports/{export_id}",
             options=make_request_options(
@@ -182,8 +195,8 @@ class AsyncExports(AsyncAPIResource):
             body=maybe_transform(
                 {
                     "category": category,
-                    "transaction_csv": transaction_csv,
                     "balance_csv": balance_csv,
+                    "transaction_csv": transaction_csv,
                 },
                 export_create_params.ExportCreateParams,
             ),
@@ -208,7 +221,20 @@ class AsyncExports(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> Export:
-        """Retrieve an Export"""
+        """
+        Retrieve an Export
+
+        Args:
+          export_id: The identifier of the Export to retrieve.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return await self._get(
             f"/exports/{export_id}",
             options=make_request_options(

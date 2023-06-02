@@ -24,23 +24,23 @@ class TestRealTimePaymentsTransfers:
     @parametrize
     def test_method_create(self, client: Increase) -> None:
         real_time_payments_transfer = client.real_time_payments_transfers.create(
-            source_account_number_id="string",
             amount=1,
             creditor_name="x",
             remittance_information="x",
+            source_account_number_id="string",
         )
         assert_matches_type(RealTimePaymentsTransfer, real_time_payments_transfer, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: Increase) -> None:
         real_time_payments_transfer = client.real_time_payments_transfers.create(
+            amount=1,
+            creditor_name="x",
+            remittance_information="x",
             source_account_number_id="string",
             destination_account_number="x",
             destination_routing_number="xxxxxxxxx",
             external_account_id="string",
-            amount=1,
-            creditor_name="x",
-            remittance_information="x",
             require_approval=True,
         )
         assert_matches_type(RealTimePaymentsTransfer, real_time_payments_transfer, path=["response"])
@@ -60,16 +60,16 @@ class TestRealTimePaymentsTransfers:
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
         real_time_payments_transfer = client.real_time_payments_transfers.list(
-            cursor="string",
-            limit=0,
             account_id="string",
-            external_account_id="string",
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
+            cursor="string",
+            external_account_id="string",
+            limit=0,
         )
         assert_matches_type(SyncPage[RealTimePaymentsTransfer], real_time_payments_transfer, path=["response"])
 
@@ -82,23 +82,23 @@ class TestAsyncRealTimePaymentsTransfers:
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
         real_time_payments_transfer = await client.real_time_payments_transfers.create(
-            source_account_number_id="string",
             amount=1,
             creditor_name="x",
             remittance_information="x",
+            source_account_number_id="string",
         )
         assert_matches_type(RealTimePaymentsTransfer, real_time_payments_transfer, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         real_time_payments_transfer = await client.real_time_payments_transfers.create(
+            amount=1,
+            creditor_name="x",
+            remittance_information="x",
             source_account_number_id="string",
             destination_account_number="x",
             destination_routing_number="xxxxxxxxx",
             external_account_id="string",
-            amount=1,
-            creditor_name="x",
-            remittance_information="x",
             require_approval=True,
         )
         assert_matches_type(RealTimePaymentsTransfer, real_time_payments_transfer, path=["response"])
@@ -118,15 +118,15 @@ class TestAsyncRealTimePaymentsTransfers:
     @parametrize
     async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
         real_time_payments_transfer = await client.real_time_payments_transfers.list(
-            cursor="string",
-            limit=0,
             account_id="string",
-            external_account_id="string",
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
+            cursor="string",
+            external_account_id="string",
+            limit=0,
         )
         assert_matches_type(AsyncPage[RealTimePaymentsTransfer], real_time_payments_transfer, path=["response"])

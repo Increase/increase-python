@@ -44,14 +44,14 @@ class TestCardDisputes:
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
         card_dispute = client.card_disputes.list(
-            cursor="string",
-            limit=0,
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
+            cursor="string",
+            limit=0,
             status={"in": ["pending_reviewing", "pending_reviewing", "pending_reviewing"]},
         )
         assert_matches_type(SyncPage[CardDispute], card_dispute, path=["response"])
@@ -85,14 +85,14 @@ class TestAsyncCardDisputes:
     @parametrize
     async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
         card_dispute = await client.card_disputes.list(
-            cursor="string",
-            limit=0,
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
+            cursor="string",
+            limit=0,
             status={"in": ["pending_reviewing", "pending_reviewing", "pending_reviewing"]},
         )
         assert_matches_type(AsyncPage[CardDispute], card_dispute, path=["response"])

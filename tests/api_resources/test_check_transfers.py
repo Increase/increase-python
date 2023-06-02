@@ -25,8 +25,8 @@ class TestCheckTransfers:
     def test_method_create(self, client: Increase) -> None:
         check_transfer = client.check_transfers.create(
             account_id="string",
-            address_line1="x",
             address_city="x",
+            address_line1="x",
             address_state="x",
             address_zip="x",
             amount=1,
@@ -39,11 +39,16 @@ class TestCheckTransfers:
     def test_method_create_with_all_params(self, client: Increase) -> None:
         check_transfer = client.check_transfers.create(
             account_id="string",
-            address_line1="x",
-            address_line2="x",
             address_city="x",
+            address_line1="x",
             address_state="x",
             address_zip="x",
+            amount=1,
+            message="x",
+            recipient_name="x",
+            address_line2="x",
+            note="x",
+            require_approval=True,
             return_address={
                 "name": "x",
                 "line1": "x",
@@ -52,11 +57,6 @@ class TestCheckTransfers:
                 "state": "x",
                 "zip": "x",
             },
-            amount=1,
-            message="x",
-            note="x",
-            recipient_name="x",
-            require_approval=True,
         )
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
@@ -75,8 +75,6 @@ class TestCheckTransfers:
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
         check_transfer = client.check_transfers.list(
-            cursor="string",
-            limit=0,
             account_id="string",
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -84,6 +82,8 @@ class TestCheckTransfers:
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
+            cursor="string",
+            limit=0,
         )
         assert_matches_type(SyncPage[CheckTransfer], check_transfer, path=["response"])
 
@@ -119,8 +119,8 @@ class TestAsyncCheckTransfers:
     async def test_method_create(self, client: AsyncIncrease) -> None:
         check_transfer = await client.check_transfers.create(
             account_id="string",
-            address_line1="x",
             address_city="x",
+            address_line1="x",
             address_state="x",
             address_zip="x",
             amount=1,
@@ -133,11 +133,16 @@ class TestAsyncCheckTransfers:
     async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         check_transfer = await client.check_transfers.create(
             account_id="string",
-            address_line1="x",
-            address_line2="x",
             address_city="x",
+            address_line1="x",
             address_state="x",
             address_zip="x",
+            amount=1,
+            message="x",
+            recipient_name="x",
+            address_line2="x",
+            note="x",
+            require_approval=True,
             return_address={
                 "name": "x",
                 "line1": "x",
@@ -146,11 +151,6 @@ class TestAsyncCheckTransfers:
                 "state": "x",
                 "zip": "x",
             },
-            amount=1,
-            message="x",
-            note="x",
-            recipient_name="x",
-            require_approval=True,
         )
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
@@ -169,8 +169,6 @@ class TestAsyncCheckTransfers:
     @parametrize
     async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
         check_transfer = await client.check_transfers.list(
-            cursor="string",
-            limit=0,
             account_id="string",
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -178,6 +176,8 @@ class TestAsyncCheckTransfers:
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
+            cursor="string",
+            limit=0,
         )
         assert_matches_type(AsyncPage[CheckTransfer], check_transfer, path=["response"])
 

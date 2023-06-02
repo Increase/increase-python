@@ -23,7 +23,20 @@ class RealTimeDecisions(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> RealTimeDecision:
-        """Retrieve a Real-Time Decision"""
+        """
+        Retrieve a Real-Time Decision
+
+        Args:
+          real_time_decision_id: The identifier of the Real-Time Decision.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return self._get(
             f"/real_time_decisions/{real_time_decision_id}",
             options=make_request_options(
@@ -52,6 +65,8 @@ class RealTimeDecisions(SyncAPIResource):
         Action a Real-Time Decision
 
         Args:
+          real_time_decision_id: The identifier of the Real-Time Decision.
+
           card_authorization: If the Real-Time Decision relates to a card authorization attempt, this object
               contains your response to the authorization.
 
@@ -76,8 +91,8 @@ class RealTimeDecisions(SyncAPIResource):
             body=maybe_transform(
                 {
                     "card_authorization": card_authorization,
-                    "digital_wallet_token": digital_wallet_token,
                     "digital_wallet_authentication": digital_wallet_authentication,
+                    "digital_wallet_token": digital_wallet_token,
                 },
                 real_time_decision_action_params.RealTimeDecisionActionParams,
             ),
@@ -104,7 +119,20 @@ class AsyncRealTimeDecisions(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> RealTimeDecision:
-        """Retrieve a Real-Time Decision"""
+        """
+        Retrieve a Real-Time Decision
+
+        Args:
+          real_time_decision_id: The identifier of the Real-Time Decision.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return await self._get(
             f"/real_time_decisions/{real_time_decision_id}",
             options=make_request_options(
@@ -133,6 +161,8 @@ class AsyncRealTimeDecisions(AsyncAPIResource):
         Action a Real-Time Decision
 
         Args:
+          real_time_decision_id: The identifier of the Real-Time Decision.
+
           card_authorization: If the Real-Time Decision relates to a card authorization attempt, this object
               contains your response to the authorization.
 
@@ -157,8 +187,8 @@ class AsyncRealTimeDecisions(AsyncAPIResource):
             body=maybe_transform(
                 {
                     "card_authorization": card_authorization,
-                    "digital_wallet_token": digital_wallet_token,
                     "digital_wallet_authentication": digital_wallet_authentication,
+                    "digital_wallet_token": digital_wallet_token,
                 },
                 real_time_decision_action_params.RealTimeDecisionActionParams,
             ),
