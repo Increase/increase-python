@@ -76,6 +76,7 @@ class TestAccounts:
             },
             cursor="string",
             entity_id="string",
+            informational_entity_id="string",
             limit=0,
             status="open",
         )
@@ -150,6 +151,7 @@ class TestAsyncAccounts:
             },
             cursor="string",
             entity_id="string",
+            informational_entity_id="string",
             limit=0,
             status="open",
         )

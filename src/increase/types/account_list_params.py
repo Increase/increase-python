@@ -20,6 +20,9 @@ class AccountListParams(TypedDict, total=False):
     entity_id: str
     """Filter Accounts for those belonging to the specified Entity."""
 
+    informational_entity_id: str
+    """Filter Accounts for those belonging to the specified Entity as informational."""
+
     limit: int
     """Limit the size of the list that is returned.
 

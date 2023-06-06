@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 from .cards import Cards, AsyncCards
+from .programs import Programs, AsyncPrograms
 from .documents import Documents, AsyncDocuments
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from .card_refunds import CardRefunds, AsyncCardRefunds
@@ -45,6 +46,7 @@ class Simulations(SyncAPIResource):
     documents: Documents
     digital_wallet_token_requests: DigitalWalletTokenRequests
     check_deposits: CheckDeposits
+    programs: Programs
     inbound_wire_drawdown_requests: InboundWireDrawdownRequests
     interest_payments: InterestPayments
     wire_transfers: WireTransfers
@@ -62,6 +64,7 @@ class Simulations(SyncAPIResource):
         self.documents = Documents(client)
         self.digital_wallet_token_requests = DigitalWalletTokenRequests(client)
         self.check_deposits = CheckDeposits(client)
+        self.programs = Programs(client)
         self.inbound_wire_drawdown_requests = InboundWireDrawdownRequests(client)
         self.interest_payments = InterestPayments(client)
         self.wire_transfers = WireTransfers(client)
@@ -79,6 +82,7 @@ class AsyncSimulations(AsyncAPIResource):
     documents: AsyncDocuments
     digital_wallet_token_requests: AsyncDigitalWalletTokenRequests
     check_deposits: AsyncCheckDeposits
+    programs: AsyncPrograms
     inbound_wire_drawdown_requests: AsyncInboundWireDrawdownRequests
     interest_payments: AsyncInterestPayments
     wire_transfers: AsyncWireTransfers
@@ -96,6 +100,7 @@ class AsyncSimulations(AsyncAPIResource):
         self.documents = AsyncDocuments(client)
         self.digital_wallet_token_requests = AsyncDigitalWalletTokenRequests(client)
         self.check_deposits = AsyncCheckDeposits(client)
+        self.programs = AsyncPrograms(client)
         self.inbound_wire_drawdown_requests = AsyncInboundWireDrawdownRequests(client)
         self.interest_payments = AsyncInterestPayments(client)
         self.wire_transfers = AsyncWireTransfers(client)
