@@ -46,6 +46,13 @@ class Account(BaseModel):
     interest was accrued.
     """
 
+    interest_rate: str
+    """
+    The Interest Rate currently being earned on the account, as a string containing
+    a decimal number. For example, a 1% interest rate would be represented as
+    "0.01".
+    """
+
     name: str
     """The name you choose for the Account."""
 

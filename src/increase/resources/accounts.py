@@ -46,7 +46,8 @@ class Accounts(SyncAPIResource):
           informational_entity_id: The identifier of an Entity that, while not owning the Account, is associated
               with its activity. Its relationship to your group must be `informational`.
 
-          program_id: The identifier for the Program that this Account falls under.
+          program_id: The identifier for the Program that this Account falls under. Required if you
+              operate more than one Program.
 
           extra_headers: Send extra headers
 
@@ -162,6 +163,7 @@ class Accounts(SyncAPIResource):
         created_at: account_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         entity_id: str | NotGiven = NOT_GIVEN,
+        informational_entity_id: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         status: Literal["open", "closed"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -178,6 +180,8 @@ class Accounts(SyncAPIResource):
           cursor: Return the page of entries after this one.
 
           entity_id: Filter Accounts for those belonging to the specified Entity.
+
+          informational_entity_id: Filter Accounts for those belonging to the specified Entity as informational.
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
@@ -205,6 +209,7 @@ class Accounts(SyncAPIResource):
                         "created_at": created_at,
                         "cursor": cursor,
                         "entity_id": entity_id,
+                        "informational_entity_id": informational_entity_id,
                         "limit": limit,
                         "status": status,
                     },
@@ -282,7 +287,8 @@ class AsyncAccounts(AsyncAPIResource):
           informational_entity_id: The identifier of an Entity that, while not owning the Account, is associated
               with its activity. Its relationship to your group must be `informational`.
 
-          program_id: The identifier for the Program that this Account falls under.
+          program_id: The identifier for the Program that this Account falls under. Required if you
+              operate more than one Program.
 
           extra_headers: Send extra headers
 
@@ -398,6 +404,7 @@ class AsyncAccounts(AsyncAPIResource):
         created_at: account_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         entity_id: str | NotGiven = NOT_GIVEN,
+        informational_entity_id: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         status: Literal["open", "closed"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -414,6 +421,8 @@ class AsyncAccounts(AsyncAPIResource):
           cursor: Return the page of entries after this one.
 
           entity_id: Filter Accounts for those belonging to the specified Entity.
+
+          informational_entity_id: Filter Accounts for those belonging to the specified Entity as informational.
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
@@ -441,6 +450,7 @@ class AsyncAccounts(AsyncAPIResource):
                         "created_at": created_at,
                         "cursor": cursor,
                         "entity_id": entity_id,
+                        "informational_entity_id": informational_entity_id,
                         "limit": limit,
                         "status": status,
                     },

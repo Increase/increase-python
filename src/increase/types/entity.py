@@ -1,7 +1,7 @@
 # File generated from our OpenAPI spec by Stainless.
 
 from typing import List, Optional
-from datetime import date
+from datetime import date, datetime
 from typing_extensions import Literal
 
 from .._models import BaseModel
@@ -395,8 +395,20 @@ class Trust(BaseModel):
 
 
 class SupplementalDocument(BaseModel):
+    created_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the
+    Supplemental Document was created.
+    """
+
     file_id: str
     """The File containing the document."""
+
+    type: Literal["entity_supplemental_document"]
+    """A constant representing the object's type.
+
+    For this resource it will always be `entity_supplemental_document`.
+    """
 
 
 class Entity(BaseModel):
@@ -431,7 +443,12 @@ class Entity(BaseModel):
     """The entity's legal structure."""
 
     supplemental_documents: List[SupplementalDocument]
-    """Additional documentation associated with the entity."""
+    """Additional documentation associated with the entity.
+
+    This is limited to the first 10 documents for an entity. If an entity has more
+    than 10 documents, use the GET /entity_supplemental_documents list endpoint to
+    retrieve them.
+    """
 
     trust: Optional[Trust]
     """Details of the trust entity.

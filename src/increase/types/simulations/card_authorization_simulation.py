@@ -639,6 +639,7 @@ class DeclinedTransactionSourceCheckDecline(BaseModel):
         "group_locked",
         "insufficient_funds",
         "unable_to_locate_account",
+        "not_our_item",
         "unable_to_process",
         "refer_to_image",
         "stop_payment_requested",
