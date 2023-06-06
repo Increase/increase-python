@@ -21,4 +21,7 @@ class AccountCreateParams(TypedDict, total=False):
     """
 
     program_id: str
-    """The identifier for the Program that this Account falls under."""
+    """The identifier for the Program that this Account falls under.
+
+    Required if you operate more than one Program.
+    """

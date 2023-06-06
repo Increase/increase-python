@@ -9,6 +9,8 @@ import pytest
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
 from increase.types import Entity
+from increase.pagination import SyncPage, AsyncPage
+from increase.types.entities import SupplementalDocument
 
 base_url = os.environ.get("API_BASE_URL", "http://127.0.0.1:4010")
 api_key = os.environ.get("API_KEY", "something1234")
@@ -27,6 +29,22 @@ class TestSupplementalDocuments:
         )
         assert_matches_type(Entity, supplemental_document, path=["response"])
 
+    @parametrize
+    def test_method_list(self, client: Increase) -> None:
+        supplemental_document = client.entities.supplemental_documents.list(
+            entity_id="string",
+        )
+        assert_matches_type(SyncPage[SupplementalDocument], supplemental_document, path=["response"])
+
+    @parametrize
+    def test_method_list_with_all_params(self, client: Increase) -> None:
+        supplemental_document = client.entities.supplemental_documents.list(
+            entity_id="string",
+            cursor="string",
+            limit=0,
+        )
+        assert_matches_type(SyncPage[SupplementalDocument], supplemental_document, path=["response"])
+
 
 class TestAsyncSupplementalDocuments:
     strict_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
@@ -40,3 +58,19 @@ class TestAsyncSupplementalDocuments:
             file_id="string",
         )
         assert_matches_type(Entity, supplemental_document, path=["response"])
+
+    @parametrize
+    async def test_method_list(self, client: AsyncIncrease) -> None:
+        supplemental_document = await client.entities.supplemental_documents.list(
+            entity_id="string",
+        )
+        assert_matches_type(AsyncPage[SupplementalDocument], supplemental_document, path=["response"])
+
+    @parametrize
+    async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
+        supplemental_document = await client.entities.supplemental_documents.list(
+            entity_id="string",
+            cursor="string",
+            limit=0,
+        )
+        assert_matches_type(AsyncPage[SupplementalDocument], supplemental_document, path=["response"])
