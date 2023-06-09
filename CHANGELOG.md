@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.6.1](https://github.com/Increase/increase-python/compare/v0.6.0...v0.6.1) (2023-06-09)
+
+
+### Features
+
+* **api:** add new endpoints + properties + enums ([#8](https://github.com/Increase/increase-python/issues/8)) ([0a436a0](https://github.com/Increase/increase-python/commit/0a436a0b3bd426a4b68e24df1ec9a011b9748a3e))
+* **docs:** always document positional arguments & options arguments ([#7](https://github.com/Increase/increase-python/issues/7)) ([964afd3](https://github.com/Increase/increase-python/commit/964afd3dc73ca2be23792eb2363007b537431294))
+
 ## [0.6.0](https://github.com/Increase/increase-python/compare/v0.5.0...v0.6.0) (2023-05-31)
 
 
