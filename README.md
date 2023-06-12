@@ -174,7 +174,7 @@ from increase import Increase
 
 increase = Increase()
 
-async with aiofiles.open("pytest.ini", mode="rb") as f:
+async with aiofiles.open("my/file.txt", mode="rb") as f:
     contents = await f.read()
 
 await increase.files.create(
