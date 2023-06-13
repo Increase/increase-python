@@ -1,5 +1,27 @@
 # Changelog
 
+## [0.7.0](https://github.com/Increase/increase-python/compare/v0.6.1...v0.7.0) (2023-06-13)
+
+
+### ⚠ BREAKING CHANGES
+
+* **api:** rename return reason enum member ([#14](https://github.com/Increase/increase-python/issues/14))
+
+### Chores
+
+* **internal:** improve internal test helper ([#10](https://github.com/Increase/increase-python/issues/10)) ([85560b9](https://github.com/Increase/increase-python/commit/85560b95f167e3b929f88383eb31cd9072264cb8))
+
+
+### Refactors
+
+* **api:** rename return reason enum member ([#14](https://github.com/Increase/increase-python/issues/14)) ([c99e844](https://github.com/Increase/increase-python/commit/c99e844a4f07b44a64d026c705c17c6498238962))
+
+
+### Documentation
+
+* point to github repo instead of email contact ([#15](https://github.com/Increase/increase-python/issues/15)) ([cab1b9a](https://github.com/Increase/increase-python/commit/cab1b9ac76794d1cb9ec1916a2182e1265b1c88b))
+* slight improvement to file uploads example ([#12](https://github.com/Increase/increase-python/issues/12)) ([c7241e3](https://github.com/Increase/increase-python/commit/c7241e3216834a577ca338713bb1747afb69487f))
+
 ## [0.6.1](https://github.com/Increase/increase-python/compare/v0.6.0...v0.6.1) (2023-06-09)
 
 
