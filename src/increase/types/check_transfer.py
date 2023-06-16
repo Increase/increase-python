@@ -213,6 +213,7 @@ class CheckTransfer(BaseModel):
         "pending_submission",
         "submitted",
         "pending_mailing",
+        "stopped_and_pending_mailing",
         "mailed",
         "canceled",
         "deposited",

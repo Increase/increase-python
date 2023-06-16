@@ -105,6 +105,7 @@ class DepositReturn(BaseModel):
         "unknown_reason",
         "unmatched_details",
         "unreadable_image",
+        "endorsement_irregular",
     ]
 
     returned_at: datetime

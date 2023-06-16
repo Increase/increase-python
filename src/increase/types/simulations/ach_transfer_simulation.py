@@ -12,8 +12,6 @@ __all__ = [
     "Transaction",
     "TransactionSource",
     "TransactionSourceAccountTransferIntention",
-    "TransactionSourceACHCheckConversionReturn",
-    "TransactionSourceACHCheckConversion",
     "TransactionSourceACHTransferIntention",
     "TransactionSourceACHTransferRejection",
     "TransactionSourceACHTransferReturn",
@@ -27,8 +25,6 @@ __all__ = [
     "TransactionSourceCheckTransferReturn",
     "TransactionSourceCheckTransferRejection",
     "TransactionSourceCheckTransferStopPaymentRequest",
-    "TransactionSourceDisputeResolution",
-    "TransactionSourceEmpyrealCashDeposit",
     "TransactionSourceFeePayment",
     "TransactionSourceInboundACHTransfer",
     "TransactionSourceInboundCheck",
@@ -40,12 +36,8 @@ __all__ = [
     "TransactionSourceInboundWireTransfer",
     "TransactionSourceInterestPayment",
     "TransactionSourceInternalSource",
-    "TransactionSourceCardRouteRefund",
-    "TransactionSourceCardRouteSettlement",
     "TransactionSourceRealTimePaymentsTransferAcknowledgement",
     "TransactionSourceSampleFunds",
-    "TransactionSourceWireDrawdownPaymentIntention",
-    "TransactionSourceWireDrawdownPaymentRejection",
     "TransactionSourceWireTransferIntention",
     "TransactionSourceWireTransferRejection",
     "DeclinedTransaction",
@@ -57,7 +49,6 @@ __all__ = [
     "DeclinedTransactionSourceCheckDecline",
     "DeclinedTransactionSourceInboundRealTimePaymentsTransferDecline",
     "DeclinedTransactionSourceInternationalACHDecline",
-    "DeclinedTransactionSourceCardRouteDecline",
     "DeclinedTransactionSourceWireDecline",
 ]
 
@@ -86,28 +77,6 @@ class TransactionSourceAccountTransferIntention(BaseModel):
 
     transfer_id: str
     """The identifier of the Account Transfer that led to this Pending Transaction."""
-
-
-class TransactionSourceACHCheckConversionReturn(BaseModel):
-    amount: int
-    """The amount in the minor unit of the transaction's currency.
-
-    For dollars, for example, this is cents.
-    """
-
-    return_reason_code: str
-    """Why the transfer was returned."""
-
-
-class TransactionSourceACHCheckConversion(BaseModel):
-    amount: int
-    """The amount in the minor unit of the transaction's currency.
-
-    For dollars, for example, this is cents.
-    """
-
-    file_id: str
-    """The identifier of the File containing an image of the returned check."""
 
 
 class TransactionSourceACHTransferIntention(BaseModel):
@@ -434,6 +403,7 @@ class TransactionSourceCheckDepositReturn(BaseModel):
         "unknown_reason",
         "unmatched_details",
         "unreadable_image",
+        "endorsement_irregular",
     ]
 
     returned_at: datetime
@@ -524,35 +494,6 @@ class TransactionSourceCheckTransferStopPaymentRequest(BaseModel):
 
     For this resource it will always be `check_transfer_stop_payment_request`.
     """
-
-
-class TransactionSourceDisputeResolution(BaseModel):
-    amount: int
-    """The amount in the minor unit of the transaction's currency.
-
-    For dollars, for example, this is cents.
-    """
-
-    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
-    """
-    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-    transaction's currency.
-    """
-
-    disputed_transaction_id: str
-    """The identifier of the Transaction that was disputed."""
-
-
-class TransactionSourceEmpyrealCashDeposit(BaseModel):
-    amount: int
-    """The amount in the minor unit of the transaction's currency.
-
-    For dollars, for example, this is cents.
-    """
-
-    bag_id: str
-
-    deposit_date: datetime
 
 
 class TransactionSourceFeePayment(BaseModel):
@@ -932,58 +873,6 @@ class TransactionSourceInternalSource(BaseModel):
     ]
 
 
-class TransactionSourceCardRouteRefund(BaseModel):
-    amount: int
-    """The refunded amount in the minor unit of the refunded currency.
-
-    For dollars, for example, this is cents.
-    """
-
-    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
-    """
-    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the refund
-    currency.
-    """
-
-    merchant_acceptor_id: str
-
-    merchant_category_code: Optional[str]
-
-    merchant_city: Optional[str]
-
-    merchant_country: str
-
-    merchant_descriptor: str
-
-    merchant_state: Optional[str]
-
-
-class TransactionSourceCardRouteSettlement(BaseModel):
-    amount: int
-    """The settled amount in the minor unit of the settlement currency.
-
-    For dollars, for example, this is cents.
-    """
-
-    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
-    """
-    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the settlement
-    currency.
-    """
-
-    merchant_acceptor_id: str
-
-    merchant_category_code: Optional[str]
-
-    merchant_city: Optional[str]
-
-    merchant_country: Optional[str]
-
-    merchant_descriptor: str
-
-    merchant_state: Optional[str]
-
-
 class TransactionSourceRealTimePaymentsTransferAcknowledgement(BaseModel):
     amount: int
     """The transfer amount in USD cents."""
@@ -1004,23 +893,6 @@ class TransactionSourceRealTimePaymentsTransferAcknowledgement(BaseModel):
 class TransactionSourceSampleFunds(BaseModel):
     originator: str
     """Where the sample funds came from."""
-
-
-class TransactionSourceWireDrawdownPaymentIntention(BaseModel):
-    account_number: str
-
-    amount: int
-    """The transfer amount in USD cents."""
-
-    message_to_recipient: str
-
-    routing_number: str
-
-    transfer_id: str
-
-
-class TransactionSourceWireDrawdownPaymentRejection(BaseModel):
-    transfer_id: str
 
 
 class TransactionSourceWireTransferIntention(BaseModel):
@@ -1049,20 +921,6 @@ class TransactionSource(BaseModel):
 
     This field will be present in the JSON response if and only if `category` is
     equal to `account_transfer_intention`.
-    """
-
-    ach_check_conversion: Optional[TransactionSourceACHCheckConversion]
-    """A ACH Check Conversion object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `ach_check_conversion`.
-    """
-
-    ach_check_conversion_return: Optional[TransactionSourceACHCheckConversionReturn]
-    """A ACH Check Conversion Return object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `ach_check_conversion_return`.
     """
 
     ach_transfer_intention: Optional[TransactionSourceACHTransferIntention]
@@ -1107,20 +965,6 @@ class TransactionSource(BaseModel):
     equal to `card_revenue_payment`.
     """
 
-    card_route_refund: Optional[TransactionSourceCardRouteRefund]
-    """A Deprecated Card Refund object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `card_route_refund`.
-    """
-
-    card_route_settlement: Optional[TransactionSourceCardRouteSettlement]
-    """A Deprecated Card Settlement object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `card_route_settlement`.
-    """
-
     card_settlement: Optional[TransactionSourceCardSettlement]
     """A Card Settlement object.
 
@@ -1130,8 +974,6 @@ class TransactionSource(BaseModel):
 
     category: Literal[
         "account_transfer_intention",
-        "ach_check_conversion_return",
-        "ach_check_conversion",
         "ach_transfer_intention",
         "ach_transfer_rejection",
         "ach_transfer_return",
@@ -1145,8 +987,6 @@ class TransactionSource(BaseModel):
         "check_transfer_return",
         "check_transfer_rejection",
         "check_transfer_stop_payment_request",
-        "dispute_resolution",
-        "empyreal_cash_deposit",
         "fee_payment",
         "inbound_ach_transfer",
         "inbound_ach_transfer_return_intention",
@@ -1158,14 +998,9 @@ class TransactionSource(BaseModel):
         "inbound_wire_reversal",
         "inbound_wire_transfer",
         "interest_payment",
-        "internal_general_ledger_transaction",
         "internal_source",
-        "card_route_refund",
-        "card_route_settlement",
         "real_time_payments_transfer_acknowledgement",
         "sample_funds",
-        "wire_drawdown_payment_intention",
-        "wire_drawdown_payment_rejection",
         "wire_transfer_intention",
         "wire_transfer_rejection",
         "other",
@@ -1216,20 +1051,6 @@ class TransactionSource(BaseModel):
 
     This field will be present in the JSON response if and only if `category` is
     equal to `check_transfer_stop_payment_request`.
-    """
-
-    dispute_resolution: Optional[TransactionSourceDisputeResolution]
-    """A Dispute Resolution object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `dispute_resolution`.
-    """
-
-    empyreal_cash_deposit: Optional[TransactionSourceEmpyrealCashDeposit]
-    """A Empyreal Cash Deposit object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `empyreal_cash_deposit`.
     """
 
     fee_payment: Optional[TransactionSourceFeePayment]
@@ -1323,20 +1144,6 @@ class TransactionSource(BaseModel):
 
     This field will be present in the JSON response if and only if `category` is
     equal to `sample_funds`.
-    """
-
-    wire_drawdown_payment_intention: Optional[TransactionSourceWireDrawdownPaymentIntention]
-    """A Wire Drawdown Payment Intention object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `wire_drawdown_payment_intention`.
-    """
-
-    wire_drawdown_payment_rejection: Optional[TransactionSourceWireDrawdownPaymentRejection]
-    """A Wire Drawdown Payment Rejection object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `wire_drawdown_payment_rejection`.
     """
 
     wire_transfer_intention: Optional[TransactionSourceWireTransferIntention]
@@ -1703,32 +1510,6 @@ class DeclinedTransactionSourceInternationalACHDecline(BaseModel):
     trace_number: str
 
 
-class DeclinedTransactionSourceCardRouteDecline(BaseModel):
-    amount: int
-    """The declined amount in the minor unit of the destination account currency.
-
-    For dollars, for example, this is cents.
-    """
-
-    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
-    """
-    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
-    account currency.
-    """
-
-    merchant_acceptor_id: str
-
-    merchant_category_code: Optional[str]
-
-    merchant_city: Optional[str]
-
-    merchant_country: str
-
-    merchant_descriptor: str
-
-    merchant_state: Optional[str]
-
-
 class DeclinedTransactionSourceWireDecline(BaseModel):
     amount: int
     """The declined amount in the minor unit of the destination account currency.
@@ -1792,20 +1573,12 @@ class DeclinedTransactionSource(BaseModel):
     equal to `card_decline`.
     """
 
-    card_route_decline: Optional[DeclinedTransactionSourceCardRouteDecline]
-    """A Deprecated Card Decline object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `card_route_decline`.
-    """
-
     category: Literal[
         "ach_decline",
         "card_decline",
         "check_decline",
         "inbound_real_time_payments_transfer_decline",
         "international_ach_decline",
-        "card_route_decline",
         "wire_decline",
         "other",
     ]
