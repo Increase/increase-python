@@ -18,9 +18,7 @@ __all__ = [
     "SourceCheckDepositInstruction",
     "SourceCheckTransferInstruction",
     "SourceInboundFundsHold",
-    "SourceCardRouteAuthorization",
     "SourceRealTimePaymentsTransferInstruction",
-    "SourceWireDrawdownPaymentInstruction",
     "SourceWireTransferInstruction",
 ]
 
@@ -239,32 +237,6 @@ class SourceInboundFundsHold(BaseModel):
     """The status of the hold."""
 
 
-class SourceCardRouteAuthorization(BaseModel):
-    amount: int
-    """The pending amount in the minor unit of the transaction's currency.
-
-    For dollars, for example, this is cents.
-    """
-
-    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
-    """
-    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-    transaction's currency.
-    """
-
-    merchant_acceptor_id: str
-
-    merchant_category_code: str
-
-    merchant_city: Optional[str]
-
-    merchant_country: str
-
-    merchant_descriptor: str
-
-    merchant_state: Optional[str]
-
-
 class SourceRealTimePaymentsTransferInstruction(BaseModel):
     amount: int
     """The pending amount in the minor unit of the transaction's currency.
@@ -277,20 +249,6 @@ class SourceRealTimePaymentsTransferInstruction(BaseModel):
     The identifier of the Real Time Payments Transfer that led to this Pending
     Transaction.
     """
-
-
-class SourceWireDrawdownPaymentInstruction(BaseModel):
-    account_number: str
-
-    amount: int
-    """The pending amount in the minor unit of the transaction's currency.
-
-    For dollars, for example, this is cents.
-    """
-
-    message_to_recipient: str
-
-    routing_number: str
 
 
 class SourceWireTransferInstruction(BaseModel):
@@ -331,13 +289,6 @@ class Source(BaseModel):
     equal to `card_authorization`.
     """
 
-    card_route_authorization: Optional[SourceCardRouteAuthorization]
-    """A Deprecated Card Authorization object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `card_route_authorization`.
-    """
-
     category: Literal[
         "account_transfer_instruction",
         "ach_transfer_instruction",
@@ -345,9 +296,7 @@ class Source(BaseModel):
         "check_deposit_instruction",
         "check_transfer_instruction",
         "inbound_funds_hold",
-        "card_route_authorization",
         "real_time_payments_transfer_instruction",
-        "wire_drawdown_payment_instruction",
         "wire_transfer_instruction",
         "other",
     ]
@@ -383,13 +332,6 @@ class Source(BaseModel):
 
     This field will be present in the JSON response if and only if `category` is
     equal to `real_time_payments_transfer_instruction`.
-    """
-
-    wire_drawdown_payment_instruction: Optional[SourceWireDrawdownPaymentInstruction]
-    """A Wire Drawdown Payment Instruction object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `wire_drawdown_payment_instruction`.
     """
 
     wire_transfer_instruction: Optional[SourceWireTransferInstruction]

@@ -19,9 +19,7 @@ __all__ = [
     "PendingTransactionSourceCheckDepositInstruction",
     "PendingTransactionSourceCheckTransferInstruction",
     "PendingTransactionSourceInboundFundsHold",
-    "PendingTransactionSourceCardRouteAuthorization",
     "PendingTransactionSourceRealTimePaymentsTransferInstruction",
-    "PendingTransactionSourceWireDrawdownPaymentInstruction",
     "PendingTransactionSourceWireTransferInstruction",
     "DeclinedTransaction",
     "DeclinedTransactionSource",
@@ -32,7 +30,6 @@ __all__ = [
     "DeclinedTransactionSourceCheckDecline",
     "DeclinedTransactionSourceInboundRealTimePaymentsTransferDecline",
     "DeclinedTransactionSourceInternationalACHDecline",
-    "DeclinedTransactionSourceCardRouteDecline",
     "DeclinedTransactionSourceWireDecline",
 ]
 
@@ -251,32 +248,6 @@ class PendingTransactionSourceInboundFundsHold(BaseModel):
     """The status of the hold."""
 
 
-class PendingTransactionSourceCardRouteAuthorization(BaseModel):
-    amount: int
-    """The pending amount in the minor unit of the transaction's currency.
-
-    For dollars, for example, this is cents.
-    """
-
-    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
-    """
-    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-    transaction's currency.
-    """
-
-    merchant_acceptor_id: str
-
-    merchant_category_code: str
-
-    merchant_city: Optional[str]
-
-    merchant_country: str
-
-    merchant_descriptor: str
-
-    merchant_state: Optional[str]
-
-
 class PendingTransactionSourceRealTimePaymentsTransferInstruction(BaseModel):
     amount: int
     """The pending amount in the minor unit of the transaction's currency.
@@ -289,20 +260,6 @@ class PendingTransactionSourceRealTimePaymentsTransferInstruction(BaseModel):
     The identifier of the Real Time Payments Transfer that led to this Pending
     Transaction.
     """
-
-
-class PendingTransactionSourceWireDrawdownPaymentInstruction(BaseModel):
-    account_number: str
-
-    amount: int
-    """The pending amount in the minor unit of the transaction's currency.
-
-    For dollars, for example, this is cents.
-    """
-
-    message_to_recipient: str
-
-    routing_number: str
 
 
 class PendingTransactionSourceWireTransferInstruction(BaseModel):
@@ -343,13 +300,6 @@ class PendingTransactionSource(BaseModel):
     equal to `card_authorization`.
     """
 
-    card_route_authorization: Optional[PendingTransactionSourceCardRouteAuthorization]
-    """A Deprecated Card Authorization object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `card_route_authorization`.
-    """
-
     category: Literal[
         "account_transfer_instruction",
         "ach_transfer_instruction",
@@ -357,9 +307,7 @@ class PendingTransactionSource(BaseModel):
         "check_deposit_instruction",
         "check_transfer_instruction",
         "inbound_funds_hold",
-        "card_route_authorization",
         "real_time_payments_transfer_instruction",
-        "wire_drawdown_payment_instruction",
         "wire_transfer_instruction",
         "other",
     ]
@@ -395,13 +343,6 @@ class PendingTransactionSource(BaseModel):
 
     This field will be present in the JSON response if and only if `category` is
     equal to `real_time_payments_transfer_instruction`.
-    """
-
-    wire_drawdown_payment_instruction: Optional[PendingTransactionSourceWireDrawdownPaymentInstruction]
-    """A Wire Drawdown Payment Instruction object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `wire_drawdown_payment_instruction`.
     """
 
     wire_transfer_instruction: Optional[PendingTransactionSourceWireTransferInstruction]
@@ -772,32 +713,6 @@ class DeclinedTransactionSourceInternationalACHDecline(BaseModel):
     trace_number: str
 
 
-class DeclinedTransactionSourceCardRouteDecline(BaseModel):
-    amount: int
-    """The declined amount in the minor unit of the destination account currency.
-
-    For dollars, for example, this is cents.
-    """
-
-    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
-    """
-    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
-    account currency.
-    """
-
-    merchant_acceptor_id: str
-
-    merchant_category_code: Optional[str]
-
-    merchant_city: Optional[str]
-
-    merchant_country: str
-
-    merchant_descriptor: str
-
-    merchant_state: Optional[str]
-
-
 class DeclinedTransactionSourceWireDecline(BaseModel):
     amount: int
     """The declined amount in the minor unit of the destination account currency.
@@ -861,20 +776,12 @@ class DeclinedTransactionSource(BaseModel):
     equal to `card_decline`.
     """
 
-    card_route_decline: Optional[DeclinedTransactionSourceCardRouteDecline]
-    """A Deprecated Card Decline object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `card_route_decline`.
-    """
-
     category: Literal[
         "ach_decline",
         "card_decline",
         "check_decline",
         "inbound_real_time_payments_transfer_decline",
         "international_ach_decline",
-        "card_route_decline",
         "wire_decline",
         "other",
     ]
