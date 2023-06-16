@@ -17,7 +17,6 @@ __all__ = [
     "SourceCheckDecline",
     "SourceInboundRealTimePaymentsTransferDecline",
     "SourceInternationalACHDecline",
-    "SourceCardRouteDecline",
     "SourceWireDecline",
 ]
 
@@ -314,32 +313,6 @@ class SourceInternationalACHDecline(BaseModel):
     trace_number: str
 
 
-class SourceCardRouteDecline(BaseModel):
-    amount: int
-    """The declined amount in the minor unit of the destination account currency.
-
-    For dollars, for example, this is cents.
-    """
-
-    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
-    """
-    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
-    account currency.
-    """
-
-    merchant_acceptor_id: str
-
-    merchant_category_code: Optional[str]
-
-    merchant_city: Optional[str]
-
-    merchant_country: str
-
-    merchant_descriptor: str
-
-    merchant_state: Optional[str]
-
-
 class SourceWireDecline(BaseModel):
     amount: int
     """The declined amount in the minor unit of the destination account currency.
@@ -403,20 +376,12 @@ class Source(BaseModel):
     equal to `card_decline`.
     """
 
-    card_route_decline: Optional[SourceCardRouteDecline]
-    """A Deprecated Card Decline object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `card_route_decline`.
-    """
-
     category: Literal[
         "ach_decline",
         "card_decline",
         "check_decline",
         "inbound_real_time_payments_transfer_decline",
         "international_ach_decline",
-        "card_route_decline",
         "wire_decline",
         "other",
     ]
