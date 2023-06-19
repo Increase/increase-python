@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.7.1](https://github.com/Increase/increase-python/compare/v0.7.0...v0.7.1) (2023-06-19)
+
+
+### Chores
+
+* **internal:** add overloads to `client.get` for streaming ([#17](https://github.com/Increase/increase-python/issues/17)) ([5b0137d](https://github.com/Increase/increase-python/commit/5b0137d1dba6aba7552a630d5a09dddaed2a63c8))
+
+
+### Refactors
+
+* **api:** remove unused properties and enum members ([#19](https://github.com/Increase/increase-python/issues/19)) ([9b94033](https://github.com/Increase/increase-python/commit/9b940336b331dcba54b6c51d61e50d37b8e615ca))
+
 ## [0.7.0](https://github.com/Increase/increase-python/compare/v0.6.1...v0.7.0) (2023-06-13)
 
 
