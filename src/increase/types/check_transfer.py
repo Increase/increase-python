@@ -135,19 +135,19 @@ class CheckTransfer(BaseModel):
     account_id: str
     """The identifier of the Account from which funds will be transferred."""
 
-    address_city: str
+    address_city: Optional[str]
     """The city of the check's destination."""
 
-    address_line1: str
+    address_line1: Optional[str]
     """The street address of the check's destination."""
 
     address_line2: Optional[str]
     """The second line of the address of the check's destination."""
 
-    address_state: str
+    address_state: Optional[str]
     """The state of the check's destination."""
 
-    address_zip: str
+    address_zip: Optional[str]
     """The postal code of the check's destination."""
 
     amount: int
@@ -189,13 +189,13 @@ class CheckTransfer(BaseModel):
     the check was mailed.
     """
 
-    message: str
+    message: Optional[str]
     """The descriptor that will be printed on the memo field on the check."""
 
     note: Optional[str]
     """The descriptor that will be printed on the letter included with the check."""
 
-    recipient_name: str
+    recipient_name: Optional[str]
     """The name that will be printed on the check."""
 
     return_address: Optional[ReturnAddress]
@@ -213,7 +213,6 @@ class CheckTransfer(BaseModel):
         "pending_submission",
         "submitted",
         "pending_mailing",
-        "stopped_and_pending_mailing",
         "mailed",
         "canceled",
         "deposited",
