@@ -419,19 +419,19 @@ class TransactionSourceCheckDepositReturn(BaseModel):
 
 
 class TransactionSourceCheckTransferIntention(BaseModel):
-    address_city: str
+    address_city: Optional[str]
     """The city of the check's destination."""
 
-    address_line1: str
+    address_line1: Optional[str]
     """The street address of the check's destination."""
 
     address_line2: Optional[str]
     """The second line of the address of the check's destination."""
 
-    address_state: str
+    address_state: Optional[str]
     """The state of the check's destination."""
 
-    address_zip: str
+    address_zip: Optional[str]
     """The postal code of the check's destination."""
 
     amount: int
@@ -443,7 +443,7 @@ class TransactionSourceCheckTransferIntention(BaseModel):
     currency.
     """
 
-    recipient_name: str
+    recipient_name: Optional[str]
     """The name that will be printed on the check."""
 
     transfer_id: str
