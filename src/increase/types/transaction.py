@@ -15,21 +15,22 @@ __all__ = [
     "SourceACHTransferReturn",
     "SourceCardDisputeAcceptance",
     "SourceCardRefund",
-    "SourceCardSettlement",
     "SourceCardRevenuePayment",
+    "SourceCardSettlement",
     "SourceCheckDepositAcceptance",
     "SourceCheckDepositReturn",
+    "SourceCheckTransferDeposit",
     "SourceCheckTransferIntention",
-    "SourceCheckTransferReturn",
     "SourceCheckTransferRejection",
+    "SourceCheckTransferReturn",
     "SourceCheckTransferStopPaymentRequest",
     "SourceFeePayment",
     "SourceInboundACHTransfer",
     "SourceInboundCheck",
     "SourceInboundInternationalACHTransfer",
     "SourceInboundRealTimePaymentsTransferConfirmation",
-    "SourceInboundWireDrawdownPaymentReversal",
     "SourceInboundWireDrawdownPayment",
+    "SourceInboundWireDrawdownPaymentReversal",
     "SourceInboundWireReversal",
     "SourceInboundWireTransfer",
     "SourceInterestPayment",
@@ -241,6 +242,29 @@ class SourceCardRefund(BaseModel):
     """
 
 
+class SourceCardRevenuePayment(BaseModel):
+    amount: int
+    """The amount in the minor unit of the transaction's currency.
+
+    For dollars, for example, this is cents.
+    """
+
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
+    currency.
+    """
+
+    period_end: datetime
+    """The end of the period for which this transaction paid interest."""
+
+    period_start: datetime
+    """The start of the period for which this transaction paid interest."""
+
+    transacted_on_account_id: Optional[str]
+    """The account the card belonged to."""
+
+
 class SourceCardSettlement(BaseModel):
     amount: int
     """The amount in the minor unit of the transaction's settlement currency.
@@ -301,29 +325,6 @@ class SourceCardSettlement(BaseModel):
 
     For this resource it will always be `card_settlement`.
     """
-
-
-class SourceCardRevenuePayment(BaseModel):
-    amount: int
-    """The amount in the minor unit of the transaction's currency.
-
-    For dollars, for example, this is cents.
-    """
-
-    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
-    """
-    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
-    currency.
-    """
-
-    period_end: datetime
-    """The end of the period for which this transaction paid interest."""
-
-    period_start: datetime
-    """The start of the period for which this transaction paid interest."""
-
-    transacted_on_account_id: Optional[str]
-    """The account the card belonged to."""
 
 
 class SourceCheckDepositAcceptance(BaseModel):
@@ -406,6 +407,29 @@ class SourceCheckDepositReturn(BaseModel):
     """
 
 
+class SourceCheckTransferDeposit(BaseModel):
+    back_image_file_id: Optional[str]
+    """
+    The identifier of the API File object containing an image of the back of the
+    deposited check.
+    """
+
+    deposited_at: datetime
+    """When the check was deposited."""
+
+    front_image_file_id: Optional[str]
+    """
+    The identifier of the API File object containing an image of the front of the
+    deposited check.
+    """
+
+    type: Literal["check_transfer_deposit"]
+    """A constant representing the object's type.
+
+    For this resource it will always be `check_transfer_deposit`.
+    """
+
+
 class SourceCheckTransferIntention(BaseModel):
     address_city: Optional[str]
     """The city of the check's destination."""
@@ -438,6 +462,11 @@ class SourceCheckTransferIntention(BaseModel):
     """The identifier of the Check Transfer with which this is associated."""
 
 
+class SourceCheckTransferRejection(BaseModel):
+    transfer_id: str
+    """The identifier of the Check Transfer that led to this Transaction."""
+
+
 class SourceCheckTransferReturn(BaseModel):
     file_id: Optional[str]
     """If available, a document with additional information about the return."""
@@ -459,11 +488,6 @@ class SourceCheckTransferReturn(BaseModel):
 
     transfer_id: str
     """The identifier of the returned Check Transfer."""
-
-
-class SourceCheckTransferRejection(BaseModel):
-    transfer_id: str
-    """The identifier of the Check Transfer that led to this Transaction."""
 
 
 class SourceCheckTransferStopPaymentRequest(BaseModel):
@@ -651,38 +675,6 @@ class SourceInboundRealTimePaymentsTransferConfirmation(BaseModel):
     """The Real Time Payments network identification of the transfer"""
 
 
-class SourceInboundWireDrawdownPaymentReversal(BaseModel):
-    amount: int
-    """The amount that was reversed."""
-
-    description: str
-    """The description on the reversal message from Fedwire."""
-
-    input_cycle_date: date
-    """The Fedwire cycle date for the wire reversal."""
-
-    input_message_accountability_data: str
-    """The Fedwire transaction identifier."""
-
-    input_sequence_number: str
-    """The Fedwire sequence number."""
-
-    input_source: str
-    """The Fedwire input source identifier."""
-
-    previous_message_input_cycle_date: date
-    """The Fedwire cycle date for the wire transfer that was reversed."""
-
-    previous_message_input_message_accountability_data: str
-    """The Fedwire transaction identifier for the wire transfer that was reversed."""
-
-    previous_message_input_sequence_number: str
-    """The Fedwire sequence number for the wire transfer that was reversed."""
-
-    previous_message_input_source: str
-    """The Fedwire input source identifier for the wire transfer that was reversed."""
-
-
 class SourceInboundWireDrawdownPayment(BaseModel):
     amount: int
     """The amount in the minor unit of the transaction's currency.
@@ -713,6 +705,38 @@ class SourceInboundWireDrawdownPayment(BaseModel):
     originator_name: Optional[str]
 
     originator_to_beneficiary_information: Optional[str]
+
+
+class SourceInboundWireDrawdownPaymentReversal(BaseModel):
+    amount: int
+    """The amount that was reversed."""
+
+    description: str
+    """The description on the reversal message from Fedwire."""
+
+    input_cycle_date: date
+    """The Fedwire cycle date for the wire reversal."""
+
+    input_message_accountability_data: str
+    """The Fedwire transaction identifier."""
+
+    input_sequence_number: str
+    """The Fedwire sequence number."""
+
+    input_source: str
+    """The Fedwire input source identifier."""
+
+    previous_message_input_cycle_date: date
+    """The Fedwire cycle date for the wire transfer that was reversed."""
+
+    previous_message_input_message_accountability_data: str
+    """The Fedwire transaction identifier for the wire transfer that was reversed."""
+
+    previous_message_input_sequence_number: str
+    """The Fedwire sequence number for the wire transfer that was reversed."""
+
+    previous_message_input_source: str
+    """The Fedwire input source identifier for the wire transfer that was reversed."""
 
 
 class SourceInboundWireReversal(BaseModel):
@@ -966,13 +990,14 @@ class Source(BaseModel):
         "ach_transfer_return",
         "card_dispute_acceptance",
         "card_refund",
-        "card_settlement",
         "card_revenue_payment",
+        "card_settlement",
         "check_deposit_acceptance",
         "check_deposit_return",
+        "check_transfer_deposit",
         "check_transfer_intention",
-        "check_transfer_return",
         "check_transfer_rejection",
+        "check_transfer_return",
         "check_transfer_stop_payment_request",
         "fee_payment",
         "inbound_ach_transfer",
@@ -980,8 +1005,8 @@ class Source(BaseModel):
         "inbound_check",
         "inbound_international_ach_transfer",
         "inbound_real_time_payments_transfer_confirmation",
-        "inbound_wire_drawdown_payment_reversal",
         "inbound_wire_drawdown_payment",
+        "inbound_wire_drawdown_payment_reversal",
         "inbound_wire_reversal",
         "inbound_wire_transfer",
         "interest_payment",
@@ -1010,6 +1035,13 @@ class Source(BaseModel):
 
     This field will be present in the JSON response if and only if `category` is
     equal to `check_deposit_return`.
+    """
+
+    check_transfer_deposit: Optional[SourceCheckTransferDeposit]
+    """A Check Transfer Deposit object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `check_transfer_deposit`.
     """
 
     check_transfer_intention: Optional[SourceCheckTransferIntention]
