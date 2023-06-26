@@ -93,13 +93,19 @@ class StopPaymentRequest(BaseModel):
 
 class Deposit(BaseModel):
     back_image_file_id: Optional[str]
-    """The ID for the File containing the image of the rear of the check."""
+    """
+    The identifier of the API File object containing an image of the back of the
+    deposited check.
+    """
 
     deposited_at: datetime
     """When the check was deposited."""
 
     front_image_file_id: Optional[str]
-    """The ID for the File containing the image of the front of the check."""
+    """
+    The identifier of the API File object containing an image of the front of the
+    deposited check.
+    """
 
     type: Literal["check_transfer_deposit"]
     """A constant representing the object's type.
