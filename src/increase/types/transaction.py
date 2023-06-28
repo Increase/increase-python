@@ -199,6 +199,9 @@ class SourceCardDisputeAcceptance(BaseModel):
 
 
 class SourceCardRefund(BaseModel):
+    id: str
+    """The Card Refund identifier."""
+
     amount: int
     """The pending amount in the minor unit of the transaction's currency.
 
@@ -210,9 +213,6 @@ class SourceCardRefund(BaseModel):
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
     transaction's currency.
     """
-
-    id: str
-    """The Card Refund identifier."""
 
     merchant_acceptor_id: Optional[str]
     """
@@ -266,6 +266,9 @@ class SourceCardRevenuePayment(BaseModel):
 
 
 class SourceCardSettlement(BaseModel):
+    id: str
+    """The Card Settlement identifier."""
+
     amount: int
     """The amount in the minor unit of the transaction's settlement currency.
 
@@ -283,9 +286,6 @@ class SourceCardSettlement(BaseModel):
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
     transaction's settlement currency.
     """
-
-    id: str
-    """The Card Settlement identifier."""
 
     merchant_acceptor_id: Optional[str]
     """
@@ -1179,6 +1179,9 @@ class Source(BaseModel):
 
 
 class Transaction(BaseModel):
+    id: str
+    """The Transaction identifier."""
+
     account_id: str
     """The identifier for the Account the Transaction belongs to."""
 
@@ -1207,9 +1210,6 @@ class Transaction(BaseModel):
     For a Transaction related to a payment, this is the description the vendor
     provides.
     """
-
-    id: str
-    """The Transaction identifier."""
 
     route_id: Optional[str]
     """The identifier for the route this Transaction came through.

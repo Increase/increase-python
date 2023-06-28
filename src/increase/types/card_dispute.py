@@ -41,6 +41,9 @@ class Rejection(BaseModel):
 
 
 class CardDispute(BaseModel):
+    id: str
+    """The Card Dispute identifier."""
+
     acceptance: Optional[Acceptance]
     """
     If the Card Dispute's status is `accepted`, this will contain details of the
@@ -58,9 +61,6 @@ class CardDispute(BaseModel):
 
     explanation: str
     """Why you disputed the Transaction in question."""
-
-    id: str
-    """The Card Dispute identifier."""
 
     rejection: Optional[Rejection]
     """

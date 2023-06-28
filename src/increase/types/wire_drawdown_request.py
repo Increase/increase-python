@@ -17,6 +17,9 @@ class Submission(BaseModel):
 
 
 class WireDrawdownRequest(BaseModel):
+    id: str
+    """The Wire drawdown request identifier."""
+
     account_number_id: str
     """
     The Account Number to which the recipient of this request is being requested to
@@ -37,9 +40,6 @@ class WireDrawdownRequest(BaseModel):
     If the recipient fulfills the drawdown request by sending funds, then this will
     be the identifier of the corresponding Transaction.
     """
-
-    id: str
-    """The Wire drawdown request identifier."""
 
     message_to_recipient: str
     """The message the recipient will see as part of the drawdown request."""

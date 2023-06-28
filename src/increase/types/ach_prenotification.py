@@ -21,6 +21,9 @@ class PrenotificationReturn(BaseModel):
 
 
 class ACHPrenotification(BaseModel):
+    id: str
+    """The ACH Prenotification's identifier."""
+
     account_number: str
     """The destination account number."""
 
@@ -52,9 +55,6 @@ class ACHPrenotification(BaseModel):
     """
     The effective date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
     """
-
-    id: str
-    """The ACH Prenotification's identifier."""
 
     prenotification_return: Optional[PrenotificationReturn]
     """If your prenotification is returned, this will contain details of the return."""

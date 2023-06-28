@@ -10,11 +10,11 @@ __all__ = ["EventSubscription"]
 
 
 class EventSubscription(BaseModel):
-    created_at: datetime
-    """The time the event subscription was created."""
-
     id: str
     """The event subscription identifier."""
+
+    created_at: datetime
+    """The time the event subscription was created."""
 
     selected_event_category: Optional[
         Literal[

@@ -8,34 +8,14 @@ from .._models import BaseModel
 
 __all__ = [
     "CheckTransfer",
-    "ReturnAddress",
     "Approval",
     "Cancellation",
-    "Submission",
-    "StopPaymentRequest",
     "Deposit",
+    "ReturnAddress",
     "ReturnDetails",
+    "StopPaymentRequest",
+    "Submission",
 ]
-
-
-class ReturnAddress(BaseModel):
-    city: Optional[str]
-    """The city of the address."""
-
-    line1: Optional[str]
-    """The first line of the address."""
-
-    line2: Optional[str]
-    """The second line of the address."""
-
-    name: Optional[str]
-    """The name of the address."""
-
-    state: Optional[str]
-    """The US state of the address."""
-
-    zip: Optional[str]
-    """The postal code of the address."""
 
 
 class Approval(BaseModel):
@@ -66,31 +46,6 @@ class Cancellation(BaseModel):
     """
 
 
-class Submission(BaseModel):
-    check_number: str
-    """The identitying number of the check."""
-
-    submitted_at: datetime
-    """When this check transfer was submitted to our check printer."""
-
-
-class StopPaymentRequest(BaseModel):
-    requested_at: datetime
-    """The time the stop-payment was requested."""
-
-    transaction_id: str
-    """The transaction ID of the corresponding credit transaction."""
-
-    transfer_id: str
-    """The ID of the check transfer that was stopped."""
-
-    type: Literal["check_transfer_stop_payment_request"]
-    """A constant representing the object's type.
-
-    For this resource it will always be `check_transfer_stop_payment_request`.
-    """
-
-
 class Deposit(BaseModel):
     back_image_file_id: Optional[str]
     """
@@ -112,6 +67,26 @@ class Deposit(BaseModel):
 
     For this resource it will always be `check_transfer_deposit`.
     """
+
+
+class ReturnAddress(BaseModel):
+    city: Optional[str]
+    """The city of the address."""
+
+    line1: Optional[str]
+    """The first line of the address."""
+
+    line2: Optional[str]
+    """The second line of the address."""
+
+    name: Optional[str]
+    """The name of the address."""
+
+    state: Optional[str]
+    """The US state of the address."""
+
+    zip: Optional[str]
+    """The postal code of the address."""
 
 
 class ReturnDetails(BaseModel):
@@ -137,7 +112,35 @@ class ReturnDetails(BaseModel):
     """The identifier of the returned Check Transfer."""
 
 
+class StopPaymentRequest(BaseModel):
+    requested_at: datetime
+    """The time the stop-payment was requested."""
+
+    transaction_id: str
+    """The transaction ID of the corresponding credit transaction."""
+
+    transfer_id: str
+    """The ID of the check transfer that was stopped."""
+
+    type: Literal["check_transfer_stop_payment_request"]
+    """A constant representing the object's type.
+
+    For this resource it will always be `check_transfer_stop_payment_request`.
+    """
+
+
+class Submission(BaseModel):
+    check_number: str
+    """The identitying number of the check."""
+
+    submitted_at: datetime
+    """When this check transfer was submitted to our check printer."""
+
+
 class CheckTransfer(BaseModel):
+    id: str
+    """The Check transfer's identifier."""
+
     account_id: str
     """The identifier of the Account from which funds will be transferred."""
 
@@ -185,9 +188,6 @@ class CheckTransfer(BaseModel):
 
     deposit: Optional[Deposit]
     """After a check transfer is deposited, this will contain supplemental details."""
-
-    id: str
-    """The Check transfer's identifier."""
 
     mailed_at: Optional[datetime]
     """

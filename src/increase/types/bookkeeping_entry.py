@@ -8,6 +8,9 @@ __all__ = ["BookkeepingEntry"]
 
 
 class BookkeepingEntry(BaseModel):
+    id: str
+    """The entry identifier."""
+
     account_id: str
     """The identifier for the Account the Entry belongs to."""
 
@@ -19,9 +22,6 @@ class BookkeepingEntry(BaseModel):
 
     entry_set_id: str
     """The identifier for the Account the Entry belongs to."""
-
-    id: str
-    """The entry identifier."""
 
     type: Literal["bookkeeping_entry"]
     """A constant representing the object's type.

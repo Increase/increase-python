@@ -83,6 +83,9 @@ class SourceCardAuthorizationNetworkDetails(BaseModel):
 
 
 class SourceCardAuthorization(BaseModel):
+    id: str
+    """The Card Authorization identifier."""
+
     amount: int
     """The pending amount in the minor unit of the transaction's currency.
 
@@ -106,9 +109,6 @@ class SourceCardAuthorization(BaseModel):
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) when this authorization
     will expire and the pending transaction will be released.
     """
-
-    id: str
-    """The Card Authorization identifier."""
 
     merchant_acceptor_id: str
     """
@@ -343,6 +343,9 @@ class Source(BaseModel):
 
 
 class PendingTransaction(BaseModel):
+    id: str
+    """The Pending Transaction identifier."""
+
     account_id: str
     """The identifier for the account this Pending Transaction belongs to."""
 
@@ -377,9 +380,6 @@ class PendingTransaction(BaseModel):
     provide. For a Pending Transaction related to a payment, this is the description
     the vendor provides.
     """
-
-    id: str
-    """The Pending Transaction identifier."""
 
     route_id: Optional[str]
     """The identifier for the route this Pending Transaction came through.

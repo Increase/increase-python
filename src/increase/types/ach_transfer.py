@@ -153,6 +153,9 @@ class Submission(BaseModel):
 
 
 class ACHTransfer(BaseModel):
+    id: str
+    """The ACH transfer's identifier."""
+
     account_id: str
     """The Account to which the transfer belongs."""
 
@@ -217,9 +220,6 @@ class ACHTransfer(BaseModel):
 
     funding: Literal["checking", "savings"]
     """The type of the account to which the transfer will be sent."""
-
-    id: str
-    """The ACH transfer's identifier."""
 
     individual_id: Optional[str]
     """Your identifer for the transfer recipient."""

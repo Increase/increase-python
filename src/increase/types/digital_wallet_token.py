@@ -9,6 +9,9 @@ __all__ = ["DigitalWalletToken"]
 
 
 class DigitalWalletToken(BaseModel):
+    id: str
+    """The Digital Wallet Token identifier."""
+
     card_id: str
     """The identifier for the Card this Digital Wallet Token belongs to."""
 
@@ -17,9 +20,6 @@ class DigitalWalletToken(BaseModel):
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the Card was created.
     """
-
-    id: str
-    """The Digital Wallet Token identifier."""
 
     status: Literal["active", "inactive", "suspended", "deactivated"]
     """This indicates if payments can be made with the Digital Wallet Token."""

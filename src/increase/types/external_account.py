@@ -9,6 +9,9 @@ __all__ = ["ExternalAccount"]
 
 
 class ExternalAccount(BaseModel):
+    id: str
+    """The External Account's identifier."""
+
     account_number: str
     """The destination account number."""
 
@@ -23,9 +26,6 @@ class ExternalAccount(BaseModel):
 
     funding: Literal["checking", "savings", "other"]
     """The type of the account to which the transfer will be sent."""
-
-    id: str
-    """The External Account's identifier."""
 
     routing_number: str
     """The American Bankers' Association (ABA) Routing Transit Number (RTN)."""
