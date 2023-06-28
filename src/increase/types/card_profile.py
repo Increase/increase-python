@@ -47,6 +47,9 @@ class DigitalWallets(BaseModel):
 
 
 class CardProfile(BaseModel):
+    id: str
+    """The Card Profile identifier."""
+
     created_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -62,9 +65,6 @@ class CardProfile(BaseModel):
     Different wallets will use these values to render card artwork appropriately for
     their app.
     """
-
-    id: str
-    """The Card Profile identifier."""
 
     status: Literal["pending", "rejected", "active", "archived"]
     """The status of the Card Profile."""

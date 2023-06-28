@@ -9,6 +9,9 @@ __all__ = ["Group"]
 
 
 class Group(BaseModel):
+    id: str
+    """The Group identifier."""
+
     ach_debit_status: Literal["disabled", "enabled"]
     """If the Group is allowed to create ACH debits."""
 
@@ -20,9 +23,6 @@ class Group(BaseModel):
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Group
     was created.
     """
-
-    id: str
-    """The Group identifier."""
 
     type: Literal["group"]
     """A constant representing the object's type.

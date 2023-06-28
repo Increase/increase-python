@@ -10,6 +10,9 @@ __all__ = ["Document"]
 
 
 class Document(BaseModel):
+    id: str
+    """The Document identifier."""
+
     category: Literal["form_1099_int", "proof_of_authorization", "company_information"]
     """The type of document."""
 
@@ -24,9 +27,6 @@ class Document(BaseModel):
 
     file_id: str
     """The identifier of the File containing the Document's contents."""
-
-    id: str
-    """The Document identifier."""
 
     type: Literal["document"]
     """A constant representing the object's type.

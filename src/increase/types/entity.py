@@ -14,23 +14,23 @@ __all__ = [
     "CorporationBeneficialOwnerIndividual",
     "CorporationBeneficialOwnerIndividualAddress",
     "CorporationBeneficialOwnerIndividualIdentification",
-    "NaturalPerson",
-    "NaturalPersonAddress",
-    "NaturalPersonIdentification",
     "Joint",
     "JointIndividual",
     "JointIndividualAddress",
     "JointIndividualIdentification",
+    "NaturalPerson",
+    "NaturalPersonAddress",
+    "NaturalPersonIdentification",
+    "SupplementalDocument",
     "Trust",
     "TrustAddress",
+    "TrustGrantor",
+    "TrustGrantorAddress",
+    "TrustGrantorIdentification",
     "TrustTrustee",
     "TrustTrusteeIndividual",
     "TrustTrusteeIndividualAddress",
     "TrustTrusteeIndividualIdentification",
-    "TrustGrantor",
-    "TrustGrantorAddress",
-    "TrustGrantorIdentification",
-    "SupplementalDocument",
 ]
 
 
@@ -138,53 +138,6 @@ class Corporation(BaseModel):
     """The website of the corporation."""
 
 
-class NaturalPersonAddress(BaseModel):
-    city: str
-    """The city of the address."""
-
-    line1: str
-    """The first line of the address."""
-
-    line2: Optional[str]
-    """The second line of the address."""
-
-    state: str
-    """
-    The two-letter United States Postal Service (USPS) abbreviation for the state of
-    the address.
-    """
-
-    zip: str
-    """The ZIP code of the address."""
-
-
-class NaturalPersonIdentification(BaseModel):
-    method: Literal[
-        "social_security_number", "individual_taxpayer_identification_number", "passport", "drivers_license", "other"
-    ]
-    """A method that can be used to verify the individual's identity."""
-
-    number_last4: str
-    """
-    The last 4 digits of the identification number that can be used to verify the
-    individual's identity.
-    """
-
-
-class NaturalPerson(BaseModel):
-    address: NaturalPersonAddress
-    """The person's address."""
-
-    date_of_birth: date
-    """The person's date of birth in YYYY-MM-DD format."""
-
-    identification: NaturalPersonIdentification
-    """A means of verifying the person's identity."""
-
-    name: str
-    """The person's legal name."""
-
-
 class JointIndividualAddress(BaseModel):
     city: str
     """The city of the address."""
@@ -240,6 +193,70 @@ class Joint(BaseModel):
     """The entity's name."""
 
 
+class NaturalPersonAddress(BaseModel):
+    city: str
+    """The city of the address."""
+
+    line1: str
+    """The first line of the address."""
+
+    line2: Optional[str]
+    """The second line of the address."""
+
+    state: str
+    """
+    The two-letter United States Postal Service (USPS) abbreviation for the state of
+    the address.
+    """
+
+    zip: str
+    """The ZIP code of the address."""
+
+
+class NaturalPersonIdentification(BaseModel):
+    method: Literal[
+        "social_security_number", "individual_taxpayer_identification_number", "passport", "drivers_license", "other"
+    ]
+    """A method that can be used to verify the individual's identity."""
+
+    number_last4: str
+    """
+    The last 4 digits of the identification number that can be used to verify the
+    individual's identity.
+    """
+
+
+class NaturalPerson(BaseModel):
+    address: NaturalPersonAddress
+    """The person's address."""
+
+    date_of_birth: date
+    """The person's date of birth in YYYY-MM-DD format."""
+
+    identification: NaturalPersonIdentification
+    """A means of verifying the person's identity."""
+
+    name: str
+    """The person's legal name."""
+
+
+class SupplementalDocument(BaseModel):
+    created_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the
+    Supplemental Document was created.
+    """
+
+    file_id: str
+    """The File containing the document."""
+
+    type: Literal["entity_supplemental_document"]
+    """A constant representing the object's type.
+
+    For this resource it will always be `entity_supplemental_document`.
+    """
+
+
 class TrustAddress(BaseModel):
     city: str
     """The city of the address."""
@@ -258,6 +275,53 @@ class TrustAddress(BaseModel):
 
     zip: str
     """The ZIP code of the address."""
+
+
+class TrustGrantorAddress(BaseModel):
+    city: str
+    """The city of the address."""
+
+    line1: str
+    """The first line of the address."""
+
+    line2: Optional[str]
+    """The second line of the address."""
+
+    state: str
+    """
+    The two-letter United States Postal Service (USPS) abbreviation for the state of
+    the address.
+    """
+
+    zip: str
+    """The ZIP code of the address."""
+
+
+class TrustGrantorIdentification(BaseModel):
+    method: Literal[
+        "social_security_number", "individual_taxpayer_identification_number", "passport", "drivers_license", "other"
+    ]
+    """A method that can be used to verify the individual's identity."""
+
+    number_last4: str
+    """
+    The last 4 digits of the identification number that can be used to verify the
+    individual's identity.
+    """
+
+
+class TrustGrantor(BaseModel):
+    address: TrustGrantorAddress
+    """The person's address."""
+
+    date_of_birth: date
+    """The person's date of birth in YYYY-MM-DD format."""
+
+    identification: TrustGrantorIdentification
+    """A means of verifying the person's identity."""
+
+    name: str
+    """The person's legal name."""
 
 
 class TrustTrusteeIndividualAddress(BaseModel):
@@ -318,53 +382,6 @@ class TrustTrustee(BaseModel):
     """The structure of the trustee. Will always be equal to `individual`."""
 
 
-class TrustGrantorAddress(BaseModel):
-    city: str
-    """The city of the address."""
-
-    line1: str
-    """The first line of the address."""
-
-    line2: Optional[str]
-    """The second line of the address."""
-
-    state: str
-    """
-    The two-letter United States Postal Service (USPS) abbreviation for the state of
-    the address.
-    """
-
-    zip: str
-    """The ZIP code of the address."""
-
-
-class TrustGrantorIdentification(BaseModel):
-    method: Literal[
-        "social_security_number", "individual_taxpayer_identification_number", "passport", "drivers_license", "other"
-    ]
-    """A method that can be used to verify the individual's identity."""
-
-    number_last4: str
-    """
-    The last 4 digits of the identification number that can be used to verify the
-    individual's identity.
-    """
-
-
-class TrustGrantor(BaseModel):
-    address: TrustGrantorAddress
-    """The person's address."""
-
-    date_of_birth: date
-    """The person's date of birth in YYYY-MM-DD format."""
-
-    identification: TrustGrantorIdentification
-    """A means of verifying the person's identity."""
-
-    name: str
-    """The person's legal name."""
-
-
 class Trust(BaseModel):
     address: TrustAddress
     """The trust's address."""
@@ -394,24 +411,10 @@ class Trust(BaseModel):
     """The trustees of the trust."""
 
 
-class SupplementalDocument(BaseModel):
-    created_at: datetime
-    """
-    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the
-    Supplemental Document was created.
-    """
-
-    file_id: str
-    """The File containing the document."""
-
-    type: Literal["entity_supplemental_document"]
-    """A constant representing the object's type.
-
-    For this resource it will always be `entity_supplemental_document`.
-    """
-
-
 class Entity(BaseModel):
+    id: str
+    """The entity's identifier."""
+
     corporation: Optional[Corporation]
     """Details of the corporation entity.
 
@@ -420,9 +423,6 @@ class Entity(BaseModel):
 
     description: Optional[str]
     """The entity's description for display purposes."""
-
-    id: str
-    """The entity's identifier."""
 
     joint: Optional[Joint]
     """Details of the joint entity.

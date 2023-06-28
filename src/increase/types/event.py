@@ -9,6 +9,9 @@ __all__ = ["Event"]
 
 
 class Event(BaseModel):
+    id: str
+    """The Event identifier."""
+
     associated_object_id: str
     """The identifier of the object that generated this Event."""
 
@@ -75,9 +78,6 @@ class Event(BaseModel):
 
     created_at: datetime
     """The time the Event was created."""
-
-    id: str
-    """The Event identifier."""
 
     type: Literal["event"]
     """A constant representing the object's type.

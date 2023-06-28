@@ -122,6 +122,9 @@ class DepositReturn(BaseModel):
 
 
 class CheckDeposit(BaseModel):
+    id: str
+    """The deposit's identifier."""
+
     account_id: str
     """The Account the check was deposited into."""
 
@@ -163,9 +166,6 @@ class CheckDeposit(BaseModel):
 
     front_image_file_id: str
     """The ID for the File containing the image of the front of the check."""
-
-    id: str
-    """The deposit's identifier."""
 
     status: Literal["pending", "submitted", "rejected", "returned"]
     """The status of the Check Deposit."""

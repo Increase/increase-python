@@ -316,10 +316,10 @@ class Increase(SyncAPIClient):
                 request=request,
                 response=response,
                 body={
-                    "type": "internal_server_error",
-                    "title": "",
                     "detail": None,
                     "status": 500,
+                    "title": "",
+                    "type": "internal_server_error",
                 },
             )
         return super()._make_status_error(err_msg, request=request, response=response, body=body)
@@ -591,10 +591,10 @@ class AsyncIncrease(AsyncAPIClient):
                 request=request,
                 response=response,
                 body={
-                    "type": "internal_server_error",
-                    "title": "",
                     "detail": None,
                     "status": 500,
+                    "title": "",
+                    "type": "internal_server_error",
                 },
             )
         return super()._make_status_error(err_msg, request=request, response=response, body=body)

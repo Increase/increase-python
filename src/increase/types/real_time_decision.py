@@ -12,8 +12,8 @@ __all__ = [
     "CardAuthorization",
     "CardAuthorizationNetworkDetails",
     "CardAuthorizationNetworkDetailsVisa",
-    "DigitalWalletToken",
     "DigitalWalletAuthentication",
+    "DigitalWalletToken",
 ]
 
 
@@ -111,27 +111,6 @@ class CardAuthorization(BaseModel):
     """
 
 
-class DigitalWalletToken(BaseModel):
-    card_id: str
-    """The identifier of the Card that is being tokenized."""
-
-    card_profile_id: Optional[str]
-    """The identifier of the Card Profile that was set via the real time decision.
-
-    This will be null until the real time decision is responded to or if the real
-    time decision did not set a card profile.
-    """
-
-    decision: Optional[Literal["approve", "decline"]]
-    """Whether or not the provisioning request was approved.
-
-    This will be null until the real time decision is responded to.
-    """
-
-    digital_wallet: Literal["apple_pay", "google_pay"]
-    """The digital wallet app being used."""
-
-
 class DigitalWalletAuthentication(BaseModel):
     card_id: str
     """The identifier of the Card that is being tokenized."""
@@ -158,7 +137,31 @@ class DigitalWalletAuthentication(BaseModel):
     """Whether your application successfully delivered the one-time passcode."""
 
 
+class DigitalWalletToken(BaseModel):
+    card_id: str
+    """The identifier of the Card that is being tokenized."""
+
+    card_profile_id: Optional[str]
+    """The identifier of the Card Profile that was set via the real time decision.
+
+    This will be null until the real time decision is responded to or if the real
+    time decision did not set a card profile.
+    """
+
+    decision: Optional[Literal["approve", "decline"]]
+    """Whether or not the provisioning request was approved.
+
+    This will be null until the real time decision is responded to.
+    """
+
+    digital_wallet: Literal["apple_pay", "google_pay"]
+    """The digital wallet app being used."""
+
+
 class RealTimeDecision(BaseModel):
+    id: str
+    """The Real-Time Decision identifier."""
+
     card_authorization: Optional[CardAuthorization]
     """Fields related to a card authorization."""
 
@@ -178,9 +181,6 @@ class RealTimeDecision(BaseModel):
 
     digital_wallet_token: Optional[DigitalWalletToken]
     """Fields related to a digital wallet token provisioning attempt."""
-
-    id: str
-    """The Real-Time Decision identifier."""
 
     status: Literal["pending", "responded", "timed_out"]
     """The status of the Real-Time Decision."""

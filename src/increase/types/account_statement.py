@@ -9,6 +9,9 @@ __all__ = ["AccountStatement"]
 
 
 class AccountStatement(BaseModel):
+    id: str
+    """The Account Statement identifier."""
+
     account_id: str
     """The identifier for the Account this Account Statement belongs to."""
 
@@ -23,9 +26,6 @@ class AccountStatement(BaseModel):
 
     file_id: str
     """The identifier of the File containing a PDF of the statement."""
-
-    id: str
-    """The Account Statement identifier."""
 
     starting_balance: int
     """The Account's balance at the start of its statement period."""

@@ -38,6 +38,9 @@ class Cancellation(BaseModel):
 
 
 class AccountTransfer(BaseModel):
+    id: str
+    """The account transfer's identifier."""
+
     account_id: str
     """The Account to which the transfer belongs."""
 
@@ -79,9 +82,6 @@ class AccountTransfer(BaseModel):
 
     destination_transaction_id: Optional[str]
     """The ID for the transaction receiving the transfer."""
-
-    id: str
-    """The account transfer's identifier."""
 
     network: Literal["account"]
     """The transfer's network."""

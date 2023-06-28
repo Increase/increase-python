@@ -6,7 +6,7 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["RealTimePaymentsTransfer", "Approval", "Cancellation", "Submission", "Rejection"]
+__all__ = ["RealTimePaymentsTransfer", "Approval", "Cancellation", "Rejection", "Submission"]
 
 
 class Approval(BaseModel):
@@ -35,17 +35,6 @@ class Cancellation(BaseModel):
     If the Transfer was canceled by a user in the dashboard, the email address of
     that user.
     """
-
-
-class Submission(BaseModel):
-    submitted_at: Optional[datetime]
-    """
-    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-    the transfer was submitted to The Clearing House.
-    """
-
-    transaction_identification: str
-    """The Real Time Payments network identification of the transfer."""
 
 
 class Rejection(BaseModel):
@@ -90,7 +79,21 @@ class Rejection(BaseModel):
     """
 
 
+class Submission(BaseModel):
+    submitted_at: Optional[datetime]
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+    the transfer was submitted to The Clearing House.
+    """
+
+    transaction_identification: str
+    """The Real Time Payments network identification of the transfer."""
+
+
 class RealTimePaymentsTransfer(BaseModel):
+    id: str
+    """The Real Time Payments Transfer's identifier."""
+
     account_id: str
     """The Account from which the transfer was sent."""
 
@@ -135,9 +138,6 @@ class RealTimePaymentsTransfer(BaseModel):
 
     external_account_id: Optional[str]
     """The identifier of the External Account the transfer was made to, if any."""
-
-    id: str
-    """The Real Time Payments Transfer's identifier."""
 
     rejection: Optional[Rejection]
     """

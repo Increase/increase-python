@@ -421,6 +421,9 @@ class Source(BaseModel):
 
 
 class DeclinedTransaction(BaseModel):
+    id: str
+    """The Declined Transaction identifier."""
+
     account_id: str
     """The identifier for the Account the Declined Transaction belongs to."""
 
@@ -445,9 +448,6 @@ class DeclinedTransaction(BaseModel):
 
     description: str
     """This is the description the vendor provides."""
-
-    id: str
-    """The Declined Transaction identifier."""
 
     route_id: Optional[str]
     """The identifier for the route this Declined Transaction came through.
