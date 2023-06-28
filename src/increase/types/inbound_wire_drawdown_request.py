@@ -9,6 +9,9 @@ __all__ = ["InboundWireDrawdownRequest"]
 
 
 class InboundWireDrawdownRequest(BaseModel):
+    id: str
+    """The Wire drawdown request identifier."""
+
     amount: int
     """The amount being requested in cents."""
 
@@ -35,9 +38,6 @@ class InboundWireDrawdownRequest(BaseModel):
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the amount being
     requested. Will always be "USD".
     """
-
-    id: str
-    """The Wire drawdown request identifier."""
 
     message_to_recipient: Optional[str]
     """A message from the drawdown request's originator."""

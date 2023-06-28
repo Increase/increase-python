@@ -9,6 +9,9 @@ __all__ = ["BookkeepingAccount"]
 
 
 class BookkeepingAccount(BaseModel):
+    id: str
+    """The account identifier."""
+
     account_id: Optional[str]
     """The API Account associated with this bookkeeping account."""
 
@@ -17,9 +20,6 @@ class BookkeepingAccount(BaseModel):
 
     entity_id: Optional[str]
     """The Entity associated with this bookkeeping account."""
-
-    id: str
-    """The account identifier."""
 
     name: str
     """The name you choose for the account."""

@@ -99,6 +99,9 @@ class Submission(BaseModel):
 
 
 class WireTransfer(BaseModel):
+    id: str
+    """The wire transfer's identifier."""
+
     account_id: str
     """The Account to which the transfer belongs."""
 
@@ -146,9 +149,6 @@ class WireTransfer(BaseModel):
 
     external_account_id: Optional[str]
     """The identifier of the External Account the transfer was made to, if any."""
-
-    id: str
-    """The wire transfer's identifier."""
 
     message_to_recipient: Optional[str]
     """The message that will show on the recipient's bank statement."""

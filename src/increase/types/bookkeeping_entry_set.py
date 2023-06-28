@@ -10,25 +10,25 @@ __all__ = ["BookkeepingEntrySet", "Entry"]
 
 
 class Entry(BaseModel):
+    id: str
+    """The entry identifier."""
+
     account_id: str
     """The bookkeeping account impacted by the entry."""
 
     amount: int
     """The amount of the entry in minor units."""
 
-    id: str
-    """The entry identifier."""
-
 
 class BookkeepingEntrySet(BaseModel):
+    id: str
+    """The entry set identifier."""
+
     date: datetime
     """The timestamp of the entry set."""
 
     entries: List[Entry]
     """The entries"""
-
-    id: str
-    """The entry set identifier."""
 
     transaction_id: Optional[str]
     """The transaction identifier, if any."""

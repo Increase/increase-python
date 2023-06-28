@@ -10,6 +10,9 @@ __all__ = ["Account"]
 
 
 class Account(BaseModel):
+    id: str
+    """The Account identifier."""
+
     created_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
@@ -24,9 +27,6 @@ class Account(BaseModel):
 
     entity_id: Optional[str]
     """The identifier for the Entity the Account belongs to."""
-
-    id: str
-    """The Account identifier."""
 
     informational_entity_id: Optional[str]
     """

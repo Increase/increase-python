@@ -9,6 +9,9 @@ __all__ = ["AccountNumber"]
 
 
 class AccountNumber(BaseModel):
+    id: str
+    """The Account Number identifier."""
+
     account_id: str
     """The identifier for the account this Account Number belongs to."""
 
@@ -20,9 +23,6 @@ class AccountNumber(BaseModel):
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
     Number was created.
     """
-
-    id: str
-    """The Account Number identifier."""
 
     name: str
     """The name you choose for the Account Number."""

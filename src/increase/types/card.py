@@ -47,6 +47,9 @@ class DigitalWallet(BaseModel):
 
 
 class Card(BaseModel):
+    id: str
+    """The card identifier."""
+
     account_id: str
     """The identifier for the account this card belongs to."""
 
@@ -74,9 +77,6 @@ class Card(BaseModel):
 
     expiration_year: int
     """The year the card expires in YYYY format (e.g., 2025)."""
-
-    id: str
-    """The card identifier."""
 
     last4: str
     """The last 4 digits of the Card's Primary Account Number."""

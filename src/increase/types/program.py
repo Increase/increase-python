@@ -9,14 +9,14 @@ __all__ = ["Program"]
 
 
 class Program(BaseModel):
+    id: str
+    """The Program identifier."""
+
     created_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Program
     was created.
     """
-
-    id: str
-    """The Program identifier."""
 
     name: str
     """The name of the Program."""

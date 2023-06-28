@@ -66,11 +66,11 @@ class InvalidParametersError(exceptions.BadRequestError):
         title = cast(Any, data.get("title"))
         super().__init__(title or message, request=request, response=response, body=body)
 
-        self.type = cast(Any, data.get("type"))
-        self.title = cast(Any, data.get("title"))
         self.detail = cast(Any, data.get("detail"))
-        self.status = cast(Any, data.get("status"))
         self.errors = cast(Any, data.get("errors"))
+        self.status = cast(Any, data.get("status"))
+        self.title = cast(Any, data.get("title"))
+        self.type = cast(Any, data.get("type"))
 
 
 class MalformedRequestError(exceptions.BadRequestError):

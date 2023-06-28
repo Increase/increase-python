@@ -16,22 +16,22 @@ __all__ = [
     "CorporationBeneficialOwnerIndividual",
     "CorporationBeneficialOwnerIndividualAddress",
     "CorporationBeneficialOwnerIndividualIdentification",
-    "CorporationBeneficialOwnerIndividualIdentificationPassport",
     "CorporationBeneficialOwnerIndividualIdentificationDriversLicense",
     "CorporationBeneficialOwnerIndividualIdentificationOther",
+    "CorporationBeneficialOwnerIndividualIdentificationPassport",
     "Joint",
     "JointIndividual",
     "JointIndividualAddress",
     "JointIndividualIdentification",
-    "JointIndividualIdentificationPassport",
     "JointIndividualIdentificationDriversLicense",
     "JointIndividualIdentificationOther",
+    "JointIndividualIdentificationPassport",
     "NaturalPerson",
     "NaturalPersonAddress",
     "NaturalPersonIdentification",
-    "NaturalPersonIdentificationPassport",
     "NaturalPersonIdentificationDriversLicense",
     "NaturalPersonIdentificationOther",
+    "NaturalPersonIdentificationPassport",
     "SupplementalDocument",
     "Trust",
     "TrustAddress",
@@ -39,15 +39,15 @@ __all__ = [
     "TrustTrusteeIndividual",
     "TrustTrusteeIndividualAddress",
     "TrustTrusteeIndividualIdentification",
-    "TrustTrusteeIndividualIdentificationPassport",
     "TrustTrusteeIndividualIdentificationDriversLicense",
     "TrustTrusteeIndividualIdentificationOther",
+    "TrustTrusteeIndividualIdentificationPassport",
     "TrustGrantor",
     "TrustGrantorAddress",
     "TrustGrantorIdentification",
-    "TrustGrantorIdentificationPassport",
     "TrustGrantorIdentificationDriversLicense",
     "TrustGrantorIdentificationOther",
+    "TrustGrantorIdentificationPassport",
 ]
 
 
@@ -131,17 +131,6 @@ class CorporationBeneficialOwnerIndividualAddress(TypedDict, total=False):
     """The second line of the address. This might be the floor or room number."""
 
 
-class CorporationBeneficialOwnerIndividualIdentificationPassport(TypedDict, total=False):
-    country: Required[str]
-    """The country that issued the passport."""
-
-    expiration_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
-    """The passport's expiration date in YYYY-MM-DD format."""
-
-    file_id: Required[str]
-    """The identifier of the File containing the passport."""
-
-
 class CorporationBeneficialOwnerIndividualIdentificationDriversLicense(TypedDict, total=False):
     expiration_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """The driver's license's expiration date in YYYY-MM-DD format."""
@@ -168,6 +157,17 @@ class CorporationBeneficialOwnerIndividualIdentificationOther(TypedDict, total=F
 
     expiration_date: Annotated[Union[str, date], PropertyInfo(format="iso8601")]
     """The document's expiration date in YYYY-MM-DD format."""
+
+
+class CorporationBeneficialOwnerIndividualIdentificationPassport(TypedDict, total=False):
+    country: Required[str]
+    """The country that issued the passport."""
+
+    expiration_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
+    """The passport's expiration date in YYYY-MM-DD format."""
+
+    file_id: Required[str]
+    """The identifier of the File containing the passport."""
 
 
 class CorporationBeneficialOwnerIndividualIdentification(TypedDict, total=False):
@@ -286,17 +286,6 @@ class JointIndividualAddress(TypedDict, total=False):
     """The second line of the address. This might be the floor or room number."""
 
 
-class JointIndividualIdentificationPassport(TypedDict, total=False):
-    country: Required[str]
-    """The country that issued the passport."""
-
-    expiration_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
-    """The passport's expiration date in YYYY-MM-DD format."""
-
-    file_id: Required[str]
-    """The identifier of the File containing the passport."""
-
-
 class JointIndividualIdentificationDriversLicense(TypedDict, total=False):
     expiration_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """The driver's license's expiration date in YYYY-MM-DD format."""
@@ -323,6 +312,17 @@ class JointIndividualIdentificationOther(TypedDict, total=False):
 
     expiration_date: Annotated[Union[str, date], PropertyInfo(format="iso8601")]
     """The document's expiration date in YYYY-MM-DD format."""
+
+
+class JointIndividualIdentificationPassport(TypedDict, total=False):
+    country: Required[str]
+    """The country that issued the passport."""
+
+    expiration_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
+    """The passport's expiration date in YYYY-MM-DD format."""
+
+    file_id: Required[str]
+    """The identifier of the File containing the passport."""
 
 
 class JointIndividualIdentification(TypedDict, total=False):
@@ -412,17 +412,6 @@ class NaturalPersonAddress(TypedDict, total=False):
     """The second line of the address. This might be the floor or room number."""
 
 
-class NaturalPersonIdentificationPassport(TypedDict, total=False):
-    country: Required[str]
-    """The country that issued the passport."""
-
-    expiration_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
-    """The passport's expiration date in YYYY-MM-DD format."""
-
-    file_id: Required[str]
-    """The identifier of the File containing the passport."""
-
-
 class NaturalPersonIdentificationDriversLicense(TypedDict, total=False):
     expiration_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """The driver's license's expiration date in YYYY-MM-DD format."""
@@ -449,6 +438,17 @@ class NaturalPersonIdentificationOther(TypedDict, total=False):
 
     expiration_date: Annotated[Union[str, date], PropertyInfo(format="iso8601")]
     """The document's expiration date in YYYY-MM-DD format."""
+
+
+class NaturalPersonIdentificationPassport(TypedDict, total=False):
+    country: Required[str]
+    """The country that issued the passport."""
+
+    expiration_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
+    """The passport's expiration date in YYYY-MM-DD format."""
+
+    file_id: Required[str]
+    """The identifier of the File containing the passport."""
 
 
 class NaturalPersonIdentification(TypedDict, total=False):
@@ -555,17 +555,6 @@ class TrustTrusteeIndividualAddress(TypedDict, total=False):
     """The second line of the address. This might be the floor or room number."""
 
 
-class TrustTrusteeIndividualIdentificationPassport(TypedDict, total=False):
-    country: Required[str]
-    """The country that issued the passport."""
-
-    expiration_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
-    """The passport's expiration date in YYYY-MM-DD format."""
-
-    file_id: Required[str]
-    """The identifier of the File containing the passport."""
-
-
 class TrustTrusteeIndividualIdentificationDriversLicense(TypedDict, total=False):
     expiration_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """The driver's license's expiration date in YYYY-MM-DD format."""
@@ -592,6 +581,17 @@ class TrustTrusteeIndividualIdentificationOther(TypedDict, total=False):
 
     expiration_date: Annotated[Union[str, date], PropertyInfo(format="iso8601")]
     """The document's expiration date in YYYY-MM-DD format."""
+
+
+class TrustTrusteeIndividualIdentificationPassport(TypedDict, total=False):
+    country: Required[str]
+    """The country that issued the passport."""
+
+    expiration_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
+    """The passport's expiration date in YYYY-MM-DD format."""
+
+    file_id: Required[str]
+    """The identifier of the File containing the passport."""
 
 
 class TrustTrusteeIndividualIdentification(TypedDict, total=False):
@@ -684,17 +684,6 @@ class TrustGrantorAddress(TypedDict, total=False):
     """The second line of the address. This might be the floor or room number."""
 
 
-class TrustGrantorIdentificationPassport(TypedDict, total=False):
-    country: Required[str]
-    """The country that issued the passport."""
-
-    expiration_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
-    """The passport's expiration date in YYYY-MM-DD format."""
-
-    file_id: Required[str]
-    """The identifier of the File containing the passport."""
-
-
 class TrustGrantorIdentificationDriversLicense(TypedDict, total=False):
     expiration_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """The driver's license's expiration date in YYYY-MM-DD format."""
@@ -721,6 +710,17 @@ class TrustGrantorIdentificationOther(TypedDict, total=False):
 
     expiration_date: Annotated[Union[str, date], PropertyInfo(format="iso8601")]
     """The document's expiration date in YYYY-MM-DD format."""
+
+
+class TrustGrantorIdentificationPassport(TypedDict, total=False):
+    country: Required[str]
+    """The country that issued the passport."""
+
+    expiration_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
+    """The passport's expiration date in YYYY-MM-DD format."""
+
+    file_id: Required[str]
+    """The identifier of the File containing the passport."""
 
 
 class TrustGrantorIdentification(TypedDict, total=False):

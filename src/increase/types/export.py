@@ -10,6 +10,9 @@ __all__ = ["Export"]
 
 
 class Export(BaseModel):
+    id: str
+    """The Export identifier."""
+
     category: Literal["transaction_csv", "balance_csv"]
     """The category of the Export.
 
@@ -31,9 +34,6 @@ class Export(BaseModel):
 
     This will be present when the Export's status transitions to `complete`.
     """
-
-    id: str
-    """The Export identifier."""
 
     status: Literal["pending", "complete"]
     """The status of the Export."""
