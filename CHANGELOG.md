@@ -1,5 +1,37 @@
 # Changelog
 
+## [0.8.0](https://github.com/Increase/increase-python/compare/v0.7.1...v0.8.0) (2023-06-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* **api:** remove many enum members from document category ([#24](https://github.com/Increase/increase-python/issues/24))
+
+### Features
+
+* **api/types:** mark more check transfer intention properties as nullable ([#23](https://github.com/Increase/increase-python/issues/23)) ([22a6aa3](https://github.com/Increase/increase-python/commit/22a6aa33ecc3ac9e2ef5800cc4c43f9a49abe02e))
+
+
+### Refactors
+
+* **api:** remove `other` from reason enum ([#21](https://github.com/Increase/increase-python/issues/21)) ([0110ffd](https://github.com/Increase/increase-python/commit/0110ffd691ef3f9640dfe950fa369bcf5235f0d5))
+* **api:** remove many enum members from document category ([#24](https://github.com/Increase/increase-python/issues/24)) ([d7aab0d](https://github.com/Increase/increase-python/commit/d7aab0d1c50e367a942829c7bf51a9372163a317))
+
+
+### Chores
+
+* **deps:** update certifi ([#25](https://github.com/Increase/increase-python/issues/25)) ([791e90f](https://github.com/Increase/increase-python/commit/791e90f67323f8a97e3a7aa8bcac73b939583fbe))
+
+
+### Documentation
+
+* add trailing newlines ([#26](https://github.com/Increase/increase-python/issues/26)) ([936f415](https://github.com/Increase/increase-python/commit/936f4156a7ad098e242a911e23c1b0c71c9385bd))
+
+
+### Styles
+
+* minor reordering of types and properties ([#27](https://github.com/Increase/increase-python/issues/27)) ([b8a4d8b](https://github.com/Increase/increase-python/commit/b8a4d8bbe68dca79fed45907a97138b6b9632aa8))
+
 ## [0.7.1](https://github.com/Increase/increase-python/compare/v0.7.0...v0.7.1) (2023-06-19)
 
 
