@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.1](https://github.com/Increase/increase-python/compare/v0.8.0...v0.8.1) (2023-07-01)
+
+
+### Bug Fixes
+
+* **deps:** pin pydantic to less than v2.0 ([#29](https://github.com/Increase/increase-python/issues/29)) ([1dfdbc0](https://github.com/Increase/increase-python/commit/1dfdbc0a1463f651c8ca35b3fcde3704a43b6a33))
+
 ## [0.8.0](https://github.com/Increase/increase-python/compare/v0.7.1...v0.8.0) (2023-06-29)
 
 
