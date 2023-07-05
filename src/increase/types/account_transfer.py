@@ -72,6 +72,13 @@ class AccountTransfer(BaseModel):
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
     account currency.
+
+    - `CAD` - Canadian Dollar (CAD)
+    - `CHF` - Swiss Franc (CHF)
+    - `EUR` - Euro (EUR)
+    - `GBP` - British Pound (GBP)
+    - `JPY` - Japanese Yen (JPY)
+    - `USD` - US Dollar (USD)
     """
 
     description: str
@@ -87,7 +94,12 @@ class AccountTransfer(BaseModel):
     """The transfer's network."""
 
     status: Literal["pending_approval", "canceled", "complete"]
-    """The lifecycle status of the transfer."""
+    """The lifecycle status of the transfer.
+
+    - `pending_approval` - The transfer is pending approval.
+    - `canceled` - The transfer has been canceled.
+    - `complete` - The transfer has been completed.
+    """
 
     transaction_id: Optional[str]
     """The ID for the transaction funding the transfer."""

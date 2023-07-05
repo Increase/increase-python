@@ -148,6 +148,10 @@ class Cards(SyncAPIResource):
 
           status: The status to update the Card with.
 
+              - `active` - The card is active.
+              - `disabled` - The card is temporarily disabled.
+              - `canceled` - The card is temporarily canceled.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -394,6 +398,10 @@ class AsyncCards(AsyncAPIResource):
               steps.
 
           status: The status to update the Card with.
+
+              - `active` - The card is active.
+              - `disabled` - The card is temporarily disabled.
+              - `canceled` - The card is temporarily canceled.
 
           extra_headers: Send extra headers
 

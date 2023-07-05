@@ -18,6 +18,10 @@ class Export(BaseModel):
 
     We may add additional possible values for this enum over time; your application
     should be able to handle that gracefully.
+
+    - `transaction_csv` - Export a CSV of all transactions for a given time range.
+    - `balance_csv` - Export a CSV of account balances for the dates in a given
+      range.
     """
 
     created_at: datetime
@@ -36,7 +40,11 @@ class Export(BaseModel):
     """
 
     status: Literal["pending", "complete"]
-    """The status of the Export."""
+    """The status of the Export.
+
+    - `pending` - Increase is generating the export.
+    - `complete` - The export has been successfully generated.
+    """
 
     type: Literal["export"]
     """A constant representing the object's type.

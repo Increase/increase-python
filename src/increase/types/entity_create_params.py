@@ -53,10 +53,22 @@ __all__ = [
 
 class EntityCreateParams(TypedDict, total=False):
     relationship: Required[Literal["affiliated", "informational", "unaffiliated"]]
-    """The relationship between your group and the entity."""
+    """The relationship between your group and the entity.
+
+    - `affiliated` - The entity is controlled by your group.
+    - `informational` - The entity is for informational purposes only.
+    - `unaffiliated` - The entity is not controlled by your group, but can still
+      directly open accounts.
+    """
 
     structure: Required[Literal["corporation", "natural_person", "joint", "trust"]]
-    """The type of Entity to create."""
+    """The type of Entity to create.
+
+    - `corporation` - A corporation.
+    - `natural_person` - An individual person.
+    - `joint` - Multiple individual people.
+    - `trust` - A trust.
+    """
 
     corporation: Corporation
     """Details of the corporation entity to create.
@@ -180,7 +192,15 @@ class CorporationBeneficialOwnerIndividualIdentification(TypedDict, total=False)
             "other",
         ]
     ]
-    """A method that can be used to verify the individual's identity."""
+    """A method that can be used to verify the individual's identity.
+
+    - `social_security_number` - A social security number.
+    - `individual_taxpayer_identification_number` - An individual taxpayer
+      identification number (ITIN).
+    - `passport` - A passport number.
+    - `drivers_license` - A driver's license number.
+    - `other` - Another identifying document.
+    """
 
     number: Required[str]
     """
@@ -234,7 +254,13 @@ class CorporationBeneficialOwner(TypedDict, total=False):
     """Personal details for the beneficial owner."""
 
     prong: Required[Literal["ownership", "control"]]
-    """Why this person is considered a beneficial owner of the entity."""
+    """Why this person is considered a beneficial owner of the entity.
+
+    - `ownership` - A person with 25% or greater direct or indirect ownership of the
+      entity.
+    - `control` - A person who manages, directs, or has significant control of the
+      entity.
+    """
 
     company_title: str
     """This person's role or title within the entity."""
@@ -335,7 +361,15 @@ class JointIndividualIdentification(TypedDict, total=False):
             "other",
         ]
     ]
-    """A method that can be used to verify the individual's identity."""
+    """A method that can be used to verify the individual's identity.
+
+    - `social_security_number` - A social security number.
+    - `individual_taxpayer_identification_number` - An individual taxpayer
+      identification number (ITIN).
+    - `passport` - A passport number.
+    - `drivers_license` - A driver's license number.
+    - `other` - Another identifying document.
+    """
 
     number: Required[str]
     """
@@ -461,7 +495,15 @@ class NaturalPersonIdentification(TypedDict, total=False):
             "other",
         ]
     ]
-    """A method that can be used to verify the individual's identity."""
+    """A method that can be used to verify the individual's identity.
+
+    - `social_security_number` - A social security number.
+    - `individual_taxpayer_identification_number` - An individual taxpayer
+      identification number (ITIN).
+    - `passport` - A passport number.
+    - `drivers_license` - A driver's license number.
+    - `other` - Another identifying document.
+    """
 
     number: Required[str]
     """
@@ -604,7 +646,15 @@ class TrustTrusteeIndividualIdentification(TypedDict, total=False):
             "other",
         ]
     ]
-    """A method that can be used to verify the individual's identity."""
+    """A method that can be used to verify the individual's identity.
+
+    - `social_security_number` - A social security number.
+    - `individual_taxpayer_identification_number` - An individual taxpayer
+      identification number (ITIN).
+    - `passport` - A passport number.
+    - `drivers_license` - A driver's license number.
+    - `other` - Another identifying document.
+    """
 
     number: Required[str]
     """
@@ -655,7 +705,10 @@ class TrustTrusteeIndividual(TypedDict, total=False):
 
 class TrustTrustee(TypedDict, total=False):
     structure: Required[Literal["individual"]]
-    """The structure of the trustee."""
+    """The structure of the trustee.
+
+    - `individual` - The trustee is an individual.
+    """
 
     individual: TrustTrusteeIndividual
     """Details of the individual trustee.
@@ -733,7 +786,15 @@ class TrustGrantorIdentification(TypedDict, total=False):
             "other",
         ]
     ]
-    """A method that can be used to verify the individual's identity."""
+    """A method that can be used to verify the individual's identity.
+
+    - `social_security_number` - A social security number.
+    - `individual_taxpayer_identification_number` - An individual taxpayer
+      identification number (ITIN).
+    - `passport` - A passport number.
+    - `drivers_license` - A driver's license number.
+    - `other` - Another identifying document.
+    """
 
     number: Required[str]
     """
@@ -791,6 +852,9 @@ class Trust(TypedDict, total=False):
 
     Irrevocable trusts require their own Employer Identification Number. Revocable
     trusts require information about the individual `grantor` who created the trust.
+
+    - `revocable` - The trust is revocable by the grantor.
+    - `irrevocable` - The trust cannot be revoked.
     """
 
     name: Required[str]

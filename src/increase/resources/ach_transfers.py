@@ -90,6 +90,9 @@ class ACHTransfers(SyncAPIResource):
 
           funding: The type of the account to which the transfer will be sent.
 
+              - `checking` - A checking account.
+              - `savings` - A savings account.
+
           individual_id: Your identifer for the transfer recipient.
 
           individual_name: The name of the transfer recipient. This value is informational and not verified
@@ -101,6 +104,10 @@ class ACHTransfers(SyncAPIResource):
               destination account.
 
           standard_entry_class_code: The Standard Entry Class (SEC) code to use for the transfer.
+
+              - `corporate_credit_or_debit` - Corporate Credit and Debit (CCD).
+              - `prearranged_payments_and_deposit` - Prearranged Payments and Deposits (PPD).
+              - `internet_initiated` - Internet Initiated (WEB).
 
           extra_headers: Send extra headers
 
@@ -392,6 +399,9 @@ class AsyncACHTransfers(AsyncAPIResource):
 
           funding: The type of the account to which the transfer will be sent.
 
+              - `checking` - A checking account.
+              - `savings` - A savings account.
+
           individual_id: Your identifer for the transfer recipient.
 
           individual_name: The name of the transfer recipient. This value is informational and not verified
@@ -403,6 +413,10 @@ class AsyncACHTransfers(AsyncAPIResource):
               destination account.
 
           standard_entry_class_code: The Standard Entry Class (SEC) code to use for the transfer.
+
+              - `corporate_credit_or_debit` - Corporate Credit and Debit (CCD).
+              - `prearranged_payments_and_deposit` - Prearranged Payments and Deposits (PPD).
+              - `internet_initiated` - Internet Initiated (WEB).
 
           extra_headers: Send extra headers
 

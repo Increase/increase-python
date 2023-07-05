@@ -35,6 +35,10 @@ class Exports(SyncAPIResource):
         Args:
           category: The type of Export to create.
 
+              - `transaction_csv` - Export a CSV of all transactions for a given time range.
+              - `balance_csv` - Export a CSV of account balances for the dates in a given
+                range.
+
           balance_csv: Options for the created export. Required if `category` is equal to
               `balance_csv`.
 
@@ -173,6 +177,10 @@ class AsyncExports(AsyncAPIResource):
 
         Args:
           category: The type of Export to create.
+
+              - `transaction_csv` - Export a CSV of all transactions for a given time range.
+              - `balance_csv` - Export a CSV of account balances for the dates in a given
+                range.
 
           balance_csv: Options for the created export. Required if `category` is equal to
               `balance_csv`.
