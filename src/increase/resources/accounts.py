@@ -188,6 +188,9 @@ class Accounts(SyncAPIResource):
 
           status: Filter Accounts for those with the specified status.
 
+              - `open` - Open Accounts that are ready to use.
+              - `closed` - Closed Accounts on which no new activity can occur.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -428,6 +431,9 @@ class AsyncAccounts(AsyncAPIResource):
               objects.
 
           status: Filter Accounts for those with the specified status.
+
+              - `open` - Open Accounts that are ready to use.
+              - `closed` - Closed Accounts on which no new activity can occur.
 
           extra_headers: Send extra headers
 

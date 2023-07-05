@@ -44,6 +44,9 @@ class BookkeepingAccounts(SyncAPIResource):
 
           compliance_category: The account compliance category.
 
+              - `commingled_cash` - A cash in an commingled Increase Account.
+              - `customer_balance` - A customer balance.
+
           entity_id: The entity, if `compliance_category` is `customer_balance`.
 
           extra_headers: Send extra headers
@@ -151,6 +154,9 @@ class AsyncBookkeepingAccounts(AsyncAPIResource):
           account_id: The entity, if `compliance_category` is `commingled_cash`.
 
           compliance_category: The account compliance category.
+
+              - `commingled_cash` - A cash in an commingled Increase Account.
+              - `customer_balance` - A customer balance.
 
           entity_id: The entity, if `compliance_category` is `customer_balance`.
 

@@ -36,12 +36,22 @@ class RealTimeDecisionActionParams(TypedDict, total=False):
 
 class CardAuthorization(TypedDict, total=False):
     decision: Required[Literal["approve", "decline"]]
-    """Whether the card authorization should be approved or declined."""
+    """Whether the card authorization should be approved or declined.
+
+    - `approve` - Approve the authorization.
+    - `decline` - Decline the authorization.
+    """
 
 
 class DigitalWalletAuthentication(TypedDict, total=False):
     result: Required[Literal["success", "failure"]]
-    """Whether your application was able to deliver the one-time passcode."""
+    """Whether your application was able to deliver the one-time passcode.
+
+    - `success` - Your application successfully delivered the one-time passcode to
+      the cardholder.
+    - `failure` - Your application failed to deliver the one-time passcode to the
+      cardholder.
+    """
 
 
 class DigitalWalletTokenApproval(TypedDict, total=False):

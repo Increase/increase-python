@@ -82,7 +82,12 @@ class Card(BaseModel):
     """The last 4 digits of the Card's Primary Account Number."""
 
     status: Literal["active", "disabled", "canceled"]
-    """This indicates if payments can be made with the card."""
+    """This indicates if payments can be made with the card.
+
+    - `active` - The card is active.
+    - `disabled` - The card is temporarily disabled.
+    - `canceled` - The card is temporarily canceled.
+    """
 
     type: Literal["card"]
     """A constant representing the object's type.

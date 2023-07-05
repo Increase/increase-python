@@ -13,10 +13,18 @@ class Group(BaseModel):
     """The Group identifier."""
 
     ach_debit_status: Literal["disabled", "enabled"]
-    """If the Group is allowed to create ACH debits."""
+    """If the Group is allowed to create ACH debits.
+
+    - `disabled` - The Group cannot make ACH debits.
+    - `enabled` - The Group can make ACH debits.
+    """
 
     activation_status: Literal["unactivated", "activated"]
-    """If the Group is activated or not."""
+    """If the Group is activated or not.
+
+    - `unactivated` - The Group is not activated.
+    - `activated` - The Group is activated.
+    """
 
     created_at: datetime
     """

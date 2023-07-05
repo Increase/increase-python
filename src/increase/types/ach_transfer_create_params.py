@@ -81,7 +81,11 @@ class ACHTransferCreateParams(TypedDict, total=False):
     """
 
     funding: Literal["checking", "savings"]
-    """The type of the account to which the transfer will be sent."""
+    """The type of the account to which the transfer will be sent.
+
+    - `checking` - A checking account.
+    - `savings` - A savings account.
+    """
 
     individual_id: str
     """Your identifer for the transfer recipient."""
@@ -104,4 +108,9 @@ class ACHTransferCreateParams(TypedDict, total=False):
     standard_entry_class_code: Literal[
         "corporate_credit_or_debit", "prearranged_payments_and_deposit", "internet_initiated"
     ]
-    """The Standard Entry Class (SEC) code to use for the transfer."""
+    """The Standard Entry Class (SEC) code to use for the transfer.
+
+    - `corporate_credit_or_debit` - Corporate Credit and Debit (CCD).
+    - `prearranged_payments_and_deposit` - Prearranged Payments and Deposits (PPD).
+    - `internet_initiated` - Internet Initiated (WEB).
+    """

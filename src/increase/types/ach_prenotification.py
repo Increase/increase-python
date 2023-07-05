@@ -49,7 +49,11 @@ class ACHPrenotification(BaseModel):
     """
 
     credit_debit_indicator: Optional[Literal["credit", "debit"]]
-    """If the notification is for a future credit or debit."""
+    """If the notification is for a future credit or debit.
+
+    - `credit` - The Prenotification is for an anticipated credit.
+    - `debit` - The Prenotification is for an anticipated debit.
+    """
 
     effective_date: Optional[datetime]
     """
@@ -63,7 +67,13 @@ class ACHPrenotification(BaseModel):
     """The American Bankers' Association (ABA) Routing Transit Number (RTN)."""
 
     status: Literal["pending_submitting", "requires_attention", "returned", "submitted"]
-    """The lifecycle status of the ACH Prenotification."""
+    """The lifecycle status of the ACH Prenotification.
+
+    - `pending_submitting` - The Prenotification is pending submission.
+    - `requires_attention` - The Prenotification requires attention.
+    - `returned` - The Prenotification has been returned.
+    - `submitted` - The Prentification is complete.
+    """
 
     type: Literal["ach_prenotification"]
     """A constant representing the object's type.

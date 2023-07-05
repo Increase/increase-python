@@ -83,7 +83,22 @@ class DeclinedTransactionSourceACHDecline(BaseModel):
         "originator_request",
         "transaction_not_allowed",
     ]
-    """Why the ACH transfer was declined."""
+    """Why the ACH transfer was declined.
+
+    - `ach_route_canceled` - The account number is canceled.
+    - `ach_route_disabled` - The account number is disabled.
+    - `breaches_limit` - The transaction would cause a limit to be exceeded.
+    - `credit_entry_refused_by_receiver` - A credit was refused.
+    - `duplicate_return` - Other.
+    - `entity_not_active` - The account's entity is not active.
+    - `group_locked` - Your account is inactive.
+    - `insufficient_funds` - Your account contains insufficient funds.
+    - `misrouted_return` - Other.
+    - `no_ach_route` - The account number that was debited does not exist.
+    - `originator_request` - Other.
+    - `transaction_not_allowed` - The transaction is not allowed per Increase's
+      terms.
+    """
 
     receiver_id_number: Optional[str]
 
@@ -109,6 +124,36 @@ class DeclinedTransactionSourceCardDeclineNetworkDetailsVisa(BaseModel):
     For electronic commerce transactions, this identifies the level of security used
     in obtaining the customer's payment credential. For mail or telephone order
     transactions, identifies the type of mail or telephone order.
+
+    - `mail_phone_order` - Single transaction of a mail/phone order: Use to indicate
+      that the transaction is a mail/phone order purchase, not a recurring
+      transaction or installment payment. For domestic transactions in the US
+      region, this value may also indicate one bill payment transaction in the
+      card-present or card-absent environments.
+    - `recurring` - Recurring transaction: Payment indicator used to indicate a
+      recurring transaction that originates from an acquirer in the US region.
+    - `installment` - Installment payment: Payment indicator used to indicate one
+      purchase of goods or services that is billed to the account in multiple
+      charges over a period of time agreed upon by the cardholder and merchant from
+      transactions that originate from an acquirer in the US region.
+    - `unknown_mail_phone_order` - Unknown classification: other mail order: Use to
+      indicate that the type of mail/telephone order is unknown.
+    - `secure_electronic_commerce` - Secure electronic commerce transaction: Use to
+      indicate that the electronic commerce transaction has been authenticated using
+      e.g., 3-D Secure
+    - `non_authenticated_security_transaction_at_3ds_capable_merchant` -
+      Non-authenticated security transaction at a 3-D Secure-capable merchant, and
+      merchant attempted to authenticate the cardholder using 3-D Secure: Use to
+      identify an electronic commerce transaction where the merchant attempted to
+      authenticate the cardholder using 3-D Secure, but was unable to complete the
+      authentication because the issuer or cardholder does not participate in the
+      3-D Secure program.
+    - `non_authenticated_security_transaction` - Non-authenticated security
+      transaction: Use to identify an electronic commerce transaction that uses data
+      encryption for security however , cardholder authentication is not performed
+      using 3-D Secure.
+    - `non_secure_transaction` - Non-secure transaction: Use to identify an
+      electronic commerce transaction that has no data protection.
     """
 
     point_of_service_entry_mode: Optional[shared.PointOfServiceEntryMode]
@@ -134,6 +179,13 @@ class DeclinedTransactionSourceCardDecline(BaseModel):
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
     account currency.
+
+    - `CAD` - Canadian Dollar (CAD)
+    - `CHF` - Swiss Franc (CHF)
+    - `EUR` - Euro (EUR)
+    - `GBP` - British Pound (GBP)
+    - `JPY` - Japanese Yen (JPY)
+    - `USD` - US Dollar (USD)
     """
 
     digital_wallet_token_id: Optional[str]
@@ -167,7 +219,10 @@ class DeclinedTransactionSourceCardDecline(BaseModel):
     """The state the merchant resides in."""
 
     network: Literal["visa"]
-    """The payment network used to process this card authorization"""
+    """The payment network used to process this card authorization
+
+    - `visa` - Visa
+    """
 
     network_details: DeclinedTransactionSourceCardDeclineNetworkDetails
     """Fields specific to the `network`"""
@@ -193,7 +248,28 @@ class DeclinedTransactionSourceCardDecline(BaseModel):
         "invalid_physical_card",
         "missing_original_authorization",
     ]
-    """Why the transaction was declined."""
+    """Why the transaction was declined.
+
+    - `card_not_active` - The Card was not active.
+    - `entity_not_active` - The account's entity was not active.
+    - `group_locked` - The account was inactive.
+    - `insufficient_funds` - The Card's Account did not have a sufficient available
+      balance.
+    - `cvv2_mismatch` - The given CVV2 did not match the card's value.
+    - `transaction_not_allowed` - The attempted card transaction is not allowed per
+      Increase's terms.
+    - `breaches_internal_limit` - The transaction was blocked by an internal limit
+      for new Increase accounts.
+    - `breaches_limit` - The transaction was blocked by a Limit.
+    - `webhook_declined` - Your application declined the transaction via webhook.
+    - `webhook_timed_out` - Your application webhook did not respond without the
+      required timeout.
+    - `declined_by_stand_in_processing` - Declined by stand-in processing.
+    - `invalid_physical_card` - The card read had an invalid CVV, dCVV, or
+      authorization request cryptogram.
+    - `missing_original_authorization` - The original card authorization for this
+      incremental authorization does not exist.
+    """
 
 
 class DeclinedTransactionSourceCheckDecline(BaseModel):
@@ -222,7 +298,24 @@ class DeclinedTransactionSourceCheckDecline(BaseModel):
         "not_authorized",
         "altered_or_fictitious",
     ]
-    """Why the check was declined."""
+    """Why the check was declined.
+
+    - `ach_route_canceled` - The account number is canceled.
+    - `ach_route_disabled` - The account number is disabled.
+    - `breaches_limit` - The transaction would cause a limit to be exceeded.
+    - `entity_not_active` - The account's entity is not active.
+    - `group_locked` - Your account is inactive.
+    - `insufficient_funds` - Your account contains insufficient funds.
+    - `unable_to_locate_account` - Unable to locate account.
+    - `not_our_item` - Routing number on the check is not ours.
+    - `unable_to_process` - Unable to process.
+    - `refer_to_image` - Refer to image.
+    - `stop_payment_requested` - Stop payment requested for this check.
+    - `returned` - Check was returned to sender.
+    - `duplicate_presentment` - The check was a duplicate deposit.
+    - `not_authorized` - The transaction is not allowed.
+    - `altered_or_fictitious` - The check was altered or fictitious.
+    """
 
 
 class DeclinedTransactionSourceInboundRealTimePaymentsTransferDecline(BaseModel):
@@ -240,6 +333,13 @@ class DeclinedTransactionSourceInboundRealTimePaymentsTransferDecline(BaseModel)
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined
     transfer's currency. This will always be "USD" for a Real Time Payments
     transfer.
+
+    - `CAD` - Canadian Dollar (CAD)
+    - `CHF` - Swiss Franc (CHF)
+    - `EUR` - Euro (EUR)
+    - `GBP` - British Pound (GBP)
+    - `JPY` - Japanese Yen (JPY)
+    - `USD` - US Dollar (USD)
     """
 
     debtor_account_number: str
@@ -259,7 +359,16 @@ class DeclinedTransactionSourceInboundRealTimePaymentsTransferDecline(BaseModel)
         "entity_not_active",
         "real_time_payments_not_enabled",
     ]
-    """Why the transfer was declined."""
+    """Why the transfer was declined.
+
+    - `account_number_canceled` - The account number is canceled.
+    - `account_number_disabled` - The account number is disabled.
+    - `account_restricted` - Your account is restricted.
+    - `group_locked` - Your account is inactive.
+    - `entity_not_active` - The account's entity is not active.
+    - `real_time_payments_not_enabled` - Your account is not enabled to receive Real
+      Time Payments transfers.
+    """
 
     remittance_information: Optional[str]
     """Additional information included with the transfer."""
@@ -391,7 +500,16 @@ class DeclinedTransactionSourceWireDecline(BaseModel):
         "no_account_number",
         "transaction_not_allowed",
     ]
-    """Why the wire transfer was declined."""
+    """Why the wire transfer was declined.
+
+    - `account_number_canceled` - The account number is canceled.
+    - `account_number_disabled` - The account number is disabled.
+    - `entity_not_active` - The account's entity is not active.
+    - `group_locked` - Your account is inactive.
+    - `no_account_number` - The beneficiary account number does not exist.
+    - `transaction_not_allowed` - The transaction is not allowed per Increase's
+      terms.
+    """
 
 
 class DeclinedTransactionSource(BaseModel):
@@ -422,6 +540,23 @@ class DeclinedTransactionSource(BaseModel):
 
     We may add additional possible values for this enum over time; your application
     should be able to handle such additions gracefully.
+
+    - `ach_decline` - The Declined Transaction was created by a ACH Decline object.
+      Details will be under the `ach_decline` object.
+    - `card_decline` - The Declined Transaction was created by a Card Decline
+      object. Details will be under the `card_decline` object.
+    - `check_decline` - The Declined Transaction was created by a Check Decline
+      object. Details will be under the `check_decline` object.
+    - `inbound_real_time_payments_transfer_decline` - The Declined Transaction was
+      created by a Inbound Real Time Payments Transfer Decline object. Details will
+      be under the `inbound_real_time_payments_transfer_decline` object.
+    - `international_ach_decline` - The Declined Transaction was created by a
+      International ACH Decline object. Details will be under the
+      `international_ach_decline` object.
+    - `wire_decline` - The Declined Transaction was created by a Wire Decline
+      object. Details will be under the `wire_decline` object.
+    - `other` - The Declined Transaction was made for an undocumented or deprecated
+      reason.
     """
 
     check_decline: Optional[DeclinedTransactionSourceCheckDecline]
@@ -479,6 +614,13 @@ class DeclinedTransaction(BaseModel):
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Declined
     Transaction's currency. This will match the currency on the Declined
     Transcation's Account.
+
+    - `CAD` - Canadian Dollar (CAD)
+    - `CHF` - Swiss Franc (CHF)
+    - `EUR` - Euro (EUR)
+    - `GBP` - British Pound (GBP)
+    - `JPY` - Japanese Yen (JPY)
+    - `USD` - US Dollar (USD)
     """
 
     description: str
@@ -491,7 +633,11 @@ class DeclinedTransaction(BaseModel):
     """
 
     route_type: Optional[Literal["account_number", "card"]]
-    """The type of the route this Declined Transaction came through."""
+    """The type of the route this Declined Transaction came through.
+
+    - `account_number` - An Account Number.
+    - `card` - A Card.
+    """
 
     source: DeclinedTransactionSource
     """
@@ -520,6 +666,13 @@ class TransactionSourceAccountTransferIntention(BaseModel):
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
     account currency.
+
+    - `CAD` - Canadian Dollar (CAD)
+    - `CHF` - Swiss Franc (CHF)
+    - `EUR` - Euro (EUR)
+    - `GBP` - British Pound (GBP)
+    - `JPY` - Japanese Yen (JPY)
+    - `USD` - US Dollar (USD)
     """
 
     description: str
@@ -639,7 +792,153 @@ class TransactionSourceACHTransferReturn(BaseModel):
         "untimely_dishonored_return",
         "untimely_return",
     ]
-    """Why the ACH Transfer was returned."""
+    """Why the ACH Transfer was returned.
+
+    - `insufficient_fund` - Code R01. Insufficient funds in the source account.
+    - `no_account` - Code R03. The account does not exist or the receiving bank was
+      unable to locate it.
+    - `account_closed` - Code R02. The account is closed.
+    - `invalid_account_number_structure` - Code R04. The account number is invalid
+      at the receiving bank.
+    - `account_frozen_entry_returned_per_ofac_instruction` - Code R16. The account
+      was frozen per the Office of Foreign Assets Control.
+    - `credit_entry_refused_by_receiver` - Code R23. The receiving bank account
+      refused a credit transfer.
+    - `unauthorized_debit_to_consumer_account_using_corporate_sec_code` - Code R05.
+      The receiving bank rejected because of an incorrect Standard Entry Class code.
+    - `corporate_customer_advised_not_authorized` - Code R29. The corporate customer
+      reversed the transfer.
+    - `payment_stopped` - Code R08. The receiving bank stopped payment on this
+      transfer.
+    - `non_transaction_account` - Code R20. The receiving bank account does not
+      perform transfers.
+    - `uncollected_funds` - Code R09. The receiving bank account does not have
+      enough available balance for the transfer.
+    - `routing_number_check_digit_error` - Code R28. The routing number is
+      incorrect.
+    - `customer_advised_unauthorized_improper_ineligible_or_incomplete` - Code R10.
+      The customer reversed the transfer.
+    - `amount_field_error` - Code R19. The amount field is incorrect or too large.
+    - `authorization_revoked_by_customer` - Code R07. The customer who initiated the
+      transfer revoked authorization.
+    - `invalid_ach_routing_number` - Code R13. The routing number is invalid.
+    - `file_record_edit_criteria` - Code R17. The receiving bank is unable to
+      process a field in the transfer.
+    - `enr_invalid_individual_name` - Code R45. The individual name field was
+      invalid.
+    - `returned_per_odfi_request` - Code R06. The originating financial institution
+      reversed the transfer.
+    - `limited_participation_dfi` - Code R34. The receiving bank's regulatory
+      supervisor has limited their participation.
+    - `incorrectly_coded_outbound_international_payment` - Code R85. The outbound
+      international ACH transfer was incorrect.
+    - `account_sold_to_another_dfi` - Code R12. A rare return reason. The account
+      was sold to another bank.
+    - `addenda_error` - Code R25. The addenda record is incorrect or missing.
+    - `beneficiary_or_account_holder_deceased` - Code R15. A rare return reason. The
+      account holder is deceased.
+    - `customer_advised_not_within_authorization_terms` - Code R11. A rare return
+      reason. The customer authorized some payment to the sender, but this payment
+      was not in error.
+    - `corrected_return` - Code R74. A rare return reason. Sent in response to a
+      return that was returned with code `field_error`. The latest return should
+      include the corrected field(s).
+    - `duplicate_entry` - Code R24. A rare return reason. The receiving bank
+      received an exact duplicate entry with the same trace number and amount.
+    - `duplicate_return` - Code R67. A rare return reason. The return this message
+      refers to was a duplicate.
+    - `enr_duplicate_enrollment` - Code R47. A rare return reason. Only used for US
+      Government agency non-monetary automatic enrollment messages.
+    - `enr_invalid_dfi_account_number` - Code R43. A rare return reason. Only used
+      for US Government agency non-monetary automatic enrollment messages.
+    - `enr_invalid_individual_id_number` - Code R44. A rare return reason. Only used
+      for US Government agency non-monetary automatic enrollment messages.
+    - `enr_invalid_representative_payee_indicator` - Code R46. A rare return reason.
+      Only used for US Government agency non-monetary automatic enrollment messages.
+    - `enr_invalid_transaction_code` - Code R41. A rare return reason. Only used for
+      US Government agency non-monetary automatic enrollment messages.
+    - `enr_return_of_enr_entry` - Code R40. A rare return reason. Only used for US
+      Government agency non-monetary automatic enrollment messages.
+    - `enr_routing_number_check_digit_error` - Code R42. A rare return reason. Only
+      used for US Government agency non-monetary automatic enrollment messages.
+    - `entry_not_processed_by_gateway` - Code R84. A rare return reason. The
+      International ACH Transfer cannot be processed by the gateway.
+    - `field_error` - Code R69. A rare return reason. One or more of the fields in
+      the ACH were malformed.
+    - `foreign_receiving_dfi_unable_to_settle` - Code R83. A rare return reason. The
+      Foreign receiving bank was unable to settle this ACH transfer.
+    - `iat_entry_coding_error` - Code R80. A rare return reason. The International
+      ACH Transfer is malformed.
+    - `improper_effective_entry_date` - Code R18. A rare return reason. The ACH has
+      an improper effective entry date field.
+    - `improper_source_document_source_document_presented` - Code R39. A rare return
+      reason. The source document related to this ACH, usually an ACH check
+      conversion, was presented to the bank.
+    - `invalid_company_id` - Code R21. A rare return reason. The Company ID field of
+      the ACH was invalid.
+    - `invalid_foreign_receiving_dfi_identification` - Code R82. A rare return
+      reason. The foreign receiving bank identifier for an International ACH
+      Transfer was invalid.
+    - `invalid_individual_id_number` - Code R22. A rare return reason. The
+      Individual ID number field of the ACH was invalid.
+    - `item_and_rck_entry_presented_for_payment` - Code R53. A rare return reason.
+      Both the Represented Check ("RCK") entry and the original check were presented
+      to the bank.
+    - `item_related_to_rck_entry_is_ineligible` - Code R51. A rare return reason.
+      The Represented Check ("RCK") entry is ineligible.
+    - `mandatory_field_error` - Code R26. A rare return reason. The ACH is missing a
+      required field.
+    - `misrouted_dishonored_return` - Code R71. A rare return reason. The receiving
+      bank does not recognize the routing number in a dishonored return entry.
+    - `misrouted_return` - Code R61. A rare return reason. The receiving bank does
+      not recognize the routing number in a return entry.
+    - `no_errors_found` - Code R76. A rare return reason. Sent in response to a
+      return, the bank does not find the errors alleged by the returning bank.
+    - `non_acceptance_of_r62_dishonored_return` - Code R77. A rare return reason.
+      The receiving bank does not accept the return of the erroneous debit. The
+      funds are not available at the receiving bank.
+    - `non_participant_in_iat_program` - Code R81. A rare return reason. The
+      receiving bank does not accept International ACH Transfers.
+    - `permissible_return_entry` - Code R31. A rare return reason. A return that has
+      been agreed to be accepted by the receiving bank, despite falling outside of
+      the usual return timeframe.
+    - `permissible_return_entry_not_accepted` - Code R70. A rare return reason. The
+      receiving bank had not approved this return.
+    - `rdfi_non_settlement` - Code R32. A rare return reason. The receiving bank
+      could not settle this transaction.
+    - `rdfi_participant_in_check_truncation_program` - Code R30. A rare return
+      reason. The receiving bank does not accept Check Truncation ACH transfers.
+    - `representative_payee_deceased_or_unable_to_continue_in_that_capacity` - Code
+      R14. A rare return reason. The payee is deceased.
+    - `return_not_a_duplicate` - Code R75. A rare return reason. The originating
+      bank disputes that an earlier `duplicate_entry` return was actually a
+      duplicate.
+    - `return_of_erroneous_or_reversing_debit` - Code R62. A rare return reason. The
+      originating bank made a mistake earlier and this return corrects it.
+    - `return_of_improper_credit_entry` - Code R36. A rare return reason. Return of
+      a malformed credit entry.
+    - `return_of_improper_debit_entry` - Code R35. A rare return reason. Return of a
+      malformed debit entry.
+    - `return_of_xck_entry` - Code R33. A rare return reason. Return of a Destroyed
+      Check ("XKC") entry.
+    - `source_document_presented_for_payment` - Code R37. A rare return reason. The
+      source document related to this ACH, usually an ACH check conversion, was
+      presented to the bank.
+    - `state_law_affecting_rck_acceptance` - Code R50. A rare return reason. State
+      law prevents the bank from accepting the Represented Check ("RCK") entry.
+    - `stop_payment_on_item_related_to_rck_entry` - Code R52. A rare return reason.
+      A stop payment was issued on a Represented Check ("RCK") entry.
+    - `stop_payment_on_source_document` - Code R38. A rare return reason. The source
+      attached to the ACH, usually an ACH check conversion, includes a stop payment.
+    - `timely_original_return` - Code R73. A rare return reason. The bank receiving
+      an `untimely_return` believes it was on time.
+    - `trace_number_error` - Code R27. A rare return reason. An ACH Return's trace
+      number does not match an originated ACH.
+    - `untimely_dishonored_return` - Code R72. A rare return reason. The dishonored
+      return was sent too late.
+    - `untimely_return` - Code R68. A rare return reason. The return was sent too
+      late.
+    """
 
     transaction_id: str
     """The identifier of the Tranasaction associated with this return."""
@@ -679,6 +978,13 @@ class TransactionSourceCardRefund(BaseModel):
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
     transaction's currency.
+
+    - `CAD` - Canadian Dollar (CAD)
+    - `CHF` - Swiss Franc (CHF)
+    - `EUR` - Euro (EUR)
+    - `GBP` - British Pound (GBP)
+    - `JPY` - Japanese Yen (JPY)
+    - `USD` - US Dollar (USD)
     """
 
     merchant_acceptor_id: Optional[str]
@@ -720,6 +1026,13 @@ class TransactionSourceCardRevenuePayment(BaseModel):
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
     currency.
+
+    - `CAD` - Canadian Dollar (CAD)
+    - `CHF` - Swiss Franc (CHF)
+    - `EUR` - Euro (EUR)
+    - `GBP` - British Pound (GBP)
+    - `JPY` - Japanese Yen (JPY)
+    - `USD` - US Dollar (USD)
     """
 
     period_end: datetime
@@ -752,6 +1065,13 @@ class TransactionSourceCardSettlement(BaseModel):
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
     transaction's settlement currency.
+
+    - `CAD` - Canadian Dollar (CAD)
+    - `CHF` - Swiss Franc (CHF)
+    - `EUR` - Euro (EUR)
+    - `GBP` - British Pound (GBP)
+    - `JPY` - Japanese Yen (JPY)
+    - `USD` - US Dollar (USD)
     """
 
     merchant_acceptor_id: Optional[str]
@@ -817,6 +1137,13 @@ class TransactionSourceCheckDepositAcceptance(BaseModel):
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
     transaction's currency.
+
+    - `CAD` - Canadian Dollar (CAD)
+    - `CHF` - Swiss Franc (CHF)
+    - `EUR` - Euro (EUR)
+    - `GBP` - British Pound (GBP)
+    - `JPY` - Japanese Yen (JPY)
+    - `USD` - US Dollar (USD)
     """
 
     routing_number: str
@@ -844,6 +1171,13 @@ class TransactionSourceCheckDepositReturn(BaseModel):
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
     transaction's currency.
+
+    - `CAD` - Canadian Dollar (CAD)
+    - `CHF` - Swiss Franc (CHF)
+    - `EUR` - Euro (EUR)
+    - `GBP` - British Pound (GBP)
+    - `JPY` - Japanese Yen (JPY)
+    - `USD` - US Dollar (USD)
     """
 
     return_reason: Literal[
@@ -860,6 +1194,20 @@ class TransactionSourceCheckDepositReturn(BaseModel):
         "unreadable_image",
         "endorsement_irregular",
     ]
+    """
+    - `ach_conversion_not_supported` - The check doesn't allow ACH conversion.
+    - `closed_account` - The account is closed.
+    - `duplicate_submission` - The check has already been deposited.
+    - `insufficient_funds` - Insufficient funds
+    - `no_account` - No account was found matching the check details.
+    - `not_authorized` - The check was not authorized.
+    - `stale_dated` - The check is too old.
+    - `stop_payment` - The payment has been stopped by the account holder.
+    - `unknown_reason` - The reason for the return is unknown.
+    - `unmatched_details` - The image doesn't match the details submitted.
+    - `unreadable_image` - The image could not be read.
+    - `endorsement_irregular` - The check endorsement was irregular.
+    """
 
     returned_at: datetime
     """
@@ -920,6 +1268,13 @@ class TransactionSourceCheckTransferIntention(BaseModel):
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
     currency.
+
+    - `CAD` - Canadian Dollar (CAD)
+    - `CHF` - Swiss Franc (CHF)
+    - `EUR` - Euro (EUR)
+    - `GBP` - British Pound (GBP)
+    - `JPY` - Japanese Yen (JPY)
+    - `USD` - US Dollar (USD)
     """
 
     recipient_name: Optional[str]
@@ -939,7 +1294,15 @@ class TransactionSourceCheckTransferReturn(BaseModel):
     """If available, a document with additional information about the return."""
 
     reason: Literal["mail_delivery_failure", "refused_by_recipient", "returned_not_authorized"]
-    """The reason why the check was returned."""
+    """The reason why the check was returned.
+
+    - `mail_delivery_failure` - Mail delivery failed and the check was returned to
+      sender.
+    - `refused_by_recipient` - The check arrived and the recipient refused to
+      deposit it.
+    - `returned_not_authorized` - The check was fraudulently deposited and the
+      transfer was returned to the Bank of First Deposit.
+    """
 
     returned_at: datetime
     """
@@ -985,6 +1348,13 @@ class TransactionSourceFeePayment(BaseModel):
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
     currency.
+
+    - `CAD` - Canadian Dollar (CAD)
+    - `CHF` - Swiss Franc (CHF)
+    - `EUR` - Euro (EUR)
+    - `GBP` - British Pound (GBP)
+    - `JPY` - Japanese Yen (JPY)
+    - `USD` - US Dollar (USD)
     """
 
 
@@ -1029,6 +1399,13 @@ class TransactionSourceInboundCheck(BaseModel):
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
     transaction's currency.
+
+    - `CAD` - Canadian Dollar (CAD)
+    - `CHF` - Swiss Franc (CHF)
+    - `EUR` - Euro (EUR)
+    - `GBP` - British Pound (GBP)
+    - `JPY` - Japanese Yen (JPY)
+    - `USD` - US Dollar (USD)
     """
 
 
@@ -1124,6 +1501,13 @@ class TransactionSourceInboundRealTimePaymentsTransferConfirmation(BaseModel):
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's
     currency. This will always be "USD" for a Real Time Payments transfer.
+
+    - `CAD` - Canadian Dollar (CAD)
+    - `CHF` - Swiss Franc (CHF)
+    - `EUR` - Euro (EUR)
+    - `GBP` - British Pound (GBP)
+    - `JPY` - Japanese Yen (JPY)
+    - `USD` - US Dollar (USD)
     """
 
     debtor_account_number: str
@@ -1313,6 +1697,13 @@ class TransactionSourceInterestPayment(BaseModel):
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
     currency.
+
+    - `CAD` - Canadian Dollar (CAD)
+    - `CHF` - Swiss Franc (CHF)
+    - `EUR` - Euro (EUR)
+    - `GBP` - British Pound (GBP)
+    - `JPY` - Japanese Yen (JPY)
+    - `USD` - US Dollar (USD)
     """
 
     period_end: datetime
@@ -1333,6 +1724,13 @@ class TransactionSourceInternalSource(BaseModel):
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
     currency.
+
+    - `CAD` - Canadian Dollar (CAD)
+    - `CHF` - Swiss Franc (CHF)
+    - `EUR` - Euro (EUR)
+    - `GBP` - British Pound (GBP)
+    - `JPY` - Japanese Yen (JPY)
+    - `USD` - US Dollar (USD)
     """
 
     reason: Literal[
@@ -1349,6 +1747,20 @@ class TransactionSourceInternalSource(BaseModel):
         "sample_funds",
         "sample_funds_return",
     ]
+    """
+    - `account_closure` - Account closure
+    - `bank_migration` - Bank migration
+    - `cashback` - Cashback
+    - `collection_receivable` - Collection receivable
+    - `empyreal_adjustment` - Empyreal adjustment
+    - `error` - Error
+    - `error_correction` - Error correction
+    - `fees` - Fees
+    - `interest` - Interest
+    - `negative_balance_forgiveness` - Negative balance forgiveness
+    - `sample_funds` - Sample funds
+    - `sample_funds_return` - Sample funds return
+    """
 
 
 class TransactionSourceRealTimePaymentsTransferAcknowledgement(BaseModel):
@@ -1488,6 +1900,79 @@ class TransactionSource(BaseModel):
 
     We may add additional possible values for this enum over time; your application
     should be able to handle such additions gracefully.
+
+    - `account_transfer_intention` - The Transaction was created by a Account
+      Transfer Intention object. Details will be under the
+      `account_transfer_intention` object.
+    - `ach_transfer_intention` - The Transaction was created by a ACH Transfer
+      Intention object. Details will be under the `ach_transfer_intention` object.
+    - `ach_transfer_rejection` - The Transaction was created by a ACH Transfer
+      Rejection object. Details will be under the `ach_transfer_rejection` object.
+    - `ach_transfer_return` - The Transaction was created by a ACH Transfer Return
+      object. Details will be under the `ach_transfer_return` object.
+    - `card_dispute_acceptance` - The Transaction was created by a Card Dispute
+      Acceptance object. Details will be under the `card_dispute_acceptance` object.
+    - `card_refund` - The Transaction was created by a Card Refund object. Details
+      will be under the `card_refund` object.
+    - `card_revenue_payment` - The Transaction was created by a Card Revenue Payment
+      object. Details will be under the `card_revenue_payment` object.
+    - `card_settlement` - The Transaction was created by a Card Settlement object.
+      Details will be under the `card_settlement` object.
+    - `check_deposit_acceptance` - The Transaction was created by a Check Deposit
+      Acceptance object. Details will be under the `check_deposit_acceptance`
+      object.
+    - `check_deposit_return` - The Transaction was created by a Check Deposit Return
+      object. Details will be under the `check_deposit_return` object.
+    - `check_transfer_deposit` - The Transaction was created by a Check Transfer
+      Deposit object. Details will be under the `check_transfer_deposit` object.
+    - `check_transfer_intention` - The Transaction was created by a Check Transfer
+      Intention object. Details will be under the `check_transfer_intention` object.
+    - `check_transfer_rejection` - The Transaction was created by a Check Transfer
+      Rejection object. Details will be under the `check_transfer_rejection` object.
+    - `check_transfer_return` - The Transaction was created by a Check Transfer
+      Return object. Details will be under the `check_transfer_return` object.
+    - `check_transfer_stop_payment_request` - The Transaction was created by a Check
+      Transfer Stop Payment Request object. Details will be under the
+      `check_transfer_stop_payment_request` object.
+    - `fee_payment` - The Transaction was created by a Fee Payment object. Details
+      will be under the `fee_payment` object.
+    - `inbound_ach_transfer` - The Transaction was created by a Inbound ACH Transfer
+      object. Details will be under the `inbound_ach_transfer` object.
+    - `inbound_ach_transfer_return_intention` - The Transaction was created by a
+      Inbound ACH Transfer Return Intention object. Details will be under the
+      `inbound_ach_transfer_return_intention` object.
+    - `inbound_check` - The Transaction was created by a Inbound Check object.
+      Details will be under the `inbound_check` object.
+    - `inbound_international_ach_transfer` - The Transaction was created by a
+      Inbound International ACH Transfer object. Details will be under the
+      `inbound_international_ach_transfer` object.
+    - `inbound_real_time_payments_transfer_confirmation` - The Transaction was
+      created by a Inbound Real Time Payments Transfer Confirmation object. Details
+      will be under the `inbound_real_time_payments_transfer_confirmation` object.
+    - `inbound_wire_drawdown_payment` - The Transaction was created by a Inbound
+      Wire Drawdown Payment object. Details will be under the
+      `inbound_wire_drawdown_payment` object.
+    - `inbound_wire_drawdown_payment_reversal` - The Transaction was created by a
+      Inbound Wire Drawdown Payment Reversal object. Details will be under the
+      `inbound_wire_drawdown_payment_reversal` object.
+    - `inbound_wire_reversal` - The Transaction was created by a Inbound Wire
+      Reversal object. Details will be under the `inbound_wire_reversal` object.
+    - `inbound_wire_transfer` - The Transaction was created by a Inbound Wire
+      Transfer object. Details will be under the `inbound_wire_transfer` object.
+    - `interest_payment` - The Transaction was created by a Interest Payment object.
+      Details will be under the `interest_payment` object.
+    - `internal_source` - The Transaction was created by a Internal Source object.
+      Details will be under the `internal_source` object.
+    - `real_time_payments_transfer_acknowledgement` - The Transaction was created by
+      a Real Time Payments Transfer Acknowledgement object. Details will be under
+      the `real_time_payments_transfer_acknowledgement` object.
+    - `sample_funds` - The Transaction was created by a Sample Funds object. Details
+      will be under the `sample_funds` object.
+    - `wire_transfer_intention` - The Transaction was created by a Wire Transfer
+      Intention object. Details will be under the `wire_transfer_intention` object.
+    - `wire_transfer_rejection` - The Transaction was created by a Wire Transfer
+      Rejection object. Details will be under the `wire_transfer_rejection` object.
+    - `other` - The Transaction was made for an undocumented or deprecated reason.
     """
 
     check_deposit_acceptance: Optional[TransactionSourceCheckDepositAcceptance]
@@ -1671,6 +2156,13 @@ class Transaction(BaseModel):
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
     Transaction's currency. This will match the currency on the Transcation's
     Account.
+
+    - `CAD` - Canadian Dollar (CAD)
+    - `CHF` - Swiss Franc (CHF)
+    - `EUR` - Euro (EUR)
+    - `GBP` - British Pound (GBP)
+    - `JPY` - Japanese Yen (JPY)
+    - `USD` - US Dollar (USD)
     """
 
     description: str
@@ -1687,7 +2179,11 @@ class Transaction(BaseModel):
     """
 
     route_type: Optional[Literal["account_number", "card"]]
-    """The type of the route this Transaction came through."""
+    """The type of the route this Transaction came through.
+
+    - `account_number` - An Account Number.
+    - `card` - A Card.
+    """
 
     source: TransactionSource
     """

@@ -15,7 +15,11 @@ class BookkeepingAccountCreateParams(TypedDict, total=False):
     """The entity, if `compliance_category` is `commingled_cash`."""
 
     compliance_category: Literal["commingled_cash", "customer_balance"]
-    """The account compliance category."""
+    """The account compliance category.
+
+    - `commingled_cash` - A cash in an commingled Increase Account.
+    - `customer_balance` - A customer balance.
+    """
 
     entity_id: str
     """The entity, if `compliance_category` is `customer_balance`."""

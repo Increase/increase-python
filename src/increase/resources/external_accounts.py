@@ -48,6 +48,10 @@ class ExternalAccounts(SyncAPIResource):
 
           funding: The type of the destination account. Defaults to `checking`.
 
+              - `checking` - A checking account.
+              - `savings` - A savings account.
+              - `other` - A different type of account.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -135,6 +139,10 @@ class ExternalAccounts(SyncAPIResource):
           description: The description you choose to give the external account.
 
           status: The status of the External Account.
+
+              - `active` - The External Acccount is active.
+              - `archived` - The External Account is archived and won't appear in the
+                dashboard.
 
           extra_headers: Send extra headers
 
@@ -245,6 +253,10 @@ class AsyncExternalAccounts(AsyncAPIResource):
 
           funding: The type of the destination account. Defaults to `checking`.
 
+              - `checking` - A checking account.
+              - `savings` - A savings account.
+              - `other` - A different type of account.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -332,6 +344,10 @@ class AsyncExternalAccounts(AsyncAPIResource):
           description: The description you choose to give the external account.
 
           status: The status of the External Account.
+
+              - `active` - The External Acccount is active.
+              - `archived` - The External Account is archived and won't appear in the
+                dashboard.
 
           extra_headers: Send extra headers
 

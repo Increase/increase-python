@@ -37,7 +37,11 @@ class ACHPrenotificationCreateParams(TypedDict, total=False):
     """The name by which the recipient knows you."""
 
     credit_debit_indicator: Literal["credit", "debit"]
-    """Whether the Prenotification is for a future debit or credit."""
+    """Whether the Prenotification is for a future debit or credit.
+
+    - `credit` - The Prenotification is for an anticipated credit.
+    - `debit` - The Prenotification is for an anticipated debit.
+    """
 
     effective_date: Annotated[Union[str, date], PropertyInfo(format="iso8601")]
     """
@@ -57,4 +61,9 @@ class ACHPrenotificationCreateParams(TypedDict, total=False):
     standard_entry_class_code: Literal[
         "corporate_credit_or_debit", "prearranged_payments_and_deposit", "internet_initiated"
     ]
-    """The Standard Entry Class (SEC) code to use for the ACH Prenotification."""
+    """The Standard Entry Class (SEC) code to use for the ACH Prenotification.
+
+    - `corporate_credit_or_debit` - Corporate Credit and Debit (CCD).
+    - `prearranged_payments_and_deposit` - Prearranged Payments and Deposits (PPD).
+    - `internet_initiated` - Internet Initiated (WEB).
+    """
