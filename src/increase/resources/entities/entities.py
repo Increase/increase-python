@@ -51,7 +51,17 @@ class Entities(SyncAPIResource):
         Args:
           relationship: The relationship between your group and the entity.
 
+              - `affiliated` - The entity is controlled by your group.
+              - `informational` - The entity is for informational purposes only.
+              - `unaffiliated` - The entity is not controlled by your group, but can still
+                directly open accounts.
+
           structure: The type of Entity to create.
+
+              - `corporation` - A corporation.
+              - `natural_person` - An individual person.
+              - `joint` - Multiple individual people.
+              - `trust` - A trust.
 
           corporation: Details of the corporation entity to create. Required if `structure` is equal to
               `corporation`.
@@ -222,7 +232,17 @@ class AsyncEntities(AsyncAPIResource):
         Args:
           relationship: The relationship between your group and the entity.
 
+              - `affiliated` - The entity is controlled by your group.
+              - `informational` - The entity is for informational purposes only.
+              - `unaffiliated` - The entity is not controlled by your group, but can still
+                directly open accounts.
+
           structure: The type of Entity to create.
+
+              - `corporation` - A corporation.
+              - `natural_person` - An individual person.
+              - `joint` - Multiple individual people.
+              - `trust` - A trust.
 
           corporation: Details of the corporation entity to create. Required if `structure` is equal to
               `corporation`.

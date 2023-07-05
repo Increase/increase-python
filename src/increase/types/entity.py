@@ -78,7 +78,15 @@ class CorporationBeneficialOwnerIndividualIdentification(BaseModel):
     method: Literal[
         "social_security_number", "individual_taxpayer_identification_number", "passport", "drivers_license", "other"
     ]
-    """A method that can be used to verify the individual's identity."""
+    """A method that can be used to verify the individual's identity.
+
+    - `social_security_number` - A social security number.
+    - `individual_taxpayer_identification_number` - An individual taxpayer
+      identification number (ITIN).
+    - `passport` - A passport number.
+    - `drivers_license` - A driver's license number.
+    - `other` - Another identifying document.
+    """
 
     number_last4: str
     """
@@ -109,7 +117,13 @@ class CorporationBeneficialOwner(BaseModel):
     """Personal details for the beneficial owner."""
 
     prong: Literal["ownership", "control"]
-    """Why this person is considered a beneficial owner of the entity."""
+    """Why this person is considered a beneficial owner of the entity.
+
+    - `ownership` - A person with 25% or greater direct or indirect ownership of the
+      entity.
+    - `control` - A person who manages, directs, or has significant control of the
+      entity.
+    """
 
 
 class Corporation(BaseModel):
@@ -162,7 +176,15 @@ class JointIndividualIdentification(BaseModel):
     method: Literal[
         "social_security_number", "individual_taxpayer_identification_number", "passport", "drivers_license", "other"
     ]
-    """A method that can be used to verify the individual's identity."""
+    """A method that can be used to verify the individual's identity.
+
+    - `social_security_number` - A social security number.
+    - `individual_taxpayer_identification_number` - An individual taxpayer
+      identification number (ITIN).
+    - `passport` - A passport number.
+    - `drivers_license` - A driver's license number.
+    - `other` - Another identifying document.
+    """
 
     number_last4: str
     """
@@ -217,7 +239,15 @@ class NaturalPersonIdentification(BaseModel):
     method: Literal[
         "social_security_number", "individual_taxpayer_identification_number", "passport", "drivers_license", "other"
     ]
-    """A method that can be used to verify the individual's identity."""
+    """A method that can be used to verify the individual's identity.
+
+    - `social_security_number` - A social security number.
+    - `individual_taxpayer_identification_number` - An individual taxpayer
+      identification number (ITIN).
+    - `passport` - A passport number.
+    - `drivers_license` - A driver's license number.
+    - `other` - Another identifying document.
+    """
 
     number_last4: str
     """
@@ -301,7 +331,15 @@ class TrustGrantorIdentification(BaseModel):
     method: Literal[
         "social_security_number", "individual_taxpayer_identification_number", "passport", "drivers_license", "other"
     ]
-    """A method that can be used to verify the individual's identity."""
+    """A method that can be used to verify the individual's identity.
+
+    - `social_security_number` - A social security number.
+    - `individual_taxpayer_identification_number` - An individual taxpayer
+      identification number (ITIN).
+    - `passport` - A passport number.
+    - `drivers_license` - A driver's license number.
+    - `other` - Another identifying document.
+    """
 
     number_last4: str
     """
@@ -348,7 +386,15 @@ class TrustTrusteeIndividualIdentification(BaseModel):
     method: Literal[
         "social_security_number", "individual_taxpayer_identification_number", "passport", "drivers_license", "other"
     ]
-    """A method that can be used to verify the individual's identity."""
+    """A method that can be used to verify the individual's identity.
+
+    - `social_security_number` - A social security number.
+    - `individual_taxpayer_identification_number` - An individual taxpayer
+      identification number (ITIN).
+    - `passport` - A passport number.
+    - `drivers_license` - A driver's license number.
+    - `other` - Another identifying document.
+    """
 
     number_last4: str
     """
@@ -379,7 +425,10 @@ class TrustTrustee(BaseModel):
     """
 
     structure: Literal["individual"]
-    """The structure of the trustee. Will always be equal to `individual`."""
+    """The structure of the trustee. Will always be equal to `individual`.
+
+    - `individual` - The trustee is an individual.
+    """
 
 
 class Trust(BaseModel):
@@ -387,7 +436,11 @@ class Trust(BaseModel):
     """The trust's address."""
 
     category: Literal["revocable", "irrevocable"]
-    """Whether the trust is `revocable` or `irrevocable`."""
+    """Whether the trust is `revocable` or `irrevocable`.
+
+    - `revocable` - The trust is revocable by the grantor.
+    - `irrevocable` - The trust cannot be revoked.
+    """
 
     formation_document_file_id: Optional[str]
     """The ID for the File containing the formation document of the trust."""
@@ -437,10 +490,22 @@ class Entity(BaseModel):
     """
 
     relationship: Literal["affiliated", "informational", "unaffiliated"]
-    """The relationship between your group and the entity."""
+    """The relationship between your group and the entity.
+
+    - `affiliated` - The entity is controlled by your group.
+    - `informational` - The entity is for informational purposes only.
+    - `unaffiliated` - The entity is not controlled by your group, but can still
+      directly open accounts.
+    """
 
     structure: Literal["corporation", "natural_person", "joint", "trust"]
-    """The entity's legal structure."""
+    """The entity's legal structure.
+
+    - `corporation` - A corporation.
+    - `natural_person` - An individual person.
+    - `joint` - Multiple individual people.
+    - `trust` - A trust.
+    """
 
     supplemental_documents: List[SupplementalDocument]
     """Additional documentation associated with the entity.

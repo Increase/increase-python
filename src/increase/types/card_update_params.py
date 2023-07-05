@@ -22,7 +22,12 @@ class CardUpdateParams(TypedDict, total=False):
     """
 
     status: Literal["active", "disabled", "canceled"]
-    """The status to update the Card with."""
+    """The status to update the Card with.
+
+    - `active` - The card is active.
+    - `disabled` - The card is temporarily disabled.
+    - `canceled` - The card is temporarily canceled.
+    """
 
 
 class BillingAddress(TypedDict, total=False):

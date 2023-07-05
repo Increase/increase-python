@@ -68,6 +68,9 @@ class ACHPrenotifications(SyncAPIResource):
 
           credit_debit_indicator: Whether the Prenotification is for a future debit or credit.
 
+              - `credit` - The Prenotification is for an anticipated credit.
+              - `debit` - The Prenotification is for an anticipated debit.
+
           effective_date: The transfer effective date in
               [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
 
@@ -77,6 +80,10 @@ class ACHPrenotifications(SyncAPIResource):
               by the recipient's bank.
 
           standard_entry_class_code: The Standard Entry Class (SEC) code to use for the ACH Prenotification.
+
+              - `corporate_credit_or_debit` - Corporate Credit and Debit (CCD).
+              - `prearranged_payments_and_deposit` - Prearranged Payments and Deposits (PPD).
+              - `internet_initiated` - Internet Initiated (WEB).
 
           extra_headers: Send extra headers
 
@@ -249,6 +256,9 @@ class AsyncACHPrenotifications(AsyncAPIResource):
 
           credit_debit_indicator: Whether the Prenotification is for a future debit or credit.
 
+              - `credit` - The Prenotification is for an anticipated credit.
+              - `debit` - The Prenotification is for an anticipated debit.
+
           effective_date: The transfer effective date in
               [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
 
@@ -258,6 +268,10 @@ class AsyncACHPrenotifications(AsyncAPIResource):
               by the recipient's bank.
 
           standard_entry_class_code: The Standard Entry Class (SEC) code to use for the ACH Prenotification.
+
+              - `corporate_credit_or_debit` - Corporate Credit and Debit (CCD).
+              - `prearranged_payments_and_deposit` - Prearranged Payments and Deposits (PPD).
+              - `internet_initiated` - Internet Initiated (WEB).
 
           extra_headers: Send extra headers
 

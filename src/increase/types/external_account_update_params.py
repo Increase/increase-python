@@ -12,4 +12,9 @@ class ExternalAccountUpdateParams(TypedDict, total=False):
     """The description you choose to give the external account."""
 
     status: Literal["active", "archived"]
-    """The status of the External Account."""
+    """The status of the External Account.
+
+    - `active` - The External Acccount is active.
+    - `archived` - The External Account is archived and won't appear in the
+      dashboard.
+    """

@@ -13,7 +13,12 @@ __all__ = ["ExportCreateParams", "BalanceCsv", "BalanceCsvCreatedAt", "Transacti
 
 class ExportCreateParams(TypedDict, total=False):
     category: Required[Literal["transaction_csv", "balance_csv"]]
-    """The type of Export to create."""
+    """The type of Export to create.
+
+    - `transaction_csv` - Export a CSV of all transactions for a given time range.
+    - `balance_csv` - Export a CSV of account balances for the dates in a given
+      range.
+    """
 
     balance_csv: BalanceCsv
     """Options for the created export.

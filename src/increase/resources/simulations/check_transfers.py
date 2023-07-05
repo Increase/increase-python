@@ -121,6 +121,13 @@ class CheckTransfers(SyncAPIResource):
 
           reason: The reason why the Check Transfer was returned to Increase.
 
+              - `mail_delivery_failure` - Mail delivery failed and the check was returned to
+                sender.
+              - `refused_by_recipient` - The check arrived and the recipient refused to
+                deposit it.
+              - `returned_not_authorized` - The check was fraudulently deposited and the
+                transfer was returned to the Bank of First Deposit.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -251,6 +258,13 @@ class AsyncCheckTransfers(AsyncAPIResource):
           check_transfer_id: The identifier of the Check Transfer you wish to mark returned.
 
           reason: The reason why the Check Transfer was returned to Increase.
+
+              - `mail_delivery_failure` - Mail delivery failed and the check was returned to
+                sender.
+              - `refused_by_recipient` - The check arrived and the recipient refused to
+                deposit it.
+              - `returned_not_authorized` - The check was fraudulently deposited and the
+                transfer was returned to the Bank of First Deposit.
 
           extra_headers: Send extra headers
 

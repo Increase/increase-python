@@ -9,4 +9,8 @@ __all__ = ["LimitUpdateParams"]
 
 class LimitUpdateParams(TypedDict, total=False):
     status: Required[Literal["inactive", "active"]]
-    """The status to update the limit with."""
+    """The status to update the limit with.
+
+    - `inactive` - Disable the limit temporarily.
+    - `active` - Activate the limit.
+    """

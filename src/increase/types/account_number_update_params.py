@@ -12,4 +12,9 @@ class AccountNumberUpdateParams(TypedDict, total=False):
     """The name you choose for the Account Number."""
 
     status: Literal["active", "disabled", "canceled"]
-    """This indicates if transfers can be made to the Account Number."""
+    """This indicates if transfers can be made to the Account Number.
+
+    - `active` - The account number is active.
+    - `disabled` - The account number is temporarily disabled.
+    - `canceled` - The account number is permanently disabled.
+    """

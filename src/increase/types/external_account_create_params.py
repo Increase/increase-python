@@ -21,4 +21,9 @@ class ExternalAccountCreateParams(TypedDict, total=False):
     """
 
     funding: Literal["checking", "savings", "other"]
-    """The type of the destination account. Defaults to `checking`."""
+    """The type of the destination account. Defaults to `checking`.
+
+    - `checking` - A checking account.
+    - `savings` - A savings account.
+    - `other` - A different type of account.
+    """

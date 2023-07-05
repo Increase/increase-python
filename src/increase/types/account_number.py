@@ -31,7 +31,12 @@ class AccountNumber(BaseModel):
     """The American Bankers' Association (ABA) Routing Transit Number (RTN)."""
 
     status: Literal["active", "disabled", "canceled"]
-    """This indicates if payments can be made to the Account Number."""
+    """This indicates if payments can be made to the Account Number.
+
+    - `active` - The account number is active.
+    - `disabled` - The account number is temporarily disabled.
+    - `canceled` - The account number is permanently disabled.
+    """
 
     type: Literal["account_number"]
     """A constant representing the object's type.
