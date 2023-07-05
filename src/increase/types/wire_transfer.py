@@ -145,6 +145,13 @@ class WireTransfer(BaseModel):
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
     currency. For wire transfers this is always equal to `usd`.
+
+    - `CAD` - Canadian Dollar (CAD)
+    - `CHF` - Swiss Franc (CHF)
+    - `EUR` - Euro (EUR)
+    - `GBP` - British Pound (GBP)
+    - `JPY` - Japanese Yen (JPY)
+    - `USD` - US Dollar (USD)
     """
 
     external_account_id: Optional[str]
@@ -165,7 +172,17 @@ class WireTransfer(BaseModel):
     status: Literal[
         "canceled", "requires_attention", "pending_approval", "rejected", "reversed", "complete", "pending_creating"
     ]
-    """The lifecycle status of the transfer."""
+    """The lifecycle status of the transfer.
+
+    - `canceled` - The transfer has been canceled.
+    - `requires_attention` - The transfer requires attention from an Increase
+      operator.
+    - `pending_approval` - The transfer is pending approval.
+    - `rejected` - The transfer has been rejected.
+    - `reversed` - The transfer has been reversed.
+    - `complete` - The transfer is complete.
+    - `pending_creating` - The transfer is pending creation.
+    """
 
     submission: Optional[Submission]
     """

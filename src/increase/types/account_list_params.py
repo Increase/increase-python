@@ -30,7 +30,11 @@ class AccountListParams(TypedDict, total=False):
     """
 
     status: Literal["open", "closed"]
-    """Filter Accounts for those with the specified status."""
+    """Filter Accounts for those with the specified status.
+
+    - `open` - Open Accounts that are ready to use.
+    - `closed` - Closed Accounts on which no new activity can occur.
+    """
 
 
 class CreatedAt(TypedDict, total=False):

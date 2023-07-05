@@ -40,6 +40,10 @@ class CardDisputes(SyncAPIResource):
 
           status: The status to move the dispute to.
 
+              - `accepted` - The Card Dispute has been accepted and your funds have been
+                returned.
+              - `rejected` - The Card Dispute has been rejected.
+
           explanation: Why the dispute was rejected. Not required for accepting disputes.
 
           extra_headers: Send extra headers
@@ -97,6 +101,10 @@ class AsyncCardDisputes(AsyncAPIResource):
           card_dispute_id: The dispute you would like to action.
 
           status: The status to move the dispute to.
+
+              - `accepted` - The Card Dispute has been accepted and your funds have been
+                returned.
+              - `rejected` - The Card Dispute has been rejected.
 
           explanation: Why the dispute was rejected. Not required for accepting disputes.
 

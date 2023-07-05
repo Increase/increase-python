@@ -127,6 +127,10 @@ class AccountNumbers(SyncAPIResource):
 
           status: This indicates if transfers can be made to the Account Number.
 
+              - `active` - The account number is active.
+              - `disabled` - The account number is temporarily disabled.
+              - `canceled` - The account number is permanently disabled.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -183,6 +187,10 @@ class AccountNumbers(SyncAPIResource):
               objects.
 
           status: The status to retrieve Account Numbers for.
+
+              - `active` - The account number is active.
+              - `disabled` - The account number is temporarily disabled.
+              - `canceled` - The account number is permanently disabled.
 
           extra_headers: Send extra headers
 
@@ -323,6 +331,10 @@ class AsyncAccountNumbers(AsyncAPIResource):
 
           status: This indicates if transfers can be made to the Account Number.
 
+              - `active` - The account number is active.
+              - `disabled` - The account number is temporarily disabled.
+              - `canceled` - The account number is permanently disabled.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -379,6 +391,10 @@ class AsyncAccountNumbers(AsyncAPIResource):
               objects.
 
           status: The status to retrieve Account Numbers for.
+
+              - `active` - The account number is active.
+              - `disabled` - The account number is temporarily disabled.
+              - `canceled` - The account number is permanently disabled.
 
           extra_headers: Send extra headers
 

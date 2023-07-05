@@ -27,7 +27,12 @@ class AccountNumberListParams(TypedDict, total=False):
     """
 
     status: Literal["active", "disabled", "canceled"]
-    """The status to retrieve Account Numbers for."""
+    """The status to retrieve Account Numbers for.
+
+    - `active` - The account number is active.
+    - `disabled` - The account number is temporarily disabled.
+    - `canceled` - The account number is permanently disabled.
+    """
 
 
 class CreatedAt(TypedDict, total=False):

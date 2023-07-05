@@ -23,6 +23,13 @@ class Account(BaseModel):
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account
     currency.
+
+    - `CAD` - Canadian Dollar (CAD)
+    - `CHF` - Swiss Franc (CHF)
+    - `EUR` - Euro (EUR)
+    - `GBP` - British Pound (GBP)
+    - `JPY` - Japanese Yen (JPY)
+    - `USD` - US Dollar (USD)
     """
 
     entity_id: Optional[str]
@@ -57,7 +64,11 @@ class Account(BaseModel):
     """The name you choose for the Account."""
 
     status: Literal["open", "closed"]
-    """The status of the Account."""
+    """The status of the Account.
+
+    - `open` - Open Accounts that are ready to use.
+    - `closed` - Closed Accounts on which no new activity can occur.
+    """
 
     type: Literal["account"]
     """A constant representing the object's type.
