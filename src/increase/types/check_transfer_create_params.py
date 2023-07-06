@@ -48,6 +48,12 @@ class CheckTransferCreateParams(TypedDict, total=False):
     make the Check Transfer.
     """
 
+    source_account_number_id: str
+    """
+    The identifier of the Account Number from which to send the transfer and print
+    on the check.
+    """
+
 
 class ReturnAddress(TypedDict, total=False):
     city: Required[str]
