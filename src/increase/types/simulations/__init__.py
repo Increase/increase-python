@@ -15,9 +15,6 @@ from .ach_transfer_return_params import (
 from .card_dispute_action_params import (
     CardDisputeActionParams as CardDisputeActionParams,
 )
-from .check_transfer_return_params import (
-    CheckTransferReturnParams as CheckTransferReturnParams,
-)
 from .card_authorization_simulation import (
     CardAuthorizationSimulation as CardAuthorizationSimulation,
 )

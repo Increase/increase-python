@@ -22,7 +22,6 @@ __all__ = [
     "SourceCheckTransferDeposit",
     "SourceCheckTransferIntention",
     "SourceCheckTransferRejection",
-    "SourceCheckTransferReturn",
     "SourceCheckTransferStopPaymentRequest",
     "SourceFeePayment",
     "SourceInboundACHTransfer",
@@ -395,6 +394,9 @@ class SourceCardRefund(BaseModel):
     merchant_state: Optional[str]
     """The state the merchant resides in."""
 
+    transaction_id: str
+    """The identifier of the Transaction associated with this Transaction."""
+
     type: Literal["card_refund"]
     """A constant representing the object's type.
 
@@ -493,6 +495,9 @@ class SourceCardSettlement(BaseModel):
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
     transaction's presentment currency.
     """
+
+    transaction_id: str
+    """The identifier of the Transaction associated with this Transaction."""
 
     type: Literal["card_settlement"]
     """A constant representing the object's type.
@@ -625,6 +630,9 @@ class SourceCheckTransferDeposit(BaseModel):
     deposited check.
     """
 
+    transaction_id: Optional[str]
+    """The identifier of the Transaction object created when the check was deposited."""
+
     type: Literal["check_transfer_deposit"]
     """A constant representing the object's type.
 
@@ -676,43 +684,16 @@ class SourceCheckTransferRejection(BaseModel):
     """The identifier of the Check Transfer that led to this Transaction."""
 
 
-class SourceCheckTransferReturn(BaseModel):
-    file_id: Optional[str]
-    """If available, a document with additional information about the return."""
-
-    reason: Literal["mail_delivery_failure", "refused_by_recipient", "returned_not_authorized"]
-    """The reason why the check was returned.
-
-    - `mail_delivery_failure` - Mail delivery failed and the check was returned to
-      sender.
-    - `refused_by_recipient` - The check arrived and the recipient refused to
-      deposit it.
-    - `returned_not_authorized` - The check was fraudulently deposited and the
-      transfer was returned to the Bank of First Deposit.
-    """
-
-    returned_at: datetime
-    """
-    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-    the check was returned.
-    """
-
-    transaction_id: Optional[str]
-    """
-    The identifier of the Transaction that was created to credit you for the
-    returned check.
-    """
-
-    transfer_id: str
-    """The identifier of the returned Check Transfer."""
-
-
 class SourceCheckTransferStopPaymentRequest(BaseModel):
+    reason: Literal["mail_delivery_failed", "unknown"]
+    """The reason why this transfer was stopped.
+
+    - `mail_delivery_failed` - The check could not be delivered.
+    - `unknown` - The check was stopped for another reason.
+    """
+
     requested_at: datetime
     """The time the stop-payment was requested."""
-
-    transaction_id: str
-    """The transaction ID of the corresponding credit transaction."""
 
     transfer_id: str
     """The ID of the check transfer that was stopped."""
@@ -1263,7 +1244,6 @@ class Source(BaseModel):
         "check_transfer_deposit",
         "check_transfer_intention",
         "check_transfer_rejection",
-        "check_transfer_return",
         "check_transfer_stop_payment_request",
         "fee_payment",
         "inbound_ach_transfer",
@@ -1316,8 +1296,6 @@ class Source(BaseModel):
       Intention object. Details will be under the `check_transfer_intention` object.
     - `check_transfer_rejection` - The Transaction was created by a Check Transfer
       Rejection object. Details will be under the `check_transfer_rejection` object.
-    - `check_transfer_return` - The Transaction was created by a Check Transfer
-      Return object. Details will be under the `check_transfer_return` object.
     - `check_transfer_stop_payment_request` - The Transaction was created by a Check
       Transfer Stop Payment Request object. Details will be under the
       `check_transfer_stop_payment_request` object.
@@ -1395,13 +1373,6 @@ class Source(BaseModel):
 
     This field will be present in the JSON response if and only if `category` is
     equal to `check_transfer_rejection`.
-    """
-
-    check_transfer_return: Optional[SourceCheckTransferReturn]
-    """A Check Transfer Return object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `check_transfer_return`.
     """
 
     check_transfer_stop_payment_request: Optional[SourceCheckTransferStopPaymentRequest]
@@ -1551,10 +1522,10 @@ class Transaction(BaseModel):
     """
 
     description: str
-    """For a Transaction related to a transfer, this is the description you provide.
+    """An informational message describing this transaction.
 
-    For a Transaction related to a payment, this is the description the vendor
-    provides.
+    Use the fields in `source` to get more detailed information. This field appears
+    as the line-item on the statement.
     """
 
     route_id: Optional[str]

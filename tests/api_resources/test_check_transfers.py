@@ -57,6 +57,7 @@ class TestCheckTransfers:
                 "state": "x",
                 "zip": "x",
             },
+            source_account_number_id="string",
         )
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
@@ -109,6 +110,15 @@ class TestCheckTransfers:
         )
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
+    @pytest.mark.skip(reason="Prism doesn't accept no request body being sent but returns 415 if it is sent")
+    @parametrize
+    def test_method_stop_payment_with_all_params(self, client: Increase) -> None:
+        check_transfer = client.check_transfers.stop_payment(
+            "string",
+            reason="mail_delivery_failed",
+        )
+        assert_matches_type(CheckTransfer, check_transfer, path=["response"])
+
 
 class TestAsyncCheckTransfers:
     strict_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
@@ -151,6 +161,7 @@ class TestAsyncCheckTransfers:
                 "state": "x",
                 "zip": "x",
             },
+            source_account_number_id="string",
         )
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
@@ -200,5 +211,14 @@ class TestAsyncCheckTransfers:
     async def test_method_stop_payment(self, client: AsyncIncrease) -> None:
         check_transfer = await client.check_transfers.stop_payment(
             "string",
+        )
+        assert_matches_type(CheckTransfer, check_transfer, path=["response"])
+
+    @pytest.mark.skip(reason="Prism doesn't accept no request body being sent but returns 415 if it is sent")
+    @parametrize
+    async def test_method_stop_payment_with_all_params(self, client: AsyncIncrease) -> None:
+        check_transfer = await client.check_transfers.stop_payment(
+            "string",
+            reason="mail_delivery_failed",
         )
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])

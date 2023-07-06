@@ -169,6 +169,9 @@ from .bookkeeping_account_create_params import (
 from .wire_drawdown_request_list_params import (
     WireDrawdownRequestListParams as WireDrawdownRequestListParams,
 )
+from .check_transfer_stop_payment_params import (
+    CheckTransferStopPaymentParams as CheckTransferStopPaymentParams,
+)
 from .bookkeeping_entry_set_create_params import (
     BookkeepingEntrySetCreateParams as BookkeepingEntrySetCreateParams,
 )
