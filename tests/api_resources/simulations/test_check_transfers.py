@@ -34,14 +34,6 @@ class TestCheckTransfers:
         )
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
-    @parametrize
-    def test_method_return(self, client: Increase) -> None:
-        check_transfer = client.simulations.check_transfers.return_(
-            "string",
-            reason="mail_delivery_failure",
-        )
-        assert_matches_type(CheckTransfer, check_transfer, path=["response"])
-
 
 class TestAsyncCheckTransfers:
     strict_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
@@ -60,13 +52,5 @@ class TestAsyncCheckTransfers:
     async def test_method_mail(self, client: AsyncIncrease) -> None:
         check_transfer = await client.simulations.check_transfers.mail(
             "string",
-        )
-        assert_matches_type(CheckTransfer, check_transfer, path=["response"])
-
-    @parametrize
-    async def test_method_return(self, client: AsyncIncrease) -> None:
-        check_transfer = await client.simulations.check_transfers.return_(
-            "string",
-            reason="mail_delivery_failure",
         )
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])

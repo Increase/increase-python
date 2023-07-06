@@ -370,7 +370,7 @@ Methods:
 - <code title="get /check_transfers">client.check_transfers.<a href="./src/increase/resources/check_transfers.py">list</a>(\*\*<a href="src/increase/types/check_transfer_list_params.py">params</a>) -> <a href="./src/increase/types/check_transfer.py">SyncPage[CheckTransfer]</a></code>
 - <code title="post /check_transfers/{check_transfer_id}/approve">client.check_transfers.<a href="./src/increase/resources/check_transfers.py">approve</a>(check_transfer_id) -> <a href="./src/increase/types/check_transfer.py">CheckTransfer</a></code>
 - <code title="post /check_transfers/{check_transfer_id}/cancel">client.check_transfers.<a href="./src/increase/resources/check_transfers.py">cancel</a>(check_transfer_id) -> <a href="./src/increase/types/check_transfer.py">CheckTransfer</a></code>
-- <code title="post /check_transfers/{check_transfer_id}/stop_payment">client.check_transfers.<a href="./src/increase/resources/check_transfers.py">stop_payment</a>(check_transfer_id) -> <a href="./src/increase/types/check_transfer.py">CheckTransfer</a></code>
+- <code title="post /check_transfers/{check_transfer_id}/stop_payment">client.check_transfers.<a href="./src/increase/resources/check_transfers.py">stop_payment</a>(check_transfer_id, \*\*<a href="src/increase/types/check_transfer_stop_payment_params.py">params</a>) -> <a href="./src/increase/types/check_transfer.py">CheckTransfer</a></code>
 
 # Entities
 
@@ -566,6 +566,12 @@ Methods:
 
 - <code title="post /simulations/card_disputes/{card_dispute_id}/action">client.simulations.card_disputes.<a href="./src/increase/resources/simulations/card_disputes.py">action</a>(card_dispute_id, \*\*<a href="src/increase/types/simulations/card_dispute_action_params.py">params</a>) -> <a href="./src/increase/types/card_dispute.py">CardDispute</a></code>
 
+## CardProfiles
+
+Methods:
+
+- <code title="post /simulations/card_profiles/{card_profile_id}/approve">client.simulations.card_profiles.<a href="./src/increase/resources/simulations/card_profiles.py">approve</a>(card_profile_id) -> <a href="./src/increase/types/card_profile.py">CardProfile</a></code>
+
 ## CardRefunds
 
 Methods:
@@ -578,7 +584,6 @@ Methods:
 
 - <code title="post /simulations/check_transfers/{check_transfer_id}/deposit">client.simulations.check_transfers.<a href="./src/increase/resources/simulations/check_transfers.py">deposit</a>(check_transfer_id) -> <a href="./src/increase/types/check_transfer.py">CheckTransfer</a></code>
 - <code title="post /simulations/check_transfers/{check_transfer_id}/mail">client.simulations.check_transfers.<a href="./src/increase/resources/simulations/check_transfers.py">mail</a>(check_transfer_id) -> <a href="./src/increase/types/check_transfer.py">CheckTransfer</a></code>
-- <code title="post /simulations/check_transfers/{check_transfer_id}/return">client.simulations.check*transfers.<a href="./src/increase/resources/simulations/check_transfers.py">return*</a>(check_transfer_id, \*\*<a href="src/increase/types/simulations/check_transfer_return_params.py">params</a>) -> <a href="./src/increase/types/check_transfer.py">CheckTransfer</a></code>
 
 ## Documents
 

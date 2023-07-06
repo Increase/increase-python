@@ -6,16 +6,7 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = [
-    "CheckTransfer",
-    "Approval",
-    "Cancellation",
-    "Deposit",
-    "ReturnAddress",
-    "ReturnDetails",
-    "StopPaymentRequest",
-    "Submission",
-]
+__all__ = ["CheckTransfer", "Approval", "Cancellation", "Deposit", "ReturnAddress", "StopPaymentRequest", "Submission"]
 
 
 class Approval(BaseModel):
@@ -62,6 +53,9 @@ class Deposit(BaseModel):
     deposited check.
     """
 
+    transaction_id: Optional[str]
+    """The identifier of the Transaction object created when the check was deposited."""
+
     type: Literal["check_transfer_deposit"]
     """A constant representing the object's type.
 
@@ -89,43 +83,16 @@ class ReturnAddress(BaseModel):
     """The postal code of the address."""
 
 
-class ReturnDetails(BaseModel):
-    file_id: Optional[str]
-    """If available, a document with additional information about the return."""
-
-    reason: Literal["mail_delivery_failure", "refused_by_recipient", "returned_not_authorized"]
-    """The reason why the check was returned.
-
-    - `mail_delivery_failure` - Mail delivery failed and the check was returned to
-      sender.
-    - `refused_by_recipient` - The check arrived and the recipient refused to
-      deposit it.
-    - `returned_not_authorized` - The check was fraudulently deposited and the
-      transfer was returned to the Bank of First Deposit.
-    """
-
-    returned_at: datetime
-    """
-    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-    the check was returned.
-    """
-
-    transaction_id: Optional[str]
-    """
-    The identifier of the Transaction that was created to credit you for the
-    returned check.
-    """
-
-    transfer_id: str
-    """The identifier of the returned Check Transfer."""
-
-
 class StopPaymentRequest(BaseModel):
+    reason: Literal["mail_delivery_failed", "unknown"]
+    """The reason why this transfer was stopped.
+
+    - `mail_delivery_failed` - The check could not be delivered.
+    - `unknown` - The check was stopped for another reason.
+    """
+
     requested_at: datetime
     """The time the stop-payment was requested."""
-
-    transaction_id: str
-    """The transaction ID of the corresponding credit transaction."""
 
     transfer_id: str
     """The ID of the check transfer that was stopped."""
@@ -138,9 +105,6 @@ class StopPaymentRequest(BaseModel):
 
 
 class Submission(BaseModel):
-    check_number: str
-    """The identitying number of the check."""
-
     submitted_at: datetime
     """When this check transfer was submitted to our check printer."""
 
@@ -151,6 +115,9 @@ class CheckTransfer(BaseModel):
 
     account_id: str
     """The identifier of the Account from which funds will be transferred."""
+
+    account_number: str
+    """The account number printed on the check."""
 
     address_city: Optional[str]
     """The city of the check's destination."""
@@ -181,6 +148,9 @@ class CheckTransfer(BaseModel):
     If your account requires approvals for transfers and the transfer was not
     approved, this will contain details of the cancellation.
     """
+
+    check_number: str
+    """The check number printed on the check."""
 
     created_at: datetime
     """
@@ -216,17 +186,22 @@ class CheckTransfer(BaseModel):
     note: Optional[str]
     """The descriptor that will be printed on the letter included with the check."""
 
+    pending_transaction_id: Optional[str]
+    """The identifier of the Pending Transaction associated with the check's creation."""
+
     recipient_name: Optional[str]
     """The name that will be printed on the check."""
 
     return_address: Optional[ReturnAddress]
     """The return address to be printed on the check."""
 
-    return_details: Optional[ReturnDetails]
-    """After a check transfer is returned, this will contain supplemental details.
+    routing_number: str
+    """The routing number printed on the check."""
 
-    A check transfer is returned when the receiver mails a never deposited check
-    back to the bank printed on the check.
+    source_account_number_id: Optional[str]
+    """
+    The identifier of the Account Number from which to send the transfer and print
+    on the check.
     """
 
     status: Literal[
@@ -238,7 +213,6 @@ class CheckTransfer(BaseModel):
         "canceled",
         "deposited",
         "stopped",
-        "returned",
         "rejected",
         "requires_attention",
     ]
@@ -252,7 +226,6 @@ class CheckTransfer(BaseModel):
     - `canceled` - The transfer has been canceled.
     - `deposited` - The check has been deposited.
     - `stopped` - A stop-payment was requested for this check.
-    - `returned` - The transfer has been returned.
     - `rejected` - The transfer has been rejected.
     - `requires_attention` - The transfer requires attention from an Increase
       operator.
@@ -266,15 +239,6 @@ class CheckTransfer(BaseModel):
 
     submission: Optional[Submission]
     """After the transfer is submitted, this will contain supplemental details."""
-
-    submitted_at: Optional[datetime]
-    """
-    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-    the check was submitted.
-    """
-
-    transaction_id: Optional[str]
-    """The ID for the transaction caused by the transfer."""
 
     type: Literal["check_transfer"]
     """A constant representing the object's type.

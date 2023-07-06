@@ -2,10 +2,13 @@
 
 from __future__ import annotations
 
+from typing_extensions import Literal
+
 from ..types import (
     CheckTransfer,
     check_transfer_list_params,
     check_transfer_create_params,
+    check_transfer_stop_payment_params,
 )
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
@@ -32,6 +35,7 @@ class CheckTransfers(SyncAPIResource):
         note: str | NotGiven = NOT_GIVEN,
         require_approval: bool | NotGiven = NOT_GIVEN,
         return_address: check_transfer_create_params.ReturnAddress | NotGiven = NOT_GIVEN,
+        source_account_number_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -69,6 +73,9 @@ class CheckTransfers(SyncAPIResource):
           return_address: The return address to be printed on the check. If omitted this will default to
               the address of the Entity of the Account used to make the Check Transfer.
 
+          source_account_number_id: The identifier of the Account Number from which to send the transfer and print
+              on the check.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -95,6 +102,7 @@ class CheckTransfers(SyncAPIResource):
                     "note": note,
                     "require_approval": require_approval,
                     "return_address": return_address,
+                    "source_account_number_id": source_account_number_id,
                 },
                 check_transfer_create_params.CheckTransferCreateParams,
             ),
@@ -279,6 +287,7 @@ class CheckTransfers(SyncAPIResource):
         self,
         check_transfer_id: str,
         *,
+        reason: Literal["mail_delivery_failed", "unknown"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -293,6 +302,11 @@ class CheckTransfers(SyncAPIResource):
         Args:
           check_transfer_id: The identifier of the Check Transfer.
 
+          reason: The reason why this transfer should be stopped.
+
+              - `mail_delivery_failed` - The check could not be delivered.
+              - `unknown` - The check was stopped for another reason.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -305,6 +319,7 @@ class CheckTransfers(SyncAPIResource):
         """
         return self._post(
             f"/check_transfers/{check_transfer_id}/stop_payment",
+            body=maybe_transform({"reason": reason}, check_transfer_stop_payment_params.CheckTransferStopPaymentParams),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -332,6 +347,7 @@ class AsyncCheckTransfers(AsyncAPIResource):
         note: str | NotGiven = NOT_GIVEN,
         require_approval: bool | NotGiven = NOT_GIVEN,
         return_address: check_transfer_create_params.ReturnAddress | NotGiven = NOT_GIVEN,
+        source_account_number_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -369,6 +385,9 @@ class AsyncCheckTransfers(AsyncAPIResource):
           return_address: The return address to be printed on the check. If omitted this will default to
               the address of the Entity of the Account used to make the Check Transfer.
 
+          source_account_number_id: The identifier of the Account Number from which to send the transfer and print
+              on the check.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -395,6 +414,7 @@ class AsyncCheckTransfers(AsyncAPIResource):
                     "note": note,
                     "require_approval": require_approval,
                     "return_address": return_address,
+                    "source_account_number_id": source_account_number_id,
                 },
                 check_transfer_create_params.CheckTransferCreateParams,
             ),
@@ -579,6 +599,7 @@ class AsyncCheckTransfers(AsyncAPIResource):
         self,
         check_transfer_id: str,
         *,
+        reason: Literal["mail_delivery_failed", "unknown"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -593,6 +614,11 @@ class AsyncCheckTransfers(AsyncAPIResource):
         Args:
           check_transfer_id: The identifier of the Check Transfer.
 
+          reason: The reason why this transfer should be stopped.
+
+              - `mail_delivery_failed` - The check could not be delivered.
+              - `unknown` - The check was stopped for another reason.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -605,6 +631,7 @@ class AsyncCheckTransfers(AsyncAPIResource):
         """
         return await self._post(
             f"/check_transfers/{check_transfer_id}/stop_payment",
+            body=maybe_transform({"reason": reason}, check_transfer_stop_payment_params.CheckTransferStopPaymentParams),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

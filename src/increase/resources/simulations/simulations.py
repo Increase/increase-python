@@ -11,6 +11,7 @@ from ..._resource import SyncAPIResource, AsyncAPIResource
 from .card_refunds import CardRefunds, AsyncCardRefunds
 from .ach_transfers import ACHTransfers, AsyncACHTransfers
 from .card_disputes import CardDisputes, AsyncCardDisputes
+from .card_profiles import CardProfiles, AsyncCardProfiles
 from .check_deposits import CheckDeposits, AsyncCheckDeposits
 from .wire_transfers import WireTransfers, AsyncWireTransfers
 from .check_transfers import CheckTransfers, AsyncCheckTransfers
@@ -41,6 +42,7 @@ class Simulations(SyncAPIResource):
     account_statements: AccountStatements
     ach_transfers: ACHTransfers
     card_disputes: CardDisputes
+    card_profiles: CardProfiles
     card_refunds: CardRefunds
     check_transfers: CheckTransfers
     documents: Documents
@@ -59,6 +61,7 @@ class Simulations(SyncAPIResource):
         self.account_statements = AccountStatements(client)
         self.ach_transfers = ACHTransfers(client)
         self.card_disputes = CardDisputes(client)
+        self.card_profiles = CardProfiles(client)
         self.card_refunds = CardRefunds(client)
         self.check_transfers = CheckTransfers(client)
         self.documents = Documents(client)
@@ -77,6 +80,7 @@ class AsyncSimulations(AsyncAPIResource):
     account_statements: AsyncAccountStatements
     ach_transfers: AsyncACHTransfers
     card_disputes: AsyncCardDisputes
+    card_profiles: AsyncCardProfiles
     card_refunds: AsyncCardRefunds
     check_transfers: AsyncCheckTransfers
     documents: AsyncDocuments
@@ -95,6 +99,7 @@ class AsyncSimulations(AsyncAPIResource):
         self.account_statements = AsyncAccountStatements(client)
         self.ach_transfers = AsyncACHTransfers(client)
         self.card_disputes = AsyncCardDisputes(client)
+        self.card_profiles = AsyncCardProfiles(client)
         self.card_refunds = AsyncCardRefunds(client)
         self.check_transfers = AsyncCheckTransfers(client)
         self.documents = AsyncDocuments(client)

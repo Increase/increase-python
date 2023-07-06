@@ -26,7 +26,7 @@ class CardUpdateParams(TypedDict, total=False):
 
     - `active` - The card is active.
     - `disabled` - The card is temporarily disabled.
-    - `canceled` - The card is temporarily canceled.
+    - `canceled` - The card is permanently canceled.
     """
 
 
