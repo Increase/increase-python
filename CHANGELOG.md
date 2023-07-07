@@ -1,5 +1,26 @@
 # Changelog
 
+## [0.9.0](https://github.com/Increase/increase-python/compare/v0.8.1...v0.9.0) (2023-07-07)
+
+
+### ⚠ BREAKING CHANGES
+
+* **api:** add card profiles simulation method ([#35](https://github.com/Increase/increase-python/issues/35))
+
+### Features
+
+* **api:** add card profiles simulation method ([#35](https://github.com/Increase/increase-python/issues/35)) ([5045fa6](https://github.com/Increase/increase-python/commit/5045fa66d25b1a0b5ed59e7223786b8e73450a14))
+
+
+### Chores
+
+* **internal:** update lock file ([#32](https://github.com/Increase/increase-python/issues/32)) ([f6cc52f](https://github.com/Increase/increase-python/commit/f6cc52f40500fa9e092e1da87e5b2ea75a9856fd))
+
+
+### Documentation
+
+* **types:** add documentation for enum members ([#34](https://github.com/Increase/increase-python/issues/34)) ([40e9d0a](https://github.com/Increase/increase-python/commit/40e9d0ac216dadf745d98c8b84e1162f728dff67))
+
 ## [0.8.1](https://github.com/Increase/increase-python/compare/v0.8.0...v0.8.1) (2023-07-01)
 
 
