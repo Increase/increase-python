@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.10.0](https://github.com/Increase/increase-python/compare/v0.9.0...v0.10.0) (2023-07-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* **api:** add unique_identifier, driver's license backs, inbound funds holds, and more ([#40](https://github.com/Increase/increase-python/issues/40))
+
+### Features
+
+* **api:** add unique_identifier, driver's license backs, inbound funds holds, and more ([#40](https://github.com/Increase/increase-python/issues/40)) ([6bfd843](https://github.com/Increase/increase-python/commit/6bfd8435c03c86371c0b72987da9ee58779cd101))
+
+
+### Chores
+
+* **package:** pin major versions of dependencies ([#37](https://github.com/Increase/increase-python/issues/37)) ([5a7d645](https://github.com/Increase/increase-python/commit/5a7d645db59e7b340a2ba3fc58b5ec04a8fc7d12))
+* **package:** pin major versions of dependencies ([#39](https://github.com/Increase/increase-python/issues/39)) ([fafe6ee](https://github.com/Increase/increase-python/commit/fafe6eeb7d0732e68710d644a6cda21b19597f56))
+
 ## [0.9.0](https://github.com/Increase/increase-python/compare/v0.8.1...v0.9.0) (2023-07-07)
 
 
