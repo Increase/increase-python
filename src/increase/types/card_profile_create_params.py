@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing_extensions import Required, TypedDict
 
-__all__ = ["CardProfileCreateParams", "DigitalWallets", "DigitalWalletsTextColor"]
+__all__ = ["CardProfileCreateParams", "DigitalWallets", "DigitalWalletsTextColor", "PhysicalCards"]
 
 
 class CardProfileCreateParams(TypedDict, total=False):
@@ -17,6 +17,9 @@ class CardProfileCreateParams(TypedDict, total=False):
     Different wallets will use these values to render card artwork appropriately for
     their app.
     """
+
+    physical_cards: PhysicalCards
+    """How physical cards should be designed and shipped."""
 
 
 class DigitalWalletsTextColor(TypedDict, total=False):
@@ -54,3 +57,14 @@ class DigitalWallets(TypedDict, total=False):
 
     text_color: DigitalWalletsTextColor
     """The Card's text color, specified as an RGB triple. The default is white."""
+
+
+class PhysicalCards(TypedDict, total=False):
+    carrier_image_file_id: Required[str]
+    """The identifier of the File containing the physical card's carrier image."""
+
+    contact_phone: Required[str]
+    """A phone number the user can contact to receive support for their card."""
+
+    front_image_file_id: Required[str]
+    """The identifier of the File containing the physical card's front image."""

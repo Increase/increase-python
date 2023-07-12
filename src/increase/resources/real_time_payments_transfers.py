@@ -28,6 +28,7 @@ class RealTimePaymentsTransfers(SyncAPIResource):
         destination_routing_number: str | NotGiven = NOT_GIVEN,
         external_account_id: str | NotGiven = NOT_GIVEN,
         require_approval: bool | NotGiven = NOT_GIVEN,
+        unique_identifier: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -60,6 +61,10 @@ class RealTimePaymentsTransfers(SyncAPIResource):
 
           require_approval: Whether the transfer requires explicit approval via the dashboard or API.
 
+          unique_identifier: A unique identifier you choose for the transfer. Reusing this identifer for
+              another transfer will result in an error. You can query for the transfer
+              associated with this identifier using the List endpoint.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -82,6 +87,7 @@ class RealTimePaymentsTransfers(SyncAPIResource):
                     "destination_routing_number": destination_routing_number,
                     "external_account_id": external_account_id,
                     "require_approval": require_approval,
+                    "unique_identifier": unique_identifier,
                 },
                 real_time_payments_transfer_create_params.RealTimePaymentsTransferCreateParams,
             ),
@@ -136,6 +142,7 @@ class RealTimePaymentsTransfers(SyncAPIResource):
         cursor: str | NotGiven = NOT_GIVEN,
         external_account_id: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
+        unique_identifier: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -156,6 +163,8 @@ class RealTimePaymentsTransfers(SyncAPIResource):
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
+
+          unique_identifier: Filter ACH Transfers to the one with the specified unique identifier.
 
           extra_headers: Send extra headers
 
@@ -180,6 +189,7 @@ class RealTimePaymentsTransfers(SyncAPIResource):
                         "cursor": cursor,
                         "external_account_id": external_account_id,
                         "limit": limit,
+                        "unique_identifier": unique_identifier,
                     },
                     real_time_payments_transfer_list_params.RealTimePaymentsTransferListParams,
                 ),
@@ -200,6 +210,7 @@ class AsyncRealTimePaymentsTransfers(AsyncAPIResource):
         destination_routing_number: str | NotGiven = NOT_GIVEN,
         external_account_id: str | NotGiven = NOT_GIVEN,
         require_approval: bool | NotGiven = NOT_GIVEN,
+        unique_identifier: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -232,6 +243,10 @@ class AsyncRealTimePaymentsTransfers(AsyncAPIResource):
 
           require_approval: Whether the transfer requires explicit approval via the dashboard or API.
 
+          unique_identifier: A unique identifier you choose for the transfer. Reusing this identifer for
+              another transfer will result in an error. You can query for the transfer
+              associated with this identifier using the List endpoint.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -254,6 +269,7 @@ class AsyncRealTimePaymentsTransfers(AsyncAPIResource):
                     "destination_routing_number": destination_routing_number,
                     "external_account_id": external_account_id,
                     "require_approval": require_approval,
+                    "unique_identifier": unique_identifier,
                 },
                 real_time_payments_transfer_create_params.RealTimePaymentsTransferCreateParams,
             ),
@@ -308,6 +324,7 @@ class AsyncRealTimePaymentsTransfers(AsyncAPIResource):
         cursor: str | NotGiven = NOT_GIVEN,
         external_account_id: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
+        unique_identifier: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -328,6 +345,8 @@ class AsyncRealTimePaymentsTransfers(AsyncAPIResource):
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
+
+          unique_identifier: Filter ACH Transfers to the one with the specified unique identifier.
 
           extra_headers: Send extra headers
 
@@ -352,6 +371,7 @@ class AsyncRealTimePaymentsTransfers(AsyncAPIResource):
                         "cursor": cursor,
                         "external_account_id": external_account_id,
                         "limit": limit,
+                        "unique_identifier": unique_identifier,
                     },
                     real_time_payments_transfer_list_params.RealTimePaymentsTransferListParams,
                 ),

@@ -30,6 +30,9 @@ from .ach_transfer_create_inbound_params import (
 from .interest_payment_simulation_result import (
     InterestPaymentSimulationResult as InterestPaymentSimulationResult,
 )
+from .inbound_funds_hold_release_response import (
+    InboundFundsHoldReleaseResponse as InboundFundsHoldReleaseResponse,
+)
 from .wire_transfer_create_inbound_params import (
     WireTransferCreateInboundParams as WireTransferCreateInboundParams,
 )

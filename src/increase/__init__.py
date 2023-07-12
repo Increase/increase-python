@@ -43,6 +43,7 @@ from ._exceptions import (
     APIResponseValidationError,
     InsufficientPermissionsError,
     IdempotencyUnprocessableError,
+    UniqueIdentifierAlreadyExistsError,
 )
 
 __all__ = [
@@ -77,6 +78,7 @@ __all__ = [
     "ObjectNotFoundError",
     "PrivateFeatureError",
     "RateLimitedError",
+    "UniqueIdentifierAlreadyExistsError",
     "Timeout",
     "RequestOptions",
     "Client",
