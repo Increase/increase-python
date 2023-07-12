@@ -308,6 +308,12 @@ class SourceInboundFundsHold(BaseModel):
     - `complete` - Funds have been released.
     """
 
+    type: Literal["inbound_funds_hold"]
+    """A constant representing the object's type.
+
+    For this resource it will always be `inbound_funds_hold`.
+    """
+
 
 class SourceRealTimePaymentsTransferInstruction(BaseModel):
     amount: int

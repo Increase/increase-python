@@ -623,6 +623,18 @@ Methods:
 
 - <code title="post /simulations/inbound_wire_drawdown_requests">client.simulations.inbound_wire_drawdown_requests.<a href="./src/increase/resources/simulations/inbound_wire_drawdown_requests.py">create</a>(\*\*<a href="src/increase/types/simulations/inbound_wire_drawdown_request_create_params.py">params</a>) -> <a href="./src/increase/types/inbound_wire_drawdown_request.py">InboundWireDrawdownRequest</a></code>
 
+## InboundFundsHolds
+
+Types:
+
+```python
+from increase.types.simulations import InboundFundsHoldReleaseResponse
+```
+
+Methods:
+
+- <code title="post /simulations/inbound_funds_holds/{inbound_funds_hold_id}/release">client.simulations.inbound_funds_holds.<a href="./src/increase/resources/simulations/inbound_funds_holds.py">release</a>(inbound_funds_hold_id) -> <a href="./src/increase/types/simulations/inbound_funds_hold_release_response.py">InboundFundsHoldReleaseResponse</a></code>
+
 ## InterestPayments
 
 Types:

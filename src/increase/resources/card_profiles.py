@@ -18,6 +18,7 @@ class CardProfiles(SyncAPIResource):
         *,
         description: str,
         digital_wallets: card_profile_create_params.DigitalWallets,
+        physical_cards: card_profile_create_params.PhysicalCards | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -35,6 +36,8 @@ class CardProfiles(SyncAPIResource):
           digital_wallets: How Cards should appear in digital wallets such as Apple Pay. Different wallets
               will use these values to render card artwork appropriately for their app.
 
+          physical_cards: How physical cards should be designed and shipped.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -51,6 +54,7 @@ class CardProfiles(SyncAPIResource):
                 {
                     "description": description,
                     "digital_wallets": digital_wallets,
+                    "physical_cards": physical_cards,
                 },
                 card_profile_create_params.CardProfileCreateParams,
             ),
@@ -154,6 +158,7 @@ class AsyncCardProfiles(AsyncAPIResource):
         *,
         description: str,
         digital_wallets: card_profile_create_params.DigitalWallets,
+        physical_cards: card_profile_create_params.PhysicalCards | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -171,6 +176,8 @@ class AsyncCardProfiles(AsyncAPIResource):
           digital_wallets: How Cards should appear in digital wallets such as Apple Pay. Different wallets
               will use these values to render card artwork appropriately for their app.
 
+          physical_cards: How physical cards should be designed and shipped.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -187,6 +194,7 @@ class AsyncCardProfiles(AsyncAPIResource):
                 {
                     "description": description,
                     "digital_wallets": digital_wallets,
+                    "physical_cards": physical_cards,
                 },
                 card_profile_create_params.CardProfileCreateParams,
             ),

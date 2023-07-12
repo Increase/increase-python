@@ -25,3 +25,10 @@ class AccountTransferCreateParams(TypedDict, total=False):
 
     require_approval: bool
     """Whether the transfer requires explicit approval via the dashboard or API."""
+
+    unique_identifier: str
+    """A unique identifier you choose for the transfer.
+
+    Reusing this identifer for another transfer will result in an error. You can
+    query for the transfer associated with this identifier using the List endpoint.
+    """

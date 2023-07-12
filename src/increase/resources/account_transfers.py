@@ -25,6 +25,7 @@ class AccountTransfers(SyncAPIResource):
         description: str,
         destination_account_id: str,
         require_approval: bool | NotGiven = NOT_GIVEN,
+        unique_identifier: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -48,6 +49,10 @@ class AccountTransfers(SyncAPIResource):
 
           require_approval: Whether the transfer requires explicit approval via the dashboard or API.
 
+          unique_identifier: A unique identifier you choose for the transfer. Reusing this identifer for
+              another transfer will result in an error. You can query for the transfer
+              associated with this identifier using the List endpoint.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -67,6 +72,7 @@ class AccountTransfers(SyncAPIResource):
                     "description": description,
                     "destination_account_id": destination_account_id,
                     "require_approval": require_approval,
+                    "unique_identifier": unique_identifier,
                 },
                 account_transfer_create_params.AccountTransferCreateParams,
             ),
@@ -120,6 +126,7 @@ class AccountTransfers(SyncAPIResource):
         created_at: account_transfer_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
+        unique_identifier: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -137,6 +144,8 @@ class AccountTransfers(SyncAPIResource):
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
+
+          unique_identifier: Filter Account Transfers to the one with the specified unique identifier.
 
           extra_headers: Send extra headers
 
@@ -160,6 +169,7 @@ class AccountTransfers(SyncAPIResource):
                         "created_at": created_at,
                         "cursor": cursor,
                         "limit": limit,
+                        "unique_identifier": unique_identifier,
                     },
                     account_transfer_list_params.AccountTransferListParams,
                 ),
@@ -257,6 +267,7 @@ class AsyncAccountTransfers(AsyncAPIResource):
         description: str,
         destination_account_id: str,
         require_approval: bool | NotGiven = NOT_GIVEN,
+        unique_identifier: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -280,6 +291,10 @@ class AsyncAccountTransfers(AsyncAPIResource):
 
           require_approval: Whether the transfer requires explicit approval via the dashboard or API.
 
+          unique_identifier: A unique identifier you choose for the transfer. Reusing this identifer for
+              another transfer will result in an error. You can query for the transfer
+              associated with this identifier using the List endpoint.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -299,6 +314,7 @@ class AsyncAccountTransfers(AsyncAPIResource):
                     "description": description,
                     "destination_account_id": destination_account_id,
                     "require_approval": require_approval,
+                    "unique_identifier": unique_identifier,
                 },
                 account_transfer_create_params.AccountTransferCreateParams,
             ),
@@ -352,6 +368,7 @@ class AsyncAccountTransfers(AsyncAPIResource):
         created_at: account_transfer_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
+        unique_identifier: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -369,6 +386,8 @@ class AsyncAccountTransfers(AsyncAPIResource):
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
+
+          unique_identifier: Filter Account Transfers to the one with the specified unique identifier.
 
           extra_headers: Send extra headers
 
@@ -392,6 +411,7 @@ class AsyncAccountTransfers(AsyncAPIResource):
                         "created_at": created_at,
                         "cursor": cursor,
                         "limit": limit,
+                        "unique_identifier": unique_identifier,
                     },
                     account_transfer_list_params.AccountTransferListParams,
                 ),

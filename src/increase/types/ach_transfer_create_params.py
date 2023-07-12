@@ -114,3 +114,10 @@ class ACHTransferCreateParams(TypedDict, total=False):
     - `prearranged_payments_and_deposit` - Prearranged Payments and Deposits (PPD).
     - `internet_initiated` - Internet Initiated (WEB).
     """
+
+    unique_identifier: str
+    """A unique identifier you choose for the transfer.
+
+    Reusing this identifer for another transfer will result in an error. You can
+    query for the transfer associated with this identifier using the List endpoint.
+    """

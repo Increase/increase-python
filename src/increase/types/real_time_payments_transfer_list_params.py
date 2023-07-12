@@ -34,6 +34,9 @@ class RealTimePaymentsTransferListParams(TypedDict, total=False):
     The default (and maximum) is 100 objects.
     """
 
+    unique_identifier: str
+    """Filter ACH Transfers to the one with the specified unique identifier."""
+
 
 class CreatedAt(TypedDict, total=False):
     after: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]

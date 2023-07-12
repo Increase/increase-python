@@ -245,3 +245,6 @@ class CheckTransfer(BaseModel):
 
     For this resource it will always be `check_transfer`.
     """
+
+    unique_identifier: Optional[str]
+    """The unique identifier you chose for this transfer."""

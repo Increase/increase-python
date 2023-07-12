@@ -44,6 +44,7 @@ __all__ = [
     "ObjectNotFoundError",
     "IdempotencyConflictError",
     "InvalidOperationError",
+    "UniqueIdentifierAlreadyExistsError",
     "IdempotencyUnprocessableError",
     "RateLimitedError",
 ]
@@ -249,6 +250,29 @@ class InvalidOperationError(exceptions.ConflictError):
 
         self.title = title
         self.detail = cast(Any, data.get("detail"))
+        self.status = cast(Any, data.get("status"))
+        self.type = cast(Any, data.get("type"))
+
+
+class UniqueIdentifierAlreadyExistsError(exceptions.ConflictError):
+    detail: Optional[str]
+
+    resource_id: str
+
+    status: Literal[409]
+
+    title: str
+
+    type: Literal["unique_identifier_already_exists_error"]
+
+    def __init__(self, message: str, *, body: object, request: httpx.Request, response: httpx.Response) -> None:
+        data = cast(Mapping[str, object], body if is_mapping(body) else {})
+        title = cast(Any, data.get("title"))
+        super().__init__(title or message, request=request, response=response, body=body)
+
+        self.title = title
+        self.detail = cast(Any, data.get("detail"))
+        self.resource_id = cast(Any, data.get("resource_id"))
         self.status = cast(Any, data.get("status"))
         self.type = cast(Any, data.get("type"))
 

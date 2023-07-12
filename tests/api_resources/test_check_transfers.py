@@ -58,6 +58,7 @@ class TestCheckTransfers:
                 "zip": "x",
             },
             source_account_number_id="string",
+            unique_identifier="x",
         )
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
@@ -85,6 +86,7 @@ class TestCheckTransfers:
             },
             cursor="string",
             limit=0,
+            unique_identifier="x",
         )
         assert_matches_type(SyncPage[CheckTransfer], check_transfer, path=["response"])
 
@@ -162,6 +164,7 @@ class TestAsyncCheckTransfers:
                 "zip": "x",
             },
             source_account_number_id="string",
+            unique_identifier="x",
         )
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
@@ -189,6 +192,7 @@ class TestAsyncCheckTransfers:
             },
             cursor="string",
             limit=0,
+            unique_identifier="x",
         )
         assert_matches_type(AsyncPage[CheckTransfer], check_transfer, path=["response"])
 

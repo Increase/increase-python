@@ -47,3 +47,10 @@ class WireTransferCreateParams(TypedDict, total=False):
     The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
     destination account.
     """
+
+    unique_identifier: str
+    """A unique identifier you choose for the transfer.
+
+    Reusing this identifer for another transfer will result in an error. You can
+    query for the transfer associated with this identifier using the List endpoint.
+    """

@@ -50,6 +50,7 @@ class TestACHTransfers:
             require_approval=True,
             routing_number="xxxxxxxxx",
             standard_entry_class_code="corporate_credit_or_debit",
+            unique_identifier="x",
         )
         assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
 
@@ -78,6 +79,7 @@ class TestACHTransfers:
             cursor="string",
             external_account_id="string",
             limit=0,
+            unique_identifier="x",
         )
         assert_matches_type(SyncPage[ACHTransfer], ach_transfer, path=["response"])
 
@@ -130,6 +132,7 @@ class TestAsyncACHTransfers:
             require_approval=True,
             routing_number="xxxxxxxxx",
             standard_entry_class_code="corporate_credit_or_debit",
+            unique_identifier="x",
         )
         assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
 
@@ -158,6 +161,7 @@ class TestAsyncACHTransfers:
             cursor="string",
             external_account_id="string",
             limit=0,
+            unique_identifier="x",
         )
         assert_matches_type(AsyncPage[ACHTransfer], ach_transfer, path=["response"])
 

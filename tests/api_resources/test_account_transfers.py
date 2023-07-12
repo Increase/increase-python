@@ -39,6 +39,7 @@ class TestAccountTransfers:
             description="x",
             destination_account_id="string",
             require_approval=True,
+            unique_identifier="x",
         )
         assert_matches_type(AccountTransfer, account_transfer, path=["response"])
 
@@ -66,6 +67,7 @@ class TestAccountTransfers:
             },
             cursor="string",
             limit=0,
+            unique_identifier="x",
         )
         assert_matches_type(SyncPage[AccountTransfer], account_transfer, path=["response"])
 
@@ -107,6 +109,7 @@ class TestAsyncAccountTransfers:
             description="x",
             destination_account_id="string",
             require_approval=True,
+            unique_identifier="x",
         )
         assert_matches_type(AccountTransfer, account_transfer, path=["response"])
 
@@ -134,6 +137,7 @@ class TestAsyncAccountTransfers:
             },
             cursor="string",
             limit=0,
+            unique_identifier="x",
         )
         assert_matches_type(AsyncPage[AccountTransfer], account_transfer, path=["response"])
 

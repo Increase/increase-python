@@ -40,8 +40,37 @@ class Cancellation(BaseModel):
 
 
 class NotificationsOfChange(BaseModel):
-    change_code: str
-    """The type of change that occurred."""
+    change_code: Literal[
+        "incorrect_account_number",
+        "incorrect_routing_number",
+        "incorrect_routing_number_and_account_number",
+        "incorrect_transaction_code",
+        "incorrect_account_number_and_transaction_code",
+        "incorrect_routing_number_account_number_and_transaction_code",
+        "incorrect_receiving_depository_financial_institution_identification",
+        "incorrect_individual_identification_number",
+        "addenda_format_error",
+        "incorrect_standard_entry_class_code_for_outbound_international_payment",
+    ]
+    """The type of change that occurred.
+
+    - `incorrect_account_number` - The account number was incorrect.
+    - `incorrect_routing_number` - The routing number was incorrect.
+    - `incorrect_routing_number_and_account_number` - Both the routing number and
+      the account number were incorrect.
+    - `incorrect_transaction_code` - The transaction code was incorrect.
+    - `incorrect_account_number_and_transaction_code` - The account number and the
+      transaction code were incorrect.
+    - `incorrect_routing_number_account_number_and_transaction_code` - The routing
+      number, account number, and transaction code were incorrect.
+    - `incorrect_receiving_depository_financial_institution_identification` - The
+      receiving depository financial institution identification was incorrect.
+    - `incorrect_individual_identification_number` - The individual identification
+      number was incorrect.
+    - `addenda_format_error` - The addenda had an incorrect format.
+    - `incorrect_standard_entry_class_code_for_outbound_international_payment` - The
+      standard entry class code was incorrect for an outbound international payment.
+    """
 
     corrected_data: str
     """The corrected data."""
@@ -453,3 +482,6 @@ class ACHTransfer(BaseModel):
 
     For this resource it will always be `ach_transfer`.
     """
+
+    unique_identifier: Optional[str]
+    """The unique identifier you chose for this transfer."""

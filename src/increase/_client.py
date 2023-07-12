@@ -302,6 +302,9 @@ class Increase(SyncAPIClient):
         if type_ == "invalid_operation_error":
             return exceptions.InvalidOperationError(err_msg, request=request, response=response, body=body)
 
+        if type_ == "unique_identifier_already_exists_error":
+            return exceptions.UniqueIdentifierAlreadyExistsError(err_msg, request=request, response=response, body=body)
+
         if type_ == "idempotency_unprocessable_error":
             return exceptions.IdempotencyUnprocessableError(err_msg, request=request, response=response, body=body)
 
@@ -576,6 +579,9 @@ class AsyncIncrease(AsyncAPIClient):
 
         if type_ == "invalid_operation_error":
             return exceptions.InvalidOperationError(err_msg, request=request, response=response, body=body)
+
+        if type_ == "unique_identifier_already_exists_error":
+            return exceptions.UniqueIdentifierAlreadyExistsError(err_msg, request=request, response=response, body=body)
 
         if type_ == "idempotency_unprocessable_error":
             return exceptions.IdempotencyUnprocessableError(err_msg, request=request, response=response, body=body)

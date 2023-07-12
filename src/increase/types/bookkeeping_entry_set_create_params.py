@@ -18,8 +18,8 @@ class BookkeepingEntrySetCreateParams(TypedDict, total=False):
     date: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
     """The date of the transaction.
 
-    If `transaction_id` is provided, this must match the `created_at` field on that
-    resource.
+    Optional if `transaction_id` is provided, in which case we use the `date` of
+    that transaction. Required otherwise.
     """
 
     transaction_id: str
