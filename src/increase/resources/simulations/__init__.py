@@ -14,6 +14,7 @@ from .check_transfers import CheckTransfers, AsyncCheckTransfers
 from .account_transfers import AccountTransfers, AsyncAccountTransfers
 from .interest_payments import InterestPayments, AsyncInterestPayments
 from .account_statements import AccountStatements, AsyncAccountStatements
+from .inbound_funds_holds import InboundFundsHolds, AsyncInboundFundsHolds
 from .real_time_payments_transfers import (
     RealTimePaymentsTransfers,
     AsyncRealTimePaymentsTransfers,
@@ -52,6 +53,8 @@ __all__ = [
     "AsyncPrograms",
     "InboundWireDrawdownRequests",
     "AsyncInboundWireDrawdownRequests",
+    "InboundFundsHolds",
+    "AsyncInboundFundsHolds",
     "InterestPayments",
     "AsyncInterestPayments",
     "WireTransfers",

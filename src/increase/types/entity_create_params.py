@@ -148,10 +148,13 @@ class CorporationBeneficialOwnerIndividualIdentificationDriversLicense(TypedDict
     """The driver's license's expiration date in YYYY-MM-DD format."""
 
     file_id: Required[str]
-    """The identifier of the File containing the driver's license."""
+    """The identifier of the File containing the front of the driver's license."""
 
     state: Required[str]
     """The state that issued the provided driver's license."""
+
+    back_file_id: str
+    """The identifier of the File containing the back of the driver's license."""
 
 
 class CorporationBeneficialOwnerIndividualIdentificationOther(TypedDict, total=False):
@@ -165,7 +168,13 @@ class CorporationBeneficialOwnerIndividualIdentificationOther(TypedDict, total=F
     """A description of the document submitted."""
 
     file_id: Required[str]
-    """The identifier of the File containing the document."""
+    """The identifier of the File containing the front of the document."""
+
+    back_file_id: str
+    """The identifier of the File containing the back of the document.
+
+    Not every document has a reverse side.
+    """
 
     expiration_date: Annotated[Union[str, date], PropertyInfo(format="iso8601")]
     """The document's expiration date in YYYY-MM-DD format."""
@@ -317,10 +326,13 @@ class JointIndividualIdentificationDriversLicense(TypedDict, total=False):
     """The driver's license's expiration date in YYYY-MM-DD format."""
 
     file_id: Required[str]
-    """The identifier of the File containing the driver's license."""
+    """The identifier of the File containing the front of the driver's license."""
 
     state: Required[str]
     """The state that issued the provided driver's license."""
+
+    back_file_id: str
+    """The identifier of the File containing the back of the driver's license."""
 
 
 class JointIndividualIdentificationOther(TypedDict, total=False):
@@ -334,7 +346,13 @@ class JointIndividualIdentificationOther(TypedDict, total=False):
     """A description of the document submitted."""
 
     file_id: Required[str]
-    """The identifier of the File containing the document."""
+    """The identifier of the File containing the front of the document."""
+
+    back_file_id: str
+    """The identifier of the File containing the back of the document.
+
+    Not every document has a reverse side.
+    """
 
     expiration_date: Annotated[Union[str, date], PropertyInfo(format="iso8601")]
     """The document's expiration date in YYYY-MM-DD format."""
@@ -451,10 +469,13 @@ class NaturalPersonIdentificationDriversLicense(TypedDict, total=False):
     """The driver's license's expiration date in YYYY-MM-DD format."""
 
     file_id: Required[str]
-    """The identifier of the File containing the driver's license."""
+    """The identifier of the File containing the front of the driver's license."""
 
     state: Required[str]
     """The state that issued the provided driver's license."""
+
+    back_file_id: str
+    """The identifier of the File containing the back of the driver's license."""
 
 
 class NaturalPersonIdentificationOther(TypedDict, total=False):
@@ -468,7 +489,13 @@ class NaturalPersonIdentificationOther(TypedDict, total=False):
     """A description of the document submitted."""
 
     file_id: Required[str]
-    """The identifier of the File containing the document."""
+    """The identifier of the File containing the front of the document."""
+
+    back_file_id: str
+    """The identifier of the File containing the back of the document.
+
+    Not every document has a reverse side.
+    """
 
     expiration_date: Annotated[Union[str, date], PropertyInfo(format="iso8601")]
     """The document's expiration date in YYYY-MM-DD format."""
@@ -602,10 +629,13 @@ class TrustTrusteeIndividualIdentificationDriversLicense(TypedDict, total=False)
     """The driver's license's expiration date in YYYY-MM-DD format."""
 
     file_id: Required[str]
-    """The identifier of the File containing the driver's license."""
+    """The identifier of the File containing the front of the driver's license."""
 
     state: Required[str]
     """The state that issued the provided driver's license."""
+
+    back_file_id: str
+    """The identifier of the File containing the back of the driver's license."""
 
 
 class TrustTrusteeIndividualIdentificationOther(TypedDict, total=False):
@@ -619,7 +649,13 @@ class TrustTrusteeIndividualIdentificationOther(TypedDict, total=False):
     """A description of the document submitted."""
 
     file_id: Required[str]
-    """The identifier of the File containing the document."""
+    """The identifier of the File containing the front of the document."""
+
+    back_file_id: str
+    """The identifier of the File containing the back of the document.
+
+    Not every document has a reverse side.
+    """
 
     expiration_date: Annotated[Union[str, date], PropertyInfo(format="iso8601")]
     """The document's expiration date in YYYY-MM-DD format."""
@@ -742,10 +778,13 @@ class TrustGrantorIdentificationDriversLicense(TypedDict, total=False):
     """The driver's license's expiration date in YYYY-MM-DD format."""
 
     file_id: Required[str]
-    """The identifier of the File containing the driver's license."""
+    """The identifier of the File containing the front of the driver's license."""
 
     state: Required[str]
     """The state that issued the provided driver's license."""
+
+    back_file_id: str
+    """The identifier of the File containing the back of the driver's license."""
 
 
 class TrustGrantorIdentificationOther(TypedDict, total=False):
@@ -759,7 +798,13 @@ class TrustGrantorIdentificationOther(TypedDict, total=False):
     """A description of the document submitted."""
 
     file_id: Required[str]
-    """The identifier of the File containing the document."""
+    """The identifier of the File containing the front of the document."""
+
+    back_file_id: str
+    """The identifier of the File containing the back of the document.
+
+    Not every document has a reverse side.
+    """
 
     expiration_date: Annotated[Union[str, date], PropertyInfo(format="iso8601")]
     """The document's expiration date in YYYY-MM-DD format."""

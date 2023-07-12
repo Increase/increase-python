@@ -51,6 +51,11 @@ class TestCardProfiles:
                 "background_image_file_id": "string",
                 "app_icon_file_id": "string",
             },
+            physical_cards={
+                "contact_phone": "x",
+                "front_image_file_id": "string",
+                "carrier_image_file_id": "string",
+            },
         )
         assert_matches_type(CardProfile, card_profile, path=["response"])
 
@@ -111,6 +116,11 @@ class TestAsyncCardProfiles:
                 "contact_phone": "x",
                 "background_image_file_id": "string",
                 "app_icon_file_id": "string",
+            },
+            physical_cards={
+                "contact_phone": "x",
+                "front_image_file_id": "string",
+                "carrier_image_file_id": "string",
             },
         )
         assert_matches_type(CardProfile, card_profile, path=["response"])

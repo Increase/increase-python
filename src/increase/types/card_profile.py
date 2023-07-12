@@ -6,7 +6,7 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["CardProfile", "DigitalWallets", "DigitalWalletsTextColor"]
+__all__ = ["CardProfile", "DigitalWallets", "DigitalWalletsTextColor", "PhysicalCards"]
 
 
 class DigitalWalletsTextColor(BaseModel):
@@ -46,6 +46,20 @@ class DigitalWallets(BaseModel):
     """The Card's text color, specified as an RGB triple."""
 
 
+class PhysicalCards(BaseModel):
+    back_image_file_id: str
+    """The identifier of the File containing the physical card's back image."""
+
+    carrier_image_file_id: str
+    """The identifier of the File containing the physical card's carrier image."""
+
+    contact_phone: str
+    """A phone number the user can contact to receive support for their card."""
+
+    front_image_file_id: str
+    """The identifier of the File containing the physical card's front image."""
+
+
 class CardProfile(BaseModel):
     id: str
     """The Card Profile identifier."""
@@ -65,6 +79,9 @@ class CardProfile(BaseModel):
     Different wallets will use these values to render card artwork appropriately for
     their app.
     """
+
+    physical_cards: Optional[PhysicalCards]
+    """How physical cards should be designed and shipped."""
 
     status: Literal["pending", "rejected", "active", "archived"]
     """The status of the Card Profile.

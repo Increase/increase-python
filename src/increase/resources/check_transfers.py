@@ -36,6 +36,7 @@ class CheckTransfers(SyncAPIResource):
         require_approval: bool | NotGiven = NOT_GIVEN,
         return_address: check_transfer_create_params.ReturnAddress | NotGiven = NOT_GIVEN,
         source_account_number_id: str | NotGiven = NOT_GIVEN,
+        unique_identifier: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -76,6 +77,10 @@ class CheckTransfers(SyncAPIResource):
           source_account_number_id: The identifier of the Account Number from which to send the transfer and print
               on the check.
 
+          unique_identifier: A unique identifier you choose for the transfer. Reusing this identifer for
+              another transfer will result in an error. You can query for the transfer
+              associated with this identifier using the List endpoint.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -103,6 +108,7 @@ class CheckTransfers(SyncAPIResource):
                     "require_approval": require_approval,
                     "return_address": return_address,
                     "source_account_number_id": source_account_number_id,
+                    "unique_identifier": unique_identifier,
                 },
                 check_transfer_create_params.CheckTransferCreateParams,
             ),
@@ -156,6 +162,7 @@ class CheckTransfers(SyncAPIResource):
         created_at: check_transfer_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
+        unique_identifier: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -173,6 +180,8 @@ class CheckTransfers(SyncAPIResource):
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
+
+          unique_identifier: Filter Check Transfers to the one with the specified unique identifier.
 
           extra_headers: Send extra headers
 
@@ -196,6 +205,7 @@ class CheckTransfers(SyncAPIResource):
                         "created_at": created_at,
                         "cursor": cursor,
                         "limit": limit,
+                        "unique_identifier": unique_identifier,
                     },
                     check_transfer_list_params.CheckTransferListParams,
                 ),
@@ -348,6 +358,7 @@ class AsyncCheckTransfers(AsyncAPIResource):
         require_approval: bool | NotGiven = NOT_GIVEN,
         return_address: check_transfer_create_params.ReturnAddress | NotGiven = NOT_GIVEN,
         source_account_number_id: str | NotGiven = NOT_GIVEN,
+        unique_identifier: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -388,6 +399,10 @@ class AsyncCheckTransfers(AsyncAPIResource):
           source_account_number_id: The identifier of the Account Number from which to send the transfer and print
               on the check.
 
+          unique_identifier: A unique identifier you choose for the transfer. Reusing this identifer for
+              another transfer will result in an error. You can query for the transfer
+              associated with this identifier using the List endpoint.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -415,6 +430,7 @@ class AsyncCheckTransfers(AsyncAPIResource):
                     "require_approval": require_approval,
                     "return_address": return_address,
                     "source_account_number_id": source_account_number_id,
+                    "unique_identifier": unique_identifier,
                 },
                 check_transfer_create_params.CheckTransferCreateParams,
             ),
@@ -468,6 +484,7 @@ class AsyncCheckTransfers(AsyncAPIResource):
         created_at: check_transfer_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
+        unique_identifier: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -485,6 +502,8 @@ class AsyncCheckTransfers(AsyncAPIResource):
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
+
+          unique_identifier: Filter Check Transfers to the one with the specified unique identifier.
 
           extra_headers: Send extra headers
 
@@ -508,6 +527,7 @@ class AsyncCheckTransfers(AsyncAPIResource):
                         "created_at": created_at,
                         "cursor": cursor,
                         "limit": limit,
+                        "unique_identifier": unique_identifier,
                     },
                     check_transfer_list_params.CheckTransferListParams,
                 ),

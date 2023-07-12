@@ -18,6 +18,7 @@ from .check_transfers import CheckTransfers, AsyncCheckTransfers
 from .account_transfers import AccountTransfers, AsyncAccountTransfers
 from .interest_payments import InterestPayments, AsyncInterestPayments
 from .account_statements import AccountStatements, AsyncAccountStatements
+from .inbound_funds_holds import InboundFundsHolds, AsyncInboundFundsHolds
 from .real_time_payments_transfers import (
     RealTimePaymentsTransfers,
     AsyncRealTimePaymentsTransfers,
@@ -50,6 +51,7 @@ class Simulations(SyncAPIResource):
     check_deposits: CheckDeposits
     programs: Programs
     inbound_wire_drawdown_requests: InboundWireDrawdownRequests
+    inbound_funds_holds: InboundFundsHolds
     interest_payments: InterestPayments
     wire_transfers: WireTransfers
     cards: Cards
@@ -69,6 +71,7 @@ class Simulations(SyncAPIResource):
         self.check_deposits = CheckDeposits(client)
         self.programs = Programs(client)
         self.inbound_wire_drawdown_requests = InboundWireDrawdownRequests(client)
+        self.inbound_funds_holds = InboundFundsHolds(client)
         self.interest_payments = InterestPayments(client)
         self.wire_transfers = WireTransfers(client)
         self.cards = Cards(client)
@@ -88,6 +91,7 @@ class AsyncSimulations(AsyncAPIResource):
     check_deposits: AsyncCheckDeposits
     programs: AsyncPrograms
     inbound_wire_drawdown_requests: AsyncInboundWireDrawdownRequests
+    inbound_funds_holds: AsyncInboundFundsHolds
     interest_payments: AsyncInterestPayments
     wire_transfers: AsyncWireTransfers
     cards: AsyncCards
@@ -107,6 +111,7 @@ class AsyncSimulations(AsyncAPIResource):
         self.check_deposits = AsyncCheckDeposits(client)
         self.programs = AsyncPrograms(client)
         self.inbound_wire_drawdown_requests = AsyncInboundWireDrawdownRequests(client)
+        self.inbound_funds_holds = AsyncInboundFundsHolds(client)
         self.interest_payments = AsyncInterestPayments(client)
         self.wire_transfers = AsyncWireTransfers(client)
         self.cards = AsyncCards(client)

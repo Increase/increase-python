@@ -2,25 +2,19 @@
 
 from __future__ import annotations
 
-from typing import List, Union
-from datetime import datetime
+from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._resource import SyncAPIResource, AsyncAPIResource
+from ..._base_client import make_request_options
+from ...types.simulations import InboundFundsHoldReleaseResponse
 
-from ..types import BookkeepingEntrySet, bookkeeping_entry_set_create_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from .._utils import maybe_transform
-from .._resource import SyncAPIResource, AsyncAPIResource
-from .._base_client import make_request_options
-
-__all__ = ["BookkeepingEntrySets", "AsyncBookkeepingEntrySets"]
+__all__ = ["InboundFundsHolds", "AsyncInboundFundsHolds"]
 
 
-class BookkeepingEntrySets(SyncAPIResource):
-    def create(
+class InboundFundsHolds(SyncAPIResource):
+    def release(
         self,
+        inbound_funds_hold_id: str,
         *,
-        entries: List[bookkeeping_entry_set_create_params.Entry],
-        date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        transaction_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -28,17 +22,13 @@ class BookkeepingEntrySets(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> BookkeepingEntrySet:
+    ) -> InboundFundsHoldReleaseResponse:
         """
-        Create a Bookkeeping Entry Set
+        This endpoint simulates immediately releasing an inbound funds hold, which might
+        be created as a result of e.g., an ACH debit.
 
         Args:
-          entries: The bookkeeping entries.
-
-          date: The date of the transaction. Optional if `transaction_id` is provided, in which
-              case we use the `date` of that transaction. Required otherwise.
-
-          transaction_id: The identifier of the Transaction related to this entry set, if any.
+          inbound_funds_hold_id: The inbound funds hold to release.
 
           extra_headers: Send extra headers
 
@@ -51,15 +41,7 @@ class BookkeepingEntrySets(SyncAPIResource):
           idempotency_key: Specify a custom idempotency key for this request
         """
         return self._post(
-            "/bookkeeping_entry_sets",
-            body=maybe_transform(
-                {
-                    "entries": entries,
-                    "date": date,
-                    "transaction_id": transaction_id,
-                },
-                bookkeeping_entry_set_create_params.BookkeepingEntrySetCreateParams,
-            ),
+            f"/simulations/inbound_funds_holds/{inbound_funds_hold_id}/release",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -67,17 +49,15 @@ class BookkeepingEntrySets(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=BookkeepingEntrySet,
+            cast_to=InboundFundsHoldReleaseResponse,
         )
 
 
-class AsyncBookkeepingEntrySets(AsyncAPIResource):
-    async def create(
+class AsyncInboundFundsHolds(AsyncAPIResource):
+    async def release(
         self,
+        inbound_funds_hold_id: str,
         *,
-        entries: List[bookkeeping_entry_set_create_params.Entry],
-        date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        transaction_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -85,17 +65,13 @@ class AsyncBookkeepingEntrySets(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> BookkeepingEntrySet:
+    ) -> InboundFundsHoldReleaseResponse:
         """
-        Create a Bookkeeping Entry Set
+        This endpoint simulates immediately releasing an inbound funds hold, which might
+        be created as a result of e.g., an ACH debit.
 
         Args:
-          entries: The bookkeeping entries.
-
-          date: The date of the transaction. Optional if `transaction_id` is provided, in which
-              case we use the `date` of that transaction. Required otherwise.
-
-          transaction_id: The identifier of the Transaction related to this entry set, if any.
+          inbound_funds_hold_id: The inbound funds hold to release.
 
           extra_headers: Send extra headers
 
@@ -108,15 +84,7 @@ class AsyncBookkeepingEntrySets(AsyncAPIResource):
           idempotency_key: Specify a custom idempotency key for this request
         """
         return await self._post(
-            "/bookkeeping_entry_sets",
-            body=maybe_transform(
-                {
-                    "entries": entries,
-                    "date": date,
-                    "transaction_id": transaction_id,
-                },
-                bookkeeping_entry_set_create_params.BookkeepingEntrySetCreateParams,
-            ),
+            f"/simulations/inbound_funds_holds/{inbound_funds_hold_id}/release",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -124,5 +92,5 @@ class AsyncBookkeepingEntrySets(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=BookkeepingEntrySet,
+            cast_to=InboundFundsHoldReleaseResponse,
         )

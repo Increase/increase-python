@@ -109,3 +109,6 @@ class AccountTransfer(BaseModel):
 
     For this resource it will always be `account_transfer`.
     """
+
+    unique_identifier: Optional[str]
+    """The unique identifier you chose for this transfer."""
