@@ -194,6 +194,12 @@ class SourceCardDecline(BaseModel):
     network_details: SourceCardDeclineNetworkDetails
     """Fields specific to the `network`"""
 
+    physical_card_id: Optional[str]
+    """
+    If the authorization was made in-person with a physical card, the Physical Card
+    that was used.
+    """
+
     real_time_decision_id: Optional[str]
     """
     The identifier of the Real-Time Decision sent to approve or decline this
