@@ -122,6 +122,12 @@ class CardAuthorization(BaseModel):
     network_details: CardAuthorizationNetworkDetails
     """Fields specific to the `network`"""
 
+    physical_card_id: Optional[str]
+    """
+    If the authorization was made in-person with a physical card, the Physical Card
+    that was used.
+    """
+
     presentment_amount: int
     """
     The amount of the attempted authorization in the currency the card user sees at

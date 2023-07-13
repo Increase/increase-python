@@ -24,3 +24,6 @@ class CardAuthorizeParams(TypedDict, total=False):
     can only create one real time decision event subscription, you can use this
     field to route events to any specified event subscription for testing purposes.
     """
+
+    physical_card_id: str
+    """The identifier of the Physical Card to be authorized."""

@@ -207,6 +207,12 @@ class DeclinedTransactionSourceCardDecline(BaseModel):
     network_details: DeclinedTransactionSourceCardDeclineNetworkDetails
     """Fields specific to the `network`"""
 
+    physical_card_id: Optional[str]
+    """
+    If the authorization was made in-person with a physical card, the Physical Card
+    that was used.
+    """
+
     real_time_decision_id: Optional[str]
     """
     The identifier of the Real-Time Decision sent to approve or decline this
@@ -798,6 +804,12 @@ class PendingTransactionSourceCardAuthorization(BaseModel):
 
     pending_transaction_id: Optional[str]
     """The identifier of the Pending Transaction associated with this Transaction."""
+
+    physical_card_id: Optional[str]
+    """
+    If the authorization was made in-person with a physical card, the Physical Card
+    that was used.
+    """
 
     real_time_decision_id: Optional[str]
     """

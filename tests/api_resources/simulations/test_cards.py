@@ -34,6 +34,7 @@ class TestCards:
             card_id="string",
             digital_wallet_token_id="string",
             event_subscription_id="string",
+            physical_card_id="string",
         )
         assert_matches_type(CardAuthorizationSimulation, card, path=["response"])
 
@@ -74,6 +75,7 @@ class TestAsyncCards:
             card_id="string",
             digital_wallet_token_id="string",
             event_subscription_id="string",
+            physical_card_id="string",
         )
         assert_matches_type(CardAuthorizationSimulation, card, path=["response"])
 

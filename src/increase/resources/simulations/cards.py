@@ -24,6 +24,7 @@ class Cards(SyncAPIResource):
         card_id: str | NotGiven = NOT_GIVEN,
         digital_wallet_token_id: str | NotGiven = NOT_GIVEN,
         event_subscription_id: str | NotGiven = NOT_GIVEN,
+        physical_card_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -54,6 +55,8 @@ class Cards(SyncAPIResource):
               decision event subscription, you can use this field to route events to any
               specified event subscription for testing purposes.
 
+          physical_card_id: The identifier of the Physical Card to be authorized.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -72,6 +75,7 @@ class Cards(SyncAPIResource):
                     "card_id": card_id,
                     "digital_wallet_token_id": digital_wallet_token_id,
                     "event_subscription_id": event_subscription_id,
+                    "physical_card_id": physical_card_id,
                 },
                 card_authorize_params.CardAuthorizeParams,
             ),
@@ -155,6 +159,7 @@ class AsyncCards(AsyncAPIResource):
         card_id: str | NotGiven = NOT_GIVEN,
         digital_wallet_token_id: str | NotGiven = NOT_GIVEN,
         event_subscription_id: str | NotGiven = NOT_GIVEN,
+        physical_card_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -185,6 +190,8 @@ class AsyncCards(AsyncAPIResource):
               decision event subscription, you can use this field to route events to any
               specified event subscription for testing purposes.
 
+          physical_card_id: The identifier of the Physical Card to be authorized.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -203,6 +210,7 @@ class AsyncCards(AsyncAPIResource):
                     "card_id": card_id,
                     "digital_wallet_token_id": digital_wallet_token_id,
                     "event_subscription_id": event_subscription_id,
+                    "physical_card_id": physical_card_id,
                 },
                 card_authorize_params.CardAuthorizeParams,
             ),
