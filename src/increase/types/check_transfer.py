@@ -6,7 +6,18 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["CheckTransfer", "Approval", "Cancellation", "Deposit", "ReturnAddress", "StopPaymentRequest", "Submission"]
+__all__ = [
+    "CheckTransfer",
+    "Approval",
+    "Cancellation",
+    "Deposit",
+    "Mailing",
+    "PhysicalCheck",
+    "PhysicalCheckMailingAddress",
+    "PhysicalCheckReturnAddress",
+    "StopPaymentRequest",
+    "Submission",
+]
 
 
 class Approval(BaseModel):
@@ -63,24 +74,69 @@ class Deposit(BaseModel):
     """
 
 
-class ReturnAddress(BaseModel):
+class Mailing(BaseModel):
+    mailed_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+    the check was mailed.
+    """
+
+
+class PhysicalCheckMailingAddress(BaseModel):
     city: Optional[str]
-    """The city of the address."""
+    """The city of the check's destination."""
 
     line1: Optional[str]
-    """The first line of the address."""
+    """The street address of the check's destination."""
 
     line2: Optional[str]
-    """The second line of the address."""
+    """The second line of the address of the check's destination."""
 
     name: Optional[str]
-    """The name of the address."""
+    """The name component of the check's mailing address."""
+
+    postal_code: Optional[str]
+    """The postal code of the check's destination."""
 
     state: Optional[str]
-    """The US state of the address."""
+    """The state of the check's destination."""
 
-    zip: Optional[str]
-    """The postal code of the address."""
+
+class PhysicalCheckReturnAddress(BaseModel):
+    city: Optional[str]
+    """The city of the check's destination."""
+
+    line1: Optional[str]
+    """The street address of the check's destination."""
+
+    line2: Optional[str]
+    """The second line of the address of the check's destination."""
+
+    name: Optional[str]
+    """The name component of the check's return address."""
+
+    postal_code: Optional[str]
+    """The postal code of the check's destination."""
+
+    state: Optional[str]
+    """The state of the check's destination."""
+
+
+class PhysicalCheck(BaseModel):
+    mailing_address: PhysicalCheckMailingAddress
+    """Details for where Increase will mail the check."""
+
+    memo: Optional[str]
+    """The descriptor that will be printed on the memo field on the check."""
+
+    note: Optional[str]
+    """The descriptor that will be printed on the letter included with the check."""
+
+    recipient_name: Optional[str]
+    """The name that will be printed on the check."""
+
+    return_address: Optional[PhysicalCheckReturnAddress]
+    """The return address to be printed on the check."""
 
 
 class StopPaymentRequest(BaseModel):
@@ -118,21 +174,6 @@ class CheckTransfer(BaseModel):
 
     account_number: str
     """The account number printed on the check."""
-
-    address_city: Optional[str]
-    """The city of the check's destination."""
-
-    address_line1: Optional[str]
-    """The street address of the check's destination."""
-
-    address_line2: Optional[str]
-    """The second line of the address of the check's destination."""
-
-    address_state: Optional[str]
-    """The state of the check's destination."""
-
-    address_zip: Optional[str]
-    """The postal code of the check's destination."""
 
     amount: int
     """The transfer amount in USD cents."""
@@ -174,26 +215,30 @@ class CheckTransfer(BaseModel):
     deposit: Optional[Deposit]
     """After a check transfer is deposited, this will contain supplemental details."""
 
-    mailed_at: Optional[datetime]
-    """
-    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-    the check was mailed.
+    fulfillment_method: Literal["physical_check", "third_party"]
+    """Whether Increase will print and mail the check or if you will do it yourself.
+
+    - `physical_check` - Increase will print and mail a physical check.
+    - `third_party` - Increase will not print a check; you are responsible for
+      printing and mailing a check with the provided account number, routing number,
+      check number, and amount.
     """
 
-    message: Optional[str]
-    """The descriptor that will be printed on the memo field on the check."""
-
-    note: Optional[str]
-    """The descriptor that will be printed on the letter included with the check."""
+    mailing: Optional[Mailing]
+    """
+    If the check has been mailed by Increase, this will contain details of the
+    shipment.
+    """
 
     pending_transaction_id: Optional[str]
     """The identifier of the Pending Transaction associated with the check's creation."""
 
-    recipient_name: Optional[str]
-    """The name that will be printed on the check."""
+    physical_check: Optional[PhysicalCheck]
+    """Details relating to the physical check that Increase will print and mail.
 
-    return_address: Optional[ReturnAddress]
-    """The return address to be printed on the check."""
+    Will be present if and only if `fulfillment_method` is equal to
+    `physical_check`.
+    """
 
     routing_number: str
     """The routing number printed on the check."""

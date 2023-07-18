@@ -24,17 +24,10 @@ class CheckTransfers(SyncAPIResource):
         self,
         *,
         account_id: str,
-        address_city: str,
-        address_line1: str,
-        address_state: str,
-        address_zip: str,
         amount: int,
-        message: str,
-        recipient_name: str,
-        address_line2: str | NotGiven = NOT_GIVEN,
-        note: str | NotGiven = NOT_GIVEN,
+        fulfillment_method: Literal["physical_check", "third_party"] | NotGiven = NOT_GIVEN,
+        physical_check: check_transfer_create_params.PhysicalCheck | NotGiven = NOT_GIVEN,
         require_approval: bool | NotGiven = NOT_GIVEN,
-        return_address: check_transfer_create_params.ReturnAddress | NotGiven = NOT_GIVEN,
         source_account_number_id: str | NotGiven = NOT_GIVEN,
         unique_identifier: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -51,28 +44,20 @@ class CheckTransfers(SyncAPIResource):
         Args:
           account_id: The identifier for the account that will send the transfer.
 
-          address_city: The city of the check's destination.
-
-          address_line1: The street address of the check's destination.
-
-          address_state: The state of the check's destination.
-
-          address_zip: The postal code of the check's destination.
-
           amount: The transfer amount in cents.
 
-          message: The descriptor that will be printed on the memo field on the check.
+          fulfillment_method: Whether Increase will print and mail the check or if you will do it yourself.
 
-          recipient_name: The name that will be printed on the check.
+              - `physical_check` - Increase will print and mail a physical check.
+              - `third_party` - Increase will not print a check; you are responsible for
+                printing and mailing a check with the provided account number, routing number,
+                check number, and amount.
 
-          address_line2: The second line of the address of the check's destination.
-
-          note: The descriptor that will be printed on the letter included with the check.
+          physical_check: Details relating to the physical check that Increase will print and mail. This
+              is required if `fulfillment_method` is equal to `physical_check`. It must not be
+              included if any other `fulfillment_method` is provided.
 
           require_approval: Whether the transfer requires explicit approval via the dashboard or API.
-
-          return_address: The return address to be printed on the check. If omitted this will default to
-              the address of the Entity of the Account used to make the Check Transfer.
 
           source_account_number_id: The identifier of the Account Number from which to send the transfer and print
               on the check.
@@ -96,17 +81,10 @@ class CheckTransfers(SyncAPIResource):
             body=maybe_transform(
                 {
                     "account_id": account_id,
-                    "address_city": address_city,
-                    "address_line1": address_line1,
-                    "address_state": address_state,
-                    "address_zip": address_zip,
                     "amount": amount,
-                    "message": message,
-                    "recipient_name": recipient_name,
-                    "address_line2": address_line2,
-                    "note": note,
+                    "fulfillment_method": fulfillment_method,
+                    "physical_check": physical_check,
                     "require_approval": require_approval,
-                    "return_address": return_address,
                     "source_account_number_id": source_account_number_id,
                     "unique_identifier": unique_identifier,
                 },
@@ -346,17 +324,10 @@ class AsyncCheckTransfers(AsyncAPIResource):
         self,
         *,
         account_id: str,
-        address_city: str,
-        address_line1: str,
-        address_state: str,
-        address_zip: str,
         amount: int,
-        message: str,
-        recipient_name: str,
-        address_line2: str | NotGiven = NOT_GIVEN,
-        note: str | NotGiven = NOT_GIVEN,
+        fulfillment_method: Literal["physical_check", "third_party"] | NotGiven = NOT_GIVEN,
+        physical_check: check_transfer_create_params.PhysicalCheck | NotGiven = NOT_GIVEN,
         require_approval: bool | NotGiven = NOT_GIVEN,
-        return_address: check_transfer_create_params.ReturnAddress | NotGiven = NOT_GIVEN,
         source_account_number_id: str | NotGiven = NOT_GIVEN,
         unique_identifier: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -373,28 +344,20 @@ class AsyncCheckTransfers(AsyncAPIResource):
         Args:
           account_id: The identifier for the account that will send the transfer.
 
-          address_city: The city of the check's destination.
-
-          address_line1: The street address of the check's destination.
-
-          address_state: The state of the check's destination.
-
-          address_zip: The postal code of the check's destination.
-
           amount: The transfer amount in cents.
 
-          message: The descriptor that will be printed on the memo field on the check.
+          fulfillment_method: Whether Increase will print and mail the check or if you will do it yourself.
 
-          recipient_name: The name that will be printed on the check.
+              - `physical_check` - Increase will print and mail a physical check.
+              - `third_party` - Increase will not print a check; you are responsible for
+                printing and mailing a check with the provided account number, routing number,
+                check number, and amount.
 
-          address_line2: The second line of the address of the check's destination.
-
-          note: The descriptor that will be printed on the letter included with the check.
+          physical_check: Details relating to the physical check that Increase will print and mail. This
+              is required if `fulfillment_method` is equal to `physical_check`. It must not be
+              included if any other `fulfillment_method` is provided.
 
           require_approval: Whether the transfer requires explicit approval via the dashboard or API.
-
-          return_address: The return address to be printed on the check. If omitted this will default to
-              the address of the Entity of the Account used to make the Check Transfer.
 
           source_account_number_id: The identifier of the Account Number from which to send the transfer and print
               on the check.
@@ -418,17 +381,10 @@ class AsyncCheckTransfers(AsyncAPIResource):
             body=maybe_transform(
                 {
                     "account_id": account_id,
-                    "address_city": address_city,
-                    "address_line1": address_line1,
-                    "address_state": address_state,
-                    "address_zip": address_zip,
                     "amount": amount,
-                    "message": message,
-                    "recipient_name": recipient_name,
-                    "address_line2": address_line2,
-                    "note": note,
+                    "fulfillment_method": fulfillment_method,
+                    "physical_check": physical_check,
                     "require_approval": require_approval,
-                    "return_address": return_address,
                     "source_account_number_id": source_account_number_id,
                     "unique_identifier": unique_identifier,
                 },

@@ -25,13 +25,7 @@ class TestCheckTransfers:
     def test_method_create(self, client: Increase) -> None:
         check_transfer = client.check_transfers.create(
             account_id="string",
-            address_city="x",
-            address_line1="x",
-            address_state="x",
-            address_zip="x",
             amount=1,
-            message="x",
-            recipient_name="x",
         )
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
@@ -39,24 +33,30 @@ class TestCheckTransfers:
     def test_method_create_with_all_params(self, client: Increase) -> None:
         check_transfer = client.check_transfers.create(
             account_id="string",
-            address_city="x",
-            address_line1="x",
-            address_state="x",
-            address_zip="x",
             amount=1,
-            message="x",
-            recipient_name="x",
-            address_line2="x",
-            note="x",
-            require_approval=True,
-            return_address={
-                "name": "x",
-                "line1": "x",
-                "line2": "x",
-                "city": "x",
-                "state": "x",
-                "zip": "x",
+            fulfillment_method="physical_check",
+            physical_check={
+                "memo": "x",
+                "note": "x",
+                "recipient_name": "x",
+                "mailing_address": {
+                    "name": "x",
+                    "line1": "x",
+                    "line2": "x",
+                    "city": "x",
+                    "state": "x",
+                    "postal_code": "x",
+                },
+                "return_address": {
+                    "name": "x",
+                    "line1": "x",
+                    "line2": "x",
+                    "city": "x",
+                    "state": "x",
+                    "postal_code": "x",
+                },
             },
+            require_approval=True,
             source_account_number_id="string",
             unique_identifier="x",
         )
@@ -131,13 +131,7 @@ class TestAsyncCheckTransfers:
     async def test_method_create(self, client: AsyncIncrease) -> None:
         check_transfer = await client.check_transfers.create(
             account_id="string",
-            address_city="x",
-            address_line1="x",
-            address_state="x",
-            address_zip="x",
             amount=1,
-            message="x",
-            recipient_name="x",
         )
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
@@ -145,24 +139,30 @@ class TestAsyncCheckTransfers:
     async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         check_transfer = await client.check_transfers.create(
             account_id="string",
-            address_city="x",
-            address_line1="x",
-            address_state="x",
-            address_zip="x",
             amount=1,
-            message="x",
-            recipient_name="x",
-            address_line2="x",
-            note="x",
-            require_approval=True,
-            return_address={
-                "name": "x",
-                "line1": "x",
-                "line2": "x",
-                "city": "x",
-                "state": "x",
-                "zip": "x",
+            fulfillment_method="physical_check",
+            physical_check={
+                "memo": "x",
+                "note": "x",
+                "recipient_name": "x",
+                "mailing_address": {
+                    "name": "x",
+                    "line1": "x",
+                    "line2": "x",
+                    "city": "x",
+                    "state": "x",
+                    "postal_code": "x",
+                },
+                "return_address": {
+                    "name": "x",
+                    "line1": "x",
+                    "line2": "x",
+                    "city": "x",
+                    "state": "x",
+                    "postal_code": "x",
+                },
             },
+            require_approval=True,
             source_account_number_id="string",
             unique_identifier="x",
         )

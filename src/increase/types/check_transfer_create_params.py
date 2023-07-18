@@ -2,51 +2,36 @@
 
 from __future__ import annotations
 
-from typing_extensions import Required, TypedDict
+from typing_extensions import Literal, Required, TypedDict
 
-__all__ = ["CheckTransferCreateParams", "ReturnAddress"]
+__all__ = ["CheckTransferCreateParams", "PhysicalCheck", "PhysicalCheckMailingAddress", "PhysicalCheckReturnAddress"]
 
 
 class CheckTransferCreateParams(TypedDict, total=False):
     account_id: Required[str]
     """The identifier for the account that will send the transfer."""
 
-    address_city: Required[str]
-    """The city of the check's destination."""
-
-    address_line1: Required[str]
-    """The street address of the check's destination."""
-
-    address_state: Required[str]
-    """The state of the check's destination."""
-
-    address_zip: Required[str]
-    """The postal code of the check's destination."""
-
     amount: Required[int]
     """The transfer amount in cents."""
 
-    message: Required[str]
-    """The descriptor that will be printed on the memo field on the check."""
+    fulfillment_method: Literal["physical_check", "third_party"]
+    """Whether Increase will print and mail the check or if you will do it yourself.
 
-    recipient_name: Required[str]
-    """The name that will be printed on the check."""
+    - `physical_check` - Increase will print and mail a physical check.
+    - `third_party` - Increase will not print a check; you are responsible for
+      printing and mailing a check with the provided account number, routing number,
+      check number, and amount.
+    """
 
-    address_line2: str
-    """The second line of the address of the check's destination."""
+    physical_check: PhysicalCheck
+    """Details relating to the physical check that Increase will print and mail.
 
-    note: str
-    """The descriptor that will be printed on the letter included with the check."""
+    This is required if `fulfillment_method` is equal to `physical_check`. It must
+    not be included if any other `fulfillment_method` is provided.
+    """
 
     require_approval: bool
     """Whether the transfer requires explicit approval via the dashboard or API."""
-
-    return_address: ReturnAddress
-    """The return address to be printed on the check.
-
-    If omitted this will default to the address of the Entity of the Account used to
-    make the Check Transfer.
-    """
 
     source_account_number_id: str
     """
@@ -62,7 +47,30 @@ class CheckTransferCreateParams(TypedDict, total=False):
     """
 
 
-class ReturnAddress(TypedDict, total=False):
+class PhysicalCheckMailingAddress(TypedDict, total=False):
+    city: Required[str]
+    """The city component of the check's destination address."""
+
+    line1: Required[str]
+    """The first line of the address component of the check's destination address."""
+
+    postal_code: Required[str]
+    """The postal code component of the check's destination address."""
+
+    state: Required[str]
+    """The US state component of the check's destination address."""
+
+    line2: str
+    """The second line of the address component of the check's destination address."""
+
+    name: str
+    """The name component of the check's destination address.
+
+    Defaults to the provided `recipient_name` parameter.
+    """
+
+
+class PhysicalCheckReturnAddress(TypedDict, total=False):
     city: Required[str]
     """The city of the return address."""
 
@@ -72,11 +80,32 @@ class ReturnAddress(TypedDict, total=False):
     name: Required[str]
     """The name of the return address."""
 
+    postal_code: Required[str]
+    """The postal code of the return address."""
+
     state: Required[str]
     """The US state of the return address."""
 
-    zip: Required[str]
-    """The postal code of the return address."""
-
     line2: str
     """The second line of the return address."""
+
+
+class PhysicalCheck(TypedDict, total=False):
+    mailing_address: Required[PhysicalCheckMailingAddress]
+    """Details for where Increase will mail the check."""
+
+    memo: Required[str]
+    """The descriptor that will be printed on the memo field on the check."""
+
+    recipient_name: Required[str]
+    """The name that will be printed on the check in the 'To:' field."""
+
+    note: str
+    """The descriptor that will be printed on the letter included with the check."""
+
+    return_address: PhysicalCheckReturnAddress
+    """The return address to be printed on the check.
+
+    If omitted this will default to the address of the Entity of the Account used to
+    make the Check Transfer.
+    """
