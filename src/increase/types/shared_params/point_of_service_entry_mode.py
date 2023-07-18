@@ -9,6 +9,7 @@ __all__ = ["PointOfServiceEntryMode"]
 
 PointOfServiceEntryMode = Optional[
     Literal[
+        "unknown",
         "manual",
         "magnetic_stripe_no_cvv",
         "optical_code",
