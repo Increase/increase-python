@@ -163,7 +163,13 @@ class DeclinedTransactionSourceCardDeclineNetworkDetailsVisa(BaseModel):
 
 
 class DeclinedTransactionSourceCardDeclineNetworkDetails(BaseModel):
-    visa: DeclinedTransactionSourceCardDeclineNetworkDetailsVisa
+    category: Literal["visa"]
+    """The payment network used to process this card authorization
+
+    - `visa` - Visa
+    """
+
+    visa: Optional[DeclinedTransactionSourceCardDeclineNetworkDetailsVisa]
     """Fields specific to the `visa` network"""
 
 
@@ -216,12 +222,6 @@ class DeclinedTransactionSourceCardDecline(BaseModel):
 
     merchant_state: Optional[str]
     """The state the merchant resides in."""
-
-    network: Literal["visa"]
-    """The payment network used to process this card authorization
-
-    - `visa` - Visa
-    """
 
     network_details: DeclinedTransactionSourceCardDeclineNetworkDetails
     """Fields specific to the `network`"""

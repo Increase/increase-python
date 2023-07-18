@@ -115,7 +115,13 @@ class SourceCardAuthorizationNetworkDetailsVisa(BaseModel):
 
 
 class SourceCardAuthorizationNetworkDetails(BaseModel):
-    visa: SourceCardAuthorizationNetworkDetailsVisa
+    category: Literal["visa"]
+    """The payment network used to process this card authorization
+
+    - `visa` - Visa
+    """
+
+    visa: Optional[SourceCardAuthorizationNetworkDetailsVisa]
     """Fields specific to the `visa` network"""
 
 
@@ -174,12 +180,6 @@ class SourceCardAuthorization(BaseModel):
 
     merchant_descriptor: str
     """The merchant descriptor of the merchant the card is transacting with."""
-
-    network: Literal["visa"]
-    """The payment network used to process this card authorization
-
-    - `visa` - Visa
-    """
 
     network_details: SourceCardAuthorizationNetworkDetails
     """Fields specific to the `network`"""

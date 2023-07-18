@@ -12,6 +12,8 @@ __all__ = [
     "CardAuthorization",
     "CardAuthorizationNetworkDetails",
     "CardAuthorizationNetworkDetailsVisa",
+    "CardAuthorizationRequestDetails",
+    "CardAuthorizationRequestDetailsIncrementalAuthorization",
     "DigitalWalletAuthentication",
     "DigitalWalletToken",
 ]
@@ -74,8 +76,43 @@ class CardAuthorizationNetworkDetailsVisa(BaseModel):
 
 
 class CardAuthorizationNetworkDetails(BaseModel):
-    visa: CardAuthorizationNetworkDetailsVisa
+    category: Literal["visa"]
+    """The payment network used to process this card authorization
+
+    - `visa` - Visa
+    """
+
+    visa: Optional[CardAuthorizationNetworkDetailsVisa]
     """Fields specific to the `visa` network"""
+
+
+class CardAuthorizationRequestDetailsIncrementalAuthorization(BaseModel):
+    card_payment_id: str
+    """The card payment for this authorization and increment."""
+
+    original_card_authorization_id: str
+    """
+    The identifier of the card authorization this request is attempting to
+    increment.
+    """
+
+
+class CardAuthorizationRequestDetails(BaseModel):
+    category: Literal["initial_authorization", "incremental_authorization"]
+    """
+    The type of this request (e.g., an initial authorization or an incremental
+    authorization.)
+
+    - `initial_authorization` - A regular, standalone authorization.
+    - `incremental_authorization` - An incremental request to increase the amount of
+      an existing authorization.
+    """
+
+    incremental_authorization: Optional[CardAuthorizationRequestDetailsIncrementalAuthorization]
+    """Fields specific to the categorty `incremental_authorization`."""
+
+    initial_authorization: Optional[object]
+    """Fields specific to the category `initial_authorization`."""
 
 
 class CardAuthorization(BaseModel):
@@ -113,12 +150,6 @@ class CardAuthorization(BaseModel):
     merchant_descriptor: str
     """The merchant descriptor of the merchant the card is transacting with."""
 
-    network: Literal["visa"]
-    """The payment network used to process this card authorization
-
-    - `visa` - Visa
-    """
-
     network_details: CardAuthorizationNetworkDetails
     """Fields specific to the `network`"""
 
@@ -140,6 +171,9 @@ class CardAuthorization(BaseModel):
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the currency the
     user sees at the time of purchase.
     """
+
+    request_details: CardAuthorizationRequestDetails
+    """Fields specific to the type of request, such as an incremental authorization."""
 
     settlement_amount: int
     """The amount of the attempted authorization in the currency it will be settled in.
