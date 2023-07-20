@@ -40,8 +40,8 @@ class Limits(SyncAPIResource):
               - `volume` - The maximum volume of debits allowed in the minor unit of the
                 model's currency.
 
-          model_id: The identifier of the Account or Account Number you wish to associate the limit
-              with.
+          model_id: The identifier of the Account, Account Number, or Card you wish to associate the
+              limit with.
 
           value: The value to test the limit against.
 
@@ -250,8 +250,8 @@ class AsyncLimits(AsyncAPIResource):
               - `volume` - The maximum volume of debits allowed in the minor unit of the
                 model's currency.
 
-          model_id: The identifier of the Account or Account Number you wish to associate the limit
-              with.
+          model_id: The identifier of the Account, Account Number, or Card you wish to associate the
+              limit with.
 
           value: The value to test the limit against.
 
