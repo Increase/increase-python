@@ -193,12 +193,13 @@ response), a subclass of `increase.APIStatusError` will be raised, containing `s
 All errors inherit from `increase.APIError`.
 
 ```python
+import increase
 from increase import Increase
 
-increase = Increase()
+client = Increase()
 
 try:
-    increase.accounts.create(
+    client.accounts.create(
         naem="Oops",
     )
 except increase.APIConnectionError as e:
