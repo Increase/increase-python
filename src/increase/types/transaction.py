@@ -725,6 +725,9 @@ class SourceFeePayment(BaseModel):
     - `USD` - US Dollar (USD)
     """
 
+    fee_period_start: date
+    """The start of this payment's fee period, usually the first day of a month."""
+
 
 class SourceInboundACHTransfer(BaseModel):
     amount: int

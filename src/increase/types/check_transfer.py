@@ -132,7 +132,7 @@ class PhysicalCheck(BaseModel):
     note: Optional[str]
     """The descriptor that will be printed on the letter included with the check."""
 
-    recipient_name: Optional[str]
+    recipient_name: str
     """The name that will be printed on the check."""
 
     return_address: Optional[PhysicalCheckReturnAddress]
