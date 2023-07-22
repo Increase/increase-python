@@ -1,5 +1,29 @@
 # Changelog
 
+## [0.11.0](https://github.com/Increase/increase-python/compare/v0.10.1...v0.11.0) (2023-07-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* **api:** reorganize `check_transfer` and `network fields; add `request_details`; add `unknown` ([#46](https://github.com/Increase/increase-python/issues/46))
+
+### Features
+
+* **api:** add fee_period_start and return_of_erroneous_or_reversing_debit ([#50](https://github.com/Increase/increase-python/issues/50)) ([0cb14d0](https://github.com/Increase/increase-python/commit/0cb14d072752bda02d479c0b9b745161d8344b0b))
+* **api:** reorganize `check_transfer` and `network fields; add `request_details`; add `unknown` ([#46](https://github.com/Increase/increase-python/issues/46)) ([f1a0a9f](https://github.com/Increase/increase-python/commit/f1a0a9f6b4b7874db8f662cff8108f3a0eba2fd4))
+
+
+### Chores
+
+* **package:** pin major versions of dependencies ([#37](https://github.com/Increase/increase-python/issues/37)) ([6564f66](https://github.com/Increase/increase-python/commit/6564f66171bae64c3122259957cabc9ea4ee7f6a))
+* **package:** pin major versions of dependencies ([#39](https://github.com/Increase/increase-python/issues/39)) ([2878aff](https://github.com/Increase/increase-python/commit/2878affa02c8204f634a1dbf7e9b4f00dae3d61b))
+
+
+### Documentation
+
+* **api:** update `model_id` documentation ([#49](https://github.com/Increase/increase-python/issues/49)) ([51dfa65](https://github.com/Increase/increase-python/commit/51dfa651b457352bed2f79dcfc4604b4a22e27fa))
+* **readme:** reference "client" in errors section and add missing import ([#48](https://github.com/Increase/increase-python/issues/48)) ([fee1917](https://github.com/Increase/increase-python/commit/fee1917212136fc089567af491f7fd42f5f315a5))
+
 ## [0.10.1](https://github.com/Increase/increase-python/compare/v0.10.0...v0.10.1) (2023-07-17)
 
 
