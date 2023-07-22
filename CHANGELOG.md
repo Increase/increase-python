@@ -1,5 +1,36 @@
 # Changelog
 
+## [0.10.1](https://github.com/Increase/increase-python/compare/v0.10.0...v0.10.1) (2023-07-17)
+
+
+### Features
+
+* **api:** add physical_card_id ([#42](https://github.com/Increase/increase-python/issues/42)) ([c76422f](https://github.com/Increase/increase-python/commit/c76422f17e18a9c44a43fe779bc424b88b609758))
+
+
+### Chores
+
+* **internal:** add `codegen.log` to `.gitignore` ([#44](https://github.com/Increase/increase-python/issues/44)) ([83b722c](https://github.com/Increase/increase-python/commit/83b722c8e12aa5d3c0caf8ee4ef2733844887abb))
+* **package:** pin major versions of dependencies ([#37](https://github.com/Increase/increase-python/issues/37)) ([8e58b27](https://github.com/Increase/increase-python/commit/8e58b27706c7c57d0f7234a307e3599e410084a8))
+* **package:** pin major versions of dependencies ([#39](https://github.com/Increase/increase-python/issues/39)) ([80af0b1](https://github.com/Increase/increase-python/commit/80af0b16befec2be951f16285922db87c9c55c5e))
+
+## [0.10.0](https://github.com/Increase/increase-python/compare/v0.9.0...v0.10.0) (2023-07-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* **api:** add unique_identifier, driver's license backs, inbound funds holds, and more ([#40](https://github.com/Increase/increase-python/issues/40))
+
+### Features
+
+* **api:** add unique_identifier, driver's license backs, inbound funds holds, and more ([#40](https://github.com/Increase/increase-python/issues/40)) ([6bfd843](https://github.com/Increase/increase-python/commit/6bfd8435c03c86371c0b72987da9ee58779cd101))
+
+
+### Chores
+
+* **package:** pin major versions of dependencies ([#37](https://github.com/Increase/increase-python/issues/37)) ([5a7d645](https://github.com/Increase/increase-python/commit/5a7d645db59e7b340a2ba3fc58b5ec04a8fc7d12))
+* **package:** pin major versions of dependencies ([#39](https://github.com/Increase/increase-python/issues/39)) ([fafe6ee](https://github.com/Increase/increase-python/commit/fafe6eeb7d0732e68710d644a6cda21b19597f56))
+
 ## [0.9.0](https://github.com/Increase/increase-python/compare/v0.8.1...v0.9.0) (2023-07-07)
 
 
