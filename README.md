@@ -21,14 +21,14 @@ pip install increase
 ```python
 from increase import Increase
 
-increase = Increase(
+client = Increase(
     # defaults to os.environ.get("INCREASE_API_KEY")
     api_key="my api key",
     # defaults to "production".
     environment="sandbox",
 )
 
-account = increase.accounts.create(
+account = client.accounts.create(
     name="My First Increase Account",
 )
 print(account.id)
@@ -44,7 +44,7 @@ Simply import `AsyncIncrease` instead of `Increase` and use `await` with each AP
 ```python
 from increase import AsyncIncrease
 
-increase = AsyncIncrease(
+client = AsyncIncrease(
     # defaults to os.environ.get("INCREASE_API_KEY")
     api_key="my api key",
     # defaults to "production".
@@ -53,7 +53,7 @@ increase = AsyncIncrease(
 
 
 async def main():
-    account = await increase.accounts.create(
+    account = await client.accounts.create(
         name="My First Increase Account",
     )
     print(account.id)
@@ -79,11 +79,11 @@ This library provides auto-paginating iterators with each list response, so you 
 ```python
 import increase
 
-increase = Increase()
+client = Increase()
 
 all_accounts = []
 # Automatically fetches more pages as needed.
-for account in increase.accounts.list():
+for account in client.accounts.list():
     # Do something with account here
     all_accounts.append(account)
 print(all_accounts)
@@ -95,13 +95,13 @@ Or, asynchronously:
 import asyncio
 import increase
 
-increase = AsyncIncrease()
+client = AsyncIncrease()
 
 
 async def main() -> None:
     all_accounts = []
     # Iterate through items across all pages, issuing requests as needed.
-    async for account in increase.accounts.list():
+    async for account in client.accounts.list():
         all_accounts.append(account)
     print(all_accounts)
 
@@ -112,7 +112,7 @@ asyncio.run(main())
 Alternatively, you can use the `.has_next_page()`, `.next_page_info()`, or `.get_next_page()` methods for more granular control working with pages:
 
 ```python
-first_page = await increase.accounts.list()
+first_page = await client.accounts.list()
 if first_page.has_next_page():
     print(f"will fetch next page using these details: {first_page.next_page_info()}")
     next_page = await first_page.get_next_page()
@@ -124,7 +124,7 @@ if first_page.has_next_page():
 Or just work directly with the returned data:
 
 ```python
-first_page = await increase.accounts.list()
+first_page = await client.accounts.list()
 
 print(f"next page cursor: {first_page.next_cursor}")  # => "next page cursor: ..."
 for account in first_page.data:
@@ -140,9 +140,9 @@ Nested parameters are dictionaries, typed using `TypedDict`, for example:
 ```python
 from increase import Increase
 
-increase = Increase()
+client = Increase()
 
-increase.accounts.create(
+client.accounts.create(
     foo={
         "bar": True,
     },
@@ -157,10 +157,10 @@ Request parameters that correspond to file uploads can be passed as `bytes` or a
 from pathlib import Path
 from increase import Increase
 
-increase = Increase()
+client = Increase()
 
 contents = Path("my/file.txt").read_bytes()
-increase.files.create(
+client.files.create(
     file=contents,
     purpose="other",
 )
@@ -172,12 +172,12 @@ The async client uses the exact same interface. This example uses `aiofiles` to 
 import aiofiles
 from increase import Increase
 
-increase = Increase()
+client = Increase()
 
 async with aiofiles.open("my/file.txt", mode="rb") as f:
     contents = await f.read()
 
-await increase.files.create(
+await client.files.create(
     file=contents,
     purpose="other",
 )
@@ -238,13 +238,13 @@ You can use the `max_retries` option to configure or disable this:
 from increase import Increase
 
 # Configure the default for all requests:
-increase = Increase(
+client = Increase(
     # default is 2
     max_retries=0,
 )
 
 # Or, configure per-request:
-increase.with_options(max_retries=5).accounts.create(
+client.with_options(max_retries=5).accounts.create(
     name="Jack",
 )
 ```
@@ -258,18 +258,18 @@ which accepts a float or an [`httpx.Timeout`](https://www.python-httpx.org/advan
 from increase import Increase
 
 # Configure the default for all requests:
-increase = Increase(
+client = Increase(
     # default is 60s
     timeout=20.0,
 )
 
 # More granular control:
-increase = Increase(
+client = Increase(
     timeout=httpx.Timeout(60.0, read=5.0, write=10.0, connect=2.0),
 )
 
 # Override per-request:
-increase.with_options(timeout=5 * 1000).accounts.list(
+client.with_options(timeout=5 * 1000).accounts.list(
     status="open",
 )
 ```
@@ -286,7 +286,7 @@ You can configure the following keyword arguments when instantiating the client:
 import httpx
 from increase import Increase
 
-increase = Increase(
+client = Increase(
     # Use a custom base URL
     base_url="http://my.test.server.example.com:8083",
     proxies="http://my.test.proxy.example.com",
