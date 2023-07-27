@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.11.1](https://github.com/Increase/increase-python/compare/v0.11.0...v0.11.1) (2023-07-27)
+
+
+### Documentation
+
+* **readme:** use `client` everywhere for consistency ([#52](https://github.com/Increase/increase-python/issues/52)) ([8dfab15](https://github.com/Increase/increase-python/commit/8dfab151164e8833d6a51e7d6b356629ba751ff8))
+
+
+### Chores
+
+* remove unused resource classes ([#54](https://github.com/Increase/increase-python/issues/54)) ([6106201](https://github.com/Increase/increase-python/commit/6106201916d5353269325b4209bbd7eb1d9d935f))
+
 ## [0.11.0](https://github.com/Increase/increase-python/compare/v0.10.1...v0.11.0) (2023-07-22)
 
 
