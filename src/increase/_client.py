@@ -125,7 +125,7 @@ class Increase(SyncAPIClient):
 
         This automatically infers the `api_key` argument from the `INCREASE_API_KEY` environment variable if it is not provided.
         """
-        api_key = api_key or os.environ.get("INCREASE_API_KEY", "")
+        api_key = api_key or os.environ.get("INCREASE_API_KEY", None)
         if not api_key:
             raise Exception(
                 "The api_key client option must be set either by passing api_key to the client or by setting the INCREASE_API_KEY environment variable"
@@ -403,7 +403,7 @@ class AsyncIncrease(AsyncAPIClient):
 
         This automatically infers the `api_key` argument from the `INCREASE_API_KEY` environment variable if it is not provided.
         """
-        api_key = api_key or os.environ.get("INCREASE_API_KEY", "")
+        api_key = api_key or os.environ.get("INCREASE_API_KEY", None)
         if not api_key:
             raise Exception(
                 "The api_key client option must be set either by passing api_key to the client or by setting the INCREASE_API_KEY environment variable"
