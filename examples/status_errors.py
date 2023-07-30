@@ -1,7 +1,8 @@
+#!/usr/bin/env -S poetry run python
+
 from increase import Increase, InvalidAPIKeyError
 
 client = Increase(api_key="invalid api key")
-
 
 try:
     client.accounts.retrieve("<account id>")
