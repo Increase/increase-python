@@ -21,7 +21,6 @@ class TestFiles:
     loose_client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=False)
     parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
 
-    @pytest.mark.skip(reason="file upload tests are broken on the Prism mock server")
     @parametrize
     def test_method_create(self, client: Increase) -> None:
         file = client.files.create(
@@ -30,7 +29,6 @@ class TestFiles:
         )
         assert_matches_type(File, file, path=["response"])
 
-    @pytest.mark.skip(reason="file upload tests are broken on the Prism mock server")
     @parametrize
     def test_method_create_with_all_params(self, client: Increase) -> None:
         file = client.files.create(
@@ -73,7 +71,6 @@ class TestAsyncFiles:
     loose_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=False)
     parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
 
-    @pytest.mark.skip(reason="file upload tests are broken on the Prism mock server")
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
         file = await client.files.create(
@@ -82,7 +79,6 @@ class TestAsyncFiles:
         )
         assert_matches_type(File, file, path=["response"])
 
-    @pytest.mark.skip(reason="file upload tests are broken on the Prism mock server")
     @parametrize
     async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         file = await client.files.create(
