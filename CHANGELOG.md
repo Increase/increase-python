@@ -1,5 +1,26 @@
 # Changelog
 
+## [0.11.2](https://github.com/Increase/increase-python/compare/v0.11.1...v0.11.2) (2023-08-01)
+
+
+### Features
+
+* **client:** add client close handlers ([#58](https://github.com/Increase/increase-python/issues/58)) ([c79cfcc](https://github.com/Increase/increase-python/commit/c79cfcc1ec7cf7b370cb81f786fc5b3783ee2213))
+* **test:** unskip file uploads tests ([#63](https://github.com/Increase/increase-python/issues/63)) ([df3300f](https://github.com/Increase/increase-python/commit/df3300f46249b746116ace54f41aba5ea337578d))
+
+
+### Bug Fixes
+
+* **client:** correctly handle environment variable access ([#56](https://github.com/Increase/increase-python/issues/56)) ([e39552b](https://github.com/Increase/increase-python/commit/e39552be66f55c565159f1408e9f40171af24c40))
+
+
+### Chores
+
+* **internal:** bump pyright ([#61](https://github.com/Increase/increase-python/issues/61)) ([a96a677](https://github.com/Increase/increase-python/commit/a96a6776c1dd68d30c408899f71f85f8ea32a87e))
+* **internal:** bump pyright ([#62](https://github.com/Increase/increase-python/issues/62)) ([19285fb](https://github.com/Increase/increase-python/commit/19285fb23aa95895ef2f2212049eb647d93ed597))
+* **internal:** make demo example runnable and more portable ([#60](https://github.com/Increase/increase-python/issues/60)) ([06735fa](https://github.com/Increase/increase-python/commit/06735fa90e80c07382f7bafd2a9daf0ff74a96d8))
+* **internal:** minor reformatting of code ([#59](https://github.com/Increase/increase-python/issues/59)) ([3e1c3ea](https://github.com/Increase/increase-python/commit/3e1c3ea3ae28823a128d3993bd5b3f960e2be62f))
+
 ## [0.11.1](https://github.com/Increase/increase-python/compare/v0.11.0...v0.11.1) (2023-07-27)
 
 
