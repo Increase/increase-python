@@ -140,10 +140,12 @@ class PhysicalCheck(BaseModel):
 
 
 class StopPaymentRequest(BaseModel):
-    reason: Literal["mail_delivery_failed", "unknown"]
+    reason: Literal["mail_delivery_failed", "rejected_by_increase", "unknown"]
     """The reason why this transfer was stopped.
 
     - `mail_delivery_failed` - The check could not be delivered.
+    - `rejected_by_increase` - The check was cancelled by an Increase operator who
+      will provide details out-of-band.
     - `unknown` - The check was stopped for another reason.
     """
 

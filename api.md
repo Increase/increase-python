@@ -155,6 +155,19 @@ Methods:
 - <code title="get /card_profiles/{card_profile_id}">client.card_profiles.<a href="./src/increase/resources/card_profiles.py">retrieve</a>(card_profile_id) -> <a href="./src/increase/types/card_profile.py">CardProfile</a></code>
 - <code title="get /card_profiles">client.card_profiles.<a href="./src/increase/resources/card_profiles.py">list</a>(\*\*<a href="src/increase/types/card_profile_list_params.py">params</a>) -> <a href="./src/increase/types/card_profile.py">SyncPage[CardProfile]</a></code>
 
+# CardPurchaseSupplements
+
+Types:
+
+```python
+from increase.types import CardPurchaseSupplement
+```
+
+Methods:
+
+- <code title="get /card_purchase_supplements/{card_purchase_supplement_id}">client.card_purchase_supplements.<a href="./src/increase/resources/card_purchase_supplements.py">retrieve</a>(card_purchase_supplement_id) -> <a href="./src/increase/types/card_purchase_supplement.py">CardPurchaseSupplement</a></code>
+- <code title="get /card_purchase_supplements">client.card_purchase_supplements.<a href="./src/increase/resources/card_purchase_supplements.py">list</a>(\*\*<a href="src/increase/types/card_purchase_supplement_list_params.py">params</a>) -> <a href="./src/increase/types/card_purchase_supplement.py">SyncPage[CardPurchaseSupplement]</a></code>
+
 # ExternalAccounts
 
 Types:
@@ -385,6 +398,12 @@ Methods:
 - <code title="post /entities">client.entities.<a href="./src/increase/resources/entities/entities.py">create</a>(\*\*<a href="src/increase/types/entity_create_params.py">params</a>) -> <a href="./src/increase/types/entity.py">Entity</a></code>
 - <code title="get /entities/{entity_id}">client.entities.<a href="./src/increase/resources/entities/entities.py">retrieve</a>(entity_id) -> <a href="./src/increase/types/entity.py">Entity</a></code>
 - <code title="get /entities">client.entities.<a href="./src/increase/resources/entities/entities.py">list</a>(\*\*<a href="src/increase/types/entity_list_params.py">params</a>) -> <a href="./src/increase/types/entity.py">SyncPage[Entity]</a></code>
+
+## BeneficialOwners
+
+Methods:
+
+- <code title="post /entities/{entity_id}/beneficial_owners">client.entities.beneficial_owners.<a href="./src/increase/resources/entities/beneficial_owners.py">create</a>(entity_id, \*\*<a href="src/increase/types/entities/beneficial_owner_create_params.py">params</a>) -> <a href="./src/increase/types/entity.py">Entity</a></code>
 
 ## SupplementalDocuments
 

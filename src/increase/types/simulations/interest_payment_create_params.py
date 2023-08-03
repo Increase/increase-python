@@ -2,7 +2,11 @@
 
 from __future__ import annotations
 
-from typing_extensions import Required, TypedDict
+from typing import Union
+from datetime import datetime
+from typing_extensions import Required, Annotated, TypedDict
+
+from ..._utils import PropertyInfo
 
 __all__ = ["InterestPaymentCreateParams"]
 
@@ -13,3 +17,12 @@ class InterestPaymentCreateParams(TypedDict, total=False):
 
     amount: Required[int]
     """The interest amount in cents. Must be positive."""
+
+    period_end: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
+    """The end of the interest period. If not provided, defaults to the current time."""
+
+    period_start: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
+    """The start of the interest period.
+
+    If not provided, defaults to the current time.
+    """
