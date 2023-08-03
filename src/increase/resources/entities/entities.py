@@ -11,6 +11,7 @@ from ..._utils import maybe_transform
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ...pagination import SyncPage, AsyncPage
 from ..._base_client import AsyncPaginator, make_request_options
+from .beneficial_owners import BeneficialOwners, AsyncBeneficialOwners
 from .supplemental_documents import SupplementalDocuments, AsyncSupplementalDocuments
 
 if TYPE_CHECKING:
@@ -20,10 +21,12 @@ __all__ = ["Entities", "AsyncEntities"]
 
 
 class Entities(SyncAPIResource):
+    beneficial_owners: BeneficialOwners
     supplemental_documents: SupplementalDocuments
 
     def __init__(self, client: Increase) -> None:
         super().__init__(client)
+        self.beneficial_owners = BeneficialOwners(client)
         self.supplemental_documents = SupplementalDocuments(client)
 
     def create(
@@ -201,10 +204,12 @@ class Entities(SyncAPIResource):
 
 
 class AsyncEntities(AsyncAPIResource):
+    beneficial_owners: AsyncBeneficialOwners
     supplemental_documents: AsyncSupplementalDocuments
 
     def __init__(self, client: AsyncIncrease) -> None:
         super().__init__(client)
+        self.beneficial_owners = AsyncBeneficialOwners(client)
         self.supplemental_documents = AsyncSupplementalDocuments(client)
 
     async def create(

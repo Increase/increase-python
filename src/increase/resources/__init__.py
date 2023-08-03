@@ -35,6 +35,10 @@ from .declined_transactions import DeclinedTransactions, AsyncDeclinedTransactio
 from .digital_wallet_tokens import DigitalWalletTokens, AsyncDigitalWalletTokens
 from .bookkeeping_entry_sets import BookkeepingEntrySets, AsyncBookkeepingEntrySets
 from .wire_drawdown_requests import WireDrawdownRequests, AsyncWireDrawdownRequests
+from .card_purchase_supplements import (
+    CardPurchaseSupplements,
+    AsyncCardPurchaseSupplements,
+)
 from .inbound_ach_transfer_returns import (
     InboundACHTransferReturns,
     AsyncInboundACHTransferReturns,
@@ -71,6 +75,8 @@ __all__ = [
     "AsyncCardDisputes",
     "CardProfiles",
     "AsyncCardProfiles",
+    "CardPurchaseSupplements",
+    "AsyncCardPurchaseSupplements",
     "ExternalAccounts",
     "AsyncExternalAccounts",
     "Exports",

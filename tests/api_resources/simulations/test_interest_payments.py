@@ -8,6 +8,7 @@ import pytest
 
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
+from increase._utils import parse_datetime
 from increase.types.simulations import InterestPaymentSimulationResult
 
 base_url = os.environ.get("API_BASE_URL", "http://127.0.0.1:4010")
@@ -27,6 +28,16 @@ class TestInterestPayments:
         )
         assert_matches_type(InterestPaymentSimulationResult, interest_payment, path=["response"])
 
+    @parametrize
+    def test_method_create_with_all_params(self, client: Increase) -> None:
+        interest_payment = client.simulations.interest_payments.create(
+            account_id="string",
+            amount=1,
+            period_end=parse_datetime("2019-12-27T18:11:19.117Z"),
+            period_start=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(InterestPaymentSimulationResult, interest_payment, path=["response"])
+
 
 class TestAsyncInterestPayments:
     strict_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
@@ -38,5 +49,15 @@ class TestAsyncInterestPayments:
         interest_payment = await client.simulations.interest_payments.create(
             account_id="string",
             amount=1,
+        )
+        assert_matches_type(InterestPaymentSimulationResult, interest_payment, path=["response"])
+
+    @parametrize
+    async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
+        interest_payment = await client.simulations.interest_payments.create(
+            account_id="string",
+            amount=1,
+            period_end=parse_datetime("2019-12-27T18:11:19.117Z"),
+            period_start=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(InterestPaymentSimulationResult, interest_payment, path=["response"])

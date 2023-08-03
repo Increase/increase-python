@@ -47,17 +47,30 @@ class DigitalWallets(BaseModel):
 
 
 class PhysicalCards(BaseModel):
-    back_image_file_id: str
+    back_image_file_id: Optional[str]
     """The identifier of the File containing the physical card's back image."""
 
-    carrier_image_file_id: str
+    carrier_image_file_id: Optional[str]
     """The identifier of the File containing the physical card's carrier image."""
 
-    contact_phone: str
+    contact_phone: Optional[str]
     """A phone number the user can contact to receive support for their card."""
 
-    front_image_file_id: str
+    front_image_file_id: Optional[str]
     """The identifier of the File containing the physical card's front image."""
+
+    status: Literal["not_eligible", "rejected", "pending_reviewing", "pending_submitting", "submitted"]
+    """The status of the Physical Card Profile.
+
+    - `not_eligible` - The Card Profile is not eligible for physical cards.
+    - `rejected` - There is an issue with the Physical Card Profile preventing it
+      from use.
+    - `pending_reviewing` - The card profile is awaiting review by Increase.
+    - `pending_submitting` - The card profile is awaiting submission to the
+      fulfillment provider.
+    - `submitted` - The Physical Card Profile has been submitted to the fulfillment
+      provider.
+    """
 
 
 class CardProfile(BaseModel):
