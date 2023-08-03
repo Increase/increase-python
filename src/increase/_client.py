@@ -63,6 +63,7 @@ class Increase(SyncAPIClient):
     cards: resources.Cards
     card_disputes: resources.CardDisputes
     card_profiles: resources.CardProfiles
+    card_purchase_supplements: resources.CardPurchaseSupplements
     external_accounts: resources.ExternalAccounts
     exports: resources.Exports
     digital_wallet_tokens: resources.DigitalWalletTokens
@@ -167,6 +168,7 @@ class Increase(SyncAPIClient):
         self.cards = resources.Cards(self)
         self.card_disputes = resources.CardDisputes(self)
         self.card_profiles = resources.CardProfiles(self)
+        self.card_purchase_supplements = resources.CardPurchaseSupplements(self)
         self.external_accounts = resources.ExternalAccounts(self)
         self.exports = resources.Exports(self)
         self.digital_wallet_tokens = resources.DigitalWalletTokens(self)
@@ -343,6 +345,7 @@ class AsyncIncrease(AsyncAPIClient):
     cards: resources.AsyncCards
     card_disputes: resources.AsyncCardDisputes
     card_profiles: resources.AsyncCardProfiles
+    card_purchase_supplements: resources.AsyncCardPurchaseSupplements
     external_accounts: resources.AsyncExternalAccounts
     exports: resources.AsyncExports
     digital_wallet_tokens: resources.AsyncDigitalWalletTokens
@@ -447,6 +450,7 @@ class AsyncIncrease(AsyncAPIClient):
         self.cards = resources.AsyncCards(self)
         self.card_disputes = resources.AsyncCardDisputes(self)
         self.card_profiles = resources.AsyncCardProfiles(self)
+        self.card_purchase_supplements = resources.AsyncCardPurchaseSupplements(self)
         self.external_accounts = resources.AsyncExternalAccounts(self)
         self.exports = resources.AsyncExports(self)
         self.digital_wallet_tokens = resources.AsyncDigitalWalletTokens(self)

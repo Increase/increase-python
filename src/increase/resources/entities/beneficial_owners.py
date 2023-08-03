@@ -2,29 +2,22 @@
 
 from __future__ import annotations
 
-from typing import Union
-from datetime import datetime
-
+from ...types import Entity
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._base_client import make_request_options
-from ...types.simulations import (
-    InterestPaymentSimulationResult,
-    interest_payment_create_params,
-)
+from ...types.entities import beneficial_owner_create_params
 
-__all__ = ["InterestPayments", "AsyncInterestPayments"]
+__all__ = ["BeneficialOwners", "AsyncBeneficialOwners"]
 
 
-class InterestPayments(SyncAPIResource):
+class BeneficialOwners(SyncAPIResource):
     def create(
         self,
+        entity_id: str,
         *,
-        account_id: str,
-        amount: int,
-        period_end: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        period_start: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        beneficial_owner: beneficial_owner_create_params.BeneficialOwner,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -32,20 +25,15 @@ class InterestPayments(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> InterestPaymentSimulationResult:
-        """Simulates an interest payment to your account.
-
-        In production, this happens
-        automatically on the first of each month.
+    ) -> Entity:
+        """
+        Create a beneficial owner for a corporate Entity
 
         Args:
-          account_id: The identifier of the Account Number the Interest Payment is for.
+          entity_id: The identifier of the Entity to retrieve.
 
-          amount: The interest amount in cents. Must be positive.
-
-          period_end: The end of the interest period. If not provided, defaults to the current time.
-
-          period_start: The start of the interest period. If not provided, defaults to the current time.
+          beneficial_owner: The identifying details of anyone controlling or owning 25% or more of the
+              corporation.
 
           extra_headers: Send extra headers
 
@@ -58,15 +46,9 @@ class InterestPayments(SyncAPIResource):
           idempotency_key: Specify a custom idempotency key for this request
         """
         return self._post(
-            "/simulations/interest_payment",
+            f"/entities/{entity_id}/beneficial_owners",
             body=maybe_transform(
-                {
-                    "account_id": account_id,
-                    "amount": amount,
-                    "period_end": period_end,
-                    "period_start": period_start,
-                },
-                interest_payment_create_params.InterestPaymentCreateParams,
+                {"beneficial_owner": beneficial_owner}, beneficial_owner_create_params.BeneficialOwnerCreateParams
             ),
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -75,18 +57,16 @@ class InterestPayments(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=InterestPaymentSimulationResult,
+            cast_to=Entity,
         )
 
 
-class AsyncInterestPayments(AsyncAPIResource):
+class AsyncBeneficialOwners(AsyncAPIResource):
     async def create(
         self,
+        entity_id: str,
         *,
-        account_id: str,
-        amount: int,
-        period_end: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        period_start: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        beneficial_owner: beneficial_owner_create_params.BeneficialOwner,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -94,20 +74,15 @@ class AsyncInterestPayments(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> InterestPaymentSimulationResult:
-        """Simulates an interest payment to your account.
-
-        In production, this happens
-        automatically on the first of each month.
+    ) -> Entity:
+        """
+        Create a beneficial owner for a corporate Entity
 
         Args:
-          account_id: The identifier of the Account Number the Interest Payment is for.
+          entity_id: The identifier of the Entity to retrieve.
 
-          amount: The interest amount in cents. Must be positive.
-
-          period_end: The end of the interest period. If not provided, defaults to the current time.
-
-          period_start: The start of the interest period. If not provided, defaults to the current time.
+          beneficial_owner: The identifying details of anyone controlling or owning 25% or more of the
+              corporation.
 
           extra_headers: Send extra headers
 
@@ -120,15 +95,9 @@ class AsyncInterestPayments(AsyncAPIResource):
           idempotency_key: Specify a custom idempotency key for this request
         """
         return await self._post(
-            "/simulations/interest_payment",
+            f"/entities/{entity_id}/beneficial_owners",
             body=maybe_transform(
-                {
-                    "account_id": account_id,
-                    "amount": amount,
-                    "period_end": period_end,
-                    "period_start": period_start,
-                },
-                interest_payment_create_params.InterestPaymentCreateParams,
+                {"beneficial_owner": beneficial_owner}, beneficial_owner_create_params.BeneficialOwnerCreateParams
             ),
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -137,5 +106,5 @@ class AsyncInterestPayments(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=InterestPaymentSimulationResult,
+            cast_to=Entity,
         )

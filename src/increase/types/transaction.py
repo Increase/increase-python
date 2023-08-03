@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless.
 
-from typing import Optional
+from typing import List, Optional
 from datetime import date, datetime
 from typing_extensions import Literal
 
@@ -15,13 +15,26 @@ __all__ = [
     "SourceACHTransferReturn",
     "SourceCardDisputeAcceptance",
     "SourceCardRefund",
+    "SourceCardRefundPurchaseDetails",
+    "SourceCardRefundPurchaseDetailsCarRental",
+    "SourceCardRefundPurchaseDetailsLodging",
+    "SourceCardRefundPurchaseDetailsTravel",
+    "SourceCardRefundPurchaseDetailsTravelAncillary",
+    "SourceCardRefundPurchaseDetailsTravelAncillaryService",
+    "SourceCardRefundPurchaseDetailsTravelTripLeg",
     "SourceCardRevenuePayment",
     "SourceCardSettlement",
+    "SourceCardSettlementPurchaseDetails",
+    "SourceCardSettlementPurchaseDetailsCarRental",
+    "SourceCardSettlementPurchaseDetailsLodging",
+    "SourceCardSettlementPurchaseDetailsTravel",
+    "SourceCardSettlementPurchaseDetailsTravelAncillary",
+    "SourceCardSettlementPurchaseDetailsTravelAncillaryService",
+    "SourceCardSettlementPurchaseDetailsTravelTripLeg",
     "SourceCheckDepositAcceptance",
     "SourceCheckDepositReturn",
     "SourceCheckTransferDeposit",
     "SourceCheckTransferIntention",
-    "SourceCheckTransferRejection",
     "SourceCheckTransferStopPaymentRequest",
     "SourceFeePayment",
     "SourceInboundACHTransfer",
@@ -350,6 +363,413 @@ class SourceCardDisputeAcceptance(BaseModel):
     """
 
 
+class SourceCardRefundPurchaseDetailsCarRental(BaseModel):
+    car_class_code: Optional[str]
+    """Code indicating the vehicle's class."""
+
+    checkout_date: Optional[date]
+    """
+    Date the customer picked up the car or, in the case of a no-show or pre-pay
+    transaction, the scheduled pick up date.
+    """
+
+    daily_rental_rate_amount: Optional[int]
+    """Daily rate being charged for the vehicle."""
+
+    daily_rental_rate_currency: Optional[str]
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily rental
+    rate.
+    """
+
+    days_rented: Optional[int]
+    """Number of days the vehicle was rented."""
+
+    extra_charges: Optional[
+        Literal["no_extra_charge", "gas", "extra_mileage", "late_return", "one_way_service_fee", "parking_violation"]
+    ]
+    """Additional charges (gas, late fee, etc.) being billed.
+
+    - `no_extra_charge` - No extra charge
+    - `gas` - Gas
+    - `extra_mileage` - Extra mileage
+    - `late_return` - Late return
+    - `one_way_service_fee` - One way service fee
+    - `parking_violation` - Parking violation
+    """
+
+    fuel_charges_amount: Optional[int]
+    """Fuel charges for the vehicle."""
+
+    fuel_charges_currency: Optional[str]
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the fuel charges
+    assessed.
+    """
+
+    insurance_charges_amount: Optional[int]
+    """Any insurance being charged for the vehicle."""
+
+    insurance_charges_currency: Optional[str]
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the insurance
+    charges assessed.
+    """
+
+    no_show_indicator: Optional[Literal["not_applicable", "no_show_for_specialized_vehicle"]]
+    """
+    An indicator that the cardholder is being billed for a reserved vehicle that was
+    not actually rented (that is, a "no-show" charge).
+
+    - `not_applicable` - Not applicable
+    - `no_show_for_specialized_vehicle` - No show for specialized vehicle
+    """
+
+    one_way_drop_off_charges_amount: Optional[int]
+    """
+    Charges for returning the vehicle at a different location than where it was
+    picked up.
+    """
+
+    one_way_drop_off_charges_currency: Optional[str]
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the one-way
+    drop-off charges assessed.
+    """
+
+    renter_name: Optional[str]
+    """Name of the person renting the vehicle."""
+
+    weekly_rental_rate_amount: Optional[int]
+    """Weekly rate being charged for the vehicle."""
+
+    weekly_rental_rate_currency: Optional[str]
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the weekly
+    rental rate.
+    """
+
+
+class SourceCardRefundPurchaseDetailsLodging(BaseModel):
+    check_in_date: Optional[date]
+    """Date the customer checked in."""
+
+    daily_room_rate_amount: Optional[int]
+    """Daily rate being charged for the room."""
+
+    daily_room_rate_currency: Optional[str]
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily room
+    rate.
+    """
+
+    extra_charges: Optional[
+        Literal["no_extra_charge", "restaurant", "gift_shop", "mini_bar", "telephone", "other", "laundry"]
+    ]
+    """Additional charges (phone, late check-out, etc.) being billed.
+
+    - `no_extra_charge` - No extra charge
+    - `restaurant` - Restaurant
+    - `gift_shop` - Gift shop
+    - `mini_bar` - Mini bar
+    - `telephone` - Telephone
+    - `other` - Other
+    - `laundry` - Laundry
+    """
+
+    folio_cash_advances_amount: Optional[int]
+    """Folio cash advances for the room."""
+
+    folio_cash_advances_currency: Optional[str]
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the folio cash
+    advances.
+    """
+
+    food_beverage_charges_amount: Optional[int]
+    """Food and beverage charges for the room."""
+
+    food_beverage_charges_currency: Optional[str]
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the foor and
+    beverage charges.
+    """
+
+    no_show_indicator: Optional[Literal["not_applicable", "no_show"]]
+    """
+    Indicator that the cardholder is being billed for a reserved room that was not
+    actually used.
+
+    - `not_applicable` - Not applicable
+    - `no_show` - No show
+    """
+
+    prepaid_expenses_amount: Optional[int]
+    """Prepaid expenses being charged for the room."""
+
+    prepaid_expenses_currency: Optional[str]
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the prepaid
+    expenses.
+    """
+
+    room_nights: Optional[int]
+    """Number of nights the room was rented."""
+
+    total_room_tax_amount: Optional[int]
+    """Total room tax being charged."""
+
+    total_room_tax_currency: Optional[str]
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total room
+    tax.
+    """
+
+    total_tax_amount: Optional[int]
+    """Total tax being charged for the room."""
+
+    total_tax_currency: Optional[str]
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total tax
+    assessed.
+    """
+
+
+class SourceCardRefundPurchaseDetailsTravelAncillaryService(BaseModel):
+    category: Optional[
+        Literal[
+            "none",
+            "bundled_service",
+            "baggage_fee",
+            "change_fee",
+            "cargo",
+            "carbon_offset",
+            "frequent_flyer",
+            "gift_card",
+            "ground_transport",
+            "in_flight_entertainment",
+            "lounge",
+            "medical",
+            "meal_beverage",
+            "other",
+            "passenger_assist_fee",
+            "pets",
+            "seat_fees",
+            "standby",
+            "service_fee",
+            "store",
+            "travel_service",
+            "unaccompanied_travel",
+            "upgrades",
+            "wifi",
+        ]
+    ]
+    """Category of the ancillary service.
+
+    - `none` - None
+    - `bundled_service` - Bundled service
+    - `baggage_fee` - Baggage fee
+    - `change_fee` - Change fee
+    - `cargo` - Cargo
+    - `carbon_offset` - Carbon offset
+    - `frequent_flyer` - Frequent flyer
+    - `gift_card` - Gift card
+    - `ground_transport` - Ground transport
+    - `in_flight_entertainment` - In-flight entertainment
+    - `lounge` - Lounge
+    - `medical` - Medical
+    - `meal_beverage` - Meal beverage
+    - `other` - Other
+    - `passenger_assist_fee` - Passenger assist fee
+    - `pets` - Pets
+    - `seat_fees` - Seat fees
+    - `standby` - Standby
+    - `service_fee` - Service fee
+    - `store` - Store
+    - `travel_service` - Travel service
+    - `unaccompanied_travel` - Unaccompanied travel
+    - `upgrades` - Upgrades
+    - `wifi` - Wi-fi
+    """
+
+    sub_category: Optional[str]
+    """Sub-category of the ancillary service, free-form."""
+
+
+class SourceCardRefundPurchaseDetailsTravelAncillary(BaseModel):
+    connected_ticket_document_number: Optional[str]
+    """
+    If this purchase has a connection or relationship to another purchase, such as a
+    baggage fee for a passenger transport ticket, this field should contain the
+    ticket document number for the other purchase.
+    """
+
+    credit_reason_indicator: Optional[
+        Literal[
+            "no_credit",
+            "passenger_transport_ancillary_purchase_cancellation",
+            "airline_ticket_and_passenger_transport_ancillary_purchase_cancellation",
+            "other",
+        ]
+    ]
+    """Indicates the reason for a credit to the cardholder.
+
+    - `no_credit` - No credit
+    - `passenger_transport_ancillary_purchase_cancellation` - Passenger transport
+      ancillary purchase cancellation
+    - `airline_ticket_and_passenger_transport_ancillary_purchase_cancellation` -
+      Airline ticket and passenger transport ancillary purchase cancellation
+    - `other` - Other
+    """
+
+    passenger_name_or_description: Optional[str]
+    """Name of the passenger or description of the ancillary purchase."""
+
+    services: List[SourceCardRefundPurchaseDetailsTravelAncillaryService]
+    """Additional travel charges, such as baggage fees."""
+
+    ticket_document_number: Optional[str]
+    """Ticket document number."""
+
+
+class SourceCardRefundPurchaseDetailsTravelTripLeg(BaseModel):
+    carrier_code: Optional[str]
+    """Carrier code (e.g., United Airlines, Jet Blue, etc.)."""
+
+    destination_city_airport_code: Optional[str]
+    """Code for the destination city or airport."""
+
+    fare_basis_code: Optional[str]
+    """Fare basis code."""
+
+    flight_number: Optional[str]
+    """Flight number."""
+
+    service_class: Optional[str]
+    """Service class (e.g., first class, business class, etc.)."""
+
+    stop_over_code: Optional[Literal["none", "stop_over_allowed", "stop_over_not_allowed"]]
+    """Indicates whether a stopover is allowed on this ticket.
+
+    - `none` - None
+    - `stop_over_allowed` - Stop over allowed
+    - `stop_over_not_allowed` - Stop over not allowed
+    """
+
+
+class SourceCardRefundPurchaseDetailsTravel(BaseModel):
+    ancillary: Optional[SourceCardRefundPurchaseDetailsTravelAncillary]
+    """Ancillary purchases in addition to the airfare."""
+
+    computerized_reservation_system: Optional[str]
+    """Indicates the computerized reservation system used to book the ticket."""
+
+    credit_reason_indicator: Optional[
+        Literal[
+            "no_credit",
+            "passenger_transport_ancillary_purchase_cancellation",
+            "airline_ticket_and_passenger_transport_ancillary_purchase_cancellation",
+            "airline_ticket_cancellation",
+            "other",
+            "partial_refund_of_airline_ticket",
+        ]
+    ]
+    """Indicates the reason for a credit to the cardholder.
+
+    - `no_credit` - No credit
+    - `passenger_transport_ancillary_purchase_cancellation` - Passenger transport
+      ancillary purchase cancellation
+    - `airline_ticket_and_passenger_transport_ancillary_purchase_cancellation` -
+      Airline ticket and passenger transport ancillary purchase cancellation
+    - `airline_ticket_cancellation` - Airline ticket cancellation
+    - `other` - Other
+    - `partial_refund_of_airline_ticket` - Partial refund of airline ticket
+    """
+
+    departure_date: Optional[date]
+    """Date of departure."""
+
+    origination_city_airport_code: Optional[str]
+    """Code for the originating city or airport."""
+
+    passenger_name: Optional[str]
+    """Name of the passenger."""
+
+    restricted_ticket_indicator: Optional[Literal["no_restrictions", "restricted_non_refundable_ticket"]]
+    """Indicates whether this ticket is non-refundable.
+
+    - `no_restrictions` - No restrictions
+    - `restricted_non_refundable_ticket` - Restricted non-refundable ticket
+    """
+
+    ticket_change_indicator: Optional[Literal["none", "change_to_existing_ticket", "new_ticket"]]
+    """Indicates why a ticket was changed.
+
+    - `none` - None
+    - `change_to_existing_ticket` - Change to existing ticket
+    - `new_ticket` - New ticket
+    """
+
+    ticket_number: Optional[str]
+    """Ticket number."""
+
+    travel_agency_code: Optional[str]
+    """Code for the travel agency if the ticket was issued by a travel agency."""
+
+    travel_agency_name: Optional[str]
+    """Name of the travel agency if the ticket was issued by a travel agency."""
+
+    trip_legs: Optional[List[SourceCardRefundPurchaseDetailsTravelTripLeg]]
+    """Fields specific to each leg of the journey."""
+
+
+class SourceCardRefundPurchaseDetails(BaseModel):
+    car_rental: Optional[SourceCardRefundPurchaseDetailsCarRental]
+    """Fields specific to car rentals."""
+
+    customer_reference_identifier: Optional[str]
+    """An identifier from the merchant for the customer or consumer."""
+
+    local_tax_amount: Optional[int]
+    """The state or provincial tax amount in minor units."""
+
+    local_tax_currency: Optional[str]
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax
+    assessed.
+    """
+
+    lodging: Optional[SourceCardRefundPurchaseDetailsLodging]
+    """Fields specific to lodging."""
+
+    national_tax_amount: Optional[int]
+    """The national tax amount in minor units."""
+
+    national_tax_currency: Optional[str]
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax
+    assessed.
+    """
+
+    purchase_identifier: Optional[str]
+    """An identifier from the merchant for the purchase to the issuer and cardholder."""
+
+    purchase_identifier_format: Optional[
+        Literal["free_text", "order_number", "rental_agreement_number", "hotel_folio_number", "invoice_number"]
+    ]
+    """The format of the purchase identifier.
+
+    - `free_text` - Free text
+    - `order_number` - Order number
+    - `rental_agreement_number` - Rental agreement number
+    - `hotel_folio_number` - Hotel folio number
+    - `invoice_number` - Invoice number
+    """
+
+    travel: Optional[SourceCardRefundPurchaseDetailsTravel]
+    """Fields specific to travel."""
+
+
 class SourceCardRefund(BaseModel):
     id: str
     """The Card Refund identifier."""
@@ -394,6 +814,12 @@ class SourceCardRefund(BaseModel):
     merchant_state: Optional[str]
     """The state the merchant resides in."""
 
+    purchase_details: Optional[SourceCardRefundPurchaseDetails]
+    """
+    Additional details about the card purchase, such as tax and industry-specific
+    fields.
+    """
+
     transaction_id: str
     """The identifier of the Transaction associated with this Transaction."""
 
@@ -432,6 +858,413 @@ class SourceCardRevenuePayment(BaseModel):
 
     transacted_on_account_id: Optional[str]
     """The account the card belonged to."""
+
+
+class SourceCardSettlementPurchaseDetailsCarRental(BaseModel):
+    car_class_code: Optional[str]
+    """Code indicating the vehicle's class."""
+
+    checkout_date: Optional[date]
+    """
+    Date the customer picked up the car or, in the case of a no-show or pre-pay
+    transaction, the scheduled pick up date.
+    """
+
+    daily_rental_rate_amount: Optional[int]
+    """Daily rate being charged for the vehicle."""
+
+    daily_rental_rate_currency: Optional[str]
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily rental
+    rate.
+    """
+
+    days_rented: Optional[int]
+    """Number of days the vehicle was rented."""
+
+    extra_charges: Optional[
+        Literal["no_extra_charge", "gas", "extra_mileage", "late_return", "one_way_service_fee", "parking_violation"]
+    ]
+    """Additional charges (gas, late fee, etc.) being billed.
+
+    - `no_extra_charge` - No extra charge
+    - `gas` - Gas
+    - `extra_mileage` - Extra mileage
+    - `late_return` - Late return
+    - `one_way_service_fee` - One way service fee
+    - `parking_violation` - Parking violation
+    """
+
+    fuel_charges_amount: Optional[int]
+    """Fuel charges for the vehicle."""
+
+    fuel_charges_currency: Optional[str]
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the fuel charges
+    assessed.
+    """
+
+    insurance_charges_amount: Optional[int]
+    """Any insurance being charged for the vehicle."""
+
+    insurance_charges_currency: Optional[str]
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the insurance
+    charges assessed.
+    """
+
+    no_show_indicator: Optional[Literal["not_applicable", "no_show_for_specialized_vehicle"]]
+    """
+    An indicator that the cardholder is being billed for a reserved vehicle that was
+    not actually rented (that is, a "no-show" charge).
+
+    - `not_applicable` - Not applicable
+    - `no_show_for_specialized_vehicle` - No show for specialized vehicle
+    """
+
+    one_way_drop_off_charges_amount: Optional[int]
+    """
+    Charges for returning the vehicle at a different location than where it was
+    picked up.
+    """
+
+    one_way_drop_off_charges_currency: Optional[str]
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the one-way
+    drop-off charges assessed.
+    """
+
+    renter_name: Optional[str]
+    """Name of the person renting the vehicle."""
+
+    weekly_rental_rate_amount: Optional[int]
+    """Weekly rate being charged for the vehicle."""
+
+    weekly_rental_rate_currency: Optional[str]
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the weekly
+    rental rate.
+    """
+
+
+class SourceCardSettlementPurchaseDetailsLodging(BaseModel):
+    check_in_date: Optional[date]
+    """Date the customer checked in."""
+
+    daily_room_rate_amount: Optional[int]
+    """Daily rate being charged for the room."""
+
+    daily_room_rate_currency: Optional[str]
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily room
+    rate.
+    """
+
+    extra_charges: Optional[
+        Literal["no_extra_charge", "restaurant", "gift_shop", "mini_bar", "telephone", "other", "laundry"]
+    ]
+    """Additional charges (phone, late check-out, etc.) being billed.
+
+    - `no_extra_charge` - No extra charge
+    - `restaurant` - Restaurant
+    - `gift_shop` - Gift shop
+    - `mini_bar` - Mini bar
+    - `telephone` - Telephone
+    - `other` - Other
+    - `laundry` - Laundry
+    """
+
+    folio_cash_advances_amount: Optional[int]
+    """Folio cash advances for the room."""
+
+    folio_cash_advances_currency: Optional[str]
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the folio cash
+    advances.
+    """
+
+    food_beverage_charges_amount: Optional[int]
+    """Food and beverage charges for the room."""
+
+    food_beverage_charges_currency: Optional[str]
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the foor and
+    beverage charges.
+    """
+
+    no_show_indicator: Optional[Literal["not_applicable", "no_show"]]
+    """
+    Indicator that the cardholder is being billed for a reserved room that was not
+    actually used.
+
+    - `not_applicable` - Not applicable
+    - `no_show` - No show
+    """
+
+    prepaid_expenses_amount: Optional[int]
+    """Prepaid expenses being charged for the room."""
+
+    prepaid_expenses_currency: Optional[str]
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the prepaid
+    expenses.
+    """
+
+    room_nights: Optional[int]
+    """Number of nights the room was rented."""
+
+    total_room_tax_amount: Optional[int]
+    """Total room tax being charged."""
+
+    total_room_tax_currency: Optional[str]
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total room
+    tax.
+    """
+
+    total_tax_amount: Optional[int]
+    """Total tax being charged for the room."""
+
+    total_tax_currency: Optional[str]
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total tax
+    assessed.
+    """
+
+
+class SourceCardSettlementPurchaseDetailsTravelAncillaryService(BaseModel):
+    category: Optional[
+        Literal[
+            "none",
+            "bundled_service",
+            "baggage_fee",
+            "change_fee",
+            "cargo",
+            "carbon_offset",
+            "frequent_flyer",
+            "gift_card",
+            "ground_transport",
+            "in_flight_entertainment",
+            "lounge",
+            "medical",
+            "meal_beverage",
+            "other",
+            "passenger_assist_fee",
+            "pets",
+            "seat_fees",
+            "standby",
+            "service_fee",
+            "store",
+            "travel_service",
+            "unaccompanied_travel",
+            "upgrades",
+            "wifi",
+        ]
+    ]
+    """Category of the ancillary service.
+
+    - `none` - None
+    - `bundled_service` - Bundled service
+    - `baggage_fee` - Baggage fee
+    - `change_fee` - Change fee
+    - `cargo` - Cargo
+    - `carbon_offset` - Carbon offset
+    - `frequent_flyer` - Frequent flyer
+    - `gift_card` - Gift card
+    - `ground_transport` - Ground transport
+    - `in_flight_entertainment` - In-flight entertainment
+    - `lounge` - Lounge
+    - `medical` - Medical
+    - `meal_beverage` - Meal beverage
+    - `other` - Other
+    - `passenger_assist_fee` - Passenger assist fee
+    - `pets` - Pets
+    - `seat_fees` - Seat fees
+    - `standby` - Standby
+    - `service_fee` - Service fee
+    - `store` - Store
+    - `travel_service` - Travel service
+    - `unaccompanied_travel` - Unaccompanied travel
+    - `upgrades` - Upgrades
+    - `wifi` - Wi-fi
+    """
+
+    sub_category: Optional[str]
+    """Sub-category of the ancillary service, free-form."""
+
+
+class SourceCardSettlementPurchaseDetailsTravelAncillary(BaseModel):
+    connected_ticket_document_number: Optional[str]
+    """
+    If this purchase has a connection or relationship to another purchase, such as a
+    baggage fee for a passenger transport ticket, this field should contain the
+    ticket document number for the other purchase.
+    """
+
+    credit_reason_indicator: Optional[
+        Literal[
+            "no_credit",
+            "passenger_transport_ancillary_purchase_cancellation",
+            "airline_ticket_and_passenger_transport_ancillary_purchase_cancellation",
+            "other",
+        ]
+    ]
+    """Indicates the reason for a credit to the cardholder.
+
+    - `no_credit` - No credit
+    - `passenger_transport_ancillary_purchase_cancellation` - Passenger transport
+      ancillary purchase cancellation
+    - `airline_ticket_and_passenger_transport_ancillary_purchase_cancellation` -
+      Airline ticket and passenger transport ancillary purchase cancellation
+    - `other` - Other
+    """
+
+    passenger_name_or_description: Optional[str]
+    """Name of the passenger or description of the ancillary purchase."""
+
+    services: List[SourceCardSettlementPurchaseDetailsTravelAncillaryService]
+    """Additional travel charges, such as baggage fees."""
+
+    ticket_document_number: Optional[str]
+    """Ticket document number."""
+
+
+class SourceCardSettlementPurchaseDetailsTravelTripLeg(BaseModel):
+    carrier_code: Optional[str]
+    """Carrier code (e.g., United Airlines, Jet Blue, etc.)."""
+
+    destination_city_airport_code: Optional[str]
+    """Code for the destination city or airport."""
+
+    fare_basis_code: Optional[str]
+    """Fare basis code."""
+
+    flight_number: Optional[str]
+    """Flight number."""
+
+    service_class: Optional[str]
+    """Service class (e.g., first class, business class, etc.)."""
+
+    stop_over_code: Optional[Literal["none", "stop_over_allowed", "stop_over_not_allowed"]]
+    """Indicates whether a stopover is allowed on this ticket.
+
+    - `none` - None
+    - `stop_over_allowed` - Stop over allowed
+    - `stop_over_not_allowed` - Stop over not allowed
+    """
+
+
+class SourceCardSettlementPurchaseDetailsTravel(BaseModel):
+    ancillary: Optional[SourceCardSettlementPurchaseDetailsTravelAncillary]
+    """Ancillary purchases in addition to the airfare."""
+
+    computerized_reservation_system: Optional[str]
+    """Indicates the computerized reservation system used to book the ticket."""
+
+    credit_reason_indicator: Optional[
+        Literal[
+            "no_credit",
+            "passenger_transport_ancillary_purchase_cancellation",
+            "airline_ticket_and_passenger_transport_ancillary_purchase_cancellation",
+            "airline_ticket_cancellation",
+            "other",
+            "partial_refund_of_airline_ticket",
+        ]
+    ]
+    """Indicates the reason for a credit to the cardholder.
+
+    - `no_credit` - No credit
+    - `passenger_transport_ancillary_purchase_cancellation` - Passenger transport
+      ancillary purchase cancellation
+    - `airline_ticket_and_passenger_transport_ancillary_purchase_cancellation` -
+      Airline ticket and passenger transport ancillary purchase cancellation
+    - `airline_ticket_cancellation` - Airline ticket cancellation
+    - `other` - Other
+    - `partial_refund_of_airline_ticket` - Partial refund of airline ticket
+    """
+
+    departure_date: Optional[date]
+    """Date of departure."""
+
+    origination_city_airport_code: Optional[str]
+    """Code for the originating city or airport."""
+
+    passenger_name: Optional[str]
+    """Name of the passenger."""
+
+    restricted_ticket_indicator: Optional[Literal["no_restrictions", "restricted_non_refundable_ticket"]]
+    """Indicates whether this ticket is non-refundable.
+
+    - `no_restrictions` - No restrictions
+    - `restricted_non_refundable_ticket` - Restricted non-refundable ticket
+    """
+
+    ticket_change_indicator: Optional[Literal["none", "change_to_existing_ticket", "new_ticket"]]
+    """Indicates why a ticket was changed.
+
+    - `none` - None
+    - `change_to_existing_ticket` - Change to existing ticket
+    - `new_ticket` - New ticket
+    """
+
+    ticket_number: Optional[str]
+    """Ticket number."""
+
+    travel_agency_code: Optional[str]
+    """Code for the travel agency if the ticket was issued by a travel agency."""
+
+    travel_agency_name: Optional[str]
+    """Name of the travel agency if the ticket was issued by a travel agency."""
+
+    trip_legs: Optional[List[SourceCardSettlementPurchaseDetailsTravelTripLeg]]
+    """Fields specific to each leg of the journey."""
+
+
+class SourceCardSettlementPurchaseDetails(BaseModel):
+    car_rental: Optional[SourceCardSettlementPurchaseDetailsCarRental]
+    """Fields specific to car rentals."""
+
+    customer_reference_identifier: Optional[str]
+    """An identifier from the merchant for the customer or consumer."""
+
+    local_tax_amount: Optional[int]
+    """The state or provincial tax amount in minor units."""
+
+    local_tax_currency: Optional[str]
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax
+    assessed.
+    """
+
+    lodging: Optional[SourceCardSettlementPurchaseDetailsLodging]
+    """Fields specific to lodging."""
+
+    national_tax_amount: Optional[int]
+    """The national tax amount in minor units."""
+
+    national_tax_currency: Optional[str]
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax
+    assessed.
+    """
+
+    purchase_identifier: Optional[str]
+    """An identifier from the merchant for the purchase to the issuer and cardholder."""
+
+    purchase_identifier_format: Optional[
+        Literal["free_text", "order_number", "rental_agreement_number", "hotel_folio_number", "invoice_number"]
+    ]
+    """The format of the purchase identifier.
+
+    - `free_text` - Free text
+    - `order_number` - Order number
+    - `rental_agreement_number` - Rental agreement number
+    - `hotel_folio_number` - Hotel folio number
+    - `invoice_number` - Invoice number
+    """
+
+    travel: Optional[SourceCardSettlementPurchaseDetailsTravel]
+    """Fields specific to travel."""
 
 
 class SourceCardSettlement(BaseModel):
@@ -494,6 +1327,12 @@ class SourceCardSettlement(BaseModel):
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
     transaction's presentment currency.
+    """
+
+    purchase_details: Optional[SourceCardSettlementPurchaseDetails]
+    """
+    Additional details about the card purchase, such as tax and industry-specific
+    fields.
     """
 
     transaction_id: str
@@ -679,16 +1518,13 @@ class SourceCheckTransferIntention(BaseModel):
     """The identifier of the Check Transfer with which this is associated."""
 
 
-class SourceCheckTransferRejection(BaseModel):
-    transfer_id: str
-    """The identifier of the Check Transfer that led to this Transaction."""
-
-
 class SourceCheckTransferStopPaymentRequest(BaseModel):
-    reason: Literal["mail_delivery_failed", "unknown"]
+    reason: Literal["mail_delivery_failed", "rejected_by_increase", "unknown"]
     """The reason why this transfer was stopped.
 
     - `mail_delivery_failed` - The check could not be delivered.
+    - `rejected_by_increase` - The check was cancelled by an Increase operator who
+      will provide details out-of-band.
     - `unknown` - The check was stopped for another reason.
     """
 
@@ -1108,6 +1944,7 @@ class SourceInternalSource(BaseModel):
         "account_closure",
         "bank_migration",
         "cashback",
+        "check_adjustment",
         "collection_receivable",
         "empyreal_adjustment",
         "error",
@@ -1122,6 +1959,7 @@ class SourceInternalSource(BaseModel):
     - `account_closure` - Account closure
     - `bank_migration` - Bank migration
     - `cashback` - Cashback
+    - `check_adjustment` - Check adjustment
     - `collection_receivable` - Collection receivable
     - `empyreal_adjustment` - Empyreal adjustment
     - `error` - Error
@@ -1246,7 +2084,6 @@ class Source(BaseModel):
         "check_deposit_return",
         "check_transfer_deposit",
         "check_transfer_intention",
-        "check_transfer_rejection",
         "check_transfer_stop_payment_request",
         "fee_payment",
         "inbound_ach_transfer",
@@ -1297,8 +2134,6 @@ class Source(BaseModel):
       Deposit object. Details will be under the `check_transfer_deposit` object.
     - `check_transfer_intention` - The Transaction was created by a Check Transfer
       Intention object. Details will be under the `check_transfer_intention` object.
-    - `check_transfer_rejection` - The Transaction was created by a Check Transfer
-      Rejection object. Details will be under the `check_transfer_rejection` object.
     - `check_transfer_stop_payment_request` - The Transaction was created by a Check
       Transfer Stop Payment Request object. Details will be under the
       `check_transfer_stop_payment_request` object.
@@ -1369,13 +2204,6 @@ class Source(BaseModel):
 
     This field will be present in the JSON response if and only if `category` is
     equal to `check_transfer_intention`.
-    """
-
-    check_transfer_rejection: Optional[SourceCheckTransferRejection]
-    """A Check Transfer Rejection object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `check_transfer_rejection`.
     """
 
     check_transfer_stop_payment_request: Optional[SourceCheckTransferStopPaymentRequest]

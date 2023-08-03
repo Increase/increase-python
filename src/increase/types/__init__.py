@@ -59,6 +59,7 @@ from .transaction_list_params import TransactionListParams as TransactionListPar
 from .ach_transfer_list_params import ACHTransferListParams as ACHTransferListParams
 from .card_dispute_list_params import CardDisputeListParams as CardDisputeListParams
 from .card_profile_list_params import CardProfileListParams as CardProfileListParams
+from .card_purchase_supplement import CardPurchaseSupplement as CardPurchaseSupplement
 from .check_deposit_list_params import CheckDepositListParams as CheckDepositListParams
 from .wire_transfer_list_params import WireTransferListParams as WireTransferListParams
 from .account_number_list_params import (
@@ -177,6 +178,9 @@ from .bookkeeping_entry_set_create_params import (
 )
 from .wire_drawdown_request_create_params import (
     WireDrawdownRequestCreateParams as WireDrawdownRequestCreateParams,
+)
+from .card_purchase_supplement_list_params import (
+    CardPurchaseSupplementListParams as CardPurchaseSupplementListParams,
 )
 from .inbound_ach_transfer_return_list_params import (
     InboundACHTransferReturnListParams as InboundACHTransferReturnListParams,
