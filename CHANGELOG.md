@@ -1,5 +1,24 @@
 # Changelog
 
+## [0.11.3](https://github.com/Increase/increase-python/compare/v0.11.2...v0.11.3) (2023-08-08)
+
+
+### Features
+
+* **api:** updates ([#67](https://github.com/Increase/increase-python/issues/67)) ([33be21c](https://github.com/Increase/increase-python/commit/33be21ce0c6d9f654f75e6bfc200bc681ac4eb02))
+
+
+### Documentation
+
+* **readme:** remove beta status + document versioning policy ([#68](https://github.com/Increase/increase-python/issues/68)) ([a8108e0](https://github.com/Increase/increase-python/commit/a8108e079f73533179ddc3aefa9c3d6a99245b95))
+
+
+### Chores
+
+* **internal:** bump certifi dependency ([#70](https://github.com/Increase/increase-python/issues/70)) ([3883e68](https://github.com/Increase/increase-python/commit/3883e689818f9d895e7415c110d9ddb026198df5))
+* **internal:** update mypy to v1.4.1 ([#65](https://github.com/Increase/increase-python/issues/65)) ([a2e700e](https://github.com/Increase/increase-python/commit/a2e700e0a28c5902761b95d79c1b6b94e6119cc9))
+* **internal:** update ruff to v0.0.282 ([#69](https://github.com/Increase/increase-python/issues/69)) ([66b2977](https://github.com/Increase/increase-python/commit/66b29777e2f250bae2d69eee6c21c55fca34497d))
+
 ## [0.11.2](https://github.com/Increase/increase-python/compare/v0.11.1...v0.11.2) (2023-08-01)
 
 
