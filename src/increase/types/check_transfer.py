@@ -75,6 +75,12 @@ class Deposit(BaseModel):
 
 
 class Mailing(BaseModel):
+    image_id: Optional[str]
+    """
+    The ID of the file corresponding to an image of the check that was mailed, if
+    available.
+    """
+
     mailed_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which

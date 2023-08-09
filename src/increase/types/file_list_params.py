@@ -59,6 +59,7 @@ _PurposeReservedKeywords = TypedDict(
             Literal[
                 "check_image_front",
                 "check_image_back",
+                "mailed_check_image",
                 "form_1099_int",
                 "form_ss_4",
                 "identity_document",

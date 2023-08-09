@@ -93,6 +93,9 @@ class CardProfile(BaseModel):
     their app.
     """
 
+    is_default: bool
+    """Whether this Card Profile is the default for all cards in its Increase group."""
+
     physical_cards: Optional[PhysicalCards]
     """How physical cards should be designed and shipped."""
 

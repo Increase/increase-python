@@ -38,6 +38,7 @@ class File(BaseModel):
     purpose: Literal[
         "check_image_front",
         "check_image_back",
+        "mailed_check_image",
         "form_1099_int",
         "form_ss_4",
         "identity_document",
@@ -61,6 +62,7 @@ class File(BaseModel):
     - `check_image_front` - An image of the front of a check, used for check
       deposits.
     - `check_image_back` - An image of the back of a check, used for check deposits.
+    - `mailed_check_image` - An image of a check that was mailed to a recipient.
     - `form_1099_int` - IRS Form 1099-INT.
     - `form_ss_4` - IRS Form SS-4.
     - `identity_document` - An image of a government-issued ID.

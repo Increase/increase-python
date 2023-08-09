@@ -23,6 +23,7 @@ class Files(SyncAPIResource):
         purpose: Literal[
             "check_image_front",
             "check_image_back",
+            "mailed_check_image",
             "form_ss_4",
             "identity_document",
             "other",
@@ -58,6 +59,7 @@ class Files(SyncAPIResource):
               - `check_image_front` - An image of the front of a check, used for check
                 deposits.
               - `check_image_back` - An image of the back of a check, used for check deposits.
+              - `mailed_check_image` - An image of a check that was mailed to a recipient.
               - `form_ss_4` - IRS Form SS-4.
               - `identity_document` - An image of a government-issued ID.
               - `other` - A file purpose not covered by any of the other cases.
@@ -209,6 +211,7 @@ class AsyncFiles(AsyncAPIResource):
         purpose: Literal[
             "check_image_front",
             "check_image_back",
+            "mailed_check_image",
             "form_ss_4",
             "identity_document",
             "other",
@@ -244,6 +247,7 @@ class AsyncFiles(AsyncAPIResource):
               - `check_image_front` - An image of the front of a check, used for check
                 deposits.
               - `check_image_back` - An image of the back of a check, used for check deposits.
+              - `mailed_check_image` - An image of a check that was mailed to a recipient.
               - `form_ss_4` - IRS Form SS-4.
               - `identity_document` - An image of a government-issued ID.
               - `other` - A file purpose not covered by any of the other cases.
