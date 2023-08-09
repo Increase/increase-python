@@ -83,7 +83,7 @@ class TestEntities:
                             },
                         },
                         "company_title": "x",
-                        "prong": "ownership",
+                        "prongs": ["ownership", "ownership", "ownership"],
                     },
                     {
                         "individual": {
@@ -121,7 +121,7 @@ class TestEntities:
                             },
                         },
                         "company_title": "x",
-                        "prong": "ownership",
+                        "prongs": ["ownership", "ownership", "ownership"],
                     },
                     {
                         "individual": {
@@ -159,7 +159,7 @@ class TestEntities:
                             },
                         },
                         "company_title": "x",
-                        "prong": "ownership",
+                        "prongs": ["ownership", "ownership", "ownership"],
                     },
                 ],
             },
@@ -496,6 +496,13 @@ class TestEntities:
         )
         assert_matches_type(SyncPage[Entity], entity, path=["response"])
 
+    @parametrize
+    def test_method_archive(self, client: Increase) -> None:
+        entity = client.entities.archive(
+            "string",
+        )
+        assert_matches_type(Entity, entity, path=["response"])
+
 
 class TestAsyncEntities:
     strict_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
@@ -564,7 +571,7 @@ class TestAsyncEntities:
                             },
                         },
                         "company_title": "x",
-                        "prong": "ownership",
+                        "prongs": ["ownership", "ownership", "ownership"],
                     },
                     {
                         "individual": {
@@ -602,7 +609,7 @@ class TestAsyncEntities:
                             },
                         },
                         "company_title": "x",
-                        "prong": "ownership",
+                        "prongs": ["ownership", "ownership", "ownership"],
                     },
                     {
                         "individual": {
@@ -640,7 +647,7 @@ class TestAsyncEntities:
                             },
                         },
                         "company_title": "x",
-                        "prong": "ownership",
+                        "prongs": ["ownership", "ownership", "ownership"],
                     },
                 ],
             },
@@ -976,3 +983,10 @@ class TestAsyncEntities:
             limit=0,
         )
         assert_matches_type(AsyncPage[Entity], entity, path=["response"])
+
+    @parametrize
+    async def test_method_archive(self, client: AsyncIncrease) -> None:
+        entity = await client.entities.archive(
+            "string",
+        )
+        assert_matches_type(Entity, entity, path=["response"])

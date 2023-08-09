@@ -80,6 +80,13 @@ class TestCardProfiles:
         )
         assert_matches_type(SyncPage[CardProfile], card_profile, path=["response"])
 
+    @parametrize
+    def test_method_archive(self, client: Increase) -> None:
+        card_profile = client.card_profiles.archive(
+            "string",
+        )
+        assert_matches_type(CardProfile, card_profile, path=["response"])
+
 
 class TestAsyncCardProfiles:
     strict_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
@@ -145,3 +152,10 @@ class TestAsyncCardProfiles:
             status={"in": ["pending", "pending", "pending"]},
         )
         assert_matches_type(AsyncPage[CardProfile], card_profile, path=["response"])
+
+    @parametrize
+    async def test_method_archive(self, client: AsyncIncrease) -> None:
+        card_profile = await client.card_profiles.archive(
+            "string",
+        )
+        assert_matches_type(CardProfile, card_profile, path=["response"])

@@ -151,6 +151,46 @@ class CardProfiles(SyncAPIResource):
             model=CardProfile,
         )
 
+    def archive(
+        self,
+        card_profile_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> CardProfile:
+        """
+        Archive an Card Profile
+
+        Args:
+          card_profile_id: The identifier of the Card Profile to archive.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        return self._post(
+            f"/card_profiles/{card_profile_id}/archive",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=CardProfile,
+        )
+
 
 class AsyncCardProfiles(AsyncAPIResource):
     async def create(
@@ -289,4 +329,44 @@ class AsyncCardProfiles(AsyncAPIResource):
                 ),
             ),
             model=CardProfile,
+        )
+
+    async def archive(
+        self,
+        card_profile_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> CardProfile:
+        """
+        Archive an Card Profile
+
+        Args:
+          card_profile_id: The identifier of the Card Profile to archive.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        return await self._post(
+            f"/card_profiles/{card_profile_id}/archive",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=CardProfile,
         )
