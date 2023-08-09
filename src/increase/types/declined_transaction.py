@@ -4,8 +4,8 @@ from typing import Optional
 from datetime import datetime
 from typing_extensions import Literal
 
-from ..types import shared
 from .._models import BaseModel
+from ..types.shared.point_of_service_entry_mode import PointOfServiceEntryMode
 
 __all__ = [
     "DeclinedTransaction",
@@ -125,7 +125,7 @@ class SourceCardDeclineNetworkDetailsVisa(BaseModel):
       electronic commerce transaction that has no data protection.
     """
 
-    point_of_service_entry_mode: Optional[shared.PointOfServiceEntryMode]
+    point_of_service_entry_mode: Optional[PointOfServiceEntryMode]
     """
     The method used to enter the cardholder's primary account number and card
     expiration date
