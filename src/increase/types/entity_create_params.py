@@ -262,13 +262,10 @@ class CorporationBeneficialOwner(TypedDict, total=False):
     individual: Required[CorporationBeneficialOwnerIndividual]
     """Personal details for the beneficial owner."""
 
-    prong: Required[Literal["ownership", "control"]]
+    prongs: Required[List[Literal["ownership", "control"]]]
     """Why this person is considered a beneficial owner of the entity.
 
-    - `ownership` - A person with 25% or greater direct or indirect ownership of the
-      entity.
-    - `control` - A person who manages, directs, or has significant control of the
-      entity.
+    At least one option is required.
     """
 
     company_title: str

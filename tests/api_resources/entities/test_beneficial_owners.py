@@ -39,7 +39,7 @@ class TestBeneficialOwners:
                         "number": "xxxx",
                     },
                 },
-                "prong": "ownership",
+                "prongs": ["ownership", "ownership", "ownership"],
             },
         )
         assert_matches_type(Entity, beneficial_owner, path=["response"])
@@ -84,7 +84,7 @@ class TestBeneficialOwners:
                     },
                 },
                 "company_title": "x",
-                "prong": "ownership",
+                "prongs": ["ownership", "ownership", "ownership"],
             },
         )
         assert_matches_type(Entity, beneficial_owner, path=["response"])
@@ -114,7 +114,7 @@ class TestAsyncBeneficialOwners:
                         "number": "xxxx",
                     },
                 },
-                "prong": "ownership",
+                "prongs": ["ownership", "ownership", "ownership"],
             },
         )
         assert_matches_type(Entity, beneficial_owner, path=["response"])
@@ -159,7 +159,7 @@ class TestAsyncBeneficialOwners:
                     },
                 },
                 "company_title": "x",
-                "prong": "ownership",
+                "prongs": ["ownership", "ownership", "ownership"],
             },
         )
         assert_matches_type(Entity, beneficial_owner, path=["response"])

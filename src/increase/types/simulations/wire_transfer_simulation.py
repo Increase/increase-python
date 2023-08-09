@@ -2141,7 +2141,7 @@ class TransactionSource(BaseModel):
     - `fee_payment` - The Transaction was created by a Fee Payment object. Details
       will be under the `fee_payment` object.
     - `inbound_ach_transfer` - The Transaction was created by a Inbound ACH Transfer
-      object. Details will be under the `inbound_ach_transfer` object.
+      Intention object. Details will be under the `inbound_ach_transfer` object.
     - `inbound_ach_transfer_return_intention` - The Transaction was created by a
       Inbound ACH Transfer Return Intention object. Details will be under the
       `inbound_ach_transfer_return_intention` object.
@@ -2222,7 +2222,7 @@ class TransactionSource(BaseModel):
     """
 
     inbound_ach_transfer: Optional[TransactionSourceInboundACHTransfer]
-    """A Inbound ACH Transfer object.
+    """A Inbound ACH Transfer Intention object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `inbound_ach_transfer`.

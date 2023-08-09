@@ -154,6 +154,7 @@ Methods:
 - <code title="post /card_profiles">client.card_profiles.<a href="./src/increase/resources/card_profiles.py">create</a>(\*\*<a href="src/increase/types/card_profile_create_params.py">params</a>) -> <a href="./src/increase/types/card_profile.py">CardProfile</a></code>
 - <code title="get /card_profiles/{card_profile_id}">client.card_profiles.<a href="./src/increase/resources/card_profiles.py">retrieve</a>(card_profile_id) -> <a href="./src/increase/types/card_profile.py">CardProfile</a></code>
 - <code title="get /card_profiles">client.card_profiles.<a href="./src/increase/resources/card_profiles.py">list</a>(\*\*<a href="src/increase/types/card_profile_list_params.py">params</a>) -> <a href="./src/increase/types/card_profile.py">SyncPage[CardProfile]</a></code>
+- <code title="post /card_profiles/{card_profile_id}/archive">client.card_profiles.<a href="./src/increase/resources/card_profiles.py">archive</a>(card_profile_id) -> <a href="./src/increase/types/card_profile.py">CardProfile</a></code>
 
 # CardPurchaseSupplements
 
@@ -398,6 +399,7 @@ Methods:
 - <code title="post /entities">client.entities.<a href="./src/increase/resources/entities/entities.py">create</a>(\*\*<a href="src/increase/types/entity_create_params.py">params</a>) -> <a href="./src/increase/types/entity.py">Entity</a></code>
 - <code title="get /entities/{entity_id}">client.entities.<a href="./src/increase/resources/entities/entities.py">retrieve</a>(entity_id) -> <a href="./src/increase/types/entity.py">Entity</a></code>
 - <code title="get /entities">client.entities.<a href="./src/increase/resources/entities/entities.py">list</a>(\*\*<a href="src/increase/types/entity_list_params.py">params</a>) -> <a href="./src/increase/types/entity.py">SyncPage[Entity]</a></code>
+- <code title="post /entities/{entity_id}/archive">client.entities.<a href="./src/increase/resources/entities/entities.py">archive</a>(entity_id) -> <a href="./src/increase/types/entity.py">Entity</a></code>
 
 ## BeneficialOwners
 
