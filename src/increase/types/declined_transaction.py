@@ -489,7 +489,7 @@ class SourceWireDecline(BaseModel):
 
 class Source(BaseModel):
     ach_decline: Optional[SourceACHDecline]
-    """A ACH Decline object.
+    """An ACH Decline object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `ach_decline`.
@@ -511,25 +511,23 @@ class Source(BaseModel):
         "wire_decline",
         "other",
     ]
-    """The type of decline that took place.
+    """The type of the resource.
 
     We may add additional possible values for this enum over time; your application
     should be able to handle such additions gracefully.
 
-    - `ach_decline` - The Declined Transaction was created by a ACH Decline object.
-      Details will be under the `ach_decline` object.
-    - `card_decline` - The Declined Transaction was created by a Card Decline
-      object. Details will be under the `card_decline` object.
-    - `check_decline` - The Declined Transaction was created by a Check Decline
-      object. Details will be under the `check_decline` object.
-    - `inbound_real_time_payments_transfer_decline` - The Declined Transaction was
-      created by a Inbound Real Time Payments Transfer Decline object. Details will
-      be under the `inbound_real_time_payments_transfer_decline` object.
-    - `international_ach_decline` - The Declined Transaction was created by a
-      International ACH Decline object. Details will be under the
-      `international_ach_decline` object.
-    - `wire_decline` - The Declined Transaction was created by a Wire Decline
-      object. Details will be under the `wire_decline` object.
+    - `ach_decline` - ACH Decline: details will be under the `ach_decline` object.
+    - `card_decline` - Card Decline: details will be under the `card_decline`
+      object.
+    - `check_decline` - Check Decline: details will be under the `check_decline`
+      object.
+    - `inbound_real_time_payments_transfer_decline` - Inbound Real Time Payments
+      Transfer Decline: details will be under the
+      `inbound_real_time_payments_transfer_decline` object.
+    - `international_ach_decline` - International ACH Decline: details will be under
+      the `international_ach_decline` object.
+    - `wire_decline` - Wire Decline: details will be under the `wire_decline`
+      object.
     - `other` - The Declined Transaction was made for an undocumented or deprecated
       reason.
     """
@@ -542,14 +540,14 @@ class Source(BaseModel):
     """
 
     inbound_real_time_payments_transfer_decline: Optional[SourceInboundRealTimePaymentsTransferDecline]
-    """A Inbound Real Time Payments Transfer Decline object.
+    """An Inbound Real Time Payments Transfer Decline object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `inbound_real_time_payments_transfer_decline`.
     """
 
     international_ach_decline: Optional[SourceInternationalACHDecline]
-    """A International ACH Decline object.
+    """An International ACH Decline object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `international_ach_decline`.

@@ -502,7 +502,7 @@ class DeclinedTransactionSourceWireDecline(BaseModel):
 
 class DeclinedTransactionSource(BaseModel):
     ach_decline: Optional[DeclinedTransactionSourceACHDecline]
-    """A ACH Decline object.
+    """An ACH Decline object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `ach_decline`.
@@ -524,25 +524,23 @@ class DeclinedTransactionSource(BaseModel):
         "wire_decline",
         "other",
     ]
-    """The type of decline that took place.
+    """The type of the resource.
 
     We may add additional possible values for this enum over time; your application
     should be able to handle such additions gracefully.
 
-    - `ach_decline` - The Declined Transaction was created by a ACH Decline object.
-      Details will be under the `ach_decline` object.
-    - `card_decline` - The Declined Transaction was created by a Card Decline
-      object. Details will be under the `card_decline` object.
-    - `check_decline` - The Declined Transaction was created by a Check Decline
-      object. Details will be under the `check_decline` object.
-    - `inbound_real_time_payments_transfer_decline` - The Declined Transaction was
-      created by a Inbound Real Time Payments Transfer Decline object. Details will
-      be under the `inbound_real_time_payments_transfer_decline` object.
-    - `international_ach_decline` - The Declined Transaction was created by a
-      International ACH Decline object. Details will be under the
-      `international_ach_decline` object.
-    - `wire_decline` - The Declined Transaction was created by a Wire Decline
-      object. Details will be under the `wire_decline` object.
+    - `ach_decline` - ACH Decline: details will be under the `ach_decline` object.
+    - `card_decline` - Card Decline: details will be under the `card_decline`
+      object.
+    - `check_decline` - Check Decline: details will be under the `check_decline`
+      object.
+    - `inbound_real_time_payments_transfer_decline` - Inbound Real Time Payments
+      Transfer Decline: details will be under the
+      `inbound_real_time_payments_transfer_decline` object.
+    - `international_ach_decline` - International ACH Decline: details will be under
+      the `international_ach_decline` object.
+    - `wire_decline` - Wire Decline: details will be under the `wire_decline`
+      object.
     - `other` - The Declined Transaction was made for an undocumented or deprecated
       reason.
     """
@@ -557,14 +555,14 @@ class DeclinedTransactionSource(BaseModel):
     inbound_real_time_payments_transfer_decline: Optional[
         DeclinedTransactionSourceInboundRealTimePaymentsTransferDecline
     ]
-    """A Inbound Real Time Payments Transfer Decline object.
+    """An Inbound Real Time Payments Transfer Decline object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `inbound_real_time_payments_transfer_decline`.
     """
 
     international_ach_decline: Optional[DeclinedTransactionSourceInternationalACHDecline]
-    """A International ACH Decline object.
+    """An International ACH Decline object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `international_ach_decline`.
@@ -976,14 +974,14 @@ class PendingTransactionSourceWireTransferInstruction(BaseModel):
 
 class PendingTransactionSource(BaseModel):
     account_transfer_instruction: Optional[PendingTransactionSourceAccountTransferInstruction]
-    """A Account Transfer Instruction object.
+    """An Account Transfer Instruction object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `account_transfer_instruction`.
     """
 
     ach_transfer_instruction: Optional[PendingTransactionSourceACHTransferInstruction]
-    """A ACH Transfer Instruction object.
+    """An ACH Transfer Instruction object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `ach_transfer_instruction`.
@@ -1007,33 +1005,28 @@ class PendingTransactionSource(BaseModel):
         "wire_transfer_instruction",
         "other",
     ]
-    """The type of transaction that took place.
+    """The type of the resource.
 
     We may add additional possible values for this enum over time; your application
     should be able to handle such additions gracefully.
 
-    - `account_transfer_instruction` - The Pending Transaction was created by a
-      Account Transfer Instruction object. Details will be under the
-      `account_transfer_instruction` object.
-    - `ach_transfer_instruction` - The Pending Transaction was created by a ACH
-      Transfer Instruction object. Details will be under the
-      `ach_transfer_instruction` object.
-    - `card_authorization` - The Pending Transaction was created by a Card
-      Authorization object. Details will be under the `card_authorization` object.
-    - `check_deposit_instruction` - The Pending Transaction was created by a Check
-      Deposit Instruction object. Details will be under the
-      `check_deposit_instruction` object.
-    - `check_transfer_instruction` - The Pending Transaction was created by a Check
-      Transfer Instruction object. Details will be under the
-      `check_transfer_instruction` object.
-    - `inbound_funds_hold` - The Pending Transaction was created by a Inbound Funds
-      Hold object. Details will be under the `inbound_funds_hold` object.
-    - `real_time_payments_transfer_instruction` - The Pending Transaction was
-      created by a Real Time Payments Transfer Instruction object. Details will be
-      under the `real_time_payments_transfer_instruction` object.
-    - `wire_transfer_instruction` - The Pending Transaction was created by a Wire
-      Transfer Instruction object. Details will be under the
-      `wire_transfer_instruction` object.
+    - `account_transfer_instruction` - Account Transfer Instruction: details will be
+      under the `account_transfer_instruction` object.
+    - `ach_transfer_instruction` - ACH Transfer Instruction: details will be under
+      the `ach_transfer_instruction` object.
+    - `card_authorization` - Card Authorization: details will be under the
+      `card_authorization` object.
+    - `check_deposit_instruction` - Check Deposit Instruction: details will be under
+      the `check_deposit_instruction` object.
+    - `check_transfer_instruction` - Check Transfer Instruction: details will be
+      under the `check_transfer_instruction` object.
+    - `inbound_funds_hold` - Inbound Funds Hold: details will be under the
+      `inbound_funds_hold` object.
+    - `real_time_payments_transfer_instruction` - Real Time Payments Transfer
+      Instruction: details will be under the
+      `real_time_payments_transfer_instruction` object.
+    - `wire_transfer_instruction` - Wire Transfer Instruction: details will be under
+      the `wire_transfer_instruction` object.
     - `other` - The Pending Transaction was made for an undocumented or deprecated
       reason.
     """
@@ -1053,7 +1046,7 @@ class PendingTransactionSource(BaseModel):
     """
 
     inbound_funds_hold: Optional[PendingTransactionSourceInboundFundsHold]
-    """A Inbound Funds Hold object.
+    """An Inbound Funds Hold object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `inbound_funds_hold`.

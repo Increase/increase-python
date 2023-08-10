@@ -356,14 +356,14 @@ class SourceWireTransferInstruction(BaseModel):
 
 class Source(BaseModel):
     account_transfer_instruction: Optional[SourceAccountTransferInstruction]
-    """A Account Transfer Instruction object.
+    """An Account Transfer Instruction object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `account_transfer_instruction`.
     """
 
     ach_transfer_instruction: Optional[SourceACHTransferInstruction]
-    """A ACH Transfer Instruction object.
+    """An ACH Transfer Instruction object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `ach_transfer_instruction`.
@@ -387,33 +387,28 @@ class Source(BaseModel):
         "wire_transfer_instruction",
         "other",
     ]
-    """The type of transaction that took place.
+    """The type of the resource.
 
     We may add additional possible values for this enum over time; your application
     should be able to handle such additions gracefully.
 
-    - `account_transfer_instruction` - The Pending Transaction was created by a
-      Account Transfer Instruction object. Details will be under the
-      `account_transfer_instruction` object.
-    - `ach_transfer_instruction` - The Pending Transaction was created by a ACH
-      Transfer Instruction object. Details will be under the
-      `ach_transfer_instruction` object.
-    - `card_authorization` - The Pending Transaction was created by a Card
-      Authorization object. Details will be under the `card_authorization` object.
-    - `check_deposit_instruction` - The Pending Transaction was created by a Check
-      Deposit Instruction object. Details will be under the
-      `check_deposit_instruction` object.
-    - `check_transfer_instruction` - The Pending Transaction was created by a Check
-      Transfer Instruction object. Details will be under the
-      `check_transfer_instruction` object.
-    - `inbound_funds_hold` - The Pending Transaction was created by a Inbound Funds
-      Hold object. Details will be under the `inbound_funds_hold` object.
-    - `real_time_payments_transfer_instruction` - The Pending Transaction was
-      created by a Real Time Payments Transfer Instruction object. Details will be
-      under the `real_time_payments_transfer_instruction` object.
-    - `wire_transfer_instruction` - The Pending Transaction was created by a Wire
-      Transfer Instruction object. Details will be under the
-      `wire_transfer_instruction` object.
+    - `account_transfer_instruction` - Account Transfer Instruction: details will be
+      under the `account_transfer_instruction` object.
+    - `ach_transfer_instruction` - ACH Transfer Instruction: details will be under
+      the `ach_transfer_instruction` object.
+    - `card_authorization` - Card Authorization: details will be under the
+      `card_authorization` object.
+    - `check_deposit_instruction` - Check Deposit Instruction: details will be under
+      the `check_deposit_instruction` object.
+    - `check_transfer_instruction` - Check Transfer Instruction: details will be
+      under the `check_transfer_instruction` object.
+    - `inbound_funds_hold` - Inbound Funds Hold: details will be under the
+      `inbound_funds_hold` object.
+    - `real_time_payments_transfer_instruction` - Real Time Payments Transfer
+      Instruction: details will be under the
+      `real_time_payments_transfer_instruction` object.
+    - `wire_transfer_instruction` - Wire Transfer Instruction: details will be under
+      the `wire_transfer_instruction` object.
     - `other` - The Pending Transaction was made for an undocumented or deprecated
       reason.
     """
@@ -433,7 +428,7 @@ class Source(BaseModel):
     """
 
     inbound_funds_hold: Optional[SourceInboundFundsHold]
-    """A Inbound Funds Hold object.
+    """An Inbound Funds Hold object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `inbound_funds_hold`.
