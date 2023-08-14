@@ -4,8 +4,8 @@ from typing import List, Optional
 from datetime import date, datetime
 from typing_extensions import Literal
 
+from ..shared import PointOfServiceEntryMode
 from ..._models import BaseModel
-from ...types.shared.point_of_service_entry_mode import PointOfServiceEntryMode
 
 __all__ = [
     "ACHTransferSimulation",
