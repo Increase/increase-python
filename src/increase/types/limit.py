@@ -1,7 +1,10 @@
 # File generated from our OpenAPI spec by Stainless.
 
+import typing_extensions
 from typing import Optional
 from typing_extensions import Literal
+
+from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
@@ -35,10 +38,10 @@ class Limit(BaseModel):
       model's currency.
     """
 
-    model_id: str
+    resource_id: str = FieldInfo(alias="model_id")
     """The identifier of the Account Number, Account, or Card the Limit applies to."""
 
-    model_type: Literal["account", "account_number", "card"]
+    resource_type: Literal["account", "account_number", "card"] = FieldInfo(alias="model_type")
     """The type of the model you wish to associate the Limit with.
 
     - `account` - Enforce the Limit for the entire account.
@@ -61,3 +64,13 @@ class Limit(BaseModel):
 
     value: int
     """The value to evaluate the Limit against."""
+
+    @property
+    @typing_extensions.deprecated("The resource_id property should be used instead")
+    def model_id(self) -> str:
+        return self.resource_id
+
+    @property
+    @typing_extensions.deprecated("The resource_type property should be used instead")
+    def model_type(self) -> Literal["account", "account_number", "card"]:
+        return self.resource_type
