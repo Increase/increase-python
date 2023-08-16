@@ -306,7 +306,7 @@ class RateLimitedError(exceptions.RateLimitError):
 
     type: Literal["rate_limited_error"]
 
-    retry_after: Optional[int]
+    retry_after: Optional[int] = None
 
     def __init__(self, message: str, *, body: object, request: httpx.Request, response: httpx.Response) -> None:
         data = cast(Mapping[str, object], body if is_mapping(body) else {})
