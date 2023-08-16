@@ -149,9 +149,6 @@ class EventSubscription(BaseModel):
     - `wire_transfer.updated` - Occurs whenever a Wire Transfer is updated.
     """
 
-    shared_secret: str
-    """The key that will be used to sign webhooks."""
-
     status: Literal["active", "disabled", "deleted", "requires_attention"]
     """This indicates if we'll send notifications to this subscription.
 
