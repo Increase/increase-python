@@ -59,7 +59,7 @@ class PhysicalCards(BaseModel):
     front_image_file_id: Optional[str]
     """The identifier of the File containing the physical card's front image."""
 
-    status: Literal["not_eligible", "rejected", "pending_reviewing", "pending_submitting", "submitted"]
+    status: Literal["not_eligible", "rejected", "pending_reviewing", "pending_submitting", "active"]
     """The status of the Physical Card Profile.
 
     - `not_eligible` - The Card Profile is not eligible for physical cards.
@@ -68,8 +68,8 @@ class PhysicalCards(BaseModel):
     - `pending_reviewing` - The card profile is awaiting review by Increase.
     - `pending_submitting` - The card profile is awaiting submission to the
       fulfillment provider.
-    - `submitted` - The Physical Card Profile has been submitted to the fulfillment
-      provider.
+    - `active` - The Physical Card Profile has been submitted to the fulfillment
+      provider and is ready to use.
     """
 
 

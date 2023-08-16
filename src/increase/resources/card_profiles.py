@@ -106,6 +106,7 @@ class CardProfiles(SyncAPIResource):
         *,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
+        physical_cards_status: card_profile_list_params.PhysicalCardsStatus | NotGiven = NOT_GIVEN,
         status: card_profile_list_params.Status | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -143,6 +144,7 @@ class CardProfiles(SyncAPIResource):
                     {
                         "cursor": cursor,
                         "limit": limit,
+                        "physical_cards_status": physical_cards_status,
                         "status": status,
                     },
                     card_profile_list_params.CardProfileListParams,
@@ -286,6 +288,7 @@ class AsyncCardProfiles(AsyncAPIResource):
         *,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
+        physical_cards_status: card_profile_list_params.PhysicalCardsStatus | NotGiven = NOT_GIVEN,
         status: card_profile_list_params.Status | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -323,6 +326,7 @@ class AsyncCardProfiles(AsyncAPIResource):
                     {
                         "cursor": cursor,
                         "limit": limit,
+                        "physical_cards_status": physical_cards_status,
                         "status": status,
                     },
                     card_profile_list_params.CardProfileListParams,
