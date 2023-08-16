@@ -1,5 +1,33 @@
 # Changelog
 
+## [0.11.4](https://github.com/Increase/increase-python/compare/v0.11.3...v0.11.4) (2023-08-16)
+
+
+### Features
+
+* allow a default timeout to be set for clients ([#80](https://github.com/Increase/increase-python/issues/80)) ([144a621](https://github.com/Increase/increase-python/commit/144a62172249755330ddf08ec00836ea250ac09f))
+* **api:** updates ([#75](https://github.com/Increase/increase-python/issues/75)) ([6ec05c8](https://github.com/Increase/increase-python/commit/6ec05c8cb8149b01af86ec618c7e2b283ec4d1da))
+
+
+### Documentation
+
+* **api:** change description of various fields ([#76](https://github.com/Increase/increase-python/issues/76)) ([2fb161a](https://github.com/Increase/increase-python/commit/2fb161abcef52446b047b599a24a3af0f50e2e56))
+
+
+### Styles
+
+* prefer importing types directly instead of module names ([#82](https://github.com/Increase/increase-python/issues/82)) ([2c3730e](https://github.com/Increase/increase-python/commit/2c3730e4124b64d61164661acd3311f6ddbad7eb))
+
+
+### Chores
+
+* assign default reviewers to release PRs ([#83](https://github.com/Increase/increase-python/issues/83)) ([16fc02e](https://github.com/Increase/increase-python/commit/16fc02e625f4d0ebc264edb02bcd4b449fd1341a))
+* **deps:** bump typing-extensions to 4.5 ([#77](https://github.com/Increase/increase-python/issues/77)) ([76d1b67](https://github.com/Increase/increase-python/commit/76d1b67144b60cda355cef48008f1ad0c4dcf5a7))
+* **internal/deps:** update lock file ([#74](https://github.com/Increase/increase-python/issues/74)) ([dfd056c](https://github.com/Increase/increase-python/commit/dfd056c17a8066234cdaae0f3c7e7980c6a7490a))
+* **internal:** bump pytest-asyncio ([#78](https://github.com/Increase/increase-python/issues/78)) ([1348000](https://github.com/Increase/increase-python/commit/13480009ccfe86044dfb3593fc2a89a161765919))
+* **internal:** minor formatting change ([#84](https://github.com/Increase/increase-python/issues/84)) ([73711a0](https://github.com/Increase/increase-python/commit/73711a0de1cb6ddbeb17bc0485ffbd678aee3244))
+* **internal:** minor import restructuring ([#72](https://github.com/Increase/increase-python/issues/72)) ([1564ce2](https://github.com/Increase/increase-python/commit/1564ce2a8517fb8794dfd502505c3688a6fef173))
+
 ## [0.11.3](https://github.com/Increase/increase-python/compare/v0.11.2...v0.11.3) (2023-08-08)
 
 
