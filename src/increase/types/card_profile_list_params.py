@@ -5,7 +5,7 @@ from __future__ import annotations
 from typing import List
 from typing_extensions import Literal, TypedDict
 
-__all__ = ["CardProfileListParams", "Status"]
+__all__ = ["CardProfileListParams", "PhysicalCardsStatus", "Status"]
 
 
 class CardProfileListParams(TypedDict, total=False):
@@ -18,7 +18,22 @@ class CardProfileListParams(TypedDict, total=False):
     The default (and maximum) is 100 objects.
     """
 
+    physical_cards_status: PhysicalCardsStatus
+
     status: Status
+
+
+_PhysicalCardsStatusReservedKeywords = TypedDict(
+    "_PhysicalCardsStatusReservedKeywords",
+    {
+        "in": List[Literal["not_eligible", "rejected", "pending_reviewing", "pending_submitting", "active"]],
+    },
+    total=False,
+)
+
+
+class PhysicalCardsStatus(_PhysicalCardsStatusReservedKeywords, total=False):
+    pass
 
 
 _StatusReservedKeywords = TypedDict(

@@ -8,7 +8,23 @@ from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["ACHTransfer", "Approval", "Cancellation", "NotificationsOfChange", "Return", "Submission"]
+__all__ = [
+    "ACHTransfer",
+    "Acknowledgement",
+    "Approval",
+    "Cancellation",
+    "NotificationsOfChange",
+    "Return",
+    "Submission",
+]
+
+
+class Acknowledgement(BaseModel):
+    acknowledged_at: str
+    """
+    When the Federal Reserve acknowledged the submitted file containing this
+    transfer.
+    """
 
 
 class Approval(BaseModel):
@@ -345,6 +361,13 @@ class ACHTransfer(BaseModel):
     account_number: str
     """The destination account number."""
 
+    acknowledgement: Optional[Acknowledgement]
+    """
+    After the transfer is acknowledged by FedACH, this will contain supplemental
+    details. The Federal Reserve sends an acknowledgement message for each file that
+    Increase submits.
+    """
+
     addendum: Optional[str]
     """Additional information that will be sent to the recipient."""
 
@@ -479,7 +502,10 @@ class ACHTransfer(BaseModel):
     submission: Optional[Submission]
     """
     After the transfer is submitted to FedACH, this will contain supplemental
-    details.
+    details. Increase batches transfers and submits a file to the Federal Reserve
+    roughly every 30 minutes. The Federal Reserve processes ACH transfers during
+    weekdays according to their (posted
+    schedule)[https://www.frbservices.org/resources/resource-centers/same-day-ach/fedach-processing-schedule.html].
     """
 
     transaction_id: Optional[str]
