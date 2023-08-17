@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.12.0](https://github.com/Increase/increase-python/compare/v0.11.4...v0.12.0) (2023-08-17)
+
+
+### ⚠ BREAKING CHANGES
+
+* **api:** change `physical_cards.status` value, remove `event_subscription` field, add fields ([#87](https://github.com/Increase/increase-python/issues/87))
+
+### Features
+
+* add support for Pydantic v2 ([#85](https://github.com/Increase/increase-python/issues/85)) ([ccbd518](https://github.com/Increase/increase-python/commit/ccbd518c770913ee83e5af32e80369405d6f4311))
+* **api:** change `physical_cards.status` value, remove `event_subscription` field, add fields ([#87](https://github.com/Increase/increase-python/issues/87)) ([f33460e](https://github.com/Increase/increase-python/commit/f33460ee6035bb3b661a40c05f08b6bfc4c9c752))
+
 ## [0.11.4](https://github.com/Increase/increase-python/compare/v0.11.3...v0.11.4) (2023-08-16)
 
 
