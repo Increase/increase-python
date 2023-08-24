@@ -37,6 +37,9 @@ class TestPendingTransactions:
     def test_method_list_with_all_params(self, client: Increase) -> None:
         pending_transaction = client.pending_transactions.list(
             account_id="string",
+            category={
+                "in": ["account_transfer_instruction", "account_transfer_instruction", "account_transfer_instruction"]
+            },
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -73,6 +76,9 @@ class TestAsyncPendingTransactions:
     async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
         pending_transaction = await client.pending_transactions.list(
             account_id="string",
+            category={
+                "in": ["account_transfer_instruction", "account_transfer_instruction", "account_transfer_instruction"]
+            },
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),

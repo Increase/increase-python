@@ -31,12 +31,12 @@ class RealTimePaymentsTransfers(SyncAPIResource):
         idempotency_key: str | None = None,
     ) -> RealTimePaymentsTransfer:
         """
-        Simulates submission of a Real Time Payments transfer and handling the response
+        Simulates submission of a Real-Time Payments transfer and handling the response
         from the destination financial institution. This transfer must first have a
         `status` of `pending_submission`.
 
         Args:
-          real_time_payments_transfer_id: The identifier of the Real Time Payments Transfer you wish to complete.
+          real_time_payments_transfer_id: The identifier of the Real-Time Payments Transfer you wish to complete.
 
           rejection: If set, the simulation will reject the transfer.
 
@@ -84,13 +84,13 @@ class RealTimePaymentsTransfers(SyncAPIResource):
         timeout: float | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> InboundRealTimePaymentsTransferSimulationResult:
-        """Simulates an inbound Real Time Payments transfer to your account.
+        """Simulates an inbound Real-Time Payments transfer to your account.
 
-        Real Time
+        Real-Time
         Payments are a beta feature.
 
         Args:
-          account_number_id: The identifier of the Account Number the inbound Real Time Payments Transfer is
+          account_number_id: The identifier of the Account Number the inbound Real-Time Payments Transfer is
               for.
 
           amount: The transfer amount in USD cents. Must be positive.
@@ -155,12 +155,12 @@ class AsyncRealTimePaymentsTransfers(AsyncAPIResource):
         idempotency_key: str | None = None,
     ) -> RealTimePaymentsTransfer:
         """
-        Simulates submission of a Real Time Payments transfer and handling the response
+        Simulates submission of a Real-Time Payments transfer and handling the response
         from the destination financial institution. This transfer must first have a
         `status` of `pending_submission`.
 
         Args:
-          real_time_payments_transfer_id: The identifier of the Real Time Payments Transfer you wish to complete.
+          real_time_payments_transfer_id: The identifier of the Real-Time Payments Transfer you wish to complete.
 
           rejection: If set, the simulation will reject the transfer.
 
@@ -208,13 +208,13 @@ class AsyncRealTimePaymentsTransfers(AsyncAPIResource):
         timeout: float | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> InboundRealTimePaymentsTransferSimulationResult:
-        """Simulates an inbound Real Time Payments transfer to your account.
+        """Simulates an inbound Real-Time Payments transfer to your account.
 
-        Real Time
+        Real-Time
         Payments are a beta feature.
 
         Args:
-          account_number_id: The identifier of the Account Number the inbound Real Time Payments Transfer is
+          account_number_id: The identifier of the Account Number the inbound Real-Time Payments Transfer is
               for.
 
           amount: The transfer amount in USD cents. Must be positive.

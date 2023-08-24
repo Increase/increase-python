@@ -56,6 +56,8 @@ class EventSubscriptions(SyncAPIResource):
             "file.created",
             "group.updated",
             "group.heartbeat",
+            "inbound_ach_transfer.created",
+            "inbound_ach_transfer.updated",
             "inbound_ach_transfer_return.created",
             "inbound_ach_transfer_return.updated",
             "inbound_wire_drawdown_request.created",
@@ -132,6 +134,10 @@ class EventSubscriptions(SyncAPIResource):
               - `group.updated` - Occurs whenever a Group is updated.
               - `group.heartbeat` - Increase may send webhooks with this category to see if a
                 webhook endpoint is working properly.
+              - `inbound_ach_transfer.created` - Occurs whenever an Inbound ACH Transfer is
+                created.
+              - `inbound_ach_transfer.updated` - Occurs whenever an Inbound ACH Transfer is
+                updated.
               - `inbound_ach_transfer_return.created` - Occurs whenever an Inbound ACH
                 Transfer Return is created.
               - `inbound_ach_transfer_return.updated` - Occurs whenever an Inbound ACH
@@ -153,15 +159,15 @@ class EventSubscriptions(SyncAPIResource):
               - `real_time_decision.digital_wallet_authentication_requested` - Occurs whenever
                 a Real-Time Decision is created in response to a digital wallet requiring
                 two-factor authentication.
-              - `real_time_payments_transfer.created` - Occurs whenever a Real Time Payments
+              - `real_time_payments_transfer.created` - Occurs whenever a Real-Time Payments
                 Transfer is created.
-              - `real_time_payments_transfer.updated` - Occurs whenever a Real Time Payments
+              - `real_time_payments_transfer.updated` - Occurs whenever a Real-Time Payments
                 Transfer is updated.
-              - `real_time_payments_request_for_payment.created` - Occurs whenever a Real Time
+              - `real_time_payments_request_for_payment.created` - Occurs whenever a Real-Time
                 Payments Request for Payment is created.
-              - `real_time_payments_request_for_payment.updated` - Occurs whenever a Real Time
+              - `real_time_payments_request_for_payment.updated` - Occurs whenever a Real-Time
                 Payments Request for Payment is updated.
-              - `transaction.created` - Occurs whenever a Transaction is updated.
+              - `transaction.created` - Occurs whenever a Transaction is created.
               - `wire_drawdown_request.created` - Occurs whenever a Wire Drawdown Request is
                 created.
               - `wire_drawdown_request.updated` - Occurs whenever a Wire Drawdown Request is
@@ -371,6 +377,8 @@ class AsyncEventSubscriptions(AsyncAPIResource):
             "file.created",
             "group.updated",
             "group.heartbeat",
+            "inbound_ach_transfer.created",
+            "inbound_ach_transfer.updated",
             "inbound_ach_transfer_return.created",
             "inbound_ach_transfer_return.updated",
             "inbound_wire_drawdown_request.created",
@@ -447,6 +455,10 @@ class AsyncEventSubscriptions(AsyncAPIResource):
               - `group.updated` - Occurs whenever a Group is updated.
               - `group.heartbeat` - Increase may send webhooks with this category to see if a
                 webhook endpoint is working properly.
+              - `inbound_ach_transfer.created` - Occurs whenever an Inbound ACH Transfer is
+                created.
+              - `inbound_ach_transfer.updated` - Occurs whenever an Inbound ACH Transfer is
+                updated.
               - `inbound_ach_transfer_return.created` - Occurs whenever an Inbound ACH
                 Transfer Return is created.
               - `inbound_ach_transfer_return.updated` - Occurs whenever an Inbound ACH
@@ -468,15 +480,15 @@ class AsyncEventSubscriptions(AsyncAPIResource):
               - `real_time_decision.digital_wallet_authentication_requested` - Occurs whenever
                 a Real-Time Decision is created in response to a digital wallet requiring
                 two-factor authentication.
-              - `real_time_payments_transfer.created` - Occurs whenever a Real Time Payments
+              - `real_time_payments_transfer.created` - Occurs whenever a Real-Time Payments
                 Transfer is created.
-              - `real_time_payments_transfer.updated` - Occurs whenever a Real Time Payments
+              - `real_time_payments_transfer.updated` - Occurs whenever a Real-Time Payments
                 Transfer is updated.
-              - `real_time_payments_request_for_payment.created` - Occurs whenever a Real Time
+              - `real_time_payments_request_for_payment.created` - Occurs whenever a Real-Time
                 Payments Request for Payment is created.
-              - `real_time_payments_request_for_payment.updated` - Occurs whenever a Real Time
+              - `real_time_payments_request_for_payment.updated` - Occurs whenever a Real-Time
                 Payments Request for Payment is updated.
-              - `transaction.created` - Occurs whenever a Transaction is updated.
+              - `transaction.created` - Occurs whenever a Transaction is created.
               - `wire_drawdown_request.created` - Occurs whenever a Wire Drawdown Request is
                 created.
               - `wire_drawdown_request.updated` - Occurs whenever a Wire Drawdown Request is

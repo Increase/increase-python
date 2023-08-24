@@ -150,7 +150,7 @@ class StopPaymentRequest(BaseModel):
     """The reason why this transfer was stopped.
 
     - `mail_delivery_failed` - The check could not be delivered.
-    - `rejected_by_increase` - The check was cancelled by an Increase operator who
+    - `rejected_by_increase` - The check was canceled by an Increase operator who
       will provide details out-of-band.
     - `unknown` - The check was stopped for another reason.
     """
@@ -239,7 +239,12 @@ class CheckTransfer(BaseModel):
     """
 
     pending_transaction_id: Optional[str]
-    """The identifier of the Pending Transaction associated with the check's creation."""
+    """The ID for the pending transaction representing the transfer.
+
+    A pending transaction is created when the transfer
+    [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals)
+    by someone else in your organization.
+    """
 
     physical_check: Optional[PhysicalCheck]
     """Details relating to the physical check that Increase will print and mail.

@@ -10,7 +10,7 @@ __all__ = ["RealTimePaymentsTransferCreateInboundParams"]
 class RealTimePaymentsTransferCreateInboundParams(TypedDict, total=False):
     account_number_id: Required[str]
     """
-    The identifier of the Account Number the inbound Real Time Payments Transfer is
+    The identifier of the Account Number the inbound Real-Time Payments Transfer is
     for.
     """
 

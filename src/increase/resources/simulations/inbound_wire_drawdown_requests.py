@@ -45,7 +45,7 @@ class InboundWireDrawdownRequests(SyncAPIResource):
         idempotency_key: str | None = None,
     ) -> InboundWireDrawdownRequest:
         """
-        Simulates the receival of an
+        Simulates receiving an
         [Inbound Wire Drawdown Request](#inbound-wire-drawdown-requests).
 
         Args:
@@ -176,7 +176,7 @@ class AsyncInboundWireDrawdownRequests(AsyncAPIResource):
         idempotency_key: str | None = None,
     ) -> InboundWireDrawdownRequest:
         """
-        Simulates the receival of an
+        Simulates receiving an
         [Inbound Wire Drawdown Request](#inbound-wire-drawdown-requests).
 
         Args:

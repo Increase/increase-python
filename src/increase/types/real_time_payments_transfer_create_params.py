@@ -11,7 +11,7 @@ class RealTimePaymentsTransferCreateParams(TypedDict, total=False):
     amount: Required[int]
     """The transfer amount in USD cents.
 
-    For Real Time Payments transfers, must be positive.
+    For Real-Time Payments transfers, must be positive.
     """
 
     creditor_name: Required[str]
@@ -45,6 +45,6 @@ class RealTimePaymentsTransferCreateParams(TypedDict, total=False):
     unique_identifier: str
     """A unique identifier you choose for the transfer.
 
-    Reusing this identifer for another transfer will result in an error. You can
+    Reusing this identifier for another transfer will result in an error. You can
     query for the transfer associated with this identifier using the List endpoint.
     """

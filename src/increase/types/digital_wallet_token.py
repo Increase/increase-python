@@ -28,7 +28,7 @@ class DigitalWalletToken(BaseModel):
     - `inactive` - The digital wallet token has been created but not successfully
       activated via two-factor authentication yet.
     - `suspended` - The digital wallet token has been temporarily paused.
-    - `deactivated` - The digital wallet token has been permanently cancelled.
+    - `deactivated` - The digital wallet token has been permanently canceled.
     """
 
     token_requestor: Literal["apple_pay", "google_pay"]

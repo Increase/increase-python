@@ -50,7 +50,7 @@ class ACHPrenotificationCreateParams(TypedDict, total=False):
     """
 
     individual_id: str
-    """Your identifer for the transfer recipient."""
+    """Your identifier for the transfer recipient."""
 
     individual_name: str
     """The name of the transfer recipient.

@@ -38,10 +38,10 @@ class RealTimePaymentsTransfers(SyncAPIResource):
         idempotency_key: str | None = None,
     ) -> RealTimePaymentsTransfer:
         """
-        Create a Real Time Payments Transfer
+        Create a Real-Time Payments Transfer
 
         Args:
-          amount: The transfer amount in USD cents. For Real Time Payments transfers, must be
+          amount: The transfer amount in USD cents. For Real-Time Payments transfers, must be
               positive.
 
           creditor_name: The name of the transfer's recipient.
@@ -61,7 +61,7 @@ class RealTimePaymentsTransfers(SyncAPIResource):
 
           require_approval: Whether the transfer requires explicit approval via the dashboard or API.
 
-          unique_identifier: A unique identifier you choose for the transfer. Reusing this identifer for
+          unique_identifier: A unique identifier you choose for the transfer. Reusing this identifier for
               another transfer will result in an error. You can query for the transfer
               associated with this identifier using the List endpoint.
 
@@ -113,10 +113,10 @@ class RealTimePaymentsTransfers(SyncAPIResource):
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> RealTimePaymentsTransfer:
         """
-        Retrieve a Real Time Payments Transfer
+        Retrieve a Real-Time Payments Transfer
 
         Args:
-          real_time_payments_transfer_id: The identifier of the Real Time Payments Transfer.
+          real_time_payments_transfer_id: The identifier of the Real-Time Payments Transfer.
 
           extra_headers: Send extra headers
 
@@ -151,14 +151,14 @@ class RealTimePaymentsTransfers(SyncAPIResource):
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> SyncPage[RealTimePaymentsTransfer]:
         """
-        List Real Time Payments Transfers
+        List Real-Time Payments Transfers
 
         Args:
-          account_id: Filter Real Time Payments Transfers to those belonging to the specified Account.
+          account_id: Filter Real-Time Payments Transfers to those belonging to the specified Account.
 
           cursor: Return the page of entries after this one.
 
-          external_account_id: Filter Real Time Payments Transfers to those made to the specified External
+          external_account_id: Filter Real-Time Payments Transfers to those made to the specified External
               Account.
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
@@ -220,10 +220,10 @@ class AsyncRealTimePaymentsTransfers(AsyncAPIResource):
         idempotency_key: str | None = None,
     ) -> RealTimePaymentsTransfer:
         """
-        Create a Real Time Payments Transfer
+        Create a Real-Time Payments Transfer
 
         Args:
-          amount: The transfer amount in USD cents. For Real Time Payments transfers, must be
+          amount: The transfer amount in USD cents. For Real-Time Payments transfers, must be
               positive.
 
           creditor_name: The name of the transfer's recipient.
@@ -243,7 +243,7 @@ class AsyncRealTimePaymentsTransfers(AsyncAPIResource):
 
           require_approval: Whether the transfer requires explicit approval via the dashboard or API.
 
-          unique_identifier: A unique identifier you choose for the transfer. Reusing this identifer for
+          unique_identifier: A unique identifier you choose for the transfer. Reusing this identifier for
               another transfer will result in an error. You can query for the transfer
               associated with this identifier using the List endpoint.
 
@@ -295,10 +295,10 @@ class AsyncRealTimePaymentsTransfers(AsyncAPIResource):
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> RealTimePaymentsTransfer:
         """
-        Retrieve a Real Time Payments Transfer
+        Retrieve a Real-Time Payments Transfer
 
         Args:
-          real_time_payments_transfer_id: The identifier of the Real Time Payments Transfer.
+          real_time_payments_transfer_id: The identifier of the Real-Time Payments Transfer.
 
           extra_headers: Send extra headers
 
@@ -333,14 +333,14 @@ class AsyncRealTimePaymentsTransfers(AsyncAPIResource):
         timeout: float | None | NotGiven = NOT_GIVEN,
     ) -> AsyncPaginator[RealTimePaymentsTransfer, AsyncPage[RealTimePaymentsTransfer]]:
         """
-        List Real Time Payments Transfers
+        List Real-Time Payments Transfers
 
         Args:
-          account_id: Filter Real Time Payments Transfers to those belonging to the specified Account.
+          account_id: Filter Real-Time Payments Transfers to those belonging to the specified Account.
 
           cursor: Return the page of entries after this one.
 
-          external_account_id: Filter Real Time Payments Transfers to those made to the specified External
+          external_account_id: Filter Real-Time Payments Transfers to those made to the specified External
               Account.
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100

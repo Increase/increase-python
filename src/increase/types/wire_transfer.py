@@ -83,7 +83,7 @@ class Reversal(BaseModel):
     institution.
     """
 
-    transaction_id: Optional[str]
+    transaction_id: str
     """The ID for the Transaction associated with the transfer reversal."""
 
     wire_transfer_id: str
@@ -162,6 +162,14 @@ class WireTransfer(BaseModel):
 
     network: Literal["wire"]
     """The transfer's network."""
+
+    pending_transaction_id: Optional[str]
+    """The ID for the pending transaction representing the transfer.
+
+    A pending transaction is created when the transfer
+    [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals)
+    by someone else in your organization.
+    """
 
     reversal: Optional[Reversal]
     """If your transfer is reversed, this will contain details of the reversal."""

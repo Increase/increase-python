@@ -4,7 +4,6 @@ from typing import List, Optional
 from datetime import date, datetime
 from typing_extensions import Literal
 
-from ..shared import PointOfServiceEntryMode
 from ..._models import BaseModel
 
 __all__ = [
@@ -95,6 +94,7 @@ class DeclinedTransactionSourceACHDecline(BaseModel):
         "no_ach_route",
         "originator_request",
         "transaction_not_allowed",
+        "user_initiated",
     ]
     """Why the ACH transfer was declined.
 
@@ -112,6 +112,7 @@ class DeclinedTransactionSourceACHDecline(BaseModel):
     - `originator_request` - Other.
     - `transaction_not_allowed` - The transaction is not allowed per Increase's
       terms.
+    - `user_initiated` - The user initiated the decline.
     """
 
     receiver_id_number: Optional[str]
@@ -170,10 +171,37 @@ class DeclinedTransactionSourceCardDeclineNetworkDetailsVisa(BaseModel):
       electronic commerce transaction that has no data protection.
     """
 
-    point_of_service_entry_mode: Optional[PointOfServiceEntryMode]
+    point_of_service_entry_mode: Optional[
+        Literal[
+            "unknown",
+            "manual",
+            "magnetic_stripe_no_cvv",
+            "optical_code",
+            "integrated_circuit_card",
+            "contactless",
+            "credential_on_file",
+            "magnetic_stripe",
+            "contactless_magnetic_stripe",
+            "integrated_circuit_card_no_cvv",
+        ]
+    ]
     """
     The method used to enter the cardholder's primary account number and card
     expiration date
+
+    - `unknown` - Unknown
+    - `manual` - Manual key entry
+    - `magnetic_stripe_no_cvv` - Magnetic stripe read, without card verification
+      value
+    - `optical_code` - Optical code
+    - `integrated_circuit_card` - Contact chip card
+    - `contactless` - Contactless read of chip card
+    - `credential_on_file` - Transaction initiated using a credential that has
+      previously been stored on file
+    - `magnetic_stripe` - Magnetic stripe read
+    - `contactless_magnetic_stripe` - Contactless read of magnetic stripe data
+    - `integrated_circuit_card_no_cvv` - Contact chip card, without card
+      verification value
     """
 
 
@@ -255,22 +283,24 @@ class DeclinedTransactionSourceCardDecline(BaseModel):
 
     reason: Literal[
         "card_not_active",
+        "physical_card_not_active",
         "entity_not_active",
         "group_locked",
         "insufficient_funds",
         "cvv2_mismatch",
         "transaction_not_allowed",
-        "breaches_internal_limit",
         "breaches_limit",
         "webhook_declined",
         "webhook_timed_out",
         "declined_by_stand_in_processing",
         "invalid_physical_card",
         "missing_original_authorization",
+        "suspected_fraud",
     ]
     """Why the transaction was declined.
 
     - `card_not_active` - The Card was not active.
+    - `physical_card_not_active` - The Physical Card was not active.
     - `entity_not_active` - The account's entity was not active.
     - `group_locked` - The account was inactive.
     - `insufficient_funds` - The Card's Account did not have a sufficient available
@@ -278,8 +308,6 @@ class DeclinedTransactionSourceCardDecline(BaseModel):
     - `cvv2_mismatch` - The given CVV2 did not match the card's value.
     - `transaction_not_allowed` - The attempted card transaction is not allowed per
       Increase's terms.
-    - `breaches_internal_limit` - The transaction was blocked by an internal limit
-      for new Increase accounts.
     - `breaches_limit` - The transaction was blocked by a Limit.
     - `webhook_declined` - Your application declined the transaction via webhook.
     - `webhook_timed_out` - Your application webhook did not respond without the
@@ -289,6 +317,8 @@ class DeclinedTransactionSourceCardDecline(BaseModel):
       authorization request cryptogram.
     - `missing_original_authorization` - The original card authorization for this
       incremental authorization does not exist.
+    - `suspected_fraud` - The transaction was suspected to be fraudulent. Please
+      reach out to support@increase.com for more information.
     """
 
 
@@ -351,7 +381,7 @@ class DeclinedTransactionSourceInboundRealTimePaymentsTransferDecline(BaseModel)
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined
-    transfer's currency. This will always be "USD" for a Real Time Payments
+    transfer's currency. This will always be "USD" for a Real-Time Payments
     transfer.
 
     - `CAD` - Canadian Dollar (CAD)
@@ -386,15 +416,15 @@ class DeclinedTransactionSourceInboundRealTimePaymentsTransferDecline(BaseModel)
     - `account_restricted` - Your account is restricted.
     - `group_locked` - Your account is inactive.
     - `entity_not_active` - The account's entity is not active.
-    - `real_time_payments_not_enabled` - Your account is not enabled to receive Real
-      Time Payments transfers.
+    - `real_time_payments_not_enabled` - Your account is not enabled to receive
+      Real-Time Payments transfers.
     """
 
     remittance_information: Optional[str]
     """Additional information included with the transfer."""
 
     transaction_identification: str
-    """The Real Time Payments network identification of the declined transfer."""
+    """The Real-Time Payments network identification of the declined transfer."""
 
 
 class DeclinedTransactionSourceInternationalACHDecline(BaseModel):
@@ -566,7 +596,7 @@ class DeclinedTransactionSource(BaseModel):
       object.
     - `check_decline` - Check Decline: details will be under the `check_decline`
       object.
-    - `inbound_real_time_payments_transfer_decline` - Inbound Real Time Payments
+    - `inbound_real_time_payments_transfer_decline` - Inbound Real-Time Payments
       Transfer Decline: details will be under the
       `inbound_real_time_payments_transfer_decline` object.
     - `international_ach_decline` - International ACH Decline: details will be under
@@ -587,7 +617,7 @@ class DeclinedTransactionSource(BaseModel):
     inbound_real_time_payments_transfer_decline: Optional[
         DeclinedTransactionSourceInboundRealTimePaymentsTransferDecline
     ]
-    """An Inbound Real Time Payments Transfer Decline object.
+    """An Inbound Real-Time Payments Transfer Decline object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `inbound_real_time_payments_transfer_decline`.
@@ -624,14 +654,14 @@ class DeclinedTransaction(BaseModel):
     created_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which the
-    Transaction occured.
+    Transaction occurred.
     """
 
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Declined
     Transaction's currency. This will match the currency on the Declined
-    Transcation's Account.
+    Transaction's Account.
 
     - `CAD` - Canadian Dollar (CAD)
     - `CHF` - Swiss Franc (CHF)
@@ -959,7 +989,7 @@ class TransactionSourceACHTransferReturn(BaseModel):
     """
 
     transaction_id: str
-    """The identifier of the Tranasaction associated with this return."""
+    """The identifier of the Transaction associated with this return."""
 
     transfer_id: str
     """The identifier of the ACH Transfer associated with this return."""
@@ -1110,7 +1140,7 @@ class TransactionSourceCardRefundPurchaseDetailsLodging(BaseModel):
 
     food_beverage_charges_currency: Optional[str]
     """
-    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the foor and
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the food and
     beverage charges.
     """
 
@@ -1607,7 +1637,7 @@ class TransactionSourceCardSettlementPurchaseDetailsLodging(BaseModel):
 
     food_beverage_charges_currency: Optional[str]
     """
-    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the foor and
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the food and
     beverage charges.
     """
 
@@ -2142,7 +2172,7 @@ class TransactionSourceCheckTransferStopPaymentRequest(BaseModel):
     """The reason why this transfer was stopped.
 
     - `mail_delivery_failed` - The check could not be delivered.
-    - `rejected_by_increase` - The check was cancelled by an Increase operator who
+    - `rejected_by_increase` - The check was canceled by an Increase operator who
       will provide details out-of-band.
     - `unknown` - The check was stopped for another reason.
     """
@@ -2326,7 +2356,7 @@ class TransactionSourceInboundRealTimePaymentsTransferConfirmation(BaseModel):
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's
-    currency. This will always be "USD" for a Real Time Payments transfer.
+    currency. This will always be "USD" for a Real-Time Payments transfer.
 
     - `CAD` - Canadian Dollar (CAD)
     - `CHF` - Swiss Franc (CHF)
@@ -2349,7 +2379,7 @@ class TransactionSourceInboundRealTimePaymentsTransferConfirmation(BaseModel):
     """Additional information included with the transfer."""
 
     transaction_identification: str
-    """The Real Time Payments network identification of the transfer"""
+    """The Real-Time Payments network identification of the transfer"""
 
 
 class TransactionSourceInboundWireDrawdownPayment(BaseModel):
@@ -2462,7 +2492,7 @@ class TransactionSourceInboundWireReversal(BaseModel):
     institution.
     """
 
-    transaction_id: Optional[str]
+    transaction_id: str
     """The ID for the Transaction associated with the transfer reversal."""
 
     wire_transfer_id: str
@@ -2605,7 +2635,7 @@ class TransactionSourceRealTimePaymentsTransferAcknowledgement(BaseModel):
     """Unstructured information that will show on the recipient's bank statement."""
 
     transfer_id: str
-    """The identifier of the Real Time Payments Transfer that led to this Transaction."""
+    """The identifier of the Real-Time Payments Transfer that led to this Transaction."""
 
 
 class TransactionSourceSampleFunds(BaseModel):
@@ -2762,7 +2792,7 @@ class TransactionSource(BaseModel):
       object.
     - `inbound_international_ach_transfer` - Inbound International ACH Transfer:
       details will be under the `inbound_international_ach_transfer` object.
-    - `inbound_real_time_payments_transfer_confirmation` - Inbound Real Time
+    - `inbound_real_time_payments_transfer_confirmation` - Inbound Real-Time
       Payments Transfer Confirmation: details will be under the
       `inbound_real_time_payments_transfer_confirmation` object.
     - `inbound_wire_drawdown_payment` - Inbound Wire Drawdown Payment: details will
@@ -2778,7 +2808,7 @@ class TransactionSource(BaseModel):
       `interest_payment` object.
     - `internal_source` - Internal Source: details will be under the
       `internal_source` object.
-    - `real_time_payments_transfer_acknowledgement` - Real Time Payments Transfer
+    - `real_time_payments_transfer_acknowledgement` - Real-Time Payments Transfer
       Acknowledgement: details will be under the
       `real_time_payments_transfer_acknowledgement` object.
     - `sample_funds` - Sample Funds: details will be under the `sample_funds`
@@ -2856,7 +2886,7 @@ class TransactionSource(BaseModel):
     inbound_real_time_payments_transfer_confirmation: Optional[
         TransactionSourceInboundRealTimePaymentsTransferConfirmation
     ]
-    """An Inbound Real Time Payments Transfer Confirmation object.
+    """An Inbound Real-Time Payments Transfer Confirmation object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `inbound_real_time_payments_transfer_confirmation`.
@@ -2905,7 +2935,7 @@ class TransactionSource(BaseModel):
     """
 
     real_time_payments_transfer_acknowledgement: Optional[TransactionSourceRealTimePaymentsTransferAcknowledgement]
-    """A Real Time Payments Transfer Acknowledgement object.
+    """A Real-Time Payments Transfer Acknowledgement object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `real_time_payments_transfer_acknowledgement`.
@@ -2949,13 +2979,13 @@ class Transaction(BaseModel):
     created_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which the
-    Transaction occured.
+    Transaction occurred.
     """
 
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-    Transaction's currency. This will match the currency on the Transcation's
+    Transaction's currency. This will match the currency on the Transaction's
     Account.
 
     - `CAD` - Canadian Dollar (CAD)

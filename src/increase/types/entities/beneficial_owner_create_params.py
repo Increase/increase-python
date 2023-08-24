@@ -27,6 +27,9 @@ class BeneficialOwnerCreateParams(TypedDict, total=False):
     corporation.
     """
 
+    entity_id: Required[str]
+    """The identifier of the Entity to associate with the new Beneficial Owner."""
+
 
 class BeneficialOwnerIndividualAddress(TypedDict, total=False):
     city: Required[str]
@@ -143,7 +146,7 @@ class BeneficialOwnerIndividualIdentification(TypedDict, total=False):
 
 class BeneficialOwnerIndividual(TypedDict, total=False):
     address: Required[BeneficialOwnerIndividualAddress]
-    """The individual's address."""
+    """The individual's physical address. Post Office Boxes are disallowed."""
 
     date_of_birth: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """The person's date of birth in YYYY-MM-DD format."""
