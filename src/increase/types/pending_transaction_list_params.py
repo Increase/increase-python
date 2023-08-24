@@ -8,12 +8,14 @@ from typing_extensions import Literal, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
-__all__ = ["PendingTransactionListParams", "CreatedAt", "Status"]
+__all__ = ["PendingTransactionListParams", "Category", "CreatedAt", "Status"]
 
 
 class PendingTransactionListParams(TypedDict, total=False):
     account_id: str
     """Filter pending transactions to those belonging to the specified Account."""
+
+    category: Category
 
     created_at: CreatedAt
 
@@ -33,6 +35,31 @@ class PendingTransactionListParams(TypedDict, total=False):
     """Filter pending transactions to those caused by the specified source."""
 
     status: Status
+
+
+_CategoryReservedKeywords = TypedDict(
+    "_CategoryReservedKeywords",
+    {
+        "in": List[
+            Literal[
+                "account_transfer_instruction",
+                "ach_transfer_instruction",
+                "card_authorization",
+                "check_deposit_instruction",
+                "check_transfer_instruction",
+                "inbound_funds_hold",
+                "real_time_payments_transfer_instruction",
+                "wire_transfer_instruction",
+                "other",
+            ]
+        ],
+    },
+    total=False,
+)
+
+
+class Category(_CategoryReservedKeywords, total=False):
+    pass
 
 
 class CreatedAt(TypedDict, total=False):

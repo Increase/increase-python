@@ -23,7 +23,6 @@ class TestBeneficialOwners:
     @parametrize
     def test_method_create(self, client: Increase) -> None:
         beneficial_owner = client.entities.beneficial_owners.create(
-            "string",
             beneficial_owner={
                 "individual": {
                     "name": "x",
@@ -41,13 +40,13 @@ class TestBeneficialOwners:
                 },
                 "prongs": ["ownership", "ownership", "ownership"],
             },
+            entity_id="string",
         )
         assert_matches_type(Entity, beneficial_owner, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: Increase) -> None:
         beneficial_owner = client.entities.beneficial_owners.create(
-            "string",
             beneficial_owner={
                 "individual": {
                     "name": "x",
@@ -86,6 +85,15 @@ class TestBeneficialOwners:
                 "company_title": "x",
                 "prongs": ["ownership", "ownership", "ownership"],
             },
+            entity_id="string",
+        )
+        assert_matches_type(Entity, beneficial_owner, path=["response"])
+
+    @parametrize
+    def test_method_archive(self, client: Increase) -> None:
+        beneficial_owner = client.entities.beneficial_owners.archive(
+            beneficial_owner_id="string",
+            entity_id="string",
         )
         assert_matches_type(Entity, beneficial_owner, path=["response"])
 
@@ -98,7 +106,6 @@ class TestAsyncBeneficialOwners:
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
         beneficial_owner = await client.entities.beneficial_owners.create(
-            "string",
             beneficial_owner={
                 "individual": {
                     "name": "x",
@@ -116,13 +123,13 @@ class TestAsyncBeneficialOwners:
                 },
                 "prongs": ["ownership", "ownership", "ownership"],
             },
+            entity_id="string",
         )
         assert_matches_type(Entity, beneficial_owner, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         beneficial_owner = await client.entities.beneficial_owners.create(
-            "string",
             beneficial_owner={
                 "individual": {
                     "name": "x",
@@ -161,5 +168,14 @@ class TestAsyncBeneficialOwners:
                 "company_title": "x",
                 "prongs": ["ownership", "ownership", "ownership"],
             },
+            entity_id="string",
+        )
+        assert_matches_type(Entity, beneficial_owner, path=["response"])
+
+    @parametrize
+    async def test_method_archive(self, client: AsyncIncrease) -> None:
+        beneficial_owner = await client.entities.beneficial_owners.archive(
+            beneficial_owner_id="string",
+            entity_id="string",
         )
         assert_matches_type(Entity, beneficial_owner, path=["response"])

@@ -121,7 +121,7 @@ class ACHPrenotification(BaseModel):
     - `pending_submitting` - The Prenotification is pending submission.
     - `requires_attention` - The Prenotification requires attention.
     - `returned` - The Prenotification has been returned.
-    - `submitted` - The Prentification is complete.
+    - `submitted` - The Prenotification is complete.
     """
 
     type: Literal["ach_prenotification"]

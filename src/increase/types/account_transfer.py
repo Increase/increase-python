@@ -93,6 +93,14 @@ class AccountTransfer(BaseModel):
     network: Literal["account"]
     """The transfer's network."""
 
+    pending_transaction_id: Optional[str]
+    """The ID for the pending transaction representing the transfer.
+
+    A pending transaction is created when the transfer
+    [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals)
+    by someone else in your organization.
+    """
+
     status: Literal["pending_approval", "canceled", "complete"]
     """The lifecycle status of the transfer.
 

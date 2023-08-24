@@ -2,18 +2,20 @@
 
 from __future__ import annotations
 
-from typing import Union
+from typing import List, Union
 from datetime import datetime
-from typing_extensions import Annotated, TypedDict
+from typing_extensions import Literal, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
-__all__ = ["DeclinedTransactionListParams", "CreatedAt"]
+__all__ = ["DeclinedTransactionListParams", "Category", "CreatedAt"]
 
 
 class DeclinedTransactionListParams(TypedDict, total=False):
     account_id: str
     """Filter Declined Transactions to ones belonging to the specified Account."""
+
+    category: Category
 
     created_at: CreatedAt
 
@@ -28,6 +30,29 @@ class DeclinedTransactionListParams(TypedDict, total=False):
 
     route_id: str
     """Filter Declined Transactions to those belonging to the specified route."""
+
+
+_CategoryReservedKeywords = TypedDict(
+    "_CategoryReservedKeywords",
+    {
+        "in": List[
+            Literal[
+                "ach_decline",
+                "card_decline",
+                "check_decline",
+                "inbound_real_time_payments_transfer_decline",
+                "international_ach_decline",
+                "wire_decline",
+                "other",
+            ]
+        ],
+    },
+    total=False,
+)
+
+
+class Category(_CategoryReservedKeywords, total=False):
+    pass
 
 
 class CreatedAt(TypedDict, total=False):

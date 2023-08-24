@@ -9,7 +9,6 @@ from .group import Group as Group
 from .limit import Limit as Limit
 from .entity import Entity as Entity
 from .export import Export as Export
-from .shared import PointOfServiceEntryMode as PointOfServiceEntryMode
 from .account import Account as Account
 from .program import Program as Program
 from .document import Document as Document
@@ -51,6 +50,7 @@ from .digital_wallet_token import DigitalWalletToken as DigitalWalletToken
 from .document_list_params import DocumentListParams as DocumentListParams
 from .entity_create_params import EntityCreateParams as EntityCreateParams
 from .export_create_params import ExportCreateParams as ExportCreateParams
+from .inbound_ach_transfer import InboundACHTransfer as InboundACHTransfer
 from .account_create_params import AccountCreateParams as AccountCreateParams
 from .account_update_params import AccountUpdateParams as AccountUpdateParams
 from .bookkeeping_entry_set import BookkeepingEntrySet as BookkeepingEntrySet
@@ -157,6 +157,9 @@ from .event_subscription_create_params import (
 )
 from .event_subscription_update_params import (
     EventSubscriptionUpdateParams as EventSubscriptionUpdateParams,
+)
+from .inbound_ach_transfer_list_params import (
+    InboundACHTransferListParams as InboundACHTransferListParams,
 )
 from .real_time_decision_action_params import (
     RealTimeDecisionActionParams as RealTimeDecisionActionParams,

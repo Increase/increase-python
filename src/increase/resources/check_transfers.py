@@ -62,7 +62,7 @@ class CheckTransfers(SyncAPIResource):
           source_account_number_id: The identifier of the Account Number from which to send the transfer and print
               on the check.
 
-          unique_identifier: A unique identifier you choose for the transfer. Reusing this identifer for
+          unique_identifier: A unique identifier you choose for the transfer. Reusing this identifier for
               another transfer will result in an error. You can query for the transfer
               associated with this identifier using the List endpoint.
 
@@ -362,7 +362,7 @@ class AsyncCheckTransfers(AsyncAPIResource):
           source_account_number_id: The identifier of the Account Number from which to send the transfer and print
               on the check.
 
-          unique_identifier: A unique identifier you choose for the transfer. Reusing this identifer for
+          unique_identifier: A unique identifier you choose for the transfer. Reusing this identifier for
               another transfer will result in an error. You can query for the transfer
               associated with this identifier using the List endpoint.
 

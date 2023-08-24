@@ -74,7 +74,7 @@ class ACHPrenotifications(SyncAPIResource):
           effective_date: The transfer effective date in
               [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
 
-          individual_id: Your identifer for the transfer recipient.
+          individual_id: Your identifier for the transfer recipient.
 
           individual_name: The name of the transfer recipient. This value is information and not verified
               by the recipient's bank.
@@ -262,7 +262,7 @@ class AsyncACHPrenotifications(AsyncAPIResource):
           effective_date: The transfer effective date in
               [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
 
-          individual_id: Your identifer for the transfer recipient.
+          individual_id: Your identifier for the transfer recipient.
 
           individual_name: The name of the transfer recipient. This value is information and not verified
               by the recipient's bank.

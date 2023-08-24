@@ -49,7 +49,7 @@ class AccountTransfers(SyncAPIResource):
 
           require_approval: Whether the transfer requires explicit approval via the dashboard or API.
 
-          unique_identifier: A unique identifier you choose for the transfer. Reusing this identifer for
+          unique_identifier: A unique identifier you choose for the transfer. Reusing this identifier for
               another transfer will result in an error. You can query for the transfer
               associated with this identifier using the List endpoint.
 
@@ -291,7 +291,7 @@ class AsyncAccountTransfers(AsyncAPIResource):
 
           require_approval: Whether the transfer requires explicit approval via the dashboard or API.
 
-          unique_identifier: A unique identifier you choose for the transfer. Reusing this identifer for
+          unique_identifier: A unique identifier you choose for the transfer. Reusing this identifier for
               another transfer will result in an error. You can query for the transfer
               associated with this identifier using the List endpoint.
 

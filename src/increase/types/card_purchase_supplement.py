@@ -153,7 +153,7 @@ class LineItem(BaseModel):
 
     total_amount_currency: Optional[str]
     """
-    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the totla
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total
     amount.
     """
 

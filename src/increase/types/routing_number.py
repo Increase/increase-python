@@ -19,7 +19,7 @@ class RoutingNumber(BaseModel):
     """The name of the financial institution belonging to a routing number."""
 
     real_time_payments_transfers: Literal["supported", "not_supported"]
-    """This routing number's support for Real Time Payments Transfers.
+    """This routing number's support for Real-Time Payments Transfers.
 
     - `supported` - The routing number can receive this transfer type.
     - `not_supported` - The routing number cannot receive this transfer type.

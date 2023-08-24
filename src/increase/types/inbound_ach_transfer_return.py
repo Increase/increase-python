@@ -70,7 +70,7 @@ class InboundACHTransferReturn(BaseModel):
     After the return is submitted to FedACH, this will contain supplemental details.
     """
 
-    transaction_id: Optional[str]
+    transaction_id: str
     """The ID for the transaction refunding the transfer."""
 
     type: Literal["inbound_ach_transfer_return"]

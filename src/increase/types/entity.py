@@ -110,6 +110,9 @@ class CorporationBeneficialOwnerIndividual(BaseModel):
 
 
 class CorporationBeneficialOwner(BaseModel):
+    beneficial_owner_id: str
+    """The identifier of this beneficial owner."""
+
     company_title: Optional[str]
     """This person's role or title within the entity."""
 

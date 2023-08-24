@@ -14,7 +14,7 @@ __all__ = ["RealTimePaymentsTransferListParams", "CreatedAt"]
 class RealTimePaymentsTransferListParams(TypedDict, total=False):
     account_id: str
     """
-    Filter Real Time Payments Transfers to those belonging to the specified Account.
+    Filter Real-Time Payments Transfers to those belonging to the specified Account.
     """
 
     created_at: CreatedAt
@@ -24,7 +24,7 @@ class RealTimePaymentsTransferListParams(TypedDict, total=False):
 
     external_account_id: str
     """
-    Filter Real Time Payments Transfers to those made to the specified External
+    Filter Real-Time Payments Transfers to those made to the specified External
     Account.
     """
 

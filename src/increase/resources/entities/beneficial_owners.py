@@ -7,7 +7,10 @@ from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._base_client import make_request_options
-from ...types.entities import beneficial_owner_create_params
+from ...types.entities import (
+    beneficial_owner_create_params,
+    beneficial_owner_archive_params,
+)
 
 __all__ = ["BeneficialOwners", "AsyncBeneficialOwners"]
 
@@ -15,9 +18,9 @@ __all__ = ["BeneficialOwners", "AsyncBeneficialOwners"]
 class BeneficialOwners(SyncAPIResource):
     def create(
         self,
-        entity_id: str,
         *,
         beneficial_owner: beneficial_owner_create_params.BeneficialOwner,
+        entity_id: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -30,10 +33,10 @@ class BeneficialOwners(SyncAPIResource):
         Create a beneficial owner for a corporate Entity
 
         Args:
-          entity_id: The identifier of the Entity to retrieve.
-
           beneficial_owner: The identifying details of anyone controlling or owning 25% or more of the
               corporation.
+
+          entity_id: The identifier of the Entity to associate with the new Beneficial Owner.
 
           extra_headers: Send extra headers
 
@@ -46,9 +49,64 @@ class BeneficialOwners(SyncAPIResource):
           idempotency_key: Specify a custom idempotency key for this request
         """
         return self._post(
-            f"/entities/{entity_id}/beneficial_owners",
+            "/entity_beneficial_owners",
             body=maybe_transform(
-                {"beneficial_owner": beneficial_owner}, beneficial_owner_create_params.BeneficialOwnerCreateParams
+                {
+                    "beneficial_owner": beneficial_owner,
+                    "entity_id": entity_id,
+                },
+                beneficial_owner_create_params.BeneficialOwnerCreateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=Entity,
+        )
+
+    def archive(
+        self,
+        *,
+        beneficial_owner_id: str,
+        entity_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> Entity:
+        """
+        Archive a beneficial owner belonging to a corporate Entity
+
+        Args:
+          beneficial_owner_id: The identifying details of anyone controlling or owning 25% or more of the
+              corporation.
+
+          entity_id: The identifier of the Entity to retrieve.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        return self._post(
+            "/entity_beneficial_owners/archive",
+            body=maybe_transform(
+                {
+                    "beneficial_owner_id": beneficial_owner_id,
+                    "entity_id": entity_id,
+                },
+                beneficial_owner_archive_params.BeneficialOwnerArchiveParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -64,9 +122,9 @@ class BeneficialOwners(SyncAPIResource):
 class AsyncBeneficialOwners(AsyncAPIResource):
     async def create(
         self,
-        entity_id: str,
         *,
         beneficial_owner: beneficial_owner_create_params.BeneficialOwner,
+        entity_id: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -79,10 +137,10 @@ class AsyncBeneficialOwners(AsyncAPIResource):
         Create a beneficial owner for a corporate Entity
 
         Args:
-          entity_id: The identifier of the Entity to retrieve.
-
           beneficial_owner: The identifying details of anyone controlling or owning 25% or more of the
               corporation.
+
+          entity_id: The identifier of the Entity to associate with the new Beneficial Owner.
 
           extra_headers: Send extra headers
 
@@ -95,9 +153,64 @@ class AsyncBeneficialOwners(AsyncAPIResource):
           idempotency_key: Specify a custom idempotency key for this request
         """
         return await self._post(
-            f"/entities/{entity_id}/beneficial_owners",
+            "/entity_beneficial_owners",
             body=maybe_transform(
-                {"beneficial_owner": beneficial_owner}, beneficial_owner_create_params.BeneficialOwnerCreateParams
+                {
+                    "beneficial_owner": beneficial_owner,
+                    "entity_id": entity_id,
+                },
+                beneficial_owner_create_params.BeneficialOwnerCreateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=Entity,
+        )
+
+    async def archive(
+        self,
+        *,
+        beneficial_owner_id: str,
+        entity_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> Entity:
+        """
+        Archive a beneficial owner belonging to a corporate Entity
+
+        Args:
+          beneficial_owner_id: The identifying details of anyone controlling or owning 25% or more of the
+              corporation.
+
+          entity_id: The identifier of the Entity to retrieve.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        return await self._post(
+            "/entity_beneficial_owners/archive",
+            body=maybe_transform(
+                {
+                    "beneficial_owner_id": beneficial_owner_id,
+                    "entity_id": entity_id,
+                },
+                beneficial_owner_archive_params.BeneficialOwnerArchiveParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers,

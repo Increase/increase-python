@@ -80,6 +80,7 @@ class Increase(SyncAPIClient):
     wire_transfers: resources.WireTransfers
     check_transfers: resources.CheckTransfers
     entities: resources.Entities
+    inbound_ach_transfers: resources.InboundACHTransfers
     inbound_wire_drawdown_requests: resources.InboundWireDrawdownRequests
     wire_drawdown_requests: resources.WireDrawdownRequests
     events: resources.Events
@@ -185,6 +186,7 @@ class Increase(SyncAPIClient):
         self.wire_transfers = resources.WireTransfers(self)
         self.check_transfers = resources.CheckTransfers(self)
         self.entities = resources.Entities(self)
+        self.inbound_ach_transfers = resources.InboundACHTransfers(self)
         self.inbound_wire_drawdown_requests = resources.InboundWireDrawdownRequests(self)
         self.wire_drawdown_requests = resources.WireDrawdownRequests(self)
         self.events = resources.Events(self)
@@ -362,6 +364,7 @@ class AsyncIncrease(AsyncAPIClient):
     wire_transfers: resources.AsyncWireTransfers
     check_transfers: resources.AsyncCheckTransfers
     entities: resources.AsyncEntities
+    inbound_ach_transfers: resources.AsyncInboundACHTransfers
     inbound_wire_drawdown_requests: resources.AsyncInboundWireDrawdownRequests
     wire_drawdown_requests: resources.AsyncWireDrawdownRequests
     events: resources.AsyncEvents
@@ -467,6 +470,7 @@ class AsyncIncrease(AsyncAPIClient):
         self.wire_transfers = resources.AsyncWireTransfers(self)
         self.check_transfers = resources.AsyncCheckTransfers(self)
         self.entities = resources.AsyncEntities(self)
+        self.inbound_ach_transfers = resources.AsyncInboundACHTransfers(self)
         self.inbound_wire_drawdown_requests = resources.AsyncInboundWireDrawdownRequests(self)
         self.wire_drawdown_requests = resources.AsyncWireDrawdownRequests(self)
         self.events = resources.AsyncEvents(self)
