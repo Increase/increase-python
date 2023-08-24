@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.12.1](https://github.com/Increase/increase-python/compare/v0.12.0...v0.12.1) (2023-08-24)
+
+
+### Chores
+
+* **internal:** bump pydantic dep ([#89](https://github.com/Increase/increase-python/issues/89)) ([98589a5](https://github.com/Increase/increase-python/commit/98589a550eea17ce972a6a8aee156c7d9d462301))
+* **internal:** update anyio ([#91](https://github.com/Increase/increase-python/issues/91)) ([c8e515f](https://github.com/Increase/increase-python/commit/c8e515f06400fa36b0d96a3181cc4d53350db7c1))
+
 ## [0.12.0](https://github.com/Increase/increase-python/compare/v0.11.4...v0.12.0) (2023-08-17)
 
 
