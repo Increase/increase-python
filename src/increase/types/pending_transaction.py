@@ -4,7 +4,6 @@ from typing import Optional
 from datetime import datetime
 from typing_extensions import Literal
 
-from .shared import PointOfServiceEntryMode
 from .._models import BaseModel
 
 __all__ = [
@@ -107,10 +106,37 @@ class SourceCardAuthorizationNetworkDetailsVisa(BaseModel):
       electronic commerce transaction that has no data protection.
     """
 
-    point_of_service_entry_mode: Optional[PointOfServiceEntryMode]
+    point_of_service_entry_mode: Optional[
+        Literal[
+            "unknown",
+            "manual",
+            "magnetic_stripe_no_cvv",
+            "optical_code",
+            "integrated_circuit_card",
+            "contactless",
+            "credential_on_file",
+            "magnetic_stripe",
+            "contactless_magnetic_stripe",
+            "integrated_circuit_card_no_cvv",
+        ]
+    ]
     """
     The method used to enter the cardholder's primary account number and card
     expiration date
+
+    - `unknown` - Unknown
+    - `manual` - Manual key entry
+    - `magnetic_stripe_no_cvv` - Magnetic stripe read, without card verification
+      value
+    - `optical_code` - Optical code
+    - `integrated_circuit_card` - Contact chip card
+    - `contactless` - Contactless read of chip card
+    - `credential_on_file` - Transaction initiated using a credential that has
+      previously been stored on file
+    - `magnetic_stripe` - Magnetic stripe read
+    - `contactless_magnetic_stripe` - Contactless read of magnetic stripe data
+    - `integrated_circuit_card_no_cvv` - Contact chip card, without card
+      verification value
     """
 
 
@@ -333,7 +359,7 @@ class SourceRealTimePaymentsTransferInstruction(BaseModel):
 
     transfer_id: str
     """
-    The identifier of the Real Time Payments Transfer that led to this Pending
+    The identifier of the Real-Time Payments Transfer that led to this Pending
     Transaction.
     """
 
@@ -404,7 +430,7 @@ class Source(BaseModel):
       under the `check_transfer_instruction` object.
     - `inbound_funds_hold` - Inbound Funds Hold: details will be under the
       `inbound_funds_hold` object.
-    - `real_time_payments_transfer_instruction` - Real Time Payments Transfer
+    - `real_time_payments_transfer_instruction` - Real-Time Payments Transfer
       Instruction: details will be under the
       `real_time_payments_transfer_instruction` object.
     - `wire_transfer_instruction` - Wire Transfer Instruction: details will be under
@@ -435,7 +461,7 @@ class Source(BaseModel):
     """
 
     real_time_payments_transfer_instruction: Optional[SourceRealTimePaymentsTransferInstruction]
-    """A Real Time Payments Transfer Instruction object.
+    """A Real-Time Payments Transfer Instruction object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `real_time_payments_transfer_instruction`.
@@ -471,14 +497,14 @@ class PendingTransaction(BaseModel):
     created_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which the Pending
-    Transaction occured.
+    Transaction occurred.
     """
 
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Pending
     Transaction's currency. This will match the currency on the Pending
-    Transcation's Account.
+    Transaction's Account.
 
     - `CAD` - Canadian Dollar (CAD)
     - `CHF` - Swiss Franc (CHF)

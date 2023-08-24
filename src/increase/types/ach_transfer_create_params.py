@@ -88,7 +88,7 @@ class ACHTransferCreateParams(TypedDict, total=False):
     """
 
     individual_id: str
-    """Your identifer for the transfer recipient."""
+    """Your identifier for the transfer recipient."""
 
     individual_name: str
     """The name of the transfer recipient.
@@ -118,6 +118,6 @@ class ACHTransferCreateParams(TypedDict, total=False):
     unique_identifier: str
     """A unique identifier you choose for the transfer.
 
-    Reusing this identifer for another transfer will result in an error. You can
+    Reusing this identifier for another transfer will result in an error. You can
     query for the transfer associated with this identifier using the List endpoint.
     """

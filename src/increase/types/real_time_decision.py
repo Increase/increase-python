@@ -4,7 +4,6 @@ from typing import Optional
 from datetime import datetime
 from typing_extensions import Literal
 
-from .shared import PointOfServiceEntryMode
 from .._models import BaseModel
 
 __all__ = [
@@ -68,10 +67,37 @@ class CardAuthorizationNetworkDetailsVisa(BaseModel):
       electronic commerce transaction that has no data protection.
     """
 
-    point_of_service_entry_mode: Optional[PointOfServiceEntryMode]
+    point_of_service_entry_mode: Optional[
+        Literal[
+            "unknown",
+            "manual",
+            "magnetic_stripe_no_cvv",
+            "optical_code",
+            "integrated_circuit_card",
+            "contactless",
+            "credential_on_file",
+            "magnetic_stripe",
+            "contactless_magnetic_stripe",
+            "integrated_circuit_card_no_cvv",
+        ]
+    ]
     """
     The method used to enter the cardholder's primary account number and card
     expiration date
+
+    - `unknown` - Unknown
+    - `manual` - Manual key entry
+    - `magnetic_stripe_no_cvv` - Magnetic stripe read, without card verification
+      value
+    - `optical_code` - Optical code
+    - `integrated_circuit_card` - Contact chip card
+    - `contactless` - Contactless read of chip card
+    - `credential_on_file` - Transaction initiated using a credential that has
+      previously been stored on file
+    - `magnetic_stripe` - Magnetic stripe read
+    - `contactless_magnetic_stripe` - Contactless read of magnetic stripe data
+    - `integrated_circuit_card_no_cvv` - Contact chip card, without card
+      verification value
     """
 
 
@@ -109,7 +135,7 @@ class CardAuthorizationRequestDetails(BaseModel):
     """
 
     incremental_authorization: Optional[CardAuthorizationRequestDetailsIncrementalAuthorization]
-    """Fields specific to the categorty `incremental_authorization`."""
+    """Fields specific to the category `incremental_authorization`."""
 
     initial_authorization: Optional[object]
     """Fields specific to the category `initial_authorization`."""

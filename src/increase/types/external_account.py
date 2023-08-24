@@ -38,7 +38,7 @@ class ExternalAccount(BaseModel):
     status: Literal["active", "archived"]
     """The External Account's status.
 
-    - `active` - The External Acccount is active.
+    - `active` - The External Account is active.
     - `archived` - The External Account is archived and won't appear in the
       dashboard.
     """

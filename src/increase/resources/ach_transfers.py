@@ -94,7 +94,7 @@ class ACHTransfers(SyncAPIResource):
               - `checking` - A checking account.
               - `savings` - A savings account.
 
-          individual_id: Your identifer for the transfer recipient.
+          individual_id: Your identifier for the transfer recipient.
 
           individual_name: The name of the transfer recipient. This value is informational and not verified
               by the recipient's bank.
@@ -110,7 +110,7 @@ class ACHTransfers(SyncAPIResource):
               - `prearranged_payments_and_deposit` - Prearranged Payments and Deposits (PPD).
               - `internet_initiated` - Internet Initiated (WEB).
 
-          unique_identifier: A unique identifier you choose for the transfer. Reusing this identifer for
+          unique_identifier: A unique identifier you choose for the transfer. Reusing this identifier for
               another transfer will result in an error. You can query for the transfer
               associated with this identifier using the List endpoint.
 
@@ -413,7 +413,7 @@ class AsyncACHTransfers(AsyncAPIResource):
               - `checking` - A checking account.
               - `savings` - A savings account.
 
-          individual_id: Your identifer for the transfer recipient.
+          individual_id: Your identifier for the transfer recipient.
 
           individual_name: The name of the transfer recipient. This value is informational and not verified
               by the recipient's bank.
@@ -429,7 +429,7 @@ class AsyncACHTransfers(AsyncAPIResource):
               - `prearranged_payments_and_deposit` - Prearranged Payments and Deposits (PPD).
               - `internet_initiated` - Internet Initiated (WEB).
 
-          unique_identifier: A unique identifier you choose for the transfer. Reusing this identifer for
+          unique_identifier: A unique identifier you choose for the transfer. Reusing this identifier for
               another transfer will result in an error. You can query for the transfer
               associated with this identifier using the List endpoint.
 

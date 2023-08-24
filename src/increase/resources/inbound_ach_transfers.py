@@ -2,42 +2,33 @@
 
 from __future__ import annotations
 
-from ...types import Entity
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from ..._utils import maybe_transform
-from ..._resource import SyncAPIResource, AsyncAPIResource
-from ...pagination import SyncPage, AsyncPage
-from ..._base_client import AsyncPaginator, make_request_options
-from ...types.entities import (
-    SupplementalDocument,
-    supplemental_document_list_params,
-    supplemental_document_create_params,
-)
+from ..types import InboundACHTransfer, inbound_ach_transfer_list_params
+from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._utils import maybe_transform
+from .._resource import SyncAPIResource, AsyncAPIResource
+from ..pagination import SyncPage, AsyncPage
+from .._base_client import AsyncPaginator, make_request_options
 
-__all__ = ["SupplementalDocuments", "AsyncSupplementalDocuments"]
+__all__ = ["InboundACHTransfers", "AsyncInboundACHTransfers"]
 
 
-class SupplementalDocuments(SyncAPIResource):
-    def create(
+class InboundACHTransfers(SyncAPIResource):
+    def retrieve(
         self,
-        entity_id: str,
+        inbound_ach_transfer_id: str,
         *,
-        file_id: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
-        idempotency_key: str | None = None,
-    ) -> Entity:
+    ) -> InboundACHTransfer:
         """
-        Create a supplemental document for an Entity
+        Retrieve an Inbound ACH Transfer
 
         Args:
-          entity_id: The identifier of the Entity to associate with the supplemental document.
-
-          file_id: The identifier of the File containing the document.
+          inbound_ach_transfer_id: The identifier of the Inbound ACH Transfer to get details for.
 
           extra_headers: Send extra headers
 
@@ -46,28 +37,18 @@ class SupplementalDocuments(SyncAPIResource):
           extra_body: Add additional JSON properties to the request
 
           timeout: Override the client-level default timeout for this request, in seconds
-
-          idempotency_key: Specify a custom idempotency key for this request
         """
-        return self._post(
-            f"/entities/{entity_id}/supplemental_documents",
-            body=maybe_transform(
-                {"file_id": file_id}, supplemental_document_create_params.SupplementalDocumentCreateParams
-            ),
+        return self._get(
+            f"/inbound_ach_transfers/{inbound_ach_transfer_id}",
             options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                idempotency_key=idempotency_key,
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Entity,
+            cast_to=InboundACHTransfer,
         )
 
     def list(
         self,
         *,
-        entity_id: str,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -76,13 +57,11 @@ class SupplementalDocuments(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
-    ) -> SyncPage[SupplementalDocument]:
+    ) -> SyncPage[InboundACHTransfer]:
         """
-        List Entity Supplemental Document Submissions
+        List Inbound ACH Transfers
 
         Args:
-          entity_id: The identifier of the Entity to list supplemental documents for.
-
           cursor: Return the page of entries after this one.
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
@@ -97,8 +76,8 @@ class SupplementalDocuments(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get_api_list(
-            "/entity_supplemental_documents",
-            page=SyncPage[SupplementalDocument],
+            "/inbound_ach_transfers",
+            page=SyncPage[InboundACHTransfer],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -106,38 +85,33 @@ class SupplementalDocuments(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "entity_id": entity_id,
                         "cursor": cursor,
                         "limit": limit,
                     },
-                    supplemental_document_list_params.SupplementalDocumentListParams,
+                    inbound_ach_transfer_list_params.InboundACHTransferListParams,
                 ),
             ),
-            model=SupplementalDocument,
+            model=InboundACHTransfer,
         )
 
 
-class AsyncSupplementalDocuments(AsyncAPIResource):
-    async def create(
+class AsyncInboundACHTransfers(AsyncAPIResource):
+    async def retrieve(
         self,
-        entity_id: str,
+        inbound_ach_transfer_id: str,
         *,
-        file_id: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
-        idempotency_key: str | None = None,
-    ) -> Entity:
+    ) -> InboundACHTransfer:
         """
-        Create a supplemental document for an Entity
+        Retrieve an Inbound ACH Transfer
 
         Args:
-          entity_id: The identifier of the Entity to associate with the supplemental document.
-
-          file_id: The identifier of the File containing the document.
+          inbound_ach_transfer_id: The identifier of the Inbound ACH Transfer to get details for.
 
           extra_headers: Send extra headers
 
@@ -146,28 +120,18 @@ class AsyncSupplementalDocuments(AsyncAPIResource):
           extra_body: Add additional JSON properties to the request
 
           timeout: Override the client-level default timeout for this request, in seconds
-
-          idempotency_key: Specify a custom idempotency key for this request
         """
-        return await self._post(
-            f"/entities/{entity_id}/supplemental_documents",
-            body=maybe_transform(
-                {"file_id": file_id}, supplemental_document_create_params.SupplementalDocumentCreateParams
-            ),
+        return await self._get(
+            f"/inbound_ach_transfers/{inbound_ach_transfer_id}",
             options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                idempotency_key=idempotency_key,
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Entity,
+            cast_to=InboundACHTransfer,
         )
 
     def list(
         self,
         *,
-        entity_id: str,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -176,13 +140,11 @@ class AsyncSupplementalDocuments(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[SupplementalDocument, AsyncPage[SupplementalDocument]]:
+    ) -> AsyncPaginator[InboundACHTransfer, AsyncPage[InboundACHTransfer]]:
         """
-        List Entity Supplemental Document Submissions
+        List Inbound ACH Transfers
 
         Args:
-          entity_id: The identifier of the Entity to list supplemental documents for.
-
           cursor: Return the page of entries after this one.
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
@@ -197,8 +159,8 @@ class AsyncSupplementalDocuments(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get_api_list(
-            "/entity_supplemental_documents",
-            page=AsyncPage[SupplementalDocument],
+            "/inbound_ach_transfers",
+            page=AsyncPage[InboundACHTransfer],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -206,12 +168,11 @@ class AsyncSupplementalDocuments(AsyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "entity_id": entity_id,
                         "cursor": cursor,
                         "limit": limit,
                     },
-                    supplemental_document_list_params.SupplementalDocumentListParams,
+                    inbound_ach_transfer_list_params.InboundACHTransferListParams,
                 ),
             ),
-            model=SupplementalDocument,
+            model=InboundACHTransfer,
         )

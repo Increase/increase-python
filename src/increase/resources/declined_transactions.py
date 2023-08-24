@@ -50,6 +50,7 @@ class DeclinedTransactions(SyncAPIResource):
         self,
         *,
         account_id: str | NotGiven = NOT_GIVEN,
+        category: declined_transaction_list_params.Category | NotGiven = NOT_GIVEN,
         created_at: declined_transaction_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
@@ -93,6 +94,7 @@ class DeclinedTransactions(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "account_id": account_id,
+                        "category": category,
                         "created_at": created_at,
                         "cursor": cursor,
                         "limit": limit,
@@ -143,6 +145,7 @@ class AsyncDeclinedTransactions(AsyncAPIResource):
         self,
         *,
         account_id: str | NotGiven = NOT_GIVEN,
+        category: declined_transaction_list_params.Category | NotGiven = NOT_GIVEN,
         created_at: declined_transaction_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
@@ -186,6 +189,7 @@ class AsyncDeclinedTransactions(AsyncAPIResource):
                 query=maybe_transform(
                     {
                         "account_id": account_id,
+                        "category": category,
                         "created_at": created_at,
                         "cursor": cursor,
                         "limit": limit,

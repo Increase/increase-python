@@ -341,7 +341,7 @@ class TransactionSourceACHTransferReturn(BaseModel):
     """
 
     transaction_id: str
-    """The identifier of the Tranasaction associated with this return."""
+    """The identifier of the Transaction associated with this return."""
 
     transfer_id: str
     """The identifier of the ACH Transfer associated with this return."""
@@ -492,7 +492,7 @@ class TransactionSourceCardRefundPurchaseDetailsLodging(BaseModel):
 
     food_beverage_charges_currency: Optional[str]
     """
-    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the foor and
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the food and
     beverage charges.
     """
 
@@ -989,7 +989,7 @@ class TransactionSourceCardSettlementPurchaseDetailsLodging(BaseModel):
 
     food_beverage_charges_currency: Optional[str]
     """
-    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the foor and
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the food and
     beverage charges.
     """
 
@@ -1524,7 +1524,7 @@ class TransactionSourceCheckTransferStopPaymentRequest(BaseModel):
     """The reason why this transfer was stopped.
 
     - `mail_delivery_failed` - The check could not be delivered.
-    - `rejected_by_increase` - The check was cancelled by an Increase operator who
+    - `rejected_by_increase` - The check was canceled by an Increase operator who
       will provide details out-of-band.
     - `unknown` - The check was stopped for another reason.
     """
@@ -1708,7 +1708,7 @@ class TransactionSourceInboundRealTimePaymentsTransferConfirmation(BaseModel):
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the transfer's
-    currency. This will always be "USD" for a Real Time Payments transfer.
+    currency. This will always be "USD" for a Real-Time Payments transfer.
 
     - `CAD` - Canadian Dollar (CAD)
     - `CHF` - Swiss Franc (CHF)
@@ -1731,7 +1731,7 @@ class TransactionSourceInboundRealTimePaymentsTransferConfirmation(BaseModel):
     """Additional information included with the transfer."""
 
     transaction_identification: str
-    """The Real Time Payments network identification of the transfer"""
+    """The Real-Time Payments network identification of the transfer"""
 
 
 class TransactionSourceInboundWireDrawdownPayment(BaseModel):
@@ -1844,7 +1844,7 @@ class TransactionSourceInboundWireReversal(BaseModel):
     institution.
     """
 
-    transaction_id: Optional[str]
+    transaction_id: str
     """The ID for the Transaction associated with the transfer reversal."""
 
     wire_transfer_id: str
@@ -1987,7 +1987,7 @@ class TransactionSourceRealTimePaymentsTransferAcknowledgement(BaseModel):
     """Unstructured information that will show on the recipient's bank statement."""
 
     transfer_id: str
-    """The identifier of the Real Time Payments Transfer that led to this Transaction."""
+    """The identifier of the Real-Time Payments Transfer that led to this Transaction."""
 
 
 class TransactionSourceSampleFunds(BaseModel):
@@ -2144,7 +2144,7 @@ class TransactionSource(BaseModel):
       object.
     - `inbound_international_ach_transfer` - Inbound International ACH Transfer:
       details will be under the `inbound_international_ach_transfer` object.
-    - `inbound_real_time_payments_transfer_confirmation` - Inbound Real Time
+    - `inbound_real_time_payments_transfer_confirmation` - Inbound Real-Time
       Payments Transfer Confirmation: details will be under the
       `inbound_real_time_payments_transfer_confirmation` object.
     - `inbound_wire_drawdown_payment` - Inbound Wire Drawdown Payment: details will
@@ -2160,7 +2160,7 @@ class TransactionSource(BaseModel):
       `interest_payment` object.
     - `internal_source` - Internal Source: details will be under the
       `internal_source` object.
-    - `real_time_payments_transfer_acknowledgement` - Real Time Payments Transfer
+    - `real_time_payments_transfer_acknowledgement` - Real-Time Payments Transfer
       Acknowledgement: details will be under the
       `real_time_payments_transfer_acknowledgement` object.
     - `sample_funds` - Sample Funds: details will be under the `sample_funds`
@@ -2238,7 +2238,7 @@ class TransactionSource(BaseModel):
     inbound_real_time_payments_transfer_confirmation: Optional[
         TransactionSourceInboundRealTimePaymentsTransferConfirmation
     ]
-    """An Inbound Real Time Payments Transfer Confirmation object.
+    """An Inbound Real-Time Payments Transfer Confirmation object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `inbound_real_time_payments_transfer_confirmation`.
@@ -2287,7 +2287,7 @@ class TransactionSource(BaseModel):
     """
 
     real_time_payments_transfer_acknowledgement: Optional[TransactionSourceRealTimePaymentsTransferAcknowledgement]
-    """A Real Time Payments Transfer Acknowledgement object.
+    """A Real-Time Payments Transfer Acknowledgement object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `real_time_payments_transfer_acknowledgement`.
@@ -2331,13 +2331,13 @@ class Transaction(BaseModel):
     created_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which the
-    Transaction occured.
+    Transaction occurred.
     """
 
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-    Transaction's currency. This will match the currency on the Transcation's
+    Transaction's currency. This will match the currency on the Transaction's
     Account.
 
     - `CAD` - Canadian Dollar (CAD)

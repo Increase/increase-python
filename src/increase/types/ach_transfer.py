@@ -329,7 +329,7 @@ class Return(BaseModel):
     """
 
     transaction_id: str
-    """The identifier of the Tranasaction associated with this return."""
+    """The identifier of the Transaction associated with this return."""
 
     transfer_id: str
     """The identifier of the ACH Transfer associated with this return."""
@@ -439,7 +439,7 @@ class ACHTransfer(BaseModel):
     """
 
     individual_id: Optional[str]
-    """Your identifer for the transfer recipient."""
+    """Your identifier for the transfer recipient."""
 
     individual_name: Optional[str]
     """The name of the transfer recipient.
@@ -454,6 +454,14 @@ class ACHTransfer(BaseModel):
     """
     If the receiving bank accepts the transfer but notifies that future transfers
     should use different details, this will contain those details.
+    """
+
+    pending_transaction_id: Optional[str]
+    """The ID for the pending transaction representing the transfer.
+
+    A pending transaction is created when the transfer
+    [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals)
+    by someone else in your organization.
     """
 
     return_: Optional[Return] = FieldInfo(alias="return")

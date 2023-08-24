@@ -140,7 +140,7 @@ class ExternalAccounts(SyncAPIResource):
 
           status: The status of the External Account.
 
-              - `active` - The External Acccount is active.
+              - `active` - The External Account is active.
               - `archived` - The External Account is archived and won't appear in the
                 dashboard.
 
@@ -345,7 +345,7 @@ class AsyncExternalAccounts(AsyncAPIResource):
 
           status: The status of the External Account.
 
-              - `active` - The External Acccount is active.
+              - `active` - The External Account is active.
               - `archived` - The External Account is archived and won't appear in the
                 dashboard.
 

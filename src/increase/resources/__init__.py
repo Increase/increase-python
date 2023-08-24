@@ -33,6 +33,7 @@ from .bookkeeping_accounts import BookkeepingAccounts, AsyncBookkeepingAccounts
 from .pending_transactions import PendingTransactions, AsyncPendingTransactions
 from .declined_transactions import DeclinedTransactions, AsyncDeclinedTransactions
 from .digital_wallet_tokens import DigitalWalletTokens, AsyncDigitalWalletTokens
+from .inbound_ach_transfers import InboundACHTransfers, AsyncInboundACHTransfers
 from .bookkeeping_entry_sets import BookkeepingEntrySets, AsyncBookkeepingEntrySets
 from .wire_drawdown_requests import WireDrawdownRequests, AsyncWireDrawdownRequests
 from .card_purchase_supplements import (
@@ -109,6 +110,8 @@ __all__ = [
     "AsyncCheckTransfers",
     "Entities",
     "AsyncEntities",
+    "InboundACHTransfers",
+    "AsyncInboundACHTransfers",
     "InboundWireDrawdownRequests",
     "AsyncInboundWireDrawdownRequests",
     "WireDrawdownRequests",
