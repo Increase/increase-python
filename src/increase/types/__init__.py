@@ -191,12 +191,12 @@ from .inbound_ach_transfer_return_list_params import (
 from .real_time_payments_transfer_list_params import (
     RealTimePaymentsTransferListParams as RealTimePaymentsTransferListParams,
 )
-from .inbound_ach_transfer_return_create_params import (
-    InboundACHTransferReturnCreateParams as InboundACHTransferReturnCreateParams,
-)
 from .inbound_wire_drawdown_request_list_params import (
     InboundWireDrawdownRequestListParams as InboundWireDrawdownRequestListParams,
 )
 from .real_time_payments_transfer_create_params import (
     RealTimePaymentsTransferCreateParams as RealTimePaymentsTransferCreateParams,
+)
+from .inbound_ach_transfer_transfer_return_params import (
+    InboundACHTransferTransferReturnParams as InboundACHTransferTransferReturnParams,
 )

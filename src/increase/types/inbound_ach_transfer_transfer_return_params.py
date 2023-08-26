@@ -4,10 +4,10 @@ from __future__ import annotations
 
 from typing_extensions import Literal, Required, TypedDict
 
-__all__ = ["InboundACHTransferReturnCreateParams"]
+__all__ = ["InboundACHTransferTransferReturnParams"]
 
 
-class InboundACHTransferReturnCreateParams(TypedDict, total=False):
+class InboundACHTransferTransferReturnParams(TypedDict, total=False):
     reason: Required[
         Literal[
             "authorization_revoked_by_customer",
@@ -42,10 +42,4 @@ class InboundACHTransferReturnCreateParams(TypedDict, total=False):
       duplicate. The Nacha return code is R24.
     - `corporate_customer_advised_not_authorized` - The corporate customer no longer
       authorizes this transaction. The Nacha return code is R29.
-    """
-
-    transaction_id: Required[str]
-    """
-    The transaction identifier of the Inbound ACH Transfer to return to the
-    originating financial institution.
     """
