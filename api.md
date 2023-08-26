@@ -314,7 +314,6 @@ from increase.types import InboundACHTransferReturn
 
 Methods:
 
-- <code title="post /inbound_ach_transfer_returns">client.inbound_ach_transfer_returns.<a href="./src/increase/resources/inbound_ach_transfer_returns.py">create</a>(\*\*<a href="src/increase/types/inbound_ach_transfer_return_create_params.py">params</a>) -> <a href="./src/increase/types/inbound_ach_transfer_return.py">InboundACHTransferReturn</a></code>
 - <code title="get /inbound_ach_transfer_returns/{inbound_ach_transfer_return_id}">client.inbound_ach_transfer_returns.<a href="./src/increase/resources/inbound_ach_transfer_returns.py">retrieve</a>(inbound_ach_transfer_return_id) -> <a href="./src/increase/types/inbound_ach_transfer_return.py">InboundACHTransferReturn</a></code>
 - <code title="get /inbound_ach_transfer_returns">client.inbound_ach_transfer_returns.<a href="./src/increase/resources/inbound_ach_transfer_returns.py">list</a>(\*\*<a href="src/increase/types/inbound_ach_transfer_return_list_params.py">params</a>) -> <a href="./src/increase/types/inbound_ach_transfer_return.py">SyncPage[InboundACHTransferReturn]</a></code>
 
@@ -427,6 +426,8 @@ Methods:
 
 - <code title="get /inbound_ach_transfers/{inbound_ach_transfer_id}">client.inbound_ach_transfers.<a href="./src/increase/resources/inbound_ach_transfers.py">retrieve</a>(inbound_ach_transfer_id) -> <a href="./src/increase/types/inbound_ach_transfer.py">InboundACHTransfer</a></code>
 - <code title="get /inbound_ach_transfers">client.inbound_ach_transfers.<a href="./src/increase/resources/inbound_ach_transfers.py">list</a>(\*\*<a href="src/increase/types/inbound_ach_transfer_list_params.py">params</a>) -> <a href="./src/increase/types/inbound_ach_transfer.py">SyncPage[InboundACHTransfer]</a></code>
+- <code title="post /inbound_ach_transfers/{inbound_ach_transfer_id}/decline">client.inbound_ach_transfers.<a href="./src/increase/resources/inbound_ach_transfers.py">decline</a>(inbound_ach_transfer_id) -> <a href="./src/increase/types/inbound_ach_transfer.py">InboundACHTransfer</a></code>
+- <code title="post /inbound_ach_transfer/{inbound_ach_transfer_id}/transfer_returns">client.inbound_ach_transfers.<a href="./src/increase/resources/inbound_ach_transfers.py">transfer_return</a>(inbound_ach_transfer_id, \*\*<a href="src/increase/types/inbound_ach_transfer_transfer_return_params.py">params</a>) -> <a href="./src/increase/types/inbound_ach_transfer.py">InboundACHTransfer</a></code>
 
 # InboundWireDrawdownRequests
 

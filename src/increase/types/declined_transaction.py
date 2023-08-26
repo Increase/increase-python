@@ -21,6 +21,9 @@ __all__ = [
 
 
 class SourceACHDecline(BaseModel):
+    id: str
+    """The ACH Decline's identifier."""
+
     amount: int
     """The declined amount in the minor unit of the destination account currency.
 
@@ -28,12 +31,16 @@ class SourceACHDecline(BaseModel):
     """
 
     originator_company_descriptive_date: Optional[str]
+    """The descriptive date of the transfer."""
 
     originator_company_discretionary_data: Optional[str]
+    """The additional information included with the transfer."""
 
     originator_company_id: str
+    """The identifier of the company that initiated the transfer."""
 
     originator_company_name: str
+    """The name of the company that initiated the transfer."""
 
     reason: Literal[
         "ach_route_canceled",
@@ -71,10 +78,19 @@ class SourceACHDecline(BaseModel):
     """
 
     receiver_id_number: Optional[str]
+    """The id of the receiver of the transfer."""
 
     receiver_name: Optional[str]
+    """The name of the receiver of the transfer."""
 
     trace_number: str
+    """The trace number of the transfer."""
+
+    type: Literal["ach_decline"]
+    """A constant representing the object's type.
+
+    For this resource it will always be `ach_decline`.
+    """
 
 
 class SourceCardDeclineNetworkDetailsVisa(BaseModel):

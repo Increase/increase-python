@@ -21,14 +21,6 @@ class TestInboundACHTransferReturns:
     parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
 
     @parametrize
-    def test_method_create(self, client: Increase) -> None:
-        inbound_ach_transfer_return = client.inbound_ach_transfer_returns.create(
-            reason="authorization_revoked_by_customer",
-            transaction_id="string",
-        )
-        assert_matches_type(InboundACHTransferReturn, inbound_ach_transfer_return, path=["response"])
-
-    @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         inbound_ach_transfer_return = client.inbound_ach_transfer_returns.retrieve(
             "string",
@@ -53,14 +45,6 @@ class TestAsyncInboundACHTransferReturns:
     strict_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
     loose_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=False)
     parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
-
-    @parametrize
-    async def test_method_create(self, client: AsyncIncrease) -> None:
-        inbound_ach_transfer_return = await client.inbound_ach_transfer_returns.create(
-            reason="authorization_revoked_by_customer",
-            transaction_id="string",
-        )
-        assert_matches_type(InboundACHTransferReturn, inbound_ach_transfer_return, path=["response"])
 
     @parametrize
     async def test_method_retrieve(self, client: AsyncIncrease) -> None:
