@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.12.2](https://github.com/Increase/increase-python/compare/v0.12.1...v0.12.2) (2023-08-27)
+
+
+### Features
+
+* **api:** move inbound ACH transfer returns (⚠️ breaking); add ACH transfer declines ([#96](https://github.com/Increase/increase-python/issues/96)) ([30f1f6e](https://github.com/Increase/increase-python/commit/30f1f6e0cb6e8bdef93de9442ca7993572f3a6d5))
+* **api:** updates ([#94](https://github.com/Increase/increase-python/issues/94)) ([58dee6a](https://github.com/Increase/increase-python/commit/58dee6ae3654aa7cf7c2e122919a227842d8ae3e))
+
 ## [0.12.1](https://github.com/Increase/increase-python/compare/v0.12.0...v0.12.1) (2023-08-24)
 
 
