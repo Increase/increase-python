@@ -254,8 +254,8 @@ class DeclinedTransactionSourceCardDecline(BaseModel):
 
     digital_wallet_token_id: Optional[str]
     """
-    If the authorization was attempted using a Digital Wallet Token (such as an
-    Apple Pay purchase), the identifier of the token that was used.
+    If the authorization was made via a Digital Wallet Token (such as an Apple Pay
+    purchase), the identifier of the token that was used.
     """
 
     merchant_acceptor_id: str
