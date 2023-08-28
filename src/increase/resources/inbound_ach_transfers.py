@@ -217,7 +217,7 @@ class InboundACHTransfers(SyncAPIResource):
           idempotency_key: Specify a custom idempotency key for this request
         """
         return self._post(
-            f"/inbound_ach_transfer/{inbound_ach_transfer_id}/transfer_returns",
+            f"/inbound_ach_transfers/{inbound_ach_transfer_id}/transfer_return",
             body=maybe_transform(
                 {"reason": reason}, inbound_ach_transfer_transfer_return_params.InboundACHTransferTransferReturnParams
             ),
@@ -431,7 +431,7 @@ class AsyncInboundACHTransfers(AsyncAPIResource):
           idempotency_key: Specify a custom idempotency key for this request
         """
         return await self._post(
-            f"/inbound_ach_transfer/{inbound_ach_transfer_id}/transfer_returns",
+            f"/inbound_ach_transfers/{inbound_ach_transfer_id}/transfer_return",
             body=maybe_transform(
                 {"reason": reason}, inbound_ach_transfer_transfer_return_params.InboundACHTransferTransferReturnParams
             ),
