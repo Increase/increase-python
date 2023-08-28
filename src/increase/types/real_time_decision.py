@@ -155,6 +155,12 @@ class CardAuthorization(BaseModel):
     - `decline` - Decline the authorization.
     """
 
+    digital_wallet_token_id: Optional[str]
+    """
+    If the authorization was made via a Digital Wallet Token (such as an Apple Pay
+    purchase), the identifier of the token that was used.
+    """
+
     merchant_acceptor_id: str
     """
     The merchant identifier (commonly abbreviated as MID) of the merchant the card
