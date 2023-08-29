@@ -40,10 +40,6 @@ from .card_purchase_supplements import (
     CardPurchaseSupplements,
     AsyncCardPurchaseSupplements,
 )
-from .inbound_ach_transfer_returns import (
-    InboundACHTransferReturns,
-    AsyncInboundACHTransferReturns,
-)
 from .real_time_payments_transfers import (
     RealTimePaymentsTransfers,
     AsyncRealTimePaymentsTransfers,
@@ -98,8 +94,6 @@ __all__ = [
     "AsyncAccountTransfers",
     "ACHTransfers",
     "AsyncACHTransfers",
-    "InboundACHTransferReturns",
-    "AsyncInboundACHTransferReturns",
     "ACHPrenotifications",
     "AsyncACHPrenotifications",
     "Documents",

@@ -179,7 +179,7 @@ class InboundACHTransfers(SyncAPIResource):
         idempotency_key: str | None = None,
     ) -> InboundACHTransfer:
         """
-        Create an ACH Return
+        Return an Inbound ACH Transfer
 
         Args:
           inbound_ach_transfer_id: The identifier of the Inbound ACH Transfer to return to the originating
@@ -393,7 +393,7 @@ class AsyncInboundACHTransfers(AsyncAPIResource):
         idempotency_key: str | None = None,
     ) -> InboundACHTransfer:
         """
-        Create an ACH Return
+        Return an Inbound ACH Transfer
 
         Args:
           inbound_ach_transfer_id: The identifier of the Inbound ACH Transfer to return to the originating
