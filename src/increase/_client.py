@@ -74,7 +74,6 @@ class Increase(SyncAPIClient):
     limits: resources.Limits
     account_transfers: resources.AccountTransfers
     ach_transfers: resources.ACHTransfers
-    inbound_ach_transfer_returns: resources.InboundACHTransferReturns
     ach_prenotifications: resources.ACHPrenotifications
     documents: resources.Documents
     wire_transfers: resources.WireTransfers
@@ -180,7 +179,6 @@ class Increase(SyncAPIClient):
         self.limits = resources.Limits(self)
         self.account_transfers = resources.AccountTransfers(self)
         self.ach_transfers = resources.ACHTransfers(self)
-        self.inbound_ach_transfer_returns = resources.InboundACHTransferReturns(self)
         self.ach_prenotifications = resources.ACHPrenotifications(self)
         self.documents = resources.Documents(self)
         self.wire_transfers = resources.WireTransfers(self)
@@ -358,7 +356,6 @@ class AsyncIncrease(AsyncAPIClient):
     limits: resources.AsyncLimits
     account_transfers: resources.AsyncAccountTransfers
     ach_transfers: resources.AsyncACHTransfers
-    inbound_ach_transfer_returns: resources.AsyncInboundACHTransferReturns
     ach_prenotifications: resources.AsyncACHPrenotifications
     documents: resources.AsyncDocuments
     wire_transfers: resources.AsyncWireTransfers
@@ -464,7 +461,6 @@ class AsyncIncrease(AsyncAPIClient):
         self.limits = resources.AsyncLimits(self)
         self.account_transfers = resources.AsyncAccountTransfers(self)
         self.ach_transfers = resources.AsyncACHTransfers(self)
-        self.inbound_ach_transfer_returns = resources.AsyncInboundACHTransferReturns(self)
         self.ach_prenotifications = resources.AsyncACHPrenotifications(self)
         self.documents = resources.AsyncDocuments(self)
         self.wire_transfers = resources.AsyncWireTransfers(self)
