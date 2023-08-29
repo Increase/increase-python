@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.12.3 (2023-08-29)
+
+Full Changelog: [v0.12.2...v0.12.3](https://github.com/Increase/increase-python/compare/v0.12.2...v0.12.3)
+
+### Features
+
+* **api:** remove unused `/inbound_ach_transfer_returns` endpoints ([#102](https://github.com/Increase/increase-python/issues/102)) ([8a73957](https://github.com/Increase/increase-python/commit/8a73957438b6050ee78dbdafac5661f570c677d8))
+
+
+### Bug Fixes
+
+* **api:** move ACH Return endpoint and add digital wallet properties ([#101](https://github.com/Increase/increase-python/issues/101)) ([ec6ec9d](https://github.com/Increase/increase-python/commit/ec6ec9d05357389e4110fec0b05a7a0c7f46ef95))
+
+
+### Chores
+
+* **ci:** setup workflows to create releases and release PRs ([#98](https://github.com/Increase/increase-python/issues/98)) ([42b9349](https://github.com/Increase/increase-python/commit/42b93490b12ab5289e54afecb36ff27e8c1e1de4))
+
 ## [0.12.2](https://github.com/Increase/increase-python/compare/v0.12.1...v0.12.2) (2023-08-27)
 
 
