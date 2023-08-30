@@ -1461,6 +1461,13 @@ class TransactionSourceCheckTransferDeposit(BaseModel):
     deposited check.
     """
 
+    bank_of_first_deposit_routing_number: Optional[str]
+    """
+    The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
+    bank depositing this check. In some rare cases, this is not transmitted via
+    Check21 and the value will be null.
+    """
+
     deposited_at: datetime
     """When the check was deposited."""
 
@@ -1589,12 +1596,22 @@ class TransactionSourceInboundACHTransfer(BaseModel):
 
     trace_number: str
 
+    transfer_id: str
+    """The inbound ach transfer's identifier."""
+
 
 class TransactionSourceInboundCheck(BaseModel):
     amount: int
     """The amount in the minor unit of the destination account currency.
 
     For dollars, for example, this is cents.
+    """
+
+    bank_of_first_deposit_routing_number: Optional[str]
+    """
+    The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
+    bank depositing this check. In some rare cases, this is not transmitted via
+    Check21 and the value will be null.
     """
 
     check_front_image_file_id: Optional[str]
