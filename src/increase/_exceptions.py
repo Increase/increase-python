@@ -67,10 +67,10 @@ class InvalidParametersError(exceptions.BadRequestError):
         title = cast(Any, data.get("title"))
         super().__init__(title or message, request=request, response=response, body=body)
 
+        self.title = title
         self.detail = cast(Any, data.get("detail"))
         self.errors = cast(Any, data.get("errors"))
         self.status = cast(Any, data.get("status"))
-        self.title = cast(Any, data.get("title"))
         self.type = cast(Any, data.get("type"))
 
 
