@@ -8,6 +8,7 @@ from ..types import (
     InboundACHTransfer,
     inbound_ach_transfer_list_params,
     inbound_ach_transfer_transfer_return_params,
+    inbound_ach_transfer_notification_of_change_params,
 )
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
@@ -146,6 +147,60 @@ class InboundACHTransfers(SyncAPIResource):
         """
         return self._post(
             f"/inbound_ach_transfers/{inbound_ach_transfer_id}/decline",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=InboundACHTransfer,
+        )
+
+    def notification_of_change(
+        self,
+        inbound_ach_transfer_id: str,
+        *,
+        updated_account_number: str | NotGiven = NOT_GIVEN,
+        updated_routing_number: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> InboundACHTransfer:
+        """
+        Create a notification of change for an Inbound ACH Transfer
+
+        Args:
+          inbound_ach_transfer_id: The identifier of the Inbound ACH Transfer for which to create a notification of
+              change.
+
+          updated_account_number: The updated account number to send in the notification of change.
+
+          updated_routing_number: The updated routing number to send in the notification of change.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        return self._post(
+            f"/inbound_ach_transfers/{inbound_ach_transfer_id}/notification_of_change",
+            body=maybe_transform(
+                {
+                    "updated_account_number": updated_account_number,
+                    "updated_routing_number": updated_routing_number,
+                },
+                inbound_ach_transfer_notification_of_change_params.InboundACHTransferNotificationOfChangeParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -360,6 +415,60 @@ class AsyncInboundACHTransfers(AsyncAPIResource):
         """
         return await self._post(
             f"/inbound_ach_transfers/{inbound_ach_transfer_id}/decline",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=InboundACHTransfer,
+        )
+
+    async def notification_of_change(
+        self,
+        inbound_ach_transfer_id: str,
+        *,
+        updated_account_number: str | NotGiven = NOT_GIVEN,
+        updated_routing_number: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> InboundACHTransfer:
+        """
+        Create a notification of change for an Inbound ACH Transfer
+
+        Args:
+          inbound_ach_transfer_id: The identifier of the Inbound ACH Transfer for which to create a notification of
+              change.
+
+          updated_account_number: The updated account number to send in the notification of change.
+
+          updated_routing_number: The updated routing number to send in the notification of change.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        return await self._post(
+            f"/inbound_ach_transfers/{inbound_ach_transfer_id}/notification_of_change",
+            body=maybe_transform(
+                {
+                    "updated_account_number": updated_account_number,
+                    "updated_routing_number": updated_routing_number,
+                },
+                inbound_ach_transfer_notification_of_change_params.InboundACHTransferNotificationOfChangeParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

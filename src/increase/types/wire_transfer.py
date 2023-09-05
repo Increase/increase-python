@@ -39,7 +39,7 @@ class Cancellation(BaseModel):
 
 class Reversal(BaseModel):
     amount: int
-    """The amount that was reversed."""
+    """The amount that was reversed in USD cents."""
 
     created_at: datetime
     """
@@ -48,13 +48,19 @@ class Reversal(BaseModel):
     """
 
     description: str
-    """The description on the reversal message from Fedwire."""
+    """
+    The description on the reversal message from Fedwire, set by the reversing bank.
+    """
 
     financial_institution_to_financial_institution_information: Optional[str]
     """Additional financial institution information included in the wire reversal."""
 
     input_cycle_date: date
-    """The Fedwire cycle date for the wire reversal."""
+    """The Fedwire cycle date for the wire reversal.
+
+    The "Fedwire day" begins at 9:00 PM Eastern Time on the evening before the
+    `cycle date`.
+    """
 
     input_message_accountability_data: str
     """The Fedwire transaction identifier."""
@@ -66,7 +72,10 @@ class Reversal(BaseModel):
     """The Fedwire input source identifier."""
 
     previous_message_input_cycle_date: date
-    """The Fedwire cycle date for the wire transfer that was reversed."""
+    """
+    The Fedwire cycle date for the wire transfer that is being reversed by this
+    message.
+    """
 
     previous_message_input_message_accountability_data: str
     """The Fedwire transaction identifier for the wire transfer that was reversed."""

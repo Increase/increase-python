@@ -231,11 +231,12 @@ class DigitalWalletAuthentication(BaseModel):
     - `email` - Send one-time passcodes over email.
     """
 
-    digital_wallet: Literal["apple_pay", "google_pay"]
+    digital_wallet: Literal["apple_pay", "google_pay", "unknown"]
     """The digital wallet app being used.
 
     - `apple_pay` - Apple Pay
     - `google_pay` - Google Pay
+    - `unknown` - Unknown
     """
 
     email: Optional[str]
@@ -280,11 +281,12 @@ class DigitalWalletToken(BaseModel):
     - `decline` - Decline the provisioning request.
     """
 
-    digital_wallet: Literal["apple_pay", "google_pay"]
+    digital_wallet: Literal["apple_pay", "google_pay", "unknown"]
     """The digital wallet app being used.
 
     - `apple_pay` - Apple Pay
     - `google_pay` - Google Pay
+    - `unknown` - Unknown
     """
 
 

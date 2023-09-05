@@ -31,11 +31,12 @@ class DigitalWalletToken(BaseModel):
     - `deactivated` - The digital wallet token has been permanently canceled.
     """
 
-    token_requestor: Literal["apple_pay", "google_pay"]
+    token_requestor: Literal["apple_pay", "google_pay", "unknown"]
     """The digital wallet app being used.
 
     - `apple_pay` - Apple Pay
     - `google_pay` - Google Pay
+    - `unknown` - Unknown
     """
 
     type: Literal["digital_wallet_token"]

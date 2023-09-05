@@ -178,6 +178,7 @@ class ExternalAccounts(SyncAPIResource):
         *,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
+        routing_number: str | NotGiven = NOT_GIVEN,
         status: external_account_list_params.Status | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -194,6 +195,8 @@ class ExternalAccounts(SyncAPIResource):
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
+
+          routing_number: Filter External Accounts to those with the specified Routing Number.
 
           extra_headers: Send extra headers
 
@@ -215,6 +218,7 @@ class ExternalAccounts(SyncAPIResource):
                     {
                         "cursor": cursor,
                         "limit": limit,
+                        "routing_number": routing_number,
                         "status": status,
                     },
                     external_account_list_params.ExternalAccountListParams,
@@ -383,6 +387,7 @@ class AsyncExternalAccounts(AsyncAPIResource):
         *,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
+        routing_number: str | NotGiven = NOT_GIVEN,
         status: external_account_list_params.Status | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -399,6 +404,8 @@ class AsyncExternalAccounts(AsyncAPIResource):
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
+
+          routing_number: Filter External Accounts to those with the specified Routing Number.
 
           extra_headers: Send extra headers
 
@@ -420,6 +427,7 @@ class AsyncExternalAccounts(AsyncAPIResource):
                     {
                         "cursor": cursor,
                         "limit": limit,
+                        "routing_number": routing_number,
                         "status": status,
                     },
                     external_account_list_params.ExternalAccountListParams,

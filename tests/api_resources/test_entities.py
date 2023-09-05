@@ -503,6 +503,33 @@ class TestEntities:
         )
         assert_matches_type(Entity, entity, path=["response"])
 
+    @parametrize
+    def test_method_update_address(self, client: Increase) -> None:
+        entity = client.entities.update_address(
+            "string",
+            address={
+                "line1": "x",
+                "city": "x",
+                "state": "x",
+                "zip": "x",
+            },
+        )
+        assert_matches_type(Entity, entity, path=["response"])
+
+    @parametrize
+    def test_method_update_address_with_all_params(self, client: Increase) -> None:
+        entity = client.entities.update_address(
+            "string",
+            address={
+                "line1": "x",
+                "line2": "x",
+                "city": "x",
+                "state": "x",
+                "zip": "x",
+            },
+        )
+        assert_matches_type(Entity, entity, path=["response"])
+
 
 class TestAsyncEntities:
     strict_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
@@ -988,5 +1015,32 @@ class TestAsyncEntities:
     async def test_method_archive(self, client: AsyncIncrease) -> None:
         entity = await client.entities.archive(
             "string",
+        )
+        assert_matches_type(Entity, entity, path=["response"])
+
+    @parametrize
+    async def test_method_update_address(self, client: AsyncIncrease) -> None:
+        entity = await client.entities.update_address(
+            "string",
+            address={
+                "line1": "x",
+                "city": "x",
+                "state": "x",
+                "zip": "x",
+            },
+        )
+        assert_matches_type(Entity, entity, path=["response"])
+
+    @parametrize
+    async def test_method_update_address_with_all_params(self, client: AsyncIncrease) -> None:
+        entity = await client.entities.update_address(
+            "string",
+            address={
+                "line1": "x",
+                "line2": "x",
+                "city": "x",
+                "state": "x",
+                "zip": "x",
+            },
         )
         assert_matches_type(Entity, entity, path=["response"])

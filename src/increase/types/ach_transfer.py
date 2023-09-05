@@ -68,7 +68,9 @@ class NotificationsOfChange(BaseModel):
         "addenda_format_error",
         "incorrect_standard_entry_class_code_for_outbound_international_payment",
     ]
-    """The type of change that occurred.
+    """
+    The required type of change that is being signaled by the receiving financial
+    institution.
 
     - `incorrect_account_number` - The account number was incorrect.
     - `incorrect_routing_number` - The routing number was incorrect.
@@ -89,7 +91,7 @@ class NotificationsOfChange(BaseModel):
     """
 
     corrected_data: str
-    """The corrected data."""
+    """The corrected data that should be used in future ACHs to this account."""
 
     created_at: datetime
     """
@@ -215,7 +217,7 @@ class Return(BaseModel):
     - `enr_invalid_individual_name` - Code R45. The individual name field was
       invalid.
     - `returned_per_odfi_request` - Code R06. The originating financial institution
-      reversed the transfer.
+      asked for this transfer to be returned.
     - `limited_participation_dfi` - Code R34. The receiving bank's regulatory
       supervisor has limited their participation.
     - `incorrectly_coded_outbound_international_payment` - Code R85. The outbound
@@ -302,7 +304,7 @@ class Return(BaseModel):
       bank disputes that an earlier `duplicate_entry` return was actually a
       duplicate.
     - `return_of_erroneous_or_reversing_debit` - Code R62. A rare return reason. The
-      originating bank made a mistake earlier and this return corrects it.
+      originating financial institution made a mistake and this return corrects it.
     - `return_of_improper_credit_entry` - Code R36. A rare return reason. Return of
       a malformed credit entry.
     - `return_of_improper_debit_entry` - Code R35. A rare return reason. Return of a
@@ -348,7 +350,13 @@ class Submission(BaseModel):
     """When the ACH transfer was sent to FedACH."""
 
     trace_number: str
-    """The trace number for the submission."""
+    """
+    A 15 digit number recorded in the Nacha file and transmitted to the receiving
+    bank. Along with the amount, date, and originating routing number, this can be
+    used to identify the ACH transfer at the receiving bank. ACH trace numbers are
+    not unique, but are
+    [used to correlate returns](https://increase.com/documentation/ach#returns).
+    """
 
 
 class ACHTransfer(BaseModel):
@@ -512,8 +520,8 @@ class ACHTransfer(BaseModel):
     After the transfer is submitted to FedACH, this will contain supplemental
     details. Increase batches transfers and submits a file to the Federal Reserve
     roughly every 30 minutes. The Federal Reserve processes ACH transfers during
-    weekdays according to their (posted
-    schedule)[https://www.frbservices.org/resources/resource-centers/same-day-ach/fedach-processing-schedule.html].
+    weekdays according to their
+    [posted schedule](https://www.frbservices.org/resources/resource-centers/same-day-ach/fedach-processing-schedule.html).
     """
 
     transaction_id: Optional[str]

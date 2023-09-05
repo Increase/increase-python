@@ -117,7 +117,7 @@ class ACHTransferReturnParams(TypedDict, total=False):
     - `enr_invalid_individual_name` - Code R45. The individual name field was
       invalid.
     - `returned_per_odfi_request` - Code R06. The originating financial institution
-      reversed the transfer.
+      asked for this transfer to be returned.
     - `limited_participation_dfi` - Code R34. The receiving bank's regulatory
       supervisor has limited their participation.
     - `incorrectly_coded_outbound_international_payment` - Code R85. The outbound
@@ -204,7 +204,7 @@ class ACHTransferReturnParams(TypedDict, total=False):
       bank disputes that an earlier `duplicate_entry` return was actually a
       duplicate.
     - `return_of_erroneous_or_reversing_debit` - Code R62. A rare return reason. The
-      originating bank made a mistake earlier and this return corrects it.
+      originating financial institution made a mistake and this return corrects it.
     - `return_of_improper_credit_entry` - Code R36. A rare return reason. Return of
       a malformed credit entry.
     - `return_of_improper_debit_entry` - Code R35. A rare return reason. Return of a

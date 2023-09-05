@@ -72,6 +72,7 @@ class TestExternalAccounts:
         external_account = client.external_accounts.list(
             cursor="string",
             limit=0,
+            routing_number="xxxxxxxxx",
             status={"in": ["active", "active", "active"]},
         )
         assert_matches_type(SyncPage[ExternalAccount], external_account, path=["response"])
@@ -134,6 +135,7 @@ class TestAsyncExternalAccounts:
         external_account = await client.external_accounts.list(
             cursor="string",
             limit=0,
+            routing_number="xxxxxxxxx",
             status={"in": ["active", "active", "active"]},
         )
         assert_matches_type(AsyncPage[ExternalAccount], external_account, path=["response"])
