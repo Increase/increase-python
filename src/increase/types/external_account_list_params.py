@@ -18,6 +18,9 @@ class ExternalAccountListParams(TypedDict, total=False):
     The default (and maximum) is 100 objects.
     """
 
+    routing_number: str
+    """Filter External Accounts to those with the specified Routing Number."""
+
     status: Status
 
 

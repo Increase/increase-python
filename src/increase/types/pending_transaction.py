@@ -366,6 +366,7 @@ class SourceRealTimePaymentsTransferInstruction(BaseModel):
 
 class SourceWireTransferInstruction(BaseModel):
     account_number: str
+    """The account number for the destination account."""
 
     amount: int
     """The pending amount in the minor unit of the transaction's currency.
@@ -374,10 +375,16 @@ class SourceWireTransferInstruction(BaseModel):
     """
 
     message_to_recipient: str
+    """The message that will show on the recipient's bank statement."""
 
     routing_number: str
+    """
+    The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
+    destination account.
+    """
 
     transfer_id: str
+    """The identifier of the Wire Transfer that led to this Pending Transaction."""
 
 
 class Source(BaseModel):

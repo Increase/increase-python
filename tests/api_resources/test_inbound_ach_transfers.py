@@ -57,6 +57,22 @@ class TestInboundACHTransfers:
         assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
 
     @parametrize
+    def test_method_notification_of_change(self, client: Increase) -> None:
+        inbound_ach_transfer = client.inbound_ach_transfers.notification_of_change(
+            "string",
+        )
+        assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
+
+    @parametrize
+    def test_method_notification_of_change_with_all_params(self, client: Increase) -> None:
+        inbound_ach_transfer = client.inbound_ach_transfers.notification_of_change(
+            "string",
+            updated_account_number="x",
+            updated_routing_number="x",
+        )
+        assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
+
+    @parametrize
     def test_method_transfer_return(self, client: Increase) -> None:
         inbound_ach_transfer = client.inbound_ach_transfers.transfer_return(
             "string",
@@ -102,6 +118,22 @@ class TestAsyncInboundACHTransfers:
     async def test_method_decline(self, client: AsyncIncrease) -> None:
         inbound_ach_transfer = await client.inbound_ach_transfers.decline(
             "string",
+        )
+        assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
+
+    @parametrize
+    async def test_method_notification_of_change(self, client: AsyncIncrease) -> None:
+        inbound_ach_transfer = await client.inbound_ach_transfers.notification_of_change(
+            "string",
+        )
+        assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
+
+    @parametrize
+    async def test_method_notification_of_change_with_all_params(self, client: AsyncIncrease) -> None:
+        inbound_ach_transfer = await client.inbound_ach_transfers.notification_of_change(
+            "string",
+            updated_account_number="x",
+            updated_routing_number="x",
         )
         assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
 

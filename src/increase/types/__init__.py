@@ -104,6 +104,9 @@ from .balance_lookup_lookup_params import (
 from .check_transfer_create_params import (
     CheckTransferCreateParams as CheckTransferCreateParams,
 )
+from .entity_update_address_params import (
+    EntityUpdateAddressParams as EntityUpdateAddressParams,
+)
 from .external_account_list_params import (
     ExternalAccountListParams as ExternalAccountListParams,
 )
@@ -193,4 +196,7 @@ from .real_time_payments_transfer_create_params import (
 )
 from .inbound_ach_transfer_transfer_return_params import (
     InboundACHTransferTransferReturnParams as InboundACHTransferTransferReturnParams,
+)
+from .inbound_ach_transfer_notification_of_change_params import (
+    InboundACHTransferNotificationOfChangeParams as InboundACHTransferNotificationOfChangeParams,
 )

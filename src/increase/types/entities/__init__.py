@@ -15,3 +15,6 @@ from .supplemental_document_list_params import (
 from .supplemental_document_create_params import (
     SupplementalDocumentCreateParams as SupplementalDocumentCreateParams,
 )
+from .beneficial_owner_update_address_params import (
+    BeneficialOwnerUpdateAddressParams as BeneficialOwnerUpdateAddressParams,
+)

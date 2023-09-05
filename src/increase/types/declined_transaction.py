@@ -62,16 +62,22 @@ class SourceACHDecline(BaseModel):
 
     - `ach_route_canceled` - The account number is canceled.
     - `ach_route_disabled` - The account number is disabled.
-    - `breaches_limit` - The transaction would cause a limit to be exceeded.
-    - `credit_entry_refused_by_receiver` - A credit was refused.
-    - `duplicate_return` - Other.
+    - `breaches_limit` - The transaction would cause an Increase limit to be
+      exceeded.
+    - `credit_entry_refused_by_receiver` - A credit was refused. This is a
+      reasonable default reason for decline of credits.
+    - `duplicate_return` - A rare return reason. The return this message refers to
+      was a duplicate.
     - `entity_not_active` - The account's entity is not active.
     - `group_locked` - Your account is inactive.
     - `insufficient_funds` - Your account contains insufficient funds.
-    - `misrouted_return` - Other.
-    - `return_of_erroneous_or_reversing_debit` - Other.
+    - `misrouted_return` - A rare return reason. The return this message refers to
+      was misrouted.
+    - `return_of_erroneous_or_reversing_debit` - The originating financial
+      institution made a mistake and this return corrects it.
     - `no_ach_route` - The account number that was debited does not exist.
-    - `originator_request` - Other.
+    - `originator_request` - The originating financial institution asked for this
+      transfer to be returned.
     - `transaction_not_allowed` - The transaction is not allowed per Increase's
       terms.
     - `user_initiated` - The user initiated the decline.
@@ -301,6 +307,11 @@ class SourceCheckDecline(BaseModel):
     """
 
     auxiliary_on_us: Optional[str]
+    """
+    A computer-readable number printed on the MICR line of business checks, usually
+    the check number. This is useful for positive pay checks, but can be unreliably
+    transmitted by the bank of first deposit.
+    """
 
     reason: Literal[
         "ach_route_canceled",
@@ -484,34 +495,53 @@ class SourceWireDecline(BaseModel):
     """
 
     beneficiary_address_line1: Optional[str]
+    """A free-form address field set by the sender."""
 
     beneficiary_address_line2: Optional[str]
+    """A free-form address field set by the sender."""
 
     beneficiary_address_line3: Optional[str]
+    """A free-form address field set by the sender."""
 
     beneficiary_name: Optional[str]
+    """A name set by the sender."""
 
     beneficiary_reference: Optional[str]
+    """A free-form reference string set by the sender, to help identify the transfer."""
 
     description: str
+    """An Increase-constructed description of the declined transaction."""
 
     input_message_accountability_data: Optional[str]
+    """
+    A unique identifier available to the originating and receiving banks, commonly
+    abbreviated as IMAD. It is created when the wire is submitted to the Fedwire
+    service and is helpful when debugging wires with the originating bank.
+    """
 
     originator_address_line1: Optional[str]
+    """The address of the wire originator, set by the sending bank."""
 
     originator_address_line2: Optional[str]
+    """The address of the wire originator, set by the sending bank."""
 
     originator_address_line3: Optional[str]
+    """The address of the wire originator, set by the sending bank."""
 
     originator_name: Optional[str]
+    """The originator of the wire, set by the sending bank."""
 
     originator_to_beneficiary_information_line1: Optional[str]
+    """A free-form message set by the wire originator."""
 
     originator_to_beneficiary_information_line2: Optional[str]
+    """A free-form message set by the wire originator."""
 
     originator_to_beneficiary_information_line3: Optional[str]
+    """A free-form message set by the wire originator."""
 
     originator_to_beneficiary_information_line4: Optional[str]
+    """A free-form message set by the wire originator."""
 
     reason: Literal[
         "account_number_canceled",

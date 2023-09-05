@@ -97,6 +97,35 @@ class TestBeneficialOwners:
         )
         assert_matches_type(Entity, beneficial_owner, path=["response"])
 
+    @parametrize
+    def test_method_update_address(self, client: Increase) -> None:
+        beneficial_owner = client.entities.beneficial_owners.update_address(
+            address={
+                "line1": "x",
+                "city": "x",
+                "state": "x",
+                "zip": "x",
+            },
+            beneficial_owner_id="string",
+            entity_id="string",
+        )
+        assert_matches_type(Entity, beneficial_owner, path=["response"])
+
+    @parametrize
+    def test_method_update_address_with_all_params(self, client: Increase) -> None:
+        beneficial_owner = client.entities.beneficial_owners.update_address(
+            address={
+                "line1": "x",
+                "line2": "x",
+                "city": "x",
+                "state": "x",
+                "zip": "x",
+            },
+            beneficial_owner_id="string",
+            entity_id="string",
+        )
+        assert_matches_type(Entity, beneficial_owner, path=["response"])
+
 
 class TestAsyncBeneficialOwners:
     strict_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
@@ -175,6 +204,35 @@ class TestAsyncBeneficialOwners:
     @parametrize
     async def test_method_archive(self, client: AsyncIncrease) -> None:
         beneficial_owner = await client.entities.beneficial_owners.archive(
+            beneficial_owner_id="string",
+            entity_id="string",
+        )
+        assert_matches_type(Entity, beneficial_owner, path=["response"])
+
+    @parametrize
+    async def test_method_update_address(self, client: AsyncIncrease) -> None:
+        beneficial_owner = await client.entities.beneficial_owners.update_address(
+            address={
+                "line1": "x",
+                "city": "x",
+                "state": "x",
+                "zip": "x",
+            },
+            beneficial_owner_id="string",
+            entity_id="string",
+        )
+        assert_matches_type(Entity, beneficial_owner, path=["response"])
+
+    @parametrize
+    async def test_method_update_address_with_all_params(self, client: AsyncIncrease) -> None:
+        beneficial_owner = await client.entities.beneficial_owners.update_address(
+            address={
+                "line1": "x",
+                "line2": "x",
+                "city": "x",
+                "state": "x",
+                "zip": "x",
+            },
             beneficial_owner_id="string",
             entity_id="string",
         )

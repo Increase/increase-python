@@ -6,7 +6,7 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["InboundACHTransfer", "Acceptance", "Decline", "TransferReturn"]
+__all__ = ["InboundACHTransfer", "Acceptance", "Decline", "NotificationOfChange", "TransferReturn"]
 
 
 class Acceptance(BaseModel):
@@ -44,20 +44,34 @@ class Decline(BaseModel):
 
     - `ach_route_canceled` - The account number is canceled.
     - `ach_route_disabled` - The account number is disabled.
-    - `breaches_limit` - The transaction would cause a limit to be exceeded.
-    - `credit_entry_refused_by_receiver` - A credit was refused.
-    - `duplicate_return` - Other.
+    - `breaches_limit` - The transaction would cause an Increase limit to be
+      exceeded.
+    - `credit_entry_refused_by_receiver` - A credit was refused. This is a
+      reasonable default reason for decline of credits.
+    - `duplicate_return` - A rare return reason. The return this message refers to
+      was a duplicate.
     - `entity_not_active` - The account's entity is not active.
     - `group_locked` - Your account is inactive.
     - `insufficient_funds` - Your account contains insufficient funds.
-    - `misrouted_return` - Other.
-    - `return_of_erroneous_or_reversing_debit` - Other.
+    - `misrouted_return` - A rare return reason. The return this message refers to
+      was misrouted.
+    - `return_of_erroneous_or_reversing_debit` - The originating financial
+      institution made a mistake and this return corrects it.
     - `no_ach_route` - The account number that was debited does not exist.
-    - `originator_request` - Other.
+    - `originator_request` - The originating financial institution asked for this
+      transfer to be returned.
     - `transaction_not_allowed` - The transaction is not allowed per Increase's
       terms.
     - `user_initiated` - The user initiated the decline.
     """
+
+
+class NotificationOfChange(BaseModel):
+    updated_account_number: Optional[str]
+    """The new account number provided in the notification of change"""
+
+    updated_routing_number: Optional[str]
+    """The new account number provided in the notification of change"""
 
 
 class TransferReturn(BaseModel):
@@ -106,6 +120,9 @@ class InboundACHTransfer(BaseModel):
     acceptance: Optional[Acceptance]
     """If your transfer is accepted, this will contain details of the acceptance."""
 
+    account_number_id: str
+    """The identifier of the Account Number to which this transfer was sent."""
+
     amount: int
     """The transfer amount in USD cents."""
 
@@ -120,6 +137,12 @@ class InboundACHTransfer(BaseModel):
 
     - `credit` - Credit
     - `debit` - Debit
+    """
+
+    notification_of_change: Optional[NotificationOfChange]
+    """
+    If you initiate a notification of change in response to the transfer, this will
+    contain its details.
     """
 
     originator_company_descriptive_date: Optional[str]
