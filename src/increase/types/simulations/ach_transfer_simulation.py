@@ -107,16 +107,22 @@ class DeclinedTransactionSourceACHDecline(BaseModel):
 
     - `ach_route_canceled` - The account number is canceled.
     - `ach_route_disabled` - The account number is disabled.
-    - `breaches_limit` - The transaction would cause a limit to be exceeded.
-    - `credit_entry_refused_by_receiver` - A credit was refused.
-    - `duplicate_return` - Other.
+    - `breaches_limit` - The transaction would cause an Increase limit to be
+      exceeded.
+    - `credit_entry_refused_by_receiver` - A credit was refused. This is a
+      reasonable default reason for decline of credits.
+    - `duplicate_return` - A rare return reason. The return this message refers to
+      was a duplicate.
     - `entity_not_active` - The account's entity is not active.
     - `group_locked` - Your account is inactive.
     - `insufficient_funds` - Your account contains insufficient funds.
-    - `misrouted_return` - Other.
-    - `return_of_erroneous_or_reversing_debit` - Other.
+    - `misrouted_return` - A rare return reason. The return this message refers to
+      was misrouted.
+    - `return_of_erroneous_or_reversing_debit` - The originating financial
+      institution made a mistake and this return corrects it.
     - `no_ach_route` - The account number that was debited does not exist.
-    - `originator_request` - Other.
+    - `originator_request` - The originating financial institution asked for this
+      transfer to be returned.
     - `transaction_not_allowed` - The transaction is not allowed per Increase's
       terms.
     - `user_initiated` - The user initiated the decline.
@@ -346,6 +352,11 @@ class DeclinedTransactionSourceCheckDecline(BaseModel):
     """
 
     auxiliary_on_us: Optional[str]
+    """
+    A computer-readable number printed on the MICR line of business checks, usually
+    the check number. This is useful for positive pay checks, but can be unreliably
+    transmitted by the bank of first deposit.
+    """
 
     reason: Literal[
         "ach_route_canceled",
@@ -529,34 +540,53 @@ class DeclinedTransactionSourceWireDecline(BaseModel):
     """
 
     beneficiary_address_line1: Optional[str]
+    """A free-form address field set by the sender."""
 
     beneficiary_address_line2: Optional[str]
+    """A free-form address field set by the sender."""
 
     beneficiary_address_line3: Optional[str]
+    """A free-form address field set by the sender."""
 
     beneficiary_name: Optional[str]
+    """A name set by the sender."""
 
     beneficiary_reference: Optional[str]
+    """A free-form reference string set by the sender, to help identify the transfer."""
 
     description: str
+    """An Increase-constructed description of the declined transaction."""
 
     input_message_accountability_data: Optional[str]
+    """
+    A unique identifier available to the originating and receiving banks, commonly
+    abbreviated as IMAD. It is created when the wire is submitted to the Fedwire
+    service and is helpful when debugging wires with the originating bank.
+    """
 
     originator_address_line1: Optional[str]
+    """The address of the wire originator, set by the sending bank."""
 
     originator_address_line2: Optional[str]
+    """The address of the wire originator, set by the sending bank."""
 
     originator_address_line3: Optional[str]
+    """The address of the wire originator, set by the sending bank."""
 
     originator_name: Optional[str]
+    """The originator of the wire, set by the sending bank."""
 
     originator_to_beneficiary_information_line1: Optional[str]
+    """A free-form message set by the wire originator."""
 
     originator_to_beneficiary_information_line2: Optional[str]
+    """A free-form message set by the wire originator."""
 
     originator_to_beneficiary_information_line3: Optional[str]
+    """A free-form message set by the wire originator."""
 
     originator_to_beneficiary_information_line4: Optional[str]
+    """A free-form message set by the wire originator."""
 
     reason: Literal[
         "account_number_canceled",
@@ -754,6 +784,7 @@ class TransactionSourceAccountTransferIntention(BaseModel):
 
 class TransactionSourceACHTransferIntention(BaseModel):
     account_number: str
+    """The account number for the destination account."""
 
     amount: int
     """The amount in the minor unit of the transaction's currency.
@@ -762,8 +793,13 @@ class TransactionSourceACHTransferIntention(BaseModel):
     """
 
     routing_number: str
+    """
+    The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
+    destination account.
+    """
 
     statement_descriptor: str
+    """A description set when the ACH Transfer was created."""
 
     transfer_id: str
     """The identifier of the ACH Transfer that led to this Transaction."""
@@ -891,7 +927,7 @@ class TransactionSourceACHTransferReturn(BaseModel):
     - `enr_invalid_individual_name` - Code R45. The individual name field was
       invalid.
     - `returned_per_odfi_request` - Code R06. The originating financial institution
-      reversed the transfer.
+      asked for this transfer to be returned.
     - `limited_participation_dfi` - Code R34. The receiving bank's regulatory
       supervisor has limited their participation.
     - `incorrectly_coded_outbound_international_payment` - Code R85. The outbound
@@ -978,7 +1014,7 @@ class TransactionSourceACHTransferReturn(BaseModel):
       bank disputes that an earlier `duplicate_entry` return was actually a
       duplicate.
     - `return_of_erroneous_or_reversing_debit` - Code R62. A rare return reason. The
-      originating bank made a mistake earlier and this return corrects it.
+      originating financial institution made a mistake and this return corrects it.
     - `return_of_improper_credit_entry` - Code R36. A rare return reason. Return of
       a malformed credit entry.
     - `return_of_improper_debit_entry` - Code R35. A rare return reason. Return of a
@@ -2091,6 +2127,9 @@ class TransactionSourceCheckDepositReturn(BaseModel):
         "endorsement_irregular",
     ]
     """
+    Why this check was returned by the bank holding the account it was drawn
+    against.
+
     - `ach_conversion_not_supported` - The check doesn't allow ACH conversion.
     - `closed_account` - The account is closed.
     - `duplicate_submission` - The check has already been deposited.
@@ -2245,20 +2284,41 @@ class TransactionSourceInboundACHTransfer(BaseModel):
     """
 
     originator_company_descriptive_date: Optional[str]
+    """The description of the date of the transfer, usually in the format `YYMMDD`."""
 
     originator_company_discretionary_data: Optional[str]
+    """Data set by the originator."""
 
     originator_company_entry_description: str
+    """An informational description of the transfer."""
 
     originator_company_id: str
+    """An identifier for the originating company.
+
+    This is generally, but not always, a stable identifier across multiple
+    transfers.
+    """
 
     originator_company_name: str
+    """A name set by the originator to identify themselves."""
 
     receiver_id_number: Optional[str]
+    """The originator's identifier for the transfer receipient."""
 
     receiver_name: Optional[str]
+    """The name of the transfer recipient.
+
+    This value is informational and not verified by Increase.
+    """
 
     trace_number: str
+    """
+    A 15 digit number recorded in the Nacha file and available to both the
+    originating and receiving bank. Along with the amount, date, and originating
+    routing number, this can be used to identify the ACH transfer at either bank.
+    ACH trace numbers are not unique, but are
+    [used to correlate returns](https://increase.com/documentation/ach#returns).
+    """
 
     transfer_id: str
     """The inbound ach transfer's identifier."""
@@ -2279,10 +2339,16 @@ class TransactionSourceInboundCheck(BaseModel):
     """
 
     check_front_image_file_id: Optional[str]
+    """The front image of the check. This is a black and white TIFF image file."""
 
     check_number: Optional[str]
+    """The number of the check.
+
+    This field is set by the depositing bank and can be unreliable.
+    """
 
     check_rear_image_file_id: Optional[str]
+    """The rear image of the check. This is a black and white TIFF image file."""
 
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
@@ -2423,28 +2489,56 @@ class TransactionSourceInboundWireDrawdownPayment(BaseModel):
     """
 
     beneficiary_address_line1: Optional[str]
+    """A free-form address field set by the sender."""
 
     beneficiary_address_line2: Optional[str]
+    """A free-form address field set by the sender."""
 
     beneficiary_address_line3: Optional[str]
+    """A free-form address field set by the sender."""
 
     beneficiary_name: Optional[str]
+    """A name set by the sender."""
 
     beneficiary_reference: Optional[str]
+    """A free-form reference string set by the sender, to help identify the transfer."""
 
     description: str
+    """An Increase-constructed description of the transfer."""
 
     input_message_accountability_data: Optional[str]
+    """
+    A unique identifier available to the originating and receiving banks, commonly
+    abbreviated as IMAD. It is created when the wire is submitted to the Fedwire
+    service and is helpful when debugging wires with the receiving bank.
+    """
 
     originator_address_line1: Optional[str]
+    """The address of the wire originator, set by the sending bank."""
 
     originator_address_line2: Optional[str]
+    """The address of the wire originator, set by the sending bank."""
 
     originator_address_line3: Optional[str]
+    """The address of the wire originator, set by the sending bank."""
 
     originator_name: Optional[str]
+    """The originator of the wire, set by the sending bank."""
 
     originator_to_beneficiary_information: Optional[str]
+    """An Increase-created concatenation of the Originator-to-Beneficiary lines."""
+
+    originator_to_beneficiary_information_line1: Optional[str]
+    """A free-form message set by the wire originator."""
+
+    originator_to_beneficiary_information_line2: Optional[str]
+    """A free-form message set by the wire originator."""
+
+    originator_to_beneficiary_information_line3: Optional[str]
+    """A free-form message set by the wire originator."""
+
+    originator_to_beneficiary_information_line4: Optional[str]
+    """A free-form message set by the wire originator."""
 
 
 class TransactionSourceInboundWireDrawdownPaymentReversal(BaseModel):
@@ -2481,7 +2575,7 @@ class TransactionSourceInboundWireDrawdownPaymentReversal(BaseModel):
 
 class TransactionSourceInboundWireReversal(BaseModel):
     amount: int
-    """The amount that was reversed."""
+    """The amount that was reversed in USD cents."""
 
     created_at: datetime
     """
@@ -2490,13 +2584,19 @@ class TransactionSourceInboundWireReversal(BaseModel):
     """
 
     description: str
-    """The description on the reversal message from Fedwire."""
+    """
+    The description on the reversal message from Fedwire, set by the reversing bank.
+    """
 
     financial_institution_to_financial_institution_information: Optional[str]
     """Additional financial institution information included in the wire reversal."""
 
     input_cycle_date: date
-    """The Fedwire cycle date for the wire reversal."""
+    """The Fedwire cycle date for the wire reversal.
+
+    The "Fedwire day" begins at 9:00 PM Eastern Time on the evening before the
+    `cycle date`.
+    """
 
     input_message_accountability_data: str
     """The Fedwire transaction identifier."""
@@ -2508,7 +2608,10 @@ class TransactionSourceInboundWireReversal(BaseModel):
     """The Fedwire input source identifier."""
 
     previous_message_input_cycle_date: date
-    """The Fedwire cycle date for the wire transfer that was reversed."""
+    """
+    The Fedwire cycle date for the wire transfer that is being reversed by this
+    message.
+    """
 
     previous_message_input_message_accountability_data: str
     """The Fedwire transaction identifier for the wire transfer that was reversed."""
@@ -2534,42 +2637,59 @@ class TransactionSourceInboundWireReversal(BaseModel):
 
 class TransactionSourceInboundWireTransfer(BaseModel):
     amount: int
-    """The amount in the minor unit of the transaction's currency.
-
-    For dollars, for example, this is cents.
-    """
+    """The amount in USD cents."""
 
     beneficiary_address_line1: Optional[str]
+    """A free-form address field set by the sender."""
 
     beneficiary_address_line2: Optional[str]
+    """A free-form address field set by the sender."""
 
     beneficiary_address_line3: Optional[str]
+    """A free-form address field set by the sender."""
 
     beneficiary_name: Optional[str]
+    """A name set by the sender."""
 
     beneficiary_reference: Optional[str]
+    """A free-form reference string set by the sender, to help identify the transfer."""
 
     description: str
+    """An Increase-constructed description of the transfer."""
 
     input_message_accountability_data: Optional[str]
+    """
+    A unique identifier available to the originating and receiving banks, commonly
+    abbreviated as IMAD. It is created when the wire is submitted to the Fedwire
+    service and is helpful when debugging wires with the originating bank.
+    """
 
     originator_address_line1: Optional[str]
+    """The address of the wire originator, set by the sending bank."""
 
     originator_address_line2: Optional[str]
+    """The address of the wire originator, set by the sending bank."""
 
     originator_address_line3: Optional[str]
+    """The address of the wire originator, set by the sending bank."""
 
     originator_name: Optional[str]
+    """The originator of the wire, set by the sending bank."""
 
     originator_to_beneficiary_information: Optional[str]
+    """An Increase-created concatenation of the Originator-to-Beneficiary lines."""
 
     originator_to_beneficiary_information_line1: Optional[str]
+    """A free-form message set by the wire originator."""
 
     originator_to_beneficiary_information_line2: Optional[str]
+    """A free-form message set by the wire originator."""
 
     originator_to_beneficiary_information_line3: Optional[str]
+    """A free-form message set by the wire originator."""
 
     originator_to_beneficiary_information_line4: Optional[str]
+    """A free-form message set by the wire originator."""
 
 
 class TransactionSourceInterestPayment(BaseModel):
@@ -2637,7 +2757,10 @@ class TransactionSourceInternalSource(BaseModel):
         "sample_funds",
         "sample_funds_return",
     ]
-    """
+    """An Internal Source is a transaction between you and Increase.
+
+    This describes the reason for the transaction.
+
     - `account_closure` - Account closure
     - `bank_migration` - Bank migration
     - `cashback` - Cashback
@@ -2690,10 +2813,12 @@ class TransactionSourceWireTransferIntention(BaseModel):
     """The American Bankers' Association (ABA) Routing Transit Number (RTN)."""
 
     transfer_id: str
+    """The identifier of the Wire Transfer that led to this Transaction."""
 
 
 class TransactionSourceWireTransferRejection(BaseModel):
     transfer_id: str
+    """The identifier of the Wire Transfer that led to this Transaction."""
 
 
 class TransactionSource(BaseModel):

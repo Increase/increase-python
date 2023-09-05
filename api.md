@@ -380,6 +380,7 @@ Methods:
 - <code title="get /entities/{entity_id}">client.entities.<a href="./src/increase/resources/entities/entities.py">retrieve</a>(entity_id) -> <a href="./src/increase/types/entity.py">Entity</a></code>
 - <code title="get /entities">client.entities.<a href="./src/increase/resources/entities/entities.py">list</a>(\*\*<a href="src/increase/types/entity_list_params.py">params</a>) -> <a href="./src/increase/types/entity.py">SyncPage[Entity]</a></code>
 - <code title="post /entities/{entity_id}/archive">client.entities.<a href="./src/increase/resources/entities/entities.py">archive</a>(entity_id) -> <a href="./src/increase/types/entity.py">Entity</a></code>
+- <code title="post /entities/{entity_id}/address">client.entities.<a href="./src/increase/resources/entities/entities.py">update_address</a>(entity_id, \*\*<a href="src/increase/types/entity_update_address_params.py">params</a>) -> <a href="./src/increase/types/entity.py">Entity</a></code>
 
 ## BeneficialOwners
 
@@ -387,6 +388,7 @@ Methods:
 
 - <code title="post /entity_beneficial_owners">client.entities.beneficial_owners.<a href="./src/increase/resources/entities/beneficial_owners.py">create</a>(\*\*<a href="src/increase/types/entities/beneficial_owner_create_params.py">params</a>) -> <a href="./src/increase/types/entity.py">Entity</a></code>
 - <code title="post /entity_beneficial_owners/archive">client.entities.beneficial_owners.<a href="./src/increase/resources/entities/beneficial_owners.py">archive</a>(\*\*<a href="src/increase/types/entities/beneficial_owner_archive_params.py">params</a>) -> <a href="./src/increase/types/entity.py">Entity</a></code>
+- <code title="post /entity_beneficial_owners/address">client.entities.beneficial_owners.<a href="./src/increase/resources/entities/beneficial_owners.py">update_address</a>(\*\*<a href="src/increase/types/entities/beneficial_owner_update_address_params.py">params</a>) -> <a href="./src/increase/types/entity.py">Entity</a></code>
 
 ## SupplementalDocuments
 
@@ -414,6 +416,7 @@ Methods:
 - <code title="get /inbound_ach_transfers/{inbound_ach_transfer_id}">client.inbound_ach_transfers.<a href="./src/increase/resources/inbound_ach_transfers.py">retrieve</a>(inbound_ach_transfer_id) -> <a href="./src/increase/types/inbound_ach_transfer.py">InboundACHTransfer</a></code>
 - <code title="get /inbound_ach_transfers">client.inbound_ach_transfers.<a href="./src/increase/resources/inbound_ach_transfers.py">list</a>(\*\*<a href="src/increase/types/inbound_ach_transfer_list_params.py">params</a>) -> <a href="./src/increase/types/inbound_ach_transfer.py">SyncPage[InboundACHTransfer]</a></code>
 - <code title="post /inbound_ach_transfers/{inbound_ach_transfer_id}/decline">client.inbound_ach_transfers.<a href="./src/increase/resources/inbound_ach_transfers.py">decline</a>(inbound_ach_transfer_id) -> <a href="./src/increase/types/inbound_ach_transfer.py">InboundACHTransfer</a></code>
+- <code title="post /inbound_ach_transfers/{inbound_ach_transfer_id}/notification_of_change">client.inbound_ach_transfers.<a href="./src/increase/resources/inbound_ach_transfers.py">notification_of_change</a>(inbound_ach_transfer_id, \*\*<a href="src/increase/types/inbound_ach_transfer_notification_of_change_params.py">params</a>) -> <a href="./src/increase/types/inbound_ach_transfer.py">InboundACHTransfer</a></code>
 - <code title="post /inbound_ach_transfers/{inbound_ach_transfer_id}/transfer_return">client.inbound_ach_transfers.<a href="./src/increase/resources/inbound_ach_transfers.py">transfer_return</a>(inbound_ach_transfer_id, \*\*<a href="src/increase/types/inbound_ach_transfer_transfer_return_params.py">params</a>) -> <a href="./src/increase/types/inbound_ach_transfer.py">InboundACHTransfer</a></code>
 
 # InboundWireDrawdownRequests

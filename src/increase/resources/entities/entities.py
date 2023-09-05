@@ -5,7 +5,12 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, List
 from typing_extensions import Literal
 
-from ...types import Entity, entity_list_params, entity_create_params
+from ...types import (
+    Entity,
+    entity_list_params,
+    entity_create_params,
+    entity_update_address_params,
+)
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -242,6 +247,50 @@ class Entities(SyncAPIResource):
             cast_to=Entity,
         )
 
+    def update_address(
+        self,
+        entity_id: str,
+        *,
+        address: entity_update_address_params.Address,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> Entity:
+        """
+        Update a Natural Person or Corporation's address
+
+        Args:
+          entity_id: The identifier of the Entity to archive.
+
+          address: The entity's physical address. Post Office Boxes are disallowed.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        return self._post(
+            f"/entities/{entity_id}/address",
+            body=maybe_transform({"address": address}, entity_update_address_params.EntityUpdateAddressParams),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=Entity,
+        )
+
 
 class AsyncEntities(AsyncAPIResource):
     beneficial_owners: AsyncBeneficialOwners
@@ -455,6 +504,50 @@ class AsyncEntities(AsyncAPIResource):
         """
         return await self._post(
             f"/entities/{entity_id}/archive",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=Entity,
+        )
+
+    async def update_address(
+        self,
+        entity_id: str,
+        *,
+        address: entity_update_address_params.Address,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> Entity:
+        """
+        Update a Natural Person or Corporation's address
+
+        Args:
+          entity_id: The identifier of the Entity to archive.
+
+          address: The entity's physical address. Post Office Boxes are disallowed.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        return await self._post(
+            f"/entities/{entity_id}/address",
+            body=maybe_transform({"address": address}, entity_update_address_params.EntityUpdateAddressParams),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
