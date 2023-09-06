@@ -37,9 +37,7 @@ class TestPendingTransactions:
     def test_method_list_with_all_params(self, client: Increase) -> None:
         pending_transaction = client.pending_transactions.list(
             account_id="string",
-            category={
-                "in": ["account_transfer_instruction", "account_transfer_instruction", "account_transfer_instruction"]
-            },
+            category={"in": ["account_transfer_instruction", "ach_transfer_instruction", "card_authorization"]},
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -50,7 +48,7 @@ class TestPendingTransactions:
             limit=0,
             route_id="string",
             source_id="string",
-            status={"in": ["pending", "pending", "pending"]},
+            status={"in": ["pending", "complete"]},
         )
         assert_matches_type(SyncPage[PendingTransaction], pending_transaction, path=["response"])
 
@@ -76,9 +74,7 @@ class TestAsyncPendingTransactions:
     async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
         pending_transaction = await client.pending_transactions.list(
             account_id="string",
-            category={
-                "in": ["account_transfer_instruction", "account_transfer_instruction", "account_transfer_instruction"]
-            },
+            category={"in": ["account_transfer_instruction", "ach_transfer_instruction", "card_authorization"]},
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -89,6 +85,6 @@ class TestAsyncPendingTransactions:
             limit=0,
             route_id="string",
             source_id="string",
-            status={"in": ["pending", "pending", "pending"]},
+            status={"in": ["pending", "complete"]},
         )
         assert_matches_type(AsyncPage[PendingTransaction], pending_transaction, path=["response"])
