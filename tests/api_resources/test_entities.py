@@ -83,7 +83,7 @@ class TestEntities:
                             },
                         },
                         "company_title": "x",
-                        "prongs": ["ownership", "ownership", "ownership"],
+                        "prongs": ["ownership", "control"],
                     },
                     {
                         "individual": {
@@ -121,7 +121,7 @@ class TestEntities:
                             },
                         },
                         "company_title": "x",
-                        "prongs": ["ownership", "ownership", "ownership"],
+                        "prongs": ["ownership", "control"],
                     },
                     {
                         "individual": {
@@ -159,7 +159,7 @@ class TestEntities:
                             },
                         },
                         "company_title": "x",
-                        "prongs": ["ownership", "ownership", "ownership"],
+                        "prongs": ["ownership", "control"],
                     },
                 ],
             },
@@ -598,7 +598,7 @@ class TestAsyncEntities:
                             },
                         },
                         "company_title": "x",
-                        "prongs": ["ownership", "ownership", "ownership"],
+                        "prongs": ["ownership", "control"],
                     },
                     {
                         "individual": {
@@ -636,7 +636,7 @@ class TestAsyncEntities:
                             },
                         },
                         "company_title": "x",
-                        "prongs": ["ownership", "ownership", "ownership"],
+                        "prongs": ["ownership", "control"],
                     },
                     {
                         "individual": {
@@ -674,7 +674,7 @@ class TestAsyncEntities:
                             },
                         },
                         "company_title": "x",
-                        "prongs": ["ownership", "ownership", "ownership"],
+                        "prongs": ["ownership", "control"],
                     },
                 ],
             },

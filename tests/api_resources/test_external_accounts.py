@@ -73,7 +73,7 @@ class TestExternalAccounts:
             cursor="string",
             limit=0,
             routing_number="xxxxxxxxx",
-            status={"in": ["active", "active", "active"]},
+            status={"in": ["active", "archived"]},
         )
         assert_matches_type(SyncPage[ExternalAccount], external_account, path=["response"])
 
@@ -136,6 +136,6 @@ class TestAsyncExternalAccounts:
             cursor="string",
             limit=0,
             routing_number="xxxxxxxxx",
-            status={"in": ["active", "active", "active"]},
+            status={"in": ["active", "archived"]},
         )
         assert_matches_type(AsyncPage[ExternalAccount], external_account, path=["response"])

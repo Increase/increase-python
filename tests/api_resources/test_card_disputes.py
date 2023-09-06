@@ -52,7 +52,7 @@ class TestCardDisputes:
             },
             cursor="string",
             limit=0,
-            status={"in": ["pending_reviewing", "pending_reviewing", "pending_reviewing"]},
+            status={"in": ["pending_reviewing", "accepted", "rejected"]},
         )
         assert_matches_type(SyncPage[CardDispute], card_dispute, path=["response"])
 
@@ -93,6 +93,6 @@ class TestAsyncCardDisputes:
             },
             cursor="string",
             limit=0,
-            status={"in": ["pending_reviewing", "pending_reviewing", "pending_reviewing"]},
+            status={"in": ["pending_reviewing", "accepted", "rejected"]},
         )
         assert_matches_type(AsyncPage[CardDispute], card_dispute, path=["response"])
