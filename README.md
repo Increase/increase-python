@@ -18,6 +18,8 @@ pip install increase
 
 ## Usage
 
+The full API of this library can be found in [api.md](https://www.github.com/increase/increase-python/blob/main/api.md).
+
 ```python
 from increase import Increase
 
