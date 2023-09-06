@@ -38,7 +38,7 @@ class TestBeneficialOwners:
                         "number": "xxxx",
                     },
                 },
-                "prongs": ["ownership", "ownership", "ownership"],
+                "prongs": ["ownership", "control"],
             },
             entity_id="string",
         )
@@ -83,7 +83,7 @@ class TestBeneficialOwners:
                     },
                 },
                 "company_title": "x",
-                "prongs": ["ownership", "ownership", "ownership"],
+                "prongs": ["ownership", "control"],
             },
             entity_id="string",
         )
@@ -150,7 +150,7 @@ class TestAsyncBeneficialOwners:
                         "number": "xxxx",
                     },
                 },
-                "prongs": ["ownership", "ownership", "ownership"],
+                "prongs": ["ownership", "control"],
             },
             entity_id="string",
         )
@@ -195,7 +195,7 @@ class TestAsyncBeneficialOwners:
                     },
                 },
                 "company_title": "x",
-                "prongs": ["ownership", "ownership", "ownership"],
+                "prongs": ["ownership", "control"],
             },
             entity_id="string",
         )
