@@ -458,7 +458,7 @@ class Trust(BaseModel):
     """The grantor of the trust. Will be present if the `category` is `revocable`."""
 
     name: str
-    """The trust's name"""
+    """The trust's name."""
 
     tax_identifier: Optional[str]
     """The Employer Identification Number (EIN) of the trust itself."""

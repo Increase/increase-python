@@ -40,7 +40,7 @@ class Decline(BaseModel):
         "transaction_not_allowed",
         "user_initiated",
     ]
-    """The reason for the transfer decline
+    """The reason for the transfer decline.
 
     - `ach_route_canceled` - The account number is canceled.
     - `ach_route_disabled` - The account number is disabled.
@@ -68,10 +68,10 @@ class Decline(BaseModel):
 
 class NotificationOfChange(BaseModel):
     updated_account_number: Optional[str]
-    """The new account number provided in the notification of change"""
+    """The new account number provided in the notification of change."""
 
     updated_routing_number: Optional[str]
-    """The new account number provided in the notification of change"""
+    """The new account number provided in the notification of change."""
 
 
 class TransferReturn(BaseModel):
@@ -85,7 +85,7 @@ class TransferReturn(BaseModel):
         "duplicate_entry",
         "corporate_customer_advised_not_authorized",
     ]
-    """The reason for the transfer return
+    """The reason for the transfer return.
 
     - `authorization_revoked_by_customer` - The customer no longer authorizes this
       transaction. The Nacha return code is R07.

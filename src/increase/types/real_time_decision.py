@@ -83,7 +83,7 @@ class CardAuthorizationNetworkDetailsVisa(BaseModel):
     ]
     """
     The method used to enter the cardholder's primary account number and card
-    expiration date
+    expiration date.
 
     - `unknown` - Unknown
     - `manual` - Manual key entry
@@ -103,13 +103,13 @@ class CardAuthorizationNetworkDetailsVisa(BaseModel):
 
 class CardAuthorizationNetworkDetails(BaseModel):
     category: Literal["visa"]
-    """The payment network used to process this card authorization
+    """The payment network used to process this card authorization.
 
     - `visa` - Visa
     """
 
     visa: Optional[CardAuthorizationNetworkDetailsVisa]
-    """Fields specific to the `visa` network"""
+    """Fields specific to the `visa` network."""
 
 
 class CardAuthorizationRequestDetailsIncrementalAuthorization(BaseModel):
@@ -127,7 +127,7 @@ class CardAuthorizationRequestDetails(BaseModel):
     category: Literal["initial_authorization", "incremental_authorization"]
     """
     The type of this request (e.g., an initial authorization or an incremental
-    authorization.)
+    authorization).
 
     - `initial_authorization` - A regular, standalone authorization.
     - `incremental_authorization` - An incremental request to increase the amount of
@@ -183,7 +183,7 @@ class CardAuthorization(BaseModel):
     """The merchant descriptor of the merchant the card is transacting with."""
 
     network_details: CardAuthorizationNetworkDetails
-    """Fields specific to the `network`"""
+    """Fields specific to the `network`."""
 
     physical_card_id: Optional[str]
     """

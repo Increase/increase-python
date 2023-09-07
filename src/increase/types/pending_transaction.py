@@ -122,7 +122,7 @@ class SourceCardAuthorizationNetworkDetailsVisa(BaseModel):
     ]
     """
     The method used to enter the cardholder's primary account number and card
-    expiration date
+    expiration date.
 
     - `unknown` - Unknown
     - `manual` - Manual key entry
@@ -142,13 +142,13 @@ class SourceCardAuthorizationNetworkDetailsVisa(BaseModel):
 
 class SourceCardAuthorizationNetworkDetails(BaseModel):
     category: Literal["visa"]
-    """The payment network used to process this card authorization
+    """The payment network used to process this card authorization.
 
     - `visa` - Visa
     """
 
     visa: Optional[SourceCardAuthorizationNetworkDetailsVisa]
-    """Fields specific to the `visa` network"""
+    """Fields specific to the `visa` network."""
 
 
 class SourceCardAuthorization(BaseModel):
@@ -208,7 +208,7 @@ class SourceCardAuthorization(BaseModel):
     """The merchant descriptor of the merchant the card is transacting with."""
 
     network_details: SourceCardAuthorizationNetworkDetails
-    """Fields specific to the `network`"""
+    """Fields specific to the `network`."""
 
     pending_transaction_id: Optional[str]
     """The identifier of the Pending Transaction associated with this Transaction."""

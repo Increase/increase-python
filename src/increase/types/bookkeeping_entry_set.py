@@ -28,7 +28,7 @@ class BookkeepingEntrySet(BaseModel):
     """The timestamp of the entry set."""
 
     entries: List[Entry]
-    """The entries"""
+    """The entries."""
 
     transaction_id: Optional[str]
     """The transaction identifier, if any."""
