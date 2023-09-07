@@ -149,7 +149,7 @@ class LineItem(BaseModel):
     """Sales tax rate for this line item."""
 
     total_amount: Optional[int]
-    """Total amount of all line items"""
+    """Total amount of all line items."""
 
     total_amount_currency: Optional[str]
     """
@@ -164,7 +164,7 @@ class LineItem(BaseModel):
     """The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the unit cost."""
 
     unit_of_measure_code: Optional[str]
-    """Code indicating unit of measure (gallons, etc.)"""
+    """Code indicating unit of measure (gallons, etc.)."""
 
 
 class CardPurchaseSupplement(BaseModel):

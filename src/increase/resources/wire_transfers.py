@@ -298,7 +298,7 @@ class WireTransfers(SyncAPIResource):
         Simulates the reversal of a [Wire Transfer](#wire-transfers) by the Federal
         Reserve due to error conditions. This will also create a
         [Transaction](#transaction) to account for the returned funds. This Wire
-        Transfer must first have a `status` of `complete`.'
+        Transfer must first have a `status` of `complete`.
 
         Args:
           wire_transfer_id: The identifier of the Wire Transfer you wish to reverse.
@@ -654,7 +654,7 @@ class AsyncWireTransfers(AsyncAPIResource):
         Simulates the reversal of a [Wire Transfer](#wire-transfers) by the Federal
         Reserve due to error conditions. This will also create a
         [Transaction](#transaction) to account for the returned funds. This Wire
-        Transfer must first have a `status` of `complete`.'
+        Transfer must first have a `status` of `complete`.
 
         Args:
           wire_transfer_id: The identifier of the Wire Transfer you wish to reverse.
