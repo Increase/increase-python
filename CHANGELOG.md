@@ -1,5 +1,37 @@
 # Changelog
 
+## 0.12.4 (2023-09-11)
+
+Full Changelog: [v0.12.3...v0.12.4](https://github.com/increase/increase-python/compare/v0.12.3...v0.12.4)
+
+### Features
+
+* **api:** add bank_of_first_deposit_routing_number and transfer_id properties ([#103](https://github.com/increase/increase-python/issues/103)) ([9409881](https://github.com/increase/increase-python/commit/9409881165df777f9ad62edb2765632c3d710f12))
+* **api:** add Update Address  and Create Notification Change endpoints ([#109](https://github.com/increase/increase-python/issues/109)) ([feea47b](https://github.com/increase/increase-python/commit/feea47b868d7aec4defe0877bb57de1b0540db83))
+* fixes tests where an array has to have unique enum values ([#111](https://github.com/increase/increase-python/issues/111)) ([b80e33c](https://github.com/increase/increase-python/commit/b80e33c401127eaab5fd17385da21d3875577a66))
+
+
+### Bug Fixes
+
+* **client:** properly handle optional file params ([#110](https://github.com/increase/increase-python/issues/110)) ([f6ccd02](https://github.com/increase/increase-python/commit/f6ccd0252554f20f57ce68a92b055350907875ac))
+
+
+### Chores
+
+* **internal:** add `pydantic.generics` import for compatibility ([#105](https://github.com/increase/increase-python/issues/105)) ([1ab67a5](https://github.com/increase/increase-python/commit/1ab67a51b1710075bd940f69ebd6a844bb92d676))
+* **internal:** minor formatting changes ([#108](https://github.com/increase/increase-python/issues/108)) ([210a1b1](https://github.com/increase/increase-python/commit/210a1b124e56dbc586600feff12ce4de4904e4d7))
+* **internal:** minor update ([#113](https://github.com/increase/increase-python/issues/113)) ([7adf2f7](https://github.com/increase/increase-python/commit/7adf2f73f7f1fbc4c52463120ea2895e0ea809d2))
+* **internal:** update base client ([#112](https://github.com/increase/increase-python/issues/112)) ([cf9ce31](https://github.com/increase/increase-python/commit/cf9ce31ad44747295ca2627b194ad0acac26a1a6))
+* **internal:** update pyright ([#117](https://github.com/increase/increase-python/issues/117)) ([75f249e](https://github.com/increase/increase-python/commit/75f249e2a389b45a7b6e2d120344d0897525129a))
+* **internal:** updates ([#116](https://github.com/increase/increase-python/issues/116)) ([e940de3](https://github.com/increase/increase-python/commit/e940de30aa7eedf5ff01c4e2df35258432b58b23))
+
+
+### Documentation
+
+* **api:** add docstrings and refine enum types ([#115](https://github.com/increase/increase-python/issues/115)) ([d44b0e2](https://github.com/increase/increase-python/commit/d44b0e211dbeecb349c7ac8b21d24bd66359db5c))
+* **readme:** add link to api.md ([#114](https://github.com/increase/increase-python/issues/114)) ([e435324](https://github.com/increase/increase-python/commit/e43532404639f86c706d8adf0300ee4bdc49bd4b))
+* **readme:** reference pydantic helpers ([#107](https://github.com/increase/increase-python/issues/107)) ([72ef120](https://github.com/increase/increase-python/commit/72ef120f8297770a71c2a87663cf5108316d0f9e))
+
 ## 0.12.3 (2023-08-29)
 
 Full Changelog: [v0.12.2...v0.12.3](https://github.com/Increase/increase-python/compare/v0.12.2...v0.12.3)
