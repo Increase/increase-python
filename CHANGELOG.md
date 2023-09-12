@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.13.0 (2023-09-12)
+
+Full Changelog: [v0.12.4...v0.13.0](https://github.com/increase/increase-python/compare/v0.12.4...v0.13.0)
+
+### ⚠ BREAKING CHANGES
+
+* **api:** remove Limits API, add ACH controls to Account Numbers   ([#118](https://github.com/increase/increase-python/issues/118))
+
+### Features
+
+* **api:** remove Limits API, add ACH controls to Account Numbers   ([#118](https://github.com/increase/increase-python/issues/118)) ([fbaa6dd](https://github.com/increase/increase-python/commit/fbaa6dd6febffcb7038664f75e2c3f6a6e362454))
+
 ## 0.12.4 (2023-09-11)
 
 Full Changelog: [v0.12.3...v0.12.4](https://github.com/increase/increase-python/compare/v0.12.3...v0.12.4)
