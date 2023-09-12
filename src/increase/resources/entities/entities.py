@@ -219,11 +219,13 @@ class Entities(SyncAPIResource):
         timeout: float | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Entity:
-        """
-        Archive an Entity
+        """Archive an Entity
 
         Args:
           entity_id: The identifier of the Entity to archive.
+
+        Any accounts associated with an entity
+              must be closed before the entity can be archived.
 
           extra_headers: Send extra headers
 
@@ -486,11 +488,13 @@ class AsyncEntities(AsyncAPIResource):
         timeout: float | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Entity:
-        """
-        Archive an Entity
+        """Archive an Entity
 
         Args:
           entity_id: The identifier of the Entity to archive.
+
+        Any accounts associated with an entity
+              must be closed before the entity can be archived.
 
           extra_headers: Send extra headers
 

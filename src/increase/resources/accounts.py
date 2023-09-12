@@ -234,11 +234,12 @@ class Accounts(SyncAPIResource):
         timeout: float | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Account:
-        """
-        Close an Account
+        """Close an Account
 
         Args:
           account_id: The identifier of the Account to close.
+
+        The account must have a zero balance.
 
           extra_headers: Send extra headers
 
@@ -478,11 +479,12 @@ class AsyncAccounts(AsyncAPIResource):
         timeout: float | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Account:
-        """
-        Close an Account
+        """Close an Account
 
         Args:
           account_id: The identifier of the Account to close.
+
+        The account must have a zero balance.
 
           extra_headers: Send extra headers
 

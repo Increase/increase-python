@@ -257,21 +257,6 @@ Methods:
 - <code title="get /declined_transactions/{declined_transaction_id}">client.declined_transactions.<a href="./src/increase/resources/declined_transactions.py">retrieve</a>(declined_transaction_id) -> <a href="./src/increase/types/declined_transaction.py">DeclinedTransaction</a></code>
 - <code title="get /declined_transactions">client.declined_transactions.<a href="./src/increase/resources/declined_transactions.py">list</a>(\*\*<a href="src/increase/types/declined_transaction_list_params.py">params</a>) -> <a href="./src/increase/types/declined_transaction.py">SyncPage[DeclinedTransaction]</a></code>
 
-# Limits
-
-Types:
-
-```python
-from increase.types import Limit
-```
-
-Methods:
-
-- <code title="post /limits">client.limits.<a href="./src/increase/resources/limits.py">create</a>(\*\*<a href="src/increase/types/limit_create_params.py">params</a>) -> <a href="./src/increase/types/limit.py">Limit</a></code>
-- <code title="get /limits/{limit_id}">client.limits.<a href="./src/increase/resources/limits.py">retrieve</a>(limit_id) -> <a href="./src/increase/types/limit.py">Limit</a></code>
-- <code title="patch /limits/{limit_id}">client.limits.<a href="./src/increase/resources/limits.py">update</a>(limit_id, \*\*<a href="src/increase/types/limit_update_params.py">params</a>) -> <a href="./src/increase/types/limit.py">Limit</a></code>
-- <code title="get /limits">client.limits.<a href="./src/increase/resources/limits.py">list</a>(\*\*<a href="src/increase/types/limit_list_params.py">params</a>) -> <a href="./src/increase/types/limit.py">SyncPage[Limit]</a></code>
-
 # AccountTransfers
 
 Types:
