@@ -5,7 +5,19 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["AccountNumber"]
+__all__ = ["AccountNumber", "InboundACH"]
+
+
+class InboundACH(BaseModel):
+    debit_status: Literal["allowed", "blocked"]
+    """Whether ACH debits are allowed against this Account Number.
+
+    Note that they will still be declined if this is `allowed` if the Account Number
+    is not active.
+
+    - `allowed` - ACH Debits are allowed.
+    - `blocked` - ACH Debits are blocked.
+    """
 
 
 class AccountNumber(BaseModel):
@@ -23,6 +35,9 @@ class AccountNumber(BaseModel):
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
     Number was created.
     """
+
+    inbound_ach: InboundACH
+    """Properties related to how this Account Number handles inbound ACH transfers."""
 
     name: str
     """The name you choose for the Account Number."""

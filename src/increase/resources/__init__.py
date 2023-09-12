@@ -4,7 +4,6 @@ from .cards import Cards, AsyncCards
 from .files import Files, AsyncFiles
 from .events import Events, AsyncEvents
 from .groups import Groups, AsyncGroups
-from .limits import Limits, AsyncLimits
 from .exports import Exports, AsyncExports
 from .accounts import Accounts, AsyncAccounts
 from .entities import Entities, AsyncEntities
@@ -88,8 +87,6 @@ __all__ = [
     "AsyncPrograms",
     "DeclinedTransactions",
     "AsyncDeclinedTransactions",
-    "Limits",
-    "AsyncLimits",
     "AccountTransfers",
     "AsyncAccountTransfers",
     "ACHTransfers",
