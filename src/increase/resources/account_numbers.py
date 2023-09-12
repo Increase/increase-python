@@ -25,6 +25,7 @@ class AccountNumbers(SyncAPIResource):
         *,
         account_id: str,
         name: str,
+        inbound_ach: account_number_create_params.InboundACH | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -40,6 +41,8 @@ class AccountNumbers(SyncAPIResource):
           account_id: The Account the Account Number should belong to.
 
           name: The name you choose for the Account Number.
+
+          inbound_ach: Options related to how this Account Number should handle inbound ACH transfers.
 
           extra_headers: Send extra headers
 
@@ -57,6 +60,7 @@ class AccountNumbers(SyncAPIResource):
                 {
                     "account_id": account_id,
                     "name": name,
+                    "inbound_ach": inbound_ach,
                 },
                 account_number_create_params.AccountNumberCreateParams,
             ),
@@ -107,6 +111,7 @@ class AccountNumbers(SyncAPIResource):
         self,
         account_number_id: str,
         *,
+        inbound_ach: account_number_update_params.InboundACH | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
         status: Literal["active", "disabled", "canceled"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -122,6 +127,8 @@ class AccountNumbers(SyncAPIResource):
 
         Args:
           account_number_id: The identifier of the Account Number.
+
+          inbound_ach: Options related to how this Account Number handles inbound ACH transfers.
 
           name: The name you choose for the Account Number.
 
@@ -145,6 +152,7 @@ class AccountNumbers(SyncAPIResource):
             f"/account_numbers/{account_number_id}",
             body=maybe_transform(
                 {
+                    "inbound_ach": inbound_ach,
                     "name": name,
                     "status": status,
                 },
@@ -229,6 +237,7 @@ class AsyncAccountNumbers(AsyncAPIResource):
         *,
         account_id: str,
         name: str,
+        inbound_ach: account_number_create_params.InboundACH | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -244,6 +253,8 @@ class AsyncAccountNumbers(AsyncAPIResource):
           account_id: The Account the Account Number should belong to.
 
           name: The name you choose for the Account Number.
+
+          inbound_ach: Options related to how this Account Number should handle inbound ACH transfers.
 
           extra_headers: Send extra headers
 
@@ -261,6 +272,7 @@ class AsyncAccountNumbers(AsyncAPIResource):
                 {
                     "account_id": account_id,
                     "name": name,
+                    "inbound_ach": inbound_ach,
                 },
                 account_number_create_params.AccountNumberCreateParams,
             ),
@@ -311,6 +323,7 @@ class AsyncAccountNumbers(AsyncAPIResource):
         self,
         account_number_id: str,
         *,
+        inbound_ach: account_number_update_params.InboundACH | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
         status: Literal["active", "disabled", "canceled"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -326,6 +339,8 @@ class AsyncAccountNumbers(AsyncAPIResource):
 
         Args:
           account_number_id: The identifier of the Account Number.
+
+          inbound_ach: Options related to how this Account Number handles inbound ACH transfers.
 
           name: The name you choose for the Account Number.
 
@@ -349,6 +364,7 @@ class AsyncAccountNumbers(AsyncAPIResource):
             f"/account_numbers/{account_number_id}",
             body=maybe_transform(
                 {
+                    "inbound_ach": inbound_ach,
                     "name": name,
                     "status": status,
                 },

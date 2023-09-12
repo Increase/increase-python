@@ -76,7 +76,7 @@ class TestCardProfiles:
         card_profile = client.card_profiles.list(
             cursor="string",
             limit=0,
-            physical_cards_status={"in": ["not_eligible", "rejected", "pending_reviewing"]},
+            physical_cards_status={"in": ["not_eligible", "rejected", "pending_creating"]},
             status={"in": ["pending", "rejected", "active"]},
         )
         assert_matches_type(SyncPage[CardProfile], card_profile, path=["response"])
@@ -150,7 +150,7 @@ class TestAsyncCardProfiles:
         card_profile = await client.card_profiles.list(
             cursor="string",
             limit=0,
-            physical_cards_status={"in": ["not_eligible", "rejected", "pending_reviewing"]},
+            physical_cards_status={"in": ["not_eligible", "rejected", "pending_creating"]},
             status={"in": ["pending", "rejected", "active"]},
         )
         assert_matches_type(AsyncPage[CardProfile], card_profile, path=["response"])

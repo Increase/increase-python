@@ -71,7 +71,6 @@ class Increase(SyncAPIClient):
     pending_transactions: resources.PendingTransactions
     programs: resources.Programs
     declined_transactions: resources.DeclinedTransactions
-    limits: resources.Limits
     account_transfers: resources.AccountTransfers
     ach_transfers: resources.ACHTransfers
     ach_prenotifications: resources.ACHPrenotifications
@@ -176,7 +175,6 @@ class Increase(SyncAPIClient):
         self.pending_transactions = resources.PendingTransactions(self)
         self.programs = resources.Programs(self)
         self.declined_transactions = resources.DeclinedTransactions(self)
-        self.limits = resources.Limits(self)
         self.account_transfers = resources.AccountTransfers(self)
         self.ach_transfers = resources.ACHTransfers(self)
         self.ach_prenotifications = resources.ACHPrenotifications(self)
@@ -353,7 +351,6 @@ class AsyncIncrease(AsyncAPIClient):
     pending_transactions: resources.AsyncPendingTransactions
     programs: resources.AsyncPrograms
     declined_transactions: resources.AsyncDeclinedTransactions
-    limits: resources.AsyncLimits
     account_transfers: resources.AsyncAccountTransfers
     ach_transfers: resources.AsyncACHTransfers
     ach_prenotifications: resources.AsyncACHPrenotifications
@@ -458,7 +455,6 @@ class AsyncIncrease(AsyncAPIClient):
         self.pending_transactions = resources.AsyncPendingTransactions(self)
         self.programs = resources.AsyncPrograms(self)
         self.declined_transactions = resources.AsyncDeclinedTransactions(self)
-        self.limits = resources.AsyncLimits(self)
         self.account_transfers = resources.AsyncAccountTransfers(self)
         self.ach_transfers = resources.AsyncACHTransfers(self)
         self.ach_prenotifications = resources.AsyncACHPrenotifications(self)

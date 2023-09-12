@@ -30,6 +30,15 @@ class TestAccountNumbers:
         assert_matches_type(AccountNumber, account_number, path=["response"])
 
     @parametrize
+    def test_method_create_with_all_params(self, client: Increase) -> None:
+        account_number = client.account_numbers.create(
+            account_id="string",
+            name="x",
+            inbound_ach={"debit_status": "allowed"},
+        )
+        assert_matches_type(AccountNumber, account_number, path=["response"])
+
+    @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         account_number = client.account_numbers.retrieve(
             "string",
@@ -47,6 +56,7 @@ class TestAccountNumbers:
     def test_method_update_with_all_params(self, client: Increase) -> None:
         account_number = client.account_numbers.update(
             "string",
+            inbound_ach={"debit_status": "allowed"},
             name="x",
             status="active",
         )
@@ -88,6 +98,15 @@ class TestAsyncAccountNumbers:
         assert_matches_type(AccountNumber, account_number, path=["response"])
 
     @parametrize
+    async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
+        account_number = await client.account_numbers.create(
+            account_id="string",
+            name="x",
+            inbound_ach={"debit_status": "allowed"},
+        )
+        assert_matches_type(AccountNumber, account_number, path=["response"])
+
+    @parametrize
     async def test_method_retrieve(self, client: AsyncIncrease) -> None:
         account_number = await client.account_numbers.retrieve(
             "string",
@@ -105,6 +124,7 @@ class TestAsyncAccountNumbers:
     async def test_method_update_with_all_params(self, client: AsyncIncrease) -> None:
         account_number = await client.account_numbers.update(
             "string",
+            inbound_ach={"debit_status": "allowed"},
             name="x",
             status="active",
         )

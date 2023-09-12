@@ -26,7 +26,9 @@ class CardProfileListParams(TypedDict, total=False):
 _PhysicalCardsStatusReservedKeywords = TypedDict(
     "_PhysicalCardsStatusReservedKeywords",
     {
-        "in": List[Literal["not_eligible", "rejected", "pending_reviewing", "pending_submitting", "active"]],
+        "in": List[
+            Literal["not_eligible", "rejected", "pending_creating", "pending_reviewing", "pending_submitting", "active"]
+        ],
     },
     total=False,
 )

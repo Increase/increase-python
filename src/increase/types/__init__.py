@@ -6,7 +6,6 @@ from .card import Card as Card
 from .file import File as File
 from .event import Event as Event
 from .group import Group as Group
-from .limit import Limit as Limit
 from .entity import Entity as Entity
 from .export import Export as Export
 from .account import Account as Account
@@ -30,7 +29,6 @@ from .oauth_connection import OauthConnection as OauthConnection
 from .account_statement import AccountStatement as AccountStatement
 from .bookkeeping_entry import BookkeepingEntry as BookkeepingEntry
 from .event_list_params import EventListParams as EventListParams
-from .limit_list_params import LimitListParams as LimitListParams
 from .card_create_params import CardCreateParams as CardCreateParams
 from .card_update_params import CardUpdateParams as CardUpdateParams
 from .entity_list_params import EntityListParams as EntityListParams
@@ -41,8 +39,6 @@ from .real_time_decision import RealTimeDecision as RealTimeDecision
 from .account_list_params import AccountListParams as AccountListParams
 from .ach_prenotification import ACHPrenotification as ACHPrenotification
 from .bookkeeping_account import BookkeepingAccount as BookkeepingAccount
-from .limit_create_params import LimitCreateParams as LimitCreateParams
-from .limit_update_params import LimitUpdateParams as LimitUpdateParams
 from .pending_transaction import PendingTransaction as PendingTransaction
 from .program_list_params import ProgramListParams as ProgramListParams
 from .declined_transaction import DeclinedTransaction as DeclinedTransaction
