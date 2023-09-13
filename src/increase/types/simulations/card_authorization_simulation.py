@@ -207,11 +207,17 @@ class DeclinedTransactionSourceCardDeclineNetworkDetails(BaseModel):
 
 
 class DeclinedTransactionSourceCardDecline(BaseModel):
+    id: str
+    """The Card Decline identifier."""
+
     amount: int
     """The declined amount in the minor unit of the destination account currency.
 
     For dollars, for example, this is cents.
     """
+
+    card_payment_id: Optional[str]
+    """The ID of the Card Payment this transaction belongs to."""
 
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
@@ -1017,6 +1023,9 @@ class PendingTransactionSourceCardAuthorization(BaseModel):
 
     For dollars, for example, this is cents.
     """
+
+    card_payment_id: Optional[str]
+    """The ID of the Card Payment this transaction belongs to."""
 
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """

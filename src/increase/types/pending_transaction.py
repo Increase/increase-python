@@ -161,6 +161,9 @@ class SourceCardAuthorization(BaseModel):
     For dollars, for example, this is cents.
     """
 
+    card_payment_id: Optional[str]
+    """The ID of the Card Payment this transaction belongs to."""
+
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
