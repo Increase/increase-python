@@ -787,6 +787,9 @@ class TransactionSourceCardRefund(BaseModel):
     For dollars, for example, this is cents.
     """
 
+    card_payment_id: Optional[str]
+    """The ID of the Card Payment this transaction belongs to."""
+
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
@@ -1286,9 +1289,12 @@ class TransactionSourceCardSettlement(BaseModel):
 
     card_authorization: Optional[str]
     """
-    The Card Authorization that was created prior to this Card Settlement, if on
+    The Card Authorization that was created prior to this Card Settlement, if one
     exists.
     """
+
+    card_payment_id: Optional[str]
+    """The ID of the Card Payment this transaction belongs to."""
 
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
