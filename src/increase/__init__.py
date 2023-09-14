@@ -12,7 +12,6 @@ from ._client import (
     Transport,
     AsyncClient,
     AsyncStream,
-    ProxiesTypes,
     AsyncIncrease,
     RequestOptions,
 )
