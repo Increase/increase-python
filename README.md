@@ -231,8 +231,8 @@ Error codes are as followed:
 ### Retries
 
 Certain errors will be automatically retried 2 times by default, with a short exponential backoff.
-Connection errors (for example, due to a network connectivity problem), 409 Conflict, 429 Rate Limit,
-and >=500 Internal errors will all be retried by default.
+Connection errors (for example, due to a network connectivity problem), 408 Request Timeout, 409 Conflict,
+429 Rate Limit, and >=500 Internal errors will all be retried by default.
 
 You can use the `max_retries` option to configure or disable this:
 
@@ -280,7 +280,21 @@ On timeout, an `APITimeoutError` is thrown.
 
 Note that requests which time out will be [retried twice by default](#retries).
 
-## Advanced: Configuring custom URLs, proxies, and transports
+## Advanced
+
+### How to tell whether `None` means `null` or missing
+
+In an API response, a field may be explicitly null, or missing entirely; in either case, its value is `None` in this library. You can differentiate the two cases with `.model_fields_set`:
+
+```py
+if response.my_field is None:
+  if 'my_field' not in response.model_fields_set:
+    print('Got json like {}, without a "my_field" key present at all.')
+  else:
+    print('Got json like {"my_field": null}.')
+```
+
+### Configuring custom URLs, proxies, and transports
 
 You can configure the following keyword arguments when instantiating the client:
 
@@ -298,7 +312,7 @@ client = Increase(
 
 See the httpx documentation for information about the [`proxies`](https://www.python-httpx.org/advanced/#http-proxying) and [`transport`](https://www.python-httpx.org/advanced/#custom-transports) keyword arguments.
 
-## Advanced: Managing HTTP resources
+### Managing HTTP resources
 
 By default we will close the underlying HTTP connections whenever the client is [garbage collected](https://docs.python.org/3/reference/datamodel.html#object.__del__) is called but you can also manually close the client using the `.close()` method if desired, or with a context manager that closes when exiting.
 
