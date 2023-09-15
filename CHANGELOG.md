@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.13.1 (2023-09-15)
+
+Full Changelog: [v0.13.0...v0.13.1](https://github.com/increase/increase-python/compare/v0.13.0...v0.13.1)
+
+### Features
+
+* **api:** add card payment ID reference to transaction models ([#122](https://github.com/increase/increase-python/issues/122)) ([3889e03](https://github.com/increase/increase-python/commit/3889e030627a4012a1fe34806d9179d02bb3e177))
+* **client:** retry on 408 Request Timeout ([#124](https://github.com/increase/increase-python/issues/124)) ([a03f74d](https://github.com/increase/increase-python/commit/a03f74d638b43852c2bcfd290ccb0423772dcaec))
+
+
+### Chores
+
+* **internal:** add helpers ([#125](https://github.com/increase/increase-python/issues/125)) ([84bdc21](https://github.com/increase/increase-python/commit/84bdc21b6b348164bb88365fd6802f42ed858472))
+* **internal:** cleaner references to complex union types ([#123](https://github.com/increase/increase-python/issues/123)) ([5851820](https://github.com/increase/increase-python/commit/5851820f415b19ad4e4bbb05b8df9d52e18d1eaf))
+
+
+### Documentation
+
+* add some missing inline documentation ([#120](https://github.com/increase/increase-python/issues/120)) ([dded9b5](https://github.com/increase/increase-python/commit/dded9b59df7fa5a00979709a75cc5b31cf4cc5bc))
+
 ## 0.13.0 (2023-09-12)
 
 Full Changelog: [v0.12.4...v0.13.0](https://github.com/increase/increase-python/compare/v0.12.4...v0.13.0)
