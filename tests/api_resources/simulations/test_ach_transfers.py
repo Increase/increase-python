@@ -9,6 +9,7 @@ import pytest
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
 from increase.types import ACHTransfer
+from increase._utils import parse_datetime
 from increase.types.simulations import ACHTransferSimulation
 
 base_url = os.environ.get("API_BASE_URL", "http://127.0.0.1:4010")
@@ -38,6 +39,7 @@ class TestACHTransfers:
             company_entry_description="x",
             company_id="x",
             company_name="x",
+            resolve_at=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(ACHTransferSimulation, ach_transfer, path=["response"])
 
@@ -90,6 +92,7 @@ class TestAsyncACHTransfers:
             company_entry_description="x",
             company_id="x",
             company_name="x",
+            resolve_at=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(ACHTransferSimulation, ach_transfer, path=["response"])
 

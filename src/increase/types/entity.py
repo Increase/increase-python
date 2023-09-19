@@ -492,7 +492,7 @@ class Entity(BaseModel):
     Will be present if `structure` is equal to `natural_person`.
     """
 
-    relationship: Literal["affiliated", "informational", "unaffiliated"]
+    relationship: Optional[Literal["affiliated", "informational", "unaffiliated"]]
     """The relationship between your group and the entity.
 
     - `affiliated` - The entity is controlled by your group.

@@ -24,7 +24,6 @@ class TestEntities:
     @parametrize
     def test_method_create(self, client: Increase) -> None:
         entity = client.entities.create(
-            relationship="affiliated",
             structure="corporation",
         )
         assert_matches_type(Entity, entity, path=["response"])
@@ -32,7 +31,6 @@ class TestEntities:
     @parametrize
     def test_method_create_with_all_params(self, client: Increase) -> None:
         entity = client.entities.create(
-            relationship="affiliated",
             structure="corporation",
             corporation={
                 "name": "x",
@@ -305,6 +303,7 @@ class TestEntities:
                     },
                 },
             },
+            relationship="affiliated",
             supplemental_documents=[{"file_id": "string"}, {"file_id": "string"}, {"file_id": "string"}],
             trust={
                 "name": "x",
@@ -539,7 +538,6 @@ class TestAsyncEntities:
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
         entity = await client.entities.create(
-            relationship="affiliated",
             structure="corporation",
         )
         assert_matches_type(Entity, entity, path=["response"])
@@ -547,7 +545,6 @@ class TestAsyncEntities:
     @parametrize
     async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         entity = await client.entities.create(
-            relationship="affiliated",
             structure="corporation",
             corporation={
                 "name": "x",
@@ -820,6 +817,7 @@ class TestAsyncEntities:
                     },
                 },
             },
+            relationship="affiliated",
             supplemental_documents=[{"file_id": "string"}, {"file_id": "string"}, {"file_id": "string"}],
             trust={
                 "name": "x",

@@ -52,15 +52,6 @@ __all__ = [
 
 
 class EntityCreateParams(TypedDict, total=False):
-    relationship: Required[Literal["affiliated", "informational", "unaffiliated"]]
-    """The relationship between your group and the entity.
-
-    - `affiliated` - The entity is controlled by your group.
-    - `informational` - The entity is for informational purposes only.
-    - `unaffiliated` - The entity is not controlled by your group, but can still
-      directly open accounts.
-    """
-
     structure: Required[Literal["corporation", "natural_person", "joint", "trust"]]
     """The type of Entity to create.
 
@@ -91,6 +82,15 @@ class EntityCreateParams(TypedDict, total=False):
     Required if `structure` is equal to `natural_person`. Natural people entities
     should be submitted with `social_security_number` or
     `individual_taxpayer_identification_number` identification methods.
+    """
+
+    relationship: Literal["affiliated", "informational", "unaffiliated"]
+    """The relationship between your group and the entity.
+
+    - `affiliated` - The entity is controlled by your group.
+    - `informational` - The entity is for informational purposes only.
+    - `unaffiliated` - The entity is not controlled by your group, but can still
+      directly open accounts.
     """
 
     supplemental_documents: List[SupplementalDocument]

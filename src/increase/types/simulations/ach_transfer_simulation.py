@@ -62,6 +62,11 @@ __all__ = [
     "TransactionSourceSampleFunds",
     "TransactionSourceWireTransferIntention",
     "TransactionSourceWireTransferRejection",
+    "Transfer",
+    "TransferAcceptance",
+    "TransferDecline",
+    "TransferNotificationOfChange",
+    "TransferTransferReturn",
 ]
 
 
@@ -1062,20 +1067,23 @@ class TransactionSourceACHTransferReturn(BaseModel):
     ]
     """Why the ACH Transfer was returned.
 
-    - `insufficient_fund` - Code R01. Insufficient funds in the source account.
+    This reason code is sent by the receiving bank back to Increase.
+
+    - `insufficient_fund` - Code R01. Insufficient funds in the receiving account.
+      Sometimes abbreviated to NSF.
     - `no_account` - Code R03. The account does not exist or the receiving bank was
       unable to locate it.
-    - `account_closed` - Code R02. The account is closed.
+    - `account_closed` - Code R02. The account is closed at the receiving bank.
     - `invalid_account_number_structure` - Code R04. The account number is invalid
       at the receiving bank.
     - `account_frozen_entry_returned_per_ofac_instruction` - Code R16. The account
-      was frozen per the Office of Foreign Assets Control.
+      at the receiving bank was frozen per the Office of Foreign Assets Control.
     - `credit_entry_refused_by_receiver` - Code R23. The receiving bank account
       refused a credit transfer.
     - `unauthorized_debit_to_consumer_account_using_corporate_sec_code` - Code R05.
       The receiving bank rejected because of an incorrect Standard Entry Class code.
     - `corporate_customer_advised_not_authorized` - Code R29. The corporate customer
-      reversed the transfer.
+      at the receiving bank reversed the transfer.
     - `payment_stopped` - Code R08. The receiving bank stopped payment on this
       transfer.
     - `non_transaction_account` - Code R20. The receiving bank account does not
@@ -1085,19 +1093,21 @@ class TransactionSourceACHTransferReturn(BaseModel):
     - `routing_number_check_digit_error` - Code R28. The routing number is
       incorrect.
     - `customer_advised_unauthorized_improper_ineligible_or_incomplete` - Code R10.
-      The customer reversed the transfer.
+      The customer at the receiving bank reversed the transfer.
     - `amount_field_error` - Code R19. The amount field is incorrect or too large.
-    - `authorization_revoked_by_customer` - Code R07. The customer who initiated the
-      transfer revoked authorization.
+    - `authorization_revoked_by_customer` - Code R07. The customer at the receiving
+      institution informed their bank that they have revoked authorization for a
+      previously authorized transfer.
     - `invalid_ach_routing_number` - Code R13. The routing number is invalid.
     - `file_record_edit_criteria` - Code R17. The receiving bank is unable to
       process a field in the transfer.
     - `enr_invalid_individual_name` - Code R45. The individual name field was
       invalid.
     - `returned_per_odfi_request` - Code R06. The originating financial institution
-      asked for this transfer to be returned.
+      asked for this transfer to be returned. The receiving bank is complying with
+      the request.
     - `limited_participation_dfi` - Code R34. The receiving bank's regulatory
-      supervisor has limited their participation.
+      supervisor has limited their participation in the ACH network.
     - `incorrectly_coded_outbound_international_payment` - Code R85. The outbound
       international ACH transfer was incorrect.
     - `account_sold_to_another_dfi` - Code R12. A rare return reason. The account
@@ -1200,7 +1210,7 @@ class TransactionSourceACHTransferReturn(BaseModel):
       attached to the ACH, usually an ACH check conversion, includes a stop payment.
     - `timely_original_return` - Code R73. A rare return reason. The bank receiving
       an `untimely_return` believes it was on time.
-    - `trace_number_error` - Code R27. A rare return reason. An ACH Return's trace
+    - `trace_number_error` - Code R27. A rare return reason. An ACH return's trace
       number does not match an originated ACH.
     - `untimely_dishonored_return` - Code R72. A rare return reason. The dishonored
       return was sent too late.
@@ -3531,6 +3541,186 @@ class Transaction(BaseModel):
     """
 
 
+class TransferAcceptance(BaseModel):
+    accepted_at: datetime
+    """The time at which the transfer was accepted."""
+
+    transaction_id: str
+    """The id of the transaction for the accepted transfer."""
+
+
+class TransferDecline(BaseModel):
+    declined_at: datetime
+    """The time at which the transfer was declined."""
+
+    declined_transaction_id: str
+    """The id of the transaction for the declined transfer."""
+
+    reason: Literal[
+        "ach_route_canceled",
+        "ach_route_disabled",
+        "breaches_limit",
+        "credit_entry_refused_by_receiver",
+        "duplicate_return",
+        "entity_not_active",
+        "group_locked",
+        "insufficient_funds",
+        "misrouted_return",
+        "return_of_erroneous_or_reversing_debit",
+        "no_ach_route",
+        "originator_request",
+        "transaction_not_allowed",
+        "user_initiated",
+    ]
+    """The reason for the transfer decline.
+
+    - `ach_route_canceled` - The account number is canceled.
+    - `ach_route_disabled` - The account number is disabled.
+    - `breaches_limit` - The transaction would cause an Increase limit to be
+      exceeded.
+    - `credit_entry_refused_by_receiver` - A credit was refused. This is a
+      reasonable default reason for decline of credits.
+    - `duplicate_return` - A rare return reason. The return this message refers to
+      was a duplicate.
+    - `entity_not_active` - The account's entity is not active.
+    - `group_locked` - Your account is inactive.
+    - `insufficient_funds` - Your account contains insufficient funds.
+    - `misrouted_return` - A rare return reason. The return this message refers to
+      was misrouted.
+    - `return_of_erroneous_or_reversing_debit` - The originating financial
+      institution made a mistake and this return corrects it.
+    - `no_ach_route` - The account number that was debited does not exist.
+    - `originator_request` - The originating financial institution asked for this
+      transfer to be returned.
+    - `transaction_not_allowed` - The transaction is not allowed per Increase's
+      terms.
+    - `user_initiated` - The user initiated the decline.
+    """
+
+
+class TransferNotificationOfChange(BaseModel):
+    updated_account_number: Optional[str]
+    """The new account number provided in the notification of change."""
+
+    updated_routing_number: Optional[str]
+    """The new account number provided in the notification of change."""
+
+
+class TransferTransferReturn(BaseModel):
+    reason: Literal[
+        "authorization_revoked_by_customer",
+        "payment_stopped",
+        "customer_advised_unauthorized_improper_ineligible_or_incomplete",
+        "representative_payee_deceased_or_unable_to_continue_in_that_capacity",
+        "beneficiary_or_account_holder_deceased",
+        "credit_entry_refused_by_receiver",
+        "duplicate_entry",
+        "corporate_customer_advised_not_authorized",
+    ]
+    """The reason for the transfer return.
+
+    - `authorization_revoked_by_customer` - The customer no longer authorizes this
+      transaction. The Nacha return code is R07.
+    - `payment_stopped` - The customer asked for the payment to be stopped. This
+      reason is only allowed for debits. The Nacha return code is R08.
+    - `customer_advised_unauthorized_improper_ineligible_or_incomplete` - The
+      customer advises that the debit was unauthorized. The Nacha return code is
+      R10.
+    - `representative_payee_deceased_or_unable_to_continue_in_that_capacity` - The
+      payee is deceased. The Nacha return code is R14.
+    - `beneficiary_or_account_holder_deceased` - The account holder is deceased. The
+      Nacha return code is R15.
+    - `credit_entry_refused_by_receiver` - The customer refused a credit entry. This
+      reason is only allowed for credits. The Nacha return code is R23.
+    - `duplicate_entry` - The account holder identified this transaction as a
+      duplicate. The Nacha return code is R24.
+    - `corporate_customer_advised_not_authorized` - The corporate customer no longer
+      authorizes this transaction. The Nacha return code is R29.
+    """
+
+    returned_at: datetime
+    """The time at which the transfer was returned."""
+
+    transaction_id: str
+    """The id of the transaction for the returned transfer."""
+
+
+class Transfer(BaseModel):
+    id: str
+    """The inbound ach transfer's identifier."""
+
+    acceptance: Optional[TransferAcceptance]
+    """If your transfer is accepted, this will contain details of the acceptance."""
+
+    account_number_id: str
+    """The identifier of the Account Number to which this transfer was sent."""
+
+    amount: int
+    """The transfer amount in USD cents."""
+
+    automatically_resolves_at: datetime
+    """The time at which the transfer will be automatically resolved."""
+
+    decline: Optional[TransferDecline]
+    """If your transfer is declined, this will contain details of the decline."""
+
+    direction: Literal["credit", "debit"]
+    """The direction of the transfer.
+
+    - `credit` - Credit
+    - `debit` - Debit
+    """
+
+    notification_of_change: Optional[TransferNotificationOfChange]
+    """
+    If you initiate a notification of change in response to the transfer, this will
+    contain its details.
+    """
+
+    originator_company_descriptive_date: Optional[str]
+    """The descriptive date of the transfer."""
+
+    originator_company_discretionary_data: Optional[str]
+    """The additional information included with the transfer."""
+
+    originator_company_entry_description: str
+    """The description of the transfer."""
+
+    originator_company_id: str
+    """The id of the company that initiated the transfer."""
+
+    originator_company_name: str
+    """The name of the company that initiated the transfer."""
+
+    receiver_id_number: Optional[str]
+    """The id of the receiver of the transfer."""
+
+    receiver_name: Optional[str]
+    """The name of the receiver of the transfer."""
+
+    status: Literal["pending", "declined", "accepted", "returned"]
+    """The status of the transfer.
+
+    - `pending` - The Inbound ACH Transfer is awaiting action, will transition
+      automatically if no action is taken.
+    - `declined` - The Inbound ACH Transfer has been declined.
+    - `accepted` - The Inbound ACH Transfer is accepted.
+    - `returned` - The Inbound ACH Transfer has been returned.
+    """
+
+    trace_number: str
+    """The trace number of the transfer."""
+
+    transfer_return: Optional[TransferTransferReturn]
+    """If your transfer is returned, this will contain details of the return."""
+
+    type: Literal["inbound_ach_transfer"]
+    """A constant representing the object's type.
+
+    For this resource it will always be `inbound_ach_transfer`.
+    """
+
+
 class ACHTransferSimulation(BaseModel):
     declined_transaction: Optional[DeclinedTransaction]
     """
@@ -3545,6 +3735,9 @@ class ACHTransferSimulation(BaseModel):
     [Transaction](#transactions) object. The Transaction's `source` will be of
     `category: inbound_ach_transfer`.
     """
+
+    transfer: Transfer
+    """The Inbound ACH Transfer."""
 
     type: Literal["inbound_ach_transfer_simulation_result"]
     """A constant representing the object's type.

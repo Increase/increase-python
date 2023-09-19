@@ -2,7 +2,11 @@
 
 from __future__ import annotations
 
-from typing_extensions import Required, TypedDict
+from typing import Union
+from datetime import datetime
+from typing_extensions import Required, Annotated, TypedDict
+
+from ..._utils import PropertyInfo
 
 __all__ = ["ACHTransferCreateInboundParams"]
 
@@ -33,3 +37,9 @@ class ACHTransferCreateInboundParams(TypedDict, total=False):
 
     company_name: str
     """The name of the sender."""
+
+    resolve_at: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
+    """The time at which the transfer should be resolved.
+
+    If not provided will resolve immediately.
+    """

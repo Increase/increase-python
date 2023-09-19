@@ -26,6 +26,9 @@ class CardCreateParams(TypedDict, total=False):
     `digital_wallet_authentication_requested`.
     """
 
+    entity_id: str
+    """The Entity the card should belong to."""
+
 
 class BillingAddress(TypedDict, total=False):
     city: Required[str]

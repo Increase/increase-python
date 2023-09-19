@@ -72,6 +72,9 @@ class Card(BaseModel):
     steps.
     """
 
+    entity_id: Optional[str]
+    """The identifier for the entity associated with this card."""
+
     expiration_month: int
     """The month the card expires in M format (e.g., August is 8)."""
 
