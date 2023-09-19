@@ -82,7 +82,7 @@ class BeneficialOwners(SyncAPIResource):
         idempotency_key: str | None = None,
     ) -> Entity:
         """
-        Archive a beneficial owner belonging to a corporate Entity
+        Archive a beneficial owner for a corporate Entity
 
         Args:
           beneficial_owner_id: The identifying details of anyone controlling or owning 25% or more of the
@@ -241,7 +241,7 @@ class AsyncBeneficialOwners(AsyncAPIResource):
         idempotency_key: str | None = None,
     ) -> Entity:
         """
-        Archive a beneficial owner belonging to a corporate Entity
+        Archive a beneficial owner for a corporate Entity
 
         Args:
           beneficial_owner_id: The identifying details of anyone controlling or owning 25% or more of the

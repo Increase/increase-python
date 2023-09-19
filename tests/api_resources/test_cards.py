@@ -45,6 +45,7 @@ class TestCards:
                 "phone": "x",
                 "card_profile_id": "string",
             },
+            entity_id="string",
         )
         assert_matches_type(Card, card, path=["response"])
 
@@ -140,6 +141,7 @@ class TestAsyncCards:
                 "phone": "x",
                 "card_profile_id": "string",
             },
+            entity_id="string",
         )
         assert_matches_type(Card, card, path=["response"])
 
