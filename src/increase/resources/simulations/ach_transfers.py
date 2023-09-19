@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing import Union
+from datetime import datetime
 from typing_extensions import Literal
 
 from ...types import ACHTransfer
@@ -29,6 +31,7 @@ class ACHTransfers(SyncAPIResource):
         company_entry_description: str | NotGiven = NOT_GIVEN,
         company_id: str | NotGiven = NOT_GIVEN,
         company_name: str | NotGiven = NOT_GIVEN,
+        resolve_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -40,11 +43,15 @@ class ACHTransfers(SyncAPIResource):
         """Simulates an inbound ACH transfer to your account.
 
         This imitates initiating a
-        transaction to an Increase account from a different financial institution. The
+        transfer to an Increase account from a different financial institution. The
         transfer may be either a credit or a debit depending on if the `amount` is
-        positive or negative. The result of calling this API will be either a
-        [Transaction](#transactions) or a [Declined Transaction](#declined-transactions)
-        depending on whether or not the transfer is allowed.
+        positive or negative. The result of calling this API will contain the created
+        transfer. You can pass a `resolve_at` parameter to allow for a window to
+        [action on the Inbound ACH Transfer](https://increase.com/documentation/inbound-ach-transfers#inbound-ach-transfers).
+        Alternatively, if you don't pass the `resolve_at` parameter the result will
+        contain either a [Transaction](#transactions) or a
+        [Declined Transaction](#declined-transactions) depending on whether or not the
+        transfer is allowed.
 
         Args:
           account_number_id: The identifier of the Account Number the inbound ACH Transfer is for.
@@ -62,6 +69,9 @@ class ACHTransfers(SyncAPIResource):
           company_id: The sender's company id.
 
           company_name: The name of the sender.
+
+          resolve_at: The time at which the transfer should be resolved. If not provided will resolve
+              immediately.
 
           extra_headers: Send extra headers
 
@@ -84,6 +94,7 @@ class ACHTransfers(SyncAPIResource):
                     "company_entry_description": company_entry_description,
                     "company_id": company_id,
                     "company_name": company_name,
+                    "resolve_at": resolve_at,
                 },
                 ach_transfer_create_inbound_params.ACHTransferCreateInboundParams,
             ),
@@ -193,20 +204,21 @@ class ACHTransfers(SyncAPIResource):
           reason: The reason why the Federal Reserve or destination bank returned this transfer.
               Defaults to `no_account`.
 
-              - `insufficient_fund` - Code R01. Insufficient funds in the source account.
+              - `insufficient_fund` - Code R01. Insufficient funds in the receiving account.
+                Sometimes abbreviated to NSF.
               - `no_account` - Code R03. The account does not exist or the receiving bank was
                 unable to locate it.
-              - `account_closed` - Code R02. The account is closed.
+              - `account_closed` - Code R02. The account is closed at the receiving bank.
               - `invalid_account_number_structure` - Code R04. The account number is invalid
                 at the receiving bank.
               - `account_frozen_entry_returned_per_ofac_instruction` - Code R16. The account
-                was frozen per the Office of Foreign Assets Control.
+                at the receiving bank was frozen per the Office of Foreign Assets Control.
               - `credit_entry_refused_by_receiver` - Code R23. The receiving bank account
                 refused a credit transfer.
               - `unauthorized_debit_to_consumer_account_using_corporate_sec_code` - Code R05.
                 The receiving bank rejected because of an incorrect Standard Entry Class code.
               - `corporate_customer_advised_not_authorized` - Code R29. The corporate customer
-                reversed the transfer.
+                at the receiving bank reversed the transfer.
               - `payment_stopped` - Code R08. The receiving bank stopped payment on this
                 transfer.
               - `non_transaction_account` - Code R20. The receiving bank account does not
@@ -216,19 +228,21 @@ class ACHTransfers(SyncAPIResource):
               - `routing_number_check_digit_error` - Code R28. The routing number is
                 incorrect.
               - `customer_advised_unauthorized_improper_ineligible_or_incomplete` - Code R10.
-                The customer reversed the transfer.
+                The customer at the receiving bank reversed the transfer.
               - `amount_field_error` - Code R19. The amount field is incorrect or too large.
-              - `authorization_revoked_by_customer` - Code R07. The customer who initiated the
-                transfer revoked authorization.
+              - `authorization_revoked_by_customer` - Code R07. The customer at the receiving
+                institution informed their bank that they have revoked authorization for a
+                previously authorized transfer.
               - `invalid_ach_routing_number` - Code R13. The routing number is invalid.
               - `file_record_edit_criteria` - Code R17. The receiving bank is unable to
                 process a field in the transfer.
               - `enr_invalid_individual_name` - Code R45. The individual name field was
                 invalid.
               - `returned_per_odfi_request` - Code R06. The originating financial institution
-                asked for this transfer to be returned.
+                asked for this transfer to be returned. The receiving bank is complying with
+                the request.
               - `limited_participation_dfi` - Code R34. The receiving bank's regulatory
-                supervisor has limited their participation.
+                supervisor has limited their participation in the ACH network.
               - `incorrectly_coded_outbound_international_payment` - Code R85. The outbound
                 international ACH transfer was incorrect.
               - `account_sold_to_another_dfi` - Code R12. A rare return reason. The account
@@ -331,7 +345,7 @@ class ACHTransfers(SyncAPIResource):
                 attached to the ACH, usually an ACH check conversion, includes a stop payment.
               - `timely_original_return` - Code R73. A rare return reason. The bank receiving
                 an `untimely_return` believes it was on time.
-              - `trace_number_error` - Code R27. A rare return reason. An ACH Return's trace
+              - `trace_number_error` - Code R27. A rare return reason. An ACH return's trace
                 number does not match an originated ACH.
               - `untimely_dishonored_return` - Code R72. A rare return reason. The dishonored
                 return was sent too late.
@@ -418,6 +432,7 @@ class AsyncACHTransfers(AsyncAPIResource):
         company_entry_description: str | NotGiven = NOT_GIVEN,
         company_id: str | NotGiven = NOT_GIVEN,
         company_name: str | NotGiven = NOT_GIVEN,
+        resolve_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -429,11 +444,15 @@ class AsyncACHTransfers(AsyncAPIResource):
         """Simulates an inbound ACH transfer to your account.
 
         This imitates initiating a
-        transaction to an Increase account from a different financial institution. The
+        transfer to an Increase account from a different financial institution. The
         transfer may be either a credit or a debit depending on if the `amount` is
-        positive or negative. The result of calling this API will be either a
-        [Transaction](#transactions) or a [Declined Transaction](#declined-transactions)
-        depending on whether or not the transfer is allowed.
+        positive or negative. The result of calling this API will contain the created
+        transfer. You can pass a `resolve_at` parameter to allow for a window to
+        [action on the Inbound ACH Transfer](https://increase.com/documentation/inbound-ach-transfers#inbound-ach-transfers).
+        Alternatively, if you don't pass the `resolve_at` parameter the result will
+        contain either a [Transaction](#transactions) or a
+        [Declined Transaction](#declined-transactions) depending on whether or not the
+        transfer is allowed.
 
         Args:
           account_number_id: The identifier of the Account Number the inbound ACH Transfer is for.
@@ -451,6 +470,9 @@ class AsyncACHTransfers(AsyncAPIResource):
           company_id: The sender's company id.
 
           company_name: The name of the sender.
+
+          resolve_at: The time at which the transfer should be resolved. If not provided will resolve
+              immediately.
 
           extra_headers: Send extra headers
 
@@ -473,6 +495,7 @@ class AsyncACHTransfers(AsyncAPIResource):
                     "company_entry_description": company_entry_description,
                     "company_id": company_id,
                     "company_name": company_name,
+                    "resolve_at": resolve_at,
                 },
                 ach_transfer_create_inbound_params.ACHTransferCreateInboundParams,
             ),
@@ -582,20 +605,21 @@ class AsyncACHTransfers(AsyncAPIResource):
           reason: The reason why the Federal Reserve or destination bank returned this transfer.
               Defaults to `no_account`.
 
-              - `insufficient_fund` - Code R01. Insufficient funds in the source account.
+              - `insufficient_fund` - Code R01. Insufficient funds in the receiving account.
+                Sometimes abbreviated to NSF.
               - `no_account` - Code R03. The account does not exist or the receiving bank was
                 unable to locate it.
-              - `account_closed` - Code R02. The account is closed.
+              - `account_closed` - Code R02. The account is closed at the receiving bank.
               - `invalid_account_number_structure` - Code R04. The account number is invalid
                 at the receiving bank.
               - `account_frozen_entry_returned_per_ofac_instruction` - Code R16. The account
-                was frozen per the Office of Foreign Assets Control.
+                at the receiving bank was frozen per the Office of Foreign Assets Control.
               - `credit_entry_refused_by_receiver` - Code R23. The receiving bank account
                 refused a credit transfer.
               - `unauthorized_debit_to_consumer_account_using_corporate_sec_code` - Code R05.
                 The receiving bank rejected because of an incorrect Standard Entry Class code.
               - `corporate_customer_advised_not_authorized` - Code R29. The corporate customer
-                reversed the transfer.
+                at the receiving bank reversed the transfer.
               - `payment_stopped` - Code R08. The receiving bank stopped payment on this
                 transfer.
               - `non_transaction_account` - Code R20. The receiving bank account does not
@@ -605,19 +629,21 @@ class AsyncACHTransfers(AsyncAPIResource):
               - `routing_number_check_digit_error` - Code R28. The routing number is
                 incorrect.
               - `customer_advised_unauthorized_improper_ineligible_or_incomplete` - Code R10.
-                The customer reversed the transfer.
+                The customer at the receiving bank reversed the transfer.
               - `amount_field_error` - Code R19. The amount field is incorrect or too large.
-              - `authorization_revoked_by_customer` - Code R07. The customer who initiated the
-                transfer revoked authorization.
+              - `authorization_revoked_by_customer` - Code R07. The customer at the receiving
+                institution informed their bank that they have revoked authorization for a
+                previously authorized transfer.
               - `invalid_ach_routing_number` - Code R13. The routing number is invalid.
               - `file_record_edit_criteria` - Code R17. The receiving bank is unable to
                 process a field in the transfer.
               - `enr_invalid_individual_name` - Code R45. The individual name field was
                 invalid.
               - `returned_per_odfi_request` - Code R06. The originating financial institution
-                asked for this transfer to be returned.
+                asked for this transfer to be returned. The receiving bank is complying with
+                the request.
               - `limited_participation_dfi` - Code R34. The receiving bank's regulatory
-                supervisor has limited their participation.
+                supervisor has limited their participation in the ACH network.
               - `incorrectly_coded_outbound_international_payment` - Code R85. The outbound
                 international ACH transfer was incorrect.
               - `account_sold_to_another_dfi` - Code R12. A rare return reason. The account
@@ -720,7 +746,7 @@ class AsyncACHTransfers(AsyncAPIResource):
                 attached to the ACH, usually an ACH check conversion, includes a stop payment.
               - `timely_original_return` - Code R73. A rare return reason. The bank receiving
                 an `untimely_return` believes it was on time.
-              - `trace_number_error` - Code R27. A rare return reason. An ACH Return's trace
+              - `trace_number_error` - Code R27. A rare return reason. An ACH return's trace
                 number does not match an originated ACH.
               - `untimely_dishonored_return` - Code R72. A rare return reason. The dishonored
                 return was sent too late.

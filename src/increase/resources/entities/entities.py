@@ -37,12 +37,12 @@ class Entities(SyncAPIResource):
     def create(
         self,
         *,
-        relationship: Literal["affiliated", "informational", "unaffiliated"],
         structure: Literal["corporation", "natural_person", "joint", "trust"],
         corporation: entity_create_params.Corporation | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         joint: entity_create_params.Joint | NotGiven = NOT_GIVEN,
         natural_person: entity_create_params.NaturalPerson | NotGiven = NOT_GIVEN,
+        relationship: Literal["affiliated", "informational", "unaffiliated"] | NotGiven = NOT_GIVEN,
         supplemental_documents: List[entity_create_params.SupplementalDocument] | NotGiven = NOT_GIVEN,
         trust: entity_create_params.Trust | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -57,13 +57,6 @@ class Entities(SyncAPIResource):
         Create an Entity
 
         Args:
-          relationship: The relationship between your group and the entity.
-
-              - `affiliated` - The entity is controlled by your group.
-              - `informational` - The entity is for informational purposes only.
-              - `unaffiliated` - The entity is not controlled by your group, but can still
-                directly open accounts.
-
           structure: The type of Entity to create.
 
               - `corporation` - A corporation.
@@ -84,6 +77,13 @@ class Entities(SyncAPIResource):
               `social_security_number` or `individual_taxpayer_identification_number`
               identification methods.
 
+          relationship: The relationship between your group and the entity.
+
+              - `affiliated` - The entity is controlled by your group.
+              - `informational` - The entity is for informational purposes only.
+              - `unaffiliated` - The entity is not controlled by your group, but can still
+                directly open accounts.
+
           supplemental_documents: Additional documentation associated with the entity.
 
           trust: Details of the trust entity to create. Required if `structure` is equal to
@@ -103,12 +103,12 @@ class Entities(SyncAPIResource):
             "/entities",
             body=maybe_transform(
                 {
-                    "relationship": relationship,
                     "structure": structure,
                     "corporation": corporation,
                     "description": description,
                     "joint": joint,
                     "natural_person": natural_person,
+                    "relationship": relationship,
                     "supplemental_documents": supplemental_documents,
                     "trust": trust,
                 },
@@ -306,12 +306,12 @@ class AsyncEntities(AsyncAPIResource):
     async def create(
         self,
         *,
-        relationship: Literal["affiliated", "informational", "unaffiliated"],
         structure: Literal["corporation", "natural_person", "joint", "trust"],
         corporation: entity_create_params.Corporation | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         joint: entity_create_params.Joint | NotGiven = NOT_GIVEN,
         natural_person: entity_create_params.NaturalPerson | NotGiven = NOT_GIVEN,
+        relationship: Literal["affiliated", "informational", "unaffiliated"] | NotGiven = NOT_GIVEN,
         supplemental_documents: List[entity_create_params.SupplementalDocument] | NotGiven = NOT_GIVEN,
         trust: entity_create_params.Trust | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -326,13 +326,6 @@ class AsyncEntities(AsyncAPIResource):
         Create an Entity
 
         Args:
-          relationship: The relationship between your group and the entity.
-
-              - `affiliated` - The entity is controlled by your group.
-              - `informational` - The entity is for informational purposes only.
-              - `unaffiliated` - The entity is not controlled by your group, but can still
-                directly open accounts.
-
           structure: The type of Entity to create.
 
               - `corporation` - A corporation.
@@ -353,6 +346,13 @@ class AsyncEntities(AsyncAPIResource):
               `social_security_number` or `individual_taxpayer_identification_number`
               identification methods.
 
+          relationship: The relationship between your group and the entity.
+
+              - `affiliated` - The entity is controlled by your group.
+              - `informational` - The entity is for informational purposes only.
+              - `unaffiliated` - The entity is not controlled by your group, but can still
+                directly open accounts.
+
           supplemental_documents: Additional documentation associated with the entity.
 
           trust: Details of the trust entity to create. Required if `structure` is equal to
@@ -372,12 +372,12 @@ class AsyncEntities(AsyncAPIResource):
             "/entities",
             body=maybe_transform(
                 {
-                    "relationship": relationship,
                     "structure": structure,
                     "corporation": corporation,
                     "description": description,
                     "joint": joint,
                     "natural_person": natural_person,
+                    "relationship": relationship,
                     "supplemental_documents": supplemental_documents,
                     "trust": trust,
                 },
