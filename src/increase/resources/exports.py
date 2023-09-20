@@ -18,7 +18,8 @@ class Exports(SyncAPIResource):
     def create(
         self,
         *,
-        category: Literal["transaction_csv", "balance_csv"],
+        category: Literal["account_statement_ofx", "transaction_csv", "balance_csv"],
+        account_statement_ofx: export_create_params.AccountStatementOfx | NotGiven = NOT_GIVEN,
         balance_csv: export_create_params.BalanceCsv | NotGiven = NOT_GIVEN,
         transaction_csv: export_create_params.TransactionCsv | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -35,9 +36,14 @@ class Exports(SyncAPIResource):
         Args:
           category: The type of Export to create.
 
+              - `account_statement_ofx` - Export an Open Financial Exchange (OFX) file of
+                transactions and balances for a given time range and Account.
               - `transaction_csv` - Export a CSV of all transactions for a given time range.
               - `balance_csv` - Export a CSV of account balances for the dates in a given
                 range.
+
+          account_statement_ofx: Options for the created export. Required if `category` is equal to
+              `account_statement_ofx`.
 
           balance_csv: Options for the created export. Required if `category` is equal to
               `balance_csv`.
@@ -60,6 +66,7 @@ class Exports(SyncAPIResource):
             body=maybe_transform(
                 {
                     "category": category,
+                    "account_statement_ofx": account_statement_ofx,
                     "balance_csv": balance_csv,
                     "transaction_csv": transaction_csv,
                 },
@@ -161,7 +168,8 @@ class AsyncExports(AsyncAPIResource):
     async def create(
         self,
         *,
-        category: Literal["transaction_csv", "balance_csv"],
+        category: Literal["account_statement_ofx", "transaction_csv", "balance_csv"],
+        account_statement_ofx: export_create_params.AccountStatementOfx | NotGiven = NOT_GIVEN,
         balance_csv: export_create_params.BalanceCsv | NotGiven = NOT_GIVEN,
         transaction_csv: export_create_params.TransactionCsv | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -178,9 +186,14 @@ class AsyncExports(AsyncAPIResource):
         Args:
           category: The type of Export to create.
 
+              - `account_statement_ofx` - Export an Open Financial Exchange (OFX) file of
+                transactions and balances for a given time range and Account.
               - `transaction_csv` - Export a CSV of all transactions for a given time range.
               - `balance_csv` - Export a CSV of account balances for the dates in a given
                 range.
+
+          account_statement_ofx: Options for the created export. Required if `category` is equal to
+              `account_statement_ofx`.
 
           balance_csv: Options for the created export. Required if `category` is equal to
               `balance_csv`.
@@ -203,6 +216,7 @@ class AsyncExports(AsyncAPIResource):
             body=maybe_transform(
                 {
                     "category": category,
+                    "account_statement_ofx": account_statement_ofx,
                     "balance_csv": balance_csv,
                     "transaction_csv": transaction_csv,
                 },
