@@ -24,14 +24,23 @@ class TestExports:
     @parametrize
     def test_method_create(self, client: Increase) -> None:
         export = client.exports.create(
-            category="transaction_csv",
+            category="account_statement_ofx",
         )
         assert_matches_type(Export, export, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: Increase) -> None:
         export = client.exports.create(
-            category="transaction_csv",
+            category="account_statement_ofx",
+            account_statement_ofx={
+                "account_id": "string",
+                "created_at": {
+                    "after": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "before": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
+                },
+            },
             balance_csv={
                 "account_id": "string",
                 "created_at": {
@@ -82,14 +91,23 @@ class TestAsyncExports:
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
         export = await client.exports.create(
-            category="transaction_csv",
+            category="account_statement_ofx",
         )
         assert_matches_type(Export, export, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         export = await client.exports.create(
-            category="transaction_csv",
+            category="account_statement_ofx",
+            account_statement_ofx={
+                "account_id": "string",
+                "created_at": {
+                    "after": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "before": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
+                },
+            },
             balance_csv={
                 "account_id": "string",
                 "created_at": {
