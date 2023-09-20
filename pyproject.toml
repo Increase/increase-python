@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "increase"
-version = "0.13.1"
+version = "0.13.2"
 description = "Client library for the increase API"
 readme = "README.md"
 authors = ["Increase <dev-feedback@increase.com>"]

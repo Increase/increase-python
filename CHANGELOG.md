@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.13.2 (2023-09-20)
+
+Full Changelog: [v0.13.1...v0.13.2](https://github.com/Increase/increase-python/compare/v0.13.1...v0.13.2)
+
+### Features
+
+* **api:** add entity_id to Card and make relationship nullable ([#128](https://github.com/Increase/increase-python/issues/128)) ([a1d3ff1](https://github.com/Increase/increase-python/commit/a1d3ff15a653bcfa3241c808c38aed1b8a08dba6))
+* **api:** export account statements in OFX format ([#130](https://github.com/Increase/increase-python/issues/130)) ([9e39727](https://github.com/Increase/increase-python/commit/9e397277d596602e1da5db0a3134564d045a278b))
+
 ## 0.13.1 (2023-09-15)
 
 Full Changelog: [v0.13.0...v0.13.1](https://github.com/increase/increase-python/compare/v0.13.0...v0.13.1)
