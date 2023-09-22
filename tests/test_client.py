@@ -12,7 +12,7 @@ import httpx
 import pytest
 from respx import MockRouter
 
-from increase import Increase, AsyncIncrease
+from increase import Increase, AsyncIncrease, APIResponseValidationError
 from increase._models import BaseModel, FinalRequestOptions
 from increase._base_client import BaseClient, make_request_options
 
@@ -389,6 +389,23 @@ class TestIncrease:
             assert not client.is_closed()
         assert client.is_closed()
 
+    @pytest.mark.respx(base_url=base_url)
+    def test_received_text_for_expected_json(self, respx_mock: MockRouter) -> None:
+        class Model(BaseModel):
+            name: str
+
+        respx_mock.get("/foo").mock(return_value=httpx.Response(200, text="my-custom-format"))
+
+        strict_client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+
+        with pytest.raises(APIResponseValidationError):
+            strict_client.get("/foo", cast_to=Model)
+
+        client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=False)
+
+        response = client.get("/foo", cast_to=Model)
+        assert isinstance(response, str)  # type: ignore[unreachable]
+
 
 class TestAsyncIncrease:
     client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
@@ -753,3 +770,21 @@ class TestAsyncIncrease:
             assert not c2.is_closed()
             assert not client.is_closed()
         assert client.is_closed()
+
+    @pytest.mark.respx(base_url=base_url)
+    @pytest.mark.asyncio
+    async def test_received_text_for_expected_json(self, respx_mock: MockRouter) -> None:
+        class Model(BaseModel):
+            name: str
+
+        respx_mock.get("/foo").mock(return_value=httpx.Response(200, text="my-custom-format"))
+
+        strict_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+
+        with pytest.raises(APIResponseValidationError):
+            await strict_client.get("/foo", cast_to=Model)
+
+        client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=False)
+
+        response = await client.get("/foo", cast_to=Model)
+        assert isinstance(response, str)  # type: ignore[unreachable]
