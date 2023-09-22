@@ -53,18 +53,18 @@ __all__ = [
     "Transport",
     "ProxiesTypes",
     "APIError",
-    "APIConnectionError",
-    "APIResponseValidationError",
     "APIStatusError",
     "APITimeoutError",
-    "AuthenticationError",
+    "APIConnectionError",
+    "APIResponseValidationError",
     "BadRequestError",
-    "ConflictError",
-    "InternalServerError",
-    "NotFoundError",
+    "AuthenticationError",
     "PermissionDeniedError",
-    "RateLimitError",
+    "NotFoundError",
+    "ConflictError",
     "UnprocessableEntityError",
+    "RateLimitError",
+    "InternalServerError",
     "APIMethodNotFoundError",
     "EnvironmentMismatchError",
     "IdempotencyConflictError",
@@ -93,7 +93,7 @@ __all__ = [
 # Update the __module__ attribute for exported symbols so that
 # error messages point to this module instead of the module
 # it was originally defined in, e.g.
-# increase._base_exceptions.NotFoundError -> increase.NotFoundError
+# increase._exceptions.NotFoundError -> increase.NotFoundError
 __locals = locals()
 for __name in __all__:
     if not __name.startswith("__"):
