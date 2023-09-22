@@ -5,7 +5,7 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["AccountNumber", "InboundACH"]
+__all__ = ["AccountNumber", "InboundACH", "InboundChecks"]
 
 
 class InboundACH(BaseModel):
@@ -17,6 +17,17 @@ class InboundACH(BaseModel):
 
     - `allowed` - ACH Debits are allowed.
     - `blocked` - ACH Debits are blocked.
+    """
+
+
+class InboundChecks(BaseModel):
+    status: Literal["allowed", "check_transfers_only"]
+    """How Increase should process checks with this account number printed on them.
+
+    - `allowed` - Checks with this Account Number will be processed even if they are
+      not associated with a Check Transfer.
+    - `check_transfers_only` - Checks with this Account Number will be processed
+      only if they can be matched to an existing Check Transfer.
     """
 
 
@@ -38,6 +49,12 @@ class AccountNumber(BaseModel):
 
     inbound_ach: InboundACH
     """Properties related to how this Account Number handles inbound ACH transfers."""
+
+    inbound_checks: InboundChecks
+    """
+    Properties related to how this Account Number should handle inbound check
+    withdrawls.
+    """
 
     name: str
     """The name you choose for the Account Number."""

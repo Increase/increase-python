@@ -2009,6 +2009,12 @@ class SourceInboundWireDrawdownPayment(BaseModel):
     originator_name: Optional[str]
     """The originator of the wire, set by the sending bank."""
 
+    originator_routing_number: Optional[str]
+    """
+    The American Banking Association (ABA) routing number of the bank originating
+    the transfer.
+    """
+
     originator_to_beneficiary_information: Optional[str]
     """An Increase-created concatenation of the Originator-to-Beneficiary lines."""
 
@@ -2043,6 +2049,12 @@ class SourceInboundWireDrawdownPaymentReversal(BaseModel):
 
     input_source: str
     """The Fedwire input source identifier."""
+
+    originator_routing_number: Optional[str]
+    """
+    The American Banking Association (ABA) routing number of the bank originating
+    the transfer.
+    """
 
     previous_message_input_cycle_date: date
     """The Fedwire cycle date for the wire transfer that was reversed."""
@@ -2090,6 +2102,12 @@ class SourceInboundWireReversal(BaseModel):
 
     input_source: str
     """The Fedwire input source identifier."""
+
+    originator_routing_number: Optional[str]
+    """
+    The American Banking Association (ABA) routing number of the bank originating
+    the transfer.
+    """
 
     previous_message_input_cycle_date: date
     """
@@ -2159,6 +2177,12 @@ class SourceInboundWireTransfer(BaseModel):
 
     originator_name: Optional[str]
     """The originator of the wire, set by the sending bank."""
+
+    originator_routing_number: Optional[str]
+    """
+    The American Banking Association (ABA) routing number of the bank originating
+    the transfer.
+    """
 
     originator_to_beneficiary_information: Optional[str]
     """An Increase-created concatenation of the Originator-to-Beneficiary lines."""

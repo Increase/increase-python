@@ -699,6 +699,12 @@ class SourceWireDecline(BaseModel):
     originator_name: Optional[str]
     """The originator of the wire, set by the sending bank."""
 
+    originator_routing_number: Optional[str]
+    """
+    The American Banking Association (ABA) routing number of the bank originating
+    the transfer.
+    """
+
     originator_to_beneficiary_information_line1: Optional[str]
     """A free-form message set by the wire originator."""
 

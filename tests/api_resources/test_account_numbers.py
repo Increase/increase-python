@@ -35,6 +35,7 @@ class TestAccountNumbers:
             account_id="string",
             name="x",
             inbound_ach={"debit_status": "allowed"},
+            inbound_checks={"status": "allowed"},
         )
         assert_matches_type(AccountNumber, account_number, path=["response"])
 
@@ -103,6 +104,7 @@ class TestAsyncAccountNumbers:
             account_id="string",
             name="x",
             inbound_ach={"debit_status": "allowed"},
+            inbound_checks={"status": "allowed"},
         )
         assert_matches_type(AccountNumber, account_number, path=["response"])
 
