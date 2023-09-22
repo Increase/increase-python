@@ -9,8 +9,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from . import resources
-from . import _exceptions as exceptions
+from . import resources, _exceptions
 from ._qs import Querystring
 from ._types import (
     NOT_GIVEN,
@@ -24,6 +23,7 @@ from ._utils import is_mapping
 from ._version import __version__
 from ._streaming import Stream as Stream
 from ._streaming import AsyncStream as AsyncStream
+from ._exceptions import APIStatusError
 from ._base_client import (
     DEFAULT_LIMITS,
     DEFAULT_TIMEOUT,
@@ -268,58 +268,53 @@ class Increase(SyncAPIClient):
         err_msg: str,
         *,
         body: object,
-        request: httpx.Request,
         response: httpx.Response,
-    ) -> exceptions.APIStatusError:
-        if not is_mapping(body):
-            return super()._make_status_error(err_msg, request=request, response=response, body=body)
-
-        type_ = body.get("type")
+    ) -> APIStatusError:
+        type_ = body.get("type") if is_mapping(body) else None
         if type_ == "invalid_parameters_error":
-            return exceptions.InvalidParametersError(err_msg, request=request, response=response, body=body)
+            return _exceptions.InvalidParametersError(err_msg, response=response, body=body)
 
         if type_ == "malformed_request_error":
-            return exceptions.MalformedRequestError(err_msg, request=request, response=response, body=body)
+            return _exceptions.MalformedRequestError(err_msg, response=response, body=body)
 
         if type_ == "invalid_api_key_error":
-            return exceptions.InvalidAPIKeyError(err_msg, request=request, response=response, body=body)
+            return _exceptions.InvalidAPIKeyError(err_msg, response=response, body=body)
 
         if type_ == "environment_mismatch_error":
-            return exceptions.EnvironmentMismatchError(err_msg, request=request, response=response, body=body)
+            return _exceptions.EnvironmentMismatchError(err_msg, response=response, body=body)
 
         if type_ == "insufficient_permissions_error":
-            return exceptions.InsufficientPermissionsError(err_msg, request=request, response=response, body=body)
+            return _exceptions.InsufficientPermissionsError(err_msg, response=response, body=body)
 
         if type_ == "private_feature_error":
-            return exceptions.PrivateFeatureError(err_msg, request=request, response=response, body=body)
+            return _exceptions.PrivateFeatureError(err_msg, response=response, body=body)
 
         if type_ == "api_method_not_found_error":
-            return exceptions.APIMethodNotFoundError(err_msg, request=request, response=response, body=body)
+            return _exceptions.APIMethodNotFoundError(err_msg, response=response, body=body)
 
         if type_ == "object_not_found_error":
-            return exceptions.ObjectNotFoundError(err_msg, request=request, response=response, body=body)
+            return _exceptions.ObjectNotFoundError(err_msg, response=response, body=body)
 
         if type_ == "idempotency_conflict_error":
-            return exceptions.IdempotencyConflictError(err_msg, request=request, response=response, body=body)
+            return _exceptions.IdempotencyConflictError(err_msg, response=response, body=body)
 
         if type_ == "invalid_operation_error":
-            return exceptions.InvalidOperationError(err_msg, request=request, response=response, body=body)
+            return _exceptions.InvalidOperationError(err_msg, response=response, body=body)
 
         if type_ == "unique_identifier_already_exists_error":
-            return exceptions.UniqueIdentifierAlreadyExistsError(err_msg, request=request, response=response, body=body)
+            return _exceptions.UniqueIdentifierAlreadyExistsError(err_msg, response=response, body=body)
 
         if type_ == "idempotency_unprocessable_error":
-            return exceptions.IdempotencyUnprocessableError(err_msg, request=request, response=response, body=body)
+            return _exceptions.IdempotencyUnprocessableError(err_msg, response=response, body=body)
 
         if type_ == "rate_limited_error":
-            return exceptions.RateLimitedError(err_msg, request=request, response=response, body=body)
+            return _exceptions.RateLimitedError(err_msg, response=response, body=body)
 
         if type_ == "internal_server_error":
-            return exceptions.InternalServerError(err_msg, request=request, response=response, body=body)
-        if response.status_code == 500:
-            return exceptions.InternalServerError(
+            return _exceptions.InternalServerError(err_msg, response=response, body=body)
+        if response.status_code == 500 or response.status_code >= 500:
+            return _exceptions.InternalServerError(
                 err_msg,
-                request=request,
                 response=response,
                 body={
                     "detail": None,
@@ -328,7 +323,28 @@ class Increase(SyncAPIClient):
                     "type": "internal_server_error",
                 },
             )
-        return super()._make_status_error(err_msg, request=request, response=response, body=body)
+
+        if response.status_code == 400:
+            return _exceptions.BadRequestError(err_msg, response=response, body=body)
+
+        if response.status_code == 401:
+            return _exceptions.AuthenticationError(err_msg, response=response, body=body)
+
+        if response.status_code == 403:
+            return _exceptions.PermissionDeniedError(err_msg, response=response, body=body)
+
+        if response.status_code == 404:
+            return _exceptions.NotFoundError(err_msg, response=response, body=body)
+
+        if response.status_code == 409:
+            return _exceptions.ConflictError(err_msg, response=response, body=body)
+
+        if response.status_code == 422:
+            return _exceptions.UnprocessableEntityError(err_msg, response=response, body=body)
+
+        if response.status_code == 429:
+            return _exceptions.RateLimitError(err_msg, response=response, body=body)
+        return APIStatusError(err_msg, response=response, body=body)
 
 
 class AsyncIncrease(AsyncAPIClient):
@@ -551,58 +567,53 @@ class AsyncIncrease(AsyncAPIClient):
         err_msg: str,
         *,
         body: object,
-        request: httpx.Request,
         response: httpx.Response,
-    ) -> exceptions.APIStatusError:
-        if not is_mapping(body):
-            return super()._make_status_error(err_msg, request=request, response=response, body=body)
-
-        type_ = body.get("type")
+    ) -> APIStatusError:
+        type_ = body.get("type") if is_mapping(body) else None
         if type_ == "invalid_parameters_error":
-            return exceptions.InvalidParametersError(err_msg, request=request, response=response, body=body)
+            return _exceptions.InvalidParametersError(err_msg, response=response, body=body)
 
         if type_ == "malformed_request_error":
-            return exceptions.MalformedRequestError(err_msg, request=request, response=response, body=body)
+            return _exceptions.MalformedRequestError(err_msg, response=response, body=body)
 
         if type_ == "invalid_api_key_error":
-            return exceptions.InvalidAPIKeyError(err_msg, request=request, response=response, body=body)
+            return _exceptions.InvalidAPIKeyError(err_msg, response=response, body=body)
 
         if type_ == "environment_mismatch_error":
-            return exceptions.EnvironmentMismatchError(err_msg, request=request, response=response, body=body)
+            return _exceptions.EnvironmentMismatchError(err_msg, response=response, body=body)
 
         if type_ == "insufficient_permissions_error":
-            return exceptions.InsufficientPermissionsError(err_msg, request=request, response=response, body=body)
+            return _exceptions.InsufficientPermissionsError(err_msg, response=response, body=body)
 
         if type_ == "private_feature_error":
-            return exceptions.PrivateFeatureError(err_msg, request=request, response=response, body=body)
+            return _exceptions.PrivateFeatureError(err_msg, response=response, body=body)
 
         if type_ == "api_method_not_found_error":
-            return exceptions.APIMethodNotFoundError(err_msg, request=request, response=response, body=body)
+            return _exceptions.APIMethodNotFoundError(err_msg, response=response, body=body)
 
         if type_ == "object_not_found_error":
-            return exceptions.ObjectNotFoundError(err_msg, request=request, response=response, body=body)
+            return _exceptions.ObjectNotFoundError(err_msg, response=response, body=body)
 
         if type_ == "idempotency_conflict_error":
-            return exceptions.IdempotencyConflictError(err_msg, request=request, response=response, body=body)
+            return _exceptions.IdempotencyConflictError(err_msg, response=response, body=body)
 
         if type_ == "invalid_operation_error":
-            return exceptions.InvalidOperationError(err_msg, request=request, response=response, body=body)
+            return _exceptions.InvalidOperationError(err_msg, response=response, body=body)
 
         if type_ == "unique_identifier_already_exists_error":
-            return exceptions.UniqueIdentifierAlreadyExistsError(err_msg, request=request, response=response, body=body)
+            return _exceptions.UniqueIdentifierAlreadyExistsError(err_msg, response=response, body=body)
 
         if type_ == "idempotency_unprocessable_error":
-            return exceptions.IdempotencyUnprocessableError(err_msg, request=request, response=response, body=body)
+            return _exceptions.IdempotencyUnprocessableError(err_msg, response=response, body=body)
 
         if type_ == "rate_limited_error":
-            return exceptions.RateLimitedError(err_msg, request=request, response=response, body=body)
+            return _exceptions.RateLimitedError(err_msg, response=response, body=body)
 
         if type_ == "internal_server_error":
-            return exceptions.InternalServerError(err_msg, request=request, response=response, body=body)
-        if response.status_code == 500:
-            return exceptions.InternalServerError(
+            return _exceptions.InternalServerError(err_msg, response=response, body=body)
+        if response.status_code == 500 or response.status_code >= 500:
+            return _exceptions.InternalServerError(
                 err_msg,
-                request=request,
                 response=response,
                 body={
                     "detail": None,
@@ -611,7 +622,28 @@ class AsyncIncrease(AsyncAPIClient):
                     "type": "internal_server_error",
                 },
             )
-        return super()._make_status_error(err_msg, request=request, response=response, body=body)
+
+        if response.status_code == 400:
+            return _exceptions.BadRequestError(err_msg, response=response, body=body)
+
+        if response.status_code == 401:
+            return _exceptions.AuthenticationError(err_msg, response=response, body=body)
+
+        if response.status_code == 403:
+            return _exceptions.PermissionDeniedError(err_msg, response=response, body=body)
+
+        if response.status_code == 404:
+            return _exceptions.NotFoundError(err_msg, response=response, body=body)
+
+        if response.status_code == 409:
+            return _exceptions.ConflictError(err_msg, response=response, body=body)
+
+        if response.status_code == 422:
+            return _exceptions.UnprocessableEntityError(err_msg, response=response, body=body)
+
+        if response.status_code == 429:
+            return _exceptions.RateLimitError(err_msg, response=response, body=body)
+        return APIStatusError(err_msg, response=response, body=body)
 
 
 Client = Increase

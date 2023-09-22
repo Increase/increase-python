@@ -1,39 +1,22 @@
 # File generated from our OpenAPI spec by Stainless.
 
+from __future__ import annotations
+
 from typing import Any, List, Mapping, Optional, cast
 from typing_extensions import Literal
 
 import httpx
 
-from . import _base_exceptions as exceptions
 from ._utils import is_mapping
-from ._base_exceptions import APIError as APIError
-from ._base_exceptions import ConflictError as ConflictError
-from ._base_exceptions import NotFoundError as NotFoundError
-from ._base_exceptions import APIStatusError as APIStatusError
-from ._base_exceptions import RateLimitError as RateLimitError
-from ._base_exceptions import APITimeoutError as APITimeoutError
-from ._base_exceptions import BadRequestError as BadRequestError
-from ._base_exceptions import APIConnectionError as APIConnectionError
-from ._base_exceptions import AuthenticationError as AuthenticationError
-from ._base_exceptions import PermissionDeniedError as PermissionDeniedError
-from ._base_exceptions import UnprocessableEntityError as UnprocessableEntityError
-from ._base_exceptions import APIResponseValidationError as APIResponseValidationError
 
 __all__ = [
-    "APIError",
-    "APIConnectionError",
-    "APIResponseValidationError",
-    "APIStatusError",
-    "APITimeoutError",
-    "AuthenticationError",
     "BadRequestError",
-    "ConflictError",
-    "InternalServerError",
-    "NotFoundError",
+    "AuthenticationError",
     "PermissionDeniedError",
-    "RateLimitError",
+    "NotFoundError",
+    "ConflictError",
     "UnprocessableEntityError",
+    "RateLimitError",
     "InvalidParametersError",
     "MalformedRequestError",
     "InvalidAPIKeyError",
@@ -47,10 +30,92 @@ __all__ = [
     "UniqueIdentifierAlreadyExistsError",
     "IdempotencyUnprocessableError",
     "RateLimitedError",
+    "InternalServerError",
 ]
 
 
-class InvalidParametersError(exceptions.BadRequestError):
+class APIError(Exception):
+    message: str
+    request: httpx.Request
+
+    body: object | None
+    """The API response body.
+
+    If the API responded with a valid JSON structure then this property will be the
+    decoded result.
+
+    If it isn't a valid JSON structure then this will be the raw response.
+
+    If there was no response associated with this error then it will be `None`.
+    """
+
+    def __init__(self, message: str, request: httpx.Request, *, body: object | None) -> None:
+        super().__init__(message)
+        self.request = request
+        self.message = message
+
+
+class APIResponseValidationError(APIError):
+    response: httpx.Response
+    status_code: int
+
+    def __init__(self, response: httpx.Response, body: object | None, *, message: str | None = None) -> None:
+        super().__init__(message or "Data returned by API invalid for expected schema.", response.request, body=body)
+        self.response = response
+        self.status_code = response.status_code
+
+
+class APIStatusError(APIError):
+    """Raised when an API response has a status code of 4xx or 5xx."""
+
+    response: httpx.Response
+    status_code: int
+
+    def __init__(self, message: str, *, response: httpx.Response, body: object | None) -> None:
+        super().__init__(message, response.request, body=body)
+        self.response = response
+        self.status_code = response.status_code
+
+
+class APIConnectionError(APIError):
+    def __init__(self, *, message: str = "Connection error.", request: httpx.Request) -> None:
+        super().__init__(message, request, body=None)
+
+
+class APITimeoutError(APIConnectionError):
+    def __init__(self, request: httpx.Request) -> None:
+        super().__init__(message="Request timed out.", request=request)
+
+
+class BadRequestError(APIStatusError):
+    status_code: Literal[400] = 400
+
+
+class AuthenticationError(APIStatusError):
+    status_code: Literal[401] = 401
+
+
+class PermissionDeniedError(APIStatusError):
+    status_code: Literal[403] = 403
+
+
+class NotFoundError(APIStatusError):
+    status_code: Literal[404] = 404
+
+
+class ConflictError(APIStatusError):
+    status_code: Literal[409] = 409
+
+
+class UnprocessableEntityError(APIStatusError):
+    status_code: Literal[422] = 422
+
+
+class RateLimitError(APIStatusError):
+    status_code: Literal[429] = 429
+
+
+class InvalidParametersError(BadRequestError):
     detail: Optional[str]
 
     errors: List[object]
@@ -62,10 +127,10 @@ class InvalidParametersError(exceptions.BadRequestError):
 
     type: Literal["invalid_parameters_error"]
 
-    def __init__(self, message: str, *, body: object, request: httpx.Request, response: httpx.Response) -> None:
+    def __init__(self, message: str, *, body: object, response: httpx.Response) -> None:
         data = cast(Mapping[str, object], body if is_mapping(body) else {})
         title = cast(Any, data.get("title"))
-        super().__init__(title or message, request=request, response=response, body=body)
+        super().__init__(title or message, response=response, body=body)
 
         self.title = title
         self.detail = cast(Any, data.get("detail"))
@@ -74,7 +139,7 @@ class InvalidParametersError(exceptions.BadRequestError):
         self.type = cast(Any, data.get("type"))
 
 
-class MalformedRequestError(exceptions.BadRequestError):
+class MalformedRequestError(BadRequestError):
     detail: Optional[str]
 
     status: Literal[400]
@@ -83,10 +148,10 @@ class MalformedRequestError(exceptions.BadRequestError):
 
     type: Literal["malformed_request_error"]
 
-    def __init__(self, message: str, *, body: object, request: httpx.Request, response: httpx.Response) -> None:
+    def __init__(self, message: str, *, body: object, response: httpx.Response) -> None:
         data = cast(Mapping[str, object], body if is_mapping(body) else {})
         title = cast(Any, data.get("title"))
-        super().__init__(title or message, request=request, response=response, body=body)
+        super().__init__(title or message, response=response, body=body)
 
         self.title = title
         self.detail = cast(Any, data.get("detail"))
@@ -94,7 +159,7 @@ class MalformedRequestError(exceptions.BadRequestError):
         self.type = cast(Any, data.get("type"))
 
 
-class InvalidAPIKeyError(exceptions.AuthenticationError):
+class InvalidAPIKeyError(AuthenticationError):
     detail: Optional[str]
 
     status: Literal[401]
@@ -103,10 +168,10 @@ class InvalidAPIKeyError(exceptions.AuthenticationError):
 
     type: Literal["invalid_api_key_error"]
 
-    def __init__(self, message: str, *, body: object, request: httpx.Request, response: httpx.Response) -> None:
+    def __init__(self, message: str, *, body: object, response: httpx.Response) -> None:
         data = cast(Mapping[str, object], body if is_mapping(body) else {})
         title = cast(Any, data.get("title"))
-        super().__init__(title or message, request=request, response=response, body=body)
+        super().__init__(title or message, response=response, body=body)
 
         self.title = title
         self.detail = cast(Any, data.get("detail"))
@@ -114,7 +179,7 @@ class InvalidAPIKeyError(exceptions.AuthenticationError):
         self.type = cast(Any, data.get("type"))
 
 
-class EnvironmentMismatchError(exceptions.PermissionDeniedError):
+class EnvironmentMismatchError(PermissionDeniedError):
     detail: Optional[str]
 
     status: Literal[403]
@@ -123,10 +188,10 @@ class EnvironmentMismatchError(exceptions.PermissionDeniedError):
 
     type: Literal["environment_mismatch_error"]
 
-    def __init__(self, message: str, *, body: object, request: httpx.Request, response: httpx.Response) -> None:
+    def __init__(self, message: str, *, body: object, response: httpx.Response) -> None:
         data = cast(Mapping[str, object], body if is_mapping(body) else {})
         title = cast(Any, data.get("title"))
-        super().__init__(title or message, request=request, response=response, body=body)
+        super().__init__(title or message, response=response, body=body)
 
         self.title = title
         self.detail = cast(Any, data.get("detail"))
@@ -134,7 +199,7 @@ class EnvironmentMismatchError(exceptions.PermissionDeniedError):
         self.type = cast(Any, data.get("type"))
 
 
-class InsufficientPermissionsError(exceptions.PermissionDeniedError):
+class InsufficientPermissionsError(PermissionDeniedError):
     detail: Optional[str]
 
     status: Literal[403]
@@ -143,10 +208,10 @@ class InsufficientPermissionsError(exceptions.PermissionDeniedError):
 
     type: Literal["insufficient_permissions_error"]
 
-    def __init__(self, message: str, *, body: object, request: httpx.Request, response: httpx.Response) -> None:
+    def __init__(self, message: str, *, body: object, response: httpx.Response) -> None:
         data = cast(Mapping[str, object], body if is_mapping(body) else {})
         title = cast(Any, data.get("title"))
-        super().__init__(title or message, request=request, response=response, body=body)
+        super().__init__(title or message, response=response, body=body)
 
         self.title = title
         self.detail = cast(Any, data.get("detail"))
@@ -154,7 +219,7 @@ class InsufficientPermissionsError(exceptions.PermissionDeniedError):
         self.type = cast(Any, data.get("type"))
 
 
-class PrivateFeatureError(exceptions.PermissionDeniedError):
+class PrivateFeatureError(PermissionDeniedError):
     detail: Optional[str]
 
     status: Literal[403]
@@ -163,10 +228,10 @@ class PrivateFeatureError(exceptions.PermissionDeniedError):
 
     type: Literal["private_feature_error"]
 
-    def __init__(self, message: str, *, body: object, request: httpx.Request, response: httpx.Response) -> None:
+    def __init__(self, message: str, *, body: object, response: httpx.Response) -> None:
         data = cast(Mapping[str, object], body if is_mapping(body) else {})
         title = cast(Any, data.get("title"))
-        super().__init__(title or message, request=request, response=response, body=body)
+        super().__init__(title or message, response=response, body=body)
 
         self.title = title
         self.detail = cast(Any, data.get("detail"))
@@ -174,7 +239,7 @@ class PrivateFeatureError(exceptions.PermissionDeniedError):
         self.type = cast(Any, data.get("type"))
 
 
-class APIMethodNotFoundError(exceptions.NotFoundError):
+class APIMethodNotFoundError(NotFoundError):
     detail: Optional[str]
 
     status: Literal[404]
@@ -183,10 +248,10 @@ class APIMethodNotFoundError(exceptions.NotFoundError):
 
     type: Literal["api_method_not_found_error"]
 
-    def __init__(self, message: str, *, body: object, request: httpx.Request, response: httpx.Response) -> None:
+    def __init__(self, message: str, *, body: object, response: httpx.Response) -> None:
         data = cast(Mapping[str, object], body if is_mapping(body) else {})
         title = cast(Any, data.get("title"))
-        super().__init__(title or message, request=request, response=response, body=body)
+        super().__init__(title or message, response=response, body=body)
 
         self.title = title
         self.detail = cast(Any, data.get("detail"))
@@ -194,7 +259,7 @@ class APIMethodNotFoundError(exceptions.NotFoundError):
         self.type = cast(Any, data.get("type"))
 
 
-class ObjectNotFoundError(exceptions.NotFoundError):
+class ObjectNotFoundError(NotFoundError):
     detail: Optional[str]
 
     status: Literal[404]
@@ -203,10 +268,10 @@ class ObjectNotFoundError(exceptions.NotFoundError):
 
     type: Literal["object_not_found_error"]
 
-    def __init__(self, message: str, *, body: object, request: httpx.Request, response: httpx.Response) -> None:
+    def __init__(self, message: str, *, body: object, response: httpx.Response) -> None:
         data = cast(Mapping[str, object], body if is_mapping(body) else {})
         title = cast(Any, data.get("title"))
-        super().__init__(title or message, request=request, response=response, body=body)
+        super().__init__(title or message, response=response, body=body)
 
         self.title = title
         self.detail = cast(Any, data.get("detail"))
@@ -214,7 +279,7 @@ class ObjectNotFoundError(exceptions.NotFoundError):
         self.type = cast(Any, data.get("type"))
 
 
-class IdempotencyConflictError(exceptions.ConflictError):
+class IdempotencyConflictError(ConflictError):
     detail: Optional[str]
 
     status: Literal[409]
@@ -223,10 +288,10 @@ class IdempotencyConflictError(exceptions.ConflictError):
 
     type: Literal["idempotency_conflict_error"]
 
-    def __init__(self, message: str, *, body: object, request: httpx.Request, response: httpx.Response) -> None:
+    def __init__(self, message: str, *, body: object, response: httpx.Response) -> None:
         data = cast(Mapping[str, object], body if is_mapping(body) else {})
         title = cast(Any, data.get("title"))
-        super().__init__(title or message, request=request, response=response, body=body)
+        super().__init__(title or message, response=response, body=body)
 
         self.title = title
         self.detail = cast(Any, data.get("detail"))
@@ -234,7 +299,7 @@ class IdempotencyConflictError(exceptions.ConflictError):
         self.type = cast(Any, data.get("type"))
 
 
-class InvalidOperationError(exceptions.ConflictError):
+class InvalidOperationError(ConflictError):
     detail: Optional[str]
 
     status: Literal[409]
@@ -243,10 +308,10 @@ class InvalidOperationError(exceptions.ConflictError):
 
     type: Literal["invalid_operation_error"]
 
-    def __init__(self, message: str, *, body: object, request: httpx.Request, response: httpx.Response) -> None:
+    def __init__(self, message: str, *, body: object, response: httpx.Response) -> None:
         data = cast(Mapping[str, object], body if is_mapping(body) else {})
         title = cast(Any, data.get("title"))
-        super().__init__(title or message, request=request, response=response, body=body)
+        super().__init__(title or message, response=response, body=body)
 
         self.title = title
         self.detail = cast(Any, data.get("detail"))
@@ -254,7 +319,7 @@ class InvalidOperationError(exceptions.ConflictError):
         self.type = cast(Any, data.get("type"))
 
 
-class UniqueIdentifierAlreadyExistsError(exceptions.ConflictError):
+class UniqueIdentifierAlreadyExistsError(ConflictError):
     detail: Optional[str]
 
     resource_id: str
@@ -265,10 +330,10 @@ class UniqueIdentifierAlreadyExistsError(exceptions.ConflictError):
 
     type: Literal["unique_identifier_already_exists_error"]
 
-    def __init__(self, message: str, *, body: object, request: httpx.Request, response: httpx.Response) -> None:
+    def __init__(self, message: str, *, body: object, response: httpx.Response) -> None:
         data = cast(Mapping[str, object], body if is_mapping(body) else {})
         title = cast(Any, data.get("title"))
-        super().__init__(title or message, request=request, response=response, body=body)
+        super().__init__(title or message, response=response, body=body)
 
         self.title = title
         self.detail = cast(Any, data.get("detail"))
@@ -277,7 +342,7 @@ class UniqueIdentifierAlreadyExistsError(exceptions.ConflictError):
         self.type = cast(Any, data.get("type"))
 
 
-class IdempotencyUnprocessableError(exceptions.UnprocessableEntityError):
+class IdempotencyUnprocessableError(UnprocessableEntityError):
     detail: Optional[str]
 
     status: Literal[422]
@@ -286,10 +351,10 @@ class IdempotencyUnprocessableError(exceptions.UnprocessableEntityError):
 
     type: Literal["idempotency_unprocessable_error"]
 
-    def __init__(self, message: str, *, body: object, request: httpx.Request, response: httpx.Response) -> None:
+    def __init__(self, message: str, *, body: object, response: httpx.Response) -> None:
         data = cast(Mapping[str, object], body if is_mapping(body) else {})
         title = cast(Any, data.get("title"))
-        super().__init__(title or message, request=request, response=response, body=body)
+        super().__init__(title or message, response=response, body=body)
 
         self.title = title
         self.detail = cast(Any, data.get("detail"))
@@ -297,7 +362,7 @@ class IdempotencyUnprocessableError(exceptions.UnprocessableEntityError):
         self.type = cast(Any, data.get("type"))
 
 
-class RateLimitedError(exceptions.RateLimitError):
+class RateLimitedError(RateLimitError):
     detail: Optional[str]
 
     status: Literal[429]
@@ -308,10 +373,10 @@ class RateLimitedError(exceptions.RateLimitError):
 
     retry_after: Optional[int] = None
 
-    def __init__(self, message: str, *, body: object, request: httpx.Request, response: httpx.Response) -> None:
+    def __init__(self, message: str, *, body: object, response: httpx.Response) -> None:
         data = cast(Mapping[str, object], body if is_mapping(body) else {})
         title = cast(Any, data.get("title"))
-        super().__init__(title or message, request=request, response=response, body=body)
+        super().__init__(title or message, response=response, body=body)
 
         self.title = title
         self.detail = cast(Any, data.get("detail"))
@@ -320,7 +385,7 @@ class RateLimitedError(exceptions.RateLimitError):
         self.retry_after = cast(Any, data.get("retry_after"))
 
 
-class InternalServerError(exceptions.InternalServerError):
+class InternalServerError(APIStatusError):
     detail: Optional[str]
 
     status: Literal[500]
@@ -329,10 +394,10 @@ class InternalServerError(exceptions.InternalServerError):
 
     type: Literal["internal_server_error"]
 
-    def __init__(self, message: str, *, body: object, request: httpx.Request, response: httpx.Response) -> None:
+    def __init__(self, message: str, *, body: object, response: httpx.Response) -> None:
         data = cast(Mapping[str, object], body if is_mapping(body) else {})
         title = cast(Any, data.get("title"))
-        super().__init__(title or message, request=request, response=response, body=body)
+        super().__init__(title or message, response=response, body=body)
 
         self.title = title
         self.detail = cast(Any, data.get("detail"))
