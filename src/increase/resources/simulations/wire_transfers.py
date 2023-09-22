@@ -29,6 +29,7 @@ class WireTransfers(SyncAPIResource):
         originator_address_line2: str | NotGiven = NOT_GIVEN,
         originator_address_line3: str | NotGiven = NOT_GIVEN,
         originator_name: str | NotGiven = NOT_GIVEN,
+        originator_routing_number: str | NotGiven = NOT_GIVEN,
         originator_to_beneficiary_information_line1: str | NotGiven = NOT_GIVEN,
         originator_to_beneficiary_information_line2: str | NotGiven = NOT_GIVEN,
         originator_to_beneficiary_information_line3: str | NotGiven = NOT_GIVEN,
@@ -75,6 +76,9 @@ class WireTransfers(SyncAPIResource):
 
           originator_name: The sending bank will set originator_name in production. You can simulate any
               value here.
+
+          originator_routing_number: The sending bank will set originator_routing_number in production. You can
+              simulate any value here.
 
           originator_to_beneficiary_information_line1: The sending bank will set originator_to_beneficiary_information_line1 in
               production. You can simulate any value here.
@@ -113,6 +117,7 @@ class WireTransfers(SyncAPIResource):
                     "originator_address_line2": originator_address_line2,
                     "originator_address_line3": originator_address_line3,
                     "originator_name": originator_name,
+                    "originator_routing_number": originator_routing_number,
                     "originator_to_beneficiary_information_line1": originator_to_beneficiary_information_line1,
                     "originator_to_beneficiary_information_line2": originator_to_beneficiary_information_line2,
                     "originator_to_beneficiary_information_line3": originator_to_beneficiary_information_line3,
@@ -146,6 +151,7 @@ class AsyncWireTransfers(AsyncAPIResource):
         originator_address_line2: str | NotGiven = NOT_GIVEN,
         originator_address_line3: str | NotGiven = NOT_GIVEN,
         originator_name: str | NotGiven = NOT_GIVEN,
+        originator_routing_number: str | NotGiven = NOT_GIVEN,
         originator_to_beneficiary_information_line1: str | NotGiven = NOT_GIVEN,
         originator_to_beneficiary_information_line2: str | NotGiven = NOT_GIVEN,
         originator_to_beneficiary_information_line3: str | NotGiven = NOT_GIVEN,
@@ -193,6 +199,9 @@ class AsyncWireTransfers(AsyncAPIResource):
           originator_name: The sending bank will set originator_name in production. You can simulate any
               value here.
 
+          originator_routing_number: The sending bank will set originator_routing_number in production. You can
+              simulate any value here.
+
           originator_to_beneficiary_information_line1: The sending bank will set originator_to_beneficiary_information_line1 in
               production. You can simulate any value here.
 
@@ -230,6 +239,7 @@ class AsyncWireTransfers(AsyncAPIResource):
                     "originator_address_line2": originator_address_line2,
                     "originator_address_line3": originator_address_line3,
                     "originator_name": originator_name,
+                    "originator_routing_number": originator_routing_number,
                     "originator_to_beneficiary_information_line1": originator_to_beneficiary_information_line1,
                     "originator_to_beneficiary_information_line2": originator_to_beneficiary_information_line2,
                     "originator_to_beneficiary_information_line3": originator_to_beneficiary_information_line3,

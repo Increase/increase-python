@@ -68,6 +68,12 @@ class WireTransferCreateInboundParams(TypedDict, total=False):
     You can simulate any value here.
     """
 
+    originator_routing_number: str
+    """The sending bank will set originator_routing_number in production.
+
+    You can simulate any value here.
+    """
+
     originator_to_beneficiary_information_line1: str
     """
     The sending bank will set originator_to_beneficiary_information_line1 in

@@ -26,6 +26,7 @@ class AccountNumbers(SyncAPIResource):
         account_id: str,
         name: str,
         inbound_ach: account_number_create_params.InboundACH | NotGiven = NOT_GIVEN,
+        inbound_checks: account_number_create_params.InboundChecks | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -44,6 +45,9 @@ class AccountNumbers(SyncAPIResource):
 
           inbound_ach: Options related to how this Account Number should handle inbound ACH transfers.
 
+          inbound_checks: Options related to how this Account Number should handle inbound check
+              withdrawls.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -61,6 +65,7 @@ class AccountNumbers(SyncAPIResource):
                     "account_id": account_id,
                     "name": name,
                     "inbound_ach": inbound_ach,
+                    "inbound_checks": inbound_checks,
                 },
                 account_number_create_params.AccountNumberCreateParams,
             ),
@@ -238,6 +243,7 @@ class AsyncAccountNumbers(AsyncAPIResource):
         account_id: str,
         name: str,
         inbound_ach: account_number_create_params.InboundACH | NotGiven = NOT_GIVEN,
+        inbound_checks: account_number_create_params.InboundChecks | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -256,6 +262,9 @@ class AsyncAccountNumbers(AsyncAPIResource):
 
           inbound_ach: Options related to how this Account Number should handle inbound ACH transfers.
 
+          inbound_checks: Options related to how this Account Number should handle inbound check
+              withdrawls.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -273,6 +282,7 @@ class AsyncAccountNumbers(AsyncAPIResource):
                     "account_id": account_id,
                     "name": name,
                     "inbound_ach": inbound_ach,
+                    "inbound_checks": inbound_checks,
                 },
                 account_number_create_params.AccountNumberCreateParams,
             ),

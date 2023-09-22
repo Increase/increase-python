@@ -160,6 +160,12 @@ class InboundACHTransfer(BaseModel):
     originator_company_name: str
     """The name of the company that initiated the transfer."""
 
+    originator_routing_number: str
+    """
+    The American Banking Association (ABA) routing number of the bank originating
+    the transfer.
+    """
+
     receiver_id_number: Optional[str]
     """The id of the receiver of the transfer."""
 

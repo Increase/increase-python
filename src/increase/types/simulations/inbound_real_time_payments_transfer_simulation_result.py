@@ -744,6 +744,12 @@ class DeclinedTransactionSourceWireDecline(BaseModel):
     originator_name: Optional[str]
     """The originator of the wire, set by the sending bank."""
 
+    originator_routing_number: Optional[str]
+    """
+    The American Banking Association (ABA) routing number of the bank originating
+    the transfer.
+    """
+
     originator_to_beneficiary_information_line1: Optional[str]
     """A free-form message set by the wire originator."""
 
@@ -2872,6 +2878,12 @@ class TransactionSourceInboundWireDrawdownPayment(BaseModel):
     originator_name: Optional[str]
     """The originator of the wire, set by the sending bank."""
 
+    originator_routing_number: Optional[str]
+    """
+    The American Banking Association (ABA) routing number of the bank originating
+    the transfer.
+    """
+
     originator_to_beneficiary_information: Optional[str]
     """An Increase-created concatenation of the Originator-to-Beneficiary lines."""
 
@@ -2906,6 +2918,12 @@ class TransactionSourceInboundWireDrawdownPaymentReversal(BaseModel):
 
     input_source: str
     """The Fedwire input source identifier."""
+
+    originator_routing_number: Optional[str]
+    """
+    The American Banking Association (ABA) routing number of the bank originating
+    the transfer.
+    """
 
     previous_message_input_cycle_date: date
     """The Fedwire cycle date for the wire transfer that was reversed."""
@@ -2953,6 +2971,12 @@ class TransactionSourceInboundWireReversal(BaseModel):
 
     input_source: str
     """The Fedwire input source identifier."""
+
+    originator_routing_number: Optional[str]
+    """
+    The American Banking Association (ABA) routing number of the bank originating
+    the transfer.
+    """
 
     previous_message_input_cycle_date: date
     """
@@ -3022,6 +3046,12 @@ class TransactionSourceInboundWireTransfer(BaseModel):
 
     originator_name: Optional[str]
     """The originator of the wire, set by the sending bank."""
+
+    originator_routing_number: Optional[str]
+    """
+    The American Banking Association (ABA) routing number of the bank originating
+    the transfer.
+    """
 
     originator_to_beneficiary_information: Optional[str]
     """An Increase-created concatenation of the Originator-to-Beneficiary lines."""
