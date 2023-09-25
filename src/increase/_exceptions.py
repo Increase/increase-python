@@ -34,7 +34,11 @@ __all__ = [
 ]
 
 
-class APIError(Exception):
+class IncreaseError(Exception):
+    pass
+
+
+class APIError(IncreaseError):
     message: str
     request: httpx.Request
 

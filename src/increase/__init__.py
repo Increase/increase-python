@@ -19,6 +19,7 @@ from ._version import __title__, __version__
 from ._exceptions import (
     APIError,
     ConflictError,
+    IncreaseError,
     NotFoundError,
     APIStatusError,
     RateLimitError,
@@ -52,6 +53,7 @@ __all__ = [
     "NoneType",
     "Transport",
     "ProxiesTypes",
+    "IncreaseError",
     "APIError",
     "APIStatusError",
     "APITimeoutError",
