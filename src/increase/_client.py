@@ -23,7 +23,7 @@ from ._utils import is_mapping
 from ._version import __version__
 from ._streaming import Stream as Stream
 from ._streaming import AsyncStream as AsyncStream
-from ._exceptions import APIStatusError
+from ._exceptions import IncreaseError, APIStatusError
 from ._base_client import (
     DEFAULT_LIMITS,
     DEFAULT_TIMEOUT,
@@ -128,7 +128,7 @@ class Increase(SyncAPIClient):
         """
         api_key = api_key or os.environ.get("INCREASE_API_KEY", None)
         if not api_key:
-            raise Exception(
+            raise IncreaseError(
                 "The api_key client option must be set either by passing api_key to the client or by setting the INCREASE_API_KEY environment variable"
             )
         self.api_key = api_key
@@ -424,7 +424,7 @@ class AsyncIncrease(AsyncAPIClient):
         """
         api_key = api_key or os.environ.get("INCREASE_API_KEY", None)
         if not api_key:
-            raise Exception(
+            raise IncreaseError(
                 "The api_key client option must be set either by passing api_key to the client or by setting the INCREASE_API_KEY environment variable"
             )
         self.api_key = api_key
