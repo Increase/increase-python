@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.13.3 (2023-09-27)
+
+Full Changelog: [v0.13.2...v0.13.3](https://github.com/increase/increase-python/compare/v0.13.2...v0.13.3)
+
+### Features
+
+* **api:** add inbound checks, originating routing number and new event types ([#131](https://github.com/increase/increase-python/issues/131)) ([5d021b7](https://github.com/increase/increase-python/commit/5d021b75be673373d4cde55bc9c6a435da96a466))
+* **package:** export a root error type ([#135](https://github.com/increase/increase-python/issues/135)) ([4cc02ca](https://github.com/increase/increase-python/commit/4cc02ca61bc788a6c98e6b70dfd82b2e4300614d))
+
+
+### Bug Fixes
+
+* **client:** don't error by default for unexpected content types ([#133](https://github.com/increase/increase-python/issues/133)) ([b4b3dff](https://github.com/increase/increase-python/commit/b4b3dffbddf03b9369d9fe390ed527414690160f))
+
+
+### Chores
+
+* **internal:** remove base error classes (⚠️ breaking) ([#134](https://github.com/increase/increase-python/issues/134)) ([8b70672](https://github.com/increase/increase-python/commit/8b706729194206dde45c0d816139484c396207f8))
+* **tests:** improve raw response test ([#136](https://github.com/increase/increase-python/issues/136)) ([c9fd629](https://github.com/increase/increase-python/commit/c9fd6291f00f381175c88b7a91a9d688256e6388))
+
 ## 0.13.2 (2023-09-20)
 
 Full Changelog: [v0.13.1...v0.13.2](https://github.com/Increase/increase-python/compare/v0.13.1...v0.13.2)
