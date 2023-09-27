@@ -36,6 +36,9 @@ from .inbound_funds_hold_release_response import (
 from .wire_transfer_create_inbound_params import (
     WireTransferCreateInboundParams as WireTransferCreateInboundParams,
 )
+from .physical_card_shipment_advance_params import (
+    PhysicalCardShipmentAdvanceParams as PhysicalCardShipmentAdvanceParams,
+)
 from .digital_wallet_token_request_create_params import (
     DigitalWalletTokenRequestCreateParams as DigitalWalletTokenRequestCreateParams,
 )

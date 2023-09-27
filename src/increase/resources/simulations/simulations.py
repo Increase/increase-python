@@ -13,6 +13,7 @@ from .ach_transfers import ACHTransfers, AsyncACHTransfers
 from .card_disputes import CardDisputes, AsyncCardDisputes
 from .card_profiles import CardProfiles, AsyncCardProfiles
 from .check_deposits import CheckDeposits, AsyncCheckDeposits
+from .physical_cards import PhysicalCards, AsyncPhysicalCards
 from .wire_transfers import WireTransfers, AsyncWireTransfers
 from .check_transfers import CheckTransfers, AsyncCheckTransfers
 from .account_transfers import AccountTransfers, AsyncAccountTransfers
@@ -56,6 +57,7 @@ class Simulations(SyncAPIResource):
     wire_transfers: WireTransfers
     cards: Cards
     real_time_payments_transfers: RealTimePaymentsTransfers
+    physical_cards: PhysicalCards
 
     def __init__(self, client: Increase) -> None:
         super().__init__(client)
@@ -76,6 +78,7 @@ class Simulations(SyncAPIResource):
         self.wire_transfers = WireTransfers(client)
         self.cards = Cards(client)
         self.real_time_payments_transfers = RealTimePaymentsTransfers(client)
+        self.physical_cards = PhysicalCards(client)
 
 
 class AsyncSimulations(AsyncAPIResource):
@@ -96,6 +99,7 @@ class AsyncSimulations(AsyncAPIResource):
     wire_transfers: AsyncWireTransfers
     cards: AsyncCards
     real_time_payments_transfers: AsyncRealTimePaymentsTransfers
+    physical_cards: AsyncPhysicalCards
 
     def __init__(self, client: AsyncIncrease) -> None:
         super().__init__(client)
@@ -116,3 +120,4 @@ class AsyncSimulations(AsyncAPIResource):
         self.wire_transfers = AsyncWireTransfers(client)
         self.cards = AsyncCards(client)
         self.real_time_payments_transfers = AsyncRealTimePaymentsTransfers(client)
+        self.physical_cards = AsyncPhysicalCards(client)
