@@ -15,6 +15,7 @@ from .ach_transfers import ACHTransfers, AsyncACHTransfers
 from .card_disputes import CardDisputes, AsyncCardDisputes
 from .card_profiles import CardProfiles, AsyncCardProfiles
 from .check_deposits import CheckDeposits, AsyncCheckDeposits
+from .physical_cards import PhysicalCards, AsyncPhysicalCards
 from .wire_transfers import WireTransfers, AsyncWireTransfers
 from .account_numbers import AccountNumbers, AsyncAccountNumbers
 from .balance_lookups import BalanceLookups, AsyncBalanceLookups
@@ -125,4 +126,6 @@ __all__ = [
     "AsyncAccountStatements",
     "Simulations",
     "AsyncSimulations",
+    "PhysicalCards",
+    "AsyncPhysicalCards",
 ]

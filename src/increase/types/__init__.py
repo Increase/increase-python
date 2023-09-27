@@ -17,6 +17,7 @@ from .card_details import CardDetails as CardDetails
 from .card_dispute import CardDispute as CardDispute
 from .card_profile import CardProfile as CardProfile
 from .check_deposit import CheckDeposit as CheckDeposit
+from .physical_card import PhysicalCard as PhysicalCard
 from .wire_transfer import WireTransfer as WireTransfer
 from .account_number import AccountNumber as AccountNumber
 from .check_transfer import CheckTransfer as CheckTransfer
@@ -57,6 +58,7 @@ from .card_dispute_list_params import CardDisputeListParams as CardDisputeListPa
 from .card_profile_list_params import CardProfileListParams as CardProfileListParams
 from .card_purchase_supplement import CardPurchaseSupplement as CardPurchaseSupplement
 from .check_deposit_list_params import CheckDepositListParams as CheckDepositListParams
+from .physical_card_list_params import PhysicalCardListParams as PhysicalCardListParams
 from .wire_transfer_list_params import WireTransferListParams as WireTransferListParams
 from .account_number_list_params import (
     AccountNumberListParams as AccountNumberListParams,
@@ -78,6 +80,12 @@ from .routing_number_list_params import (
 )
 from .check_deposit_create_params import (
     CheckDepositCreateParams as CheckDepositCreateParams,
+)
+from .physical_card_create_params import (
+    PhysicalCardCreateParams as PhysicalCardCreateParams,
+)
+from .physical_card_update_params import (
+    PhysicalCardUpdateParams as PhysicalCardUpdateParams,
 )
 from .real_time_payments_transfer import (
     RealTimePaymentsTransfer as RealTimePaymentsTransfer,
