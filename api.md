@@ -689,3 +689,24 @@ Methods:
 
 - <code title="post /simulations/real_time_payments_transfers/{real_time_payments_transfer_id}/complete">client.simulations.real_time_payments_transfers.<a href="./src/increase/resources/simulations/real_time_payments_transfers.py">complete</a>(real_time_payments_transfer_id, \*\*<a href="src/increase/types/simulations/real_time_payments_transfer_complete_params.py">params</a>) -> <a href="./src/increase/types/real_time_payments_transfer.py">RealTimePaymentsTransfer</a></code>
 - <code title="post /simulations/inbound_real_time_payments_transfers">client.simulations.real_time_payments_transfers.<a href="./src/increase/resources/simulations/real_time_payments_transfers.py">create_inbound</a>(\*\*<a href="src/increase/types/simulations/real_time_payments_transfer_create_inbound_params.py">params</a>) -> <a href="./src/increase/types/simulations/inbound_real_time_payments_transfer_simulation_result.py">InboundRealTimePaymentsTransferSimulationResult</a></code>
+
+## PhysicalCards
+
+Methods:
+
+- <code title="post /simulations/physical_cards/{physical_card_id}/shipment_advance">client.simulations.physical_cards.<a href="./src/increase/resources/simulations/physical_cards.py">shipment_advance</a>(physical_card_id, \*\*<a href="src/increase/types/simulations/physical_card_shipment_advance_params.py">params</a>) -> <a href="./src/increase/types/physical_card.py">PhysicalCard</a></code>
+
+# PhysicalCards
+
+Types:
+
+```python
+from increase.types import PhysicalCard
+```
+
+Methods:
+
+- <code title="post /physical_cards">client.physical_cards.<a href="./src/increase/resources/physical_cards.py">create</a>(\*\*<a href="src/increase/types/physical_card_create_params.py">params</a>) -> <a href="./src/increase/types/physical_card.py">PhysicalCard</a></code>
+- <code title="get /physical_cards/{physical_card_id}">client.physical_cards.<a href="./src/increase/resources/physical_cards.py">retrieve</a>(physical_card_id) -> <a href="./src/increase/types/physical_card.py">PhysicalCard</a></code>
+- <code title="patch /physical_cards/{physical_card_id}">client.physical_cards.<a href="./src/increase/resources/physical_cards.py">update</a>(physical_card_id, \*\*<a href="src/increase/types/physical_card_update_params.py">params</a>) -> <a href="./src/increase/types/physical_card.py">PhysicalCard</a></code>
+- <code title="get /physical_cards">client.physical_cards.<a href="./src/increase/resources/physical_cards.py">list</a>(\*\*<a href="src/increase/types/physical_card_list_params.py">params</a>) -> <a href="./src/increase/types/physical_card.py">SyncPage[PhysicalCard]</a></code>

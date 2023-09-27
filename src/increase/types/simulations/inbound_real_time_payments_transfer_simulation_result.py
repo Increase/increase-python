@@ -3262,8 +3262,8 @@ class TransactionSource(BaseModel):
         "ach_transfer_return",
         "card_dispute_acceptance",
         "card_refund",
-        "card_revenue_payment",
         "card_settlement",
+        "card_revenue_payment",
         "check_deposit_acceptance",
         "check_deposit_return",
         "check_transfer_deposit",
@@ -3275,8 +3275,8 @@ class TransactionSource(BaseModel):
         "inbound_check",
         "inbound_international_ach_transfer",
         "inbound_real_time_payments_transfer_confirmation",
-        "inbound_wire_drawdown_payment",
         "inbound_wire_drawdown_payment_reversal",
+        "inbound_wire_drawdown_payment",
         "inbound_wire_reversal",
         "inbound_wire_transfer",
         "interest_payment",
@@ -3303,10 +3303,10 @@ class TransactionSource(BaseModel):
     - `card_dispute_acceptance` - Card Dispute Acceptance: details will be under the
       `card_dispute_acceptance` object.
     - `card_refund` - Card Refund: details will be under the `card_refund` object.
-    - `card_revenue_payment` - Card Revenue Payment: details will be under the
-      `card_revenue_payment` object.
     - `card_settlement` - Card Settlement: details will be under the
       `card_settlement` object.
+    - `card_revenue_payment` - Card Revenue Payment: details will be under the
+      `card_revenue_payment` object.
     - `check_deposit_acceptance` - Check Deposit Acceptance: details will be under
       the `check_deposit_acceptance` object.
     - `check_deposit_return` - Check Deposit Return: details will be under the
@@ -3330,11 +3330,11 @@ class TransactionSource(BaseModel):
     - `inbound_real_time_payments_transfer_confirmation` - Inbound Real-Time
       Payments Transfer Confirmation: details will be under the
       `inbound_real_time_payments_transfer_confirmation` object.
-    - `inbound_wire_drawdown_payment` - Inbound Wire Drawdown Payment: details will
-      be under the `inbound_wire_drawdown_payment` object.
     - `inbound_wire_drawdown_payment_reversal` - Inbound Wire Drawdown Payment
       Reversal: details will be under the `inbound_wire_drawdown_payment_reversal`
       object.
+    - `inbound_wire_drawdown_payment` - Inbound Wire Drawdown Payment: details will
+      be under the `inbound_wire_drawdown_payment` object.
     - `inbound_wire_reversal` - Inbound Wire Reversal: details will be under the
       `inbound_wire_reversal` object.
     - `inbound_wire_transfer` - Inbound Wire Transfer: details will be under the

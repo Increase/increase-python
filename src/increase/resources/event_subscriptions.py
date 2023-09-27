@@ -54,6 +54,8 @@ class EventSubscriptions(SyncAPIResource):
             "document.created",
             "entity.created",
             "entity.updated",
+            "export.created",
+            "export.updated",
             "external_account.created",
             "file.created",
             "group.updated",
@@ -63,10 +65,16 @@ class EventSubscriptions(SyncAPIResource):
             "inbound_ach_transfer_return.created",
             "inbound_ach_transfer_return.updated",
             "inbound_wire_drawdown_request.created",
+            "intrafi_account_enrollment.created",
+            "intrafi_account_enrollment.updated",
+            "intrafi_exclusion.created",
+            "intrafi_exclusion.updated",
             "oauth_connection.created",
             "oauth_connection.deactivated",
             "pending_transaction.created",
             "pending_transaction.updated",
+            "physical_card.created",
+            "physical_card.updated",
             "real_time_decision.card_authorization_requested",
             "real_time_decision.digital_wallet_token_requested",
             "real_time_decision.digital_wallet_authentication_requested",
@@ -133,6 +141,8 @@ class EventSubscriptions(SyncAPIResource):
               - `document.created` - Occurs whenever a Document is created.
               - `entity.created` - Occurs whenever an Entity is created.
               - `entity.updated` - Occurs whenever an Entity is updated.
+              - `export.created` - Occurs whenever an Export is created.
+              - `export.updated` - Occurs whenever an Export is updated.
               - `external_account.created` - Occurs whenever an External Account is created.
               - `file.created` - Occurs whenever a File is created.
               - `group.updated` - Occurs whenever a Group is updated.
@@ -148,6 +158,12 @@ class EventSubscriptions(SyncAPIResource):
                 Transfer Return is updated.
               - `inbound_wire_drawdown_request.created` - Occurs whenever an Inbound Wire
                 Drawdown Request is created.
+              - `intrafi_account_enrollment.created` - Occurs whenever an IntraFi Account
+                Enrollment is created.
+              - `intrafi_account_enrollment.updated` - Occurs whenever an IntraFi Account
+                Enrollment is updated.
+              - `intrafi_exclusion.created` - Occurs whenever an IntraFi Exclusion is created.
+              - `intrafi_exclusion.updated` - Occurs whenever an IntraFi Exclusion is updated.
               - `oauth_connection.created` - Occurs whenever an OAuth Connection is created.
               - `oauth_connection.deactivated` - Occurs whenever an OAuth Connection is
                 deactivated.
@@ -155,6 +171,8 @@ class EventSubscriptions(SyncAPIResource):
                 created.
               - `pending_transaction.updated` - Occurs whenever a Pending Transaction is
                 updated.
+              - `physical_card.created` - Occurs whenever a Physical Card is created.
+              - `physical_card.updated` - Occurs whenever a Physical Card is updated.
               - `real_time_decision.card_authorization_requested` - Occurs whenever a
                 Real-Time Decision is created in response to a card authorization.
               - `real_time_decision.digital_wallet_token_requested` - Occurs whenever a
@@ -379,6 +397,8 @@ class AsyncEventSubscriptions(AsyncAPIResource):
             "document.created",
             "entity.created",
             "entity.updated",
+            "export.created",
+            "export.updated",
             "external_account.created",
             "file.created",
             "group.updated",
@@ -388,10 +408,16 @@ class AsyncEventSubscriptions(AsyncAPIResource):
             "inbound_ach_transfer_return.created",
             "inbound_ach_transfer_return.updated",
             "inbound_wire_drawdown_request.created",
+            "intrafi_account_enrollment.created",
+            "intrafi_account_enrollment.updated",
+            "intrafi_exclusion.created",
+            "intrafi_exclusion.updated",
             "oauth_connection.created",
             "oauth_connection.deactivated",
             "pending_transaction.created",
             "pending_transaction.updated",
+            "physical_card.created",
+            "physical_card.updated",
             "real_time_decision.card_authorization_requested",
             "real_time_decision.digital_wallet_token_requested",
             "real_time_decision.digital_wallet_authentication_requested",
@@ -458,6 +484,8 @@ class AsyncEventSubscriptions(AsyncAPIResource):
               - `document.created` - Occurs whenever a Document is created.
               - `entity.created` - Occurs whenever an Entity is created.
               - `entity.updated` - Occurs whenever an Entity is updated.
+              - `export.created` - Occurs whenever an Export is created.
+              - `export.updated` - Occurs whenever an Export is updated.
               - `external_account.created` - Occurs whenever an External Account is created.
               - `file.created` - Occurs whenever a File is created.
               - `group.updated` - Occurs whenever a Group is updated.
@@ -473,6 +501,12 @@ class AsyncEventSubscriptions(AsyncAPIResource):
                 Transfer Return is updated.
               - `inbound_wire_drawdown_request.created` - Occurs whenever an Inbound Wire
                 Drawdown Request is created.
+              - `intrafi_account_enrollment.created` - Occurs whenever an IntraFi Account
+                Enrollment is created.
+              - `intrafi_account_enrollment.updated` - Occurs whenever an IntraFi Account
+                Enrollment is updated.
+              - `intrafi_exclusion.created` - Occurs whenever an IntraFi Exclusion is created.
+              - `intrafi_exclusion.updated` - Occurs whenever an IntraFi Exclusion is updated.
               - `oauth_connection.created` - Occurs whenever an OAuth Connection is created.
               - `oauth_connection.deactivated` - Occurs whenever an OAuth Connection is
                 deactivated.
@@ -480,6 +514,8 @@ class AsyncEventSubscriptions(AsyncAPIResource):
                 created.
               - `pending_transaction.updated` - Occurs whenever a Pending Transaction is
                 updated.
+              - `physical_card.created` - Occurs whenever a Physical Card is created.
+              - `physical_card.updated` - Occurs whenever a Physical Card is updated.
               - `real_time_decision.card_authorization_requested` - Occurs whenever a
                 Real-Time Decision is created in response to a card authorization.
               - `real_time_decision.digital_wallet_token_requested` - Occurs whenever a
