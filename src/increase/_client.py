@@ -91,6 +91,7 @@ class Increase(SyncAPIClient):
     account_statements: resources.AccountStatements
     simulations: resources.Simulations
     physical_cards: resources.PhysicalCards
+    card_payments: resources.CardPayments
 
     # client options
     api_key: str
@@ -196,6 +197,7 @@ class Increase(SyncAPIClient):
         self.account_statements = resources.AccountStatements(self)
         self.simulations = resources.Simulations(self)
         self.physical_cards = resources.PhysicalCards(self)
+        self.card_payments = resources.CardPayments(self)
 
     @property
     def qs(self) -> Querystring:
@@ -389,6 +391,7 @@ class AsyncIncrease(AsyncAPIClient):
     account_statements: resources.AsyncAccountStatements
     simulations: resources.AsyncSimulations
     physical_cards: resources.AsyncPhysicalCards
+    card_payments: resources.AsyncCardPayments
 
     # client options
     api_key: str
@@ -494,6 +497,7 @@ class AsyncIncrease(AsyncAPIClient):
         self.account_statements = resources.AsyncAccountStatements(self)
         self.simulations = resources.AsyncSimulations(self)
         self.physical_cards = resources.AsyncPhysicalCards(self)
+        self.card_payments = resources.AsyncCardPayments(self)
 
     @property
     def qs(self) -> Querystring:
