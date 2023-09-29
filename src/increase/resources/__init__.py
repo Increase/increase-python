@@ -13,6 +13,7 @@ from .simulations import Simulations, AsyncSimulations
 from .transactions import Transactions, AsyncTransactions
 from .ach_transfers import ACHTransfers, AsyncACHTransfers
 from .card_disputes import CardDisputes, AsyncCardDisputes
+from .card_payments import CardPayments, AsyncCardPayments
 from .card_profiles import CardProfiles, AsyncCardProfiles
 from .check_deposits import CheckDeposits, AsyncCheckDeposits
 from .physical_cards import PhysicalCards, AsyncPhysicalCards
@@ -128,4 +129,6 @@ __all__ = [
     "AsyncSimulations",
     "PhysicalCards",
     "AsyncPhysicalCards",
+    "CardPayments",
+    "AsyncCardPayments",
 ]

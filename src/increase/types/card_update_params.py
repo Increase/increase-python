@@ -21,6 +21,13 @@ class CardUpdateParams(TypedDict, total=False):
     steps.
     """
 
+    entity_id: str
+    """The Entity the card belongs to.
+
+    You only need to supply this in rare situations when the card is not for the
+    Account holder.
+    """
+
     status: Literal["active", "disabled", "canceled"]
     """The status to update the Card with.
 

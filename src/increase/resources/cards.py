@@ -53,7 +53,8 @@ class Cards(SyncAPIResource):
               Decision with the category `digital_wallet_token_requested` or
               `digital_wallet_authentication_requested`.
 
-          entity_id: The Entity the card should belong to.
+          entity_id: The Entity the card belongs to. You only need to supply this in rare situations
+              when the card is not for the Account holder.
 
           extra_headers: Send extra headers
 
@@ -127,6 +128,7 @@ class Cards(SyncAPIResource):
         billing_address: card_update_params.BillingAddress | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         digital_wallet: card_update_params.DigitalWallet | NotGiven = NOT_GIVEN,
+        entity_id: str | NotGiven = NOT_GIVEN,
         status: Literal["active", "disabled", "canceled"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -149,6 +151,9 @@ class Cards(SyncAPIResource):
           digital_wallet: The contact information used in the two-factor steps for digital wallet card
               creation. At least one field must be present to complete the digital wallet
               steps.
+
+          entity_id: The Entity the card belongs to. You only need to supply this in rare situations
+              when the card is not for the Account holder.
 
           status: The status to update the Card with.
 
@@ -173,6 +178,7 @@ class Cards(SyncAPIResource):
                     "billing_address": billing_address,
                     "description": description,
                     "digital_wallet": digital_wallet,
+                    "entity_id": entity_id,
                     "status": status,
                 },
                 card_update_params.CardUpdateParams,
@@ -308,7 +314,8 @@ class AsyncCards(AsyncAPIResource):
               Decision with the category `digital_wallet_token_requested` or
               `digital_wallet_authentication_requested`.
 
-          entity_id: The Entity the card should belong to.
+          entity_id: The Entity the card belongs to. You only need to supply this in rare situations
+              when the card is not for the Account holder.
 
           extra_headers: Send extra headers
 
@@ -382,6 +389,7 @@ class AsyncCards(AsyncAPIResource):
         billing_address: card_update_params.BillingAddress | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         digital_wallet: card_update_params.DigitalWallet | NotGiven = NOT_GIVEN,
+        entity_id: str | NotGiven = NOT_GIVEN,
         status: Literal["active", "disabled", "canceled"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -404,6 +412,9 @@ class AsyncCards(AsyncAPIResource):
           digital_wallet: The contact information used in the two-factor steps for digital wallet card
               creation. At least one field must be present to complete the digital wallet
               steps.
+
+          entity_id: The Entity the card belongs to. You only need to supply this in rare situations
+              when the card is not for the Account holder.
 
           status: The status to update the Card with.
 
@@ -428,6 +439,7 @@ class AsyncCards(AsyncAPIResource):
                     "billing_address": billing_address,
                     "description": description,
                     "digital_wallet": digital_wallet,
+                    "entity_id": entity_id,
                     "status": status,
                 },
                 card_update_params.CardUpdateParams,

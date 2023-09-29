@@ -710,3 +710,16 @@ Methods:
 - <code title="get /physical_cards/{physical_card_id}">client.physical_cards.<a href="./src/increase/resources/physical_cards.py">retrieve</a>(physical_card_id) -> <a href="./src/increase/types/physical_card.py">PhysicalCard</a></code>
 - <code title="patch /physical_cards/{physical_card_id}">client.physical_cards.<a href="./src/increase/resources/physical_cards.py">update</a>(physical_card_id, \*\*<a href="src/increase/types/physical_card_update_params.py">params</a>) -> <a href="./src/increase/types/physical_card.py">PhysicalCard</a></code>
 - <code title="get /physical_cards">client.physical_cards.<a href="./src/increase/resources/physical_cards.py">list</a>(\*\*<a href="src/increase/types/physical_card_list_params.py">params</a>) -> <a href="./src/increase/types/physical_card.py">SyncPage[PhysicalCard]</a></code>
+
+# CardPayments
+
+Types:
+
+```python
+from increase.types import CardPayment
+```
+
+Methods:
+
+- <code title="get /card_payments/{card_payment_id}">client.card_payments.<a href="./src/increase/resources/card_payments.py">retrieve</a>(card_payment_id) -> <a href="./src/increase/types/card_payment.py">CardPayment</a></code>
+- <code title="get /card_payments">client.card_payments.<a href="./src/increase/resources/card_payments.py">list</a>(\*\*<a href="src/increase/types/card_payment_list_params.py">params</a>) -> <a href="./src/increase/types/card_payment.py">SyncPage[CardPayment]</a></code>
