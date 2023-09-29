@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.13.4 (2023-09-29)
+
+Full Changelog: [v0.13.3...v0.13.4](https://github.com/Increase/increase-python/compare/v0.13.3...v0.13.4)
+
+### Features
+
+* **api:** add card payments endpoints ([#139](https://github.com/Increase/increase-python/issues/139)) ([6e116ae](https://github.com/Increase/increase-python/commit/6e116ae62b7093aad3303dea4f8ed244d1654e84))
+* **api:** add physical cards endpoints ([#138](https://github.com/Increase/increase-python/issues/138)) ([877a24b](https://github.com/Increase/increase-python/commit/877a24bda3baf7e5bbac35b83c17bdce63d61300))
+
 ## 0.13.3 (2023-09-27)
 
 Full Changelog: [v0.13.2...v0.13.3](https://github.com/increase/increase-python/compare/v0.13.2...v0.13.3)
