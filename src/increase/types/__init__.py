@@ -15,6 +15,7 @@ from .transaction import Transaction as Transaction
 from .ach_transfer import ACHTransfer as ACHTransfer
 from .card_details import CardDetails as CardDetails
 from .card_dispute import CardDispute as CardDispute
+from .card_payment import CardPayment as CardPayment
 from .card_profile import CardProfile as CardProfile
 from .check_deposit import CheckDeposit as CheckDeposit
 from .physical_card import PhysicalCard as PhysicalCard
@@ -55,6 +56,7 @@ from .wire_drawdown_request import WireDrawdownRequest as WireDrawdownRequest
 from .transaction_list_params import TransactionListParams as TransactionListParams
 from .ach_transfer_list_params import ACHTransferListParams as ACHTransferListParams
 from .card_dispute_list_params import CardDisputeListParams as CardDisputeListParams
+from .card_payment_list_params import CardPaymentListParams as CardPaymentListParams
 from .card_profile_list_params import CardProfileListParams as CardProfileListParams
 from .card_purchase_supplement import CardPurchaseSupplement as CardPurchaseSupplement
 from .check_deposit_list_params import CheckDepositListParams as CheckDepositListParams

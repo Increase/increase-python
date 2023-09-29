@@ -27,7 +27,11 @@ class CardCreateParams(TypedDict, total=False):
     """
 
     entity_id: str
-    """The Entity the card should belong to."""
+    """The Entity the card belongs to.
+
+    You only need to supply this in rare situations when the card is not for the
+    Account holder.
+    """
 
 
 class BillingAddress(TypedDict, total=False):
