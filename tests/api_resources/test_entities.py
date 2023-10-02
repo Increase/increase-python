@@ -492,6 +492,7 @@ class TestEntities:
             },
             cursor="string",
             limit=0,
+            status={"in": ["active", "archived", "disabled"]},
         )
         assert_matches_type(SyncPage[Entity], entity, path=["response"])
 
@@ -1006,6 +1007,7 @@ class TestAsyncEntities:
             },
             cursor="string",
             limit=0,
+            status={"in": ["active", "archived", "disabled"]},
         )
         assert_matches_type(AsyncPage[Entity], entity, path=["response"])
 

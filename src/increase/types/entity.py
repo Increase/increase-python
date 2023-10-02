@@ -492,13 +492,14 @@ class Entity(BaseModel):
     Will be present if `structure` is equal to `natural_person`.
     """
 
-    relationship: Optional[Literal["affiliated", "informational", "unaffiliated"]]
-    """The relationship between your group and the entity.
+    status: Literal["active", "archived", "disabled"]
+    """The status of the entity.
 
-    - `affiliated` - The entity is controlled by your group.
-    - `informational` - The entity is for informational purposes only.
-    - `unaffiliated` - The entity is not controlled by your group, but can still
-      directly open accounts.
+    - `active` - The entity is active.
+    - `archived` - The entity is archived, and can no longer be used to create
+      accounts.
+    - `disabled` - The entity is temporarily disabled and cannot be used for
+      financial activity.
     """
 
     structure: Literal["corporation", "natural_person", "joint", "trust"]
