@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.13.5 (2023-10-03)
+
+Full Changelog: [v0.13.4...v0.13.5](https://github.com/increase/increase-python/compare/v0.13.4...v0.13.5)
+
+### Features
+
+* **api:** expand event categories and Entity status options ([#144](https://github.com/increase/increase-python/issues/144)) ([5b452f0](https://github.com/increase/increase-python/commit/5b452f0f06d390f1440260314d39568e8d27456d))
+* **client:** handle retry-after header with a date format ([#142](https://github.com/increase/increase-python/issues/142)) ([0363f9b](https://github.com/increase/increase-python/commit/0363f9b8d38ff94088ce0d67ff63657118dade58))
+
+
+### Chores
+
+* **tests:** update test examples ([#145](https://github.com/increase/increase-python/issues/145)) ([9cbe137](https://github.com/increase/increase-python/commit/9cbe13777b7f6271520452e51ec200f78bd01077))
+
 ## 0.13.4 (2023-09-29)
 
 Full Changelog: [v0.13.3...v0.13.4](https://github.com/Increase/increase-python/compare/v0.13.3...v0.13.4)
