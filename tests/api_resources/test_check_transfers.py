@@ -24,40 +24,40 @@ class TestCheckTransfers:
     @parametrize
     def test_method_create(self, client: Increase) -> None:
         check_transfer = client.check_transfers.create(
-            account_id="string",
-            amount=1,
+            account_id="account_in71c4amph0vgo2qllky",
+            amount=1000,
         )
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: Increase) -> None:
         check_transfer = client.check_transfers.create(
-            account_id="string",
-            amount=1,
+            account_id="account_in71c4amph0vgo2qllky",
+            amount=1000,
             fulfillment_method="physical_check",
             physical_check={
-                "memo": "x",
+                "memo": "Check payment",
                 "note": "x",
-                "recipient_name": "x",
+                "recipient_name": "Ian Crease",
                 "mailing_address": {
-                    "name": "x",
-                    "line1": "x",
+                    "name": "Ian Crease",
+                    "line1": "33 Liberty Street",
                     "line2": "x",
-                    "city": "x",
-                    "state": "x",
-                    "postal_code": "x",
+                    "city": "New York",
+                    "state": "NY",
+                    "postal_code": "10045",
                 },
                 "return_address": {
-                    "name": "x",
-                    "line1": "x",
+                    "name": "Ian Crease",
+                    "line1": "33 Liberty Street",
                     "line2": "x",
-                    "city": "x",
-                    "state": "x",
-                    "postal_code": "x",
+                    "city": "New York",
+                    "state": "NY",
+                    "postal_code": "10045",
                 },
             },
             require_approval=True,
-            source_account_number_id="string",
+            source_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
             unique_identifier="x",
         )
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
@@ -130,40 +130,40 @@ class TestAsyncCheckTransfers:
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
         check_transfer = await client.check_transfers.create(
-            account_id="string",
-            amount=1,
+            account_id="account_in71c4amph0vgo2qllky",
+            amount=1000,
         )
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         check_transfer = await client.check_transfers.create(
-            account_id="string",
-            amount=1,
+            account_id="account_in71c4amph0vgo2qllky",
+            amount=1000,
             fulfillment_method="physical_check",
             physical_check={
-                "memo": "x",
+                "memo": "Check payment",
                 "note": "x",
-                "recipient_name": "x",
+                "recipient_name": "Ian Crease",
                 "mailing_address": {
-                    "name": "x",
-                    "line1": "x",
+                    "name": "Ian Crease",
+                    "line1": "33 Liberty Street",
                     "line2": "x",
-                    "city": "x",
-                    "state": "x",
-                    "postal_code": "x",
+                    "city": "New York",
+                    "state": "NY",
+                    "postal_code": "10045",
                 },
                 "return_address": {
-                    "name": "x",
-                    "line1": "x",
+                    "name": "Ian Crease",
+                    "line1": "33 Liberty Street",
                     "line2": "x",
-                    "city": "x",
-                    "state": "x",
-                    "postal_code": "x",
+                    "city": "New York",
+                    "state": "NY",
+                    "postal_code": "10045",
                 },
             },
             require_approval=True,
-            source_account_number_id="string",
+            source_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
             unique_identifier="x",
         )
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])

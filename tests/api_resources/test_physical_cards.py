@@ -24,20 +24,20 @@ class TestPhysicalCards:
     @parametrize
     def test_method_create(self, client: Increase) -> None:
         physical_card = client.physical_cards.create(
-            card_id="string",
-            card_profile_id="string",
+            card_id="card_oubs0hwk5rn6knuecxg2",
+            card_profile_id="card_profile_cox5y73lob2eqly18piy",
             cardholder={
-                "first_name": "x",
-                "last_name": "x",
+                "first_name": "Ian",
+                "last_name": "Crease",
             },
             shipment={
                 "method": "usps",
                 "address": {
-                    "name": "x",
-                    "line1": "x",
-                    "city": "x",
-                    "state": "x",
-                    "postal_code": "x",
+                    "name": "Ian Crease",
+                    "line1": "33 Liberty Street",
+                    "city": "New York",
+                    "state": "NY",
+                    "postal_code": "10045",
                 },
             },
         )
@@ -54,7 +54,7 @@ class TestPhysicalCards:
     def test_method_update(self, client: Increase) -> None:
         physical_card = client.physical_cards.update(
             "string",
-            status="active",
+            status="disabled",
         )
         assert_matches_type(PhysicalCard, physical_card, path=["response"])
 
@@ -87,20 +87,20 @@ class TestAsyncPhysicalCards:
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
         physical_card = await client.physical_cards.create(
-            card_id="string",
-            card_profile_id="string",
+            card_id="card_oubs0hwk5rn6knuecxg2",
+            card_profile_id="card_profile_cox5y73lob2eqly18piy",
             cardholder={
-                "first_name": "x",
-                "last_name": "x",
+                "first_name": "Ian",
+                "last_name": "Crease",
             },
             shipment={
                 "method": "usps",
                 "address": {
-                    "name": "x",
-                    "line1": "x",
-                    "city": "x",
-                    "state": "x",
-                    "postal_code": "x",
+                    "name": "Ian Crease",
+                    "line1": "33 Liberty Street",
+                    "city": "New York",
+                    "state": "NY",
+                    "postal_code": "10045",
                 },
             },
         )
@@ -117,7 +117,7 @@ class TestAsyncPhysicalCards:
     async def test_method_update(self, client: AsyncIncrease) -> None:
         physical_card = await client.physical_cards.update(
             "string",
-            status="active",
+            status="disabled",
         )
         assert_matches_type(PhysicalCard, physical_card, path=["response"])
 

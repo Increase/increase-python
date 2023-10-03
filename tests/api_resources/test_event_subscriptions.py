@@ -23,14 +23,14 @@ class TestEventSubscriptions:
     @parametrize
     def test_method_create(self, client: Increase) -> None:
         event_subscription = client.event_subscriptions.create(
-            url="string",
+            url="https://website.com/webhooks",
         )
         assert_matches_type(EventSubscription, event_subscription, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: Increase) -> None:
         event_subscription = client.event_subscriptions.create(
-            url="string",
+            url="https://website.com/webhooks",
             selected_event_category="account.created",
             shared_secret="x",
         )
@@ -80,14 +80,14 @@ class TestAsyncEventSubscriptions:
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
         event_subscription = await client.event_subscriptions.create(
-            url="string",
+            url="https://website.com/webhooks",
         )
         assert_matches_type(EventSubscription, event_subscription, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         event_subscription = await client.event_subscriptions.create(
-            url="string",
+            url="https://website.com/webhooks",
             selected_event_category="account.created",
             shared_secret="x",
         )

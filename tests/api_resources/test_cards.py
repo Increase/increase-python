@@ -24,14 +24,14 @@ class TestCards:
     @parametrize
     def test_method_create(self, client: Increase) -> None:
         card = client.cards.create(
-            account_id="string",
+            account_id="account_in71c4amph0vgo2qllky",
         )
         assert_matches_type(Card, card, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: Increase) -> None:
         card = client.cards.create(
-            account_id="string",
+            account_id="account_in71c4amph0vgo2qllky",
             billing_address={
                 "line1": "x",
                 "line2": "x",
@@ -39,7 +39,7 @@ class TestCards:
                 "state": "x",
                 "postal_code": "x",
             },
-            description="x",
+            description="Card for Ian Crease",
             digital_wallet={
                 "email": "x",
                 "phone": "x",
@@ -74,7 +74,7 @@ class TestCards:
                 "state": "x",
                 "postal_code": "x",
             },
-            description="x",
+            description="New description",
             digital_wallet={
                 "email": "x",
                 "phone": "x",
@@ -121,14 +121,14 @@ class TestAsyncCards:
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
         card = await client.cards.create(
-            account_id="string",
+            account_id="account_in71c4amph0vgo2qllky",
         )
         assert_matches_type(Card, card, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         card = await client.cards.create(
-            account_id="string",
+            account_id="account_in71c4amph0vgo2qllky",
             billing_address={
                 "line1": "x",
                 "line2": "x",
@@ -136,7 +136,7 @@ class TestAsyncCards:
                 "state": "x",
                 "postal_code": "x",
             },
-            description="x",
+            description="Card for Ian Crease",
             digital_wallet={
                 "email": "x",
                 "phone": "x",
@@ -171,7 +171,7 @@ class TestAsyncCards:
                 "state": "x",
                 "postal_code": "x",
             },
-            description="x",
+            description="New description",
             digital_wallet={
                 "email": "x",
                 "phone": "x",

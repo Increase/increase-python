@@ -23,14 +23,14 @@ class TestBookkeepingAccounts:
     @parametrize
     def test_method_create(self, client: Increase) -> None:
         bookkeeping_account = client.bookkeeping_accounts.create(
-            name="x",
+            name="New Account!",
         )
         assert_matches_type(BookkeepingAccount, bookkeeping_account, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: Increase) -> None:
         bookkeeping_account = client.bookkeeping_accounts.create(
-            name="x",
+            name="New Account!",
             account_id="string",
             compliance_category="commingled_cash",
             entity_id="string",
@@ -59,14 +59,14 @@ class TestAsyncBookkeepingAccounts:
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
         bookkeeping_account = await client.bookkeeping_accounts.create(
-            name="x",
+            name="New Account!",
         )
         assert_matches_type(BookkeepingAccount, bookkeeping_account, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         bookkeeping_account = await client.bookkeeping_accounts.create(
-            name="x",
+            name="New Account!",
             account_id="string",
             compliance_category="commingled_cash",
             entity_id="string",

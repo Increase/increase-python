@@ -33,33 +33,33 @@ class TestEntities:
         entity = client.entities.create(
             structure="corporation",
             corporation={
-                "name": "x",
-                "website": "string",
-                "tax_identifier": "x",
-                "incorporation_state": "x",
+                "name": "National Phonograph Company",
+                "website": "https://example.com",
+                "tax_identifier": "602214076",
+                "incorporation_state": "NY",
                 "address": {
-                    "line1": "x",
+                    "line1": "33 Liberty Street",
                     "line2": "x",
-                    "city": "x",
-                    "state": "x",
-                    "zip": "x",
+                    "city": "New York",
+                    "state": "NY",
+                    "zip": "10045",
                 },
                 "beneficial_owners": [
                     {
                         "individual": {
-                            "name": "x",
-                            "date_of_birth": parse_date("2019-12-27"),
+                            "name": "Ian Crease",
+                            "date_of_birth": parse_date("1970-01-31"),
                             "address": {
-                                "line1": "x",
+                                "line1": "33 Liberty Street",
                                 "line2": "x",
-                                "city": "x",
-                                "state": "x",
-                                "zip": "x",
+                                "city": "New York",
+                                "state": "NY",
+                                "zip": "10045",
                             },
                             "confirmed_no_us_tax_id": True,
                             "identification": {
                                 "method": "social_security_number",
-                                "number": "xxxx",
+                                "number": "078051120",
                                 "passport": {
                                     "file_id": "string",
                                     "expiration_date": parse_date("2019-12-27"),
@@ -80,85 +80,9 @@ class TestEntities:
                                 },
                             },
                         },
-                        "company_title": "x",
-                        "prongs": ["ownership", "control"],
-                    },
-                    {
-                        "individual": {
-                            "name": "x",
-                            "date_of_birth": parse_date("2019-12-27"),
-                            "address": {
-                                "line1": "x",
-                                "line2": "x",
-                                "city": "x",
-                                "state": "x",
-                                "zip": "x",
-                            },
-                            "confirmed_no_us_tax_id": True,
-                            "identification": {
-                                "method": "social_security_number",
-                                "number": "xxxx",
-                                "passport": {
-                                    "file_id": "string",
-                                    "expiration_date": parse_date("2019-12-27"),
-                                    "country": "x",
-                                },
-                                "drivers_license": {
-                                    "file_id": "string",
-                                    "back_file_id": "string",
-                                    "expiration_date": parse_date("2019-12-27"),
-                                    "state": "x",
-                                },
-                                "other": {
-                                    "country": "x",
-                                    "description": "x",
-                                    "expiration_date": parse_date("2019-12-27"),
-                                    "file_id": "string",
-                                    "back_file_id": "string",
-                                },
-                            },
-                        },
-                        "company_title": "x",
-                        "prongs": ["ownership", "control"],
-                    },
-                    {
-                        "individual": {
-                            "name": "x",
-                            "date_of_birth": parse_date("2019-12-27"),
-                            "address": {
-                                "line1": "x",
-                                "line2": "x",
-                                "city": "x",
-                                "state": "x",
-                                "zip": "x",
-                            },
-                            "confirmed_no_us_tax_id": True,
-                            "identification": {
-                                "method": "social_security_number",
-                                "number": "xxxx",
-                                "passport": {
-                                    "file_id": "string",
-                                    "expiration_date": parse_date("2019-12-27"),
-                                    "country": "x",
-                                },
-                                "drivers_license": {
-                                    "file_id": "string",
-                                    "back_file_id": "string",
-                                    "expiration_date": parse_date("2019-12-27"),
-                                    "state": "x",
-                                },
-                                "other": {
-                                    "country": "x",
-                                    "description": "x",
-                                    "expiration_date": parse_date("2019-12-27"),
-                                    "file_id": "string",
-                                    "back_file_id": "string",
-                                },
-                            },
-                        },
-                        "company_title": "x",
-                        "prongs": ["ownership", "control"],
-                    },
+                        "company_title": "CEO",
+                        "prongs": ["control"],
+                    }
                 ],
             },
             description="x",
@@ -304,7 +228,7 @@ class TestEntities:
                 },
             },
             relationship="affiliated",
-            supplemental_documents=[{"file_id": "string"}, {"file_id": "string"}, {"file_id": "string"}],
+            supplemental_documents=[{"file_id": "file_makxrc67oh9l6sg7w9yc"}],
             trust={
                 "name": "x",
                 "category": "revocable",
@@ -508,10 +432,10 @@ class TestEntities:
         entity = client.entities.update_address(
             "string",
             address={
-                "line1": "x",
-                "city": "x",
-                "state": "x",
-                "zip": "x",
+                "line1": "33 Liberty Street",
+                "city": "New York",
+                "state": "NY",
+                "zip": "10045",
             },
         )
         assert_matches_type(Entity, entity, path=["response"])
@@ -521,11 +445,11 @@ class TestEntities:
         entity = client.entities.update_address(
             "string",
             address={
-                "line1": "x",
-                "line2": "x",
-                "city": "x",
-                "state": "x",
-                "zip": "x",
+                "line1": "33 Liberty Street",
+                "line2": "Unit 2",
+                "city": "New York",
+                "state": "NY",
+                "zip": "10045",
             },
         )
         assert_matches_type(Entity, entity, path=["response"])
@@ -548,33 +472,33 @@ class TestAsyncEntities:
         entity = await client.entities.create(
             structure="corporation",
             corporation={
-                "name": "x",
-                "website": "string",
-                "tax_identifier": "x",
-                "incorporation_state": "x",
+                "name": "National Phonograph Company",
+                "website": "https://example.com",
+                "tax_identifier": "602214076",
+                "incorporation_state": "NY",
                 "address": {
-                    "line1": "x",
+                    "line1": "33 Liberty Street",
                     "line2": "x",
-                    "city": "x",
-                    "state": "x",
-                    "zip": "x",
+                    "city": "New York",
+                    "state": "NY",
+                    "zip": "10045",
                 },
                 "beneficial_owners": [
                     {
                         "individual": {
-                            "name": "x",
-                            "date_of_birth": parse_date("2019-12-27"),
+                            "name": "Ian Crease",
+                            "date_of_birth": parse_date("1970-01-31"),
                             "address": {
-                                "line1": "x",
+                                "line1": "33 Liberty Street",
                                 "line2": "x",
-                                "city": "x",
-                                "state": "x",
-                                "zip": "x",
+                                "city": "New York",
+                                "state": "NY",
+                                "zip": "10045",
                             },
                             "confirmed_no_us_tax_id": True,
                             "identification": {
                                 "method": "social_security_number",
-                                "number": "xxxx",
+                                "number": "078051120",
                                 "passport": {
                                     "file_id": "string",
                                     "expiration_date": parse_date("2019-12-27"),
@@ -595,85 +519,9 @@ class TestAsyncEntities:
                                 },
                             },
                         },
-                        "company_title": "x",
-                        "prongs": ["ownership", "control"],
-                    },
-                    {
-                        "individual": {
-                            "name": "x",
-                            "date_of_birth": parse_date("2019-12-27"),
-                            "address": {
-                                "line1": "x",
-                                "line2": "x",
-                                "city": "x",
-                                "state": "x",
-                                "zip": "x",
-                            },
-                            "confirmed_no_us_tax_id": True,
-                            "identification": {
-                                "method": "social_security_number",
-                                "number": "xxxx",
-                                "passport": {
-                                    "file_id": "string",
-                                    "expiration_date": parse_date("2019-12-27"),
-                                    "country": "x",
-                                },
-                                "drivers_license": {
-                                    "file_id": "string",
-                                    "back_file_id": "string",
-                                    "expiration_date": parse_date("2019-12-27"),
-                                    "state": "x",
-                                },
-                                "other": {
-                                    "country": "x",
-                                    "description": "x",
-                                    "expiration_date": parse_date("2019-12-27"),
-                                    "file_id": "string",
-                                    "back_file_id": "string",
-                                },
-                            },
-                        },
-                        "company_title": "x",
-                        "prongs": ["ownership", "control"],
-                    },
-                    {
-                        "individual": {
-                            "name": "x",
-                            "date_of_birth": parse_date("2019-12-27"),
-                            "address": {
-                                "line1": "x",
-                                "line2": "x",
-                                "city": "x",
-                                "state": "x",
-                                "zip": "x",
-                            },
-                            "confirmed_no_us_tax_id": True,
-                            "identification": {
-                                "method": "social_security_number",
-                                "number": "xxxx",
-                                "passport": {
-                                    "file_id": "string",
-                                    "expiration_date": parse_date("2019-12-27"),
-                                    "country": "x",
-                                },
-                                "drivers_license": {
-                                    "file_id": "string",
-                                    "back_file_id": "string",
-                                    "expiration_date": parse_date("2019-12-27"),
-                                    "state": "x",
-                                },
-                                "other": {
-                                    "country": "x",
-                                    "description": "x",
-                                    "expiration_date": parse_date("2019-12-27"),
-                                    "file_id": "string",
-                                    "back_file_id": "string",
-                                },
-                            },
-                        },
-                        "company_title": "x",
-                        "prongs": ["ownership", "control"],
-                    },
+                        "company_title": "CEO",
+                        "prongs": ["control"],
+                    }
                 ],
             },
             description="x",
@@ -819,7 +667,7 @@ class TestAsyncEntities:
                 },
             },
             relationship="affiliated",
-            supplemental_documents=[{"file_id": "string"}, {"file_id": "string"}, {"file_id": "string"}],
+            supplemental_documents=[{"file_id": "file_makxrc67oh9l6sg7w9yc"}],
             trust={
                 "name": "x",
                 "category": "revocable",
@@ -1023,10 +871,10 @@ class TestAsyncEntities:
         entity = await client.entities.update_address(
             "string",
             address={
-                "line1": "x",
-                "city": "x",
-                "state": "x",
-                "zip": "x",
+                "line1": "33 Liberty Street",
+                "city": "New York",
+                "state": "NY",
+                "zip": "10045",
             },
         )
         assert_matches_type(Entity, entity, path=["response"])
@@ -1036,11 +884,11 @@ class TestAsyncEntities:
         entity = await client.entities.update_address(
             "string",
             address={
-                "line1": "x",
-                "line2": "x",
-                "city": "x",
-                "state": "x",
-                "zip": "x",
+                "line1": "33 Liberty Street",
+                "line2": "Unit 2",
+                "city": "New York",
+                "state": "NY",
+                "zip": "10045",
             },
         )
         assert_matches_type(Entity, entity, path=["response"])

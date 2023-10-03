@@ -23,14 +23,14 @@ class TestBalanceLookups:
     @parametrize
     def test_method_lookup(self, client: Increase) -> None:
         balance_lookup = client.balance_lookups.lookup(
-            account_id="string",
+            account_id="account_in71c4amph0vgo2qllky",
         )
         assert_matches_type(BalanceLookupLookupResponse, balance_lookup, path=["response"])
 
     @parametrize
     def test_method_lookup_with_all_params(self, client: Increase) -> None:
         balance_lookup = client.balance_lookups.lookup(
-            account_id="string",
+            account_id="account_in71c4amph0vgo2qllky",
             at_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(BalanceLookupLookupResponse, balance_lookup, path=["response"])
@@ -44,14 +44,14 @@ class TestAsyncBalanceLookups:
     @parametrize
     async def test_method_lookup(self, client: AsyncIncrease) -> None:
         balance_lookup = await client.balance_lookups.lookup(
-            account_id="string",
+            account_id="account_in71c4amph0vgo2qllky",
         )
         assert_matches_type(BalanceLookupLookupResponse, balance_lookup, path=["response"])
 
     @parametrize
     async def test_method_lookup_with_all_params(self, client: AsyncIncrease) -> None:
         balance_lookup = await client.balance_lookups.lookup(
-            account_id="string",
+            account_id="account_in71c4amph0vgo2qllky",
             at_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(BalanceLookupLookupResponse, balance_lookup, path=["response"])

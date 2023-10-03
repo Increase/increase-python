@@ -24,20 +24,20 @@ class TestAccountTransfers:
     @parametrize
     def test_method_create(self, client: Increase) -> None:
         account_transfer = client.account_transfers.create(
-            account_id="string",
-            amount=1,
-            description="x",
-            destination_account_id="string",
+            account_id="account_in71c4amph0vgo2qllky",
+            amount=100,
+            description="Creating liquidity",
+            destination_account_id="account_uf16sut2ct5bevmq3eh",
         )
         assert_matches_type(AccountTransfer, account_transfer, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: Increase) -> None:
         account_transfer = client.account_transfers.create(
-            account_id="string",
-            amount=1,
-            description="x",
-            destination_account_id="string",
+            account_id="account_in71c4amph0vgo2qllky",
+            amount=100,
+            description="Creating liquidity",
+            destination_account_id="account_uf16sut2ct5bevmq3eh",
             require_approval=True,
             unique_identifier="x",
         )
@@ -94,20 +94,20 @@ class TestAsyncAccountTransfers:
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
         account_transfer = await client.account_transfers.create(
-            account_id="string",
-            amount=1,
-            description="x",
-            destination_account_id="string",
+            account_id="account_in71c4amph0vgo2qllky",
+            amount=100,
+            description="Creating liquidity",
+            destination_account_id="account_uf16sut2ct5bevmq3eh",
         )
         assert_matches_type(AccountTransfer, account_transfer, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         account_transfer = await client.account_transfers.create(
-            account_id="string",
-            amount=1,
-            description="x",
-            destination_account_id="string",
+            account_id="account_in71c4amph0vgo2qllky",
+            amount=100,
+            description="Creating liquidity",
+            destination_account_id="account_uf16sut2ct5bevmq3eh",
             require_approval=True,
             unique_identifier="x",
         )

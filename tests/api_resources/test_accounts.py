@@ -24,17 +24,17 @@ class TestAccounts:
     @parametrize
     def test_method_create(self, client: Increase) -> None:
         account = client.accounts.create(
-            name="x",
+            name="New Account!",
         )
         assert_matches_type(Account, account, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: Increase) -> None:
         account = client.accounts.create(
-            name="x",
-            entity_id="string",
+            name="New Account!",
+            entity_id="entity_n8y8tnk2p9339ti393yi",
             informational_entity_id="string",
-            program_id="string",
+            program_id="program_i2v2os4mwza1oetokh9i",
         )
         assert_matches_type(Account, account, path=["response"])
 
@@ -56,7 +56,7 @@ class TestAccounts:
     def test_method_update_with_all_params(self, client: Increase) -> None:
         account = client.accounts.update(
             "string",
-            name="x",
+            name="My renamed account",
         )
         assert_matches_type(Account, account, path=["response"])
 
@@ -99,17 +99,17 @@ class TestAsyncAccounts:
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
         account = await client.accounts.create(
-            name="x",
+            name="New Account!",
         )
         assert_matches_type(Account, account, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         account = await client.accounts.create(
-            name="x",
-            entity_id="string",
+            name="New Account!",
+            entity_id="entity_n8y8tnk2p9339ti393yi",
             informational_entity_id="string",
-            program_id="string",
+            program_id="program_i2v2os4mwza1oetokh9i",
         )
         assert_matches_type(Account, account, path=["response"])
 
@@ -131,7 +131,7 @@ class TestAsyncAccounts:
     async def test_method_update_with_all_params(self, client: AsyncIncrease) -> None:
         account = await client.accounts.update(
             "string",
-            name="x",
+            name="My renamed account",
         )
         assert_matches_type(Account, account, path=["response"])
 

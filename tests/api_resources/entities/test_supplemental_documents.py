@@ -25,7 +25,7 @@ class TestSupplementalDocuments:
     def test_method_create(self, client: Increase) -> None:
         supplemental_document = client.entities.supplemental_documents.create(
             "string",
-            file_id="string",
+            file_id="file_makxrc67oh9l6sg7w9yc",
         )
         assert_matches_type(Entity, supplemental_document, path=["response"])
 
@@ -55,7 +55,7 @@ class TestAsyncSupplementalDocuments:
     async def test_method_create(self, client: AsyncIncrease) -> None:
         supplemental_document = await client.entities.supplemental_documents.create(
             "string",
-            file_id="string",
+            file_id="file_makxrc67oh9l6sg7w9yc",
         )
         assert_matches_type(Entity, supplemental_document, path=["response"])
 

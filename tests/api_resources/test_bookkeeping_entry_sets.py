@@ -25,16 +25,12 @@ class TestBookkeepingEntrySets:
         bookkeeping_entry_set = client.bookkeeping_entry_sets.create(
             entries=[
                 {
-                    "account_id": "string",
-                    "amount": 0,
+                    "account_id": "bookkeeping_account_9husfpw68pzmve9dvvc7",
+                    "amount": 100,
                 },
                 {
-                    "account_id": "string",
-                    "amount": 0,
-                },
-                {
-                    "account_id": "string",
-                    "amount": 0,
+                    "account_id": "bookkeeping_account_t2obldz1rcu15zr54umg",
+                    "amount": -100,
                 },
             ],
         )
@@ -45,20 +41,16 @@ class TestBookkeepingEntrySets:
         bookkeeping_entry_set = client.bookkeeping_entry_sets.create(
             entries=[
                 {
-                    "account_id": "string",
-                    "amount": 0,
+                    "account_id": "bookkeeping_account_9husfpw68pzmve9dvvc7",
+                    "amount": 100,
                 },
                 {
-                    "account_id": "string",
-                    "amount": 0,
-                },
-                {
-                    "account_id": "string",
-                    "amount": 0,
+                    "account_id": "bookkeeping_account_t2obldz1rcu15zr54umg",
+                    "amount": -100,
                 },
             ],
-            date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            transaction_id="string",
+            date=parse_datetime("2020-01-31T23:59:59Z"),
+            transaction_id="transaction_uyrp7fld2ium70oa7oi",
         )
         assert_matches_type(BookkeepingEntrySet, bookkeeping_entry_set, path=["response"])
 
@@ -73,16 +65,12 @@ class TestAsyncBookkeepingEntrySets:
         bookkeeping_entry_set = await client.bookkeeping_entry_sets.create(
             entries=[
                 {
-                    "account_id": "string",
-                    "amount": 0,
+                    "account_id": "bookkeeping_account_9husfpw68pzmve9dvvc7",
+                    "amount": 100,
                 },
                 {
-                    "account_id": "string",
-                    "amount": 0,
-                },
-                {
-                    "account_id": "string",
-                    "amount": 0,
+                    "account_id": "bookkeeping_account_t2obldz1rcu15zr54umg",
+                    "amount": -100,
                 },
             ],
         )
@@ -93,19 +81,15 @@ class TestAsyncBookkeepingEntrySets:
         bookkeeping_entry_set = await client.bookkeeping_entry_sets.create(
             entries=[
                 {
-                    "account_id": "string",
-                    "amount": 0,
+                    "account_id": "bookkeeping_account_9husfpw68pzmve9dvvc7",
+                    "amount": 100,
                 },
                 {
-                    "account_id": "string",
-                    "amount": 0,
-                },
-                {
-                    "account_id": "string",
-                    "amount": 0,
+                    "account_id": "bookkeeping_account_t2obldz1rcu15zr54umg",
+                    "amount": -100,
                 },
             ],
-            date=parse_datetime("2019-12-27T18:11:19.117Z"),
-            transaction_id="string",
+            date=parse_datetime("2020-01-31T23:59:59Z"),
+            transaction_id="transaction_uyrp7fld2ium70oa7oi",
         )
         assert_matches_type(BookkeepingEntrySet, bookkeeping_entry_set, path=["response"])

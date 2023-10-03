@@ -22,7 +22,7 @@ class TestDocuments:
     @parametrize
     def test_method_create(self, client: Increase) -> None:
         document = client.simulations.documents.create(
-            account_id="string",
+            account_id="account_in71c4amph0vgo2qllky",
         )
         assert_matches_type(Document, document, path=["response"])
 
@@ -35,6 +35,6 @@ class TestAsyncDocuments:
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
         document = await client.simulations.documents.create(
-            account_id="string",
+            account_id="account_in71c4amph0vgo2qllky",
         )
         assert_matches_type(Document, document, path=["response"])
