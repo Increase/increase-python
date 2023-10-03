@@ -22,7 +22,7 @@ class TestAccountStatements:
     @parametrize
     def test_method_create(self, client: Increase) -> None:
         account_statement = client.simulations.account_statements.create(
-            account_id="string",
+            account_id="account_in71c4amph0vgo2qllky",
         )
         assert_matches_type(AccountStatement, account_statement, path=["response"])
 
@@ -35,6 +35,6 @@ class TestAsyncAccountStatements:
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
         account_statement = await client.simulations.account_statements.create(
-            account_id="string",
+            account_id="account_in71c4amph0vgo2qllky",
         )
         assert_matches_type(AccountStatement, account_statement, path=["response"])

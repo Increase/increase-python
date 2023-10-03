@@ -23,7 +23,7 @@ class TestPhysicalCards:
     def test_method_shipment_advance(self, client: Increase) -> None:
         physical_card = client.simulations.physical_cards.shipment_advance(
             "string",
-            shipment_status="pending",
+            shipment_status="shipped",
         )
         assert_matches_type(PhysicalCard, physical_card, path=["response"])
 
@@ -37,6 +37,6 @@ class TestAsyncPhysicalCards:
     async def test_method_shipment_advance(self, client: AsyncIncrease) -> None:
         physical_card = await client.simulations.physical_cards.shipment_advance(
             "string",
-            shipment_status="pending",
+            shipment_status="shipped",
         )
         assert_matches_type(PhysicalCard, physical_card, path=["response"])

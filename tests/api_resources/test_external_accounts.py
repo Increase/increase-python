@@ -23,18 +23,18 @@ class TestExternalAccounts:
     @parametrize
     def test_method_create(self, client: Increase) -> None:
         external_account = client.external_accounts.create(
-            account_number="x",
-            description="x",
-            routing_number="xxxxxxxxx",
+            account_number="987654321",
+            description="Landlord",
+            routing_number="101050001",
         )
         assert_matches_type(ExternalAccount, external_account, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: Increase) -> None:
         external_account = client.external_accounts.create(
-            account_number="x",
-            description="x",
-            routing_number="xxxxxxxxx",
+            account_number="987654321",
+            description="Landlord",
+            routing_number="101050001",
             funding="checking",
         )
         assert_matches_type(ExternalAccount, external_account, path=["response"])
@@ -57,7 +57,7 @@ class TestExternalAccounts:
     def test_method_update_with_all_params(self, client: Increase) -> None:
         external_account = client.external_accounts.update(
             "string",
-            description="x",
+            description="New description",
             status="active",
         )
         assert_matches_type(ExternalAccount, external_account, path=["response"])
@@ -86,18 +86,18 @@ class TestAsyncExternalAccounts:
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
         external_account = await client.external_accounts.create(
-            account_number="x",
-            description="x",
-            routing_number="xxxxxxxxx",
+            account_number="987654321",
+            description="Landlord",
+            routing_number="101050001",
         )
         assert_matches_type(ExternalAccount, external_account, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         external_account = await client.external_accounts.create(
-            account_number="x",
-            description="x",
-            routing_number="xxxxxxxxx",
+            account_number="987654321",
+            description="Landlord",
+            routing_number="101050001",
             funding="checking",
         )
         assert_matches_type(ExternalAccount, external_account, path=["response"])
@@ -120,7 +120,7 @@ class TestAsyncExternalAccounts:
     async def test_method_update_with_all_params(self, client: AsyncIncrease) -> None:
         external_account = await client.external_accounts.update(
             "string",
-            description="x",
+            description="New description",
             status="active",
         )
         assert_matches_type(ExternalAccount, external_account, path=["response"])

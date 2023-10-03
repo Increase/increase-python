@@ -24,27 +24,27 @@ class TestWireTransfers:
     @parametrize
     def test_method_create(self, client: Increase) -> None:
         wire_transfer = client.wire_transfers.create(
-            account_id="string",
-            amount=1,
-            beneficiary_name="x",
-            message_to_recipient="x",
+            account_id="account_in71c4amph0vgo2qllky",
+            amount=100,
+            beneficiary_name="Ian Crease",
+            message_to_recipient="New account transfer",
         )
         assert_matches_type(WireTransfer, wire_transfer, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: Increase) -> None:
         wire_transfer = client.wire_transfers.create(
-            account_id="string",
-            amount=1,
-            beneficiary_name="x",
-            message_to_recipient="x",
-            account_number="x",
-            beneficiary_address_line1="x",
-            beneficiary_address_line2="x",
-            beneficiary_address_line3="x",
+            account_id="account_in71c4amph0vgo2qllky",
+            amount=100,
+            beneficiary_name="Ian Crease",
+            message_to_recipient="New account transfer",
+            account_number="987654321",
+            beneficiary_address_line1="33 Liberty Street",
+            beneficiary_address_line2="New York",
+            beneficiary_address_line3="NY 10045",
             external_account_id="string",
             require_approval=True,
-            routing_number="xxxxxxxxx",
+            routing_number="101050001",
             unique_identifier="x",
         )
         assert_matches_type(WireTransfer, wire_transfer, path=["response"])
@@ -117,27 +117,27 @@ class TestAsyncWireTransfers:
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
         wire_transfer = await client.wire_transfers.create(
-            account_id="string",
-            amount=1,
-            beneficiary_name="x",
-            message_to_recipient="x",
+            account_id="account_in71c4amph0vgo2qllky",
+            amount=100,
+            beneficiary_name="Ian Crease",
+            message_to_recipient="New account transfer",
         )
         assert_matches_type(WireTransfer, wire_transfer, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         wire_transfer = await client.wire_transfers.create(
-            account_id="string",
-            amount=1,
-            beneficiary_name="x",
-            message_to_recipient="x",
-            account_number="x",
-            beneficiary_address_line1="x",
-            beneficiary_address_line2="x",
-            beneficiary_address_line3="x",
+            account_id="account_in71c4amph0vgo2qllky",
+            amount=100,
+            beneficiary_name="Ian Crease",
+            message_to_recipient="New account transfer",
+            account_number="987654321",
+            beneficiary_address_line1="33 Liberty Street",
+            beneficiary_address_line2="New York",
+            beneficiary_address_line3="NY 10045",
             external_account_id="string",
             require_approval=True,
-            routing_number="xxxxxxxxx",
+            routing_number="101050001",
             unique_identifier="x",
         )
         assert_matches_type(WireTransfer, wire_transfer, path=["response"])

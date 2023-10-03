@@ -23,17 +23,17 @@ class TestCards:
     @parametrize
     def test_method_authorize(self, client: Increase) -> None:
         card = client.simulations.cards.authorize(
-            amount=1,
+            amount=1000,
         )
         assert_matches_type(CardAuthorizationSimulation, card, path=["response"])
 
     @parametrize
     def test_method_authorize_with_all_params(self, client: Increase) -> None:
         card = client.simulations.cards.authorize(
-            amount=1,
-            card_id="string",
+            amount=1000,
+            card_id="card_oubs0hwk5rn6knuecxg2",
             digital_wallet_token_id="string",
-            event_subscription_id="string",
+            event_subscription_id="event_subscription_001dzz0r20rcdxgb013zqb8m04g",
             physical_card_id="string",
         )
         assert_matches_type(CardAuthorizationSimulation, card, path=["response"])
@@ -41,16 +41,16 @@ class TestCards:
     @parametrize
     def test_method_settlement(self, client: Increase) -> None:
         card = client.simulations.cards.settlement(
-            card_id="string",
-            pending_transaction_id="string",
+            card_id="card_oubs0hwk5rn6knuecxg2",
+            pending_transaction_id="pending_transaction_k1sfetcau2qbvjbzgju4",
         )
         assert_matches_type(Transaction, card, path=["response"])
 
     @parametrize
     def test_method_settlement_with_all_params(self, client: Increase) -> None:
         card = client.simulations.cards.settlement(
-            card_id="string",
-            pending_transaction_id="string",
+            card_id="card_oubs0hwk5rn6knuecxg2",
+            pending_transaction_id="pending_transaction_k1sfetcau2qbvjbzgju4",
             amount=1,
         )
         assert_matches_type(Transaction, card, path=["response"])
@@ -64,17 +64,17 @@ class TestAsyncCards:
     @parametrize
     async def test_method_authorize(self, client: AsyncIncrease) -> None:
         card = await client.simulations.cards.authorize(
-            amount=1,
+            amount=1000,
         )
         assert_matches_type(CardAuthorizationSimulation, card, path=["response"])
 
     @parametrize
     async def test_method_authorize_with_all_params(self, client: AsyncIncrease) -> None:
         card = await client.simulations.cards.authorize(
-            amount=1,
-            card_id="string",
+            amount=1000,
+            card_id="card_oubs0hwk5rn6knuecxg2",
             digital_wallet_token_id="string",
-            event_subscription_id="string",
+            event_subscription_id="event_subscription_001dzz0r20rcdxgb013zqb8m04g",
             physical_card_id="string",
         )
         assert_matches_type(CardAuthorizationSimulation, card, path=["response"])
@@ -82,16 +82,16 @@ class TestAsyncCards:
     @parametrize
     async def test_method_settlement(self, client: AsyncIncrease) -> None:
         card = await client.simulations.cards.settlement(
-            card_id="string",
-            pending_transaction_id="string",
+            card_id="card_oubs0hwk5rn6knuecxg2",
+            pending_transaction_id="pending_transaction_k1sfetcau2qbvjbzgju4",
         )
         assert_matches_type(Transaction, card, path=["response"])
 
     @parametrize
     async def test_method_settlement_with_all_params(self, client: AsyncIncrease) -> None:
         card = await client.simulations.cards.settlement(
-            card_id="string",
-            pending_transaction_id="string",
+            card_id="card_oubs0hwk5rn6knuecxg2",
+            pending_transaction_id="pending_transaction_k1sfetcau2qbvjbzgju4",
             amount=1,
         )
         assert_matches_type(Transaction, card, path=["response"])

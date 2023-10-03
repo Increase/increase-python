@@ -24,16 +24,16 @@ class TestACHPrenotifications:
     @parametrize
     def test_method_create(self, client: Increase) -> None:
         ach_prenotification = client.ach_prenotifications.create(
-            account_number="x",
-            routing_number="xxxxxxxxx",
+            account_number="987654321",
+            routing_number="101050001",
         )
         assert_matches_type(ACHPrenotification, ach_prenotification, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: Increase) -> None:
         ach_prenotification = client.ach_prenotifications.create(
-            account_number="x",
-            routing_number="xxxxxxxxx",
+            account_number="987654321",
+            routing_number="101050001",
             addendum="x",
             company_descriptive_date="x",
             company_discretionary_data="x",
@@ -82,16 +82,16 @@ class TestAsyncACHPrenotifications:
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
         ach_prenotification = await client.ach_prenotifications.create(
-            account_number="x",
-            routing_number="xxxxxxxxx",
+            account_number="987654321",
+            routing_number="101050001",
         )
         assert_matches_type(ACHPrenotification, ach_prenotification, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         ach_prenotification = await client.ach_prenotifications.create(
-            account_number="x",
-            routing_number="xxxxxxxxx",
+            account_number="987654321",
+            routing_number="101050001",
             addendum="x",
             company_descriptive_date="x",
             company_discretionary_data="x",

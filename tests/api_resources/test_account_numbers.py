@@ -24,16 +24,16 @@ class TestAccountNumbers:
     @parametrize
     def test_method_create(self, client: Increase) -> None:
         account_number = client.account_numbers.create(
-            account_id="string",
-            name="x",
+            account_id="account_in71c4amph0vgo2qllky",
+            name="Rent payments",
         )
         assert_matches_type(AccountNumber, account_number, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: Increase) -> None:
         account_number = client.account_numbers.create(
-            account_id="string",
-            name="x",
+            account_id="account_in71c4amph0vgo2qllky",
+            name="Rent payments",
             inbound_ach={"debit_status": "allowed"},
             inbound_checks={"status": "allowed"},
         )
@@ -57,9 +57,9 @@ class TestAccountNumbers:
     def test_method_update_with_all_params(self, client: Increase) -> None:
         account_number = client.account_numbers.update(
             "string",
-            inbound_ach={"debit_status": "allowed"},
+            inbound_ach={"debit_status": "blocked"},
             name="x",
-            status="active",
+            status="disabled",
         )
         assert_matches_type(AccountNumber, account_number, path=["response"])
 
@@ -93,16 +93,16 @@ class TestAsyncAccountNumbers:
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
         account_number = await client.account_numbers.create(
-            account_id="string",
-            name="x",
+            account_id="account_in71c4amph0vgo2qllky",
+            name="Rent payments",
         )
         assert_matches_type(AccountNumber, account_number, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         account_number = await client.account_numbers.create(
-            account_id="string",
-            name="x",
+            account_id="account_in71c4amph0vgo2qllky",
+            name="Rent payments",
             inbound_ach={"debit_status": "allowed"},
             inbound_checks={"status": "allowed"},
         )
@@ -126,9 +126,9 @@ class TestAsyncAccountNumbers:
     async def test_method_update_with_all_params(self, client: AsyncIncrease) -> None:
         account_number = await client.account_numbers.update(
             "string",
-            inbound_ach={"debit_status": "allowed"},
+            inbound_ach={"debit_status": "blocked"},
             name="x",
-            status="active",
+            status="disabled",
         )
         assert_matches_type(AccountNumber, account_number, path=["response"])
 

@@ -24,16 +24,16 @@ class TestACHTransfers:
     @parametrize
     def test_method_create_inbound(self, client: Increase) -> None:
         ach_transfer = client.simulations.ach_transfers.create_inbound(
-            account_number_id="string",
-            amount=0,
+            account_number_id="account_number_v18nkfqm6afpsrvy82b2",
+            amount=1000,
         )
         assert_matches_type(ACHTransferSimulation, ach_transfer, path=["response"])
 
     @parametrize
     def test_method_create_inbound_with_all_params(self, client: Increase) -> None:
         ach_transfer = client.simulations.ach_transfers.create_inbound(
-            account_number_id="string",
-            amount=0,
+            account_number_id="account_number_v18nkfqm6afpsrvy82b2",
+            amount=1000,
             company_descriptive_date="x",
             company_discretionary_data="x",
             company_entry_description="x",
@@ -77,16 +77,16 @@ class TestAsyncACHTransfers:
     @parametrize
     async def test_method_create_inbound(self, client: AsyncIncrease) -> None:
         ach_transfer = await client.simulations.ach_transfers.create_inbound(
-            account_number_id="string",
-            amount=0,
+            account_number_id="account_number_v18nkfqm6afpsrvy82b2",
+            amount=1000,
         )
         assert_matches_type(ACHTransferSimulation, ach_transfer, path=["response"])
 
     @parametrize
     async def test_method_create_inbound_with_all_params(self, client: AsyncIncrease) -> None:
         ach_transfer = await client.simulations.ach_transfers.create_inbound(
-            account_number_id="string",
-            amount=0,
+            account_number_id="account_number_v18nkfqm6afpsrvy82b2",
+            amount=1000,
             company_descriptive_date="x",
             company_discretionary_data="x",
             company_entry_description="x",

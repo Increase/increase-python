@@ -24,12 +24,12 @@ class TestWireDrawdownRequests:
     @parametrize
     def test_method_create(self, client: Increase) -> None:
         wire_drawdown_request = client.wire_drawdown_requests.create(
-            account_number_id="string",
-            amount=1,
-            message_to_recipient="x",
-            recipient_account_number="x",
-            recipient_name="x",
-            recipient_routing_number="x",
+            account_number_id="account_number_v18nkfqm6afpsrvy82b2",
+            amount=10000,
+            message_to_recipient="Invoice 29582",
+            recipient_account_number="987654321",
+            recipient_name="Ian Crease",
+            recipient_routing_number="101050001",
         )
         assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
 
@@ -37,14 +37,14 @@ class TestWireDrawdownRequests:
     @parametrize
     def test_method_create_with_all_params(self, client: Increase) -> None:
         wire_drawdown_request = client.wire_drawdown_requests.create(
-            account_number_id="string",
-            amount=1,
-            message_to_recipient="x",
-            recipient_account_number="x",
-            recipient_name="x",
-            recipient_routing_number="x",
-            recipient_address_line1="x",
-            recipient_address_line2="x",
+            account_number_id="account_number_v18nkfqm6afpsrvy82b2",
+            amount=10000,
+            message_to_recipient="Invoice 29582",
+            recipient_account_number="987654321",
+            recipient_name="Ian Crease",
+            recipient_routing_number="101050001",
+            recipient_address_line1="33 Liberty Street",
+            recipient_address_line2="New York, NY, 10045",
             recipient_address_line3="x",
         )
         assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
@@ -79,12 +79,12 @@ class TestAsyncWireDrawdownRequests:
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
         wire_drawdown_request = await client.wire_drawdown_requests.create(
-            account_number_id="string",
-            amount=1,
-            message_to_recipient="x",
-            recipient_account_number="x",
-            recipient_name="x",
-            recipient_routing_number="x",
+            account_number_id="account_number_v18nkfqm6afpsrvy82b2",
+            amount=10000,
+            message_to_recipient="Invoice 29582",
+            recipient_account_number="987654321",
+            recipient_name="Ian Crease",
+            recipient_routing_number="101050001",
         )
         assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
 
@@ -92,14 +92,14 @@ class TestAsyncWireDrawdownRequests:
     @parametrize
     async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         wire_drawdown_request = await client.wire_drawdown_requests.create(
-            account_number_id="string",
-            amount=1,
-            message_to_recipient="x",
-            recipient_account_number="x",
-            recipient_name="x",
-            recipient_routing_number="x",
-            recipient_address_line1="x",
-            recipient_address_line2="x",
+            account_number_id="account_number_v18nkfqm6afpsrvy82b2",
+            amount=10000,
+            message_to_recipient="Invoice 29582",
+            recipient_account_number="987654321",
+            recipient_name="Ian Crease",
+            recipient_routing_number="101050001",
+            recipient_address_line1="33 Liberty Street",
+            recipient_address_line2="New York, NY, 10045",
             recipient_address_line3="x",
         )
         assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])

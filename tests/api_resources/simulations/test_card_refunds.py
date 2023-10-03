@@ -22,7 +22,7 @@ class TestCardRefunds:
     @parametrize
     def test_method_create(self, client: Increase) -> None:
         card_refund = client.simulations.card_refunds.create(
-            transaction_id="string",
+            transaction_id="transaction_uyrp7fld2ium70oa7oi",
         )
         assert_matches_type(Transaction, card_refund, path=["response"])
 
@@ -35,6 +35,6 @@ class TestAsyncCardRefunds:
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
         card_refund = await client.simulations.card_refunds.create(
-            transaction_id="string",
+            transaction_id="transaction_uyrp7fld2ium70oa7oi",
         )
         assert_matches_type(Transaction, card_refund, path=["response"])

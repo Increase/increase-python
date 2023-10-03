@@ -67,8 +67,8 @@ class TestInboundACHTransfers:
     def test_method_notification_of_change_with_all_params(self, client: Increase) -> None:
         inbound_ach_transfer = client.inbound_ach_transfers.notification_of_change(
             "string",
-            updated_account_number="x",
-            updated_routing_number="x",
+            updated_account_number="987654321",
+            updated_routing_number="101050001",
         )
         assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
 
@@ -76,7 +76,7 @@ class TestInboundACHTransfers:
     def test_method_transfer_return(self, client: Increase) -> None:
         inbound_ach_transfer = client.inbound_ach_transfers.transfer_return(
             "string",
-            reason="authorization_revoked_by_customer",
+            reason="payment_stopped",
         )
         assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
 
@@ -132,8 +132,8 @@ class TestAsyncInboundACHTransfers:
     async def test_method_notification_of_change_with_all_params(self, client: AsyncIncrease) -> None:
         inbound_ach_transfer = await client.inbound_ach_transfers.notification_of_change(
             "string",
-            updated_account_number="x",
-            updated_routing_number="x",
+            updated_account_number="987654321",
+            updated_routing_number="101050001",
         )
         assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
 
@@ -141,6 +141,6 @@ class TestAsyncInboundACHTransfers:
     async def test_method_transfer_return(self, client: AsyncIncrease) -> None:
         inbound_ach_transfer = await client.inbound_ach_transfers.transfer_return(
             "string",
-            reason="authorization_revoked_by_customer",
+            reason="payment_stopped",
         )
         assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])

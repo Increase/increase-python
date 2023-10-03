@@ -24,22 +24,22 @@ class TestRealTimePaymentsTransfers:
     @parametrize
     def test_method_create(self, client: Increase) -> None:
         real_time_payments_transfer = client.real_time_payments_transfers.create(
-            amount=1,
-            creditor_name="x",
-            remittance_information="x",
-            source_account_number_id="string",
+            amount=100,
+            creditor_name="Ian Crease",
+            remittance_information="Invoice 29582",
+            source_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
         )
         assert_matches_type(RealTimePaymentsTransfer, real_time_payments_transfer, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: Increase) -> None:
         real_time_payments_transfer = client.real_time_payments_transfers.create(
-            amount=1,
-            creditor_name="x",
-            remittance_information="x",
-            source_account_number_id="string",
-            destination_account_number="x",
-            destination_routing_number="xxxxxxxxx",
+            amount=100,
+            creditor_name="Ian Crease",
+            remittance_information="Invoice 29582",
+            source_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
+            destination_account_number="987654321",
+            destination_routing_number="101050001",
             external_account_id="string",
             require_approval=True,
             unique_identifier="x",
@@ -84,22 +84,22 @@ class TestAsyncRealTimePaymentsTransfers:
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
         real_time_payments_transfer = await client.real_time_payments_transfers.create(
-            amount=1,
-            creditor_name="x",
-            remittance_information="x",
-            source_account_number_id="string",
+            amount=100,
+            creditor_name="Ian Crease",
+            remittance_information="Invoice 29582",
+            source_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
         )
         assert_matches_type(RealTimePaymentsTransfer, real_time_payments_transfer, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         real_time_payments_transfer = await client.real_time_payments_transfers.create(
-            amount=1,
-            creditor_name="x",
-            remittance_information="x",
-            source_account_number_id="string",
-            destination_account_number="x",
-            destination_routing_number="xxxxxxxxx",
+            amount=100,
+            creditor_name="Ian Crease",
+            remittance_information="Invoice 29582",
+            source_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
+            destination_account_number="987654321",
+            destination_routing_number="101050001",
             external_account_id="string",
             require_approval=True,
             unique_identifier="x",
