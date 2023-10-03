@@ -24,11 +24,11 @@ class TestCheckDeposits:
     @parametrize
     def test_method_create(self, client: Increase) -> None:
         check_deposit = client.check_deposits.create(
-            account_id="string",
-            amount=0,
-            back_image_file_id="string",
-            currency="x",
-            front_image_file_id="string",
+            account_id="account_in71c4amph0vgo2qllky",
+            amount=1000,
+            back_image_file_id="file_26khfk98mzfz90a11oqx",
+            currency="USD",
+            front_image_file_id="file_hkv175ovmc2tb2v2zbrm",
         )
         assert_matches_type(CheckDeposit, check_deposit, path=["response"])
 
@@ -68,11 +68,11 @@ class TestAsyncCheckDeposits:
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
         check_deposit = await client.check_deposits.create(
-            account_id="string",
-            amount=0,
-            back_image_file_id="string",
-            currency="x",
-            front_image_file_id="string",
+            account_id="account_in71c4amph0vgo2qllky",
+            amount=1000,
+            back_image_file_id="file_26khfk98mzfz90a11oqx",
+            currency="USD",
+            front_image_file_id="file_hkv175ovmc2tb2v2zbrm",
         )
         assert_matches_type(CheckDeposit, check_deposit, path=["response"])
 

@@ -22,7 +22,7 @@ class TestPrograms:
     @parametrize
     def test_method_create(self, client: Increase) -> None:
         program = client.simulations.programs.create(
-            name="x",
+            name="For Benefit Of",
         )
         assert_matches_type(Program, program, path=["response"])
 
@@ -35,6 +35,6 @@ class TestAsyncPrograms:
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
         program = await client.simulations.programs.create(
-            name="x",
+            name="For Benefit Of",
         )
         assert_matches_type(Program, program, path=["response"])

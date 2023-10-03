@@ -23,12 +23,12 @@ class TestCardProfiles:
     @parametrize
     def test_method_create(self, client: Increase) -> None:
         card_profile = client.card_profiles.create(
-            description="x",
+            description="My Card Profile",
             digital_wallets={
-                "issuer_name": "x",
-                "card_description": "x",
-                "background_image_file_id": "string",
-                "app_icon_file_id": "string",
+                "issuer_name": "MyBank",
+                "card_description": "MyBank Signature Card",
+                "background_image_file_id": "file_1ai913suu1zfn1pdetru",
+                "app_icon_file_id": "file_8zxqkwlh43wo144u8yec",
             },
         )
         assert_matches_type(CardProfile, card_profile, path=["response"])
@@ -36,20 +36,20 @@ class TestCardProfiles:
     @parametrize
     def test_method_create_with_all_params(self, client: Increase) -> None:
         card_profile = client.card_profiles.create(
-            description="x",
+            description="My Card Profile",
             digital_wallets={
                 "text_color": {
-                    "red": 0,
-                    "green": 0,
-                    "blue": 0,
+                    "red": 26,
+                    "green": 43,
+                    "blue": 59,
                 },
-                "issuer_name": "x",
-                "card_description": "x",
-                "contact_website": "string",
-                "contact_email": "x",
-                "contact_phone": "x",
-                "background_image_file_id": "string",
-                "app_icon_file_id": "string",
+                "issuer_name": "MyBank",
+                "card_description": "MyBank Signature Card",
+                "contact_website": "https://example.com",
+                "contact_email": "user@example.com",
+                "contact_phone": "+18885551212",
+                "background_image_file_id": "file_1ai913suu1zfn1pdetru",
+                "app_icon_file_id": "file_8zxqkwlh43wo144u8yec",
             },
             physical_cards={
                 "contact_phone": "x",
@@ -97,12 +97,12 @@ class TestAsyncCardProfiles:
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
         card_profile = await client.card_profiles.create(
-            description="x",
+            description="My Card Profile",
             digital_wallets={
-                "issuer_name": "x",
-                "card_description": "x",
-                "background_image_file_id": "string",
-                "app_icon_file_id": "string",
+                "issuer_name": "MyBank",
+                "card_description": "MyBank Signature Card",
+                "background_image_file_id": "file_1ai913suu1zfn1pdetru",
+                "app_icon_file_id": "file_8zxqkwlh43wo144u8yec",
             },
         )
         assert_matches_type(CardProfile, card_profile, path=["response"])
@@ -110,20 +110,20 @@ class TestAsyncCardProfiles:
     @parametrize
     async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         card_profile = await client.card_profiles.create(
-            description="x",
+            description="My Card Profile",
             digital_wallets={
                 "text_color": {
-                    "red": 0,
-                    "green": 0,
-                    "blue": 0,
+                    "red": 26,
+                    "green": 43,
+                    "blue": 59,
                 },
-                "issuer_name": "x",
-                "card_description": "x",
-                "contact_website": "string",
-                "contact_email": "x",
-                "contact_phone": "x",
-                "background_image_file_id": "string",
-                "app_icon_file_id": "string",
+                "issuer_name": "MyBank",
+                "card_description": "MyBank Signature Card",
+                "contact_website": "https://example.com",
+                "contact_email": "user@example.com",
+                "contact_phone": "+18885551212",
+                "background_image_file_id": "file_1ai913suu1zfn1pdetru",
+                "app_icon_file_id": "file_8zxqkwlh43wo144u8yec",
             },
             physical_cards={
                 "contact_phone": "x",

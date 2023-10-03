@@ -23,7 +23,7 @@ class TestCardDisputes:
     def test_method_action(self, client: Increase) -> None:
         card_dispute = client.simulations.card_disputes.action(
             "string",
-            status="accepted",
+            status="rejected",
         )
         assert_matches_type(CardDispute, card_dispute, path=["response"])
 
@@ -31,8 +31,8 @@ class TestCardDisputes:
     def test_method_action_with_all_params(self, client: Increase) -> None:
         card_dispute = client.simulations.card_disputes.action(
             "string",
-            status="accepted",
-            explanation="x",
+            status="rejected",
+            explanation="This was a valid recurring transaction",
         )
         assert_matches_type(CardDispute, card_dispute, path=["response"])
 
@@ -46,7 +46,7 @@ class TestAsyncCardDisputes:
     async def test_method_action(self, client: AsyncIncrease) -> None:
         card_dispute = await client.simulations.card_disputes.action(
             "string",
-            status="accepted",
+            status="rejected",
         )
         assert_matches_type(CardDispute, card_dispute, path=["response"])
 
@@ -54,7 +54,7 @@ class TestAsyncCardDisputes:
     async def test_method_action_with_all_params(self, client: AsyncIncrease) -> None:
         card_dispute = await client.simulations.card_disputes.action(
             "string",
-            status="accepted",
-            explanation="x",
+            status="rejected",
+            explanation="This was a valid recurring transaction",
         )
         assert_matches_type(CardDispute, card_dispute, path=["response"])

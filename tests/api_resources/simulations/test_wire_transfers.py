@@ -22,16 +22,16 @@ class TestWireTransfers:
     @parametrize
     def test_method_create_inbound(self, client: Increase) -> None:
         wire_transfer = client.simulations.wire_transfers.create_inbound(
-            account_number_id="string",
-            amount=1,
+            account_number_id="account_number_v18nkfqm6afpsrvy82b2",
+            amount=1000,
         )
         assert_matches_type(WireTransferSimulation, wire_transfer, path=["response"])
 
     @parametrize
     def test_method_create_inbound_with_all_params(self, client: Increase) -> None:
         wire_transfer = client.simulations.wire_transfers.create_inbound(
-            account_number_id="string",
-            amount=1,
+            account_number_id="account_number_v18nkfqm6afpsrvy82b2",
+            amount=1000,
             beneficiary_address_line1="x",
             beneficiary_address_line2="x",
             beneficiary_address_line3="x",
@@ -58,16 +58,16 @@ class TestAsyncWireTransfers:
     @parametrize
     async def test_method_create_inbound(self, client: AsyncIncrease) -> None:
         wire_transfer = await client.simulations.wire_transfers.create_inbound(
-            account_number_id="string",
-            amount=1,
+            account_number_id="account_number_v18nkfqm6afpsrvy82b2",
+            amount=1000,
         )
         assert_matches_type(WireTransferSimulation, wire_transfer, path=["response"])
 
     @parametrize
     async def test_method_create_inbound_with_all_params(self, client: AsyncIncrease) -> None:
         wire_transfer = await client.simulations.wire_transfers.create_inbound(
-            account_number_id="string",
-            amount=1,
+            account_number_id="account_number_v18nkfqm6afpsrvy82b2",
+            amount=1000,
             beneficiary_address_line1="x",
             beneficiary_address_line2="x",
             beneficiary_address_line3="x",

@@ -23,16 +23,16 @@ class TestInterestPayments:
     @parametrize
     def test_method_create(self, client: Increase) -> None:
         interest_payment = client.simulations.interest_payments.create(
-            account_id="string",
-            amount=1,
+            account_id="account_in71c4amph0vgo2qllky",
+            amount=1000,
         )
         assert_matches_type(InterestPaymentSimulationResult, interest_payment, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: Increase) -> None:
         interest_payment = client.simulations.interest_payments.create(
-            account_id="string",
-            amount=1,
+            account_id="account_in71c4amph0vgo2qllky",
+            amount=1000,
             period_end=parse_datetime("2019-12-27T18:11:19.117Z"),
             period_start=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
@@ -47,16 +47,16 @@ class TestAsyncInterestPayments:
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
         interest_payment = await client.simulations.interest_payments.create(
-            account_id="string",
-            amount=1,
+            account_id="account_in71c4amph0vgo2qllky",
+            amount=1000,
         )
         assert_matches_type(InterestPaymentSimulationResult, interest_payment, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         interest_payment = await client.simulations.interest_payments.create(
-            account_id="string",
-            amount=1,
+            account_id="account_in71c4amph0vgo2qllky",
+            amount=1000,
             period_end=parse_datetime("2019-12-27T18:11:19.117Z"),
             period_start=parse_datetime("2019-12-27T18:11:19.117Z"),
         )

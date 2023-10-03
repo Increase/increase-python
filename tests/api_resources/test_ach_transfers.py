@@ -24,19 +24,19 @@ class TestACHTransfers:
     @parametrize
     def test_method_create(self, client: Increase) -> None:
         ach_transfer = client.ach_transfers.create(
-            account_id="string",
-            amount=0,
-            statement_descriptor="x",
+            account_id="account_in71c4amph0vgo2qllky",
+            amount=100,
+            statement_descriptor="New ACH transfer",
         )
         assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: Increase) -> None:
         ach_transfer = client.ach_transfers.create(
-            account_id="string",
-            amount=0,
-            statement_descriptor="x",
-            account_number="x",
+            account_id="account_in71c4amph0vgo2qllky",
+            amount=100,
+            statement_descriptor="New ACH transfer",
+            account_number="987654321",
             addendum="x",
             company_descriptive_date="x",
             company_discretionary_data="x",
@@ -48,7 +48,7 @@ class TestACHTransfers:
             individual_id="x",
             individual_name="x",
             require_approval=True,
-            routing_number="xxxxxxxxx",
+            routing_number="101050001",
             standard_entry_class_code="corporate_credit_or_debit",
             unique_identifier="x",
         )
@@ -106,19 +106,19 @@ class TestAsyncACHTransfers:
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
         ach_transfer = await client.ach_transfers.create(
-            account_id="string",
-            amount=0,
-            statement_descriptor="x",
+            account_id="account_in71c4amph0vgo2qllky",
+            amount=100,
+            statement_descriptor="New ACH transfer",
         )
         assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
         ach_transfer = await client.ach_transfers.create(
-            account_id="string",
-            amount=0,
-            statement_descriptor="x",
-            account_number="x",
+            account_id="account_in71c4amph0vgo2qllky",
+            amount=100,
+            statement_descriptor="New ACH transfer",
+            account_number="987654321",
             addendum="x",
             company_descriptive_date="x",
             company_discretionary_data="x",
@@ -130,7 +130,7 @@ class TestAsyncACHTransfers:
             individual_id="x",
             individual_name="x",
             require_approval=True,
-            routing_number="xxxxxxxxx",
+            routing_number="101050001",
             standard_entry_class_code="corporate_credit_or_debit",
             unique_identifier="x",
         )

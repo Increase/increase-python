@@ -25,22 +25,22 @@ class TestBeneficialOwners:
         beneficial_owner = client.entities.beneficial_owners.create(
             beneficial_owner={
                 "individual": {
-                    "name": "x",
-                    "date_of_birth": parse_date("2019-12-27"),
+                    "name": "Ian Crease",
+                    "date_of_birth": parse_date("1970-01-31"),
                     "address": {
-                        "line1": "x",
-                        "city": "x",
-                        "state": "x",
-                        "zip": "x",
+                        "line1": "33 Liberty Street",
+                        "city": "New York",
+                        "state": "NY",
+                        "zip": "10045",
                     },
                     "identification": {
                         "method": "social_security_number",
-                        "number": "xxxx",
+                        "number": "078051120",
                     },
                 },
-                "prongs": ["ownership", "control"],
+                "prongs": ["control"],
             },
-            entity_id="string",
+            entity_id="entity_n8y8tnk2p9339ti393yi",
         )
         assert_matches_type(Entity, beneficial_owner, path=["response"])
 
@@ -49,19 +49,19 @@ class TestBeneficialOwners:
         beneficial_owner = client.entities.beneficial_owners.create(
             beneficial_owner={
                 "individual": {
-                    "name": "x",
-                    "date_of_birth": parse_date("2019-12-27"),
+                    "name": "Ian Crease",
+                    "date_of_birth": parse_date("1970-01-31"),
                     "address": {
-                        "line1": "x",
+                        "line1": "33 Liberty Street",
                         "line2": "x",
-                        "city": "x",
-                        "state": "x",
-                        "zip": "x",
+                        "city": "New York",
+                        "state": "NY",
+                        "zip": "10045",
                     },
                     "confirmed_no_us_tax_id": True,
                     "identification": {
                         "method": "social_security_number",
-                        "number": "xxxx",
+                        "number": "078051120",
                         "passport": {
                             "file_id": "string",
                             "expiration_date": parse_date("2019-12-27"),
@@ -82,18 +82,18 @@ class TestBeneficialOwners:
                         },
                     },
                 },
-                "company_title": "x",
-                "prongs": ["ownership", "control"],
+                "company_title": "CEO",
+                "prongs": ["control"],
             },
-            entity_id="string",
+            entity_id="entity_n8y8tnk2p9339ti393yi",
         )
         assert_matches_type(Entity, beneficial_owner, path=["response"])
 
     @parametrize
     def test_method_archive(self, client: Increase) -> None:
         beneficial_owner = client.entities.beneficial_owners.archive(
-            beneficial_owner_id="string",
-            entity_id="string",
+            beneficial_owner_id="entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7",
+            entity_id="entity_n8y8tnk2p9339ti393yi",
         )
         assert_matches_type(Entity, beneficial_owner, path=["response"])
 
@@ -101,13 +101,13 @@ class TestBeneficialOwners:
     def test_method_update_address(self, client: Increase) -> None:
         beneficial_owner = client.entities.beneficial_owners.update_address(
             address={
-                "line1": "x",
-                "city": "x",
-                "state": "x",
-                "zip": "x",
+                "line1": "33 Liberty Street",
+                "city": "New York",
+                "state": "NY",
+                "zip": "10045",
             },
-            beneficial_owner_id="string",
-            entity_id="string",
+            beneficial_owner_id="entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7",
+            entity_id="entity_n8y8tnk2p9339ti393yi",
         )
         assert_matches_type(Entity, beneficial_owner, path=["response"])
 
@@ -115,14 +115,14 @@ class TestBeneficialOwners:
     def test_method_update_address_with_all_params(self, client: Increase) -> None:
         beneficial_owner = client.entities.beneficial_owners.update_address(
             address={
-                "line1": "x",
-                "line2": "x",
-                "city": "x",
-                "state": "x",
-                "zip": "x",
+                "line1": "33 Liberty Street",
+                "line2": "Unit 2",
+                "city": "New York",
+                "state": "NY",
+                "zip": "10045",
             },
-            beneficial_owner_id="string",
-            entity_id="string",
+            beneficial_owner_id="entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7",
+            entity_id="entity_n8y8tnk2p9339ti393yi",
         )
         assert_matches_type(Entity, beneficial_owner, path=["response"])
 
@@ -137,22 +137,22 @@ class TestAsyncBeneficialOwners:
         beneficial_owner = await client.entities.beneficial_owners.create(
             beneficial_owner={
                 "individual": {
-                    "name": "x",
-                    "date_of_birth": parse_date("2019-12-27"),
+                    "name": "Ian Crease",
+                    "date_of_birth": parse_date("1970-01-31"),
                     "address": {
-                        "line1": "x",
-                        "city": "x",
-                        "state": "x",
-                        "zip": "x",
+                        "line1": "33 Liberty Street",
+                        "city": "New York",
+                        "state": "NY",
+                        "zip": "10045",
                     },
                     "identification": {
                         "method": "social_security_number",
-                        "number": "xxxx",
+                        "number": "078051120",
                     },
                 },
-                "prongs": ["ownership", "control"],
+                "prongs": ["control"],
             },
-            entity_id="string",
+            entity_id="entity_n8y8tnk2p9339ti393yi",
         )
         assert_matches_type(Entity, beneficial_owner, path=["response"])
 
@@ -161,19 +161,19 @@ class TestAsyncBeneficialOwners:
         beneficial_owner = await client.entities.beneficial_owners.create(
             beneficial_owner={
                 "individual": {
-                    "name": "x",
-                    "date_of_birth": parse_date("2019-12-27"),
+                    "name": "Ian Crease",
+                    "date_of_birth": parse_date("1970-01-31"),
                     "address": {
-                        "line1": "x",
+                        "line1": "33 Liberty Street",
                         "line2": "x",
-                        "city": "x",
-                        "state": "x",
-                        "zip": "x",
+                        "city": "New York",
+                        "state": "NY",
+                        "zip": "10045",
                     },
                     "confirmed_no_us_tax_id": True,
                     "identification": {
                         "method": "social_security_number",
-                        "number": "xxxx",
+                        "number": "078051120",
                         "passport": {
                             "file_id": "string",
                             "expiration_date": parse_date("2019-12-27"),
@@ -194,18 +194,18 @@ class TestAsyncBeneficialOwners:
                         },
                     },
                 },
-                "company_title": "x",
-                "prongs": ["ownership", "control"],
+                "company_title": "CEO",
+                "prongs": ["control"],
             },
-            entity_id="string",
+            entity_id="entity_n8y8tnk2p9339ti393yi",
         )
         assert_matches_type(Entity, beneficial_owner, path=["response"])
 
     @parametrize
     async def test_method_archive(self, client: AsyncIncrease) -> None:
         beneficial_owner = await client.entities.beneficial_owners.archive(
-            beneficial_owner_id="string",
-            entity_id="string",
+            beneficial_owner_id="entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7",
+            entity_id="entity_n8y8tnk2p9339ti393yi",
         )
         assert_matches_type(Entity, beneficial_owner, path=["response"])
 
@@ -213,13 +213,13 @@ class TestAsyncBeneficialOwners:
     async def test_method_update_address(self, client: AsyncIncrease) -> None:
         beneficial_owner = await client.entities.beneficial_owners.update_address(
             address={
-                "line1": "x",
-                "city": "x",
-                "state": "x",
-                "zip": "x",
+                "line1": "33 Liberty Street",
+                "city": "New York",
+                "state": "NY",
+                "zip": "10045",
             },
-            beneficial_owner_id="string",
-            entity_id="string",
+            beneficial_owner_id="entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7",
+            entity_id="entity_n8y8tnk2p9339ti393yi",
         )
         assert_matches_type(Entity, beneficial_owner, path=["response"])
 
@@ -227,13 +227,13 @@ class TestAsyncBeneficialOwners:
     async def test_method_update_address_with_all_params(self, client: AsyncIncrease) -> None:
         beneficial_owner = await client.entities.beneficial_owners.update_address(
             address={
-                "line1": "x",
-                "line2": "x",
-                "city": "x",
-                "state": "x",
-                "zip": "x",
+                "line1": "33 Liberty Street",
+                "line2": "Unit 2",
+                "city": "New York",
+                "state": "NY",
+                "zip": "10045",
             },
-            beneficial_owner_id="string",
-            entity_id="string",
+            beneficial_owner_id="entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7",
+            entity_id="entity_n8y8tnk2p9339ti393yi",
         )
         assert_matches_type(Entity, beneficial_owner, path=["response"])

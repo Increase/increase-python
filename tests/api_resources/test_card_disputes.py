@@ -24,8 +24,8 @@ class TestCardDisputes:
     @parametrize
     def test_method_create(self, client: Increase) -> None:
         card_dispute = client.card_disputes.create(
-            disputed_transaction_id="string",
-            explanation="x",
+            disputed_transaction_id="transaction_uyrp7fld2ium70oa7oi",
+            explanation="Unauthorized recurring transaction.",
         )
         assert_matches_type(CardDispute, card_dispute, path=["response"])
 
@@ -65,8 +65,8 @@ class TestAsyncCardDisputes:
     @parametrize
     async def test_method_create(self, client: AsyncIncrease) -> None:
         card_dispute = await client.card_disputes.create(
-            disputed_transaction_id="string",
-            explanation="x",
+            disputed_transaction_id="transaction_uyrp7fld2ium70oa7oi",
+            explanation="Unauthorized recurring transaction.",
         )
         assert_matches_type(CardDispute, card_dispute, path=["response"])
 
