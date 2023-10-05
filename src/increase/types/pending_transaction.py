@@ -183,6 +183,17 @@ class SourceCardAuthorization(BaseModel):
     purchase), the identifier of the token that was used.
     """
 
+    direction: Literal["settlement", "refund"]
+    """
+    The direction descibes the direction the funds will move, either from the
+    cardholder to the merchant or from the merchant to the cardholder.
+
+    - `settlement` - A regular card authorization where funds are debited from the
+      cardholder.
+    - `refund` - A refund card authorization, sometimes referred to as a credit
+      voucher authorization, where funds are credited to the cardholder.
+    """
+
     expires_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) when this authorization
