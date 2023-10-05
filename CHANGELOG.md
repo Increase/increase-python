@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.13.6 (2023-10-05)
+
+Full Changelog: [v0.13.5...v0.13.6](https://github.com/increase/increase-python/compare/v0.13.5...v0.13.6)
+
+### Features
+
+* **api:** add direction property to CardAuthorization ([#146](https://github.com/increase/increase-python/issues/146)) ([9b2f08f](https://github.com/increase/increase-python/commit/9b2f08faf5dc3377ce17b67ae7d032366fb2d51a))
+
 ## 0.13.5 (2023-10-03)
 
 Full Changelog: [v0.13.4...v0.13.5](https://github.com/increase/increase-python/compare/v0.13.4...v0.13.5)
