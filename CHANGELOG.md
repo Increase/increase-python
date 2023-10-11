@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.13.7 (2023-10-11)
+
+Full Changelog: [v0.13.6...v0.13.7](https://github.com/increase/increase-python/compare/v0.13.6...v0.13.7)
+
+### Features
+
+* **client:** add forwards-compatible pydantic methods ([#148](https://github.com/increase/increase-python/issues/148)) ([ea8c0ed](https://github.com/increase/increase-python/commit/ea8c0eda8ac4d20654a7889fc5e528f13fcab234))
+* **client:** add support for passing in a httpx client ([#150](https://github.com/increase/increase-python/issues/150)) ([e64b028](https://github.com/increase/increase-python/commit/e64b028c7c80441ec2a19e9f145a8fc86e8b15ce))
+
 ## 0.13.6 (2023-10-05)
 
 Full Changelog: [v0.13.5...v0.13.6](https://github.com/increase/increase-python/compare/v0.13.5...v0.13.6)
