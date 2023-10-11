@@ -1,14 +1,14 @@
-# Increase Python API Library
+# Increase Python API library
 
 [![PyPI version](https://img.shields.io/pypi/v/increase.svg)](https://pypi.org/project/increase/)
 
 The Increase Python library provides convenient access to the Increase REST API from any Python 3.7+
-application. It includes type definitions for all request params and response fields,
+application. The library includes type definitions for all request params and response fields,
 and offers both synchronous and asynchronous clients powered by [httpx](https://github.com/encode/httpx).
 
 ## Documentation
 
-The API documentation can be found [here](https://increase.com/documentation).
+The API documentation can be found at [https://increase.com/documentation](https://increase.com/documentation).
 
 ## Installation
 
@@ -39,7 +39,7 @@ print(account.id)
 While you can provide an `api_key` keyword argument, we recommend using [python-dotenv](https://pypi.org/project/python-dotenv/)
 and adding `INCREASE_API_KEY="my api key"` to your `.env` file so that your API Key is not stored in source control.
 
-## Async Usage
+## Async usage
 
 Simply import `AsyncIncrease` instead of `Increase` and use `await` with each API call:
 
@@ -66,11 +66,11 @@ asyncio.run(main())
 
 Functionality between the synchronous and asynchronous clients is otherwise identical.
 
-## Using Types
+## Using types
 
-Nested request parameters are [TypedDicts](https://docs.python.org/3/library/typing.html#typing.TypedDict). Responses are [Pydantic models](https://docs.pydantic.dev), which provide helper methods for things like serializing back into json ([v1](https://docs.pydantic.dev/1.10/usage/models/), [v2](https://docs.pydantic.dev/latest/usage/serialization/)). To get a dictionary, you can call `dict(model)`.
+Nested request parameters are [TypedDicts](https://docs.python.org/3/library/typing.html#typing.TypedDict). Responses are [Pydantic models](https://docs.pydantic.dev), which provide helper methods for things like serializing back into JSON ([v1](https://docs.pydantic.dev/1.10/usage/models/), [v2](https://docs.pydantic.dev/latest/usage/serialization/)). To get a dictionary, call `dict(model)`.
 
-This helps provide autocomplete and documentation within your editor. If you would like to see type errors in VS Code to help catch bugs earlier, set `python.analysis.typeCheckingMode` to `"basic"`.
+Typed requests and responses provide autocomplete and documentation within your editor. If you would like to see type errors in VS Code to help catch bugs earlier, set `python.analysis.typeCheckingMode` to `basic`.
 
 ## Pagination
 
@@ -187,10 +187,10 @@ await client.files.create(
 
 ## Handling errors
 
-When the library is unable to connect to the API (e.g., due to network connection problems or a timeout), a subclass of `increase.APIConnectionError` is raised.
+When the library is unable to connect to the API (for example, due to network connection problems or a timeout), a subclass of `increase.APIConnectionError` is raised.
 
-When the API returns a non-success status code (i.e., 4xx or 5xx
-response), a subclass of `increase.APIStatusError` will be raised, containing `status_code` and `response` properties.
+When the API returns a non-success status code (that is, 4xx or 5xx
+response), a subclass of `increase.APIStatusError` is raised, containing `status_code` and `response` properties.
 
 All errors inherit from `increase.APIError`.
 
@@ -230,11 +230,11 @@ Error codes are as followed:
 
 ### Retries
 
-Certain errors will be automatically retried 2 times by default, with a short exponential backoff.
+Certain errors are automatically retried 2 times by default, with a short exponential backoff.
 Connection errors (for example, due to a network connectivity problem), 408 Request Timeout, 409 Conflict,
-429 Rate Limit, and >=500 Internal errors will all be retried by default.
+429 Rate Limit, and >=500 Internal errors are all retried by default.
 
-You can use the `max_retries` option to configure or disable this:
+You can use the `max_retries` option to configure or disable retry settings:
 
 ```python
 from increase import Increase
@@ -253,8 +253,8 @@ client.with_options(max_retries=5).accounts.create(
 
 ### Timeouts
 
-Requests time out after 1 minute by default. You can configure this with a `timeout` option,
-which accepts a float or an [`httpx.Timeout`](https://www.python-httpx.org/advanced/#fine-tuning-the-configuration):
+By default requests time out after 1 minute. You can configure this with a `timeout` option,
+which accepts a float or an [`httpx.Timeout`](https://www.python-httpx.org/advanced/#fine-tuning-the-configuration) object:
 
 ```python
 from increase import Increase
@@ -278,13 +278,13 @@ client.with_options(timeout=5 * 1000).accounts.list(
 
 On timeout, an `APITimeoutError` is thrown.
 
-Note that requests which time out will be [retried twice by default](#retries).
+Note that requests that time out are [retried twice by default](#retries).
 
 ## Advanced
 
 ### How to tell whether `None` means `null` or missing
 
-In an API response, a field may be explicitly null, or missing entirely; in either case, its value is `None` in this library. You can differentiate the two cases with `.model_fields_set`:
+In an API response, a field may be explicitly `null`, or missing entirely; in either case, its value is `None` in this library. You can differentiate the two cases with `.model_fields_set`:
 
 ```py
 if response.my_field is None:
@@ -294,27 +294,30 @@ if response.my_field is None:
     print('Got json like {"my_field": null}.')
 ```
 
-### Configuring custom URLs, proxies, and transports
+### Configuring the HTTP client
 
-You can configure the following keyword arguments when instantiating the client:
+You can directly override the [httpx client](https://www.python-httpx.org/api/#client) to customize it for your use case, including:
+
+- Support for proxies
+- Custom transports
+- Additional [advanced](https://www.python-httpx.org/advanced/#client-instances) functionality
 
 ```python
 import httpx
 from increase import Increase
 
 client = Increase(
-    # Use a custom base URL
     base_url="http://my.test.server.example.com:8083",
-    proxies="http://my.test.proxy.example.com",
-    transport=httpx.HTTPTransport(local_address="0.0.0.0"),
+    http_client=httpx.Client(
+        proxies="http://my.test.proxy.example.com",
+        transport=httpx.HTTPTransport(local_address="0.0.0.0"),
+    ),
 )
 ```
 
-See the httpx documentation for information about the [`proxies`](https://www.python-httpx.org/advanced/#http-proxying) and [`transport`](https://www.python-httpx.org/advanced/#custom-transports) keyword arguments.
-
 ### Managing HTTP resources
 
-By default we will close the underlying HTTP connections whenever the client is [garbage collected](https://docs.python.org/3/reference/datamodel.html#object.__del__) is called but you can also manually close the client using the `.close()` method if desired, or with a context manager that closes when exiting.
+By default the library closes underlying HTTP connections whenever the client is [garbage collected](https://docs.python.org/3/reference/datamodel.html#object.__del__). You can manually close the client using the `.close()` method if desired, or with a context manager that closes when exiting.
 
 ## Versioning
 
