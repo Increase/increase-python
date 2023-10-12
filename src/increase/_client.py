@@ -101,7 +101,7 @@ class Increase(SyncAPIClient):
     def __init__(
         self,
         *,
-        api_key: str | None = os.environ.get("INCREASE_API_KEY", None),
+        api_key: str | None = None,
         environment: Literal["production", "sandbox"] = "production",
         base_url: Optional[str] = None,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
@@ -130,6 +130,8 @@ class Increase(SyncAPIClient):
 
         This automatically infers the `api_key` argument from the `INCREASE_API_KEY` environment variable if it is not provided.
         """
+        if api_key is None:
+            api_key = os.environ.get("INCREASE_API_KEY")
         if api_key is None:
             raise IncreaseError(
                 "The api_key client option must be set either by passing api_key to the client or by setting the INCREASE_API_KEY environment variable"
@@ -427,7 +429,7 @@ class AsyncIncrease(AsyncAPIClient):
     def __init__(
         self,
         *,
-        api_key: str | None = os.environ.get("INCREASE_API_KEY", None),
+        api_key: str | None = None,
         environment: Literal["production", "sandbox"] = "production",
         base_url: Optional[str] = None,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
@@ -456,6 +458,8 @@ class AsyncIncrease(AsyncAPIClient):
 
         This automatically infers the `api_key` argument from the `INCREASE_API_KEY` environment variable if it is not provided.
         """
+        if api_key is None:
+            api_key = os.environ.get("INCREASE_API_KEY")
         if api_key is None:
             raise IncreaseError(
                 "The api_key client option must be set either by passing api_key to the client or by setting the INCREASE_API_KEY environment variable"
