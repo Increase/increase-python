@@ -101,9 +101,9 @@ class Increase(SyncAPIClient):
     def __init__(
         self,
         *,
+        api_key: str | None = os.environ.get("INCREASE_API_KEY", None),
         environment: Literal["production", "sandbox"] = "production",
         base_url: Optional[str] = None,
-        api_key: Optional[str] = None,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         max_retries: int = DEFAULT_MAX_RETRIES,
         default_headers: Mapping[str, str] | None = None,
@@ -130,8 +130,7 @@ class Increase(SyncAPIClient):
 
         This automatically infers the `api_key` argument from the `INCREASE_API_KEY` environment variable if it is not provided.
         """
-        api_key = api_key or os.environ.get("INCREASE_API_KEY", None)
-        if not api_key:
+        if api_key is None:
             raise IncreaseError(
                 "The api_key client option must be set either by passing api_key to the client or by setting the INCREASE_API_KEY environment variable"
             )
@@ -269,9 +268,9 @@ class Increase(SyncAPIClient):
             http_client = http_client or self._client
 
         return self.__class__(
+            api_key=api_key or self.api_key,
             base_url=base_url or str(self.base_url),
             environment=environment or self._environment,
-            api_key=api_key or self.api_key,
             timeout=self.timeout if isinstance(timeout, NotGiven) else timeout,
             http_client=http_client,
             connection_pool_limits=connection_pool_limits,
@@ -428,9 +427,9 @@ class AsyncIncrease(AsyncAPIClient):
     def __init__(
         self,
         *,
+        api_key: str | None = os.environ.get("INCREASE_API_KEY", None),
         environment: Literal["production", "sandbox"] = "production",
         base_url: Optional[str] = None,
-        api_key: Optional[str] = None,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         max_retries: int = DEFAULT_MAX_RETRIES,
         default_headers: Mapping[str, str] | None = None,
@@ -457,8 +456,7 @@ class AsyncIncrease(AsyncAPIClient):
 
         This automatically infers the `api_key` argument from the `INCREASE_API_KEY` environment variable if it is not provided.
         """
-        api_key = api_key or os.environ.get("INCREASE_API_KEY", None)
-        if not api_key:
+        if api_key is None:
             raise IncreaseError(
                 "The api_key client option must be set either by passing api_key to the client or by setting the INCREASE_API_KEY environment variable"
             )
@@ -596,9 +594,9 @@ class AsyncIncrease(AsyncAPIClient):
             http_client = http_client or self._client
 
         return self.__class__(
+            api_key=api_key or self.api_key,
             base_url=base_url or str(self.base_url),
             environment=environment or self._environment,
-            api_key=api_key or self.api_key,
             timeout=self.timeout if isinstance(timeout, NotGiven) else timeout,
             http_client=http_client,
             connection_pool_limits=connection_pool_limits,
