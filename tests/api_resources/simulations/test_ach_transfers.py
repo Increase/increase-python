@@ -13,7 +13,7 @@ from increase._utils import parse_datetime
 from increase.types.simulations import ACHTransferSimulation
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
-api_key = os.environ.get("API_KEY", "something1234")
+api_key = "My API Key"
 
 
 class TestACHTransfers:
