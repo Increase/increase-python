@@ -45,6 +45,7 @@ from ._exceptions import (
     IdempotencyUnprocessableError,
     UniqueIdentifierAlreadyExistsError,
 )
+from ._utils._logs import setup_logging as _setup_logging
 
 __all__ = [
     "types",
@@ -91,6 +92,8 @@ __all__ = [
     "ENVIRONMENTS",
     "file_from_path",
 ]
+
+_setup_logging()
 
 # Update the __module__ attribute for exported symbols so that
 # error messages point to this module instead of the module
