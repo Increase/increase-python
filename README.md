@@ -25,7 +25,7 @@ from increase import Increase
 
 client = Increase(
     # defaults to os.environ.get("INCREASE_API_KEY")
-    api_key="my api key",
+    api_key="My API Key",
     # defaults to "production".
     environment="sandbox",
 )
@@ -36,8 +36,10 @@ account = client.accounts.create(
 print(account.id)
 ```
 
-While you can provide an `api_key` keyword argument, we recommend using [python-dotenv](https://pypi.org/project/python-dotenv/)
-and adding `INCREASE_API_KEY="my api key"` to your `.env` file so that your API Key is not stored in source control.
+While you can provide an `api_key` keyword argument,
+we recommend using [python-dotenv](https://pypi.org/project/python-dotenv/)
+to add `INCREASE_API_KEY="My API Key"` to your `.env` file
+so that your API Key is not stored in source control.
 
 ## Async usage
 
@@ -48,7 +50,7 @@ from increase import AsyncIncrease
 
 client = AsyncIncrease(
     # defaults to os.environ.get("INCREASE_API_KEY")
-    api_key="my api key",
+    api_key="My API Key",
     # defaults to "production".
     environment="sandbox",
 )
