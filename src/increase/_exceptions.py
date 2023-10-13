@@ -53,7 +53,7 @@ class APIError(IncreaseError):
     If there was no response associated with this error then it will be `None`.
     """
 
-    def __init__(self, message: str, request: httpx.Request, *, body: object | None) -> None:
+    def __init__(self, message: str, request: httpx.Request, *, body: object | None) -> None:  # noqa: ARG002
         super().__init__(message)
         self.request = request
         self.message = message
