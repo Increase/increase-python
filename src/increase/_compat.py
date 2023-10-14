@@ -20,25 +20,25 @@ PYDANTIC_V2 = pydantic.VERSION.startswith("2.")
 # v1 re-exports
 if TYPE_CHECKING:
 
-    def parse_date(value: date | StrBytesIntFloat) -> date:  # noqa: ARG001
+    def parse_date(value: date | StrBytesIntFloat) -> date:
         ...
 
-    def parse_datetime(value: Union[datetime, StrBytesIntFloat]) -> datetime:  # noqa: ARG001
+    def parse_datetime(value: Union[datetime, StrBytesIntFloat]) -> datetime:
         ...
 
-    def get_args(t: type[Any]) -> tuple[Any, ...]:  # noqa: ARG001
+    def get_args(t: type[Any]) -> tuple[Any, ...]:
         ...
 
-    def is_union(tp: type[Any] | None) -> bool:  # noqa: ARG001
+    def is_union(tp: type[Any] | None) -> bool:
         ...
 
-    def get_origin(t: type[Any]) -> type[Any] | None:  # noqa: ARG001
+    def get_origin(t: type[Any]) -> type[Any] | None:
         ...
 
-    def is_literal_type(type_: type[Any]) -> bool:  # noqa: ARG001
+    def is_literal_type(type_: type[Any]) -> bool:
         ...
 
-    def is_typeddict(type_: type[Any]) -> bool:  # noqa: ARG001
+    def is_typeddict(type_: type[Any]) -> bool:
         ...
 
 else:
