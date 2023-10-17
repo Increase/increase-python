@@ -1,12 +1,21 @@
 # File generated from our OpenAPI spec by Stainless.
 
-from typing import Optional
+from typing import List, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["InboundACHTransfer", "Acceptance", "Decline", "NotificationOfChange", "TransferReturn"]
+__all__ = [
+    "InboundACHTransfer",
+    "Acceptance",
+    "Addenda",
+    "AddendaFreeform",
+    "AddendaFreeformEntry",
+    "Decline",
+    "NotificationOfChange",
+    "TransferReturn",
+]
 
 
 class Acceptance(BaseModel):
@@ -15,6 +24,27 @@ class Acceptance(BaseModel):
 
     transaction_id: str
     """The id of the transaction for the accepted transfer."""
+
+
+class AddendaFreeformEntry(BaseModel):
+    payment_related_information: str
+    """The payment related information passed in the addendum."""
+
+
+class AddendaFreeform(BaseModel):
+    entries: List[AddendaFreeformEntry]
+    """Each entry represents an addendum received from the originator."""
+
+
+class Addenda(BaseModel):
+    category: Literal["freeform"]
+    """The type of addendum.
+
+    - `freeform` - Unstructured addendum.
+    """
+
+    freeform: Optional[AddendaFreeform]
+    """Unstructured `payment_related_information` passed through by the originator."""
 
 
 class Decline(BaseModel):
@@ -122,6 +152,9 @@ class InboundACHTransfer(BaseModel):
 
     account_number_id: str
     """The identifier of the Account Number to which this transfer was sent."""
+
+    addenda: Optional[Addenda]
+    """Additional information sent from the originator."""
 
     amount: int
     """The transfer amount in USD cents."""
