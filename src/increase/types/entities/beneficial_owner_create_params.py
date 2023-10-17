@@ -173,7 +173,8 @@ class BeneficialOwner(TypedDict, total=False):
     prongs: Required[List[Literal["ownership", "control"]]]
     """Why this person is considered a beneficial owner of the entity.
 
-    At least one option is required.
+    At least one option is required, if a person is both a control person and owner,
+    submit an array containing both.
     """
 
     company_title: str

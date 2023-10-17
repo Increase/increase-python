@@ -2368,6 +2368,9 @@ class TransactionSourceCheckTransferDeposit(BaseModel):
     transaction_id: Optional[str]
     """The identifier of the Transaction object created when the check was deposited."""
 
+    transfer_id: str
+    """The identifier of the Check Transfer object that was deposited."""
+
     type: Literal["check_transfer_deposit"]
     """A constant representing the object's type.
 
