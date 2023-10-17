@@ -64,6 +64,9 @@ __all__ = [
     "TransactionSourceWireTransferRejection",
     "Transfer",
     "TransferAcceptance",
+    "TransferAddenda",
+    "TransferAddendaFreeform",
+    "TransferAddendaFreeformEntry",
     "TransferDecline",
     "TransferNotificationOfChange",
     "TransferTransferReturn",
@@ -2373,6 +2376,9 @@ class TransactionSourceCheckTransferDeposit(BaseModel):
     transaction_id: Optional[str]
     """The identifier of the Transaction object created when the check was deposited."""
 
+    transfer_id: str
+    """The identifier of the Check Transfer object that was deposited."""
+
     type: Literal["check_transfer_deposit"]
     """A constant representing the object's type.
 
@@ -3579,6 +3585,27 @@ class TransferAcceptance(BaseModel):
     """The id of the transaction for the accepted transfer."""
 
 
+class TransferAddendaFreeformEntry(BaseModel):
+    payment_related_information: str
+    """The payment related information passed in the addendum."""
+
+
+class TransferAddendaFreeform(BaseModel):
+    entries: List[TransferAddendaFreeformEntry]
+    """Each entry represents an addendum received from the originator."""
+
+
+class TransferAddenda(BaseModel):
+    category: Literal["freeform"]
+    """The type of addendum.
+
+    - `freeform` - Unstructured addendum.
+    """
+
+    freeform: Optional[TransferAddendaFreeform]
+    """Unstructured `payment_related_information` passed through by the originator."""
+
+
 class TransferDecline(BaseModel):
     declined_at: datetime
     """The time at which the transfer was declined."""
@@ -3684,6 +3711,9 @@ class Transfer(BaseModel):
 
     account_number_id: str
     """The identifier of the Account Number to which this transfer was sent."""
+
+    addenda: Optional[TransferAddenda]
+    """Additional information sent from the originator."""
 
     amount: int
     """The transfer amount in USD cents."""
