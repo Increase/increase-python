@@ -46,6 +46,7 @@ _CategoryReservedKeywords = TypedDict(
                 "ach_transfer.created",
                 "ach_transfer.updated",
                 "bookkeeping_account.created",
+                "bookkeeping_account.updated",
                 "bookkeeping_entry_set.updated",
                 "card.created",
                 "card.updated",
