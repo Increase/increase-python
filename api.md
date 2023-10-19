@@ -40,6 +40,7 @@ from increase.types import BookkeepingAccount
 Methods:
 
 - <code title="post /bookkeeping_accounts">client.bookkeeping_accounts.<a href="./src/increase/resources/bookkeeping_accounts.py">create</a>(\*\*<a href="src/increase/types/bookkeeping_account_create_params.py">params</a>) -> <a href="./src/increase/types/bookkeeping_account.py">BookkeepingAccount</a></code>
+- <code title="patch /bookkeeping_accounts/{bookkeeping_account_id}">client.bookkeeping_accounts.<a href="./src/increase/resources/bookkeeping_accounts.py">update</a>(bookkeeping_account_id, \*\*<a href="src/increase/types/bookkeeping_account_update_params.py">params</a>) -> <a href="./src/increase/types/bookkeeping_account.py">BookkeepingAccount</a></code>
 - <code title="get /bookkeeping_accounts">client.bookkeeping_accounts.<a href="./src/increase/resources/bookkeeping_accounts.py">list</a>(\*\*<a href="src/increase/types/bookkeeping_account_list_params.py">params</a>) -> <a href="./src/increase/types/bookkeeping_account.py">SyncPage[BookkeepingAccount]</a></code>
 
 # BookkeepingEntrySets

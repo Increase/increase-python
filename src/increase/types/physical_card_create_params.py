@@ -52,7 +52,7 @@ class ShipmentAddress(TypedDict, total=False):
     """The third line of the shipping address."""
 
     phone_number: str
-    """The phone number of the receipient."""
+    """The phone number of the recipient."""
 
 
 class Shipment(TypedDict, total=False):

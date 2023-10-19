@@ -176,6 +176,9 @@ from .ach_prenotification_create_params import (
 from .bookkeeping_account_create_params import (
     BookkeepingAccountCreateParams as BookkeepingAccountCreateParams,
 )
+from .bookkeeping_account_update_params import (
+    BookkeepingAccountUpdateParams as BookkeepingAccountUpdateParams,
+)
 from .wire_drawdown_request_list_params import (
     WireDrawdownRequestListParams as WireDrawdownRequestListParams,
 )

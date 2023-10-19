@@ -31,6 +31,7 @@ class Event(BaseModel):
         "ach_transfer.created",
         "ach_transfer.updated",
         "bookkeeping_account.created",
+        "bookkeeping_account.updated",
         "bookkeeping_entry_set.updated",
         "card.created",
         "card.updated",
@@ -107,6 +108,8 @@ class Event(BaseModel):
     - `ach_transfer.updated` - Occurs whenever an ACH Transfer is updated.
     - `bookkeeping_account.created` - Occurs whenever a Bookkeeping Account is
       created.
+    - `bookkeeping_account.updated` - Occurs whenever a Bookkeeping Account is
+      updated.
     - `bookkeeping_entry_set.updated` - Occurs whenever a Bookkeeping Entry Set is
       created.
     - `card.created` - Occurs whenever a Card is created.
