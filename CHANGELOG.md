@@ -1,5 +1,48 @@
 # Changelog
 
+## 0.14.0 (2023-10-19)
+
+Full Changelog: [v0.13.7...v0.14.0](https://github.com/increase/increase-python/compare/v0.13.7...v0.14.0)
+
+### Features
+
+* **api:** add addenda details for ACH transfers ([#165](https://github.com/increase/increase-python/issues/165)) ([46c62ba](https://github.com/increase/increase-python/commit/46c62bae4ca6684cfbfce0124101b8a556763b2d))
+* **api:** updates ([#172](https://github.com/increase/increase-python/issues/172)) ([420092d](https://github.com/increase/increase-python/commit/420092d0e1b2a3a2fdcc75add256b266d87e31b1))
+* **client:** add logging setup ([#154](https://github.com/increase/increase-python/issues/154)) ([712448e](https://github.com/increase/increase-python/commit/712448e48baa1b25b5b556ae0a9a68a239c3b88d))
+* **client:** support passing httpx.URL instances to base_url ([#168](https://github.com/increase/increase-python/issues/168)) ([ba19c25](https://github.com/increase/increase-python/commit/ba19c25d98cf522779ce08509834158b1d1df505))
+
+
+### Bug Fixes
+
+* **client:** accept io.IOBase instances in file params ([#162](https://github.com/increase/increase-python/issues/162)) ([695f2bb](https://github.com/increase/increase-python/commit/695f2bba42968196b058b6ff6c6ad2ec66fb1da3))
+* **client:** correctly handle arguments with env vars ([#155](https://github.com/increase/increase-python/issues/155)) ([9d757a1](https://github.com/increase/increase-python/commit/9d757a11276040923f22ef6155840ab3bbb8b635))
+* **streaming:** add additional overload for ambiguous stream param ([#160](https://github.com/increase/increase-python/issues/160)) ([7bad83f](https://github.com/increase/increase-python/commit/7bad83fa5931974df2d8249a0fc98f3ea9d2d5de))
+
+
+### Chores
+
+* add case insensitive get header function ([#157](https://github.com/increase/increase-python/issues/157)) ([9240b3a](https://github.com/increase/increase-python/commit/9240b3a492872bc2740dd57573c947b3b5047a97))
+* **internal:** cleanup some redundant code ([#161](https://github.com/increase/increase-python/issues/161)) ([5325526](https://github.com/increase/increase-python/commit/5325526dc4826a96a9f18ef95b2729d23842877d))
+* **internal:** enable lint rule ([#159](https://github.com/increase/increase-python/issues/159)) ([9b23b62](https://github.com/increase/increase-python/commit/9b23b62b0ce84ba6b18a76e4121b971a42695c3b))
+* **internal:** improve publish script ([#167](https://github.com/increase/increase-python/issues/167)) ([3d98ab9](https://github.com/increase/increase-python/commit/3d98ab9090ab87c40e0391d3bc80178e8d1c3483))
+* **internal:** migrate from Poetry to Rye ([#166](https://github.com/increase/increase-python/issues/166)) ([3e81c88](https://github.com/increase/increase-python/commit/3e81c88e0fa8bf0e3feae148b99e6f4d335c98f5))
+* **internal:** update gitignore ([#170](https://github.com/increase/increase-python/issues/170)) ([7305ef9](https://github.com/increase/increase-python/commit/7305ef97697154361747320e8b03fbfb29740ca3))
+* **internal:** update gitignore ([#171](https://github.com/increase/increase-python/issues/171)) ([ae01f6b](https://github.com/increase/increase-python/commit/ae01f6b5225ab37a44751d93eafe6949c7dcf513))
+* **internal:** update lock file ([#169](https://github.com/increase/increase-python/issues/169)) ([65434e9](https://github.com/increase/increase-python/commit/65434e9c8f9114087a6244c3447cf1c6a3199ae2))
+* update comment ([#158](https://github.com/increase/increase-python/issues/158)) ([e75c268](https://github.com/increase/increase-python/commit/e75c268391ff2eaae0c050e8bcecea1d6d29bc24))
+* update README ([#151](https://github.com/increase/increase-python/issues/151)) ([4db792a](https://github.com/increase/increase-python/commit/4db792afa4fd65590a7ae4e0fdd782069917f78c))
+
+
+### Documentation
+
+* improve error message for invalid file param type ([#164](https://github.com/increase/increase-python/issues/164)) ([e105b17](https://github.com/increase/increase-python/commit/e105b17235f182542a78ea13e5a2aaacdc937876))
+* organisation -&gt; organization (UK to US English) ([#163](https://github.com/increase/increase-python/issues/163)) ([bd21fa4](https://github.com/increase/increase-python/commit/bd21fa4e0c2648772066e3fa85a7adace525253a))
+
+
+### Refactors
+
+* **test:** refactor authentication tests ([#153](https://github.com/increase/increase-python/issues/153)) ([acdfa12](https://github.com/increase/increase-python/commit/acdfa121cec5604ef96fc8a580636e2f6d2c4927))
+
 ## 0.13.7 (2023-10-11)
 
 Full Changelog: [v0.13.6...v0.13.7](https://github.com/increase/increase-python/compare/v0.13.6...v0.13.7)
