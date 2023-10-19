@@ -38,6 +38,14 @@ class TestBookkeepingAccounts:
         assert_matches_type(BookkeepingAccount, bookkeeping_account, path=["response"])
 
     @parametrize
+    def test_method_update(self, client: Increase) -> None:
+        bookkeeping_account = client.bookkeeping_accounts.update(
+            "string",
+            name="Deprecated Account",
+        )
+        assert_matches_type(BookkeepingAccount, bookkeeping_account, path=["response"])
+
+    @parametrize
     def test_method_list(self, client: Increase) -> None:
         bookkeeping_account = client.bookkeeping_accounts.list()
         assert_matches_type(SyncPage[BookkeepingAccount], bookkeeping_account, path=["response"])
@@ -70,6 +78,14 @@ class TestAsyncBookkeepingAccounts:
             account_id="string",
             compliance_category="commingled_cash",
             entity_id="string",
+        )
+        assert_matches_type(BookkeepingAccount, bookkeeping_account, path=["response"])
+
+    @parametrize
+    async def test_method_update(self, client: AsyncIncrease) -> None:
+        bookkeeping_account = await client.bookkeeping_accounts.update(
+            "string",
+            name="Deprecated Account",
         )
         assert_matches_type(BookkeepingAccount, bookkeeping_account, path=["response"])
 
