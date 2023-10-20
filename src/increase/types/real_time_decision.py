@@ -9,6 +9,7 @@ from .._models import BaseModel
 __all__ = [
     "RealTimeDecision",
     "CardAuthorization",
+    "CardAuthorizationCardholderAddress",
     "CardAuthorizationNetworkDetails",
     "CardAuthorizationNetworkDetailsVisa",
     "CardAuthorizationRequestDetails",
@@ -16,6 +17,44 @@ __all__ = [
     "DigitalWalletAuthentication",
     "DigitalWalletToken",
 ]
+
+
+class CardAuthorizationCardholderAddress(BaseModel):
+    actual_line1: Optional[str]
+    """Line 1 of the address on file for the cardholder."""
+
+    actual_postal_code: Optional[str]
+    """The postal code of the address on file for the cardholder."""
+
+    provided_line1: Optional[str]
+    """
+    The cardholder address line 1 provided for verification in the authorization
+    request.
+    """
+
+    provided_postal_code: Optional[str]
+    """The postal code provided for verification in the authorization request."""
+
+    verification_result: Literal[
+        "not_checked",
+        "postal_code_match_address_not_checked",
+        "postal_code_match_address_no_match",
+        "postal_code_no_match_address_match",
+        "match",
+        "no_match",
+    ]
+    """The address verification result returned to the card network.
+
+    - `not_checked` - No adress was provided in the authorization request.
+    - `postal_code_match_address_not_checked` - Postal code matches, but the street
+      address was not verified
+    - `postal_code_match_address_no_match` - Postal code matches, but the street
+      address does not match
+    - `postal_code_no_match_address_match` - Postal code does not match, but the
+      street address matches
+    - `match` - Postal code and street address match
+    - `no_match` - Postal code and street address do not match
+    """
 
 
 class CardAuthorizationNetworkDetailsVisa(BaseModel):
@@ -147,6 +186,12 @@ class CardAuthorization(BaseModel):
 
     card_id: str
     """The identifier of the Card that is being authorized."""
+
+    cardholder_address: CardAuthorizationCardholderAddress
+    """
+    Cardholder address provided in the authorization request and the address on file
+    we verified it against.
+    """
 
     decision: Optional[Literal["approve", "decline"]]
     """Whether or not the authorization was approved.
