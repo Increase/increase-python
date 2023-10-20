@@ -9,52 +9,16 @@ from .._models import BaseModel
 __all__ = [
     "RealTimeDecision",
     "CardAuthorization",
-    "CardAuthorizationCardholderAddress",
     "CardAuthorizationNetworkDetails",
     "CardAuthorizationNetworkDetailsVisa",
     "CardAuthorizationRequestDetails",
     "CardAuthorizationRequestDetailsIncrementalAuthorization",
+    "CardAuthorizationVerification",
+    "CardAuthorizationVerificationCardVerificationCode",
+    "CardAuthorizationVerificationCardholderAddress",
     "DigitalWalletAuthentication",
     "DigitalWalletToken",
 ]
-
-
-class CardAuthorizationCardholderAddress(BaseModel):
-    actual_line1: Optional[str]
-    """Line 1 of the address on file for the cardholder."""
-
-    actual_postal_code: Optional[str]
-    """The postal code of the address on file for the cardholder."""
-
-    provided_line1: Optional[str]
-    """
-    The cardholder address line 1 provided for verification in the authorization
-    request.
-    """
-
-    provided_postal_code: Optional[str]
-    """The postal code provided for verification in the authorization request."""
-
-    verification_result: Literal[
-        "not_checked",
-        "postal_code_match_address_not_checked",
-        "postal_code_match_address_no_match",
-        "postal_code_no_match_address_match",
-        "match",
-        "no_match",
-    ]
-    """The address verification result returned to the card network.
-
-    - `not_checked` - No adress was provided in the authorization request.
-    - `postal_code_match_address_not_checked` - Postal code matches, but the street
-      address was not verified
-    - `postal_code_match_address_no_match` - Postal code matches, but the street
-      address does not match
-    - `postal_code_no_match_address_match` - Postal code does not match, but the
-      street address matches
-    - `match` - Postal code and street address match
-    - `no_match` - Postal code and street address do not match
-    """
 
 
 class CardAuthorizationNetworkDetailsVisa(BaseModel):
@@ -180,18 +144,75 @@ class CardAuthorizationRequestDetails(BaseModel):
     """Fields specific to the category `initial_authorization`."""
 
 
+class CardAuthorizationVerificationCardVerificationCode(BaseModel):
+    result: Literal["not_checked", "match", "no_match"]
+    """The result of verifying the Card Verification Code.
+
+    - `not_checked` - No card verification code was provided in the authorization
+      request.
+    - `match` - The card verification code matched the one on file.
+    - `no_match` - The card verification code did not match the one on file.
+    """
+
+
+class CardAuthorizationVerificationCardholderAddress(BaseModel):
+    actual_line1: Optional[str]
+    """Line 1 of the address on file for the cardholder."""
+
+    actual_postal_code: Optional[str]
+    """The postal code of the address on file for the cardholder."""
+
+    provided_line1: Optional[str]
+    """
+    The cardholder address line 1 provided for verification in the authorization
+    request.
+    """
+
+    provided_postal_code: Optional[str]
+    """The postal code provided for verification in the authorization request."""
+
+    result: Literal[
+        "not_checked",
+        "postal_code_match_address_not_checked",
+        "postal_code_match_address_no_match",
+        "postal_code_no_match_address_match",
+        "match",
+        "no_match",
+    ]
+    """The address verification result returned to the card network.
+
+    - `not_checked` - No adress was provided in the authorization request.
+    - `postal_code_match_address_not_checked` - Postal code matches, but the street
+      address was not verified.
+    - `postal_code_match_address_no_match` - Postal code matches, but the street
+      address does not match.
+    - `postal_code_no_match_address_match` - Postal code does not match, but the
+      street address matches.
+    - `match` - Postal code and street address match.
+    - `no_match` - Postal code and street address do not match.
+    """
+
+
+class CardAuthorizationVerification(BaseModel):
+    card_verification_code: CardAuthorizationVerificationCardVerificationCode
+    """
+    Fields related to verification of the Card Verification Code, a 3-digit code on
+    the back of the card.
+    """
+
+    cardholder_address: CardAuthorizationVerificationCardholderAddress
+    """
+    Cardholder address provided in the authorization request and the address on file
+    we verified it against.
+    """
+
+
 class CardAuthorization(BaseModel):
     account_id: str
     """The identifier of the Account the authorization will debit."""
 
     card_id: str
     """The identifier of the Card that is being authorized."""
-
-    cardholder_address: CardAuthorizationCardholderAddress
-    """
-    Cardholder address provided in the authorization request and the address on file
-    we verified it against.
-    """
 
     decision: Optional[Literal["approve", "decline"]]
     """Whether or not the authorization was approved.
@@ -263,6 +284,9 @@ class CardAuthorization(BaseModel):
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the currency the
     transaction will be settled in.
     """
+
+    verification: CardAuthorizationVerification
+    """Fields related to verification of cardholder-provided values."""
 
 
 class DigitalWalletAuthentication(BaseModel):
