@@ -10,14 +10,18 @@ __all__ = [
     "CardPayment",
     "Element",
     "ElementCardAuthorization",
-    "ElementCardAuthorizationCardholderAddress",
     "ElementCardAuthorizationNetworkDetails",
     "ElementCardAuthorizationNetworkDetailsVisa",
+    "ElementCardAuthorizationVerification",
+    "ElementCardAuthorizationVerificationCardVerificationCode",
+    "ElementCardAuthorizationVerificationCardholderAddress",
     "ElementCardAuthorizationExpiration",
     "ElementCardDecline",
-    "ElementCardDeclineCardholderAddress",
     "ElementCardDeclineNetworkDetails",
     "ElementCardDeclineNetworkDetailsVisa",
+    "ElementCardDeclineVerification",
+    "ElementCardDeclineVerificationCardVerificationCode",
+    "ElementCardDeclineVerificationCardholderAddress",
     "ElementCardIncrement",
     "ElementCardRefund",
     "ElementCardRefundPurchaseDetails",
@@ -37,49 +41,13 @@ __all__ = [
     "ElementCardSettlementPurchaseDetailsTravelAncillaryService",
     "ElementCardSettlementPurchaseDetailsTravelTripLeg",
     "ElementCardValidation",
-    "ElementCardValidationCardholderAddress",
     "ElementCardValidationNetworkDetails",
     "ElementCardValidationNetworkDetailsVisa",
+    "ElementCardValidationVerification",
+    "ElementCardValidationVerificationCardVerificationCode",
+    "ElementCardValidationVerificationCardholderAddress",
     "State",
 ]
-
-
-class ElementCardAuthorizationCardholderAddress(BaseModel):
-    actual_line1: Optional[str]
-    """Line 1 of the address on file for the cardholder."""
-
-    actual_postal_code: Optional[str]
-    """The postal code of the address on file for the cardholder."""
-
-    provided_line1: Optional[str]
-    """
-    The cardholder address line 1 provided for verification in the authorization
-    request.
-    """
-
-    provided_postal_code: Optional[str]
-    """The postal code provided for verification in the authorization request."""
-
-    verification_result: Literal[
-        "not_checked",
-        "postal_code_match_address_not_checked",
-        "postal_code_match_address_no_match",
-        "postal_code_no_match_address_match",
-        "match",
-        "no_match",
-    ]
-    """The address verification result returned to the card network.
-
-    - `not_checked` - No adress was provided in the authorization request.
-    - `postal_code_match_address_not_checked` - Postal code matches, but the street
-      address was not verified
-    - `postal_code_match_address_no_match` - Postal code matches, but the street
-      address does not match
-    - `postal_code_no_match_address_match` - Postal code does not match, but the
-      street address matches
-    - `match` - Postal code and street address match
-    - `no_match` - Postal code and street address do not match
-    """
 
 
 class ElementCardAuthorizationNetworkDetailsVisa(BaseModel):
@@ -176,6 +144,69 @@ class ElementCardAuthorizationNetworkDetails(BaseModel):
     """Fields specific to the `visa` network."""
 
 
+class ElementCardAuthorizationVerificationCardVerificationCode(BaseModel):
+    result: Literal["not_checked", "match", "no_match"]
+    """The result of verifying the Card Verification Code.
+
+    - `not_checked` - No card verification code was provided in the authorization
+      request.
+    - `match` - The card verification code matched the one on file.
+    - `no_match` - The card verification code did not match the one on file.
+    """
+
+
+class ElementCardAuthorizationVerificationCardholderAddress(BaseModel):
+    actual_line1: Optional[str]
+    """Line 1 of the address on file for the cardholder."""
+
+    actual_postal_code: Optional[str]
+    """The postal code of the address on file for the cardholder."""
+
+    provided_line1: Optional[str]
+    """
+    The cardholder address line 1 provided for verification in the authorization
+    request.
+    """
+
+    provided_postal_code: Optional[str]
+    """The postal code provided for verification in the authorization request."""
+
+    result: Literal[
+        "not_checked",
+        "postal_code_match_address_not_checked",
+        "postal_code_match_address_no_match",
+        "postal_code_no_match_address_match",
+        "match",
+        "no_match",
+    ]
+    """The address verification result returned to the card network.
+
+    - `not_checked` - No adress was provided in the authorization request.
+    - `postal_code_match_address_not_checked` - Postal code matches, but the street
+      address was not verified.
+    - `postal_code_match_address_no_match` - Postal code matches, but the street
+      address does not match.
+    - `postal_code_no_match_address_match` - Postal code does not match, but the
+      street address matches.
+    - `match` - Postal code and street address match.
+    - `no_match` - Postal code and street address do not match.
+    """
+
+
+class ElementCardAuthorizationVerification(BaseModel):
+    card_verification_code: ElementCardAuthorizationVerificationCardVerificationCode
+    """
+    Fields related to verification of the Card Verification Code, a 3-digit code on
+    the back of the card.
+    """
+
+    cardholder_address: ElementCardAuthorizationVerificationCardholderAddress
+    """
+    Cardholder address provided in the authorization request and the address on file
+    we verified it against.
+    """
+
+
 class ElementCardAuthorization(BaseModel):
     id: str
     """The Card Authorization identifier."""
@@ -188,12 +219,6 @@ class ElementCardAuthorization(BaseModel):
 
     card_payment_id: Optional[str]
     """The ID of the Card Payment this transaction belongs to."""
-
-    cardholder_address: ElementCardAuthorizationCardholderAddress
-    """
-    Cardholder address provided in the authorization request and the address on file
-    we verified it against.
-    """
 
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
@@ -276,6 +301,9 @@ class ElementCardAuthorization(BaseModel):
     For this resource it will always be `card_authorization`.
     """
 
+    verification: ElementCardAuthorizationVerification
+    """Fields related to verification of cardholder-provided values."""
+
 
 class ElementCardAuthorizationExpiration(BaseModel):
     id: str
@@ -313,44 +341,6 @@ class ElementCardAuthorizationExpiration(BaseModel):
     """A constant representing the object's type.
 
     For this resource it will always be `card_authorization_expiration`.
-    """
-
-
-class ElementCardDeclineCardholderAddress(BaseModel):
-    actual_line1: Optional[str]
-    """Line 1 of the address on file for the cardholder."""
-
-    actual_postal_code: Optional[str]
-    """The postal code of the address on file for the cardholder."""
-
-    provided_line1: Optional[str]
-    """
-    The cardholder address line 1 provided for verification in the authorization
-    request.
-    """
-
-    provided_postal_code: Optional[str]
-    """The postal code provided for verification in the authorization request."""
-
-    verification_result: Literal[
-        "not_checked",
-        "postal_code_match_address_not_checked",
-        "postal_code_match_address_no_match",
-        "postal_code_no_match_address_match",
-        "match",
-        "no_match",
-    ]
-    """The address verification result returned to the card network.
-
-    - `not_checked` - No adress was provided in the authorization request.
-    - `postal_code_match_address_not_checked` - Postal code matches, but the street
-      address was not verified
-    - `postal_code_match_address_no_match` - Postal code matches, but the street
-      address does not match
-    - `postal_code_no_match_address_match` - Postal code does not match, but the
-      street address matches
-    - `match` - Postal code and street address match
-    - `no_match` - Postal code and street address do not match
     """
 
 
@@ -448,6 +438,69 @@ class ElementCardDeclineNetworkDetails(BaseModel):
     """Fields specific to the `visa` network."""
 
 
+class ElementCardDeclineVerificationCardVerificationCode(BaseModel):
+    result: Literal["not_checked", "match", "no_match"]
+    """The result of verifying the Card Verification Code.
+
+    - `not_checked` - No card verification code was provided in the authorization
+      request.
+    - `match` - The card verification code matched the one on file.
+    - `no_match` - The card verification code did not match the one on file.
+    """
+
+
+class ElementCardDeclineVerificationCardholderAddress(BaseModel):
+    actual_line1: Optional[str]
+    """Line 1 of the address on file for the cardholder."""
+
+    actual_postal_code: Optional[str]
+    """The postal code of the address on file for the cardholder."""
+
+    provided_line1: Optional[str]
+    """
+    The cardholder address line 1 provided for verification in the authorization
+    request.
+    """
+
+    provided_postal_code: Optional[str]
+    """The postal code provided for verification in the authorization request."""
+
+    result: Literal[
+        "not_checked",
+        "postal_code_match_address_not_checked",
+        "postal_code_match_address_no_match",
+        "postal_code_no_match_address_match",
+        "match",
+        "no_match",
+    ]
+    """The address verification result returned to the card network.
+
+    - `not_checked` - No adress was provided in the authorization request.
+    - `postal_code_match_address_not_checked` - Postal code matches, but the street
+      address was not verified.
+    - `postal_code_match_address_no_match` - Postal code matches, but the street
+      address does not match.
+    - `postal_code_no_match_address_match` - Postal code does not match, but the
+      street address matches.
+    - `match` - Postal code and street address match.
+    - `no_match` - Postal code and street address do not match.
+    """
+
+
+class ElementCardDeclineVerification(BaseModel):
+    card_verification_code: ElementCardDeclineVerificationCardVerificationCode
+    """
+    Fields related to verification of the Card Verification Code, a 3-digit code on
+    the back of the card.
+    """
+
+    cardholder_address: ElementCardDeclineVerificationCardholderAddress
+    """
+    Cardholder address provided in the authorization request and the address on file
+    we verified it against.
+    """
+
+
 class ElementCardDecline(BaseModel):
     id: str
     """The Card Decline identifier."""
@@ -460,12 +513,6 @@ class ElementCardDecline(BaseModel):
 
     card_payment_id: Optional[str]
     """The ID of the Card Payment this transaction belongs to."""
-
-    cardholder_address: ElementCardDeclineCardholderAddress
-    """
-    Cardholder address provided in the authorization request and the address on file
-    we verified it against.
-    """
 
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
@@ -564,6 +611,9 @@ class ElementCardDecline(BaseModel):
     - `suspected_fraud` - The transaction was suspected to be fraudulent. Please
       reach out to support@increase.com for more information.
     """
+
+    verification: ElementCardDeclineVerification
+    """Fields related to verification of cardholder-provided values."""
 
 
 class ElementCardIncrement(BaseModel):
@@ -1620,44 +1670,6 @@ class ElementCardSettlement(BaseModel):
     """
 
 
-class ElementCardValidationCardholderAddress(BaseModel):
-    actual_line1: Optional[str]
-    """Line 1 of the address on file for the cardholder."""
-
-    actual_postal_code: Optional[str]
-    """The postal code of the address on file for the cardholder."""
-
-    provided_line1: Optional[str]
-    """
-    The cardholder address line 1 provided for verification in the authorization
-    request.
-    """
-
-    provided_postal_code: Optional[str]
-    """The postal code provided for verification in the authorization request."""
-
-    verification_result: Literal[
-        "not_checked",
-        "postal_code_match_address_not_checked",
-        "postal_code_match_address_no_match",
-        "postal_code_no_match_address_match",
-        "match",
-        "no_match",
-    ]
-    """The address verification result returned to the card network.
-
-    - `not_checked` - No adress was provided in the authorization request.
-    - `postal_code_match_address_not_checked` - Postal code matches, but the street
-      address was not verified
-    - `postal_code_match_address_no_match` - Postal code matches, but the street
-      address does not match
-    - `postal_code_no_match_address_match` - Postal code does not match, but the
-      street address matches
-    - `match` - Postal code and street address match
-    - `no_match` - Postal code and street address do not match
-    """
-
-
 class ElementCardValidationNetworkDetailsVisa(BaseModel):
     electronic_commerce_indicator: Optional[
         Literal[
@@ -1752,18 +1764,75 @@ class ElementCardValidationNetworkDetails(BaseModel):
     """Fields specific to the `visa` network."""
 
 
+class ElementCardValidationVerificationCardVerificationCode(BaseModel):
+    result: Literal["not_checked", "match", "no_match"]
+    """The result of verifying the Card Verification Code.
+
+    - `not_checked` - No card verification code was provided in the authorization
+      request.
+    - `match` - The card verification code matched the one on file.
+    - `no_match` - The card verification code did not match the one on file.
+    """
+
+
+class ElementCardValidationVerificationCardholderAddress(BaseModel):
+    actual_line1: Optional[str]
+    """Line 1 of the address on file for the cardholder."""
+
+    actual_postal_code: Optional[str]
+    """The postal code of the address on file for the cardholder."""
+
+    provided_line1: Optional[str]
+    """
+    The cardholder address line 1 provided for verification in the authorization
+    request.
+    """
+
+    provided_postal_code: Optional[str]
+    """The postal code provided for verification in the authorization request."""
+
+    result: Literal[
+        "not_checked",
+        "postal_code_match_address_not_checked",
+        "postal_code_match_address_no_match",
+        "postal_code_no_match_address_match",
+        "match",
+        "no_match",
+    ]
+    """The address verification result returned to the card network.
+
+    - `not_checked` - No adress was provided in the authorization request.
+    - `postal_code_match_address_not_checked` - Postal code matches, but the street
+      address was not verified.
+    - `postal_code_match_address_no_match` - Postal code matches, but the street
+      address does not match.
+    - `postal_code_no_match_address_match` - Postal code does not match, but the
+      street address matches.
+    - `match` - Postal code and street address match.
+    - `no_match` - Postal code and street address do not match.
+    """
+
+
+class ElementCardValidationVerification(BaseModel):
+    card_verification_code: ElementCardValidationVerificationCardVerificationCode
+    """
+    Fields related to verification of the Card Verification Code, a 3-digit code on
+    the back of the card.
+    """
+
+    cardholder_address: ElementCardValidationVerificationCardholderAddress
+    """
+    Cardholder address provided in the authorization request and the address on file
+    we verified it against.
+    """
+
+
 class ElementCardValidation(BaseModel):
     id: str
     """The Card Validation identifier."""
 
     card_payment_id: Optional[str]
     """The ID of the Card Payment this transaction belongs to."""
-
-    cardholder_address: ElementCardValidationCardholderAddress
-    """
-    Cardholder address provided in the authorization request and the address on file
-    we verified it against.
-    """
 
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
@@ -1825,6 +1894,9 @@ class ElementCardValidation(BaseModel):
 
     For this resource it will always be `card_validation`.
     """
+
+    verification: ElementCardValidationVerification
+    """Fields related to verification of cardholder-provided values."""
 
 
 class Element(BaseModel):
