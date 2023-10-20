@@ -10,6 +10,7 @@ __all__ = ["InboundACHTransferTransferReturnParams"]
 class InboundACHTransferTransferReturnParams(TypedDict, total=False):
     reason: Required[
         Literal[
+            "returned_per_odfi_request",
             "authorization_revoked_by_customer",
             "payment_stopped",
             "customer_advised_unauthorized_improper_ineligible_or_incomplete",
@@ -25,6 +26,9 @@ class InboundACHTransferTransferReturnParams(TypedDict, total=False):
     The most usual return codes are `payment_stopped` for debits and
     `credit_entry_refused_by_receiver` for credits.
 
+    - `returned_per_odfi_request` - The originating financial institution asked for
+      this transfer to be returned. The receiving bank is complying with the
+      request. The Nacha return code is R06.
     - `authorization_revoked_by_customer` - The customer no longer authorizes this
       transaction. The Nacha return code is R07.
     - `payment_stopped` - The customer asked for the payment to be stopped. This
