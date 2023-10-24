@@ -445,6 +445,7 @@ class DeclinedTransactionSourceCheckDecline(BaseModel):
         "not_authorized",
         "amount_mismatch",
         "not_our_item",
+        "no_account_number_found",
     ]
     """Why the check was declined.
 
@@ -460,6 +461,8 @@ class DeclinedTransactionSourceCheckDecline(BaseModel):
     - `amount_mismatch` - The amount the receiving bank is attempting to deposit
       does not match the amount on the check.
     - `not_our_item` - The check attempting to be deposited does not belong to
+      Increase.
+    - `no_account_number_found` - The account number on the check does not exist at
       Increase.
     """
 

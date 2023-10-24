@@ -22,6 +22,7 @@ __all__ = [
     "ElementCardDeclineVerification",
     "ElementCardDeclineVerificationCardVerificationCode",
     "ElementCardDeclineVerificationCardholderAddress",
+    "ElementCardFuelConfirmation",
     "ElementCardIncrement",
     "ElementCardRefund",
     "ElementCardRefundPurchaseDetails",
@@ -616,6 +617,45 @@ class ElementCardDecline(BaseModel):
     """Fields related to verification of cardholder-provided values."""
 
 
+class ElementCardFuelConfirmation(BaseModel):
+    id: str
+    """The Card Fuel Confirmation identifier."""
+
+    card_authorization_id: str
+    """The identifier for the Card Authorization this updates."""
+
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the increment's
+    currency.
+
+    - `CAD` - Canadian Dollar (CAD)
+    - `CHF` - Swiss Franc (CHF)
+    - `EUR` - Euro (EUR)
+    - `GBP` - British Pound (GBP)
+    - `JPY` - Japanese Yen (JPY)
+    - `USD` - US Dollar (USD)
+    """
+
+    network: Literal["visa"]
+    """The card network used to process this card authorization.
+
+    - `visa` - Visa
+    """
+
+    type: Literal["card_fuel_confirmation"]
+    """A constant representing the object's type.
+
+    For this resource it will always be `card_fuel_confirmation`.
+    """
+
+    updated_authorization_amount: int
+    """
+    The updated authorization amount after this fuel confirmation, in the minor unit
+    of the transaction's currency. For dollars, for example, this is cents.
+    """
+
+
 class ElementCardIncrement(BaseModel):
     id: str
     """The Card Increment identifier."""
@@ -627,7 +667,7 @@ class ElementCardIncrement(BaseModel):
     """
 
     card_authorization_id: str
-    """The identifier for the Card Authorization this reverses."""
+    """The identifier for the Card Authorization this increments."""
 
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
@@ -1921,6 +1961,13 @@ class Element(BaseModel):
     equal to `card_decline`.
     """
 
+    card_fuel_confirmation: Optional[ElementCardFuelConfirmation]
+    """A Card Fuel Confirmation object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `card_fuel_confirmation`.
+    """
+
     card_increment: Optional[ElementCardIncrement]
     """A Card Increment object.
 
@@ -1965,6 +2012,7 @@ class Element(BaseModel):
         "card_increment",
         "card_settlement",
         "card_refund",
+        "card_fuel_confirmation",
         "other",
     ]
     """The type of the resource.
@@ -1987,6 +2035,8 @@ class Element(BaseModel):
     - `card_settlement` - Card Settlement: details will be under the
       `card_settlement` object.
     - `card_refund` - Card Refund: details will be under the `card_refund` object.
+    - `card_fuel_confirmation` - Card Fuel Confirmation: details will be under the
+      `card_fuel_confirmation` object.
     - `other` - Unknown card payment element.
     """
 
@@ -2002,6 +2052,12 @@ class State(BaseModel):
     """The total authorized amount in the minor unit of the transaction's currency.
 
     For dollars, for example, this is cents.
+    """
+
+    fuel_confirmed_amount: int
+    """
+    The total amount from fuel confirmations in the minor unit of the transaction's
+    currency. For dollars, for example, this is cents.
     """
 
     incremented_amount: int
