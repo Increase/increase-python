@@ -155,7 +155,7 @@ client.accounts.create(
 
 ## File Uploads
 
-Request parameters that correspond to file uploads can be passed as `bytes` or a tuple of `(filename, contents, media type)`.
+Request parameters that correspond to file uploads can be passed as `bytes`, a [`PathLike`](https://docs.python.org/3/library/os.html#os.PathLike) instance or a tuple of `(filename, contents, media type)`.
 
 ```python
 from pathlib import Path
@@ -163,29 +163,13 @@ from increase import Increase
 
 client = Increase()
 
-contents = Path("my/file.txt").read_bytes()
 client.files.create(
-    file=contents,
+    file=Path("my/file.txt"),
     purpose="other",
 )
 ```
 
-The async client uses the exact same interface. This example uses `aiofiles` to asynchronously read the file contents but you can use whatever method you would like.
-
-```python
-import aiofiles
-from increase import Increase
-
-client = Increase()
-
-async with aiofiles.open("my/file.txt", mode="rb") as f:
-    contents = await f.read()
-
-await client.files.create(
-    file=contents,
-    purpose="other",
-)
-```
+The async client uses the exact same interface. If you pass a [`PathLike`](https://docs.python.org/3/library/os.html#os.PathLike) instance, the file contents will be read asynchronously automatically.
 
 ## Handling errors
 
