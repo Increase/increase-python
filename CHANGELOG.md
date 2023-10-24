@@ -1,5 +1,29 @@
 # Changelog
 
+## 0.15.0 (2023-10-24)
+
+Full Changelog: [v0.14.0...v0.15.0](https://github.com/increase/increase-python/compare/v0.14.0...v0.15.0)
+
+### Features
+
+* **api:** add fuel confirmation functionality ([#180](https://github.com/increase/increase-python/issues/180)) ([d2459df](https://github.com/increase/increase-python/commit/d2459df1c7defcfaec8bcf60249249f24267b546))
+* **api:** add returned_per_odfi_request enum ([#179](https://github.com/increase/increase-python/issues/179)) ([b1c03fe](https://github.com/increase/increase-python/commit/b1c03fe911ab268e4fa137ee0520a010910b356f))
+* **api:** updates ([#175](https://github.com/increase/increase-python/issues/175)) ([7bf5be0](https://github.com/increase/increase-python/commit/7bf5be0e253bc96f03ce91d5a32b8cf5e3f03d14))
+* **api:** updates ([#177](https://github.com/increase/increase-python/issues/177)) ([6482bf8](https://github.com/increase/increase-python/commit/6482bf878e82a0ed13dbb85adf60067332d1f159))
+* **client:** adjust retry behavior to be exponential backoff ([#182](https://github.com/increase/increase-python/issues/182)) ([923b96c](https://github.com/increase/increase-python/commit/923b96ca4fd94b8d0917d3b9d525864bc5e236bd))
+* **client:** improve file upload types ([#181](https://github.com/increase/increase-python/issues/181)) ([4947869](https://github.com/increase/increase-python/commit/4947869bdbc0a6482adee61b778116469c22b974))
+
+
+### Chores
+
+* **internal:** bump mypy ([#178](https://github.com/increase/increase-python/issues/178)) ([5c6a2ff](https://github.com/increase/increase-python/commit/5c6a2ff1c7625c4854eafac00c4884c750b5f788))
+* **internal:** bump pyright ([#176](https://github.com/increase/increase-python/issues/176)) ([48eb50e](https://github.com/increase/increase-python/commit/48eb50ef8a1d6a550ecd742ab8ad37d0ed2a98ce))
+
+
+### Documentation
+
+* improve to dictionary example ([#184](https://github.com/increase/increase-python/issues/184)) ([7f39f26](https://github.com/increase/increase-python/commit/7f39f26cda69a5b6ca619a1f2d761e8e7f9b2155))
+
 ## 0.14.0 (2023-10-19)
 
 Full Changelog: [v0.13.7...v0.14.0](https://github.com/increase/increase-python/compare/v0.13.7...v0.14.0)
