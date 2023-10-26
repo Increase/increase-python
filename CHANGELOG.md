@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.16.0 (2023-10-26)
+
+Full Changelog: [v0.15.0...v0.16.0](https://github.com/increase/increase-python/compare/v0.15.0...v0.16.0)
+
+### Features
+
+* **api:** updates ([#187](https://github.com/increase/increase-python/issues/187)) ([e389480](https://github.com/increase/increase-python/commit/e38948091b3cd1b130e9f663a4f33308ef04052d))
+
+
+### Chores
+
+* **internal:** update lock file ([#185](https://github.com/increase/increase-python/issues/185)) ([308e1be](https://github.com/increase/increase-python/commit/308e1be0962dd41d449d816828dc6039ab5b4d22))
+
 ## 0.15.0 (2023-10-24)
 
 Full Changelog: [v0.14.0...v0.15.0](https://github.com/increase/increase-python/compare/v0.14.0...v0.15.0)
