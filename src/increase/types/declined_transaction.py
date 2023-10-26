@@ -13,6 +13,7 @@ __all__ = [
     "SourceCardDecline",
     "SourceCardDeclineNetworkDetails",
     "SourceCardDeclineNetworkDetailsVisa",
+    "SourceCardDeclineNetworkIdentifiers",
     "SourceCardDeclineVerification",
     "SourceCardDeclineVerificationCardVerificationCode",
     "SourceCardDeclineVerificationCardholderAddress",
@@ -196,6 +197,27 @@ class SourceCardDeclineNetworkDetails(BaseModel):
     """Fields specific to the `visa` network."""
 
 
+class SourceCardDeclineNetworkIdentifiers(BaseModel):
+    retrieval_reference_number: Optional[str]
+    """A life-cycle identifier used across e.g., an authorization and a reversal.
+
+    Expected to be unique per acquirer within a window of time. For some card
+    networks the retrieval reference number includes the trace counter.
+    """
+
+    trace_number: Optional[str]
+    """A counter used to verify an individual authorization.
+
+    Expected to be unique per acquirer within a window of time.
+    """
+
+    transaction_id: Optional[str]
+    """
+    A globally unique transaction identifier provided by the card network, used
+    across multiple life-cycle requests.
+    """
+
+
 class SourceCardDeclineVerificationCardVerificationCode(BaseModel):
     result: Literal["not_checked", "match", "no_match"]
     """The result of verifying the Card Verification Code.
@@ -317,6 +339,9 @@ class SourceCardDecline(BaseModel):
 
     network_details: SourceCardDeclineNetworkDetails
     """Fields specific to the `network`."""
+
+    network_identifiers: SourceCardDeclineNetworkIdentifiers
+    """Network-specific identifiers for a specific request or transaction."""
 
     physical_card_id: Optional[str]
     """

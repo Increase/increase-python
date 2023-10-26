@@ -14,6 +14,7 @@ __all__ = [
     "DeclinedTransactionSourceCardDecline",
     "DeclinedTransactionSourceCardDeclineNetworkDetails",
     "DeclinedTransactionSourceCardDeclineNetworkDetailsVisa",
+    "DeclinedTransactionSourceCardDeclineNetworkIdentifiers",
     "DeclinedTransactionSourceCardDeclineVerification",
     "DeclinedTransactionSourceCardDeclineVerificationCardVerificationCode",
     "DeclinedTransactionSourceCardDeclineVerificationCardholderAddress",
@@ -28,6 +29,7 @@ __all__ = [
     "PendingTransactionSourceCardAuthorization",
     "PendingTransactionSourceCardAuthorizationNetworkDetails",
     "PendingTransactionSourceCardAuthorizationNetworkDetailsVisa",
+    "PendingTransactionSourceCardAuthorizationNetworkIdentifiers",
     "PendingTransactionSourceCardAuthorizationVerification",
     "PendingTransactionSourceCardAuthorizationVerificationCardVerificationCode",
     "PendingTransactionSourceCardAuthorizationVerificationCardholderAddress",
@@ -212,6 +214,27 @@ class DeclinedTransactionSourceCardDeclineNetworkDetails(BaseModel):
     """Fields specific to the `visa` network."""
 
 
+class DeclinedTransactionSourceCardDeclineNetworkIdentifiers(BaseModel):
+    retrieval_reference_number: Optional[str]
+    """A life-cycle identifier used across e.g., an authorization and a reversal.
+
+    Expected to be unique per acquirer within a window of time. For some card
+    networks the retrieval reference number includes the trace counter.
+    """
+
+    trace_number: Optional[str]
+    """A counter used to verify an individual authorization.
+
+    Expected to be unique per acquirer within a window of time.
+    """
+
+    transaction_id: Optional[str]
+    """
+    A globally unique transaction identifier provided by the card network, used
+    across multiple life-cycle requests.
+    """
+
+
 class DeclinedTransactionSourceCardDeclineVerificationCardVerificationCode(BaseModel):
     result: Literal["not_checked", "match", "no_match"]
     """The result of verifying the Card Verification Code.
@@ -333,6 +356,9 @@ class DeclinedTransactionSourceCardDecline(BaseModel):
 
     network_details: DeclinedTransactionSourceCardDeclineNetworkDetails
     """Fields specific to the `network`."""
+
+    network_identifiers: DeclinedTransactionSourceCardDeclineNetworkIdentifiers
+    """Network-specific identifiers for a specific request or transaction."""
 
     physical_card_id: Optional[str]
     """
@@ -1095,6 +1121,27 @@ class PendingTransactionSourceCardAuthorizationNetworkDetails(BaseModel):
     """Fields specific to the `visa` network."""
 
 
+class PendingTransactionSourceCardAuthorizationNetworkIdentifiers(BaseModel):
+    retrieval_reference_number: Optional[str]
+    """A life-cycle identifier used across e.g., an authorization and a reversal.
+
+    Expected to be unique per acquirer within a window of time. For some card
+    networks the retrieval reference number includes the trace counter.
+    """
+
+    trace_number: Optional[str]
+    """A counter used to verify an individual authorization.
+
+    Expected to be unique per acquirer within a window of time.
+    """
+
+    transaction_id: Optional[str]
+    """
+    A globally unique transaction identifier provided by the card network, used
+    across multiple life-cycle requests.
+    """
+
+
 class PendingTransactionSourceCardAuthorizationVerificationCardVerificationCode(BaseModel):
     result: Literal["not_checked", "match", "no_match"]
     """The result of verifying the Card Verification Code.
@@ -1230,6 +1277,9 @@ class PendingTransactionSourceCardAuthorization(BaseModel):
 
     network_details: PendingTransactionSourceCardAuthorizationNetworkDetails
     """Fields specific to the `network`."""
+
+    network_identifiers: PendingTransactionSourceCardAuthorizationNetworkIdentifiers
+    """Network-specific identifiers for a specific request or transaction."""
 
     pending_transaction_id: Optional[str]
     """The identifier of the Pending Transaction associated with this Transaction."""

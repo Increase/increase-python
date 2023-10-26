@@ -14,6 +14,7 @@ __all__ = [
     "SourceCardAuthorization",
     "SourceCardAuthorizationNetworkDetails",
     "SourceCardAuthorizationNetworkDetailsVisa",
+    "SourceCardAuthorizationNetworkIdentifiers",
     "SourceCardAuthorizationVerification",
     "SourceCardAuthorizationVerificationCardVerificationCode",
     "SourceCardAuthorizationVerificationCardholderAddress",
@@ -154,6 +155,27 @@ class SourceCardAuthorizationNetworkDetails(BaseModel):
     """Fields specific to the `visa` network."""
 
 
+class SourceCardAuthorizationNetworkIdentifiers(BaseModel):
+    retrieval_reference_number: Optional[str]
+    """A life-cycle identifier used across e.g., an authorization and a reversal.
+
+    Expected to be unique per acquirer within a window of time. For some card
+    networks the retrieval reference number includes the trace counter.
+    """
+
+    trace_number: Optional[str]
+    """A counter used to verify an individual authorization.
+
+    Expected to be unique per acquirer within a window of time.
+    """
+
+    transaction_id: Optional[str]
+    """
+    A globally unique transaction identifier provided by the card network, used
+    across multiple life-cycle requests.
+    """
+
+
 class SourceCardAuthorizationVerificationCardVerificationCode(BaseModel):
     result: Literal["not_checked", "match", "no_match"]
     """The result of verifying the Card Verification Code.
@@ -289,6 +311,9 @@ class SourceCardAuthorization(BaseModel):
 
     network_details: SourceCardAuthorizationNetworkDetails
     """Fields specific to the `network`."""
+
+    network_identifiers: SourceCardAuthorizationNetworkIdentifiers
+    """Network-specific identifiers for a specific request or transaction."""
 
     pending_transaction_id: Optional[str]
     """The identifier of the Pending Transaction associated with this Transaction."""
