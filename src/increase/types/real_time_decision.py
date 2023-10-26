@@ -11,6 +11,7 @@ __all__ = [
     "CardAuthorization",
     "CardAuthorizationNetworkDetails",
     "CardAuthorizationNetworkDetailsVisa",
+    "CardAuthorizationNetworkIdentifiers",
     "CardAuthorizationRequestDetails",
     "CardAuthorizationRequestDetailsIncrementalAuthorization",
     "CardAuthorizationVerification",
@@ -113,6 +114,27 @@ class CardAuthorizationNetworkDetails(BaseModel):
 
     visa: Optional[CardAuthorizationNetworkDetailsVisa]
     """Fields specific to the `visa` network."""
+
+
+class CardAuthorizationNetworkIdentifiers(BaseModel):
+    retrieval_reference_number: Optional[str]
+    """A life-cycle identifier used across e.g., an authorization and a reversal.
+
+    Expected to be unique per acquirer within a window of time. For some card
+    networks the retrieval reference number includes the trace counter.
+    """
+
+    trace_number: Optional[str]
+    """A counter used to verify an individual authorization.
+
+    Expected to be unique per acquirer within a window of time.
+    """
+
+    transaction_id: Optional[str]
+    """
+    A globally unique transaction identifier provided by the card network, used
+    across multiple life-cycle requests.
+    """
 
 
 class CardAuthorizationRequestDetailsIncrementalAuthorization(BaseModel):
@@ -250,6 +272,9 @@ class CardAuthorization(BaseModel):
 
     network_details: CardAuthorizationNetworkDetails
     """Fields specific to the `network`."""
+
+    network_identifiers: CardAuthorizationNetworkIdentifiers
+    """Network-specific identifiers for a specific request or transaction."""
 
     physical_card_id: Optional[str]
     """
