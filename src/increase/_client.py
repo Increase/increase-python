@@ -5,7 +5,7 @@ from __future__ import annotations
 import os
 import asyncio
 from typing import Dict, Union, Mapping
-from typing_extensions import Literal
+from typing_extensions import Literal, override
 
 import httpx
 
@@ -204,10 +204,12 @@ class Increase(SyncAPIClient):
         self.card_payments = resources.CardPayments(self)
 
     @property
+    @override
     def qs(self) -> Querystring:
         return Querystring(nested_format="dots", array_format="comma")
 
     @property
+    @override
     def auth_headers(self) -> dict[str, str]:
         api_key = self.api_key
         return {"Authorization": f"Bearer {api_key}"}
@@ -295,6 +297,7 @@ class Increase(SyncAPIClient):
 
         self.close()
 
+    @override
     def _make_status_error(
         self,
         err_msg: str,
@@ -532,10 +535,12 @@ class AsyncIncrease(AsyncAPIClient):
         self.card_payments = resources.AsyncCardPayments(self)
 
     @property
+    @override
     def qs(self) -> Querystring:
         return Querystring(nested_format="dots", array_format="comma")
 
     @property
+    @override
     def auth_headers(self) -> dict[str, str]:
         api_key = self.api_key
         return {"Authorization": f"Bearer {api_key}"}
@@ -626,6 +631,7 @@ class AsyncIncrease(AsyncAPIClient):
         except Exception:
             pass
 
+    @override
     def _make_status_error(
         self,
         err_msg: str,
