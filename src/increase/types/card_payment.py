@@ -12,6 +12,7 @@ __all__ = [
     "ElementCardAuthorization",
     "ElementCardAuthorizationNetworkDetails",
     "ElementCardAuthorizationNetworkDetailsVisa",
+    "ElementCardAuthorizationNetworkIdentifiers",
     "ElementCardAuthorizationVerification",
     "ElementCardAuthorizationVerificationCardVerificationCode",
     "ElementCardAuthorizationVerificationCardholderAddress",
@@ -19,6 +20,7 @@ __all__ = [
     "ElementCardDecline",
     "ElementCardDeclineNetworkDetails",
     "ElementCardDeclineNetworkDetailsVisa",
+    "ElementCardDeclineNetworkIdentifiers",
     "ElementCardDeclineVerification",
     "ElementCardDeclineVerificationCardVerificationCode",
     "ElementCardDeclineVerificationCardholderAddress",
@@ -44,6 +46,7 @@ __all__ = [
     "ElementCardValidation",
     "ElementCardValidationNetworkDetails",
     "ElementCardValidationNetworkDetailsVisa",
+    "ElementCardValidationNetworkIdentifiers",
     "ElementCardValidationVerification",
     "ElementCardValidationVerificationCardVerificationCode",
     "ElementCardValidationVerificationCardholderAddress",
@@ -143,6 +146,27 @@ class ElementCardAuthorizationNetworkDetails(BaseModel):
 
     visa: Optional[ElementCardAuthorizationNetworkDetailsVisa]
     """Fields specific to the `visa` network."""
+
+
+class ElementCardAuthorizationNetworkIdentifiers(BaseModel):
+    retrieval_reference_number: Optional[str]
+    """A life-cycle identifier used across e.g., an authorization and a reversal.
+
+    Expected to be unique per acquirer within a window of time. For some card
+    networks the retrieval reference number includes the trace counter.
+    """
+
+    trace_number: Optional[str]
+    """A counter used to verify an individual authorization.
+
+    Expected to be unique per acquirer within a window of time.
+    """
+
+    transaction_id: Optional[str]
+    """
+    A globally unique transaction identifier provided by the card network, used
+    across multiple life-cycle requests.
+    """
 
 
 class ElementCardAuthorizationVerificationCardVerificationCode(BaseModel):
@@ -280,6 +304,9 @@ class ElementCardAuthorization(BaseModel):
 
     network_details: ElementCardAuthorizationNetworkDetails
     """Fields specific to the `network`."""
+
+    network_identifiers: ElementCardAuthorizationNetworkIdentifiers
+    """Network-specific identifiers for a specific request or transaction."""
 
     pending_transaction_id: Optional[str]
     """The identifier of the Pending Transaction associated with this Transaction."""
@@ -439,6 +466,27 @@ class ElementCardDeclineNetworkDetails(BaseModel):
     """Fields specific to the `visa` network."""
 
 
+class ElementCardDeclineNetworkIdentifiers(BaseModel):
+    retrieval_reference_number: Optional[str]
+    """A life-cycle identifier used across e.g., an authorization and a reversal.
+
+    Expected to be unique per acquirer within a window of time. For some card
+    networks the retrieval reference number includes the trace counter.
+    """
+
+    trace_number: Optional[str]
+    """A counter used to verify an individual authorization.
+
+    Expected to be unique per acquirer within a window of time.
+    """
+
+    transaction_id: Optional[str]
+    """
+    A globally unique transaction identifier provided by the card network, used
+    across multiple life-cycle requests.
+    """
+
+
 class ElementCardDeclineVerificationCardVerificationCode(BaseModel):
     result: Literal["not_checked", "match", "no_match"]
     """The result of verifying the Card Verification Code.
@@ -561,6 +609,9 @@ class ElementCardDecline(BaseModel):
     network_details: ElementCardDeclineNetworkDetails
     """Fields specific to the `network`."""
 
+    network_identifiers: ElementCardDeclineNetworkIdentifiers
+    """Network-specific identifiers for a specific request or transaction."""
+
     physical_card_id: Optional[str]
     """
     If the authorization was made in-person with a physical card, the Physical Card
@@ -643,6 +694,12 @@ class ElementCardFuelConfirmation(BaseModel):
     - `visa` - Visa
     """
 
+    pending_transaction_id: Optional[str]
+    """
+    The identifier of the Pending Transaction associated with this Card Fuel
+    Confirmation.
+    """
+
     type: Literal["card_fuel_confirmation"]
     """A constant representing the object's type.
 
@@ -687,6 +744,9 @@ class ElementCardIncrement(BaseModel):
 
     - `visa` - Visa
     """
+
+    pending_transaction_id: Optional[str]
+    """The identifier of the Pending Transaction associated with this Card Increment."""
 
     real_time_decision_id: Optional[str]
     """
@@ -1202,6 +1262,9 @@ class ElementCardReversal(BaseModel):
 
     - `visa` - Visa
     """
+
+    pending_transaction_id: Optional[str]
+    """The identifier of the Pending Transaction associated with this Card Reversal."""
 
     reversal_amount: int
     """The amount of this reversal in the minor unit of the transaction's currency.
@@ -1804,6 +1867,27 @@ class ElementCardValidationNetworkDetails(BaseModel):
     """Fields specific to the `visa` network."""
 
 
+class ElementCardValidationNetworkIdentifiers(BaseModel):
+    retrieval_reference_number: Optional[str]
+    """A life-cycle identifier used across e.g., an authorization and a reversal.
+
+    Expected to be unique per acquirer within a window of time. For some card
+    networks the retrieval reference number includes the trace counter.
+    """
+
+    trace_number: Optional[str]
+    """A counter used to verify an individual authorization.
+
+    Expected to be unique per acquirer within a window of time.
+    """
+
+    transaction_id: Optional[str]
+    """
+    A globally unique transaction identifier provided by the card network, used
+    across multiple life-cycle requests.
+    """
+
+
 class ElementCardValidationVerificationCardVerificationCode(BaseModel):
     result: Literal["not_checked", "match", "no_match"]
     """The result of verifying the Card Verification Code.
@@ -1916,6 +2000,9 @@ class ElementCardValidation(BaseModel):
 
     network_details: ElementCardValidationNetworkDetails
     """Fields specific to the `network`."""
+
+    network_identifiers: ElementCardValidationNetworkIdentifiers
+    """Network-specific identifiers for a specific request or transaction."""
 
     physical_card_id: Optional[str]
     """
