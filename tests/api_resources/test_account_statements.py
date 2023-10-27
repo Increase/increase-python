@@ -48,7 +48,7 @@ class TestAccountStatements:
         account_statement = client.account_statements.list(
             account_id="string",
             cursor="string",
-            limit=0,
+            limit=1,
             statement_period_start={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -97,7 +97,7 @@ class TestAsyncAccountStatements:
         account_statement = await client.account_statements.list(
             account_id="string",
             cursor="string",
-            limit=0,
+            limit=1,
             statement_period_start={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),

@@ -105,7 +105,7 @@ class TestAccounts:
             cursor="string",
             entity_id="string",
             informational_entity_id="string",
-            limit=0,
+            limit=1,
             status="open",
         )
         assert_matches_type(SyncPage[Account], account, path=["response"])
@@ -224,7 +224,7 @@ class TestAsyncAccounts:
             cursor="string",
             entity_id="string",
             informational_entity_id="string",
-            limit=0,
+            limit=1,
             status="open",
         )
         assert_matches_type(AsyncPage[Account], account, path=["response"])

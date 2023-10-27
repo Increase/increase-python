@@ -100,7 +100,7 @@ class TestCardProfiles:
     def test_method_list_with_all_params(self, client: Increase) -> None:
         card_profile = client.card_profiles.list(
             cursor="string",
-            limit=0,
+            limit=1,
             physical_cards_status={"in": ["not_eligible", "rejected", "pending_creating"]},
             status={"in": ["pending", "rejected", "active"]},
         )
@@ -214,7 +214,7 @@ class TestAsyncCardProfiles:
     async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
         card_profile = await client.card_profiles.list(
             cursor="string",
-            limit=0,
+            limit=1,
             physical_cards_status={"in": ["not_eligible", "rejected", "pending_creating"]},
             status={"in": ["pending", "rejected", "active"]},
         )

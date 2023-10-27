@@ -13,7 +13,7 @@ class Export(BaseModel):
     id: str
     """The Export identifier."""
 
-    category: Literal["account_statement_ofx", "transaction_csv", "balance_csv"]
+    category: Literal["account_statement_ofx", "transaction_csv", "balance_csv", "bookkeeping_account_balance_csv"]
     """The category of the Export.
 
     We may add additional possible values for this enum over time; your application
@@ -24,6 +24,8 @@ class Export(BaseModel):
     - `transaction_csv` - Export a CSV of all transactions for a given time range.
     - `balance_csv` - Export a CSV of account balances for the dates in a given
       range.
+    - `bookkeeping_account_balance_csv` - Export a CSV of bookkeeping account
+      balances for the dates in a given range.
     """
 
     created_at: datetime

@@ -30,7 +30,7 @@ class TestBookkeepingEntries:
     def test_method_list_with_all_params(self, client: Increase) -> None:
         bookkeeping_entry = client.bookkeeping_entries.list(
             cursor="string",
-            limit=0,
+            limit=1,
         )
         assert_matches_type(SyncPage[BookkeepingEntry], bookkeeping_entry, path=["response"])
 
@@ -56,7 +56,7 @@ class TestAsyncBookkeepingEntries:
     async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
         bookkeeping_entry = await client.bookkeeping_entries.list(
             cursor="string",
-            limit=0,
+            limit=1,
         )
         assert_matches_type(AsyncPage[BookkeepingEntry], bookkeeping_entry, path=["response"])
 

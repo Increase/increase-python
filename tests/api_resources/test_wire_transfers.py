@@ -95,7 +95,7 @@ class TestWireTransfers:
             },
             cursor="string",
             external_account_id="string",
-            limit=0,
+            limit=1,
             unique_identifier="x",
         )
         assert_matches_type(SyncPage[WireTransfer], wire_transfer, path=["response"])
@@ -254,7 +254,7 @@ class TestAsyncWireTransfers:
             },
             cursor="string",
             external_account_id="string",
-            limit=0,
+            limit=1,
             unique_identifier="x",
         )
         assert_matches_type(AsyncPage[WireTransfer], wire_transfer, path=["response"])

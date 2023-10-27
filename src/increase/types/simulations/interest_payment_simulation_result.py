@@ -16,6 +16,7 @@ __all__ = [
     "TransactionSourceACHTransferReturn",
     "TransactionSourceCardDisputeAcceptance",
     "TransactionSourceCardRefund",
+    "TransactionSourceCardRefundNetworkIdentifiers",
     "TransactionSourceCardRefundPurchaseDetails",
     "TransactionSourceCardRefundPurchaseDetailsCarRental",
     "TransactionSourceCardRefundPurchaseDetailsLodging",
@@ -25,6 +26,7 @@ __all__ = [
     "TransactionSourceCardRefundPurchaseDetailsTravelTripLeg",
     "TransactionSourceCardRevenuePayment",
     "TransactionSourceCardSettlement",
+    "TransactionSourceCardSettlementNetworkIdentifiers",
     "TransactionSourceCardSettlementPurchaseDetails",
     "TransactionSourceCardSettlementPurchaseDetailsCarRental",
     "TransactionSourceCardSettlementPurchaseDetailsLodging",
@@ -372,6 +374,23 @@ class TransactionSourceCardDisputeAcceptance(BaseModel):
     """
     The identifier of the Transaction that was created to return the disputed funds
     to your account.
+    """
+
+
+class TransactionSourceCardRefundNetworkIdentifiers(BaseModel):
+    acquirer_business_id: str
+    """
+    A network assigned business ID that identifies the acquirer that processed this
+    transaction.
+    """
+
+    acquirer_reference_number: str
+    """A globally unique identifier for this settlement."""
+
+    transaction_id: Optional[str]
+    """
+    A globally unique transaction identifier provided by the card network, used
+    across multiple life-cycle requests.
     """
 
 
@@ -829,6 +848,9 @@ class TransactionSourceCardRefund(BaseModel):
     merchant_state: Optional[str]
     """The state the merchant resides in."""
 
+    network_identifiers: TransactionSourceCardRefundNetworkIdentifiers
+    """Network-specific identifiers for this refund."""
+
     purchase_details: Optional[TransactionSourceCardRefundPurchaseDetails]
     """
     Additional details about the card purchase, such as tax and industry-specific
@@ -873,6 +895,23 @@ class TransactionSourceCardRevenuePayment(BaseModel):
 
     transacted_on_account_id: Optional[str]
     """The account the card belonged to."""
+
+
+class TransactionSourceCardSettlementNetworkIdentifiers(BaseModel):
+    acquirer_business_id: str
+    """
+    A network assigned business ID that identifies the acquirer that processed this
+    transaction.
+    """
+
+    acquirer_reference_number: str
+    """A globally unique identifier for this settlement."""
+
+    transaction_id: Optional[str]
+    """
+    A globally unique transaction identifier provided by the card network, used
+    across multiple life-cycle requests.
+    """
 
 
 class TransactionSourceCardSettlementPurchaseDetailsCarRental(BaseModel):
@@ -1334,6 +1373,9 @@ class TransactionSourceCardSettlement(BaseModel):
 
     merchant_state: Optional[str]
     """The state the merchant resides in."""
+
+    network_identifiers: TransactionSourceCardSettlementNetworkIdentifiers
+    """Network-specific identifiers for this refund."""
 
     pending_transaction_id: Optional[str]
     """The identifier of the Pending Transaction associated with this Transaction."""

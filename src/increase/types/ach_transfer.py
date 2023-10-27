@@ -369,6 +369,14 @@ class Return(BaseModel):
 
 
 class Submission(BaseModel):
+    effective_date: date
+    """The ACH's effective date sent to the receiving bank.
+
+    If `effective_date` is configured in the ACH transfer, this will match the value
+    there. Otherwise, it will the date that the ACH transfer was processed, which is
+    usually the current or subsequent business day.
+    """
+
     expected_funds_settlement_at: datetime
     """When the funds transfer is expected to settle in the recipient's account.
 

@@ -46,7 +46,7 @@ class TestInboundWireDrawdownRequests:
     def test_method_list_with_all_params(self, client: Increase) -> None:
         inbound_wire_drawdown_request = client.inbound_wire_drawdown_requests.list(
             cursor="string",
-            limit=0,
+            limit=1,
         )
         assert_matches_type(SyncPage[InboundWireDrawdownRequest], inbound_wire_drawdown_request, path=["response"])
 
@@ -88,7 +88,7 @@ class TestAsyncInboundWireDrawdownRequests:
     async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
         inbound_wire_drawdown_request = await client.inbound_wire_drawdown_requests.list(
             cursor="string",
-            limit=0,
+            limit=1,
         )
         assert_matches_type(AsyncPage[InboundWireDrawdownRequest], inbound_wire_drawdown_request, path=["response"])
 

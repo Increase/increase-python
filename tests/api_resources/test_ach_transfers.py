@@ -99,7 +99,7 @@ class TestACHTransfers:
             },
             cursor="string",
             external_account_id="string",
-            limit=0,
+            limit=1,
             unique_identifier="x",
         )
         assert_matches_type(SyncPage[ACHTransfer], ach_transfer, path=["response"])
@@ -226,7 +226,7 @@ class TestAsyncACHTransfers:
             },
             cursor="string",
             external_account_id="string",
-            limit=0,
+            limit=1,
             unique_identifier="x",
         )
         assert_matches_type(AsyncPage[ACHTransfer], ach_transfer, path=["response"])

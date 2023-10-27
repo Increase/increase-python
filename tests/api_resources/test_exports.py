@@ -51,6 +51,15 @@ class TestExports:
                     "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
                 },
             },
+            bookkeeping_account_balance_csv={
+                "bookkeeping_account_id": "string",
+                "created_at": {
+                    "after": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "before": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
+                },
+            },
             transaction_csv={
                 "account_id": "account_in71c4amph0vgo2qllky",
                 "created_at": {
@@ -97,7 +106,7 @@ class TestExports:
     def test_method_list_with_all_params(self, client: Increase) -> None:
         export = client.exports.list(
             cursor="string",
-            limit=0,
+            limit=1,
         )
         assert_matches_type(SyncPage[Export], export, path=["response"])
 
@@ -136,6 +145,15 @@ class TestAsyncExports:
             },
             balance_csv={
                 "account_id": "string",
+                "created_at": {
+                    "after": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "before": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
+                },
+            },
+            bookkeeping_account_balance_csv={
+                "bookkeeping_account_id": "string",
                 "created_at": {
                     "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "before": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -189,7 +207,7 @@ class TestAsyncExports:
     async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
         export = await client.exports.list(
             cursor="string",
-            limit=0,
+            limit=1,
         )
         assert_matches_type(AsyncPage[Export], export, path=["response"])
 

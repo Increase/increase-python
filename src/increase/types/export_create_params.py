@@ -14,13 +14,17 @@ __all__ = [
     "AccountStatementOfxCreatedAt",
     "BalanceCsv",
     "BalanceCsvCreatedAt",
+    "BookkeepingAccountBalanceCsv",
+    "BookkeepingAccountBalanceCsvCreatedAt",
     "TransactionCsv",
     "TransactionCsvCreatedAt",
 ]
 
 
 class ExportCreateParams(TypedDict, total=False):
-    category: Required[Literal["account_statement_ofx", "transaction_csv", "balance_csv"]]
+    category: Required[
+        Literal["account_statement_ofx", "transaction_csv", "balance_csv", "bookkeeping_account_balance_csv"]
+    ]
     """The type of Export to create.
 
     - `account_statement_ofx` - Export an Open Financial Exchange (OFX) file of
@@ -28,6 +32,8 @@ class ExportCreateParams(TypedDict, total=False):
     - `transaction_csv` - Export a CSV of all transactions for a given time range.
     - `balance_csv` - Export a CSV of account balances for the dates in a given
       range.
+    - `bookkeeping_account_balance_csv` - Export a CSV of bookkeeping account
+      balances for the dates in a given range.
     """
 
     account_statement_ofx: AccountStatementOfx
@@ -40,6 +46,12 @@ class ExportCreateParams(TypedDict, total=False):
     """Options for the created export.
 
     Required if `category` is equal to `balance_csv`.
+    """
+
+    bookkeeping_account_balance_csv: BookkeepingAccountBalanceCsv
+    """Options for the created export.
+
+    Required if `category` is equal to `bookkeeping_account_balance_csv`.
     """
 
     transaction_csv: TransactionCsv
@@ -114,6 +126,40 @@ class BalanceCsv(TypedDict, total=False):
     """Filter exported Transactions to the specified Account."""
 
     created_at: BalanceCsvCreatedAt
+    """Filter results by time range on the `created_at` attribute."""
+
+
+class BookkeepingAccountBalanceCsvCreatedAt(TypedDict, total=False):
+    after: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
+    """
+    Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+    timestamp.
+    """
+
+    before: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
+    """
+    Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+    timestamp.
+    """
+
+    on_or_after: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
+    """
+    Return results on or after this
+    [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+    """
+
+    on_or_before: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
+    """
+    Return results on or before this
+    [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+    """
+
+
+class BookkeepingAccountBalanceCsv(TypedDict, total=False):
+    bookkeeping_account_id: str
+    """Filter exported Transactions to the specified BookkeepingAccount."""
+
+    created_at: BookkeepingAccountBalanceCsvCreatedAt
     """Filter results by time range on the `created_at` attribute."""
 
 
