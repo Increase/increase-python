@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
 from typing_extensions import Literal
 
 from ..types import (
@@ -13,13 +14,23 @@ from ..types import (
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
+from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
+
+if TYPE_CHECKING:
+    from .._client import Increase, AsyncIncrease
 
 __all__ = ["CheckTransfers", "AsyncCheckTransfers"]
 
 
 class CheckTransfers(SyncAPIResource):
+    with_raw_response: CheckTransfersWithRawResponse
+
+    def __init__(self, client: Increase) -> None:
+        super().__init__(client)
+        self.with_raw_response = CheckTransfersWithRawResponse(self)
+
     def create(
         self,
         *,
@@ -320,6 +331,12 @@ class CheckTransfers(SyncAPIResource):
 
 
 class AsyncCheckTransfers(AsyncAPIResource):
+    with_raw_response: AsyncCheckTransfersWithRawResponse
+
+    def __init__(self, client: AsyncIncrease) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncCheckTransfersWithRawResponse(self)
+
     async def create(
         self,
         *,
@@ -616,4 +633,48 @@ class AsyncCheckTransfers(AsyncAPIResource):
                 idempotency_key=idempotency_key,
             ),
             cast_to=CheckTransfer,
+        )
+
+
+class CheckTransfersWithRawResponse:
+    def __init__(self, check_transfers: CheckTransfers) -> None:
+        self.create = to_raw_response_wrapper(
+            check_transfers.create,
+        )
+        self.retrieve = to_raw_response_wrapper(
+            check_transfers.retrieve,
+        )
+        self.list = to_raw_response_wrapper(
+            check_transfers.list,
+        )
+        self.approve = to_raw_response_wrapper(
+            check_transfers.approve,
+        )
+        self.cancel = to_raw_response_wrapper(
+            check_transfers.cancel,
+        )
+        self.stop_payment = to_raw_response_wrapper(
+            check_transfers.stop_payment,
+        )
+
+
+class AsyncCheckTransfersWithRawResponse:
+    def __init__(self, check_transfers: AsyncCheckTransfers) -> None:
+        self.create = async_to_raw_response_wrapper(
+            check_transfers.create,
+        )
+        self.retrieve = async_to_raw_response_wrapper(
+            check_transfers.retrieve,
+        )
+        self.list = async_to_raw_response_wrapper(
+            check_transfers.list,
+        )
+        self.approve = async_to_raw_response_wrapper(
+            check_transfers.approve,
+        )
+        self.cancel = async_to_raw_response_wrapper(
+            check_transfers.cancel,
+        )
+        self.stop_payment = async_to_raw_response_wrapper(
+            check_transfers.stop_payment,
         )

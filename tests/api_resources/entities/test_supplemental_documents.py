@@ -9,6 +9,7 @@ import pytest
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
 from increase.types import Entity
+from increase._client import Increase, AsyncIncrease
 from increase.pagination import SyncPage, AsyncPage
 from increase.types.entities import SupplementalDocument
 
@@ -30,6 +31,16 @@ class TestSupplementalDocuments:
         assert_matches_type(Entity, supplemental_document, path=["response"])
 
     @parametrize
+    def test_raw_response_create(self, client: Increase) -> None:
+        response = client.entities.supplemental_documents.with_raw_response.create(
+            "string",
+            file_id="file_makxrc67oh9l6sg7w9yc",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        supplemental_document = response.parse()
+        assert_matches_type(Entity, supplemental_document, path=["response"])
+
+    @parametrize
     def test_method_list(self, client: Increase) -> None:
         supplemental_document = client.entities.supplemental_documents.list(
             entity_id="string",
@@ -43,6 +54,15 @@ class TestSupplementalDocuments:
             cursor="string",
             limit=0,
         )
+        assert_matches_type(SyncPage[SupplementalDocument], supplemental_document, path=["response"])
+
+    @parametrize
+    def test_raw_response_list(self, client: Increase) -> None:
+        response = client.entities.supplemental_documents.with_raw_response.list(
+            entity_id="string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        supplemental_document = response.parse()
         assert_matches_type(SyncPage[SupplementalDocument], supplemental_document, path=["response"])
 
 
@@ -60,6 +80,16 @@ class TestAsyncSupplementalDocuments:
         assert_matches_type(Entity, supplemental_document, path=["response"])
 
     @parametrize
+    async def test_raw_response_create(self, client: AsyncIncrease) -> None:
+        response = await client.entities.supplemental_documents.with_raw_response.create(
+            "string",
+            file_id="file_makxrc67oh9l6sg7w9yc",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        supplemental_document = response.parse()
+        assert_matches_type(Entity, supplemental_document, path=["response"])
+
+    @parametrize
     async def test_method_list(self, client: AsyncIncrease) -> None:
         supplemental_document = await client.entities.supplemental_documents.list(
             entity_id="string",
@@ -73,4 +103,13 @@ class TestAsyncSupplementalDocuments:
             cursor="string",
             limit=0,
         )
+        assert_matches_type(AsyncPage[SupplementalDocument], supplemental_document, path=["response"])
+
+    @parametrize
+    async def test_raw_response_list(self, client: AsyncIncrease) -> None:
+        response = await client.entities.supplemental_documents.with_raw_response.list(
+            entity_id="string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        supplemental_document = response.parse()
         assert_matches_type(AsyncPage[SupplementalDocument], supplemental_document, path=["response"])

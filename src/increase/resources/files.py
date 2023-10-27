@@ -2,20 +2,30 @@
 
 from __future__ import annotations
 
-from typing import Mapping, cast
+from typing import TYPE_CHECKING, Mapping, cast
 from typing_extensions import Literal
 
 from ..types import File, file_list_params, file_create_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven, FileTypes
 from .._utils import extract_files, maybe_transform, deepcopy_minimal
 from .._resource import SyncAPIResource, AsyncAPIResource
+from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
+
+if TYPE_CHECKING:
+    from .._client import Increase, AsyncIncrease
 
 __all__ = ["Files", "AsyncFiles"]
 
 
 class Files(SyncAPIResource):
+    with_raw_response: FilesWithRawResponse
+
+    def __init__(self, client: Increase) -> None:
+        super().__init__(client)
+        self.with_raw_response = FilesWithRawResponse(self)
+
     def create(
         self,
         *,
@@ -204,6 +214,12 @@ class Files(SyncAPIResource):
 
 
 class AsyncFiles(AsyncAPIResource):
+    with_raw_response: AsyncFilesWithRawResponse
+
+    def __init__(self, client: AsyncIncrease) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncFilesWithRawResponse(self)
+
     async def create(
         self,
         *,
@@ -388,4 +404,30 @@ class AsyncFiles(AsyncAPIResource):
                 ),
             ),
             model=File,
+        )
+
+
+class FilesWithRawResponse:
+    def __init__(self, files: Files) -> None:
+        self.create = to_raw_response_wrapper(
+            files.create,
+        )
+        self.retrieve = to_raw_response_wrapper(
+            files.retrieve,
+        )
+        self.list = to_raw_response_wrapper(
+            files.list,
+        )
+
+
+class AsyncFilesWithRawResponse:
+    def __init__(self, files: AsyncFiles) -> None:
+        self.create = async_to_raw_response_wrapper(
+            files.create,
+        )
+        self.retrieve = async_to_raw_response_wrapper(
+            files.retrieve,
+        )
+        self.list = async_to_raw_response_wrapper(
+            files.list,
         )

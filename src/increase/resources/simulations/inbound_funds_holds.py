@@ -2,15 +2,27 @@
 
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._resource import SyncAPIResource, AsyncAPIResource
+from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..._base_client import make_request_options
 from ...types.simulations import InboundFundsHoldReleaseResponse
+
+if TYPE_CHECKING:
+    from ..._client import Increase, AsyncIncrease
 
 __all__ = ["InboundFundsHolds", "AsyncInboundFundsHolds"]
 
 
 class InboundFundsHolds(SyncAPIResource):
+    with_raw_response: InboundFundsHoldsWithRawResponse
+
+    def __init__(self, client: Increase) -> None:
+        super().__init__(client)
+        self.with_raw_response = InboundFundsHoldsWithRawResponse(self)
+
     def release(
         self,
         inbound_funds_hold_id: str,
@@ -54,6 +66,12 @@ class InboundFundsHolds(SyncAPIResource):
 
 
 class AsyncInboundFundsHolds(AsyncAPIResource):
+    with_raw_response: AsyncInboundFundsHoldsWithRawResponse
+
+    def __init__(self, client: AsyncIncrease) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncInboundFundsHoldsWithRawResponse(self)
+
     async def release(
         self,
         inbound_funds_hold_id: str,
@@ -93,4 +111,18 @@ class AsyncInboundFundsHolds(AsyncAPIResource):
                 idempotency_key=idempotency_key,
             ),
             cast_to=InboundFundsHoldReleaseResponse,
+        )
+
+
+class InboundFundsHoldsWithRawResponse:
+    def __init__(self, inbound_funds_holds: InboundFundsHolds) -> None:
+        self.release = to_raw_response_wrapper(
+            inbound_funds_holds.release,
+        )
+
+
+class AsyncInboundFundsHoldsWithRawResponse:
+    def __init__(self, inbound_funds_holds: AsyncInboundFundsHolds) -> None:
+        self.release = async_to_raw_response_wrapper(
+            inbound_funds_holds.release,
         )

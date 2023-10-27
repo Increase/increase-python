@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Union
+from typing import TYPE_CHECKING, Union
 from datetime import date
 from typing_extensions import Literal
 
@@ -14,13 +14,23 @@ from ..types import (
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
+from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
+
+if TYPE_CHECKING:
+    from .._client import Increase, AsyncIncrease
 
 __all__ = ["ACHPrenotifications", "AsyncACHPrenotifications"]
 
 
 class ACHPrenotifications(SyncAPIResource):
+    with_raw_response: ACHPrenotificationsWithRawResponse
+
+    def __init__(self, client: Increase) -> None:
+        super().__init__(client)
+        self.with_raw_response = ACHPrenotificationsWithRawResponse(self)
+
     def create(
         self,
         *,
@@ -209,6 +219,12 @@ class ACHPrenotifications(SyncAPIResource):
 
 
 class AsyncACHPrenotifications(AsyncAPIResource):
+    with_raw_response: AsyncACHPrenotificationsWithRawResponse
+
+    def __init__(self, client: AsyncIncrease) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncACHPrenotificationsWithRawResponse(self)
+
     async def create(
         self,
         *,
@@ -393,4 +409,30 @@ class AsyncACHPrenotifications(AsyncAPIResource):
                 ),
             ),
             model=ACHPrenotification,
+        )
+
+
+class ACHPrenotificationsWithRawResponse:
+    def __init__(self, ach_prenotifications: ACHPrenotifications) -> None:
+        self.create = to_raw_response_wrapper(
+            ach_prenotifications.create,
+        )
+        self.retrieve = to_raw_response_wrapper(
+            ach_prenotifications.retrieve,
+        )
+        self.list = to_raw_response_wrapper(
+            ach_prenotifications.list,
+        )
+
+
+class AsyncACHPrenotificationsWithRawResponse:
+    def __init__(self, ach_prenotifications: AsyncACHPrenotifications) -> None:
+        self.create = async_to_raw_response_wrapper(
+            ach_prenotifications.create,
+        )
+        self.retrieve = async_to_raw_response_wrapper(
+            ach_prenotifications.retrieve,
+        )
+        self.list = async_to_raw_response_wrapper(
+            ach_prenotifications.list,
         )

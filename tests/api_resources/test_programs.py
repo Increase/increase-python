@@ -9,6 +9,7 @@ import pytest
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
 from increase.types import Program
+from increase._client import Increase, AsyncIncrease
 from increase.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -28,6 +29,15 @@ class TestPrograms:
         assert_matches_type(Program, program, path=["response"])
 
     @parametrize
+    def test_raw_response_retrieve(self, client: Increase) -> None:
+        response = client.programs.with_raw_response.retrieve(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        program = response.parse()
+        assert_matches_type(Program, program, path=["response"])
+
+    @parametrize
     def test_method_list(self, client: Increase) -> None:
         program = client.programs.list()
         assert_matches_type(SyncPage[Program], program, path=["response"])
@@ -38,6 +48,13 @@ class TestPrograms:
             cursor="string",
             limit=0,
         )
+        assert_matches_type(SyncPage[Program], program, path=["response"])
+
+    @parametrize
+    def test_raw_response_list(self, client: Increase) -> None:
+        response = client.programs.with_raw_response.list()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        program = response.parse()
         assert_matches_type(SyncPage[Program], program, path=["response"])
 
 
@@ -54,6 +71,15 @@ class TestAsyncPrograms:
         assert_matches_type(Program, program, path=["response"])
 
     @parametrize
+    async def test_raw_response_retrieve(self, client: AsyncIncrease) -> None:
+        response = await client.programs.with_raw_response.retrieve(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        program = response.parse()
+        assert_matches_type(Program, program, path=["response"])
+
+    @parametrize
     async def test_method_list(self, client: AsyncIncrease) -> None:
         program = await client.programs.list()
         assert_matches_type(AsyncPage[Program], program, path=["response"])
@@ -64,4 +90,11 @@ class TestAsyncPrograms:
             cursor="string",
             limit=0,
         )
+        assert_matches_type(AsyncPage[Program], program, path=["response"])
+
+    @parametrize
+    async def test_raw_response_list(self, client: AsyncIncrease) -> None:
+        response = await client.programs.with_raw_response.list()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        program = response.parse()
         assert_matches_type(AsyncPage[Program], program, path=["response"])

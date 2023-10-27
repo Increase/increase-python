@@ -2,17 +2,29 @@
 
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
 from ..types import PendingTransaction, pending_transaction_list_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
+from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
+
+if TYPE_CHECKING:
+    from .._client import Increase, AsyncIncrease
 
 __all__ = ["PendingTransactions", "AsyncPendingTransactions"]
 
 
 class PendingTransactions(SyncAPIResource):
+    with_raw_response: PendingTransactionsWithRawResponse
+
+    def __init__(self, client: Increase) -> None:
+        super().__init__(client)
+        self.with_raw_response = PendingTransactionsWithRawResponse(self)
+
     def retrieve(
         self,
         pending_transaction_id: str,
@@ -114,6 +126,12 @@ class PendingTransactions(SyncAPIResource):
 
 
 class AsyncPendingTransactions(AsyncAPIResource):
+    with_raw_response: AsyncPendingTransactionsWithRawResponse
+
+    def __init__(self, client: AsyncIncrease) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncPendingTransactionsWithRawResponse(self)
+
     async def retrieve(
         self,
         pending_transaction_id: str,
@@ -211,4 +229,24 @@ class AsyncPendingTransactions(AsyncAPIResource):
                 ),
             ),
             model=PendingTransaction,
+        )
+
+
+class PendingTransactionsWithRawResponse:
+    def __init__(self, pending_transactions: PendingTransactions) -> None:
+        self.retrieve = to_raw_response_wrapper(
+            pending_transactions.retrieve,
+        )
+        self.list = to_raw_response_wrapper(
+            pending_transactions.list,
+        )
+
+
+class AsyncPendingTransactionsWithRawResponse:
+    def __init__(self, pending_transactions: AsyncPendingTransactions) -> None:
+        self.retrieve = async_to_raw_response_wrapper(
+            pending_transactions.retrieve,
+        )
+        self.list = async_to_raw_response_wrapper(
+            pending_transactions.list,
         )

@@ -15,6 +15,7 @@ from respx import MockRouter
 from pydantic import ValidationError
 
 from increase import Increase, AsyncIncrease, APIResponseValidationError
+from increase._client import Increase, AsyncIncrease
 from increase._models import BaseModel, FinalRequestOptions
 from increase._exceptions import APIResponseValidationError
 from increase._base_client import (
@@ -28,7 +29,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 api_key = "My API Key"
 
 
-def _get_params(client: BaseClient[Any]) -> dict[str, str]:
+def _get_params(client: BaseClient[Any, Any]) -> dict[str, str]:
     request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
     url = httpx.URL(request.url)
     return dict(url.params)

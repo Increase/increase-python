@@ -2,10 +2,13 @@
 
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
 from ...types import Entity
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._resource import SyncAPIResource, AsyncAPIResource
+from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..._base_client import make_request_options
 from ...types.entities import (
     beneficial_owner_create_params,
@@ -13,10 +16,19 @@ from ...types.entities import (
     beneficial_owner_update_address_params,
 )
 
+if TYPE_CHECKING:
+    from ..._client import Increase, AsyncIncrease
+
 __all__ = ["BeneficialOwners", "AsyncBeneficialOwners"]
 
 
 class BeneficialOwners(SyncAPIResource):
+    with_raw_response: BeneficialOwnersWithRawResponse
+
+    def __init__(self, client: Increase) -> None:
+        super().__init__(client)
+        self.with_raw_response = BeneficialOwnersWithRawResponse(self)
+
     def create(
         self,
         *,
@@ -176,6 +188,12 @@ class BeneficialOwners(SyncAPIResource):
 
 
 class AsyncBeneficialOwners(AsyncAPIResource):
+    with_raw_response: AsyncBeneficialOwnersWithRawResponse
+
+    def __init__(self, client: AsyncIncrease) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncBeneficialOwnersWithRawResponse(self)
+
     async def create(
         self,
         *,
@@ -331,4 +349,30 @@ class AsyncBeneficialOwners(AsyncAPIResource):
                 idempotency_key=idempotency_key,
             ),
             cast_to=Entity,
+        )
+
+
+class BeneficialOwnersWithRawResponse:
+    def __init__(self, beneficial_owners: BeneficialOwners) -> None:
+        self.create = to_raw_response_wrapper(
+            beneficial_owners.create,
+        )
+        self.archive = to_raw_response_wrapper(
+            beneficial_owners.archive,
+        )
+        self.update_address = to_raw_response_wrapper(
+            beneficial_owners.update_address,
+        )
+
+
+class AsyncBeneficialOwnersWithRawResponse:
+    def __init__(self, beneficial_owners: AsyncBeneficialOwners) -> None:
+        self.create = async_to_raw_response_wrapper(
+            beneficial_owners.create,
+        )
+        self.archive = async_to_raw_response_wrapper(
+            beneficial_owners.archive,
+        )
+        self.update_address = async_to_raw_response_wrapper(
+            beneficial_owners.update_address,
         )

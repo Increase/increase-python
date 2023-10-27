@@ -10,6 +10,7 @@ from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
 from increase.types import AccountStatement
 from increase._utils import parse_datetime
+from increase._client import Increase, AsyncIncrease
 from increase.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -26,6 +27,15 @@ class TestAccountStatements:
         account_statement = client.account_statements.retrieve(
             "string",
         )
+        assert_matches_type(AccountStatement, account_statement, path=["response"])
+
+    @parametrize
+    def test_raw_response_retrieve(self, client: Increase) -> None:
+        response = client.account_statements.with_raw_response.retrieve(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        account_statement = response.parse()
         assert_matches_type(AccountStatement, account_statement, path=["response"])
 
     @parametrize
@@ -48,6 +58,13 @@ class TestAccountStatements:
         )
         assert_matches_type(SyncPage[AccountStatement], account_statement, path=["response"])
 
+    @parametrize
+    def test_raw_response_list(self, client: Increase) -> None:
+        response = client.account_statements.with_raw_response.list()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        account_statement = response.parse()
+        assert_matches_type(SyncPage[AccountStatement], account_statement, path=["response"])
+
 
 class TestAsyncAccountStatements:
     strict_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
@@ -59,6 +76,15 @@ class TestAsyncAccountStatements:
         account_statement = await client.account_statements.retrieve(
             "string",
         )
+        assert_matches_type(AccountStatement, account_statement, path=["response"])
+
+    @parametrize
+    async def test_raw_response_retrieve(self, client: AsyncIncrease) -> None:
+        response = await client.account_statements.with_raw_response.retrieve(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        account_statement = response.parse()
         assert_matches_type(AccountStatement, account_statement, path=["response"])
 
     @parametrize
@@ -79,4 +105,11 @@ class TestAsyncAccountStatements:
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
         )
+        assert_matches_type(AsyncPage[AccountStatement], account_statement, path=["response"])
+
+    @parametrize
+    async def test_raw_response_list(self, client: AsyncIncrease) -> None:
+        response = await client.account_statements.with_raw_response.list()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        account_statement = response.parse()
         assert_matches_type(AsyncPage[AccountStatement], account_statement, path=["response"])

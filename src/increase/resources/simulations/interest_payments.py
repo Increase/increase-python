@@ -2,22 +2,32 @@
 
 from __future__ import annotations
 
-from typing import Union
+from typing import TYPE_CHECKING, Union
 from datetime import datetime
 
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._resource import SyncAPIResource, AsyncAPIResource
+from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..._base_client import make_request_options
 from ...types.simulations import (
     InterestPaymentSimulationResult,
     interest_payment_create_params,
 )
 
+if TYPE_CHECKING:
+    from ..._client import Increase, AsyncIncrease
+
 __all__ = ["InterestPayments", "AsyncInterestPayments"]
 
 
 class InterestPayments(SyncAPIResource):
+    with_raw_response: InterestPaymentsWithRawResponse
+
+    def __init__(self, client: Increase) -> None:
+        super().__init__(client)
+        self.with_raw_response = InterestPaymentsWithRawResponse(self)
+
     def create(
         self,
         *,
@@ -80,6 +90,12 @@ class InterestPayments(SyncAPIResource):
 
 
 class AsyncInterestPayments(AsyncAPIResource):
+    with_raw_response: AsyncInterestPaymentsWithRawResponse
+
+    def __init__(self, client: AsyncIncrease) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncInterestPaymentsWithRawResponse(self)
+
     async def create(
         self,
         *,
@@ -138,4 +154,18 @@ class AsyncInterestPayments(AsyncAPIResource):
                 idempotency_key=idempotency_key,
             ),
             cast_to=InterestPaymentSimulationResult,
+        )
+
+
+class InterestPaymentsWithRawResponse:
+    def __init__(self, interest_payments: InterestPayments) -> None:
+        self.create = to_raw_response_wrapper(
+            interest_payments.create,
+        )
+
+
+class AsyncInterestPaymentsWithRawResponse:
+    def __init__(self, interest_payments: AsyncInterestPayments) -> None:
+        self.create = async_to_raw_response_wrapper(
+            interest_payments.create,
         )

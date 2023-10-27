@@ -2,17 +2,29 @@
 
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
 from ..types import DeclinedTransaction, declined_transaction_list_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
+from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
+
+if TYPE_CHECKING:
+    from .._client import Increase, AsyncIncrease
 
 __all__ = ["DeclinedTransactions", "AsyncDeclinedTransactions"]
 
 
 class DeclinedTransactions(SyncAPIResource):
+    with_raw_response: DeclinedTransactionsWithRawResponse
+
+    def __init__(self, client: Increase) -> None:
+        super().__init__(client)
+        self.with_raw_response = DeclinedTransactionsWithRawResponse(self)
+
     def retrieve(
         self,
         declined_transaction_id: str,
@@ -108,6 +120,12 @@ class DeclinedTransactions(SyncAPIResource):
 
 
 class AsyncDeclinedTransactions(AsyncAPIResource):
+    with_raw_response: AsyncDeclinedTransactionsWithRawResponse
+
+    def __init__(self, client: AsyncIncrease) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncDeclinedTransactionsWithRawResponse(self)
+
     async def retrieve(
         self,
         declined_transaction_id: str,
@@ -199,4 +217,24 @@ class AsyncDeclinedTransactions(AsyncAPIResource):
                 ),
             ),
             model=DeclinedTransaction,
+        )
+
+
+class DeclinedTransactionsWithRawResponse:
+    def __init__(self, declined_transactions: DeclinedTransactions) -> None:
+        self.retrieve = to_raw_response_wrapper(
+            declined_transactions.retrieve,
+        )
+        self.list = to_raw_response_wrapper(
+            declined_transactions.list,
+        )
+
+
+class AsyncDeclinedTransactionsWithRawResponse:
+    def __init__(self, declined_transactions: AsyncDeclinedTransactions) -> None:
+        self.retrieve = async_to_raw_response_wrapper(
+            declined_transactions.retrieve,
+        )
+        self.list = async_to_raw_response_wrapper(
+            declined_transactions.list,
         )

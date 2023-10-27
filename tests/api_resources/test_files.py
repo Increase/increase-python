@@ -10,6 +10,7 @@ from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
 from increase.types import File
 from increase._utils import parse_datetime
+from increase._client import Increase, AsyncIncrease
 from increase.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -39,10 +40,29 @@ class TestFiles:
         assert_matches_type(File, file, path=["response"])
 
     @parametrize
+    def test_raw_response_create(self, client: Increase) -> None:
+        response = client.files.with_raw_response.create(
+            file=b"raw file contents",
+            purpose="check_image_front",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        file = response.parse()
+        assert_matches_type(File, file, path=["response"])
+
+    @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         file = client.files.retrieve(
             "string",
         )
+        assert_matches_type(File, file, path=["response"])
+
+    @parametrize
+    def test_raw_response_retrieve(self, client: Increase) -> None:
+        response = client.files.with_raw_response.retrieve(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        file = response.parse()
         assert_matches_type(File, file, path=["response"])
 
     @parametrize
@@ -63,6 +83,13 @@ class TestFiles:
             limit=0,
             purpose={"in": ["check_image_front", "check_image_back", "mailed_check_image"]},
         )
+        assert_matches_type(SyncPage[File], file, path=["response"])
+
+    @parametrize
+    def test_raw_response_list(self, client: Increase) -> None:
+        response = client.files.with_raw_response.list()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        file = response.parse()
         assert_matches_type(SyncPage[File], file, path=["response"])
 
 
@@ -89,10 +116,29 @@ class TestAsyncFiles:
         assert_matches_type(File, file, path=["response"])
 
     @parametrize
+    async def test_raw_response_create(self, client: AsyncIncrease) -> None:
+        response = await client.files.with_raw_response.create(
+            file=b"raw file contents",
+            purpose="check_image_front",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        file = response.parse()
+        assert_matches_type(File, file, path=["response"])
+
+    @parametrize
     async def test_method_retrieve(self, client: AsyncIncrease) -> None:
         file = await client.files.retrieve(
             "string",
         )
+        assert_matches_type(File, file, path=["response"])
+
+    @parametrize
+    async def test_raw_response_retrieve(self, client: AsyncIncrease) -> None:
+        response = await client.files.with_raw_response.retrieve(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        file = response.parse()
         assert_matches_type(File, file, path=["response"])
 
     @parametrize
@@ -113,4 +159,11 @@ class TestAsyncFiles:
             limit=0,
             purpose={"in": ["check_image_front", "check_image_back", "mailed_check_image"]},
         )
+        assert_matches_type(AsyncPage[File], file, path=["response"])
+
+    @parametrize
+    async def test_raw_response_list(self, client: AsyncIncrease) -> None:
+        response = await client.files.with_raw_response.list()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        file = response.parse()
         assert_matches_type(AsyncPage[File], file, path=["response"])

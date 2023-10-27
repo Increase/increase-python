@@ -2,17 +2,29 @@
 
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
 from ...types import InboundWireDrawdownRequest
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._resource import SyncAPIResource, AsyncAPIResource
+from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..._base_client import make_request_options
 from ...types.simulations import inbound_wire_drawdown_request_create_params
+
+if TYPE_CHECKING:
+    from ..._client import Increase, AsyncIncrease
 
 __all__ = ["InboundWireDrawdownRequests", "AsyncInboundWireDrawdownRequests"]
 
 
 class InboundWireDrawdownRequests(SyncAPIResource):
+    with_raw_response: InboundWireDrawdownRequestsWithRawResponse
+
+    def __init__(self, client: Increase) -> None:
+        super().__init__(client)
+        self.with_raw_response = InboundWireDrawdownRequestsWithRawResponse(self)
+
     def create(
         self,
         *,
@@ -144,6 +156,12 @@ class InboundWireDrawdownRequests(SyncAPIResource):
 
 
 class AsyncInboundWireDrawdownRequests(AsyncAPIResource):
+    with_raw_response: AsyncInboundWireDrawdownRequestsWithRawResponse
+
+    def __init__(self, client: AsyncIncrease) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncInboundWireDrawdownRequestsWithRawResponse(self)
+
     async def create(
         self,
         *,
@@ -271,4 +289,18 @@ class AsyncInboundWireDrawdownRequests(AsyncAPIResource):
                 idempotency_key=idempotency_key,
             ),
             cast_to=InboundWireDrawdownRequest,
+        )
+
+
+class InboundWireDrawdownRequestsWithRawResponse:
+    def __init__(self, inbound_wire_drawdown_requests: InboundWireDrawdownRequests) -> None:
+        self.create = to_raw_response_wrapper(
+            inbound_wire_drawdown_requests.create,
+        )
+
+
+class AsyncInboundWireDrawdownRequestsWithRawResponse:
+    def __init__(self, inbound_wire_drawdown_requests: AsyncInboundWireDrawdownRequests) -> None:
+        self.create = async_to_raw_response_wrapper(
+            inbound_wire_drawdown_requests.create,
         )

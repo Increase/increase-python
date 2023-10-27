@@ -9,6 +9,7 @@ import pytest
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
 from increase.types import Transaction
+from increase._client import Increase, AsyncIncrease
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 api_key = "My API Key"
@@ -26,6 +27,15 @@ class TestCardRefunds:
         )
         assert_matches_type(Transaction, card_refund, path=["response"])
 
+    @parametrize
+    def test_raw_response_create(self, client: Increase) -> None:
+        response = client.simulations.card_refunds.with_raw_response.create(
+            transaction_id="transaction_uyrp7fld2ium70oa7oi",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        card_refund = response.parse()
+        assert_matches_type(Transaction, card_refund, path=["response"])
+
 
 class TestAsyncCardRefunds:
     strict_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
@@ -37,4 +47,13 @@ class TestAsyncCardRefunds:
         card_refund = await client.simulations.card_refunds.create(
             transaction_id="transaction_uyrp7fld2ium70oa7oi",
         )
+        assert_matches_type(Transaction, card_refund, path=["response"])
+
+    @parametrize
+    async def test_raw_response_create(self, client: AsyncIncrease) -> None:
+        response = await client.simulations.card_refunds.with_raw_response.create(
+            transaction_id="transaction_uyrp7fld2ium70oa7oi",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        card_refund = response.parse()
         assert_matches_type(Transaction, card_refund, path=["response"])

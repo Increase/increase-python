@@ -10,6 +10,7 @@ from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
 from increase.types import AccountTransfer
 from increase._utils import parse_datetime
+from increase._client import Increase, AsyncIncrease
 from increase.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -44,10 +45,31 @@ class TestAccountTransfers:
         assert_matches_type(AccountTransfer, account_transfer, path=["response"])
 
     @parametrize
+    def test_raw_response_create(self, client: Increase) -> None:
+        response = client.account_transfers.with_raw_response.create(
+            account_id="account_in71c4amph0vgo2qllky",
+            amount=100,
+            description="Creating liquidity",
+            destination_account_id="account_uf16sut2ct5bevmq3eh",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        account_transfer = response.parse()
+        assert_matches_type(AccountTransfer, account_transfer, path=["response"])
+
+    @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         account_transfer = client.account_transfers.retrieve(
             "string",
         )
+        assert_matches_type(AccountTransfer, account_transfer, path=["response"])
+
+    @parametrize
+    def test_raw_response_retrieve(self, client: Increase) -> None:
+        response = client.account_transfers.with_raw_response.retrieve(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        account_transfer = response.parse()
         assert_matches_type(AccountTransfer, account_transfer, path=["response"])
 
     @parametrize
@@ -72,6 +94,13 @@ class TestAccountTransfers:
         assert_matches_type(SyncPage[AccountTransfer], account_transfer, path=["response"])
 
     @parametrize
+    def test_raw_response_list(self, client: Increase) -> None:
+        response = client.account_transfers.with_raw_response.list()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        account_transfer = response.parse()
+        assert_matches_type(SyncPage[AccountTransfer], account_transfer, path=["response"])
+
+    @parametrize
     def test_method_approve(self, client: Increase) -> None:
         account_transfer = client.account_transfers.approve(
             "string",
@@ -79,10 +108,28 @@ class TestAccountTransfers:
         assert_matches_type(AccountTransfer, account_transfer, path=["response"])
 
     @parametrize
+    def test_raw_response_approve(self, client: Increase) -> None:
+        response = client.account_transfers.with_raw_response.approve(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        account_transfer = response.parse()
+        assert_matches_type(AccountTransfer, account_transfer, path=["response"])
+
+    @parametrize
     def test_method_cancel(self, client: Increase) -> None:
         account_transfer = client.account_transfers.cancel(
             "string",
         )
+        assert_matches_type(AccountTransfer, account_transfer, path=["response"])
+
+    @parametrize
+    def test_raw_response_cancel(self, client: Increase) -> None:
+        response = client.account_transfers.with_raw_response.cancel(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        account_transfer = response.parse()
         assert_matches_type(AccountTransfer, account_transfer, path=["response"])
 
 
@@ -114,10 +161,31 @@ class TestAsyncAccountTransfers:
         assert_matches_type(AccountTransfer, account_transfer, path=["response"])
 
     @parametrize
+    async def test_raw_response_create(self, client: AsyncIncrease) -> None:
+        response = await client.account_transfers.with_raw_response.create(
+            account_id="account_in71c4amph0vgo2qllky",
+            amount=100,
+            description="Creating liquidity",
+            destination_account_id="account_uf16sut2ct5bevmq3eh",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        account_transfer = response.parse()
+        assert_matches_type(AccountTransfer, account_transfer, path=["response"])
+
+    @parametrize
     async def test_method_retrieve(self, client: AsyncIncrease) -> None:
         account_transfer = await client.account_transfers.retrieve(
             "string",
         )
+        assert_matches_type(AccountTransfer, account_transfer, path=["response"])
+
+    @parametrize
+    async def test_raw_response_retrieve(self, client: AsyncIncrease) -> None:
+        response = await client.account_transfers.with_raw_response.retrieve(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        account_transfer = response.parse()
         assert_matches_type(AccountTransfer, account_transfer, path=["response"])
 
     @parametrize
@@ -142,6 +210,13 @@ class TestAsyncAccountTransfers:
         assert_matches_type(AsyncPage[AccountTransfer], account_transfer, path=["response"])
 
     @parametrize
+    async def test_raw_response_list(self, client: AsyncIncrease) -> None:
+        response = await client.account_transfers.with_raw_response.list()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        account_transfer = response.parse()
+        assert_matches_type(AsyncPage[AccountTransfer], account_transfer, path=["response"])
+
+    @parametrize
     async def test_method_approve(self, client: AsyncIncrease) -> None:
         account_transfer = await client.account_transfers.approve(
             "string",
@@ -149,8 +224,26 @@ class TestAsyncAccountTransfers:
         assert_matches_type(AccountTransfer, account_transfer, path=["response"])
 
     @parametrize
+    async def test_raw_response_approve(self, client: AsyncIncrease) -> None:
+        response = await client.account_transfers.with_raw_response.approve(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        account_transfer = response.parse()
+        assert_matches_type(AccountTransfer, account_transfer, path=["response"])
+
+    @parametrize
     async def test_method_cancel(self, client: AsyncIncrease) -> None:
         account_transfer = await client.account_transfers.cancel(
             "string",
         )
+        assert_matches_type(AccountTransfer, account_transfer, path=["response"])
+
+    @parametrize
+    async def test_raw_response_cancel(self, client: AsyncIncrease) -> None:
+        response = await client.account_transfers.with_raw_response.cancel(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        account_transfer = response.parse()
         assert_matches_type(AccountTransfer, account_transfer, path=["response"])

@@ -9,6 +9,7 @@ import pytest
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
 from increase.types import AccountStatement
+from increase._client import Increase, AsyncIncrease
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 api_key = "My API Key"
@@ -26,6 +27,15 @@ class TestAccountStatements:
         )
         assert_matches_type(AccountStatement, account_statement, path=["response"])
 
+    @parametrize
+    def test_raw_response_create(self, client: Increase) -> None:
+        response = client.simulations.account_statements.with_raw_response.create(
+            account_id="account_in71c4amph0vgo2qllky",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        account_statement = response.parse()
+        assert_matches_type(AccountStatement, account_statement, path=["response"])
+
 
 class TestAsyncAccountStatements:
     strict_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
@@ -37,4 +47,13 @@ class TestAsyncAccountStatements:
         account_statement = await client.simulations.account_statements.create(
             account_id="account_in71c4amph0vgo2qllky",
         )
+        assert_matches_type(AccountStatement, account_statement, path=["response"])
+
+    @parametrize
+    async def test_raw_response_create(self, client: AsyncIncrease) -> None:
+        response = await client.simulations.account_statements.with_raw_response.create(
+            account_id="account_in71c4amph0vgo2qllky",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        account_statement = response.parse()
         assert_matches_type(AccountStatement, account_statement, path=["response"])

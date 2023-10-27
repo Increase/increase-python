@@ -2,15 +2,27 @@
 
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
 from ...types import AccountTransfer
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._resource import SyncAPIResource, AsyncAPIResource
+from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..._base_client import make_request_options
+
+if TYPE_CHECKING:
+    from ..._client import Increase, AsyncIncrease
 
 __all__ = ["AccountTransfers", "AsyncAccountTransfers"]
 
 
 class AccountTransfers(SyncAPIResource):
+    with_raw_response: AccountTransfersWithRawResponse
+
+    def __init__(self, client: Increase) -> None:
+        super().__init__(client)
+        self.with_raw_response = AccountTransfersWithRawResponse(self)
+
     def complete(
         self,
         account_transfer_id: str,
@@ -56,6 +68,12 @@ class AccountTransfers(SyncAPIResource):
 
 
 class AsyncAccountTransfers(AsyncAPIResource):
+    with_raw_response: AsyncAccountTransfersWithRawResponse
+
+    def __init__(self, client: AsyncIncrease) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncAccountTransfersWithRawResponse(self)
+
     async def complete(
         self,
         account_transfer_id: str,
@@ -97,4 +115,18 @@ class AsyncAccountTransfers(AsyncAPIResource):
                 idempotency_key=idempotency_key,
             ),
             cast_to=AccountTransfer,
+        )
+
+
+class AccountTransfersWithRawResponse:
+    def __init__(self, account_transfers: AccountTransfers) -> None:
+        self.complete = to_raw_response_wrapper(
+            account_transfers.complete,
+        )
+
+
+class AsyncAccountTransfersWithRawResponse:
+    def __init__(self, account_transfers: AsyncAccountTransfers) -> None:
+        self.complete = async_to_raw_response_wrapper(
+            account_transfers.complete,
         )

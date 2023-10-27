@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
 from typing_extensions import Literal
 
 from ..types import (
@@ -14,13 +15,23 @@ from ..types import (
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
+from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
+
+if TYPE_CHECKING:
+    from .._client import Increase, AsyncIncrease
 
 __all__ = ["Cards", "AsyncCards"]
 
 
 class Cards(SyncAPIResource):
+    with_raw_response: CardsWithRawResponse
+
+    def __init__(self, client: Increase) -> None:
+        super().__init__(client)
+        self.with_raw_response = CardsWithRawResponse(self)
+
     def create(
         self,
         *,
@@ -282,6 +293,12 @@ class Cards(SyncAPIResource):
 
 
 class AsyncCards(AsyncAPIResource):
+    with_raw_response: AsyncCardsWithRawResponse
+
+    def __init__(self, client: AsyncIncrease) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncCardsWithRawResponse(self)
+
     async def create(
         self,
         *,
@@ -539,4 +556,42 @@ class AsyncCards(AsyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=CardDetails,
+        )
+
+
+class CardsWithRawResponse:
+    def __init__(self, cards: Cards) -> None:
+        self.create = to_raw_response_wrapper(
+            cards.create,
+        )
+        self.retrieve = to_raw_response_wrapper(
+            cards.retrieve,
+        )
+        self.update = to_raw_response_wrapper(
+            cards.update,
+        )
+        self.list = to_raw_response_wrapper(
+            cards.list,
+        )
+        self.retrieve_sensitive_details = to_raw_response_wrapper(
+            cards.retrieve_sensitive_details,
+        )
+
+
+class AsyncCardsWithRawResponse:
+    def __init__(self, cards: AsyncCards) -> None:
+        self.create = async_to_raw_response_wrapper(
+            cards.create,
+        )
+        self.retrieve = async_to_raw_response_wrapper(
+            cards.retrieve,
+        )
+        self.update = async_to_raw_response_wrapper(
+            cards.update,
+        )
+        self.list = async_to_raw_response_wrapper(
+            cards.list,
+        )
+        self.retrieve_sensitive_details = async_to_raw_response_wrapper(
+            cards.retrieve_sensitive_details,
         )

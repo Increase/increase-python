@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Union
+from typing import TYPE_CHECKING, Union
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -10,6 +10,7 @@ from ...types import ACHTransfer
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._resource import SyncAPIResource, AsyncAPIResource
+from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..._base_client import make_request_options
 from ...types.simulations import (
     ACHTransferSimulation,
@@ -17,10 +18,19 @@ from ...types.simulations import (
     ach_transfer_create_inbound_params,
 )
 
+if TYPE_CHECKING:
+    from ..._client import Increase, AsyncIncrease
+
 __all__ = ["ACHTransfers", "AsyncACHTransfers"]
 
 
 class ACHTransfers(SyncAPIResource):
+    with_raw_response: ACHTransfersWithRawResponse
+
+    def __init__(self, client: Increase) -> None:
+        super().__init__(client)
+        self.with_raw_response = ACHTransfersWithRawResponse(self)
+
     def create_inbound(
         self,
         *,
@@ -422,6 +432,12 @@ class ACHTransfers(SyncAPIResource):
 
 
 class AsyncACHTransfers(AsyncAPIResource):
+    with_raw_response: AsyncACHTransfersWithRawResponse
+
+    def __init__(self, client: AsyncIncrease) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncACHTransfersWithRawResponse(self)
+
     async def create_inbound(
         self,
         *,
@@ -819,4 +835,30 @@ class AsyncACHTransfers(AsyncAPIResource):
                 idempotency_key=idempotency_key,
             ),
             cast_to=ACHTransfer,
+        )
+
+
+class ACHTransfersWithRawResponse:
+    def __init__(self, ach_transfers: ACHTransfers) -> None:
+        self.create_inbound = to_raw_response_wrapper(
+            ach_transfers.create_inbound,
+        )
+        self.return_ = to_raw_response_wrapper(
+            ach_transfers.return_,
+        )
+        self.submit = to_raw_response_wrapper(
+            ach_transfers.submit,
+        )
+
+
+class AsyncACHTransfersWithRawResponse:
+    def __init__(self, ach_transfers: AsyncACHTransfers) -> None:
+        self.create_inbound = async_to_raw_response_wrapper(
+            ach_transfers.create_inbound,
+        )
+        self.return_ = async_to_raw_response_wrapper(
+            ach_transfers.return_,
+        )
+        self.submit = async_to_raw_response_wrapper(
+            ach_transfers.submit,
         )

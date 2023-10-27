@@ -2,16 +2,28 @@
 
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
 from ..types import RealTimeDecision, real_time_decision_action_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
+from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from .._base_client import make_request_options
+
+if TYPE_CHECKING:
+    from .._client import Increase, AsyncIncrease
 
 __all__ = ["RealTimeDecisions", "AsyncRealTimeDecisions"]
 
 
 class RealTimeDecisions(SyncAPIResource):
+    with_raw_response: RealTimeDecisionsWithRawResponse
+
+    def __init__(self, client: Increase) -> None:
+        super().__init__(client)
+        self.with_raw_response = RealTimeDecisionsWithRawResponse(self)
+
     def retrieve(
         self,
         real_time_decision_id: str,
@@ -108,6 +120,12 @@ class RealTimeDecisions(SyncAPIResource):
 
 
 class AsyncRealTimeDecisions(AsyncAPIResource):
+    with_raw_response: AsyncRealTimeDecisionsWithRawResponse
+
+    def __init__(self, client: AsyncIncrease) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncRealTimeDecisionsWithRawResponse(self)
+
     async def retrieve(
         self,
         real_time_decision_id: str,
@@ -200,4 +218,24 @@ class AsyncRealTimeDecisions(AsyncAPIResource):
                 idempotency_key=idempotency_key,
             ),
             cast_to=RealTimeDecision,
+        )
+
+
+class RealTimeDecisionsWithRawResponse:
+    def __init__(self, real_time_decisions: RealTimeDecisions) -> None:
+        self.retrieve = to_raw_response_wrapper(
+            real_time_decisions.retrieve,
+        )
+        self.action = to_raw_response_wrapper(
+            real_time_decisions.action,
+        )
+
+
+class AsyncRealTimeDecisionsWithRawResponse:
+    def __init__(self, real_time_decisions: AsyncRealTimeDecisions) -> None:
+        self.retrieve = async_to_raw_response_wrapper(
+            real_time_decisions.retrieve,
+        )
+        self.action = async_to_raw_response_wrapper(
+            real_time_decisions.action,
         )

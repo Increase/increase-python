@@ -10,6 +10,7 @@ from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
 from increase.types import Export
 from increase._utils import parse_datetime
+from increase._client import Increase, AsyncIncrease
 from increase.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -63,10 +64,28 @@ class TestExports:
         assert_matches_type(Export, export, path=["response"])
 
     @parametrize
+    def test_raw_response_create(self, client: Increase) -> None:
+        response = client.exports.with_raw_response.create(
+            category="transaction_csv",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        export = response.parse()
+        assert_matches_type(Export, export, path=["response"])
+
+    @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         export = client.exports.retrieve(
             "string",
         )
+        assert_matches_type(Export, export, path=["response"])
+
+    @parametrize
+    def test_raw_response_retrieve(self, client: Increase) -> None:
+        response = client.exports.with_raw_response.retrieve(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        export = response.parse()
         assert_matches_type(Export, export, path=["response"])
 
     @parametrize
@@ -80,6 +99,13 @@ class TestExports:
             cursor="string",
             limit=0,
         )
+        assert_matches_type(SyncPage[Export], export, path=["response"])
+
+    @parametrize
+    def test_raw_response_list(self, client: Increase) -> None:
+        response = client.exports.with_raw_response.list()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        export = response.parse()
         assert_matches_type(SyncPage[Export], export, path=["response"])
 
 
@@ -130,10 +156,28 @@ class TestAsyncExports:
         assert_matches_type(Export, export, path=["response"])
 
     @parametrize
+    async def test_raw_response_create(self, client: AsyncIncrease) -> None:
+        response = await client.exports.with_raw_response.create(
+            category="transaction_csv",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        export = response.parse()
+        assert_matches_type(Export, export, path=["response"])
+
+    @parametrize
     async def test_method_retrieve(self, client: AsyncIncrease) -> None:
         export = await client.exports.retrieve(
             "string",
         )
+        assert_matches_type(Export, export, path=["response"])
+
+    @parametrize
+    async def test_raw_response_retrieve(self, client: AsyncIncrease) -> None:
+        response = await client.exports.with_raw_response.retrieve(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        export = response.parse()
         assert_matches_type(Export, export, path=["response"])
 
     @parametrize
@@ -147,4 +191,11 @@ class TestAsyncExports:
             cursor="string",
             limit=0,
         )
+        assert_matches_type(AsyncPage[Export], export, path=["response"])
+
+    @parametrize
+    async def test_raw_response_list(self, client: AsyncIncrease) -> None:
+        response = await client.exports.with_raw_response.list()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        export = response.parse()
         assert_matches_type(AsyncPage[Export], export, path=["response"])

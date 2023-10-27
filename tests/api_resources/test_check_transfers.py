@@ -10,6 +10,7 @@ from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
 from increase.types import CheckTransfer
 from increase._utils import parse_datetime
+from increase._client import Increase, AsyncIncrease
 from increase.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -63,10 +64,29 @@ class TestCheckTransfers:
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
     @parametrize
+    def test_raw_response_create(self, client: Increase) -> None:
+        response = client.check_transfers.with_raw_response.create(
+            account_id="account_in71c4amph0vgo2qllky",
+            amount=1000,
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        check_transfer = response.parse()
+        assert_matches_type(CheckTransfer, check_transfer, path=["response"])
+
+    @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         check_transfer = client.check_transfers.retrieve(
             "string",
         )
+        assert_matches_type(CheckTransfer, check_transfer, path=["response"])
+
+    @parametrize
+    def test_raw_response_retrieve(self, client: Increase) -> None:
+        response = client.check_transfers.with_raw_response.retrieve(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        check_transfer = response.parse()
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
     @parametrize
@@ -91,6 +111,13 @@ class TestCheckTransfers:
         assert_matches_type(SyncPage[CheckTransfer], check_transfer, path=["response"])
 
     @parametrize
+    def test_raw_response_list(self, client: Increase) -> None:
+        response = client.check_transfers.with_raw_response.list()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        check_transfer = response.parse()
+        assert_matches_type(SyncPage[CheckTransfer], check_transfer, path=["response"])
+
+    @parametrize
     def test_method_approve(self, client: Increase) -> None:
         check_transfer = client.check_transfers.approve(
             "string",
@@ -98,10 +125,28 @@ class TestCheckTransfers:
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
     @parametrize
+    def test_raw_response_approve(self, client: Increase) -> None:
+        response = client.check_transfers.with_raw_response.approve(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        check_transfer = response.parse()
+        assert_matches_type(CheckTransfer, check_transfer, path=["response"])
+
+    @parametrize
     def test_method_cancel(self, client: Increase) -> None:
         check_transfer = client.check_transfers.cancel(
             "string",
         )
+        assert_matches_type(CheckTransfer, check_transfer, path=["response"])
+
+    @parametrize
+    def test_raw_response_cancel(self, client: Increase) -> None:
+        response = client.check_transfers.with_raw_response.cancel(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        check_transfer = response.parse()
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
     @pytest.mark.skip(reason="Prism doesn't accept no request body being sent but returns 415 if it is sent")
@@ -119,6 +164,16 @@ class TestCheckTransfers:
             "string",
             reason="mail_delivery_failed",
         )
+        assert_matches_type(CheckTransfer, check_transfer, path=["response"])
+
+    @pytest.mark.skip(reason="Prism doesn't accept no request body being sent but returns 415 if it is sent")
+    @parametrize
+    def test_raw_response_stop_payment(self, client: Increase) -> None:
+        response = client.check_transfers.with_raw_response.stop_payment(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        check_transfer = response.parse()
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
 
@@ -169,10 +224,29 @@ class TestAsyncCheckTransfers:
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
     @parametrize
+    async def test_raw_response_create(self, client: AsyncIncrease) -> None:
+        response = await client.check_transfers.with_raw_response.create(
+            account_id="account_in71c4amph0vgo2qllky",
+            amount=1000,
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        check_transfer = response.parse()
+        assert_matches_type(CheckTransfer, check_transfer, path=["response"])
+
+    @parametrize
     async def test_method_retrieve(self, client: AsyncIncrease) -> None:
         check_transfer = await client.check_transfers.retrieve(
             "string",
         )
+        assert_matches_type(CheckTransfer, check_transfer, path=["response"])
+
+    @parametrize
+    async def test_raw_response_retrieve(self, client: AsyncIncrease) -> None:
+        response = await client.check_transfers.with_raw_response.retrieve(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        check_transfer = response.parse()
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
     @parametrize
@@ -197,6 +271,13 @@ class TestAsyncCheckTransfers:
         assert_matches_type(AsyncPage[CheckTransfer], check_transfer, path=["response"])
 
     @parametrize
+    async def test_raw_response_list(self, client: AsyncIncrease) -> None:
+        response = await client.check_transfers.with_raw_response.list()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        check_transfer = response.parse()
+        assert_matches_type(AsyncPage[CheckTransfer], check_transfer, path=["response"])
+
+    @parametrize
     async def test_method_approve(self, client: AsyncIncrease) -> None:
         check_transfer = await client.check_transfers.approve(
             "string",
@@ -204,10 +285,28 @@ class TestAsyncCheckTransfers:
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
     @parametrize
+    async def test_raw_response_approve(self, client: AsyncIncrease) -> None:
+        response = await client.check_transfers.with_raw_response.approve(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        check_transfer = response.parse()
+        assert_matches_type(CheckTransfer, check_transfer, path=["response"])
+
+    @parametrize
     async def test_method_cancel(self, client: AsyncIncrease) -> None:
         check_transfer = await client.check_transfers.cancel(
             "string",
         )
+        assert_matches_type(CheckTransfer, check_transfer, path=["response"])
+
+    @parametrize
+    async def test_raw_response_cancel(self, client: AsyncIncrease) -> None:
+        response = await client.check_transfers.with_raw_response.cancel(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        check_transfer = response.parse()
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
     @pytest.mark.skip(reason="Prism doesn't accept no request body being sent but returns 415 if it is sent")
@@ -225,4 +324,14 @@ class TestAsyncCheckTransfers:
             "string",
             reason="mail_delivery_failed",
         )
+        assert_matches_type(CheckTransfer, check_transfer, path=["response"])
+
+    @pytest.mark.skip(reason="Prism doesn't accept no request body being sent but returns 415 if it is sent")
+    @parametrize
+    async def test_raw_response_stop_payment(self, client: AsyncIncrease) -> None:
+        response = await client.check_transfers.with_raw_response.stop_payment(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        check_transfer = response.parse()
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
