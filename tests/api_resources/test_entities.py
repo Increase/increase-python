@@ -434,7 +434,7 @@ class TestEntities:
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
             cursor="string",
-            limit=0,
+            limit=1,
             status={"in": ["active", "archived", "disabled"]},
         )
         assert_matches_type(SyncPage[Entity], entity, path=["response"])
@@ -922,7 +922,7 @@ class TestAsyncEntities:
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
             cursor="string",
-            limit=0,
+            limit=1,
             status={"in": ["active", "archived", "disabled"]},
         )
         assert_matches_type(AsyncPage[Entity], entity, path=["response"])

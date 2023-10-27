@@ -118,7 +118,7 @@ class TestPhysicalCards:
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
             cursor="string",
-            limit=0,
+            limit=1,
         )
         assert_matches_type(SyncPage[PhysicalCard], physical_card, path=["response"])
 
@@ -231,7 +231,7 @@ class TestAsyncPhysicalCards:
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
             cursor="string",
-            limit=0,
+            limit=1,
         )
         assert_matches_type(AsyncPage[PhysicalCard], physical_card, path=["response"])
 

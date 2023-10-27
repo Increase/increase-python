@@ -95,7 +95,7 @@ class TestEventSubscriptions:
     def test_method_list_with_all_params(self, client: Increase) -> None:
         event_subscription = client.event_subscriptions.list(
             cursor="string",
-            limit=0,
+            limit=1,
         )
         assert_matches_type(SyncPage[EventSubscription], event_subscription, path=["response"])
 
@@ -186,7 +186,7 @@ class TestAsyncEventSubscriptions:
     async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
         event_subscription = await client.event_subscriptions.list(
             cursor="string",
-            limit=0,
+            limit=1,
         )
         assert_matches_type(AsyncPage[EventSubscription], event_subscription, path=["response"])
 

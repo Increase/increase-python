@@ -52,7 +52,7 @@ class TestSupplementalDocuments:
         supplemental_document = client.entities.supplemental_documents.list(
             entity_id="string",
             cursor="string",
-            limit=0,
+            limit=1,
         )
         assert_matches_type(SyncPage[SupplementalDocument], supplemental_document, path=["response"])
 
@@ -101,7 +101,7 @@ class TestAsyncSupplementalDocuments:
         supplemental_document = await client.entities.supplemental_documents.list(
             entity_id="string",
             cursor="string",
-            limit=0,
+            limit=1,
         )
         assert_matches_type(AsyncPage[SupplementalDocument], supplemental_document, path=["response"])
 

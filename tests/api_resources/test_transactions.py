@@ -55,7 +55,7 @@ class TestTransactions:
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
             cursor="string",
-            limit=0,
+            limit=1,
             route_id="string",
         )
         assert_matches_type(SyncPage[Transaction], transaction, path=["response"])
@@ -106,7 +106,7 @@ class TestAsyncTransactions:
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
             cursor="string",
-            limit=0,
+            limit=1,
             route_id="string",
         )
         assert_matches_type(AsyncPage[Transaction], transaction, path=["response"])

@@ -92,7 +92,7 @@ class TestRealTimePaymentsTransfers:
             },
             cursor="string",
             external_account_id="string",
-            limit=0,
+            limit=1,
             unique_identifier="x",
         )
         assert_matches_type(SyncPage[RealTimePaymentsTransfer], real_time_payments_transfer, path=["response"])
@@ -180,7 +180,7 @@ class TestAsyncRealTimePaymentsTransfers:
             },
             cursor="string",
             external_account_id="string",
-            limit=0,
+            limit=1,
             unique_identifier="x",
         )
         assert_matches_type(AsyncPage[RealTimePaymentsTransfer], real_time_payments_transfer, path=["response"])

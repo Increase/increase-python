@@ -46,7 +46,7 @@ class TestOauthConnections:
     def test_method_list_with_all_params(self, client: Increase) -> None:
         oauth_connection = client.oauth_connections.list(
             cursor="string",
-            limit=0,
+            limit=1,
         )
         assert_matches_type(SyncPage[OauthConnection], oauth_connection, path=["response"])
 
@@ -88,7 +88,7 @@ class TestAsyncOauthConnections:
     async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
         oauth_connection = await client.oauth_connections.list(
             cursor="string",
-            limit=0,
+            limit=1,
         )
         assert_matches_type(AsyncPage[OauthConnection], oauth_connection, path=["response"])
 

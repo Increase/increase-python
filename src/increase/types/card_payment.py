@@ -25,8 +25,11 @@ __all__ = [
     "ElementCardDeclineVerificationCardVerificationCode",
     "ElementCardDeclineVerificationCardholderAddress",
     "ElementCardFuelConfirmation",
+    "ElementCardFuelConfirmationNetworkIdentifiers",
     "ElementCardIncrement",
+    "ElementCardIncrementNetworkIdentifiers",
     "ElementCardRefund",
+    "ElementCardRefundNetworkIdentifiers",
     "ElementCardRefundPurchaseDetails",
     "ElementCardRefundPurchaseDetailsCarRental",
     "ElementCardRefundPurchaseDetailsLodging",
@@ -35,7 +38,9 @@ __all__ = [
     "ElementCardRefundPurchaseDetailsTravelAncillaryService",
     "ElementCardRefundPurchaseDetailsTravelTripLeg",
     "ElementCardReversal",
+    "ElementCardReversalNetworkIdentifiers",
     "ElementCardSettlement",
+    "ElementCardSettlementNetworkIdentifiers",
     "ElementCardSettlementPurchaseDetails",
     "ElementCardSettlementPurchaseDetailsCarRental",
     "ElementCardSettlementPurchaseDetailsLodging",
@@ -668,6 +673,27 @@ class ElementCardDecline(BaseModel):
     """Fields related to verification of cardholder-provided values."""
 
 
+class ElementCardFuelConfirmationNetworkIdentifiers(BaseModel):
+    retrieval_reference_number: Optional[str]
+    """A life-cycle identifier used across e.g., an authorization and a reversal.
+
+    Expected to be unique per acquirer within a window of time. For some card
+    networks the retrieval reference number includes the trace counter.
+    """
+
+    trace_number: Optional[str]
+    """A counter used to verify an individual authorization.
+
+    Expected to be unique per acquirer within a window of time.
+    """
+
+    transaction_id: Optional[str]
+    """
+    A globally unique transaction identifier provided by the card network, used
+    across multiple life-cycle requests.
+    """
+
+
 class ElementCardFuelConfirmation(BaseModel):
     id: str
     """The Card Fuel Confirmation identifier."""
@@ -694,6 +720,9 @@ class ElementCardFuelConfirmation(BaseModel):
     - `visa` - Visa
     """
 
+    network_identifiers: ElementCardFuelConfirmationNetworkIdentifiers
+    """Network-specific identifiers for a specific request or transaction."""
+
     pending_transaction_id: Optional[str]
     """
     The identifier of the Pending Transaction associated with this Card Fuel
@@ -710,6 +739,27 @@ class ElementCardFuelConfirmation(BaseModel):
     """
     The updated authorization amount after this fuel confirmation, in the minor unit
     of the transaction's currency. For dollars, for example, this is cents.
+    """
+
+
+class ElementCardIncrementNetworkIdentifiers(BaseModel):
+    retrieval_reference_number: Optional[str]
+    """A life-cycle identifier used across e.g., an authorization and a reversal.
+
+    Expected to be unique per acquirer within a window of time. For some card
+    networks the retrieval reference number includes the trace counter.
+    """
+
+    trace_number: Optional[str]
+    """A counter used to verify an individual authorization.
+
+    Expected to be unique per acquirer within a window of time.
+    """
+
+    transaction_id: Optional[str]
+    """
+    A globally unique transaction identifier provided by the card network, used
+    across multiple life-cycle requests.
     """
 
 
@@ -745,6 +795,9 @@ class ElementCardIncrement(BaseModel):
     - `visa` - Visa
     """
 
+    network_identifiers: ElementCardIncrementNetworkIdentifiers
+    """Network-specific identifiers for a specific request or transaction."""
+
     pending_transaction_id: Optional[str]
     """The identifier of the Pending Transaction associated with this Card Increment."""
 
@@ -764,6 +817,23 @@ class ElementCardIncrement(BaseModel):
     """
     The updated authorization amount after this increment, in the minor unit of the
     transaction's currency. For dollars, for example, this is cents.
+    """
+
+
+class ElementCardRefundNetworkIdentifiers(BaseModel):
+    acquirer_business_id: str
+    """
+    A network assigned business ID that identifies the acquirer that processed this
+    transaction.
+    """
+
+    acquirer_reference_number: str
+    """A globally unique identifier for this settlement."""
+
+    transaction_id: Optional[str]
+    """
+    A globally unique transaction identifier provided by the card network, used
+    across multiple life-cycle requests.
     """
 
 
@@ -1221,6 +1291,9 @@ class ElementCardRefund(BaseModel):
     merchant_state: Optional[str]
     """The state the merchant resides in."""
 
+    network_identifiers: ElementCardRefundNetworkIdentifiers
+    """Network-specific identifiers for this refund."""
+
     purchase_details: Optional[ElementCardRefundPurchaseDetails]
     """
     Additional details about the card purchase, such as tax and industry-specific
@@ -1234,6 +1307,27 @@ class ElementCardRefund(BaseModel):
     """A constant representing the object's type.
 
     For this resource it will always be `card_refund`.
+    """
+
+
+class ElementCardReversalNetworkIdentifiers(BaseModel):
+    retrieval_reference_number: Optional[str]
+    """A life-cycle identifier used across e.g., an authorization and a reversal.
+
+    Expected to be unique per acquirer within a window of time. For some card
+    networks the retrieval reference number includes the trace counter.
+    """
+
+    trace_number: Optional[str]
+    """A counter used to verify an individual authorization.
+
+    Expected to be unique per acquirer within a window of time.
+    """
+
+    transaction_id: Optional[str]
+    """
+    A globally unique transaction identifier provided by the card network, used
+    across multiple life-cycle requests.
     """
 
 
@@ -1263,6 +1357,9 @@ class ElementCardReversal(BaseModel):
     - `visa` - Visa
     """
 
+    network_identifiers: ElementCardReversalNetworkIdentifiers
+    """Network-specific identifiers for a specific request or transaction."""
+
     pending_transaction_id: Optional[str]
     """The identifier of the Pending Transaction associated with this Card Reversal."""
 
@@ -1282,6 +1379,23 @@ class ElementCardReversal(BaseModel):
     """
     The amount left pending on the Card Authorization in the minor unit of the
     transaction's currency. For dollars, for example, this is cents.
+    """
+
+
+class ElementCardSettlementNetworkIdentifiers(BaseModel):
+    acquirer_business_id: str
+    """
+    A network assigned business ID that identifies the acquirer that processed this
+    transaction.
+    """
+
+    acquirer_reference_number: str
+    """A globally unique identifier for this settlement."""
+
+    transaction_id: Optional[str]
+    """
+    A globally unique transaction identifier provided by the card network, used
+    across multiple life-cycle requests.
     """
 
 
@@ -1744,6 +1858,9 @@ class ElementCardSettlement(BaseModel):
 
     merchant_state: Optional[str]
     """The state the merchant resides in."""
+
+    network_identifiers: ElementCardSettlementNetworkIdentifiers
+    """Network-specific identifiers for this refund."""
 
     pending_transaction_id: Optional[str]
     """The identifier of the Pending Transaction associated with this Transaction."""

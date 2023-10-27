@@ -55,7 +55,7 @@ class TestDocuments:
             },
             cursor="string",
             entity_id="string",
-            limit=0,
+            limit=1,
         )
         assert_matches_type(SyncPage[Document], document, path=["response"])
 
@@ -105,7 +105,7 @@ class TestAsyncDocuments:
             },
             cursor="string",
             entity_id="string",
-            limit=0,
+            limit=1,
         )
         assert_matches_type(AsyncPage[Document], document, path=["response"])
 
