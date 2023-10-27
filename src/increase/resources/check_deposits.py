@@ -2,17 +2,29 @@
 
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
 from ..types import CheckDeposit, check_deposit_list_params, check_deposit_create_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
+from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
+
+if TYPE_CHECKING:
+    from .._client import Increase, AsyncIncrease
 
 __all__ = ["CheckDeposits", "AsyncCheckDeposits"]
 
 
 class CheckDeposits(SyncAPIResource):
+    with_raw_response: CheckDepositsWithRawResponse
+
+    def __init__(self, client: Increase) -> None:
+        super().__init__(client)
+        self.with_raw_response = CheckDepositsWithRawResponse(self)
+
     def create(
         self,
         *,
@@ -165,6 +177,12 @@ class CheckDeposits(SyncAPIResource):
 
 
 class AsyncCheckDeposits(AsyncAPIResource):
+    with_raw_response: AsyncCheckDepositsWithRawResponse
+
+    def __init__(self, client: AsyncIncrease) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncCheckDepositsWithRawResponse(self)
+
     async def create(
         self,
         *,
@@ -313,4 +331,30 @@ class AsyncCheckDeposits(AsyncAPIResource):
                 ),
             ),
             model=CheckDeposit,
+        )
+
+
+class CheckDepositsWithRawResponse:
+    def __init__(self, check_deposits: CheckDeposits) -> None:
+        self.create = to_raw_response_wrapper(
+            check_deposits.create,
+        )
+        self.retrieve = to_raw_response_wrapper(
+            check_deposits.retrieve,
+        )
+        self.list = to_raw_response_wrapper(
+            check_deposits.list,
+        )
+
+
+class AsyncCheckDepositsWithRawResponse:
+    def __init__(self, check_deposits: AsyncCheckDeposits) -> None:
+        self.create = async_to_raw_response_wrapper(
+            check_deposits.create,
+        )
+        self.retrieve = async_to_raw_response_wrapper(
+            check_deposits.retrieve,
+        )
+        self.list = async_to_raw_response_wrapper(
+            check_deposits.list,
         )

@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
 from ..types import (
     AccountTransfer,
     account_transfer_list_params,
@@ -10,13 +12,23 @@ from ..types import (
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
+from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
+
+if TYPE_CHECKING:
+    from .._client import Increase, AsyncIncrease
 
 __all__ = ["AccountTransfers", "AsyncAccountTransfers"]
 
 
 class AccountTransfers(SyncAPIResource):
+    with_raw_response: AccountTransfersWithRawResponse
+
+    def __init__(self, client: Increase) -> None:
+        super().__init__(client)
+        self.with_raw_response = AccountTransfersWithRawResponse(self)
+
     def create(
         self,
         *,
@@ -259,6 +271,12 @@ class AccountTransfers(SyncAPIResource):
 
 
 class AsyncAccountTransfers(AsyncAPIResource):
+    with_raw_response: AsyncAccountTransfersWithRawResponse
+
+    def __init__(self, client: AsyncIncrease) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncAccountTransfersWithRawResponse(self)
+
     async def create(
         self,
         *,
@@ -497,4 +515,42 @@ class AsyncAccountTransfers(AsyncAPIResource):
                 idempotency_key=idempotency_key,
             ),
             cast_to=AccountTransfer,
+        )
+
+
+class AccountTransfersWithRawResponse:
+    def __init__(self, account_transfers: AccountTransfers) -> None:
+        self.create = to_raw_response_wrapper(
+            account_transfers.create,
+        )
+        self.retrieve = to_raw_response_wrapper(
+            account_transfers.retrieve,
+        )
+        self.list = to_raw_response_wrapper(
+            account_transfers.list,
+        )
+        self.approve = to_raw_response_wrapper(
+            account_transfers.approve,
+        )
+        self.cancel = to_raw_response_wrapper(
+            account_transfers.cancel,
+        )
+
+
+class AsyncAccountTransfersWithRawResponse:
+    def __init__(self, account_transfers: AsyncAccountTransfers) -> None:
+        self.create = async_to_raw_response_wrapper(
+            account_transfers.create,
+        )
+        self.retrieve = async_to_raw_response_wrapper(
+            account_transfers.retrieve,
+        )
+        self.list = async_to_raw_response_wrapper(
+            account_transfers.list,
+        )
+        self.approve = async_to_raw_response_wrapper(
+            account_transfers.approve,
+        )
+        self.cancel = async_to_raw_response_wrapper(
+            account_transfers.cancel,
         )

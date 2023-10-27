@@ -10,6 +10,7 @@ from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
 from increase.types import Card, CardDetails
 from increase._utils import parse_datetime
+from increase._client import Increase, AsyncIncrease
 from increase.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -50,10 +51,28 @@ class TestCards:
         assert_matches_type(Card, card, path=["response"])
 
     @parametrize
+    def test_raw_response_create(self, client: Increase) -> None:
+        response = client.cards.with_raw_response.create(
+            account_id="account_in71c4amph0vgo2qllky",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        card = response.parse()
+        assert_matches_type(Card, card, path=["response"])
+
+    @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         card = client.cards.retrieve(
             "string",
         )
+        assert_matches_type(Card, card, path=["response"])
+
+    @parametrize
+    def test_raw_response_retrieve(self, client: Increase) -> None:
+        response = client.cards.with_raw_response.retrieve(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        card = response.parse()
         assert_matches_type(Card, card, path=["response"])
 
     @parametrize
@@ -86,6 +105,15 @@ class TestCards:
         assert_matches_type(Card, card, path=["response"])
 
     @parametrize
+    def test_raw_response_update(self, client: Increase) -> None:
+        response = client.cards.with_raw_response.update(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        card = response.parse()
+        assert_matches_type(Card, card, path=["response"])
+
+    @parametrize
     def test_method_list(self, client: Increase) -> None:
         card = client.cards.list()
         assert_matches_type(SyncPage[Card], card, path=["response"])
@@ -106,10 +134,26 @@ class TestCards:
         assert_matches_type(SyncPage[Card], card, path=["response"])
 
     @parametrize
+    def test_raw_response_list(self, client: Increase) -> None:
+        response = client.cards.with_raw_response.list()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        card = response.parse()
+        assert_matches_type(SyncPage[Card], card, path=["response"])
+
+    @parametrize
     def test_method_retrieve_sensitive_details(self, client: Increase) -> None:
         card = client.cards.retrieve_sensitive_details(
             "string",
         )
+        assert_matches_type(CardDetails, card, path=["response"])
+
+    @parametrize
+    def test_raw_response_retrieve_sensitive_details(self, client: Increase) -> None:
+        response = client.cards.with_raw_response.retrieve_sensitive_details(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        card = response.parse()
         assert_matches_type(CardDetails, card, path=["response"])
 
 
@@ -147,10 +191,28 @@ class TestAsyncCards:
         assert_matches_type(Card, card, path=["response"])
 
     @parametrize
+    async def test_raw_response_create(self, client: AsyncIncrease) -> None:
+        response = await client.cards.with_raw_response.create(
+            account_id="account_in71c4amph0vgo2qllky",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        card = response.parse()
+        assert_matches_type(Card, card, path=["response"])
+
+    @parametrize
     async def test_method_retrieve(self, client: AsyncIncrease) -> None:
         card = await client.cards.retrieve(
             "string",
         )
+        assert_matches_type(Card, card, path=["response"])
+
+    @parametrize
+    async def test_raw_response_retrieve(self, client: AsyncIncrease) -> None:
+        response = await client.cards.with_raw_response.retrieve(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        card = response.parse()
         assert_matches_type(Card, card, path=["response"])
 
     @parametrize
@@ -183,6 +245,15 @@ class TestAsyncCards:
         assert_matches_type(Card, card, path=["response"])
 
     @parametrize
+    async def test_raw_response_update(self, client: AsyncIncrease) -> None:
+        response = await client.cards.with_raw_response.update(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        card = response.parse()
+        assert_matches_type(Card, card, path=["response"])
+
+    @parametrize
     async def test_method_list(self, client: AsyncIncrease) -> None:
         card = await client.cards.list()
         assert_matches_type(AsyncPage[Card], card, path=["response"])
@@ -203,8 +274,24 @@ class TestAsyncCards:
         assert_matches_type(AsyncPage[Card], card, path=["response"])
 
     @parametrize
+    async def test_raw_response_list(self, client: AsyncIncrease) -> None:
+        response = await client.cards.with_raw_response.list()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        card = response.parse()
+        assert_matches_type(AsyncPage[Card], card, path=["response"])
+
+    @parametrize
     async def test_method_retrieve_sensitive_details(self, client: AsyncIncrease) -> None:
         card = await client.cards.retrieve_sensitive_details(
             "string",
         )
+        assert_matches_type(CardDetails, card, path=["response"])
+
+    @parametrize
+    async def test_raw_response_retrieve_sensitive_details(self, client: AsyncIncrease) -> None:
+        response = await client.cards.with_raw_response.retrieve_sensitive_details(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        card = response.parse()
         assert_matches_type(CardDetails, card, path=["response"])

@@ -2,17 +2,29 @@
 
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
 from ..types import CardDispute, card_dispute_list_params, card_dispute_create_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
+from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
+
+if TYPE_CHECKING:
+    from .._client import Increase, AsyncIncrease
 
 __all__ = ["CardDisputes", "AsyncCardDisputes"]
 
 
 class CardDisputes(SyncAPIResource):
+    with_raw_response: CardDisputesWithRawResponse
+
+    def __init__(self, client: Increase) -> None:
+        super().__init__(client)
+        self.with_raw_response = CardDisputesWithRawResponse(self)
+
     def create(
         self,
         *,
@@ -151,6 +163,12 @@ class CardDisputes(SyncAPIResource):
 
 
 class AsyncCardDisputes(AsyncAPIResource):
+    with_raw_response: AsyncCardDisputesWithRawResponse
+
+    def __init__(self, client: AsyncIncrease) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncCardDisputesWithRawResponse(self)
+
     async def create(
         self,
         *,
@@ -285,4 +303,30 @@ class AsyncCardDisputes(AsyncAPIResource):
                 ),
             ),
             model=CardDispute,
+        )
+
+
+class CardDisputesWithRawResponse:
+    def __init__(self, card_disputes: CardDisputes) -> None:
+        self.create = to_raw_response_wrapper(
+            card_disputes.create,
+        )
+        self.retrieve = to_raw_response_wrapper(
+            card_disputes.retrieve,
+        )
+        self.list = to_raw_response_wrapper(
+            card_disputes.list,
+        )
+
+
+class AsyncCardDisputesWithRawResponse:
+    def __init__(self, card_disputes: AsyncCardDisputes) -> None:
+        self.create = async_to_raw_response_wrapper(
+            card_disputes.create,
+        )
+        self.retrieve = async_to_raw_response_wrapper(
+            card_disputes.retrieve,
+        )
+        self.list = async_to_raw_response_wrapper(
+            card_disputes.list,
         )

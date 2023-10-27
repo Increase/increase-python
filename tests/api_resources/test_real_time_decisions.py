@@ -9,6 +9,7 @@ import pytest
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
 from increase.types import RealTimeDecision
+from increase._client import Increase, AsyncIncrease
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 api_key = "My API Key"
@@ -24,6 +25,15 @@ class TestRealTimeDecisions:
         real_time_decision = client.real_time_decisions.retrieve(
             "string",
         )
+        assert_matches_type(RealTimeDecision, real_time_decision, path=["response"])
+
+    @parametrize
+    def test_raw_response_retrieve(self, client: Increase) -> None:
+        response = client.real_time_decisions.with_raw_response.retrieve(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        real_time_decision = response.parse()
         assert_matches_type(RealTimeDecision, real_time_decision, path=["response"])
 
     @parametrize
@@ -50,6 +60,15 @@ class TestRealTimeDecisions:
         )
         assert_matches_type(RealTimeDecision, real_time_decision, path=["response"])
 
+    @parametrize
+    def test_raw_response_action(self, client: Increase) -> None:
+        response = client.real_time_decisions.with_raw_response.action(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        real_time_decision = response.parse()
+        assert_matches_type(RealTimeDecision, real_time_decision, path=["response"])
+
 
 class TestAsyncRealTimeDecisions:
     strict_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
@@ -61,6 +80,15 @@ class TestAsyncRealTimeDecisions:
         real_time_decision = await client.real_time_decisions.retrieve(
             "string",
         )
+        assert_matches_type(RealTimeDecision, real_time_decision, path=["response"])
+
+    @parametrize
+    async def test_raw_response_retrieve(self, client: AsyncIncrease) -> None:
+        response = await client.real_time_decisions.with_raw_response.retrieve(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        real_time_decision = response.parse()
         assert_matches_type(RealTimeDecision, real_time_decision, path=["response"])
 
     @parametrize
@@ -85,4 +113,13 @@ class TestAsyncRealTimeDecisions:
                 "decline": {"reason": "x"},
             },
         )
+        assert_matches_type(RealTimeDecision, real_time_decision, path=["response"])
+
+    @parametrize
+    async def test_raw_response_action(self, client: AsyncIncrease) -> None:
+        response = await client.real_time_decisions.with_raw_response.action(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        real_time_decision = response.parse()
         assert_matches_type(RealTimeDecision, real_time_decision, path=["response"])

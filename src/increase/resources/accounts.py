@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
 from typing_extensions import Literal
 
 from ..types import (
@@ -13,13 +14,23 @@ from ..types import (
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
+from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
+
+if TYPE_CHECKING:
+    from .._client import Increase, AsyncIncrease
 
 __all__ = ["Accounts", "AsyncAccounts"]
 
 
 class Accounts(SyncAPIResource):
+    with_raw_response: AccountsWithRawResponse
+
+    def __init__(self, client: Increase) -> None:
+        super().__init__(client)
+        self.with_raw_response = AccountsWithRawResponse(self)
+
     def create(
         self,
         *,
@@ -265,6 +276,12 @@ class Accounts(SyncAPIResource):
 
 
 class AsyncAccounts(AsyncAPIResource):
+    with_raw_response: AsyncAccountsWithRawResponse
+
+    def __init__(self, client: AsyncIncrease) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncAccountsWithRawResponse(self)
+
     async def create(
         self,
         *,
@@ -506,4 +523,42 @@ class AsyncAccounts(AsyncAPIResource):
                 idempotency_key=idempotency_key,
             ),
             cast_to=Account,
+        )
+
+
+class AccountsWithRawResponse:
+    def __init__(self, accounts: Accounts) -> None:
+        self.create = to_raw_response_wrapper(
+            accounts.create,
+        )
+        self.retrieve = to_raw_response_wrapper(
+            accounts.retrieve,
+        )
+        self.update = to_raw_response_wrapper(
+            accounts.update,
+        )
+        self.list = to_raw_response_wrapper(
+            accounts.list,
+        )
+        self.close = to_raw_response_wrapper(
+            accounts.close,
+        )
+
+
+class AsyncAccountsWithRawResponse:
+    def __init__(self, accounts: AsyncAccounts) -> None:
+        self.create = async_to_raw_response_wrapper(
+            accounts.create,
+        )
+        self.retrieve = async_to_raw_response_wrapper(
+            accounts.retrieve,
+        )
+        self.update = async_to_raw_response_wrapper(
+            accounts.update,
+        )
+        self.list = async_to_raw_response_wrapper(
+            accounts.list,
+        )
+        self.close = async_to_raw_response_wrapper(
+            accounts.close,
         )

@@ -10,6 +10,7 @@ from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
 from increase.types import Entity
 from increase._utils import parse_date, parse_datetime
+from increase._client import Increase, AsyncIncrease
 from increase.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -394,10 +395,28 @@ class TestEntities:
         assert_matches_type(Entity, entity, path=["response"])
 
     @parametrize
+    def test_raw_response_create(self, client: Increase) -> None:
+        response = client.entities.with_raw_response.create(
+            structure="corporation",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        entity = response.parse()
+        assert_matches_type(Entity, entity, path=["response"])
+
+    @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         entity = client.entities.retrieve(
             "string",
         )
+        assert_matches_type(Entity, entity, path=["response"])
+
+    @parametrize
+    def test_raw_response_retrieve(self, client: Increase) -> None:
+        response = client.entities.with_raw_response.retrieve(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        entity = response.parse()
         assert_matches_type(Entity, entity, path=["response"])
 
     @parametrize
@@ -421,10 +440,26 @@ class TestEntities:
         assert_matches_type(SyncPage[Entity], entity, path=["response"])
 
     @parametrize
+    def test_raw_response_list(self, client: Increase) -> None:
+        response = client.entities.with_raw_response.list()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        entity = response.parse()
+        assert_matches_type(SyncPage[Entity], entity, path=["response"])
+
+    @parametrize
     def test_method_archive(self, client: Increase) -> None:
         entity = client.entities.archive(
             "string",
         )
+        assert_matches_type(Entity, entity, path=["response"])
+
+    @parametrize
+    def test_raw_response_archive(self, client: Increase) -> None:
+        response = client.entities.with_raw_response.archive(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        entity = response.parse()
         assert_matches_type(Entity, entity, path=["response"])
 
     @parametrize
@@ -452,6 +487,21 @@ class TestEntities:
                 "zip": "10045",
             },
         )
+        assert_matches_type(Entity, entity, path=["response"])
+
+    @parametrize
+    def test_raw_response_update_address(self, client: Increase) -> None:
+        response = client.entities.with_raw_response.update_address(
+            "string",
+            address={
+                "line1": "33 Liberty Street",
+                "city": "New York",
+                "state": "NY",
+                "zip": "10045",
+            },
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        entity = response.parse()
         assert_matches_type(Entity, entity, path=["response"])
 
 
@@ -833,10 +883,28 @@ class TestAsyncEntities:
         assert_matches_type(Entity, entity, path=["response"])
 
     @parametrize
+    async def test_raw_response_create(self, client: AsyncIncrease) -> None:
+        response = await client.entities.with_raw_response.create(
+            structure="corporation",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        entity = response.parse()
+        assert_matches_type(Entity, entity, path=["response"])
+
+    @parametrize
     async def test_method_retrieve(self, client: AsyncIncrease) -> None:
         entity = await client.entities.retrieve(
             "string",
         )
+        assert_matches_type(Entity, entity, path=["response"])
+
+    @parametrize
+    async def test_raw_response_retrieve(self, client: AsyncIncrease) -> None:
+        response = await client.entities.with_raw_response.retrieve(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        entity = response.parse()
         assert_matches_type(Entity, entity, path=["response"])
 
     @parametrize
@@ -860,10 +928,26 @@ class TestAsyncEntities:
         assert_matches_type(AsyncPage[Entity], entity, path=["response"])
 
     @parametrize
+    async def test_raw_response_list(self, client: AsyncIncrease) -> None:
+        response = await client.entities.with_raw_response.list()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        entity = response.parse()
+        assert_matches_type(AsyncPage[Entity], entity, path=["response"])
+
+    @parametrize
     async def test_method_archive(self, client: AsyncIncrease) -> None:
         entity = await client.entities.archive(
             "string",
         )
+        assert_matches_type(Entity, entity, path=["response"])
+
+    @parametrize
+    async def test_raw_response_archive(self, client: AsyncIncrease) -> None:
+        response = await client.entities.with_raw_response.archive(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        entity = response.parse()
         assert_matches_type(Entity, entity, path=["response"])
 
     @parametrize
@@ -891,4 +975,19 @@ class TestAsyncEntities:
                 "zip": "10045",
             },
         )
+        assert_matches_type(Entity, entity, path=["response"])
+
+    @parametrize
+    async def test_raw_response_update_address(self, client: AsyncIncrease) -> None:
+        response = await client.entities.with_raw_response.update_address(
+            "string",
+            address={
+                "line1": "33 Liberty Street",
+                "city": "New York",
+                "state": "NY",
+                "zip": "10045",
+            },
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        entity = response.parse()
         assert_matches_type(Entity, entity, path=["response"])

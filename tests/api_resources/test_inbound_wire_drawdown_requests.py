@@ -9,6 +9,7 @@ import pytest
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
 from increase.types import InboundWireDrawdownRequest
+from increase._client import Increase, AsyncIncrease
 from increase.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -28,6 +29,15 @@ class TestInboundWireDrawdownRequests:
         assert_matches_type(InboundWireDrawdownRequest, inbound_wire_drawdown_request, path=["response"])
 
     @parametrize
+    def test_raw_response_retrieve(self, client: Increase) -> None:
+        response = client.inbound_wire_drawdown_requests.with_raw_response.retrieve(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        inbound_wire_drawdown_request = response.parse()
+        assert_matches_type(InboundWireDrawdownRequest, inbound_wire_drawdown_request, path=["response"])
+
+    @parametrize
     def test_method_list(self, client: Increase) -> None:
         inbound_wire_drawdown_request = client.inbound_wire_drawdown_requests.list()
         assert_matches_type(SyncPage[InboundWireDrawdownRequest], inbound_wire_drawdown_request, path=["response"])
@@ -38,6 +48,13 @@ class TestInboundWireDrawdownRequests:
             cursor="string",
             limit=0,
         )
+        assert_matches_type(SyncPage[InboundWireDrawdownRequest], inbound_wire_drawdown_request, path=["response"])
+
+    @parametrize
+    def test_raw_response_list(self, client: Increase) -> None:
+        response = client.inbound_wire_drawdown_requests.with_raw_response.list()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        inbound_wire_drawdown_request = response.parse()
         assert_matches_type(SyncPage[InboundWireDrawdownRequest], inbound_wire_drawdown_request, path=["response"])
 
 
@@ -54,6 +71,15 @@ class TestAsyncInboundWireDrawdownRequests:
         assert_matches_type(InboundWireDrawdownRequest, inbound_wire_drawdown_request, path=["response"])
 
     @parametrize
+    async def test_raw_response_retrieve(self, client: AsyncIncrease) -> None:
+        response = await client.inbound_wire_drawdown_requests.with_raw_response.retrieve(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        inbound_wire_drawdown_request = response.parse()
+        assert_matches_type(InboundWireDrawdownRequest, inbound_wire_drawdown_request, path=["response"])
+
+    @parametrize
     async def test_method_list(self, client: AsyncIncrease) -> None:
         inbound_wire_drawdown_request = await client.inbound_wire_drawdown_requests.list()
         assert_matches_type(AsyncPage[InboundWireDrawdownRequest], inbound_wire_drawdown_request, path=["response"])
@@ -64,4 +90,11 @@ class TestAsyncInboundWireDrawdownRequests:
             cursor="string",
             limit=0,
         )
+        assert_matches_type(AsyncPage[InboundWireDrawdownRequest], inbound_wire_drawdown_request, path=["response"])
+
+    @parametrize
+    async def test_raw_response_list(self, client: AsyncIncrease) -> None:
+        response = await client.inbound_wire_drawdown_requests.with_raw_response.list()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        inbound_wire_drawdown_request = response.parse()
         assert_matches_type(AsyncPage[InboundWireDrawdownRequest], inbound_wire_drawdown_request, path=["response"])

@@ -92,6 +92,7 @@ class Increase(SyncAPIClient):
     simulations: resources.Simulations
     physical_cards: resources.PhysicalCards
     card_payments: resources.CardPayments
+    with_raw_response: IncreaseWithRawResponse
 
     # client options
     api_key: str
@@ -202,6 +203,7 @@ class Increase(SyncAPIClient):
         self.simulations = resources.Simulations(self)
         self.physical_cards = resources.PhysicalCards(self)
         self.card_payments = resources.CardPayments(self)
+        self.with_raw_response = IncreaseWithRawResponse(self)
 
     @property
     @override
@@ -423,6 +425,7 @@ class AsyncIncrease(AsyncAPIClient):
     simulations: resources.AsyncSimulations
     physical_cards: resources.AsyncPhysicalCards
     card_payments: resources.AsyncCardPayments
+    with_raw_response: AsyncIncreaseWithRawResponse
 
     # client options
     api_key: str
@@ -533,6 +536,7 @@ class AsyncIncrease(AsyncAPIClient):
         self.simulations = resources.AsyncSimulations(self)
         self.physical_cards = resources.AsyncPhysicalCards(self)
         self.card_payments = resources.AsyncCardPayments(self)
+        self.with_raw_response = AsyncIncreaseWithRawResponse(self)
 
     @property
     @override
@@ -714,6 +718,106 @@ class AsyncIncrease(AsyncAPIClient):
         if response.status_code == 429:
             return _exceptions.RateLimitError(err_msg, response=response, body=body)
         return APIStatusError(err_msg, response=response, body=body)
+
+
+class IncreaseWithRawResponse:
+    def __init__(self, client: Increase) -> None:
+        self.accounts = resources.AccountsWithRawResponse(client.accounts)
+        self.account_numbers = resources.AccountNumbersWithRawResponse(client.account_numbers)
+        self.bookkeeping_accounts = resources.BookkeepingAccountsWithRawResponse(client.bookkeeping_accounts)
+        self.bookkeeping_entry_sets = resources.BookkeepingEntrySetsWithRawResponse(client.bookkeeping_entry_sets)
+        self.bookkeeping_entries = resources.BookkeepingEntriesWithRawResponse(client.bookkeeping_entries)
+        self.real_time_decisions = resources.RealTimeDecisionsWithRawResponse(client.real_time_decisions)
+        self.real_time_payments_transfers = resources.RealTimePaymentsTransfersWithRawResponse(
+            client.real_time_payments_transfers
+        )
+        self.balance_lookups = resources.BalanceLookupsWithRawResponse(client.balance_lookups)
+        self.cards = resources.CardsWithRawResponse(client.cards)
+        self.card_disputes = resources.CardDisputesWithRawResponse(client.card_disputes)
+        self.card_profiles = resources.CardProfilesWithRawResponse(client.card_profiles)
+        self.card_purchase_supplements = resources.CardPurchaseSupplementsWithRawResponse(
+            client.card_purchase_supplements
+        )
+        self.external_accounts = resources.ExternalAccountsWithRawResponse(client.external_accounts)
+        self.exports = resources.ExportsWithRawResponse(client.exports)
+        self.digital_wallet_tokens = resources.DigitalWalletTokensWithRawResponse(client.digital_wallet_tokens)
+        self.transactions = resources.TransactionsWithRawResponse(client.transactions)
+        self.pending_transactions = resources.PendingTransactionsWithRawResponse(client.pending_transactions)
+        self.programs = resources.ProgramsWithRawResponse(client.programs)
+        self.declined_transactions = resources.DeclinedTransactionsWithRawResponse(client.declined_transactions)
+        self.account_transfers = resources.AccountTransfersWithRawResponse(client.account_transfers)
+        self.ach_transfers = resources.ACHTransfersWithRawResponse(client.ach_transfers)
+        self.ach_prenotifications = resources.ACHPrenotificationsWithRawResponse(client.ach_prenotifications)
+        self.documents = resources.DocumentsWithRawResponse(client.documents)
+        self.wire_transfers = resources.WireTransfersWithRawResponse(client.wire_transfers)
+        self.check_transfers = resources.CheckTransfersWithRawResponse(client.check_transfers)
+        self.entities = resources.EntitiesWithRawResponse(client.entities)
+        self.inbound_ach_transfers = resources.InboundACHTransfersWithRawResponse(client.inbound_ach_transfers)
+        self.inbound_wire_drawdown_requests = resources.InboundWireDrawdownRequestsWithRawResponse(
+            client.inbound_wire_drawdown_requests
+        )
+        self.wire_drawdown_requests = resources.WireDrawdownRequestsWithRawResponse(client.wire_drawdown_requests)
+        self.events = resources.EventsWithRawResponse(client.events)
+        self.event_subscriptions = resources.EventSubscriptionsWithRawResponse(client.event_subscriptions)
+        self.files = resources.FilesWithRawResponse(client.files)
+        self.groups = resources.GroupsWithRawResponse(client.groups)
+        self.oauth_connections = resources.OauthConnectionsWithRawResponse(client.oauth_connections)
+        self.check_deposits = resources.CheckDepositsWithRawResponse(client.check_deposits)
+        self.routing_numbers = resources.RoutingNumbersWithRawResponse(client.routing_numbers)
+        self.account_statements = resources.AccountStatementsWithRawResponse(client.account_statements)
+        self.simulations = resources.SimulationsWithRawResponse(client.simulations)
+        self.physical_cards = resources.PhysicalCardsWithRawResponse(client.physical_cards)
+        self.card_payments = resources.CardPaymentsWithRawResponse(client.card_payments)
+
+
+class AsyncIncreaseWithRawResponse:
+    def __init__(self, client: AsyncIncrease) -> None:
+        self.accounts = resources.AsyncAccountsWithRawResponse(client.accounts)
+        self.account_numbers = resources.AsyncAccountNumbersWithRawResponse(client.account_numbers)
+        self.bookkeeping_accounts = resources.AsyncBookkeepingAccountsWithRawResponse(client.bookkeeping_accounts)
+        self.bookkeeping_entry_sets = resources.AsyncBookkeepingEntrySetsWithRawResponse(client.bookkeeping_entry_sets)
+        self.bookkeeping_entries = resources.AsyncBookkeepingEntriesWithRawResponse(client.bookkeeping_entries)
+        self.real_time_decisions = resources.AsyncRealTimeDecisionsWithRawResponse(client.real_time_decisions)
+        self.real_time_payments_transfers = resources.AsyncRealTimePaymentsTransfersWithRawResponse(
+            client.real_time_payments_transfers
+        )
+        self.balance_lookups = resources.AsyncBalanceLookupsWithRawResponse(client.balance_lookups)
+        self.cards = resources.AsyncCardsWithRawResponse(client.cards)
+        self.card_disputes = resources.AsyncCardDisputesWithRawResponse(client.card_disputes)
+        self.card_profiles = resources.AsyncCardProfilesWithRawResponse(client.card_profiles)
+        self.card_purchase_supplements = resources.AsyncCardPurchaseSupplementsWithRawResponse(
+            client.card_purchase_supplements
+        )
+        self.external_accounts = resources.AsyncExternalAccountsWithRawResponse(client.external_accounts)
+        self.exports = resources.AsyncExportsWithRawResponse(client.exports)
+        self.digital_wallet_tokens = resources.AsyncDigitalWalletTokensWithRawResponse(client.digital_wallet_tokens)
+        self.transactions = resources.AsyncTransactionsWithRawResponse(client.transactions)
+        self.pending_transactions = resources.AsyncPendingTransactionsWithRawResponse(client.pending_transactions)
+        self.programs = resources.AsyncProgramsWithRawResponse(client.programs)
+        self.declined_transactions = resources.AsyncDeclinedTransactionsWithRawResponse(client.declined_transactions)
+        self.account_transfers = resources.AsyncAccountTransfersWithRawResponse(client.account_transfers)
+        self.ach_transfers = resources.AsyncACHTransfersWithRawResponse(client.ach_transfers)
+        self.ach_prenotifications = resources.AsyncACHPrenotificationsWithRawResponse(client.ach_prenotifications)
+        self.documents = resources.AsyncDocumentsWithRawResponse(client.documents)
+        self.wire_transfers = resources.AsyncWireTransfersWithRawResponse(client.wire_transfers)
+        self.check_transfers = resources.AsyncCheckTransfersWithRawResponse(client.check_transfers)
+        self.entities = resources.AsyncEntitiesWithRawResponse(client.entities)
+        self.inbound_ach_transfers = resources.AsyncInboundACHTransfersWithRawResponse(client.inbound_ach_transfers)
+        self.inbound_wire_drawdown_requests = resources.AsyncInboundWireDrawdownRequestsWithRawResponse(
+            client.inbound_wire_drawdown_requests
+        )
+        self.wire_drawdown_requests = resources.AsyncWireDrawdownRequestsWithRawResponse(client.wire_drawdown_requests)
+        self.events = resources.AsyncEventsWithRawResponse(client.events)
+        self.event_subscriptions = resources.AsyncEventSubscriptionsWithRawResponse(client.event_subscriptions)
+        self.files = resources.AsyncFilesWithRawResponse(client.files)
+        self.groups = resources.AsyncGroupsWithRawResponse(client.groups)
+        self.oauth_connections = resources.AsyncOauthConnectionsWithRawResponse(client.oauth_connections)
+        self.check_deposits = resources.AsyncCheckDepositsWithRawResponse(client.check_deposits)
+        self.routing_numbers = resources.AsyncRoutingNumbersWithRawResponse(client.routing_numbers)
+        self.account_statements = resources.AsyncAccountStatementsWithRawResponse(client.account_statements)
+        self.simulations = resources.AsyncSimulationsWithRawResponse(client.simulations)
+        self.physical_cards = resources.AsyncPhysicalCardsWithRawResponse(client.physical_cards)
+        self.card_payments = resources.AsyncCardPaymentsWithRawResponse(client.card_payments)
 
 
 Client = Increase

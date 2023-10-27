@@ -10,6 +10,7 @@ from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
 from increase.types import Transaction
 from increase._utils import parse_datetime
+from increase._client import Increase, AsyncIncrease
 from increase.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -26,6 +27,15 @@ class TestTransactions:
         transaction = client.transactions.retrieve(
             "string",
         )
+        assert_matches_type(Transaction, transaction, path=["response"])
+
+    @parametrize
+    def test_raw_response_retrieve(self, client: Increase) -> None:
+        response = client.transactions.with_raw_response.retrieve(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        transaction = response.parse()
         assert_matches_type(Transaction, transaction, path=["response"])
 
     @parametrize
@@ -50,6 +60,13 @@ class TestTransactions:
         )
         assert_matches_type(SyncPage[Transaction], transaction, path=["response"])
 
+    @parametrize
+    def test_raw_response_list(self, client: Increase) -> None:
+        response = client.transactions.with_raw_response.list()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        transaction = response.parse()
+        assert_matches_type(SyncPage[Transaction], transaction, path=["response"])
+
 
 class TestAsyncTransactions:
     strict_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
@@ -61,6 +78,15 @@ class TestAsyncTransactions:
         transaction = await client.transactions.retrieve(
             "string",
         )
+        assert_matches_type(Transaction, transaction, path=["response"])
+
+    @parametrize
+    async def test_raw_response_retrieve(self, client: AsyncIncrease) -> None:
+        response = await client.transactions.with_raw_response.retrieve(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        transaction = response.parse()
         assert_matches_type(Transaction, transaction, path=["response"])
 
     @parametrize
@@ -83,4 +109,11 @@ class TestAsyncTransactions:
             limit=0,
             route_id="string",
         )
+        assert_matches_type(AsyncPage[Transaction], transaction, path=["response"])
+
+    @parametrize
+    async def test_raw_response_list(self, client: AsyncIncrease) -> None:
+        response = await client.transactions.with_raw_response.list()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        transaction = response.parse()
         assert_matches_type(AsyncPage[Transaction], transaction, path=["response"])

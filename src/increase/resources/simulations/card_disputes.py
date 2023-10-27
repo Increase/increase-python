@@ -2,19 +2,30 @@
 
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
 from typing_extensions import Literal
 
 from ...types import CardDispute
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._resource import SyncAPIResource, AsyncAPIResource
+from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..._base_client import make_request_options
 from ...types.simulations import card_dispute_action_params
+
+if TYPE_CHECKING:
+    from ..._client import Increase, AsyncIncrease
 
 __all__ = ["CardDisputes", "AsyncCardDisputes"]
 
 
 class CardDisputes(SyncAPIResource):
+    with_raw_response: CardDisputesWithRawResponse
+
+    def __init__(self, client: Increase) -> None:
+        super().__init__(client)
+        self.with_raw_response = CardDisputesWithRawResponse(self)
+
     def action(
         self,
         card_dispute_id: str,
@@ -77,6 +88,12 @@ class CardDisputes(SyncAPIResource):
 
 
 class AsyncCardDisputes(AsyncAPIResource):
+    with_raw_response: AsyncCardDisputesWithRawResponse
+
+    def __init__(self, client: AsyncIncrease) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncCardDisputesWithRawResponse(self)
+
     async def action(
         self,
         card_dispute_id: str,
@@ -135,4 +152,18 @@ class AsyncCardDisputes(AsyncAPIResource):
                 idempotency_key=idempotency_key,
             ),
             cast_to=CardDispute,
+        )
+
+
+class CardDisputesWithRawResponse:
+    def __init__(self, card_disputes: CardDisputes) -> None:
+        self.action = to_raw_response_wrapper(
+            card_disputes.action,
+        )
+
+
+class AsyncCardDisputesWithRawResponse:
+    def __init__(self, card_disputes: AsyncCardDisputes) -> None:
+        self.action = async_to_raw_response_wrapper(
+            card_disputes.action,
         )

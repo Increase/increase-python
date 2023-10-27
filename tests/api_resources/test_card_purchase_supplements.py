@@ -10,6 +10,7 @@ from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
 from increase.types import CardPurchaseSupplement
 from increase._utils import parse_datetime
+from increase._client import Increase, AsyncIncrease
 from increase.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -26,6 +27,15 @@ class TestCardPurchaseSupplements:
         card_purchase_supplement = client.card_purchase_supplements.retrieve(
             "string",
         )
+        assert_matches_type(CardPurchaseSupplement, card_purchase_supplement, path=["response"])
+
+    @parametrize
+    def test_raw_response_retrieve(self, client: Increase) -> None:
+        response = client.card_purchase_supplements.with_raw_response.retrieve(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        card_purchase_supplement = response.parse()
         assert_matches_type(CardPurchaseSupplement, card_purchase_supplement, path=["response"])
 
     @parametrize
@@ -48,6 +58,13 @@ class TestCardPurchaseSupplements:
         )
         assert_matches_type(SyncPage[CardPurchaseSupplement], card_purchase_supplement, path=["response"])
 
+    @parametrize
+    def test_raw_response_list(self, client: Increase) -> None:
+        response = client.card_purchase_supplements.with_raw_response.list()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        card_purchase_supplement = response.parse()
+        assert_matches_type(SyncPage[CardPurchaseSupplement], card_purchase_supplement, path=["response"])
+
 
 class TestAsyncCardPurchaseSupplements:
     strict_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
@@ -59,6 +76,15 @@ class TestAsyncCardPurchaseSupplements:
         card_purchase_supplement = await client.card_purchase_supplements.retrieve(
             "string",
         )
+        assert_matches_type(CardPurchaseSupplement, card_purchase_supplement, path=["response"])
+
+    @parametrize
+    async def test_raw_response_retrieve(self, client: AsyncIncrease) -> None:
+        response = await client.card_purchase_supplements.with_raw_response.retrieve(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        card_purchase_supplement = response.parse()
         assert_matches_type(CardPurchaseSupplement, card_purchase_supplement, path=["response"])
 
     @parametrize
@@ -79,4 +105,11 @@ class TestAsyncCardPurchaseSupplements:
             cursor="string",
             limit=0,
         )
+        assert_matches_type(AsyncPage[CardPurchaseSupplement], card_purchase_supplement, path=["response"])
+
+    @parametrize
+    async def test_raw_response_list(self, client: AsyncIncrease) -> None:
+        response = await client.card_purchase_supplements.with_raw_response.list()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        card_purchase_supplement = response.parse()
         assert_matches_type(AsyncPage[CardPurchaseSupplement], card_purchase_supplement, path=["response"])

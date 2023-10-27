@@ -2,17 +2,29 @@
 
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
 from ..types import CardPurchaseSupplement, card_purchase_supplement_list_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
+from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
+
+if TYPE_CHECKING:
+    from .._client import Increase, AsyncIncrease
 
 __all__ = ["CardPurchaseSupplements", "AsyncCardPurchaseSupplements"]
 
 
 class CardPurchaseSupplements(SyncAPIResource):
+    with_raw_response: CardPurchaseSupplementsWithRawResponse
+
+    def __init__(self, client: Increase) -> None:
+        super().__init__(client)
+        self.with_raw_response = CardPurchaseSupplementsWithRawResponse(self)
+
     def retrieve(
         self,
         card_purchase_supplement_id: str,
@@ -103,6 +115,12 @@ class CardPurchaseSupplements(SyncAPIResource):
 
 
 class AsyncCardPurchaseSupplements(AsyncAPIResource):
+    with_raw_response: AsyncCardPurchaseSupplementsWithRawResponse
+
+    def __init__(self, client: AsyncIncrease) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncCardPurchaseSupplementsWithRawResponse(self)
+
     async def retrieve(
         self,
         card_purchase_supplement_id: str,
@@ -189,4 +207,24 @@ class AsyncCardPurchaseSupplements(AsyncAPIResource):
                 ),
             ),
             model=CardPurchaseSupplement,
+        )
+
+
+class CardPurchaseSupplementsWithRawResponse:
+    def __init__(self, card_purchase_supplements: CardPurchaseSupplements) -> None:
+        self.retrieve = to_raw_response_wrapper(
+            card_purchase_supplements.retrieve,
+        )
+        self.list = to_raw_response_wrapper(
+            card_purchase_supplements.list,
+        )
+
+
+class AsyncCardPurchaseSupplementsWithRawResponse:
+    def __init__(self, card_purchase_supplements: AsyncCardPurchaseSupplements) -> None:
+        self.retrieve = async_to_raw_response_wrapper(
+            card_purchase_supplements.retrieve,
+        )
+        self.list = async_to_raw_response_wrapper(
+            card_purchase_supplements.list,
         )

@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
 from ..types import (
     RealTimePaymentsTransfer,
     real_time_payments_transfer_list_params,
@@ -10,13 +12,23 @@ from ..types import (
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
+from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
+
+if TYPE_CHECKING:
+    from .._client import Increase, AsyncIncrease
 
 __all__ = ["RealTimePaymentsTransfers", "AsyncRealTimePaymentsTransfers"]
 
 
 class RealTimePaymentsTransfers(SyncAPIResource):
+    with_raw_response: RealTimePaymentsTransfersWithRawResponse
+
+    def __init__(self, client: Increase) -> None:
+        super().__init__(client)
+        self.with_raw_response = RealTimePaymentsTransfersWithRawResponse(self)
+
     def create(
         self,
         *,
@@ -199,6 +211,12 @@ class RealTimePaymentsTransfers(SyncAPIResource):
 
 
 class AsyncRealTimePaymentsTransfers(AsyncAPIResource):
+    with_raw_response: AsyncRealTimePaymentsTransfersWithRawResponse
+
+    def __init__(self, client: AsyncIncrease) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncRealTimePaymentsTransfersWithRawResponse(self)
+
     async def create(
         self,
         *,
@@ -377,4 +395,30 @@ class AsyncRealTimePaymentsTransfers(AsyncAPIResource):
                 ),
             ),
             model=RealTimePaymentsTransfer,
+        )
+
+
+class RealTimePaymentsTransfersWithRawResponse:
+    def __init__(self, real_time_payments_transfers: RealTimePaymentsTransfers) -> None:
+        self.create = to_raw_response_wrapper(
+            real_time_payments_transfers.create,
+        )
+        self.retrieve = to_raw_response_wrapper(
+            real_time_payments_transfers.retrieve,
+        )
+        self.list = to_raw_response_wrapper(
+            real_time_payments_transfers.list,
+        )
+
+
+class AsyncRealTimePaymentsTransfersWithRawResponse:
+    def __init__(self, real_time_payments_transfers: AsyncRealTimePaymentsTransfers) -> None:
+        self.create = async_to_raw_response_wrapper(
+            real_time_payments_transfers.create,
+        )
+        self.retrieve = async_to_raw_response_wrapper(
+            real_time_payments_transfers.retrieve,
+        )
+        self.list = async_to_raw_response_wrapper(
+            real_time_payments_transfers.list,
         )

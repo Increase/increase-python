@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Union
+from typing import TYPE_CHECKING, Union
 from datetime import date
 from typing_extensions import Literal
 
@@ -10,13 +10,23 @@ from ..types import ACHTransfer, ach_transfer_list_params, ach_transfer_create_p
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
+from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
+
+if TYPE_CHECKING:
+    from .._client import Increase, AsyncIncrease
 
 __all__ = ["ACHTransfers", "AsyncACHTransfers"]
 
 
 class ACHTransfers(SyncAPIResource):
+    with_raw_response: ACHTransfersWithRawResponse
+
+    def __init__(self, client: Increase) -> None:
+        super().__init__(client)
+        self.with_raw_response = ACHTransfersWithRawResponse(self)
+
     def create(
         self,
         *,
@@ -336,6 +346,12 @@ class ACHTransfers(SyncAPIResource):
 
 
 class AsyncACHTransfers(AsyncAPIResource):
+    with_raw_response: AsyncACHTransfersWithRawResponse
+
+    def __init__(self, client: AsyncIncrease) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncACHTransfersWithRawResponse(self)
+
     async def create(
         self,
         *,
@@ -651,4 +667,42 @@ class AsyncACHTransfers(AsyncAPIResource):
                 idempotency_key=idempotency_key,
             ),
             cast_to=ACHTransfer,
+        )
+
+
+class ACHTransfersWithRawResponse:
+    def __init__(self, ach_transfers: ACHTransfers) -> None:
+        self.create = to_raw_response_wrapper(
+            ach_transfers.create,
+        )
+        self.retrieve = to_raw_response_wrapper(
+            ach_transfers.retrieve,
+        )
+        self.list = to_raw_response_wrapper(
+            ach_transfers.list,
+        )
+        self.approve = to_raw_response_wrapper(
+            ach_transfers.approve,
+        )
+        self.cancel = to_raw_response_wrapper(
+            ach_transfers.cancel,
+        )
+
+
+class AsyncACHTransfersWithRawResponse:
+    def __init__(self, ach_transfers: AsyncACHTransfers) -> None:
+        self.create = async_to_raw_response_wrapper(
+            ach_transfers.create,
+        )
+        self.retrieve = async_to_raw_response_wrapper(
+            ach_transfers.retrieve,
+        )
+        self.list = async_to_raw_response_wrapper(
+            ach_transfers.list,
+        )
+        self.approve = async_to_raw_response_wrapper(
+            ach_transfers.approve,
+        )
+        self.cancel = async_to_raw_response_wrapper(
+            ach_transfers.cancel,
         )

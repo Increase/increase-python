@@ -9,6 +9,7 @@ import pytest
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
 from increase.types import WireDrawdownRequest
+from increase._client import Increase, AsyncIncrease
 from increase.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -49,11 +50,35 @@ class TestWireDrawdownRequests:
         )
         assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are broken")
+    @parametrize
+    def test_raw_response_create(self, client: Increase) -> None:
+        response = client.wire_drawdown_requests.with_raw_response.create(
+            account_number_id="account_number_v18nkfqm6afpsrvy82b2",
+            amount=10000,
+            message_to_recipient="Invoice 29582",
+            recipient_account_number="987654321",
+            recipient_name="Ian Crease",
+            recipient_routing_number="101050001",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        wire_drawdown_request = response.parse()
+        assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
+
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         wire_drawdown_request = client.wire_drawdown_requests.retrieve(
             "string",
         )
+        assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
+
+    @parametrize
+    def test_raw_response_retrieve(self, client: Increase) -> None:
+        response = client.wire_drawdown_requests.with_raw_response.retrieve(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        wire_drawdown_request = response.parse()
         assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
 
     @parametrize
@@ -67,6 +92,13 @@ class TestWireDrawdownRequests:
             cursor="string",
             limit=0,
         )
+        assert_matches_type(SyncPage[WireDrawdownRequest], wire_drawdown_request, path=["response"])
+
+    @parametrize
+    def test_raw_response_list(self, client: Increase) -> None:
+        response = client.wire_drawdown_requests.with_raw_response.list()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        wire_drawdown_request = response.parse()
         assert_matches_type(SyncPage[WireDrawdownRequest], wire_drawdown_request, path=["response"])
 
 
@@ -104,11 +136,35 @@ class TestAsyncWireDrawdownRequests:
         )
         assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are broken")
+    @parametrize
+    async def test_raw_response_create(self, client: AsyncIncrease) -> None:
+        response = await client.wire_drawdown_requests.with_raw_response.create(
+            account_number_id="account_number_v18nkfqm6afpsrvy82b2",
+            amount=10000,
+            message_to_recipient="Invoice 29582",
+            recipient_account_number="987654321",
+            recipient_name="Ian Crease",
+            recipient_routing_number="101050001",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        wire_drawdown_request = response.parse()
+        assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
+
     @parametrize
     async def test_method_retrieve(self, client: AsyncIncrease) -> None:
         wire_drawdown_request = await client.wire_drawdown_requests.retrieve(
             "string",
         )
+        assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
+
+    @parametrize
+    async def test_raw_response_retrieve(self, client: AsyncIncrease) -> None:
+        response = await client.wire_drawdown_requests.with_raw_response.retrieve(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        wire_drawdown_request = response.parse()
         assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
 
     @parametrize
@@ -122,4 +178,11 @@ class TestAsyncWireDrawdownRequests:
             cursor="string",
             limit=0,
         )
+        assert_matches_type(AsyncPage[WireDrawdownRequest], wire_drawdown_request, path=["response"])
+
+    @parametrize
+    async def test_raw_response_list(self, client: AsyncIncrease) -> None:
+        response = await client.wire_drawdown_requests.with_raw_response.list()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        wire_drawdown_request = response.parse()
         assert_matches_type(AsyncPage[WireDrawdownRequest], wire_drawdown_request, path=["response"])

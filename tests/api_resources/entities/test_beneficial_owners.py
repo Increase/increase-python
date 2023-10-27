@@ -10,6 +10,7 @@ from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
 from increase.types import Entity
 from increase._utils import parse_date
+from increase._client import Increase, AsyncIncrease
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 api_key = "My API Key"
@@ -90,11 +91,47 @@ class TestBeneficialOwners:
         assert_matches_type(Entity, beneficial_owner, path=["response"])
 
     @parametrize
+    def test_raw_response_create(self, client: Increase) -> None:
+        response = client.entities.beneficial_owners.with_raw_response.create(
+            beneficial_owner={
+                "individual": {
+                    "name": "Ian Crease",
+                    "date_of_birth": parse_date("1970-01-31"),
+                    "address": {
+                        "line1": "33 Liberty Street",
+                        "city": "New York",
+                        "state": "NY",
+                        "zip": "10045",
+                    },
+                    "identification": {
+                        "method": "social_security_number",
+                        "number": "078051120",
+                    },
+                },
+                "prongs": ["control"],
+            },
+            entity_id="entity_n8y8tnk2p9339ti393yi",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        beneficial_owner = response.parse()
+        assert_matches_type(Entity, beneficial_owner, path=["response"])
+
+    @parametrize
     def test_method_archive(self, client: Increase) -> None:
         beneficial_owner = client.entities.beneficial_owners.archive(
             beneficial_owner_id="entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7",
             entity_id="entity_n8y8tnk2p9339ti393yi",
         )
+        assert_matches_type(Entity, beneficial_owner, path=["response"])
+
+    @parametrize
+    def test_raw_response_archive(self, client: Increase) -> None:
+        response = client.entities.beneficial_owners.with_raw_response.archive(
+            beneficial_owner_id="entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7",
+            entity_id="entity_n8y8tnk2p9339ti393yi",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        beneficial_owner = response.parse()
         assert_matches_type(Entity, beneficial_owner, path=["response"])
 
     @parametrize
@@ -124,6 +161,22 @@ class TestBeneficialOwners:
             beneficial_owner_id="entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7",
             entity_id="entity_n8y8tnk2p9339ti393yi",
         )
+        assert_matches_type(Entity, beneficial_owner, path=["response"])
+
+    @parametrize
+    def test_raw_response_update_address(self, client: Increase) -> None:
+        response = client.entities.beneficial_owners.with_raw_response.update_address(
+            address={
+                "line1": "33 Liberty Street",
+                "city": "New York",
+                "state": "NY",
+                "zip": "10045",
+            },
+            beneficial_owner_id="entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7",
+            entity_id="entity_n8y8tnk2p9339ti393yi",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        beneficial_owner = response.parse()
         assert_matches_type(Entity, beneficial_owner, path=["response"])
 
 
@@ -202,11 +255,47 @@ class TestAsyncBeneficialOwners:
         assert_matches_type(Entity, beneficial_owner, path=["response"])
 
     @parametrize
+    async def test_raw_response_create(self, client: AsyncIncrease) -> None:
+        response = await client.entities.beneficial_owners.with_raw_response.create(
+            beneficial_owner={
+                "individual": {
+                    "name": "Ian Crease",
+                    "date_of_birth": parse_date("1970-01-31"),
+                    "address": {
+                        "line1": "33 Liberty Street",
+                        "city": "New York",
+                        "state": "NY",
+                        "zip": "10045",
+                    },
+                    "identification": {
+                        "method": "social_security_number",
+                        "number": "078051120",
+                    },
+                },
+                "prongs": ["control"],
+            },
+            entity_id="entity_n8y8tnk2p9339ti393yi",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        beneficial_owner = response.parse()
+        assert_matches_type(Entity, beneficial_owner, path=["response"])
+
+    @parametrize
     async def test_method_archive(self, client: AsyncIncrease) -> None:
         beneficial_owner = await client.entities.beneficial_owners.archive(
             beneficial_owner_id="entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7",
             entity_id="entity_n8y8tnk2p9339ti393yi",
         )
+        assert_matches_type(Entity, beneficial_owner, path=["response"])
+
+    @parametrize
+    async def test_raw_response_archive(self, client: AsyncIncrease) -> None:
+        response = await client.entities.beneficial_owners.with_raw_response.archive(
+            beneficial_owner_id="entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7",
+            entity_id="entity_n8y8tnk2p9339ti393yi",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        beneficial_owner = response.parse()
         assert_matches_type(Entity, beneficial_owner, path=["response"])
 
     @parametrize
@@ -236,4 +325,20 @@ class TestAsyncBeneficialOwners:
             beneficial_owner_id="entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7",
             entity_id="entity_n8y8tnk2p9339ti393yi",
         )
+        assert_matches_type(Entity, beneficial_owner, path=["response"])
+
+    @parametrize
+    async def test_raw_response_update_address(self, client: AsyncIncrease) -> None:
+        response = await client.entities.beneficial_owners.with_raw_response.update_address(
+            address={
+                "line1": "33 Liberty Street",
+                "city": "New York",
+                "state": "NY",
+                "zip": "10045",
+            },
+            beneficial_owner_id="entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7",
+            entity_id="entity_n8y8tnk2p9339ti393yi",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        beneficial_owner = response.parse()
         assert_matches_type(Entity, beneficial_owner, path=["response"])

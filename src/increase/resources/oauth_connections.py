@@ -2,17 +2,29 @@
 
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
 from ..types import OauthConnection, oauth_connection_list_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
+from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
+
+if TYPE_CHECKING:
+    from .._client import Increase, AsyncIncrease
 
 __all__ = ["OauthConnections", "AsyncOauthConnections"]
 
 
 class OauthConnections(SyncAPIResource):
+    with_raw_response: OauthConnectionsWithRawResponse
+
+    def __init__(self, client: Increase) -> None:
+        super().__init__(client)
+        self.with_raw_response = OauthConnectionsWithRawResponse(self)
+
     def retrieve(
         self,
         oauth_connection_id: str,
@@ -96,6 +108,12 @@ class OauthConnections(SyncAPIResource):
 
 
 class AsyncOauthConnections(AsyncAPIResource):
+    with_raw_response: AsyncOauthConnectionsWithRawResponse
+
+    def __init__(self, client: AsyncIncrease) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncOauthConnectionsWithRawResponse(self)
+
     async def retrieve(
         self,
         oauth_connection_id: str,
@@ -175,4 +193,24 @@ class AsyncOauthConnections(AsyncAPIResource):
                 ),
             ),
             model=OauthConnection,
+        )
+
+
+class OauthConnectionsWithRawResponse:
+    def __init__(self, oauth_connections: OauthConnections) -> None:
+        self.retrieve = to_raw_response_wrapper(
+            oauth_connections.retrieve,
+        )
+        self.list = to_raw_response_wrapper(
+            oauth_connections.list,
+        )
+
+
+class AsyncOauthConnectionsWithRawResponse:
+    def __init__(self, oauth_connections: AsyncOauthConnections) -> None:
+        self.retrieve = async_to_raw_response_wrapper(
+            oauth_connections.retrieve,
+        )
+        self.list = async_to_raw_response_wrapper(
+            oauth_connections.list,
         )

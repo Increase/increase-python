@@ -10,6 +10,7 @@ from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
 from increase.types import RealTimePaymentsTransfer
 from increase._utils import parse_datetime
+from increase._client import Increase, AsyncIncrease
 from increase.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -47,10 +48,31 @@ class TestRealTimePaymentsTransfers:
         assert_matches_type(RealTimePaymentsTransfer, real_time_payments_transfer, path=["response"])
 
     @parametrize
+    def test_raw_response_create(self, client: Increase) -> None:
+        response = client.real_time_payments_transfers.with_raw_response.create(
+            amount=100,
+            creditor_name="Ian Crease",
+            remittance_information="Invoice 29582",
+            source_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        real_time_payments_transfer = response.parse()
+        assert_matches_type(RealTimePaymentsTransfer, real_time_payments_transfer, path=["response"])
+
+    @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         real_time_payments_transfer = client.real_time_payments_transfers.retrieve(
             "string",
         )
+        assert_matches_type(RealTimePaymentsTransfer, real_time_payments_transfer, path=["response"])
+
+    @parametrize
+    def test_raw_response_retrieve(self, client: Increase) -> None:
+        response = client.real_time_payments_transfers.with_raw_response.retrieve(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        real_time_payments_transfer = response.parse()
         assert_matches_type(RealTimePaymentsTransfer, real_time_payments_transfer, path=["response"])
 
     @parametrize
@@ -73,6 +95,13 @@ class TestRealTimePaymentsTransfers:
             limit=0,
             unique_identifier="x",
         )
+        assert_matches_type(SyncPage[RealTimePaymentsTransfer], real_time_payments_transfer, path=["response"])
+
+    @parametrize
+    def test_raw_response_list(self, client: Increase) -> None:
+        response = client.real_time_payments_transfers.with_raw_response.list()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        real_time_payments_transfer = response.parse()
         assert_matches_type(SyncPage[RealTimePaymentsTransfer], real_time_payments_transfer, path=["response"])
 
 
@@ -107,10 +136,31 @@ class TestAsyncRealTimePaymentsTransfers:
         assert_matches_type(RealTimePaymentsTransfer, real_time_payments_transfer, path=["response"])
 
     @parametrize
+    async def test_raw_response_create(self, client: AsyncIncrease) -> None:
+        response = await client.real_time_payments_transfers.with_raw_response.create(
+            amount=100,
+            creditor_name="Ian Crease",
+            remittance_information="Invoice 29582",
+            source_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        real_time_payments_transfer = response.parse()
+        assert_matches_type(RealTimePaymentsTransfer, real_time_payments_transfer, path=["response"])
+
+    @parametrize
     async def test_method_retrieve(self, client: AsyncIncrease) -> None:
         real_time_payments_transfer = await client.real_time_payments_transfers.retrieve(
             "string",
         )
+        assert_matches_type(RealTimePaymentsTransfer, real_time_payments_transfer, path=["response"])
+
+    @parametrize
+    async def test_raw_response_retrieve(self, client: AsyncIncrease) -> None:
+        response = await client.real_time_payments_transfers.with_raw_response.retrieve(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        real_time_payments_transfer = response.parse()
         assert_matches_type(RealTimePaymentsTransfer, real_time_payments_transfer, path=["response"])
 
     @parametrize
@@ -133,4 +183,11 @@ class TestAsyncRealTimePaymentsTransfers:
             limit=0,
             unique_identifier="x",
         )
+        assert_matches_type(AsyncPage[RealTimePaymentsTransfer], real_time_payments_transfer, path=["response"])
+
+    @parametrize
+    async def test_raw_response_list(self, client: AsyncIncrease) -> None:
+        response = await client.real_time_payments_transfers.with_raw_response.list()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        real_time_payments_transfer = response.parse()
         assert_matches_type(AsyncPage[RealTimePaymentsTransfer], real_time_payments_transfer, path=["response"])

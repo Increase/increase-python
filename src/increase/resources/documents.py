@@ -2,17 +2,29 @@
 
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
 from ..types import Document, document_list_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
+from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
+
+if TYPE_CHECKING:
+    from .._client import Increase, AsyncIncrease
 
 __all__ = ["Documents", "AsyncDocuments"]
 
 
 class Documents(SyncAPIResource):
+    with_raw_response: DocumentsWithRawResponse
+
+    def __init__(self, client: Increase) -> None:
+        super().__init__(client)
+        self.with_raw_response = DocumentsWithRawResponse(self)
+
     def retrieve(
         self,
         document_id: str,
@@ -104,6 +116,12 @@ class Documents(SyncAPIResource):
 
 
 class AsyncDocuments(AsyncAPIResource):
+    with_raw_response: AsyncDocumentsWithRawResponse
+
+    def __init__(self, client: AsyncIncrease) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncDocumentsWithRawResponse(self)
+
     async def retrieve(
         self,
         document_id: str,
@@ -191,4 +209,24 @@ class AsyncDocuments(AsyncAPIResource):
                 ),
             ),
             model=Document,
+        )
+
+
+class DocumentsWithRawResponse:
+    def __init__(self, documents: Documents) -> None:
+        self.retrieve = to_raw_response_wrapper(
+            documents.retrieve,
+        )
+        self.list = to_raw_response_wrapper(
+            documents.list,
+        )
+
+
+class AsyncDocumentsWithRawResponse:
+    def __init__(self, documents: AsyncDocuments) -> None:
+        self.retrieve = async_to_raw_response_wrapper(
+            documents.retrieve,
+        )
+        self.list = async_to_raw_response_wrapper(
+            documents.list,
         )

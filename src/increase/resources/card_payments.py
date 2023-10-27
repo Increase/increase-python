@@ -2,17 +2,29 @@
 
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
 from ..types import CardPayment, card_payment_list_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
+from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
+
+if TYPE_CHECKING:
+    from .._client import Increase, AsyncIncrease
 
 __all__ = ["CardPayments", "AsyncCardPayments"]
 
 
 class CardPayments(SyncAPIResource):
+    with_raw_response: CardPaymentsWithRawResponse
+
+    def __init__(self, client: Increase) -> None:
+        super().__init__(client)
+        self.with_raw_response = CardPaymentsWithRawResponse(self)
+
     def retrieve(
         self,
         card_payment_id: str,
@@ -106,6 +118,12 @@ class CardPayments(SyncAPIResource):
 
 
 class AsyncCardPayments(AsyncAPIResource):
+    with_raw_response: AsyncCardPaymentsWithRawResponse
+
+    def __init__(self, client: AsyncIncrease) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncCardPaymentsWithRawResponse(self)
+
     async def retrieve(
         self,
         card_payment_id: str,
@@ -195,4 +213,24 @@ class AsyncCardPayments(AsyncAPIResource):
                 ),
             ),
             model=CardPayment,
+        )
+
+
+class CardPaymentsWithRawResponse:
+    def __init__(self, card_payments: CardPayments) -> None:
+        self.retrieve = to_raw_response_wrapper(
+            card_payments.retrieve,
+        )
+        self.list = to_raw_response_wrapper(
+            card_payments.list,
+        )
+
+
+class AsyncCardPaymentsWithRawResponse:
+    def __init__(self, card_payments: AsyncCardPayments) -> None:
+        self.retrieve = async_to_raw_response_wrapper(
+            card_payments.retrieve,
+        )
+        self.list = async_to_raw_response_wrapper(
+            card_payments.list,
         )
