@@ -9,6 +9,7 @@ import pytest
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
 from increase.types import CheckTransfer
+from increase._client import Increase, AsyncIncrease
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 api_key = "My API Key"
@@ -26,12 +27,31 @@ class TestCheckTransfers:
         )
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
+    @parametrize
+    def test_raw_response_deposit(self, client: Increase) -> None:
+        response = client.simulations.check_transfers.with_raw_response.deposit(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        check_transfer = response.parse()
+        assert_matches_type(CheckTransfer, check_transfer, path=["response"])
+
     @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
     def test_method_mail(self, client: Increase) -> None:
         check_transfer = client.simulations.check_transfers.mail(
             "string",
         )
+        assert_matches_type(CheckTransfer, check_transfer, path=["response"])
+
+    @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
+    @parametrize
+    def test_raw_response_mail(self, client: Increase) -> None:
+        response = client.simulations.check_transfers.with_raw_response.mail(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        check_transfer = response.parse()
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
 
@@ -47,10 +67,29 @@ class TestAsyncCheckTransfers:
         )
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
+    @parametrize
+    async def test_raw_response_deposit(self, client: AsyncIncrease) -> None:
+        response = await client.simulations.check_transfers.with_raw_response.deposit(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        check_transfer = response.parse()
+        assert_matches_type(CheckTransfer, check_transfer, path=["response"])
+
     @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
     async def test_method_mail(self, client: AsyncIncrease) -> None:
         check_transfer = await client.simulations.check_transfers.mail(
             "string",
         )
+        assert_matches_type(CheckTransfer, check_transfer, path=["response"])
+
+    @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
+    @parametrize
+    async def test_raw_response_mail(self, client: AsyncIncrease) -> None:
+        response = await client.simulations.check_transfers.with_raw_response.mail(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        check_transfer = response.parse()
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])

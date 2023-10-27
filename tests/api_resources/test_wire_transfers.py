@@ -10,6 +10,7 @@ from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
 from increase.types import WireTransfer
 from increase._utils import parse_datetime
+from increase._client import Increase, AsyncIncrease
 from increase.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -50,10 +51,31 @@ class TestWireTransfers:
         assert_matches_type(WireTransfer, wire_transfer, path=["response"])
 
     @parametrize
+    def test_raw_response_create(self, client: Increase) -> None:
+        response = client.wire_transfers.with_raw_response.create(
+            account_id="account_in71c4amph0vgo2qllky",
+            amount=100,
+            beneficiary_name="Ian Crease",
+            message_to_recipient="New account transfer",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        wire_transfer = response.parse()
+        assert_matches_type(WireTransfer, wire_transfer, path=["response"])
+
+    @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         wire_transfer = client.wire_transfers.retrieve(
             "string",
         )
+        assert_matches_type(WireTransfer, wire_transfer, path=["response"])
+
+    @parametrize
+    def test_raw_response_retrieve(self, client: Increase) -> None:
+        response = client.wire_transfers.with_raw_response.retrieve(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        wire_transfer = response.parse()
         assert_matches_type(WireTransfer, wire_transfer, path=["response"])
 
     @parametrize
@@ -79,6 +101,13 @@ class TestWireTransfers:
         assert_matches_type(SyncPage[WireTransfer], wire_transfer, path=["response"])
 
     @parametrize
+    def test_raw_response_list(self, client: Increase) -> None:
+        response = client.wire_transfers.with_raw_response.list()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        wire_transfer = response.parse()
+        assert_matches_type(SyncPage[WireTransfer], wire_transfer, path=["response"])
+
+    @parametrize
     def test_method_approve(self, client: Increase) -> None:
         wire_transfer = client.wire_transfers.approve(
             "string",
@@ -86,10 +115,28 @@ class TestWireTransfers:
         assert_matches_type(WireTransfer, wire_transfer, path=["response"])
 
     @parametrize
+    def test_raw_response_approve(self, client: Increase) -> None:
+        response = client.wire_transfers.with_raw_response.approve(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        wire_transfer = response.parse()
+        assert_matches_type(WireTransfer, wire_transfer, path=["response"])
+
+    @parametrize
     def test_method_cancel(self, client: Increase) -> None:
         wire_transfer = client.wire_transfers.cancel(
             "string",
         )
+        assert_matches_type(WireTransfer, wire_transfer, path=["response"])
+
+    @parametrize
+    def test_raw_response_cancel(self, client: Increase) -> None:
+        response = client.wire_transfers.with_raw_response.cancel(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        wire_transfer = response.parse()
         assert_matches_type(WireTransfer, wire_transfer, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are broken")
@@ -102,10 +149,30 @@ class TestWireTransfers:
 
     @pytest.mark.skip(reason="Prism tests are broken")
     @parametrize
+    def test_raw_response_reverse(self, client: Increase) -> None:
+        response = client.wire_transfers.with_raw_response.reverse(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        wire_transfer = response.parse()
+        assert_matches_type(WireTransfer, wire_transfer, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are broken")
+    @parametrize
     def test_method_submit(self, client: Increase) -> None:
         wire_transfer = client.wire_transfers.submit(
             "string",
         )
+        assert_matches_type(WireTransfer, wire_transfer, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are broken")
+    @parametrize
+    def test_raw_response_submit(self, client: Increase) -> None:
+        response = client.wire_transfers.with_raw_response.submit(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        wire_transfer = response.parse()
         assert_matches_type(WireTransfer, wire_transfer, path=["response"])
 
 
@@ -143,10 +210,31 @@ class TestAsyncWireTransfers:
         assert_matches_type(WireTransfer, wire_transfer, path=["response"])
 
     @parametrize
+    async def test_raw_response_create(self, client: AsyncIncrease) -> None:
+        response = await client.wire_transfers.with_raw_response.create(
+            account_id="account_in71c4amph0vgo2qllky",
+            amount=100,
+            beneficiary_name="Ian Crease",
+            message_to_recipient="New account transfer",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        wire_transfer = response.parse()
+        assert_matches_type(WireTransfer, wire_transfer, path=["response"])
+
+    @parametrize
     async def test_method_retrieve(self, client: AsyncIncrease) -> None:
         wire_transfer = await client.wire_transfers.retrieve(
             "string",
         )
+        assert_matches_type(WireTransfer, wire_transfer, path=["response"])
+
+    @parametrize
+    async def test_raw_response_retrieve(self, client: AsyncIncrease) -> None:
+        response = await client.wire_transfers.with_raw_response.retrieve(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        wire_transfer = response.parse()
         assert_matches_type(WireTransfer, wire_transfer, path=["response"])
 
     @parametrize
@@ -172,6 +260,13 @@ class TestAsyncWireTransfers:
         assert_matches_type(AsyncPage[WireTransfer], wire_transfer, path=["response"])
 
     @parametrize
+    async def test_raw_response_list(self, client: AsyncIncrease) -> None:
+        response = await client.wire_transfers.with_raw_response.list()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        wire_transfer = response.parse()
+        assert_matches_type(AsyncPage[WireTransfer], wire_transfer, path=["response"])
+
+    @parametrize
     async def test_method_approve(self, client: AsyncIncrease) -> None:
         wire_transfer = await client.wire_transfers.approve(
             "string",
@@ -179,10 +274,28 @@ class TestAsyncWireTransfers:
         assert_matches_type(WireTransfer, wire_transfer, path=["response"])
 
     @parametrize
+    async def test_raw_response_approve(self, client: AsyncIncrease) -> None:
+        response = await client.wire_transfers.with_raw_response.approve(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        wire_transfer = response.parse()
+        assert_matches_type(WireTransfer, wire_transfer, path=["response"])
+
+    @parametrize
     async def test_method_cancel(self, client: AsyncIncrease) -> None:
         wire_transfer = await client.wire_transfers.cancel(
             "string",
         )
+        assert_matches_type(WireTransfer, wire_transfer, path=["response"])
+
+    @parametrize
+    async def test_raw_response_cancel(self, client: AsyncIncrease) -> None:
+        response = await client.wire_transfers.with_raw_response.cancel(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        wire_transfer = response.parse()
         assert_matches_type(WireTransfer, wire_transfer, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are broken")
@@ -195,8 +308,28 @@ class TestAsyncWireTransfers:
 
     @pytest.mark.skip(reason="Prism tests are broken")
     @parametrize
+    async def test_raw_response_reverse(self, client: AsyncIncrease) -> None:
+        response = await client.wire_transfers.with_raw_response.reverse(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        wire_transfer = response.parse()
+        assert_matches_type(WireTransfer, wire_transfer, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are broken")
+    @parametrize
     async def test_method_submit(self, client: AsyncIncrease) -> None:
         wire_transfer = await client.wire_transfers.submit(
             "string",
         )
+        assert_matches_type(WireTransfer, wire_transfer, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are broken")
+    @parametrize
+    async def test_raw_response_submit(self, client: AsyncIncrease) -> None:
+        response = await client.wire_transfers.with_raw_response.submit(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        wire_transfer = response.parse()
         assert_matches_type(WireTransfer, wire_transfer, path=["response"])

@@ -10,6 +10,7 @@ from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
 from increase.types import ACHTransfer
 from increase._utils import parse_datetime
+from increase._client import Increase, AsyncIncrease
 from increase.types.simulations import ACHTransferSimulation
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -43,6 +44,16 @@ class TestACHTransfers:
         )
         assert_matches_type(ACHTransferSimulation, ach_transfer, path=["response"])
 
+    @parametrize
+    def test_raw_response_create_inbound(self, client: Increase) -> None:
+        response = client.simulations.ach_transfers.with_raw_response.create_inbound(
+            account_number_id="account_number_v18nkfqm6afpsrvy82b2",
+            amount=1000,
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        ach_transfer = response.parse()
+        assert_matches_type(ACHTransferSimulation, ach_transfer, path=["response"])
+
     @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
     def test_method_return(self, client: Increase) -> None:
@@ -62,10 +73,30 @@ class TestACHTransfers:
 
     @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
+    def test_raw_response_return(self, client: Increase) -> None:
+        response = client.simulations.ach_transfers.with_raw_response.return_(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        ach_transfer = response.parse()
+        assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
+
+    @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
+    @parametrize
     def test_method_submit(self, client: Increase) -> None:
         ach_transfer = client.simulations.ach_transfers.submit(
             "string",
         )
+        assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
+
+    @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
+    @parametrize
+    def test_raw_response_submit(self, client: Increase) -> None:
+        response = client.simulations.ach_transfers.with_raw_response.submit(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        ach_transfer = response.parse()
         assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
 
 
@@ -96,6 +127,16 @@ class TestAsyncACHTransfers:
         )
         assert_matches_type(ACHTransferSimulation, ach_transfer, path=["response"])
 
+    @parametrize
+    async def test_raw_response_create_inbound(self, client: AsyncIncrease) -> None:
+        response = await client.simulations.ach_transfers.with_raw_response.create_inbound(
+            account_number_id="account_number_v18nkfqm6afpsrvy82b2",
+            amount=1000,
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        ach_transfer = response.parse()
+        assert_matches_type(ACHTransferSimulation, ach_transfer, path=["response"])
+
     @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
     async def test_method_return(self, client: AsyncIncrease) -> None:
@@ -115,8 +156,28 @@ class TestAsyncACHTransfers:
 
     @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
+    async def test_raw_response_return(self, client: AsyncIncrease) -> None:
+        response = await client.simulations.ach_transfers.with_raw_response.return_(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        ach_transfer = response.parse()
+        assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
+
+    @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
+    @parametrize
     async def test_method_submit(self, client: AsyncIncrease) -> None:
         ach_transfer = await client.simulations.ach_transfers.submit(
             "string",
         )
+        assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
+
+    @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
+    @parametrize
+    async def test_raw_response_submit(self, client: AsyncIncrease) -> None:
+        response = await client.simulations.ach_transfers.with_raw_response.submit(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        ach_transfer = response.parse()
         assert_matches_type(ACHTransfer, ach_transfer, path=["response"])

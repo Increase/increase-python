@@ -2,15 +2,27 @@
 
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
 from ...types import CheckDeposit
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._resource import SyncAPIResource, AsyncAPIResource
+from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..._base_client import make_request_options
+
+if TYPE_CHECKING:
+    from ..._client import Increase, AsyncIncrease
 
 __all__ = ["CheckDeposits", "AsyncCheckDeposits"]
 
 
 class CheckDeposits(SyncAPIResource):
+    with_raw_response: CheckDepositsWithRawResponse
+
+    def __init__(self, client: Increase) -> None:
+        super().__init__(client)
+        self.with_raw_response = CheckDepositsWithRawResponse(self)
+
     def reject(
         self,
         check_deposit_id: str,
@@ -138,6 +150,12 @@ class CheckDeposits(SyncAPIResource):
 
 
 class AsyncCheckDeposits(AsyncAPIResource):
+    with_raw_response: AsyncCheckDepositsWithRawResponse
+
+    def __init__(self, client: AsyncIncrease) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncCheckDepositsWithRawResponse(self)
+
     async def reject(
         self,
         check_deposit_id: str,
@@ -261,4 +279,30 @@ class AsyncCheckDeposits(AsyncAPIResource):
                 idempotency_key=idempotency_key,
             ),
             cast_to=CheckDeposit,
+        )
+
+
+class CheckDepositsWithRawResponse:
+    def __init__(self, check_deposits: CheckDeposits) -> None:
+        self.reject = to_raw_response_wrapper(
+            check_deposits.reject,
+        )
+        self.return_ = to_raw_response_wrapper(
+            check_deposits.return_,
+        )
+        self.submit = to_raw_response_wrapper(
+            check_deposits.submit,
+        )
+
+
+class AsyncCheckDepositsWithRawResponse:
+    def __init__(self, check_deposits: AsyncCheckDeposits) -> None:
+        self.reject = async_to_raw_response_wrapper(
+            check_deposits.reject,
+        )
+        self.return_ = async_to_raw_response_wrapper(
+            check_deposits.return_,
+        )
+        self.submit = async_to_raw_response_wrapper(
+            check_deposits.submit,
         )

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
 from typing_extensions import Literal
 
 from ..types import (
@@ -13,13 +14,23 @@ from ..types import (
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
+from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
+
+if TYPE_CHECKING:
+    from .._client import Increase, AsyncIncrease
 
 __all__ = ["InboundACHTransfers", "AsyncInboundACHTransfers"]
 
 
 class InboundACHTransfers(SyncAPIResource):
+    with_raw_response: InboundACHTransfersWithRawResponse
+
+    def __init__(self, client: Increase) -> None:
+        super().__init__(client)
+        self.with_raw_response = InboundACHTransfersWithRawResponse(self)
+
     def retrieve(
         self,
         inbound_ach_transfer_id: str,
@@ -292,6 +303,12 @@ class InboundACHTransfers(SyncAPIResource):
 
 
 class AsyncInboundACHTransfers(AsyncAPIResource):
+    with_raw_response: AsyncInboundACHTransfersWithRawResponse
+
+    def __init__(self, client: AsyncIncrease) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncInboundACHTransfersWithRawResponse(self)
+
     async def retrieve(
         self,
         inbound_ach_transfer_id: str,
@@ -560,4 +577,42 @@ class AsyncInboundACHTransfers(AsyncAPIResource):
                 idempotency_key=idempotency_key,
             ),
             cast_to=InboundACHTransfer,
+        )
+
+
+class InboundACHTransfersWithRawResponse:
+    def __init__(self, inbound_ach_transfers: InboundACHTransfers) -> None:
+        self.retrieve = to_raw_response_wrapper(
+            inbound_ach_transfers.retrieve,
+        )
+        self.list = to_raw_response_wrapper(
+            inbound_ach_transfers.list,
+        )
+        self.decline = to_raw_response_wrapper(
+            inbound_ach_transfers.decline,
+        )
+        self.notification_of_change = to_raw_response_wrapper(
+            inbound_ach_transfers.notification_of_change,
+        )
+        self.transfer_return = to_raw_response_wrapper(
+            inbound_ach_transfers.transfer_return,
+        )
+
+
+class AsyncInboundACHTransfersWithRawResponse:
+    def __init__(self, inbound_ach_transfers: AsyncInboundACHTransfers) -> None:
+        self.retrieve = async_to_raw_response_wrapper(
+            inbound_ach_transfers.retrieve,
+        )
+        self.list = async_to_raw_response_wrapper(
+            inbound_ach_transfers.list,
+        )
+        self.decline = async_to_raw_response_wrapper(
+            inbound_ach_transfers.decline,
+        )
+        self.notification_of_change = async_to_raw_response_wrapper(
+            inbound_ach_transfers.notification_of_change,
+        )
+        self.transfer_return = async_to_raw_response_wrapper(
+            inbound_ach_transfers.transfer_return,
         )

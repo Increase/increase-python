@@ -9,6 +9,7 @@ import pytest
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
 from increase.types import RealTimePaymentsTransfer
+from increase._client import Increase, AsyncIncrease
 from increase.types.simulations import InboundRealTimePaymentsTransferSimulationResult
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -36,6 +37,15 @@ class TestRealTimePaymentsTransfers:
         assert_matches_type(RealTimePaymentsTransfer, real_time_payments_transfer, path=["response"])
 
     @parametrize
+    def test_raw_response_complete(self, client: Increase) -> None:
+        response = client.simulations.real_time_payments_transfers.with_raw_response.complete(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        real_time_payments_transfer = response.parse()
+        assert_matches_type(RealTimePaymentsTransfer, real_time_payments_transfer, path=["response"])
+
+    @parametrize
     def test_method_create_inbound(self, client: Increase) -> None:
         real_time_payments_transfer = client.simulations.real_time_payments_transfers.create_inbound(
             account_number_id="account_number_v18nkfqm6afpsrvy82b2",
@@ -56,6 +66,18 @@ class TestRealTimePaymentsTransfers:
             remittance_information="x",
             request_for_payment_id="real_time_payments_request_for_payment_28kcliz1oevcnqyn9qp7",
         )
+        assert_matches_type(
+            InboundRealTimePaymentsTransferSimulationResult, real_time_payments_transfer, path=["response"]
+        )
+
+    @parametrize
+    def test_raw_response_create_inbound(self, client: Increase) -> None:
+        response = client.simulations.real_time_payments_transfers.with_raw_response.create_inbound(
+            account_number_id="account_number_v18nkfqm6afpsrvy82b2",
+            amount=1000,
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        real_time_payments_transfer = response.parse()
         assert_matches_type(
             InboundRealTimePaymentsTransferSimulationResult, real_time_payments_transfer, path=["response"]
         )
@@ -82,6 +104,15 @@ class TestAsyncRealTimePaymentsTransfers:
         assert_matches_type(RealTimePaymentsTransfer, real_time_payments_transfer, path=["response"])
 
     @parametrize
+    async def test_raw_response_complete(self, client: AsyncIncrease) -> None:
+        response = await client.simulations.real_time_payments_transfers.with_raw_response.complete(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        real_time_payments_transfer = response.parse()
+        assert_matches_type(RealTimePaymentsTransfer, real_time_payments_transfer, path=["response"])
+
+    @parametrize
     async def test_method_create_inbound(self, client: AsyncIncrease) -> None:
         real_time_payments_transfer = await client.simulations.real_time_payments_transfers.create_inbound(
             account_number_id="account_number_v18nkfqm6afpsrvy82b2",
@@ -102,6 +133,18 @@ class TestAsyncRealTimePaymentsTransfers:
             remittance_information="x",
             request_for_payment_id="real_time_payments_request_for_payment_28kcliz1oevcnqyn9qp7",
         )
+        assert_matches_type(
+            InboundRealTimePaymentsTransferSimulationResult, real_time_payments_transfer, path=["response"]
+        )
+
+    @parametrize
+    async def test_raw_response_create_inbound(self, client: AsyncIncrease) -> None:
+        response = await client.simulations.real_time_payments_transfers.with_raw_response.create_inbound(
+            account_number_id="account_number_v18nkfqm6afpsrvy82b2",
+            amount=1000,
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        real_time_payments_transfer = response.parse()
         assert_matches_type(
             InboundRealTimePaymentsTransferSimulationResult, real_time_payments_transfer, path=["response"]
         )

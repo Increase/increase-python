@@ -2,10 +2,13 @@
 
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
 from ...types import Entity
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._resource import SyncAPIResource, AsyncAPIResource
+from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ...pagination import SyncPage, AsyncPage
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.entities import (
@@ -14,10 +17,19 @@ from ...types.entities import (
     supplemental_document_create_params,
 )
 
+if TYPE_CHECKING:
+    from ..._client import Increase, AsyncIncrease
+
 __all__ = ["SupplementalDocuments", "AsyncSupplementalDocuments"]
 
 
 class SupplementalDocuments(SyncAPIResource):
+    with_raw_response: SupplementalDocumentsWithRawResponse
+
+    def __init__(self, client: Increase) -> None:
+        super().__init__(client)
+        self.with_raw_response = SupplementalDocumentsWithRawResponse(self)
+
     def create(
         self,
         entity_id: str,
@@ -118,6 +130,12 @@ class SupplementalDocuments(SyncAPIResource):
 
 
 class AsyncSupplementalDocuments(AsyncAPIResource):
+    with_raw_response: AsyncSupplementalDocumentsWithRawResponse
+
+    def __init__(self, client: AsyncIncrease) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncSupplementalDocumentsWithRawResponse(self)
+
     async def create(
         self,
         entity_id: str,
@@ -214,4 +232,24 @@ class AsyncSupplementalDocuments(AsyncAPIResource):
                 ),
             ),
             model=SupplementalDocument,
+        )
+
+
+class SupplementalDocumentsWithRawResponse:
+    def __init__(self, supplemental_documents: SupplementalDocuments) -> None:
+        self.create = to_raw_response_wrapper(
+            supplemental_documents.create,
+        )
+        self.list = to_raw_response_wrapper(
+            supplemental_documents.list,
+        )
+
+
+class AsyncSupplementalDocumentsWithRawResponse:
+    def __init__(self, supplemental_documents: AsyncSupplementalDocuments) -> None:
+        self.create = async_to_raw_response_wrapper(
+            supplemental_documents.create,
+        )
+        self.list = async_to_raw_response_wrapper(
+            supplemental_documents.list,
         )

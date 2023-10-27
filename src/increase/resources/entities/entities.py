@@ -14,10 +14,21 @@ from ...types import (
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._resource import SyncAPIResource, AsyncAPIResource
+from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ...pagination import SyncPage, AsyncPage
 from ..._base_client import AsyncPaginator, make_request_options
-from .beneficial_owners import BeneficialOwners, AsyncBeneficialOwners
-from .supplemental_documents import SupplementalDocuments, AsyncSupplementalDocuments
+from .beneficial_owners import (
+    BeneficialOwners,
+    AsyncBeneficialOwners,
+    BeneficialOwnersWithRawResponse,
+    AsyncBeneficialOwnersWithRawResponse,
+)
+from .supplemental_documents import (
+    SupplementalDocuments,
+    AsyncSupplementalDocuments,
+    SupplementalDocumentsWithRawResponse,
+    AsyncSupplementalDocumentsWithRawResponse,
+)
 
 if TYPE_CHECKING:
     from ..._client import Increase, AsyncIncrease
@@ -28,11 +39,13 @@ __all__ = ["Entities", "AsyncEntities"]
 class Entities(SyncAPIResource):
     beneficial_owners: BeneficialOwners
     supplemental_documents: SupplementalDocuments
+    with_raw_response: EntitiesWithRawResponse
 
     def __init__(self, client: Increase) -> None:
         super().__init__(client)
         self.beneficial_owners = BeneficialOwners(client)
         self.supplemental_documents = SupplementalDocuments(client)
+        self.with_raw_response = EntitiesWithRawResponse(self)
 
     def create(
         self,
@@ -299,11 +312,13 @@ class Entities(SyncAPIResource):
 class AsyncEntities(AsyncAPIResource):
     beneficial_owners: AsyncBeneficialOwners
     supplemental_documents: AsyncSupplementalDocuments
+    with_raw_response: AsyncEntitiesWithRawResponse
 
     def __init__(self, client: AsyncIncrease) -> None:
         super().__init__(client)
         self.beneficial_owners = AsyncBeneficialOwners(client)
         self.supplemental_documents = AsyncSupplementalDocuments(client)
+        self.with_raw_response = AsyncEntitiesWithRawResponse(self)
 
     async def create(
         self,
@@ -564,4 +579,48 @@ class AsyncEntities(AsyncAPIResource):
                 idempotency_key=idempotency_key,
             ),
             cast_to=Entity,
+        )
+
+
+class EntitiesWithRawResponse:
+    def __init__(self, entities: Entities) -> None:
+        self.beneficial_owners = BeneficialOwnersWithRawResponse(entities.beneficial_owners)
+        self.supplemental_documents = SupplementalDocumentsWithRawResponse(entities.supplemental_documents)
+
+        self.create = to_raw_response_wrapper(
+            entities.create,
+        )
+        self.retrieve = to_raw_response_wrapper(
+            entities.retrieve,
+        )
+        self.list = to_raw_response_wrapper(
+            entities.list,
+        )
+        self.archive = to_raw_response_wrapper(
+            entities.archive,
+        )
+        self.update_address = to_raw_response_wrapper(
+            entities.update_address,
+        )
+
+
+class AsyncEntitiesWithRawResponse:
+    def __init__(self, entities: AsyncEntities) -> None:
+        self.beneficial_owners = AsyncBeneficialOwnersWithRawResponse(entities.beneficial_owners)
+        self.supplemental_documents = AsyncSupplementalDocumentsWithRawResponse(entities.supplemental_documents)
+
+        self.create = async_to_raw_response_wrapper(
+            entities.create,
+        )
+        self.retrieve = async_to_raw_response_wrapper(
+            entities.retrieve,
+        )
+        self.list = async_to_raw_response_wrapper(
+            entities.list,
+        )
+        self.archive = async_to_raw_response_wrapper(
+            entities.archive,
+        )
+        self.update_address = async_to_raw_response_wrapper(
+            entities.update_address,
         )

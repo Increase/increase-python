@@ -2,19 +2,31 @@
 
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._resource import SyncAPIResource, AsyncAPIResource
+from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..._base_client import make_request_options
 from ...types.simulations import (
     DigitalWalletTokenRequestCreateResponse,
     digital_wallet_token_request_create_params,
 )
 
+if TYPE_CHECKING:
+    from ..._client import Increase, AsyncIncrease
+
 __all__ = ["DigitalWalletTokenRequests", "AsyncDigitalWalletTokenRequests"]
 
 
 class DigitalWalletTokenRequests(SyncAPIResource):
+    with_raw_response: DigitalWalletTokenRequestsWithRawResponse
+
+    def __init__(self, client: Increase) -> None:
+        super().__init__(client)
+        self.with_raw_response = DigitalWalletTokenRequestsWithRawResponse(self)
+
     def create(
         self,
         *,
@@ -61,6 +73,12 @@ class DigitalWalletTokenRequests(SyncAPIResource):
 
 
 class AsyncDigitalWalletTokenRequests(AsyncAPIResource):
+    with_raw_response: AsyncDigitalWalletTokenRequestsWithRawResponse
+
+    def __init__(self, client: AsyncIncrease) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncDigitalWalletTokenRequestsWithRawResponse(self)
+
     async def create(
         self,
         *,
@@ -103,4 +121,18 @@ class AsyncDigitalWalletTokenRequests(AsyncAPIResource):
                 idempotency_key=idempotency_key,
             ),
             cast_to=DigitalWalletTokenRequestCreateResponse,
+        )
+
+
+class DigitalWalletTokenRequestsWithRawResponse:
+    def __init__(self, digital_wallet_token_requests: DigitalWalletTokenRequests) -> None:
+        self.create = to_raw_response_wrapper(
+            digital_wallet_token_requests.create,
+        )
+
+
+class AsyncDigitalWalletTokenRequestsWithRawResponse:
+    def __init__(self, digital_wallet_token_requests: AsyncDigitalWalletTokenRequests) -> None:
+        self.create = async_to_raw_response_wrapper(
+            digital_wallet_token_requests.create,
         )

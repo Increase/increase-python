@@ -2,15 +2,27 @@
 
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
 from ...types import CardProfile
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._resource import SyncAPIResource, AsyncAPIResource
+from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..._base_client import make_request_options
+
+if TYPE_CHECKING:
+    from ..._client import Increase, AsyncIncrease
 
 __all__ = ["CardProfiles", "AsyncCardProfiles"]
 
 
 class CardProfiles(SyncAPIResource):
+    with_raw_response: CardProfilesWithRawResponse
+
+    def __init__(self, client: Increase) -> None:
+        super().__init__(client)
+        self.with_raw_response = CardProfilesWithRawResponse(self)
+
     def approve(
         self,
         card_profile_id: str,
@@ -57,6 +69,12 @@ class CardProfiles(SyncAPIResource):
 
 
 class AsyncCardProfiles(AsyncAPIResource):
+    with_raw_response: AsyncCardProfilesWithRawResponse
+
+    def __init__(self, client: AsyncIncrease) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncCardProfilesWithRawResponse(self)
+
     async def approve(
         self,
         card_profile_id: str,
@@ -99,4 +117,18 @@ class AsyncCardProfiles(AsyncAPIResource):
                 idempotency_key=idempotency_key,
             ),
             cast_to=CardProfile,
+        )
+
+
+class CardProfilesWithRawResponse:
+    def __init__(self, card_profiles: CardProfiles) -> None:
+        self.approve = to_raw_response_wrapper(
+            card_profiles.approve,
+        )
+
+
+class AsyncCardProfilesWithRawResponse:
+    def __init__(self, card_profiles: AsyncCardProfiles) -> None:
+        self.approve = async_to_raw_response_wrapper(
+            card_profiles.approve,
         )

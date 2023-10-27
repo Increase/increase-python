@@ -9,6 +9,7 @@ import pytest
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
 from increase.types import BookkeepingAccount
+from increase._client import Increase, AsyncIncrease
 from increase.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -38,11 +39,30 @@ class TestBookkeepingAccounts:
         assert_matches_type(BookkeepingAccount, bookkeeping_account, path=["response"])
 
     @parametrize
+    def test_raw_response_create(self, client: Increase) -> None:
+        response = client.bookkeeping_accounts.with_raw_response.create(
+            name="New Account!",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        bookkeeping_account = response.parse()
+        assert_matches_type(BookkeepingAccount, bookkeeping_account, path=["response"])
+
+    @parametrize
     def test_method_update(self, client: Increase) -> None:
         bookkeeping_account = client.bookkeeping_accounts.update(
             "string",
             name="Deprecated Account",
         )
+        assert_matches_type(BookkeepingAccount, bookkeeping_account, path=["response"])
+
+    @parametrize
+    def test_raw_response_update(self, client: Increase) -> None:
+        response = client.bookkeeping_accounts.with_raw_response.update(
+            "string",
+            name="Deprecated Account",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        bookkeeping_account = response.parse()
         assert_matches_type(BookkeepingAccount, bookkeeping_account, path=["response"])
 
     @parametrize
@@ -56,6 +76,13 @@ class TestBookkeepingAccounts:
             cursor="string",
             limit=0,
         )
+        assert_matches_type(SyncPage[BookkeepingAccount], bookkeeping_account, path=["response"])
+
+    @parametrize
+    def test_raw_response_list(self, client: Increase) -> None:
+        response = client.bookkeeping_accounts.with_raw_response.list()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        bookkeeping_account = response.parse()
         assert_matches_type(SyncPage[BookkeepingAccount], bookkeeping_account, path=["response"])
 
 
@@ -82,11 +109,30 @@ class TestAsyncBookkeepingAccounts:
         assert_matches_type(BookkeepingAccount, bookkeeping_account, path=["response"])
 
     @parametrize
+    async def test_raw_response_create(self, client: AsyncIncrease) -> None:
+        response = await client.bookkeeping_accounts.with_raw_response.create(
+            name="New Account!",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        bookkeeping_account = response.parse()
+        assert_matches_type(BookkeepingAccount, bookkeeping_account, path=["response"])
+
+    @parametrize
     async def test_method_update(self, client: AsyncIncrease) -> None:
         bookkeeping_account = await client.bookkeeping_accounts.update(
             "string",
             name="Deprecated Account",
         )
+        assert_matches_type(BookkeepingAccount, bookkeeping_account, path=["response"])
+
+    @parametrize
+    async def test_raw_response_update(self, client: AsyncIncrease) -> None:
+        response = await client.bookkeeping_accounts.with_raw_response.update(
+            "string",
+            name="Deprecated Account",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        bookkeeping_account = response.parse()
         assert_matches_type(BookkeepingAccount, bookkeeping_account, path=["response"])
 
     @parametrize
@@ -100,4 +146,11 @@ class TestAsyncBookkeepingAccounts:
             cursor="string",
             limit=0,
         )
+        assert_matches_type(AsyncPage[BookkeepingAccount], bookkeeping_account, path=["response"])
+
+    @parametrize
+    async def test_raw_response_list(self, client: AsyncIncrease) -> None:
+        response = await client.bookkeeping_accounts.with_raw_response.list()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        bookkeeping_account = response.parse()
         assert_matches_type(AsyncPage[BookkeepingAccount], bookkeeping_account, path=["response"])

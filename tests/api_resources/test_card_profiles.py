@@ -9,6 +9,7 @@ import pytest
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
 from increase.types import CardProfile
+from increase._client import Increase, AsyncIncrease
 from increase.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -60,10 +61,34 @@ class TestCardProfiles:
         assert_matches_type(CardProfile, card_profile, path=["response"])
 
     @parametrize
+    def test_raw_response_create(self, client: Increase) -> None:
+        response = client.card_profiles.with_raw_response.create(
+            description="My Card Profile",
+            digital_wallets={
+                "issuer_name": "MyBank",
+                "card_description": "MyBank Signature Card",
+                "background_image_file_id": "file_1ai913suu1zfn1pdetru",
+                "app_icon_file_id": "file_8zxqkwlh43wo144u8yec",
+            },
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        card_profile = response.parse()
+        assert_matches_type(CardProfile, card_profile, path=["response"])
+
+    @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         card_profile = client.card_profiles.retrieve(
             "string",
         )
+        assert_matches_type(CardProfile, card_profile, path=["response"])
+
+    @parametrize
+    def test_raw_response_retrieve(self, client: Increase) -> None:
+        response = client.card_profiles.with_raw_response.retrieve(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        card_profile = response.parse()
         assert_matches_type(CardProfile, card_profile, path=["response"])
 
     @parametrize
@@ -82,10 +107,26 @@ class TestCardProfiles:
         assert_matches_type(SyncPage[CardProfile], card_profile, path=["response"])
 
     @parametrize
+    def test_raw_response_list(self, client: Increase) -> None:
+        response = client.card_profiles.with_raw_response.list()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        card_profile = response.parse()
+        assert_matches_type(SyncPage[CardProfile], card_profile, path=["response"])
+
+    @parametrize
     def test_method_archive(self, client: Increase) -> None:
         card_profile = client.card_profiles.archive(
             "string",
         )
+        assert_matches_type(CardProfile, card_profile, path=["response"])
+
+    @parametrize
+    def test_raw_response_archive(self, client: Increase) -> None:
+        response = client.card_profiles.with_raw_response.archive(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        card_profile = response.parse()
         assert_matches_type(CardProfile, card_profile, path=["response"])
 
 
@@ -134,10 +175,34 @@ class TestAsyncCardProfiles:
         assert_matches_type(CardProfile, card_profile, path=["response"])
 
     @parametrize
+    async def test_raw_response_create(self, client: AsyncIncrease) -> None:
+        response = await client.card_profiles.with_raw_response.create(
+            description="My Card Profile",
+            digital_wallets={
+                "issuer_name": "MyBank",
+                "card_description": "MyBank Signature Card",
+                "background_image_file_id": "file_1ai913suu1zfn1pdetru",
+                "app_icon_file_id": "file_8zxqkwlh43wo144u8yec",
+            },
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        card_profile = response.parse()
+        assert_matches_type(CardProfile, card_profile, path=["response"])
+
+    @parametrize
     async def test_method_retrieve(self, client: AsyncIncrease) -> None:
         card_profile = await client.card_profiles.retrieve(
             "string",
         )
+        assert_matches_type(CardProfile, card_profile, path=["response"])
+
+    @parametrize
+    async def test_raw_response_retrieve(self, client: AsyncIncrease) -> None:
+        response = await client.card_profiles.with_raw_response.retrieve(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        card_profile = response.parse()
         assert_matches_type(CardProfile, card_profile, path=["response"])
 
     @parametrize
@@ -156,8 +221,24 @@ class TestAsyncCardProfiles:
         assert_matches_type(AsyncPage[CardProfile], card_profile, path=["response"])
 
     @parametrize
+    async def test_raw_response_list(self, client: AsyncIncrease) -> None:
+        response = await client.card_profiles.with_raw_response.list()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        card_profile = response.parse()
+        assert_matches_type(AsyncPage[CardProfile], card_profile, path=["response"])
+
+    @parametrize
     async def test_method_archive(self, client: AsyncIncrease) -> None:
         card_profile = await client.card_profiles.archive(
             "string",
         )
+        assert_matches_type(CardProfile, card_profile, path=["response"])
+
+    @parametrize
+    async def test_raw_response_archive(self, client: AsyncIncrease) -> None:
+        response = await client.card_profiles.with_raw_response.archive(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        card_profile = response.parse()
         assert_matches_type(CardProfile, card_profile, path=["response"])

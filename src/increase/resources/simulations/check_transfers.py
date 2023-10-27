@@ -2,15 +2,27 @@
 
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
 from ...types import CheckTransfer
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._resource import SyncAPIResource, AsyncAPIResource
+from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..._base_client import make_request_options
+
+if TYPE_CHECKING:
+    from ..._client import Increase, AsyncIncrease
 
 __all__ = ["CheckTransfers", "AsyncCheckTransfers"]
 
 
 class CheckTransfers(SyncAPIResource):
+    with_raw_response: CheckTransfersWithRawResponse
+
+    def __init__(self, client: Increase) -> None:
+        super().__init__(client)
+        self.with_raw_response = CheckTransfersWithRawResponse(self)
+
     def deposit(
         self,
         check_transfer_id: str,
@@ -97,6 +109,12 @@ class CheckTransfers(SyncAPIResource):
 
 
 class AsyncCheckTransfers(AsyncAPIResource):
+    with_raw_response: AsyncCheckTransfersWithRawResponse
+
+    def __init__(self, client: AsyncIncrease) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncCheckTransfersWithRawResponse(self)
+
     async def deposit(
         self,
         check_transfer_id: str,
@@ -179,4 +197,24 @@ class AsyncCheckTransfers(AsyncAPIResource):
                 idempotency_key=idempotency_key,
             ),
             cast_to=CheckTransfer,
+        )
+
+
+class CheckTransfersWithRawResponse:
+    def __init__(self, check_transfers: CheckTransfers) -> None:
+        self.deposit = to_raw_response_wrapper(
+            check_transfers.deposit,
+        )
+        self.mail = to_raw_response_wrapper(
+            check_transfers.mail,
+        )
+
+
+class AsyncCheckTransfersWithRawResponse:
+    def __init__(self, check_transfers: AsyncCheckTransfers) -> None:
+        self.deposit = async_to_raw_response_wrapper(
+            check_transfers.deposit,
+        )
+        self.mail = async_to_raw_response_wrapper(
+            check_transfers.mail,
         )

@@ -2,17 +2,29 @@
 
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
 from ..types import DigitalWalletToken, digital_wallet_token_list_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
+from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
+
+if TYPE_CHECKING:
+    from .._client import Increase, AsyncIncrease
 
 __all__ = ["DigitalWalletTokens", "AsyncDigitalWalletTokens"]
 
 
 class DigitalWalletTokens(SyncAPIResource):
+    with_raw_response: DigitalWalletTokensWithRawResponse
+
+    def __init__(self, client: Increase) -> None:
+        super().__init__(client)
+        self.with_raw_response = DigitalWalletTokensWithRawResponse(self)
+
     def retrieve(
         self,
         digital_wallet_token_id: str,
@@ -102,6 +114,12 @@ class DigitalWalletTokens(SyncAPIResource):
 
 
 class AsyncDigitalWalletTokens(AsyncAPIResource):
+    with_raw_response: AsyncDigitalWalletTokensWithRawResponse
+
+    def __init__(self, client: AsyncIncrease) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncDigitalWalletTokensWithRawResponse(self)
+
     async def retrieve(
         self,
         digital_wallet_token_id: str,
@@ -187,4 +205,24 @@ class AsyncDigitalWalletTokens(AsyncAPIResource):
                 ),
             ),
             model=DigitalWalletToken,
+        )
+
+
+class DigitalWalletTokensWithRawResponse:
+    def __init__(self, digital_wallet_tokens: DigitalWalletTokens) -> None:
+        self.retrieve = to_raw_response_wrapper(
+            digital_wallet_tokens.retrieve,
+        )
+        self.list = to_raw_response_wrapper(
+            digital_wallet_tokens.list,
+        )
+
+
+class AsyncDigitalWalletTokensWithRawResponse:
+    def __init__(self, digital_wallet_tokens: AsyncDigitalWalletTokens) -> None:
+        self.retrieve = async_to_raw_response_wrapper(
+            digital_wallet_tokens.retrieve,
+        )
+        self.list = async_to_raw_response_wrapper(
+            digital_wallet_tokens.list,
         )

@@ -8,6 +8,7 @@ import pytest
 
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
+from increase._client import Increase, AsyncIncrease
 from increase.types.simulations import InboundFundsHoldReleaseResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -26,6 +27,15 @@ class TestInboundFundsHolds:
         )
         assert_matches_type(InboundFundsHoldReleaseResponse, inbound_funds_hold, path=["response"])
 
+    @parametrize
+    def test_raw_response_release(self, client: Increase) -> None:
+        response = client.simulations.inbound_funds_holds.with_raw_response.release(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        inbound_funds_hold = response.parse()
+        assert_matches_type(InboundFundsHoldReleaseResponse, inbound_funds_hold, path=["response"])
+
 
 class TestAsyncInboundFundsHolds:
     strict_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
@@ -37,4 +47,13 @@ class TestAsyncInboundFundsHolds:
         inbound_funds_hold = await client.simulations.inbound_funds_holds.release(
             "string",
         )
+        assert_matches_type(InboundFundsHoldReleaseResponse, inbound_funds_hold, path=["response"])
+
+    @parametrize
+    async def test_raw_response_release(self, client: AsyncIncrease) -> None:
+        response = await client.simulations.inbound_funds_holds.with_raw_response.release(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        inbound_funds_hold = response.parse()
         assert_matches_type(InboundFundsHoldReleaseResponse, inbound_funds_hold, path=["response"])

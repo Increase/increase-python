@@ -2,17 +2,29 @@
 
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
 from ..types import CardProfile, card_profile_list_params, card_profile_create_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
+from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
+
+if TYPE_CHECKING:
+    from .._client import Increase, AsyncIncrease
 
 __all__ = ["CardProfiles", "AsyncCardProfiles"]
 
 
 class CardProfiles(SyncAPIResource):
+    with_raw_response: CardProfilesWithRawResponse
+
+    def __init__(self, client: Increase) -> None:
+        super().__init__(client)
+        self.with_raw_response = CardProfilesWithRawResponse(self)
+
     def create(
         self,
         *,
@@ -195,6 +207,12 @@ class CardProfiles(SyncAPIResource):
 
 
 class AsyncCardProfiles(AsyncAPIResource):
+    with_raw_response: AsyncCardProfilesWithRawResponse
+
+    def __init__(self, client: AsyncIncrease) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncCardProfilesWithRawResponse(self)
+
     async def create(
         self,
         *,
@@ -373,4 +391,36 @@ class AsyncCardProfiles(AsyncAPIResource):
                 idempotency_key=idempotency_key,
             ),
             cast_to=CardProfile,
+        )
+
+
+class CardProfilesWithRawResponse:
+    def __init__(self, card_profiles: CardProfiles) -> None:
+        self.create = to_raw_response_wrapper(
+            card_profiles.create,
+        )
+        self.retrieve = to_raw_response_wrapper(
+            card_profiles.retrieve,
+        )
+        self.list = to_raw_response_wrapper(
+            card_profiles.list,
+        )
+        self.archive = to_raw_response_wrapper(
+            card_profiles.archive,
+        )
+
+
+class AsyncCardProfilesWithRawResponse:
+    def __init__(self, card_profiles: AsyncCardProfiles) -> None:
+        self.create = async_to_raw_response_wrapper(
+            card_profiles.create,
+        )
+        self.retrieve = async_to_raw_response_wrapper(
+            card_profiles.retrieve,
+        )
+        self.list = async_to_raw_response_wrapper(
+            card_profiles.list,
+        )
+        self.archive = async_to_raw_response_wrapper(
+            card_profiles.archive,
         )

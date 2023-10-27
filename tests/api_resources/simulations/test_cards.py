@@ -9,6 +9,7 @@ import pytest
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
 from increase.types import Transaction
+from increase._client import Increase, AsyncIncrease
 from increase.types.simulations import CardAuthorizationSimulation
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -39,6 +40,15 @@ class TestCards:
         assert_matches_type(CardAuthorizationSimulation, card, path=["response"])
 
     @parametrize
+    def test_raw_response_authorize(self, client: Increase) -> None:
+        response = client.simulations.cards.with_raw_response.authorize(
+            amount=1000,
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        card = response.parse()
+        assert_matches_type(CardAuthorizationSimulation, card, path=["response"])
+
+    @parametrize
     def test_method_settlement(self, client: Increase) -> None:
         card = client.simulations.cards.settlement(
             card_id="card_oubs0hwk5rn6knuecxg2",
@@ -53,6 +63,16 @@ class TestCards:
             pending_transaction_id="pending_transaction_k1sfetcau2qbvjbzgju4",
             amount=1,
         )
+        assert_matches_type(Transaction, card, path=["response"])
+
+    @parametrize
+    def test_raw_response_settlement(self, client: Increase) -> None:
+        response = client.simulations.cards.with_raw_response.settlement(
+            card_id="card_oubs0hwk5rn6knuecxg2",
+            pending_transaction_id="pending_transaction_k1sfetcau2qbvjbzgju4",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        card = response.parse()
         assert_matches_type(Transaction, card, path=["response"])
 
 
@@ -80,6 +100,15 @@ class TestAsyncCards:
         assert_matches_type(CardAuthorizationSimulation, card, path=["response"])
 
     @parametrize
+    async def test_raw_response_authorize(self, client: AsyncIncrease) -> None:
+        response = await client.simulations.cards.with_raw_response.authorize(
+            amount=1000,
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        card = response.parse()
+        assert_matches_type(CardAuthorizationSimulation, card, path=["response"])
+
+    @parametrize
     async def test_method_settlement(self, client: AsyncIncrease) -> None:
         card = await client.simulations.cards.settlement(
             card_id="card_oubs0hwk5rn6knuecxg2",
@@ -94,4 +123,14 @@ class TestAsyncCards:
             pending_transaction_id="pending_transaction_k1sfetcau2qbvjbzgju4",
             amount=1,
         )
+        assert_matches_type(Transaction, card, path=["response"])
+
+    @parametrize
+    async def test_raw_response_settlement(self, client: AsyncIncrease) -> None:
+        response = await client.simulations.cards.with_raw_response.settlement(
+            card_id="card_oubs0hwk5rn6knuecxg2",
+            pending_transaction_id="pending_transaction_k1sfetcau2qbvjbzgju4",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        card = response.parse()
         assert_matches_type(Transaction, card, path=["response"])

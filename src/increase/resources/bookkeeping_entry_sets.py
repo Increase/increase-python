@@ -2,19 +2,29 @@
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import TYPE_CHECKING, List, Union
 from datetime import datetime
 
 from ..types import BookkeepingEntrySet, bookkeeping_entry_set_create_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._resource import SyncAPIResource, AsyncAPIResource
+from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from .._base_client import make_request_options
+
+if TYPE_CHECKING:
+    from .._client import Increase, AsyncIncrease
 
 __all__ = ["BookkeepingEntrySets", "AsyncBookkeepingEntrySets"]
 
 
 class BookkeepingEntrySets(SyncAPIResource):
+    with_raw_response: BookkeepingEntrySetsWithRawResponse
+
+    def __init__(self, client: Increase) -> None:
+        super().__init__(client)
+        self.with_raw_response = BookkeepingEntrySetsWithRawResponse(self)
+
     def create(
         self,
         *,
@@ -72,6 +82,12 @@ class BookkeepingEntrySets(SyncAPIResource):
 
 
 class AsyncBookkeepingEntrySets(AsyncAPIResource):
+    with_raw_response: AsyncBookkeepingEntrySetsWithRawResponse
+
+    def __init__(self, client: AsyncIncrease) -> None:
+        super().__init__(client)
+        self.with_raw_response = AsyncBookkeepingEntrySetsWithRawResponse(self)
+
     async def create(
         self,
         *,
@@ -125,4 +141,18 @@ class AsyncBookkeepingEntrySets(AsyncAPIResource):
                 idempotency_key=idempotency_key,
             ),
             cast_to=BookkeepingEntrySet,
+        )
+
+
+class BookkeepingEntrySetsWithRawResponse:
+    def __init__(self, bookkeeping_entry_sets: BookkeepingEntrySets) -> None:
+        self.create = to_raw_response_wrapper(
+            bookkeeping_entry_sets.create,
+        )
+
+
+class AsyncBookkeepingEntrySetsWithRawResponse:
+    def __init__(self, bookkeeping_entry_sets: AsyncBookkeepingEntrySets) -> None:
+        self.create = async_to_raw_response_wrapper(
+            bookkeeping_entry_sets.create,
         )

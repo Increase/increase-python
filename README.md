@@ -290,6 +290,26 @@ if response.my_field is None:
     print('Got json like {"my_field": null}.')
 ```
 
+### Accessing raw response data (e.g. headers)
+
+The "raw" Response object can be accessed by prefixing `.with_raw_response.` to any HTTP method call.
+
+```py
+from increase import Increase
+
+client = Increase()
+response = client.accounts.with_raw_response.create(
+    name="New Account!",
+)
+
+print(response.headers.get('X-My-Header'))
+
+account = response.parse()  # get the object that `accounts.create()` would have returned
+print(account.id)
+```
+
+These methods return an [`APIResponse`](https://github.com/increase/increase-python/src/increase/_response.py) object.
+
 ### Configuring the HTTP client
 
 You can directly override the [httpx client](https://www.python-httpx.org/api/#client) to customize it for your use case, including:
