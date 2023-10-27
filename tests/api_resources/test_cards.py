@@ -129,7 +129,7 @@ class TestCards:
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
             cursor="string",
-            limit=0,
+            limit=1,
         )
         assert_matches_type(SyncPage[Card], card, path=["response"])
 
@@ -269,7 +269,7 @@ class TestAsyncCards:
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
             cursor="string",
-            limit=0,
+            limit=1,
         )
         assert_matches_type(AsyncPage[Card], card, path=["response"])
 

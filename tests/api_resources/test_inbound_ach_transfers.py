@@ -54,7 +54,7 @@ class TestInboundACHTransfers:
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
             cursor="string",
-            limit=0,
+            limit=1,
             status="pending",
         )
         assert_matches_type(SyncPage[InboundACHTransfer], inbound_ach_transfer, path=["response"])
@@ -163,7 +163,7 @@ class TestAsyncInboundACHTransfers:
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
             cursor="string",
-            limit=0,
+            limit=1,
             status="pending",
         )
         assert_matches_type(AsyncPage[InboundACHTransfer], inbound_ach_transfer, path=["response"])

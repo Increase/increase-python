@@ -54,7 +54,7 @@ class TestDigitalWalletTokens:
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
             cursor="string",
-            limit=0,
+            limit=1,
         )
         assert_matches_type(SyncPage[DigitalWalletToken], digital_wallet_token, path=["response"])
 
@@ -103,7 +103,7 @@ class TestAsyncDigitalWalletTokens:
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
             cursor="string",
-            limit=0,
+            limit=1,
         )
         assert_matches_type(AsyncPage[DigitalWalletToken], digital_wallet_token, path=["response"])
 

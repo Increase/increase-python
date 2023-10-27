@@ -46,7 +46,7 @@ class TestPrograms:
     def test_method_list_with_all_params(self, client: Increase) -> None:
         program = client.programs.list(
             cursor="string",
-            limit=0,
+            limit=1,
         )
         assert_matches_type(SyncPage[Program], program, path=["response"])
 
@@ -88,7 +88,7 @@ class TestAsyncPrograms:
     async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
         program = await client.programs.list(
             cursor="string",
-            limit=0,
+            limit=1,
         )
         assert_matches_type(AsyncPage[Program], program, path=["response"])
 

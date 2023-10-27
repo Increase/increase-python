@@ -101,7 +101,7 @@ class TestExternalAccounts:
     def test_method_list_with_all_params(self, client: Increase) -> None:
         external_account = client.external_accounts.list(
             cursor="string",
-            limit=0,
+            limit=1,
             routing_number="xxxxxxxxx",
             status={"in": ["active", "archived"]},
         )
@@ -200,7 +200,7 @@ class TestAsyncExternalAccounts:
     async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
         external_account = await client.external_accounts.list(
             cursor="string",
-            limit=0,
+            limit=1,
             routing_number="xxxxxxxxx",
             status={"in": ["active", "archived"]},
         )

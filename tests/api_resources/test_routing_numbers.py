@@ -33,7 +33,7 @@ class TestRoutingNumbers:
         routing_number = client.routing_numbers.list(
             routing_number="xxxxxxxxx",
             cursor="string",
-            limit=0,
+            limit=1,
         )
         assert_matches_type(SyncPage[RoutingNumber], routing_number, path=["response"])
 
@@ -64,7 +64,7 @@ class TestAsyncRoutingNumbers:
         routing_number = await client.routing_numbers.list(
             routing_number="xxxxxxxxx",
             cursor="string",
-            limit=0,
+            limit=1,
         )
         assert_matches_type(AsyncPage[RoutingNumber], routing_number, path=["response"])
 
