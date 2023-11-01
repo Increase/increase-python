@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.18.0 (2023-11-01)
+
+Full Changelog: [v0.17.0...v0.18.0](https://github.com/increase/increase-python/compare/v0.17.0...v0.18.0)
+
+### Features
+
+* **api:** add failed to export status enum ([#198](https://github.com/increase/increase-python/issues/198)) ([f08bc96](https://github.com/increase/increase-python/commit/f08bc963eff1b09bae9a1820e1cf4828efd80cee))
+* **github:** include a devcontainer setup ([#196](https://github.com/increase/increase-python/issues/196)) ([c849689](https://github.com/increase/increase-python/commit/c84968910586974fc6358644f3ee6c5f1177640d))
+
 ## 0.17.0 (2023-10-27)
 
 Full Changelog: [v0.16.0...v0.17.0](https://github.com/increase/increase-python/compare/v0.16.0...v0.17.0)
