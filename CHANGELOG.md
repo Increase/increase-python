@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.19.0 (2023-11-03)
+
+Full Changelog: [v0.18.0...v0.19.0](https://github.com/increase/increase-python/compare/v0.18.0...v0.19.0)
+
+### Features
+
+* **client:** allow binary returns ([#199](https://github.com/increase/increase-python/issues/199)) ([ea9dace](https://github.com/increase/increase-python/commit/ea9dacebd96704ab71d2e1c23e9a5dc9ee5c4049))
+* **client:** support passing BaseModels to request params at runtime ([#201](https://github.com/increase/increase-python/issues/201)) ([fd4eb69](https://github.com/increase/increase-python/commit/fd4eb698e2ff7c2444ccf5261c567050f7afa729))
+
+
+### Bug Fixes
+
+* **binaries:** don't synchronously block in astream_to_file ([#202](https://github.com/increase/increase-python/issues/202)) ([ba709de](https://github.com/increase/increase-python/commit/ba709de133fa0e2305814ef1e99cf7412b1326d0))
+
 ## 0.18.0 (2023-11-01)
 
 Full Changelog: [v0.17.0...v0.18.0](https://github.com/increase/increase-python/compare/v0.17.0...v0.18.0)
