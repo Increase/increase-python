@@ -46,6 +46,7 @@ so that your API Key is not stored in source control.
 Simply import `AsyncIncrease` instead of `Increase` and use `await` with each API call:
 
 ```python
+import asyncio
 from increase import AsyncIncrease
 
 client = AsyncIncrease(
@@ -56,7 +57,7 @@ client = AsyncIncrease(
 )
 
 
-async def main():
+async def main() -> None:
     account = await client.accounts.create(
         name="My First Increase Account",
     )
@@ -146,11 +147,10 @@ from increase import Increase
 
 client = Increase()
 
-client.accounts.create(
-    foo={
-        "bar": True,
-    },
+account = client.accounts.create(
+    name="New Account!",
 )
+print(account.id)
 ```
 
 ## File Uploads
@@ -188,7 +188,7 @@ client = Increase()
 
 try:
     client.accounts.create(
-        naem="Oops",
+        name="New Account!",
     )
 except increase.APIConnectionError as e:
     print("The server could not be reached")
@@ -299,9 +299,8 @@ from increase import Increase
 
 client = Increase()
 response = client.accounts.with_raw_response.create(
-    name="New Account!",
+    name="My First Increase Account",
 )
-
 print(response.headers.get('X-My-Header'))
 
 account = response.parse()  # get the object that `accounts.create()` would have returned
