@@ -6,6 +6,8 @@ from typing import TYPE_CHECKING, Union
 from datetime import date
 from typing_extensions import Literal
 
+import httpx
+
 from ..types import (
     ACHPrenotification,
     ach_prenotification_list_params,
@@ -54,7 +56,7 @@ class ACHPrenotifications(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> ACHPrenotification:
         """
@@ -143,7 +145,7 @@ class ACHPrenotifications(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ACHPrenotification:
         """
         Retrieve an ACH Prenotification
@@ -178,7 +180,7 @@ class ACHPrenotifications(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SyncPage[ACHPrenotification]:
         """
         List ACH Prenotifications
@@ -248,7 +250,7 @@ class AsyncACHPrenotifications(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> ACHPrenotification:
         """
@@ -337,7 +339,7 @@ class AsyncACHPrenotifications(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ACHPrenotification:
         """
         Retrieve an ACH Prenotification
@@ -372,7 +374,7 @@ class AsyncACHPrenotifications(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AsyncPaginator[ACHPrenotification, AsyncPage[ACHPrenotification]]:
         """
         List ACH Prenotifications
