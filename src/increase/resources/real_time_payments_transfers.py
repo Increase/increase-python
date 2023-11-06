@@ -4,6 +4,8 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
+import httpx
+
 from ..types import (
     RealTimePaymentsTransfer,
     real_time_payments_transfer_list_params,
@@ -46,7 +48,7 @@ class RealTimePaymentsTransfers(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> RealTimePaymentsTransfer:
         """
@@ -122,7 +124,7 @@ class RealTimePaymentsTransfers(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> RealTimePaymentsTransfer:
         """
         Retrieve a Real-Time Payments Transfer
@@ -160,7 +162,7 @@ class RealTimePaymentsTransfers(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SyncPage[RealTimePaymentsTransfer]:
         """
         List Real-Time Payments Transfers
@@ -234,7 +236,7 @@ class AsyncRealTimePaymentsTransfers(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> RealTimePaymentsTransfer:
         """
@@ -310,7 +312,7 @@ class AsyncRealTimePaymentsTransfers(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> RealTimePaymentsTransfer:
         """
         Retrieve a Real-Time Payments Transfer
@@ -348,7 +350,7 @@ class AsyncRealTimePaymentsTransfers(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AsyncPaginator[RealTimePaymentsTransfer, AsyncPage[RealTimePaymentsTransfer]]:
         """
         List Real-Time Payments Transfers

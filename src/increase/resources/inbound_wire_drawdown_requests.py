@@ -4,6 +4,8 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
+import httpx
+
 from ..types import (
     InboundWireDrawdownRequest,
     inbound_wire_drawdown_request_list_params,
@@ -37,7 +39,7 @@ class InboundWireDrawdownRequests(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> InboundWireDrawdownRequest:
         """
         Retrieve an Inbound Wire Drawdown Request
@@ -71,7 +73,7 @@ class InboundWireDrawdownRequests(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SyncPage[InboundWireDrawdownRequest]:
         """
         List Inbound Wire Drawdown Requests
@@ -126,7 +128,7 @@ class AsyncInboundWireDrawdownRequests(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> InboundWireDrawdownRequest:
         """
         Retrieve an Inbound Wire Drawdown Request
@@ -160,7 +162,7 @@ class AsyncInboundWireDrawdownRequests(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AsyncPaginator[InboundWireDrawdownRequest, AsyncPage[InboundWireDrawdownRequest]]:
         """
         List Inbound Wire Drawdown Requests
