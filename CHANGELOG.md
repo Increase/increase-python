@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.19.1 (2023-11-06)
+
+Full Changelog: [v0.19.0...v0.19.1](https://github.com/increase/increase-python/compare/v0.19.0...v0.19.1)
+
+### Bug Fixes
+
+* prevent TypeError in Python 3.8 (ABC is not subscriptable) ([#206](https://github.com/increase/increase-python/issues/206)) ([b0ce5a7](https://github.com/increase/increase-python/commit/b0ce5a7c450fa0d9a940a4c8711514eaf22fd99f))
+
+
+### Chores
+
+* **internal:** remove unused int/float conversion ([#203](https://github.com/increase/increase-python/issues/203)) ([1bfa22d](https://github.com/increase/increase-python/commit/1bfa22da2ff3062891554a5538dca86cfbf9123e))
+
+
+### Documentation
+
+* **readme:** improve example snippets ([#205](https://github.com/increase/increase-python/issues/205)) ([b044462](https://github.com/increase/increase-python/commit/b0444628de6d7ecde79117c523827b450e498b98))
+
 ## 0.19.0 (2023-11-03)
 
 Full Changelog: [v0.18.0...v0.19.0](https://github.com/increase/increase-python/compare/v0.18.0...v0.19.0)
