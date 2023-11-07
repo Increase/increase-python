@@ -307,7 +307,7 @@ account = response.parse()  # get the object that `accounts.create()` would have
 print(account.id)
 ```
 
-These methods return an [`APIResponse`](https://github.com/increase/increase-python/src/increase/_response.py) object.
+These methods return an [`APIResponse`](https://github.com/increase/increase-python/tree/main/src/increase/_response.py) object.
 
 ### Configuring the HTTP client
 
