@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.20.0 (2023-11-08)
+
+Full Changelog: [v0.19.1...v0.20.0](https://github.com/increase/increase-python/compare/v0.19.1...v0.20.0)
+
+### Features
+
+* **api:** restructure balance lookups ([#211](https://github.com/increase/increase-python/issues/211)) ([e087807](https://github.com/increase/increase-python/commit/e087807e433fe307f6a804c990704d8fc8f11cd6))
+* **client:** support passing httpx.Timeout to method timeout argument ([#207](https://github.com/increase/increase-python/issues/207)) ([a6cde16](https://github.com/increase/increase-python/commit/a6cde1664a660f413d03b3ac276acb016ea68e53))
+
+
+### Chores
+
+* **docs:** fix github links ([#210](https://github.com/increase/increase-python/issues/210)) ([33af6f5](https://github.com/increase/increase-python/commit/33af6f537c6bd72d0f67f88918731538789aafd3))
+* **internal:** fix some typos ([#209](https://github.com/increase/increase-python/issues/209)) ([383cc9d](https://github.com/increase/increase-python/commit/383cc9db0503686239a479f517eb25d7eda361c1))
+
 ## 0.19.1 (2023-11-06)
 
 Full Changelog: [v0.19.0...v0.19.1](https://github.com/increase/increase-python/compare/v0.19.0...v0.19.1)
