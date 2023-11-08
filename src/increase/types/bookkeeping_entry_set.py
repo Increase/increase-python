@@ -24,6 +24,9 @@ class BookkeepingEntrySet(BaseModel):
     id: str
     """The entry set identifier."""
 
+    created_at: datetime
+    """When the entry set was created."""
+
     date: datetime
     """The timestamp of the entry set."""
 

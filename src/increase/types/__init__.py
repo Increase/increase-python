@@ -21,6 +21,7 @@ from .check_deposit import CheckDeposit as CheckDeposit
 from .physical_card import PhysicalCard as PhysicalCard
 from .wire_transfer import WireTransfer as WireTransfer
 from .account_number import AccountNumber as AccountNumber
+from .balance_lookup import BalanceLookup as BalanceLookup
 from .check_transfer import CheckTransfer as CheckTransfer
 from .routing_number import RoutingNumber as RoutingNumber
 from .account_transfer import AccountTransfer as AccountTransfer
@@ -53,6 +54,7 @@ from .account_create_params import AccountCreateParams as AccountCreateParams
 from .account_update_params import AccountUpdateParams as AccountUpdateParams
 from .bookkeeping_entry_set import BookkeepingEntrySet as BookkeepingEntrySet
 from .wire_drawdown_request import WireDrawdownRequest as WireDrawdownRequest
+from .account_balance_params import AccountBalanceParams as AccountBalanceParams
 from .transaction_list_params import TransactionListParams as TransactionListParams
 from .ach_transfer_list_params import ACHTransferListParams as ACHTransferListParams
 from .card_dispute_list_params import CardDisputeListParams as CardDisputeListParams
@@ -67,6 +69,9 @@ from .account_number_list_params import (
 )
 from .ach_transfer_create_params import (
     ACHTransferCreateParams as ACHTransferCreateParams,
+)
+from .bookkeeping_balance_lookup import (
+    BookkeepingBalanceLookup as BookkeepingBalanceLookup,
 )
 from .card_dispute_create_params import (
     CardDisputeCreateParams as CardDisputeCreateParams,
@@ -104,9 +109,6 @@ from .account_number_update_params import (
 from .account_transfer_list_params import (
     AccountTransferListParams as AccountTransferListParams,
 )
-from .balance_lookup_lookup_params import (
-    BalanceLookupLookupParams as BalanceLookupLookupParams,
-)
 from .check_transfer_create_params import (
     CheckTransferCreateParams as CheckTransferCreateParams,
 )
@@ -130,9 +132,6 @@ from .inbound_wire_drawdown_request import (
 )
 from .account_transfer_create_params import (
     AccountTransferCreateParams as AccountTransferCreateParams,
-)
-from .balance_lookup_lookup_response import (
-    BalanceLookupLookupResponse as BalanceLookupLookupResponse,
 )
 from .event_subscription_list_params import (
     EventSubscriptionListParams as EventSubscriptionListParams,
@@ -179,8 +178,14 @@ from .bookkeeping_account_create_params import (
 from .bookkeeping_account_update_params import (
     BookkeepingAccountUpdateParams as BookkeepingAccountUpdateParams,
 )
+from .bookkeeping_entry_set_list_params import (
+    BookkeepingEntrySetListParams as BookkeepingEntrySetListParams,
+)
 from .wire_drawdown_request_list_params import (
     WireDrawdownRequestListParams as WireDrawdownRequestListParams,
+)
+from .bookkeeping_account_balance_params import (
+    BookkeepingAccountBalanceParams as BookkeepingAccountBalanceParams,
 )
 from .check_transfer_stop_payment_params import (
     CheckTransferStopPaymentParams as CheckTransferStopPaymentParams,

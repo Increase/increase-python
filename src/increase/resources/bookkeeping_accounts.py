@@ -2,16 +2,19 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Union
+from datetime import datetime
 from typing_extensions import Literal
 
 import httpx
 
 from ..types import (
     BookkeepingAccount,
+    BookkeepingBalanceLookup,
     bookkeeping_account_list_params,
     bookkeeping_account_create_params,
     bookkeeping_account_update_params,
+    bookkeeping_account_balance_params,
 )
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
@@ -186,6 +189,48 @@ class BookkeepingAccounts(SyncAPIResource):
             model=BookkeepingAccount,
         )
 
+    def balance(
+        self,
+        bookkeeping_account_id: str,
+        *,
+        at_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> BookkeepingBalanceLookup:
+        """
+        Retrieve a Bookkeeping Account Balance
+
+        Args:
+          bookkeeping_account_id: The identifier of the Bookkeeping Account to retrieve.
+
+          at_time: The moment to query the balance at. If not set, returns the current balances.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get(
+            f"/bookkeeping_accounts/{bookkeeping_account_id}/balance",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {"at_time": at_time}, bookkeeping_account_balance_params.BookkeepingAccountBalanceParams
+                ),
+            ),
+            cast_to=BookkeepingBalanceLookup,
+        )
+
 
 class AsyncBookkeepingAccounts(AsyncAPIResource):
     with_raw_response: AsyncBookkeepingAccountsWithRawResponse
@@ -347,6 +392,48 @@ class AsyncBookkeepingAccounts(AsyncAPIResource):
             model=BookkeepingAccount,
         )
 
+    async def balance(
+        self,
+        bookkeeping_account_id: str,
+        *,
+        at_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> BookkeepingBalanceLookup:
+        """
+        Retrieve a Bookkeeping Account Balance
+
+        Args:
+          bookkeeping_account_id: The identifier of the Bookkeeping Account to retrieve.
+
+          at_time: The moment to query the balance at. If not set, returns the current balances.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._get(
+            f"/bookkeeping_accounts/{bookkeeping_account_id}/balance",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {"at_time": at_time}, bookkeeping_account_balance_params.BookkeepingAccountBalanceParams
+                ),
+            ),
+            cast_to=BookkeepingBalanceLookup,
+        )
+
 
 class BookkeepingAccountsWithRawResponse:
     def __init__(self, bookkeeping_accounts: BookkeepingAccounts) -> None:
@@ -358,6 +445,9 @@ class BookkeepingAccountsWithRawResponse:
         )
         self.list = to_raw_response_wrapper(
             bookkeeping_accounts.list,
+        )
+        self.balance = to_raw_response_wrapper(
+            bookkeeping_accounts.balance,
         )
 
 
@@ -371,4 +461,7 @@ class AsyncBookkeepingAccountsWithRawResponse:
         )
         self.list = async_to_raw_response_wrapper(
             bookkeeping_accounts.list,
+        )
+        self.balance = async_to_raw_response_wrapper(
+            bookkeeping_accounts.balance,
         )
