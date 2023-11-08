@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Union
+from typing import List, Union
 from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
@@ -16,6 +16,8 @@ __all__ = [
     "BalanceCsvCreatedAt",
     "BookkeepingAccountBalanceCsv",
     "BookkeepingAccountBalanceCsvCreatedAt",
+    "EntityCsv",
+    "EntityCsvStatus",
     "TransactionCsv",
     "TransactionCsvCreatedAt",
 ]
@@ -23,7 +25,9 @@ __all__ = [
 
 class ExportCreateParams(TypedDict, total=False):
     category: Required[
-        Literal["account_statement_ofx", "transaction_csv", "balance_csv", "bookkeeping_account_balance_csv"]
+        Literal[
+            "account_statement_ofx", "transaction_csv", "balance_csv", "bookkeeping_account_balance_csv", "entity_csv"
+        ]
     ]
     """The type of Export to create.
 
@@ -34,6 +38,7 @@ class ExportCreateParams(TypedDict, total=False):
       range.
     - `bookkeeping_account_balance_csv` - Export a CSV of bookkeeping account
       balances for the dates in a given range.
+    - `entity_csv` - Export a CSV of entities with a given status.
     """
 
     account_statement_ofx: AccountStatementOfx
@@ -52,6 +57,12 @@ class ExportCreateParams(TypedDict, total=False):
     """Options for the created export.
 
     Required if `category` is equal to `bookkeeping_account_balance_csv`.
+    """
+
+    entity_csv: EntityCsv
+    """Options for the created export.
+
+    Required if `category` is equal to `entity_csv`.
     """
 
     transaction_csv: TransactionCsv
@@ -161,6 +172,24 @@ class BookkeepingAccountBalanceCsv(TypedDict, total=False):
 
     created_at: BookkeepingAccountBalanceCsvCreatedAt
     """Filter results by time range on the `created_at` attribute."""
+
+
+_EntityCsvStatusReservedKeywords = TypedDict(
+    "_EntityCsvStatusReservedKeywords",
+    {
+        "in": List[Literal["active", "archived", "disabled"]],
+    },
+    total=False,
+)
+
+
+class EntityCsvStatus(_EntityCsvStatusReservedKeywords, total=False):
+    pass
+
+
+class EntityCsv(TypedDict, total=False):
+    status: EntityCsvStatus
+    """Entity statuses to filter by."""
 
 
 class TransactionCsvCreatedAt(TypedDict, total=False):

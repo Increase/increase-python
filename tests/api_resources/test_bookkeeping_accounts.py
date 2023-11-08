@@ -8,7 +8,8 @@ import pytest
 
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
-from increase.types import BookkeepingAccount
+from increase.types import BookkeepingAccount, BookkeepingBalanceLookup
+from increase._utils import parse_datetime
 from increase._client import Increase, AsyncIncrease
 from increase.pagination import SyncPage, AsyncPage
 
@@ -85,6 +86,30 @@ class TestBookkeepingAccounts:
         bookkeeping_account = response.parse()
         assert_matches_type(SyncPage[BookkeepingAccount], bookkeeping_account, path=["response"])
 
+    @parametrize
+    def test_method_balance(self, client: Increase) -> None:
+        bookkeeping_account = client.bookkeeping_accounts.balance(
+            "string",
+        )
+        assert_matches_type(BookkeepingBalanceLookup, bookkeeping_account, path=["response"])
+
+    @parametrize
+    def test_method_balance_with_all_params(self, client: Increase) -> None:
+        bookkeeping_account = client.bookkeeping_accounts.balance(
+            "string",
+            at_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(BookkeepingBalanceLookup, bookkeeping_account, path=["response"])
+
+    @parametrize
+    def test_raw_response_balance(self, client: Increase) -> None:
+        response = client.bookkeeping_accounts.with_raw_response.balance(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        bookkeeping_account = response.parse()
+        assert_matches_type(BookkeepingBalanceLookup, bookkeeping_account, path=["response"])
+
 
 class TestAsyncBookkeepingAccounts:
     strict_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
@@ -154,3 +179,27 @@ class TestAsyncBookkeepingAccounts:
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         bookkeeping_account = response.parse()
         assert_matches_type(AsyncPage[BookkeepingAccount], bookkeeping_account, path=["response"])
+
+    @parametrize
+    async def test_method_balance(self, client: AsyncIncrease) -> None:
+        bookkeeping_account = await client.bookkeeping_accounts.balance(
+            "string",
+        )
+        assert_matches_type(BookkeepingBalanceLookup, bookkeeping_account, path=["response"])
+
+    @parametrize
+    async def test_method_balance_with_all_params(self, client: AsyncIncrease) -> None:
+        bookkeeping_account = await client.bookkeeping_accounts.balance(
+            "string",
+            at_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(BookkeepingBalanceLookup, bookkeeping_account, path=["response"])
+
+    @parametrize
+    async def test_raw_response_balance(self, client: AsyncIncrease) -> None:
+        response = await client.bookkeeping_accounts.with_raw_response.balance(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        bookkeeping_account = response.parse()
+        assert_matches_type(BookkeepingBalanceLookup, bookkeeping_account, path=["response"])

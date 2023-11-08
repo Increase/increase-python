@@ -3,7 +3,7 @@
 Types:
 
 ```python
-from increase.types import Account
+from increase.types import Account, BalanceLookup
 ```
 
 Methods:
@@ -12,6 +12,7 @@ Methods:
 - <code title="get /accounts/{account_id}">client.accounts.<a href="./src/increase/resources/accounts.py">retrieve</a>(account_id) -> <a href="./src/increase/types/account.py">Account</a></code>
 - <code title="patch /accounts/{account_id}">client.accounts.<a href="./src/increase/resources/accounts.py">update</a>(account_id, \*\*<a href="src/increase/types/account_update_params.py">params</a>) -> <a href="./src/increase/types/account.py">Account</a></code>
 - <code title="get /accounts">client.accounts.<a href="./src/increase/resources/accounts.py">list</a>(\*\*<a href="src/increase/types/account_list_params.py">params</a>) -> <a href="./src/increase/types/account.py">SyncPage[Account]</a></code>
+- <code title="get /accounts/{account_id}/balance">client.accounts.<a href="./src/increase/resources/accounts.py">balance</a>(account_id, \*\*<a href="src/increase/types/account_balance_params.py">params</a>) -> <a href="./src/increase/types/balance_lookup.py">BalanceLookup</a></code>
 - <code title="post /accounts/{account_id}/close">client.accounts.<a href="./src/increase/resources/accounts.py">close</a>(account_id) -> <a href="./src/increase/types/account.py">Account</a></code>
 
 # AccountNumbers
@@ -34,7 +35,7 @@ Methods:
 Types:
 
 ```python
-from increase.types import BookkeepingAccount
+from increase.types import BookkeepingAccount, BookkeepingBalanceLookup
 ```
 
 Methods:
@@ -42,6 +43,7 @@ Methods:
 - <code title="post /bookkeeping_accounts">client.bookkeeping_accounts.<a href="./src/increase/resources/bookkeeping_accounts.py">create</a>(\*\*<a href="src/increase/types/bookkeeping_account_create_params.py">params</a>) -> <a href="./src/increase/types/bookkeeping_account.py">BookkeepingAccount</a></code>
 - <code title="patch /bookkeeping_accounts/{bookkeeping_account_id}">client.bookkeeping_accounts.<a href="./src/increase/resources/bookkeeping_accounts.py">update</a>(bookkeeping_account_id, \*\*<a href="src/increase/types/bookkeeping_account_update_params.py">params</a>) -> <a href="./src/increase/types/bookkeeping_account.py">BookkeepingAccount</a></code>
 - <code title="get /bookkeeping_accounts">client.bookkeeping_accounts.<a href="./src/increase/resources/bookkeeping_accounts.py">list</a>(\*\*<a href="src/increase/types/bookkeeping_account_list_params.py">params</a>) -> <a href="./src/increase/types/bookkeeping_account.py">SyncPage[BookkeepingAccount]</a></code>
+- <code title="get /bookkeeping_accounts/{bookkeeping_account_id}/balance">client.bookkeeping_accounts.<a href="./src/increase/resources/bookkeeping_accounts.py">balance</a>(bookkeeping_account_id, \*\*<a href="src/increase/types/bookkeeping_account_balance_params.py">params</a>) -> <a href="./src/increase/types/bookkeeping_balance_lookup.py">BookkeepingBalanceLookup</a></code>
 
 # BookkeepingEntrySets
 
@@ -54,6 +56,8 @@ from increase.types import BookkeepingEntrySet
 Methods:
 
 - <code title="post /bookkeeping_entry_sets">client.bookkeeping_entry_sets.<a href="./src/increase/resources/bookkeeping_entry_sets.py">create</a>(\*\*<a href="src/increase/types/bookkeeping_entry_set_create_params.py">params</a>) -> <a href="./src/increase/types/bookkeeping_entry_set.py">BookkeepingEntrySet</a></code>
+- <code title="get /bookkeeping_entry_sets/{bookkeeping_entry_set_id}">client.bookkeeping_entry_sets.<a href="./src/increase/resources/bookkeeping_entry_sets.py">retrieve</a>(bookkeeping_entry_set_id) -> <a href="./src/increase/types/bookkeeping_entry_set.py">BookkeepingEntrySet</a></code>
+- <code title="get /bookkeeping_entry_sets">client.bookkeeping_entry_sets.<a href="./src/increase/resources/bookkeeping_entry_sets.py">list</a>(\*\*<a href="src/increase/types/bookkeeping_entry_set_list_params.py">params</a>) -> <a href="./src/increase/types/bookkeeping_entry_set.py">SyncPage[BookkeepingEntrySet]</a></code>
 
 # BookkeepingEntries
 
@@ -65,6 +69,7 @@ from increase.types import BookkeepingEntry
 
 Methods:
 
+- <code title="get /bookkeeping_entries/{bookkeeping_entry_id}">client.bookkeeping_entries.<a href="./src/increase/resources/bookkeeping_entries.py">retrieve</a>(bookkeeping_entry_id) -> <a href="./src/increase/types/bookkeeping_entry.py">BookkeepingEntry</a></code>
 - <code title="get /bookkeeping_entries">client.bookkeeping_entries.<a href="./src/increase/resources/bookkeeping_entries.py">list</a>(\*\*<a href="src/increase/types/bookkeeping_entry_list_params.py">params</a>) -> <a href="./src/increase/types/bookkeeping_entry.py">SyncPage[BookkeepingEntry]</a></code>
 
 # RealTimeDecisions
@@ -93,18 +98,6 @@ Methods:
 - <code title="post /real_time_payments_transfers">client.real_time_payments_transfers.<a href="./src/increase/resources/real_time_payments_transfers.py">create</a>(\*\*<a href="src/increase/types/real_time_payments_transfer_create_params.py">params</a>) -> <a href="./src/increase/types/real_time_payments_transfer.py">RealTimePaymentsTransfer</a></code>
 - <code title="get /real_time_payments_transfers/{real_time_payments_transfer_id}">client.real_time_payments_transfers.<a href="./src/increase/resources/real_time_payments_transfers.py">retrieve</a>(real_time_payments_transfer_id) -> <a href="./src/increase/types/real_time_payments_transfer.py">RealTimePaymentsTransfer</a></code>
 - <code title="get /real_time_payments_transfers">client.real_time_payments_transfers.<a href="./src/increase/resources/real_time_payments_transfers.py">list</a>(\*\*<a href="src/increase/types/real_time_payments_transfer_list_params.py">params</a>) -> <a href="./src/increase/types/real_time_payments_transfer.py">SyncPage[RealTimePaymentsTransfer]</a></code>
-
-# BalanceLookups
-
-Types:
-
-```python
-from increase.types import BalanceLookupLookupResponse
-```
-
-Methods:
-
-- <code title="post /balance_lookups">client.balance_lookups.<a href="./src/increase/resources/balance_lookups.py">lookup</a>(\*\*<a href="src/increase/types/balance_lookup_lookup_params.py">params</a>) -> <a href="./src/increase/types/balance_lookup_lookup_response.py">BalanceLookupLookupResponse</a></code>
 
 # Cards
 

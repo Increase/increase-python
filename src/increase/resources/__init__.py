@@ -104,12 +104,6 @@ from .account_numbers import (
     AccountNumbersWithRawResponse,
     AsyncAccountNumbersWithRawResponse,
 )
-from .balance_lookups import (
-    BalanceLookups,
-    AsyncBalanceLookups,
-    BalanceLookupsWithRawResponse,
-    AsyncBalanceLookupsWithRawResponse,
-)
 from .check_transfers import (
     CheckTransfers,
     AsyncCheckTransfers,
@@ -260,10 +254,6 @@ __all__ = [
     "AsyncRealTimePaymentsTransfers",
     "RealTimePaymentsTransfersWithRawResponse",
     "AsyncRealTimePaymentsTransfersWithRawResponse",
-    "BalanceLookups",
-    "AsyncBalanceLookups",
-    "BalanceLookupsWithRawResponse",
-    "AsyncBalanceLookupsWithRawResponse",
     "Cards",
     "AsyncCards",
     "CardsWithRawResponse",

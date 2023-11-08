@@ -1,5 +1,6 @@
 # File generated from our OpenAPI spec by Stainless.
 
+from datetime import datetime
 from typing_extensions import Literal
 
 from .._models import BaseModel
@@ -19,6 +20,9 @@ class BookkeepingEntry(BaseModel):
 
     For dollars, for example, this is cents.
     """
+
+    created_at: datetime
+    """When the entry set was created."""
 
     entry_set_id: str
     """The identifier for the Account the Entry belongs to."""
