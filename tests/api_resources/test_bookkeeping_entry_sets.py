@@ -11,6 +11,7 @@ from tests.utils import assert_matches_type
 from increase.types import BookkeepingEntrySet
 from increase._utils import parse_datetime
 from increase._client import Increase, AsyncIncrease
+from increase.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 api_key = "My API Key"
@@ -73,6 +74,43 @@ class TestBookkeepingEntrySets:
         bookkeeping_entry_set = response.parse()
         assert_matches_type(BookkeepingEntrySet, bookkeeping_entry_set, path=["response"])
 
+    @parametrize
+    def test_method_retrieve(self, client: Increase) -> None:
+        bookkeeping_entry_set = client.bookkeeping_entry_sets.retrieve(
+            "string",
+        )
+        assert_matches_type(BookkeepingEntrySet, bookkeeping_entry_set, path=["response"])
+
+    @parametrize
+    def test_raw_response_retrieve(self, client: Increase) -> None:
+        response = client.bookkeeping_entry_sets.with_raw_response.retrieve(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        bookkeeping_entry_set = response.parse()
+        assert_matches_type(BookkeepingEntrySet, bookkeeping_entry_set, path=["response"])
+
+    @parametrize
+    def test_method_list(self, client: Increase) -> None:
+        bookkeeping_entry_set = client.bookkeeping_entry_sets.list()
+        assert_matches_type(SyncPage[BookkeepingEntrySet], bookkeeping_entry_set, path=["response"])
+
+    @parametrize
+    def test_method_list_with_all_params(self, client: Increase) -> None:
+        bookkeeping_entry_set = client.bookkeeping_entry_sets.list(
+            cursor="string",
+            limit=1,
+            transaction_id="string",
+        )
+        assert_matches_type(SyncPage[BookkeepingEntrySet], bookkeeping_entry_set, path=["response"])
+
+    @parametrize
+    def test_raw_response_list(self, client: Increase) -> None:
+        response = client.bookkeeping_entry_sets.with_raw_response.list()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        bookkeeping_entry_set = response.parse()
+        assert_matches_type(SyncPage[BookkeepingEntrySet], bookkeeping_entry_set, path=["response"])
+
 
 class TestAsyncBookkeepingEntrySets:
     strict_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
@@ -130,3 +168,40 @@ class TestAsyncBookkeepingEntrySets:
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         bookkeeping_entry_set = response.parse()
         assert_matches_type(BookkeepingEntrySet, bookkeeping_entry_set, path=["response"])
+
+    @parametrize
+    async def test_method_retrieve(self, client: AsyncIncrease) -> None:
+        bookkeeping_entry_set = await client.bookkeeping_entry_sets.retrieve(
+            "string",
+        )
+        assert_matches_type(BookkeepingEntrySet, bookkeeping_entry_set, path=["response"])
+
+    @parametrize
+    async def test_raw_response_retrieve(self, client: AsyncIncrease) -> None:
+        response = await client.bookkeeping_entry_sets.with_raw_response.retrieve(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        bookkeeping_entry_set = response.parse()
+        assert_matches_type(BookkeepingEntrySet, bookkeeping_entry_set, path=["response"])
+
+    @parametrize
+    async def test_method_list(self, client: AsyncIncrease) -> None:
+        bookkeeping_entry_set = await client.bookkeeping_entry_sets.list()
+        assert_matches_type(AsyncPage[BookkeepingEntrySet], bookkeeping_entry_set, path=["response"])
+
+    @parametrize
+    async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
+        bookkeeping_entry_set = await client.bookkeeping_entry_sets.list(
+            cursor="string",
+            limit=1,
+            transaction_id="string",
+        )
+        assert_matches_type(AsyncPage[BookkeepingEntrySet], bookkeeping_entry_set, path=["response"])
+
+    @parametrize
+    async def test_raw_response_list(self, client: AsyncIncrease) -> None:
+        response = await client.bookkeeping_entry_sets.with_raw_response.list()
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        bookkeeping_entry_set = response.parse()
+        assert_matches_type(AsyncPage[BookkeepingEntrySet], bookkeeping_entry_set, path=["response"])

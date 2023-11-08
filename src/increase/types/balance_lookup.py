@@ -4,10 +4,10 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["BalanceLookupLookupResponse"]
+__all__ = ["BalanceLookup"]
 
 
-class BalanceLookupLookupResponse(BaseModel):
+class BalanceLookup(BaseModel):
     account_id: str
     """The identifier for the account for which the balance was queried."""
 

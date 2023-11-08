@@ -8,7 +8,7 @@ import pytest
 
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
-from increase.types import Account
+from increase.types import Account, BalanceLookup
 from increase._utils import parse_datetime
 from increase._client import Increase, AsyncIncrease
 from increase.pagination import SyncPage, AsyncPage
@@ -116,6 +116,30 @@ class TestAccounts:
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         account = response.parse()
         assert_matches_type(SyncPage[Account], account, path=["response"])
+
+    @parametrize
+    def test_method_balance(self, client: Increase) -> None:
+        account = client.accounts.balance(
+            "string",
+        )
+        assert_matches_type(BalanceLookup, account, path=["response"])
+
+    @parametrize
+    def test_method_balance_with_all_params(self, client: Increase) -> None:
+        account = client.accounts.balance(
+            "string",
+            at_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(BalanceLookup, account, path=["response"])
+
+    @parametrize
+    def test_raw_response_balance(self, client: Increase) -> None:
+        response = client.accounts.with_raw_response.balance(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        account = response.parse()
+        assert_matches_type(BalanceLookup, account, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are broken")
     @parametrize
@@ -235,6 +259,30 @@ class TestAsyncAccounts:
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         account = response.parse()
         assert_matches_type(AsyncPage[Account], account, path=["response"])
+
+    @parametrize
+    async def test_method_balance(self, client: AsyncIncrease) -> None:
+        account = await client.accounts.balance(
+            "string",
+        )
+        assert_matches_type(BalanceLookup, account, path=["response"])
+
+    @parametrize
+    async def test_method_balance_with_all_params(self, client: AsyncIncrease) -> None:
+        account = await client.accounts.balance(
+            "string",
+            at_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(BalanceLookup, account, path=["response"])
+
+    @parametrize
+    async def test_raw_response_balance(self, client: AsyncIncrease) -> None:
+        response = await client.accounts.with_raw_response.balance(
+            "string",
+        )
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        account = response.parse()
+        assert_matches_type(BalanceLookup, account, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are broken")
     @parametrize

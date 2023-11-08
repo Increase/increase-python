@@ -31,10 +31,13 @@ class Exports(SyncAPIResource):
     def create(
         self,
         *,
-        category: Literal["account_statement_ofx", "transaction_csv", "balance_csv", "bookkeeping_account_balance_csv"],
+        category: Literal[
+            "account_statement_ofx", "transaction_csv", "balance_csv", "bookkeeping_account_balance_csv", "entity_csv"
+        ],
         account_statement_ofx: export_create_params.AccountStatementOfx | NotGiven = NOT_GIVEN,
         balance_csv: export_create_params.BalanceCsv | NotGiven = NOT_GIVEN,
         bookkeeping_account_balance_csv: export_create_params.BookkeepingAccountBalanceCsv | NotGiven = NOT_GIVEN,
+        entity_csv: export_create_params.EntityCsv | NotGiven = NOT_GIVEN,
         transaction_csv: export_create_params.TransactionCsv | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -57,6 +60,7 @@ class Exports(SyncAPIResource):
                 range.
               - `bookkeeping_account_balance_csv` - Export a CSV of bookkeeping account
                 balances for the dates in a given range.
+              - `entity_csv` - Export a CSV of entities with a given status.
 
           account_statement_ofx: Options for the created export. Required if `category` is equal to
               `account_statement_ofx`.
@@ -66,6 +70,8 @@ class Exports(SyncAPIResource):
 
           bookkeeping_account_balance_csv: Options for the created export. Required if `category` is equal to
               `bookkeeping_account_balance_csv`.
+
+          entity_csv: Options for the created export. Required if `category` is equal to `entity_csv`.
 
           transaction_csv: Options for the created export. Required if `category` is equal to
               `transaction_csv`.
@@ -88,6 +94,7 @@ class Exports(SyncAPIResource):
                     "account_statement_ofx": account_statement_ofx,
                     "balance_csv": balance_csv,
                     "bookkeeping_account_balance_csv": bookkeeping_account_balance_csv,
+                    "entity_csv": entity_csv,
                     "transaction_csv": transaction_csv,
                 },
                 export_create_params.ExportCreateParams,
@@ -194,10 +201,13 @@ class AsyncExports(AsyncAPIResource):
     async def create(
         self,
         *,
-        category: Literal["account_statement_ofx", "transaction_csv", "balance_csv", "bookkeeping_account_balance_csv"],
+        category: Literal[
+            "account_statement_ofx", "transaction_csv", "balance_csv", "bookkeeping_account_balance_csv", "entity_csv"
+        ],
         account_statement_ofx: export_create_params.AccountStatementOfx | NotGiven = NOT_GIVEN,
         balance_csv: export_create_params.BalanceCsv | NotGiven = NOT_GIVEN,
         bookkeeping_account_balance_csv: export_create_params.BookkeepingAccountBalanceCsv | NotGiven = NOT_GIVEN,
+        entity_csv: export_create_params.EntityCsv | NotGiven = NOT_GIVEN,
         transaction_csv: export_create_params.TransactionCsv | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -220,6 +230,7 @@ class AsyncExports(AsyncAPIResource):
                 range.
               - `bookkeeping_account_balance_csv` - Export a CSV of bookkeeping account
                 balances for the dates in a given range.
+              - `entity_csv` - Export a CSV of entities with a given status.
 
           account_statement_ofx: Options for the created export. Required if `category` is equal to
               `account_statement_ofx`.
@@ -229,6 +240,8 @@ class AsyncExports(AsyncAPIResource):
 
           bookkeeping_account_balance_csv: Options for the created export. Required if `category` is equal to
               `bookkeeping_account_balance_csv`.
+
+          entity_csv: Options for the created export. Required if `category` is equal to `entity_csv`.
 
           transaction_csv: Options for the created export. Required if `category` is equal to
               `transaction_csv`.
@@ -251,6 +264,7 @@ class AsyncExports(AsyncAPIResource):
                     "account_statement_ofx": account_statement_ofx,
                     "balance_csv": balance_csv,
                     "bookkeeping_account_balance_csv": bookkeeping_account_balance_csv,
+                    "entity_csv": entity_csv,
                     "transaction_csv": transaction_csv,
                 },
                 export_create_params.ExportCreateParams,

@@ -59,7 +59,6 @@ class Increase(SyncAPIClient):
     bookkeeping_entries: resources.BookkeepingEntries
     real_time_decisions: resources.RealTimeDecisions
     real_time_payments_transfers: resources.RealTimePaymentsTransfers
-    balance_lookups: resources.BalanceLookups
     cards: resources.Cards
     card_disputes: resources.CardDisputes
     card_profiles: resources.CardProfiles
@@ -170,7 +169,6 @@ class Increase(SyncAPIClient):
         self.bookkeeping_entries = resources.BookkeepingEntries(self)
         self.real_time_decisions = resources.RealTimeDecisions(self)
         self.real_time_payments_transfers = resources.RealTimePaymentsTransfers(self)
-        self.balance_lookups = resources.BalanceLookups(self)
         self.cards = resources.Cards(self)
         self.card_disputes = resources.CardDisputes(self)
         self.card_profiles = resources.CardProfiles(self)
@@ -392,7 +390,6 @@ class AsyncIncrease(AsyncAPIClient):
     bookkeeping_entries: resources.AsyncBookkeepingEntries
     real_time_decisions: resources.AsyncRealTimeDecisions
     real_time_payments_transfers: resources.AsyncRealTimePaymentsTransfers
-    balance_lookups: resources.AsyncBalanceLookups
     cards: resources.AsyncCards
     card_disputes: resources.AsyncCardDisputes
     card_profiles: resources.AsyncCardProfiles
@@ -503,7 +500,6 @@ class AsyncIncrease(AsyncAPIClient):
         self.bookkeeping_entries = resources.AsyncBookkeepingEntries(self)
         self.real_time_decisions = resources.AsyncRealTimeDecisions(self)
         self.real_time_payments_transfers = resources.AsyncRealTimePaymentsTransfers(self)
-        self.balance_lookups = resources.AsyncBalanceLookups(self)
         self.cards = resources.AsyncCards(self)
         self.card_disputes = resources.AsyncCardDisputes(self)
         self.card_profiles = resources.AsyncCardProfiles(self)
@@ -731,7 +727,6 @@ class IncreaseWithRawResponse:
         self.real_time_payments_transfers = resources.RealTimePaymentsTransfersWithRawResponse(
             client.real_time_payments_transfers
         )
-        self.balance_lookups = resources.BalanceLookupsWithRawResponse(client.balance_lookups)
         self.cards = resources.CardsWithRawResponse(client.cards)
         self.card_disputes = resources.CardDisputesWithRawResponse(client.card_disputes)
         self.card_profiles = resources.CardProfilesWithRawResponse(client.card_profiles)
@@ -781,7 +776,6 @@ class AsyncIncreaseWithRawResponse:
         self.real_time_payments_transfers = resources.AsyncRealTimePaymentsTransfersWithRawResponse(
             client.real_time_payments_transfers
         )
-        self.balance_lookups = resources.AsyncBalanceLookupsWithRawResponse(client.balance_lookups)
         self.cards = resources.AsyncCardsWithRawResponse(client.cards)
         self.card_disputes = resources.AsyncCardDisputesWithRawResponse(client.card_disputes)
         self.card_profiles = resources.AsyncCardProfilesWithRawResponse(client.card_profiles)

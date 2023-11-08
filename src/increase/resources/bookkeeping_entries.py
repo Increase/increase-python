@@ -27,6 +27,39 @@ class BookkeepingEntries(SyncAPIResource):
         super().__init__(client)
         self.with_raw_response = BookkeepingEntriesWithRawResponse(self)
 
+    def retrieve(
+        self,
+        bookkeeping_entry_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> BookkeepingEntry:
+        """
+        Retrieve a Bookkeeping Entry
+
+        Args:
+          bookkeeping_entry_id: The identifier of the Bookkeeping Entry.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get(
+            f"/bookkeeping_entries/{bookkeeping_entry_id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=BookkeepingEntry,
+        )
+
     def list(
         self,
         *,
@@ -83,6 +116,39 @@ class AsyncBookkeepingEntries(AsyncAPIResource):
         super().__init__(client)
         self.with_raw_response = AsyncBookkeepingEntriesWithRawResponse(self)
 
+    async def retrieve(
+        self,
+        bookkeeping_entry_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> BookkeepingEntry:
+        """
+        Retrieve a Bookkeeping Entry
+
+        Args:
+          bookkeeping_entry_id: The identifier of the Bookkeeping Entry.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._get(
+            f"/bookkeeping_entries/{bookkeeping_entry_id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=BookkeepingEntry,
+        )
+
     def list(
         self,
         *,
@@ -134,6 +200,9 @@ class AsyncBookkeepingEntries(AsyncAPIResource):
 
 class BookkeepingEntriesWithRawResponse:
     def __init__(self, bookkeeping_entries: BookkeepingEntries) -> None:
+        self.retrieve = to_raw_response_wrapper(
+            bookkeeping_entries.retrieve,
+        )
         self.list = to_raw_response_wrapper(
             bookkeeping_entries.list,
         )
@@ -141,6 +210,9 @@ class BookkeepingEntriesWithRawResponse:
 
 class AsyncBookkeepingEntriesWithRawResponse:
     def __init__(self, bookkeeping_entries: AsyncBookkeepingEntries) -> None:
+        self.retrieve = async_to_raw_response_wrapper(
+            bookkeeping_entries.retrieve,
+        )
         self.list = async_to_raw_response_wrapper(
             bookkeeping_entries.list,
         )

@@ -2,16 +2,19 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Union
+from datetime import datetime
 from typing_extensions import Literal
 
 import httpx
 
 from ..types import (
     Account,
+    BalanceLookup,
     account_list_params,
     account_create_params,
     account_update_params,
+    account_balance_params,
 )
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
@@ -233,6 +236,46 @@ class Accounts(SyncAPIResource):
                 ),
             ),
             model=Account,
+        )
+
+    def balance(
+        self,
+        account_id: str,
+        *,
+        at_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> BalanceLookup:
+        """
+        Retrieve an Account Balance
+
+        Args:
+          account_id: The identifier of the Account to retrieve.
+
+          at_time: The moment to query the balance at. If not set, returns the current balances.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get(
+            f"/accounts/{account_id}/balance",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"at_time": at_time}, account_balance_params.AccountBalanceParams),
+            ),
+            cast_to=BalanceLookup,
         )
 
     def close(
@@ -486,6 +529,46 @@ class AsyncAccounts(AsyncAPIResource):
             model=Account,
         )
 
+    async def balance(
+        self,
+        account_id: str,
+        *,
+        at_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> BalanceLookup:
+        """
+        Retrieve an Account Balance
+
+        Args:
+          account_id: The identifier of the Account to retrieve.
+
+          at_time: The moment to query the balance at. If not set, returns the current balances.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._get(
+            f"/accounts/{account_id}/balance",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"at_time": at_time}, account_balance_params.AccountBalanceParams),
+            ),
+            cast_to=BalanceLookup,
+        )
+
     async def close(
         self,
         account_id: str,
@@ -542,6 +625,9 @@ class AccountsWithRawResponse:
         self.list = to_raw_response_wrapper(
             accounts.list,
         )
+        self.balance = to_raw_response_wrapper(
+            accounts.balance,
+        )
         self.close = to_raw_response_wrapper(
             accounts.close,
         )
@@ -560,6 +646,9 @@ class AsyncAccountsWithRawResponse:
         )
         self.list = async_to_raw_response_wrapper(
             accounts.list,
+        )
+        self.balance = async_to_raw_response_wrapper(
+            accounts.balance,
         )
         self.close = async_to_raw_response_wrapper(
             accounts.close,
