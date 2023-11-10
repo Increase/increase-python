@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.21.1 (2023-11-10)
+
+Full Changelog: [v0.21.0...v0.21.1](https://github.com/increase/increase-python/compare/v0.21.0...v0.21.1)
+
+### Bug Fixes
+
+* **client:** serialise pydantic v1 default fields correctly in params ([#218](https://github.com/increase/increase-python/issues/218)) ([537b4d7](https://github.com/increase/increase-python/commit/537b4d7df72e0a4dab21259e0127af6f6b25cb47))
+
 ## 0.21.0 (2023-11-10)
 
 Full Changelog: [v0.20.0...v0.21.0](https://github.com/increase/increase-python/compare/v0.20.0...v0.21.0)
