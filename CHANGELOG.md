@@ -1,5 +1,29 @@
 # Changelog
 
+## 0.21.0 (2023-11-10)
+
+Full Changelog: [v0.20.0...v0.21.0](https://github.com/increase/increase-python/compare/v0.20.0...v0.21.0)
+
+### Features
+
+* **client:** support passing chunk size for binary responses ([#214](https://github.com/increase/increase-python/issues/214)) ([b67881f](https://github.com/increase/increase-python/commit/b67881f82d79c54c2287aa6f2c53a17ed8752718))
+
+
+### Bug Fixes
+
+* **models:** mark unknown fields as set in pydantic v1 ([#217](https://github.com/increase/increase-python/issues/217)) ([1f02548](https://github.com/increase/increase-python/commit/1f02548b620f92fad4f47d67b801a63d470bbda9))
+
+
+### Chores
+
+* **internal:** base client updates ([#216](https://github.com/increase/increase-python/issues/216)) ([99926dc](https://github.com/increase/increase-python/commit/99926dc844b91261a41121cd058e3b7259dbc591))
+* **internal:** improve github devcontainer setup ([#212](https://github.com/increase/increase-python/issues/212)) ([ec8f7f5](https://github.com/increase/increase-python/commit/ec8f7f51375bf7948cf97b9ae5a54e76b944b060))
+
+
+### Documentation
+
+* reword package description ([#215](https://github.com/increase/increase-python/issues/215)) ([4da7fb3](https://github.com/increase/increase-python/commit/4da7fb37de3ff0eb6bedfd023fe5a10b85c16b56))
+
 ## 0.20.0 (2023-11-08)
 
 Full Changelog: [v0.19.1...v0.20.0](https://github.com/increase/increase-python/compare/v0.19.1...v0.20.0)
