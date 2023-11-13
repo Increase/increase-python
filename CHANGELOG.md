@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.21.2 (2023-11-13)
+
+Full Changelog: [v0.21.1...v0.21.2](https://github.com/increase/increase-python/compare/v0.21.1...v0.21.2)
+
+### Bug Fixes
+
+* **client:** retry if SSLWantReadError occurs in the async client ([#220](https://github.com/increase/increase-python/issues/220)) ([2a1c996](https://github.com/increase/increase-python/commit/2a1c9960d6847d651d6a0e7e317024cf6684a3f9))
+
 ## 0.21.1 (2023-11-10)
 
 Full Changelog: [v0.21.0...v0.21.1](https://github.com/increase/increase-python/compare/v0.21.0...v0.21.1)
