@@ -322,6 +322,7 @@ import httpx
 from increase import Increase
 
 client = Increase(
+    # Or use the `INCREASE_BASE_URL` env var
     base_url="http://my.test.server.example.com:8083",
     http_client=httpx.Client(
         proxies="http://my.test.proxy.example.com",
