@@ -25,6 +25,8 @@ from increase._base_client import (
     make_request_options,
 )
 
+from .utils import update_env
+
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 api_key = "My API Key"
 
@@ -430,6 +432,21 @@ class TestIncrease:
             "/foo", cast_to=httpx.Response, options=make_request_options(idempotency_key="custom-key")
         )
         assert response.request.headers.get("Idempotency-Key") == "custom-key"
+
+    def test_base_url_env(self) -> None:
+        with update_env(INCREASE_BASE_URL="http://localhost:5000/from/env"):
+            client = Increase(api_key=api_key, _strict_response_validation=True)
+            assert client.base_url == "http://localhost:5000/from/env/"
+
+        # explicit environment arg requires explicitness
+        with update_env(INCREASE_BASE_URL="http://localhost:5000/from/env"):
+            with pytest.raises(ValueError, match=r"you must pass base_url=None"):
+                Increase(api_key=api_key, _strict_response_validation=True, environment="production")
+
+            client = Increase(
+                base_url=None, api_key=api_key, _strict_response_validation=True, environment="production"
+            )
+            assert str(client.base_url).startswith("https://api.increase.com")
 
     @pytest.mark.parametrize(
         "client",
@@ -1071,6 +1088,21 @@ class TestAsyncIncrease:
             "/foo", cast_to=httpx.Response, options=make_request_options(idempotency_key="custom-key")
         )
         assert response.request.headers.get("Idempotency-Key") == "custom-key"
+
+    def test_base_url_env(self) -> None:
+        with update_env(INCREASE_BASE_URL="http://localhost:5000/from/env"):
+            client = AsyncIncrease(api_key=api_key, _strict_response_validation=True)
+            assert client.base_url == "http://localhost:5000/from/env/"
+
+        # explicit environment arg requires explicitness
+        with update_env(INCREASE_BASE_URL="http://localhost:5000/from/env"):
+            with pytest.raises(ValueError, match=r"you must pass base_url=None"):
+                AsyncIncrease(api_key=api_key, _strict_response_validation=True, environment="production")
+
+            client = AsyncIncrease(
+                base_url=None, api_key=api_key, _strict_response_validation=True, environment="production"
+            )
+            assert str(client.base_url).startswith("https://api.increase.com")
 
     @pytest.mark.parametrize(
         "client",
