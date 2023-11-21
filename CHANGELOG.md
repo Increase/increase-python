@@ -1,5 +1,31 @@
 # Changelog
 
+## 0.22.0 (2023-11-21)
+
+Full Changelog: [v0.21.2...v0.22.0](https://github.com/increase/increase-python/compare/v0.21.2...v0.22.0)
+
+### Features
+
+* **client:** support reading the base url from an env variable ([#226](https://github.com/increase/increase-python/issues/226)) ([9a40015](https://github.com/increase/increase-python/commit/9a40015e000098fbab1a8532f3d3c03dc4a0f7e0))
+
+
+### Bug Fixes
+
+* **client:** attempt to parse unknown json content types ([#229](https://github.com/increase/increase-python/issues/229)) ([438e96a](https://github.com/increase/increase-python/commit/438e96a1fc4a41710da60962fa493029ed431034))
+
+
+### Chores
+
+* **internal:** fix devcontainer interpeter path ([#224](https://github.com/increase/increase-python/issues/224)) ([f05b703](https://github.com/increase/increase-python/commit/f05b7038e24a8faa7c4ec22cb7fd289529d48a35))
+* **internal:** fix typo in NotGiven docstring ([#222](https://github.com/increase/increase-python/issues/222)) ([2f29d67](https://github.com/increase/increase-python/commit/2f29d67e5b7b32b5b35a1ef6dd6a7c27e3de606b))
+* **internal:** update type hint for helper function ([#228](https://github.com/increase/increase-python/issues/228)) ([7500d6b](https://github.com/increase/increase-python/commit/7500d6b33cc5a921836c842c235f795359979686))
+
+
+### Documentation
+
+* fix code comment typo ([#225](https://github.com/increase/increase-python/issues/225)) ([1384313](https://github.com/increase/increase-python/commit/13843135b2040202cfcf66df245e8c1c959d80c2))
+* **readme:** minor updates ([#227](https://github.com/increase/increase-python/issues/227)) ([9eba630](https://github.com/increase/increase-python/commit/9eba630dd05d2ee0613cd8f84418f286a79bb807))
+
 ## 0.21.2 (2023-11-13)
 
 Full Changelog: [v0.21.1...v0.21.2](https://github.com/increase/increase-python/compare/v0.21.1...v0.21.2)
