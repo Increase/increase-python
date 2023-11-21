@@ -4,8 +4,8 @@ from __future__ import annotations
 
 import os
 import asyncio
-from typing import Dict, Union, Mapping, cast
-from typing_extensions import Literal, override
+from typing import Any, Dict, Union, Mapping, cast
+from typing_extensions import Self, Literal, override
 
 import httpx
 
@@ -246,12 +246,10 @@ class Increase(SyncAPIClient):
         set_default_headers: Mapping[str, str] | None = None,
         default_query: Mapping[str, object] | None = None,
         set_default_query: Mapping[str, object] | None = None,
-    ) -> Increase:
+        _extra_kwargs: Mapping[str, Any] = {},
+    ) -> Self:
         """
         Create a new client instance re-using the same options given to the current client with optional overriding.
-
-        It should be noted that this does not share the underlying httpx client class which may lead
-        to performance issues.
         """
         if default_headers is not None and set_default_headers is not None:
             raise ValueError("The `default_headers` and `set_default_headers` arguments are mutually exclusive")
@@ -299,6 +297,7 @@ class Increase(SyncAPIClient):
             max_retries=max_retries if is_given(max_retries) else self.max_retries,
             default_headers=headers,
             default_query=params,
+            **_extra_kwargs,
         )
 
     # Alias for `copy` for nicer inline usage, e.g.
@@ -595,12 +594,10 @@ class AsyncIncrease(AsyncAPIClient):
         set_default_headers: Mapping[str, str] | None = None,
         default_query: Mapping[str, object] | None = None,
         set_default_query: Mapping[str, object] | None = None,
-    ) -> AsyncIncrease:
+        _extra_kwargs: Mapping[str, Any] = {},
+    ) -> Self:
         """
         Create a new client instance re-using the same options given to the current client with optional overriding.
-
-        It should be noted that this does not share the underlying httpx client class which may lead
-        to performance issues.
         """
         if default_headers is not None and set_default_headers is not None:
             raise ValueError("The `default_headers` and `set_default_headers` arguments are mutually exclusive")
@@ -648,6 +645,7 @@ class AsyncIncrease(AsyncAPIClient):
             max_retries=max_retries if is_given(max_retries) else self.max_retries,
             default_headers=headers,
             default_query=params,
+            **_extra_kwargs,
         )
 
     # Alias for `copy` for nicer inline usage, e.g.
