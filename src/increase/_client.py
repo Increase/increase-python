@@ -13,6 +13,7 @@ from . import resources, _exceptions
 from ._qs import Querystring
 from ._types import (
     NOT_GIVEN,
+    Omit,
     Timeout,
     NotGiven,
     Transport,
@@ -20,7 +21,7 @@ from ._types import (
     AsyncTransport,
     RequestOptions,
 )
-from ._utils import is_given, is_mapping
+from ._utils import is_given, is_mapping, get_async_library
 from ._version import __version__
 from ._streaming import Stream as Stream
 from ._streaming import AsyncStream as AsyncStream
@@ -231,6 +232,15 @@ class Increase(SyncAPIClient):
     def auth_headers(self) -> dict[str, str]:
         api_key = self.api_key
         return {"Authorization": f"Bearer {api_key}"}
+
+    @property
+    @override
+    def default_headers(self) -> dict[str, str | Omit]:
+        return {
+            **super().default_headers,
+            "X-Stainless-Async": "false",
+            **self._custom_headers,
+        }
 
     def copy(
         self,
@@ -579,6 +589,15 @@ class AsyncIncrease(AsyncAPIClient):
     def auth_headers(self) -> dict[str, str]:
         api_key = self.api_key
         return {"Authorization": f"Bearer {api_key}"}
+
+    @property
+    @override
+    def default_headers(self) -> dict[str, str | Omit]:
+        return {
+            **super().default_headers,
+            "X-Stainless-Async": f"async:{get_async_library()}",
+            **self._custom_headers,
+        }
 
     def copy(
         self,
