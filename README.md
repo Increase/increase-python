@@ -21,11 +21,12 @@ pip install increase
 The full API of this library can be found in [api.md](https://www.github.com/increase/increase-python/blob/main/api.md).
 
 ```python
+import os
 from increase import Increase
 
 client = Increase(
-    # defaults to os.environ.get("INCREASE_API_KEY")
-    api_key="My API Key",
+    # This is the default and can be omitted
+    api_key=os.environ.get("INCREASE_API_KEY"),
     # defaults to "production".
     environment="sandbox",
 )
@@ -46,12 +47,13 @@ so that your API Key is not stored in source control.
 Simply import `AsyncIncrease` instead of `Increase` and use `await` with each API call:
 
 ```python
+import os
 import asyncio
 from increase import AsyncIncrease
 
 client = AsyncIncrease(
-    # defaults to os.environ.get("INCREASE_API_KEY")
-    api_key="My API Key",
+    # This is the default and can be omitted
+    api_key=os.environ.get("INCREASE_API_KEY"),
     # defaults to "production".
     environment="sandbox",
 )
