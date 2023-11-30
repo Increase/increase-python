@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.22.1 (2023-11-30)
+
+Full Changelog: [v0.22.0...v0.22.1](https://github.com/increase/increase-python/compare/v0.22.0...v0.22.1)
+
+### Bug Fixes
+
+* **client:** ensure retried requests are closed ([#240](https://github.com/increase/increase-python/issues/240)) ([7770f37](https://github.com/increase/increase-python/commit/7770f37a3531c21c8ec5b580708bcaadd2f8711c))
+
+
+### Chores
+
+* **client:** improve copy method ([#230](https://github.com/increase/increase-python/issues/230)) ([13e5787](https://github.com/increase/increase-python/commit/13e5787ab1d81fa93a9c190d1137dbdf5ff83547))
+* **deps:** bump mypy to v1.7.1 ([#236](https://github.com/increase/increase-python/issues/236)) ([b23e058](https://github.com/increase/increase-python/commit/b23e0583cfadefaddab1bbc4b70d192620ab9f7a))
+* **internal:** add tests for proxy change ([#239](https://github.com/increase/increase-python/issues/239)) ([001a16b](https://github.com/increase/increase-python/commit/001a16b5b778f7ece6d967f2577122c2f22152b0))
+* **internal:** options updates ([#233](https://github.com/increase/increase-python/issues/233)) ([b8d1e31](https://github.com/increase/increase-python/commit/b8d1e31ff9b7897032e904fc8df0d275e8b6ff44))
+* **internal:** revert recent options change ([#234](https://github.com/increase/increase-python/issues/234)) ([3e38229](https://github.com/increase/increase-python/commit/3e38229a5e7885eb9c0c66f554a41d35c282013b))
+* **internal:** send more detailed x-stainless headers ([#235](https://github.com/increase/increase-python/issues/235)) ([e4171c5](https://github.com/increase/increase-python/commit/e4171c578ca4c44fc21f6f09a7f43509f3f8b500))
+* **internal:** update lock file ([#237](https://github.com/increase/increase-python/issues/237)) ([e147713](https://github.com/increase/increase-python/commit/e1477133c3ca2debd7d8e085bbac9e1d618d0b17))
+* **internal:** updates to proxy helper ([#238](https://github.com/increase/increase-python/issues/238)) ([3684a98](https://github.com/increase/increase-python/commit/3684a986839c949beb61285b290d224ea6dab9a2))
+* **package:** add license classifier metadata ([#232](https://github.com/increase/increase-python/issues/232)) ([de9e6b6](https://github.com/increase/increase-python/commit/de9e6b681445e85f9f3f2e06512e09f11b1e8327))
+
 ## 0.22.0 (2023-11-21)
 
 Full Changelog: [v0.21.2...v0.22.0](https://github.com/increase/increase-python/compare/v0.21.2...v0.22.0)
