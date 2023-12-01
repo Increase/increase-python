@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.22.2 (2023-12-01)
+
+Full Changelog: [v0.22.1...v0.22.2](https://github.com/increase/increase-python/compare/v0.22.1...v0.22.2)
+
+### Bug Fixes
+
+* **client:** correct base_url setter implementation ([#245](https://github.com/increase/increase-python/issues/245)) ([eba6be2](https://github.com/increase/increase-python/commit/eba6be229f88ec97ba1918c44ca41954dcff70e9))
+
+
+### Chores
+
+* **internal:** remove unused type var ([#244](https://github.com/increase/increase-python/issues/244)) ([1441e56](https://github.com/increase/increase-python/commit/1441e563373cf4f083a27c1722d7d4f9dd94abac))
+* **internal:** replace string concatenation with f-strings ([#243](https://github.com/increase/increase-python/issues/243)) ([3afcdc1](https://github.com/increase/increase-python/commit/3afcdc1944ab45a2b1835575a065112060485a5b))
+
+
+### Documentation
+
+* **readme:** update example snippets ([#241](https://github.com/increase/increase-python/issues/241)) ([fda7ca0](https://github.com/increase/increase-python/commit/fda7ca0bf48c4b84079a3bb1473a80f1e8a3024a))
+
 ## 0.22.1 (2023-11-30)
 
 Full Changelog: [v0.22.0...v0.22.1](https://github.com/increase/increase-python/compare/v0.22.0...v0.22.1)
