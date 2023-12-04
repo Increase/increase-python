@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.22.3 (2023-12-04)
+
+Full Changelog: [v0.22.2...v0.22.3](https://github.com/increase/increase-python/compare/v0.22.2...v0.22.3)
+
+### Chores
+
+* **package:** lift anyio v4 restriction ([#246](https://github.com/increase/increase-python/issues/246)) ([d2078ff](https://github.com/increase/increase-python/commit/d2078ff7454985a7b25844a7e26975301b971e90))
+
 ## 0.22.2 (2023-12-01)
 
 Full Changelog: [v0.22.1...v0.22.2](https://github.com/increase/increase-python/compare/v0.22.1...v0.22.2)
