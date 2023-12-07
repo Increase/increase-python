@@ -21,7 +21,11 @@ from ._types import (
     AsyncTransport,
     RequestOptions,
 )
-from ._utils import is_given, is_mapping, get_async_library
+from ._utils import (
+    is_given,
+    is_mapping,
+    get_async_library,
+)
 from ._version import __version__
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
 from ._exceptions import IncreaseError, APIStatusError
