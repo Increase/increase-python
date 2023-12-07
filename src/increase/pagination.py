@@ -11,33 +11,39 @@ __all__ = ["SyncPage", "AsyncPage"]
 
 class SyncPage(BaseSyncPage[ModelT], BasePage[ModelT], Generic[ModelT]):
     data: List[ModelT]
-    next_cursor: Optional[str]
+    next_cursor: Optional[str] = None
 
     @override
     def _get_page_items(self) -> List[ModelT]:
-        return self.data
+        data = self.data
+        if not data:
+            return []
+        return data
 
     @override
     def next_page_info(self) -> Optional[PageInfo]:
-        cursor = self.next_cursor
-        if not cursor:
+        next_cursor = self.next_cursor
+        if not next_cursor:
             return None
 
-        return PageInfo(params={"cursor": cursor})
+        return PageInfo(params={"cursor": next_cursor})
 
 
 class AsyncPage(BaseAsyncPage[ModelT], BasePage[ModelT], Generic[ModelT]):
     data: List[ModelT]
-    next_cursor: Optional[str]
+    next_cursor: Optional[str] = None
 
     @override
     def _get_page_items(self) -> List[ModelT]:
-        return self.data
+        data = self.data
+        if not data:
+            return []
+        return data
 
     @override
     def next_page_info(self) -> Optional[PageInfo]:
-        cursor = self.next_cursor
-        if not cursor:
+        next_cursor = self.next_cursor
+        if not next_cursor:
             return None
 
-        return PageInfo(params={"cursor": cursor})
+        return PageInfo(params={"cursor": next_cursor})
