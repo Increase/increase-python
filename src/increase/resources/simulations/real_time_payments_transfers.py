@@ -7,19 +7,11 @@ from typing import TYPE_CHECKING
 import httpx
 
 from ...types import RealTimePaymentsTransfer
-from ..._types import (
-    NOT_GIVEN,
-    Body,
-    Query,
-    Headers,
-    NotGiven,
-)
+from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
-from ..._base_client import (
-    make_request_options,
-)
+from ..._base_client import make_request_options
 from ...types.simulations import (
     InboundRealTimePaymentsTransferSimulationResult,
     real_time_payments_transfer_complete_params,

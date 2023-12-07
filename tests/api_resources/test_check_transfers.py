@@ -8,9 +8,7 @@ import pytest
 
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
-from increase.types import (
-    CheckTransfer,
-)
+from increase.types import CheckTransfer
 from increase._utils import parse_datetime
 from increase._client import Increase, AsyncIncrease
 from increase.pagination import SyncPage, AsyncPage
