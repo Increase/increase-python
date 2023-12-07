@@ -18,6 +18,7 @@ from increase import Increase, AsyncIncrease, APIResponseValidationError
 from increase._client import Increase, AsyncIncrease
 from increase._models import BaseModel, FinalRequestOptions
 from increase._exceptions import (
+    IncreaseError,
     APIStatusError,
     APITimeoutError,
     APIConnectionError,
@@ -270,7 +271,7 @@ class TestIncrease:
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
         assert request.headers.get("Authorization") == f"Bearer {api_key}"
 
-        with pytest.raises(Exception):
+        with pytest.raises(IncreaseError):
             client2 = Increase(base_url=base_url, api_key=None, _strict_response_validation=True)
             _ = client2
 
@@ -1033,7 +1034,7 @@ class TestAsyncIncrease:
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
         assert request.headers.get("Authorization") == f"Bearer {api_key}"
 
-        with pytest.raises(Exception):
+        with pytest.raises(IncreaseError):
             client2 = AsyncIncrease(base_url=base_url, api_key=None, _strict_response_validation=True)
             _ = client2
 
