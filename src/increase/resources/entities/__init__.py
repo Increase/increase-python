@@ -1,11 +1,6 @@
 # File generated from our OpenAPI spec by Stainless.
 
-from .entities import (
-    Entities,
-    AsyncEntities,
-    EntitiesWithRawResponse,
-    AsyncEntitiesWithRawResponse,
-)
+from .entities import Entities, AsyncEntities, EntitiesWithRawResponse, AsyncEntitiesWithRawResponse
 from .beneficial_owners import (
     BeneficialOwners,
     AsyncBeneficialOwners,
