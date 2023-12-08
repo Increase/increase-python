@@ -142,6 +142,9 @@ from .external_account_create_params import (
 from .external_account_update_params import (
     ExternalAccountUpdateParams as ExternalAccountUpdateParams,
 )
+from .proof_of_authorization_request import (
+    ProofOfAuthorizationRequest as ProofOfAuthorizationRequest,
+)
 from .ach_prenotification_list_params import (
     ACHPrenotificationListParams as ACHPrenotificationListParams,
 )
@@ -205,12 +208,24 @@ from .real_time_payments_transfer_list_params import (
 from .inbound_wire_drawdown_request_list_params import (
     InboundWireDrawdownRequestListParams as InboundWireDrawdownRequestListParams,
 )
+from .proof_of_authorization_request_submission import (
+    ProofOfAuthorizationRequestSubmission as ProofOfAuthorizationRequestSubmission,
+)
 from .real_time_payments_transfer_create_params import (
     RealTimePaymentsTransferCreateParams as RealTimePaymentsTransferCreateParams,
+)
+from .proof_of_authorization_request_list_params import (
+    ProofOfAuthorizationRequestListParams as ProofOfAuthorizationRequestListParams,
 )
 from .inbound_ach_transfer_transfer_return_params import (
     InboundACHTransferTransferReturnParams as InboundACHTransferTransferReturnParams,
 )
 from .inbound_ach_transfer_notification_of_change_params import (
     InboundACHTransferNotificationOfChangeParams as InboundACHTransferNotificationOfChangeParams,
+)
+from .proof_of_authorization_request_submission_list_params import (
+    ProofOfAuthorizationRequestSubmissionListParams as ProofOfAuthorizationRequestSubmissionListParams,
+)
+from .proof_of_authorization_request_submission_create_params import (
+    ProofOfAuthorizationRequestSubmissionCreateParams as ProofOfAuthorizationRequestSubmissionCreateParams,
 )
