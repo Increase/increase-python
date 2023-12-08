@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.22.4 (2023-12-08)
+
+Full Changelog: [v0.22.3...v0.22.4](https://github.com/increase/increase-python/compare/v0.22.3...v0.22.4)
+
+### Bug Fixes
+
+* **errors:** properly assign APIError.body ([#256](https://github.com/increase/increase-python/issues/256)) ([7a4aafe](https://github.com/increase/increase-python/commit/7a4aafe145a316df6ceea59b4044d2bd705d09f1))
+
+
+### Chores
+
+* **internal:** enable more lint rules ([#255](https://github.com/increase/increase-python/issues/255)) ([c7d7830](https://github.com/increase/increase-python/commit/c7d7830232718e1b835021c5f43d61295a2152e6))
+* **internal:** minor updates to pagination ([#253](https://github.com/increase/increase-python/issues/253)) ([d9f81e8](https://github.com/increase/increase-python/commit/d9f81e8e61336cfe55e58fdcd7c7f69bbdeb91e1))
+* **internal:** reformat imports ([#251](https://github.com/increase/increase-python/issues/251)) ([b6efa55](https://github.com/increase/increase-python/commit/b6efa55b15fba25424c945a8839913e166b95981))
+* **internal:** reformat imports ([#254](https://github.com/increase/increase-python/issues/254)) ([6aee527](https://github.com/increase/increase-python/commit/6aee5276b7da2c2ac6b56dc660863e174db52a89))
+* **internal:** update formatting ([#252](https://github.com/increase/increase-python/issues/252)) ([3e8b8d2](https://github.com/increase/increase-python/commit/3e8b8d2e949d35e82a2101afdd6220a2fc8913ec))
+
 ## 0.22.3 (2023-12-04)
 
 Full Changelog: [v0.22.2...v0.22.3](https://github.com/increase/increase-python/compare/v0.22.2...v0.22.3)
