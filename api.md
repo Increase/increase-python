@@ -717,3 +717,30 @@ Methods:
 
 - <code title="get /card_payments/{card_payment_id}">client.card_payments.<a href="./src/increase/resources/card_payments.py">retrieve</a>(card_payment_id) -> <a href="./src/increase/types/card_payment.py">CardPayment</a></code>
 - <code title="get /card_payments">client.card_payments.<a href="./src/increase/resources/card_payments.py">list</a>(\*\*<a href="src/increase/types/card_payment_list_params.py">params</a>) -> <a href="./src/increase/types/card_payment.py">SyncPage[CardPayment]</a></code>
+
+# ProofOfAuthorizationRequests
+
+Types:
+
+```python
+from increase.types import ProofOfAuthorizationRequest
+```
+
+Methods:
+
+- <code title="get /proof_of_authorization_requests/{proof_of_authorization_request_id}">client.proof_of_authorization_requests.<a href="./src/increase/resources/proof_of_authorization_requests.py">retrieve</a>(proof_of_authorization_request_id) -> <a href="./src/increase/types/proof_of_authorization_request.py">ProofOfAuthorizationRequest</a></code>
+- <code title="get /proof_of_authorization_requests">client.proof_of_authorization_requests.<a href="./src/increase/resources/proof_of_authorization_requests.py">list</a>(\*\*<a href="src/increase/types/proof_of_authorization_request_list_params.py">params</a>) -> <a href="./src/increase/types/proof_of_authorization_request.py">SyncPage[ProofOfAuthorizationRequest]</a></code>
+
+# ProofOfAuthorizationRequestSubmissions
+
+Types:
+
+```python
+from increase.types import ProofOfAuthorizationRequestSubmission
+```
+
+Methods:
+
+- <code title="post /proof_of_authorization_request_submissions">client.proof_of_authorization_request_submissions.<a href="./src/increase/resources/proof_of_authorization_request_submissions.py">create</a>(\*\*<a href="src/increase/types/proof_of_authorization_request_submission_create_params.py">params</a>) -> <a href="./src/increase/types/proof_of_authorization_request_submission.py">ProofOfAuthorizationRequestSubmission</a></code>
+- <code title="get /proof_of_authorization_request_submissions/{proof_of_authorization_request_submission_id}">client.proof_of_authorization_request_submissions.<a href="./src/increase/resources/proof_of_authorization_request_submissions.py">retrieve</a>(proof_of_authorization_request_submission_id) -> <a href="./src/increase/types/proof_of_authorization_request_submission.py">ProofOfAuthorizationRequestSubmission</a></code>
+- <code title="get /proof_of_authorization_request_submissions">client.proof_of_authorization_request_submissions.<a href="./src/increase/resources/proof_of_authorization_request_submissions.py">list</a>(\*\*<a href="src/increase/types/proof_of_authorization_request_submission_list_params.py">params</a>) -> <a href="./src/increase/types/proof_of_authorization_request_submission.py">SyncPage[ProofOfAuthorizationRequestSubmission]</a></code>

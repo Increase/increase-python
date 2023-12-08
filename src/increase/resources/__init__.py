@@ -224,6 +224,18 @@ from .inbound_wire_drawdown_requests import (
     InboundWireDrawdownRequestsWithRawResponse,
     AsyncInboundWireDrawdownRequestsWithRawResponse,
 )
+from .proof_of_authorization_requests import (
+    ProofOfAuthorizationRequests,
+    AsyncProofOfAuthorizationRequests,
+    ProofOfAuthorizationRequestsWithRawResponse,
+    AsyncProofOfAuthorizationRequestsWithRawResponse,
+)
+from .proof_of_authorization_request_submissions import (
+    ProofOfAuthorizationRequestSubmissions,
+    AsyncProofOfAuthorizationRequestSubmissions,
+    ProofOfAuthorizationRequestSubmissionsWithRawResponse,
+    AsyncProofOfAuthorizationRequestSubmissionsWithRawResponse,
+)
 
 __all__ = [
     "Accounts",
@@ -382,4 +394,12 @@ __all__ = [
     "AsyncCardPayments",
     "CardPaymentsWithRawResponse",
     "AsyncCardPaymentsWithRawResponse",
+    "ProofOfAuthorizationRequests",
+    "AsyncProofOfAuthorizationRequests",
+    "ProofOfAuthorizationRequestsWithRawResponse",
+    "AsyncProofOfAuthorizationRequestsWithRawResponse",
+    "ProofOfAuthorizationRequestSubmissions",
+    "AsyncProofOfAuthorizationRequestSubmissions",
+    "ProofOfAuthorizationRequestSubmissionsWithRawResponse",
+    "AsyncProofOfAuthorizationRequestSubmissionsWithRawResponse",
 ]
