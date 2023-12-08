@@ -92,6 +92,8 @@ class Increase(SyncAPIClient):
     simulations: resources.Simulations
     physical_cards: resources.PhysicalCards
     card_payments: resources.CardPayments
+    proof_of_authorization_requests: resources.ProofOfAuthorizationRequests
+    proof_of_authorization_request_submissions: resources.ProofOfAuthorizationRequestSubmissions
     with_raw_response: IncreaseWithRawResponse
 
     # client options
@@ -220,6 +222,8 @@ class Increase(SyncAPIClient):
         self.simulations = resources.Simulations(self)
         self.physical_cards = resources.PhysicalCards(self)
         self.card_payments = resources.CardPayments(self)
+        self.proof_of_authorization_requests = resources.ProofOfAuthorizationRequests(self)
+        self.proof_of_authorization_request_submissions = resources.ProofOfAuthorizationRequestSubmissions(self)
         self.with_raw_response = IncreaseWithRawResponse(self)
 
     @property
@@ -449,6 +453,8 @@ class AsyncIncrease(AsyncAPIClient):
     simulations: resources.AsyncSimulations
     physical_cards: resources.AsyncPhysicalCards
     card_payments: resources.AsyncCardPayments
+    proof_of_authorization_requests: resources.AsyncProofOfAuthorizationRequests
+    proof_of_authorization_request_submissions: resources.AsyncProofOfAuthorizationRequestSubmissions
     with_raw_response: AsyncIncreaseWithRawResponse
 
     # client options
@@ -577,6 +583,8 @@ class AsyncIncrease(AsyncAPIClient):
         self.simulations = resources.AsyncSimulations(self)
         self.physical_cards = resources.AsyncPhysicalCards(self)
         self.card_payments = resources.AsyncCardPayments(self)
+        self.proof_of_authorization_requests = resources.AsyncProofOfAuthorizationRequests(self)
+        self.proof_of_authorization_request_submissions = resources.AsyncProofOfAuthorizationRequestSubmissions(self)
         self.with_raw_response = AsyncIncreaseWithRawResponse(self)
 
     @property
@@ -816,6 +824,14 @@ class IncreaseWithRawResponse:
         self.simulations = resources.SimulationsWithRawResponse(client.simulations)
         self.physical_cards = resources.PhysicalCardsWithRawResponse(client.physical_cards)
         self.card_payments = resources.CardPaymentsWithRawResponse(client.card_payments)
+        self.proof_of_authorization_requests = resources.ProofOfAuthorizationRequestsWithRawResponse(
+            client.proof_of_authorization_requests
+        )
+        self.proof_of_authorization_request_submissions = (
+            resources.ProofOfAuthorizationRequestSubmissionsWithRawResponse(
+                client.proof_of_authorization_request_submissions
+            )
+        )
 
 
 class AsyncIncreaseWithRawResponse:
@@ -865,6 +881,14 @@ class AsyncIncreaseWithRawResponse:
         self.simulations = resources.AsyncSimulationsWithRawResponse(client.simulations)
         self.physical_cards = resources.AsyncPhysicalCardsWithRawResponse(client.physical_cards)
         self.card_payments = resources.AsyncCardPaymentsWithRawResponse(client.card_payments)
+        self.proof_of_authorization_requests = resources.AsyncProofOfAuthorizationRequestsWithRawResponse(
+            client.proof_of_authorization_requests
+        )
+        self.proof_of_authorization_request_submissions = (
+            resources.AsyncProofOfAuthorizationRequestSubmissionsWithRawResponse(
+                client.proof_of_authorization_request_submissions
+            )
+        )
 
 
 Client = Increase
