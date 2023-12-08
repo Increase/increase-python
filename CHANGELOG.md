@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.23.1 (2023-12-08)
+
+Full Changelog: [v0.23.0...v0.23.1](https://github.com/increase/increase-python/compare/v0.23.0...v0.23.1)
+
+### Bug Fixes
+
+* avoid leaking memory when Client.with_options is used ([#259](https://github.com/increase/increase-python/issues/259)) ([fa1b7ad](https://github.com/increase/increase-python/commit/fa1b7ad797069c92c76d2b4201c727d1417aaf9d))
+
 ## 0.23.0 (2023-12-08)
 
 Full Changelog: [v0.22.4...v0.23.0](https://github.com/increase/increase-python/compare/v0.22.4...v0.23.0)
