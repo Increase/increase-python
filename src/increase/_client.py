@@ -303,7 +303,7 @@ class Increase(SyncAPIClient):
 
         return self.__class__(
             api_key=api_key or self.api_key,
-            base_url=base_url or str(self.base_url),
+            base_url=base_url or self.base_url,
             environment=environment or self._environment,
             timeout=self.timeout if isinstance(timeout, NotGiven) else timeout,
             http_client=http_client,
@@ -664,7 +664,7 @@ class AsyncIncrease(AsyncAPIClient):
 
         return self.__class__(
             api_key=api_key or self.api_key,
-            base_url=base_url or str(self.base_url),
+            base_url=base_url or self.base_url,
             environment=environment or self._environment,
             timeout=self.timeout if isinstance(timeout, NotGiven) else timeout,
             http_client=http_client,
