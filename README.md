@@ -252,7 +252,7 @@ from increase import Increase
 
 # Configure the default for all requests:
 client = Increase(
-    # default is 60s
+    # 20 seconds (default is 1 minute)
     timeout=20.0,
 )
 
