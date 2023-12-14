@@ -183,6 +183,12 @@ class RealTimePaymentsTransfer(BaseModel):
     - `USD` - US Dollar (USD)
     """
 
+    debtor_name: Optional[str]
+    """The name of the transfer's sender.
+
+    If not provided, the account's entity name will be used.
+    """
+
     destination_account_number: str
     """The destination account number."""
 
@@ -245,6 +251,14 @@ class RealTimePaymentsTransfer(BaseModel):
     """A constant representing the object's type.
 
     For this resource it will always be `real_time_payments_transfer`.
+    """
+
+    ultimate_creditor_name: Optional[str]
+    """The name of the party on whose behalf the creditor is receiving the payment."""
+
+    ultimate_debtor_name: Optional[str]
+    """
+    The name of the the party on whose behalf the debtor is instructing the payment.
     """
 
     unique_identifier: Optional[str]
