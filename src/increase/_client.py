@@ -95,6 +95,7 @@ class Increase(SyncAPIClient):
     card_payments: resources.CardPayments
     proof_of_authorization_requests: resources.ProofOfAuthorizationRequests
     proof_of_authorization_request_submissions: resources.ProofOfAuthorizationRequestSubmissions
+    intrafi: resources.Intrafi
     with_raw_response: IncreaseWithRawResponse
 
     # client options
@@ -225,6 +226,7 @@ class Increase(SyncAPIClient):
         self.card_payments = resources.CardPayments(self)
         self.proof_of_authorization_requests = resources.ProofOfAuthorizationRequests(self)
         self.proof_of_authorization_request_submissions = resources.ProofOfAuthorizationRequestSubmissions(self)
+        self.intrafi = resources.Intrafi(self)
         self.with_raw_response = IncreaseWithRawResponse(self)
 
     @property
@@ -446,6 +448,7 @@ class AsyncIncrease(AsyncAPIClient):
     card_payments: resources.AsyncCardPayments
     proof_of_authorization_requests: resources.AsyncProofOfAuthorizationRequests
     proof_of_authorization_request_submissions: resources.AsyncProofOfAuthorizationRequestSubmissions
+    intrafi: resources.AsyncIntrafi
     with_raw_response: AsyncIncreaseWithRawResponse
 
     # client options
@@ -576,6 +579,7 @@ class AsyncIncrease(AsyncAPIClient):
         self.card_payments = resources.AsyncCardPayments(self)
         self.proof_of_authorization_requests = resources.AsyncProofOfAuthorizationRequests(self)
         self.proof_of_authorization_request_submissions = resources.AsyncProofOfAuthorizationRequestSubmissions(self)
+        self.intrafi = resources.AsyncIntrafi(self)
         self.with_raw_response = AsyncIncreaseWithRawResponse(self)
 
     @property
@@ -810,6 +814,7 @@ class IncreaseWithRawResponse:
                 client.proof_of_authorization_request_submissions
             )
         )
+        self.intrafi = resources.IntrafiWithRawResponse(client.intrafi)
 
 
 class AsyncIncreaseWithRawResponse:
@@ -867,6 +872,7 @@ class AsyncIncreaseWithRawResponse:
                 client.proof_of_authorization_request_submissions
             )
         )
+        self.intrafi = resources.AsyncIntrafiWithRawResponse(client.intrafi)
 
 
 Client = Increase

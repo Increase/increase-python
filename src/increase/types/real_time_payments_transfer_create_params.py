@@ -23,6 +23,12 @@ class RealTimePaymentsTransferCreateParams(TypedDict, total=False):
     source_account_number_id: Required[str]
     """The identifier of the Account Number from which to send the transfer."""
 
+    debtor_name: str
+    """The name of the transfer's sender.
+
+    If not provided, the account's entity name will be used.
+    """
+
     destination_account_number: str
     """The destination account number."""
 
@@ -41,6 +47,14 @@ class RealTimePaymentsTransferCreateParams(TypedDict, total=False):
 
     require_approval: bool
     """Whether the transfer requires explicit approval via the dashboard or API."""
+
+    ultimate_creditor_name: str
+    """The name of the party on whose behalf the creditor is receiving the payment."""
+
+    ultimate_debtor_name: str
+    """
+    The name of the the party on whose behalf the debtor is instructing the payment.
+    """
 
     unique_identifier: str
     """A unique identifier you choose for the transfer.

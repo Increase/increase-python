@@ -20,6 +20,12 @@ from .exports import (
     ExportsWithRawResponse,
     AsyncExportsWithRawResponse,
 )
+from .intrafi import (
+    Intrafi,
+    AsyncIntrafi,
+    IntrafiWithRawResponse,
+    AsyncIntrafiWithRawResponse,
+)
 from .accounts import (
     Accounts,
     AsyncAccounts,
@@ -402,4 +408,8 @@ __all__ = [
     "AsyncProofOfAuthorizationRequestSubmissions",
     "ProofOfAuthorizationRequestSubmissionsWithRawResponse",
     "AsyncProofOfAuthorizationRequestSubmissionsWithRawResponse",
+    "Intrafi",
+    "AsyncIntrafi",
+    "IntrafiWithRawResponse",
+    "AsyncIntrafiWithRawResponse",
 ]
