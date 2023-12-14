@@ -744,3 +744,47 @@ Methods:
 - <code title="post /proof_of_authorization_request_submissions">client.proof_of_authorization_request_submissions.<a href="./src/increase/resources/proof_of_authorization_request_submissions.py">create</a>(\*\*<a href="src/increase/types/proof_of_authorization_request_submission_create_params.py">params</a>) -> <a href="./src/increase/types/proof_of_authorization_request_submission.py">ProofOfAuthorizationRequestSubmission</a></code>
 - <code title="get /proof_of_authorization_request_submissions/{proof_of_authorization_request_submission_id}">client.proof_of_authorization_request_submissions.<a href="./src/increase/resources/proof_of_authorization_request_submissions.py">retrieve</a>(proof_of_authorization_request_submission_id) -> <a href="./src/increase/types/proof_of_authorization_request_submission.py">ProofOfAuthorizationRequestSubmission</a></code>
 - <code title="get /proof_of_authorization_request_submissions">client.proof_of_authorization_request_submissions.<a href="./src/increase/resources/proof_of_authorization_request_submissions.py">list</a>(\*\*<a href="src/increase/types/proof_of_authorization_request_submission_list_params.py">params</a>) -> <a href="./src/increase/types/proof_of_authorization_request_submission.py">SyncPage[ProofOfAuthorizationRequestSubmission]</a></code>
+
+# Intrafi
+
+## AccountEnrollments
+
+Types:
+
+```python
+from increase.types.intrafi import IntrafiAccountEnrollment
+```
+
+Methods:
+
+- <code title="post /intrafi_account_enrollments">client.intrafi.account_enrollments.<a href="./src/increase/resources/intrafi/account_enrollments.py">create</a>(\*\*<a href="src/increase/types/intrafi/account_enrollment_create_params.py">params</a>) -> <a href="./src/increase/types/intrafi/intrafi_account_enrollment.py">IntrafiAccountEnrollment</a></code>
+- <code title="get /intrafi_account_enrollments/{intrafi_account_enrollment_id}">client.intrafi.account_enrollments.<a href="./src/increase/resources/intrafi/account_enrollments.py">retrieve</a>(intrafi_account_enrollment_id) -> <a href="./src/increase/types/intrafi/intrafi_account_enrollment.py">IntrafiAccountEnrollment</a></code>
+- <code title="get /intrafi_account_enrollments">client.intrafi.account_enrollments.<a href="./src/increase/resources/intrafi/account_enrollments.py">list</a>(\*\*<a href="src/increase/types/intrafi/account_enrollment_list_params.py">params</a>) -> <a href="./src/increase/types/intrafi/intrafi_account_enrollment.py">SyncPage[IntrafiAccountEnrollment]</a></code>
+- <code title="post /intrafi_account_enrollments/{intrafi_account_enrollment_id}/unenroll">client.intrafi.account_enrollments.<a href="./src/increase/resources/intrafi/account_enrollments.py">unenroll</a>(intrafi_account_enrollment_id) -> <a href="./src/increase/types/intrafi/intrafi_account_enrollment.py">IntrafiAccountEnrollment</a></code>
+
+## Balances
+
+Types:
+
+```python
+from increase.types.intrafi import IntrafiBalance
+```
+
+Methods:
+
+- <code title="get /intrafi_balances/{account_id}">client.intrafi.balances.<a href="./src/increase/resources/intrafi/balances.py">retrieve</a>(account_id) -> <a href="./src/increase/types/intrafi/intrafi_balance.py">IntrafiBalance</a></code>
+
+## Exclusions
+
+Types:
+
+```python
+from increase.types.intrafi import IntrafiExclusion
+```
+
+Methods:
+
+- <code title="post /intrafi_exclusions">client.intrafi.exclusions.<a href="./src/increase/resources/intrafi/exclusions.py">create</a>(\*\*<a href="src/increase/types/intrafi/exclusion_create_params.py">params</a>) -> <a href="./src/increase/types/intrafi/intrafi_exclusion.py">IntrafiExclusion</a></code>
+- <code title="get /intrafi_exclusions/{intrafi_exclusion_id}">client.intrafi.exclusions.<a href="./src/increase/resources/intrafi/exclusions.py">retrieve</a>(intrafi_exclusion_id) -> <a href="./src/increase/types/intrafi/intrafi_exclusion.py">IntrafiExclusion</a></code>
+- <code title="get /intrafi_exclusions">client.intrafi.exclusions.<a href="./src/increase/resources/intrafi/exclusions.py">list</a>(\*\*<a href="src/increase/types/intrafi/exclusion_list_params.py">params</a>) -> <a href="./src/increase/types/intrafi/intrafi_exclusion.py">SyncPage[IntrafiExclusion]</a></code>
+- <code title="post /intrafi_exclusions/{intrafi_exclusion_id}/archive">client.intrafi.exclusions.<a href="./src/increase/resources/intrafi/exclusions.py">archive</a>(intrafi_exclusion_id) -> <a href="./src/increase/types/intrafi/intrafi_exclusion.py">IntrafiExclusion</a></code>

@@ -38,10 +38,13 @@ class RealTimePaymentsTransfers(SyncAPIResource):
         creditor_name: str,
         remittance_information: str,
         source_account_number_id: str,
+        debtor_name: str | NotGiven = NOT_GIVEN,
         destination_account_number: str | NotGiven = NOT_GIVEN,
         destination_routing_number: str | NotGiven = NOT_GIVEN,
         external_account_id: str | NotGiven = NOT_GIVEN,
         require_approval: bool | NotGiven = NOT_GIVEN,
+        ultimate_creditor_name: str | NotGiven = NOT_GIVEN,
+        ultimate_debtor_name: str | NotGiven = NOT_GIVEN,
         unique_identifier: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -64,6 +67,9 @@ class RealTimePaymentsTransfers(SyncAPIResource):
 
           source_account_number_id: The identifier of the Account Number from which to send the transfer.
 
+          debtor_name: The name of the transfer's sender. If not provided, the account's entity name
+              will be used.
+
           destination_account_number: The destination account number.
 
           destination_routing_number: The destination American Bankers' Association (ABA) Routing Transit Number
@@ -74,6 +80,10 @@ class RealTimePaymentsTransfers(SyncAPIResource):
               absent.
 
           require_approval: Whether the transfer requires explicit approval via the dashboard or API.
+
+          ultimate_creditor_name: The name of the party on whose behalf the creditor is receiving the payment.
+
+          ultimate_debtor_name: The name of the the party on whose behalf the debtor is instructing the payment.
 
           unique_identifier: A unique identifier you choose for the transfer. Reusing this identifier for
               another transfer will result in an error. You can query for the transfer
@@ -97,10 +107,13 @@ class RealTimePaymentsTransfers(SyncAPIResource):
                     "creditor_name": creditor_name,
                     "remittance_information": remittance_information,
                     "source_account_number_id": source_account_number_id,
+                    "debtor_name": debtor_name,
                     "destination_account_number": destination_account_number,
                     "destination_routing_number": destination_routing_number,
                     "external_account_id": external_account_id,
                     "require_approval": require_approval,
+                    "ultimate_creditor_name": ultimate_creditor_name,
+                    "ultimate_debtor_name": ultimate_debtor_name,
                     "unique_identifier": unique_identifier,
                 },
                 real_time_payments_transfer_create_params.RealTimePaymentsTransferCreateParams,
@@ -226,10 +239,13 @@ class AsyncRealTimePaymentsTransfers(AsyncAPIResource):
         creditor_name: str,
         remittance_information: str,
         source_account_number_id: str,
+        debtor_name: str | NotGiven = NOT_GIVEN,
         destination_account_number: str | NotGiven = NOT_GIVEN,
         destination_routing_number: str | NotGiven = NOT_GIVEN,
         external_account_id: str | NotGiven = NOT_GIVEN,
         require_approval: bool | NotGiven = NOT_GIVEN,
+        ultimate_creditor_name: str | NotGiven = NOT_GIVEN,
+        ultimate_debtor_name: str | NotGiven = NOT_GIVEN,
         unique_identifier: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -252,6 +268,9 @@ class AsyncRealTimePaymentsTransfers(AsyncAPIResource):
 
           source_account_number_id: The identifier of the Account Number from which to send the transfer.
 
+          debtor_name: The name of the transfer's sender. If not provided, the account's entity name
+              will be used.
+
           destination_account_number: The destination account number.
 
           destination_routing_number: The destination American Bankers' Association (ABA) Routing Transit Number
@@ -262,6 +281,10 @@ class AsyncRealTimePaymentsTransfers(AsyncAPIResource):
               absent.
 
           require_approval: Whether the transfer requires explicit approval via the dashboard or API.
+
+          ultimate_creditor_name: The name of the party on whose behalf the creditor is receiving the payment.
+
+          ultimate_debtor_name: The name of the the party on whose behalf the debtor is instructing the payment.
 
           unique_identifier: A unique identifier you choose for the transfer. Reusing this identifier for
               another transfer will result in an error. You can query for the transfer
@@ -285,10 +308,13 @@ class AsyncRealTimePaymentsTransfers(AsyncAPIResource):
                     "creditor_name": creditor_name,
                     "remittance_information": remittance_information,
                     "source_account_number_id": source_account_number_id,
+                    "debtor_name": debtor_name,
                     "destination_account_number": destination_account_number,
                     "destination_routing_number": destination_routing_number,
                     "external_account_id": external_account_id,
                     "require_approval": require_approval,
+                    "ultimate_creditor_name": ultimate_creditor_name,
+                    "ultimate_debtor_name": ultimate_debtor_name,
                     "unique_identifier": unique_identifier,
                 },
                 real_time_payments_transfer_create_params.RealTimePaymentsTransferCreateParams,
