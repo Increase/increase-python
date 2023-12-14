@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.24.0 (2023-12-14)
+
+Full Changelog: [v0.23.1...v0.24.0](https://github.com/increase/increase-python/compare/v0.23.1...v0.24.0)
+
+### Features
+
+* **api:** add `suspected_fraud` rejection reason ([#265](https://github.com/increase/increase-python/issues/265)) ([a9bdbdb](https://github.com/increase/increase-python/commit/a9bdbdbf842ee757c4d34b64e76c13ac4f923aa0))
+
+
+### Documentation
+
+* improve README timeout comment ([#261](https://github.com/increase/increase-python/issues/261)) ([6f43259](https://github.com/increase/increase-python/commit/6f43259fff475ef3ca7a9f2d8bab04d52951f928))
+
+
+### Refactors
+
+* **client:** simplify cleanup ([#263](https://github.com/increase/increase-python/issues/263)) ([46e3066](https://github.com/increase/increase-python/commit/46e306621ac56a395a95354b40c24801df4a1295))
+* simplify internal error handling ([#264](https://github.com/increase/increase-python/issues/264)) ([6eaba70](https://github.com/increase/increase-python/commit/6eaba70dd6f12d154ff03b378d03ec9348d7f554))
+
 ## 0.23.1 (2023-12-08)
 
 Full Changelog: [v0.23.0...v0.23.1](https://github.com/increase/increase-python/compare/v0.23.0...v0.23.1)
