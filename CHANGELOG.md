@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.25.0 (2023-12-18)
+
+Full Changelog: [v0.24.0...v0.25.0](https://github.com/increase/increase-python/compare/v0.24.0...v0.25.0)
+
+### Features
+
+* **api:** add deposit_submission property to check deposit ([#268](https://github.com/increase/increase-python/issues/268)) ([286d807](https://github.com/increase/increase-python/commit/286d807e67927f4c7ba8d3de09be96031aa9c850))
+
+
+### Chores
+
+* **ci:** run release workflow once per day ([#266](https://github.com/increase/increase-python/issues/266)) ([d3e21cb](https://github.com/increase/increase-python/commit/d3e21cbb803874b4c8bb838798a663b44d242cf2))
+
 ## 0.24.0 (2023-12-14)
 
 Full Changelog: [v0.23.1...v0.24.0](https://github.com/increase/increase-python/compare/v0.23.1...v0.24.0)
