@@ -6,7 +6,7 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["CheckDeposit", "DepositAcceptance", "DepositRejection", "DepositReturn"]
+__all__ = ["CheckDeposit", "DepositAcceptance", "DepositRejection", "DepositReturn", "DepositSubmission"]
 
 
 class DepositAcceptance(BaseModel):
@@ -205,6 +205,15 @@ class DepositReturn(BaseModel):
     """
 
 
+class DepositSubmission(BaseModel):
+    submitted_at: datetime
+    """When the check deposit was submitted to the Check21 network for processing.
+
+    During business days, this happens within a few hours of the check being
+    accepted by Increase.
+    """
+
+
 class CheckDeposit(BaseModel):
     id: str
     """The deposit's identifier."""
@@ -254,6 +263,13 @@ class CheckDeposit(BaseModel):
     """
     If your deposit is returned, this will contain details as to why it was
     returned.
+    """
+
+    deposit_submission: Optional[DepositSubmission]
+    """After the check is parsed, it is submitted to the Check21 network for
+    processing.
+
+    This will contain details of the submission.
     """
 
     front_image_file_id: str
