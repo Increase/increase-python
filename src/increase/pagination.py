@@ -12,6 +12,7 @@ __all__ = ["SyncPage", "AsyncPage"]
 class SyncPage(BaseSyncPage[ModelT], BasePage[ModelT], Generic[ModelT]):
     data: List[ModelT]
     next_cursor: Optional[str] = None
+    """A pointer to a place in the list."""
 
     @override
     def _get_page_items(self) -> List[ModelT]:
@@ -32,6 +33,7 @@ class SyncPage(BaseSyncPage[ModelT], BasePage[ModelT], Generic[ModelT]):
 class AsyncPage(BaseAsyncPage[ModelT], BasePage[ModelT], Generic[ModelT]):
     data: List[ModelT]
     next_cursor: Optional[str] = None
+    """A pointer to a place in the list."""
 
     @override
     def _get_page_items(self) -> List[ModelT]:
