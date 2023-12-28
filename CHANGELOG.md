@@ -1,5 +1,28 @@
 # Changelog
 
+## 0.25.1 (2023-12-28)
+
+Full Changelog: [v0.25.0...v0.25.1](https://github.com/increase/increase-python/compare/v0.25.0...v0.25.1)
+
+### Bug Fixes
+
+* **client:** correctly use custom http client auth ([#278](https://github.com/increase/increase-python/issues/278)) ([cd47166](https://github.com/increase/increase-python/commit/cd47166443fc58675e06a0da820d2bff962c7910))
+
+
+### Chores
+
+* **internal:** add bin script ([#275](https://github.com/increase/increase-python/issues/275)) ([d35315c](https://github.com/increase/increase-python/commit/d35315ce1d603f12dfbc634d53f7c9409ebf589c))
+* **internal:** fix typos ([#272](https://github.com/increase/increase-python/issues/272)) ([2186b17](https://github.com/increase/increase-python/commit/2186b17ecb5b651d488e85f609a8d056cf43233c))
+* **internal:** minor utils restructuring ([#271](https://github.com/increase/increase-python/issues/271)) ([2e9b779](https://github.com/increase/increase-python/commit/2e9b7791b48705699013b5eadca02d66fa0446f0))
+* **internal:** updates to base client ([#269](https://github.com/increase/increase-python/issues/269)) ([7c6b0d9](https://github.com/increase/increase-python/commit/7c6b0d978010450bb32206ae9d6f035f6665f597))
+* **internal:** use ruff instead of black for formatting ([#277](https://github.com/increase/increase-python/issues/277)) ([07868ab](https://github.com/increase/increase-python/commit/07868ab9d03759dc59cbacbb0451dff96a55e541))
+* **package:** bump minimum typing-extensions to 4.7 ([#273](https://github.com/increase/increase-python/issues/273)) ([d64a914](https://github.com/increase/increase-python/commit/d64a914d63ef394031979074ec3446b454fce637))
+
+
+### Documentation
+
+* **pagination:** add some docstrings ([#274](https://github.com/increase/increase-python/issues/274)) ([1e172b3](https://github.com/increase/increase-python/commit/1e172b33abded2a3d599decc957fccbe2032047c))
+
 ## 0.25.0 (2023-12-18)
 
 Full Changelog: [v0.24.0...v0.25.0](https://github.com/increase/increase-python/compare/v0.24.0...v0.25.0)
