@@ -236,6 +236,12 @@ from .proof_of_authorization_requests import (
     ProofOfAuthorizationRequestsWithRawResponse,
     AsyncProofOfAuthorizationRequestsWithRawResponse,
 )
+from .real_time_payments_request_for_payments import (
+    RealTimePaymentsRequestForPayments,
+    AsyncRealTimePaymentsRequestForPayments,
+    RealTimePaymentsRequestForPaymentsWithRawResponse,
+    AsyncRealTimePaymentsRequestForPaymentsWithRawResponse,
+)
 from .proof_of_authorization_request_submissions import (
     ProofOfAuthorizationRequestSubmissions,
     AsyncProofOfAuthorizationRequestSubmissions,
@@ -412,4 +418,8 @@ __all__ = [
     "AsyncIntrafi",
     "IntrafiWithRawResponse",
     "AsyncIntrafiWithRawResponse",
+    "RealTimePaymentsRequestForPayments",
+    "AsyncRealTimePaymentsRequestForPayments",
+    "RealTimePaymentsRequestForPaymentsWithRawResponse",
+    "AsyncRealTimePaymentsRequestForPaymentsWithRawResponse",
 ]
