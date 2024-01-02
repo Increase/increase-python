@@ -2629,12 +2629,13 @@ class TransactionSourceCheckTransferIntention(BaseModel):
 
 
 class TransactionSourceCheckTransferStopPaymentRequest(BaseModel):
-    reason: Literal["mail_delivery_failed", "rejected_by_increase", "unknown"]
+    reason: Literal["mail_delivery_failed", "rejected_by_increase", "not_authorized", "unknown"]
     """The reason why this transfer was stopped.
 
     - `mail_delivery_failed` - The check could not be delivered.
     - `rejected_by_increase` - The check was canceled by an Increase operator who
       will provide details out-of-band.
+    - `not_authorized` - The check was not authorized.
     - `unknown` - The check was stopped for another reason.
     """
 
