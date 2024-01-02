@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.26.0 (2024-01-02)
+
+Full Changelog: [v0.25.1...v0.26.0](https://github.com/increase/increase-python/compare/v0.25.1...v0.26.0)
+
+### Features
+
+* **api:** add real-time payments request for payment endpoints ([#281](https://github.com/increase/increase-python/issues/281)) ([a4c215a](https://github.com/increase/increase-python/commit/a4c215a9dbfbc6a761959a1338620c15c4fc4f23))
+
+
+### Chores
+
+* **internal:** bump license ([#279](https://github.com/increase/increase-python/issues/279)) ([d218158](https://github.com/increase/increase-python/commit/d2181587c373c35a2c15b3c4840f3fb06aee1b24))
+
 ## 0.25.1 (2023-12-28)
 
 Full Changelog: [v0.25.0...v0.25.1](https://github.com/increase/increase-python/compare/v0.25.0...v0.25.1)
