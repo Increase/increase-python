@@ -202,6 +202,9 @@ from .wire_drawdown_request_create_params import (
 from .card_purchase_supplement_list_params import (
     CardPurchaseSupplementListParams as CardPurchaseSupplementListParams,
 )
+from .real_time_payments_request_for_payment import (
+    RealTimePaymentsRequestForPayment as RealTimePaymentsRequestForPayment,
+)
 from .real_time_payments_transfer_list_params import (
     RealTimePaymentsTransferListParams as RealTimePaymentsTransferListParams,
 )
@@ -222,6 +225,12 @@ from .inbound_ach_transfer_transfer_return_params import (
 )
 from .inbound_ach_transfer_notification_of_change_params import (
     InboundACHTransferNotificationOfChangeParams as InboundACHTransferNotificationOfChangeParams,
+)
+from .real_time_payments_request_for_payment_list_params import (
+    RealTimePaymentsRequestForPaymentListParams as RealTimePaymentsRequestForPaymentListParams,
+)
+from .real_time_payments_request_for_payment_create_params import (
+    RealTimePaymentsRequestForPaymentCreateParams as RealTimePaymentsRequestForPaymentCreateParams,
 )
 from .proof_of_authorization_request_submission_list_params import (
     ProofOfAuthorizationRequestSubmissionListParams as ProofOfAuthorizationRequestSubmissionListParams,

@@ -788,3 +788,17 @@ Methods:
 - <code title="get /intrafi_exclusions/{intrafi_exclusion_id}">client.intrafi.exclusions.<a href="./src/increase/resources/intrafi/exclusions.py">retrieve</a>(intrafi_exclusion_id) -> <a href="./src/increase/types/intrafi/intrafi_exclusion.py">IntrafiExclusion</a></code>
 - <code title="get /intrafi_exclusions">client.intrafi.exclusions.<a href="./src/increase/resources/intrafi/exclusions.py">list</a>(\*\*<a href="src/increase/types/intrafi/exclusion_list_params.py">params</a>) -> <a href="./src/increase/types/intrafi/intrafi_exclusion.py">SyncPage[IntrafiExclusion]</a></code>
 - <code title="post /intrafi_exclusions/{intrafi_exclusion_id}/archive">client.intrafi.exclusions.<a href="./src/increase/resources/intrafi/exclusions.py">archive</a>(intrafi_exclusion_id) -> <a href="./src/increase/types/intrafi/intrafi_exclusion.py">IntrafiExclusion</a></code>
+
+# RealTimePaymentsRequestForPayments
+
+Types:
+
+```python
+from increase.types import RealTimePaymentsRequestForPayment
+```
+
+Methods:
+
+- <code title="post /real_time_payments_request_for_payments">client.real_time_payments_request_for_payments.<a href="./src/increase/resources/real_time_payments_request_for_payments.py">create</a>(\*\*<a href="src/increase/types/real_time_payments_request_for_payment_create_params.py">params</a>) -> <a href="./src/increase/types/real_time_payments_request_for_payment.py">RealTimePaymentsRequestForPayment</a></code>
+- <code title="get /real_time_payments_request_for_payments/{request_for_payment_id}">client.real_time_payments_request_for_payments.<a href="./src/increase/resources/real_time_payments_request_for_payments.py">retrieve</a>(request_for_payment_id) -> <a href="./src/increase/types/real_time_payments_request_for_payment.py">RealTimePaymentsRequestForPayment</a></code>
+- <code title="get /real_time_payments_request_for_payments">client.real_time_payments_request_for_payments.<a href="./src/increase/resources/real_time_payments_request_for_payments.py">list</a>(\*\*<a href="src/increase/types/real_time_payments_request_for_payment_list_params.py">params</a>) -> <a href="./src/increase/types/real_time_payments_request_for_payment.py">SyncPage[RealTimePaymentsRequestForPayment]</a></code>

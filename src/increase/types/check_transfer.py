@@ -156,12 +156,13 @@ class PhysicalCheck(BaseModel):
 
 
 class StopPaymentRequest(BaseModel):
-    reason: Literal["mail_delivery_failed", "rejected_by_increase", "unknown"]
+    reason: Literal["mail_delivery_failed", "rejected_by_increase", "not_authorized", "unknown"]
     """The reason why this transfer was stopped.
 
     - `mail_delivery_failed` - The check could not be delivered.
     - `rejected_by_increase` - The check was canceled by an Increase operator who
       will provide details out-of-band.
+    - `not_authorized` - The check was not authorized.
     - `unknown` - The check was stopped for another reason.
     """
 
@@ -283,6 +284,7 @@ class CheckTransfer(BaseModel):
         "stopped",
         "rejected",
         "requires_attention",
+        "returned",
     ]
     """The lifecycle status of the transfer.
 
@@ -297,6 +299,7 @@ class CheckTransfer(BaseModel):
     - `rejected` - The transfer has been rejected.
     - `requires_attention` - The transfer requires attention from an Increase
       operator.
+    - `returned` - The transfer has been returned.
     """
 
     stop_payment_request: Optional[StopPaymentRequest]

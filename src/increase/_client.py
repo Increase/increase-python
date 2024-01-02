@@ -96,6 +96,7 @@ class Increase(SyncAPIClient):
     proof_of_authorization_requests: resources.ProofOfAuthorizationRequests
     proof_of_authorization_request_submissions: resources.ProofOfAuthorizationRequestSubmissions
     intrafi: resources.Intrafi
+    real_time_payments_request_for_payments: resources.RealTimePaymentsRequestForPayments
     with_raw_response: IncreaseWithRawResponse
 
     # client options
@@ -227,6 +228,7 @@ class Increase(SyncAPIClient):
         self.proof_of_authorization_requests = resources.ProofOfAuthorizationRequests(self)
         self.proof_of_authorization_request_submissions = resources.ProofOfAuthorizationRequestSubmissions(self)
         self.intrafi = resources.Intrafi(self)
+        self.real_time_payments_request_for_payments = resources.RealTimePaymentsRequestForPayments(self)
         self.with_raw_response = IncreaseWithRawResponse(self)
 
     @property
@@ -449,6 +451,7 @@ class AsyncIncrease(AsyncAPIClient):
     proof_of_authorization_requests: resources.AsyncProofOfAuthorizationRequests
     proof_of_authorization_request_submissions: resources.AsyncProofOfAuthorizationRequestSubmissions
     intrafi: resources.AsyncIntrafi
+    real_time_payments_request_for_payments: resources.AsyncRealTimePaymentsRequestForPayments
     with_raw_response: AsyncIncreaseWithRawResponse
 
     # client options
@@ -580,6 +583,7 @@ class AsyncIncrease(AsyncAPIClient):
         self.proof_of_authorization_requests = resources.AsyncProofOfAuthorizationRequests(self)
         self.proof_of_authorization_request_submissions = resources.AsyncProofOfAuthorizationRequestSubmissions(self)
         self.intrafi = resources.AsyncIntrafi(self)
+        self.real_time_payments_request_for_payments = resources.AsyncRealTimePaymentsRequestForPayments(self)
         self.with_raw_response = AsyncIncreaseWithRawResponse(self)
 
     @property
@@ -815,6 +819,9 @@ class IncreaseWithRawResponse:
             )
         )
         self.intrafi = resources.IntrafiWithRawResponse(client.intrafi)
+        self.real_time_payments_request_for_payments = resources.RealTimePaymentsRequestForPaymentsWithRawResponse(
+            client.real_time_payments_request_for_payments
+        )
 
 
 class AsyncIncreaseWithRawResponse:
@@ -873,6 +880,9 @@ class AsyncIncreaseWithRawResponse:
             )
         )
         self.intrafi = resources.AsyncIntrafiWithRawResponse(client.intrafi)
+        self.real_time_payments_request_for_payments = resources.AsyncRealTimePaymentsRequestForPaymentsWithRawResponse(
+            client.real_time_payments_request_for_payments
+        )
 
 
 Client = Increase

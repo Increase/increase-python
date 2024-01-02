@@ -44,6 +44,9 @@ class ShipmentTracking(BaseModel):
     number: str
     """The tracking number."""
 
+    return_number: Optional[str]
+    """For returned shipments, the tracking number of the return shipment."""
+
     return_reason: Optional[str]
     """For returned shipments, this describes why the package was returned."""
 
