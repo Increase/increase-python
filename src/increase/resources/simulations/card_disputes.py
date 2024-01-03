@@ -8,11 +8,19 @@ from typing_extensions import Literal
 import httpx
 
 from ...types import CardDispute
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import (
+    NOT_GIVEN,
+    Body,
+    Query,
+    Headers,
+    NotGiven,
+)
 from ..._utils import maybe_transform
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
-from ..._base_client import make_request_options
+from ..._base_client import (
+    make_request_options,
+)
 from ...types.simulations import card_dispute_action_params
 
 if TYPE_CHECKING:
