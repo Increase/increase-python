@@ -19,12 +19,7 @@ from pydantic import ValidationError
 from increase import Increase, AsyncIncrease, APIResponseValidationError
 from increase._client import Increase, AsyncIncrease
 from increase._models import BaseModel, FinalRequestOptions
-from increase._exceptions import (
-    IncreaseError,
-    APIStatusError,
-    APITimeoutError,
-    APIResponseValidationError,
-)
+from increase._exceptions import IncreaseError, APIStatusError, APITimeoutError, APIResponseValidationError
 from increase._base_client import (
     DEFAULT_TIMEOUT,
     HTTPX_DEFAULT_TIMEOUT,
