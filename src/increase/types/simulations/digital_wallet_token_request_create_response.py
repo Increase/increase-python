@@ -11,7 +11,7 @@ __all__ = ["DigitalWalletTokenRequestCreateResponse"]
 class DigitalWalletTokenRequestCreateResponse(BaseModel):
     decline_reason: Optional[
         Literal["card_not_active", "no_verification_method", "webhook_timed_out", "webhook_declined"]
-    ]
+    ] = None
     """
     If the simulated tokenization attempt was declined, this field contains details
     as to why.
@@ -24,7 +24,7 @@ class DigitalWalletTokenRequestCreateResponse(BaseModel):
     - `webhook_declined` - Your webhook declined the token provisioning attempt.
     """
 
-    digital_wallet_token_id: Optional[str]
+    digital_wallet_token_id: Optional[str] = None
     """
     If the simulated tokenization attempt was accepted, this field contains the id
     of the Digital Wallet Token that was created.

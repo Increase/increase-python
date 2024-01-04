@@ -121,7 +121,7 @@ class RateLimitError(APIStatusError):
 
 
 class InvalidParametersError(BadRequestError):
-    detail: Optional[str]
+    detail: Optional[str] = None
 
     errors: List[object]
     """All errors related to parsing the request parameters."""
@@ -145,7 +145,7 @@ class InvalidParametersError(BadRequestError):
 
 
 class MalformedRequestError(BadRequestError):
-    detail: Optional[str]
+    detail: Optional[str] = None
 
     status: Literal[400]
 
@@ -165,7 +165,7 @@ class MalformedRequestError(BadRequestError):
 
 
 class InvalidAPIKeyError(AuthenticationError):
-    detail: Optional[str]
+    detail: Optional[str] = None
 
     status: Literal[401]
 
@@ -185,7 +185,7 @@ class InvalidAPIKeyError(AuthenticationError):
 
 
 class EnvironmentMismatchError(PermissionDeniedError):
-    detail: Optional[str]
+    detail: Optional[str] = None
 
     status: Literal[403]
 
@@ -205,7 +205,7 @@ class EnvironmentMismatchError(PermissionDeniedError):
 
 
 class InsufficientPermissionsError(PermissionDeniedError):
-    detail: Optional[str]
+    detail: Optional[str] = None
 
     status: Literal[403]
 
@@ -225,7 +225,7 @@ class InsufficientPermissionsError(PermissionDeniedError):
 
 
 class PrivateFeatureError(PermissionDeniedError):
-    detail: Optional[str]
+    detail: Optional[str] = None
 
     status: Literal[403]
 
@@ -245,7 +245,7 @@ class PrivateFeatureError(PermissionDeniedError):
 
 
 class APIMethodNotFoundError(NotFoundError):
-    detail: Optional[str]
+    detail: Optional[str] = None
 
     status: Literal[404]
 
@@ -265,7 +265,7 @@ class APIMethodNotFoundError(NotFoundError):
 
 
 class ObjectNotFoundError(NotFoundError):
-    detail: Optional[str]
+    detail: Optional[str] = None
 
     status: Literal[404]
 
@@ -285,7 +285,7 @@ class ObjectNotFoundError(NotFoundError):
 
 
 class IdempotencyConflictError(ConflictError):
-    detail: Optional[str]
+    detail: Optional[str] = None
 
     status: Literal[409]
 
@@ -305,7 +305,7 @@ class IdempotencyConflictError(ConflictError):
 
 
 class InvalidOperationError(ConflictError):
-    detail: Optional[str]
+    detail: Optional[str] = None
 
     status: Literal[409]
 
@@ -325,7 +325,7 @@ class InvalidOperationError(ConflictError):
 
 
 class UniqueIdentifierAlreadyExistsError(ConflictError):
-    detail: Optional[str]
+    detail: Optional[str] = None
 
     resource_id: str
 
@@ -348,7 +348,7 @@ class UniqueIdentifierAlreadyExistsError(ConflictError):
 
 
 class IdempotencyUnprocessableError(UnprocessableEntityError):
-    detail: Optional[str]
+    detail: Optional[str] = None
 
     status: Literal[422]
 
@@ -368,7 +368,7 @@ class IdempotencyUnprocessableError(UnprocessableEntityError):
 
 
 class RateLimitedError(RateLimitError):
-    detail: Optional[str]
+    detail: Optional[str] = None
 
     status: Literal[429]
 
@@ -391,7 +391,7 @@ class RateLimitedError(RateLimitError):
 
 
 class InternalServerError(APIStatusError):
-    detail: Optional[str]
+    detail: Optional[str] = None
 
     status: Literal[500]
 

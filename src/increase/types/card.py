@@ -10,36 +10,36 @@ __all__ = ["Card", "BillingAddress", "DigitalWallet"]
 
 
 class BillingAddress(BaseModel):
-    city: Optional[str]
+    city: Optional[str] = None
     """The city of the billing address."""
 
-    line1: Optional[str]
+    line1: Optional[str] = None
     """The first line of the billing address."""
 
-    line2: Optional[str]
+    line2: Optional[str] = None
     """The second line of the billing address."""
 
-    postal_code: Optional[str]
+    postal_code: Optional[str] = None
     """The postal code of the billing address."""
 
-    state: Optional[str]
+    state: Optional[str] = None
     """The US state of the billing address."""
 
 
 class DigitalWallet(BaseModel):
-    card_profile_id: Optional[str]
+    card_profile_id: Optional[str] = None
     """The card profile assigned to this digital card.
 
     Card profiles may also be assigned at the program level.
     """
 
-    email: Optional[str]
+    email: Optional[str] = None
     """
     An email address that can be used to verify the cardholder via one-time passcode
     over email.
     """
 
-    phone: Optional[str]
+    phone: Optional[str] = None
     """
     A phone number that can be used to verify the cardholder via one-time passcode
     over SMS.
@@ -62,17 +62,17 @@ class Card(BaseModel):
     the Card was created.
     """
 
-    description: Optional[str]
+    description: Optional[str] = None
     """The card's description for display purposes."""
 
-    digital_wallet: Optional[DigitalWallet]
+    digital_wallet: Optional[DigitalWallet] = None
     """
     The contact information used in the two-factor steps for digital wallet card
     creation. At least one field must be present to complete the digital wallet
     steps.
     """
 
-    entity_id: Optional[str]
+    entity_id: Optional[str] = None
     """The identifier for the entity associated with this card."""
 
     expiration_month: int

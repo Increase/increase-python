@@ -43,7 +43,7 @@ class Addenda(BaseModel):
     - `freeform` - Unstructured addendum.
     """
 
-    freeform: Optional[AddendaFreeform]
+    freeform: Optional[AddendaFreeform] = None
     """Unstructured `payment_related_information` passed through by the originator."""
 
 
@@ -97,10 +97,10 @@ class Decline(BaseModel):
 
 
 class NotificationOfChange(BaseModel):
-    updated_account_number: Optional[str]
+    updated_account_number: Optional[str] = None
     """The new account number provided in the notification of change."""
 
-    updated_routing_number: Optional[str]
+    updated_routing_number: Optional[str] = None
     """The new account number provided in the notification of change."""
 
 
@@ -151,13 +151,13 @@ class InboundACHTransfer(BaseModel):
     id: str
     """The inbound ach transfer's identifier."""
 
-    acceptance: Optional[Acceptance]
+    acceptance: Optional[Acceptance] = None
     """If your transfer is accepted, this will contain details of the acceptance."""
 
     account_number_id: str
     """The identifier of the Account Number to which this transfer was sent."""
 
-    addenda: Optional[Addenda]
+    addenda: Optional[Addenda] = None
     """Additional information sent from the originator."""
 
     amount: int
@@ -166,7 +166,7 @@ class InboundACHTransfer(BaseModel):
     automatically_resolves_at: datetime
     """The time at which the transfer will be automatically resolved."""
 
-    decline: Optional[Decline]
+    decline: Optional[Decline] = None
     """If your transfer is declined, this will contain details of the decline."""
 
     direction: Literal["credit", "debit"]
@@ -176,16 +176,16 @@ class InboundACHTransfer(BaseModel):
     - `debit` - Debit
     """
 
-    notification_of_change: Optional[NotificationOfChange]
+    notification_of_change: Optional[NotificationOfChange] = None
     """
     If you initiate a notification of change in response to the transfer, this will
     contain its details.
     """
 
-    originator_company_descriptive_date: Optional[str]
+    originator_company_descriptive_date: Optional[str] = None
     """The descriptive date of the transfer."""
 
-    originator_company_discretionary_data: Optional[str]
+    originator_company_discretionary_data: Optional[str] = None
     """The additional information included with the transfer."""
 
     originator_company_entry_description: str
@@ -203,10 +203,10 @@ class InboundACHTransfer(BaseModel):
     the transfer.
     """
 
-    receiver_id_number: Optional[str]
+    receiver_id_number: Optional[str] = None
     """The id of the receiver of the transfer."""
 
-    receiver_name: Optional[str]
+    receiver_name: Optional[str] = None
     """The name of the receiver of the transfer."""
 
     status: Literal["pending", "declined", "accepted", "returned"]
@@ -222,7 +222,7 @@ class InboundACHTransfer(BaseModel):
     trace_number: str
     """The trace number of the transfer."""
 
-    transfer_return: Optional[TransferReturn]
+    transfer_return: Optional[TransferReturn] = None
     """If your transfer is returned, this will contain details of the return."""
 
     type: Literal["inbound_ach_transfer"]

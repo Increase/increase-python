@@ -29,7 +29,7 @@ class Document(BaseModel):
     Document was created.
     """
 
-    entity_id: Optional[str]
+    entity_id: Optional[str] = None
     """The identifier of the Entity the document was generated for."""
 
     file_id: str

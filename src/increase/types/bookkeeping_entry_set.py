@@ -33,7 +33,7 @@ class BookkeepingEntrySet(BaseModel):
     entries: List[Entry]
     """The entries."""
 
-    transaction_id: Optional[str]
+    transaction_id: Optional[str] = None
     """The transaction identifier, if any."""
 
     type: Literal["bookkeeping_entry_set"]
