@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
-
 import httpx
 
 from ..types import CheckDeposit, check_deposit_list_params, check_deposit_create_params
@@ -15,6 +13,7 @@ from .._types import (
     NotGiven,
 )
 from .._utils import maybe_transform
+from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..pagination import SyncPage, AsyncPage
@@ -23,18 +22,13 @@ from .._base_client import (
     make_request_options,
 )
 
-if TYPE_CHECKING:
-    from .._client import Increase, AsyncIncrease
-
 __all__ = ["CheckDeposits", "AsyncCheckDeposits"]
 
 
 class CheckDeposits(SyncAPIResource):
-    with_raw_response: CheckDepositsWithRawResponse
-
-    def __init__(self, client: Increase) -> None:
-        super().__init__(client)
-        self.with_raw_response = CheckDepositsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> CheckDepositsWithRawResponse:
+        return CheckDepositsWithRawResponse(self)
 
     def create(
         self,
@@ -188,11 +182,9 @@ class CheckDeposits(SyncAPIResource):
 
 
 class AsyncCheckDeposits(AsyncAPIResource):
-    with_raw_response: AsyncCheckDepositsWithRawResponse
-
-    def __init__(self, client: AsyncIncrease) -> None:
-        super().__init__(client)
-        self.with_raw_response = AsyncCheckDepositsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AsyncCheckDepositsWithRawResponse:
+        return AsyncCheckDepositsWithRawResponse(self)
 
     async def create(
         self,

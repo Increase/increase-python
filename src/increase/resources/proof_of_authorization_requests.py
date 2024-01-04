@@ -2,14 +2,9 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
-
 import httpx
 
-from ..types import (
-    ProofOfAuthorizationRequest,
-    proof_of_authorization_request_list_params,
-)
+from ..types import ProofOfAuthorizationRequest, proof_of_authorization_request_list_params
 from .._types import (
     NOT_GIVEN,
     Body,
@@ -18,6 +13,7 @@ from .._types import (
     NotGiven,
 )
 from .._utils import maybe_transform
+from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..pagination import SyncPage, AsyncPage
@@ -26,18 +22,13 @@ from .._base_client import (
     make_request_options,
 )
 
-if TYPE_CHECKING:
-    from .._client import Increase, AsyncIncrease
-
 __all__ = ["ProofOfAuthorizationRequests", "AsyncProofOfAuthorizationRequests"]
 
 
 class ProofOfAuthorizationRequests(SyncAPIResource):
-    with_raw_response: ProofOfAuthorizationRequestsWithRawResponse
-
-    def __init__(self, client: Increase) -> None:
-        super().__init__(client)
-        self.with_raw_response = ProofOfAuthorizationRequestsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> ProofOfAuthorizationRequestsWithRawResponse:
+        return ProofOfAuthorizationRequestsWithRawResponse(self)
 
     def retrieve(
         self,
@@ -124,11 +115,9 @@ class ProofOfAuthorizationRequests(SyncAPIResource):
 
 
 class AsyncProofOfAuthorizationRequests(AsyncAPIResource):
-    with_raw_response: AsyncProofOfAuthorizationRequestsWithRawResponse
-
-    def __init__(self, client: AsyncIncrease) -> None:
-        super().__init__(client)
-        self.with_raw_response = AsyncProofOfAuthorizationRequestsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AsyncProofOfAuthorizationRequestsWithRawResponse:
+        return AsyncProofOfAuthorizationRequestsWithRawResponse(self)
 
     async def retrieve(
         self,

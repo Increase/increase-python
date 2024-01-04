@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
-
 import httpx
 
 from ...types import AccountTransfer
@@ -14,24 +12,20 @@ from ..._types import (
     Headers,
     NotGiven,
 )
+from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..._base_client import (
     make_request_options,
 )
 
-if TYPE_CHECKING:
-    from ..._client import Increase, AsyncIncrease
-
 __all__ = ["AccountTransfers", "AsyncAccountTransfers"]
 
 
 class AccountTransfers(SyncAPIResource):
-    with_raw_response: AccountTransfersWithRawResponse
-
-    def __init__(self, client: Increase) -> None:
-        super().__init__(client)
-        self.with_raw_response = AccountTransfersWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AccountTransfersWithRawResponse:
+        return AccountTransfersWithRawResponse(self)
 
     def complete(
         self,
@@ -78,11 +72,9 @@ class AccountTransfers(SyncAPIResource):
 
 
 class AsyncAccountTransfers(AsyncAPIResource):
-    with_raw_response: AsyncAccountTransfersWithRawResponse
-
-    def __init__(self, client: AsyncIncrease) -> None:
-        super().__init__(client)
-        self.with_raw_response = AsyncAccountTransfersWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AsyncAccountTransfersWithRawResponse:
+        return AsyncAccountTransfersWithRawResponse(self)
 
     async def complete(
         self,

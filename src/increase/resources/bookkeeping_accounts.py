@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Union
+from typing import Union
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -24,6 +24,7 @@ from .._types import (
     NotGiven,
 )
 from .._utils import maybe_transform
+from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..pagination import SyncPage, AsyncPage
@@ -32,18 +33,13 @@ from .._base_client import (
     make_request_options,
 )
 
-if TYPE_CHECKING:
-    from .._client import Increase, AsyncIncrease
-
 __all__ = ["BookkeepingAccounts", "AsyncBookkeepingAccounts"]
 
 
 class BookkeepingAccounts(SyncAPIResource):
-    with_raw_response: BookkeepingAccountsWithRawResponse
-
-    def __init__(self, client: Increase) -> None:
-        super().__init__(client)
-        self.with_raw_response = BookkeepingAccountsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> BookkeepingAccountsWithRawResponse:
+        return BookkeepingAccountsWithRawResponse(self)
 
     def create(
         self,
@@ -242,11 +238,9 @@ class BookkeepingAccounts(SyncAPIResource):
 
 
 class AsyncBookkeepingAccounts(AsyncAPIResource):
-    with_raw_response: AsyncBookkeepingAccountsWithRawResponse
-
-    def __init__(self, client: AsyncIncrease) -> None:
-        super().__init__(client)
-        self.with_raw_response = AsyncBookkeepingAccountsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AsyncBookkeepingAccountsWithRawResponse:
+        return AsyncBookkeepingAccountsWithRawResponse(self)
 
     async def create(
         self,

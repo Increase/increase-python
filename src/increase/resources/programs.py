@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
-
 import httpx
 
 from ..types import Program, program_list_params
@@ -15,6 +13,7 @@ from .._types import (
     NotGiven,
 )
 from .._utils import maybe_transform
+from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..pagination import SyncPage, AsyncPage
@@ -23,18 +22,13 @@ from .._base_client import (
     make_request_options,
 )
 
-if TYPE_CHECKING:
-    from .._client import Increase, AsyncIncrease
-
 __all__ = ["Programs", "AsyncPrograms"]
 
 
 class Programs(SyncAPIResource):
-    with_raw_response: ProgramsWithRawResponse
-
-    def __init__(self, client: Increase) -> None:
-        super().__init__(client)
-        self.with_raw_response = ProgramsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> ProgramsWithRawResponse:
+        return ProgramsWithRawResponse(self)
 
     def retrieve(
         self,
@@ -119,11 +113,9 @@ class Programs(SyncAPIResource):
 
 
 class AsyncPrograms(AsyncAPIResource):
-    with_raw_response: AsyncProgramsWithRawResponse
-
-    def __init__(self, client: AsyncIncrease) -> None:
-        super().__init__(client)
-        self.with_raw_response = AsyncProgramsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AsyncProgramsWithRawResponse:
+        return AsyncProgramsWithRawResponse(self)
 
     async def retrieve(
         self,

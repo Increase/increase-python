@@ -2,9 +2,8 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
-
 from .balances import Balances, AsyncBalances, BalancesWithRawResponse, AsyncBalancesWithRawResponse
+from ..._compat import cached_property
 from .exclusions import Exclusions, AsyncExclusions, ExclusionsWithRawResponse, AsyncExclusionsWithRawResponse
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from .account_enrollments import (
@@ -14,38 +13,43 @@ from .account_enrollments import (
     AsyncAccountEnrollmentsWithRawResponse,
 )
 
-if TYPE_CHECKING:
-    from ..._client import Increase, AsyncIncrease
-
 __all__ = ["Intrafi", "AsyncIntrafi"]
 
 
 class Intrafi(SyncAPIResource):
-    account_enrollments: AccountEnrollments
-    balances: Balances
-    exclusions: Exclusions
-    with_raw_response: IntrafiWithRawResponse
+    @cached_property
+    def account_enrollments(self) -> AccountEnrollments:
+        return AccountEnrollments(self._client)
 
-    def __init__(self, client: Increase) -> None:
-        super().__init__(client)
-        self.account_enrollments = AccountEnrollments(client)
-        self.balances = Balances(client)
-        self.exclusions = Exclusions(client)
-        self.with_raw_response = IntrafiWithRawResponse(self)
+    @cached_property
+    def balances(self) -> Balances:
+        return Balances(self._client)
+
+    @cached_property
+    def exclusions(self) -> Exclusions:
+        return Exclusions(self._client)
+
+    @cached_property
+    def with_raw_response(self) -> IntrafiWithRawResponse:
+        return IntrafiWithRawResponse(self)
 
 
 class AsyncIntrafi(AsyncAPIResource):
-    account_enrollments: AsyncAccountEnrollments
-    balances: AsyncBalances
-    exclusions: AsyncExclusions
-    with_raw_response: AsyncIntrafiWithRawResponse
+    @cached_property
+    def account_enrollments(self) -> AsyncAccountEnrollments:
+        return AsyncAccountEnrollments(self._client)
 
-    def __init__(self, client: AsyncIncrease) -> None:
-        super().__init__(client)
-        self.account_enrollments = AsyncAccountEnrollments(client)
-        self.balances = AsyncBalances(client)
-        self.exclusions = AsyncExclusions(client)
-        self.with_raw_response = AsyncIntrafiWithRawResponse(self)
+    @cached_property
+    def balances(self) -> AsyncBalances:
+        return AsyncBalances(self._client)
+
+    @cached_property
+    def exclusions(self) -> AsyncExclusions:
+        return AsyncExclusions(self._client)
+
+    @cached_property
+    def with_raw_response(self) -> AsyncIntrafiWithRawResponse:
+        return AsyncIntrafiWithRawResponse(self)
 
 
 class IntrafiWithRawResponse:

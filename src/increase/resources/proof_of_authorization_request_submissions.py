@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Union
+from typing import Union
 from datetime import datetime
 
 import httpx
@@ -20,6 +20,7 @@ from .._types import (
     NotGiven,
 )
 from .._utils import maybe_transform
+from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..pagination import SyncPage, AsyncPage
@@ -28,18 +29,13 @@ from .._base_client import (
     make_request_options,
 )
 
-if TYPE_CHECKING:
-    from .._client import Increase, AsyncIncrease
-
 __all__ = ["ProofOfAuthorizationRequestSubmissions", "AsyncProofOfAuthorizationRequestSubmissions"]
 
 
 class ProofOfAuthorizationRequestSubmissions(SyncAPIResource):
-    with_raw_response: ProofOfAuthorizationRequestSubmissionsWithRawResponse
-
-    def __init__(self, client: Increase) -> None:
-        super().__init__(client)
-        self.with_raw_response = ProofOfAuthorizationRequestSubmissionsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> ProofOfAuthorizationRequestSubmissionsWithRawResponse:
+        return ProofOfAuthorizationRequestSubmissionsWithRawResponse(self)
 
     def create(
         self,
@@ -198,11 +194,9 @@ class ProofOfAuthorizationRequestSubmissions(SyncAPIResource):
 
 
 class AsyncProofOfAuthorizationRequestSubmissions(AsyncAPIResource):
-    with_raw_response: AsyncProofOfAuthorizationRequestSubmissionsWithRawResponse
-
-    def __init__(self, client: AsyncIncrease) -> None:
-        super().__init__(client)
-        self.with_raw_response = AsyncProofOfAuthorizationRequestSubmissionsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AsyncProofOfAuthorizationRequestSubmissionsWithRawResponse:
+        return AsyncProofOfAuthorizationRequestSubmissionsWithRawResponse(self)
 
     async def create(
         self,

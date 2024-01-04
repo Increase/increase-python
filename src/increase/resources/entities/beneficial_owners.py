@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
-
 import httpx
 
 from ...types import Entity
@@ -15,6 +13,7 @@ from ..._types import (
     NotGiven,
 )
 from ..._utils import maybe_transform
+from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..._base_client import (
@@ -26,18 +25,13 @@ from ...types.entities import (
     beneficial_owner_update_address_params,
 )
 
-if TYPE_CHECKING:
-    from ..._client import Increase, AsyncIncrease
-
 __all__ = ["BeneficialOwners", "AsyncBeneficialOwners"]
 
 
 class BeneficialOwners(SyncAPIResource):
-    with_raw_response: BeneficialOwnersWithRawResponse
-
-    def __init__(self, client: Increase) -> None:
-        super().__init__(client)
-        self.with_raw_response = BeneficialOwnersWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> BeneficialOwnersWithRawResponse:
+        return BeneficialOwnersWithRawResponse(self)
 
     def create(
         self,
@@ -198,11 +192,9 @@ class BeneficialOwners(SyncAPIResource):
 
 
 class AsyncBeneficialOwners(AsyncAPIResource):
-    with_raw_response: AsyncBeneficialOwnersWithRawResponse
-
-    def __init__(self, client: AsyncIncrease) -> None:
-        super().__init__(client)
-        self.with_raw_response = AsyncBeneficialOwnersWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AsyncBeneficialOwnersWithRawResponse:
+        return AsyncBeneficialOwnersWithRawResponse(self)
 
     async def create(
         self,

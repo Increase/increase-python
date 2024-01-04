@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
 from typing_extensions import Literal
 
 import httpx
@@ -21,6 +20,7 @@ from .._types import (
     NotGiven,
 )
 from .._utils import maybe_transform
+from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..pagination import SyncPage, AsyncPage
@@ -29,18 +29,13 @@ from .._base_client import (
     make_request_options,
 )
 
-if TYPE_CHECKING:
-    from .._client import Increase, AsyncIncrease
-
 __all__ = ["AccountNumbers", "AsyncAccountNumbers"]
 
 
 class AccountNumbers(SyncAPIResource):
-    with_raw_response: AccountNumbersWithRawResponse
-
-    def __init__(self, client: Increase) -> None:
-        super().__init__(client)
-        self.with_raw_response = AccountNumbersWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AccountNumbersWithRawResponse:
+        return AccountNumbersWithRawResponse(self)
 
     def create(
         self,
@@ -259,11 +254,9 @@ class AccountNumbers(SyncAPIResource):
 
 
 class AsyncAccountNumbers(AsyncAPIResource):
-    with_raw_response: AsyncAccountNumbersWithRawResponse
-
-    def __init__(self, client: AsyncIncrease) -> None:
-        super().__init__(client)
-        self.with_raw_response = AsyncAccountNumbersWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AsyncAccountNumbersWithRawResponse:
+        return AsyncAccountNumbersWithRawResponse(self)
 
     async def create(
         self,

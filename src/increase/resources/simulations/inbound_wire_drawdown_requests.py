@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
-
 import httpx
 
 from ...types import InboundWireDrawdownRequest
@@ -15,6 +13,7 @@ from ..._types import (
     NotGiven,
 )
 from ..._utils import maybe_transform
+from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..._base_client import (
@@ -22,18 +21,13 @@ from ..._base_client import (
 )
 from ...types.simulations import inbound_wire_drawdown_request_create_params
 
-if TYPE_CHECKING:
-    from ..._client import Increase, AsyncIncrease
-
 __all__ = ["InboundWireDrawdownRequests", "AsyncInboundWireDrawdownRequests"]
 
 
 class InboundWireDrawdownRequests(SyncAPIResource):
-    with_raw_response: InboundWireDrawdownRequestsWithRawResponse
-
-    def __init__(self, client: Increase) -> None:
-        super().__init__(client)
-        self.with_raw_response = InboundWireDrawdownRequestsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> InboundWireDrawdownRequestsWithRawResponse:
+        return InboundWireDrawdownRequestsWithRawResponse(self)
 
     def create(
         self,
@@ -166,11 +160,9 @@ class InboundWireDrawdownRequests(SyncAPIResource):
 
 
 class AsyncInboundWireDrawdownRequests(AsyncAPIResource):
-    with_raw_response: AsyncInboundWireDrawdownRequestsWithRawResponse
-
-    def __init__(self, client: AsyncIncrease) -> None:
-        super().__init__(client)
-        self.with_raw_response = AsyncInboundWireDrawdownRequestsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AsyncInboundWireDrawdownRequestsWithRawResponse:
+        return AsyncInboundWireDrawdownRequestsWithRawResponse(self)
 
     async def create(
         self,

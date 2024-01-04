@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
-
 import httpx
 
 from ...types import Transaction
@@ -15,29 +13,21 @@ from ..._types import (
     NotGiven,
 )
 from ..._utils import maybe_transform
+from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..._base_client import (
     make_request_options,
 )
-from ...types.simulations import (
-    CardAuthorizationSimulation,
-    card_authorize_params,
-    card_settlement_params,
-)
-
-if TYPE_CHECKING:
-    from ..._client import Increase, AsyncIncrease
+from ...types.simulations import CardAuthorizationSimulation, card_authorize_params, card_settlement_params
 
 __all__ = ["Cards", "AsyncCards"]
 
 
 class Cards(SyncAPIResource):
-    with_raw_response: CardsWithRawResponse
-
-    def __init__(self, client: Increase) -> None:
-        super().__init__(client)
-        self.with_raw_response = CardsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> CardsWithRawResponse:
+        return CardsWithRawResponse(self)
 
     def authorize(
         self,
@@ -174,11 +164,9 @@ class Cards(SyncAPIResource):
 
 
 class AsyncCards(AsyncAPIResource):
-    with_raw_response: AsyncCardsWithRawResponse
-
-    def __init__(self, client: AsyncIncrease) -> None:
-        super().__init__(client)
-        self.with_raw_response = AsyncCardsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AsyncCardsWithRawResponse:
+        return AsyncCardsWithRawResponse(self)
 
     async def authorize(
         self,

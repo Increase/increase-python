@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
-
 import httpx
 
 from ...types import Entity
@@ -15,6 +13,7 @@ from ..._types import (
     NotGiven,
 )
 from ..._utils import maybe_transform
+from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ...pagination import SyncPage, AsyncPage
@@ -28,18 +27,13 @@ from ...types.entities import (
     supplemental_document_create_params,
 )
 
-if TYPE_CHECKING:
-    from ..._client import Increase, AsyncIncrease
-
 __all__ = ["SupplementalDocuments", "AsyncSupplementalDocuments"]
 
 
 class SupplementalDocuments(SyncAPIResource):
-    with_raw_response: SupplementalDocumentsWithRawResponse
-
-    def __init__(self, client: Increase) -> None:
-        super().__init__(client)
-        self.with_raw_response = SupplementalDocumentsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> SupplementalDocumentsWithRawResponse:
+        return SupplementalDocumentsWithRawResponse(self)
 
     def create(
         self,
@@ -141,11 +135,9 @@ class SupplementalDocuments(SyncAPIResource):
 
 
 class AsyncSupplementalDocuments(AsyncAPIResource):
-    with_raw_response: AsyncSupplementalDocumentsWithRawResponse
-
-    def __init__(self, client: AsyncIncrease) -> None:
-        super().__init__(client)
-        self.with_raw_response = AsyncSupplementalDocumentsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AsyncSupplementalDocumentsWithRawResponse:
+        return AsyncSupplementalDocumentsWithRawResponse(self)
 
     async def create(
         self,
