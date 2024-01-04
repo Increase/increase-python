@@ -41,7 +41,7 @@ class CorporationAddress(BaseModel):
     line1: str
     """The first line of the address."""
 
-    line2: Optional[str]
+    line2: Optional[str] = None
     """The second line of the address."""
 
     state: str
@@ -61,7 +61,7 @@ class CorporationBeneficialOwnerIndividualAddress(BaseModel):
     line1: str
     """The first line of the address."""
 
-    line2: Optional[str]
+    line2: Optional[str] = None
     """The second line of the address."""
 
     state: str
@@ -113,7 +113,7 @@ class CorporationBeneficialOwner(BaseModel):
     beneficial_owner_id: str
     """The identifier of this beneficial owner."""
 
-    company_title: Optional[str]
+    company_title: Optional[str] = None
     """This person's role or title within the entity."""
 
     individual: CorporationBeneficialOwnerIndividual
@@ -139,7 +139,7 @@ class Corporation(BaseModel):
     corporation.
     """
 
-    incorporation_state: Optional[str]
+    incorporation_state: Optional[str] = None
     """
     The two-letter United States Postal Service (USPS) abbreviation for the
     corporation's state of incorporation.
@@ -148,10 +148,10 @@ class Corporation(BaseModel):
     name: str
     """The legal name of the corporation."""
 
-    tax_identifier: Optional[str]
+    tax_identifier: Optional[str] = None
     """The Employer Identification Number (EIN) for the corporation."""
 
-    website: Optional[str]
+    website: Optional[str] = None
     """The website of the corporation."""
 
 
@@ -162,7 +162,7 @@ class JointIndividualAddress(BaseModel):
     line1: str
     """The first line of the address."""
 
-    line2: Optional[str]
+    line2: Optional[str] = None
     """The second line of the address."""
 
     state: str
@@ -225,7 +225,7 @@ class NaturalPersonAddress(BaseModel):
     line1: str
     """The first line of the address."""
 
-    line2: Optional[str]
+    line2: Optional[str] = None
     """The second line of the address."""
 
     state: str
@@ -297,7 +297,7 @@ class TrustAddress(BaseModel):
     line1: str
     """The first line of the address."""
 
-    line2: Optional[str]
+    line2: Optional[str] = None
     """The second line of the address."""
 
     state: str
@@ -317,7 +317,7 @@ class TrustGrantorAddress(BaseModel):
     line1: str
     """The first line of the address."""
 
-    line2: Optional[str]
+    line2: Optional[str] = None
     """The second line of the address."""
 
     state: str
@@ -372,7 +372,7 @@ class TrustTrusteeIndividualAddress(BaseModel):
     line1: str
     """The first line of the address."""
 
-    line2: Optional[str]
+    line2: Optional[str] = None
     """The second line of the address."""
 
     state: str
@@ -421,7 +421,7 @@ class TrustTrusteeIndividual(BaseModel):
 
 
 class TrustTrustee(BaseModel):
-    individual: Optional[TrustTrusteeIndividual]
+    individual: Optional[TrustTrusteeIndividual] = None
     """The individual trustee of the trust.
 
     Will be present if the trustee's `structure` is equal to `individual`.
@@ -445,22 +445,22 @@ class Trust(BaseModel):
     - `irrevocable` - The trust cannot be revoked.
     """
 
-    formation_document_file_id: Optional[str]
+    formation_document_file_id: Optional[str] = None
     """The ID for the File containing the formation document of the trust."""
 
-    formation_state: Optional[str]
+    formation_state: Optional[str] = None
     """
     The two-letter United States Postal Service (USPS) abbreviation for the state in
     which the trust was formed.
     """
 
-    grantor: Optional[TrustGrantor]
+    grantor: Optional[TrustGrantor] = None
     """The grantor of the trust. Will be present if the `category` is `revocable`."""
 
     name: str
     """The trust's name."""
 
-    tax_identifier: Optional[str]
+    tax_identifier: Optional[str] = None
     """The Employer Identification Number (EIN) of the trust itself."""
 
     trustees: List[TrustTrustee]
@@ -471,22 +471,22 @@ class Entity(BaseModel):
     id: str
     """The entity's identifier."""
 
-    corporation: Optional[Corporation]
+    corporation: Optional[Corporation] = None
     """Details of the corporation entity.
 
     Will be present if `structure` is equal to `corporation`.
     """
 
-    description: Optional[str]
+    description: Optional[str] = None
     """The entity's description for display purposes."""
 
-    joint: Optional[Joint]
+    joint: Optional[Joint] = None
     """Details of the joint entity.
 
     Will be present if `structure` is equal to `joint`.
     """
 
-    natural_person: Optional[NaturalPerson]
+    natural_person: Optional[NaturalPerson] = None
     """Details of the natural person entity.
 
     Will be present if `structure` is equal to `natural_person`.
@@ -519,7 +519,7 @@ class Entity(BaseModel):
     retrieve them.
     """
 
-    trust: Optional[Trust]
+    trust: Optional[Trust] = None
     """Details of the trust entity.
 
     Will be present if `structure` is equal to `trust`.

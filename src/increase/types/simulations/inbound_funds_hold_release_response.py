@@ -44,13 +44,13 @@ class InboundFundsHoldReleaseResponse(BaseModel):
     - `USD` - US Dollar (USD)
     """
 
-    held_transaction_id: Optional[str]
+    held_transaction_id: Optional[str] = None
     """The ID of the Transaction for which funds were held."""
 
-    pending_transaction_id: Optional[str]
+    pending_transaction_id: Optional[str] = None
     """The ID of the Pending Transaction representing the held funds."""
 
-    released_at: Optional[datetime]
+    released_at: Optional[datetime] = None
     """When the hold was released (if it has been released)."""
 
     status: Literal["held", "complete"]

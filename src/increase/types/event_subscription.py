@@ -91,7 +91,7 @@ class EventSubscription(BaseModel):
             "wire_transfer.created",
             "wire_transfer.updated",
         ]
-    ]
+    ] = None
     """
     If specified, this subscription will only receive webhooks for Events with the
     specified `category`.

@@ -34,7 +34,7 @@ class Approval(BaseModel):
     the transfer was approved.
     """
 
-    approved_by: Optional[str]
+    approved_by: Optional[str] = None
     """
     If the Transfer was approved by a user in the dashboard, the email address of
     that user.
@@ -48,7 +48,7 @@ class Cancellation(BaseModel):
     the Transfer was canceled.
     """
 
-    canceled_by: Optional[str]
+    canceled_by: Optional[str] = None
     """
     If the Transfer was canceled by a user in the dashboard, the email address of
     that user.
@@ -408,14 +408,14 @@ class ACHTransfer(BaseModel):
     account_number: str
     """The destination account number."""
 
-    acknowledgement: Optional[Acknowledgement]
+    acknowledgement: Optional[Acknowledgement] = None
     """
     After the transfer is acknowledged by FedACH, this will contain supplemental
     details. The Federal Reserve sends an acknowledgement message for each file that
     Increase submits.
     """
 
-    addendum: Optional[str]
+    addendum: Optional[str] = None
     """Additional information that will be sent to the recipient."""
 
     amount: int
@@ -426,28 +426,28 @@ class ACHTransfer(BaseModel):
     receiving account.
     """
 
-    approval: Optional[Approval]
+    approval: Optional[Approval] = None
     """
     If your account requires approvals for transfers and the transfer was approved,
     this will contain details of the approval.
     """
 
-    cancellation: Optional[Cancellation]
+    cancellation: Optional[Cancellation] = None
     """
     If your account requires approvals for transfers and the transfer was not
     approved, this will contain details of the cancellation.
     """
 
-    company_descriptive_date: Optional[str]
+    company_descriptive_date: Optional[str] = None
     """The description of the date of the transfer."""
 
-    company_discretionary_data: Optional[str]
+    company_discretionary_data: Optional[str] = None
     """The data you chose to associate with the transfer."""
 
-    company_entry_description: Optional[str]
+    company_entry_description: Optional[str] = None
     """The description of the transfer you set to be shown to the recipient."""
 
-    company_name: Optional[str]
+    company_name: Optional[str] = None
     """The name by which the recipient knows you."""
 
     created_at: datetime
@@ -469,13 +469,13 @@ class ACHTransfer(BaseModel):
     - `USD` - US Dollar (USD)
     """
 
-    effective_date: Optional[date]
+    effective_date: Optional[date] = None
     """
     The transfer effective date in
     [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
     """
 
-    external_account_id: Optional[str]
+    external_account_id: Optional[str] = None
     """The identifier of the External Account the transfer was made to, if any."""
 
     funding: Literal["checking", "savings"]
@@ -485,10 +485,10 @@ class ACHTransfer(BaseModel):
     - `savings` - A savings account.
     """
 
-    individual_id: Optional[str]
+    individual_id: Optional[str] = None
     """Your identifier for the transfer recipient."""
 
-    individual_name: Optional[str]
+    individual_name: Optional[str] = None
     """The name of the transfer recipient.
 
     This value is information and not verified by the recipient's bank.
@@ -503,7 +503,7 @@ class ACHTransfer(BaseModel):
     should use different details, this will contain those details.
     """
 
-    pending_transaction_id: Optional[str]
+    pending_transaction_id: Optional[str] = None
     """The ID for the pending transaction representing the transfer.
 
     A pending transaction is created when the transfer
@@ -511,7 +511,7 @@ class ACHTransfer(BaseModel):
     by someone else in your organization.
     """
 
-    return_: Optional[Return] = FieldInfo(alias="return")
+    return_: Optional[Return] = FieldInfo(alias="return", default=None)
     """If your transfer is returned, this will contain details of the return."""
 
     routing_number: str
@@ -554,7 +554,7 @@ class ACHTransfer(BaseModel):
     - `rejected` - The transfer has been rejected.
     """
 
-    submission: Optional[Submission]
+    submission: Optional[Submission] = None
     """
     After the transfer is submitted to FedACH, this will contain supplemental
     details. Increase batches transfers and submits a file to the Federal Reserve
@@ -563,7 +563,7 @@ class ACHTransfer(BaseModel):
     [posted schedule](https://www.frbservices.org/resources/resource-centers/same-day-ach/fedach-processing-schedule.html).
     """
 
-    transaction_id: Optional[str]
+    transaction_id: Optional[str] = None
     """The ID for the transaction funding the transfer."""
 
     type: Literal["ach_transfer"]
@@ -572,5 +572,5 @@ class ACHTransfer(BaseModel):
     For this resource it will always be `ach_transfer`.
     """
 
-    unique_identifier: Optional[str]
+    unique_identifier: Optional[str] = None
     """The unique identifier you chose for this transfer."""

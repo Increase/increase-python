@@ -39,10 +39,10 @@ class Account(BaseModel):
     - `USD` - US Dollar (USD)
     """
 
-    entity_id: Optional[str]
+    entity_id: Optional[str] = None
     """The identifier for the Entity the Account belongs to."""
 
-    informational_entity_id: Optional[str]
+    informational_entity_id: Optional[str] = None
     """
     The identifier of an Entity that, while not owning the Account, is associated
     with its activity.
@@ -54,7 +54,7 @@ class Account(BaseModel):
     floating-point value.
     """
 
-    interest_accrued_at: Optional[date]
+    interest_accrued_at: Optional[date] = None
     """
     The latest [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which
     interest was accrued.

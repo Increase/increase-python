@@ -34,7 +34,7 @@ class CardAuthorizationNetworkDetailsVisa(BaseModel):
             "non_authenticated_security_transaction",
             "non_secure_transaction",
         ]
-    ]
+    ] = None
     """
     For electronic commerce transactions, this identifies the level of security used
     in obtaining the customer's payment credential. For mail or telephone order
@@ -84,7 +84,7 @@ class CardAuthorizationNetworkDetailsVisa(BaseModel):
             "contactless_magnetic_stripe",
             "integrated_circuit_card_no_cvv",
         ]
-    ]
+    ] = None
     """
     The method used to enter the cardholder's primary account number and card
     expiration date.
@@ -112,25 +112,25 @@ class CardAuthorizationNetworkDetails(BaseModel):
     - `visa` - Visa
     """
 
-    visa: Optional[CardAuthorizationNetworkDetailsVisa]
+    visa: Optional[CardAuthorizationNetworkDetailsVisa] = None
     """Fields specific to the `visa` network."""
 
 
 class CardAuthorizationNetworkIdentifiers(BaseModel):
-    retrieval_reference_number: Optional[str]
+    retrieval_reference_number: Optional[str] = None
     """A life-cycle identifier used across e.g., an authorization and a reversal.
 
     Expected to be unique per acquirer within a window of time. For some card
     networks the retrieval reference number includes the trace counter.
     """
 
-    trace_number: Optional[str]
+    trace_number: Optional[str] = None
     """A counter used to verify an individual authorization.
 
     Expected to be unique per acquirer within a window of time.
     """
 
-    transaction_id: Optional[str]
+    transaction_id: Optional[str] = None
     """
     A globally unique transaction identifier provided by the card network, used
     across multiple life-cycle requests.
@@ -159,10 +159,10 @@ class CardAuthorizationRequestDetails(BaseModel):
       an existing authorization.
     """
 
-    incremental_authorization: Optional[CardAuthorizationRequestDetailsIncrementalAuthorization]
+    incremental_authorization: Optional[CardAuthorizationRequestDetailsIncrementalAuthorization] = None
     """Fields specific to the category `incremental_authorization`."""
 
-    initial_authorization: Optional[object]
+    initial_authorization: Optional[object] = None
     """Fields specific to the category `initial_authorization`."""
 
 
@@ -178,19 +178,19 @@ class CardAuthorizationVerificationCardVerificationCode(BaseModel):
 
 
 class CardAuthorizationVerificationCardholderAddress(BaseModel):
-    actual_line1: Optional[str]
+    actual_line1: Optional[str] = None
     """Line 1 of the address on file for the cardholder."""
 
-    actual_postal_code: Optional[str]
+    actual_postal_code: Optional[str] = None
     """The postal code of the address on file for the cardholder."""
 
-    provided_line1: Optional[str]
+    provided_line1: Optional[str] = None
     """
     The cardholder address line 1 provided for verification in the authorization
     request.
     """
 
-    provided_postal_code: Optional[str]
+    provided_postal_code: Optional[str] = None
     """The postal code provided for verification in the authorization request."""
 
     result: Literal[
@@ -236,14 +236,14 @@ class CardAuthorization(BaseModel):
     card_id: str
     """The identifier of the Card that is being authorized."""
 
-    decision: Optional[Literal["approve", "decline"]]
+    decision: Optional[Literal["approve", "decline"]] = None
     """Whether or not the authorization was approved.
 
     - `approve` - Approve the authorization.
     - `decline` - Decline the authorization.
     """
 
-    digital_wallet_token_id: Optional[str]
+    digital_wallet_token_id: Optional[str] = None
     """
     If the authorization was made via a Digital Wallet Token (such as an Apple Pay
     purchase), the identifier of the token that was used.
@@ -255,16 +255,16 @@ class CardAuthorization(BaseModel):
     is transacting with.
     """
 
-    merchant_category_code: Optional[str]
+    merchant_category_code: Optional[str] = None
     """
     The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
     card is transacting with.
     """
 
-    merchant_city: Optional[str]
+    merchant_city: Optional[str] = None
     """The city the merchant resides in."""
 
-    merchant_country: Optional[str]
+    merchant_country: Optional[str] = None
     """The country the merchant resides in."""
 
     merchant_descriptor: str
@@ -276,7 +276,7 @@ class CardAuthorization(BaseModel):
     network_identifiers: CardAuthorizationNetworkIdentifiers
     """Network-specific identifiers for a specific request or transaction."""
 
-    physical_card_id: Optional[str]
+    physical_card_id: Optional[str] = None
     """
     If the authorization was made in-person with a physical card, the Physical Card
     that was used.
@@ -354,19 +354,19 @@ class DigitalWalletAuthentication(BaseModel):
     - `unknown` - Unknown
     """
 
-    email: Optional[str]
+    email: Optional[str] = None
     """The email to send the one-time passcode to if `channel` is equal to `email`."""
 
     one_time_passcode: str
     """The one-time passcode to send the card user."""
 
-    phone: Optional[str]
+    phone: Optional[str] = None
     """
     The phone number to send the one-time passcode to if `channel` is equal to
     `sms`.
     """
 
-    result: Optional[Literal["success", "failure"]]
+    result: Optional[Literal["success", "failure"]] = None
     """Whether your application successfully delivered the one-time passcode.
 
     - `success` - Your application successfully delivered the one-time passcode to
@@ -380,14 +380,14 @@ class DigitalWalletToken(BaseModel):
     card_id: str
     """The identifier of the Card that is being tokenized."""
 
-    card_profile_id: Optional[str]
+    card_profile_id: Optional[str] = None
     """The identifier of the Card Profile that was set via the real time decision.
 
     This will be null until the real time decision is responded to or if the real
     time decision did not set a card profile.
     """
 
-    decision: Optional[Literal["approve", "decline"]]
+    decision: Optional[Literal["approve", "decline"]] = None
     """Whether or not the provisioning request was approved.
 
     This will be null until the real time decision is responded to.
@@ -409,7 +409,7 @@ class RealTimeDecision(BaseModel):
     id: str
     """The Real-Time Decision identifier."""
 
-    card_authorization: Optional[CardAuthorization]
+    card_authorization: Optional[CardAuthorization] = None
     """Fields related to a card authorization."""
 
     category: Literal[
@@ -430,10 +430,10 @@ class RealTimeDecision(BaseModel):
     the Real-Time Decision was created.
     """
 
-    digital_wallet_authentication: Optional[DigitalWalletAuthentication]
+    digital_wallet_authentication: Optional[DigitalWalletAuthentication] = None
     """Fields related to a digital wallet authentication attempt."""
 
-    digital_wallet_token: Optional[DigitalWalletToken]
+    digital_wallet_token: Optional[DigitalWalletToken] = None
     """Fields related to a digital wallet token provisioning attempt."""
 
     status: Literal["pending", "responded", "timed_out"]

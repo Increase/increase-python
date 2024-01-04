@@ -35,7 +35,7 @@ class WireDrawdownRequest(BaseModel):
     requested. Will always be "USD".
     """
 
-    fulfillment_transaction_id: Optional[str]
+    fulfillment_transaction_id: Optional[str] = None
     """
     If the recipient fulfills the drawdown request by sending funds, then this will
     be the identifier of the corresponding Transaction.
@@ -47,16 +47,16 @@ class WireDrawdownRequest(BaseModel):
     recipient_account_number: str
     """The drawdown request's recipient's account number."""
 
-    recipient_address_line1: Optional[str]
+    recipient_address_line1: Optional[str] = None
     """Line 1 of the drawdown request's recipient's address."""
 
-    recipient_address_line2: Optional[str]
+    recipient_address_line2: Optional[str] = None
     """Line 2 of the drawdown request's recipient's address."""
 
-    recipient_address_line3: Optional[str]
+    recipient_address_line3: Optional[str] = None
     """Line 3 of the drawdown request's recipient's address."""
 
-    recipient_name: Optional[str]
+    recipient_name: Optional[str] = None
     """The drawdown request's recipient's name."""
 
     recipient_routing_number: str
@@ -73,7 +73,7 @@ class WireDrawdownRequest(BaseModel):
     - `refused` - The drawdown request has been refused by the recipient.
     """
 
-    submission: Optional[Submission]
+    submission: Optional[Submission] = None
     """
     After the drawdown request is submitted to Fedwire, this will contain
     supplemental details.

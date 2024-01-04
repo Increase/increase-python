@@ -24,10 +24,10 @@ class ShipmentAddress(BaseModel):
     line1: str
     """The first line of the shipping address."""
 
-    line2: Optional[str]
+    line2: Optional[str] = None
     """The second line of the shipping address."""
 
-    line3: Optional[str]
+    line3: Optional[str] = None
     """The third line of the shipping address."""
 
     name: str
@@ -44,10 +44,10 @@ class ShipmentTracking(BaseModel):
     number: str
     """The tracking number."""
 
-    return_number: Optional[str]
+    return_number: Optional[str] = None
     """For returned shipments, the tracking number of the return shipment."""
 
-    return_reason: Optional[str]
+    return_reason: Optional[str] = None
     """For returned shipments, this describes why the package was returned."""
 
     shipped_at: datetime
@@ -86,7 +86,7 @@ class Shipment(BaseModel):
       destroyed by the production facility.
     """
 
-    tracking: Optional[ShipmentTracking]
+    tracking: Optional[ShipmentTracking] = None
     """Tracking details for the shipment."""
 
 
@@ -97,10 +97,10 @@ class PhysicalCard(BaseModel):
     card_id: str
     """The identifier for the Card this Physical Card represents."""
 
-    card_profile_id: Optional[str]
+    card_profile_id: Optional[str] = None
     """The Card Profile used for this Physical Card."""
 
-    cardholder: Optional[Cardholder]
+    cardholder: Optional[Cardholder] = None
     """Details about the cardholder, as it appears on the printed card."""
 
     created_at: datetime

@@ -71,7 +71,7 @@ class ElementCardAuthorizationNetworkDetailsVisa(BaseModel):
             "non_authenticated_security_transaction",
             "non_secure_transaction",
         ]
-    ]
+    ] = None
     """
     For electronic commerce transactions, this identifies the level of security used
     in obtaining the customer's payment credential. For mail or telephone order
@@ -121,7 +121,7 @@ class ElementCardAuthorizationNetworkDetailsVisa(BaseModel):
             "contactless_magnetic_stripe",
             "integrated_circuit_card_no_cvv",
         ]
-    ]
+    ] = None
     """
     The method used to enter the cardholder's primary account number and card
     expiration date.
@@ -149,25 +149,25 @@ class ElementCardAuthorizationNetworkDetails(BaseModel):
     - `visa` - Visa
     """
 
-    visa: Optional[ElementCardAuthorizationNetworkDetailsVisa]
+    visa: Optional[ElementCardAuthorizationNetworkDetailsVisa] = None
     """Fields specific to the `visa` network."""
 
 
 class ElementCardAuthorizationNetworkIdentifiers(BaseModel):
-    retrieval_reference_number: Optional[str]
+    retrieval_reference_number: Optional[str] = None
     """A life-cycle identifier used across e.g., an authorization and a reversal.
 
     Expected to be unique per acquirer within a window of time. For some card
     networks the retrieval reference number includes the trace counter.
     """
 
-    trace_number: Optional[str]
+    trace_number: Optional[str] = None
     """A counter used to verify an individual authorization.
 
     Expected to be unique per acquirer within a window of time.
     """
 
-    transaction_id: Optional[str]
+    transaction_id: Optional[str] = None
     """
     A globally unique transaction identifier provided by the card network, used
     across multiple life-cycle requests.
@@ -186,19 +186,19 @@ class ElementCardAuthorizationVerificationCardVerificationCode(BaseModel):
 
 
 class ElementCardAuthorizationVerificationCardholderAddress(BaseModel):
-    actual_line1: Optional[str]
+    actual_line1: Optional[str] = None
     """Line 1 of the address on file for the cardholder."""
 
-    actual_postal_code: Optional[str]
+    actual_postal_code: Optional[str] = None
     """The postal code of the address on file for the cardholder."""
 
-    provided_line1: Optional[str]
+    provided_line1: Optional[str] = None
     """
     The cardholder address line 1 provided for verification in the authorization
     request.
     """
 
-    provided_postal_code: Optional[str]
+    provided_postal_code: Optional[str] = None
     """The postal code provided for verification in the authorization request."""
 
     result: Literal[
@@ -247,7 +247,7 @@ class ElementCardAuthorization(BaseModel):
     For dollars, for example, this is cents.
     """
 
-    card_payment_id: Optional[str]
+    card_payment_id: Optional[str] = None
     """The ID of the Card Payment this transaction belongs to."""
 
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
@@ -263,7 +263,7 @@ class ElementCardAuthorization(BaseModel):
     - `USD` - US Dollar (USD)
     """
 
-    digital_wallet_token_id: Optional[str]
+    digital_wallet_token_id: Optional[str] = None
     """
     If the authorization was made via a Digital Wallet Token (such as an Apple Pay
     purchase), the identifier of the token that was used.
@@ -292,16 +292,16 @@ class ElementCardAuthorization(BaseModel):
     is transacting with.
     """
 
-    merchant_category_code: Optional[str]
+    merchant_category_code: Optional[str] = None
     """
     The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
     card is transacting with.
     """
 
-    merchant_city: Optional[str]
+    merchant_city: Optional[str] = None
     """The city the merchant resides in."""
 
-    merchant_country: Optional[str]
+    merchant_country: Optional[str] = None
     """The country the merchant resides in."""
 
     merchant_descriptor: str
@@ -313,10 +313,10 @@ class ElementCardAuthorization(BaseModel):
     network_identifiers: ElementCardAuthorizationNetworkIdentifiers
     """Network-specific identifiers for a specific request or transaction."""
 
-    pending_transaction_id: Optional[str]
+    pending_transaction_id: Optional[str] = None
     """The identifier of the Pending Transaction associated with this Transaction."""
 
-    physical_card_id: Optional[str]
+    physical_card_id: Optional[str] = None
     """
     If the authorization was made in-person with a physical card, the Physical Card
     that was used.
@@ -343,7 +343,7 @@ class ElementCardAuthorization(BaseModel):
       voucher authorization, where funds are credited to the cardholder.
     """
 
-    real_time_decision_id: Optional[str]
+    real_time_decision_id: Optional[str] = None
     """
     The identifier of the Real-Time Decision sent to approve or decline this
     transaction.
@@ -410,7 +410,7 @@ class ElementCardDeclineNetworkDetailsVisa(BaseModel):
             "non_authenticated_security_transaction",
             "non_secure_transaction",
         ]
-    ]
+    ] = None
     """
     For electronic commerce transactions, this identifies the level of security used
     in obtaining the customer's payment credential. For mail or telephone order
@@ -460,7 +460,7 @@ class ElementCardDeclineNetworkDetailsVisa(BaseModel):
             "contactless_magnetic_stripe",
             "integrated_circuit_card_no_cvv",
         ]
-    ]
+    ] = None
     """
     The method used to enter the cardholder's primary account number and card
     expiration date.
@@ -488,25 +488,25 @@ class ElementCardDeclineNetworkDetails(BaseModel):
     - `visa` - Visa
     """
 
-    visa: Optional[ElementCardDeclineNetworkDetailsVisa]
+    visa: Optional[ElementCardDeclineNetworkDetailsVisa] = None
     """Fields specific to the `visa` network."""
 
 
 class ElementCardDeclineNetworkIdentifiers(BaseModel):
-    retrieval_reference_number: Optional[str]
+    retrieval_reference_number: Optional[str] = None
     """A life-cycle identifier used across e.g., an authorization and a reversal.
 
     Expected to be unique per acquirer within a window of time. For some card
     networks the retrieval reference number includes the trace counter.
     """
 
-    trace_number: Optional[str]
+    trace_number: Optional[str] = None
     """A counter used to verify an individual authorization.
 
     Expected to be unique per acquirer within a window of time.
     """
 
-    transaction_id: Optional[str]
+    transaction_id: Optional[str] = None
     """
     A globally unique transaction identifier provided by the card network, used
     across multiple life-cycle requests.
@@ -525,19 +525,19 @@ class ElementCardDeclineVerificationCardVerificationCode(BaseModel):
 
 
 class ElementCardDeclineVerificationCardholderAddress(BaseModel):
-    actual_line1: Optional[str]
+    actual_line1: Optional[str] = None
     """Line 1 of the address on file for the cardholder."""
 
-    actual_postal_code: Optional[str]
+    actual_postal_code: Optional[str] = None
     """The postal code of the address on file for the cardholder."""
 
-    provided_line1: Optional[str]
+    provided_line1: Optional[str] = None
     """
     The cardholder address line 1 provided for verification in the authorization
     request.
     """
 
-    provided_postal_code: Optional[str]
+    provided_postal_code: Optional[str] = None
     """The postal code provided for verification in the authorization request."""
 
     result: Literal[
@@ -586,7 +586,7 @@ class ElementCardDecline(BaseModel):
     For dollars, for example, this is cents.
     """
 
-    card_payment_id: Optional[str]
+    card_payment_id: Optional[str] = None
     """The ID of the Card Payment this transaction belongs to."""
 
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
@@ -602,7 +602,7 @@ class ElementCardDecline(BaseModel):
     - `USD` - US Dollar (USD)
     """
 
-    digital_wallet_token_id: Optional[str]
+    digital_wallet_token_id: Optional[str] = None
     """
     If the authorization was made via a Digital Wallet Token (such as an Apple Pay
     purchase), the identifier of the token that was used.
@@ -614,22 +614,22 @@ class ElementCardDecline(BaseModel):
     is transacting with.
     """
 
-    merchant_category_code: Optional[str]
+    merchant_category_code: Optional[str] = None
     """
     The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
     card is transacting with.
     """
 
-    merchant_city: Optional[str]
+    merchant_city: Optional[str] = None
     """The city the merchant resides in."""
 
-    merchant_country: Optional[str]
+    merchant_country: Optional[str] = None
     """The country the merchant resides in."""
 
     merchant_descriptor: str
     """The merchant descriptor of the merchant the card is transacting with."""
 
-    merchant_state: Optional[str]
+    merchant_state: Optional[str] = None
     """The state the merchant resides in."""
 
     network_details: ElementCardDeclineNetworkDetails
@@ -638,7 +638,7 @@ class ElementCardDecline(BaseModel):
     network_identifiers: ElementCardDeclineNetworkIdentifiers
     """Network-specific identifiers for a specific request or transaction."""
 
-    physical_card_id: Optional[str]
+    physical_card_id: Optional[str] = None
     """
     If the authorization was made in-person with a physical card, the Physical Card
     that was used.
@@ -665,7 +665,7 @@ class ElementCardDecline(BaseModel):
       voucher authorization, where funds are credited to the cardholder.
     """
 
-    real_time_decision_id: Optional[str]
+    real_time_decision_id: Optional[str] = None
     """
     The identifier of the Real-Time Decision sent to approve or decline this
     transaction.
@@ -716,20 +716,20 @@ class ElementCardDecline(BaseModel):
 
 
 class ElementCardFuelConfirmationNetworkIdentifiers(BaseModel):
-    retrieval_reference_number: Optional[str]
+    retrieval_reference_number: Optional[str] = None
     """A life-cycle identifier used across e.g., an authorization and a reversal.
 
     Expected to be unique per acquirer within a window of time. For some card
     networks the retrieval reference number includes the trace counter.
     """
 
-    trace_number: Optional[str]
+    trace_number: Optional[str] = None
     """A counter used to verify an individual authorization.
 
     Expected to be unique per acquirer within a window of time.
     """
 
-    transaction_id: Optional[str]
+    transaction_id: Optional[str] = None
     """
     A globally unique transaction identifier provided by the card network, used
     across multiple life-cycle requests.
@@ -765,7 +765,7 @@ class ElementCardFuelConfirmation(BaseModel):
     network_identifiers: ElementCardFuelConfirmationNetworkIdentifiers
     """Network-specific identifiers for a specific request or transaction."""
 
-    pending_transaction_id: Optional[str]
+    pending_transaction_id: Optional[str] = None
     """
     The identifier of the Pending Transaction associated with this Card Fuel
     Confirmation.
@@ -785,20 +785,20 @@ class ElementCardFuelConfirmation(BaseModel):
 
 
 class ElementCardIncrementNetworkIdentifiers(BaseModel):
-    retrieval_reference_number: Optional[str]
+    retrieval_reference_number: Optional[str] = None
     """A life-cycle identifier used across e.g., an authorization and a reversal.
 
     Expected to be unique per acquirer within a window of time. For some card
     networks the retrieval reference number includes the trace counter.
     """
 
-    trace_number: Optional[str]
+    trace_number: Optional[str] = None
     """A counter used to verify an individual authorization.
 
     Expected to be unique per acquirer within a window of time.
     """
 
-    transaction_id: Optional[str]
+    transaction_id: Optional[str] = None
     """
     A globally unique transaction identifier provided by the card network, used
     across multiple life-cycle requests.
@@ -840,10 +840,10 @@ class ElementCardIncrement(BaseModel):
     network_identifiers: ElementCardIncrementNetworkIdentifiers
     """Network-specific identifiers for a specific request or transaction."""
 
-    pending_transaction_id: Optional[str]
+    pending_transaction_id: Optional[str] = None
     """The identifier of the Pending Transaction associated with this Card Increment."""
 
-    real_time_decision_id: Optional[str]
+    real_time_decision_id: Optional[str] = None
     """
     The identifier of the Real-Time Decision sent to approve or decline this
     incremental authorization.
@@ -872,7 +872,7 @@ class ElementCardRefundNetworkIdentifiers(BaseModel):
     acquirer_reference_number: str
     """A globally unique identifier for this settlement."""
 
-    transaction_id: Optional[str]
+    transaction_id: Optional[str] = None
     """
     A globally unique transaction identifier provided by the card network, used
     across multiple life-cycle requests.
@@ -880,30 +880,30 @@ class ElementCardRefundNetworkIdentifiers(BaseModel):
 
 
 class ElementCardRefundPurchaseDetailsCarRental(BaseModel):
-    car_class_code: Optional[str]
+    car_class_code: Optional[str] = None
     """Code indicating the vehicle's class."""
 
-    checkout_date: Optional[date]
+    checkout_date: Optional[date] = None
     """
     Date the customer picked up the car or, in the case of a no-show or pre-pay
     transaction, the scheduled pick up date.
     """
 
-    daily_rental_rate_amount: Optional[int]
+    daily_rental_rate_amount: Optional[int] = None
     """Daily rate being charged for the vehicle."""
 
-    daily_rental_rate_currency: Optional[str]
+    daily_rental_rate_currency: Optional[str] = None
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily rental
     rate.
     """
 
-    days_rented: Optional[int]
+    days_rented: Optional[int] = None
     """Number of days the vehicle was rented."""
 
     extra_charges: Optional[
         Literal["no_extra_charge", "gas", "extra_mileage", "late_return", "one_way_service_fee", "parking_violation"]
-    ]
+    ] = None
     """Additional charges (gas, late fee, etc.) being billed.
 
     - `no_extra_charge` - No extra charge
@@ -914,25 +914,25 @@ class ElementCardRefundPurchaseDetailsCarRental(BaseModel):
     - `parking_violation` - Parking violation
     """
 
-    fuel_charges_amount: Optional[int]
+    fuel_charges_amount: Optional[int] = None
     """Fuel charges for the vehicle."""
 
-    fuel_charges_currency: Optional[str]
+    fuel_charges_currency: Optional[str] = None
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the fuel charges
     assessed.
     """
 
-    insurance_charges_amount: Optional[int]
+    insurance_charges_amount: Optional[int] = None
     """Any insurance being charged for the vehicle."""
 
-    insurance_charges_currency: Optional[str]
+    insurance_charges_currency: Optional[str] = None
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the insurance
     charges assessed.
     """
 
-    no_show_indicator: Optional[Literal["not_applicable", "no_show_for_specialized_vehicle"]]
+    no_show_indicator: Optional[Literal["not_applicable", "no_show_for_specialized_vehicle"]] = None
     """
     An indicator that the cardholder is being billed for a reserved vehicle that was
     not actually rented (that is, a "no-show" charge).
@@ -941,25 +941,25 @@ class ElementCardRefundPurchaseDetailsCarRental(BaseModel):
     - `no_show_for_specialized_vehicle` - No show for specialized vehicle
     """
 
-    one_way_drop_off_charges_amount: Optional[int]
+    one_way_drop_off_charges_amount: Optional[int] = None
     """
     Charges for returning the vehicle at a different location than where it was
     picked up.
     """
 
-    one_way_drop_off_charges_currency: Optional[str]
+    one_way_drop_off_charges_currency: Optional[str] = None
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the one-way
     drop-off charges assessed.
     """
 
-    renter_name: Optional[str]
+    renter_name: Optional[str] = None
     """Name of the person renting the vehicle."""
 
-    weekly_rental_rate_amount: Optional[int]
+    weekly_rental_rate_amount: Optional[int] = None
     """Weekly rate being charged for the vehicle."""
 
-    weekly_rental_rate_currency: Optional[str]
+    weekly_rental_rate_currency: Optional[str] = None
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the weekly
     rental rate.
@@ -967,13 +967,13 @@ class ElementCardRefundPurchaseDetailsCarRental(BaseModel):
 
 
 class ElementCardRefundPurchaseDetailsLodging(BaseModel):
-    check_in_date: Optional[date]
+    check_in_date: Optional[date] = None
     """Date the customer checked in."""
 
-    daily_room_rate_amount: Optional[int]
+    daily_room_rate_amount: Optional[int] = None
     """Daily rate being charged for the room."""
 
-    daily_room_rate_currency: Optional[str]
+    daily_room_rate_currency: Optional[str] = None
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily room
     rate.
@@ -981,7 +981,7 @@ class ElementCardRefundPurchaseDetailsLodging(BaseModel):
 
     extra_charges: Optional[
         Literal["no_extra_charge", "restaurant", "gift_shop", "mini_bar", "telephone", "other", "laundry"]
-    ]
+    ] = None
     """Additional charges (phone, late check-out, etc.) being billed.
 
     - `no_extra_charge` - No extra charge
@@ -993,25 +993,25 @@ class ElementCardRefundPurchaseDetailsLodging(BaseModel):
     - `laundry` - Laundry
     """
 
-    folio_cash_advances_amount: Optional[int]
+    folio_cash_advances_amount: Optional[int] = None
     """Folio cash advances for the room."""
 
-    folio_cash_advances_currency: Optional[str]
+    folio_cash_advances_currency: Optional[str] = None
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the folio cash
     advances.
     """
 
-    food_beverage_charges_amount: Optional[int]
+    food_beverage_charges_amount: Optional[int] = None
     """Food and beverage charges for the room."""
 
-    food_beverage_charges_currency: Optional[str]
+    food_beverage_charges_currency: Optional[str] = None
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the food and
     beverage charges.
     """
 
-    no_show_indicator: Optional[Literal["not_applicable", "no_show"]]
+    no_show_indicator: Optional[Literal["not_applicable", "no_show"]] = None
     """
     Indicator that the cardholder is being billed for a reserved room that was not
     actually used.
@@ -1020,31 +1020,31 @@ class ElementCardRefundPurchaseDetailsLodging(BaseModel):
     - `no_show` - No show
     """
 
-    prepaid_expenses_amount: Optional[int]
+    prepaid_expenses_amount: Optional[int] = None
     """Prepaid expenses being charged for the room."""
 
-    prepaid_expenses_currency: Optional[str]
+    prepaid_expenses_currency: Optional[str] = None
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the prepaid
     expenses.
     """
 
-    room_nights: Optional[int]
+    room_nights: Optional[int] = None
     """Number of nights the room was rented."""
 
-    total_room_tax_amount: Optional[int]
+    total_room_tax_amount: Optional[int] = None
     """Total room tax being charged."""
 
-    total_room_tax_currency: Optional[str]
+    total_room_tax_currency: Optional[str] = None
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total room
     tax.
     """
 
-    total_tax_amount: Optional[int]
+    total_tax_amount: Optional[int] = None
     """Total tax being charged for the room."""
 
-    total_tax_currency: Optional[str]
+    total_tax_currency: Optional[str] = None
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total tax
     assessed.
@@ -1079,7 +1079,7 @@ class ElementCardRefundPurchaseDetailsTravelAncillaryService(BaseModel):
             "upgrades",
             "wifi",
         ]
-    ]
+    ] = None
     """Category of the ancillary service.
 
     - `none` - None
@@ -1108,12 +1108,12 @@ class ElementCardRefundPurchaseDetailsTravelAncillaryService(BaseModel):
     - `wifi` - Wi-fi
     """
 
-    sub_category: Optional[str]
+    sub_category: Optional[str] = None
     """Sub-category of the ancillary service, free-form."""
 
 
 class ElementCardRefundPurchaseDetailsTravelAncillary(BaseModel):
-    connected_ticket_document_number: Optional[str]
+    connected_ticket_document_number: Optional[str] = None
     """
     If this purchase has a connection or relationship to another purchase, such as a
     baggage fee for a passenger transport ticket, this field should contain the
@@ -1127,7 +1127,7 @@ class ElementCardRefundPurchaseDetailsTravelAncillary(BaseModel):
             "airline_ticket_and_passenger_transport_ancillary_purchase_cancellation",
             "other",
         ]
-    ]
+    ] = None
     """Indicates the reason for a credit to the cardholder.
 
     - `no_credit` - No credit
@@ -1138,33 +1138,33 @@ class ElementCardRefundPurchaseDetailsTravelAncillary(BaseModel):
     - `other` - Other
     """
 
-    passenger_name_or_description: Optional[str]
+    passenger_name_or_description: Optional[str] = None
     """Name of the passenger or description of the ancillary purchase."""
 
     services: List[ElementCardRefundPurchaseDetailsTravelAncillaryService]
     """Additional travel charges, such as baggage fees."""
 
-    ticket_document_number: Optional[str]
+    ticket_document_number: Optional[str] = None
     """Ticket document number."""
 
 
 class ElementCardRefundPurchaseDetailsTravelTripLeg(BaseModel):
-    carrier_code: Optional[str]
+    carrier_code: Optional[str] = None
     """Carrier code (e.g., United Airlines, Jet Blue, etc.)."""
 
-    destination_city_airport_code: Optional[str]
+    destination_city_airport_code: Optional[str] = None
     """Code for the destination city or airport."""
 
-    fare_basis_code: Optional[str]
+    fare_basis_code: Optional[str] = None
     """Fare basis code."""
 
-    flight_number: Optional[str]
+    flight_number: Optional[str] = None
     """Flight number."""
 
-    service_class: Optional[str]
+    service_class: Optional[str] = None
     """Service class (e.g., first class, business class, etc.)."""
 
-    stop_over_code: Optional[Literal["none", "stop_over_allowed", "stop_over_not_allowed"]]
+    stop_over_code: Optional[Literal["none", "stop_over_allowed", "stop_over_not_allowed"]] = None
     """Indicates whether a stopover is allowed on this ticket.
 
     - `none` - None
@@ -1174,10 +1174,10 @@ class ElementCardRefundPurchaseDetailsTravelTripLeg(BaseModel):
 
 
 class ElementCardRefundPurchaseDetailsTravel(BaseModel):
-    ancillary: Optional[ElementCardRefundPurchaseDetailsTravelAncillary]
+    ancillary: Optional[ElementCardRefundPurchaseDetailsTravelAncillary] = None
     """Ancillary purchases in addition to the airfare."""
 
-    computerized_reservation_system: Optional[str]
+    computerized_reservation_system: Optional[str] = None
     """Indicates the computerized reservation system used to book the ticket."""
 
     credit_reason_indicator: Optional[
@@ -1189,7 +1189,7 @@ class ElementCardRefundPurchaseDetailsTravel(BaseModel):
             "other",
             "partial_refund_of_airline_ticket",
         ]
-    ]
+    ] = None
     """Indicates the reason for a credit to the cardholder.
 
     - `no_credit` - No credit
@@ -1202,23 +1202,23 @@ class ElementCardRefundPurchaseDetailsTravel(BaseModel):
     - `partial_refund_of_airline_ticket` - Partial refund of airline ticket
     """
 
-    departure_date: Optional[date]
+    departure_date: Optional[date] = None
     """Date of departure."""
 
-    origination_city_airport_code: Optional[str]
+    origination_city_airport_code: Optional[str] = None
     """Code for the originating city or airport."""
 
-    passenger_name: Optional[str]
+    passenger_name: Optional[str] = None
     """Name of the passenger."""
 
-    restricted_ticket_indicator: Optional[Literal["no_restrictions", "restricted_non_refundable_ticket"]]
+    restricted_ticket_indicator: Optional[Literal["no_restrictions", "restricted_non_refundable_ticket"]] = None
     """Indicates whether this ticket is non-refundable.
 
     - `no_restrictions` - No restrictions
     - `restricted_non_refundable_ticket` - Restricted non-refundable ticket
     """
 
-    ticket_change_indicator: Optional[Literal["none", "change_to_existing_ticket", "new_ticket"]]
+    ticket_change_indicator: Optional[Literal["none", "change_to_existing_ticket", "new_ticket"]] = None
     """Indicates why a ticket was changed.
 
     - `none` - None
@@ -1226,53 +1226,53 @@ class ElementCardRefundPurchaseDetailsTravel(BaseModel):
     - `new_ticket` - New ticket
     """
 
-    ticket_number: Optional[str]
+    ticket_number: Optional[str] = None
     """Ticket number."""
 
-    travel_agency_code: Optional[str]
+    travel_agency_code: Optional[str] = None
     """Code for the travel agency if the ticket was issued by a travel agency."""
 
-    travel_agency_name: Optional[str]
+    travel_agency_name: Optional[str] = None
     """Name of the travel agency if the ticket was issued by a travel agency."""
 
-    trip_legs: Optional[List[ElementCardRefundPurchaseDetailsTravelTripLeg]]
+    trip_legs: Optional[List[ElementCardRefundPurchaseDetailsTravelTripLeg]] = None
     """Fields specific to each leg of the journey."""
 
 
 class ElementCardRefundPurchaseDetails(BaseModel):
-    car_rental: Optional[ElementCardRefundPurchaseDetailsCarRental]
+    car_rental: Optional[ElementCardRefundPurchaseDetailsCarRental] = None
     """Fields specific to car rentals."""
 
-    customer_reference_identifier: Optional[str]
+    customer_reference_identifier: Optional[str] = None
     """An identifier from the merchant for the customer or consumer."""
 
-    local_tax_amount: Optional[int]
+    local_tax_amount: Optional[int] = None
     """The state or provincial tax amount in minor units."""
 
-    local_tax_currency: Optional[str]
+    local_tax_currency: Optional[str] = None
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax
     assessed.
     """
 
-    lodging: Optional[ElementCardRefundPurchaseDetailsLodging]
+    lodging: Optional[ElementCardRefundPurchaseDetailsLodging] = None
     """Fields specific to lodging."""
 
-    national_tax_amount: Optional[int]
+    national_tax_amount: Optional[int] = None
     """The national tax amount in minor units."""
 
-    national_tax_currency: Optional[str]
+    national_tax_currency: Optional[str] = None
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax
     assessed.
     """
 
-    purchase_identifier: Optional[str]
+    purchase_identifier: Optional[str] = None
     """An identifier from the merchant for the purchase to the issuer and cardholder."""
 
     purchase_identifier_format: Optional[
         Literal["free_text", "order_number", "rental_agreement_number", "hotel_folio_number", "invoice_number"]
-    ]
+    ] = None
     """The format of the purchase identifier.
 
     - `free_text` - Free text
@@ -1282,7 +1282,7 @@ class ElementCardRefundPurchaseDetails(BaseModel):
     - `invoice_number` - Invoice number
     """
 
-    travel: Optional[ElementCardRefundPurchaseDetailsTravel]
+    travel: Optional[ElementCardRefundPurchaseDetailsTravel] = None
     """Fields specific to travel."""
 
 
@@ -1296,7 +1296,7 @@ class ElementCardRefund(BaseModel):
     For dollars, for example, this is cents.
     """
 
-    card_payment_id: Optional[str]
+    card_payment_id: Optional[str] = None
     """The ID of the Card Payment this transaction belongs to."""
 
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
@@ -1312,7 +1312,7 @@ class ElementCardRefund(BaseModel):
     - `USD` - US Dollar (USD)
     """
 
-    merchant_acceptor_id: Optional[str]
+    merchant_acceptor_id: Optional[str] = None
     """
     The merchant identifier (commonly abbreviated as MID) of the merchant the card
     is transacting with.
@@ -1321,22 +1321,22 @@ class ElementCardRefund(BaseModel):
     merchant_category_code: str
     """The 4-digit MCC describing the merchant's business."""
 
-    merchant_city: Optional[str]
+    merchant_city: Optional[str] = None
     """The city the merchant resides in."""
 
     merchant_country: str
     """The country the merchant resides in."""
 
-    merchant_name: Optional[str]
+    merchant_name: Optional[str] = None
     """The name of the merchant."""
 
-    merchant_state: Optional[str]
+    merchant_state: Optional[str] = None
     """The state the merchant resides in."""
 
     network_identifiers: ElementCardRefundNetworkIdentifiers
     """Network-specific identifiers for this refund."""
 
-    purchase_details: Optional[ElementCardRefundPurchaseDetails]
+    purchase_details: Optional[ElementCardRefundPurchaseDetails] = None
     """
     Additional details about the card purchase, such as tax and industry-specific
     fields.
@@ -1353,20 +1353,20 @@ class ElementCardRefund(BaseModel):
 
 
 class ElementCardReversalNetworkIdentifiers(BaseModel):
-    retrieval_reference_number: Optional[str]
+    retrieval_reference_number: Optional[str] = None
     """A life-cycle identifier used across e.g., an authorization and a reversal.
 
     Expected to be unique per acquirer within a window of time. For some card
     networks the retrieval reference number includes the trace counter.
     """
 
-    trace_number: Optional[str]
+    trace_number: Optional[str] = None
     """A counter used to verify an individual authorization.
 
     Expected to be unique per acquirer within a window of time.
     """
 
-    transaction_id: Optional[str]
+    transaction_id: Optional[str] = None
     """
     A globally unique transaction identifier provided by the card network, used
     across multiple life-cycle requests.
@@ -1402,7 +1402,7 @@ class ElementCardReversal(BaseModel):
     network_identifiers: ElementCardReversalNetworkIdentifiers
     """Network-specific identifiers for a specific request or transaction."""
 
-    pending_transaction_id: Optional[str]
+    pending_transaction_id: Optional[str] = None
     """The identifier of the Pending Transaction associated with this Card Reversal."""
 
     reversal_amount: int
@@ -1434,7 +1434,7 @@ class ElementCardSettlementNetworkIdentifiers(BaseModel):
     acquirer_reference_number: str
     """A globally unique identifier for this settlement."""
 
-    transaction_id: Optional[str]
+    transaction_id: Optional[str] = None
     """
     A globally unique transaction identifier provided by the card network, used
     across multiple life-cycle requests.
@@ -1442,30 +1442,30 @@ class ElementCardSettlementNetworkIdentifiers(BaseModel):
 
 
 class ElementCardSettlementPurchaseDetailsCarRental(BaseModel):
-    car_class_code: Optional[str]
+    car_class_code: Optional[str] = None
     """Code indicating the vehicle's class."""
 
-    checkout_date: Optional[date]
+    checkout_date: Optional[date] = None
     """
     Date the customer picked up the car or, in the case of a no-show or pre-pay
     transaction, the scheduled pick up date.
     """
 
-    daily_rental_rate_amount: Optional[int]
+    daily_rental_rate_amount: Optional[int] = None
     """Daily rate being charged for the vehicle."""
 
-    daily_rental_rate_currency: Optional[str]
+    daily_rental_rate_currency: Optional[str] = None
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily rental
     rate.
     """
 
-    days_rented: Optional[int]
+    days_rented: Optional[int] = None
     """Number of days the vehicle was rented."""
 
     extra_charges: Optional[
         Literal["no_extra_charge", "gas", "extra_mileage", "late_return", "one_way_service_fee", "parking_violation"]
-    ]
+    ] = None
     """Additional charges (gas, late fee, etc.) being billed.
 
     - `no_extra_charge` - No extra charge
@@ -1476,25 +1476,25 @@ class ElementCardSettlementPurchaseDetailsCarRental(BaseModel):
     - `parking_violation` - Parking violation
     """
 
-    fuel_charges_amount: Optional[int]
+    fuel_charges_amount: Optional[int] = None
     """Fuel charges for the vehicle."""
 
-    fuel_charges_currency: Optional[str]
+    fuel_charges_currency: Optional[str] = None
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the fuel charges
     assessed.
     """
 
-    insurance_charges_amount: Optional[int]
+    insurance_charges_amount: Optional[int] = None
     """Any insurance being charged for the vehicle."""
 
-    insurance_charges_currency: Optional[str]
+    insurance_charges_currency: Optional[str] = None
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the insurance
     charges assessed.
     """
 
-    no_show_indicator: Optional[Literal["not_applicable", "no_show_for_specialized_vehicle"]]
+    no_show_indicator: Optional[Literal["not_applicable", "no_show_for_specialized_vehicle"]] = None
     """
     An indicator that the cardholder is being billed for a reserved vehicle that was
     not actually rented (that is, a "no-show" charge).
@@ -1503,25 +1503,25 @@ class ElementCardSettlementPurchaseDetailsCarRental(BaseModel):
     - `no_show_for_specialized_vehicle` - No show for specialized vehicle
     """
 
-    one_way_drop_off_charges_amount: Optional[int]
+    one_way_drop_off_charges_amount: Optional[int] = None
     """
     Charges for returning the vehicle at a different location than where it was
     picked up.
     """
 
-    one_way_drop_off_charges_currency: Optional[str]
+    one_way_drop_off_charges_currency: Optional[str] = None
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the one-way
     drop-off charges assessed.
     """
 
-    renter_name: Optional[str]
+    renter_name: Optional[str] = None
     """Name of the person renting the vehicle."""
 
-    weekly_rental_rate_amount: Optional[int]
+    weekly_rental_rate_amount: Optional[int] = None
     """Weekly rate being charged for the vehicle."""
 
-    weekly_rental_rate_currency: Optional[str]
+    weekly_rental_rate_currency: Optional[str] = None
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the weekly
     rental rate.
@@ -1529,13 +1529,13 @@ class ElementCardSettlementPurchaseDetailsCarRental(BaseModel):
 
 
 class ElementCardSettlementPurchaseDetailsLodging(BaseModel):
-    check_in_date: Optional[date]
+    check_in_date: Optional[date] = None
     """Date the customer checked in."""
 
-    daily_room_rate_amount: Optional[int]
+    daily_room_rate_amount: Optional[int] = None
     """Daily rate being charged for the room."""
 
-    daily_room_rate_currency: Optional[str]
+    daily_room_rate_currency: Optional[str] = None
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily room
     rate.
@@ -1543,7 +1543,7 @@ class ElementCardSettlementPurchaseDetailsLodging(BaseModel):
 
     extra_charges: Optional[
         Literal["no_extra_charge", "restaurant", "gift_shop", "mini_bar", "telephone", "other", "laundry"]
-    ]
+    ] = None
     """Additional charges (phone, late check-out, etc.) being billed.
 
     - `no_extra_charge` - No extra charge
@@ -1555,25 +1555,25 @@ class ElementCardSettlementPurchaseDetailsLodging(BaseModel):
     - `laundry` - Laundry
     """
 
-    folio_cash_advances_amount: Optional[int]
+    folio_cash_advances_amount: Optional[int] = None
     """Folio cash advances for the room."""
 
-    folio_cash_advances_currency: Optional[str]
+    folio_cash_advances_currency: Optional[str] = None
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the folio cash
     advances.
     """
 
-    food_beverage_charges_amount: Optional[int]
+    food_beverage_charges_amount: Optional[int] = None
     """Food and beverage charges for the room."""
 
-    food_beverage_charges_currency: Optional[str]
+    food_beverage_charges_currency: Optional[str] = None
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the food and
     beverage charges.
     """
 
-    no_show_indicator: Optional[Literal["not_applicable", "no_show"]]
+    no_show_indicator: Optional[Literal["not_applicable", "no_show"]] = None
     """
     Indicator that the cardholder is being billed for a reserved room that was not
     actually used.
@@ -1582,31 +1582,31 @@ class ElementCardSettlementPurchaseDetailsLodging(BaseModel):
     - `no_show` - No show
     """
 
-    prepaid_expenses_amount: Optional[int]
+    prepaid_expenses_amount: Optional[int] = None
     """Prepaid expenses being charged for the room."""
 
-    prepaid_expenses_currency: Optional[str]
+    prepaid_expenses_currency: Optional[str] = None
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the prepaid
     expenses.
     """
 
-    room_nights: Optional[int]
+    room_nights: Optional[int] = None
     """Number of nights the room was rented."""
 
-    total_room_tax_amount: Optional[int]
+    total_room_tax_amount: Optional[int] = None
     """Total room tax being charged."""
 
-    total_room_tax_currency: Optional[str]
+    total_room_tax_currency: Optional[str] = None
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total room
     tax.
     """
 
-    total_tax_amount: Optional[int]
+    total_tax_amount: Optional[int] = None
     """Total tax being charged for the room."""
 
-    total_tax_currency: Optional[str]
+    total_tax_currency: Optional[str] = None
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total tax
     assessed.
@@ -1641,7 +1641,7 @@ class ElementCardSettlementPurchaseDetailsTravelAncillaryService(BaseModel):
             "upgrades",
             "wifi",
         ]
-    ]
+    ] = None
     """Category of the ancillary service.
 
     - `none` - None
@@ -1670,12 +1670,12 @@ class ElementCardSettlementPurchaseDetailsTravelAncillaryService(BaseModel):
     - `wifi` - Wi-fi
     """
 
-    sub_category: Optional[str]
+    sub_category: Optional[str] = None
     """Sub-category of the ancillary service, free-form."""
 
 
 class ElementCardSettlementPurchaseDetailsTravelAncillary(BaseModel):
-    connected_ticket_document_number: Optional[str]
+    connected_ticket_document_number: Optional[str] = None
     """
     If this purchase has a connection or relationship to another purchase, such as a
     baggage fee for a passenger transport ticket, this field should contain the
@@ -1689,7 +1689,7 @@ class ElementCardSettlementPurchaseDetailsTravelAncillary(BaseModel):
             "airline_ticket_and_passenger_transport_ancillary_purchase_cancellation",
             "other",
         ]
-    ]
+    ] = None
     """Indicates the reason for a credit to the cardholder.
 
     - `no_credit` - No credit
@@ -1700,33 +1700,33 @@ class ElementCardSettlementPurchaseDetailsTravelAncillary(BaseModel):
     - `other` - Other
     """
 
-    passenger_name_or_description: Optional[str]
+    passenger_name_or_description: Optional[str] = None
     """Name of the passenger or description of the ancillary purchase."""
 
     services: List[ElementCardSettlementPurchaseDetailsTravelAncillaryService]
     """Additional travel charges, such as baggage fees."""
 
-    ticket_document_number: Optional[str]
+    ticket_document_number: Optional[str] = None
     """Ticket document number."""
 
 
 class ElementCardSettlementPurchaseDetailsTravelTripLeg(BaseModel):
-    carrier_code: Optional[str]
+    carrier_code: Optional[str] = None
     """Carrier code (e.g., United Airlines, Jet Blue, etc.)."""
 
-    destination_city_airport_code: Optional[str]
+    destination_city_airport_code: Optional[str] = None
     """Code for the destination city or airport."""
 
-    fare_basis_code: Optional[str]
+    fare_basis_code: Optional[str] = None
     """Fare basis code."""
 
-    flight_number: Optional[str]
+    flight_number: Optional[str] = None
     """Flight number."""
 
-    service_class: Optional[str]
+    service_class: Optional[str] = None
     """Service class (e.g., first class, business class, etc.)."""
 
-    stop_over_code: Optional[Literal["none", "stop_over_allowed", "stop_over_not_allowed"]]
+    stop_over_code: Optional[Literal["none", "stop_over_allowed", "stop_over_not_allowed"]] = None
     """Indicates whether a stopover is allowed on this ticket.
 
     - `none` - None
@@ -1736,10 +1736,10 @@ class ElementCardSettlementPurchaseDetailsTravelTripLeg(BaseModel):
 
 
 class ElementCardSettlementPurchaseDetailsTravel(BaseModel):
-    ancillary: Optional[ElementCardSettlementPurchaseDetailsTravelAncillary]
+    ancillary: Optional[ElementCardSettlementPurchaseDetailsTravelAncillary] = None
     """Ancillary purchases in addition to the airfare."""
 
-    computerized_reservation_system: Optional[str]
+    computerized_reservation_system: Optional[str] = None
     """Indicates the computerized reservation system used to book the ticket."""
 
     credit_reason_indicator: Optional[
@@ -1751,7 +1751,7 @@ class ElementCardSettlementPurchaseDetailsTravel(BaseModel):
             "other",
             "partial_refund_of_airline_ticket",
         ]
-    ]
+    ] = None
     """Indicates the reason for a credit to the cardholder.
 
     - `no_credit` - No credit
@@ -1764,23 +1764,23 @@ class ElementCardSettlementPurchaseDetailsTravel(BaseModel):
     - `partial_refund_of_airline_ticket` - Partial refund of airline ticket
     """
 
-    departure_date: Optional[date]
+    departure_date: Optional[date] = None
     """Date of departure."""
 
-    origination_city_airport_code: Optional[str]
+    origination_city_airport_code: Optional[str] = None
     """Code for the originating city or airport."""
 
-    passenger_name: Optional[str]
+    passenger_name: Optional[str] = None
     """Name of the passenger."""
 
-    restricted_ticket_indicator: Optional[Literal["no_restrictions", "restricted_non_refundable_ticket"]]
+    restricted_ticket_indicator: Optional[Literal["no_restrictions", "restricted_non_refundable_ticket"]] = None
     """Indicates whether this ticket is non-refundable.
 
     - `no_restrictions` - No restrictions
     - `restricted_non_refundable_ticket` - Restricted non-refundable ticket
     """
 
-    ticket_change_indicator: Optional[Literal["none", "change_to_existing_ticket", "new_ticket"]]
+    ticket_change_indicator: Optional[Literal["none", "change_to_existing_ticket", "new_ticket"]] = None
     """Indicates why a ticket was changed.
 
     - `none` - None
@@ -1788,53 +1788,53 @@ class ElementCardSettlementPurchaseDetailsTravel(BaseModel):
     - `new_ticket` - New ticket
     """
 
-    ticket_number: Optional[str]
+    ticket_number: Optional[str] = None
     """Ticket number."""
 
-    travel_agency_code: Optional[str]
+    travel_agency_code: Optional[str] = None
     """Code for the travel agency if the ticket was issued by a travel agency."""
 
-    travel_agency_name: Optional[str]
+    travel_agency_name: Optional[str] = None
     """Name of the travel agency if the ticket was issued by a travel agency."""
 
-    trip_legs: Optional[List[ElementCardSettlementPurchaseDetailsTravelTripLeg]]
+    trip_legs: Optional[List[ElementCardSettlementPurchaseDetailsTravelTripLeg]] = None
     """Fields specific to each leg of the journey."""
 
 
 class ElementCardSettlementPurchaseDetails(BaseModel):
-    car_rental: Optional[ElementCardSettlementPurchaseDetailsCarRental]
+    car_rental: Optional[ElementCardSettlementPurchaseDetailsCarRental] = None
     """Fields specific to car rentals."""
 
-    customer_reference_identifier: Optional[str]
+    customer_reference_identifier: Optional[str] = None
     """An identifier from the merchant for the customer or consumer."""
 
-    local_tax_amount: Optional[int]
+    local_tax_amount: Optional[int] = None
     """The state or provincial tax amount in minor units."""
 
-    local_tax_currency: Optional[str]
+    local_tax_currency: Optional[str] = None
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax
     assessed.
     """
 
-    lodging: Optional[ElementCardSettlementPurchaseDetailsLodging]
+    lodging: Optional[ElementCardSettlementPurchaseDetailsLodging] = None
     """Fields specific to lodging."""
 
-    national_tax_amount: Optional[int]
+    national_tax_amount: Optional[int] = None
     """The national tax amount in minor units."""
 
-    national_tax_currency: Optional[str]
+    national_tax_currency: Optional[str] = None
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax
     assessed.
     """
 
-    purchase_identifier: Optional[str]
+    purchase_identifier: Optional[str] = None
     """An identifier from the merchant for the purchase to the issuer and cardholder."""
 
     purchase_identifier_format: Optional[
         Literal["free_text", "order_number", "rental_agreement_number", "hotel_folio_number", "invoice_number"]
-    ]
+    ] = None
     """The format of the purchase identifier.
 
     - `free_text` - Free text
@@ -1844,7 +1844,7 @@ class ElementCardSettlementPurchaseDetails(BaseModel):
     - `invoice_number` - Invoice number
     """
 
-    travel: Optional[ElementCardSettlementPurchaseDetailsTravel]
+    travel: Optional[ElementCardSettlementPurchaseDetailsTravel] = None
     """Fields specific to travel."""
 
 
@@ -1858,13 +1858,13 @@ class ElementCardSettlement(BaseModel):
     For dollars, for example, this is cents.
     """
 
-    card_authorization: Optional[str]
+    card_authorization: Optional[str] = None
     """
     The Card Authorization that was created prior to this Card Settlement, if one
     exists.
     """
 
-    card_payment_id: Optional[str]
+    card_payment_id: Optional[str] = None
     """The ID of the Card Payment this transaction belongs to."""
 
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
@@ -1880,7 +1880,7 @@ class ElementCardSettlement(BaseModel):
     - `USD` - US Dollar (USD)
     """
 
-    merchant_acceptor_id: Optional[str]
+    merchant_acceptor_id: Optional[str] = None
     """
     The merchant identifier (commonly abbreviated as MID) of the merchant the card
     is transacting with.
@@ -1889,22 +1889,22 @@ class ElementCardSettlement(BaseModel):
     merchant_category_code: str
     """The 4-digit MCC describing the merchant's business."""
 
-    merchant_city: Optional[str]
+    merchant_city: Optional[str] = None
     """The city the merchant resides in."""
 
     merchant_country: str
     """The country the merchant resides in."""
 
-    merchant_name: Optional[str]
+    merchant_name: Optional[str] = None
     """The name of the merchant."""
 
-    merchant_state: Optional[str]
+    merchant_state: Optional[str] = None
     """The state the merchant resides in."""
 
     network_identifiers: ElementCardSettlementNetworkIdentifiers
     """Network-specific identifiers for this refund."""
 
-    pending_transaction_id: Optional[str]
+    pending_transaction_id: Optional[str] = None
     """The identifier of the Pending Transaction associated with this Transaction."""
 
     presentment_amount: int
@@ -1916,7 +1916,7 @@ class ElementCardSettlement(BaseModel):
     transaction's presentment currency.
     """
 
-    purchase_details: Optional[ElementCardSettlementPurchaseDetails]
+    purchase_details: Optional[ElementCardSettlementPurchaseDetails] = None
     """
     Additional details about the card purchase, such as tax and industry-specific
     fields.
@@ -1944,7 +1944,7 @@ class ElementCardValidationNetworkDetailsVisa(BaseModel):
             "non_authenticated_security_transaction",
             "non_secure_transaction",
         ]
-    ]
+    ] = None
     """
     For electronic commerce transactions, this identifies the level of security used
     in obtaining the customer's payment credential. For mail or telephone order
@@ -1994,7 +1994,7 @@ class ElementCardValidationNetworkDetailsVisa(BaseModel):
             "contactless_magnetic_stripe",
             "integrated_circuit_card_no_cvv",
         ]
-    ]
+    ] = None
     """
     The method used to enter the cardholder's primary account number and card
     expiration date.
@@ -2022,25 +2022,25 @@ class ElementCardValidationNetworkDetails(BaseModel):
     - `visa` - Visa
     """
 
-    visa: Optional[ElementCardValidationNetworkDetailsVisa]
+    visa: Optional[ElementCardValidationNetworkDetailsVisa] = None
     """Fields specific to the `visa` network."""
 
 
 class ElementCardValidationNetworkIdentifiers(BaseModel):
-    retrieval_reference_number: Optional[str]
+    retrieval_reference_number: Optional[str] = None
     """A life-cycle identifier used across e.g., an authorization and a reversal.
 
     Expected to be unique per acquirer within a window of time. For some card
     networks the retrieval reference number includes the trace counter.
     """
 
-    trace_number: Optional[str]
+    trace_number: Optional[str] = None
     """A counter used to verify an individual authorization.
 
     Expected to be unique per acquirer within a window of time.
     """
 
-    transaction_id: Optional[str]
+    transaction_id: Optional[str] = None
     """
     A globally unique transaction identifier provided by the card network, used
     across multiple life-cycle requests.
@@ -2059,19 +2059,19 @@ class ElementCardValidationVerificationCardVerificationCode(BaseModel):
 
 
 class ElementCardValidationVerificationCardholderAddress(BaseModel):
-    actual_line1: Optional[str]
+    actual_line1: Optional[str] = None
     """Line 1 of the address on file for the cardholder."""
 
-    actual_postal_code: Optional[str]
+    actual_postal_code: Optional[str] = None
     """The postal code of the address on file for the cardholder."""
 
-    provided_line1: Optional[str]
+    provided_line1: Optional[str] = None
     """
     The cardholder address line 1 provided for verification in the authorization
     request.
     """
 
-    provided_postal_code: Optional[str]
+    provided_postal_code: Optional[str] = None
     """The postal code provided for verification in the authorization request."""
 
     result: Literal[
@@ -2114,7 +2114,7 @@ class ElementCardValidation(BaseModel):
     id: str
     """The Card Validation identifier."""
 
-    card_payment_id: Optional[str]
+    card_payment_id: Optional[str] = None
     """The ID of the Card Payment this transaction belongs to."""
 
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
@@ -2130,7 +2130,7 @@ class ElementCardValidation(BaseModel):
     - `USD` - US Dollar (USD)
     """
 
-    digital_wallet_token_id: Optional[str]
+    digital_wallet_token_id: Optional[str] = None
     """
     If the authorization was made via a Digital Wallet Token (such as an Apple Pay
     purchase), the identifier of the token that was used.
@@ -2142,16 +2142,16 @@ class ElementCardValidation(BaseModel):
     is transacting with.
     """
 
-    merchant_category_code: Optional[str]
+    merchant_category_code: Optional[str] = None
     """
     The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
     card is transacting with.
     """
 
-    merchant_city: Optional[str]
+    merchant_city: Optional[str] = None
     """The city the merchant resides in."""
 
-    merchant_country: Optional[str]
+    merchant_country: Optional[str] = None
     """The country the merchant resides in."""
 
     merchant_descriptor: str
@@ -2163,13 +2163,13 @@ class ElementCardValidation(BaseModel):
     network_identifiers: ElementCardValidationNetworkIdentifiers
     """Network-specific identifiers for a specific request or transaction."""
 
-    physical_card_id: Optional[str]
+    physical_card_id: Optional[str] = None
     """
     If the authorization was made in-person with a physical card, the Physical Card
     that was used.
     """
 
-    real_time_decision_id: Optional[str]
+    real_time_decision_id: Optional[str] = None
     """
     The identifier of the Real-Time Decision sent to approve or decline this
     transaction.
@@ -2186,63 +2186,63 @@ class ElementCardValidation(BaseModel):
 
 
 class Element(BaseModel):
-    card_authorization: Optional[ElementCardAuthorization]
+    card_authorization: Optional[ElementCardAuthorization] = None
     """A Card Authorization object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `card_authorization`.
     """
 
-    card_authorization_expiration: Optional[ElementCardAuthorizationExpiration]
+    card_authorization_expiration: Optional[ElementCardAuthorizationExpiration] = None
     """A Card Authorization Expiration object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `card_authorization_expiration`.
     """
 
-    card_decline: Optional[ElementCardDecline]
+    card_decline: Optional[ElementCardDecline] = None
     """A Card Decline object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `card_decline`.
     """
 
-    card_fuel_confirmation: Optional[ElementCardFuelConfirmation]
+    card_fuel_confirmation: Optional[ElementCardFuelConfirmation] = None
     """A Card Fuel Confirmation object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `card_fuel_confirmation`.
     """
 
-    card_increment: Optional[ElementCardIncrement]
+    card_increment: Optional[ElementCardIncrement] = None
     """A Card Increment object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `card_increment`.
     """
 
-    card_refund: Optional[ElementCardRefund]
+    card_refund: Optional[ElementCardRefund] = None
     """A Card Refund object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `card_refund`.
     """
 
-    card_reversal: Optional[ElementCardReversal]
+    card_reversal: Optional[ElementCardReversal] = None
     """A Card Reversal object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `card_reversal`.
     """
 
-    card_settlement: Optional[ElementCardSettlement]
+    card_settlement: Optional[ElementCardSettlement] = None
     """A Card Settlement object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `card_settlement`.
     """
 
-    card_validation: Optional[ElementCardValidation]
+    card_validation: Optional[ElementCardValidation] = None
     """A Card Validation object.
 
     This field will be present in the JSON response if and only if `category` is

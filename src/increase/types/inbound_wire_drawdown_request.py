@@ -18,16 +18,16 @@ class InboundWireDrawdownRequest(BaseModel):
     beneficiary_account_number: str
     """The drawdown request's beneficiary's account number."""
 
-    beneficiary_address_line1: Optional[str]
+    beneficiary_address_line1: Optional[str] = None
     """Line 1 of the drawdown request's beneficiary's address."""
 
-    beneficiary_address_line2: Optional[str]
+    beneficiary_address_line2: Optional[str] = None
     """Line 2 of the drawdown request's beneficiary's address."""
 
-    beneficiary_address_line3: Optional[str]
+    beneficiary_address_line3: Optional[str] = None
     """Line 3 of the drawdown request's beneficiary's address."""
 
-    beneficiary_name: Optional[str]
+    beneficiary_name: Optional[str] = None
     """The drawdown request's beneficiary's name."""
 
     beneficiary_routing_number: str
@@ -39,46 +39,46 @@ class InboundWireDrawdownRequest(BaseModel):
     requested. Will always be "USD".
     """
 
-    message_to_recipient: Optional[str]
+    message_to_recipient: Optional[str] = None
     """A message from the drawdown request's originator."""
 
     originator_account_number: str
     """The drawdown request's originator's account number."""
 
-    originator_address_line1: Optional[str]
+    originator_address_line1: Optional[str] = None
     """Line 1 of the drawdown request's originator's address."""
 
-    originator_address_line2: Optional[str]
+    originator_address_line2: Optional[str] = None
     """Line 2 of the drawdown request's originator's address."""
 
-    originator_address_line3: Optional[str]
+    originator_address_line3: Optional[str] = None
     """Line 3 of the drawdown request's originator's address."""
 
-    originator_name: Optional[str]
+    originator_name: Optional[str] = None
     """The drawdown request's originator's name."""
 
     originator_routing_number: str
     """The drawdown request's originator's routing number."""
 
-    originator_to_beneficiary_information_line1: Optional[str]
+    originator_to_beneficiary_information_line1: Optional[str] = None
     """
     Line 1 of the information conveyed from the originator of the message to the
     beneficiary.
     """
 
-    originator_to_beneficiary_information_line2: Optional[str]
+    originator_to_beneficiary_information_line2: Optional[str] = None
     """
     Line 2 of the information conveyed from the originator of the message to the
     beneficiary.
     """
 
-    originator_to_beneficiary_information_line3: Optional[str]
+    originator_to_beneficiary_information_line3: Optional[str] = None
     """
     Line 3 of the information conveyed from the originator of the message to the
     beneficiary.
     """
 
-    originator_to_beneficiary_information_line4: Optional[str]
+    originator_to_beneficiary_information_line4: Optional[str] = None
     """
     Line 4 of the information conveyed from the originator of the message to the
     beneficiary.

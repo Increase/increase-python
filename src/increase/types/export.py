@@ -34,13 +34,13 @@ class Export(BaseModel):
     created_at: datetime
     """The time the Export was created."""
 
-    file_download_url: Optional[str]
+    file_download_url: Optional[str] = None
     """A URL at which the Export's file can be downloaded.
 
     This will be present when the Export's status transitions to `complete`.
     """
 
-    file_id: Optional[str]
+    file_id: Optional[str] = None
     """The File containing the contents of the Export.
 
     This will be present when the Export's status transitions to `complete`.

@@ -27,7 +27,7 @@ class Approval(BaseModel):
     the transfer was approved.
     """
 
-    approved_by: Optional[str]
+    approved_by: Optional[str] = None
     """
     If the Transfer was approved by a user in the dashboard, the email address of
     that user.
@@ -41,7 +41,7 @@ class Cancellation(BaseModel):
     the Transfer was canceled.
     """
 
-    canceled_by: Optional[str]
+    canceled_by: Optional[str] = None
     """
     If the Transfer was canceled by a user in the dashboard, the email address of
     that user.
@@ -49,13 +49,13 @@ class Cancellation(BaseModel):
 
 
 class Deposit(BaseModel):
-    back_image_file_id: Optional[str]
+    back_image_file_id: Optional[str] = None
     """
     The identifier of the API File object containing an image of the back of the
     deposited check.
     """
 
-    bank_of_first_deposit_routing_number: Optional[str]
+    bank_of_first_deposit_routing_number: Optional[str] = None
     """
     The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
     bank depositing this check. In some rare cases, this is not transmitted via
@@ -65,13 +65,13 @@ class Deposit(BaseModel):
     deposited_at: datetime
     """When the check was deposited."""
 
-    front_image_file_id: Optional[str]
+    front_image_file_id: Optional[str] = None
     """
     The identifier of the API File object containing an image of the front of the
     deposited check.
     """
 
-    transaction_id: Optional[str]
+    transaction_id: Optional[str] = None
     """The identifier of the Transaction object created when the check was deposited."""
 
     transfer_id: str
@@ -85,7 +85,7 @@ class Deposit(BaseModel):
 
 
 class Mailing(BaseModel):
-    image_id: Optional[str]
+    image_id: Optional[str] = None
     """
     The ID of the file corresponding to an image of the check that was mailed, if
     available.
@@ -99,42 +99,42 @@ class Mailing(BaseModel):
 
 
 class PhysicalCheckMailingAddress(BaseModel):
-    city: Optional[str]
+    city: Optional[str] = None
     """The city of the check's destination."""
 
-    line1: Optional[str]
+    line1: Optional[str] = None
     """The street address of the check's destination."""
 
-    line2: Optional[str]
+    line2: Optional[str] = None
     """The second line of the address of the check's destination."""
 
-    name: Optional[str]
+    name: Optional[str] = None
     """The name component of the check's mailing address."""
 
-    postal_code: Optional[str]
+    postal_code: Optional[str] = None
     """The postal code of the check's destination."""
 
-    state: Optional[str]
+    state: Optional[str] = None
     """The state of the check's destination."""
 
 
 class PhysicalCheckReturnAddress(BaseModel):
-    city: Optional[str]
+    city: Optional[str] = None
     """The city of the check's destination."""
 
-    line1: Optional[str]
+    line1: Optional[str] = None
     """The street address of the check's destination."""
 
-    line2: Optional[str]
+    line2: Optional[str] = None
     """The second line of the address of the check's destination."""
 
-    name: Optional[str]
+    name: Optional[str] = None
     """The name component of the check's return address."""
 
-    postal_code: Optional[str]
+    postal_code: Optional[str] = None
     """The postal code of the check's destination."""
 
-    state: Optional[str]
+    state: Optional[str] = None
     """The state of the check's destination."""
 
 
@@ -142,16 +142,16 @@ class PhysicalCheck(BaseModel):
     mailing_address: PhysicalCheckMailingAddress
     """Details for where Increase will mail the check."""
 
-    memo: Optional[str]
+    memo: Optional[str] = None
     """The descriptor that will be printed on the memo field on the check."""
 
-    note: Optional[str]
+    note: Optional[str] = None
     """The descriptor that will be printed on the letter included with the check."""
 
     recipient_name: str
     """The name that will be printed on the check."""
 
-    return_address: Optional[PhysicalCheckReturnAddress]
+    return_address: Optional[PhysicalCheckReturnAddress] = None
     """The return address to be printed on the check."""
 
 
@@ -197,13 +197,13 @@ class CheckTransfer(BaseModel):
     amount: int
     """The transfer amount in USD cents."""
 
-    approval: Optional[Approval]
+    approval: Optional[Approval] = None
     """
     If your account requires approvals for transfers and the transfer was approved,
     this will contain details of the approval.
     """
 
-    cancellation: Optional[Cancellation]
+    cancellation: Optional[Cancellation] = None
     """
     If your account requires approvals for transfers and the transfer was not
     approved, this will contain details of the cancellation.
@@ -231,7 +231,7 @@ class CheckTransfer(BaseModel):
     - `USD` - US Dollar (USD)
     """
 
-    deposit: Optional[Deposit]
+    deposit: Optional[Deposit] = None
     """After a check transfer is deposited, this will contain supplemental details."""
 
     fulfillment_method: Literal["physical_check", "third_party"]
@@ -243,13 +243,13 @@ class CheckTransfer(BaseModel):
       check number, and amount.
     """
 
-    mailing: Optional[Mailing]
+    mailing: Optional[Mailing] = None
     """
     If the check has been mailed by Increase, this will contain details of the
     shipment.
     """
 
-    pending_transaction_id: Optional[str]
+    pending_transaction_id: Optional[str] = None
     """The ID for the pending transaction representing the transfer.
 
     A pending transaction is created when the transfer
@@ -257,7 +257,7 @@ class CheckTransfer(BaseModel):
     by someone else in your organization.
     """
 
-    physical_check: Optional[PhysicalCheck]
+    physical_check: Optional[PhysicalCheck] = None
     """Details relating to the physical check that Increase will print and mail.
 
     Will be present if and only if `fulfillment_method` is equal to
@@ -267,7 +267,7 @@ class CheckTransfer(BaseModel):
     routing_number: str
     """The routing number printed on the check."""
 
-    source_account_number_id: Optional[str]
+    source_account_number_id: Optional[str] = None
     """
     The identifier of the Account Number from which to send the transfer and print
     on the check.
@@ -302,13 +302,13 @@ class CheckTransfer(BaseModel):
     - `returned` - The transfer has been returned.
     """
 
-    stop_payment_request: Optional[StopPaymentRequest]
+    stop_payment_request: Optional[StopPaymentRequest] = None
     """
     After a stop-payment is requested on the check, this will contain supplemental
     details.
     """
 
-    submission: Optional[Submission]
+    submission: Optional[Submission] = None
     """After the transfer is submitted, this will contain supplemental details."""
 
     type: Literal["check_transfer"]
@@ -317,5 +317,5 @@ class CheckTransfer(BaseModel):
     For this resource it will always be `check_transfer`.
     """
 
-    unique_identifier: Optional[str]
+    unique_identifier: Optional[str] = None
     """The unique identifier you chose for this transfer."""

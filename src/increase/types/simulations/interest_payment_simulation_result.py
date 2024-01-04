@@ -387,7 +387,7 @@ class TransactionSourceCardRefundNetworkIdentifiers(BaseModel):
     acquirer_reference_number: str
     """A globally unique identifier for this settlement."""
 
-    transaction_id: Optional[str]
+    transaction_id: Optional[str] = None
     """
     A globally unique transaction identifier provided by the card network, used
     across multiple life-cycle requests.
@@ -395,30 +395,30 @@ class TransactionSourceCardRefundNetworkIdentifiers(BaseModel):
 
 
 class TransactionSourceCardRefundPurchaseDetailsCarRental(BaseModel):
-    car_class_code: Optional[str]
+    car_class_code: Optional[str] = None
     """Code indicating the vehicle's class."""
 
-    checkout_date: Optional[date]
+    checkout_date: Optional[date] = None
     """
     Date the customer picked up the car or, in the case of a no-show or pre-pay
     transaction, the scheduled pick up date.
     """
 
-    daily_rental_rate_amount: Optional[int]
+    daily_rental_rate_amount: Optional[int] = None
     """Daily rate being charged for the vehicle."""
 
-    daily_rental_rate_currency: Optional[str]
+    daily_rental_rate_currency: Optional[str] = None
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily rental
     rate.
     """
 
-    days_rented: Optional[int]
+    days_rented: Optional[int] = None
     """Number of days the vehicle was rented."""
 
     extra_charges: Optional[
         Literal["no_extra_charge", "gas", "extra_mileage", "late_return", "one_way_service_fee", "parking_violation"]
-    ]
+    ] = None
     """Additional charges (gas, late fee, etc.) being billed.
 
     - `no_extra_charge` - No extra charge
@@ -429,25 +429,25 @@ class TransactionSourceCardRefundPurchaseDetailsCarRental(BaseModel):
     - `parking_violation` - Parking violation
     """
 
-    fuel_charges_amount: Optional[int]
+    fuel_charges_amount: Optional[int] = None
     """Fuel charges for the vehicle."""
 
-    fuel_charges_currency: Optional[str]
+    fuel_charges_currency: Optional[str] = None
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the fuel charges
     assessed.
     """
 
-    insurance_charges_amount: Optional[int]
+    insurance_charges_amount: Optional[int] = None
     """Any insurance being charged for the vehicle."""
 
-    insurance_charges_currency: Optional[str]
+    insurance_charges_currency: Optional[str] = None
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the insurance
     charges assessed.
     """
 
-    no_show_indicator: Optional[Literal["not_applicable", "no_show_for_specialized_vehicle"]]
+    no_show_indicator: Optional[Literal["not_applicable", "no_show_for_specialized_vehicle"]] = None
     """
     An indicator that the cardholder is being billed for a reserved vehicle that was
     not actually rented (that is, a "no-show" charge).
@@ -456,25 +456,25 @@ class TransactionSourceCardRefundPurchaseDetailsCarRental(BaseModel):
     - `no_show_for_specialized_vehicle` - No show for specialized vehicle
     """
 
-    one_way_drop_off_charges_amount: Optional[int]
+    one_way_drop_off_charges_amount: Optional[int] = None
     """
     Charges for returning the vehicle at a different location than where it was
     picked up.
     """
 
-    one_way_drop_off_charges_currency: Optional[str]
+    one_way_drop_off_charges_currency: Optional[str] = None
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the one-way
     drop-off charges assessed.
     """
 
-    renter_name: Optional[str]
+    renter_name: Optional[str] = None
     """Name of the person renting the vehicle."""
 
-    weekly_rental_rate_amount: Optional[int]
+    weekly_rental_rate_amount: Optional[int] = None
     """Weekly rate being charged for the vehicle."""
 
-    weekly_rental_rate_currency: Optional[str]
+    weekly_rental_rate_currency: Optional[str] = None
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the weekly
     rental rate.
@@ -482,13 +482,13 @@ class TransactionSourceCardRefundPurchaseDetailsCarRental(BaseModel):
 
 
 class TransactionSourceCardRefundPurchaseDetailsLodging(BaseModel):
-    check_in_date: Optional[date]
+    check_in_date: Optional[date] = None
     """Date the customer checked in."""
 
-    daily_room_rate_amount: Optional[int]
+    daily_room_rate_amount: Optional[int] = None
     """Daily rate being charged for the room."""
 
-    daily_room_rate_currency: Optional[str]
+    daily_room_rate_currency: Optional[str] = None
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily room
     rate.
@@ -496,7 +496,7 @@ class TransactionSourceCardRefundPurchaseDetailsLodging(BaseModel):
 
     extra_charges: Optional[
         Literal["no_extra_charge", "restaurant", "gift_shop", "mini_bar", "telephone", "other", "laundry"]
-    ]
+    ] = None
     """Additional charges (phone, late check-out, etc.) being billed.
 
     - `no_extra_charge` - No extra charge
@@ -508,25 +508,25 @@ class TransactionSourceCardRefundPurchaseDetailsLodging(BaseModel):
     - `laundry` - Laundry
     """
 
-    folio_cash_advances_amount: Optional[int]
+    folio_cash_advances_amount: Optional[int] = None
     """Folio cash advances for the room."""
 
-    folio_cash_advances_currency: Optional[str]
+    folio_cash_advances_currency: Optional[str] = None
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the folio cash
     advances.
     """
 
-    food_beverage_charges_amount: Optional[int]
+    food_beverage_charges_amount: Optional[int] = None
     """Food and beverage charges for the room."""
 
-    food_beverage_charges_currency: Optional[str]
+    food_beverage_charges_currency: Optional[str] = None
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the food and
     beverage charges.
     """
 
-    no_show_indicator: Optional[Literal["not_applicable", "no_show"]]
+    no_show_indicator: Optional[Literal["not_applicable", "no_show"]] = None
     """
     Indicator that the cardholder is being billed for a reserved room that was not
     actually used.
@@ -535,31 +535,31 @@ class TransactionSourceCardRefundPurchaseDetailsLodging(BaseModel):
     - `no_show` - No show
     """
 
-    prepaid_expenses_amount: Optional[int]
+    prepaid_expenses_amount: Optional[int] = None
     """Prepaid expenses being charged for the room."""
 
-    prepaid_expenses_currency: Optional[str]
+    prepaid_expenses_currency: Optional[str] = None
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the prepaid
     expenses.
     """
 
-    room_nights: Optional[int]
+    room_nights: Optional[int] = None
     """Number of nights the room was rented."""
 
-    total_room_tax_amount: Optional[int]
+    total_room_tax_amount: Optional[int] = None
     """Total room tax being charged."""
 
-    total_room_tax_currency: Optional[str]
+    total_room_tax_currency: Optional[str] = None
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total room
     tax.
     """
 
-    total_tax_amount: Optional[int]
+    total_tax_amount: Optional[int] = None
     """Total tax being charged for the room."""
 
-    total_tax_currency: Optional[str]
+    total_tax_currency: Optional[str] = None
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total tax
     assessed.
@@ -594,7 +594,7 @@ class TransactionSourceCardRefundPurchaseDetailsTravelAncillaryService(BaseModel
             "upgrades",
             "wifi",
         ]
-    ]
+    ] = None
     """Category of the ancillary service.
 
     - `none` - None
@@ -623,12 +623,12 @@ class TransactionSourceCardRefundPurchaseDetailsTravelAncillaryService(BaseModel
     - `wifi` - Wi-fi
     """
 
-    sub_category: Optional[str]
+    sub_category: Optional[str] = None
     """Sub-category of the ancillary service, free-form."""
 
 
 class TransactionSourceCardRefundPurchaseDetailsTravelAncillary(BaseModel):
-    connected_ticket_document_number: Optional[str]
+    connected_ticket_document_number: Optional[str] = None
     """
     If this purchase has a connection or relationship to another purchase, such as a
     baggage fee for a passenger transport ticket, this field should contain the
@@ -642,7 +642,7 @@ class TransactionSourceCardRefundPurchaseDetailsTravelAncillary(BaseModel):
             "airline_ticket_and_passenger_transport_ancillary_purchase_cancellation",
             "other",
         ]
-    ]
+    ] = None
     """Indicates the reason for a credit to the cardholder.
 
     - `no_credit` - No credit
@@ -653,33 +653,33 @@ class TransactionSourceCardRefundPurchaseDetailsTravelAncillary(BaseModel):
     - `other` - Other
     """
 
-    passenger_name_or_description: Optional[str]
+    passenger_name_or_description: Optional[str] = None
     """Name of the passenger or description of the ancillary purchase."""
 
     services: List[TransactionSourceCardRefundPurchaseDetailsTravelAncillaryService]
     """Additional travel charges, such as baggage fees."""
 
-    ticket_document_number: Optional[str]
+    ticket_document_number: Optional[str] = None
     """Ticket document number."""
 
 
 class TransactionSourceCardRefundPurchaseDetailsTravelTripLeg(BaseModel):
-    carrier_code: Optional[str]
+    carrier_code: Optional[str] = None
     """Carrier code (e.g., United Airlines, Jet Blue, etc.)."""
 
-    destination_city_airport_code: Optional[str]
+    destination_city_airport_code: Optional[str] = None
     """Code for the destination city or airport."""
 
-    fare_basis_code: Optional[str]
+    fare_basis_code: Optional[str] = None
     """Fare basis code."""
 
-    flight_number: Optional[str]
+    flight_number: Optional[str] = None
     """Flight number."""
 
-    service_class: Optional[str]
+    service_class: Optional[str] = None
     """Service class (e.g., first class, business class, etc.)."""
 
-    stop_over_code: Optional[Literal["none", "stop_over_allowed", "stop_over_not_allowed"]]
+    stop_over_code: Optional[Literal["none", "stop_over_allowed", "stop_over_not_allowed"]] = None
     """Indicates whether a stopover is allowed on this ticket.
 
     - `none` - None
@@ -689,10 +689,10 @@ class TransactionSourceCardRefundPurchaseDetailsTravelTripLeg(BaseModel):
 
 
 class TransactionSourceCardRefundPurchaseDetailsTravel(BaseModel):
-    ancillary: Optional[TransactionSourceCardRefundPurchaseDetailsTravelAncillary]
+    ancillary: Optional[TransactionSourceCardRefundPurchaseDetailsTravelAncillary] = None
     """Ancillary purchases in addition to the airfare."""
 
-    computerized_reservation_system: Optional[str]
+    computerized_reservation_system: Optional[str] = None
     """Indicates the computerized reservation system used to book the ticket."""
 
     credit_reason_indicator: Optional[
@@ -704,7 +704,7 @@ class TransactionSourceCardRefundPurchaseDetailsTravel(BaseModel):
             "other",
             "partial_refund_of_airline_ticket",
         ]
-    ]
+    ] = None
     """Indicates the reason for a credit to the cardholder.
 
     - `no_credit` - No credit
@@ -717,23 +717,23 @@ class TransactionSourceCardRefundPurchaseDetailsTravel(BaseModel):
     - `partial_refund_of_airline_ticket` - Partial refund of airline ticket
     """
 
-    departure_date: Optional[date]
+    departure_date: Optional[date] = None
     """Date of departure."""
 
-    origination_city_airport_code: Optional[str]
+    origination_city_airport_code: Optional[str] = None
     """Code for the originating city or airport."""
 
-    passenger_name: Optional[str]
+    passenger_name: Optional[str] = None
     """Name of the passenger."""
 
-    restricted_ticket_indicator: Optional[Literal["no_restrictions", "restricted_non_refundable_ticket"]]
+    restricted_ticket_indicator: Optional[Literal["no_restrictions", "restricted_non_refundable_ticket"]] = None
     """Indicates whether this ticket is non-refundable.
 
     - `no_restrictions` - No restrictions
     - `restricted_non_refundable_ticket` - Restricted non-refundable ticket
     """
 
-    ticket_change_indicator: Optional[Literal["none", "change_to_existing_ticket", "new_ticket"]]
+    ticket_change_indicator: Optional[Literal["none", "change_to_existing_ticket", "new_ticket"]] = None
     """Indicates why a ticket was changed.
 
     - `none` - None
@@ -741,53 +741,53 @@ class TransactionSourceCardRefundPurchaseDetailsTravel(BaseModel):
     - `new_ticket` - New ticket
     """
 
-    ticket_number: Optional[str]
+    ticket_number: Optional[str] = None
     """Ticket number."""
 
-    travel_agency_code: Optional[str]
+    travel_agency_code: Optional[str] = None
     """Code for the travel agency if the ticket was issued by a travel agency."""
 
-    travel_agency_name: Optional[str]
+    travel_agency_name: Optional[str] = None
     """Name of the travel agency if the ticket was issued by a travel agency."""
 
-    trip_legs: Optional[List[TransactionSourceCardRefundPurchaseDetailsTravelTripLeg]]
+    trip_legs: Optional[List[TransactionSourceCardRefundPurchaseDetailsTravelTripLeg]] = None
     """Fields specific to each leg of the journey."""
 
 
 class TransactionSourceCardRefundPurchaseDetails(BaseModel):
-    car_rental: Optional[TransactionSourceCardRefundPurchaseDetailsCarRental]
+    car_rental: Optional[TransactionSourceCardRefundPurchaseDetailsCarRental] = None
     """Fields specific to car rentals."""
 
-    customer_reference_identifier: Optional[str]
+    customer_reference_identifier: Optional[str] = None
     """An identifier from the merchant for the customer or consumer."""
 
-    local_tax_amount: Optional[int]
+    local_tax_amount: Optional[int] = None
     """The state or provincial tax amount in minor units."""
 
-    local_tax_currency: Optional[str]
+    local_tax_currency: Optional[str] = None
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax
     assessed.
     """
 
-    lodging: Optional[TransactionSourceCardRefundPurchaseDetailsLodging]
+    lodging: Optional[TransactionSourceCardRefundPurchaseDetailsLodging] = None
     """Fields specific to lodging."""
 
-    national_tax_amount: Optional[int]
+    national_tax_amount: Optional[int] = None
     """The national tax amount in minor units."""
 
-    national_tax_currency: Optional[str]
+    national_tax_currency: Optional[str] = None
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax
     assessed.
     """
 
-    purchase_identifier: Optional[str]
+    purchase_identifier: Optional[str] = None
     """An identifier from the merchant for the purchase to the issuer and cardholder."""
 
     purchase_identifier_format: Optional[
         Literal["free_text", "order_number", "rental_agreement_number", "hotel_folio_number", "invoice_number"]
-    ]
+    ] = None
     """The format of the purchase identifier.
 
     - `free_text` - Free text
@@ -797,7 +797,7 @@ class TransactionSourceCardRefundPurchaseDetails(BaseModel):
     - `invoice_number` - Invoice number
     """
 
-    travel: Optional[TransactionSourceCardRefundPurchaseDetailsTravel]
+    travel: Optional[TransactionSourceCardRefundPurchaseDetailsTravel] = None
     """Fields specific to travel."""
 
 
@@ -811,7 +811,7 @@ class TransactionSourceCardRefund(BaseModel):
     For dollars, for example, this is cents.
     """
 
-    card_payment_id: Optional[str]
+    card_payment_id: Optional[str] = None
     """The ID of the Card Payment this transaction belongs to."""
 
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
@@ -827,7 +827,7 @@ class TransactionSourceCardRefund(BaseModel):
     - `USD` - US Dollar (USD)
     """
 
-    merchant_acceptor_id: Optional[str]
+    merchant_acceptor_id: Optional[str] = None
     """
     The merchant identifier (commonly abbreviated as MID) of the merchant the card
     is transacting with.
@@ -836,22 +836,22 @@ class TransactionSourceCardRefund(BaseModel):
     merchant_category_code: str
     """The 4-digit MCC describing the merchant's business."""
 
-    merchant_city: Optional[str]
+    merchant_city: Optional[str] = None
     """The city the merchant resides in."""
 
     merchant_country: str
     """The country the merchant resides in."""
 
-    merchant_name: Optional[str]
+    merchant_name: Optional[str] = None
     """The name of the merchant."""
 
-    merchant_state: Optional[str]
+    merchant_state: Optional[str] = None
     """The state the merchant resides in."""
 
     network_identifiers: TransactionSourceCardRefundNetworkIdentifiers
     """Network-specific identifiers for this refund."""
 
-    purchase_details: Optional[TransactionSourceCardRefundPurchaseDetails]
+    purchase_details: Optional[TransactionSourceCardRefundPurchaseDetails] = None
     """
     Additional details about the card purchase, such as tax and industry-specific
     fields.
@@ -893,7 +893,7 @@ class TransactionSourceCardRevenuePayment(BaseModel):
     period_start: datetime
     """The start of the period for which this transaction paid interest."""
 
-    transacted_on_account_id: Optional[str]
+    transacted_on_account_id: Optional[str] = None
     """The account the card belonged to."""
 
 
@@ -907,7 +907,7 @@ class TransactionSourceCardSettlementNetworkIdentifiers(BaseModel):
     acquirer_reference_number: str
     """A globally unique identifier for this settlement."""
 
-    transaction_id: Optional[str]
+    transaction_id: Optional[str] = None
     """
     A globally unique transaction identifier provided by the card network, used
     across multiple life-cycle requests.
@@ -915,30 +915,30 @@ class TransactionSourceCardSettlementNetworkIdentifiers(BaseModel):
 
 
 class TransactionSourceCardSettlementPurchaseDetailsCarRental(BaseModel):
-    car_class_code: Optional[str]
+    car_class_code: Optional[str] = None
     """Code indicating the vehicle's class."""
 
-    checkout_date: Optional[date]
+    checkout_date: Optional[date] = None
     """
     Date the customer picked up the car or, in the case of a no-show or pre-pay
     transaction, the scheduled pick up date.
     """
 
-    daily_rental_rate_amount: Optional[int]
+    daily_rental_rate_amount: Optional[int] = None
     """Daily rate being charged for the vehicle."""
 
-    daily_rental_rate_currency: Optional[str]
+    daily_rental_rate_currency: Optional[str] = None
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily rental
     rate.
     """
 
-    days_rented: Optional[int]
+    days_rented: Optional[int] = None
     """Number of days the vehicle was rented."""
 
     extra_charges: Optional[
         Literal["no_extra_charge", "gas", "extra_mileage", "late_return", "one_way_service_fee", "parking_violation"]
-    ]
+    ] = None
     """Additional charges (gas, late fee, etc.) being billed.
 
     - `no_extra_charge` - No extra charge
@@ -949,25 +949,25 @@ class TransactionSourceCardSettlementPurchaseDetailsCarRental(BaseModel):
     - `parking_violation` - Parking violation
     """
 
-    fuel_charges_amount: Optional[int]
+    fuel_charges_amount: Optional[int] = None
     """Fuel charges for the vehicle."""
 
-    fuel_charges_currency: Optional[str]
+    fuel_charges_currency: Optional[str] = None
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the fuel charges
     assessed.
     """
 
-    insurance_charges_amount: Optional[int]
+    insurance_charges_amount: Optional[int] = None
     """Any insurance being charged for the vehicle."""
 
-    insurance_charges_currency: Optional[str]
+    insurance_charges_currency: Optional[str] = None
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the insurance
     charges assessed.
     """
 
-    no_show_indicator: Optional[Literal["not_applicable", "no_show_for_specialized_vehicle"]]
+    no_show_indicator: Optional[Literal["not_applicable", "no_show_for_specialized_vehicle"]] = None
     """
     An indicator that the cardholder is being billed for a reserved vehicle that was
     not actually rented (that is, a "no-show" charge).
@@ -976,25 +976,25 @@ class TransactionSourceCardSettlementPurchaseDetailsCarRental(BaseModel):
     - `no_show_for_specialized_vehicle` - No show for specialized vehicle
     """
 
-    one_way_drop_off_charges_amount: Optional[int]
+    one_way_drop_off_charges_amount: Optional[int] = None
     """
     Charges for returning the vehicle at a different location than where it was
     picked up.
     """
 
-    one_way_drop_off_charges_currency: Optional[str]
+    one_way_drop_off_charges_currency: Optional[str] = None
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the one-way
     drop-off charges assessed.
     """
 
-    renter_name: Optional[str]
+    renter_name: Optional[str] = None
     """Name of the person renting the vehicle."""
 
-    weekly_rental_rate_amount: Optional[int]
+    weekly_rental_rate_amount: Optional[int] = None
     """Weekly rate being charged for the vehicle."""
 
-    weekly_rental_rate_currency: Optional[str]
+    weekly_rental_rate_currency: Optional[str] = None
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the weekly
     rental rate.
@@ -1002,13 +1002,13 @@ class TransactionSourceCardSettlementPurchaseDetailsCarRental(BaseModel):
 
 
 class TransactionSourceCardSettlementPurchaseDetailsLodging(BaseModel):
-    check_in_date: Optional[date]
+    check_in_date: Optional[date] = None
     """Date the customer checked in."""
 
-    daily_room_rate_amount: Optional[int]
+    daily_room_rate_amount: Optional[int] = None
     """Daily rate being charged for the room."""
 
-    daily_room_rate_currency: Optional[str]
+    daily_room_rate_currency: Optional[str] = None
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the daily room
     rate.
@@ -1016,7 +1016,7 @@ class TransactionSourceCardSettlementPurchaseDetailsLodging(BaseModel):
 
     extra_charges: Optional[
         Literal["no_extra_charge", "restaurant", "gift_shop", "mini_bar", "telephone", "other", "laundry"]
-    ]
+    ] = None
     """Additional charges (phone, late check-out, etc.) being billed.
 
     - `no_extra_charge` - No extra charge
@@ -1028,25 +1028,25 @@ class TransactionSourceCardSettlementPurchaseDetailsLodging(BaseModel):
     - `laundry` - Laundry
     """
 
-    folio_cash_advances_amount: Optional[int]
+    folio_cash_advances_amount: Optional[int] = None
     """Folio cash advances for the room."""
 
-    folio_cash_advances_currency: Optional[str]
+    folio_cash_advances_currency: Optional[str] = None
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the folio cash
     advances.
     """
 
-    food_beverage_charges_amount: Optional[int]
+    food_beverage_charges_amount: Optional[int] = None
     """Food and beverage charges for the room."""
 
-    food_beverage_charges_currency: Optional[str]
+    food_beverage_charges_currency: Optional[str] = None
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the food and
     beverage charges.
     """
 
-    no_show_indicator: Optional[Literal["not_applicable", "no_show"]]
+    no_show_indicator: Optional[Literal["not_applicable", "no_show"]] = None
     """
     Indicator that the cardholder is being billed for a reserved room that was not
     actually used.
@@ -1055,31 +1055,31 @@ class TransactionSourceCardSettlementPurchaseDetailsLodging(BaseModel):
     - `no_show` - No show
     """
 
-    prepaid_expenses_amount: Optional[int]
+    prepaid_expenses_amount: Optional[int] = None
     """Prepaid expenses being charged for the room."""
 
-    prepaid_expenses_currency: Optional[str]
+    prepaid_expenses_currency: Optional[str] = None
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the prepaid
     expenses.
     """
 
-    room_nights: Optional[int]
+    room_nights: Optional[int] = None
     """Number of nights the room was rented."""
 
-    total_room_tax_amount: Optional[int]
+    total_room_tax_amount: Optional[int] = None
     """Total room tax being charged."""
 
-    total_room_tax_currency: Optional[str]
+    total_room_tax_currency: Optional[str] = None
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total room
     tax.
     """
 
-    total_tax_amount: Optional[int]
+    total_tax_amount: Optional[int] = None
     """Total tax being charged for the room."""
 
-    total_tax_currency: Optional[str]
+    total_tax_currency: Optional[str] = None
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the total tax
     assessed.
@@ -1114,7 +1114,7 @@ class TransactionSourceCardSettlementPurchaseDetailsTravelAncillaryService(BaseM
             "upgrades",
             "wifi",
         ]
-    ]
+    ] = None
     """Category of the ancillary service.
 
     - `none` - None
@@ -1143,12 +1143,12 @@ class TransactionSourceCardSettlementPurchaseDetailsTravelAncillaryService(BaseM
     - `wifi` - Wi-fi
     """
 
-    sub_category: Optional[str]
+    sub_category: Optional[str] = None
     """Sub-category of the ancillary service, free-form."""
 
 
 class TransactionSourceCardSettlementPurchaseDetailsTravelAncillary(BaseModel):
-    connected_ticket_document_number: Optional[str]
+    connected_ticket_document_number: Optional[str] = None
     """
     If this purchase has a connection or relationship to another purchase, such as a
     baggage fee for a passenger transport ticket, this field should contain the
@@ -1162,7 +1162,7 @@ class TransactionSourceCardSettlementPurchaseDetailsTravelAncillary(BaseModel):
             "airline_ticket_and_passenger_transport_ancillary_purchase_cancellation",
             "other",
         ]
-    ]
+    ] = None
     """Indicates the reason for a credit to the cardholder.
 
     - `no_credit` - No credit
@@ -1173,33 +1173,33 @@ class TransactionSourceCardSettlementPurchaseDetailsTravelAncillary(BaseModel):
     - `other` - Other
     """
 
-    passenger_name_or_description: Optional[str]
+    passenger_name_or_description: Optional[str] = None
     """Name of the passenger or description of the ancillary purchase."""
 
     services: List[TransactionSourceCardSettlementPurchaseDetailsTravelAncillaryService]
     """Additional travel charges, such as baggage fees."""
 
-    ticket_document_number: Optional[str]
+    ticket_document_number: Optional[str] = None
     """Ticket document number."""
 
 
 class TransactionSourceCardSettlementPurchaseDetailsTravelTripLeg(BaseModel):
-    carrier_code: Optional[str]
+    carrier_code: Optional[str] = None
     """Carrier code (e.g., United Airlines, Jet Blue, etc.)."""
 
-    destination_city_airport_code: Optional[str]
+    destination_city_airport_code: Optional[str] = None
     """Code for the destination city or airport."""
 
-    fare_basis_code: Optional[str]
+    fare_basis_code: Optional[str] = None
     """Fare basis code."""
 
-    flight_number: Optional[str]
+    flight_number: Optional[str] = None
     """Flight number."""
 
-    service_class: Optional[str]
+    service_class: Optional[str] = None
     """Service class (e.g., first class, business class, etc.)."""
 
-    stop_over_code: Optional[Literal["none", "stop_over_allowed", "stop_over_not_allowed"]]
+    stop_over_code: Optional[Literal["none", "stop_over_allowed", "stop_over_not_allowed"]] = None
     """Indicates whether a stopover is allowed on this ticket.
 
     - `none` - None
@@ -1209,10 +1209,10 @@ class TransactionSourceCardSettlementPurchaseDetailsTravelTripLeg(BaseModel):
 
 
 class TransactionSourceCardSettlementPurchaseDetailsTravel(BaseModel):
-    ancillary: Optional[TransactionSourceCardSettlementPurchaseDetailsTravelAncillary]
+    ancillary: Optional[TransactionSourceCardSettlementPurchaseDetailsTravelAncillary] = None
     """Ancillary purchases in addition to the airfare."""
 
-    computerized_reservation_system: Optional[str]
+    computerized_reservation_system: Optional[str] = None
     """Indicates the computerized reservation system used to book the ticket."""
 
     credit_reason_indicator: Optional[
@@ -1224,7 +1224,7 @@ class TransactionSourceCardSettlementPurchaseDetailsTravel(BaseModel):
             "other",
             "partial_refund_of_airline_ticket",
         ]
-    ]
+    ] = None
     """Indicates the reason for a credit to the cardholder.
 
     - `no_credit` - No credit
@@ -1237,23 +1237,23 @@ class TransactionSourceCardSettlementPurchaseDetailsTravel(BaseModel):
     - `partial_refund_of_airline_ticket` - Partial refund of airline ticket
     """
 
-    departure_date: Optional[date]
+    departure_date: Optional[date] = None
     """Date of departure."""
 
-    origination_city_airport_code: Optional[str]
+    origination_city_airport_code: Optional[str] = None
     """Code for the originating city or airport."""
 
-    passenger_name: Optional[str]
+    passenger_name: Optional[str] = None
     """Name of the passenger."""
 
-    restricted_ticket_indicator: Optional[Literal["no_restrictions", "restricted_non_refundable_ticket"]]
+    restricted_ticket_indicator: Optional[Literal["no_restrictions", "restricted_non_refundable_ticket"]] = None
     """Indicates whether this ticket is non-refundable.
 
     - `no_restrictions` - No restrictions
     - `restricted_non_refundable_ticket` - Restricted non-refundable ticket
     """
 
-    ticket_change_indicator: Optional[Literal["none", "change_to_existing_ticket", "new_ticket"]]
+    ticket_change_indicator: Optional[Literal["none", "change_to_existing_ticket", "new_ticket"]] = None
     """Indicates why a ticket was changed.
 
     - `none` - None
@@ -1261,53 +1261,53 @@ class TransactionSourceCardSettlementPurchaseDetailsTravel(BaseModel):
     - `new_ticket` - New ticket
     """
 
-    ticket_number: Optional[str]
+    ticket_number: Optional[str] = None
     """Ticket number."""
 
-    travel_agency_code: Optional[str]
+    travel_agency_code: Optional[str] = None
     """Code for the travel agency if the ticket was issued by a travel agency."""
 
-    travel_agency_name: Optional[str]
+    travel_agency_name: Optional[str] = None
     """Name of the travel agency if the ticket was issued by a travel agency."""
 
-    trip_legs: Optional[List[TransactionSourceCardSettlementPurchaseDetailsTravelTripLeg]]
+    trip_legs: Optional[List[TransactionSourceCardSettlementPurchaseDetailsTravelTripLeg]] = None
     """Fields specific to each leg of the journey."""
 
 
 class TransactionSourceCardSettlementPurchaseDetails(BaseModel):
-    car_rental: Optional[TransactionSourceCardSettlementPurchaseDetailsCarRental]
+    car_rental: Optional[TransactionSourceCardSettlementPurchaseDetailsCarRental] = None
     """Fields specific to car rentals."""
 
-    customer_reference_identifier: Optional[str]
+    customer_reference_identifier: Optional[str] = None
     """An identifier from the merchant for the customer or consumer."""
 
-    local_tax_amount: Optional[int]
+    local_tax_amount: Optional[int] = None
     """The state or provincial tax amount in minor units."""
 
-    local_tax_currency: Optional[str]
+    local_tax_currency: Optional[str] = None
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax
     assessed.
     """
 
-    lodging: Optional[TransactionSourceCardSettlementPurchaseDetailsLodging]
+    lodging: Optional[TransactionSourceCardSettlementPurchaseDetailsLodging] = None
     """Fields specific to lodging."""
 
-    national_tax_amount: Optional[int]
+    national_tax_amount: Optional[int] = None
     """The national tax amount in minor units."""
 
-    national_tax_currency: Optional[str]
+    national_tax_currency: Optional[str] = None
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the local tax
     assessed.
     """
 
-    purchase_identifier: Optional[str]
+    purchase_identifier: Optional[str] = None
     """An identifier from the merchant for the purchase to the issuer and cardholder."""
 
     purchase_identifier_format: Optional[
         Literal["free_text", "order_number", "rental_agreement_number", "hotel_folio_number", "invoice_number"]
-    ]
+    ] = None
     """The format of the purchase identifier.
 
     - `free_text` - Free text
@@ -1317,7 +1317,7 @@ class TransactionSourceCardSettlementPurchaseDetails(BaseModel):
     - `invoice_number` - Invoice number
     """
 
-    travel: Optional[TransactionSourceCardSettlementPurchaseDetailsTravel]
+    travel: Optional[TransactionSourceCardSettlementPurchaseDetailsTravel] = None
     """Fields specific to travel."""
 
 
@@ -1331,13 +1331,13 @@ class TransactionSourceCardSettlement(BaseModel):
     For dollars, for example, this is cents.
     """
 
-    card_authorization: Optional[str]
+    card_authorization: Optional[str] = None
     """
     The Card Authorization that was created prior to this Card Settlement, if one
     exists.
     """
 
-    card_payment_id: Optional[str]
+    card_payment_id: Optional[str] = None
     """The ID of the Card Payment this transaction belongs to."""
 
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
@@ -1353,7 +1353,7 @@ class TransactionSourceCardSettlement(BaseModel):
     - `USD` - US Dollar (USD)
     """
 
-    merchant_acceptor_id: Optional[str]
+    merchant_acceptor_id: Optional[str] = None
     """
     The merchant identifier (commonly abbreviated as MID) of the merchant the card
     is transacting with.
@@ -1362,22 +1362,22 @@ class TransactionSourceCardSettlement(BaseModel):
     merchant_category_code: str
     """The 4-digit MCC describing the merchant's business."""
 
-    merchant_city: Optional[str]
+    merchant_city: Optional[str] = None
     """The city the merchant resides in."""
 
     merchant_country: str
     """The country the merchant resides in."""
 
-    merchant_name: Optional[str]
+    merchant_name: Optional[str] = None
     """The name of the merchant."""
 
-    merchant_state: Optional[str]
+    merchant_state: Optional[str] = None
     """The state the merchant resides in."""
 
     network_identifiers: TransactionSourceCardSettlementNetworkIdentifiers
     """Network-specific identifiers for this refund."""
 
-    pending_transaction_id: Optional[str]
+    pending_transaction_id: Optional[str] = None
     """The identifier of the Pending Transaction associated with this Transaction."""
 
     presentment_amount: int
@@ -1389,7 +1389,7 @@ class TransactionSourceCardSettlement(BaseModel):
     transaction's presentment currency.
     """
 
-    purchase_details: Optional[TransactionSourceCardSettlementPurchaseDetails]
+    purchase_details: Optional[TransactionSourceCardSettlementPurchaseDetails] = None
     """
     Additional details about the card purchase, such as tax and industry-specific
     fields.
@@ -1415,7 +1415,7 @@ class TransactionSourceCheckDepositAcceptance(BaseModel):
     For dollars, for example, this is cents.
     """
 
-    auxiliary_on_us: Optional[str]
+    auxiliary_on_us: Optional[str] = None
     """An additional line of metadata printed on the check.
 
     This typically includes the check number for business checks.
@@ -1440,7 +1440,7 @@ class TransactionSourceCheckDepositAcceptance(BaseModel):
     routing_number: str
     """The routing number printed on the check."""
 
-    serial_number: Optional[str]
+    serial_number: Optional[str] = None
     """The check serial number, if present, for consumer checks.
 
     For business checks, the serial number is usually in the `auxiliary_on_us`
@@ -1548,13 +1548,13 @@ class TransactionSourceCheckDepositReturn(BaseModel):
 
 
 class TransactionSourceCheckTransferDeposit(BaseModel):
-    back_image_file_id: Optional[str]
+    back_image_file_id: Optional[str] = None
     """
     The identifier of the API File object containing an image of the back of the
     deposited check.
     """
 
-    bank_of_first_deposit_routing_number: Optional[str]
+    bank_of_first_deposit_routing_number: Optional[str] = None
     """
     The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
     bank depositing this check. In some rare cases, this is not transmitted via
@@ -1564,13 +1564,13 @@ class TransactionSourceCheckTransferDeposit(BaseModel):
     deposited_at: datetime
     """When the check was deposited."""
 
-    front_image_file_id: Optional[str]
+    front_image_file_id: Optional[str] = None
     """
     The identifier of the API File object containing an image of the front of the
     deposited check.
     """
 
-    transaction_id: Optional[str]
+    transaction_id: Optional[str] = None
     """The identifier of the Transaction object created when the check was deposited."""
 
     transfer_id: str
@@ -1584,19 +1584,19 @@ class TransactionSourceCheckTransferDeposit(BaseModel):
 
 
 class TransactionSourceCheckTransferIntention(BaseModel):
-    address_city: Optional[str]
+    address_city: Optional[str] = None
     """The city of the check's destination."""
 
-    address_line1: Optional[str]
+    address_line1: Optional[str] = None
     """The street address of the check's destination."""
 
-    address_line2: Optional[str]
+    address_line2: Optional[str] = None
     """The second line of the address of the check's destination."""
 
-    address_state: Optional[str]
+    address_state: Optional[str] = None
     """The state of the check's destination."""
 
-    address_zip: Optional[str]
+    address_zip: Optional[str] = None
     """The postal code of the check's destination."""
 
     amount: int
@@ -1615,7 +1615,7 @@ class TransactionSourceCheckTransferIntention(BaseModel):
     - `USD` - US Dollar (USD)
     """
 
-    recipient_name: Optional[str]
+    recipient_name: Optional[str] = None
     """The name that will be printed on the check."""
 
     transfer_id: str
@@ -1677,10 +1677,10 @@ class TransactionSourceInboundACHTransfer(BaseModel):
     For dollars, for example, this is cents.
     """
 
-    originator_company_descriptive_date: Optional[str]
+    originator_company_descriptive_date: Optional[str] = None
     """The description of the date of the transfer, usually in the format `YYMMDD`."""
 
-    originator_company_discretionary_data: Optional[str]
+    originator_company_discretionary_data: Optional[str] = None
     """Data set by the originator."""
 
     originator_company_entry_description: str
@@ -1696,10 +1696,10 @@ class TransactionSourceInboundACHTransfer(BaseModel):
     originator_company_name: str
     """A name set by the originator to identify themselves."""
 
-    receiver_id_number: Optional[str]
+    receiver_id_number: Optional[str] = None
     """The originator's identifier for the transfer receipient."""
 
-    receiver_name: Optional[str]
+    receiver_name: Optional[str] = None
     """The name of the transfer recipient.
 
     This value is informational and not verified by Increase.
@@ -1725,23 +1725,23 @@ class TransactionSourceInboundCheck(BaseModel):
     For dollars, for example, this is cents.
     """
 
-    bank_of_first_deposit_routing_number: Optional[str]
+    bank_of_first_deposit_routing_number: Optional[str] = None
     """
     The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
     bank depositing this check. In some rare cases, this is not transmitted via
     Check21 and the value will be null.
     """
 
-    check_front_image_file_id: Optional[str]
+    check_front_image_file_id: Optional[str] = None
     """The front image of the check. This is a black and white TIFF image file."""
 
-    check_number: Optional[str]
+    check_number: Optional[str] = None
     """The number of the check.
 
     This field is set by the depositing bank and can be unreliable.
     """
 
-    check_rear_image_file_id: Optional[str]
+    check_rear_image_file_id: Optional[str] = None
     """The rear image of the check. This is a black and white TIFF image file."""
 
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
@@ -1789,7 +1789,7 @@ class TransactionSourceInboundInternationalACHTransfer(BaseModel):
       USD. There is no foreign exchange conversion.
     """
 
-    foreign_exchange_reference: Optional[str]
+    foreign_exchange_reference: Optional[str] = None
     """
     Depending on the `foreign_exchange_reference_indicator`, an exchange rate or a
     reference to a well-known rate.
@@ -1813,7 +1813,7 @@ class TransactionSourceInboundInternationalACHTransfer(BaseModel):
     For dollars, for example, this is cents.
     """
 
-    foreign_trace_number: Optional[str]
+    foreign_trace_number: Optional[str] = None
     """A reference number in the foreign banking infrastructure."""
 
     international_transaction_type_code: Literal[
@@ -1924,19 +1924,19 @@ class TransactionSourceInboundInternationalACHTransfer(BaseModel):
     originator_name: str
     """Either the name of the originator or an intermediary money transmitter."""
 
-    originator_postal_code: Optional[str]
+    originator_postal_code: Optional[str] = None
     """A portion of the originator address. This may be incomplete."""
 
-    originator_state_or_province: Optional[str]
+    originator_state_or_province: Optional[str] = None
     """A portion of the originator address. This may be incomplete."""
 
     originator_street_address: str
     """A portion of the originator address. This may be incomplete."""
 
-    payment_related_information: Optional[str]
+    payment_related_information: Optional[str] = None
     """A description field set by the originator."""
 
-    payment_related_information2: Optional[str]
+    payment_related_information2: Optional[str] = None
     """A description field set by the originator."""
 
     receiver_city: str
@@ -1949,13 +1949,13 @@ class TransactionSourceInboundInternationalACHTransfer(BaseModel):
     country code of the receiver country.
     """
 
-    receiver_identification_number: Optional[str]
+    receiver_identification_number: Optional[str] = None
     """An identification number the originator uses for the receiver."""
 
-    receiver_postal_code: Optional[str]
+    receiver_postal_code: Optional[str] = None
     """A portion of the receiver address. This may be incomplete."""
 
-    receiver_state_or_province: Optional[str]
+    receiver_state_or_province: Optional[str] = None
     """A portion of the receiver address. This may be incomplete."""
 
     receiver_street_address: str
@@ -2036,7 +2036,7 @@ class TransactionSourceInboundRealTimePaymentsTransferConfirmation(BaseModel):
     debtor_routing_number: str
     """The routing number of the account that sent the transfer."""
 
-    remittance_information: Optional[str]
+    remittance_information: Optional[str] = None
     """Additional information included with the transfer."""
 
     transaction_identification: str
@@ -2050,62 +2050,62 @@ class TransactionSourceInboundWireDrawdownPayment(BaseModel):
     For dollars, for example, this is cents.
     """
 
-    beneficiary_address_line1: Optional[str]
+    beneficiary_address_line1: Optional[str] = None
     """A free-form address field set by the sender."""
 
-    beneficiary_address_line2: Optional[str]
+    beneficiary_address_line2: Optional[str] = None
     """A free-form address field set by the sender."""
 
-    beneficiary_address_line3: Optional[str]
+    beneficiary_address_line3: Optional[str] = None
     """A free-form address field set by the sender."""
 
-    beneficiary_name: Optional[str]
+    beneficiary_name: Optional[str] = None
     """A name set by the sender."""
 
-    beneficiary_reference: Optional[str]
+    beneficiary_reference: Optional[str] = None
     """A free-form reference string set by the sender, to help identify the transfer."""
 
     description: str
     """An Increase-constructed description of the transfer."""
 
-    input_message_accountability_data: Optional[str]
+    input_message_accountability_data: Optional[str] = None
     """
     A unique identifier available to the originating and receiving banks, commonly
     abbreviated as IMAD. It is created when the wire is submitted to the Fedwire
     service and is helpful when debugging wires with the receiving bank.
     """
 
-    originator_address_line1: Optional[str]
+    originator_address_line1: Optional[str] = None
     """The address of the wire originator, set by the sending bank."""
 
-    originator_address_line2: Optional[str]
+    originator_address_line2: Optional[str] = None
     """The address of the wire originator, set by the sending bank."""
 
-    originator_address_line3: Optional[str]
+    originator_address_line3: Optional[str] = None
     """The address of the wire originator, set by the sending bank."""
 
-    originator_name: Optional[str]
+    originator_name: Optional[str] = None
     """The originator of the wire, set by the sending bank."""
 
-    originator_routing_number: Optional[str]
+    originator_routing_number: Optional[str] = None
     """
     The American Banking Association (ABA) routing number of the bank originating
     the transfer.
     """
 
-    originator_to_beneficiary_information: Optional[str]
+    originator_to_beneficiary_information: Optional[str] = None
     """An Increase-created concatenation of the Originator-to-Beneficiary lines."""
 
-    originator_to_beneficiary_information_line1: Optional[str]
+    originator_to_beneficiary_information_line1: Optional[str] = None
     """A free-form message set by the wire originator."""
 
-    originator_to_beneficiary_information_line2: Optional[str]
+    originator_to_beneficiary_information_line2: Optional[str] = None
     """A free-form message set by the wire originator."""
 
-    originator_to_beneficiary_information_line3: Optional[str]
+    originator_to_beneficiary_information_line3: Optional[str] = None
     """A free-form message set by the wire originator."""
 
-    originator_to_beneficiary_information_line4: Optional[str]
+    originator_to_beneficiary_information_line4: Optional[str] = None
     """A free-form message set by the wire originator."""
 
 
@@ -2128,7 +2128,7 @@ class TransactionSourceInboundWireDrawdownPaymentReversal(BaseModel):
     input_source: str
     """The Fedwire input source identifier."""
 
-    originator_routing_number: Optional[str]
+    originator_routing_number: Optional[str] = None
     """
     The American Banking Association (ABA) routing number of the bank originating
     the transfer.
@@ -2162,7 +2162,7 @@ class TransactionSourceInboundWireReversal(BaseModel):
     The description on the reversal message from Fedwire, set by the reversing bank.
     """
 
-    financial_institution_to_financial_institution_information: Optional[str]
+    financial_institution_to_financial_institution_information: Optional[str] = None
     """Additional financial institution information included in the wire reversal."""
 
     input_cycle_date: date
@@ -2181,7 +2181,7 @@ class TransactionSourceInboundWireReversal(BaseModel):
     input_source: str
     """The Fedwire input source identifier."""
 
-    originator_routing_number: Optional[str]
+    originator_routing_number: Optional[str] = None
     """
     The American Banking Association (ABA) routing number of the bank originating
     the transfer.
@@ -2202,7 +2202,7 @@ class TransactionSourceInboundWireReversal(BaseModel):
     previous_message_input_source: str
     """The Fedwire input source identifier for the wire transfer that was reversed."""
 
-    receiver_financial_institution_information: Optional[str]
+    receiver_financial_institution_information: Optional[str] = None
     """
     Information included in the wire reversal for the receiving financial
     institution.
@@ -2219,67 +2219,67 @@ class TransactionSourceInboundWireTransfer(BaseModel):
     amount: int
     """The amount in USD cents."""
 
-    beneficiary_address_line1: Optional[str]
+    beneficiary_address_line1: Optional[str] = None
     """A free-form address field set by the sender."""
 
-    beneficiary_address_line2: Optional[str]
+    beneficiary_address_line2: Optional[str] = None
     """A free-form address field set by the sender."""
 
-    beneficiary_address_line3: Optional[str]
+    beneficiary_address_line3: Optional[str] = None
     """A free-form address field set by the sender."""
 
-    beneficiary_name: Optional[str]
+    beneficiary_name: Optional[str] = None
     """A name set by the sender."""
 
-    beneficiary_reference: Optional[str]
+    beneficiary_reference: Optional[str] = None
     """A free-form reference string set by the sender, to help identify the transfer."""
 
     description: str
     """An Increase-constructed description of the transfer."""
 
-    input_message_accountability_data: Optional[str]
+    input_message_accountability_data: Optional[str] = None
     """
     A unique identifier available to the originating and receiving banks, commonly
     abbreviated as IMAD. It is created when the wire is submitted to the Fedwire
     service and is helpful when debugging wires with the originating bank.
     """
 
-    originator_address_line1: Optional[str]
+    originator_address_line1: Optional[str] = None
     """The address of the wire originator, set by the sending bank."""
 
-    originator_address_line2: Optional[str]
+    originator_address_line2: Optional[str] = None
     """The address of the wire originator, set by the sending bank."""
 
-    originator_address_line3: Optional[str]
+    originator_address_line3: Optional[str] = None
     """The address of the wire originator, set by the sending bank."""
 
-    originator_name: Optional[str]
+    originator_name: Optional[str] = None
     """The originator of the wire, set by the sending bank."""
 
-    originator_routing_number: Optional[str]
+    originator_routing_number: Optional[str] = None
     """
     The American Banking Association (ABA) routing number of the bank originating
     the transfer.
     """
 
-    originator_to_beneficiary_information: Optional[str]
+    originator_to_beneficiary_information: Optional[str] = None
     """An Increase-created concatenation of the Originator-to-Beneficiary lines."""
 
-    originator_to_beneficiary_information_line1: Optional[str]
+    originator_to_beneficiary_information_line1: Optional[str] = None
     """A free-form message set by the wire originator."""
 
-    originator_to_beneficiary_information_line2: Optional[str]
+    originator_to_beneficiary_information_line2: Optional[str] = None
     """A free-form message set by the wire originator."""
 
-    originator_to_beneficiary_information_line3: Optional[str]
+    originator_to_beneficiary_information_line3: Optional[str] = None
     """A free-form message set by the wire originator."""
 
-    originator_to_beneficiary_information_line4: Optional[str]
+    originator_to_beneficiary_information_line4: Optional[str] = None
     """A free-form message set by the wire originator."""
 
 
 class TransactionSourceInterestPayment(BaseModel):
-    accrued_on_account_id: Optional[str]
+    accrued_on_account_id: Optional[str] = None
     """The account on which the interest was accrued."""
 
     amount: int
@@ -2408,56 +2408,56 @@ class TransactionSourceWireTransferRejection(BaseModel):
 
 
 class TransactionSource(BaseModel):
-    account_transfer_intention: Optional[TransactionSourceAccountTransferIntention]
+    account_transfer_intention: Optional[TransactionSourceAccountTransferIntention] = None
     """An Account Transfer Intention object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `account_transfer_intention`.
     """
 
-    ach_transfer_intention: Optional[TransactionSourceACHTransferIntention]
+    ach_transfer_intention: Optional[TransactionSourceACHTransferIntention] = None
     """An ACH Transfer Intention object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `ach_transfer_intention`.
     """
 
-    ach_transfer_rejection: Optional[TransactionSourceACHTransferRejection]
+    ach_transfer_rejection: Optional[TransactionSourceACHTransferRejection] = None
     """An ACH Transfer Rejection object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `ach_transfer_rejection`.
     """
 
-    ach_transfer_return: Optional[TransactionSourceACHTransferReturn]
+    ach_transfer_return: Optional[TransactionSourceACHTransferReturn] = None
     """An ACH Transfer Return object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `ach_transfer_return`.
     """
 
-    card_dispute_acceptance: Optional[TransactionSourceCardDisputeAcceptance]
+    card_dispute_acceptance: Optional[TransactionSourceCardDisputeAcceptance] = None
     """A Card Dispute Acceptance object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `card_dispute_acceptance`.
     """
 
-    card_refund: Optional[TransactionSourceCardRefund]
+    card_refund: Optional[TransactionSourceCardRefund] = None
     """A Card Refund object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `card_refund`.
     """
 
-    card_revenue_payment: Optional[TransactionSourceCardRevenuePayment]
+    card_revenue_payment: Optional[TransactionSourceCardRevenuePayment] = None
     """A Card Revenue Payment object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `card_revenue_payment`.
     """
 
-    card_settlement: Optional[TransactionSourceCardSettlement]
+    card_settlement: Optional[TransactionSourceCardSettlement] = None
     """A Card Settlement object.
 
     This field will be present in the JSON response if and only if `category` is
@@ -2564,63 +2564,63 @@ class TransactionSource(BaseModel):
     - `other` - The Transaction was made for an undocumented or deprecated reason.
     """
 
-    check_deposit_acceptance: Optional[TransactionSourceCheckDepositAcceptance]
+    check_deposit_acceptance: Optional[TransactionSourceCheckDepositAcceptance] = None
     """A Check Deposit Acceptance object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `check_deposit_acceptance`.
     """
 
-    check_deposit_return: Optional[TransactionSourceCheckDepositReturn]
+    check_deposit_return: Optional[TransactionSourceCheckDepositReturn] = None
     """A Check Deposit Return object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `check_deposit_return`.
     """
 
-    check_transfer_deposit: Optional[TransactionSourceCheckTransferDeposit]
+    check_transfer_deposit: Optional[TransactionSourceCheckTransferDeposit] = None
     """A Check Transfer Deposit object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `check_transfer_deposit`.
     """
 
-    check_transfer_intention: Optional[TransactionSourceCheckTransferIntention]
+    check_transfer_intention: Optional[TransactionSourceCheckTransferIntention] = None
     """A Check Transfer Intention object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `check_transfer_intention`.
     """
 
-    check_transfer_stop_payment_request: Optional[TransactionSourceCheckTransferStopPaymentRequest]
+    check_transfer_stop_payment_request: Optional[TransactionSourceCheckTransferStopPaymentRequest] = None
     """A Check Transfer Stop Payment Request object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `check_transfer_stop_payment_request`.
     """
 
-    fee_payment: Optional[TransactionSourceFeePayment]
+    fee_payment: Optional[TransactionSourceFeePayment] = None
     """A Fee Payment object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `fee_payment`.
     """
 
-    inbound_ach_transfer: Optional[TransactionSourceInboundACHTransfer]
+    inbound_ach_transfer: Optional[TransactionSourceInboundACHTransfer] = None
     """An Inbound ACH Transfer Intention object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `inbound_ach_transfer`.
     """
 
-    inbound_check: Optional[TransactionSourceInboundCheck]
+    inbound_check: Optional[TransactionSourceInboundCheck] = None
     """An Inbound Check object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `inbound_check`.
     """
 
-    inbound_international_ach_transfer: Optional[TransactionSourceInboundInternationalACHTransfer]
+    inbound_international_ach_transfer: Optional[TransactionSourceInboundInternationalACHTransfer] = None
     """An Inbound International ACH Transfer object.
 
     This field will be present in the JSON response if and only if `category` is
@@ -2629,77 +2629,79 @@ class TransactionSource(BaseModel):
 
     inbound_real_time_payments_transfer_confirmation: Optional[
         TransactionSourceInboundRealTimePaymentsTransferConfirmation
-    ]
+    ] = None
     """An Inbound Real-Time Payments Transfer Confirmation object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `inbound_real_time_payments_transfer_confirmation`.
     """
 
-    inbound_wire_drawdown_payment: Optional[TransactionSourceInboundWireDrawdownPayment]
+    inbound_wire_drawdown_payment: Optional[TransactionSourceInboundWireDrawdownPayment] = None
     """An Inbound Wire Drawdown Payment object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `inbound_wire_drawdown_payment`.
     """
 
-    inbound_wire_drawdown_payment_reversal: Optional[TransactionSourceInboundWireDrawdownPaymentReversal]
+    inbound_wire_drawdown_payment_reversal: Optional[TransactionSourceInboundWireDrawdownPaymentReversal] = None
     """An Inbound Wire Drawdown Payment Reversal object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `inbound_wire_drawdown_payment_reversal`.
     """
 
-    inbound_wire_reversal: Optional[TransactionSourceInboundWireReversal]
+    inbound_wire_reversal: Optional[TransactionSourceInboundWireReversal] = None
     """An Inbound Wire Reversal object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `inbound_wire_reversal`.
     """
 
-    inbound_wire_transfer: Optional[TransactionSourceInboundWireTransfer]
+    inbound_wire_transfer: Optional[TransactionSourceInboundWireTransfer] = None
     """An Inbound Wire Transfer object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `inbound_wire_transfer`.
     """
 
-    interest_payment: Optional[TransactionSourceInterestPayment]
+    interest_payment: Optional[TransactionSourceInterestPayment] = None
     """An Interest Payment object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `interest_payment`.
     """
 
-    internal_source: Optional[TransactionSourceInternalSource]
+    internal_source: Optional[TransactionSourceInternalSource] = None
     """An Internal Source object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `internal_source`.
     """
 
-    real_time_payments_transfer_acknowledgement: Optional[TransactionSourceRealTimePaymentsTransferAcknowledgement]
+    real_time_payments_transfer_acknowledgement: Optional[
+        TransactionSourceRealTimePaymentsTransferAcknowledgement
+    ] = None
     """A Real-Time Payments Transfer Acknowledgement object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `real_time_payments_transfer_acknowledgement`.
     """
 
-    sample_funds: Optional[TransactionSourceSampleFunds]
+    sample_funds: Optional[TransactionSourceSampleFunds] = None
     """A Sample Funds object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `sample_funds`.
     """
 
-    wire_transfer_intention: Optional[TransactionSourceWireTransferIntention]
+    wire_transfer_intention: Optional[TransactionSourceWireTransferIntention] = None
     """A Wire Transfer Intention object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `wire_transfer_intention`.
     """
 
-    wire_transfer_rejection: Optional[TransactionSourceWireTransferRejection]
+    wire_transfer_rejection: Optional[TransactionSourceWireTransferRejection] = None
     """A Wire Transfer Rejection object.
 
     This field will be present in the JSON response if and only if `category` is
@@ -2747,13 +2749,13 @@ class Transaction(BaseModel):
     as the line-item on the statement.
     """
 
-    route_id: Optional[str]
+    route_id: Optional[str] = None
     """The identifier for the route this Transaction came through.
 
     Routes are things like cards and ACH details.
     """
 
-    route_type: Optional[Literal["account_number", "card"]]
+    route_type: Optional[Literal["account_number", "card"]] = None
     """The type of the route this Transaction came through.
 
     - `account_number` - An Account Number.

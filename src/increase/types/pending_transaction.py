@@ -73,7 +73,7 @@ class SourceCardAuthorizationNetworkDetailsVisa(BaseModel):
             "non_authenticated_security_transaction",
             "non_secure_transaction",
         ]
-    ]
+    ] = None
     """
     For electronic commerce transactions, this identifies the level of security used
     in obtaining the customer's payment credential. For mail or telephone order
@@ -123,7 +123,7 @@ class SourceCardAuthorizationNetworkDetailsVisa(BaseModel):
             "contactless_magnetic_stripe",
             "integrated_circuit_card_no_cvv",
         ]
-    ]
+    ] = None
     """
     The method used to enter the cardholder's primary account number and card
     expiration date.
@@ -151,25 +151,25 @@ class SourceCardAuthorizationNetworkDetails(BaseModel):
     - `visa` - Visa
     """
 
-    visa: Optional[SourceCardAuthorizationNetworkDetailsVisa]
+    visa: Optional[SourceCardAuthorizationNetworkDetailsVisa] = None
     """Fields specific to the `visa` network."""
 
 
 class SourceCardAuthorizationNetworkIdentifiers(BaseModel):
-    retrieval_reference_number: Optional[str]
+    retrieval_reference_number: Optional[str] = None
     """A life-cycle identifier used across e.g., an authorization and a reversal.
 
     Expected to be unique per acquirer within a window of time. For some card
     networks the retrieval reference number includes the trace counter.
     """
 
-    trace_number: Optional[str]
+    trace_number: Optional[str] = None
     """A counter used to verify an individual authorization.
 
     Expected to be unique per acquirer within a window of time.
     """
 
-    transaction_id: Optional[str]
+    transaction_id: Optional[str] = None
     """
     A globally unique transaction identifier provided by the card network, used
     across multiple life-cycle requests.
@@ -188,19 +188,19 @@ class SourceCardAuthorizationVerificationCardVerificationCode(BaseModel):
 
 
 class SourceCardAuthorizationVerificationCardholderAddress(BaseModel):
-    actual_line1: Optional[str]
+    actual_line1: Optional[str] = None
     """Line 1 of the address on file for the cardholder."""
 
-    actual_postal_code: Optional[str]
+    actual_postal_code: Optional[str] = None
     """The postal code of the address on file for the cardholder."""
 
-    provided_line1: Optional[str]
+    provided_line1: Optional[str] = None
     """
     The cardholder address line 1 provided for verification in the authorization
     request.
     """
 
-    provided_postal_code: Optional[str]
+    provided_postal_code: Optional[str] = None
     """The postal code provided for verification in the authorization request."""
 
     result: Literal[
@@ -249,7 +249,7 @@ class SourceCardAuthorization(BaseModel):
     For dollars, for example, this is cents.
     """
 
-    card_payment_id: Optional[str]
+    card_payment_id: Optional[str] = None
     """The ID of the Card Payment this transaction belongs to."""
 
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
@@ -265,7 +265,7 @@ class SourceCardAuthorization(BaseModel):
     - `USD` - US Dollar (USD)
     """
 
-    digital_wallet_token_id: Optional[str]
+    digital_wallet_token_id: Optional[str] = None
     """
     If the authorization was made via a Digital Wallet Token (such as an Apple Pay
     purchase), the identifier of the token that was used.
@@ -294,16 +294,16 @@ class SourceCardAuthorization(BaseModel):
     is transacting with.
     """
 
-    merchant_category_code: Optional[str]
+    merchant_category_code: Optional[str] = None
     """
     The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
     card is transacting with.
     """
 
-    merchant_city: Optional[str]
+    merchant_city: Optional[str] = None
     """The city the merchant resides in."""
 
-    merchant_country: Optional[str]
+    merchant_country: Optional[str] = None
     """The country the merchant resides in."""
 
     merchant_descriptor: str
@@ -315,10 +315,10 @@ class SourceCardAuthorization(BaseModel):
     network_identifiers: SourceCardAuthorizationNetworkIdentifiers
     """Network-specific identifiers for a specific request or transaction."""
 
-    pending_transaction_id: Optional[str]
+    pending_transaction_id: Optional[str] = None
     """The identifier of the Pending Transaction associated with this Transaction."""
 
-    physical_card_id: Optional[str]
+    physical_card_id: Optional[str] = None
     """
     If the authorization was made in-person with a physical card, the Physical Card
     that was used.
@@ -345,7 +345,7 @@ class SourceCardAuthorization(BaseModel):
       voucher authorization, where funds are credited to the cardholder.
     """
 
-    real_time_decision_id: Optional[str]
+    real_time_decision_id: Optional[str] = None
     """
     The identifier of the Real-Time Decision sent to approve or decline this
     transaction.
@@ -368,13 +368,13 @@ class SourceCheckDepositInstruction(BaseModel):
     For dollars, for example, this is cents.
     """
 
-    back_image_file_id: Optional[str]
+    back_image_file_id: Optional[str] = None
     """
     The identifier of the File containing the image of the back of the check that
     was deposited.
     """
 
-    check_deposit_id: Optional[str]
+    check_deposit_id: Optional[str] = None
     """The identifier of the Check Deposit."""
 
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
@@ -456,13 +456,13 @@ class SourceInboundFundsHold(BaseModel):
     - `USD` - US Dollar (USD)
     """
 
-    held_transaction_id: Optional[str]
+    held_transaction_id: Optional[str] = None
     """The ID of the Transaction for which funds were held."""
 
-    pending_transaction_id: Optional[str]
+    pending_transaction_id: Optional[str] = None
     """The ID of the Pending Transaction representing the held funds."""
 
-    released_at: Optional[datetime]
+    released_at: Optional[datetime] = None
     """When the hold was released (if it has been released)."""
 
     status: Literal["held", "complete"]
@@ -517,21 +517,21 @@ class SourceWireTransferInstruction(BaseModel):
 
 
 class Source(BaseModel):
-    account_transfer_instruction: Optional[SourceAccountTransferInstruction]
+    account_transfer_instruction: Optional[SourceAccountTransferInstruction] = None
     """An Account Transfer Instruction object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `account_transfer_instruction`.
     """
 
-    ach_transfer_instruction: Optional[SourceACHTransferInstruction]
+    ach_transfer_instruction: Optional[SourceACHTransferInstruction] = None
     """An ACH Transfer Instruction object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `ach_transfer_instruction`.
     """
 
-    card_authorization: Optional[SourceCardAuthorization]
+    card_authorization: Optional[SourceCardAuthorization] = None
     """A Card Authorization object.
 
     This field will be present in the JSON response if and only if `category` is
@@ -575,35 +575,35 @@ class Source(BaseModel):
       reason.
     """
 
-    check_deposit_instruction: Optional[SourceCheckDepositInstruction]
+    check_deposit_instruction: Optional[SourceCheckDepositInstruction] = None
     """A Check Deposit Instruction object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `check_deposit_instruction`.
     """
 
-    check_transfer_instruction: Optional[SourceCheckTransferInstruction]
+    check_transfer_instruction: Optional[SourceCheckTransferInstruction] = None
     """A Check Transfer Instruction object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `check_transfer_instruction`.
     """
 
-    inbound_funds_hold: Optional[SourceInboundFundsHold]
+    inbound_funds_hold: Optional[SourceInboundFundsHold] = None
     """An Inbound Funds Hold object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `inbound_funds_hold`.
     """
 
-    real_time_payments_transfer_instruction: Optional[SourceRealTimePaymentsTransferInstruction]
+    real_time_payments_transfer_instruction: Optional[SourceRealTimePaymentsTransferInstruction] = None
     """A Real-Time Payments Transfer Instruction object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `real_time_payments_transfer_instruction`.
     """
 
-    wire_transfer_instruction: Optional[SourceWireTransferInstruction]
+    wire_transfer_instruction: Optional[SourceWireTransferInstruction] = None
     """A Wire Transfer Instruction object.
 
     This field will be present in the JSON response if and only if `category` is
@@ -624,7 +624,7 @@ class PendingTransaction(BaseModel):
     For dollars, for example, this is cents.
     """
 
-    completed_at: Optional[datetime]
+    completed_at: Optional[datetime] = None
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which the Pending
     Transaction was completed.
@@ -657,13 +657,13 @@ class PendingTransaction(BaseModel):
     the vendor provides.
     """
 
-    route_id: Optional[str]
+    route_id: Optional[str] = None
     """The identifier for the route this Pending Transaction came through.
 
     Routes are things like cards and ACH details.
     """
 
-    route_type: Optional[Literal["account_number", "card"]]
+    route_type: Optional[Literal["account_number", "card"]] = None
     """The type of the route this Pending Transaction came through.
 
     - `account_number` - An Account Number.
