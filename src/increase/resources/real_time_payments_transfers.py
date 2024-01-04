@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
-
 import httpx
 
 from ..types import (
@@ -19,6 +17,7 @@ from .._types import (
     NotGiven,
 )
 from .._utils import maybe_transform
+from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..pagination import SyncPage, AsyncPage
@@ -27,18 +26,13 @@ from .._base_client import (
     make_request_options,
 )
 
-if TYPE_CHECKING:
-    from .._client import Increase, AsyncIncrease
-
 __all__ = ["RealTimePaymentsTransfers", "AsyncRealTimePaymentsTransfers"]
 
 
 class RealTimePaymentsTransfers(SyncAPIResource):
-    with_raw_response: RealTimePaymentsTransfersWithRawResponse
-
-    def __init__(self, client: Increase) -> None:
-        super().__init__(client)
-        self.with_raw_response = RealTimePaymentsTransfersWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> RealTimePaymentsTransfersWithRawResponse:
+        return RealTimePaymentsTransfersWithRawResponse(self)
 
     def create(
         self,
@@ -235,11 +229,9 @@ class RealTimePaymentsTransfers(SyncAPIResource):
 
 
 class AsyncRealTimePaymentsTransfers(AsyncAPIResource):
-    with_raw_response: AsyncRealTimePaymentsTransfersWithRawResponse
-
-    def __init__(self, client: AsyncIncrease) -> None:
-        super().__init__(client)
-        self.with_raw_response = AsyncRealTimePaymentsTransfersWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AsyncRealTimePaymentsTransfersWithRawResponse:
+        return AsyncRealTimePaymentsTransfersWithRawResponse(self)
 
     async def create(
         self,

@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
 from typing_extensions import Literal
 
 import httpx
@@ -16,6 +15,7 @@ from ..._types import (
     NotGiven,
 )
 from ..._utils import maybe_transform
+from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..._base_client import (
@@ -23,18 +23,13 @@ from ..._base_client import (
 )
 from ...types.simulations import physical_card_shipment_advance_params
 
-if TYPE_CHECKING:
-    from ..._client import Increase, AsyncIncrease
-
 __all__ = ["PhysicalCards", "AsyncPhysicalCards"]
 
 
 class PhysicalCards(SyncAPIResource):
-    with_raw_response: PhysicalCardsWithRawResponse
-
-    def __init__(self, client: Increase) -> None:
-        super().__init__(client)
-        self.with_raw_response = PhysicalCardsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> PhysicalCardsWithRawResponse:
+        return PhysicalCardsWithRawResponse(self)
 
     def shipment_advance(
         self,
@@ -99,11 +94,9 @@ class PhysicalCards(SyncAPIResource):
 
 
 class AsyncPhysicalCards(AsyncAPIResource):
-    with_raw_response: AsyncPhysicalCardsWithRawResponse
-
-    def __init__(self, client: AsyncIncrease) -> None:
-        super().__init__(client)
-        self.with_raw_response = AsyncPhysicalCardsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AsyncPhysicalCardsWithRawResponse:
+        return AsyncPhysicalCardsWithRawResponse(self)
 
     async def shipment_advance(
         self,

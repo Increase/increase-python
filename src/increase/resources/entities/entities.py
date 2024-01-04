@@ -2,17 +2,12 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, List
+from typing import List
 from typing_extensions import Literal
 
 import httpx
 
-from ...types import (
-    Entity,
-    entity_list_params,
-    entity_create_params,
-    entity_update_address_params,
-)
+from ...types import Entity, entity_list_params, entity_create_params, entity_update_address_params
 from ..._types import (
     NOT_GIVEN,
     Body,
@@ -21,6 +16,7 @@ from ..._types import (
     NotGiven,
 )
 from ..._utils import maybe_transform
+from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ...pagination import SyncPage, AsyncPage
@@ -41,22 +37,21 @@ from .supplemental_documents import (
     AsyncSupplementalDocumentsWithRawResponse,
 )
 
-if TYPE_CHECKING:
-    from ..._client import Increase, AsyncIncrease
-
 __all__ = ["Entities", "AsyncEntities"]
 
 
 class Entities(SyncAPIResource):
-    beneficial_owners: BeneficialOwners
-    supplemental_documents: SupplementalDocuments
-    with_raw_response: EntitiesWithRawResponse
+    @cached_property
+    def beneficial_owners(self) -> BeneficialOwners:
+        return BeneficialOwners(self._client)
 
-    def __init__(self, client: Increase) -> None:
-        super().__init__(client)
-        self.beneficial_owners = BeneficialOwners(client)
-        self.supplemental_documents = SupplementalDocuments(client)
-        self.with_raw_response = EntitiesWithRawResponse(self)
+    @cached_property
+    def supplemental_documents(self) -> SupplementalDocuments:
+        return SupplementalDocuments(self._client)
+
+    @cached_property
+    def with_raw_response(self) -> EntitiesWithRawResponse:
+        return EntitiesWithRawResponse(self)
 
     def create(
         self,
@@ -321,15 +316,17 @@ class Entities(SyncAPIResource):
 
 
 class AsyncEntities(AsyncAPIResource):
-    beneficial_owners: AsyncBeneficialOwners
-    supplemental_documents: AsyncSupplementalDocuments
-    with_raw_response: AsyncEntitiesWithRawResponse
+    @cached_property
+    def beneficial_owners(self) -> AsyncBeneficialOwners:
+        return AsyncBeneficialOwners(self._client)
 
-    def __init__(self, client: AsyncIncrease) -> None:
-        super().__init__(client)
-        self.beneficial_owners = AsyncBeneficialOwners(client)
-        self.supplemental_documents = AsyncSupplementalDocuments(client)
-        self.with_raw_response = AsyncEntitiesWithRawResponse(self)
+    @cached_property
+    def supplemental_documents(self) -> AsyncSupplementalDocuments:
+        return AsyncSupplementalDocuments(self._client)
+
+    @cached_property
+    def with_raw_response(self) -> AsyncEntitiesWithRawResponse:
+        return AsyncEntitiesWithRawResponse(self)
 
     async def create(
         self,

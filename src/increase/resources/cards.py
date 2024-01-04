@@ -2,18 +2,11 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
 from typing_extensions import Literal
 
 import httpx
 
-from ..types import (
-    Card,
-    CardDetails,
-    card_list_params,
-    card_create_params,
-    card_update_params,
-)
+from ..types import Card, CardDetails, card_list_params, card_create_params, card_update_params
 from .._types import (
     NOT_GIVEN,
     Body,
@@ -22,6 +15,7 @@ from .._types import (
     NotGiven,
 )
 from .._utils import maybe_transform
+from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..pagination import SyncPage, AsyncPage
@@ -30,18 +24,13 @@ from .._base_client import (
     make_request_options,
 )
 
-if TYPE_CHECKING:
-    from .._client import Increase, AsyncIncrease
-
 __all__ = ["Cards", "AsyncCards"]
 
 
 class Cards(SyncAPIResource):
-    with_raw_response: CardsWithRawResponse
-
-    def __init__(self, client: Increase) -> None:
-        super().__init__(client)
-        self.with_raw_response = CardsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> CardsWithRawResponse:
+        return CardsWithRawResponse(self)
 
     def create(
         self,
@@ -304,11 +293,9 @@ class Cards(SyncAPIResource):
 
 
 class AsyncCards(AsyncAPIResource):
-    with_raw_response: AsyncCardsWithRawResponse
-
-    def __init__(self, client: AsyncIncrease) -> None:
-        super().__init__(client)
-        self.with_raw_response = AsyncCardsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AsyncCardsWithRawResponse:
+        return AsyncCardsWithRawResponse(self)
 
     async def create(
         self,

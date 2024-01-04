@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
-
 import httpx
 
 from ..._types import (
@@ -14,6 +12,7 @@ from ..._types import (
     NotGiven,
 )
 from ..._utils import maybe_transform
+from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..._base_client import (
@@ -21,18 +20,13 @@ from ..._base_client import (
 )
 from ...types.simulations import WireTransferSimulation, wire_transfer_create_inbound_params
 
-if TYPE_CHECKING:
-    from ..._client import Increase, AsyncIncrease
-
 __all__ = ["WireTransfers", "AsyncWireTransfers"]
 
 
 class WireTransfers(SyncAPIResource):
-    with_raw_response: WireTransfersWithRawResponse
-
-    def __init__(self, client: Increase) -> None:
-        super().__init__(client)
-        self.with_raw_response = WireTransfersWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> WireTransfersWithRawResponse:
+        return WireTransfersWithRawResponse(self)
 
     def create_inbound(
         self,
@@ -156,11 +150,9 @@ class WireTransfers(SyncAPIResource):
 
 
 class AsyncWireTransfers(AsyncAPIResource):
-    with_raw_response: AsyncWireTransfersWithRawResponse
-
-    def __init__(self, client: AsyncIncrease) -> None:
-        super().__init__(client)
-        self.with_raw_response = AsyncWireTransfersWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AsyncWireTransfersWithRawResponse:
+        return AsyncWireTransfersWithRawResponse(self)
 
     async def create_inbound(
         self,

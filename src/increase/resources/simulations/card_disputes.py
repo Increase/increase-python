@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
 from typing_extensions import Literal
 
 import httpx
@@ -16,6 +15,7 @@ from ..._types import (
     NotGiven,
 )
 from ..._utils import maybe_transform
+from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..._base_client import (
@@ -23,18 +23,13 @@ from ..._base_client import (
 )
 from ...types.simulations import card_dispute_action_params
 
-if TYPE_CHECKING:
-    from ..._client import Increase, AsyncIncrease
-
 __all__ = ["CardDisputes", "AsyncCardDisputes"]
 
 
 class CardDisputes(SyncAPIResource):
-    with_raw_response: CardDisputesWithRawResponse
-
-    def __init__(self, client: Increase) -> None:
-        super().__init__(client)
-        self.with_raw_response = CardDisputesWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> CardDisputesWithRawResponse:
+        return CardDisputesWithRawResponse(self)
 
     def action(
         self,
@@ -98,11 +93,9 @@ class CardDisputes(SyncAPIResource):
 
 
 class AsyncCardDisputes(AsyncAPIResource):
-    with_raw_response: AsyncCardDisputesWithRawResponse
-
-    def __init__(self, client: AsyncIncrease) -> None:
-        super().__init__(client)
-        self.with_raw_response = AsyncCardDisputesWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AsyncCardDisputesWithRawResponse:
+        return AsyncCardDisputesWithRawResponse(self)
 
     async def action(
         self,

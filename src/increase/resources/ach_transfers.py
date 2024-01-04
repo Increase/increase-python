@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Union
+from typing import Union
 from datetime import date
 from typing_extensions import Literal
 
@@ -17,6 +17,7 @@ from .._types import (
     NotGiven,
 )
 from .._utils import maybe_transform
+from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..pagination import SyncPage, AsyncPage
@@ -25,18 +26,13 @@ from .._base_client import (
     make_request_options,
 )
 
-if TYPE_CHECKING:
-    from .._client import Increase, AsyncIncrease
-
 __all__ = ["ACHTransfers", "AsyncACHTransfers"]
 
 
 class ACHTransfers(SyncAPIResource):
-    with_raw_response: ACHTransfersWithRawResponse
-
-    def __init__(self, client: Increase) -> None:
-        super().__init__(client)
-        self.with_raw_response = ACHTransfersWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> ACHTransfersWithRawResponse:
+        return ACHTransfersWithRawResponse(self)
 
     def create(
         self,
@@ -357,11 +353,9 @@ class ACHTransfers(SyncAPIResource):
 
 
 class AsyncACHTransfers(AsyncAPIResource):
-    with_raw_response: AsyncACHTransfersWithRawResponse
-
-    def __init__(self, client: AsyncIncrease) -> None:
-        super().__init__(client)
-        self.with_raw_response = AsyncACHTransfersWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AsyncACHTransfersWithRawResponse:
+        return AsyncACHTransfersWithRawResponse(self)
 
     async def create(
         self,

@@ -2,15 +2,9 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
-
 import httpx
 
-from ..types import (
-    AccountTransfer,
-    account_transfer_list_params,
-    account_transfer_create_params,
-)
+from ..types import AccountTransfer, account_transfer_list_params, account_transfer_create_params
 from .._types import (
     NOT_GIVEN,
     Body,
@@ -19,6 +13,7 @@ from .._types import (
     NotGiven,
 )
 from .._utils import maybe_transform
+from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..pagination import SyncPage, AsyncPage
@@ -27,18 +22,13 @@ from .._base_client import (
     make_request_options,
 )
 
-if TYPE_CHECKING:
-    from .._client import Increase, AsyncIncrease
-
 __all__ = ["AccountTransfers", "AsyncAccountTransfers"]
 
 
 class AccountTransfers(SyncAPIResource):
-    with_raw_response: AccountTransfersWithRawResponse
-
-    def __init__(self, client: Increase) -> None:
-        super().__init__(client)
-        self.with_raw_response = AccountTransfersWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AccountTransfersWithRawResponse:
+        return AccountTransfersWithRawResponse(self)
 
     def create(
         self,
@@ -282,11 +272,9 @@ class AccountTransfers(SyncAPIResource):
 
 
 class AsyncAccountTransfers(AsyncAPIResource):
-    with_raw_response: AsyncAccountTransfersWithRawResponse
-
-    def __init__(self, client: AsyncIncrease) -> None:
-        super().__init__(client)
-        self.with_raw_response = AsyncAccountTransfersWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AsyncAccountTransfersWithRawResponse:
+        return AsyncAccountTransfersWithRawResponse(self)
 
     async def create(
         self,

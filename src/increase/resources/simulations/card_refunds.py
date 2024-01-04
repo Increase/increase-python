@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
-
 import httpx
 
 from ...types import Transaction
@@ -15,6 +13,7 @@ from ..._types import (
     NotGiven,
 )
 from ..._utils import maybe_transform
+from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..._base_client import (
@@ -22,18 +21,13 @@ from ..._base_client import (
 )
 from ...types.simulations import card_refund_create_params
 
-if TYPE_CHECKING:
-    from ..._client import Increase, AsyncIncrease
-
 __all__ = ["CardRefunds", "AsyncCardRefunds"]
 
 
 class CardRefunds(SyncAPIResource):
-    with_raw_response: CardRefundsWithRawResponse
-
-    def __init__(self, client: Increase) -> None:
-        super().__init__(client)
-        self.with_raw_response = CardRefundsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> CardRefundsWithRawResponse:
+        return CardRefundsWithRawResponse(self)
 
     def create(
         self,
@@ -81,11 +75,9 @@ class CardRefunds(SyncAPIResource):
 
 
 class AsyncCardRefunds(AsyncAPIResource):
-    with_raw_response: AsyncCardRefundsWithRawResponse
-
-    def __init__(self, client: AsyncIncrease) -> None:
-        super().__init__(client)
-        self.with_raw_response = AsyncCardRefundsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AsyncCardRefundsWithRawResponse:
+        return AsyncCardRefundsWithRawResponse(self)
 
     async def create(
         self,

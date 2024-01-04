@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
-
 import httpx
 
 from ...types import Document
@@ -15,6 +13,7 @@ from ..._types import (
     NotGiven,
 )
 from ..._utils import maybe_transform
+from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..._base_client import (
@@ -22,18 +21,13 @@ from ..._base_client import (
 )
 from ...types.simulations import document_create_params
 
-if TYPE_CHECKING:
-    from ..._client import Increase, AsyncIncrease
-
 __all__ = ["Documents", "AsyncDocuments"]
 
 
 class Documents(SyncAPIResource):
-    with_raw_response: DocumentsWithRawResponse
-
-    def __init__(self, client: Increase) -> None:
-        super().__init__(client)
-        self.with_raw_response = DocumentsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> DocumentsWithRawResponse:
+        return DocumentsWithRawResponse(self)
 
     def create(
         self,
@@ -78,11 +72,9 @@ class Documents(SyncAPIResource):
 
 
 class AsyncDocuments(AsyncAPIResource):
-    with_raw_response: AsyncDocumentsWithRawResponse
-
-    def __init__(self, client: AsyncIncrease) -> None:
-        super().__init__(client)
-        self.with_raw_response = AsyncDocumentsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AsyncDocumentsWithRawResponse:
+        return AsyncDocumentsWithRawResponse(self)
 
     async def create(
         self,
