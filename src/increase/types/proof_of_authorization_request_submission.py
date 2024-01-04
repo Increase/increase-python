@@ -19,16 +19,16 @@ class ProofOfAuthorizationRequestSubmission(BaseModel):
     authorized_at: datetime
     """Time of authorization."""
 
-    authorizer_company: Optional[str]
+    authorizer_company: Optional[str] = None
     """Company of the authorizer."""
 
-    authorizer_email: Optional[str]
+    authorizer_email: Optional[str] = None
     """Email of the authorizer."""
 
-    authorizer_ip_address: Optional[str]
+    authorizer_ip_address: Optional[str] = None
     """IP address of the authorizer."""
 
-    authorizer_name: Optional[str]
+    authorizer_name: Optional[str] = None
     """Name of the authorizer."""
 
     created_at: datetime

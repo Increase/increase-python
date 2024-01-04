@@ -16,7 +16,7 @@ class Approval(BaseModel):
     the transfer was approved.
     """
 
-    approved_by: Optional[str]
+    approved_by: Optional[str] = None
     """
     If the Transfer was approved by a user in the dashboard, the email address of
     that user.
@@ -30,7 +30,7 @@ class Cancellation(BaseModel):
     the Transfer was canceled.
     """
 
-    canceled_by: Optional[str]
+    canceled_by: Optional[str] = None
     """
     If the Transfer was canceled by a user in the dashboard, the email address of
     that user.
@@ -52,7 +52,7 @@ class Reversal(BaseModel):
     The description on the reversal message from Fedwire, set by the reversing bank.
     """
 
-    financial_institution_to_financial_institution_information: Optional[str]
+    financial_institution_to_financial_institution_information: Optional[str] = None
     """Additional financial institution information included in the wire reversal."""
 
     input_cycle_date: date
@@ -71,7 +71,7 @@ class Reversal(BaseModel):
     input_source: str
     """The Fedwire input source identifier."""
 
-    originator_routing_number: Optional[str]
+    originator_routing_number: Optional[str] = None
     """
     The American Banking Association (ABA) routing number of the bank originating
     the transfer.
@@ -92,7 +92,7 @@ class Reversal(BaseModel):
     previous_message_input_source: str
     """The Fedwire input source identifier for the wire transfer that was reversed."""
 
-    receiver_financial_institution_information: Optional[str]
+    receiver_financial_institution_information: Optional[str] = None
     """
     Information included in the wire reversal for the receiving financial
     institution.
@@ -126,25 +126,25 @@ class WireTransfer(BaseModel):
     amount: int
     """The transfer amount in USD cents."""
 
-    approval: Optional[Approval]
+    approval: Optional[Approval] = None
     """
     If your account requires approvals for transfers and the transfer was approved,
     this will contain details of the approval.
     """
 
-    beneficiary_address_line1: Optional[str]
+    beneficiary_address_line1: Optional[str] = None
     """The beneficiary's address line 1."""
 
-    beneficiary_address_line2: Optional[str]
+    beneficiary_address_line2: Optional[str] = None
     """The beneficiary's address line 2."""
 
-    beneficiary_address_line3: Optional[str]
+    beneficiary_address_line3: Optional[str] = None
     """The beneficiary's address line 3."""
 
-    beneficiary_name: Optional[str]
+    beneficiary_name: Optional[str] = None
     """The beneficiary's name."""
 
-    cancellation: Optional[Cancellation]
+    cancellation: Optional[Cancellation] = None
     """
     If your account requires approvals for transfers and the transfer was not
     approved, this will contain details of the cancellation.
@@ -169,16 +169,16 @@ class WireTransfer(BaseModel):
     - `USD` - US Dollar (USD)
     """
 
-    external_account_id: Optional[str]
+    external_account_id: Optional[str] = None
     """The identifier of the External Account the transfer was made to, if any."""
 
-    message_to_recipient: Optional[str]
+    message_to_recipient: Optional[str] = None
     """The message that will show on the recipient's bank statement."""
 
     network: Literal["wire"]
     """The transfer's network."""
 
-    pending_transaction_id: Optional[str]
+    pending_transaction_id: Optional[str] = None
     """The ID for the pending transaction representing the transfer.
 
     A pending transaction is created when the transfer
@@ -186,7 +186,7 @@ class WireTransfer(BaseModel):
     by someone else in your organization.
     """
 
-    reversal: Optional[Reversal]
+    reversal: Optional[Reversal] = None
     """If your transfer is reversed, this will contain details of the reversal."""
 
     routing_number: str
@@ -207,13 +207,13 @@ class WireTransfer(BaseModel):
     - `pending_creating` - The transfer is pending creation.
     """
 
-    submission: Optional[Submission]
+    submission: Optional[Submission] = None
     """
     After the transfer is submitted to Fedwire, this will contain supplemental
     details.
     """
 
-    transaction_id: Optional[str]
+    transaction_id: Optional[str] = None
     """The ID for the transaction funding the transfer."""
 
     type: Literal["wire_transfer"]
@@ -222,5 +222,5 @@ class WireTransfer(BaseModel):
     For this resource it will always be `wire_transfer`.
     """
 
-    unique_identifier: Optional[str]
+    unique_identifier: Optional[str] = None
     """The unique identifier you chose for this transfer."""

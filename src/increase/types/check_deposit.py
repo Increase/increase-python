@@ -19,7 +19,7 @@ class DepositAcceptance(BaseModel):
     For dollars, for example, this is cents.
     """
 
-    auxiliary_on_us: Optional[str]
+    auxiliary_on_us: Optional[str] = None
     """An additional line of metadata printed on the check.
 
     This typically includes the check number for business checks.
@@ -44,7 +44,7 @@ class DepositAcceptance(BaseModel):
     routing_number: str
     """The routing number printed on the check."""
 
-    serial_number: Optional[str]
+    serial_number: Optional[str] = None
     """The check serial number, if present, for consumer checks.
 
     For business checks, the serial number is usually in the `auxiliary_on_us`
@@ -227,7 +227,7 @@ class CheckDeposit(BaseModel):
     For dollars, for example, this is cents.
     """
 
-    back_image_file_id: Optional[str]
+    back_image_file_id: Optional[str] = None
     """The ID for the File containing the image of the back of the check."""
 
     created_at: datetime
@@ -247,25 +247,25 @@ class CheckDeposit(BaseModel):
     - `USD` - US Dollar (USD)
     """
 
-    deposit_acceptance: Optional[DepositAcceptance]
+    deposit_acceptance: Optional[DepositAcceptance] = None
     """
     If your deposit is successfully parsed and accepted by Increase, this will
     contain details of the parsed check.
     """
 
-    deposit_rejection: Optional[DepositRejection]
+    deposit_rejection: Optional[DepositRejection] = None
     """
     If your deposit is rejected by Increase, this will contain details as to why it
     was rejected.
     """
 
-    deposit_return: Optional[DepositReturn]
+    deposit_return: Optional[DepositReturn] = None
     """
     If your deposit is returned, this will contain details as to why it was
     returned.
     """
 
-    deposit_submission: Optional[DepositSubmission]
+    deposit_submission: Optional[DepositSubmission] = None
     """After the check is parsed, it is submitted to the Check21 network for
     processing.
 
@@ -284,7 +284,7 @@ class CheckDeposit(BaseModel):
     - `returned` - The Check Deposit has been returned.
     """
 
-    transaction_id: Optional[str]
+    transaction_id: Optional[str] = None
     """The ID for the Transaction created by the deposit."""
 
     type: Literal["check_deposit"]

@@ -24,7 +24,7 @@ class Balance(BaseModel):
     bank: str
     """The name of the bank holding these funds."""
 
-    bank_location: Optional[BalanceBankLocation]
+    bank_location: Optional[BalanceBankLocation] = None
     """The primary location of the bank."""
 
     fdic_certificate_number: str

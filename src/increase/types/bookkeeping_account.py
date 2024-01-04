@@ -12,17 +12,17 @@ class BookkeepingAccount(BaseModel):
     id: str
     """The account identifier."""
 
-    account_id: Optional[str]
+    account_id: Optional[str] = None
     """The API Account associated with this bookkeeping account."""
 
-    compliance_category: Optional[Literal["commingled_cash", "customer_balance"]]
+    compliance_category: Optional[Literal["commingled_cash", "customer_balance"]] = None
     """The compliance category of the account.
 
     - `commingled_cash` - A cash in an commingled Increase Account.
     - `customer_balance` - A customer balance.
     """
 
-    entity_id: Optional[str]
+    entity_id: Optional[str] = None
     """The Entity associated with this bookkeeping account."""
 
     name: str

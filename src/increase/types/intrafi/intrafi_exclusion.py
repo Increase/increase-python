@@ -19,10 +19,10 @@ class IntrafiExclusion(BaseModel):
     entity_id: str
     """The entity for which this institution is excluded."""
 
-    excluded_at: Optional[datetime]
+    excluded_at: Optional[datetime] = None
     """When this was exclusion was confirmed by IntraFi."""
 
-    fdic_certificate_number: Optional[str]
+    fdic_certificate_number: Optional[str] = None
     """
     The Federal Deposit Insurance Corporation's certificate number for the
     institution.
@@ -36,7 +36,7 @@ class IntrafiExclusion(BaseModel):
     - `archived` - The exclusion has been removed from the IntraFi network.
     """
 
-    submitted_at: Optional[datetime]
+    submitted_at: Optional[datetime] = None
     """When this was exclusion was submitted to IntraFi by Increase."""
 
     type: Literal["intrafi_exclusion"]

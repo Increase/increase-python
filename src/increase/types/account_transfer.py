@@ -16,7 +16,7 @@ class Approval(BaseModel):
     the transfer was approved.
     """
 
-    approved_by: Optional[str]
+    approved_by: Optional[str] = None
     """
     If the Transfer was approved by a user in the dashboard, the email address of
     that user.
@@ -30,7 +30,7 @@ class Cancellation(BaseModel):
     the Transfer was canceled.
     """
 
-    canceled_by: Optional[str]
+    canceled_by: Optional[str] = None
     """
     If the Transfer was canceled by a user in the dashboard, the email address of
     that user.
@@ -50,13 +50,13 @@ class AccountTransfer(BaseModel):
     For dollars, for example, this is cents.
     """
 
-    approval: Optional[Approval]
+    approval: Optional[Approval] = None
     """
     If your account requires approvals for transfers and the transfer was approved,
     this will contain details of the approval.
     """
 
-    cancellation: Optional[Cancellation]
+    cancellation: Optional[Cancellation] = None
     """
     If your account requires approvals for transfers and the transfer was not
     approved, this will contain details of the cancellation.
@@ -87,13 +87,13 @@ class AccountTransfer(BaseModel):
     destination_account_id: str
     """The destination account's identifier."""
 
-    destination_transaction_id: Optional[str]
+    destination_transaction_id: Optional[str] = None
     """The ID for the transaction receiving the transfer."""
 
     network: Literal["account"]
     """The transfer's network."""
 
-    pending_transaction_id: Optional[str]
+    pending_transaction_id: Optional[str] = None
     """The ID for the pending transaction representing the transfer.
 
     A pending transaction is created when the transfer
@@ -109,7 +109,7 @@ class AccountTransfer(BaseModel):
     - `complete` - The transfer has been completed.
     """
 
-    transaction_id: Optional[str]
+    transaction_id: Optional[str] = None
     """The ID for the transaction funding the transfer."""
 
     type: Literal["account_transfer"]
@@ -118,5 +118,5 @@ class AccountTransfer(BaseModel):
     For this resource it will always be `account_transfer`.
     """
 
-    unique_identifier: Optional[str]
+    unique_identifier: Optional[str] = None
     """The unique identifier you chose for this transfer."""

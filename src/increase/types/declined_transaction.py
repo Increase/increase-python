@@ -34,10 +34,10 @@ class SourceACHDecline(BaseModel):
     For dollars, for example, this is cents.
     """
 
-    originator_company_descriptive_date: Optional[str]
+    originator_company_descriptive_date: Optional[str] = None
     """The descriptive date of the transfer."""
 
-    originator_company_discretionary_data: Optional[str]
+    originator_company_discretionary_data: Optional[str] = None
     """The additional information included with the transfer."""
 
     originator_company_id: str
@@ -87,10 +87,10 @@ class SourceACHDecline(BaseModel):
     - `user_initiated` - The user initiated the decline.
     """
 
-    receiver_id_number: Optional[str]
+    receiver_id_number: Optional[str] = None
     """The id of the receiver of the transfer."""
 
-    receiver_name: Optional[str]
+    receiver_name: Optional[str] = None
     """The name of the receiver of the transfer."""
 
     trace_number: str
@@ -115,7 +115,7 @@ class SourceCardDeclineNetworkDetailsVisa(BaseModel):
             "non_authenticated_security_transaction",
             "non_secure_transaction",
         ]
-    ]
+    ] = None
     """
     For electronic commerce transactions, this identifies the level of security used
     in obtaining the customer's payment credential. For mail or telephone order
@@ -165,7 +165,7 @@ class SourceCardDeclineNetworkDetailsVisa(BaseModel):
             "contactless_magnetic_stripe",
             "integrated_circuit_card_no_cvv",
         ]
-    ]
+    ] = None
     """
     The method used to enter the cardholder's primary account number and card
     expiration date.
@@ -193,25 +193,25 @@ class SourceCardDeclineNetworkDetails(BaseModel):
     - `visa` - Visa
     """
 
-    visa: Optional[SourceCardDeclineNetworkDetailsVisa]
+    visa: Optional[SourceCardDeclineNetworkDetailsVisa] = None
     """Fields specific to the `visa` network."""
 
 
 class SourceCardDeclineNetworkIdentifiers(BaseModel):
-    retrieval_reference_number: Optional[str]
+    retrieval_reference_number: Optional[str] = None
     """A life-cycle identifier used across e.g., an authorization and a reversal.
 
     Expected to be unique per acquirer within a window of time. For some card
     networks the retrieval reference number includes the trace counter.
     """
 
-    trace_number: Optional[str]
+    trace_number: Optional[str] = None
     """A counter used to verify an individual authorization.
 
     Expected to be unique per acquirer within a window of time.
     """
 
-    transaction_id: Optional[str]
+    transaction_id: Optional[str] = None
     """
     A globally unique transaction identifier provided by the card network, used
     across multiple life-cycle requests.
@@ -230,19 +230,19 @@ class SourceCardDeclineVerificationCardVerificationCode(BaseModel):
 
 
 class SourceCardDeclineVerificationCardholderAddress(BaseModel):
-    actual_line1: Optional[str]
+    actual_line1: Optional[str] = None
     """Line 1 of the address on file for the cardholder."""
 
-    actual_postal_code: Optional[str]
+    actual_postal_code: Optional[str] = None
     """The postal code of the address on file for the cardholder."""
 
-    provided_line1: Optional[str]
+    provided_line1: Optional[str] = None
     """
     The cardholder address line 1 provided for verification in the authorization
     request.
     """
 
-    provided_postal_code: Optional[str]
+    provided_postal_code: Optional[str] = None
     """The postal code provided for verification in the authorization request."""
 
     result: Literal[
@@ -291,7 +291,7 @@ class SourceCardDecline(BaseModel):
     For dollars, for example, this is cents.
     """
 
-    card_payment_id: Optional[str]
+    card_payment_id: Optional[str] = None
     """The ID of the Card Payment this transaction belongs to."""
 
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
@@ -307,7 +307,7 @@ class SourceCardDecline(BaseModel):
     - `USD` - US Dollar (USD)
     """
 
-    digital_wallet_token_id: Optional[str]
+    digital_wallet_token_id: Optional[str] = None
     """
     If the authorization was made via a Digital Wallet Token (such as an Apple Pay
     purchase), the identifier of the token that was used.
@@ -319,22 +319,22 @@ class SourceCardDecline(BaseModel):
     is transacting with.
     """
 
-    merchant_category_code: Optional[str]
+    merchant_category_code: Optional[str] = None
     """
     The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
     card is transacting with.
     """
 
-    merchant_city: Optional[str]
+    merchant_city: Optional[str] = None
     """The city the merchant resides in."""
 
-    merchant_country: Optional[str]
+    merchant_country: Optional[str] = None
     """The country the merchant resides in."""
 
     merchant_descriptor: str
     """The merchant descriptor of the merchant the card is transacting with."""
 
-    merchant_state: Optional[str]
+    merchant_state: Optional[str] = None
     """The state the merchant resides in."""
 
     network_details: SourceCardDeclineNetworkDetails
@@ -343,7 +343,7 @@ class SourceCardDecline(BaseModel):
     network_identifiers: SourceCardDeclineNetworkIdentifiers
     """Network-specific identifiers for a specific request or transaction."""
 
-    physical_card_id: Optional[str]
+    physical_card_id: Optional[str] = None
     """
     If the authorization was made in-person with a physical card, the Physical Card
     that was used.
@@ -370,7 +370,7 @@ class SourceCardDecline(BaseModel):
       voucher authorization, where funds are credited to the cardholder.
     """
 
-    real_time_decision_id: Optional[str]
+    real_time_decision_id: Optional[str] = None
     """
     The identifier of the Real-Time Decision sent to approve or decline this
     transaction.
@@ -427,20 +427,20 @@ class SourceCheckDecline(BaseModel):
     For dollars, for example, this is cents.
     """
 
-    auxiliary_on_us: Optional[str]
+    auxiliary_on_us: Optional[str] = None
     """
     A computer-readable number printed on the MICR line of business checks, usually
     the check number. This is useful for positive pay checks, but can be unreliably
     transmitted by the bank of first deposit.
     """
 
-    back_image_file_id: Optional[str]
+    back_image_file_id: Optional[str] = None
     """
     The identifier of the API File object containing an image of the back of the
     declined check.
     """
 
-    front_image_file_id: Optional[str]
+    front_image_file_id: Optional[str] = None
     """
     The identifier of the API File object containing an image of the front of the
     declined check.
@@ -532,7 +532,7 @@ class SourceInboundRealTimePaymentsTransferDecline(BaseModel):
       Real-Time Payments transfers.
     """
 
-    remittance_information: Optional[str]
+    remittance_information: Optional[str] = None
     """Additional information included with the transfer."""
 
     transaction_identification: str
@@ -570,7 +570,7 @@ class SourceInternationalACHDecline(BaseModel):
       USD. There is no foreign exchange conversion.
     """
 
-    foreign_exchange_reference: Optional[str]
+    foreign_exchange_reference: Optional[str] = None
     """
     Depending on the `foreign_exchange_reference_indicator`, an exchange rate or a
     reference to a well-known rate.
@@ -594,7 +594,7 @@ class SourceInternationalACHDecline(BaseModel):
     For dollars, for example, this is cents.
     """
 
-    foreign_trace_number: Optional[str]
+    foreign_trace_number: Optional[str] = None
     """A reference number in the foreign banking infrastructure."""
 
     international_transaction_type_code: Literal[
@@ -705,19 +705,19 @@ class SourceInternationalACHDecline(BaseModel):
     originator_name: str
     """Either the name of the originator or an intermediary money transmitter."""
 
-    originator_postal_code: Optional[str]
+    originator_postal_code: Optional[str] = None
     """A portion of the originator address. This may be incomplete."""
 
-    originator_state_or_province: Optional[str]
+    originator_state_or_province: Optional[str] = None
     """A portion of the originator address. This may be incomplete."""
 
     originator_street_address: str
     """A portion of the originator address. This may be incomplete."""
 
-    payment_related_information: Optional[str]
+    payment_related_information: Optional[str] = None
     """A description field set by the originator."""
 
-    payment_related_information2: Optional[str]
+    payment_related_information2: Optional[str] = None
     """A description field set by the originator."""
 
     receiver_city: str
@@ -730,13 +730,13 @@ class SourceInternationalACHDecline(BaseModel):
     country code of the receiver country.
     """
 
-    receiver_identification_number: Optional[str]
+    receiver_identification_number: Optional[str] = None
     """An identification number the originator uses for the receiver."""
 
-    receiver_postal_code: Optional[str]
+    receiver_postal_code: Optional[str] = None
     """A portion of the receiver address. This may be incomplete."""
 
-    receiver_state_or_province: Optional[str]
+    receiver_state_or_province: Optional[str] = None
     """A portion of the receiver address. This may be incomplete."""
 
     receiver_street_address: str
@@ -792,59 +792,59 @@ class SourceWireDecline(BaseModel):
     For dollars, for example, this is cents.
     """
 
-    beneficiary_address_line1: Optional[str]
+    beneficiary_address_line1: Optional[str] = None
     """A free-form address field set by the sender."""
 
-    beneficiary_address_line2: Optional[str]
+    beneficiary_address_line2: Optional[str] = None
     """A free-form address field set by the sender."""
 
-    beneficiary_address_line3: Optional[str]
+    beneficiary_address_line3: Optional[str] = None
     """A free-form address field set by the sender."""
 
-    beneficiary_name: Optional[str]
+    beneficiary_name: Optional[str] = None
     """A name set by the sender."""
 
-    beneficiary_reference: Optional[str]
+    beneficiary_reference: Optional[str] = None
     """A free-form reference string set by the sender, to help identify the transfer."""
 
     description: str
     """An Increase-constructed description of the declined transaction."""
 
-    input_message_accountability_data: Optional[str]
+    input_message_accountability_data: Optional[str] = None
     """
     A unique identifier available to the originating and receiving banks, commonly
     abbreviated as IMAD. It is created when the wire is submitted to the Fedwire
     service and is helpful when debugging wires with the originating bank.
     """
 
-    originator_address_line1: Optional[str]
+    originator_address_line1: Optional[str] = None
     """The address of the wire originator, set by the sending bank."""
 
-    originator_address_line2: Optional[str]
+    originator_address_line2: Optional[str] = None
     """The address of the wire originator, set by the sending bank."""
 
-    originator_address_line3: Optional[str]
+    originator_address_line3: Optional[str] = None
     """The address of the wire originator, set by the sending bank."""
 
-    originator_name: Optional[str]
+    originator_name: Optional[str] = None
     """The originator of the wire, set by the sending bank."""
 
-    originator_routing_number: Optional[str]
+    originator_routing_number: Optional[str] = None
     """
     The American Banking Association (ABA) routing number of the bank originating
     the transfer.
     """
 
-    originator_to_beneficiary_information_line1: Optional[str]
+    originator_to_beneficiary_information_line1: Optional[str] = None
     """A free-form message set by the wire originator."""
 
-    originator_to_beneficiary_information_line2: Optional[str]
+    originator_to_beneficiary_information_line2: Optional[str] = None
     """A free-form message set by the wire originator."""
 
-    originator_to_beneficiary_information_line3: Optional[str]
+    originator_to_beneficiary_information_line3: Optional[str] = None
     """A free-form message set by the wire originator."""
 
-    originator_to_beneficiary_information_line4: Optional[str]
+    originator_to_beneficiary_information_line4: Optional[str] = None
     """A free-form message set by the wire originator."""
 
     reason: Literal[
@@ -868,14 +868,14 @@ class SourceWireDecline(BaseModel):
 
 
 class Source(BaseModel):
-    ach_decline: Optional[SourceACHDecline]
+    ach_decline: Optional[SourceACHDecline] = None
     """An ACH Decline object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `ach_decline`.
     """
 
-    card_decline: Optional[SourceCardDecline]
+    card_decline: Optional[SourceCardDecline] = None
     """A Card Decline object.
 
     This field will be present in the JSON response if and only if `category` is
@@ -912,28 +912,28 @@ class Source(BaseModel):
       reason.
     """
 
-    check_decline: Optional[SourceCheckDecline]
+    check_decline: Optional[SourceCheckDecline] = None
     """A Check Decline object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `check_decline`.
     """
 
-    inbound_real_time_payments_transfer_decline: Optional[SourceInboundRealTimePaymentsTransferDecline]
+    inbound_real_time_payments_transfer_decline: Optional[SourceInboundRealTimePaymentsTransferDecline] = None
     """An Inbound Real-Time Payments Transfer Decline object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `inbound_real_time_payments_transfer_decline`.
     """
 
-    international_ach_decline: Optional[SourceInternationalACHDecline]
+    international_ach_decline: Optional[SourceInternationalACHDecline] = None
     """An International ACH Decline object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `international_ach_decline`.
     """
 
-    wire_decline: Optional[SourceWireDecline]
+    wire_decline: Optional[SourceWireDecline] = None
     """A Wire Decline object.
 
     This field will be present in the JSON response if and only if `category` is
@@ -977,13 +977,13 @@ class DeclinedTransaction(BaseModel):
     description: str
     """This is the description the vendor provides."""
 
-    route_id: Optional[str]
+    route_id: Optional[str] = None
     """The identifier for the route this Declined Transaction came through.
 
     Routes are things like cards and ACH details.
     """
 
-    route_type: Optional[Literal["account_number", "card"]]
+    route_type: Optional[Literal["account_number", "card"]] = None
     """The type of the route this Declined Transaction came through.
 
     - `account_number` - An Account Number.

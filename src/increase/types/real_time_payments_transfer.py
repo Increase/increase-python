@@ -16,7 +16,7 @@ class Approval(BaseModel):
     the transfer was approved.
     """
 
-    approved_by: Optional[str]
+    approved_by: Optional[str] = None
     """
     If the Transfer was approved by a user in the dashboard, the email address of
     that user.
@@ -30,7 +30,7 @@ class Cancellation(BaseModel):
     the Transfer was canceled.
     """
 
-    canceled_by: Optional[str]
+    canceled_by: Optional[str] = None
     """
     If the Transfer was canceled by a user in the dashboard, the email address of
     that user.
@@ -38,7 +38,7 @@ class Cancellation(BaseModel):
 
 
 class Rejection(BaseModel):
-    reject_reason_additional_information: Optional[str]
+    reject_reason_additional_information: Optional[str] = None
     """
     Additional information about the rejection provided by the recipient bank when
     the `reject_reason_code` is `NARRATIVE`.
@@ -121,7 +121,7 @@ class Rejection(BaseModel):
     - `other` - Some other error or issue has occurred.
     """
 
-    rejected_at: Optional[datetime]
+    rejected_at: Optional[datetime] = None
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the transfer was rejected.
@@ -129,7 +129,7 @@ class Rejection(BaseModel):
 
 
 class Submission(BaseModel):
-    submitted_at: Optional[datetime]
+    submitted_at: Optional[datetime] = None
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the transfer was submitted to The Clearing House.
@@ -149,13 +149,13 @@ class RealTimePaymentsTransfer(BaseModel):
     amount: int
     """The transfer amount in USD cents."""
 
-    approval: Optional[Approval]
+    approval: Optional[Approval] = None
     """
     If your account requires approvals for transfers and the transfer was approved,
     this will contain details of the approval.
     """
 
-    cancellation: Optional[Cancellation]
+    cancellation: Optional[Cancellation] = None
     """
     If your account requires approvals for transfers and the transfer was not
     approved, this will contain details of the cancellation.
@@ -183,7 +183,7 @@ class RealTimePaymentsTransfer(BaseModel):
     - `USD` - US Dollar (USD)
     """
 
-    debtor_name: Optional[str]
+    debtor_name: Optional[str] = None
     """The name of the transfer's sender.
 
     If not provided, the account's entity name will be used.
@@ -198,10 +198,10 @@ class RealTimePaymentsTransfer(BaseModel):
     (RTN).
     """
 
-    external_account_id: Optional[str]
+    external_account_id: Optional[str] = None
     """The identifier of the External Account the transfer was made to, if any."""
 
-    pending_transaction_id: Optional[str]
+    pending_transaction_id: Optional[str] = None
     """The ID for the pending transaction representing the transfer.
 
     A pending transaction is created when the transfer
@@ -209,7 +209,7 @@ class RealTimePaymentsTransfer(BaseModel):
     by someone else in your organization.
     """
 
-    rejection: Optional[Rejection]
+    rejection: Optional[Rejection] = None
     """
     If the transfer is rejected by Real-Time Payments or the destination financial
     institution, this will contain supplemental details.
@@ -238,13 +238,13 @@ class RealTimePaymentsTransfer(BaseModel):
       operator.
     """
 
-    submission: Optional[Submission]
+    submission: Optional[Submission] = None
     """
     After the transfer is submitted to Real-Time Payments, this will contain
     supplemental details.
     """
 
-    transaction_id: Optional[str]
+    transaction_id: Optional[str] = None
     """The Transaction funding the transfer once it is complete."""
 
     type: Literal["real_time_payments_transfer"]
@@ -253,13 +253,13 @@ class RealTimePaymentsTransfer(BaseModel):
     For this resource it will always be `real_time_payments_transfer`.
     """
 
-    ultimate_creditor_name: Optional[str]
+    ultimate_creditor_name: Optional[str] = None
     """The name of the party on whose behalf the creditor is receiving the payment."""
 
-    ultimate_debtor_name: Optional[str]
+    ultimate_debtor_name: Optional[str] = None
     """
     The name of the the party on whose behalf the debtor is instructing the payment.
     """
 
-    unique_identifier: Optional[str]
+    unique_identifier: Optional[str] = None
     """The unique identifier you chose for this transfer."""

@@ -318,19 +318,19 @@ class ACHPrenotification(BaseModel):
     account_number: str
     """The destination account number."""
 
-    addendum: Optional[str]
+    addendum: Optional[str] = None
     """Additional information for the recipient."""
 
-    company_descriptive_date: Optional[str]
+    company_descriptive_date: Optional[str] = None
     """The description of the date of the notification."""
 
-    company_discretionary_data: Optional[str]
+    company_discretionary_data: Optional[str] = None
     """Optional data associated with the notification."""
 
-    company_entry_description: Optional[str]
+    company_entry_description: Optional[str] = None
     """The description of the notification."""
 
-    company_name: Optional[str]
+    company_name: Optional[str] = None
     """The name by which you know the company."""
 
     created_at: datetime
@@ -339,14 +339,14 @@ class ACHPrenotification(BaseModel):
     the prenotification was created.
     """
 
-    credit_debit_indicator: Optional[Literal["credit", "debit"]]
+    credit_debit_indicator: Optional[Literal["credit", "debit"]] = None
     """If the notification is for a future credit or debit.
 
     - `credit` - The Prenotification is for an anticipated credit.
     - `debit` - The Prenotification is for an anticipated debit.
     """
 
-    effective_date: Optional[datetime]
+    effective_date: Optional[datetime] = None
     """
     The effective date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
     """
@@ -357,7 +357,7 @@ class ACHPrenotification(BaseModel):
     details, this will contain those details.
     """
 
-    prenotification_return: Optional[PrenotificationReturn]
+    prenotification_return: Optional[PrenotificationReturn] = None
     """If your prenotification is returned, this will contain details of the return."""
 
     routing_number: str

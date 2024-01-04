@@ -183,16 +183,16 @@ class RealTimePaymentsRequestForPayment(BaseModel):
     The requestee will not be able to pay after this date.
     """
 
-    fulfillment_transaction_id: Optional[str]
+    fulfillment_transaction_id: Optional[str] = None
     """The transaction that fulfilled this request."""
 
-    refusal: Optional[Refusal]
+    refusal: Optional[Refusal] = None
     """
     If the request for payment is refused by the destination financial institution
     or the receiving customer, this will contain supplemental details.
     """
 
-    rejection: Optional[Rejection]
+    rejection: Optional[Rejection] = None
     """
     If the request for payment is rejected by Real-Time Payments or the destination
     financial institution, this will contain supplemental details.
@@ -224,7 +224,7 @@ class RealTimePaymentsRequestForPayment(BaseModel):
     - `fulfilled` - The request for payment was fulfilled by the receiver.
     """
 
-    submission: Optional[Submission]
+    submission: Optional[Submission] = None
     """
     After the request for payment is submitted to Real-Time Payments, this will
     contain supplemental details.

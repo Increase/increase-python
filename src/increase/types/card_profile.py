@@ -30,13 +30,13 @@ class DigitalWallets(BaseModel):
     card_description: str
     """A user-facing description for the card itself."""
 
-    contact_email: Optional[str]
+    contact_email: Optional[str] = None
     """An email address the user can contact to receive support for their card."""
 
-    contact_phone: Optional[str]
+    contact_phone: Optional[str] = None
     """A phone number the user can contact to receive support for their card."""
 
-    contact_website: Optional[str]
+    contact_website: Optional[str] = None
     """A website the user can visit to view and receive support for their card."""
 
     issuer_name: str
@@ -47,16 +47,16 @@ class DigitalWallets(BaseModel):
 
 
 class PhysicalCards(BaseModel):
-    back_image_file_id: Optional[str]
+    back_image_file_id: Optional[str] = None
     """The identifier of the File containing the physical card's back image."""
 
-    carrier_image_file_id: Optional[str]
+    carrier_image_file_id: Optional[str] = None
     """The identifier of the File containing the physical card's carrier image."""
 
-    contact_phone: Optional[str]
+    contact_phone: Optional[str] = None
     """A phone number the user can contact to receive support for their card."""
 
-    front_image_file_id: Optional[str]
+    front_image_file_id: Optional[str] = None
     """The identifier of the File containing the physical card's front image."""
 
     status: Literal["not_eligible", "rejected", "pending_creating", "pending_reviewing", "pending_submitting", "active"]
@@ -97,7 +97,7 @@ class CardProfile(BaseModel):
     is_default: bool
     """Whether this Card Profile is the default for all cards in its Increase group."""
 
-    physical_cards: Optional[PhysicalCards]
+    physical_cards: Optional[PhysicalCards] = None
     """How physical cards should be designed and shipped."""
 
     status: Literal["pending", "rejected", "active", "archived"]
