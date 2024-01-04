@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
-
 import httpx
 
 from ..._types import (
@@ -14,6 +12,7 @@ from ..._types import (
     NotGiven,
 )
 from ..._utils import maybe_transform
+from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ...pagination import SyncPage, AsyncPage
@@ -21,24 +20,15 @@ from ..._base_client import (
     AsyncPaginator,
     make_request_options,
 )
-from ...types.intrafi import (
-    IntrafiAccountEnrollment,
-    account_enrollment_list_params,
-    account_enrollment_create_params,
-)
-
-if TYPE_CHECKING:
-    from ..._client import Increase, AsyncIncrease
+from ...types.intrafi import IntrafiAccountEnrollment, account_enrollment_list_params, account_enrollment_create_params
 
 __all__ = ["AccountEnrollments", "AsyncAccountEnrollments"]
 
 
 class AccountEnrollments(SyncAPIResource):
-    with_raw_response: AccountEnrollmentsWithRawResponse
-
-    def __init__(self, client: Increase) -> None:
-        super().__init__(client)
-        self.with_raw_response = AccountEnrollmentsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AccountEnrollmentsWithRawResponse:
+        return AccountEnrollmentsWithRawResponse(self)
 
     def create(
         self,
@@ -219,11 +209,9 @@ class AccountEnrollments(SyncAPIResource):
 
 
 class AsyncAccountEnrollments(AsyncAPIResource):
-    with_raw_response: AsyncAccountEnrollmentsWithRawResponse
-
-    def __init__(self, client: AsyncIncrease) -> None:
-        super().__init__(client)
-        self.with_raw_response = AsyncAccountEnrollmentsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AsyncAccountEnrollmentsWithRawResponse:
+        return AsyncAccountEnrollmentsWithRawResponse(self)
 
     async def create(
         self,

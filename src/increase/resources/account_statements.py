@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
-
 import httpx
 
 from ..types import AccountStatement, account_statement_list_params
@@ -15,6 +13,7 @@ from .._types import (
     NotGiven,
 )
 from .._utils import maybe_transform
+from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..pagination import SyncPage, AsyncPage
@@ -23,18 +22,13 @@ from .._base_client import (
     make_request_options,
 )
 
-if TYPE_CHECKING:
-    from .._client import Increase, AsyncIncrease
-
 __all__ = ["AccountStatements", "AsyncAccountStatements"]
 
 
 class AccountStatements(SyncAPIResource):
-    with_raw_response: AccountStatementsWithRawResponse
-
-    def __init__(self, client: Increase) -> None:
-        super().__init__(client)
-        self.with_raw_response = AccountStatementsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AccountStatementsWithRawResponse:
+        return AccountStatementsWithRawResponse(self)
 
     def retrieve(
         self,
@@ -125,11 +119,9 @@ class AccountStatements(SyncAPIResource):
 
 
 class AsyncAccountStatements(AsyncAPIResource):
-    with_raw_response: AsyncAccountStatementsWithRawResponse
-
-    def __init__(self, client: AsyncIncrease) -> None:
-        super().__init__(client)
-        self.with_raw_response = AsyncAccountStatementsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AsyncAccountStatementsWithRawResponse:
+        return AsyncAccountStatementsWithRawResponse(self)
 
     async def retrieve(
         self,

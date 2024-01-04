@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Union
+from typing import Union
 from datetime import datetime
 
 import httpx
@@ -15,28 +15,21 @@ from ..._types import (
     NotGiven,
 )
 from ..._utils import maybe_transform
+from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..._base_client import (
     make_request_options,
 )
-from ...types.simulations import (
-    InterestPaymentSimulationResult,
-    interest_payment_create_params,
-)
-
-if TYPE_CHECKING:
-    from ..._client import Increase, AsyncIncrease
+from ...types.simulations import InterestPaymentSimulationResult, interest_payment_create_params
 
 __all__ = ["InterestPayments", "AsyncInterestPayments"]
 
 
 class InterestPayments(SyncAPIResource):
-    with_raw_response: InterestPaymentsWithRawResponse
-
-    def __init__(self, client: Increase) -> None:
-        super().__init__(client)
-        self.with_raw_response = InterestPaymentsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> InterestPaymentsWithRawResponse:
+        return InterestPaymentsWithRawResponse(self)
 
     def create(
         self,
@@ -100,11 +93,9 @@ class InterestPayments(SyncAPIResource):
 
 
 class AsyncInterestPayments(AsyncAPIResource):
-    with_raw_response: AsyncInterestPaymentsWithRawResponse
-
-    def __init__(self, client: AsyncIncrease) -> None:
-        super().__init__(client)
-        self.with_raw_response = AsyncInterestPaymentsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AsyncInterestPaymentsWithRawResponse:
+        return AsyncInterestPaymentsWithRawResponse(self)
 
     async def create(
         self,

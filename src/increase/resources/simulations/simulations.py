@@ -2,10 +2,9 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
-
 from .cards import Cards, AsyncCards, CardsWithRawResponse, AsyncCardsWithRawResponse
 from .programs import Programs, AsyncPrograms, ProgramsWithRawResponse, AsyncProgramsWithRawResponse
+from ..._compat import cached_property
 from .documents import Documents, AsyncDocuments, DocumentsWithRawResponse, AsyncDocumentsWithRawResponse
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from .card_refunds import CardRefunds, AsyncCardRefunds, CardRefundsWithRawResponse, AsyncCardRefundsWithRawResponse
@@ -94,98 +93,163 @@ from .inbound_wire_drawdown_requests import (
     AsyncInboundWireDrawdownRequestsWithRawResponse,
 )
 
-if TYPE_CHECKING:
-    from ..._client import Increase, AsyncIncrease
-
 __all__ = ["Simulations", "AsyncSimulations"]
 
 
 class Simulations(SyncAPIResource):
-    account_transfers: AccountTransfers
-    account_statements: AccountStatements
-    ach_transfers: ACHTransfers
-    card_disputes: CardDisputes
-    card_profiles: CardProfiles
-    card_refunds: CardRefunds
-    check_transfers: CheckTransfers
-    documents: Documents
-    digital_wallet_token_requests: DigitalWalletTokenRequests
-    check_deposits: CheckDeposits
-    programs: Programs
-    inbound_wire_drawdown_requests: InboundWireDrawdownRequests
-    inbound_funds_holds: InboundFundsHolds
-    interest_payments: InterestPayments
-    wire_transfers: WireTransfers
-    cards: Cards
-    real_time_payments_transfers: RealTimePaymentsTransfers
-    physical_cards: PhysicalCards
-    with_raw_response: SimulationsWithRawResponse
+    @cached_property
+    def account_transfers(self) -> AccountTransfers:
+        return AccountTransfers(self._client)
 
-    def __init__(self, client: Increase) -> None:
-        super().__init__(client)
-        self.account_transfers = AccountTransfers(client)
-        self.account_statements = AccountStatements(client)
-        self.ach_transfers = ACHTransfers(client)
-        self.card_disputes = CardDisputes(client)
-        self.card_profiles = CardProfiles(client)
-        self.card_refunds = CardRefunds(client)
-        self.check_transfers = CheckTransfers(client)
-        self.documents = Documents(client)
-        self.digital_wallet_token_requests = DigitalWalletTokenRequests(client)
-        self.check_deposits = CheckDeposits(client)
-        self.programs = Programs(client)
-        self.inbound_wire_drawdown_requests = InboundWireDrawdownRequests(client)
-        self.inbound_funds_holds = InboundFundsHolds(client)
-        self.interest_payments = InterestPayments(client)
-        self.wire_transfers = WireTransfers(client)
-        self.cards = Cards(client)
-        self.real_time_payments_transfers = RealTimePaymentsTransfers(client)
-        self.physical_cards = PhysicalCards(client)
-        self.with_raw_response = SimulationsWithRawResponse(self)
+    @cached_property
+    def account_statements(self) -> AccountStatements:
+        return AccountStatements(self._client)
+
+    @cached_property
+    def ach_transfers(self) -> ACHTransfers:
+        return ACHTransfers(self._client)
+
+    @cached_property
+    def card_disputes(self) -> CardDisputes:
+        return CardDisputes(self._client)
+
+    @cached_property
+    def card_profiles(self) -> CardProfiles:
+        return CardProfiles(self._client)
+
+    @cached_property
+    def card_refunds(self) -> CardRefunds:
+        return CardRefunds(self._client)
+
+    @cached_property
+    def check_transfers(self) -> CheckTransfers:
+        return CheckTransfers(self._client)
+
+    @cached_property
+    def documents(self) -> Documents:
+        return Documents(self._client)
+
+    @cached_property
+    def digital_wallet_token_requests(self) -> DigitalWalletTokenRequests:
+        return DigitalWalletTokenRequests(self._client)
+
+    @cached_property
+    def check_deposits(self) -> CheckDeposits:
+        return CheckDeposits(self._client)
+
+    @cached_property
+    def programs(self) -> Programs:
+        return Programs(self._client)
+
+    @cached_property
+    def inbound_wire_drawdown_requests(self) -> InboundWireDrawdownRequests:
+        return InboundWireDrawdownRequests(self._client)
+
+    @cached_property
+    def inbound_funds_holds(self) -> InboundFundsHolds:
+        return InboundFundsHolds(self._client)
+
+    @cached_property
+    def interest_payments(self) -> InterestPayments:
+        return InterestPayments(self._client)
+
+    @cached_property
+    def wire_transfers(self) -> WireTransfers:
+        return WireTransfers(self._client)
+
+    @cached_property
+    def cards(self) -> Cards:
+        return Cards(self._client)
+
+    @cached_property
+    def real_time_payments_transfers(self) -> RealTimePaymentsTransfers:
+        return RealTimePaymentsTransfers(self._client)
+
+    @cached_property
+    def physical_cards(self) -> PhysicalCards:
+        return PhysicalCards(self._client)
+
+    @cached_property
+    def with_raw_response(self) -> SimulationsWithRawResponse:
+        return SimulationsWithRawResponse(self)
 
 
 class AsyncSimulations(AsyncAPIResource):
-    account_transfers: AsyncAccountTransfers
-    account_statements: AsyncAccountStatements
-    ach_transfers: AsyncACHTransfers
-    card_disputes: AsyncCardDisputes
-    card_profiles: AsyncCardProfiles
-    card_refunds: AsyncCardRefunds
-    check_transfers: AsyncCheckTransfers
-    documents: AsyncDocuments
-    digital_wallet_token_requests: AsyncDigitalWalletTokenRequests
-    check_deposits: AsyncCheckDeposits
-    programs: AsyncPrograms
-    inbound_wire_drawdown_requests: AsyncInboundWireDrawdownRequests
-    inbound_funds_holds: AsyncInboundFundsHolds
-    interest_payments: AsyncInterestPayments
-    wire_transfers: AsyncWireTransfers
-    cards: AsyncCards
-    real_time_payments_transfers: AsyncRealTimePaymentsTransfers
-    physical_cards: AsyncPhysicalCards
-    with_raw_response: AsyncSimulationsWithRawResponse
+    @cached_property
+    def account_transfers(self) -> AsyncAccountTransfers:
+        return AsyncAccountTransfers(self._client)
 
-    def __init__(self, client: AsyncIncrease) -> None:
-        super().__init__(client)
-        self.account_transfers = AsyncAccountTransfers(client)
-        self.account_statements = AsyncAccountStatements(client)
-        self.ach_transfers = AsyncACHTransfers(client)
-        self.card_disputes = AsyncCardDisputes(client)
-        self.card_profiles = AsyncCardProfiles(client)
-        self.card_refunds = AsyncCardRefunds(client)
-        self.check_transfers = AsyncCheckTransfers(client)
-        self.documents = AsyncDocuments(client)
-        self.digital_wallet_token_requests = AsyncDigitalWalletTokenRequests(client)
-        self.check_deposits = AsyncCheckDeposits(client)
-        self.programs = AsyncPrograms(client)
-        self.inbound_wire_drawdown_requests = AsyncInboundWireDrawdownRequests(client)
-        self.inbound_funds_holds = AsyncInboundFundsHolds(client)
-        self.interest_payments = AsyncInterestPayments(client)
-        self.wire_transfers = AsyncWireTransfers(client)
-        self.cards = AsyncCards(client)
-        self.real_time_payments_transfers = AsyncRealTimePaymentsTransfers(client)
-        self.physical_cards = AsyncPhysicalCards(client)
-        self.with_raw_response = AsyncSimulationsWithRawResponse(self)
+    @cached_property
+    def account_statements(self) -> AsyncAccountStatements:
+        return AsyncAccountStatements(self._client)
+
+    @cached_property
+    def ach_transfers(self) -> AsyncACHTransfers:
+        return AsyncACHTransfers(self._client)
+
+    @cached_property
+    def card_disputes(self) -> AsyncCardDisputes:
+        return AsyncCardDisputes(self._client)
+
+    @cached_property
+    def card_profiles(self) -> AsyncCardProfiles:
+        return AsyncCardProfiles(self._client)
+
+    @cached_property
+    def card_refunds(self) -> AsyncCardRefunds:
+        return AsyncCardRefunds(self._client)
+
+    @cached_property
+    def check_transfers(self) -> AsyncCheckTransfers:
+        return AsyncCheckTransfers(self._client)
+
+    @cached_property
+    def documents(self) -> AsyncDocuments:
+        return AsyncDocuments(self._client)
+
+    @cached_property
+    def digital_wallet_token_requests(self) -> AsyncDigitalWalletTokenRequests:
+        return AsyncDigitalWalletTokenRequests(self._client)
+
+    @cached_property
+    def check_deposits(self) -> AsyncCheckDeposits:
+        return AsyncCheckDeposits(self._client)
+
+    @cached_property
+    def programs(self) -> AsyncPrograms:
+        return AsyncPrograms(self._client)
+
+    @cached_property
+    def inbound_wire_drawdown_requests(self) -> AsyncInboundWireDrawdownRequests:
+        return AsyncInboundWireDrawdownRequests(self._client)
+
+    @cached_property
+    def inbound_funds_holds(self) -> AsyncInboundFundsHolds:
+        return AsyncInboundFundsHolds(self._client)
+
+    @cached_property
+    def interest_payments(self) -> AsyncInterestPayments:
+        return AsyncInterestPayments(self._client)
+
+    @cached_property
+    def wire_transfers(self) -> AsyncWireTransfers:
+        return AsyncWireTransfers(self._client)
+
+    @cached_property
+    def cards(self) -> AsyncCards:
+        return AsyncCards(self._client)
+
+    @cached_property
+    def real_time_payments_transfers(self) -> AsyncRealTimePaymentsTransfers:
+        return AsyncRealTimePaymentsTransfers(self._client)
+
+    @cached_property
+    def physical_cards(self) -> AsyncPhysicalCards:
+        return AsyncPhysicalCards(self._client)
+
+    @cached_property
+    def with_raw_response(self) -> AsyncSimulationsWithRawResponse:
+        return AsyncSimulationsWithRawResponse(self)
 
 
 class SimulationsWithRawResponse:

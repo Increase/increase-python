@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
-
 import httpx
 
 from ..._types import (
@@ -13,6 +11,7 @@ from ..._types import (
     Headers,
     NotGiven,
 )
+from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
 from ..._base_client import (
@@ -20,18 +19,13 @@ from ..._base_client import (
 )
 from ...types.simulations import InboundFundsHoldReleaseResponse
 
-if TYPE_CHECKING:
-    from ..._client import Increase, AsyncIncrease
-
 __all__ = ["InboundFundsHolds", "AsyncInboundFundsHolds"]
 
 
 class InboundFundsHolds(SyncAPIResource):
-    with_raw_response: InboundFundsHoldsWithRawResponse
-
-    def __init__(self, client: Increase) -> None:
-        super().__init__(client)
-        self.with_raw_response = InboundFundsHoldsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> InboundFundsHoldsWithRawResponse:
+        return InboundFundsHoldsWithRawResponse(self)
 
     def release(
         self,
@@ -76,11 +70,9 @@ class InboundFundsHolds(SyncAPIResource):
 
 
 class AsyncInboundFundsHolds(AsyncAPIResource):
-    with_raw_response: AsyncInboundFundsHoldsWithRawResponse
-
-    def __init__(self, client: AsyncIncrease) -> None:
-        super().__init__(client)
-        self.with_raw_response = AsyncInboundFundsHoldsWithRawResponse(self)
+    @cached_property
+    def with_raw_response(self) -> AsyncInboundFundsHoldsWithRawResponse:
+        return AsyncInboundFundsHoldsWithRawResponse(self)
 
     async def release(
         self,
