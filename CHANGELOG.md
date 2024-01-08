@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.27.0 (2024-01-08)
+
+Full Changelog: [v0.26.0...v0.27.0](https://github.com/increase/increase-python/compare/v0.26.0...v0.27.0)
+
+### Features
+
+* add `None` default value to nullable response properties ([#284](https://github.com/increase/increase-python/issues/284)) ([1d5fd3f](https://github.com/increase/increase-python/commit/1d5fd3fe62739bfc823d0f126482516aa991b116))
+* **api:** add `ach_debit_status` ([#287](https://github.com/increase/increase-python/issues/287)) ([82cba5b](https://github.com/increase/increase-python/commit/82cba5b06589d13bc5339d9f44fd280776627edc))
+
+
+### Chores
+
+* **internal:** loosen type var restrictions ([#286](https://github.com/increase/increase-python/issues/286)) ([8e51771](https://github.com/increase/increase-python/commit/8e517716ac1fa853ce8f5c14f1970555b4bbaf19))
+* **internal:** replace isort with ruff ([#282](https://github.com/increase/increase-python/issues/282)) ([36b7e07](https://github.com/increase/increase-python/commit/36b7e07c8160e9712a6fb8c325a67b918d4d6bc3))
+* use property declarations for resource members ([#285](https://github.com/increase/increase-python/issues/285)) ([34bf475](https://github.com/increase/increase-python/commit/34bf475b3b70ca38f4cfc38c0c6f0b9cc810fe5a))
+
 ## 0.26.0 (2024-01-02)
 
 Full Changelog: [v0.25.1...v0.26.0](https://github.com/increase/increase-python/compare/v0.25.1...v0.26.0)
