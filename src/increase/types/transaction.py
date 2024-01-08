@@ -40,6 +40,9 @@ __all__ = [
     "SourceCheckTransferStopPaymentRequest",
     "SourceFeePayment",
     "SourceInboundACHTransfer",
+    "SourceInboundACHTransferAddenda",
+    "SourceInboundACHTransferAddendaFreeform",
+    "SourceInboundACHTransferAddendaFreeformEntry",
     "SourceInboundCheck",
     "SourceInboundInternationalACHTransfer",
     "SourceInboundRealTimePaymentsTransferConfirmation",
@@ -1669,7 +1672,31 @@ class SourceFeePayment(BaseModel):
     """The start of this payment's fee period, usually the first day of a month."""
 
 
+class SourceInboundACHTransferAddendaFreeformEntry(BaseModel):
+    payment_related_information: str
+    """The payment related information passed in the addendum."""
+
+
+class SourceInboundACHTransferAddendaFreeform(BaseModel):
+    entries: List[SourceInboundACHTransferAddendaFreeformEntry]
+    """Each entry represents an addendum received from the originator."""
+
+
+class SourceInboundACHTransferAddenda(BaseModel):
+    category: Literal["freeform"]
+    """The type of addendum.
+
+    - `freeform` - Unstructured addendum.
+    """
+
+    freeform: Optional[SourceInboundACHTransferAddendaFreeform] = None
+    """Unstructured `payment_related_information` passed through by the originator."""
+
+
 class SourceInboundACHTransfer(BaseModel):
+    addenda: Optional[SourceInboundACHTransferAddenda] = None
+    """Additional information sent from the originator."""
+
     amount: int
     """The amount in the minor unit of the destination account currency.
 
