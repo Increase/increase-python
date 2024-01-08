@@ -103,6 +103,7 @@ class TestAccountNumbers:
     def test_method_list_with_all_params(self, client: Increase) -> None:
         account_number = client.account_numbers.list(
             account_id="string",
+            ach_debit_status="allowed",
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -207,6 +208,7 @@ class TestAsyncAccountNumbers:
     async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
         account_number = await client.account_numbers.list(
             account_id="string",
+            ach_debit_status="allowed",
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
