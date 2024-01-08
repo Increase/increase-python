@@ -15,6 +15,13 @@ class AccountNumberListParams(TypedDict, total=False):
     account_id: str
     """Filter Account Numbers to those belonging to the specified Account."""
 
+    ach_debit_status: Literal["allowed", "blocked"]
+    """The ACH Debit status to retrieve Account Numbers for.
+
+    - `allowed` - ACH Debits are allowed.
+    - `blocked` - ACH Debits are blocked.
+    """
+
     created_at: CreatedAt
 
     cursor: str

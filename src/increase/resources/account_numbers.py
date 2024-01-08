@@ -188,6 +188,7 @@ class AccountNumbers(SyncAPIResource):
         self,
         *,
         account_id: str | NotGiven = NOT_GIVEN,
+        ach_debit_status: Literal["allowed", "blocked"] | NotGiven = NOT_GIVEN,
         created_at: account_number_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
@@ -204,6 +205,11 @@ class AccountNumbers(SyncAPIResource):
 
         Args:
           account_id: Filter Account Numbers to those belonging to the specified Account.
+
+          ach_debit_status: The ACH Debit status to retrieve Account Numbers for.
+
+              - `allowed` - ACH Debits are allowed.
+              - `blocked` - ACH Debits are blocked.
 
           cursor: Return the page of entries after this one.
 
@@ -235,6 +241,7 @@ class AccountNumbers(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "account_id": account_id,
+                        "ach_debit_status": ach_debit_status,
                         "created_at": created_at,
                         "cursor": cursor,
                         "limit": limit,
@@ -409,6 +416,7 @@ class AsyncAccountNumbers(AsyncAPIResource):
         self,
         *,
         account_id: str | NotGiven = NOT_GIVEN,
+        ach_debit_status: Literal["allowed", "blocked"] | NotGiven = NOT_GIVEN,
         created_at: account_number_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
@@ -425,6 +433,11 @@ class AsyncAccountNumbers(AsyncAPIResource):
 
         Args:
           account_id: Filter Account Numbers to those belonging to the specified Account.
+
+          ach_debit_status: The ACH Debit status to retrieve Account Numbers for.
+
+              - `allowed` - ACH Debits are allowed.
+              - `blocked` - ACH Debits are blocked.
 
           cursor: Return the page of entries after this one.
 
@@ -456,6 +469,7 @@ class AsyncAccountNumbers(AsyncAPIResource):
                 query=maybe_transform(
                     {
                         "account_id": account_id,
+                        "ach_debit_status": ach_debit_status,
                         "created_at": created_at,
                         "cursor": cursor,
                         "limit": limit,
