@@ -104,6 +104,7 @@ class Increase(SyncAPIClient):
 
     # client options
     api_key: str
+    webhook_secret: str | None
 
     _environment: Literal["production", "sandbox"] | NotGiven
 
@@ -111,6 +112,7 @@ class Increase(SyncAPIClient):
         self,
         *,
         api_key: str | None = None,
+        webhook_secret: str | None = None,
         environment: Literal["production", "sandbox"] | NotGiven = NOT_GIVEN,
         base_url: str | httpx.URL | None | NotGiven = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
@@ -137,7 +139,9 @@ class Increase(SyncAPIClient):
     ) -> None:
         """Construct a new synchronous increase client instance.
 
-        This automatically infers the `api_key` argument from the `INCREASE_API_KEY` environment variable if it is not provided.
+        This automatically infers the following arguments from their corresponding environment variables if they are not provided:
+        - `api_key` from `INCREASE_API_KEY`
+        - `webhook_secret` from `INCREASE_WEBHOOK_SECRET`
         """
         if api_key is None:
             api_key = os.environ.get("INCREASE_API_KEY")
@@ -146,6 +150,10 @@ class Increase(SyncAPIClient):
                 "The api_key client option must be set either by passing api_key to the client or by setting the INCREASE_API_KEY environment variable"
             )
         self.api_key = api_key
+
+        if webhook_secret is None:
+            webhook_secret = os.environ.get("INCREASE_WEBHOOK_SECRET")
+        self.webhook_secret = webhook_secret
 
         self._environment = environment
 
@@ -258,6 +266,7 @@ class Increase(SyncAPIClient):
         self,
         *,
         api_key: str | None = None,
+        webhook_secret: str | None = None,
         environment: Literal["production", "sandbox"] | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: float | Timeout | None | NotGiven = NOT_GIVEN,
@@ -311,6 +320,7 @@ class Increase(SyncAPIClient):
 
         return self.__class__(
             api_key=api_key or self.api_key,
+            webhook_secret=webhook_secret or self.webhook_secret,
             base_url=base_url or self.base_url,
             environment=environment or self._environment,
             timeout=self.timeout if isinstance(timeout, NotGiven) else timeout,
@@ -459,6 +469,7 @@ class AsyncIncrease(AsyncAPIClient):
 
     # client options
     api_key: str
+    webhook_secret: str | None
 
     _environment: Literal["production", "sandbox"] | NotGiven
 
@@ -466,6 +477,7 @@ class AsyncIncrease(AsyncAPIClient):
         self,
         *,
         api_key: str | None = None,
+        webhook_secret: str | None = None,
         environment: Literal["production", "sandbox"] | NotGiven = NOT_GIVEN,
         base_url: str | httpx.URL | None | NotGiven = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
@@ -492,7 +504,9 @@ class AsyncIncrease(AsyncAPIClient):
     ) -> None:
         """Construct a new async increase client instance.
 
-        This automatically infers the `api_key` argument from the `INCREASE_API_KEY` environment variable if it is not provided.
+        This automatically infers the following arguments from their corresponding environment variables if they are not provided:
+        - `api_key` from `INCREASE_API_KEY`
+        - `webhook_secret` from `INCREASE_WEBHOOK_SECRET`
         """
         if api_key is None:
             api_key = os.environ.get("INCREASE_API_KEY")
@@ -501,6 +515,10 @@ class AsyncIncrease(AsyncAPIClient):
                 "The api_key client option must be set either by passing api_key to the client or by setting the INCREASE_API_KEY environment variable"
             )
         self.api_key = api_key
+
+        if webhook_secret is None:
+            webhook_secret = os.environ.get("INCREASE_WEBHOOK_SECRET")
+        self.webhook_secret = webhook_secret
 
         self._environment = environment
 
@@ -613,6 +631,7 @@ class AsyncIncrease(AsyncAPIClient):
         self,
         *,
         api_key: str | None = None,
+        webhook_secret: str | None = None,
         environment: Literal["production", "sandbox"] | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: float | Timeout | None | NotGiven = NOT_GIVEN,
@@ -666,6 +685,7 @@ class AsyncIncrease(AsyncAPIClient):
 
         return self.__class__(
             api_key=api_key or self.api_key,
+            webhook_secret=webhook_secret or self.webhook_secret,
             base_url=base_url or self.base_url,
             environment=environment or self._environment,
             timeout=self.timeout if isinstance(timeout, NotGiven) else timeout,
