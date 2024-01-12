@@ -283,7 +283,8 @@ class Entities(SyncAPIResource):
         Args:
           entity_id: The identifier of the Entity to archive.
 
-          address: The entity's physical address. Post Office Boxes are disallowed.
+          address: The entity's physical address. Mail receiving locations like PO Boxes and PMB's
+              are disallowed.
 
           extra_headers: Send extra headers
 
@@ -558,7 +559,8 @@ class AsyncEntities(AsyncAPIResource):
         Args:
           entity_id: The identifier of the Entity to archive.
 
-          address: The entity's physical address. Post Office Boxes are disallowed.
+          address: The entity's physical address. Mail receiving locations like PO Boxes and PMB's
+              are disallowed.
 
           extra_headers: Send extra headers
 

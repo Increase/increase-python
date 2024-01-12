@@ -146,7 +146,10 @@ class BeneficialOwnerIndividualIdentification(TypedDict, total=False):
 
 class BeneficialOwnerIndividual(TypedDict, total=False):
     address: Required[BeneficialOwnerIndividualAddress]
-    """The individual's physical address. Post Office Boxes are disallowed."""
+    """The individual's physical address.
+
+    Mail receiving locations like PO Boxes and PMB's are disallowed.
+    """
 
     date_of_birth: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """The person's date of birth in YYYY-MM-DD format."""

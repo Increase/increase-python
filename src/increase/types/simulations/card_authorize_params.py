@@ -25,5 +25,26 @@ class CardAuthorizeParams(TypedDict, total=False):
     field to route events to any specified event subscription for testing purposes.
     """
 
+    merchant_acceptor_id: str
+    """
+    The merchant identifier (commonly abbreviated as MID) of the merchant the card
+    is transacting with.
+    """
+
+    merchant_category_code: str
+    """
+    The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
+    card is transacting with.
+    """
+
+    merchant_city: str
+    """The city the merchant resides in."""
+
+    merchant_country: str
+    """The country the merchant resides in."""
+
+    merchant_descriptor: str
+    """The merchant descriptor of the merchant the card is transacting with."""
+
     physical_card_id: str
     """The identifier of the Physical Card to be authorized."""
