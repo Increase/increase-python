@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.28.0 (2024-01-12)
+
+Full Changelog: [v0.27.0...v0.28.0](https://github.com/increase/increase-python/compare/v0.27.0...v0.28.0)
+
+### Features
+
+* **api:** add merchant data to simulation api ([#293](https://github.com/increase/increase-python/issues/293)) ([e68ec1b](https://github.com/increase/increase-python/commit/e68ec1bcd752e1d8fe134c6a45b2981335c256d5))
+
+
+### Chores
+
+* add .keep files for examples and custom code directories ([#288](https://github.com/increase/increase-python/issues/288)) ([f1691ad](https://github.com/increase/increase-python/commit/f1691ad8facf5d475bdccb81db65f0c2eee9b4bf))
+* **api:** update for other platforms ([#290](https://github.com/increase/increase-python/issues/290)) ([a9f5248](https://github.com/increase/increase-python/commit/a9f5248247d5ba885659028c82f50ae3fd1360cf))
+* **client:** improve debug logging for failed requests ([#291](https://github.com/increase/increase-python/issues/291)) ([358eab4](https://github.com/increase/increase-python/commit/358eab4bc55d7f427714a4ebf8fc15d07d059868))
+
+
+### Documentation
+
+* **readme:** improve api reference ([#292](https://github.com/increase/increase-python/issues/292)) ([b1d2817](https://github.com/increase/increase-python/commit/b1d281729a3aa0a95ec9d746ad9a8896a999eff1))
+
 ## 0.27.0 (2024-01-08)
 
 Full Changelog: [v0.26.0...v0.27.0](https://github.com/increase/increase-python/compare/v0.26.0...v0.27.0)
