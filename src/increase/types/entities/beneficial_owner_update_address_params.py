@@ -9,7 +9,10 @@ __all__ = ["BeneficialOwnerUpdateAddressParams", "Address"]
 
 class BeneficialOwnerUpdateAddressParams(TypedDict, total=False):
     address: Required[Address]
-    """The individual's physical address. Post Office Boxes are disallowed."""
+    """The individual's physical address.
+
+    Mail receiving locations like PO Boxes and PMB's are disallowed.
+    """
 
     beneficial_owner_id: Required[str]
     """

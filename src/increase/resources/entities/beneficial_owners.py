@@ -147,7 +147,8 @@ class BeneficialOwners(SyncAPIResource):
         Update the address for a beneficial owner belonging to a corporate Entity
 
         Args:
-          address: The individual's physical address. Post Office Boxes are disallowed.
+          address: The individual's physical address. Mail receiving locations like PO Boxes and
+              PMB's are disallowed.
 
           beneficial_owner_id: The identifying details of anyone controlling or owning 25% or more of the
               corporation.
@@ -310,7 +311,8 @@ class AsyncBeneficialOwners(AsyncAPIResource):
         Update the address for a beneficial owner belonging to a corporate Entity
 
         Args:
-          address: The individual's physical address. Post Office Boxes are disallowed.
+          address: The individual's physical address. Mail receiving locations like PO Boxes and
+              PMB's are disallowed.
 
           beneficial_owner_id: The identifying details of anyone controlling or owning 25% or more of the
               corporation.

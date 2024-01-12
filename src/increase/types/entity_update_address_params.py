@@ -9,7 +9,10 @@ __all__ = ["EntityUpdateAddressParams", "Address"]
 
 class EntityUpdateAddressParams(TypedDict, total=False):
     address: Required[Address]
-    """The entity's physical address. Post Office Boxes are disallowed."""
+    """The entity's physical address.
+
+    Mail receiving locations like PO Boxes and PMB's are disallowed.
+    """
 
 
 class Address(TypedDict, total=False):

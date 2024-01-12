@@ -238,7 +238,10 @@ class CorporationBeneficialOwnerIndividualIdentification(TypedDict, total=False)
 
 class CorporationBeneficialOwnerIndividual(TypedDict, total=False):
     address: Required[CorporationBeneficialOwnerIndividualAddress]
-    """The individual's physical address. Post Office Boxes are disallowed."""
+    """The individual's physical address.
+
+    Mail receiving locations like PO Boxes and PMB's are disallowed.
+    """
 
     date_of_birth: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """The person's date of birth in YYYY-MM-DD format."""
@@ -275,7 +278,10 @@ class CorporationBeneficialOwner(TypedDict, total=False):
 
 class Corporation(TypedDict, total=False):
     address: Required[CorporationAddress]
-    """The corporation's physical address. Post Office Boxes are disallowed."""
+    """The entity's physical address.
+
+    Mail receiving locations like PO Boxes and PMB's are disallowed.
+    """
 
     beneficial_owners: Required[List[CorporationBeneficialOwner]]
     """
@@ -414,7 +420,10 @@ class JointIndividualIdentification(TypedDict, total=False):
 
 class JointIndividual(TypedDict, total=False):
     address: Required[JointIndividualAddress]
-    """The individual's physical address. Post Office Boxes are disallowed."""
+    """The individual's physical address.
+
+    Mail receiving locations like PO Boxes and PMB's are disallowed.
+    """
 
     date_of_birth: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """The person's date of birth in YYYY-MM-DD format."""
@@ -557,7 +566,10 @@ class NaturalPersonIdentification(TypedDict, total=False):
 
 class NaturalPerson(TypedDict, total=False):
     address: Required[NaturalPersonAddress]
-    """The individual's physical address. Post Office Boxes are disallowed."""
+    """The individual's physical address.
+
+    Mail receiving locations like PO Boxes and PMB's are disallowed.
+    """
 
     date_of_birth: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """The person's date of birth in YYYY-MM-DD format."""
@@ -717,7 +729,10 @@ class TrustTrusteeIndividualIdentification(TypedDict, total=False):
 
 class TrustTrusteeIndividual(TypedDict, total=False):
     address: Required[TrustTrusteeIndividualAddress]
-    """The individual's physical address. Post Office Boxes are disallowed."""
+    """The individual's physical address.
+
+    Mail receiving locations like PO Boxes and PMB's are disallowed.
+    """
 
     date_of_birth: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """The person's date of birth in YYYY-MM-DD format."""
@@ -866,7 +881,10 @@ class TrustGrantorIdentification(TypedDict, total=False):
 
 class TrustGrantor(TypedDict, total=False):
     address: Required[TrustGrantorAddress]
-    """The individual's physical address. Post Office Boxes are disallowed."""
+    """The individual's physical address.
+
+    Mail receiving locations like PO Boxes and PMB's are disallowed.
+    """
 
     date_of_birth: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """The person's date of birth in YYYY-MM-DD format."""
@@ -888,7 +906,10 @@ class TrustGrantor(TypedDict, total=False):
 
 class Trust(TypedDict, total=False):
     address: Required[TrustAddress]
-    """The trust's physical address. Post Office Boxes are disallowed."""
+    """The trust's physical address.
+
+    Mail receiving locations like PO Boxes and PMB's are disallowed.
+    """
 
     category: Required[Literal["revocable", "irrevocable"]]
     """Whether the trust is `revocable` or `irrevocable`.
