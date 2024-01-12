@@ -30,6 +30,11 @@ class Cards(SyncAPIResource):
         card_id: str | NotGiven = NOT_GIVEN,
         digital_wallet_token_id: str | NotGiven = NOT_GIVEN,
         event_subscription_id: str | NotGiven = NOT_GIVEN,
+        merchant_acceptor_id: str | NotGiven = NOT_GIVEN,
+        merchant_category_code: str | NotGiven = NOT_GIVEN,
+        merchant_city: str | NotGiven = NOT_GIVEN,
+        merchant_country: str | NotGiven = NOT_GIVEN,
+        merchant_descriptor: str | NotGiven = NOT_GIVEN,
         physical_card_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -61,6 +66,18 @@ class Cards(SyncAPIResource):
               decision event subscription, you can use this field to route events to any
               specified event subscription for testing purposes.
 
+          merchant_acceptor_id: The merchant identifier (commonly abbreviated as MID) of the merchant the card
+              is transacting with.
+
+          merchant_category_code: The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
+              card is transacting with.
+
+          merchant_city: The city the merchant resides in.
+
+          merchant_country: The country the merchant resides in.
+
+          merchant_descriptor: The merchant descriptor of the merchant the card is transacting with.
+
           physical_card_id: The identifier of the Physical Card to be authorized.
 
           extra_headers: Send extra headers
@@ -81,6 +98,11 @@ class Cards(SyncAPIResource):
                     "card_id": card_id,
                     "digital_wallet_token_id": digital_wallet_token_id,
                     "event_subscription_id": event_subscription_id,
+                    "merchant_acceptor_id": merchant_acceptor_id,
+                    "merchant_category_code": merchant_category_code,
+                    "merchant_city": merchant_city,
+                    "merchant_country": merchant_country,
+                    "merchant_descriptor": merchant_descriptor,
                     "physical_card_id": physical_card_id,
                 },
                 card_authorize_params.CardAuthorizeParams,
@@ -169,6 +191,11 @@ class AsyncCards(AsyncAPIResource):
         card_id: str | NotGiven = NOT_GIVEN,
         digital_wallet_token_id: str | NotGiven = NOT_GIVEN,
         event_subscription_id: str | NotGiven = NOT_GIVEN,
+        merchant_acceptor_id: str | NotGiven = NOT_GIVEN,
+        merchant_category_code: str | NotGiven = NOT_GIVEN,
+        merchant_city: str | NotGiven = NOT_GIVEN,
+        merchant_country: str | NotGiven = NOT_GIVEN,
+        merchant_descriptor: str | NotGiven = NOT_GIVEN,
         physical_card_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -200,6 +227,18 @@ class AsyncCards(AsyncAPIResource):
               decision event subscription, you can use this field to route events to any
               specified event subscription for testing purposes.
 
+          merchant_acceptor_id: The merchant identifier (commonly abbreviated as MID) of the merchant the card
+              is transacting with.
+
+          merchant_category_code: The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
+              card is transacting with.
+
+          merchant_city: The city the merchant resides in.
+
+          merchant_country: The country the merchant resides in.
+
+          merchant_descriptor: The merchant descriptor of the merchant the card is transacting with.
+
           physical_card_id: The identifier of the Physical Card to be authorized.
 
           extra_headers: Send extra headers
@@ -220,6 +259,11 @@ class AsyncCards(AsyncAPIResource):
                     "card_id": card_id,
                     "digital_wallet_token_id": digital_wallet_token_id,
                     "event_subscription_id": event_subscription_id,
+                    "merchant_acceptor_id": merchant_acceptor_id,
+                    "merchant_category_code": merchant_category_code,
+                    "merchant_city": merchant_city,
+                    "merchant_country": merchant_country,
+                    "merchant_descriptor": merchant_descriptor,
                     "physical_card_id": physical_card_id,
                 },
                 card_authorize_params.CardAuthorizeParams,
