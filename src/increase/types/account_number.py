@@ -53,7 +53,7 @@ class AccountNumber(BaseModel):
     inbound_checks: InboundChecks
     """
     Properties related to how this Account Number should handle inbound check
-    withdrawls.
+    withdrawals.
     """
 
     name: str
