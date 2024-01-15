@@ -20,7 +20,7 @@ class AccountNumberCreateParams(TypedDict, total=False):
     inbound_checks: InboundChecks
     """
     Options related to how this Account Number should handle inbound check
-    withdrawls.
+    withdrawals.
     """
 
 
