@@ -8,6 +8,7 @@ from typing_extensions import Literal
 
 import httpx
 
+from .. import _legacy_response
 from ..types import (
     BookkeepingAccount,
     BookkeepingBalanceLookup,
@@ -20,7 +21,7 @@ from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import (
     AsyncPaginator,
@@ -34,6 +35,10 @@ class BookkeepingAccounts(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> BookkeepingAccountsWithRawResponse:
         return BookkeepingAccountsWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> BookkeepingAccountsWithStreamingResponse:
+        return BookkeepingAccountsWithStreamingResponse(self)
 
     def create(
         self,
@@ -236,6 +241,10 @@ class AsyncBookkeepingAccounts(AsyncAPIResource):
     def with_raw_response(self) -> AsyncBookkeepingAccountsWithRawResponse:
         return AsyncBookkeepingAccountsWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncBookkeepingAccountsWithStreamingResponse:
+        return AsyncBookkeepingAccountsWithStreamingResponse(self)
+
     async def create(
         self,
         *,
@@ -434,31 +443,63 @@ class AsyncBookkeepingAccounts(AsyncAPIResource):
 
 class BookkeepingAccountsWithRawResponse:
     def __init__(self, bookkeeping_accounts: BookkeepingAccounts) -> None:
-        self.create = to_raw_response_wrapper(
+        self.create = _legacy_response.to_raw_response_wrapper(
             bookkeeping_accounts.create,
         )
-        self.update = to_raw_response_wrapper(
+        self.update = _legacy_response.to_raw_response_wrapper(
             bookkeeping_accounts.update,
         )
-        self.list = to_raw_response_wrapper(
+        self.list = _legacy_response.to_raw_response_wrapper(
             bookkeeping_accounts.list,
         )
-        self.balance = to_raw_response_wrapper(
+        self.balance = _legacy_response.to_raw_response_wrapper(
             bookkeeping_accounts.balance,
         )
 
 
 class AsyncBookkeepingAccountsWithRawResponse:
     def __init__(self, bookkeeping_accounts: AsyncBookkeepingAccounts) -> None:
-        self.create = async_to_raw_response_wrapper(
+        self.create = _legacy_response.async_to_raw_response_wrapper(
             bookkeeping_accounts.create,
         )
-        self.update = async_to_raw_response_wrapper(
+        self.update = _legacy_response.async_to_raw_response_wrapper(
             bookkeeping_accounts.update,
         )
-        self.list = async_to_raw_response_wrapper(
+        self.list = _legacy_response.async_to_raw_response_wrapper(
             bookkeeping_accounts.list,
         )
-        self.balance = async_to_raw_response_wrapper(
+        self.balance = _legacy_response.async_to_raw_response_wrapper(
+            bookkeeping_accounts.balance,
+        )
+
+
+class BookkeepingAccountsWithStreamingResponse:
+    def __init__(self, bookkeeping_accounts: BookkeepingAccounts) -> None:
+        self.create = to_streamed_response_wrapper(
+            bookkeeping_accounts.create,
+        )
+        self.update = to_streamed_response_wrapper(
+            bookkeeping_accounts.update,
+        )
+        self.list = to_streamed_response_wrapper(
+            bookkeeping_accounts.list,
+        )
+        self.balance = to_streamed_response_wrapper(
+            bookkeeping_accounts.balance,
+        )
+
+
+class AsyncBookkeepingAccountsWithStreamingResponse:
+    def __init__(self, bookkeeping_accounts: AsyncBookkeepingAccounts) -> None:
+        self.create = async_to_streamed_response_wrapper(
+            bookkeeping_accounts.create,
+        )
+        self.update = async_to_streamed_response_wrapper(
+            bookkeeping_accounts.update,
+        )
+        self.list = async_to_streamed_response_wrapper(
+            bookkeeping_accounts.list,
+        )
+        self.balance = async_to_streamed_response_wrapper(
             bookkeeping_accounts.balance,
         )

@@ -4,12 +4,13 @@ from __future__ import annotations
 
 import httpx
 
+from .. import _legacy_response
 from ..types import AccountStatement, account_statement_list_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import (
     AsyncPaginator,
@@ -23,6 +24,10 @@ class AccountStatements(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AccountStatementsWithRawResponse:
         return AccountStatementsWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> AccountStatementsWithStreamingResponse:
+        return AccountStatementsWithStreamingResponse(self)
 
     def retrieve(
         self,
@@ -117,6 +122,10 @@ class AsyncAccountStatements(AsyncAPIResource):
     def with_raw_response(self) -> AsyncAccountStatementsWithRawResponse:
         return AsyncAccountStatementsWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncAccountStatementsWithStreamingResponse:
+        return AsyncAccountStatementsWithStreamingResponse(self)
+
     async def retrieve(
         self,
         account_statement_id: str,
@@ -207,19 +216,39 @@ class AsyncAccountStatements(AsyncAPIResource):
 
 class AccountStatementsWithRawResponse:
     def __init__(self, account_statements: AccountStatements) -> None:
-        self.retrieve = to_raw_response_wrapper(
+        self.retrieve = _legacy_response.to_raw_response_wrapper(
             account_statements.retrieve,
         )
-        self.list = to_raw_response_wrapper(
+        self.list = _legacy_response.to_raw_response_wrapper(
             account_statements.list,
         )
 
 
 class AsyncAccountStatementsWithRawResponse:
     def __init__(self, account_statements: AsyncAccountStatements) -> None:
-        self.retrieve = async_to_raw_response_wrapper(
+        self.retrieve = _legacy_response.async_to_raw_response_wrapper(
             account_statements.retrieve,
         )
-        self.list = async_to_raw_response_wrapper(
+        self.list = _legacy_response.async_to_raw_response_wrapper(
+            account_statements.list,
+        )
+
+
+class AccountStatementsWithStreamingResponse:
+    def __init__(self, account_statements: AccountStatements) -> None:
+        self.retrieve = to_streamed_response_wrapper(
+            account_statements.retrieve,
+        )
+        self.list = to_streamed_response_wrapper(
+            account_statements.list,
+        )
+
+
+class AsyncAccountStatementsWithStreamingResponse:
+    def __init__(self, account_statements: AsyncAccountStatements) -> None:
+        self.retrieve = async_to_streamed_response_wrapper(
+            account_statements.retrieve,
+        )
+        self.list = async_to_streamed_response_wrapper(
             account_statements.list,
         )

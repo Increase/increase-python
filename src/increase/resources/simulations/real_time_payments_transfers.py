@@ -4,12 +4,13 @@ from __future__ import annotations
 
 import httpx
 
+from ... import _legacy_response
 from ...types import RealTimePaymentsTransfer
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..._base_client import (
     make_request_options,
 )
@@ -26,6 +27,10 @@ class RealTimePaymentsTransfers(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> RealTimePaymentsTransfersWithRawResponse:
         return RealTimePaymentsTransfersWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> RealTimePaymentsTransfersWithStreamingResponse:
+        return RealTimePaymentsTransfersWithStreamingResponse(self)
 
     def complete(
         self,
@@ -155,6 +160,10 @@ class AsyncRealTimePaymentsTransfers(AsyncAPIResource):
     def with_raw_response(self) -> AsyncRealTimePaymentsTransfersWithRawResponse:
         return AsyncRealTimePaymentsTransfersWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncRealTimePaymentsTransfersWithStreamingResponse:
+        return AsyncRealTimePaymentsTransfersWithStreamingResponse(self)
+
     async def complete(
         self,
         real_time_payments_transfer_id: str,
@@ -280,19 +289,39 @@ class AsyncRealTimePaymentsTransfers(AsyncAPIResource):
 
 class RealTimePaymentsTransfersWithRawResponse:
     def __init__(self, real_time_payments_transfers: RealTimePaymentsTransfers) -> None:
-        self.complete = to_raw_response_wrapper(
+        self.complete = _legacy_response.to_raw_response_wrapper(
             real_time_payments_transfers.complete,
         )
-        self.create_inbound = to_raw_response_wrapper(
+        self.create_inbound = _legacy_response.to_raw_response_wrapper(
             real_time_payments_transfers.create_inbound,
         )
 
 
 class AsyncRealTimePaymentsTransfersWithRawResponse:
     def __init__(self, real_time_payments_transfers: AsyncRealTimePaymentsTransfers) -> None:
-        self.complete = async_to_raw_response_wrapper(
+        self.complete = _legacy_response.async_to_raw_response_wrapper(
             real_time_payments_transfers.complete,
         )
-        self.create_inbound = async_to_raw_response_wrapper(
+        self.create_inbound = _legacy_response.async_to_raw_response_wrapper(
+            real_time_payments_transfers.create_inbound,
+        )
+
+
+class RealTimePaymentsTransfersWithStreamingResponse:
+    def __init__(self, real_time_payments_transfers: RealTimePaymentsTransfers) -> None:
+        self.complete = to_streamed_response_wrapper(
+            real_time_payments_transfers.complete,
+        )
+        self.create_inbound = to_streamed_response_wrapper(
+            real_time_payments_transfers.create_inbound,
+        )
+
+
+class AsyncRealTimePaymentsTransfersWithStreamingResponse:
+    def __init__(self, real_time_payments_transfers: AsyncRealTimePaymentsTransfers) -> None:
+        self.complete = async_to_streamed_response_wrapper(
+            real_time_payments_transfers.complete,
+        )
+        self.create_inbound = async_to_streamed_response_wrapper(
             real_time_payments_transfers.create_inbound,
         )

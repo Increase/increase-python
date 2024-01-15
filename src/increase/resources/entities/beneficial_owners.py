@@ -4,12 +4,13 @@ from __future__ import annotations
 
 import httpx
 
+from ... import _legacy_response
 from ...types import Entity
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..._base_client import (
     make_request_options,
 )
@@ -26,6 +27,10 @@ class BeneficialOwners(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> BeneficialOwnersWithRawResponse:
         return BeneficialOwnersWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> BeneficialOwnersWithStreamingResponse:
+        return BeneficialOwnersWithStreamingResponse(self)
 
     def create(
         self,
@@ -191,6 +196,10 @@ class AsyncBeneficialOwners(AsyncAPIResource):
     def with_raw_response(self) -> AsyncBeneficialOwnersWithRawResponse:
         return AsyncBeneficialOwnersWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncBeneficialOwnersWithStreamingResponse:
+        return AsyncBeneficialOwnersWithStreamingResponse(self)
+
     async def create(
         self,
         *,
@@ -352,25 +361,51 @@ class AsyncBeneficialOwners(AsyncAPIResource):
 
 class BeneficialOwnersWithRawResponse:
     def __init__(self, beneficial_owners: BeneficialOwners) -> None:
-        self.create = to_raw_response_wrapper(
+        self.create = _legacy_response.to_raw_response_wrapper(
             beneficial_owners.create,
         )
-        self.archive = to_raw_response_wrapper(
+        self.archive = _legacy_response.to_raw_response_wrapper(
             beneficial_owners.archive,
         )
-        self.update_address = to_raw_response_wrapper(
+        self.update_address = _legacy_response.to_raw_response_wrapper(
             beneficial_owners.update_address,
         )
 
 
 class AsyncBeneficialOwnersWithRawResponse:
     def __init__(self, beneficial_owners: AsyncBeneficialOwners) -> None:
-        self.create = async_to_raw_response_wrapper(
+        self.create = _legacy_response.async_to_raw_response_wrapper(
             beneficial_owners.create,
         )
-        self.archive = async_to_raw_response_wrapper(
+        self.archive = _legacy_response.async_to_raw_response_wrapper(
             beneficial_owners.archive,
         )
-        self.update_address = async_to_raw_response_wrapper(
+        self.update_address = _legacy_response.async_to_raw_response_wrapper(
+            beneficial_owners.update_address,
+        )
+
+
+class BeneficialOwnersWithStreamingResponse:
+    def __init__(self, beneficial_owners: BeneficialOwners) -> None:
+        self.create = to_streamed_response_wrapper(
+            beneficial_owners.create,
+        )
+        self.archive = to_streamed_response_wrapper(
+            beneficial_owners.archive,
+        )
+        self.update_address = to_streamed_response_wrapper(
+            beneficial_owners.update_address,
+        )
+
+
+class AsyncBeneficialOwnersWithStreamingResponse:
+    def __init__(self, beneficial_owners: AsyncBeneficialOwners) -> None:
+        self.create = async_to_streamed_response_wrapper(
+            beneficial_owners.create,
+        )
+        self.archive = async_to_streamed_response_wrapper(
+            beneficial_owners.archive,
+        )
+        self.update_address = async_to_streamed_response_wrapper(
             beneficial_owners.update_address,
         )

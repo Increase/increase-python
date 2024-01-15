@@ -7,6 +7,7 @@ from datetime import date
 
 import httpx
 
+from .. import _legacy_response
 from ..types import (
     RealTimePaymentsRequestForPayment,
     real_time_payments_request_for_payment_list_params,
@@ -16,7 +17,7 @@ from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import (
     AsyncPaginator,
@@ -30,6 +31,10 @@ class RealTimePaymentsRequestForPayments(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> RealTimePaymentsRequestForPaymentsWithRawResponse:
         return RealTimePaymentsRequestForPaymentsWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> RealTimePaymentsRequestForPaymentsWithStreamingResponse:
+        return RealTimePaymentsRequestForPaymentsWithStreamingResponse(self)
 
     def create(
         self,
@@ -197,6 +202,10 @@ class AsyncRealTimePaymentsRequestForPayments(AsyncAPIResource):
     def with_raw_response(self) -> AsyncRealTimePaymentsRequestForPaymentsWithRawResponse:
         return AsyncRealTimePaymentsRequestForPaymentsWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncRealTimePaymentsRequestForPaymentsWithStreamingResponse:
+        return AsyncRealTimePaymentsRequestForPaymentsWithStreamingResponse(self)
+
     async def create(
         self,
         *,
@@ -360,25 +369,51 @@ class AsyncRealTimePaymentsRequestForPayments(AsyncAPIResource):
 
 class RealTimePaymentsRequestForPaymentsWithRawResponse:
     def __init__(self, real_time_payments_request_for_payments: RealTimePaymentsRequestForPayments) -> None:
-        self.create = to_raw_response_wrapper(
+        self.create = _legacy_response.to_raw_response_wrapper(
             real_time_payments_request_for_payments.create,
         )
-        self.retrieve = to_raw_response_wrapper(
+        self.retrieve = _legacy_response.to_raw_response_wrapper(
             real_time_payments_request_for_payments.retrieve,
         )
-        self.list = to_raw_response_wrapper(
+        self.list = _legacy_response.to_raw_response_wrapper(
             real_time_payments_request_for_payments.list,
         )
 
 
 class AsyncRealTimePaymentsRequestForPaymentsWithRawResponse:
     def __init__(self, real_time_payments_request_for_payments: AsyncRealTimePaymentsRequestForPayments) -> None:
-        self.create = async_to_raw_response_wrapper(
+        self.create = _legacy_response.async_to_raw_response_wrapper(
             real_time_payments_request_for_payments.create,
         )
-        self.retrieve = async_to_raw_response_wrapper(
+        self.retrieve = _legacy_response.async_to_raw_response_wrapper(
             real_time_payments_request_for_payments.retrieve,
         )
-        self.list = async_to_raw_response_wrapper(
+        self.list = _legacy_response.async_to_raw_response_wrapper(
+            real_time_payments_request_for_payments.list,
+        )
+
+
+class RealTimePaymentsRequestForPaymentsWithStreamingResponse:
+    def __init__(self, real_time_payments_request_for_payments: RealTimePaymentsRequestForPayments) -> None:
+        self.create = to_streamed_response_wrapper(
+            real_time_payments_request_for_payments.create,
+        )
+        self.retrieve = to_streamed_response_wrapper(
+            real_time_payments_request_for_payments.retrieve,
+        )
+        self.list = to_streamed_response_wrapper(
+            real_time_payments_request_for_payments.list,
+        )
+
+
+class AsyncRealTimePaymentsRequestForPaymentsWithStreamingResponse:
+    def __init__(self, real_time_payments_request_for_payments: AsyncRealTimePaymentsRequestForPayments) -> None:
+        self.create = async_to_streamed_response_wrapper(
+            real_time_payments_request_for_payments.create,
+        )
+        self.retrieve = async_to_streamed_response_wrapper(
+            real_time_payments_request_for_payments.retrieve,
+        )
+        self.list = async_to_streamed_response_wrapper(
             real_time_payments_request_for_payments.list,
         )

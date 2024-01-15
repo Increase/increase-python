@@ -4,12 +4,13 @@ from __future__ import annotations
 
 import httpx
 
+from ... import _legacy_response
 from ...types import Entity
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ...pagination import SyncPage, AsyncPage
 from ..._base_client import (
     AsyncPaginator,
@@ -28,6 +29,10 @@ class SupplementalDocuments(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> SupplementalDocumentsWithRawResponse:
         return SupplementalDocumentsWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> SupplementalDocumentsWithStreamingResponse:
+        return SupplementalDocumentsWithStreamingResponse(self)
 
     def create(
         self,
@@ -133,6 +138,10 @@ class AsyncSupplementalDocuments(AsyncAPIResource):
     def with_raw_response(self) -> AsyncSupplementalDocumentsWithRawResponse:
         return AsyncSupplementalDocumentsWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncSupplementalDocumentsWithStreamingResponse:
+        return AsyncSupplementalDocumentsWithStreamingResponse(self)
+
     async def create(
         self,
         entity_id: str,
@@ -234,19 +243,39 @@ class AsyncSupplementalDocuments(AsyncAPIResource):
 
 class SupplementalDocumentsWithRawResponse:
     def __init__(self, supplemental_documents: SupplementalDocuments) -> None:
-        self.create = to_raw_response_wrapper(
+        self.create = _legacy_response.to_raw_response_wrapper(
             supplemental_documents.create,
         )
-        self.list = to_raw_response_wrapper(
+        self.list = _legacy_response.to_raw_response_wrapper(
             supplemental_documents.list,
         )
 
 
 class AsyncSupplementalDocumentsWithRawResponse:
     def __init__(self, supplemental_documents: AsyncSupplementalDocuments) -> None:
-        self.create = async_to_raw_response_wrapper(
+        self.create = _legacy_response.async_to_raw_response_wrapper(
             supplemental_documents.create,
         )
-        self.list = async_to_raw_response_wrapper(
+        self.list = _legacy_response.async_to_raw_response_wrapper(
+            supplemental_documents.list,
+        )
+
+
+class SupplementalDocumentsWithStreamingResponse:
+    def __init__(self, supplemental_documents: SupplementalDocuments) -> None:
+        self.create = to_streamed_response_wrapper(
+            supplemental_documents.create,
+        )
+        self.list = to_streamed_response_wrapper(
+            supplemental_documents.list,
+        )
+
+
+class AsyncSupplementalDocumentsWithStreamingResponse:
+    def __init__(self, supplemental_documents: AsyncSupplementalDocuments) -> None:
+        self.create = async_to_streamed_response_wrapper(
+            supplemental_documents.create,
+        )
+        self.list = async_to_streamed_response_wrapper(
             supplemental_documents.list,
         )

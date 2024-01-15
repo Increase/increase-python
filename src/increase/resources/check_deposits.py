@@ -4,12 +4,13 @@ from __future__ import annotations
 
 import httpx
 
+from .. import _legacy_response
 from ..types import CheckDeposit, check_deposit_list_params, check_deposit_create_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import (
     AsyncPaginator,
@@ -23,6 +24,10 @@ class CheckDeposits(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> CheckDepositsWithRawResponse:
         return CheckDepositsWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> CheckDepositsWithStreamingResponse:
+        return CheckDepositsWithStreamingResponse(self)
 
     def create(
         self,
@@ -180,6 +185,10 @@ class AsyncCheckDeposits(AsyncAPIResource):
     def with_raw_response(self) -> AsyncCheckDepositsWithRawResponse:
         return AsyncCheckDepositsWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncCheckDepositsWithStreamingResponse:
+        return AsyncCheckDepositsWithStreamingResponse(self)
+
     async def create(
         self,
         *,
@@ -333,25 +342,51 @@ class AsyncCheckDeposits(AsyncAPIResource):
 
 class CheckDepositsWithRawResponse:
     def __init__(self, check_deposits: CheckDeposits) -> None:
-        self.create = to_raw_response_wrapper(
+        self.create = _legacy_response.to_raw_response_wrapper(
             check_deposits.create,
         )
-        self.retrieve = to_raw_response_wrapper(
+        self.retrieve = _legacy_response.to_raw_response_wrapper(
             check_deposits.retrieve,
         )
-        self.list = to_raw_response_wrapper(
+        self.list = _legacy_response.to_raw_response_wrapper(
             check_deposits.list,
         )
 
 
 class AsyncCheckDepositsWithRawResponse:
     def __init__(self, check_deposits: AsyncCheckDeposits) -> None:
-        self.create = async_to_raw_response_wrapper(
+        self.create = _legacy_response.async_to_raw_response_wrapper(
             check_deposits.create,
         )
-        self.retrieve = async_to_raw_response_wrapper(
+        self.retrieve = _legacy_response.async_to_raw_response_wrapper(
             check_deposits.retrieve,
         )
-        self.list = async_to_raw_response_wrapper(
+        self.list = _legacy_response.async_to_raw_response_wrapper(
+            check_deposits.list,
+        )
+
+
+class CheckDepositsWithStreamingResponse:
+    def __init__(self, check_deposits: CheckDeposits) -> None:
+        self.create = to_streamed_response_wrapper(
+            check_deposits.create,
+        )
+        self.retrieve = to_streamed_response_wrapper(
+            check_deposits.retrieve,
+        )
+        self.list = to_streamed_response_wrapper(
+            check_deposits.list,
+        )
+
+
+class AsyncCheckDepositsWithStreamingResponse:
+    def __init__(self, check_deposits: AsyncCheckDeposits) -> None:
+        self.create = async_to_streamed_response_wrapper(
+            check_deposits.create,
+        )
+        self.retrieve = async_to_streamed_response_wrapper(
+            check_deposits.retrieve,
+        )
+        self.list = async_to_streamed_response_wrapper(
             check_deposits.list,
         )

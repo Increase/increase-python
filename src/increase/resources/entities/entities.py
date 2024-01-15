@@ -7,12 +7,13 @@ from typing_extensions import Literal
 
 import httpx
 
+from ... import _legacy_response
 from ...types import Entity, entity_list_params, entity_create_params, entity_update_address_params
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ...pagination import SyncPage, AsyncPage
 from ..._base_client import (
     AsyncPaginator,
@@ -23,12 +24,16 @@ from .beneficial_owners import (
     AsyncBeneficialOwners,
     BeneficialOwnersWithRawResponse,
     AsyncBeneficialOwnersWithRawResponse,
+    BeneficialOwnersWithStreamingResponse,
+    AsyncBeneficialOwnersWithStreamingResponse,
 )
 from .supplemental_documents import (
     SupplementalDocuments,
     AsyncSupplementalDocuments,
     SupplementalDocumentsWithRawResponse,
     AsyncSupplementalDocumentsWithRawResponse,
+    SupplementalDocumentsWithStreamingResponse,
+    AsyncSupplementalDocumentsWithStreamingResponse,
 )
 
 __all__ = ["Entities", "AsyncEntities"]
@@ -46,6 +51,10 @@ class Entities(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> EntitiesWithRawResponse:
         return EntitiesWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> EntitiesWithStreamingResponse:
+        return EntitiesWithStreamingResponse(self)
 
     def create(
         self,
@@ -323,6 +332,10 @@ class AsyncEntities(AsyncAPIResource):
     def with_raw_response(self) -> AsyncEntitiesWithRawResponse:
         return AsyncEntitiesWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncEntitiesWithStreamingResponse:
+        return AsyncEntitiesWithStreamingResponse(self)
+
     async def create(
         self,
         *,
@@ -591,19 +604,19 @@ class EntitiesWithRawResponse:
         self.beneficial_owners = BeneficialOwnersWithRawResponse(entities.beneficial_owners)
         self.supplemental_documents = SupplementalDocumentsWithRawResponse(entities.supplemental_documents)
 
-        self.create = to_raw_response_wrapper(
+        self.create = _legacy_response.to_raw_response_wrapper(
             entities.create,
         )
-        self.retrieve = to_raw_response_wrapper(
+        self.retrieve = _legacy_response.to_raw_response_wrapper(
             entities.retrieve,
         )
-        self.list = to_raw_response_wrapper(
+        self.list = _legacy_response.to_raw_response_wrapper(
             entities.list,
         )
-        self.archive = to_raw_response_wrapper(
+        self.archive = _legacy_response.to_raw_response_wrapper(
             entities.archive,
         )
-        self.update_address = to_raw_response_wrapper(
+        self.update_address = _legacy_response.to_raw_response_wrapper(
             entities.update_address,
         )
 
@@ -613,18 +626,62 @@ class AsyncEntitiesWithRawResponse:
         self.beneficial_owners = AsyncBeneficialOwnersWithRawResponse(entities.beneficial_owners)
         self.supplemental_documents = AsyncSupplementalDocumentsWithRawResponse(entities.supplemental_documents)
 
-        self.create = async_to_raw_response_wrapper(
+        self.create = _legacy_response.async_to_raw_response_wrapper(
             entities.create,
         )
-        self.retrieve = async_to_raw_response_wrapper(
+        self.retrieve = _legacy_response.async_to_raw_response_wrapper(
             entities.retrieve,
         )
-        self.list = async_to_raw_response_wrapper(
+        self.list = _legacy_response.async_to_raw_response_wrapper(
             entities.list,
         )
-        self.archive = async_to_raw_response_wrapper(
+        self.archive = _legacy_response.async_to_raw_response_wrapper(
             entities.archive,
         )
-        self.update_address = async_to_raw_response_wrapper(
+        self.update_address = _legacy_response.async_to_raw_response_wrapper(
+            entities.update_address,
+        )
+
+
+class EntitiesWithStreamingResponse:
+    def __init__(self, entities: Entities) -> None:
+        self.beneficial_owners = BeneficialOwnersWithStreamingResponse(entities.beneficial_owners)
+        self.supplemental_documents = SupplementalDocumentsWithStreamingResponse(entities.supplemental_documents)
+
+        self.create = to_streamed_response_wrapper(
+            entities.create,
+        )
+        self.retrieve = to_streamed_response_wrapper(
+            entities.retrieve,
+        )
+        self.list = to_streamed_response_wrapper(
+            entities.list,
+        )
+        self.archive = to_streamed_response_wrapper(
+            entities.archive,
+        )
+        self.update_address = to_streamed_response_wrapper(
+            entities.update_address,
+        )
+
+
+class AsyncEntitiesWithStreamingResponse:
+    def __init__(self, entities: AsyncEntities) -> None:
+        self.beneficial_owners = AsyncBeneficialOwnersWithStreamingResponse(entities.beneficial_owners)
+        self.supplemental_documents = AsyncSupplementalDocumentsWithStreamingResponse(entities.supplemental_documents)
+
+        self.create = async_to_streamed_response_wrapper(
+            entities.create,
+        )
+        self.retrieve = async_to_streamed_response_wrapper(
+            entities.retrieve,
+        )
+        self.list = async_to_streamed_response_wrapper(
+            entities.list,
+        )
+        self.archive = async_to_streamed_response_wrapper(
+            entities.archive,
+        )
+        self.update_address = async_to_streamed_response_wrapper(
             entities.update_address,
         )

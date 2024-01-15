@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from typing import Any, cast
 
 import pytest
 
@@ -55,9 +56,24 @@ class TestCards:
         response = client.cards.with_raw_response.create(
             account_id="account_in71c4amph0vgo2qllky",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card = response.parse()
         assert_matches_type(Card, card, path=["response"])
+
+    @parametrize
+    def test_streaming_response_create(self, client: Increase) -> None:
+        with client.cards.with_streaming_response.create(
+            account_id="account_in71c4amph0vgo2qllky",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            card = response.parse()
+            assert_matches_type(Card, card, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
@@ -71,9 +87,24 @@ class TestCards:
         response = client.cards.with_raw_response.retrieve(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card = response.parse()
         assert_matches_type(Card, card, path=["response"])
+
+    @parametrize
+    def test_streaming_response_retrieve(self, client: Increase) -> None:
+        with client.cards.with_streaming_response.retrieve(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            card = response.parse()
+            assert_matches_type(Card, card, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_update(self, client: Increase) -> None:
@@ -109,9 +140,24 @@ class TestCards:
         response = client.cards.with_raw_response.update(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card = response.parse()
         assert_matches_type(Card, card, path=["response"])
+
+    @parametrize
+    def test_streaming_response_update(self, client: Increase) -> None:
+        with client.cards.with_streaming_response.update(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            card = response.parse()
+            assert_matches_type(Card, card, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_list(self, client: Increase) -> None:
@@ -136,9 +182,22 @@ class TestCards:
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
         response = client.cards.with_raw_response.list()
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card = response.parse()
         assert_matches_type(SyncPage[Card], card, path=["response"])
+
+    @parametrize
+    def test_streaming_response_list(self, client: Increase) -> None:
+        with client.cards.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            card = response.parse()
+            assert_matches_type(SyncPage[Card], card, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_retrieve_sensitive_details(self, client: Increase) -> None:
@@ -152,9 +211,24 @@ class TestCards:
         response = client.cards.with_raw_response.retrieve_sensitive_details(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card = response.parse()
         assert_matches_type(CardDetails, card, path=["response"])
+
+    @parametrize
+    def test_streaming_response_retrieve_sensitive_details(self, client: Increase) -> None:
+        with client.cards.with_streaming_response.retrieve_sensitive_details(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            card = response.parse()
+            assert_matches_type(CardDetails, card, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncCards:
@@ -195,9 +269,24 @@ class TestAsyncCards:
         response = await client.cards.with_raw_response.create(
             account_id="account_in71c4amph0vgo2qllky",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card = response.parse()
         assert_matches_type(Card, card, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_create(self, client: AsyncIncrease) -> None:
+        async with client.cards.with_streaming_response.create(
+            account_id="account_in71c4amph0vgo2qllky",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            card = await response.parse()
+            assert_matches_type(Card, card, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_retrieve(self, client: AsyncIncrease) -> None:
@@ -211,9 +300,24 @@ class TestAsyncCards:
         response = await client.cards.with_raw_response.retrieve(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card = response.parse()
         assert_matches_type(Card, card, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_retrieve(self, client: AsyncIncrease) -> None:
+        async with client.cards.with_streaming_response.retrieve(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            card = await response.parse()
+            assert_matches_type(Card, card, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_update(self, client: AsyncIncrease) -> None:
@@ -249,9 +353,24 @@ class TestAsyncCards:
         response = await client.cards.with_raw_response.update(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card = response.parse()
         assert_matches_type(Card, card, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_update(self, client: AsyncIncrease) -> None:
+        async with client.cards.with_streaming_response.update(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            card = await response.parse()
+            assert_matches_type(Card, card, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_list(self, client: AsyncIncrease) -> None:
@@ -276,9 +395,22 @@ class TestAsyncCards:
     @parametrize
     async def test_raw_response_list(self, client: AsyncIncrease) -> None:
         response = await client.cards.with_raw_response.list()
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card = response.parse()
         assert_matches_type(AsyncPage[Card], card, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_list(self, client: AsyncIncrease) -> None:
+        async with client.cards.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            card = await response.parse()
+            assert_matches_type(AsyncPage[Card], card, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_retrieve_sensitive_details(self, client: AsyncIncrease) -> None:
@@ -292,6 +424,21 @@ class TestAsyncCards:
         response = await client.cards.with_raw_response.retrieve_sensitive_details(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card = response.parse()
         assert_matches_type(CardDetails, card, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_retrieve_sensitive_details(self, client: AsyncIncrease) -> None:
+        async with client.cards.with_streaming_response.retrieve_sensitive_details(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            card = await response.parse()
+            assert_matches_type(CardDetails, card, path=["response"])
+
+        assert cast(Any, response.is_closed) is True

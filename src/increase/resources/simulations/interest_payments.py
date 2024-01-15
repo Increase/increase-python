@@ -7,11 +7,12 @@ from datetime import datetime
 
 import httpx
 
+from ... import _legacy_response
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..._base_client import (
     make_request_options,
 )
@@ -24,6 +25,10 @@ class InterestPayments(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> InterestPaymentsWithRawResponse:
         return InterestPaymentsWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> InterestPaymentsWithStreamingResponse:
+        return InterestPaymentsWithStreamingResponse(self)
 
     def create(
         self,
@@ -91,6 +96,10 @@ class AsyncInterestPayments(AsyncAPIResource):
     def with_raw_response(self) -> AsyncInterestPaymentsWithRawResponse:
         return AsyncInterestPaymentsWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncInterestPaymentsWithStreamingResponse:
+        return AsyncInterestPaymentsWithStreamingResponse(self)
+
     async def create(
         self,
         *,
@@ -154,13 +163,27 @@ class AsyncInterestPayments(AsyncAPIResource):
 
 class InterestPaymentsWithRawResponse:
     def __init__(self, interest_payments: InterestPayments) -> None:
-        self.create = to_raw_response_wrapper(
+        self.create = _legacy_response.to_raw_response_wrapper(
             interest_payments.create,
         )
 
 
 class AsyncInterestPaymentsWithRawResponse:
     def __init__(self, interest_payments: AsyncInterestPayments) -> None:
-        self.create = async_to_raw_response_wrapper(
+        self.create = _legacy_response.async_to_raw_response_wrapper(
+            interest_payments.create,
+        )
+
+
+class InterestPaymentsWithStreamingResponse:
+    def __init__(self, interest_payments: InterestPayments) -> None:
+        self.create = to_streamed_response_wrapper(
+            interest_payments.create,
+        )
+
+
+class AsyncInterestPaymentsWithStreamingResponse:
+    def __init__(self, interest_payments: AsyncInterestPayments) -> None:
+        self.create = async_to_streamed_response_wrapper(
             interest_payments.create,
         )

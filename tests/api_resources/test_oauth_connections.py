@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from typing import Any, cast
 
 import pytest
 
@@ -33,9 +34,24 @@ class TestOauthConnections:
         response = client.oauth_connections.with_raw_response.retrieve(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         oauth_connection = response.parse()
         assert_matches_type(OauthConnection, oauth_connection, path=["response"])
+
+    @parametrize
+    def test_streaming_response_retrieve(self, client: Increase) -> None:
+        with client.oauth_connections.with_streaming_response.retrieve(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            oauth_connection = response.parse()
+            assert_matches_type(OauthConnection, oauth_connection, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_list(self, client: Increase) -> None:
@@ -53,9 +69,22 @@ class TestOauthConnections:
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
         response = client.oauth_connections.with_raw_response.list()
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         oauth_connection = response.parse()
         assert_matches_type(SyncPage[OauthConnection], oauth_connection, path=["response"])
+
+    @parametrize
+    def test_streaming_response_list(self, client: Increase) -> None:
+        with client.oauth_connections.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            oauth_connection = response.parse()
+            assert_matches_type(SyncPage[OauthConnection], oauth_connection, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncOauthConnections:
@@ -75,9 +104,24 @@ class TestAsyncOauthConnections:
         response = await client.oauth_connections.with_raw_response.retrieve(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         oauth_connection = response.parse()
         assert_matches_type(OauthConnection, oauth_connection, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_retrieve(self, client: AsyncIncrease) -> None:
+        async with client.oauth_connections.with_streaming_response.retrieve(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            oauth_connection = await response.parse()
+            assert_matches_type(OauthConnection, oauth_connection, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_list(self, client: AsyncIncrease) -> None:
@@ -95,6 +139,19 @@ class TestAsyncOauthConnections:
     @parametrize
     async def test_raw_response_list(self, client: AsyncIncrease) -> None:
         response = await client.oauth_connections.with_raw_response.list()
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         oauth_connection = response.parse()
         assert_matches_type(AsyncPage[OauthConnection], oauth_connection, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_list(self, client: AsyncIncrease) -> None:
+        async with client.oauth_connections.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            oauth_connection = await response.parse()
+            assert_matches_type(AsyncPage[OauthConnection], oauth_connection, path=["response"])
+
+        assert cast(Any, response.is_closed) is True

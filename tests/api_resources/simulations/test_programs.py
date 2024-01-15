@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from typing import Any, cast
 
 import pytest
 
@@ -32,9 +33,24 @@ class TestPrograms:
         response = client.simulations.programs.with_raw_response.create(
             name="For Benefit Of",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         program = response.parse()
         assert_matches_type(Program, program, path=["response"])
+
+    @parametrize
+    def test_streaming_response_create(self, client: Increase) -> None:
+        with client.simulations.programs.with_streaming_response.create(
+            name="For Benefit Of",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            program = response.parse()
+            assert_matches_type(Program, program, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncPrograms:
@@ -54,6 +70,21 @@ class TestAsyncPrograms:
         response = await client.simulations.programs.with_raw_response.create(
             name="For Benefit Of",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         program = response.parse()
         assert_matches_type(Program, program, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_create(self, client: AsyncIncrease) -> None:
+        async with client.simulations.programs.with_streaming_response.create(
+            name="For Benefit Of",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            program = await response.parse()
+            assert_matches_type(Program, program, path=["response"])
+
+        assert cast(Any, response.is_closed) is True

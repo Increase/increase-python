@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from typing import Any, cast
 
 import pytest
 
@@ -32,9 +33,24 @@ class TestBalances:
         response = client.intrafi.balances.with_raw_response.retrieve(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         balance = response.parse()
         assert_matches_type(IntrafiBalance, balance, path=["response"])
+
+    @parametrize
+    def test_streaming_response_retrieve(self, client: Increase) -> None:
+        with client.intrafi.balances.with_streaming_response.retrieve(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            balance = response.parse()
+            assert_matches_type(IntrafiBalance, balance, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncBalances:
@@ -54,6 +70,21 @@ class TestAsyncBalances:
         response = await client.intrafi.balances.with_raw_response.retrieve(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         balance = response.parse()
         assert_matches_type(IntrafiBalance, balance, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_retrieve(self, client: AsyncIncrease) -> None:
+        async with client.intrafi.balances.with_streaming_response.retrieve(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            balance = await response.parse()
+            assert_matches_type(IntrafiBalance, balance, path=["response"])
+
+        assert cast(Any, response.is_closed) is True

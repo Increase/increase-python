@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from typing import Any, cast
 
 import pytest
 
@@ -58,9 +59,27 @@ class TestWireTransfers:
             beneficiary_name="Ian Crease",
             message_to_recipient="New account transfer",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         wire_transfer = response.parse()
         assert_matches_type(WireTransfer, wire_transfer, path=["response"])
+
+    @parametrize
+    def test_streaming_response_create(self, client: Increase) -> None:
+        with client.wire_transfers.with_streaming_response.create(
+            account_id="account_in71c4amph0vgo2qllky",
+            amount=100,
+            beneficiary_name="Ian Crease",
+            message_to_recipient="New account transfer",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            wire_transfer = response.parse()
+            assert_matches_type(WireTransfer, wire_transfer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
@@ -74,9 +93,24 @@ class TestWireTransfers:
         response = client.wire_transfers.with_raw_response.retrieve(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         wire_transfer = response.parse()
         assert_matches_type(WireTransfer, wire_transfer, path=["response"])
+
+    @parametrize
+    def test_streaming_response_retrieve(self, client: Increase) -> None:
+        with client.wire_transfers.with_streaming_response.retrieve(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            wire_transfer = response.parse()
+            assert_matches_type(WireTransfer, wire_transfer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_list(self, client: Increase) -> None:
@@ -103,9 +137,22 @@ class TestWireTransfers:
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
         response = client.wire_transfers.with_raw_response.list()
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         wire_transfer = response.parse()
         assert_matches_type(SyncPage[WireTransfer], wire_transfer, path=["response"])
+
+    @parametrize
+    def test_streaming_response_list(self, client: Increase) -> None:
+        with client.wire_transfers.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            wire_transfer = response.parse()
+            assert_matches_type(SyncPage[WireTransfer], wire_transfer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_approve(self, client: Increase) -> None:
@@ -119,9 +166,24 @@ class TestWireTransfers:
         response = client.wire_transfers.with_raw_response.approve(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         wire_transfer = response.parse()
         assert_matches_type(WireTransfer, wire_transfer, path=["response"])
+
+    @parametrize
+    def test_streaming_response_approve(self, client: Increase) -> None:
+        with client.wire_transfers.with_streaming_response.approve(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            wire_transfer = response.parse()
+            assert_matches_type(WireTransfer, wire_transfer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_cancel(self, client: Increase) -> None:
@@ -135,9 +197,24 @@ class TestWireTransfers:
         response = client.wire_transfers.with_raw_response.cancel(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         wire_transfer = response.parse()
         assert_matches_type(WireTransfer, wire_transfer, path=["response"])
+
+    @parametrize
+    def test_streaming_response_cancel(self, client: Increase) -> None:
+        with client.wire_transfers.with_streaming_response.cancel(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            wire_transfer = response.parse()
+            assert_matches_type(WireTransfer, wire_transfer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism tests are broken")
     @parametrize
@@ -153,9 +230,25 @@ class TestWireTransfers:
         response = client.wire_transfers.with_raw_response.reverse(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         wire_transfer = response.parse()
         assert_matches_type(WireTransfer, wire_transfer, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are broken")
+    @parametrize
+    def test_streaming_response_reverse(self, client: Increase) -> None:
+        with client.wire_transfers.with_streaming_response.reverse(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            wire_transfer = response.parse()
+            assert_matches_type(WireTransfer, wire_transfer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism tests are broken")
     @parametrize
@@ -171,9 +264,25 @@ class TestWireTransfers:
         response = client.wire_transfers.with_raw_response.submit(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         wire_transfer = response.parse()
         assert_matches_type(WireTransfer, wire_transfer, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are broken")
+    @parametrize
+    def test_streaming_response_submit(self, client: Increase) -> None:
+        with client.wire_transfers.with_streaming_response.submit(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            wire_transfer = response.parse()
+            assert_matches_type(WireTransfer, wire_transfer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncWireTransfers:
@@ -217,9 +326,27 @@ class TestAsyncWireTransfers:
             beneficiary_name="Ian Crease",
             message_to_recipient="New account transfer",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         wire_transfer = response.parse()
         assert_matches_type(WireTransfer, wire_transfer, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_create(self, client: AsyncIncrease) -> None:
+        async with client.wire_transfers.with_streaming_response.create(
+            account_id="account_in71c4amph0vgo2qllky",
+            amount=100,
+            beneficiary_name="Ian Crease",
+            message_to_recipient="New account transfer",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            wire_transfer = await response.parse()
+            assert_matches_type(WireTransfer, wire_transfer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_retrieve(self, client: AsyncIncrease) -> None:
@@ -233,9 +360,24 @@ class TestAsyncWireTransfers:
         response = await client.wire_transfers.with_raw_response.retrieve(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         wire_transfer = response.parse()
         assert_matches_type(WireTransfer, wire_transfer, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_retrieve(self, client: AsyncIncrease) -> None:
+        async with client.wire_transfers.with_streaming_response.retrieve(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            wire_transfer = await response.parse()
+            assert_matches_type(WireTransfer, wire_transfer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_list(self, client: AsyncIncrease) -> None:
@@ -262,9 +404,22 @@ class TestAsyncWireTransfers:
     @parametrize
     async def test_raw_response_list(self, client: AsyncIncrease) -> None:
         response = await client.wire_transfers.with_raw_response.list()
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         wire_transfer = response.parse()
         assert_matches_type(AsyncPage[WireTransfer], wire_transfer, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_list(self, client: AsyncIncrease) -> None:
+        async with client.wire_transfers.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            wire_transfer = await response.parse()
+            assert_matches_type(AsyncPage[WireTransfer], wire_transfer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_approve(self, client: AsyncIncrease) -> None:
@@ -278,9 +433,24 @@ class TestAsyncWireTransfers:
         response = await client.wire_transfers.with_raw_response.approve(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         wire_transfer = response.parse()
         assert_matches_type(WireTransfer, wire_transfer, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_approve(self, client: AsyncIncrease) -> None:
+        async with client.wire_transfers.with_streaming_response.approve(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            wire_transfer = await response.parse()
+            assert_matches_type(WireTransfer, wire_transfer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_cancel(self, client: AsyncIncrease) -> None:
@@ -294,9 +464,24 @@ class TestAsyncWireTransfers:
         response = await client.wire_transfers.with_raw_response.cancel(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         wire_transfer = response.parse()
         assert_matches_type(WireTransfer, wire_transfer, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_cancel(self, client: AsyncIncrease) -> None:
+        async with client.wire_transfers.with_streaming_response.cancel(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            wire_transfer = await response.parse()
+            assert_matches_type(WireTransfer, wire_transfer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism tests are broken")
     @parametrize
@@ -312,9 +497,25 @@ class TestAsyncWireTransfers:
         response = await client.wire_transfers.with_raw_response.reverse(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         wire_transfer = response.parse()
         assert_matches_type(WireTransfer, wire_transfer, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are broken")
+    @parametrize
+    async def test_streaming_response_reverse(self, client: AsyncIncrease) -> None:
+        async with client.wire_transfers.with_streaming_response.reverse(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            wire_transfer = await response.parse()
+            assert_matches_type(WireTransfer, wire_transfer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism tests are broken")
     @parametrize
@@ -330,6 +531,22 @@ class TestAsyncWireTransfers:
         response = await client.wire_transfers.with_raw_response.submit(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         wire_transfer = response.parse()
         assert_matches_type(WireTransfer, wire_transfer, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are broken")
+    @parametrize
+    async def test_streaming_response_submit(self, client: AsyncIncrease) -> None:
+        async with client.wire_transfers.with_streaming_response.submit(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            wire_transfer = await response.parse()
+            assert_matches_type(WireTransfer, wire_transfer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True

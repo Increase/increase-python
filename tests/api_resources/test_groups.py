@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from typing import Any, cast
 
 import pytest
 
@@ -28,9 +29,22 @@ class TestGroups:
     @parametrize
     def test_raw_response_retrieve_details(self, client: Increase) -> None:
         response = client.groups.with_raw_response.retrieve_details()
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         group = response.parse()
         assert_matches_type(Group, group, path=["response"])
+
+    @parametrize
+    def test_streaming_response_retrieve_details(self, client: Increase) -> None:
+        with client.groups.with_streaming_response.retrieve_details() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            group = response.parse()
+            assert_matches_type(Group, group, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncGroups:
@@ -46,6 +60,19 @@ class TestAsyncGroups:
     @parametrize
     async def test_raw_response_retrieve_details(self, client: AsyncIncrease) -> None:
         response = await client.groups.with_raw_response.retrieve_details()
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         group = response.parse()
         assert_matches_type(Group, group, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_retrieve_details(self, client: AsyncIncrease) -> None:
+        async with client.groups.with_streaming_response.retrieve_details() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            group = await response.parse()
+            assert_matches_type(Group, group, path=["response"])
+
+        assert cast(Any, response.is_closed) is True

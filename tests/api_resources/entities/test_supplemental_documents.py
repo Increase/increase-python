@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from typing import Any, cast
 
 import pytest
 
@@ -38,9 +39,25 @@ class TestSupplementalDocuments:
             "string",
             file_id="file_makxrc67oh9l6sg7w9yc",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         supplemental_document = response.parse()
         assert_matches_type(Entity, supplemental_document, path=["response"])
+
+    @parametrize
+    def test_streaming_response_create(self, client: Increase) -> None:
+        with client.entities.supplemental_documents.with_streaming_response.create(
+            "string",
+            file_id="file_makxrc67oh9l6sg7w9yc",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            supplemental_document = response.parse()
+            assert_matches_type(Entity, supplemental_document, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_list(self, client: Increase) -> None:
@@ -63,9 +80,24 @@ class TestSupplementalDocuments:
         response = client.entities.supplemental_documents.with_raw_response.list(
             entity_id="string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         supplemental_document = response.parse()
         assert_matches_type(SyncPage[SupplementalDocument], supplemental_document, path=["response"])
+
+    @parametrize
+    def test_streaming_response_list(self, client: Increase) -> None:
+        with client.entities.supplemental_documents.with_streaming_response.list(
+            entity_id="string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            supplemental_document = response.parse()
+            assert_matches_type(SyncPage[SupplementalDocument], supplemental_document, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncSupplementalDocuments:
@@ -87,9 +119,25 @@ class TestAsyncSupplementalDocuments:
             "string",
             file_id="file_makxrc67oh9l6sg7w9yc",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         supplemental_document = response.parse()
         assert_matches_type(Entity, supplemental_document, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_create(self, client: AsyncIncrease) -> None:
+        async with client.entities.supplemental_documents.with_streaming_response.create(
+            "string",
+            file_id="file_makxrc67oh9l6sg7w9yc",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            supplemental_document = await response.parse()
+            assert_matches_type(Entity, supplemental_document, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_list(self, client: AsyncIncrease) -> None:
@@ -112,6 +160,21 @@ class TestAsyncSupplementalDocuments:
         response = await client.entities.supplemental_documents.with_raw_response.list(
             entity_id="string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         supplemental_document = response.parse()
         assert_matches_type(AsyncPage[SupplementalDocument], supplemental_document, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_list(self, client: AsyncIncrease) -> None:
+        async with client.entities.supplemental_documents.with_streaming_response.list(
+            entity_id="string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            supplemental_document = await response.parse()
+            assert_matches_type(AsyncPage[SupplementalDocument], supplemental_document, path=["response"])
+
+        assert cast(Any, response.is_closed) is True

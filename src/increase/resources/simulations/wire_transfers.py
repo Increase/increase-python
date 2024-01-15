@@ -4,11 +4,12 @@ from __future__ import annotations
 
 import httpx
 
+from ... import _legacy_response
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..._base_client import (
     make_request_options,
 )
@@ -21,6 +22,10 @@ class WireTransfers(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> WireTransfersWithRawResponse:
         return WireTransfersWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> WireTransfersWithStreamingResponse:
+        return WireTransfersWithStreamingResponse(self)
 
     def create_inbound(
         self,
@@ -148,6 +153,10 @@ class AsyncWireTransfers(AsyncAPIResource):
     def with_raw_response(self) -> AsyncWireTransfersWithRawResponse:
         return AsyncWireTransfersWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncWireTransfersWithStreamingResponse:
+        return AsyncWireTransfersWithStreamingResponse(self)
+
     async def create_inbound(
         self,
         *,
@@ -271,13 +280,27 @@ class AsyncWireTransfers(AsyncAPIResource):
 
 class WireTransfersWithRawResponse:
     def __init__(self, wire_transfers: WireTransfers) -> None:
-        self.create_inbound = to_raw_response_wrapper(
+        self.create_inbound = _legacy_response.to_raw_response_wrapper(
             wire_transfers.create_inbound,
         )
 
 
 class AsyncWireTransfersWithRawResponse:
     def __init__(self, wire_transfers: AsyncWireTransfers) -> None:
-        self.create_inbound = async_to_raw_response_wrapper(
+        self.create_inbound = _legacy_response.async_to_raw_response_wrapper(
+            wire_transfers.create_inbound,
+        )
+
+
+class WireTransfersWithStreamingResponse:
+    def __init__(self, wire_transfers: WireTransfers) -> None:
+        self.create_inbound = to_streamed_response_wrapper(
+            wire_transfers.create_inbound,
+        )
+
+
+class AsyncWireTransfersWithStreamingResponse:
+    def __init__(self, wire_transfers: AsyncWireTransfers) -> None:
+        self.create_inbound = async_to_streamed_response_wrapper(
             wire_transfers.create_inbound,
         )

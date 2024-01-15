@@ -4,11 +4,12 @@ from __future__ import annotations
 
 import httpx
 
+from ... import _legacy_response
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ...pagination import SyncPage, AsyncPage
 from ..._base_client import (
     AsyncPaginator,
@@ -23,6 +24,10 @@ class AccountEnrollments(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AccountEnrollmentsWithRawResponse:
         return AccountEnrollmentsWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> AccountEnrollmentsWithStreamingResponse:
+        return AccountEnrollmentsWithStreamingResponse(self)
 
     def create(
         self,
@@ -207,6 +212,10 @@ class AsyncAccountEnrollments(AsyncAPIResource):
     def with_raw_response(self) -> AsyncAccountEnrollmentsWithRawResponse:
         return AsyncAccountEnrollmentsWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncAccountEnrollmentsWithStreamingResponse:
+        return AsyncAccountEnrollmentsWithStreamingResponse(self)
+
     async def create(
         self,
         *,
@@ -387,31 +396,63 @@ class AsyncAccountEnrollments(AsyncAPIResource):
 
 class AccountEnrollmentsWithRawResponse:
     def __init__(self, account_enrollments: AccountEnrollments) -> None:
-        self.create = to_raw_response_wrapper(
+        self.create = _legacy_response.to_raw_response_wrapper(
             account_enrollments.create,
         )
-        self.retrieve = to_raw_response_wrapper(
+        self.retrieve = _legacy_response.to_raw_response_wrapper(
             account_enrollments.retrieve,
         )
-        self.list = to_raw_response_wrapper(
+        self.list = _legacy_response.to_raw_response_wrapper(
             account_enrollments.list,
         )
-        self.unenroll = to_raw_response_wrapper(
+        self.unenroll = _legacy_response.to_raw_response_wrapper(
             account_enrollments.unenroll,
         )
 
 
 class AsyncAccountEnrollmentsWithRawResponse:
     def __init__(self, account_enrollments: AsyncAccountEnrollments) -> None:
-        self.create = async_to_raw_response_wrapper(
+        self.create = _legacy_response.async_to_raw_response_wrapper(
             account_enrollments.create,
         )
-        self.retrieve = async_to_raw_response_wrapper(
+        self.retrieve = _legacy_response.async_to_raw_response_wrapper(
             account_enrollments.retrieve,
         )
-        self.list = async_to_raw_response_wrapper(
+        self.list = _legacy_response.async_to_raw_response_wrapper(
             account_enrollments.list,
         )
-        self.unenroll = async_to_raw_response_wrapper(
+        self.unenroll = _legacy_response.async_to_raw_response_wrapper(
+            account_enrollments.unenroll,
+        )
+
+
+class AccountEnrollmentsWithStreamingResponse:
+    def __init__(self, account_enrollments: AccountEnrollments) -> None:
+        self.create = to_streamed_response_wrapper(
+            account_enrollments.create,
+        )
+        self.retrieve = to_streamed_response_wrapper(
+            account_enrollments.retrieve,
+        )
+        self.list = to_streamed_response_wrapper(
+            account_enrollments.list,
+        )
+        self.unenroll = to_streamed_response_wrapper(
+            account_enrollments.unenroll,
+        )
+
+
+class AsyncAccountEnrollmentsWithStreamingResponse:
+    def __init__(self, account_enrollments: AsyncAccountEnrollments) -> None:
+        self.create = async_to_streamed_response_wrapper(
+            account_enrollments.create,
+        )
+        self.retrieve = async_to_streamed_response_wrapper(
+            account_enrollments.retrieve,
+        )
+        self.list = async_to_streamed_response_wrapper(
+            account_enrollments.list,
+        )
+        self.unenroll = async_to_streamed_response_wrapper(
             account_enrollments.unenroll,
         )

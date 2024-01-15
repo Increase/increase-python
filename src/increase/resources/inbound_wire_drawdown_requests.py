@@ -4,12 +4,13 @@ from __future__ import annotations
 
 import httpx
 
+from .. import _legacy_response
 from ..types import InboundWireDrawdownRequest, inbound_wire_drawdown_request_list_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import (
     AsyncPaginator,
@@ -23,6 +24,10 @@ class InboundWireDrawdownRequests(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> InboundWireDrawdownRequestsWithRawResponse:
         return InboundWireDrawdownRequestsWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> InboundWireDrawdownRequestsWithStreamingResponse:
+        return InboundWireDrawdownRequestsWithStreamingResponse(self)
 
     def retrieve(
         self,
@@ -111,6 +116,10 @@ class AsyncInboundWireDrawdownRequests(AsyncAPIResource):
     def with_raw_response(self) -> AsyncInboundWireDrawdownRequestsWithRawResponse:
         return AsyncInboundWireDrawdownRequestsWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncInboundWireDrawdownRequestsWithStreamingResponse:
+        return AsyncInboundWireDrawdownRequestsWithStreamingResponse(self)
+
     async def retrieve(
         self,
         inbound_wire_drawdown_request_id: str,
@@ -195,19 +204,39 @@ class AsyncInboundWireDrawdownRequests(AsyncAPIResource):
 
 class InboundWireDrawdownRequestsWithRawResponse:
     def __init__(self, inbound_wire_drawdown_requests: InboundWireDrawdownRequests) -> None:
-        self.retrieve = to_raw_response_wrapper(
+        self.retrieve = _legacy_response.to_raw_response_wrapper(
             inbound_wire_drawdown_requests.retrieve,
         )
-        self.list = to_raw_response_wrapper(
+        self.list = _legacy_response.to_raw_response_wrapper(
             inbound_wire_drawdown_requests.list,
         )
 
 
 class AsyncInboundWireDrawdownRequestsWithRawResponse:
     def __init__(self, inbound_wire_drawdown_requests: AsyncInboundWireDrawdownRequests) -> None:
-        self.retrieve = async_to_raw_response_wrapper(
+        self.retrieve = _legacy_response.async_to_raw_response_wrapper(
             inbound_wire_drawdown_requests.retrieve,
         )
-        self.list = async_to_raw_response_wrapper(
+        self.list = _legacy_response.async_to_raw_response_wrapper(
+            inbound_wire_drawdown_requests.list,
+        )
+
+
+class InboundWireDrawdownRequestsWithStreamingResponse:
+    def __init__(self, inbound_wire_drawdown_requests: InboundWireDrawdownRequests) -> None:
+        self.retrieve = to_streamed_response_wrapper(
+            inbound_wire_drawdown_requests.retrieve,
+        )
+        self.list = to_streamed_response_wrapper(
+            inbound_wire_drawdown_requests.list,
+        )
+
+
+class AsyncInboundWireDrawdownRequestsWithStreamingResponse:
+    def __init__(self, inbound_wire_drawdown_requests: AsyncInboundWireDrawdownRequests) -> None:
+        self.retrieve = async_to_streamed_response_wrapper(
+            inbound_wire_drawdown_requests.retrieve,
+        )
+        self.list = async_to_streamed_response_wrapper(
             inbound_wire_drawdown_requests.list,
         )
