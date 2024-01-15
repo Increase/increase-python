@@ -62,7 +62,7 @@ class AccountNumbers(SyncAPIResource):
           inbound_ach: Options related to how this Account Number should handle inbound ACH transfers.
 
           inbound_checks: Options related to how this Account Number should handle inbound check
-              withdrawls.
+              withdrawals.
 
           extra_headers: Send extra headers
 
@@ -294,7 +294,7 @@ class AsyncAccountNumbers(AsyncAPIResource):
           inbound_ach: Options related to how this Account Number should handle inbound ACH transfers.
 
           inbound_checks: Options related to how this Account Number should handle inbound check
-              withdrawls.
+              withdrawals.
 
           extra_headers: Send extra headers
 
