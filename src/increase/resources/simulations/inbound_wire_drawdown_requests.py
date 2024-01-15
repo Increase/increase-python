@@ -4,12 +4,13 @@ from __future__ import annotations
 
 import httpx
 
+from ... import _legacy_response
 from ...types import InboundWireDrawdownRequest
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..._base_client import (
     make_request_options,
 )
@@ -22,6 +23,10 @@ class InboundWireDrawdownRequests(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> InboundWireDrawdownRequestsWithRawResponse:
         return InboundWireDrawdownRequestsWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> InboundWireDrawdownRequestsWithStreamingResponse:
+        return InboundWireDrawdownRequestsWithStreamingResponse(self)
 
     def create(
         self,
@@ -158,6 +163,10 @@ class AsyncInboundWireDrawdownRequests(AsyncAPIResource):
     def with_raw_response(self) -> AsyncInboundWireDrawdownRequestsWithRawResponse:
         return AsyncInboundWireDrawdownRequestsWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncInboundWireDrawdownRequestsWithStreamingResponse:
+        return AsyncInboundWireDrawdownRequestsWithStreamingResponse(self)
+
     async def create(
         self,
         *,
@@ -290,13 +299,27 @@ class AsyncInboundWireDrawdownRequests(AsyncAPIResource):
 
 class InboundWireDrawdownRequestsWithRawResponse:
     def __init__(self, inbound_wire_drawdown_requests: InboundWireDrawdownRequests) -> None:
-        self.create = to_raw_response_wrapper(
+        self.create = _legacy_response.to_raw_response_wrapper(
             inbound_wire_drawdown_requests.create,
         )
 
 
 class AsyncInboundWireDrawdownRequestsWithRawResponse:
     def __init__(self, inbound_wire_drawdown_requests: AsyncInboundWireDrawdownRequests) -> None:
-        self.create = async_to_raw_response_wrapper(
+        self.create = _legacy_response.async_to_raw_response_wrapper(
+            inbound_wire_drawdown_requests.create,
+        )
+
+
+class InboundWireDrawdownRequestsWithStreamingResponse:
+    def __init__(self, inbound_wire_drawdown_requests: InboundWireDrawdownRequests) -> None:
+        self.create = to_streamed_response_wrapper(
+            inbound_wire_drawdown_requests.create,
+        )
+
+
+class AsyncInboundWireDrawdownRequestsWithStreamingResponse:
+    def __init__(self, inbound_wire_drawdown_requests: AsyncInboundWireDrawdownRequests) -> None:
+        self.create = async_to_streamed_response_wrapper(
             inbound_wire_drawdown_requests.create,
         )

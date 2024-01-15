@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from typing import Any, cast
 
 import pytest
 
@@ -32,9 +33,24 @@ class TestCardRefunds:
         response = client.simulations.card_refunds.with_raw_response.create(
             transaction_id="transaction_uyrp7fld2ium70oa7oi",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_refund = response.parse()
         assert_matches_type(Transaction, card_refund, path=["response"])
+
+    @parametrize
+    def test_streaming_response_create(self, client: Increase) -> None:
+        with client.simulations.card_refunds.with_streaming_response.create(
+            transaction_id="transaction_uyrp7fld2ium70oa7oi",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            card_refund = response.parse()
+            assert_matches_type(Transaction, card_refund, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncCardRefunds:
@@ -54,6 +70,21 @@ class TestAsyncCardRefunds:
         response = await client.simulations.card_refunds.with_raw_response.create(
             transaction_id="transaction_uyrp7fld2ium70oa7oi",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_refund = response.parse()
         assert_matches_type(Transaction, card_refund, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_create(self, client: AsyncIncrease) -> None:
+        async with client.simulations.card_refunds.with_streaming_response.create(
+            transaction_id="transaction_uyrp7fld2ium70oa7oi",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            card_refund = await response.parse()
+            assert_matches_type(Transaction, card_refund, path=["response"])
+
+        assert cast(Any, response.is_closed) is True

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from typing import Any, cast
 
 import pytest
 
@@ -32,9 +33,24 @@ class TestInboundFundsHolds:
         response = client.simulations.inbound_funds_holds.with_raw_response.release(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         inbound_funds_hold = response.parse()
         assert_matches_type(InboundFundsHoldReleaseResponse, inbound_funds_hold, path=["response"])
+
+    @parametrize
+    def test_streaming_response_release(self, client: Increase) -> None:
+        with client.simulations.inbound_funds_holds.with_streaming_response.release(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            inbound_funds_hold = response.parse()
+            assert_matches_type(InboundFundsHoldReleaseResponse, inbound_funds_hold, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncInboundFundsHolds:
@@ -54,6 +70,21 @@ class TestAsyncInboundFundsHolds:
         response = await client.simulations.inbound_funds_holds.with_raw_response.release(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         inbound_funds_hold = response.parse()
         assert_matches_type(InboundFundsHoldReleaseResponse, inbound_funds_hold, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_release(self, client: AsyncIncrease) -> None:
+        async with client.simulations.inbound_funds_holds.with_streaming_response.release(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            inbound_funds_hold = await response.parse()
+            assert_matches_type(InboundFundsHoldReleaseResponse, inbound_funds_hold, path=["response"])
+
+        assert cast(Any, response.is_closed) is True

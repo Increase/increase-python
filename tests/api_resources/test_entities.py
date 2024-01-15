@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from typing import Any, cast
 
 import pytest
 
@@ -399,9 +400,24 @@ class TestEntities:
         response = client.entities.with_raw_response.create(
             structure="corporation",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         entity = response.parse()
         assert_matches_type(Entity, entity, path=["response"])
+
+    @parametrize
+    def test_streaming_response_create(self, client: Increase) -> None:
+        with client.entities.with_streaming_response.create(
+            structure="corporation",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            entity = response.parse()
+            assert_matches_type(Entity, entity, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
@@ -415,9 +431,24 @@ class TestEntities:
         response = client.entities.with_raw_response.retrieve(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         entity = response.parse()
         assert_matches_type(Entity, entity, path=["response"])
+
+    @parametrize
+    def test_streaming_response_retrieve(self, client: Increase) -> None:
+        with client.entities.with_streaming_response.retrieve(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            entity = response.parse()
+            assert_matches_type(Entity, entity, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_list(self, client: Increase) -> None:
@@ -442,9 +473,22 @@ class TestEntities:
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
         response = client.entities.with_raw_response.list()
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         entity = response.parse()
         assert_matches_type(SyncPage[Entity], entity, path=["response"])
+
+    @parametrize
+    def test_streaming_response_list(self, client: Increase) -> None:
+        with client.entities.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            entity = response.parse()
+            assert_matches_type(SyncPage[Entity], entity, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_archive(self, client: Increase) -> None:
@@ -458,9 +502,24 @@ class TestEntities:
         response = client.entities.with_raw_response.archive(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         entity = response.parse()
         assert_matches_type(Entity, entity, path=["response"])
+
+    @parametrize
+    def test_streaming_response_archive(self, client: Increase) -> None:
+        with client.entities.with_streaming_response.archive(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            entity = response.parse()
+            assert_matches_type(Entity, entity, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_update_address(self, client: Increase) -> None:
@@ -500,9 +559,30 @@ class TestEntities:
                 "zip": "10045",
             },
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         entity = response.parse()
         assert_matches_type(Entity, entity, path=["response"])
+
+    @parametrize
+    def test_streaming_response_update_address(self, client: Increase) -> None:
+        with client.entities.with_streaming_response.update_address(
+            "string",
+            address={
+                "line1": "33 Liberty Street",
+                "city": "New York",
+                "state": "NY",
+                "zip": "10045",
+            },
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            entity = response.parse()
+            assert_matches_type(Entity, entity, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncEntities:
@@ -887,9 +967,24 @@ class TestAsyncEntities:
         response = await client.entities.with_raw_response.create(
             structure="corporation",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         entity = response.parse()
         assert_matches_type(Entity, entity, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_create(self, client: AsyncIncrease) -> None:
+        async with client.entities.with_streaming_response.create(
+            structure="corporation",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            entity = await response.parse()
+            assert_matches_type(Entity, entity, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_retrieve(self, client: AsyncIncrease) -> None:
@@ -903,9 +998,24 @@ class TestAsyncEntities:
         response = await client.entities.with_raw_response.retrieve(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         entity = response.parse()
         assert_matches_type(Entity, entity, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_retrieve(self, client: AsyncIncrease) -> None:
+        async with client.entities.with_streaming_response.retrieve(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            entity = await response.parse()
+            assert_matches_type(Entity, entity, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_list(self, client: AsyncIncrease) -> None:
@@ -930,9 +1040,22 @@ class TestAsyncEntities:
     @parametrize
     async def test_raw_response_list(self, client: AsyncIncrease) -> None:
         response = await client.entities.with_raw_response.list()
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         entity = response.parse()
         assert_matches_type(AsyncPage[Entity], entity, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_list(self, client: AsyncIncrease) -> None:
+        async with client.entities.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            entity = await response.parse()
+            assert_matches_type(AsyncPage[Entity], entity, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_archive(self, client: AsyncIncrease) -> None:
@@ -946,9 +1069,24 @@ class TestAsyncEntities:
         response = await client.entities.with_raw_response.archive(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         entity = response.parse()
         assert_matches_type(Entity, entity, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_archive(self, client: AsyncIncrease) -> None:
+        async with client.entities.with_streaming_response.archive(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            entity = await response.parse()
+            assert_matches_type(Entity, entity, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_update_address(self, client: AsyncIncrease) -> None:
@@ -988,6 +1126,27 @@ class TestAsyncEntities:
                 "zip": "10045",
             },
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         entity = response.parse()
         assert_matches_type(Entity, entity, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_update_address(self, client: AsyncIncrease) -> None:
+        async with client.entities.with_streaming_response.update_address(
+            "string",
+            address={
+                "line1": "33 Liberty Street",
+                "city": "New York",
+                "state": "NY",
+                "zip": "10045",
+            },
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            entity = await response.parse()
+            assert_matches_type(Entity, entity, path=["response"])
+
+        assert cast(Any, response.is_closed) is True

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from typing import Any, cast
 
 import pytest
 
@@ -36,9 +37,25 @@ class TestCardDisputes:
             disputed_transaction_id="transaction_uyrp7fld2ium70oa7oi",
             explanation="Unauthorized recurring transaction.",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_dispute = response.parse()
         assert_matches_type(CardDispute, card_dispute, path=["response"])
+
+    @parametrize
+    def test_streaming_response_create(self, client: Increase) -> None:
+        with client.card_disputes.with_streaming_response.create(
+            disputed_transaction_id="transaction_uyrp7fld2ium70oa7oi",
+            explanation="Unauthorized recurring transaction.",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            card_dispute = response.parse()
+            assert_matches_type(CardDispute, card_dispute, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
@@ -52,9 +69,24 @@ class TestCardDisputes:
         response = client.card_disputes.with_raw_response.retrieve(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_dispute = response.parse()
         assert_matches_type(CardDispute, card_dispute, path=["response"])
+
+    @parametrize
+    def test_streaming_response_retrieve(self, client: Increase) -> None:
+        with client.card_disputes.with_streaming_response.retrieve(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            card_dispute = response.parse()
+            assert_matches_type(CardDispute, card_dispute, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_list(self, client: Increase) -> None:
@@ -79,9 +111,22 @@ class TestCardDisputes:
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
         response = client.card_disputes.with_raw_response.list()
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_dispute = response.parse()
         assert_matches_type(SyncPage[CardDispute], card_dispute, path=["response"])
+
+    @parametrize
+    def test_streaming_response_list(self, client: Increase) -> None:
+        with client.card_disputes.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            card_dispute = response.parse()
+            assert_matches_type(SyncPage[CardDispute], card_dispute, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncCardDisputes:
@@ -103,9 +148,25 @@ class TestAsyncCardDisputes:
             disputed_transaction_id="transaction_uyrp7fld2ium70oa7oi",
             explanation="Unauthorized recurring transaction.",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_dispute = response.parse()
         assert_matches_type(CardDispute, card_dispute, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_create(self, client: AsyncIncrease) -> None:
+        async with client.card_disputes.with_streaming_response.create(
+            disputed_transaction_id="transaction_uyrp7fld2ium70oa7oi",
+            explanation="Unauthorized recurring transaction.",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            card_dispute = await response.parse()
+            assert_matches_type(CardDispute, card_dispute, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_retrieve(self, client: AsyncIncrease) -> None:
@@ -119,9 +180,24 @@ class TestAsyncCardDisputes:
         response = await client.card_disputes.with_raw_response.retrieve(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_dispute = response.parse()
         assert_matches_type(CardDispute, card_dispute, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_retrieve(self, client: AsyncIncrease) -> None:
+        async with client.card_disputes.with_streaming_response.retrieve(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            card_dispute = await response.parse()
+            assert_matches_type(CardDispute, card_dispute, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_list(self, client: AsyncIncrease) -> None:
@@ -146,6 +222,19 @@ class TestAsyncCardDisputes:
     @parametrize
     async def test_raw_response_list(self, client: AsyncIncrease) -> None:
         response = await client.card_disputes.with_raw_response.list()
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_dispute = response.parse()
         assert_matches_type(AsyncPage[CardDispute], card_dispute, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_list(self, client: AsyncIncrease) -> None:
+        async with client.card_disputes.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            card_dispute = await response.parse()
+            assert_matches_type(AsyncPage[CardDispute], card_dispute, path=["response"])
+
+        assert cast(Any, response.is_closed) is True

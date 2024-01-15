@@ -4,11 +4,12 @@ from __future__ import annotations
 
 import httpx
 
+from ... import _legacy_response
 from ...types import CheckTransfer
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..._base_client import (
     make_request_options,
 )
@@ -20,6 +21,10 @@ class CheckTransfers(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> CheckTransfersWithRawResponse:
         return CheckTransfersWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> CheckTransfersWithStreamingResponse:
+        return CheckTransfersWithStreamingResponse(self)
 
     def deposit(
         self,
@@ -111,6 +116,10 @@ class AsyncCheckTransfers(AsyncAPIResource):
     def with_raw_response(self) -> AsyncCheckTransfersWithRawResponse:
         return AsyncCheckTransfersWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncCheckTransfersWithStreamingResponse:
+        return AsyncCheckTransfersWithStreamingResponse(self)
+
     async def deposit(
         self,
         check_transfer_id: str,
@@ -198,19 +207,39 @@ class AsyncCheckTransfers(AsyncAPIResource):
 
 class CheckTransfersWithRawResponse:
     def __init__(self, check_transfers: CheckTransfers) -> None:
-        self.deposit = to_raw_response_wrapper(
+        self.deposit = _legacy_response.to_raw_response_wrapper(
             check_transfers.deposit,
         )
-        self.mail = to_raw_response_wrapper(
+        self.mail = _legacy_response.to_raw_response_wrapper(
             check_transfers.mail,
         )
 
 
 class AsyncCheckTransfersWithRawResponse:
     def __init__(self, check_transfers: AsyncCheckTransfers) -> None:
-        self.deposit = async_to_raw_response_wrapper(
+        self.deposit = _legacy_response.async_to_raw_response_wrapper(
             check_transfers.deposit,
         )
-        self.mail = async_to_raw_response_wrapper(
+        self.mail = _legacy_response.async_to_raw_response_wrapper(
+            check_transfers.mail,
+        )
+
+
+class CheckTransfersWithStreamingResponse:
+    def __init__(self, check_transfers: CheckTransfers) -> None:
+        self.deposit = to_streamed_response_wrapper(
+            check_transfers.deposit,
+        )
+        self.mail = to_streamed_response_wrapper(
+            check_transfers.mail,
+        )
+
+
+class AsyncCheckTransfersWithStreamingResponse:
+    def __init__(self, check_transfers: AsyncCheckTransfers) -> None:
+        self.deposit = async_to_streamed_response_wrapper(
+            check_transfers.deposit,
+        )
+        self.mail = async_to_streamed_response_wrapper(
             check_transfers.mail,
         )

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from typing import Any, cast
 
 import pytest
 
@@ -32,9 +33,24 @@ class TestDocuments:
         response = client.simulations.documents.with_raw_response.create(
             account_id="account_in71c4amph0vgo2qllky",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         document = response.parse()
         assert_matches_type(Document, document, path=["response"])
+
+    @parametrize
+    def test_streaming_response_create(self, client: Increase) -> None:
+        with client.simulations.documents.with_streaming_response.create(
+            account_id="account_in71c4amph0vgo2qllky",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            document = response.parse()
+            assert_matches_type(Document, document, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncDocuments:
@@ -54,6 +70,21 @@ class TestAsyncDocuments:
         response = await client.simulations.documents.with_raw_response.create(
             account_id="account_in71c4amph0vgo2qllky",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         document = response.parse()
         assert_matches_type(Document, document, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_create(self, client: AsyncIncrease) -> None:
+        async with client.simulations.documents.with_streaming_response.create(
+            account_id="account_in71c4amph0vgo2qllky",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            document = await response.parse()
+            assert_matches_type(Document, document, path=["response"])
+
+        assert cast(Any, response.is_closed) is True

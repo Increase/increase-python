@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from typing import Any, cast
 
 import pytest
 
@@ -52,9 +53,25 @@ class TestACHTransfers:
             account_number_id="account_number_v18nkfqm6afpsrvy82b2",
             amount=1000,
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         ach_transfer = response.parse()
         assert_matches_type(ACHTransferSimulation, ach_transfer, path=["response"])
+
+    @parametrize
+    def test_streaming_response_create_inbound(self, client: Increase) -> None:
+        with client.simulations.ach_transfers.with_streaming_response.create_inbound(
+            account_number_id="account_number_v18nkfqm6afpsrvy82b2",
+            amount=1000,
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            ach_transfer = response.parse()
+            assert_matches_type(ACHTransferSimulation, ach_transfer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
@@ -79,9 +96,25 @@ class TestACHTransfers:
         response = client.simulations.ach_transfers.with_raw_response.return_(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         ach_transfer = response.parse()
         assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
+
+    @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
+    @parametrize
+    def test_streaming_response_return(self, client: Increase) -> None:
+        with client.simulations.ach_transfers.with_streaming_response.return_(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            ach_transfer = response.parse()
+            assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
@@ -97,9 +130,25 @@ class TestACHTransfers:
         response = client.simulations.ach_transfers.with_raw_response.submit(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         ach_transfer = response.parse()
         assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
+
+    @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
+    @parametrize
+    def test_streaming_response_submit(self, client: Increase) -> None:
+        with client.simulations.ach_transfers.with_streaming_response.submit(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            ach_transfer = response.parse()
+            assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncACHTransfers:
@@ -135,9 +184,25 @@ class TestAsyncACHTransfers:
             account_number_id="account_number_v18nkfqm6afpsrvy82b2",
             amount=1000,
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         ach_transfer = response.parse()
         assert_matches_type(ACHTransferSimulation, ach_transfer, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_create_inbound(self, client: AsyncIncrease) -> None:
+        async with client.simulations.ach_transfers.with_streaming_response.create_inbound(
+            account_number_id="account_number_v18nkfqm6afpsrvy82b2",
+            amount=1000,
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            ach_transfer = await response.parse()
+            assert_matches_type(ACHTransferSimulation, ach_transfer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
@@ -162,9 +227,25 @@ class TestAsyncACHTransfers:
         response = await client.simulations.ach_transfers.with_raw_response.return_(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         ach_transfer = response.parse()
         assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
+
+    @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
+    @parametrize
+    async def test_streaming_response_return(self, client: AsyncIncrease) -> None:
+        async with client.simulations.ach_transfers.with_streaming_response.return_(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            ach_transfer = await response.parse()
+            assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
@@ -180,6 +261,22 @@ class TestAsyncACHTransfers:
         response = await client.simulations.ach_transfers.with_raw_response.submit(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         ach_transfer = response.parse()
         assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
+
+    @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
+    @parametrize
+    async def test_streaming_response_submit(self, client: AsyncIncrease) -> None:
+        async with client.simulations.ach_transfers.with_streaming_response.submit(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            ach_transfer = await response.parse()
+            assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True

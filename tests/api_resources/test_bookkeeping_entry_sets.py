@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from typing import Any, cast
 
 import pytest
 
@@ -70,9 +71,33 @@ class TestBookkeepingEntrySets:
                 },
             ],
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         bookkeeping_entry_set = response.parse()
         assert_matches_type(BookkeepingEntrySet, bookkeeping_entry_set, path=["response"])
+
+    @parametrize
+    def test_streaming_response_create(self, client: Increase) -> None:
+        with client.bookkeeping_entry_sets.with_streaming_response.create(
+            entries=[
+                {
+                    "account_id": "bookkeeping_account_9husfpw68pzmve9dvvc7",
+                    "amount": 100,
+                },
+                {
+                    "account_id": "bookkeeping_account_t2obldz1rcu15zr54umg",
+                    "amount": -100,
+                },
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            bookkeeping_entry_set = response.parse()
+            assert_matches_type(BookkeepingEntrySet, bookkeeping_entry_set, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
@@ -86,9 +111,24 @@ class TestBookkeepingEntrySets:
         response = client.bookkeeping_entry_sets.with_raw_response.retrieve(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         bookkeeping_entry_set = response.parse()
         assert_matches_type(BookkeepingEntrySet, bookkeeping_entry_set, path=["response"])
+
+    @parametrize
+    def test_streaming_response_retrieve(self, client: Increase) -> None:
+        with client.bookkeeping_entry_sets.with_streaming_response.retrieve(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            bookkeeping_entry_set = response.parse()
+            assert_matches_type(BookkeepingEntrySet, bookkeeping_entry_set, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_list(self, client: Increase) -> None:
@@ -107,9 +147,22 @@ class TestBookkeepingEntrySets:
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
         response = client.bookkeeping_entry_sets.with_raw_response.list()
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         bookkeeping_entry_set = response.parse()
         assert_matches_type(SyncPage[BookkeepingEntrySet], bookkeeping_entry_set, path=["response"])
+
+    @parametrize
+    def test_streaming_response_list(self, client: Increase) -> None:
+        with client.bookkeeping_entry_sets.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            bookkeeping_entry_set = response.parse()
+            assert_matches_type(SyncPage[BookkeepingEntrySet], bookkeeping_entry_set, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncBookkeepingEntrySets:
@@ -165,9 +218,33 @@ class TestAsyncBookkeepingEntrySets:
                 },
             ],
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         bookkeeping_entry_set = response.parse()
         assert_matches_type(BookkeepingEntrySet, bookkeeping_entry_set, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_create(self, client: AsyncIncrease) -> None:
+        async with client.bookkeeping_entry_sets.with_streaming_response.create(
+            entries=[
+                {
+                    "account_id": "bookkeeping_account_9husfpw68pzmve9dvvc7",
+                    "amount": 100,
+                },
+                {
+                    "account_id": "bookkeeping_account_t2obldz1rcu15zr54umg",
+                    "amount": -100,
+                },
+            ],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            bookkeeping_entry_set = await response.parse()
+            assert_matches_type(BookkeepingEntrySet, bookkeeping_entry_set, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_retrieve(self, client: AsyncIncrease) -> None:
@@ -181,9 +258,24 @@ class TestAsyncBookkeepingEntrySets:
         response = await client.bookkeeping_entry_sets.with_raw_response.retrieve(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         bookkeeping_entry_set = response.parse()
         assert_matches_type(BookkeepingEntrySet, bookkeeping_entry_set, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_retrieve(self, client: AsyncIncrease) -> None:
+        async with client.bookkeeping_entry_sets.with_streaming_response.retrieve(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            bookkeeping_entry_set = await response.parse()
+            assert_matches_type(BookkeepingEntrySet, bookkeeping_entry_set, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_list(self, client: AsyncIncrease) -> None:
@@ -202,6 +294,19 @@ class TestAsyncBookkeepingEntrySets:
     @parametrize
     async def test_raw_response_list(self, client: AsyncIncrease) -> None:
         response = await client.bookkeeping_entry_sets.with_raw_response.list()
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         bookkeeping_entry_set = response.parse()
         assert_matches_type(AsyncPage[BookkeepingEntrySet], bookkeeping_entry_set, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_list(self, client: AsyncIncrease) -> None:
+        async with client.bookkeeping_entry_sets.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            bookkeeping_entry_set = await response.parse()
+            assert_matches_type(AsyncPage[BookkeepingEntrySet], bookkeeping_entry_set, path=["response"])
+
+        assert cast(Any, response.is_closed) is True

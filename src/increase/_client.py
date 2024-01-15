@@ -101,6 +101,7 @@ class Increase(SyncAPIClient):
     intrafi: resources.Intrafi
     real_time_payments_request_for_payments: resources.RealTimePaymentsRequestForPayments
     with_raw_response: IncreaseWithRawResponse
+    with_streaming_response: IncreaseWithStreamedResponse
 
     # client options
     api_key: str
@@ -241,6 +242,7 @@ class Increase(SyncAPIClient):
         self.intrafi = resources.Intrafi(self)
         self.real_time_payments_request_for_payments = resources.RealTimePaymentsRequestForPayments(self)
         self.with_raw_response = IncreaseWithRawResponse(self)
+        self.with_streaming_response = IncreaseWithStreamedResponse(self)
 
     @property
     @override
@@ -466,6 +468,7 @@ class AsyncIncrease(AsyncAPIClient):
     intrafi: resources.AsyncIntrafi
     real_time_payments_request_for_payments: resources.AsyncRealTimePaymentsRequestForPayments
     with_raw_response: AsyncIncreaseWithRawResponse
+    with_streaming_response: AsyncIncreaseWithStreamedResponse
 
     # client options
     api_key: str
@@ -606,6 +609,7 @@ class AsyncIncrease(AsyncAPIClient):
         self.intrafi = resources.AsyncIntrafi(self)
         self.real_time_payments_request_for_payments = resources.AsyncRealTimePaymentsRequestForPayments(self)
         self.with_raw_response = AsyncIncreaseWithRawResponse(self)
+        self.with_streaming_response = AsyncIncreaseWithStreamedResponse(self)
 
     @property
     @override
@@ -905,6 +909,142 @@ class AsyncIncreaseWithRawResponse:
         self.intrafi = resources.AsyncIntrafiWithRawResponse(client.intrafi)
         self.real_time_payments_request_for_payments = resources.AsyncRealTimePaymentsRequestForPaymentsWithRawResponse(
             client.real_time_payments_request_for_payments
+        )
+
+
+class IncreaseWithStreamedResponse:
+    def __init__(self, client: Increase) -> None:
+        self.accounts = resources.AccountsWithStreamingResponse(client.accounts)
+        self.account_numbers = resources.AccountNumbersWithStreamingResponse(client.account_numbers)
+        self.bookkeeping_accounts = resources.BookkeepingAccountsWithStreamingResponse(client.bookkeeping_accounts)
+        self.bookkeeping_entry_sets = resources.BookkeepingEntrySetsWithStreamingResponse(client.bookkeeping_entry_sets)
+        self.bookkeeping_entries = resources.BookkeepingEntriesWithStreamingResponse(client.bookkeeping_entries)
+        self.real_time_decisions = resources.RealTimeDecisionsWithStreamingResponse(client.real_time_decisions)
+        self.real_time_payments_transfers = resources.RealTimePaymentsTransfersWithStreamingResponse(
+            client.real_time_payments_transfers
+        )
+        self.cards = resources.CardsWithStreamingResponse(client.cards)
+        self.card_disputes = resources.CardDisputesWithStreamingResponse(client.card_disputes)
+        self.card_profiles = resources.CardProfilesWithStreamingResponse(client.card_profiles)
+        self.card_purchase_supplements = resources.CardPurchaseSupplementsWithStreamingResponse(
+            client.card_purchase_supplements
+        )
+        self.external_accounts = resources.ExternalAccountsWithStreamingResponse(client.external_accounts)
+        self.exports = resources.ExportsWithStreamingResponse(client.exports)
+        self.digital_wallet_tokens = resources.DigitalWalletTokensWithStreamingResponse(client.digital_wallet_tokens)
+        self.transactions = resources.TransactionsWithStreamingResponse(client.transactions)
+        self.pending_transactions = resources.PendingTransactionsWithStreamingResponse(client.pending_transactions)
+        self.programs = resources.ProgramsWithStreamingResponse(client.programs)
+        self.declined_transactions = resources.DeclinedTransactionsWithStreamingResponse(client.declined_transactions)
+        self.account_transfers = resources.AccountTransfersWithStreamingResponse(client.account_transfers)
+        self.ach_transfers = resources.ACHTransfersWithStreamingResponse(client.ach_transfers)
+        self.ach_prenotifications = resources.ACHPrenotificationsWithStreamingResponse(client.ach_prenotifications)
+        self.documents = resources.DocumentsWithStreamingResponse(client.documents)
+        self.wire_transfers = resources.WireTransfersWithStreamingResponse(client.wire_transfers)
+        self.check_transfers = resources.CheckTransfersWithStreamingResponse(client.check_transfers)
+        self.entities = resources.EntitiesWithStreamingResponse(client.entities)
+        self.inbound_ach_transfers = resources.InboundACHTransfersWithStreamingResponse(client.inbound_ach_transfers)
+        self.inbound_wire_drawdown_requests = resources.InboundWireDrawdownRequestsWithStreamingResponse(
+            client.inbound_wire_drawdown_requests
+        )
+        self.wire_drawdown_requests = resources.WireDrawdownRequestsWithStreamingResponse(client.wire_drawdown_requests)
+        self.events = resources.EventsWithStreamingResponse(client.events)
+        self.event_subscriptions = resources.EventSubscriptionsWithStreamingResponse(client.event_subscriptions)
+        self.files = resources.FilesWithStreamingResponse(client.files)
+        self.groups = resources.GroupsWithStreamingResponse(client.groups)
+        self.oauth_connections = resources.OauthConnectionsWithStreamingResponse(client.oauth_connections)
+        self.check_deposits = resources.CheckDepositsWithStreamingResponse(client.check_deposits)
+        self.routing_numbers = resources.RoutingNumbersWithStreamingResponse(client.routing_numbers)
+        self.account_statements = resources.AccountStatementsWithStreamingResponse(client.account_statements)
+        self.simulations = resources.SimulationsWithStreamingResponse(client.simulations)
+        self.physical_cards = resources.PhysicalCardsWithStreamingResponse(client.physical_cards)
+        self.card_payments = resources.CardPaymentsWithStreamingResponse(client.card_payments)
+        self.proof_of_authorization_requests = resources.ProofOfAuthorizationRequestsWithStreamingResponse(
+            client.proof_of_authorization_requests
+        )
+        self.proof_of_authorization_request_submissions = (
+            resources.ProofOfAuthorizationRequestSubmissionsWithStreamingResponse(
+                client.proof_of_authorization_request_submissions
+            )
+        )
+        self.intrafi = resources.IntrafiWithStreamingResponse(client.intrafi)
+        self.real_time_payments_request_for_payments = (
+            resources.RealTimePaymentsRequestForPaymentsWithStreamingResponse(
+                client.real_time_payments_request_for_payments
+            )
+        )
+
+
+class AsyncIncreaseWithStreamedResponse:
+    def __init__(self, client: AsyncIncrease) -> None:
+        self.accounts = resources.AsyncAccountsWithStreamingResponse(client.accounts)
+        self.account_numbers = resources.AsyncAccountNumbersWithStreamingResponse(client.account_numbers)
+        self.bookkeeping_accounts = resources.AsyncBookkeepingAccountsWithStreamingResponse(client.bookkeeping_accounts)
+        self.bookkeeping_entry_sets = resources.AsyncBookkeepingEntrySetsWithStreamingResponse(
+            client.bookkeeping_entry_sets
+        )
+        self.bookkeeping_entries = resources.AsyncBookkeepingEntriesWithStreamingResponse(client.bookkeeping_entries)
+        self.real_time_decisions = resources.AsyncRealTimeDecisionsWithStreamingResponse(client.real_time_decisions)
+        self.real_time_payments_transfers = resources.AsyncRealTimePaymentsTransfersWithStreamingResponse(
+            client.real_time_payments_transfers
+        )
+        self.cards = resources.AsyncCardsWithStreamingResponse(client.cards)
+        self.card_disputes = resources.AsyncCardDisputesWithStreamingResponse(client.card_disputes)
+        self.card_profiles = resources.AsyncCardProfilesWithStreamingResponse(client.card_profiles)
+        self.card_purchase_supplements = resources.AsyncCardPurchaseSupplementsWithStreamingResponse(
+            client.card_purchase_supplements
+        )
+        self.external_accounts = resources.AsyncExternalAccountsWithStreamingResponse(client.external_accounts)
+        self.exports = resources.AsyncExportsWithStreamingResponse(client.exports)
+        self.digital_wallet_tokens = resources.AsyncDigitalWalletTokensWithStreamingResponse(
+            client.digital_wallet_tokens
+        )
+        self.transactions = resources.AsyncTransactionsWithStreamingResponse(client.transactions)
+        self.pending_transactions = resources.AsyncPendingTransactionsWithStreamingResponse(client.pending_transactions)
+        self.programs = resources.AsyncProgramsWithStreamingResponse(client.programs)
+        self.declined_transactions = resources.AsyncDeclinedTransactionsWithStreamingResponse(
+            client.declined_transactions
+        )
+        self.account_transfers = resources.AsyncAccountTransfersWithStreamingResponse(client.account_transfers)
+        self.ach_transfers = resources.AsyncACHTransfersWithStreamingResponse(client.ach_transfers)
+        self.ach_prenotifications = resources.AsyncACHPrenotificationsWithStreamingResponse(client.ach_prenotifications)
+        self.documents = resources.AsyncDocumentsWithStreamingResponse(client.documents)
+        self.wire_transfers = resources.AsyncWireTransfersWithStreamingResponse(client.wire_transfers)
+        self.check_transfers = resources.AsyncCheckTransfersWithStreamingResponse(client.check_transfers)
+        self.entities = resources.AsyncEntitiesWithStreamingResponse(client.entities)
+        self.inbound_ach_transfers = resources.AsyncInboundACHTransfersWithStreamingResponse(
+            client.inbound_ach_transfers
+        )
+        self.inbound_wire_drawdown_requests = resources.AsyncInboundWireDrawdownRequestsWithStreamingResponse(
+            client.inbound_wire_drawdown_requests
+        )
+        self.wire_drawdown_requests = resources.AsyncWireDrawdownRequestsWithStreamingResponse(
+            client.wire_drawdown_requests
+        )
+        self.events = resources.AsyncEventsWithStreamingResponse(client.events)
+        self.event_subscriptions = resources.AsyncEventSubscriptionsWithStreamingResponse(client.event_subscriptions)
+        self.files = resources.AsyncFilesWithStreamingResponse(client.files)
+        self.groups = resources.AsyncGroupsWithStreamingResponse(client.groups)
+        self.oauth_connections = resources.AsyncOauthConnectionsWithStreamingResponse(client.oauth_connections)
+        self.check_deposits = resources.AsyncCheckDepositsWithStreamingResponse(client.check_deposits)
+        self.routing_numbers = resources.AsyncRoutingNumbersWithStreamingResponse(client.routing_numbers)
+        self.account_statements = resources.AsyncAccountStatementsWithStreamingResponse(client.account_statements)
+        self.simulations = resources.AsyncSimulationsWithStreamingResponse(client.simulations)
+        self.physical_cards = resources.AsyncPhysicalCardsWithStreamingResponse(client.physical_cards)
+        self.card_payments = resources.AsyncCardPaymentsWithStreamingResponse(client.card_payments)
+        self.proof_of_authorization_requests = resources.AsyncProofOfAuthorizationRequestsWithStreamingResponse(
+            client.proof_of_authorization_requests
+        )
+        self.proof_of_authorization_request_submissions = (
+            resources.AsyncProofOfAuthorizationRequestSubmissionsWithStreamingResponse(
+                client.proof_of_authorization_request_submissions
+            )
+        )
+        self.intrafi = resources.AsyncIntrafiWithStreamingResponse(client.intrafi)
+        self.real_time_payments_request_for_payments = (
+            resources.AsyncRealTimePaymentsRequestForPaymentsWithStreamingResponse(
+                client.real_time_payments_request_for_payments
+            )
         )
 
 

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from typing import Any, cast
 
 import pytest
 
@@ -45,9 +46,25 @@ class TestInterestPayments:
             account_id="account_in71c4amph0vgo2qllky",
             amount=1000,
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         interest_payment = response.parse()
         assert_matches_type(InterestPaymentSimulationResult, interest_payment, path=["response"])
+
+    @parametrize
+    def test_streaming_response_create(self, client: Increase) -> None:
+        with client.simulations.interest_payments.with_streaming_response.create(
+            account_id="account_in71c4amph0vgo2qllky",
+            amount=1000,
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            interest_payment = response.parse()
+            assert_matches_type(InterestPaymentSimulationResult, interest_payment, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncInterestPayments:
@@ -79,6 +96,22 @@ class TestAsyncInterestPayments:
             account_id="account_in71c4amph0vgo2qllky",
             amount=1000,
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         interest_payment = response.parse()
         assert_matches_type(InterestPaymentSimulationResult, interest_payment, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_create(self, client: AsyncIncrease) -> None:
+        async with client.simulations.interest_payments.with_streaming_response.create(
+            account_id="account_in71c4amph0vgo2qllky",
+            amount=1000,
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            interest_payment = await response.parse()
+            assert_matches_type(InterestPaymentSimulationResult, interest_payment, path=["response"])
+
+        assert cast(Any, response.is_closed) is True

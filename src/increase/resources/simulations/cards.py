@@ -4,12 +4,13 @@ from __future__ import annotations
 
 import httpx
 
+from ... import _legacy_response
 from ...types import Transaction
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..._base_client import (
     make_request_options,
 )
@@ -22,6 +23,10 @@ class Cards(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> CardsWithRawResponse:
         return CardsWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> CardsWithStreamingResponse:
+        return CardsWithStreamingResponse(self)
 
     def authorize(
         self,
@@ -184,6 +189,10 @@ class AsyncCards(AsyncAPIResource):
     def with_raw_response(self) -> AsyncCardsWithRawResponse:
         return AsyncCardsWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncCardsWithStreamingResponse:
+        return AsyncCardsWithStreamingResponse(self)
+
     async def authorize(
         self,
         *,
@@ -342,19 +351,39 @@ class AsyncCards(AsyncAPIResource):
 
 class CardsWithRawResponse:
     def __init__(self, cards: Cards) -> None:
-        self.authorize = to_raw_response_wrapper(
+        self.authorize = _legacy_response.to_raw_response_wrapper(
             cards.authorize,
         )
-        self.settlement = to_raw_response_wrapper(
+        self.settlement = _legacy_response.to_raw_response_wrapper(
             cards.settlement,
         )
 
 
 class AsyncCardsWithRawResponse:
     def __init__(self, cards: AsyncCards) -> None:
-        self.authorize = async_to_raw_response_wrapper(
+        self.authorize = _legacy_response.async_to_raw_response_wrapper(
             cards.authorize,
         )
-        self.settlement = async_to_raw_response_wrapper(
+        self.settlement = _legacy_response.async_to_raw_response_wrapper(
+            cards.settlement,
+        )
+
+
+class CardsWithStreamingResponse:
+    def __init__(self, cards: Cards) -> None:
+        self.authorize = to_streamed_response_wrapper(
+            cards.authorize,
+        )
+        self.settlement = to_streamed_response_wrapper(
+            cards.settlement,
+        )
+
+
+class AsyncCardsWithStreamingResponse:
+    def __init__(self, cards: AsyncCards) -> None:
+        self.authorize = async_to_streamed_response_wrapper(
+            cards.authorize,
+        )
+        self.settlement = async_to_streamed_response_wrapper(
             cards.settlement,
         )

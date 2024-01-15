@@ -6,6 +6,7 @@ from typing_extensions import Literal
 
 import httpx
 
+from .. import _legacy_response
 from ..types import (
     InboundACHTransfer,
     inbound_ach_transfer_list_params,
@@ -16,7 +17,7 @@ from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import (
     AsyncPaginator,
@@ -30,6 +31,10 @@ class InboundACHTransfers(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> InboundACHTransfersWithRawResponse:
         return InboundACHTransfersWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> InboundACHTransfersWithStreamingResponse:
+        return InboundACHTransfersWithStreamingResponse(self)
 
     def retrieve(
         self,
@@ -307,6 +312,10 @@ class AsyncInboundACHTransfers(AsyncAPIResource):
     def with_raw_response(self) -> AsyncInboundACHTransfersWithRawResponse:
         return AsyncInboundACHTransfersWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncInboundACHTransfersWithStreamingResponse:
+        return AsyncInboundACHTransfersWithStreamingResponse(self)
+
     async def retrieve(
         self,
         inbound_ach_transfer_id: str,
@@ -580,37 +589,75 @@ class AsyncInboundACHTransfers(AsyncAPIResource):
 
 class InboundACHTransfersWithRawResponse:
     def __init__(self, inbound_ach_transfers: InboundACHTransfers) -> None:
-        self.retrieve = to_raw_response_wrapper(
+        self.retrieve = _legacy_response.to_raw_response_wrapper(
             inbound_ach_transfers.retrieve,
         )
-        self.list = to_raw_response_wrapper(
+        self.list = _legacy_response.to_raw_response_wrapper(
             inbound_ach_transfers.list,
         )
-        self.decline = to_raw_response_wrapper(
+        self.decline = _legacy_response.to_raw_response_wrapper(
             inbound_ach_transfers.decline,
         )
-        self.notification_of_change = to_raw_response_wrapper(
+        self.notification_of_change = _legacy_response.to_raw_response_wrapper(
             inbound_ach_transfers.notification_of_change,
         )
-        self.transfer_return = to_raw_response_wrapper(
+        self.transfer_return = _legacy_response.to_raw_response_wrapper(
             inbound_ach_transfers.transfer_return,
         )
 
 
 class AsyncInboundACHTransfersWithRawResponse:
     def __init__(self, inbound_ach_transfers: AsyncInboundACHTransfers) -> None:
-        self.retrieve = async_to_raw_response_wrapper(
+        self.retrieve = _legacy_response.async_to_raw_response_wrapper(
             inbound_ach_transfers.retrieve,
         )
-        self.list = async_to_raw_response_wrapper(
+        self.list = _legacy_response.async_to_raw_response_wrapper(
             inbound_ach_transfers.list,
         )
-        self.decline = async_to_raw_response_wrapper(
+        self.decline = _legacy_response.async_to_raw_response_wrapper(
             inbound_ach_transfers.decline,
         )
-        self.notification_of_change = async_to_raw_response_wrapper(
+        self.notification_of_change = _legacy_response.async_to_raw_response_wrapper(
             inbound_ach_transfers.notification_of_change,
         )
-        self.transfer_return = async_to_raw_response_wrapper(
+        self.transfer_return = _legacy_response.async_to_raw_response_wrapper(
+            inbound_ach_transfers.transfer_return,
+        )
+
+
+class InboundACHTransfersWithStreamingResponse:
+    def __init__(self, inbound_ach_transfers: InboundACHTransfers) -> None:
+        self.retrieve = to_streamed_response_wrapper(
+            inbound_ach_transfers.retrieve,
+        )
+        self.list = to_streamed_response_wrapper(
+            inbound_ach_transfers.list,
+        )
+        self.decline = to_streamed_response_wrapper(
+            inbound_ach_transfers.decline,
+        )
+        self.notification_of_change = to_streamed_response_wrapper(
+            inbound_ach_transfers.notification_of_change,
+        )
+        self.transfer_return = to_streamed_response_wrapper(
+            inbound_ach_transfers.transfer_return,
+        )
+
+
+class AsyncInboundACHTransfersWithStreamingResponse:
+    def __init__(self, inbound_ach_transfers: AsyncInboundACHTransfers) -> None:
+        self.retrieve = async_to_streamed_response_wrapper(
+            inbound_ach_transfers.retrieve,
+        )
+        self.list = async_to_streamed_response_wrapper(
+            inbound_ach_transfers.list,
+        )
+        self.decline = async_to_streamed_response_wrapper(
+            inbound_ach_transfers.decline,
+        )
+        self.notification_of_change = async_to_streamed_response_wrapper(
+            inbound_ach_transfers.notification_of_change,
+        )
+        self.transfer_return = async_to_streamed_response_wrapper(
             inbound_ach_transfers.transfer_return,
         )

@@ -4,12 +4,13 @@ from __future__ import annotations
 
 import httpx
 
+from .. import _legacy_response
 from ..types import WireTransfer, wire_transfer_list_params, wire_transfer_create_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import (
     AsyncPaginator,
@@ -23,6 +24,10 @@ class WireTransfers(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> WireTransfersWithRawResponse:
         return WireTransfersWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> WireTransfersWithStreamingResponse:
+        return WireTransfersWithStreamingResponse(self)
 
     def create(
         self,
@@ -384,6 +389,10 @@ class AsyncWireTransfers(AsyncAPIResource):
     def with_raw_response(self) -> AsyncWireTransfersWithRawResponse:
         return AsyncWireTransfersWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncWireTransfersWithStreamingResponse:
+        return AsyncWireTransfersWithStreamingResponse(self)
+
     async def create(
         self,
         *,
@@ -741,49 +750,99 @@ class AsyncWireTransfers(AsyncAPIResource):
 
 class WireTransfersWithRawResponse:
     def __init__(self, wire_transfers: WireTransfers) -> None:
-        self.create = to_raw_response_wrapper(
+        self.create = _legacy_response.to_raw_response_wrapper(
             wire_transfers.create,
         )
-        self.retrieve = to_raw_response_wrapper(
+        self.retrieve = _legacy_response.to_raw_response_wrapper(
             wire_transfers.retrieve,
         )
-        self.list = to_raw_response_wrapper(
+        self.list = _legacy_response.to_raw_response_wrapper(
             wire_transfers.list,
         )
-        self.approve = to_raw_response_wrapper(
+        self.approve = _legacy_response.to_raw_response_wrapper(
             wire_transfers.approve,
         )
-        self.cancel = to_raw_response_wrapper(
+        self.cancel = _legacy_response.to_raw_response_wrapper(
             wire_transfers.cancel,
         )
-        self.reverse = to_raw_response_wrapper(
+        self.reverse = _legacy_response.to_raw_response_wrapper(
             wire_transfers.reverse,
         )
-        self.submit = to_raw_response_wrapper(
+        self.submit = _legacy_response.to_raw_response_wrapper(
             wire_transfers.submit,
         )
 
 
 class AsyncWireTransfersWithRawResponse:
     def __init__(self, wire_transfers: AsyncWireTransfers) -> None:
-        self.create = async_to_raw_response_wrapper(
+        self.create = _legacy_response.async_to_raw_response_wrapper(
             wire_transfers.create,
         )
-        self.retrieve = async_to_raw_response_wrapper(
+        self.retrieve = _legacy_response.async_to_raw_response_wrapper(
             wire_transfers.retrieve,
         )
-        self.list = async_to_raw_response_wrapper(
+        self.list = _legacy_response.async_to_raw_response_wrapper(
             wire_transfers.list,
         )
-        self.approve = async_to_raw_response_wrapper(
+        self.approve = _legacy_response.async_to_raw_response_wrapper(
             wire_transfers.approve,
         )
-        self.cancel = async_to_raw_response_wrapper(
+        self.cancel = _legacy_response.async_to_raw_response_wrapper(
             wire_transfers.cancel,
         )
-        self.reverse = async_to_raw_response_wrapper(
+        self.reverse = _legacy_response.async_to_raw_response_wrapper(
             wire_transfers.reverse,
         )
-        self.submit = async_to_raw_response_wrapper(
+        self.submit = _legacy_response.async_to_raw_response_wrapper(
+            wire_transfers.submit,
+        )
+
+
+class WireTransfersWithStreamingResponse:
+    def __init__(self, wire_transfers: WireTransfers) -> None:
+        self.create = to_streamed_response_wrapper(
+            wire_transfers.create,
+        )
+        self.retrieve = to_streamed_response_wrapper(
+            wire_transfers.retrieve,
+        )
+        self.list = to_streamed_response_wrapper(
+            wire_transfers.list,
+        )
+        self.approve = to_streamed_response_wrapper(
+            wire_transfers.approve,
+        )
+        self.cancel = to_streamed_response_wrapper(
+            wire_transfers.cancel,
+        )
+        self.reverse = to_streamed_response_wrapper(
+            wire_transfers.reverse,
+        )
+        self.submit = to_streamed_response_wrapper(
+            wire_transfers.submit,
+        )
+
+
+class AsyncWireTransfersWithStreamingResponse:
+    def __init__(self, wire_transfers: AsyncWireTransfers) -> None:
+        self.create = async_to_streamed_response_wrapper(
+            wire_transfers.create,
+        )
+        self.retrieve = async_to_streamed_response_wrapper(
+            wire_transfers.retrieve,
+        )
+        self.list = async_to_streamed_response_wrapper(
+            wire_transfers.list,
+        )
+        self.approve = async_to_streamed_response_wrapper(
+            wire_transfers.approve,
+        )
+        self.cancel = async_to_streamed_response_wrapper(
+            wire_transfers.cancel,
+        )
+        self.reverse = async_to_streamed_response_wrapper(
+            wire_transfers.reverse,
+        )
+        self.submit = async_to_streamed_response_wrapper(
             wire_transfers.submit,
         )

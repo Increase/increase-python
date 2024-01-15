@@ -6,12 +6,13 @@ from typing_extensions import Literal
 
 import httpx
 
+from ... import _legacy_response
 from ...types import PhysicalCard
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..._base_client import (
     make_request_options,
 )
@@ -24,6 +25,10 @@ class PhysicalCards(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> PhysicalCardsWithRawResponse:
         return PhysicalCardsWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> PhysicalCardsWithStreamingResponse:
+        return PhysicalCardsWithStreamingResponse(self)
 
     def shipment_advance(
         self,
@@ -92,6 +97,10 @@ class AsyncPhysicalCards(AsyncAPIResource):
     def with_raw_response(self) -> AsyncPhysicalCardsWithRawResponse:
         return AsyncPhysicalCardsWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncPhysicalCardsWithStreamingResponse:
+        return AsyncPhysicalCardsWithStreamingResponse(self)
+
     async def shipment_advance(
         self,
         physical_card_id: str,
@@ -156,13 +165,27 @@ class AsyncPhysicalCards(AsyncAPIResource):
 
 class PhysicalCardsWithRawResponse:
     def __init__(self, physical_cards: PhysicalCards) -> None:
-        self.shipment_advance = to_raw_response_wrapper(
+        self.shipment_advance = _legacy_response.to_raw_response_wrapper(
             physical_cards.shipment_advance,
         )
 
 
 class AsyncPhysicalCardsWithRawResponse:
     def __init__(self, physical_cards: AsyncPhysicalCards) -> None:
-        self.shipment_advance = async_to_raw_response_wrapper(
+        self.shipment_advance = _legacy_response.async_to_raw_response_wrapper(
+            physical_cards.shipment_advance,
+        )
+
+
+class PhysicalCardsWithStreamingResponse:
+    def __init__(self, physical_cards: PhysicalCards) -> None:
+        self.shipment_advance = to_streamed_response_wrapper(
+            physical_cards.shipment_advance,
+        )
+
+
+class AsyncPhysicalCardsWithStreamingResponse:
+    def __init__(self, physical_cards: AsyncPhysicalCards) -> None:
+        self.shipment_advance = async_to_streamed_response_wrapper(
             physical_cards.shipment_advance,
         )

@@ -4,12 +4,13 @@ from __future__ import annotations
 
 import httpx
 
+from .. import _legacy_response
 from ..types import Event, event_list_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import (
     AsyncPaginator,
@@ -23,6 +24,10 @@ class Events(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> EventsWithRawResponse:
         return EventsWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> EventsWithStreamingResponse:
+        return EventsWithStreamingResponse(self)
 
     def retrieve(
         self,
@@ -119,6 +124,10 @@ class AsyncEvents(AsyncAPIResource):
     def with_raw_response(self) -> AsyncEventsWithRawResponse:
         return AsyncEventsWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncEventsWithStreamingResponse:
+        return AsyncEventsWithStreamingResponse(self)
+
     async def retrieve(
         self,
         event_id: str,
@@ -211,19 +220,39 @@ class AsyncEvents(AsyncAPIResource):
 
 class EventsWithRawResponse:
     def __init__(self, events: Events) -> None:
-        self.retrieve = to_raw_response_wrapper(
+        self.retrieve = _legacy_response.to_raw_response_wrapper(
             events.retrieve,
         )
-        self.list = to_raw_response_wrapper(
+        self.list = _legacy_response.to_raw_response_wrapper(
             events.list,
         )
 
 
 class AsyncEventsWithRawResponse:
     def __init__(self, events: AsyncEvents) -> None:
-        self.retrieve = async_to_raw_response_wrapper(
+        self.retrieve = _legacy_response.async_to_raw_response_wrapper(
             events.retrieve,
         )
-        self.list = async_to_raw_response_wrapper(
+        self.list = _legacy_response.async_to_raw_response_wrapper(
+            events.list,
+        )
+
+
+class EventsWithStreamingResponse:
+    def __init__(self, events: Events) -> None:
+        self.retrieve = to_streamed_response_wrapper(
+            events.retrieve,
+        )
+        self.list = to_streamed_response_wrapper(
+            events.list,
+        )
+
+
+class AsyncEventsWithStreamingResponse:
+    def __init__(self, events: AsyncEvents) -> None:
+        self.retrieve = async_to_streamed_response_wrapper(
+            events.retrieve,
+        )
+        self.list = async_to_streamed_response_wrapper(
             events.list,
         )

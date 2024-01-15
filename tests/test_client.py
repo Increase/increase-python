@@ -19,6 +19,8 @@ from pydantic import ValidationError
 from increase import Increase, AsyncIncrease, APIResponseValidationError
 from increase._client import Increase, AsyncIncrease
 from increase._models import BaseModel, FinalRequestOptions
+from increase._response import APIResponse, AsyncAPIResponse
+from increase._constants import RAW_RESPONSE_HEADER
 from increase._exceptions import IncreaseError, APIStatusError, APITimeoutError, APIResponseValidationError
 from increase._base_client import (
     DEFAULT_TIMEOUT,
@@ -224,6 +226,7 @@ class TestIncrease:
                         # to_raw_response_wrapper leaks through the @functools.wraps() decorator.
                         #
                         # removing the decorator fixes the leak for reasons we don't understand.
+                        "increase/_legacy_response.py",
                         "increase/_response.py",
                         # pydantic.BaseModel.model_dump || pydantic.BaseModel.dict leak memory for some reason.
                         "increase/_compat.py",
@@ -791,6 +794,25 @@ class TestIncrease:
 
     @mock.patch("increase._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
+    def test_streaming_response(self) -> None:
+        response = self.client.post(
+            "/accounts",
+            body=dict(name="My First Increase Account"),
+            cast_to=APIResponse[bytes],
+            options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
+        )
+
+        assert not cast(Any, response.is_closed)
+        assert _get_open_connections(self.client) == 1
+
+        for _ in response.iter_bytes():
+            ...
+
+        assert cast(Any, response.is_closed)
+        assert _get_open_connections(self.client) == 0
+
+    @mock.patch("increase._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @pytest.mark.respx(base_url=base_url)
     def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
         respx_mock.post("/accounts").mock(side_effect=httpx.TimeoutException("Test timeout error"))
 
@@ -799,7 +821,7 @@ class TestIncrease:
                 "/accounts",
                 body=dict(name="My First Increase Account"),
                 cast_to=httpx.Response,
-                options={"headers": {"X-Stainless-Streamed-Raw-Response": "true"}},
+                options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
 
         assert _get_open_connections(self.client) == 0
@@ -814,7 +836,7 @@ class TestIncrease:
                 "/accounts",
                 body=dict(name="My First Increase Account"),
                 cast_to=httpx.Response,
-                options={"headers": {"X-Stainless-Streamed-Raw-Response": "true"}},
+                options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
 
         assert _get_open_connections(self.client) == 0
@@ -995,6 +1017,7 @@ class TestAsyncIncrease:
                         # to_raw_response_wrapper leaks through the @functools.wraps() decorator.
                         #
                         # removing the decorator fixes the leak for reasons we don't understand.
+                        "increase/_legacy_response.py",
                         "increase/_response.py",
                         # pydantic.BaseModel.model_dump || pydantic.BaseModel.dict leak memory for some reason.
                         "increase/_compat.py",
@@ -1578,6 +1601,25 @@ class TestAsyncIncrease:
 
     @mock.patch("increase._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
+    async def test_streaming_response(self) -> None:
+        response = await self.client.post(
+            "/accounts",
+            body=dict(name="My First Increase Account"),
+            cast_to=AsyncAPIResponse[bytes],
+            options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
+        )
+
+        assert not cast(Any, response.is_closed)
+        assert _get_open_connections(self.client) == 1
+
+        async for _ in response.iter_bytes():
+            ...
+
+        assert cast(Any, response.is_closed)
+        assert _get_open_connections(self.client) == 0
+
+    @mock.patch("increase._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @pytest.mark.respx(base_url=base_url)
     async def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
         respx_mock.post("/accounts").mock(side_effect=httpx.TimeoutException("Test timeout error"))
 
@@ -1586,7 +1628,7 @@ class TestAsyncIncrease:
                 "/accounts",
                 body=dict(name="My First Increase Account"),
                 cast_to=httpx.Response,
-                options={"headers": {"X-Stainless-Streamed-Raw-Response": "true"}},
+                options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
 
         assert _get_open_connections(self.client) == 0
@@ -1601,7 +1643,7 @@ class TestAsyncIncrease:
                 "/accounts",
                 body=dict(name="My First Increase Account"),
                 cast_to=httpx.Response,
-                options={"headers": {"X-Stainless-Streamed-Raw-Response": "true"}},
+                options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
 
         assert _get_open_connections(self.client) == 0

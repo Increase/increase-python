@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from typing import Any, cast
 
 import pytest
 
@@ -72,9 +73,31 @@ class TestInboundWireDrawdownRequests:
             originator_routing_number="101050001",
             recipient_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         inbound_wire_drawdown_request = response.parse()
         assert_matches_type(InboundWireDrawdownRequest, inbound_wire_drawdown_request, path=["response"])
+
+    @parametrize
+    def test_streaming_response_create(self, client: Increase) -> None:
+        with client.simulations.inbound_wire_drawdown_requests.with_streaming_response.create(
+            amount=10000,
+            beneficiary_account_number="987654321",
+            beneficiary_routing_number="101050001",
+            currency="USD",
+            message_to_recipient="Invoice 29582",
+            originator_account_number="987654321",
+            originator_routing_number="101050001",
+            recipient_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            inbound_wire_drawdown_request = response.parse()
+            assert_matches_type(InboundWireDrawdownRequest, inbound_wire_drawdown_request, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncInboundWireDrawdownRequests:
@@ -134,6 +157,28 @@ class TestAsyncInboundWireDrawdownRequests:
             originator_routing_number="101050001",
             recipient_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         inbound_wire_drawdown_request = response.parse()
         assert_matches_type(InboundWireDrawdownRequest, inbound_wire_drawdown_request, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_create(self, client: AsyncIncrease) -> None:
+        async with client.simulations.inbound_wire_drawdown_requests.with_streaming_response.create(
+            amount=10000,
+            beneficiary_account_number="987654321",
+            beneficiary_routing_number="101050001",
+            currency="USD",
+            message_to_recipient="Invoice 29582",
+            originator_account_number="987654321",
+            originator_routing_number="101050001",
+            recipient_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            inbound_wire_drawdown_request = await response.parse()
+            assert_matches_type(InboundWireDrawdownRequest, inbound_wire_drawdown_request, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
