@@ -4,10 +4,11 @@ from __future__ import annotations
 
 import httpx
 
+from ... import _legacy_response
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..._base_client import (
     make_request_options,
 )
@@ -20,6 +21,10 @@ class Balances(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> BalancesWithRawResponse:
         return BalancesWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> BalancesWithStreamingResponse:
+        return BalancesWithStreamingResponse(self)
 
     def retrieve(
         self,
@@ -60,6 +65,10 @@ class AsyncBalances(AsyncAPIResource):
     def with_raw_response(self) -> AsyncBalancesWithRawResponse:
         return AsyncBalancesWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncBalancesWithStreamingResponse:
+        return AsyncBalancesWithStreamingResponse(self)
+
     async def retrieve(
         self,
         account_id: str,
@@ -96,13 +105,27 @@ class AsyncBalances(AsyncAPIResource):
 
 class BalancesWithRawResponse:
     def __init__(self, balances: Balances) -> None:
-        self.retrieve = to_raw_response_wrapper(
+        self.retrieve = _legacy_response.to_raw_response_wrapper(
             balances.retrieve,
         )
 
 
 class AsyncBalancesWithRawResponse:
     def __init__(self, balances: AsyncBalances) -> None:
-        self.retrieve = async_to_raw_response_wrapper(
+        self.retrieve = _legacy_response.async_to_raw_response_wrapper(
+            balances.retrieve,
+        )
+
+
+class BalancesWithStreamingResponse:
+    def __init__(self, balances: Balances) -> None:
+        self.retrieve = to_streamed_response_wrapper(
+            balances.retrieve,
+        )
+
+
+class AsyncBalancesWithStreamingResponse:
+    def __init__(self, balances: AsyncBalances) -> None:
+        self.retrieve = async_to_streamed_response_wrapper(
             balances.retrieve,
         )

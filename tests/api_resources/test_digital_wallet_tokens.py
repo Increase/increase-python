@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from typing import Any, cast
 
 import pytest
 
@@ -34,9 +35,24 @@ class TestDigitalWalletTokens:
         response = client.digital_wallet_tokens.with_raw_response.retrieve(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         digital_wallet_token = response.parse()
         assert_matches_type(DigitalWalletToken, digital_wallet_token, path=["response"])
+
+    @parametrize
+    def test_streaming_response_retrieve(self, client: Increase) -> None:
+        with client.digital_wallet_tokens.with_streaming_response.retrieve(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            digital_wallet_token = response.parse()
+            assert_matches_type(DigitalWalletToken, digital_wallet_token, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_list(self, client: Increase) -> None:
@@ -61,9 +77,22 @@ class TestDigitalWalletTokens:
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
         response = client.digital_wallet_tokens.with_raw_response.list()
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         digital_wallet_token = response.parse()
         assert_matches_type(SyncPage[DigitalWalletToken], digital_wallet_token, path=["response"])
+
+    @parametrize
+    def test_streaming_response_list(self, client: Increase) -> None:
+        with client.digital_wallet_tokens.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            digital_wallet_token = response.parse()
+            assert_matches_type(SyncPage[DigitalWalletToken], digital_wallet_token, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncDigitalWalletTokens:
@@ -83,9 +112,24 @@ class TestAsyncDigitalWalletTokens:
         response = await client.digital_wallet_tokens.with_raw_response.retrieve(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         digital_wallet_token = response.parse()
         assert_matches_type(DigitalWalletToken, digital_wallet_token, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_retrieve(self, client: AsyncIncrease) -> None:
+        async with client.digital_wallet_tokens.with_streaming_response.retrieve(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            digital_wallet_token = await response.parse()
+            assert_matches_type(DigitalWalletToken, digital_wallet_token, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_list(self, client: AsyncIncrease) -> None:
@@ -110,6 +154,19 @@ class TestAsyncDigitalWalletTokens:
     @parametrize
     async def test_raw_response_list(self, client: AsyncIncrease) -> None:
         response = await client.digital_wallet_tokens.with_raw_response.list()
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         digital_wallet_token = response.parse()
         assert_matches_type(AsyncPage[DigitalWalletToken], digital_wallet_token, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_list(self, client: AsyncIncrease) -> None:
+        async with client.digital_wallet_tokens.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            digital_wallet_token = await response.parse()
+            assert_matches_type(AsyncPage[DigitalWalletToken], digital_wallet_token, path=["response"])
+
+        assert cast(Any, response.is_closed) is True

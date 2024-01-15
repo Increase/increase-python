@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from typing import Any, cast
 
 import pytest
 
@@ -49,9 +50,26 @@ class TestExternalAccounts:
             description="Landlord",
             routing_number="101050001",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         external_account = response.parse()
         assert_matches_type(ExternalAccount, external_account, path=["response"])
+
+    @parametrize
+    def test_streaming_response_create(self, client: Increase) -> None:
+        with client.external_accounts.with_streaming_response.create(
+            account_number="987654321",
+            description="Landlord",
+            routing_number="101050001",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            external_account = response.parse()
+            assert_matches_type(ExternalAccount, external_account, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
@@ -65,9 +83,24 @@ class TestExternalAccounts:
         response = client.external_accounts.with_raw_response.retrieve(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         external_account = response.parse()
         assert_matches_type(ExternalAccount, external_account, path=["response"])
+
+    @parametrize
+    def test_streaming_response_retrieve(self, client: Increase) -> None:
+        with client.external_accounts.with_streaming_response.retrieve(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            external_account = response.parse()
+            assert_matches_type(ExternalAccount, external_account, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_update(self, client: Increase) -> None:
@@ -90,9 +123,24 @@ class TestExternalAccounts:
         response = client.external_accounts.with_raw_response.update(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         external_account = response.parse()
         assert_matches_type(ExternalAccount, external_account, path=["response"])
+
+    @parametrize
+    def test_streaming_response_update(self, client: Increase) -> None:
+        with client.external_accounts.with_streaming_response.update(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            external_account = response.parse()
+            assert_matches_type(ExternalAccount, external_account, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_list(self, client: Increase) -> None:
@@ -112,9 +160,22 @@ class TestExternalAccounts:
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
         response = client.external_accounts.with_raw_response.list()
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         external_account = response.parse()
         assert_matches_type(SyncPage[ExternalAccount], external_account, path=["response"])
+
+    @parametrize
+    def test_streaming_response_list(self, client: Increase) -> None:
+        with client.external_accounts.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            external_account = response.parse()
+            assert_matches_type(SyncPage[ExternalAccount], external_account, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncExternalAccounts:
@@ -148,9 +209,26 @@ class TestAsyncExternalAccounts:
             description="Landlord",
             routing_number="101050001",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         external_account = response.parse()
         assert_matches_type(ExternalAccount, external_account, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_create(self, client: AsyncIncrease) -> None:
+        async with client.external_accounts.with_streaming_response.create(
+            account_number="987654321",
+            description="Landlord",
+            routing_number="101050001",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            external_account = await response.parse()
+            assert_matches_type(ExternalAccount, external_account, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_retrieve(self, client: AsyncIncrease) -> None:
@@ -164,9 +242,24 @@ class TestAsyncExternalAccounts:
         response = await client.external_accounts.with_raw_response.retrieve(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         external_account = response.parse()
         assert_matches_type(ExternalAccount, external_account, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_retrieve(self, client: AsyncIncrease) -> None:
+        async with client.external_accounts.with_streaming_response.retrieve(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            external_account = await response.parse()
+            assert_matches_type(ExternalAccount, external_account, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_update(self, client: AsyncIncrease) -> None:
@@ -189,9 +282,24 @@ class TestAsyncExternalAccounts:
         response = await client.external_accounts.with_raw_response.update(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         external_account = response.parse()
         assert_matches_type(ExternalAccount, external_account, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_update(self, client: AsyncIncrease) -> None:
+        async with client.external_accounts.with_streaming_response.update(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            external_account = await response.parse()
+            assert_matches_type(ExternalAccount, external_account, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_list(self, client: AsyncIncrease) -> None:
@@ -211,6 +319,19 @@ class TestAsyncExternalAccounts:
     @parametrize
     async def test_raw_response_list(self, client: AsyncIncrease) -> None:
         response = await client.external_accounts.with_raw_response.list()
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         external_account = response.parse()
         assert_matches_type(AsyncPage[ExternalAccount], external_account, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_list(self, client: AsyncIncrease) -> None:
+        async with client.external_accounts.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            external_account = await response.parse()
+            assert_matches_type(AsyncPage[ExternalAccount], external_account, path=["response"])
+
+        assert cast(Any, response.is_closed) is True

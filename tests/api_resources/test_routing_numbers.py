@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from typing import Any, cast
 
 import pytest
 
@@ -42,9 +43,24 @@ class TestRoutingNumbers:
         response = client.routing_numbers.with_raw_response.list(
             routing_number="xxxxxxxxx",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         routing_number = response.parse()
         assert_matches_type(SyncPage[RoutingNumber], routing_number, path=["response"])
+
+    @parametrize
+    def test_streaming_response_list(self, client: Increase) -> None:
+        with client.routing_numbers.with_streaming_response.list(
+            routing_number="xxxxxxxxx",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            routing_number = response.parse()
+            assert_matches_type(SyncPage[RoutingNumber], routing_number, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncRoutingNumbers:
@@ -73,6 +89,21 @@ class TestAsyncRoutingNumbers:
         response = await client.routing_numbers.with_raw_response.list(
             routing_number="xxxxxxxxx",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         routing_number = response.parse()
         assert_matches_type(AsyncPage[RoutingNumber], routing_number, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_list(self, client: AsyncIncrease) -> None:
+        async with client.routing_numbers.with_streaming_response.list(
+            routing_number="xxxxxxxxx",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            routing_number = await response.parse()
+            assert_matches_type(AsyncPage[RoutingNumber], routing_number, path=["response"])
+
+        assert cast(Any, response.is_closed) is True

@@ -4,12 +4,13 @@ from __future__ import annotations
 
 import httpx
 
+from ... import _legacy_response
 from ...types import Program
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..._base_client import (
     make_request_options,
 )
@@ -22,6 +23,10 @@ class Programs(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> ProgramsWithRawResponse:
         return ProgramsWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> ProgramsWithStreamingResponse:
+        return ProgramsWithStreamingResponse(self)
 
     def create(
         self,
@@ -73,6 +78,10 @@ class AsyncPrograms(AsyncAPIResource):
     def with_raw_response(self) -> AsyncProgramsWithRawResponse:
         return AsyncProgramsWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncProgramsWithStreamingResponse:
+        return AsyncProgramsWithStreamingResponse(self)
+
     async def create(
         self,
         *,
@@ -120,13 +129,27 @@ class AsyncPrograms(AsyncAPIResource):
 
 class ProgramsWithRawResponse:
     def __init__(self, programs: Programs) -> None:
-        self.create = to_raw_response_wrapper(
+        self.create = _legacy_response.to_raw_response_wrapper(
             programs.create,
         )
 
 
 class AsyncProgramsWithRawResponse:
     def __init__(self, programs: AsyncPrograms) -> None:
-        self.create = async_to_raw_response_wrapper(
+        self.create = _legacy_response.async_to_raw_response_wrapper(
+            programs.create,
+        )
+
+
+class ProgramsWithStreamingResponse:
+    def __init__(self, programs: Programs) -> None:
+        self.create = to_streamed_response_wrapper(
+            programs.create,
+        )
+
+
+class AsyncProgramsWithStreamingResponse:
+    def __init__(self, programs: AsyncPrograms) -> None:
+        self.create = async_to_streamed_response_wrapper(
             programs.create,
         )

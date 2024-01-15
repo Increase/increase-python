@@ -7,6 +7,7 @@ from datetime import datetime
 
 import httpx
 
+from .. import _legacy_response
 from ..types import (
     ProofOfAuthorizationRequestSubmission,
     proof_of_authorization_request_submission_list_params,
@@ -16,7 +17,7 @@ from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import (
     AsyncPaginator,
@@ -30,6 +31,10 @@ class ProofOfAuthorizationRequestSubmissions(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> ProofOfAuthorizationRequestSubmissionsWithRawResponse:
         return ProofOfAuthorizationRequestSubmissionsWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> ProofOfAuthorizationRequestSubmissionsWithStreamingResponse:
+        return ProofOfAuthorizationRequestSubmissionsWithStreamingResponse(self)
 
     def create(
         self,
@@ -192,6 +197,10 @@ class AsyncProofOfAuthorizationRequestSubmissions(AsyncAPIResource):
     def with_raw_response(self) -> AsyncProofOfAuthorizationRequestSubmissionsWithRawResponse:
         return AsyncProofOfAuthorizationRequestSubmissionsWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncProofOfAuthorizationRequestSubmissionsWithStreamingResponse:
+        return AsyncProofOfAuthorizationRequestSubmissionsWithStreamingResponse(self)
+
     async def create(
         self,
         *,
@@ -350,25 +359,51 @@ class AsyncProofOfAuthorizationRequestSubmissions(AsyncAPIResource):
 
 class ProofOfAuthorizationRequestSubmissionsWithRawResponse:
     def __init__(self, proof_of_authorization_request_submissions: ProofOfAuthorizationRequestSubmissions) -> None:
-        self.create = to_raw_response_wrapper(
+        self.create = _legacy_response.to_raw_response_wrapper(
             proof_of_authorization_request_submissions.create,
         )
-        self.retrieve = to_raw_response_wrapper(
+        self.retrieve = _legacy_response.to_raw_response_wrapper(
             proof_of_authorization_request_submissions.retrieve,
         )
-        self.list = to_raw_response_wrapper(
+        self.list = _legacy_response.to_raw_response_wrapper(
             proof_of_authorization_request_submissions.list,
         )
 
 
 class AsyncProofOfAuthorizationRequestSubmissionsWithRawResponse:
     def __init__(self, proof_of_authorization_request_submissions: AsyncProofOfAuthorizationRequestSubmissions) -> None:
-        self.create = async_to_raw_response_wrapper(
+        self.create = _legacy_response.async_to_raw_response_wrapper(
             proof_of_authorization_request_submissions.create,
         )
-        self.retrieve = async_to_raw_response_wrapper(
+        self.retrieve = _legacy_response.async_to_raw_response_wrapper(
             proof_of_authorization_request_submissions.retrieve,
         )
-        self.list = async_to_raw_response_wrapper(
+        self.list = _legacy_response.async_to_raw_response_wrapper(
+            proof_of_authorization_request_submissions.list,
+        )
+
+
+class ProofOfAuthorizationRequestSubmissionsWithStreamingResponse:
+    def __init__(self, proof_of_authorization_request_submissions: ProofOfAuthorizationRequestSubmissions) -> None:
+        self.create = to_streamed_response_wrapper(
+            proof_of_authorization_request_submissions.create,
+        )
+        self.retrieve = to_streamed_response_wrapper(
+            proof_of_authorization_request_submissions.retrieve,
+        )
+        self.list = to_streamed_response_wrapper(
+            proof_of_authorization_request_submissions.list,
+        )
+
+
+class AsyncProofOfAuthorizationRequestSubmissionsWithStreamingResponse:
+    def __init__(self, proof_of_authorization_request_submissions: AsyncProofOfAuthorizationRequestSubmissions) -> None:
+        self.create = async_to_streamed_response_wrapper(
+            proof_of_authorization_request_submissions.create,
+        )
+        self.retrieve = async_to_streamed_response_wrapper(
+            proof_of_authorization_request_submissions.retrieve,
+        )
+        self.list = async_to_streamed_response_wrapper(
             proof_of_authorization_request_submissions.list,
         )

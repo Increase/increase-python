@@ -4,12 +4,13 @@ from __future__ import annotations
 
 import httpx
 
+from .. import _legacy_response
 from ..types import RealTimeDecision, real_time_decision_action_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from .._base_client import (
     make_request_options,
 )
@@ -21,6 +22,10 @@ class RealTimeDecisions(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> RealTimeDecisionsWithRawResponse:
         return RealTimeDecisionsWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> RealTimeDecisionsWithStreamingResponse:
+        return RealTimeDecisionsWithStreamingResponse(self)
 
     def retrieve(
         self,
@@ -122,6 +127,10 @@ class AsyncRealTimeDecisions(AsyncAPIResource):
     def with_raw_response(self) -> AsyncRealTimeDecisionsWithRawResponse:
         return AsyncRealTimeDecisionsWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncRealTimeDecisionsWithStreamingResponse:
+        return AsyncRealTimeDecisionsWithStreamingResponse(self)
+
     async def retrieve(
         self,
         real_time_decision_id: str,
@@ -219,19 +228,39 @@ class AsyncRealTimeDecisions(AsyncAPIResource):
 
 class RealTimeDecisionsWithRawResponse:
     def __init__(self, real_time_decisions: RealTimeDecisions) -> None:
-        self.retrieve = to_raw_response_wrapper(
+        self.retrieve = _legacy_response.to_raw_response_wrapper(
             real_time_decisions.retrieve,
         )
-        self.action = to_raw_response_wrapper(
+        self.action = _legacy_response.to_raw_response_wrapper(
             real_time_decisions.action,
         )
 
 
 class AsyncRealTimeDecisionsWithRawResponse:
     def __init__(self, real_time_decisions: AsyncRealTimeDecisions) -> None:
-        self.retrieve = async_to_raw_response_wrapper(
+        self.retrieve = _legacy_response.async_to_raw_response_wrapper(
             real_time_decisions.retrieve,
         )
-        self.action = async_to_raw_response_wrapper(
+        self.action = _legacy_response.async_to_raw_response_wrapper(
+            real_time_decisions.action,
+        )
+
+
+class RealTimeDecisionsWithStreamingResponse:
+    def __init__(self, real_time_decisions: RealTimeDecisions) -> None:
+        self.retrieve = to_streamed_response_wrapper(
+            real_time_decisions.retrieve,
+        )
+        self.action = to_streamed_response_wrapper(
+            real_time_decisions.action,
+        )
+
+
+class AsyncRealTimeDecisionsWithStreamingResponse:
+    def __init__(self, real_time_decisions: AsyncRealTimeDecisions) -> None:
+        self.retrieve = async_to_streamed_response_wrapper(
+            real_time_decisions.retrieve,
+        )
+        self.action = async_to_streamed_response_wrapper(
             real_time_decisions.action,
         )

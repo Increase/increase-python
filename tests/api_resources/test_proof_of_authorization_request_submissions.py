@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from typing import Any, cast
 
 import pytest
 
@@ -61,11 +62,32 @@ class TestProofOfAuthorizationRequestSubmissions:
             authorizer_name="Ian Crease",
             proof_of_authorization_request_id="proof_of_authorization_request_iwp8no25h3rjvil6ad3b",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         proof_of_authorization_request_submission = response.parse()
         assert_matches_type(
             ProofOfAuthorizationRequestSubmission, proof_of_authorization_request_submission, path=["response"]
         )
+
+    @parametrize
+    def test_streaming_response_create(self, client: Increase) -> None:
+        with client.proof_of_authorization_request_submissions.with_streaming_response.create(
+            authorization_terms="I agree to the terms of service.",
+            authorized_at=parse_datetime("2020-01-31T23:59:59Z"),
+            authorizer_email="user@example.com",
+            authorizer_name="Ian Crease",
+            proof_of_authorization_request_id="proof_of_authorization_request_iwp8no25h3rjvil6ad3b",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            proof_of_authorization_request_submission = response.parse()
+            assert_matches_type(
+                ProofOfAuthorizationRequestSubmission, proof_of_authorization_request_submission, path=["response"]
+            )
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
@@ -81,11 +103,28 @@ class TestProofOfAuthorizationRequestSubmissions:
         response = client.proof_of_authorization_request_submissions.with_raw_response.retrieve(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         proof_of_authorization_request_submission = response.parse()
         assert_matches_type(
             ProofOfAuthorizationRequestSubmission, proof_of_authorization_request_submission, path=["response"]
         )
+
+    @parametrize
+    def test_streaming_response_retrieve(self, client: Increase) -> None:
+        with client.proof_of_authorization_request_submissions.with_streaming_response.retrieve(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            proof_of_authorization_request_submission = response.parse()
+            assert_matches_type(
+                ProofOfAuthorizationRequestSubmission, proof_of_authorization_request_submission, path=["response"]
+            )
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_list(self, client: Increase) -> None:
@@ -112,6 +151,8 @@ class TestProofOfAuthorizationRequestSubmissions:
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
         response = client.proof_of_authorization_request_submissions.with_raw_response.list()
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         proof_of_authorization_request_submission = response.parse()
         assert_matches_type(
@@ -119,6 +160,21 @@ class TestProofOfAuthorizationRequestSubmissions:
             proof_of_authorization_request_submission,
             path=["response"],
         )
+
+    @parametrize
+    def test_streaming_response_list(self, client: Increase) -> None:
+        with client.proof_of_authorization_request_submissions.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            proof_of_authorization_request_submission = response.parse()
+            assert_matches_type(
+                SyncPage[ProofOfAuthorizationRequestSubmission],
+                proof_of_authorization_request_submission,
+                path=["response"],
+            )
+
+        assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncProofOfAuthorizationRequestSubmissions:
@@ -163,11 +219,32 @@ class TestAsyncProofOfAuthorizationRequestSubmissions:
             authorizer_name="Ian Crease",
             proof_of_authorization_request_id="proof_of_authorization_request_iwp8no25h3rjvil6ad3b",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         proof_of_authorization_request_submission = response.parse()
         assert_matches_type(
             ProofOfAuthorizationRequestSubmission, proof_of_authorization_request_submission, path=["response"]
         )
+
+    @parametrize
+    async def test_streaming_response_create(self, client: AsyncIncrease) -> None:
+        async with client.proof_of_authorization_request_submissions.with_streaming_response.create(
+            authorization_terms="I agree to the terms of service.",
+            authorized_at=parse_datetime("2020-01-31T23:59:59Z"),
+            authorizer_email="user@example.com",
+            authorizer_name="Ian Crease",
+            proof_of_authorization_request_id="proof_of_authorization_request_iwp8no25h3rjvil6ad3b",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            proof_of_authorization_request_submission = await response.parse()
+            assert_matches_type(
+                ProofOfAuthorizationRequestSubmission, proof_of_authorization_request_submission, path=["response"]
+            )
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_retrieve(self, client: AsyncIncrease) -> None:
@@ -183,11 +260,28 @@ class TestAsyncProofOfAuthorizationRequestSubmissions:
         response = await client.proof_of_authorization_request_submissions.with_raw_response.retrieve(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         proof_of_authorization_request_submission = response.parse()
         assert_matches_type(
             ProofOfAuthorizationRequestSubmission, proof_of_authorization_request_submission, path=["response"]
         )
+
+    @parametrize
+    async def test_streaming_response_retrieve(self, client: AsyncIncrease) -> None:
+        async with client.proof_of_authorization_request_submissions.with_streaming_response.retrieve(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            proof_of_authorization_request_submission = await response.parse()
+            assert_matches_type(
+                ProofOfAuthorizationRequestSubmission, proof_of_authorization_request_submission, path=["response"]
+            )
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_list(self, client: AsyncIncrease) -> None:
@@ -214,6 +308,8 @@ class TestAsyncProofOfAuthorizationRequestSubmissions:
     @parametrize
     async def test_raw_response_list(self, client: AsyncIncrease) -> None:
         response = await client.proof_of_authorization_request_submissions.with_raw_response.list()
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         proof_of_authorization_request_submission = response.parse()
         assert_matches_type(
@@ -221,3 +317,18 @@ class TestAsyncProofOfAuthorizationRequestSubmissions:
             proof_of_authorization_request_submission,
             path=["response"],
         )
+
+    @parametrize
+    async def test_streaming_response_list(self, client: AsyncIncrease) -> None:
+        async with client.proof_of_authorization_request_submissions.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            proof_of_authorization_request_submission = await response.parse()
+            assert_matches_type(
+                AsyncPage[ProofOfAuthorizationRequestSubmission],
+                proof_of_authorization_request_submission,
+                path=["response"],
+            )
+
+        assert cast(Any, response.is_closed) is True

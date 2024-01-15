@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from typing import Any, cast
 
 import pytest
 
@@ -34,9 +35,25 @@ class TestCheckDeposits:
         response = client.simulations.check_deposits.with_raw_response.reject(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         check_deposit = response.parse()
         assert_matches_type(CheckDeposit, check_deposit, path=["response"])
+
+    @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
+    @parametrize
+    def test_streaming_response_reject(self, client: Increase) -> None:
+        with client.simulations.check_deposits.with_streaming_response.reject(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            check_deposit = response.parse()
+            assert_matches_type(CheckDeposit, check_deposit, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_return(self, client: Increase) -> None:
@@ -50,9 +67,24 @@ class TestCheckDeposits:
         response = client.simulations.check_deposits.with_raw_response.return_(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         check_deposit = response.parse()
         assert_matches_type(CheckDeposit, check_deposit, path=["response"])
+
+    @parametrize
+    def test_streaming_response_return(self, client: Increase) -> None:
+        with client.simulations.check_deposits.with_streaming_response.return_(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            check_deposit = response.parse()
+            assert_matches_type(CheckDeposit, check_deposit, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
@@ -68,9 +100,25 @@ class TestCheckDeposits:
         response = client.simulations.check_deposits.with_raw_response.submit(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         check_deposit = response.parse()
         assert_matches_type(CheckDeposit, check_deposit, path=["response"])
+
+    @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
+    @parametrize
+    def test_streaming_response_submit(self, client: Increase) -> None:
+        with client.simulations.check_deposits.with_streaming_response.submit(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            check_deposit = response.parse()
+            assert_matches_type(CheckDeposit, check_deposit, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncCheckDeposits:
@@ -92,9 +140,25 @@ class TestAsyncCheckDeposits:
         response = await client.simulations.check_deposits.with_raw_response.reject(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         check_deposit = response.parse()
         assert_matches_type(CheckDeposit, check_deposit, path=["response"])
+
+    @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
+    @parametrize
+    async def test_streaming_response_reject(self, client: AsyncIncrease) -> None:
+        async with client.simulations.check_deposits.with_streaming_response.reject(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            check_deposit = await response.parse()
+            assert_matches_type(CheckDeposit, check_deposit, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_return(self, client: AsyncIncrease) -> None:
@@ -108,9 +172,24 @@ class TestAsyncCheckDeposits:
         response = await client.simulations.check_deposits.with_raw_response.return_(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         check_deposit = response.parse()
         assert_matches_type(CheckDeposit, check_deposit, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_return(self, client: AsyncIncrease) -> None:
+        async with client.simulations.check_deposits.with_streaming_response.return_(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            check_deposit = await response.parse()
+            assert_matches_type(CheckDeposit, check_deposit, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
@@ -126,6 +205,22 @@ class TestAsyncCheckDeposits:
         response = await client.simulations.check_deposits.with_raw_response.submit(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         check_deposit = response.parse()
         assert_matches_type(CheckDeposit, check_deposit, path=["response"])
+
+    @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
+    @parametrize
+    async def test_streaming_response_submit(self, client: AsyncIncrease) -> None:
+        async with client.simulations.check_deposits.with_streaming_response.submit(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            check_deposit = await response.parse()
+            assert_matches_type(CheckDeposit, check_deposit, path=["response"])
+
+        assert cast(Any, response.is_closed) is True

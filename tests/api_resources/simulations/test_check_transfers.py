@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from typing import Any, cast
 
 import pytest
 
@@ -32,9 +33,24 @@ class TestCheckTransfers:
         response = client.simulations.check_transfers.with_raw_response.deposit(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         check_transfer = response.parse()
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
+
+    @parametrize
+    def test_streaming_response_deposit(self, client: Increase) -> None:
+        with client.simulations.check_transfers.with_streaming_response.deposit(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            check_transfer = response.parse()
+            assert_matches_type(CheckTransfer, check_transfer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
@@ -50,9 +66,25 @@ class TestCheckTransfers:
         response = client.simulations.check_transfers.with_raw_response.mail(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         check_transfer = response.parse()
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
+
+    @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
+    @parametrize
+    def test_streaming_response_mail(self, client: Increase) -> None:
+        with client.simulations.check_transfers.with_streaming_response.mail(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            check_transfer = response.parse()
+            assert_matches_type(CheckTransfer, check_transfer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncCheckTransfers:
@@ -72,9 +104,24 @@ class TestAsyncCheckTransfers:
         response = await client.simulations.check_transfers.with_raw_response.deposit(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         check_transfer = response.parse()
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_deposit(self, client: AsyncIncrease) -> None:
+        async with client.simulations.check_transfers.with_streaming_response.deposit(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            check_transfer = await response.parse()
+            assert_matches_type(CheckTransfer, check_transfer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
@@ -90,6 +137,22 @@ class TestAsyncCheckTransfers:
         response = await client.simulations.check_transfers.with_raw_response.mail(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         check_transfer = response.parse()
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
+
+    @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
+    @parametrize
+    async def test_streaming_response_mail(self, client: AsyncIncrease) -> None:
+        async with client.simulations.check_transfers.with_streaming_response.mail(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            check_transfer = await response.parse()
+            assert_matches_type(CheckTransfer, check_transfer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True

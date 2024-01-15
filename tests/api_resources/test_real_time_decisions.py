@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from typing import Any, cast
 
 import pytest
 
@@ -32,9 +33,24 @@ class TestRealTimeDecisions:
         response = client.real_time_decisions.with_raw_response.retrieve(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         real_time_decision = response.parse()
         assert_matches_type(RealTimeDecision, real_time_decision, path=["response"])
+
+    @parametrize
+    def test_streaming_response_retrieve(self, client: Increase) -> None:
+        with client.real_time_decisions.with_streaming_response.retrieve(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            real_time_decision = response.parse()
+            assert_matches_type(RealTimeDecision, real_time_decision, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_action(self, client: Increase) -> None:
@@ -65,9 +81,24 @@ class TestRealTimeDecisions:
         response = client.real_time_decisions.with_raw_response.action(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         real_time_decision = response.parse()
         assert_matches_type(RealTimeDecision, real_time_decision, path=["response"])
+
+    @parametrize
+    def test_streaming_response_action(self, client: Increase) -> None:
+        with client.real_time_decisions.with_streaming_response.action(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            real_time_decision = response.parse()
+            assert_matches_type(RealTimeDecision, real_time_decision, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncRealTimeDecisions:
@@ -87,9 +118,24 @@ class TestAsyncRealTimeDecisions:
         response = await client.real_time_decisions.with_raw_response.retrieve(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         real_time_decision = response.parse()
         assert_matches_type(RealTimeDecision, real_time_decision, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_retrieve(self, client: AsyncIncrease) -> None:
+        async with client.real_time_decisions.with_streaming_response.retrieve(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            real_time_decision = await response.parse()
+            assert_matches_type(RealTimeDecision, real_time_decision, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_action(self, client: AsyncIncrease) -> None:
@@ -120,6 +166,21 @@ class TestAsyncRealTimeDecisions:
         response = await client.real_time_decisions.with_raw_response.action(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         real_time_decision = response.parse()
         assert_matches_type(RealTimeDecision, real_time_decision, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_action(self, client: AsyncIncrease) -> None:
+        async with client.real_time_decisions.with_streaming_response.action(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            real_time_decision = await response.parse()
+            assert_matches_type(RealTimeDecision, real_time_decision, path=["response"])
+
+        assert cast(Any, response.is_closed) is True

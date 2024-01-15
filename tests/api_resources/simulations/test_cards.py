@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from typing import Any, cast
 
 import pytest
 
@@ -49,9 +50,24 @@ class TestCards:
         response = client.simulations.cards.with_raw_response.authorize(
             amount=1000,
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card = response.parse()
         assert_matches_type(CardAuthorizationSimulation, card, path=["response"])
+
+    @parametrize
+    def test_streaming_response_authorize(self, client: Increase) -> None:
+        with client.simulations.cards.with_streaming_response.authorize(
+            amount=1000,
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            card = response.parse()
+            assert_matches_type(CardAuthorizationSimulation, card, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_settlement(self, client: Increase) -> None:
@@ -76,9 +92,25 @@ class TestCards:
             card_id="card_oubs0hwk5rn6knuecxg2",
             pending_transaction_id="pending_transaction_k1sfetcau2qbvjbzgju4",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card = response.parse()
         assert_matches_type(Transaction, card, path=["response"])
+
+    @parametrize
+    def test_streaming_response_settlement(self, client: Increase) -> None:
+        with client.simulations.cards.with_streaming_response.settlement(
+            card_id="card_oubs0hwk5rn6knuecxg2",
+            pending_transaction_id="pending_transaction_k1sfetcau2qbvjbzgju4",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            card = response.parse()
+            assert_matches_type(Transaction, card, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncCards:
@@ -114,9 +146,24 @@ class TestAsyncCards:
         response = await client.simulations.cards.with_raw_response.authorize(
             amount=1000,
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card = response.parse()
         assert_matches_type(CardAuthorizationSimulation, card, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_authorize(self, client: AsyncIncrease) -> None:
+        async with client.simulations.cards.with_streaming_response.authorize(
+            amount=1000,
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            card = await response.parse()
+            assert_matches_type(CardAuthorizationSimulation, card, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_settlement(self, client: AsyncIncrease) -> None:
@@ -141,6 +188,22 @@ class TestAsyncCards:
             card_id="card_oubs0hwk5rn6knuecxg2",
             pending_transaction_id="pending_transaction_k1sfetcau2qbvjbzgju4",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card = response.parse()
         assert_matches_type(Transaction, card, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_settlement(self, client: AsyncIncrease) -> None:
+        async with client.simulations.cards.with_streaming_response.settlement(
+            card_id="card_oubs0hwk5rn6knuecxg2",
+            pending_transaction_id="pending_transaction_k1sfetcau2qbvjbzgju4",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            card = await response.parse()
+            assert_matches_type(Transaction, card, path=["response"])
+
+        assert cast(Any, response.is_closed) is True

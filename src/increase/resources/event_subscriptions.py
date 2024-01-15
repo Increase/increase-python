@@ -6,6 +6,7 @@ from typing_extensions import Literal
 
 import httpx
 
+from .. import _legacy_response
 from ..types import (
     EventSubscription,
     event_subscription_list_params,
@@ -16,7 +17,7 @@ from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import (
     AsyncPaginator,
@@ -30,6 +31,10 @@ class EventSubscriptions(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> EventSubscriptionsWithRawResponse:
         return EventSubscriptionsWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> EventSubscriptionsWithStreamingResponse:
+        return EventSubscriptionsWithStreamingResponse(self)
 
     def create(
         self,
@@ -407,6 +412,10 @@ class AsyncEventSubscriptions(AsyncAPIResource):
     def with_raw_response(self) -> AsyncEventSubscriptionsWithRawResponse:
         return AsyncEventSubscriptionsWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncEventSubscriptionsWithStreamingResponse:
+        return AsyncEventSubscriptionsWithStreamingResponse(self)
+
     async def create(
         self,
         *,
@@ -780,31 +789,63 @@ class AsyncEventSubscriptions(AsyncAPIResource):
 
 class EventSubscriptionsWithRawResponse:
     def __init__(self, event_subscriptions: EventSubscriptions) -> None:
-        self.create = to_raw_response_wrapper(
+        self.create = _legacy_response.to_raw_response_wrapper(
             event_subscriptions.create,
         )
-        self.retrieve = to_raw_response_wrapper(
+        self.retrieve = _legacy_response.to_raw_response_wrapper(
             event_subscriptions.retrieve,
         )
-        self.update = to_raw_response_wrapper(
+        self.update = _legacy_response.to_raw_response_wrapper(
             event_subscriptions.update,
         )
-        self.list = to_raw_response_wrapper(
+        self.list = _legacy_response.to_raw_response_wrapper(
             event_subscriptions.list,
         )
 
 
 class AsyncEventSubscriptionsWithRawResponse:
     def __init__(self, event_subscriptions: AsyncEventSubscriptions) -> None:
-        self.create = async_to_raw_response_wrapper(
+        self.create = _legacy_response.async_to_raw_response_wrapper(
             event_subscriptions.create,
         )
-        self.retrieve = async_to_raw_response_wrapper(
+        self.retrieve = _legacy_response.async_to_raw_response_wrapper(
             event_subscriptions.retrieve,
         )
-        self.update = async_to_raw_response_wrapper(
+        self.update = _legacy_response.async_to_raw_response_wrapper(
             event_subscriptions.update,
         )
-        self.list = async_to_raw_response_wrapper(
+        self.list = _legacy_response.async_to_raw_response_wrapper(
+            event_subscriptions.list,
+        )
+
+
+class EventSubscriptionsWithStreamingResponse:
+    def __init__(self, event_subscriptions: EventSubscriptions) -> None:
+        self.create = to_streamed_response_wrapper(
+            event_subscriptions.create,
+        )
+        self.retrieve = to_streamed_response_wrapper(
+            event_subscriptions.retrieve,
+        )
+        self.update = to_streamed_response_wrapper(
+            event_subscriptions.update,
+        )
+        self.list = to_streamed_response_wrapper(
+            event_subscriptions.list,
+        )
+
+
+class AsyncEventSubscriptionsWithStreamingResponse:
+    def __init__(self, event_subscriptions: AsyncEventSubscriptions) -> None:
+        self.create = async_to_streamed_response_wrapper(
+            event_subscriptions.create,
+        )
+        self.retrieve = async_to_streamed_response_wrapper(
+            event_subscriptions.retrieve,
+        )
+        self.update = async_to_streamed_response_wrapper(
+            event_subscriptions.update,
+        )
+        self.list = async_to_streamed_response_wrapper(
             event_subscriptions.list,
         )

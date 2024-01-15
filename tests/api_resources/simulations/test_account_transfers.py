@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from typing import Any, cast
 
 import pytest
 
@@ -34,9 +35,25 @@ class TestAccountTransfers:
         response = client.simulations.account_transfers.with_raw_response.complete(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         account_transfer = response.parse()
         assert_matches_type(AccountTransfer, account_transfer, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are broken")
+    @parametrize
+    def test_streaming_response_complete(self, client: Increase) -> None:
+        with client.simulations.account_transfers.with_streaming_response.complete(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            account_transfer = response.parse()
+            assert_matches_type(AccountTransfer, account_transfer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncAccountTransfers:
@@ -58,6 +75,22 @@ class TestAsyncAccountTransfers:
         response = await client.simulations.account_transfers.with_raw_response.complete(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         account_transfer = response.parse()
         assert_matches_type(AccountTransfer, account_transfer, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are broken")
+    @parametrize
+    async def test_streaming_response_complete(self, client: AsyncIncrease) -> None:
+        async with client.simulations.account_transfers.with_streaming_response.complete(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            account_transfer = await response.parse()
+            assert_matches_type(AccountTransfer, account_transfer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True

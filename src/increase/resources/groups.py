@@ -4,11 +4,12 @@ from __future__ import annotations
 
 import httpx
 
+from .. import _legacy_response
 from ..types import Group
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from .._base_client import (
     make_request_options,
 )
@@ -20,6 +21,10 @@ class Groups(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> GroupsWithRawResponse:
         return GroupsWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> GroupsWithStreamingResponse:
+        return GroupsWithStreamingResponse(self)
 
     def retrieve_details(
         self,
@@ -46,6 +51,10 @@ class AsyncGroups(AsyncAPIResource):
     def with_raw_response(self) -> AsyncGroupsWithRawResponse:
         return AsyncGroupsWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncGroupsWithStreamingResponse:
+        return AsyncGroupsWithStreamingResponse(self)
+
     async def retrieve_details(
         self,
         *,
@@ -68,13 +77,27 @@ class AsyncGroups(AsyncAPIResource):
 
 class GroupsWithRawResponse:
     def __init__(self, groups: Groups) -> None:
-        self.retrieve_details = to_raw_response_wrapper(
+        self.retrieve_details = _legacy_response.to_raw_response_wrapper(
             groups.retrieve_details,
         )
 
 
 class AsyncGroupsWithRawResponse:
     def __init__(self, groups: AsyncGroups) -> None:
-        self.retrieve_details = async_to_raw_response_wrapper(
+        self.retrieve_details = _legacy_response.async_to_raw_response_wrapper(
+            groups.retrieve_details,
+        )
+
+
+class GroupsWithStreamingResponse:
+    def __init__(self, groups: Groups) -> None:
+        self.retrieve_details = to_streamed_response_wrapper(
+            groups.retrieve_details,
+        )
+
+
+class AsyncGroupsWithStreamingResponse:
+    def __init__(self, groups: AsyncGroups) -> None:
+        self.retrieve_details = async_to_streamed_response_wrapper(
             groups.retrieve_details,
         )

@@ -6,12 +6,13 @@ from typing_extensions import Literal
 
 import httpx
 
+from .. import _legacy_response
 from ..types import Card, CardDetails, card_list_params, card_create_params, card_update_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import to_raw_response_wrapper, async_to_raw_response_wrapper
+from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import (
     AsyncPaginator,
@@ -25,6 +26,10 @@ class Cards(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> CardsWithRawResponse:
         return CardsWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> CardsWithStreamingResponse:
+        return CardsWithStreamingResponse(self)
 
     def create(
         self,
@@ -291,6 +296,10 @@ class AsyncCards(AsyncAPIResource):
     def with_raw_response(self) -> AsyncCardsWithRawResponse:
         return AsyncCardsWithRawResponse(self)
 
+    @cached_property
+    def with_streaming_response(self) -> AsyncCardsWithStreamingResponse:
+        return AsyncCardsWithStreamingResponse(self)
+
     async def create(
         self,
         *,
@@ -553,37 +562,75 @@ class AsyncCards(AsyncAPIResource):
 
 class CardsWithRawResponse:
     def __init__(self, cards: Cards) -> None:
-        self.create = to_raw_response_wrapper(
+        self.create = _legacy_response.to_raw_response_wrapper(
             cards.create,
         )
-        self.retrieve = to_raw_response_wrapper(
+        self.retrieve = _legacy_response.to_raw_response_wrapper(
             cards.retrieve,
         )
-        self.update = to_raw_response_wrapper(
+        self.update = _legacy_response.to_raw_response_wrapper(
             cards.update,
         )
-        self.list = to_raw_response_wrapper(
+        self.list = _legacy_response.to_raw_response_wrapper(
             cards.list,
         )
-        self.retrieve_sensitive_details = to_raw_response_wrapper(
+        self.retrieve_sensitive_details = _legacy_response.to_raw_response_wrapper(
             cards.retrieve_sensitive_details,
         )
 
 
 class AsyncCardsWithRawResponse:
     def __init__(self, cards: AsyncCards) -> None:
-        self.create = async_to_raw_response_wrapper(
+        self.create = _legacy_response.async_to_raw_response_wrapper(
             cards.create,
         )
-        self.retrieve = async_to_raw_response_wrapper(
+        self.retrieve = _legacy_response.async_to_raw_response_wrapper(
             cards.retrieve,
         )
-        self.update = async_to_raw_response_wrapper(
+        self.update = _legacy_response.async_to_raw_response_wrapper(
             cards.update,
         )
-        self.list = async_to_raw_response_wrapper(
+        self.list = _legacy_response.async_to_raw_response_wrapper(
             cards.list,
         )
-        self.retrieve_sensitive_details = async_to_raw_response_wrapper(
+        self.retrieve_sensitive_details = _legacy_response.async_to_raw_response_wrapper(
+            cards.retrieve_sensitive_details,
+        )
+
+
+class CardsWithStreamingResponse:
+    def __init__(self, cards: Cards) -> None:
+        self.create = to_streamed_response_wrapper(
+            cards.create,
+        )
+        self.retrieve = to_streamed_response_wrapper(
+            cards.retrieve,
+        )
+        self.update = to_streamed_response_wrapper(
+            cards.update,
+        )
+        self.list = to_streamed_response_wrapper(
+            cards.list,
+        )
+        self.retrieve_sensitive_details = to_streamed_response_wrapper(
+            cards.retrieve_sensitive_details,
+        )
+
+
+class AsyncCardsWithStreamingResponse:
+    def __init__(self, cards: AsyncCards) -> None:
+        self.create = async_to_streamed_response_wrapper(
+            cards.create,
+        )
+        self.retrieve = async_to_streamed_response_wrapper(
+            cards.retrieve,
+        )
+        self.update = async_to_streamed_response_wrapper(
+            cards.update,
+        )
+        self.list = async_to_streamed_response_wrapper(
+            cards.list,
+        )
+        self.retrieve_sensitive_details = async_to_streamed_response_wrapper(
             cards.retrieve_sensitive_details,
         )

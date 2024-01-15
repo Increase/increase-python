@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from typing import Any, cast
 
 import pytest
 
@@ -34,9 +35,24 @@ class TestDeclinedTransactions:
         response = client.declined_transactions.with_raw_response.retrieve(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         declined_transaction = response.parse()
         assert_matches_type(DeclinedTransaction, declined_transaction, path=["response"])
+
+    @parametrize
+    def test_streaming_response_retrieve(self, client: Increase) -> None:
+        with client.declined_transactions.with_streaming_response.retrieve(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            declined_transaction = response.parse()
+            assert_matches_type(DeclinedTransaction, declined_transaction, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_list(self, client: Increase) -> None:
@@ -63,9 +79,22 @@ class TestDeclinedTransactions:
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
         response = client.declined_transactions.with_raw_response.list()
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         declined_transaction = response.parse()
         assert_matches_type(SyncPage[DeclinedTransaction], declined_transaction, path=["response"])
+
+    @parametrize
+    def test_streaming_response_list(self, client: Increase) -> None:
+        with client.declined_transactions.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            declined_transaction = response.parse()
+            assert_matches_type(SyncPage[DeclinedTransaction], declined_transaction, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncDeclinedTransactions:
@@ -85,9 +114,24 @@ class TestAsyncDeclinedTransactions:
         response = await client.declined_transactions.with_raw_response.retrieve(
             "string",
         )
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         declined_transaction = response.parse()
         assert_matches_type(DeclinedTransaction, declined_transaction, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_retrieve(self, client: AsyncIncrease) -> None:
+        async with client.declined_transactions.with_streaming_response.retrieve(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            declined_transaction = await response.parse()
+            assert_matches_type(DeclinedTransaction, declined_transaction, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_list(self, client: AsyncIncrease) -> None:
@@ -114,6 +158,19 @@ class TestAsyncDeclinedTransactions:
     @parametrize
     async def test_raw_response_list(self, client: AsyncIncrease) -> None:
         response = await client.declined_transactions.with_raw_response.list()
+
+        assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         declined_transaction = response.parse()
         assert_matches_type(AsyncPage[DeclinedTransaction], declined_transaction, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_list(self, client: AsyncIncrease) -> None:
+        async with client.declined_transactions.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            declined_transaction = await response.parse()
+            assert_matches_type(AsyncPage[DeclinedTransaction], declined_transaction, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
