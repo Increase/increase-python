@@ -58,6 +58,8 @@ class CardProfiles(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not card_profile_id:
+            raise ValueError(f"Expected a non-empty value for `card_profile_id` but received {card_profile_id!r}")
         return self._post(
             f"/simulations/card_profiles/{card_profile_id}/approve",
             options=make_request_options(
@@ -112,6 +114,8 @@ class AsyncCardProfiles(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not card_profile_id:
+            raise ValueError(f"Expected a non-empty value for `card_profile_id` but received {card_profile_id!r}")
         return await self._post(
             f"/simulations/card_profiles/{card_profile_id}/approve",
             options=make_request_options(

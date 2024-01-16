@@ -88,6 +88,13 @@ class TestExclusions:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_path_params_retrieve(self, client: Increase) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `intrafi_exclusion_id` but received ''"):
+            client.intrafi.exclusions.with_raw_response.retrieve(
+                "",
+            )
+
+    @parametrize
     def test_method_list(self, client: Increase) -> None:
         exclusion = client.intrafi.exclusions.list()
         assert_matches_type(SyncPage[IntrafiExclusion], exclusion, path=["response"])
@@ -151,6 +158,13 @@ class TestExclusions:
             assert_matches_type(IntrafiExclusion, exclusion, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_archive(self, client: Increase) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `intrafi_exclusion_id` but received ''"):
+            client.intrafi.exclusions.with_raw_response.archive(
+                "",
+            )
 
 
 class TestAsyncExclusions:
@@ -224,6 +238,13 @@ class TestAsyncExclusions:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    async def test_path_params_retrieve(self, client: AsyncIncrease) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `intrafi_exclusion_id` but received ''"):
+            await client.intrafi.exclusions.with_raw_response.retrieve(
+                "",
+            )
+
+    @parametrize
     async def test_method_list(self, client: AsyncIncrease) -> None:
         exclusion = await client.intrafi.exclusions.list()
         assert_matches_type(AsyncPage[IntrafiExclusion], exclusion, path=["response"])
@@ -287,3 +308,10 @@ class TestAsyncExclusions:
             assert_matches_type(IntrafiExclusion, exclusion, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_archive(self, client: AsyncIncrease) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `intrafi_exclusion_id` but received ''"):
+            await client.intrafi.exclusions.with_raw_response.archive(
+                "",
+            )

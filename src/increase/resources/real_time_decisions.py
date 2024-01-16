@@ -52,6 +52,10 @@ class RealTimeDecisions(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not real_time_decision_id:
+            raise ValueError(
+                f"Expected a non-empty value for `real_time_decision_id` but received {real_time_decision_id!r}"
+            )
         return self._get(
             f"/real_time_decisions/{real_time_decision_id}",
             options=make_request_options(
@@ -101,6 +105,10 @@ class RealTimeDecisions(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not real_time_decision_id:
+            raise ValueError(
+                f"Expected a non-empty value for `real_time_decision_id` but received {real_time_decision_id!r}"
+            )
         return self._post(
             f"/real_time_decisions/{real_time_decision_id}/action",
             body=maybe_transform(
@@ -156,6 +164,10 @@ class AsyncRealTimeDecisions(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not real_time_decision_id:
+            raise ValueError(
+                f"Expected a non-empty value for `real_time_decision_id` but received {real_time_decision_id!r}"
+            )
         return await self._get(
             f"/real_time_decisions/{real_time_decision_id}",
             options=make_request_options(
@@ -205,6 +217,10 @@ class AsyncRealTimeDecisions(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not real_time_decision_id:
+            raise ValueError(
+                f"Expected a non-empty value for `real_time_decision_id` but received {real_time_decision_id!r}"
+            )
         return await self._post(
             f"/real_time_decisions/{real_time_decision_id}/action",
             body=maybe_transform(

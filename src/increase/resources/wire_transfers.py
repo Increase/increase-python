@@ -148,6 +148,8 @@ class WireTransfers(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not wire_transfer_id:
+            raise ValueError(f"Expected a non-empty value for `wire_transfer_id` but received {wire_transfer_id!r}")
         return self._get(
             f"/wire_transfers/{wire_transfer_id}",
             options=make_request_options(
@@ -246,6 +248,8 @@ class WireTransfers(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not wire_transfer_id:
+            raise ValueError(f"Expected a non-empty value for `wire_transfer_id` but received {wire_transfer_id!r}")
         return self._post(
             f"/wire_transfers/{wire_transfer_id}/approve",
             options=make_request_options(
@@ -286,6 +290,8 @@ class WireTransfers(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not wire_transfer_id:
+            raise ValueError(f"Expected a non-empty value for `wire_transfer_id` but received {wire_transfer_id!r}")
         return self._post(
             f"/wire_transfers/{wire_transfer_id}/cancel",
             options=make_request_options(
@@ -329,6 +335,8 @@ class WireTransfers(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not wire_transfer_id:
+            raise ValueError(f"Expected a non-empty value for `wire_transfer_id` but received {wire_transfer_id!r}")
         return self._post(
             f"/simulations/wire_transfers/{wire_transfer_id}/reverse",
             options=make_request_options(
@@ -371,6 +379,8 @@ class WireTransfers(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not wire_transfer_id:
+            raise ValueError(f"Expected a non-empty value for `wire_transfer_id` but received {wire_transfer_id!r}")
         return self._post(
             f"/simulations/wire_transfers/{wire_transfer_id}/submit",
             options=make_request_options(
@@ -512,6 +522,8 @@ class AsyncWireTransfers(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not wire_transfer_id:
+            raise ValueError(f"Expected a non-empty value for `wire_transfer_id` but received {wire_transfer_id!r}")
         return await self._get(
             f"/wire_transfers/{wire_transfer_id}",
             options=make_request_options(
@@ -610,6 +622,8 @@ class AsyncWireTransfers(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not wire_transfer_id:
+            raise ValueError(f"Expected a non-empty value for `wire_transfer_id` but received {wire_transfer_id!r}")
         return await self._post(
             f"/wire_transfers/{wire_transfer_id}/approve",
             options=make_request_options(
@@ -650,6 +664,8 @@ class AsyncWireTransfers(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not wire_transfer_id:
+            raise ValueError(f"Expected a non-empty value for `wire_transfer_id` but received {wire_transfer_id!r}")
         return await self._post(
             f"/wire_transfers/{wire_transfer_id}/cancel",
             options=make_request_options(
@@ -693,6 +709,8 @@ class AsyncWireTransfers(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not wire_transfer_id:
+            raise ValueError(f"Expected a non-empty value for `wire_transfer_id` but received {wire_transfer_id!r}")
         return await self._post(
             f"/simulations/wire_transfers/{wire_transfer_id}/reverse",
             options=make_request_options(
@@ -735,6 +753,8 @@ class AsyncWireTransfers(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not wire_transfer_id:
+            raise ValueError(f"Expected a non-empty value for `wire_transfer_id` but received {wire_transfer_id!r}")
         return await self._post(
             f"/simulations/wire_transfers/{wire_transfer_id}/submit",
             options=make_request_options(

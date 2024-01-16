@@ -119,6 +119,8 @@ class PhysicalCards(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not physical_card_id:
+            raise ValueError(f"Expected a non-empty value for `physical_card_id` but received {physical_card_id!r}")
         return self._get(
             f"/physical_cards/{physical_card_id}",
             options=make_request_options(
@@ -162,6 +164,8 @@ class PhysicalCards(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not physical_card_id:
+            raise ValueError(f"Expected a non-empty value for `physical_card_id` but received {physical_card_id!r}")
         return self._patch(
             f"/physical_cards/{physical_card_id}",
             body=maybe_transform({"status": status}, physical_card_update_params.PhysicalCardUpdateParams),
@@ -322,6 +326,8 @@ class AsyncPhysicalCards(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not physical_card_id:
+            raise ValueError(f"Expected a non-empty value for `physical_card_id` but received {physical_card_id!r}")
         return await self._get(
             f"/physical_cards/{physical_card_id}",
             options=make_request_options(
@@ -365,6 +371,8 @@ class AsyncPhysicalCards(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not physical_card_id:
+            raise ValueError(f"Expected a non-empty value for `physical_card_id` but received {physical_card_id!r}")
         return await self._patch(
             f"/physical_cards/{physical_card_id}",
             body=maybe_transform({"status": status}, physical_card_update_params.PhysicalCardUpdateParams),

@@ -65,6 +65,10 @@ class RealTimePaymentsTransfers(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not real_time_payments_transfer_id:
+            raise ValueError(
+                f"Expected a non-empty value for `real_time_payments_transfer_id` but received {real_time_payments_transfer_id!r}"
+            )
         return self._post(
             f"/simulations/real_time_payments_transfers/{real_time_payments_transfer_id}/complete",
             body=maybe_transform(
@@ -197,6 +201,10 @@ class AsyncRealTimePaymentsTransfers(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not real_time_payments_transfer_id:
+            raise ValueError(
+                f"Expected a non-empty value for `real_time_payments_transfer_id` but received {real_time_payments_transfer_id!r}"
+            )
         return await self._post(
             f"/simulations/real_time_payments_transfers/{real_time_payments_transfer_id}/complete",
             body=maybe_transform(

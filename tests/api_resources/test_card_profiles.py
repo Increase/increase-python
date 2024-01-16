@@ -129,6 +129,13 @@ class TestCardProfiles:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_path_params_retrieve(self, client: Increase) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `card_profile_id` but received ''"):
+            client.card_profiles.with_raw_response.retrieve(
+                "",
+            )
+
+    @parametrize
     def test_method_list(self, client: Increase) -> None:
         card_profile = client.card_profiles.list()
         assert_matches_type(SyncPage[CardProfile], card_profile, path=["response"])
@@ -193,6 +200,13 @@ class TestCardProfiles:
             assert_matches_type(CardProfile, card_profile, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_archive(self, client: Increase) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `card_profile_id` but received ''"):
+            client.card_profiles.with_raw_response.archive(
+                "",
+            )
 
 
 class TestAsyncCardProfiles:
@@ -307,6 +321,13 @@ class TestAsyncCardProfiles:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    async def test_path_params_retrieve(self, client: AsyncIncrease) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `card_profile_id` but received ''"):
+            await client.card_profiles.with_raw_response.retrieve(
+                "",
+            )
+
+    @parametrize
     async def test_method_list(self, client: AsyncIncrease) -> None:
         card_profile = await client.card_profiles.list()
         assert_matches_type(AsyncPage[CardProfile], card_profile, path=["response"])
@@ -371,3 +392,10 @@ class TestAsyncCardProfiles:
             assert_matches_type(CardProfile, card_profile, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_archive(self, client: AsyncIncrease) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `card_profile_id` but received ''"):
+            await client.card_profiles.with_raw_response.archive(
+                "",
+            )

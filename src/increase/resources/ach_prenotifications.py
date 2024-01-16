@@ -165,6 +165,10 @@ class ACHPrenotifications(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not ach_prenotification_id:
+            raise ValueError(
+                f"Expected a non-empty value for `ach_prenotification_id` but received {ach_prenotification_id!r}"
+            )
         return self._get(
             f"/ach_prenotifications/{ach_prenotification_id}",
             options=make_request_options(
@@ -361,6 +365,10 @@ class AsyncACHPrenotifications(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not ach_prenotification_id:
+            raise ValueError(
+                f"Expected a non-empty value for `ach_prenotification_id` but received {ach_prenotification_id!r}"
+            )
         return await self._get(
             f"/ach_prenotifications/{ach_prenotification_id}",
             options=make_request_options(

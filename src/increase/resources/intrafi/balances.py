@@ -51,6 +51,8 @@ class Balances(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not account_id:
+            raise ValueError(f"Expected a non-empty value for `account_id` but received {account_id!r}")
         return self._get(
             f"/intrafi_balances/{account_id}",
             options=make_request_options(
@@ -94,6 +96,8 @@ class AsyncBalances(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not account_id:
+            raise ValueError(f"Expected a non-empty value for `account_id` but received {account_id!r}")
         return await self._get(
             f"/intrafi_balances/{account_id}",
             options=make_request_options(

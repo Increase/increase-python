@@ -105,6 +105,8 @@ class CardDisputes(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not card_dispute_id:
+            raise ValueError(f"Expected a non-empty value for `card_dispute_id` but received {card_dispute_id!r}")
         return self._get(
             f"/card_disputes/{card_dispute_id}",
             options=make_request_options(
@@ -251,6 +253,8 @@ class AsyncCardDisputes(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not card_dispute_id:
+            raise ValueError(f"Expected a non-empty value for `card_dispute_id` but received {card_dispute_id!r}")
         return await self._get(
             f"/card_disputes/{card_dispute_id}",
             options=make_request_options(

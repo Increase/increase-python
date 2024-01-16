@@ -55,6 +55,10 @@ class InboundFundsHolds(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not inbound_funds_hold_id:
+            raise ValueError(
+                f"Expected a non-empty value for `inbound_funds_hold_id` but received {inbound_funds_hold_id!r}"
+            )
         return self._post(
             f"/simulations/inbound_funds_holds/{inbound_funds_hold_id}/release",
             options=make_request_options(
@@ -106,6 +110,10 @@ class AsyncInboundFundsHolds(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not inbound_funds_hold_id:
+            raise ValueError(
+                f"Expected a non-empty value for `inbound_funds_hold_id` but received {inbound_funds_hold_id!r}"
+            )
         return await self._post(
             f"/simulations/inbound_funds_holds/{inbound_funds_hold_id}/release",
             options=make_request_options(

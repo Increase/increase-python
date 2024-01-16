@@ -54,6 +54,10 @@ class DeclinedTransactions(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not declined_transaction_id:
+            raise ValueError(
+                f"Expected a non-empty value for `declined_transaction_id` but received {declined_transaction_id!r}"
+            )
         return self._get(
             f"/declined_transactions/{declined_transaction_id}",
             options=make_request_options(
@@ -157,6 +161,10 @@ class AsyncDeclinedTransactions(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not declined_transaction_id:
+            raise ValueError(
+                f"Expected a non-empty value for `declined_transaction_id` but received {declined_transaction_id!r}"
+            )
         return await self._get(
             f"/declined_transactions/{declined_transaction_id}",
             options=make_request_options(

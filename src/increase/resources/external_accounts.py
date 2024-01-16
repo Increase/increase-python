@@ -124,6 +124,10 @@ class ExternalAccounts(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not external_account_id:
+            raise ValueError(
+                f"Expected a non-empty value for `external_account_id` but received {external_account_id!r}"
+            )
         return self._get(
             f"/external_accounts/{external_account_id}",
             options=make_request_options(
@@ -170,6 +174,10 @@ class ExternalAccounts(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not external_account_id:
+            raise ValueError(
+                f"Expected a non-empty value for `external_account_id` but received {external_account_id!r}"
+            )
         return self._patch(
             f"/external_accounts/{external_account_id}",
             body=maybe_transform(
@@ -341,6 +349,10 @@ class AsyncExternalAccounts(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not external_account_id:
+            raise ValueError(
+                f"Expected a non-empty value for `external_account_id` but received {external_account_id!r}"
+            )
         return await self._get(
             f"/external_accounts/{external_account_id}",
             options=make_request_options(
@@ -387,6 +399,10 @@ class AsyncExternalAccounts(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not external_account_id:
+            raise ValueError(
+                f"Expected a non-empty value for `external_account_id` but received {external_account_id!r}"
+            )
         return await self._patch(
             f"/external_accounts/{external_account_id}",
             body=maybe_transform(

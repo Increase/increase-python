@@ -109,6 +109,8 @@ class CardProfiles(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not card_profile_id:
+            raise ValueError(f"Expected a non-empty value for `card_profile_id` but received {card_profile_id!r}")
         return self._get(
             f"/card_profiles/{card_profile_id}",
             options=make_request_options(
@@ -197,6 +199,8 @@ class CardProfiles(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not card_profile_id:
+            raise ValueError(f"Expected a non-empty value for `card_profile_id` but received {card_profile_id!r}")
         return self._post(
             f"/card_profiles/{card_profile_id}/archive",
             options=make_request_options(
@@ -299,6 +303,8 @@ class AsyncCardProfiles(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not card_profile_id:
+            raise ValueError(f"Expected a non-empty value for `card_profile_id` but received {card_profile_id!r}")
         return await self._get(
             f"/card_profiles/{card_profile_id}",
             options=make_request_options(
@@ -387,6 +393,8 @@ class AsyncCardProfiles(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not card_profile_id:
+            raise ValueError(f"Expected a non-empty value for `card_profile_id` but received {card_profile_id!r}")
         return await self._post(
             f"/card_profiles/{card_profile_id}/archive",
             options=make_request_options(

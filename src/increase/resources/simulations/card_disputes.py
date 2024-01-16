@@ -71,6 +71,8 @@ class CardDisputes(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not card_dispute_id:
+            raise ValueError(f"Expected a non-empty value for `card_dispute_id` but received {card_dispute_id!r}")
         return self._post(
             f"/simulations/card_disputes/{card_dispute_id}/action",
             body=maybe_transform(
@@ -141,6 +143,8 @@ class AsyncCardDisputes(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not card_dispute_id:
+            raise ValueError(f"Expected a non-empty value for `card_dispute_id` but received {card_dispute_id!r}")
         return await self._post(
             f"/simulations/card_disputes/{card_dispute_id}/action",
             body=maybe_transform(

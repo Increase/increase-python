@@ -155,6 +155,10 @@ class RealTimePaymentsTransfers(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not real_time_payments_transfer_id:
+            raise ValueError(
+                f"Expected a non-empty value for `real_time_payments_transfer_id` but received {real_time_payments_transfer_id!r}"
+            )
         return self._get(
             f"/real_time_payments_transfers/{real_time_payments_transfer_id}",
             options=make_request_options(
@@ -358,6 +362,10 @@ class AsyncRealTimePaymentsTransfers(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not real_time_payments_transfer_id:
+            raise ValueError(
+                f"Expected a non-empty value for `real_time_payments_transfer_id` but received {real_time_payments_transfer_id!r}"
+            )
         return await self._get(
             f"/real_time_payments_transfers/{real_time_payments_transfer_id}",
             options=make_request_options(

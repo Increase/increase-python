@@ -57,6 +57,10 @@ class AccountTransfers(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not account_transfer_id:
+            raise ValueError(
+                f"Expected a non-empty value for `account_transfer_id` but received {account_transfer_id!r}"
+            )
         return self._post(
             f"/simulations/account_transfers/{account_transfer_id}/complete",
             options=make_request_options(
@@ -110,6 +114,10 @@ class AsyncAccountTransfers(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not account_transfer_id:
+            raise ValueError(
+                f"Expected a non-empty value for `account_transfer_id` but received {account_transfer_id!r}"
+            )
         return await self._post(
             f"/simulations/account_transfers/{account_transfer_id}/complete",
             options=make_request_options(
