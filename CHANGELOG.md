@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.29.0 (2024-01-16)
+
+Full Changelog: [v0.28.0...v0.29.0](https://github.com/increase/increase-python/compare/v0.28.0...v0.29.0)
+
+### Features
+
+* **client:** add support for streaming raw responses ([#294](https://github.com/increase/increase-python/issues/294)) ([ae5e932](https://github.com/increase/increase-python/commit/ae5e932bf014ef453c7785b27faedfcb693f1e2b))
+
+
+### Bug Fixes
+
+* **client:** ensure path params are non-empty ([#297](https://github.com/increase/increase-python/issues/297)) ([59be47c](https://github.com/increase/increase-python/commit/59be47c7ceea4e94962efff369e46aecfcc87cb7))
+
+
+### Documentation
+
+* **api:** fix typo ([#296](https://github.com/increase/increase-python/issues/296)) ([6a6cbe7](https://github.com/increase/increase-python/commit/6a6cbe7342a5f5916cc2a0cb39998d79d32fe99e))
+
 ## 0.28.0 (2024-01-12)
 
 Full Changelog: [v0.27.0...v0.28.0](https://github.com/increase/increase-python/compare/v0.27.0...v0.28.0)
