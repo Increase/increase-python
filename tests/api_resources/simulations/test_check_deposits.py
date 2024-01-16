@@ -55,6 +55,14 @@ class TestCheckDeposits:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
+    @parametrize
+    def test_path_params_reject(self, client: Increase) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `check_deposit_id` but received ''"):
+            client.simulations.check_deposits.with_raw_response.reject(
+                "",
+            )
+
     @parametrize
     def test_method_return(self, client: Increase) -> None:
         check_deposit = client.simulations.check_deposits.return_(
@@ -85,6 +93,13 @@ class TestCheckDeposits:
             assert_matches_type(CheckDeposit, check_deposit, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_return(self, client: Increase) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `check_deposit_id` but received ''"):
+            client.simulations.check_deposits.with_raw_response.return_(
+                "",
+            )
 
     @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
@@ -119,6 +134,14 @@ class TestCheckDeposits:
             assert_matches_type(CheckDeposit, check_deposit, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
+    @parametrize
+    def test_path_params_submit(self, client: Increase) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `check_deposit_id` but received ''"):
+            client.simulations.check_deposits.with_raw_response.submit(
+                "",
+            )
 
 
 class TestAsyncCheckDeposits:
@@ -160,6 +183,14 @@ class TestAsyncCheckDeposits:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
+    @parametrize
+    async def test_path_params_reject(self, client: AsyncIncrease) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `check_deposit_id` but received ''"):
+            await client.simulations.check_deposits.with_raw_response.reject(
+                "",
+            )
+
     @parametrize
     async def test_method_return(self, client: AsyncIncrease) -> None:
         check_deposit = await client.simulations.check_deposits.return_(
@@ -190,6 +221,13 @@ class TestAsyncCheckDeposits:
             assert_matches_type(CheckDeposit, check_deposit, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_return(self, client: AsyncIncrease) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `check_deposit_id` but received ''"):
+            await client.simulations.check_deposits.with_raw_response.return_(
+                "",
+            )
 
     @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
@@ -224,3 +262,11 @@ class TestAsyncCheckDeposits:
             assert_matches_type(CheckDeposit, check_deposit, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
+    @parametrize
+    async def test_path_params_submit(self, client: AsyncIncrease) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `check_deposit_id` but received ''"):
+            await client.simulations.check_deposits.with_raw_response.submit(
+                "",
+            )

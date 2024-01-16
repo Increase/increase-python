@@ -200,6 +200,8 @@ class ACHTransfers(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not ach_transfer_id:
+            raise ValueError(f"Expected a non-empty value for `ach_transfer_id` but received {ach_transfer_id!r}")
         return self._get(
             f"/ach_transfers/{ach_transfer_id}",
             options=make_request_options(
@@ -298,6 +300,8 @@ class ACHTransfers(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not ach_transfer_id:
+            raise ValueError(f"Expected a non-empty value for `ach_transfer_id` but received {ach_transfer_id!r}")
         return self._post(
             f"/ach_transfers/{ach_transfer_id}/approve",
             options=make_request_options(
@@ -338,6 +342,8 @@ class ACHTransfers(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not ach_transfer_id:
+            raise ValueError(f"Expected a non-empty value for `ach_transfer_id` but received {ach_transfer_id!r}")
         return self._post(
             f"/ach_transfers/{ach_transfer_id}/cancel",
             options=make_request_options(
@@ -527,6 +533,8 @@ class AsyncACHTransfers(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not ach_transfer_id:
+            raise ValueError(f"Expected a non-empty value for `ach_transfer_id` but received {ach_transfer_id!r}")
         return await self._get(
             f"/ach_transfers/{ach_transfer_id}",
             options=make_request_options(
@@ -625,6 +633,8 @@ class AsyncACHTransfers(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not ach_transfer_id:
+            raise ValueError(f"Expected a non-empty value for `ach_transfer_id` but received {ach_transfer_id!r}")
         return await self._post(
             f"/ach_transfers/{ach_transfer_id}/approve",
             options=make_request_options(
@@ -665,6 +675,8 @@ class AsyncACHTransfers(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not ach_transfer_id:
+            raise ValueError(f"Expected a non-empty value for `ach_transfer_id` but received {ach_transfer_id!r}")
         return await self._post(
             f"/ach_transfers/{ach_transfer_id}/cancel",
             options=make_request_options(

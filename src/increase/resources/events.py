@@ -54,6 +54,8 @@ class Events(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not event_id:
+            raise ValueError(f"Expected a non-empty value for `event_id` but received {event_id!r}")
         return self._get(
             f"/events/{event_id}",
             options=make_request_options(
@@ -153,6 +155,8 @@ class AsyncEvents(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not event_id:
+            raise ValueError(f"Expected a non-empty value for `event_id` but received {event_id!r}")
         return await self._get(
             f"/events/{event_id}",
             options=make_request_options(

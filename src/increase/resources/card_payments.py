@@ -54,6 +54,8 @@ class CardPayments(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not card_payment_id:
+            raise ValueError(f"Expected a non-empty value for `card_payment_id` but received {card_payment_id!r}")
         return self._get(
             f"/card_payments/{card_payment_id}",
             options=make_request_options(
@@ -155,6 +157,8 @@ class AsyncCardPayments(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not card_payment_id:
+            raise ValueError(f"Expected a non-empty value for `card_payment_id` but received {card_payment_id!r}")
         return await self._get(
             f"/card_payments/{card_payment_id}",
             options=make_request_options(

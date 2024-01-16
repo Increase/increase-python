@@ -53,6 +53,13 @@ class TestRealTimeDecisions:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_path_params_retrieve(self, client: Increase) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `real_time_decision_id` but received ''"):
+            client.real_time_decisions.with_raw_response.retrieve(
+                "",
+            )
+
+    @parametrize
     def test_method_action(self, client: Increase) -> None:
         real_time_decision = client.real_time_decisions.action(
             "string",
@@ -100,6 +107,13 @@ class TestRealTimeDecisions:
 
         assert cast(Any, response.is_closed) is True
 
+    @parametrize
+    def test_path_params_action(self, client: Increase) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `real_time_decision_id` but received ''"):
+            client.real_time_decisions.with_raw_response.action(
+                "",
+            )
+
 
 class TestAsyncRealTimeDecisions:
     strict_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
@@ -136,6 +150,13 @@ class TestAsyncRealTimeDecisions:
             assert_matches_type(RealTimeDecision, real_time_decision, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_retrieve(self, client: AsyncIncrease) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `real_time_decision_id` but received ''"):
+            await client.real_time_decisions.with_raw_response.retrieve(
+                "",
+            )
 
     @parametrize
     async def test_method_action(self, client: AsyncIncrease) -> None:
@@ -184,3 +205,10 @@ class TestAsyncRealTimeDecisions:
             assert_matches_type(RealTimeDecision, real_time_decision, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_action(self, client: AsyncIncrease) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `real_time_decision_id` but received ''"):
+            await client.real_time_decisions.with_raw_response.action(
+                "",
+            )

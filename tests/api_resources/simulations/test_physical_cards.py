@@ -55,6 +55,14 @@ class TestPhysicalCards:
 
         assert cast(Any, response.is_closed) is True
 
+    @parametrize
+    def test_path_params_shipment_advance(self, client: Increase) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `physical_card_id` but received ''"):
+            client.simulations.physical_cards.with_raw_response.shipment_advance(
+                "",
+                shipment_status="shipped",
+            )
+
 
 class TestAsyncPhysicalCards:
     strict_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
@@ -94,3 +102,11 @@ class TestAsyncPhysicalCards:
             assert_matches_type(PhysicalCard, physical_card, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_shipment_advance(self, client: AsyncIncrease) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `physical_card_id` but received ''"):
+            await client.simulations.physical_cards.with_raw_response.shipment_advance(
+                "",
+                shipment_status="shipped",
+            )

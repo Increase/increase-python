@@ -141,6 +141,8 @@ class CheckTransfers(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not check_transfer_id:
+            raise ValueError(f"Expected a non-empty value for `check_transfer_id` but received {check_transfer_id!r}")
         return self._get(
             f"/check_transfers/{check_transfer_id}",
             options=make_request_options(
@@ -235,6 +237,8 @@ class CheckTransfers(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not check_transfer_id:
+            raise ValueError(f"Expected a non-empty value for `check_transfer_id` but received {check_transfer_id!r}")
         return self._post(
             f"/check_transfers/{check_transfer_id}/approve",
             options=make_request_options(
@@ -275,6 +279,8 @@ class CheckTransfers(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not check_transfer_id:
+            raise ValueError(f"Expected a non-empty value for `check_transfer_id` but received {check_transfer_id!r}")
         return self._post(
             f"/check_transfers/{check_transfer_id}/cancel",
             options=make_request_options(
@@ -322,6 +328,8 @@ class CheckTransfers(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not check_transfer_id:
+            raise ValueError(f"Expected a non-empty value for `check_transfer_id` but received {check_transfer_id!r}")
         return self._post(
             f"/check_transfers/{check_transfer_id}/stop_payment",
             body=maybe_transform({"reason": reason}, check_transfer_stop_payment_params.CheckTransferStopPaymentParams),
@@ -450,6 +458,8 @@ class AsyncCheckTransfers(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not check_transfer_id:
+            raise ValueError(f"Expected a non-empty value for `check_transfer_id` but received {check_transfer_id!r}")
         return await self._get(
             f"/check_transfers/{check_transfer_id}",
             options=make_request_options(
@@ -544,6 +554,8 @@ class AsyncCheckTransfers(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not check_transfer_id:
+            raise ValueError(f"Expected a non-empty value for `check_transfer_id` but received {check_transfer_id!r}")
         return await self._post(
             f"/check_transfers/{check_transfer_id}/approve",
             options=make_request_options(
@@ -584,6 +596,8 @@ class AsyncCheckTransfers(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not check_transfer_id:
+            raise ValueError(f"Expected a non-empty value for `check_transfer_id` but received {check_transfer_id!r}")
         return await self._post(
             f"/check_transfers/{check_transfer_id}/cancel",
             options=make_request_options(
@@ -631,6 +645,8 @@ class AsyncCheckTransfers(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not check_transfer_id:
+            raise ValueError(f"Expected a non-empty value for `check_transfer_id` but received {check_transfer_id!r}")
         return await self._post(
             f"/check_transfers/{check_transfer_id}/stop_payment",
             body=maybe_transform({"reason": reason}, check_transfer_stop_payment_params.CheckTransferStopPaymentParams),

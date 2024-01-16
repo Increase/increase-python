@@ -118,6 +118,14 @@ class TestACHTransfers:
 
     @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
+    def test_path_params_return(self, client: Increase) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `ach_transfer_id` but received ''"):
+            client.simulations.ach_transfers.with_raw_response.return_(
+                "",
+            )
+
+    @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
+    @parametrize
     def test_method_submit(self, client: Increase) -> None:
         ach_transfer = client.simulations.ach_transfers.submit(
             "string",
@@ -149,6 +157,14 @@ class TestACHTransfers:
             assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
+    @parametrize
+    def test_path_params_submit(self, client: Increase) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `ach_transfer_id` but received ''"):
+            client.simulations.ach_transfers.with_raw_response.submit(
+                "",
+            )
 
 
 class TestAsyncACHTransfers:
@@ -249,6 +265,14 @@ class TestAsyncACHTransfers:
 
     @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
+    async def test_path_params_return(self, client: AsyncIncrease) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `ach_transfer_id` but received ''"):
+            await client.simulations.ach_transfers.with_raw_response.return_(
+                "",
+            )
+
+    @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
+    @parametrize
     async def test_method_submit(self, client: AsyncIncrease) -> None:
         ach_transfer = await client.simulations.ach_transfers.submit(
             "string",
@@ -280,3 +304,11 @@ class TestAsyncACHTransfers:
             assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
+    @parametrize
+    async def test_path_params_submit(self, client: AsyncIncrease) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `ach_transfer_id` but received ''"):
+            await client.simulations.ach_transfers.with_raw_response.submit(
+                "",
+            )

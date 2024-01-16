@@ -104,6 +104,10 @@ class Exclusions(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not intrafi_exclusion_id:
+            raise ValueError(
+                f"Expected a non-empty value for `intrafi_exclusion_id` but received {intrafi_exclusion_id!r}"
+            )
         return self._get(
             f"/intrafi_exclusions/{intrafi_exclusion_id}",
             options=make_request_options(
@@ -194,6 +198,10 @@ class Exclusions(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not intrafi_exclusion_id:
+            raise ValueError(
+                f"Expected a non-empty value for `intrafi_exclusion_id` but received {intrafi_exclusion_id!r}"
+            )
         return self._post(
             f"/intrafi_exclusions/{intrafi_exclusion_id}/archive",
             options=make_request_options(
@@ -291,6 +299,10 @@ class AsyncExclusions(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not intrafi_exclusion_id:
+            raise ValueError(
+                f"Expected a non-empty value for `intrafi_exclusion_id` but received {intrafi_exclusion_id!r}"
+            )
         return await self._get(
             f"/intrafi_exclusions/{intrafi_exclusion_id}",
             options=make_request_options(
@@ -381,6 +393,10 @@ class AsyncExclusions(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not intrafi_exclusion_id:
+            raise ValueError(
+                f"Expected a non-empty value for `intrafi_exclusion_id` but received {intrafi_exclusion_id!r}"
+            )
         return await self._post(
             f"/intrafi_exclusions/{intrafi_exclusion_id}/archive",
             options=make_request_options(

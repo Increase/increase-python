@@ -54,6 +54,10 @@ class InboundWireDrawdownRequests(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not inbound_wire_drawdown_request_id:
+            raise ValueError(
+                f"Expected a non-empty value for `inbound_wire_drawdown_request_id` but received {inbound_wire_drawdown_request_id!r}"
+            )
         return self._get(
             f"/inbound_wire_drawdown_requests/{inbound_wire_drawdown_request_id}",
             options=make_request_options(
@@ -145,6 +149,10 @@ class AsyncInboundWireDrawdownRequests(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not inbound_wire_drawdown_request_id:
+            raise ValueError(
+                f"Expected a non-empty value for `inbound_wire_drawdown_request_id` but received {inbound_wire_drawdown_request_id!r}"
+            )
         return await self._get(
             f"/inbound_wire_drawdown_requests/{inbound_wire_drawdown_request_id}",
             options=make_request_options(

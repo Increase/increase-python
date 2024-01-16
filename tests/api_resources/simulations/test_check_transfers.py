@@ -52,6 +52,13 @@ class TestCheckTransfers:
 
         assert cast(Any, response.is_closed) is True
 
+    @parametrize
+    def test_path_params_deposit(self, client: Increase) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `check_transfer_id` but received ''"):
+            client.simulations.check_transfers.with_raw_response.deposit(
+                "",
+            )
+
     @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
     def test_method_mail(self, client: Increase) -> None:
@@ -85,6 +92,14 @@ class TestCheckTransfers:
             assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
+    @parametrize
+    def test_path_params_mail(self, client: Increase) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `check_transfer_id` but received ''"):
+            client.simulations.check_transfers.with_raw_response.mail(
+                "",
+            )
 
 
 class TestAsyncCheckTransfers:
@@ -123,6 +138,13 @@ class TestAsyncCheckTransfers:
 
         assert cast(Any, response.is_closed) is True
 
+    @parametrize
+    async def test_path_params_deposit(self, client: AsyncIncrease) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `check_transfer_id` but received ''"):
+            await client.simulations.check_transfers.with_raw_response.deposit(
+                "",
+            )
+
     @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
     async def test_method_mail(self, client: AsyncIncrease) -> None:
@@ -156,3 +178,11 @@ class TestAsyncCheckTransfers:
             assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
+    @parametrize
+    async def test_path_params_mail(self, client: AsyncIncrease) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `check_transfer_id` but received ''"):
+            await client.simulations.check_transfers.with_raw_response.mail(
+                "",
+            )

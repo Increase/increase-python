@@ -54,6 +54,10 @@ class BookkeepingEntries(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not bookkeeping_entry_id:
+            raise ValueError(
+                f"Expected a non-empty value for `bookkeeping_entry_id` but received {bookkeeping_entry_id!r}"
+            )
         return self._get(
             f"/bookkeeping_entries/{bookkeeping_entry_id}",
             options=make_request_options(
@@ -145,6 +149,10 @@ class AsyncBookkeepingEntries(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not bookkeeping_entry_id:
+            raise ValueError(
+                f"Expected a non-empty value for `bookkeeping_entry_id` but received {bookkeeping_entry_id!r}"
+            )
         return await self._get(
             f"/bookkeeping_entries/{bookkeeping_entry_id}",
             options=make_request_options(

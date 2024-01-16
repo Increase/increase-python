@@ -65,6 +65,8 @@ class SupplementalDocuments(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not entity_id:
+            raise ValueError(f"Expected a non-empty value for `entity_id` but received {entity_id!r}")
         return self._post(
             f"/entities/{entity_id}/supplemental_documents",
             body=maybe_transform(
@@ -173,6 +175,8 @@ class AsyncSupplementalDocuments(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not entity_id:
+            raise ValueError(f"Expected a non-empty value for `entity_id` but received {entity_id!r}")
         return await self._post(
             f"/entities/{entity_id}/supplemental_documents",
             body=maybe_transform(

@@ -131,6 +131,10 @@ class ProofOfAuthorizationRequestSubmissions(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not proof_of_authorization_request_submission_id:
+            raise ValueError(
+                f"Expected a non-empty value for `proof_of_authorization_request_submission_id` but received {proof_of_authorization_request_submission_id!r}"
+            )
         return self._get(
             f"/proof_of_authorization_request_submissions/{proof_of_authorization_request_submission_id}",
             options=make_request_options(
@@ -296,6 +300,10 @@ class AsyncProofOfAuthorizationRequestSubmissions(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not proof_of_authorization_request_submission_id:
+            raise ValueError(
+                f"Expected a non-empty value for `proof_of_authorization_request_submission_id` but received {proof_of_authorization_request_submission_id!r}"
+            )
         return await self._get(
             f"/proof_of_authorization_request_submissions/{proof_of_authorization_request_submission_id}",
             options=make_request_options(

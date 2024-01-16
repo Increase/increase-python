@@ -52,6 +52,13 @@ class TestInboundFundsHolds:
 
         assert cast(Any, response.is_closed) is True
 
+    @parametrize
+    def test_path_params_release(self, client: Increase) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `inbound_funds_hold_id` but received ''"):
+            client.simulations.inbound_funds_holds.with_raw_response.release(
+                "",
+            )
+
 
 class TestAsyncInboundFundsHolds:
     strict_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
@@ -88,3 +95,10 @@ class TestAsyncInboundFundsHolds:
             assert_matches_type(InboundFundsHoldReleaseResponse, inbound_funds_hold, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_release(self, client: AsyncIncrease) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `inbound_funds_hold_id` but received ''"):
+            await client.simulations.inbound_funds_holds.with_raw_response.release(
+                "",
+            )

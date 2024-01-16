@@ -54,6 +54,10 @@ class DigitalWalletTokens(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not digital_wallet_token_id:
+            raise ValueError(
+                f"Expected a non-empty value for `digital_wallet_token_id` but received {digital_wallet_token_id!r}"
+            )
         return self._get(
             f"/digital_wallet_tokens/{digital_wallet_token_id}",
             options=make_request_options(
@@ -151,6 +155,10 @@ class AsyncDigitalWalletTokens(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not digital_wallet_token_id:
+            raise ValueError(
+                f"Expected a non-empty value for `digital_wallet_token_id` but received {digital_wallet_token_id!r}"
+            )
         return await self._get(
             f"/digital_wallet_tokens/{digital_wallet_token_id}",
             options=make_request_options(

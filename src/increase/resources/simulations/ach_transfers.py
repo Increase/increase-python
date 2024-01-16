@@ -373,6 +373,8 @@ class ACHTransfers(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not ach_transfer_id:
+            raise ValueError(f"Expected a non-empty value for `ach_transfer_id` but received {ach_transfer_id!r}")
         return self._post(
             f"/simulations/ach_transfers/{ach_transfer_id}/return",
             body=maybe_transform({"reason": reason}, ach_transfer_return_params.ACHTransferReturnParams),
@@ -419,6 +421,8 @@ class ACHTransfers(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not ach_transfer_id:
+            raise ValueError(f"Expected a non-empty value for `ach_transfer_id` but received {ach_transfer_id!r}")
         return self._post(
             f"/simulations/ach_transfers/{ach_transfer_id}/submit",
             options=make_request_options(
@@ -782,6 +786,8 @@ class AsyncACHTransfers(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not ach_transfer_id:
+            raise ValueError(f"Expected a non-empty value for `ach_transfer_id` but received {ach_transfer_id!r}")
         return await self._post(
             f"/simulations/ach_transfers/{ach_transfer_id}/return",
             body=maybe_transform({"reason": reason}, ach_transfer_return_params.ACHTransferReturnParams),
@@ -828,6 +834,8 @@ class AsyncACHTransfers(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not ach_transfer_id:
+            raise ValueError(f"Expected a non-empty value for `ach_transfer_id` but received {ach_transfer_id!r}")
         return await self._post(
             f"/simulations/ach_transfers/{ach_transfer_id}/submit",
             options=make_request_options(

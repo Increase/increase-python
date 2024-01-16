@@ -113,6 +113,13 @@ class TestWireTransfers:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_path_params_retrieve(self, client: Increase) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `wire_transfer_id` but received ''"):
+            client.wire_transfers.with_raw_response.retrieve(
+                "",
+            )
+
+    @parametrize
     def test_method_list(self, client: Increase) -> None:
         wire_transfer = client.wire_transfers.list()
         assert_matches_type(SyncPage[WireTransfer], wire_transfer, path=["response"])
@@ -186,6 +193,13 @@ class TestWireTransfers:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_path_params_approve(self, client: Increase) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `wire_transfer_id` but received ''"):
+            client.wire_transfers.with_raw_response.approve(
+                "",
+            )
+
+    @parametrize
     def test_method_cancel(self, client: Increase) -> None:
         wire_transfer = client.wire_transfers.cancel(
             "string",
@@ -215,6 +229,13 @@ class TestWireTransfers:
             assert_matches_type(WireTransfer, wire_transfer, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_cancel(self, client: Increase) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `wire_transfer_id` but received ''"):
+            client.wire_transfers.with_raw_response.cancel(
+                "",
+            )
 
     @pytest.mark.skip(reason="Prism tests are broken")
     @parametrize
@@ -252,6 +273,14 @@ class TestWireTransfers:
 
     @pytest.mark.skip(reason="Prism tests are broken")
     @parametrize
+    def test_path_params_reverse(self, client: Increase) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `wire_transfer_id` but received ''"):
+            client.wire_transfers.with_raw_response.reverse(
+                "",
+            )
+
+    @pytest.mark.skip(reason="Prism tests are broken")
+    @parametrize
     def test_method_submit(self, client: Increase) -> None:
         wire_transfer = client.wire_transfers.submit(
             "string",
@@ -283,6 +312,14 @@ class TestWireTransfers:
             assert_matches_type(WireTransfer, wire_transfer, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Prism tests are broken")
+    @parametrize
+    def test_path_params_submit(self, client: Increase) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `wire_transfer_id` but received ''"):
+            client.wire_transfers.with_raw_response.submit(
+                "",
+            )
 
 
 class TestAsyncWireTransfers:
@@ -380,6 +417,13 @@ class TestAsyncWireTransfers:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    async def test_path_params_retrieve(self, client: AsyncIncrease) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `wire_transfer_id` but received ''"):
+            await client.wire_transfers.with_raw_response.retrieve(
+                "",
+            )
+
+    @parametrize
     async def test_method_list(self, client: AsyncIncrease) -> None:
         wire_transfer = await client.wire_transfers.list()
         assert_matches_type(AsyncPage[WireTransfer], wire_transfer, path=["response"])
@@ -453,6 +497,13 @@ class TestAsyncWireTransfers:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    async def test_path_params_approve(self, client: AsyncIncrease) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `wire_transfer_id` but received ''"):
+            await client.wire_transfers.with_raw_response.approve(
+                "",
+            )
+
+    @parametrize
     async def test_method_cancel(self, client: AsyncIncrease) -> None:
         wire_transfer = await client.wire_transfers.cancel(
             "string",
@@ -482,6 +533,13 @@ class TestAsyncWireTransfers:
             assert_matches_type(WireTransfer, wire_transfer, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_cancel(self, client: AsyncIncrease) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `wire_transfer_id` but received ''"):
+            await client.wire_transfers.with_raw_response.cancel(
+                "",
+            )
 
     @pytest.mark.skip(reason="Prism tests are broken")
     @parametrize
@@ -519,6 +577,14 @@ class TestAsyncWireTransfers:
 
     @pytest.mark.skip(reason="Prism tests are broken")
     @parametrize
+    async def test_path_params_reverse(self, client: AsyncIncrease) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `wire_transfer_id` but received ''"):
+            await client.wire_transfers.with_raw_response.reverse(
+                "",
+            )
+
+    @pytest.mark.skip(reason="Prism tests are broken")
+    @parametrize
     async def test_method_submit(self, client: AsyncIncrease) -> None:
         wire_transfer = await client.wire_transfers.submit(
             "string",
@@ -550,3 +616,11 @@ class TestAsyncWireTransfers:
             assert_matches_type(WireTransfer, wire_transfer, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Prism tests are broken")
+    @parametrize
+    async def test_path_params_submit(self, client: AsyncIncrease) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `wire_transfer_id` but received ''"):
+            await client.wire_transfers.with_raw_response.submit(
+                "",
+            )

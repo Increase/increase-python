@@ -54,6 +54,8 @@ class Programs(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not program_id:
+            raise ValueError(f"Expected a non-empty value for `program_id` but received {program_id!r}")
         return self._get(
             f"/programs/{program_id}",
             options=make_request_options(
@@ -145,6 +147,8 @@ class AsyncPrograms(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not program_id:
+            raise ValueError(f"Expected a non-empty value for `program_id` but received {program_id!r}")
         return await self._get(
             f"/programs/{program_id}",
             options=make_request_options(

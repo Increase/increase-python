@@ -54,6 +54,10 @@ class AccountStatements(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not account_statement_id:
+            raise ValueError(
+                f"Expected a non-empty value for `account_statement_id` but received {account_statement_id!r}"
+            )
         return self._get(
             f"/account_statements/{account_statement_id}",
             options=make_request_options(
@@ -151,6 +155,10 @@ class AsyncAccountStatements(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not account_statement_id:
+            raise ValueError(
+                f"Expected a non-empty value for `account_statement_id` but received {account_statement_id!r}"
+            )
         return await self._get(
             f"/account_statements/{account_statement_id}",
             options=make_request_options(

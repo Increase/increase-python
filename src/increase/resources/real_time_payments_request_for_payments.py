@@ -133,6 +133,10 @@ class RealTimePaymentsRequestForPayments(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not request_for_payment_id:
+            raise ValueError(
+                f"Expected a non-empty value for `request_for_payment_id` but received {request_for_payment_id!r}"
+            )
         return self._get(
             f"/real_time_payments_request_for_payments/{request_for_payment_id}",
             options=make_request_options(
@@ -303,6 +307,10 @@ class AsyncRealTimePaymentsRequestForPayments(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not request_for_payment_id:
+            raise ValueError(
+                f"Expected a non-empty value for `request_for_payment_id` but received {request_for_payment_id!r}"
+            )
         return await self._get(
             f"/real_time_payments_request_for_payments/{request_for_payment_id}",
             options=make_request_options(

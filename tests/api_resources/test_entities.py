@@ -451,6 +451,13 @@ class TestEntities:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_path_params_retrieve(self, client: Increase) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `entity_id` but received ''"):
+            client.entities.with_raw_response.retrieve(
+                "",
+            )
+
+    @parametrize
     def test_method_list(self, client: Increase) -> None:
         entity = client.entities.list()
         assert_matches_type(SyncPage[Entity], entity, path=["response"])
@@ -522,6 +529,13 @@ class TestEntities:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_path_params_archive(self, client: Increase) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `entity_id` but received ''"):
+            client.entities.with_raw_response.archive(
+                "",
+            )
+
+    @parametrize
     def test_method_update_address(self, client: Increase) -> None:
         entity = client.entities.update_address(
             "string",
@@ -583,6 +597,19 @@ class TestEntities:
             assert_matches_type(Entity, entity, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_update_address(self, client: Increase) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `entity_id` but received ''"):
+            client.entities.with_raw_response.update_address(
+                "",
+                address={
+                    "line1": "33 Liberty Street",
+                    "city": "New York",
+                    "state": "NY",
+                    "zip": "10045",
+                },
+            )
 
 
 class TestAsyncEntities:
@@ -1018,6 +1045,13 @@ class TestAsyncEntities:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    async def test_path_params_retrieve(self, client: AsyncIncrease) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `entity_id` but received ''"):
+            await client.entities.with_raw_response.retrieve(
+                "",
+            )
+
+    @parametrize
     async def test_method_list(self, client: AsyncIncrease) -> None:
         entity = await client.entities.list()
         assert_matches_type(AsyncPage[Entity], entity, path=["response"])
@@ -1089,6 +1123,13 @@ class TestAsyncEntities:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    async def test_path_params_archive(self, client: AsyncIncrease) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `entity_id` but received ''"):
+            await client.entities.with_raw_response.archive(
+                "",
+            )
+
+    @parametrize
     async def test_method_update_address(self, client: AsyncIncrease) -> None:
         entity = await client.entities.update_address(
             "string",
@@ -1150,3 +1191,16 @@ class TestAsyncEntities:
             assert_matches_type(Entity, entity, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_update_address(self, client: AsyncIncrease) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `entity_id` but received ''"):
+            await client.entities.with_raw_response.update_address(
+                "",
+                address={
+                    "line1": "33 Liberty Street",
+                    "city": "New York",
+                    "state": "NY",
+                    "zip": "10045",
+                },
+            )

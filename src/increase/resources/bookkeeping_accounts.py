@@ -132,6 +132,10 @@ class BookkeepingAccounts(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not bookkeeping_account_id:
+            raise ValueError(
+                f"Expected a non-empty value for `bookkeeping_account_id` but received {bookkeeping_account_id!r}"
+            )
         return self._patch(
             f"/bookkeeping_accounts/{bookkeeping_account_id}",
             body=maybe_transform({"name": name}, bookkeeping_account_update_params.BookkeepingAccountUpdateParams),
@@ -221,6 +225,10 @@ class BookkeepingAccounts(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not bookkeeping_account_id:
+            raise ValueError(
+                f"Expected a non-empty value for `bookkeeping_account_id` but received {bookkeeping_account_id!r}"
+            )
         return self._get(
             f"/bookkeeping_accounts/{bookkeeping_account_id}/balance",
             options=make_request_options(
@@ -337,6 +345,10 @@ class AsyncBookkeepingAccounts(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not bookkeeping_account_id:
+            raise ValueError(
+                f"Expected a non-empty value for `bookkeeping_account_id` but received {bookkeeping_account_id!r}"
+            )
         return await self._patch(
             f"/bookkeeping_accounts/{bookkeeping_account_id}",
             body=maybe_transform({"name": name}, bookkeeping_account_update_params.BookkeepingAccountUpdateParams),
@@ -426,6 +438,10 @@ class AsyncBookkeepingAccounts(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not bookkeeping_account_id:
+            raise ValueError(
+                f"Expected a non-empty value for `bookkeeping_account_id` but received {bookkeeping_account_id!r}"
+            )
         return await self._get(
             f"/bookkeeping_accounts/{bookkeeping_account_id}/balance",
             options=make_request_options(

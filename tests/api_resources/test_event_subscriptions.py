@@ -96,6 +96,13 @@ class TestEventSubscriptions:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_path_params_retrieve(self, client: Increase) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `event_subscription_id` but received ''"):
+            client.event_subscriptions.with_raw_response.retrieve(
+                "",
+            )
+
+    @parametrize
     def test_method_update(self, client: Increase) -> None:
         event_subscription = client.event_subscriptions.update(
             "string",
@@ -133,6 +140,13 @@ class TestEventSubscriptions:
             assert_matches_type(EventSubscription, event_subscription, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_update(self, client: Increase) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `event_subscription_id` but received ''"):
+            client.event_subscriptions.with_raw_response.update(
+                "",
+            )
 
     @parametrize
     def test_method_list(self, client: Increase) -> None:
@@ -245,6 +259,13 @@ class TestAsyncEventSubscriptions:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    async def test_path_params_retrieve(self, client: AsyncIncrease) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `event_subscription_id` but received ''"):
+            await client.event_subscriptions.with_raw_response.retrieve(
+                "",
+            )
+
+    @parametrize
     async def test_method_update(self, client: AsyncIncrease) -> None:
         event_subscription = await client.event_subscriptions.update(
             "string",
@@ -282,6 +303,13 @@ class TestAsyncEventSubscriptions:
             assert_matches_type(EventSubscription, event_subscription, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_update(self, client: AsyncIncrease) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `event_subscription_id` but received ''"):
+            await client.event_subscriptions.with_raw_response.update(
+                "",
+            )
 
     @parametrize
     async def test_method_list(self, client: AsyncIncrease) -> None:

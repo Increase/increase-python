@@ -55,6 +55,14 @@ class TestAccountTransfers:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism tests are broken")
+    @parametrize
+    def test_path_params_complete(self, client: Increase) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_transfer_id` but received ''"):
+            client.simulations.account_transfers.with_raw_response.complete(
+                "",
+            )
+
 
 class TestAsyncAccountTransfers:
     strict_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
@@ -94,3 +102,11 @@ class TestAsyncAccountTransfers:
             assert_matches_type(AccountTransfer, account_transfer, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Prism tests are broken")
+    @parametrize
+    async def test_path_params_complete(self, client: AsyncIncrease) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_transfer_id` but received ''"):
+            await client.simulations.account_transfers.with_raw_response.complete(
+                "",
+            )
