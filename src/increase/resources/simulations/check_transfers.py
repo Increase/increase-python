@@ -56,6 +56,8 @@ class CheckTransfers(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not check_transfer_id:
+            raise ValueError(f"Expected a non-empty value for `check_transfer_id` but received {check_transfer_id!r}")
         return self._post(
             f"/simulations/check_transfers/{check_transfer_id}/deposit",
             options=make_request_options(
@@ -98,6 +100,8 @@ class CheckTransfers(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not check_transfer_id:
+            raise ValueError(f"Expected a non-empty value for `check_transfer_id` but received {check_transfer_id!r}")
         return self._post(
             f"/simulations/check_transfers/{check_transfer_id}/mail",
             options=make_request_options(
@@ -150,6 +154,8 @@ class AsyncCheckTransfers(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not check_transfer_id:
+            raise ValueError(f"Expected a non-empty value for `check_transfer_id` but received {check_transfer_id!r}")
         return await self._post(
             f"/simulations/check_transfers/{check_transfer_id}/deposit",
             options=make_request_options(
@@ -192,6 +198,8 @@ class AsyncCheckTransfers(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not check_transfer_id:
+            raise ValueError(f"Expected a non-empty value for `check_transfer_id` but received {check_transfer_id!r}")
         return await self._post(
             f"/simulations/check_transfers/{check_transfer_id}/mail",
             options=make_request_options(

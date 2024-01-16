@@ -75,6 +75,8 @@ class PhysicalCards(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not physical_card_id:
+            raise ValueError(f"Expected a non-empty value for `physical_card_id` but received {physical_card_id!r}")
         return self._post(
             f"/simulations/physical_cards/{physical_card_id}/shipment_advance",
             body=maybe_transform(
@@ -146,6 +148,8 @@ class AsyncPhysicalCards(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not physical_card_id:
+            raise ValueError(f"Expected a non-empty value for `physical_card_id` but received {physical_card_id!r}")
         return await self._post(
             f"/simulations/physical_cards/{physical_card_id}/shipment_advance",
             body=maybe_transform(

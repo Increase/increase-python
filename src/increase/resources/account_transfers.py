@@ -123,6 +123,10 @@ class AccountTransfers(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not account_transfer_id:
+            raise ValueError(
+                f"Expected a non-empty value for `account_transfer_id` but received {account_transfer_id!r}"
+            )
         return self._get(
             f"/account_transfers/{account_transfer_id}",
             options=make_request_options(
@@ -217,6 +221,10 @@ class AccountTransfers(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not account_transfer_id:
+            raise ValueError(
+                f"Expected a non-empty value for `account_transfer_id` but received {account_transfer_id!r}"
+            )
         return self._post(
             f"/account_transfers/{account_transfer_id}/approve",
             options=make_request_options(
@@ -257,6 +265,10 @@ class AccountTransfers(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not account_transfer_id:
+            raise ValueError(
+                f"Expected a non-empty value for `account_transfer_id` but received {account_transfer_id!r}"
+            )
         return self._post(
             f"/account_transfers/{account_transfer_id}/cancel",
             options=make_request_options(
@@ -373,6 +385,10 @@ class AsyncAccountTransfers(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not account_transfer_id:
+            raise ValueError(
+                f"Expected a non-empty value for `account_transfer_id` but received {account_transfer_id!r}"
+            )
         return await self._get(
             f"/account_transfers/{account_transfer_id}",
             options=make_request_options(
@@ -467,6 +483,10 @@ class AsyncAccountTransfers(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not account_transfer_id:
+            raise ValueError(
+                f"Expected a non-empty value for `account_transfer_id` but received {account_transfer_id!r}"
+            )
         return await self._post(
             f"/account_transfers/{account_transfer_id}/approve",
             options=make_request_options(
@@ -507,6 +527,10 @@ class AsyncAccountTransfers(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not account_transfer_id:
+            raise ValueError(
+                f"Expected a non-empty value for `account_transfer_id` but received {account_transfer_id!r}"
+            )
         return await self._post(
             f"/account_transfers/{account_transfer_id}/cancel",
             options=make_request_options(

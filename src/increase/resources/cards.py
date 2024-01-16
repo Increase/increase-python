@@ -123,6 +123,8 @@ class Cards(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not card_id:
+            raise ValueError(f"Expected a non-empty value for `card_id` but received {card_id!r}")
         return self._get(
             f"/cards/{card_id}",
             options=make_request_options(
@@ -181,6 +183,8 @@ class Cards(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not card_id:
+            raise ValueError(f"Expected a non-empty value for `card_id` but received {card_id!r}")
         return self._patch(
             f"/cards/{card_id}",
             body=maybe_transform(
@@ -282,6 +286,8 @@ class Cards(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not card_id:
+            raise ValueError(f"Expected a non-empty value for `card_id` but received {card_id!r}")
         return self._get(
             f"/cards/{card_id}/details",
             options=make_request_options(
@@ -392,6 +398,8 @@ class AsyncCards(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not card_id:
+            raise ValueError(f"Expected a non-empty value for `card_id` but received {card_id!r}")
         return await self._get(
             f"/cards/{card_id}",
             options=make_request_options(
@@ -450,6 +458,8 @@ class AsyncCards(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not card_id:
+            raise ValueError(f"Expected a non-empty value for `card_id` but received {card_id!r}")
         return await self._patch(
             f"/cards/{card_id}",
             body=maybe_transform(
@@ -551,6 +561,8 @@ class AsyncCards(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not card_id:
+            raise ValueError(f"Expected a non-empty value for `card_id` but received {card_id!r}")
         return await self._get(
             f"/cards/{card_id}/details",
             options=make_request_options(

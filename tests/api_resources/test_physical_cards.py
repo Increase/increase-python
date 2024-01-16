@@ -133,6 +133,13 @@ class TestPhysicalCards:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_path_params_retrieve(self, client: Increase) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `physical_card_id` but received ''"):
+            client.physical_cards.with_raw_response.retrieve(
+                "",
+            )
+
+    @parametrize
     def test_method_update(self, client: Increase) -> None:
         physical_card = client.physical_cards.update(
             "string",
@@ -165,6 +172,14 @@ class TestPhysicalCards:
             assert_matches_type(PhysicalCard, physical_card, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_update(self, client: Increase) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `physical_card_id` but received ''"):
+            client.physical_cards.with_raw_response.update(
+                "",
+                status="disabled",
+            )
 
     @parametrize
     def test_method_list(self, client: Increase) -> None:
@@ -320,6 +335,13 @@ class TestAsyncPhysicalCards:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    async def test_path_params_retrieve(self, client: AsyncIncrease) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `physical_card_id` but received ''"):
+            await client.physical_cards.with_raw_response.retrieve(
+                "",
+            )
+
+    @parametrize
     async def test_method_update(self, client: AsyncIncrease) -> None:
         physical_card = await client.physical_cards.update(
             "string",
@@ -352,6 +374,14 @@ class TestAsyncPhysicalCards:
             assert_matches_type(PhysicalCard, physical_card, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_update(self, client: AsyncIncrease) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `physical_card_id` but received ''"):
+            await client.physical_cards.with_raw_response.update(
+                "",
+                status="disabled",
+            )
 
     @parametrize
     async def test_method_list(self, client: AsyncIncrease) -> None:

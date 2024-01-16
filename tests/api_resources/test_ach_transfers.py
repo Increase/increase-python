@@ -116,6 +116,13 @@ class TestACHTransfers:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_path_params_retrieve(self, client: Increase) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `ach_transfer_id` but received ''"):
+            client.ach_transfers.with_raw_response.retrieve(
+                "",
+            )
+
+    @parametrize
     def test_method_list(self, client: Increase) -> None:
         ach_transfer = client.ach_transfers.list()
         assert_matches_type(SyncPage[ACHTransfer], ach_transfer, path=["response"])
@@ -189,6 +196,13 @@ class TestACHTransfers:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_path_params_approve(self, client: Increase) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `ach_transfer_id` but received ''"):
+            client.ach_transfers.with_raw_response.approve(
+                "",
+            )
+
+    @parametrize
     def test_method_cancel(self, client: Increase) -> None:
         ach_transfer = client.ach_transfers.cancel(
             "string",
@@ -218,6 +232,13 @@ class TestACHTransfers:
             assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_cancel(self, client: Increase) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `ach_transfer_id` but received ''"):
+            client.ach_transfers.with_raw_response.cancel(
+                "",
+            )
 
 
 class TestAsyncACHTransfers:
@@ -318,6 +339,13 @@ class TestAsyncACHTransfers:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    async def test_path_params_retrieve(self, client: AsyncIncrease) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `ach_transfer_id` but received ''"):
+            await client.ach_transfers.with_raw_response.retrieve(
+                "",
+            )
+
+    @parametrize
     async def test_method_list(self, client: AsyncIncrease) -> None:
         ach_transfer = await client.ach_transfers.list()
         assert_matches_type(AsyncPage[ACHTransfer], ach_transfer, path=["response"])
@@ -391,6 +419,13 @@ class TestAsyncACHTransfers:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    async def test_path_params_approve(self, client: AsyncIncrease) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `ach_transfer_id` but received ''"):
+            await client.ach_transfers.with_raw_response.approve(
+                "",
+            )
+
+    @parametrize
     async def test_method_cancel(self, client: AsyncIncrease) -> None:
         ach_transfer = await client.ach_transfers.cancel(
             "string",
@@ -420,3 +455,10 @@ class TestAsyncACHTransfers:
             assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_cancel(self, client: AsyncIncrease) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `ach_transfer_id` but received ''"):
+            await client.ach_transfers.with_raw_response.cancel(
+                "",
+            )

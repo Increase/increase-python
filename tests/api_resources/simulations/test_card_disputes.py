@@ -64,6 +64,14 @@ class TestCardDisputes:
 
         assert cast(Any, response.is_closed) is True
 
+    @parametrize
+    def test_path_params_action(self, client: Increase) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `card_dispute_id` but received ''"):
+            client.simulations.card_disputes.with_raw_response.action(
+                "",
+                status="rejected",
+            )
+
 
 class TestAsyncCardDisputes:
     strict_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
@@ -112,3 +120,11 @@ class TestAsyncCardDisputes:
             assert_matches_type(CardDispute, card_dispute, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_action(self, client: AsyncIncrease) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `card_dispute_id` but received ''"):
+            await client.simulations.card_disputes.with_raw_response.action(
+                "",
+                status="rejected",
+            )

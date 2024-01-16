@@ -54,6 +54,10 @@ class OauthConnections(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not oauth_connection_id:
+            raise ValueError(
+                f"Expected a non-empty value for `oauth_connection_id` but received {oauth_connection_id!r}"
+            )
         return self._get(
             f"/oauth_connections/{oauth_connection_id}",
             options=make_request_options(
@@ -145,6 +149,10 @@ class AsyncOauthConnections(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not oauth_connection_id:
+            raise ValueError(
+                f"Expected a non-empty value for `oauth_connection_id` but received {oauth_connection_id!r}"
+            )
         return await self._get(
             f"/oauth_connections/{oauth_connection_id}",
             options=make_request_options(

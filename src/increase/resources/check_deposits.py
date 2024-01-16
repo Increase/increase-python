@@ -117,6 +117,8 @@ class CheckDeposits(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not check_deposit_id:
+            raise ValueError(f"Expected a non-empty value for `check_deposit_id` but received {check_deposit_id!r}")
         return self._get(
             f"/check_deposits/{check_deposit_id}",
             options=make_request_options(
@@ -277,6 +279,8 @@ class AsyncCheckDeposits(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not check_deposit_id:
+            raise ValueError(f"Expected a non-empty value for `check_deposit_id` but received {check_deposit_id!r}")
         return await self._get(
             f"/check_deposits/{check_deposit_id}",
             options=make_request_options(

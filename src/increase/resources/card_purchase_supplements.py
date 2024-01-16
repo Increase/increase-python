@@ -54,6 +54,10 @@ class CardPurchaseSupplements(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not card_purchase_supplement_id:
+            raise ValueError(
+                f"Expected a non-empty value for `card_purchase_supplement_id` but received {card_purchase_supplement_id!r}"
+            )
         return self._get(
             f"/card_purchase_supplements/{card_purchase_supplement_id}",
             options=make_request_options(
@@ -152,6 +156,10 @@ class AsyncCardPurchaseSupplements(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not card_purchase_supplement_id:
+            raise ValueError(
+                f"Expected a non-empty value for `card_purchase_supplement_id` but received {card_purchase_supplement_id!r}"
+            )
         return await self._get(
             f"/card_purchase_supplements/{card_purchase_supplement_id}",
             options=make_request_options(

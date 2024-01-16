@@ -107,6 +107,13 @@ class TestCards:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_path_params_retrieve(self, client: Increase) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `card_id` but received ''"):
+            client.cards.with_raw_response.retrieve(
+                "",
+            )
+
+    @parametrize
     def test_method_update(self, client: Increase) -> None:
         card = client.cards.update(
             "string",
@@ -158,6 +165,13 @@ class TestCards:
             assert_matches_type(Card, card, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_update(self, client: Increase) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `card_id` but received ''"):
+            client.cards.with_raw_response.update(
+                "",
+            )
 
     @parametrize
     def test_method_list(self, client: Increase) -> None:
@@ -229,6 +243,13 @@ class TestCards:
             assert_matches_type(CardDetails, card, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_retrieve_sensitive_details(self, client: Increase) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `card_id` but received ''"):
+            client.cards.with_raw_response.retrieve_sensitive_details(
+                "",
+            )
 
 
 class TestAsyncCards:
@@ -320,6 +341,13 @@ class TestAsyncCards:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    async def test_path_params_retrieve(self, client: AsyncIncrease) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `card_id` but received ''"):
+            await client.cards.with_raw_response.retrieve(
+                "",
+            )
+
+    @parametrize
     async def test_method_update(self, client: AsyncIncrease) -> None:
         card = await client.cards.update(
             "string",
@@ -371,6 +399,13 @@ class TestAsyncCards:
             assert_matches_type(Card, card, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_update(self, client: AsyncIncrease) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `card_id` but received ''"):
+            await client.cards.with_raw_response.update(
+                "",
+            )
 
     @parametrize
     async def test_method_list(self, client: AsyncIncrease) -> None:
@@ -442,3 +477,10 @@ class TestAsyncCards:
             assert_matches_type(CardDetails, card, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_retrieve_sensitive_details(self, client: AsyncIncrease) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `card_id` but received ''"):
+            await client.cards.with_raw_response.retrieve_sensitive_details(
+                "",
+            )

@@ -54,6 +54,8 @@ class Transactions(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not transaction_id:
+            raise ValueError(f"Expected a non-empty value for `transaction_id` but received {transaction_id!r}")
         return self._get(
             f"/transactions/{transaction_id}",
             options=make_request_options(
@@ -158,6 +160,8 @@ class AsyncTransactions(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not transaction_id:
+            raise ValueError(f"Expected a non-empty value for `transaction_id` but received {transaction_id!r}")
         return await self._get(
             f"/transactions/{transaction_id}",
             options=make_request_options(

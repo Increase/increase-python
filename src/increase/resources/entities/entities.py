@@ -171,6 +171,8 @@ class Entities(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not entity_id:
+            raise ValueError(f"Expected a non-empty value for `entity_id` but received {entity_id!r}")
         return self._get(
             f"/entities/{entity_id}",
             options=make_request_options(
@@ -261,6 +263,8 @@ class Entities(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not entity_id:
+            raise ValueError(f"Expected a non-empty value for `entity_id` but received {entity_id!r}")
         return self._post(
             f"/entities/{entity_id}/archive",
             options=make_request_options(
@@ -305,6 +309,8 @@ class Entities(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not entity_id:
+            raise ValueError(f"Expected a non-empty value for `entity_id` but received {entity_id!r}")
         return self._post(
             f"/entities/{entity_id}/address",
             body=maybe_transform({"address": address}, entity_update_address_params.EntityUpdateAddressParams),
@@ -451,6 +457,8 @@ class AsyncEntities(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not entity_id:
+            raise ValueError(f"Expected a non-empty value for `entity_id` but received {entity_id!r}")
         return await self._get(
             f"/entities/{entity_id}",
             options=make_request_options(
@@ -541,6 +549,8 @@ class AsyncEntities(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not entity_id:
+            raise ValueError(f"Expected a non-empty value for `entity_id` but received {entity_id!r}")
         return await self._post(
             f"/entities/{entity_id}/archive",
             options=make_request_options(
@@ -585,6 +595,8 @@ class AsyncEntities(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not entity_id:
+            raise ValueError(f"Expected a non-empty value for `entity_id` but received {entity_id!r}")
         return await self._post(
             f"/entities/{entity_id}/address",
             body=maybe_transform({"address": address}, entity_update_address_params.EntityUpdateAddressParams),

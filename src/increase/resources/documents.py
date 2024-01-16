@@ -54,6 +54,8 @@ class Documents(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not document_id:
+            raise ValueError(f"Expected a non-empty value for `document_id` but received {document_id!r}")
         return self._get(
             f"/documents/{document_id}",
             options=make_request_options(
@@ -153,6 +155,8 @@ class AsyncDocuments(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not document_id:
+            raise ValueError(f"Expected a non-empty value for `document_id` but received {document_id!r}")
         return await self._get(
             f"/documents/{document_id}",
             options=make_request_options(

@@ -52,6 +52,13 @@ class TestCardProfiles:
 
         assert cast(Any, response.is_closed) is True
 
+    @parametrize
+    def test_path_params_approve(self, client: Increase) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `card_profile_id` but received ''"):
+            client.simulations.card_profiles.with_raw_response.approve(
+                "",
+            )
+
 
 class TestAsyncCardProfiles:
     strict_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
@@ -88,3 +95,10 @@ class TestAsyncCardProfiles:
             assert_matches_type(CardProfile, card_profile, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_approve(self, client: AsyncIncrease) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `card_profile_id` but received ''"):
+            await client.simulations.card_profiles.with_raw_response.approve(
+                "",
+            )

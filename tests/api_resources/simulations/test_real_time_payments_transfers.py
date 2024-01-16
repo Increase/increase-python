@@ -64,6 +64,15 @@ class TestRealTimePaymentsTransfers:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_path_params_complete(self, client: Increase) -> None:
+        with pytest.raises(
+            ValueError, match=r"Expected a non-empty value for `real_time_payments_transfer_id` but received ''"
+        ):
+            client.simulations.real_time_payments_transfers.with_raw_response.complete(
+                "",
+            )
+
+    @parametrize
     def test_method_create_inbound(self, client: Increase) -> None:
         real_time_payments_transfer = client.simulations.real_time_payments_transfers.create_inbound(
             account_number_id="account_number_v18nkfqm6afpsrvy82b2",
@@ -162,6 +171,15 @@ class TestAsyncRealTimePaymentsTransfers:
             assert_matches_type(RealTimePaymentsTransfer, real_time_payments_transfer, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_complete(self, client: AsyncIncrease) -> None:
+        with pytest.raises(
+            ValueError, match=r"Expected a non-empty value for `real_time_payments_transfer_id` but received ''"
+        ):
+            await client.simulations.real_time_payments_transfers.with_raw_response.complete(
+                "",
+            )
 
     @parametrize
     async def test_method_create_inbound(self, client: AsyncIncrease) -> None:

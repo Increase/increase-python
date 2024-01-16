@@ -107,6 +107,13 @@ class TestAccountTransfers:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_path_params_retrieve(self, client: Increase) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_transfer_id` but received ''"):
+            client.account_transfers.with_raw_response.retrieve(
+                "",
+            )
+
+    @parametrize
     def test_method_list(self, client: Increase) -> None:
         account_transfer = client.account_transfers.list()
         assert_matches_type(SyncPage[AccountTransfer], account_transfer, path=["response"])
@@ -179,6 +186,13 @@ class TestAccountTransfers:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_path_params_approve(self, client: Increase) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_transfer_id` but received ''"):
+            client.account_transfers.with_raw_response.approve(
+                "",
+            )
+
+    @parametrize
     def test_method_cancel(self, client: Increase) -> None:
         account_transfer = client.account_transfers.cancel(
             "string",
@@ -208,6 +222,13 @@ class TestAccountTransfers:
             assert_matches_type(AccountTransfer, account_transfer, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_cancel(self, client: Increase) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_transfer_id` but received ''"):
+            client.account_transfers.with_raw_response.cancel(
+                "",
+            )
 
 
 class TestAsyncAccountTransfers:
@@ -299,6 +320,13 @@ class TestAsyncAccountTransfers:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    async def test_path_params_retrieve(self, client: AsyncIncrease) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_transfer_id` but received ''"):
+            await client.account_transfers.with_raw_response.retrieve(
+                "",
+            )
+
+    @parametrize
     async def test_method_list(self, client: AsyncIncrease) -> None:
         account_transfer = await client.account_transfers.list()
         assert_matches_type(AsyncPage[AccountTransfer], account_transfer, path=["response"])
@@ -371,6 +399,13 @@ class TestAsyncAccountTransfers:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    async def test_path_params_approve(self, client: AsyncIncrease) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_transfer_id` but received ''"):
+            await client.account_transfers.with_raw_response.approve(
+                "",
+            )
+
+    @parametrize
     async def test_method_cancel(self, client: AsyncIncrease) -> None:
         account_transfer = await client.account_transfers.cancel(
             "string",
@@ -400,3 +435,10 @@ class TestAsyncAccountTransfers:
             assert_matches_type(AccountTransfer, account_transfer, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_cancel(self, client: AsyncIncrease) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_transfer_id` but received ''"):
+            await client.account_transfers.with_raw_response.cancel(
+                "",
+            )

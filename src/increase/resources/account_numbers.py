@@ -120,6 +120,8 @@ class AccountNumbers(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not account_number_id:
+            raise ValueError(f"Expected a non-empty value for `account_number_id` but received {account_number_id!r}")
         return self._get(
             f"/account_numbers/{account_number_id}",
             options=make_request_options(
@@ -169,6 +171,8 @@ class AccountNumbers(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not account_number_id:
+            raise ValueError(f"Expected a non-empty value for `account_number_id` but received {account_number_id!r}")
         return self._patch(
             f"/account_numbers/{account_number_id}",
             body=maybe_transform(
@@ -352,6 +356,8 @@ class AsyncAccountNumbers(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not account_number_id:
+            raise ValueError(f"Expected a non-empty value for `account_number_id` but received {account_number_id!r}")
         return await self._get(
             f"/account_numbers/{account_number_id}",
             options=make_request_options(
@@ -401,6 +407,8 @@ class AsyncAccountNumbers(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not account_number_id:
+            raise ValueError(f"Expected a non-empty value for `account_number_id` but received {account_number_id!r}")
         return await self._patch(
             f"/account_numbers/{account_number_id}",
             body=maybe_transform(

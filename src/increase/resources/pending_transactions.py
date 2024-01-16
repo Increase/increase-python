@@ -54,6 +54,10 @@ class PendingTransactions(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not pending_transaction_id:
+            raise ValueError(
+                f"Expected a non-empty value for `pending_transaction_id` but received {pending_transaction_id!r}"
+            )
         return self._get(
             f"/pending_transactions/{pending_transaction_id}",
             options=make_request_options(
@@ -163,6 +167,10 @@ class AsyncPendingTransactions(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not pending_transaction_id:
+            raise ValueError(
+                f"Expected a non-empty value for `pending_transaction_id` but received {pending_transaction_id!r}"
+            )
         return await self._get(
             f"/pending_transactions/{pending_transaction_id}",
             options=make_request_options(

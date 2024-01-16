@@ -137,6 +137,8 @@ class Exports(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not export_id:
+            raise ValueError(f"Expected a non-empty value for `export_id` but received {export_id!r}")
         return self._get(
             f"/exports/{export_id}",
             options=make_request_options(
@@ -309,6 +311,8 @@ class AsyncExports(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not export_id:
+            raise ValueError(f"Expected a non-empty value for `export_id` but received {export_id!r}")
         return await self._get(
             f"/exports/{export_id}",
             options=make_request_options(

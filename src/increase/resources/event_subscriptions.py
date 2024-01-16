@@ -300,6 +300,10 @@ class EventSubscriptions(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not event_subscription_id:
+            raise ValueError(
+                f"Expected a non-empty value for `event_subscription_id` but received {event_subscription_id!r}"
+            )
         return self._get(
             f"/event_subscriptions/{event_subscription_id}",
             options=make_request_options(
@@ -345,6 +349,10 @@ class EventSubscriptions(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not event_subscription_id:
+            raise ValueError(
+                f"Expected a non-empty value for `event_subscription_id` but received {event_subscription_id!r}"
+            )
         return self._patch(
             f"/event_subscriptions/{event_subscription_id}",
             body=maybe_transform({"status": status}, event_subscription_update_params.EventSubscriptionUpdateParams),
@@ -680,6 +688,10 @@ class AsyncEventSubscriptions(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not event_subscription_id:
+            raise ValueError(
+                f"Expected a non-empty value for `event_subscription_id` but received {event_subscription_id!r}"
+            )
         return await self._get(
             f"/event_subscriptions/{event_subscription_id}",
             options=make_request_options(
@@ -725,6 +737,10 @@ class AsyncEventSubscriptions(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not event_subscription_id:
+            raise ValueError(
+                f"Expected a non-empty value for `event_subscription_id` but received {event_subscription_id!r}"
+            )
         return await self._patch(
             f"/event_subscriptions/{event_subscription_id}",
             body=maybe_transform({"status": status}, event_subscription_update_params.EventSubscriptionUpdateParams),

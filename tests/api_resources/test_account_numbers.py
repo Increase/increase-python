@@ -101,6 +101,13 @@ class TestAccountNumbers:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_path_params_retrieve(self, client: Increase) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_number_id` but received ''"):
+            client.account_numbers.with_raw_response.retrieve(
+                "",
+            )
+
+    @parametrize
     def test_method_update(self, client: Increase) -> None:
         account_number = client.account_numbers.update(
             "string",
@@ -140,6 +147,13 @@ class TestAccountNumbers:
             assert_matches_type(AccountNumber, account_number, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_update(self, client: Increase) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_number_id` but received ''"):
+            client.account_numbers.with_raw_response.update(
+                "",
+            )
 
     @parametrize
     def test_method_list(self, client: Increase) -> None:
@@ -265,6 +279,13 @@ class TestAsyncAccountNumbers:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    async def test_path_params_retrieve(self, client: AsyncIncrease) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_number_id` but received ''"):
+            await client.account_numbers.with_raw_response.retrieve(
+                "",
+            )
+
+    @parametrize
     async def test_method_update(self, client: AsyncIncrease) -> None:
         account_number = await client.account_numbers.update(
             "string",
@@ -304,6 +325,13 @@ class TestAsyncAccountNumbers:
             assert_matches_type(AccountNumber, account_number, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_update(self, client: AsyncIncrease) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_number_id` but received ''"):
+            await client.account_numbers.with_raw_response.update(
+                "",
+            )
 
     @parametrize
     async def test_method_list(self, client: AsyncIncrease) -> None:

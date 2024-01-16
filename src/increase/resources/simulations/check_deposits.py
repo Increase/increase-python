@@ -56,6 +56,8 @@ class CheckDeposits(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not check_deposit_id:
+            raise ValueError(f"Expected a non-empty value for `check_deposit_id` but received {check_deposit_id!r}")
         return self._post(
             f"/simulations/check_deposits/{check_deposit_id}/reject",
             options=make_request_options(
@@ -98,6 +100,8 @@ class CheckDeposits(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not check_deposit_id:
+            raise ValueError(f"Expected a non-empty value for `check_deposit_id` but received {check_deposit_id!r}")
         return self._post(
             f"/simulations/check_deposits/{check_deposit_id}/return",
             options=make_request_options(
@@ -139,6 +143,8 @@ class CheckDeposits(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not check_deposit_id:
+            raise ValueError(f"Expected a non-empty value for `check_deposit_id` but received {check_deposit_id!r}")
         return self._post(
             f"/simulations/check_deposits/{check_deposit_id}/submit",
             options=make_request_options(
@@ -191,6 +197,8 @@ class AsyncCheckDeposits(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not check_deposit_id:
+            raise ValueError(f"Expected a non-empty value for `check_deposit_id` but received {check_deposit_id!r}")
         return await self._post(
             f"/simulations/check_deposits/{check_deposit_id}/reject",
             options=make_request_options(
@@ -233,6 +241,8 @@ class AsyncCheckDeposits(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not check_deposit_id:
+            raise ValueError(f"Expected a non-empty value for `check_deposit_id` but received {check_deposit_id!r}")
         return await self._post(
             f"/simulations/check_deposits/{check_deposit_id}/return",
             options=make_request_options(
@@ -274,6 +284,8 @@ class AsyncCheckDeposits(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not check_deposit_id:
+            raise ValueError(f"Expected a non-empty value for `check_deposit_id` but received {check_deposit_id!r}")
         return await self._post(
             f"/simulations/check_deposits/{check_deposit_id}/submit",
             options=make_request_options(

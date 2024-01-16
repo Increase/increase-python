@@ -57,6 +57,15 @@ class TestInboundACHTransfers:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_path_params_retrieve(self, client: Increase) -> None:
+        with pytest.raises(
+            ValueError, match=r"Expected a non-empty value for `inbound_ach_transfer_id` but received ''"
+        ):
+            client.inbound_ach_transfers.with_raw_response.retrieve(
+                "",
+            )
+
+    @parametrize
     def test_method_list(self, client: Increase) -> None:
         inbound_ach_transfer = client.inbound_ach_transfers.list()
         assert_matches_type(SyncPage[InboundACHTransfer], inbound_ach_transfer, path=["response"])
@@ -129,6 +138,15 @@ class TestInboundACHTransfers:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_path_params_decline(self, client: Increase) -> None:
+        with pytest.raises(
+            ValueError, match=r"Expected a non-empty value for `inbound_ach_transfer_id` but received ''"
+        ):
+            client.inbound_ach_transfers.with_raw_response.decline(
+                "",
+            )
+
+    @parametrize
     def test_method_notification_of_change(self, client: Increase) -> None:
         inbound_ach_transfer = client.inbound_ach_transfers.notification_of_change(
             "string",
@@ -169,6 +187,15 @@ class TestInboundACHTransfers:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_path_params_notification_of_change(self, client: Increase) -> None:
+        with pytest.raises(
+            ValueError, match=r"Expected a non-empty value for `inbound_ach_transfer_id` but received ''"
+        ):
+            client.inbound_ach_transfers.with_raw_response.notification_of_change(
+                "",
+            )
+
+    @parametrize
     def test_method_transfer_return(self, client: Increase) -> None:
         inbound_ach_transfer = client.inbound_ach_transfers.transfer_return(
             "string",
@@ -201,6 +228,16 @@ class TestInboundACHTransfers:
             assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_transfer_return(self, client: Increase) -> None:
+        with pytest.raises(
+            ValueError, match=r"Expected a non-empty value for `inbound_ach_transfer_id` but received ''"
+        ):
+            client.inbound_ach_transfers.with_raw_response.transfer_return(
+                "",
+                reason="payment_stopped",
+            )
 
 
 class TestAsyncInboundACHTransfers:
@@ -238,6 +275,15 @@ class TestAsyncInboundACHTransfers:
             assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_retrieve(self, client: AsyncIncrease) -> None:
+        with pytest.raises(
+            ValueError, match=r"Expected a non-empty value for `inbound_ach_transfer_id` but received ''"
+        ):
+            await client.inbound_ach_transfers.with_raw_response.retrieve(
+                "",
+            )
 
     @parametrize
     async def test_method_list(self, client: AsyncIncrease) -> None:
@@ -312,6 +358,15 @@ class TestAsyncInboundACHTransfers:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    async def test_path_params_decline(self, client: AsyncIncrease) -> None:
+        with pytest.raises(
+            ValueError, match=r"Expected a non-empty value for `inbound_ach_transfer_id` but received ''"
+        ):
+            await client.inbound_ach_transfers.with_raw_response.decline(
+                "",
+            )
+
+    @parametrize
     async def test_method_notification_of_change(self, client: AsyncIncrease) -> None:
         inbound_ach_transfer = await client.inbound_ach_transfers.notification_of_change(
             "string",
@@ -352,6 +407,15 @@ class TestAsyncInboundACHTransfers:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    async def test_path_params_notification_of_change(self, client: AsyncIncrease) -> None:
+        with pytest.raises(
+            ValueError, match=r"Expected a non-empty value for `inbound_ach_transfer_id` but received ''"
+        ):
+            await client.inbound_ach_transfers.with_raw_response.notification_of_change(
+                "",
+            )
+
+    @parametrize
     async def test_method_transfer_return(self, client: AsyncIncrease) -> None:
         inbound_ach_transfer = await client.inbound_ach_transfers.transfer_return(
             "string",
@@ -384,3 +448,13 @@ class TestAsyncInboundACHTransfers:
             assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_transfer_return(self, client: AsyncIncrease) -> None:
+        with pytest.raises(
+            ValueError, match=r"Expected a non-empty value for `inbound_ach_transfer_id` but received ''"
+        ):
+            await client.inbound_ach_transfers.with_raw_response.transfer_return(
+                "",
+                reason="payment_stopped",
+            )

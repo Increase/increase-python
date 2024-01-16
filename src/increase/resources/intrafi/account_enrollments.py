@@ -104,6 +104,10 @@ class AccountEnrollments(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not intrafi_account_enrollment_id:
+            raise ValueError(
+                f"Expected a non-empty value for `intrafi_account_enrollment_id` but received {intrafi_account_enrollment_id!r}"
+            )
         return self._get(
             f"/intrafi_account_enrollments/{intrafi_account_enrollment_id}",
             options=make_request_options(
@@ -194,6 +198,10 @@ class AccountEnrollments(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not intrafi_account_enrollment_id:
+            raise ValueError(
+                f"Expected a non-empty value for `intrafi_account_enrollment_id` but received {intrafi_account_enrollment_id!r}"
+            )
         return self._post(
             f"/intrafi_account_enrollments/{intrafi_account_enrollment_id}/unenroll",
             options=make_request_options(
@@ -291,6 +299,10 @@ class AsyncAccountEnrollments(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not intrafi_account_enrollment_id:
+            raise ValueError(
+                f"Expected a non-empty value for `intrafi_account_enrollment_id` but received {intrafi_account_enrollment_id!r}"
+            )
         return await self._get(
             f"/intrafi_account_enrollments/{intrafi_account_enrollment_id}",
             options=make_request_options(
@@ -381,6 +393,10 @@ class AsyncAccountEnrollments(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not intrafi_account_enrollment_id:
+            raise ValueError(
+                f"Expected a non-empty value for `intrafi_account_enrollment_id` but received {intrafi_account_enrollment_id!r}"
+            )
         return await self._post(
             f"/intrafi_account_enrollments/{intrafi_account_enrollment_id}/unenroll",
             options=make_request_options(
