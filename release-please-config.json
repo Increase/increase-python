@@ -57,9 +57,6 @@
       "hidden": true
     }
   ],
-  "reviewers": [
-    "rattrayalex"
-  ],
   "release-type": "python",
   "extra-files": [
     "src/increase/_version.py"
