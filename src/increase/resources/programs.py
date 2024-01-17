@@ -208,6 +208,8 @@ class AsyncPrograms(AsyncAPIResource):
 
 class ProgramsWithRawResponse:
     def __init__(self, programs: Programs) -> None:
+        self._programs = programs
+
         self.retrieve = _legacy_response.to_raw_response_wrapper(
             programs.retrieve,
         )
@@ -218,6 +220,8 @@ class ProgramsWithRawResponse:
 
 class AsyncProgramsWithRawResponse:
     def __init__(self, programs: AsyncPrograms) -> None:
+        self._programs = programs
+
         self.retrieve = _legacy_response.async_to_raw_response_wrapper(
             programs.retrieve,
         )
@@ -228,6 +232,8 @@ class AsyncProgramsWithRawResponse:
 
 class ProgramsWithStreamingResponse:
     def __init__(self, programs: Programs) -> None:
+        self._programs = programs
+
         self.retrieve = to_streamed_response_wrapper(
             programs.retrieve,
         )
@@ -238,6 +244,8 @@ class ProgramsWithStreamingResponse:
 
 class AsyncProgramsWithStreamingResponse:
     def __init__(self, programs: AsyncPrograms) -> None:
+        self._programs = programs
+
         self.retrieve = async_to_streamed_response_wrapper(
             programs.retrieve,
         )

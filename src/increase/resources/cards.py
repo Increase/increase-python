@@ -574,6 +574,8 @@ class AsyncCards(AsyncAPIResource):
 
 class CardsWithRawResponse:
     def __init__(self, cards: Cards) -> None:
+        self._cards = cards
+
         self.create = _legacy_response.to_raw_response_wrapper(
             cards.create,
         )
@@ -593,6 +595,8 @@ class CardsWithRawResponse:
 
 class AsyncCardsWithRawResponse:
     def __init__(self, cards: AsyncCards) -> None:
+        self._cards = cards
+
         self.create = _legacy_response.async_to_raw_response_wrapper(
             cards.create,
         )
@@ -612,6 +616,8 @@ class AsyncCardsWithRawResponse:
 
 class CardsWithStreamingResponse:
     def __init__(self, cards: Cards) -> None:
+        self._cards = cards
+
         self.create = to_streamed_response_wrapper(
             cards.create,
         )
@@ -631,6 +637,8 @@ class CardsWithStreamingResponse:
 
 class AsyncCardsWithStreamingResponse:
     def __init__(self, cards: AsyncCards) -> None:
+        self._cards = cards
+
         self.create = async_to_streamed_response_wrapper(
             cards.create,
         )

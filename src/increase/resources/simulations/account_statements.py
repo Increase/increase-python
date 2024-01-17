@@ -129,6 +129,8 @@ class AsyncAccountStatements(AsyncAPIResource):
 
 class AccountStatementsWithRawResponse:
     def __init__(self, account_statements: AccountStatements) -> None:
+        self._account_statements = account_statements
+
         self.create = _legacy_response.to_raw_response_wrapper(
             account_statements.create,
         )
@@ -136,6 +138,8 @@ class AccountStatementsWithRawResponse:
 
 class AsyncAccountStatementsWithRawResponse:
     def __init__(self, account_statements: AsyncAccountStatements) -> None:
+        self._account_statements = account_statements
+
         self.create = _legacy_response.async_to_raw_response_wrapper(
             account_statements.create,
         )
@@ -143,6 +147,8 @@ class AsyncAccountStatementsWithRawResponse:
 
 class AccountStatementsWithStreamingResponse:
     def __init__(self, account_statements: AccountStatements) -> None:
+        self._account_statements = account_statements
+
         self.create = to_streamed_response_wrapper(
             account_statements.create,
         )
@@ -150,6 +156,8 @@ class AccountStatementsWithStreamingResponse:
 
 class AsyncAccountStatementsWithStreamingResponse:
     def __init__(self, account_statements: AsyncAccountStatements) -> None:
+        self._account_statements = account_statements
+
         self.create = async_to_streamed_response_wrapper(
             account_statements.create,
         )

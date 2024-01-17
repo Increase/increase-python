@@ -410,6 +410,8 @@ class AsyncCardProfiles(AsyncAPIResource):
 
 class CardProfilesWithRawResponse:
     def __init__(self, card_profiles: CardProfiles) -> None:
+        self._card_profiles = card_profiles
+
         self.create = _legacy_response.to_raw_response_wrapper(
             card_profiles.create,
         )
@@ -426,6 +428,8 @@ class CardProfilesWithRawResponse:
 
 class AsyncCardProfilesWithRawResponse:
     def __init__(self, card_profiles: AsyncCardProfiles) -> None:
+        self._card_profiles = card_profiles
+
         self.create = _legacy_response.async_to_raw_response_wrapper(
             card_profiles.create,
         )
@@ -442,6 +446,8 @@ class AsyncCardProfilesWithRawResponse:
 
 class CardProfilesWithStreamingResponse:
     def __init__(self, card_profiles: CardProfiles) -> None:
+        self._card_profiles = card_profiles
+
         self.create = to_streamed_response_wrapper(
             card_profiles.create,
         )
@@ -458,6 +464,8 @@ class CardProfilesWithStreamingResponse:
 
 class AsyncCardProfilesWithStreamingResponse:
     def __init__(self, card_profiles: AsyncCardProfiles) -> None:
+        self._card_profiles = card_profiles
+
         self.create = async_to_streamed_response_wrapper(
             card_profiles.create,
         )

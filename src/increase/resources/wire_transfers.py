@@ -770,6 +770,8 @@ class AsyncWireTransfers(AsyncAPIResource):
 
 class WireTransfersWithRawResponse:
     def __init__(self, wire_transfers: WireTransfers) -> None:
+        self._wire_transfers = wire_transfers
+
         self.create = _legacy_response.to_raw_response_wrapper(
             wire_transfers.create,
         )
@@ -795,6 +797,8 @@ class WireTransfersWithRawResponse:
 
 class AsyncWireTransfersWithRawResponse:
     def __init__(self, wire_transfers: AsyncWireTransfers) -> None:
+        self._wire_transfers = wire_transfers
+
         self.create = _legacy_response.async_to_raw_response_wrapper(
             wire_transfers.create,
         )
@@ -820,6 +824,8 @@ class AsyncWireTransfersWithRawResponse:
 
 class WireTransfersWithStreamingResponse:
     def __init__(self, wire_transfers: WireTransfers) -> None:
+        self._wire_transfers = wire_transfers
+
         self.create = to_streamed_response_wrapper(
             wire_transfers.create,
         )
@@ -845,6 +851,8 @@ class WireTransfersWithStreamingResponse:
 
 class AsyncWireTransfersWithStreamingResponse:
     def __init__(self, wire_transfers: AsyncWireTransfers) -> None:
+        self._wire_transfers = wire_transfers
+
         self.create = async_to_streamed_response_wrapper(
             wire_transfers.create,
         )

@@ -805,6 +805,8 @@ class AsyncEventSubscriptions(AsyncAPIResource):
 
 class EventSubscriptionsWithRawResponse:
     def __init__(self, event_subscriptions: EventSubscriptions) -> None:
+        self._event_subscriptions = event_subscriptions
+
         self.create = _legacy_response.to_raw_response_wrapper(
             event_subscriptions.create,
         )
@@ -821,6 +823,8 @@ class EventSubscriptionsWithRawResponse:
 
 class AsyncEventSubscriptionsWithRawResponse:
     def __init__(self, event_subscriptions: AsyncEventSubscriptions) -> None:
+        self._event_subscriptions = event_subscriptions
+
         self.create = _legacy_response.async_to_raw_response_wrapper(
             event_subscriptions.create,
         )
@@ -837,6 +841,8 @@ class AsyncEventSubscriptionsWithRawResponse:
 
 class EventSubscriptionsWithStreamingResponse:
     def __init__(self, event_subscriptions: EventSubscriptions) -> None:
+        self._event_subscriptions = event_subscriptions
+
         self.create = to_streamed_response_wrapper(
             event_subscriptions.create,
         )
@@ -853,6 +859,8 @@ class EventSubscriptionsWithStreamingResponse:
 
 class AsyncEventSubscriptionsWithStreamingResponse:
     def __init__(self, event_subscriptions: AsyncEventSubscriptions) -> None:
+        self._event_subscriptions = event_subscriptions
+
         self.create = async_to_streamed_response_wrapper(
             event_subscriptions.create,
         )

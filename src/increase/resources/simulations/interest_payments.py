@@ -163,6 +163,8 @@ class AsyncInterestPayments(AsyncAPIResource):
 
 class InterestPaymentsWithRawResponse:
     def __init__(self, interest_payments: InterestPayments) -> None:
+        self._interest_payments = interest_payments
+
         self.create = _legacy_response.to_raw_response_wrapper(
             interest_payments.create,
         )
@@ -170,6 +172,8 @@ class InterestPaymentsWithRawResponse:
 
 class AsyncInterestPaymentsWithRawResponse:
     def __init__(self, interest_payments: AsyncInterestPayments) -> None:
+        self._interest_payments = interest_payments
+
         self.create = _legacy_response.async_to_raw_response_wrapper(
             interest_payments.create,
         )
@@ -177,6 +181,8 @@ class AsyncInterestPaymentsWithRawResponse:
 
 class InterestPaymentsWithStreamingResponse:
     def __init__(self, interest_payments: InterestPayments) -> None:
+        self._interest_payments = interest_payments
+
         self.create = to_streamed_response_wrapper(
             interest_payments.create,
         )
@@ -184,6 +190,8 @@ class InterestPaymentsWithStreamingResponse:
 
 class AsyncInterestPaymentsWithStreamingResponse:
     def __init__(self, interest_payments: AsyncInterestPayments) -> None:
+        self._interest_payments = interest_payments
+
         self.create = async_to_streamed_response_wrapper(
             interest_payments.create,
         )

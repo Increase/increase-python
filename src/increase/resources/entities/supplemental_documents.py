@@ -247,6 +247,8 @@ class AsyncSupplementalDocuments(AsyncAPIResource):
 
 class SupplementalDocumentsWithRawResponse:
     def __init__(self, supplemental_documents: SupplementalDocuments) -> None:
+        self._supplemental_documents = supplemental_documents
+
         self.create = _legacy_response.to_raw_response_wrapper(
             supplemental_documents.create,
         )
@@ -257,6 +259,8 @@ class SupplementalDocumentsWithRawResponse:
 
 class AsyncSupplementalDocumentsWithRawResponse:
     def __init__(self, supplemental_documents: AsyncSupplementalDocuments) -> None:
+        self._supplemental_documents = supplemental_documents
+
         self.create = _legacy_response.async_to_raw_response_wrapper(
             supplemental_documents.create,
         )
@@ -267,6 +271,8 @@ class AsyncSupplementalDocumentsWithRawResponse:
 
 class SupplementalDocumentsWithStreamingResponse:
     def __init__(self, supplemental_documents: SupplementalDocuments) -> None:
+        self._supplemental_documents = supplemental_documents
+
         self.create = to_streamed_response_wrapper(
             supplemental_documents.create,
         )
@@ -277,6 +283,8 @@ class SupplementalDocumentsWithStreamingResponse:
 
 class AsyncSupplementalDocumentsWithStreamingResponse:
     def __init__(self, supplemental_documents: AsyncSupplementalDocuments) -> None:
+        self._supplemental_documents = supplemental_documents
+
         self.create = async_to_streamed_response_wrapper(
             supplemental_documents.create,
         )

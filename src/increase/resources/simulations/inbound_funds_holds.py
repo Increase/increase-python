@@ -129,6 +129,8 @@ class AsyncInboundFundsHolds(AsyncAPIResource):
 
 class InboundFundsHoldsWithRawResponse:
     def __init__(self, inbound_funds_holds: InboundFundsHolds) -> None:
+        self._inbound_funds_holds = inbound_funds_holds
+
         self.release = _legacy_response.to_raw_response_wrapper(
             inbound_funds_holds.release,
         )
@@ -136,6 +138,8 @@ class InboundFundsHoldsWithRawResponse:
 
 class AsyncInboundFundsHoldsWithRawResponse:
     def __init__(self, inbound_funds_holds: AsyncInboundFundsHolds) -> None:
+        self._inbound_funds_holds = inbound_funds_holds
+
         self.release = _legacy_response.async_to_raw_response_wrapper(
             inbound_funds_holds.release,
         )
@@ -143,6 +147,8 @@ class AsyncInboundFundsHoldsWithRawResponse:
 
 class InboundFundsHoldsWithStreamingResponse:
     def __init__(self, inbound_funds_holds: InboundFundsHolds) -> None:
+        self._inbound_funds_holds = inbound_funds_holds
+
         self.release = to_streamed_response_wrapper(
             inbound_funds_holds.release,
         )
@@ -150,6 +156,8 @@ class InboundFundsHoldsWithStreamingResponse:
 
 class AsyncInboundFundsHoldsWithStreamingResponse:
     def __init__(self, inbound_funds_holds: AsyncInboundFundsHolds) -> None:
+        self._inbound_funds_holds = inbound_funds_holds
+
         self.release = async_to_streamed_response_wrapper(
             inbound_funds_holds.release,
         )

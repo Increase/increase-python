@@ -152,6 +152,8 @@ class AsyncRoutingNumbers(AsyncAPIResource):
 
 class RoutingNumbersWithRawResponse:
     def __init__(self, routing_numbers: RoutingNumbers) -> None:
+        self._routing_numbers = routing_numbers
+
         self.list = _legacy_response.to_raw_response_wrapper(
             routing_numbers.list,
         )
@@ -159,6 +161,8 @@ class RoutingNumbersWithRawResponse:
 
 class AsyncRoutingNumbersWithRawResponse:
     def __init__(self, routing_numbers: AsyncRoutingNumbers) -> None:
+        self._routing_numbers = routing_numbers
+
         self.list = _legacy_response.async_to_raw_response_wrapper(
             routing_numbers.list,
         )
@@ -166,6 +170,8 @@ class AsyncRoutingNumbersWithRawResponse:
 
 class RoutingNumbersWithStreamingResponse:
     def __init__(self, routing_numbers: RoutingNumbers) -> None:
+        self._routing_numbers = routing_numbers
+
         self.list = to_streamed_response_wrapper(
             routing_numbers.list,
         )
@@ -173,6 +179,8 @@ class RoutingNumbersWithStreamingResponse:
 
 class AsyncRoutingNumbersWithStreamingResponse:
     def __init__(self, routing_numbers: AsyncRoutingNumbers) -> None:
+        self._routing_numbers = routing_numbers
+
         self.list = async_to_streamed_response_wrapper(
             routing_numbers.list,
         )
