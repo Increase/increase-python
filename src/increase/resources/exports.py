@@ -372,6 +372,8 @@ class AsyncExports(AsyncAPIResource):
 
 class ExportsWithRawResponse:
     def __init__(self, exports: Exports) -> None:
+        self._exports = exports
+
         self.create = _legacy_response.to_raw_response_wrapper(
             exports.create,
         )
@@ -385,6 +387,8 @@ class ExportsWithRawResponse:
 
 class AsyncExportsWithRawResponse:
     def __init__(self, exports: AsyncExports) -> None:
+        self._exports = exports
+
         self.create = _legacy_response.async_to_raw_response_wrapper(
             exports.create,
         )
@@ -398,6 +402,8 @@ class AsyncExportsWithRawResponse:
 
 class ExportsWithStreamingResponse:
     def __init__(self, exports: Exports) -> None:
+        self._exports = exports
+
         self.create = to_streamed_response_wrapper(
             exports.create,
         )
@@ -411,6 +417,8 @@ class ExportsWithStreamingResponse:
 
 class AsyncExportsWithStreamingResponse:
     def __init__(self, exports: AsyncExports) -> None:
+        self._exports = exports
+
         self.create = async_to_streamed_response_wrapper(
             exports.create,
         )

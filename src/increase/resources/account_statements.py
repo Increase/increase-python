@@ -224,6 +224,8 @@ class AsyncAccountStatements(AsyncAPIResource):
 
 class AccountStatementsWithRawResponse:
     def __init__(self, account_statements: AccountStatements) -> None:
+        self._account_statements = account_statements
+
         self.retrieve = _legacy_response.to_raw_response_wrapper(
             account_statements.retrieve,
         )
@@ -234,6 +236,8 @@ class AccountStatementsWithRawResponse:
 
 class AsyncAccountStatementsWithRawResponse:
     def __init__(self, account_statements: AsyncAccountStatements) -> None:
+        self._account_statements = account_statements
+
         self.retrieve = _legacy_response.async_to_raw_response_wrapper(
             account_statements.retrieve,
         )
@@ -244,6 +248,8 @@ class AsyncAccountStatementsWithRawResponse:
 
 class AccountStatementsWithStreamingResponse:
     def __init__(self, account_statements: AccountStatements) -> None:
+        self._account_statements = account_statements
+
         self.retrieve = to_streamed_response_wrapper(
             account_statements.retrieve,
         )
@@ -254,6 +260,8 @@ class AccountStatementsWithStreamingResponse:
 
 class AsyncAccountStatementsWithStreamingResponse:
     def __init__(self, account_statements: AsyncAccountStatements) -> None:
+        self._account_statements = account_statements
+
         self.retrieve = async_to_streamed_response_wrapper(
             account_statements.retrieve,
         )

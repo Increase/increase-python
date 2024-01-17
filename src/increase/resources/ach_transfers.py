@@ -692,6 +692,8 @@ class AsyncACHTransfers(AsyncAPIResource):
 
 class ACHTransfersWithRawResponse:
     def __init__(self, ach_transfers: ACHTransfers) -> None:
+        self._ach_transfers = ach_transfers
+
         self.create = _legacy_response.to_raw_response_wrapper(
             ach_transfers.create,
         )
@@ -711,6 +713,8 @@ class ACHTransfersWithRawResponse:
 
 class AsyncACHTransfersWithRawResponse:
     def __init__(self, ach_transfers: AsyncACHTransfers) -> None:
+        self._ach_transfers = ach_transfers
+
         self.create = _legacy_response.async_to_raw_response_wrapper(
             ach_transfers.create,
         )
@@ -730,6 +734,8 @@ class AsyncACHTransfersWithRawResponse:
 
 class ACHTransfersWithStreamingResponse:
     def __init__(self, ach_transfers: ACHTransfers) -> None:
+        self._ach_transfers = ach_transfers
+
         self.create = to_streamed_response_wrapper(
             ach_transfers.create,
         )
@@ -749,6 +755,8 @@ class ACHTransfersWithStreamingResponse:
 
 class AsyncACHTransfersWithStreamingResponse:
     def __init__(self, ach_transfers: AsyncACHTransfers) -> None:
+        self._ach_transfers = ach_transfers
+
         self.create = async_to_streamed_response_wrapper(
             ach_transfers.create,
         )

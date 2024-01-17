@@ -224,6 +224,8 @@ class AsyncDocuments(AsyncAPIResource):
 
 class DocumentsWithRawResponse:
     def __init__(self, documents: Documents) -> None:
+        self._documents = documents
+
         self.retrieve = _legacy_response.to_raw_response_wrapper(
             documents.retrieve,
         )
@@ -234,6 +236,8 @@ class DocumentsWithRawResponse:
 
 class AsyncDocumentsWithRawResponse:
     def __init__(self, documents: AsyncDocuments) -> None:
+        self._documents = documents
+
         self.retrieve = _legacy_response.async_to_raw_response_wrapper(
             documents.retrieve,
         )
@@ -244,6 +248,8 @@ class AsyncDocumentsWithRawResponse:
 
 class DocumentsWithStreamingResponse:
     def __init__(self, documents: Documents) -> None:
+        self._documents = documents
+
         self.retrieve = to_streamed_response_wrapper(
             documents.retrieve,
         )
@@ -254,6 +260,8 @@ class DocumentsWithStreamingResponse:
 
 class AsyncDocumentsWithStreamingResponse:
     def __init__(self, documents: AsyncDocuments) -> None:
+        self._documents = documents
+
         self.retrieve = async_to_streamed_response_wrapper(
             documents.retrieve,
         )

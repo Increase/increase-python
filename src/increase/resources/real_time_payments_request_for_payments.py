@@ -377,6 +377,8 @@ class AsyncRealTimePaymentsRequestForPayments(AsyncAPIResource):
 
 class RealTimePaymentsRequestForPaymentsWithRawResponse:
     def __init__(self, real_time_payments_request_for_payments: RealTimePaymentsRequestForPayments) -> None:
+        self._real_time_payments_request_for_payments = real_time_payments_request_for_payments
+
         self.create = _legacy_response.to_raw_response_wrapper(
             real_time_payments_request_for_payments.create,
         )
@@ -390,6 +392,8 @@ class RealTimePaymentsRequestForPaymentsWithRawResponse:
 
 class AsyncRealTimePaymentsRequestForPaymentsWithRawResponse:
     def __init__(self, real_time_payments_request_for_payments: AsyncRealTimePaymentsRequestForPayments) -> None:
+        self._real_time_payments_request_for_payments = real_time_payments_request_for_payments
+
         self.create = _legacy_response.async_to_raw_response_wrapper(
             real_time_payments_request_for_payments.create,
         )
@@ -403,6 +407,8 @@ class AsyncRealTimePaymentsRequestForPaymentsWithRawResponse:
 
 class RealTimePaymentsRequestForPaymentsWithStreamingResponse:
     def __init__(self, real_time_payments_request_for_payments: RealTimePaymentsRequestForPayments) -> None:
+        self._real_time_payments_request_for_payments = real_time_payments_request_for_payments
+
         self.create = to_streamed_response_wrapper(
             real_time_payments_request_for_payments.create,
         )
@@ -416,6 +422,8 @@ class RealTimePaymentsRequestForPaymentsWithStreamingResponse:
 
 class AsyncRealTimePaymentsRequestForPaymentsWithStreamingResponse:
     def __init__(self, real_time_payments_request_for_payments: AsyncRealTimePaymentsRequestForPayments) -> None:
+        self._real_time_payments_request_for_payments = real_time_payments_request_for_payments
+
         self.create = async_to_streamed_response_wrapper(
             real_time_payments_request_for_payments.create,
         )

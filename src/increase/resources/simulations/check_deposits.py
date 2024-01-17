@@ -301,6 +301,8 @@ class AsyncCheckDeposits(AsyncAPIResource):
 
 class CheckDepositsWithRawResponse:
     def __init__(self, check_deposits: CheckDeposits) -> None:
+        self._check_deposits = check_deposits
+
         self.reject = _legacy_response.to_raw_response_wrapper(
             check_deposits.reject,
         )
@@ -314,6 +316,8 @@ class CheckDepositsWithRawResponse:
 
 class AsyncCheckDepositsWithRawResponse:
     def __init__(self, check_deposits: AsyncCheckDeposits) -> None:
+        self._check_deposits = check_deposits
+
         self.reject = _legacy_response.async_to_raw_response_wrapper(
             check_deposits.reject,
         )
@@ -327,6 +331,8 @@ class AsyncCheckDepositsWithRawResponse:
 
 class CheckDepositsWithStreamingResponse:
     def __init__(self, check_deposits: CheckDeposits) -> None:
+        self._check_deposits = check_deposits
+
         self.reject = to_streamed_response_wrapper(
             check_deposits.reject,
         )
@@ -340,6 +346,8 @@ class CheckDepositsWithStreamingResponse:
 
 class AsyncCheckDepositsWithStreamingResponse:
     def __init__(self, check_deposits: AsyncCheckDeposits) -> None:
+        self._check_deposits = check_deposits
+
         self.reject = async_to_streamed_response_wrapper(
             check_deposits.reject,
         )

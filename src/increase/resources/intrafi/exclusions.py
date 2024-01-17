@@ -412,6 +412,8 @@ class AsyncExclusions(AsyncAPIResource):
 
 class ExclusionsWithRawResponse:
     def __init__(self, exclusions: Exclusions) -> None:
+        self._exclusions = exclusions
+
         self.create = _legacy_response.to_raw_response_wrapper(
             exclusions.create,
         )
@@ -428,6 +430,8 @@ class ExclusionsWithRawResponse:
 
 class AsyncExclusionsWithRawResponse:
     def __init__(self, exclusions: AsyncExclusions) -> None:
+        self._exclusions = exclusions
+
         self.create = _legacy_response.async_to_raw_response_wrapper(
             exclusions.create,
         )
@@ -444,6 +448,8 @@ class AsyncExclusionsWithRawResponse:
 
 class ExclusionsWithStreamingResponse:
     def __init__(self, exclusions: Exclusions) -> None:
+        self._exclusions = exclusions
+
         self.create = to_streamed_response_wrapper(
             exclusions.create,
         )
@@ -460,6 +466,8 @@ class ExclusionsWithStreamingResponse:
 
 class AsyncExclusionsWithStreamingResponse:
     def __init__(self, exclusions: AsyncExclusions) -> None:
+        self._exclusions = exclusions
+
         self.create = async_to_streamed_response_wrapper(
             exclusions.create,
         )

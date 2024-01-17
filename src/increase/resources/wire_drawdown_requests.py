@@ -372,6 +372,8 @@ class AsyncWireDrawdownRequests(AsyncAPIResource):
 
 class WireDrawdownRequestsWithRawResponse:
     def __init__(self, wire_drawdown_requests: WireDrawdownRequests) -> None:
+        self._wire_drawdown_requests = wire_drawdown_requests
+
         self.create = _legacy_response.to_raw_response_wrapper(
             wire_drawdown_requests.create,
         )
@@ -385,6 +387,8 @@ class WireDrawdownRequestsWithRawResponse:
 
 class AsyncWireDrawdownRequestsWithRawResponse:
     def __init__(self, wire_drawdown_requests: AsyncWireDrawdownRequests) -> None:
+        self._wire_drawdown_requests = wire_drawdown_requests
+
         self.create = _legacy_response.async_to_raw_response_wrapper(
             wire_drawdown_requests.create,
         )
@@ -398,6 +402,8 @@ class AsyncWireDrawdownRequestsWithRawResponse:
 
 class WireDrawdownRequestsWithStreamingResponse:
     def __init__(self, wire_drawdown_requests: WireDrawdownRequests) -> None:
+        self._wire_drawdown_requests = wire_drawdown_requests
+
         self.create = to_streamed_response_wrapper(
             wire_drawdown_requests.create,
         )
@@ -411,6 +417,8 @@ class WireDrawdownRequestsWithStreamingResponse:
 
 class AsyncWireDrawdownRequestsWithStreamingResponse:
     def __init__(self, wire_drawdown_requests: AsyncWireDrawdownRequests) -> None:
+        self._wire_drawdown_requests = wire_drawdown_requests
+
         self.create = async_to_streamed_response_wrapper(
             wire_drawdown_requests.create,
         )

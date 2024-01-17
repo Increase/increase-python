@@ -77,6 +77,8 @@ class AsyncGroups(AsyncAPIResource):
 
 class GroupsWithRawResponse:
     def __init__(self, groups: Groups) -> None:
+        self._groups = groups
+
         self.retrieve_details = _legacy_response.to_raw_response_wrapper(
             groups.retrieve_details,
         )
@@ -84,6 +86,8 @@ class GroupsWithRawResponse:
 
 class AsyncGroupsWithRawResponse:
     def __init__(self, groups: AsyncGroups) -> None:
+        self._groups = groups
+
         self.retrieve_details = _legacy_response.async_to_raw_response_wrapper(
             groups.retrieve_details,
         )
@@ -91,6 +95,8 @@ class AsyncGroupsWithRawResponse:
 
 class GroupsWithStreamingResponse:
     def __init__(self, groups: Groups) -> None:
+        self._groups = groups
+
         self.retrieve_details = to_streamed_response_wrapper(
             groups.retrieve_details,
         )
@@ -98,6 +104,8 @@ class GroupsWithStreamingResponse:
 
 class AsyncGroupsWithStreamingResponse:
     def __init__(self, groups: AsyncGroups) -> None:
+        self._groups = groups
+
         self.retrieve_details = async_to_streamed_response_wrapper(
             groups.retrieve_details,
         )

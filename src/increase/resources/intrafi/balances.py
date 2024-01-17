@@ -109,6 +109,8 @@ class AsyncBalances(AsyncAPIResource):
 
 class BalancesWithRawResponse:
     def __init__(self, balances: Balances) -> None:
+        self._balances = balances
+
         self.retrieve = _legacy_response.to_raw_response_wrapper(
             balances.retrieve,
         )
@@ -116,6 +118,8 @@ class BalancesWithRawResponse:
 
 class AsyncBalancesWithRawResponse:
     def __init__(self, balances: AsyncBalances) -> None:
+        self._balances = balances
+
         self.retrieve = _legacy_response.async_to_raw_response_wrapper(
             balances.retrieve,
         )
@@ -123,6 +127,8 @@ class AsyncBalancesWithRawResponse:
 
 class BalancesWithStreamingResponse:
     def __init__(self, balances: Balances) -> None:
+        self._balances = balances
+
         self.retrieve = to_streamed_response_wrapper(
             balances.retrieve,
         )
@@ -130,6 +136,8 @@ class BalancesWithStreamingResponse:
 
 class AsyncBalancesWithStreamingResponse:
     def __init__(self, balances: AsyncBalances) -> None:
+        self._balances = balances
+
         self.retrieve = async_to_streamed_response_wrapper(
             balances.retrieve,
         )

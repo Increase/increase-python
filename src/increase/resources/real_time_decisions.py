@@ -244,6 +244,8 @@ class AsyncRealTimeDecisions(AsyncAPIResource):
 
 class RealTimeDecisionsWithRawResponse:
     def __init__(self, real_time_decisions: RealTimeDecisions) -> None:
+        self._real_time_decisions = real_time_decisions
+
         self.retrieve = _legacy_response.to_raw_response_wrapper(
             real_time_decisions.retrieve,
         )
@@ -254,6 +256,8 @@ class RealTimeDecisionsWithRawResponse:
 
 class AsyncRealTimeDecisionsWithRawResponse:
     def __init__(self, real_time_decisions: AsyncRealTimeDecisions) -> None:
+        self._real_time_decisions = real_time_decisions
+
         self.retrieve = _legacy_response.async_to_raw_response_wrapper(
             real_time_decisions.retrieve,
         )
@@ -264,6 +268,8 @@ class AsyncRealTimeDecisionsWithRawResponse:
 
 class RealTimeDecisionsWithStreamingResponse:
     def __init__(self, real_time_decisions: RealTimeDecisions) -> None:
+        self._real_time_decisions = real_time_decisions
+
         self.retrieve = to_streamed_response_wrapper(
             real_time_decisions.retrieve,
         )
@@ -274,6 +280,8 @@ class RealTimeDecisionsWithStreamingResponse:
 
 class AsyncRealTimeDecisionsWithStreamingResponse:
     def __init__(self, real_time_decisions: AsyncRealTimeDecisions) -> None:
+        self._real_time_decisions = real_time_decisions
+
         self.retrieve = async_to_streamed_response_wrapper(
             real_time_decisions.retrieve,
         )
