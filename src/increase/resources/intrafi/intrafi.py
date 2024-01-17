@@ -78,27 +78,67 @@ class AsyncIntrafi(AsyncAPIResource):
 
 class IntrafiWithRawResponse:
     def __init__(self, intrafi: Intrafi) -> None:
-        self.account_enrollments = AccountEnrollmentsWithRawResponse(intrafi.account_enrollments)
-        self.balances = BalancesWithRawResponse(intrafi.balances)
-        self.exclusions = ExclusionsWithRawResponse(intrafi.exclusions)
+        self._intrafi = intrafi
+
+    @cached_property
+    def account_enrollments(self) -> AccountEnrollmentsWithRawResponse:
+        return AccountEnrollmentsWithRawResponse(self._intrafi.account_enrollments)
+
+    @cached_property
+    def balances(self) -> BalancesWithRawResponse:
+        return BalancesWithRawResponse(self._intrafi.balances)
+
+    @cached_property
+    def exclusions(self) -> ExclusionsWithRawResponse:
+        return ExclusionsWithRawResponse(self._intrafi.exclusions)
 
 
 class AsyncIntrafiWithRawResponse:
     def __init__(self, intrafi: AsyncIntrafi) -> None:
-        self.account_enrollments = AsyncAccountEnrollmentsWithRawResponse(intrafi.account_enrollments)
-        self.balances = AsyncBalancesWithRawResponse(intrafi.balances)
-        self.exclusions = AsyncExclusionsWithRawResponse(intrafi.exclusions)
+        self._intrafi = intrafi
+
+    @cached_property
+    def account_enrollments(self) -> AsyncAccountEnrollmentsWithRawResponse:
+        return AsyncAccountEnrollmentsWithRawResponse(self._intrafi.account_enrollments)
+
+    @cached_property
+    def balances(self) -> AsyncBalancesWithRawResponse:
+        return AsyncBalancesWithRawResponse(self._intrafi.balances)
+
+    @cached_property
+    def exclusions(self) -> AsyncExclusionsWithRawResponse:
+        return AsyncExclusionsWithRawResponse(self._intrafi.exclusions)
 
 
 class IntrafiWithStreamingResponse:
     def __init__(self, intrafi: Intrafi) -> None:
-        self.account_enrollments = AccountEnrollmentsWithStreamingResponse(intrafi.account_enrollments)
-        self.balances = BalancesWithStreamingResponse(intrafi.balances)
-        self.exclusions = ExclusionsWithStreamingResponse(intrafi.exclusions)
+        self._intrafi = intrafi
+
+    @cached_property
+    def account_enrollments(self) -> AccountEnrollmentsWithStreamingResponse:
+        return AccountEnrollmentsWithStreamingResponse(self._intrafi.account_enrollments)
+
+    @cached_property
+    def balances(self) -> BalancesWithStreamingResponse:
+        return BalancesWithStreamingResponse(self._intrafi.balances)
+
+    @cached_property
+    def exclusions(self) -> ExclusionsWithStreamingResponse:
+        return ExclusionsWithStreamingResponse(self._intrafi.exclusions)
 
 
 class AsyncIntrafiWithStreamingResponse:
     def __init__(self, intrafi: AsyncIntrafi) -> None:
-        self.account_enrollments = AsyncAccountEnrollmentsWithStreamingResponse(intrafi.account_enrollments)
-        self.balances = AsyncBalancesWithStreamingResponse(intrafi.balances)
-        self.exclusions = AsyncExclusionsWithStreamingResponse(intrafi.exclusions)
+        self._intrafi = intrafi
+
+    @cached_property
+    def account_enrollments(self) -> AsyncAccountEnrollmentsWithStreamingResponse:
+        return AsyncAccountEnrollmentsWithStreamingResponse(self._intrafi.account_enrollments)
+
+    @cached_property
+    def balances(self) -> AsyncBalancesWithStreamingResponse:
+        return AsyncBalancesWithStreamingResponse(self._intrafi.balances)
+
+    @cached_property
+    def exclusions(self) -> AsyncExclusionsWithStreamingResponse:
+        return AsyncExclusionsWithStreamingResponse(self._intrafi.exclusions)

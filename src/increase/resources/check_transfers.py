@@ -663,6 +663,8 @@ class AsyncCheckTransfers(AsyncAPIResource):
 
 class CheckTransfersWithRawResponse:
     def __init__(self, check_transfers: CheckTransfers) -> None:
+        self._check_transfers = check_transfers
+
         self.create = _legacy_response.to_raw_response_wrapper(
             check_transfers.create,
         )
@@ -685,6 +687,8 @@ class CheckTransfersWithRawResponse:
 
 class AsyncCheckTransfersWithRawResponse:
     def __init__(self, check_transfers: AsyncCheckTransfers) -> None:
+        self._check_transfers = check_transfers
+
         self.create = _legacy_response.async_to_raw_response_wrapper(
             check_transfers.create,
         )
@@ -707,6 +711,8 @@ class AsyncCheckTransfersWithRawResponse:
 
 class CheckTransfersWithStreamingResponse:
     def __init__(self, check_transfers: CheckTransfers) -> None:
+        self._check_transfers = check_transfers
+
         self.create = to_streamed_response_wrapper(
             check_transfers.create,
         )
@@ -729,6 +735,8 @@ class CheckTransfersWithStreamingResponse:
 
 class AsyncCheckTransfersWithStreamingResponse:
     def __init__(self, check_transfers: AsyncCheckTransfers) -> None:
+        self._check_transfers = check_transfers
+
         self.create = async_to_streamed_response_wrapper(
             check_transfers.create,
         )

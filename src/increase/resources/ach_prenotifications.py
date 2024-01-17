@@ -430,6 +430,8 @@ class AsyncACHPrenotifications(AsyncAPIResource):
 
 class ACHPrenotificationsWithRawResponse:
     def __init__(self, ach_prenotifications: ACHPrenotifications) -> None:
+        self._ach_prenotifications = ach_prenotifications
+
         self.create = _legacy_response.to_raw_response_wrapper(
             ach_prenotifications.create,
         )
@@ -443,6 +445,8 @@ class ACHPrenotificationsWithRawResponse:
 
 class AsyncACHPrenotificationsWithRawResponse:
     def __init__(self, ach_prenotifications: AsyncACHPrenotifications) -> None:
+        self._ach_prenotifications = ach_prenotifications
+
         self.create = _legacy_response.async_to_raw_response_wrapper(
             ach_prenotifications.create,
         )
@@ -456,6 +460,8 @@ class AsyncACHPrenotificationsWithRawResponse:
 
 class ACHPrenotificationsWithStreamingResponse:
     def __init__(self, ach_prenotifications: ACHPrenotifications) -> None:
+        self._ach_prenotifications = ach_prenotifications
+
         self.create = to_streamed_response_wrapper(
             ach_prenotifications.create,
         )
@@ -469,6 +475,8 @@ class ACHPrenotificationsWithStreamingResponse:
 
 class AsyncACHPrenotificationsWithStreamingResponse:
     def __init__(self, ach_prenotifications: AsyncACHPrenotifications) -> None:
+        self._ach_prenotifications = ach_prenotifications
+
         self.create = async_to_streamed_response_wrapper(
             ach_prenotifications.create,
         )

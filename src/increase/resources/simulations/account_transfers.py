@@ -133,6 +133,8 @@ class AsyncAccountTransfers(AsyncAPIResource):
 
 class AccountTransfersWithRawResponse:
     def __init__(self, account_transfers: AccountTransfers) -> None:
+        self._account_transfers = account_transfers
+
         self.complete = _legacy_response.to_raw_response_wrapper(
             account_transfers.complete,
         )
@@ -140,6 +142,8 @@ class AccountTransfersWithRawResponse:
 
 class AsyncAccountTransfersWithRawResponse:
     def __init__(self, account_transfers: AsyncAccountTransfers) -> None:
+        self._account_transfers = account_transfers
+
         self.complete = _legacy_response.async_to_raw_response_wrapper(
             account_transfers.complete,
         )
@@ -147,6 +151,8 @@ class AsyncAccountTransfersWithRawResponse:
 
 class AccountTransfersWithStreamingResponse:
     def __init__(self, account_transfers: AccountTransfers) -> None:
+        self._account_transfers = account_transfers
+
         self.complete = to_streamed_response_wrapper(
             account_transfers.complete,
         )
@@ -154,6 +160,8 @@ class AccountTransfersWithStreamingResponse:
 
 class AsyncAccountTransfersWithStreamingResponse:
     def __init__(self, account_transfers: AsyncAccountTransfers) -> None:
+        self._account_transfers = account_transfers
+
         self.complete = async_to_streamed_response_wrapper(
             account_transfers.complete,
         )

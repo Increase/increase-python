@@ -613,8 +613,7 @@ class AsyncEntities(AsyncAPIResource):
 
 class EntitiesWithRawResponse:
     def __init__(self, entities: Entities) -> None:
-        self.beneficial_owners = BeneficialOwnersWithRawResponse(entities.beneficial_owners)
-        self.supplemental_documents = SupplementalDocumentsWithRawResponse(entities.supplemental_documents)
+        self._entities = entities
 
         self.create = _legacy_response.to_raw_response_wrapper(
             entities.create,
@@ -632,11 +631,18 @@ class EntitiesWithRawResponse:
             entities.update_address,
         )
 
+    @cached_property
+    def beneficial_owners(self) -> BeneficialOwnersWithRawResponse:
+        return BeneficialOwnersWithRawResponse(self._entities.beneficial_owners)
+
+    @cached_property
+    def supplemental_documents(self) -> SupplementalDocumentsWithRawResponse:
+        return SupplementalDocumentsWithRawResponse(self._entities.supplemental_documents)
+
 
 class AsyncEntitiesWithRawResponse:
     def __init__(self, entities: AsyncEntities) -> None:
-        self.beneficial_owners = AsyncBeneficialOwnersWithRawResponse(entities.beneficial_owners)
-        self.supplemental_documents = AsyncSupplementalDocumentsWithRawResponse(entities.supplemental_documents)
+        self._entities = entities
 
         self.create = _legacy_response.async_to_raw_response_wrapper(
             entities.create,
@@ -654,11 +660,18 @@ class AsyncEntitiesWithRawResponse:
             entities.update_address,
         )
 
+    @cached_property
+    def beneficial_owners(self) -> AsyncBeneficialOwnersWithRawResponse:
+        return AsyncBeneficialOwnersWithRawResponse(self._entities.beneficial_owners)
+
+    @cached_property
+    def supplemental_documents(self) -> AsyncSupplementalDocumentsWithRawResponse:
+        return AsyncSupplementalDocumentsWithRawResponse(self._entities.supplemental_documents)
+
 
 class EntitiesWithStreamingResponse:
     def __init__(self, entities: Entities) -> None:
-        self.beneficial_owners = BeneficialOwnersWithStreamingResponse(entities.beneficial_owners)
-        self.supplemental_documents = SupplementalDocumentsWithStreamingResponse(entities.supplemental_documents)
+        self._entities = entities
 
         self.create = to_streamed_response_wrapper(
             entities.create,
@@ -676,11 +689,18 @@ class EntitiesWithStreamingResponse:
             entities.update_address,
         )
 
+    @cached_property
+    def beneficial_owners(self) -> BeneficialOwnersWithStreamingResponse:
+        return BeneficialOwnersWithStreamingResponse(self._entities.beneficial_owners)
+
+    @cached_property
+    def supplemental_documents(self) -> SupplementalDocumentsWithStreamingResponse:
+        return SupplementalDocumentsWithStreamingResponse(self._entities.supplemental_documents)
+
 
 class AsyncEntitiesWithStreamingResponse:
     def __init__(self, entities: AsyncEntities) -> None:
-        self.beneficial_owners = AsyncBeneficialOwnersWithStreamingResponse(entities.beneficial_owners)
-        self.supplemental_documents = AsyncSupplementalDocumentsWithStreamingResponse(entities.supplemental_documents)
+        self._entities = entities
 
         self.create = async_to_streamed_response_wrapper(
             entities.create,
@@ -697,3 +717,11 @@ class AsyncEntitiesWithStreamingResponse:
         self.update_address = async_to_streamed_response_wrapper(
             entities.update_address,
         )
+
+    @cached_property
+    def beneficial_owners(self) -> AsyncBeneficialOwnersWithStreamingResponse:
+        return AsyncBeneficialOwnersWithStreamingResponse(self._entities.beneficial_owners)
+
+    @cached_property
+    def supplemental_documents(self) -> AsyncSupplementalDocumentsWithStreamingResponse:
+        return AsyncSupplementalDocumentsWithStreamingResponse(self._entities.supplemental_documents)

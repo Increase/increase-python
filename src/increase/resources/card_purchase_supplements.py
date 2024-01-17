@@ -226,6 +226,8 @@ class AsyncCardPurchaseSupplements(AsyncAPIResource):
 
 class CardPurchaseSupplementsWithRawResponse:
     def __init__(self, card_purchase_supplements: CardPurchaseSupplements) -> None:
+        self._card_purchase_supplements = card_purchase_supplements
+
         self.retrieve = _legacy_response.to_raw_response_wrapper(
             card_purchase_supplements.retrieve,
         )
@@ -236,6 +238,8 @@ class CardPurchaseSupplementsWithRawResponse:
 
 class AsyncCardPurchaseSupplementsWithRawResponse:
     def __init__(self, card_purchase_supplements: AsyncCardPurchaseSupplements) -> None:
+        self._card_purchase_supplements = card_purchase_supplements
+
         self.retrieve = _legacy_response.async_to_raw_response_wrapper(
             card_purchase_supplements.retrieve,
         )
@@ -246,6 +250,8 @@ class AsyncCardPurchaseSupplementsWithRawResponse:
 
 class CardPurchaseSupplementsWithStreamingResponse:
     def __init__(self, card_purchase_supplements: CardPurchaseSupplements) -> None:
+        self._card_purchase_supplements = card_purchase_supplements
+
         self.retrieve = to_streamed_response_wrapper(
             card_purchase_supplements.retrieve,
         )
@@ -256,6 +262,8 @@ class CardPurchaseSupplementsWithStreamingResponse:
 
 class AsyncCardPurchaseSupplementsWithStreamingResponse:
     def __init__(self, card_purchase_supplements: AsyncCardPurchaseSupplements) -> None:
+        self._card_purchase_supplements = card_purchase_supplements
+
         self.retrieve = async_to_streamed_response_wrapper(
             card_purchase_supplements.retrieve,
         )

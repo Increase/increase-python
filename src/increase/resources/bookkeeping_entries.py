@@ -212,6 +212,8 @@ class AsyncBookkeepingEntries(AsyncAPIResource):
 
 class BookkeepingEntriesWithRawResponse:
     def __init__(self, bookkeeping_entries: BookkeepingEntries) -> None:
+        self._bookkeeping_entries = bookkeeping_entries
+
         self.retrieve = _legacy_response.to_raw_response_wrapper(
             bookkeeping_entries.retrieve,
         )
@@ -222,6 +224,8 @@ class BookkeepingEntriesWithRawResponse:
 
 class AsyncBookkeepingEntriesWithRawResponse:
     def __init__(self, bookkeeping_entries: AsyncBookkeepingEntries) -> None:
+        self._bookkeeping_entries = bookkeeping_entries
+
         self.retrieve = _legacy_response.async_to_raw_response_wrapper(
             bookkeeping_entries.retrieve,
         )
@@ -232,6 +236,8 @@ class AsyncBookkeepingEntriesWithRawResponse:
 
 class BookkeepingEntriesWithStreamingResponse:
     def __init__(self, bookkeeping_entries: BookkeepingEntries) -> None:
+        self._bookkeeping_entries = bookkeeping_entries
+
         self.retrieve = to_streamed_response_wrapper(
             bookkeeping_entries.retrieve,
         )
@@ -242,6 +248,8 @@ class BookkeepingEntriesWithStreamingResponse:
 
 class AsyncBookkeepingEntriesWithStreamingResponse:
     def __init__(self, bookkeeping_entries: AsyncBookkeepingEntries) -> None:
+        self._bookkeeping_entries = bookkeeping_entries
+
         self.retrieve = async_to_streamed_response_wrapper(
             bookkeeping_entries.retrieve,
         )

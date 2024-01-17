@@ -318,6 +318,8 @@ class AsyncCardDisputes(AsyncAPIResource):
 
 class CardDisputesWithRawResponse:
     def __init__(self, card_disputes: CardDisputes) -> None:
+        self._card_disputes = card_disputes
+
         self.create = _legacy_response.to_raw_response_wrapper(
             card_disputes.create,
         )
@@ -331,6 +333,8 @@ class CardDisputesWithRawResponse:
 
 class AsyncCardDisputesWithRawResponse:
     def __init__(self, card_disputes: AsyncCardDisputes) -> None:
+        self._card_disputes = card_disputes
+
         self.create = _legacy_response.async_to_raw_response_wrapper(
             card_disputes.create,
         )
@@ -344,6 +348,8 @@ class AsyncCardDisputesWithRawResponse:
 
 class CardDisputesWithStreamingResponse:
     def __init__(self, card_disputes: CardDisputes) -> None:
+        self._card_disputes = card_disputes
+
         self.create = to_streamed_response_wrapper(
             card_disputes.create,
         )
@@ -357,6 +363,8 @@ class CardDisputesWithStreamingResponse:
 
 class AsyncCardDisputesWithStreamingResponse:
     def __init__(self, card_disputes: AsyncCardDisputes) -> None:
+        self._card_disputes = card_disputes
+
         self.create = async_to_streamed_response_wrapper(
             card_disputes.create,
         )

@@ -621,6 +621,8 @@ class AsyncInboundACHTransfers(AsyncAPIResource):
 
 class InboundACHTransfersWithRawResponse:
     def __init__(self, inbound_ach_transfers: InboundACHTransfers) -> None:
+        self._inbound_ach_transfers = inbound_ach_transfers
+
         self.retrieve = _legacy_response.to_raw_response_wrapper(
             inbound_ach_transfers.retrieve,
         )
@@ -640,6 +642,8 @@ class InboundACHTransfersWithRawResponse:
 
 class AsyncInboundACHTransfersWithRawResponse:
     def __init__(self, inbound_ach_transfers: AsyncInboundACHTransfers) -> None:
+        self._inbound_ach_transfers = inbound_ach_transfers
+
         self.retrieve = _legacy_response.async_to_raw_response_wrapper(
             inbound_ach_transfers.retrieve,
         )
@@ -659,6 +663,8 @@ class AsyncInboundACHTransfersWithRawResponse:
 
 class InboundACHTransfersWithStreamingResponse:
     def __init__(self, inbound_ach_transfers: InboundACHTransfers) -> None:
+        self._inbound_ach_transfers = inbound_ach_transfers
+
         self.retrieve = to_streamed_response_wrapper(
             inbound_ach_transfers.retrieve,
         )
@@ -678,6 +684,8 @@ class InboundACHTransfersWithStreamingResponse:
 
 class AsyncInboundACHTransfersWithStreamingResponse:
     def __init__(self, inbound_ach_transfers: AsyncInboundACHTransfers) -> None:
+        self._inbound_ach_transfers = inbound_ach_transfers
+
         self.retrieve = async_to_streamed_response_wrapper(
             inbound_ach_transfers.retrieve,
         )

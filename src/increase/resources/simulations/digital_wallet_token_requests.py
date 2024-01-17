@@ -128,6 +128,8 @@ class AsyncDigitalWalletTokenRequests(AsyncAPIResource):
 
 class DigitalWalletTokenRequestsWithRawResponse:
     def __init__(self, digital_wallet_token_requests: DigitalWalletTokenRequests) -> None:
+        self._digital_wallet_token_requests = digital_wallet_token_requests
+
         self.create = _legacy_response.to_raw_response_wrapper(
             digital_wallet_token_requests.create,
         )
@@ -135,6 +137,8 @@ class DigitalWalletTokenRequestsWithRawResponse:
 
 class AsyncDigitalWalletTokenRequestsWithRawResponse:
     def __init__(self, digital_wallet_token_requests: AsyncDigitalWalletTokenRequests) -> None:
+        self._digital_wallet_token_requests = digital_wallet_token_requests
+
         self.create = _legacy_response.async_to_raw_response_wrapper(
             digital_wallet_token_requests.create,
         )
@@ -142,6 +146,8 @@ class AsyncDigitalWalletTokenRequestsWithRawResponse:
 
 class DigitalWalletTokenRequestsWithStreamingResponse:
     def __init__(self, digital_wallet_token_requests: DigitalWalletTokenRequests) -> None:
+        self._digital_wallet_token_requests = digital_wallet_token_requests
+
         self.create = to_streamed_response_wrapper(
             digital_wallet_token_requests.create,
         )
@@ -149,6 +155,8 @@ class DigitalWalletTokenRequestsWithStreamingResponse:
 
 class AsyncDigitalWalletTokenRequestsWithStreamingResponse:
     def __init__(self, digital_wallet_token_requests: AsyncDigitalWalletTokenRequests) -> None:
+        self._digital_wallet_token_requests = digital_wallet_token_requests
+
         self.create = async_to_streamed_response_wrapper(
             digital_wallet_token_requests.create,
         )

@@ -367,6 +367,8 @@ class AsyncProofOfAuthorizationRequestSubmissions(AsyncAPIResource):
 
 class ProofOfAuthorizationRequestSubmissionsWithRawResponse:
     def __init__(self, proof_of_authorization_request_submissions: ProofOfAuthorizationRequestSubmissions) -> None:
+        self._proof_of_authorization_request_submissions = proof_of_authorization_request_submissions
+
         self.create = _legacy_response.to_raw_response_wrapper(
             proof_of_authorization_request_submissions.create,
         )
@@ -380,6 +382,8 @@ class ProofOfAuthorizationRequestSubmissionsWithRawResponse:
 
 class AsyncProofOfAuthorizationRequestSubmissionsWithRawResponse:
     def __init__(self, proof_of_authorization_request_submissions: AsyncProofOfAuthorizationRequestSubmissions) -> None:
+        self._proof_of_authorization_request_submissions = proof_of_authorization_request_submissions
+
         self.create = _legacy_response.async_to_raw_response_wrapper(
             proof_of_authorization_request_submissions.create,
         )
@@ -393,6 +397,8 @@ class AsyncProofOfAuthorizationRequestSubmissionsWithRawResponse:
 
 class ProofOfAuthorizationRequestSubmissionsWithStreamingResponse:
     def __init__(self, proof_of_authorization_request_submissions: ProofOfAuthorizationRequestSubmissions) -> None:
+        self._proof_of_authorization_request_submissions = proof_of_authorization_request_submissions
+
         self.create = to_streamed_response_wrapper(
             proof_of_authorization_request_submissions.create,
         )
@@ -406,6 +412,8 @@ class ProofOfAuthorizationRequestSubmissionsWithStreamingResponse:
 
 class AsyncProofOfAuthorizationRequestSubmissionsWithStreamingResponse:
     def __init__(self, proof_of_authorization_request_submissions: AsyncProofOfAuthorizationRequestSubmissions) -> None:
+        self._proof_of_authorization_request_submissions = proof_of_authorization_request_submissions
+
         self.create = async_to_streamed_response_wrapper(
             proof_of_authorization_request_submissions.create,
         )

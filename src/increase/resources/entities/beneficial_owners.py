@@ -361,6 +361,8 @@ class AsyncBeneficialOwners(AsyncAPIResource):
 
 class BeneficialOwnersWithRawResponse:
     def __init__(self, beneficial_owners: BeneficialOwners) -> None:
+        self._beneficial_owners = beneficial_owners
+
         self.create = _legacy_response.to_raw_response_wrapper(
             beneficial_owners.create,
         )
@@ -374,6 +376,8 @@ class BeneficialOwnersWithRawResponse:
 
 class AsyncBeneficialOwnersWithRawResponse:
     def __init__(self, beneficial_owners: AsyncBeneficialOwners) -> None:
+        self._beneficial_owners = beneficial_owners
+
         self.create = _legacy_response.async_to_raw_response_wrapper(
             beneficial_owners.create,
         )
@@ -387,6 +391,8 @@ class AsyncBeneficialOwnersWithRawResponse:
 
 class BeneficialOwnersWithStreamingResponse:
     def __init__(self, beneficial_owners: BeneficialOwners) -> None:
+        self._beneficial_owners = beneficial_owners
+
         self.create = to_streamed_response_wrapper(
             beneficial_owners.create,
         )
@@ -400,6 +406,8 @@ class BeneficialOwnersWithStreamingResponse:
 
 class AsyncBeneficialOwnersWithStreamingResponse:
     def __init__(self, beneficial_owners: AsyncBeneficialOwners) -> None:
+        self._beneficial_owners = beneficial_owners
+
         self.create = async_to_streamed_response_wrapper(
             beneficial_owners.create,
         )

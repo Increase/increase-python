@@ -412,6 +412,8 @@ class AsyncAccountEnrollments(AsyncAPIResource):
 
 class AccountEnrollmentsWithRawResponse:
     def __init__(self, account_enrollments: AccountEnrollments) -> None:
+        self._account_enrollments = account_enrollments
+
         self.create = _legacy_response.to_raw_response_wrapper(
             account_enrollments.create,
         )
@@ -428,6 +430,8 @@ class AccountEnrollmentsWithRawResponse:
 
 class AsyncAccountEnrollmentsWithRawResponse:
     def __init__(self, account_enrollments: AsyncAccountEnrollments) -> None:
+        self._account_enrollments = account_enrollments
+
         self.create = _legacy_response.async_to_raw_response_wrapper(
             account_enrollments.create,
         )
@@ -444,6 +448,8 @@ class AsyncAccountEnrollmentsWithRawResponse:
 
 class AccountEnrollmentsWithStreamingResponse:
     def __init__(self, account_enrollments: AccountEnrollments) -> None:
+        self._account_enrollments = account_enrollments
+
         self.create = to_streamed_response_wrapper(
             account_enrollments.create,
         )
@@ -460,6 +466,8 @@ class AccountEnrollmentsWithStreamingResponse:
 
 class AsyncAccountEnrollmentsWithStreamingResponse:
     def __init__(self, account_enrollments: AsyncAccountEnrollments) -> None:
+        self._account_enrollments = account_enrollments
+
         self.create = async_to_streamed_response_wrapper(
             account_enrollments.create,
         )

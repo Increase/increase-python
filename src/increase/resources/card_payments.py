@@ -228,6 +228,8 @@ class AsyncCardPayments(AsyncAPIResource):
 
 class CardPaymentsWithRawResponse:
     def __init__(self, card_payments: CardPayments) -> None:
+        self._card_payments = card_payments
+
         self.retrieve = _legacy_response.to_raw_response_wrapper(
             card_payments.retrieve,
         )
@@ -238,6 +240,8 @@ class CardPaymentsWithRawResponse:
 
 class AsyncCardPaymentsWithRawResponse:
     def __init__(self, card_payments: AsyncCardPayments) -> None:
+        self._card_payments = card_payments
+
         self.retrieve = _legacy_response.async_to_raw_response_wrapper(
             card_payments.retrieve,
         )
@@ -248,6 +252,8 @@ class AsyncCardPaymentsWithRawResponse:
 
 class CardPaymentsWithStreamingResponse:
     def __init__(self, card_payments: CardPayments) -> None:
+        self._card_payments = card_payments
+
         self.retrieve = to_streamed_response_wrapper(
             card_payments.retrieve,
         )
@@ -258,6 +264,8 @@ class CardPaymentsWithStreamingResponse:
 
 class AsyncCardPaymentsWithStreamingResponse:
     def __init__(self, card_payments: AsyncCardPayments) -> None:
+        self._card_payments = card_payments
+
         self.retrieve = async_to_streamed_response_wrapper(
             card_payments.retrieve,
         )

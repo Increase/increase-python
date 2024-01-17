@@ -212,6 +212,8 @@ class AsyncOauthConnections(AsyncAPIResource):
 
 class OauthConnectionsWithRawResponse:
     def __init__(self, oauth_connections: OauthConnections) -> None:
+        self._oauth_connections = oauth_connections
+
         self.retrieve = _legacy_response.to_raw_response_wrapper(
             oauth_connections.retrieve,
         )
@@ -222,6 +224,8 @@ class OauthConnectionsWithRawResponse:
 
 class AsyncOauthConnectionsWithRawResponse:
     def __init__(self, oauth_connections: AsyncOauthConnections) -> None:
+        self._oauth_connections = oauth_connections
+
         self.retrieve = _legacy_response.async_to_raw_response_wrapper(
             oauth_connections.retrieve,
         )
@@ -232,6 +236,8 @@ class AsyncOauthConnectionsWithRawResponse:
 
 class OauthConnectionsWithStreamingResponse:
     def __init__(self, oauth_connections: OauthConnections) -> None:
+        self._oauth_connections = oauth_connections
+
         self.retrieve = to_streamed_response_wrapper(
             oauth_connections.retrieve,
         )
@@ -242,6 +248,8 @@ class OauthConnectionsWithStreamingResponse:
 
 class AsyncOauthConnectionsWithStreamingResponse:
     def __init__(self, oauth_connections: AsyncOauthConnections) -> None:
+        self._oauth_connections = oauth_connections
+
         self.retrieve = async_to_streamed_response_wrapper(
             oauth_connections.retrieve,
         )

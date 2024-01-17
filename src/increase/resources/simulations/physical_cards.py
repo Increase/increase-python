@@ -169,6 +169,8 @@ class AsyncPhysicalCards(AsyncAPIResource):
 
 class PhysicalCardsWithRawResponse:
     def __init__(self, physical_cards: PhysicalCards) -> None:
+        self._physical_cards = physical_cards
+
         self.shipment_advance = _legacy_response.to_raw_response_wrapper(
             physical_cards.shipment_advance,
         )
@@ -176,6 +178,8 @@ class PhysicalCardsWithRawResponse:
 
 class AsyncPhysicalCardsWithRawResponse:
     def __init__(self, physical_cards: AsyncPhysicalCards) -> None:
+        self._physical_cards = physical_cards
+
         self.shipment_advance = _legacy_response.async_to_raw_response_wrapper(
             physical_cards.shipment_advance,
         )
@@ -183,6 +187,8 @@ class AsyncPhysicalCardsWithRawResponse:
 
 class PhysicalCardsWithStreamingResponse:
     def __init__(self, physical_cards: PhysicalCards) -> None:
+        self._physical_cards = physical_cards
+
         self.shipment_advance = to_streamed_response_wrapper(
             physical_cards.shipment_advance,
         )
@@ -190,6 +196,8 @@ class PhysicalCardsWithStreamingResponse:
 
 class AsyncPhysicalCardsWithStreamingResponse:
     def __init__(self, physical_cards: AsyncPhysicalCards) -> None:
+        self._physical_cards = physical_cards
+
         self.shipment_advance = async_to_streamed_response_wrapper(
             physical_cards.shipment_advance,
         )

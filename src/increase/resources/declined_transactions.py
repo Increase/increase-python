@@ -236,6 +236,8 @@ class AsyncDeclinedTransactions(AsyncAPIResource):
 
 class DeclinedTransactionsWithRawResponse:
     def __init__(self, declined_transactions: DeclinedTransactions) -> None:
+        self._declined_transactions = declined_transactions
+
         self.retrieve = _legacy_response.to_raw_response_wrapper(
             declined_transactions.retrieve,
         )
@@ -246,6 +248,8 @@ class DeclinedTransactionsWithRawResponse:
 
 class AsyncDeclinedTransactionsWithRawResponse:
     def __init__(self, declined_transactions: AsyncDeclinedTransactions) -> None:
+        self._declined_transactions = declined_transactions
+
         self.retrieve = _legacy_response.async_to_raw_response_wrapper(
             declined_transactions.retrieve,
         )
@@ -256,6 +260,8 @@ class AsyncDeclinedTransactionsWithRawResponse:
 
 class DeclinedTransactionsWithStreamingResponse:
     def __init__(self, declined_transactions: DeclinedTransactions) -> None:
+        self._declined_transactions = declined_transactions
+
         self.retrieve = to_streamed_response_wrapper(
             declined_transactions.retrieve,
         )
@@ -266,6 +272,8 @@ class DeclinedTransactionsWithStreamingResponse:
 
 class AsyncDeclinedTransactionsWithStreamingResponse:
     def __init__(self, declined_transactions: AsyncDeclinedTransactions) -> None:
+        self._declined_transactions = declined_transactions
+
         self.retrieve = async_to_streamed_response_wrapper(
             declined_transactions.retrieve,
         )

@@ -248,6 +248,8 @@ class AsyncPendingTransactions(AsyncAPIResource):
 
 class PendingTransactionsWithRawResponse:
     def __init__(self, pending_transactions: PendingTransactions) -> None:
+        self._pending_transactions = pending_transactions
+
         self.retrieve = _legacy_response.to_raw_response_wrapper(
             pending_transactions.retrieve,
         )
@@ -258,6 +260,8 @@ class PendingTransactionsWithRawResponse:
 
 class AsyncPendingTransactionsWithRawResponse:
     def __init__(self, pending_transactions: AsyncPendingTransactions) -> None:
+        self._pending_transactions = pending_transactions
+
         self.retrieve = _legacy_response.async_to_raw_response_wrapper(
             pending_transactions.retrieve,
         )
@@ -268,6 +272,8 @@ class AsyncPendingTransactionsWithRawResponse:
 
 class PendingTransactionsWithStreamingResponse:
     def __init__(self, pending_transactions: PendingTransactions) -> None:
+        self._pending_transactions = pending_transactions
+
         self.retrieve = to_streamed_response_wrapper(
             pending_transactions.retrieve,
         )
@@ -278,6 +284,8 @@ class PendingTransactionsWithStreamingResponse:
 
 class AsyncPendingTransactionsWithStreamingResponse:
     def __init__(self, pending_transactions: AsyncPendingTransactions) -> None:
+        self._pending_transactions = pending_transactions
+
         self.retrieve = async_to_streamed_response_wrapper(
             pending_transactions.retrieve,
         )

@@ -459,6 +459,8 @@ class AsyncBookkeepingAccounts(AsyncAPIResource):
 
 class BookkeepingAccountsWithRawResponse:
     def __init__(self, bookkeeping_accounts: BookkeepingAccounts) -> None:
+        self._bookkeeping_accounts = bookkeeping_accounts
+
         self.create = _legacy_response.to_raw_response_wrapper(
             bookkeeping_accounts.create,
         )
@@ -475,6 +477,8 @@ class BookkeepingAccountsWithRawResponse:
 
 class AsyncBookkeepingAccountsWithRawResponse:
     def __init__(self, bookkeeping_accounts: AsyncBookkeepingAccounts) -> None:
+        self._bookkeeping_accounts = bookkeeping_accounts
+
         self.create = _legacy_response.async_to_raw_response_wrapper(
             bookkeeping_accounts.create,
         )
@@ -491,6 +495,8 @@ class AsyncBookkeepingAccountsWithRawResponse:
 
 class BookkeepingAccountsWithStreamingResponse:
     def __init__(self, bookkeeping_accounts: BookkeepingAccounts) -> None:
+        self._bookkeeping_accounts = bookkeeping_accounts
+
         self.create = to_streamed_response_wrapper(
             bookkeeping_accounts.create,
         )
@@ -507,6 +513,8 @@ class BookkeepingAccountsWithStreamingResponse:
 
 class AsyncBookkeepingAccountsWithStreamingResponse:
     def __init__(self, bookkeeping_accounts: AsyncBookkeepingAccounts) -> None:
+        self._bookkeeping_accounts = bookkeeping_accounts
+
         self.create = async_to_streamed_response_wrapper(
             bookkeeping_accounts.create,
         )
