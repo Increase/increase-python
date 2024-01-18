@@ -100,6 +100,7 @@ class Increase(SyncAPIClient):
     proof_of_authorization_request_submissions: resources.ProofOfAuthorizationRequestSubmissions
     intrafi: resources.Intrafi
     real_time_payments_request_for_payments: resources.RealTimePaymentsRequestForPayments
+    webhooks: resources.Webhooks
     with_raw_response: IncreaseWithRawResponse
     with_streaming_response: IncreaseWithStreamedResponse
 
@@ -241,6 +242,7 @@ class Increase(SyncAPIClient):
         self.proof_of_authorization_request_submissions = resources.ProofOfAuthorizationRequestSubmissions(self)
         self.intrafi = resources.Intrafi(self)
         self.real_time_payments_request_for_payments = resources.RealTimePaymentsRequestForPayments(self)
+        self.webhooks = resources.Webhooks(self)
         self.with_raw_response = IncreaseWithRawResponse(self)
         self.with_streaming_response = IncreaseWithStreamedResponse(self)
 
@@ -467,6 +469,7 @@ class AsyncIncrease(AsyncAPIClient):
     proof_of_authorization_request_submissions: resources.AsyncProofOfAuthorizationRequestSubmissions
     intrafi: resources.AsyncIntrafi
     real_time_payments_request_for_payments: resources.AsyncRealTimePaymentsRequestForPayments
+    webhooks: resources.AsyncWebhooks
     with_raw_response: AsyncIncreaseWithRawResponse
     with_streaming_response: AsyncIncreaseWithStreamedResponse
 
@@ -608,6 +611,7 @@ class AsyncIncrease(AsyncAPIClient):
         self.proof_of_authorization_request_submissions = resources.AsyncProofOfAuthorizationRequestSubmissions(self)
         self.intrafi = resources.AsyncIntrafi(self)
         self.real_time_payments_request_for_payments = resources.AsyncRealTimePaymentsRequestForPayments(self)
+        self.webhooks = resources.AsyncWebhooks(self)
         self.with_raw_response = AsyncIncreaseWithRawResponse(self)
         self.with_streaming_response = AsyncIncreaseWithStreamedResponse(self)
 
