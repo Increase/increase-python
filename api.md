@@ -802,3 +802,10 @@ Methods:
 - <code title="post /real_time_payments_request_for_payments">client.real_time_payments_request_for_payments.<a href="./src/increase/resources/real_time_payments_request_for_payments.py">create</a>(\*\*<a href="src/increase/types/real_time_payments_request_for_payment_create_params.py">params</a>) -> <a href="./src/increase/types/real_time_payments_request_for_payment.py">RealTimePaymentsRequestForPayment</a></code>
 - <code title="get /real_time_payments_request_for_payments/{request_for_payment_id}">client.real_time_payments_request_for_payments.<a href="./src/increase/resources/real_time_payments_request_for_payments.py">retrieve</a>(request_for_payment_id) -> <a href="./src/increase/types/real_time_payments_request_for_payment.py">RealTimePaymentsRequestForPayment</a></code>
 - <code title="get /real_time_payments_request_for_payments">client.real_time_payments_request_for_payments.<a href="./src/increase/resources/real_time_payments_request_for_payments.py">list</a>(\*\*<a href="src/increase/types/real_time_payments_request_for_payment_list_params.py">params</a>) -> <a href="./src/increase/types/real_time_payments_request_for_payment.py">SyncPage[RealTimePaymentsRequestForPayment]</a></code>
+
+# Webhooks
+
+Methods:
+
+- <code>client.webhooks.<a href="./src/increase/resources/webhooks.py">unwrap</a>(\*args) -> object</code>
+- <code>client.webhooks.<a href="./src/increase/resources/webhooks.py">verify_signature</a>(\*args) -> None</code>
