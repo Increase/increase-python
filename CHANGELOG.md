@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.29.1 (2024-01-18)
+
+Full Changelog: [v0.29.0...v0.29.1](https://github.com/increase/increase-python/compare/v0.29.0...v0.29.1)
+
+### Bug Fixes
+
+* **ci:** ignore stainless-app edits to release PR title ([#307](https://github.com/increase/increase-python/issues/307)) ([04ab42b](https://github.com/increase/increase-python/commit/04ab42b20bc56fa9665fce48403f61fa0653f025))
+
+
+### Chores
+
+* add write_to_file binary helper method ([#300](https://github.com/increase/increase-python/issues/300)) ([8eb7060](https://github.com/increase/increase-python/commit/8eb7060067e75650392407f6a2cefde95e65f827))
+* **internal:** fix typing util function ([#302](https://github.com/increase/increase-python/issues/302)) ([54cde4a](https://github.com/increase/increase-python/commit/54cde4a3700c37bc6fab4e8b5c72682efe367aed))
+* **internal:** remove redundant client test ([#303](https://github.com/increase/increase-python/issues/303)) ([68e323c](https://github.com/increase/increase-python/commit/68e323c7e6311aaee7157663eed827490ab43b0e))
+* **internal:** share client instances between all tests ([#306](https://github.com/increase/increase-python/issues/306)) ([9fa7296](https://github.com/increase/increase-python/commit/9fa72967b29910df552ec5ab6c5bb30dcfe61dbf))
+* **internal:** speculative retry-after-ms support ([#304](https://github.com/increase/increase-python/issues/304)) ([bbb13bf](https://github.com/increase/increase-python/commit/bbb13bf63f77da4ff9dfacf47f3859bfbc6171ae))
+* **internal:** updates to proxy helper ([#298](https://github.com/increase/increase-python/issues/298)) ([e940f9b](https://github.com/increase/increase-python/commit/e940f9b50854b5e9f0e4e1840cbe70b961305c14))
+* lazy load raw resource class properties ([#305](https://github.com/increase/increase-python/issues/305)) ([1c0de2a](https://github.com/increase/increase-python/commit/1c0de2a06e41a6646bbc67139574b9665fa19770))
+* remove Alex Rattray from reviewers ([#301](https://github.com/increase/increase-python/issues/301)) ([b8cc4f9](https://github.com/increase/increase-python/commit/b8cc4f98b22fe4ae2e55081d97b68df23227adbd))
+
 ## 0.29.0 (2024-01-16)
 
 Full Changelog: [v0.28.0...v0.29.0](https://github.com/increase/increase-python/compare/v0.28.0...v0.29.0)
