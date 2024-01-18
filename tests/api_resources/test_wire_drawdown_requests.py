@@ -10,17 +10,13 @@ import pytest
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
 from increase.types import WireDrawdownRequest
-from increase._client import Increase, AsyncIncrease
 from increase.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
-api_key = "My API Key"
 
 
 class TestWireDrawdownRequests:
-    strict_client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=True)
-    loose_client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=False)
-    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
+    parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @pytest.mark.skip(reason="Prism tests are broken")
     @parametrize
@@ -162,14 +158,12 @@ class TestWireDrawdownRequests:
 
 
 class TestAsyncWireDrawdownRequests:
-    strict_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
-    loose_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=False)
-    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
+    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @pytest.mark.skip(reason="Prism tests are broken")
     @parametrize
-    async def test_method_create(self, client: AsyncIncrease) -> None:
-        wire_drawdown_request = await client.wire_drawdown_requests.create(
+    async def test_method_create(self, async_client: AsyncIncrease) -> None:
+        wire_drawdown_request = await async_client.wire_drawdown_requests.create(
             account_number_id="account_number_v18nkfqm6afpsrvy82b2",
             amount=10000,
             message_to_recipient="Invoice 29582",
@@ -181,8 +175,8 @@ class TestAsyncWireDrawdownRequests:
 
     @pytest.mark.skip(reason="Prism tests are broken")
     @parametrize
-    async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
-        wire_drawdown_request = await client.wire_drawdown_requests.create(
+    async def test_method_create_with_all_params(self, async_client: AsyncIncrease) -> None:
+        wire_drawdown_request = await async_client.wire_drawdown_requests.create(
             account_number_id="account_number_v18nkfqm6afpsrvy82b2",
             amount=10000,
             message_to_recipient="Invoice 29582",
@@ -197,8 +191,8 @@ class TestAsyncWireDrawdownRequests:
 
     @pytest.mark.skip(reason="Prism tests are broken")
     @parametrize
-    async def test_raw_response_create(self, client: AsyncIncrease) -> None:
-        response = await client.wire_drawdown_requests.with_raw_response.create(
+    async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
+        response = await async_client.wire_drawdown_requests.with_raw_response.create(
             account_number_id="account_number_v18nkfqm6afpsrvy82b2",
             amount=10000,
             message_to_recipient="Invoice 29582",
@@ -214,8 +208,8 @@ class TestAsyncWireDrawdownRequests:
 
     @pytest.mark.skip(reason="Prism tests are broken")
     @parametrize
-    async def test_streaming_response_create(self, client: AsyncIncrease) -> None:
-        async with client.wire_drawdown_requests.with_streaming_response.create(
+    async def test_streaming_response_create(self, async_client: AsyncIncrease) -> None:
+        async with async_client.wire_drawdown_requests.with_streaming_response.create(
             account_number_id="account_number_v18nkfqm6afpsrvy82b2",
             amount=10000,
             message_to_recipient="Invoice 29582",
@@ -232,15 +226,15 @@ class TestAsyncWireDrawdownRequests:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_retrieve(self, client: AsyncIncrease) -> None:
-        wire_drawdown_request = await client.wire_drawdown_requests.retrieve(
+    async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
+        wire_drawdown_request = await async_client.wire_drawdown_requests.retrieve(
             "string",
         )
         assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
 
     @parametrize
-    async def test_raw_response_retrieve(self, client: AsyncIncrease) -> None:
-        response = await client.wire_drawdown_requests.with_raw_response.retrieve(
+    async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
+        response = await async_client.wire_drawdown_requests.with_raw_response.retrieve(
             "string",
         )
 
@@ -250,8 +244,8 @@ class TestAsyncWireDrawdownRequests:
         assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
 
     @parametrize
-    async def test_streaming_response_retrieve(self, client: AsyncIncrease) -> None:
-        async with client.wire_drawdown_requests.with_streaming_response.retrieve(
+    async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
+        async with async_client.wire_drawdown_requests.with_streaming_response.retrieve(
             "string",
         ) as response:
             assert not response.is_closed
@@ -263,30 +257,30 @@ class TestAsyncWireDrawdownRequests:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_retrieve(self, client: AsyncIncrease) -> None:
+    async def test_path_params_retrieve(self, async_client: AsyncIncrease) -> None:
         with pytest.raises(
             ValueError, match=r"Expected a non-empty value for `wire_drawdown_request_id` but received ''"
         ):
-            await client.wire_drawdown_requests.with_raw_response.retrieve(
+            await async_client.wire_drawdown_requests.with_raw_response.retrieve(
                 "",
             )
 
     @parametrize
-    async def test_method_list(self, client: AsyncIncrease) -> None:
-        wire_drawdown_request = await client.wire_drawdown_requests.list()
+    async def test_method_list(self, async_client: AsyncIncrease) -> None:
+        wire_drawdown_request = await async_client.wire_drawdown_requests.list()
         assert_matches_type(AsyncPage[WireDrawdownRequest], wire_drawdown_request, path=["response"])
 
     @parametrize
-    async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
-        wire_drawdown_request = await client.wire_drawdown_requests.list(
+    async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
+        wire_drawdown_request = await async_client.wire_drawdown_requests.list(
             cursor="string",
             limit=1,
         )
         assert_matches_type(AsyncPage[WireDrawdownRequest], wire_drawdown_request, path=["response"])
 
     @parametrize
-    async def test_raw_response_list(self, client: AsyncIncrease) -> None:
-        response = await client.wire_drawdown_requests.with_raw_response.list()
+    async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
+        response = await async_client.wire_drawdown_requests.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -294,8 +288,8 @@ class TestAsyncWireDrawdownRequests:
         assert_matches_type(AsyncPage[WireDrawdownRequest], wire_drawdown_request, path=["response"])
 
     @parametrize
-    async def test_streaming_response_list(self, client: AsyncIncrease) -> None:
-        async with client.wire_drawdown_requests.with_streaming_response.list() as response:
+    async def test_streaming_response_list(self, async_client: AsyncIncrease) -> None:
+        async with async_client.wire_drawdown_requests.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
