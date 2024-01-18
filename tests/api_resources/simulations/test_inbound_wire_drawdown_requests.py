@@ -10,16 +10,12 @@ import pytest
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
 from increase.types import InboundWireDrawdownRequest
-from increase._client import Increase, AsyncIncrease
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
-api_key = "My API Key"
 
 
 class TestInboundWireDrawdownRequests:
-    strict_client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=True)
-    loose_client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=False)
-    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
+    parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
     def test_method_create(self, client: Increase) -> None:
@@ -101,13 +97,11 @@ class TestInboundWireDrawdownRequests:
 
 
 class TestAsyncInboundWireDrawdownRequests:
-    strict_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
-    loose_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=False)
-    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
+    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    async def test_method_create(self, client: AsyncIncrease) -> None:
-        inbound_wire_drawdown_request = await client.simulations.inbound_wire_drawdown_requests.create(
+    async def test_method_create(self, async_client: AsyncIncrease) -> None:
+        inbound_wire_drawdown_request = await async_client.simulations.inbound_wire_drawdown_requests.create(
             amount=10000,
             beneficiary_account_number="987654321",
             beneficiary_routing_number="101050001",
@@ -120,8 +114,8 @@ class TestAsyncInboundWireDrawdownRequests:
         assert_matches_type(InboundWireDrawdownRequest, inbound_wire_drawdown_request, path=["response"])
 
     @parametrize
-    async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
-        inbound_wire_drawdown_request = await client.simulations.inbound_wire_drawdown_requests.create(
+    async def test_method_create_with_all_params(self, async_client: AsyncIncrease) -> None:
+        inbound_wire_drawdown_request = await async_client.simulations.inbound_wire_drawdown_requests.create(
             amount=10000,
             beneficiary_account_number="987654321",
             beneficiary_routing_number="101050001",
@@ -146,8 +140,8 @@ class TestAsyncInboundWireDrawdownRequests:
         assert_matches_type(InboundWireDrawdownRequest, inbound_wire_drawdown_request, path=["response"])
 
     @parametrize
-    async def test_raw_response_create(self, client: AsyncIncrease) -> None:
-        response = await client.simulations.inbound_wire_drawdown_requests.with_raw_response.create(
+    async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
+        response = await async_client.simulations.inbound_wire_drawdown_requests.with_raw_response.create(
             amount=10000,
             beneficiary_account_number="987654321",
             beneficiary_routing_number="101050001",
@@ -164,8 +158,8 @@ class TestAsyncInboundWireDrawdownRequests:
         assert_matches_type(InboundWireDrawdownRequest, inbound_wire_drawdown_request, path=["response"])
 
     @parametrize
-    async def test_streaming_response_create(self, client: AsyncIncrease) -> None:
-        async with client.simulations.inbound_wire_drawdown_requests.with_streaming_response.create(
+    async def test_streaming_response_create(self, async_client: AsyncIncrease) -> None:
+        async with async_client.simulations.inbound_wire_drawdown_requests.with_streaming_response.create(
             amount=10000,
             beneficiary_account_number="987654321",
             beneficiary_routing_number="101050001",

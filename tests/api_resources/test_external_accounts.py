@@ -12,17 +12,13 @@ from tests.utils import assert_matches_type
 from increase.types import (
     ExternalAccount,
 )
-from increase._client import Increase, AsyncIncrease
 from increase.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
-api_key = "My API Key"
 
 
 class TestExternalAccounts:
-    strict_client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=True)
-    loose_client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=False)
-    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
+    parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
     def test_method_create(self, client: Increase) -> None:
@@ -193,13 +189,11 @@ class TestExternalAccounts:
 
 
 class TestAsyncExternalAccounts:
-    strict_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
-    loose_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=False)
-    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
+    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    async def test_method_create(self, client: AsyncIncrease) -> None:
-        external_account = await client.external_accounts.create(
+    async def test_method_create(self, async_client: AsyncIncrease) -> None:
+        external_account = await async_client.external_accounts.create(
             account_number="987654321",
             description="Landlord",
             routing_number="101050001",
@@ -207,8 +201,8 @@ class TestAsyncExternalAccounts:
         assert_matches_type(ExternalAccount, external_account, path=["response"])
 
     @parametrize
-    async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
-        external_account = await client.external_accounts.create(
+    async def test_method_create_with_all_params(self, async_client: AsyncIncrease) -> None:
+        external_account = await async_client.external_accounts.create(
             account_number="987654321",
             description="Landlord",
             routing_number="101050001",
@@ -217,8 +211,8 @@ class TestAsyncExternalAccounts:
         assert_matches_type(ExternalAccount, external_account, path=["response"])
 
     @parametrize
-    async def test_raw_response_create(self, client: AsyncIncrease) -> None:
-        response = await client.external_accounts.with_raw_response.create(
+    async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
+        response = await async_client.external_accounts.with_raw_response.create(
             account_number="987654321",
             description="Landlord",
             routing_number="101050001",
@@ -230,8 +224,8 @@ class TestAsyncExternalAccounts:
         assert_matches_type(ExternalAccount, external_account, path=["response"])
 
     @parametrize
-    async def test_streaming_response_create(self, client: AsyncIncrease) -> None:
-        async with client.external_accounts.with_streaming_response.create(
+    async def test_streaming_response_create(self, async_client: AsyncIncrease) -> None:
+        async with async_client.external_accounts.with_streaming_response.create(
             account_number="987654321",
             description="Landlord",
             routing_number="101050001",
@@ -245,15 +239,15 @@ class TestAsyncExternalAccounts:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_retrieve(self, client: AsyncIncrease) -> None:
-        external_account = await client.external_accounts.retrieve(
+    async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
+        external_account = await async_client.external_accounts.retrieve(
             "string",
         )
         assert_matches_type(ExternalAccount, external_account, path=["response"])
 
     @parametrize
-    async def test_raw_response_retrieve(self, client: AsyncIncrease) -> None:
-        response = await client.external_accounts.with_raw_response.retrieve(
+    async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
+        response = await async_client.external_accounts.with_raw_response.retrieve(
             "string",
         )
 
@@ -263,8 +257,8 @@ class TestAsyncExternalAccounts:
         assert_matches_type(ExternalAccount, external_account, path=["response"])
 
     @parametrize
-    async def test_streaming_response_retrieve(self, client: AsyncIncrease) -> None:
-        async with client.external_accounts.with_streaming_response.retrieve(
+    async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
+        async with async_client.external_accounts.with_streaming_response.retrieve(
             "string",
         ) as response:
             assert not response.is_closed
@@ -276,22 +270,22 @@ class TestAsyncExternalAccounts:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_retrieve(self, client: AsyncIncrease) -> None:
+    async def test_path_params_retrieve(self, async_client: AsyncIncrease) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_account_id` but received ''"):
-            await client.external_accounts.with_raw_response.retrieve(
+            await async_client.external_accounts.with_raw_response.retrieve(
                 "",
             )
 
     @parametrize
-    async def test_method_update(self, client: AsyncIncrease) -> None:
-        external_account = await client.external_accounts.update(
+    async def test_method_update(self, async_client: AsyncIncrease) -> None:
+        external_account = await async_client.external_accounts.update(
             "string",
         )
         assert_matches_type(ExternalAccount, external_account, path=["response"])
 
     @parametrize
-    async def test_method_update_with_all_params(self, client: AsyncIncrease) -> None:
-        external_account = await client.external_accounts.update(
+    async def test_method_update_with_all_params(self, async_client: AsyncIncrease) -> None:
+        external_account = await async_client.external_accounts.update(
             "string",
             description="New description",
             status="active",
@@ -299,8 +293,8 @@ class TestAsyncExternalAccounts:
         assert_matches_type(ExternalAccount, external_account, path=["response"])
 
     @parametrize
-    async def test_raw_response_update(self, client: AsyncIncrease) -> None:
-        response = await client.external_accounts.with_raw_response.update(
+    async def test_raw_response_update(self, async_client: AsyncIncrease) -> None:
+        response = await async_client.external_accounts.with_raw_response.update(
             "string",
         )
 
@@ -310,8 +304,8 @@ class TestAsyncExternalAccounts:
         assert_matches_type(ExternalAccount, external_account, path=["response"])
 
     @parametrize
-    async def test_streaming_response_update(self, client: AsyncIncrease) -> None:
-        async with client.external_accounts.with_streaming_response.update(
+    async def test_streaming_response_update(self, async_client: AsyncIncrease) -> None:
+        async with async_client.external_accounts.with_streaming_response.update(
             "string",
         ) as response:
             assert not response.is_closed
@@ -323,20 +317,20 @@ class TestAsyncExternalAccounts:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_update(self, client: AsyncIncrease) -> None:
+    async def test_path_params_update(self, async_client: AsyncIncrease) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_account_id` but received ''"):
-            await client.external_accounts.with_raw_response.update(
+            await async_client.external_accounts.with_raw_response.update(
                 "",
             )
 
     @parametrize
-    async def test_method_list(self, client: AsyncIncrease) -> None:
-        external_account = await client.external_accounts.list()
+    async def test_method_list(self, async_client: AsyncIncrease) -> None:
+        external_account = await async_client.external_accounts.list()
         assert_matches_type(AsyncPage[ExternalAccount], external_account, path=["response"])
 
     @parametrize
-    async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
-        external_account = await client.external_accounts.list(
+    async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
+        external_account = await async_client.external_accounts.list(
             cursor="string",
             limit=1,
             routing_number="xxxxxxxxx",
@@ -345,8 +339,8 @@ class TestAsyncExternalAccounts:
         assert_matches_type(AsyncPage[ExternalAccount], external_account, path=["response"])
 
     @parametrize
-    async def test_raw_response_list(self, client: AsyncIncrease) -> None:
-        response = await client.external_accounts.with_raw_response.list()
+    async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
+        response = await async_client.external_accounts.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -354,8 +348,8 @@ class TestAsyncExternalAccounts:
         assert_matches_type(AsyncPage[ExternalAccount], external_account, path=["response"])
 
     @parametrize
-    async def test_streaming_response_list(self, client: AsyncIncrease) -> None:
-        async with client.external_accounts.with_streaming_response.list() as response:
+    async def test_streaming_response_list(self, async_client: AsyncIncrease) -> None:
+        async with async_client.external_accounts.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 

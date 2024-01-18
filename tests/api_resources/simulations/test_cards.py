@@ -10,17 +10,13 @@ import pytest
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
 from increase.types import Transaction
-from increase._client import Increase, AsyncIncrease
 from increase.types.simulations import CardAuthorizationSimulation
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
-api_key = "My API Key"
 
 
 class TestCards:
-    strict_client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=True)
-    loose_client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=False)
-    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
+    parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
     def test_method_authorize(self, client: Increase) -> None:
@@ -114,20 +110,18 @@ class TestCards:
 
 
 class TestAsyncCards:
-    strict_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
-    loose_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=False)
-    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
+    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    async def test_method_authorize(self, client: AsyncIncrease) -> None:
-        card = await client.simulations.cards.authorize(
+    async def test_method_authorize(self, async_client: AsyncIncrease) -> None:
+        card = await async_client.simulations.cards.authorize(
             amount=1000,
         )
         assert_matches_type(CardAuthorizationSimulation, card, path=["response"])
 
     @parametrize
-    async def test_method_authorize_with_all_params(self, client: AsyncIncrease) -> None:
-        card = await client.simulations.cards.authorize(
+    async def test_method_authorize_with_all_params(self, async_client: AsyncIncrease) -> None:
+        card = await async_client.simulations.cards.authorize(
             amount=1000,
             card_id="card_oubs0hwk5rn6knuecxg2",
             digital_wallet_token_id="string",
@@ -142,8 +136,8 @@ class TestAsyncCards:
         assert_matches_type(CardAuthorizationSimulation, card, path=["response"])
 
     @parametrize
-    async def test_raw_response_authorize(self, client: AsyncIncrease) -> None:
-        response = await client.simulations.cards.with_raw_response.authorize(
+    async def test_raw_response_authorize(self, async_client: AsyncIncrease) -> None:
+        response = await async_client.simulations.cards.with_raw_response.authorize(
             amount=1000,
         )
 
@@ -153,8 +147,8 @@ class TestAsyncCards:
         assert_matches_type(CardAuthorizationSimulation, card, path=["response"])
 
     @parametrize
-    async def test_streaming_response_authorize(self, client: AsyncIncrease) -> None:
-        async with client.simulations.cards.with_streaming_response.authorize(
+    async def test_streaming_response_authorize(self, async_client: AsyncIncrease) -> None:
+        async with async_client.simulations.cards.with_streaming_response.authorize(
             amount=1000,
         ) as response:
             assert not response.is_closed
@@ -166,16 +160,16 @@ class TestAsyncCards:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_settlement(self, client: AsyncIncrease) -> None:
-        card = await client.simulations.cards.settlement(
+    async def test_method_settlement(self, async_client: AsyncIncrease) -> None:
+        card = await async_client.simulations.cards.settlement(
             card_id="card_oubs0hwk5rn6knuecxg2",
             pending_transaction_id="pending_transaction_k1sfetcau2qbvjbzgju4",
         )
         assert_matches_type(Transaction, card, path=["response"])
 
     @parametrize
-    async def test_method_settlement_with_all_params(self, client: AsyncIncrease) -> None:
-        card = await client.simulations.cards.settlement(
+    async def test_method_settlement_with_all_params(self, async_client: AsyncIncrease) -> None:
+        card = await async_client.simulations.cards.settlement(
             card_id="card_oubs0hwk5rn6knuecxg2",
             pending_transaction_id="pending_transaction_k1sfetcau2qbvjbzgju4",
             amount=1,
@@ -183,8 +177,8 @@ class TestAsyncCards:
         assert_matches_type(Transaction, card, path=["response"])
 
     @parametrize
-    async def test_raw_response_settlement(self, client: AsyncIncrease) -> None:
-        response = await client.simulations.cards.with_raw_response.settlement(
+    async def test_raw_response_settlement(self, async_client: AsyncIncrease) -> None:
+        response = await async_client.simulations.cards.with_raw_response.settlement(
             card_id="card_oubs0hwk5rn6knuecxg2",
             pending_transaction_id="pending_transaction_k1sfetcau2qbvjbzgju4",
         )
@@ -195,8 +189,8 @@ class TestAsyncCards:
         assert_matches_type(Transaction, card, path=["response"])
 
     @parametrize
-    async def test_streaming_response_settlement(self, client: AsyncIncrease) -> None:
-        async with client.simulations.cards.with_streaming_response.settlement(
+    async def test_streaming_response_settlement(self, async_client: AsyncIncrease) -> None:
+        async with async_client.simulations.cards.with_streaming_response.settlement(
             card_id="card_oubs0hwk5rn6knuecxg2",
             pending_transaction_id="pending_transaction_k1sfetcau2qbvjbzgju4",
         ) as response:

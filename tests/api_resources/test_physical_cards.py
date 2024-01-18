@@ -13,17 +13,13 @@ from increase.types import (
     PhysicalCard,
 )
 from increase._utils import parse_datetime
-from increase._client import Increase, AsyncIncrease
 from increase.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
-api_key = "My API Key"
 
 
 class TestPhysicalCards:
-    strict_client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=True)
-    loose_client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=False)
-    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
+    parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
     def test_method_create(self, client: Increase) -> None:
@@ -223,13 +219,11 @@ class TestPhysicalCards:
 
 
 class TestAsyncPhysicalCards:
-    strict_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
-    loose_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=False)
-    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
+    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    async def test_method_create(self, client: AsyncIncrease) -> None:
-        physical_card = await client.physical_cards.create(
+    async def test_method_create(self, async_client: AsyncIncrease) -> None:
+        physical_card = await async_client.physical_cards.create(
             card_id="card_oubs0hwk5rn6knuecxg2",
             card_profile_id="card_profile_cox5y73lob2eqly18piy",
             cardholder={
@@ -250,8 +244,8 @@ class TestAsyncPhysicalCards:
         assert_matches_type(PhysicalCard, physical_card, path=["response"])
 
     @parametrize
-    async def test_raw_response_create(self, client: AsyncIncrease) -> None:
-        response = await client.physical_cards.with_raw_response.create(
+    async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
+        response = await async_client.physical_cards.with_raw_response.create(
             card_id="card_oubs0hwk5rn6knuecxg2",
             card_profile_id="card_profile_cox5y73lob2eqly18piy",
             cardholder={
@@ -276,8 +270,8 @@ class TestAsyncPhysicalCards:
         assert_matches_type(PhysicalCard, physical_card, path=["response"])
 
     @parametrize
-    async def test_streaming_response_create(self, client: AsyncIncrease) -> None:
-        async with client.physical_cards.with_streaming_response.create(
+    async def test_streaming_response_create(self, async_client: AsyncIncrease) -> None:
+        async with async_client.physical_cards.with_streaming_response.create(
             card_id="card_oubs0hwk5rn6knuecxg2",
             card_profile_id="card_profile_cox5y73lob2eqly18piy",
             cardholder={
@@ -304,15 +298,15 @@ class TestAsyncPhysicalCards:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_retrieve(self, client: AsyncIncrease) -> None:
-        physical_card = await client.physical_cards.retrieve(
+    async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
+        physical_card = await async_client.physical_cards.retrieve(
             "string",
         )
         assert_matches_type(PhysicalCard, physical_card, path=["response"])
 
     @parametrize
-    async def test_raw_response_retrieve(self, client: AsyncIncrease) -> None:
-        response = await client.physical_cards.with_raw_response.retrieve(
+    async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
+        response = await async_client.physical_cards.with_raw_response.retrieve(
             "string",
         )
 
@@ -322,8 +316,8 @@ class TestAsyncPhysicalCards:
         assert_matches_type(PhysicalCard, physical_card, path=["response"])
 
     @parametrize
-    async def test_streaming_response_retrieve(self, client: AsyncIncrease) -> None:
-        async with client.physical_cards.with_streaming_response.retrieve(
+    async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
+        async with async_client.physical_cards.with_streaming_response.retrieve(
             "string",
         ) as response:
             assert not response.is_closed
@@ -335,23 +329,23 @@ class TestAsyncPhysicalCards:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_retrieve(self, client: AsyncIncrease) -> None:
+    async def test_path_params_retrieve(self, async_client: AsyncIncrease) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `physical_card_id` but received ''"):
-            await client.physical_cards.with_raw_response.retrieve(
+            await async_client.physical_cards.with_raw_response.retrieve(
                 "",
             )
 
     @parametrize
-    async def test_method_update(self, client: AsyncIncrease) -> None:
-        physical_card = await client.physical_cards.update(
+    async def test_method_update(self, async_client: AsyncIncrease) -> None:
+        physical_card = await async_client.physical_cards.update(
             "string",
             status="disabled",
         )
         assert_matches_type(PhysicalCard, physical_card, path=["response"])
 
     @parametrize
-    async def test_raw_response_update(self, client: AsyncIncrease) -> None:
-        response = await client.physical_cards.with_raw_response.update(
+    async def test_raw_response_update(self, async_client: AsyncIncrease) -> None:
+        response = await async_client.physical_cards.with_raw_response.update(
             "string",
             status="disabled",
         )
@@ -362,8 +356,8 @@ class TestAsyncPhysicalCards:
         assert_matches_type(PhysicalCard, physical_card, path=["response"])
 
     @parametrize
-    async def test_streaming_response_update(self, client: AsyncIncrease) -> None:
-        async with client.physical_cards.with_streaming_response.update(
+    async def test_streaming_response_update(self, async_client: AsyncIncrease) -> None:
+        async with async_client.physical_cards.with_streaming_response.update(
             "string",
             status="disabled",
         ) as response:
@@ -376,21 +370,21 @@ class TestAsyncPhysicalCards:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_update(self, client: AsyncIncrease) -> None:
+    async def test_path_params_update(self, async_client: AsyncIncrease) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `physical_card_id` but received ''"):
-            await client.physical_cards.with_raw_response.update(
+            await async_client.physical_cards.with_raw_response.update(
                 "",
                 status="disabled",
             )
 
     @parametrize
-    async def test_method_list(self, client: AsyncIncrease) -> None:
-        physical_card = await client.physical_cards.list()
+    async def test_method_list(self, async_client: AsyncIncrease) -> None:
+        physical_card = await async_client.physical_cards.list()
         assert_matches_type(AsyncPage[PhysicalCard], physical_card, path=["response"])
 
     @parametrize
-    async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
-        physical_card = await client.physical_cards.list(
+    async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
+        physical_card = await async_client.physical_cards.list(
             card_id="string",
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -404,8 +398,8 @@ class TestAsyncPhysicalCards:
         assert_matches_type(AsyncPage[PhysicalCard], physical_card, path=["response"])
 
     @parametrize
-    async def test_raw_response_list(self, client: AsyncIncrease) -> None:
-        response = await client.physical_cards.with_raw_response.list()
+    async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
+        response = await async_client.physical_cards.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -413,8 +407,8 @@ class TestAsyncPhysicalCards:
         assert_matches_type(AsyncPage[PhysicalCard], physical_card, path=["response"])
 
     @parametrize
-    async def test_streaming_response_list(self, client: AsyncIncrease) -> None:
-        async with client.physical_cards.with_streaming_response.list() as response:
+    async def test_streaming_response_list(self, async_client: AsyncIncrease) -> None:
+        async with async_client.physical_cards.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
