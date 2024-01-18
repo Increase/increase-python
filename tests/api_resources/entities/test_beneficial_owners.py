@@ -11,16 +11,12 @@ from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
 from increase.types import Entity
 from increase._utils import parse_date
-from increase._client import Increase, AsyncIncrease
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
-api_key = "My API Key"
 
 
 class TestBeneficialOwners:
-    strict_client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=True)
-    loose_client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=False)
-    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
+    parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
     def test_method_create(self, client: Increase) -> None:
@@ -252,13 +248,11 @@ class TestBeneficialOwners:
 
 
 class TestAsyncBeneficialOwners:
-    strict_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
-    loose_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=False)
-    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
+    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    async def test_method_create(self, client: AsyncIncrease) -> None:
-        beneficial_owner = await client.entities.beneficial_owners.create(
+    async def test_method_create(self, async_client: AsyncIncrease) -> None:
+        beneficial_owner = await async_client.entities.beneficial_owners.create(
             beneficial_owner={
                 "individual": {
                     "name": "Ian Crease",
@@ -281,8 +275,8 @@ class TestAsyncBeneficialOwners:
         assert_matches_type(Entity, beneficial_owner, path=["response"])
 
     @parametrize
-    async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
-        beneficial_owner = await client.entities.beneficial_owners.create(
+    async def test_method_create_with_all_params(self, async_client: AsyncIncrease) -> None:
+        beneficial_owner = await async_client.entities.beneficial_owners.create(
             beneficial_owner={
                 "individual": {
                     "name": "Ian Crease",
@@ -326,8 +320,8 @@ class TestAsyncBeneficialOwners:
         assert_matches_type(Entity, beneficial_owner, path=["response"])
 
     @parametrize
-    async def test_raw_response_create(self, client: AsyncIncrease) -> None:
-        response = await client.entities.beneficial_owners.with_raw_response.create(
+    async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
+        response = await async_client.entities.beneficial_owners.with_raw_response.create(
             beneficial_owner={
                 "individual": {
                     "name": "Ian Crease",
@@ -354,8 +348,8 @@ class TestAsyncBeneficialOwners:
         assert_matches_type(Entity, beneficial_owner, path=["response"])
 
     @parametrize
-    async def test_streaming_response_create(self, client: AsyncIncrease) -> None:
-        async with client.entities.beneficial_owners.with_streaming_response.create(
+    async def test_streaming_response_create(self, async_client: AsyncIncrease) -> None:
+        async with async_client.entities.beneficial_owners.with_streaming_response.create(
             beneficial_owner={
                 "individual": {
                     "name": "Ian Crease",
@@ -384,16 +378,16 @@ class TestAsyncBeneficialOwners:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_archive(self, client: AsyncIncrease) -> None:
-        beneficial_owner = await client.entities.beneficial_owners.archive(
+    async def test_method_archive(self, async_client: AsyncIncrease) -> None:
+        beneficial_owner = await async_client.entities.beneficial_owners.archive(
             beneficial_owner_id="entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7",
             entity_id="entity_n8y8tnk2p9339ti393yi",
         )
         assert_matches_type(Entity, beneficial_owner, path=["response"])
 
     @parametrize
-    async def test_raw_response_archive(self, client: AsyncIncrease) -> None:
-        response = await client.entities.beneficial_owners.with_raw_response.archive(
+    async def test_raw_response_archive(self, async_client: AsyncIncrease) -> None:
+        response = await async_client.entities.beneficial_owners.with_raw_response.archive(
             beneficial_owner_id="entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7",
             entity_id="entity_n8y8tnk2p9339ti393yi",
         )
@@ -404,8 +398,8 @@ class TestAsyncBeneficialOwners:
         assert_matches_type(Entity, beneficial_owner, path=["response"])
 
     @parametrize
-    async def test_streaming_response_archive(self, client: AsyncIncrease) -> None:
-        async with client.entities.beneficial_owners.with_streaming_response.archive(
+    async def test_streaming_response_archive(self, async_client: AsyncIncrease) -> None:
+        async with async_client.entities.beneficial_owners.with_streaming_response.archive(
             beneficial_owner_id="entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7",
             entity_id="entity_n8y8tnk2p9339ti393yi",
         ) as response:
@@ -418,8 +412,8 @@ class TestAsyncBeneficialOwners:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_update_address(self, client: AsyncIncrease) -> None:
-        beneficial_owner = await client.entities.beneficial_owners.update_address(
+    async def test_method_update_address(self, async_client: AsyncIncrease) -> None:
+        beneficial_owner = await async_client.entities.beneficial_owners.update_address(
             address={
                 "line1": "33 Liberty Street",
                 "city": "New York",
@@ -432,8 +426,8 @@ class TestAsyncBeneficialOwners:
         assert_matches_type(Entity, beneficial_owner, path=["response"])
 
     @parametrize
-    async def test_method_update_address_with_all_params(self, client: AsyncIncrease) -> None:
-        beneficial_owner = await client.entities.beneficial_owners.update_address(
+    async def test_method_update_address_with_all_params(self, async_client: AsyncIncrease) -> None:
+        beneficial_owner = await async_client.entities.beneficial_owners.update_address(
             address={
                 "line1": "33 Liberty Street",
                 "line2": "Unit 2",
@@ -447,8 +441,8 @@ class TestAsyncBeneficialOwners:
         assert_matches_type(Entity, beneficial_owner, path=["response"])
 
     @parametrize
-    async def test_raw_response_update_address(self, client: AsyncIncrease) -> None:
-        response = await client.entities.beneficial_owners.with_raw_response.update_address(
+    async def test_raw_response_update_address(self, async_client: AsyncIncrease) -> None:
+        response = await async_client.entities.beneficial_owners.with_raw_response.update_address(
             address={
                 "line1": "33 Liberty Street",
                 "city": "New York",
@@ -465,8 +459,8 @@ class TestAsyncBeneficialOwners:
         assert_matches_type(Entity, beneficial_owner, path=["response"])
 
     @parametrize
-    async def test_streaming_response_update_address(self, client: AsyncIncrease) -> None:
-        async with client.entities.beneficial_owners.with_streaming_response.update_address(
+    async def test_streaming_response_update_address(self, async_client: AsyncIncrease) -> None:
+        async with async_client.entities.beneficial_owners.with_streaming_response.update_address(
             address={
                 "line1": "33 Liberty Street",
                 "city": "New York",

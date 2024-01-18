@@ -13,17 +13,13 @@ from increase.types import (
     AccountNumber,
 )
 from increase._utils import parse_datetime
-from increase._client import Increase, AsyncIncrease
 from increase.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
-api_key = "My API Key"
 
 
 class TestAccountNumbers:
-    strict_client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=True)
-    loose_client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=False)
-    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
+    parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
     def test_method_create(self, client: Increase) -> None:
@@ -199,21 +195,19 @@ class TestAccountNumbers:
 
 
 class TestAsyncAccountNumbers:
-    strict_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
-    loose_client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=False)
-    parametrize = pytest.mark.parametrize("client", [strict_client, loose_client], ids=["strict", "loose"])
+    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    async def test_method_create(self, client: AsyncIncrease) -> None:
-        account_number = await client.account_numbers.create(
+    async def test_method_create(self, async_client: AsyncIncrease) -> None:
+        account_number = await async_client.account_numbers.create(
             account_id="account_in71c4amph0vgo2qllky",
             name="Rent payments",
         )
         assert_matches_type(AccountNumber, account_number, path=["response"])
 
     @parametrize
-    async def test_method_create_with_all_params(self, client: AsyncIncrease) -> None:
-        account_number = await client.account_numbers.create(
+    async def test_method_create_with_all_params(self, async_client: AsyncIncrease) -> None:
+        account_number = await async_client.account_numbers.create(
             account_id="account_in71c4amph0vgo2qllky",
             name="Rent payments",
             inbound_ach={"debit_status": "allowed"},
@@ -222,8 +216,8 @@ class TestAsyncAccountNumbers:
         assert_matches_type(AccountNumber, account_number, path=["response"])
 
     @parametrize
-    async def test_raw_response_create(self, client: AsyncIncrease) -> None:
-        response = await client.account_numbers.with_raw_response.create(
+    async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
+        response = await async_client.account_numbers.with_raw_response.create(
             account_id="account_in71c4amph0vgo2qllky",
             name="Rent payments",
         )
@@ -234,8 +228,8 @@ class TestAsyncAccountNumbers:
         assert_matches_type(AccountNumber, account_number, path=["response"])
 
     @parametrize
-    async def test_streaming_response_create(self, client: AsyncIncrease) -> None:
-        async with client.account_numbers.with_streaming_response.create(
+    async def test_streaming_response_create(self, async_client: AsyncIncrease) -> None:
+        async with async_client.account_numbers.with_streaming_response.create(
             account_id="account_in71c4amph0vgo2qllky",
             name="Rent payments",
         ) as response:
@@ -248,15 +242,15 @@ class TestAsyncAccountNumbers:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_retrieve(self, client: AsyncIncrease) -> None:
-        account_number = await client.account_numbers.retrieve(
+    async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
+        account_number = await async_client.account_numbers.retrieve(
             "string",
         )
         assert_matches_type(AccountNumber, account_number, path=["response"])
 
     @parametrize
-    async def test_raw_response_retrieve(self, client: AsyncIncrease) -> None:
-        response = await client.account_numbers.with_raw_response.retrieve(
+    async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
+        response = await async_client.account_numbers.with_raw_response.retrieve(
             "string",
         )
 
@@ -266,8 +260,8 @@ class TestAsyncAccountNumbers:
         assert_matches_type(AccountNumber, account_number, path=["response"])
 
     @parametrize
-    async def test_streaming_response_retrieve(self, client: AsyncIncrease) -> None:
-        async with client.account_numbers.with_streaming_response.retrieve(
+    async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
+        async with async_client.account_numbers.with_streaming_response.retrieve(
             "string",
         ) as response:
             assert not response.is_closed
@@ -279,22 +273,22 @@ class TestAsyncAccountNumbers:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_retrieve(self, client: AsyncIncrease) -> None:
+    async def test_path_params_retrieve(self, async_client: AsyncIncrease) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_number_id` but received ''"):
-            await client.account_numbers.with_raw_response.retrieve(
+            await async_client.account_numbers.with_raw_response.retrieve(
                 "",
             )
 
     @parametrize
-    async def test_method_update(self, client: AsyncIncrease) -> None:
-        account_number = await client.account_numbers.update(
+    async def test_method_update(self, async_client: AsyncIncrease) -> None:
+        account_number = await async_client.account_numbers.update(
             "string",
         )
         assert_matches_type(AccountNumber, account_number, path=["response"])
 
     @parametrize
-    async def test_method_update_with_all_params(self, client: AsyncIncrease) -> None:
-        account_number = await client.account_numbers.update(
+    async def test_method_update_with_all_params(self, async_client: AsyncIncrease) -> None:
+        account_number = await async_client.account_numbers.update(
             "string",
             inbound_ach={"debit_status": "blocked"},
             name="x",
@@ -303,8 +297,8 @@ class TestAsyncAccountNumbers:
         assert_matches_type(AccountNumber, account_number, path=["response"])
 
     @parametrize
-    async def test_raw_response_update(self, client: AsyncIncrease) -> None:
-        response = await client.account_numbers.with_raw_response.update(
+    async def test_raw_response_update(self, async_client: AsyncIncrease) -> None:
+        response = await async_client.account_numbers.with_raw_response.update(
             "string",
         )
 
@@ -314,8 +308,8 @@ class TestAsyncAccountNumbers:
         assert_matches_type(AccountNumber, account_number, path=["response"])
 
     @parametrize
-    async def test_streaming_response_update(self, client: AsyncIncrease) -> None:
-        async with client.account_numbers.with_streaming_response.update(
+    async def test_streaming_response_update(self, async_client: AsyncIncrease) -> None:
+        async with async_client.account_numbers.with_streaming_response.update(
             "string",
         ) as response:
             assert not response.is_closed
@@ -327,20 +321,20 @@ class TestAsyncAccountNumbers:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_update(self, client: AsyncIncrease) -> None:
+    async def test_path_params_update(self, async_client: AsyncIncrease) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_number_id` but received ''"):
-            await client.account_numbers.with_raw_response.update(
+            await async_client.account_numbers.with_raw_response.update(
                 "",
             )
 
     @parametrize
-    async def test_method_list(self, client: AsyncIncrease) -> None:
-        account_number = await client.account_numbers.list()
+    async def test_method_list(self, async_client: AsyncIncrease) -> None:
+        account_number = await async_client.account_numbers.list()
         assert_matches_type(AsyncPage[AccountNumber], account_number, path=["response"])
 
     @parametrize
-    async def test_method_list_with_all_params(self, client: AsyncIncrease) -> None:
-        account_number = await client.account_numbers.list(
+    async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
+        account_number = await async_client.account_numbers.list(
             account_id="string",
             ach_debit_status="allowed",
             created_at={
@@ -356,8 +350,8 @@ class TestAsyncAccountNumbers:
         assert_matches_type(AsyncPage[AccountNumber], account_number, path=["response"])
 
     @parametrize
-    async def test_raw_response_list(self, client: AsyncIncrease) -> None:
-        response = await client.account_numbers.with_raw_response.list()
+    async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
+        response = await async_client.account_numbers.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -365,8 +359,8 @@ class TestAsyncAccountNumbers:
         assert_matches_type(AsyncPage[AccountNumber], account_number, path=["response"])
 
     @parametrize
-    async def test_streaming_response_list(self, client: AsyncIncrease) -> None:
-        async with client.account_numbers.with_streaming_response.list() as response:
+    async def test_streaming_response_list(self, async_client: AsyncIncrease) -> None:
+        async with async_client.account_numbers.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
