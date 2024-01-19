@@ -178,6 +178,18 @@ class WireTransfer(BaseModel):
     network: Literal["wire"]
     """The transfer's network."""
 
+    originator_address_line1: Optional[str] = None
+    """The originator's address line 1."""
+
+    originator_address_line2: Optional[str] = None
+    """The originator's address line 2."""
+
+    originator_address_line3: Optional[str] = None
+    """The originator's address line 3."""
+
+    originator_name: Optional[str] = None
+    """The originator's name."""
+
     pending_transaction_id: Optional[str] = None
     """The ID for the pending transaction representing the transfer.
 

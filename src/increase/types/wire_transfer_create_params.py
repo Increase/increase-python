@@ -39,6 +39,34 @@ class WireTransferCreateParams(TypedDict, total=False):
     absent.
     """
 
+    originator_address_line1: str
+    """The originator's address line 1.
+
+    This is only necessary if you're transferring from a commingled account.
+    Otherwise, we'll use the associated entity's details.
+    """
+
+    originator_address_line2: str
+    """The originator's address line 2.
+
+    This is only necessary if you're transferring from a commingled account.
+    Otherwise, we'll use the associated entity's details.
+    """
+
+    originator_address_line3: str
+    """The originator's address line 3.
+
+    This is only necessary if you're transferring from a commingled account.
+    Otherwise, we'll use the associated entity's details.
+    """
+
+    originator_name: str
+    """The originator's name.
+
+    This is only necessary if you're transferring from a commingled account.
+    Otherwise, we'll use the associated entity's details.
+    """
+
     require_approval: bool
     """Whether the transfer requires explicit approval via the dashboard or API."""
 

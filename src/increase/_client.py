@@ -101,6 +101,8 @@ class Increase(SyncAPIClient):
     intrafi: resources.Intrafi
     real_time_payments_request_for_payments: resources.RealTimePaymentsRequestForPayments
     webhooks: resources.Webhooks
+    oauth_tokens: resources.OAuthTokens
+    inbound_wire_transfers: resources.InboundWireTransfers
     with_raw_response: IncreaseWithRawResponse
     with_streaming_response: IncreaseWithStreamedResponse
 
@@ -243,6 +245,8 @@ class Increase(SyncAPIClient):
         self.intrafi = resources.Intrafi(self)
         self.real_time_payments_request_for_payments = resources.RealTimePaymentsRequestForPayments(self)
         self.webhooks = resources.Webhooks(self)
+        self.oauth_tokens = resources.OAuthTokens(self)
+        self.inbound_wire_transfers = resources.InboundWireTransfers(self)
         self.with_raw_response = IncreaseWithRawResponse(self)
         self.with_streaming_response = IncreaseWithStreamedResponse(self)
 
@@ -470,6 +474,8 @@ class AsyncIncrease(AsyncAPIClient):
     intrafi: resources.AsyncIntrafi
     real_time_payments_request_for_payments: resources.AsyncRealTimePaymentsRequestForPayments
     webhooks: resources.AsyncWebhooks
+    oauth_tokens: resources.AsyncOAuthTokens
+    inbound_wire_transfers: resources.AsyncInboundWireTransfers
     with_raw_response: AsyncIncreaseWithRawResponse
     with_streaming_response: AsyncIncreaseWithStreamedResponse
 
@@ -612,6 +618,8 @@ class AsyncIncrease(AsyncAPIClient):
         self.intrafi = resources.AsyncIntrafi(self)
         self.real_time_payments_request_for_payments = resources.AsyncRealTimePaymentsRequestForPayments(self)
         self.webhooks = resources.AsyncWebhooks(self)
+        self.oauth_tokens = resources.AsyncOAuthTokens(self)
+        self.inbound_wire_transfers = resources.AsyncInboundWireTransfers(self)
         self.with_raw_response = AsyncIncreaseWithRawResponse(self)
         self.with_streaming_response = AsyncIncreaseWithStreamedResponse(self)
 
@@ -853,6 +861,8 @@ class IncreaseWithRawResponse:
         self.real_time_payments_request_for_payments = resources.RealTimePaymentsRequestForPaymentsWithRawResponse(
             client.real_time_payments_request_for_payments
         )
+        self.oauth_tokens = resources.OAuthTokensWithRawResponse(client.oauth_tokens)
+        self.inbound_wire_transfers = resources.InboundWireTransfersWithRawResponse(client.inbound_wire_transfers)
 
 
 class AsyncIncreaseWithRawResponse:
@@ -914,6 +924,8 @@ class AsyncIncreaseWithRawResponse:
         self.real_time_payments_request_for_payments = resources.AsyncRealTimePaymentsRequestForPaymentsWithRawResponse(
             client.real_time_payments_request_for_payments
         )
+        self.oauth_tokens = resources.AsyncOAuthTokensWithRawResponse(client.oauth_tokens)
+        self.inbound_wire_transfers = resources.AsyncInboundWireTransfersWithRawResponse(client.inbound_wire_transfers)
 
 
 class IncreaseWithStreamedResponse:
@@ -977,6 +989,8 @@ class IncreaseWithStreamedResponse:
                 client.real_time_payments_request_for_payments
             )
         )
+        self.oauth_tokens = resources.OAuthTokensWithStreamingResponse(client.oauth_tokens)
+        self.inbound_wire_transfers = resources.InboundWireTransfersWithStreamingResponse(client.inbound_wire_transfers)
 
 
 class AsyncIncreaseWithStreamedResponse:
@@ -1049,6 +1063,10 @@ class AsyncIncreaseWithStreamedResponse:
             resources.AsyncRealTimePaymentsRequestForPaymentsWithStreamingResponse(
                 client.real_time_payments_request_for_payments
             )
+        )
+        self.oauth_tokens = resources.AsyncOAuthTokensWithStreamingResponse(client.oauth_tokens)
+        self.inbound_wire_transfers = resources.AsyncInboundWireTransfersWithStreamingResponse(
+            client.inbound_wire_transfers
         )
 
 

@@ -2242,6 +2242,9 @@ class SourceInboundWireReversal(BaseModel):
 
 
 class SourceInboundWireTransfer(BaseModel):
+    id: str
+    """The inbound wire transfer's identifier."""
+
     amount: int
     """The amount in USD cents."""
 
@@ -2302,6 +2305,15 @@ class SourceInboundWireTransfer(BaseModel):
 
     originator_to_beneficiary_information_line4: Optional[str] = None
     """A free-form message set by the wire originator."""
+
+    transfer_id: str
+    """The ID of the Inbound Wire Transfer object that resulted in this Transaction."""
+
+    type: Literal["inbound_wire_transfer"]
+    """A constant representing the object's type.
+
+    For this resource it will always be `inbound_wire_transfer`.
+    """
 
 
 class SourceInterestPayment(BaseModel):
