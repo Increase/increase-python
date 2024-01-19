@@ -28,7 +28,7 @@ from .account_transfer import AccountTransfer as AccountTransfer
 from .card_list_params import CardListParams as CardListParams
 from .external_account import ExternalAccount as ExternalAccount
 from .file_list_params import FileListParams as FileListParams
-from .oauth_connection import OauthConnection as OauthConnection
+from .oauth_connection import OAuthConnection as OAuthConnection
 from .account_statement import AccountStatement as AccountStatement
 from .bookkeeping_entry import BookkeepingEntry as BookkeepingEntry
 from .event_list_params import EventListParams as EventListParams
@@ -82,7 +82,7 @@ from .account_transfer_list_params import AccountTransferListParams as AccountTr
 from .check_transfer_create_params import CheckTransferCreateParams as CheckTransferCreateParams
 from .entity_update_address_params import EntityUpdateAddressParams as EntityUpdateAddressParams
 from .external_account_list_params import ExternalAccountListParams as ExternalAccountListParams
-from .oauth_connection_list_params import OauthConnectionListParams as OauthConnectionListParams
+from .oauth_connection_list_params import OAuthConnectionListParams as OAuthConnectionListParams
 from .account_statement_list_params import AccountStatementListParams as AccountStatementListParams
 from .bookkeeping_entry_list_params import BookkeepingEntryListParams as BookkeepingEntryListParams
 from .inbound_wire_drawdown_request import InboundWireDrawdownRequest as InboundWireDrawdownRequest
