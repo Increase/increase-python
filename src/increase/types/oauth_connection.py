@@ -5,10 +5,10 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["OauthConnection"]
+__all__ = ["OAuthConnection"]
 
 
-class OauthConnection(BaseModel):
+class OAuthConnection(BaseModel):
     id: str
     """The OAuth Connection's identifier."""
 
