@@ -41,6 +41,10 @@ class WireTransfers(SyncAPIResource):
         beneficiary_address_line2: str | NotGiven = NOT_GIVEN,
         beneficiary_address_line3: str | NotGiven = NOT_GIVEN,
         external_account_id: str | NotGiven = NOT_GIVEN,
+        originator_address_line1: str | NotGiven = NOT_GIVEN,
+        originator_address_line2: str | NotGiven = NOT_GIVEN,
+        originator_address_line3: str | NotGiven = NOT_GIVEN,
+        originator_name: str | NotGiven = NOT_GIVEN,
         require_approval: bool | NotGiven = NOT_GIVEN,
         routing_number: str | NotGiven = NOT_GIVEN,
         unique_identifier: str | NotGiven = NOT_GIVEN,
@@ -75,6 +79,18 @@ class WireTransfers(SyncAPIResource):
           external_account_id: The ID of an External Account to initiate a transfer to. If this parameter is
               provided, `account_number` and `routing_number` must be absent.
 
+          originator_address_line1: The originator's address line 1. This is only necessary if you're transferring
+              from a commingled account. Otherwise, we'll use the associated entity's details.
+
+          originator_address_line2: The originator's address line 2. This is only necessary if you're transferring
+              from a commingled account. Otherwise, we'll use the associated entity's details.
+
+          originator_address_line3: The originator's address line 3. This is only necessary if you're transferring
+              from a commingled account. Otherwise, we'll use the associated entity's details.
+
+          originator_name: The originator's name. This is only necessary if you're transferring from a
+              commingled account. Otherwise, we'll use the associated entity's details.
+
           require_approval: Whether the transfer requires explicit approval via the dashboard or API.
 
           routing_number: The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
@@ -107,6 +123,10 @@ class WireTransfers(SyncAPIResource):
                     "beneficiary_address_line2": beneficiary_address_line2,
                     "beneficiary_address_line3": beneficiary_address_line3,
                     "external_account_id": external_account_id,
+                    "originator_address_line1": originator_address_line1,
+                    "originator_address_line2": originator_address_line2,
+                    "originator_address_line3": originator_address_line3,
+                    "originator_name": originator_name,
                     "require_approval": require_approval,
                     "routing_number": routing_number,
                     "unique_identifier": unique_identifier,
@@ -415,6 +435,10 @@ class AsyncWireTransfers(AsyncAPIResource):
         beneficiary_address_line2: str | NotGiven = NOT_GIVEN,
         beneficiary_address_line3: str | NotGiven = NOT_GIVEN,
         external_account_id: str | NotGiven = NOT_GIVEN,
+        originator_address_line1: str | NotGiven = NOT_GIVEN,
+        originator_address_line2: str | NotGiven = NOT_GIVEN,
+        originator_address_line3: str | NotGiven = NOT_GIVEN,
+        originator_name: str | NotGiven = NOT_GIVEN,
         require_approval: bool | NotGiven = NOT_GIVEN,
         routing_number: str | NotGiven = NOT_GIVEN,
         unique_identifier: str | NotGiven = NOT_GIVEN,
@@ -449,6 +473,18 @@ class AsyncWireTransfers(AsyncAPIResource):
           external_account_id: The ID of an External Account to initiate a transfer to. If this parameter is
               provided, `account_number` and `routing_number` must be absent.
 
+          originator_address_line1: The originator's address line 1. This is only necessary if you're transferring
+              from a commingled account. Otherwise, we'll use the associated entity's details.
+
+          originator_address_line2: The originator's address line 2. This is only necessary if you're transferring
+              from a commingled account. Otherwise, we'll use the associated entity's details.
+
+          originator_address_line3: The originator's address line 3. This is only necessary if you're transferring
+              from a commingled account. Otherwise, we'll use the associated entity's details.
+
+          originator_name: The originator's name. This is only necessary if you're transferring from a
+              commingled account. Otherwise, we'll use the associated entity's details.
+
           require_approval: Whether the transfer requires explicit approval via the dashboard or API.
 
           routing_number: The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
@@ -481,6 +517,10 @@ class AsyncWireTransfers(AsyncAPIResource):
                     "beneficiary_address_line2": beneficiary_address_line2,
                     "beneficiary_address_line3": beneficiary_address_line3,
                     "external_account_id": external_account_id,
+                    "originator_address_line1": originator_address_line1,
+                    "originator_address_line2": originator_address_line2,
+                    "originator_address_line3": originator_address_line3,
+                    "originator_name": originator_name,
                     "require_approval": require_approval,
                     "routing_number": routing_number,
                     "unique_identifier": unique_identifier,

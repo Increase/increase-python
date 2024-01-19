@@ -20,6 +20,9 @@ class PhysicalCardCreateParams(TypedDict, total=False):
     shipment: Required[Shipment]
     """The details used to ship this physical card."""
 
+    physical_card_profile_id: str
+    """The physical card profile to use for this physical card."""
+
 
 class Cardholder(TypedDict, total=False):
     first_name: Required[str]

@@ -26,6 +26,34 @@ class WireDrawdownRequestCreateParams(TypedDict, total=False):
     recipient_routing_number: Required[str]
     """The drawdown request's recipient's routing number."""
 
+    originator_address_line1: str
+    """The drawdown request originator's address line 1.
+
+    This is only necessary if you're requesting a payment to a commingled account.
+    Otherwise, we'll use the associated entity's details.
+    """
+
+    originator_address_line2: str
+    """The drawdown request originator's address line 2.
+
+    This is only necessary if you're requesting a payment to a commingled account.
+    Otherwise, we'll use the associated entity's details.
+    """
+
+    originator_address_line3: str
+    """The drawdown request originator's address line 3.
+
+    This is only necessary if you're requesting a payment to a commingled account.
+    Otherwise, we'll use the associated entity's details.
+    """
+
+    originator_name: str
+    """The drawdown request originator's name.
+
+    This is only necessary if you're requesting a payment to a commingled account.
+    Otherwise, we'll use the associated entity's details.
+    """
+
     recipient_address_line1: str
     """Line 1 of the drawdown request's recipient's address."""
 

@@ -809,3 +809,27 @@ Methods:
 
 - <code>client.webhooks.<a href="./src/increase/resources/webhooks.py">unwrap</a>(\*args) -> object</code>
 - <code>client.webhooks.<a href="./src/increase/resources/webhooks.py">verify_signature</a>(\*args) -> None</code>
+
+# OAuthTokens
+
+Types:
+
+```python
+from increase.types import OAuthToken
+```
+
+Methods:
+
+- <code title="post /oauth/tokens">client.oauth_tokens.<a href="./src/increase/resources/oauth_tokens.py">create</a>(\*\*<a href="src/increase/types/oauth_token_create_params.py">params</a>) -> <a href="./src/increase/types/oauth_token.py">OAuthToken</a></code>
+
+# InboundWireTransfers
+
+Types:
+
+```python
+from increase.types import InboundWireTransfer
+```
+
+Methods:
+
+- <code title="get /inbound_wire_transfers/{inbound_wire_transfer_id}">client.inbound_wire_transfers.<a href="./src/increase/resources/inbound_wire_transfers.py">retrieve</a>(inbound_wire_transfer_id) -> <a href="./src/increase/types/inbound_wire_transfer.py">InboundWireTransfer</a></code>

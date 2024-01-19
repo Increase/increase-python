@@ -42,6 +42,7 @@ class TestCards:
                 "email": "x",
                 "phone": "x",
                 "card_profile_id": "string",
+                "digital_card_profile_id": "string",
             },
             entity_id="string",
         )
@@ -274,6 +275,7 @@ class TestAsyncCards:
                 "email": "x",
                 "phone": "x",
                 "card_profile_id": "string",
+                "digital_card_profile_id": "string",
             },
             entity_id="string",
         )

@@ -11,6 +11,7 @@ from .export import Export as Export
 from .account import Account as Account
 from .program import Program as Program
 from .document import Document as Document
+from .oauth_token import OAuthToken as OAuthToken
 from .transaction import Transaction as Transaction
 from .ach_transfer import ACHTransfer as ACHTransfer
 from .card_details import CardDetails as CardDetails
@@ -53,6 +54,7 @@ from .inbound_ach_transfer import InboundACHTransfer as InboundACHTransfer
 from .account_create_params import AccountCreateParams as AccountCreateParams
 from .account_update_params import AccountUpdateParams as AccountUpdateParams
 from .bookkeeping_entry_set import BookkeepingEntrySet as BookkeepingEntrySet
+from .inbound_wire_transfer import InboundWireTransfer as InboundWireTransfer
 from .wire_drawdown_request import WireDrawdownRequest as WireDrawdownRequest
 from .account_balance_params import AccountBalanceParams as AccountBalanceParams
 from .transaction_list_params import TransactionListParams as TransactionListParams
@@ -62,6 +64,7 @@ from .card_payment_list_params import CardPaymentListParams as CardPaymentListPa
 from .card_profile_list_params import CardProfileListParams as CardProfileListParams
 from .card_purchase_supplement import CardPurchaseSupplement as CardPurchaseSupplement
 from .check_deposit_list_params import CheckDepositListParams as CheckDepositListParams
+from .oauth_token_create_params import OAuthTokenCreateParams as OAuthTokenCreateParams
 from .physical_card_list_params import PhysicalCardListParams as PhysicalCardListParams
 from .wire_transfer_list_params import WireTransferListParams as WireTransferListParams
 from .account_number_list_params import AccountNumberListParams as AccountNumberListParams
