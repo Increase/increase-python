@@ -89,7 +89,7 @@ class Increase(SyncAPIClient):
     event_subscriptions: resources.EventSubscriptions
     files: resources.Files
     groups: resources.Groups
-    oauth_connections: resources.OauthConnections
+    oauth_connections: resources.OAuthConnections
     check_deposits: resources.CheckDeposits
     routing_numbers: resources.RoutingNumbers
     account_statements: resources.AccountStatements
@@ -231,7 +231,7 @@ class Increase(SyncAPIClient):
         self.event_subscriptions = resources.EventSubscriptions(self)
         self.files = resources.Files(self)
         self.groups = resources.Groups(self)
-        self.oauth_connections = resources.OauthConnections(self)
+        self.oauth_connections = resources.OAuthConnections(self)
         self.check_deposits = resources.CheckDeposits(self)
         self.routing_numbers = resources.RoutingNumbers(self)
         self.account_statements = resources.AccountStatements(self)
@@ -458,7 +458,7 @@ class AsyncIncrease(AsyncAPIClient):
     event_subscriptions: resources.AsyncEventSubscriptions
     files: resources.AsyncFiles
     groups: resources.AsyncGroups
-    oauth_connections: resources.AsyncOauthConnections
+    oauth_connections: resources.AsyncOAuthConnections
     check_deposits: resources.AsyncCheckDeposits
     routing_numbers: resources.AsyncRoutingNumbers
     account_statements: resources.AsyncAccountStatements
@@ -600,7 +600,7 @@ class AsyncIncrease(AsyncAPIClient):
         self.event_subscriptions = resources.AsyncEventSubscriptions(self)
         self.files = resources.AsyncFiles(self)
         self.groups = resources.AsyncGroups(self)
-        self.oauth_connections = resources.AsyncOauthConnections(self)
+        self.oauth_connections = resources.AsyncOAuthConnections(self)
         self.check_deposits = resources.AsyncCheckDeposits(self)
         self.routing_numbers = resources.AsyncRoutingNumbers(self)
         self.account_statements = resources.AsyncAccountStatements(self)
@@ -834,7 +834,7 @@ class IncreaseWithRawResponse:
         self.event_subscriptions = resources.EventSubscriptionsWithRawResponse(client.event_subscriptions)
         self.files = resources.FilesWithRawResponse(client.files)
         self.groups = resources.GroupsWithRawResponse(client.groups)
-        self.oauth_connections = resources.OauthConnectionsWithRawResponse(client.oauth_connections)
+        self.oauth_connections = resources.OAuthConnectionsWithRawResponse(client.oauth_connections)
         self.check_deposits = resources.CheckDepositsWithRawResponse(client.check_deposits)
         self.routing_numbers = resources.RoutingNumbersWithRawResponse(client.routing_numbers)
         self.account_statements = resources.AccountStatementsWithRawResponse(client.account_statements)
@@ -895,7 +895,7 @@ class AsyncIncreaseWithRawResponse:
         self.event_subscriptions = resources.AsyncEventSubscriptionsWithRawResponse(client.event_subscriptions)
         self.files = resources.AsyncFilesWithRawResponse(client.files)
         self.groups = resources.AsyncGroupsWithRawResponse(client.groups)
-        self.oauth_connections = resources.AsyncOauthConnectionsWithRawResponse(client.oauth_connections)
+        self.oauth_connections = resources.AsyncOAuthConnectionsWithRawResponse(client.oauth_connections)
         self.check_deposits = resources.AsyncCheckDepositsWithRawResponse(client.check_deposits)
         self.routing_numbers = resources.AsyncRoutingNumbersWithRawResponse(client.routing_numbers)
         self.account_statements = resources.AsyncAccountStatementsWithRawResponse(client.account_statements)
@@ -956,7 +956,7 @@ class IncreaseWithStreamedResponse:
         self.event_subscriptions = resources.EventSubscriptionsWithStreamingResponse(client.event_subscriptions)
         self.files = resources.FilesWithStreamingResponse(client.files)
         self.groups = resources.GroupsWithStreamingResponse(client.groups)
-        self.oauth_connections = resources.OauthConnectionsWithStreamingResponse(client.oauth_connections)
+        self.oauth_connections = resources.OAuthConnectionsWithStreamingResponse(client.oauth_connections)
         self.check_deposits = resources.CheckDepositsWithStreamingResponse(client.check_deposits)
         self.routing_numbers = resources.RoutingNumbersWithStreamingResponse(client.routing_numbers)
         self.account_statements = resources.AccountStatementsWithStreamingResponse(client.account_statements)
@@ -1029,7 +1029,7 @@ class AsyncIncreaseWithStreamedResponse:
         self.event_subscriptions = resources.AsyncEventSubscriptionsWithStreamingResponse(client.event_subscriptions)
         self.files = resources.AsyncFilesWithStreamingResponse(client.files)
         self.groups = resources.AsyncGroupsWithStreamingResponse(client.groups)
-        self.oauth_connections = resources.AsyncOauthConnectionsWithStreamingResponse(client.oauth_connections)
+        self.oauth_connections = resources.AsyncOAuthConnectionsWithStreamingResponse(client.oauth_connections)
         self.check_deposits = resources.AsyncCheckDepositsWithStreamingResponse(client.check_deposits)
         self.routing_numbers = resources.AsyncRoutingNumbersWithStreamingResponse(client.routing_numbers)
         self.account_statements = resources.AsyncAccountStatementsWithStreamingResponse(client.account_statements)

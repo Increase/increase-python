@@ -479,18 +479,18 @@ Methods:
 
 - <code title="get /groups/current">client.groups.<a href="./src/increase/resources/groups.py">retrieve_details</a>() -> <a href="./src/increase/types/group.py">Group</a></code>
 
-# OauthConnections
+# OAuthConnections
 
 Types:
 
 ```python
-from increase.types import OauthConnection
+from increase.types import OAuthConnection
 ```
 
 Methods:
 
-- <code title="get /oauth_connections/{oauth_connection_id}">client.oauth_connections.<a href="./src/increase/resources/oauth_connections.py">retrieve</a>(oauth_connection_id) -> <a href="./src/increase/types/oauth_connection.py">OauthConnection</a></code>
-- <code title="get /oauth_connections">client.oauth_connections.<a href="./src/increase/resources/oauth_connections.py">list</a>(\*\*<a href="src/increase/types/oauth_connection_list_params.py">params</a>) -> <a href="./src/increase/types/oauth_connection.py">SyncPage[OauthConnection]</a></code>
+- <code title="get /oauth_connections/{oauth_connection_id}">client.oauth_connections.<a href="./src/increase/resources/oauth_connections.py">retrieve</a>(oauth_connection_id) -> <a href="./src/increase/types/oauth_connection.py">OAuthConnection</a></code>
+- <code title="get /oauth_connections">client.oauth_connections.<a href="./src/increase/resources/oauth_connections.py">list</a>(\*\*<a href="src/increase/types/oauth_connection_list_params.py">params</a>) -> <a href="./src/increase/types/oauth_connection.py">SyncPage[OAuthConnection]</a></code>
 
 # CheckDeposits
 
