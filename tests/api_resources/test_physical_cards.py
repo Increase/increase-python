@@ -44,6 +44,32 @@ class TestPhysicalCards:
         assert_matches_type(PhysicalCard, physical_card, path=["response"])
 
     @parametrize
+    def test_method_create_with_all_params(self, client: Increase) -> None:
+        physical_card = client.physical_cards.create(
+            card_id="card_oubs0hwk5rn6knuecxg2",
+            card_profile_id="card_profile_cox5y73lob2eqly18piy",
+            cardholder={
+                "first_name": "Ian",
+                "last_name": "Crease",
+            },
+            shipment={
+                "method": "usps",
+                "address": {
+                    "name": "Ian Crease",
+                    "line1": "33 Liberty Street",
+                    "line2": "Unit 2",
+                    "line3": "x",
+                    "phone_number": "x",
+                    "city": "New York",
+                    "state": "NY",
+                    "postal_code": "10045",
+                },
+            },
+            physical_card_profile_id="string",
+        )
+        assert_matches_type(PhysicalCard, physical_card, path=["response"])
+
+    @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
         response = client.physical_cards.with_raw_response.create(
             card_id="card_oubs0hwk5rn6knuecxg2",
@@ -240,6 +266,32 @@ class TestAsyncPhysicalCards:
                     "postal_code": "10045",
                 },
             },
+        )
+        assert_matches_type(PhysicalCard, physical_card, path=["response"])
+
+    @parametrize
+    async def test_method_create_with_all_params(self, async_client: AsyncIncrease) -> None:
+        physical_card = await async_client.physical_cards.create(
+            card_id="card_oubs0hwk5rn6knuecxg2",
+            card_profile_id="card_profile_cox5y73lob2eqly18piy",
+            cardholder={
+                "first_name": "Ian",
+                "last_name": "Crease",
+            },
+            shipment={
+                "method": "usps",
+                "address": {
+                    "name": "Ian Crease",
+                    "line1": "33 Liberty Street",
+                    "line2": "Unit 2",
+                    "line3": "x",
+                    "phone_number": "x",
+                    "city": "New York",
+                    "state": "NY",
+                    "postal_code": "10045",
+                },
+            },
+            physical_card_profile_id="string",
         )
         assert_matches_type(PhysicalCard, physical_card, path=["response"])
 

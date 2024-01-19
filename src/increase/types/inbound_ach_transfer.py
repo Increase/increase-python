@@ -149,7 +149,7 @@ class TransferReturn(BaseModel):
 
 class InboundACHTransfer(BaseModel):
     id: str
-    """The inbound ach transfer's identifier."""
+    """The inbound ACH transfer's identifier."""
 
     acceptance: Optional[Acceptance] = None
     """If your transfer is accepted, this will contain details of the acceptance."""

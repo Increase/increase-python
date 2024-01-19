@@ -89,6 +89,14 @@ from .simulations import (
     SimulationsWithStreamingResponse,
     AsyncSimulationsWithStreamingResponse,
 )
+from .oauth_tokens import (
+    OAuthTokens,
+    AsyncOAuthTokens,
+    OAuthTokensWithRawResponse,
+    AsyncOAuthTokensWithRawResponse,
+    OAuthTokensWithStreamingResponse,
+    AsyncOAuthTokensWithStreamingResponse,
+)
 from .transactions import (
     Transactions,
     AsyncTransactions,
@@ -288,6 +296,14 @@ from .bookkeeping_entry_sets import (
     AsyncBookkeepingEntrySetsWithRawResponse,
     BookkeepingEntrySetsWithStreamingResponse,
     AsyncBookkeepingEntrySetsWithStreamingResponse,
+)
+from .inbound_wire_transfers import (
+    InboundWireTransfers,
+    AsyncInboundWireTransfers,
+    InboundWireTransfersWithRawResponse,
+    AsyncInboundWireTransfersWithRawResponse,
+    InboundWireTransfersWithStreamingResponse,
+    AsyncInboundWireTransfersWithStreamingResponse,
 )
 from .wire_drawdown_requests import (
     WireDrawdownRequests,
@@ -607,4 +623,16 @@ __all__ = [
     "AsyncRealTimePaymentsRequestForPaymentsWithStreamingResponse",
     "Webhooks",
     "AsyncWebhooks",
+    "OAuthTokens",
+    "AsyncOAuthTokens",
+    "OAuthTokensWithRawResponse",
+    "AsyncOAuthTokensWithRawResponse",
+    "OAuthTokensWithStreamingResponse",
+    "AsyncOAuthTokensWithStreamingResponse",
+    "InboundWireTransfers",
+    "AsyncInboundWireTransfers",
+    "InboundWireTransfersWithRawResponse",
+    "AsyncInboundWireTransfersWithRawResponse",
+    "InboundWireTransfersWithStreamingResponse",
+    "AsyncInboundWireTransfersWithStreamingResponse",
 ]
