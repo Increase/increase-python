@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.30.0 (2024-01-19)
+
+Full Changelog: [v0.29.1...v0.30.0](https://github.com/increase/increase-python/compare/v0.29.1...v0.30.0)
+
+### ⚠ BREAKING CHANGES
+
+* fix oauth casing ([#310](https://github.com/increase/increase-python/issues/310))
+
+### Features
+
+* add webhook support for node and python SDKs ([#308](https://github.com/increase/increase-python/issues/308)) ([80d868e](https://github.com/increase/increase-python/commit/80d868edc0b059b85544dbd13c12ec2562b1683e))
+* **api:** add oauth token and inbound wire transfer methods ([#311](https://github.com/increase/increase-python/issues/311)) ([34705f6](https://github.com/increase/increase-python/commit/34705f601630eadb52bba170c9cc353ab21e7fc1))
+
+
+### Refactors
+
+* fix oauth casing ([#310](https://github.com/increase/increase-python/issues/310)) ([3d88ef6](https://github.com/increase/increase-python/commit/3d88ef66db6dffb58eb612714a5608793d9338ab))
+
 ## 0.29.1 (2024-01-18)
 
 Full Changelog: [v0.29.0...v0.29.1](https://github.com/increase/increase-python/compare/v0.29.0...v0.29.1)
