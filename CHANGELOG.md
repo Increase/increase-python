@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.31.0 (2024-01-22)
+
+Full Changelog: [v0.30.0...v0.31.0](https://github.com/increase/increase-python/compare/v0.30.0...v0.31.0)
+
+### Features
+
+* **api:** simplify WireDecline and InboundWireTransfer ([#312](https://github.com/increase/increase-python/issues/312)) ([615239c](https://github.com/increase/increase-python/commit/615239c871d16cd4a04d2a3339c91595836aa18d))
+
 ## 0.30.0 (2024-01-19)
 
 Full Changelog: [v0.29.1...v0.30.0](https://github.com/increase/increase-python/compare/v0.29.1...v0.30.0)
