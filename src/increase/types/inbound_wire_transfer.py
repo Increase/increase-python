@@ -73,9 +73,6 @@ class InboundWireTransfer(BaseModel):
     originator_to_beneficiary_information_line4: Optional[str] = None
     """A free-form message set by the wire originator."""
 
-    transfer_id: str
-    """The ID of the Inbound Wire Transfer object that resulted in this Transaction."""
-
     type: Literal["inbound_wire_transfer"]
     """A constant representing the object's type.
 

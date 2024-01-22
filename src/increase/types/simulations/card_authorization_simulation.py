@@ -803,66 +803,8 @@ class DeclinedTransactionSourceInternationalACHDecline(BaseModel):
 
 
 class DeclinedTransactionSourceWireDecline(BaseModel):
-    amount: int
-    """The declined amount in the minor unit of the destination account currency.
-
-    For dollars, for example, this is cents.
-    """
-
-    beneficiary_address_line1: Optional[str] = None
-    """A free-form address field set by the sender."""
-
-    beneficiary_address_line2: Optional[str] = None
-    """A free-form address field set by the sender."""
-
-    beneficiary_address_line3: Optional[str] = None
-    """A free-form address field set by the sender."""
-
-    beneficiary_name: Optional[str] = None
-    """A name set by the sender."""
-
-    beneficiary_reference: Optional[str] = None
-    """A free-form reference string set by the sender, to help identify the transfer."""
-
-    description: str
-    """An Increase-constructed description of the declined transaction."""
-
-    input_message_accountability_data: Optional[str] = None
-    """
-    A unique identifier available to the originating and receiving banks, commonly
-    abbreviated as IMAD. It is created when the wire is submitted to the Fedwire
-    service and is helpful when debugging wires with the originating bank.
-    """
-
-    originator_address_line1: Optional[str] = None
-    """The address of the wire originator, set by the sending bank."""
-
-    originator_address_line2: Optional[str] = None
-    """The address of the wire originator, set by the sending bank."""
-
-    originator_address_line3: Optional[str] = None
-    """The address of the wire originator, set by the sending bank."""
-
-    originator_name: Optional[str] = None
-    """The originator of the wire, set by the sending bank."""
-
-    originator_routing_number: Optional[str] = None
-    """
-    The American Banking Association (ABA) routing number of the bank originating
-    the transfer.
-    """
-
-    originator_to_beneficiary_information_line1: Optional[str] = None
-    """A free-form message set by the wire originator."""
-
-    originator_to_beneficiary_information_line2: Optional[str] = None
-    """A free-form message set by the wire originator."""
-
-    originator_to_beneficiary_information_line3: Optional[str] = None
-    """A free-form message set by the wire originator."""
-
-    originator_to_beneficiary_information_line4: Optional[str] = None
-    """A free-form message set by the wire originator."""
+    inbound_wire_transfer_id: str
+    """The identifier of the Inbound Wire Transfer that was declined."""
 
     reason: Literal[
         "account_number_canceled",
