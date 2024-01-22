@@ -2243,9 +2243,6 @@ class TransactionSourceInboundWireReversal(BaseModel):
 
 
 class TransactionSourceInboundWireTransfer(BaseModel):
-    id: str
-    """The inbound wire transfer's identifier."""
-
     amount: int
     """The amount in USD cents."""
 
@@ -2309,12 +2306,6 @@ class TransactionSourceInboundWireTransfer(BaseModel):
 
     transfer_id: str
     """The ID of the Inbound Wire Transfer object that resulted in this Transaction."""
-
-    type: Literal["inbound_wire_transfer"]
-    """A constant representing the object's type.
-
-    For this resource it will always be `inbound_wire_transfer`.
-    """
 
 
 class TransactionSourceInterestPayment(BaseModel):
@@ -2585,8 +2576,8 @@ class TransactionSource(BaseModel):
       be under the `inbound_wire_drawdown_payment` object.
     - `inbound_wire_reversal` - Inbound Wire Reversal: details will be under the
       `inbound_wire_reversal` object.
-    - `inbound_wire_transfer` - Inbound Wire Transfer: details will be under the
-      `inbound_wire_transfer` object.
+    - `inbound_wire_transfer` - Inbound Wire Transfer Intention: details will be
+      under the `inbound_wire_transfer` object.
     - `interest_payment` - Interest Payment: details will be under the
       `interest_payment` object.
     - `internal_source` - Internal Source: details will be under the
@@ -2697,7 +2688,7 @@ class TransactionSource(BaseModel):
     """
 
     inbound_wire_transfer: Optional[TransactionSourceInboundWireTransfer] = None
-    """An Inbound Wire Transfer object.
+    """An Inbound Wire Transfer Intention object.
 
     This field will be present in the JSON response if and only if `category` is
     equal to `inbound_wire_transfer`.
