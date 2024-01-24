@@ -23,6 +23,13 @@ class AccountNumberCreateParams(TypedDict, total=False):
     withdrawals.
     """
 
+    unique_identifier: str
+    """A unique identifier you choose for the object.
+
+    Reusing this identifier for another object will result in an error. You can
+    query for the object associated with this identifier using the List endpoint.
+    """
+
 
 class InboundACH(TypedDict, total=False):
     debit_status: Required[Literal["allowed", "blocked"]]

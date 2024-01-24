@@ -63,6 +63,7 @@ _CategoryReservedKeywords = TypedDict(
                 "inbound_wire_drawdown_payment",
                 "inbound_wire_reversal",
                 "inbound_wire_transfer",
+                "inbound_wire_transfer_reversal",
                 "interest_payment",
                 "internal_source",
                 "real_time_payments_transfer_acknowledgement",

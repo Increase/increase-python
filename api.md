@@ -547,15 +547,9 @@ Methods:
 
 ## ACHTransfers
 
-Types:
-
-```python
-from increase.types.simulations import ACHTransferSimulation
-```
-
 Methods:
 
-- <code title="post /simulations/inbound_ach_transfers">client.simulations.ach_transfers.<a href="./src/increase/resources/simulations/ach_transfers.py">create_inbound</a>(\*\*<a href="src/increase/types/simulations/ach_transfer_create_inbound_params.py">params</a>) -> <a href="./src/increase/types/simulations/ach_transfer_simulation.py">ACHTransferSimulation</a></code>
+- <code title="post /simulations/inbound_ach_transfers">client.simulations.ach_transfers.<a href="./src/increase/resources/simulations/ach_transfers.py">create_inbound</a>(\*\*<a href="src/increase/types/simulations/ach_transfer_create_inbound_params.py">params</a>) -> <a href="./src/increase/types/inbound_ach_transfer.py">InboundACHTransfer</a></code>
 - <code title="post /simulations/ach_transfers/{ach_transfer_id}/return">client.simulations.ach*transfers.<a href="./src/increase/resources/simulations/ach_transfers.py">return*</a>(ach_transfer_id, \*\*<a href="src/increase/types/simulations/ach_transfer_return_params.py">params</a>) -> <a href="./src/increase/types/ach_transfer.py">ACHTransfer</a></code>
 - <code title="post /simulations/ach_transfers/{ach_transfer_id}/submit">client.simulations.ach_transfers.<a href="./src/increase/resources/simulations/ach_transfers.py">submit</a>(ach_transfer_id) -> <a href="./src/increase/types/ach_transfer.py">ACHTransfer</a></code>
 
@@ -648,15 +642,9 @@ Methods:
 
 ## WireTransfers
 
-Types:
-
-```python
-from increase.types.simulations import WireTransferSimulation
-```
-
 Methods:
 
-- <code title="post /simulations/inbound_wire_transfers">client.simulations.wire_transfers.<a href="./src/increase/resources/simulations/wire_transfers.py">create_inbound</a>(\*\*<a href="src/increase/types/simulations/wire_transfer_create_inbound_params.py">params</a>) -> <a href="./src/increase/types/simulations/wire_transfer_simulation.py">WireTransferSimulation</a></code>
+- <code title="post /simulations/inbound_wire_transfers">client.simulations.wire_transfers.<a href="./src/increase/resources/simulations/wire_transfers.py">create_inbound</a>(\*\*<a href="src/increase/types/simulations/wire_transfer_create_inbound_params.py">params</a>) -> <a href="./src/increase/types/inbound_wire_transfer.py">InboundWireTransfer</a></code>
 
 ## Cards
 
@@ -833,3 +821,4 @@ from increase.types import InboundWireTransfer
 Methods:
 
 - <code title="get /inbound_wire_transfers/{inbound_wire_transfer_id}">client.inbound_wire_transfers.<a href="./src/increase/resources/inbound_wire_transfers.py">retrieve</a>(inbound_wire_transfer_id) -> <a href="./src/increase/types/inbound_wire_transfer.py">InboundWireTransfer</a></code>
+- <code title="get /inbound_wire_transfers">client.inbound_wire_transfers.<a href="./src/increase/resources/inbound_wire_transfers.py">list</a>(\*\*<a href="src/increase/types/inbound_wire_transfer_list_params.py">params</a>) -> <a href="./src/increase/types/inbound_wire_transfer.py">SyncPage[InboundWireTransfer]</a></code>
