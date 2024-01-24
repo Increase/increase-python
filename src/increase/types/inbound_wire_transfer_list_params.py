@@ -8,19 +8,12 @@ from typing_extensions import Literal, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
-__all__ = ["AccountNumberListParams", "CreatedAt"]
+__all__ = ["InboundWireTransferListParams", "CreatedAt"]
 
 
-class AccountNumberListParams(TypedDict, total=False):
+class InboundWireTransferListParams(TypedDict, total=False):
     account_id: str
-    """Filter Account Numbers to those belonging to the specified Account."""
-
-    ach_debit_status: Literal["allowed", "blocked"]
-    """The ACH Debit status to retrieve Account Numbers for.
-
-    - `allowed` - ACH Debits are allowed.
-    - `blocked` - ACH Debits are blocked.
-    """
+    """Filter Inbound Wire Tranfers to ones belonging to the specified Account."""
 
     created_at: CreatedAt
 
@@ -33,16 +26,15 @@ class AccountNumberListParams(TypedDict, total=False):
     The default (and maximum) is 100 objects.
     """
 
-    status: Literal["active", "disabled", "canceled"]
-    """The status to retrieve Account Numbers for.
+    status: Literal["pending", "accepted", "declined", "reversed"]
+    """Filter Inbound Wire Transfers to those with the specified status.
 
-    - `active` - The account number is active.
-    - `disabled` - The account number is temporarily disabled.
-    - `canceled` - The account number is permanently disabled.
+    - `pending` - The Inbound Wire Transfer is awaiting action, will transition
+      automatically if no action is taken.
+    - `accepted` - The Inbound Wire Transfer is accepted.
+    - `declined` - The Inbound Wire Transfer was declined.
+    - `reversed` - The Inbound Wire Transfer was reversed.
     """
-
-    unique_identifier: str
-    """Filter records to the one with the specified `unique_identifier`."""
 
 
 class CreatedAt(TypedDict, total=False):

@@ -12,6 +12,12 @@ class InboundWireTransfer(BaseModel):
     id: str
     """The inbound wire transfer's identifier."""
 
+    account_id: str
+    """The Account to which the transfer belongs."""
+
+    account_number_id: str
+    """The identifier of the Account Number to which this transfer was sent."""
+
     amount: int
     """The amount in USD cents."""
 
@@ -72,6 +78,16 @@ class InboundWireTransfer(BaseModel):
 
     originator_to_beneficiary_information_line4: Optional[str] = None
     """A free-form message set by the wire originator."""
+
+    status: Literal["pending", "accepted", "declined", "reversed"]
+    """The status of the transfer.
+
+    - `pending` - The Inbound Wire Transfer is awaiting action, will transition
+      automatically if no action is taken.
+    - `accepted` - The Inbound Wire Transfer is accepted.
+    - `declined` - The Inbound Wire Transfer was declined.
+    - `reversed` - The Inbound Wire Transfer was reversed.
+    """
 
     type: Literal["inbound_wire_transfer"]
     """A constant representing the object's type.

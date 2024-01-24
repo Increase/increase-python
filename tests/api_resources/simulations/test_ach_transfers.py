@@ -9,11 +9,8 @@ import pytest
 
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
-from increase.types import ACHTransfer
+from increase.types import ACHTransfer, InboundACHTransfer
 from increase._utils import parse_datetime
-from increase.types.simulations import (
-    ACHTransferSimulation,
-)
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -27,7 +24,7 @@ class TestACHTransfers:
             account_number_id="account_number_v18nkfqm6afpsrvy82b2",
             amount=1000,
         )
-        assert_matches_type(ACHTransferSimulation, ach_transfer, path=["response"])
+        assert_matches_type(InboundACHTransfer, ach_transfer, path=["response"])
 
     @parametrize
     def test_method_create_inbound_with_all_params(self, client: Increase) -> None:
@@ -41,7 +38,7 @@ class TestACHTransfers:
             company_name="x",
             resolve_at=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(ACHTransferSimulation, ach_transfer, path=["response"])
+        assert_matches_type(InboundACHTransfer, ach_transfer, path=["response"])
 
     @parametrize
     def test_raw_response_create_inbound(self, client: Increase) -> None:
@@ -53,7 +50,7 @@ class TestACHTransfers:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         ach_transfer = response.parse()
-        assert_matches_type(ACHTransferSimulation, ach_transfer, path=["response"])
+        assert_matches_type(InboundACHTransfer, ach_transfer, path=["response"])
 
     @parametrize
     def test_streaming_response_create_inbound(self, client: Increase) -> None:
@@ -65,7 +62,7 @@ class TestACHTransfers:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             ach_transfer = response.parse()
-            assert_matches_type(ACHTransferSimulation, ach_transfer, path=["response"])
+            assert_matches_type(InboundACHTransfer, ach_transfer, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -172,7 +169,7 @@ class TestAsyncACHTransfers:
             account_number_id="account_number_v18nkfqm6afpsrvy82b2",
             amount=1000,
         )
-        assert_matches_type(ACHTransferSimulation, ach_transfer, path=["response"])
+        assert_matches_type(InboundACHTransfer, ach_transfer, path=["response"])
 
     @parametrize
     async def test_method_create_inbound_with_all_params(self, async_client: AsyncIncrease) -> None:
@@ -186,7 +183,7 @@ class TestAsyncACHTransfers:
             company_name="x",
             resolve_at=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(ACHTransferSimulation, ach_transfer, path=["response"])
+        assert_matches_type(InboundACHTransfer, ach_transfer, path=["response"])
 
     @parametrize
     async def test_raw_response_create_inbound(self, async_client: AsyncIncrease) -> None:
@@ -198,7 +195,7 @@ class TestAsyncACHTransfers:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         ach_transfer = response.parse()
-        assert_matches_type(ACHTransferSimulation, ach_transfer, path=["response"])
+        assert_matches_type(InboundACHTransfer, ach_transfer, path=["response"])
 
     @parametrize
     async def test_streaming_response_create_inbound(self, async_client: AsyncIncrease) -> None:
@@ -210,7 +207,7 @@ class TestAsyncACHTransfers:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             ach_transfer = await response.parse()
-            assert_matches_type(ACHTransferSimulation, ach_transfer, path=["response"])
+            assert_matches_type(InboundACHTransfer, ach_transfer, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

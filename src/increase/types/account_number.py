@@ -1,5 +1,6 @@
 # File generated from our OpenAPI spec by Stainless.
 
+from typing import Optional
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -75,3 +76,6 @@ class AccountNumber(BaseModel):
 
     For this resource it will always be `account_number`.
     """
+
+    unique_identifier: Optional[str] = None
+    """The unique identifier you chose for this object."""

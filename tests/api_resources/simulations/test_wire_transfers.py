@@ -9,7 +9,7 @@ import pytest
 
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
-from increase.types.simulations import WireTransferSimulation
+from increase.types import InboundWireTransfer
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -23,7 +23,7 @@ class TestWireTransfers:
             account_number_id="account_number_v18nkfqm6afpsrvy82b2",
             amount=1000,
         )
-        assert_matches_type(WireTransferSimulation, wire_transfer, path=["response"])
+        assert_matches_type(InboundWireTransfer, wire_transfer, path=["response"])
 
     @parametrize
     def test_method_create_inbound_with_all_params(self, client: Increase) -> None:
@@ -45,7 +45,7 @@ class TestWireTransfers:
             originator_to_beneficiary_information_line3="x",
             originator_to_beneficiary_information_line4="x",
         )
-        assert_matches_type(WireTransferSimulation, wire_transfer, path=["response"])
+        assert_matches_type(InboundWireTransfer, wire_transfer, path=["response"])
 
     @parametrize
     def test_raw_response_create_inbound(self, client: Increase) -> None:
@@ -57,7 +57,7 @@ class TestWireTransfers:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         wire_transfer = response.parse()
-        assert_matches_type(WireTransferSimulation, wire_transfer, path=["response"])
+        assert_matches_type(InboundWireTransfer, wire_transfer, path=["response"])
 
     @parametrize
     def test_streaming_response_create_inbound(self, client: Increase) -> None:
@@ -69,7 +69,7 @@ class TestWireTransfers:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             wire_transfer = response.parse()
-            assert_matches_type(WireTransferSimulation, wire_transfer, path=["response"])
+            assert_matches_type(InboundWireTransfer, wire_transfer, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -83,7 +83,7 @@ class TestAsyncWireTransfers:
             account_number_id="account_number_v18nkfqm6afpsrvy82b2",
             amount=1000,
         )
-        assert_matches_type(WireTransferSimulation, wire_transfer, path=["response"])
+        assert_matches_type(InboundWireTransfer, wire_transfer, path=["response"])
 
     @parametrize
     async def test_method_create_inbound_with_all_params(self, async_client: AsyncIncrease) -> None:
@@ -105,7 +105,7 @@ class TestAsyncWireTransfers:
             originator_to_beneficiary_information_line3="x",
             originator_to_beneficiary_information_line4="x",
         )
-        assert_matches_type(WireTransferSimulation, wire_transfer, path=["response"])
+        assert_matches_type(InboundWireTransfer, wire_transfer, path=["response"])
 
     @parametrize
     async def test_raw_response_create_inbound(self, async_client: AsyncIncrease) -> None:
@@ -117,7 +117,7 @@ class TestAsyncWireTransfers:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         wire_transfer = response.parse()
-        assert_matches_type(WireTransferSimulation, wire_transfer, path=["response"])
+        assert_matches_type(InboundWireTransfer, wire_transfer, path=["response"])
 
     @parametrize
     async def test_streaming_response_create_inbound(self, async_client: AsyncIncrease) -> None:
@@ -129,6 +129,6 @@ class TestAsyncWireTransfers:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             wire_transfer = await response.parse()
-            assert_matches_type(WireTransferSimulation, wire_transfer, path=["response"])
+            assert_matches_type(InboundWireTransfer, wire_transfer, path=["response"])
 
         assert cast(Any, response.is_closed) is True
