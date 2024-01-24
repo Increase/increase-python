@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.32.0 (2024-01-24)
+
+Full Changelog: [v0.31.0...v0.32.0](https://github.com/increase/increase-python/compare/v0.31.0...v0.32.0)
+
+### Features
+
+* **api:** list Inbound Wire Transfers, change transfer simulation return types ([#316](https://github.com/increase/increase-python/issues/316)) ([f27e5ea](https://github.com/increase/increase-python/commit/f27e5eada2a81dd3a3395e80819f3afb62c4f097))
+
+
+### Chores
+
+* **internal:** add internal helpers ([#314](https://github.com/increase/increase-python/issues/314)) ([56d1b65](https://github.com/increase/increase-python/commit/56d1b652ec7d67bbe312c3df14a298d4080eb8ea))
+
 ## 0.31.0 (2024-01-22)
 
 Full Changelog: [v0.30.0...v0.31.0](https://github.com/increase/increase-python/compare/v0.30.0...v0.31.0)
