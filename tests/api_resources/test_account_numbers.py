@@ -36,6 +36,7 @@ class TestAccountNumbers:
             name="Rent payments",
             inbound_ach={"debit_status": "allowed"},
             inbound_checks={"status": "allowed"},
+            unique_identifier="x",
         )
         assert_matches_type(AccountNumber, account_number, path=["response"])
 
@@ -170,6 +171,7 @@ class TestAccountNumbers:
             cursor="string",
             limit=1,
             status="active",
+            unique_identifier="x",
         )
         assert_matches_type(SyncPage[AccountNumber], account_number, path=["response"])
 
@@ -212,6 +214,7 @@ class TestAsyncAccountNumbers:
             name="Rent payments",
             inbound_ach={"debit_status": "allowed"},
             inbound_checks={"status": "allowed"},
+            unique_identifier="x",
         )
         assert_matches_type(AccountNumber, account_number, path=["response"])
 
@@ -346,6 +349,7 @@ class TestAsyncAccountNumbers:
             cursor="string",
             limit=1,
             status="active",
+            unique_identifier="x",
         )
         assert_matches_type(AsyncPage[AccountNumber], account_number, path=["response"])
 

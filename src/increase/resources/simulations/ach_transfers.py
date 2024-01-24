@@ -9,7 +9,7 @@ from typing_extensions import Literal
 import httpx
 
 from ... import _legacy_response
-from ...types import ACHTransfer
+from ...types import ACHTransfer, InboundACHTransfer
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._compat import cached_property
@@ -18,7 +18,7 @@ from ..._response import to_streamed_response_wrapper, async_to_streamed_respons
 from ..._base_client import (
     make_request_options,
 )
-from ...types.simulations import ACHTransferSimulation, ach_transfer_return_params, ach_transfer_create_inbound_params
+from ...types.simulations import ach_transfer_return_params, ach_transfer_create_inbound_params
 
 __all__ = ["ACHTransfers", "AsyncACHTransfers"]
 
@@ -50,7 +50,7 @@ class ACHTransfers(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> ACHTransferSimulation:
+    ) -> InboundACHTransfer:
         """Simulates an inbound ACH transfer to your account.
 
         This imitates initiating a
@@ -116,7 +116,7 @@ class ACHTransfers(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=ACHTransferSimulation,
+            cast_to=InboundACHTransfer,
         )
 
     def return_(
@@ -463,7 +463,7 @@ class AsyncACHTransfers(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> ACHTransferSimulation:
+    ) -> InboundACHTransfer:
         """Simulates an inbound ACH transfer to your account.
 
         This imitates initiating a
@@ -529,7 +529,7 @@ class AsyncACHTransfers(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=ACHTransferSimulation,
+            cast_to=InboundACHTransfer,
         )
 
     async def return_(

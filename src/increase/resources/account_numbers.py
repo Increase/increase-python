@@ -43,6 +43,7 @@ class AccountNumbers(SyncAPIResource):
         name: str,
         inbound_ach: account_number_create_params.InboundACH | NotGiven = NOT_GIVEN,
         inbound_checks: account_number_create_params.InboundChecks | NotGiven = NOT_GIVEN,
+        unique_identifier: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -64,6 +65,10 @@ class AccountNumbers(SyncAPIResource):
           inbound_checks: Options related to how this Account Number should handle inbound check
               withdrawals.
 
+          unique_identifier: A unique identifier you choose for the object. Reusing this identifier for
+              another object will result in an error. You can query for the object associated
+              with this identifier using the List endpoint.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -82,6 +87,7 @@ class AccountNumbers(SyncAPIResource):
                     "name": name,
                     "inbound_ach": inbound_ach,
                     "inbound_checks": inbound_checks,
+                    "unique_identifier": unique_identifier,
                 },
                 account_number_create_params.AccountNumberCreateParams,
             ),
@@ -202,6 +208,7 @@ class AccountNumbers(SyncAPIResource):
         cursor: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         status: Literal["active", "disabled", "canceled"] | NotGiven = NOT_GIVEN,
+        unique_identifier: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -231,6 +238,8 @@ class AccountNumbers(SyncAPIResource):
               - `disabled` - The account number is temporarily disabled.
               - `canceled` - The account number is permanently disabled.
 
+          unique_identifier: Filter records to the one with the specified `unique_identifier`.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -255,6 +264,7 @@ class AccountNumbers(SyncAPIResource):
                         "cursor": cursor,
                         "limit": limit,
                         "status": status,
+                        "unique_identifier": unique_identifier,
                     },
                     account_number_list_params.AccountNumberListParams,
                 ),
@@ -279,6 +289,7 @@ class AsyncAccountNumbers(AsyncAPIResource):
         name: str,
         inbound_ach: account_number_create_params.InboundACH | NotGiven = NOT_GIVEN,
         inbound_checks: account_number_create_params.InboundChecks | NotGiven = NOT_GIVEN,
+        unique_identifier: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -300,6 +311,10 @@ class AsyncAccountNumbers(AsyncAPIResource):
           inbound_checks: Options related to how this Account Number should handle inbound check
               withdrawals.
 
+          unique_identifier: A unique identifier you choose for the object. Reusing this identifier for
+              another object will result in an error. You can query for the object associated
+              with this identifier using the List endpoint.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -318,6 +333,7 @@ class AsyncAccountNumbers(AsyncAPIResource):
                     "name": name,
                     "inbound_ach": inbound_ach,
                     "inbound_checks": inbound_checks,
+                    "unique_identifier": unique_identifier,
                 },
                 account_number_create_params.AccountNumberCreateParams,
             ),
@@ -438,6 +454,7 @@ class AsyncAccountNumbers(AsyncAPIResource):
         cursor: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         status: Literal["active", "disabled", "canceled"] | NotGiven = NOT_GIVEN,
+        unique_identifier: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -467,6 +484,8 @@ class AsyncAccountNumbers(AsyncAPIResource):
               - `disabled` - The account number is temporarily disabled.
               - `canceled` - The account number is permanently disabled.
 
+          unique_identifier: Filter records to the one with the specified `unique_identifier`.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -491,6 +510,7 @@ class AsyncAccountNumbers(AsyncAPIResource):
                         "cursor": cursor,
                         "limit": limit,
                         "status": status,
+                        "unique_identifier": unique_identifier,
                     },
                     account_number_list_params.AccountNumberListParams,
                 ),

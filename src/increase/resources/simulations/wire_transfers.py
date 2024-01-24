@@ -5,6 +5,7 @@ from __future__ import annotations
 import httpx
 
 from ... import _legacy_response
+from ...types import InboundWireTransfer
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._compat import cached_property
@@ -13,7 +14,7 @@ from ..._response import to_streamed_response_wrapper, async_to_streamed_respons
 from ..._base_client import (
     make_request_options,
 )
-from ...types.simulations import WireTransferSimulation, wire_transfer_create_inbound_params
+from ...types.simulations import wire_transfer_create_inbound_params
 
 __all__ = ["WireTransfers", "AsyncWireTransfers"]
 
@@ -53,7 +54,7 @@ class WireTransfers(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> WireTransferSimulation:
+    ) -> InboundWireTransfer:
         """
         Simulates an inbound Wire Transfer to your account.
 
@@ -144,7 +145,7 @@ class WireTransfers(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=WireTransferSimulation,
+            cast_to=InboundWireTransfer,
         )
 
 
@@ -183,7 +184,7 @@ class AsyncWireTransfers(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> WireTransferSimulation:
+    ) -> InboundWireTransfer:
         """
         Simulates an inbound Wire Transfer to your account.
 
@@ -274,7 +275,7 @@ class AsyncWireTransfers(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=WireTransferSimulation,
+            cast_to=InboundWireTransfer,
         )
 
 

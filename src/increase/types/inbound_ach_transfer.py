@@ -154,6 +154,9 @@ class InboundACHTransfer(BaseModel):
     acceptance: Optional[Acceptance] = None
     """If your transfer is accepted, this will contain details of the acceptance."""
 
+    account_id: str
+    """The Account to which the transfer belongs."""
+
     account_number_id: str
     """The identifier of the Account Number to which this transfer was sent."""
 

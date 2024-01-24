@@ -89,6 +89,8 @@ class EventSubscriptions(SyncAPIResource):
             "inbound_ach_transfer_return.created",
             "inbound_ach_transfer_return.updated",
             "inbound_wire_drawdown_request.created",
+            "inbound_wire_transfer.created",
+            "inbound_wire_transfer.updated",
             "intrafi_account_enrollment.created",
             "intrafi_account_enrollment.updated",
             "intrafi_exclusion.created",
@@ -203,6 +205,10 @@ class EventSubscriptions(SyncAPIResource):
                 Transfer Return is updated.
               - `inbound_wire_drawdown_request.created` - Occurs whenever an Inbound Wire
                 Drawdown Request is created.
+              - `inbound_wire_transfer.created` - Occurs whenever an Inbound Wire Transfer is
+                created.
+              - `inbound_wire_transfer.updated` - Occurs whenever an Inbound Wire Transfer is
+                updated.
               - `intrafi_account_enrollment.created` - Occurs whenever an IntraFi Account
                 Enrollment is created.
               - `intrafi_account_enrollment.updated` - Occurs whenever an IntraFi Account
@@ -489,6 +495,8 @@ class AsyncEventSubscriptions(AsyncAPIResource):
             "inbound_ach_transfer_return.created",
             "inbound_ach_transfer_return.updated",
             "inbound_wire_drawdown_request.created",
+            "inbound_wire_transfer.created",
+            "inbound_wire_transfer.updated",
             "intrafi_account_enrollment.created",
             "intrafi_account_enrollment.updated",
             "intrafi_exclusion.created",
@@ -603,6 +611,10 @@ class AsyncEventSubscriptions(AsyncAPIResource):
                 Transfer Return is updated.
               - `inbound_wire_drawdown_request.created` - Occurs whenever an Inbound Wire
                 Drawdown Request is created.
+              - `inbound_wire_transfer.created` - Occurs whenever an Inbound Wire Transfer is
+                created.
+              - `inbound_wire_transfer.updated` - Occurs whenever an Inbound Wire Transfer is
+                updated.
               - `intrafi_account_enrollment.created` - Occurs whenever an IntraFi Account
                 Enrollment is created.
               - `intrafi_account_enrollment.updated` - Occurs whenever an IntraFi Account

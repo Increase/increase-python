@@ -2518,6 +2518,7 @@ class TransactionSource(BaseModel):
         "inbound_wire_drawdown_payment",
         "inbound_wire_reversal",
         "inbound_wire_transfer",
+        "inbound_wire_transfer_reversal",
         "interest_payment",
         "internal_source",
         "real_time_payments_transfer_acknowledgement",
@@ -2578,6 +2579,8 @@ class TransactionSource(BaseModel):
       `inbound_wire_reversal` object.
     - `inbound_wire_transfer` - Inbound Wire Transfer Intention: details will be
       under the `inbound_wire_transfer` object.
+    - `inbound_wire_transfer_reversal` - Inbound Wire Transfer Reversal Intention:
+      details will be under the `inbound_wire_transfer_reversal` object.
     - `interest_payment` - Interest Payment: details will be under the
       `interest_payment` object.
     - `internal_source` - Internal Source: details will be under the
