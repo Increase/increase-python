@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.33.0 (2024-01-26)
+
+Full Changelog: [v0.32.0...v0.33.0](https://github.com/increase/increase-python/compare/v0.32.0...v0.33.0)
+
+### Features
+
+* **api:** update descriptions ([#321](https://github.com/increase/increase-python/issues/321)) ([c227e51](https://github.com/increase/increase-python/commit/c227e51b0b3f8e55c0f82810ce4510965e16cb97))
+* **client:** enable follow redirects by default ([#317](https://github.com/increase/increase-python/issues/317)) ([d67f5fb](https://github.com/increase/increase-python/commit/d67f5fb17c720f15e501c64389ad1f0bff9f4511))
+
+
+### Chores
+
+* **internal:** enable ruff type checking misuse lint rule ([#320](https://github.com/increase/increase-python/issues/320)) ([799c13c](https://github.com/increase/increase-python/commit/799c13c29f3e130b71917f3636d96425f7e96758))
+* **internal:** support multipart data with overlapping keys ([#319](https://github.com/increase/increase-python/issues/319)) ([ab25945](https://github.com/increase/increase-python/commit/ab25945c8d6ce9bce11eebe5d20a76c40ae08643))
+
 ## 0.32.0 (2024-01-24)
 
 Full Changelog: [v0.31.0...v0.32.0](https://github.com/increase/increase-python/compare/v0.31.0...v0.32.0)
