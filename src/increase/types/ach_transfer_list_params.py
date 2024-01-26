@@ -30,7 +30,7 @@ class ACHTransferListParams(TypedDict, total=False):
     """
 
     unique_identifier: str
-    """Filter ACH Transfers to the one with the specified unique identifier."""
+    """Filter records to the one with the specified `unique_identifier`."""
 
 
 class CreatedAt(TypedDict, total=False):

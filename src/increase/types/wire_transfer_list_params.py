@@ -30,7 +30,7 @@ class WireTransferListParams(TypedDict, total=False):
     """
 
     unique_identifier: str
-    """Filter Wire Transfers to the one with the specified unique identifier."""
+    """Filter records to the one with the specified `unique_identifier`."""
 
 
 class CreatedAt(TypedDict, total=False):

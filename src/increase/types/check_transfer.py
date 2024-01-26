@@ -318,4 +318,4 @@ class CheckTransfer(BaseModel):
     """
 
     unique_identifier: Optional[str] = None
-    """The unique identifier you chose for this transfer."""
+    """The unique identifier you chose for this object."""

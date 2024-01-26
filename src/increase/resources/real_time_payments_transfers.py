@@ -197,7 +197,7 @@ class RealTimePaymentsTransfers(SyncAPIResource):
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
 
-          unique_identifier: Filter ACH Transfers to the one with the specified unique identifier.
+          unique_identifier: Filter records to the one with the specified `unique_identifier`.
 
           extra_headers: Send extra headers
 
@@ -404,7 +404,7 @@ class AsyncRealTimePaymentsTransfers(AsyncAPIResource):
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
 
-          unique_identifier: Filter ACH Transfers to the one with the specified unique identifier.
+          unique_identifier: Filter records to the one with the specified `unique_identifier`.
 
           extra_headers: Send extra headers
 
