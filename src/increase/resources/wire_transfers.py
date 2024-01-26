@@ -207,7 +207,7 @@ class WireTransfers(SyncAPIResource):
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
 
-          unique_identifier: Filter Wire Transfers to the one with the specified unique identifier.
+          unique_identifier: Filter records to the one with the specified `unique_identifier`.
 
           extra_headers: Send extra headers
 
@@ -601,7 +601,7 @@ class AsyncWireTransfers(AsyncAPIResource):
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
 
-          unique_identifier: Filter Wire Transfers to the one with the specified unique identifier.
+          unique_identifier: Filter records to the one with the specified `unique_identifier`.
 
           extra_headers: Send extra headers
 

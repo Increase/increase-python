@@ -61,9 +61,9 @@ class AccountTransfers(SyncAPIResource):
 
           require_approval: Whether the transfer requires explicit approval via the dashboard or API.
 
-          unique_identifier: A unique identifier you choose for the transfer. Reusing this identifier for
-              another transfer will result in an error. You can query for the transfer
-              associated with this identifier using the List endpoint.
+          unique_identifier: A unique identifier you choose for the object. Reusing this identifier for
+              another object will result in an error. You can query for the object associated
+              with this identifier using the List endpoint.
 
           extra_headers: Send extra headers
 
@@ -161,7 +161,7 @@ class AccountTransfers(SyncAPIResource):
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
 
-          unique_identifier: Filter Account Transfers to the one with the specified unique identifier.
+          unique_identifier: Filter records to the one with the specified `unique_identifier`.
 
           extra_headers: Send extra headers
 
@@ -323,9 +323,9 @@ class AsyncAccountTransfers(AsyncAPIResource):
 
           require_approval: Whether the transfer requires explicit approval via the dashboard or API.
 
-          unique_identifier: A unique identifier you choose for the transfer. Reusing this identifier for
-              another transfer will result in an error. You can query for the transfer
-              associated with this identifier using the List endpoint.
+          unique_identifier: A unique identifier you choose for the object. Reusing this identifier for
+              another object will result in an error. You can query for the object associated
+              with this identifier using the List endpoint.
 
           extra_headers: Send extra headers
 
@@ -423,7 +423,7 @@ class AsyncAccountTransfers(AsyncAPIResource):
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
 
-          unique_identifier: Filter Account Transfers to the one with the specified unique identifier.
+          unique_identifier: Filter records to the one with the specified `unique_identifier`.
 
           extra_headers: Send extra headers
 
