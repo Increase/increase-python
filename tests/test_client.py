@@ -828,7 +828,7 @@ class TestIncrease:
         with pytest.raises(APITimeoutError):
             self.client.post(
                 "/accounts",
-                body=dict(name="My First Increase Account"),
+                body=cast(object, dict(name="My First Increase Account")),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
@@ -843,7 +843,7 @@ class TestIncrease:
         with pytest.raises(APIStatusError):
             self.client.post(
                 "/accounts",
-                body=dict(name="My First Increase Account"),
+                body=cast(object, dict(name="My First Increase Account")),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
@@ -1645,7 +1645,7 @@ class TestAsyncIncrease:
         with pytest.raises(APITimeoutError):
             await self.client.post(
                 "/accounts",
-                body=dict(name="My First Increase Account"),
+                body=cast(object, dict(name="My First Increase Account")),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
@@ -1660,7 +1660,7 @@ class TestAsyncIncrease:
         with pytest.raises(APIStatusError):
             await self.client.post(
                 "/accounts",
-                body=dict(name="My First Increase Account"),
+                body=cast(object, dict(name="My First Increase Account")),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
