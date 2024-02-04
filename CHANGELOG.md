@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.34.0 (2024-02-04)
+
+Full Changelog: [v0.33.0...v0.34.0](https://github.com/increase/increase-python/compare/v0.33.0...v0.34.0)
+
+### Features
+
+* **client:** support parsing custom response types ([#322](https://github.com/increase/increase-python/issues/322)) ([f310736](https://github.com/increase/increase-python/commit/f310736d9799717705440c34eaac10bad8842cf2))
+
+
+### Bug Fixes
+
+* prevent crash when platform.architecture() is not allowed ([#327](https://github.com/increase/increase-python/issues/327)) ([71c6d47](https://github.com/increase/increase-python/commit/71c6d47ba9e1081510e4846819354d3c2d1ccf09))
+
+
+### Chores
+
+* **interal:** make link to api.md relative ([#326](https://github.com/increase/increase-python/issues/326)) ([5d3754c](https://github.com/increase/increase-python/commit/5d3754c300c2289a665a23aa528adc356fd3e100))
+* **internal:** cast type in mocked test ([#324](https://github.com/increase/increase-python/issues/324)) ([52c0a1c](https://github.com/increase/increase-python/commit/52c0a1c02c3e1567ef1464dfbda9a5db764c4d90))
+* **internal:** support pre-release versioning ([#325](https://github.com/increase/increase-python/issues/325)) ([7364d38](https://github.com/increase/increase-python/commit/7364d3858046cd7826e05e24fd2a2b6318e268b3))
+
 ## 0.33.0 (2024-01-26)
 
 Full Changelog: [v0.32.0...v0.33.0](https://github.com/increase/increase-python/compare/v0.32.0...v0.33.0)
