@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import List, Union, Iterable
 from datetime import date
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
@@ -93,7 +93,7 @@ class EntityCreateParams(TypedDict, total=False):
       directly open accounts.
     """
 
-    supplemental_documents: List[SupplementalDocument]
+    supplemental_documents: Iterable[SupplementalDocument]
     """Additional documentation associated with the entity."""
 
     trust: Trust
@@ -283,7 +283,7 @@ class Corporation(TypedDict, total=False):
     Mail receiving locations like PO Boxes and PMB's are disallowed.
     """
 
-    beneficial_owners: Required[List[CorporationBeneficialOwner]]
+    beneficial_owners: Required[Iterable[CorporationBeneficialOwner]]
     """
     The identifying details of anyone controlling or owning 25% or more of the
     corporation.
@@ -444,7 +444,7 @@ class JointIndividual(TypedDict, total=False):
 
 
 class Joint(TypedDict, total=False):
-    individuals: Required[List[JointIndividual]]
+    individuals: Required[Iterable[JointIndividual]]
     """The two individuals that share control of the entity."""
 
     name: str
@@ -924,7 +924,7 @@ class Trust(TypedDict, total=False):
     name: Required[str]
     """The legal name of the trust."""
 
-    trustees: Required[List[TrustTrustee]]
+    trustees: Required[Iterable[TrustTrustee]]
     """The trustees of the trust."""
 
     formation_document_file_id: str
