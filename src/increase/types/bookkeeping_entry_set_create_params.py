@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Required, Annotated, TypedDict
 
@@ -12,7 +12,7 @@ __all__ = ["BookkeepingEntrySetCreateParams", "Entry"]
 
 
 class BookkeepingEntrySetCreateParams(TypedDict, total=False):
-    entries: Required[List[Entry]]
+    entries: Required[Iterable[Entry]]
     """The bookkeeping entries."""
 
     date: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]

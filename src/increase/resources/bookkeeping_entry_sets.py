@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union, Iterable
 from datetime import datetime
 
 import httpx
@@ -39,7 +39,7 @@ class BookkeepingEntrySets(SyncAPIResource):
     def create(
         self,
         *,
-        entries: List[bookkeeping_entry_set_create_params.Entry],
+        entries: Iterable[bookkeeping_entry_set_create_params.Entry],
         date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         transaction_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -193,7 +193,7 @@ class AsyncBookkeepingEntrySets(AsyncAPIResource):
     async def create(
         self,
         *,
-        entries: List[bookkeeping_entry_set_create_params.Entry],
+        entries: Iterable[bookkeeping_entry_set_create_params.Entry],
         date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         transaction_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
