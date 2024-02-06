@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.34.1 (2024-02-06)
+
+Full Changelog: [v0.34.0...v0.34.1](https://github.com/increase/increase-python/compare/v0.34.0...v0.34.1)
+
+### Bug Fixes
+
+* **types:** loosen most List params types to Iterable ([#331](https://github.com/increase/increase-python/issues/331)) ([e595adc](https://github.com/increase/increase-python/commit/e595adc5a58ee38ed19cfdf321342db52a203536))
+
+
+### Chores
+
+* **internal:** add lint command ([#330](https://github.com/increase/increase-python/issues/330)) ([7ade4f3](https://github.com/increase/increase-python/commit/7ade4f3e656b95e60a7ac8ef9e5a488f748c6f75))
+* **internal:** support serialising iterable types ([#328](https://github.com/increase/increase-python/issues/328)) ([a07cec7](https://github.com/increase/increase-python/commit/a07cec7980eb4b67f7125475e6f7b5c30f118aa2))
+
 ## 0.34.0 (2024-02-04)
 
 Full Changelog: [v0.33.0...v0.34.0](https://github.com/increase/increase-python/compare/v0.33.0...v0.34.0)
