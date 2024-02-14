@@ -62,6 +62,14 @@ class CardDispute(BaseModel):
     explanation: str
     """Why you disputed the Transaction in question."""
 
+    idempotency_key: Optional[str] = None
+    """The idempotency key you chose for this object.
+
+    This value is unique across Increase and is used to ensure that a request is
+    only processed once. Learn more about
+    [idempotency](https://increase.com/documentation/idempotency-keys).
+    """
+
     rejection: Optional[Rejection] = None
     """
     If the Card Dispute's status is `rejected`, this will contain details of the

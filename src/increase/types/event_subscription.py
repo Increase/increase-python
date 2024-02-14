@@ -16,6 +16,14 @@ class EventSubscription(BaseModel):
     created_at: datetime
     """The time the event subscription was created."""
 
+    idempotency_key: Optional[str] = None
+    """The idempotency key you chose for this object.
+
+    This value is unique across Increase and is used to ensure that a request is
+    only processed once. Learn more about
+    [idempotency](https://increase.com/documentation/idempotency-keys).
+    """
+
     selected_event_category: Optional[
         Literal[
             "account.created",

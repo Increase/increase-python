@@ -48,6 +48,14 @@ class AccountNumber(BaseModel):
     Number was created.
     """
 
+    idempotency_key: Optional[str] = None
+    """The idempotency key you chose for this object.
+
+    This value is unique across Increase and is used to ensure that a request is
+    only processed once. Learn more about
+    [idempotency](https://increase.com/documentation/idempotency-keys).
+    """
+
     inbound_ach: InboundACH
     """Properties related to how this Account Number handles inbound ACH transfers."""
 
@@ -76,6 +84,3 @@ class AccountNumber(BaseModel):
 
     For this resource it will always be `account_number`.
     """
-
-    unique_identifier: Optional[str] = None
-    """The unique identifier you chose for this object."""

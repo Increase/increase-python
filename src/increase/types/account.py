@@ -42,6 +42,14 @@ class Account(BaseModel):
     entity_id: Optional[str] = None
     """The identifier for the Entity the Account belongs to."""
 
+    idempotency_key: Optional[str] = None
+    """The idempotency key you chose for this object.
+
+    This value is unique across Increase and is used to ensure that a request is
+    only processed once. Learn more about
+    [idempotency](https://increase.com/documentation/idempotency-keys).
+    """
+
     informational_entity_id: Optional[str] = None
     """
     The identifier of an Entity that, while not owning the Account, is associated

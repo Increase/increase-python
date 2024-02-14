@@ -5,12 +5,20 @@ from __future__ import annotations
 from typing import List
 from typing_extensions import Literal, TypedDict
 
-__all__ = ["CardProfileListParams", "PhysicalCardsStatus", "Status"]
+__all__ = ["DigitalCardProfileListParams", "Status"]
 
 
-class CardProfileListParams(TypedDict, total=False):
+class DigitalCardProfileListParams(TypedDict, total=False):
     cursor: str
     """Return the page of entries after this one."""
+
+    idempotency_key: str
+    """
+    Filter records to the one with the specified `idempotency_key` you chose for
+    that object. This value is unique across Increase and is used to ensure that a
+    request is only processed once. Learn more about
+    [idempotency](https://increase.com/documentation/idempotency-keys).
+    """
 
     limit: int
     """Limit the size of the list that is returned.
@@ -18,24 +26,7 @@ class CardProfileListParams(TypedDict, total=False):
     The default (and maximum) is 100 objects.
     """
 
-    physical_cards_status: PhysicalCardsStatus
-
     status: Status
-
-
-_PhysicalCardsStatusReservedKeywords = TypedDict(
-    "_PhysicalCardsStatusReservedKeywords",
-    {
-        "in": List[
-            Literal["not_eligible", "rejected", "pending_creating", "pending_reviewing", "pending_submitting", "active"]
-        ],
-    },
-    total=False,
-)
-
-
-class PhysicalCardsStatus(_PhysicalCardsStatusReservedKeywords, total=False):
-    pass
 
 
 _StatusReservedKeywords = TypedDict(

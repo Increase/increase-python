@@ -81,6 +81,14 @@ class Card(BaseModel):
     expiration_year: int
     """The year the card expires in YYYY format (e.g., 2025)."""
 
+    idempotency_key: Optional[str] = None
+    """The idempotency key you chose for this object.
+
+    This value is unique across Increase and is used to ensure that a request is
+    only processed once. Learn more about
+    [idempotency](https://increase.com/documentation/idempotency-keys).
+    """
+
     last4: str
     """The last 4 digits of the Card's Primary Account Number."""
 

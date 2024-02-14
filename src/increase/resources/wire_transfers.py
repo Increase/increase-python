@@ -47,7 +47,6 @@ class WireTransfers(SyncAPIResource):
         originator_name: str | NotGiven = NOT_GIVEN,
         require_approval: bool | NotGiven = NOT_GIVEN,
         routing_number: str | NotGiven = NOT_GIVEN,
-        unique_identifier: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -96,10 +95,6 @@ class WireTransfers(SyncAPIResource):
           routing_number: The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
               destination account.
 
-          unique_identifier: A unique identifier you choose for the transfer. Reusing this identifier for
-              another transfer will result in an error. You can query for the transfer
-              associated with this identifier using the List endpoint.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -129,7 +124,6 @@ class WireTransfers(SyncAPIResource):
                     "originator_name": originator_name,
                     "require_approval": require_approval,
                     "routing_number": routing_number,
-                    "unique_identifier": unique_identifier,
                 },
                 wire_transfer_create_params.WireTransferCreateParams,
             ),
@@ -185,8 +179,8 @@ class WireTransfers(SyncAPIResource):
         created_at: wire_transfer_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         external_account_id: str | NotGiven = NOT_GIVEN,
+        idempotency_key: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
-        unique_identifier: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -204,10 +198,13 @@ class WireTransfers(SyncAPIResource):
 
           external_account_id: Filter Wire Transfers to those made to the specified External Account.
 
+          idempotency_key: Filter records to the one with the specified `idempotency_key` you chose for
+              that object. This value is unique across Increase and is used to ensure that a
+              request is only processed once. Learn more about
+              [idempotency](https://increase.com/documentation/idempotency-keys).
+
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
-
-          unique_identifier: Filter records to the one with the specified `unique_identifier`.
 
           extra_headers: Send extra headers
 
@@ -231,8 +228,8 @@ class WireTransfers(SyncAPIResource):
                         "created_at": created_at,
                         "cursor": cursor,
                         "external_account_id": external_account_id,
+                        "idempotency_key": idempotency_key,
                         "limit": limit,
-                        "unique_identifier": unique_identifier,
                     },
                     wire_transfer_list_params.WireTransferListParams,
                 ),
@@ -441,7 +438,6 @@ class AsyncWireTransfers(AsyncAPIResource):
         originator_name: str | NotGiven = NOT_GIVEN,
         require_approval: bool | NotGiven = NOT_GIVEN,
         routing_number: str | NotGiven = NOT_GIVEN,
-        unique_identifier: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -490,10 +486,6 @@ class AsyncWireTransfers(AsyncAPIResource):
           routing_number: The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
               destination account.
 
-          unique_identifier: A unique identifier you choose for the transfer. Reusing this identifier for
-              another transfer will result in an error. You can query for the transfer
-              associated with this identifier using the List endpoint.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -523,7 +515,6 @@ class AsyncWireTransfers(AsyncAPIResource):
                     "originator_name": originator_name,
                     "require_approval": require_approval,
                     "routing_number": routing_number,
-                    "unique_identifier": unique_identifier,
                 },
                 wire_transfer_create_params.WireTransferCreateParams,
             ),
@@ -579,8 +570,8 @@ class AsyncWireTransfers(AsyncAPIResource):
         created_at: wire_transfer_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         external_account_id: str | NotGiven = NOT_GIVEN,
+        idempotency_key: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
-        unique_identifier: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -598,10 +589,13 @@ class AsyncWireTransfers(AsyncAPIResource):
 
           external_account_id: Filter Wire Transfers to those made to the specified External Account.
 
+          idempotency_key: Filter records to the one with the specified `idempotency_key` you chose for
+              that object. This value is unique across Increase and is used to ensure that a
+              request is only processed once. Learn more about
+              [idempotency](https://increase.com/documentation/idempotency-keys).
+
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
-
-          unique_identifier: Filter records to the one with the specified `unique_identifier`.
 
           extra_headers: Send extra headers
 
@@ -625,8 +619,8 @@ class AsyncWireTransfers(AsyncAPIResource):
                         "created_at": created_at,
                         "cursor": cursor,
                         "external_account_id": external_account_id,
+                        "idempotency_key": idempotency_key,
                         "limit": limit,
-                        "unique_identifier": unique_identifier,
                     },
                     wire_transfer_list_params.WireTransferListParams,
                 ),

@@ -121,6 +121,7 @@ class AccountEnrollments(SyncAPIResource):
         *,
         account_id: str | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
+        idempotency_key: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         status: account_enrollment_list_params.Status | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -137,6 +138,11 @@ class AccountEnrollments(SyncAPIResource):
           account_id: Filter IntraFi Account Enrollments to the one belonging to an account.
 
           cursor: Return the page of entries after this one.
+
+          idempotency_key: Filter records to the one with the specified `idempotency_key` you chose for
+              that object. This value is unique across Increase and is used to ensure that a
+              request is only processed once. Learn more about
+              [idempotency](https://increase.com/documentation/idempotency-keys).
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
@@ -161,6 +167,7 @@ class AccountEnrollments(SyncAPIResource):
                     {
                         "account_id": account_id,
                         "cursor": cursor,
+                        "idempotency_key": idempotency_key,
                         "limit": limit,
                         "status": status,
                     },
@@ -316,6 +323,7 @@ class AsyncAccountEnrollments(AsyncAPIResource):
         *,
         account_id: str | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
+        idempotency_key: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         status: account_enrollment_list_params.Status | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -332,6 +340,11 @@ class AsyncAccountEnrollments(AsyncAPIResource):
           account_id: Filter IntraFi Account Enrollments to the one belonging to an account.
 
           cursor: Return the page of entries after this one.
+
+          idempotency_key: Filter records to the one with the specified `idempotency_key` you chose for
+              that object. This value is unique across Increase and is used to ensure that a
+              request is only processed once. Learn more about
+              [idempotency](https://increase.com/documentation/idempotency-keys).
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
@@ -356,6 +369,7 @@ class AsyncAccountEnrollments(AsyncAPIResource):
                     {
                         "account_id": account_id,
                         "cursor": cursor,
+                        "idempotency_key": idempotency_key,
                         "limit": limit,
                         "status": status,
                     },

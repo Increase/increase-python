@@ -35,11 +35,37 @@ class TestACHTransfers:
             amount=100,
             statement_descriptor="New ACH transfer",
             account_number="987654321",
-            addendum="x",
+            addenda={
+                "category": "freeform",
+                "freeform": {
+                    "entries": [
+                        {"payment_related_information": "x"},
+                        {"payment_related_information": "x"},
+                        {"payment_related_information": "x"},
+                    ]
+                },
+                "payment_order_remittance_advice": {
+                    "invoices": [
+                        {
+                            "invoice_number": "x",
+                            "paid_amount": 0,
+                        },
+                        {
+                            "invoice_number": "x",
+                            "paid_amount": 0,
+                        },
+                        {
+                            "invoice_number": "x",
+                            "paid_amount": 0,
+                        },
+                    ]
+                },
+            },
             company_descriptive_date="x",
             company_discretionary_data="x",
             company_entry_description="x",
             company_name="x",
+            destination_account_holder="business",
             effective_date=parse_date("2019-12-27"),
             external_account_id="string",
             funding="checking",
@@ -48,7 +74,6 @@ class TestACHTransfers:
             require_approval=True,
             routing_number="101050001",
             standard_entry_class_code="corporate_credit_or_debit",
-            unique_identifier="x",
         )
         assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
 
@@ -135,8 +160,8 @@ class TestACHTransfers:
             },
             cursor="string",
             external_account_id="string",
+            idempotency_key="x",
             limit=1,
-            unique_identifier="x",
         )
         assert_matches_type(SyncPage[ACHTransfer], ach_transfer, path=["response"])
 
@@ -256,11 +281,37 @@ class TestAsyncACHTransfers:
             amount=100,
             statement_descriptor="New ACH transfer",
             account_number="987654321",
-            addendum="x",
+            addenda={
+                "category": "freeform",
+                "freeform": {
+                    "entries": [
+                        {"payment_related_information": "x"},
+                        {"payment_related_information": "x"},
+                        {"payment_related_information": "x"},
+                    ]
+                },
+                "payment_order_remittance_advice": {
+                    "invoices": [
+                        {
+                            "invoice_number": "x",
+                            "paid_amount": 0,
+                        },
+                        {
+                            "invoice_number": "x",
+                            "paid_amount": 0,
+                        },
+                        {
+                            "invoice_number": "x",
+                            "paid_amount": 0,
+                        },
+                    ]
+                },
+            },
             company_descriptive_date="x",
             company_discretionary_data="x",
             company_entry_description="x",
             company_name="x",
+            destination_account_holder="business",
             effective_date=parse_date("2019-12-27"),
             external_account_id="string",
             funding="checking",
@@ -269,7 +320,6 @@ class TestAsyncACHTransfers:
             require_approval=True,
             routing_number="101050001",
             standard_entry_class_code="corporate_credit_or_debit",
-            unique_identifier="x",
         )
         assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
 
@@ -356,8 +406,8 @@ class TestAsyncACHTransfers:
             },
             cursor="string",
             external_account_id="string",
+            idempotency_key="x",
             limit=1,
-            unique_identifier="x",
         )
         assert_matches_type(AsyncPage[ACHTransfer], ach_transfer, path=["response"])
 

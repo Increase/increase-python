@@ -40,11 +40,12 @@ class ACHTransfers(SyncAPIResource):
         amount: int,
         statement_descriptor: str,
         account_number: str | NotGiven = NOT_GIVEN,
-        addendum: str | NotGiven = NOT_GIVEN,
+        addenda: ach_transfer_create_params.Addenda | NotGiven = NOT_GIVEN,
         company_descriptive_date: str | NotGiven = NOT_GIVEN,
         company_discretionary_data: str | NotGiven = NOT_GIVEN,
         company_entry_description: str | NotGiven = NOT_GIVEN,
         company_name: str | NotGiven = NOT_GIVEN,
+        destination_account_holder: Literal["business", "individual", "unknown"] | NotGiven = NOT_GIVEN,
         effective_date: Union[str, date] | NotGiven = NOT_GIVEN,
         external_account_id: str | NotGiven = NOT_GIVEN,
         funding: Literal["checking", "savings"] | NotGiven = NOT_GIVEN,
@@ -56,7 +57,6 @@ class ACHTransfers(SyncAPIResource):
             "corporate_credit_or_debit", "prearranged_payments_and_deposit", "internet_initiated"
         ]
         | NotGiven = NOT_GIVEN,
-        unique_identifier: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -84,7 +84,7 @@ class ACHTransfers(SyncAPIResource):
 
           account_number: The account number for the destination account.
 
-          addendum: Additional information that will be sent to the recipient. This is included in
+          addenda: Additional information that will be sent to the recipient. This is included in
               the transfer data sent to the receiving bank.
 
           company_descriptive_date: The description of the date of the transfer, usually in the format `YYMMDD`.
@@ -98,6 +98,13 @@ class ACHTransfers(SyncAPIResource):
 
           company_name: The name by which the recipient knows you. This is included in the transfer data
               sent to the receiving bank.
+
+          destination_account_holder: The type of entity that owns the account to which the ACH Transfer is being
+              sent.
+
+              - `business` - The External Account is owned by a business.
+              - `individual` - The External Account is owned by an individual.
+              - `unknown` - It's unknown what kind of entity owns the External Account.
 
           effective_date: The transfer effective date in
               [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
@@ -126,10 +133,6 @@ class ACHTransfers(SyncAPIResource):
               - `prearranged_payments_and_deposit` - Prearranged Payments and Deposits (PPD).
               - `internet_initiated` - Internet Initiated (WEB).
 
-          unique_identifier: A unique identifier you choose for the object. Reusing this identifier for
-              another object will result in an error. You can query for the object associated
-              with this identifier using the List endpoint.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -148,11 +151,12 @@ class ACHTransfers(SyncAPIResource):
                     "amount": amount,
                     "statement_descriptor": statement_descriptor,
                     "account_number": account_number,
-                    "addendum": addendum,
+                    "addenda": addenda,
                     "company_descriptive_date": company_descriptive_date,
                     "company_discretionary_data": company_discretionary_data,
                     "company_entry_description": company_entry_description,
                     "company_name": company_name,
+                    "destination_account_holder": destination_account_holder,
                     "effective_date": effective_date,
                     "external_account_id": external_account_id,
                     "funding": funding,
@@ -161,7 +165,6 @@ class ACHTransfers(SyncAPIResource):
                     "require_approval": require_approval,
                     "routing_number": routing_number,
                     "standard_entry_class_code": standard_entry_class_code,
-                    "unique_identifier": unique_identifier,
                 },
                 ach_transfer_create_params.ACHTransferCreateParams,
             ),
@@ -217,8 +220,8 @@ class ACHTransfers(SyncAPIResource):
         created_at: ach_transfer_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         external_account_id: str | NotGiven = NOT_GIVEN,
+        idempotency_key: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
-        unique_identifier: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -236,10 +239,13 @@ class ACHTransfers(SyncAPIResource):
 
           external_account_id: Filter ACH Transfers to those made to the specified External Account.
 
+          idempotency_key: Filter records to the one with the specified `idempotency_key` you chose for
+              that object. This value is unique across Increase and is used to ensure that a
+              request is only processed once. Learn more about
+              [idempotency](https://increase.com/documentation/idempotency-keys).
+
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
-
-          unique_identifier: Filter records to the one with the specified `unique_identifier`.
 
           extra_headers: Send extra headers
 
@@ -263,8 +269,8 @@ class ACHTransfers(SyncAPIResource):
                         "created_at": created_at,
                         "cursor": cursor,
                         "external_account_id": external_account_id,
+                        "idempotency_key": idempotency_key,
                         "limit": limit,
-                        "unique_identifier": unique_identifier,
                     },
                     ach_transfer_list_params.ACHTransferListParams,
                 ),
@@ -373,11 +379,12 @@ class AsyncACHTransfers(AsyncAPIResource):
         amount: int,
         statement_descriptor: str,
         account_number: str | NotGiven = NOT_GIVEN,
-        addendum: str | NotGiven = NOT_GIVEN,
+        addenda: ach_transfer_create_params.Addenda | NotGiven = NOT_GIVEN,
         company_descriptive_date: str | NotGiven = NOT_GIVEN,
         company_discretionary_data: str | NotGiven = NOT_GIVEN,
         company_entry_description: str | NotGiven = NOT_GIVEN,
         company_name: str | NotGiven = NOT_GIVEN,
+        destination_account_holder: Literal["business", "individual", "unknown"] | NotGiven = NOT_GIVEN,
         effective_date: Union[str, date] | NotGiven = NOT_GIVEN,
         external_account_id: str | NotGiven = NOT_GIVEN,
         funding: Literal["checking", "savings"] | NotGiven = NOT_GIVEN,
@@ -389,7 +396,6 @@ class AsyncACHTransfers(AsyncAPIResource):
             "corporate_credit_or_debit", "prearranged_payments_and_deposit", "internet_initiated"
         ]
         | NotGiven = NOT_GIVEN,
-        unique_identifier: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -417,7 +423,7 @@ class AsyncACHTransfers(AsyncAPIResource):
 
           account_number: The account number for the destination account.
 
-          addendum: Additional information that will be sent to the recipient. This is included in
+          addenda: Additional information that will be sent to the recipient. This is included in
               the transfer data sent to the receiving bank.
 
           company_descriptive_date: The description of the date of the transfer, usually in the format `YYMMDD`.
@@ -431,6 +437,13 @@ class AsyncACHTransfers(AsyncAPIResource):
 
           company_name: The name by which the recipient knows you. This is included in the transfer data
               sent to the receiving bank.
+
+          destination_account_holder: The type of entity that owns the account to which the ACH Transfer is being
+              sent.
+
+              - `business` - The External Account is owned by a business.
+              - `individual` - The External Account is owned by an individual.
+              - `unknown` - It's unknown what kind of entity owns the External Account.
 
           effective_date: The transfer effective date in
               [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
@@ -459,10 +472,6 @@ class AsyncACHTransfers(AsyncAPIResource):
               - `prearranged_payments_and_deposit` - Prearranged Payments and Deposits (PPD).
               - `internet_initiated` - Internet Initiated (WEB).
 
-          unique_identifier: A unique identifier you choose for the object. Reusing this identifier for
-              another object will result in an error. You can query for the object associated
-              with this identifier using the List endpoint.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -481,11 +490,12 @@ class AsyncACHTransfers(AsyncAPIResource):
                     "amount": amount,
                     "statement_descriptor": statement_descriptor,
                     "account_number": account_number,
-                    "addendum": addendum,
+                    "addenda": addenda,
                     "company_descriptive_date": company_descriptive_date,
                     "company_discretionary_data": company_discretionary_data,
                     "company_entry_description": company_entry_description,
                     "company_name": company_name,
+                    "destination_account_holder": destination_account_holder,
                     "effective_date": effective_date,
                     "external_account_id": external_account_id,
                     "funding": funding,
@@ -494,7 +504,6 @@ class AsyncACHTransfers(AsyncAPIResource):
                     "require_approval": require_approval,
                     "routing_number": routing_number,
                     "standard_entry_class_code": standard_entry_class_code,
-                    "unique_identifier": unique_identifier,
                 },
                 ach_transfer_create_params.ACHTransferCreateParams,
             ),
@@ -550,8 +559,8 @@ class AsyncACHTransfers(AsyncAPIResource):
         created_at: ach_transfer_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         external_account_id: str | NotGiven = NOT_GIVEN,
+        idempotency_key: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
-        unique_identifier: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -569,10 +578,13 @@ class AsyncACHTransfers(AsyncAPIResource):
 
           external_account_id: Filter ACH Transfers to those made to the specified External Account.
 
+          idempotency_key: Filter records to the one with the specified `idempotency_key` you chose for
+              that object. This value is unique across Increase and is used to ensure that a
+              request is only processed once. Learn more about
+              [idempotency](https://increase.com/documentation/idempotency-keys).
+
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
-
-          unique_identifier: Filter records to the one with the specified `unique_identifier`.
 
           extra_headers: Send extra headers
 
@@ -596,8 +608,8 @@ class AsyncACHTransfers(AsyncAPIResource):
                         "created_at": created_at,
                         "cursor": cursor,
                         "external_account_id": external_account_id,
+                        "idempotency_key": idempotency_key,
                         "limit": limit,
-                        "unique_identifier": unique_identifier,
                     },
                     ach_transfer_list_params.ACHTransferListParams,
                 ),

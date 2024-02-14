@@ -132,6 +132,7 @@ class BookkeepingEntrySets(SyncAPIResource):
         self,
         *,
         cursor: str | NotGiven = NOT_GIVEN,
+        idempotency_key: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         transaction_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -146,6 +147,11 @@ class BookkeepingEntrySets(SyncAPIResource):
 
         Args:
           cursor: Return the page of entries after this one.
+
+          idempotency_key: Filter records to the one with the specified `idempotency_key` you chose for
+              that object. This value is unique across Increase and is used to ensure that a
+              request is only processed once. Learn more about
+              [idempotency](https://increase.com/documentation/idempotency-keys).
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
@@ -171,6 +177,7 @@ class BookkeepingEntrySets(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "cursor": cursor,
+                        "idempotency_key": idempotency_key,
                         "limit": limit,
                         "transaction_id": transaction_id,
                     },
@@ -286,6 +293,7 @@ class AsyncBookkeepingEntrySets(AsyncAPIResource):
         self,
         *,
         cursor: str | NotGiven = NOT_GIVEN,
+        idempotency_key: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         transaction_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -300,6 +308,11 @@ class AsyncBookkeepingEntrySets(AsyncAPIResource):
 
         Args:
           cursor: Return the page of entries after this one.
+
+          idempotency_key: Filter records to the one with the specified `idempotency_key` you chose for
+              that object. This value is unique across Increase and is used to ensure that a
+              request is only processed once. Learn more about
+              [idempotency](https://increase.com/documentation/idempotency-keys).
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
@@ -325,6 +338,7 @@ class AsyncBookkeepingEntrySets(AsyncAPIResource):
                 query=maybe_transform(
                     {
                         "cursor": cursor,
+                        "idempotency_key": idempotency_key,
                         "limit": limit,
                         "transaction_id": transaction_id,
                     },

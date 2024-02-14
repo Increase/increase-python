@@ -66,7 +66,6 @@ class Increase(SyncAPIClient):
     real_time_payments_transfers: resources.RealTimePaymentsTransfers
     cards: resources.Cards
     card_disputes: resources.CardDisputes
-    card_profiles: resources.CardProfiles
     card_purchase_supplements: resources.CardPurchaseSupplements
     external_accounts: resources.ExternalAccounts
     exports: resources.Exports
@@ -103,6 +102,8 @@ class Increase(SyncAPIClient):
     webhooks: resources.Webhooks
     oauth_tokens: resources.OAuthTokens
     inbound_wire_transfers: resources.InboundWireTransfers
+    digital_card_profiles: resources.DigitalCardProfiles
+    physical_card_profiles: resources.PhysicalCardProfiles
     with_raw_response: IncreaseWithRawResponse
     with_streaming_response: IncreaseWithStreamedResponse
 
@@ -210,7 +211,6 @@ class Increase(SyncAPIClient):
         self.real_time_payments_transfers = resources.RealTimePaymentsTransfers(self)
         self.cards = resources.Cards(self)
         self.card_disputes = resources.CardDisputes(self)
-        self.card_profiles = resources.CardProfiles(self)
         self.card_purchase_supplements = resources.CardPurchaseSupplements(self)
         self.external_accounts = resources.ExternalAccounts(self)
         self.exports = resources.Exports(self)
@@ -247,6 +247,8 @@ class Increase(SyncAPIClient):
         self.webhooks = resources.Webhooks(self)
         self.oauth_tokens = resources.OAuthTokens(self)
         self.inbound_wire_transfers = resources.InboundWireTransfers(self)
+        self.digital_card_profiles = resources.DigitalCardProfiles(self)
+        self.physical_card_profiles = resources.PhysicalCardProfiles(self)
         self.with_raw_response = IncreaseWithRawResponse(self)
         self.with_streaming_response = IncreaseWithStreamedResponse(self)
 
@@ -380,11 +382,11 @@ class Increase(SyncAPIClient):
         if type_ == "idempotency_conflict_error":
             return _exceptions.IdempotencyConflictError(err_msg, response=response, body=body)
 
+        if type_ == "idempotency_key_already_used_error":
+            return _exceptions.IdempotencyKeyAlreadyUsedError(err_msg, response=response, body=body)
+
         if type_ == "invalid_operation_error":
             return _exceptions.InvalidOperationError(err_msg, response=response, body=body)
-
-        if type_ == "unique_identifier_already_exists_error":
-            return _exceptions.UniqueIdentifierAlreadyExistsError(err_msg, response=response, body=body)
 
         if type_ == "idempotency_unprocessable_error":
             return _exceptions.IdempotencyUnprocessableError(err_msg, response=response, body=body)
@@ -439,7 +441,6 @@ class AsyncIncrease(AsyncAPIClient):
     real_time_payments_transfers: resources.AsyncRealTimePaymentsTransfers
     cards: resources.AsyncCards
     card_disputes: resources.AsyncCardDisputes
-    card_profiles: resources.AsyncCardProfiles
     card_purchase_supplements: resources.AsyncCardPurchaseSupplements
     external_accounts: resources.AsyncExternalAccounts
     exports: resources.AsyncExports
@@ -476,6 +477,8 @@ class AsyncIncrease(AsyncAPIClient):
     webhooks: resources.AsyncWebhooks
     oauth_tokens: resources.AsyncOAuthTokens
     inbound_wire_transfers: resources.AsyncInboundWireTransfers
+    digital_card_profiles: resources.AsyncDigitalCardProfiles
+    physical_card_profiles: resources.AsyncPhysicalCardProfiles
     with_raw_response: AsyncIncreaseWithRawResponse
     with_streaming_response: AsyncIncreaseWithStreamedResponse
 
@@ -583,7 +586,6 @@ class AsyncIncrease(AsyncAPIClient):
         self.real_time_payments_transfers = resources.AsyncRealTimePaymentsTransfers(self)
         self.cards = resources.AsyncCards(self)
         self.card_disputes = resources.AsyncCardDisputes(self)
-        self.card_profiles = resources.AsyncCardProfiles(self)
         self.card_purchase_supplements = resources.AsyncCardPurchaseSupplements(self)
         self.external_accounts = resources.AsyncExternalAccounts(self)
         self.exports = resources.AsyncExports(self)
@@ -620,6 +622,8 @@ class AsyncIncrease(AsyncAPIClient):
         self.webhooks = resources.AsyncWebhooks(self)
         self.oauth_tokens = resources.AsyncOAuthTokens(self)
         self.inbound_wire_transfers = resources.AsyncInboundWireTransfers(self)
+        self.digital_card_profiles = resources.AsyncDigitalCardProfiles(self)
+        self.physical_card_profiles = resources.AsyncPhysicalCardProfiles(self)
         self.with_raw_response = AsyncIncreaseWithRawResponse(self)
         self.with_streaming_response = AsyncIncreaseWithStreamedResponse(self)
 
@@ -753,11 +757,11 @@ class AsyncIncrease(AsyncAPIClient):
         if type_ == "idempotency_conflict_error":
             return _exceptions.IdempotencyConflictError(err_msg, response=response, body=body)
 
+        if type_ == "idempotency_key_already_used_error":
+            return _exceptions.IdempotencyKeyAlreadyUsedError(err_msg, response=response, body=body)
+
         if type_ == "invalid_operation_error":
             return _exceptions.InvalidOperationError(err_msg, response=response, body=body)
-
-        if type_ == "unique_identifier_already_exists_error":
-            return _exceptions.UniqueIdentifierAlreadyExistsError(err_msg, response=response, body=body)
 
         if type_ == "idempotency_unprocessable_error":
             return _exceptions.IdempotencyUnprocessableError(err_msg, response=response, body=body)
@@ -815,7 +819,6 @@ class IncreaseWithRawResponse:
         )
         self.cards = resources.CardsWithRawResponse(client.cards)
         self.card_disputes = resources.CardDisputesWithRawResponse(client.card_disputes)
-        self.card_profiles = resources.CardProfilesWithRawResponse(client.card_profiles)
         self.card_purchase_supplements = resources.CardPurchaseSupplementsWithRawResponse(
             client.card_purchase_supplements
         )
@@ -863,6 +866,8 @@ class IncreaseWithRawResponse:
         )
         self.oauth_tokens = resources.OAuthTokensWithRawResponse(client.oauth_tokens)
         self.inbound_wire_transfers = resources.InboundWireTransfersWithRawResponse(client.inbound_wire_transfers)
+        self.digital_card_profiles = resources.DigitalCardProfilesWithRawResponse(client.digital_card_profiles)
+        self.physical_card_profiles = resources.PhysicalCardProfilesWithRawResponse(client.physical_card_profiles)
 
 
 class AsyncIncreaseWithRawResponse:
@@ -878,7 +883,6 @@ class AsyncIncreaseWithRawResponse:
         )
         self.cards = resources.AsyncCardsWithRawResponse(client.cards)
         self.card_disputes = resources.AsyncCardDisputesWithRawResponse(client.card_disputes)
-        self.card_profiles = resources.AsyncCardProfilesWithRawResponse(client.card_profiles)
         self.card_purchase_supplements = resources.AsyncCardPurchaseSupplementsWithRawResponse(
             client.card_purchase_supplements
         )
@@ -926,6 +930,8 @@ class AsyncIncreaseWithRawResponse:
         )
         self.oauth_tokens = resources.AsyncOAuthTokensWithRawResponse(client.oauth_tokens)
         self.inbound_wire_transfers = resources.AsyncInboundWireTransfersWithRawResponse(client.inbound_wire_transfers)
+        self.digital_card_profiles = resources.AsyncDigitalCardProfilesWithRawResponse(client.digital_card_profiles)
+        self.physical_card_profiles = resources.AsyncPhysicalCardProfilesWithRawResponse(client.physical_card_profiles)
 
 
 class IncreaseWithStreamedResponse:
@@ -941,7 +947,6 @@ class IncreaseWithStreamedResponse:
         )
         self.cards = resources.CardsWithStreamingResponse(client.cards)
         self.card_disputes = resources.CardDisputesWithStreamingResponse(client.card_disputes)
-        self.card_profiles = resources.CardProfilesWithStreamingResponse(client.card_profiles)
         self.card_purchase_supplements = resources.CardPurchaseSupplementsWithStreamingResponse(
             client.card_purchase_supplements
         )
@@ -991,6 +996,8 @@ class IncreaseWithStreamedResponse:
         )
         self.oauth_tokens = resources.OAuthTokensWithStreamingResponse(client.oauth_tokens)
         self.inbound_wire_transfers = resources.InboundWireTransfersWithStreamingResponse(client.inbound_wire_transfers)
+        self.digital_card_profiles = resources.DigitalCardProfilesWithStreamingResponse(client.digital_card_profiles)
+        self.physical_card_profiles = resources.PhysicalCardProfilesWithStreamingResponse(client.physical_card_profiles)
 
 
 class AsyncIncreaseWithStreamedResponse:
@@ -1008,7 +1015,6 @@ class AsyncIncreaseWithStreamedResponse:
         )
         self.cards = resources.AsyncCardsWithStreamingResponse(client.cards)
         self.card_disputes = resources.AsyncCardDisputesWithStreamingResponse(client.card_disputes)
-        self.card_profiles = resources.AsyncCardProfilesWithStreamingResponse(client.card_profiles)
         self.card_purchase_supplements = resources.AsyncCardPurchaseSupplementsWithStreamingResponse(
             client.card_purchase_supplements
         )
@@ -1067,6 +1073,12 @@ class AsyncIncreaseWithStreamedResponse:
         self.oauth_tokens = resources.AsyncOAuthTokensWithStreamingResponse(client.oauth_tokens)
         self.inbound_wire_transfers = resources.AsyncInboundWireTransfersWithStreamingResponse(
             client.inbound_wire_transfers
+        )
+        self.digital_card_profiles = resources.AsyncDigitalCardProfilesWithStreamingResponse(
+            client.digital_card_profiles
+        )
+        self.physical_card_profiles = resources.AsyncPhysicalCardProfilesWithStreamingResponse(
+            client.physical_card_profiles
         )
 
 

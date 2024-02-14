@@ -28,14 +28,19 @@ class RealTimePaymentsTransferListParams(TypedDict, total=False):
     Account.
     """
 
+    idempotency_key: str
+    """
+    Filter records to the one with the specified `idempotency_key` you chose for
+    that object. This value is unique across Increase and is used to ensure that a
+    request is only processed once. Learn more about
+    [idempotency](https://increase.com/documentation/idempotency-keys).
+    """
+
     limit: int
     """Limit the size of the list that is returned.
 
     The default (and maximum) is 100 objects.
     """
-
-    unique_identifier: str
-    """Filter records to the one with the specified `unique_identifier`."""
 
 
 class CreatedAt(TypedDict, total=False):

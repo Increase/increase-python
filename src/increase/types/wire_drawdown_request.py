@@ -41,6 +41,14 @@ class WireDrawdownRequest(BaseModel):
     be the identifier of the corresponding Transaction.
     """
 
+    idempotency_key: Optional[str] = None
+    """The idempotency key you chose for this object.
+
+    This value is unique across Increase and is used to ensure that a request is
+    only processed once. Learn more about
+    [idempotency](https://increase.com/documentation/idempotency-keys).
+    """
+
     message_to_recipient: str
     """The message the recipient will see as part of the drawdown request."""
 

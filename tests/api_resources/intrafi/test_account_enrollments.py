@@ -104,6 +104,7 @@ class TestAccountEnrollments:
         account_enrollment = client.intrafi.account_enrollments.list(
             account_id="string",
             cursor="string",
+            idempotency_key="x",
             limit=1,
             status={"in": ["pending_enrolling", "enrolled", "pending_unenrolling"]},
         )
@@ -257,6 +258,7 @@ class TestAsyncAccountEnrollments:
         account_enrollment = await async_client.intrafi.account_enrollments.list(
             account_id="string",
             cursor="string",
+            idempotency_key="x",
             limit=1,
             status={"in": ["pending_enrolling", "enrolled", "pending_unenrolling"]},
         )

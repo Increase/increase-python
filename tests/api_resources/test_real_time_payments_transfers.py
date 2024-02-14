@@ -45,7 +45,6 @@ class TestRealTimePaymentsTransfers:
             require_approval=True,
             ultimate_creditor_name="x",
             ultimate_debtor_name="x",
-            unique_identifier="x",
         )
         assert_matches_type(RealTimePaymentsTransfer, real_time_payments_transfer, path=["response"])
 
@@ -136,8 +135,8 @@ class TestRealTimePaymentsTransfers:
             },
             cursor="string",
             external_account_id="string",
+            idempotency_key="x",
             limit=1,
-            unique_identifier="x",
         )
         assert_matches_type(SyncPage[RealTimePaymentsTransfer], real_time_payments_transfer, path=["response"])
 
@@ -189,7 +188,6 @@ class TestAsyncRealTimePaymentsTransfers:
             require_approval=True,
             ultimate_creditor_name="x",
             ultimate_debtor_name="x",
-            unique_identifier="x",
         )
         assert_matches_type(RealTimePaymentsTransfer, real_time_payments_transfer, path=["response"])
 
@@ -280,8 +278,8 @@ class TestAsyncRealTimePaymentsTransfers:
             },
             cursor="string",
             external_account_id="string",
+            idempotency_key="x",
             limit=1,
-            unique_identifier="x",
         )
         assert_matches_type(AsyncPage[RealTimePaymentsTransfer], real_time_payments_transfer, path=["response"])
 

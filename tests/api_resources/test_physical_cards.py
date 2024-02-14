@@ -25,7 +25,6 @@ class TestPhysicalCards:
     def test_method_create(self, client: Increase) -> None:
         physical_card = client.physical_cards.create(
             card_id="card_oubs0hwk5rn6knuecxg2",
-            card_profile_id="card_profile_cox5y73lob2eqly18piy",
             cardholder={
                 "first_name": "Ian",
                 "last_name": "Crease",
@@ -47,7 +46,6 @@ class TestPhysicalCards:
     def test_method_create_with_all_params(self, client: Increase) -> None:
         physical_card = client.physical_cards.create(
             card_id="card_oubs0hwk5rn6knuecxg2",
-            card_profile_id="card_profile_cox5y73lob2eqly18piy",
             cardholder={
                 "first_name": "Ian",
                 "last_name": "Crease",
@@ -73,7 +71,6 @@ class TestPhysicalCards:
     def test_raw_response_create(self, client: Increase) -> None:
         response = client.physical_cards.with_raw_response.create(
             card_id="card_oubs0hwk5rn6knuecxg2",
-            card_profile_id="card_profile_cox5y73lob2eqly18piy",
             cardholder={
                 "first_name": "Ian",
                 "last_name": "Crease",
@@ -99,7 +96,6 @@ class TestPhysicalCards:
     def test_streaming_response_create(self, client: Increase) -> None:
         with client.physical_cards.with_streaming_response.create(
             card_id="card_oubs0hwk5rn6knuecxg2",
-            card_profile_id="card_profile_cox5y73lob2eqly18piy",
             cardholder={
                 "first_name": "Ian",
                 "last_name": "Crease",
@@ -219,6 +215,7 @@ class TestPhysicalCards:
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
             cursor="string",
+            idempotency_key="x",
             limit=1,
         )
         assert_matches_type(SyncPage[PhysicalCard], physical_card, path=["response"])
@@ -251,7 +248,6 @@ class TestAsyncPhysicalCards:
     async def test_method_create(self, async_client: AsyncIncrease) -> None:
         physical_card = await async_client.physical_cards.create(
             card_id="card_oubs0hwk5rn6knuecxg2",
-            card_profile_id="card_profile_cox5y73lob2eqly18piy",
             cardholder={
                 "first_name": "Ian",
                 "last_name": "Crease",
@@ -273,7 +269,6 @@ class TestAsyncPhysicalCards:
     async def test_method_create_with_all_params(self, async_client: AsyncIncrease) -> None:
         physical_card = await async_client.physical_cards.create(
             card_id="card_oubs0hwk5rn6knuecxg2",
-            card_profile_id="card_profile_cox5y73lob2eqly18piy",
             cardholder={
                 "first_name": "Ian",
                 "last_name": "Crease",
@@ -299,7 +294,6 @@ class TestAsyncPhysicalCards:
     async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
         response = await async_client.physical_cards.with_raw_response.create(
             card_id="card_oubs0hwk5rn6knuecxg2",
-            card_profile_id="card_profile_cox5y73lob2eqly18piy",
             cardholder={
                 "first_name": "Ian",
                 "last_name": "Crease",
@@ -325,7 +319,6 @@ class TestAsyncPhysicalCards:
     async def test_streaming_response_create(self, async_client: AsyncIncrease) -> None:
         async with async_client.physical_cards.with_streaming_response.create(
             card_id="card_oubs0hwk5rn6knuecxg2",
-            card_profile_id="card_profile_cox5y73lob2eqly18piy",
             cardholder={
                 "first_name": "Ian",
                 "last_name": "Crease",
@@ -445,6 +438,7 @@ class TestAsyncPhysicalCards:
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
             cursor="string",
+            idempotency_key="x",
             limit=1,
         )
         assert_matches_type(AsyncPage[PhysicalCard], physical_card, path=["response"])

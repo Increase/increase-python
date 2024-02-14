@@ -26,8 +26,8 @@ __all__ = [
     "APIMethodNotFoundError",
     "ObjectNotFoundError",
     "IdempotencyConflictError",
+    "IdempotencyKeyAlreadyUsedError",
     "InvalidOperationError",
-    "UniqueIdentifierAlreadyExistsError",
     "IdempotencyUnprocessableError",
     "RateLimitedError",
     "InternalServerError",
@@ -304,6 +304,29 @@ class IdempotencyConflictError(ConflictError):
         self.type = cast(Any, data.get("type"))
 
 
+class IdempotencyKeyAlreadyUsedError(ConflictError):
+    detail: Optional[str] = None
+
+    resource_id: str
+
+    status: Literal[409]
+
+    title: str
+
+    type: Literal["idempotency_key_already_used_error"]
+
+    def __init__(self, message: str, *, body: object, response: httpx.Response) -> None:
+        data = cast(Mapping[str, object], body if is_mapping(body) else {})
+        title = cast(Any, data.get("title"))
+        super().__init__(title or message, response=response, body=body)
+
+        self.title = title
+        self.detail = cast(Any, data.get("detail"))
+        self.resource_id = cast(Any, data.get("resource_id"))
+        self.status = cast(Any, data.get("status"))
+        self.type = cast(Any, data.get("type"))
+
+
 class InvalidOperationError(ConflictError):
     detail: Optional[str] = None
 
@@ -320,29 +343,6 @@ class InvalidOperationError(ConflictError):
 
         self.title = title
         self.detail = cast(Any, data.get("detail"))
-        self.status = cast(Any, data.get("status"))
-        self.type = cast(Any, data.get("type"))
-
-
-class UniqueIdentifierAlreadyExistsError(ConflictError):
-    detail: Optional[str] = None
-
-    resource_id: str
-
-    status: Literal[409]
-
-    title: str
-
-    type: Literal["unique_identifier_already_exists_error"]
-
-    def __init__(self, message: str, *, body: object, response: httpx.Response) -> None:
-        data = cast(Mapping[str, object], body if is_mapping(body) else {})
-        title = cast(Any, data.get("title"))
-        super().__init__(title or message, response=response, body=body)
-
-        self.title = title
-        self.detail = cast(Any, data.get("detail"))
-        self.resource_id = cast(Any, data.get("resource_id"))
         self.status = cast(Any, data.get("status"))
         self.type = cast(Any, data.get("type"))
 

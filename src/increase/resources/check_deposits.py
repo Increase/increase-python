@@ -133,6 +133,7 @@ class CheckDeposits(SyncAPIResource):
         account_id: str | NotGiven = NOT_GIVEN,
         created_at: check_deposit_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
+        idempotency_key: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -148,6 +149,11 @@ class CheckDeposits(SyncAPIResource):
           account_id: Filter Check Deposits to those belonging to the specified Account.
 
           cursor: Return the page of entries after this one.
+
+          idempotency_key: Filter records to the one with the specified `idempotency_key` you chose for
+              that object. This value is unique across Increase and is used to ensure that a
+              request is only processed once. Learn more about
+              [idempotency](https://increase.com/documentation/idempotency-keys).
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
@@ -173,6 +179,7 @@ class CheckDeposits(SyncAPIResource):
                         "account_id": account_id,
                         "created_at": created_at,
                         "cursor": cursor,
+                        "idempotency_key": idempotency_key,
                         "limit": limit,
                     },
                     check_deposit_list_params.CheckDepositListParams,
@@ -295,6 +302,7 @@ class AsyncCheckDeposits(AsyncAPIResource):
         account_id: str | NotGiven = NOT_GIVEN,
         created_at: check_deposit_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
+        idempotency_key: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -310,6 +318,11 @@ class AsyncCheckDeposits(AsyncAPIResource):
           account_id: Filter Check Deposits to those belonging to the specified Account.
 
           cursor: Return the page of entries after this one.
+
+          idempotency_key: Filter records to the one with the specified `idempotency_key` you chose for
+              that object. This value is unique across Increase and is used to ensure that a
+              request is only processed once. Learn more about
+              [idempotency](https://increase.com/documentation/idempotency-keys).
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
@@ -335,6 +348,7 @@ class AsyncCheckDeposits(AsyncAPIResource):
                         "account_id": account_id,
                         "created_at": created_at,
                         "cursor": cursor,
+                        "idempotency_key": idempotency_key,
                         "limit": limit,
                     },
                     check_deposit_list_params.CheckDepositListParams,

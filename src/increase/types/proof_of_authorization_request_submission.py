@@ -34,6 +34,14 @@ class ProofOfAuthorizationRequestSubmission(BaseModel):
     created_at: datetime
     """The time the Proof of Authorization Request Submission was created."""
 
+    idempotency_key: Optional[str] = None
+    """The idempotency key you chose for this object.
+
+    This value is unique across Increase and is used to ensure that a request is
+    only processed once. Learn more about
+    [idempotency](https://increase.com/documentation/idempotency-keys).
+    """
+
     proof_of_authorization_request_id: str
     """ID of the proof of authorization request."""
 

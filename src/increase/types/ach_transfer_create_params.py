@@ -2,13 +2,20 @@
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Union, Iterable
 from datetime import date
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
-__all__ = ["ACHTransferCreateParams"]
+__all__ = [
+    "ACHTransferCreateParams",
+    "Addenda",
+    "AddendaFreeform",
+    "AddendaFreeformEntry",
+    "AddendaPaymentOrderRemittanceAdvice",
+    "AddendaPaymentOrderRemittanceAdviceInvoice",
+]
 
 
 class ACHTransferCreateParams(TypedDict, total=False):
@@ -37,7 +44,7 @@ class ACHTransferCreateParams(TypedDict, total=False):
     account_number: str
     """The account number for the destination account."""
 
-    addendum: str
+    addenda: Addenda
     """Additional information that will be sent to the recipient.
 
     This is included in the transfer data sent to the receiving bank.
@@ -65,6 +72,16 @@ class ACHTransferCreateParams(TypedDict, total=False):
     """The name by which the recipient knows you.
 
     This is included in the transfer data sent to the receiving bank.
+    """
+
+    destination_account_holder: Literal["business", "individual", "unknown"]
+    """
+    The type of entity that owns the account to which the ACH Transfer is being
+    sent.
+
+    - `business` - The External Account is owned by a business.
+    - `individual` - The External Account is owned by an individual.
+    - `unknown` - It's unknown what kind of entity owns the External Account.
     """
 
     effective_date: Annotated[Union[str, date], PropertyInfo(format="iso8601")]
@@ -115,9 +132,54 @@ class ACHTransferCreateParams(TypedDict, total=False):
     - `internet_initiated` - Internet Initiated (WEB).
     """
 
-    unique_identifier: str
-    """A unique identifier you choose for the object.
 
-    Reusing this identifier for another object will result in an error. You can
-    query for the object associated with this identifier using the List endpoint.
+class AddendaFreeformEntry(TypedDict, total=False):
+    payment_related_information: Required[str]
+    """The payment related information passed in the addendum."""
+
+
+class AddendaFreeform(TypedDict, total=False):
+    entries: Required[Iterable[AddendaFreeformEntry]]
+    """Each entry represents an addendum sent with the transfer.
+
+    Please reach out to [support@increase.com](mailto:support@increase.com) to send
+    more than one addendum.
+    """
+
+
+class AddendaPaymentOrderRemittanceAdviceInvoice(TypedDict, total=False):
+    invoice_number: Required[str]
+    """The invoice number for this reference, determined in advance with the receiver."""
+
+    paid_amount: Required[int]
+    """The amount that was paid for this invoice in the minor unit of its currency.
+
+    For dollars, for example, this is cents.
+    """
+
+
+class AddendaPaymentOrderRemittanceAdvice(TypedDict, total=False):
+    invoices: Required[Iterable[AddendaPaymentOrderRemittanceAdviceInvoice]]
+    """ASC X12 RMR records for this specific transfer."""
+
+
+class Addenda(TypedDict, total=False):
+    category: Required[Literal["freeform", "payment_order_remittance_advice"]]
+    """The type of addenda to pass with the transfer.
+
+    - `freeform` - Unstructured `payment_related_information` passed through with
+      the transfer.
+    - `payment_order_remittance_advice` - Structured ASC X12 820 remittance advice
+      records. Please reach out to
+      [support@increase.com](mailto:support@increase.com) for more information.
+    """
+
+    freeform: AddendaFreeform
+    """Unstructured `payment_related_information` passed through with the transfer."""
+
+    payment_order_remittance_advice: AddendaPaymentOrderRemittanceAdvice
+    """Structured ASC X12 820 remittance advice records.
+
+    Please reach out to [support@increase.com](mailto:support@increase.com) for more
+    information.
     """

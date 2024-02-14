@@ -187,6 +187,7 @@ class Accounts(SyncAPIResource):
         created_at: account_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         entity_id: str | NotGiven = NOT_GIVEN,
+        idempotency_key: str | NotGiven = NOT_GIVEN,
         informational_entity_id: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         status: Literal["open", "closed"] | NotGiven = NOT_GIVEN,
@@ -204,6 +205,11 @@ class Accounts(SyncAPIResource):
           cursor: Return the page of entries after this one.
 
           entity_id: Filter Accounts for those belonging to the specified Entity.
+
+          idempotency_key: Filter records to the one with the specified `idempotency_key` you chose for
+              that object. This value is unique across Increase and is used to ensure that a
+              request is only processed once. Learn more about
+              [idempotency](https://increase.com/documentation/idempotency-keys).
 
           informational_entity_id: Filter Accounts for those belonging to the specified Entity as informational.
 
@@ -236,6 +242,7 @@ class Accounts(SyncAPIResource):
                         "created_at": created_at,
                         "cursor": cursor,
                         "entity_id": entity_id,
+                        "idempotency_key": idempotency_key,
                         "informational_entity_id": informational_entity_id,
                         "limit": limit,
                         "status": status,
@@ -488,6 +495,7 @@ class AsyncAccounts(AsyncAPIResource):
         created_at: account_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         entity_id: str | NotGiven = NOT_GIVEN,
+        idempotency_key: str | NotGiven = NOT_GIVEN,
         informational_entity_id: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         status: Literal["open", "closed"] | NotGiven = NOT_GIVEN,
@@ -505,6 +513,11 @@ class AsyncAccounts(AsyncAPIResource):
           cursor: Return the page of entries after this one.
 
           entity_id: Filter Accounts for those belonging to the specified Entity.
+
+          idempotency_key: Filter records to the one with the specified `idempotency_key` you chose for
+              that object. This value is unique across Increase and is used to ensure that a
+              request is only processed once. Learn more about
+              [idempotency](https://increase.com/documentation/idempotency-keys).
 
           informational_entity_id: Filter Accounts for those belonging to the specified Entity as informational.
 
@@ -537,6 +550,7 @@ class AsyncAccounts(AsyncAPIResource):
                         "created_at": created_at,
                         "cursor": cursor,
                         "entity_id": entity_id,
+                        "idempotency_key": idempotency_key,
                         "informational_entity_id": informational_entity_id,
                         "limit": limit,
                         "status": status,

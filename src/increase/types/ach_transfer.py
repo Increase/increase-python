@@ -11,6 +11,11 @@ from .._models import BaseModel
 __all__ = [
     "ACHTransfer",
     "Acknowledgement",
+    "Addenda",
+    "AddendaFreeform",
+    "AddendaFreeformEntry",
+    "AddendaPaymentOrderRemittanceAdvice",
+    "AddendaPaymentOrderRemittanceAdviceInvoice",
     "Approval",
     "Cancellation",
     "NotificationsOfChange",
@@ -24,6 +29,62 @@ class Acknowledgement(BaseModel):
     """
     When the Federal Reserve acknowledged the submitted file containing this
     transfer.
+    """
+
+
+class AddendaFreeformEntry(BaseModel):
+    payment_related_information: str
+    """The payment related information passed in the addendum."""
+
+
+class AddendaFreeform(BaseModel):
+    entries: List[AddendaFreeformEntry]
+    """Each entry represents an addendum sent with the transfer."""
+
+
+class AddendaPaymentOrderRemittanceAdviceInvoice(BaseModel):
+    invoice_number: str
+    """The invoice number for this reference, determined in advance with the receiver."""
+
+    paid_amount: int
+    """The amount that was paid for this invoice in the minor unit of its currency.
+
+    For dollars, for example, this is cents.
+    """
+
+
+class AddendaPaymentOrderRemittanceAdvice(BaseModel):
+    invoices: List[AddendaPaymentOrderRemittanceAdviceInvoice]
+    """ASC X12 RMR records for this specific transfer."""
+
+
+class Addenda(BaseModel):
+    category: Literal["freeform", "payment_order_remittance_advice", "other"]
+    """The type of the resource.
+
+    We may add additional possible values for this enum over time; your application
+    should be able to handle such additions gracefully.
+
+    - `freeform` - ACH Transfer Freeform Addenda: details will be under the
+      `freeform` object.
+    - `payment_order_remittance_advice` - ACH Transfer Payment Order Remittance
+      Advice Addenda: details will be under the `payment_order_remittance_advice`
+      object.
+    - `other` - Unknown addenda type.
+    """
+
+    freeform: Optional[AddendaFreeform] = None
+    """An ACH Transfer Freeform Addenda object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `freeform`.
+    """
+
+    payment_order_remittance_advice: Optional[AddendaPaymentOrderRemittanceAdvice] = None
+    """An ACH Transfer Payment Order Remittance Advice Addenda object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `payment_order_remittance_advice`.
     """
 
 
@@ -422,7 +483,7 @@ class ACHTransfer(BaseModel):
     Increase submits.
     """
 
-    addendum: Optional[str] = None
+    addenda: Optional[Addenda] = None
     """Additional information that will be sent to the recipient."""
 
     amount: int
@@ -476,6 +537,16 @@ class ACHTransfer(BaseModel):
     - `USD` - US Dollar (USD)
     """
 
+    destination_account_holder: Literal["business", "individual", "unknown"]
+    """
+    The type of entity that owns the account to which the ACH Transfer is being
+    sent.
+
+    - `business` - The External Account is owned by a business.
+    - `individual` - The External Account is owned by an individual.
+    - `unknown` - It's unknown what kind of entity owns the External Account.
+    """
+
     effective_date: Optional[date] = None
     """
     The transfer effective date in
@@ -490,6 +561,14 @@ class ACHTransfer(BaseModel):
 
     - `checking` - A checking account.
     - `savings` - A savings account.
+    """
+
+    idempotency_key: Optional[str] = None
+    """The idempotency key you chose for this object.
+
+    This value is unique across Increase and is used to ensure that a request is
+    only processed once. Learn more about
+    [idempotency](https://increase.com/documentation/idempotency-keys).
     """
 
     individual_id: Optional[str] = None
@@ -578,6 +657,3 @@ class ACHTransfer(BaseModel):
 
     For this resource it will always be `ach_transfer`.
     """
-
-    unique_identifier: Optional[str] = None
-    """The unique identifier you chose for this object."""

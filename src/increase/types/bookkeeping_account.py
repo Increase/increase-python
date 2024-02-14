@@ -25,6 +25,14 @@ class BookkeepingAccount(BaseModel):
     entity_id: Optional[str] = None
     """The Entity associated with this bookkeeping account."""
 
+    idempotency_key: Optional[str] = None
+    """The idempotency key you chose for this object.
+
+    This value is unique across Increase and is used to ensure that a request is
+    only processed once. Learn more about
+    [idempotency](https://increase.com/documentation/idempotency-keys).
+    """
+
     name: str
     """The name you choose for the account."""
 
