@@ -121,6 +121,7 @@ class Exclusions(SyncAPIResource):
         *,
         cursor: str | NotGiven = NOT_GIVEN,
         entity_id: str | NotGiven = NOT_GIVEN,
+        idempotency_key: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -136,6 +137,11 @@ class Exclusions(SyncAPIResource):
           cursor: Return the page of entries after this one.
 
           entity_id: Filter IntraFi Exclusions for those belonging to the specified Entity.
+
+          idempotency_key: Filter records to the one with the specified `idempotency_key` you chose for
+              that object. This value is unique across Increase and is used to ensure that a
+              request is only processed once. Learn more about
+              [idempotency](https://increase.com/documentation/idempotency-keys).
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
@@ -160,6 +166,7 @@ class Exclusions(SyncAPIResource):
                     {
                         "cursor": cursor,
                         "entity_id": entity_id,
+                        "idempotency_key": idempotency_key,
                         "limit": limit,
                     },
                     exclusion_list_params.ExclusionListParams,
@@ -316,6 +323,7 @@ class AsyncExclusions(AsyncAPIResource):
         *,
         cursor: str | NotGiven = NOT_GIVEN,
         entity_id: str | NotGiven = NOT_GIVEN,
+        idempotency_key: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -331,6 +339,11 @@ class AsyncExclusions(AsyncAPIResource):
           cursor: Return the page of entries after this one.
 
           entity_id: Filter IntraFi Exclusions for those belonging to the specified Entity.
+
+          idempotency_key: Filter records to the one with the specified `idempotency_key` you chose for
+              that object. This value is unique across Increase and is used to ensure that a
+              request is only processed once. Learn more about
+              [idempotency](https://increase.com/documentation/idempotency-keys).
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
@@ -355,6 +368,7 @@ class AsyncExclusions(AsyncAPIResource):
                     {
                         "cursor": cursor,
                         "entity_id": entity_id,
+                        "idempotency_key": idempotency_key,
                         "limit": limit,
                     },
                     exclusion_list_params.ExclusionListParams,

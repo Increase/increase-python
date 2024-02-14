@@ -90,6 +90,14 @@ class AccountTransfer(BaseModel):
     destination_transaction_id: Optional[str] = None
     """The ID for the transaction receiving the transfer."""
 
+    idempotency_key: Optional[str] = None
+    """The idempotency key you chose for this object.
+
+    This value is unique across Increase and is used to ensure that a request is
+    only processed once. Learn more about
+    [idempotency](https://increase.com/documentation/idempotency-keys).
+    """
+
     network: Literal["account"]
     """The transfer's network."""
 
@@ -117,6 +125,3 @@ class AccountTransfer(BaseModel):
 
     For this resource it will always be `account_transfer`.
     """
-
-    unique_identifier: Optional[str] = None
-    """The unique identifier you chose for this object."""

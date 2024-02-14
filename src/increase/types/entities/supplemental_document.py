@@ -1,5 +1,6 @@
 # File generated from our OpenAPI spec by Stainless.
 
+from typing import Optional
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -17,6 +18,14 @@ class SupplementalDocument(BaseModel):
 
     file_id: str
     """The File containing the document."""
+
+    idempotency_key: Optional[str] = None
+    """The idempotency key you chose for this object.
+
+    This value is unique across Increase and is used to ensure that a request is
+    only processed once. Learn more about
+    [idempotency](https://increase.com/documentation/idempotency-keys).
+    """
 
     type: Literal["entity_supplemental_document"]
     """A constant representing the object's type.

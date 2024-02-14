@@ -116,6 +116,7 @@ class TestBookkeepingAccounts:
     def test_method_list_with_all_params(self, client: Increase) -> None:
         bookkeeping_account = client.bookkeeping_accounts.list(
             cursor="string",
+            idempotency_key="x",
             limit=1,
         )
         assert_matches_type(SyncPage[BookkeepingAccount], bookkeeping_account, path=["response"])
@@ -286,6 +287,7 @@ class TestAsyncBookkeepingAccounts:
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
         bookkeeping_account = await async_client.bookkeeping_accounts.list(
             cursor="string",
+            idempotency_key="x",
             limit=1,
         )
         assert_matches_type(AsyncPage[BookkeepingAccount], bookkeeping_account, path=["response"])

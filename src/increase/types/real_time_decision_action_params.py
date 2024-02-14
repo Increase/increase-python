@@ -55,8 +55,14 @@ class DigitalWalletAuthentication(TypedDict, total=False):
 
 
 class DigitalWalletTokenApproval(TypedDict, total=False):
-    card_profile_id: Required[str]
+    card_profile_id: str
     """The identifier of the Card Profile to assign to the Digital Wallet token."""
+
+    digital_card_profile_id: str
+    """
+    The identifier of the Digital Card Profile to assign to the Digital Wallet
+    token.
+    """
 
     email: str
     """

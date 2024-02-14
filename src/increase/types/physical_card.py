@@ -109,6 +109,17 @@ class PhysicalCard(BaseModel):
     the Physical Card was created.
     """
 
+    idempotency_key: Optional[str] = None
+    """The idempotency key you chose for this object.
+
+    This value is unique across Increase and is used to ensure that a request is
+    only processed once. Learn more about
+    [idempotency](https://increase.com/documentation/idempotency-keys).
+    """
+
+    physical_card_profile_id: Optional[str] = None
+    """The Physical Card Profile used for this Physical Card."""
+
     shipment: Shipment
     """The details used to ship this physical card."""
 

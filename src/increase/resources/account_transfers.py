@@ -37,7 +37,6 @@ class AccountTransfers(SyncAPIResource):
         description: str,
         destination_account_id: str,
         require_approval: bool | NotGiven = NOT_GIVEN,
-        unique_identifier: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -61,10 +60,6 @@ class AccountTransfers(SyncAPIResource):
 
           require_approval: Whether the transfer requires explicit approval via the dashboard or API.
 
-          unique_identifier: A unique identifier you choose for the object. Reusing this identifier for
-              another object will result in an error. You can query for the object associated
-              with this identifier using the List endpoint.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -84,7 +79,6 @@ class AccountTransfers(SyncAPIResource):
                     "description": description,
                     "destination_account_id": destination_account_id,
                     "require_approval": require_approval,
-                    "unique_identifier": unique_identifier,
                 },
                 account_transfer_create_params.AccountTransferCreateParams,
             ),
@@ -141,8 +135,8 @@ class AccountTransfers(SyncAPIResource):
         account_id: str | NotGiven = NOT_GIVEN,
         created_at: account_transfer_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
+        idempotency_key: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
-        unique_identifier: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -158,10 +152,13 @@ class AccountTransfers(SyncAPIResource):
 
           cursor: Return the page of entries after this one.
 
+          idempotency_key: Filter records to the one with the specified `idempotency_key` you chose for
+              that object. This value is unique across Increase and is used to ensure that a
+              request is only processed once. Learn more about
+              [idempotency](https://increase.com/documentation/idempotency-keys).
+
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
-
-          unique_identifier: Filter records to the one with the specified `unique_identifier`.
 
           extra_headers: Send extra headers
 
@@ -184,8 +181,8 @@ class AccountTransfers(SyncAPIResource):
                         "account_id": account_id,
                         "created_at": created_at,
                         "cursor": cursor,
+                        "idempotency_key": idempotency_key,
                         "limit": limit,
-                        "unique_identifier": unique_identifier,
                     },
                     account_transfer_list_params.AccountTransferListParams,
                 ),
@@ -299,7 +296,6 @@ class AsyncAccountTransfers(AsyncAPIResource):
         description: str,
         destination_account_id: str,
         require_approval: bool | NotGiven = NOT_GIVEN,
-        unique_identifier: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -323,10 +319,6 @@ class AsyncAccountTransfers(AsyncAPIResource):
 
           require_approval: Whether the transfer requires explicit approval via the dashboard or API.
 
-          unique_identifier: A unique identifier you choose for the object. Reusing this identifier for
-              another object will result in an error. You can query for the object associated
-              with this identifier using the List endpoint.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -346,7 +338,6 @@ class AsyncAccountTransfers(AsyncAPIResource):
                     "description": description,
                     "destination_account_id": destination_account_id,
                     "require_approval": require_approval,
-                    "unique_identifier": unique_identifier,
                 },
                 account_transfer_create_params.AccountTransferCreateParams,
             ),
@@ -403,8 +394,8 @@ class AsyncAccountTransfers(AsyncAPIResource):
         account_id: str | NotGiven = NOT_GIVEN,
         created_at: account_transfer_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
+        idempotency_key: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
-        unique_identifier: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -420,10 +411,13 @@ class AsyncAccountTransfers(AsyncAPIResource):
 
           cursor: Return the page of entries after this one.
 
+          idempotency_key: Filter records to the one with the specified `idempotency_key` you chose for
+              that object. This value is unique across Increase and is used to ensure that a
+              request is only processed once. Learn more about
+              [idempotency](https://increase.com/documentation/idempotency-keys).
+
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
-
-          unique_identifier: Filter records to the one with the specified `unique_identifier`.
 
           extra_headers: Send extra headers
 
@@ -446,8 +440,8 @@ class AsyncAccountTransfers(AsyncAPIResource):
                         "account_id": account_id,
                         "created_at": created_at,
                         "cursor": cursor,
+                        "idempotency_key": idempotency_key,
                         "limit": limit,
-                        "unique_identifier": unique_identifier,
                     },
                     account_transfer_list_params.AccountTransferListParams,
                 ),

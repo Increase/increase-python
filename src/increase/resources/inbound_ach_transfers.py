@@ -77,6 +77,7 @@ class InboundACHTransfers(SyncAPIResource):
         self,
         *,
         account_id: str | NotGiven = NOT_GIVEN,
+        account_number_id: str | NotGiven = NOT_GIVEN,
         created_at: inbound_ach_transfer_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
@@ -93,6 +94,8 @@ class InboundACHTransfers(SyncAPIResource):
 
         Args:
           account_id: Filter Inbound ACH Tranfers to ones belonging to the specified Account.
+
+          account_number_id: Filter Inbound ACH Tranfers to ones belonging to the specified Account Number.
 
           cursor: Return the page of entries after this one.
 
@@ -126,6 +129,7 @@ class InboundACHTransfers(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "account_id": account_id,
+                        "account_number_id": account_number_id,
                         "created_at": created_at,
                         "cursor": cursor,
                         "limit": limit,
@@ -373,6 +377,7 @@ class AsyncInboundACHTransfers(AsyncAPIResource):
         self,
         *,
         account_id: str | NotGiven = NOT_GIVEN,
+        account_number_id: str | NotGiven = NOT_GIVEN,
         created_at: inbound_ach_transfer_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
@@ -389,6 +394,8 @@ class AsyncInboundACHTransfers(AsyncAPIResource):
 
         Args:
           account_id: Filter Inbound ACH Tranfers to ones belonging to the specified Account.
+
+          account_number_id: Filter Inbound ACH Tranfers to ones belonging to the specified Account Number.
 
           cursor: Return the page of entries after this one.
 
@@ -422,6 +429,7 @@ class AsyncInboundACHTransfers(AsyncAPIResource):
                 query=maybe_transform(
                     {
                         "account_id": account_id,
+                        "account_number_id": account_number_id,
                         "created_at": created_at,
                         "cursor": cursor,
                         "limit": limit,

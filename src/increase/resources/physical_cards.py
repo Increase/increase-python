@@ -40,7 +40,6 @@ class PhysicalCards(SyncAPIResource):
         self,
         *,
         card_id: str,
-        card_profile_id: str,
         cardholder: physical_card_create_params.Cardholder,
         shipment: physical_card_create_params.Shipment,
         physical_card_profile_id: str | NotGiven = NOT_GIVEN,
@@ -57,8 +56,6 @@ class PhysicalCards(SyncAPIResource):
 
         Args:
           card_id: The underlying card representing this physical card.
-
-          card_profile_id: The card profile to use for this physical card.
 
           cardholder: Details about the cardholder, as it will appear on the physical card.
 
@@ -81,7 +78,6 @@ class PhysicalCards(SyncAPIResource):
             body=maybe_transform(
                 {
                     "card_id": card_id,
-                    "card_profile_id": card_profile_id,
                     "cardholder": cardholder,
                     "shipment": shipment,
                     "physical_card_profile_id": physical_card_profile_id,
@@ -189,6 +185,7 @@ class PhysicalCards(SyncAPIResource):
         card_id: str | NotGiven = NOT_GIVEN,
         created_at: physical_card_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
+        idempotency_key: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -204,6 +201,11 @@ class PhysicalCards(SyncAPIResource):
           card_id: Filter Physical Cards to ones belonging to the specified Card.
 
           cursor: Return the page of entries after this one.
+
+          idempotency_key: Filter records to the one with the specified `idempotency_key` you chose for
+              that object. This value is unique across Increase and is used to ensure that a
+              request is only processed once. Learn more about
+              [idempotency](https://increase.com/documentation/idempotency-keys).
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
@@ -229,6 +231,7 @@ class PhysicalCards(SyncAPIResource):
                         "card_id": card_id,
                         "created_at": created_at,
                         "cursor": cursor,
+                        "idempotency_key": idempotency_key,
                         "limit": limit,
                     },
                     physical_card_list_params.PhysicalCardListParams,
@@ -251,7 +254,6 @@ class AsyncPhysicalCards(AsyncAPIResource):
         self,
         *,
         card_id: str,
-        card_profile_id: str,
         cardholder: physical_card_create_params.Cardholder,
         shipment: physical_card_create_params.Shipment,
         physical_card_profile_id: str | NotGiven = NOT_GIVEN,
@@ -268,8 +270,6 @@ class AsyncPhysicalCards(AsyncAPIResource):
 
         Args:
           card_id: The underlying card representing this physical card.
-
-          card_profile_id: The card profile to use for this physical card.
 
           cardholder: Details about the cardholder, as it will appear on the physical card.
 
@@ -292,7 +292,6 @@ class AsyncPhysicalCards(AsyncAPIResource):
             body=maybe_transform(
                 {
                     "card_id": card_id,
-                    "card_profile_id": card_profile_id,
                     "cardholder": cardholder,
                     "shipment": shipment,
                     "physical_card_profile_id": physical_card_profile_id,
@@ -400,6 +399,7 @@ class AsyncPhysicalCards(AsyncAPIResource):
         card_id: str | NotGiven = NOT_GIVEN,
         created_at: physical_card_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
+        idempotency_key: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -415,6 +415,11 @@ class AsyncPhysicalCards(AsyncAPIResource):
           card_id: Filter Physical Cards to ones belonging to the specified Card.
 
           cursor: Return the page of entries after this one.
+
+          idempotency_key: Filter records to the one with the specified `idempotency_key` you chose for
+              that object. This value is unique across Increase and is used to ensure that a
+              request is only processed once. Learn more about
+              [idempotency](https://increase.com/documentation/idempotency-keys).
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
@@ -440,6 +445,7 @@ class AsyncPhysicalCards(AsyncAPIResource):
                         "card_id": card_id,
                         "created_at": created_at,
                         "cursor": cursor,
+                        "idempotency_key": idempotency_key,
                         "limit": limit,
                     },
                     physical_card_list_params.PhysicalCardListParams,

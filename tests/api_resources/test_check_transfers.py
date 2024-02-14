@@ -58,7 +58,6 @@ class TestCheckTransfers:
             },
             require_approval=True,
             source_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
-            unique_identifier="x",
         )
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
@@ -142,8 +141,8 @@ class TestCheckTransfers:
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
             cursor="string",
+            idempotency_key="x",
             limit=1,
-            unique_identifier="x",
         )
         assert_matches_type(SyncPage[CheckTransfer], check_transfer, path=["response"])
 
@@ -335,7 +334,6 @@ class TestAsyncCheckTransfers:
             },
             require_approval=True,
             source_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
-            unique_identifier="x",
         )
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
@@ -419,8 +417,8 @@ class TestAsyncCheckTransfers:
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
             cursor="string",
+            idempotency_key="x",
             limit=1,
-            unique_identifier="x",
         )
         assert_matches_type(AsyncPage[CheckTransfer], check_transfer, path=["response"])
 

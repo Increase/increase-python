@@ -201,6 +201,14 @@ class RealTimePaymentsTransfer(BaseModel):
     external_account_id: Optional[str] = None
     """The identifier of the External Account the transfer was made to, if any."""
 
+    idempotency_key: Optional[str] = None
+    """The idempotency key you chose for this object.
+
+    This value is unique across Increase and is used to ensure that a request is
+    only processed once. Learn more about
+    [idempotency](https://increase.com/documentation/idempotency-keys).
+    """
+
     pending_transaction_id: Optional[str] = None
     """The ID for the pending transaction representing the transfer.
 
@@ -260,6 +268,3 @@ class RealTimePaymentsTransfer(BaseModel):
     """
     The name of the the party on whose behalf the debtor is instructing the payment.
     """
-
-    unique_identifier: Optional[str] = None
-    """The unique identifier you chose for this object."""

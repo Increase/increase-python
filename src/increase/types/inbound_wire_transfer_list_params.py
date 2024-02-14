@@ -15,6 +15,9 @@ class InboundWireTransferListParams(TypedDict, total=False):
     account_id: str
     """Filter Inbound Wire Tranfers to ones belonging to the specified Account."""
 
+    account_number_id: str
+    """Filter Inbound Wire Tranfers to ones belonging to the specified Account Number."""
+
     created_at: CreatedAt
 
     cursor: str

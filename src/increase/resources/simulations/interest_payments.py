@@ -8,6 +8,7 @@ from datetime import datetime
 import httpx
 
 from ... import _legacy_response
+from ...types import Transaction
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform
 from ..._compat import cached_property
@@ -16,7 +17,7 @@ from ..._response import to_streamed_response_wrapper, async_to_streamed_respons
 from ..._base_client import (
     make_request_options,
 )
-from ...types.simulations import InterestPaymentSimulationResult, interest_payment_create_params
+from ...types.simulations import interest_payment_create_params
 
 __all__ = ["InterestPayments", "AsyncInterestPayments"]
 
@@ -44,7 +45,7 @@ class InterestPayments(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> InterestPaymentSimulationResult:
+    ) -> Transaction:
         """Simulates an interest payment to your account.
 
         In production, this happens
@@ -87,7 +88,7 @@ class InterestPayments(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=InterestPaymentSimulationResult,
+            cast_to=Transaction,
         )
 
 
@@ -114,7 +115,7 @@ class AsyncInterestPayments(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> InterestPaymentSimulationResult:
+    ) -> Transaction:
         """Simulates an interest payment to your account.
 
         In production, this happens
@@ -157,7 +158,7 @@ class AsyncInterestPayments(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=InterestPaymentSimulationResult,
+            cast_to=Transaction,
         )
 
 

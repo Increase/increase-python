@@ -1,5 +1,6 @@
 # File generated from our OpenAPI spec by Stainless.
 
+from typing import Optional
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -11,6 +12,14 @@ __all__ = ["ExternalAccount"]
 class ExternalAccount(BaseModel):
     id: str
     """The External Account's identifier."""
+
+    account_holder: Literal["business", "individual", "unknown"]
+    """The type of entity that owns the External Account.
+
+    - `business` - The External Account is owned by a business.
+    - `individual` - The External Account is owned by an individual.
+    - `unknown` - It's unknown what kind of entity owns the External Account.
+    """
 
     account_number: str
     """The destination account number."""
@@ -30,6 +39,14 @@ class ExternalAccount(BaseModel):
     - `checking` - A checking account.
     - `savings` - A savings account.
     - `other` - A different type of account.
+    """
+
+    idempotency_key: Optional[str] = None
+    """The idempotency key you chose for this object.
+
+    This value is unique across Increase and is used to ensure that a request is
+    only processed once. Learn more about
+    [idempotency](https://increase.com/documentation/idempotency-keys).
     """
 
     routing_number: str

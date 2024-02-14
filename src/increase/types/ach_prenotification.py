@@ -358,6 +358,14 @@ class ACHPrenotification(BaseModel):
     The effective date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
     """
 
+    idempotency_key: Optional[str] = None
+    """The idempotency key you chose for this object.
+
+    This value is unique across Increase and is used to ensure that a request is
+    only processed once. Learn more about
+    [idempotency](https://increase.com/documentation/idempotency-keys).
+    """
+
     notifications_of_change: List[NotificationsOfChange]
     """
     If the receiving bank notifies that future transfers should use different

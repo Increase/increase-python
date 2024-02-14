@@ -129,21 +129,6 @@ Methods:
 - <code title="get /card_disputes/{card_dispute_id}">client.card_disputes.<a href="./src/increase/resources/card_disputes.py">retrieve</a>(card_dispute_id) -> <a href="./src/increase/types/card_dispute.py">CardDispute</a></code>
 - <code title="get /card_disputes">client.card_disputes.<a href="./src/increase/resources/card_disputes.py">list</a>(\*\*<a href="src/increase/types/card_dispute_list_params.py">params</a>) -> <a href="./src/increase/types/card_dispute.py">SyncPage[CardDispute]</a></code>
 
-# CardProfiles
-
-Types:
-
-```python
-from increase.types import CardProfile
-```
-
-Methods:
-
-- <code title="post /card_profiles">client.card_profiles.<a href="./src/increase/resources/card_profiles.py">create</a>(\*\*<a href="src/increase/types/card_profile_create_params.py">params</a>) -> <a href="./src/increase/types/card_profile.py">CardProfile</a></code>
-- <code title="get /card_profiles/{card_profile_id}">client.card_profiles.<a href="./src/increase/resources/card_profiles.py">retrieve</a>(card_profile_id) -> <a href="./src/increase/types/card_profile.py">CardProfile</a></code>
-- <code title="get /card_profiles">client.card_profiles.<a href="./src/increase/resources/card_profiles.py">list</a>(\*\*<a href="src/increase/types/card_profile_list_params.py">params</a>) -> <a href="./src/increase/types/card_profile.py">SyncPage[CardProfile]</a></code>
-- <code title="post /card_profiles/{card_profile_id}/archive">client.card_profiles.<a href="./src/increase/resources/card_profiles.py">archive</a>(card_profile_id) -> <a href="./src/increase/types/card_profile.py">CardProfile</a></code>
-
 # CardPurchaseSupplements
 
 Types:
@@ -533,6 +518,13 @@ Methods:
 
 # Simulations
 
+Methods:
+
+- <code title="post /simulations/card_authorization_expirations">client.simulations.<a href="./src/increase/resources/simulations/simulations.py">card_authorization_expirations</a>(\*\*<a href="src/increase/types/simulation_card_authorization_expirations_params.py">params</a>) -> <a href="./src/increase/types/card_payment.py">CardPayment</a></code>
+- <code title="post /simulations/card_fuel_confirmations">client.simulations.<a href="./src/increase/resources/simulations/simulations.py">card_fuel_confirmations</a>(\*\*<a href="src/increase/types/simulation_card_fuel_confirmations_params.py">params</a>) -> <a href="./src/increase/types/card_payment.py">CardPayment</a></code>
+- <code title="post /simulations/card_increments">client.simulations.<a href="./src/increase/resources/simulations/simulations.py">card_increments</a>(\*\*<a href="src/increase/types/simulation_card_increments_params.py">params</a>) -> <a href="./src/increase/types/card_payment.py">CardPayment</a></code>
+- <code title="post /simulations/card_reversals">client.simulations.<a href="./src/increase/resources/simulations/simulations.py">card_reversals</a>(\*\*<a href="src/increase/types/simulation_card_reversals_params.py">params</a>) -> <a href="./src/increase/types/card_payment.py">CardPayment</a></code>
+
 ## AccountTransfers
 
 Methods:
@@ -558,12 +550,6 @@ Methods:
 Methods:
 
 - <code title="post /simulations/card_disputes/{card_dispute_id}/action">client.simulations.card_disputes.<a href="./src/increase/resources/simulations/card_disputes.py">action</a>(card_dispute_id, \*\*<a href="src/increase/types/simulations/card_dispute_action_params.py">params</a>) -> <a href="./src/increase/types/card_dispute.py">CardDispute</a></code>
-
-## CardProfiles
-
-Methods:
-
-- <code title="post /simulations/card_profiles/{card_profile_id}/approve">client.simulations.card_profiles.<a href="./src/increase/resources/simulations/card_profiles.py">approve</a>(card_profile_id) -> <a href="./src/increase/types/card_profile.py">CardProfile</a></code>
 
 ## CardRefunds
 
@@ -630,15 +616,9 @@ Methods:
 
 ## InterestPayments
 
-Types:
-
-```python
-from increase.types.simulations import InterestPaymentSimulationResult
-```
-
 Methods:
 
-- <code title="post /simulations/interest_payment">client.simulations.interest_payments.<a href="./src/increase/resources/simulations/interest_payments.py">create</a>(\*\*<a href="src/increase/types/simulations/interest_payment_create_params.py">params</a>) -> <a href="./src/increase/types/simulations/interest_payment_simulation_result.py">InterestPaymentSimulationResult</a></code>
+- <code title="post /simulations/interest_payment">client.simulations.interest_payments.<a href="./src/increase/resources/simulations/interest_payments.py">create</a>(\*\*<a href="src/increase/types/simulations/interest_payment_create_params.py">params</a>) -> <a href="./src/increase/types/transaction.py">Transaction</a></code>
 
 ## WireTransfers
 
@@ -822,3 +802,35 @@ Methods:
 
 - <code title="get /inbound_wire_transfers/{inbound_wire_transfer_id}">client.inbound_wire_transfers.<a href="./src/increase/resources/inbound_wire_transfers.py">retrieve</a>(inbound_wire_transfer_id) -> <a href="./src/increase/types/inbound_wire_transfer.py">InboundWireTransfer</a></code>
 - <code title="get /inbound_wire_transfers">client.inbound_wire_transfers.<a href="./src/increase/resources/inbound_wire_transfers.py">list</a>(\*\*<a href="src/increase/types/inbound_wire_transfer_list_params.py">params</a>) -> <a href="./src/increase/types/inbound_wire_transfer.py">SyncPage[InboundWireTransfer]</a></code>
+
+# DigitalCardProfiles
+
+Types:
+
+```python
+from increase.types import DigitalCardProfile
+```
+
+Methods:
+
+- <code title="post /digital_card_profiles">client.digital_card_profiles.<a href="./src/increase/resources/digital_card_profiles.py">create</a>(\*\*<a href="src/increase/types/digital_card_profile_create_params.py">params</a>) -> <a href="./src/increase/types/digital_card_profile.py">DigitalCardProfile</a></code>
+- <code title="get /digital_card_profiles/{digital_card_profile_id}">client.digital_card_profiles.<a href="./src/increase/resources/digital_card_profiles.py">retrieve</a>(digital_card_profile_id) -> <a href="./src/increase/types/digital_card_profile.py">DigitalCardProfile</a></code>
+- <code title="get /digital_card_profiles">client.digital_card_profiles.<a href="./src/increase/resources/digital_card_profiles.py">list</a>(\*\*<a href="src/increase/types/digital_card_profile_list_params.py">params</a>) -> <a href="./src/increase/types/digital_card_profile.py">SyncPage[DigitalCardProfile]</a></code>
+- <code title="post /digital_card_profiles/{digital_card_profile_id}/archive">client.digital_card_profiles.<a href="./src/increase/resources/digital_card_profiles.py">archive</a>(digital_card_profile_id) -> <a href="./src/increase/types/digital_card_profile.py">DigitalCardProfile</a></code>
+- <code title="post /digital_card_profiles/{digital_card_profile_id}/clone">client.digital_card_profiles.<a href="./src/increase/resources/digital_card_profiles.py">clone</a>(digital_card_profile_id, \*\*<a href="src/increase/types/digital_card_profile_clone_params.py">params</a>) -> <a href="./src/increase/types/digital_card_profile.py">DigitalCardProfile</a></code>
+
+# PhysicalCardProfiles
+
+Types:
+
+```python
+from increase.types import PhysicalCardProfile
+```
+
+Methods:
+
+- <code title="post /physical_card_profiles">client.physical_card_profiles.<a href="./src/increase/resources/physical_card_profiles.py">create</a>(\*\*<a href="src/increase/types/physical_card_profile_create_params.py">params</a>) -> <a href="./src/increase/types/physical_card_profile.py">PhysicalCardProfile</a></code>
+- <code title="get /physical_card_profiles/{physical_card_profile_id}">client.physical_card_profiles.<a href="./src/increase/resources/physical_card_profiles.py">retrieve</a>(physical_card_profile_id) -> <a href="./src/increase/types/physical_card_profile.py">PhysicalCardProfile</a></code>
+- <code title="get /physical_card_profiles">client.physical_card_profiles.<a href="./src/increase/resources/physical_card_profiles.py">list</a>(\*\*<a href="src/increase/types/physical_card_profile_list_params.py">params</a>) -> <a href="./src/increase/types/physical_card_profile.py">SyncPage[PhysicalCardProfile]</a></code>
+- <code title="post /physical_card_profiles/{physical_card_profile_id}/archive">client.physical_card_profiles.<a href="./src/increase/resources/physical_card_profiles.py">archive</a>(physical_card_profile_id) -> <a href="./src/increase/types/physical_card_profile.py">PhysicalCardProfile</a></code>
+- <code title="post /physical_card_profiles/{physical_card_profile_id}/clone">client.physical_card_profiles.<a href="./src/increase/resources/physical_card_profiles.py">clone</a>(physical_card_profile_id, \*\*<a href="src/increase/types/physical_card_profile_clone_params.py">params</a>) -> <a href="./src/increase/types/physical_card_profile.py">PhysicalCardProfile</a></code>

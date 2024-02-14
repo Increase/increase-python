@@ -2362,6 +2362,7 @@ class SourceInternalSource(BaseModel):
         "bank_migration",
         "cashback",
         "check_adjustment",
+        "collection_payment",
         "collection_receivable",
         "empyreal_adjustment",
         "error",
@@ -2380,6 +2381,7 @@ class SourceInternalSource(BaseModel):
     - `bank_migration` - Bank migration
     - `cashback` - Cashback
     - `check_adjustment` - Check adjustment
+    - `collection_payment` - Collection payment
     - `collection_receivable` - Collection receivable
     - `empyreal_adjustment` - Empyreal adjustment
     - `error` - Error

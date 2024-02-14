@@ -56,14 +56,6 @@ from .card_disputes import (
     CardDisputesWithStreamingResponse,
     AsyncCardDisputesWithStreamingResponse,
 )
-from .card_profiles import (
-    CardProfiles,
-    AsyncCardProfiles,
-    CardProfilesWithRawResponse,
-    AsyncCardProfilesWithRawResponse,
-    CardProfilesWithStreamingResponse,
-    AsyncCardProfilesWithStreamingResponse,
-)
 from .check_deposits import (
     CheckDeposits,
     AsyncCheckDeposits,
@@ -178,12 +170,6 @@ __all__ = [
     "AsyncCardDisputesWithRawResponse",
     "CardDisputesWithStreamingResponse",
     "AsyncCardDisputesWithStreamingResponse",
-    "CardProfiles",
-    "AsyncCardProfiles",
-    "CardProfilesWithRawResponse",
-    "AsyncCardProfilesWithRawResponse",
-    "CardProfilesWithStreamingResponse",
-    "AsyncCardProfilesWithStreamingResponse",
     "CardRefunds",
     "AsyncCardRefunds",
     "CardRefundsWithRawResponse",

@@ -61,6 +61,9 @@ class DigitalWallet(TypedDict, total=False):
     Card profiles may also be assigned at the program level.
     """
 
+    digital_card_profile_id: str
+    """The digital card profile assigned to this digital card."""
+
     email: str
     """
     An email address that can be used to verify the cardholder via one-time passcode

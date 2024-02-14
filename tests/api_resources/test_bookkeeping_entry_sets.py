@@ -144,6 +144,7 @@ class TestBookkeepingEntrySets:
     def test_method_list_with_all_params(self, client: Increase) -> None:
         bookkeeping_entry_set = client.bookkeeping_entry_sets.list(
             cursor="string",
+            idempotency_key="x",
             limit=1,
             transaction_id="string",
         )
@@ -298,6 +299,7 @@ class TestAsyncBookkeepingEntrySets:
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
         bookkeeping_entry_set = await async_client.bookkeeping_entry_sets.list(
             cursor="string",
+            idempotency_key="x",
             limit=1,
             transaction_id="string",
         )

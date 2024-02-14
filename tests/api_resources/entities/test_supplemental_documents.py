@@ -75,6 +75,7 @@ class TestSupplementalDocuments:
         supplemental_document = client.entities.supplemental_documents.list(
             entity_id="string",
             cursor="string",
+            idempotency_key="x",
             limit=1,
         )
         assert_matches_type(SyncPage[SupplementalDocument], supplemental_document, path=["response"])
@@ -161,6 +162,7 @@ class TestAsyncSupplementalDocuments:
         supplemental_document = await async_client.entities.supplemental_documents.list(
             entity_id="string",
             cursor="string",
+            idempotency_key="x",
             limit=1,
         )
         assert_matches_type(AsyncPage[SupplementalDocument], supplemental_document, path=["response"])

@@ -129,14 +129,6 @@ from .card_payments import (
     CardPaymentsWithStreamingResponse,
     AsyncCardPaymentsWithStreamingResponse,
 )
-from .card_profiles import (
-    CardProfiles,
-    AsyncCardProfiles,
-    CardProfilesWithRawResponse,
-    AsyncCardProfilesWithRawResponse,
-    CardProfilesWithStreamingResponse,
-    AsyncCardProfilesWithStreamingResponse,
-)
 from .check_deposits import (
     CheckDeposits,
     AsyncCheckDeposits,
@@ -273,6 +265,14 @@ from .declined_transactions import (
     DeclinedTransactionsWithStreamingResponse,
     AsyncDeclinedTransactionsWithStreamingResponse,
 )
+from .digital_card_profiles import (
+    DigitalCardProfiles,
+    AsyncDigitalCardProfiles,
+    DigitalCardProfilesWithRawResponse,
+    AsyncDigitalCardProfilesWithRawResponse,
+    DigitalCardProfilesWithStreamingResponse,
+    AsyncDigitalCardProfilesWithStreamingResponse,
+)
 from .digital_wallet_tokens import (
     DigitalWalletTokens,
     AsyncDigitalWalletTokens,
@@ -304,6 +304,14 @@ from .inbound_wire_transfers import (
     AsyncInboundWireTransfersWithRawResponse,
     InboundWireTransfersWithStreamingResponse,
     AsyncInboundWireTransfersWithStreamingResponse,
+)
+from .physical_card_profiles import (
+    PhysicalCardProfiles,
+    AsyncPhysicalCardProfiles,
+    PhysicalCardProfilesWithRawResponse,
+    AsyncPhysicalCardProfilesWithRawResponse,
+    PhysicalCardProfilesWithStreamingResponse,
+    AsyncPhysicalCardProfilesWithStreamingResponse,
 )
 from .wire_drawdown_requests import (
     WireDrawdownRequests,
@@ -417,12 +425,6 @@ __all__ = [
     "AsyncCardDisputesWithRawResponse",
     "CardDisputesWithStreamingResponse",
     "AsyncCardDisputesWithStreamingResponse",
-    "CardProfiles",
-    "AsyncCardProfiles",
-    "CardProfilesWithRawResponse",
-    "AsyncCardProfilesWithRawResponse",
-    "CardProfilesWithStreamingResponse",
-    "AsyncCardProfilesWithStreamingResponse",
     "CardPurchaseSupplements",
     "AsyncCardPurchaseSupplements",
     "CardPurchaseSupplementsWithRawResponse",
@@ -635,4 +637,16 @@ __all__ = [
     "AsyncInboundWireTransfersWithRawResponse",
     "InboundWireTransfersWithStreamingResponse",
     "AsyncInboundWireTransfersWithStreamingResponse",
+    "DigitalCardProfiles",
+    "AsyncDigitalCardProfiles",
+    "DigitalCardProfilesWithRawResponse",
+    "AsyncDigitalCardProfilesWithRawResponse",
+    "DigitalCardProfilesWithStreamingResponse",
+    "AsyncDigitalCardProfilesWithStreamingResponse",
+    "PhysicalCardProfiles",
+    "AsyncPhysicalCardProfiles",
+    "PhysicalCardProfilesWithRawResponse",
+    "AsyncPhysicalCardProfilesWithRawResponse",
+    "PhysicalCardProfilesWithStreamingResponse",
+    "AsyncPhysicalCardProfilesWithStreamingResponse",
 ]

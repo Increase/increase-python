@@ -55,10 +55,3 @@ class RealTimePaymentsTransferCreateParams(TypedDict, total=False):
     """
     The name of the the party on whose behalf the debtor is instructing the payment.
     """
-
-    unique_identifier: str
-    """A unique identifier you choose for the transfer.
-
-    Reusing this identifier for another transfer will result in an error. You can
-    query for the transfer associated with this identifier using the List endpoint.
-    """

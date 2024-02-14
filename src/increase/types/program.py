@@ -1,5 +1,6 @@
 # File generated from our OpenAPI spec by Stainless.
 
+from typing import Optional
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -11,6 +12,9 @@ __all__ = ["Program"]
 class Program(BaseModel):
     id: str
     """The Program identifier."""
+
+    billing_account_id: Optional[str] = None
+    """The Program billing account."""
 
     created_at: datetime
     """
