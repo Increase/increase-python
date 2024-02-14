@@ -1,5 +1,27 @@
 # Changelog
 
+## 0.35.0 (2024-02-14)
+
+Full Changelog: [v0.34.1...v0.35.0](https://github.com/Increase/increase-python/compare/v0.34.1...v0.35.0)
+
+### ⚠ BREAKING CHANGES
+
+* **api:** split card profile resource into digital and physical card profile resources ([#335](https://github.com/Increase/increase-python/issues/335))
+
+### Features
+
+* **api:** split card profile resource into digital and physical card profile resources ([#335](https://github.com/Increase/increase-python/issues/335)) ([682e687](https://github.com/Increase/increase-python/commit/682e6870f063487c56f30438d59fd2744135b14c))
+
+
+### Chores
+
+* **ci:** uses Stainless GitHub App for releases ([#334](https://github.com/Increase/increase-python/issues/334)) ([8312c38](https://github.com/Increase/increase-python/commit/8312c38a6d309bf8afe23a2a1b9e951dbe5d3e39))
+
+
+### Documentation
+
+* add CONTRIBUTING.md ([#332](https://github.com/Increase/increase-python/issues/332)) ([c9cf72a](https://github.com/Increase/increase-python/commit/c9cf72a4871fbf1d6c3f5aebb6f8f42cd6793618))
+
 ## 0.34.1 (2024-02-06)
 
 Full Changelog: [v0.34.0...v0.34.1](https://github.com/increase/increase-python/compare/v0.34.0...v0.34.1)
