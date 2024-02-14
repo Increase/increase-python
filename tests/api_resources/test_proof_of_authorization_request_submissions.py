@@ -145,6 +145,7 @@ class TestProofOfAuthorizationRequestSubmissions:
     def test_method_list_with_all_params(self, client: Increase) -> None:
         proof_of_authorization_request_submission = client.proof_of_authorization_request_submissions.list(
             cursor="string",
+            idempotency_key="x",
             limit=1,
             proof_of_authorization_request_id="string",
         )
@@ -316,6 +317,7 @@ class TestAsyncProofOfAuthorizationRequestSubmissions:
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
         proof_of_authorization_request_submission = await async_client.proof_of_authorization_request_submissions.list(
             cursor="string",
+            idempotency_key="x",
             limit=1,
             proof_of_authorization_request_id="string",
         )

@@ -43,7 +43,6 @@ class AccountNumbers(SyncAPIResource):
         name: str,
         inbound_ach: account_number_create_params.InboundACH | NotGiven = NOT_GIVEN,
         inbound_checks: account_number_create_params.InboundChecks | NotGiven = NOT_GIVEN,
-        unique_identifier: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -65,10 +64,6 @@ class AccountNumbers(SyncAPIResource):
           inbound_checks: Options related to how this Account Number should handle inbound check
               withdrawals.
 
-          unique_identifier: A unique identifier you choose for the object. Reusing this identifier for
-              another object will result in an error. You can query for the object associated
-              with this identifier using the List endpoint.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -87,7 +82,6 @@ class AccountNumbers(SyncAPIResource):
                     "name": name,
                     "inbound_ach": inbound_ach,
                     "inbound_checks": inbound_checks,
-                    "unique_identifier": unique_identifier,
                 },
                 account_number_create_params.AccountNumberCreateParams,
             ),
@@ -206,9 +200,9 @@ class AccountNumbers(SyncAPIResource):
         ach_debit_status: Literal["allowed", "blocked"] | NotGiven = NOT_GIVEN,
         created_at: account_number_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
+        idempotency_key: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         status: Literal["active", "disabled", "canceled"] | NotGiven = NOT_GIVEN,
-        unique_identifier: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -229,6 +223,11 @@ class AccountNumbers(SyncAPIResource):
 
           cursor: Return the page of entries after this one.
 
+          idempotency_key: Filter records to the one with the specified `idempotency_key` you chose for
+              that object. This value is unique across Increase and is used to ensure that a
+              request is only processed once. Learn more about
+              [idempotency](https://increase.com/documentation/idempotency-keys).
+
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
 
@@ -237,8 +236,6 @@ class AccountNumbers(SyncAPIResource):
               - `active` - The account number is active.
               - `disabled` - The account number is temporarily disabled.
               - `canceled` - The account number is permanently disabled.
-
-          unique_identifier: Filter records to the one with the specified `unique_identifier`.
 
           extra_headers: Send extra headers
 
@@ -262,9 +259,9 @@ class AccountNumbers(SyncAPIResource):
                         "ach_debit_status": ach_debit_status,
                         "created_at": created_at,
                         "cursor": cursor,
+                        "idempotency_key": idempotency_key,
                         "limit": limit,
                         "status": status,
-                        "unique_identifier": unique_identifier,
                     },
                     account_number_list_params.AccountNumberListParams,
                 ),
@@ -289,7 +286,6 @@ class AsyncAccountNumbers(AsyncAPIResource):
         name: str,
         inbound_ach: account_number_create_params.InboundACH | NotGiven = NOT_GIVEN,
         inbound_checks: account_number_create_params.InboundChecks | NotGiven = NOT_GIVEN,
-        unique_identifier: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -311,10 +307,6 @@ class AsyncAccountNumbers(AsyncAPIResource):
           inbound_checks: Options related to how this Account Number should handle inbound check
               withdrawals.
 
-          unique_identifier: A unique identifier you choose for the object. Reusing this identifier for
-              another object will result in an error. You can query for the object associated
-              with this identifier using the List endpoint.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -333,7 +325,6 @@ class AsyncAccountNumbers(AsyncAPIResource):
                     "name": name,
                     "inbound_ach": inbound_ach,
                     "inbound_checks": inbound_checks,
-                    "unique_identifier": unique_identifier,
                 },
                 account_number_create_params.AccountNumberCreateParams,
             ),
@@ -452,9 +443,9 @@ class AsyncAccountNumbers(AsyncAPIResource):
         ach_debit_status: Literal["allowed", "blocked"] | NotGiven = NOT_GIVEN,
         created_at: account_number_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
+        idempotency_key: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         status: Literal["active", "disabled", "canceled"] | NotGiven = NOT_GIVEN,
-        unique_identifier: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -475,6 +466,11 @@ class AsyncAccountNumbers(AsyncAPIResource):
 
           cursor: Return the page of entries after this one.
 
+          idempotency_key: Filter records to the one with the specified `idempotency_key` you chose for
+              that object. This value is unique across Increase and is used to ensure that a
+              request is only processed once. Learn more about
+              [idempotency](https://increase.com/documentation/idempotency-keys).
+
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
 
@@ -483,8 +479,6 @@ class AsyncAccountNumbers(AsyncAPIResource):
               - `active` - The account number is active.
               - `disabled` - The account number is temporarily disabled.
               - `canceled` - The account number is permanently disabled.
-
-          unique_identifier: Filter records to the one with the specified `unique_identifier`.
 
           extra_headers: Send extra headers
 
@@ -508,9 +502,9 @@ class AsyncAccountNumbers(AsyncAPIResource):
                         "ach_debit_status": ach_debit_status,
                         "created_at": created_at,
                         "cursor": cursor,
+                        "idempotency_key": idempotency_key,
                         "limit": limit,
                         "status": status,
-                        "unique_identifier": unique_identifier,
                     },
                     account_number_list_params.AccountNumberListParams,
                 ),

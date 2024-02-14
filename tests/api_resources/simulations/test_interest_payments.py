@@ -9,8 +9,8 @@ import pytest
 
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
+from increase.types import Transaction
 from increase._utils import parse_datetime
-from increase.types.simulations import InterestPaymentSimulationResult
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -24,7 +24,7 @@ class TestInterestPayments:
             account_id="account_in71c4amph0vgo2qllky",
             amount=1000,
         )
-        assert_matches_type(InterestPaymentSimulationResult, interest_payment, path=["response"])
+        assert_matches_type(Transaction, interest_payment, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: Increase) -> None:
@@ -34,7 +34,7 @@ class TestInterestPayments:
             period_end=parse_datetime("2019-12-27T18:11:19.117Z"),
             period_start=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(InterestPaymentSimulationResult, interest_payment, path=["response"])
+        assert_matches_type(Transaction, interest_payment, path=["response"])
 
     @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
@@ -46,7 +46,7 @@ class TestInterestPayments:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         interest_payment = response.parse()
-        assert_matches_type(InterestPaymentSimulationResult, interest_payment, path=["response"])
+        assert_matches_type(Transaction, interest_payment, path=["response"])
 
     @parametrize
     def test_streaming_response_create(self, client: Increase) -> None:
@@ -58,7 +58,7 @@ class TestInterestPayments:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             interest_payment = response.parse()
-            assert_matches_type(InterestPaymentSimulationResult, interest_payment, path=["response"])
+            assert_matches_type(Transaction, interest_payment, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -72,7 +72,7 @@ class TestAsyncInterestPayments:
             account_id="account_in71c4amph0vgo2qllky",
             amount=1000,
         )
-        assert_matches_type(InterestPaymentSimulationResult, interest_payment, path=["response"])
+        assert_matches_type(Transaction, interest_payment, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncIncrease) -> None:
@@ -82,7 +82,7 @@ class TestAsyncInterestPayments:
             period_end=parse_datetime("2019-12-27T18:11:19.117Z"),
             period_start=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
-        assert_matches_type(InterestPaymentSimulationResult, interest_payment, path=["response"])
+        assert_matches_type(Transaction, interest_payment, path=["response"])
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
@@ -94,7 +94,7 @@ class TestAsyncInterestPayments:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         interest_payment = response.parse()
-        assert_matches_type(InterestPaymentSimulationResult, interest_payment, path=["response"])
+        assert_matches_type(Transaction, interest_payment, path=["response"])
 
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncIncrease) -> None:
@@ -106,6 +106,6 @@ class TestAsyncInterestPayments:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             interest_payment = await response.parse()
-            assert_matches_type(InterestPaymentSimulationResult, interest_payment, path=["response"])
+            assert_matches_type(Transaction, interest_payment, path=["response"])
 
         assert cast(Any, response.is_closed) is True

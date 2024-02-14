@@ -81,6 +81,7 @@ class DepositRejection(BaseModel):
         "not_eligible_for_mobile_deposit",
         "missing_required_data_elements",
         "suspected_fraud",
+        "deposit_window_expired",
         "unknown",
     ]
     """Why the check deposit was rejected.
@@ -94,8 +95,9 @@ class DepositRejection(BaseModel):
     - `not_eligible_for_mobile_deposit` - This check was not eligible for mobile
       deposit.
     - `missing_required_data_elements` - This check is missing at least one required
-      field
+      field.
     - `suspected_fraud` - This check is suspected to be fraudulent.
+    - `deposit_window_expired` - This check's deposit window has expired.
     - `unknown` - The check was rejected for an unknown reason.
     """
 
@@ -274,6 +276,14 @@ class CheckDeposit(BaseModel):
 
     front_image_file_id: str
     """The ID for the File containing the image of the front of the check."""
+
+    idempotency_key: Optional[str] = None
+    """The idempotency key you chose for this object.
+
+    This value is unique across Increase and is used to ensure that a request is
+    only processed once. Learn more about
+    [idempotency](https://increase.com/documentation/idempotency-keys).
+    """
 
     status: Literal["pending", "submitted", "rejected", "returned"]
     """The status of the Check Deposit.

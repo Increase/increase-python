@@ -2,6 +2,9 @@
 
 from __future__ import annotations
 
+import httpx
+
+from ... import _legacy_response
 from .cards import (
     Cards,
     AsyncCards,
@@ -10,6 +13,15 @@ from .cards import (
     CardsWithStreamingResponse,
     AsyncCardsWithStreamingResponse,
 )
+from ...types import (
+    CardPayment,
+    simulation_card_reversals_params,
+    simulation_card_increments_params,
+    simulation_card_fuel_confirmations_params,
+    simulation_card_authorization_expirations_params,
+)
+from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._utils import maybe_transform
 from .programs import (
     Programs,
     AsyncPrograms,
@@ -28,6 +40,7 @@ from .documents import (
     AsyncDocumentsWithStreamingResponse,
 )
 from ..._resource import SyncAPIResource, AsyncAPIResource
+from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from .card_refunds import (
     CardRefunds,
     AsyncCardRefunds,
@@ -52,13 +65,8 @@ from .card_disputes import (
     CardDisputesWithStreamingResponse,
     AsyncCardDisputesWithStreamingResponse,
 )
-from .card_profiles import (
-    CardProfiles,
-    AsyncCardProfiles,
-    CardProfilesWithRawResponse,
-    AsyncCardProfilesWithRawResponse,
-    CardProfilesWithStreamingResponse,
-    AsyncCardProfilesWithStreamingResponse,
+from ..._base_client import (
+    make_request_options,
 )
 from .check_deposits import (
     CheckDeposits,
@@ -170,10 +178,6 @@ class Simulations(SyncAPIResource):
         return CardDisputes(self._client)
 
     @cached_property
-    def card_profiles(self) -> CardProfiles:
-        return CardProfiles(self._client)
-
-    @cached_property
     def card_refunds(self) -> CardRefunds:
         return CardRefunds(self._client)
 
@@ -233,6 +237,218 @@ class Simulations(SyncAPIResource):
     def with_streaming_response(self) -> SimulationsWithStreamingResponse:
         return SimulationsWithStreamingResponse(self)
 
+    def card_authorization_expirations(
+        self,
+        *,
+        card_payment_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> CardPayment:
+        """
+        Simulates expiring a card authorization immediately.
+
+        Args:
+          card_payment_id: The identifier of the Card Payment to expire.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        return self._post(
+            "/simulations/card_authorization_expirations",
+            body=maybe_transform(
+                {"card_payment_id": card_payment_id},
+                simulation_card_authorization_expirations_params.SimulationCardAuthorizationExpirationsParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=CardPayment,
+        )
+
+    def card_fuel_confirmations(
+        self,
+        *,
+        amount: int,
+        card_payment_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> CardPayment:
+        """Simulates the fuel confirmation of an authorization by a card acquirer.
+
+        This
+        happens asynchronously right after a fuel pump transaction is completed. A fuel
+        confirmation can only happen once per authorization.
+
+        Args:
+          amount: The amount of the fuel_confirmation in minor units in the card authorization's
+              currency.
+
+          card_payment_id: The identifier of the Card Payment to create a fuel_confirmation on.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        return self._post(
+            "/simulations/card_fuel_confirmations",
+            body=maybe_transform(
+                {
+                    "amount": amount,
+                    "card_payment_id": card_payment_id,
+                },
+                simulation_card_fuel_confirmations_params.SimulationCardFuelConfirmationsParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=CardPayment,
+        )
+
+    def card_increments(
+        self,
+        *,
+        amount: int,
+        card_payment_id: str,
+        event_subscription_id: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> CardPayment:
+        """Simulates the increment of an authorization by a card acquirer.
+
+        An authorization
+        can be incremented multiple times.
+
+        Args:
+          amount: The amount of the increment in minor units in the card authorization's currency.
+
+          card_payment_id: The identifier of the Card Payment to create a increment on.
+
+          event_subscription_id: The identifier of the Event Subscription to use. If provided, will override the
+              default real time event subscription. Because you can only create one real time
+              decision event subscription, you can use this field to route events to any
+              specified event subscription for testing purposes.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        return self._post(
+            "/simulations/card_increments",
+            body=maybe_transform(
+                {
+                    "amount": amount,
+                    "card_payment_id": card_payment_id,
+                    "event_subscription_id": event_subscription_id,
+                },
+                simulation_card_increments_params.SimulationCardIncrementsParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=CardPayment,
+        )
+
+    def card_reversals(
+        self,
+        *,
+        card_payment_id: str,
+        amount: int | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> CardPayment:
+        """Simulates the reversal of an authorization by a card acquirer.
+
+        An authorization
+        can be partially reversed multiple times, up until the total authorized amount.
+        Marks the pending transaction as complete if the authorization is fully
+        reversed.
+
+        Args:
+          card_payment_id: The identifier of the Card Payment to create a reversal on.
+
+          amount: The amount of the reversal in minor units in the card authorization's currency.
+              This defaults to the authorization amount.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        return self._post(
+            "/simulations/card_reversals",
+            body=maybe_transform(
+                {
+                    "card_payment_id": card_payment_id,
+                    "amount": amount,
+                },
+                simulation_card_reversals_params.SimulationCardReversalsParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=CardPayment,
+        )
+
 
 class AsyncSimulations(AsyncAPIResource):
     @cached_property
@@ -250,10 +466,6 @@ class AsyncSimulations(AsyncAPIResource):
     @cached_property
     def card_disputes(self) -> AsyncCardDisputes:
         return AsyncCardDisputes(self._client)
-
-    @cached_property
-    def card_profiles(self) -> AsyncCardProfiles:
-        return AsyncCardProfiles(self._client)
 
     @cached_property
     def card_refunds(self) -> AsyncCardRefunds:
@@ -315,10 +527,235 @@ class AsyncSimulations(AsyncAPIResource):
     def with_streaming_response(self) -> AsyncSimulationsWithStreamingResponse:
         return AsyncSimulationsWithStreamingResponse(self)
 
+    async def card_authorization_expirations(
+        self,
+        *,
+        card_payment_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> CardPayment:
+        """
+        Simulates expiring a card authorization immediately.
+
+        Args:
+          card_payment_id: The identifier of the Card Payment to expire.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        return await self._post(
+            "/simulations/card_authorization_expirations",
+            body=maybe_transform(
+                {"card_payment_id": card_payment_id},
+                simulation_card_authorization_expirations_params.SimulationCardAuthorizationExpirationsParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=CardPayment,
+        )
+
+    async def card_fuel_confirmations(
+        self,
+        *,
+        amount: int,
+        card_payment_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> CardPayment:
+        """Simulates the fuel confirmation of an authorization by a card acquirer.
+
+        This
+        happens asynchronously right after a fuel pump transaction is completed. A fuel
+        confirmation can only happen once per authorization.
+
+        Args:
+          amount: The amount of the fuel_confirmation in minor units in the card authorization's
+              currency.
+
+          card_payment_id: The identifier of the Card Payment to create a fuel_confirmation on.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        return await self._post(
+            "/simulations/card_fuel_confirmations",
+            body=maybe_transform(
+                {
+                    "amount": amount,
+                    "card_payment_id": card_payment_id,
+                },
+                simulation_card_fuel_confirmations_params.SimulationCardFuelConfirmationsParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=CardPayment,
+        )
+
+    async def card_increments(
+        self,
+        *,
+        amount: int,
+        card_payment_id: str,
+        event_subscription_id: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> CardPayment:
+        """Simulates the increment of an authorization by a card acquirer.
+
+        An authorization
+        can be incremented multiple times.
+
+        Args:
+          amount: The amount of the increment in minor units in the card authorization's currency.
+
+          card_payment_id: The identifier of the Card Payment to create a increment on.
+
+          event_subscription_id: The identifier of the Event Subscription to use. If provided, will override the
+              default real time event subscription. Because you can only create one real time
+              decision event subscription, you can use this field to route events to any
+              specified event subscription for testing purposes.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        return await self._post(
+            "/simulations/card_increments",
+            body=maybe_transform(
+                {
+                    "amount": amount,
+                    "card_payment_id": card_payment_id,
+                    "event_subscription_id": event_subscription_id,
+                },
+                simulation_card_increments_params.SimulationCardIncrementsParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=CardPayment,
+        )
+
+    async def card_reversals(
+        self,
+        *,
+        card_payment_id: str,
+        amount: int | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> CardPayment:
+        """Simulates the reversal of an authorization by a card acquirer.
+
+        An authorization
+        can be partially reversed multiple times, up until the total authorized amount.
+        Marks the pending transaction as complete if the authorization is fully
+        reversed.
+
+        Args:
+          card_payment_id: The identifier of the Card Payment to create a reversal on.
+
+          amount: The amount of the reversal in minor units in the card authorization's currency.
+              This defaults to the authorization amount.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        return await self._post(
+            "/simulations/card_reversals",
+            body=maybe_transform(
+                {
+                    "card_payment_id": card_payment_id,
+                    "amount": amount,
+                },
+                simulation_card_reversals_params.SimulationCardReversalsParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=CardPayment,
+        )
+
 
 class SimulationsWithRawResponse:
     def __init__(self, simulations: Simulations) -> None:
         self._simulations = simulations
+
+        self.card_authorization_expirations = _legacy_response.to_raw_response_wrapper(
+            simulations.card_authorization_expirations,
+        )
+        self.card_fuel_confirmations = _legacy_response.to_raw_response_wrapper(
+            simulations.card_fuel_confirmations,
+        )
+        self.card_increments = _legacy_response.to_raw_response_wrapper(
+            simulations.card_increments,
+        )
+        self.card_reversals = _legacy_response.to_raw_response_wrapper(
+            simulations.card_reversals,
+        )
 
     @cached_property
     def account_transfers(self) -> AccountTransfersWithRawResponse:
@@ -335,10 +772,6 @@ class SimulationsWithRawResponse:
     @cached_property
     def card_disputes(self) -> CardDisputesWithRawResponse:
         return CardDisputesWithRawResponse(self._simulations.card_disputes)
-
-    @cached_property
-    def card_profiles(self) -> CardProfilesWithRawResponse:
-        return CardProfilesWithRawResponse(self._simulations.card_profiles)
 
     @cached_property
     def card_refunds(self) -> CardRefundsWithRawResponse:
@@ -397,6 +830,19 @@ class AsyncSimulationsWithRawResponse:
     def __init__(self, simulations: AsyncSimulations) -> None:
         self._simulations = simulations
 
+        self.card_authorization_expirations = _legacy_response.async_to_raw_response_wrapper(
+            simulations.card_authorization_expirations,
+        )
+        self.card_fuel_confirmations = _legacy_response.async_to_raw_response_wrapper(
+            simulations.card_fuel_confirmations,
+        )
+        self.card_increments = _legacy_response.async_to_raw_response_wrapper(
+            simulations.card_increments,
+        )
+        self.card_reversals = _legacy_response.async_to_raw_response_wrapper(
+            simulations.card_reversals,
+        )
+
     @cached_property
     def account_transfers(self) -> AsyncAccountTransfersWithRawResponse:
         return AsyncAccountTransfersWithRawResponse(self._simulations.account_transfers)
@@ -412,10 +858,6 @@ class AsyncSimulationsWithRawResponse:
     @cached_property
     def card_disputes(self) -> AsyncCardDisputesWithRawResponse:
         return AsyncCardDisputesWithRawResponse(self._simulations.card_disputes)
-
-    @cached_property
-    def card_profiles(self) -> AsyncCardProfilesWithRawResponse:
-        return AsyncCardProfilesWithRawResponse(self._simulations.card_profiles)
 
     @cached_property
     def card_refunds(self) -> AsyncCardRefundsWithRawResponse:
@@ -474,6 +916,19 @@ class SimulationsWithStreamingResponse:
     def __init__(self, simulations: Simulations) -> None:
         self._simulations = simulations
 
+        self.card_authorization_expirations = to_streamed_response_wrapper(
+            simulations.card_authorization_expirations,
+        )
+        self.card_fuel_confirmations = to_streamed_response_wrapper(
+            simulations.card_fuel_confirmations,
+        )
+        self.card_increments = to_streamed_response_wrapper(
+            simulations.card_increments,
+        )
+        self.card_reversals = to_streamed_response_wrapper(
+            simulations.card_reversals,
+        )
+
     @cached_property
     def account_transfers(self) -> AccountTransfersWithStreamingResponse:
         return AccountTransfersWithStreamingResponse(self._simulations.account_transfers)
@@ -489,10 +944,6 @@ class SimulationsWithStreamingResponse:
     @cached_property
     def card_disputes(self) -> CardDisputesWithStreamingResponse:
         return CardDisputesWithStreamingResponse(self._simulations.card_disputes)
-
-    @cached_property
-    def card_profiles(self) -> CardProfilesWithStreamingResponse:
-        return CardProfilesWithStreamingResponse(self._simulations.card_profiles)
 
     @cached_property
     def card_refunds(self) -> CardRefundsWithStreamingResponse:
@@ -551,6 +1002,19 @@ class AsyncSimulationsWithStreamingResponse:
     def __init__(self, simulations: AsyncSimulations) -> None:
         self._simulations = simulations
 
+        self.card_authorization_expirations = async_to_streamed_response_wrapper(
+            simulations.card_authorization_expirations,
+        )
+        self.card_fuel_confirmations = async_to_streamed_response_wrapper(
+            simulations.card_fuel_confirmations,
+        )
+        self.card_increments = async_to_streamed_response_wrapper(
+            simulations.card_increments,
+        )
+        self.card_reversals = async_to_streamed_response_wrapper(
+            simulations.card_reversals,
+        )
+
     @cached_property
     def account_transfers(self) -> AsyncAccountTransfersWithStreamingResponse:
         return AsyncAccountTransfersWithStreamingResponse(self._simulations.account_transfers)
@@ -566,10 +1030,6 @@ class AsyncSimulationsWithStreamingResponse:
     @cached_property
     def card_disputes(self) -> AsyncCardDisputesWithStreamingResponse:
         return AsyncCardDisputesWithStreamingResponse(self._simulations.card_disputes)
-
-    @cached_property
-    def card_profiles(self) -> AsyncCardProfilesWithStreamingResponse:
-        return AsyncCardProfilesWithStreamingResponse(self._simulations.card_profiles)
 
     @cached_property
     def card_refunds(self) -> AsyncCardRefundsWithStreamingResponse:

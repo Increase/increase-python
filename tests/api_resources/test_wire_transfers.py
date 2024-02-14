@@ -47,7 +47,6 @@ class TestWireTransfers:
             originator_name="x",
             require_approval=True,
             routing_number="101050001",
-            unique_identifier="x",
         )
         assert_matches_type(WireTransfer, wire_transfer, path=["response"])
 
@@ -136,8 +135,8 @@ class TestWireTransfers:
             },
             cursor="string",
             external_account_id="string",
+            idempotency_key="x",
             limit=1,
-            unique_identifier="x",
         )
         assert_matches_type(SyncPage[WireTransfer], wire_transfer, path=["response"])
 
@@ -353,7 +352,6 @@ class TestAsyncWireTransfers:
             originator_name="x",
             require_approval=True,
             routing_number="101050001",
-            unique_identifier="x",
         )
         assert_matches_type(WireTransfer, wire_transfer, path=["response"])
 
@@ -442,8 +440,8 @@ class TestAsyncWireTransfers:
             },
             cursor="string",
             external_account_id="string",
+            idempotency_key="x",
             limit=1,
-            unique_identifier="x",
         )
         assert_matches_type(AsyncPage[WireTransfer], wire_transfer, path=["response"])
 

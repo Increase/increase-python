@@ -186,6 +186,14 @@ class RealTimePaymentsRequestForPayment(BaseModel):
     fulfillment_transaction_id: Optional[str] = None
     """The transaction that fulfilled this request."""
 
+    idempotency_key: Optional[str] = None
+    """The idempotency key you chose for this object.
+
+    This value is unique across Increase and is used to ensure that a request is
+    only processed once. Learn more about
+    [idempotency](https://increase.com/documentation/idempotency-keys).
+    """
+
     refusal: Optional[Refusal] = None
     """
     If the request for payment is refused by the destination financial institution

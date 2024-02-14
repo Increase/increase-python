@@ -46,6 +46,14 @@ class Export(BaseModel):
     This will be present when the Export's status transitions to `complete`.
     """
 
+    idempotency_key: Optional[str] = None
+    """The idempotency key you chose for this object.
+
+    This value is unique across Increase and is used to ensure that a request is
+    only processed once. Learn more about
+    [idempotency](https://increase.com/documentation/idempotency-keys).
+    """
+
     status: Literal["pending", "complete", "failed"]
     """The status of the Export.
 

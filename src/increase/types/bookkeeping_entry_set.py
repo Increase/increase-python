@@ -33,6 +33,14 @@ class BookkeepingEntrySet(BaseModel):
     entries: List[Entry]
     """The entries."""
 
+    idempotency_key: Optional[str] = None
+    """The idempotency key you chose for this object.
+
+    This value is unique across Increase and is used to ensure that a request is
+    only processed once. Learn more about
+    [idempotency](https://increase.com/documentation/idempotency-keys).
+    """
+
     transaction_id: Optional[str] = None
     """The transaction identifier, if any."""
 

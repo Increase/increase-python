@@ -8,6 +8,13 @@ __all__ = ["ExternalAccountUpdateParams"]
 
 
 class ExternalAccountUpdateParams(TypedDict, total=False):
+    account_holder: Literal["business", "individual"]
+    """The type of entity that owns the External Account.
+
+    - `business` - The External Account is owned by a business.
+    - `individual` - The External Account is owned by an individual.
+    """
+
     description: str
     """The description you choose to give the external account."""
 

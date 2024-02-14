@@ -35,6 +35,7 @@ class TestExternalAccounts:
             account_number="987654321",
             description="Landlord",
             routing_number="101050001",
+            account_holder="business",
             funding="checking",
         )
         assert_matches_type(ExternalAccount, external_account, path=["response"])
@@ -116,6 +117,7 @@ class TestExternalAccounts:
     def test_method_update_with_all_params(self, client: Increase) -> None:
         external_account = client.external_accounts.update(
             "string",
+            account_holder="business",
             description="New description",
             status="active",
         )
@@ -161,6 +163,7 @@ class TestExternalAccounts:
     def test_method_list_with_all_params(self, client: Increase) -> None:
         external_account = client.external_accounts.list(
             cursor="string",
+            idempotency_key="x",
             limit=1,
             routing_number="xxxxxxxxx",
             status={"in": ["active", "archived"]},
@@ -206,6 +209,7 @@ class TestAsyncExternalAccounts:
             account_number="987654321",
             description="Landlord",
             routing_number="101050001",
+            account_holder="business",
             funding="checking",
         )
         assert_matches_type(ExternalAccount, external_account, path=["response"])
@@ -287,6 +291,7 @@ class TestAsyncExternalAccounts:
     async def test_method_update_with_all_params(self, async_client: AsyncIncrease) -> None:
         external_account = await async_client.external_accounts.update(
             "string",
+            account_holder="business",
             description="New description",
             status="active",
         )
@@ -332,6 +337,7 @@ class TestAsyncExternalAccounts:
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
         external_account = await async_client.external_accounts.list(
             cursor="string",
+            idempotency_key="x",
             limit=1,
             routing_number="xxxxxxxxx",
             status={"in": ["active", "archived"]},

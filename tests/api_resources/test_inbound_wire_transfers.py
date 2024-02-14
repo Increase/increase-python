@@ -68,6 +68,7 @@ class TestInboundWireTransfers:
     def test_method_list_with_all_params(self, client: Increase) -> None:
         inbound_wire_transfer = client.inbound_wire_transfers.list(
             account_id="string",
+            account_number_id="string",
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -153,6 +154,7 @@ class TestAsyncInboundWireTransfers:
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
         inbound_wire_transfer = await async_client.inbound_wire_transfers.list(
             account_id="string",
+            account_number_id="string",
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),

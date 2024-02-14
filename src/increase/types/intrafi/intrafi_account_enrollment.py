@@ -1,5 +1,6 @@
 # File generated from our OpenAPI spec by Stainless.
 
+from typing import Optional
 from typing_extensions import Literal
 
 from ..._models import BaseModel
@@ -13,6 +14,14 @@ class IntrafiAccountEnrollment(BaseModel):
 
     account_id: str
     """The identifier of the Increase Account being swept into the network."""
+
+    idempotency_key: Optional[str] = None
+    """The idempotency key you chose for this object.
+
+    This value is unique across Increase and is used to ensure that a request is
+    only processed once. Learn more about
+    [idempotency](https://increase.com/documentation/idempotency-keys).
+    """
 
     intrafi_id: str
     """The identifier of the account in IntraFi's system.

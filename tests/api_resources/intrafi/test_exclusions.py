@@ -100,6 +100,7 @@ class TestExclusions:
         exclusion = client.intrafi.exclusions.list(
             cursor="string",
             entity_id="string",
+            idempotency_key="x",
             limit=1,
         )
         assert_matches_type(SyncPage[IntrafiExclusion], exclusion, path=["response"])
@@ -248,6 +249,7 @@ class TestAsyncExclusions:
         exclusion = await async_client.intrafi.exclusions.list(
             cursor="string",
             entity_id="string",
+            idempotency_key="x",
             limit=1,
         )
         assert_matches_type(AsyncPage[IntrafiExclusion], exclusion, path=["response"])

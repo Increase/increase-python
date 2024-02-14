@@ -11,9 +11,6 @@ class PhysicalCardCreateParams(TypedDict, total=False):
     card_id: Required[str]
     """The underlying card representing this physical card."""
 
-    card_profile_id: Required[str]
-    """The card profile to use for this physical card."""
-
     cardholder: Required[Cardholder]
     """Details about the cardholder, as it will appear on the physical card."""
 

@@ -172,6 +172,14 @@ class WireTransfer(BaseModel):
     external_account_id: Optional[str] = None
     """The identifier of the External Account the transfer was made to, if any."""
 
+    idempotency_key: Optional[str] = None
+    """The idempotency key you chose for this object.
+
+    This value is unique across Increase and is used to ensure that a request is
+    only processed once. Learn more about
+    [idempotency](https://increase.com/documentation/idempotency-keys).
+    """
+
     message_to_recipient: Optional[str] = None
     """The message that will show on the recipient's bank statement."""
 
@@ -233,6 +241,3 @@ class WireTransfer(BaseModel):
 
     For this resource it will always be `wire_transfer`.
     """
-
-    unique_identifier: Optional[str] = None
-    """The unique identifier you chose for this object."""

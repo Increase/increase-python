@@ -45,7 +45,7 @@ from ._exceptions import (
     APIResponseValidationError,
     InsufficientPermissionsError,
     IdempotencyUnprocessableError,
-    UniqueIdentifierAlreadyExistsError,
+    IdempotencyKeyAlreadyUsedError,
 )
 from ._utils._logs import setup_logging as _setup_logging
 
@@ -73,6 +73,7 @@ __all__ = [
     "APIMethodNotFoundError",
     "EnvironmentMismatchError",
     "IdempotencyConflictError",
+    "IdempotencyKeyAlreadyUsedError",
     "IdempotencyUnprocessableError",
     "InsufficientPermissionsError",
     "InvalidAPIKeyError",
@@ -82,7 +83,6 @@ __all__ = [
     "ObjectNotFoundError",
     "PrivateFeatureError",
     "RateLimitedError",
-    "UniqueIdentifierAlreadyExistsError",
     "Timeout",
     "RequestOptions",
     "Client",

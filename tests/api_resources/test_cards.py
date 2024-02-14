@@ -41,7 +41,6 @@ class TestCards:
             digital_wallet={
                 "email": "x",
                 "phone": "x",
-                "card_profile_id": "string",
                 "digital_card_profile_id": "string",
             },
             entity_id="string",
@@ -133,6 +132,7 @@ class TestCards:
                 "email": "x",
                 "phone": "x",
                 "card_profile_id": "string",
+                "digital_card_profile_id": "string",
             },
             entity_id="string",
             status="active",
@@ -186,6 +186,7 @@ class TestCards:
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
             cursor="string",
+            idempotency_key="x",
             limit=1,
         )
         assert_matches_type(SyncPage[Card], card, path=["response"])
@@ -274,7 +275,6 @@ class TestAsyncCards:
             digital_wallet={
                 "email": "x",
                 "phone": "x",
-                "card_profile_id": "string",
                 "digital_card_profile_id": "string",
             },
             entity_id="string",
@@ -366,6 +366,7 @@ class TestAsyncCards:
                 "email": "x",
                 "phone": "x",
                 "card_profile_id": "string",
+                "digital_card_profile_id": "string",
             },
             entity_id="string",
             status="active",
@@ -419,6 +420,7 @@ class TestAsyncCards:
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
             cursor="string",
+            idempotency_key="x",
             limit=1,
         )
         assert_matches_type(AsyncPage[Card], card, path=["response"])

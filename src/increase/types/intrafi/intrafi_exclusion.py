@@ -28,6 +28,14 @@ class IntrafiExclusion(BaseModel):
     institution.
     """
 
+    idempotency_key: Optional[str] = None
+    """The idempotency key you chose for this object.
+
+    This value is unique across Increase and is used to ensure that a request is
+    only processed once. Learn more about
+    [idempotency](https://increase.com/documentation/idempotency-keys).
+    """
+
     status: Literal["pending", "completed", "archived"]
     """The status of the exclusion request.
 

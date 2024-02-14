@@ -20,6 +20,14 @@ class ExternalAccountCreateParams(TypedDict, total=False):
     destination account.
     """
 
+    account_holder: Literal["business", "individual", "unknown"]
+    """The type of entity that owns the External Account.
+
+    - `business` - The External Account is owned by a business.
+    - `individual` - The External Account is owned by an individual.
+    - `unknown` - It's unknown what kind of entity owns the External Account.
+    """
+
     funding: Literal["checking", "savings", "other"]
     """The type of the destination account. Defaults to `checking`.
 
