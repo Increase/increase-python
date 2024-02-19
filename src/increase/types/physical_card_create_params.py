@@ -18,7 +18,10 @@ class PhysicalCardCreateParams(TypedDict, total=False):
     """The details used to ship this physical card."""
 
     physical_card_profile_id: str
-    """The physical card profile to use for this physical card."""
+    """The physical card profile to use for this physical card.
+
+    The latest default physical card profile will be used if not provided.
+    """
 
 
 class Cardholder(TypedDict, total=False):

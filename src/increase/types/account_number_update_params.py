@@ -2,14 +2,20 @@
 
 from __future__ import annotations
 
-from typing_extensions import Literal, TypedDict
+from typing_extensions import Literal, Required, TypedDict
 
-__all__ = ["AccountNumberUpdateParams", "InboundACH"]
+__all__ = ["AccountNumberUpdateParams", "InboundACH", "InboundChecks"]
 
 
 class AccountNumberUpdateParams(TypedDict, total=False):
     inbound_ach: InboundACH
     """Options related to how this Account Number handles inbound ACH transfers."""
+
+    inbound_checks: InboundChecks
+    """
+    Options related to how this Account Number should handle inbound check
+    withdrawals.
+    """
 
     name: str
     """The name you choose for the Account Number."""
@@ -32,4 +38,15 @@ class InboundACH(TypedDict, total=False):
 
     - `allowed` - ACH Debits are allowed.
     - `blocked` - ACH Debits are blocked.
+    """
+
+
+class InboundChecks(TypedDict, total=False):
+    status: Required[Literal["allowed", "check_transfers_only"]]
+    """How Increase should process checks with this account number printed on them.
+
+    - `allowed` - Checks with this Account Number will be processed even if they are
+      not associated with a Check Transfer.
+    - `check_transfers_only` - Checks with this Account Number will be processed
+      only if they can be matched to an existing Check Transfer.
     """
