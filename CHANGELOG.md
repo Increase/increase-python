@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.36.0 (2024-02-19)
+
+Full Changelog: [v0.35.0...v0.36.0](https://github.com/Increase/increase-python/compare/v0.35.0...v0.36.0)
+
+### Features
+
+* **api:** inbound checks ([#339](https://github.com/Increase/increase-python/issues/339)) ([16e85a4](https://github.com/Increase/increase-python/commit/16e85a43a0e8544f0850faf5d86842eb7dd47837))
+
+
+### Chores
+
+* **internal:** refactor release environment script ([#336](https://github.com/Increase/increase-python/issues/336)) ([eb6a2c9](https://github.com/Increase/increase-python/commit/eb6a2c952d86624b2334eededa90d4e2f74b5364))
+
 ## 0.35.0 (2024-02-14)
 
 Full Changelog: [v0.34.1...v0.35.0](https://github.com/Increase/increase-python/compare/v0.34.1...v0.35.0)
