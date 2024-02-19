@@ -61,7 +61,8 @@ class PhysicalCards(SyncAPIResource):
 
           shipment: The details used to ship this physical card.
 
-          physical_card_profile_id: The physical card profile to use for this physical card.
+          physical_card_profile_id: The physical card profile to use for this physical card. The latest default
+              physical card profile will be used if not provided.
 
           extra_headers: Send extra headers
 
@@ -275,7 +276,8 @@ class AsyncPhysicalCards(AsyncAPIResource):
 
           shipment: The details used to ship this physical card.
 
-          physical_card_profile_id: The physical card profile to use for this physical card.
+          physical_card_profile_id: The physical card profile to use for this physical card. The latest default
+              physical card profile will be used if not provided.
 
           extra_headers: Send extra headers
 
