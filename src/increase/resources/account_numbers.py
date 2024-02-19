@@ -135,6 +135,7 @@ class AccountNumbers(SyncAPIResource):
         account_number_id: str,
         *,
         inbound_ach: account_number_update_params.InboundACH | NotGiven = NOT_GIVEN,
+        inbound_checks: account_number_update_params.InboundChecks | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
         status: Literal["active", "disabled", "canceled"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -152,6 +153,9 @@ class AccountNumbers(SyncAPIResource):
           account_number_id: The identifier of the Account Number.
 
           inbound_ach: Options related to how this Account Number handles inbound ACH transfers.
+
+          inbound_checks: Options related to how this Account Number should handle inbound check
+              withdrawals.
 
           name: The name you choose for the Account Number.
 
@@ -178,6 +182,7 @@ class AccountNumbers(SyncAPIResource):
             body=maybe_transform(
                 {
                     "inbound_ach": inbound_ach,
+                    "inbound_checks": inbound_checks,
                     "name": name,
                     "status": status,
                 },
@@ -378,6 +383,7 @@ class AsyncAccountNumbers(AsyncAPIResource):
         account_number_id: str,
         *,
         inbound_ach: account_number_update_params.InboundACH | NotGiven = NOT_GIVEN,
+        inbound_checks: account_number_update_params.InboundChecks | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
         status: Literal["active", "disabled", "canceled"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -395,6 +401,9 @@ class AsyncAccountNumbers(AsyncAPIResource):
           account_number_id: The identifier of the Account Number.
 
           inbound_ach: Options related to how this Account Number handles inbound ACH transfers.
+
+          inbound_checks: Options related to how this Account Number should handle inbound check
+              withdrawals.
 
           name: The name you choose for the Account Number.
 
@@ -421,6 +430,7 @@ class AsyncAccountNumbers(AsyncAPIResource):
             body=maybe_transform(
                 {
                     "inbound_ach": inbound_ach,
+                    "inbound_checks": inbound_checks,
                     "name": name,
                     "status": status,
                 },

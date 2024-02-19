@@ -115,6 +115,7 @@ class TestAccountNumbers:
         account_number = client.account_numbers.update(
             "string",
             inbound_ach={"debit_status": "blocked"},
+            inbound_checks={"status": "allowed"},
             name="x",
             status="disabled",
         )
@@ -292,6 +293,7 @@ class TestAsyncAccountNumbers:
         account_number = await async_client.account_numbers.update(
             "string",
             inbound_ach={"debit_status": "blocked"},
+            inbound_checks={"status": "allowed"},
             name="x",
             status="disabled",
         )
