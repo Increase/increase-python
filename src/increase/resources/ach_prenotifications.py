@@ -52,7 +52,10 @@ class ACHPrenotifications(SyncAPIResource):
         individual_id: str | NotGiven = NOT_GIVEN,
         individual_name: str | NotGiven = NOT_GIVEN,
         standard_entry_class_code: Literal[
-            "corporate_credit_or_debit", "prearranged_payments_and_deposit", "internet_initiated"
+            "corporate_credit_or_debit",
+            "corporate_trade_exchange",
+            "prearranged_payments_and_deposit",
+            "internet_initiated",
         ]
         | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -98,6 +101,7 @@ class ACHPrenotifications(SyncAPIResource):
           standard_entry_class_code: The Standard Entry Class (SEC) code to use for the ACH Prenotification.
 
               - `corporate_credit_or_debit` - Corporate Credit and Debit (CCD).
+              - `corporate_trade_exchange` - Corporate Trade Exchange (CTX).
               - `prearranged_payments_and_deposit` - Prearranged Payments and Deposits (PPD).
               - `internet_initiated` - Internet Initiated (WEB).
 
@@ -259,7 +263,10 @@ class AsyncACHPrenotifications(AsyncAPIResource):
         individual_id: str | NotGiven = NOT_GIVEN,
         individual_name: str | NotGiven = NOT_GIVEN,
         standard_entry_class_code: Literal[
-            "corporate_credit_or_debit", "prearranged_payments_and_deposit", "internet_initiated"
+            "corporate_credit_or_debit",
+            "corporate_trade_exchange",
+            "prearranged_payments_and_deposit",
+            "internet_initiated",
         ]
         | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -305,6 +312,7 @@ class AsyncACHPrenotifications(AsyncAPIResource):
           standard_entry_class_code: The Standard Entry Class (SEC) code to use for the ACH Prenotification.
 
               - `corporate_credit_or_debit` - Corporate Credit and Debit (CCD).
+              - `corporate_trade_exchange` - Corporate Trade Exchange (CTX).
               - `prearranged_payments_and_deposit` - Prearranged Payments and Deposits (PPD).
               - `internet_initiated` - Internet Initiated (WEB).
 

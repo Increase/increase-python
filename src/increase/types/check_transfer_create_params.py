@@ -14,6 +14,12 @@ class CheckTransferCreateParams(TypedDict, total=False):
     amount: Required[int]
     """The transfer amount in cents."""
 
+    source_account_number_id: Required[str]
+    """
+    The identifier of the Account Number from which to send the transfer and print
+    on the check.
+    """
+
     fulfillment_method: Literal["physical_check", "third_party"]
     """Whether Increase will print and mail the check or if you will do it yourself.
 
@@ -32,12 +38,6 @@ class CheckTransferCreateParams(TypedDict, total=False):
 
     require_approval: bool
     """Whether the transfer requires explicit approval via the dashboard or API."""
-
-    source_account_number_id: str
-    """
-    The identifier of the Account Number from which to send the transfer and print
-    on the check.
-    """
 
 
 class PhysicalCheckMailingAddress(TypedDict, total=False):

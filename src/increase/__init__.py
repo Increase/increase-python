@@ -40,11 +40,9 @@ from ._exceptions import (
     APIMethodNotFoundError,
     InvalidParametersError,
     EnvironmentMismatchError,
-    IdempotencyConflictError,
     UnprocessableEntityError,
     APIResponseValidationError,
     InsufficientPermissionsError,
-    IdempotencyUnprocessableError,
     IdempotencyKeyAlreadyUsedError,
 )
 from ._utils._logs import setup_logging as _setup_logging
@@ -72,9 +70,7 @@ __all__ = [
     "InternalServerError",
     "APIMethodNotFoundError",
     "EnvironmentMismatchError",
-    "IdempotencyConflictError",
     "IdempotencyKeyAlreadyUsedError",
-    "IdempotencyUnprocessableError",
     "InsufficientPermissionsError",
     "InvalidAPIKeyError",
     "InvalidOperationError",
