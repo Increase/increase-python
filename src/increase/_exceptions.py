@@ -25,10 +25,8 @@ __all__ = [
     "PrivateFeatureError",
     "APIMethodNotFoundError",
     "ObjectNotFoundError",
-    "IdempotencyConflictError",
     "IdempotencyKeyAlreadyUsedError",
     "InvalidOperationError",
-    "IdempotencyUnprocessableError",
     "RateLimitedError",
     "InternalServerError",
 ]
@@ -284,26 +282,6 @@ class ObjectNotFoundError(NotFoundError):
         self.type = cast(Any, data.get("type"))
 
 
-class IdempotencyConflictError(ConflictError):
-    detail: Optional[str] = None
-
-    status: Literal[409]
-
-    title: str
-
-    type: Literal["idempotency_conflict_error"]
-
-    def __init__(self, message: str, *, body: object, response: httpx.Response) -> None:
-        data = cast(Mapping[str, object], body if is_mapping(body) else {})
-        title = cast(Any, data.get("title"))
-        super().__init__(title or message, response=response, body=body)
-
-        self.title = title
-        self.detail = cast(Any, data.get("detail"))
-        self.status = cast(Any, data.get("status"))
-        self.type = cast(Any, data.get("type"))
-
-
 class IdempotencyKeyAlreadyUsedError(ConflictError):
     detail: Optional[str] = None
 
@@ -335,26 +313,6 @@ class InvalidOperationError(ConflictError):
     title: str
 
     type: Literal["invalid_operation_error"]
-
-    def __init__(self, message: str, *, body: object, response: httpx.Response) -> None:
-        data = cast(Mapping[str, object], body if is_mapping(body) else {})
-        title = cast(Any, data.get("title"))
-        super().__init__(title or message, response=response, body=body)
-
-        self.title = title
-        self.detail = cast(Any, data.get("detail"))
-        self.status = cast(Any, data.get("status"))
-        self.type = cast(Any, data.get("type"))
-
-
-class IdempotencyUnprocessableError(UnprocessableEntityError):
-    detail: Optional[str] = None
-
-    status: Literal[422]
-
-    title: str
-
-    type: Literal["idempotency_unprocessable_error"]
 
     def __init__(self, message: str, *, body: object, response: httpx.Response) -> None:
         data = cast(Mapping[str, object], body if is_mapping(body) else {})

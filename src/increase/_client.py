@@ -379,17 +379,11 @@ class Increase(SyncAPIClient):
         if type_ == "object_not_found_error":
             return _exceptions.ObjectNotFoundError(err_msg, response=response, body=body)
 
-        if type_ == "idempotency_conflict_error":
-            return _exceptions.IdempotencyConflictError(err_msg, response=response, body=body)
-
         if type_ == "idempotency_key_already_used_error":
             return _exceptions.IdempotencyKeyAlreadyUsedError(err_msg, response=response, body=body)
 
         if type_ == "invalid_operation_error":
             return _exceptions.InvalidOperationError(err_msg, response=response, body=body)
-
-        if type_ == "idempotency_unprocessable_error":
-            return _exceptions.IdempotencyUnprocessableError(err_msg, response=response, body=body)
 
         if type_ == "rate_limited_error":
             return _exceptions.RateLimitedError(err_msg, response=response, body=body)
@@ -754,17 +748,11 @@ class AsyncIncrease(AsyncAPIClient):
         if type_ == "object_not_found_error":
             return _exceptions.ObjectNotFoundError(err_msg, response=response, body=body)
 
-        if type_ == "idempotency_conflict_error":
-            return _exceptions.IdempotencyConflictError(err_msg, response=response, body=body)
-
         if type_ == "idempotency_key_already_used_error":
             return _exceptions.IdempotencyKeyAlreadyUsedError(err_msg, response=response, body=body)
 
         if type_ == "invalid_operation_error":
             return _exceptions.InvalidOperationError(err_msg, response=response, body=body)
-
-        if type_ == "idempotency_unprocessable_error":
-            return _exceptions.IdempotencyUnprocessableError(err_msg, response=response, body=body)
 
         if type_ == "rate_limited_error":
             return _exceptions.RateLimitedError(err_msg, response=response, body=body)

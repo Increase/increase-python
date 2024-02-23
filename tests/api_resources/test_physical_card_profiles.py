@@ -190,6 +190,10 @@ class TestPhysicalCardProfiles:
             contact_phone="x",
             description="x",
             front_image_file_id="file_o6aex13wm1jcc36sgcj1",
+            front_text={
+                "line1": "x",
+                "line2": "x",
+            },
         )
         assert_matches_type(PhysicalCardProfile, physical_card_profile, path=["response"])
 
@@ -400,6 +404,10 @@ class TestAsyncPhysicalCardProfiles:
             contact_phone="x",
             description="x",
             front_image_file_id="file_o6aex13wm1jcc36sgcj1",
+            front_text={
+                "line1": "x",
+                "line2": "x",
+            },
         )
         assert_matches_type(PhysicalCardProfile, physical_card_profile, path=["response"])
 

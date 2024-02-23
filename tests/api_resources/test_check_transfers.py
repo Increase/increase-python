@@ -26,6 +26,7 @@ class TestCheckTransfers:
         check_transfer = client.check_transfers.create(
             account_id="account_in71c4amph0vgo2qllky",
             amount=1000,
+            source_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
         )
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
@@ -34,6 +35,7 @@ class TestCheckTransfers:
         check_transfer = client.check_transfers.create(
             account_id="account_in71c4amph0vgo2qllky",
             amount=1000,
+            source_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
             fulfillment_method="physical_check",
             physical_check={
                 "memo": "Check payment",
@@ -57,7 +59,6 @@ class TestCheckTransfers:
                 },
             },
             require_approval=True,
-            source_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
         )
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
@@ -66,6 +67,7 @@ class TestCheckTransfers:
         response = client.check_transfers.with_raw_response.create(
             account_id="account_in71c4amph0vgo2qllky",
             amount=1000,
+            source_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
         )
 
         assert response.is_closed is True
@@ -78,6 +80,7 @@ class TestCheckTransfers:
         with client.check_transfers.with_streaming_response.create(
             account_id="account_in71c4amph0vgo2qllky",
             amount=1000,
+            source_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -302,6 +305,7 @@ class TestAsyncCheckTransfers:
         check_transfer = await async_client.check_transfers.create(
             account_id="account_in71c4amph0vgo2qllky",
             amount=1000,
+            source_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
         )
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
@@ -310,6 +314,7 @@ class TestAsyncCheckTransfers:
         check_transfer = await async_client.check_transfers.create(
             account_id="account_in71c4amph0vgo2qllky",
             amount=1000,
+            source_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
             fulfillment_method="physical_check",
             physical_check={
                 "memo": "Check payment",
@@ -333,7 +338,6 @@ class TestAsyncCheckTransfers:
                 },
             },
             require_approval=True,
-            source_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
         )
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
@@ -342,6 +346,7 @@ class TestAsyncCheckTransfers:
         response = await async_client.check_transfers.with_raw_response.create(
             account_id="account_in71c4amph0vgo2qllky",
             amount=1000,
+            source_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
         )
 
         assert response.is_closed is True
@@ -354,6 +359,7 @@ class TestAsyncCheckTransfers:
         async with async_client.check_transfers.with_streaming_response.create(
             account_id="account_in71c4amph0vgo2qllky",
             amount=1000,
+            source_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
