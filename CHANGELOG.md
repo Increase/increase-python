@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.38.0 (2024-02-26)
+
+Full Changelog: [v0.37.0...v0.38.0](https://github.com/Increase/increase-python/compare/v0.37.0...v0.38.0)
+
+### Features
+
+* **api:** add unusual_activity_report_attachment enum member ([#345](https://github.com/Increase/increase-python/issues/345)) ([1ea0c27](https://github.com/Increase/increase-python/commit/1ea0c271320516581bdf5d0cf1745a7bb0183e84))
+
 ## 0.37.0 (2024-02-26)
 
 Full Changelog: [v0.36.0...v0.37.0](https://github.com/Increase/increase-python/compare/v0.36.0...v0.37.0)
