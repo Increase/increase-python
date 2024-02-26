@@ -64,6 +64,7 @@ class File(BaseModel):
         "document_request",
         "entity_supplemental_document",
         "export",
+        "unusual_activity_report_attachment",
     ]
     """What the File will be used for.
 
@@ -94,6 +95,8 @@ class File(BaseModel):
     - `entity_supplemental_document` - A supplemental document associated an an
       Entity.
     - `export` - The results of an Export you requested via the dashboard or API.
+    - `unusual_activity_report_attachment` - An attachment to an Unusual Activity
+      Report.
     """
 
     type: Literal["file"]

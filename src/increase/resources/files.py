@@ -50,6 +50,7 @@ class Files(SyncAPIResource):
             "physical_card_carrier",
             "document_request",
             "entity_supplemental_document",
+            "unusual_activity_report_attachment",
         ],
         description: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -92,6 +93,8 @@ class Files(SyncAPIResource):
               - `document_request` - A document requested by Increase.
               - `entity_supplemental_document` - A supplemental document associated an an
                 Entity.
+              - `unusual_activity_report_attachment` - An attachment to an Unusual Activity
+                Report.
 
           description: The description you choose to give the File.
 
@@ -254,6 +257,7 @@ class AsyncFiles(AsyncAPIResource):
             "physical_card_carrier",
             "document_request",
             "entity_supplemental_document",
+            "unusual_activity_report_attachment",
         ],
         description: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -296,6 +300,8 @@ class AsyncFiles(AsyncAPIResource):
               - `document_request` - A document requested by Increase.
               - `entity_supplemental_document` - A supplemental document associated an an
                 Entity.
+              - `unusual_activity_report_attachment` - An attachment to an Unusual Activity
+                Report.
 
           description: The description you choose to give the File.
 

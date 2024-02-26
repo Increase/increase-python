@@ -33,6 +33,7 @@ class FileCreateParams(TypedDict, total=False):
             "physical_card_carrier",
             "document_request",
             "entity_supplemental_document",
+            "unusual_activity_report_attachment",
         ]
     ]
     """What the File will be used for in Increase's systems.
@@ -57,6 +58,8 @@ class FileCreateParams(TypedDict, total=False):
     - `document_request` - A document requested by Increase.
     - `entity_supplemental_document` - A supplemental document associated an an
       Entity.
+    - `unusual_activity_report_attachment` - An attachment to an Unusual Activity
+      Report.
     """
 
     description: str
