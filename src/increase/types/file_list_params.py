@@ -82,6 +82,7 @@ _PurposeReservedKeywords = TypedDict(
                 "document_request",
                 "entity_supplemental_document",
                 "export",
+                "unusual_activity_report_attachment",
             ]
         ],
     },
