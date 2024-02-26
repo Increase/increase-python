@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.37.0 (2024-02-26)
+
+Full Changelog: [v0.36.0...v0.37.0](https://github.com/Increase/increase-python/compare/v0.36.0...v0.37.0)
+
+### Features
+
+* **api:** physical card clone update ([#343](https://github.com/Increase/increase-python/issues/343)) ([4340363](https://github.com/Increase/increase-python/commit/43403635b0bba91dc2f1d646aa92904a60efa9a3))
+
+
+### Chores
+
+* **internal:** bump pyright ([#344](https://github.com/Increase/increase-python/issues/344)) ([4f38ab5](https://github.com/Increase/increase-python/commit/4f38ab55098c8345e35404155e2c89eb70184315))
+* **internal:** bump rye to v0.24.0 ([#340](https://github.com/Increase/increase-python/issues/340)) ([da7cbab](https://github.com/Increase/increase-python/commit/da7cbab44144589158dfd68bf0dfe1a265ccf184))
+* **internal:** update deps ([#342](https://github.com/Increase/increase-python/issues/342)) ([3c611b8](https://github.com/Increase/increase-python/commit/3c611b8e5024b5e6ba33b0b37f81cce11aebbfa4))
+
 ## 0.36.0 (2024-02-19)
 
 Full Changelog: [v0.35.0...v0.36.0](https://github.com/Increase/increase-python/compare/v0.35.0...v0.36.0)
