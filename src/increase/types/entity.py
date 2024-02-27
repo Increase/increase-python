@@ -145,6 +145,12 @@ class Corporation(BaseModel):
     corporation's state of incorporation.
     """
 
+    industry_code: Optional[str] = None
+    """
+    The numeric North American Industry Classification System (NAICS) code submitted
+    for the corporation.
+    """
+
     name: str
     """The legal name of the corporation."""
 
