@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.39.0 (2024-02-27)
+
+Full Changelog: [v0.38.0...v0.39.0](https://github.com/Increase/increase-python/compare/v0.38.0...v0.39.0)
+
+### Features
+
+* **api:** add `industry_code` property to methods ([#349](https://github.com/Increase/increase-python/issues/349)) ([4e67e15](https://github.com/Increase/increase-python/commit/4e67e15b2f4fcb749eb4dcd043f27ded052d1a1f))
+
+
+### Chores
+
+* **client:** use anyio.sleep instead of asyncio.sleep ([#347](https://github.com/Increase/increase-python/issues/347)) ([4f8ec8e](https://github.com/Increase/increase-python/commit/4f8ec8e69ebff5a302344d50673d5c264439b874))
+
 ## 0.38.0 (2024-02-26)
 
 Full Changelog: [v0.37.0...v0.38.0](https://github.com/Increase/increase-python/compare/v0.37.0...v0.38.0)
