@@ -367,6 +367,12 @@ Methods:
 - <code title="post /entities/{entity_id}/supplemental_documents">client.entities.supplemental_documents.<a href="./src/increase/resources/entities/supplemental_documents.py">create</a>(entity_id, \*\*<a href="src/increase/types/entities/supplemental_document_create_params.py">params</a>) -> <a href="./src/increase/types/entity.py">Entity</a></code>
 - <code title="get /entity_supplemental_documents">client.entities.supplemental_documents.<a href="./src/increase/resources/entities/supplemental_documents.py">list</a>(\*\*<a href="src/increase/types/entities/supplemental_document_list_params.py">params</a>) -> <a href="./src/increase/types/entities/supplemental_document.py">SyncPage[SupplementalDocument]</a></code>
 
+## IndustryCode
+
+Methods:
+
+- <code title="post /entities/{entity_id}/industry_code">client.entities.industry_code.<a href="./src/increase/resources/entities/industry_code.py">create</a>(entity_id, \*\*<a href="src/increase/types/entities/industry_code_create_params.py">params</a>) -> <a href="./src/increase/types/entity.py">Entity</a></code>
+
 # InboundACHTransfers
 
 Types:
