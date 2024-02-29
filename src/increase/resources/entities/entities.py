@@ -15,6 +15,14 @@ from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ...pagination import SyncPage, AsyncPage
+from .industry_code import (
+    IndustryCode,
+    AsyncIndustryCode,
+    IndustryCodeWithRawResponse,
+    AsyncIndustryCodeWithRawResponse,
+    IndustryCodeWithStreamingResponse,
+    AsyncIndustryCodeWithStreamingResponse,
+)
 from ..._base_client import (
     AsyncPaginator,
     make_request_options,
@@ -47,6 +55,10 @@ class Entities(SyncAPIResource):
     @cached_property
     def supplemental_documents(self) -> SupplementalDocuments:
         return SupplementalDocuments(self._client)
+
+    @cached_property
+    def industry_code(self) -> IndustryCode:
+        return IndustryCode(self._client)
 
     @cached_property
     def with_raw_response(self) -> EntitiesWithRawResponse:
@@ -340,6 +352,10 @@ class AsyncEntities(AsyncAPIResource):
     @cached_property
     def supplemental_documents(self) -> AsyncSupplementalDocuments:
         return AsyncSupplementalDocuments(self._client)
+
+    @cached_property
+    def industry_code(self) -> AsyncIndustryCode:
+        return AsyncIndustryCode(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncEntitiesWithRawResponse:
@@ -653,6 +669,10 @@ class EntitiesWithRawResponse:
     def supplemental_documents(self) -> SupplementalDocumentsWithRawResponse:
         return SupplementalDocumentsWithRawResponse(self._entities.supplemental_documents)
 
+    @cached_property
+    def industry_code(self) -> IndustryCodeWithRawResponse:
+        return IndustryCodeWithRawResponse(self._entities.industry_code)
+
 
 class AsyncEntitiesWithRawResponse:
     def __init__(self, entities: AsyncEntities) -> None:
@@ -681,6 +701,10 @@ class AsyncEntitiesWithRawResponse:
     @cached_property
     def supplemental_documents(self) -> AsyncSupplementalDocumentsWithRawResponse:
         return AsyncSupplementalDocumentsWithRawResponse(self._entities.supplemental_documents)
+
+    @cached_property
+    def industry_code(self) -> AsyncIndustryCodeWithRawResponse:
+        return AsyncIndustryCodeWithRawResponse(self._entities.industry_code)
 
 
 class EntitiesWithStreamingResponse:
@@ -711,6 +735,10 @@ class EntitiesWithStreamingResponse:
     def supplemental_documents(self) -> SupplementalDocumentsWithStreamingResponse:
         return SupplementalDocumentsWithStreamingResponse(self._entities.supplemental_documents)
 
+    @cached_property
+    def industry_code(self) -> IndustryCodeWithStreamingResponse:
+        return IndustryCodeWithStreamingResponse(self._entities.industry_code)
+
 
 class AsyncEntitiesWithStreamingResponse:
     def __init__(self, entities: AsyncEntities) -> None:
@@ -739,3 +767,7 @@ class AsyncEntitiesWithStreamingResponse:
     @cached_property
     def supplemental_documents(self) -> AsyncSupplementalDocumentsWithStreamingResponse:
         return AsyncSupplementalDocumentsWithStreamingResponse(self._entities.supplemental_documents)
+
+    @cached_property
+    def industry_code(self) -> AsyncIndustryCodeWithStreamingResponse:
+        return AsyncIndustryCodeWithStreamingResponse(self._entities.industry_code)
