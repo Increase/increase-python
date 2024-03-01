@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.41.0 (2024-03-01)
+
+Full Changelog: [v0.40.0...v0.41.0](https://github.com/Increase/increase-python/compare/v0.40.0...v0.41.0)
+
+### Features
+
+* **api:** add actioner properties ([#356](https://github.com/Increase/increase-python/issues/356)) ([46a7e8d](https://github.com/Increase/increase-python/commit/46a7e8d2f5bbc6df8a8d12b382d9f22c72469a19))
+
 ## 0.40.0 (2024-03-01)
 
 Full Changelog: [v0.39.0...v0.40.0](https://github.com/Increase/increase-python/compare/v0.39.0...v0.40.0)
