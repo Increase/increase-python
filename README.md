@@ -13,6 +13,7 @@ The REST API documentation can be found [on increase.com](https://increase.com/d
 ## Installation
 
 ```sh
+# install from PyPI
 pip install increase
 ```
 
