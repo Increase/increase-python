@@ -42,7 +42,7 @@ class IndustryCode(SyncAPIResource):
         idempotency_key: str | None = None,
     ) -> Entity:
         """
-        Update a Corporation Entity's industry code
+        Update the industry code for a corporate Entity
 
         Args:
           entity_id: The identifier of the Entity to update. This endpoint only accepts `corporation`
@@ -104,7 +104,7 @@ class AsyncIndustryCode(AsyncAPIResource):
         idempotency_key: str | None = None,
     ) -> Entity:
         """
-        Update a Corporation Entity's industry code
+        Update the industry code for a corporate Entity
 
         Args:
           entity_id: The identifier of the Entity to update. This endpoint only accepts `corporation`
