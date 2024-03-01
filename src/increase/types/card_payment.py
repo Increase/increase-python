@@ -241,6 +241,17 @@ class ElementCardAuthorization(BaseModel):
     id: str
     """The Card Authorization identifier."""
 
+    actioner: Literal["user", "increase", "network"]
+    """
+    Whether this authorization was approved by Increase, the card network through
+    stand-in processing, or the user through a real-time decision.
+
+    - `user` - This object was actioned by the user through a real-time decision.
+    - `increase` - This object was actioned by Increase without user intervention.
+    - `network` - This object was actioned by the network, through stand-in
+      processing.
+    """
+
     amount: int
     """The pending amount in the minor unit of the transaction's currency.
 
@@ -580,6 +591,17 @@ class ElementCardDecline(BaseModel):
     id: str
     """The Card Decline identifier."""
 
+    actioner: Literal["user", "increase", "network"]
+    """
+    Whether this authorization was approved by Increase, the card network through
+    stand-in processing, or the user through a real-time decision.
+
+    - `user` - This object was actioned by the user through a real-time decision.
+    - `increase` - This object was actioned by Increase without user intervention.
+    - `network` - This object was actioned by the network, through stand-in
+      processing.
+    """
+
     amount: int
     """The declined amount in the minor unit of the destination account currency.
 
@@ -808,6 +830,17 @@ class ElementCardIncrementNetworkIdentifiers(BaseModel):
 class ElementCardIncrement(BaseModel):
     id: str
     """The Card Increment identifier."""
+
+    actioner: Literal["user", "increase", "network"]
+    """
+    Whether this authorization was approved by Increase, the card network through
+    stand-in processing, or the user through a real-time decision.
+
+    - `user` - This object was actioned by the user through a real-time decision.
+    - `increase` - This object was actioned by Increase without user intervention.
+    - `network` - This object was actioned by the network, through stand-in
+      processing.
+    """
 
     amount: int
     """The amount of this increment in the minor unit of the transaction's currency.
@@ -2113,6 +2146,17 @@ class ElementCardValidationVerification(BaseModel):
 class ElementCardValidation(BaseModel):
     id: str
     """The Card Validation identifier."""
+
+    actioner: Literal["user", "increase", "network"]
+    """
+    Whether this authorization was approved by Increase, the card network through
+    stand-in processing, or the user through a real-time decision.
+
+    - `user` - This object was actioned by the user through a real-time decision.
+    - `increase` - This object was actioned by Increase without user intervention.
+    - `network` - This object was actioned by the network, through stand-in
+      processing.
+    """
 
     card_payment_id: Optional[str] = None
     """The ID of the Card Payment this transaction belongs to."""
