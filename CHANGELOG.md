@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.40.0 (2024-03-01)
+
+Full Changelog: [v0.39.0...v0.40.0](https://github.com/Increase/increase-python/compare/v0.39.0...v0.40.0)
+
+### Features
+
+* **api:** add post /entities/{entity_id}/industry_code endpoint ([#353](https://github.com/Increase/increase-python/issues/353)) ([4675f47](https://github.com/Increase/increase-python/commit/4675f47ca873022528466025bb01a74c868471b6))
+
+
+### Chores
+
+* **docs:** mention install from git repo ([#354](https://github.com/Increase/increase-python/issues/354)) ([47c432d](https://github.com/Increase/increase-python/commit/47c432d2e56af8a05b322c570c8537a88972e9e9))
+* **internal:** minor core client restructuring ([#350](https://github.com/Increase/increase-python/issues/350)) ([20a9f17](https://github.com/Increase/increase-python/commit/20a9f1748199c2b81f6db6afc721aea1e78b40da))
+
+
+### Documentation
+
+* change industry code docstring ([#355](https://github.com/Increase/increase-python/issues/355)) ([a7619c3](https://github.com/Increase/increase-python/commit/a7619c3832c462a10e670f2792da86771f62ca46))
+* **contributing:** improve wording ([#352](https://github.com/Increase/increase-python/issues/352)) ([1764ab8](https://github.com/Increase/increase-python/commit/1764ab8caf62d332590c1eeec58b983938af1fd8))
+
 ## 0.39.0 (2024-02-27)
 
 Full Changelog: [v0.38.0...v0.39.0](https://github.com/Increase/increase-python/compare/v0.38.0...v0.39.0)
