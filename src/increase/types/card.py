@@ -27,8 +27,8 @@ class BillingAddress(BaseModel):
 
 
 class DigitalWallet(BaseModel):
-    card_profile_id: Optional[str] = None
-    """The card profile assigned to this digital card.
+    digital_card_profile_id: Optional[str] = None
+    """The digital card profile assigned to this digital card.
 
     Card profiles may also be assigned at the program level.
     """
