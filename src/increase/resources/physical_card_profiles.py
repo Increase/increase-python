@@ -12,7 +12,10 @@ from ..types import (
     physical_card_profile_create_params,
 )
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from .._utils import maybe_transform
+from .._utils import (
+    maybe_transform,
+    async_maybe_transform,
+)
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
@@ -349,7 +352,7 @@ class AsyncPhysicalCardProfiles(AsyncAPIResource):
         """
         return await self._post(
             "/physical_card_profiles",
-            body=maybe_transform(
+            body=await async_maybe_transform(
                 {
                     "carrier_image_file_id": carrier_image_file_id,
                     "contact_phone": contact_phone,
@@ -556,7 +559,7 @@ class AsyncPhysicalCardProfiles(AsyncAPIResource):
             )
         return await self._post(
             f"/physical_card_profiles/{physical_card_profile_id}/clone",
-            body=maybe_transform(
+            body=await async_maybe_transform(
                 {
                     "carrier_image_file_id": carrier_image_file_id,
                     "contact_phone": contact_phone,

@@ -21,7 +21,10 @@ from ...types import (
     simulation_card_authorization_expirations_params,
 )
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from ..._utils import maybe_transform
+from ..._utils import (
+    maybe_transform,
+    async_maybe_transform,
+)
 from .programs import (
     Programs,
     AsyncPrograms,
@@ -557,7 +560,7 @@ class AsyncSimulations(AsyncAPIResource):
         """
         return await self._post(
             "/simulations/card_authorization_expirations",
-            body=maybe_transform(
+            body=await async_maybe_transform(
                 {"card_payment_id": card_payment_id},
                 simulation_card_authorization_expirations_params.SimulationCardAuthorizationExpirationsParams,
             ),
@@ -608,7 +611,7 @@ class AsyncSimulations(AsyncAPIResource):
         """
         return await self._post(
             "/simulations/card_fuel_confirmations",
-            body=maybe_transform(
+            body=await async_maybe_transform(
                 {
                     "amount": amount,
                     "card_payment_id": card_payment_id,
@@ -666,7 +669,7 @@ class AsyncSimulations(AsyncAPIResource):
         """
         return await self._post(
             "/simulations/card_increments",
-            body=maybe_transform(
+            body=await async_maybe_transform(
                 {
                     "amount": amount,
                     "card_payment_id": card_payment_id,
@@ -722,7 +725,7 @@ class AsyncSimulations(AsyncAPIResource):
         """
         return await self._post(
             "/simulations/card_reversals",
-            body=maybe_transform(
+            body=await async_maybe_transform(
                 {
                     "card_payment_id": card_payment_id,
                     "amount": amount,

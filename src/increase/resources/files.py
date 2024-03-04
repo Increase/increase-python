@@ -10,7 +10,12 @@ import httpx
 from .. import _legacy_response
 from ..types import File, file_list_params, file_create_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven, FileTypes
-from .._utils import extract_files, maybe_transform, deepcopy_minimal
+from .._utils import (
+    extract_files,
+    maybe_transform,
+    deepcopy_minimal,
+    async_maybe_transform,
+)
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
@@ -330,7 +335,7 @@ class AsyncFiles(AsyncAPIResource):
             extra_headers = {"Content-Type": "multipart/form-data", **(extra_headers or {})}
         return await self._post(
             "/files",
-            body=maybe_transform(body, file_create_params.FileCreateParams),
+            body=await async_maybe_transform(body, file_create_params.FileCreateParams),
             files=files,
             options=make_request_options(
                 extra_headers=extra_headers,

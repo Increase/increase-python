@@ -14,7 +14,10 @@ from ..types import (
     check_transfer_stop_payment_params,
 )
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from .._utils import maybe_transform
+from .._utils import (
+    maybe_transform,
+    async_maybe_transform,
+)
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
@@ -403,7 +406,7 @@ class AsyncCheckTransfers(AsyncAPIResource):
         """
         return await self._post(
             "/check_transfers",
-            body=maybe_transform(
+            body=await async_maybe_transform(
                 {
                     "account_id": account_id,
                     "amount": amount,
@@ -643,7 +646,9 @@ class AsyncCheckTransfers(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `check_transfer_id` but received {check_transfer_id!r}")
         return await self._post(
             f"/check_transfers/{check_transfer_id}/stop_payment",
-            body=maybe_transform({"reason": reason}, check_transfer_stop_payment_params.CheckTransferStopPaymentParams),
+            body=await async_maybe_transform(
+                {"reason": reason}, check_transfer_stop_payment_params.CheckTransferStopPaymentParams
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

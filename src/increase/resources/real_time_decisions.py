@@ -7,7 +7,10 @@ import httpx
 from .. import _legacy_response
 from ..types import RealTimeDecision, real_time_decision_action_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from .._utils import maybe_transform
+from .._utils import (
+    maybe_transform,
+    async_maybe_transform,
+)
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
@@ -223,7 +226,7 @@ class AsyncRealTimeDecisions(AsyncAPIResource):
             )
         return await self._post(
             f"/real_time_decisions/{real_time_decision_id}/action",
-            body=maybe_transform(
+            body=await async_maybe_transform(
                 {
                     "card_authorization": card_authorization,
                     "digital_wallet_authentication": digital_wallet_authentication,

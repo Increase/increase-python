@@ -7,7 +7,10 @@ import httpx
 from ... import _legacy_response
 from ...types import Entity
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from ..._utils import maybe_transform
+from ..._utils import (
+    maybe_transform,
+    async_maybe_transform,
+)
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
@@ -234,7 +237,7 @@ class AsyncBeneficialOwners(AsyncAPIResource):
         """
         return await self._post(
             "/entity_beneficial_owners",
-            body=maybe_transform(
+            body=await async_maybe_transform(
                 {
                     "beneficial_owner": beneficial_owner,
                     "entity_id": entity_id,
@@ -285,7 +288,7 @@ class AsyncBeneficialOwners(AsyncAPIResource):
         """
         return await self._post(
             "/entity_beneficial_owners/archive",
-            body=maybe_transform(
+            body=await async_maybe_transform(
                 {
                     "beneficial_owner_id": beneficial_owner_id,
                     "entity_id": entity_id,
@@ -340,7 +343,7 @@ class AsyncBeneficialOwners(AsyncAPIResource):
         """
         return await self._post(
             "/entity_beneficial_owners/address",
-            body=maybe_transform(
+            body=await async_maybe_transform(
                 {
                     "address": address,
                     "beneficial_owner_id": beneficial_owner_id,

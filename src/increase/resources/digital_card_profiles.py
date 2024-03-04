@@ -12,7 +12,10 @@ from ..types import (
     digital_card_profile_create_params,
 )
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from .._utils import maybe_transform
+from .._utils import (
+    maybe_transform,
+    async_maybe_transform,
+)
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
@@ -399,7 +402,7 @@ class AsyncDigitalCardProfiles(AsyncAPIResource):
         """
         return await self._post(
             "/digital_card_profiles",
-            body=maybe_transform(
+            body=await async_maybe_transform(
                 {
                     "app_icon_file_id": app_icon_file_id,
                     "background_image_file_id": background_image_file_id,
@@ -622,7 +625,7 @@ class AsyncDigitalCardProfiles(AsyncAPIResource):
             )
         return await self._post(
             f"/digital_card_profiles/{digital_card_profile_id}/clone",
-            body=maybe_transform(
+            body=await async_maybe_transform(
                 {
                     "app_icon_file_id": app_icon_file_id,
                     "background_image_file_id": background_image_file_id,
