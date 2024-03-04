@@ -11,7 +11,10 @@ import httpx
 from ... import _legacy_response
 from ...types import ACHTransfer, InboundACHTransfer
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from ..._utils import maybe_transform
+from ..._utils import (
+    maybe_transform,
+    async_maybe_transform,
+)
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
@@ -509,7 +512,7 @@ class AsyncACHTransfers(AsyncAPIResource):
         """
         return await self._post(
             "/simulations/inbound_ach_transfers",
-            body=maybe_transform(
+            body=await async_maybe_transform(
                 {
                     "account_number_id": account_number_id,
                     "amount": amount,
@@ -790,7 +793,7 @@ class AsyncACHTransfers(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `ach_transfer_id` but received {ach_transfer_id!r}")
         return await self._post(
             f"/simulations/ach_transfers/{ach_transfer_id}/return",
-            body=maybe_transform({"reason": reason}, ach_transfer_return_params.ACHTransferReturnParams),
+            body=await async_maybe_transform({"reason": reason}, ach_transfer_return_params.ACHTransferReturnParams),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

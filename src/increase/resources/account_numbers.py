@@ -14,7 +14,10 @@ from ..types import (
     account_number_update_params,
 )
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from .._utils import maybe_transform
+from .._utils import (
+    maybe_transform,
+    async_maybe_transform,
+)
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
@@ -324,7 +327,7 @@ class AsyncAccountNumbers(AsyncAPIResource):
         """
         return await self._post(
             "/account_numbers",
-            body=maybe_transform(
+            body=await async_maybe_transform(
                 {
                     "account_id": account_id,
                     "name": name,
@@ -427,7 +430,7 @@ class AsyncAccountNumbers(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `account_number_id` but received {account_number_id!r}")
         return await self._patch(
             f"/account_numbers/{account_number_id}",
-            body=maybe_transform(
+            body=await async_maybe_transform(
                 {
                     "inbound_ach": inbound_ach,
                     "inbound_checks": inbound_checks,

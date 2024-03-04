@@ -14,7 +14,10 @@ from ..types import (
     physical_card_update_params,
 )
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from .._utils import maybe_transform
+from .._utils import (
+    maybe_transform,
+    async_maybe_transform,
+)
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
@@ -291,7 +294,7 @@ class AsyncPhysicalCards(AsyncAPIResource):
         """
         return await self._post(
             "/physical_cards",
-            body=maybe_transform(
+            body=await async_maybe_transform(
                 {
                     "card_id": card_id,
                     "cardholder": cardholder,
@@ -384,7 +387,7 @@ class AsyncPhysicalCards(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `physical_card_id` but received {physical_card_id!r}")
         return await self._patch(
             f"/physical_cards/{physical_card_id}",
-            body=maybe_transform({"status": status}, physical_card_update_params.PhysicalCardUpdateParams),
+            body=await async_maybe_transform({"status": status}, physical_card_update_params.PhysicalCardUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

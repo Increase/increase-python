@@ -18,7 +18,10 @@ from ..types import (
     account_balance_params,
 )
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from .._utils import maybe_transform
+from .._utils import (
+    maybe_transform,
+    async_maybe_transform,
+)
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
@@ -389,7 +392,7 @@ class AsyncAccounts(AsyncAPIResource):
         """
         return await self._post(
             "/accounts",
-            body=maybe_transform(
+            body=await async_maybe_transform(
                 {
                     "name": name,
                     "entity_id": entity_id,
@@ -478,7 +481,7 @@ class AsyncAccounts(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `account_id` but received {account_id!r}")
         return await self._patch(
             f"/accounts/{account_id}",
-            body=maybe_transform({"name": name}, account_update_params.AccountUpdateParams),
+            body=await async_maybe_transform({"name": name}, account_update_params.AccountUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -598,7 +601,7 @@ class AsyncAccounts(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"at_time": at_time}, account_balance_params.AccountBalanceParams),
+                query=await async_maybe_transform({"at_time": at_time}, account_balance_params.AccountBalanceParams),
             ),
             cast_to=BalanceLookup,
         )
