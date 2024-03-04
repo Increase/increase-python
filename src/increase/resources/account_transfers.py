@@ -7,7 +7,10 @@ import httpx
 from .. import _legacy_response
 from ..types import AccountTransfer, account_transfer_list_params, account_transfer_create_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from .._utils import maybe_transform
+from .._utils import (
+    maybe_transform,
+    async_maybe_transform,
+)
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
@@ -331,7 +334,7 @@ class AsyncAccountTransfers(AsyncAPIResource):
         """
         return await self._post(
             "/account_transfers",
-            body=maybe_transform(
+            body=await async_maybe_transform(
                 {
                     "account_id": account_id,
                     "amount": amount,

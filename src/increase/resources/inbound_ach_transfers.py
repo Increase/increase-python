@@ -14,7 +14,10 @@ from ..types import (
     inbound_ach_transfer_notification_of_change_params,
 )
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from .._utils import maybe_transform
+from .._utils import (
+    maybe_transform,
+    async_maybe_transform,
+)
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
@@ -526,7 +529,7 @@ class AsyncInboundACHTransfers(AsyncAPIResource):
             )
         return await self._post(
             f"/inbound_ach_transfers/{inbound_ach_transfer_id}/notification_of_change",
-            body=maybe_transform(
+            body=await async_maybe_transform(
                 {
                     "updated_account_number": updated_account_number,
                     "updated_routing_number": updated_routing_number,
@@ -613,7 +616,7 @@ class AsyncInboundACHTransfers(AsyncAPIResource):
             )
         return await self._post(
             f"/inbound_ach_transfers/{inbound_ach_transfer_id}/transfer_return",
-            body=maybe_transform(
+            body=await async_maybe_transform(
                 {"reason": reason}, inbound_ach_transfer_transfer_return_params.InboundACHTransferTransferReturnParams
             ),
             options=make_request_options(
