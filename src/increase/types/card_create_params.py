@@ -57,12 +57,12 @@ class DigitalWallet(TypedDict, total=False):
 
     email: str
     """
-    An email address that can be used to verify the cardholder via one-time passcode
-    over email.
+    An email address that can be used to contact and verify the cardholder via
+    one-time passcode over email.
     """
 
     phone: str
     """
-    A phone number that can be used to verify the cardholder via one-time passcode
-    over SMS.
+    A phone number that can be used to contact and verify the cardholder via
+    one-time passcode over SMS.
     """
