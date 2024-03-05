@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.42.0 (2024-03-05)
+
+Full Changelog: [v0.41.0...v0.42.0](https://github.com/Increase/increase-python/compare/v0.41.0...v0.42.0)
+
+### ⚠ BREAKING CHANGES
+
+* rename card_profile_id -> digital_card_profile_id ([#361](https://github.com/Increase/increase-python/issues/361))
+
+### Bug Fixes
+
+* rename card_profile_id -&gt; digital_card_profile_id ([#361](https://github.com/Increase/increase-python/issues/361)) ([1569e5f](https://github.com/Increase/increase-python/commit/1569e5f65238e808b7320ee71f17a1479f7cdda8))
+
+
+### Chores
+
+* **client:** improve error message for invalid http_client argument ([#362](https://github.com/Increase/increase-python/issues/362)) ([e539cf1](https://github.com/Increase/increase-python/commit/e539cf1bffcf68876de0aaffb05fa28abe5eee79))
+* **internal:** split up transforms into sync / async ([#358](https://github.com/Increase/increase-python/issues/358)) ([808dab7](https://github.com/Increase/increase-python/commit/808dab7cc60b5a4762c3f9eb897dd565de06c209))
+* **internal:** support more input types ([#360](https://github.com/Increase/increase-python/issues/360)) ([60f1111](https://github.com/Increase/increase-python/commit/60f1111317a41ecb8587e99a7143a91b7568ee49))
+
 ## 0.41.0 (2024-03-01)
 
 Full Changelog: [v0.40.0...v0.41.0](https://github.com/Increase/increase-python/compare/v0.40.0...v0.41.0)
