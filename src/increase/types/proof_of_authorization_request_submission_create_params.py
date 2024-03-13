@@ -24,8 +24,20 @@ class ProofOfAuthorizationRequestSubmissionCreateParams(TypedDict, total=False):
     authorizer_name: Required[str]
     """Name of the authorizer."""
 
+    customer_has_been_offboarded: Required[bool]
+    """Whether the customer has been offboarded or suspended."""
+
     proof_of_authorization_request_id: Required[str]
     """ID of the proof of authorization request."""
+
+    validated_account_ownership_via_credential: Required[bool]
+    """Whether the account ownership was validated via credential (e.g. Plaid)."""
+
+    validated_account_ownership_with_account_statement: Required[bool]
+    """Whether the account ownership was validated with an account statement."""
+
+    validated_account_ownership_with_microdeposit: Required[bool]
+    """Whether the account ownership was validated with a microdeposit."""
 
     authorizer_company: str
     """Company of the authorizer."""

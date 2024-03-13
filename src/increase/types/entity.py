@@ -494,6 +494,9 @@ class Entity(BaseModel):
     description: Optional[str] = None
     """The entity's description for display purposes."""
 
+    details_confirmed_at: Optional[datetime] = None
+    """The date and time at which the entity's details were most recently confirmed."""
+
     idempotency_key: Optional[str] = None
     """The idempotency key you chose for this object.
 

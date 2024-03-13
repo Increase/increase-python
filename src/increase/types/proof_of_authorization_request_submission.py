@@ -34,6 +34,9 @@ class ProofOfAuthorizationRequestSubmission(BaseModel):
     created_at: datetime
     """The time the Proof of Authorization Request Submission was created."""
 
+    customer_has_been_offboarded: Optional[bool] = None
+    """Whether the customer has been offboarded."""
+
     idempotency_key: Optional[str] = None
     """The idempotency key you chose for this object.
 
@@ -64,3 +67,12 @@ class ProofOfAuthorizationRequestSubmission(BaseModel):
 
     updated_at: datetime
     """The time the Proof of Authorization Request Submission was last updated."""
+
+    validated_account_ownership_via_credential: Optional[bool] = None
+    """Whether account ownership was validated via credential (for instance, Plaid)."""
+
+    validated_account_ownership_with_account_statement: Optional[bool] = None
+    """Whether account ownership was validated with an account statement."""
+
+    validated_account_ownership_with_microdeposit: Optional[bool] = None
+    """Whether account ownership was validated with microdeposit."""

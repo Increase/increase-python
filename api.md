@@ -344,6 +344,7 @@ Methods:
 - <code title="get /entities/{entity_id}">client.entities.<a href="./src/increase/resources/entities/entities.py">retrieve</a>(entity_id) -> <a href="./src/increase/types/entity.py">Entity</a></code>
 - <code title="get /entities">client.entities.<a href="./src/increase/resources/entities/entities.py">list</a>(\*\*<a href="src/increase/types/entity_list_params.py">params</a>) -> <a href="./src/increase/types/entity.py">SyncPage[Entity]</a></code>
 - <code title="post /entities/{entity_id}/archive">client.entities.<a href="./src/increase/resources/entities/entities.py">archive</a>(entity_id) -> <a href="./src/increase/types/entity.py">Entity</a></code>
+- <code title="post /entities/{entity_id}/confirm">client.entities.<a href="./src/increase/resources/entities/entities.py">confirm</a>(entity_id, \*\*<a href="src/increase/types/entity_confirm_params.py">params</a>) -> <a href="./src/increase/types/entity.py">Entity</a></code>
 - <code title="post /entities/{entity_id}/address">client.entities.<a href="./src/increase/resources/entities/entities.py">update_address</a>(entity_id, \*\*<a href="src/increase/types/entity_update_address_params.py">params</a>) -> <a href="./src/increase/types/entity.py">Entity</a></code>
 
 ## BeneficialOwners

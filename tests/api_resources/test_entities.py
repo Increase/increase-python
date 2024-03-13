@@ -9,7 +9,9 @@ import pytest
 
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
-from increase.types import Entity
+from increase.types import (
+    Entity,
+)
 from increase._utils import parse_date, parse_datetime
 from increase.pagination import SyncPage, AsyncPage
 
@@ -530,6 +532,52 @@ class TestEntities:
     def test_path_params_archive(self, client: Increase) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `entity_id` but received ''"):
             client.entities.with_raw_response.archive(
+                "",
+            )
+
+    @parametrize
+    def test_method_confirm(self, client: Increase) -> None:
+        entity = client.entities.confirm(
+            "string",
+        )
+        assert_matches_type(Entity, entity, path=["response"])
+
+    @parametrize
+    def test_method_confirm_with_all_params(self, client: Increase) -> None:
+        entity = client.entities.confirm(
+            "string",
+            confirmed_at=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(Entity, entity, path=["response"])
+
+    @parametrize
+    def test_raw_response_confirm(self, client: Increase) -> None:
+        response = client.entities.with_raw_response.confirm(
+            "string",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        entity = response.parse()
+        assert_matches_type(Entity, entity, path=["response"])
+
+    @parametrize
+    def test_streaming_response_confirm(self, client: Increase) -> None:
+        with client.entities.with_streaming_response.confirm(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            entity = response.parse()
+            assert_matches_type(Entity, entity, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_confirm(self, client: Increase) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `entity_id` but received ''"):
+            client.entities.with_raw_response.confirm(
                 "",
             )
 
@@ -1124,6 +1172,52 @@ class TestAsyncEntities:
     async def test_path_params_archive(self, async_client: AsyncIncrease) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `entity_id` but received ''"):
             await async_client.entities.with_raw_response.archive(
+                "",
+            )
+
+    @parametrize
+    async def test_method_confirm(self, async_client: AsyncIncrease) -> None:
+        entity = await async_client.entities.confirm(
+            "string",
+        )
+        assert_matches_type(Entity, entity, path=["response"])
+
+    @parametrize
+    async def test_method_confirm_with_all_params(self, async_client: AsyncIncrease) -> None:
+        entity = await async_client.entities.confirm(
+            "string",
+            confirmed_at=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(Entity, entity, path=["response"])
+
+    @parametrize
+    async def test_raw_response_confirm(self, async_client: AsyncIncrease) -> None:
+        response = await async_client.entities.with_raw_response.confirm(
+            "string",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        entity = response.parse()
+        assert_matches_type(Entity, entity, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_confirm(self, async_client: AsyncIncrease) -> None:
+        async with async_client.entities.with_streaming_response.confirm(
+            "string",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            entity = await response.parse()
+            assert_matches_type(Entity, entity, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_confirm(self, async_client: AsyncIncrease) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `entity_id` but received ''"):
+            await async_client.entities.with_raw_response.confirm(
                 "",
             )
 
