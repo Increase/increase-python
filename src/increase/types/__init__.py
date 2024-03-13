@@ -54,6 +54,7 @@ from .inbound_ach_transfer import InboundACHTransfer as InboundACHTransfer
 from .account_create_params import AccountCreateParams as AccountCreateParams
 from .account_update_params import AccountUpdateParams as AccountUpdateParams
 from .bookkeeping_entry_set import BookkeepingEntrySet as BookkeepingEntrySet
+from .entity_confirm_params import EntityConfirmParams as EntityConfirmParams
 from .inbound_wire_transfer import InboundWireTransfer as InboundWireTransfer
 from .physical_card_profile import PhysicalCardProfile as PhysicalCardProfile
 from .wire_drawdown_request import WireDrawdownRequest as WireDrawdownRequest

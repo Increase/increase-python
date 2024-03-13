@@ -28,7 +28,11 @@ class TestProofOfAuthorizationRequestSubmissions:
             authorized_at=parse_datetime("2020-01-31T23:59:59Z"),
             authorizer_email="user@example.com",
             authorizer_name="Ian Crease",
+            customer_has_been_offboarded=True,
             proof_of_authorization_request_id="proof_of_authorization_request_iwp8no25h3rjvil6ad3b",
+            validated_account_ownership_via_credential=True,
+            validated_account_ownership_with_account_statement=True,
+            validated_account_ownership_with_microdeposit=True,
         )
         assert_matches_type(
             ProofOfAuthorizationRequestSubmission, proof_of_authorization_request_submission, path=["response"]
@@ -41,7 +45,11 @@ class TestProofOfAuthorizationRequestSubmissions:
             authorized_at=parse_datetime("2020-01-31T23:59:59Z"),
             authorizer_email="user@example.com",
             authorizer_name="Ian Crease",
+            customer_has_been_offboarded=True,
             proof_of_authorization_request_id="proof_of_authorization_request_iwp8no25h3rjvil6ad3b",
+            validated_account_ownership_via_credential=True,
+            validated_account_ownership_with_account_statement=True,
+            validated_account_ownership_with_microdeposit=True,
             authorizer_company="National Phonograph Company",
             authorizer_ip_address="x",
         )
@@ -56,7 +64,11 @@ class TestProofOfAuthorizationRequestSubmissions:
             authorized_at=parse_datetime("2020-01-31T23:59:59Z"),
             authorizer_email="user@example.com",
             authorizer_name="Ian Crease",
+            customer_has_been_offboarded=True,
             proof_of_authorization_request_id="proof_of_authorization_request_iwp8no25h3rjvil6ad3b",
+            validated_account_ownership_via_credential=True,
+            validated_account_ownership_with_account_statement=True,
+            validated_account_ownership_with_microdeposit=True,
         )
 
         assert response.is_closed is True
@@ -73,7 +85,11 @@ class TestProofOfAuthorizationRequestSubmissions:
             authorized_at=parse_datetime("2020-01-31T23:59:59Z"),
             authorizer_email="user@example.com",
             authorizer_name="Ian Crease",
+            customer_has_been_offboarded=True,
             proof_of_authorization_request_id="proof_of_authorization_request_iwp8no25h3rjvil6ad3b",
+            validated_account_ownership_via_credential=True,
+            validated_account_ownership_with_account_statement=True,
+            validated_account_ownership_with_microdeposit=True,
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -195,7 +211,11 @@ class TestAsyncProofOfAuthorizationRequestSubmissions:
                 authorized_at=parse_datetime("2020-01-31T23:59:59Z"),
                 authorizer_email="user@example.com",
                 authorizer_name="Ian Crease",
+                customer_has_been_offboarded=True,
                 proof_of_authorization_request_id="proof_of_authorization_request_iwp8no25h3rjvil6ad3b",
+                validated_account_ownership_via_credential=True,
+                validated_account_ownership_with_account_statement=True,
+                validated_account_ownership_with_microdeposit=True,
             )
         )
         assert_matches_type(
@@ -210,7 +230,11 @@ class TestAsyncProofOfAuthorizationRequestSubmissions:
                 authorized_at=parse_datetime("2020-01-31T23:59:59Z"),
                 authorizer_email="user@example.com",
                 authorizer_name="Ian Crease",
+                customer_has_been_offboarded=True,
                 proof_of_authorization_request_id="proof_of_authorization_request_iwp8no25h3rjvil6ad3b",
+                validated_account_ownership_via_credential=True,
+                validated_account_ownership_with_account_statement=True,
+                validated_account_ownership_with_microdeposit=True,
                 authorizer_company="National Phonograph Company",
                 authorizer_ip_address="x",
             )
@@ -226,7 +250,11 @@ class TestAsyncProofOfAuthorizationRequestSubmissions:
             authorized_at=parse_datetime("2020-01-31T23:59:59Z"),
             authorizer_email="user@example.com",
             authorizer_name="Ian Crease",
+            customer_has_been_offboarded=True,
             proof_of_authorization_request_id="proof_of_authorization_request_iwp8no25h3rjvil6ad3b",
+            validated_account_ownership_via_credential=True,
+            validated_account_ownership_with_account_statement=True,
+            validated_account_ownership_with_microdeposit=True,
         )
 
         assert response.is_closed is True
@@ -243,7 +271,11 @@ class TestAsyncProofOfAuthorizationRequestSubmissions:
             authorized_at=parse_datetime("2020-01-31T23:59:59Z"),
             authorizer_email="user@example.com",
             authorizer_name="Ian Crease",
+            customer_has_been_offboarded=True,
             proof_of_authorization_request_id="proof_of_authorization_request_iwp8no25h3rjvil6ad3b",
+            validated_account_ownership_via_credential=True,
+            validated_account_ownership_with_account_statement=True,
+            validated_account_ownership_with_microdeposit=True,
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

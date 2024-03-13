@@ -24,6 +24,9 @@ class ProofOfAuthorizationRequest(BaseModel):
     created_at: datetime
     """The time the Proof of Authorization Request was created."""
 
+    due_on: datetime
+    """The time the Proof of Authorization Request is due."""
+
     type: Literal["proof_of_authorization_request"]
     """A constant representing the object's type.
 

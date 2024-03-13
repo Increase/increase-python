@@ -46,7 +46,11 @@ class ProofOfAuthorizationRequestSubmissions(SyncAPIResource):
         authorized_at: Union[str, datetime],
         authorizer_email: str,
         authorizer_name: str,
+        customer_has_been_offboarded: bool,
         proof_of_authorization_request_id: str,
+        validated_account_ownership_via_credential: bool,
+        validated_account_ownership_with_account_statement: bool,
+        validated_account_ownership_with_microdeposit: bool,
         authorizer_company: str | NotGiven = NOT_GIVEN,
         authorizer_ip_address: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -69,7 +73,15 @@ class ProofOfAuthorizationRequestSubmissions(SyncAPIResource):
 
           authorizer_name: Name of the authorizer.
 
+          customer_has_been_offboarded: Whether the customer has been offboarded or suspended.
+
           proof_of_authorization_request_id: ID of the proof of authorization request.
+
+          validated_account_ownership_via_credential: Whether the account ownership was validated via credential (e.g. Plaid).
+
+          validated_account_ownership_with_account_statement: Whether the account ownership was validated with an account statement.
+
+          validated_account_ownership_with_microdeposit: Whether the account ownership was validated with a microdeposit.
 
           authorizer_company: Company of the authorizer.
 
@@ -93,7 +105,11 @@ class ProofOfAuthorizationRequestSubmissions(SyncAPIResource):
                     "authorized_at": authorized_at,
                     "authorizer_email": authorizer_email,
                     "authorizer_name": authorizer_name,
+                    "customer_has_been_offboarded": customer_has_been_offboarded,
                     "proof_of_authorization_request_id": proof_of_authorization_request_id,
+                    "validated_account_ownership_via_credential": validated_account_ownership_via_credential,
+                    "validated_account_ownership_with_account_statement": validated_account_ownership_with_account_statement,
+                    "validated_account_ownership_with_microdeposit": validated_account_ownership_with_microdeposit,
                     "authorizer_company": authorizer_company,
                     "authorizer_ip_address": authorizer_ip_address,
                 },
@@ -222,7 +238,11 @@ class AsyncProofOfAuthorizationRequestSubmissions(AsyncAPIResource):
         authorized_at: Union[str, datetime],
         authorizer_email: str,
         authorizer_name: str,
+        customer_has_been_offboarded: bool,
         proof_of_authorization_request_id: str,
+        validated_account_ownership_via_credential: bool,
+        validated_account_ownership_with_account_statement: bool,
+        validated_account_ownership_with_microdeposit: bool,
         authorizer_company: str | NotGiven = NOT_GIVEN,
         authorizer_ip_address: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -245,7 +265,15 @@ class AsyncProofOfAuthorizationRequestSubmissions(AsyncAPIResource):
 
           authorizer_name: Name of the authorizer.
 
+          customer_has_been_offboarded: Whether the customer has been offboarded or suspended.
+
           proof_of_authorization_request_id: ID of the proof of authorization request.
+
+          validated_account_ownership_via_credential: Whether the account ownership was validated via credential (e.g. Plaid).
+
+          validated_account_ownership_with_account_statement: Whether the account ownership was validated with an account statement.
+
+          validated_account_ownership_with_microdeposit: Whether the account ownership was validated with a microdeposit.
 
           authorizer_company: Company of the authorizer.
 
@@ -269,7 +297,11 @@ class AsyncProofOfAuthorizationRequestSubmissions(AsyncAPIResource):
                     "authorized_at": authorized_at,
                     "authorizer_email": authorizer_email,
                     "authorizer_name": authorizer_name,
+                    "customer_has_been_offboarded": customer_has_been_offboarded,
                     "proof_of_authorization_request_id": proof_of_authorization_request_id,
+                    "validated_account_ownership_via_credential": validated_account_ownership_via_credential,
+                    "validated_account_ownership_with_account_statement": validated_account_ownership_with_account_statement,
+                    "validated_account_ownership_with_microdeposit": validated_account_ownership_with_microdeposit,
                     "authorizer_company": authorizer_company,
                     "authorizer_ip_address": authorizer_ip_address,
                 },
