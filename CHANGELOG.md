@@ -1,5 +1,32 @@
 # Changelog
 
+## 0.43.0 (2024-03-18)
+
+Full Changelog: [v0.42.0...v0.43.0](https://github.com/Increase/increase-python/compare/v0.42.0...v0.43.0)
+
+### Features
+
+* **api:** confirm entities ([#370](https://github.com/Increase/increase-python/issues/370)) ([556c215](https://github.com/Increase/increase-python/commit/556c2156f30853ce3618091a283490bf77ab8c72))
+
+
+### Performance Improvements
+
+* cache TypeAdapters ([#371](https://github.com/Increase/increase-python/issues/371)) ([ea92ceb](https://github.com/Increase/increase-python/commit/ea92ceb90d31cdbe908196af2111ad265d5bd71b))
+
+
+### Chores
+
+* export NOT_GIVEN sentinel value ([#368](https://github.com/Increase/increase-python/issues/368)) ([c5e2c2e](https://github.com/Increase/increase-python/commit/c5e2c2edf4be20cff6b5967becc1b3540a0c9d8d))
+* **internal:** add core support for deserializing into number response ([#365](https://github.com/Increase/increase-python/issues/365)) ([2ea03fe](https://github.com/Increase/increase-python/commit/2ea03fe966535c1cb068b6e9bfee2c857938ab9b))
+* **internal:** bump pyright ([#366](https://github.com/Increase/increase-python/issues/366)) ([f437a87](https://github.com/Increase/increase-python/commit/f437a870a720ede87df9381da3dd707c40bff717))
+* **internal:** improve deserialisation of discriminated unions ([#369](https://github.com/Increase/increase-python/issues/369)) ([8108a01](https://github.com/Increase/increase-python/commit/8108a0141507baf615a0ac68832157f62efd598a))
+* **internal:** support parsing Annotated types ([#367](https://github.com/Increase/increase-python/issues/367)) ([c34962a](https://github.com/Increase/increase-python/commit/c34962a8251a0a2493148e5b56234720436c758d))
+
+
+### Documentation
+
+* update docs for digital wallet phone/email ([#363](https://github.com/Increase/increase-python/issues/363)) ([fd985f0](https://github.com/Increase/increase-python/commit/fd985f02dba966763f06bb859faf56bf2f132771))
+
 ## 0.42.0 (2024-03-05)
 
 Full Changelog: [v0.41.0...v0.42.0](https://github.com/Increase/increase-python/compare/v0.41.0...v0.42.0)
