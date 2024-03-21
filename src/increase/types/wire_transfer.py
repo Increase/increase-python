@@ -213,13 +213,21 @@ class WireTransfer(BaseModel):
     """The American Bankers' Association (ABA) Routing Transit Number (RTN)."""
 
     status: Literal[
-        "canceled", "requires_attention", "pending_approval", "rejected", "reversed", "complete", "pending_creating"
+        "canceled",
+        "requires_attention",
+        "pending_reviewing",
+        "pending_approval",
+        "rejected",
+        "reversed",
+        "complete",
+        "pending_creating",
     ]
     """The lifecycle status of the transfer.
 
     - `canceled` - The transfer has been canceled.
     - `requires_attention` - The transfer requires attention from an Increase
       operator.
+    - `pending_reviewing` - The transfer is pending review by Increase.
     - `pending_approval` - The transfer is pending approval.
     - `rejected` - The transfer has been rejected.
     - `reversed` - The transfer has been reversed.
