@@ -1,5 +1,29 @@
 # Changelog
 
+## 0.44.0 (2024-03-21)
+
+Full Changelog: [v0.43.0...v0.44.0](https://github.com/Increase/increase-python/compare/v0.43.0...v0.44.0)
+
+### Features
+
+* **api:** adding `pending_reviewing` wire transfer state ([f6488be](https://github.com/Increase/increase-python/commit/f6488be572ecbc235c97f1d1d74712e443c53b9d))
+* **api:** introduce `network_risk_score` ([#379](https://github.com/Increase/increase-python/issues/379)) ([f6488be](https://github.com/Increase/increase-python/commit/f6488be572ecbc235c97f1d1d74712e443c53b9d))
+* **api:** remove Card Profile ID properties ([f6488be](https://github.com/Increase/increase-python/commit/f6488be572ecbc235c97f1d1d74712e443c53b9d))
+
+
+### Chores
+
+* **internal:** construct error properties instead of using the raw response ([#378](https://github.com/Increase/increase-python/issues/378)) ([418d798](https://github.com/Increase/increase-python/commit/418d7981e60865c33d24054a11806bae74cdae88))
+* **internal:** loosen input type for util function ([#375](https://github.com/Increase/increase-python/issues/375)) ([3055e33](https://github.com/Increase/increase-python/commit/3055e33e0f563834606d54655c1269cae82bdc01))
+* **internal:** update generated pragma comment ([#374](https://github.com/Increase/increase-python/issues/374)) ([f3d1b70](https://github.com/Increase/increase-python/commit/f3d1b708d9a3666cd6707564e6f732d0373bbc4c))
+
+
+### Documentation
+
+* fix typo in CONTRIBUTING.md ([#372](https://github.com/Increase/increase-python/issues/372)) ([ed567b0](https://github.com/Increase/increase-python/commit/ed567b082a27ac0a2a961b05d763aaf36dde65a4))
+* **readme:** consistent use of sentence case in headings ([#376](https://github.com/Increase/increase-python/issues/376)) ([28ed46f](https://github.com/Increase/increase-python/commit/28ed46f7896623d6daf67e25280ecc466657100c))
+* **readme:** document how to make undocumented requests ([#377](https://github.com/Increase/increase-python/issues/377)) ([6773c09](https://github.com/Increase/increase-python/commit/6773c09d8fefce9e4f0cc1f6e18e20c47b96874b))
+
 ## 0.43.0 (2024-03-18)
 
 Full Changelog: [v0.42.0...v0.43.0](https://github.com/Increase/increase-python/compare/v0.42.0...v0.43.0)
