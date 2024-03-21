@@ -97,9 +97,6 @@ class PhysicalCard(BaseModel):
     card_id: str
     """The identifier for the Card this Physical Card represents."""
 
-    card_profile_id: Optional[str] = None
-    """The Card Profile used for this Physical Card."""
-
     cardholder: Optional[Cardholder] = None
     """Details about the cardholder, as it appears on the printed card."""
 

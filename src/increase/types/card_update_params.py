@@ -55,12 +55,6 @@ class BillingAddress(TypedDict, total=False):
 
 
 class DigitalWallet(TypedDict, total=False):
-    card_profile_id: str
-    """The card profile assigned to this card.
-
-    Card profiles may also be assigned at the program level.
-    """
-
     digital_card_profile_id: str
     """The digital card profile assigned to this digital card."""
 

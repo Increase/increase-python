@@ -131,7 +131,6 @@ class TestCards:
             digital_wallet={
                 "email": "x",
                 "phone": "x",
-                "card_profile_id": "string",
                 "digital_card_profile_id": "string",
             },
             entity_id="string",
@@ -365,7 +364,6 @@ class TestAsyncCards:
             digital_wallet={
                 "email": "x",
                 "phone": "x",
-                "card_profile_id": "string",
                 "digital_card_profile_id": "string",
             },
             entity_id="string",

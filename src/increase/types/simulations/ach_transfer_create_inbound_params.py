@@ -33,10 +33,16 @@ class ACHTransferCreateInboundParams(TypedDict, total=False):
     """The description of the transfer set by the sender."""
 
     company_id: str
-    """The sender's company id."""
+    """The sender's company ID."""
 
     company_name: str
     """The name of the sender."""
+
+    receiver_id_number: str
+    """The ID of the receiver of the transfer."""
+
+    receiver_name: str
+    """The name of the receiver of the transfer."""
 
     resolve_at: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
     """The time at which the transfer should be resolved.

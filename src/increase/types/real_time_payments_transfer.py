@@ -230,12 +230,20 @@ class RealTimePaymentsTransfer(BaseModel):
     """The Account Number the recipient will see as having sent the transfer."""
 
     status: Literal[
-        "pending_approval", "canceled", "pending_submission", "submitted", "complete", "rejected", "requires_attention"
+        "pending_approval",
+        "canceled",
+        "pending_reviewing",
+        "pending_submission",
+        "submitted",
+        "complete",
+        "rejected",
+        "requires_attention",
     ]
     """The lifecycle status of the transfer.
 
     - `pending_approval` - The transfer is pending approval.
     - `canceled` - The transfer has been canceled.
+    - `pending_reviewing` - The transfer is pending review by Increase.
     - `pending_submission` - The transfer is queued to be submitted to Real-Time
       Payments.
     - `submitted` - The transfer has been submitted and is pending a response from

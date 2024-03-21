@@ -45,6 +45,8 @@ class ACHTransfers(SyncAPIResource):
         company_entry_description: str | NotGiven = NOT_GIVEN,
         company_id: str | NotGiven = NOT_GIVEN,
         company_name: str | NotGiven = NOT_GIVEN,
+        receiver_id_number: str | NotGiven = NOT_GIVEN,
+        receiver_name: str | NotGiven = NOT_GIVEN,
         resolve_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -80,9 +82,13 @@ class ACHTransfers(SyncAPIResource):
 
           company_entry_description: The description of the transfer set by the sender.
 
-          company_id: The sender's company id.
+          company_id: The sender's company ID.
 
           company_name: The name of the sender.
+
+          receiver_id_number: The ID of the receiver of the transfer.
+
+          receiver_name: The name of the receiver of the transfer.
 
           resolve_at: The time at which the transfer should be resolved. If not provided will resolve
               immediately.
@@ -108,6 +114,8 @@ class ACHTransfers(SyncAPIResource):
                     "company_entry_description": company_entry_description,
                     "company_id": company_id,
                     "company_name": company_name,
+                    "receiver_id_number": receiver_id_number,
+                    "receiver_name": receiver_name,
                     "resolve_at": resolve_at,
                 },
                 ach_transfer_create_inbound_params.ACHTransferCreateInboundParams,
@@ -458,6 +466,8 @@ class AsyncACHTransfers(AsyncAPIResource):
         company_entry_description: str | NotGiven = NOT_GIVEN,
         company_id: str | NotGiven = NOT_GIVEN,
         company_name: str | NotGiven = NOT_GIVEN,
+        receiver_id_number: str | NotGiven = NOT_GIVEN,
+        receiver_name: str | NotGiven = NOT_GIVEN,
         resolve_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -493,9 +503,13 @@ class AsyncACHTransfers(AsyncAPIResource):
 
           company_entry_description: The description of the transfer set by the sender.
 
-          company_id: The sender's company id.
+          company_id: The sender's company ID.
 
           company_name: The name of the sender.
+
+          receiver_id_number: The ID of the receiver of the transfer.
+
+          receiver_name: The name of the receiver of the transfer.
 
           resolve_at: The time at which the transfer should be resolved. If not provided will resolve
               immediately.
@@ -521,6 +535,8 @@ class AsyncACHTransfers(AsyncAPIResource):
                     "company_entry_description": company_entry_description,
                     "company_id": company_id,
                     "company_name": company_name,
+                    "receiver_id_number": receiver_id_number,
+                    "receiver_name": receiver_name,
                     "resolve_at": resolve_at,
                 },
                 ach_transfer_create_inbound_params.ACHTransferCreateInboundParams,
