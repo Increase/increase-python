@@ -8,6 +8,7 @@ from typing_extensions import Literal
 import httpx
 
 from ._utils import is_mapping
+from ._models import construct_type
 
 __all__ = [
     "BadRequestError",
@@ -132,14 +133,14 @@ class InvalidParametersError(BadRequestError):
 
     def __init__(self, message: str, *, body: object, response: httpx.Response) -> None:
         data = cast(Mapping[str, object], body if is_mapping(body) else {})
-        title = cast(Any, data.get("title"))
+        title = cast(Any, construct_type(type_=str, value=data.get("title")))
         super().__init__(title or message, response=response, body=body)
 
         self.title = title
-        self.detail = cast(Any, data.get("detail"))
-        self.errors = cast(Any, data.get("errors"))
-        self.status = cast(Any, data.get("status"))
-        self.type = cast(Any, data.get("type"))
+        self.detail = cast(Any, construct_type(type_=Optional[str], value=data.get("detail")))
+        self.errors = cast(Any, construct_type(type_=List[object], value=data.get("errors")))
+        self.status = cast(Any, construct_type(type_=Literal[400], value=data.get("status")))
+        self.type = cast(Any, construct_type(type_=Literal["invalid_parameters_error"], value=data.get("type")))
 
 
 class MalformedRequestError(BadRequestError):
@@ -153,13 +154,13 @@ class MalformedRequestError(BadRequestError):
 
     def __init__(self, message: str, *, body: object, response: httpx.Response) -> None:
         data = cast(Mapping[str, object], body if is_mapping(body) else {})
-        title = cast(Any, data.get("title"))
+        title = cast(Any, construct_type(type_=str, value=data.get("title")))
         super().__init__(title or message, response=response, body=body)
 
         self.title = title
-        self.detail = cast(Any, data.get("detail"))
-        self.status = cast(Any, data.get("status"))
-        self.type = cast(Any, data.get("type"))
+        self.detail = cast(Any, construct_type(type_=Optional[str], value=data.get("detail")))
+        self.status = cast(Any, construct_type(type_=Literal[400], value=data.get("status")))
+        self.type = cast(Any, construct_type(type_=Literal["malformed_request_error"], value=data.get("type")))
 
 
 class InvalidAPIKeyError(AuthenticationError):
@@ -173,13 +174,13 @@ class InvalidAPIKeyError(AuthenticationError):
 
     def __init__(self, message: str, *, body: object, response: httpx.Response) -> None:
         data = cast(Mapping[str, object], body if is_mapping(body) else {})
-        title = cast(Any, data.get("title"))
+        title = cast(Any, construct_type(type_=str, value=data.get("title")))
         super().__init__(title or message, response=response, body=body)
 
         self.title = title
-        self.detail = cast(Any, data.get("detail"))
-        self.status = cast(Any, data.get("status"))
-        self.type = cast(Any, data.get("type"))
+        self.detail = cast(Any, construct_type(type_=Optional[str], value=data.get("detail")))
+        self.status = cast(Any, construct_type(type_=Literal[401], value=data.get("status")))
+        self.type = cast(Any, construct_type(type_=Literal["invalid_api_key_error"], value=data.get("type")))
 
 
 class EnvironmentMismatchError(PermissionDeniedError):
@@ -193,13 +194,13 @@ class EnvironmentMismatchError(PermissionDeniedError):
 
     def __init__(self, message: str, *, body: object, response: httpx.Response) -> None:
         data = cast(Mapping[str, object], body if is_mapping(body) else {})
-        title = cast(Any, data.get("title"))
+        title = cast(Any, construct_type(type_=str, value=data.get("title")))
         super().__init__(title or message, response=response, body=body)
 
         self.title = title
-        self.detail = cast(Any, data.get("detail"))
-        self.status = cast(Any, data.get("status"))
-        self.type = cast(Any, data.get("type"))
+        self.detail = cast(Any, construct_type(type_=Optional[str], value=data.get("detail")))
+        self.status = cast(Any, construct_type(type_=Literal[403], value=data.get("status")))
+        self.type = cast(Any, construct_type(type_=Literal["environment_mismatch_error"], value=data.get("type")))
 
 
 class InsufficientPermissionsError(PermissionDeniedError):
@@ -213,13 +214,13 @@ class InsufficientPermissionsError(PermissionDeniedError):
 
     def __init__(self, message: str, *, body: object, response: httpx.Response) -> None:
         data = cast(Mapping[str, object], body if is_mapping(body) else {})
-        title = cast(Any, data.get("title"))
+        title = cast(Any, construct_type(type_=str, value=data.get("title")))
         super().__init__(title or message, response=response, body=body)
 
         self.title = title
-        self.detail = cast(Any, data.get("detail"))
-        self.status = cast(Any, data.get("status"))
-        self.type = cast(Any, data.get("type"))
+        self.detail = cast(Any, construct_type(type_=Optional[str], value=data.get("detail")))
+        self.status = cast(Any, construct_type(type_=Literal[403], value=data.get("status")))
+        self.type = cast(Any, construct_type(type_=Literal["insufficient_permissions_error"], value=data.get("type")))
 
 
 class PrivateFeatureError(PermissionDeniedError):
@@ -233,13 +234,13 @@ class PrivateFeatureError(PermissionDeniedError):
 
     def __init__(self, message: str, *, body: object, response: httpx.Response) -> None:
         data = cast(Mapping[str, object], body if is_mapping(body) else {})
-        title = cast(Any, data.get("title"))
+        title = cast(Any, construct_type(type_=str, value=data.get("title")))
         super().__init__(title or message, response=response, body=body)
 
         self.title = title
-        self.detail = cast(Any, data.get("detail"))
-        self.status = cast(Any, data.get("status"))
-        self.type = cast(Any, data.get("type"))
+        self.detail = cast(Any, construct_type(type_=Optional[str], value=data.get("detail")))
+        self.status = cast(Any, construct_type(type_=Literal[403], value=data.get("status")))
+        self.type = cast(Any, construct_type(type_=Literal["private_feature_error"], value=data.get("type")))
 
 
 class APIMethodNotFoundError(NotFoundError):
@@ -253,13 +254,13 @@ class APIMethodNotFoundError(NotFoundError):
 
     def __init__(self, message: str, *, body: object, response: httpx.Response) -> None:
         data = cast(Mapping[str, object], body if is_mapping(body) else {})
-        title = cast(Any, data.get("title"))
+        title = cast(Any, construct_type(type_=str, value=data.get("title")))
         super().__init__(title or message, response=response, body=body)
 
         self.title = title
-        self.detail = cast(Any, data.get("detail"))
-        self.status = cast(Any, data.get("status"))
-        self.type = cast(Any, data.get("type"))
+        self.detail = cast(Any, construct_type(type_=Optional[str], value=data.get("detail")))
+        self.status = cast(Any, construct_type(type_=Literal[404], value=data.get("status")))
+        self.type = cast(Any, construct_type(type_=Literal["api_method_not_found_error"], value=data.get("type")))
 
 
 class ObjectNotFoundError(NotFoundError):
@@ -273,13 +274,13 @@ class ObjectNotFoundError(NotFoundError):
 
     def __init__(self, message: str, *, body: object, response: httpx.Response) -> None:
         data = cast(Mapping[str, object], body if is_mapping(body) else {})
-        title = cast(Any, data.get("title"))
+        title = cast(Any, construct_type(type_=str, value=data.get("title")))
         super().__init__(title or message, response=response, body=body)
 
         self.title = title
-        self.detail = cast(Any, data.get("detail"))
-        self.status = cast(Any, data.get("status"))
-        self.type = cast(Any, data.get("type"))
+        self.detail = cast(Any, construct_type(type_=Optional[str], value=data.get("detail")))
+        self.status = cast(Any, construct_type(type_=Literal[404], value=data.get("status")))
+        self.type = cast(Any, construct_type(type_=Literal["object_not_found_error"], value=data.get("type")))
 
 
 class IdempotencyKeyAlreadyUsedError(ConflictError):
@@ -295,14 +296,16 @@ class IdempotencyKeyAlreadyUsedError(ConflictError):
 
     def __init__(self, message: str, *, body: object, response: httpx.Response) -> None:
         data = cast(Mapping[str, object], body if is_mapping(body) else {})
-        title = cast(Any, data.get("title"))
+        title = cast(Any, construct_type(type_=str, value=data.get("title")))
         super().__init__(title or message, response=response, body=body)
 
         self.title = title
-        self.detail = cast(Any, data.get("detail"))
-        self.resource_id = cast(Any, data.get("resource_id"))
-        self.status = cast(Any, data.get("status"))
-        self.type = cast(Any, data.get("type"))
+        self.detail = cast(Any, construct_type(type_=Optional[str], value=data.get("detail")))
+        self.resource_id = cast(Any, construct_type(type_=str, value=data.get("resource_id")))
+        self.status = cast(Any, construct_type(type_=Literal[409], value=data.get("status")))
+        self.type = cast(
+            Any, construct_type(type_=Literal["idempotency_key_already_used_error"], value=data.get("type"))
+        )
 
 
 class InvalidOperationError(ConflictError):
@@ -316,13 +319,13 @@ class InvalidOperationError(ConflictError):
 
     def __init__(self, message: str, *, body: object, response: httpx.Response) -> None:
         data = cast(Mapping[str, object], body if is_mapping(body) else {})
-        title = cast(Any, data.get("title"))
+        title = cast(Any, construct_type(type_=str, value=data.get("title")))
         super().__init__(title or message, response=response, body=body)
 
         self.title = title
-        self.detail = cast(Any, data.get("detail"))
-        self.status = cast(Any, data.get("status"))
-        self.type = cast(Any, data.get("type"))
+        self.detail = cast(Any, construct_type(type_=Optional[str], value=data.get("detail")))
+        self.status = cast(Any, construct_type(type_=Literal[409], value=data.get("status")))
+        self.type = cast(Any, construct_type(type_=Literal["invalid_operation_error"], value=data.get("type")))
 
 
 class RateLimitedError(RateLimitError):
@@ -338,14 +341,14 @@ class RateLimitedError(RateLimitError):
 
     def __init__(self, message: str, *, body: object, response: httpx.Response) -> None:
         data = cast(Mapping[str, object], body if is_mapping(body) else {})
-        title = cast(Any, data.get("title"))
+        title = cast(Any, construct_type(type_=str, value=data.get("title")))
         super().__init__(title or message, response=response, body=body)
 
         self.title = title
-        self.detail = cast(Any, data.get("detail"))
-        self.status = cast(Any, data.get("status"))
-        self.type = cast(Any, data.get("type"))
-        self.retry_after = cast(Any, data.get("retry_after"))
+        self.detail = cast(Any, construct_type(type_=Optional[str], value=data.get("detail")))
+        self.status = cast(Any, construct_type(type_=Literal[429], value=data.get("status")))
+        self.type = cast(Any, construct_type(type_=Literal["rate_limited_error"], value=data.get("type")))
+        self.retry_after = cast(Any, construct_type(type_=Optional[int], value=data.get("retry_after")))
 
 
 class InternalServerError(APIStatusError):
@@ -359,10 +362,10 @@ class InternalServerError(APIStatusError):
 
     def __init__(self, message: str, *, body: object, response: httpx.Response) -> None:
         data = cast(Mapping[str, object], body if is_mapping(body) else {})
-        title = cast(Any, data.get("title"))
+        title = cast(Any, construct_type(type_=str, value=data.get("title")))
         super().__init__(title or message, response=response, body=body)
 
         self.title = title
-        self.detail = cast(Any, data.get("detail"))
-        self.status = cast(Any, data.get("status"))
-        self.type = cast(Any, data.get("type"))
+        self.detail = cast(Any, construct_type(type_=Optional[str], value=data.get("detail")))
+        self.status = cast(Any, construct_type(type_=Literal[500], value=data.get("status")))
+        self.type = cast(Any, construct_type(type_=Literal["internal_server_error"], value=data.get("type")))
