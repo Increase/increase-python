@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.44.1 (2024-03-25)
+
+Full Changelog: [v0.44.0...v0.44.1](https://github.com/Increase/increase-python/compare/v0.44.0...v0.44.1)
+
+### Bug Fixes
+
+* revert regression with 3.7 support ([#383](https://github.com/Increase/increase-python/issues/383)) ([b9b2966](https://github.com/Increase/increase-python/commit/b9b2966143916dc3074cbc77118f6ebeefe1f84f))
+
+
+### Chores
+
+* **internal:** formatting change ([#380](https://github.com/Increase/increase-python/issues/380)) ([358c31c](https://github.com/Increase/increase-python/commit/358c31c0088976c8f25a7291a68ec621e613d8f1))
+
+
+### Documentation
+
+* **contributing:** fix typo ([#382](https://github.com/Increase/increase-python/issues/382)) ([b73ca79](https://github.com/Increase/increase-python/commit/b73ca791fcbc04bbcbf8b296df412583a57641c0))
+
 ## 0.44.0 (2024-03-21)
 
 Full Changelog: [v0.43.0...v0.44.0](https://github.com/Increase/increase-python/compare/v0.43.0...v0.44.0)
