@@ -1,6 +1,6 @@
 [project]
 name = "increase"
-version = "0.44.1"
+version = "0.45.0"
 description = "The official Python library for the increase API"
 readme = "README.md"
 license = "Apache-2.0"
