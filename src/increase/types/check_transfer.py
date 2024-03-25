@@ -284,7 +284,6 @@ class CheckTransfer(BaseModel):
     status: Literal[
         "pending_approval",
         "pending_submission",
-        "submitted",
         "pending_mailing",
         "mailed",
         "canceled",
@@ -298,7 +297,6 @@ class CheckTransfer(BaseModel):
 
     - `pending_approval` - The transfer is awaiting approval.
     - `pending_submission` - The transfer is pending submission.
-    - `submitted` - The transfer is complete.
     - `pending_mailing` - The check is queued for mailing.
     - `mailed` - The check has been mailed.
     - `canceled` - The transfer has been canceled.
