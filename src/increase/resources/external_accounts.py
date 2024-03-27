@@ -153,6 +153,7 @@ class ExternalAccounts(SyncAPIResource):
         *,
         account_holder: Literal["business", "individual"] | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
+        funding: Literal["checking", "savings", "other"] | NotGiven = NOT_GIVEN,
         status: Literal["active", "archived"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -174,6 +175,12 @@ class ExternalAccounts(SyncAPIResource):
               - `individual` - The External Account is owned by an individual.
 
           description: The description you choose to give the external account.
+
+          funding: The funding type of the External Account.
+
+              - `checking` - A checking account.
+              - `savings` - A savings account.
+              - `other` - A different type of account.
 
           status: The status of the External Account.
 
@@ -201,6 +208,7 @@ class ExternalAccounts(SyncAPIResource):
                 {
                     "account_holder": account_holder,
                     "description": description,
+                    "funding": funding,
                     "status": status,
                 },
                 external_account_update_params.ExternalAccountUpdateParams,
@@ -400,6 +408,7 @@ class AsyncExternalAccounts(AsyncAPIResource):
         *,
         account_holder: Literal["business", "individual"] | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
+        funding: Literal["checking", "savings", "other"] | NotGiven = NOT_GIVEN,
         status: Literal["active", "archived"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -421,6 +430,12 @@ class AsyncExternalAccounts(AsyncAPIResource):
               - `individual` - The External Account is owned by an individual.
 
           description: The description you choose to give the external account.
+
+          funding: The funding type of the External Account.
+
+              - `checking` - A checking account.
+              - `savings` - A savings account.
+              - `other` - A different type of account.
 
           status: The status of the External Account.
 
@@ -448,6 +463,7 @@ class AsyncExternalAccounts(AsyncAPIResource):
                 {
                     "account_holder": account_holder,
                     "description": description,
+                    "funding": funding,
                     "status": status,
                 },
                 external_account_update_params.ExternalAccountUpdateParams,
