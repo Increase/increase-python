@@ -99,7 +99,6 @@ class Increase(SyncAPIClient):
     proof_of_authorization_request_submissions: resources.ProofOfAuthorizationRequestSubmissions
     intrafi: resources.Intrafi
     real_time_payments_request_for_payments: resources.RealTimePaymentsRequestForPayments
-    webhooks: resources.Webhooks
     oauth_tokens: resources.OAuthTokens
     inbound_wire_transfers: resources.InboundWireTransfers
     digital_card_profiles: resources.DigitalCardProfiles
@@ -244,7 +243,6 @@ class Increase(SyncAPIClient):
         self.proof_of_authorization_request_submissions = resources.ProofOfAuthorizationRequestSubmissions(self)
         self.intrafi = resources.Intrafi(self)
         self.real_time_payments_request_for_payments = resources.RealTimePaymentsRequestForPayments(self)
-        self.webhooks = resources.Webhooks(self)
         self.oauth_tokens = resources.OAuthTokens(self)
         self.inbound_wire_transfers = resources.InboundWireTransfers(self)
         self.digital_card_profiles = resources.DigitalCardProfiles(self)
@@ -468,7 +466,6 @@ class AsyncIncrease(AsyncAPIClient):
     proof_of_authorization_request_submissions: resources.AsyncProofOfAuthorizationRequestSubmissions
     intrafi: resources.AsyncIntrafi
     real_time_payments_request_for_payments: resources.AsyncRealTimePaymentsRequestForPayments
-    webhooks: resources.AsyncWebhooks
     oauth_tokens: resources.AsyncOAuthTokens
     inbound_wire_transfers: resources.AsyncInboundWireTransfers
     digital_card_profiles: resources.AsyncDigitalCardProfiles
@@ -613,7 +610,6 @@ class AsyncIncrease(AsyncAPIClient):
         self.proof_of_authorization_request_submissions = resources.AsyncProofOfAuthorizationRequestSubmissions(self)
         self.intrafi = resources.AsyncIntrafi(self)
         self.real_time_payments_request_for_payments = resources.AsyncRealTimePaymentsRequestForPayments(self)
-        self.webhooks = resources.AsyncWebhooks(self)
         self.oauth_tokens = resources.AsyncOAuthTokens(self)
         self.inbound_wire_transfers = resources.AsyncInboundWireTransfers(self)
         self.digital_card_profiles = resources.AsyncDigitalCardProfiles(self)
