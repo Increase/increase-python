@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.46.0 (2024-03-27)
+
+Full Changelog: [v0.45.0...v0.46.0](https://github.com/Increase/increase-python/compare/v0.45.0...v0.46.0)
+
+### Features
+
+* **api:** add `funding` parameter to external account update ([#386](https://github.com/Increase/increase-python/issues/386)) ([749feed](https://github.com/Increase/increase-python/commit/749feed42eafdd83a6efab2f99433b420ce228d4))
+
 ## 0.45.0 (2024-03-25)
 
 Full Changelog: [v0.44.1...v0.45.0](https://github.com/Increase/increase-python/compare/v0.44.1...v0.45.0)
