@@ -18,6 +18,14 @@ class ExternalAccountUpdateParams(TypedDict, total=False):
     description: str
     """The description you choose to give the external account."""
 
+    funding: Literal["checking", "savings", "other"]
+    """The funding type of the External Account.
+
+    - `checking` - A checking account.
+    - `savings` - A savings account.
+    - `other` - A different type of account.
+    """
+
     status: Literal["active", "archived"]
     """The status of the External Account.
 

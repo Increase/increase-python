@@ -119,6 +119,7 @@ class TestExternalAccounts:
             "string",
             account_holder="business",
             description="New description",
+            funding="checking",
             status="active",
         )
         assert_matches_type(ExternalAccount, external_account, path=["response"])
@@ -293,6 +294,7 @@ class TestAsyncExternalAccounts:
             "string",
             account_holder="business",
             description="New description",
+            funding="checking",
             status="active",
         )
         assert_matches_type(ExternalAccount, external_account, path=["response"])
