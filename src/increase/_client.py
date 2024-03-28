@@ -29,8 +29,8 @@ from ._version import __version__
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
 from ._exceptions import IncreaseError, APIStatusError
 from ._base_client import (
-    DEFAULT_LIMITS,
     DEFAULT_MAX_RETRIES,
+    DEFAULT_CONNECTION_LIMITS,
     SyncAPIClient,
     AsyncAPIClient,
     SyncHttpxClientWrapper,
@@ -319,7 +319,7 @@ class Increase(SyncAPIClient):
 
             http_client = None
         else:
-            if self._limits is not DEFAULT_LIMITS:
+            if self._limits is not DEFAULT_CONNECTION_LIMITS:
                 connection_pool_limits = self._limits
             else:
                 connection_pool_limits = None
@@ -686,7 +686,7 @@ class AsyncIncrease(AsyncAPIClient):
 
             http_client = None
         else:
-            if self._limits is not DEFAULT_LIMITS:
+            if self._limits is not DEFAULT_CONNECTION_LIMITS:
                 connection_pool_limits = self._limits
             else:
                 connection_pool_limits = None
