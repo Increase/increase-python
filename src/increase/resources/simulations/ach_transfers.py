@@ -21,7 +21,11 @@ from ..._response import to_streamed_response_wrapper, async_to_streamed_respons
 from ..._base_client import (
     make_request_options,
 )
-from ...types.simulations import ach_transfer_return_params, ach_transfer_create_inbound_params
+from ...types.simulations import (
+    ach_transfer_return_params,
+    ach_transfer_create_inbound_params,
+    ach_transfer_notification_of_change_params,
+)
 
 __all__ = ["ACHTransfers", "AsyncACHTransfers"]
 
@@ -128,6 +132,118 @@ class ACHTransfers(SyncAPIResource):
                 idempotency_key=idempotency_key,
             ),
             cast_to=InboundACHTransfer,
+        )
+
+    def notification_of_change(
+        self,
+        ach_transfer_id: str,
+        *,
+        change_code: Literal[
+            "incorrect_account_number",
+            "incorrect_routing_number",
+            "incorrect_routing_number_and_account_number",
+            "incorrect_transaction_code",
+            "incorrect_account_number_and_transaction_code",
+            "incorrect_routing_number_account_number_and_transaction_code",
+            "incorrect_receiving_depository_financial_institution_identification",
+            "incorrect_individual_identification_number",
+            "addenda_format_error",
+            "incorrect_standard_entry_class_code_for_outbound_international_payment",
+            "misrouted_notification_of_change",
+            "incorrect_trace_number",
+            "incorrect_company_identification_number",
+            "incorrect_identification_number",
+            "incorrectly_formatted_corrected_data",
+            "incorrect_discretionary_data",
+            "routing_number_not_from_original_entry_detail_record",
+            "depository_financial_institution_account_number_not_from_original_entry_detail_record",
+            "incorrect_transaction_code_by_originating_depository_financial_institution",
+        ],
+        corrected_data: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> ACHTransfer:
+        """
+        Simulates receiving a Notification of Change for an
+        [ACH Transfer](#ach-transfers).
+
+        Args:
+          ach_transfer_id: The identifier of the ACH Transfer you wish to create a notification of change
+              for.
+
+          change_code: The reason for the notification of change.
+
+              - `incorrect_account_number` - The account number was incorrect.
+              - `incorrect_routing_number` - The routing number was incorrect.
+              - `incorrect_routing_number_and_account_number` - Both the routing number and
+                the account number were incorrect.
+              - `incorrect_transaction_code` - The transaction code was incorrect. Try
+                changing the `funding` parameter from checking to savings or vice-versa.
+              - `incorrect_account_number_and_transaction_code` - The account number and the
+                transaction code were incorrect.
+              - `incorrect_routing_number_account_number_and_transaction_code` - The routing
+                number, account number, and transaction code were incorrect.
+              - `incorrect_receiving_depository_financial_institution_identification` - The
+                receiving depository financial institution identification was incorrect.
+              - `incorrect_individual_identification_number` - The individual identification
+                number was incorrect.
+              - `addenda_format_error` - The addenda had an incorrect format.
+              - `incorrect_standard_entry_class_code_for_outbound_international_payment` - The
+                standard entry class code was incorrect for an outbound international payment.
+              - `misrouted_notification_of_change` - The notification of change was misrouted.
+              - `incorrect_trace_number` - The trace number was incorrect.
+              - `incorrect_company_identification_number` - The company identification number
+                was incorrect.
+              - `incorrect_identification_number` - The individual identification number or
+                identification number was incorrect.
+              - `incorrectly_formatted_corrected_data` - The corrected data was incorrectly
+                formatted.
+              - `incorrect_discretionary_data` - The discretionary data was incorrect.
+              - `routing_number_not_from_original_entry_detail_record` - The routing number
+                was not from the original entry detail record.
+              - `depository_financial_institution_account_number_not_from_original_entry_detail_record` -
+                The depository financial institution account number was not from the original
+                entry detail record.
+              - `incorrect_transaction_code_by_originating_depository_financial_institution` -
+                The transaction code was incorrect, initiated by the originating depository
+                financial institution.
+
+          corrected_data: The corrected data for the notification of change (e.g., a new routing number).
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not ach_transfer_id:
+            raise ValueError(f"Expected a non-empty value for `ach_transfer_id` but received {ach_transfer_id!r}")
+        return self._post(
+            f"/simulations/ach_transfers/{ach_transfer_id}/notification_of_change",
+            body=maybe_transform(
+                {
+                    "change_code": change_code,
+                    "corrected_data": corrected_data,
+                },
+                ach_transfer_notification_of_change_params.ACHTransferNotificationOfChangeParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=ACHTransfer,
         )
 
     def return_(
@@ -551,6 +667,118 @@ class AsyncACHTransfers(AsyncAPIResource):
             cast_to=InboundACHTransfer,
         )
 
+    async def notification_of_change(
+        self,
+        ach_transfer_id: str,
+        *,
+        change_code: Literal[
+            "incorrect_account_number",
+            "incorrect_routing_number",
+            "incorrect_routing_number_and_account_number",
+            "incorrect_transaction_code",
+            "incorrect_account_number_and_transaction_code",
+            "incorrect_routing_number_account_number_and_transaction_code",
+            "incorrect_receiving_depository_financial_institution_identification",
+            "incorrect_individual_identification_number",
+            "addenda_format_error",
+            "incorrect_standard_entry_class_code_for_outbound_international_payment",
+            "misrouted_notification_of_change",
+            "incorrect_trace_number",
+            "incorrect_company_identification_number",
+            "incorrect_identification_number",
+            "incorrectly_formatted_corrected_data",
+            "incorrect_discretionary_data",
+            "routing_number_not_from_original_entry_detail_record",
+            "depository_financial_institution_account_number_not_from_original_entry_detail_record",
+            "incorrect_transaction_code_by_originating_depository_financial_institution",
+        ],
+        corrected_data: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> ACHTransfer:
+        """
+        Simulates receiving a Notification of Change for an
+        [ACH Transfer](#ach-transfers).
+
+        Args:
+          ach_transfer_id: The identifier of the ACH Transfer you wish to create a notification of change
+              for.
+
+          change_code: The reason for the notification of change.
+
+              - `incorrect_account_number` - The account number was incorrect.
+              - `incorrect_routing_number` - The routing number was incorrect.
+              - `incorrect_routing_number_and_account_number` - Both the routing number and
+                the account number were incorrect.
+              - `incorrect_transaction_code` - The transaction code was incorrect. Try
+                changing the `funding` parameter from checking to savings or vice-versa.
+              - `incorrect_account_number_and_transaction_code` - The account number and the
+                transaction code were incorrect.
+              - `incorrect_routing_number_account_number_and_transaction_code` - The routing
+                number, account number, and transaction code were incorrect.
+              - `incorrect_receiving_depository_financial_institution_identification` - The
+                receiving depository financial institution identification was incorrect.
+              - `incorrect_individual_identification_number` - The individual identification
+                number was incorrect.
+              - `addenda_format_error` - The addenda had an incorrect format.
+              - `incorrect_standard_entry_class_code_for_outbound_international_payment` - The
+                standard entry class code was incorrect for an outbound international payment.
+              - `misrouted_notification_of_change` - The notification of change was misrouted.
+              - `incorrect_trace_number` - The trace number was incorrect.
+              - `incorrect_company_identification_number` - The company identification number
+                was incorrect.
+              - `incorrect_identification_number` - The individual identification number or
+                identification number was incorrect.
+              - `incorrectly_formatted_corrected_data` - The corrected data was incorrectly
+                formatted.
+              - `incorrect_discretionary_data` - The discretionary data was incorrect.
+              - `routing_number_not_from_original_entry_detail_record` - The routing number
+                was not from the original entry detail record.
+              - `depository_financial_institution_account_number_not_from_original_entry_detail_record` -
+                The depository financial institution account number was not from the original
+                entry detail record.
+              - `incorrect_transaction_code_by_originating_depository_financial_institution` -
+                The transaction code was incorrect, initiated by the originating depository
+                financial institution.
+
+          corrected_data: The corrected data for the notification of change (e.g., a new routing number).
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not ach_transfer_id:
+            raise ValueError(f"Expected a non-empty value for `ach_transfer_id` but received {ach_transfer_id!r}")
+        return await self._post(
+            f"/simulations/ach_transfers/{ach_transfer_id}/notification_of_change",
+            body=await async_maybe_transform(
+                {
+                    "change_code": change_code,
+                    "corrected_data": corrected_data,
+                },
+                ach_transfer_notification_of_change_params.ACHTransferNotificationOfChangeParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=ACHTransfer,
+        )
+
     async def return_(
         self,
         ach_transfer_id: str,
@@ -875,6 +1103,9 @@ class ACHTransfersWithRawResponse:
         self.create_inbound = _legacy_response.to_raw_response_wrapper(
             ach_transfers.create_inbound,
         )
+        self.notification_of_change = _legacy_response.to_raw_response_wrapper(
+            ach_transfers.notification_of_change,
+        )
         self.return_ = _legacy_response.to_raw_response_wrapper(
             ach_transfers.return_,
         )
@@ -889,6 +1120,9 @@ class AsyncACHTransfersWithRawResponse:
 
         self.create_inbound = _legacy_response.async_to_raw_response_wrapper(
             ach_transfers.create_inbound,
+        )
+        self.notification_of_change = _legacy_response.async_to_raw_response_wrapper(
+            ach_transfers.notification_of_change,
         )
         self.return_ = _legacy_response.async_to_raw_response_wrapper(
             ach_transfers.return_,
@@ -905,6 +1139,9 @@ class ACHTransfersWithStreamingResponse:
         self.create_inbound = to_streamed_response_wrapper(
             ach_transfers.create_inbound,
         )
+        self.notification_of_change = to_streamed_response_wrapper(
+            ach_transfers.notification_of_change,
+        )
         self.return_ = to_streamed_response_wrapper(
             ach_transfers.return_,
         )
@@ -919,6 +1156,9 @@ class AsyncACHTransfersWithStreamingResponse:
 
         self.create_inbound = async_to_streamed_response_wrapper(
             ach_transfers.create_inbound,
+        )
+        self.notification_of_change = async_to_streamed_response_wrapper(
+            ach_transfers.notification_of_change,
         )
         self.return_ = async_to_streamed_response_wrapper(
             ach_transfers.return_,
