@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.47.1 (2024-03-29)
+
+Full Changelog: [v0.47.0...v0.47.1](https://github.com/Increase/increase-python/compare/v0.47.0...v0.47.1)
+
+### Bug Fixes
+
+* **project:** use absolute github links on PyPi ([#392](https://github.com/Increase/increase-python/issues/392)) ([2697c0d](https://github.com/Increase/increase-python/commit/2697c0d4f60cd1d9568350ff3e08256be2c4a078))
+
 ## 0.47.0 (2024-03-29)
 
 Full Changelog: [v0.46.0...v0.47.0](https://github.com/Increase/increase-python/compare/v0.46.0...v0.47.0)
