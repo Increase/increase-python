@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.48.0 (2024-03-29)
+
+Full Changelog: [v0.47.1...v0.48.0](https://github.com/Increase/increase-python/compare/v0.47.1...v0.48.0)
+
+### Features
+
+* **api:** remove check transfer intention ([#394](https://github.com/Increase/increase-python/issues/394)) ([e94957a](https://github.com/Increase/increase-python/commit/e94957a282ad6fb57b28476ee9bcb69e9ee71c0f))
+
 ## 0.47.1 (2024-03-29)
 
 Full Changelog: [v0.47.0...v0.47.1](https://github.com/Increase/increase-python/compare/v0.47.0...v0.47.1)
