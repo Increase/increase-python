@@ -36,7 +36,6 @@ __all__ = [
     "SourceCheckDepositAcceptance",
     "SourceCheckDepositReturn",
     "SourceCheckTransferDeposit",
-    "SourceCheckTransferIntention",
     "SourceCheckTransferStopPaymentRequest",
     "SourceFeePayment",
     "SourceInboundACHTransfer",
@@ -1575,7 +1574,7 @@ class SourceCheckTransferDeposit(BaseModel):
     transaction_id: Optional[str] = None
     """The identifier of the Transaction object created when the check was deposited."""
 
-    transfer_id: str
+    transfer_id: Optional[str] = None
     """The identifier of the Check Transfer object that was deposited."""
 
     type: Literal["check_transfer_deposit"]
@@ -1583,45 +1582,6 @@ class SourceCheckTransferDeposit(BaseModel):
 
     For this resource it will always be `check_transfer_deposit`.
     """
-
-
-class SourceCheckTransferIntention(BaseModel):
-    address_city: Optional[str] = None
-    """The city of the check's destination."""
-
-    address_line1: Optional[str] = None
-    """The street address of the check's destination."""
-
-    address_line2: Optional[str] = None
-    """The second line of the address of the check's destination."""
-
-    address_state: Optional[str] = None
-    """The state of the check's destination."""
-
-    address_zip: Optional[str] = None
-    """The postal code of the check's destination."""
-
-    amount: int
-    """The transfer amount in USD cents."""
-
-    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
-    """
-    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
-    currency.
-
-    - `CAD` - Canadian Dollar (CAD)
-    - `CHF` - Swiss Franc (CHF)
-    - `EUR` - Euro (EUR)
-    - `GBP` - British Pound (GBP)
-    - `JPY` - Japanese Yen (JPY)
-    - `USD` - US Dollar (USD)
-    """
-
-    recipient_name: Optional[str] = None
-    """The name that will be printed on the check."""
-
-    transfer_id: str
-    """The identifier of the Check Transfer with which this is associated."""
 
 
 class SourceCheckTransferStopPaymentRequest(BaseModel):
@@ -2507,7 +2467,6 @@ class Source(BaseModel):
         "check_deposit_acceptance",
         "check_deposit_return",
         "check_transfer_deposit",
-        "check_transfer_intention",
         "check_transfer_stop_payment_request",
         "fee_payment",
         "inbound_ach_transfer",
@@ -2554,8 +2513,6 @@ class Source(BaseModel):
       `check_deposit_return` object.
     - `check_transfer_deposit` - Check Transfer Deposit: details will be under the
       `check_transfer_deposit` object.
-    - `check_transfer_intention` - Check Transfer Intention: details will be under
-      the `check_transfer_intention` object.
     - `check_transfer_stop_payment_request` - Check Transfer Stop Payment Request:
       details will be under the `check_transfer_stop_payment_request` object.
     - `fee_payment` - Fee Payment: details will be under the `fee_payment` object.
@@ -2617,13 +2574,6 @@ class Source(BaseModel):
 
     This field will be present in the JSON response if and only if `category` is
     equal to `check_transfer_deposit`.
-    """
-
-    check_transfer_intention: Optional[SourceCheckTransferIntention] = None
-    """A Check Transfer Intention object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `check_transfer_intention`.
     """
 
     check_transfer_stop_payment_request: Optional[SourceCheckTransferStopPaymentRequest] = None
