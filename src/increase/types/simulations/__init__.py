@@ -18,6 +18,9 @@ from .wire_transfer_create_inbound_params import WireTransferCreateInboundParams
 from .physical_card_shipment_advance_params import (
     PhysicalCardShipmentAdvanceParams as PhysicalCardShipmentAdvanceParams,
 )
+from .ach_transfer_notification_of_change_params import (
+    ACHTransferNotificationOfChangeParams as ACHTransferNotificationOfChangeParams,
+)
 from .digital_wallet_token_request_create_params import (
     DigitalWalletTokenRequestCreateParams as DigitalWalletTokenRequestCreateParams,
 )
