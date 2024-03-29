@@ -13,12 +13,11 @@ class Account(BaseModel):
     id: str
     """The Account identifier."""
 
-    bank: Literal["blue_ridge_bank", "first_internet_bank", "grasshopper_bank"]
+    bank: Literal["blue_ridge_bank", "first_internet_bank"]
     """The bank the Account is with.
 
     - `blue_ridge_bank` - Blue Ridge Bank, N.A.
     - `first_internet_bank` - First Internet Bank of Indiana
-    - `grasshopper_bank` - Grasshopper Bank
     """
 
     created_at: datetime
@@ -78,6 +77,12 @@ class Account(BaseModel):
 
     name: str
     """The name you choose for the Account."""
+
+    program_id: str
+    """
+    The identifier of the Program determining the compliance and commercial terms of
+    this Account.
+    """
 
     status: Literal["open", "closed"]
     """The status of the Account.
