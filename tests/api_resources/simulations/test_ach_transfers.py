@@ -68,6 +68,52 @@ class TestACHTransfers:
 
         assert cast(Any, response.is_closed) is True
 
+    @parametrize
+    def test_method_notification_of_change(self, client: Increase) -> None:
+        ach_transfer = client.simulations.ach_transfers.notification_of_change(
+            "string",
+            change_code="incorrect_routing_number",
+            corrected_data="123456789",
+        )
+        assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
+
+    @parametrize
+    def test_raw_response_notification_of_change(self, client: Increase) -> None:
+        response = client.simulations.ach_transfers.with_raw_response.notification_of_change(
+            "string",
+            change_code="incorrect_routing_number",
+            corrected_data="123456789",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        ach_transfer = response.parse()
+        assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
+
+    @parametrize
+    def test_streaming_response_notification_of_change(self, client: Increase) -> None:
+        with client.simulations.ach_transfers.with_streaming_response.notification_of_change(
+            "string",
+            change_code="incorrect_routing_number",
+            corrected_data="123456789",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            ach_transfer = response.parse()
+            assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_notification_of_change(self, client: Increase) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `ach_transfer_id` but received ''"):
+            client.simulations.ach_transfers.with_raw_response.notification_of_change(
+                "",
+                change_code="incorrect_routing_number",
+                corrected_data="123456789",
+            )
+
     @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
     def test_method_return(self, client: Increase) -> None:
@@ -214,6 +260,52 @@ class TestAsyncACHTransfers:
             assert_matches_type(InboundACHTransfer, ach_transfer, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_notification_of_change(self, async_client: AsyncIncrease) -> None:
+        ach_transfer = await async_client.simulations.ach_transfers.notification_of_change(
+            "string",
+            change_code="incorrect_routing_number",
+            corrected_data="123456789",
+        )
+        assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
+
+    @parametrize
+    async def test_raw_response_notification_of_change(self, async_client: AsyncIncrease) -> None:
+        response = await async_client.simulations.ach_transfers.with_raw_response.notification_of_change(
+            "string",
+            change_code="incorrect_routing_number",
+            corrected_data="123456789",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        ach_transfer = response.parse()
+        assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_notification_of_change(self, async_client: AsyncIncrease) -> None:
+        async with async_client.simulations.ach_transfers.with_streaming_response.notification_of_change(
+            "string",
+            change_code="incorrect_routing_number",
+            corrected_data="123456789",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            ach_transfer = await response.parse()
+            assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_notification_of_change(self, async_client: AsyncIncrease) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `ach_transfer_id` but received ''"):
+            await async_client.simulations.ach_transfers.with_raw_response.notification_of_change(
+                "",
+                change_code="incorrect_routing_number",
+                corrected_data="123456789",
+            )
 
     @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize

@@ -549,6 +549,7 @@ Methods:
 Methods:
 
 - <code title="post /simulations/inbound_ach_transfers">client.simulations.ach_transfers.<a href="./src/increase/resources/simulations/ach_transfers.py">create_inbound</a>(\*\*<a href="src/increase/types/simulations/ach_transfer_create_inbound_params.py">params</a>) -> <a href="./src/increase/types/inbound_ach_transfer.py">InboundACHTransfer</a></code>
+- <code title="post /simulations/ach_transfers/{ach_transfer_id}/notification_of_change">client.simulations.ach_transfers.<a href="./src/increase/resources/simulations/ach_transfers.py">notification_of_change</a>(ach_transfer_id, \*\*<a href="src/increase/types/simulations/ach_transfer_notification_of_change_params.py">params</a>) -> <a href="./src/increase/types/ach_transfer.py">ACHTransfer</a></code>
 - <code title="post /simulations/ach_transfers/{ach_transfer_id}/return">client.simulations.ach*transfers.<a href="./src/increase/resources/simulations/ach_transfers.py">return*</a>(ach_transfer_id, \*\*<a href="src/increase/types/simulations/ach_transfer_return_params.py">params</a>) -> <a href="./src/increase/types/ach_transfer.py">ACHTransfer</a></code>
 - <code title="post /simulations/ach_transfers/{ach_transfer_id}/submit">client.simulations.ach_transfers.<a href="./src/increase/resources/simulations/ach_transfers.py">submit</a>(ach_transfer_id) -> <a href="./src/increase/types/ach_transfer.py">ACHTransfer</a></code>
 
