@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.47.0 (2024-03-29)
+
+Full Changelog: [v0.46.0...v0.47.0](https://github.com/Increase/increase-python/compare/v0.46.0...v0.47.0)
+
+### Features
+
+* **api:** updates ([#391](https://github.com/Increase/increase-python/issues/391)) ([a64d9ee](https://github.com/Increase/increase-python/commit/a64d9eebc28d65f2a44591107f116923b8908bee))
+* **package:** export default constants ([#390](https://github.com/Increase/increase-python/issues/390)) ([d5d14bf](https://github.com/Increase/increase-python/commit/d5d14bf3703964894862131acff1368f1118cfb6))
+
+
+### Chores
+
+* revert temporary commit ([13ba51e](https://github.com/Increase/increase-python/commit/13ba51e82696e7a6180346c4b7d431e72aac0ad3))
+* temporary commit ([#388](https://github.com/Increase/increase-python/issues/388)) ([4600b05](https://github.com/Increase/increase-python/commit/4600b057fb9a95ee4f2804d083898e2fedc42ab6))
+
 ## 0.46.0 (2024-03-27)
 
 Full Changelog: [v0.45.0...v0.46.0](https://github.com/Increase/increase-python/compare/v0.45.0...v0.46.0)
