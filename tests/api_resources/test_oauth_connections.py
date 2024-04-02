@@ -66,6 +66,7 @@ class TestOAuthConnections:
         oauth_connection = client.oauth_connections.list(
             cursor="string",
             limit=1,
+            status={"in": ["active", "inactive"]},
         )
         assert_matches_type(SyncPage[OAuthConnection], oauth_connection, path=["response"])
 
@@ -141,6 +142,7 @@ class TestAsyncOAuthConnections:
         oauth_connection = await async_client.oauth_connections.list(
             cursor="string",
             limit=1,
+            status={"in": ["active", "inactive"]},
         )
         assert_matches_type(AsyncPage[OAuthConnection], oauth_connection, path=["response"])
 
