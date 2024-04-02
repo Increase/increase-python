@@ -1,5 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+from typing import Optional
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -16,6 +17,12 @@ class OAuthConnection(BaseModel):
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth
     Connection was created.
+    """
+
+    deleted_at: Optional[datetime] = None
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the OAuth
+    Connection was deleted.
     """
 
     group_id: str
