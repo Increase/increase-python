@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.49.0 (2024-04-02)
+
+Full Changelog: [v0.48.0...v0.49.0](https://github.com/Increase/increase-python/compare/v0.48.0...v0.49.0)
+
+### Features
+
+* **api:** filter OAuth connections by their status ([#399](https://github.com/Increase/increase-python/issues/399)) ([888c3d4](https://github.com/Increase/increase-python/commit/888c3d47b068f572a935bd8c045e61d8e68cdda0))
+
+
+### Chores
+
+* **client:** validate that max_retries is not None ([#397](https://github.com/Increase/increase-python/issues/397)) ([28e1e1f](https://github.com/Increase/increase-python/commit/28e1e1f949f7c18e3f9acb27c928e39f9e8a7aaf))
+
 ## 0.48.0 (2024-03-29)
 
 Full Changelog: [v0.47.1...v0.48.0](https://github.com/Increase/increase-python/compare/v0.47.1...v0.48.0)
