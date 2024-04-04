@@ -24,6 +24,12 @@ class EventSubscription(BaseModel):
     [idempotency](https://increase.com/documentation/idempotency-keys).
     """
 
+    oauth_connection_id: Optional[str] = None
+    """
+    If specified, this subscription will only receive webhooks for Events associated
+    with this OAuth Connection.
+    """
+
     selected_event_category: Optional[
         Literal[
             "account.created",
@@ -73,6 +79,8 @@ class EventSubscription(BaseModel):
             "inbound_ach_transfer.updated",
             "inbound_ach_transfer_return.created",
             "inbound_ach_transfer_return.updated",
+            "inbound_mail_item.created",
+            "inbound_mail_item.updated",
             "inbound_wire_drawdown_request.created",
             "inbound_wire_transfer.created",
             "inbound_wire_transfer.updated",
@@ -174,6 +182,8 @@ class EventSubscription(BaseModel):
       Transfer Return is created.
     - `inbound_ach_transfer_return.updated` - Occurs whenever an Inbound ACH
       Transfer Return is updated.
+    - `inbound_mail_item.created` - Occurs whenever an Inbound Mail Item is created.
+    - `inbound_mail_item.updated` - Occurs whenever an Inbound Mail Item is updated.
     - `inbound_wire_drawdown_request.created` - Occurs whenever an Inbound Wire
       Drawdown Request is created.
     - `inbound_wire_transfer.created` - Occurs whenever an Inbound Wire Transfer is

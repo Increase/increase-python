@@ -491,11 +491,20 @@ class Entity(BaseModel):
     Will be present if `structure` is equal to `corporation`.
     """
 
+    created_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Entity
+    was created.
+    """
+
     description: Optional[str] = None
     """The entity's description for display purposes."""
 
     details_confirmed_at: Optional[datetime] = None
-    """The date and time at which the entity's details were most recently confirmed."""
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the
+    Entity's details were most recently confirmed.
+    """
 
     idempotency_key: Optional[str] = None
     """The idempotency key you chose for this object.
