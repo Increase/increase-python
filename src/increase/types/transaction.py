@@ -42,7 +42,6 @@ __all__ = [
     "SourceInboundACHTransferAddenda",
     "SourceInboundACHTransferAddendaFreeform",
     "SourceInboundACHTransferAddendaFreeformEntry",
-    "SourceInboundCheck",
     "SourceInboundInternationalACHTransfer",
     "SourceInboundRealTimePaymentsTransferConfirmation",
     "SourceInboundWireDrawdownPayment",
@@ -1704,46 +1703,6 @@ class SourceInboundACHTransfer(BaseModel):
     """The inbound ach transfer's identifier."""
 
 
-class SourceInboundCheck(BaseModel):
-    amount: int
-    """The amount in the minor unit of the destination account currency.
-
-    For dollars, for example, this is cents.
-    """
-
-    bank_of_first_deposit_routing_number: Optional[str] = None
-    """
-    The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-    bank depositing this check. In some rare cases, this is not transmitted via
-    Check21 and the value will be null.
-    """
-
-    check_front_image_file_id: Optional[str] = None
-    """The front image of the check. This is a black and white TIFF image file."""
-
-    check_number: Optional[str] = None
-    """The number of the check.
-
-    This field is set by the depositing bank and can be unreliable.
-    """
-
-    check_rear_image_file_id: Optional[str] = None
-    """The rear image of the check. This is a black and white TIFF image file."""
-
-    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
-    """
-    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-    transaction's currency.
-
-    - `CAD` - Canadian Dollar (CAD)
-    - `CHF` - Swiss Franc (CHF)
-    - `EUR` - Euro (EUR)
-    - `GBP` - British Pound (GBP)
-    - `JPY` - Japanese Yen (JPY)
-    - `USD` - US Dollar (USD)
-    """
-
-
 class SourceInboundInternationalACHTransfer(BaseModel):
     amount: int
     """The amount in the minor unit of the destination account currency.
@@ -2471,7 +2430,6 @@ class Source(BaseModel):
         "fee_payment",
         "inbound_ach_transfer",
         "inbound_ach_transfer_return_intention",
-        "inbound_check",
         "inbound_international_ach_transfer",
         "inbound_real_time_payments_transfer_confirmation",
         "inbound_wire_drawdown_payment_reversal",
@@ -2520,8 +2478,6 @@ class Source(BaseModel):
       the `inbound_ach_transfer` object.
     - `inbound_ach_transfer_return_intention` - Inbound ACH Transfer Return
       Intention: details will be under the `inbound_ach_transfer_return_intention`
-      object.
-    - `inbound_check` - Inbound Check: details will be under the `inbound_check`
       object.
     - `inbound_international_ach_transfer` - Inbound International ACH Transfer:
       details will be under the `inbound_international_ach_transfer` object.
@@ -2595,13 +2551,6 @@ class Source(BaseModel):
 
     This field will be present in the JSON response if and only if `category` is
     equal to `inbound_ach_transfer`.
-    """
-
-    inbound_check: Optional[SourceInboundCheck] = None
-    """An Inbound Check object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `inbound_check`.
     """
 
     inbound_international_ach_transfer: Optional[SourceInboundInternationalACHTransfer] = None
