@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.50.0 (2024-04-04)
+
+Full Changelog: [v0.49.0...v0.50.0](https://github.com/Increase/increase-python/compare/v0.49.0...v0.50.0)
+
+### Features
+
+* **api:** remove inbound_check category, rename check_deposit_mail_item, add inbound_mail_item ([#403](https://github.com/Increase/increase-python/issues/403)) ([c133bfc](https://github.com/Increase/increase-python/commit/c133bfc3961556dd9b79c45cb625e29cb5aa7b67))
+
+
+### Chores
+
+* **internal:** defer model build for import latency ([#400](https://github.com/Increase/increase-python/issues/400)) ([71b7d82](https://github.com/Increase/increase-python/commit/71b7d82c686789ee08bc82576b806a47d544e676))
+* **internal:** streaming updates ([#402](https://github.com/Increase/increase-python/issues/402)) ([d049f48](https://github.com/Increase/increase-python/commit/d049f487f54caf7a0a7da0f860f11713b5a5c7d0))
+
 ## 0.49.0 (2024-04-02)
 
 Full Changelog: [v0.48.0...v0.49.0](https://github.com/Increase/increase-python/compare/v0.48.0...v0.49.0)
