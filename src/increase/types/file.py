@@ -50,7 +50,7 @@ class File(BaseModel):
         "check_image_front",
         "check_image_back",
         "mailed_check_image",
-        "check_deposit_mail_item",
+        "inbound_mail_item",
         "form_1099_int",
         "form_ss_4",
         "identity_document",
@@ -76,8 +76,7 @@ class File(BaseModel):
       deposits.
     - `check_image_back` - An image of the back of a check, used for check deposits.
     - `mailed_check_image` - An image of a check that was mailed to a recipient.
-    - `check_deposit_mail_item` - A scanned mail item sent to Increase containing a
-      check to deposit.
+    - `inbound_mail_item` - A scanned mail item sent to Increase.
     - `form_1099_int` - IRS Form 1099-INT.
     - `form_ss_4` - IRS Form SS-4.
     - `identity_document` - An image of a government-issued ID.

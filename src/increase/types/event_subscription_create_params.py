@@ -11,6 +11,12 @@ class EventSubscriptionCreateParams(TypedDict, total=False):
     url: Required[str]
     """The URL you'd like us to send webhooks to."""
 
+    oauth_connection_id: str
+    """
+    If specified, this subscription will only receive webhooks for Events associated
+    with the specified OAuth Connection.
+    """
+
     selected_event_category: Literal[
         "account.created",
         "account.updated",
@@ -59,6 +65,8 @@ class EventSubscriptionCreateParams(TypedDict, total=False):
         "inbound_ach_transfer.updated",
         "inbound_ach_transfer_return.created",
         "inbound_ach_transfer_return.updated",
+        "inbound_mail_item.created",
+        "inbound_mail_item.updated",
         "inbound_wire_drawdown_request.created",
         "inbound_wire_transfer.created",
         "inbound_wire_transfer.updated",
@@ -159,6 +167,8 @@ class EventSubscriptionCreateParams(TypedDict, total=False):
       Transfer Return is created.
     - `inbound_ach_transfer_return.updated` - Occurs whenever an Inbound ACH
       Transfer Return is updated.
+    - `inbound_mail_item.created` - Occurs whenever an Inbound Mail Item is created.
+    - `inbound_mail_item.updated` - Occurs whenever an Inbound Mail Item is updated.
     - `inbound_wire_drawdown_request.created` - Occurs whenever an Inbound Wire
       Drawdown Request is created.
     - `inbound_wire_transfer.created` - Occurs whenever an Inbound Wire Transfer is
