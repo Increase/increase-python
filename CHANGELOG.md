@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.51.0 (2024-04-05)
+
+Full Changelog: [v0.50.0...v0.51.0](https://github.com/Increase/increase-python/compare/v0.50.0...v0.51.0)
+
+### Features
+
+* **api:** add inbound check deposit return intention ([#404](https://github.com/Increase/increase-python/issues/404)) ([5a88443](https://github.com/Increase/increase-python/commit/5a8844371d1d0f27a0ad210769e2cd66c2e50d64))
+
 ## 0.50.0 (2024-04-04)
 
 Full Changelog: [v0.49.0...v0.50.0](https://github.com/Increase/increase-python/compare/v0.49.0...v0.50.0)
