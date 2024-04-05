@@ -55,6 +55,7 @@ _CategoryReservedKeywords = TypedDict(
                 "fee_payment",
                 "inbound_ach_transfer",
                 "inbound_ach_transfer_return_intention",
+                "inbound_check_deposit_return_intention",
                 "inbound_international_ach_transfer",
                 "inbound_real_time_payments_transfer_confirmation",
                 "inbound_wire_drawdown_payment_reversal",
