@@ -2430,6 +2430,7 @@ class Source(BaseModel):
         "fee_payment",
         "inbound_ach_transfer",
         "inbound_ach_transfer_return_intention",
+        "inbound_check_deposit_return_intention",
         "inbound_international_ach_transfer",
         "inbound_real_time_payments_transfer_confirmation",
         "inbound_wire_drawdown_payment_reversal",
@@ -2478,6 +2479,9 @@ class Source(BaseModel):
       the `inbound_ach_transfer` object.
     - `inbound_ach_transfer_return_intention` - Inbound ACH Transfer Return
       Intention: details will be under the `inbound_ach_transfer_return_intention`
+      object.
+    - `inbound_check_deposit_return_intention` - Inbound Check Deposit Return
+      Intention: details will be under the `inbound_check_deposit_return_intention`
       object.
     - `inbound_international_ach_transfer` - Inbound International ACH Transfer:
       details will be under the `inbound_international_ach_transfer` object.
