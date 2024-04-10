@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.52.0 (2024-04-10)
+
+Full Changelog: [v0.51.0...v0.52.0](https://github.com/Increase/increase-python/compare/v0.51.0...v0.52.0)
+
+### Features
+
+* **api:** updates ([#411](https://github.com/Increase/increase-python/issues/411)) ([af8a36a](https://github.com/Increase/increase-python/commit/af8a36a54f8101695d1a1b700d6c8c4c86d298ea))
+* **client:** add DefaultHttpxClient and DefaultAsyncHttpxClient ([#406](https://github.com/Increase/increase-python/issues/406)) ([58720b5](https://github.com/Increase/increase-python/commit/58720b59fe550b47f93db0a8bb6fb82cf41387b0))
+* **models:** add to_dict & to_json helper methods ([#409](https://github.com/Increase/increase-python/issues/409)) ([3d570ac](https://github.com/Increase/increase-python/commit/3d570acf49833b02d577865ccce4128af570ef3c))
+
+
+### Chores
+
+* fix typo ([#410](https://github.com/Increase/increase-python/issues/410)) ([a19b95c](https://github.com/Increase/increase-python/commit/a19b95c2966f75a82bd27b093674b98f5ca0659d))
+
+
+### Documentation
+
+* **api:** update links to NAICS classification codes ([#408](https://github.com/Increase/increase-python/issues/408)) ([74fa33a](https://github.com/Increase/increase-python/commit/74fa33aa3fede949953b77b5550881aac273e150))
+
 ## 0.51.0 (2024-04-05)
 
 Full Changelog: [v0.50.0...v0.51.0](https://github.com/Increase/increase-python/compare/v0.50.0...v0.51.0)
