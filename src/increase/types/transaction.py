@@ -33,6 +33,7 @@ __all__ = [
     "SourceCardSettlementPurchaseDetailsTravelAncillary",
     "SourceCardSettlementPurchaseDetailsTravelAncillaryService",
     "SourceCardSettlementPurchaseDetailsTravelTripLeg",
+    "SourceCashbackPayment",
     "SourceCheckDepositAcceptance",
     "SourceCheckDepositReturn",
     "SourceCheckTransferDeposit",
@@ -1405,6 +1406,36 @@ class SourceCardSettlement(BaseModel):
     """
 
 
+class SourceCashbackPayment(BaseModel):
+    accrued_on_card_id: str
+    """The card on which the cashback was accrued."""
+
+    amount: int
+    """The amount in the minor unit of the transaction's currency.
+
+    For dollars, for example, this is cents.
+    """
+
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transaction
+    currency.
+
+    - `CAD` - Canadian Dollar (CAD)
+    - `CHF` - Swiss Franc (CHF)
+    - `EUR` - Euro (EUR)
+    - `GBP` - British Pound (GBP)
+    - `JPY` - Japanese Yen (JPY)
+    - `USD` - US Dollar (USD)
+    """
+
+    period_end: datetime
+    """The end of the period for which this transaction paid cashback."""
+
+    period_start: datetime
+    """The start of the period for which this transaction paid cashback."""
+
+
 class SourceCheckDepositAcceptance(BaseModel):
     account_number: str
     """The account number printed on the check."""
@@ -2414,11 +2445,19 @@ class Source(BaseModel):
     equal to `card_settlement`.
     """
 
+    cashback_payment: Optional[SourceCashbackPayment] = None
+    """A Cashback Payment object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `cashback_payment`.
+    """
+
     category: Literal[
         "account_transfer_intention",
         "ach_transfer_intention",
         "ach_transfer_rejection",
         "ach_transfer_return",
+        "cashback_payment",
         "card_dispute_acceptance",
         "card_refund",
         "card_settlement",
@@ -2459,6 +2498,8 @@ class Source(BaseModel):
       `ach_transfer_rejection` object.
     - `ach_transfer_return` - ACH Transfer Return: details will be under the
       `ach_transfer_return` object.
+    - `cashback_payment` - Cashback Payment: details will be under the
+      `cashback_payment` object.
     - `card_dispute_acceptance` - Card Dispute Acceptance: details will be under the
       `card_dispute_acceptance` object.
     - `card_refund` - Card Refund: details will be under the `card_refund` object.

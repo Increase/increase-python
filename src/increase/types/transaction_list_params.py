@@ -44,6 +44,7 @@ _CategoryReservedKeywords = TypedDict(
                 "ach_transfer_intention",
                 "ach_transfer_rejection",
                 "ach_transfer_return",
+                "cashback_payment",
                 "card_dispute_acceptance",
                 "card_refund",
                 "card_settlement",
