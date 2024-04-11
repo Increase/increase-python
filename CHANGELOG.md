@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.52.1 (2024-04-11)
+
+Full Changelog: [v0.52.0...v0.52.1](https://github.com/Increase/increase-python/compare/v0.52.0...v0.52.1)
+
+### Bug Fixes
+
+* **types:** mark physical card cardholder as required ([#412](https://github.com/Increase/increase-python/issues/412)) ([a55c07f](https://github.com/Increase/increase-python/commit/a55c07f6005548e453336ae385e49c4161518098))
+
 ## 0.52.0 (2024-04-10)
 
 Full Changelog: [v0.51.0...v0.52.0](https://github.com/Increase/increase-python/compare/v0.51.0...v0.52.0)
