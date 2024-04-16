@@ -71,6 +71,12 @@ class Deposit(BaseModel):
     deposited check.
     """
 
+    inbound_check_deposit_id: Optional[str] = None
+    """
+    The identifier of the Inbound Check Deposit object associated with this
+    transaction.
+    """
+
     transaction_id: Optional[str] = None
     """The identifier of the Transaction object created when the check was deposited."""
 

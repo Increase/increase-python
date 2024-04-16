@@ -296,6 +296,14 @@ from .bookkeeping_entry_sets import (
     BookkeepingEntrySetsWithStreamingResponse,
     AsyncBookkeepingEntrySetsWithStreamingResponse,
 )
+from .inbound_check_deposits import (
+    InboundCheckDeposits,
+    AsyncInboundCheckDeposits,
+    InboundCheckDepositsWithRawResponse,
+    AsyncInboundCheckDepositsWithRawResponse,
+    InboundCheckDepositsWithStreamingResponse,
+    AsyncInboundCheckDepositsWithStreamingResponse,
+)
 from .inbound_wire_transfers import (
     InboundWireTransfers,
     AsyncInboundWireTransfers,
@@ -646,4 +654,10 @@ __all__ = [
     "AsyncPhysicalCardProfilesWithRawResponse",
     "PhysicalCardProfilesWithStreamingResponse",
     "AsyncPhysicalCardProfilesWithStreamingResponse",
+    "InboundCheckDeposits",
+    "AsyncInboundCheckDeposits",
+    "InboundCheckDepositsWithRawResponse",
+    "AsyncInboundCheckDepositsWithRawResponse",
+    "InboundCheckDepositsWithStreamingResponse",
+    "AsyncInboundCheckDepositsWithStreamingResponse",
 ]

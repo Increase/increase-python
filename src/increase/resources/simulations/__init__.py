@@ -120,6 +120,14 @@ from .inbound_funds_holds import (
     InboundFundsHoldsWithStreamingResponse,
     AsyncInboundFundsHoldsWithStreamingResponse,
 )
+from .inbound_check_deposits import (
+    InboundCheckDeposits,
+    AsyncInboundCheckDeposits,
+    InboundCheckDepositsWithRawResponse,
+    AsyncInboundCheckDepositsWithRawResponse,
+    InboundCheckDepositsWithStreamingResponse,
+    AsyncInboundCheckDepositsWithStreamingResponse,
+)
 from .real_time_payments_transfers import (
     RealTimePaymentsTransfers,
     AsyncRealTimePaymentsTransfers,
@@ -248,6 +256,12 @@ __all__ = [
     "AsyncPhysicalCardsWithRawResponse",
     "PhysicalCardsWithStreamingResponse",
     "AsyncPhysicalCardsWithStreamingResponse",
+    "InboundCheckDeposits",
+    "AsyncInboundCheckDeposits",
+    "InboundCheckDepositsWithRawResponse",
+    "AsyncInboundCheckDepositsWithRawResponse",
+    "InboundCheckDepositsWithStreamingResponse",
+    "AsyncInboundCheckDepositsWithStreamingResponse",
     "Simulations",
     "AsyncSimulations",
     "SimulationsWithRawResponse",

@@ -34,6 +34,9 @@ class SourceACHDecline(BaseModel):
     For dollars, for example, this is cents.
     """
 
+    inbound_ach_transfer_id: str
+    """The identifier of the Inbound ACH Transfer object associated with this decline."""
+
     originator_company_descriptive_date: Optional[str] = None
     """The descriptive date of the transfer."""
 
@@ -458,10 +461,18 @@ class SourceCheckDecline(BaseModel):
     declined check.
     """
 
+    check_transfer_id: Optional[str] = None
+    """The identifier of the Check Transfer object associated with this decline."""
+
     front_image_file_id: Optional[str] = None
     """
     The identifier of the API File object containing an image of the front of the
     declined check.
+    """
+
+    inbound_check_deposit_id: Optional[str] = None
+    """
+    The identifier of the Inbound Check Deposit object associated with this decline.
     """
 
     reason: Literal[
