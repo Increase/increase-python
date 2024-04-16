@@ -10,7 +10,6 @@ __all__ = [
     "CheckTransfer",
     "Approval",
     "Cancellation",
-    "Deposit",
     "Mailing",
     "PhysicalCheck",
     "PhysicalCheckMailingAddress",
@@ -45,48 +44,6 @@ class Cancellation(BaseModel):
     """
     If the Transfer was canceled by a user in the dashboard, the email address of
     that user.
-    """
-
-
-class Deposit(BaseModel):
-    back_image_file_id: Optional[str] = None
-    """
-    The identifier of the API File object containing an image of the back of the
-    deposited check.
-    """
-
-    bank_of_first_deposit_routing_number: Optional[str] = None
-    """
-    The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-    bank depositing this check. In some rare cases, this is not transmitted via
-    Check21 and the value will be null.
-    """
-
-    deposited_at: datetime
-    """When the check was deposited."""
-
-    front_image_file_id: Optional[str] = None
-    """
-    The identifier of the API File object containing an image of the front of the
-    deposited check.
-    """
-
-    inbound_check_deposit_id: Optional[str] = None
-    """
-    The identifier of the Inbound Check Deposit object associated with this
-    transaction.
-    """
-
-    transaction_id: Optional[str] = None
-    """The identifier of the Transaction object created when the check was deposited."""
-
-    transfer_id: Optional[str] = None
-    """The identifier of the Check Transfer object that was deposited."""
-
-    type: Literal["check_transfer_deposit"]
-    """A constant representing the object's type.
-
-    For this resource it will always be `check_transfer_deposit`.
     """
 
 
@@ -209,6 +166,12 @@ class CheckTransfer(BaseModel):
     this will contain details of the approval.
     """
 
+    approved_inbound_check_deposit_id: Optional[str] = None
+    """
+    If the Check Transfer was successfully deposited, this will contain the
+    identifier of the Inbound Check Deposit object with details of the deposit.
+    """
+
     cancellation: Optional[Cancellation] = None
     """
     If your account requires approvals for transfers and the transfer was not
@@ -236,9 +199,6 @@ class CheckTransfer(BaseModel):
     - `JPY` - Japanese Yen (JPY)
     - `USD` - US Dollar (USD)
     """
-
-    deposit: Optional[Deposit] = None
-    """After a check transfer is deposited, this will contain supplemental details."""
 
     fulfillment_method: Literal["physical_check", "third_party"]
     """Whether Increase will print and mail the check or if you will do it yourself.

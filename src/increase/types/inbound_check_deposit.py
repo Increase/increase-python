@@ -16,7 +16,7 @@ class InboundCheckDeposit(BaseModel):
     account_id: str
     """The Account the check is being deposited against."""
 
-    account_number_id: str
+    account_number_id: Optional[str] = None
     """The Account Number the check is being deposited against."""
 
     amount: int

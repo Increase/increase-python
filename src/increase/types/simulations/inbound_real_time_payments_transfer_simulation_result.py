@@ -2382,7 +2382,7 @@ class TransactionSourceCardSettlement(BaseModel):
 
 
 class TransactionSourceCashbackPayment(BaseModel):
-    accrued_on_card_id: str
+    accrued_on_card_id: Optional[str] = None
     """The card on which the cashback was accrued."""
 
     amount: int
@@ -3291,7 +3291,6 @@ class TransactionSourceInternalSource(BaseModel):
     reason: Literal[
         "account_closure",
         "bank_migration",
-        "cashback",
         "check_adjustment",
         "collection_payment",
         "collection_receivable",
@@ -3310,7 +3309,6 @@ class TransactionSourceInternalSource(BaseModel):
 
     - `account_closure` - Account closure
     - `bank_migration` - Bank migration
-    - `cashback` - Cashback
     - `check_adjustment` - Check adjustment
     - `collection_payment` - Collection payment
     - `collection_receivable` - Collection receivable
