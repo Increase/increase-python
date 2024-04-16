@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.54.0 (2024-04-16)
+
+Full Changelog: [v0.53.0...v0.54.0](https://github.com/Increase/increase-python/compare/v0.53.0...v0.54.0)
+
+### Features
+
+* **api:** remove deposit field from check transfer ([#417](https://github.com/Increase/increase-python/issues/417)) ([dd230c2](https://github.com/Increase/increase-python/commit/dd230c247fd9cd6339208978f15b7308d26a1d52))
+
 ## 0.53.0 (2024-04-16)
 
 Full Changelog: [v0.52.1...v0.53.0](https://github.com/Increase/increase-python/compare/v0.52.1...v0.53.0)
