@@ -135,6 +135,14 @@ from .inbound_funds_holds import (
     InboundFundsHoldsWithStreamingResponse,
     AsyncInboundFundsHoldsWithStreamingResponse,
 )
+from .inbound_check_deposits import (
+    InboundCheckDeposits,
+    AsyncInboundCheckDeposits,
+    InboundCheckDepositsWithRawResponse,
+    AsyncInboundCheckDepositsWithRawResponse,
+    InboundCheckDepositsWithStreamingResponse,
+    AsyncInboundCheckDepositsWithStreamingResponse,
+)
 from .real_time_payments_transfers import (
     RealTimePaymentsTransfers,
     AsyncRealTimePaymentsTransfers,
@@ -231,6 +239,10 @@ class Simulations(SyncAPIResource):
     @cached_property
     def physical_cards(self) -> PhysicalCards:
         return PhysicalCards(self._client)
+
+    @cached_property
+    def inbound_check_deposits(self) -> InboundCheckDeposits:
+        return InboundCheckDeposits(self._client)
 
     @cached_property
     def with_raw_response(self) -> SimulationsWithRawResponse:
@@ -521,6 +533,10 @@ class AsyncSimulations(AsyncAPIResource):
     @cached_property
     def physical_cards(self) -> AsyncPhysicalCards:
         return AsyncPhysicalCards(self._client)
+
+    @cached_property
+    def inbound_check_deposits(self) -> AsyncInboundCheckDeposits:
+        return AsyncInboundCheckDeposits(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncSimulationsWithRawResponse:
@@ -828,6 +844,10 @@ class SimulationsWithRawResponse:
     def physical_cards(self) -> PhysicalCardsWithRawResponse:
         return PhysicalCardsWithRawResponse(self._simulations.physical_cards)
 
+    @cached_property
+    def inbound_check_deposits(self) -> InboundCheckDepositsWithRawResponse:
+        return InboundCheckDepositsWithRawResponse(self._simulations.inbound_check_deposits)
+
 
 class AsyncSimulationsWithRawResponse:
     def __init__(self, simulations: AsyncSimulations) -> None:
@@ -913,6 +933,10 @@ class AsyncSimulationsWithRawResponse:
     @cached_property
     def physical_cards(self) -> AsyncPhysicalCardsWithRawResponse:
         return AsyncPhysicalCardsWithRawResponse(self._simulations.physical_cards)
+
+    @cached_property
+    def inbound_check_deposits(self) -> AsyncInboundCheckDepositsWithRawResponse:
+        return AsyncInboundCheckDepositsWithRawResponse(self._simulations.inbound_check_deposits)
 
 
 class SimulationsWithStreamingResponse:
@@ -1000,6 +1024,10 @@ class SimulationsWithStreamingResponse:
     def physical_cards(self) -> PhysicalCardsWithStreamingResponse:
         return PhysicalCardsWithStreamingResponse(self._simulations.physical_cards)
 
+    @cached_property
+    def inbound_check_deposits(self) -> InboundCheckDepositsWithStreamingResponse:
+        return InboundCheckDepositsWithStreamingResponse(self._simulations.inbound_check_deposits)
+
 
 class AsyncSimulationsWithStreamingResponse:
     def __init__(self, simulations: AsyncSimulations) -> None:
@@ -1085,3 +1113,7 @@ class AsyncSimulationsWithStreamingResponse:
     @cached_property
     def physical_cards(self) -> AsyncPhysicalCardsWithStreamingResponse:
         return AsyncPhysicalCardsWithStreamingResponse(self._simulations.physical_cards)
+
+    @cached_property
+    def inbound_check_deposits(self) -> AsyncInboundCheckDepositsWithStreamingResponse:
+        return AsyncInboundCheckDepositsWithStreamingResponse(self._simulations.inbound_check_deposits)

@@ -136,7 +136,9 @@ class TestWireDrawdownRequests:
     def test_method_list_with_all_params(self, client: Increase) -> None:
         wire_drawdown_request = client.wire_drawdown_requests.list(
             cursor="string",
+            idempotency_key="x",
             limit=1,
+            status="pending_submission",
         )
         assert_matches_type(SyncPage[WireDrawdownRequest], wire_drawdown_request, path=["response"])
 
@@ -282,7 +284,9 @@ class TestAsyncWireDrawdownRequests:
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
         wire_drawdown_request = await async_client.wire_drawdown_requests.list(
             cursor="string",
+            idempotency_key="x",
             limit=1,
+            status="pending_submission",
         )
         assert_matches_type(AsyncPage[WireDrawdownRequest], wire_drawdown_request, path=["response"])
 

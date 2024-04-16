@@ -2,59 +2,29 @@
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 from datetime import datetime
-from typing_extensions import Literal, Annotated, TypedDict
+from typing_extensions import Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
-__all__ = ["ExportListParams", "Category", "CreatedAt", "Status"]
+__all__ = ["InboundCheckDepositListParams", "CreatedAt"]
 
 
-class ExportListParams(TypedDict, total=False):
-    category: Category
+class InboundCheckDepositListParams(TypedDict, total=False):
+    account_id: str
+    """Filter Inbound Check Deposits to those belonging to the specified Account."""
 
     created_at: CreatedAt
 
     cursor: str
     """Return the page of entries after this one."""
 
-    idempotency_key: str
-    """
-    Filter records to the one with the specified `idempotency_key` you chose for
-    that object. This value is unique across Increase and is used to ensure that a
-    request is only processed once. Learn more about
-    [idempotency](https://increase.com/documentation/idempotency-keys).
-    """
-
     limit: int
     """Limit the size of the list that is returned.
 
     The default (and maximum) is 100 objects.
     """
-
-    status: Status
-
-
-_CategoryReservedKeywords = TypedDict(
-    "_CategoryReservedKeywords",
-    {
-        "in": List[
-            Literal[
-                "account_statement_ofx",
-                "transaction_csv",
-                "balance_csv",
-                "bookkeeping_account_balance_csv",
-                "entity_csv",
-            ]
-        ],
-    },
-    total=False,
-)
-
-
-class Category(_CategoryReservedKeywords, total=False):
-    pass
 
 
 class CreatedAt(TypedDict, total=False):
@@ -81,16 +51,3 @@ class CreatedAt(TypedDict, total=False):
     Return results on or before this
     [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
     """
-
-
-_StatusReservedKeywords = TypedDict(
-    "_StatusReservedKeywords",
-    {
-        "in": List[Literal["pending", "complete", "failed"]],
-    },
-    total=False,
-)
-
-
-class Status(_StatusReservedKeywords, total=False):
-    pass

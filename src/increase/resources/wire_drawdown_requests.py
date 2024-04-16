@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing_extensions import Literal
+
 import httpx
 
 from .. import _legacy_response
@@ -179,7 +181,9 @@ class WireDrawdownRequests(SyncAPIResource):
         self,
         *,
         cursor: str | NotGiven = NOT_GIVEN,
+        idempotency_key: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
+        status: Literal["pending_submission", "pending_response", "fulfilled", "refused"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -193,8 +197,22 @@ class WireDrawdownRequests(SyncAPIResource):
         Args:
           cursor: Return the page of entries after this one.
 
+          idempotency_key: Filter records to the one with the specified `idempotency_key` you chose for
+              that object. This value is unique across Increase and is used to ensure that a
+              request is only processed once. Learn more about
+              [idempotency](https://increase.com/documentation/idempotency-keys).
+
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
+
+          status: Filter Wire Drawdown Requests for those with the specified status.
+
+              - `pending_submission` - The drawdown request is queued to be submitted to
+                Fedwire.
+              - `pending_response` - The drawdown request has been sent and the recipient
+                should respond in some way.
+              - `fulfilled` - The drawdown request has been fulfilled by the recipient.
+              - `refused` - The drawdown request has been refused by the recipient.
 
           extra_headers: Send extra headers
 
@@ -215,7 +233,9 @@ class WireDrawdownRequests(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "cursor": cursor,
+                        "idempotency_key": idempotency_key,
                         "limit": limit,
+                        "status": status,
                     },
                     wire_drawdown_request_list_params.WireDrawdownRequestListParams,
                 ),
@@ -376,7 +396,9 @@ class AsyncWireDrawdownRequests(AsyncAPIResource):
         self,
         *,
         cursor: str | NotGiven = NOT_GIVEN,
+        idempotency_key: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
+        status: Literal["pending_submission", "pending_response", "fulfilled", "refused"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -390,8 +412,22 @@ class AsyncWireDrawdownRequests(AsyncAPIResource):
         Args:
           cursor: Return the page of entries after this one.
 
+          idempotency_key: Filter records to the one with the specified `idempotency_key` you chose for
+              that object. This value is unique across Increase and is used to ensure that a
+              request is only processed once. Learn more about
+              [idempotency](https://increase.com/documentation/idempotency-keys).
+
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
+
+          status: Filter Wire Drawdown Requests for those with the specified status.
+
+              - `pending_submission` - The drawdown request is queued to be submitted to
+                Fedwire.
+              - `pending_response` - The drawdown request has been sent and the recipient
+                should respond in some way.
+              - `fulfilled` - The drawdown request has been fulfilled by the recipient.
+              - `refused` - The drawdown request has been refused by the recipient.
 
           extra_headers: Send extra headers
 
@@ -412,7 +448,9 @@ class AsyncWireDrawdownRequests(AsyncAPIResource):
                 query=maybe_transform(
                     {
                         "cursor": cursor,
+                        "idempotency_key": idempotency_key,
                         "limit": limit,
+                        "status": status,
                     },
                     wire_drawdown_request_list_params.WireDrawdownRequestListParams,
                 ),
