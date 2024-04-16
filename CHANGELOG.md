@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.53.0 (2024-04-16)
+
+Full Changelog: [v0.52.1...v0.53.0](https://github.com/Increase/increase-python/compare/v0.52.1...v0.53.0)
+
+### Features
+
+* **api:** add /inbound_check_deposits endpoints ([#416](https://github.com/Increase/increase-python/issues/416)) ([cd76944](https://github.com/Increase/increase-python/commit/cd769447ea8b6bd278f390a2ab74951f2164aeff))
+
+
+### Chores
+
+* **internal:** formatting ([#414](https://github.com/Increase/increase-python/issues/414)) ([542ed1e](https://github.com/Increase/increase-python/commit/542ed1e2ea39d5164f43694f3bf6209e3a269c88))
+
 ## 0.52.1 (2024-04-11)
 
 Full Changelog: [v0.52.0...v0.52.1](https://github.com/Increase/increase-python/compare/v0.52.0...v0.52.1)
