@@ -140,8 +140,17 @@ class TestExports:
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
         export = client.exports.list(
+            category={"in": ["account_statement_ofx", "transaction_csv", "balance_csv"]},
+            created_at={
+                "after": parse_datetime("2019-12-27T18:11:19.117Z"),
+                "before": parse_datetime("2019-12-27T18:11:19.117Z"),
+                "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
+                "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
+            },
             cursor="string",
+            idempotency_key="x",
             limit=1,
+            status={"in": ["pending", "complete", "failed"]},
         )
         assert_matches_type(SyncPage[Export], export, path=["response"])
 
@@ -290,8 +299,17 @@ class TestAsyncExports:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
         export = await async_client.exports.list(
+            category={"in": ["account_statement_ofx", "transaction_csv", "balance_csv"]},
+            created_at={
+                "after": parse_datetime("2019-12-27T18:11:19.117Z"),
+                "before": parse_datetime("2019-12-27T18:11:19.117Z"),
+                "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
+                "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
+            },
             cursor="string",
+            idempotency_key="x",
             limit=1,
+            status={"in": ["pending", "complete", "failed"]},
         )
         assert_matches_type(AsyncPage[Export], export, path=["response"])
 

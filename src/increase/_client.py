@@ -104,6 +104,7 @@ class Increase(SyncAPIClient):
     inbound_wire_transfers: resources.InboundWireTransfers
     digital_card_profiles: resources.DigitalCardProfiles
     physical_card_profiles: resources.PhysicalCardProfiles
+    inbound_check_deposits: resources.InboundCheckDeposits
     with_raw_response: IncreaseWithRawResponse
     with_streaming_response: IncreaseWithStreamedResponse
 
@@ -251,6 +252,7 @@ class Increase(SyncAPIClient):
         self.inbound_wire_transfers = resources.InboundWireTransfers(self)
         self.digital_card_profiles = resources.DigitalCardProfiles(self)
         self.physical_card_profiles = resources.PhysicalCardProfiles(self)
+        self.inbound_check_deposits = resources.InboundCheckDeposits(self)
         self.with_raw_response = IncreaseWithRawResponse(self)
         self.with_streaming_response = IncreaseWithStreamedResponse(self)
 
@@ -475,6 +477,7 @@ class AsyncIncrease(AsyncAPIClient):
     inbound_wire_transfers: resources.AsyncInboundWireTransfers
     digital_card_profiles: resources.AsyncDigitalCardProfiles
     physical_card_profiles: resources.AsyncPhysicalCardProfiles
+    inbound_check_deposits: resources.AsyncInboundCheckDeposits
     with_raw_response: AsyncIncreaseWithRawResponse
     with_streaming_response: AsyncIncreaseWithStreamedResponse
 
@@ -622,6 +625,7 @@ class AsyncIncrease(AsyncAPIClient):
         self.inbound_wire_transfers = resources.AsyncInboundWireTransfers(self)
         self.digital_card_profiles = resources.AsyncDigitalCardProfiles(self)
         self.physical_card_profiles = resources.AsyncPhysicalCardProfiles(self)
+        self.inbound_check_deposits = resources.AsyncInboundCheckDeposits(self)
         self.with_raw_response = AsyncIncreaseWithRawResponse(self)
         self.with_streaming_response = AsyncIncreaseWithStreamedResponse(self)
 
@@ -860,6 +864,7 @@ class IncreaseWithRawResponse:
         self.inbound_wire_transfers = resources.InboundWireTransfersWithRawResponse(client.inbound_wire_transfers)
         self.digital_card_profiles = resources.DigitalCardProfilesWithRawResponse(client.digital_card_profiles)
         self.physical_card_profiles = resources.PhysicalCardProfilesWithRawResponse(client.physical_card_profiles)
+        self.inbound_check_deposits = resources.InboundCheckDepositsWithRawResponse(client.inbound_check_deposits)
 
 
 class AsyncIncreaseWithRawResponse:
@@ -924,6 +929,7 @@ class AsyncIncreaseWithRawResponse:
         self.inbound_wire_transfers = resources.AsyncInboundWireTransfersWithRawResponse(client.inbound_wire_transfers)
         self.digital_card_profiles = resources.AsyncDigitalCardProfilesWithRawResponse(client.digital_card_profiles)
         self.physical_card_profiles = resources.AsyncPhysicalCardProfilesWithRawResponse(client.physical_card_profiles)
+        self.inbound_check_deposits = resources.AsyncInboundCheckDepositsWithRawResponse(client.inbound_check_deposits)
 
 
 class IncreaseWithStreamedResponse:
@@ -990,6 +996,7 @@ class IncreaseWithStreamedResponse:
         self.inbound_wire_transfers = resources.InboundWireTransfersWithStreamingResponse(client.inbound_wire_transfers)
         self.digital_card_profiles = resources.DigitalCardProfilesWithStreamingResponse(client.digital_card_profiles)
         self.physical_card_profiles = resources.PhysicalCardProfilesWithStreamingResponse(client.physical_card_profiles)
+        self.inbound_check_deposits = resources.InboundCheckDepositsWithStreamingResponse(client.inbound_check_deposits)
 
 
 class AsyncIncreaseWithStreamedResponse:
@@ -1071,6 +1078,9 @@ class AsyncIncreaseWithStreamedResponse:
         )
         self.physical_card_profiles = resources.AsyncPhysicalCardProfilesWithStreamingResponse(
             client.physical_card_profiles
+        )
+        self.inbound_check_deposits = resources.AsyncInboundCheckDepositsWithStreamingResponse(
+            client.inbound_check_deposits
         )
 
 
