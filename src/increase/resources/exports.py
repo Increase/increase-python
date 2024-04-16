@@ -153,8 +153,12 @@ class Exports(SyncAPIResource):
     def list(
         self,
         *,
+        category: export_list_params.Category | NotGiven = NOT_GIVEN,
+        created_at: export_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
+        idempotency_key: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
+        status: export_list_params.Status | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -167,6 +171,11 @@ class Exports(SyncAPIResource):
 
         Args:
           cursor: Return the page of entries after this one.
+
+          idempotency_key: Filter records to the one with the specified `idempotency_key` you chose for
+              that object. This value is unique across Increase and is used to ensure that a
+              request is only processed once. Learn more about
+              [idempotency](https://increase.com/documentation/idempotency-keys).
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
@@ -189,8 +198,12 @@ class Exports(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "category": category,
+                        "created_at": created_at,
                         "cursor": cursor,
+                        "idempotency_key": idempotency_key,
                         "limit": limit,
+                        "status": status,
                     },
                     export_list_params.ExportListParams,
                 ),
@@ -327,8 +340,12 @@ class AsyncExports(AsyncAPIResource):
     def list(
         self,
         *,
+        category: export_list_params.Category | NotGiven = NOT_GIVEN,
+        created_at: export_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
+        idempotency_key: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
+        status: export_list_params.Status | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -341,6 +358,11 @@ class AsyncExports(AsyncAPIResource):
 
         Args:
           cursor: Return the page of entries after this one.
+
+          idempotency_key: Filter records to the one with the specified `idempotency_key` you chose for
+              that object. This value is unique across Increase and is used to ensure that a
+              request is only processed once. Learn more about
+              [idempotency](https://increase.com/documentation/idempotency-keys).
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
@@ -363,8 +385,12 @@ class AsyncExports(AsyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "category": category,
+                        "created_at": created_at,
                         "cursor": cursor,
+                        "idempotency_key": idempotency_key,
                         "limit": limit,
+                        "status": status,
                     },
                     export_list_params.ExportListParams,
                 ),

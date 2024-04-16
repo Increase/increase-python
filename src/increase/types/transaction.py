@@ -1601,6 +1601,12 @@ class SourceCheckTransferDeposit(BaseModel):
     deposited check.
     """
 
+    inbound_check_deposit_id: Optional[str] = None
+    """
+    The identifier of the Inbound Check Deposit object associated with this
+    transaction.
+    """
+
     transaction_id: Optional[str] = None
     """The identifier of the Transaction object created when the check was deposited."""
 
@@ -1731,7 +1737,7 @@ class SourceInboundACHTransfer(BaseModel):
     """
 
     transfer_id: str
-    """The inbound ach transfer's identifier."""
+    """The Inbound ACH Transfer's identifier."""
 
 
 class SourceInboundInternationalACHTransfer(BaseModel):

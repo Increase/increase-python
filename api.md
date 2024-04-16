@@ -569,7 +569,6 @@ Methods:
 
 Methods:
 
-- <code title="post /simulations/check_transfers/{check_transfer_id}/deposit">client.simulations.check_transfers.<a href="./src/increase/resources/simulations/check_transfers.py">deposit</a>(check_transfer_id) -> <a href="./src/increase/types/check_transfer.py">CheckTransfer</a></code>
 - <code title="post /simulations/check_transfers/{check_transfer_id}/mail">client.simulations.check_transfers.<a href="./src/increase/resources/simulations/check_transfers.py">mail</a>(check_transfer_id) -> <a href="./src/increase/types/check_transfer.py">CheckTransfer</a></code>
 
 ## Documents
@@ -665,6 +664,12 @@ Methods:
 Methods:
 
 - <code title="post /simulations/physical_cards/{physical_card_id}/shipment_advance">client.simulations.physical_cards.<a href="./src/increase/resources/simulations/physical_cards.py">shipment_advance</a>(physical_card_id, \*\*<a href="src/increase/types/simulations/physical_card_shipment_advance_params.py">params</a>) -> <a href="./src/increase/types/physical_card.py">PhysicalCard</a></code>
+
+## InboundCheckDeposits
+
+Methods:
+
+- <code title="post /simulations/inbound_check_deposits">client.simulations.inbound_check_deposits.<a href="./src/increase/resources/simulations/inbound_check_deposits.py">create</a>(\*\*<a href="src/increase/types/simulations/inbound_check_deposit_create_params.py">params</a>) -> <a href="./src/increase/types/inbound_check_deposit.py">InboundCheckDeposit</a></code>
 
 # PhysicalCards
 
@@ -835,3 +840,16 @@ Methods:
 - <code title="get /physical_card_profiles">client.physical_card_profiles.<a href="./src/increase/resources/physical_card_profiles.py">list</a>(\*\*<a href="src/increase/types/physical_card_profile_list_params.py">params</a>) -> <a href="./src/increase/types/physical_card_profile.py">SyncPage[PhysicalCardProfile]</a></code>
 - <code title="post /physical_card_profiles/{physical_card_profile_id}/archive">client.physical_card_profiles.<a href="./src/increase/resources/physical_card_profiles.py">archive</a>(physical_card_profile_id) -> <a href="./src/increase/types/physical_card_profile.py">PhysicalCardProfile</a></code>
 - <code title="post /physical_card_profiles/{physical_card_profile_id}/clone">client.physical_card_profiles.<a href="./src/increase/resources/physical_card_profiles.py">clone</a>(physical_card_profile_id, \*\*<a href="src/increase/types/physical_card_profile_clone_params.py">params</a>) -> <a href="./src/increase/types/physical_card_profile.py">PhysicalCardProfile</a></code>
+
+# InboundCheckDeposits
+
+Types:
+
+```python
+from increase.types import InboundCheckDeposit
+```
+
+Methods:
+
+- <code title="get /inbound_check_deposits/{inbound_check_deposit_id}">client.inbound_check_deposits.<a href="./src/increase/resources/inbound_check_deposits.py">retrieve</a>(inbound_check_deposit_id) -> <a href="./src/increase/types/inbound_check_deposit.py">InboundCheckDeposit</a></code>
+- <code title="get /inbound_check_deposits">client.inbound_check_deposits.<a href="./src/increase/resources/inbound_check_deposits.py">list</a>(\*\*<a href="src/increase/types/inbound_check_deposit_list_params.py">params</a>) -> <a href="./src/increase/types/inbound_check_deposit.py">SyncPage[InboundCheckDeposit]</a></code>
