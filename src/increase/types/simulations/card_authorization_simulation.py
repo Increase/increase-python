@@ -495,6 +495,7 @@ class DeclinedTransactionSourceCheckDecline(BaseModel):
     reason: Literal[
         "ach_route_disabled",
         "ach_route_canceled",
+        "altered_or_fictitious",
         "breaches_limit",
         "entity_not_active",
         "group_locked",
@@ -512,6 +513,7 @@ class DeclinedTransactionSourceCheckDecline(BaseModel):
 
     - `ach_route_disabled` - The account number is disabled.
     - `ach_route_canceled` - The account number is canceled.
+    - `altered_or_fictitious` - The deposited check was altered or fictitious.
     - `breaches_limit` - The transaction would cause a limit to be exceeded.
     - `entity_not_active` - The account's entity is not active.
     - `group_locked` - Your account is inactive.
