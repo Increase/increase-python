@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.55.0 (2024-04-17)
+
+Full Changelog: [v0.54.0...v0.55.0](https://github.com/Increase/increase-python/compare/v0.54.0...v0.55.0)
+
+### Features
+
+* **api:** add altered_or_fictitious check decline reason ([#419](https://github.com/Increase/increase-python/issues/419)) ([9e2c713](https://github.com/Increase/increase-python/commit/9e2c7134a38b16880ca3e399b4c75334be3d9b46))
+
 ## 0.54.0 (2024-04-16)
 
 Full Changelog: [v0.53.0...v0.54.0](https://github.com/Increase/increase-python/compare/v0.53.0...v0.54.0)
