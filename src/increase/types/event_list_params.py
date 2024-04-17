@@ -81,6 +81,8 @@ _CategoryReservedKeywords = TypedDict(
                 "inbound_ach_transfer.updated",
                 "inbound_ach_transfer_return.created",
                 "inbound_ach_transfer_return.updated",
+                "inbound_check_deposit.created",
+                "inbound_check_deposit.updated",
                 "inbound_mail_item.created",
                 "inbound_mail_item.updated",
                 "inbound_wire_drawdown_request.created",
