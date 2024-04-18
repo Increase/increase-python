@@ -860,3 +860,4 @@ Methods:
 
 - <code title="get /inbound_check_deposits/{inbound_check_deposit_id}">client.inbound_check_deposits.<a href="./src/increase/resources/inbound_check_deposits.py">retrieve</a>(inbound_check_deposit_id) -> <a href="./src/increase/types/inbound_check_deposit.py">InboundCheckDeposit</a></code>
 - <code title="get /inbound_check_deposits">client.inbound_check_deposits.<a href="./src/increase/resources/inbound_check_deposits.py">list</a>(\*\*<a href="src/increase/types/inbound_check_deposit_list_params.py">params</a>) -> <a href="./src/increase/types/inbound_check_deposit.py">SyncPage[InboundCheckDeposit]</a></code>
+- <code title="post /inbound_check_deposits/{inbound_check_deposit_id}/decline">client.inbound_check_deposits.<a href="./src/increase/resources/inbound_check_deposits.py">decline</a>(inbound_check_deposit_id) -> <a href="./src/increase/types/inbound_check_deposit.py">InboundCheckDeposit</a></code>
