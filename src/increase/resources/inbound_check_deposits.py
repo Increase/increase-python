@@ -120,6 +120,50 @@ class InboundCheckDeposits(SyncAPIResource):
             model=InboundCheckDeposit,
         )
 
+    def decline(
+        self,
+        inbound_check_deposit_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> InboundCheckDeposit:
+        """
+        Decline an Inbound Check Deposit
+
+        Args:
+          inbound_check_deposit_id: The identifier of the Inbound Check Deposit to decline.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not inbound_check_deposit_id:
+            raise ValueError(
+                f"Expected a non-empty value for `inbound_check_deposit_id` but received {inbound_check_deposit_id!r}"
+            )
+        return self._post(
+            f"/inbound_check_deposits/{inbound_check_deposit_id}/decline",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=InboundCheckDeposit,
+        )
+
 
 class AsyncInboundCheckDeposits(AsyncAPIResource):
     @cached_property
@@ -221,6 +265,50 @@ class AsyncInboundCheckDeposits(AsyncAPIResource):
             model=InboundCheckDeposit,
         )
 
+    async def decline(
+        self,
+        inbound_check_deposit_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> InboundCheckDeposit:
+        """
+        Decline an Inbound Check Deposit
+
+        Args:
+          inbound_check_deposit_id: The identifier of the Inbound Check Deposit to decline.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not inbound_check_deposit_id:
+            raise ValueError(
+                f"Expected a non-empty value for `inbound_check_deposit_id` but received {inbound_check_deposit_id!r}"
+            )
+        return await self._post(
+            f"/inbound_check_deposits/{inbound_check_deposit_id}/decline",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=InboundCheckDeposit,
+        )
+
 
 class InboundCheckDepositsWithRawResponse:
     def __init__(self, inbound_check_deposits: InboundCheckDeposits) -> None:
@@ -231,6 +319,9 @@ class InboundCheckDepositsWithRawResponse:
         )
         self.list = _legacy_response.to_raw_response_wrapper(
             inbound_check_deposits.list,
+        )
+        self.decline = _legacy_response.to_raw_response_wrapper(
+            inbound_check_deposits.decline,
         )
 
 
@@ -244,6 +335,9 @@ class AsyncInboundCheckDepositsWithRawResponse:
         self.list = _legacy_response.async_to_raw_response_wrapper(
             inbound_check_deposits.list,
         )
+        self.decline = _legacy_response.async_to_raw_response_wrapper(
+            inbound_check_deposits.decline,
+        )
 
 
 class InboundCheckDepositsWithStreamingResponse:
@@ -256,6 +350,9 @@ class InboundCheckDepositsWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             inbound_check_deposits.list,
         )
+        self.decline = to_streamed_response_wrapper(
+            inbound_check_deposits.decline,
+        )
 
 
 class AsyncInboundCheckDepositsWithStreamingResponse:
@@ -267,4 +364,7 @@ class AsyncInboundCheckDepositsWithStreamingResponse:
         )
         self.list = async_to_streamed_response_wrapper(
             inbound_check_deposits.list,
+        )
+        self.decline = async_to_streamed_response_wrapper(
+            inbound_check_deposits.decline,
         )
