@@ -92,7 +92,7 @@ class Decline(BaseModel):
       transfer to be returned.
     - `transaction_not_allowed` - The transaction is not allowed per Increase's
       terms.
-    - `user_initiated` - The user initiated the decline.
+    - `user_initiated` - Your integration declined this transfer via the API.
     """
 
 
