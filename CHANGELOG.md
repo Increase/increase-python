@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.56.0 (2024-04-18)
+
+Full Changelog: [v0.55.0...v0.56.0](https://github.com/Increase/increase-python/compare/v0.55.0...v0.56.0)
+
+### Features
+
+* **api:** add inbound_check_deposits decline endpoint ([#424](https://github.com/Increase/increase-python/issues/424)) ([2ef9da1](https://github.com/Increase/increase-python/commit/2ef9da1d224c3c957f44419b8112527e2491c3f4))
+
+
+### Chores
+
+* **internal:** add lru_cache helper function ([#421](https://github.com/Increase/increase-python/issues/421)) ([72bc6e0](https://github.com/Increase/increase-python/commit/72bc6e0c25276258d46307e3d48755ae3f442e5b))
+* **internal:** ban usage of lru_cache ([#423](https://github.com/Increase/increase-python/issues/423)) ([22216bb](https://github.com/Increase/increase-python/commit/22216bb96a1090a7c9c0bcfab3b167f52948b78c))
+
 ## 0.55.0 (2024-04-17)
 
 Full Changelog: [v0.54.0...v0.55.0](https://github.com/Increase/increase-python/compare/v0.54.0...v0.55.0)
