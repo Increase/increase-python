@@ -21,6 +21,9 @@ class ACHPrenotificationCreateParams(TypedDict, total=False):
     destination account.
     """
 
+    account_id: str
+    """The Increase identifier for the account that will send the transfer."""
+
     addendum: str
     """Additional information that will be sent to the recipient."""
 

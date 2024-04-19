@@ -68,6 +68,7 @@ class TestInboundCheckDeposits:
     def test_method_list_with_all_params(self, client: Increase) -> None:
         inbound_check_deposit = client.inbound_check_deposits.list(
             account_id="string",
+            check_transfer_id="string",
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -192,6 +193,7 @@ class TestAsyncInboundCheckDeposits:
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
         inbound_check_deposit = await async_client.inbound_check_deposits.list(
             account_id="string",
+            check_transfer_id="string",
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),

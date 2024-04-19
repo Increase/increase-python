@@ -70,6 +70,7 @@ class InboundCheckDeposits(SyncAPIResource):
         self,
         *,
         account_id: str | NotGiven = NOT_GIVEN,
+        check_transfer_id: str | NotGiven = NOT_GIVEN,
         created_at: inbound_check_deposit_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
@@ -85,6 +86,9 @@ class InboundCheckDeposits(SyncAPIResource):
 
         Args:
           account_id: Filter Inbound Check Deposits to those belonging to the specified Account.
+
+          check_transfer_id: Filter Inbound Check Deposits to those belonging to the specified Check
+              Transfer.
 
           cursor: Return the page of entries after this one.
 
@@ -110,6 +114,7 @@ class InboundCheckDeposits(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "account_id": account_id,
+                        "check_transfer_id": check_transfer_id,
                         "created_at": created_at,
                         "cursor": cursor,
                         "limit": limit,
@@ -215,6 +220,7 @@ class AsyncInboundCheckDeposits(AsyncAPIResource):
         self,
         *,
         account_id: str | NotGiven = NOT_GIVEN,
+        check_transfer_id: str | NotGiven = NOT_GIVEN,
         created_at: inbound_check_deposit_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
@@ -230,6 +236,9 @@ class AsyncInboundCheckDeposits(AsyncAPIResource):
 
         Args:
           account_id: Filter Inbound Check Deposits to those belonging to the specified Account.
+
+          check_transfer_id: Filter Inbound Check Deposits to those belonging to the specified Check
+              Transfer.
 
           cursor: Return the page of entries after this one.
 
@@ -255,6 +264,7 @@ class AsyncInboundCheckDeposits(AsyncAPIResource):
                 query=maybe_transform(
                     {
                         "account_id": account_id,
+                        "check_transfer_id": check_transfer_id,
                         "created_at": created_at,
                         "cursor": cursor,
                         "limit": limit,

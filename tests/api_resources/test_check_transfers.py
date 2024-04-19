@@ -59,6 +59,7 @@ class TestCheckTransfers:
                 },
             },
             require_approval=True,
+            third_party={"check_number": "x"},
         )
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
@@ -338,6 +339,7 @@ class TestAsyncCheckTransfers:
                 },
             },
             require_approval=True,
+            third_party={"check_number": "x"},
         )
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
