@@ -86,7 +86,6 @@ class Entities(SyncAPIResource):
         description: str | NotGiven = NOT_GIVEN,
         joint: entity_create_params.Joint | NotGiven = NOT_GIVEN,
         natural_person: entity_create_params.NaturalPerson | NotGiven = NOT_GIVEN,
-        relationship: Literal["affiliated", "informational", "unaffiliated"] | NotGiven = NOT_GIVEN,
         supplemental_documents: Iterable[entity_create_params.SupplementalDocument] | NotGiven = NOT_GIVEN,
         trust: entity_create_params.Trust | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -121,13 +120,6 @@ class Entities(SyncAPIResource):
               `social_security_number` or `individual_taxpayer_identification_number`
               identification methods.
 
-          relationship: The relationship between your group and the entity.
-
-              - `affiliated` - The entity is controlled by your group.
-              - `informational` - The entity is for informational purposes only.
-              - `unaffiliated` - The entity is not controlled by your group, but can still
-                directly open accounts.
-
           supplemental_documents: Additional documentation associated with the entity.
 
           trust: Details of the trust entity to create. Required if `structure` is equal to
@@ -152,7 +144,6 @@ class Entities(SyncAPIResource):
                     "description": description,
                     "joint": joint,
                     "natural_person": natural_person,
-                    "relationship": relationship,
                     "supplemental_documents": supplemental_documents,
                     "trust": trust,
                 },
@@ -432,7 +423,6 @@ class AsyncEntities(AsyncAPIResource):
         description: str | NotGiven = NOT_GIVEN,
         joint: entity_create_params.Joint | NotGiven = NOT_GIVEN,
         natural_person: entity_create_params.NaturalPerson | NotGiven = NOT_GIVEN,
-        relationship: Literal["affiliated", "informational", "unaffiliated"] | NotGiven = NOT_GIVEN,
         supplemental_documents: Iterable[entity_create_params.SupplementalDocument] | NotGiven = NOT_GIVEN,
         trust: entity_create_params.Trust | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -467,13 +457,6 @@ class AsyncEntities(AsyncAPIResource):
               `social_security_number` or `individual_taxpayer_identification_number`
               identification methods.
 
-          relationship: The relationship between your group and the entity.
-
-              - `affiliated` - The entity is controlled by your group.
-              - `informational` - The entity is for informational purposes only.
-              - `unaffiliated` - The entity is not controlled by your group, but can still
-                directly open accounts.
-
           supplemental_documents: Additional documentation associated with the entity.
 
           trust: Details of the trust entity to create. Required if `structure` is equal to
@@ -498,7 +481,6 @@ class AsyncEntities(AsyncAPIResource):
                     "description": description,
                     "joint": joint,
                     "natural_person": natural_person,
-                    "relationship": relationship,
                     "supplemental_documents": supplemental_documents,
                     "trust": trust,
                 },

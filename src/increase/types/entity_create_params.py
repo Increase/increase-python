@@ -84,15 +84,6 @@ class EntityCreateParams(TypedDict, total=False):
     `individual_taxpayer_identification_number` identification methods.
     """
 
-    relationship: Literal["affiliated", "informational", "unaffiliated"]
-    """The relationship between your group and the entity.
-
-    - `affiliated` - The entity is controlled by your group.
-    - `informational` - The entity is for informational purposes only.
-    - `unaffiliated` - The entity is not controlled by your group, but can still
-      directly open accounts.
-    """
-
     supplemental_documents: Iterable[SupplementalDocument]
     """Additional documentation associated with the entity."""
 

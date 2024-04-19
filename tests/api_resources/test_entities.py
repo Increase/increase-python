@@ -228,7 +228,6 @@ class TestEntities:
                     },
                 },
             },
-            relationship="affiliated",
             supplemental_documents=[{"file_id": "file_makxrc67oh9l6sg7w9yc"}],
             trust={
                 "name": "x",
@@ -868,7 +867,6 @@ class TestAsyncEntities:
                     },
                 },
             },
-            relationship="affiliated",
             supplemental_documents=[{"file_id": "file_makxrc67oh9l6sg7w9yc"}],
             trust={
                 "name": "x",

@@ -32,6 +32,7 @@ class TestACHPrenotifications:
         ach_prenotification = client.ach_prenotifications.create(
             account_number="987654321",
             routing_number="101050001",
+            account_id="string",
             addendum="x",
             company_descriptive_date="x",
             company_discretionary_data="x",
@@ -168,6 +169,7 @@ class TestAsyncACHPrenotifications:
         ach_prenotification = await async_client.ach_prenotifications.create(
             account_number="987654321",
             routing_number="101050001",
+            account_id="string",
             addendum="x",
             company_descriptive_date="x",
             company_discretionary_data="x",
