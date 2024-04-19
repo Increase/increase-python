@@ -15,6 +15,12 @@ class InboundCheckDepositListParams(TypedDict, total=False):
     account_id: str
     """Filter Inbound Check Deposits to those belonging to the specified Account."""
 
+    check_transfer_id: str
+    """
+    Filter Inbound Check Deposits to those belonging to the specified Check
+    Transfer.
+    """
+
     created_at: CreatedAt
 
     cursor: str

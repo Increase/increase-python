@@ -16,6 +16,7 @@ __all__ = [
     "PhysicalCheckReturnAddress",
     "StopPaymentRequest",
     "Submission",
+    "ThirdParty",
 ]
 
 
@@ -145,6 +146,11 @@ class StopPaymentRequest(BaseModel):
 class Submission(BaseModel):
     submitted_at: datetime
     """When this check transfer was submitted to our check printer."""
+
+
+class ThirdParty(BaseModel):
+    check_number: Optional[str] = None
+    """The check number that will be printed on the check."""
 
 
 class CheckTransfer(BaseModel):
@@ -282,6 +288,12 @@ class CheckTransfer(BaseModel):
 
     submission: Optional[Submission] = None
     """After the transfer is submitted, this will contain supplemental details."""
+
+    third_party: Optional[ThirdParty] = None
+    """Details relating to the custom fulfillment you will perform.
+
+    Will be present if and only if `fulfillment_method` is equal to `third_party`.
+    """
 
     type: Literal["check_transfer"]
     """A constant representing the object's type.

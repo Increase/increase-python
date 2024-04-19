@@ -4,7 +4,13 @@ from __future__ import annotations
 
 from typing_extensions import Literal, Required, TypedDict
 
-__all__ = ["CheckTransferCreateParams", "PhysicalCheck", "PhysicalCheckMailingAddress", "PhysicalCheckReturnAddress"]
+__all__ = [
+    "CheckTransferCreateParams",
+    "PhysicalCheck",
+    "PhysicalCheckMailingAddress",
+    "PhysicalCheckReturnAddress",
+    "ThirdParty",
+]
 
 
 class CheckTransferCreateParams(TypedDict, total=False):
@@ -38,6 +44,13 @@ class CheckTransferCreateParams(TypedDict, total=False):
 
     require_approval: bool
     """Whether the transfer requires explicit approval via the dashboard or API."""
+
+    third_party: ThirdParty
+    """Details relating to the custom fulfillment you will perform.
+
+    This is required if `fulfillment_method` is equal to `third_party`. It must not
+    be included if any other `fulfillment_method` is provided.
+    """
 
 
 class PhysicalCheckMailingAddress(TypedDict, total=False):
@@ -101,4 +114,14 @@ class PhysicalCheck(TypedDict, total=False):
 
     If omitted this will default to the address of the Entity of the Account used to
     make the Check Transfer.
+    """
+
+
+class ThirdParty(TypedDict, total=False):
+    check_number: str
+    """The check number you will print on the check.
+
+    This should not contain leading zeroes. If this is omitted, Increase will
+    generate a check number for you; you should inspect the response and use that
+    check number.
     """

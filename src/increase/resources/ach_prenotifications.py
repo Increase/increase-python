@@ -45,6 +45,7 @@ class ACHPrenotifications(SyncAPIResource):
         *,
         account_number: str,
         routing_number: str,
+        account_id: str | NotGiven = NOT_GIVEN,
         addendum: str | NotGiven = NOT_GIVEN,
         company_descriptive_date: str | NotGiven = NOT_GIVEN,
         company_discretionary_data: str | NotGiven = NOT_GIVEN,
@@ -77,6 +78,8 @@ class ACHPrenotifications(SyncAPIResource):
 
           routing_number: The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
               destination account.
+
+          account_id: The Increase identifier for the account that will send the transfer.
 
           addendum: Additional information that will be sent to the recipient.
 
@@ -124,6 +127,7 @@ class ACHPrenotifications(SyncAPIResource):
                 {
                     "account_number": account_number,
                     "routing_number": routing_number,
+                    "account_id": account_id,
                     "addendum": addendum,
                     "company_descriptive_date": company_descriptive_date,
                     "company_discretionary_data": company_discretionary_data,
@@ -256,6 +260,7 @@ class AsyncACHPrenotifications(AsyncAPIResource):
         *,
         account_number: str,
         routing_number: str,
+        account_id: str | NotGiven = NOT_GIVEN,
         addendum: str | NotGiven = NOT_GIVEN,
         company_descriptive_date: str | NotGiven = NOT_GIVEN,
         company_discretionary_data: str | NotGiven = NOT_GIVEN,
@@ -288,6 +293,8 @@ class AsyncACHPrenotifications(AsyncAPIResource):
 
           routing_number: The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
               destination account.
+
+          account_id: The Increase identifier for the account that will send the transfer.
 
           addendum: Additional information that will be sent to the recipient.
 
@@ -335,6 +342,7 @@ class AsyncACHPrenotifications(AsyncAPIResource):
                 {
                     "account_number": account_number,
                     "routing_number": routing_number,
+                    "account_id": account_id,
                     "addendum": addendum,
                     "company_descriptive_date": company_descriptive_date,
                     "company_discretionary_data": company_discretionary_data,
