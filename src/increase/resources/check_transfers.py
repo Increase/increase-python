@@ -48,6 +48,7 @@ class CheckTransfers(SyncAPIResource):
         fulfillment_method: Literal["physical_check", "third_party"] | NotGiven = NOT_GIVEN,
         physical_check: check_transfer_create_params.PhysicalCheck | NotGiven = NOT_GIVEN,
         require_approval: bool | NotGiven = NOT_GIVEN,
+        third_party: check_transfer_create_params.ThirdParty | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -80,6 +81,10 @@ class CheckTransfers(SyncAPIResource):
 
           require_approval: Whether the transfer requires explicit approval via the dashboard or API.
 
+          third_party: Details relating to the custom fulfillment you will perform. This is required if
+              `fulfillment_method` is equal to `third_party`. It must not be included if any
+              other `fulfillment_method` is provided.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -100,6 +105,7 @@ class CheckTransfers(SyncAPIResource):
                     "fulfillment_method": fulfillment_method,
                     "physical_check": physical_check,
                     "require_approval": require_approval,
+                    "third_party": third_party,
                 },
                 check_transfer_create_params.CheckTransferCreateParams,
             ),
@@ -362,6 +368,7 @@ class AsyncCheckTransfers(AsyncAPIResource):
         fulfillment_method: Literal["physical_check", "third_party"] | NotGiven = NOT_GIVEN,
         physical_check: check_transfer_create_params.PhysicalCheck | NotGiven = NOT_GIVEN,
         require_approval: bool | NotGiven = NOT_GIVEN,
+        third_party: check_transfer_create_params.ThirdParty | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -394,6 +401,10 @@ class AsyncCheckTransfers(AsyncAPIResource):
 
           require_approval: Whether the transfer requires explicit approval via the dashboard or API.
 
+          third_party: Details relating to the custom fulfillment you will perform. This is required if
+              `fulfillment_method` is equal to `third_party`. It must not be included if any
+              other `fulfillment_method` is provided.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -414,6 +425,7 @@ class AsyncCheckTransfers(AsyncAPIResource):
                     "fulfillment_method": fulfillment_method,
                     "physical_check": physical_check,
                     "require_approval": require_approval,
+                    "third_party": third_party,
                 },
                 check_transfer_create_params.CheckTransferCreateParams,
             ),

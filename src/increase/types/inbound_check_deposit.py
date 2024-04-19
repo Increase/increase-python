@@ -13,6 +13,13 @@ class InboundCheckDeposit(BaseModel):
     id: str
     """The deposit's identifier."""
 
+    accepted_at: Optional[datetime] = None
+    """
+    If the Inbound Check Deposit was accepted, the
+    [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which this
+    took place.
+    """
+
     account_id: str
     """The Account the check is being deposited against."""
 
@@ -61,6 +68,13 @@ class InboundCheckDeposit(BaseModel):
     - `USD` - US Dollar (USD)
     """
 
+    declined_at: Optional[datetime] = None
+    """
+    If the Inbound Check Deposit was declined, the
+    [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which this
+    took place.
+    """
+
     declined_transaction_id: Optional[str] = None
     """
     If the deposit attempt has been rejected, the identifier of the Declined
@@ -70,12 +84,12 @@ class InboundCheckDeposit(BaseModel):
     front_image_file_id: Optional[str] = None
     """The ID for the File containing the image of the front of the check."""
 
-    status: Literal["pending", "accepted", "rejected"]
+    status: Literal["pending", "accepted", "declined"]
     """The status of the Inbound Check Deposit.
 
     - `pending` - The Inbound Check Deposit is pending.
     - `accepted` - The Inbound Check Deposit was accepted.
-    - `rejected` - The Inbound Check Deposit was rejected.
+    - `declined` - The Inbound Check Deposit was rejected.
     """
 
     transaction_id: Optional[str] = None
