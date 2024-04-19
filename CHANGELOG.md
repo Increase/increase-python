@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.57.0 (2024-04-19)
+
+Full Changelog: [v0.56.0...v0.57.0](https://github.com/Increase/increase-python/compare/v0.56.0...v0.57.0)
+
+### Features
+
+* **api:** add account_id param to ach_prenotification and third_party to check_transfer ([#427](https://github.com/Increase/increase-python/issues/427)) ([754d8ca](https://github.com/Increase/increase-python/commit/754d8ca9c336677d208ab3a0f456d0b319e84108))
+
+
+### Chores
+
+* **internal:** bump pyright to 1.1.359 ([#425](https://github.com/Increase/increase-python/issues/425)) ([152578d](https://github.com/Increase/increase-python/commit/152578dcfa004f43ae301fbd3adba68a4ca655df))
+
 ## 0.56.0 (2024-04-18)
 
 Full Changelog: [v0.55.0...v0.56.0](https://github.com/Increase/increase-python/compare/v0.55.0...v0.56.0)
