@@ -9,7 +9,7 @@ from typing_extensions import Literal
 import httpx
 
 from .. import _legacy_response
-from ..types import ACHTransfer, ach_transfer_list_params, ach_transfer_create_params
+from ..types import ach_transfer_list_params, ach_transfer_create_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import (
     maybe_transform,
@@ -23,6 +23,7 @@ from .._base_client import (
     AsyncPaginator,
     make_request_options,
 )
+from ..types.ach_transfer import ACHTransfer
 
 __all__ = ["ACHTransfers", "AsyncACHTransfers"]
 

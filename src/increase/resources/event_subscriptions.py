@@ -8,7 +8,6 @@ import httpx
 
 from .. import _legacy_response
 from ..types import (
-    EventSubscription,
     event_subscription_list_params,
     event_subscription_create_params,
     event_subscription_update_params,
@@ -26,6 +25,7 @@ from .._base_client import (
     AsyncPaginator,
     make_request_options,
 )
+from ..types.event_subscription import EventSubscription
 
 __all__ = ["EventSubscriptions", "AsyncEventSubscriptions"]
 

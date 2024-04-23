@@ -5,7 +5,7 @@ from __future__ import annotations
 import httpx
 
 from .. import _legacy_response
-from ..types import CardPurchaseSupplement, card_purchase_supplement_list_params
+from ..types import card_purchase_supplement_list_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._compat import cached_property
@@ -16,6 +16,7 @@ from .._base_client import (
     AsyncPaginator,
     make_request_options,
 )
+from ..types.card_purchase_supplement import CardPurchaseSupplement
 
 __all__ = ["CardPurchaseSupplements", "AsyncCardPurchaseSupplements"]
 

@@ -7,7 +7,6 @@ from typing_extensions import Literal
 import httpx
 
 from ... import _legacy_response
-from ...types import CardDispute
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import (
     maybe_transform,
@@ -20,6 +19,7 @@ from ..._base_client import (
     make_request_options,
 )
 from ...types.simulations import card_dispute_action_params
+from ...types.card_dispute import CardDispute
 
 __all__ = ["CardDisputes", "AsyncCardDisputes"]
 

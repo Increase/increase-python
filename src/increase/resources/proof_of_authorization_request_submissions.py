@@ -9,7 +9,6 @@ import httpx
 
 from .. import _legacy_response
 from ..types import (
-    ProofOfAuthorizationRequestSubmission,
     proof_of_authorization_request_submission_list_params,
     proof_of_authorization_request_submission_create_params,
 )
@@ -26,6 +25,7 @@ from .._base_client import (
     AsyncPaginator,
     make_request_options,
 )
+from ..types.proof_of_authorization_request_submission import ProofOfAuthorizationRequestSubmission
 
 __all__ = ["ProofOfAuthorizationRequestSubmissions", "AsyncProofOfAuthorizationRequestSubmissions"]
 

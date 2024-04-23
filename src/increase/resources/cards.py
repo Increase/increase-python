@@ -7,7 +7,7 @@ from typing_extensions import Literal
 import httpx
 
 from .. import _legacy_response
-from ..types import Card, CardDetails, card_list_params, card_create_params, card_update_params
+from ..types import card_list_params, card_create_params, card_update_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import (
     maybe_transform,
@@ -17,10 +17,12 @@ from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..pagination import SyncPage, AsyncPage
+from ..types.card import Card
 from .._base_client import (
     AsyncPaginator,
     make_request_options,
 )
+from ..types.card_details import CardDetails
 
 __all__ = ["Cards", "AsyncCards"]
 
