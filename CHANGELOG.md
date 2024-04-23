@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.58.0 (2024-04-23)
+
+Full Changelog: [v0.57.0...v0.58.0](https://github.com/Increase/increase-python/compare/v0.57.0...v0.58.0)
+
+### Features
+
+* **api:** remove inbound_wire_drawdown_payment_reversal ([#428](https://github.com/Increase/increase-python/issues/428)) ([1dfbb27](https://github.com/Increase/increase-python/commit/1dfbb276e778fb86a4ac8b79b41a5f51b8c01ea9))
+
 ## 0.57.0 (2024-04-19)
 
 Full Changelog: [v0.56.0...v0.57.0](https://github.com/Increase/increase-python/compare/v0.56.0...v0.57.0)
