@@ -7,11 +7,7 @@ from typing_extensions import Literal
 import httpx
 
 from .. import _legacy_response
-from ..types import (
-    WireDrawdownRequest,
-    wire_drawdown_request_list_params,
-    wire_drawdown_request_create_params,
-)
+from ..types import wire_drawdown_request_list_params, wire_drawdown_request_create_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import (
     maybe_transform,
@@ -25,6 +21,7 @@ from .._base_client import (
     AsyncPaginator,
     make_request_options,
 )
+from ..types.wire_drawdown_request import WireDrawdownRequest
 
 __all__ = ["WireDrawdownRequests", "AsyncWireDrawdownRequests"]
 

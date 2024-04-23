@@ -14,7 +14,6 @@ from .cards import (
     AsyncCardsWithStreamingResponse,
 )
 from ...types import (
-    CardPayment,
     simulation_card_reversals_params,
     simulation_card_increments_params,
     simulation_card_fuel_confirmations_params,
@@ -135,6 +134,7 @@ from .inbound_funds_holds import (
     InboundFundsHoldsWithStreamingResponse,
     AsyncInboundFundsHoldsWithStreamingResponse,
 )
+from ...types.card_payment import CardPayment
 from .inbound_check_deposits import (
     InboundCheckDeposits,
     AsyncInboundCheckDeposits,

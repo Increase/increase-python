@@ -8,7 +8,6 @@ import httpx
 
 from .. import _legacy_response
 from ..types import (
-    AccountNumber,
     account_number_list_params,
     account_number_create_params,
     account_number_update_params,
@@ -26,6 +25,7 @@ from .._base_client import (
     AsyncPaginator,
     make_request_options,
 )
+from ..types.account_number import AccountNumber
 
 __all__ = ["AccountNumbers", "AsyncAccountNumbers"]
 

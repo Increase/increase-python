@@ -9,7 +9,6 @@ from typing_extensions import Literal
 import httpx
 
 from ... import _legacy_response
-from ...types import ACHTransfer, InboundACHTransfer
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import (
     maybe_transform,
@@ -26,6 +25,8 @@ from ...types.simulations import (
     ach_transfer_create_inbound_params,
     ach_transfer_notification_of_change_params,
 )
+from ...types.ach_transfer import ACHTransfer
+from ...types.inbound_ach_transfer import InboundACHTransfer
 
 __all__ = ["ACHTransfers", "AsyncACHTransfers"]
 

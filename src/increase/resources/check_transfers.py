@@ -8,7 +8,6 @@ import httpx
 
 from .. import _legacy_response
 from ..types import (
-    CheckTransfer,
     check_transfer_list_params,
     check_transfer_create_params,
     check_transfer_stop_payment_params,
@@ -26,6 +25,7 @@ from .._base_client import (
     AsyncPaginator,
     make_request_options,
 )
+from ..types.check_transfer import CheckTransfer
 
 __all__ = ["CheckTransfers", "AsyncCheckTransfers"]
 

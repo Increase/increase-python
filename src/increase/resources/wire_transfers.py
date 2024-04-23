@@ -5,7 +5,7 @@ from __future__ import annotations
 import httpx
 
 from .. import _legacy_response
-from ..types import WireTransfer, wire_transfer_list_params, wire_transfer_create_params
+from ..types import wire_transfer_list_params, wire_transfer_create_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import (
     maybe_transform,
@@ -19,6 +19,7 @@ from .._base_client import (
     AsyncPaginator,
     make_request_options,
 )
+from ..types.wire_transfer import WireTransfer
 
 __all__ = ["WireTransfers", "AsyncWireTransfers"]
 

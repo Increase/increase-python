@@ -6,7 +6,6 @@ import httpx
 
 from .. import _legacy_response
 from ..types import (
-    PhysicalCardProfile,
     physical_card_profile_list_params,
     physical_card_profile_clone_params,
     physical_card_profile_create_params,
@@ -24,6 +23,7 @@ from .._base_client import (
     AsyncPaginator,
     make_request_options,
 )
+from ..types.physical_card_profile import PhysicalCardProfile
 
 __all__ = ["PhysicalCardProfiles", "AsyncPhysicalCardProfiles"]
 

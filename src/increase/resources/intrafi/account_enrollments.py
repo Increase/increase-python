@@ -18,7 +18,8 @@ from ..._base_client import (
     AsyncPaginator,
     make_request_options,
 )
-from ...types.intrafi import IntrafiAccountEnrollment, account_enrollment_list_params, account_enrollment_create_params
+from ...types.intrafi import account_enrollment_list_params, account_enrollment_create_params
+from ...types.intrafi.intrafi_account_enrollment import IntrafiAccountEnrollment
 
 __all__ = ["AccountEnrollments", "AsyncAccountEnrollments"]
 

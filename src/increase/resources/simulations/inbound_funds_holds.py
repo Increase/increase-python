@@ -12,7 +12,7 @@ from ..._response import to_streamed_response_wrapper, async_to_streamed_respons
 from ..._base_client import (
     make_request_options,
 )
-from ...types.simulations import InboundFundsHoldReleaseResponse
+from ...types.simulations.inbound_funds_hold_release_response import InboundFundsHoldReleaseResponse
 
 __all__ = ["InboundFundsHolds", "AsyncInboundFundsHolds"]
 
