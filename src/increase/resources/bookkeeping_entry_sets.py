@@ -8,11 +8,7 @@ from datetime import datetime
 import httpx
 
 from .. import _legacy_response
-from ..types import (
-    BookkeepingEntrySet,
-    bookkeeping_entry_set_list_params,
-    bookkeeping_entry_set_create_params,
-)
+from ..types import bookkeeping_entry_set_list_params, bookkeeping_entry_set_create_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import (
     maybe_transform,
@@ -26,6 +22,7 @@ from .._base_client import (
     AsyncPaginator,
     make_request_options,
 )
+from ..types.bookkeeping_entry_set import BookkeepingEntrySet
 
 __all__ = ["BookkeepingEntrySets", "AsyncBookkeepingEntrySets"]
 

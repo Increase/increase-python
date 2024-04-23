@@ -8,7 +8,6 @@ from datetime import datetime
 import httpx
 
 from ... import _legacy_response
-from ...types import Transaction
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import (
     maybe_transform,
@@ -21,6 +20,7 @@ from ..._base_client import (
     make_request_options,
 )
 from ...types.simulations import interest_payment_create_params
+from ...types.transaction import Transaction
 
 __all__ = ["InterestPayments", "AsyncInterestPayments"]
 

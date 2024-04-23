@@ -18,7 +18,8 @@ from ..._base_client import (
     AsyncPaginator,
     make_request_options,
 )
-from ...types.intrafi import IntrafiExclusion, exclusion_list_params, exclusion_create_params
+from ...types.intrafi import exclusion_list_params, exclusion_create_params
+from ...types.intrafi.intrafi_exclusion import IntrafiExclusion
 
 __all__ = ["Exclusions", "AsyncExclusions"]
 

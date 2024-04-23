@@ -6,7 +6,6 @@ import httpx
 
 from .. import _legacy_response
 from ..types import (
-    DigitalCardProfile,
     digital_card_profile_list_params,
     digital_card_profile_clone_params,
     digital_card_profile_create_params,
@@ -24,6 +23,7 @@ from .._base_client import (
     AsyncPaginator,
     make_request_options,
 )
+from ..types.digital_card_profile import DigitalCardProfile
 
 __all__ = ["DigitalCardProfiles", "AsyncDigitalCardProfiles"]
 

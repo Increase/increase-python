@@ -10,7 +10,6 @@ import httpx
 
 from ... import _legacy_response
 from ...types import (
-    Entity,
     entity_list_params,
     entity_create_params,
     entity_confirm_params,
@@ -37,6 +36,7 @@ from ..._base_client import (
     AsyncPaginator,
     make_request_options,
 )
+from ...types.entity import Entity
 from .beneficial_owners import (
     BeneficialOwners,
     AsyncBeneficialOwners,

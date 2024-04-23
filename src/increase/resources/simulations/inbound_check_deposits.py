@@ -5,7 +5,6 @@ from __future__ import annotations
 import httpx
 
 from ... import _legacy_response
-from ...types import InboundCheckDeposit
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import (
     maybe_transform,
@@ -18,6 +17,7 @@ from ..._base_client import (
     make_request_options,
 )
 from ...types.simulations import inbound_check_deposit_create_params
+from ...types.inbound_check_deposit import InboundCheckDeposit
 
 __all__ = ["InboundCheckDeposits", "AsyncInboundCheckDeposits"]
 

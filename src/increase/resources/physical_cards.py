@@ -7,12 +7,7 @@ from typing_extensions import Literal
 import httpx
 
 from .. import _legacy_response
-from ..types import (
-    PhysicalCard,
-    physical_card_list_params,
-    physical_card_create_params,
-    physical_card_update_params,
-)
+from ..types import physical_card_list_params, physical_card_create_params, physical_card_update_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import (
     maybe_transform,
@@ -26,6 +21,7 @@ from .._base_client import (
     AsyncPaginator,
     make_request_options,
 )
+from ..types.physical_card import PhysicalCard
 
 __all__ = ["PhysicalCards", "AsyncPhysicalCards"]
 

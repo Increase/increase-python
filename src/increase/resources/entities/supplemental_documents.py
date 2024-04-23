@@ -5,7 +5,6 @@ from __future__ import annotations
 import httpx
 
 from ... import _legacy_response
-from ...types import Entity
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import (
     maybe_transform,
@@ -19,11 +18,9 @@ from ..._base_client import (
     AsyncPaginator,
     make_request_options,
 )
-from ...types.entities import (
-    SupplementalDocument,
-    supplemental_document_list_params,
-    supplemental_document_create_params,
-)
+from ...types.entity import Entity
+from ...types.entities import supplemental_document_list_params, supplemental_document_create_params
+from ...types.entities.supplemental_document import SupplementalDocument
 
 __all__ = ["SupplementalDocuments", "AsyncSupplementalDocuments"]
 

@@ -9,7 +9,6 @@ import httpx
 
 from .. import _legacy_response
 from ..types import (
-    RealTimePaymentsRequestForPayment,
     real_time_payments_request_for_payment_list_params,
     real_time_payments_request_for_payment_create_params,
 )
@@ -26,6 +25,7 @@ from .._base_client import (
     AsyncPaginator,
     make_request_options,
 )
+from ..types.real_time_payments_request_for_payment import RealTimePaymentsRequestForPayment
 
 __all__ = ["RealTimePaymentsRequestForPayments", "AsyncRealTimePaymentsRequestForPayments"]
 
