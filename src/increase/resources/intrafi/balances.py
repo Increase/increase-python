@@ -12,7 +12,7 @@ from ..._response import to_streamed_response_wrapper, async_to_streamed_respons
 from ..._base_client import (
     make_request_options,
 )
-from ...types.intrafi import IntrafiBalance
+from ...types.intrafi.intrafi_balance import IntrafiBalance
 
 __all__ = ["Balances", "AsyncBalances"]
 

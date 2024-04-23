@@ -9,7 +9,7 @@ import pytest
 
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
-from increase.types.simulations import (
+from increase.types.simulations.digital_wallet_token_request_create_response import (
     DigitalWalletTokenRequestCreateResponse,
 )
 

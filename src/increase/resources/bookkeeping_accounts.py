@@ -10,8 +10,6 @@ import httpx
 
 from .. import _legacy_response
 from ..types import (
-    BookkeepingAccount,
-    BookkeepingBalanceLookup,
     bookkeeping_account_list_params,
     bookkeeping_account_create_params,
     bookkeeping_account_update_params,
@@ -30,6 +28,8 @@ from .._base_client import (
     AsyncPaginator,
     make_request_options,
 )
+from ..types.bookkeeping_account import BookkeepingAccount
+from ..types.bookkeeping_balance_lookup import BookkeepingBalanceLookup
 
 __all__ = ["BookkeepingAccounts", "AsyncBookkeepingAccounts"]
 

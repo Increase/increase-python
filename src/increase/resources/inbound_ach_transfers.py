@@ -8,7 +8,6 @@ import httpx
 
 from .. import _legacy_response
 from ..types import (
-    InboundACHTransfer,
     inbound_ach_transfer_list_params,
     inbound_ach_transfer_transfer_return_params,
     inbound_ach_transfer_notification_of_change_params,
@@ -26,6 +25,7 @@ from .._base_client import (
     AsyncPaginator,
     make_request_options,
 )
+from ..types.inbound_ach_transfer import InboundACHTransfer
 
 __all__ = ["InboundACHTransfers", "AsyncInboundACHTransfers"]
 

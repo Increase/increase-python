@@ -10,8 +10,6 @@ import httpx
 
 from .. import _legacy_response
 from ..types import (
-    Account,
-    BalanceLookup,
     account_list_params,
     account_create_params,
     account_update_params,
@@ -30,6 +28,8 @@ from .._base_client import (
     AsyncPaginator,
     make_request_options,
 )
+from ..types.account import Account
+from ..types.balance_lookup import BalanceLookup
 
 __all__ = ["Accounts", "AsyncAccounts"]
 

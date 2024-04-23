@@ -5,7 +5,6 @@ from __future__ import annotations
 import httpx
 
 from ... import _legacy_response
-from ...types import Transaction
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import (
     maybe_transform,
@@ -17,7 +16,9 @@ from ..._response import to_streamed_response_wrapper, async_to_streamed_respons
 from ..._base_client import (
     make_request_options,
 )
-from ...types.simulations import CardAuthorizationSimulation, card_authorize_params, card_settlement_params
+from ...types.simulations import card_authorize_params, card_settlement_params
+from ...types.transaction import Transaction
+from ...types.simulations.card_authorization_simulation import CardAuthorizationSimulation
 
 __all__ = ["Cards", "AsyncCards"]
 

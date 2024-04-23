@@ -7,7 +7,6 @@ from typing_extensions import Literal
 import httpx
 
 from ... import _legacy_response
-from ...types import PhysicalCard
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import (
     maybe_transform,
@@ -20,6 +19,7 @@ from ..._base_client import (
     make_request_options,
 )
 from ...types.simulations import physical_card_shipment_advance_params
+from ...types.physical_card import PhysicalCard
 
 __all__ = ["PhysicalCards", "AsyncPhysicalCards"]
 
