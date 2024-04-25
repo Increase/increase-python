@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.59.0 (2024-04-25)
+
+Full Changelog: [v0.58.1...v0.59.0](https://github.com/Increase/increase-python/compare/v0.58.1...v0.59.0)
+
+### ⚠ BREAKING CHANGES
+
+* require account ID for creating an ACH prenotification ([#435](https://github.com/Increase/increase-python/issues/435))
+
+### Bug Fixes
+
+* require account ID for creating an ACH prenotification ([#435](https://github.com/Increase/increase-python/issues/435)) ([772c15e](https://github.com/Increase/increase-python/commit/772c15ee82539ff4f85067cdb8e4961fa8e2a807))
+
 ## 0.58.1 (2024-04-25)
 
 Full Changelog: [v0.58.0...v0.58.1](https://github.com/Increase/increase-python/compare/v0.58.0...v0.58.1)
