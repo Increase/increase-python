@@ -22,6 +22,7 @@ class TestACHPrenotifications:
     @parametrize
     def test_method_create(self, client: Increase) -> None:
         ach_prenotification = client.ach_prenotifications.create(
+            account_id="account_in71c4amph0vgo2qllky",
             account_number="987654321",
             routing_number="101050001",
         )
@@ -30,9 +31,9 @@ class TestACHPrenotifications:
     @parametrize
     def test_method_create_with_all_params(self, client: Increase) -> None:
         ach_prenotification = client.ach_prenotifications.create(
+            account_id="account_in71c4amph0vgo2qllky",
             account_number="987654321",
             routing_number="101050001",
-            account_id="string",
             addendum="x",
             company_descriptive_date="x",
             company_discretionary_data="x",
@@ -49,6 +50,7 @@ class TestACHPrenotifications:
     @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
         response = client.ach_prenotifications.with_raw_response.create(
+            account_id="account_in71c4amph0vgo2qllky",
             account_number="987654321",
             routing_number="101050001",
         )
@@ -61,6 +63,7 @@ class TestACHPrenotifications:
     @parametrize
     def test_streaming_response_create(self, client: Increase) -> None:
         with client.ach_prenotifications.with_streaming_response.create(
+            account_id="account_in71c4amph0vgo2qllky",
             account_number="987654321",
             routing_number="101050001",
         ) as response:
@@ -159,6 +162,7 @@ class TestAsyncACHPrenotifications:
     @parametrize
     async def test_method_create(self, async_client: AsyncIncrease) -> None:
         ach_prenotification = await async_client.ach_prenotifications.create(
+            account_id="account_in71c4amph0vgo2qllky",
             account_number="987654321",
             routing_number="101050001",
         )
@@ -167,9 +171,9 @@ class TestAsyncACHPrenotifications:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncIncrease) -> None:
         ach_prenotification = await async_client.ach_prenotifications.create(
+            account_id="account_in71c4amph0vgo2qllky",
             account_number="987654321",
             routing_number="101050001",
-            account_id="string",
             addendum="x",
             company_descriptive_date="x",
             company_discretionary_data="x",
@@ -186,6 +190,7 @@ class TestAsyncACHPrenotifications:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
         response = await async_client.ach_prenotifications.with_raw_response.create(
+            account_id="account_in71c4amph0vgo2qllky",
             account_number="987654321",
             routing_number="101050001",
         )
@@ -198,6 +203,7 @@ class TestAsyncACHPrenotifications:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncIncrease) -> None:
         async with async_client.ach_prenotifications.with_streaming_response.create(
+            account_id="account_in71c4amph0vgo2qllky",
             account_number="987654321",
             routing_number="101050001",
         ) as response:

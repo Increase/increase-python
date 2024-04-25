@@ -40,9 +40,9 @@ class ACHPrenotifications(SyncAPIResource):
     def create(
         self,
         *,
+        account_id: str,
         account_number: str,
         routing_number: str,
-        account_id: str | NotGiven = NOT_GIVEN,
         addendum: str | NotGiven = NOT_GIVEN,
         company_descriptive_date: str | NotGiven = NOT_GIVEN,
         company_discretionary_data: str | NotGiven = NOT_GIVEN,
@@ -71,12 +71,12 @@ class ACHPrenotifications(SyncAPIResource):
         Create an ACH Prenotification
 
         Args:
+          account_id: The Increase identifier for the account that will send the transfer.
+
           account_number: The account number for the destination account.
 
           routing_number: The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
               destination account.
-
-          account_id: The Increase identifier for the account that will send the transfer.
 
           addendum: Additional information that will be sent to the recipient.
 
@@ -122,9 +122,9 @@ class ACHPrenotifications(SyncAPIResource):
             "/ach_prenotifications",
             body=maybe_transform(
                 {
+                    "account_id": account_id,
                     "account_number": account_number,
                     "routing_number": routing_number,
-                    "account_id": account_id,
                     "addendum": addendum,
                     "company_descriptive_date": company_descriptive_date,
                     "company_discretionary_data": company_discretionary_data,
@@ -255,9 +255,9 @@ class AsyncACHPrenotifications(AsyncAPIResource):
     async def create(
         self,
         *,
+        account_id: str,
         account_number: str,
         routing_number: str,
-        account_id: str | NotGiven = NOT_GIVEN,
         addendum: str | NotGiven = NOT_GIVEN,
         company_descriptive_date: str | NotGiven = NOT_GIVEN,
         company_discretionary_data: str | NotGiven = NOT_GIVEN,
@@ -286,12 +286,12 @@ class AsyncACHPrenotifications(AsyncAPIResource):
         Create an ACH Prenotification
 
         Args:
+          account_id: The Increase identifier for the account that will send the transfer.
+
           account_number: The account number for the destination account.
 
           routing_number: The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
               destination account.
-
-          account_id: The Increase identifier for the account that will send the transfer.
 
           addendum: Additional information that will be sent to the recipient.
 
@@ -337,9 +337,9 @@ class AsyncACHPrenotifications(AsyncAPIResource):
             "/ach_prenotifications",
             body=await async_maybe_transform(
                 {
+                    "account_id": account_id,
                     "account_number": account_number,
                     "routing_number": routing_number,
-                    "account_id": account_id,
                     "addendum": addendum,
                     "company_descriptive_date": company_descriptive_date,
                     "company_discretionary_data": company_discretionary_data,

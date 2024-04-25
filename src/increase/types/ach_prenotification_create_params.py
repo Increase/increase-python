@@ -12,6 +12,9 @@ __all__ = ["ACHPrenotificationCreateParams"]
 
 
 class ACHPrenotificationCreateParams(TypedDict, total=False):
+    account_id: Required[str]
+    """The Increase identifier for the account that will send the transfer."""
+
     account_number: Required[str]
     """The account number for the destination account."""
 
@@ -20,9 +23,6 @@ class ACHPrenotificationCreateParams(TypedDict, total=False):
     The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
     destination account.
     """
-
-    account_id: str
-    """The Increase identifier for the account that will send the transfer."""
 
     addendum: str
     """Additional information that will be sent to the recipient."""
