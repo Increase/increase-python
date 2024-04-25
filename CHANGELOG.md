@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.58.1 (2024-04-25)
+
+Full Changelog: [v0.58.0...v0.58.1](https://github.com/Increase/increase-python/compare/v0.58.0...v0.58.1)
+
+### Bug Fixes
+
+* **docs:** doc improvements ([#432](https://github.com/Increase/increase-python/issues/432)) ([1a8ce4d](https://github.com/Increase/increase-python/commit/1a8ce4da1f14059629e94ff4153c1df729ba550b))
+
+
+### Chores
+
+* **internal:** restructure imports ([#430](https://github.com/Increase/increase-python/issues/430)) ([19249ee](https://github.com/Increase/increase-python/commit/19249eed9683bea8d89da11bab49a7a8b3a636d3))
+* **internal:** update test helper function ([#434](https://github.com/Increase/increase-python/issues/434)) ([fb6f221](https://github.com/Increase/increase-python/commit/fb6f221aac13c9a2ffd48204c7458a8e62127f15))
+* **internal:** use actions/checkout@v4 for codeflow ([#433](https://github.com/Increase/increase-python/issues/433)) ([a1bb4f7](https://github.com/Increase/increase-python/commit/a1bb4f75b737ca668a40792978aa0ee719dc61e9))
+
 ## 0.58.0 (2024-04-23)
 
 Full Changelog: [v0.57.0...v0.58.0](https://github.com/Increase/increase-python/compare/v0.57.0...v0.58.0)
