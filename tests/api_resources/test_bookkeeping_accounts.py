@@ -9,10 +9,12 @@ import pytest
 
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
+from increase.types import (
+    BookkeepingAccount,
+    BookkeepingBalanceLookup,
+)
 from increase._utils import parse_datetime
 from increase.pagination import SyncPage, AsyncPage
-from increase.types.bookkeeping_account import BookkeepingAccount
-from increase.types.bookkeeping_balance_lookup import BookkeepingBalanceLookup
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
