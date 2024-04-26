@@ -9,8 +9,8 @@ import pytest
 
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
-from increase.types.real_time_payments_transfer import RealTimePaymentsTransfer
-from increase.types.simulations.inbound_real_time_payments_transfer_simulation_result import (
+from increase.types import RealTimePaymentsTransfer
+from increase.types.simulations import (
     InboundRealTimePaymentsTransferSimulationResult,
 )
 
