@@ -9,8 +9,10 @@ import pytest
 
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
+from increase.types import (
+    DigitalCardProfile,
+)
 from increase.pagination import SyncPage, AsyncPage
-from increase.types.digital_card_profile import DigitalCardProfile
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
