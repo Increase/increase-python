@@ -17,7 +17,6 @@ from respx import MockRouter
 from pydantic import ValidationError
 
 from increase import Increase, AsyncIncrease, APIResponseValidationError
-from increase._client import Increase, AsyncIncrease
 from increase._models import BaseModel, FinalRequestOptions
 from increase._constants import RAW_RESPONSE_HEADER
 from increase._exceptions import IncreaseError, APIStatusError, APITimeoutError, APIResponseValidationError
