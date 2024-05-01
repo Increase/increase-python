@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.60.0 (2024-05-01)
+
+Full Changelog: [v0.59.0...v0.60.0](https://github.com/Increase/increase-python/compare/v0.59.0...v0.60.0)
+
+### Features
+
+* **api:** updates ([#444](https://github.com/Increase/increase-python/issues/444)) ([26bb8d1](https://github.com/Increase/increase-python/commit/26bb8d1f82630556535bcda94fd7fbfffe5375fa))
+
+
+### Chores
+
+* **client:** log response headers in debug mode ([#440](https://github.com/Increase/increase-python/issues/440)) ([2bd167c](https://github.com/Increase/increase-python/commit/2bd167c215a5db79ea4400f1565d28e0fcff1f89))
+* **internal:** add link to openapi spec ([#441](https://github.com/Increase/increase-python/issues/441)) ([44b4cf6](https://github.com/Increase/increase-python/commit/44b4cf6f53bc31ae07366ff62dc5915f76a8e13d))
+* **internal:** add scripts/test, scripts/mock and add ci job ([#442](https://github.com/Increase/increase-python/issues/442)) ([cd07b70](https://github.com/Increase/increase-python/commit/cd07b708c27839b87f198eec2cd85f0a008b88fd))
+* **internal:** bump mock server version to ~5.8.0 ([#443](https://github.com/Increase/increase-python/issues/443)) ([4b507ff](https://github.com/Increase/increase-python/commit/4b507ff339c9026b445fcd7b15cda90f071827b0))
+* **internal:** minor reformatting ([#439](https://github.com/Increase/increase-python/issues/439)) ([462a2a4](https://github.com/Increase/increase-python/commit/462a2a4509fe2eccf056e2a5a4c43bdb9df56c57))
+* **internal:** reformat imports ([#437](https://github.com/Increase/increase-python/issues/437)) ([b11ab6f](https://github.com/Increase/increase-python/commit/b11ab6f4ea3a5e82beb63be7c250f1d1a1daad70))
+
 ## 0.59.0 (2024-04-25)
 
 Full Changelog: [v0.58.1...v0.59.0](https://github.com/Increase/increase-python/compare/v0.58.1...v0.59.0)
