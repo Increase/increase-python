@@ -106,6 +106,7 @@ class NotificationOfChange(BaseModel):
 
 class TransferReturn(BaseModel):
     reason: Literal[
+        "insufficient_funds",
         "returned_per_odfi_request",
         "authorization_revoked_by_customer",
         "payment_stopped",
@@ -118,6 +119,8 @@ class TransferReturn(BaseModel):
     ]
     """The reason for the transfer return.
 
+    - `insufficient_funds` - The customer's account has insufficient funds. This
+      reason is only allowed for debits. The Nacha return code is R01.
     - `returned_per_odfi_request` - The originating financial institution asked for
       this transfer to be returned. The receiving bank is complying with the
       request. The Nacha return code is R06.
