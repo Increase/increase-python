@@ -263,7 +263,7 @@ client = Increase(
 )
 
 # Override per-request:
-client.with_options(timeout=5 * 1000).accounts.list(
+client.with_options(timeout=5.0).accounts.list(
     status="open",
 )
 ```
