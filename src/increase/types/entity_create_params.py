@@ -19,6 +19,9 @@ __all__ = [
     "CorporationBeneficialOwnerIndividualIdentificationDriversLicense",
     "CorporationBeneficialOwnerIndividualIdentificationOther",
     "CorporationBeneficialOwnerIndividualIdentificationPassport",
+    "GovernmentAuthority",
+    "GovernmentAuthorityAddress",
+    "GovernmentAuthorityAuthorizedPerson",
     "Joint",
     "JointIndividual",
     "JointIndividualAddress",
@@ -52,13 +55,14 @@ __all__ = [
 
 
 class EntityCreateParams(TypedDict, total=False):
-    structure: Required[Literal["corporation", "natural_person", "joint", "trust"]]
+    structure: Required[Literal["corporation", "natural_person", "joint", "trust", "government_authority"]]
     """The type of Entity to create.
 
     - `corporation` - A corporation.
     - `natural_person` - An individual person.
     - `joint` - Multiple individual people.
     - `trust` - A trust.
+    - `government_authority` - A government authority.
     """
 
     corporation: Corporation
@@ -69,6 +73,12 @@ class EntityCreateParams(TypedDict, total=False):
 
     description: str
     """The description you choose to give the entity."""
+
+    government_authority: GovernmentAuthority
+    """Details of the Government Authority entity to create.
+
+    Required if `structure` is equal to `Government Authority`.
+    """
 
     joint: Joint
     """Details of the joint entity to create.
@@ -302,6 +312,57 @@ class Corporation(TypedDict, total=False):
 
     website: str
     """The website of the corporation."""
+
+
+class GovernmentAuthorityAddress(TypedDict, total=False):
+    city: Required[str]
+    """The city of the address."""
+
+    line1: Required[str]
+    """The first line of the address. This is usually the street number and street."""
+
+    state: Required[str]
+    """
+    The two-letter United States Postal Service (USPS) abbreviation for the state of
+    the address.
+    """
+
+    zip: Required[str]
+    """The ZIP code of the address."""
+
+    line2: str
+    """The second line of the address. This might be the floor or room number."""
+
+
+class GovernmentAuthorityAuthorizedPerson(TypedDict, total=False):
+    name: Required[str]
+    """The person's legal name."""
+
+
+class GovernmentAuthority(TypedDict, total=False):
+    address: Required[GovernmentAuthorityAddress]
+    """The entity's physical address.
+
+    Mail receiving locations like PO Boxes and PMB's are disallowed.
+    """
+
+    authorized_persons: Required[Iterable[GovernmentAuthorityAuthorizedPerson]]
+    """The identifying details of authorized officials acting on the entity's behalf."""
+
+    category: Required[Literal["municipality"]]
+    """The category of the government authority.
+
+    - `municipality` - The Public Entity is a Municipality.
+    """
+
+    name: Required[str]
+    """The legal name of the government authority."""
+
+    tax_identifier: Required[str]
+    """The Employer Identification Number (EIN) for the government authority."""
+
+    website: str
+    """The website of the government authority."""
 
 
 class JointIndividualAddress(TypedDict, total=False):

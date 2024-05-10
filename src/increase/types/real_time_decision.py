@@ -236,6 +236,9 @@ class CardAuthorization(BaseModel):
     card_id: str
     """The identifier of the Card that is being authorized."""
 
+    card_payment_id: str
+    """The identifier of the Card Payment this authorization belongs to."""
+
     decision: Optional[Literal["approve", "decline"]] = None
     """Whether or not the authorization was approved.
 

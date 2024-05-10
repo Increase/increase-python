@@ -14,6 +14,9 @@ __all__ = [
     "CorporationBeneficialOwnerIndividual",
     "CorporationBeneficialOwnerIndividualAddress",
     "CorporationBeneficialOwnerIndividualIdentification",
+    "GovernmentAuthority",
+    "GovernmentAuthorityAddress",
+    "GovernmentAuthorityAuthorizedPerson",
     "Joint",
     "JointIndividual",
     "JointIndividualAddress",
@@ -159,6 +162,57 @@ class Corporation(BaseModel):
 
     website: Optional[str] = None
     """The website of the corporation."""
+
+
+class GovernmentAuthorityAddress(BaseModel):
+    city: str
+    """The city of the address."""
+
+    line1: str
+    """The first line of the address."""
+
+    line2: Optional[str] = None
+    """The second line of the address."""
+
+    state: str
+    """
+    The two-letter United States Postal Service (USPS) abbreviation for the state of
+    the address.
+    """
+
+    zip: str
+    """The ZIP code of the address."""
+
+
+class GovernmentAuthorityAuthorizedPerson(BaseModel):
+    authorized_person_id: str
+    """The identifier of this authorized person."""
+
+    name: str
+    """The person's legal name."""
+
+
+class GovernmentAuthority(BaseModel):
+    address: GovernmentAuthorityAddress
+    """The government authority's address."""
+
+    authorized_persons: List[GovernmentAuthorityAuthorizedPerson]
+    """The identifying details of authorized persons of the government authority."""
+
+    category: Literal["municipality"]
+    """The category of the government authority.
+
+    - `municipality` - The Public Entity is a Municipality.
+    """
+
+    name: str
+    """The government authority's name."""
+
+    tax_identifier: Optional[str] = None
+    """The Employer Identification Number (EIN) of the government authority."""
+
+    website: Optional[str] = None
+    """The government authority's website."""
 
 
 class JointIndividualAddress(BaseModel):
@@ -506,6 +560,12 @@ class Entity(BaseModel):
     Entity's details were most recently confirmed.
     """
 
+    government_authority: Optional[GovernmentAuthority] = None
+    """Details of the government authority entity.
+
+    Will be present if `structure` is equal to `government_authority`.
+    """
+
     idempotency_key: Optional[str] = None
     """The idempotency key you chose for this object.
 
@@ -536,13 +596,14 @@ class Entity(BaseModel):
       financial activity.
     """
 
-    structure: Literal["corporation", "natural_person", "joint", "trust"]
+    structure: Literal["corporation", "natural_person", "joint", "trust", "government_authority"]
     """The entity's legal structure.
 
     - `corporation` - A corporation.
     - `natural_person` - An individual person.
     - `joint` - Multiple individual people.
     - `trust` - A trust.
+    - `government_authority` - A government authority.
     """
 
     supplemental_documents: List[SupplementalDocument]
