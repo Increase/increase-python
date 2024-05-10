@@ -20,6 +20,12 @@ class Account(BaseModel):
     - `first_internet_bank` - First Internet Bank of Indiana
     """
 
+    closed_at: Optional[datetime] = None
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
+    was closed.
+    """
+
     created_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Account
