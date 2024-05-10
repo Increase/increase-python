@@ -81,9 +81,10 @@ class Entities(SyncAPIResource):
     def create(
         self,
         *,
-        structure: Literal["corporation", "natural_person", "joint", "trust"],
+        structure: Literal["corporation", "natural_person", "joint", "trust", "government_authority"],
         corporation: entity_create_params.Corporation | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
+        government_authority: entity_create_params.GovernmentAuthority | NotGiven = NOT_GIVEN,
         joint: entity_create_params.Joint | NotGiven = NOT_GIVEN,
         natural_person: entity_create_params.NaturalPerson | NotGiven = NOT_GIVEN,
         supplemental_documents: Iterable[entity_create_params.SupplementalDocument] | NotGiven = NOT_GIVEN,
@@ -106,11 +107,15 @@ class Entities(SyncAPIResource):
               - `natural_person` - An individual person.
               - `joint` - Multiple individual people.
               - `trust` - A trust.
+              - `government_authority` - A government authority.
 
           corporation: Details of the corporation entity to create. Required if `structure` is equal to
               `corporation`.
 
           description: The description you choose to give the entity.
+
+          government_authority: Details of the Government Authority entity to create. Required if `structure` is
+              equal to `Government Authority`.
 
           joint: Details of the joint entity to create. Required if `structure` is equal to
               `joint`.
@@ -142,6 +147,7 @@ class Entities(SyncAPIResource):
                     "structure": structure,
                     "corporation": corporation,
                     "description": description,
+                    "government_authority": government_authority,
                     "joint": joint,
                     "natural_person": natural_person,
                     "supplemental_documents": supplemental_documents,
@@ -418,9 +424,10 @@ class AsyncEntities(AsyncAPIResource):
     async def create(
         self,
         *,
-        structure: Literal["corporation", "natural_person", "joint", "trust"],
+        structure: Literal["corporation", "natural_person", "joint", "trust", "government_authority"],
         corporation: entity_create_params.Corporation | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
+        government_authority: entity_create_params.GovernmentAuthority | NotGiven = NOT_GIVEN,
         joint: entity_create_params.Joint | NotGiven = NOT_GIVEN,
         natural_person: entity_create_params.NaturalPerson | NotGiven = NOT_GIVEN,
         supplemental_documents: Iterable[entity_create_params.SupplementalDocument] | NotGiven = NOT_GIVEN,
@@ -443,11 +450,15 @@ class AsyncEntities(AsyncAPIResource):
               - `natural_person` - An individual person.
               - `joint` - Multiple individual people.
               - `trust` - A trust.
+              - `government_authority` - A government authority.
 
           corporation: Details of the corporation entity to create. Required if `structure` is equal to
               `corporation`.
 
           description: The description you choose to give the entity.
+
+          government_authority: Details of the Government Authority entity to create. Required if `structure` is
+              equal to `Government Authority`.
 
           joint: Details of the joint entity to create. Required if `structure` is equal to
               `joint`.
@@ -479,6 +490,7 @@ class AsyncEntities(AsyncAPIResource):
                     "structure": structure,
                     "corporation": corporation,
                     "description": description,
+                    "government_authority": government_authority,
                     "joint": joint,
                     "natural_person": natural_person,
                     "supplemental_documents": supplemental_documents,

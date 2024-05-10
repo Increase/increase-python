@@ -342,6 +342,15 @@ class SourceCardAuthorization(BaseModel):
     that was used.
     """
 
+    presentment_amount: int
+    """The pending amount in the minor unit of the transaction's presentment currency."""
+
+    presentment_currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+    transaction's presentment currency.
+    """
+
     processing_category: Literal[
         "account_funding", "automatic_fuel_dispenser", "bill_payment", "purchase", "quasi_cash", "refund"
     ]
