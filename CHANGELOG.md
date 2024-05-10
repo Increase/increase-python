@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.61.0 (2024-05-10)
+
+Full Changelog: [v0.60.0...v0.61.0](https://github.com/Increase/increase-python/compare/v0.60.0...v0.61.0)
+
+### Features
+
+* **api:** enhance API with extended transaction details and new entity types ([#448](https://github.com/Increase/increase-python/issues/448)) ([6a6825b](https://github.com/Increase/increase-python/commit/6a6825bb45e25ec14641ab631d380f9d1a6e7956))
+
+
+### Documentation
+
+* **readme:** fix misleading timeout example value ([#445](https://github.com/Increase/increase-python/issues/445)) ([a1eb1d6](https://github.com/Increase/increase-python/commit/a1eb1d6c59fbddab4c2e1f663d0f430458786154))
+
 ## 0.60.0 (2024-05-01)
 
 Full Changelog: [v0.59.0...v0.60.0](https://github.com/Increase/increase-python/compare/v0.59.0...v0.60.0)
