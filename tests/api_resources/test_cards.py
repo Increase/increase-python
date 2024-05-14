@@ -31,17 +31,17 @@ class TestCards:
         card = client.cards.create(
             account_id="account_in71c4amph0vgo2qllky",
             billing_address={
+                "city": "x",
                 "line1": "x",
                 "line2": "x",
-                "city": "x",
-                "state": "x",
                 "postal_code": "x",
+                "state": "x",
             },
             description="Card for Ian Crease",
             digital_wallet={
+                "digital_card_profile_id": "string",
                 "email": "x",
                 "phone": "x",
-                "digital_card_profile_id": "string",
             },
             entity_id="string",
         )
@@ -121,17 +121,17 @@ class TestCards:
         card = client.cards.update(
             "string",
             billing_address={
+                "city": "x",
                 "line1": "x",
                 "line2": "x",
-                "city": "x",
-                "state": "x",
                 "postal_code": "x",
+                "state": "x",
             },
             description="New description",
             digital_wallet={
+                "digital_card_profile_id": "string",
                 "email": "x",
                 "phone": "x",
-                "digital_card_profile_id": "string",
             },
             entity_id="string",
             status="active",
@@ -264,17 +264,17 @@ class TestAsyncCards:
         card = await async_client.cards.create(
             account_id="account_in71c4amph0vgo2qllky",
             billing_address={
+                "city": "x",
                 "line1": "x",
                 "line2": "x",
-                "city": "x",
-                "state": "x",
                 "postal_code": "x",
+                "state": "x",
             },
             description="Card for Ian Crease",
             digital_wallet={
+                "digital_card_profile_id": "string",
                 "email": "x",
                 "phone": "x",
-                "digital_card_profile_id": "string",
             },
             entity_id="string",
         )
@@ -354,17 +354,17 @@ class TestAsyncCards:
         card = await async_client.cards.update(
             "string",
             billing_address={
+                "city": "x",
                 "line1": "x",
                 "line2": "x",
-                "city": "x",
-                "state": "x",
                 "postal_code": "x",
+                "state": "x",
             },
             description="New description",
             digital_wallet={
+                "digital_card_profile_id": "string",
                 "email": "x",
                 "phone": "x",
-                "digital_card_profile_id": "string",
             },
             entity_id="string",
             status="active",

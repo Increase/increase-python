@@ -23,18 +23,18 @@ class TestBeneficialOwners:
         beneficial_owner = client.entities.beneficial_owners.create(
             beneficial_owner={
                 "individual": {
-                    "name": "Ian Crease",
-                    "date_of_birth": parse_date("1970-01-31"),
                     "address": {
-                        "line1": "33 Liberty Street",
                         "city": "New York",
+                        "line1": "33 Liberty Street",
                         "state": "NY",
                         "zip": "10045",
                     },
+                    "date_of_birth": parse_date("1970-01-31"),
                     "identification": {
                         "method": "social_security_number",
                         "number": "078051120",
                     },
+                    "name": "Ian Crease",
                 },
                 "prongs": ["control"],
             },
@@ -46,41 +46,41 @@ class TestBeneficialOwners:
     def test_method_create_with_all_params(self, client: Increase) -> None:
         beneficial_owner = client.entities.beneficial_owners.create(
             beneficial_owner={
+                "company_title": "CEO",
                 "individual": {
-                    "name": "Ian Crease",
-                    "date_of_birth": parse_date("1970-01-31"),
                     "address": {
+                        "city": "New York",
                         "line1": "33 Liberty Street",
                         "line2": "x",
-                        "city": "New York",
                         "state": "NY",
                         "zip": "10045",
                     },
                     "confirmed_no_us_tax_id": True,
+                    "date_of_birth": parse_date("1970-01-31"),
                     "identification": {
-                        "method": "social_security_number",
-                        "number": "078051120",
-                        "passport": {
-                            "file_id": "string",
-                            "expiration_date": parse_date("2019-12-27"),
-                            "country": "x",
-                        },
                         "drivers_license": {
-                            "file_id": "string",
                             "back_file_id": "string",
                             "expiration_date": parse_date("2019-12-27"),
+                            "file_id": "string",
                             "state": "x",
                         },
+                        "method": "social_security_number",
+                        "number": "078051120",
                         "other": {
+                            "back_file_id": "string",
                             "country": "x",
                             "description": "x",
                             "expiration_date": parse_date("2019-12-27"),
                             "file_id": "string",
-                            "back_file_id": "string",
+                        },
+                        "passport": {
+                            "country": "x",
+                            "expiration_date": parse_date("2019-12-27"),
+                            "file_id": "string",
                         },
                     },
+                    "name": "Ian Crease",
                 },
-                "company_title": "CEO",
                 "prongs": ["control"],
             },
             entity_id="entity_n8y8tnk2p9339ti393yi",
@@ -92,18 +92,18 @@ class TestBeneficialOwners:
         response = client.entities.beneficial_owners.with_raw_response.create(
             beneficial_owner={
                 "individual": {
-                    "name": "Ian Crease",
-                    "date_of_birth": parse_date("1970-01-31"),
                     "address": {
-                        "line1": "33 Liberty Street",
                         "city": "New York",
+                        "line1": "33 Liberty Street",
                         "state": "NY",
                         "zip": "10045",
                     },
+                    "date_of_birth": parse_date("1970-01-31"),
                     "identification": {
                         "method": "social_security_number",
                         "number": "078051120",
                     },
+                    "name": "Ian Crease",
                 },
                 "prongs": ["control"],
             },
@@ -120,18 +120,18 @@ class TestBeneficialOwners:
         with client.entities.beneficial_owners.with_streaming_response.create(
             beneficial_owner={
                 "individual": {
-                    "name": "Ian Crease",
-                    "date_of_birth": parse_date("1970-01-31"),
                     "address": {
-                        "line1": "33 Liberty Street",
                         "city": "New York",
+                        "line1": "33 Liberty Street",
                         "state": "NY",
                         "zip": "10045",
                     },
+                    "date_of_birth": parse_date("1970-01-31"),
                     "identification": {
                         "method": "social_security_number",
                         "number": "078051120",
                     },
+                    "name": "Ian Crease",
                 },
                 "prongs": ["control"],
             },
@@ -183,8 +183,8 @@ class TestBeneficialOwners:
     def test_method_update_address(self, client: Increase) -> None:
         beneficial_owner = client.entities.beneficial_owners.update_address(
             address={
-                "line1": "33 Liberty Street",
                 "city": "New York",
+                "line1": "33 Liberty Street",
                 "state": "NY",
                 "zip": "10045",
             },
@@ -197,9 +197,9 @@ class TestBeneficialOwners:
     def test_method_update_address_with_all_params(self, client: Increase) -> None:
         beneficial_owner = client.entities.beneficial_owners.update_address(
             address={
+                "city": "New York",
                 "line1": "33 Liberty Street",
                 "line2": "Unit 2",
-                "city": "New York",
                 "state": "NY",
                 "zip": "10045",
             },
@@ -212,8 +212,8 @@ class TestBeneficialOwners:
     def test_raw_response_update_address(self, client: Increase) -> None:
         response = client.entities.beneficial_owners.with_raw_response.update_address(
             address={
-                "line1": "33 Liberty Street",
                 "city": "New York",
+                "line1": "33 Liberty Street",
                 "state": "NY",
                 "zip": "10045",
             },
@@ -230,8 +230,8 @@ class TestBeneficialOwners:
     def test_streaming_response_update_address(self, client: Increase) -> None:
         with client.entities.beneficial_owners.with_streaming_response.update_address(
             address={
-                "line1": "33 Liberty Street",
                 "city": "New York",
+                "line1": "33 Liberty Street",
                 "state": "NY",
                 "zip": "10045",
             },
@@ -255,18 +255,18 @@ class TestAsyncBeneficialOwners:
         beneficial_owner = await async_client.entities.beneficial_owners.create(
             beneficial_owner={
                 "individual": {
-                    "name": "Ian Crease",
-                    "date_of_birth": parse_date("1970-01-31"),
                     "address": {
-                        "line1": "33 Liberty Street",
                         "city": "New York",
+                        "line1": "33 Liberty Street",
                         "state": "NY",
                         "zip": "10045",
                     },
+                    "date_of_birth": parse_date("1970-01-31"),
                     "identification": {
                         "method": "social_security_number",
                         "number": "078051120",
                     },
+                    "name": "Ian Crease",
                 },
                 "prongs": ["control"],
             },
@@ -278,41 +278,41 @@ class TestAsyncBeneficialOwners:
     async def test_method_create_with_all_params(self, async_client: AsyncIncrease) -> None:
         beneficial_owner = await async_client.entities.beneficial_owners.create(
             beneficial_owner={
+                "company_title": "CEO",
                 "individual": {
-                    "name": "Ian Crease",
-                    "date_of_birth": parse_date("1970-01-31"),
                     "address": {
+                        "city": "New York",
                         "line1": "33 Liberty Street",
                         "line2": "x",
-                        "city": "New York",
                         "state": "NY",
                         "zip": "10045",
                     },
                     "confirmed_no_us_tax_id": True,
+                    "date_of_birth": parse_date("1970-01-31"),
                     "identification": {
-                        "method": "social_security_number",
-                        "number": "078051120",
-                        "passport": {
-                            "file_id": "string",
-                            "expiration_date": parse_date("2019-12-27"),
-                            "country": "x",
-                        },
                         "drivers_license": {
-                            "file_id": "string",
                             "back_file_id": "string",
                             "expiration_date": parse_date("2019-12-27"),
+                            "file_id": "string",
                             "state": "x",
                         },
+                        "method": "social_security_number",
+                        "number": "078051120",
                         "other": {
+                            "back_file_id": "string",
                             "country": "x",
                             "description": "x",
                             "expiration_date": parse_date("2019-12-27"),
                             "file_id": "string",
-                            "back_file_id": "string",
+                        },
+                        "passport": {
+                            "country": "x",
+                            "expiration_date": parse_date("2019-12-27"),
+                            "file_id": "string",
                         },
                     },
+                    "name": "Ian Crease",
                 },
-                "company_title": "CEO",
                 "prongs": ["control"],
             },
             entity_id="entity_n8y8tnk2p9339ti393yi",
@@ -324,18 +324,18 @@ class TestAsyncBeneficialOwners:
         response = await async_client.entities.beneficial_owners.with_raw_response.create(
             beneficial_owner={
                 "individual": {
-                    "name": "Ian Crease",
-                    "date_of_birth": parse_date("1970-01-31"),
                     "address": {
-                        "line1": "33 Liberty Street",
                         "city": "New York",
+                        "line1": "33 Liberty Street",
                         "state": "NY",
                         "zip": "10045",
                     },
+                    "date_of_birth": parse_date("1970-01-31"),
                     "identification": {
                         "method": "social_security_number",
                         "number": "078051120",
                     },
+                    "name": "Ian Crease",
                 },
                 "prongs": ["control"],
             },
@@ -352,18 +352,18 @@ class TestAsyncBeneficialOwners:
         async with async_client.entities.beneficial_owners.with_streaming_response.create(
             beneficial_owner={
                 "individual": {
-                    "name": "Ian Crease",
-                    "date_of_birth": parse_date("1970-01-31"),
                     "address": {
-                        "line1": "33 Liberty Street",
                         "city": "New York",
+                        "line1": "33 Liberty Street",
                         "state": "NY",
                         "zip": "10045",
                     },
+                    "date_of_birth": parse_date("1970-01-31"),
                     "identification": {
                         "method": "social_security_number",
                         "number": "078051120",
                     },
+                    "name": "Ian Crease",
                 },
                 "prongs": ["control"],
             },
@@ -415,8 +415,8 @@ class TestAsyncBeneficialOwners:
     async def test_method_update_address(self, async_client: AsyncIncrease) -> None:
         beneficial_owner = await async_client.entities.beneficial_owners.update_address(
             address={
-                "line1": "33 Liberty Street",
                 "city": "New York",
+                "line1": "33 Liberty Street",
                 "state": "NY",
                 "zip": "10045",
             },
@@ -429,9 +429,9 @@ class TestAsyncBeneficialOwners:
     async def test_method_update_address_with_all_params(self, async_client: AsyncIncrease) -> None:
         beneficial_owner = await async_client.entities.beneficial_owners.update_address(
             address={
+                "city": "New York",
                 "line1": "33 Liberty Street",
                 "line2": "Unit 2",
-                "city": "New York",
                 "state": "NY",
                 "zip": "10045",
             },
@@ -444,8 +444,8 @@ class TestAsyncBeneficialOwners:
     async def test_raw_response_update_address(self, async_client: AsyncIncrease) -> None:
         response = await async_client.entities.beneficial_owners.with_raw_response.update_address(
             address={
-                "line1": "33 Liberty Street",
                 "city": "New York",
+                "line1": "33 Liberty Street",
                 "state": "NY",
                 "zip": "10045",
             },
@@ -462,8 +462,8 @@ class TestAsyncBeneficialOwners:
     async def test_streaming_response_update_address(self, async_client: AsyncIncrease) -> None:
         async with async_client.entities.beneficial_owners.with_streaming_response.update_address(
             address={
-                "line1": "33 Liberty Street",
                 "city": "New York",
+                "line1": "33 Liberty Street",
                 "state": "NY",
                 "zip": "10045",
             },
