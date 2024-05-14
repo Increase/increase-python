@@ -30,14 +30,14 @@ class TestPhysicalCards:
                 "last_name": "Crease",
             },
             shipment={
-                "method": "usps",
                 "address": {
-                    "name": "Ian Crease",
-                    "line1": "33 Liberty Street",
                     "city": "New York",
-                    "state": "NY",
+                    "line1": "33 Liberty Street",
+                    "name": "Ian Crease",
                     "postal_code": "10045",
+                    "state": "NY",
                 },
+                "method": "usps",
             },
         )
         assert_matches_type(PhysicalCard, physical_card, path=["response"])
@@ -51,17 +51,17 @@ class TestPhysicalCards:
                 "last_name": "Crease",
             },
             shipment={
-                "method": "usps",
                 "address": {
-                    "name": "Ian Crease",
+                    "city": "New York",
                     "line1": "33 Liberty Street",
                     "line2": "Unit 2",
                     "line3": "x",
+                    "name": "Ian Crease",
                     "phone_number": "x",
-                    "city": "New York",
-                    "state": "NY",
                     "postal_code": "10045",
+                    "state": "NY",
                 },
+                "method": "usps",
             },
             physical_card_profile_id="string",
         )
@@ -76,14 +76,14 @@ class TestPhysicalCards:
                 "last_name": "Crease",
             },
             shipment={
-                "method": "usps",
                 "address": {
-                    "name": "Ian Crease",
-                    "line1": "33 Liberty Street",
                     "city": "New York",
-                    "state": "NY",
+                    "line1": "33 Liberty Street",
+                    "name": "Ian Crease",
                     "postal_code": "10045",
+                    "state": "NY",
                 },
+                "method": "usps",
             },
         )
 
@@ -101,14 +101,14 @@ class TestPhysicalCards:
                 "last_name": "Crease",
             },
             shipment={
-                "method": "usps",
                 "address": {
-                    "name": "Ian Crease",
-                    "line1": "33 Liberty Street",
                     "city": "New York",
-                    "state": "NY",
+                    "line1": "33 Liberty Street",
+                    "name": "Ian Crease",
                     "postal_code": "10045",
+                    "state": "NY",
                 },
+                "method": "usps",
             },
         ) as response:
             assert not response.is_closed
@@ -253,14 +253,14 @@ class TestAsyncPhysicalCards:
                 "last_name": "Crease",
             },
             shipment={
-                "method": "usps",
                 "address": {
-                    "name": "Ian Crease",
-                    "line1": "33 Liberty Street",
                     "city": "New York",
-                    "state": "NY",
+                    "line1": "33 Liberty Street",
+                    "name": "Ian Crease",
                     "postal_code": "10045",
+                    "state": "NY",
                 },
+                "method": "usps",
             },
         )
         assert_matches_type(PhysicalCard, physical_card, path=["response"])
@@ -274,17 +274,17 @@ class TestAsyncPhysicalCards:
                 "last_name": "Crease",
             },
             shipment={
-                "method": "usps",
                 "address": {
-                    "name": "Ian Crease",
+                    "city": "New York",
                     "line1": "33 Liberty Street",
                     "line2": "Unit 2",
                     "line3": "x",
+                    "name": "Ian Crease",
                     "phone_number": "x",
-                    "city": "New York",
-                    "state": "NY",
                     "postal_code": "10045",
+                    "state": "NY",
                 },
+                "method": "usps",
             },
             physical_card_profile_id="string",
         )
@@ -299,14 +299,14 @@ class TestAsyncPhysicalCards:
                 "last_name": "Crease",
             },
             shipment={
-                "method": "usps",
                 "address": {
-                    "name": "Ian Crease",
-                    "line1": "33 Liberty Street",
                     "city": "New York",
-                    "state": "NY",
+                    "line1": "33 Liberty Street",
+                    "name": "Ian Crease",
                     "postal_code": "10045",
+                    "state": "NY",
                 },
+                "method": "usps",
             },
         )
 
@@ -324,14 +324,14 @@ class TestAsyncPhysicalCards:
                 "last_name": "Crease",
             },
             shipment={
-                "method": "usps",
                 "address": {
-                    "name": "Ian Crease",
-                    "line1": "33 Liberty Street",
                     "city": "New York",
-                    "state": "NY",
+                    "line1": "33 Liberty Street",
+                    "name": "Ian Crease",
                     "postal_code": "10045",
+                    "state": "NY",
                 },
+                "method": "usps",
             },
         ) as response:
             assert not response.is_closed

@@ -43,9 +43,9 @@ class TestDigitalCardProfiles:
             contact_phone="+18885551212",
             contact_website="https://example.com",
             text_color={
-                "red": 26,
-                "green": 43,
                 "blue": 59,
+                "green": 43,
+                "red": 26,
             },
         )
         assert_matches_type(DigitalCardProfile, digital_card_profile, path=["response"])
@@ -217,9 +217,9 @@ class TestDigitalCardProfiles:
             description="x",
             issuer_name="x",
             text_color={
-                "red": 0,
-                "green": 0,
                 "blue": 0,
+                "green": 0,
+                "red": 0,
             },
         )
         assert_matches_type(DigitalCardProfile, digital_card_profile, path=["response"])
@@ -284,9 +284,9 @@ class TestAsyncDigitalCardProfiles:
             contact_phone="+18885551212",
             contact_website="https://example.com",
             text_color={
-                "red": 26,
-                "green": 43,
                 "blue": 59,
+                "green": 43,
+                "red": 26,
             },
         )
         assert_matches_type(DigitalCardProfile, digital_card_profile, path=["response"])
@@ -458,9 +458,9 @@ class TestAsyncDigitalCardProfiles:
             description="x",
             issuer_name="x",
             text_color={
-                "red": 0,
-                "green": 0,
                 "blue": 0,
+                "green": 0,
+                "red": 0,
             },
         )
         assert_matches_type(DigitalCardProfile, digital_card_profile, path=["response"])

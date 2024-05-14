@@ -168,7 +168,10 @@ class RealTimePaymentsTransfer(BaseModel):
     """
 
     creditor_name: str
-    """The name of the transfer's recipient as provided by the sender."""
+    """The name of the transfer's recipient.
+
+    This is set by the sender when creating the transfer.
+    """
 
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
@@ -186,7 +189,7 @@ class RealTimePaymentsTransfer(BaseModel):
     debtor_name: Optional[str] = None
     """The name of the transfer's sender.
 
-    If not provided, the account's entity name will be used.
+    If not provided, defaults to the name of the account's entity.
     """
 
     destination_account_number: str
@@ -270,9 +273,15 @@ class RealTimePaymentsTransfer(BaseModel):
     """
 
     ultimate_creditor_name: Optional[str] = None
-    """The name of the party on whose behalf the creditor is receiving the payment."""
+    """The name of the ultimate recipient of the transfer.
+
+    Set this if the creditor is an intermediary receiving the payment for someone
+    else.
+    """
 
     ultimate_debtor_name: Optional[str] = None
-    """
-    The name of the the party on whose behalf the debtor is instructing the payment.
+    """The name of the ultimate sender of the transfer.
+
+    Set this if the funds are being sent on behalf of someone who is not the account
+    holder at Increase.
     """

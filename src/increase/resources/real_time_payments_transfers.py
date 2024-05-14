@@ -68,8 +68,8 @@ class RealTimePaymentsTransfers(SyncAPIResource):
 
           source_account_number_id: The identifier of the Account Number from which to send the transfer.
 
-          debtor_name: The name of the transfer's sender. If not provided, the account's entity name
-              will be used.
+          debtor_name: The name of the transfer's sender. If not provided, defaults to the name of the
+              account's entity.
 
           destination_account_number: The destination account number.
 
@@ -82,9 +82,11 @@ class RealTimePaymentsTransfers(SyncAPIResource):
 
           require_approval: Whether the transfer requires explicit approval via the dashboard or API.
 
-          ultimate_creditor_name: The name of the party on whose behalf the creditor is receiving the payment.
+          ultimate_creditor_name: The name of the ultimate recipient of the transfer. Set this if the creditor is
+              an intermediary receiving the payment for someone else.
 
-          ultimate_debtor_name: The name of the the party on whose behalf the debtor is instructing the payment.
+          ultimate_debtor_name: The name of the ultimate sender of the transfer. Set this if the funds are being
+              sent on behalf of someone who is not the account holder at Increase.
 
           extra_headers: Send extra headers
 
@@ -272,8 +274,8 @@ class AsyncRealTimePaymentsTransfers(AsyncAPIResource):
 
           source_account_number_id: The identifier of the Account Number from which to send the transfer.
 
-          debtor_name: The name of the transfer's sender. If not provided, the account's entity name
-              will be used.
+          debtor_name: The name of the transfer's sender. If not provided, defaults to the name of the
+              account's entity.
 
           destination_account_number: The destination account number.
 
@@ -286,9 +288,11 @@ class AsyncRealTimePaymentsTransfers(AsyncAPIResource):
 
           require_approval: Whether the transfer requires explicit approval via the dashboard or API.
 
-          ultimate_creditor_name: The name of the party on whose behalf the creditor is receiving the payment.
+          ultimate_creditor_name: The name of the ultimate recipient of the transfer. Set this if the creditor is
+              an intermediary receiving the payment for someone else.
 
-          ultimate_debtor_name: The name of the the party on whose behalf the debtor is instructing the payment.
+          ultimate_debtor_name: The name of the ultimate sender of the transfer. Set this if the funds are being
+              sent on behalf of someone who is not the account holder at Increase.
 
           extra_headers: Send extra headers
 
