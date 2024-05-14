@@ -26,8 +26,8 @@ class TestRealTimePaymentsRequestForPayments:
         real_time_payments_request_for_payment = client.real_time_payments_request_for_payments.create(
             amount=100,
             debtor={
-                "name": "Ian Crease",
                 "address": {"country": "US"},
+                "name": "Ian Crease",
             },
             destination_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
             expires_at=parse_date("2025-12-31"),
@@ -44,8 +44,8 @@ class TestRealTimePaymentsRequestForPayments:
         response = client.real_time_payments_request_for_payments.with_raw_response.create(
             amount=100,
             debtor={
-                "name": "Ian Crease",
                 "address": {"country": "US"},
+                "name": "Ian Crease",
             },
             destination_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
             expires_at=parse_date("2025-12-31"),
@@ -66,8 +66,8 @@ class TestRealTimePaymentsRequestForPayments:
         with client.real_time_payments_request_for_payments.with_streaming_response.create(
             amount=100,
             debtor={
-                "name": "Ian Crease",
                 "address": {"country": "US"},
+                "name": "Ian Crease",
             },
             destination_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
             expires_at=parse_date("2025-12-31"),
@@ -189,8 +189,8 @@ class TestAsyncRealTimePaymentsRequestForPayments:
         real_time_payments_request_for_payment = await async_client.real_time_payments_request_for_payments.create(
             amount=100,
             debtor={
-                "name": "Ian Crease",
                 "address": {"country": "US"},
+                "name": "Ian Crease",
             },
             destination_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
             expires_at=parse_date("2025-12-31"),
@@ -207,8 +207,8 @@ class TestAsyncRealTimePaymentsRequestForPayments:
         response = await async_client.real_time_payments_request_for_payments.with_raw_response.create(
             amount=100,
             debtor={
-                "name": "Ian Crease",
                 "address": {"country": "US"},
+                "name": "Ian Crease",
             },
             destination_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
             expires_at=parse_date("2025-12-31"),
@@ -229,8 +229,8 @@ class TestAsyncRealTimePaymentsRequestForPayments:
         async with async_client.real_time_payments_request_for_payments.with_streaming_response.create(
             amount=100,
             debtor={
-                "name": "Ian Crease",
                 "address": {"country": "US"},
+                "name": "Ian Crease",
             },
             destination_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
             expires_at=parse_date("2025-12-31"),

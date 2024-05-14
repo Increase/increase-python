@@ -70,8 +70,8 @@ class TestRealTimeDecisions:
             digital_wallet_authentication={"result": "success"},
             digital_wallet_token={
                 "approval": {
-                    "phone": "x",
                     "email": "x",
+                    "phone": "x",
                 },
                 "decline": {"reason": "x"},
             },
@@ -166,8 +166,8 @@ class TestAsyncRealTimeDecisions:
             digital_wallet_authentication={"result": "success"},
             digital_wallet_token={
                 "approval": {
-                    "phone": "x",
                     "email": "x",
+                    "phone": "x",
                 },
                 "decline": {"reason": "x"},
             },
