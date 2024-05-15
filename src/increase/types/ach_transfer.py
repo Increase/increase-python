@@ -18,6 +18,10 @@ __all__ = [
     "AddendaPaymentOrderRemittanceAdviceInvoice",
     "Approval",
     "Cancellation",
+    "CreatedBy",
+    "CreatedByAPIKey",
+    "CreatedByOAuthApplication",
+    "CreatedByUser",
     "NotificationsOfChange",
     "Return",
     "Submission",
@@ -110,6 +114,42 @@ class Cancellation(BaseModel):
     If the Transfer was canceled by a user in the dashboard, the email address of
     that user.
     """
+
+
+class CreatedByAPIKey(BaseModel):
+    description: Optional[str] = None
+    """The description set for the API key when it was created."""
+
+
+class CreatedByOAuthApplication(BaseModel):
+    name: str
+    """The name of the OAuth Application."""
+
+
+class CreatedByUser(BaseModel):
+    email: str
+    """The email address of the User."""
+
+
+class CreatedBy(BaseModel):
+    api_key: Optional[CreatedByAPIKey] = None
+    """If present, details about the API key that created the transfer."""
+
+    category: Literal["api_key", "oauth_application", "user"]
+    """The type of object that created this transfer.
+
+    - `api_key` - An API key. Details will be under the `api_key` object.
+    - `oauth_application` - An OAuth application you connected to Increase. Details
+      will be under the `oauth_application` object.
+    - `user` - A User in the Increase dashboard. Details will be under the `user`
+      object.
+    """
+
+    oauth_application: Optional[CreatedByOAuthApplication] = None
+    """If present, details about the OAuth Application that created the transfer."""
+
+    user: Optional[CreatedByUser] = None
+    """If present, details about the User that created the transfer."""
 
 
 class NotificationsOfChange(BaseModel):
@@ -519,6 +559,9 @@ class ACHTransfer(BaseModel):
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the transfer was created.
     """
+
+    created_by: Optional[CreatedBy] = None
+    """What object created the transfer, either via the API or the dashboard."""
 
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
