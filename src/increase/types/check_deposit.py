@@ -59,6 +59,9 @@ class DepositRejection(BaseModel):
     For dollars, for example, this is cents.
     """
 
+    check_deposit_id: str
+    """The identifier of the Check Deposit that was rejected."""
+
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
