@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.62.0 (2024-05-15)
+
+Full Changelog: [v0.61.0...v0.62.0](https://github.com/Increase/increase-python/compare/v0.61.0...v0.62.0)
+
+### Features
+
+* **api:** updates ([#454](https://github.com/Increase/increase-python/issues/454)) ([8bb9e1d](https://github.com/Increase/increase-python/commit/8bb9e1d747b8d07767ea6d6235e1799e842f5fcf))
+
+
+### Chores
+
+* **docs:** add SECURITY.md ([#449](https://github.com/Increase/increase-python/issues/449)) ([443f77f](https://github.com/Increase/increase-python/commit/443f77ff5bb7fbc482709367860a2292c94f2377))
+* **internal:** add slightly better logging to scripts ([#453](https://github.com/Increase/increase-python/issues/453)) ([c5bf320](https://github.com/Increase/increase-python/commit/c5bf320fa2b5bc4cc1991857d29353c8b3112700))
+* **internal:** bump pydantic dependency ([#451](https://github.com/Increase/increase-python/issues/451)) ([0b051ab](https://github.com/Increase/increase-python/commit/0b051abd999f2399c012f0e564fe7853f92fc079))
+
+
+### Documentation
+
+* **api:** update examples & docstrings ([#452](https://github.com/Increase/increase-python/issues/452)) ([62c69aa](https://github.com/Increase/increase-python/commit/62c69aa9ec450d02397237d34ba10b5ec1c49df8))
+
 ## 0.61.0 (2024-05-10)
 
 Full Changelog: [v0.60.0...v0.61.0](https://github.com/Increase/increase-python/compare/v0.60.0...v0.61.0)
