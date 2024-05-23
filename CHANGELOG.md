@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.63.0 (2024-05-23)
+
+Full Changelog: [v0.62.0...v0.63.0](https://github.com/Increase/increase-python/compare/v0.62.0...v0.63.0)
+
+### Features
+
+* **api:** realtime decision updates ([#458](https://github.com/Increase/increase-python/issues/458)) ([70f1aa6](https://github.com/Increase/increase-python/commit/70f1aa6903950a868cc2aa68f312ef7f346abce2))
+
+
+### Chores
+
+* **ci:** update rye install location ([#455](https://github.com/Increase/increase-python/issues/455)) ([91339ae](https://github.com/Increase/increase-python/commit/91339ae65c772dd7c77e4482db18756d5a2e7159))
+* **ci:** update rye install location ([#457](https://github.com/Increase/increase-python/issues/457)) ([d4d40a3](https://github.com/Increase/increase-python/commit/d4d40a3a220b359852510decd5c1cc7a07762ab7))
+
 ## 0.62.0 (2024-05-15)
 
 Full Changelog: [v0.61.0...v0.62.0](https://github.com/Increase/increase-python/compare/v0.61.0...v0.62.0)
