@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.64.0 (2024-05-29)
+
+Full Changelog: [v0.63.0...v0.64.0](https://github.com/Increase/increase-python/compare/v0.63.0...v0.64.0)
+
+### Features
+
+* **api:** add trace number to ach transfer returns ([#463](https://github.com/Increase/increase-python/issues/463)) ([fd42796](https://github.com/Increase/increase-python/commit/fd4279689444b716ddbe0af7536a522989a7139a))
+
+
+### Chores
+
+* **internal:** bump pyright ([#459](https://github.com/Increase/increase-python/issues/459)) ([96580ed](https://github.com/Increase/increase-python/commit/96580ed04b0e690e17ae1d9e34523df87d836158))
+* **internal:** update bootstrap script ([#462](https://github.com/Increase/increase-python/issues/462)) ([608499b](https://github.com/Increase/increase-python/commit/608499b0e6a893b565e9a589fbc1f9f5fdddac74))
+
+
+### Documentation
+
+* **contributing:** update references to rye-up.com ([#461](https://github.com/Increase/increase-python/issues/461)) ([329f03c](https://github.com/Increase/increase-python/commit/329f03c96b226f0959ddabb7d917004aa65d64f3))
+
 ## 0.63.0 (2024-05-23)
 
 Full Changelog: [v0.62.0...v0.63.0](https://github.com/Increase/increase-python/compare/v0.62.0...v0.63.0)
