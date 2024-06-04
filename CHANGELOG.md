@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.66.0 (2024-06-04)
+
+Full Changelog: [v0.65.0...v0.66.0](https://github.com/Increase/increase-python/compare/v0.65.0...v0.66.0)
+
+### Features
+
+* **api:** add `default_digital_card_profile_id` property ([#466](https://github.com/Increase/increase-python/issues/466)) ([1216c65](https://github.com/Increase/increase-python/commit/1216c650031459810ada88d0a7c2c23c22fd8219))
+
 ## 0.65.0 (2024-06-03)
 
 Full Changelog: [v0.64.0...v0.65.0](https://github.com/Increase/increase-python/compare/v0.64.0...v0.65.0)
