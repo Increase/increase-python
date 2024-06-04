@@ -22,6 +22,9 @@ class Program(BaseModel):
     was created.
     """
 
+    default_digital_card_profile_id: Optional[str] = None
+    """The default configuration for digital cards attached to this Program."""
+
     name: str
     """The name of the Program."""
 
