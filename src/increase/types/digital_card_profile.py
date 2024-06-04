@@ -59,12 +59,6 @@ class DigitalCardProfile(BaseModel):
     [idempotency](https://increase.com/documentation/idempotency-keys).
     """
 
-    is_default: bool
-    """
-    Whether this Digital Card Profile is the default for all cards in its Increase
-    group.
-    """
-
     issuer_name: str
     """A user-facing description for whoever is issuing the card."""
 
