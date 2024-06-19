@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.66.1 (2024-06-19)
+
+Full Changelog: [v0.66.0...v0.66.1](https://github.com/Increase/increase-python/compare/v0.66.0...v0.66.1)
+
+### Bug Fixes
+
+* **client/async:** avoid blocking io call for platform headers ([#470](https://github.com/Increase/increase-python/issues/470)) ([869d2f7](https://github.com/Increase/increase-python/commit/869d2f71aff8ffed1ed2ee34707873d958754a00))
+
+
+### Chores
+
+* **internal:** add a `default_query` method ([#468](https://github.com/Increase/increase-python/issues/468)) ([5d5cbee](https://github.com/Increase/increase-python/commit/5d5cbeed75b1c9865f2f59259a6f37e616496cb0))
+
 ## 0.66.0 (2024-06-04)
 
 Full Changelog: [v0.65.0...v0.66.0](https://github.com/Increase/increase-python/compare/v0.65.0...v0.66.0)
