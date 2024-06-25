@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.66.2 (2024-06-25)
+
+Full Changelog: [v0.66.1...v0.66.2](https://github.com/Increase/increase-python/compare/v0.66.1...v0.66.2)
+
+### Bug Fixes
+
+* **docs:** fix link to advanced python httpx docs ([#471](https://github.com/Increase/increase-python/issues/471)) ([bea586d](https://github.com/Increase/increase-python/commit/bea586d543c67477073a53c9fc874a230c778c0a))
+
 ## 0.66.1 (2024-06-19)
 
 Full Changelog: [v0.66.0...v0.66.1](https://github.com/Increase/increase-python/compare/v0.66.0...v0.66.1)
