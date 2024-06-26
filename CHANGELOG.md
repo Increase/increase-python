@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.66.3 (2024-06-26)
+
+Full Changelog: [v0.66.2...v0.66.3](https://github.com/Increase/increase-python/compare/v0.66.2...v0.66.3)
+
+### Bug Fixes
+
+* temporarily patch upstream version to fix broken release flow ([#473](https://github.com/Increase/increase-python/issues/473)) ([46426eb](https://github.com/Increase/increase-python/commit/46426eb8ecb9b771b8ba30671a78cae2dbb884b0))
+
 ## 0.66.2 (2024-06-25)
 
 Full Changelog: [v0.66.1...v0.66.2](https://github.com/Increase/increase-python/compare/v0.66.1...v0.66.2)
