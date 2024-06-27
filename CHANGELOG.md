@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.66.4 (2024-06-27)
+
+Full Changelog: [v0.66.3...v0.66.4](https://github.com/Increase/increase-python/compare/v0.66.3...v0.66.4)
+
+### Bug Fixes
+
+* **build:** include more files in sdist builds ([#475](https://github.com/Increase/increase-python/issues/475)) ([cafa0f9](https://github.com/Increase/increase-python/commit/cafa0f94a22c2265ad866cc23f1e046f76938618))
+
 ## 0.66.3 (2024-06-26)
 
 Full Changelog: [v0.66.2...v0.66.3](https://github.com/Increase/increase-python/compare/v0.66.2...v0.66.3)
