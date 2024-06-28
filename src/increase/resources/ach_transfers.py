@@ -55,6 +55,7 @@ class ACHTransfers(SyncAPIResource):
         funding: Literal["checking", "savings"] | NotGiven = NOT_GIVEN,
         individual_id: str | NotGiven = NOT_GIVEN,
         individual_name: str | NotGiven = NOT_GIVEN,
+        preferred_effective_date: ach_transfer_create_params.PreferredEffectiveDate | NotGiven = NOT_GIVEN,
         require_approval: bool | NotGiven = NOT_GIVEN,
         routing_number: str | NotGiven = NOT_GIVEN,
         standard_entry_class_code: Literal[
@@ -129,6 +130,11 @@ class ACHTransfers(SyncAPIResource):
           individual_name: The name of the transfer recipient. This value is informational and not verified
               by the recipient's bank.
 
+          preferred_effective_date: Configuration for how the effective date of the transfer will be set. This
+              determines same-day vs future-dated settlement timing. If not set, defaults to a
+              `settlement_schedule` of `same_day`. If set, exactly one of the child atributes
+              must be set.
+
           require_approval: Whether the transfer requires explicit approval via the dashboard or API.
 
           routing_number: The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
@@ -170,6 +176,7 @@ class ACHTransfers(SyncAPIResource):
                     "funding": funding,
                     "individual_id": individual_id,
                     "individual_name": individual_name,
+                    "preferred_effective_date": preferred_effective_date,
                     "require_approval": require_approval,
                     "routing_number": routing_number,
                     "standard_entry_class_code": standard_entry_class_code,
@@ -398,6 +405,7 @@ class AsyncACHTransfers(AsyncAPIResource):
         funding: Literal["checking", "savings"] | NotGiven = NOT_GIVEN,
         individual_id: str | NotGiven = NOT_GIVEN,
         individual_name: str | NotGiven = NOT_GIVEN,
+        preferred_effective_date: ach_transfer_create_params.PreferredEffectiveDate | NotGiven = NOT_GIVEN,
         require_approval: bool | NotGiven = NOT_GIVEN,
         routing_number: str | NotGiven = NOT_GIVEN,
         standard_entry_class_code: Literal[
@@ -472,6 +480,11 @@ class AsyncACHTransfers(AsyncAPIResource):
           individual_name: The name of the transfer recipient. This value is informational and not verified
               by the recipient's bank.
 
+          preferred_effective_date: Configuration for how the effective date of the transfer will be set. This
+              determines same-day vs future-dated settlement timing. If not set, defaults to a
+              `settlement_schedule` of `same_day`. If set, exactly one of the child atributes
+              must be set.
+
           require_approval: Whether the transfer requires explicit approval via the dashboard or API.
 
           routing_number: The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
@@ -513,6 +526,7 @@ class AsyncACHTransfers(AsyncAPIResource):
                     "funding": funding,
                     "individual_id": individual_id,
                     "individual_name": individual_name,
+                    "preferred_effective_date": preferred_effective_date,
                     "require_approval": require_approval,
                     "routing_number": routing_number,
                     "standard_entry_class_code": standard_entry_class_code,

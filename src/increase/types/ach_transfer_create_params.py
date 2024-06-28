@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
+import datetime
 from typing import Union, Iterable
-from datetime import date
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
@@ -15,6 +15,7 @@ __all__ = [
     "AddendaFreeformEntry",
     "AddendaPaymentOrderRemittanceAdvice",
     "AddendaPaymentOrderRemittanceAdviceInvoice",
+    "PreferredEffectiveDate",
 ]
 
 
@@ -84,7 +85,7 @@ class ACHTransferCreateParams(TypedDict, total=False):
     - `unknown` - It's unknown what kind of entity owns the External Account.
     """
 
-    effective_date: Annotated[Union[str, date], PropertyInfo(format="iso8601")]
+    effective_date: Annotated[Union[str, datetime.date], PropertyInfo(format="iso8601")]
     """
     The transfer effective date in
     [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
@@ -111,6 +112,14 @@ class ACHTransferCreateParams(TypedDict, total=False):
     """The name of the transfer recipient.
 
     This value is informational and not verified by the recipient's bank.
+    """
+
+    preferred_effective_date: PreferredEffectiveDate
+    """Configuration for how the effective date of the transfer will be set.
+
+    This determines same-day vs future-dated settlement timing. If not set, defaults
+    to a `settlement_schedule` of `same_day`. If set, exactly one of the child
+    atributes must be set.
     """
 
     require_approval: bool
@@ -186,4 +195,24 @@ class Addenda(TypedDict, total=False):
 
     Please reach out to [support@increase.com](mailto:support@increase.com) for more
     information.
+    """
+
+
+class PreferredEffectiveDate(TypedDict, total=False):
+    date: Annotated[Union[str, datetime.date], PropertyInfo(format="iso8601")]
+    """
+    A specific date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format to
+    use as the effective date when submitting this transfer.
+    """
+
+    settlement_schedule: Literal["same_day", "future_dated"]
+    """A schedule by which Increase whill choose an effective date for the transfer.
+
+    - `same_day` - The chosen effective date will be the same as the ACH processing
+      date on which the transfer is submitted. This is necessary, but not sufficient
+      for the transfer to be settled same-day: it must also be submitted before the
+      last same-day cutoff and be less than or equal to $1,000.000.00.
+    - `future_dated` - The chosen effective date will be the business day following
+      the ACH processing date on which the transfer is submitted. The transfer will
+      be settled on that future day.
     """

@@ -25,6 +25,13 @@ class Program(BaseModel):
     default_digital_card_profile_id: Optional[str] = None
     """The default configuration for digital cards attached to this Program."""
 
+    interest_rate: str
+    """
+    The Interest Rate currently being earned on the accounts in this program, as a
+    string containing a decimal number. For example, a 1% interest rate would be
+    represented as "0.01".
+    """
+
     name: str
     """The name of the Program."""
 

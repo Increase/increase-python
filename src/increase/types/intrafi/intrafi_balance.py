@@ -18,6 +18,9 @@ class BalanceBankLocation(BaseModel):
 
 
 class Balance(BaseModel):
+    id: str
+    """The identifier of this balance."""
+
     balance: int
     """The balance, in minor units of `currency`, held with this bank."""
 
@@ -36,6 +39,9 @@ class Balance(BaseModel):
 
 
 class IntrafiBalance(BaseModel):
+    id: str
+    """The identifier of this balance."""
+
     balances: List[Balance]
     """Each entry represents a balance held at a different bank.
 

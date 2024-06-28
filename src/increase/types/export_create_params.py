@@ -26,7 +26,12 @@ __all__ = [
 class ExportCreateParams(TypedDict, total=False):
     category: Required[
         Literal[
-            "account_statement_ofx", "transaction_csv", "balance_csv", "bookkeeping_account_balance_csv", "entity_csv"
+            "account_statement_ofx",
+            "transaction_csv",
+            "balance_csv",
+            "bookkeeping_account_balance_csv",
+            "entity_csv",
+            "vendor_csv",
         ]
     ]
     """The type of Export to create.
@@ -39,6 +44,8 @@ class ExportCreateParams(TypedDict, total=False):
     - `bookkeeping_account_balance_csv` - Export a CSV of bookkeeping account
       balances for the dates in a given range.
     - `entity_csv` - Export a CSV of entities with a given status.
+    - `vendor_csv` - Export a CSV of vendors added to the third-party risk
+      management dashboard.
     """
 
     account_statement_ofx: AccountStatementOfx
@@ -69,6 +76,12 @@ class ExportCreateParams(TypedDict, total=False):
     """Options for the created export.
 
     Required if `category` is equal to `transaction_csv`.
+    """
+
+    vendor_csv: object
+    """Options for the created export.
+
+    Required if `category` is equal to `vendor_csv`.
     """
 
 

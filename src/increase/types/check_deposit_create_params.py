@@ -20,8 +20,10 @@ class CheckDepositCreateParams(TypedDict, total=False):
     back_image_file_id: Required[str]
     """The File containing the check's back image."""
 
-    currency: Required[str]
-    """The currency to use for the deposit."""
-
     front_image_file_id: Required[str]
     """The File containing the check's front image."""
+
+    description: str
+    """
+    The description you choose to give the Check Deposit, for display purposes only.
+    """

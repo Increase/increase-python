@@ -2,17 +2,18 @@
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 from datetime import datetime
-from typing_extensions import Literal, Annotated, TypedDict
+from typing_extensions import Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
-__all__ = ["ExportListParams", "Category", "CreatedAt", "Status"]
+__all__ = ["LockboxListParams", "CreatedAt"]
 
 
-class ExportListParams(TypedDict, total=False):
-    category: Category
+class LockboxListParams(TypedDict, total=False):
+    account_id: str
+    """Filter Lockboxes to those associated with the provided Account."""
 
     created_at: CreatedAt
 
@@ -32,30 +33,6 @@ class ExportListParams(TypedDict, total=False):
 
     The default (and maximum) is 100 objects.
     """
-
-    status: Status
-
-
-_CategoryReservedKeywords = TypedDict(
-    "_CategoryReservedKeywords",
-    {
-        "in": List[
-            Literal[
-                "account_statement_ofx",
-                "transaction_csv",
-                "balance_csv",
-                "bookkeeping_account_balance_csv",
-                "entity_csv",
-                "vendor_csv",
-            ]
-        ],
-    },
-    total=False,
-)
-
-
-class Category(_CategoryReservedKeywords, total=False):
-    pass
 
 
 class CreatedAt(TypedDict, total=False):
@@ -82,16 +59,3 @@ class CreatedAt(TypedDict, total=False):
     Return results on or before this
     [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
     """
-
-
-_StatusReservedKeywords = TypedDict(
-    "_StatusReservedKeywords",
-    {
-        "in": List[Literal["pending", "complete", "failed"]],
-    },
-    total=False,
-)
-
-
-class Status(_StatusReservedKeywords, total=False):
-    pass

@@ -158,6 +158,12 @@ class PhysicalCheck(BaseModel):
     return_address: Optional[PhysicalCheckReturnAddress] = None
     """The return address to be printed on the check."""
 
+    signature_text: Optional[str] = None
+    """The text that will appear as the signature on the check in cursive font.
+
+    If blank, the check will be printed with 'No signature required'.
+    """
+
 
 class StopPaymentRequest(BaseModel):
     reason: Literal["mail_delivery_failed", "rejected_by_increase", "not_authorized", "unknown"]

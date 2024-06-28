@@ -2,10 +2,12 @@
 
 from __future__ import annotations
 
+from typing_extensions import Literal
+
 import httpx
 
 from .. import _legacy_response
-from ..types import check_deposit_list_params, check_deposit_create_params
+from ..types import lockbox_list_params, lockbox_create_params, lockbox_update_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import (
     maybe_transform,
@@ -19,27 +21,24 @@ from .._base_client import (
     AsyncPaginator,
     make_request_options,
 )
-from ..types.check_deposit import CheckDeposit
+from ..types.lockbox import Lockbox
 
-__all__ = ["CheckDeposits", "AsyncCheckDeposits"]
+__all__ = ["Lockboxes", "AsyncLockboxes"]
 
 
-class CheckDeposits(SyncAPIResource):
+class Lockboxes(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> CheckDepositsWithRawResponse:
-        return CheckDepositsWithRawResponse(self)
+    def with_raw_response(self) -> LockboxesWithRawResponse:
+        return LockboxesWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> CheckDepositsWithStreamingResponse:
-        return CheckDepositsWithStreamingResponse(self)
+    def with_streaming_response(self) -> LockboxesWithStreamingResponse:
+        return LockboxesWithStreamingResponse(self)
 
     def create(
         self,
         *,
         account_id: str,
-        amount: int,
-        back_image_file_id: str,
-        front_image_file_id: str,
         description: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -48,21 +47,14 @@ class CheckDeposits(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> CheckDeposit:
+    ) -> Lockbox:
         """
-        Create a Check Deposit
+        Create a Lockbox
 
         Args:
-          account_id: The identifier for the Account to deposit the check in.
+          account_id: The Account checks sent to this Lockbox should be deposited into.
 
-          amount: The deposit amount in the minor unit of the account currency. For dollars, for
-              example, this is cents.
-
-          back_image_file_id: The File containing the check's back image.
-
-          front_image_file_id: The File containing the check's front image.
-
-          description: The description you choose to give the Check Deposit, for display purposes only.
+          description: The description you choose for the Lockbox, for display purposes.
 
           extra_headers: Send extra headers
 
@@ -75,16 +67,13 @@ class CheckDeposits(SyncAPIResource):
           idempotency_key: Specify a custom idempotency key for this request
         """
         return self._post(
-            "/check_deposits",
+            "/lockboxes",
             body=maybe_transform(
                 {
                     "account_id": account_id,
-                    "amount": amount,
-                    "back_image_file_id": back_image_file_id,
-                    "front_image_file_id": front_image_file_id,
                     "description": description,
                 },
-                check_deposit_create_params.CheckDepositCreateParams,
+                lockbox_create_params.LockboxCreateParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -93,12 +82,12 @@ class CheckDeposits(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=CheckDeposit,
+            cast_to=Lockbox,
         )
 
     def retrieve(
         self,
-        check_deposit_id: str,
+        lockbox_id: str,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -106,12 +95,12 @@ class CheckDeposits(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CheckDeposit:
+    ) -> Lockbox:
         """
-        Retrieve a Check Deposit
+        Retrieve a Lockbox
 
         Args:
-          check_deposit_id: The identifier of the Check Deposit to retrieve.
+          lockbox_id: The identifier of the Lockbox to retrieve.
 
           extra_headers: Send extra headers
 
@@ -121,21 +110,81 @@ class CheckDeposits(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not check_deposit_id:
-            raise ValueError(f"Expected a non-empty value for `check_deposit_id` but received {check_deposit_id!r}")
+        if not lockbox_id:
+            raise ValueError(f"Expected a non-empty value for `lockbox_id` but received {lockbox_id!r}")
         return self._get(
-            f"/check_deposits/{check_deposit_id}",
+            f"/lockboxes/{lockbox_id}",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CheckDeposit,
+            cast_to=Lockbox,
+        )
+
+    def update(
+        self,
+        lockbox_id: str,
+        *,
+        description: str | NotGiven = NOT_GIVEN,
+        status: Literal["active", "inactive"] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> Lockbox:
+        """
+        Update a Lockbox
+
+        Args:
+          lockbox_id: The identifier of the Lockbox.
+
+          description: The description you choose for the Lockbox.
+
+          status: This indicates if checks can be sent to the Lockbox.
+
+              - `active` - This Lockbox is active. Checks mailed to it will be deposited
+                automatically.
+              - `inactive` - This Lockbox is inactive. Checks mailed to it will not be
+                deposited.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not lockbox_id:
+            raise ValueError(f"Expected a non-empty value for `lockbox_id` but received {lockbox_id!r}")
+        return self._patch(
+            f"/lockboxes/{lockbox_id}",
+            body=maybe_transform(
+                {
+                    "description": description,
+                    "status": status,
+                },
+                lockbox_update_params.LockboxUpdateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=Lockbox,
         )
 
     def list(
         self,
         *,
         account_id: str | NotGiven = NOT_GIVEN,
-        created_at: check_deposit_list_params.CreatedAt | NotGiven = NOT_GIVEN,
+        created_at: lockbox_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         idempotency_key: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
@@ -145,12 +194,12 @@ class CheckDeposits(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncPage[CheckDeposit]:
+    ) -> SyncPage[Lockbox]:
         """
-        List Check Deposits
+        List Lockboxes
 
         Args:
-          account_id: Filter Check Deposits to those belonging to the specified Account.
+          account_id: Filter Lockboxes to those associated with the provided Account.
 
           cursor: Return the page of entries after this one.
 
@@ -171,8 +220,8 @@ class CheckDeposits(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get_api_list(
-            "/check_deposits",
-            page=SyncPage[CheckDeposit],
+            "/lockboxes",
+            page=SyncPage[Lockbox],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -186,29 +235,26 @@ class CheckDeposits(SyncAPIResource):
                         "idempotency_key": idempotency_key,
                         "limit": limit,
                     },
-                    check_deposit_list_params.CheckDepositListParams,
+                    lockbox_list_params.LockboxListParams,
                 ),
             ),
-            model=CheckDeposit,
+            model=Lockbox,
         )
 
 
-class AsyncCheckDeposits(AsyncAPIResource):
+class AsyncLockboxes(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncCheckDepositsWithRawResponse:
-        return AsyncCheckDepositsWithRawResponse(self)
+    def with_raw_response(self) -> AsyncLockboxesWithRawResponse:
+        return AsyncLockboxesWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncCheckDepositsWithStreamingResponse:
-        return AsyncCheckDepositsWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncLockboxesWithStreamingResponse:
+        return AsyncLockboxesWithStreamingResponse(self)
 
     async def create(
         self,
         *,
         account_id: str,
-        amount: int,
-        back_image_file_id: str,
-        front_image_file_id: str,
         description: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -217,21 +263,14 @@ class AsyncCheckDeposits(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> CheckDeposit:
+    ) -> Lockbox:
         """
-        Create a Check Deposit
+        Create a Lockbox
 
         Args:
-          account_id: The identifier for the Account to deposit the check in.
+          account_id: The Account checks sent to this Lockbox should be deposited into.
 
-          amount: The deposit amount in the minor unit of the account currency. For dollars, for
-              example, this is cents.
-
-          back_image_file_id: The File containing the check's back image.
-
-          front_image_file_id: The File containing the check's front image.
-
-          description: The description you choose to give the Check Deposit, for display purposes only.
+          description: The description you choose for the Lockbox, for display purposes.
 
           extra_headers: Send extra headers
 
@@ -244,16 +283,13 @@ class AsyncCheckDeposits(AsyncAPIResource):
           idempotency_key: Specify a custom idempotency key for this request
         """
         return await self._post(
-            "/check_deposits",
+            "/lockboxes",
             body=await async_maybe_transform(
                 {
                     "account_id": account_id,
-                    "amount": amount,
-                    "back_image_file_id": back_image_file_id,
-                    "front_image_file_id": front_image_file_id,
                     "description": description,
                 },
-                check_deposit_create_params.CheckDepositCreateParams,
+                lockbox_create_params.LockboxCreateParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -262,12 +298,12 @@ class AsyncCheckDeposits(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=CheckDeposit,
+            cast_to=Lockbox,
         )
 
     async def retrieve(
         self,
-        check_deposit_id: str,
+        lockbox_id: str,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -275,12 +311,12 @@ class AsyncCheckDeposits(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CheckDeposit:
+    ) -> Lockbox:
         """
-        Retrieve a Check Deposit
+        Retrieve a Lockbox
 
         Args:
-          check_deposit_id: The identifier of the Check Deposit to retrieve.
+          lockbox_id: The identifier of the Lockbox to retrieve.
 
           extra_headers: Send extra headers
 
@@ -290,21 +326,81 @@ class AsyncCheckDeposits(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not check_deposit_id:
-            raise ValueError(f"Expected a non-empty value for `check_deposit_id` but received {check_deposit_id!r}")
+        if not lockbox_id:
+            raise ValueError(f"Expected a non-empty value for `lockbox_id` but received {lockbox_id!r}")
         return await self._get(
-            f"/check_deposits/{check_deposit_id}",
+            f"/lockboxes/{lockbox_id}",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CheckDeposit,
+            cast_to=Lockbox,
+        )
+
+    async def update(
+        self,
+        lockbox_id: str,
+        *,
+        description: str | NotGiven = NOT_GIVEN,
+        status: Literal["active", "inactive"] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> Lockbox:
+        """
+        Update a Lockbox
+
+        Args:
+          lockbox_id: The identifier of the Lockbox.
+
+          description: The description you choose for the Lockbox.
+
+          status: This indicates if checks can be sent to the Lockbox.
+
+              - `active` - This Lockbox is active. Checks mailed to it will be deposited
+                automatically.
+              - `inactive` - This Lockbox is inactive. Checks mailed to it will not be
+                deposited.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not lockbox_id:
+            raise ValueError(f"Expected a non-empty value for `lockbox_id` but received {lockbox_id!r}")
+        return await self._patch(
+            f"/lockboxes/{lockbox_id}",
+            body=await async_maybe_transform(
+                {
+                    "description": description,
+                    "status": status,
+                },
+                lockbox_update_params.LockboxUpdateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=Lockbox,
         )
 
     def list(
         self,
         *,
         account_id: str | NotGiven = NOT_GIVEN,
-        created_at: check_deposit_list_params.CreatedAt | NotGiven = NOT_GIVEN,
+        created_at: lockbox_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         idempotency_key: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
@@ -314,12 +410,12 @@ class AsyncCheckDeposits(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[CheckDeposit, AsyncPage[CheckDeposit]]:
+    ) -> AsyncPaginator[Lockbox, AsyncPage[Lockbox]]:
         """
-        List Check Deposits
+        List Lockboxes
 
         Args:
-          account_id: Filter Check Deposits to those belonging to the specified Account.
+          account_id: Filter Lockboxes to those associated with the provided Account.
 
           cursor: Return the page of entries after this one.
 
@@ -340,8 +436,8 @@ class AsyncCheckDeposits(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get_api_list(
-            "/check_deposits",
-            page=AsyncPage[CheckDeposit],
+            "/lockboxes",
+            page=AsyncPage[Lockbox],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -355,68 +451,80 @@ class AsyncCheckDeposits(AsyncAPIResource):
                         "idempotency_key": idempotency_key,
                         "limit": limit,
                     },
-                    check_deposit_list_params.CheckDepositListParams,
+                    lockbox_list_params.LockboxListParams,
                 ),
             ),
-            model=CheckDeposit,
+            model=Lockbox,
         )
 
 
-class CheckDepositsWithRawResponse:
-    def __init__(self, check_deposits: CheckDeposits) -> None:
-        self._check_deposits = check_deposits
+class LockboxesWithRawResponse:
+    def __init__(self, lockboxes: Lockboxes) -> None:
+        self._lockboxes = lockboxes
 
         self.create = _legacy_response.to_raw_response_wrapper(
-            check_deposits.create,
+            lockboxes.create,
         )
         self.retrieve = _legacy_response.to_raw_response_wrapper(
-            check_deposits.retrieve,
+            lockboxes.retrieve,
+        )
+        self.update = _legacy_response.to_raw_response_wrapper(
+            lockboxes.update,
         )
         self.list = _legacy_response.to_raw_response_wrapper(
-            check_deposits.list,
+            lockboxes.list,
         )
 
 
-class AsyncCheckDepositsWithRawResponse:
-    def __init__(self, check_deposits: AsyncCheckDeposits) -> None:
-        self._check_deposits = check_deposits
+class AsyncLockboxesWithRawResponse:
+    def __init__(self, lockboxes: AsyncLockboxes) -> None:
+        self._lockboxes = lockboxes
 
         self.create = _legacy_response.async_to_raw_response_wrapper(
-            check_deposits.create,
+            lockboxes.create,
         )
         self.retrieve = _legacy_response.async_to_raw_response_wrapper(
-            check_deposits.retrieve,
+            lockboxes.retrieve,
+        )
+        self.update = _legacy_response.async_to_raw_response_wrapper(
+            lockboxes.update,
         )
         self.list = _legacy_response.async_to_raw_response_wrapper(
-            check_deposits.list,
+            lockboxes.list,
         )
 
 
-class CheckDepositsWithStreamingResponse:
-    def __init__(self, check_deposits: CheckDeposits) -> None:
-        self._check_deposits = check_deposits
+class LockboxesWithStreamingResponse:
+    def __init__(self, lockboxes: Lockboxes) -> None:
+        self._lockboxes = lockboxes
 
         self.create = to_streamed_response_wrapper(
-            check_deposits.create,
+            lockboxes.create,
         )
         self.retrieve = to_streamed_response_wrapper(
-            check_deposits.retrieve,
+            lockboxes.retrieve,
+        )
+        self.update = to_streamed_response_wrapper(
+            lockboxes.update,
         )
         self.list = to_streamed_response_wrapper(
-            check_deposits.list,
+            lockboxes.list,
         )
 
 
-class AsyncCheckDepositsWithStreamingResponse:
-    def __init__(self, check_deposits: AsyncCheckDeposits) -> None:
-        self._check_deposits = check_deposits
+class AsyncLockboxesWithStreamingResponse:
+    def __init__(self, lockboxes: AsyncLockboxes) -> None:
+        self._lockboxes = lockboxes
 
         self.create = async_to_streamed_response_wrapper(
-            check_deposits.create,
+            lockboxes.create,
         )
         self.retrieve = async_to_streamed_response_wrapper(
-            check_deposits.retrieve,
+            lockboxes.retrieve,
+        )
+        self.update = async_to_streamed_response_wrapper(
+            lockboxes.update,
         )
         self.list = async_to_streamed_response_wrapper(
-            check_deposits.list,
+            lockboxes.list,
         )

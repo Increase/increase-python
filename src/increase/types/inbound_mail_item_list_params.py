@@ -2,28 +2,20 @@
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 from datetime import datetime
-from typing_extensions import Literal, Annotated, TypedDict
+from typing_extensions import Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
-__all__ = ["CardDisputeListParams", "CreatedAt", "Status"]
+__all__ = ["InboundMailItemListParams", "CreatedAt"]
 
 
-class CardDisputeListParams(TypedDict, total=False):
+class InboundMailItemListParams(TypedDict, total=False):
     created_at: CreatedAt
 
     cursor: str
     """Return the page of entries after this one."""
-
-    idempotency_key: str
-    """
-    Filter records to the one with the specified `idempotency_key` you chose for
-    that object. This value is unique across Increase and is used to ensure that a
-    request is only processed once. Learn more about
-    [idempotency](https://increase.com/documentation/idempotency-keys).
-    """
 
     limit: int
     """Limit the size of the list that is returned.
@@ -31,7 +23,8 @@ class CardDisputeListParams(TypedDict, total=False):
     The default (and maximum) is 100 objects.
     """
 
-    status: Status
+    lockbox_id: str
+    """Filter Inbound Mail Items to ones sent to the provided Lockbox."""
 
 
 class CreatedAt(TypedDict, total=False):
@@ -58,16 +51,3 @@ class CreatedAt(TypedDict, total=False):
     Return results on or before this
     [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
     """
-
-
-_StatusReservedKeywords = TypedDict(
-    "_StatusReservedKeywords",
-    {
-        "in": List[Literal["pending_reviewing", "accepted", "rejected", "lost", "won"]],
-    },
-    total=False,
-)
-
-
-class Status(_StatusReservedKeywords, total=False):
-    pass

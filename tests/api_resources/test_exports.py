@@ -67,6 +67,7 @@ class TestExports:
                     "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
                 },
             },
+            vendor_csv={},
         )
         assert_matches_type(Export, export, path=["response"])
 
@@ -226,6 +227,7 @@ class TestAsyncExports:
                     "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
                 },
             },
+            vendor_csv={},
         )
         assert_matches_type(Export, export, path=["response"])
 
