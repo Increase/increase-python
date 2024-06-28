@@ -86,6 +86,7 @@ class DepositRejection(BaseModel):
         "suspected_fraud",
         "deposit_window_expired",
         "unknown",
+        "operator",
     ]
     """Why the check deposit was rejected.
 
@@ -102,6 +103,8 @@ class DepositRejection(BaseModel):
     - `suspected_fraud` - This check is suspected to be fraudulent.
     - `deposit_window_expired` - This check's deposit window has expired.
     - `unknown` - The check was rejected for an unknown reason.
+    - `operator` - The check was rejected by an operator who will provide details
+      out-of-band.
     """
 
     rejected_at: datetime
@@ -211,6 +214,18 @@ class DepositReturn(BaseModel):
 
 
 class DepositSubmission(BaseModel):
+    back_file_id: str
+    """
+    The ID for the File containing the check back image that was submitted to the
+    Check21 network.
+    """
+
+    front_file_id: str
+    """
+    The ID for the File containing the check front image that was submitted to the
+    Check21 network.
+    """
+
     submitted_at: datetime
     """When the check deposit was submitted to the Check21 network for processing.
 
@@ -241,17 +256,6 @@ class CheckDeposit(BaseModel):
     the transfer was created.
     """
 
-    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
-    """The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the deposit.
-
-    - `CAD` - Canadian Dollar (CAD)
-    - `CHF` - Swiss Franc (CHF)
-    - `EUR` - Euro (EUR)
-    - `GBP` - British Pound (GBP)
-    - `JPY` - Japanese Yen (JPY)
-    - `USD` - US Dollar (USD)
-    """
-
     deposit_acceptance: Optional[DepositAcceptance] = None
     """
     If your deposit is successfully parsed and accepted by Increase, this will
@@ -277,6 +281,9 @@ class CheckDeposit(BaseModel):
     This will contain details of the submission.
     """
 
+    description: Optional[str] = None
+    """The description of the Check Deposit, for display purposes only."""
+
     front_image_file_id: str
     """The ID for the File containing the image of the front of the check."""
 
@@ -286,6 +293,18 @@ class CheckDeposit(BaseModel):
     This value is unique across Increase and is used to ensure that a request is
     only processed once. Learn more about
     [idempotency](https://increase.com/documentation/idempotency-keys).
+    """
+
+    inbound_mail_item_id: Optional[str] = None
+    """
+    If the Check Deposit was the result of an Inbound Mail Item, this will contain
+    the identifier of the Inbound Mail Item.
+    """
+
+    lockbox_id: Optional[str] = None
+    """
+    If the Check Deposit was the result of an Inbound Mail Item, this will contain
+    the identifier of the Lockbox that received it.
     """
 
     status: Literal["pending", "submitted", "rejected", "returned"]

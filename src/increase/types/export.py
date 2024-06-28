@@ -14,7 +14,12 @@ class Export(BaseModel):
     """The Export identifier."""
 
     category: Literal[
-        "account_statement_ofx", "transaction_csv", "balance_csv", "bookkeeping_account_balance_csv", "entity_csv"
+        "account_statement_ofx",
+        "transaction_csv",
+        "balance_csv",
+        "bookkeeping_account_balance_csv",
+        "entity_csv",
+        "vendor_csv",
     ]
     """The category of the Export.
 
@@ -29,6 +34,8 @@ class Export(BaseModel):
     - `bookkeeping_account_balance_csv` - Export a CSV of bookkeeping account
       balances for the dates in a given range.
     - `entity_csv` - Export a CSV of entities with a given status.
+    - `vendor_csv` - Export a CSV of vendors added to the third-party risk
+      management dashboard.
     """
 
     created_at: datetime

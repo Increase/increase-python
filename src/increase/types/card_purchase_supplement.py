@@ -94,6 +94,9 @@ class Invoice(BaseModel):
 
 
 class LineItem(BaseModel):
+    id: str
+    """The Card Purchase Supplement Line Item identifier."""
+
     detail_indicator: Optional[Literal["normal", "credit", "payment"]] = None
     """Indicates the type of line item.
 

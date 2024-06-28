@@ -80,6 +80,14 @@ from .documents import (
     DocumentsWithStreamingResponse,
     AsyncDocumentsWithStreamingResponse,
 )
+from .lockboxes import (
+    Lockboxes,
+    AsyncLockboxes,
+    LockboxesWithRawResponse,
+    AsyncLockboxesWithRawResponse,
+    LockboxesWithStreamingResponse,
+    AsyncLockboxesWithStreamingResponse,
+)
 from .simulations import (
     Simulations,
     AsyncSimulations,
@@ -207,6 +215,14 @@ from .account_statements import (
     AsyncAccountStatementsWithRawResponse,
     AccountStatementsWithStreamingResponse,
     AsyncAccountStatementsWithStreamingResponse,
+)
+from .inbound_mail_items import (
+    InboundMailItems,
+    AsyncInboundMailItems,
+    InboundMailItemsWithRawResponse,
+    AsyncInboundMailItemsWithRawResponse,
+    InboundMailItemsWithStreamingResponse,
+    AsyncInboundMailItemsWithStreamingResponse,
 )
 from .bookkeeping_entries import (
     BookkeepingEntries,
@@ -660,4 +676,16 @@ __all__ = [
     "AsyncInboundCheckDepositsWithRawResponse",
     "InboundCheckDepositsWithStreamingResponse",
     "AsyncInboundCheckDepositsWithStreamingResponse",
+    "InboundMailItems",
+    "AsyncInboundMailItems",
+    "InboundMailItemsWithRawResponse",
+    "AsyncInboundMailItemsWithRawResponse",
+    "InboundMailItemsWithStreamingResponse",
+    "AsyncInboundMailItemsWithStreamingResponse",
+    "Lockboxes",
+    "AsyncLockboxes",
+    "LockboxesWithRawResponse",
+    "AsyncLockboxesWithRawResponse",
+    "LockboxesWithStreamingResponse",
+    "AsyncLockboxesWithStreamingResponse",
 ]

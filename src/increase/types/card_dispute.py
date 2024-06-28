@@ -6,7 +6,7 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["CardDispute", "Acceptance", "Rejection"]
+__all__ = ["CardDispute", "Acceptance", "Loss", "Rejection", "Win"]
 
 
 class Acceptance(BaseModel):
@@ -26,6 +26,26 @@ class Acceptance(BaseModel):
     """
 
 
+class Loss(BaseModel):
+    card_dispute_id: str
+    """The identifier of the Card Dispute that was lost."""
+
+    explanation: str
+    """Why the Card Dispute was lost."""
+
+    lost_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+    the Card Dispute was lost.
+    """
+
+    transaction_id: str
+    """
+    The identifier of the Transaction that was created to debit the disputed funds
+    from your account.
+    """
+
+
 class Rejection(BaseModel):
     card_dispute_id: str
     """The identifier of the Card Dispute that was rejected."""
@@ -37,6 +57,17 @@ class Rejection(BaseModel):
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the Card Dispute was rejected.
+    """
+
+
+class Win(BaseModel):
+    card_dispute_id: str
+    """The identifier of the Card Dispute that was won."""
+
+    won_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+    the Card Dispute was won.
     """
 
 
@@ -70,23 +101,39 @@ class CardDispute(BaseModel):
     [idempotency](https://increase.com/documentation/idempotency-keys).
     """
 
+    loss: Optional[Loss] = None
+    """
+    If the Card Dispute's status is `lost`, this will contain details of the lost
+    dispute.
+    """
+
     rejection: Optional[Rejection] = None
     """
     If the Card Dispute's status is `rejected`, this will contain details of the
     unsuccessful dispute.
     """
 
-    status: Literal["pending_reviewing", "accepted", "rejected"]
+    status: Literal["pending_reviewing", "accepted", "rejected", "lost", "won"]
     """The results of the Dispute investigation.
 
     - `pending_reviewing` - The Card Dispute is pending review.
     - `accepted` - The Card Dispute has been accepted and your funds have been
-      returned.
+      returned. The card dispute will eventually transition into `won` or `lost`
+      depending on the outcome.
     - `rejected` - The Card Dispute has been rejected.
+    - `lost` - The Card Dispute has been lost and funds previously credited from the
+      acceptance have been debited.
+    - `won` - The Card Dispute has been won and no further action can be taken.
     """
 
     type: Literal["card_dispute"]
     """A constant representing the object's type.
 
     For this resource it will always be `card_dispute`.
+    """
+
+    win: Optional[Win] = None
+    """
+    If the Card Dispute's status is `won`, this will contain details of the won
+    dispute.
     """

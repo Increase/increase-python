@@ -116,6 +116,12 @@ class PhysicalCheck(TypedDict, total=False):
     make the Check Transfer.
     """
 
+    signature_text: str
+    """The text that will appear as the signature on the check in cursive font.
+
+    If not provided, the check will be printed with 'No signature required'.
+    """
+
 
 class ThirdParty(TypedDict, total=False):
     check_number: str

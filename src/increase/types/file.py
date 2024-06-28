@@ -49,6 +49,8 @@ class File(BaseModel):
     purpose: Literal[
         "check_image_front",
         "check_image_back",
+        "processed_check_image_front",
+        "processed_check_image_back",
         "mailed_check_image",
         "inbound_mail_item",
         "form_1099_int",
@@ -75,6 +77,10 @@ class File(BaseModel):
     - `check_image_front` - An image of the front of a check, used for check
       deposits.
     - `check_image_back` - An image of the back of a check, used for check deposits.
+    - `processed_check_image_front` - An image of the front of a deposited check
+      after processing by Increase and submission to the Federal Reserve.
+    - `processed_check_image_back` - An image of the back of a deposited check after
+      processing by Increase and submission to the Federal Reserve.
     - `mailed_check_image` - An image of a check that was mailed to a recipient.
     - `inbound_mail_item` - A scanned mail item sent to Increase.
     - `form_1099_int` - IRS Form 1099-INT.
