@@ -9,6 +9,7 @@ from .group import Group as Group
 from .entity import Entity as Entity
 from .export import Export as Export
 from .account import Account as Account
+from .lockbox import Lockbox as Lockbox
 from .program import Program as Program
 from .document import Document as Document
 from .oauth_token import OAuthToken as OAuthToken
@@ -17,6 +18,7 @@ from .ach_transfer import ACHTransfer as ACHTransfer
 from .card_details import CardDetails as CardDetails
 from .card_dispute import CardDispute as CardDispute
 from .card_payment import CardPayment as CardPayment
+from .lockbox_list import LockboxList as LockboxList
 from .check_deposit import CheckDeposit as CheckDeposit
 from .physical_card import PhysicalCard as PhysicalCard
 from .wire_transfer import WireTransfer as WireTransfer
@@ -32,6 +34,7 @@ from .oauth_connection import OAuthConnection as OAuthConnection
 from .account_statement import AccountStatement as AccountStatement
 from .bookkeeping_entry import BookkeepingEntry as BookkeepingEntry
 from .event_list_params import EventListParams as EventListParams
+from .inbound_mail_item import InboundMailItem as InboundMailItem
 from .card_create_params import CardCreateParams as CardCreateParams
 from .card_update_params import CardUpdateParams as CardUpdateParams
 from .entity_list_params import EntityListParams as EntityListParams
@@ -42,6 +45,7 @@ from .real_time_decision import RealTimeDecision as RealTimeDecision
 from .account_list_params import AccountListParams as AccountListParams
 from .ach_prenotification import ACHPrenotification as ACHPrenotification
 from .bookkeeping_account import BookkeepingAccount as BookkeepingAccount
+from .lockbox_list_params import LockboxListParams as LockboxListParams
 from .pending_transaction import PendingTransaction as PendingTransaction
 from .program_list_params import ProgramListParams as ProgramListParams
 from .declined_transaction import DeclinedTransaction as DeclinedTransaction
@@ -57,9 +61,12 @@ from .bookkeeping_entry_set import BookkeepingEntrySet as BookkeepingEntrySet
 from .entity_confirm_params import EntityConfirmParams as EntityConfirmParams
 from .inbound_check_deposit import InboundCheckDeposit as InboundCheckDeposit
 from .inbound_wire_transfer import InboundWireTransfer as InboundWireTransfer
+from .lockbox_create_params import LockboxCreateParams as LockboxCreateParams
+from .lockbox_update_params import LockboxUpdateParams as LockboxUpdateParams
 from .physical_card_profile import PhysicalCardProfile as PhysicalCardProfile
 from .wire_drawdown_request import WireDrawdownRequest as WireDrawdownRequest
 from .account_balance_params import AccountBalanceParams as AccountBalanceParams
+from .inbound_mail_item_list import InboundMailItemList as InboundMailItemList
 from .transaction_list_params import TransactionListParams as TransactionListParams
 from .ach_transfer_list_params import ACHTransferListParams as ACHTransferListParams
 from .card_dispute_list_params import CardDisputeListParams as CardDisputeListParams
@@ -89,6 +96,7 @@ from .external_account_list_params import ExternalAccountListParams as ExternalA
 from .oauth_connection_list_params import OAuthConnectionListParams as OAuthConnectionListParams
 from .account_statement_list_params import AccountStatementListParams as AccountStatementListParams
 from .bookkeeping_entry_list_params import BookkeepingEntryListParams as BookkeepingEntryListParams
+from .inbound_mail_item_list_params import InboundMailItemListParams as InboundMailItemListParams
 from .inbound_wire_drawdown_request import InboundWireDrawdownRequest as InboundWireDrawdownRequest
 from .account_transfer_create_params import AccountTransferCreateParams as AccountTransferCreateParams
 from .event_subscription_list_params import EventSubscriptionListParams as EventSubscriptionListParams

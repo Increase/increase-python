@@ -14,6 +14,7 @@ __all__ = [
     "SourceACHTransferRejection",
     "SourceACHTransferReturn",
     "SourceCardDisputeAcceptance",
+    "SourceCardDisputeLoss",
     "SourceCardRefund",
     "SourceCardRefundNetworkIdentifiers",
     "SourceCardRefundPurchaseDetails",
@@ -382,6 +383,26 @@ class SourceCardDisputeAcceptance(BaseModel):
     """
     The identifier of the Transaction that was created to return the disputed funds
     to your account.
+    """
+
+
+class SourceCardDisputeLoss(BaseModel):
+    card_dispute_id: str
+    """The identifier of the Card Dispute that was lost."""
+
+    explanation: str
+    """Why the Card Dispute was lost."""
+
+    lost_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+    the Card Dispute was lost.
+    """
+
+    transaction_id: str
+    """
+    The identifier of the Transaction that was created to debit the disputed funds
+    from your account.
     """
 
 
@@ -814,18 +835,18 @@ class SourceCardRefund(BaseModel):
     """The Card Refund identifier."""
 
     amount: int
-    """The pending amount in the minor unit of the transaction's currency.
+    """The amount in the minor unit of the transaction's settlement currency.
 
     For dollars, for example, this is cents.
     """
 
-    card_payment_id: Optional[str] = None
+    card_payment_id: str
     """The ID of the Card Payment this transaction belongs to."""
 
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-    transaction's currency.
+    transaction's settlement currency.
 
     - `CAD` - Canadian Dollar (CAD)
     - `CHF` - Swiss Franc (CHF)
@@ -858,6 +879,15 @@ class SourceCardRefund(BaseModel):
 
     network_identifiers: SourceCardRefundNetworkIdentifiers
     """Network-specific identifiers for this refund."""
+
+    presentment_amount: int
+    """The amount in the minor unit of the transaction's presentment currency."""
+
+    presentment_currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+    transaction's presentment currency.
+    """
 
     purchase_details: Optional[SourceCardRefundPurchaseDetails] = None
     """
@@ -1345,7 +1375,7 @@ class SourceCardSettlement(BaseModel):
     exists.
     """
 
-    card_payment_id: Optional[str] = None
+    card_payment_id: str
     """The ID of the Card Payment this transaction belongs to."""
 
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
@@ -2397,6 +2427,13 @@ class Source(BaseModel):
     equal to `card_dispute_acceptance`.
     """
 
+    card_dispute_loss: Optional[SourceCardDisputeLoss] = None
+    """A Card Dispute Loss object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `card_dispute_loss`.
+    """
+
     card_refund: Optional[SourceCardRefund] = None
     """A Card Refund object.
 
@@ -2432,6 +2469,7 @@ class Source(BaseModel):
         "ach_transfer_return",
         "cashback_payment",
         "card_dispute_acceptance",
+        "card_dispute_loss",
         "card_refund",
         "card_settlement",
         "card_revenue_payment",
@@ -2474,6 +2512,8 @@ class Source(BaseModel):
       `cashback_payment` object.
     - `card_dispute_acceptance` - Card Dispute Acceptance: details will be under the
       `card_dispute_acceptance` object.
+    - `card_dispute_loss` - Card Dispute Loss: details will be under the
+      `card_dispute_loss` object.
     - `card_refund` - Card Refund: details will be under the `card_refund` object.
     - `card_settlement` - Card Settlement: details will be under the
       `card_settlement` object.
@@ -2691,11 +2731,12 @@ class Transaction(BaseModel):
     Routes are things like cards and ACH details.
     """
 
-    route_type: Optional[Literal["account_number", "card"]] = None
+    route_type: Optional[Literal["account_number", "card", "lockbox"]] = None
     """The type of the route this Transaction came through.
 
     - `account_number` - An Account Number.
     - `card` - A Card.
+    - `lockbox` - A Lockbox.
     """
 
     source: Source

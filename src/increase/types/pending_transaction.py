@@ -260,7 +260,7 @@ class SourceCardAuthorization(BaseModel):
     For dollars, for example, this is cents.
     """
 
-    card_payment_id: Optional[str] = None
+    card_payment_id: str
     """The ID of the Card Payment this transaction belongs to."""
 
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
@@ -690,11 +690,12 @@ class PendingTransaction(BaseModel):
     Routes are things like cards and ACH details.
     """
 
-    route_type: Optional[Literal["account_number", "card"]] = None
+    route_type: Optional[Literal["account_number", "card", "lockbox"]] = None
     """The type of the route this Pending Transaction came through.
 
     - `account_number` - An Account Number.
     - `card` - A Card.
+    - `lockbox` - A Lockbox.
     """
 
     source: Source

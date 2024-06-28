@@ -37,7 +37,7 @@ class CardDisputes(SyncAPIResource):
         self,
         card_dispute_id: str,
         *,
-        status: Literal["accepted", "rejected"],
+        status: Literal["accepted", "rejected", "lost", "won"],
         explanation: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -59,8 +59,12 @@ class CardDisputes(SyncAPIResource):
           status: The status to move the dispute to.
 
               - `accepted` - The Card Dispute has been accepted and your funds have been
-                returned.
+                returned. The card dispute will eventually transition into `won` or `lost`
+                depending on the outcome.
               - `rejected` - The Card Dispute has been rejected.
+              - `lost` - The Card Dispute has been lost and funds previously credited from the
+                acceptance have been debited.
+              - `won` - The Card Dispute has been won and no further action can be taken.
 
           explanation: Why the dispute was rejected. Not required for accepting disputes.
 
@@ -109,7 +113,7 @@ class AsyncCardDisputes(AsyncAPIResource):
         self,
         card_dispute_id: str,
         *,
-        status: Literal["accepted", "rejected"],
+        status: Literal["accepted", "rejected", "lost", "won"],
         explanation: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -131,8 +135,12 @@ class AsyncCardDisputes(AsyncAPIResource):
           status: The status to move the dispute to.
 
               - `accepted` - The Card Dispute has been accepted and your funds have been
-                returned.
+                returned. The card dispute will eventually transition into `won` or `lost`
+                depending on the outcome.
               - `rejected` - The Card Dispute has been rejected.
+              - `lost` - The Card Dispute has been lost and funds previously credited from the
+                acceptance have been debited.
+              - `won` - The Card Dispute has been won and no further action can be taken.
 
           explanation: Why the dispute was rejected. Not required for accepting disputes.
 

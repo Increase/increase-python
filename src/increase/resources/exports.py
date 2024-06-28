@@ -39,13 +39,19 @@ class Exports(SyncAPIResource):
         self,
         *,
         category: Literal[
-            "account_statement_ofx", "transaction_csv", "balance_csv", "bookkeeping_account_balance_csv", "entity_csv"
+            "account_statement_ofx",
+            "transaction_csv",
+            "balance_csv",
+            "bookkeeping_account_balance_csv",
+            "entity_csv",
+            "vendor_csv",
         ],
         account_statement_ofx: export_create_params.AccountStatementOfx | NotGiven = NOT_GIVEN,
         balance_csv: export_create_params.BalanceCsv | NotGiven = NOT_GIVEN,
         bookkeeping_account_balance_csv: export_create_params.BookkeepingAccountBalanceCsv | NotGiven = NOT_GIVEN,
         entity_csv: export_create_params.EntityCsv | NotGiven = NOT_GIVEN,
         transaction_csv: export_create_params.TransactionCsv | NotGiven = NOT_GIVEN,
+        vendor_csv: object | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -68,6 +74,8 @@ class Exports(SyncAPIResource):
               - `bookkeeping_account_balance_csv` - Export a CSV of bookkeeping account
                 balances for the dates in a given range.
               - `entity_csv` - Export a CSV of entities with a given status.
+              - `vendor_csv` - Export a CSV of vendors added to the third-party risk
+                management dashboard.
 
           account_statement_ofx: Options for the created export. Required if `category` is equal to
               `account_statement_ofx`.
@@ -82,6 +90,8 @@ class Exports(SyncAPIResource):
 
           transaction_csv: Options for the created export. Required if `category` is equal to
               `transaction_csv`.
+
+          vendor_csv: Options for the created export. Required if `category` is equal to `vendor_csv`.
 
           extra_headers: Send extra headers
 
@@ -103,6 +113,7 @@ class Exports(SyncAPIResource):
                     "bookkeeping_account_balance_csv": bookkeeping_account_balance_csv,
                     "entity_csv": entity_csv,
                     "transaction_csv": transaction_csv,
+                    "vendor_csv": vendor_csv,
                 },
                 export_create_params.ExportCreateParams,
             ),
@@ -226,13 +237,19 @@ class AsyncExports(AsyncAPIResource):
         self,
         *,
         category: Literal[
-            "account_statement_ofx", "transaction_csv", "balance_csv", "bookkeeping_account_balance_csv", "entity_csv"
+            "account_statement_ofx",
+            "transaction_csv",
+            "balance_csv",
+            "bookkeeping_account_balance_csv",
+            "entity_csv",
+            "vendor_csv",
         ],
         account_statement_ofx: export_create_params.AccountStatementOfx | NotGiven = NOT_GIVEN,
         balance_csv: export_create_params.BalanceCsv | NotGiven = NOT_GIVEN,
         bookkeeping_account_balance_csv: export_create_params.BookkeepingAccountBalanceCsv | NotGiven = NOT_GIVEN,
         entity_csv: export_create_params.EntityCsv | NotGiven = NOT_GIVEN,
         transaction_csv: export_create_params.TransactionCsv | NotGiven = NOT_GIVEN,
+        vendor_csv: object | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -255,6 +272,8 @@ class AsyncExports(AsyncAPIResource):
               - `bookkeeping_account_balance_csv` - Export a CSV of bookkeeping account
                 balances for the dates in a given range.
               - `entity_csv` - Export a CSV of entities with a given status.
+              - `vendor_csv` - Export a CSV of vendors added to the third-party risk
+                management dashboard.
 
           account_statement_ofx: Options for the created export. Required if `category` is equal to
               `account_statement_ofx`.
@@ -269,6 +288,8 @@ class AsyncExports(AsyncAPIResource):
 
           transaction_csv: Options for the created export. Required if `category` is equal to
               `transaction_csv`.
+
+          vendor_csv: Options for the created export. Required if `category` is equal to `vendor_csv`.
 
           extra_headers: Send extra headers
 
@@ -290,6 +311,7 @@ class AsyncExports(AsyncAPIResource):
                     "bookkeeping_account_balance_csv": bookkeeping_account_balance_csv,
                     "entity_csv": entity_csv,
                     "transaction_csv": transaction_csv,
+                    "vendor_csv": vendor_csv,
                 },
                 export_create_params.ExportCreateParams,
             ),

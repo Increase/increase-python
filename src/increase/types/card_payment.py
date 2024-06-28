@@ -258,7 +258,7 @@ class ElementCardAuthorization(BaseModel):
     For dollars, for example, this is cents.
     """
 
-    card_payment_id: Optional[str] = None
+    card_payment_id: str
     """The ID of the Card Payment this transaction belongs to."""
 
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
@@ -624,7 +624,7 @@ class ElementCardDecline(BaseModel):
     For dollars, for example, this is cents.
     """
 
-    card_payment_id: Optional[str] = None
+    card_payment_id: str
     """The ID of the Card Payment this transaction belongs to."""
 
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
@@ -639,6 +639,9 @@ class ElementCardDecline(BaseModel):
     - `JPY` - Japanese Yen (JPY)
     - `USD` - US Dollar (USD)
     """
+
+    declined_transaction_id: str
+    """The identifier of the declined transaction created for this Card Decline."""
 
     digital_wallet_token_id: Optional[str] = None
     """
@@ -734,6 +737,7 @@ class ElementCardDecline(BaseModel):
         "group_locked",
         "insufficient_funds",
         "cvv2_mismatch",
+        "card_expiration_mismatch",
         "transaction_not_allowed",
         "breaches_limit",
         "webhook_declined",
@@ -752,6 +756,8 @@ class ElementCardDecline(BaseModel):
     - `insufficient_funds` - The Card's Account did not have a sufficient available
       balance.
     - `cvv2_mismatch` - The given CVV2 did not match the card's value.
+    - `card_expiration_mismatch` - The given expiration date did not match the
+      card's value. Only applies when a CVV2 is present.
     - `transaction_not_allowed` - The attempted card transaction is not allowed per
       Increase's terms.
     - `breaches_limit` - The transaction was blocked by a Limit.
@@ -1365,18 +1371,18 @@ class ElementCardRefund(BaseModel):
     """The Card Refund identifier."""
 
     amount: int
-    """The pending amount in the minor unit of the transaction's currency.
+    """The amount in the minor unit of the transaction's settlement currency.
 
     For dollars, for example, this is cents.
     """
 
-    card_payment_id: Optional[str] = None
+    card_payment_id: str
     """The ID of the Card Payment this transaction belongs to."""
 
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-    transaction's currency.
+    transaction's settlement currency.
 
     - `CAD` - Canadian Dollar (CAD)
     - `CHF` - Swiss Franc (CHF)
@@ -1409,6 +1415,15 @@ class ElementCardRefund(BaseModel):
 
     network_identifiers: ElementCardRefundNetworkIdentifiers
     """Network-specific identifiers for this refund."""
+
+    presentment_amount: int
+    """The amount in the minor unit of the transaction's presentment currency."""
+
+    presentment_currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+    transaction's presentment currency.
+    """
 
     purchase_details: Optional[ElementCardRefundPurchaseDetails] = None
     """
@@ -1938,7 +1953,7 @@ class ElementCardSettlement(BaseModel):
     exists.
     """
 
-    card_payment_id: Optional[str] = None
+    card_payment_id: str
     """The ID of the Card Payment this transaction belongs to."""
 
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
@@ -2199,7 +2214,7 @@ class ElementCardValidation(BaseModel):
       processing.
     """
 
-    card_payment_id: Optional[str] = None
+    card_payment_id: str
     """The ID of the Card Payment this transaction belongs to."""
 
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
@@ -2433,8 +2448,14 @@ class CardPayment(BaseModel):
     Payment was created.
     """
 
+    digital_wallet_token_id: Optional[str] = None
+    """The Digital Wallet Token identifier for this payment."""
+
     elements: List[Element]
     """The interactions related to this card payment."""
+
+    physical_card_id: Optional[str] = None
+    """The Physical Card identifier for this payment."""
 
     state: State
     """The summarized state of this card payment."""

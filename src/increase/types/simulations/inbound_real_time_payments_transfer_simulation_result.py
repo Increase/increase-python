@@ -30,6 +30,7 @@ __all__ = [
     "TransactionSourceACHTransferRejection",
     "TransactionSourceACHTransferReturn",
     "TransactionSourceCardDisputeAcceptance",
+    "TransactionSourceCardDisputeLoss",
     "TransactionSourceCardRefund",
     "TransactionSourceCardRefundNetworkIdentifiers",
     "TransactionSourceCardRefundPurchaseDetails",
@@ -105,6 +106,7 @@ class DeclinedTransactionSourceACHDecline(BaseModel):
         "credit_entry_refused_by_receiver",
         "duplicate_return",
         "entity_not_active",
+        "field_error",
         "group_locked",
         "insufficient_funds",
         "misrouted_return",
@@ -125,6 +127,7 @@ class DeclinedTransactionSourceACHDecline(BaseModel):
     - `duplicate_return` - A rare return reason. The return this message refers to
       was a duplicate.
     - `entity_not_active` - The account's entity is not active.
+    - `field_error` - There was an error with one of the required fields.
     - `group_locked` - Your account is inactive.
     - `insufficient_funds` - Your account contains insufficient funds.
     - `misrouted_return` - A rare return reason. The return this message refers to
@@ -354,7 +357,7 @@ class DeclinedTransactionSourceCardDecline(BaseModel):
     For dollars, for example, this is cents.
     """
 
-    card_payment_id: Optional[str] = None
+    card_payment_id: str
     """The ID of the Card Payment this transaction belongs to."""
 
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
@@ -369,6 +372,9 @@ class DeclinedTransactionSourceCardDecline(BaseModel):
     - `JPY` - Japanese Yen (JPY)
     - `USD` - US Dollar (USD)
     """
+
+    declined_transaction_id: str
+    """The identifier of the declined transaction created for this Card Decline."""
 
     digital_wallet_token_id: Optional[str] = None
     """
@@ -464,6 +470,7 @@ class DeclinedTransactionSourceCardDecline(BaseModel):
         "group_locked",
         "insufficient_funds",
         "cvv2_mismatch",
+        "card_expiration_mismatch",
         "transaction_not_allowed",
         "breaches_limit",
         "webhook_declined",
@@ -482,6 +489,8 @@ class DeclinedTransactionSourceCardDecline(BaseModel):
     - `insufficient_funds` - The Card's Account did not have a sufficient available
       balance.
     - `cvv2_mismatch` - The given CVV2 did not match the card's value.
+    - `card_expiration_mismatch` - The given expiration date did not match the
+      card's value. Only applies when a CVV2 is present.
     - `transaction_not_allowed` - The attempted card transaction is not allowed per
       Increase's terms.
     - `breaches_limit` - The transaction was blocked by a Limit.
@@ -612,6 +621,7 @@ class DeclinedTransactionSourceCheckDepositRejection(BaseModel):
         "suspected_fraud",
         "deposit_window_expired",
         "unknown",
+        "operator",
     ]
     """Why the check deposit was rejected.
 
@@ -628,6 +638,8 @@ class DeclinedTransactionSourceCheckDepositRejection(BaseModel):
     - `suspected_fraud` - This check is suspected to be fraudulent.
     - `deposit_window_expired` - This check's deposit window has expired.
     - `unknown` - The check was rejected for an unknown reason.
+    - `operator` - The check was rejected by an operator who will provide details
+      out-of-band.
     """
 
     rejected_at: datetime
@@ -1094,11 +1106,12 @@ class DeclinedTransaction(BaseModel):
     Routes are things like cards and ACH details.
     """
 
-    route_type: Optional[Literal["account_number", "card"]] = None
+    route_type: Optional[Literal["account_number", "card", "lockbox"]] = None
     """The type of the route this Declined Transaction came through.
 
     - `account_number` - An Account Number.
     - `card` - A Card.
+    - `lockbox` - A Lockbox.
     """
 
     source: DeclinedTransactionSource
@@ -1442,6 +1455,26 @@ class TransactionSourceCardDisputeAcceptance(BaseModel):
     """
     The identifier of the Transaction that was created to return the disputed funds
     to your account.
+    """
+
+
+class TransactionSourceCardDisputeLoss(BaseModel):
+    card_dispute_id: str
+    """The identifier of the Card Dispute that was lost."""
+
+    explanation: str
+    """Why the Card Dispute was lost."""
+
+    lost_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+    the Card Dispute was lost.
+    """
+
+    transaction_id: str
+    """
+    The identifier of the Transaction that was created to debit the disputed funds
+    from your account.
     """
 
 
@@ -1874,18 +1907,18 @@ class TransactionSourceCardRefund(BaseModel):
     """The Card Refund identifier."""
 
     amount: int
-    """The pending amount in the minor unit of the transaction's currency.
+    """The amount in the minor unit of the transaction's settlement currency.
 
     For dollars, for example, this is cents.
     """
 
-    card_payment_id: Optional[str] = None
+    card_payment_id: str
     """The ID of the Card Payment this transaction belongs to."""
 
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-    transaction's currency.
+    transaction's settlement currency.
 
     - `CAD` - Canadian Dollar (CAD)
     - `CHF` - Swiss Franc (CHF)
@@ -1918,6 +1951,15 @@ class TransactionSourceCardRefund(BaseModel):
 
     network_identifiers: TransactionSourceCardRefundNetworkIdentifiers
     """Network-specific identifiers for this refund."""
+
+    presentment_amount: int
+    """The amount in the minor unit of the transaction's presentment currency."""
+
+    presentment_currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+    transaction's presentment currency.
+    """
 
     purchase_details: Optional[TransactionSourceCardRefundPurchaseDetails] = None
     """
@@ -2405,7 +2447,7 @@ class TransactionSourceCardSettlement(BaseModel):
     exists.
     """
 
-    card_payment_id: Optional[str] = None
+    card_payment_id: str
     """The ID of the Card Payment this transaction belongs to."""
 
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
@@ -3457,6 +3499,13 @@ class TransactionSource(BaseModel):
     equal to `card_dispute_acceptance`.
     """
 
+    card_dispute_loss: Optional[TransactionSourceCardDisputeLoss] = None
+    """A Card Dispute Loss object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `card_dispute_loss`.
+    """
+
     card_refund: Optional[TransactionSourceCardRefund] = None
     """A Card Refund object.
 
@@ -3492,6 +3541,7 @@ class TransactionSource(BaseModel):
         "ach_transfer_return",
         "cashback_payment",
         "card_dispute_acceptance",
+        "card_dispute_loss",
         "card_refund",
         "card_settlement",
         "card_revenue_payment",
@@ -3534,6 +3584,8 @@ class TransactionSource(BaseModel):
       `cashback_payment` object.
     - `card_dispute_acceptance` - Card Dispute Acceptance: details will be under the
       `card_dispute_acceptance` object.
+    - `card_dispute_loss` - Card Dispute Loss: details will be under the
+      `card_dispute_loss` object.
     - `card_refund` - Card Refund: details will be under the `card_refund` object.
     - `card_settlement` - Card Settlement: details will be under the
       `card_settlement` object.
@@ -3755,11 +3807,12 @@ class Transaction(BaseModel):
     Routes are things like cards and ACH details.
     """
 
-    route_type: Optional[Literal["account_number", "card"]] = None
+    route_type: Optional[Literal["account_number", "card", "lockbox"]] = None
     """The type of the route this Transaction came through.
 
     - `account_number` - An Account Number.
     - `card` - A Card.
+    - `lockbox` - A Lockbox.
     """
 
     source: TransactionSource
