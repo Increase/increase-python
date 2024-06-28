@@ -854,3 +854,31 @@ Methods:
 - <code title="get /inbound_check_deposits/{inbound_check_deposit_id}">client.inbound_check_deposits.<a href="./src/increase/resources/inbound_check_deposits.py">retrieve</a>(inbound_check_deposit_id) -> <a href="./src/increase/types/inbound_check_deposit.py">InboundCheckDeposit</a></code>
 - <code title="get /inbound_check_deposits">client.inbound_check_deposits.<a href="./src/increase/resources/inbound_check_deposits.py">list</a>(\*\*<a href="src/increase/types/inbound_check_deposit_list_params.py">params</a>) -> <a href="./src/increase/types/inbound_check_deposit.py">SyncPage[InboundCheckDeposit]</a></code>
 - <code title="post /inbound_check_deposits/{inbound_check_deposit_id}/decline">client.inbound_check_deposits.<a href="./src/increase/resources/inbound_check_deposits.py">decline</a>(inbound_check_deposit_id) -> <a href="./src/increase/types/inbound_check_deposit.py">InboundCheckDeposit</a></code>
+
+# InboundMailItems
+
+Types:
+
+```python
+from increase.types import InboundMailItem, InboundMailItemList
+```
+
+Methods:
+
+- <code title="get /inbound_mail_items/{inbound_mail_item_id}">client.inbound_mail_items.<a href="./src/increase/resources/inbound_mail_items.py">retrieve</a>(inbound_mail_item_id) -> <a href="./src/increase/types/inbound_mail_item.py">InboundMailItem</a></code>
+- <code title="get /inbound_mail_items">client.inbound_mail_items.<a href="./src/increase/resources/inbound_mail_items.py">list</a>(\*\*<a href="src/increase/types/inbound_mail_item_list_params.py">params</a>) -> <a href="./src/increase/types/inbound_mail_item.py">SyncPage[InboundMailItem]</a></code>
+
+# Lockboxes
+
+Types:
+
+```python
+from increase.types import Lockbox, LockboxList
+```
+
+Methods:
+
+- <code title="post /lockboxes">client.lockboxes.<a href="./src/increase/resources/lockboxes.py">create</a>(\*\*<a href="src/increase/types/lockbox_create_params.py">params</a>) -> <a href="./src/increase/types/lockbox.py">Lockbox</a></code>
+- <code title="get /lockboxes/{lockbox_id}">client.lockboxes.<a href="./src/increase/resources/lockboxes.py">retrieve</a>(lockbox_id) -> <a href="./src/increase/types/lockbox.py">Lockbox</a></code>
+- <code title="patch /lockboxes/{lockbox_id}">client.lockboxes.<a href="./src/increase/resources/lockboxes.py">update</a>(lockbox_id, \*\*<a href="src/increase/types/lockbox_update_params.py">params</a>) -> <a href="./src/increase/types/lockbox.py">Lockbox</a></code>
+- <code title="get /lockboxes">client.lockboxes.<a href="./src/increase/resources/lockboxes.py">list</a>(\*\*<a href="src/increase/types/lockbox_list_params.py">params</a>) -> <a href="./src/increase/types/lockbox.py">SyncPage[Lockbox]</a></code>

@@ -61,6 +61,7 @@ class Decline(BaseModel):
         "credit_entry_refused_by_receiver",
         "duplicate_return",
         "entity_not_active",
+        "field_error",
         "group_locked",
         "insufficient_funds",
         "misrouted_return",
@@ -81,6 +82,7 @@ class Decline(BaseModel):
     - `duplicate_return` - A rare return reason. The return this message refers to
       was a duplicate.
     - `entity_not_active` - The account's entity is not active.
+    - `field_error` - There was an error with one of the required fields.
     - `group_locked` - Your account is inactive.
     - `insufficient_funds` - Your account contains insufficient funds.
     - `misrouted_return` - A rare return reason. The return this message refers to
@@ -214,6 +216,42 @@ class InboundACHTransfer(BaseModel):
 
     receiver_name: Optional[str] = None
     """The name of the receiver of the transfer."""
+
+    standard_entry_class_code: Literal[
+        "corporate_credit_or_debit",
+        "corporate_trade_exchange",
+        "prearranged_payments_and_deposit",
+        "internet_initiated",
+        "point_of_sale",
+        "telephone_initiated",
+        "customer_initiated",
+        "accounts_receivable",
+        "machine_transfer",
+        "shared_network_transaction",
+        "represented_check",
+        "back_office_conversion",
+        "point_of_purchase",
+        "check_truncation",
+        "destroyed_check",
+    ]
+    """The Standard Entry Class (SEC) code of the transfer.
+
+    - `corporate_credit_or_debit` - Corporate Credit and Debit (CCD).
+    - `corporate_trade_exchange` - Corporate Trade Exchange (CTX).
+    - `prearranged_payments_and_deposit` - Prearranged Payments and Deposits (PPD).
+    - `internet_initiated` - Internet Initiated (WEB).
+    - `point_of_sale` - Point of Sale (POS).
+    - `telephone_initiated` - Telephone Initiated (TEL).
+    - `customer_initiated` - Customer Initiated (CIE).
+    - `accounts_receivable` - Accounts Receivable (ARC).
+    - `machine_transfer` - Machine Transfer (MTE).
+    - `shared_network_transaction` - Shared Network Transaction (SHR).
+    - `represented_check` - Represented Check (RCK).
+    - `back_office_conversion` - Back Office Conversion (BOC).
+    - `point_of_purchase` - Point of Purchase (POP).
+    - `check_truncation` - Check Truncation (TRC).
+    - `destroyed_check` - Destroyed Check (XCK).
+    """
 
     status: Literal["pending", "declined", "accepted", "returned"]
     """The status of the transfer.

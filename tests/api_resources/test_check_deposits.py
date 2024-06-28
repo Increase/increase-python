@@ -25,8 +25,18 @@ class TestCheckDeposits:
             account_id="account_in71c4amph0vgo2qllky",
             amount=1000,
             back_image_file_id="file_26khfk98mzfz90a11oqx",
-            currency="USD",
             front_image_file_id="file_hkv175ovmc2tb2v2zbrm",
+        )
+        assert_matches_type(CheckDeposit, check_deposit, path=["response"])
+
+    @parametrize
+    def test_method_create_with_all_params(self, client: Increase) -> None:
+        check_deposit = client.check_deposits.create(
+            account_id="account_in71c4amph0vgo2qllky",
+            amount=1000,
+            back_image_file_id="file_26khfk98mzfz90a11oqx",
+            front_image_file_id="file_hkv175ovmc2tb2v2zbrm",
+            description="Vendor payment",
         )
         assert_matches_type(CheckDeposit, check_deposit, path=["response"])
 
@@ -36,7 +46,6 @@ class TestCheckDeposits:
             account_id="account_in71c4amph0vgo2qllky",
             amount=1000,
             back_image_file_id="file_26khfk98mzfz90a11oqx",
-            currency="USD",
             front_image_file_id="file_hkv175ovmc2tb2v2zbrm",
         )
 
@@ -51,7 +60,6 @@ class TestCheckDeposits:
             account_id="account_in71c4amph0vgo2qllky",
             amount=1000,
             back_image_file_id="file_26khfk98mzfz90a11oqx",
-            currency="USD",
             front_image_file_id="file_hkv175ovmc2tb2v2zbrm",
         ) as response:
             assert not response.is_closed
@@ -151,8 +159,18 @@ class TestAsyncCheckDeposits:
             account_id="account_in71c4amph0vgo2qllky",
             amount=1000,
             back_image_file_id="file_26khfk98mzfz90a11oqx",
-            currency="USD",
             front_image_file_id="file_hkv175ovmc2tb2v2zbrm",
+        )
+        assert_matches_type(CheckDeposit, check_deposit, path=["response"])
+
+    @parametrize
+    async def test_method_create_with_all_params(self, async_client: AsyncIncrease) -> None:
+        check_deposit = await async_client.check_deposits.create(
+            account_id="account_in71c4amph0vgo2qllky",
+            amount=1000,
+            back_image_file_id="file_26khfk98mzfz90a11oqx",
+            front_image_file_id="file_hkv175ovmc2tb2v2zbrm",
+            description="Vendor payment",
         )
         assert_matches_type(CheckDeposit, check_deposit, path=["response"])
 
@@ -162,7 +180,6 @@ class TestAsyncCheckDeposits:
             account_id="account_in71c4amph0vgo2qllky",
             amount=1000,
             back_image_file_id="file_26khfk98mzfz90a11oqx",
-            currency="USD",
             front_image_file_id="file_hkv175ovmc2tb2v2zbrm",
         )
 
@@ -177,7 +194,6 @@ class TestAsyncCheckDeposits:
             account_id="account_in71c4amph0vgo2qllky",
             amount=1000,
             back_image_file_id="file_26khfk98mzfz90a11oqx",
-            currency="USD",
             front_image_file_id="file_hkv175ovmc2tb2v2zbrm",
         ) as response:
             assert not response.is_closed

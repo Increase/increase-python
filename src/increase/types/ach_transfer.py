@@ -1,7 +1,7 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+import datetime
 from typing import List, Optional
-from datetime import date, datetime
 from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
@@ -23,6 +23,7 @@ __all__ = [
     "CreatedByOAuthApplication",
     "CreatedByUser",
     "NotificationsOfChange",
+    "PreferredEffectiveDate",
     "Return",
     "Submission",
 ]
@@ -89,7 +90,7 @@ class Addenda(BaseModel):
 
 
 class Approval(BaseModel):
-    approved_at: datetime
+    approved_at: datetime.datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the transfer was approved.
@@ -103,7 +104,7 @@ class Approval(BaseModel):
 
 
 class Cancellation(BaseModel):
-    canceled_at: datetime
+    canceled_at: datetime.datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the Transfer was canceled.
@@ -223,15 +224,35 @@ class NotificationsOfChange(BaseModel):
     checking; numbers starting with a 3 encourage changing to savings.
     """
 
-    created_at: datetime
+    created_at: datetime.datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the notification occurred.
     """
 
 
+class PreferredEffectiveDate(BaseModel):
+    date: Optional[datetime.date] = None
+    """
+    A specific date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format to
+    use as the effective date when submitting this transfer.
+    """
+
+    settlement_schedule: Optional[Literal["same_day", "future_dated"]] = None
+    """A schedule by which Increase whill choose an effective date for the transfer.
+
+    - `same_day` - The chosen effective date will be the same as the ACH processing
+      date on which the transfer is submitted. This is necessary, but not sufficient
+      for the transfer to be settled same-day: it must also be submitted before the
+      last same-day cutoff and be less than or equal to $1,000.000.00.
+    - `future_dated` - The chosen effective date will be the business day following
+      the ACH processing date on which the transfer is submitted. The transfer will
+      be settled on that future day.
+    """
+
+
 class Return(BaseModel):
-    created_at: datetime
+    created_at: datetime.datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the transfer was created.
@@ -481,23 +502,33 @@ class Return(BaseModel):
 
 
 class Submission(BaseModel):
-    effective_date: date
-    """The ACH's effective date sent to the receiving bank.
+    effective_date: datetime.date
+    """The ACH transfer's effective date as sent to the Federal Reserve.
 
-    If `effective_date` is configured in the ACH transfer, this will match the value
-    there. Otherwise, it will the date that the ACH transfer was processed, which is
-    usually the current or subsequent business day.
+    If a specific date was configured using `preferred_effective_date`, this will
+    match that value. Otherwise, it will be the date selected (following the
+    specified settlement schedule) at the time the transfer was submitted.
     """
 
-    expected_funds_settlement_at: datetime
-    """When the funds transfer is expected to settle in the recipient's account.
+    expected_funds_settlement_at: datetime.datetime
+    """When the transfer is expected to settle in the recipient's account.
 
     Credits may be available sooner, at the receiving banks discretion. The FedACH
     schedule is published
     [here](https://www.frbservices.org/resources/resource-centers/same-day-ach/fedach-processing-schedule.html).
     """
 
-    submitted_at: datetime
+    expected_settlement_schedule: Literal["same_day", "future_dated"]
+    """The settlement schedule the transfer is expected to follow.
+
+    This expectation takes into account the `effective_date`, `submitted_at`, and
+    the amount of the transfer.
+
+    - `same_day` - The transfer is expected to settle same-day.
+    - `future_dated` - The transfer is expected to settle on a future date.
+    """
+
+    submitted_at: datetime.datetime
     """When the ACH transfer was sent to FedACH."""
 
     trace_number: str
@@ -562,7 +593,7 @@ class ACHTransfer(BaseModel):
     company_name: Optional[str] = None
     """The name by which the recipient knows you."""
 
-    created_at: datetime
+    created_at: datetime.datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the transfer was created.
@@ -592,12 +623,6 @@ class ACHTransfer(BaseModel):
     - `business` - The External Account is owned by a business.
     - `individual` - The External Account is owned by an individual.
     - `unknown` - It's unknown what kind of entity owns the External Account.
-    """
-
-    effective_date: Optional[date] = None
-    """
-    The transfer effective date in
-    [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
     """
 
     external_account_id: Optional[str] = None
@@ -642,6 +667,14 @@ class ACHTransfer(BaseModel):
     A pending transaction is created when the transfer
     [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals)
     by someone else in your organization.
+    """
+
+    preferred_effective_date: PreferredEffectiveDate
+    """Configuration for how the effective date of the transfer will be set.
+
+    This determines same-day vs future-dated settlement timing. If not set, defaults
+    to a `settlement_schedule` of `same_day`. If set, exactly one of the child
+    atributes must be set.
     """
 
     return_: Optional[Return] = FieldInfo(alias="return", default=None)
