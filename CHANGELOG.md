@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.67.0 (2024-06-28)
+
+Full Changelog: [v0.66.4...v0.67.0](https://github.com/Increase/increase-python/compare/v0.66.4...v0.67.0)
+
+### Features
+
+* **api:** updates ([#481](https://github.com/Increase/increase-python/issues/481)) ([e5eb90e](https://github.com/Increase/increase-python/commit/e5eb90e678aad4e312088f01d2681fc5b621b04c))
+
+
+### Chores
+
+* **deps:** bump anyio to v4.4.0 ([#477](https://github.com/Increase/increase-python/issues/477)) ([56b114d](https://github.com/Increase/increase-python/commit/56b114d00c07db9d75ec43f5c43c7b986cb07966))
+* gitignore test server logs ([#480](https://github.com/Increase/increase-python/issues/480)) ([131baa2](https://github.com/Increase/increase-python/commit/131baa20540f9786ca4b38dfd850730fb64f3d94))
+* **internal:** add reflection helper function ([#479](https://github.com/Increase/increase-python/issues/479)) ([d57bd9c](https://github.com/Increase/increase-python/commit/d57bd9c30e0321ab1a50b7d6d22a8923e6eceee9))
+
 ## 0.66.4 (2024-06-27)
 
 Full Changelog: [v0.66.3...v0.66.4](https://github.com/Increase/increase-python/compare/v0.66.3...v0.66.4)
