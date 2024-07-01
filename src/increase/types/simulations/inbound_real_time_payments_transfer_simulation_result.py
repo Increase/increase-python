@@ -621,7 +621,6 @@ class DeclinedTransactionSourceCheckDepositRejection(BaseModel):
         "suspected_fraud",
         "deposit_window_expired",
         "unknown",
-        "operator",
     ]
     """Why the check deposit was rejected.
 
@@ -638,8 +637,6 @@ class DeclinedTransactionSourceCheckDepositRejection(BaseModel):
     - `suspected_fraud` - This check is suspected to be fraudulent.
     - `deposit_window_expired` - This check's deposit window has expired.
     - `unknown` - The check was rejected for an unknown reason.
-    - `operator` - The check was rejected by an operator who will provide details
-      out-of-band.
     """
 
     rejected_at: datetime
@@ -3092,6 +3089,12 @@ class TransactionSourceInboundInternationalACHTransfer(BaseModel):
     routing number, this can be used to identify the ACH transfer at either bank.
     ACH trace numbers are not unique, but are
     [used to correlate returns](https://increase.com/documentation/ach-returns#ach-returns).
+    """
+
+    type: Literal["inbound_international_ach_transfer"]
+    """A constant representing the object's type.
+
+    For this resource it will always be `inbound_international_ach_transfer`.
     """
 
 

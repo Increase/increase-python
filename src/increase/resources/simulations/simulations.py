@@ -167,6 +167,14 @@ from .inbound_wire_drawdown_requests import (
     InboundWireDrawdownRequestsWithStreamingResponse,
     AsyncInboundWireDrawdownRequestsWithStreamingResponse,
 )
+from .inbound_international_ach_transfers import (
+    InboundInternationalACHTransfers,
+    AsyncInboundInternationalACHTransfers,
+    InboundInternationalACHTransfersWithRawResponse,
+    AsyncInboundInternationalACHTransfersWithRawResponse,
+    InboundInternationalACHTransfersWithStreamingResponse,
+    AsyncInboundInternationalACHTransfersWithStreamingResponse,
+)
 
 __all__ = ["Simulations", "AsyncSimulations"]
 
@@ -243,6 +251,10 @@ class Simulations(SyncAPIResource):
     @cached_property
     def inbound_check_deposits(self) -> InboundCheckDeposits:
         return InboundCheckDeposits(self._client)
+
+    @cached_property
+    def inbound_international_ach_transfers(self) -> InboundInternationalACHTransfers:
+        return InboundInternationalACHTransfers(self._client)
 
     @cached_property
     def with_raw_response(self) -> SimulationsWithRawResponse:
@@ -537,6 +549,10 @@ class AsyncSimulations(AsyncAPIResource):
     @cached_property
     def inbound_check_deposits(self) -> AsyncInboundCheckDeposits:
         return AsyncInboundCheckDeposits(self._client)
+
+    @cached_property
+    def inbound_international_ach_transfers(self) -> AsyncInboundInternationalACHTransfers:
+        return AsyncInboundInternationalACHTransfers(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncSimulationsWithRawResponse:
@@ -848,6 +864,10 @@ class SimulationsWithRawResponse:
     def inbound_check_deposits(self) -> InboundCheckDepositsWithRawResponse:
         return InboundCheckDepositsWithRawResponse(self._simulations.inbound_check_deposits)
 
+    @cached_property
+    def inbound_international_ach_transfers(self) -> InboundInternationalACHTransfersWithRawResponse:
+        return InboundInternationalACHTransfersWithRawResponse(self._simulations.inbound_international_ach_transfers)
+
 
 class AsyncSimulationsWithRawResponse:
     def __init__(self, simulations: AsyncSimulations) -> None:
@@ -937,6 +957,12 @@ class AsyncSimulationsWithRawResponse:
     @cached_property
     def inbound_check_deposits(self) -> AsyncInboundCheckDepositsWithRawResponse:
         return AsyncInboundCheckDepositsWithRawResponse(self._simulations.inbound_check_deposits)
+
+    @cached_property
+    def inbound_international_ach_transfers(self) -> AsyncInboundInternationalACHTransfersWithRawResponse:
+        return AsyncInboundInternationalACHTransfersWithRawResponse(
+            self._simulations.inbound_international_ach_transfers
+        )
 
 
 class SimulationsWithStreamingResponse:
@@ -1028,6 +1054,12 @@ class SimulationsWithStreamingResponse:
     def inbound_check_deposits(self) -> InboundCheckDepositsWithStreamingResponse:
         return InboundCheckDepositsWithStreamingResponse(self._simulations.inbound_check_deposits)
 
+    @cached_property
+    def inbound_international_ach_transfers(self) -> InboundInternationalACHTransfersWithStreamingResponse:
+        return InboundInternationalACHTransfersWithStreamingResponse(
+            self._simulations.inbound_international_ach_transfers
+        )
+
 
 class AsyncSimulationsWithStreamingResponse:
     def __init__(self, simulations: AsyncSimulations) -> None:
@@ -1117,3 +1149,9 @@ class AsyncSimulationsWithStreamingResponse:
     @cached_property
     def inbound_check_deposits(self) -> AsyncInboundCheckDepositsWithStreamingResponse:
         return AsyncInboundCheckDepositsWithStreamingResponse(self._simulations.inbound_check_deposits)
+
+    @cached_property
+    def inbound_international_ach_transfers(self) -> AsyncInboundInternationalACHTransfersWithStreamingResponse:
+        return AsyncInboundInternationalACHTransfersWithStreamingResponse(
+            self._simulations.inbound_international_ach_transfers
+        )
