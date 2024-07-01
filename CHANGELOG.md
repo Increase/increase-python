@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.68.0 (2024-07-01)
+
+Full Changelog: [v0.67.0...v0.68.0](https://github.com/Increase/increase-python/compare/v0.67.0...v0.68.0)
+
+### Features
+
+* **api:** add method to simulate international ACH transfers ([#484](https://github.com/Increase/increase-python/issues/484)) ([6f95cb5](https://github.com/Increase/increase-python/commit/6f95cb5bf6d600879e78f92e80f800078f8022af))
+
+
+### Chores
+
+* **internal:** add rich as a dev dependency ([#482](https://github.com/Increase/increase-python/issues/482)) ([ebd373e](https://github.com/Increase/increase-python/commit/ebd373e694940a9fe9defd49fd5a7a112befd536))
+
 ## 0.67.0 (2024-06-28)
 
 Full Changelog: [v0.66.4...v0.67.0](https://github.com/Increase/increase-python/compare/v0.66.4...v0.67.0)
