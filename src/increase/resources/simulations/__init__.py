@@ -152,6 +152,14 @@ from .inbound_wire_drawdown_requests import (
     InboundWireDrawdownRequestsWithStreamingResponse,
     AsyncInboundWireDrawdownRequestsWithStreamingResponse,
 )
+from .inbound_international_ach_transfers import (
+    InboundInternationalACHTransfers,
+    AsyncInboundInternationalACHTransfers,
+    InboundInternationalACHTransfersWithRawResponse,
+    AsyncInboundInternationalACHTransfersWithRawResponse,
+    InboundInternationalACHTransfersWithStreamingResponse,
+    AsyncInboundInternationalACHTransfersWithStreamingResponse,
+)
 
 __all__ = [
     "AccountTransfers",
@@ -262,6 +270,12 @@ __all__ = [
     "AsyncInboundCheckDepositsWithRawResponse",
     "InboundCheckDepositsWithStreamingResponse",
     "AsyncInboundCheckDepositsWithStreamingResponse",
+    "InboundInternationalACHTransfers",
+    "AsyncInboundInternationalACHTransfers",
+    "InboundInternationalACHTransfersWithRawResponse",
+    "AsyncInboundInternationalACHTransfersWithRawResponse",
+    "InboundInternationalACHTransfersWithStreamingResponse",
+    "AsyncInboundInternationalACHTransfersWithStreamingResponse",
     "Simulations",
     "AsyncSimulations",
     "SimulationsWithRawResponse",

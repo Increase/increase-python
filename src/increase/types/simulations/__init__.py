@@ -13,6 +13,7 @@ from .card_authorization_simulation import CardAuthorizationSimulation as CardAu
 from .interest_payment_create_params import InterestPaymentCreateParams as InterestPaymentCreateParams
 from .account_statement_create_params import AccountStatementCreateParams as AccountStatementCreateParams
 from .ach_transfer_create_inbound_params import ACHTransferCreateInboundParams as ACHTransferCreateInboundParams
+from .inbound_international_ach_transfer import InboundInternationalACHTransfer as InboundInternationalACHTransfer
 from .inbound_check_deposit_create_params import InboundCheckDepositCreateParams as InboundCheckDepositCreateParams
 from .inbound_funds_hold_release_response import InboundFundsHoldReleaseResponse as InboundFundsHoldReleaseResponse
 from .wire_transfer_create_inbound_params import WireTransferCreateInboundParams as WireTransferCreateInboundParams
@@ -33,6 +34,9 @@ from .real_time_payments_transfer_complete_params import (
 )
 from .digital_wallet_token_request_create_response import (
     DigitalWalletTokenRequestCreateResponse as DigitalWalletTokenRequestCreateResponse,
+)
+from .inbound_international_ach_transfer_create_params import (
+    InboundInternationalACHTransferCreateParams as InboundInternationalACHTransferCreateParams,
 )
 from .real_time_payments_transfer_create_inbound_params import (
     RealTimePaymentsTransferCreateInboundParams as RealTimePaymentsTransferCreateInboundParams,

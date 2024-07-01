@@ -2022,6 +2022,12 @@ class SourceInboundInternationalACHTransfer(BaseModel):
     [used to correlate returns](https://increase.com/documentation/ach-returns#ach-returns).
     """
 
+    type: Literal["inbound_international_ach_transfer"]
+    """A constant representing the object's type.
+
+    For this resource it will always be `inbound_international_ach_transfer`.
+    """
+
 
 class SourceInboundRealTimePaymentsTransferConfirmation(BaseModel):
     amount: int
