@@ -671,6 +671,18 @@ Methods:
 
 - <code title="post /simulations/inbound_check_deposits">client.simulations.inbound_check_deposits.<a href="./src/increase/resources/simulations/inbound_check_deposits.py">create</a>(\*\*<a href="src/increase/types/simulations/inbound_check_deposit_create_params.py">params</a>) -> <a href="./src/increase/types/inbound_check_deposit.py">InboundCheckDeposit</a></code>
 
+## InboundInternationalACHTransfers
+
+Types:
+
+```python
+from increase.types.simulations import InboundInternationalACHTransfer
+```
+
+Methods:
+
+- <code title="post /simulations/inbound_international_ach_transfers">client.simulations.inbound_international_ach_transfers.<a href="./src/increase/resources/simulations/inbound_international_ach_transfers.py">create</a>(\*\*<a href="src/increase/types/simulations/inbound_international_ach_transfer_create_params.py">params</a>) -> <a href="./src/increase/types/simulations/inbound_international_ach_transfer.py">InboundInternationalACHTransfer</a></code>
+
 # PhysicalCards
 
 Types:

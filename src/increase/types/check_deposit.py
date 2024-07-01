@@ -86,7 +86,6 @@ class DepositRejection(BaseModel):
         "suspected_fraud",
         "deposit_window_expired",
         "unknown",
-        "operator",
     ]
     """Why the check deposit was rejected.
 
@@ -103,8 +102,6 @@ class DepositRejection(BaseModel):
     - `suspected_fraud` - This check is suspected to be fraudulent.
     - `deposit_window_expired` - This check's deposit window has expired.
     - `unknown` - The check was rejected for an unknown reason.
-    - `operator` - The check was rejected by an operator who will provide details
-      out-of-band.
     """
 
     rejected_at: datetime
