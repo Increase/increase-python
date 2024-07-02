@@ -6,7 +6,15 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["InboundCheckDeposit"]
+__all__ = ["InboundCheckDeposit", "DepositReturn"]
+
+
+class DepositReturn(BaseModel):
+    returned_at: datetime
+    """The time at which the deposit was returned."""
+
+    transaction_id: str
+    """The id of the transaction for the returned deposit."""
 
 
 class InboundCheckDeposit(BaseModel):
@@ -79,6 +87,12 @@ class InboundCheckDeposit(BaseModel):
     """
     If the deposit attempt has been rejected, the identifier of the Declined
     Transaction object created as a result of the failed deposit.
+    """
+
+    deposit_return: Optional[DepositReturn] = None
+    """
+    If you requested a return of this deposit, this will contain details of the
+    return.
     """
 
     front_image_file_id: Optional[str] = None
