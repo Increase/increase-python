@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.69.0 (2024-07-02)
+
+Full Changelog: [v0.68.0...v0.69.0](https://github.com/Increase/increase-python/compare/v0.68.0...v0.69.0)
+
+### Features
+
+* **api:** add deposit return property to inbound check deposit model ([#487](https://github.com/Increase/increase-python/issues/487)) ([2e23caf](https://github.com/Increase/increase-python/commit/2e23caffc78e2b17e86fc299bd1747d4a95fc183))
+
+
+### Chores
+
+* **internal:** add helper method for constructing `BaseModel`s ([#485](https://github.com/Increase/increase-python/issues/485)) ([2304960](https://github.com/Increase/increase-python/commit/23049601aec08c6da72fe3e6560d162817564f20))
+
 ## 0.68.0 (2024-07-01)
 
 Full Changelog: [v0.67.0...v0.68.0](https://github.com/Increase/increase-python/compare/v0.67.0...v0.68.0)
