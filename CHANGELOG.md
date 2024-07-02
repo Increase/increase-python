@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.69.1 (2024-07-02)
+
+Full Changelog: [v0.69.0...v0.69.1](https://github.com/Increase/increase-python/compare/v0.69.0...v0.69.1)
+
+### Bug Fixes
+
+* **client:** always respect content-type multipart/form-data if provided ([#488](https://github.com/Increase/increase-python/issues/488)) ([bbca671](https://github.com/Increase/increase-python/commit/bbca6719abcd4069383f4eabb21ac353e22e66c1))
+
 ## 0.69.0 (2024-07-02)
 
 Full Changelog: [v0.68.0...v0.69.0](https://github.com/Increase/increase-python/compare/v0.68.0...v0.69.0)
