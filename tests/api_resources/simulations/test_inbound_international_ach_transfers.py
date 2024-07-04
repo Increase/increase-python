@@ -36,6 +36,7 @@ class TestInboundInternationalACHTransfers:
             originating_currency_code="NOK",
             originator_company_entry_description="x",
             originator_name="x",
+            receiver_identification_number="x",
             receiving_company_or_individual_name="x",
         )
         assert_matches_type(InboundInternationalACHTransfer, inbound_international_ach_transfer, path=["response"])
@@ -93,6 +94,7 @@ class TestAsyncInboundInternationalACHTransfers:
             originating_currency_code="NOK",
             originator_company_entry_description="x",
             originator_name="x",
+            receiver_identification_number="x",
             receiving_company_or_individual_name="x",
         )
         assert_matches_type(InboundInternationalACHTransfer, inbound_international_ach_transfer, path=["response"])

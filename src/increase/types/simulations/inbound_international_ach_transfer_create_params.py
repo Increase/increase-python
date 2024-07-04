@@ -40,5 +40,8 @@ class InboundInternationalACHTransferCreateParams(TypedDict, total=False):
     originator_name: str
     """Either the name of the originator or an intermediary money transmitter."""
 
+    receiver_identification_number: str
+    """An identification number the originator uses for the receiver."""
+
     receiving_company_or_individual_name: str
     """The name of the receiver of the transfer."""
