@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.70.0 (2024-07-04)
+
+Full Changelog: [v0.69.1...v0.70.0](https://github.com/Increase/increase-python/compare/v0.69.1...v0.70.0)
+
+### Features
+
+* **api:** add property 'receiver identification number' to 'originator company entry description' ([#492](https://github.com/Increase/increase-python/issues/492)) ([3d4251a](https://github.com/Increase/increase-python/commit/3d4251aa3993095fac3428242f5e25cf047d9ebc))
+
+
+### Chores
+
+* **ci:** update rye to v0.35.0 ([#490](https://github.com/Increase/increase-python/issues/490)) ([75f534a](https://github.com/Increase/increase-python/commit/75f534a83a50e4013cbf104e9f0e08ed0104db96))
+
 ## 0.69.1 (2024-07-02)
 
 Full Changelog: [v0.69.0...v0.69.1](https://github.com/Increase/increase-python/compare/v0.69.0...v0.69.1)
