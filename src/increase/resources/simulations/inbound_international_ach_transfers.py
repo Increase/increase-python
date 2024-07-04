@@ -40,6 +40,7 @@ class InboundInternationalACHTransfers(SyncAPIResource):
         originating_currency_code: str,
         originator_company_entry_description: str | NotGiven = NOT_GIVEN,
         originator_name: str | NotGiven = NOT_GIVEN,
+        receiver_identification_number: str | NotGiven = NOT_GIVEN,
         receiving_company_or_individual_name: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -75,6 +76,8 @@ class InboundInternationalACHTransfers(SyncAPIResource):
 
           originator_name: Either the name of the originator or an intermediary money transmitter.
 
+          receiver_identification_number: An identification number the originator uses for the receiver.
+
           receiving_company_or_individual_name: The name of the receiver of the transfer.
 
           extra_headers: Send extra headers
@@ -97,6 +100,7 @@ class InboundInternationalACHTransfers(SyncAPIResource):
                     "originating_currency_code": originating_currency_code,
                     "originator_company_entry_description": originator_company_entry_description,
                     "originator_name": originator_name,
+                    "receiver_identification_number": receiver_identification_number,
                     "receiving_company_or_individual_name": receiving_company_or_individual_name,
                 },
                 inbound_international_ach_transfer_create_params.InboundInternationalACHTransferCreateParams,
@@ -130,6 +134,7 @@ class AsyncInboundInternationalACHTransfers(AsyncAPIResource):
         originating_currency_code: str,
         originator_company_entry_description: str | NotGiven = NOT_GIVEN,
         originator_name: str | NotGiven = NOT_GIVEN,
+        receiver_identification_number: str | NotGiven = NOT_GIVEN,
         receiving_company_or_individual_name: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -165,6 +170,8 @@ class AsyncInboundInternationalACHTransfers(AsyncAPIResource):
 
           originator_name: Either the name of the originator or an intermediary money transmitter.
 
+          receiver_identification_number: An identification number the originator uses for the receiver.
+
           receiving_company_or_individual_name: The name of the receiver of the transfer.
 
           extra_headers: Send extra headers
@@ -187,6 +194,7 @@ class AsyncInboundInternationalACHTransfers(AsyncAPIResource):
                     "originating_currency_code": originating_currency_code,
                     "originator_company_entry_description": originator_company_entry_description,
                     "originator_name": originator_name,
+                    "receiver_identification_number": receiver_identification_number,
                     "receiving_company_or_individual_name": receiving_company_or_individual_name,
                 },
                 inbound_international_ach_transfer_create_params.InboundInternationalACHTransferCreateParams,
