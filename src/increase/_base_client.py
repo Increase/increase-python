@@ -84,7 +84,9 @@ from ._exceptions import (
     APIStatusError,
     APITimeoutError,
     APIConnectionError,
+    InvalidOperationError,
     APIResponseValidationError,
+    IdempotencyKeyAlreadyUsedError,
 )
 from ._legacy_response import LegacyAPIResponse
 
@@ -714,8 +716,14 @@ class BaseClient(Generic[_HttpxClientT, _DefaultStreamT]):
             log.debug("Retrying due to status code %i", response.status_code)
             return True
 
-        # Retry on lock timeouts.
         if response.status_code == 409:
+            status_error = self._make_status_error_from_response(response)
+            # Don't retry on idempotency key errors or invalid operations
+            if isinstance(status_error, IdempotencyKeyAlreadyUsedError) or isinstance(
+                status_error, InvalidOperationError
+            ):
+                log.debug("Not retrying %s error: %s", status_error.type, status_error.message)
+                return False
             log.debug("Retrying due to status code %i", response.status_code)
             return True
 
