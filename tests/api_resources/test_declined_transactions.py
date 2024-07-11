@@ -22,14 +22,14 @@ class TestDeclinedTransactions:
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         declined_transaction = client.declined_transactions.retrieve(
-            "string",
+            "declined_transaction_id",
         )
         assert_matches_type(DeclinedTransaction, declined_transaction, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
         response = client.declined_transactions.with_raw_response.retrieve(
-            "string",
+            "declined_transaction_id",
         )
 
         assert response.is_closed is True
@@ -40,7 +40,7 @@ class TestDeclinedTransactions:
     @parametrize
     def test_streaming_response_retrieve(self, client: Increase) -> None:
         with client.declined_transactions.with_streaming_response.retrieve(
-            "string",
+            "declined_transaction_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -67,7 +67,7 @@ class TestDeclinedTransactions:
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
         declined_transaction = client.declined_transactions.list(
-            account_id="string",
+            account_id="account_id",
             category={"in": ["ach_decline", "card_decline", "check_decline"]},
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -75,9 +75,9 @@ class TestDeclinedTransactions:
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
-            cursor="string",
+            cursor="cursor",
             limit=1,
-            route_id="string",
+            route_id="route_id",
         )
         assert_matches_type(SyncPage[DeclinedTransaction], declined_transaction, path=["response"])
 
@@ -108,14 +108,14 @@ class TestAsyncDeclinedTransactions:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
         declined_transaction = await async_client.declined_transactions.retrieve(
-            "string",
+            "declined_transaction_id",
         )
         assert_matches_type(DeclinedTransaction, declined_transaction, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.declined_transactions.with_raw_response.retrieve(
-            "string",
+            "declined_transaction_id",
         )
 
         assert response.is_closed is True
@@ -126,7 +126,7 @@ class TestAsyncDeclinedTransactions:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
         async with async_client.declined_transactions.with_streaming_response.retrieve(
-            "string",
+            "declined_transaction_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -153,7 +153,7 @@ class TestAsyncDeclinedTransactions:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
         declined_transaction = await async_client.declined_transactions.list(
-            account_id="string",
+            account_id="account_id",
             category={"in": ["ach_decline", "card_decline", "check_decline"]},
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -161,9 +161,9 @@ class TestAsyncDeclinedTransactions:
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
-            cursor="string",
+            cursor="cursor",
             limit=1,
-            route_id="string",
+            route_id="route_id",
         )
         assert_matches_type(AsyncPage[DeclinedTransaction], declined_transaction, path=["response"])
 

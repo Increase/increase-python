@@ -20,14 +20,14 @@ class TestInboundFundsHolds:
     @parametrize
     def test_method_release(self, client: Increase) -> None:
         inbound_funds_hold = client.simulations.inbound_funds_holds.release(
-            "string",
+            "inbound_funds_hold_id",
         )
         assert_matches_type(InboundFundsHoldReleaseResponse, inbound_funds_hold, path=["response"])
 
     @parametrize
     def test_raw_response_release(self, client: Increase) -> None:
         response = client.simulations.inbound_funds_holds.with_raw_response.release(
-            "string",
+            "inbound_funds_hold_id",
         )
 
         assert response.is_closed is True
@@ -38,7 +38,7 @@ class TestInboundFundsHolds:
     @parametrize
     def test_streaming_response_release(self, client: Increase) -> None:
         with client.simulations.inbound_funds_holds.with_streaming_response.release(
-            "string",
+            "inbound_funds_hold_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -62,14 +62,14 @@ class TestAsyncInboundFundsHolds:
     @parametrize
     async def test_method_release(self, async_client: AsyncIncrease) -> None:
         inbound_funds_hold = await async_client.simulations.inbound_funds_holds.release(
-            "string",
+            "inbound_funds_hold_id",
         )
         assert_matches_type(InboundFundsHoldReleaseResponse, inbound_funds_hold, path=["response"])
 
     @parametrize
     async def test_raw_response_release(self, async_client: AsyncIncrease) -> None:
         response = await async_client.simulations.inbound_funds_holds.with_raw_response.release(
-            "string",
+            "inbound_funds_hold_id",
         )
 
         assert response.is_closed is True
@@ -80,7 +80,7 @@ class TestAsyncInboundFundsHolds:
     @parametrize
     async def test_streaming_response_release(self, async_client: AsyncIncrease) -> None:
         async with async_client.simulations.inbound_funds_holds.with_streaming_response.release(
-            "string",
+            "inbound_funds_hold_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

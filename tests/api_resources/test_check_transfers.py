@@ -95,14 +95,14 @@ class TestCheckTransfers:
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         check_transfer = client.check_transfers.retrieve(
-            "string",
+            "check_transfer_id",
         )
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
         response = client.check_transfers.with_raw_response.retrieve(
-            "string",
+            "check_transfer_id",
         )
 
         assert response.is_closed is True
@@ -113,7 +113,7 @@ class TestCheckTransfers:
     @parametrize
     def test_streaming_response_retrieve(self, client: Increase) -> None:
         with client.check_transfers.with_streaming_response.retrieve(
-            "string",
+            "check_transfer_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -138,14 +138,14 @@ class TestCheckTransfers:
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
         check_transfer = client.check_transfers.list(
-            account_id="string",
+            account_id="account_id",
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
-            cursor="string",
+            cursor="cursor",
             idempotency_key="x",
             limit=1,
         )
@@ -174,14 +174,14 @@ class TestCheckTransfers:
     @parametrize
     def test_method_approve(self, client: Increase) -> None:
         check_transfer = client.check_transfers.approve(
-            "string",
+            "check_transfer_id",
         )
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
     @parametrize
     def test_raw_response_approve(self, client: Increase) -> None:
         response = client.check_transfers.with_raw_response.approve(
-            "string",
+            "check_transfer_id",
         )
 
         assert response.is_closed is True
@@ -192,7 +192,7 @@ class TestCheckTransfers:
     @parametrize
     def test_streaming_response_approve(self, client: Increase) -> None:
         with client.check_transfers.with_streaming_response.approve(
-            "string",
+            "check_transfer_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -212,14 +212,14 @@ class TestCheckTransfers:
     @parametrize
     def test_method_cancel(self, client: Increase) -> None:
         check_transfer = client.check_transfers.cancel(
-            "string",
+            "check_transfer_id",
         )
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
     @parametrize
     def test_raw_response_cancel(self, client: Increase) -> None:
         response = client.check_transfers.with_raw_response.cancel(
-            "string",
+            "check_transfer_id",
         )
 
         assert response.is_closed is True
@@ -230,7 +230,7 @@ class TestCheckTransfers:
     @parametrize
     def test_streaming_response_cancel(self, client: Increase) -> None:
         with client.check_transfers.with_streaming_response.cancel(
-            "string",
+            "check_transfer_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -251,7 +251,7 @@ class TestCheckTransfers:
     @parametrize
     def test_method_stop_payment(self, client: Increase) -> None:
         check_transfer = client.check_transfers.stop_payment(
-            "string",
+            check_transfer_id="check_transfer_30b43acfu9vw8fyc4f5",
         )
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
@@ -259,7 +259,7 @@ class TestCheckTransfers:
     @parametrize
     def test_method_stop_payment_with_all_params(self, client: Increase) -> None:
         check_transfer = client.check_transfers.stop_payment(
-            "string",
+            check_transfer_id="check_transfer_30b43acfu9vw8fyc4f5",
             reason="mail_delivery_failed",
         )
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
@@ -268,7 +268,7 @@ class TestCheckTransfers:
     @parametrize
     def test_raw_response_stop_payment(self, client: Increase) -> None:
         response = client.check_transfers.with_raw_response.stop_payment(
-            "string",
+            check_transfer_id="check_transfer_30b43acfu9vw8fyc4f5",
         )
 
         assert response.is_closed is True
@@ -280,7 +280,7 @@ class TestCheckTransfers:
     @parametrize
     def test_streaming_response_stop_payment(self, client: Increase) -> None:
         with client.check_transfers.with_streaming_response.stop_payment(
-            "string",
+            check_transfer_id="check_transfer_30b43acfu9vw8fyc4f5",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -295,7 +295,7 @@ class TestCheckTransfers:
     def test_path_params_stop_payment(self, client: Increase) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `check_transfer_id` but received ''"):
             client.check_transfers.with_raw_response.stop_payment(
-                "",
+                check_transfer_id="",
             )
 
 
@@ -376,14 +376,14 @@ class TestAsyncCheckTransfers:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
         check_transfer = await async_client.check_transfers.retrieve(
-            "string",
+            "check_transfer_id",
         )
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.check_transfers.with_raw_response.retrieve(
-            "string",
+            "check_transfer_id",
         )
 
         assert response.is_closed is True
@@ -394,7 +394,7 @@ class TestAsyncCheckTransfers:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
         async with async_client.check_transfers.with_streaming_response.retrieve(
-            "string",
+            "check_transfer_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -419,14 +419,14 @@ class TestAsyncCheckTransfers:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
         check_transfer = await async_client.check_transfers.list(
-            account_id="string",
+            account_id="account_id",
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
-            cursor="string",
+            cursor="cursor",
             idempotency_key="x",
             limit=1,
         )
@@ -455,14 +455,14 @@ class TestAsyncCheckTransfers:
     @parametrize
     async def test_method_approve(self, async_client: AsyncIncrease) -> None:
         check_transfer = await async_client.check_transfers.approve(
-            "string",
+            "check_transfer_id",
         )
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
     @parametrize
     async def test_raw_response_approve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.check_transfers.with_raw_response.approve(
-            "string",
+            "check_transfer_id",
         )
 
         assert response.is_closed is True
@@ -473,7 +473,7 @@ class TestAsyncCheckTransfers:
     @parametrize
     async def test_streaming_response_approve(self, async_client: AsyncIncrease) -> None:
         async with async_client.check_transfers.with_streaming_response.approve(
-            "string",
+            "check_transfer_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -493,14 +493,14 @@ class TestAsyncCheckTransfers:
     @parametrize
     async def test_method_cancel(self, async_client: AsyncIncrease) -> None:
         check_transfer = await async_client.check_transfers.cancel(
-            "string",
+            "check_transfer_id",
         )
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
     @parametrize
     async def test_raw_response_cancel(self, async_client: AsyncIncrease) -> None:
         response = await async_client.check_transfers.with_raw_response.cancel(
-            "string",
+            "check_transfer_id",
         )
 
         assert response.is_closed is True
@@ -511,7 +511,7 @@ class TestAsyncCheckTransfers:
     @parametrize
     async def test_streaming_response_cancel(self, async_client: AsyncIncrease) -> None:
         async with async_client.check_transfers.with_streaming_response.cancel(
-            "string",
+            "check_transfer_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -532,7 +532,7 @@ class TestAsyncCheckTransfers:
     @parametrize
     async def test_method_stop_payment(self, async_client: AsyncIncrease) -> None:
         check_transfer = await async_client.check_transfers.stop_payment(
-            "string",
+            check_transfer_id="check_transfer_30b43acfu9vw8fyc4f5",
         )
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
@@ -540,7 +540,7 @@ class TestAsyncCheckTransfers:
     @parametrize
     async def test_method_stop_payment_with_all_params(self, async_client: AsyncIncrease) -> None:
         check_transfer = await async_client.check_transfers.stop_payment(
-            "string",
+            check_transfer_id="check_transfer_30b43acfu9vw8fyc4f5",
             reason="mail_delivery_failed",
         )
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
@@ -549,7 +549,7 @@ class TestAsyncCheckTransfers:
     @parametrize
     async def test_raw_response_stop_payment(self, async_client: AsyncIncrease) -> None:
         response = await async_client.check_transfers.with_raw_response.stop_payment(
-            "string",
+            check_transfer_id="check_transfer_30b43acfu9vw8fyc4f5",
         )
 
         assert response.is_closed is True
@@ -561,7 +561,7 @@ class TestAsyncCheckTransfers:
     @parametrize
     async def test_streaming_response_stop_payment(self, async_client: AsyncIncrease) -> None:
         async with async_client.check_transfers.with_streaming_response.stop_payment(
-            "string",
+            check_transfer_id="check_transfer_30b43acfu9vw8fyc4f5",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -576,5 +576,5 @@ class TestAsyncCheckTransfers:
     async def test_path_params_stop_payment(self, async_client: AsyncIncrease) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `check_transfer_id` but received ''"):
             await async_client.check_transfers.with_raw_response.stop_payment(
-                "",
+                check_transfer_id="",
             )

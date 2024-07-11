@@ -63,14 +63,14 @@ class TestPhysicalCardProfiles:
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         physical_card_profile = client.physical_card_profiles.retrieve(
-            "string",
+            "physical_card_profile_id",
         )
         assert_matches_type(PhysicalCardProfile, physical_card_profile, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
         response = client.physical_card_profiles.with_raw_response.retrieve(
-            "string",
+            "physical_card_profile_id",
         )
 
         assert response.is_closed is True
@@ -81,7 +81,7 @@ class TestPhysicalCardProfiles:
     @parametrize
     def test_streaming_response_retrieve(self, client: Increase) -> None:
         with client.physical_card_profiles.with_streaming_response.retrieve(
-            "string",
+            "physical_card_profile_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -108,7 +108,7 @@ class TestPhysicalCardProfiles:
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
         physical_card_profile = client.physical_card_profiles.list(
-            cursor="string",
+            cursor="cursor",
             idempotency_key="x",
             limit=1,
             status={"in": ["pending_creating", "pending_reviewing", "rejected"]},
@@ -138,14 +138,14 @@ class TestPhysicalCardProfiles:
     @parametrize
     def test_method_archive(self, client: Increase) -> None:
         physical_card_profile = client.physical_card_profiles.archive(
-            "string",
+            "physical_card_profile_id",
         )
         assert_matches_type(PhysicalCardProfile, physical_card_profile, path=["response"])
 
     @parametrize
     def test_raw_response_archive(self, client: Increase) -> None:
         response = client.physical_card_profiles.with_raw_response.archive(
-            "string",
+            "physical_card_profile_id",
         )
 
         assert response.is_closed is True
@@ -156,7 +156,7 @@ class TestPhysicalCardProfiles:
     @parametrize
     def test_streaming_response_archive(self, client: Increase) -> None:
         with client.physical_card_profiles.with_streaming_response.archive(
-            "string",
+            "physical_card_profile_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -178,15 +178,15 @@ class TestPhysicalCardProfiles:
     @parametrize
     def test_method_clone(self, client: Increase) -> None:
         physical_card_profile = client.physical_card_profiles.clone(
-            "string",
+            physical_card_profile_id="physical_card_profile_m534d5rn9qyy9ufqxoec",
         )
         assert_matches_type(PhysicalCardProfile, physical_card_profile, path=["response"])
 
     @parametrize
     def test_method_clone_with_all_params(self, client: Increase) -> None:
         physical_card_profile = client.physical_card_profiles.clone(
-            "string",
-            carrier_image_file_id="string",
+            physical_card_profile_id="physical_card_profile_m534d5rn9qyy9ufqxoec",
+            carrier_image_file_id="carrier_image_file_id",
             contact_phone="x",
             description="x",
             front_image_file_id="file_o6aex13wm1jcc36sgcj1",
@@ -200,7 +200,7 @@ class TestPhysicalCardProfiles:
     @parametrize
     def test_raw_response_clone(self, client: Increase) -> None:
         response = client.physical_card_profiles.with_raw_response.clone(
-            "string",
+            physical_card_profile_id="physical_card_profile_m534d5rn9qyy9ufqxoec",
         )
 
         assert response.is_closed is True
@@ -211,7 +211,7 @@ class TestPhysicalCardProfiles:
     @parametrize
     def test_streaming_response_clone(self, client: Increase) -> None:
         with client.physical_card_profiles.with_streaming_response.clone(
-            "string",
+            physical_card_profile_id="physical_card_profile_m534d5rn9qyy9ufqxoec",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -227,7 +227,7 @@ class TestPhysicalCardProfiles:
             ValueError, match=r"Expected a non-empty value for `physical_card_profile_id` but received ''"
         ):
             client.physical_card_profiles.with_raw_response.clone(
-                "",
+                physical_card_profile_id="",
             )
 
 
@@ -277,14 +277,14 @@ class TestAsyncPhysicalCardProfiles:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
         physical_card_profile = await async_client.physical_card_profiles.retrieve(
-            "string",
+            "physical_card_profile_id",
         )
         assert_matches_type(PhysicalCardProfile, physical_card_profile, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.physical_card_profiles.with_raw_response.retrieve(
-            "string",
+            "physical_card_profile_id",
         )
 
         assert response.is_closed is True
@@ -295,7 +295,7 @@ class TestAsyncPhysicalCardProfiles:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
         async with async_client.physical_card_profiles.with_streaming_response.retrieve(
-            "string",
+            "physical_card_profile_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -322,7 +322,7 @@ class TestAsyncPhysicalCardProfiles:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
         physical_card_profile = await async_client.physical_card_profiles.list(
-            cursor="string",
+            cursor="cursor",
             idempotency_key="x",
             limit=1,
             status={"in": ["pending_creating", "pending_reviewing", "rejected"]},
@@ -352,14 +352,14 @@ class TestAsyncPhysicalCardProfiles:
     @parametrize
     async def test_method_archive(self, async_client: AsyncIncrease) -> None:
         physical_card_profile = await async_client.physical_card_profiles.archive(
-            "string",
+            "physical_card_profile_id",
         )
         assert_matches_type(PhysicalCardProfile, physical_card_profile, path=["response"])
 
     @parametrize
     async def test_raw_response_archive(self, async_client: AsyncIncrease) -> None:
         response = await async_client.physical_card_profiles.with_raw_response.archive(
-            "string",
+            "physical_card_profile_id",
         )
 
         assert response.is_closed is True
@@ -370,7 +370,7 @@ class TestAsyncPhysicalCardProfiles:
     @parametrize
     async def test_streaming_response_archive(self, async_client: AsyncIncrease) -> None:
         async with async_client.physical_card_profiles.with_streaming_response.archive(
-            "string",
+            "physical_card_profile_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -392,15 +392,15 @@ class TestAsyncPhysicalCardProfiles:
     @parametrize
     async def test_method_clone(self, async_client: AsyncIncrease) -> None:
         physical_card_profile = await async_client.physical_card_profiles.clone(
-            "string",
+            physical_card_profile_id="physical_card_profile_m534d5rn9qyy9ufqxoec",
         )
         assert_matches_type(PhysicalCardProfile, physical_card_profile, path=["response"])
 
     @parametrize
     async def test_method_clone_with_all_params(self, async_client: AsyncIncrease) -> None:
         physical_card_profile = await async_client.physical_card_profiles.clone(
-            "string",
-            carrier_image_file_id="string",
+            physical_card_profile_id="physical_card_profile_m534d5rn9qyy9ufqxoec",
+            carrier_image_file_id="carrier_image_file_id",
             contact_phone="x",
             description="x",
             front_image_file_id="file_o6aex13wm1jcc36sgcj1",
@@ -414,7 +414,7 @@ class TestAsyncPhysicalCardProfiles:
     @parametrize
     async def test_raw_response_clone(self, async_client: AsyncIncrease) -> None:
         response = await async_client.physical_card_profiles.with_raw_response.clone(
-            "string",
+            physical_card_profile_id="physical_card_profile_m534d5rn9qyy9ufqxoec",
         )
 
         assert response.is_closed is True
@@ -425,7 +425,7 @@ class TestAsyncPhysicalCardProfiles:
     @parametrize
     async def test_streaming_response_clone(self, async_client: AsyncIncrease) -> None:
         async with async_client.physical_card_profiles.with_streaming_response.clone(
-            "string",
+            physical_card_profile_id="physical_card_profile_m534d5rn9qyy9ufqxoec",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -441,5 +441,5 @@ class TestAsyncPhysicalCardProfiles:
             ValueError, match=r"Expected a non-empty value for `physical_card_profile_id` but received ''"
         ):
             await async_client.physical_card_profiles.with_raw_response.clone(
-                "",
+                physical_card_profile_id="",
             )
