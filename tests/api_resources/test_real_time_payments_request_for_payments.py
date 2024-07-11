@@ -88,7 +88,7 @@ class TestRealTimePaymentsRequestForPayments:
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         real_time_payments_request_for_payment = client.real_time_payments_request_for_payments.retrieve(
-            "string",
+            "request_for_payment_id",
         )
         assert_matches_type(
             RealTimePaymentsRequestForPayment, real_time_payments_request_for_payment, path=["response"]
@@ -97,7 +97,7 @@ class TestRealTimePaymentsRequestForPayments:
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
         response = client.real_time_payments_request_for_payments.with_raw_response.retrieve(
-            "string",
+            "request_for_payment_id",
         )
 
         assert response.is_closed is True
@@ -110,7 +110,7 @@ class TestRealTimePaymentsRequestForPayments:
     @parametrize
     def test_streaming_response_retrieve(self, client: Increase) -> None:
         with client.real_time_payments_request_for_payments.with_streaming_response.retrieve(
-            "string",
+            "request_for_payment_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -141,14 +141,14 @@ class TestRealTimePaymentsRequestForPayments:
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
         real_time_payments_request_for_payment = client.real_time_payments_request_for_payments.list(
-            account_id="string",
+            account_id="account_id",
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
-            cursor="string",
+            cursor="cursor",
             idempotency_key="x",
             limit=1,
         )
@@ -251,7 +251,7 @@ class TestAsyncRealTimePaymentsRequestForPayments:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
         real_time_payments_request_for_payment = await async_client.real_time_payments_request_for_payments.retrieve(
-            "string",
+            "request_for_payment_id",
         )
         assert_matches_type(
             RealTimePaymentsRequestForPayment, real_time_payments_request_for_payment, path=["response"]
@@ -260,7 +260,7 @@ class TestAsyncRealTimePaymentsRequestForPayments:
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.real_time_payments_request_for_payments.with_raw_response.retrieve(
-            "string",
+            "request_for_payment_id",
         )
 
         assert response.is_closed is True
@@ -273,7 +273,7 @@ class TestAsyncRealTimePaymentsRequestForPayments:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
         async with async_client.real_time_payments_request_for_payments.with_streaming_response.retrieve(
-            "string",
+            "request_for_payment_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -304,14 +304,14 @@ class TestAsyncRealTimePaymentsRequestForPayments:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
         real_time_payments_request_for_payment = await async_client.real_time_payments_request_for_payments.list(
-            account_id="string",
+            account_id="account_id",
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
-            cursor="string",
+            cursor="cursor",
             idempotency_key="x",
             limit=1,
         )

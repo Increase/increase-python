@@ -22,14 +22,14 @@ class TestInboundMailItems:
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         inbound_mail_item = client.inbound_mail_items.retrieve(
-            "string",
+            "inbound_mail_item_id",
         )
         assert_matches_type(InboundMailItem, inbound_mail_item, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
         response = client.inbound_mail_items.with_raw_response.retrieve(
-            "string",
+            "inbound_mail_item_id",
         )
 
         assert response.is_closed is True
@@ -40,7 +40,7 @@ class TestInboundMailItems:
     @parametrize
     def test_streaming_response_retrieve(self, client: Increase) -> None:
         with client.inbound_mail_items.with_streaming_response.retrieve(
-            "string",
+            "inbound_mail_item_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -71,9 +71,9 @@ class TestInboundMailItems:
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
-            cursor="string",
+            cursor="cursor",
             limit=1,
-            lockbox_id="string",
+            lockbox_id="lockbox_id",
         )
         assert_matches_type(SyncPage[InboundMailItem], inbound_mail_item, path=["response"])
 
@@ -104,14 +104,14 @@ class TestAsyncInboundMailItems:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
         inbound_mail_item = await async_client.inbound_mail_items.retrieve(
-            "string",
+            "inbound_mail_item_id",
         )
         assert_matches_type(InboundMailItem, inbound_mail_item, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.inbound_mail_items.with_raw_response.retrieve(
-            "string",
+            "inbound_mail_item_id",
         )
 
         assert response.is_closed is True
@@ -122,7 +122,7 @@ class TestAsyncInboundMailItems:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
         async with async_client.inbound_mail_items.with_streaming_response.retrieve(
-            "string",
+            "inbound_mail_item_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -153,9 +153,9 @@ class TestAsyncInboundMailItems:
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
-            cursor="string",
+            cursor="cursor",
             limit=1,
-            lockbox_id="string",
+            lockbox_id="lockbox_id",
         )
         assert_matches_type(AsyncPage[InboundMailItem], inbound_mail_item, path=["response"])
 

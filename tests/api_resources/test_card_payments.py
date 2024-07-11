@@ -22,14 +22,14 @@ class TestCardPayments:
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         card_payment = client.card_payments.retrieve(
-            "string",
+            "card_payment_id",
         )
         assert_matches_type(CardPayment, card_payment, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
         response = client.card_payments.with_raw_response.retrieve(
-            "string",
+            "card_payment_id",
         )
 
         assert response.is_closed is True
@@ -40,7 +40,7 @@ class TestCardPayments:
     @parametrize
     def test_streaming_response_retrieve(self, client: Increase) -> None:
         with client.card_payments.with_streaming_response.retrieve(
-            "string",
+            "card_payment_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -65,15 +65,15 @@ class TestCardPayments:
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
         card_payment = client.card_payments.list(
-            account_id="string",
-            card_id="string",
+            account_id="account_id",
+            card_id="card_id",
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
-            cursor="string",
+            cursor="cursor",
             limit=1,
         )
         assert_matches_type(SyncPage[CardPayment], card_payment, path=["response"])
@@ -105,14 +105,14 @@ class TestAsyncCardPayments:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
         card_payment = await async_client.card_payments.retrieve(
-            "string",
+            "card_payment_id",
         )
         assert_matches_type(CardPayment, card_payment, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.card_payments.with_raw_response.retrieve(
-            "string",
+            "card_payment_id",
         )
 
         assert response.is_closed is True
@@ -123,7 +123,7 @@ class TestAsyncCardPayments:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
         async with async_client.card_payments.with_streaming_response.retrieve(
-            "string",
+            "card_payment_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -148,15 +148,15 @@ class TestAsyncCardPayments:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
         card_payment = await async_client.card_payments.list(
-            account_id="string",
-            card_id="string",
+            account_id="account_id",
+            card_id="card_id",
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
-            cursor="string",
+            cursor="cursor",
             limit=1,
         )
         assert_matches_type(AsyncPage[CardPayment], card_payment, path=["response"])

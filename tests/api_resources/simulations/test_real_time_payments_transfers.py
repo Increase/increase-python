@@ -23,14 +23,14 @@ class TestRealTimePaymentsTransfers:
     @parametrize
     def test_method_complete(self, client: Increase) -> None:
         real_time_payments_transfer = client.simulations.real_time_payments_transfers.complete(
-            "string",
+            real_time_payments_transfer_id="real_time_payments_transfer_iyuhl5kdn7ssmup83mvq",
         )
         assert_matches_type(RealTimePaymentsTransfer, real_time_payments_transfer, path=["response"])
 
     @parametrize
     def test_method_complete_with_all_params(self, client: Increase) -> None:
         real_time_payments_transfer = client.simulations.real_time_payments_transfers.complete(
-            "string",
+            real_time_payments_transfer_id="real_time_payments_transfer_iyuhl5kdn7ssmup83mvq",
             rejection={"reject_reason_code": "account_closed"},
         )
         assert_matches_type(RealTimePaymentsTransfer, real_time_payments_transfer, path=["response"])
@@ -38,7 +38,7 @@ class TestRealTimePaymentsTransfers:
     @parametrize
     def test_raw_response_complete(self, client: Increase) -> None:
         response = client.simulations.real_time_payments_transfers.with_raw_response.complete(
-            "string",
+            real_time_payments_transfer_id="real_time_payments_transfer_iyuhl5kdn7ssmup83mvq",
         )
 
         assert response.is_closed is True
@@ -49,7 +49,7 @@ class TestRealTimePaymentsTransfers:
     @parametrize
     def test_streaming_response_complete(self, client: Increase) -> None:
         with client.simulations.real_time_payments_transfers.with_streaming_response.complete(
-            "string",
+            real_time_payments_transfer_id="real_time_payments_transfer_iyuhl5kdn7ssmup83mvq",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -65,7 +65,7 @@ class TestRealTimePaymentsTransfers:
             ValueError, match=r"Expected a non-empty value for `real_time_payments_transfer_id` but received ''"
         ):
             client.simulations.real_time_payments_transfers.with_raw_response.complete(
-                "",
+                real_time_payments_transfer_id="",
             )
 
     @parametrize
@@ -130,14 +130,14 @@ class TestAsyncRealTimePaymentsTransfers:
     @parametrize
     async def test_method_complete(self, async_client: AsyncIncrease) -> None:
         real_time_payments_transfer = await async_client.simulations.real_time_payments_transfers.complete(
-            "string",
+            real_time_payments_transfer_id="real_time_payments_transfer_iyuhl5kdn7ssmup83mvq",
         )
         assert_matches_type(RealTimePaymentsTransfer, real_time_payments_transfer, path=["response"])
 
     @parametrize
     async def test_method_complete_with_all_params(self, async_client: AsyncIncrease) -> None:
         real_time_payments_transfer = await async_client.simulations.real_time_payments_transfers.complete(
-            "string",
+            real_time_payments_transfer_id="real_time_payments_transfer_iyuhl5kdn7ssmup83mvq",
             rejection={"reject_reason_code": "account_closed"},
         )
         assert_matches_type(RealTimePaymentsTransfer, real_time_payments_transfer, path=["response"])
@@ -145,7 +145,7 @@ class TestAsyncRealTimePaymentsTransfers:
     @parametrize
     async def test_raw_response_complete(self, async_client: AsyncIncrease) -> None:
         response = await async_client.simulations.real_time_payments_transfers.with_raw_response.complete(
-            "string",
+            real_time_payments_transfer_id="real_time_payments_transfer_iyuhl5kdn7ssmup83mvq",
         )
 
         assert response.is_closed is True
@@ -156,7 +156,7 @@ class TestAsyncRealTimePaymentsTransfers:
     @parametrize
     async def test_streaming_response_complete(self, async_client: AsyncIncrease) -> None:
         async with async_client.simulations.real_time_payments_transfers.with_streaming_response.complete(
-            "string",
+            real_time_payments_transfer_id="real_time_payments_transfer_iyuhl5kdn7ssmup83mvq",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -172,7 +172,7 @@ class TestAsyncRealTimePaymentsTransfers:
             ValueError, match=r"Expected a non-empty value for `real_time_payments_transfer_id` but received ''"
         ):
             await async_client.simulations.real_time_payments_transfers.with_raw_response.complete(
-                "",
+                real_time_payments_transfer_id="",
             )
 
     @parametrize

@@ -65,14 +65,14 @@ class TestFiles:
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         file = client.files.retrieve(
-            "string",
+            "file_id",
         )
         assert_matches_type(File, file, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
         response = client.files.with_raw_response.retrieve(
-            "string",
+            "file_id",
         )
 
         assert response.is_closed is True
@@ -83,7 +83,7 @@ class TestFiles:
     @parametrize
     def test_streaming_response_retrieve(self, client: Increase) -> None:
         with client.files.with_streaming_response.retrieve(
-            "string",
+            "file_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -114,7 +114,7 @@ class TestFiles:
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
-            cursor="string",
+            cursor="cursor",
             idempotency_key="x",
             limit=1,
             purpose={"in": ["check_image_front", "check_image_back", "processed_check_image_front"]},
@@ -191,14 +191,14 @@ class TestAsyncFiles:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
         file = await async_client.files.retrieve(
-            "string",
+            "file_id",
         )
         assert_matches_type(File, file, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.files.with_raw_response.retrieve(
-            "string",
+            "file_id",
         )
 
         assert response.is_closed is True
@@ -209,7 +209,7 @@ class TestAsyncFiles:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
         async with async_client.files.with_streaming_response.retrieve(
-            "string",
+            "file_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -240,7 +240,7 @@ class TestAsyncFiles:
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
-            cursor="string",
+            cursor="cursor",
             idempotency_key="x",
             limit=1,
             purpose={"in": ["check_image_front", "check_image_back", "processed_check_image_front"]},

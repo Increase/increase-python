@@ -31,7 +31,7 @@ class TestExports:
         export = client.exports.create(
             category="transaction_csv",
             account_statement_ofx={
-                "account_id": "string",
+                "account_id": "account_id",
                 "created_at": {
                     "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "before": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -40,7 +40,7 @@ class TestExports:
                 },
             },
             balance_csv={
-                "account_id": "string",
+                "account_id": "account_id",
                 "created_at": {
                     "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "before": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -49,7 +49,7 @@ class TestExports:
                 },
             },
             bookkeeping_account_balance_csv={
-                "bookkeeping_account_id": "string",
+                "bookkeeping_account_id": "bookkeeping_account_id",
                 "created_at": {
                     "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "before": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -98,14 +98,14 @@ class TestExports:
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         export = client.exports.retrieve(
-            "string",
+            "export_id",
         )
         assert_matches_type(Export, export, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
         response = client.exports.with_raw_response.retrieve(
-            "string",
+            "export_id",
         )
 
         assert response.is_closed is True
@@ -116,7 +116,7 @@ class TestExports:
     @parametrize
     def test_streaming_response_retrieve(self, client: Increase) -> None:
         with client.exports.with_streaming_response.retrieve(
-            "string",
+            "export_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -148,7 +148,7 @@ class TestExports:
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
-            cursor="string",
+            cursor="cursor",
             idempotency_key="x",
             limit=1,
             status={"in": ["pending", "complete", "failed"]},
@@ -191,7 +191,7 @@ class TestAsyncExports:
         export = await async_client.exports.create(
             category="transaction_csv",
             account_statement_ofx={
-                "account_id": "string",
+                "account_id": "account_id",
                 "created_at": {
                     "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "before": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -200,7 +200,7 @@ class TestAsyncExports:
                 },
             },
             balance_csv={
-                "account_id": "string",
+                "account_id": "account_id",
                 "created_at": {
                     "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "before": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -209,7 +209,7 @@ class TestAsyncExports:
                 },
             },
             bookkeeping_account_balance_csv={
-                "bookkeeping_account_id": "string",
+                "bookkeeping_account_id": "bookkeeping_account_id",
                 "created_at": {
                     "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "before": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -258,14 +258,14 @@ class TestAsyncExports:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
         export = await async_client.exports.retrieve(
-            "string",
+            "export_id",
         )
         assert_matches_type(Export, export, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.exports.with_raw_response.retrieve(
-            "string",
+            "export_id",
         )
 
         assert response.is_closed is True
@@ -276,7 +276,7 @@ class TestAsyncExports:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
         async with async_client.exports.with_streaming_response.retrieve(
-            "string",
+            "export_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -308,7 +308,7 @@ class TestAsyncExports:
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
-            cursor="string",
+            cursor="cursor",
             idempotency_key="x",
             limit=1,
             status={"in": ["pending", "complete", "failed"]},

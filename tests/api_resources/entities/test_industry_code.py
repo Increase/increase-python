@@ -20,7 +20,7 @@ class TestIndustryCode:
     @parametrize
     def test_method_create(self, client: Increase) -> None:
         industry_code = client.entities.industry_code.create(
-            "string",
+            entity_id="entity_n8y8tnk2p9339ti393yi",
             industry_code="5132",
         )
         assert_matches_type(Entity, industry_code, path=["response"])
@@ -28,7 +28,7 @@ class TestIndustryCode:
     @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
         response = client.entities.industry_code.with_raw_response.create(
-            "string",
+            entity_id="entity_n8y8tnk2p9339ti393yi",
             industry_code="5132",
         )
 
@@ -40,7 +40,7 @@ class TestIndustryCode:
     @parametrize
     def test_streaming_response_create(self, client: Increase) -> None:
         with client.entities.industry_code.with_streaming_response.create(
-            "string",
+            entity_id="entity_n8y8tnk2p9339ti393yi",
             industry_code="5132",
         ) as response:
             assert not response.is_closed
@@ -55,7 +55,7 @@ class TestIndustryCode:
     def test_path_params_create(self, client: Increase) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `entity_id` but received ''"):
             client.entities.industry_code.with_raw_response.create(
-                "",
+                entity_id="",
                 industry_code="5132",
             )
 
@@ -66,7 +66,7 @@ class TestAsyncIndustryCode:
     @parametrize
     async def test_method_create(self, async_client: AsyncIncrease) -> None:
         industry_code = await async_client.entities.industry_code.create(
-            "string",
+            entity_id="entity_n8y8tnk2p9339ti393yi",
             industry_code="5132",
         )
         assert_matches_type(Entity, industry_code, path=["response"])
@@ -74,7 +74,7 @@ class TestAsyncIndustryCode:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
         response = await async_client.entities.industry_code.with_raw_response.create(
-            "string",
+            entity_id="entity_n8y8tnk2p9339ti393yi",
             industry_code="5132",
         )
 
@@ -86,7 +86,7 @@ class TestAsyncIndustryCode:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncIncrease) -> None:
         async with async_client.entities.industry_code.with_streaming_response.create(
-            "string",
+            entity_id="entity_n8y8tnk2p9339ti393yi",
             industry_code="5132",
         ) as response:
             assert not response.is_closed
@@ -101,6 +101,6 @@ class TestAsyncIndustryCode:
     async def test_path_params_create(self, async_client: AsyncIncrease) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `entity_id` but received ''"):
             await async_client.entities.industry_code.with_raw_response.create(
-                "",
+                entity_id="",
                 industry_code="5132",
             )

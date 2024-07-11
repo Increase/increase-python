@@ -55,14 +55,14 @@ class TestExclusions:
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         exclusion = client.intrafi.exclusions.retrieve(
-            "string",
+            "intrafi_exclusion_id",
         )
         assert_matches_type(IntrafiExclusion, exclusion, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
         response = client.intrafi.exclusions.with_raw_response.retrieve(
-            "string",
+            "intrafi_exclusion_id",
         )
 
         assert response.is_closed is True
@@ -73,7 +73,7 @@ class TestExclusions:
     @parametrize
     def test_streaming_response_retrieve(self, client: Increase) -> None:
         with client.intrafi.exclusions.with_streaming_response.retrieve(
-            "string",
+            "intrafi_exclusion_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -98,8 +98,8 @@ class TestExclusions:
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
         exclusion = client.intrafi.exclusions.list(
-            cursor="string",
-            entity_id="string",
+            cursor="cursor",
+            entity_id="entity_id",
             idempotency_key="x",
             limit=1,
         )
@@ -128,14 +128,14 @@ class TestExclusions:
     @parametrize
     def test_method_archive(self, client: Increase) -> None:
         exclusion = client.intrafi.exclusions.archive(
-            "string",
+            "intrafi_exclusion_id",
         )
         assert_matches_type(IntrafiExclusion, exclusion, path=["response"])
 
     @parametrize
     def test_raw_response_archive(self, client: Increase) -> None:
         response = client.intrafi.exclusions.with_raw_response.archive(
-            "string",
+            "intrafi_exclusion_id",
         )
 
         assert response.is_closed is True
@@ -146,7 +146,7 @@ class TestExclusions:
     @parametrize
     def test_streaming_response_archive(self, client: Increase) -> None:
         with client.intrafi.exclusions.with_streaming_response.archive(
-            "string",
+            "intrafi_exclusion_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -204,14 +204,14 @@ class TestAsyncExclusions:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
         exclusion = await async_client.intrafi.exclusions.retrieve(
-            "string",
+            "intrafi_exclusion_id",
         )
         assert_matches_type(IntrafiExclusion, exclusion, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.intrafi.exclusions.with_raw_response.retrieve(
-            "string",
+            "intrafi_exclusion_id",
         )
 
         assert response.is_closed is True
@@ -222,7 +222,7 @@ class TestAsyncExclusions:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
         async with async_client.intrafi.exclusions.with_streaming_response.retrieve(
-            "string",
+            "intrafi_exclusion_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -247,8 +247,8 @@ class TestAsyncExclusions:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
         exclusion = await async_client.intrafi.exclusions.list(
-            cursor="string",
-            entity_id="string",
+            cursor="cursor",
+            entity_id="entity_id",
             idempotency_key="x",
             limit=1,
         )
@@ -277,14 +277,14 @@ class TestAsyncExclusions:
     @parametrize
     async def test_method_archive(self, async_client: AsyncIncrease) -> None:
         exclusion = await async_client.intrafi.exclusions.archive(
-            "string",
+            "intrafi_exclusion_id",
         )
         assert_matches_type(IntrafiExclusion, exclusion, path=["response"])
 
     @parametrize
     async def test_raw_response_archive(self, async_client: AsyncIncrease) -> None:
         response = await async_client.intrafi.exclusions.with_raw_response.archive(
-            "string",
+            "intrafi_exclusion_id",
         )
 
         assert response.is_closed is True
@@ -295,7 +295,7 @@ class TestAsyncExclusions:
     @parametrize
     async def test_streaming_response_archive(self, async_client: AsyncIncrease) -> None:
         async with async_client.intrafi.exclusions.with_streaming_response.archive(
-            "string",
+            "intrafi_exclusion_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

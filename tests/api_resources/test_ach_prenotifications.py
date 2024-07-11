@@ -78,14 +78,14 @@ class TestACHPrenotifications:
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         ach_prenotification = client.ach_prenotifications.retrieve(
-            "string",
+            "ach_prenotification_id",
         )
         assert_matches_type(ACHPrenotification, ach_prenotification, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
         response = client.ach_prenotifications.with_raw_response.retrieve(
-            "string",
+            "ach_prenotification_id",
         )
 
         assert response.is_closed is True
@@ -96,7 +96,7 @@ class TestACHPrenotifications:
     @parametrize
     def test_streaming_response_retrieve(self, client: Increase) -> None:
         with client.ach_prenotifications.with_streaming_response.retrieve(
-            "string",
+            "ach_prenotification_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -129,7 +129,7 @@ class TestACHPrenotifications:
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
-            cursor="string",
+            cursor="cursor",
             idempotency_key="x",
             limit=1,
         )
@@ -218,14 +218,14 @@ class TestAsyncACHPrenotifications:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
         ach_prenotification = await async_client.ach_prenotifications.retrieve(
-            "string",
+            "ach_prenotification_id",
         )
         assert_matches_type(ACHPrenotification, ach_prenotification, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.ach_prenotifications.with_raw_response.retrieve(
-            "string",
+            "ach_prenotification_id",
         )
 
         assert response.is_closed is True
@@ -236,7 +236,7 @@ class TestAsyncACHPrenotifications:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
         async with async_client.ach_prenotifications.with_streaming_response.retrieve(
-            "string",
+            "ach_prenotification_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -269,7 +269,7 @@ class TestAsyncACHPrenotifications:
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
-            cursor="string",
+            cursor="cursor",
             idempotency_key="x",
             limit=1,
         )

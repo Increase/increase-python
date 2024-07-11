@@ -22,14 +22,14 @@ class TestPendingTransactions:
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         pending_transaction = client.pending_transactions.retrieve(
-            "string",
+            "pending_transaction_id",
         )
         assert_matches_type(PendingTransaction, pending_transaction, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
         response = client.pending_transactions.with_raw_response.retrieve(
-            "string",
+            "pending_transaction_id",
         )
 
         assert response.is_closed is True
@@ -40,7 +40,7 @@ class TestPendingTransactions:
     @parametrize
     def test_streaming_response_retrieve(self, client: Increase) -> None:
         with client.pending_transactions.with_streaming_response.retrieve(
-            "string",
+            "pending_transaction_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -67,7 +67,7 @@ class TestPendingTransactions:
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
         pending_transaction = client.pending_transactions.list(
-            account_id="string",
+            account_id="account_id",
             category={"in": ["account_transfer_instruction", "ach_transfer_instruction", "card_authorization"]},
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -75,10 +75,10 @@ class TestPendingTransactions:
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
-            cursor="string",
+            cursor="cursor",
             limit=1,
-            route_id="string",
-            source_id="string",
+            route_id="route_id",
+            source_id="source_id",
             status={"in": ["pending", "complete"]},
         )
         assert_matches_type(SyncPage[PendingTransaction], pending_transaction, path=["response"])
@@ -110,14 +110,14 @@ class TestAsyncPendingTransactions:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
         pending_transaction = await async_client.pending_transactions.retrieve(
-            "string",
+            "pending_transaction_id",
         )
         assert_matches_type(PendingTransaction, pending_transaction, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.pending_transactions.with_raw_response.retrieve(
-            "string",
+            "pending_transaction_id",
         )
 
         assert response.is_closed is True
@@ -128,7 +128,7 @@ class TestAsyncPendingTransactions:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
         async with async_client.pending_transactions.with_streaming_response.retrieve(
-            "string",
+            "pending_transaction_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -155,7 +155,7 @@ class TestAsyncPendingTransactions:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
         pending_transaction = await async_client.pending_transactions.list(
-            account_id="string",
+            account_id="account_id",
             category={"in": ["account_transfer_instruction", "ach_transfer_instruction", "card_authorization"]},
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -163,10 +163,10 @@ class TestAsyncPendingTransactions:
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
-            cursor="string",
+            cursor="cursor",
             limit=1,
-            route_id="string",
-            source_id="string",
+            route_id="route_id",
+            source_id="source_id",
             status={"in": ["pending", "complete"]},
         )
         assert_matches_type(AsyncPage[PendingTransaction], pending_transaction, path=["response"])

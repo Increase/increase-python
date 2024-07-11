@@ -97,7 +97,7 @@ class TestSimulations:
         simulation = client.simulations.card_increments(
             amount=500,
             card_payment_id="card_payment_nd3k2kacrqjli8482ave",
-            event_subscription_id="string",
+            event_subscription_id="event_subscription_id",
         )
         assert_matches_type(CardPayment, simulation, path=["response"])
 
@@ -248,7 +248,7 @@ class TestAsyncSimulations:
         simulation = await async_client.simulations.card_increments(
             amount=500,
             card_payment_id="card_payment_nd3k2kacrqjli8482ave",
-            event_subscription_id="string",
+            event_subscription_id="event_subscription_id",
         )
         assert_matches_type(CardPayment, simulation, path=["response"])
 

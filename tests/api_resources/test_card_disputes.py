@@ -56,14 +56,14 @@ class TestCardDisputes:
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         card_dispute = client.card_disputes.retrieve(
-            "string",
+            "card_dispute_id",
         )
         assert_matches_type(CardDispute, card_dispute, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
         response = client.card_disputes.with_raw_response.retrieve(
-            "string",
+            "card_dispute_id",
         )
 
         assert response.is_closed is True
@@ -74,7 +74,7 @@ class TestCardDisputes:
     @parametrize
     def test_streaming_response_retrieve(self, client: Increase) -> None:
         with client.card_disputes.with_streaming_response.retrieve(
-            "string",
+            "card_dispute_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -105,7 +105,7 @@ class TestCardDisputes:
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
-            cursor="string",
+            cursor="cursor",
             idempotency_key="x",
             limit=1,
             status={"in": ["pending_reviewing", "accepted", "rejected"]},
@@ -173,14 +173,14 @@ class TestAsyncCardDisputes:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
         card_dispute = await async_client.card_disputes.retrieve(
-            "string",
+            "card_dispute_id",
         )
         assert_matches_type(CardDispute, card_dispute, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.card_disputes.with_raw_response.retrieve(
-            "string",
+            "card_dispute_id",
         )
 
         assert response.is_closed is True
@@ -191,7 +191,7 @@ class TestAsyncCardDisputes:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
         async with async_client.card_disputes.with_streaming_response.retrieve(
-            "string",
+            "card_dispute_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -222,7 +222,7 @@ class TestAsyncCardDisputes:
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
-            cursor="string",
+            cursor="cursor",
             idempotency_key="x",
             limit=1,
             status={"in": ["pending_reviewing", "accepted", "rejected"]},

@@ -20,14 +20,14 @@ class TestRealTimeDecisions:
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         real_time_decision = client.real_time_decisions.retrieve(
-            "string",
+            "real_time_decision_id",
         )
         assert_matches_type(RealTimeDecision, real_time_decision, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
         response = client.real_time_decisions.with_raw_response.retrieve(
-            "string",
+            "real_time_decision_id",
         )
 
         assert response.is_closed is True
@@ -38,7 +38,7 @@ class TestRealTimeDecisions:
     @parametrize
     def test_streaming_response_retrieve(self, client: Increase) -> None:
         with client.real_time_decisions.with_streaming_response.retrieve(
-            "string",
+            "real_time_decision_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -58,14 +58,14 @@ class TestRealTimeDecisions:
     @parametrize
     def test_method_action(self, client: Increase) -> None:
         real_time_decision = client.real_time_decisions.action(
-            "string",
+            real_time_decision_id="real_time_decision_j76n2e810ezcg3zh5qtn",
         )
         assert_matches_type(RealTimeDecision, real_time_decision, path=["response"])
 
     @parametrize
     def test_method_action_with_all_params(self, client: Increase) -> None:
         real_time_decision = client.real_time_decisions.action(
-            "string",
+            real_time_decision_id="real_time_decision_j76n2e810ezcg3zh5qtn",
             card_authorization={"decision": "approve"},
             digital_wallet_authentication={"result": "success"},
             digital_wallet_token={
@@ -81,7 +81,7 @@ class TestRealTimeDecisions:
     @parametrize
     def test_raw_response_action(self, client: Increase) -> None:
         response = client.real_time_decisions.with_raw_response.action(
-            "string",
+            real_time_decision_id="real_time_decision_j76n2e810ezcg3zh5qtn",
         )
 
         assert response.is_closed is True
@@ -92,7 +92,7 @@ class TestRealTimeDecisions:
     @parametrize
     def test_streaming_response_action(self, client: Increase) -> None:
         with client.real_time_decisions.with_streaming_response.action(
-            "string",
+            real_time_decision_id="real_time_decision_j76n2e810ezcg3zh5qtn",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -106,7 +106,7 @@ class TestRealTimeDecisions:
     def test_path_params_action(self, client: Increase) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `real_time_decision_id` but received ''"):
             client.real_time_decisions.with_raw_response.action(
-                "",
+                real_time_decision_id="",
             )
 
 
@@ -116,14 +116,14 @@ class TestAsyncRealTimeDecisions:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
         real_time_decision = await async_client.real_time_decisions.retrieve(
-            "string",
+            "real_time_decision_id",
         )
         assert_matches_type(RealTimeDecision, real_time_decision, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.real_time_decisions.with_raw_response.retrieve(
-            "string",
+            "real_time_decision_id",
         )
 
         assert response.is_closed is True
@@ -134,7 +134,7 @@ class TestAsyncRealTimeDecisions:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
         async with async_client.real_time_decisions.with_streaming_response.retrieve(
-            "string",
+            "real_time_decision_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -154,14 +154,14 @@ class TestAsyncRealTimeDecisions:
     @parametrize
     async def test_method_action(self, async_client: AsyncIncrease) -> None:
         real_time_decision = await async_client.real_time_decisions.action(
-            "string",
+            real_time_decision_id="real_time_decision_j76n2e810ezcg3zh5qtn",
         )
         assert_matches_type(RealTimeDecision, real_time_decision, path=["response"])
 
     @parametrize
     async def test_method_action_with_all_params(self, async_client: AsyncIncrease) -> None:
         real_time_decision = await async_client.real_time_decisions.action(
-            "string",
+            real_time_decision_id="real_time_decision_j76n2e810ezcg3zh5qtn",
             card_authorization={"decision": "approve"},
             digital_wallet_authentication={"result": "success"},
             digital_wallet_token={
@@ -177,7 +177,7 @@ class TestAsyncRealTimeDecisions:
     @parametrize
     async def test_raw_response_action(self, async_client: AsyncIncrease) -> None:
         response = await async_client.real_time_decisions.with_raw_response.action(
-            "string",
+            real_time_decision_id="real_time_decision_j76n2e810ezcg3zh5qtn",
         )
 
         assert response.is_closed is True
@@ -188,7 +188,7 @@ class TestAsyncRealTimeDecisions:
     @parametrize
     async def test_streaming_response_action(self, async_client: AsyncIncrease) -> None:
         async with async_client.real_time_decisions.with_streaming_response.action(
-            "string",
+            real_time_decision_id="real_time_decision_j76n2e810ezcg3zh5qtn",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -202,5 +202,5 @@ class TestAsyncRealTimeDecisions:
     async def test_path_params_action(self, async_client: AsyncIncrease) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `real_time_decision_id` but received ''"):
             await async_client.real_time_decisions.with_raw_response.action(
-                "",
+                real_time_decision_id="",
             )
