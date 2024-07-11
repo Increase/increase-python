@@ -22,14 +22,14 @@ class TestAccountStatements:
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         account_statement = client.account_statements.retrieve(
-            "string",
+            "account_statement_id",
         )
         assert_matches_type(AccountStatement, account_statement, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
         response = client.account_statements.with_raw_response.retrieve(
-            "string",
+            "account_statement_id",
         )
 
         assert response.is_closed is True
@@ -40,7 +40,7 @@ class TestAccountStatements:
     @parametrize
     def test_streaming_response_retrieve(self, client: Increase) -> None:
         with client.account_statements.with_streaming_response.retrieve(
-            "string",
+            "account_statement_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -65,8 +65,8 @@ class TestAccountStatements:
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
         account_statement = client.account_statements.list(
-            account_id="string",
-            cursor="string",
+            account_id="account_id",
+            cursor="cursor",
             limit=1,
             statement_period_start={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -104,14 +104,14 @@ class TestAsyncAccountStatements:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
         account_statement = await async_client.account_statements.retrieve(
-            "string",
+            "account_statement_id",
         )
         assert_matches_type(AccountStatement, account_statement, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.account_statements.with_raw_response.retrieve(
-            "string",
+            "account_statement_id",
         )
 
         assert response.is_closed is True
@@ -122,7 +122,7 @@ class TestAsyncAccountStatements:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
         async with async_client.account_statements.with_streaming_response.retrieve(
-            "string",
+            "account_statement_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -147,8 +147,8 @@ class TestAsyncAccountStatements:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
         account_statement = await async_client.account_statements.list(
-            account_id="string",
-            cursor="string",
+            account_id="account_id",
+            cursor="cursor",
             limit=1,
             statement_period_start={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),

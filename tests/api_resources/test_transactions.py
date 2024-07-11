@@ -22,14 +22,14 @@ class TestTransactions:
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         transaction = client.transactions.retrieve(
-            "string",
+            "transaction_id",
         )
         assert_matches_type(Transaction, transaction, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
         response = client.transactions.with_raw_response.retrieve(
-            "string",
+            "transaction_id",
         )
 
         assert response.is_closed is True
@@ -40,7 +40,7 @@ class TestTransactions:
     @parametrize
     def test_streaming_response_retrieve(self, client: Increase) -> None:
         with client.transactions.with_streaming_response.retrieve(
-            "string",
+            "transaction_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -65,7 +65,7 @@ class TestTransactions:
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
         transaction = client.transactions.list(
-            account_id="string",
+            account_id="account_id",
             category={"in": ["account_transfer_intention", "ach_transfer_intention", "ach_transfer_rejection"]},
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -73,9 +73,9 @@ class TestTransactions:
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
-            cursor="string",
+            cursor="cursor",
             limit=1,
-            route_id="string",
+            route_id="route_id",
         )
         assert_matches_type(SyncPage[Transaction], transaction, path=["response"])
 
@@ -106,14 +106,14 @@ class TestAsyncTransactions:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
         transaction = await async_client.transactions.retrieve(
-            "string",
+            "transaction_id",
         )
         assert_matches_type(Transaction, transaction, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.transactions.with_raw_response.retrieve(
-            "string",
+            "transaction_id",
         )
 
         assert response.is_closed is True
@@ -124,7 +124,7 @@ class TestAsyncTransactions:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
         async with async_client.transactions.with_streaming_response.retrieve(
-            "string",
+            "transaction_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -149,7 +149,7 @@ class TestAsyncTransactions:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
         transaction = await async_client.transactions.list(
-            account_id="string",
+            account_id="account_id",
             category={"in": ["account_transfer_intention", "ach_transfer_intention", "ach_transfer_rejection"]},
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -157,9 +157,9 @@ class TestAsyncTransactions:
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
-            cursor="string",
+            cursor="cursor",
             limit=1,
-            route_id="string",
+            route_id="route_id",
         )
         assert_matches_type(AsyncPage[Transaction], transaction, path=["response"])
 

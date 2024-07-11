@@ -20,7 +20,7 @@ class TestPhysicalCards:
     @parametrize
     def test_method_shipment_advance(self, client: Increase) -> None:
         physical_card = client.simulations.physical_cards.shipment_advance(
-            "string",
+            physical_card_id="physical_card_ode8duyq5v2ynhjoharl",
             shipment_status="shipped",
         )
         assert_matches_type(PhysicalCard, physical_card, path=["response"])
@@ -28,7 +28,7 @@ class TestPhysicalCards:
     @parametrize
     def test_raw_response_shipment_advance(self, client: Increase) -> None:
         response = client.simulations.physical_cards.with_raw_response.shipment_advance(
-            "string",
+            physical_card_id="physical_card_ode8duyq5v2ynhjoharl",
             shipment_status="shipped",
         )
 
@@ -40,7 +40,7 @@ class TestPhysicalCards:
     @parametrize
     def test_streaming_response_shipment_advance(self, client: Increase) -> None:
         with client.simulations.physical_cards.with_streaming_response.shipment_advance(
-            "string",
+            physical_card_id="physical_card_ode8duyq5v2ynhjoharl",
             shipment_status="shipped",
         ) as response:
             assert not response.is_closed
@@ -55,7 +55,7 @@ class TestPhysicalCards:
     def test_path_params_shipment_advance(self, client: Increase) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `physical_card_id` but received ''"):
             client.simulations.physical_cards.with_raw_response.shipment_advance(
-                "",
+                physical_card_id="",
                 shipment_status="shipped",
             )
 
@@ -66,7 +66,7 @@ class TestAsyncPhysicalCards:
     @parametrize
     async def test_method_shipment_advance(self, async_client: AsyncIncrease) -> None:
         physical_card = await async_client.simulations.physical_cards.shipment_advance(
-            "string",
+            physical_card_id="physical_card_ode8duyq5v2ynhjoharl",
             shipment_status="shipped",
         )
         assert_matches_type(PhysicalCard, physical_card, path=["response"])
@@ -74,7 +74,7 @@ class TestAsyncPhysicalCards:
     @parametrize
     async def test_raw_response_shipment_advance(self, async_client: AsyncIncrease) -> None:
         response = await async_client.simulations.physical_cards.with_raw_response.shipment_advance(
-            "string",
+            physical_card_id="physical_card_ode8duyq5v2ynhjoharl",
             shipment_status="shipped",
         )
 
@@ -86,7 +86,7 @@ class TestAsyncPhysicalCards:
     @parametrize
     async def test_streaming_response_shipment_advance(self, async_client: AsyncIncrease) -> None:
         async with async_client.simulations.physical_cards.with_streaming_response.shipment_advance(
-            "string",
+            physical_card_id="physical_card_ode8duyq5v2ynhjoharl",
             shipment_status="shipped",
         ) as response:
             assert not response.is_closed
@@ -101,6 +101,6 @@ class TestAsyncPhysicalCards:
     async def test_path_params_shipment_advance(self, async_client: AsyncIncrease) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `physical_card_id` but received ''"):
             await async_client.simulations.physical_cards.with_raw_response.shipment_advance(
-                "",
+                physical_card_id="",
                 shipment_status="shipped",
             )

@@ -21,7 +21,7 @@ class TestCheckDeposits:
     @parametrize
     def test_method_reject(self, client: Increase) -> None:
         check_deposit = client.simulations.check_deposits.reject(
-            "string",
+            "check_deposit_id",
         )
         assert_matches_type(CheckDeposit, check_deposit, path=["response"])
 
@@ -29,7 +29,7 @@ class TestCheckDeposits:
     @parametrize
     def test_raw_response_reject(self, client: Increase) -> None:
         response = client.simulations.check_deposits.with_raw_response.reject(
-            "string",
+            "check_deposit_id",
         )
 
         assert response.is_closed is True
@@ -41,7 +41,7 @@ class TestCheckDeposits:
     @parametrize
     def test_streaming_response_reject(self, client: Increase) -> None:
         with client.simulations.check_deposits.with_streaming_response.reject(
-            "string",
+            "check_deposit_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -62,14 +62,14 @@ class TestCheckDeposits:
     @parametrize
     def test_method_return(self, client: Increase) -> None:
         check_deposit = client.simulations.check_deposits.return_(
-            "string",
+            "check_deposit_id",
         )
         assert_matches_type(CheckDeposit, check_deposit, path=["response"])
 
     @parametrize
     def test_raw_response_return(self, client: Increase) -> None:
         response = client.simulations.check_deposits.with_raw_response.return_(
-            "string",
+            "check_deposit_id",
         )
 
         assert response.is_closed is True
@@ -80,7 +80,7 @@ class TestCheckDeposits:
     @parametrize
     def test_streaming_response_return(self, client: Increase) -> None:
         with client.simulations.check_deposits.with_streaming_response.return_(
-            "string",
+            "check_deposit_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -101,7 +101,7 @@ class TestCheckDeposits:
     @parametrize
     def test_method_submit(self, client: Increase) -> None:
         check_deposit = client.simulations.check_deposits.submit(
-            "string",
+            "check_deposit_id",
         )
         assert_matches_type(CheckDeposit, check_deposit, path=["response"])
 
@@ -109,7 +109,7 @@ class TestCheckDeposits:
     @parametrize
     def test_raw_response_submit(self, client: Increase) -> None:
         response = client.simulations.check_deposits.with_raw_response.submit(
-            "string",
+            "check_deposit_id",
         )
 
         assert response.is_closed is True
@@ -121,7 +121,7 @@ class TestCheckDeposits:
     @parametrize
     def test_streaming_response_submit(self, client: Increase) -> None:
         with client.simulations.check_deposits.with_streaming_response.submit(
-            "string",
+            "check_deposit_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -147,7 +147,7 @@ class TestAsyncCheckDeposits:
     @parametrize
     async def test_method_reject(self, async_client: AsyncIncrease) -> None:
         check_deposit = await async_client.simulations.check_deposits.reject(
-            "string",
+            "check_deposit_id",
         )
         assert_matches_type(CheckDeposit, check_deposit, path=["response"])
 
@@ -155,7 +155,7 @@ class TestAsyncCheckDeposits:
     @parametrize
     async def test_raw_response_reject(self, async_client: AsyncIncrease) -> None:
         response = await async_client.simulations.check_deposits.with_raw_response.reject(
-            "string",
+            "check_deposit_id",
         )
 
         assert response.is_closed is True
@@ -167,7 +167,7 @@ class TestAsyncCheckDeposits:
     @parametrize
     async def test_streaming_response_reject(self, async_client: AsyncIncrease) -> None:
         async with async_client.simulations.check_deposits.with_streaming_response.reject(
-            "string",
+            "check_deposit_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -188,14 +188,14 @@ class TestAsyncCheckDeposits:
     @parametrize
     async def test_method_return(self, async_client: AsyncIncrease) -> None:
         check_deposit = await async_client.simulations.check_deposits.return_(
-            "string",
+            "check_deposit_id",
         )
         assert_matches_type(CheckDeposit, check_deposit, path=["response"])
 
     @parametrize
     async def test_raw_response_return(self, async_client: AsyncIncrease) -> None:
         response = await async_client.simulations.check_deposits.with_raw_response.return_(
-            "string",
+            "check_deposit_id",
         )
 
         assert response.is_closed is True
@@ -206,7 +206,7 @@ class TestAsyncCheckDeposits:
     @parametrize
     async def test_streaming_response_return(self, async_client: AsyncIncrease) -> None:
         async with async_client.simulations.check_deposits.with_streaming_response.return_(
-            "string",
+            "check_deposit_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -227,7 +227,7 @@ class TestAsyncCheckDeposits:
     @parametrize
     async def test_method_submit(self, async_client: AsyncIncrease) -> None:
         check_deposit = await async_client.simulations.check_deposits.submit(
-            "string",
+            "check_deposit_id",
         )
         assert_matches_type(CheckDeposit, check_deposit, path=["response"])
 
@@ -235,7 +235,7 @@ class TestAsyncCheckDeposits:
     @parametrize
     async def test_raw_response_submit(self, async_client: AsyncIncrease) -> None:
         response = await async_client.simulations.check_deposits.with_raw_response.submit(
-            "string",
+            "check_deposit_id",
         )
 
         assert response.is_closed is True
@@ -247,7 +247,7 @@ class TestAsyncCheckDeposits:
     @parametrize
     async def test_streaming_response_submit(self, async_client: AsyncIncrease) -> None:
         async with async_client.simulations.check_deposits.with_streaming_response.submit(
-            "string",
+            "check_deposit_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

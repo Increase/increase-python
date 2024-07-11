@@ -67,7 +67,7 @@ class TestACHTransfers:
             company_name="x",
             destination_account_holder="business",
             effective_date=parse_date("2019-12-27"),
-            external_account_id="string",
+            external_account_id="external_account_id",
             funding="checking",
             individual_id="x",
             individual_name="x",
@@ -112,14 +112,14 @@ class TestACHTransfers:
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         ach_transfer = client.ach_transfers.retrieve(
-            "string",
+            "ach_transfer_id",
         )
         assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
         response = client.ach_transfers.with_raw_response.retrieve(
-            "string",
+            "ach_transfer_id",
         )
 
         assert response.is_closed is True
@@ -130,7 +130,7 @@ class TestACHTransfers:
     @parametrize
     def test_streaming_response_retrieve(self, client: Increase) -> None:
         with client.ach_transfers.with_streaming_response.retrieve(
-            "string",
+            "ach_transfer_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -155,15 +155,15 @@ class TestACHTransfers:
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
         ach_transfer = client.ach_transfers.list(
-            account_id="string",
+            account_id="account_id",
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
-            cursor="string",
-            external_account_id="string",
+            cursor="cursor",
+            external_account_id="external_account_id",
             idempotency_key="x",
             limit=1,
         )
@@ -192,14 +192,14 @@ class TestACHTransfers:
     @parametrize
     def test_method_approve(self, client: Increase) -> None:
         ach_transfer = client.ach_transfers.approve(
-            "string",
+            "ach_transfer_id",
         )
         assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
 
     @parametrize
     def test_raw_response_approve(self, client: Increase) -> None:
         response = client.ach_transfers.with_raw_response.approve(
-            "string",
+            "ach_transfer_id",
         )
 
         assert response.is_closed is True
@@ -210,7 +210,7 @@ class TestACHTransfers:
     @parametrize
     def test_streaming_response_approve(self, client: Increase) -> None:
         with client.ach_transfers.with_streaming_response.approve(
-            "string",
+            "ach_transfer_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -230,14 +230,14 @@ class TestACHTransfers:
     @parametrize
     def test_method_cancel(self, client: Increase) -> None:
         ach_transfer = client.ach_transfers.cancel(
-            "string",
+            "ach_transfer_id",
         )
         assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
 
     @parametrize
     def test_raw_response_cancel(self, client: Increase) -> None:
         response = client.ach_transfers.with_raw_response.cancel(
-            "string",
+            "ach_transfer_id",
         )
 
         assert response.is_closed is True
@@ -248,7 +248,7 @@ class TestACHTransfers:
     @parametrize
     def test_streaming_response_cancel(self, client: Increase) -> None:
         with client.ach_transfers.with_streaming_response.cancel(
-            "string",
+            "ach_transfer_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -317,7 +317,7 @@ class TestAsyncACHTransfers:
             company_name="x",
             destination_account_holder="business",
             effective_date=parse_date("2019-12-27"),
-            external_account_id="string",
+            external_account_id="external_account_id",
             funding="checking",
             individual_id="x",
             individual_name="x",
@@ -362,14 +362,14 @@ class TestAsyncACHTransfers:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
         ach_transfer = await async_client.ach_transfers.retrieve(
-            "string",
+            "ach_transfer_id",
         )
         assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.ach_transfers.with_raw_response.retrieve(
-            "string",
+            "ach_transfer_id",
         )
 
         assert response.is_closed is True
@@ -380,7 +380,7 @@ class TestAsyncACHTransfers:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
         async with async_client.ach_transfers.with_streaming_response.retrieve(
-            "string",
+            "ach_transfer_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -405,15 +405,15 @@ class TestAsyncACHTransfers:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
         ach_transfer = await async_client.ach_transfers.list(
-            account_id="string",
+            account_id="account_id",
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
-            cursor="string",
-            external_account_id="string",
+            cursor="cursor",
+            external_account_id="external_account_id",
             idempotency_key="x",
             limit=1,
         )
@@ -442,14 +442,14 @@ class TestAsyncACHTransfers:
     @parametrize
     async def test_method_approve(self, async_client: AsyncIncrease) -> None:
         ach_transfer = await async_client.ach_transfers.approve(
-            "string",
+            "ach_transfer_id",
         )
         assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
 
     @parametrize
     async def test_raw_response_approve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.ach_transfers.with_raw_response.approve(
-            "string",
+            "ach_transfer_id",
         )
 
         assert response.is_closed is True
@@ -460,7 +460,7 @@ class TestAsyncACHTransfers:
     @parametrize
     async def test_streaming_response_approve(self, async_client: AsyncIncrease) -> None:
         async with async_client.ach_transfers.with_streaming_response.approve(
-            "string",
+            "ach_transfer_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -480,14 +480,14 @@ class TestAsyncACHTransfers:
     @parametrize
     async def test_method_cancel(self, async_client: AsyncIncrease) -> None:
         ach_transfer = await async_client.ach_transfers.cancel(
-            "string",
+            "ach_transfer_id",
         )
         assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
 
     @parametrize
     async def test_raw_response_cancel(self, async_client: AsyncIncrease) -> None:
         response = await async_client.ach_transfers.with_raw_response.cancel(
-            "string",
+            "ach_transfer_id",
         )
 
         assert response.is_closed is True
@@ -498,7 +498,7 @@ class TestAsyncACHTransfers:
     @parametrize
     async def test_streaming_response_cancel(self, async_client: AsyncIncrease) -> None:
         async with async_client.ach_transfers.with_streaming_response.cancel(
-            "string",
+            "ach_transfer_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

@@ -22,14 +22,14 @@ class TestDocuments:
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         document = client.documents.retrieve(
-            "string",
+            "document_id",
         )
         assert_matches_type(Document, document, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
         response = client.documents.with_raw_response.retrieve(
-            "string",
+            "document_id",
         )
 
         assert response.is_closed is True
@@ -40,7 +40,7 @@ class TestDocuments:
     @parametrize
     def test_streaming_response_retrieve(self, client: Increase) -> None:
         with client.documents.with_streaming_response.retrieve(
-            "string",
+            "document_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -72,8 +72,8 @@ class TestDocuments:
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
-            cursor="string",
-            entity_id="string",
+            cursor="cursor",
+            entity_id="entity_id",
             limit=1,
         )
         assert_matches_type(SyncPage[Document], document, path=["response"])
@@ -105,14 +105,14 @@ class TestAsyncDocuments:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
         document = await async_client.documents.retrieve(
-            "string",
+            "document_id",
         )
         assert_matches_type(Document, document, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.documents.with_raw_response.retrieve(
-            "string",
+            "document_id",
         )
 
         assert response.is_closed is True
@@ -123,7 +123,7 @@ class TestAsyncDocuments:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
         async with async_client.documents.with_streaming_response.retrieve(
-            "string",
+            "document_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -155,8 +155,8 @@ class TestAsyncDocuments:
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
-            cursor="string",
-            entity_id="string",
+            cursor="cursor",
+            entity_id="entity_id",
             limit=1,
         )
         assert_matches_type(AsyncPage[Document], document, path=["response"])

@@ -20,14 +20,14 @@ class TestBalances:
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         balance = client.intrafi.balances.retrieve(
-            "string",
+            "account_id",
         )
         assert_matches_type(IntrafiBalance, balance, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
         response = client.intrafi.balances.with_raw_response.retrieve(
-            "string",
+            "account_id",
         )
 
         assert response.is_closed is True
@@ -38,7 +38,7 @@ class TestBalances:
     @parametrize
     def test_streaming_response_retrieve(self, client: Increase) -> None:
         with client.intrafi.balances.with_streaming_response.retrieve(
-            "string",
+            "account_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -62,14 +62,14 @@ class TestAsyncBalances:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
         balance = await async_client.intrafi.balances.retrieve(
-            "string",
+            "account_id",
         )
         assert_matches_type(IntrafiBalance, balance, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.intrafi.balances.with_raw_response.retrieve(
-            "string",
+            "account_id",
         )
 
         assert response.is_closed is True
@@ -80,7 +80,7 @@ class TestAsyncBalances:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
         async with async_client.intrafi.balances.with_streaming_response.retrieve(
-            "string",
+            "account_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

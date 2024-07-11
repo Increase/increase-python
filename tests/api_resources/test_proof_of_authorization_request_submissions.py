@@ -104,7 +104,7 @@ class TestProofOfAuthorizationRequestSubmissions:
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         proof_of_authorization_request_submission = client.proof_of_authorization_request_submissions.retrieve(
-            "string",
+            "proof_of_authorization_request_submission_id",
         )
         assert_matches_type(
             ProofOfAuthorizationRequestSubmission, proof_of_authorization_request_submission, path=["response"]
@@ -113,7 +113,7 @@ class TestProofOfAuthorizationRequestSubmissions:
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
         response = client.proof_of_authorization_request_submissions.with_raw_response.retrieve(
-            "string",
+            "proof_of_authorization_request_submission_id",
         )
 
         assert response.is_closed is True
@@ -126,7 +126,7 @@ class TestProofOfAuthorizationRequestSubmissions:
     @parametrize
     def test_streaming_response_retrieve(self, client: Increase) -> None:
         with client.proof_of_authorization_request_submissions.with_streaming_response.retrieve(
-            "string",
+            "proof_of_authorization_request_submission_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -160,10 +160,10 @@ class TestProofOfAuthorizationRequestSubmissions:
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
         proof_of_authorization_request_submission = client.proof_of_authorization_request_submissions.list(
-            cursor="string",
+            cursor="cursor",
             idempotency_key="x",
             limit=1,
-            proof_of_authorization_request_id="string",
+            proof_of_authorization_request_id="proof_of_authorization_request_id",
         )
         assert_matches_type(
             SyncPage[ProofOfAuthorizationRequestSubmission],
@@ -291,7 +291,7 @@ class TestAsyncProofOfAuthorizationRequestSubmissions:
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
         proof_of_authorization_request_submission = (
             await async_client.proof_of_authorization_request_submissions.retrieve(
-                "string",
+                "proof_of_authorization_request_submission_id",
             )
         )
         assert_matches_type(
@@ -301,7 +301,7 @@ class TestAsyncProofOfAuthorizationRequestSubmissions:
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.proof_of_authorization_request_submissions.with_raw_response.retrieve(
-            "string",
+            "proof_of_authorization_request_submission_id",
         )
 
         assert response.is_closed is True
@@ -314,7 +314,7 @@ class TestAsyncProofOfAuthorizationRequestSubmissions:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
         async with async_client.proof_of_authorization_request_submissions.with_streaming_response.retrieve(
-            "string",
+            "proof_of_authorization_request_submission_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -348,10 +348,10 @@ class TestAsyncProofOfAuthorizationRequestSubmissions:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
         proof_of_authorization_request_submission = await async_client.proof_of_authorization_request_submissions.list(
-            cursor="string",
+            cursor="cursor",
             idempotency_key="x",
             limit=1,
-            proof_of_authorization_request_id="string",
+            proof_of_authorization_request_id="proof_of_authorization_request_id",
         )
         assert_matches_type(
             AsyncPage[ProofOfAuthorizationRequestSubmission],

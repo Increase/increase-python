@@ -33,9 +33,9 @@ class TestBookkeepingAccounts:
     def test_method_create_with_all_params(self, client: Increase) -> None:
         bookkeeping_account = client.bookkeeping_accounts.create(
             name="New Account!",
-            account_id="string",
+            account_id="account_id",
             compliance_category="commingled_cash",
-            entity_id="string",
+            entity_id="entity_id",
         )
         assert_matches_type(BookkeepingAccount, bookkeeping_account, path=["response"])
 
@@ -66,7 +66,7 @@ class TestBookkeepingAccounts:
     @parametrize
     def test_method_update(self, client: Increase) -> None:
         bookkeeping_account = client.bookkeeping_accounts.update(
-            "string",
+            bookkeeping_account_id="bookkeeping_account_e37p1f1iuocw5intf35v",
             name="Deprecated Account",
         )
         assert_matches_type(BookkeepingAccount, bookkeeping_account, path=["response"])
@@ -74,7 +74,7 @@ class TestBookkeepingAccounts:
     @parametrize
     def test_raw_response_update(self, client: Increase) -> None:
         response = client.bookkeeping_accounts.with_raw_response.update(
-            "string",
+            bookkeeping_account_id="bookkeeping_account_e37p1f1iuocw5intf35v",
             name="Deprecated Account",
         )
 
@@ -86,7 +86,7 @@ class TestBookkeepingAccounts:
     @parametrize
     def test_streaming_response_update(self, client: Increase) -> None:
         with client.bookkeeping_accounts.with_streaming_response.update(
-            "string",
+            bookkeeping_account_id="bookkeeping_account_e37p1f1iuocw5intf35v",
             name="Deprecated Account",
         ) as response:
             assert not response.is_closed
@@ -103,7 +103,7 @@ class TestBookkeepingAccounts:
             ValueError, match=r"Expected a non-empty value for `bookkeeping_account_id` but received ''"
         ):
             client.bookkeeping_accounts.with_raw_response.update(
-                "",
+                bookkeeping_account_id="",
                 name="Deprecated Account",
             )
 
@@ -115,7 +115,7 @@ class TestBookkeepingAccounts:
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
         bookkeeping_account = client.bookkeeping_accounts.list(
-            cursor="string",
+            cursor="cursor",
             idempotency_key="x",
             limit=1,
         )
@@ -144,14 +144,14 @@ class TestBookkeepingAccounts:
     @parametrize
     def test_method_balance(self, client: Increase) -> None:
         bookkeeping_account = client.bookkeeping_accounts.balance(
-            "string",
+            bookkeeping_account_id="bookkeeping_account_e37p1f1iuocw5intf35v",
         )
         assert_matches_type(BookkeepingBalanceLookup, bookkeeping_account, path=["response"])
 
     @parametrize
     def test_method_balance_with_all_params(self, client: Increase) -> None:
         bookkeeping_account = client.bookkeeping_accounts.balance(
-            "string",
+            bookkeeping_account_id="bookkeeping_account_e37p1f1iuocw5intf35v",
             at_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(BookkeepingBalanceLookup, bookkeeping_account, path=["response"])
@@ -159,7 +159,7 @@ class TestBookkeepingAccounts:
     @parametrize
     def test_raw_response_balance(self, client: Increase) -> None:
         response = client.bookkeeping_accounts.with_raw_response.balance(
-            "string",
+            bookkeeping_account_id="bookkeeping_account_e37p1f1iuocw5intf35v",
         )
 
         assert response.is_closed is True
@@ -170,7 +170,7 @@ class TestBookkeepingAccounts:
     @parametrize
     def test_streaming_response_balance(self, client: Increase) -> None:
         with client.bookkeeping_accounts.with_streaming_response.balance(
-            "string",
+            bookkeeping_account_id="bookkeeping_account_e37p1f1iuocw5intf35v",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -186,7 +186,7 @@ class TestBookkeepingAccounts:
             ValueError, match=r"Expected a non-empty value for `bookkeeping_account_id` but received ''"
         ):
             client.bookkeeping_accounts.with_raw_response.balance(
-                "",
+                bookkeeping_account_id="",
             )
 
 
@@ -204,9 +204,9 @@ class TestAsyncBookkeepingAccounts:
     async def test_method_create_with_all_params(self, async_client: AsyncIncrease) -> None:
         bookkeeping_account = await async_client.bookkeeping_accounts.create(
             name="New Account!",
-            account_id="string",
+            account_id="account_id",
             compliance_category="commingled_cash",
-            entity_id="string",
+            entity_id="entity_id",
         )
         assert_matches_type(BookkeepingAccount, bookkeeping_account, path=["response"])
 
@@ -237,7 +237,7 @@ class TestAsyncBookkeepingAccounts:
     @parametrize
     async def test_method_update(self, async_client: AsyncIncrease) -> None:
         bookkeeping_account = await async_client.bookkeeping_accounts.update(
-            "string",
+            bookkeeping_account_id="bookkeeping_account_e37p1f1iuocw5intf35v",
             name="Deprecated Account",
         )
         assert_matches_type(BookkeepingAccount, bookkeeping_account, path=["response"])
@@ -245,7 +245,7 @@ class TestAsyncBookkeepingAccounts:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncIncrease) -> None:
         response = await async_client.bookkeeping_accounts.with_raw_response.update(
-            "string",
+            bookkeeping_account_id="bookkeeping_account_e37p1f1iuocw5intf35v",
             name="Deprecated Account",
         )
 
@@ -257,7 +257,7 @@ class TestAsyncBookkeepingAccounts:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncIncrease) -> None:
         async with async_client.bookkeeping_accounts.with_streaming_response.update(
-            "string",
+            bookkeeping_account_id="bookkeeping_account_e37p1f1iuocw5intf35v",
             name="Deprecated Account",
         ) as response:
             assert not response.is_closed
@@ -274,7 +274,7 @@ class TestAsyncBookkeepingAccounts:
             ValueError, match=r"Expected a non-empty value for `bookkeeping_account_id` but received ''"
         ):
             await async_client.bookkeeping_accounts.with_raw_response.update(
-                "",
+                bookkeeping_account_id="",
                 name="Deprecated Account",
             )
 
@@ -286,7 +286,7 @@ class TestAsyncBookkeepingAccounts:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
         bookkeeping_account = await async_client.bookkeeping_accounts.list(
-            cursor="string",
+            cursor="cursor",
             idempotency_key="x",
             limit=1,
         )
@@ -315,14 +315,14 @@ class TestAsyncBookkeepingAccounts:
     @parametrize
     async def test_method_balance(self, async_client: AsyncIncrease) -> None:
         bookkeeping_account = await async_client.bookkeeping_accounts.balance(
-            "string",
+            bookkeeping_account_id="bookkeeping_account_e37p1f1iuocw5intf35v",
         )
         assert_matches_type(BookkeepingBalanceLookup, bookkeeping_account, path=["response"])
 
     @parametrize
     async def test_method_balance_with_all_params(self, async_client: AsyncIncrease) -> None:
         bookkeeping_account = await async_client.bookkeeping_accounts.balance(
-            "string",
+            bookkeeping_account_id="bookkeeping_account_e37p1f1iuocw5intf35v",
             at_time=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(BookkeepingBalanceLookup, bookkeeping_account, path=["response"])
@@ -330,7 +330,7 @@ class TestAsyncBookkeepingAccounts:
     @parametrize
     async def test_raw_response_balance(self, async_client: AsyncIncrease) -> None:
         response = await async_client.bookkeeping_accounts.with_raw_response.balance(
-            "string",
+            bookkeeping_account_id="bookkeeping_account_e37p1f1iuocw5intf35v",
         )
 
         assert response.is_closed is True
@@ -341,7 +341,7 @@ class TestAsyncBookkeepingAccounts:
     @parametrize
     async def test_streaming_response_balance(self, async_client: AsyncIncrease) -> None:
         async with async_client.bookkeeping_accounts.with_streaming_response.balance(
-            "string",
+            bookkeeping_account_id="bookkeeping_account_e37p1f1iuocw5intf35v",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -357,5 +357,5 @@ class TestAsyncBookkeepingAccounts:
             ValueError, match=r"Expected a non-empty value for `bookkeeping_account_id` but received ''"
         ):
             await async_client.bookkeeping_accounts.with_raw_response.balance(
-                "",
+                bookkeeping_account_id="",
             )

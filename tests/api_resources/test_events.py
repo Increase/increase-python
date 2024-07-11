@@ -22,14 +22,14 @@ class TestEvents:
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         event = client.events.retrieve(
-            "string",
+            "event_id",
         )
         assert_matches_type(Event, event, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
         response = client.events.with_raw_response.retrieve(
-            "string",
+            "event_id",
         )
 
         assert response.is_closed is True
@@ -40,7 +40,7 @@ class TestEvents:
     @parametrize
     def test_streaming_response_retrieve(self, client: Increase) -> None:
         with client.events.with_streaming_response.retrieve(
-            "string",
+            "event_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -65,7 +65,7 @@ class TestEvents:
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
         event = client.events.list(
-            associated_object_id="string",
+            associated_object_id="associated_object_id",
             category={"in": ["account.created", "account.updated", "account_number.created"]},
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -73,7 +73,7 @@ class TestEvents:
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
-            cursor="string",
+            cursor="cursor",
             limit=1,
         )
         assert_matches_type(SyncPage[Event], event, path=["response"])
@@ -105,14 +105,14 @@ class TestAsyncEvents:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
         event = await async_client.events.retrieve(
-            "string",
+            "event_id",
         )
         assert_matches_type(Event, event, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.events.with_raw_response.retrieve(
-            "string",
+            "event_id",
         )
 
         assert response.is_closed is True
@@ -123,7 +123,7 @@ class TestAsyncEvents:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
         async with async_client.events.with_streaming_response.retrieve(
-            "string",
+            "event_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -148,7 +148,7 @@ class TestAsyncEvents:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
         event = await async_client.events.list(
-            associated_object_id="string",
+            associated_object_id="associated_object_id",
             category={"in": ["account.created", "account.updated", "account_number.created"]},
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -156,7 +156,7 @@ class TestAsyncEvents:
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
-            cursor="string",
+            cursor="cursor",
             limit=1,
         )
         assert_matches_type(AsyncPage[Event], event, path=["response"])

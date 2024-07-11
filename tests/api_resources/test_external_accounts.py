@@ -71,14 +71,14 @@ class TestExternalAccounts:
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         external_account = client.external_accounts.retrieve(
-            "string",
+            "external_account_id",
         )
         assert_matches_type(ExternalAccount, external_account, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
         response = client.external_accounts.with_raw_response.retrieve(
-            "string",
+            "external_account_id",
         )
 
         assert response.is_closed is True
@@ -89,7 +89,7 @@ class TestExternalAccounts:
     @parametrize
     def test_streaming_response_retrieve(self, client: Increase) -> None:
         with client.external_accounts.with_streaming_response.retrieve(
-            "string",
+            "external_account_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -109,14 +109,14 @@ class TestExternalAccounts:
     @parametrize
     def test_method_update(self, client: Increase) -> None:
         external_account = client.external_accounts.update(
-            "string",
+            external_account_id="external_account_ukk55lr923a3ac0pp7iv",
         )
         assert_matches_type(ExternalAccount, external_account, path=["response"])
 
     @parametrize
     def test_method_update_with_all_params(self, client: Increase) -> None:
         external_account = client.external_accounts.update(
-            "string",
+            external_account_id="external_account_ukk55lr923a3ac0pp7iv",
             account_holder="business",
             description="New description",
             funding="checking",
@@ -127,7 +127,7 @@ class TestExternalAccounts:
     @parametrize
     def test_raw_response_update(self, client: Increase) -> None:
         response = client.external_accounts.with_raw_response.update(
-            "string",
+            external_account_id="external_account_ukk55lr923a3ac0pp7iv",
         )
 
         assert response.is_closed is True
@@ -138,7 +138,7 @@ class TestExternalAccounts:
     @parametrize
     def test_streaming_response_update(self, client: Increase) -> None:
         with client.external_accounts.with_streaming_response.update(
-            "string",
+            external_account_id="external_account_ukk55lr923a3ac0pp7iv",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -152,7 +152,7 @@ class TestExternalAccounts:
     def test_path_params_update(self, client: Increase) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_account_id` but received ''"):
             client.external_accounts.with_raw_response.update(
-                "",
+                external_account_id="",
             )
 
     @parametrize
@@ -163,7 +163,7 @@ class TestExternalAccounts:
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
         external_account = client.external_accounts.list(
-            cursor="string",
+            cursor="cursor",
             idempotency_key="x",
             limit=1,
             routing_number="xxxxxxxxx",
@@ -246,14 +246,14 @@ class TestAsyncExternalAccounts:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
         external_account = await async_client.external_accounts.retrieve(
-            "string",
+            "external_account_id",
         )
         assert_matches_type(ExternalAccount, external_account, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.external_accounts.with_raw_response.retrieve(
-            "string",
+            "external_account_id",
         )
 
         assert response.is_closed is True
@@ -264,7 +264,7 @@ class TestAsyncExternalAccounts:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
         async with async_client.external_accounts.with_streaming_response.retrieve(
-            "string",
+            "external_account_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -284,14 +284,14 @@ class TestAsyncExternalAccounts:
     @parametrize
     async def test_method_update(self, async_client: AsyncIncrease) -> None:
         external_account = await async_client.external_accounts.update(
-            "string",
+            external_account_id="external_account_ukk55lr923a3ac0pp7iv",
         )
         assert_matches_type(ExternalAccount, external_account, path=["response"])
 
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncIncrease) -> None:
         external_account = await async_client.external_accounts.update(
-            "string",
+            external_account_id="external_account_ukk55lr923a3ac0pp7iv",
             account_holder="business",
             description="New description",
             funding="checking",
@@ -302,7 +302,7 @@ class TestAsyncExternalAccounts:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncIncrease) -> None:
         response = await async_client.external_accounts.with_raw_response.update(
-            "string",
+            external_account_id="external_account_ukk55lr923a3ac0pp7iv",
         )
 
         assert response.is_closed is True
@@ -313,7 +313,7 @@ class TestAsyncExternalAccounts:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncIncrease) -> None:
         async with async_client.external_accounts.with_streaming_response.update(
-            "string",
+            external_account_id="external_account_ukk55lr923a3ac0pp7iv",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -327,7 +327,7 @@ class TestAsyncExternalAccounts:
     async def test_path_params_update(self, async_client: AsyncIncrease) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `external_account_id` but received ''"):
             await async_client.external_accounts.with_raw_response.update(
-                "",
+                external_account_id="",
             )
 
     @parametrize
@@ -338,7 +338,7 @@ class TestAsyncExternalAccounts:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
         external_account = await async_client.external_accounts.list(
-            cursor="string",
+            cursor="cursor",
             idempotency_key="x",
             limit=1,
             routing_number="xxxxxxxxx",
