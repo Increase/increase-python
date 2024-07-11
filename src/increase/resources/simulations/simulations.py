@@ -67,9 +67,7 @@ from .card_disputes import (
     CardDisputesWithStreamingResponse,
     AsyncCardDisputesWithStreamingResponse,
 )
-from ..._base_client import (
-    make_request_options,
-)
+from ..._base_client import make_request_options
 from .check_deposits import (
     CheckDeposits,
     AsyncCheckDeposits,
