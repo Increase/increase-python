@@ -14,10 +14,7 @@ from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ...pagination import SyncPage, AsyncPage
-from ..._base_client import (
-    AsyncPaginator,
-    make_request_options,
-)
+from ..._base_client import AsyncPaginator, make_request_options
 from ...types.intrafi import account_enrollment_list_params, account_enrollment_create_params
 from ...types.intrafi.intrafi_account_enrollment import IntrafiAccountEnrollment
 
