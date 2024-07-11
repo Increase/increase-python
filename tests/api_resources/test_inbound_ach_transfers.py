@@ -24,14 +24,14 @@ class TestInboundACHTransfers:
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         inbound_ach_transfer = client.inbound_ach_transfers.retrieve(
-            "string",
+            "inbound_ach_transfer_id",
         )
         assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
         response = client.inbound_ach_transfers.with_raw_response.retrieve(
-            "string",
+            "inbound_ach_transfer_id",
         )
 
         assert response.is_closed is True
@@ -42,7 +42,7 @@ class TestInboundACHTransfers:
     @parametrize
     def test_streaming_response_retrieve(self, client: Increase) -> None:
         with client.inbound_ach_transfers.with_streaming_response.retrieve(
-            "string",
+            "inbound_ach_transfer_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -69,15 +69,15 @@ class TestInboundACHTransfers:
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
         inbound_ach_transfer = client.inbound_ach_transfers.list(
-            account_id="string",
-            account_number_id="string",
+            account_id="account_id",
+            account_number_id="account_number_id",
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
-            cursor="string",
+            cursor="cursor",
             limit=1,
             status="pending",
         )
@@ -106,14 +106,14 @@ class TestInboundACHTransfers:
     @parametrize
     def test_method_decline(self, client: Increase) -> None:
         inbound_ach_transfer = client.inbound_ach_transfers.decline(
-            "string",
+            "inbound_ach_transfer_id",
         )
         assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
 
     @parametrize
     def test_raw_response_decline(self, client: Increase) -> None:
         response = client.inbound_ach_transfers.with_raw_response.decline(
-            "string",
+            "inbound_ach_transfer_id",
         )
 
         assert response.is_closed is True
@@ -124,7 +124,7 @@ class TestInboundACHTransfers:
     @parametrize
     def test_streaming_response_decline(self, client: Increase) -> None:
         with client.inbound_ach_transfers.with_streaming_response.decline(
-            "string",
+            "inbound_ach_transfer_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -146,14 +146,14 @@ class TestInboundACHTransfers:
     @parametrize
     def test_method_notification_of_change(self, client: Increase) -> None:
         inbound_ach_transfer = client.inbound_ach_transfers.notification_of_change(
-            "string",
+            inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
         )
         assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
 
     @parametrize
     def test_method_notification_of_change_with_all_params(self, client: Increase) -> None:
         inbound_ach_transfer = client.inbound_ach_transfers.notification_of_change(
-            "string",
+            inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
             updated_account_number="987654321",
             updated_routing_number="101050001",
         )
@@ -162,7 +162,7 @@ class TestInboundACHTransfers:
     @parametrize
     def test_raw_response_notification_of_change(self, client: Increase) -> None:
         response = client.inbound_ach_transfers.with_raw_response.notification_of_change(
-            "string",
+            inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
         )
 
         assert response.is_closed is True
@@ -173,7 +173,7 @@ class TestInboundACHTransfers:
     @parametrize
     def test_streaming_response_notification_of_change(self, client: Increase) -> None:
         with client.inbound_ach_transfers.with_streaming_response.notification_of_change(
-            "string",
+            inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -189,13 +189,13 @@ class TestInboundACHTransfers:
             ValueError, match=r"Expected a non-empty value for `inbound_ach_transfer_id` but received ''"
         ):
             client.inbound_ach_transfers.with_raw_response.notification_of_change(
-                "",
+                inbound_ach_transfer_id="",
             )
 
     @parametrize
     def test_method_transfer_return(self, client: Increase) -> None:
         inbound_ach_transfer = client.inbound_ach_transfers.transfer_return(
-            "string",
+            inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
             reason="payment_stopped",
         )
         assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
@@ -203,7 +203,7 @@ class TestInboundACHTransfers:
     @parametrize
     def test_raw_response_transfer_return(self, client: Increase) -> None:
         response = client.inbound_ach_transfers.with_raw_response.transfer_return(
-            "string",
+            inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
             reason="payment_stopped",
         )
 
@@ -215,7 +215,7 @@ class TestInboundACHTransfers:
     @parametrize
     def test_streaming_response_transfer_return(self, client: Increase) -> None:
         with client.inbound_ach_transfers.with_streaming_response.transfer_return(
-            "string",
+            inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
             reason="payment_stopped",
         ) as response:
             assert not response.is_closed
@@ -232,7 +232,7 @@ class TestInboundACHTransfers:
             ValueError, match=r"Expected a non-empty value for `inbound_ach_transfer_id` but received ''"
         ):
             client.inbound_ach_transfers.with_raw_response.transfer_return(
-                "",
+                inbound_ach_transfer_id="",
                 reason="payment_stopped",
             )
 
@@ -243,14 +243,14 @@ class TestAsyncInboundACHTransfers:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
         inbound_ach_transfer = await async_client.inbound_ach_transfers.retrieve(
-            "string",
+            "inbound_ach_transfer_id",
         )
         assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.inbound_ach_transfers.with_raw_response.retrieve(
-            "string",
+            "inbound_ach_transfer_id",
         )
 
         assert response.is_closed is True
@@ -261,7 +261,7 @@ class TestAsyncInboundACHTransfers:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
         async with async_client.inbound_ach_transfers.with_streaming_response.retrieve(
-            "string",
+            "inbound_ach_transfer_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -288,15 +288,15 @@ class TestAsyncInboundACHTransfers:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
         inbound_ach_transfer = await async_client.inbound_ach_transfers.list(
-            account_id="string",
-            account_number_id="string",
+            account_id="account_id",
+            account_number_id="account_number_id",
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
-            cursor="string",
+            cursor="cursor",
             limit=1,
             status="pending",
         )
@@ -325,14 +325,14 @@ class TestAsyncInboundACHTransfers:
     @parametrize
     async def test_method_decline(self, async_client: AsyncIncrease) -> None:
         inbound_ach_transfer = await async_client.inbound_ach_transfers.decline(
-            "string",
+            "inbound_ach_transfer_id",
         )
         assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
 
     @parametrize
     async def test_raw_response_decline(self, async_client: AsyncIncrease) -> None:
         response = await async_client.inbound_ach_transfers.with_raw_response.decline(
-            "string",
+            "inbound_ach_transfer_id",
         )
 
         assert response.is_closed is True
@@ -343,7 +343,7 @@ class TestAsyncInboundACHTransfers:
     @parametrize
     async def test_streaming_response_decline(self, async_client: AsyncIncrease) -> None:
         async with async_client.inbound_ach_transfers.with_streaming_response.decline(
-            "string",
+            "inbound_ach_transfer_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -365,14 +365,14 @@ class TestAsyncInboundACHTransfers:
     @parametrize
     async def test_method_notification_of_change(self, async_client: AsyncIncrease) -> None:
         inbound_ach_transfer = await async_client.inbound_ach_transfers.notification_of_change(
-            "string",
+            inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
         )
         assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
 
     @parametrize
     async def test_method_notification_of_change_with_all_params(self, async_client: AsyncIncrease) -> None:
         inbound_ach_transfer = await async_client.inbound_ach_transfers.notification_of_change(
-            "string",
+            inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
             updated_account_number="987654321",
             updated_routing_number="101050001",
         )
@@ -381,7 +381,7 @@ class TestAsyncInboundACHTransfers:
     @parametrize
     async def test_raw_response_notification_of_change(self, async_client: AsyncIncrease) -> None:
         response = await async_client.inbound_ach_transfers.with_raw_response.notification_of_change(
-            "string",
+            inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
         )
 
         assert response.is_closed is True
@@ -392,7 +392,7 @@ class TestAsyncInboundACHTransfers:
     @parametrize
     async def test_streaming_response_notification_of_change(self, async_client: AsyncIncrease) -> None:
         async with async_client.inbound_ach_transfers.with_streaming_response.notification_of_change(
-            "string",
+            inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -408,13 +408,13 @@ class TestAsyncInboundACHTransfers:
             ValueError, match=r"Expected a non-empty value for `inbound_ach_transfer_id` but received ''"
         ):
             await async_client.inbound_ach_transfers.with_raw_response.notification_of_change(
-                "",
+                inbound_ach_transfer_id="",
             )
 
     @parametrize
     async def test_method_transfer_return(self, async_client: AsyncIncrease) -> None:
         inbound_ach_transfer = await async_client.inbound_ach_transfers.transfer_return(
-            "string",
+            inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
             reason="payment_stopped",
         )
         assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
@@ -422,7 +422,7 @@ class TestAsyncInboundACHTransfers:
     @parametrize
     async def test_raw_response_transfer_return(self, async_client: AsyncIncrease) -> None:
         response = await async_client.inbound_ach_transfers.with_raw_response.transfer_return(
-            "string",
+            inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
             reason="payment_stopped",
         )
 
@@ -434,7 +434,7 @@ class TestAsyncInboundACHTransfers:
     @parametrize
     async def test_streaming_response_transfer_return(self, async_client: AsyncIncrease) -> None:
         async with async_client.inbound_ach_transfers.with_streaming_response.transfer_return(
-            "string",
+            inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
             reason="payment_stopped",
         ) as response:
             assert not response.is_closed
@@ -451,6 +451,6 @@ class TestAsyncInboundACHTransfers:
             ValueError, match=r"Expected a non-empty value for `inbound_ach_transfer_id` but received ''"
         ):
             await async_client.inbound_ach_transfers.with_raw_response.transfer_return(
-                "",
+                inbound_ach_transfer_id="",
                 reason="payment_stopped",
             )

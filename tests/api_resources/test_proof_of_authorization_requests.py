@@ -22,14 +22,14 @@ class TestProofOfAuthorizationRequests:
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         proof_of_authorization_request = client.proof_of_authorization_requests.retrieve(
-            "string",
+            "proof_of_authorization_request_id",
         )
         assert_matches_type(ProofOfAuthorizationRequest, proof_of_authorization_request, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
         response = client.proof_of_authorization_requests.with_raw_response.retrieve(
-            "string",
+            "proof_of_authorization_request_id",
         )
 
         assert response.is_closed is True
@@ -40,7 +40,7 @@ class TestProofOfAuthorizationRequests:
     @parametrize
     def test_streaming_response_retrieve(self, client: Increase) -> None:
         with client.proof_of_authorization_requests.with_streaming_response.retrieve(
-            "string",
+            "proof_of_authorization_request_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -73,7 +73,7 @@ class TestProofOfAuthorizationRequests:
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
-            cursor="string",
+            cursor="cursor",
             limit=1,
         )
         assert_matches_type(SyncPage[ProofOfAuthorizationRequest], proof_of_authorization_request, path=["response"])
@@ -107,14 +107,14 @@ class TestAsyncProofOfAuthorizationRequests:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
         proof_of_authorization_request = await async_client.proof_of_authorization_requests.retrieve(
-            "string",
+            "proof_of_authorization_request_id",
         )
         assert_matches_type(ProofOfAuthorizationRequest, proof_of_authorization_request, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.proof_of_authorization_requests.with_raw_response.retrieve(
-            "string",
+            "proof_of_authorization_request_id",
         )
 
         assert response.is_closed is True
@@ -125,7 +125,7 @@ class TestAsyncProofOfAuthorizationRequests:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
         async with async_client.proof_of_authorization_requests.with_streaming_response.retrieve(
-            "string",
+            "proof_of_authorization_request_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -158,7 +158,7 @@ class TestAsyncProofOfAuthorizationRequests:
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
-            cursor="string",
+            cursor="cursor",
             limit=1,
         )
         assert_matches_type(AsyncPage[ProofOfAuthorizationRequest], proof_of_authorization_request, path=["response"])

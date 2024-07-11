@@ -55,24 +55,24 @@ class TestEntities:
                             "date_of_birth": parse_date("1970-01-31"),
                             "identification": {
                                 "drivers_license": {
-                                    "back_file_id": "string",
+                                    "back_file_id": "back_file_id",
                                     "expiration_date": parse_date("2019-12-27"),
-                                    "file_id": "string",
+                                    "file_id": "file_id",
                                     "state": "x",
                                 },
                                 "method": "social_security_number",
                                 "number": "078051120",
                                 "other": {
-                                    "back_file_id": "string",
+                                    "back_file_id": "back_file_id",
                                     "country": "x",
                                     "description": "x",
                                     "expiration_date": parse_date("2019-12-27"),
-                                    "file_id": "string",
+                                    "file_id": "file_id",
                                 },
                                 "passport": {
                                     "country": "x",
                                     "expiration_date": parse_date("2019-12-27"),
-                                    "file_id": "string",
+                                    "file_id": "file_id",
                                 },
                             },
                             "name": "Ian Crease",
@@ -99,7 +99,7 @@ class TestEntities:
                 "category": "municipality",
                 "name": "x",
                 "tax_identifier": "x",
-                "website": "string",
+                "website": "website",
             },
             joint={
                 "individuals": [
@@ -115,24 +115,24 @@ class TestEntities:
                         "date_of_birth": parse_date("2019-12-27"),
                         "identification": {
                             "drivers_license": {
-                                "back_file_id": "string",
+                                "back_file_id": "back_file_id",
                                 "expiration_date": parse_date("2019-12-27"),
-                                "file_id": "string",
+                                "file_id": "file_id",
                                 "state": "x",
                             },
                             "method": "social_security_number",
                             "number": "xxxx",
                             "other": {
-                                "back_file_id": "string",
+                                "back_file_id": "back_file_id",
                                 "country": "x",
                                 "description": "x",
                                 "expiration_date": parse_date("2019-12-27"),
-                                "file_id": "string",
+                                "file_id": "file_id",
                             },
                             "passport": {
                                 "country": "x",
                                 "expiration_date": parse_date("2019-12-27"),
-                                "file_id": "string",
+                                "file_id": "file_id",
                             },
                         },
                         "name": "x",
@@ -149,24 +149,24 @@ class TestEntities:
                         "date_of_birth": parse_date("2019-12-27"),
                         "identification": {
                             "drivers_license": {
-                                "back_file_id": "string",
+                                "back_file_id": "back_file_id",
                                 "expiration_date": parse_date("2019-12-27"),
-                                "file_id": "string",
+                                "file_id": "file_id",
                                 "state": "x",
                             },
                             "method": "social_security_number",
                             "number": "xxxx",
                             "other": {
-                                "back_file_id": "string",
+                                "back_file_id": "back_file_id",
                                 "country": "x",
                                 "description": "x",
                                 "expiration_date": parse_date("2019-12-27"),
-                                "file_id": "string",
+                                "file_id": "file_id",
                             },
                             "passport": {
                                 "country": "x",
                                 "expiration_date": parse_date("2019-12-27"),
-                                "file_id": "string",
+                                "file_id": "file_id",
                             },
                         },
                         "name": "x",
@@ -183,24 +183,24 @@ class TestEntities:
                         "date_of_birth": parse_date("2019-12-27"),
                         "identification": {
                             "drivers_license": {
-                                "back_file_id": "string",
+                                "back_file_id": "back_file_id",
                                 "expiration_date": parse_date("2019-12-27"),
-                                "file_id": "string",
+                                "file_id": "file_id",
                                 "state": "x",
                             },
                             "method": "social_security_number",
                             "number": "xxxx",
                             "other": {
-                                "back_file_id": "string",
+                                "back_file_id": "back_file_id",
                                 "country": "x",
                                 "description": "x",
                                 "expiration_date": parse_date("2019-12-27"),
-                                "file_id": "string",
+                                "file_id": "file_id",
                             },
                             "passport": {
                                 "country": "x",
                                 "expiration_date": parse_date("2019-12-27"),
-                                "file_id": "string",
+                                "file_id": "file_id",
                             },
                         },
                         "name": "x",
@@ -220,24 +220,24 @@ class TestEntities:
                 "date_of_birth": parse_date("2019-12-27"),
                 "identification": {
                     "drivers_license": {
-                        "back_file_id": "string",
+                        "back_file_id": "back_file_id",
                         "expiration_date": parse_date("2019-12-27"),
-                        "file_id": "string",
+                        "file_id": "file_id",
                         "state": "x",
                     },
                     "method": "social_security_number",
                     "number": "xxxx",
                     "other": {
-                        "back_file_id": "string",
+                        "back_file_id": "back_file_id",
                         "country": "x",
                         "description": "x",
                         "expiration_date": parse_date("2019-12-27"),
-                        "file_id": "string",
+                        "file_id": "file_id",
                     },
                     "passport": {
                         "country": "x",
                         "expiration_date": parse_date("2019-12-27"),
-                        "file_id": "string",
+                        "file_id": "file_id",
                     },
                 },
                 "name": "x",
@@ -252,7 +252,7 @@ class TestEntities:
                     "zip": "x",
                 },
                 "category": "revocable",
-                "formation_document_file_id": "string",
+                "formation_document_file_id": "formation_document_file_id",
                 "formation_state": "x",
                 "grantor": {
                     "address": {
@@ -266,24 +266,24 @@ class TestEntities:
                     "date_of_birth": parse_date("2019-12-27"),
                     "identification": {
                         "drivers_license": {
-                            "back_file_id": "string",
+                            "back_file_id": "back_file_id",
                             "expiration_date": parse_date("2019-12-27"),
-                            "file_id": "string",
+                            "file_id": "file_id",
                             "state": "x",
                         },
                         "method": "social_security_number",
                         "number": "xxxx",
                         "other": {
-                            "back_file_id": "string",
+                            "back_file_id": "back_file_id",
                             "country": "x",
                             "description": "x",
                             "expiration_date": parse_date("2019-12-27"),
-                            "file_id": "string",
+                            "file_id": "file_id",
                         },
                         "passport": {
                             "country": "x",
                             "expiration_date": parse_date("2019-12-27"),
-                            "file_id": "string",
+                            "file_id": "file_id",
                         },
                     },
                     "name": "x",
@@ -304,24 +304,24 @@ class TestEntities:
                             "date_of_birth": parse_date("2019-12-27"),
                             "identification": {
                                 "drivers_license": {
-                                    "back_file_id": "string",
+                                    "back_file_id": "back_file_id",
                                     "expiration_date": parse_date("2019-12-27"),
-                                    "file_id": "string",
+                                    "file_id": "file_id",
                                     "state": "x",
                                 },
                                 "method": "social_security_number",
                                 "number": "xxxx",
                                 "other": {
-                                    "back_file_id": "string",
+                                    "back_file_id": "back_file_id",
                                     "country": "x",
                                     "description": "x",
                                     "expiration_date": parse_date("2019-12-27"),
-                                    "file_id": "string",
+                                    "file_id": "file_id",
                                 },
                                 "passport": {
                                     "country": "x",
                                     "expiration_date": parse_date("2019-12-27"),
-                                    "file_id": "string",
+                                    "file_id": "file_id",
                                 },
                             },
                             "name": "x",
@@ -341,24 +341,24 @@ class TestEntities:
                             "date_of_birth": parse_date("2019-12-27"),
                             "identification": {
                                 "drivers_license": {
-                                    "back_file_id": "string",
+                                    "back_file_id": "back_file_id",
                                     "expiration_date": parse_date("2019-12-27"),
-                                    "file_id": "string",
+                                    "file_id": "file_id",
                                     "state": "x",
                                 },
                                 "method": "social_security_number",
                                 "number": "xxxx",
                                 "other": {
-                                    "back_file_id": "string",
+                                    "back_file_id": "back_file_id",
                                     "country": "x",
                                     "description": "x",
                                     "expiration_date": parse_date("2019-12-27"),
-                                    "file_id": "string",
+                                    "file_id": "file_id",
                                 },
                                 "passport": {
                                     "country": "x",
                                     "expiration_date": parse_date("2019-12-27"),
-                                    "file_id": "string",
+                                    "file_id": "file_id",
                                 },
                             },
                             "name": "x",
@@ -378,24 +378,24 @@ class TestEntities:
                             "date_of_birth": parse_date("2019-12-27"),
                             "identification": {
                                 "drivers_license": {
-                                    "back_file_id": "string",
+                                    "back_file_id": "back_file_id",
                                     "expiration_date": parse_date("2019-12-27"),
-                                    "file_id": "string",
+                                    "file_id": "file_id",
                                     "state": "x",
                                 },
                                 "method": "social_security_number",
                                 "number": "xxxx",
                                 "other": {
-                                    "back_file_id": "string",
+                                    "back_file_id": "back_file_id",
                                     "country": "x",
                                     "description": "x",
                                     "expiration_date": parse_date("2019-12-27"),
-                                    "file_id": "string",
+                                    "file_id": "file_id",
                                 },
                                 "passport": {
                                     "country": "x",
                                     "expiration_date": parse_date("2019-12-27"),
-                                    "file_id": "string",
+                                    "file_id": "file_id",
                                 },
                             },
                             "name": "x",
@@ -434,14 +434,14 @@ class TestEntities:
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         entity = client.entities.retrieve(
-            "string",
+            "entity_id",
         )
         assert_matches_type(Entity, entity, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
         response = client.entities.with_raw_response.retrieve(
-            "string",
+            "entity_id",
         )
 
         assert response.is_closed is True
@@ -452,7 +452,7 @@ class TestEntities:
     @parametrize
     def test_streaming_response_retrieve(self, client: Increase) -> None:
         with client.entities.with_streaming_response.retrieve(
-            "string",
+            "entity_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -483,7 +483,7 @@ class TestEntities:
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
-            cursor="string",
+            cursor="cursor",
             idempotency_key="x",
             limit=1,
             status={"in": ["active", "archived", "disabled"]},
@@ -513,14 +513,14 @@ class TestEntities:
     @parametrize
     def test_method_archive(self, client: Increase) -> None:
         entity = client.entities.archive(
-            "string",
+            "entity_id",
         )
         assert_matches_type(Entity, entity, path=["response"])
 
     @parametrize
     def test_raw_response_archive(self, client: Increase) -> None:
         response = client.entities.with_raw_response.archive(
-            "string",
+            "entity_id",
         )
 
         assert response.is_closed is True
@@ -531,7 +531,7 @@ class TestEntities:
     @parametrize
     def test_streaming_response_archive(self, client: Increase) -> None:
         with client.entities.with_streaming_response.archive(
-            "string",
+            "entity_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -551,14 +551,14 @@ class TestEntities:
     @parametrize
     def test_method_confirm(self, client: Increase) -> None:
         entity = client.entities.confirm(
-            "string",
+            entity_id="entity_n8y8tnk2p9339ti393yi",
         )
         assert_matches_type(Entity, entity, path=["response"])
 
     @parametrize
     def test_method_confirm_with_all_params(self, client: Increase) -> None:
         entity = client.entities.confirm(
-            "string",
+            entity_id="entity_n8y8tnk2p9339ti393yi",
             confirmed_at=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(Entity, entity, path=["response"])
@@ -566,7 +566,7 @@ class TestEntities:
     @parametrize
     def test_raw_response_confirm(self, client: Increase) -> None:
         response = client.entities.with_raw_response.confirm(
-            "string",
+            entity_id="entity_n8y8tnk2p9339ti393yi",
         )
 
         assert response.is_closed is True
@@ -577,7 +577,7 @@ class TestEntities:
     @parametrize
     def test_streaming_response_confirm(self, client: Increase) -> None:
         with client.entities.with_streaming_response.confirm(
-            "string",
+            entity_id="entity_n8y8tnk2p9339ti393yi",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -591,13 +591,13 @@ class TestEntities:
     def test_path_params_confirm(self, client: Increase) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `entity_id` but received ''"):
             client.entities.with_raw_response.confirm(
-                "",
+                entity_id="",
             )
 
     @parametrize
     def test_method_update_address(self, client: Increase) -> None:
         entity = client.entities.update_address(
-            "string",
+            entity_id="entity_n8y8tnk2p9339ti393yi",
             address={
                 "city": "New York",
                 "line1": "33 Liberty Street",
@@ -610,7 +610,7 @@ class TestEntities:
     @parametrize
     def test_method_update_address_with_all_params(self, client: Increase) -> None:
         entity = client.entities.update_address(
-            "string",
+            entity_id="entity_n8y8tnk2p9339ti393yi",
             address={
                 "city": "New York",
                 "line1": "33 Liberty Street",
@@ -624,7 +624,7 @@ class TestEntities:
     @parametrize
     def test_raw_response_update_address(self, client: Increase) -> None:
         response = client.entities.with_raw_response.update_address(
-            "string",
+            entity_id="entity_n8y8tnk2p9339ti393yi",
             address={
                 "city": "New York",
                 "line1": "33 Liberty Street",
@@ -641,7 +641,7 @@ class TestEntities:
     @parametrize
     def test_streaming_response_update_address(self, client: Increase) -> None:
         with client.entities.with_streaming_response.update_address(
-            "string",
+            entity_id="entity_n8y8tnk2p9339ti393yi",
             address={
                 "city": "New York",
                 "line1": "33 Liberty Street",
@@ -661,7 +661,7 @@ class TestEntities:
     def test_path_params_update_address(self, client: Increase) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `entity_id` but received ''"):
             client.entities.with_raw_response.update_address(
-                "",
+                entity_id="",
                 address={
                     "city": "New York",
                     "line1": "33 Liberty Street",
@@ -708,24 +708,24 @@ class TestAsyncEntities:
                             "date_of_birth": parse_date("1970-01-31"),
                             "identification": {
                                 "drivers_license": {
-                                    "back_file_id": "string",
+                                    "back_file_id": "back_file_id",
                                     "expiration_date": parse_date("2019-12-27"),
-                                    "file_id": "string",
+                                    "file_id": "file_id",
                                     "state": "x",
                                 },
                                 "method": "social_security_number",
                                 "number": "078051120",
                                 "other": {
-                                    "back_file_id": "string",
+                                    "back_file_id": "back_file_id",
                                     "country": "x",
                                     "description": "x",
                                     "expiration_date": parse_date("2019-12-27"),
-                                    "file_id": "string",
+                                    "file_id": "file_id",
                                 },
                                 "passport": {
                                     "country": "x",
                                     "expiration_date": parse_date("2019-12-27"),
-                                    "file_id": "string",
+                                    "file_id": "file_id",
                                 },
                             },
                             "name": "Ian Crease",
@@ -752,7 +752,7 @@ class TestAsyncEntities:
                 "category": "municipality",
                 "name": "x",
                 "tax_identifier": "x",
-                "website": "string",
+                "website": "website",
             },
             joint={
                 "individuals": [
@@ -768,24 +768,24 @@ class TestAsyncEntities:
                         "date_of_birth": parse_date("2019-12-27"),
                         "identification": {
                             "drivers_license": {
-                                "back_file_id": "string",
+                                "back_file_id": "back_file_id",
                                 "expiration_date": parse_date("2019-12-27"),
-                                "file_id": "string",
+                                "file_id": "file_id",
                                 "state": "x",
                             },
                             "method": "social_security_number",
                             "number": "xxxx",
                             "other": {
-                                "back_file_id": "string",
+                                "back_file_id": "back_file_id",
                                 "country": "x",
                                 "description": "x",
                                 "expiration_date": parse_date("2019-12-27"),
-                                "file_id": "string",
+                                "file_id": "file_id",
                             },
                             "passport": {
                                 "country": "x",
                                 "expiration_date": parse_date("2019-12-27"),
-                                "file_id": "string",
+                                "file_id": "file_id",
                             },
                         },
                         "name": "x",
@@ -802,24 +802,24 @@ class TestAsyncEntities:
                         "date_of_birth": parse_date("2019-12-27"),
                         "identification": {
                             "drivers_license": {
-                                "back_file_id": "string",
+                                "back_file_id": "back_file_id",
                                 "expiration_date": parse_date("2019-12-27"),
-                                "file_id": "string",
+                                "file_id": "file_id",
                                 "state": "x",
                             },
                             "method": "social_security_number",
                             "number": "xxxx",
                             "other": {
-                                "back_file_id": "string",
+                                "back_file_id": "back_file_id",
                                 "country": "x",
                                 "description": "x",
                                 "expiration_date": parse_date("2019-12-27"),
-                                "file_id": "string",
+                                "file_id": "file_id",
                             },
                             "passport": {
                                 "country": "x",
                                 "expiration_date": parse_date("2019-12-27"),
-                                "file_id": "string",
+                                "file_id": "file_id",
                             },
                         },
                         "name": "x",
@@ -836,24 +836,24 @@ class TestAsyncEntities:
                         "date_of_birth": parse_date("2019-12-27"),
                         "identification": {
                             "drivers_license": {
-                                "back_file_id": "string",
+                                "back_file_id": "back_file_id",
                                 "expiration_date": parse_date("2019-12-27"),
-                                "file_id": "string",
+                                "file_id": "file_id",
                                 "state": "x",
                             },
                             "method": "social_security_number",
                             "number": "xxxx",
                             "other": {
-                                "back_file_id": "string",
+                                "back_file_id": "back_file_id",
                                 "country": "x",
                                 "description": "x",
                                 "expiration_date": parse_date("2019-12-27"),
-                                "file_id": "string",
+                                "file_id": "file_id",
                             },
                             "passport": {
                                 "country": "x",
                                 "expiration_date": parse_date("2019-12-27"),
-                                "file_id": "string",
+                                "file_id": "file_id",
                             },
                         },
                         "name": "x",
@@ -873,24 +873,24 @@ class TestAsyncEntities:
                 "date_of_birth": parse_date("2019-12-27"),
                 "identification": {
                     "drivers_license": {
-                        "back_file_id": "string",
+                        "back_file_id": "back_file_id",
                         "expiration_date": parse_date("2019-12-27"),
-                        "file_id": "string",
+                        "file_id": "file_id",
                         "state": "x",
                     },
                     "method": "social_security_number",
                     "number": "xxxx",
                     "other": {
-                        "back_file_id": "string",
+                        "back_file_id": "back_file_id",
                         "country": "x",
                         "description": "x",
                         "expiration_date": parse_date("2019-12-27"),
-                        "file_id": "string",
+                        "file_id": "file_id",
                     },
                     "passport": {
                         "country": "x",
                         "expiration_date": parse_date("2019-12-27"),
-                        "file_id": "string",
+                        "file_id": "file_id",
                     },
                 },
                 "name": "x",
@@ -905,7 +905,7 @@ class TestAsyncEntities:
                     "zip": "x",
                 },
                 "category": "revocable",
-                "formation_document_file_id": "string",
+                "formation_document_file_id": "formation_document_file_id",
                 "formation_state": "x",
                 "grantor": {
                     "address": {
@@ -919,24 +919,24 @@ class TestAsyncEntities:
                     "date_of_birth": parse_date("2019-12-27"),
                     "identification": {
                         "drivers_license": {
-                            "back_file_id": "string",
+                            "back_file_id": "back_file_id",
                             "expiration_date": parse_date("2019-12-27"),
-                            "file_id": "string",
+                            "file_id": "file_id",
                             "state": "x",
                         },
                         "method": "social_security_number",
                         "number": "xxxx",
                         "other": {
-                            "back_file_id": "string",
+                            "back_file_id": "back_file_id",
                             "country": "x",
                             "description": "x",
                             "expiration_date": parse_date("2019-12-27"),
-                            "file_id": "string",
+                            "file_id": "file_id",
                         },
                         "passport": {
                             "country": "x",
                             "expiration_date": parse_date("2019-12-27"),
-                            "file_id": "string",
+                            "file_id": "file_id",
                         },
                     },
                     "name": "x",
@@ -957,24 +957,24 @@ class TestAsyncEntities:
                             "date_of_birth": parse_date("2019-12-27"),
                             "identification": {
                                 "drivers_license": {
-                                    "back_file_id": "string",
+                                    "back_file_id": "back_file_id",
                                     "expiration_date": parse_date("2019-12-27"),
-                                    "file_id": "string",
+                                    "file_id": "file_id",
                                     "state": "x",
                                 },
                                 "method": "social_security_number",
                                 "number": "xxxx",
                                 "other": {
-                                    "back_file_id": "string",
+                                    "back_file_id": "back_file_id",
                                     "country": "x",
                                     "description": "x",
                                     "expiration_date": parse_date("2019-12-27"),
-                                    "file_id": "string",
+                                    "file_id": "file_id",
                                 },
                                 "passport": {
                                     "country": "x",
                                     "expiration_date": parse_date("2019-12-27"),
-                                    "file_id": "string",
+                                    "file_id": "file_id",
                                 },
                             },
                             "name": "x",
@@ -994,24 +994,24 @@ class TestAsyncEntities:
                             "date_of_birth": parse_date("2019-12-27"),
                             "identification": {
                                 "drivers_license": {
-                                    "back_file_id": "string",
+                                    "back_file_id": "back_file_id",
                                     "expiration_date": parse_date("2019-12-27"),
-                                    "file_id": "string",
+                                    "file_id": "file_id",
                                     "state": "x",
                                 },
                                 "method": "social_security_number",
                                 "number": "xxxx",
                                 "other": {
-                                    "back_file_id": "string",
+                                    "back_file_id": "back_file_id",
                                     "country": "x",
                                     "description": "x",
                                     "expiration_date": parse_date("2019-12-27"),
-                                    "file_id": "string",
+                                    "file_id": "file_id",
                                 },
                                 "passport": {
                                     "country": "x",
                                     "expiration_date": parse_date("2019-12-27"),
-                                    "file_id": "string",
+                                    "file_id": "file_id",
                                 },
                             },
                             "name": "x",
@@ -1031,24 +1031,24 @@ class TestAsyncEntities:
                             "date_of_birth": parse_date("2019-12-27"),
                             "identification": {
                                 "drivers_license": {
-                                    "back_file_id": "string",
+                                    "back_file_id": "back_file_id",
                                     "expiration_date": parse_date("2019-12-27"),
-                                    "file_id": "string",
+                                    "file_id": "file_id",
                                     "state": "x",
                                 },
                                 "method": "social_security_number",
                                 "number": "xxxx",
                                 "other": {
-                                    "back_file_id": "string",
+                                    "back_file_id": "back_file_id",
                                     "country": "x",
                                     "description": "x",
                                     "expiration_date": parse_date("2019-12-27"),
-                                    "file_id": "string",
+                                    "file_id": "file_id",
                                 },
                                 "passport": {
                                     "country": "x",
                                     "expiration_date": parse_date("2019-12-27"),
-                                    "file_id": "string",
+                                    "file_id": "file_id",
                                 },
                             },
                             "name": "x",
@@ -1087,14 +1087,14 @@ class TestAsyncEntities:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
         entity = await async_client.entities.retrieve(
-            "string",
+            "entity_id",
         )
         assert_matches_type(Entity, entity, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.entities.with_raw_response.retrieve(
-            "string",
+            "entity_id",
         )
 
         assert response.is_closed is True
@@ -1105,7 +1105,7 @@ class TestAsyncEntities:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
         async with async_client.entities.with_streaming_response.retrieve(
-            "string",
+            "entity_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1136,7 +1136,7 @@ class TestAsyncEntities:
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
-            cursor="string",
+            cursor="cursor",
             idempotency_key="x",
             limit=1,
             status={"in": ["active", "archived", "disabled"]},
@@ -1166,14 +1166,14 @@ class TestAsyncEntities:
     @parametrize
     async def test_method_archive(self, async_client: AsyncIncrease) -> None:
         entity = await async_client.entities.archive(
-            "string",
+            "entity_id",
         )
         assert_matches_type(Entity, entity, path=["response"])
 
     @parametrize
     async def test_raw_response_archive(self, async_client: AsyncIncrease) -> None:
         response = await async_client.entities.with_raw_response.archive(
-            "string",
+            "entity_id",
         )
 
         assert response.is_closed is True
@@ -1184,7 +1184,7 @@ class TestAsyncEntities:
     @parametrize
     async def test_streaming_response_archive(self, async_client: AsyncIncrease) -> None:
         async with async_client.entities.with_streaming_response.archive(
-            "string",
+            "entity_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1204,14 +1204,14 @@ class TestAsyncEntities:
     @parametrize
     async def test_method_confirm(self, async_client: AsyncIncrease) -> None:
         entity = await async_client.entities.confirm(
-            "string",
+            entity_id="entity_n8y8tnk2p9339ti393yi",
         )
         assert_matches_type(Entity, entity, path=["response"])
 
     @parametrize
     async def test_method_confirm_with_all_params(self, async_client: AsyncIncrease) -> None:
         entity = await async_client.entities.confirm(
-            "string",
+            entity_id="entity_n8y8tnk2p9339ti393yi",
             confirmed_at=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
         assert_matches_type(Entity, entity, path=["response"])
@@ -1219,7 +1219,7 @@ class TestAsyncEntities:
     @parametrize
     async def test_raw_response_confirm(self, async_client: AsyncIncrease) -> None:
         response = await async_client.entities.with_raw_response.confirm(
-            "string",
+            entity_id="entity_n8y8tnk2p9339ti393yi",
         )
 
         assert response.is_closed is True
@@ -1230,7 +1230,7 @@ class TestAsyncEntities:
     @parametrize
     async def test_streaming_response_confirm(self, async_client: AsyncIncrease) -> None:
         async with async_client.entities.with_streaming_response.confirm(
-            "string",
+            entity_id="entity_n8y8tnk2p9339ti393yi",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1244,13 +1244,13 @@ class TestAsyncEntities:
     async def test_path_params_confirm(self, async_client: AsyncIncrease) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `entity_id` but received ''"):
             await async_client.entities.with_raw_response.confirm(
-                "",
+                entity_id="",
             )
 
     @parametrize
     async def test_method_update_address(self, async_client: AsyncIncrease) -> None:
         entity = await async_client.entities.update_address(
-            "string",
+            entity_id="entity_n8y8tnk2p9339ti393yi",
             address={
                 "city": "New York",
                 "line1": "33 Liberty Street",
@@ -1263,7 +1263,7 @@ class TestAsyncEntities:
     @parametrize
     async def test_method_update_address_with_all_params(self, async_client: AsyncIncrease) -> None:
         entity = await async_client.entities.update_address(
-            "string",
+            entity_id="entity_n8y8tnk2p9339ti393yi",
             address={
                 "city": "New York",
                 "line1": "33 Liberty Street",
@@ -1277,7 +1277,7 @@ class TestAsyncEntities:
     @parametrize
     async def test_raw_response_update_address(self, async_client: AsyncIncrease) -> None:
         response = await async_client.entities.with_raw_response.update_address(
-            "string",
+            entity_id="entity_n8y8tnk2p9339ti393yi",
             address={
                 "city": "New York",
                 "line1": "33 Liberty Street",
@@ -1294,7 +1294,7 @@ class TestAsyncEntities:
     @parametrize
     async def test_streaming_response_update_address(self, async_client: AsyncIncrease) -> None:
         async with async_client.entities.with_streaming_response.update_address(
-            "string",
+            entity_id="entity_n8y8tnk2p9339ti393yi",
             address={
                 "city": "New York",
                 "line1": "33 Liberty Street",
@@ -1314,7 +1314,7 @@ class TestAsyncEntities:
     async def test_path_params_update_address(self, async_client: AsyncIncrease) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `entity_id` but received ''"):
             await async_client.entities.with_raw_response.update_address(
-                "",
+                entity_id="",
                 address={
                     "city": "New York",
                     "line1": "33 Liberty Street",

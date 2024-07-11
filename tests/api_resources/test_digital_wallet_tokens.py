@@ -22,14 +22,14 @@ class TestDigitalWalletTokens:
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         digital_wallet_token = client.digital_wallet_tokens.retrieve(
-            "string",
+            "digital_wallet_token_id",
         )
         assert_matches_type(DigitalWalletToken, digital_wallet_token, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
         response = client.digital_wallet_tokens.with_raw_response.retrieve(
-            "string",
+            "digital_wallet_token_id",
         )
 
         assert response.is_closed is True
@@ -40,7 +40,7 @@ class TestDigitalWalletTokens:
     @parametrize
     def test_streaming_response_retrieve(self, client: Increase) -> None:
         with client.digital_wallet_tokens.with_streaming_response.retrieve(
-            "string",
+            "digital_wallet_token_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -67,14 +67,14 @@ class TestDigitalWalletTokens:
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
         digital_wallet_token = client.digital_wallet_tokens.list(
-            card_id="string",
+            card_id="card_id",
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
-            cursor="string",
+            cursor="cursor",
             limit=1,
         )
         assert_matches_type(SyncPage[DigitalWalletToken], digital_wallet_token, path=["response"])
@@ -106,14 +106,14 @@ class TestAsyncDigitalWalletTokens:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
         digital_wallet_token = await async_client.digital_wallet_tokens.retrieve(
-            "string",
+            "digital_wallet_token_id",
         )
         assert_matches_type(DigitalWalletToken, digital_wallet_token, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.digital_wallet_tokens.with_raw_response.retrieve(
-            "string",
+            "digital_wallet_token_id",
         )
 
         assert response.is_closed is True
@@ -124,7 +124,7 @@ class TestAsyncDigitalWalletTokens:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
         async with async_client.digital_wallet_tokens.with_streaming_response.retrieve(
-            "string",
+            "digital_wallet_token_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -151,14 +151,14 @@ class TestAsyncDigitalWalletTokens:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
         digital_wallet_token = await async_client.digital_wallet_tokens.list(
-            card_id="string",
+            card_id="card_id",
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
-            cursor="string",
+            cursor="cursor",
             limit=1,
         )
         assert_matches_type(AsyncPage[DigitalWalletToken], digital_wallet_token, path=["response"])

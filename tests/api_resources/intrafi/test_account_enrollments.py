@@ -57,14 +57,14 @@ class TestAccountEnrollments:
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         account_enrollment = client.intrafi.account_enrollments.retrieve(
-            "string",
+            "intrafi_account_enrollment_id",
         )
         assert_matches_type(IntrafiAccountEnrollment, account_enrollment, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
         response = client.intrafi.account_enrollments.with_raw_response.retrieve(
-            "string",
+            "intrafi_account_enrollment_id",
         )
 
         assert response.is_closed is True
@@ -75,7 +75,7 @@ class TestAccountEnrollments:
     @parametrize
     def test_streaming_response_retrieve(self, client: Increase) -> None:
         with client.intrafi.account_enrollments.with_streaming_response.retrieve(
-            "string",
+            "intrafi_account_enrollment_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -102,8 +102,8 @@ class TestAccountEnrollments:
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
         account_enrollment = client.intrafi.account_enrollments.list(
-            account_id="string",
-            cursor="string",
+            account_id="account_id",
+            cursor="cursor",
             idempotency_key="x",
             limit=1,
             status={"in": ["pending_enrolling", "enrolled", "pending_unenrolling"]},
@@ -133,14 +133,14 @@ class TestAccountEnrollments:
     @parametrize
     def test_method_unenroll(self, client: Increase) -> None:
         account_enrollment = client.intrafi.account_enrollments.unenroll(
-            "string",
+            "intrafi_account_enrollment_id",
         )
         assert_matches_type(IntrafiAccountEnrollment, account_enrollment, path=["response"])
 
     @parametrize
     def test_raw_response_unenroll(self, client: Increase) -> None:
         response = client.intrafi.account_enrollments.with_raw_response.unenroll(
-            "string",
+            "intrafi_account_enrollment_id",
         )
 
         assert response.is_closed is True
@@ -151,7 +151,7 @@ class TestAccountEnrollments:
     @parametrize
     def test_streaming_response_unenroll(self, client: Increase) -> None:
         with client.intrafi.account_enrollments.with_streaming_response.unenroll(
-            "string",
+            "intrafi_account_enrollment_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -211,14 +211,14 @@ class TestAsyncAccountEnrollments:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
         account_enrollment = await async_client.intrafi.account_enrollments.retrieve(
-            "string",
+            "intrafi_account_enrollment_id",
         )
         assert_matches_type(IntrafiAccountEnrollment, account_enrollment, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.intrafi.account_enrollments.with_raw_response.retrieve(
-            "string",
+            "intrafi_account_enrollment_id",
         )
 
         assert response.is_closed is True
@@ -229,7 +229,7 @@ class TestAsyncAccountEnrollments:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
         async with async_client.intrafi.account_enrollments.with_streaming_response.retrieve(
-            "string",
+            "intrafi_account_enrollment_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -256,8 +256,8 @@ class TestAsyncAccountEnrollments:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
         account_enrollment = await async_client.intrafi.account_enrollments.list(
-            account_id="string",
-            cursor="string",
+            account_id="account_id",
+            cursor="cursor",
             idempotency_key="x",
             limit=1,
             status={"in": ["pending_enrolling", "enrolled", "pending_unenrolling"]},
@@ -287,14 +287,14 @@ class TestAsyncAccountEnrollments:
     @parametrize
     async def test_method_unenroll(self, async_client: AsyncIncrease) -> None:
         account_enrollment = await async_client.intrafi.account_enrollments.unenroll(
-            "string",
+            "intrafi_account_enrollment_id",
         )
         assert_matches_type(IntrafiAccountEnrollment, account_enrollment, path=["response"])
 
     @parametrize
     async def test_raw_response_unenroll(self, async_client: AsyncIncrease) -> None:
         response = await async_client.intrafi.account_enrollments.with_raw_response.unenroll(
-            "string",
+            "intrafi_account_enrollment_id",
         )
 
         assert response.is_closed is True
@@ -305,7 +305,7 @@ class TestAsyncAccountEnrollments:
     @parametrize
     async def test_streaming_response_unenroll(self, async_client: AsyncIncrease) -> None:
         async with async_client.intrafi.account_enrollments.with_streaming_response.unenroll(
-            "string",
+            "intrafi_account_enrollment_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

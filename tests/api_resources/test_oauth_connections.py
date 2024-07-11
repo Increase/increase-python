@@ -21,14 +21,14 @@ class TestOAuthConnections:
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         oauth_connection = client.oauth_connections.retrieve(
-            "string",
+            "oauth_connection_id",
         )
         assert_matches_type(OAuthConnection, oauth_connection, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
         response = client.oauth_connections.with_raw_response.retrieve(
-            "string",
+            "oauth_connection_id",
         )
 
         assert response.is_closed is True
@@ -39,7 +39,7 @@ class TestOAuthConnections:
     @parametrize
     def test_streaming_response_retrieve(self, client: Increase) -> None:
         with client.oauth_connections.with_streaming_response.retrieve(
-            "string",
+            "oauth_connection_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -64,7 +64,7 @@ class TestOAuthConnections:
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
         oauth_connection = client.oauth_connections.list(
-            cursor="string",
+            cursor="cursor",
             limit=1,
             status={"in": ["active", "inactive"]},
         )
@@ -97,14 +97,14 @@ class TestAsyncOAuthConnections:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
         oauth_connection = await async_client.oauth_connections.retrieve(
-            "string",
+            "oauth_connection_id",
         )
         assert_matches_type(OAuthConnection, oauth_connection, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.oauth_connections.with_raw_response.retrieve(
-            "string",
+            "oauth_connection_id",
         )
 
         assert response.is_closed is True
@@ -115,7 +115,7 @@ class TestAsyncOAuthConnections:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
         async with async_client.oauth_connections.with_streaming_response.retrieve(
-            "string",
+            "oauth_connection_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -140,7 +140,7 @@ class TestAsyncOAuthConnections:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
         oauth_connection = await async_client.oauth_connections.list(
-            cursor="string",
+            cursor="cursor",
             limit=1,
             status={"in": ["active", "inactive"]},
         )

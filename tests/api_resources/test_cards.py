@@ -39,11 +39,11 @@ class TestCards:
             },
             description="Card for Ian Crease",
             digital_wallet={
-                "digital_card_profile_id": "string",
+                "digital_card_profile_id": "digital_card_profile_id",
                 "email": "x",
                 "phone": "x",
             },
-            entity_id="string",
+            entity_id="entity_id",
         )
         assert_matches_type(Card, card, path=["response"])
 
@@ -74,14 +74,14 @@ class TestCards:
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         card = client.cards.retrieve(
-            "string",
+            "card_id",
         )
         assert_matches_type(Card, card, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
         response = client.cards.with_raw_response.retrieve(
-            "string",
+            "card_id",
         )
 
         assert response.is_closed is True
@@ -92,7 +92,7 @@ class TestCards:
     @parametrize
     def test_streaming_response_retrieve(self, client: Increase) -> None:
         with client.cards.with_streaming_response.retrieve(
-            "string",
+            "card_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -112,14 +112,14 @@ class TestCards:
     @parametrize
     def test_method_update(self, client: Increase) -> None:
         card = client.cards.update(
-            "string",
+            card_id="card_oubs0hwk5rn6knuecxg2",
         )
         assert_matches_type(Card, card, path=["response"])
 
     @parametrize
     def test_method_update_with_all_params(self, client: Increase) -> None:
         card = client.cards.update(
-            "string",
+            card_id="card_oubs0hwk5rn6knuecxg2",
             billing_address={
                 "city": "x",
                 "line1": "x",
@@ -129,11 +129,11 @@ class TestCards:
             },
             description="New description",
             digital_wallet={
-                "digital_card_profile_id": "string",
+                "digital_card_profile_id": "digital_card_profile_id",
                 "email": "x",
                 "phone": "x",
             },
-            entity_id="string",
+            entity_id="entity_id",
             status="active",
         )
         assert_matches_type(Card, card, path=["response"])
@@ -141,7 +141,7 @@ class TestCards:
     @parametrize
     def test_raw_response_update(self, client: Increase) -> None:
         response = client.cards.with_raw_response.update(
-            "string",
+            card_id="card_oubs0hwk5rn6knuecxg2",
         )
 
         assert response.is_closed is True
@@ -152,7 +152,7 @@ class TestCards:
     @parametrize
     def test_streaming_response_update(self, client: Increase) -> None:
         with client.cards.with_streaming_response.update(
-            "string",
+            card_id="card_oubs0hwk5rn6knuecxg2",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -166,7 +166,7 @@ class TestCards:
     def test_path_params_update(self, client: Increase) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `card_id` but received ''"):
             client.cards.with_raw_response.update(
-                "",
+                card_id="",
             )
 
     @parametrize
@@ -177,14 +177,14 @@ class TestCards:
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
         card = client.cards.list(
-            account_id="string",
+            account_id="account_id",
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
-            cursor="string",
+            cursor="cursor",
             idempotency_key="x",
             limit=1,
         )
@@ -213,14 +213,14 @@ class TestCards:
     @parametrize
     def test_method_retrieve_sensitive_details(self, client: Increase) -> None:
         card = client.cards.retrieve_sensitive_details(
-            "string",
+            "card_id",
         )
         assert_matches_type(CardDetails, card, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve_sensitive_details(self, client: Increase) -> None:
         response = client.cards.with_raw_response.retrieve_sensitive_details(
-            "string",
+            "card_id",
         )
 
         assert response.is_closed is True
@@ -231,7 +231,7 @@ class TestCards:
     @parametrize
     def test_streaming_response_retrieve_sensitive_details(self, client: Increase) -> None:
         with client.cards.with_streaming_response.retrieve_sensitive_details(
-            "string",
+            "card_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -272,11 +272,11 @@ class TestAsyncCards:
             },
             description="Card for Ian Crease",
             digital_wallet={
-                "digital_card_profile_id": "string",
+                "digital_card_profile_id": "digital_card_profile_id",
                 "email": "x",
                 "phone": "x",
             },
-            entity_id="string",
+            entity_id="entity_id",
         )
         assert_matches_type(Card, card, path=["response"])
 
@@ -307,14 +307,14 @@ class TestAsyncCards:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
         card = await async_client.cards.retrieve(
-            "string",
+            "card_id",
         )
         assert_matches_type(Card, card, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.cards.with_raw_response.retrieve(
-            "string",
+            "card_id",
         )
 
         assert response.is_closed is True
@@ -325,7 +325,7 @@ class TestAsyncCards:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
         async with async_client.cards.with_streaming_response.retrieve(
-            "string",
+            "card_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -345,14 +345,14 @@ class TestAsyncCards:
     @parametrize
     async def test_method_update(self, async_client: AsyncIncrease) -> None:
         card = await async_client.cards.update(
-            "string",
+            card_id="card_oubs0hwk5rn6knuecxg2",
         )
         assert_matches_type(Card, card, path=["response"])
 
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncIncrease) -> None:
         card = await async_client.cards.update(
-            "string",
+            card_id="card_oubs0hwk5rn6knuecxg2",
             billing_address={
                 "city": "x",
                 "line1": "x",
@@ -362,11 +362,11 @@ class TestAsyncCards:
             },
             description="New description",
             digital_wallet={
-                "digital_card_profile_id": "string",
+                "digital_card_profile_id": "digital_card_profile_id",
                 "email": "x",
                 "phone": "x",
             },
-            entity_id="string",
+            entity_id="entity_id",
             status="active",
         )
         assert_matches_type(Card, card, path=["response"])
@@ -374,7 +374,7 @@ class TestAsyncCards:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncIncrease) -> None:
         response = await async_client.cards.with_raw_response.update(
-            "string",
+            card_id="card_oubs0hwk5rn6knuecxg2",
         )
 
         assert response.is_closed is True
@@ -385,7 +385,7 @@ class TestAsyncCards:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncIncrease) -> None:
         async with async_client.cards.with_streaming_response.update(
-            "string",
+            card_id="card_oubs0hwk5rn6knuecxg2",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -399,7 +399,7 @@ class TestAsyncCards:
     async def test_path_params_update(self, async_client: AsyncIncrease) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `card_id` but received ''"):
             await async_client.cards.with_raw_response.update(
-                "",
+                card_id="",
             )
 
     @parametrize
@@ -410,14 +410,14 @@ class TestAsyncCards:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
         card = await async_client.cards.list(
-            account_id="string",
+            account_id="account_id",
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
-            cursor="string",
+            cursor="cursor",
             idempotency_key="x",
             limit=1,
         )
@@ -446,14 +446,14 @@ class TestAsyncCards:
     @parametrize
     async def test_method_retrieve_sensitive_details(self, async_client: AsyncIncrease) -> None:
         card = await async_client.cards.retrieve_sensitive_details(
-            "string",
+            "card_id",
         )
         assert_matches_type(CardDetails, card, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve_sensitive_details(self, async_client: AsyncIncrease) -> None:
         response = await async_client.cards.with_raw_response.retrieve_sensitive_details(
-            "string",
+            "card_id",
         )
 
         assert response.is_closed is True
@@ -464,7 +464,7 @@ class TestAsyncCards:
     @parametrize
     async def test_streaming_response_retrieve_sensitive_details(self, async_client: AsyncIncrease) -> None:
         async with async_client.cards.with_streaming_response.retrieve_sensitive_details(
-            "string",
+            "card_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
