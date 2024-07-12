@@ -6,7 +6,7 @@ import httpx
 import pytest
 import pydantic
 
-from increase import Increase, BaseModel, AsyncIncrease
+from increase import BaseModel, Increase, AsyncIncrease
 from increase._response import (
     APIResponse,
     BaseAPIResponse,
