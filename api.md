@@ -821,18 +821,6 @@ Methods:
 
 - <code title="post /simulations/real_time_payments_transfers/{real_time_payments_transfer_id}/complete">client.simulations.real_time_payments_transfers.<a href="./src/increase/resources/simulations/real_time_payments_transfers.py">complete</a>(real_time_payments_transfer_id, \*\*<a href="src/increase/types/simulations/real_time_payments_transfer_complete_params.py">params</a>) -> <a href="./src/increase/types/real_time_payments_transfer.py">RealTimePaymentsTransfer</a></code>
 
-## InboundInternationalACHTransfers
-
-Types:
-
-```python
-from increase.types.simulations import InboundInternationalACHTransferCreateResponse
-```
-
-Methods:
-
-- <code title="post /simulations/inbound_international_ach_transfers">client.simulations.inbound_international_ach_transfers.<a href="./src/increase/resources/simulations/inbound_international_ach_transfers.py">create</a>(\*\*<a href="src/increase/types/simulations/inbound_international_ach_transfer_create_params.py">params</a>) -> <a href="./src/increase/types/simulations/inbound_international_ach_transfer_create_response.py">InboundInternationalACHTransferCreateResponse</a></code>
-
 ## CardAuthorizations
 
 Types:
