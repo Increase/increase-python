@@ -1,5 +1,28 @@
 # Changelog
 
+## 0.71.0 (2024-07-14)
+
+Full Changelog: [v0.70.0...v0.71.0](https://github.com/Increase/increase-python/compare/v0.70.0...v0.71.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#501](https://github.com/Increase/increase-python/issues/501)) ([84cb3f7](https://github.com/Increase/increase-python/commit/84cb3f723c5b33b539f54321febd871cd69a0a05))
+* **api:** OpenAPI spec update via Stainless API ([#503](https://github.com/Increase/increase-python/issues/503)) ([acefe6d](https://github.com/Increase/increase-python/commit/acefe6db327a77f94ef1b1230ca2d500c1531246))
+
+
+### Chores
+
+* **ci:** also run workflows for PRs targeting `next` ([#498](https://github.com/Increase/increase-python/issues/498)) ([5969495](https://github.com/Increase/increase-python/commit/59694952b523823729f6f8a3b0b73cf44e17433a))
+* **internal:** add helper function ([#496](https://github.com/Increase/increase-python/issues/496)) ([bb4516d](https://github.com/Increase/increase-python/commit/bb4516dfa3fa6c0988e078181a237d51e754ebcd))
+* **internal:** minor import restructuring ([#499](https://github.com/Increase/increase-python/issues/499)) ([25e8279](https://github.com/Increase/increase-python/commit/25e8279c0c4f12faf742e04b383ea76acaa7cdc5))
+* **internal:** minor request options handling changes ([#493](https://github.com/Increase/increase-python/issues/493)) ([88c7dfb](https://github.com/Increase/increase-python/commit/88c7dfb64d0ee8720bc3ad9d0d43a83a12aad885))
+* **internal:** update mypy ([#497](https://github.com/Increase/increase-python/issues/497)) ([0cbc9a2](https://github.com/Increase/increase-python/commit/0cbc9a2ff9b860976d1310863814b4186bba7437))
+
+
+### Documentation
+
+* **examples:** use named params more ([#500](https://github.com/Increase/increase-python/issues/500)) ([79f3c33](https://github.com/Increase/increase-python/commit/79f3c331ee5f42f3ae9e2824fe6a7e04b233531b))
+
 ## 0.70.0 (2024-07-04)
 
 Full Changelog: [v0.69.1...v0.70.0](https://github.com/Increase/increase-python/compare/v0.69.1...v0.70.0)
