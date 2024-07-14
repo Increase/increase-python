@@ -28,7 +28,9 @@ async def test_basic(sync: bool, client: Increase, async_client: AsyncIncrease) 
 
 @pytest.mark.asyncio
 @pytest.mark.parametrize("sync", [True, False], ids=["sync", "async"])
-async def test_data_missing_event(sync: bool, client: Increase, async_client: AsyncIncrease) -> None:
+async def test_data_missing_event(
+    sync: bool, client: Increase, async_client: AsyncIncrease
+) -> None:
     def body() -> Iterator[bytes]:
         yield b'data: {"foo":true}\n'
         yield b"\n"
@@ -44,7 +46,9 @@ async def test_data_missing_event(sync: bool, client: Increase, async_client: As
 
 @pytest.mark.asyncio
 @pytest.mark.parametrize("sync", [True, False], ids=["sync", "async"])
-async def test_event_missing_data(sync: bool, client: Increase, async_client: AsyncIncrease) -> None:
+async def test_event_missing_data(
+    sync: bool, client: Increase, async_client: AsyncIncrease
+) -> None:
     def body() -> Iterator[bytes]:
         yield b"event: ping\n"
         yield b"\n"
@@ -60,7 +64,9 @@ async def test_event_missing_data(sync: bool, client: Increase, async_client: As
 
 @pytest.mark.asyncio
 @pytest.mark.parametrize("sync", [True, False], ids=["sync", "async"])
-async def test_multiple_events(sync: bool, client: Increase, async_client: AsyncIncrease) -> None:
+async def test_multiple_events(
+    sync: bool, client: Increase, async_client: AsyncIncrease
+) -> None:
     def body() -> Iterator[bytes]:
         yield b"event: ping\n"
         yield b"\n"
@@ -82,7 +88,9 @@ async def test_multiple_events(sync: bool, client: Increase, async_client: Async
 
 @pytest.mark.asyncio
 @pytest.mark.parametrize("sync", [True, False], ids=["sync", "async"])
-async def test_multiple_events_with_data(sync: bool, client: Increase, async_client: AsyncIncrease) -> None:
+async def test_multiple_events_with_data(
+    sync: bool, client: Increase, async_client: AsyncIncrease
+) -> None:
     def body() -> Iterator[bytes]:
         yield b"event: ping\n"
         yield b'data: {"foo":true}\n'
@@ -106,7 +114,9 @@ async def test_multiple_events_with_data(sync: bool, client: Increase, async_cli
 
 @pytest.mark.asyncio
 @pytest.mark.parametrize("sync", [True, False], ids=["sync", "async"])
-async def test_multiple_data_lines_with_empty_line(sync: bool, client: Increase, async_client: AsyncIncrease) -> None:
+async def test_multiple_data_lines_with_empty_line(
+    sync: bool, client: Increase, async_client: AsyncIncrease
+) -> None:
     def body() -> Iterator[bytes]:
         yield b"event: ping\n"
         yield b"data: {\n"
@@ -128,7 +138,9 @@ async def test_multiple_data_lines_with_empty_line(sync: bool, client: Increase,
 
 @pytest.mark.asyncio
 @pytest.mark.parametrize("sync", [True, False], ids=["sync", "async"])
-async def test_data_json_escaped_double_new_line(sync: bool, client: Increase, async_client: AsyncIncrease) -> None:
+async def test_data_json_escaped_double_new_line(
+    sync: bool, client: Increase, async_client: AsyncIncrease
+) -> None:
     def body() -> Iterator[bytes]:
         yield b"event: ping\n"
         yield b'data: {"foo": "my long\\n\\ncontent"}'
@@ -145,7 +157,9 @@ async def test_data_json_escaped_double_new_line(sync: bool, client: Increase, a
 
 @pytest.mark.asyncio
 @pytest.mark.parametrize("sync", [True, False], ids=["sync", "async"])
-async def test_multiple_data_lines(sync: bool, client: Increase, async_client: AsyncIncrease) -> None:
+async def test_multiple_data_lines(
+    sync: bool, client: Increase, async_client: AsyncIncrease
+) -> None:
     def body() -> Iterator[bytes]:
         yield b"event: ping\n"
         yield b"data: {\n"

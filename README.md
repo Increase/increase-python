@@ -33,7 +33,9 @@ client = Increase(
 )
 
 account = client.accounts.create(
-    name="My First Increase Account",
+    name="New Account!",
+    entity_id="entity_n8y8tnk2p9339ti393yi",
+    program_id="program_i2v2os4mwza1oetokh9i",
 )
 print(account.id)
 ```
@@ -59,13 +61,13 @@ client = AsyncIncrease(
     environment="sandbox",
 )
 
-
 async def main() -> None:
-    account = await client.accounts.create(
-        name="My First Increase Account",
-    )
-    print(account.id)
-
+  account = await client.accounts.create(
+      name="New Account!",
+      entity_id="entity_n8y8tnk2p9339ti393yi",
+      program_id="program_i2v2os4mwza1oetokh9i",
+  )
+  print(account.id)
 
 asyncio.run(main())
 ```
@@ -108,14 +110,12 @@ import increase
 
 client = AsyncIncrease()
 
-
 async def main() -> None:
     all_accounts = []
     # Iterate through items across all pages, issuing requests as needed.
     async for account in client.accounts.list():
         all_accounts.append(account)
     print(all_accounts)
-
 
 asyncio.run(main())
 ```
@@ -137,7 +137,7 @@ Or just work directly with the returned data:
 ```python
 first_page = await client.accounts.list()
 
-print(f"next page cursor: {first_page.next_cursor}")  # => "next page cursor: ..."
+print(f"next page cursor: {first_page.next_cursor}") # => "next page cursor: ..."
 for account in first_page.data:
     print(account.id)
 
@@ -171,7 +171,7 @@ client = Increase()
 
 client.files.create(
     file=Path("my/file.txt"),
-    purpose="other",
+    purpose="check_image_front",
 )
 ```
 
@@ -198,7 +198,7 @@ try:
     )
 except increase.APIConnectionError as e:
     print("The server could not be reached")
-    print(e.__cause__)  # an underlying Exception, likely raised within httpx.
+    print(e.__cause__) # an underlying Exception, likely raised within httpx.
 except increase.RateLimitError as e:
     print("A 429 status code was received; we should back off a bit.")
 except increase.APIStatusError as e:
@@ -238,8 +238,10 @@ client = Increase(
 )
 
 # Or, configure per-request:
-client.with_options(max_retries=5).accounts.create(
-    name="Jack",
+client.with_options(max_retries = 5).accounts.create(
+    name="New Account!",
+    entity_id="entity_n8y8tnk2p9339ti393yi",
+    program_id="program_i2v2os4mwza1oetokh9i",
 )
 ```
 
@@ -263,8 +265,10 @@ client = Increase(
 )
 
 # Override per-request:
-client.with_options(timeout=5.0).accounts.list(
-    status="open",
+client.with_options(timeout = 5.0).accounts.create(
+    name="New Account!",
+    entity_id="entity_n8y8tnk2p9339ti393yi",
+    program_id="program_i2v2os4mwza1oetokh9i",
 )
 ```
 
@@ -305,7 +309,9 @@ from increase import Increase
 
 client = Increase()
 response = client.accounts.with_raw_response.create(
-    name="My First Increase Account",
+    name="New Account!",
+    entity_id="entity_n8y8tnk2p9339ti393yi",
+    program_id="program_i2v2os4mwza1oetokh9i",
 )
 print(response.headers.get('X-My-Header'))
 
@@ -313,14 +319,9 @@ account = response.parse()  # get the object that `accounts.create()` would have
 print(account.id)
 ```
 
-These methods return an [`LegacyAPIResponse`](https://github.com/increase/increase-python/tree/main/src/increase/_legacy_response.py) object. This is a legacy class as we're changing it slightly in the next major version.
+These methods return an [`APIResponse`](https://github.com/increase/increase-python/tree/main/src/increase/_response.py) object.
 
-For the sync client this will mostly be the same with the exception
-of `content` & `text` will be methods instead of properties. In the
-async client, all methods will be async.
-
-A migration script will be provided & the migration in general should
-be smooth.
+The async client returns an [`AsyncAPIResponse`](https://github.com/increase/increase-python/tree/main/src/increase/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
 
 #### `.with_streaming_response`
 
@@ -328,16 +329,16 @@ The above interface eagerly reads the full response body when you make the reque
 
 To stream the response body, use `.with_streaming_response` instead, which requires a context manager and only reads the response body once you call `.read()`, `.text()`, `.json()`, `.iter_bytes()`, `.iter_text()`, `.iter_lines()` or `.parse()`. In the async client, these are async methods.
 
-As such, `.with_streaming_response` methods return a different [`APIResponse`](https://github.com/increase/increase-python/tree/main/src/increase/_response.py) object, and the async client returns an [`AsyncAPIResponse`](https://github.com/increase/increase-python/tree/main/src/increase/_response.py) object.
-
 ```python
 with client.accounts.with_streaming_response.create(
-    name="My First Increase Account",
-) as response:
-    print(response.headers.get("X-My-Header"))
+    name="New Account!",
+    entity_id="entity_n8y8tnk2p9339ti393yi",
+    program_id="program_i2v2os4mwza1oetokh9i",
+) as response :
+    print(response.headers.get('X-My-Header'))
 
     for line in response.iter_lines():
-        print(line)
+      print(line)
 ```
 
 The context manager is required so that the response will reliably be closed.
@@ -391,10 +392,7 @@ from increase import Increase, DefaultHttpxClient
 client = Increase(
     # Or use the `INCREASE_BASE_URL` env var
     base_url="http://my.test.server.example.com:8083",
-    http_client=DefaultHttpxClient(
-        proxies="http://my.test.proxy.example.com",
-        transport=httpx.HTTPTransport(local_address="0.0.0.0"),
-    ),
+    http_client=DefaultHttpxClient(proxies="http://my.test.proxy.example.com", transport=httpx.HTTPTransport(local_address="0.0.0.0")),
 )
 ```
 
