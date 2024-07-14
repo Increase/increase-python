@@ -104,6 +104,7 @@ class Increase(SyncAPIClient):
     intrafi_exclusions: resources.IntrafiExclusionsResource
     real_time_payments_request_for_payments: resources.RealTimePaymentsRequestForPaymentsResource
     simulations: resources.SimulationsResource
+    webhooks: resources.Webhooks
     with_raw_response: IncreaseWithRawResponse
     with_streaming_response: IncreaseWithStreamedResponse
 
@@ -227,6 +228,7 @@ class Increase(SyncAPIClient):
         self.intrafi_exclusions = resources.IntrafiExclusionsResource(self)
         self.real_time_payments_request_for_payments = resources.RealTimePaymentsRequestForPaymentsResource(self)
         self.simulations = resources.SimulationsResource(self)
+        self.webhooks = resources.Webhooks(self)
         self.with_raw_response = IncreaseWithRawResponse(self)
         self.with_streaming_response = IncreaseWithStreamedResponse(self)
 
@@ -406,6 +408,7 @@ class AsyncIncrease(AsyncAPIClient):
     intrafi_exclusions: resources.AsyncIntrafiExclusionsResource
     real_time_payments_request_for_payments: resources.AsyncRealTimePaymentsRequestForPaymentsResource
     simulations: resources.AsyncSimulationsResource
+    webhooks: resources.AsyncWebhooks
     with_raw_response: AsyncIncreaseWithRawResponse
     with_streaming_response: AsyncIncreaseWithStreamedResponse
 
@@ -529,6 +532,7 @@ class AsyncIncrease(AsyncAPIClient):
         self.intrafi_exclusions = resources.AsyncIntrafiExclusionsResource(self)
         self.real_time_payments_request_for_payments = resources.AsyncRealTimePaymentsRequestForPaymentsResource(self)
         self.simulations = resources.AsyncSimulationsResource(self)
+        self.webhooks = resources.AsyncWebhooks(self)
         self.with_raw_response = AsyncIncreaseWithRawResponse(self)
         self.with_streaming_response = AsyncIncreaseWithStreamedResponse(self)
 

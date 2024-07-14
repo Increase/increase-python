@@ -72,6 +72,7 @@ from .programs import (
     ProgramsWithStreamingResponse,
     AsyncProgramsWithStreamingResponse,
 )
+from .webhooks import Webhooks, AsyncWebhooks
 from .documents import (
     Documents,
     AsyncDocuments,
@@ -646,6 +647,8 @@ __all__ = [
     "AsyncRealTimePaymentsRequestForPaymentsWithRawResponse",
     "RealTimePaymentsRequestForPaymentsWithStreamingResponse",
     "AsyncRealTimePaymentsRequestForPaymentsWithStreamingResponse",
+    "Webhooks",
+    "AsyncWebhooks",
     "OAuthTokens",
     "AsyncOAuthTokens",
     "OAuthTokensWithRawResponse",
