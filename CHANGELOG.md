@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.72.0 (2024-07-15)
+
+Full Changelog: [v0.71.0...v0.72.0](https://github.com/Increase/increase-python/compare/v0.71.0...v0.72.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#515](https://github.com/Increase/increase-python/issues/515)) ([64a9c74](https://github.com/Increase/increase-python/commit/64a9c7499126d630fc3af4d3341209ea706bfc99))
+
+
+### Chores
+
+* fixes ([2d25caf](https://github.com/Increase/increase-python/commit/2d25caf4b1ae7db9af67e43e18f4fd7d8840c843))
+* **internal:** update OpenAPI spec ([73e2951](https://github.com/Increase/increase-python/commit/73e295102224aafa4770e04c2986e04b1c3b5ab8))
+* **internal:** version bump ([#508](https://github.com/Increase/increase-python/issues/508)) ([ac9aef6](https://github.com/Increase/increase-python/commit/ac9aef63aa090766f4bda5c022adb6bb596f8a8d))
+* sync changes ([#512](https://github.com/Increase/increase-python/issues/512)) ([1838f80](https://github.com/Increase/increase-python/commit/1838f8061aa95f3419abdcd1db324e287bf1c574))
+* sync changes ([#514](https://github.com/Increase/increase-python/issues/514)) ([6dbc057](https://github.com/Increase/increase-python/commit/6dbc057e32a6c23c7fe6c91950093eb477ca7a4d))
+
 ## 0.71.0 (2024-07-14)
 
 Full Changelog: [v0.70.0...v0.71.0](https://github.com/Increase/increase-python/compare/v0.70.0...v0.71.0)
