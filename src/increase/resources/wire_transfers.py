@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import httpx
 
-from .. import _legacy_response
 from ..types import wire_transfer_list_params, wire_transfer_create_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import (
@@ -13,22 +12,27 @@ from .._utils import (
 )
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
+from .._response import (
+    to_raw_response_wrapper,
+    to_streamed_response_wrapper,
+    async_to_raw_response_wrapper,
+    async_to_streamed_response_wrapper,
+)
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
 from ..types.wire_transfer import WireTransfer
 
-__all__ = ["WireTransfers", "AsyncWireTransfers"]
+__all__ = ["WireTransfersResource", "AsyncWireTransfersResource"]
 
 
-class WireTransfers(SyncAPIResource):
+class WireTransfersResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> WireTransfersWithRawResponse:
-        return WireTransfersWithRawResponse(self)
+    def with_raw_response(self) -> WireTransfersResourceWithRawResponse:
+        return WireTransfersResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> WireTransfersWithStreamingResponse:
-        return WireTransfersWithStreamingResponse(self)
+    def with_streaming_response(self) -> WireTransfersResourceWithStreamingResponse:
+        return WireTransfersResourceWithStreamingResponse(self)
 
     def create(
         self,
@@ -322,104 +326,15 @@ class WireTransfers(SyncAPIResource):
             cast_to=WireTransfer,
         )
 
-    def reverse(
-        self,
-        wire_transfer_id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-        idempotency_key: str | None = None,
-    ) -> WireTransfer:
-        """
-        Simulates the reversal of a [Wire Transfer](#wire-transfers) by the Federal
-        Reserve due to error conditions. This will also create a
-        [Transaction](#transaction) to account for the returned funds. This Wire
-        Transfer must first have a `status` of `complete`.
 
-        Args:
-          wire_transfer_id: The identifier of the Wire Transfer you wish to reverse.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-
-          idempotency_key: Specify a custom idempotency key for this request
-        """
-        if not wire_transfer_id:
-            raise ValueError(f"Expected a non-empty value for `wire_transfer_id` but received {wire_transfer_id!r}")
-        return self._post(
-            f"/simulations/wire_transfers/{wire_transfer_id}/reverse",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                idempotency_key=idempotency_key,
-            ),
-            cast_to=WireTransfer,
-        )
-
-    def submit(
-        self,
-        wire_transfer_id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-        idempotency_key: str | None = None,
-    ) -> WireTransfer:
-        """
-        Simulates the submission of a [Wire Transfer](#wire-transfers) to the Federal
-        Reserve. This transfer must first have a `status` of `pending_approval` or
-        `pending_creating`.
-
-        Args:
-          wire_transfer_id: The identifier of the Wire Transfer you wish to submit.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-
-          idempotency_key: Specify a custom idempotency key for this request
-        """
-        if not wire_transfer_id:
-            raise ValueError(f"Expected a non-empty value for `wire_transfer_id` but received {wire_transfer_id!r}")
-        return self._post(
-            f"/simulations/wire_transfers/{wire_transfer_id}/submit",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                idempotency_key=idempotency_key,
-            ),
-            cast_to=WireTransfer,
-        )
-
-
-class AsyncWireTransfers(AsyncAPIResource):
+class AsyncWireTransfersResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncWireTransfersWithRawResponse:
-        return AsyncWireTransfersWithRawResponse(self)
+    def with_raw_response(self) -> AsyncWireTransfersResourceWithRawResponse:
+        return AsyncWireTransfersResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncWireTransfersWithStreamingResponse:
-        return AsyncWireTransfersWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncWireTransfersResourceWithStreamingResponse:
+        return AsyncWireTransfersResourceWithStreamingResponse(self)
 
     async def create(
         self,
@@ -713,152 +628,51 @@ class AsyncWireTransfers(AsyncAPIResource):
             cast_to=WireTransfer,
         )
 
-    async def reverse(
-        self,
-        wire_transfer_id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-        idempotency_key: str | None = None,
-    ) -> WireTransfer:
-        """
-        Simulates the reversal of a [Wire Transfer](#wire-transfers) by the Federal
-        Reserve due to error conditions. This will also create a
-        [Transaction](#transaction) to account for the returned funds. This Wire
-        Transfer must first have a `status` of `complete`.
 
-        Args:
-          wire_transfer_id: The identifier of the Wire Transfer you wish to reverse.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-
-          idempotency_key: Specify a custom idempotency key for this request
-        """
-        if not wire_transfer_id:
-            raise ValueError(f"Expected a non-empty value for `wire_transfer_id` but received {wire_transfer_id!r}")
-        return await self._post(
-            f"/simulations/wire_transfers/{wire_transfer_id}/reverse",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                idempotency_key=idempotency_key,
-            ),
-            cast_to=WireTransfer,
-        )
-
-    async def submit(
-        self,
-        wire_transfer_id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-        idempotency_key: str | None = None,
-    ) -> WireTransfer:
-        """
-        Simulates the submission of a [Wire Transfer](#wire-transfers) to the Federal
-        Reserve. This transfer must first have a `status` of `pending_approval` or
-        `pending_creating`.
-
-        Args:
-          wire_transfer_id: The identifier of the Wire Transfer you wish to submit.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-
-          idempotency_key: Specify a custom idempotency key for this request
-        """
-        if not wire_transfer_id:
-            raise ValueError(f"Expected a non-empty value for `wire_transfer_id` but received {wire_transfer_id!r}")
-        return await self._post(
-            f"/simulations/wire_transfers/{wire_transfer_id}/submit",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                idempotency_key=idempotency_key,
-            ),
-            cast_to=WireTransfer,
-        )
-
-
-class WireTransfersWithRawResponse:
-    def __init__(self, wire_transfers: WireTransfers) -> None:
+class WireTransfersResourceWithRawResponse:
+    def __init__(self, wire_transfers: WireTransfersResource) -> None:
         self._wire_transfers = wire_transfers
 
-        self.create = _legacy_response.to_raw_response_wrapper(
+        self.create = to_raw_response_wrapper(
             wire_transfers.create,
         )
-        self.retrieve = _legacy_response.to_raw_response_wrapper(
+        self.retrieve = to_raw_response_wrapper(
             wire_transfers.retrieve,
         )
-        self.list = _legacy_response.to_raw_response_wrapper(
+        self.list = to_raw_response_wrapper(
             wire_transfers.list,
         )
-        self.approve = _legacy_response.to_raw_response_wrapper(
+        self.approve = to_raw_response_wrapper(
             wire_transfers.approve,
         )
-        self.cancel = _legacy_response.to_raw_response_wrapper(
+        self.cancel = to_raw_response_wrapper(
             wire_transfers.cancel,
         )
-        self.reverse = _legacy_response.to_raw_response_wrapper(
-            wire_transfers.reverse,
-        )
-        self.submit = _legacy_response.to_raw_response_wrapper(
-            wire_transfers.submit,
-        )
 
 
-class AsyncWireTransfersWithRawResponse:
-    def __init__(self, wire_transfers: AsyncWireTransfers) -> None:
+class AsyncWireTransfersResourceWithRawResponse:
+    def __init__(self, wire_transfers: AsyncWireTransfersResource) -> None:
         self._wire_transfers = wire_transfers
 
-        self.create = _legacy_response.async_to_raw_response_wrapper(
+        self.create = async_to_raw_response_wrapper(
             wire_transfers.create,
         )
-        self.retrieve = _legacy_response.async_to_raw_response_wrapper(
+        self.retrieve = async_to_raw_response_wrapper(
             wire_transfers.retrieve,
         )
-        self.list = _legacy_response.async_to_raw_response_wrapper(
+        self.list = async_to_raw_response_wrapper(
             wire_transfers.list,
         )
-        self.approve = _legacy_response.async_to_raw_response_wrapper(
+        self.approve = async_to_raw_response_wrapper(
             wire_transfers.approve,
         )
-        self.cancel = _legacy_response.async_to_raw_response_wrapper(
+        self.cancel = async_to_raw_response_wrapper(
             wire_transfers.cancel,
         )
-        self.reverse = _legacy_response.async_to_raw_response_wrapper(
-            wire_transfers.reverse,
-        )
-        self.submit = _legacy_response.async_to_raw_response_wrapper(
-            wire_transfers.submit,
-        )
 
 
-class WireTransfersWithStreamingResponse:
-    def __init__(self, wire_transfers: WireTransfers) -> None:
+class WireTransfersResourceWithStreamingResponse:
+    def __init__(self, wire_transfers: WireTransfersResource) -> None:
         self._wire_transfers = wire_transfers
 
         self.create = to_streamed_response_wrapper(
@@ -876,16 +690,10 @@ class WireTransfersWithStreamingResponse:
         self.cancel = to_streamed_response_wrapper(
             wire_transfers.cancel,
         )
-        self.reverse = to_streamed_response_wrapper(
-            wire_transfers.reverse,
-        )
-        self.submit = to_streamed_response_wrapper(
-            wire_transfers.submit,
-        )
 
 
-class AsyncWireTransfersWithStreamingResponse:
-    def __init__(self, wire_transfers: AsyncWireTransfers) -> None:
+class AsyncWireTransfersResourceWithStreamingResponse:
+    def __init__(self, wire_transfers: AsyncWireTransfersResource) -> None:
         self._wire_transfers = wire_transfers
 
         self.create = async_to_streamed_response_wrapper(
@@ -902,10 +710,4 @@ class AsyncWireTransfersWithStreamingResponse:
         )
         self.cancel = async_to_streamed_response_wrapper(
             wire_transfers.cancel,
-        )
-        self.reverse = async_to_streamed_response_wrapper(
-            wire_transfers.reverse,
-        )
-        self.submit = async_to_streamed_response_wrapper(
-            wire_transfers.submit,
         )

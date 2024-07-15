@@ -144,6 +144,9 @@ class Reversal(BaseModel):
     institution.
     """
 
+    sender_reference: Optional[str] = None
+    """The sending bank's reference number for the wire reversal."""
+
     transaction_id: str
     """The ID for the Transaction associated with the transfer reversal."""
 

@@ -67,7 +67,7 @@ class TestAsyncCardRefunds:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        card_refund = response.parse()
+        card_refund = await response.parse()
         assert_matches_type(Transaction, card_refund, path=["response"])
 
     @parametrize

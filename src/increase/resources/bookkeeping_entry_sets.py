@@ -7,7 +7,6 @@ from datetime import datetime
 
 import httpx
 
-from .. import _legacy_response
 from ..types import bookkeeping_entry_set_list_params, bookkeeping_entry_set_create_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import (
@@ -16,22 +15,27 @@ from .._utils import (
 )
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
+from .._response import (
+    to_raw_response_wrapper,
+    to_streamed_response_wrapper,
+    async_to_raw_response_wrapper,
+    async_to_streamed_response_wrapper,
+)
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
 from ..types.bookkeeping_entry_set import BookkeepingEntrySet
 
-__all__ = ["BookkeepingEntrySets", "AsyncBookkeepingEntrySets"]
+__all__ = ["BookkeepingEntrySetsResource", "AsyncBookkeepingEntrySetsResource"]
 
 
-class BookkeepingEntrySets(SyncAPIResource):
+class BookkeepingEntrySetsResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> BookkeepingEntrySetsWithRawResponse:
-        return BookkeepingEntrySetsWithRawResponse(self)
+    def with_raw_response(self) -> BookkeepingEntrySetsResourceWithRawResponse:
+        return BookkeepingEntrySetsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> BookkeepingEntrySetsWithStreamingResponse:
-        return BookkeepingEntrySetsWithStreamingResponse(self)
+    def with_streaming_response(self) -> BookkeepingEntrySetsResourceWithStreamingResponse:
+        return BookkeepingEntrySetsResourceWithStreamingResponse(self)
 
     def create(
         self,
@@ -185,14 +189,14 @@ class BookkeepingEntrySets(SyncAPIResource):
         )
 
 
-class AsyncBookkeepingEntrySets(AsyncAPIResource):
+class AsyncBookkeepingEntrySetsResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncBookkeepingEntrySetsWithRawResponse:
-        return AsyncBookkeepingEntrySetsWithRawResponse(self)
+    def with_raw_response(self) -> AsyncBookkeepingEntrySetsResourceWithRawResponse:
+        return AsyncBookkeepingEntrySetsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncBookkeepingEntrySetsWithStreamingResponse:
-        return AsyncBookkeepingEntrySetsWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncBookkeepingEntrySetsResourceWithStreamingResponse:
+        return AsyncBookkeepingEntrySetsResourceWithStreamingResponse(self)
 
     async def create(
         self,
@@ -346,38 +350,38 @@ class AsyncBookkeepingEntrySets(AsyncAPIResource):
         )
 
 
-class BookkeepingEntrySetsWithRawResponse:
-    def __init__(self, bookkeeping_entry_sets: BookkeepingEntrySets) -> None:
+class BookkeepingEntrySetsResourceWithRawResponse:
+    def __init__(self, bookkeeping_entry_sets: BookkeepingEntrySetsResource) -> None:
         self._bookkeeping_entry_sets = bookkeeping_entry_sets
 
-        self.create = _legacy_response.to_raw_response_wrapper(
+        self.create = to_raw_response_wrapper(
             bookkeeping_entry_sets.create,
         )
-        self.retrieve = _legacy_response.to_raw_response_wrapper(
+        self.retrieve = to_raw_response_wrapper(
             bookkeeping_entry_sets.retrieve,
         )
-        self.list = _legacy_response.to_raw_response_wrapper(
+        self.list = to_raw_response_wrapper(
             bookkeeping_entry_sets.list,
         )
 
 
-class AsyncBookkeepingEntrySetsWithRawResponse:
-    def __init__(self, bookkeeping_entry_sets: AsyncBookkeepingEntrySets) -> None:
+class AsyncBookkeepingEntrySetsResourceWithRawResponse:
+    def __init__(self, bookkeeping_entry_sets: AsyncBookkeepingEntrySetsResource) -> None:
         self._bookkeeping_entry_sets = bookkeeping_entry_sets
 
-        self.create = _legacy_response.async_to_raw_response_wrapper(
+        self.create = async_to_raw_response_wrapper(
             bookkeeping_entry_sets.create,
         )
-        self.retrieve = _legacy_response.async_to_raw_response_wrapper(
+        self.retrieve = async_to_raw_response_wrapper(
             bookkeeping_entry_sets.retrieve,
         )
-        self.list = _legacy_response.async_to_raw_response_wrapper(
+        self.list = async_to_raw_response_wrapper(
             bookkeeping_entry_sets.list,
         )
 
 
-class BookkeepingEntrySetsWithStreamingResponse:
-    def __init__(self, bookkeeping_entry_sets: BookkeepingEntrySets) -> None:
+class BookkeepingEntrySetsResourceWithStreamingResponse:
+    def __init__(self, bookkeeping_entry_sets: BookkeepingEntrySetsResource) -> None:
         self._bookkeeping_entry_sets = bookkeeping_entry_sets
 
         self.create = to_streamed_response_wrapper(
@@ -391,8 +395,8 @@ class BookkeepingEntrySetsWithStreamingResponse:
         )
 
 
-class AsyncBookkeepingEntrySetsWithStreamingResponse:
-    def __init__(self, bookkeeping_entry_sets: AsyncBookkeepingEntrySets) -> None:
+class AsyncBookkeepingEntrySetsResourceWithStreamingResponse:
+    def __init__(self, bookkeeping_entry_sets: AsyncBookkeepingEntrySetsResource) -> None:
         self._bookkeeping_entry_sets = bookkeeping_entry_sets
 
         self.create = async_to_streamed_response_wrapper(

@@ -208,7 +208,7 @@ class TestAsyncEventSubscriptions:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        event_subscription = response.parse()
+        event_subscription = await response.parse()
         assert_matches_type(EventSubscription, event_subscription, path=["response"])
 
     @parametrize
@@ -239,7 +239,7 @@ class TestAsyncEventSubscriptions:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        event_subscription = response.parse()
+        event_subscription = await response.parse()
         assert_matches_type(EventSubscription, event_subscription, path=["response"])
 
     @parametrize
@@ -285,7 +285,7 @@ class TestAsyncEventSubscriptions:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        event_subscription = response.parse()
+        event_subscription = await response.parse()
         assert_matches_type(EventSubscription, event_subscription, path=["response"])
 
     @parametrize
@@ -328,7 +328,7 @@ class TestAsyncEventSubscriptions:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        event_subscription = response.parse()
+        event_subscription = await response.parse()
         assert_matches_type(AsyncPage[EventSubscription], event_subscription, path=["response"])
 
     @parametrize

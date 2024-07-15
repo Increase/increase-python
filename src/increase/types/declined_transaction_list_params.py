@@ -41,7 +41,6 @@ _CategoryReservedKeywords = TypedDict(
                 "card_decline",
                 "check_decline",
                 "inbound_real_time_payments_transfer_decline",
-                "international_ach_decline",
                 "wire_decline",
                 "check_deposit_rejection",
                 "other",

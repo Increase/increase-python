@@ -4,28 +4,32 @@ from __future__ import annotations
 
 import httpx
 
-from .. import _legacy_response
 from ..types import program_list_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
+from .._response import (
+    to_raw_response_wrapper,
+    to_streamed_response_wrapper,
+    async_to_raw_response_wrapper,
+    async_to_streamed_response_wrapper,
+)
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
 from ..types.program import Program
 
-__all__ = ["Programs", "AsyncPrograms"]
+__all__ = ["ProgramsResource", "AsyncProgramsResource"]
 
 
-class Programs(SyncAPIResource):
+class ProgramsResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> ProgramsWithRawResponse:
-        return ProgramsWithRawResponse(self)
+    def with_raw_response(self) -> ProgramsResourceWithRawResponse:
+        return ProgramsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> ProgramsWithStreamingResponse:
-        return ProgramsWithStreamingResponse(self)
+    def with_streaming_response(self) -> ProgramsResourceWithStreamingResponse:
+        return ProgramsResourceWithStreamingResponse(self)
 
     def retrieve(
         self,
@@ -111,14 +115,14 @@ class Programs(SyncAPIResource):
         )
 
 
-class AsyncPrograms(AsyncAPIResource):
+class AsyncProgramsResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncProgramsWithRawResponse:
-        return AsyncProgramsWithRawResponse(self)
+    def with_raw_response(self) -> AsyncProgramsResourceWithRawResponse:
+        return AsyncProgramsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncProgramsWithStreamingResponse:
-        return AsyncProgramsWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncProgramsResourceWithStreamingResponse:
+        return AsyncProgramsResourceWithStreamingResponse(self)
 
     async def retrieve(
         self,
@@ -204,32 +208,32 @@ class AsyncPrograms(AsyncAPIResource):
         )
 
 
-class ProgramsWithRawResponse:
-    def __init__(self, programs: Programs) -> None:
+class ProgramsResourceWithRawResponse:
+    def __init__(self, programs: ProgramsResource) -> None:
         self._programs = programs
 
-        self.retrieve = _legacy_response.to_raw_response_wrapper(
+        self.retrieve = to_raw_response_wrapper(
             programs.retrieve,
         )
-        self.list = _legacy_response.to_raw_response_wrapper(
+        self.list = to_raw_response_wrapper(
             programs.list,
         )
 
 
-class AsyncProgramsWithRawResponse:
-    def __init__(self, programs: AsyncPrograms) -> None:
+class AsyncProgramsResourceWithRawResponse:
+    def __init__(self, programs: AsyncProgramsResource) -> None:
         self._programs = programs
 
-        self.retrieve = _legacy_response.async_to_raw_response_wrapper(
+        self.retrieve = async_to_raw_response_wrapper(
             programs.retrieve,
         )
-        self.list = _legacy_response.async_to_raw_response_wrapper(
+        self.list = async_to_raw_response_wrapper(
             programs.list,
         )
 
 
-class ProgramsWithStreamingResponse:
-    def __init__(self, programs: Programs) -> None:
+class ProgramsResourceWithStreamingResponse:
+    def __init__(self, programs: ProgramsResource) -> None:
         self._programs = programs
 
         self.retrieve = to_streamed_response_wrapper(
@@ -240,8 +244,8 @@ class ProgramsWithStreamingResponse:
         )
 
 
-class AsyncProgramsWithStreamingResponse:
-    def __init__(self, programs: AsyncPrograms) -> None:
+class AsyncProgramsResourceWithStreamingResponse:
+    def __init__(self, programs: AsyncProgramsResource) -> None:
         self._programs = programs
 
         self.retrieve = async_to_streamed_response_wrapper(

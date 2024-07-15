@@ -118,7 +118,7 @@ class TestAsyncCardPurchaseSupplements:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        card_purchase_supplement = response.parse()
+        card_purchase_supplement = await response.parse()
         assert_matches_type(CardPurchaseSupplement, card_purchase_supplement, path=["response"])
 
     @parametrize
@@ -169,7 +169,7 @@ class TestAsyncCardPurchaseSupplements:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        card_purchase_supplement = response.parse()
+        card_purchase_supplement = await response.parse()
         assert_matches_type(AsyncPage[CardPurchaseSupplement], card_purchase_supplement, path=["response"])
 
     @parametrize

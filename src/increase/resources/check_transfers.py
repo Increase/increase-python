@@ -6,7 +6,6 @@ from typing_extensions import Literal
 
 import httpx
 
-from .. import _legacy_response
 from ..types import (
     check_transfer_list_params,
     check_transfer_create_params,
@@ -19,22 +18,27 @@ from .._utils import (
 )
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
+from .._response import (
+    to_raw_response_wrapper,
+    to_streamed_response_wrapper,
+    async_to_raw_response_wrapper,
+    async_to_streamed_response_wrapper,
+)
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
 from ..types.check_transfer import CheckTransfer
 
-__all__ = ["CheckTransfers", "AsyncCheckTransfers"]
+__all__ = ["CheckTransfersResource", "AsyncCheckTransfersResource"]
 
 
-class CheckTransfers(SyncAPIResource):
+class CheckTransfersResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> CheckTransfersWithRawResponse:
-        return CheckTransfersWithRawResponse(self)
+    def with_raw_response(self) -> CheckTransfersResourceWithRawResponse:
+        return CheckTransfersResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> CheckTransfersWithStreamingResponse:
-        return CheckTransfersWithStreamingResponse(self)
+    def with_streaming_response(self) -> CheckTransfersResourceWithStreamingResponse:
+        return CheckTransfersResourceWithStreamingResponse(self)
 
     def create(
         self,
@@ -347,14 +351,14 @@ class CheckTransfers(SyncAPIResource):
         )
 
 
-class AsyncCheckTransfers(AsyncAPIResource):
+class AsyncCheckTransfersResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncCheckTransfersWithRawResponse:
-        return AsyncCheckTransfersWithRawResponse(self)
+    def with_raw_response(self) -> AsyncCheckTransfersResourceWithRawResponse:
+        return AsyncCheckTransfersResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncCheckTransfersWithStreamingResponse:
-        return AsyncCheckTransfersWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncCheckTransfersResourceWithStreamingResponse:
+        return AsyncCheckTransfersResourceWithStreamingResponse(self)
 
     async def create(
         self,
@@ -669,56 +673,56 @@ class AsyncCheckTransfers(AsyncAPIResource):
         )
 
 
-class CheckTransfersWithRawResponse:
-    def __init__(self, check_transfers: CheckTransfers) -> None:
+class CheckTransfersResourceWithRawResponse:
+    def __init__(self, check_transfers: CheckTransfersResource) -> None:
         self._check_transfers = check_transfers
 
-        self.create = _legacy_response.to_raw_response_wrapper(
+        self.create = to_raw_response_wrapper(
             check_transfers.create,
         )
-        self.retrieve = _legacy_response.to_raw_response_wrapper(
+        self.retrieve = to_raw_response_wrapper(
             check_transfers.retrieve,
         )
-        self.list = _legacy_response.to_raw_response_wrapper(
+        self.list = to_raw_response_wrapper(
             check_transfers.list,
         )
-        self.approve = _legacy_response.to_raw_response_wrapper(
+        self.approve = to_raw_response_wrapper(
             check_transfers.approve,
         )
-        self.cancel = _legacy_response.to_raw_response_wrapper(
+        self.cancel = to_raw_response_wrapper(
             check_transfers.cancel,
         )
-        self.stop_payment = _legacy_response.to_raw_response_wrapper(
+        self.stop_payment = to_raw_response_wrapper(
             check_transfers.stop_payment,
         )
 
 
-class AsyncCheckTransfersWithRawResponse:
-    def __init__(self, check_transfers: AsyncCheckTransfers) -> None:
+class AsyncCheckTransfersResourceWithRawResponse:
+    def __init__(self, check_transfers: AsyncCheckTransfersResource) -> None:
         self._check_transfers = check_transfers
 
-        self.create = _legacy_response.async_to_raw_response_wrapper(
+        self.create = async_to_raw_response_wrapper(
             check_transfers.create,
         )
-        self.retrieve = _legacy_response.async_to_raw_response_wrapper(
+        self.retrieve = async_to_raw_response_wrapper(
             check_transfers.retrieve,
         )
-        self.list = _legacy_response.async_to_raw_response_wrapper(
+        self.list = async_to_raw_response_wrapper(
             check_transfers.list,
         )
-        self.approve = _legacy_response.async_to_raw_response_wrapper(
+        self.approve = async_to_raw_response_wrapper(
             check_transfers.approve,
         )
-        self.cancel = _legacy_response.async_to_raw_response_wrapper(
+        self.cancel = async_to_raw_response_wrapper(
             check_transfers.cancel,
         )
-        self.stop_payment = _legacy_response.async_to_raw_response_wrapper(
+        self.stop_payment = async_to_raw_response_wrapper(
             check_transfers.stop_payment,
         )
 
 
-class CheckTransfersWithStreamingResponse:
-    def __init__(self, check_transfers: CheckTransfers) -> None:
+class CheckTransfersResourceWithStreamingResponse:
+    def __init__(self, check_transfers: CheckTransfersResource) -> None:
         self._check_transfers = check_transfers
 
         self.create = to_streamed_response_wrapper(
@@ -741,8 +745,8 @@ class CheckTransfersWithStreamingResponse:
         )
 
 
-class AsyncCheckTransfersWithStreamingResponse:
-    def __init__(self, check_transfers: AsyncCheckTransfers) -> None:
+class AsyncCheckTransfersResourceWithStreamingResponse:
+    def __init__(self, check_transfers: AsyncCheckTransfersResource) -> None:
         self._check_transfers = check_transfers
 
         self.create = async_to_streamed_response_wrapper(

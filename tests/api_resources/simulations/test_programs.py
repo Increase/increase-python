@@ -67,7 +67,7 @@ class TestAsyncPrograms:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        program = response.parse()
+        program = await response.parse()
         assert_matches_type(Program, program, path=["response"])
 
     @parametrize

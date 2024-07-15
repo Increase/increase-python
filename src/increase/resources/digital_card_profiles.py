@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import httpx
 
-from .. import _legacy_response
 from ..types import (
     digital_card_profile_list_params,
     digital_card_profile_clone_params,
@@ -17,22 +16,27 @@ from .._utils import (
 )
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
+from .._response import (
+    to_raw_response_wrapper,
+    to_streamed_response_wrapper,
+    async_to_raw_response_wrapper,
+    async_to_streamed_response_wrapper,
+)
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
 from ..types.digital_card_profile import DigitalCardProfile
 
-__all__ = ["DigitalCardProfiles", "AsyncDigitalCardProfiles"]
+__all__ = ["DigitalCardProfilesResource", "AsyncDigitalCardProfilesResource"]
 
 
-class DigitalCardProfiles(SyncAPIResource):
+class DigitalCardProfilesResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> DigitalCardProfilesWithRawResponse:
-        return DigitalCardProfilesWithRawResponse(self)
+    def with_raw_response(self) -> DigitalCardProfilesResourceWithRawResponse:
+        return DigitalCardProfilesResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> DigitalCardProfilesWithStreamingResponse:
-        return DigitalCardProfilesWithStreamingResponse(self)
+    def with_streaming_response(self) -> DigitalCardProfilesResourceWithStreamingResponse:
+        return DigitalCardProfilesResourceWithStreamingResponse(self)
 
     def create(
         self,
@@ -336,14 +340,14 @@ class DigitalCardProfiles(SyncAPIResource):
         )
 
 
-class AsyncDigitalCardProfiles(AsyncAPIResource):
+class AsyncDigitalCardProfilesResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncDigitalCardProfilesWithRawResponse:
-        return AsyncDigitalCardProfilesWithRawResponse(self)
+    def with_raw_response(self) -> AsyncDigitalCardProfilesResourceWithRawResponse:
+        return AsyncDigitalCardProfilesResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncDigitalCardProfilesWithStreamingResponse:
-        return AsyncDigitalCardProfilesWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncDigitalCardProfilesResourceWithStreamingResponse:
+        return AsyncDigitalCardProfilesResourceWithStreamingResponse(self)
 
     async def create(
         self,
@@ -647,50 +651,50 @@ class AsyncDigitalCardProfiles(AsyncAPIResource):
         )
 
 
-class DigitalCardProfilesWithRawResponse:
-    def __init__(self, digital_card_profiles: DigitalCardProfiles) -> None:
+class DigitalCardProfilesResourceWithRawResponse:
+    def __init__(self, digital_card_profiles: DigitalCardProfilesResource) -> None:
         self._digital_card_profiles = digital_card_profiles
 
-        self.create = _legacy_response.to_raw_response_wrapper(
+        self.create = to_raw_response_wrapper(
             digital_card_profiles.create,
         )
-        self.retrieve = _legacy_response.to_raw_response_wrapper(
+        self.retrieve = to_raw_response_wrapper(
             digital_card_profiles.retrieve,
         )
-        self.list = _legacy_response.to_raw_response_wrapper(
+        self.list = to_raw_response_wrapper(
             digital_card_profiles.list,
         )
-        self.archive = _legacy_response.to_raw_response_wrapper(
+        self.archive = to_raw_response_wrapper(
             digital_card_profiles.archive,
         )
-        self.clone = _legacy_response.to_raw_response_wrapper(
+        self.clone = to_raw_response_wrapper(
             digital_card_profiles.clone,
         )
 
 
-class AsyncDigitalCardProfilesWithRawResponse:
-    def __init__(self, digital_card_profiles: AsyncDigitalCardProfiles) -> None:
+class AsyncDigitalCardProfilesResourceWithRawResponse:
+    def __init__(self, digital_card_profiles: AsyncDigitalCardProfilesResource) -> None:
         self._digital_card_profiles = digital_card_profiles
 
-        self.create = _legacy_response.async_to_raw_response_wrapper(
+        self.create = async_to_raw_response_wrapper(
             digital_card_profiles.create,
         )
-        self.retrieve = _legacy_response.async_to_raw_response_wrapper(
+        self.retrieve = async_to_raw_response_wrapper(
             digital_card_profiles.retrieve,
         )
-        self.list = _legacy_response.async_to_raw_response_wrapper(
+        self.list = async_to_raw_response_wrapper(
             digital_card_profiles.list,
         )
-        self.archive = _legacy_response.async_to_raw_response_wrapper(
+        self.archive = async_to_raw_response_wrapper(
             digital_card_profiles.archive,
         )
-        self.clone = _legacy_response.async_to_raw_response_wrapper(
+        self.clone = async_to_raw_response_wrapper(
             digital_card_profiles.clone,
         )
 
 
-class DigitalCardProfilesWithStreamingResponse:
-    def __init__(self, digital_card_profiles: DigitalCardProfiles) -> None:
+class DigitalCardProfilesResourceWithStreamingResponse:
+    def __init__(self, digital_card_profiles: DigitalCardProfilesResource) -> None:
         self._digital_card_profiles = digital_card_profiles
 
         self.create = to_streamed_response_wrapper(
@@ -710,8 +714,8 @@ class DigitalCardProfilesWithStreamingResponse:
         )
 
 
-class AsyncDigitalCardProfilesWithStreamingResponse:
-    def __init__(self, digital_card_profiles: AsyncDigitalCardProfiles) -> None:
+class AsyncDigitalCardProfilesResourceWithStreamingResponse:
+    def __init__(self, digital_card_profiles: AsyncDigitalCardProfilesResource) -> None:
         self._digital_card_profiles = digital_card_profiles
 
         self.create = async_to_streamed_response_wrapper(

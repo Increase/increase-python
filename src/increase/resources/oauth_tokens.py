@@ -6,7 +6,6 @@ from typing_extensions import Literal
 
 import httpx
 
-from .. import _legacy_response
 from ..types import oauth_token_create_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import (
@@ -15,21 +14,26 @@ from .._utils import (
 )
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
+from .._response import (
+    to_raw_response_wrapper,
+    to_streamed_response_wrapper,
+    async_to_raw_response_wrapper,
+    async_to_streamed_response_wrapper,
+)
 from .._base_client import make_request_options
 from ..types.oauth_token import OAuthToken
 
-__all__ = ["OAuthTokens", "AsyncOAuthTokens"]
+__all__ = ["OAuthTokensResource", "AsyncOAuthTokensResource"]
 
 
-class OAuthTokens(SyncAPIResource):
+class OAuthTokensResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> OAuthTokensWithRawResponse:
-        return OAuthTokensWithRawResponse(self)
+    def with_raw_response(self) -> OAuthTokensResourceWithRawResponse:
+        return OAuthTokensResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> OAuthTokensWithStreamingResponse:
-        return OAuthTokensWithStreamingResponse(self)
+    def with_streaming_response(self) -> OAuthTokensResourceWithStreamingResponse:
+        return OAuthTokensResourceWithStreamingResponse(self)
 
     def create(
         self,
@@ -103,14 +107,14 @@ class OAuthTokens(SyncAPIResource):
         )
 
 
-class AsyncOAuthTokens(AsyncAPIResource):
+class AsyncOAuthTokensResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncOAuthTokensWithRawResponse:
-        return AsyncOAuthTokensWithRawResponse(self)
+    def with_raw_response(self) -> AsyncOAuthTokensResourceWithRawResponse:
+        return AsyncOAuthTokensResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncOAuthTokensWithStreamingResponse:
-        return AsyncOAuthTokensWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncOAuthTokensResourceWithStreamingResponse:
+        return AsyncOAuthTokensResourceWithStreamingResponse(self)
 
     async def create(
         self,
@@ -184,26 +188,26 @@ class AsyncOAuthTokens(AsyncAPIResource):
         )
 
 
-class OAuthTokensWithRawResponse:
-    def __init__(self, oauth_tokens: OAuthTokens) -> None:
+class OAuthTokensResourceWithRawResponse:
+    def __init__(self, oauth_tokens: OAuthTokensResource) -> None:
         self._oauth_tokens = oauth_tokens
 
-        self.create = _legacy_response.to_raw_response_wrapper(
+        self.create = to_raw_response_wrapper(
             oauth_tokens.create,
         )
 
 
-class AsyncOAuthTokensWithRawResponse:
-    def __init__(self, oauth_tokens: AsyncOAuthTokens) -> None:
+class AsyncOAuthTokensResourceWithRawResponse:
+    def __init__(self, oauth_tokens: AsyncOAuthTokensResource) -> None:
         self._oauth_tokens = oauth_tokens
 
-        self.create = _legacy_response.async_to_raw_response_wrapper(
+        self.create = async_to_raw_response_wrapper(
             oauth_tokens.create,
         )
 
 
-class OAuthTokensWithStreamingResponse:
-    def __init__(self, oauth_tokens: OAuthTokens) -> None:
+class OAuthTokensResourceWithStreamingResponse:
+    def __init__(self, oauth_tokens: OAuthTokensResource) -> None:
         self._oauth_tokens = oauth_tokens
 
         self.create = to_streamed_response_wrapper(
@@ -211,8 +215,8 @@ class OAuthTokensWithStreamingResponse:
         )
 
 
-class AsyncOAuthTokensWithStreamingResponse:
-    def __init__(self, oauth_tokens: AsyncOAuthTokens) -> None:
+class AsyncOAuthTokensResourceWithStreamingResponse:
+    def __init__(self, oauth_tokens: AsyncOAuthTokensResource) -> None:
         self._oauth_tokens = oauth_tokens
 
         self.create = async_to_streamed_response_wrapper(

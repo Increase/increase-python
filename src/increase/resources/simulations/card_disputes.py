@@ -6,7 +6,6 @@ from typing_extensions import Literal
 
 import httpx
 
-from ... import _legacy_response
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import (
     maybe_transform,
@@ -14,22 +13,27 @@ from ..._utils import (
 )
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
+from ..._response import (
+    to_raw_response_wrapper,
+    to_streamed_response_wrapper,
+    async_to_raw_response_wrapper,
+    async_to_streamed_response_wrapper,
+)
 from ..._base_client import make_request_options
 from ...types.simulations import card_dispute_action_params
 from ...types.card_dispute import CardDispute
 
-__all__ = ["CardDisputes", "AsyncCardDisputes"]
+__all__ = ["CardDisputesResource", "AsyncCardDisputesResource"]
 
 
-class CardDisputes(SyncAPIResource):
+class CardDisputesResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> CardDisputesWithRawResponse:
-        return CardDisputesWithRawResponse(self)
+    def with_raw_response(self) -> CardDisputesResourceWithRawResponse:
+        return CardDisputesResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> CardDisputesWithStreamingResponse:
-        return CardDisputesWithStreamingResponse(self)
+    def with_streaming_response(self) -> CardDisputesResourceWithStreamingResponse:
+        return CardDisputesResourceWithStreamingResponse(self)
 
     def action(
         self,
@@ -98,14 +102,14 @@ class CardDisputes(SyncAPIResource):
         )
 
 
-class AsyncCardDisputes(AsyncAPIResource):
+class AsyncCardDisputesResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncCardDisputesWithRawResponse:
-        return AsyncCardDisputesWithRawResponse(self)
+    def with_raw_response(self) -> AsyncCardDisputesResourceWithRawResponse:
+        return AsyncCardDisputesResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncCardDisputesWithStreamingResponse:
-        return AsyncCardDisputesWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncCardDisputesResourceWithStreamingResponse:
+        return AsyncCardDisputesResourceWithStreamingResponse(self)
 
     async def action(
         self,
@@ -174,26 +178,26 @@ class AsyncCardDisputes(AsyncAPIResource):
         )
 
 
-class CardDisputesWithRawResponse:
-    def __init__(self, card_disputes: CardDisputes) -> None:
+class CardDisputesResourceWithRawResponse:
+    def __init__(self, card_disputes: CardDisputesResource) -> None:
         self._card_disputes = card_disputes
 
-        self.action = _legacy_response.to_raw_response_wrapper(
+        self.action = to_raw_response_wrapper(
             card_disputes.action,
         )
 
 
-class AsyncCardDisputesWithRawResponse:
-    def __init__(self, card_disputes: AsyncCardDisputes) -> None:
+class AsyncCardDisputesResourceWithRawResponse:
+    def __init__(self, card_disputes: AsyncCardDisputesResource) -> None:
         self._card_disputes = card_disputes
 
-        self.action = _legacy_response.async_to_raw_response_wrapper(
+        self.action = async_to_raw_response_wrapper(
             card_disputes.action,
         )
 
 
-class CardDisputesWithStreamingResponse:
-    def __init__(self, card_disputes: CardDisputes) -> None:
+class CardDisputesResourceWithStreamingResponse:
+    def __init__(self, card_disputes: CardDisputesResource) -> None:
         self._card_disputes = card_disputes
 
         self.action = to_streamed_response_wrapper(
@@ -201,8 +205,8 @@ class CardDisputesWithStreamingResponse:
         )
 
 
-class AsyncCardDisputesWithStreamingResponse:
-    def __init__(self, card_disputes: AsyncCardDisputes) -> None:
+class AsyncCardDisputesResourceWithStreamingResponse:
+    def __init__(self, card_disputes: AsyncCardDisputesResource) -> None:
         self._card_disputes = card_disputes
 
         self.action = async_to_streamed_response_wrapper(

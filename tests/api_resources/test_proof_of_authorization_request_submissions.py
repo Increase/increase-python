@@ -259,7 +259,7 @@ class TestAsyncProofOfAuthorizationRequestSubmissions:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        proof_of_authorization_request_submission = response.parse()
+        proof_of_authorization_request_submission = await response.parse()
         assert_matches_type(
             ProofOfAuthorizationRequestSubmission, proof_of_authorization_request_submission, path=["response"]
         )
@@ -306,7 +306,7 @@ class TestAsyncProofOfAuthorizationRequestSubmissions:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        proof_of_authorization_request_submission = response.parse()
+        proof_of_authorization_request_submission = await response.parse()
         assert_matches_type(
             ProofOfAuthorizationRequestSubmission, proof_of_authorization_request_submission, path=["response"]
         )
@@ -365,7 +365,7 @@ class TestAsyncProofOfAuthorizationRequestSubmissions:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        proof_of_authorization_request_submission = response.parse()
+        proof_of_authorization_request_submission = await response.parse()
         assert_matches_type(
             AsyncPage[ProofOfAuthorizationRequestSubmission],
             proof_of_authorization_request_submission,
