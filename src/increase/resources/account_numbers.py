@@ -6,7 +6,6 @@ from typing_extensions import Literal
 
 import httpx
 
-from .. import _legacy_response
 from ..types import (
     account_number_list_params,
     account_number_create_params,
@@ -19,22 +18,27 @@ from .._utils import (
 )
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
+from .._response import (
+    to_raw_response_wrapper,
+    to_streamed_response_wrapper,
+    async_to_raw_response_wrapper,
+    async_to_streamed_response_wrapper,
+)
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
 from ..types.account_number import AccountNumber
 
-__all__ = ["AccountNumbers", "AsyncAccountNumbers"]
+__all__ = ["AccountNumbersResource", "AsyncAccountNumbersResource"]
 
 
-class AccountNumbers(SyncAPIResource):
+class AccountNumbersResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AccountNumbersWithRawResponse:
-        return AccountNumbersWithRawResponse(self)
+    def with_raw_response(self) -> AccountNumbersResourceWithRawResponse:
+        return AccountNumbersResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AccountNumbersWithStreamingResponse:
-        return AccountNumbersWithStreamingResponse(self)
+    def with_streaming_response(self) -> AccountNumbersResourceWithStreamingResponse:
+        return AccountNumbersResourceWithStreamingResponse(self)
 
     def create(
         self,
@@ -275,14 +279,14 @@ class AccountNumbers(SyncAPIResource):
         )
 
 
-class AsyncAccountNumbers(AsyncAPIResource):
+class AsyncAccountNumbersResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncAccountNumbersWithRawResponse:
-        return AsyncAccountNumbersWithRawResponse(self)
+    def with_raw_response(self) -> AsyncAccountNumbersResourceWithRawResponse:
+        return AsyncAccountNumbersResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncAccountNumbersWithStreamingResponse:
-        return AsyncAccountNumbersWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncAccountNumbersResourceWithStreamingResponse:
+        return AsyncAccountNumbersResourceWithStreamingResponse(self)
 
     async def create(
         self,
@@ -523,44 +527,44 @@ class AsyncAccountNumbers(AsyncAPIResource):
         )
 
 
-class AccountNumbersWithRawResponse:
-    def __init__(self, account_numbers: AccountNumbers) -> None:
+class AccountNumbersResourceWithRawResponse:
+    def __init__(self, account_numbers: AccountNumbersResource) -> None:
         self._account_numbers = account_numbers
 
-        self.create = _legacy_response.to_raw_response_wrapper(
+        self.create = to_raw_response_wrapper(
             account_numbers.create,
         )
-        self.retrieve = _legacy_response.to_raw_response_wrapper(
+        self.retrieve = to_raw_response_wrapper(
             account_numbers.retrieve,
         )
-        self.update = _legacy_response.to_raw_response_wrapper(
+        self.update = to_raw_response_wrapper(
             account_numbers.update,
         )
-        self.list = _legacy_response.to_raw_response_wrapper(
+        self.list = to_raw_response_wrapper(
             account_numbers.list,
         )
 
 
-class AsyncAccountNumbersWithRawResponse:
-    def __init__(self, account_numbers: AsyncAccountNumbers) -> None:
+class AsyncAccountNumbersResourceWithRawResponse:
+    def __init__(self, account_numbers: AsyncAccountNumbersResource) -> None:
         self._account_numbers = account_numbers
 
-        self.create = _legacy_response.async_to_raw_response_wrapper(
+        self.create = async_to_raw_response_wrapper(
             account_numbers.create,
         )
-        self.retrieve = _legacy_response.async_to_raw_response_wrapper(
+        self.retrieve = async_to_raw_response_wrapper(
             account_numbers.retrieve,
         )
-        self.update = _legacy_response.async_to_raw_response_wrapper(
+        self.update = async_to_raw_response_wrapper(
             account_numbers.update,
         )
-        self.list = _legacy_response.async_to_raw_response_wrapper(
+        self.list = async_to_raw_response_wrapper(
             account_numbers.list,
         )
 
 
-class AccountNumbersWithStreamingResponse:
-    def __init__(self, account_numbers: AccountNumbers) -> None:
+class AccountNumbersResourceWithStreamingResponse:
+    def __init__(self, account_numbers: AccountNumbersResource) -> None:
         self._account_numbers = account_numbers
 
         self.create = to_streamed_response_wrapper(
@@ -577,8 +581,8 @@ class AccountNumbersWithStreamingResponse:
         )
 
 
-class AsyncAccountNumbersWithStreamingResponse:
-    def __init__(self, account_numbers: AsyncAccountNumbers) -> None:
+class AsyncAccountNumbersResourceWithStreamingResponse:
+    def __init__(self, account_numbers: AsyncAccountNumbersResource) -> None:
         self._account_numbers = account_numbers
 
         self.create = async_to_streamed_response_wrapper(

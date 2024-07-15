@@ -6,7 +6,6 @@ from typing_extensions import Literal
 
 import httpx
 
-from .. import _legacy_response
 from ..types import export_list_params, export_create_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import (
@@ -15,22 +14,27 @@ from .._utils import (
 )
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
+from .._response import (
+    to_raw_response_wrapper,
+    to_streamed_response_wrapper,
+    async_to_raw_response_wrapper,
+    async_to_streamed_response_wrapper,
+)
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
 from ..types.export import Export
 
-__all__ = ["Exports", "AsyncExports"]
+__all__ = ["ExportsResource", "AsyncExportsResource"]
 
 
-class Exports(SyncAPIResource):
+class ExportsResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> ExportsWithRawResponse:
-        return ExportsWithRawResponse(self)
+    def with_raw_response(self) -> ExportsResourceWithRawResponse:
+        return ExportsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> ExportsWithStreamingResponse:
-        return ExportsWithStreamingResponse(self)
+    def with_streaming_response(self) -> ExportsResourceWithStreamingResponse:
+        return ExportsResourceWithStreamingResponse(self)
 
     def create(
         self,
@@ -221,14 +225,14 @@ class Exports(SyncAPIResource):
         )
 
 
-class AsyncExports(AsyncAPIResource):
+class AsyncExportsResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncExportsWithRawResponse:
-        return AsyncExportsWithRawResponse(self)
+    def with_raw_response(self) -> AsyncExportsResourceWithRawResponse:
+        return AsyncExportsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncExportsWithStreamingResponse:
-        return AsyncExportsWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncExportsResourceWithStreamingResponse:
+        return AsyncExportsResourceWithStreamingResponse(self)
 
     async def create(
         self,
@@ -419,38 +423,38 @@ class AsyncExports(AsyncAPIResource):
         )
 
 
-class ExportsWithRawResponse:
-    def __init__(self, exports: Exports) -> None:
+class ExportsResourceWithRawResponse:
+    def __init__(self, exports: ExportsResource) -> None:
         self._exports = exports
 
-        self.create = _legacy_response.to_raw_response_wrapper(
+        self.create = to_raw_response_wrapper(
             exports.create,
         )
-        self.retrieve = _legacy_response.to_raw_response_wrapper(
+        self.retrieve = to_raw_response_wrapper(
             exports.retrieve,
         )
-        self.list = _legacy_response.to_raw_response_wrapper(
+        self.list = to_raw_response_wrapper(
             exports.list,
         )
 
 
-class AsyncExportsWithRawResponse:
-    def __init__(self, exports: AsyncExports) -> None:
+class AsyncExportsResourceWithRawResponse:
+    def __init__(self, exports: AsyncExportsResource) -> None:
         self._exports = exports
 
-        self.create = _legacy_response.async_to_raw_response_wrapper(
+        self.create = async_to_raw_response_wrapper(
             exports.create,
         )
-        self.retrieve = _legacy_response.async_to_raw_response_wrapper(
+        self.retrieve = async_to_raw_response_wrapper(
             exports.retrieve,
         )
-        self.list = _legacy_response.async_to_raw_response_wrapper(
+        self.list = async_to_raw_response_wrapper(
             exports.list,
         )
 
 
-class ExportsWithStreamingResponse:
-    def __init__(self, exports: Exports) -> None:
+class ExportsResourceWithStreamingResponse:
+    def __init__(self, exports: ExportsResource) -> None:
         self._exports = exports
 
         self.create = to_streamed_response_wrapper(
@@ -464,8 +468,8 @@ class ExportsWithStreamingResponse:
         )
 
 
-class AsyncExportsWithStreamingResponse:
-    def __init__(self, exports: AsyncExports) -> None:
+class AsyncExportsResourceWithStreamingResponse:
+    def __init__(self, exports: AsyncExportsResource) -> None:
         self._exports = exports
 
         self.create = async_to_streamed_response_wrapper(

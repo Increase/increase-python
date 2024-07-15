@@ -4,28 +4,32 @@ from __future__ import annotations
 
 import httpx
 
-from .. import _legacy_response
 from ..types import declined_transaction_list_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
+from .._response import (
+    to_raw_response_wrapper,
+    to_streamed_response_wrapper,
+    async_to_raw_response_wrapper,
+    async_to_streamed_response_wrapper,
+)
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
 from ..types.declined_transaction import DeclinedTransaction
 
-__all__ = ["DeclinedTransactions", "AsyncDeclinedTransactions"]
+__all__ = ["DeclinedTransactionsResource", "AsyncDeclinedTransactionsResource"]
 
 
-class DeclinedTransactions(SyncAPIResource):
+class DeclinedTransactionsResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> DeclinedTransactionsWithRawResponse:
-        return DeclinedTransactionsWithRawResponse(self)
+    def with_raw_response(self) -> DeclinedTransactionsResourceWithRawResponse:
+        return DeclinedTransactionsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> DeclinedTransactionsWithStreamingResponse:
-        return DeclinedTransactionsWithStreamingResponse(self)
+    def with_streaming_response(self) -> DeclinedTransactionsResourceWithStreamingResponse:
+        return DeclinedTransactionsResourceWithStreamingResponse(self)
 
     def retrieve(
         self,
@@ -125,14 +129,14 @@ class DeclinedTransactions(SyncAPIResource):
         )
 
 
-class AsyncDeclinedTransactions(AsyncAPIResource):
+class AsyncDeclinedTransactionsResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncDeclinedTransactionsWithRawResponse:
-        return AsyncDeclinedTransactionsWithRawResponse(self)
+    def with_raw_response(self) -> AsyncDeclinedTransactionsResourceWithRawResponse:
+        return AsyncDeclinedTransactionsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncDeclinedTransactionsWithStreamingResponse:
-        return AsyncDeclinedTransactionsWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncDeclinedTransactionsResourceWithStreamingResponse:
+        return AsyncDeclinedTransactionsResourceWithStreamingResponse(self)
 
     async def retrieve(
         self,
@@ -232,32 +236,32 @@ class AsyncDeclinedTransactions(AsyncAPIResource):
         )
 
 
-class DeclinedTransactionsWithRawResponse:
-    def __init__(self, declined_transactions: DeclinedTransactions) -> None:
+class DeclinedTransactionsResourceWithRawResponse:
+    def __init__(self, declined_transactions: DeclinedTransactionsResource) -> None:
         self._declined_transactions = declined_transactions
 
-        self.retrieve = _legacy_response.to_raw_response_wrapper(
+        self.retrieve = to_raw_response_wrapper(
             declined_transactions.retrieve,
         )
-        self.list = _legacy_response.to_raw_response_wrapper(
+        self.list = to_raw_response_wrapper(
             declined_transactions.list,
         )
 
 
-class AsyncDeclinedTransactionsWithRawResponse:
-    def __init__(self, declined_transactions: AsyncDeclinedTransactions) -> None:
+class AsyncDeclinedTransactionsResourceWithRawResponse:
+    def __init__(self, declined_transactions: AsyncDeclinedTransactionsResource) -> None:
         self._declined_transactions = declined_transactions
 
-        self.retrieve = _legacy_response.async_to_raw_response_wrapper(
+        self.retrieve = async_to_raw_response_wrapper(
             declined_transactions.retrieve,
         )
-        self.list = _legacy_response.async_to_raw_response_wrapper(
+        self.list = async_to_raw_response_wrapper(
             declined_transactions.list,
         )
 
 
-class DeclinedTransactionsWithStreamingResponse:
-    def __init__(self, declined_transactions: DeclinedTransactions) -> None:
+class DeclinedTransactionsResourceWithStreamingResponse:
+    def __init__(self, declined_transactions: DeclinedTransactionsResource) -> None:
         self._declined_transactions = declined_transactions
 
         self.retrieve = to_streamed_response_wrapper(
@@ -268,8 +272,8 @@ class DeclinedTransactionsWithStreamingResponse:
         )
 
 
-class AsyncDeclinedTransactionsWithStreamingResponse:
-    def __init__(self, declined_transactions: AsyncDeclinedTransactions) -> None:
+class AsyncDeclinedTransactionsResourceWithStreamingResponse:
+    def __init__(self, declined_transactions: AsyncDeclinedTransactionsResource) -> None:
         self._declined_transactions = declined_transactions
 
         self.retrieve = async_to_streamed_response_wrapper(

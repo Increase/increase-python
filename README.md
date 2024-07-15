@@ -61,13 +61,15 @@ client = AsyncIncrease(
     environment="sandbox",
 )
 
+
 async def main() -> None:
-  account = await client.accounts.create(
-      name="New Account!",
-      entity_id="entity_n8y8tnk2p9339ti393yi",
-      program_id="program_i2v2os4mwza1oetokh9i",
-  )
-  print(account.id)
+    account = await client.accounts.create(
+        name="New Account!",
+        entity_id="entity_n8y8tnk2p9339ti393yi",
+        program_id="program_i2v2os4mwza1oetokh9i",
+    )
+    print(account.id)
+
 
 asyncio.run(main())
 ```
@@ -110,12 +112,14 @@ import increase
 
 client = AsyncIncrease()
 
+
 async def main() -> None:
     all_accounts = []
     # Iterate through items across all pages, issuing requests as needed.
     async for account in client.accounts.list():
         all_accounts.append(account)
     print(all_accounts)
+
 
 asyncio.run(main())
 ```
@@ -137,7 +141,7 @@ Or just work directly with the returned data:
 ```python
 first_page = await client.accounts.list()
 
-print(f"next page cursor: {first_page.next_cursor}") # => "next page cursor: ..."
+print(f"next page cursor: {first_page.next_cursor}")  # => "next page cursor: ..."
 for account in first_page.data:
     print(account.id)
 
@@ -198,7 +202,7 @@ try:
     )
 except increase.APIConnectionError as e:
     print("The server could not be reached")
-    print(e.__cause__) # an underlying Exception, likely raised within httpx.
+    print(e.__cause__)  # an underlying Exception, likely raised within httpx.
 except increase.RateLimitError as e:
     print("A 429 status code was received; we should back off a bit.")
 except increase.APIStatusError as e:
@@ -238,7 +242,7 @@ client = Increase(
 )
 
 # Or, configure per-request:
-client.with_options(max_retries = 5).accounts.create(
+client.with_options(max_retries=5).accounts.create(
     name="New Account!",
     entity_id="entity_n8y8tnk2p9339ti393yi",
     program_id="program_i2v2os4mwza1oetokh9i",
@@ -265,7 +269,7 @@ client = Increase(
 )
 
 # Override per-request:
-client.with_options(timeout = 5.0).accounts.create(
+client.with_options(timeout=5.0).accounts.create(
     name="New Account!",
     entity_id="entity_n8y8tnk2p9339ti393yi",
     program_id="program_i2v2os4mwza1oetokh9i",
@@ -334,11 +338,11 @@ with client.accounts.with_streaming_response.create(
     name="New Account!",
     entity_id="entity_n8y8tnk2p9339ti393yi",
     program_id="program_i2v2os4mwza1oetokh9i",
-) as response :
-    print(response.headers.get('X-My-Header'))
+) as response:
+    print(response.headers.get("X-My-Header"))
 
     for line in response.iter_lines():
-      print(line)
+        print(line)
 ```
 
 The context manager is required so that the response will reliably be closed.
@@ -392,7 +396,10 @@ from increase import Increase, DefaultHttpxClient
 client = Increase(
     # Or use the `INCREASE_BASE_URL` env var
     base_url="http://my.test.server.example.com:8083",
-    http_client=DefaultHttpxClient(proxies="http://my.test.proxy.example.com", transport=httpx.HTTPTransport(local_address="0.0.0.0")),
+    http_client=DefaultHttpxClient(
+        proxies="http://my.test.proxy.example.com",
+        transport=httpx.HTTPTransport(local_address="0.0.0.0"),
+    ),
 )
 ```
 

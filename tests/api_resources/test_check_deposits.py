@@ -185,7 +185,7 @@ class TestAsyncCheckDeposits:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        check_deposit = response.parse()
+        check_deposit = await response.parse()
         assert_matches_type(CheckDeposit, check_deposit, path=["response"])
 
     @parametrize
@@ -219,7 +219,7 @@ class TestAsyncCheckDeposits:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        check_deposit = response.parse()
+        check_deposit = await response.parse()
         assert_matches_type(CheckDeposit, check_deposit, path=["response"])
 
     @parametrize
@@ -269,7 +269,7 @@ class TestAsyncCheckDeposits:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        check_deposit = response.parse()
+        check_deposit = await response.parse()
         assert_matches_type(AsyncPage[CheckDeposit], check_deposit, path=["response"])
 
     @parametrize

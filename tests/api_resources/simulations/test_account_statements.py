@@ -67,7 +67,7 @@ class TestAsyncAccountStatements:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        account_statement = response.parse()
+        account_statement = await response.parse()
         assert_matches_type(AccountStatement, account_statement, path=["response"])
 
     @parametrize

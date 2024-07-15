@@ -4,28 +4,32 @@ from __future__ import annotations
 
 import httpx
 
-from .. import _legacy_response
 from ..types import event_list_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
+from .._response import (
+    to_raw_response_wrapper,
+    to_streamed_response_wrapper,
+    async_to_raw_response_wrapper,
+    async_to_streamed_response_wrapper,
+)
 from ..pagination import SyncPage, AsyncPage
 from ..types.event import Event
 from .._base_client import AsyncPaginator, make_request_options
 
-__all__ = ["Events", "AsyncEvents"]
+__all__ = ["EventsResource", "AsyncEventsResource"]
 
 
-class Events(SyncAPIResource):
+class EventsResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> EventsWithRawResponse:
-        return EventsWithRawResponse(self)
+    def with_raw_response(self) -> EventsResourceWithRawResponse:
+        return EventsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> EventsWithStreamingResponse:
-        return EventsWithStreamingResponse(self)
+    def with_streaming_response(self) -> EventsResourceWithStreamingResponse:
+        return EventsResourceWithStreamingResponse(self)
 
     def retrieve(
         self,
@@ -119,14 +123,14 @@ class Events(SyncAPIResource):
         )
 
 
-class AsyncEvents(AsyncAPIResource):
+class AsyncEventsResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncEventsWithRawResponse:
-        return AsyncEventsWithRawResponse(self)
+    def with_raw_response(self) -> AsyncEventsResourceWithRawResponse:
+        return AsyncEventsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncEventsWithStreamingResponse:
-        return AsyncEventsWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncEventsResourceWithStreamingResponse:
+        return AsyncEventsResourceWithStreamingResponse(self)
 
     async def retrieve(
         self,
@@ -220,32 +224,32 @@ class AsyncEvents(AsyncAPIResource):
         )
 
 
-class EventsWithRawResponse:
-    def __init__(self, events: Events) -> None:
+class EventsResourceWithRawResponse:
+    def __init__(self, events: EventsResource) -> None:
         self._events = events
 
-        self.retrieve = _legacy_response.to_raw_response_wrapper(
+        self.retrieve = to_raw_response_wrapper(
             events.retrieve,
         )
-        self.list = _legacy_response.to_raw_response_wrapper(
+        self.list = to_raw_response_wrapper(
             events.list,
         )
 
 
-class AsyncEventsWithRawResponse:
-    def __init__(self, events: AsyncEvents) -> None:
+class AsyncEventsResourceWithRawResponse:
+    def __init__(self, events: AsyncEventsResource) -> None:
         self._events = events
 
-        self.retrieve = _legacy_response.async_to_raw_response_wrapper(
+        self.retrieve = async_to_raw_response_wrapper(
             events.retrieve,
         )
-        self.list = _legacy_response.async_to_raw_response_wrapper(
+        self.list = async_to_raw_response_wrapper(
             events.list,
         )
 
 
-class EventsWithStreamingResponse:
-    def __init__(self, events: Events) -> None:
+class EventsResourceWithStreamingResponse:
+    def __init__(self, events: EventsResource) -> None:
         self._events = events
 
         self.retrieve = to_streamed_response_wrapper(
@@ -256,8 +260,8 @@ class EventsWithStreamingResponse:
         )
 
 
-class AsyncEventsWithStreamingResponse:
-    def __init__(self, events: AsyncEvents) -> None:
+class AsyncEventsResourceWithStreamingResponse:
+    def __init__(self, events: AsyncEventsResource) -> None:
         self._events = events
 
         self.retrieve = async_to_streamed_response_wrapper(

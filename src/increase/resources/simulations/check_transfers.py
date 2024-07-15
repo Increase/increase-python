@@ -4,25 +4,29 @@ from __future__ import annotations
 
 import httpx
 
-from ... import _legacy_response
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
+from ..._response import (
+    to_raw_response_wrapper,
+    to_streamed_response_wrapper,
+    async_to_raw_response_wrapper,
+    async_to_streamed_response_wrapper,
+)
 from ..._base_client import make_request_options
 from ...types.check_transfer import CheckTransfer
 
-__all__ = ["CheckTransfers", "AsyncCheckTransfers"]
+__all__ = ["CheckTransfersResource", "AsyncCheckTransfersResource"]
 
 
-class CheckTransfers(SyncAPIResource):
+class CheckTransfersResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> CheckTransfersWithRawResponse:
-        return CheckTransfersWithRawResponse(self)
+    def with_raw_response(self) -> CheckTransfersResourceWithRawResponse:
+        return CheckTransfersResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> CheckTransfersWithStreamingResponse:
-        return CheckTransfersWithStreamingResponse(self)
+    def with_streaming_response(self) -> CheckTransfersResourceWithStreamingResponse:
+        return CheckTransfersResourceWithStreamingResponse(self)
 
     def mail(
         self,
@@ -69,14 +73,14 @@ class CheckTransfers(SyncAPIResource):
         )
 
 
-class AsyncCheckTransfers(AsyncAPIResource):
+class AsyncCheckTransfersResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncCheckTransfersWithRawResponse:
-        return AsyncCheckTransfersWithRawResponse(self)
+    def with_raw_response(self) -> AsyncCheckTransfersResourceWithRawResponse:
+        return AsyncCheckTransfersResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncCheckTransfersWithStreamingResponse:
-        return AsyncCheckTransfersWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncCheckTransfersResourceWithStreamingResponse:
+        return AsyncCheckTransfersResourceWithStreamingResponse(self)
 
     async def mail(
         self,
@@ -123,26 +127,26 @@ class AsyncCheckTransfers(AsyncAPIResource):
         )
 
 
-class CheckTransfersWithRawResponse:
-    def __init__(self, check_transfers: CheckTransfers) -> None:
+class CheckTransfersResourceWithRawResponse:
+    def __init__(self, check_transfers: CheckTransfersResource) -> None:
         self._check_transfers = check_transfers
 
-        self.mail = _legacy_response.to_raw_response_wrapper(
+        self.mail = to_raw_response_wrapper(
             check_transfers.mail,
         )
 
 
-class AsyncCheckTransfersWithRawResponse:
-    def __init__(self, check_transfers: AsyncCheckTransfers) -> None:
+class AsyncCheckTransfersResourceWithRawResponse:
+    def __init__(self, check_transfers: AsyncCheckTransfersResource) -> None:
         self._check_transfers = check_transfers
 
-        self.mail = _legacy_response.async_to_raw_response_wrapper(
+        self.mail = async_to_raw_response_wrapper(
             check_transfers.mail,
         )
 
 
-class CheckTransfersWithStreamingResponse:
-    def __init__(self, check_transfers: CheckTransfers) -> None:
+class CheckTransfersResourceWithStreamingResponse:
+    def __init__(self, check_transfers: CheckTransfersResource) -> None:
         self._check_transfers = check_transfers
 
         self.mail = to_streamed_response_wrapper(
@@ -150,8 +154,8 @@ class CheckTransfersWithStreamingResponse:
         )
 
 
-class AsyncCheckTransfersWithStreamingResponse:
-    def __init__(self, check_transfers: AsyncCheckTransfers) -> None:
+class AsyncCheckTransfersResourceWithStreamingResponse:
+    def __init__(self, check_transfers: AsyncCheckTransfersResource) -> None:
         self._check_transfers = check_transfers
 
         self.mail = async_to_streamed_response_wrapper(

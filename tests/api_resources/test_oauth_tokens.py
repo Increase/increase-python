@@ -89,7 +89,7 @@ class TestAsyncOAuthTokens:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        oauth_token = response.parse()
+        oauth_token = await response.parse()
         assert_matches_type(OAuthToken, oauth_token, path=["response"])
 
     @parametrize
