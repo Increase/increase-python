@@ -98,7 +98,7 @@ class TestAsyncCardDisputes:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        card_dispute = response.parse()
+        card_dispute = await response.parse()
         assert_matches_type(CardDispute, card_dispute, path=["response"])
 
     @parametrize

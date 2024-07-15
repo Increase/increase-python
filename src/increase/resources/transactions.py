@@ -4,28 +4,32 @@ from __future__ import annotations
 
 import httpx
 
-from .. import _legacy_response
 from ..types import transaction_list_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
+from .._response import (
+    to_raw_response_wrapper,
+    to_streamed_response_wrapper,
+    async_to_raw_response_wrapper,
+    async_to_streamed_response_wrapper,
+)
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
 from ..types.transaction import Transaction
 
-__all__ = ["Transactions", "AsyncTransactions"]
+__all__ = ["TransactionsResource", "AsyncTransactionsResource"]
 
 
-class Transactions(SyncAPIResource):
+class TransactionsResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> TransactionsWithRawResponse:
-        return TransactionsWithRawResponse(self)
+    def with_raw_response(self) -> TransactionsResourceWithRawResponse:
+        return TransactionsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> TransactionsWithStreamingResponse:
-        return TransactionsWithStreamingResponse(self)
+    def with_streaming_response(self) -> TransactionsResourceWithStreamingResponse:
+        return TransactionsResourceWithStreamingResponse(self)
 
     def retrieve(
         self,
@@ -124,14 +128,14 @@ class Transactions(SyncAPIResource):
         )
 
 
-class AsyncTransactions(AsyncAPIResource):
+class AsyncTransactionsResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncTransactionsWithRawResponse:
-        return AsyncTransactionsWithRawResponse(self)
+    def with_raw_response(self) -> AsyncTransactionsResourceWithRawResponse:
+        return AsyncTransactionsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncTransactionsWithStreamingResponse:
-        return AsyncTransactionsWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncTransactionsResourceWithStreamingResponse:
+        return AsyncTransactionsResourceWithStreamingResponse(self)
 
     async def retrieve(
         self,
@@ -230,32 +234,32 @@ class AsyncTransactions(AsyncAPIResource):
         )
 
 
-class TransactionsWithRawResponse:
-    def __init__(self, transactions: Transactions) -> None:
+class TransactionsResourceWithRawResponse:
+    def __init__(self, transactions: TransactionsResource) -> None:
         self._transactions = transactions
 
-        self.retrieve = _legacy_response.to_raw_response_wrapper(
+        self.retrieve = to_raw_response_wrapper(
             transactions.retrieve,
         )
-        self.list = _legacy_response.to_raw_response_wrapper(
+        self.list = to_raw_response_wrapper(
             transactions.list,
         )
 
 
-class AsyncTransactionsWithRawResponse:
-    def __init__(self, transactions: AsyncTransactions) -> None:
+class AsyncTransactionsResourceWithRawResponse:
+    def __init__(self, transactions: AsyncTransactionsResource) -> None:
         self._transactions = transactions
 
-        self.retrieve = _legacy_response.async_to_raw_response_wrapper(
+        self.retrieve = async_to_raw_response_wrapper(
             transactions.retrieve,
         )
-        self.list = _legacy_response.async_to_raw_response_wrapper(
+        self.list = async_to_raw_response_wrapper(
             transactions.list,
         )
 
 
-class TransactionsWithStreamingResponse:
-    def __init__(self, transactions: Transactions) -> None:
+class TransactionsResourceWithStreamingResponse:
+    def __init__(self, transactions: TransactionsResource) -> None:
         self._transactions = transactions
 
         self.retrieve = to_streamed_response_wrapper(
@@ -266,8 +270,8 @@ class TransactionsWithStreamingResponse:
         )
 
 
-class AsyncTransactionsWithStreamingResponse:
-    def __init__(self, transactions: AsyncTransactions) -> None:
+class AsyncTransactionsResourceWithStreamingResponse:
+    def __init__(self, transactions: AsyncTransactionsResource) -> None:
         self._transactions = transactions
 
         self.retrieve = async_to_streamed_response_wrapper(

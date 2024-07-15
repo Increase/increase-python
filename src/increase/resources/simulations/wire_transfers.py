@@ -4,50 +4,34 @@ from __future__ import annotations
 
 import httpx
 
-from ... import _legacy_response
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from ..._utils import (
-    maybe_transform,
-    async_maybe_transform,
-)
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
+from ..._response import (
+    to_raw_response_wrapper,
+    to_streamed_response_wrapper,
+    async_to_raw_response_wrapper,
+    async_to_streamed_response_wrapper,
+)
 from ..._base_client import make_request_options
-from ...types.simulations import wire_transfer_create_inbound_params
-from ...types.inbound_wire_transfer import InboundWireTransfer
+from ...types.wire_transfer import WireTransfer
 
-__all__ = ["WireTransfers", "AsyncWireTransfers"]
+__all__ = ["WireTransfersResource", "AsyncWireTransfersResource"]
 
 
-class WireTransfers(SyncAPIResource):
+class WireTransfersResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> WireTransfersWithRawResponse:
-        return WireTransfersWithRawResponse(self)
+    def with_raw_response(self) -> WireTransfersResourceWithRawResponse:
+        return WireTransfersResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> WireTransfersWithStreamingResponse:
-        return WireTransfersWithStreamingResponse(self)
+    def with_streaming_response(self) -> WireTransfersResourceWithStreamingResponse:
+        return WireTransfersResourceWithStreamingResponse(self)
 
-    def create_inbound(
+    def reverse(
         self,
+        wire_transfer_id: str,
         *,
-        account_number_id: str,
-        amount: int,
-        beneficiary_address_line1: str | NotGiven = NOT_GIVEN,
-        beneficiary_address_line2: str | NotGiven = NOT_GIVEN,
-        beneficiary_address_line3: str | NotGiven = NOT_GIVEN,
-        beneficiary_name: str | NotGiven = NOT_GIVEN,
-        beneficiary_reference: str | NotGiven = NOT_GIVEN,
-        originator_address_line1: str | NotGiven = NOT_GIVEN,
-        originator_address_line2: str | NotGiven = NOT_GIVEN,
-        originator_address_line3: str | NotGiven = NOT_GIVEN,
-        originator_name: str | NotGiven = NOT_GIVEN,
-        originator_routing_number: str | NotGiven = NOT_GIVEN,
-        originator_to_beneficiary_information_line1: str | NotGiven = NOT_GIVEN,
-        originator_to_beneficiary_information_line2: str | NotGiven = NOT_GIVEN,
-        originator_to_beneficiary_information_line3: str | NotGiven = NOT_GIVEN,
-        originator_to_beneficiary_information_line4: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -55,56 +39,15 @@ class WireTransfers(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> InboundWireTransfer:
+    ) -> WireTransfer:
         """
-        Simulates an inbound Wire Transfer to your account.
+        Simulates the reversal of a [Wire Transfer](#wire-transfers) by the Federal
+        Reserve due to error conditions. This will also create a
+        [Transaction](#transaction) to account for the returned funds. This Wire
+        Transfer must first have a `status` of `complete`.
 
         Args:
-          account_number_id: The identifier of the Account Number the inbound Wire Transfer is for.
-
-          amount: The transfer amount in cents. Must be positive.
-
-          beneficiary_address_line1: The sending bank will set beneficiary_address_line1 in production. You can
-              simulate any value here.
-
-          beneficiary_address_line2: The sending bank will set beneficiary_address_line2 in production. You can
-              simulate any value here.
-
-          beneficiary_address_line3: The sending bank will set beneficiary_address_line3 in production. You can
-              simulate any value here.
-
-          beneficiary_name: The sending bank will set beneficiary_name in production. You can simulate any
-              value here.
-
-          beneficiary_reference: The sending bank will set beneficiary_reference in production. You can simulate
-              any value here.
-
-          originator_address_line1: The sending bank will set originator_address_line1 in production. You can
-              simulate any value here.
-
-          originator_address_line2: The sending bank will set originator_address_line2 in production. You can
-              simulate any value here.
-
-          originator_address_line3: The sending bank will set originator_address_line3 in production. You can
-              simulate any value here.
-
-          originator_name: The sending bank will set originator_name in production. You can simulate any
-              value here.
-
-          originator_routing_number: The sending bank will set originator_routing_number in production. You can
-              simulate any value here.
-
-          originator_to_beneficiary_information_line1: The sending bank will set originator_to_beneficiary_information_line1 in
-              production. You can simulate any value here.
-
-          originator_to_beneficiary_information_line2: The sending bank will set originator_to_beneficiary_information_line2 in
-              production. You can simulate any value here.
-
-          originator_to_beneficiary_information_line3: The sending bank will set originator_to_beneficiary_information_line3 in
-              production. You can simulate any value here.
-
-          originator_to_beneficiary_information_line4: The sending bank will set originator_to_beneficiary_information_line4 in
-              production. You can simulate any value here.
+          wire_transfer_id: The identifier of the Wire Transfer you wish to reverse.
 
           extra_headers: Send extra headers
 
@@ -116,29 +59,10 @@ class WireTransfers(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
+        if not wire_transfer_id:
+            raise ValueError(f"Expected a non-empty value for `wire_transfer_id` but received {wire_transfer_id!r}")
         return self._post(
-            "/simulations/inbound_wire_transfers",
-            body=maybe_transform(
-                {
-                    "account_number_id": account_number_id,
-                    "amount": amount,
-                    "beneficiary_address_line1": beneficiary_address_line1,
-                    "beneficiary_address_line2": beneficiary_address_line2,
-                    "beneficiary_address_line3": beneficiary_address_line3,
-                    "beneficiary_name": beneficiary_name,
-                    "beneficiary_reference": beneficiary_reference,
-                    "originator_address_line1": originator_address_line1,
-                    "originator_address_line2": originator_address_line2,
-                    "originator_address_line3": originator_address_line3,
-                    "originator_name": originator_name,
-                    "originator_routing_number": originator_routing_number,
-                    "originator_to_beneficiary_information_line1": originator_to_beneficiary_information_line1,
-                    "originator_to_beneficiary_information_line2": originator_to_beneficiary_information_line2,
-                    "originator_to_beneficiary_information_line3": originator_to_beneficiary_information_line3,
-                    "originator_to_beneficiary_information_line4": originator_to_beneficiary_information_line4,
-                },
-                wire_transfer_create_inbound_params.WireTransferCreateInboundParams,
-            ),
+            f"/simulations/wire_transfers/{wire_transfer_id}/reverse",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -146,38 +70,13 @@ class WireTransfers(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=InboundWireTransfer,
+            cast_to=WireTransfer,
         )
 
-
-class AsyncWireTransfers(AsyncAPIResource):
-    @cached_property
-    def with_raw_response(self) -> AsyncWireTransfersWithRawResponse:
-        return AsyncWireTransfersWithRawResponse(self)
-
-    @cached_property
-    def with_streaming_response(self) -> AsyncWireTransfersWithStreamingResponse:
-        return AsyncWireTransfersWithStreamingResponse(self)
-
-    async def create_inbound(
+    def submit(
         self,
+        wire_transfer_id: str,
         *,
-        account_number_id: str,
-        amount: int,
-        beneficiary_address_line1: str | NotGiven = NOT_GIVEN,
-        beneficiary_address_line2: str | NotGiven = NOT_GIVEN,
-        beneficiary_address_line3: str | NotGiven = NOT_GIVEN,
-        beneficiary_name: str | NotGiven = NOT_GIVEN,
-        beneficiary_reference: str | NotGiven = NOT_GIVEN,
-        originator_address_line1: str | NotGiven = NOT_GIVEN,
-        originator_address_line2: str | NotGiven = NOT_GIVEN,
-        originator_address_line3: str | NotGiven = NOT_GIVEN,
-        originator_name: str | NotGiven = NOT_GIVEN,
-        originator_routing_number: str | NotGiven = NOT_GIVEN,
-        originator_to_beneficiary_information_line1: str | NotGiven = NOT_GIVEN,
-        originator_to_beneficiary_information_line2: str | NotGiven = NOT_GIVEN,
-        originator_to_beneficiary_information_line3: str | NotGiven = NOT_GIVEN,
-        originator_to_beneficiary_information_line4: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -185,56 +84,14 @@ class AsyncWireTransfers(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> InboundWireTransfer:
+    ) -> WireTransfer:
         """
-        Simulates an inbound Wire Transfer to your account.
+        Simulates the submission of a [Wire Transfer](#wire-transfers) to the Federal
+        Reserve. This transfer must first have a `status` of `pending_approval` or
+        `pending_creating`.
 
         Args:
-          account_number_id: The identifier of the Account Number the inbound Wire Transfer is for.
-
-          amount: The transfer amount in cents. Must be positive.
-
-          beneficiary_address_line1: The sending bank will set beneficiary_address_line1 in production. You can
-              simulate any value here.
-
-          beneficiary_address_line2: The sending bank will set beneficiary_address_line2 in production. You can
-              simulate any value here.
-
-          beneficiary_address_line3: The sending bank will set beneficiary_address_line3 in production. You can
-              simulate any value here.
-
-          beneficiary_name: The sending bank will set beneficiary_name in production. You can simulate any
-              value here.
-
-          beneficiary_reference: The sending bank will set beneficiary_reference in production. You can simulate
-              any value here.
-
-          originator_address_line1: The sending bank will set originator_address_line1 in production. You can
-              simulate any value here.
-
-          originator_address_line2: The sending bank will set originator_address_line2 in production. You can
-              simulate any value here.
-
-          originator_address_line3: The sending bank will set originator_address_line3 in production. You can
-              simulate any value here.
-
-          originator_name: The sending bank will set originator_name in production. You can simulate any
-              value here.
-
-          originator_routing_number: The sending bank will set originator_routing_number in production. You can
-              simulate any value here.
-
-          originator_to_beneficiary_information_line1: The sending bank will set originator_to_beneficiary_information_line1 in
-              production. You can simulate any value here.
-
-          originator_to_beneficiary_information_line2: The sending bank will set originator_to_beneficiary_information_line2 in
-              production. You can simulate any value here.
-
-          originator_to_beneficiary_information_line3: The sending bank will set originator_to_beneficiary_information_line3 in
-              production. You can simulate any value here.
-
-          originator_to_beneficiary_information_line4: The sending bank will set originator_to_beneficiary_information_line4 in
-              production. You can simulate any value here.
+          wire_transfer_id: The identifier of the Wire Transfer you wish to submit.
 
           extra_headers: Send extra headers
 
@@ -246,29 +103,10 @@ class AsyncWireTransfers(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
-        return await self._post(
-            "/simulations/inbound_wire_transfers",
-            body=await async_maybe_transform(
-                {
-                    "account_number_id": account_number_id,
-                    "amount": amount,
-                    "beneficiary_address_line1": beneficiary_address_line1,
-                    "beneficiary_address_line2": beneficiary_address_line2,
-                    "beneficiary_address_line3": beneficiary_address_line3,
-                    "beneficiary_name": beneficiary_name,
-                    "beneficiary_reference": beneficiary_reference,
-                    "originator_address_line1": originator_address_line1,
-                    "originator_address_line2": originator_address_line2,
-                    "originator_address_line3": originator_address_line3,
-                    "originator_name": originator_name,
-                    "originator_routing_number": originator_routing_number,
-                    "originator_to_beneficiary_information_line1": originator_to_beneficiary_information_line1,
-                    "originator_to_beneficiary_information_line2": originator_to_beneficiary_information_line2,
-                    "originator_to_beneficiary_information_line3": originator_to_beneficiary_information_line3,
-                    "originator_to_beneficiary_information_line4": originator_to_beneficiary_information_line4,
-                },
-                wire_transfer_create_inbound_params.WireTransferCreateInboundParams,
-            ),
+        if not wire_transfer_id:
+            raise ValueError(f"Expected a non-empty value for `wire_transfer_id` but received {wire_transfer_id!r}")
+        return self._post(
+            f"/simulations/wire_transfers/{wire_transfer_id}/submit",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -276,41 +114,152 @@ class AsyncWireTransfers(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=InboundWireTransfer,
+            cast_to=WireTransfer,
         )
 
 
-class WireTransfersWithRawResponse:
-    def __init__(self, wire_transfers: WireTransfers) -> None:
-        self._wire_transfers = wire_transfers
+class AsyncWireTransfersResource(AsyncAPIResource):
+    @cached_property
+    def with_raw_response(self) -> AsyncWireTransfersResourceWithRawResponse:
+        return AsyncWireTransfersResourceWithRawResponse(self)
 
-        self.create_inbound = _legacy_response.to_raw_response_wrapper(
-            wire_transfers.create_inbound,
+    @cached_property
+    def with_streaming_response(self) -> AsyncWireTransfersResourceWithStreamingResponse:
+        return AsyncWireTransfersResourceWithStreamingResponse(self)
+
+    async def reverse(
+        self,
+        wire_transfer_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> WireTransfer:
+        """
+        Simulates the reversal of a [Wire Transfer](#wire-transfers) by the Federal
+        Reserve due to error conditions. This will also create a
+        [Transaction](#transaction) to account for the returned funds. This Wire
+        Transfer must first have a `status` of `complete`.
+
+        Args:
+          wire_transfer_id: The identifier of the Wire Transfer you wish to reverse.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not wire_transfer_id:
+            raise ValueError(f"Expected a non-empty value for `wire_transfer_id` but received {wire_transfer_id!r}")
+        return await self._post(
+            f"/simulations/wire_transfers/{wire_transfer_id}/reverse",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=WireTransfer,
+        )
+
+    async def submit(
+        self,
+        wire_transfer_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> WireTransfer:
+        """
+        Simulates the submission of a [Wire Transfer](#wire-transfers) to the Federal
+        Reserve. This transfer must first have a `status` of `pending_approval` or
+        `pending_creating`.
+
+        Args:
+          wire_transfer_id: The identifier of the Wire Transfer you wish to submit.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not wire_transfer_id:
+            raise ValueError(f"Expected a non-empty value for `wire_transfer_id` but received {wire_transfer_id!r}")
+        return await self._post(
+            f"/simulations/wire_transfers/{wire_transfer_id}/submit",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=WireTransfer,
         )
 
 
-class AsyncWireTransfersWithRawResponse:
-    def __init__(self, wire_transfers: AsyncWireTransfers) -> None:
+class WireTransfersResourceWithRawResponse:
+    def __init__(self, wire_transfers: WireTransfersResource) -> None:
         self._wire_transfers = wire_transfers
 
-        self.create_inbound = _legacy_response.async_to_raw_response_wrapper(
-            wire_transfers.create_inbound,
+        self.reverse = to_raw_response_wrapper(
+            wire_transfers.reverse,
+        )
+        self.submit = to_raw_response_wrapper(
+            wire_transfers.submit,
         )
 
 
-class WireTransfersWithStreamingResponse:
-    def __init__(self, wire_transfers: WireTransfers) -> None:
+class AsyncWireTransfersResourceWithRawResponse:
+    def __init__(self, wire_transfers: AsyncWireTransfersResource) -> None:
         self._wire_transfers = wire_transfers
 
-        self.create_inbound = to_streamed_response_wrapper(
-            wire_transfers.create_inbound,
+        self.reverse = async_to_raw_response_wrapper(
+            wire_transfers.reverse,
+        )
+        self.submit = async_to_raw_response_wrapper(
+            wire_transfers.submit,
         )
 
 
-class AsyncWireTransfersWithStreamingResponse:
-    def __init__(self, wire_transfers: AsyncWireTransfers) -> None:
+class WireTransfersResourceWithStreamingResponse:
+    def __init__(self, wire_transfers: WireTransfersResource) -> None:
         self._wire_transfers = wire_transfers
 
-        self.create_inbound = async_to_streamed_response_wrapper(
-            wire_transfers.create_inbound,
+        self.reverse = to_streamed_response_wrapper(
+            wire_transfers.reverse,
+        )
+        self.submit = to_streamed_response_wrapper(
+            wire_transfers.submit,
+        )
+
+
+class AsyncWireTransfersResourceWithStreamingResponse:
+    def __init__(self, wire_transfers: AsyncWireTransfersResource) -> None:
+        self._wire_transfers = wire_transfers
+
+        self.reverse = async_to_streamed_response_wrapper(
+            wire_transfers.reverse,
+        )
+        self.submit = async_to_streamed_response_wrapper(
+            wire_transfers.submit,
         )

@@ -312,7 +312,7 @@ class TestAsyncPhysicalCards:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        physical_card = response.parse()
+        physical_card = await response.parse()
         assert_matches_type(PhysicalCard, physical_card, path=["response"])
 
     @parametrize
@@ -357,7 +357,7 @@ class TestAsyncPhysicalCards:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        physical_card = response.parse()
+        physical_card = await response.parse()
         assert_matches_type(PhysicalCard, physical_card, path=["response"])
 
     @parametrize
@@ -397,7 +397,7 @@ class TestAsyncPhysicalCards:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        physical_card = response.parse()
+        physical_card = await response.parse()
         assert_matches_type(PhysicalCard, physical_card, path=["response"])
 
     @parametrize
@@ -449,7 +449,7 @@ class TestAsyncPhysicalCards:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        physical_card = response.parse()
+        physical_card = await response.parse()
         assert_matches_type(AsyncPage[PhysicalCard], physical_card, path=["response"])
 
     @parametrize

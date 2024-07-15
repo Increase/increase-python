@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import httpx
 
-from ... import _legacy_response
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import (
     maybe_transform,
@@ -12,22 +11,27 @@ from ..._utils import (
 )
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
+from ..._response import (
+    to_raw_response_wrapper,
+    to_streamed_response_wrapper,
+    async_to_raw_response_wrapper,
+    async_to_streamed_response_wrapper,
+)
 from ..._base_client import make_request_options
 from ...types.simulations import card_refund_create_params
 from ...types.transaction import Transaction
 
-__all__ = ["CardRefunds", "AsyncCardRefunds"]
+__all__ = ["CardRefundsResource", "AsyncCardRefundsResource"]
 
 
-class CardRefunds(SyncAPIResource):
+class CardRefundsResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> CardRefundsWithRawResponse:
-        return CardRefundsWithRawResponse(self)
+    def with_raw_response(self) -> CardRefundsResourceWithRawResponse:
+        return CardRefundsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> CardRefundsWithStreamingResponse:
-        return CardRefundsWithStreamingResponse(self)
+    def with_streaming_response(self) -> CardRefundsResourceWithStreamingResponse:
+        return CardRefundsResourceWithStreamingResponse(self)
 
     def create(
         self,
@@ -74,14 +78,14 @@ class CardRefunds(SyncAPIResource):
         )
 
 
-class AsyncCardRefunds(AsyncAPIResource):
+class AsyncCardRefundsResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncCardRefundsWithRawResponse:
-        return AsyncCardRefundsWithRawResponse(self)
+    def with_raw_response(self) -> AsyncCardRefundsResourceWithRawResponse:
+        return AsyncCardRefundsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncCardRefundsWithStreamingResponse:
-        return AsyncCardRefundsWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncCardRefundsResourceWithStreamingResponse:
+        return AsyncCardRefundsResourceWithStreamingResponse(self)
 
     async def create(
         self,
@@ -130,26 +134,26 @@ class AsyncCardRefunds(AsyncAPIResource):
         )
 
 
-class CardRefundsWithRawResponse:
-    def __init__(self, card_refunds: CardRefunds) -> None:
+class CardRefundsResourceWithRawResponse:
+    def __init__(self, card_refunds: CardRefundsResource) -> None:
         self._card_refunds = card_refunds
 
-        self.create = _legacy_response.to_raw_response_wrapper(
+        self.create = to_raw_response_wrapper(
             card_refunds.create,
         )
 
 
-class AsyncCardRefundsWithRawResponse:
-    def __init__(self, card_refunds: AsyncCardRefunds) -> None:
+class AsyncCardRefundsResourceWithRawResponse:
+    def __init__(self, card_refunds: AsyncCardRefundsResource) -> None:
         self._card_refunds = card_refunds
 
-        self.create = _legacy_response.async_to_raw_response_wrapper(
+        self.create = async_to_raw_response_wrapper(
             card_refunds.create,
         )
 
 
-class CardRefundsWithStreamingResponse:
-    def __init__(self, card_refunds: CardRefunds) -> None:
+class CardRefundsResourceWithStreamingResponse:
+    def __init__(self, card_refunds: CardRefundsResource) -> None:
         self._card_refunds = card_refunds
 
         self.create = to_streamed_response_wrapper(
@@ -157,8 +161,8 @@ class CardRefundsWithStreamingResponse:
         )
 
 
-class AsyncCardRefundsWithStreamingResponse:
-    def __init__(self, card_refunds: AsyncCardRefunds) -> None:
+class AsyncCardRefundsResourceWithStreamingResponse:
+    def __init__(self, card_refunds: AsyncCardRefundsResource) -> None:
         self._card_refunds = card_refunds
 
         self.create = async_to_streamed_response_wrapper(

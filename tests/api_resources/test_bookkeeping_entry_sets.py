@@ -225,7 +225,7 @@ class TestAsyncBookkeepingEntrySets:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        bookkeeping_entry_set = response.parse()
+        bookkeeping_entry_set = await response.parse()
         assert_matches_type(BookkeepingEntrySet, bookkeeping_entry_set, path=["response"])
 
     @parametrize
@@ -265,7 +265,7 @@ class TestAsyncBookkeepingEntrySets:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        bookkeeping_entry_set = response.parse()
+        bookkeeping_entry_set = await response.parse()
         assert_matches_type(BookkeepingEntrySet, bookkeeping_entry_set, path=["response"])
 
     @parametrize
@@ -311,7 +311,7 @@ class TestAsyncBookkeepingEntrySets:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        bookkeeping_entry_set = response.parse()
+        bookkeeping_entry_set = await response.parse()
         assert_matches_type(AsyncPage[BookkeepingEntrySet], bookkeeping_entry_set, path=["response"])
 
     @parametrize

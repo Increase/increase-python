@@ -2,1154 +2,903 @@
 
 from __future__ import annotations
 
-import httpx
-
-from ... import _legacy_response
-from .cards import (
-    Cards,
-    AsyncCards,
-    CardsWithRawResponse,
-    AsyncCardsWithRawResponse,
-    CardsWithStreamingResponse,
-    AsyncCardsWithStreamingResponse,
-)
-from ...types import (
-    simulation_card_reversals_params,
-    simulation_card_increments_params,
-    simulation_card_fuel_confirmations_params,
-    simulation_card_authorization_expirations_params,
-)
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from ..._utils import (
-    maybe_transform,
-    async_maybe_transform,
-)
 from .programs import (
-    Programs,
-    AsyncPrograms,
-    ProgramsWithRawResponse,
-    AsyncProgramsWithRawResponse,
-    ProgramsWithStreamingResponse,
-    AsyncProgramsWithStreamingResponse,
+    ProgramsResource,
+    AsyncProgramsResource,
+    ProgramsResourceWithRawResponse,
+    AsyncProgramsResourceWithRawResponse,
+    ProgramsResourceWithStreamingResponse,
+    AsyncProgramsResourceWithStreamingResponse,
 )
 from ..._compat import cached_property
 from .documents import (
-    Documents,
-    AsyncDocuments,
-    DocumentsWithRawResponse,
-    AsyncDocumentsWithRawResponse,
-    DocumentsWithStreamingResponse,
-    AsyncDocumentsWithStreamingResponse,
+    DocumentsResource,
+    AsyncDocumentsResource,
+    DocumentsResourceWithRawResponse,
+    AsyncDocumentsResourceWithRawResponse,
+    DocumentsResourceWithStreamingResponse,
+    AsyncDocumentsResourceWithStreamingResponse,
 )
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from .card_refunds import (
-    CardRefunds,
-    AsyncCardRefunds,
-    CardRefundsWithRawResponse,
-    AsyncCardRefundsWithRawResponse,
-    CardRefundsWithStreamingResponse,
-    AsyncCardRefundsWithStreamingResponse,
+    CardRefundsResource,
+    AsyncCardRefundsResource,
+    CardRefundsResourceWithRawResponse,
+    AsyncCardRefundsResourceWithRawResponse,
+    CardRefundsResourceWithStreamingResponse,
+    AsyncCardRefundsResourceWithStreamingResponse,
 )
 from .ach_transfers import (
-    ACHTransfers,
-    AsyncACHTransfers,
-    ACHTransfersWithRawResponse,
-    AsyncACHTransfersWithRawResponse,
-    ACHTransfersWithStreamingResponse,
-    AsyncACHTransfersWithStreamingResponse,
+    ACHTransfersResource,
+    AsyncACHTransfersResource,
+    ACHTransfersResourceWithRawResponse,
+    AsyncACHTransfersResourceWithRawResponse,
+    ACHTransfersResourceWithStreamingResponse,
+    AsyncACHTransfersResourceWithStreamingResponse,
 )
 from .card_disputes import (
-    CardDisputes,
-    AsyncCardDisputes,
-    CardDisputesWithRawResponse,
-    AsyncCardDisputesWithRawResponse,
-    CardDisputesWithStreamingResponse,
-    AsyncCardDisputesWithStreamingResponse,
+    CardDisputesResource,
+    AsyncCardDisputesResource,
+    CardDisputesResourceWithRawResponse,
+    AsyncCardDisputesResourceWithRawResponse,
+    CardDisputesResourceWithStreamingResponse,
+    AsyncCardDisputesResourceWithStreamingResponse,
 )
-from ..._base_client import make_request_options
+from .card_reversals import (
+    CardReversalsResource,
+    AsyncCardReversalsResource,
+    CardReversalsResourceWithRawResponse,
+    AsyncCardReversalsResourceWithRawResponse,
+    CardReversalsResourceWithStreamingResponse,
+    AsyncCardReversalsResourceWithStreamingResponse,
+)
 from .check_deposits import (
-    CheckDeposits,
-    AsyncCheckDeposits,
-    CheckDepositsWithRawResponse,
-    AsyncCheckDepositsWithRawResponse,
-    CheckDepositsWithStreamingResponse,
-    AsyncCheckDepositsWithStreamingResponse,
+    CheckDepositsResource,
+    AsyncCheckDepositsResource,
+    CheckDepositsResourceWithRawResponse,
+    AsyncCheckDepositsResourceWithRawResponse,
+    CheckDepositsResourceWithStreamingResponse,
+    AsyncCheckDepositsResourceWithStreamingResponse,
 )
 from .physical_cards import (
-    PhysicalCards,
-    AsyncPhysicalCards,
-    PhysicalCardsWithRawResponse,
-    AsyncPhysicalCardsWithRawResponse,
-    PhysicalCardsWithStreamingResponse,
-    AsyncPhysicalCardsWithStreamingResponse,
+    PhysicalCardsResource,
+    AsyncPhysicalCardsResource,
+    PhysicalCardsResourceWithRawResponse,
+    AsyncPhysicalCardsResourceWithRawResponse,
+    PhysicalCardsResourceWithStreamingResponse,
+    AsyncPhysicalCardsResourceWithStreamingResponse,
 )
 from .wire_transfers import (
-    WireTransfers,
-    AsyncWireTransfers,
-    WireTransfersWithRawResponse,
-    AsyncWireTransfersWithRawResponse,
-    WireTransfersWithStreamingResponse,
-    AsyncWireTransfersWithStreamingResponse,
+    WireTransfersResource,
+    AsyncWireTransfersResource,
+    WireTransfersResourceWithRawResponse,
+    AsyncWireTransfersResourceWithRawResponse,
+    WireTransfersResourceWithStreamingResponse,
+    AsyncWireTransfersResourceWithStreamingResponse,
+)
+from .card_increments import (
+    CardIncrementsResource,
+    AsyncCardIncrementsResource,
+    CardIncrementsResourceWithRawResponse,
+    AsyncCardIncrementsResourceWithRawResponse,
+    CardIncrementsResourceWithStreamingResponse,
+    AsyncCardIncrementsResourceWithStreamingResponse,
 )
 from .check_transfers import (
-    CheckTransfers,
-    AsyncCheckTransfers,
-    CheckTransfersWithRawResponse,
-    AsyncCheckTransfersWithRawResponse,
-    CheckTransfersWithStreamingResponse,
-    AsyncCheckTransfersWithStreamingResponse,
+    CheckTransfersResource,
+    AsyncCheckTransfersResource,
+    CheckTransfersResourceWithRawResponse,
+    AsyncCheckTransfersResourceWithRawResponse,
+    CheckTransfersResourceWithStreamingResponse,
+    AsyncCheckTransfersResourceWithStreamingResponse,
+)
+from .card_settlements import (
+    CardSettlementsResource,
+    AsyncCardSettlementsResource,
+    CardSettlementsResourceWithRawResponse,
+    AsyncCardSettlementsResourceWithRawResponse,
+    CardSettlementsResourceWithStreamingResponse,
+    AsyncCardSettlementsResourceWithStreamingResponse,
 )
 from .account_transfers import (
-    AccountTransfers,
-    AsyncAccountTransfers,
-    AccountTransfersWithRawResponse,
-    AsyncAccountTransfersWithRawResponse,
-    AccountTransfersWithStreamingResponse,
-    AsyncAccountTransfersWithStreamingResponse,
+    AccountTransfersResource,
+    AsyncAccountTransfersResource,
+    AccountTransfersResourceWithRawResponse,
+    AsyncAccountTransfersResourceWithRawResponse,
+    AccountTransfersResourceWithStreamingResponse,
+    AsyncAccountTransfersResourceWithStreamingResponse,
 )
 from .interest_payments import (
-    InterestPayments,
-    AsyncInterestPayments,
-    InterestPaymentsWithRawResponse,
-    AsyncInterestPaymentsWithRawResponse,
-    InterestPaymentsWithStreamingResponse,
-    AsyncInterestPaymentsWithStreamingResponse,
+    InterestPaymentsResource,
+    AsyncInterestPaymentsResource,
+    InterestPaymentsResourceWithRawResponse,
+    AsyncInterestPaymentsResourceWithRawResponse,
+    InterestPaymentsResourceWithStreamingResponse,
+    AsyncInterestPaymentsResourceWithStreamingResponse,
 )
 from .account_statements import (
-    AccountStatements,
-    AsyncAccountStatements,
-    AccountStatementsWithRawResponse,
-    AsyncAccountStatementsWithRawResponse,
-    AccountStatementsWithStreamingResponse,
-    AsyncAccountStatementsWithStreamingResponse,
+    AccountStatementsResource,
+    AsyncAccountStatementsResource,
+    AccountStatementsResourceWithRawResponse,
+    AsyncAccountStatementsResourceWithRawResponse,
+    AccountStatementsResourceWithStreamingResponse,
+    AsyncAccountStatementsResourceWithStreamingResponse,
+)
+from .card_authorizations import (
+    CardAuthorizationsResource,
+    AsyncCardAuthorizationsResource,
+    CardAuthorizationsResourceWithRawResponse,
+    AsyncCardAuthorizationsResourceWithRawResponse,
+    CardAuthorizationsResourceWithStreamingResponse,
+    AsyncCardAuthorizationsResourceWithStreamingResponse,
 )
 from .inbound_funds_holds import (
-    InboundFundsHolds,
-    AsyncInboundFundsHolds,
-    InboundFundsHoldsWithRawResponse,
-    AsyncInboundFundsHoldsWithRawResponse,
-    InboundFundsHoldsWithStreamingResponse,
-    AsyncInboundFundsHoldsWithStreamingResponse,
+    InboundFundsHoldsResource,
+    AsyncInboundFundsHoldsResource,
+    InboundFundsHoldsResourceWithRawResponse,
+    AsyncInboundFundsHoldsResourceWithRawResponse,
+    InboundFundsHoldsResourceWithStreamingResponse,
+    AsyncInboundFundsHoldsResourceWithStreamingResponse,
 )
-from ...types.card_payment import CardPayment
+from .inbound_ach_transfers import (
+    InboundACHTransfersResource,
+    AsyncInboundACHTransfersResource,
+    InboundACHTransfersResourceWithRawResponse,
+    AsyncInboundACHTransfersResourceWithRawResponse,
+    InboundACHTransfersResourceWithStreamingResponse,
+    AsyncInboundACHTransfersResourceWithStreamingResponse,
+)
 from .inbound_check_deposits import (
-    InboundCheckDeposits,
-    AsyncInboundCheckDeposits,
-    InboundCheckDepositsWithRawResponse,
-    AsyncInboundCheckDepositsWithRawResponse,
-    InboundCheckDepositsWithStreamingResponse,
-    AsyncInboundCheckDepositsWithStreamingResponse,
+    InboundCheckDepositsResource,
+    AsyncInboundCheckDepositsResource,
+    InboundCheckDepositsResourceWithRawResponse,
+    AsyncInboundCheckDepositsResourceWithRawResponse,
+    InboundCheckDepositsResourceWithStreamingResponse,
+    AsyncInboundCheckDepositsResourceWithStreamingResponse,
+)
+from .inbound_wire_transfers import (
+    InboundWireTransfersResource,
+    AsyncInboundWireTransfersResource,
+    InboundWireTransfersResourceWithRawResponse,
+    AsyncInboundWireTransfersResourceWithRawResponse,
+    InboundWireTransfersResourceWithStreamingResponse,
+    AsyncInboundWireTransfersResourceWithStreamingResponse,
+)
+from .card_fuel_confirmations import (
+    CardFuelConfirmationsResource,
+    AsyncCardFuelConfirmationsResource,
+    CardFuelConfirmationsResourceWithRawResponse,
+    AsyncCardFuelConfirmationsResourceWithRawResponse,
+    CardFuelConfirmationsResourceWithStreamingResponse,
+    AsyncCardFuelConfirmationsResourceWithStreamingResponse,
 )
 from .real_time_payments_transfers import (
-    RealTimePaymentsTransfers,
-    AsyncRealTimePaymentsTransfers,
-    RealTimePaymentsTransfersWithRawResponse,
-    AsyncRealTimePaymentsTransfersWithRawResponse,
-    RealTimePaymentsTransfersWithStreamingResponse,
-    AsyncRealTimePaymentsTransfersWithStreamingResponse,
+    RealTimePaymentsTransfersResource,
+    AsyncRealTimePaymentsTransfersResource,
+    RealTimePaymentsTransfersResourceWithRawResponse,
+    AsyncRealTimePaymentsTransfersResourceWithRawResponse,
+    RealTimePaymentsTransfersResourceWithStreamingResponse,
+    AsyncRealTimePaymentsTransfersResourceWithStreamingResponse,
 )
 from .digital_wallet_token_requests import (
-    DigitalWalletTokenRequests,
-    AsyncDigitalWalletTokenRequests,
-    DigitalWalletTokenRequestsWithRawResponse,
-    AsyncDigitalWalletTokenRequestsWithRawResponse,
-    DigitalWalletTokenRequestsWithStreamingResponse,
-    AsyncDigitalWalletTokenRequestsWithStreamingResponse,
+    DigitalWalletTokenRequestsResource,
+    AsyncDigitalWalletTokenRequestsResource,
+    DigitalWalletTokenRequestsResourceWithRawResponse,
+    AsyncDigitalWalletTokenRequestsResourceWithRawResponse,
+    DigitalWalletTokenRequestsResourceWithStreamingResponse,
+    AsyncDigitalWalletTokenRequestsResourceWithStreamingResponse,
+)
+from .card_authorization_expirations import (
+    CardAuthorizationExpirationsResource,
+    AsyncCardAuthorizationExpirationsResource,
+    CardAuthorizationExpirationsResourceWithRawResponse,
+    AsyncCardAuthorizationExpirationsResourceWithRawResponse,
+    CardAuthorizationExpirationsResourceWithStreamingResponse,
+    AsyncCardAuthorizationExpirationsResourceWithStreamingResponse,
 )
 from .inbound_wire_drawdown_requests import (
-    InboundWireDrawdownRequests,
-    AsyncInboundWireDrawdownRequests,
-    InboundWireDrawdownRequestsWithRawResponse,
-    AsyncInboundWireDrawdownRequestsWithRawResponse,
-    InboundWireDrawdownRequestsWithStreamingResponse,
-    AsyncInboundWireDrawdownRequestsWithStreamingResponse,
+    InboundWireDrawdownRequestsResource,
+    AsyncInboundWireDrawdownRequestsResource,
+    InboundWireDrawdownRequestsResourceWithRawResponse,
+    AsyncInboundWireDrawdownRequestsResourceWithRawResponse,
+    InboundWireDrawdownRequestsResourceWithStreamingResponse,
+    AsyncInboundWireDrawdownRequestsResourceWithStreamingResponse,
 )
-from .inbound_international_ach_transfers import (
-    InboundInternationalACHTransfers,
-    AsyncInboundInternationalACHTransfers,
-    InboundInternationalACHTransfersWithRawResponse,
-    AsyncInboundInternationalACHTransfersWithRawResponse,
-    InboundInternationalACHTransfersWithStreamingResponse,
-    AsyncInboundInternationalACHTransfersWithStreamingResponse,
+from .inbound_real_time_payments_transfers import (
+    InboundRealTimePaymentsTransfersResource,
+    AsyncInboundRealTimePaymentsTransfersResource,
+    InboundRealTimePaymentsTransfersResourceWithRawResponse,
+    AsyncInboundRealTimePaymentsTransfersResourceWithRawResponse,
+    InboundRealTimePaymentsTransfersResourceWithStreamingResponse,
+    AsyncInboundRealTimePaymentsTransfersResourceWithStreamingResponse,
 )
 
-__all__ = ["Simulations", "AsyncSimulations"]
+__all__ = ["SimulationsResource", "AsyncSimulationsResource"]
 
 
-class Simulations(SyncAPIResource):
+class SimulationsResource(SyncAPIResource):
     @cached_property
-    def account_transfers(self) -> AccountTransfers:
-        return AccountTransfers(self._client)
-
-    @cached_property
-    def account_statements(self) -> AccountStatements:
-        return AccountStatements(self._client)
+    def account_transfers(self) -> AccountTransfersResource:
+        return AccountTransfersResource(self._client)
 
     @cached_property
-    def ach_transfers(self) -> ACHTransfers:
-        return ACHTransfers(self._client)
+    def inbound_ach_transfers(self) -> InboundACHTransfersResource:
+        return InboundACHTransfersResource(self._client)
 
     @cached_property
-    def card_disputes(self) -> CardDisputes:
-        return CardDisputes(self._client)
+    def ach_transfers(self) -> ACHTransfersResource:
+        return ACHTransfersResource(self._client)
 
     @cached_property
-    def card_refunds(self) -> CardRefunds:
-        return CardRefunds(self._client)
+    def check_transfers(self) -> CheckTransfersResource:
+        return CheckTransfersResource(self._client)
 
     @cached_property
-    def check_transfers(self) -> CheckTransfers:
-        return CheckTransfers(self._client)
+    def inbound_check_deposits(self) -> InboundCheckDepositsResource:
+        return InboundCheckDepositsResource(self._client)
 
     @cached_property
-    def documents(self) -> Documents:
-        return Documents(self._client)
+    def check_deposits(self) -> CheckDepositsResource:
+        return CheckDepositsResource(self._client)
 
     @cached_property
-    def digital_wallet_token_requests(self) -> DigitalWalletTokenRequests:
-        return DigitalWalletTokenRequests(self._client)
+    def inbound_wire_transfers(self) -> InboundWireTransfersResource:
+        return InboundWireTransfersResource(self._client)
 
     @cached_property
-    def check_deposits(self) -> CheckDeposits:
-        return CheckDeposits(self._client)
+    def wire_transfers(self) -> WireTransfersResource:
+        return WireTransfersResource(self._client)
 
     @cached_property
-    def programs(self) -> Programs:
-        return Programs(self._client)
+    def inbound_wire_drawdown_requests(self) -> InboundWireDrawdownRequestsResource:
+        return InboundWireDrawdownRequestsResource(self._client)
 
     @cached_property
-    def inbound_wire_drawdown_requests(self) -> InboundWireDrawdownRequests:
-        return InboundWireDrawdownRequests(self._client)
+    def inbound_real_time_payments_transfers(self) -> InboundRealTimePaymentsTransfersResource:
+        return InboundRealTimePaymentsTransfersResource(self._client)
 
     @cached_property
-    def inbound_funds_holds(self) -> InboundFundsHolds:
-        return InboundFundsHolds(self._client)
+    def inbound_funds_holds(self) -> InboundFundsHoldsResource:
+        return InboundFundsHoldsResource(self._client)
 
     @cached_property
-    def interest_payments(self) -> InterestPayments:
-        return InterestPayments(self._client)
+    def real_time_payments_transfers(self) -> RealTimePaymentsTransfersResource:
+        return RealTimePaymentsTransfersResource(self._client)
 
     @cached_property
-    def wire_transfers(self) -> WireTransfers:
-        return WireTransfers(self._client)
+    def card_authorizations(self) -> CardAuthorizationsResource:
+        return CardAuthorizationsResource(self._client)
 
     @cached_property
-    def cards(self) -> Cards:
-        return Cards(self._client)
+    def card_settlements(self) -> CardSettlementsResource:
+        return CardSettlementsResource(self._client)
 
     @cached_property
-    def real_time_payments_transfers(self) -> RealTimePaymentsTransfers:
-        return RealTimePaymentsTransfers(self._client)
+    def card_reversals(self) -> CardReversalsResource:
+        return CardReversalsResource(self._client)
 
     @cached_property
-    def physical_cards(self) -> PhysicalCards:
-        return PhysicalCards(self._client)
+    def card_increments(self) -> CardIncrementsResource:
+        return CardIncrementsResource(self._client)
 
     @cached_property
-    def inbound_check_deposits(self) -> InboundCheckDeposits:
-        return InboundCheckDeposits(self._client)
+    def card_authorization_expirations(self) -> CardAuthorizationExpirationsResource:
+        return CardAuthorizationExpirationsResource(self._client)
 
     @cached_property
-    def inbound_international_ach_transfers(self) -> InboundInternationalACHTransfers:
-        return InboundInternationalACHTransfers(self._client)
+    def card_fuel_confirmations(self) -> CardFuelConfirmationsResource:
+        return CardFuelConfirmationsResource(self._client)
 
     @cached_property
-    def with_raw_response(self) -> SimulationsWithRawResponse:
-        return SimulationsWithRawResponse(self)
+    def card_refunds(self) -> CardRefundsResource:
+        return CardRefundsResource(self._client)
 
     @cached_property
-    def with_streaming_response(self) -> SimulationsWithStreamingResponse:
-        return SimulationsWithStreamingResponse(self)
-
-    def card_authorization_expirations(
-        self,
-        *,
-        card_payment_id: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-        idempotency_key: str | None = None,
-    ) -> CardPayment:
-        """
-        Simulates expiring a card authorization immediately.
-
-        Args:
-          card_payment_id: The identifier of the Card Payment to expire.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-
-          idempotency_key: Specify a custom idempotency key for this request
-        """
-        return self._post(
-            "/simulations/card_authorization_expirations",
-            body=maybe_transform(
-                {"card_payment_id": card_payment_id},
-                simulation_card_authorization_expirations_params.SimulationCardAuthorizationExpirationsParams,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                idempotency_key=idempotency_key,
-            ),
-            cast_to=CardPayment,
-        )
-
-    def card_fuel_confirmations(
-        self,
-        *,
-        amount: int,
-        card_payment_id: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-        idempotency_key: str | None = None,
-    ) -> CardPayment:
-        """Simulates the fuel confirmation of an authorization by a card acquirer.
-
-        This
-        happens asynchronously right after a fuel pump transaction is completed. A fuel
-        confirmation can only happen once per authorization.
-
-        Args:
-          amount: The amount of the fuel_confirmation in minor units in the card authorization's
-              currency.
-
-          card_payment_id: The identifier of the Card Payment to create a fuel_confirmation on.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-
-          idempotency_key: Specify a custom idempotency key for this request
-        """
-        return self._post(
-            "/simulations/card_fuel_confirmations",
-            body=maybe_transform(
-                {
-                    "amount": amount,
-                    "card_payment_id": card_payment_id,
-                },
-                simulation_card_fuel_confirmations_params.SimulationCardFuelConfirmationsParams,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                idempotency_key=idempotency_key,
-            ),
-            cast_to=CardPayment,
-        )
-
-    def card_increments(
-        self,
-        *,
-        amount: int,
-        card_payment_id: str,
-        event_subscription_id: str | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-        idempotency_key: str | None = None,
-    ) -> CardPayment:
-        """Simulates the increment of an authorization by a card acquirer.
-
-        An authorization
-        can be incremented multiple times.
-
-        Args:
-          amount: The amount of the increment in minor units in the card authorization's currency.
-
-          card_payment_id: The identifier of the Card Payment to create a increment on.
-
-          event_subscription_id: The identifier of the Event Subscription to use. If provided, will override the
-              default real time event subscription. Because you can only create one real time
-              decision event subscription, you can use this field to route events to any
-              specified event subscription for testing purposes.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-
-          idempotency_key: Specify a custom idempotency key for this request
-        """
-        return self._post(
-            "/simulations/card_increments",
-            body=maybe_transform(
-                {
-                    "amount": amount,
-                    "card_payment_id": card_payment_id,
-                    "event_subscription_id": event_subscription_id,
-                },
-                simulation_card_increments_params.SimulationCardIncrementsParams,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                idempotency_key=idempotency_key,
-            ),
-            cast_to=CardPayment,
-        )
-
-    def card_reversals(
-        self,
-        *,
-        card_payment_id: str,
-        amount: int | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-        idempotency_key: str | None = None,
-    ) -> CardPayment:
-        """Simulates the reversal of an authorization by a card acquirer.
-
-        An authorization
-        can be partially reversed multiple times, up until the total authorized amount.
-        Marks the pending transaction as complete if the authorization is fully
-        reversed.
-
-        Args:
-          card_payment_id: The identifier of the Card Payment to create a reversal on.
-
-          amount: The amount of the reversal in minor units in the card authorization's currency.
-              This defaults to the authorization amount.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-
-          idempotency_key: Specify a custom idempotency key for this request
-        """
-        return self._post(
-            "/simulations/card_reversals",
-            body=maybe_transform(
-                {
-                    "card_payment_id": card_payment_id,
-                    "amount": amount,
-                },
-                simulation_card_reversals_params.SimulationCardReversalsParams,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                idempotency_key=idempotency_key,
-            ),
-            cast_to=CardPayment,
-        )
-
-
-class AsyncSimulations(AsyncAPIResource):
-    @cached_property
-    def account_transfers(self) -> AsyncAccountTransfers:
-        return AsyncAccountTransfers(self._client)
+    def card_disputes(self) -> CardDisputesResource:
+        return CardDisputesResource(self._client)
 
     @cached_property
-    def account_statements(self) -> AsyncAccountStatements:
-        return AsyncAccountStatements(self._client)
+    def digital_wallet_token_requests(self) -> DigitalWalletTokenRequestsResource:
+        return DigitalWalletTokenRequestsResource(self._client)
 
     @cached_property
-    def ach_transfers(self) -> AsyncACHTransfers:
-        return AsyncACHTransfers(self._client)
+    def physical_cards(self) -> PhysicalCardsResource:
+        return PhysicalCardsResource(self._client)
 
     @cached_property
-    def card_disputes(self) -> AsyncCardDisputes:
-        return AsyncCardDisputes(self._client)
+    def interest_payments(self) -> InterestPaymentsResource:
+        return InterestPaymentsResource(self._client)
 
     @cached_property
-    def card_refunds(self) -> AsyncCardRefunds:
-        return AsyncCardRefunds(self._client)
+    def account_statements(self) -> AccountStatementsResource:
+        return AccountStatementsResource(self._client)
 
     @cached_property
-    def check_transfers(self) -> AsyncCheckTransfers:
-        return AsyncCheckTransfers(self._client)
+    def documents(self) -> DocumentsResource:
+        return DocumentsResource(self._client)
 
     @cached_property
-    def documents(self) -> AsyncDocuments:
-        return AsyncDocuments(self._client)
+    def programs(self) -> ProgramsResource:
+        return ProgramsResource(self._client)
 
     @cached_property
-    def digital_wallet_token_requests(self) -> AsyncDigitalWalletTokenRequests:
-        return AsyncDigitalWalletTokenRequests(self._client)
+    def with_raw_response(self) -> SimulationsResourceWithRawResponse:
+        return SimulationsResourceWithRawResponse(self)
 
     @cached_property
-    def check_deposits(self) -> AsyncCheckDeposits:
-        return AsyncCheckDeposits(self._client)
+    def with_streaming_response(self) -> SimulationsResourceWithStreamingResponse:
+        return SimulationsResourceWithStreamingResponse(self)
+
+
+class AsyncSimulationsResource(AsyncAPIResource):
+    @cached_property
+    def account_transfers(self) -> AsyncAccountTransfersResource:
+        return AsyncAccountTransfersResource(self._client)
 
     @cached_property
-    def programs(self) -> AsyncPrograms:
-        return AsyncPrograms(self._client)
+    def inbound_ach_transfers(self) -> AsyncInboundACHTransfersResource:
+        return AsyncInboundACHTransfersResource(self._client)
 
     @cached_property
-    def inbound_wire_drawdown_requests(self) -> AsyncInboundWireDrawdownRequests:
-        return AsyncInboundWireDrawdownRequests(self._client)
+    def ach_transfers(self) -> AsyncACHTransfersResource:
+        return AsyncACHTransfersResource(self._client)
 
     @cached_property
-    def inbound_funds_holds(self) -> AsyncInboundFundsHolds:
-        return AsyncInboundFundsHolds(self._client)
+    def check_transfers(self) -> AsyncCheckTransfersResource:
+        return AsyncCheckTransfersResource(self._client)
 
     @cached_property
-    def interest_payments(self) -> AsyncInterestPayments:
-        return AsyncInterestPayments(self._client)
+    def inbound_check_deposits(self) -> AsyncInboundCheckDepositsResource:
+        return AsyncInboundCheckDepositsResource(self._client)
 
     @cached_property
-    def wire_transfers(self) -> AsyncWireTransfers:
-        return AsyncWireTransfers(self._client)
+    def check_deposits(self) -> AsyncCheckDepositsResource:
+        return AsyncCheckDepositsResource(self._client)
 
     @cached_property
-    def cards(self) -> AsyncCards:
-        return AsyncCards(self._client)
+    def inbound_wire_transfers(self) -> AsyncInboundWireTransfersResource:
+        return AsyncInboundWireTransfersResource(self._client)
 
     @cached_property
-    def real_time_payments_transfers(self) -> AsyncRealTimePaymentsTransfers:
-        return AsyncRealTimePaymentsTransfers(self._client)
+    def wire_transfers(self) -> AsyncWireTransfersResource:
+        return AsyncWireTransfersResource(self._client)
 
     @cached_property
-    def physical_cards(self) -> AsyncPhysicalCards:
-        return AsyncPhysicalCards(self._client)
+    def inbound_wire_drawdown_requests(self) -> AsyncInboundWireDrawdownRequestsResource:
+        return AsyncInboundWireDrawdownRequestsResource(self._client)
 
     @cached_property
-    def inbound_check_deposits(self) -> AsyncInboundCheckDeposits:
-        return AsyncInboundCheckDeposits(self._client)
+    def inbound_real_time_payments_transfers(self) -> AsyncInboundRealTimePaymentsTransfersResource:
+        return AsyncInboundRealTimePaymentsTransfersResource(self._client)
 
     @cached_property
-    def inbound_international_ach_transfers(self) -> AsyncInboundInternationalACHTransfers:
-        return AsyncInboundInternationalACHTransfers(self._client)
+    def inbound_funds_holds(self) -> AsyncInboundFundsHoldsResource:
+        return AsyncInboundFundsHoldsResource(self._client)
 
     @cached_property
-    def with_raw_response(self) -> AsyncSimulationsWithRawResponse:
-        return AsyncSimulationsWithRawResponse(self)
+    def real_time_payments_transfers(self) -> AsyncRealTimePaymentsTransfersResource:
+        return AsyncRealTimePaymentsTransfersResource(self._client)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncSimulationsWithStreamingResponse:
-        return AsyncSimulationsWithStreamingResponse(self)
+    def card_authorizations(self) -> AsyncCardAuthorizationsResource:
+        return AsyncCardAuthorizationsResource(self._client)
 
-    async def card_authorization_expirations(
-        self,
-        *,
-        card_payment_id: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-        idempotency_key: str | None = None,
-    ) -> CardPayment:
-        """
-        Simulates expiring a card authorization immediately.
+    @cached_property
+    def card_settlements(self) -> AsyncCardSettlementsResource:
+        return AsyncCardSettlementsResource(self._client)
 
-        Args:
-          card_payment_id: The identifier of the Card Payment to expire.
+    @cached_property
+    def card_reversals(self) -> AsyncCardReversalsResource:
+        return AsyncCardReversalsResource(self._client)
 
-          extra_headers: Send extra headers
+    @cached_property
+    def card_increments(self) -> AsyncCardIncrementsResource:
+        return AsyncCardIncrementsResource(self._client)
 
-          extra_query: Add additional query parameters to the request
+    @cached_property
+    def card_authorization_expirations(self) -> AsyncCardAuthorizationExpirationsResource:
+        return AsyncCardAuthorizationExpirationsResource(self._client)
 
-          extra_body: Add additional JSON properties to the request
+    @cached_property
+    def card_fuel_confirmations(self) -> AsyncCardFuelConfirmationsResource:
+        return AsyncCardFuelConfirmationsResource(self._client)
 
-          timeout: Override the client-level default timeout for this request, in seconds
+    @cached_property
+    def card_refunds(self) -> AsyncCardRefundsResource:
+        return AsyncCardRefundsResource(self._client)
 
-          idempotency_key: Specify a custom idempotency key for this request
-        """
-        return await self._post(
-            "/simulations/card_authorization_expirations",
-            body=await async_maybe_transform(
-                {"card_payment_id": card_payment_id},
-                simulation_card_authorization_expirations_params.SimulationCardAuthorizationExpirationsParams,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                idempotency_key=idempotency_key,
-            ),
-            cast_to=CardPayment,
-        )
+    @cached_property
+    def card_disputes(self) -> AsyncCardDisputesResource:
+        return AsyncCardDisputesResource(self._client)
 
-    async def card_fuel_confirmations(
-        self,
-        *,
-        amount: int,
-        card_payment_id: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-        idempotency_key: str | None = None,
-    ) -> CardPayment:
-        """Simulates the fuel confirmation of an authorization by a card acquirer.
+    @cached_property
+    def digital_wallet_token_requests(self) -> AsyncDigitalWalletTokenRequestsResource:
+        return AsyncDigitalWalletTokenRequestsResource(self._client)
 
-        This
-        happens asynchronously right after a fuel pump transaction is completed. A fuel
-        confirmation can only happen once per authorization.
+    @cached_property
+    def physical_cards(self) -> AsyncPhysicalCardsResource:
+        return AsyncPhysicalCardsResource(self._client)
 
-        Args:
-          amount: The amount of the fuel_confirmation in minor units in the card authorization's
-              currency.
+    @cached_property
+    def interest_payments(self) -> AsyncInterestPaymentsResource:
+        return AsyncInterestPaymentsResource(self._client)
 
-          card_payment_id: The identifier of the Card Payment to create a fuel_confirmation on.
+    @cached_property
+    def account_statements(self) -> AsyncAccountStatementsResource:
+        return AsyncAccountStatementsResource(self._client)
 
-          extra_headers: Send extra headers
+    @cached_property
+    def documents(self) -> AsyncDocumentsResource:
+        return AsyncDocumentsResource(self._client)
 
-          extra_query: Add additional query parameters to the request
+    @cached_property
+    def programs(self) -> AsyncProgramsResource:
+        return AsyncProgramsResource(self._client)
 
-          extra_body: Add additional JSON properties to the request
+    @cached_property
+    def with_raw_response(self) -> AsyncSimulationsResourceWithRawResponse:
+        return AsyncSimulationsResourceWithRawResponse(self)
 
-          timeout: Override the client-level default timeout for this request, in seconds
-
-          idempotency_key: Specify a custom idempotency key for this request
-        """
-        return await self._post(
-            "/simulations/card_fuel_confirmations",
-            body=await async_maybe_transform(
-                {
-                    "amount": amount,
-                    "card_payment_id": card_payment_id,
-                },
-                simulation_card_fuel_confirmations_params.SimulationCardFuelConfirmationsParams,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                idempotency_key=idempotency_key,
-            ),
-            cast_to=CardPayment,
-        )
-
-    async def card_increments(
-        self,
-        *,
-        amount: int,
-        card_payment_id: str,
-        event_subscription_id: str | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-        idempotency_key: str | None = None,
-    ) -> CardPayment:
-        """Simulates the increment of an authorization by a card acquirer.
-
-        An authorization
-        can be incremented multiple times.
-
-        Args:
-          amount: The amount of the increment in minor units in the card authorization's currency.
-
-          card_payment_id: The identifier of the Card Payment to create a increment on.
-
-          event_subscription_id: The identifier of the Event Subscription to use. If provided, will override the
-              default real time event subscription. Because you can only create one real time
-              decision event subscription, you can use this field to route events to any
-              specified event subscription for testing purposes.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-
-          idempotency_key: Specify a custom idempotency key for this request
-        """
-        return await self._post(
-            "/simulations/card_increments",
-            body=await async_maybe_transform(
-                {
-                    "amount": amount,
-                    "card_payment_id": card_payment_id,
-                    "event_subscription_id": event_subscription_id,
-                },
-                simulation_card_increments_params.SimulationCardIncrementsParams,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                idempotency_key=idempotency_key,
-            ),
-            cast_to=CardPayment,
-        )
-
-    async def card_reversals(
-        self,
-        *,
-        card_payment_id: str,
-        amount: int | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-        idempotency_key: str | None = None,
-    ) -> CardPayment:
-        """Simulates the reversal of an authorization by a card acquirer.
-
-        An authorization
-        can be partially reversed multiple times, up until the total authorized amount.
-        Marks the pending transaction as complete if the authorization is fully
-        reversed.
-
-        Args:
-          card_payment_id: The identifier of the Card Payment to create a reversal on.
-
-          amount: The amount of the reversal in minor units in the card authorization's currency.
-              This defaults to the authorization amount.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-
-          idempotency_key: Specify a custom idempotency key for this request
-        """
-        return await self._post(
-            "/simulations/card_reversals",
-            body=await async_maybe_transform(
-                {
-                    "card_payment_id": card_payment_id,
-                    "amount": amount,
-                },
-                simulation_card_reversals_params.SimulationCardReversalsParams,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                idempotency_key=idempotency_key,
-            ),
-            cast_to=CardPayment,
-        )
+    @cached_property
+    def with_streaming_response(self) -> AsyncSimulationsResourceWithStreamingResponse:
+        return AsyncSimulationsResourceWithStreamingResponse(self)
 
 
-class SimulationsWithRawResponse:
-    def __init__(self, simulations: Simulations) -> None:
+class SimulationsResourceWithRawResponse:
+    def __init__(self, simulations: SimulationsResource) -> None:
         self._simulations = simulations
 
-        self.card_authorization_expirations = _legacy_response.to_raw_response_wrapper(
-            simulations.card_authorization_expirations,
+    @cached_property
+    def account_transfers(self) -> AccountTransfersResourceWithRawResponse:
+        return AccountTransfersResourceWithRawResponse(self._simulations.account_transfers)
+
+    @cached_property
+    def inbound_ach_transfers(self) -> InboundACHTransfersResourceWithRawResponse:
+        return InboundACHTransfersResourceWithRawResponse(self._simulations.inbound_ach_transfers)
+
+    @cached_property
+    def ach_transfers(self) -> ACHTransfersResourceWithRawResponse:
+        return ACHTransfersResourceWithRawResponse(self._simulations.ach_transfers)
+
+    @cached_property
+    def check_transfers(self) -> CheckTransfersResourceWithRawResponse:
+        return CheckTransfersResourceWithRawResponse(self._simulations.check_transfers)
+
+    @cached_property
+    def inbound_check_deposits(self) -> InboundCheckDepositsResourceWithRawResponse:
+        return InboundCheckDepositsResourceWithRawResponse(self._simulations.inbound_check_deposits)
+
+    @cached_property
+    def check_deposits(self) -> CheckDepositsResourceWithRawResponse:
+        return CheckDepositsResourceWithRawResponse(self._simulations.check_deposits)
+
+    @cached_property
+    def inbound_wire_transfers(self) -> InboundWireTransfersResourceWithRawResponse:
+        return InboundWireTransfersResourceWithRawResponse(self._simulations.inbound_wire_transfers)
+
+    @cached_property
+    def wire_transfers(self) -> WireTransfersResourceWithRawResponse:
+        return WireTransfersResourceWithRawResponse(self._simulations.wire_transfers)
+
+    @cached_property
+    def inbound_wire_drawdown_requests(self) -> InboundWireDrawdownRequestsResourceWithRawResponse:
+        return InboundWireDrawdownRequestsResourceWithRawResponse(self._simulations.inbound_wire_drawdown_requests)
+
+    @cached_property
+    def inbound_real_time_payments_transfers(self) -> InboundRealTimePaymentsTransfersResourceWithRawResponse:
+        return InboundRealTimePaymentsTransfersResourceWithRawResponse(
+            self._simulations.inbound_real_time_payments_transfers
         )
-        self.card_fuel_confirmations = _legacy_response.to_raw_response_wrapper(
-            simulations.card_fuel_confirmations,
-        )
-        self.card_increments = _legacy_response.to_raw_response_wrapper(
-            simulations.card_increments,
-        )
-        self.card_reversals = _legacy_response.to_raw_response_wrapper(
-            simulations.card_reversals,
-        )
 
     @cached_property
-    def account_transfers(self) -> AccountTransfersWithRawResponse:
-        return AccountTransfersWithRawResponse(self._simulations.account_transfers)
+    def inbound_funds_holds(self) -> InboundFundsHoldsResourceWithRawResponse:
+        return InboundFundsHoldsResourceWithRawResponse(self._simulations.inbound_funds_holds)
 
     @cached_property
-    def account_statements(self) -> AccountStatementsWithRawResponse:
-        return AccountStatementsWithRawResponse(self._simulations.account_statements)
+    def real_time_payments_transfers(self) -> RealTimePaymentsTransfersResourceWithRawResponse:
+        return RealTimePaymentsTransfersResourceWithRawResponse(self._simulations.real_time_payments_transfers)
 
     @cached_property
-    def ach_transfers(self) -> ACHTransfersWithRawResponse:
-        return ACHTransfersWithRawResponse(self._simulations.ach_transfers)
+    def card_authorizations(self) -> CardAuthorizationsResourceWithRawResponse:
+        return CardAuthorizationsResourceWithRawResponse(self._simulations.card_authorizations)
 
     @cached_property
-    def card_disputes(self) -> CardDisputesWithRawResponse:
-        return CardDisputesWithRawResponse(self._simulations.card_disputes)
+    def card_settlements(self) -> CardSettlementsResourceWithRawResponse:
+        return CardSettlementsResourceWithRawResponse(self._simulations.card_settlements)
 
     @cached_property
-    def card_refunds(self) -> CardRefundsWithRawResponse:
-        return CardRefundsWithRawResponse(self._simulations.card_refunds)
+    def card_reversals(self) -> CardReversalsResourceWithRawResponse:
+        return CardReversalsResourceWithRawResponse(self._simulations.card_reversals)
 
     @cached_property
-    def check_transfers(self) -> CheckTransfersWithRawResponse:
-        return CheckTransfersWithRawResponse(self._simulations.check_transfers)
+    def card_increments(self) -> CardIncrementsResourceWithRawResponse:
+        return CardIncrementsResourceWithRawResponse(self._simulations.card_increments)
 
     @cached_property
-    def documents(self) -> DocumentsWithRawResponse:
-        return DocumentsWithRawResponse(self._simulations.documents)
+    def card_authorization_expirations(self) -> CardAuthorizationExpirationsResourceWithRawResponse:
+        return CardAuthorizationExpirationsResourceWithRawResponse(self._simulations.card_authorization_expirations)
 
     @cached_property
-    def digital_wallet_token_requests(self) -> DigitalWalletTokenRequestsWithRawResponse:
-        return DigitalWalletTokenRequestsWithRawResponse(self._simulations.digital_wallet_token_requests)
+    def card_fuel_confirmations(self) -> CardFuelConfirmationsResourceWithRawResponse:
+        return CardFuelConfirmationsResourceWithRawResponse(self._simulations.card_fuel_confirmations)
 
     @cached_property
-    def check_deposits(self) -> CheckDepositsWithRawResponse:
-        return CheckDepositsWithRawResponse(self._simulations.check_deposits)
+    def card_refunds(self) -> CardRefundsResourceWithRawResponse:
+        return CardRefundsResourceWithRawResponse(self._simulations.card_refunds)
 
     @cached_property
-    def programs(self) -> ProgramsWithRawResponse:
-        return ProgramsWithRawResponse(self._simulations.programs)
+    def card_disputes(self) -> CardDisputesResourceWithRawResponse:
+        return CardDisputesResourceWithRawResponse(self._simulations.card_disputes)
 
     @cached_property
-    def inbound_wire_drawdown_requests(self) -> InboundWireDrawdownRequestsWithRawResponse:
-        return InboundWireDrawdownRequestsWithRawResponse(self._simulations.inbound_wire_drawdown_requests)
+    def digital_wallet_token_requests(self) -> DigitalWalletTokenRequestsResourceWithRawResponse:
+        return DigitalWalletTokenRequestsResourceWithRawResponse(self._simulations.digital_wallet_token_requests)
 
     @cached_property
-    def inbound_funds_holds(self) -> InboundFundsHoldsWithRawResponse:
-        return InboundFundsHoldsWithRawResponse(self._simulations.inbound_funds_holds)
+    def physical_cards(self) -> PhysicalCardsResourceWithRawResponse:
+        return PhysicalCardsResourceWithRawResponse(self._simulations.physical_cards)
 
     @cached_property
-    def interest_payments(self) -> InterestPaymentsWithRawResponse:
-        return InterestPaymentsWithRawResponse(self._simulations.interest_payments)
+    def interest_payments(self) -> InterestPaymentsResourceWithRawResponse:
+        return InterestPaymentsResourceWithRawResponse(self._simulations.interest_payments)
 
     @cached_property
-    def wire_transfers(self) -> WireTransfersWithRawResponse:
-        return WireTransfersWithRawResponse(self._simulations.wire_transfers)
+    def account_statements(self) -> AccountStatementsResourceWithRawResponse:
+        return AccountStatementsResourceWithRawResponse(self._simulations.account_statements)
 
     @cached_property
-    def cards(self) -> CardsWithRawResponse:
-        return CardsWithRawResponse(self._simulations.cards)
+    def documents(self) -> DocumentsResourceWithRawResponse:
+        return DocumentsResourceWithRawResponse(self._simulations.documents)
 
     @cached_property
-    def real_time_payments_transfers(self) -> RealTimePaymentsTransfersWithRawResponse:
-        return RealTimePaymentsTransfersWithRawResponse(self._simulations.real_time_payments_transfers)
-
-    @cached_property
-    def physical_cards(self) -> PhysicalCardsWithRawResponse:
-        return PhysicalCardsWithRawResponse(self._simulations.physical_cards)
-
-    @cached_property
-    def inbound_check_deposits(self) -> InboundCheckDepositsWithRawResponse:
-        return InboundCheckDepositsWithRawResponse(self._simulations.inbound_check_deposits)
-
-    @cached_property
-    def inbound_international_ach_transfers(self) -> InboundInternationalACHTransfersWithRawResponse:
-        return InboundInternationalACHTransfersWithRawResponse(self._simulations.inbound_international_ach_transfers)
+    def programs(self) -> ProgramsResourceWithRawResponse:
+        return ProgramsResourceWithRawResponse(self._simulations.programs)
 
 
-class AsyncSimulationsWithRawResponse:
-    def __init__(self, simulations: AsyncSimulations) -> None:
+class AsyncSimulationsResourceWithRawResponse:
+    def __init__(self, simulations: AsyncSimulationsResource) -> None:
         self._simulations = simulations
 
-        self.card_authorization_expirations = _legacy_response.async_to_raw_response_wrapper(
-            simulations.card_authorization_expirations,
-        )
-        self.card_fuel_confirmations = _legacy_response.async_to_raw_response_wrapper(
-            simulations.card_fuel_confirmations,
-        )
-        self.card_increments = _legacy_response.async_to_raw_response_wrapper(
-            simulations.card_increments,
-        )
-        self.card_reversals = _legacy_response.async_to_raw_response_wrapper(
-            simulations.card_reversals,
-        )
+    @cached_property
+    def account_transfers(self) -> AsyncAccountTransfersResourceWithRawResponse:
+        return AsyncAccountTransfersResourceWithRawResponse(self._simulations.account_transfers)
 
     @cached_property
-    def account_transfers(self) -> AsyncAccountTransfersWithRawResponse:
-        return AsyncAccountTransfersWithRawResponse(self._simulations.account_transfers)
+    def inbound_ach_transfers(self) -> AsyncInboundACHTransfersResourceWithRawResponse:
+        return AsyncInboundACHTransfersResourceWithRawResponse(self._simulations.inbound_ach_transfers)
 
     @cached_property
-    def account_statements(self) -> AsyncAccountStatementsWithRawResponse:
-        return AsyncAccountStatementsWithRawResponse(self._simulations.account_statements)
+    def ach_transfers(self) -> AsyncACHTransfersResourceWithRawResponse:
+        return AsyncACHTransfersResourceWithRawResponse(self._simulations.ach_transfers)
 
     @cached_property
-    def ach_transfers(self) -> AsyncACHTransfersWithRawResponse:
-        return AsyncACHTransfersWithRawResponse(self._simulations.ach_transfers)
+    def check_transfers(self) -> AsyncCheckTransfersResourceWithRawResponse:
+        return AsyncCheckTransfersResourceWithRawResponse(self._simulations.check_transfers)
 
     @cached_property
-    def card_disputes(self) -> AsyncCardDisputesWithRawResponse:
-        return AsyncCardDisputesWithRawResponse(self._simulations.card_disputes)
+    def inbound_check_deposits(self) -> AsyncInboundCheckDepositsResourceWithRawResponse:
+        return AsyncInboundCheckDepositsResourceWithRawResponse(self._simulations.inbound_check_deposits)
 
     @cached_property
-    def card_refunds(self) -> AsyncCardRefundsWithRawResponse:
-        return AsyncCardRefundsWithRawResponse(self._simulations.card_refunds)
+    def check_deposits(self) -> AsyncCheckDepositsResourceWithRawResponse:
+        return AsyncCheckDepositsResourceWithRawResponse(self._simulations.check_deposits)
 
     @cached_property
-    def check_transfers(self) -> AsyncCheckTransfersWithRawResponse:
-        return AsyncCheckTransfersWithRawResponse(self._simulations.check_transfers)
+    def inbound_wire_transfers(self) -> AsyncInboundWireTransfersResourceWithRawResponse:
+        return AsyncInboundWireTransfersResourceWithRawResponse(self._simulations.inbound_wire_transfers)
 
     @cached_property
-    def documents(self) -> AsyncDocumentsWithRawResponse:
-        return AsyncDocumentsWithRawResponse(self._simulations.documents)
+    def wire_transfers(self) -> AsyncWireTransfersResourceWithRawResponse:
+        return AsyncWireTransfersResourceWithRawResponse(self._simulations.wire_transfers)
 
     @cached_property
-    def digital_wallet_token_requests(self) -> AsyncDigitalWalletTokenRequestsWithRawResponse:
-        return AsyncDigitalWalletTokenRequestsWithRawResponse(self._simulations.digital_wallet_token_requests)
+    def inbound_wire_drawdown_requests(self) -> AsyncInboundWireDrawdownRequestsResourceWithRawResponse:
+        return AsyncInboundWireDrawdownRequestsResourceWithRawResponse(self._simulations.inbound_wire_drawdown_requests)
 
     @cached_property
-    def check_deposits(self) -> AsyncCheckDepositsWithRawResponse:
-        return AsyncCheckDepositsWithRawResponse(self._simulations.check_deposits)
-
-    @cached_property
-    def programs(self) -> AsyncProgramsWithRawResponse:
-        return AsyncProgramsWithRawResponse(self._simulations.programs)
-
-    @cached_property
-    def inbound_wire_drawdown_requests(self) -> AsyncInboundWireDrawdownRequestsWithRawResponse:
-        return AsyncInboundWireDrawdownRequestsWithRawResponse(self._simulations.inbound_wire_drawdown_requests)
-
-    @cached_property
-    def inbound_funds_holds(self) -> AsyncInboundFundsHoldsWithRawResponse:
-        return AsyncInboundFundsHoldsWithRawResponse(self._simulations.inbound_funds_holds)
-
-    @cached_property
-    def interest_payments(self) -> AsyncInterestPaymentsWithRawResponse:
-        return AsyncInterestPaymentsWithRawResponse(self._simulations.interest_payments)
-
-    @cached_property
-    def wire_transfers(self) -> AsyncWireTransfersWithRawResponse:
-        return AsyncWireTransfersWithRawResponse(self._simulations.wire_transfers)
-
-    @cached_property
-    def cards(self) -> AsyncCardsWithRawResponse:
-        return AsyncCardsWithRawResponse(self._simulations.cards)
-
-    @cached_property
-    def real_time_payments_transfers(self) -> AsyncRealTimePaymentsTransfersWithRawResponse:
-        return AsyncRealTimePaymentsTransfersWithRawResponse(self._simulations.real_time_payments_transfers)
-
-    @cached_property
-    def physical_cards(self) -> AsyncPhysicalCardsWithRawResponse:
-        return AsyncPhysicalCardsWithRawResponse(self._simulations.physical_cards)
-
-    @cached_property
-    def inbound_check_deposits(self) -> AsyncInboundCheckDepositsWithRawResponse:
-        return AsyncInboundCheckDepositsWithRawResponse(self._simulations.inbound_check_deposits)
-
-    @cached_property
-    def inbound_international_ach_transfers(self) -> AsyncInboundInternationalACHTransfersWithRawResponse:
-        return AsyncInboundInternationalACHTransfersWithRawResponse(
-            self._simulations.inbound_international_ach_transfers
+    def inbound_real_time_payments_transfers(self) -> AsyncInboundRealTimePaymentsTransfersResourceWithRawResponse:
+        return AsyncInboundRealTimePaymentsTransfersResourceWithRawResponse(
+            self._simulations.inbound_real_time_payments_transfers
         )
 
+    @cached_property
+    def inbound_funds_holds(self) -> AsyncInboundFundsHoldsResourceWithRawResponse:
+        return AsyncInboundFundsHoldsResourceWithRawResponse(self._simulations.inbound_funds_holds)
 
-class SimulationsWithStreamingResponse:
-    def __init__(self, simulations: Simulations) -> None:
+    @cached_property
+    def real_time_payments_transfers(self) -> AsyncRealTimePaymentsTransfersResourceWithRawResponse:
+        return AsyncRealTimePaymentsTransfersResourceWithRawResponse(self._simulations.real_time_payments_transfers)
+
+    @cached_property
+    def card_authorizations(self) -> AsyncCardAuthorizationsResourceWithRawResponse:
+        return AsyncCardAuthorizationsResourceWithRawResponse(self._simulations.card_authorizations)
+
+    @cached_property
+    def card_settlements(self) -> AsyncCardSettlementsResourceWithRawResponse:
+        return AsyncCardSettlementsResourceWithRawResponse(self._simulations.card_settlements)
+
+    @cached_property
+    def card_reversals(self) -> AsyncCardReversalsResourceWithRawResponse:
+        return AsyncCardReversalsResourceWithRawResponse(self._simulations.card_reversals)
+
+    @cached_property
+    def card_increments(self) -> AsyncCardIncrementsResourceWithRawResponse:
+        return AsyncCardIncrementsResourceWithRawResponse(self._simulations.card_increments)
+
+    @cached_property
+    def card_authorization_expirations(self) -> AsyncCardAuthorizationExpirationsResourceWithRawResponse:
+        return AsyncCardAuthorizationExpirationsResourceWithRawResponse(
+            self._simulations.card_authorization_expirations
+        )
+
+    @cached_property
+    def card_fuel_confirmations(self) -> AsyncCardFuelConfirmationsResourceWithRawResponse:
+        return AsyncCardFuelConfirmationsResourceWithRawResponse(self._simulations.card_fuel_confirmations)
+
+    @cached_property
+    def card_refunds(self) -> AsyncCardRefundsResourceWithRawResponse:
+        return AsyncCardRefundsResourceWithRawResponse(self._simulations.card_refunds)
+
+    @cached_property
+    def card_disputes(self) -> AsyncCardDisputesResourceWithRawResponse:
+        return AsyncCardDisputesResourceWithRawResponse(self._simulations.card_disputes)
+
+    @cached_property
+    def digital_wallet_token_requests(self) -> AsyncDigitalWalletTokenRequestsResourceWithRawResponse:
+        return AsyncDigitalWalletTokenRequestsResourceWithRawResponse(self._simulations.digital_wallet_token_requests)
+
+    @cached_property
+    def physical_cards(self) -> AsyncPhysicalCardsResourceWithRawResponse:
+        return AsyncPhysicalCardsResourceWithRawResponse(self._simulations.physical_cards)
+
+    @cached_property
+    def interest_payments(self) -> AsyncInterestPaymentsResourceWithRawResponse:
+        return AsyncInterestPaymentsResourceWithRawResponse(self._simulations.interest_payments)
+
+    @cached_property
+    def account_statements(self) -> AsyncAccountStatementsResourceWithRawResponse:
+        return AsyncAccountStatementsResourceWithRawResponse(self._simulations.account_statements)
+
+    @cached_property
+    def documents(self) -> AsyncDocumentsResourceWithRawResponse:
+        return AsyncDocumentsResourceWithRawResponse(self._simulations.documents)
+
+    @cached_property
+    def programs(self) -> AsyncProgramsResourceWithRawResponse:
+        return AsyncProgramsResourceWithRawResponse(self._simulations.programs)
+
+
+class SimulationsResourceWithStreamingResponse:
+    def __init__(self, simulations: SimulationsResource) -> None:
         self._simulations = simulations
 
-        self.card_authorization_expirations = to_streamed_response_wrapper(
-            simulations.card_authorization_expirations,
-        )
-        self.card_fuel_confirmations = to_streamed_response_wrapper(
-            simulations.card_fuel_confirmations,
-        )
-        self.card_increments = to_streamed_response_wrapper(
-            simulations.card_increments,
-        )
-        self.card_reversals = to_streamed_response_wrapper(
-            simulations.card_reversals,
-        )
+    @cached_property
+    def account_transfers(self) -> AccountTransfersResourceWithStreamingResponse:
+        return AccountTransfersResourceWithStreamingResponse(self._simulations.account_transfers)
 
     @cached_property
-    def account_transfers(self) -> AccountTransfersWithStreamingResponse:
-        return AccountTransfersWithStreamingResponse(self._simulations.account_transfers)
+    def inbound_ach_transfers(self) -> InboundACHTransfersResourceWithStreamingResponse:
+        return InboundACHTransfersResourceWithStreamingResponse(self._simulations.inbound_ach_transfers)
 
     @cached_property
-    def account_statements(self) -> AccountStatementsWithStreamingResponse:
-        return AccountStatementsWithStreamingResponse(self._simulations.account_statements)
+    def ach_transfers(self) -> ACHTransfersResourceWithStreamingResponse:
+        return ACHTransfersResourceWithStreamingResponse(self._simulations.ach_transfers)
 
     @cached_property
-    def ach_transfers(self) -> ACHTransfersWithStreamingResponse:
-        return ACHTransfersWithStreamingResponse(self._simulations.ach_transfers)
+    def check_transfers(self) -> CheckTransfersResourceWithStreamingResponse:
+        return CheckTransfersResourceWithStreamingResponse(self._simulations.check_transfers)
 
     @cached_property
-    def card_disputes(self) -> CardDisputesWithStreamingResponse:
-        return CardDisputesWithStreamingResponse(self._simulations.card_disputes)
+    def inbound_check_deposits(self) -> InboundCheckDepositsResourceWithStreamingResponse:
+        return InboundCheckDepositsResourceWithStreamingResponse(self._simulations.inbound_check_deposits)
 
     @cached_property
-    def card_refunds(self) -> CardRefundsWithStreamingResponse:
-        return CardRefundsWithStreamingResponse(self._simulations.card_refunds)
+    def check_deposits(self) -> CheckDepositsResourceWithStreamingResponse:
+        return CheckDepositsResourceWithStreamingResponse(self._simulations.check_deposits)
 
     @cached_property
-    def check_transfers(self) -> CheckTransfersWithStreamingResponse:
-        return CheckTransfersWithStreamingResponse(self._simulations.check_transfers)
+    def inbound_wire_transfers(self) -> InboundWireTransfersResourceWithStreamingResponse:
+        return InboundWireTransfersResourceWithStreamingResponse(self._simulations.inbound_wire_transfers)
 
     @cached_property
-    def documents(self) -> DocumentsWithStreamingResponse:
-        return DocumentsWithStreamingResponse(self._simulations.documents)
+    def wire_transfers(self) -> WireTransfersResourceWithStreamingResponse:
+        return WireTransfersResourceWithStreamingResponse(self._simulations.wire_transfers)
 
     @cached_property
-    def digital_wallet_token_requests(self) -> DigitalWalletTokenRequestsWithStreamingResponse:
-        return DigitalWalletTokenRequestsWithStreamingResponse(self._simulations.digital_wallet_token_requests)
-
-    @cached_property
-    def check_deposits(self) -> CheckDepositsWithStreamingResponse:
-        return CheckDepositsWithStreamingResponse(self._simulations.check_deposits)
-
-    @cached_property
-    def programs(self) -> ProgramsWithStreamingResponse:
-        return ProgramsWithStreamingResponse(self._simulations.programs)
-
-    @cached_property
-    def inbound_wire_drawdown_requests(self) -> InboundWireDrawdownRequestsWithStreamingResponse:
-        return InboundWireDrawdownRequestsWithStreamingResponse(self._simulations.inbound_wire_drawdown_requests)
-
-    @cached_property
-    def inbound_funds_holds(self) -> InboundFundsHoldsWithStreamingResponse:
-        return InboundFundsHoldsWithStreamingResponse(self._simulations.inbound_funds_holds)
-
-    @cached_property
-    def interest_payments(self) -> InterestPaymentsWithStreamingResponse:
-        return InterestPaymentsWithStreamingResponse(self._simulations.interest_payments)
-
-    @cached_property
-    def wire_transfers(self) -> WireTransfersWithStreamingResponse:
-        return WireTransfersWithStreamingResponse(self._simulations.wire_transfers)
-
-    @cached_property
-    def cards(self) -> CardsWithStreamingResponse:
-        return CardsWithStreamingResponse(self._simulations.cards)
-
-    @cached_property
-    def real_time_payments_transfers(self) -> RealTimePaymentsTransfersWithStreamingResponse:
-        return RealTimePaymentsTransfersWithStreamingResponse(self._simulations.real_time_payments_transfers)
-
-    @cached_property
-    def physical_cards(self) -> PhysicalCardsWithStreamingResponse:
-        return PhysicalCardsWithStreamingResponse(self._simulations.physical_cards)
-
-    @cached_property
-    def inbound_check_deposits(self) -> InboundCheckDepositsWithStreamingResponse:
-        return InboundCheckDepositsWithStreamingResponse(self._simulations.inbound_check_deposits)
-
-    @cached_property
-    def inbound_international_ach_transfers(self) -> InboundInternationalACHTransfersWithStreamingResponse:
-        return InboundInternationalACHTransfersWithStreamingResponse(
-            self._simulations.inbound_international_ach_transfers
+    def inbound_wire_drawdown_requests(self) -> InboundWireDrawdownRequestsResourceWithStreamingResponse:
+        return InboundWireDrawdownRequestsResourceWithStreamingResponse(
+            self._simulations.inbound_wire_drawdown_requests
         )
 
+    @cached_property
+    def inbound_real_time_payments_transfers(self) -> InboundRealTimePaymentsTransfersResourceWithStreamingResponse:
+        return InboundRealTimePaymentsTransfersResourceWithStreamingResponse(
+            self._simulations.inbound_real_time_payments_transfers
+        )
 
-class AsyncSimulationsWithStreamingResponse:
-    def __init__(self, simulations: AsyncSimulations) -> None:
+    @cached_property
+    def inbound_funds_holds(self) -> InboundFundsHoldsResourceWithStreamingResponse:
+        return InboundFundsHoldsResourceWithStreamingResponse(self._simulations.inbound_funds_holds)
+
+    @cached_property
+    def real_time_payments_transfers(self) -> RealTimePaymentsTransfersResourceWithStreamingResponse:
+        return RealTimePaymentsTransfersResourceWithStreamingResponse(self._simulations.real_time_payments_transfers)
+
+    @cached_property
+    def card_authorizations(self) -> CardAuthorizationsResourceWithStreamingResponse:
+        return CardAuthorizationsResourceWithStreamingResponse(self._simulations.card_authorizations)
+
+    @cached_property
+    def card_settlements(self) -> CardSettlementsResourceWithStreamingResponse:
+        return CardSettlementsResourceWithStreamingResponse(self._simulations.card_settlements)
+
+    @cached_property
+    def card_reversals(self) -> CardReversalsResourceWithStreamingResponse:
+        return CardReversalsResourceWithStreamingResponse(self._simulations.card_reversals)
+
+    @cached_property
+    def card_increments(self) -> CardIncrementsResourceWithStreamingResponse:
+        return CardIncrementsResourceWithStreamingResponse(self._simulations.card_increments)
+
+    @cached_property
+    def card_authorization_expirations(self) -> CardAuthorizationExpirationsResourceWithStreamingResponse:
+        return CardAuthorizationExpirationsResourceWithStreamingResponse(
+            self._simulations.card_authorization_expirations
+        )
+
+    @cached_property
+    def card_fuel_confirmations(self) -> CardFuelConfirmationsResourceWithStreamingResponse:
+        return CardFuelConfirmationsResourceWithStreamingResponse(self._simulations.card_fuel_confirmations)
+
+    @cached_property
+    def card_refunds(self) -> CardRefundsResourceWithStreamingResponse:
+        return CardRefundsResourceWithStreamingResponse(self._simulations.card_refunds)
+
+    @cached_property
+    def card_disputes(self) -> CardDisputesResourceWithStreamingResponse:
+        return CardDisputesResourceWithStreamingResponse(self._simulations.card_disputes)
+
+    @cached_property
+    def digital_wallet_token_requests(self) -> DigitalWalletTokenRequestsResourceWithStreamingResponse:
+        return DigitalWalletTokenRequestsResourceWithStreamingResponse(self._simulations.digital_wallet_token_requests)
+
+    @cached_property
+    def physical_cards(self) -> PhysicalCardsResourceWithStreamingResponse:
+        return PhysicalCardsResourceWithStreamingResponse(self._simulations.physical_cards)
+
+    @cached_property
+    def interest_payments(self) -> InterestPaymentsResourceWithStreamingResponse:
+        return InterestPaymentsResourceWithStreamingResponse(self._simulations.interest_payments)
+
+    @cached_property
+    def account_statements(self) -> AccountStatementsResourceWithStreamingResponse:
+        return AccountStatementsResourceWithStreamingResponse(self._simulations.account_statements)
+
+    @cached_property
+    def documents(self) -> DocumentsResourceWithStreamingResponse:
+        return DocumentsResourceWithStreamingResponse(self._simulations.documents)
+
+    @cached_property
+    def programs(self) -> ProgramsResourceWithStreamingResponse:
+        return ProgramsResourceWithStreamingResponse(self._simulations.programs)
+
+
+class AsyncSimulationsResourceWithStreamingResponse:
+    def __init__(self, simulations: AsyncSimulationsResource) -> None:
         self._simulations = simulations
 
-        self.card_authorization_expirations = async_to_streamed_response_wrapper(
-            simulations.card_authorization_expirations,
+    @cached_property
+    def account_transfers(self) -> AsyncAccountTransfersResourceWithStreamingResponse:
+        return AsyncAccountTransfersResourceWithStreamingResponse(self._simulations.account_transfers)
+
+    @cached_property
+    def inbound_ach_transfers(self) -> AsyncInboundACHTransfersResourceWithStreamingResponse:
+        return AsyncInboundACHTransfersResourceWithStreamingResponse(self._simulations.inbound_ach_transfers)
+
+    @cached_property
+    def ach_transfers(self) -> AsyncACHTransfersResourceWithStreamingResponse:
+        return AsyncACHTransfersResourceWithStreamingResponse(self._simulations.ach_transfers)
+
+    @cached_property
+    def check_transfers(self) -> AsyncCheckTransfersResourceWithStreamingResponse:
+        return AsyncCheckTransfersResourceWithStreamingResponse(self._simulations.check_transfers)
+
+    @cached_property
+    def inbound_check_deposits(self) -> AsyncInboundCheckDepositsResourceWithStreamingResponse:
+        return AsyncInboundCheckDepositsResourceWithStreamingResponse(self._simulations.inbound_check_deposits)
+
+    @cached_property
+    def check_deposits(self) -> AsyncCheckDepositsResourceWithStreamingResponse:
+        return AsyncCheckDepositsResourceWithStreamingResponse(self._simulations.check_deposits)
+
+    @cached_property
+    def inbound_wire_transfers(self) -> AsyncInboundWireTransfersResourceWithStreamingResponse:
+        return AsyncInboundWireTransfersResourceWithStreamingResponse(self._simulations.inbound_wire_transfers)
+
+    @cached_property
+    def wire_transfers(self) -> AsyncWireTransfersResourceWithStreamingResponse:
+        return AsyncWireTransfersResourceWithStreamingResponse(self._simulations.wire_transfers)
+
+    @cached_property
+    def inbound_wire_drawdown_requests(self) -> AsyncInboundWireDrawdownRequestsResourceWithStreamingResponse:
+        return AsyncInboundWireDrawdownRequestsResourceWithStreamingResponse(
+            self._simulations.inbound_wire_drawdown_requests
         )
-        self.card_fuel_confirmations = async_to_streamed_response_wrapper(
-            simulations.card_fuel_confirmations,
+
+    @cached_property
+    def inbound_real_time_payments_transfers(
+        self,
+    ) -> AsyncInboundRealTimePaymentsTransfersResourceWithStreamingResponse:
+        return AsyncInboundRealTimePaymentsTransfersResourceWithStreamingResponse(
+            self._simulations.inbound_real_time_payments_transfers
         )
-        self.card_increments = async_to_streamed_response_wrapper(
-            simulations.card_increments,
+
+    @cached_property
+    def inbound_funds_holds(self) -> AsyncInboundFundsHoldsResourceWithStreamingResponse:
+        return AsyncInboundFundsHoldsResourceWithStreamingResponse(self._simulations.inbound_funds_holds)
+
+    @cached_property
+    def real_time_payments_transfers(self) -> AsyncRealTimePaymentsTransfersResourceWithStreamingResponse:
+        return AsyncRealTimePaymentsTransfersResourceWithStreamingResponse(
+            self._simulations.real_time_payments_transfers
         )
-        self.card_reversals = async_to_streamed_response_wrapper(
-            simulations.card_reversals,
+
+    @cached_property
+    def card_authorizations(self) -> AsyncCardAuthorizationsResourceWithStreamingResponse:
+        return AsyncCardAuthorizationsResourceWithStreamingResponse(self._simulations.card_authorizations)
+
+    @cached_property
+    def card_settlements(self) -> AsyncCardSettlementsResourceWithStreamingResponse:
+        return AsyncCardSettlementsResourceWithStreamingResponse(self._simulations.card_settlements)
+
+    @cached_property
+    def card_reversals(self) -> AsyncCardReversalsResourceWithStreamingResponse:
+        return AsyncCardReversalsResourceWithStreamingResponse(self._simulations.card_reversals)
+
+    @cached_property
+    def card_increments(self) -> AsyncCardIncrementsResourceWithStreamingResponse:
+        return AsyncCardIncrementsResourceWithStreamingResponse(self._simulations.card_increments)
+
+    @cached_property
+    def card_authorization_expirations(self) -> AsyncCardAuthorizationExpirationsResourceWithStreamingResponse:
+        return AsyncCardAuthorizationExpirationsResourceWithStreamingResponse(
+            self._simulations.card_authorization_expirations
         )
 
     @cached_property
-    def account_transfers(self) -> AsyncAccountTransfersWithStreamingResponse:
-        return AsyncAccountTransfersWithStreamingResponse(self._simulations.account_transfers)
+    def card_fuel_confirmations(self) -> AsyncCardFuelConfirmationsResourceWithStreamingResponse:
+        return AsyncCardFuelConfirmationsResourceWithStreamingResponse(self._simulations.card_fuel_confirmations)
 
     @cached_property
-    def account_statements(self) -> AsyncAccountStatementsWithStreamingResponse:
-        return AsyncAccountStatementsWithStreamingResponse(self._simulations.account_statements)
+    def card_refunds(self) -> AsyncCardRefundsResourceWithStreamingResponse:
+        return AsyncCardRefundsResourceWithStreamingResponse(self._simulations.card_refunds)
 
     @cached_property
-    def ach_transfers(self) -> AsyncACHTransfersWithStreamingResponse:
-        return AsyncACHTransfersWithStreamingResponse(self._simulations.ach_transfers)
+    def card_disputes(self) -> AsyncCardDisputesResourceWithStreamingResponse:
+        return AsyncCardDisputesResourceWithStreamingResponse(self._simulations.card_disputes)
 
     @cached_property
-    def card_disputes(self) -> AsyncCardDisputesWithStreamingResponse:
-        return AsyncCardDisputesWithStreamingResponse(self._simulations.card_disputes)
-
-    @cached_property
-    def card_refunds(self) -> AsyncCardRefundsWithStreamingResponse:
-        return AsyncCardRefundsWithStreamingResponse(self._simulations.card_refunds)
-
-    @cached_property
-    def check_transfers(self) -> AsyncCheckTransfersWithStreamingResponse:
-        return AsyncCheckTransfersWithStreamingResponse(self._simulations.check_transfers)
-
-    @cached_property
-    def documents(self) -> AsyncDocumentsWithStreamingResponse:
-        return AsyncDocumentsWithStreamingResponse(self._simulations.documents)
-
-    @cached_property
-    def digital_wallet_token_requests(self) -> AsyncDigitalWalletTokenRequestsWithStreamingResponse:
-        return AsyncDigitalWalletTokenRequestsWithStreamingResponse(self._simulations.digital_wallet_token_requests)
-
-    @cached_property
-    def check_deposits(self) -> AsyncCheckDepositsWithStreamingResponse:
-        return AsyncCheckDepositsWithStreamingResponse(self._simulations.check_deposits)
-
-    @cached_property
-    def programs(self) -> AsyncProgramsWithStreamingResponse:
-        return AsyncProgramsWithStreamingResponse(self._simulations.programs)
-
-    @cached_property
-    def inbound_wire_drawdown_requests(self) -> AsyncInboundWireDrawdownRequestsWithStreamingResponse:
-        return AsyncInboundWireDrawdownRequestsWithStreamingResponse(self._simulations.inbound_wire_drawdown_requests)
-
-    @cached_property
-    def inbound_funds_holds(self) -> AsyncInboundFundsHoldsWithStreamingResponse:
-        return AsyncInboundFundsHoldsWithStreamingResponse(self._simulations.inbound_funds_holds)
-
-    @cached_property
-    def interest_payments(self) -> AsyncInterestPaymentsWithStreamingResponse:
-        return AsyncInterestPaymentsWithStreamingResponse(self._simulations.interest_payments)
-
-    @cached_property
-    def wire_transfers(self) -> AsyncWireTransfersWithStreamingResponse:
-        return AsyncWireTransfersWithStreamingResponse(self._simulations.wire_transfers)
-
-    @cached_property
-    def cards(self) -> AsyncCardsWithStreamingResponse:
-        return AsyncCardsWithStreamingResponse(self._simulations.cards)
-
-    @cached_property
-    def real_time_payments_transfers(self) -> AsyncRealTimePaymentsTransfersWithStreamingResponse:
-        return AsyncRealTimePaymentsTransfersWithStreamingResponse(self._simulations.real_time_payments_transfers)
-
-    @cached_property
-    def physical_cards(self) -> AsyncPhysicalCardsWithStreamingResponse:
-        return AsyncPhysicalCardsWithStreamingResponse(self._simulations.physical_cards)
-
-    @cached_property
-    def inbound_check_deposits(self) -> AsyncInboundCheckDepositsWithStreamingResponse:
-        return AsyncInboundCheckDepositsWithStreamingResponse(self._simulations.inbound_check_deposits)
-
-    @cached_property
-    def inbound_international_ach_transfers(self) -> AsyncInboundInternationalACHTransfersWithStreamingResponse:
-        return AsyncInboundInternationalACHTransfersWithStreamingResponse(
-            self._simulations.inbound_international_ach_transfers
+    def digital_wallet_token_requests(self) -> AsyncDigitalWalletTokenRequestsResourceWithStreamingResponse:
+        return AsyncDigitalWalletTokenRequestsResourceWithStreamingResponse(
+            self._simulations.digital_wallet_token_requests
         )
+
+    @cached_property
+    def physical_cards(self) -> AsyncPhysicalCardsResourceWithStreamingResponse:
+        return AsyncPhysicalCardsResourceWithStreamingResponse(self._simulations.physical_cards)
+
+    @cached_property
+    def interest_payments(self) -> AsyncInterestPaymentsResourceWithStreamingResponse:
+        return AsyncInterestPaymentsResourceWithStreamingResponse(self._simulations.interest_payments)
+
+    @cached_property
+    def account_statements(self) -> AsyncAccountStatementsResourceWithStreamingResponse:
+        return AsyncAccountStatementsResourceWithStreamingResponse(self._simulations.account_statements)
+
+    @cached_property
+    def documents(self) -> AsyncDocumentsResourceWithStreamingResponse:
+        return AsyncDocumentsResourceWithStreamingResponse(self._simulations.documents)
+
+    @cached_property
+    def programs(self) -> AsyncProgramsResourceWithStreamingResponse:
+        return AsyncProgramsResourceWithStreamingResponse(self._simulations.programs)

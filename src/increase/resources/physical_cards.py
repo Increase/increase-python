@@ -6,7 +6,6 @@ from typing_extensions import Literal
 
 import httpx
 
-from .. import _legacy_response
 from ..types import physical_card_list_params, physical_card_create_params, physical_card_update_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import (
@@ -15,22 +14,27 @@ from .._utils import (
 )
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
+from .._response import (
+    to_raw_response_wrapper,
+    to_streamed_response_wrapper,
+    async_to_raw_response_wrapper,
+    async_to_streamed_response_wrapper,
+)
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
 from ..types.physical_card import PhysicalCard
 
-__all__ = ["PhysicalCards", "AsyncPhysicalCards"]
+__all__ = ["PhysicalCardsResource", "AsyncPhysicalCardsResource"]
 
 
-class PhysicalCards(SyncAPIResource):
+class PhysicalCardsResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> PhysicalCardsWithRawResponse:
-        return PhysicalCardsWithRawResponse(self)
+    def with_raw_response(self) -> PhysicalCardsResourceWithRawResponse:
+        return PhysicalCardsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> PhysicalCardsWithStreamingResponse:
-        return PhysicalCardsWithStreamingResponse(self)
+    def with_streaming_response(self) -> PhysicalCardsResourceWithStreamingResponse:
+        return PhysicalCardsResourceWithStreamingResponse(self)
 
     def create(
         self,
@@ -238,14 +242,14 @@ class PhysicalCards(SyncAPIResource):
         )
 
 
-class AsyncPhysicalCards(AsyncAPIResource):
+class AsyncPhysicalCardsResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncPhysicalCardsWithRawResponse:
-        return AsyncPhysicalCardsWithRawResponse(self)
+    def with_raw_response(self) -> AsyncPhysicalCardsResourceWithRawResponse:
+        return AsyncPhysicalCardsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncPhysicalCardsWithStreamingResponse:
-        return AsyncPhysicalCardsWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncPhysicalCardsResourceWithStreamingResponse:
+        return AsyncPhysicalCardsResourceWithStreamingResponse(self)
 
     async def create(
         self,
@@ -453,44 +457,44 @@ class AsyncPhysicalCards(AsyncAPIResource):
         )
 
 
-class PhysicalCardsWithRawResponse:
-    def __init__(self, physical_cards: PhysicalCards) -> None:
+class PhysicalCardsResourceWithRawResponse:
+    def __init__(self, physical_cards: PhysicalCardsResource) -> None:
         self._physical_cards = physical_cards
 
-        self.create = _legacy_response.to_raw_response_wrapper(
+        self.create = to_raw_response_wrapper(
             physical_cards.create,
         )
-        self.retrieve = _legacy_response.to_raw_response_wrapper(
+        self.retrieve = to_raw_response_wrapper(
             physical_cards.retrieve,
         )
-        self.update = _legacy_response.to_raw_response_wrapper(
+        self.update = to_raw_response_wrapper(
             physical_cards.update,
         )
-        self.list = _legacy_response.to_raw_response_wrapper(
+        self.list = to_raw_response_wrapper(
             physical_cards.list,
         )
 
 
-class AsyncPhysicalCardsWithRawResponse:
-    def __init__(self, physical_cards: AsyncPhysicalCards) -> None:
+class AsyncPhysicalCardsResourceWithRawResponse:
+    def __init__(self, physical_cards: AsyncPhysicalCardsResource) -> None:
         self._physical_cards = physical_cards
 
-        self.create = _legacy_response.async_to_raw_response_wrapper(
+        self.create = async_to_raw_response_wrapper(
             physical_cards.create,
         )
-        self.retrieve = _legacy_response.async_to_raw_response_wrapper(
+        self.retrieve = async_to_raw_response_wrapper(
             physical_cards.retrieve,
         )
-        self.update = _legacy_response.async_to_raw_response_wrapper(
+        self.update = async_to_raw_response_wrapper(
             physical_cards.update,
         )
-        self.list = _legacy_response.async_to_raw_response_wrapper(
+        self.list = async_to_raw_response_wrapper(
             physical_cards.list,
         )
 
 
-class PhysicalCardsWithStreamingResponse:
-    def __init__(self, physical_cards: PhysicalCards) -> None:
+class PhysicalCardsResourceWithStreamingResponse:
+    def __init__(self, physical_cards: PhysicalCardsResource) -> None:
         self._physical_cards = physical_cards
 
         self.create = to_streamed_response_wrapper(
@@ -507,8 +511,8 @@ class PhysicalCardsWithStreamingResponse:
         )
 
 
-class AsyncPhysicalCardsWithStreamingResponse:
-    def __init__(self, physical_cards: AsyncPhysicalCards) -> None:
+class AsyncPhysicalCardsResourceWithStreamingResponse:
+    def __init__(self, physical_cards: AsyncPhysicalCardsResource) -> None:
         self._physical_cards = physical_cards
 
         self.create = async_to_streamed_response_wrapper(

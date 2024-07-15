@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import httpx
 
-from ... import _legacy_response
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import (
     maybe_transform,
@@ -12,22 +11,27 @@ from ..._utils import (
 )
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
+from ..._response import (
+    to_raw_response_wrapper,
+    to_streamed_response_wrapper,
+    async_to_raw_response_wrapper,
+    async_to_streamed_response_wrapper,
+)
 from ..._base_client import make_request_options
 from ...types.simulations import account_statement_create_params
 from ...types.account_statement import AccountStatement
 
-__all__ = ["AccountStatements", "AsyncAccountStatements"]
+__all__ = ["AccountStatementsResource", "AsyncAccountStatementsResource"]
 
 
-class AccountStatements(SyncAPIResource):
+class AccountStatementsResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AccountStatementsWithRawResponse:
-        return AccountStatementsWithRawResponse(self)
+    def with_raw_response(self) -> AccountStatementsResourceWithRawResponse:
+        return AccountStatementsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AccountStatementsWithStreamingResponse:
-        return AccountStatementsWithStreamingResponse(self)
+    def with_streaming_response(self) -> AccountStatementsResourceWithStreamingResponse:
+        return AccountStatementsResourceWithStreamingResponse(self)
 
     def create(
         self,
@@ -74,14 +78,14 @@ class AccountStatements(SyncAPIResource):
         )
 
 
-class AsyncAccountStatements(AsyncAPIResource):
+class AsyncAccountStatementsResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncAccountStatementsWithRawResponse:
-        return AsyncAccountStatementsWithRawResponse(self)
+    def with_raw_response(self) -> AsyncAccountStatementsResourceWithRawResponse:
+        return AsyncAccountStatementsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncAccountStatementsWithStreamingResponse:
-        return AsyncAccountStatementsWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncAccountStatementsResourceWithStreamingResponse:
+        return AsyncAccountStatementsResourceWithStreamingResponse(self)
 
     async def create(
         self,
@@ -128,26 +132,26 @@ class AsyncAccountStatements(AsyncAPIResource):
         )
 
 
-class AccountStatementsWithRawResponse:
-    def __init__(self, account_statements: AccountStatements) -> None:
+class AccountStatementsResourceWithRawResponse:
+    def __init__(self, account_statements: AccountStatementsResource) -> None:
         self._account_statements = account_statements
 
-        self.create = _legacy_response.to_raw_response_wrapper(
+        self.create = to_raw_response_wrapper(
             account_statements.create,
         )
 
 
-class AsyncAccountStatementsWithRawResponse:
-    def __init__(self, account_statements: AsyncAccountStatements) -> None:
+class AsyncAccountStatementsResourceWithRawResponse:
+    def __init__(self, account_statements: AsyncAccountStatementsResource) -> None:
         self._account_statements = account_statements
 
-        self.create = _legacy_response.async_to_raw_response_wrapper(
+        self.create = async_to_raw_response_wrapper(
             account_statements.create,
         )
 
 
-class AccountStatementsWithStreamingResponse:
-    def __init__(self, account_statements: AccountStatements) -> None:
+class AccountStatementsResourceWithStreamingResponse:
+    def __init__(self, account_statements: AccountStatementsResource) -> None:
         self._account_statements = account_statements
 
         self.create = to_streamed_response_wrapper(
@@ -155,8 +159,8 @@ class AccountStatementsWithStreamingResponse:
         )
 
 
-class AsyncAccountStatementsWithStreamingResponse:
-    def __init__(self, account_statements: AsyncAccountStatements) -> None:
+class AsyncAccountStatementsResourceWithStreamingResponse:
+    def __init__(self, account_statements: AsyncAccountStatementsResource) -> None:
         self._account_statements = account_statements
 
         self.create = async_to_streamed_response_wrapper(

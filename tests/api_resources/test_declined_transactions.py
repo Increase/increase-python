@@ -120,7 +120,7 @@ class TestAsyncDeclinedTransactions:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        declined_transaction = response.parse()
+        declined_transaction = await response.parse()
         assert_matches_type(DeclinedTransaction, declined_transaction, path=["response"])
 
     @parametrize
@@ -173,7 +173,7 @@ class TestAsyncDeclinedTransactions:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        declined_transaction = response.parse()
+        declined_transaction = await response.parse()
         assert_matches_type(AsyncPage[DeclinedTransaction], declined_transaction, path=["response"])
 
     @parametrize

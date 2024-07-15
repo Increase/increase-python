@@ -4,28 +4,32 @@ from __future__ import annotations
 
 import httpx
 
-from .. import _legacy_response
 from ..types import document_list_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
+from .._response import (
+    to_raw_response_wrapper,
+    to_streamed_response_wrapper,
+    async_to_raw_response_wrapper,
+    async_to_streamed_response_wrapper,
+)
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
 from ..types.document import Document
 
-__all__ = ["Documents", "AsyncDocuments"]
+__all__ = ["DocumentsResource", "AsyncDocumentsResource"]
 
 
-class Documents(SyncAPIResource):
+class DocumentsResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> DocumentsWithRawResponse:
-        return DocumentsWithRawResponse(self)
+    def with_raw_response(self) -> DocumentsResourceWithRawResponse:
+        return DocumentsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> DocumentsWithStreamingResponse:
-        return DocumentsWithStreamingResponse(self)
+    def with_streaming_response(self) -> DocumentsResourceWithStreamingResponse:
+        return DocumentsResourceWithStreamingResponse(self)
 
     def retrieve(
         self,
@@ -119,14 +123,14 @@ class Documents(SyncAPIResource):
         )
 
 
-class AsyncDocuments(AsyncAPIResource):
+class AsyncDocumentsResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncDocumentsWithRawResponse:
-        return AsyncDocumentsWithRawResponse(self)
+    def with_raw_response(self) -> AsyncDocumentsResourceWithRawResponse:
+        return AsyncDocumentsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncDocumentsWithStreamingResponse:
-        return AsyncDocumentsWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncDocumentsResourceWithStreamingResponse:
+        return AsyncDocumentsResourceWithStreamingResponse(self)
 
     async def retrieve(
         self,
@@ -220,32 +224,32 @@ class AsyncDocuments(AsyncAPIResource):
         )
 
 
-class DocumentsWithRawResponse:
-    def __init__(self, documents: Documents) -> None:
+class DocumentsResourceWithRawResponse:
+    def __init__(self, documents: DocumentsResource) -> None:
         self._documents = documents
 
-        self.retrieve = _legacy_response.to_raw_response_wrapper(
+        self.retrieve = to_raw_response_wrapper(
             documents.retrieve,
         )
-        self.list = _legacy_response.to_raw_response_wrapper(
+        self.list = to_raw_response_wrapper(
             documents.list,
         )
 
 
-class AsyncDocumentsWithRawResponse:
-    def __init__(self, documents: AsyncDocuments) -> None:
+class AsyncDocumentsResourceWithRawResponse:
+    def __init__(self, documents: AsyncDocumentsResource) -> None:
         self._documents = documents
 
-        self.retrieve = _legacy_response.async_to_raw_response_wrapper(
+        self.retrieve = async_to_raw_response_wrapper(
             documents.retrieve,
         )
-        self.list = _legacy_response.async_to_raw_response_wrapper(
+        self.list = async_to_raw_response_wrapper(
             documents.list,
         )
 
 
-class DocumentsWithStreamingResponse:
-    def __init__(self, documents: Documents) -> None:
+class DocumentsResourceWithStreamingResponse:
+    def __init__(self, documents: DocumentsResource) -> None:
         self._documents = documents
 
         self.retrieve = to_streamed_response_wrapper(
@@ -256,8 +260,8 @@ class DocumentsWithStreamingResponse:
         )
 
 
-class AsyncDocumentsWithStreamingResponse:
-    def __init__(self, documents: AsyncDocuments) -> None:
+class AsyncDocumentsResourceWithStreamingResponse:
+    def __init__(self, documents: AsyncDocumentsResource) -> None:
         self._documents = documents
 
         self.retrieve = async_to_streamed_response_wrapper(

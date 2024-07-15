@@ -171,7 +171,7 @@ class TestAsyncFiles:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        file = response.parse()
+        file = await response.parse()
         assert_matches_type(File, file, path=["response"])
 
     @parametrize
@@ -203,7 +203,7 @@ class TestAsyncFiles:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        file = response.parse()
+        file = await response.parse()
         assert_matches_type(File, file, path=["response"])
 
     @parametrize
@@ -253,7 +253,7 @@ class TestAsyncFiles:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        file = response.parse()
+        file = await response.parse()
         assert_matches_type(AsyncPage[File], file, path=["response"])
 
     @parametrize

@@ -71,7 +71,7 @@ class TestAsyncDigitalWalletTokenRequests:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        digital_wallet_token_request = response.parse()
+        digital_wallet_token_request = await response.parse()
         assert_matches_type(DigitalWalletTokenRequestCreateResponse, digital_wallet_token_request, path=["response"])
 
     @parametrize
