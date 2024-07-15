@@ -67,7 +67,7 @@ class TestAsyncDocuments:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        document = await response.parse()
+        document = response.parse()
         assert_matches_type(Document, document, path=["response"])
 
     @parametrize

@@ -4,32 +4,28 @@ from __future__ import annotations
 
 import httpx
 
+from .. import _legacy_response
 from ..types import oauth_connection_list_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import (
-    to_raw_response_wrapper,
-    to_streamed_response_wrapper,
-    async_to_raw_response_wrapper,
-    async_to_streamed_response_wrapper,
-)
+from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
 from ..types.oauth_connection import OAuthConnection
 
-__all__ = ["OAuthConnectionsResource", "AsyncOAuthConnectionsResource"]
+__all__ = ["OAuthConnections", "AsyncOAuthConnections"]
 
 
-class OAuthConnectionsResource(SyncAPIResource):
+class OAuthConnections(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> OAuthConnectionsResourceWithRawResponse:
-        return OAuthConnectionsResourceWithRawResponse(self)
+    def with_raw_response(self) -> OAuthConnectionsWithRawResponse:
+        return OAuthConnectionsWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> OAuthConnectionsResourceWithStreamingResponse:
-        return OAuthConnectionsResourceWithStreamingResponse(self)
+    def with_streaming_response(self) -> OAuthConnectionsWithStreamingResponse:
+        return OAuthConnectionsWithStreamingResponse(self)
 
     def retrieve(
         self,
@@ -119,14 +115,14 @@ class OAuthConnectionsResource(SyncAPIResource):
         )
 
 
-class AsyncOAuthConnectionsResource(AsyncAPIResource):
+class AsyncOAuthConnections(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncOAuthConnectionsResourceWithRawResponse:
-        return AsyncOAuthConnectionsResourceWithRawResponse(self)
+    def with_raw_response(self) -> AsyncOAuthConnectionsWithRawResponse:
+        return AsyncOAuthConnectionsWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncOAuthConnectionsResourceWithStreamingResponse:
-        return AsyncOAuthConnectionsResourceWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncOAuthConnectionsWithStreamingResponse:
+        return AsyncOAuthConnectionsWithStreamingResponse(self)
 
     async def retrieve(
         self,
@@ -216,32 +212,32 @@ class AsyncOAuthConnectionsResource(AsyncAPIResource):
         )
 
 
-class OAuthConnectionsResourceWithRawResponse:
-    def __init__(self, oauth_connections: OAuthConnectionsResource) -> None:
+class OAuthConnectionsWithRawResponse:
+    def __init__(self, oauth_connections: OAuthConnections) -> None:
         self._oauth_connections = oauth_connections
 
-        self.retrieve = to_raw_response_wrapper(
+        self.retrieve = _legacy_response.to_raw_response_wrapper(
             oauth_connections.retrieve,
         )
-        self.list = to_raw_response_wrapper(
+        self.list = _legacy_response.to_raw_response_wrapper(
             oauth_connections.list,
         )
 
 
-class AsyncOAuthConnectionsResourceWithRawResponse:
-    def __init__(self, oauth_connections: AsyncOAuthConnectionsResource) -> None:
+class AsyncOAuthConnectionsWithRawResponse:
+    def __init__(self, oauth_connections: AsyncOAuthConnections) -> None:
         self._oauth_connections = oauth_connections
 
-        self.retrieve = async_to_raw_response_wrapper(
+        self.retrieve = _legacy_response.async_to_raw_response_wrapper(
             oauth_connections.retrieve,
         )
-        self.list = async_to_raw_response_wrapper(
+        self.list = _legacy_response.async_to_raw_response_wrapper(
             oauth_connections.list,
         )
 
 
-class OAuthConnectionsResourceWithStreamingResponse:
-    def __init__(self, oauth_connections: OAuthConnectionsResource) -> None:
+class OAuthConnectionsWithStreamingResponse:
+    def __init__(self, oauth_connections: OAuthConnections) -> None:
         self._oauth_connections = oauth_connections
 
         self.retrieve = to_streamed_response_wrapper(
@@ -252,8 +248,8 @@ class OAuthConnectionsResourceWithStreamingResponse:
         )
 
 
-class AsyncOAuthConnectionsResourceWithStreamingResponse:
-    def __init__(self, oauth_connections: AsyncOAuthConnectionsResource) -> None:
+class AsyncOAuthConnectionsWithStreamingResponse:
+    def __init__(self, oauth_connections: AsyncOAuthConnections) -> None:
         self._oauth_connections = oauth_connections
 
         self.retrieve = async_to_streamed_response_wrapper(

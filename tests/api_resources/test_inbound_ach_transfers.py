@@ -104,55 +104,6 @@ class TestInboundACHTransfers:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_create_notification_of_change(self, client: Increase) -> None:
-        inbound_ach_transfer = client.inbound_ach_transfers.create_notification_of_change(
-            inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
-        )
-        assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
-
-    @parametrize
-    def test_method_create_notification_of_change_with_all_params(self, client: Increase) -> None:
-        inbound_ach_transfer = client.inbound_ach_transfers.create_notification_of_change(
-            inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
-            updated_account_number="987654321",
-            updated_routing_number="101050001",
-        )
-        assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
-
-    @parametrize
-    def test_raw_response_create_notification_of_change(self, client: Increase) -> None:
-        response = client.inbound_ach_transfers.with_raw_response.create_notification_of_change(
-            inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        inbound_ach_transfer = response.parse()
-        assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
-
-    @parametrize
-    def test_streaming_response_create_notification_of_change(self, client: Increase) -> None:
-        with client.inbound_ach_transfers.with_streaming_response.create_notification_of_change(
-            inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            inbound_ach_transfer = response.parse()
-            assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
-    def test_path_params_create_notification_of_change(self, client: Increase) -> None:
-        with pytest.raises(
-            ValueError, match=r"Expected a non-empty value for `inbound_ach_transfer_id` but received ''"
-        ):
-            client.inbound_ach_transfers.with_raw_response.create_notification_of_change(
-                inbound_ach_transfer_id="",
-            )
-
-    @parametrize
     def test_method_decline(self, client: Increase) -> None:
         inbound_ach_transfer = client.inbound_ach_transfers.decline(
             "inbound_ach_transfer_id",
@@ -190,6 +141,55 @@ class TestInboundACHTransfers:
         ):
             client.inbound_ach_transfers.with_raw_response.decline(
                 "",
+            )
+
+    @parametrize
+    def test_method_notification_of_change(self, client: Increase) -> None:
+        inbound_ach_transfer = client.inbound_ach_transfers.notification_of_change(
+            inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
+        )
+        assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
+
+    @parametrize
+    def test_method_notification_of_change_with_all_params(self, client: Increase) -> None:
+        inbound_ach_transfer = client.inbound_ach_transfers.notification_of_change(
+            inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
+            updated_account_number="987654321",
+            updated_routing_number="101050001",
+        )
+        assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
+
+    @parametrize
+    def test_raw_response_notification_of_change(self, client: Increase) -> None:
+        response = client.inbound_ach_transfers.with_raw_response.notification_of_change(
+            inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        inbound_ach_transfer = response.parse()
+        assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
+
+    @parametrize
+    def test_streaming_response_notification_of_change(self, client: Increase) -> None:
+        with client.inbound_ach_transfers.with_streaming_response.notification_of_change(
+            inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            inbound_ach_transfer = response.parse()
+            assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_notification_of_change(self, client: Increase) -> None:
+        with pytest.raises(
+            ValueError, match=r"Expected a non-empty value for `inbound_ach_transfer_id` but received ''"
+        ):
+            client.inbound_ach_transfers.with_raw_response.notification_of_change(
+                inbound_ach_transfer_id="",
             )
 
     @parametrize
@@ -255,7 +255,7 @@ class TestAsyncInboundACHTransfers:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        inbound_ach_transfer = await response.parse()
+        inbound_ach_transfer = response.parse()
         assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
 
     @parametrize
@@ -308,7 +308,7 @@ class TestAsyncInboundACHTransfers:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        inbound_ach_transfer = await response.parse()
+        inbound_ach_transfer = response.parse()
         assert_matches_type(AsyncPage[InboundACHTransfer], inbound_ach_transfer, path=["response"])
 
     @parametrize
@@ -321,55 +321,6 @@ class TestAsyncInboundACHTransfers:
             assert_matches_type(AsyncPage[InboundACHTransfer], inbound_ach_transfer, path=["response"])
 
         assert cast(Any, response.is_closed) is True
-
-    @parametrize
-    async def test_method_create_notification_of_change(self, async_client: AsyncIncrease) -> None:
-        inbound_ach_transfer = await async_client.inbound_ach_transfers.create_notification_of_change(
-            inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
-        )
-        assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
-
-    @parametrize
-    async def test_method_create_notification_of_change_with_all_params(self, async_client: AsyncIncrease) -> None:
-        inbound_ach_transfer = await async_client.inbound_ach_transfers.create_notification_of_change(
-            inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
-            updated_account_number="987654321",
-            updated_routing_number="101050001",
-        )
-        assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
-
-    @parametrize
-    async def test_raw_response_create_notification_of_change(self, async_client: AsyncIncrease) -> None:
-        response = await async_client.inbound_ach_transfers.with_raw_response.create_notification_of_change(
-            inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        inbound_ach_transfer = await response.parse()
-        assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
-
-    @parametrize
-    async def test_streaming_response_create_notification_of_change(self, async_client: AsyncIncrease) -> None:
-        async with async_client.inbound_ach_transfers.with_streaming_response.create_notification_of_change(
-            inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            inbound_ach_transfer = await response.parse()
-            assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
-    async def test_path_params_create_notification_of_change(self, async_client: AsyncIncrease) -> None:
-        with pytest.raises(
-            ValueError, match=r"Expected a non-empty value for `inbound_ach_transfer_id` but received ''"
-        ):
-            await async_client.inbound_ach_transfers.with_raw_response.create_notification_of_change(
-                inbound_ach_transfer_id="",
-            )
 
     @parametrize
     async def test_method_decline(self, async_client: AsyncIncrease) -> None:
@@ -386,7 +337,7 @@ class TestAsyncInboundACHTransfers:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        inbound_ach_transfer = await response.parse()
+        inbound_ach_transfer = response.parse()
         assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
 
     @parametrize
@@ -412,6 +363,55 @@ class TestAsyncInboundACHTransfers:
             )
 
     @parametrize
+    async def test_method_notification_of_change(self, async_client: AsyncIncrease) -> None:
+        inbound_ach_transfer = await async_client.inbound_ach_transfers.notification_of_change(
+            inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
+        )
+        assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
+
+    @parametrize
+    async def test_method_notification_of_change_with_all_params(self, async_client: AsyncIncrease) -> None:
+        inbound_ach_transfer = await async_client.inbound_ach_transfers.notification_of_change(
+            inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
+            updated_account_number="987654321",
+            updated_routing_number="101050001",
+        )
+        assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
+
+    @parametrize
+    async def test_raw_response_notification_of_change(self, async_client: AsyncIncrease) -> None:
+        response = await async_client.inbound_ach_transfers.with_raw_response.notification_of_change(
+            inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        inbound_ach_transfer = response.parse()
+        assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_notification_of_change(self, async_client: AsyncIncrease) -> None:
+        async with async_client.inbound_ach_transfers.with_streaming_response.notification_of_change(
+            inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            inbound_ach_transfer = await response.parse()
+            assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_notification_of_change(self, async_client: AsyncIncrease) -> None:
+        with pytest.raises(
+            ValueError, match=r"Expected a non-empty value for `inbound_ach_transfer_id` but received ''"
+        ):
+            await async_client.inbound_ach_transfers.with_raw_response.notification_of_change(
+                inbound_ach_transfer_id="",
+            )
+
+    @parametrize
     async def test_method_transfer_return(self, async_client: AsyncIncrease) -> None:
         inbound_ach_transfer = await async_client.inbound_ach_transfers.transfer_return(
             inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
@@ -428,7 +428,7 @@ class TestAsyncInboundACHTransfers:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        inbound_ach_transfer = await response.parse()
+        inbound_ach_transfer = response.parse()
         assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
 
     @parametrize

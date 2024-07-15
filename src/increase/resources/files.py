@@ -7,6 +7,7 @@ from typing_extensions import Literal
 
 import httpx
 
+from .. import _legacy_response
 from ..types import file_list_params, file_create_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven, FileTypes
 from .._utils import (
@@ -17,27 +18,22 @@ from .._utils import (
 )
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import (
-    to_raw_response_wrapper,
-    to_streamed_response_wrapper,
-    async_to_raw_response_wrapper,
-    async_to_streamed_response_wrapper,
-)
+from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from ..types.file import File
 from .._base_client import AsyncPaginator, make_request_options
 
-__all__ = ["FilesResource", "AsyncFilesResource"]
+__all__ = ["Files", "AsyncFiles"]
 
 
-class FilesResource(SyncAPIResource):
+class Files(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> FilesResourceWithRawResponse:
-        return FilesResourceWithRawResponse(self)
+    def with_raw_response(self) -> FilesWithRawResponse:
+        return FilesWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> FilesResourceWithStreamingResponse:
-        return FilesResourceWithStreamingResponse(self)
+    def with_streaming_response(self) -> FilesWithStreamingResponse:
+        return FilesWithStreamingResponse(self)
 
     def create(
         self,
@@ -236,14 +232,14 @@ class FilesResource(SyncAPIResource):
         )
 
 
-class AsyncFilesResource(AsyncAPIResource):
+class AsyncFiles(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncFilesResourceWithRawResponse:
-        return AsyncFilesResourceWithRawResponse(self)
+    def with_raw_response(self) -> AsyncFilesWithRawResponse:
+        return AsyncFilesWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncFilesResourceWithStreamingResponse:
-        return AsyncFilesResourceWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncFilesWithStreamingResponse:
+        return AsyncFilesWithStreamingResponse(self)
 
     async def create(
         self,
@@ -442,38 +438,38 @@ class AsyncFilesResource(AsyncAPIResource):
         )
 
 
-class FilesResourceWithRawResponse:
-    def __init__(self, files: FilesResource) -> None:
+class FilesWithRawResponse:
+    def __init__(self, files: Files) -> None:
         self._files = files
 
-        self.create = to_raw_response_wrapper(
+        self.create = _legacy_response.to_raw_response_wrapper(
             files.create,
         )
-        self.retrieve = to_raw_response_wrapper(
+        self.retrieve = _legacy_response.to_raw_response_wrapper(
             files.retrieve,
         )
-        self.list = to_raw_response_wrapper(
+        self.list = _legacy_response.to_raw_response_wrapper(
             files.list,
         )
 
 
-class AsyncFilesResourceWithRawResponse:
-    def __init__(self, files: AsyncFilesResource) -> None:
+class AsyncFilesWithRawResponse:
+    def __init__(self, files: AsyncFiles) -> None:
         self._files = files
 
-        self.create = async_to_raw_response_wrapper(
+        self.create = _legacy_response.async_to_raw_response_wrapper(
             files.create,
         )
-        self.retrieve = async_to_raw_response_wrapper(
+        self.retrieve = _legacy_response.async_to_raw_response_wrapper(
             files.retrieve,
         )
-        self.list = async_to_raw_response_wrapper(
+        self.list = _legacy_response.async_to_raw_response_wrapper(
             files.list,
         )
 
 
-class FilesResourceWithStreamingResponse:
-    def __init__(self, files: FilesResource) -> None:
+class FilesWithStreamingResponse:
+    def __init__(self, files: Files) -> None:
         self._files = files
 
         self.create = to_streamed_response_wrapper(
@@ -487,8 +483,8 @@ class FilesResourceWithStreamingResponse:
         )
 
 
-class AsyncFilesResourceWithStreamingResponse:
-    def __init__(self, files: AsyncFilesResource) -> None:
+class AsyncFilesWithStreamingResponse:
+    def __init__(self, files: AsyncFiles) -> None:
         self._files = files
 
         self.create = async_to_streamed_response_wrapper(

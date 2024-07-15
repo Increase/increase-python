@@ -6,6 +6,7 @@ from typing_extensions import Literal
 
 import httpx
 
+from .. import _legacy_response
 from ..types import (
     event_subscription_list_params,
     event_subscription_create_params,
@@ -18,27 +19,22 @@ from .._utils import (
 )
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import (
-    to_raw_response_wrapper,
-    to_streamed_response_wrapper,
-    async_to_raw_response_wrapper,
-    async_to_streamed_response_wrapper,
-)
+from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
 from ..types.event_subscription import EventSubscription
 
-__all__ = ["EventSubscriptionsResource", "AsyncEventSubscriptionsResource"]
+__all__ = ["EventSubscriptions", "AsyncEventSubscriptions"]
 
 
-class EventSubscriptionsResource(SyncAPIResource):
+class EventSubscriptions(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> EventSubscriptionsResourceWithRawResponse:
-        return EventSubscriptionsResourceWithRawResponse(self)
+    def with_raw_response(self) -> EventSubscriptionsWithRawResponse:
+        return EventSubscriptionsWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> EventSubscriptionsResourceWithStreamingResponse:
-        return EventSubscriptionsResourceWithStreamingResponse(self)
+    def with_streaming_response(self) -> EventSubscriptionsWithStreamingResponse:
+        return EventSubscriptionsWithStreamingResponse(self)
 
     def create(
         self,
@@ -463,14 +459,14 @@ class EventSubscriptionsResource(SyncAPIResource):
         )
 
 
-class AsyncEventSubscriptionsResource(AsyncAPIResource):
+class AsyncEventSubscriptions(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncEventSubscriptionsResourceWithRawResponse:
-        return AsyncEventSubscriptionsResourceWithRawResponse(self)
+    def with_raw_response(self) -> AsyncEventSubscriptionsWithRawResponse:
+        return AsyncEventSubscriptionsWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncEventSubscriptionsResourceWithStreamingResponse:
-        return AsyncEventSubscriptionsResourceWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncEventSubscriptionsWithStreamingResponse:
+        return AsyncEventSubscriptionsWithStreamingResponse(self)
 
     async def create(
         self,
@@ -897,44 +893,44 @@ class AsyncEventSubscriptionsResource(AsyncAPIResource):
         )
 
 
-class EventSubscriptionsResourceWithRawResponse:
-    def __init__(self, event_subscriptions: EventSubscriptionsResource) -> None:
+class EventSubscriptionsWithRawResponse:
+    def __init__(self, event_subscriptions: EventSubscriptions) -> None:
         self._event_subscriptions = event_subscriptions
 
-        self.create = to_raw_response_wrapper(
+        self.create = _legacy_response.to_raw_response_wrapper(
             event_subscriptions.create,
         )
-        self.retrieve = to_raw_response_wrapper(
+        self.retrieve = _legacy_response.to_raw_response_wrapper(
             event_subscriptions.retrieve,
         )
-        self.update = to_raw_response_wrapper(
+        self.update = _legacy_response.to_raw_response_wrapper(
             event_subscriptions.update,
         )
-        self.list = to_raw_response_wrapper(
+        self.list = _legacy_response.to_raw_response_wrapper(
             event_subscriptions.list,
         )
 
 
-class AsyncEventSubscriptionsResourceWithRawResponse:
-    def __init__(self, event_subscriptions: AsyncEventSubscriptionsResource) -> None:
+class AsyncEventSubscriptionsWithRawResponse:
+    def __init__(self, event_subscriptions: AsyncEventSubscriptions) -> None:
         self._event_subscriptions = event_subscriptions
 
-        self.create = async_to_raw_response_wrapper(
+        self.create = _legacy_response.async_to_raw_response_wrapper(
             event_subscriptions.create,
         )
-        self.retrieve = async_to_raw_response_wrapper(
+        self.retrieve = _legacy_response.async_to_raw_response_wrapper(
             event_subscriptions.retrieve,
         )
-        self.update = async_to_raw_response_wrapper(
+        self.update = _legacy_response.async_to_raw_response_wrapper(
             event_subscriptions.update,
         )
-        self.list = async_to_raw_response_wrapper(
+        self.list = _legacy_response.async_to_raw_response_wrapper(
             event_subscriptions.list,
         )
 
 
-class EventSubscriptionsResourceWithStreamingResponse:
-    def __init__(self, event_subscriptions: EventSubscriptionsResource) -> None:
+class EventSubscriptionsWithStreamingResponse:
+    def __init__(self, event_subscriptions: EventSubscriptions) -> None:
         self._event_subscriptions = event_subscriptions
 
         self.create = to_streamed_response_wrapper(
@@ -951,8 +947,8 @@ class EventSubscriptionsResourceWithStreamingResponse:
         )
 
 
-class AsyncEventSubscriptionsResourceWithStreamingResponse:
-    def __init__(self, event_subscriptions: AsyncEventSubscriptionsResource) -> None:
+class AsyncEventSubscriptionsWithStreamingResponse:
+    def __init__(self, event_subscriptions: AsyncEventSubscriptions) -> None:
         self._event_subscriptions = event_subscriptions
 
         self.create = async_to_streamed_response_wrapper(

@@ -2,10 +2,13 @@
 
 from __future__ import annotations
 
+from typing import Union
+from datetime import datetime
 from typing_extensions import Literal
 
 import httpx
 
+from ... import _legacy_response
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import (
     maybe_transform,
@@ -13,32 +16,41 @@ from ..._utils import (
 )
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import (
-    to_raw_response_wrapper,
-    to_streamed_response_wrapper,
-    async_to_raw_response_wrapper,
-    async_to_streamed_response_wrapper,
-)
+from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..._base_client import make_request_options
-from ...types.simulations import ach_transfer_return_params, ach_transfer_create_notification_of_change_params
+from ...types.simulations import (
+    ach_transfer_return_params,
+    ach_transfer_create_inbound_params,
+    ach_transfer_notification_of_change_params,
+)
 from ...types.ach_transfer import ACHTransfer
+from ...types.inbound_ach_transfer import InboundACHTransfer
 
-__all__ = ["ACHTransfersResource", "AsyncACHTransfersResource"]
+__all__ = ["ACHTransfers", "AsyncACHTransfers"]
 
 
-class ACHTransfersResource(SyncAPIResource):
+class ACHTransfers(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> ACHTransfersResourceWithRawResponse:
-        return ACHTransfersResourceWithRawResponse(self)
+    def with_raw_response(self) -> ACHTransfersWithRawResponse:
+        return ACHTransfersWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> ACHTransfersResourceWithStreamingResponse:
-        return ACHTransfersResourceWithStreamingResponse(self)
+    def with_streaming_response(self) -> ACHTransfersWithStreamingResponse:
+        return ACHTransfersWithStreamingResponse(self)
 
-    def acknowledge(
+    def create_inbound(
         self,
-        ach_transfer_id: str,
         *,
+        account_number_id: str,
+        amount: int,
+        company_descriptive_date: str | NotGiven = NOT_GIVEN,
+        company_discretionary_data: str | NotGiven = NOT_GIVEN,
+        company_entry_description: str | NotGiven = NOT_GIVEN,
+        company_id: str | NotGiven = NOT_GIVEN,
+        company_name: str | NotGiven = NOT_GIVEN,
+        receiver_id_number: str | NotGiven = NOT_GIVEN,
+        receiver_name: str | NotGiven = NOT_GIVEN,
+        resolve_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -46,17 +58,43 @@ class ACHTransfersResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> ACHTransfer:
-        """
-        Simulates the acknowledgement of an [ACH Transfer](#ach-transfers) by the
-        Federal Reserve. This transfer must first have a `status` of `submitted` . In
-        production, the Federal Reserve generally acknowledges submitted ACH files
-        within 30 minutes. Since sandbox ACH Transfers are not submitted to the Federal
-        Reserve, this endpoint allows you to skip that delay and add the acknowledgment
-        subresource to the ACH Transfer.
+    ) -> InboundACHTransfer:
+        """Simulates an inbound ACH transfer to your account.
+
+        This imitates initiating a
+        transfer to an Increase account from a different financial institution. The
+        transfer may be either a credit or a debit depending on if the `amount` is
+        positive or negative. The result of calling this API will contain the created
+        transfer. You can pass a `resolve_at` parameter to allow for a window to
+        [action on the Inbound ACH Transfer](https://increase.com/documentation/receiving-ach-transfers).
+        Alternatively, if you don't pass the `resolve_at` parameter the result will
+        contain either a [Transaction](#transactions) or a
+        [Declined Transaction](#declined-transactions) depending on whether or not the
+        transfer is allowed.
 
         Args:
-          ach_transfer_id: The identifier of the ACH Transfer you wish to become acknowledged.
+          account_number_id: The identifier of the Account Number the inbound ACH Transfer is for.
+
+          amount: The transfer amount in cents. A positive amount originates a credit transfer
+              pushing funds to the receiving account. A negative amount originates a debit
+              transfer pulling funds from the receiving account.
+
+          company_descriptive_date: The description of the date of the transfer.
+
+          company_discretionary_data: Data associated with the transfer set by the sender.
+
+          company_entry_description: The description of the transfer set by the sender.
+
+          company_id: The sender's company ID.
+
+          company_name: The name of the sender.
+
+          receiver_id_number: The ID of the receiver of the transfer.
+
+          receiver_name: The name of the receiver of the transfer.
+
+          resolve_at: The time at which the transfer should be resolved. If not provided will resolve
+              immediately.
 
           extra_headers: Send extra headers
 
@@ -68,10 +106,23 @@ class ACHTransfersResource(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
-        if not ach_transfer_id:
-            raise ValueError(f"Expected a non-empty value for `ach_transfer_id` but received {ach_transfer_id!r}")
         return self._post(
-            f"/simulations/ach_transfers/{ach_transfer_id}/acknowledge",
+            "/simulations/inbound_ach_transfers",
+            body=maybe_transform(
+                {
+                    "account_number_id": account_number_id,
+                    "amount": amount,
+                    "company_descriptive_date": company_descriptive_date,
+                    "company_discretionary_data": company_discretionary_data,
+                    "company_entry_description": company_entry_description,
+                    "company_id": company_id,
+                    "company_name": company_name,
+                    "receiver_id_number": receiver_id_number,
+                    "receiver_name": receiver_name,
+                    "resolve_at": resolve_at,
+                },
+                ach_transfer_create_inbound_params.ACHTransferCreateInboundParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -79,10 +130,10 @@ class ACHTransfersResource(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=ACHTransfer,
+            cast_to=InboundACHTransfer,
         )
 
-    def create_notification_of_change(
+    def notification_of_change(
         self,
         ach_transfer_id: str,
         *,
@@ -176,13 +227,13 @@ class ACHTransfersResource(SyncAPIResource):
         if not ach_transfer_id:
             raise ValueError(f"Expected a non-empty value for `ach_transfer_id` but received {ach_transfer_id!r}")
         return self._post(
-            f"/simulations/ach_transfers/{ach_transfer_id}/create_notification_of_change",
+            f"/simulations/ach_transfers/{ach_transfer_id}/notification_of_change",
             body=maybe_transform(
                 {
                     "change_code": change_code,
                     "corrected_data": corrected_data,
                 },
-                ach_transfer_create_notification_of_change_params.ACHTransferCreateNotificationOfChangeParams,
+                ach_transfer_notification_of_change_params.ACHTransferNotificationOfChangeParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -511,19 +562,28 @@ class ACHTransfersResource(SyncAPIResource):
         )
 
 
-class AsyncACHTransfersResource(AsyncAPIResource):
+class AsyncACHTransfers(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncACHTransfersResourceWithRawResponse:
-        return AsyncACHTransfersResourceWithRawResponse(self)
+    def with_raw_response(self) -> AsyncACHTransfersWithRawResponse:
+        return AsyncACHTransfersWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncACHTransfersResourceWithStreamingResponse:
-        return AsyncACHTransfersResourceWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncACHTransfersWithStreamingResponse:
+        return AsyncACHTransfersWithStreamingResponse(self)
 
-    async def acknowledge(
+    async def create_inbound(
         self,
-        ach_transfer_id: str,
         *,
+        account_number_id: str,
+        amount: int,
+        company_descriptive_date: str | NotGiven = NOT_GIVEN,
+        company_discretionary_data: str | NotGiven = NOT_GIVEN,
+        company_entry_description: str | NotGiven = NOT_GIVEN,
+        company_id: str | NotGiven = NOT_GIVEN,
+        company_name: str | NotGiven = NOT_GIVEN,
+        receiver_id_number: str | NotGiven = NOT_GIVEN,
+        receiver_name: str | NotGiven = NOT_GIVEN,
+        resolve_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -531,17 +591,43 @@ class AsyncACHTransfersResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> ACHTransfer:
-        """
-        Simulates the acknowledgement of an [ACH Transfer](#ach-transfers) by the
-        Federal Reserve. This transfer must first have a `status` of `submitted` . In
-        production, the Federal Reserve generally acknowledges submitted ACH files
-        within 30 minutes. Since sandbox ACH Transfers are not submitted to the Federal
-        Reserve, this endpoint allows you to skip that delay and add the acknowledgment
-        subresource to the ACH Transfer.
+    ) -> InboundACHTransfer:
+        """Simulates an inbound ACH transfer to your account.
+
+        This imitates initiating a
+        transfer to an Increase account from a different financial institution. The
+        transfer may be either a credit or a debit depending on if the `amount` is
+        positive or negative. The result of calling this API will contain the created
+        transfer. You can pass a `resolve_at` parameter to allow for a window to
+        [action on the Inbound ACH Transfer](https://increase.com/documentation/receiving-ach-transfers).
+        Alternatively, if you don't pass the `resolve_at` parameter the result will
+        contain either a [Transaction](#transactions) or a
+        [Declined Transaction](#declined-transactions) depending on whether or not the
+        transfer is allowed.
 
         Args:
-          ach_transfer_id: The identifier of the ACH Transfer you wish to become acknowledged.
+          account_number_id: The identifier of the Account Number the inbound ACH Transfer is for.
+
+          amount: The transfer amount in cents. A positive amount originates a credit transfer
+              pushing funds to the receiving account. A negative amount originates a debit
+              transfer pulling funds from the receiving account.
+
+          company_descriptive_date: The description of the date of the transfer.
+
+          company_discretionary_data: Data associated with the transfer set by the sender.
+
+          company_entry_description: The description of the transfer set by the sender.
+
+          company_id: The sender's company ID.
+
+          company_name: The name of the sender.
+
+          receiver_id_number: The ID of the receiver of the transfer.
+
+          receiver_name: The name of the receiver of the transfer.
+
+          resolve_at: The time at which the transfer should be resolved. If not provided will resolve
+              immediately.
 
           extra_headers: Send extra headers
 
@@ -553,10 +639,23 @@ class AsyncACHTransfersResource(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
-        if not ach_transfer_id:
-            raise ValueError(f"Expected a non-empty value for `ach_transfer_id` but received {ach_transfer_id!r}")
         return await self._post(
-            f"/simulations/ach_transfers/{ach_transfer_id}/acknowledge",
+            "/simulations/inbound_ach_transfers",
+            body=await async_maybe_transform(
+                {
+                    "account_number_id": account_number_id,
+                    "amount": amount,
+                    "company_descriptive_date": company_descriptive_date,
+                    "company_discretionary_data": company_discretionary_data,
+                    "company_entry_description": company_entry_description,
+                    "company_id": company_id,
+                    "company_name": company_name,
+                    "receiver_id_number": receiver_id_number,
+                    "receiver_name": receiver_name,
+                    "resolve_at": resolve_at,
+                },
+                ach_transfer_create_inbound_params.ACHTransferCreateInboundParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -564,10 +663,10 @@ class AsyncACHTransfersResource(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=ACHTransfer,
+            cast_to=InboundACHTransfer,
         )
 
-    async def create_notification_of_change(
+    async def notification_of_change(
         self,
         ach_transfer_id: str,
         *,
@@ -661,13 +760,13 @@ class AsyncACHTransfersResource(AsyncAPIResource):
         if not ach_transfer_id:
             raise ValueError(f"Expected a non-empty value for `ach_transfer_id` but received {ach_transfer_id!r}")
         return await self._post(
-            f"/simulations/ach_transfers/{ach_transfer_id}/create_notification_of_change",
+            f"/simulations/ach_transfers/{ach_transfer_id}/notification_of_change",
             body=await async_maybe_transform(
                 {
                     "change_code": change_code,
                     "corrected_data": corrected_data,
                 },
-                ach_transfer_create_notification_of_change_params.ACHTransferCreateNotificationOfChangeParams,
+                ach_transfer_notification_of_change_params.ACHTransferNotificationOfChangeParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -996,51 +1095,51 @@ class AsyncACHTransfersResource(AsyncAPIResource):
         )
 
 
-class ACHTransfersResourceWithRawResponse:
-    def __init__(self, ach_transfers: ACHTransfersResource) -> None:
+class ACHTransfersWithRawResponse:
+    def __init__(self, ach_transfers: ACHTransfers) -> None:
         self._ach_transfers = ach_transfers
 
-        self.acknowledge = to_raw_response_wrapper(
-            ach_transfers.acknowledge,
+        self.create_inbound = _legacy_response.to_raw_response_wrapper(
+            ach_transfers.create_inbound,
         )
-        self.create_notification_of_change = to_raw_response_wrapper(
-            ach_transfers.create_notification_of_change,
+        self.notification_of_change = _legacy_response.to_raw_response_wrapper(
+            ach_transfers.notification_of_change,
         )
-        self.return_ = to_raw_response_wrapper(
+        self.return_ = _legacy_response.to_raw_response_wrapper(
             ach_transfers.return_,
         )
-        self.submit = to_raw_response_wrapper(
+        self.submit = _legacy_response.to_raw_response_wrapper(
             ach_transfers.submit,
         )
 
 
-class AsyncACHTransfersResourceWithRawResponse:
-    def __init__(self, ach_transfers: AsyncACHTransfersResource) -> None:
+class AsyncACHTransfersWithRawResponse:
+    def __init__(self, ach_transfers: AsyncACHTransfers) -> None:
         self._ach_transfers = ach_transfers
 
-        self.acknowledge = async_to_raw_response_wrapper(
-            ach_transfers.acknowledge,
+        self.create_inbound = _legacy_response.async_to_raw_response_wrapper(
+            ach_transfers.create_inbound,
         )
-        self.create_notification_of_change = async_to_raw_response_wrapper(
-            ach_transfers.create_notification_of_change,
+        self.notification_of_change = _legacy_response.async_to_raw_response_wrapper(
+            ach_transfers.notification_of_change,
         )
-        self.return_ = async_to_raw_response_wrapper(
+        self.return_ = _legacy_response.async_to_raw_response_wrapper(
             ach_transfers.return_,
         )
-        self.submit = async_to_raw_response_wrapper(
+        self.submit = _legacy_response.async_to_raw_response_wrapper(
             ach_transfers.submit,
         )
 
 
-class ACHTransfersResourceWithStreamingResponse:
-    def __init__(self, ach_transfers: ACHTransfersResource) -> None:
+class ACHTransfersWithStreamingResponse:
+    def __init__(self, ach_transfers: ACHTransfers) -> None:
         self._ach_transfers = ach_transfers
 
-        self.acknowledge = to_streamed_response_wrapper(
-            ach_transfers.acknowledge,
+        self.create_inbound = to_streamed_response_wrapper(
+            ach_transfers.create_inbound,
         )
-        self.create_notification_of_change = to_streamed_response_wrapper(
-            ach_transfers.create_notification_of_change,
+        self.notification_of_change = to_streamed_response_wrapper(
+            ach_transfers.notification_of_change,
         )
         self.return_ = to_streamed_response_wrapper(
             ach_transfers.return_,
@@ -1050,15 +1149,15 @@ class ACHTransfersResourceWithStreamingResponse:
         )
 
 
-class AsyncACHTransfersResourceWithStreamingResponse:
-    def __init__(self, ach_transfers: AsyncACHTransfersResource) -> None:
+class AsyncACHTransfersWithStreamingResponse:
+    def __init__(self, ach_transfers: AsyncACHTransfers) -> None:
         self._ach_transfers = ach_transfers
 
-        self.acknowledge = async_to_streamed_response_wrapper(
-            ach_transfers.acknowledge,
+        self.create_inbound = async_to_streamed_response_wrapper(
+            ach_transfers.create_inbound,
         )
-        self.create_notification_of_change = async_to_streamed_response_wrapper(
-            ach_transfers.create_notification_of_change,
+        self.notification_of_change = async_to_streamed_response_wrapper(
+            ach_transfers.notification_of_change,
         )
         self.return_ = async_to_streamed_response_wrapper(
             ach_transfers.return_,

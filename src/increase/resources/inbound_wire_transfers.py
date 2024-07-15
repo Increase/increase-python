@@ -6,32 +6,28 @@ from typing_extensions import Literal
 
 import httpx
 
+from .. import _legacy_response
 from ..types import inbound_wire_transfer_list_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import (
-    to_raw_response_wrapper,
-    to_streamed_response_wrapper,
-    async_to_raw_response_wrapper,
-    async_to_streamed_response_wrapper,
-)
+from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
 from ..types.inbound_wire_transfer import InboundWireTransfer
 
-__all__ = ["InboundWireTransfersResource", "AsyncInboundWireTransfersResource"]
+__all__ = ["InboundWireTransfers", "AsyncInboundWireTransfers"]
 
 
-class InboundWireTransfersResource(SyncAPIResource):
+class InboundWireTransfers(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> InboundWireTransfersResourceWithRawResponse:
-        return InboundWireTransfersResourceWithRawResponse(self)
+    def with_raw_response(self) -> InboundWireTransfersWithRawResponse:
+        return InboundWireTransfersWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> InboundWireTransfersResourceWithStreamingResponse:
-        return InboundWireTransfersResourceWithStreamingResponse(self)
+    def with_streaming_response(self) -> InboundWireTransfersWithStreamingResponse:
+        return InboundWireTransfersWithStreamingResponse(self)
 
     def retrieve(
         self,
@@ -139,14 +135,14 @@ class InboundWireTransfersResource(SyncAPIResource):
         )
 
 
-class AsyncInboundWireTransfersResource(AsyncAPIResource):
+class AsyncInboundWireTransfers(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncInboundWireTransfersResourceWithRawResponse:
-        return AsyncInboundWireTransfersResourceWithRawResponse(self)
+    def with_raw_response(self) -> AsyncInboundWireTransfersWithRawResponse:
+        return AsyncInboundWireTransfersWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncInboundWireTransfersResourceWithStreamingResponse:
-        return AsyncInboundWireTransfersResourceWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncInboundWireTransfersWithStreamingResponse:
+        return AsyncInboundWireTransfersWithStreamingResponse(self)
 
     async def retrieve(
         self,
@@ -254,32 +250,32 @@ class AsyncInboundWireTransfersResource(AsyncAPIResource):
         )
 
 
-class InboundWireTransfersResourceWithRawResponse:
-    def __init__(self, inbound_wire_transfers: InboundWireTransfersResource) -> None:
+class InboundWireTransfersWithRawResponse:
+    def __init__(self, inbound_wire_transfers: InboundWireTransfers) -> None:
         self._inbound_wire_transfers = inbound_wire_transfers
 
-        self.retrieve = to_raw_response_wrapper(
+        self.retrieve = _legacy_response.to_raw_response_wrapper(
             inbound_wire_transfers.retrieve,
         )
-        self.list = to_raw_response_wrapper(
+        self.list = _legacy_response.to_raw_response_wrapper(
             inbound_wire_transfers.list,
         )
 
 
-class AsyncInboundWireTransfersResourceWithRawResponse:
-    def __init__(self, inbound_wire_transfers: AsyncInboundWireTransfersResource) -> None:
+class AsyncInboundWireTransfersWithRawResponse:
+    def __init__(self, inbound_wire_transfers: AsyncInboundWireTransfers) -> None:
         self._inbound_wire_transfers = inbound_wire_transfers
 
-        self.retrieve = async_to_raw_response_wrapper(
+        self.retrieve = _legacy_response.async_to_raw_response_wrapper(
             inbound_wire_transfers.retrieve,
         )
-        self.list = async_to_raw_response_wrapper(
+        self.list = _legacy_response.async_to_raw_response_wrapper(
             inbound_wire_transfers.list,
         )
 
 
-class InboundWireTransfersResourceWithStreamingResponse:
-    def __init__(self, inbound_wire_transfers: InboundWireTransfersResource) -> None:
+class InboundWireTransfersWithStreamingResponse:
+    def __init__(self, inbound_wire_transfers: InboundWireTransfers) -> None:
         self._inbound_wire_transfers = inbound_wire_transfers
 
         self.retrieve = to_streamed_response_wrapper(
@@ -290,8 +286,8 @@ class InboundWireTransfersResourceWithStreamingResponse:
         )
 
 
-class AsyncInboundWireTransfersResourceWithStreamingResponse:
-    def __init__(self, inbound_wire_transfers: AsyncInboundWireTransfersResource) -> None:
+class AsyncInboundWireTransfersWithStreamingResponse:
+    def __init__(self, inbound_wire_transfers: AsyncInboundWireTransfers) -> None:
         self._inbound_wire_transfers = inbound_wire_transfers
 
         self.retrieve = async_to_streamed_response_wrapper(

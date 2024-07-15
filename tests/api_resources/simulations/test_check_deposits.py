@@ -17,6 +17,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestCheckDeposits:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
+    @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
     def test_method_reject(self, client: Increase) -> None:
         check_deposit = client.simulations.check_deposits.reject(
@@ -24,6 +25,7 @@ class TestCheckDeposits:
         )
         assert_matches_type(CheckDeposit, check_deposit, path=["response"])
 
+    @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
     def test_raw_response_reject(self, client: Increase) -> None:
         response = client.simulations.check_deposits.with_raw_response.reject(
@@ -35,6 +37,7 @@ class TestCheckDeposits:
         check_deposit = response.parse()
         assert_matches_type(CheckDeposit, check_deposit, path=["response"])
 
+    @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
     def test_streaming_response_reject(self, client: Increase) -> None:
         with client.simulations.check_deposits.with_streaming_response.reject(
@@ -48,6 +51,7 @@ class TestCheckDeposits:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
     def test_path_params_reject(self, client: Increase) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `check_deposit_id` but received ''"):
@@ -93,6 +97,7 @@ class TestCheckDeposits:
                 "",
             )
 
+    @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
     def test_method_submit(self, client: Increase) -> None:
         check_deposit = client.simulations.check_deposits.submit(
@@ -100,6 +105,7 @@ class TestCheckDeposits:
         )
         assert_matches_type(CheckDeposit, check_deposit, path=["response"])
 
+    @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
     def test_raw_response_submit(self, client: Increase) -> None:
         response = client.simulations.check_deposits.with_raw_response.submit(
@@ -111,6 +117,7 @@ class TestCheckDeposits:
         check_deposit = response.parse()
         assert_matches_type(CheckDeposit, check_deposit, path=["response"])
 
+    @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
     def test_streaming_response_submit(self, client: Increase) -> None:
         with client.simulations.check_deposits.with_streaming_response.submit(
@@ -124,6 +131,7 @@ class TestCheckDeposits:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
     def test_path_params_submit(self, client: Increase) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `check_deposit_id` but received ''"):
@@ -135,6 +143,7 @@ class TestCheckDeposits:
 class TestAsyncCheckDeposits:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
+    @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
     async def test_method_reject(self, async_client: AsyncIncrease) -> None:
         check_deposit = await async_client.simulations.check_deposits.reject(
@@ -142,6 +151,7 @@ class TestAsyncCheckDeposits:
         )
         assert_matches_type(CheckDeposit, check_deposit, path=["response"])
 
+    @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
     async def test_raw_response_reject(self, async_client: AsyncIncrease) -> None:
         response = await async_client.simulations.check_deposits.with_raw_response.reject(
@@ -150,9 +160,10 @@ class TestAsyncCheckDeposits:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        check_deposit = await response.parse()
+        check_deposit = response.parse()
         assert_matches_type(CheckDeposit, check_deposit, path=["response"])
 
+    @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
     async def test_streaming_response_reject(self, async_client: AsyncIncrease) -> None:
         async with async_client.simulations.check_deposits.with_streaming_response.reject(
@@ -166,6 +177,7 @@ class TestAsyncCheckDeposits:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
     async def test_path_params_reject(self, async_client: AsyncIncrease) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `check_deposit_id` but received ''"):
@@ -188,7 +200,7 @@ class TestAsyncCheckDeposits:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        check_deposit = await response.parse()
+        check_deposit = response.parse()
         assert_matches_type(CheckDeposit, check_deposit, path=["response"])
 
     @parametrize
@@ -211,6 +223,7 @@ class TestAsyncCheckDeposits:
                 "",
             )
 
+    @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
     async def test_method_submit(self, async_client: AsyncIncrease) -> None:
         check_deposit = await async_client.simulations.check_deposits.submit(
@@ -218,6 +231,7 @@ class TestAsyncCheckDeposits:
         )
         assert_matches_type(CheckDeposit, check_deposit, path=["response"])
 
+    @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
     async def test_raw_response_submit(self, async_client: AsyncIncrease) -> None:
         response = await async_client.simulations.check_deposits.with_raw_response.submit(
@@ -226,9 +240,10 @@ class TestAsyncCheckDeposits:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        check_deposit = await response.parse()
+        check_deposit = response.parse()
         assert_matches_type(CheckDeposit, check_deposit, path=["response"])
 
+    @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
     async def test_streaming_response_submit(self, async_client: AsyncIncrease) -> None:
         async with async_client.simulations.check_deposits.with_streaming_response.submit(
@@ -242,6 +257,7 @@ class TestAsyncCheckDeposits:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism incorrectly returns an invalid JSON error")
     @parametrize
     async def test_path_params_submit(self, async_client: AsyncIncrease) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `check_deposit_id` but received ''"):

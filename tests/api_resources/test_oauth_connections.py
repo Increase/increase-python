@@ -109,7 +109,7 @@ class TestAsyncOAuthConnections:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        oauth_connection = await response.parse()
+        oauth_connection = response.parse()
         assert_matches_type(OAuthConnection, oauth_connection, path=["response"])
 
     @parametrize
@@ -152,7 +152,7 @@ class TestAsyncOAuthConnections:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        oauth_connection = await response.parse()
+        oauth_connection = response.parse()
         assert_matches_type(AsyncPage[OAuthConnection], oauth_connection, path=["response"])
 
     @parametrize

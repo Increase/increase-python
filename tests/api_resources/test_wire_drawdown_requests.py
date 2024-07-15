@@ -18,6 +18,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestWireDrawdownRequests:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
+    @pytest.mark.skip(reason="Prism tests are broken")
     @parametrize
     def test_method_create(self, client: Increase) -> None:
         wire_drawdown_request = client.wire_drawdown_requests.create(
@@ -30,6 +31,7 @@ class TestWireDrawdownRequests:
         )
         assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are broken")
     @parametrize
     def test_method_create_with_all_params(self, client: Increase) -> None:
         wire_drawdown_request = client.wire_drawdown_requests.create(
@@ -49,6 +51,7 @@ class TestWireDrawdownRequests:
         )
         assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are broken")
     @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
         response = client.wire_drawdown_requests.with_raw_response.create(
@@ -65,6 +68,7 @@ class TestWireDrawdownRequests:
         wire_drawdown_request = response.parse()
         assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are broken")
     @parametrize
     def test_streaming_response_create(self, client: Increase) -> None:
         with client.wire_drawdown_requests.with_streaming_response.create(
@@ -162,6 +166,7 @@ class TestWireDrawdownRequests:
 class TestAsyncWireDrawdownRequests:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
+    @pytest.mark.skip(reason="Prism tests are broken")
     @parametrize
     async def test_method_create(self, async_client: AsyncIncrease) -> None:
         wire_drawdown_request = await async_client.wire_drawdown_requests.create(
@@ -174,6 +179,7 @@ class TestAsyncWireDrawdownRequests:
         )
         assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are broken")
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncIncrease) -> None:
         wire_drawdown_request = await async_client.wire_drawdown_requests.create(
@@ -193,6 +199,7 @@ class TestAsyncWireDrawdownRequests:
         )
         assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are broken")
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
         response = await async_client.wire_drawdown_requests.with_raw_response.create(
@@ -206,9 +213,10 @@ class TestAsyncWireDrawdownRequests:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        wire_drawdown_request = await response.parse()
+        wire_drawdown_request = response.parse()
         assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are broken")
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncIncrease) -> None:
         async with async_client.wire_drawdown_requests.with_streaming_response.create(
@@ -242,7 +250,7 @@ class TestAsyncWireDrawdownRequests:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        wire_drawdown_request = await response.parse()
+        wire_drawdown_request = response.parse()
         assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
 
     @parametrize
@@ -288,7 +296,7 @@ class TestAsyncWireDrawdownRequests:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        wire_drawdown_request = await response.parse()
+        wire_drawdown_request = response.parse()
         assert_matches_type(AsyncPage[WireDrawdownRequest], wire_drawdown_request, path=["response"])
 
     @parametrize

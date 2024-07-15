@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import httpx
 
+from ... import _legacy_response
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import (
     maybe_transform,
@@ -11,27 +12,22 @@ from ..._utils import (
 )
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import (
-    to_raw_response_wrapper,
-    to_streamed_response_wrapper,
-    async_to_raw_response_wrapper,
-    async_to_streamed_response_wrapper,
-)
+from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..._base_client import make_request_options
 from ...types.program import Program
 from ...types.simulations import program_create_params
 
-__all__ = ["ProgramsResource", "AsyncProgramsResource"]
+__all__ = ["Programs", "AsyncPrograms"]
 
 
-class ProgramsResource(SyncAPIResource):
+class Programs(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> ProgramsResourceWithRawResponse:
-        return ProgramsResourceWithRawResponse(self)
+    def with_raw_response(self) -> ProgramsWithRawResponse:
+        return ProgramsWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> ProgramsResourceWithStreamingResponse:
-        return ProgramsResourceWithStreamingResponse(self)
+    def with_streaming_response(self) -> ProgramsWithStreamingResponse:
+        return ProgramsWithStreamingResponse(self)
 
     def create(
         self,
@@ -78,14 +74,14 @@ class ProgramsResource(SyncAPIResource):
         )
 
 
-class AsyncProgramsResource(AsyncAPIResource):
+class AsyncPrograms(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncProgramsResourceWithRawResponse:
-        return AsyncProgramsResourceWithRawResponse(self)
+    def with_raw_response(self) -> AsyncProgramsWithRawResponse:
+        return AsyncProgramsWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncProgramsResourceWithStreamingResponse:
-        return AsyncProgramsResourceWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncProgramsWithStreamingResponse:
+        return AsyncProgramsWithStreamingResponse(self)
 
     async def create(
         self,
@@ -132,26 +128,26 @@ class AsyncProgramsResource(AsyncAPIResource):
         )
 
 
-class ProgramsResourceWithRawResponse:
-    def __init__(self, programs: ProgramsResource) -> None:
+class ProgramsWithRawResponse:
+    def __init__(self, programs: Programs) -> None:
         self._programs = programs
 
-        self.create = to_raw_response_wrapper(
+        self.create = _legacy_response.to_raw_response_wrapper(
             programs.create,
         )
 
 
-class AsyncProgramsResourceWithRawResponse:
-    def __init__(self, programs: AsyncProgramsResource) -> None:
+class AsyncProgramsWithRawResponse:
+    def __init__(self, programs: AsyncPrograms) -> None:
         self._programs = programs
 
-        self.create = async_to_raw_response_wrapper(
+        self.create = _legacy_response.async_to_raw_response_wrapper(
             programs.create,
         )
 
 
-class ProgramsResourceWithStreamingResponse:
-    def __init__(self, programs: ProgramsResource) -> None:
+class ProgramsWithStreamingResponse:
+    def __init__(self, programs: Programs) -> None:
         self._programs = programs
 
         self.create = to_streamed_response_wrapper(
@@ -159,8 +155,8 @@ class ProgramsResourceWithStreamingResponse:
         )
 
 
-class AsyncProgramsResourceWithStreamingResponse:
-    def __init__(self, programs: AsyncProgramsResource) -> None:
+class AsyncProgramsWithStreamingResponse:
+    def __init__(self, programs: AsyncPrograms) -> None:
         self._programs = programs
 
         self.create = async_to_streamed_response_wrapper(

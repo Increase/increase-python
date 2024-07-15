@@ -4,29 +4,25 @@ from __future__ import annotations
 
 import httpx
 
+from ... import _legacy_response
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import (
-    to_raw_response_wrapper,
-    to_streamed_response_wrapper,
-    async_to_raw_response_wrapper,
-    async_to_streamed_response_wrapper,
-)
+from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..._base_client import make_request_options
 from ...types.account_transfer import AccountTransfer
 
-__all__ = ["AccountTransfersResource", "AsyncAccountTransfersResource"]
+__all__ = ["AccountTransfers", "AsyncAccountTransfers"]
 
 
-class AccountTransfersResource(SyncAPIResource):
+class AccountTransfers(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AccountTransfersResourceWithRawResponse:
-        return AccountTransfersResourceWithRawResponse(self)
+    def with_raw_response(self) -> AccountTransfersWithRawResponse:
+        return AccountTransfersWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AccountTransfersResourceWithStreamingResponse:
-        return AccountTransfersResourceWithStreamingResponse(self)
+    def with_streaming_response(self) -> AccountTransfersWithStreamingResponse:
+        return AccountTransfersWithStreamingResponse(self)
 
     def complete(
         self,
@@ -76,14 +72,14 @@ class AccountTransfersResource(SyncAPIResource):
         )
 
 
-class AsyncAccountTransfersResource(AsyncAPIResource):
+class AsyncAccountTransfers(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncAccountTransfersResourceWithRawResponse:
-        return AsyncAccountTransfersResourceWithRawResponse(self)
+    def with_raw_response(self) -> AsyncAccountTransfersWithRawResponse:
+        return AsyncAccountTransfersWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncAccountTransfersResourceWithStreamingResponse:
-        return AsyncAccountTransfersResourceWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncAccountTransfersWithStreamingResponse:
+        return AsyncAccountTransfersWithStreamingResponse(self)
 
     async def complete(
         self,
@@ -133,26 +129,26 @@ class AsyncAccountTransfersResource(AsyncAPIResource):
         )
 
 
-class AccountTransfersResourceWithRawResponse:
-    def __init__(self, account_transfers: AccountTransfersResource) -> None:
+class AccountTransfersWithRawResponse:
+    def __init__(self, account_transfers: AccountTransfers) -> None:
         self._account_transfers = account_transfers
 
-        self.complete = to_raw_response_wrapper(
+        self.complete = _legacy_response.to_raw_response_wrapper(
             account_transfers.complete,
         )
 
 
-class AsyncAccountTransfersResourceWithRawResponse:
-    def __init__(self, account_transfers: AsyncAccountTransfersResource) -> None:
+class AsyncAccountTransfersWithRawResponse:
+    def __init__(self, account_transfers: AsyncAccountTransfers) -> None:
         self._account_transfers = account_transfers
 
-        self.complete = async_to_raw_response_wrapper(
+        self.complete = _legacy_response.async_to_raw_response_wrapper(
             account_transfers.complete,
         )
 
 
-class AccountTransfersResourceWithStreamingResponse:
-    def __init__(self, account_transfers: AccountTransfersResource) -> None:
+class AccountTransfersWithStreamingResponse:
+    def __init__(self, account_transfers: AccountTransfers) -> None:
         self._account_transfers = account_transfers
 
         self.complete = to_streamed_response_wrapper(
@@ -160,8 +156,8 @@ class AccountTransfersResourceWithStreamingResponse:
         )
 
 
-class AsyncAccountTransfersResourceWithStreamingResponse:
-    def __init__(self, account_transfers: AsyncAccountTransfersResource) -> None:
+class AsyncAccountTransfersWithStreamingResponse:
+    def __init__(self, account_transfers: AsyncAccountTransfers) -> None:
         self._account_transfers = account_transfers
 
         self.complete = async_to_streamed_response_wrapper(

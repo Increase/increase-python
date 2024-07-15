@@ -4,32 +4,28 @@ from __future__ import annotations
 
 import httpx
 
+from .. import _legacy_response
 from ..types import routing_number_list_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import (
-    to_raw_response_wrapper,
-    to_streamed_response_wrapper,
-    async_to_raw_response_wrapper,
-    async_to_streamed_response_wrapper,
-)
+from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.routing_number_list_response import RoutingNumberListResponse
+from ..types.routing_number import RoutingNumber
 
-__all__ = ["RoutingNumbersResource", "AsyncRoutingNumbersResource"]
+__all__ = ["RoutingNumbers", "AsyncRoutingNumbers"]
 
 
-class RoutingNumbersResource(SyncAPIResource):
+class RoutingNumbers(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> RoutingNumbersResourceWithRawResponse:
-        return RoutingNumbersResourceWithRawResponse(self)
+    def with_raw_response(self) -> RoutingNumbersWithRawResponse:
+        return RoutingNumbersWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> RoutingNumbersResourceWithStreamingResponse:
-        return RoutingNumbersResourceWithStreamingResponse(self)
+    def with_streaming_response(self) -> RoutingNumbersWithStreamingResponse:
+        return RoutingNumbersWithStreamingResponse(self)
 
     def list(
         self,
@@ -43,7 +39,7 @@ class RoutingNumbersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SyncPage[RoutingNumberListResponse]:
+    ) -> SyncPage[RoutingNumber]:
         """
         You can use this API to confirm if a routing number is valid, such as when a
         user is providing you with bank account details. Since routing numbers uniquely
@@ -68,7 +64,7 @@ class RoutingNumbersResource(SyncAPIResource):
         """
         return self._get_api_list(
             "/routing_numbers",
-            page=SyncPage[RoutingNumberListResponse],
+            page=SyncPage[RoutingNumber],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -83,18 +79,18 @@ class RoutingNumbersResource(SyncAPIResource):
                     routing_number_list_params.RoutingNumberListParams,
                 ),
             ),
-            model=RoutingNumberListResponse,
+            model=RoutingNumber,
         )
 
 
-class AsyncRoutingNumbersResource(AsyncAPIResource):
+class AsyncRoutingNumbers(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncRoutingNumbersResourceWithRawResponse:
-        return AsyncRoutingNumbersResourceWithRawResponse(self)
+    def with_raw_response(self) -> AsyncRoutingNumbersWithRawResponse:
+        return AsyncRoutingNumbersWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncRoutingNumbersResourceWithStreamingResponse:
-        return AsyncRoutingNumbersResourceWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncRoutingNumbersWithStreamingResponse:
+        return AsyncRoutingNumbersWithStreamingResponse(self)
 
     def list(
         self,
@@ -108,7 +104,7 @@ class AsyncRoutingNumbersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AsyncPaginator[RoutingNumberListResponse, AsyncPage[RoutingNumberListResponse]]:
+    ) -> AsyncPaginator[RoutingNumber, AsyncPage[RoutingNumber]]:
         """
         You can use this API to confirm if a routing number is valid, such as when a
         user is providing you with bank account details. Since routing numbers uniquely
@@ -133,7 +129,7 @@ class AsyncRoutingNumbersResource(AsyncAPIResource):
         """
         return self._get_api_list(
             "/routing_numbers",
-            page=AsyncPage[RoutingNumberListResponse],
+            page=AsyncPage[RoutingNumber],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -148,30 +144,30 @@ class AsyncRoutingNumbersResource(AsyncAPIResource):
                     routing_number_list_params.RoutingNumberListParams,
                 ),
             ),
-            model=RoutingNumberListResponse,
+            model=RoutingNumber,
         )
 
 
-class RoutingNumbersResourceWithRawResponse:
-    def __init__(self, routing_numbers: RoutingNumbersResource) -> None:
+class RoutingNumbersWithRawResponse:
+    def __init__(self, routing_numbers: RoutingNumbers) -> None:
         self._routing_numbers = routing_numbers
 
-        self.list = to_raw_response_wrapper(
+        self.list = _legacy_response.to_raw_response_wrapper(
             routing_numbers.list,
         )
 
 
-class AsyncRoutingNumbersResourceWithRawResponse:
-    def __init__(self, routing_numbers: AsyncRoutingNumbersResource) -> None:
+class AsyncRoutingNumbersWithRawResponse:
+    def __init__(self, routing_numbers: AsyncRoutingNumbers) -> None:
         self._routing_numbers = routing_numbers
 
-        self.list = async_to_raw_response_wrapper(
+        self.list = _legacy_response.async_to_raw_response_wrapper(
             routing_numbers.list,
         )
 
 
-class RoutingNumbersResourceWithStreamingResponse:
-    def __init__(self, routing_numbers: RoutingNumbersResource) -> None:
+class RoutingNumbersWithStreamingResponse:
+    def __init__(self, routing_numbers: RoutingNumbers) -> None:
         self._routing_numbers = routing_numbers
 
         self.list = to_streamed_response_wrapper(
@@ -179,8 +175,8 @@ class RoutingNumbersResourceWithStreamingResponse:
         )
 
 
-class AsyncRoutingNumbersResourceWithStreamingResponse:
-    def __init__(self, routing_numbers: AsyncRoutingNumbersResource) -> None:
+class AsyncRoutingNumbersWithStreamingResponse:
+    def __init__(self, routing_numbers: AsyncRoutingNumbers) -> None:
         self._routing_numbers = routing_numbers
 
         self.list = async_to_streamed_response_wrapper(

@@ -4,32 +4,28 @@ from __future__ import annotations
 
 import httpx
 
+from .. import _legacy_response
 from ..types import card_purchase_supplement_list_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import (
-    to_raw_response_wrapper,
-    to_streamed_response_wrapper,
-    async_to_raw_response_wrapper,
-    async_to_streamed_response_wrapper,
-)
+from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
 from ..types.card_purchase_supplement import CardPurchaseSupplement
 
-__all__ = ["CardPurchaseSupplementsResource", "AsyncCardPurchaseSupplementsResource"]
+__all__ = ["CardPurchaseSupplements", "AsyncCardPurchaseSupplements"]
 
 
-class CardPurchaseSupplementsResource(SyncAPIResource):
+class CardPurchaseSupplements(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> CardPurchaseSupplementsResourceWithRawResponse:
-        return CardPurchaseSupplementsResourceWithRawResponse(self)
+    def with_raw_response(self) -> CardPurchaseSupplementsWithRawResponse:
+        return CardPurchaseSupplementsWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> CardPurchaseSupplementsResourceWithStreamingResponse:
-        return CardPurchaseSupplementsResourceWithStreamingResponse(self)
+    def with_streaming_response(self) -> CardPurchaseSupplementsWithStreamingResponse:
+        return CardPurchaseSupplementsWithStreamingResponse(self)
 
     def retrieve(
         self,
@@ -124,14 +120,14 @@ class CardPurchaseSupplementsResource(SyncAPIResource):
         )
 
 
-class AsyncCardPurchaseSupplementsResource(AsyncAPIResource):
+class AsyncCardPurchaseSupplements(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncCardPurchaseSupplementsResourceWithRawResponse:
-        return AsyncCardPurchaseSupplementsResourceWithRawResponse(self)
+    def with_raw_response(self) -> AsyncCardPurchaseSupplementsWithRawResponse:
+        return AsyncCardPurchaseSupplementsWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncCardPurchaseSupplementsResourceWithStreamingResponse:
-        return AsyncCardPurchaseSupplementsResourceWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncCardPurchaseSupplementsWithStreamingResponse:
+        return AsyncCardPurchaseSupplementsWithStreamingResponse(self)
 
     async def retrieve(
         self,
@@ -226,32 +222,32 @@ class AsyncCardPurchaseSupplementsResource(AsyncAPIResource):
         )
 
 
-class CardPurchaseSupplementsResourceWithRawResponse:
-    def __init__(self, card_purchase_supplements: CardPurchaseSupplementsResource) -> None:
+class CardPurchaseSupplementsWithRawResponse:
+    def __init__(self, card_purchase_supplements: CardPurchaseSupplements) -> None:
         self._card_purchase_supplements = card_purchase_supplements
 
-        self.retrieve = to_raw_response_wrapper(
+        self.retrieve = _legacy_response.to_raw_response_wrapper(
             card_purchase_supplements.retrieve,
         )
-        self.list = to_raw_response_wrapper(
+        self.list = _legacy_response.to_raw_response_wrapper(
             card_purchase_supplements.list,
         )
 
 
-class AsyncCardPurchaseSupplementsResourceWithRawResponse:
-    def __init__(self, card_purchase_supplements: AsyncCardPurchaseSupplementsResource) -> None:
+class AsyncCardPurchaseSupplementsWithRawResponse:
+    def __init__(self, card_purchase_supplements: AsyncCardPurchaseSupplements) -> None:
         self._card_purchase_supplements = card_purchase_supplements
 
-        self.retrieve = async_to_raw_response_wrapper(
+        self.retrieve = _legacy_response.async_to_raw_response_wrapper(
             card_purchase_supplements.retrieve,
         )
-        self.list = async_to_raw_response_wrapper(
+        self.list = _legacy_response.async_to_raw_response_wrapper(
             card_purchase_supplements.list,
         )
 
 
-class CardPurchaseSupplementsResourceWithStreamingResponse:
-    def __init__(self, card_purchase_supplements: CardPurchaseSupplementsResource) -> None:
+class CardPurchaseSupplementsWithStreamingResponse:
+    def __init__(self, card_purchase_supplements: CardPurchaseSupplements) -> None:
         self._card_purchase_supplements = card_purchase_supplements
 
         self.retrieve = to_streamed_response_wrapper(
@@ -262,8 +258,8 @@ class CardPurchaseSupplementsResourceWithStreamingResponse:
         )
 
 
-class AsyncCardPurchaseSupplementsResourceWithStreamingResponse:
-    def __init__(self, card_purchase_supplements: AsyncCardPurchaseSupplementsResource) -> None:
+class AsyncCardPurchaseSupplementsWithStreamingResponse:
+    def __init__(self, card_purchase_supplements: AsyncCardPurchaseSupplements) -> None:
         self._card_purchase_supplements = card_purchase_supplements
 
         self.retrieve = async_to_streamed_response_wrapper(

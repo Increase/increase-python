@@ -239,7 +239,7 @@ class TestAsyncExports:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        export = await response.parse()
+        export = response.parse()
         assert_matches_type(Export, export, path=["response"])
 
     @parametrize
@@ -270,7 +270,7 @@ class TestAsyncExports:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        export = await response.parse()
+        export = response.parse()
         assert_matches_type(Export, export, path=["response"])
 
     @parametrize
@@ -321,7 +321,7 @@ class TestAsyncExports:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        export = await response.parse()
+        export = response.parse()
         assert_matches_type(AsyncPage[Export], export, path=["response"])
 
     @parametrize

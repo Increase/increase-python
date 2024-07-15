@@ -8,6 +8,7 @@ from typing_extensions import Literal
 
 import httpx
 
+from .. import _legacy_response
 from ..types import ach_transfer_list_params, ach_transfer_create_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import (
@@ -16,27 +17,22 @@ from .._utils import (
 )
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import (
-    to_raw_response_wrapper,
-    to_streamed_response_wrapper,
-    async_to_raw_response_wrapper,
-    async_to_streamed_response_wrapper,
-)
+from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
 from ..types.ach_transfer import ACHTransfer
 
-__all__ = ["ACHTransfersResource", "AsyncACHTransfersResource"]
+__all__ = ["ACHTransfers", "AsyncACHTransfers"]
 
 
-class ACHTransfersResource(SyncAPIResource):
+class ACHTransfers(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> ACHTransfersResourceWithRawResponse:
-        return ACHTransfersResourceWithRawResponse(self)
+    def with_raw_response(self) -> ACHTransfersWithRawResponse:
+        return ACHTransfersWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> ACHTransfersResourceWithStreamingResponse:
-        return ACHTransfersResourceWithStreamingResponse(self)
+    def with_streaming_response(self) -> ACHTransfersWithStreamingResponse:
+        return ACHTransfersWithStreamingResponse(self)
 
     def create(
         self,
@@ -379,14 +375,14 @@ class ACHTransfersResource(SyncAPIResource):
         )
 
 
-class AsyncACHTransfersResource(AsyncAPIResource):
+class AsyncACHTransfers(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncACHTransfersResourceWithRawResponse:
-        return AsyncACHTransfersResourceWithRawResponse(self)
+    def with_raw_response(self) -> AsyncACHTransfersWithRawResponse:
+        return AsyncACHTransfersWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncACHTransfersResourceWithStreamingResponse:
-        return AsyncACHTransfersResourceWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncACHTransfersWithStreamingResponse:
+        return AsyncACHTransfersWithStreamingResponse(self)
 
     async def create(
         self,
@@ -729,50 +725,50 @@ class AsyncACHTransfersResource(AsyncAPIResource):
         )
 
 
-class ACHTransfersResourceWithRawResponse:
-    def __init__(self, ach_transfers: ACHTransfersResource) -> None:
+class ACHTransfersWithRawResponse:
+    def __init__(self, ach_transfers: ACHTransfers) -> None:
         self._ach_transfers = ach_transfers
 
-        self.create = to_raw_response_wrapper(
+        self.create = _legacy_response.to_raw_response_wrapper(
             ach_transfers.create,
         )
-        self.retrieve = to_raw_response_wrapper(
+        self.retrieve = _legacy_response.to_raw_response_wrapper(
             ach_transfers.retrieve,
         )
-        self.list = to_raw_response_wrapper(
+        self.list = _legacy_response.to_raw_response_wrapper(
             ach_transfers.list,
         )
-        self.approve = to_raw_response_wrapper(
+        self.approve = _legacy_response.to_raw_response_wrapper(
             ach_transfers.approve,
         )
-        self.cancel = to_raw_response_wrapper(
+        self.cancel = _legacy_response.to_raw_response_wrapper(
             ach_transfers.cancel,
         )
 
 
-class AsyncACHTransfersResourceWithRawResponse:
-    def __init__(self, ach_transfers: AsyncACHTransfersResource) -> None:
+class AsyncACHTransfersWithRawResponse:
+    def __init__(self, ach_transfers: AsyncACHTransfers) -> None:
         self._ach_transfers = ach_transfers
 
-        self.create = async_to_raw_response_wrapper(
+        self.create = _legacy_response.async_to_raw_response_wrapper(
             ach_transfers.create,
         )
-        self.retrieve = async_to_raw_response_wrapper(
+        self.retrieve = _legacy_response.async_to_raw_response_wrapper(
             ach_transfers.retrieve,
         )
-        self.list = async_to_raw_response_wrapper(
+        self.list = _legacy_response.async_to_raw_response_wrapper(
             ach_transfers.list,
         )
-        self.approve = async_to_raw_response_wrapper(
+        self.approve = _legacy_response.async_to_raw_response_wrapper(
             ach_transfers.approve,
         )
-        self.cancel = async_to_raw_response_wrapper(
+        self.cancel = _legacy_response.async_to_raw_response_wrapper(
             ach_transfers.cancel,
         )
 
 
-class ACHTransfersResourceWithStreamingResponse:
-    def __init__(self, ach_transfers: ACHTransfersResource) -> None:
+class ACHTransfersWithStreamingResponse:
+    def __init__(self, ach_transfers: ACHTransfers) -> None:
         self._ach_transfers = ach_transfers
 
         self.create = to_streamed_response_wrapper(
@@ -792,8 +788,8 @@ class ACHTransfersResourceWithStreamingResponse:
         )
 
 
-class AsyncACHTransfersResourceWithStreamingResponse:
-    def __init__(self, ach_transfers: AsyncACHTransfersResource) -> None:
+class AsyncACHTransfersWithStreamingResponse:
+    def __init__(self, ach_transfers: AsyncACHTransfers) -> None:
         self._ach_transfers = ach_transfers
 
         self.create = async_to_streamed_response_wrapper(

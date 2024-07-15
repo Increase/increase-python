@@ -10,14 +10,6 @@ __all__ = ["InboundCheckDeposit", "DepositReturn"]
 
 
 class DepositReturn(BaseModel):
-    reason: Literal["altered_or_fictitious", "not_authorized", "duplicate_presentment"]
-    """The reason the deposit was returned.
-
-    - `altered_or_fictitious` - The check was altered or fictitious.
-    - `not_authorized` - The check was not authorized.
-    - `duplicate_presentment` - The check was a duplicate presentment.
-    """
-
     returned_at: datetime
     """The time at which the deposit was returned."""
 
@@ -106,13 +98,12 @@ class InboundCheckDeposit(BaseModel):
     front_image_file_id: Optional[str] = None
     """The ID for the File containing the image of the front of the check."""
 
-    status: Literal["pending", "accepted", "declined", "returned"]
+    status: Literal["pending", "accepted", "declined"]
     """The status of the Inbound Check Deposit.
 
     - `pending` - The Inbound Check Deposit is pending.
     - `accepted` - The Inbound Check Deposit was accepted.
     - `declined` - The Inbound Check Deposit was rejected.
-    - `returned` - The Inbound Check Deposit was returned.
     """
 
     transaction_id: Optional[str] = None
