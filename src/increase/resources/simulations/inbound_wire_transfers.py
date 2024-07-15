@@ -52,7 +52,6 @@ class InboundWireTransfersResource(SyncAPIResource):
         originator_to_beneficiary_information_line2: str | NotGiven = NOT_GIVEN,
         originator_to_beneficiary_information_line3: str | NotGiven = NOT_GIVEN,
         originator_to_beneficiary_information_line4: str | NotGiven = NOT_GIVEN,
-        sender_reference: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -111,9 +110,6 @@ class InboundWireTransfersResource(SyncAPIResource):
           originator_to_beneficiary_information_line4: The sending bank will set originator_to_beneficiary_information_line4 in
               production. You can simulate any value here.
 
-          sender_reference: The sending bank will set sender_reference in production. You can simulate any
-              value here.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -144,7 +140,6 @@ class InboundWireTransfersResource(SyncAPIResource):
                     "originator_to_beneficiary_information_line2": originator_to_beneficiary_information_line2,
                     "originator_to_beneficiary_information_line3": originator_to_beneficiary_information_line3,
                     "originator_to_beneficiary_information_line4": originator_to_beneficiary_information_line4,
-                    "sender_reference": sender_reference,
                 },
                 inbound_wire_transfer_create_params.InboundWireTransferCreateParams,
             ),
@@ -187,7 +182,6 @@ class AsyncInboundWireTransfersResource(AsyncAPIResource):
         originator_to_beneficiary_information_line2: str | NotGiven = NOT_GIVEN,
         originator_to_beneficiary_information_line3: str | NotGiven = NOT_GIVEN,
         originator_to_beneficiary_information_line4: str | NotGiven = NOT_GIVEN,
-        sender_reference: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -246,9 +240,6 @@ class AsyncInboundWireTransfersResource(AsyncAPIResource):
           originator_to_beneficiary_information_line4: The sending bank will set originator_to_beneficiary_information_line4 in
               production. You can simulate any value here.
 
-          sender_reference: The sending bank will set sender_reference in production. You can simulate any
-              value here.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -279,7 +270,6 @@ class AsyncInboundWireTransfersResource(AsyncAPIResource):
                     "originator_to_beneficiary_information_line2": originator_to_beneficiary_information_line2,
                     "originator_to_beneficiary_information_line3": originator_to_beneficiary_information_line3,
                     "originator_to_beneficiary_information_line4": originator_to_beneficiary_information_line4,
-                    "sender_reference": sender_reference,
                 },
                 inbound_wire_transfer_create_params.InboundWireTransferCreateParams,
             ),
