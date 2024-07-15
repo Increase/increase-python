@@ -341,7 +341,7 @@ class TestAsyncACHTransfers:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        ach_transfer = await response.parse()
+        ach_transfer = response.parse()
         assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
 
     @parametrize
@@ -374,7 +374,7 @@ class TestAsyncACHTransfers:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        ach_transfer = await response.parse()
+        ach_transfer = response.parse()
         assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
 
     @parametrize
@@ -425,7 +425,7 @@ class TestAsyncACHTransfers:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        ach_transfer = await response.parse()
+        ach_transfer = response.parse()
         assert_matches_type(AsyncPage[ACHTransfer], ach_transfer, path=["response"])
 
     @parametrize
@@ -454,7 +454,7 @@ class TestAsyncACHTransfers:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        ach_transfer = await response.parse()
+        ach_transfer = response.parse()
         assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
 
     @parametrize
@@ -492,7 +492,7 @@ class TestAsyncACHTransfers:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        ach_transfer = await response.parse()
+        ach_transfer = response.parse()
         assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
 
     @parametrize

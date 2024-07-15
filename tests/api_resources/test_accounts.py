@@ -236,6 +236,7 @@ class TestAccounts:
                 account_id="",
             )
 
+    @pytest.mark.skip(reason="Prism tests are broken")
     @parametrize
     def test_method_close(self, client: Increase) -> None:
         account = client.accounts.close(
@@ -243,6 +244,7 @@ class TestAccounts:
         )
         assert_matches_type(Account, account, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are broken")
     @parametrize
     def test_raw_response_close(self, client: Increase) -> None:
         response = client.accounts.with_raw_response.close(
@@ -254,6 +256,7 @@ class TestAccounts:
         account = response.parse()
         assert_matches_type(Account, account, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are broken")
     @parametrize
     def test_streaming_response_close(self, client: Increase) -> None:
         with client.accounts.with_streaming_response.close(
@@ -267,6 +270,7 @@ class TestAccounts:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism tests are broken")
     @parametrize
     def test_path_params_close(self, client: Increase) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -303,7 +307,7 @@ class TestAsyncAccounts:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        account = await response.parse()
+        account = response.parse()
         assert_matches_type(Account, account, path=["response"])
 
     @parametrize
@@ -334,7 +338,7 @@ class TestAsyncAccounts:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        account = await response.parse()
+        account = response.parse()
         assert_matches_type(Account, account, path=["response"])
 
     @parametrize
@@ -380,7 +384,7 @@ class TestAsyncAccounts:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        account = await response.parse()
+        account = response.parse()
         assert_matches_type(Account, account, path=["response"])
 
     @parametrize
@@ -432,7 +436,7 @@ class TestAsyncAccounts:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        account = await response.parse()
+        account = response.parse()
         assert_matches_type(AsyncPage[Account], account, path=["response"])
 
     @parametrize
@@ -469,7 +473,7 @@ class TestAsyncAccounts:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        account = await response.parse()
+        account = response.parse()
         assert_matches_type(BalanceLookup, account, path=["response"])
 
     @parametrize
@@ -492,6 +496,7 @@ class TestAsyncAccounts:
                 account_id="",
             )
 
+    @pytest.mark.skip(reason="Prism tests are broken")
     @parametrize
     async def test_method_close(self, async_client: AsyncIncrease) -> None:
         account = await async_client.accounts.close(
@@ -499,6 +504,7 @@ class TestAsyncAccounts:
         )
         assert_matches_type(Account, account, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are broken")
     @parametrize
     async def test_raw_response_close(self, async_client: AsyncIncrease) -> None:
         response = await async_client.accounts.with_raw_response.close(
@@ -507,9 +513,10 @@ class TestAsyncAccounts:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        account = await response.parse()
+        account = response.parse()
         assert_matches_type(Account, account, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are broken")
     @parametrize
     async def test_streaming_response_close(self, async_client: AsyncIncrease) -> None:
         async with async_client.accounts.with_streaming_response.close(
@@ -523,6 +530,7 @@ class TestAsyncAccounts:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism tests are broken")
     @parametrize
     async def test_path_params_close(self, async_client: AsyncIncrease) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import httpx
 
+from .. import _legacy_response
 from ..types import card_dispute_list_params, card_dispute_create_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import (
@@ -12,27 +13,22 @@ from .._utils import (
 )
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import (
-    to_raw_response_wrapper,
-    to_streamed_response_wrapper,
-    async_to_raw_response_wrapper,
-    async_to_streamed_response_wrapper,
-)
+from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
 from ..types.card_dispute import CardDispute
 
-__all__ = ["CardDisputesResource", "AsyncCardDisputesResource"]
+__all__ = ["CardDisputes", "AsyncCardDisputes"]
 
 
-class CardDisputesResource(SyncAPIResource):
+class CardDisputes(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> CardDisputesResourceWithRawResponse:
-        return CardDisputesResourceWithRawResponse(self)
+    def with_raw_response(self) -> CardDisputesWithRawResponse:
+        return CardDisputesWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> CardDisputesResourceWithStreamingResponse:
-        return CardDisputesResourceWithStreamingResponse(self)
+    def with_streaming_response(self) -> CardDisputesWithStreamingResponse:
+        return CardDisputesWithStreamingResponse(self)
 
     def create(
         self,
@@ -180,14 +176,14 @@ class CardDisputesResource(SyncAPIResource):
         )
 
 
-class AsyncCardDisputesResource(AsyncAPIResource):
+class AsyncCardDisputes(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncCardDisputesResourceWithRawResponse:
-        return AsyncCardDisputesResourceWithRawResponse(self)
+    def with_raw_response(self) -> AsyncCardDisputesWithRawResponse:
+        return AsyncCardDisputesWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncCardDisputesResourceWithStreamingResponse:
-        return AsyncCardDisputesResourceWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncCardDisputesWithStreamingResponse:
+        return AsyncCardDisputesWithStreamingResponse(self)
 
     async def create(
         self,
@@ -335,38 +331,38 @@ class AsyncCardDisputesResource(AsyncAPIResource):
         )
 
 
-class CardDisputesResourceWithRawResponse:
-    def __init__(self, card_disputes: CardDisputesResource) -> None:
+class CardDisputesWithRawResponse:
+    def __init__(self, card_disputes: CardDisputes) -> None:
         self._card_disputes = card_disputes
 
-        self.create = to_raw_response_wrapper(
+        self.create = _legacy_response.to_raw_response_wrapper(
             card_disputes.create,
         )
-        self.retrieve = to_raw_response_wrapper(
+        self.retrieve = _legacy_response.to_raw_response_wrapper(
             card_disputes.retrieve,
         )
-        self.list = to_raw_response_wrapper(
+        self.list = _legacy_response.to_raw_response_wrapper(
             card_disputes.list,
         )
 
 
-class AsyncCardDisputesResourceWithRawResponse:
-    def __init__(self, card_disputes: AsyncCardDisputesResource) -> None:
+class AsyncCardDisputesWithRawResponse:
+    def __init__(self, card_disputes: AsyncCardDisputes) -> None:
         self._card_disputes = card_disputes
 
-        self.create = async_to_raw_response_wrapper(
+        self.create = _legacy_response.async_to_raw_response_wrapper(
             card_disputes.create,
         )
-        self.retrieve = async_to_raw_response_wrapper(
+        self.retrieve = _legacy_response.async_to_raw_response_wrapper(
             card_disputes.retrieve,
         )
-        self.list = async_to_raw_response_wrapper(
+        self.list = _legacy_response.async_to_raw_response_wrapper(
             card_disputes.list,
         )
 
 
-class CardDisputesResourceWithStreamingResponse:
-    def __init__(self, card_disputes: CardDisputesResource) -> None:
+class CardDisputesWithStreamingResponse:
+    def __init__(self, card_disputes: CardDisputes) -> None:
         self._card_disputes = card_disputes
 
         self.create = to_streamed_response_wrapper(
@@ -380,8 +376,8 @@ class CardDisputesResourceWithStreamingResponse:
         )
 
 
-class AsyncCardDisputesResourceWithStreamingResponse:
-    def __init__(self, card_disputes: AsyncCardDisputesResource) -> None:
+class AsyncCardDisputesWithStreamingResponse:
+    def __init__(self, card_disputes: AsyncCardDisputes) -> None:
         self._card_disputes = card_disputes
 
         self.create = async_to_streamed_response_wrapper(

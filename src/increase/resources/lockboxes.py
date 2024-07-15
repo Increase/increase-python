@@ -6,6 +6,7 @@ from typing_extensions import Literal
 
 import httpx
 
+from .. import _legacy_response
 from ..types import lockbox_list_params, lockbox_create_params, lockbox_update_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import (
@@ -14,27 +15,22 @@ from .._utils import (
 )
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import (
-    to_raw_response_wrapper,
-    to_streamed_response_wrapper,
-    async_to_raw_response_wrapper,
-    async_to_streamed_response_wrapper,
-)
+from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
 from ..types.lockbox import Lockbox
 
-__all__ = ["LockboxesResource", "AsyncLockboxesResource"]
+__all__ = ["Lockboxes", "AsyncLockboxes"]
 
 
-class LockboxesResource(SyncAPIResource):
+class Lockboxes(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> LockboxesResourceWithRawResponse:
-        return LockboxesResourceWithRawResponse(self)
+    def with_raw_response(self) -> LockboxesWithRawResponse:
+        return LockboxesWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> LockboxesResourceWithStreamingResponse:
-        return LockboxesResourceWithStreamingResponse(self)
+    def with_streaming_response(self) -> LockboxesWithStreamingResponse:
+        return LockboxesWithStreamingResponse(self)
 
     def create(
         self,
@@ -243,14 +239,14 @@ class LockboxesResource(SyncAPIResource):
         )
 
 
-class AsyncLockboxesResource(AsyncAPIResource):
+class AsyncLockboxes(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncLockboxesResourceWithRawResponse:
-        return AsyncLockboxesResourceWithRawResponse(self)
+    def with_raw_response(self) -> AsyncLockboxesWithRawResponse:
+        return AsyncLockboxesWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncLockboxesResourceWithStreamingResponse:
-        return AsyncLockboxesResourceWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncLockboxesWithStreamingResponse:
+        return AsyncLockboxesWithStreamingResponse(self)
 
     async def create(
         self,
@@ -459,44 +455,44 @@ class AsyncLockboxesResource(AsyncAPIResource):
         )
 
 
-class LockboxesResourceWithRawResponse:
-    def __init__(self, lockboxes: LockboxesResource) -> None:
+class LockboxesWithRawResponse:
+    def __init__(self, lockboxes: Lockboxes) -> None:
         self._lockboxes = lockboxes
 
-        self.create = to_raw_response_wrapper(
+        self.create = _legacy_response.to_raw_response_wrapper(
             lockboxes.create,
         )
-        self.retrieve = to_raw_response_wrapper(
+        self.retrieve = _legacy_response.to_raw_response_wrapper(
             lockboxes.retrieve,
         )
-        self.update = to_raw_response_wrapper(
+        self.update = _legacy_response.to_raw_response_wrapper(
             lockboxes.update,
         )
-        self.list = to_raw_response_wrapper(
+        self.list = _legacy_response.to_raw_response_wrapper(
             lockboxes.list,
         )
 
 
-class AsyncLockboxesResourceWithRawResponse:
-    def __init__(self, lockboxes: AsyncLockboxesResource) -> None:
+class AsyncLockboxesWithRawResponse:
+    def __init__(self, lockboxes: AsyncLockboxes) -> None:
         self._lockboxes = lockboxes
 
-        self.create = async_to_raw_response_wrapper(
+        self.create = _legacy_response.async_to_raw_response_wrapper(
             lockboxes.create,
         )
-        self.retrieve = async_to_raw_response_wrapper(
+        self.retrieve = _legacy_response.async_to_raw_response_wrapper(
             lockboxes.retrieve,
         )
-        self.update = async_to_raw_response_wrapper(
+        self.update = _legacy_response.async_to_raw_response_wrapper(
             lockboxes.update,
         )
-        self.list = async_to_raw_response_wrapper(
+        self.list = _legacy_response.async_to_raw_response_wrapper(
             lockboxes.list,
         )
 
 
-class LockboxesResourceWithStreamingResponse:
-    def __init__(self, lockboxes: LockboxesResource) -> None:
+class LockboxesWithStreamingResponse:
+    def __init__(self, lockboxes: Lockboxes) -> None:
         self._lockboxes = lockboxes
 
         self.create = to_streamed_response_wrapper(
@@ -513,8 +509,8 @@ class LockboxesResourceWithStreamingResponse:
         )
 
 
-class AsyncLockboxesResourceWithStreamingResponse:
-    def __init__(self, lockboxes: AsyncLockboxesResource) -> None:
+class AsyncLockboxesWithStreamingResponse:
+    def __init__(self, lockboxes: AsyncLockboxes) -> None:
         self._lockboxes = lockboxes
 
         self.create = async_to_streamed_response_wrapper(

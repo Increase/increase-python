@@ -120,7 +120,7 @@ class TestAsyncInboundWireTransfers:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        inbound_wire_transfer = await response.parse()
+        inbound_wire_transfer = response.parse()
         assert_matches_type(InboundWireTransfer, inbound_wire_transfer, path=["response"])
 
     @parametrize
@@ -173,7 +173,7 @@ class TestAsyncInboundWireTransfers:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        inbound_wire_transfer = await response.parse()
+        inbound_wire_transfer = response.parse()
         assert_matches_type(AsyncPage[InboundWireTransfer], inbound_wire_transfer, path=["response"])
 
     @parametrize

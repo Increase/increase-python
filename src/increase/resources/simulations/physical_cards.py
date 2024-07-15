@@ -6,6 +6,7 @@ from typing_extensions import Literal
 
 import httpx
 
+from ... import _legacy_response
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import (
     maybe_transform,
@@ -13,29 +14,24 @@ from ..._utils import (
 )
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import (
-    to_raw_response_wrapper,
-    to_streamed_response_wrapper,
-    async_to_raw_response_wrapper,
-    async_to_streamed_response_wrapper,
-)
+from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..._base_client import make_request_options
-from ...types.simulations import physical_card_advance_shipment_params
+from ...types.simulations import physical_card_shipment_advance_params
 from ...types.physical_card import PhysicalCard
 
-__all__ = ["PhysicalCardsResource", "AsyncPhysicalCardsResource"]
+__all__ = ["PhysicalCards", "AsyncPhysicalCards"]
 
 
-class PhysicalCardsResource(SyncAPIResource):
+class PhysicalCards(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> PhysicalCardsResourceWithRawResponse:
-        return PhysicalCardsResourceWithRawResponse(self)
+    def with_raw_response(self) -> PhysicalCardsWithRawResponse:
+        return PhysicalCardsWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> PhysicalCardsResourceWithStreamingResponse:
-        return PhysicalCardsResourceWithStreamingResponse(self)
+    def with_streaming_response(self) -> PhysicalCardsWithStreamingResponse:
+        return PhysicalCardsWithStreamingResponse(self)
 
-    def advance_shipment(
+    def shipment_advance(
         self,
         physical_card_id: str,
         *,
@@ -83,10 +79,10 @@ class PhysicalCardsResource(SyncAPIResource):
         if not physical_card_id:
             raise ValueError(f"Expected a non-empty value for `physical_card_id` but received {physical_card_id!r}")
         return self._post(
-            f"/simulations/physical_cards/{physical_card_id}/advance_shipment",
+            f"/simulations/physical_cards/{physical_card_id}/shipment_advance",
             body=maybe_transform(
                 {"shipment_status": shipment_status},
-                physical_card_advance_shipment_params.PhysicalCardAdvanceShipmentParams,
+                physical_card_shipment_advance_params.PhysicalCardShipmentAdvanceParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -99,16 +95,16 @@ class PhysicalCardsResource(SyncAPIResource):
         )
 
 
-class AsyncPhysicalCardsResource(AsyncAPIResource):
+class AsyncPhysicalCards(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncPhysicalCardsResourceWithRawResponse:
-        return AsyncPhysicalCardsResourceWithRawResponse(self)
+    def with_raw_response(self) -> AsyncPhysicalCardsWithRawResponse:
+        return AsyncPhysicalCardsWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncPhysicalCardsResourceWithStreamingResponse:
-        return AsyncPhysicalCardsResourceWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncPhysicalCardsWithStreamingResponse:
+        return AsyncPhysicalCardsWithStreamingResponse(self)
 
-    async def advance_shipment(
+    async def shipment_advance(
         self,
         physical_card_id: str,
         *,
@@ -156,10 +152,10 @@ class AsyncPhysicalCardsResource(AsyncAPIResource):
         if not physical_card_id:
             raise ValueError(f"Expected a non-empty value for `physical_card_id` but received {physical_card_id!r}")
         return await self._post(
-            f"/simulations/physical_cards/{physical_card_id}/advance_shipment",
+            f"/simulations/physical_cards/{physical_card_id}/shipment_advance",
             body=await async_maybe_transform(
                 {"shipment_status": shipment_status},
-                physical_card_advance_shipment_params.PhysicalCardAdvanceShipmentParams,
+                physical_card_shipment_advance_params.PhysicalCardShipmentAdvanceParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -172,37 +168,37 @@ class AsyncPhysicalCardsResource(AsyncAPIResource):
         )
 
 
-class PhysicalCardsResourceWithRawResponse:
-    def __init__(self, physical_cards: PhysicalCardsResource) -> None:
+class PhysicalCardsWithRawResponse:
+    def __init__(self, physical_cards: PhysicalCards) -> None:
         self._physical_cards = physical_cards
 
-        self.advance_shipment = to_raw_response_wrapper(
-            physical_cards.advance_shipment,
+        self.shipment_advance = _legacy_response.to_raw_response_wrapper(
+            physical_cards.shipment_advance,
         )
 
 
-class AsyncPhysicalCardsResourceWithRawResponse:
-    def __init__(self, physical_cards: AsyncPhysicalCardsResource) -> None:
+class AsyncPhysicalCardsWithRawResponse:
+    def __init__(self, physical_cards: AsyncPhysicalCards) -> None:
         self._physical_cards = physical_cards
 
-        self.advance_shipment = async_to_raw_response_wrapper(
-            physical_cards.advance_shipment,
+        self.shipment_advance = _legacy_response.async_to_raw_response_wrapper(
+            physical_cards.shipment_advance,
         )
 
 
-class PhysicalCardsResourceWithStreamingResponse:
-    def __init__(self, physical_cards: PhysicalCardsResource) -> None:
+class PhysicalCardsWithStreamingResponse:
+    def __init__(self, physical_cards: PhysicalCards) -> None:
         self._physical_cards = physical_cards
 
-        self.advance_shipment = to_streamed_response_wrapper(
-            physical_cards.advance_shipment,
+        self.shipment_advance = to_streamed_response_wrapper(
+            physical_cards.shipment_advance,
         )
 
 
-class AsyncPhysicalCardsResourceWithStreamingResponse:
-    def __init__(self, physical_cards: AsyncPhysicalCardsResource) -> None:
+class AsyncPhysicalCardsWithStreamingResponse:
+    def __init__(self, physical_cards: AsyncPhysicalCards) -> None:
         self._physical_cards = physical_cards
 
-        self.advance_shipment = async_to_streamed_response_wrapper(
-            physical_cards.advance_shipment,
+        self.shipment_advance = async_to_streamed_response_wrapper(
+            physical_cards.shipment_advance,
         )

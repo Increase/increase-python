@@ -6,6 +6,7 @@ from typing_extensions import Literal
 
 import httpx
 
+from .. import _legacy_response
 from ..types import (
     external_account_list_params,
     external_account_create_params,
@@ -18,27 +19,22 @@ from .._utils import (
 )
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import (
-    to_raw_response_wrapper,
-    to_streamed_response_wrapper,
-    async_to_raw_response_wrapper,
-    async_to_streamed_response_wrapper,
-)
+from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
 from ..types.external_account import ExternalAccount
 
-__all__ = ["ExternalAccountsResource", "AsyncExternalAccountsResource"]
+__all__ = ["ExternalAccounts", "AsyncExternalAccounts"]
 
 
-class ExternalAccountsResource(SyncAPIResource):
+class ExternalAccounts(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> ExternalAccountsResourceWithRawResponse:
-        return ExternalAccountsResourceWithRawResponse(self)
+    def with_raw_response(self) -> ExternalAccountsWithRawResponse:
+        return ExternalAccountsWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> ExternalAccountsResourceWithStreamingResponse:
-        return ExternalAccountsResourceWithStreamingResponse(self)
+    def with_streaming_response(self) -> ExternalAccountsWithStreamingResponse:
+        return ExternalAccountsWithStreamingResponse(self)
 
     def create(
         self,
@@ -286,14 +282,14 @@ class ExternalAccountsResource(SyncAPIResource):
         )
 
 
-class AsyncExternalAccountsResource(AsyncAPIResource):
+class AsyncExternalAccounts(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncExternalAccountsResourceWithRawResponse:
-        return AsyncExternalAccountsResourceWithRawResponse(self)
+    def with_raw_response(self) -> AsyncExternalAccountsWithRawResponse:
+        return AsyncExternalAccountsWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncExternalAccountsResourceWithStreamingResponse:
-        return AsyncExternalAccountsResourceWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncExternalAccountsWithStreamingResponse:
+        return AsyncExternalAccountsWithStreamingResponse(self)
 
     async def create(
         self,
@@ -541,44 +537,44 @@ class AsyncExternalAccountsResource(AsyncAPIResource):
         )
 
 
-class ExternalAccountsResourceWithRawResponse:
-    def __init__(self, external_accounts: ExternalAccountsResource) -> None:
+class ExternalAccountsWithRawResponse:
+    def __init__(self, external_accounts: ExternalAccounts) -> None:
         self._external_accounts = external_accounts
 
-        self.create = to_raw_response_wrapper(
+        self.create = _legacy_response.to_raw_response_wrapper(
             external_accounts.create,
         )
-        self.retrieve = to_raw_response_wrapper(
+        self.retrieve = _legacy_response.to_raw_response_wrapper(
             external_accounts.retrieve,
         )
-        self.update = to_raw_response_wrapper(
+        self.update = _legacy_response.to_raw_response_wrapper(
             external_accounts.update,
         )
-        self.list = to_raw_response_wrapper(
+        self.list = _legacy_response.to_raw_response_wrapper(
             external_accounts.list,
         )
 
 
-class AsyncExternalAccountsResourceWithRawResponse:
-    def __init__(self, external_accounts: AsyncExternalAccountsResource) -> None:
+class AsyncExternalAccountsWithRawResponse:
+    def __init__(self, external_accounts: AsyncExternalAccounts) -> None:
         self._external_accounts = external_accounts
 
-        self.create = async_to_raw_response_wrapper(
+        self.create = _legacy_response.async_to_raw_response_wrapper(
             external_accounts.create,
         )
-        self.retrieve = async_to_raw_response_wrapper(
+        self.retrieve = _legacy_response.async_to_raw_response_wrapper(
             external_accounts.retrieve,
         )
-        self.update = async_to_raw_response_wrapper(
+        self.update = _legacy_response.async_to_raw_response_wrapper(
             external_accounts.update,
         )
-        self.list = async_to_raw_response_wrapper(
+        self.list = _legacy_response.async_to_raw_response_wrapper(
             external_accounts.list,
         )
 
 
-class ExternalAccountsResourceWithStreamingResponse:
-    def __init__(self, external_accounts: ExternalAccountsResource) -> None:
+class ExternalAccountsWithStreamingResponse:
+    def __init__(self, external_accounts: ExternalAccounts) -> None:
         self._external_accounts = external_accounts
 
         self.create = to_streamed_response_wrapper(
@@ -595,8 +591,8 @@ class ExternalAccountsResourceWithStreamingResponse:
         )
 
 
-class AsyncExternalAccountsResourceWithStreamingResponse:
-    def __init__(self, external_accounts: AsyncExternalAccountsResource) -> None:
+class AsyncExternalAccountsWithStreamingResponse:
+    def __init__(self, external_accounts: AsyncExternalAccounts) -> None:
         self._external_accounts = external_accounts
 
         self.create = async_to_streamed_response_wrapper(

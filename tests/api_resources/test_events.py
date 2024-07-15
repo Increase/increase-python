@@ -117,7 +117,7 @@ class TestAsyncEvents:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        event = await response.parse()
+        event = response.parse()
         assert_matches_type(Event, event, path=["response"])
 
     @parametrize
@@ -167,7 +167,7 @@ class TestAsyncEvents:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        event = await response.parse()
+        event = response.parse()
         assert_matches_type(AsyncPage[Event], event, path=["response"])
 
     @parametrize

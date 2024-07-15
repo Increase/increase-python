@@ -226,7 +226,7 @@ class TestAsyncAccountNumbers:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        account_number = await response.parse()
+        account_number = response.parse()
         assert_matches_type(AccountNumber, account_number, path=["response"])
 
     @parametrize
@@ -258,7 +258,7 @@ class TestAsyncAccountNumbers:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        account_number = await response.parse()
+        account_number = response.parse()
         assert_matches_type(AccountNumber, account_number, path=["response"])
 
     @parametrize
@@ -307,7 +307,7 @@ class TestAsyncAccountNumbers:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        account_number = await response.parse()
+        account_number = response.parse()
         assert_matches_type(AccountNumber, account_number, path=["response"])
 
     @parametrize
@@ -359,7 +359,7 @@ class TestAsyncAccountNumbers:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        account_number = await response.parse()
+        account_number = response.parse()
         assert_matches_type(AsyncPage[AccountNumber], account_number, path=["response"])
 
     @parametrize

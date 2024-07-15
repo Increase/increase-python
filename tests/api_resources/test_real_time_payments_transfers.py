@@ -202,7 +202,7 @@ class TestAsyncRealTimePaymentsTransfers:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        real_time_payments_transfer = await response.parse()
+        real_time_payments_transfer = response.parse()
         assert_matches_type(RealTimePaymentsTransfer, real_time_payments_transfer, path=["response"])
 
     @parametrize
@@ -236,7 +236,7 @@ class TestAsyncRealTimePaymentsTransfers:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        real_time_payments_transfer = await response.parse()
+        real_time_payments_transfer = response.parse()
         assert_matches_type(RealTimePaymentsTransfer, real_time_payments_transfer, path=["response"])
 
     @parametrize
@@ -289,7 +289,7 @@ class TestAsyncRealTimePaymentsTransfers:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        real_time_payments_transfer = await response.parse()
+        real_time_payments_transfer = response.parse()
         assert_matches_type(AsyncPage[RealTimePaymentsTransfer], real_time_payments_transfer, path=["response"])
 
     @parametrize

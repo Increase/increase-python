@@ -218,7 +218,7 @@ class TestAsyncBookkeepingAccounts:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        bookkeeping_account = await response.parse()
+        bookkeeping_account = response.parse()
         assert_matches_type(BookkeepingAccount, bookkeeping_account, path=["response"])
 
     @parametrize
@@ -251,7 +251,7 @@ class TestAsyncBookkeepingAccounts:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        bookkeeping_account = await response.parse()
+        bookkeeping_account = response.parse()
         assert_matches_type(BookkeepingAccount, bookkeeping_account, path=["response"])
 
     @parametrize
@@ -298,7 +298,7 @@ class TestAsyncBookkeepingAccounts:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        bookkeeping_account = await response.parse()
+        bookkeeping_account = response.parse()
         assert_matches_type(AsyncPage[BookkeepingAccount], bookkeeping_account, path=["response"])
 
     @parametrize
@@ -335,7 +335,7 @@ class TestAsyncBookkeepingAccounts:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        bookkeeping_account = await response.parse()
+        bookkeeping_account = response.parse()
         assert_matches_type(BookkeepingBalanceLookup, bookkeeping_account, path=["response"])
 
     @parametrize

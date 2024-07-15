@@ -4,29 +4,25 @@ from __future__ import annotations
 
 import httpx
 
+from ... import _legacy_response
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import (
-    to_raw_response_wrapper,
-    to_streamed_response_wrapper,
-    async_to_raw_response_wrapper,
-    async_to_streamed_response_wrapper,
-)
+from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..._base_client import make_request_options
 from ...types.check_transfer import CheckTransfer
 
-__all__ = ["CheckTransfersResource", "AsyncCheckTransfersResource"]
+__all__ = ["CheckTransfers", "AsyncCheckTransfers"]
 
 
-class CheckTransfersResource(SyncAPIResource):
+class CheckTransfers(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> CheckTransfersResourceWithRawResponse:
-        return CheckTransfersResourceWithRawResponse(self)
+    def with_raw_response(self) -> CheckTransfersWithRawResponse:
+        return CheckTransfersWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> CheckTransfersResourceWithStreamingResponse:
-        return CheckTransfersResourceWithStreamingResponse(self)
+    def with_streaming_response(self) -> CheckTransfersWithStreamingResponse:
+        return CheckTransfersWithStreamingResponse(self)
 
     def mail(
         self,
@@ -73,14 +69,14 @@ class CheckTransfersResource(SyncAPIResource):
         )
 
 
-class AsyncCheckTransfersResource(AsyncAPIResource):
+class AsyncCheckTransfers(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncCheckTransfersResourceWithRawResponse:
-        return AsyncCheckTransfersResourceWithRawResponse(self)
+    def with_raw_response(self) -> AsyncCheckTransfersWithRawResponse:
+        return AsyncCheckTransfersWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncCheckTransfersResourceWithStreamingResponse:
-        return AsyncCheckTransfersResourceWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncCheckTransfersWithStreamingResponse:
+        return AsyncCheckTransfersWithStreamingResponse(self)
 
     async def mail(
         self,
@@ -127,26 +123,26 @@ class AsyncCheckTransfersResource(AsyncAPIResource):
         )
 
 
-class CheckTransfersResourceWithRawResponse:
-    def __init__(self, check_transfers: CheckTransfersResource) -> None:
+class CheckTransfersWithRawResponse:
+    def __init__(self, check_transfers: CheckTransfers) -> None:
         self._check_transfers = check_transfers
 
-        self.mail = to_raw_response_wrapper(
+        self.mail = _legacy_response.to_raw_response_wrapper(
             check_transfers.mail,
         )
 
 
-class AsyncCheckTransfersResourceWithRawResponse:
-    def __init__(self, check_transfers: AsyncCheckTransfersResource) -> None:
+class AsyncCheckTransfersWithRawResponse:
+    def __init__(self, check_transfers: AsyncCheckTransfers) -> None:
         self._check_transfers = check_transfers
 
-        self.mail = async_to_raw_response_wrapper(
+        self.mail = _legacy_response.async_to_raw_response_wrapper(
             check_transfers.mail,
         )
 
 
-class CheckTransfersResourceWithStreamingResponse:
-    def __init__(self, check_transfers: CheckTransfersResource) -> None:
+class CheckTransfersWithStreamingResponse:
+    def __init__(self, check_transfers: CheckTransfers) -> None:
         self._check_transfers = check_transfers
 
         self.mail = to_streamed_response_wrapper(
@@ -154,8 +150,8 @@ class CheckTransfersResourceWithStreamingResponse:
         )
 
 
-class AsyncCheckTransfersResourceWithStreamingResponse:
-    def __init__(self, check_transfers: AsyncCheckTransfersResource) -> None:
+class AsyncCheckTransfersWithStreamingResponse:
+    def __init__(self, check_transfers: AsyncCheckTransfers) -> None:
         self._check_transfers = check_transfers
 
         self.mail = async_to_streamed_response_wrapper(

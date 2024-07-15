@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import httpx
 
+from ... import _legacy_response
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import (
     maybe_transform,
@@ -11,27 +12,22 @@ from ..._utils import (
 )
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import (
-    to_raw_response_wrapper,
-    to_streamed_response_wrapper,
-    async_to_raw_response_wrapper,
-    async_to_streamed_response_wrapper,
-)
+from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..._base_client import make_request_options
 from ...types.simulations import digital_wallet_token_request_create_params
 from ...types.simulations.digital_wallet_token_request_create_response import DigitalWalletTokenRequestCreateResponse
 
-__all__ = ["DigitalWalletTokenRequestsResource", "AsyncDigitalWalletTokenRequestsResource"]
+__all__ = ["DigitalWalletTokenRequests", "AsyncDigitalWalletTokenRequests"]
 
 
-class DigitalWalletTokenRequestsResource(SyncAPIResource):
+class DigitalWalletTokenRequests(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> DigitalWalletTokenRequestsResourceWithRawResponse:
-        return DigitalWalletTokenRequestsResourceWithRawResponse(self)
+    def with_raw_response(self) -> DigitalWalletTokenRequestsWithRawResponse:
+        return DigitalWalletTokenRequestsWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> DigitalWalletTokenRequestsResourceWithStreamingResponse:
-        return DigitalWalletTokenRequestsResourceWithStreamingResponse(self)
+    def with_streaming_response(self) -> DigitalWalletTokenRequestsWithStreamingResponse:
+        return DigitalWalletTokenRequestsWithStreamingResponse(self)
 
     def create(
         self,
@@ -78,14 +74,14 @@ class DigitalWalletTokenRequestsResource(SyncAPIResource):
         )
 
 
-class AsyncDigitalWalletTokenRequestsResource(AsyncAPIResource):
+class AsyncDigitalWalletTokenRequests(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncDigitalWalletTokenRequestsResourceWithRawResponse:
-        return AsyncDigitalWalletTokenRequestsResourceWithRawResponse(self)
+    def with_raw_response(self) -> AsyncDigitalWalletTokenRequestsWithRawResponse:
+        return AsyncDigitalWalletTokenRequestsWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncDigitalWalletTokenRequestsResourceWithStreamingResponse:
-        return AsyncDigitalWalletTokenRequestsResourceWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncDigitalWalletTokenRequestsWithStreamingResponse:
+        return AsyncDigitalWalletTokenRequestsWithStreamingResponse(self)
 
     async def create(
         self,
@@ -132,26 +128,26 @@ class AsyncDigitalWalletTokenRequestsResource(AsyncAPIResource):
         )
 
 
-class DigitalWalletTokenRequestsResourceWithRawResponse:
-    def __init__(self, digital_wallet_token_requests: DigitalWalletTokenRequestsResource) -> None:
+class DigitalWalletTokenRequestsWithRawResponse:
+    def __init__(self, digital_wallet_token_requests: DigitalWalletTokenRequests) -> None:
         self._digital_wallet_token_requests = digital_wallet_token_requests
 
-        self.create = to_raw_response_wrapper(
+        self.create = _legacy_response.to_raw_response_wrapper(
             digital_wallet_token_requests.create,
         )
 
 
-class AsyncDigitalWalletTokenRequestsResourceWithRawResponse:
-    def __init__(self, digital_wallet_token_requests: AsyncDigitalWalletTokenRequestsResource) -> None:
+class AsyncDigitalWalletTokenRequestsWithRawResponse:
+    def __init__(self, digital_wallet_token_requests: AsyncDigitalWalletTokenRequests) -> None:
         self._digital_wallet_token_requests = digital_wallet_token_requests
 
-        self.create = async_to_raw_response_wrapper(
+        self.create = _legacy_response.async_to_raw_response_wrapper(
             digital_wallet_token_requests.create,
         )
 
 
-class DigitalWalletTokenRequestsResourceWithStreamingResponse:
-    def __init__(self, digital_wallet_token_requests: DigitalWalletTokenRequestsResource) -> None:
+class DigitalWalletTokenRequestsWithStreamingResponse:
+    def __init__(self, digital_wallet_token_requests: DigitalWalletTokenRequests) -> None:
         self._digital_wallet_token_requests = digital_wallet_token_requests
 
         self.create = to_streamed_response_wrapper(
@@ -159,8 +155,8 @@ class DigitalWalletTokenRequestsResourceWithStreamingResponse:
         )
 
 
-class AsyncDigitalWalletTokenRequestsResourceWithStreamingResponse:
-    def __init__(self, digital_wallet_token_requests: AsyncDigitalWalletTokenRequestsResource) -> None:
+class AsyncDigitalWalletTokenRequestsWithStreamingResponse:
+    def __init__(self, digital_wallet_token_requests: AsyncDigitalWalletTokenRequests) -> None:
         self._digital_wallet_token_requests = digital_wallet_token_requests
 
         self.create = async_to_streamed_response_wrapper(

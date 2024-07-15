@@ -219,7 +219,7 @@ class TestAsyncRealTimePaymentsRequestForPayments:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        real_time_payments_request_for_payment = await response.parse()
+        real_time_payments_request_for_payment = response.parse()
         assert_matches_type(
             RealTimePaymentsRequestForPayment, real_time_payments_request_for_payment, path=["response"]
         )
@@ -265,7 +265,7 @@ class TestAsyncRealTimePaymentsRequestForPayments:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        real_time_payments_request_for_payment = await response.parse()
+        real_time_payments_request_for_payment = response.parse()
         assert_matches_type(
             RealTimePaymentsRequestForPayment, real_time_payments_request_for_payment, path=["response"]
         )
@@ -325,7 +325,7 @@ class TestAsyncRealTimePaymentsRequestForPayments:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        real_time_payments_request_for_payment = await response.parse()
+        real_time_payments_request_for_payment = response.parse()
         assert_matches_type(
             AsyncPage[RealTimePaymentsRequestForPayment], real_time_payments_request_for_payment, path=["response"]
         )

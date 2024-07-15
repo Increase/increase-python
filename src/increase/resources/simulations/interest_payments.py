@@ -7,6 +7,7 @@ from datetime import datetime
 
 import httpx
 
+from ... import _legacy_response
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import (
     maybe_transform,
@@ -14,27 +15,22 @@ from ..._utils import (
 )
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import (
-    to_raw_response_wrapper,
-    to_streamed_response_wrapper,
-    async_to_raw_response_wrapper,
-    async_to_streamed_response_wrapper,
-)
+from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..._base_client import make_request_options
 from ...types.simulations import interest_payment_create_params
 from ...types.transaction import Transaction
 
-__all__ = ["InterestPaymentsResource", "AsyncInterestPaymentsResource"]
+__all__ = ["InterestPayments", "AsyncInterestPayments"]
 
 
-class InterestPaymentsResource(SyncAPIResource):
+class InterestPayments(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> InterestPaymentsResourceWithRawResponse:
-        return InterestPaymentsResourceWithRawResponse(self)
+    def with_raw_response(self) -> InterestPaymentsWithRawResponse:
+        return InterestPaymentsWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> InterestPaymentsResourceWithStreamingResponse:
-        return InterestPaymentsResourceWithStreamingResponse(self)
+    def with_streaming_response(self) -> InterestPaymentsWithStreamingResponse:
+        return InterestPaymentsWithStreamingResponse(self)
 
     def create(
         self,
@@ -76,7 +72,7 @@ class InterestPaymentsResource(SyncAPIResource):
           idempotency_key: Specify a custom idempotency key for this request
         """
         return self._post(
-            "/simulations/interest_payments",
+            "/simulations/interest_payment",
             body=maybe_transform(
                 {
                     "account_id": account_id,
@@ -97,14 +93,14 @@ class InterestPaymentsResource(SyncAPIResource):
         )
 
 
-class AsyncInterestPaymentsResource(AsyncAPIResource):
+class AsyncInterestPayments(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncInterestPaymentsResourceWithRawResponse:
-        return AsyncInterestPaymentsResourceWithRawResponse(self)
+    def with_raw_response(self) -> AsyncInterestPaymentsWithRawResponse:
+        return AsyncInterestPaymentsWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncInterestPaymentsResourceWithStreamingResponse:
-        return AsyncInterestPaymentsResourceWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncInterestPaymentsWithStreamingResponse:
+        return AsyncInterestPaymentsWithStreamingResponse(self)
 
     async def create(
         self,
@@ -146,7 +142,7 @@ class AsyncInterestPaymentsResource(AsyncAPIResource):
           idempotency_key: Specify a custom idempotency key for this request
         """
         return await self._post(
-            "/simulations/interest_payments",
+            "/simulations/interest_payment",
             body=await async_maybe_transform(
                 {
                     "account_id": account_id,
@@ -167,26 +163,26 @@ class AsyncInterestPaymentsResource(AsyncAPIResource):
         )
 
 
-class InterestPaymentsResourceWithRawResponse:
-    def __init__(self, interest_payments: InterestPaymentsResource) -> None:
+class InterestPaymentsWithRawResponse:
+    def __init__(self, interest_payments: InterestPayments) -> None:
         self._interest_payments = interest_payments
 
-        self.create = to_raw_response_wrapper(
+        self.create = _legacy_response.to_raw_response_wrapper(
             interest_payments.create,
         )
 
 
-class AsyncInterestPaymentsResourceWithRawResponse:
-    def __init__(self, interest_payments: AsyncInterestPaymentsResource) -> None:
+class AsyncInterestPaymentsWithRawResponse:
+    def __init__(self, interest_payments: AsyncInterestPayments) -> None:
         self._interest_payments = interest_payments
 
-        self.create = async_to_raw_response_wrapper(
+        self.create = _legacy_response.async_to_raw_response_wrapper(
             interest_payments.create,
         )
 
 
-class InterestPaymentsResourceWithStreamingResponse:
-    def __init__(self, interest_payments: InterestPaymentsResource) -> None:
+class InterestPaymentsWithStreamingResponse:
+    def __init__(self, interest_payments: InterestPayments) -> None:
         self._interest_payments = interest_payments
 
         self.create = to_streamed_response_wrapper(
@@ -194,8 +190,8 @@ class InterestPaymentsResourceWithStreamingResponse:
         )
 
 
-class AsyncInterestPaymentsResourceWithStreamingResponse:
-    def __init__(self, interest_payments: AsyncInterestPaymentsResource) -> None:
+class AsyncInterestPaymentsWithStreamingResponse:
+    def __init__(self, interest_payments: AsyncInterestPayments) -> None:
         self._interest_payments = interest_payments
 
         self.create = async_to_streamed_response_wrapper(

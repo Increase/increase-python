@@ -6,6 +6,7 @@ from typing_extensions import Literal
 
 import httpx
 
+from .. import _legacy_response
 from ..types import card_list_params, card_create_params, card_update_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import (
@@ -14,28 +15,23 @@ from .._utils import (
 )
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import (
-    to_raw_response_wrapper,
-    to_streamed_response_wrapper,
-    async_to_raw_response_wrapper,
-    async_to_streamed_response_wrapper,
-)
+from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from ..types.card import Card
 from .._base_client import AsyncPaginator, make_request_options
 from ..types.card_details import CardDetails
 
-__all__ = ["CardsResource", "AsyncCardsResource"]
+__all__ = ["Cards", "AsyncCards"]
 
 
-class CardsResource(SyncAPIResource):
+class Cards(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> CardsResourceWithRawResponse:
-        return CardsResourceWithRawResponse(self)
+    def with_raw_response(self) -> CardsWithRawResponse:
+        return CardsWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> CardsResourceWithStreamingResponse:
-        return CardsResourceWithStreamingResponse(self)
+    def with_streaming_response(self) -> CardsWithStreamingResponse:
+        return CardsWithStreamingResponse(self)
 
     def create(
         self,
@@ -274,7 +270,7 @@ class CardsResource(SyncAPIResource):
             model=Card,
         )
 
-    def details(
+    def retrieve_sensitive_details(
         self,
         card_id: str,
         *,
@@ -310,14 +306,14 @@ class CardsResource(SyncAPIResource):
         )
 
 
-class AsyncCardsResource(AsyncAPIResource):
+class AsyncCards(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncCardsResourceWithRawResponse:
-        return AsyncCardsResourceWithRawResponse(self)
+    def with_raw_response(self) -> AsyncCardsWithRawResponse:
+        return AsyncCardsWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncCardsResourceWithStreamingResponse:
-        return AsyncCardsResourceWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncCardsWithStreamingResponse:
+        return AsyncCardsWithStreamingResponse(self)
 
     async def create(
         self,
@@ -556,7 +552,7 @@ class AsyncCardsResource(AsyncAPIResource):
             model=Card,
         )
 
-    async def details(
+    async def retrieve_sensitive_details(
         self,
         card_id: str,
         *,
@@ -592,50 +588,50 @@ class AsyncCardsResource(AsyncAPIResource):
         )
 
 
-class CardsResourceWithRawResponse:
-    def __init__(self, cards: CardsResource) -> None:
+class CardsWithRawResponse:
+    def __init__(self, cards: Cards) -> None:
         self._cards = cards
 
-        self.create = to_raw_response_wrapper(
+        self.create = _legacy_response.to_raw_response_wrapper(
             cards.create,
         )
-        self.retrieve = to_raw_response_wrapper(
+        self.retrieve = _legacy_response.to_raw_response_wrapper(
             cards.retrieve,
         )
-        self.update = to_raw_response_wrapper(
+        self.update = _legacy_response.to_raw_response_wrapper(
             cards.update,
         )
-        self.list = to_raw_response_wrapper(
+        self.list = _legacy_response.to_raw_response_wrapper(
             cards.list,
         )
-        self.details = to_raw_response_wrapper(
-            cards.details,
+        self.retrieve_sensitive_details = _legacy_response.to_raw_response_wrapper(
+            cards.retrieve_sensitive_details,
         )
 
 
-class AsyncCardsResourceWithRawResponse:
-    def __init__(self, cards: AsyncCardsResource) -> None:
+class AsyncCardsWithRawResponse:
+    def __init__(self, cards: AsyncCards) -> None:
         self._cards = cards
 
-        self.create = async_to_raw_response_wrapper(
+        self.create = _legacy_response.async_to_raw_response_wrapper(
             cards.create,
         )
-        self.retrieve = async_to_raw_response_wrapper(
+        self.retrieve = _legacy_response.async_to_raw_response_wrapper(
             cards.retrieve,
         )
-        self.update = async_to_raw_response_wrapper(
+        self.update = _legacy_response.async_to_raw_response_wrapper(
             cards.update,
         )
-        self.list = async_to_raw_response_wrapper(
+        self.list = _legacy_response.async_to_raw_response_wrapper(
             cards.list,
         )
-        self.details = async_to_raw_response_wrapper(
-            cards.details,
+        self.retrieve_sensitive_details = _legacy_response.async_to_raw_response_wrapper(
+            cards.retrieve_sensitive_details,
         )
 
 
-class CardsResourceWithStreamingResponse:
-    def __init__(self, cards: CardsResource) -> None:
+class CardsWithStreamingResponse:
+    def __init__(self, cards: Cards) -> None:
         self._cards = cards
 
         self.create = to_streamed_response_wrapper(
@@ -650,13 +646,13 @@ class CardsResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             cards.list,
         )
-        self.details = to_streamed_response_wrapper(
-            cards.details,
+        self.retrieve_sensitive_details = to_streamed_response_wrapper(
+            cards.retrieve_sensitive_details,
         )
 
 
-class AsyncCardsResourceWithStreamingResponse:
-    def __init__(self, cards: AsyncCardsResource) -> None:
+class AsyncCardsWithStreamingResponse:
+    def __init__(self, cards: AsyncCards) -> None:
         self._cards = cards
 
         self.create = async_to_streamed_response_wrapper(
@@ -671,6 +667,6 @@ class AsyncCardsResourceWithStreamingResponse:
         self.list = async_to_streamed_response_wrapper(
             cards.list,
         )
-        self.details = async_to_streamed_response_wrapper(
-            cards.details,
+        self.retrieve_sensitive_details = async_to_streamed_response_wrapper(
+            cards.retrieve_sensitive_details,
         )

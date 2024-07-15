@@ -77,7 +77,7 @@ class TestAsyncInboundCheckDeposits:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        inbound_check_deposit = await response.parse()
+        inbound_check_deposit = response.parse()
         assert_matches_type(InboundCheckDeposit, inbound_check_deposit, path=["response"])
 
     @parametrize

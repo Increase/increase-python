@@ -122,7 +122,7 @@ class TestAsyncPendingTransactions:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        pending_transaction = await response.parse()
+        pending_transaction = response.parse()
         assert_matches_type(PendingTransaction, pending_transaction, path=["response"])
 
     @parametrize
@@ -177,7 +177,7 @@ class TestAsyncPendingTransactions:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        pending_transaction = await response.parse()
+        pending_transaction = response.parse()
         assert_matches_type(AsyncPage[PendingTransaction], pending_transaction, path=["response"])
 
     @parametrize

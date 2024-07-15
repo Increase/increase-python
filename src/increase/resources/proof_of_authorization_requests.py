@@ -4,32 +4,28 @@ from __future__ import annotations
 
 import httpx
 
+from .. import _legacy_response
 from ..types import proof_of_authorization_request_list_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import (
-    to_raw_response_wrapper,
-    to_streamed_response_wrapper,
-    async_to_raw_response_wrapper,
-    async_to_streamed_response_wrapper,
-)
+from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
 from ..types.proof_of_authorization_request import ProofOfAuthorizationRequest
 
-__all__ = ["ProofOfAuthorizationRequestsResource", "AsyncProofOfAuthorizationRequestsResource"]
+__all__ = ["ProofOfAuthorizationRequests", "AsyncProofOfAuthorizationRequests"]
 
 
-class ProofOfAuthorizationRequestsResource(SyncAPIResource):
+class ProofOfAuthorizationRequests(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> ProofOfAuthorizationRequestsResourceWithRawResponse:
-        return ProofOfAuthorizationRequestsResourceWithRawResponse(self)
+    def with_raw_response(self) -> ProofOfAuthorizationRequestsWithRawResponse:
+        return ProofOfAuthorizationRequestsWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> ProofOfAuthorizationRequestsResourceWithStreamingResponse:
-        return ProofOfAuthorizationRequestsResourceWithStreamingResponse(self)
+    def with_streaming_response(self) -> ProofOfAuthorizationRequestsWithStreamingResponse:
+        return ProofOfAuthorizationRequestsWithStreamingResponse(self)
 
     def retrieve(
         self,
@@ -119,14 +115,14 @@ class ProofOfAuthorizationRequestsResource(SyncAPIResource):
         )
 
 
-class AsyncProofOfAuthorizationRequestsResource(AsyncAPIResource):
+class AsyncProofOfAuthorizationRequests(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncProofOfAuthorizationRequestsResourceWithRawResponse:
-        return AsyncProofOfAuthorizationRequestsResourceWithRawResponse(self)
+    def with_raw_response(self) -> AsyncProofOfAuthorizationRequestsWithRawResponse:
+        return AsyncProofOfAuthorizationRequestsWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncProofOfAuthorizationRequestsResourceWithStreamingResponse:
-        return AsyncProofOfAuthorizationRequestsResourceWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncProofOfAuthorizationRequestsWithStreamingResponse:
+        return AsyncProofOfAuthorizationRequestsWithStreamingResponse(self)
 
     async def retrieve(
         self,
@@ -216,32 +212,32 @@ class AsyncProofOfAuthorizationRequestsResource(AsyncAPIResource):
         )
 
 
-class ProofOfAuthorizationRequestsResourceWithRawResponse:
-    def __init__(self, proof_of_authorization_requests: ProofOfAuthorizationRequestsResource) -> None:
+class ProofOfAuthorizationRequestsWithRawResponse:
+    def __init__(self, proof_of_authorization_requests: ProofOfAuthorizationRequests) -> None:
         self._proof_of_authorization_requests = proof_of_authorization_requests
 
-        self.retrieve = to_raw_response_wrapper(
+        self.retrieve = _legacy_response.to_raw_response_wrapper(
             proof_of_authorization_requests.retrieve,
         )
-        self.list = to_raw_response_wrapper(
+        self.list = _legacy_response.to_raw_response_wrapper(
             proof_of_authorization_requests.list,
         )
 
 
-class AsyncProofOfAuthorizationRequestsResourceWithRawResponse:
-    def __init__(self, proof_of_authorization_requests: AsyncProofOfAuthorizationRequestsResource) -> None:
+class AsyncProofOfAuthorizationRequestsWithRawResponse:
+    def __init__(self, proof_of_authorization_requests: AsyncProofOfAuthorizationRequests) -> None:
         self._proof_of_authorization_requests = proof_of_authorization_requests
 
-        self.retrieve = async_to_raw_response_wrapper(
+        self.retrieve = _legacy_response.async_to_raw_response_wrapper(
             proof_of_authorization_requests.retrieve,
         )
-        self.list = async_to_raw_response_wrapper(
+        self.list = _legacy_response.async_to_raw_response_wrapper(
             proof_of_authorization_requests.list,
         )
 
 
-class ProofOfAuthorizationRequestsResourceWithStreamingResponse:
-    def __init__(self, proof_of_authorization_requests: ProofOfAuthorizationRequestsResource) -> None:
+class ProofOfAuthorizationRequestsWithStreamingResponse:
+    def __init__(self, proof_of_authorization_requests: ProofOfAuthorizationRequests) -> None:
         self._proof_of_authorization_requests = proof_of_authorization_requests
 
         self.retrieve = to_streamed_response_wrapper(
@@ -252,8 +248,8 @@ class ProofOfAuthorizationRequestsResourceWithStreamingResponse:
         )
 
 
-class AsyncProofOfAuthorizationRequestsResourceWithStreamingResponse:
-    def __init__(self, proof_of_authorization_requests: AsyncProofOfAuthorizationRequestsResource) -> None:
+class AsyncProofOfAuthorizationRequestsWithStreamingResponse:
+    def __init__(self, proof_of_authorization_requests: AsyncProofOfAuthorizationRequests) -> None:
         self._proof_of_authorization_requests = proof_of_authorization_requests
 
         self.retrieve = async_to_streamed_response_wrapper(

@@ -247,6 +247,7 @@ class TestCheckTransfers:
                 "",
             )
 
+    @pytest.mark.skip(reason="Prism doesn't accept no request body being sent but returns 415 if it is sent")
     @parametrize
     def test_method_stop_payment(self, client: Increase) -> None:
         check_transfer = client.check_transfers.stop_payment(
@@ -254,6 +255,7 @@ class TestCheckTransfers:
         )
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
+    @pytest.mark.skip(reason="Prism doesn't accept no request body being sent but returns 415 if it is sent")
     @parametrize
     def test_method_stop_payment_with_all_params(self, client: Increase) -> None:
         check_transfer = client.check_transfers.stop_payment(
@@ -262,6 +264,7 @@ class TestCheckTransfers:
         )
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
+    @pytest.mark.skip(reason="Prism doesn't accept no request body being sent but returns 415 if it is sent")
     @parametrize
     def test_raw_response_stop_payment(self, client: Increase) -> None:
         response = client.check_transfers.with_raw_response.stop_payment(
@@ -273,6 +276,7 @@ class TestCheckTransfers:
         check_transfer = response.parse()
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
+    @pytest.mark.skip(reason="Prism doesn't accept no request body being sent but returns 415 if it is sent")
     @parametrize
     def test_streaming_response_stop_payment(self, client: Increase) -> None:
         with client.check_transfers.with_streaming_response.stop_payment(
@@ -286,6 +290,7 @@ class TestCheckTransfers:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism doesn't accept no request body being sent but returns 415 if it is sent")
     @parametrize
     def test_path_params_stop_payment(self, client: Increase) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `check_transfer_id` but received ''"):
@@ -350,7 +355,7 @@ class TestAsyncCheckTransfers:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        check_transfer = await response.parse()
+        check_transfer = response.parse()
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
     @parametrize
@@ -383,7 +388,7 @@ class TestAsyncCheckTransfers:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        check_transfer = await response.parse()
+        check_transfer = response.parse()
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
     @parametrize
@@ -433,7 +438,7 @@ class TestAsyncCheckTransfers:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        check_transfer = await response.parse()
+        check_transfer = response.parse()
         assert_matches_type(AsyncPage[CheckTransfer], check_transfer, path=["response"])
 
     @parametrize
@@ -462,7 +467,7 @@ class TestAsyncCheckTransfers:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        check_transfer = await response.parse()
+        check_transfer = response.parse()
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
     @parametrize
@@ -500,7 +505,7 @@ class TestAsyncCheckTransfers:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        check_transfer = await response.parse()
+        check_transfer = response.parse()
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
     @parametrize
@@ -523,6 +528,7 @@ class TestAsyncCheckTransfers:
                 "",
             )
 
+    @pytest.mark.skip(reason="Prism doesn't accept no request body being sent but returns 415 if it is sent")
     @parametrize
     async def test_method_stop_payment(self, async_client: AsyncIncrease) -> None:
         check_transfer = await async_client.check_transfers.stop_payment(
@@ -530,6 +536,7 @@ class TestAsyncCheckTransfers:
         )
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
+    @pytest.mark.skip(reason="Prism doesn't accept no request body being sent but returns 415 if it is sent")
     @parametrize
     async def test_method_stop_payment_with_all_params(self, async_client: AsyncIncrease) -> None:
         check_transfer = await async_client.check_transfers.stop_payment(
@@ -538,6 +545,7 @@ class TestAsyncCheckTransfers:
         )
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
+    @pytest.mark.skip(reason="Prism doesn't accept no request body being sent but returns 415 if it is sent")
     @parametrize
     async def test_raw_response_stop_payment(self, async_client: AsyncIncrease) -> None:
         response = await async_client.check_transfers.with_raw_response.stop_payment(
@@ -546,9 +554,10 @@ class TestAsyncCheckTransfers:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        check_transfer = await response.parse()
+        check_transfer = response.parse()
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
+    @pytest.mark.skip(reason="Prism doesn't accept no request body being sent but returns 415 if it is sent")
     @parametrize
     async def test_streaming_response_stop_payment(self, async_client: AsyncIncrease) -> None:
         async with async_client.check_transfers.with_streaming_response.stop_payment(
@@ -562,6 +571,7 @@ class TestAsyncCheckTransfers:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism doesn't accept no request body being sent but returns 415 if it is sent")
     @parametrize
     async def test_path_params_stop_payment(self, async_client: AsyncIncrease) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `check_transfer_id` but received ''"):

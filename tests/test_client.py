@@ -661,6 +661,97 @@ class TestIncrease:
         )
         assert request.url == "https://myapi.com/foo"
 
+    def test_transport_option_is_deprecated(self) -> None:
+        with pytest.warns(
+            DeprecationWarning,
+            match="The `transport` argument is deprecated. The `http_client` argument should be passed instead",
+        ):
+            transport = httpx.MockTransport(
+                lambda: None,  # type: ignore
+            )
+
+            client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=True, transport=transport)
+
+            assert client._client._transport is transport
+
+    def test_transport_option_mutually_exclusive_with_http_client(self) -> None:
+        with httpx.Client() as http_client:
+            with pytest.raises(ValueError, match="The `http_client` argument is mutually exclusive with `transport`"):
+                with pytest.warns(DeprecationWarning):
+                    Increase(
+                        base_url=base_url,
+                        api_key=api_key,
+                        _strict_response_validation=True,
+                        transport=httpx.MockTransport(
+                            lambda: None,  # type: ignore
+                        ),
+                        http_client=http_client,
+                    )
+
+    def test_connection_pool_limits_option_is_deprecated(self) -> None:
+        with pytest.warns(
+            DeprecationWarning,
+            match="The `connection_pool_limits` argument is deprecated. The `http_client` argument should be passed instead",
+        ):
+            connection_pool_limits = httpx.Limits(
+                max_connections=101, max_keepalive_connections=76, keepalive_expiry=23
+            )
+
+            client = Increase(
+                base_url=base_url,
+                api_key=api_key,
+                _strict_response_validation=True,
+                connection_pool_limits=connection_pool_limits,
+            )
+
+            assert isinstance(client._client._transport, httpx.HTTPTransport)
+            assert client._client._transport._pool._max_connections == 101
+            assert client._client._transport._pool._max_keepalive_connections == 76
+            assert client._client._transport._pool._keepalive_expiry == 23
+
+    def test_connection_pool_limits_option_mutually_exclusive_with_http_client(self) -> None:
+        with httpx.Client() as http_client:
+            with pytest.raises(
+                ValueError, match="The `http_client` argument is mutually exclusive with `connection_pool_limits`"
+            ):
+                with pytest.warns(DeprecationWarning):
+                    Increase(
+                        base_url=base_url,
+                        api_key=api_key,
+                        _strict_response_validation=True,
+                        connection_pool_limits=httpx.Limits(
+                            max_connections=101, max_keepalive_connections=76, keepalive_expiry=23
+                        ),
+                        http_client=http_client,
+                    )
+
+    def test_proxies_option_is_deprecated(self) -> None:
+        with pytest.warns(
+            DeprecationWarning,
+            match="The `proxies` argument is deprecated. The `http_client` argument should be passed instead",
+        ):
+            proxies = "https://www.example.com/proxy"
+
+            client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=True, proxies=proxies)
+
+            mounts = list(client._client._mounts.keys())
+            assert len(mounts) == 1
+
+            pattern = mounts[0].pattern
+            assert pattern == "all://"
+
+    def test_proxies_option_mutually_exclusive_with_http_client(self) -> None:
+        with httpx.Client() as http_client:
+            with pytest.raises(ValueError, match="The `http_client` argument is mutually exclusive with `proxies`"):
+                with pytest.warns(DeprecationWarning):
+                    Increase(
+                        base_url=base_url,
+                        api_key=api_key,
+                        _strict_response_validation=True,
+                        proxies="https://www.example.com/proxy",
+                        http_client=http_client,
+                    )
+
     def test_copied_client_does_not_close_http(self) -> None:
         client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=True)
         assert not client.is_closed()
@@ -750,14 +841,7 @@ class TestIncrease:
         with pytest.raises(APITimeoutError):
             self.client.post(
                 "/accounts",
-                body=cast(
-                    object,
-                    dict(
-                        name="New Account!",
-                        entity_id="entity_n8y8tnk2p9339ti393yi",
-                        program_id="program_i2v2os4mwza1oetokh9i",
-                    ),
-                ),
+                body=cast(object, dict(name="My First Increase Account")),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
@@ -772,14 +856,7 @@ class TestIncrease:
         with pytest.raises(APIStatusError):
             self.client.post(
                 "/accounts",
-                body=cast(
-                    object,
-                    dict(
-                        name="New Account!",
-                        entity_id="entity_n8y8tnk2p9339ti393yi",
-                        program_id="program_i2v2os4mwza1oetokh9i",
-                    ),
-                ),
+                body=cast(object, dict(name="My First Increase Account")),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
@@ -1407,6 +1484,101 @@ class TestAsyncIncrease:
         )
         assert request.url == "https://myapi.com/foo"
 
+    def test_transport_option_is_deprecated(self) -> None:
+        with pytest.warns(
+            DeprecationWarning,
+            match="The `transport` argument is deprecated. The `http_client` argument should be passed instead",
+        ):
+            transport = httpx.MockTransport(
+                lambda: None,  # type: ignore
+            )
+
+            client = AsyncIncrease(
+                base_url=base_url, api_key=api_key, _strict_response_validation=True, transport=transport
+            )
+
+            assert client._client._transport is transport
+
+    async def test_transport_option_mutually_exclusive_with_http_client(self) -> None:
+        async with httpx.AsyncClient() as http_client:
+            with pytest.raises(ValueError, match="The `http_client` argument is mutually exclusive with `transport`"):
+                with pytest.warns(DeprecationWarning):
+                    AsyncIncrease(
+                        base_url=base_url,
+                        api_key=api_key,
+                        _strict_response_validation=True,
+                        transport=httpx.MockTransport(
+                            lambda: None,  # type: ignore
+                        ),
+                        http_client=http_client,
+                    )
+
+    def test_connection_pool_limits_option_is_deprecated(self) -> None:
+        with pytest.warns(
+            DeprecationWarning,
+            match="The `connection_pool_limits` argument is deprecated. The `http_client` argument should be passed instead",
+        ):
+            connection_pool_limits = httpx.Limits(
+                max_connections=101, max_keepalive_connections=76, keepalive_expiry=23
+            )
+
+            client = AsyncIncrease(
+                base_url=base_url,
+                api_key=api_key,
+                _strict_response_validation=True,
+                connection_pool_limits=connection_pool_limits,
+            )
+
+            assert isinstance(client._client._transport, httpx.AsyncHTTPTransport)
+            assert client._client._transport._pool._max_connections == 101
+            assert client._client._transport._pool._max_keepalive_connections == 76
+            assert client._client._transport._pool._keepalive_expiry == 23
+
+    async def test_connection_pool_limits_option_mutually_exclusive_with_http_client(self) -> None:
+        async with httpx.AsyncClient() as http_client:
+            with pytest.raises(
+                ValueError, match="The `http_client` argument is mutually exclusive with `connection_pool_limits`"
+            ):
+                with pytest.warns(DeprecationWarning):
+                    AsyncIncrease(
+                        base_url=base_url,
+                        api_key=api_key,
+                        _strict_response_validation=True,
+                        connection_pool_limits=httpx.Limits(
+                            max_connections=101, max_keepalive_connections=76, keepalive_expiry=23
+                        ),
+                        http_client=http_client,
+                    )
+
+    def test_proxies_option_is_deprecated(self) -> None:
+        with pytest.warns(
+            DeprecationWarning,
+            match="The `proxies` argument is deprecated. The `http_client` argument should be passed instead",
+        ):
+            proxies = "https://www.example.com/proxy"
+
+            client = AsyncIncrease(
+                base_url=base_url, api_key=api_key, _strict_response_validation=True, proxies=proxies
+            )
+
+            mounts = list(client._client._mounts.keys())
+            assert len(mounts) == 1
+
+            pattern = mounts[0].pattern
+            assert pattern == "all://"
+
+    async def test_proxies_option_mutually_exclusive_with_http_client(self) -> None:
+        async with httpx.AsyncClient() as http_client:
+            with pytest.raises(ValueError, match="The `http_client` argument is mutually exclusive with `proxies`"):
+                with pytest.warns(DeprecationWarning):
+                    AsyncIncrease(
+                        base_url=base_url,
+                        api_key=api_key,
+                        _strict_response_validation=True,
+                        proxies="https://www.example.com/proxy",
+                        http_client=http_client,
+                    )
+
     async def test_copied_client_does_not_close_http(self) -> None:
         client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
         assert not client.is_closed()
@@ -1502,14 +1674,7 @@ class TestAsyncIncrease:
         with pytest.raises(APITimeoutError):
             await self.client.post(
                 "/accounts",
-                body=cast(
-                    object,
-                    dict(
-                        name="New Account!",
-                        entity_id="entity_n8y8tnk2p9339ti393yi",
-                        program_id="program_i2v2os4mwza1oetokh9i",
-                    ),
-                ),
+                body=cast(object, dict(name="My First Increase Account")),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
@@ -1524,14 +1689,7 @@ class TestAsyncIncrease:
         with pytest.raises(APIStatusError):
             await self.client.post(
                 "/accounts",
-                body=cast(
-                    object,
-                    dict(
-                        name="New Account!",
-                        entity_id="entity_n8y8tnk2p9339ti393yi",
-                        program_id="program_i2v2os4mwza1oetokh9i",
-                    ),
-                ),
+                body=cast(object, dict(name="My First Increase Account")),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )

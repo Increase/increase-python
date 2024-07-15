@@ -153,7 +153,7 @@ class TestAsyncCardDisputes:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        card_dispute = await response.parse()
+        card_dispute = response.parse()
         assert_matches_type(CardDispute, card_dispute, path=["response"])
 
     @parametrize
@@ -185,7 +185,7 @@ class TestAsyncCardDisputes:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        card_dispute = await response.parse()
+        card_dispute = response.parse()
         assert_matches_type(CardDispute, card_dispute, path=["response"])
 
     @parametrize
@@ -235,7 +235,7 @@ class TestAsyncCardDisputes:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        card_dispute = await response.parse()
+        card_dispute = response.parse()
         assert_matches_type(AsyncPage[CardDispute], card_dispute, path=["response"])
 
     @parametrize
