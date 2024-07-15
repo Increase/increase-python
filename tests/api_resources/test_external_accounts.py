@@ -225,7 +225,7 @@ class TestAsyncExternalAccounts:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        external_account = response.parse()
+        external_account = await response.parse()
         assert_matches_type(ExternalAccount, external_account, path=["response"])
 
     @parametrize
@@ -258,7 +258,7 @@ class TestAsyncExternalAccounts:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        external_account = response.parse()
+        external_account = await response.parse()
         assert_matches_type(ExternalAccount, external_account, path=["response"])
 
     @parametrize
@@ -307,7 +307,7 @@ class TestAsyncExternalAccounts:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        external_account = response.parse()
+        external_account = await response.parse()
         assert_matches_type(ExternalAccount, external_account, path=["response"])
 
     @parametrize
@@ -352,7 +352,7 @@ class TestAsyncExternalAccounts:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        external_account = response.parse()
+        external_account = await response.parse()
         assert_matches_type(AsyncPage[ExternalAccount], external_account, path=["response"])
 
     @parametrize

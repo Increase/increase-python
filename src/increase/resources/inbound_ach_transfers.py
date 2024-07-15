@@ -6,11 +6,10 @@ from typing_extensions import Literal
 
 import httpx
 
-from .. import _legacy_response
 from ..types import (
     inbound_ach_transfer_list_params,
     inbound_ach_transfer_transfer_return_params,
-    inbound_ach_transfer_notification_of_change_params,
+    inbound_ach_transfer_create_notification_of_change_params,
 )
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import (
@@ -19,22 +18,27 @@ from .._utils import (
 )
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
+from .._response import (
+    to_raw_response_wrapper,
+    to_streamed_response_wrapper,
+    async_to_raw_response_wrapper,
+    async_to_streamed_response_wrapper,
+)
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
 from ..types.inbound_ach_transfer import InboundACHTransfer
 
-__all__ = ["InboundACHTransfers", "AsyncInboundACHTransfers"]
+__all__ = ["InboundACHTransfersResource", "AsyncInboundACHTransfersResource"]
 
 
-class InboundACHTransfers(SyncAPIResource):
+class InboundACHTransfersResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> InboundACHTransfersWithRawResponse:
-        return InboundACHTransfersWithRawResponse(self)
+    def with_raw_response(self) -> InboundACHTransfersResourceWithRawResponse:
+        return InboundACHTransfersResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> InboundACHTransfersWithStreamingResponse:
-        return InboundACHTransfersWithStreamingResponse(self)
+    def with_streaming_response(self) -> InboundACHTransfersResourceWithStreamingResponse:
+        return InboundACHTransfersResourceWithStreamingResponse(self)
 
     def retrieve(
         self,
@@ -141,51 +145,7 @@ class InboundACHTransfers(SyncAPIResource):
             model=InboundACHTransfer,
         )
 
-    def decline(
-        self,
-        inbound_ach_transfer_id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-        idempotency_key: str | None = None,
-    ) -> InboundACHTransfer:
-        """
-        Decline an Inbound ACH Transfer
-
-        Args:
-          inbound_ach_transfer_id: The identifier of the Inbound ACH Transfer to decline.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-
-          idempotency_key: Specify a custom idempotency key for this request
-        """
-        if not inbound_ach_transfer_id:
-            raise ValueError(
-                f"Expected a non-empty value for `inbound_ach_transfer_id` but received {inbound_ach_transfer_id!r}"
-            )
-        return self._post(
-            f"/inbound_ach_transfers/{inbound_ach_transfer_id}/decline",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                idempotency_key=idempotency_key,
-            ),
-            cast_to=InboundACHTransfer,
-        )
-
-    def notification_of_change(
+    def create_notification_of_change(
         self,
         inbound_ach_transfer_id: str,
         *,
@@ -225,14 +185,58 @@ class InboundACHTransfers(SyncAPIResource):
                 f"Expected a non-empty value for `inbound_ach_transfer_id` but received {inbound_ach_transfer_id!r}"
             )
         return self._post(
-            f"/inbound_ach_transfers/{inbound_ach_transfer_id}/notification_of_change",
+            f"/inbound_ach_transfers/{inbound_ach_transfer_id}/create_notification_of_change",
             body=maybe_transform(
                 {
                     "updated_account_number": updated_account_number,
                     "updated_routing_number": updated_routing_number,
                 },
-                inbound_ach_transfer_notification_of_change_params.InboundACHTransferNotificationOfChangeParams,
+                inbound_ach_transfer_create_notification_of_change_params.InboundACHTransferCreateNotificationOfChangeParams,
             ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=InboundACHTransfer,
+        )
+
+    def decline(
+        self,
+        inbound_ach_transfer_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> InboundACHTransfer:
+        """
+        Decline an Inbound ACH Transfer
+
+        Args:
+          inbound_ach_transfer_id: The identifier of the Inbound ACH Transfer to decline.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not inbound_ach_transfer_id:
+            raise ValueError(
+                f"Expected a non-empty value for `inbound_ach_transfer_id` but received {inbound_ach_transfer_id!r}"
+            )
+        return self._post(
+            f"/inbound_ach_transfers/{inbound_ach_transfer_id}/decline",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -330,14 +334,14 @@ class InboundACHTransfers(SyncAPIResource):
         )
 
 
-class AsyncInboundACHTransfers(AsyncAPIResource):
+class AsyncInboundACHTransfersResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncInboundACHTransfersWithRawResponse:
-        return AsyncInboundACHTransfersWithRawResponse(self)
+    def with_raw_response(self) -> AsyncInboundACHTransfersResourceWithRawResponse:
+        return AsyncInboundACHTransfersResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncInboundACHTransfersWithStreamingResponse:
-        return AsyncInboundACHTransfersWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncInboundACHTransfersResourceWithStreamingResponse:
+        return AsyncInboundACHTransfersResourceWithStreamingResponse(self)
 
     async def retrieve(
         self,
@@ -444,51 +448,7 @@ class AsyncInboundACHTransfers(AsyncAPIResource):
             model=InboundACHTransfer,
         )
 
-    async def decline(
-        self,
-        inbound_ach_transfer_id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-        idempotency_key: str | None = None,
-    ) -> InboundACHTransfer:
-        """
-        Decline an Inbound ACH Transfer
-
-        Args:
-          inbound_ach_transfer_id: The identifier of the Inbound ACH Transfer to decline.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-
-          idempotency_key: Specify a custom idempotency key for this request
-        """
-        if not inbound_ach_transfer_id:
-            raise ValueError(
-                f"Expected a non-empty value for `inbound_ach_transfer_id` but received {inbound_ach_transfer_id!r}"
-            )
-        return await self._post(
-            f"/inbound_ach_transfers/{inbound_ach_transfer_id}/decline",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                idempotency_key=idempotency_key,
-            ),
-            cast_to=InboundACHTransfer,
-        )
-
-    async def notification_of_change(
+    async def create_notification_of_change(
         self,
         inbound_ach_transfer_id: str,
         *,
@@ -528,14 +488,58 @@ class AsyncInboundACHTransfers(AsyncAPIResource):
                 f"Expected a non-empty value for `inbound_ach_transfer_id` but received {inbound_ach_transfer_id!r}"
             )
         return await self._post(
-            f"/inbound_ach_transfers/{inbound_ach_transfer_id}/notification_of_change",
+            f"/inbound_ach_transfers/{inbound_ach_transfer_id}/create_notification_of_change",
             body=await async_maybe_transform(
                 {
                     "updated_account_number": updated_account_number,
                     "updated_routing_number": updated_routing_number,
                 },
-                inbound_ach_transfer_notification_of_change_params.InboundACHTransferNotificationOfChangeParams,
+                inbound_ach_transfer_create_notification_of_change_params.InboundACHTransferCreateNotificationOfChangeParams,
             ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=InboundACHTransfer,
+        )
+
+    async def decline(
+        self,
+        inbound_ach_transfer_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> InboundACHTransfer:
+        """
+        Decline an Inbound ACH Transfer
+
+        Args:
+          inbound_ach_transfer_id: The identifier of the Inbound ACH Transfer to decline.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not inbound_ach_transfer_id:
+            raise ValueError(
+                f"Expected a non-empty value for `inbound_ach_transfer_id` but received {inbound_ach_transfer_id!r}"
+            )
+        return await self._post(
+            f"/inbound_ach_transfers/{inbound_ach_transfer_id}/decline",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -633,50 +637,50 @@ class AsyncInboundACHTransfers(AsyncAPIResource):
         )
 
 
-class InboundACHTransfersWithRawResponse:
-    def __init__(self, inbound_ach_transfers: InboundACHTransfers) -> None:
+class InboundACHTransfersResourceWithRawResponse:
+    def __init__(self, inbound_ach_transfers: InboundACHTransfersResource) -> None:
         self._inbound_ach_transfers = inbound_ach_transfers
 
-        self.retrieve = _legacy_response.to_raw_response_wrapper(
+        self.retrieve = to_raw_response_wrapper(
             inbound_ach_transfers.retrieve,
         )
-        self.list = _legacy_response.to_raw_response_wrapper(
+        self.list = to_raw_response_wrapper(
             inbound_ach_transfers.list,
         )
-        self.decline = _legacy_response.to_raw_response_wrapper(
+        self.create_notification_of_change = to_raw_response_wrapper(
+            inbound_ach_transfers.create_notification_of_change,
+        )
+        self.decline = to_raw_response_wrapper(
             inbound_ach_transfers.decline,
         )
-        self.notification_of_change = _legacy_response.to_raw_response_wrapper(
-            inbound_ach_transfers.notification_of_change,
-        )
-        self.transfer_return = _legacy_response.to_raw_response_wrapper(
+        self.transfer_return = to_raw_response_wrapper(
             inbound_ach_transfers.transfer_return,
         )
 
 
-class AsyncInboundACHTransfersWithRawResponse:
-    def __init__(self, inbound_ach_transfers: AsyncInboundACHTransfers) -> None:
+class AsyncInboundACHTransfersResourceWithRawResponse:
+    def __init__(self, inbound_ach_transfers: AsyncInboundACHTransfersResource) -> None:
         self._inbound_ach_transfers = inbound_ach_transfers
 
-        self.retrieve = _legacy_response.async_to_raw_response_wrapper(
+        self.retrieve = async_to_raw_response_wrapper(
             inbound_ach_transfers.retrieve,
         )
-        self.list = _legacy_response.async_to_raw_response_wrapper(
+        self.list = async_to_raw_response_wrapper(
             inbound_ach_transfers.list,
         )
-        self.decline = _legacy_response.async_to_raw_response_wrapper(
+        self.create_notification_of_change = async_to_raw_response_wrapper(
+            inbound_ach_transfers.create_notification_of_change,
+        )
+        self.decline = async_to_raw_response_wrapper(
             inbound_ach_transfers.decline,
         )
-        self.notification_of_change = _legacy_response.async_to_raw_response_wrapper(
-            inbound_ach_transfers.notification_of_change,
-        )
-        self.transfer_return = _legacy_response.async_to_raw_response_wrapper(
+        self.transfer_return = async_to_raw_response_wrapper(
             inbound_ach_transfers.transfer_return,
         )
 
 
-class InboundACHTransfersWithStreamingResponse:
-    def __init__(self, inbound_ach_transfers: InboundACHTransfers) -> None:
+class InboundACHTransfersResourceWithStreamingResponse:
+    def __init__(self, inbound_ach_transfers: InboundACHTransfersResource) -> None:
         self._inbound_ach_transfers = inbound_ach_transfers
 
         self.retrieve = to_streamed_response_wrapper(
@@ -685,19 +689,19 @@ class InboundACHTransfersWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             inbound_ach_transfers.list,
         )
+        self.create_notification_of_change = to_streamed_response_wrapper(
+            inbound_ach_transfers.create_notification_of_change,
+        )
         self.decline = to_streamed_response_wrapper(
             inbound_ach_transfers.decline,
-        )
-        self.notification_of_change = to_streamed_response_wrapper(
-            inbound_ach_transfers.notification_of_change,
         )
         self.transfer_return = to_streamed_response_wrapper(
             inbound_ach_transfers.transfer_return,
         )
 
 
-class AsyncInboundACHTransfersWithStreamingResponse:
-    def __init__(self, inbound_ach_transfers: AsyncInboundACHTransfers) -> None:
+class AsyncInboundACHTransfersResourceWithStreamingResponse:
+    def __init__(self, inbound_ach_transfers: AsyncInboundACHTransfersResource) -> None:
         self._inbound_ach_transfers = inbound_ach_transfers
 
         self.retrieve = async_to_streamed_response_wrapper(
@@ -706,11 +710,11 @@ class AsyncInboundACHTransfersWithStreamingResponse:
         self.list = async_to_streamed_response_wrapper(
             inbound_ach_transfers.list,
         )
+        self.create_notification_of_change = async_to_streamed_response_wrapper(
+            inbound_ach_transfers.create_notification_of_change,
+        )
         self.decline = async_to_streamed_response_wrapper(
             inbound_ach_transfers.decline,
-        )
-        self.notification_of_change = async_to_streamed_response_wrapper(
-            inbound_ach_transfers.notification_of_change,
         )
         self.transfer_return = async_to_streamed_response_wrapper(
             inbound_ach_transfers.transfer_return,

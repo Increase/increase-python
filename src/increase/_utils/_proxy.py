@@ -59,4 +59,5 @@ class LazyProxy(Generic[T], ABC):
         return cast(T, self)
 
     @abstractmethod
-    def __load__(self) -> T: ...
+    def __load__(self) -> T:
+        ...

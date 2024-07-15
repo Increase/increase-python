@@ -303,7 +303,7 @@ class TestAsyncDigitalCardProfiles:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        digital_card_profile = response.parse()
+        digital_card_profile = await response.parse()
         assert_matches_type(DigitalCardProfile, digital_card_profile, path=["response"])
 
     @parametrize
@@ -338,7 +338,7 @@ class TestAsyncDigitalCardProfiles:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        digital_card_profile = response.parse()
+        digital_card_profile = await response.parse()
         assert_matches_type(DigitalCardProfile, digital_card_profile, path=["response"])
 
     @parametrize
@@ -384,7 +384,7 @@ class TestAsyncDigitalCardProfiles:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        digital_card_profile = response.parse()
+        digital_card_profile = await response.parse()
         assert_matches_type(AsyncPage[DigitalCardProfile], digital_card_profile, path=["response"])
 
     @parametrize
@@ -413,7 +413,7 @@ class TestAsyncDigitalCardProfiles:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        digital_card_profile = response.parse()
+        digital_card_profile = await response.parse()
         assert_matches_type(DigitalCardProfile, digital_card_profile, path=["response"])
 
     @parametrize
@@ -473,7 +473,7 @@ class TestAsyncDigitalCardProfiles:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        digital_card_profile = response.parse()
+        digital_card_profile = await response.parse()
         assert_matches_type(DigitalCardProfile, digital_card_profile, path=["response"])
 
     @parametrize

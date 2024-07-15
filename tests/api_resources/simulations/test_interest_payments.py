@@ -93,7 +93,7 @@ class TestAsyncInterestPayments:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        interest_payment = response.parse()
+        interest_payment = await response.parse()
         assert_matches_type(Transaction, interest_payment, path=["response"])
 
     @parametrize

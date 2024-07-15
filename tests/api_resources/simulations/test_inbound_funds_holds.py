@@ -74,7 +74,7 @@ class TestAsyncInboundFundsHolds:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        inbound_funds_hold = response.parse()
+        inbound_funds_hold = await response.parse()
         assert_matches_type(InboundFundsHoldReleaseResponse, inbound_funds_hold, path=["response"])
 
     @parametrize

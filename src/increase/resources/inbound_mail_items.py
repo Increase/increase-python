@@ -4,28 +4,32 @@ from __future__ import annotations
 
 import httpx
 
-from .. import _legacy_response
 from ..types import inbound_mail_item_list_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
+from .._response import (
+    to_raw_response_wrapper,
+    to_streamed_response_wrapper,
+    async_to_raw_response_wrapper,
+    async_to_streamed_response_wrapper,
+)
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
 from ..types.inbound_mail_item import InboundMailItem
 
-__all__ = ["InboundMailItems", "AsyncInboundMailItems"]
+__all__ = ["InboundMailItemsResource", "AsyncInboundMailItemsResource"]
 
 
-class InboundMailItems(SyncAPIResource):
+class InboundMailItemsResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> InboundMailItemsWithRawResponse:
-        return InboundMailItemsWithRawResponse(self)
+    def with_raw_response(self) -> InboundMailItemsResourceWithRawResponse:
+        return InboundMailItemsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> InboundMailItemsWithStreamingResponse:
-        return InboundMailItemsWithStreamingResponse(self)
+    def with_streaming_response(self) -> InboundMailItemsResourceWithStreamingResponse:
+        return InboundMailItemsResourceWithStreamingResponse(self)
 
     def retrieve(
         self,
@@ -119,14 +123,14 @@ class InboundMailItems(SyncAPIResource):
         )
 
 
-class AsyncInboundMailItems(AsyncAPIResource):
+class AsyncInboundMailItemsResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncInboundMailItemsWithRawResponse:
-        return AsyncInboundMailItemsWithRawResponse(self)
+    def with_raw_response(self) -> AsyncInboundMailItemsResourceWithRawResponse:
+        return AsyncInboundMailItemsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncInboundMailItemsWithStreamingResponse:
-        return AsyncInboundMailItemsWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncInboundMailItemsResourceWithStreamingResponse:
+        return AsyncInboundMailItemsResourceWithStreamingResponse(self)
 
     async def retrieve(
         self,
@@ -220,32 +224,32 @@ class AsyncInboundMailItems(AsyncAPIResource):
         )
 
 
-class InboundMailItemsWithRawResponse:
-    def __init__(self, inbound_mail_items: InboundMailItems) -> None:
+class InboundMailItemsResourceWithRawResponse:
+    def __init__(self, inbound_mail_items: InboundMailItemsResource) -> None:
         self._inbound_mail_items = inbound_mail_items
 
-        self.retrieve = _legacy_response.to_raw_response_wrapper(
+        self.retrieve = to_raw_response_wrapper(
             inbound_mail_items.retrieve,
         )
-        self.list = _legacy_response.to_raw_response_wrapper(
+        self.list = to_raw_response_wrapper(
             inbound_mail_items.list,
         )
 
 
-class AsyncInboundMailItemsWithRawResponse:
-    def __init__(self, inbound_mail_items: AsyncInboundMailItems) -> None:
+class AsyncInboundMailItemsResourceWithRawResponse:
+    def __init__(self, inbound_mail_items: AsyncInboundMailItemsResource) -> None:
         self._inbound_mail_items = inbound_mail_items
 
-        self.retrieve = _legacy_response.async_to_raw_response_wrapper(
+        self.retrieve = async_to_raw_response_wrapper(
             inbound_mail_items.retrieve,
         )
-        self.list = _legacy_response.async_to_raw_response_wrapper(
+        self.list = async_to_raw_response_wrapper(
             inbound_mail_items.list,
         )
 
 
-class InboundMailItemsWithStreamingResponse:
-    def __init__(self, inbound_mail_items: InboundMailItems) -> None:
+class InboundMailItemsResourceWithStreamingResponse:
+    def __init__(self, inbound_mail_items: InboundMailItemsResource) -> None:
         self._inbound_mail_items = inbound_mail_items
 
         self.retrieve = to_streamed_response_wrapper(
@@ -256,8 +260,8 @@ class InboundMailItemsWithStreamingResponse:
         )
 
 
-class AsyncInboundMailItemsWithStreamingResponse:
-    def __init__(self, inbound_mail_items: AsyncInboundMailItems) -> None:
+class AsyncInboundMailItemsResourceWithStreamingResponse:
+    def __init__(self, inbound_mail_items: AsyncInboundMailItemsResource) -> None:
         self._inbound_mail_items = inbound_mail_items
 
         self.retrieve = async_to_streamed_response_wrapper(

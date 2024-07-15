@@ -116,7 +116,7 @@ class TestAsyncInboundMailItems:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        inbound_mail_item = response.parse()
+        inbound_mail_item = await response.parse()
         assert_matches_type(InboundMailItem, inbound_mail_item, path=["response"])
 
     @parametrize
@@ -165,7 +165,7 @@ class TestAsyncInboundMailItems:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        inbound_mail_item = response.parse()
+        inbound_mail_item = await response.parse()
         assert_matches_type(AsyncPage[InboundMailItem], inbound_mail_item, path=["response"])
 
     @parametrize

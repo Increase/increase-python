@@ -211,7 +211,7 @@ class TestAsyncLockboxes:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        lockbox = response.parse()
+        lockbox = await response.parse()
         assert_matches_type(Lockbox, lockbox, path=["response"])
 
     @parametrize
@@ -242,7 +242,7 @@ class TestAsyncLockboxes:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        lockbox = response.parse()
+        lockbox = await response.parse()
         assert_matches_type(Lockbox, lockbox, path=["response"])
 
     @parametrize
@@ -289,7 +289,7 @@ class TestAsyncLockboxes:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        lockbox = response.parse()
+        lockbox = await response.parse()
         assert_matches_type(Lockbox, lockbox, path=["response"])
 
     @parametrize
@@ -339,7 +339,7 @@ class TestAsyncLockboxes:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        lockbox = response.parse()
+        lockbox = await response.parse()
         assert_matches_type(AsyncPage[Lockbox], lockbox, path=["response"])
 
     @parametrize

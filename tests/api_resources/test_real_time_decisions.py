@@ -128,7 +128,7 @@ class TestAsyncRealTimeDecisions:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        real_time_decision = response.parse()
+        real_time_decision = await response.parse()
         assert_matches_type(RealTimeDecision, real_time_decision, path=["response"])
 
     @parametrize
@@ -182,7 +182,7 @@ class TestAsyncRealTimeDecisions:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        real_time_decision = response.parse()
+        real_time_decision = await response.parse()
         assert_matches_type(RealTimeDecision, real_time_decision, path=["response"])
 
     @parametrize

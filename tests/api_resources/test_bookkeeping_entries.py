@@ -108,7 +108,7 @@ class TestAsyncBookkeepingEntries:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        bookkeeping_entry = response.parse()
+        bookkeeping_entry = await response.parse()
         assert_matches_type(BookkeepingEntry, bookkeeping_entry, path=["response"])
 
     @parametrize
@@ -150,7 +150,7 @@ class TestAsyncBookkeepingEntries:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        bookkeeping_entry = response.parse()
+        bookkeeping_entry = await response.parse()
         assert_matches_type(AsyncPage[BookkeepingEntry], bookkeeping_entry, path=["response"])
 
     @parametrize

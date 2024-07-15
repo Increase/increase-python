@@ -4,28 +4,32 @@ from __future__ import annotations
 
 import httpx
 
-from .. import _legacy_response
 from ..types import card_payment_list_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
+from .._response import (
+    to_raw_response_wrapper,
+    to_streamed_response_wrapper,
+    async_to_raw_response_wrapper,
+    async_to_streamed_response_wrapper,
+)
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
 from ..types.card_payment import CardPayment
 
-__all__ = ["CardPayments", "AsyncCardPayments"]
+__all__ = ["CardPaymentsResource", "AsyncCardPaymentsResource"]
 
 
-class CardPayments(SyncAPIResource):
+class CardPaymentsResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> CardPaymentsWithRawResponse:
-        return CardPaymentsWithRawResponse(self)
+    def with_raw_response(self) -> CardPaymentsResourceWithRawResponse:
+        return CardPaymentsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> CardPaymentsWithStreamingResponse:
-        return CardPaymentsWithStreamingResponse(self)
+    def with_streaming_response(self) -> CardPaymentsResourceWithStreamingResponse:
+        return CardPaymentsResourceWithStreamingResponse(self)
 
     def retrieve(
         self,
@@ -121,14 +125,14 @@ class CardPayments(SyncAPIResource):
         )
 
 
-class AsyncCardPayments(AsyncAPIResource):
+class AsyncCardPaymentsResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncCardPaymentsWithRawResponse:
-        return AsyncCardPaymentsWithRawResponse(self)
+    def with_raw_response(self) -> AsyncCardPaymentsResourceWithRawResponse:
+        return AsyncCardPaymentsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncCardPaymentsWithStreamingResponse:
-        return AsyncCardPaymentsWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncCardPaymentsResourceWithStreamingResponse:
+        return AsyncCardPaymentsResourceWithStreamingResponse(self)
 
     async def retrieve(
         self,
@@ -224,32 +228,32 @@ class AsyncCardPayments(AsyncAPIResource):
         )
 
 
-class CardPaymentsWithRawResponse:
-    def __init__(self, card_payments: CardPayments) -> None:
+class CardPaymentsResourceWithRawResponse:
+    def __init__(self, card_payments: CardPaymentsResource) -> None:
         self._card_payments = card_payments
 
-        self.retrieve = _legacy_response.to_raw_response_wrapper(
+        self.retrieve = to_raw_response_wrapper(
             card_payments.retrieve,
         )
-        self.list = _legacy_response.to_raw_response_wrapper(
+        self.list = to_raw_response_wrapper(
             card_payments.list,
         )
 
 
-class AsyncCardPaymentsWithRawResponse:
-    def __init__(self, card_payments: AsyncCardPayments) -> None:
+class AsyncCardPaymentsResourceWithRawResponse:
+    def __init__(self, card_payments: AsyncCardPaymentsResource) -> None:
         self._card_payments = card_payments
 
-        self.retrieve = _legacy_response.async_to_raw_response_wrapper(
+        self.retrieve = async_to_raw_response_wrapper(
             card_payments.retrieve,
         )
-        self.list = _legacy_response.async_to_raw_response_wrapper(
+        self.list = async_to_raw_response_wrapper(
             card_payments.list,
         )
 
 
-class CardPaymentsWithStreamingResponse:
-    def __init__(self, card_payments: CardPayments) -> None:
+class CardPaymentsResourceWithStreamingResponse:
+    def __init__(self, card_payments: CardPaymentsResource) -> None:
         self._card_payments = card_payments
 
         self.retrieve = to_streamed_response_wrapper(
@@ -260,8 +264,8 @@ class CardPaymentsWithStreamingResponse:
         )
 
 
-class AsyncCardPaymentsWithStreamingResponse:
-    def __init__(self, card_payments: AsyncCardPayments) -> None:
+class AsyncCardPaymentsResourceWithStreamingResponse:
+    def __init__(self, card_payments: AsyncCardPaymentsResource) -> None:
         self._card_payments = card_payments
 
         self.retrieve = async_to_streamed_response_wrapper(

@@ -4,27 +4,31 @@ from __future__ import annotations
 
 import httpx
 
-from .. import _legacy_response
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
+from .._response import (
+    to_raw_response_wrapper,
+    to_streamed_response_wrapper,
+    async_to_raw_response_wrapper,
+    async_to_streamed_response_wrapper,
+)
 from ..types.group import Group
 from .._base_client import make_request_options
 
-__all__ = ["Groups", "AsyncGroups"]
+__all__ = ["GroupsResource", "AsyncGroupsResource"]
 
 
-class Groups(SyncAPIResource):
+class GroupsResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> GroupsWithRawResponse:
-        return GroupsWithRawResponse(self)
+    def with_raw_response(self) -> GroupsResourceWithRawResponse:
+        return GroupsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> GroupsWithStreamingResponse:
-        return GroupsWithStreamingResponse(self)
+    def with_streaming_response(self) -> GroupsResourceWithStreamingResponse:
+        return GroupsResourceWithStreamingResponse(self)
 
-    def retrieve_details(
+    def retrieve(
         self,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -44,16 +48,16 @@ class Groups(SyncAPIResource):
         )
 
 
-class AsyncGroups(AsyncAPIResource):
+class AsyncGroupsResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncGroupsWithRawResponse:
-        return AsyncGroupsWithRawResponse(self)
+    def with_raw_response(self) -> AsyncGroupsResourceWithRawResponse:
+        return AsyncGroupsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncGroupsWithStreamingResponse:
-        return AsyncGroupsWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncGroupsResourceWithStreamingResponse:
+        return AsyncGroupsResourceWithStreamingResponse(self)
 
-    async def retrieve_details(
+    async def retrieve(
         self,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -73,37 +77,37 @@ class AsyncGroups(AsyncAPIResource):
         )
 
 
-class GroupsWithRawResponse:
-    def __init__(self, groups: Groups) -> None:
+class GroupsResourceWithRawResponse:
+    def __init__(self, groups: GroupsResource) -> None:
         self._groups = groups
 
-        self.retrieve_details = _legacy_response.to_raw_response_wrapper(
-            groups.retrieve_details,
+        self.retrieve = to_raw_response_wrapper(
+            groups.retrieve,
         )
 
 
-class AsyncGroupsWithRawResponse:
-    def __init__(self, groups: AsyncGroups) -> None:
+class AsyncGroupsResourceWithRawResponse:
+    def __init__(self, groups: AsyncGroupsResource) -> None:
         self._groups = groups
 
-        self.retrieve_details = _legacy_response.async_to_raw_response_wrapper(
-            groups.retrieve_details,
+        self.retrieve = async_to_raw_response_wrapper(
+            groups.retrieve,
         )
 
 
-class GroupsWithStreamingResponse:
-    def __init__(self, groups: Groups) -> None:
+class GroupsResourceWithStreamingResponse:
+    def __init__(self, groups: GroupsResource) -> None:
         self._groups = groups
 
-        self.retrieve_details = to_streamed_response_wrapper(
-            groups.retrieve_details,
+        self.retrieve = to_streamed_response_wrapper(
+            groups.retrieve,
         )
 
 
-class AsyncGroupsWithStreamingResponse:
-    def __init__(self, groups: AsyncGroups) -> None:
+class AsyncGroupsResourceWithStreamingResponse:
+    def __init__(self, groups: AsyncGroupsResource) -> None:
         self._groups = groups
 
-        self.retrieve_details = async_to_streamed_response_wrapper(
-            groups.retrieve_details,
+        self.retrieve = async_to_streamed_response_wrapper(
+            groups.retrieve,
         )

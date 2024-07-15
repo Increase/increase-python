@@ -8,7 +8,6 @@ from typing_extensions import Literal
 
 import httpx
 
-from .. import _legacy_response
 from ..types import ach_prenotification_list_params, ach_prenotification_create_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import (
@@ -17,22 +16,27 @@ from .._utils import (
 )
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
+from .._response import (
+    to_raw_response_wrapper,
+    to_streamed_response_wrapper,
+    async_to_raw_response_wrapper,
+    async_to_streamed_response_wrapper,
+)
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
 from ..types.ach_prenotification import ACHPrenotification
 
-__all__ = ["ACHPrenotifications", "AsyncACHPrenotifications"]
+__all__ = ["ACHPrenotificationsResource", "AsyncACHPrenotificationsResource"]
 
 
-class ACHPrenotifications(SyncAPIResource):
+class ACHPrenotificationsResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> ACHPrenotificationsWithRawResponse:
-        return ACHPrenotificationsWithRawResponse(self)
+    def with_raw_response(self) -> ACHPrenotificationsResourceWithRawResponse:
+        return ACHPrenotificationsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> ACHPrenotificationsWithStreamingResponse:
-        return ACHPrenotificationsWithStreamingResponse(self)
+    def with_streaming_response(self) -> ACHPrenotificationsResourceWithStreamingResponse:
+        return ACHPrenotificationsResourceWithStreamingResponse(self)
 
     def create(
         self,
@@ -240,14 +244,14 @@ class ACHPrenotifications(SyncAPIResource):
         )
 
 
-class AsyncACHPrenotifications(AsyncAPIResource):
+class AsyncACHPrenotificationsResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncACHPrenotificationsWithRawResponse:
-        return AsyncACHPrenotificationsWithRawResponse(self)
+    def with_raw_response(self) -> AsyncACHPrenotificationsResourceWithRawResponse:
+        return AsyncACHPrenotificationsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncACHPrenotificationsWithStreamingResponse:
-        return AsyncACHPrenotificationsWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncACHPrenotificationsResourceWithStreamingResponse:
+        return AsyncACHPrenotificationsResourceWithStreamingResponse(self)
 
     async def create(
         self,
@@ -455,38 +459,38 @@ class AsyncACHPrenotifications(AsyncAPIResource):
         )
 
 
-class ACHPrenotificationsWithRawResponse:
-    def __init__(self, ach_prenotifications: ACHPrenotifications) -> None:
+class ACHPrenotificationsResourceWithRawResponse:
+    def __init__(self, ach_prenotifications: ACHPrenotificationsResource) -> None:
         self._ach_prenotifications = ach_prenotifications
 
-        self.create = _legacy_response.to_raw_response_wrapper(
+        self.create = to_raw_response_wrapper(
             ach_prenotifications.create,
         )
-        self.retrieve = _legacy_response.to_raw_response_wrapper(
+        self.retrieve = to_raw_response_wrapper(
             ach_prenotifications.retrieve,
         )
-        self.list = _legacy_response.to_raw_response_wrapper(
+        self.list = to_raw_response_wrapper(
             ach_prenotifications.list,
         )
 
 
-class AsyncACHPrenotificationsWithRawResponse:
-    def __init__(self, ach_prenotifications: AsyncACHPrenotifications) -> None:
+class AsyncACHPrenotificationsResourceWithRawResponse:
+    def __init__(self, ach_prenotifications: AsyncACHPrenotificationsResource) -> None:
         self._ach_prenotifications = ach_prenotifications
 
-        self.create = _legacy_response.async_to_raw_response_wrapper(
+        self.create = async_to_raw_response_wrapper(
             ach_prenotifications.create,
         )
-        self.retrieve = _legacy_response.async_to_raw_response_wrapper(
+        self.retrieve = async_to_raw_response_wrapper(
             ach_prenotifications.retrieve,
         )
-        self.list = _legacy_response.async_to_raw_response_wrapper(
+        self.list = async_to_raw_response_wrapper(
             ach_prenotifications.list,
         )
 
 
-class ACHPrenotificationsWithStreamingResponse:
-    def __init__(self, ach_prenotifications: ACHPrenotifications) -> None:
+class ACHPrenotificationsResourceWithStreamingResponse:
+    def __init__(self, ach_prenotifications: ACHPrenotificationsResource) -> None:
         self._ach_prenotifications = ach_prenotifications
 
         self.create = to_streamed_response_wrapper(
@@ -500,8 +504,8 @@ class ACHPrenotificationsWithStreamingResponse:
         )
 
 
-class AsyncACHPrenotificationsWithStreamingResponse:
-    def __init__(self, ach_prenotifications: AsyncACHPrenotifications) -> None:
+class AsyncACHPrenotificationsResourceWithStreamingResponse:
+    def __init__(self, ach_prenotifications: AsyncACHPrenotificationsResource) -> None:
         self._ach_prenotifications = ach_prenotifications
 
         self.create = async_to_streamed_response_wrapper(

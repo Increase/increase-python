@@ -4,25 +4,29 @@ from __future__ import annotations
 
 import httpx
 
-from ... import _legacy_response
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import to_streamed_response_wrapper, async_to_streamed_response_wrapper
+from ..._response import (
+    to_raw_response_wrapper,
+    to_streamed_response_wrapper,
+    async_to_raw_response_wrapper,
+    async_to_streamed_response_wrapper,
+)
 from ..._base_client import make_request_options
 from ...types.simulations.inbound_funds_hold_release_response import InboundFundsHoldReleaseResponse
 
-__all__ = ["InboundFundsHolds", "AsyncInboundFundsHolds"]
+__all__ = ["InboundFundsHoldsResource", "AsyncInboundFundsHoldsResource"]
 
 
-class InboundFundsHolds(SyncAPIResource):
+class InboundFundsHoldsResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> InboundFundsHoldsWithRawResponse:
-        return InboundFundsHoldsWithRawResponse(self)
+    def with_raw_response(self) -> InboundFundsHoldsResourceWithRawResponse:
+        return InboundFundsHoldsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> InboundFundsHoldsWithStreamingResponse:
-        return InboundFundsHoldsWithStreamingResponse(self)
+    def with_streaming_response(self) -> InboundFundsHoldsResourceWithStreamingResponse:
+        return InboundFundsHoldsResourceWithStreamingResponse(self)
 
     def release(
         self,
@@ -70,14 +74,14 @@ class InboundFundsHolds(SyncAPIResource):
         )
 
 
-class AsyncInboundFundsHolds(AsyncAPIResource):
+class AsyncInboundFundsHoldsResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncInboundFundsHoldsWithRawResponse:
-        return AsyncInboundFundsHoldsWithRawResponse(self)
+    def with_raw_response(self) -> AsyncInboundFundsHoldsResourceWithRawResponse:
+        return AsyncInboundFundsHoldsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncInboundFundsHoldsWithStreamingResponse:
-        return AsyncInboundFundsHoldsWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncInboundFundsHoldsResourceWithStreamingResponse:
+        return AsyncInboundFundsHoldsResourceWithStreamingResponse(self)
 
     async def release(
         self,
@@ -125,26 +129,26 @@ class AsyncInboundFundsHolds(AsyncAPIResource):
         )
 
 
-class InboundFundsHoldsWithRawResponse:
-    def __init__(self, inbound_funds_holds: InboundFundsHolds) -> None:
+class InboundFundsHoldsResourceWithRawResponse:
+    def __init__(self, inbound_funds_holds: InboundFundsHoldsResource) -> None:
         self._inbound_funds_holds = inbound_funds_holds
 
-        self.release = _legacy_response.to_raw_response_wrapper(
+        self.release = to_raw_response_wrapper(
             inbound_funds_holds.release,
         )
 
 
-class AsyncInboundFundsHoldsWithRawResponse:
-    def __init__(self, inbound_funds_holds: AsyncInboundFundsHolds) -> None:
+class AsyncInboundFundsHoldsResourceWithRawResponse:
+    def __init__(self, inbound_funds_holds: AsyncInboundFundsHoldsResource) -> None:
         self._inbound_funds_holds = inbound_funds_holds
 
-        self.release = _legacy_response.async_to_raw_response_wrapper(
+        self.release = async_to_raw_response_wrapper(
             inbound_funds_holds.release,
         )
 
 
-class InboundFundsHoldsWithStreamingResponse:
-    def __init__(self, inbound_funds_holds: InboundFundsHolds) -> None:
+class InboundFundsHoldsResourceWithStreamingResponse:
+    def __init__(self, inbound_funds_holds: InboundFundsHoldsResource) -> None:
         self._inbound_funds_holds = inbound_funds_holds
 
         self.release = to_streamed_response_wrapper(
@@ -152,8 +156,8 @@ class InboundFundsHoldsWithStreamingResponse:
         )
 
 
-class AsyncInboundFundsHoldsWithStreamingResponse:
-    def __init__(self, inbound_funds_holds: AsyncInboundFundsHolds) -> None:
+class AsyncInboundFundsHoldsResourceWithStreamingResponse:
+    def __init__(self, inbound_funds_holds: AsyncInboundFundsHoldsResource) -> None:
         self._inbound_funds_holds = inbound_funds_holds
 
         self.release = async_to_streamed_response_wrapper(

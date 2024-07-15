@@ -197,7 +197,7 @@ class TestAsyncACHPrenotifications:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        ach_prenotification = response.parse()
+        ach_prenotification = await response.parse()
         assert_matches_type(ACHPrenotification, ach_prenotification, path=["response"])
 
     @parametrize
@@ -230,7 +230,7 @@ class TestAsyncACHPrenotifications:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        ach_prenotification = response.parse()
+        ach_prenotification = await response.parse()
         assert_matches_type(ACHPrenotification, ach_prenotification, path=["response"])
 
     @parametrize
@@ -281,7 +281,7 @@ class TestAsyncACHPrenotifications:
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        ach_prenotification = response.parse()
+        ach_prenotification = await response.parse()
         assert_matches_type(AsyncPage[ACHPrenotification], ach_prenotification, path=["response"])
 
     @parametrize
