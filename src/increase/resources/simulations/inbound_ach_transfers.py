@@ -4,7 +4,6 @@ from __future__ import annotations
 
 from typing import Union
 from datetime import datetime
-from typing_extensions import Literal
 
 import httpx
 
@@ -50,25 +49,6 @@ class InboundACHTransfersResource(SyncAPIResource):
         receiver_id_number: str | NotGiven = NOT_GIVEN,
         receiver_name: str | NotGiven = NOT_GIVEN,
         resolve_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        standard_entry_class_code: Literal[
-            "corporate_credit_or_debit",
-            "corporate_trade_exchange",
-            "prearranged_payments_and_deposit",
-            "internet_initiated",
-            "point_of_sale",
-            "telephone_initiated",
-            "customer_initiated",
-            "accounts_receivable",
-            "machine_transfer",
-            "shared_network_transaction",
-            "represented_check",
-            "back_office_conversion",
-            "point_of_purchase",
-            "check_truncation",
-            "destroyed_check",
-            "international_ach_transaction",
-        ]
-        | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -114,25 +94,6 @@ class InboundACHTransfersResource(SyncAPIResource):
           resolve_at: The time at which the transfer should be resolved. If not provided will resolve
               immediately.
 
-          standard_entry_class_code: The standard entry class code for the transfer.
-
-              - `corporate_credit_or_debit` - Corporate Credit and Debit (CCD).
-              - `corporate_trade_exchange` - Corporate Trade Exchange (CTX).
-              - `prearranged_payments_and_deposit` - Prearranged Payments and Deposits (PPD).
-              - `internet_initiated` - Internet Initiated (WEB).
-              - `point_of_sale` - Point of Sale (POS).
-              - `telephone_initiated` - Telephone Initiated (TEL).
-              - `customer_initiated` - Customer Initiated (CIE).
-              - `accounts_receivable` - Accounts Receivable (ARC).
-              - `machine_transfer` - Machine Transfer (MTE).
-              - `shared_network_transaction` - Shared Network Transaction (SHR).
-              - `represented_check` - Represented Check (RCK).
-              - `back_office_conversion` - Back Office Conversion (BOC).
-              - `point_of_purchase` - Point of Purchase (POP).
-              - `check_truncation` - Check Truncation (TRC).
-              - `destroyed_check` - Destroyed Check (XCK).
-              - `international_ach_transaction` - International ACH Transaction (IAT).
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -157,7 +118,6 @@ class InboundACHTransfersResource(SyncAPIResource):
                     "receiver_id_number": receiver_id_number,
                     "receiver_name": receiver_name,
                     "resolve_at": resolve_at,
-                    "standard_entry_class_code": standard_entry_class_code,
                 },
                 inbound_ach_transfer_create_params.InboundACHTransferCreateParams,
             ),
@@ -194,25 +154,6 @@ class AsyncInboundACHTransfersResource(AsyncAPIResource):
         receiver_id_number: str | NotGiven = NOT_GIVEN,
         receiver_name: str | NotGiven = NOT_GIVEN,
         resolve_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        standard_entry_class_code: Literal[
-            "corporate_credit_or_debit",
-            "corporate_trade_exchange",
-            "prearranged_payments_and_deposit",
-            "internet_initiated",
-            "point_of_sale",
-            "telephone_initiated",
-            "customer_initiated",
-            "accounts_receivable",
-            "machine_transfer",
-            "shared_network_transaction",
-            "represented_check",
-            "back_office_conversion",
-            "point_of_purchase",
-            "check_truncation",
-            "destroyed_check",
-            "international_ach_transaction",
-        ]
-        | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -258,25 +199,6 @@ class AsyncInboundACHTransfersResource(AsyncAPIResource):
           resolve_at: The time at which the transfer should be resolved. If not provided will resolve
               immediately.
 
-          standard_entry_class_code: The standard entry class code for the transfer.
-
-              - `corporate_credit_or_debit` - Corporate Credit and Debit (CCD).
-              - `corporate_trade_exchange` - Corporate Trade Exchange (CTX).
-              - `prearranged_payments_and_deposit` - Prearranged Payments and Deposits (PPD).
-              - `internet_initiated` - Internet Initiated (WEB).
-              - `point_of_sale` - Point of Sale (POS).
-              - `telephone_initiated` - Telephone Initiated (TEL).
-              - `customer_initiated` - Customer Initiated (CIE).
-              - `accounts_receivable` - Accounts Receivable (ARC).
-              - `machine_transfer` - Machine Transfer (MTE).
-              - `shared_network_transaction` - Shared Network Transaction (SHR).
-              - `represented_check` - Represented Check (RCK).
-              - `back_office_conversion` - Back Office Conversion (BOC).
-              - `point_of_purchase` - Point of Purchase (POP).
-              - `check_truncation` - Check Truncation (TRC).
-              - `destroyed_check` - Destroyed Check (XCK).
-              - `international_ach_transaction` - International ACH Transaction (IAT).
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -301,7 +223,6 @@ class AsyncInboundACHTransfersResource(AsyncAPIResource):
                     "receiver_id_number": receiver_id_number,
                     "receiver_name": receiver_name,
                     "resolve_at": resolve_at,
-                    "standard_entry_class_code": standard_entry_class_code,
                 },
                 inbound_ach_transfer_create_params.InboundACHTransferCreateParams,
             ),

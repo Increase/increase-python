@@ -37,11 +37,17 @@ from .real_time_payments_transfer_complete_params import (
 from .digital_wallet_token_request_create_response import (
     DigitalWalletTokenRequestCreateResponse as DigitalWalletTokenRequestCreateResponse,
 )
+from .inbound_international_ach_transfer_create_params import (
+    InboundInternationalACHTransferCreateParams as InboundInternationalACHTransferCreateParams,
+)
 from .ach_transfer_create_notification_of_change_params import (
     ACHTransferCreateNotificationOfChangeParams as ACHTransferCreateNotificationOfChangeParams,
 )
 from .inbound_real_time_payments_transfer_create_params import (
     InboundRealTimePaymentsTransferCreateParams as InboundRealTimePaymentsTransferCreateParams,
+)
+from .inbound_international_ach_transfer_create_response import (
+    InboundInternationalACHTransferCreateResponse as InboundInternationalACHTransferCreateResponse,
 )
 from .inbound_real_time_payments_transfer_create_response import (
     InboundRealTimePaymentsTransferCreateResponse as InboundRealTimePaymentsTransferCreateResponse,
