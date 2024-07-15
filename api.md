@@ -333,7 +333,6 @@ Methods:
 - <code title="get /inbound_check_deposits/{inbound_check_deposit_id}">client.inbound_check_deposits.<a href="./src/increase/resources/inbound_check_deposits.py">retrieve</a>(inbound_check_deposit_id) -> <a href="./src/increase/types/inbound_check_deposit.py">InboundCheckDeposit</a></code>
 - <code title="get /inbound_check_deposits">client.inbound_check_deposits.<a href="./src/increase/resources/inbound_check_deposits.py">list</a>(\*\*<a href="src/increase/types/inbound_check_deposit_list_params.py">params</a>) -> <a href="./src/increase/types/inbound_check_deposit.py">SyncPage[InboundCheckDeposit]</a></code>
 - <code title="post /inbound_check_deposits/{inbound_check_deposit_id}/decline">client.inbound_check_deposits.<a href="./src/increase/resources/inbound_check_deposits.py">decline</a>(inbound_check_deposit_id) -> <a href="./src/increase/types/inbound_check_deposit.py">InboundCheckDeposit</a></code>
-- <code title="post /inbound_check_deposits/{inbound_check_deposit_id}/return">client.inbound*check_deposits.<a href="./src/increase/resources/inbound_check_deposits.py">return*</a>(inbound_check_deposit_id, \*\*<a href="src/increase/types/inbound_check_deposit_return_params.py">params</a>) -> <a href="./src/increase/types/inbound_check_deposit.py">InboundCheckDeposit</a></code>
 
 # RealTimePaymentsTransfers
 
@@ -813,6 +812,18 @@ Methods:
 Methods:
 
 - <code title="post /simulations/real_time_payments_transfers/{real_time_payments_transfer_id}/complete">client.simulations.real_time_payments_transfers.<a href="./src/increase/resources/simulations/real_time_payments_transfers.py">complete</a>(real_time_payments_transfer_id, \*\*<a href="src/increase/types/simulations/real_time_payments_transfer_complete_params.py">params</a>) -> <a href="./src/increase/types/real_time_payments_transfer.py">RealTimePaymentsTransfer</a></code>
+
+## InboundInternationalACHTransfers
+
+Types:
+
+```python
+from increase.types.simulations import InboundInternationalACHTransferCreateResponse
+```
+
+Methods:
+
+- <code title="post /simulations/inbound_international_ach_transfers">client.simulations.inbound_international_ach_transfers.<a href="./src/increase/resources/simulations/inbound_international_ach_transfers.py">create</a>(\*\*<a href="src/increase/types/simulations/inbound_international_ach_transfer_create_params.py">params</a>) -> <a href="./src/increase/types/simulations/inbound_international_ach_transfer_create_response.py">InboundInternationalACHTransferCreateResponse</a></code>
 
 ## CardAuthorizations
 
