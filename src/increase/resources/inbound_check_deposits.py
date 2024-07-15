@@ -2,16 +2,11 @@
 
 from __future__ import annotations
 
-from typing_extensions import Literal
-
 import httpx
 
-from ..types import inbound_check_deposit_list_params, inbound_check_deposit_return_params
+from ..types import inbound_check_deposit_list_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from .._utils import (
-    maybe_transform,
-    async_maybe_transform,
-)
+from .._utils import maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -176,60 +171,6 @@ class InboundCheckDepositsResource(SyncAPIResource):
             cast_to=InboundCheckDeposit,
         )
 
-    def return_(
-        self,
-        inbound_check_deposit_id: str,
-        *,
-        reason: Literal["altered_or_fictitious", "not_authorized", "duplicate_presentment"],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-        idempotency_key: str | None = None,
-    ) -> InboundCheckDeposit:
-        """
-        Return an Inbound Check Deposit
-
-        Args:
-          inbound_check_deposit_id: The identifier of the Inbound Check Deposit to return.
-
-          reason: The reason to return the Inbound Check Deposit.
-
-              - `altered_or_fictitious` - The check was altered or fictitious.
-              - `not_authorized` - The check was not authorized.
-              - `duplicate_presentment` - The check was a duplicate presentment.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-
-          idempotency_key: Specify a custom idempotency key for this request
-        """
-        if not inbound_check_deposit_id:
-            raise ValueError(
-                f"Expected a non-empty value for `inbound_check_deposit_id` but received {inbound_check_deposit_id!r}"
-            )
-        return self._post(
-            f"/inbound_check_deposits/{inbound_check_deposit_id}/return",
-            body=maybe_transform(
-                {"reason": reason}, inbound_check_deposit_return_params.InboundCheckDepositReturnParams
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                idempotency_key=idempotency_key,
-            ),
-            cast_to=InboundCheckDeposit,
-        )
-
 
 class AsyncInboundCheckDepositsResource(AsyncAPIResource):
     @cached_property
@@ -380,60 +321,6 @@ class AsyncInboundCheckDepositsResource(AsyncAPIResource):
             cast_to=InboundCheckDeposit,
         )
 
-    async def return_(
-        self,
-        inbound_check_deposit_id: str,
-        *,
-        reason: Literal["altered_or_fictitious", "not_authorized", "duplicate_presentment"],
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-        idempotency_key: str | None = None,
-    ) -> InboundCheckDeposit:
-        """
-        Return an Inbound Check Deposit
-
-        Args:
-          inbound_check_deposit_id: The identifier of the Inbound Check Deposit to return.
-
-          reason: The reason to return the Inbound Check Deposit.
-
-              - `altered_or_fictitious` - The check was altered or fictitious.
-              - `not_authorized` - The check was not authorized.
-              - `duplicate_presentment` - The check was a duplicate presentment.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-
-          idempotency_key: Specify a custom idempotency key for this request
-        """
-        if not inbound_check_deposit_id:
-            raise ValueError(
-                f"Expected a non-empty value for `inbound_check_deposit_id` but received {inbound_check_deposit_id!r}"
-            )
-        return await self._post(
-            f"/inbound_check_deposits/{inbound_check_deposit_id}/return",
-            body=await async_maybe_transform(
-                {"reason": reason}, inbound_check_deposit_return_params.InboundCheckDepositReturnParams
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                idempotency_key=idempotency_key,
-            ),
-            cast_to=InboundCheckDeposit,
-        )
-
 
 class InboundCheckDepositsResourceWithRawResponse:
     def __init__(self, inbound_check_deposits: InboundCheckDepositsResource) -> None:
@@ -447,9 +334,6 @@ class InboundCheckDepositsResourceWithRawResponse:
         )
         self.decline = to_raw_response_wrapper(
             inbound_check_deposits.decline,
-        )
-        self.return_ = to_raw_response_wrapper(
-            inbound_check_deposits.return_,
         )
 
 
@@ -466,9 +350,6 @@ class AsyncInboundCheckDepositsResourceWithRawResponse:
         self.decline = async_to_raw_response_wrapper(
             inbound_check_deposits.decline,
         )
-        self.return_ = async_to_raw_response_wrapper(
-            inbound_check_deposits.return_,
-        )
 
 
 class InboundCheckDepositsResourceWithStreamingResponse:
@@ -484,9 +365,6 @@ class InboundCheckDepositsResourceWithStreamingResponse:
         self.decline = to_streamed_response_wrapper(
             inbound_check_deposits.decline,
         )
-        self.return_ = to_streamed_response_wrapper(
-            inbound_check_deposits.return_,
-        )
 
 
 class AsyncInboundCheckDepositsResourceWithStreamingResponse:
@@ -501,7 +379,4 @@ class AsyncInboundCheckDepositsResourceWithStreamingResponse:
         )
         self.decline = async_to_streamed_response_wrapper(
             inbound_check_deposits.decline,
-        )
-        self.return_ = async_to_streamed_response_wrapper(
-            inbound_check_deposits.return_,
         )
