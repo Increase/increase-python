@@ -204,14 +204,6 @@ from .inbound_wire_drawdown_requests import (
     InboundWireDrawdownRequestsResourceWithStreamingResponse,
     AsyncInboundWireDrawdownRequestsResourceWithStreamingResponse,
 )
-from .inbound_international_ach_transfers import (
-    InboundInternationalACHTransfersResource,
-    AsyncInboundInternationalACHTransfersResource,
-    InboundInternationalACHTransfersResourceWithRawResponse,
-    AsyncInboundInternationalACHTransfersResourceWithRawResponse,
-    InboundInternationalACHTransfersResourceWithStreamingResponse,
-    AsyncInboundInternationalACHTransfersResourceWithStreamingResponse,
-)
 from .inbound_real_time_payments_transfers import (
     InboundRealTimePaymentsTransfersResource,
     AsyncInboundRealTimePaymentsTransfersResource,
@@ -272,10 +264,6 @@ class SimulationsResource(SyncAPIResource):
     @cached_property
     def real_time_payments_transfers(self) -> RealTimePaymentsTransfersResource:
         return RealTimePaymentsTransfersResource(self._client)
-
-    @cached_property
-    def inbound_international_ach_transfers(self) -> InboundInternationalACHTransfersResource:
-        return InboundInternationalACHTransfersResource(self._client)
 
     @cached_property
     def card_authorizations(self) -> CardAuthorizationsResource:
@@ -390,10 +378,6 @@ class AsyncSimulationsResource(AsyncAPIResource):
     @cached_property
     def real_time_payments_transfers(self) -> AsyncRealTimePaymentsTransfersResource:
         return AsyncRealTimePaymentsTransfersResource(self._client)
-
-    @cached_property
-    def inbound_international_ach_transfers(self) -> AsyncInboundInternationalACHTransfersResource:
-        return AsyncInboundInternationalACHTransfersResource(self._client)
 
     @cached_property
     def card_authorizations(self) -> AsyncCardAuthorizationsResource:
@@ -515,12 +499,6 @@ class SimulationsResourceWithRawResponse:
         return RealTimePaymentsTransfersResourceWithRawResponse(self._simulations.real_time_payments_transfers)
 
     @cached_property
-    def inbound_international_ach_transfers(self) -> InboundInternationalACHTransfersResourceWithRawResponse:
-        return InboundInternationalACHTransfersResourceWithRawResponse(
-            self._simulations.inbound_international_ach_transfers
-        )
-
-    @cached_property
     def card_authorizations(self) -> CardAuthorizationsResourceWithRawResponse:
         return CardAuthorizationsResourceWithRawResponse(self._simulations.card_authorizations)
 
@@ -630,12 +608,6 @@ class AsyncSimulationsResourceWithRawResponse:
     @cached_property
     def real_time_payments_transfers(self) -> AsyncRealTimePaymentsTransfersResourceWithRawResponse:
         return AsyncRealTimePaymentsTransfersResourceWithRawResponse(self._simulations.real_time_payments_transfers)
-
-    @cached_property
-    def inbound_international_ach_transfers(self) -> AsyncInboundInternationalACHTransfersResourceWithRawResponse:
-        return AsyncInboundInternationalACHTransfersResourceWithRawResponse(
-            self._simulations.inbound_international_ach_transfers
-        )
 
     @cached_property
     def card_authorizations(self) -> AsyncCardAuthorizationsResourceWithRawResponse:
@@ -751,12 +723,6 @@ class SimulationsResourceWithStreamingResponse:
     @cached_property
     def real_time_payments_transfers(self) -> RealTimePaymentsTransfersResourceWithStreamingResponse:
         return RealTimePaymentsTransfersResourceWithStreamingResponse(self._simulations.real_time_payments_transfers)
-
-    @cached_property
-    def inbound_international_ach_transfers(self) -> InboundInternationalACHTransfersResourceWithStreamingResponse:
-        return InboundInternationalACHTransfersResourceWithStreamingResponse(
-            self._simulations.inbound_international_ach_transfers
-        )
 
     @cached_property
     def card_authorizations(self) -> CardAuthorizationsResourceWithStreamingResponse:
@@ -875,12 +841,6 @@ class AsyncSimulationsResourceWithStreamingResponse:
     def real_time_payments_transfers(self) -> AsyncRealTimePaymentsTransfersResourceWithStreamingResponse:
         return AsyncRealTimePaymentsTransfersResourceWithStreamingResponse(
             self._simulations.real_time_payments_transfers
-        )
-
-    @cached_property
-    def inbound_international_ach_transfers(self) -> AsyncInboundInternationalACHTransfersResourceWithStreamingResponse:
-        return AsyncInboundInternationalACHTransfersResourceWithStreamingResponse(
-            self._simulations.inbound_international_ach_transfers
         )
 
     @cached_property

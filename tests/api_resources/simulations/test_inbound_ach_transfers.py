@@ -39,6 +39,7 @@ class TestInboundACHTransfers:
             receiver_id_number="x",
             receiver_name="x",
             resolve_at=parse_datetime("2019-12-27T18:11:19.117Z"),
+            standard_entry_class_code="corporate_credit_or_debit",
         )
         assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
 
@@ -93,6 +94,7 @@ class TestAsyncInboundACHTransfers:
             receiver_id_number="x",
             receiver_name="x",
             resolve_at=parse_datetime("2019-12-27T18:11:19.117Z"),
+            standard_entry_class_code="corporate_credit_or_debit",
         )
         assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
 
