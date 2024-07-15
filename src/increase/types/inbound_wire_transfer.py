@@ -79,9 +79,6 @@ class InboundWireTransfer(BaseModel):
     originator_to_beneficiary_information_line4: Optional[str] = None
     """A free-form message set by the wire originator."""
 
-    sender_reference: Optional[str] = None
-    """The sending bank's reference number for the wire transfer."""
-
     status: Literal["pending", "accepted", "declined", "reversed"]
     """The status of the transfer.
 
