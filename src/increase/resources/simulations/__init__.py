@@ -208,14 +208,6 @@ from .inbound_wire_drawdown_requests import (
     InboundWireDrawdownRequestsResourceWithStreamingResponse,
     AsyncInboundWireDrawdownRequestsResourceWithStreamingResponse,
 )
-from .inbound_international_ach_transfers import (
-    InboundInternationalACHTransfersResource,
-    AsyncInboundInternationalACHTransfersResource,
-    InboundInternationalACHTransfersResourceWithRawResponse,
-    AsyncInboundInternationalACHTransfersResourceWithRawResponse,
-    InboundInternationalACHTransfersResourceWithStreamingResponse,
-    AsyncInboundInternationalACHTransfersResourceWithStreamingResponse,
-)
 from .inbound_real_time_payments_transfers import (
     InboundRealTimePaymentsTransfersResource,
     AsyncInboundRealTimePaymentsTransfersResource,
@@ -298,12 +290,6 @@ __all__ = [
     "AsyncRealTimePaymentsTransfersResourceWithRawResponse",
     "RealTimePaymentsTransfersResourceWithStreamingResponse",
     "AsyncRealTimePaymentsTransfersResourceWithStreamingResponse",
-    "InboundInternationalACHTransfersResource",
-    "AsyncInboundInternationalACHTransfersResource",
-    "InboundInternationalACHTransfersResourceWithRawResponse",
-    "AsyncInboundInternationalACHTransfersResourceWithRawResponse",
-    "InboundInternationalACHTransfersResourceWithStreamingResponse",
-    "AsyncInboundInternationalACHTransfersResourceWithStreamingResponse",
     "CardAuthorizationsResource",
     "AsyncCardAuthorizationsResource",
     "CardAuthorizationsResourceWithRawResponse",
