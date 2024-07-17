@@ -136,10 +136,10 @@ class InvalidParametersError(BadRequestError):
         title = cast(Any, construct_type(type_=str, value=data.get("title")))
         super().__init__(title or message, response=response, body=body)
 
-        self.title = title
         self.detail = cast(Any, construct_type(type_=Optional[str], value=data.get("detail")))
         self.errors = cast(Any, construct_type(type_=List[object], value=data.get("errors")))
         self.status = cast(Any, construct_type(type_=Literal[400], value=data.get("status")))
+        self.title = title
         self.type = cast(Any, construct_type(type_=Literal["invalid_parameters_error"], value=data.get("type")))
 
 
