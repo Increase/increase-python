@@ -10,12 +10,13 @@ __all__ = ["InboundCheckDeposit", "DepositReturn"]
 
 
 class DepositReturn(BaseModel):
-    reason: Literal["altered_or_fictitious", "not_authorized", "duplicate_presentment"]
+    reason: Literal["altered_or_fictitious", "not_authorized", "duplicate_presentment", "endorsement_missing"]
     """The reason the deposit was returned.
 
     - `altered_or_fictitious` - The check was altered or fictitious.
     - `not_authorized` - The check was not authorized.
     - `duplicate_presentment` - The check was a duplicate presentment.
+    - `endorsement_missing` - The check was not endorsed.
     """
 
     returned_at: datetime

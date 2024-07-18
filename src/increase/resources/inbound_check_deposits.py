@@ -180,7 +180,7 @@ class InboundCheckDepositsResource(SyncAPIResource):
         self,
         inbound_check_deposit_id: str,
         *,
-        reason: Literal["altered_or_fictitious", "not_authorized", "duplicate_presentment"],
+        reason: Literal["altered_or_fictitious", "not_authorized", "duplicate_presentment", "endorsement_missing"],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -200,6 +200,7 @@ class InboundCheckDepositsResource(SyncAPIResource):
               - `altered_or_fictitious` - The check was altered or fictitious.
               - `not_authorized` - The check was not authorized.
               - `duplicate_presentment` - The check was a duplicate presentment.
+              - `endorsement_missing` - The check was not endorsed.
 
           extra_headers: Send extra headers
 
@@ -384,7 +385,7 @@ class AsyncInboundCheckDepositsResource(AsyncAPIResource):
         self,
         inbound_check_deposit_id: str,
         *,
-        reason: Literal["altered_or_fictitious", "not_authorized", "duplicate_presentment"],
+        reason: Literal["altered_or_fictitious", "not_authorized", "duplicate_presentment", "endorsement_missing"],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -404,6 +405,7 @@ class AsyncInboundCheckDepositsResource(AsyncAPIResource):
               - `altered_or_fictitious` - The check was altered or fictitious.
               - `not_authorized` - The check was not authorized.
               - `duplicate_presentment` - The check was a duplicate presentment.
+              - `endorsement_missing` - The check was not endorsed.
 
           extra_headers: Send extra headers
 
