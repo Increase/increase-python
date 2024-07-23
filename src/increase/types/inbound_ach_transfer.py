@@ -413,6 +413,13 @@ class InboundACHTransfer(BaseModel):
     - `debit` - Debit
     """
 
+    expected_settlement_schedule: Literal["same_day", "future_dated"]
+    """The settlement schedule the transfer is expected to follow.
+
+    - `same_day` - The transfer is expected to settle same-day.
+    - `future_dated` - The transfer is expected to settle on a future date.
+    """
+
     international_addenda: Optional[InternationalAddenda] = None
     """
     If the Inbound ACH Transfer has a Standard Entry Class Code of IAT, this will
