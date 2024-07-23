@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.75.0 (2024-07-23)
+
+Full Changelog: [v0.74.0...v0.75.0](https://github.com/Increase/increase-python/compare/v0.74.0...v0.75.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#526](https://github.com/Increase/increase-python/issues/526)) ([babdbbf](https://github.com/Increase/increase-python/commit/babdbbf7d9dd56f4f97c2d04e103619dde8107b6))
+
+
+### Chores
+
+* **tests:** update prism version ([#525](https://github.com/Increase/increase-python/issues/525)) ([57a985b](https://github.com/Increase/increase-python/commit/57a985bfca6775e2c3507e6e649f5bafe0a3b746))
+
+
+### Documentation
+
+* **readme:** fix example snippet imports ([#523](https://github.com/Increase/increase-python/issues/523)) ([8707697](https://github.com/Increase/increase-python/commit/8707697e3e673ea4a7016b59c81159cef20d8c7a))
+
 ## 0.74.0 (2024-07-23)
 
 Full Changelog: [v0.73.0...v0.74.0](https://github.com/Increase/increase-python/compare/v0.73.0...v0.74.0)
