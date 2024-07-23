@@ -92,7 +92,7 @@ List methods in the Increase API are paginated.
 This library provides auto-paginating iterators with each list response, so you do not have to request successive pages manually:
 
 ```python
-import increase
+from increase import Increase
 
 client = Increase()
 
@@ -108,7 +108,7 @@ Or, asynchronously:
 
 ```python
 import asyncio
-import increase
+from increase import AsyncIncrease
 
 client = AsyncIncrease()
 
