@@ -86,6 +86,7 @@ _PurposeReservedKeywords = TypedDict(
                 "entity_supplemental_document",
                 "export",
                 "unusual_activity_report_attachment",
+                "deposit_access_control_agreement",
             ]
         ],
     },
