@@ -318,6 +318,9 @@ class ElementCardAuthorization(BaseModel):
     merchant_descriptor: str
     """The merchant descriptor of the merchant the card is transacting with."""
 
+    merchant_state: Optional[str] = None
+    """The state the merchant resides in."""
+
     network_details: ElementCardAuthorizationNetworkDetails
     """Fields specific to the `network`."""
 
@@ -2256,6 +2259,9 @@ class ElementCardValidation(BaseModel):
 
     merchant_descriptor: str
     """The merchant descriptor of the merchant the card is transacting with."""
+
+    merchant_state: Optional[str] = None
+    """The state the merchant resides in."""
 
     network_details: ElementCardValidationNetworkDetails
     """Fields specific to the `network`."""

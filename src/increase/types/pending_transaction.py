@@ -320,6 +320,9 @@ class SourceCardAuthorization(BaseModel):
     merchant_descriptor: str
     """The merchant descriptor of the merchant the card is transacting with."""
 
+    merchant_state: Optional[str] = None
+    """The state the merchant resides in."""
+
     network_details: SourceCardAuthorizationNetworkDetails
     """Fields specific to the `network`."""
 
