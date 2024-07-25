@@ -68,6 +68,7 @@ class File(BaseModel):
         "entity_supplemental_document",
         "export",
         "unusual_activity_report_attachment",
+        "deposit_access_control_agreement",
     ]
     """What the File will be used for.
 
@@ -105,6 +106,8 @@ class File(BaseModel):
     - `export` - The results of an Export you requested via the dashboard or API.
     - `unusual_activity_report_attachment` - An attachment to an Unusual Activity
       Report.
+    - `deposit_access_control_agreement` - A document granting another entity access
+      to the funds into your account.
     """
 
     type: Literal["file"]
