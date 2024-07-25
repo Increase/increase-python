@@ -2045,6 +2045,8 @@ class SourceInternalSource(BaseModel):
 
     reason: Literal[
         "account_closure",
+        "bank_drawn_check",
+        "bank_drawn_check_credit",
         "bank_migration",
         "check_adjustment",
         "collection_payment",
@@ -2063,6 +2065,8 @@ class SourceInternalSource(BaseModel):
     This describes the reason for the transaction.
 
     - `account_closure` - Account closure
+    - `bank_drawn_check` - Bank-drawn check
+    - `bank_drawn_check_credit` - Bank-drawn check credit
     - `bank_migration` - Bank migration
     - `check_adjustment` - Check adjustment
     - `collection_payment` - Collection payment
