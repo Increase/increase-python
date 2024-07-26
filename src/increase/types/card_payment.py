@@ -318,6 +318,13 @@ class ElementCardAuthorization(BaseModel):
     merchant_descriptor: str
     """The merchant descriptor of the merchant the card is transacting with."""
 
+    merchant_postal_code: Optional[str] = None
+    """The merchant's postal code.
+
+    For US merchants this is either a 5-digit or 9-digit ZIP code, where the first 5
+    and last 4 are separated by a dash.
+    """
+
     merchant_state: Optional[str] = None
     """The state the merchant resides in."""
 
@@ -672,6 +679,13 @@ class ElementCardDecline(BaseModel):
 
     merchant_descriptor: str
     """The merchant descriptor of the merchant the card is transacting with."""
+
+    merchant_postal_code: Optional[str] = None
+    """The merchant's postal code.
+
+    For US merchants this is either a 5-digit or 9-digit ZIP code, where the first 5
+    and last 4 are separated by a dash.
+    """
 
     merchant_state: Optional[str] = None
     """The state the merchant resides in."""
@@ -2259,6 +2273,13 @@ class ElementCardValidation(BaseModel):
 
     merchant_descriptor: str
     """The merchant descriptor of the merchant the card is transacting with."""
+
+    merchant_postal_code: Optional[str] = None
+    """The merchant's postal code.
+
+    For US merchants this is either a 5-digit or 9-digit ZIP code, where the first 5
+    and last 4 are separated by a dash.
+    """
 
     merchant_state: Optional[str] = None
     """The state the merchant resides in."""
