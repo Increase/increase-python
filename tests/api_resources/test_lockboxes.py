@@ -31,6 +31,7 @@ class TestLockboxes:
         lockbox = client.lockboxes.create(
             account_id="account_in71c4amph0vgo2qllky",
             description="Rent payments",
+            recipient_name="x",
         )
         assert_matches_type(Lockbox, lockbox, path=["response"])
 
@@ -108,6 +109,7 @@ class TestLockboxes:
         lockbox = client.lockboxes.update(
             lockbox_id="lockbox_3xt21ok13q19advds4t5",
             description="x",
+            recipient_name="x",
             status="inactive",
         )
         assert_matches_type(Lockbox, lockbox, path=["response"])
@@ -200,6 +202,7 @@ class TestAsyncLockboxes:
         lockbox = await async_client.lockboxes.create(
             account_id="account_in71c4amph0vgo2qllky",
             description="Rent payments",
+            recipient_name="x",
         )
         assert_matches_type(Lockbox, lockbox, path=["response"])
 
@@ -277,6 +280,7 @@ class TestAsyncLockboxes:
         lockbox = await async_client.lockboxes.update(
             lockbox_id="lockbox_3xt21ok13q19advds4t5",
             description="x",
+            recipient_name="x",
             status="inactive",
         )
         assert_matches_type(Lockbox, lockbox, path=["response"])
