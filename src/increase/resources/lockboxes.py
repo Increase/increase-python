@@ -41,6 +41,7 @@ class LockboxesResource(SyncAPIResource):
         *,
         account_id: str,
         description: str | NotGiven = NOT_GIVEN,
+        recipient_name: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -56,6 +57,8 @@ class LockboxesResource(SyncAPIResource):
           account_id: The Account checks sent to this Lockbox should be deposited into.
 
           description: The description you choose for the Lockbox, for display purposes.
+
+          recipient_name: The name of the recipient that will receive mail at this location.
 
           extra_headers: Send extra headers
 
@@ -73,6 +76,7 @@ class LockboxesResource(SyncAPIResource):
                 {
                     "account_id": account_id,
                     "description": description,
+                    "recipient_name": recipient_name,
                 },
                 lockbox_create_params.LockboxCreateParams,
             ),
@@ -126,6 +130,7 @@ class LockboxesResource(SyncAPIResource):
         lockbox_id: str,
         *,
         description: str | NotGiven = NOT_GIVEN,
+        recipient_name: str | NotGiven = NOT_GIVEN,
         status: Literal["active", "inactive"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -142,6 +147,8 @@ class LockboxesResource(SyncAPIResource):
           lockbox_id: The identifier of the Lockbox.
 
           description: The description you choose for the Lockbox.
+
+          recipient_name: The recipient name you choose for the Lockbox.
 
           status: This indicates if checks can be sent to the Lockbox.
 
@@ -167,6 +174,7 @@ class LockboxesResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "description": description,
+                    "recipient_name": recipient_name,
                     "status": status,
                 },
                 lockbox_update_params.LockboxUpdateParams,
@@ -257,6 +265,7 @@ class AsyncLockboxesResource(AsyncAPIResource):
         *,
         account_id: str,
         description: str | NotGiven = NOT_GIVEN,
+        recipient_name: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -272,6 +281,8 @@ class AsyncLockboxesResource(AsyncAPIResource):
           account_id: The Account checks sent to this Lockbox should be deposited into.
 
           description: The description you choose for the Lockbox, for display purposes.
+
+          recipient_name: The name of the recipient that will receive mail at this location.
 
           extra_headers: Send extra headers
 
@@ -289,6 +300,7 @@ class AsyncLockboxesResource(AsyncAPIResource):
                 {
                     "account_id": account_id,
                     "description": description,
+                    "recipient_name": recipient_name,
                 },
                 lockbox_create_params.LockboxCreateParams,
             ),
@@ -342,6 +354,7 @@ class AsyncLockboxesResource(AsyncAPIResource):
         lockbox_id: str,
         *,
         description: str | NotGiven = NOT_GIVEN,
+        recipient_name: str | NotGiven = NOT_GIVEN,
         status: Literal["active", "inactive"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -358,6 +371,8 @@ class AsyncLockboxesResource(AsyncAPIResource):
           lockbox_id: The identifier of the Lockbox.
 
           description: The description you choose for the Lockbox.
+
+          recipient_name: The recipient name you choose for the Lockbox.
 
           status: This indicates if checks can be sent to the Lockbox.
 
@@ -383,6 +398,7 @@ class AsyncLockboxesResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "description": description,
+                    "recipient_name": recipient_name,
                     "status": status,
                 },
                 lockbox_update_params.LockboxUpdateParams,
