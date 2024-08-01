@@ -22,6 +22,14 @@ class Address(BaseModel):
     postal_code: str
     """The postal code of the address."""
 
+    recipient: Optional[str] = None
+    """The recipient line of the address.
+
+    This will include the recipient name you provide when creating the address, as
+    well as an ATTN suffix to help route the mail to your lockbox. Mail senders must
+    include this ATTN line to receive mail at this Lockbox.
+    """
+
     state: str
     """
     The two-letter United States Postal Service (USPS) abbreviation for the state of
@@ -58,6 +66,9 @@ class Lockbox(BaseModel):
     only processed once. Learn more about
     [idempotency](https://increase.com/documentation/idempotency-keys).
     """
+
+    recipient_name: Optional[str] = None
+    """The recipient name you choose for the Lockbox."""
 
     status: Literal["active", "inactive"]
     """This indicates if mail can be sent to this address.

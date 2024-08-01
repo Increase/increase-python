@@ -13,3 +13,6 @@ class LockboxCreateParams(TypedDict, total=False):
 
     description: str
     """The description you choose for the Lockbox, for display purposes."""
+
+    recipient_name: str
+    """The name of the recipient that will receive mail at this location."""
