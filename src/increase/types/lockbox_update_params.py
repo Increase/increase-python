@@ -11,6 +11,9 @@ class LockboxUpdateParams(TypedDict, total=False):
     description: str
     """The description you choose for the Lockbox."""
 
+    recipient_name: str
+    """The recipient name you choose for the Lockbox."""
+
     status: Literal["active", "inactive"]
     """This indicates if checks can be sent to the Lockbox.
 
