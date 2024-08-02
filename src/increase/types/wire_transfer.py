@@ -271,6 +271,7 @@ class WireTransfer(BaseModel):
         "pending_approval",
         "rejected",
         "reversed",
+        "submitted",
         "complete",
         "pending_creating",
     ]
@@ -281,9 +282,11 @@ class WireTransfer(BaseModel):
       operator.
     - `pending_reviewing` - The transfer is pending review by Increase.
     - `pending_approval` - The transfer is pending approval.
-    - `rejected` - The transfer has been rejected.
+    - `rejected` - The transfer has been rejected by Increase.
     - `reversed` - The transfer has been reversed.
-    - `complete` - The transfer is complete.
+    - `submitted` - The transfer has been submitted to Fedwire.
+    - `complete` - The transfer has been acknowledged by Fedwire and can be
+      considered complete.
     - `pending_creating` - The transfer is pending creation.
     """
 
