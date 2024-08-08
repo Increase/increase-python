@@ -152,6 +152,9 @@ class BalanceCsv(TypedDict, total=False):
     created_at: BalanceCsvCreatedAt
     """Filter results by time range on the `created_at` attribute."""
 
+    program_id: str
+    """Filter exported Transactions to the specified Program."""
+
 
 class BookkeepingAccountBalanceCsvCreatedAt(TypedDict, total=False):
     after: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
@@ -237,3 +240,6 @@ class TransactionCsv(TypedDict, total=False):
 
     created_at: TransactionCsvCreatedAt
     """Filter results by time range on the `created_at` attribute."""
+
+    program_id: str
+    """Filter exported Transactions to the specified Program."""
