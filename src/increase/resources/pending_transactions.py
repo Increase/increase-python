@@ -77,7 +77,6 @@ class PendingTransactionsResource(SyncAPIResource):
         cursor: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         route_id: str | NotGiven = NOT_GIVEN,
-        source_id: str | NotGiven = NOT_GIVEN,
         status: pending_transaction_list_params.Status | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -98,8 +97,6 @@ class PendingTransactionsResource(SyncAPIResource):
               objects.
 
           route_id: Filter pending transactions to those belonging to the specified Route.
-
-          source_id: Filter pending transactions to those caused by the specified source.
 
           extra_headers: Send extra headers
 
@@ -125,7 +122,6 @@ class PendingTransactionsResource(SyncAPIResource):
                         "cursor": cursor,
                         "limit": limit,
                         "route_id": route_id,
-                        "source_id": source_id,
                         "status": status,
                     },
                     pending_transaction_list_params.PendingTransactionListParams,
@@ -190,7 +186,6 @@ class AsyncPendingTransactionsResource(AsyncAPIResource):
         cursor: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         route_id: str | NotGiven = NOT_GIVEN,
-        source_id: str | NotGiven = NOT_GIVEN,
         status: pending_transaction_list_params.Status | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -211,8 +206,6 @@ class AsyncPendingTransactionsResource(AsyncAPIResource):
               objects.
 
           route_id: Filter pending transactions to those belonging to the specified Route.
-
-          source_id: Filter pending transactions to those caused by the specified source.
 
           extra_headers: Send extra headers
 
@@ -238,7 +231,6 @@ class AsyncPendingTransactionsResource(AsyncAPIResource):
                         "cursor": cursor,
                         "limit": limit,
                         "route_id": route_id,
-                        "source_id": source_id,
                         "status": status,
                     },
                     pending_transaction_list_params.PendingTransactionListParams,
