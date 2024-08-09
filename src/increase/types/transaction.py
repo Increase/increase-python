@@ -44,7 +44,6 @@ __all__ = [
     "SourceInboundACHTransferAddendaFreeform",
     "SourceInboundACHTransferAddendaFreeformEntry",
     "SourceInboundRealTimePaymentsTransferConfirmation",
-    "SourceInboundWireDrawdownPayment",
     "SourceInboundWireReversal",
     "SourceInboundWireTransfer",
     "SourceInterestPayment",
@@ -1790,72 +1789,6 @@ class SourceInboundRealTimePaymentsTransferConfirmation(BaseModel):
     """The Real-Time Payments network identification of the transfer."""
 
 
-class SourceInboundWireDrawdownPayment(BaseModel):
-    amount: int
-    """The amount in the minor unit of the transaction's currency.
-
-    For dollars, for example, this is cents.
-    """
-
-    beneficiary_address_line1: Optional[str] = None
-    """A free-form address field set by the sender."""
-
-    beneficiary_address_line2: Optional[str] = None
-    """A free-form address field set by the sender."""
-
-    beneficiary_address_line3: Optional[str] = None
-    """A free-form address field set by the sender."""
-
-    beneficiary_name: Optional[str] = None
-    """A name set by the sender."""
-
-    beneficiary_reference: Optional[str] = None
-    """A free-form reference string set by the sender, to help identify the transfer."""
-
-    description: str
-    """An Increase-constructed description of the transfer."""
-
-    input_message_accountability_data: Optional[str] = None
-    """
-    A unique identifier available to the originating and receiving banks, commonly
-    abbreviated as IMAD. It is created when the wire is submitted to the Fedwire
-    service and is helpful when debugging wires with the receiving bank.
-    """
-
-    originator_address_line1: Optional[str] = None
-    """The address of the wire originator, set by the sending bank."""
-
-    originator_address_line2: Optional[str] = None
-    """The address of the wire originator, set by the sending bank."""
-
-    originator_address_line3: Optional[str] = None
-    """The address of the wire originator, set by the sending bank."""
-
-    originator_name: Optional[str] = None
-    """The originator of the wire, set by the sending bank."""
-
-    originator_routing_number: Optional[str] = None
-    """
-    The American Banking Association (ABA) routing number of the bank originating
-    the transfer.
-    """
-
-    originator_to_beneficiary_information: Optional[str] = None
-    """An Increase-created concatenation of the Originator-to-Beneficiary lines."""
-
-    originator_to_beneficiary_information_line1: Optional[str] = None
-    """A free-form message set by the wire originator."""
-
-    originator_to_beneficiary_information_line2: Optional[str] = None
-    """A free-form message set by the wire originator."""
-
-    originator_to_beneficiary_information_line3: Optional[str] = None
-    """A free-form message set by the wire originator."""
-
-    originator_to_beneficiary_information_line4: Optional[str] = None
-    """A free-form message set by the wire originator."""
-
-
 class SourceInboundWireReversal(BaseModel):
     amount: int
     """The amount that was reversed in USD cents."""
@@ -2216,7 +2149,6 @@ class Source(BaseModel):
         "inbound_ach_transfer_return_intention",
         "inbound_check_deposit_return_intention",
         "inbound_real_time_payments_transfer_confirmation",
-        "inbound_wire_drawdown_payment",
         "inbound_wire_reversal",
         "inbound_wire_transfer",
         "inbound_wire_transfer_reversal",
@@ -2270,8 +2202,6 @@ class Source(BaseModel):
     - `inbound_real_time_payments_transfer_confirmation` - Inbound Real-Time
       Payments Transfer Confirmation: details will be under the
       `inbound_real_time_payments_transfer_confirmation` object.
-    - `inbound_wire_drawdown_payment` - Inbound Wire Drawdown Payment: details will
-      be under the `inbound_wire_drawdown_payment` object.
     - `inbound_wire_reversal` - Inbound Wire Reversal: details will be under the
       `inbound_wire_reversal` object.
     - `inbound_wire_transfer` - Inbound Wire Transfer Intention: details will be
@@ -2334,13 +2264,6 @@ class Source(BaseModel):
 
     This field will be present in the JSON response if and only if `category` is
     equal to `inbound_real_time_payments_transfer_confirmation`.
-    """
-
-    inbound_wire_drawdown_payment: Optional[SourceInboundWireDrawdownPayment] = None
-    """An Inbound Wire Drawdown Payment object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `inbound_wire_drawdown_payment`.
     """
 
     inbound_wire_reversal: Optional[SourceInboundWireReversal] = None

@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.82.0 (2024-08-08)
+
+Full Changelog: [v0.81.0...v0.82.0](https://github.com/Increase/increase-python/compare/v0.81.0...v0.82.0)
+
+### Features
+
+* **api:** api updates ([#548](https://github.com/Increase/increase-python/issues/548)) ([ac6e38a](https://github.com/Increase/increase-python/commit/ac6e38ae8c82a54b45a0ad11be66cfb4f7368892))
+* **api:** OpenAPI spec update via Stainless API ([#553](https://github.com/Increase/increase-python/issues/553)) ([b7b2a1e](https://github.com/Increase/increase-python/commit/b7b2a1e4d8ecc6d1de09d55a033cdca15598f833))
+* **api:** OpenAPI spec update via Stainless API ([#554](https://github.com/Increase/increase-python/issues/554)) ([7b87e2b](https://github.com/Increase/increase-python/commit/7b87e2be4768e0afc9ccc749cfe2880dff4c7602))
+
+
+### Chores
+
+* **internal:** add type construction helper ([#546](https://github.com/Increase/increase-python/issues/546)) ([c97137c](https://github.com/Increase/increase-python/commit/c97137c880e565298f6fdc16f9031556fa5fb50d))
+* **internal:** capitalize github org name ([#549](https://github.com/Increase/increase-python/issues/549)) ([fb004fe](https://github.com/Increase/increase-python/commit/fb004fe31b95f49a4ba5540b42b1eced757b393e))
+* **internal:** codegen related update ([#550](https://github.com/Increase/increase-python/issues/550)) ([fe6df52](https://github.com/Increase/increase-python/commit/fe6df5227b44741e28765a37e782762c58a2050c))
+* **internal:** remove deprecated ruff config ([#552](https://github.com/Increase/increase-python/issues/552)) ([d150801](https://github.com/Increase/increase-python/commit/d1508013d7adcc2f89cf1ddedac26d25edb81dd6))
+* **internal:** update pydantic compat helper function ([#551](https://github.com/Increase/increase-python/issues/551)) ([5cc4100](https://github.com/Increase/increase-python/commit/5cc4100a1aea68896f051785e9602b45998e7e4a))
+
 ## 0.81.0 (2024-08-01)
 
 Full Changelog: [v0.80.0...v0.81.0](https://github.com/Increase/increase-python/compare/v0.80.0...v0.81.0)
