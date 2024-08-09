@@ -78,7 +78,6 @@ class TestPendingTransactions:
             cursor="cursor",
             limit=1,
             route_id="route_id",
-            source_id="source_id",
             status={"in": ["pending", "complete"]},
         )
         assert_matches_type(SyncPage[PendingTransaction], pending_transaction, path=["response"])
@@ -166,7 +165,6 @@ class TestAsyncPendingTransactions:
             cursor="cursor",
             limit=1,
             route_id="route_id",
-            source_id="source_id",
             status={"in": ["pending", "complete"]},
         )
         assert_matches_type(AsyncPage[PendingTransaction], pending_transaction, path=["response"])

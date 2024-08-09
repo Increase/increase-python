@@ -31,9 +31,6 @@ class PendingTransactionListParams(TypedDict, total=False):
     route_id: str
     """Filter pending transactions to those belonging to the specified Route."""
 
-    source_id: str
-    """Filter pending transactions to those caused by the specified source."""
-
     status: Status
 
 
