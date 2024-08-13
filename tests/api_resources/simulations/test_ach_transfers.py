@@ -59,7 +59,7 @@ class TestACHTransfers:
     def test_method_create_notification_of_change(self, client: Increase) -> None:
         ach_transfer = client.simulations.ach_transfers.create_notification_of_change(
             ach_transfer_id="ach_transfer_uoxatyh3lt5evrsdvo7q",
-            change_code="incorrect_routing_number",
+            change_code="incorrect_account_number",
             corrected_data="123456789",
         )
         assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
@@ -68,7 +68,7 @@ class TestACHTransfers:
     def test_raw_response_create_notification_of_change(self, client: Increase) -> None:
         response = client.simulations.ach_transfers.with_raw_response.create_notification_of_change(
             ach_transfer_id="ach_transfer_uoxatyh3lt5evrsdvo7q",
-            change_code="incorrect_routing_number",
+            change_code="incorrect_account_number",
             corrected_data="123456789",
         )
 
@@ -81,7 +81,7 @@ class TestACHTransfers:
     def test_streaming_response_create_notification_of_change(self, client: Increase) -> None:
         with client.simulations.ach_transfers.with_streaming_response.create_notification_of_change(
             ach_transfer_id="ach_transfer_uoxatyh3lt5evrsdvo7q",
-            change_code="incorrect_routing_number",
+            change_code="incorrect_account_number",
             corrected_data="123456789",
         ) as response:
             assert not response.is_closed
@@ -97,7 +97,7 @@ class TestACHTransfers:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `ach_transfer_id` but received ''"):
             client.simulations.ach_transfers.with_raw_response.create_notification_of_change(
                 ach_transfer_id="",
-                change_code="incorrect_routing_number",
+                change_code="incorrect_account_number",
                 corrected_data="123456789",
             )
 
@@ -231,7 +231,7 @@ class TestAsyncACHTransfers:
     async def test_method_create_notification_of_change(self, async_client: AsyncIncrease) -> None:
         ach_transfer = await async_client.simulations.ach_transfers.create_notification_of_change(
             ach_transfer_id="ach_transfer_uoxatyh3lt5evrsdvo7q",
-            change_code="incorrect_routing_number",
+            change_code="incorrect_account_number",
             corrected_data="123456789",
         )
         assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
@@ -240,7 +240,7 @@ class TestAsyncACHTransfers:
     async def test_raw_response_create_notification_of_change(self, async_client: AsyncIncrease) -> None:
         response = await async_client.simulations.ach_transfers.with_raw_response.create_notification_of_change(
             ach_transfer_id="ach_transfer_uoxatyh3lt5evrsdvo7q",
-            change_code="incorrect_routing_number",
+            change_code="incorrect_account_number",
             corrected_data="123456789",
         )
 
@@ -253,7 +253,7 @@ class TestAsyncACHTransfers:
     async def test_streaming_response_create_notification_of_change(self, async_client: AsyncIncrease) -> None:
         async with async_client.simulations.ach_transfers.with_streaming_response.create_notification_of_change(
             ach_transfer_id="ach_transfer_uoxatyh3lt5evrsdvo7q",
-            change_code="incorrect_routing_number",
+            change_code="incorrect_account_number",
             corrected_data="123456789",
         ) as response:
             assert not response.is_closed
@@ -269,7 +269,7 @@ class TestAsyncACHTransfers:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `ach_transfer_id` but received ''"):
             await async_client.simulations.ach_transfers.with_raw_response.create_notification_of_change(
                 ach_transfer_id="",
-                change_code="incorrect_routing_number",
+                change_code="incorrect_account_number",
                 corrected_data="123456789",
             )
 

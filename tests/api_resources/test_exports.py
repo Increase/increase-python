@@ -22,14 +22,14 @@ class TestExports:
     @parametrize
     def test_method_create(self, client: Increase) -> None:
         export = client.exports.create(
-            category="transaction_csv",
+            category="account_statement_ofx",
         )
         assert_matches_type(Export, export, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: Increase) -> None:
         export = client.exports.create(
-            category="transaction_csv",
+            category="account_statement_ofx",
             account_statement_ofx={
                 "account_id": "account_id",
                 "created_at": {
@@ -76,7 +76,7 @@ class TestExports:
     @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
         response = client.exports.with_raw_response.create(
-            category="transaction_csv",
+            category="account_statement_ofx",
         )
 
         assert response.is_closed is True
@@ -87,7 +87,7 @@ class TestExports:
     @parametrize
     def test_streaming_response_create(self, client: Increase) -> None:
         with client.exports.with_streaming_response.create(
-            category="transaction_csv",
+            category="account_statement_ofx",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -184,14 +184,14 @@ class TestAsyncExports:
     @parametrize
     async def test_method_create(self, async_client: AsyncIncrease) -> None:
         export = await async_client.exports.create(
-            category="transaction_csv",
+            category="account_statement_ofx",
         )
         assert_matches_type(Export, export, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncIncrease) -> None:
         export = await async_client.exports.create(
-            category="transaction_csv",
+            category="account_statement_ofx",
             account_statement_ofx={
                 "account_id": "account_id",
                 "created_at": {
@@ -238,7 +238,7 @@ class TestAsyncExports:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
         response = await async_client.exports.with_raw_response.create(
-            category="transaction_csv",
+            category="account_statement_ofx",
         )
 
         assert response.is_closed is True
@@ -249,7 +249,7 @@ class TestAsyncExports:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncIncrease) -> None:
         async with async_client.exports.with_streaming_response.create(
-            category="transaction_csv",
+            category="account_statement_ofx",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
