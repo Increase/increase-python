@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.84.0 (2024-08-13)
+
+Full Changelog: [v0.83.0...v0.84.0](https://github.com/Increase/increase-python/compare/v0.83.0...v0.84.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#562](https://github.com/Increase/increase-python/issues/562)) ([e7fc3da](https://github.com/Increase/increase-python/commit/e7fc3da029142e75264fecaf61f82d5bacd529b1))
+
+
+### Chores
+
+* **ci:** bump prism mock server version ([#559](https://github.com/Increase/increase-python/issues/559)) ([e65322f](https://github.com/Increase/increase-python/commit/e65322f69b0328ae5ac21735e917ba4bd0f9fb33))
+* **internal:** ensure package is importable in lint cmd ([#561](https://github.com/Increase/increase-python/issues/561)) ([8b7bd02](https://github.com/Increase/increase-python/commit/8b7bd023ed55ab7c83d9ba34d970a14c407c3678))
+
 ## 0.83.0 (2024-08-09)
 
 Full Changelog: [v0.82.0...v0.83.0](https://github.com/Increase/increase-python/compare/v0.82.0...v0.83.0)
