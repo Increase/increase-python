@@ -110,7 +110,7 @@ class TestLockboxes:
             lockbox_id="lockbox_3xt21ok13q19advds4t5",
             description="x",
             recipient_name="x",
-            status="inactive",
+            status="active",
         )
         assert_matches_type(Lockbox, lockbox, path=["response"])
 
@@ -281,7 +281,7 @@ class TestAsyncLockboxes:
             lockbox_id="lockbox_3xt21ok13q19advds4t5",
             description="x",
             recipient_name="x",
-            status="inactive",
+            status="active",
         )
         assert_matches_type(Lockbox, lockbox, path=["response"])
 

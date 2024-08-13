@@ -114,10 +114,10 @@ class TestAccountNumbers:
     def test_method_update_with_all_params(self, client: Increase) -> None:
         account_number = client.account_numbers.update(
             account_number_id="account_number_v18nkfqm6afpsrvy82b2",
-            inbound_ach={"debit_status": "blocked"},
+            inbound_ach={"debit_status": "allowed"},
             inbound_checks={"status": "allowed"},
             name="x",
-            status="disabled",
+            status="active",
         )
         assert_matches_type(AccountNumber, account_number, path=["response"])
 
@@ -292,10 +292,10 @@ class TestAsyncAccountNumbers:
     async def test_method_update_with_all_params(self, async_client: AsyncIncrease) -> None:
         account_number = await async_client.account_numbers.update(
             account_number_id="account_number_v18nkfqm6afpsrvy82b2",
-            inbound_ach={"debit_status": "blocked"},
+            inbound_ach={"debit_status": "allowed"},
             inbound_checks={"status": "allowed"},
             name="x",
-            status="disabled",
+            status="active",
         )
         assert_matches_type(AccountNumber, account_number, path=["response"])
 

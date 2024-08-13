@@ -21,7 +21,7 @@ class TestPhysicalCards:
     def test_method_advance_shipment(self, client: Increase) -> None:
         physical_card = client.simulations.physical_cards.advance_shipment(
             physical_card_id="physical_card_ode8duyq5v2ynhjoharl",
-            shipment_status="shipped",
+            shipment_status="pending",
         )
         assert_matches_type(PhysicalCard, physical_card, path=["response"])
 
@@ -29,7 +29,7 @@ class TestPhysicalCards:
     def test_raw_response_advance_shipment(self, client: Increase) -> None:
         response = client.simulations.physical_cards.with_raw_response.advance_shipment(
             physical_card_id="physical_card_ode8duyq5v2ynhjoharl",
-            shipment_status="shipped",
+            shipment_status="pending",
         )
 
         assert response.is_closed is True
@@ -41,7 +41,7 @@ class TestPhysicalCards:
     def test_streaming_response_advance_shipment(self, client: Increase) -> None:
         with client.simulations.physical_cards.with_streaming_response.advance_shipment(
             physical_card_id="physical_card_ode8duyq5v2ynhjoharl",
-            shipment_status="shipped",
+            shipment_status="pending",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -56,7 +56,7 @@ class TestPhysicalCards:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `physical_card_id` but received ''"):
             client.simulations.physical_cards.with_raw_response.advance_shipment(
                 physical_card_id="",
-                shipment_status="shipped",
+                shipment_status="pending",
             )
 
 
@@ -67,7 +67,7 @@ class TestAsyncPhysicalCards:
     async def test_method_advance_shipment(self, async_client: AsyncIncrease) -> None:
         physical_card = await async_client.simulations.physical_cards.advance_shipment(
             physical_card_id="physical_card_ode8duyq5v2ynhjoharl",
-            shipment_status="shipped",
+            shipment_status="pending",
         )
         assert_matches_type(PhysicalCard, physical_card, path=["response"])
 
@@ -75,7 +75,7 @@ class TestAsyncPhysicalCards:
     async def test_raw_response_advance_shipment(self, async_client: AsyncIncrease) -> None:
         response = await async_client.simulations.physical_cards.with_raw_response.advance_shipment(
             physical_card_id="physical_card_ode8duyq5v2ynhjoharl",
-            shipment_status="shipped",
+            shipment_status="pending",
         )
 
         assert response.is_closed is True
@@ -87,7 +87,7 @@ class TestAsyncPhysicalCards:
     async def test_streaming_response_advance_shipment(self, async_client: AsyncIncrease) -> None:
         async with async_client.simulations.physical_cards.with_streaming_response.advance_shipment(
             physical_card_id="physical_card_ode8duyq5v2ynhjoharl",
-            shipment_status="shipped",
+            shipment_status="pending",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -102,5 +102,5 @@ class TestAsyncPhysicalCards:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `physical_card_id` but received ''"):
             await async_client.simulations.physical_cards.with_raw_response.advance_shipment(
                 physical_card_id="",
-                shipment_status="shipped",
+                shipment_status="pending",
             )
