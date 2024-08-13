@@ -54,12 +54,12 @@ class TestPhysicalCards:
                 "address": {
                     "city": "New York",
                     "line1": "33 Liberty Street",
-                    "line2": "Unit 2",
-                    "line3": "x",
                     "name": "Ian Crease",
-                    "phone_number": "x",
                     "postal_code": "10045",
                     "state": "NY",
+                    "line2": "Unit 2",
+                    "line3": "x",
+                    "phone_number": "x",
                 },
                 "method": "usps",
             },
@@ -161,7 +161,7 @@ class TestPhysicalCards:
     def test_method_update(self, client: Increase) -> None:
         physical_card = client.physical_cards.update(
             physical_card_id="physical_card_ode8duyq5v2ynhjoharl",
-            status="disabled",
+            status="active",
         )
         assert_matches_type(PhysicalCard, physical_card, path=["response"])
 
@@ -169,7 +169,7 @@ class TestPhysicalCards:
     def test_raw_response_update(self, client: Increase) -> None:
         response = client.physical_cards.with_raw_response.update(
             physical_card_id="physical_card_ode8duyq5v2ynhjoharl",
-            status="disabled",
+            status="active",
         )
 
         assert response.is_closed is True
@@ -181,7 +181,7 @@ class TestPhysicalCards:
     def test_streaming_response_update(self, client: Increase) -> None:
         with client.physical_cards.with_streaming_response.update(
             physical_card_id="physical_card_ode8duyq5v2ynhjoharl",
-            status="disabled",
+            status="active",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -196,7 +196,7 @@ class TestPhysicalCards:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `physical_card_id` but received ''"):
             client.physical_cards.with_raw_response.update(
                 physical_card_id="",
-                status="disabled",
+                status="active",
             )
 
     @parametrize
@@ -277,12 +277,12 @@ class TestAsyncPhysicalCards:
                 "address": {
                     "city": "New York",
                     "line1": "33 Liberty Street",
-                    "line2": "Unit 2",
-                    "line3": "x",
                     "name": "Ian Crease",
-                    "phone_number": "x",
                     "postal_code": "10045",
                     "state": "NY",
+                    "line2": "Unit 2",
+                    "line3": "x",
+                    "phone_number": "x",
                 },
                 "method": "usps",
             },
@@ -384,7 +384,7 @@ class TestAsyncPhysicalCards:
     async def test_method_update(self, async_client: AsyncIncrease) -> None:
         physical_card = await async_client.physical_cards.update(
             physical_card_id="physical_card_ode8duyq5v2ynhjoharl",
-            status="disabled",
+            status="active",
         )
         assert_matches_type(PhysicalCard, physical_card, path=["response"])
 
@@ -392,7 +392,7 @@ class TestAsyncPhysicalCards:
     async def test_raw_response_update(self, async_client: AsyncIncrease) -> None:
         response = await async_client.physical_cards.with_raw_response.update(
             physical_card_id="physical_card_ode8duyq5v2ynhjoharl",
-            status="disabled",
+            status="active",
         )
 
         assert response.is_closed is True
@@ -404,7 +404,7 @@ class TestAsyncPhysicalCards:
     async def test_streaming_response_update(self, async_client: AsyncIncrease) -> None:
         async with async_client.physical_cards.with_streaming_response.update(
             physical_card_id="physical_card_ode8duyq5v2ynhjoharl",
-            status="disabled",
+            status="active",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -419,7 +419,7 @@ class TestAsyncPhysicalCards:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `physical_card_id` but received ''"):
             await async_client.physical_cards.with_raw_response.update(
                 physical_card_id="",
-                status="disabled",
+                status="active",
             )
 
     @parametrize

@@ -33,9 +33,9 @@ class TestCards:
             billing_address={
                 "city": "x",
                 "line1": "x",
-                "line2": "x",
                 "postal_code": "x",
                 "state": "x",
+                "line2": "x",
             },
             description="Card for Ian Crease",
             digital_wallet={
@@ -123,9 +123,9 @@ class TestCards:
             billing_address={
                 "city": "x",
                 "line1": "x",
-                "line2": "x",
                 "postal_code": "x",
                 "state": "x",
+                "line2": "x",
             },
             description="New description",
             digital_wallet={
@@ -266,9 +266,9 @@ class TestAsyncCards:
             billing_address={
                 "city": "x",
                 "line1": "x",
-                "line2": "x",
                 "postal_code": "x",
                 "state": "x",
+                "line2": "x",
             },
             description="Card for Ian Crease",
             digital_wallet={
@@ -356,9 +356,9 @@ class TestAsyncCards:
             billing_address={
                 "city": "x",
                 "line1": "x",
-                "line2": "x",
                 "postal_code": "x",
                 "state": "x",
+                "line2": "x",
             },
             description="New description",
             digital_wallet={

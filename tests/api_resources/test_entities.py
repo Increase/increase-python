@@ -36,38 +36,36 @@ class TestEntities:
                 "address": {
                     "city": "New York",
                     "line1": "33 Liberty Street",
-                    "line2": "x",
                     "state": "NY",
                     "zip": "10045",
+                    "line2": "x",
                 },
                 "beneficial_owners": [
                     {
-                        "company_title": "CEO",
                         "individual": {
                             "address": {
                                 "city": "New York",
                                 "line1": "33 Liberty Street",
-                                "line2": "x",
                                 "state": "NY",
                                 "zip": "10045",
+                                "line2": "x",
                             },
-                            "confirmed_no_us_tax_id": True,
                             "date_of_birth": parse_date("1970-01-31"),
                             "identification": {
+                                "method": "social_security_number",
+                                "number": "078051120",
                                 "drivers_license": {
-                                    "back_file_id": "back_file_id",
                                     "expiration_date": parse_date("2019-12-27"),
                                     "file_id": "file_id",
                                     "state": "x",
-                                },
-                                "method": "social_security_number",
-                                "number": "078051120",
-                                "other": {
                                     "back_file_id": "back_file_id",
+                                },
+                                "other": {
                                     "country": "x",
                                     "description": "x",
-                                    "expiration_date": parse_date("2019-12-27"),
                                     "file_id": "file_id",
+                                    "back_file_id": "back_file_id",
+                                    "expiration_date": parse_date("2019-12-27"),
                                 },
                                 "passport": {
                                     "country": "x",
@@ -76,14 +74,16 @@ class TestEntities:
                                 },
                             },
                             "name": "Ian Crease",
+                            "confirmed_no_us_tax_id": True,
                         },
-                        "prongs": ["control"],
+                        "prongs": ["ownership"],
+                        "company_title": "CEO",
                     }
                 ],
-                "incorporation_state": "NY",
-                "industry_code": "x",
                 "name": "National Phonograph Company",
                 "tax_identifier": "602214076",
+                "incorporation_state": "NY",
+                "industry_code": "x",
                 "website": "https://example.com",
             },
             description="x",
@@ -91,9 +91,9 @@ class TestEntities:
                 "address": {
                     "city": "x",
                     "line1": "x",
-                    "line2": "x",
                     "state": "x",
                     "zip": "x",
+                    "line2": "x",
                 },
                 "authorized_persons": [{"name": "x"}, {"name": "x"}, {"name": "x"}],
                 "category": "municipality",
@@ -107,27 +107,26 @@ class TestEntities:
                         "address": {
                             "city": "x",
                             "line1": "x",
-                            "line2": "x",
                             "state": "x",
                             "zip": "x",
+                            "line2": "x",
                         },
-                        "confirmed_no_us_tax_id": True,
                         "date_of_birth": parse_date("2019-12-27"),
                         "identification": {
+                            "method": "social_security_number",
+                            "number": "xxxx",
                             "drivers_license": {
-                                "back_file_id": "back_file_id",
                                 "expiration_date": parse_date("2019-12-27"),
                                 "file_id": "file_id",
                                 "state": "x",
-                            },
-                            "method": "social_security_number",
-                            "number": "xxxx",
-                            "other": {
                                 "back_file_id": "back_file_id",
+                            },
+                            "other": {
                                 "country": "x",
                                 "description": "x",
-                                "expiration_date": parse_date("2019-12-27"),
                                 "file_id": "file_id",
+                                "back_file_id": "back_file_id",
+                                "expiration_date": parse_date("2019-12-27"),
                             },
                             "passport": {
                                 "country": "x",
@@ -136,32 +135,32 @@ class TestEntities:
                             },
                         },
                         "name": "x",
+                        "confirmed_no_us_tax_id": True,
                     },
                     {
                         "address": {
                             "city": "x",
                             "line1": "x",
-                            "line2": "x",
                             "state": "x",
                             "zip": "x",
+                            "line2": "x",
                         },
-                        "confirmed_no_us_tax_id": True,
                         "date_of_birth": parse_date("2019-12-27"),
                         "identification": {
+                            "method": "social_security_number",
+                            "number": "xxxx",
                             "drivers_license": {
-                                "back_file_id": "back_file_id",
                                 "expiration_date": parse_date("2019-12-27"),
                                 "file_id": "file_id",
                                 "state": "x",
-                            },
-                            "method": "social_security_number",
-                            "number": "xxxx",
-                            "other": {
                                 "back_file_id": "back_file_id",
+                            },
+                            "other": {
                                 "country": "x",
                                 "description": "x",
-                                "expiration_date": parse_date("2019-12-27"),
                                 "file_id": "file_id",
+                                "back_file_id": "back_file_id",
+                                "expiration_date": parse_date("2019-12-27"),
                             },
                             "passport": {
                                 "country": "x",
@@ -170,32 +169,32 @@ class TestEntities:
                             },
                         },
                         "name": "x",
+                        "confirmed_no_us_tax_id": True,
                     },
                     {
                         "address": {
                             "city": "x",
                             "line1": "x",
-                            "line2": "x",
                             "state": "x",
                             "zip": "x",
+                            "line2": "x",
                         },
-                        "confirmed_no_us_tax_id": True,
                         "date_of_birth": parse_date("2019-12-27"),
                         "identification": {
+                            "method": "social_security_number",
+                            "number": "xxxx",
                             "drivers_license": {
-                                "back_file_id": "back_file_id",
                                 "expiration_date": parse_date("2019-12-27"),
                                 "file_id": "file_id",
                                 "state": "x",
-                            },
-                            "method": "social_security_number",
-                            "number": "xxxx",
-                            "other": {
                                 "back_file_id": "back_file_id",
+                            },
+                            "other": {
                                 "country": "x",
                                 "description": "x",
-                                "expiration_date": parse_date("2019-12-27"),
                                 "file_id": "file_id",
+                                "back_file_id": "back_file_id",
+                                "expiration_date": parse_date("2019-12-27"),
                             },
                             "passport": {
                                 "country": "x",
@@ -204,6 +203,7 @@ class TestEntities:
                             },
                         },
                         "name": "x",
+                        "confirmed_no_us_tax_id": True,
                     },
                 ],
                 "name": "x",
@@ -212,27 +212,26 @@ class TestEntities:
                 "address": {
                     "city": "x",
                     "line1": "x",
-                    "line2": "x",
                     "state": "x",
                     "zip": "x",
+                    "line2": "x",
                 },
-                "confirmed_no_us_tax_id": True,
                 "date_of_birth": parse_date("2019-12-27"),
                 "identification": {
+                    "method": "social_security_number",
+                    "number": "xxxx",
                     "drivers_license": {
-                        "back_file_id": "back_file_id",
                         "expiration_date": parse_date("2019-12-27"),
                         "file_id": "file_id",
                         "state": "x",
-                    },
-                    "method": "social_security_number",
-                    "number": "xxxx",
-                    "other": {
                         "back_file_id": "back_file_id",
+                    },
+                    "other": {
                         "country": "x",
                         "description": "x",
-                        "expiration_date": parse_date("2019-12-27"),
                         "file_id": "file_id",
+                        "back_file_id": "back_file_id",
+                        "expiration_date": parse_date("2019-12-27"),
                     },
                     "passport": {
                         "country": "x",
@@ -241,44 +240,158 @@ class TestEntities:
                     },
                 },
                 "name": "x",
+                "confirmed_no_us_tax_id": True,
             },
             supplemental_documents=[{"file_id": "file_makxrc67oh9l6sg7w9yc"}],
             trust={
                 "address": {
                     "city": "x",
                     "line1": "x",
-                    "line2": "x",
                     "state": "x",
                     "zip": "x",
+                    "line2": "x",
                 },
                 "category": "revocable",
+                "name": "x",
+                "trustees": [
+                    {
+                        "structure": "individual",
+                        "individual": {
+                            "address": {
+                                "city": "x",
+                                "line1": "x",
+                                "state": "x",
+                                "zip": "x",
+                                "line2": "x",
+                            },
+                            "date_of_birth": parse_date("2019-12-27"),
+                            "identification": {
+                                "method": "social_security_number",
+                                "number": "xxxx",
+                                "drivers_license": {
+                                    "expiration_date": parse_date("2019-12-27"),
+                                    "file_id": "file_id",
+                                    "state": "x",
+                                    "back_file_id": "back_file_id",
+                                },
+                                "other": {
+                                    "country": "x",
+                                    "description": "x",
+                                    "file_id": "file_id",
+                                    "back_file_id": "back_file_id",
+                                    "expiration_date": parse_date("2019-12-27"),
+                                },
+                                "passport": {
+                                    "country": "x",
+                                    "expiration_date": parse_date("2019-12-27"),
+                                    "file_id": "file_id",
+                                },
+                            },
+                            "name": "x",
+                            "confirmed_no_us_tax_id": True,
+                        },
+                    },
+                    {
+                        "structure": "individual",
+                        "individual": {
+                            "address": {
+                                "city": "x",
+                                "line1": "x",
+                                "state": "x",
+                                "zip": "x",
+                                "line2": "x",
+                            },
+                            "date_of_birth": parse_date("2019-12-27"),
+                            "identification": {
+                                "method": "social_security_number",
+                                "number": "xxxx",
+                                "drivers_license": {
+                                    "expiration_date": parse_date("2019-12-27"),
+                                    "file_id": "file_id",
+                                    "state": "x",
+                                    "back_file_id": "back_file_id",
+                                },
+                                "other": {
+                                    "country": "x",
+                                    "description": "x",
+                                    "file_id": "file_id",
+                                    "back_file_id": "back_file_id",
+                                    "expiration_date": parse_date("2019-12-27"),
+                                },
+                                "passport": {
+                                    "country": "x",
+                                    "expiration_date": parse_date("2019-12-27"),
+                                    "file_id": "file_id",
+                                },
+                            },
+                            "name": "x",
+                            "confirmed_no_us_tax_id": True,
+                        },
+                    },
+                    {
+                        "structure": "individual",
+                        "individual": {
+                            "address": {
+                                "city": "x",
+                                "line1": "x",
+                                "state": "x",
+                                "zip": "x",
+                                "line2": "x",
+                            },
+                            "date_of_birth": parse_date("2019-12-27"),
+                            "identification": {
+                                "method": "social_security_number",
+                                "number": "xxxx",
+                                "drivers_license": {
+                                    "expiration_date": parse_date("2019-12-27"),
+                                    "file_id": "file_id",
+                                    "state": "x",
+                                    "back_file_id": "back_file_id",
+                                },
+                                "other": {
+                                    "country": "x",
+                                    "description": "x",
+                                    "file_id": "file_id",
+                                    "back_file_id": "back_file_id",
+                                    "expiration_date": parse_date("2019-12-27"),
+                                },
+                                "passport": {
+                                    "country": "x",
+                                    "expiration_date": parse_date("2019-12-27"),
+                                    "file_id": "file_id",
+                                },
+                            },
+                            "name": "x",
+                            "confirmed_no_us_tax_id": True,
+                        },
+                    },
+                ],
                 "formation_document_file_id": "formation_document_file_id",
                 "formation_state": "x",
                 "grantor": {
                     "address": {
                         "city": "x",
                         "line1": "x",
-                        "line2": "x",
                         "state": "x",
                         "zip": "x",
+                        "line2": "x",
                     },
-                    "confirmed_no_us_tax_id": True,
                     "date_of_birth": parse_date("2019-12-27"),
                     "identification": {
+                        "method": "social_security_number",
+                        "number": "xxxx",
                         "drivers_license": {
-                            "back_file_id": "back_file_id",
                             "expiration_date": parse_date("2019-12-27"),
                             "file_id": "file_id",
                             "state": "x",
-                        },
-                        "method": "social_security_number",
-                        "number": "xxxx",
-                        "other": {
                             "back_file_id": "back_file_id",
+                        },
+                        "other": {
                             "country": "x",
                             "description": "x",
-                            "expiration_date": parse_date("2019-12-27"),
                             "file_id": "file_id",
+                            "back_file_id": "back_file_id",
+                            "expiration_date": parse_date("2019-12-27"),
                         },
                         "passport": {
                             "country": "x",
@@ -287,122 +400,9 @@ class TestEntities:
                         },
                     },
                     "name": "x",
+                    "confirmed_no_us_tax_id": True,
                 },
-                "name": "x",
                 "tax_identifier": "x",
-                "trustees": [
-                    {
-                        "individual": {
-                            "address": {
-                                "city": "x",
-                                "line1": "x",
-                                "line2": "x",
-                                "state": "x",
-                                "zip": "x",
-                            },
-                            "confirmed_no_us_tax_id": True,
-                            "date_of_birth": parse_date("2019-12-27"),
-                            "identification": {
-                                "drivers_license": {
-                                    "back_file_id": "back_file_id",
-                                    "expiration_date": parse_date("2019-12-27"),
-                                    "file_id": "file_id",
-                                    "state": "x",
-                                },
-                                "method": "social_security_number",
-                                "number": "xxxx",
-                                "other": {
-                                    "back_file_id": "back_file_id",
-                                    "country": "x",
-                                    "description": "x",
-                                    "expiration_date": parse_date("2019-12-27"),
-                                    "file_id": "file_id",
-                                },
-                                "passport": {
-                                    "country": "x",
-                                    "expiration_date": parse_date("2019-12-27"),
-                                    "file_id": "file_id",
-                                },
-                            },
-                            "name": "x",
-                        },
-                        "structure": "individual",
-                    },
-                    {
-                        "individual": {
-                            "address": {
-                                "city": "x",
-                                "line1": "x",
-                                "line2": "x",
-                                "state": "x",
-                                "zip": "x",
-                            },
-                            "confirmed_no_us_tax_id": True,
-                            "date_of_birth": parse_date("2019-12-27"),
-                            "identification": {
-                                "drivers_license": {
-                                    "back_file_id": "back_file_id",
-                                    "expiration_date": parse_date("2019-12-27"),
-                                    "file_id": "file_id",
-                                    "state": "x",
-                                },
-                                "method": "social_security_number",
-                                "number": "xxxx",
-                                "other": {
-                                    "back_file_id": "back_file_id",
-                                    "country": "x",
-                                    "description": "x",
-                                    "expiration_date": parse_date("2019-12-27"),
-                                    "file_id": "file_id",
-                                },
-                                "passport": {
-                                    "country": "x",
-                                    "expiration_date": parse_date("2019-12-27"),
-                                    "file_id": "file_id",
-                                },
-                            },
-                            "name": "x",
-                        },
-                        "structure": "individual",
-                    },
-                    {
-                        "individual": {
-                            "address": {
-                                "city": "x",
-                                "line1": "x",
-                                "line2": "x",
-                                "state": "x",
-                                "zip": "x",
-                            },
-                            "confirmed_no_us_tax_id": True,
-                            "date_of_birth": parse_date("2019-12-27"),
-                            "identification": {
-                                "drivers_license": {
-                                    "back_file_id": "back_file_id",
-                                    "expiration_date": parse_date("2019-12-27"),
-                                    "file_id": "file_id",
-                                    "state": "x",
-                                },
-                                "method": "social_security_number",
-                                "number": "xxxx",
-                                "other": {
-                                    "back_file_id": "back_file_id",
-                                    "country": "x",
-                                    "description": "x",
-                                    "expiration_date": parse_date("2019-12-27"),
-                                    "file_id": "file_id",
-                                },
-                                "passport": {
-                                    "country": "x",
-                                    "expiration_date": parse_date("2019-12-27"),
-                                    "file_id": "file_id",
-                                },
-                            },
-                            "name": "x",
-                        },
-                        "structure": "individual",
-                    },
-                ],
             },
         )
         assert_matches_type(Entity, entity, path=["response"])
@@ -655,7 +655,7 @@ class TestEntities:
                     },
                     "name": "Ian Crease",
                 },
-                "prongs": ["control"],
+                "prongs": ["ownership"],
             },
         )
         assert_matches_type(Entity, entity, path=["response"])
@@ -665,32 +665,30 @@ class TestEntities:
         entity = client.entities.create_beneficial_owner(
             entity_id="entity_n8y8tnk2p9339ti393yi",
             beneficial_owner={
-                "company_title": "CEO",
                 "individual": {
                     "address": {
                         "city": "New York",
                         "line1": "33 Liberty Street",
-                        "line2": "x",
                         "state": "NY",
                         "zip": "10045",
+                        "line2": "x",
                     },
-                    "confirmed_no_us_tax_id": True,
                     "date_of_birth": parse_date("1970-01-31"),
                     "identification": {
+                        "method": "social_security_number",
+                        "number": "078051120",
                         "drivers_license": {
-                            "back_file_id": "back_file_id",
                             "expiration_date": parse_date("2019-12-27"),
                             "file_id": "file_id",
                             "state": "x",
-                        },
-                        "method": "social_security_number",
-                        "number": "078051120",
-                        "other": {
                             "back_file_id": "back_file_id",
+                        },
+                        "other": {
                             "country": "x",
                             "description": "x",
-                            "expiration_date": parse_date("2019-12-27"),
                             "file_id": "file_id",
+                            "back_file_id": "back_file_id",
+                            "expiration_date": parse_date("2019-12-27"),
                         },
                         "passport": {
                             "country": "x",
@@ -699,8 +697,10 @@ class TestEntities:
                         },
                     },
                     "name": "Ian Crease",
+                    "confirmed_no_us_tax_id": True,
                 },
-                "prongs": ["control"],
+                "prongs": ["ownership"],
+                "company_title": "CEO",
             },
         )
         assert_matches_type(Entity, entity, path=["response"])
@@ -724,7 +724,7 @@ class TestEntities:
                     },
                     "name": "Ian Crease",
                 },
-                "prongs": ["control"],
+                "prongs": ["ownership"],
             },
         )
 
@@ -752,7 +752,7 @@ class TestEntities:
                     },
                     "name": "Ian Crease",
                 },
-                "prongs": ["control"],
+                "prongs": ["ownership"],
             },
         ) as response:
             assert not response.is_closed
@@ -783,7 +783,7 @@ class TestEntities:
                         },
                         "name": "Ian Crease",
                     },
-                    "prongs": ["control"],
+                    "prongs": ["ownership"],
                 },
             )
 
@@ -807,9 +807,9 @@ class TestEntities:
             address={
                 "city": "New York",
                 "line1": "33 Liberty Street",
-                "line2": "Unit 2",
                 "state": "NY",
                 "zip": "10045",
+                "line2": "Unit 2",
             },
         )
         assert_matches_type(Entity, entity, path=["response"])
@@ -884,9 +884,9 @@ class TestEntities:
             address={
                 "city": "New York",
                 "line1": "33 Liberty Street",
-                "line2": "Unit 2",
                 "state": "NY",
                 "zip": "10045",
+                "line2": "Unit 2",
             },
             beneficial_owner_id="entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7",
         )
@@ -1005,38 +1005,36 @@ class TestAsyncEntities:
                 "address": {
                     "city": "New York",
                     "line1": "33 Liberty Street",
-                    "line2": "x",
                     "state": "NY",
                     "zip": "10045",
+                    "line2": "x",
                 },
                 "beneficial_owners": [
                     {
-                        "company_title": "CEO",
                         "individual": {
                             "address": {
                                 "city": "New York",
                                 "line1": "33 Liberty Street",
-                                "line2": "x",
                                 "state": "NY",
                                 "zip": "10045",
+                                "line2": "x",
                             },
-                            "confirmed_no_us_tax_id": True,
                             "date_of_birth": parse_date("1970-01-31"),
                             "identification": {
+                                "method": "social_security_number",
+                                "number": "078051120",
                                 "drivers_license": {
-                                    "back_file_id": "back_file_id",
                                     "expiration_date": parse_date("2019-12-27"),
                                     "file_id": "file_id",
                                     "state": "x",
-                                },
-                                "method": "social_security_number",
-                                "number": "078051120",
-                                "other": {
                                     "back_file_id": "back_file_id",
+                                },
+                                "other": {
                                     "country": "x",
                                     "description": "x",
-                                    "expiration_date": parse_date("2019-12-27"),
                                     "file_id": "file_id",
+                                    "back_file_id": "back_file_id",
+                                    "expiration_date": parse_date("2019-12-27"),
                                 },
                                 "passport": {
                                     "country": "x",
@@ -1045,14 +1043,16 @@ class TestAsyncEntities:
                                 },
                             },
                             "name": "Ian Crease",
+                            "confirmed_no_us_tax_id": True,
                         },
-                        "prongs": ["control"],
+                        "prongs": ["ownership"],
+                        "company_title": "CEO",
                     }
                 ],
-                "incorporation_state": "NY",
-                "industry_code": "x",
                 "name": "National Phonograph Company",
                 "tax_identifier": "602214076",
+                "incorporation_state": "NY",
+                "industry_code": "x",
                 "website": "https://example.com",
             },
             description="x",
@@ -1060,9 +1060,9 @@ class TestAsyncEntities:
                 "address": {
                     "city": "x",
                     "line1": "x",
-                    "line2": "x",
                     "state": "x",
                     "zip": "x",
+                    "line2": "x",
                 },
                 "authorized_persons": [{"name": "x"}, {"name": "x"}, {"name": "x"}],
                 "category": "municipality",
@@ -1076,27 +1076,26 @@ class TestAsyncEntities:
                         "address": {
                             "city": "x",
                             "line1": "x",
-                            "line2": "x",
                             "state": "x",
                             "zip": "x",
+                            "line2": "x",
                         },
-                        "confirmed_no_us_tax_id": True,
                         "date_of_birth": parse_date("2019-12-27"),
                         "identification": {
+                            "method": "social_security_number",
+                            "number": "xxxx",
                             "drivers_license": {
-                                "back_file_id": "back_file_id",
                                 "expiration_date": parse_date("2019-12-27"),
                                 "file_id": "file_id",
                                 "state": "x",
-                            },
-                            "method": "social_security_number",
-                            "number": "xxxx",
-                            "other": {
                                 "back_file_id": "back_file_id",
+                            },
+                            "other": {
                                 "country": "x",
                                 "description": "x",
-                                "expiration_date": parse_date("2019-12-27"),
                                 "file_id": "file_id",
+                                "back_file_id": "back_file_id",
+                                "expiration_date": parse_date("2019-12-27"),
                             },
                             "passport": {
                                 "country": "x",
@@ -1105,32 +1104,32 @@ class TestAsyncEntities:
                             },
                         },
                         "name": "x",
+                        "confirmed_no_us_tax_id": True,
                     },
                     {
                         "address": {
                             "city": "x",
                             "line1": "x",
-                            "line2": "x",
                             "state": "x",
                             "zip": "x",
+                            "line2": "x",
                         },
-                        "confirmed_no_us_tax_id": True,
                         "date_of_birth": parse_date("2019-12-27"),
                         "identification": {
+                            "method": "social_security_number",
+                            "number": "xxxx",
                             "drivers_license": {
-                                "back_file_id": "back_file_id",
                                 "expiration_date": parse_date("2019-12-27"),
                                 "file_id": "file_id",
                                 "state": "x",
-                            },
-                            "method": "social_security_number",
-                            "number": "xxxx",
-                            "other": {
                                 "back_file_id": "back_file_id",
+                            },
+                            "other": {
                                 "country": "x",
                                 "description": "x",
-                                "expiration_date": parse_date("2019-12-27"),
                                 "file_id": "file_id",
+                                "back_file_id": "back_file_id",
+                                "expiration_date": parse_date("2019-12-27"),
                             },
                             "passport": {
                                 "country": "x",
@@ -1139,32 +1138,32 @@ class TestAsyncEntities:
                             },
                         },
                         "name": "x",
+                        "confirmed_no_us_tax_id": True,
                     },
                     {
                         "address": {
                             "city": "x",
                             "line1": "x",
-                            "line2": "x",
                             "state": "x",
                             "zip": "x",
+                            "line2": "x",
                         },
-                        "confirmed_no_us_tax_id": True,
                         "date_of_birth": parse_date("2019-12-27"),
                         "identification": {
+                            "method": "social_security_number",
+                            "number": "xxxx",
                             "drivers_license": {
-                                "back_file_id": "back_file_id",
                                 "expiration_date": parse_date("2019-12-27"),
                                 "file_id": "file_id",
                                 "state": "x",
-                            },
-                            "method": "social_security_number",
-                            "number": "xxxx",
-                            "other": {
                                 "back_file_id": "back_file_id",
+                            },
+                            "other": {
                                 "country": "x",
                                 "description": "x",
-                                "expiration_date": parse_date("2019-12-27"),
                                 "file_id": "file_id",
+                                "back_file_id": "back_file_id",
+                                "expiration_date": parse_date("2019-12-27"),
                             },
                             "passport": {
                                 "country": "x",
@@ -1173,6 +1172,7 @@ class TestAsyncEntities:
                             },
                         },
                         "name": "x",
+                        "confirmed_no_us_tax_id": True,
                     },
                 ],
                 "name": "x",
@@ -1181,27 +1181,26 @@ class TestAsyncEntities:
                 "address": {
                     "city": "x",
                     "line1": "x",
-                    "line2": "x",
                     "state": "x",
                     "zip": "x",
+                    "line2": "x",
                 },
-                "confirmed_no_us_tax_id": True,
                 "date_of_birth": parse_date("2019-12-27"),
                 "identification": {
+                    "method": "social_security_number",
+                    "number": "xxxx",
                     "drivers_license": {
-                        "back_file_id": "back_file_id",
                         "expiration_date": parse_date("2019-12-27"),
                         "file_id": "file_id",
                         "state": "x",
-                    },
-                    "method": "social_security_number",
-                    "number": "xxxx",
-                    "other": {
                         "back_file_id": "back_file_id",
+                    },
+                    "other": {
                         "country": "x",
                         "description": "x",
-                        "expiration_date": parse_date("2019-12-27"),
                         "file_id": "file_id",
+                        "back_file_id": "back_file_id",
+                        "expiration_date": parse_date("2019-12-27"),
                     },
                     "passport": {
                         "country": "x",
@@ -1210,44 +1209,158 @@ class TestAsyncEntities:
                     },
                 },
                 "name": "x",
+                "confirmed_no_us_tax_id": True,
             },
             supplemental_documents=[{"file_id": "file_makxrc67oh9l6sg7w9yc"}],
             trust={
                 "address": {
                     "city": "x",
                     "line1": "x",
-                    "line2": "x",
                     "state": "x",
                     "zip": "x",
+                    "line2": "x",
                 },
                 "category": "revocable",
+                "name": "x",
+                "trustees": [
+                    {
+                        "structure": "individual",
+                        "individual": {
+                            "address": {
+                                "city": "x",
+                                "line1": "x",
+                                "state": "x",
+                                "zip": "x",
+                                "line2": "x",
+                            },
+                            "date_of_birth": parse_date("2019-12-27"),
+                            "identification": {
+                                "method": "social_security_number",
+                                "number": "xxxx",
+                                "drivers_license": {
+                                    "expiration_date": parse_date("2019-12-27"),
+                                    "file_id": "file_id",
+                                    "state": "x",
+                                    "back_file_id": "back_file_id",
+                                },
+                                "other": {
+                                    "country": "x",
+                                    "description": "x",
+                                    "file_id": "file_id",
+                                    "back_file_id": "back_file_id",
+                                    "expiration_date": parse_date("2019-12-27"),
+                                },
+                                "passport": {
+                                    "country": "x",
+                                    "expiration_date": parse_date("2019-12-27"),
+                                    "file_id": "file_id",
+                                },
+                            },
+                            "name": "x",
+                            "confirmed_no_us_tax_id": True,
+                        },
+                    },
+                    {
+                        "structure": "individual",
+                        "individual": {
+                            "address": {
+                                "city": "x",
+                                "line1": "x",
+                                "state": "x",
+                                "zip": "x",
+                                "line2": "x",
+                            },
+                            "date_of_birth": parse_date("2019-12-27"),
+                            "identification": {
+                                "method": "social_security_number",
+                                "number": "xxxx",
+                                "drivers_license": {
+                                    "expiration_date": parse_date("2019-12-27"),
+                                    "file_id": "file_id",
+                                    "state": "x",
+                                    "back_file_id": "back_file_id",
+                                },
+                                "other": {
+                                    "country": "x",
+                                    "description": "x",
+                                    "file_id": "file_id",
+                                    "back_file_id": "back_file_id",
+                                    "expiration_date": parse_date("2019-12-27"),
+                                },
+                                "passport": {
+                                    "country": "x",
+                                    "expiration_date": parse_date("2019-12-27"),
+                                    "file_id": "file_id",
+                                },
+                            },
+                            "name": "x",
+                            "confirmed_no_us_tax_id": True,
+                        },
+                    },
+                    {
+                        "structure": "individual",
+                        "individual": {
+                            "address": {
+                                "city": "x",
+                                "line1": "x",
+                                "state": "x",
+                                "zip": "x",
+                                "line2": "x",
+                            },
+                            "date_of_birth": parse_date("2019-12-27"),
+                            "identification": {
+                                "method": "social_security_number",
+                                "number": "xxxx",
+                                "drivers_license": {
+                                    "expiration_date": parse_date("2019-12-27"),
+                                    "file_id": "file_id",
+                                    "state": "x",
+                                    "back_file_id": "back_file_id",
+                                },
+                                "other": {
+                                    "country": "x",
+                                    "description": "x",
+                                    "file_id": "file_id",
+                                    "back_file_id": "back_file_id",
+                                    "expiration_date": parse_date("2019-12-27"),
+                                },
+                                "passport": {
+                                    "country": "x",
+                                    "expiration_date": parse_date("2019-12-27"),
+                                    "file_id": "file_id",
+                                },
+                            },
+                            "name": "x",
+                            "confirmed_no_us_tax_id": True,
+                        },
+                    },
+                ],
                 "formation_document_file_id": "formation_document_file_id",
                 "formation_state": "x",
                 "grantor": {
                     "address": {
                         "city": "x",
                         "line1": "x",
-                        "line2": "x",
                         "state": "x",
                         "zip": "x",
+                        "line2": "x",
                     },
-                    "confirmed_no_us_tax_id": True,
                     "date_of_birth": parse_date("2019-12-27"),
                     "identification": {
+                        "method": "social_security_number",
+                        "number": "xxxx",
                         "drivers_license": {
-                            "back_file_id": "back_file_id",
                             "expiration_date": parse_date("2019-12-27"),
                             "file_id": "file_id",
                             "state": "x",
-                        },
-                        "method": "social_security_number",
-                        "number": "xxxx",
-                        "other": {
                             "back_file_id": "back_file_id",
+                        },
+                        "other": {
                             "country": "x",
                             "description": "x",
-                            "expiration_date": parse_date("2019-12-27"),
                             "file_id": "file_id",
+                            "back_file_id": "back_file_id",
+                            "expiration_date": parse_date("2019-12-27"),
                         },
                         "passport": {
                             "country": "x",
@@ -1256,122 +1369,9 @@ class TestAsyncEntities:
                         },
                     },
                     "name": "x",
+                    "confirmed_no_us_tax_id": True,
                 },
-                "name": "x",
                 "tax_identifier": "x",
-                "trustees": [
-                    {
-                        "individual": {
-                            "address": {
-                                "city": "x",
-                                "line1": "x",
-                                "line2": "x",
-                                "state": "x",
-                                "zip": "x",
-                            },
-                            "confirmed_no_us_tax_id": True,
-                            "date_of_birth": parse_date("2019-12-27"),
-                            "identification": {
-                                "drivers_license": {
-                                    "back_file_id": "back_file_id",
-                                    "expiration_date": parse_date("2019-12-27"),
-                                    "file_id": "file_id",
-                                    "state": "x",
-                                },
-                                "method": "social_security_number",
-                                "number": "xxxx",
-                                "other": {
-                                    "back_file_id": "back_file_id",
-                                    "country": "x",
-                                    "description": "x",
-                                    "expiration_date": parse_date("2019-12-27"),
-                                    "file_id": "file_id",
-                                },
-                                "passport": {
-                                    "country": "x",
-                                    "expiration_date": parse_date("2019-12-27"),
-                                    "file_id": "file_id",
-                                },
-                            },
-                            "name": "x",
-                        },
-                        "structure": "individual",
-                    },
-                    {
-                        "individual": {
-                            "address": {
-                                "city": "x",
-                                "line1": "x",
-                                "line2": "x",
-                                "state": "x",
-                                "zip": "x",
-                            },
-                            "confirmed_no_us_tax_id": True,
-                            "date_of_birth": parse_date("2019-12-27"),
-                            "identification": {
-                                "drivers_license": {
-                                    "back_file_id": "back_file_id",
-                                    "expiration_date": parse_date("2019-12-27"),
-                                    "file_id": "file_id",
-                                    "state": "x",
-                                },
-                                "method": "social_security_number",
-                                "number": "xxxx",
-                                "other": {
-                                    "back_file_id": "back_file_id",
-                                    "country": "x",
-                                    "description": "x",
-                                    "expiration_date": parse_date("2019-12-27"),
-                                    "file_id": "file_id",
-                                },
-                                "passport": {
-                                    "country": "x",
-                                    "expiration_date": parse_date("2019-12-27"),
-                                    "file_id": "file_id",
-                                },
-                            },
-                            "name": "x",
-                        },
-                        "structure": "individual",
-                    },
-                    {
-                        "individual": {
-                            "address": {
-                                "city": "x",
-                                "line1": "x",
-                                "line2": "x",
-                                "state": "x",
-                                "zip": "x",
-                            },
-                            "confirmed_no_us_tax_id": True,
-                            "date_of_birth": parse_date("2019-12-27"),
-                            "identification": {
-                                "drivers_license": {
-                                    "back_file_id": "back_file_id",
-                                    "expiration_date": parse_date("2019-12-27"),
-                                    "file_id": "file_id",
-                                    "state": "x",
-                                },
-                                "method": "social_security_number",
-                                "number": "xxxx",
-                                "other": {
-                                    "back_file_id": "back_file_id",
-                                    "country": "x",
-                                    "description": "x",
-                                    "expiration_date": parse_date("2019-12-27"),
-                                    "file_id": "file_id",
-                                },
-                                "passport": {
-                                    "country": "x",
-                                    "expiration_date": parse_date("2019-12-27"),
-                                    "file_id": "file_id",
-                                },
-                            },
-                            "name": "x",
-                        },
-                        "structure": "individual",
-                    },
-                ],
             },
         )
         assert_matches_type(Entity, entity, path=["response"])
@@ -1624,7 +1624,7 @@ class TestAsyncEntities:
                     },
                     "name": "Ian Crease",
                 },
-                "prongs": ["control"],
+                "prongs": ["ownership"],
             },
         )
         assert_matches_type(Entity, entity, path=["response"])
@@ -1634,32 +1634,30 @@ class TestAsyncEntities:
         entity = await async_client.entities.create_beneficial_owner(
             entity_id="entity_n8y8tnk2p9339ti393yi",
             beneficial_owner={
-                "company_title": "CEO",
                 "individual": {
                     "address": {
                         "city": "New York",
                         "line1": "33 Liberty Street",
-                        "line2": "x",
                         "state": "NY",
                         "zip": "10045",
+                        "line2": "x",
                     },
-                    "confirmed_no_us_tax_id": True,
                     "date_of_birth": parse_date("1970-01-31"),
                     "identification": {
+                        "method": "social_security_number",
+                        "number": "078051120",
                         "drivers_license": {
-                            "back_file_id": "back_file_id",
                             "expiration_date": parse_date("2019-12-27"),
                             "file_id": "file_id",
                             "state": "x",
-                        },
-                        "method": "social_security_number",
-                        "number": "078051120",
-                        "other": {
                             "back_file_id": "back_file_id",
+                        },
+                        "other": {
                             "country": "x",
                             "description": "x",
-                            "expiration_date": parse_date("2019-12-27"),
                             "file_id": "file_id",
+                            "back_file_id": "back_file_id",
+                            "expiration_date": parse_date("2019-12-27"),
                         },
                         "passport": {
                             "country": "x",
@@ -1668,8 +1666,10 @@ class TestAsyncEntities:
                         },
                     },
                     "name": "Ian Crease",
+                    "confirmed_no_us_tax_id": True,
                 },
-                "prongs": ["control"],
+                "prongs": ["ownership"],
+                "company_title": "CEO",
             },
         )
         assert_matches_type(Entity, entity, path=["response"])
@@ -1693,7 +1693,7 @@ class TestAsyncEntities:
                     },
                     "name": "Ian Crease",
                 },
-                "prongs": ["control"],
+                "prongs": ["ownership"],
             },
         )
 
@@ -1721,7 +1721,7 @@ class TestAsyncEntities:
                     },
                     "name": "Ian Crease",
                 },
-                "prongs": ["control"],
+                "prongs": ["ownership"],
             },
         ) as response:
             assert not response.is_closed
@@ -1752,7 +1752,7 @@ class TestAsyncEntities:
                         },
                         "name": "Ian Crease",
                     },
-                    "prongs": ["control"],
+                    "prongs": ["ownership"],
                 },
             )
 
@@ -1776,9 +1776,9 @@ class TestAsyncEntities:
             address={
                 "city": "New York",
                 "line1": "33 Liberty Street",
-                "line2": "Unit 2",
                 "state": "NY",
                 "zip": "10045",
+                "line2": "Unit 2",
             },
         )
         assert_matches_type(Entity, entity, path=["response"])
@@ -1853,9 +1853,9 @@ class TestAsyncEntities:
             address={
                 "city": "New York",
                 "line1": "33 Liberty Street",
-                "line2": "Unit 2",
                 "state": "NY",
                 "zip": "10045",
+                "line2": "Unit 2",
             },
             beneficial_owner_id="entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7",
         )
