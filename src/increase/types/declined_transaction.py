@@ -506,6 +506,7 @@ class SourceCheckDecline(BaseModel):
         "ach_route_canceled",
         "altered_or_fictitious",
         "breaches_limit",
+        "endorsement_irregular",
         "entity_not_active",
         "group_locked",
         "insufficient_funds",
@@ -525,6 +526,7 @@ class SourceCheckDecline(BaseModel):
     - `ach_route_canceled` - The account number is canceled.
     - `altered_or_fictitious` - The deposited check was altered or fictitious.
     - `breaches_limit` - The transaction would cause a limit to be exceeded.
+    - `endorsement_irregular` - The check was not endorsed by the payee.
     - `entity_not_active` - The account's entity is not active.
     - `group_locked` - Your account is inactive.
     - `insufficient_funds` - Your account contains insufficient funds.
