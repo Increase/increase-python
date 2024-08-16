@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.91.0 (2024-08-16)
+
+Full Changelog: [v0.90.0...v0.91.0](https://github.com/Increase/increase-python/compare/v0.90.0...v0.91.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#585](https://github.com/Increase/increase-python/issues/585)) ([16c9c45](https://github.com/Increase/increase-python/commit/16c9c4503fdff8fb82cf332a4e0eb0d9a11c127f))
+
+
+### Chores
+
+* **internal:** use different 32bit detection method ([#583](https://github.com/Increase/increase-python/issues/583)) ([e1c98ea](https://github.com/Increase/increase-python/commit/e1c98ea87111b911ff110ed76caab4a13d179db9))
+
 ## 0.90.0 (2024-08-16)
 
 Full Changelog: [v0.89.0...v0.90.0](https://github.com/Increase/increase-python/compare/v0.89.0...v0.90.0)
