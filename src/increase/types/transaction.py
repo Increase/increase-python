@@ -16,6 +16,7 @@ __all__ = [
     "SourceCardDisputeAcceptance",
     "SourceCardDisputeLoss",
     "SourceCardRefund",
+    "SourceCardRefundInterchange",
     "SourceCardRefundNetworkIdentifiers",
     "SourceCardRefundPurchaseDetails",
     "SourceCardRefundPurchaseDetailsCarRental",
@@ -26,6 +27,7 @@ __all__ = [
     "SourceCardRefundPurchaseDetailsTravelTripLeg",
     "SourceCardRevenuePayment",
     "SourceCardSettlement",
+    "SourceCardSettlementInterchange",
     "SourceCardSettlementNetworkIdentifiers",
     "SourceCardSettlementPurchaseDetails",
     "SourceCardSettlementPurchaseDetailsCarRental",
@@ -400,6 +402,31 @@ class SourceCardDisputeLoss(BaseModel):
     """
     The identifier of the Transaction that was created to debit the disputed funds
     from your account.
+    """
+
+
+class SourceCardRefundInterchange(BaseModel):
+    amount: str
+    """The interchange amount given as a string containing a decimal number.
+
+    The amount is a positive number if it is credited to Increase (e.g.,
+    settlements) and a negative number if it is debited (e.g., refunds).
+    """
+
+    code: Optional[str] = None
+    """The card network specific interchange code."""
+
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
+    reimbursement.
+
+    - `CAD` - Canadian Dollar (CAD)
+    - `CHF` - Swiss Franc (CHF)
+    - `EUR` - Euro (EUR)
+    - `GBP` - British Pound (GBP)
+    - `JPY` - Japanese Yen (JPY)
+    - `USD` - US Dollar (USD)
     """
 
 
@@ -853,6 +880,9 @@ class SourceCardRefund(BaseModel):
     - `USD` - US Dollar (USD)
     """
 
+    interchange: Optional[SourceCardRefundInterchange] = None
+    """Interchange assessed as a part of this transaciton."""
+
     merchant_acceptor_id: Optional[str] = None
     """
     The merchant identifier (commonly abbreviated as MID) of the merchant the card
@@ -930,6 +960,31 @@ class SourceCardRevenuePayment(BaseModel):
 
     transacted_on_account_id: Optional[str] = None
     """The account the card belonged to."""
+
+
+class SourceCardSettlementInterchange(BaseModel):
+    amount: str
+    """The interchange amount given as a string containing a decimal number.
+
+    The amount is a positive number if it is credited to Increase (e.g.,
+    settlements) and a negative number if it is debited (e.g., refunds).
+    """
+
+    code: Optional[str] = None
+    """The card network specific interchange code."""
+
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
+    reimbursement.
+
+    - `CAD` - Canadian Dollar (CAD)
+    - `CHF` - Swiss Franc (CHF)
+    - `EUR` - Euro (EUR)
+    - `GBP` - British Pound (GBP)
+    - `JPY` - Japanese Yen (JPY)
+    - `USD` - US Dollar (USD)
+    """
 
 
 class SourceCardSettlementNetworkIdentifiers(BaseModel):
@@ -1387,6 +1442,9 @@ class SourceCardSettlement(BaseModel):
     - `JPY` - Japanese Yen (JPY)
     - `USD` - US Dollar (USD)
     """
+
+    interchange: Optional[SourceCardSettlementInterchange] = None
+    """Interchange assessed as a part of this transaciton."""
 
     merchant_acceptor_id: Optional[str] = None
     """
