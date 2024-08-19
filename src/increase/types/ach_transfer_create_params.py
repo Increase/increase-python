@@ -85,12 +85,6 @@ class ACHTransferCreateParams(TypedDict, total=False):
     - `unknown` - It's unknown what kind of entity owns the External Account.
     """
 
-    effective_date: Annotated[Union[str, datetime.date], PropertyInfo(format="iso8601")]
-    """
-    The transfer effective date in
-    [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
-    """
-
     external_account_id: str
     """The ID of an External Account to initiate a transfer to.
 
