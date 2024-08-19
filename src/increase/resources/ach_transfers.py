@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing import Union
-from datetime import date
 from typing_extensions import Literal
 
 import httpx
@@ -51,7 +49,6 @@ class ACHTransfersResource(SyncAPIResource):
         company_entry_description: str | NotGiven = NOT_GIVEN,
         company_name: str | NotGiven = NOT_GIVEN,
         destination_account_holder: Literal["business", "individual", "unknown"] | NotGiven = NOT_GIVEN,
-        effective_date: Union[str, date] | NotGiven = NOT_GIVEN,
         external_account_id: str | NotGiven = NOT_GIVEN,
         funding: Literal["checking", "savings"] | NotGiven = NOT_GIVEN,
         individual_id: str | NotGiven = NOT_GIVEN,
@@ -115,9 +112,6 @@ class ACHTransfersResource(SyncAPIResource):
               - `individual` - The External Account is owned by an individual.
               - `unknown` - It's unknown what kind of entity owns the External Account.
 
-          effective_date: The transfer effective date in
-              [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
-
           external_account_id: The ID of an External Account to initiate a transfer to. If this parameter is
               provided, `account_number`, `routing_number`, and `funding` must be absent.
 
@@ -172,7 +166,6 @@ class ACHTransfersResource(SyncAPIResource):
                     "company_entry_description": company_entry_description,
                     "company_name": company_name,
                     "destination_account_holder": destination_account_holder,
-                    "effective_date": effective_date,
                     "external_account_id": external_account_id,
                     "funding": funding,
                     "individual_id": individual_id,
@@ -401,7 +394,6 @@ class AsyncACHTransfersResource(AsyncAPIResource):
         company_entry_description: str | NotGiven = NOT_GIVEN,
         company_name: str | NotGiven = NOT_GIVEN,
         destination_account_holder: Literal["business", "individual", "unknown"] | NotGiven = NOT_GIVEN,
-        effective_date: Union[str, date] | NotGiven = NOT_GIVEN,
         external_account_id: str | NotGiven = NOT_GIVEN,
         funding: Literal["checking", "savings"] | NotGiven = NOT_GIVEN,
         individual_id: str | NotGiven = NOT_GIVEN,
@@ -465,9 +457,6 @@ class AsyncACHTransfersResource(AsyncAPIResource):
               - `individual` - The External Account is owned by an individual.
               - `unknown` - It's unknown what kind of entity owns the External Account.
 
-          effective_date: The transfer effective date in
-              [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
-
           external_account_id: The ID of an External Account to initiate a transfer to. If this parameter is
               provided, `account_number`, `routing_number`, and `funding` must be absent.
 
@@ -522,7 +511,6 @@ class AsyncACHTransfersResource(AsyncAPIResource):
                     "company_entry_description": company_entry_description,
                     "company_name": company_name,
                     "destination_account_holder": destination_account_holder,
-                    "effective_date": effective_date,
                     "external_account_id": external_account_id,
                     "funding": funding,
                     "individual_id": individual_id,
