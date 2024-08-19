@@ -29,6 +29,7 @@ __all__ = [
     "ElementCardIncrement",
     "ElementCardIncrementNetworkIdentifiers",
     "ElementCardRefund",
+    "ElementCardRefundInterchange",
     "ElementCardRefundNetworkIdentifiers",
     "ElementCardRefundPurchaseDetails",
     "ElementCardRefundPurchaseDetailsCarRental",
@@ -40,6 +41,7 @@ __all__ = [
     "ElementCardReversal",
     "ElementCardReversalNetworkIdentifiers",
     "ElementCardSettlement",
+    "ElementCardSettlementInterchange",
     "ElementCardSettlementNetworkIdentifiers",
     "ElementCardSettlementPurchaseDetails",
     "ElementCardSettlementPurchaseDetailsCarRental",
@@ -959,6 +961,31 @@ class ElementCardIncrement(BaseModel):
     """
 
 
+class ElementCardRefundInterchange(BaseModel):
+    amount: str
+    """The interchange amount given as a string containing a decimal number.
+
+    The amount is a positive number if it is credited to Increase (e.g.,
+    settlements) and a negative number if it is debited (e.g., refunds).
+    """
+
+    code: Optional[str] = None
+    """The card network specific interchange code."""
+
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
+    reimbursement.
+
+    - `CAD` - Canadian Dollar (CAD)
+    - `CHF` - Swiss Franc (CHF)
+    - `EUR` - Euro (EUR)
+    - `GBP` - British Pound (GBP)
+    - `JPY` - Japanese Yen (JPY)
+    - `USD` - US Dollar (USD)
+    """
+
+
 class ElementCardRefundNetworkIdentifiers(BaseModel):
     acquirer_business_id: str
     """
@@ -1409,6 +1436,9 @@ class ElementCardRefund(BaseModel):
     - `USD` - US Dollar (USD)
     """
 
+    interchange: Optional[ElementCardRefundInterchange] = None
+    """Interchange assessed as a part of this transaciton."""
+
     merchant_acceptor_id: Optional[str] = None
     """
     The merchant identifier (commonly abbreviated as MID) of the merchant the card
@@ -1527,6 +1557,31 @@ class ElementCardReversal(BaseModel):
     """
     The amount left pending on the Card Authorization in the minor unit of the
     transaction's currency. For dollars, for example, this is cents.
+    """
+
+
+class ElementCardSettlementInterchange(BaseModel):
+    amount: str
+    """The interchange amount given as a string containing a decimal number.
+
+    The amount is a positive number if it is credited to Increase (e.g.,
+    settlements) and a negative number if it is debited (e.g., refunds).
+    """
+
+    code: Optional[str] = None
+    """The card network specific interchange code."""
+
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the interchange
+    reimbursement.
+
+    - `CAD` - Canadian Dollar (CAD)
+    - `CHF` - Swiss Franc (CHF)
+    - `EUR` - Euro (EUR)
+    - `GBP` - British Pound (GBP)
+    - `JPY` - Japanese Yen (JPY)
+    - `USD` - US Dollar (USD)
     """
 
 
@@ -1985,6 +2040,9 @@ class ElementCardSettlement(BaseModel):
     - `JPY` - Japanese Yen (JPY)
     - `USD` - US Dollar (USD)
     """
+
+    interchange: Optional[ElementCardSettlementInterchange] = None
+    """Interchange assessed as a part of this transaciton."""
 
     merchant_acceptor_id: Optional[str] = None
     """
