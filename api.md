@@ -764,12 +764,6 @@ Methods:
 
 - <code title="post /simulations/inbound_check_deposits">client.simulations.inbound_check_deposits.<a href="./src/increase/resources/simulations/inbound_check_deposits.py">create</a>(\*\*<a href="src/increase/types/simulations/inbound_check_deposit_create_params.py">params</a>) -> <a href="./src/increase/types/inbound_check_deposit.py">InboundCheckDeposit</a></code>
 
-## InboundMailItems
-
-Methods:
-
-- <code title="post /simulations/inbound_mail_items">client.simulations.inbound_mail_items.<a href="./src/increase/resources/simulations/inbound_mail_items.py">create</a>(\*\*<a href="src/increase/types/simulations/inbound_mail_item_create_params.py">params</a>) -> <a href="./src/increase/types/inbound_mail_item.py">InboundMailItem</a></code>
-
 ## CheckDeposits
 
 Methods:
@@ -916,6 +910,12 @@ Methods:
 Methods:
 
 - <code title="post /simulations/documents">client.simulations.documents.<a href="./src/increase/resources/simulations/documents.py">create</a>(\*\*<a href="src/increase/types/simulations/document_create_params.py">params</a>) -> <a href="./src/increase/types/document.py">Document</a></code>
+
+## InboundMailItems
+
+Methods:
+
+- <code title="post /simulations/inbound_mail_items">client.simulations.inbound_mail_items.<a href="./src/increase/resources/simulations/inbound_mail_items.py">create</a>(\*\*<a href="src/increase/types/simulations/inbound_mail_item_create_params.py">params</a>) -> <a href="./src/increase/types/inbound_mail_item.py">InboundMailItem</a></code>
 
 ## Programs
 
