@@ -136,7 +136,7 @@ class IntrafiExclusionsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SyncPage[IntrafiExclusion]:
         """
-        List IntraFi Exclusions.
+        List IntraFi Exclusions
 
         Args:
           cursor: Return the page of entries after this one.
@@ -338,7 +338,7 @@ class AsyncIntrafiExclusionsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AsyncPaginator[IntrafiExclusion, AsyncPage[IntrafiExclusion]]:
         """
-        List IntraFi Exclusions.
+        List IntraFi Exclusions
 
         Args:
           cursor: Return the page of entries after this one.
