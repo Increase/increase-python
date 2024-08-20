@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.95.0 (2024-08-20)
+
+Full Changelog: [v0.94.0...v0.95.0](https://github.com/Increase/increase-python/compare/v0.94.0...v0.95.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#598](https://github.com/Increase/increase-python/issues/598)) ([d76954e](https://github.com/Increase/increase-python/commit/d76954e8c829792647261aee4cc6523271404fdb))
+
+
+### Chores
+
+* **client:** fix parsing union responses when non-json is returned ([#596](https://github.com/Increase/increase-python/issues/596)) ([efbcf43](https://github.com/Increase/increase-python/commit/efbcf43df2641c89feeca5efd7ececf4e7d3d24e))
+
 ## 0.94.0 (2024-08-19)
 
 Full Changelog: [v0.93.0...v0.94.0](https://github.com/Increase/increase-python/compare/v0.93.0...v0.94.0)
