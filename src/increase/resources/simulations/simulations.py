@@ -246,10 +246,6 @@ class SimulationsResource(SyncAPIResource):
         return InboundCheckDepositsResource(self._client)
 
     @cached_property
-    def inbound_mail_items(self) -> InboundMailItemsResource:
-        return InboundMailItemsResource(self._client)
-
-    @cached_property
     def check_deposits(self) -> CheckDepositsResource:
         return CheckDepositsResource(self._client)
 
@@ -330,6 +326,10 @@ class SimulationsResource(SyncAPIResource):
         return DocumentsResource(self._client)
 
     @cached_property
+    def inbound_mail_items(self) -> InboundMailItemsResource:
+        return InboundMailItemsResource(self._client)
+
+    @cached_property
     def programs(self) -> ProgramsResource:
         return ProgramsResource(self._client)
 
@@ -362,10 +362,6 @@ class AsyncSimulationsResource(AsyncAPIResource):
     @cached_property
     def inbound_check_deposits(self) -> AsyncInboundCheckDepositsResource:
         return AsyncInboundCheckDepositsResource(self._client)
-
-    @cached_property
-    def inbound_mail_items(self) -> AsyncInboundMailItemsResource:
-        return AsyncInboundMailItemsResource(self._client)
 
     @cached_property
     def check_deposits(self) -> AsyncCheckDepositsResource:
@@ -448,6 +444,10 @@ class AsyncSimulationsResource(AsyncAPIResource):
         return AsyncDocumentsResource(self._client)
 
     @cached_property
+    def inbound_mail_items(self) -> AsyncInboundMailItemsResource:
+        return AsyncInboundMailItemsResource(self._client)
+
+    @cached_property
     def programs(self) -> AsyncProgramsResource:
         return AsyncProgramsResource(self._client)
 
@@ -483,10 +483,6 @@ class SimulationsResourceWithRawResponse:
     @cached_property
     def inbound_check_deposits(self) -> InboundCheckDepositsResourceWithRawResponse:
         return InboundCheckDepositsResourceWithRawResponse(self._simulations.inbound_check_deposits)
-
-    @cached_property
-    def inbound_mail_items(self) -> InboundMailItemsResourceWithRawResponse:
-        return InboundMailItemsResourceWithRawResponse(self._simulations.inbound_mail_items)
 
     @cached_property
     def check_deposits(self) -> CheckDepositsResourceWithRawResponse:
@@ -571,6 +567,10 @@ class SimulationsResourceWithRawResponse:
         return DocumentsResourceWithRawResponse(self._simulations.documents)
 
     @cached_property
+    def inbound_mail_items(self) -> InboundMailItemsResourceWithRawResponse:
+        return InboundMailItemsResourceWithRawResponse(self._simulations.inbound_mail_items)
+
+    @cached_property
     def programs(self) -> ProgramsResourceWithRawResponse:
         return ProgramsResourceWithRawResponse(self._simulations.programs)
 
@@ -598,10 +598,6 @@ class AsyncSimulationsResourceWithRawResponse:
     @cached_property
     def inbound_check_deposits(self) -> AsyncInboundCheckDepositsResourceWithRawResponse:
         return AsyncInboundCheckDepositsResourceWithRawResponse(self._simulations.inbound_check_deposits)
-
-    @cached_property
-    def inbound_mail_items(self) -> AsyncInboundMailItemsResourceWithRawResponse:
-        return AsyncInboundMailItemsResourceWithRawResponse(self._simulations.inbound_mail_items)
 
     @cached_property
     def check_deposits(self) -> AsyncCheckDepositsResourceWithRawResponse:
@@ -688,6 +684,10 @@ class AsyncSimulationsResourceWithRawResponse:
         return AsyncDocumentsResourceWithRawResponse(self._simulations.documents)
 
     @cached_property
+    def inbound_mail_items(self) -> AsyncInboundMailItemsResourceWithRawResponse:
+        return AsyncInboundMailItemsResourceWithRawResponse(self._simulations.inbound_mail_items)
+
+    @cached_property
     def programs(self) -> AsyncProgramsResourceWithRawResponse:
         return AsyncProgramsResourceWithRawResponse(self._simulations.programs)
 
@@ -715,10 +715,6 @@ class SimulationsResourceWithStreamingResponse:
     @cached_property
     def inbound_check_deposits(self) -> InboundCheckDepositsResourceWithStreamingResponse:
         return InboundCheckDepositsResourceWithStreamingResponse(self._simulations.inbound_check_deposits)
-
-    @cached_property
-    def inbound_mail_items(self) -> InboundMailItemsResourceWithStreamingResponse:
-        return InboundMailItemsResourceWithStreamingResponse(self._simulations.inbound_mail_items)
 
     @cached_property
     def check_deposits(self) -> CheckDepositsResourceWithStreamingResponse:
@@ -807,6 +803,10 @@ class SimulationsResourceWithStreamingResponse:
         return DocumentsResourceWithStreamingResponse(self._simulations.documents)
 
     @cached_property
+    def inbound_mail_items(self) -> InboundMailItemsResourceWithStreamingResponse:
+        return InboundMailItemsResourceWithStreamingResponse(self._simulations.inbound_mail_items)
+
+    @cached_property
     def programs(self) -> ProgramsResourceWithStreamingResponse:
         return ProgramsResourceWithStreamingResponse(self._simulations.programs)
 
@@ -834,10 +834,6 @@ class AsyncSimulationsResourceWithStreamingResponse:
     @cached_property
     def inbound_check_deposits(self) -> AsyncInboundCheckDepositsResourceWithStreamingResponse:
         return AsyncInboundCheckDepositsResourceWithStreamingResponse(self._simulations.inbound_check_deposits)
-
-    @cached_property
-    def inbound_mail_items(self) -> AsyncInboundMailItemsResourceWithStreamingResponse:
-        return AsyncInboundMailItemsResourceWithStreamingResponse(self._simulations.inbound_mail_items)
 
     @cached_property
     def check_deposits(self) -> AsyncCheckDepositsResourceWithStreamingResponse:
@@ -930,6 +926,10 @@ class AsyncSimulationsResourceWithStreamingResponse:
     @cached_property
     def documents(self) -> AsyncDocumentsResourceWithStreamingResponse:
         return AsyncDocumentsResourceWithStreamingResponse(self._simulations.documents)
+
+    @cached_property
+    def inbound_mail_items(self) -> AsyncInboundMailItemsResourceWithStreamingResponse:
+        return AsyncInboundMailItemsResourceWithStreamingResponse(self._simulations.inbound_mail_items)
 
     @cached_property
     def programs(self) -> AsyncProgramsResourceWithStreamingResponse:
