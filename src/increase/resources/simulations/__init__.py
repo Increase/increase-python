@@ -128,6 +128,14 @@ from .account_statements import (
     AccountStatementsResourceWithStreamingResponse,
     AsyncAccountStatementsResourceWithStreamingResponse,
 )
+from .inbound_mail_items import (
+    InboundMailItemsResource,
+    AsyncInboundMailItemsResource,
+    InboundMailItemsResourceWithRawResponse,
+    AsyncInboundMailItemsResourceWithRawResponse,
+    InboundMailItemsResourceWithStreamingResponse,
+    AsyncInboundMailItemsResourceWithStreamingResponse,
+)
 from .card_authorizations import (
     CardAuthorizationsResource,
     AsyncCardAuthorizationsResource,
@@ -248,6 +256,12 @@ __all__ = [
     "AsyncInboundCheckDepositsResourceWithRawResponse",
     "InboundCheckDepositsResourceWithStreamingResponse",
     "AsyncInboundCheckDepositsResourceWithStreamingResponse",
+    "InboundMailItemsResource",
+    "AsyncInboundMailItemsResource",
+    "InboundMailItemsResourceWithRawResponse",
+    "AsyncInboundMailItemsResourceWithRawResponse",
+    "InboundMailItemsResourceWithStreamingResponse",
+    "AsyncInboundMailItemsResourceWithStreamingResponse",
     "CheckDepositsResource",
     "AsyncCheckDepositsResource",
     "CheckDepositsResourceWithRawResponse",
