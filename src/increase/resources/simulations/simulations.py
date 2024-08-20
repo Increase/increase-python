@@ -124,6 +124,14 @@ from .account_statements import (
     AccountStatementsResourceWithStreamingResponse,
     AsyncAccountStatementsResourceWithStreamingResponse,
 )
+from .inbound_mail_items import (
+    InboundMailItemsResource,
+    AsyncInboundMailItemsResource,
+    InboundMailItemsResourceWithRawResponse,
+    AsyncInboundMailItemsResourceWithRawResponse,
+    InboundMailItemsResourceWithStreamingResponse,
+    AsyncInboundMailItemsResourceWithStreamingResponse,
+)
 from .card_authorizations import (
     CardAuthorizationsResource,
     AsyncCardAuthorizationsResource,
@@ -238,6 +246,10 @@ class SimulationsResource(SyncAPIResource):
         return InboundCheckDepositsResource(self._client)
 
     @cached_property
+    def inbound_mail_items(self) -> InboundMailItemsResource:
+        return InboundMailItemsResource(self._client)
+
+    @cached_property
     def check_deposits(self) -> CheckDepositsResource:
         return CheckDepositsResource(self._client)
 
@@ -350,6 +362,10 @@ class AsyncSimulationsResource(AsyncAPIResource):
     @cached_property
     def inbound_check_deposits(self) -> AsyncInboundCheckDepositsResource:
         return AsyncInboundCheckDepositsResource(self._client)
+
+    @cached_property
+    def inbound_mail_items(self) -> AsyncInboundMailItemsResource:
+        return AsyncInboundMailItemsResource(self._client)
 
     @cached_property
     def check_deposits(self) -> AsyncCheckDepositsResource:
@@ -469,6 +485,10 @@ class SimulationsResourceWithRawResponse:
         return InboundCheckDepositsResourceWithRawResponse(self._simulations.inbound_check_deposits)
 
     @cached_property
+    def inbound_mail_items(self) -> InboundMailItemsResourceWithRawResponse:
+        return InboundMailItemsResourceWithRawResponse(self._simulations.inbound_mail_items)
+
+    @cached_property
     def check_deposits(self) -> CheckDepositsResourceWithRawResponse:
         return CheckDepositsResourceWithRawResponse(self._simulations.check_deposits)
 
@@ -578,6 +598,10 @@ class AsyncSimulationsResourceWithRawResponse:
     @cached_property
     def inbound_check_deposits(self) -> AsyncInboundCheckDepositsResourceWithRawResponse:
         return AsyncInboundCheckDepositsResourceWithRawResponse(self._simulations.inbound_check_deposits)
+
+    @cached_property
+    def inbound_mail_items(self) -> AsyncInboundMailItemsResourceWithRawResponse:
+        return AsyncInboundMailItemsResourceWithRawResponse(self._simulations.inbound_mail_items)
 
     @cached_property
     def check_deposits(self) -> AsyncCheckDepositsResourceWithRawResponse:
@@ -693,6 +717,10 @@ class SimulationsResourceWithStreamingResponse:
         return InboundCheckDepositsResourceWithStreamingResponse(self._simulations.inbound_check_deposits)
 
     @cached_property
+    def inbound_mail_items(self) -> InboundMailItemsResourceWithStreamingResponse:
+        return InboundMailItemsResourceWithStreamingResponse(self._simulations.inbound_mail_items)
+
+    @cached_property
     def check_deposits(self) -> CheckDepositsResourceWithStreamingResponse:
         return CheckDepositsResourceWithStreamingResponse(self._simulations.check_deposits)
 
@@ -806,6 +834,10 @@ class AsyncSimulationsResourceWithStreamingResponse:
     @cached_property
     def inbound_check_deposits(self) -> AsyncInboundCheckDepositsResourceWithStreamingResponse:
         return AsyncInboundCheckDepositsResourceWithStreamingResponse(self._simulations.inbound_check_deposits)
+
+    @cached_property
+    def inbound_mail_items(self) -> AsyncInboundMailItemsResourceWithStreamingResponse:
+        return AsyncInboundMailItemsResourceWithStreamingResponse(self._simulations.inbound_mail_items)
 
     @cached_property
     def check_deposits(self) -> AsyncCheckDepositsResourceWithStreamingResponse:
