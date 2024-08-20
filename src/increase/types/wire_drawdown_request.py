@@ -35,7 +35,7 @@ class WireDrawdownRequest(BaseModel):
     requested. Will always be "USD".
     """
 
-    fulfillment_transaction_id: Optional[str] = None
+    fulfillment_inbound_wire_transfer_id: Optional[str] = None
     """
     If the recipient fulfills the drawdown request by sending funds, then this will
     be the identifier of the corresponding Transaction.
