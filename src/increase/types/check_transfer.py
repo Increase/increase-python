@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Optional
+from typing import List, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -18,6 +18,7 @@ __all__ = [
     "PhysicalCheck",
     "PhysicalCheckMailingAddress",
     "PhysicalCheckReturnAddress",
+    "PhysicalCheckTrackingUpdate",
     "StopPaymentRequest",
     "Submission",
     "ThirdParty",
@@ -142,6 +143,20 @@ class PhysicalCheckReturnAddress(BaseModel):
     """The state of the check's destination."""
 
 
+class PhysicalCheckTrackingUpdate(BaseModel):
+    category: Literal["returned_to_sender"]
+    """The type of tracking event.
+
+    - `returned_to_sender` - Delivery failed and the check was returned to sender.
+    """
+
+    created_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+    the tracking event took place.
+    """
+
+
 class PhysicalCheck(BaseModel):
     mailing_address: PhysicalCheckMailingAddress
     """Details for where Increase will mail the check."""
@@ -163,6 +178,9 @@ class PhysicalCheck(BaseModel):
 
     If blank, the check will be printed with 'No signature required'.
     """
+
+    tracking_updates: List[PhysicalCheckTrackingUpdate]
+    """Tracking updates relating to the physical check's delivery."""
 
 
 class StopPaymentRequest(BaseModel):
