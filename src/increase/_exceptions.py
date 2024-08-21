@@ -166,6 +166,15 @@ class MalformedRequestError(BadRequestError):
 class InvalidAPIKeyError(AuthenticationError):
     detail: Optional[str] = None
 
+    reason: Literal["deleted_credential", "expired_credential", "no_credential", "no_header", "wrong_environment"]
+    """
+    - `deleted_credential` - deleted_credential
+    - `expired_credential` - expired_credential
+    - `no_credential` - no_credential
+    - `no_header` - no_header
+    - `wrong_environment` - wrong_environment
+    """
+
     status: Literal[401]
 
     title: str
@@ -179,6 +188,15 @@ class InvalidAPIKeyError(AuthenticationError):
 
         self.title = title
         self.detail = cast(Any, construct_type(type_=Optional[str], value=data.get("detail")))
+        self.reason = cast(
+            Any,
+            construct_type(
+                type_=Literal[
+                    "deleted_credential", "expired_credential", "no_credential", "no_header", "wrong_environment"
+                ],
+                value=data.get("reason"),
+            ),
+        )
         self.status = cast(Any, construct_type(type_=Literal[401], value=data.get("status")))
         self.type = cast(Any, construct_type(type_=Literal["invalid_api_key_error"], value=data.get("type")))
 
