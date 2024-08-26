@@ -38,6 +38,7 @@ class InboundMailItemsResource(SyncAPIResource):
         *,
         amount: int,
         lockbox_id: str,
+        contents_file_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -55,6 +56,9 @@ class InboundMailItemsResource(SyncAPIResource):
 
           lockbox_id: The identifier of the Lockbox to simulate inbound mail to.
 
+          contents_file_id: The file containing the PDF contents. If not present, a default check image file
+              will be used.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -71,6 +75,7 @@ class InboundMailItemsResource(SyncAPIResource):
                 {
                     "amount": amount,
                     "lockbox_id": lockbox_id,
+                    "contents_file_id": contents_file_id,
                 },
                 inbound_mail_item_create_params.InboundMailItemCreateParams,
             ),
@@ -99,6 +104,7 @@ class AsyncInboundMailItemsResource(AsyncAPIResource):
         *,
         amount: int,
         lockbox_id: str,
+        contents_file_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -116,6 +122,9 @@ class AsyncInboundMailItemsResource(AsyncAPIResource):
 
           lockbox_id: The identifier of the Lockbox to simulate inbound mail to.
 
+          contents_file_id: The file containing the PDF contents. If not present, a default check image file
+              will be used.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -132,6 +141,7 @@ class AsyncInboundMailItemsResource(AsyncAPIResource):
                 {
                     "amount": amount,
                     "lockbox_id": lockbox_id,
+                    "contents_file_id": contents_file_id,
                 },
                 inbound_mail_item_create_params.InboundMailItemCreateParams,
             ),

@@ -13,11 +13,12 @@ class Account(BaseModel):
     id: str
     """The Account identifier."""
 
-    bank: Literal["blue_ridge_bank", "first_internet_bank"]
+    bank: Literal["blue_ridge_bank", "first_internet_bank", "grasshopper_bank"]
     """The bank the Account is with.
 
     - `blue_ridge_bank` - Blue Ridge Bank, N.A.
     - `first_internet_bank` - First Internet Bank of Indiana
+    - `grasshopper_bank` - Grasshopper Bank
     """
 
     closed_at: Optional[datetime] = None

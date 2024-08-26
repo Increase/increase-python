@@ -349,6 +349,19 @@ Methods:
 - <code title="get /real_time_payments_transfers/{real_time_payments_transfer_id}">client.real_time_payments_transfers.<a href="./src/increase/resources/real_time_payments_transfers.py">retrieve</a>(real_time_payments_transfer_id) -> <a href="./src/increase/types/real_time_payments_transfer.py">RealTimePaymentsTransfer</a></code>
 - <code title="get /real_time_payments_transfers">client.real_time_payments_transfers.<a href="./src/increase/resources/real_time_payments_transfers.py">list</a>(\*\*<a href="src/increase/types/real_time_payments_transfer_list_params.py">params</a>) -> <a href="./src/increase/types/real_time_payments_transfer.py">SyncPage[RealTimePaymentsTransfer]</a></code>
 
+# InboundRealTimePaymentsTransfers
+
+Types:
+
+```python
+from increase.types import InboundRealTimePaymentsTransfer
+```
+
+Methods:
+
+- <code title="get /inbound_real_time_payments_transfers/{inbound_real_time_payments_transfer_id}">client.inbound_real_time_payments_transfers.<a href="./src/increase/resources/inbound_real_time_payments_transfers.py">retrieve</a>(inbound_real_time_payments_transfer_id) -> <a href="./src/increase/types/inbound_real_time_payments_transfer.py">InboundRealTimePaymentsTransfer</a></code>
+- <code title="get /inbound_real_time_payments_transfers">client.inbound_real_time_payments_transfers.<a href="./src/increase/resources/inbound_real_time_payments_transfers.py">list</a>(\*\*<a href="src/increase/types/inbound_real_time_payments_transfer_list_params.py">params</a>) -> <a href="./src/increase/types/inbound_real_time_payments_transfer.py">SyncPage[InboundRealTimePaymentsTransfer]</a></code>
+
 # CheckDeposits
 
 Types:
