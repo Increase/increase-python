@@ -26,6 +26,15 @@ class TestInboundMailItems:
         assert_matches_type(InboundMailItem, inbound_mail_item, path=["response"])
 
     @parametrize
+    def test_method_create_with_all_params(self, client: Increase) -> None:
+        inbound_mail_item = client.simulations.inbound_mail_items.create(
+            amount=1000,
+            lockbox_id="lockbox_3xt21ok13q19advds4t5",
+            contents_file_id="contents_file_id",
+        )
+        assert_matches_type(InboundMailItem, inbound_mail_item, path=["response"])
+
+    @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
         response = client.simulations.inbound_mail_items.with_raw_response.create(
             amount=1000,
@@ -60,6 +69,15 @@ class TestAsyncInboundMailItems:
         inbound_mail_item = await async_client.simulations.inbound_mail_items.create(
             amount=1000,
             lockbox_id="lockbox_3xt21ok13q19advds4t5",
+        )
+        assert_matches_type(InboundMailItem, inbound_mail_item, path=["response"])
+
+    @parametrize
+    async def test_method_create_with_all_params(self, async_client: AsyncIncrease) -> None:
+        inbound_mail_item = await async_client.simulations.inbound_mail_items.create(
+            amount=1000,
+            lockbox_id="lockbox_3xt21ok13q19advds4t5",
+            contents_file_id="contents_file_id",
         )
         assert_matches_type(InboundMailItem, inbound_mail_item, path=["response"])
 
