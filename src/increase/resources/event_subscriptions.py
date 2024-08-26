@@ -97,6 +97,8 @@ class EventSubscriptionsResource(SyncAPIResource):
             "inbound_check_deposit.updated",
             "inbound_mail_item.created",
             "inbound_mail_item.updated",
+            "inbound_real_time_payments_transfer.created",
+            "inbound_real_time_payments_transfer.updated",
             "inbound_wire_drawdown_request.created",
             "inbound_wire_transfer.created",
             "inbound_wire_transfer.updated",
@@ -223,6 +225,10 @@ class EventSubscriptionsResource(SyncAPIResource):
                 updated.
               - `inbound_mail_item.created` - Occurs whenever an Inbound Mail Item is created.
               - `inbound_mail_item.updated` - Occurs whenever an Inbound Mail Item is updated.
+              - `inbound_real_time_payments_transfer.created` - Occurs whenever an Inbound
+                Real-Time Payments Transfer is created.
+              - `inbound_real_time_payments_transfer.updated` - Occurs whenever an Inbound
+                Real-Time Payments Transfer is updated.
               - `inbound_wire_drawdown_request.created` - Occurs whenever an Inbound Wire
                 Drawdown Request is created.
               - `inbound_wire_transfer.created` - Occurs whenever an Inbound Wire Transfer is
@@ -529,6 +535,8 @@ class AsyncEventSubscriptionsResource(AsyncAPIResource):
             "inbound_check_deposit.updated",
             "inbound_mail_item.created",
             "inbound_mail_item.updated",
+            "inbound_real_time_payments_transfer.created",
+            "inbound_real_time_payments_transfer.updated",
             "inbound_wire_drawdown_request.created",
             "inbound_wire_transfer.created",
             "inbound_wire_transfer.updated",
@@ -655,6 +663,10 @@ class AsyncEventSubscriptionsResource(AsyncAPIResource):
                 updated.
               - `inbound_mail_item.created` - Occurs whenever an Inbound Mail Item is created.
               - `inbound_mail_item.updated` - Occurs whenever an Inbound Mail Item is updated.
+              - `inbound_real_time_payments_transfer.created` - Occurs whenever an Inbound
+                Real-Time Payments Transfer is created.
+              - `inbound_real_time_payments_transfer.updated` - Occurs whenever an Inbound
+                Real-Time Payments Transfer is updated.
               - `inbound_wire_drawdown_request.created` - Occurs whenever an Inbound Wire
                 Drawdown Request is created.
               - `inbound_wire_transfer.created` - Occurs whenever an Inbound Wire Transfer is

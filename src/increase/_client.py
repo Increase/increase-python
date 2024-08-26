@@ -77,6 +77,7 @@ class Increase(SyncAPIClient):
     check_transfers: resources.CheckTransfersResource
     inbound_check_deposits: resources.InboundCheckDepositsResource
     real_time_payments_transfers: resources.RealTimePaymentsTransfersResource
+    inbound_real_time_payments_transfers: resources.InboundRealTimePaymentsTransfersResource
     check_deposits: resources.CheckDepositsResource
     lockboxes: resources.LockboxesResource
     inbound_mail_items: resources.InboundMailItemsResource
@@ -220,6 +221,7 @@ class Increase(SyncAPIClient):
         self.check_transfers = resources.CheckTransfersResource(self)
         self.inbound_check_deposits = resources.InboundCheckDepositsResource(self)
         self.real_time_payments_transfers = resources.RealTimePaymentsTransfersResource(self)
+        self.inbound_real_time_payments_transfers = resources.InboundRealTimePaymentsTransfersResource(self)
         self.check_deposits = resources.CheckDepositsResource(self)
         self.lockboxes = resources.LockboxesResource(self)
         self.inbound_mail_items = resources.InboundMailItemsResource(self)
@@ -430,6 +432,7 @@ class AsyncIncrease(AsyncAPIClient):
     check_transfers: resources.AsyncCheckTransfersResource
     inbound_check_deposits: resources.AsyncInboundCheckDepositsResource
     real_time_payments_transfers: resources.AsyncRealTimePaymentsTransfersResource
+    inbound_real_time_payments_transfers: resources.AsyncInboundRealTimePaymentsTransfersResource
     check_deposits: resources.AsyncCheckDepositsResource
     lockboxes: resources.AsyncLockboxesResource
     inbound_mail_items: resources.AsyncInboundMailItemsResource
@@ -573,6 +576,7 @@ class AsyncIncrease(AsyncAPIClient):
         self.check_transfers = resources.AsyncCheckTransfersResource(self)
         self.inbound_check_deposits = resources.AsyncInboundCheckDepositsResource(self)
         self.real_time_payments_transfers = resources.AsyncRealTimePaymentsTransfersResource(self)
+        self.inbound_real_time_payments_transfers = resources.AsyncInboundRealTimePaymentsTransfersResource(self)
         self.check_deposits = resources.AsyncCheckDepositsResource(self)
         self.lockboxes = resources.AsyncLockboxesResource(self)
         self.inbound_mail_items = resources.AsyncInboundMailItemsResource(self)
@@ -800,6 +804,9 @@ class IncreaseWithRawResponse:
         self.real_time_payments_transfers = resources.RealTimePaymentsTransfersResourceWithRawResponse(
             client.real_time_payments_transfers
         )
+        self.inbound_real_time_payments_transfers = resources.InboundRealTimePaymentsTransfersResourceWithRawResponse(
+            client.inbound_real_time_payments_transfers
+        )
         self.check_deposits = resources.CheckDepositsResourceWithRawResponse(client.check_deposits)
         self.lockboxes = resources.LockboxesResourceWithRawResponse(client.lockboxes)
         self.inbound_mail_items = resources.InboundMailItemsResourceWithRawResponse(client.inbound_mail_items)
@@ -897,6 +904,11 @@ class AsyncIncreaseWithRawResponse:
         )
         self.real_time_payments_transfers = resources.AsyncRealTimePaymentsTransfersResourceWithRawResponse(
             client.real_time_payments_transfers
+        )
+        self.inbound_real_time_payments_transfers = (
+            resources.AsyncInboundRealTimePaymentsTransfersResourceWithRawResponse(
+                client.inbound_real_time_payments_transfers
+            )
         )
         self.check_deposits = resources.AsyncCheckDepositsResourceWithRawResponse(client.check_deposits)
         self.lockboxes = resources.AsyncLockboxesResourceWithRawResponse(client.lockboxes)
@@ -998,6 +1010,11 @@ class IncreaseWithStreamedResponse:
         self.real_time_payments_transfers = resources.RealTimePaymentsTransfersResourceWithStreamingResponse(
             client.real_time_payments_transfers
         )
+        self.inbound_real_time_payments_transfers = (
+            resources.InboundRealTimePaymentsTransfersResourceWithStreamingResponse(
+                client.inbound_real_time_payments_transfers
+            )
+        )
         self.check_deposits = resources.CheckDepositsResourceWithStreamingResponse(client.check_deposits)
         self.lockboxes = resources.LockboxesResourceWithStreamingResponse(client.lockboxes)
         self.inbound_mail_items = resources.InboundMailItemsResourceWithStreamingResponse(client.inbound_mail_items)
@@ -1097,6 +1114,11 @@ class AsyncIncreaseWithStreamedResponse:
         )
         self.real_time_payments_transfers = resources.AsyncRealTimePaymentsTransfersResourceWithStreamingResponse(
             client.real_time_payments_transfers
+        )
+        self.inbound_real_time_payments_transfers = (
+            resources.AsyncInboundRealTimePaymentsTransfersResourceWithStreamingResponse(
+                client.inbound_real_time_payments_transfers
+            )
         )
         self.check_deposits = resources.AsyncCheckDepositsResourceWithStreamingResponse(client.check_deposits)
         self.lockboxes = resources.AsyncLockboxesResourceWithStreamingResponse(client.lockboxes)
