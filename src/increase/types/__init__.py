@@ -134,6 +134,7 @@ from .entity_update_industry_code_params import EntityUpdateIndustryCodeParams a
 from .physical_card_profile_clone_params import PhysicalCardProfileCloneParams as PhysicalCardProfileCloneParams
 from .bookkeeping_entry_set_create_params import BookkeepingEntrySetCreateParams as BookkeepingEntrySetCreateParams
 from .inbound_check_deposit_return_params import InboundCheckDepositReturnParams as InboundCheckDepositReturnParams
+from .inbound_real_time_payments_transfer import InboundRealTimePaymentsTransfer as InboundRealTimePaymentsTransfer
 from .physical_card_profile_create_params import PhysicalCardProfileCreateParams as PhysicalCardProfileCreateParams
 from .supplemental_document_create_params import SupplementalDocumentCreateParams as SupplementalDocumentCreateParams
 from .wire_drawdown_request_create_params import WireDrawdownRequestCreateParams as WireDrawdownRequestCreateParams
@@ -173,6 +174,9 @@ from .inbound_ach_transfer_transfer_return_params import (
 )
 from .entity_update_beneficial_owner_address_params import (
     EntityUpdateBeneficialOwnerAddressParams as EntityUpdateBeneficialOwnerAddressParams,
+)
+from .inbound_real_time_payments_transfer_list_params import (
+    InboundRealTimePaymentsTransferListParams as InboundRealTimePaymentsTransferListParams,
 )
 from .real_time_payments_request_for_payment_list_params import (
     RealTimePaymentsRequestForPaymentListParams as RealTimePaymentsRequestForPaymentListParams,
