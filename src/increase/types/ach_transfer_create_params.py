@@ -113,7 +113,7 @@ class ACHTransferCreateParams(TypedDict, total=False):
 
     This determines same-day vs future-dated settlement timing. If not set, defaults
     to a `settlement_schedule` of `same_day`. If set, exactly one of the child
-    atributes must be set.
+    attributes must be set.
     """
 
     require_approval: bool
@@ -200,7 +200,7 @@ class PreferredEffectiveDate(TypedDict, total=False):
     """
 
     settlement_schedule: Literal["same_day", "future_dated"]
-    """A schedule by which Increase whill choose an effective date for the transfer.
+    """A schedule by which Increase will choose an effective date for the transfer.
 
     - `same_day` - The chosen effective date will be the same as the ACH processing
       date on which the transfer is submitted. This is necessary, but not sufficient

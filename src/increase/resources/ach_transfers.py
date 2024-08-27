@@ -127,7 +127,7 @@ class ACHTransfersResource(SyncAPIResource):
 
           preferred_effective_date: Configuration for how the effective date of the transfer will be set. This
               determines same-day vs future-dated settlement timing. If not set, defaults to a
-              `settlement_schedule` of `same_day`. If set, exactly one of the child atributes
+              `settlement_schedule` of `same_day`. If set, exactly one of the child attributes
               must be set.
 
           require_approval: Whether the transfer requires explicit approval via the dashboard or API.
@@ -472,7 +472,7 @@ class AsyncACHTransfersResource(AsyncAPIResource):
 
           preferred_effective_date: Configuration for how the effective date of the transfer will be set. This
               determines same-day vs future-dated settlement timing. If not set, defaults to a
-              `settlement_schedule` of `same_day`. If set, exactly one of the child atributes
+              `settlement_schedule` of `same_day`. If set, exactly one of the child attributes
               must be set.
 
           require_approval: Whether the transfer requires explicit approval via the dashboard or API.
