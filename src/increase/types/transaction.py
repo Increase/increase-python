@@ -1787,7 +1787,7 @@ class SourceInboundACHTransfer(BaseModel):
     """A name set by the originator to identify themselves."""
 
     receiver_id_number: Optional[str] = None
-    """The originator's identifier for the transfer receipient."""
+    """The originator's identifier for the transfer recipient."""
 
     receiver_name: Optional[str] = None
     """The name of the transfer recipient.
