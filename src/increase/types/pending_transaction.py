@@ -284,7 +284,7 @@ class SourceCardAuthorization(BaseModel):
 
     direction: Literal["settlement", "refund"]
     """
-    The direction descibes the direction the funds will move, either from the
+    The direction describes the direction the funds will move, either from the
     cardholder to the merchant or from the merchant to the cardholder.
 
     - `settlement` - A regular card authorization where funds are debited from the

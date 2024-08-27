@@ -184,7 +184,7 @@ class BookkeepingAccountBalanceCsvCreatedAt(TypedDict, total=False):
 
 class BookkeepingAccountBalanceCsv(TypedDict, total=False):
     bookkeeping_account_id: str
-    """Filter exported Transactions to the specified BookkeepingAccount."""
+    """Filter exported Transactions to the specified Bookkeeping Account."""
 
     created_at: BookkeepingAccountBalanceCsvCreatedAt
     """Filter results by time range on the `created_at` attribute."""
