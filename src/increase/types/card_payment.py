@@ -1529,6 +1529,37 @@ class ElementCardReversal(BaseModel):
     - `USD` - US Dollar (USD)
     """
 
+    merchant_acceptor_id: str
+    """
+    The merchant identifier (commonly abbreviated as MID) of the merchant the card
+    is transacting with.
+    """
+
+    merchant_category_code: Optional[str] = None
+    """
+    The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
+    card is transacting with.
+    """
+
+    merchant_city: Optional[str] = None
+    """The city the merchant resides in."""
+
+    merchant_country: str
+    """The country the merchant resides in."""
+
+    merchant_descriptor: str
+    """The merchant descriptor of the merchant the card is transacting with."""
+
+    merchant_postal_code: Optional[str] = None
+    """The merchant's postal code.
+
+    For US merchants this is either a 5-digit or 9-digit ZIP code, where the first 5
+    and last 4 are separated by a dash.
+    """
+
+    merchant_state: Optional[str] = None
+    """The state the merchant resides in."""
+
     network: Literal["visa"]
     """The card network used to process this card authorization.
 
@@ -1545,6 +1576,22 @@ class ElementCardReversal(BaseModel):
     """The amount of this reversal in the minor unit of the transaction's currency.
 
     For dollars, for example, this is cents.
+    """
+
+    reversal_reason: Optional[
+        Literal[
+            "reversed_by_customer", "reversed_by_network_or_acquirer", "reversed_by_point_of_sale", "partial_reversal"
+        ]
+    ] = None
+    """Why this reversal was initiated.
+
+    - `reversed_by_customer` - The Card Reversal was initiated at the customer's
+      request.
+    - `reversed_by_network_or_acquirer` - The Card Reversal was initiated by the
+      network or acquirer.
+    - `reversed_by_point_of_sale` - The Card Reversal was initiated by the point of
+      sale device.
+    - `partial_reversal` - The Card Reversal was a partial reversal, for any reason.
     """
 
     type: Literal["card_reversal"]
