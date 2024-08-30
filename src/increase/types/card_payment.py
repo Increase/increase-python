@@ -1535,7 +1535,7 @@ class ElementCardReversal(BaseModel):
     is transacting with.
     """
 
-    merchant_category_code: Optional[str] = None
+    merchant_category_code: str
     """
     The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
     card is transacting with.
