@@ -323,9 +323,9 @@ account = response.parse()  # get the object that `accounts.create()` would have
 print(account.id)
 ```
 
-These methods return an [`APIResponse`](https://github.com/Increase/increase-python/tree/main/src/increase/_response.py) object.
+These methods return an [`APIResponse`](https://github.com/increase/increase-python/tree/main/src/increase/_response.py) object.
 
-The async client returns an [`AsyncAPIResponse`](https://github.com/Increase/increase-python/tree/main/src/increase/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
+The async client returns an [`AsyncAPIResponse`](https://github.com/increase/increase-python/tree/main/src/increase/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
 
 #### `.with_streaming_response`
 
@@ -423,7 +423,7 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
-We are keen for your feedback; please open an [issue](https://www.github.com/Increase/increase-python/issues) with questions, bugs, or suggestions.
+We are keen for your feedback; please open an [issue](https://www.github.com/increase/increase-python/issues) with questions, bugs, or suggestions.
 
 ## Requirements
 
