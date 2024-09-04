@@ -56,12 +56,13 @@ class InboundRealTimePaymentsTransfer(BaseModel):
     remittance_information: Optional[str] = None
     """Additional information included with the transfer."""
 
-    status: Literal["pending_confirmation", "timed_out", "confirmed"]
+    status: Literal["pending_confirmation", "timed_out", "confirmed", "declined"]
     """The lifecycle status of the transfer.
 
     - `pending_confirmation` - The transfer is pending confirmation.
     - `timed_out` - Your webhook failed to respond to the transfer in time.
     - `confirmed` - The transfer has been received successfully and is confirmed.
+    - `declined` - The transfer has been declined.
     """
 
     transaction_identification: str
