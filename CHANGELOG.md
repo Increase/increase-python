@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.103.0 (2024-09-04)
+
+Full Changelog: [v0.102.0...v0.103.0](https://github.com/Increase/increase-python/compare/v0.102.0...v0.103.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#629](https://github.com/Increase/increase-python/issues/629)) ([f4a639e](https://github.com/Increase/increase-python/commit/f4a639ebb4f5434f1369185347cf645203445ba6))
+* **api:** OpenAPI spec update via Stainless API ([#630](https://github.com/Increase/increase-python/issues/630)) ([dfcfac9](https://github.com/Increase/increase-python/commit/dfcfac9e8d11ee9a69e85b1af6941cb7bafde4a9))
+
+
+### Chores
+
+* fix repo names ([#628](https://github.com/Increase/increase-python/issues/628)) ([ab0f940](https://github.com/Increase/increase-python/commit/ab0f9402a41ce06b11738e88e8cbd49a70689bba))
+* **internal:** version bump ([#625](https://github.com/Increase/increase-python/issues/625)) ([2d12dab](https://github.com/Increase/increase-python/commit/2d12dab22ebf9e18aec8c205fc8c72fc079264bf))
+
 ## 0.102.0 (2024-08-30)
 
 Full Changelog: [v0.101.0...v0.102.0](https://github.com/Increase/increase-python/compare/v0.101.0...v0.102.0)
