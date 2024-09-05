@@ -44,6 +44,3 @@ from .ach_transfer_create_notification_of_change_params import (
 from .inbound_real_time_payments_transfer_create_params import (
     InboundRealTimePaymentsTransferCreateParams as InboundRealTimePaymentsTransferCreateParams,
 )
-from .inbound_real_time_payments_transfer_create_response import (
-    InboundRealTimePaymentsTransferCreateResponse as InboundRealTimePaymentsTransferCreateResponse,
-)
