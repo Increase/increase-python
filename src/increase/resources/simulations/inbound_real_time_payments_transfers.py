@@ -19,9 +19,7 @@ from ..._response import (
 )
 from ..._base_client import make_request_options
 from ...types.simulations import inbound_real_time_payments_transfer_create_params
-from ...types.simulations.inbound_real_time_payments_transfer_create_response import (
-    InboundRealTimePaymentsTransferCreateResponse,
-)
+from ...types.inbound_real_time_payments_transfer import InboundRealTimePaymentsTransfer
 
 __all__ = ["InboundRealTimePaymentsTransfersResource", "AsyncInboundRealTimePaymentsTransfersResource"]
 
@@ -52,7 +50,7 @@ class InboundRealTimePaymentsTransfersResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> InboundRealTimePaymentsTransferCreateResponse:
+    ) -> InboundRealTimePaymentsTransfer:
         """Simulates an inbound Real-Time Payments transfer to your account.
 
         Real-Time
@@ -105,7 +103,7 @@ class InboundRealTimePaymentsTransfersResource(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=InboundRealTimePaymentsTransferCreateResponse,
+            cast_to=InboundRealTimePaymentsTransfer,
         )
 
 
@@ -135,7 +133,7 @@ class AsyncInboundRealTimePaymentsTransfersResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> InboundRealTimePaymentsTransferCreateResponse:
+    ) -> InboundRealTimePaymentsTransfer:
         """Simulates an inbound Real-Time Payments transfer to your account.
 
         Real-Time
@@ -188,7 +186,7 @@ class AsyncInboundRealTimePaymentsTransfersResource(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=InboundRealTimePaymentsTransferCreateResponse,
+            cast_to=InboundRealTimePaymentsTransfer,
         )
 
 

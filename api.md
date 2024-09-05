@@ -806,15 +806,9 @@ Methods:
 
 ## InboundRealTimePaymentsTransfers
 
-Types:
-
-```python
-from increase.types.simulations import InboundRealTimePaymentsTransferCreateResponse
-```
-
 Methods:
 
-- <code title="post /simulations/inbound_real_time_payments_transfers">client.simulations.inbound_real_time_payments_transfers.<a href="./src/increase/resources/simulations/inbound_real_time_payments_transfers.py">create</a>(\*\*<a href="src/increase/types/simulations/inbound_real_time_payments_transfer_create_params.py">params</a>) -> <a href="./src/increase/types/simulations/inbound_real_time_payments_transfer_create_response.py">InboundRealTimePaymentsTransferCreateResponse</a></code>
+- <code title="post /simulations/inbound_real_time_payments_transfers">client.simulations.inbound_real_time_payments_transfers.<a href="./src/increase/resources/simulations/inbound_real_time_payments_transfers.py">create</a>(\*\*<a href="src/increase/types/simulations/inbound_real_time_payments_transfer_create_params.py">params</a>) -> <a href="./src/increase/types/inbound_real_time_payments_transfer.py">InboundRealTimePaymentsTransfer</a></code>
 
 ## InboundFundsHolds
 
