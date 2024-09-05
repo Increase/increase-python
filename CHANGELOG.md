@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.104.0 (2024-09-05)
+
+Full Changelog: [v0.103.0...v0.104.0](https://github.com/Increase/increase-python/compare/v0.103.0...v0.104.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#634](https://github.com/Increase/increase-python/issues/634)) ([4d95e0b](https://github.com/Increase/increase-python/commit/4d95e0bf243ae1dd18847d06fab04746fc83c22b))
+
+
+### Chores
+
+* pyproject.toml formatting changes ([#632](https://github.com/Increase/increase-python/issues/632)) ([d6d74cb](https://github.com/Increase/increase-python/commit/d6d74cb295d3d97561f6c6362ac23e367ffcb863))
+
 ## 0.103.0 (2024-09-04)
 
 Full Changelog: [v0.102.0...v0.103.0](https://github.com/Increase/increase-python/compare/v0.102.0...v0.103.0)
