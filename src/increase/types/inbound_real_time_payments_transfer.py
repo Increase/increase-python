@@ -6,7 +6,42 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["InboundRealTimePaymentsTransfer"]
+__all__ = ["InboundRealTimePaymentsTransfer", "Confirmation", "Decline"]
+
+
+class Confirmation(BaseModel):
+    confirmed_at: datetime
+    """The time at which the transfer was confirmed."""
+
+    transaction_id: str
+    """The id of the transaction for the confirmed transfer."""
+
+
+class Decline(BaseModel):
+    declined_at: datetime
+    """The time at which the transfer was declined."""
+
+    declined_transaction_id: str
+    """The id of the transaction for the declined transfer."""
+
+    reason: Literal[
+        "account_number_canceled",
+        "account_number_disabled",
+        "account_restricted",
+        "group_locked",
+        "entity_not_active",
+        "real_time_payments_not_enabled",
+    ]
+    """The reason for the transfer decline.
+
+    - `account_number_canceled` - The account number is canceled.
+    - `account_number_disabled` - The account number is disabled.
+    - `account_restricted` - Your account is restricted.
+    - `group_locked` - Your account is inactive.
+    - `entity_not_active` - The account's entity is not active.
+    - `real_time_payments_not_enabled` - Your account is not enabled to receive
+      Real-Time Payments transfers.
+    """
 
 
 class InboundRealTimePaymentsTransfer(BaseModel):
@@ -21,6 +56,9 @@ class InboundRealTimePaymentsTransfer(BaseModel):
 
     amount: int
     """The amount in USD cents."""
+
+    confirmation: Optional[Confirmation] = None
+    """If your transfer is confirmed, this will contain details of the confirmation."""
 
     created_at: datetime
     """
@@ -52,6 +90,9 @@ class InboundRealTimePaymentsTransfer(BaseModel):
 
     debtor_routing_number: str
     """The routing number of the account that sent the transfer."""
+
+    decline: Optional[Decline] = None
+    """If your transfer is declined, this will contain details of the decline."""
 
     remittance_information: Optional[str] = None
     """Additional information included with the transfer."""
