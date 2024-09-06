@@ -666,6 +666,9 @@ class SourceInboundRealTimePaymentsTransferDecline(BaseModel):
     transaction_identification: str
     """The Real-Time Payments network identification of the declined transfer."""
 
+    transfer_id: str
+    """The identifier of the Real-Time Payments Transfer that led to this Transaction."""
+
 
 class SourceWireDecline(BaseModel):
     inbound_wire_transfer_id: str
