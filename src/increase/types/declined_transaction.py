@@ -569,6 +569,9 @@ class SourceCheckDepositRejection(BaseModel):
     - `USD` - US Dollar (USD)
     """
 
+    declined_transaction_id: str
+    """The identifier of the associated declined transaction."""
+
     reason: Literal[
         "incomplete_image",
         "duplicate",
