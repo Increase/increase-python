@@ -46,6 +46,7 @@ __all__ = [
     "SourceInboundACHTransferAddendaFreeform",
     "SourceInboundACHTransferAddendaFreeformEntry",
     "SourceInboundRealTimePaymentsTransferConfirmation",
+    "SourceInboundRealTimePaymentsTransferDecline",
     "SourceInboundWireReversal",
     "SourceInboundWireTransfer",
     "SourceInterestPayment",
@@ -1846,6 +1847,71 @@ class SourceInboundRealTimePaymentsTransferConfirmation(BaseModel):
     transaction_identification: str
     """The Real-Time Payments network identification of the transfer."""
 
+    transfer_id: str
+    """The identifier of the Real-Time Payments Transfer that led to this Transaction."""
+
+
+class SourceInboundRealTimePaymentsTransferDecline(BaseModel):
+    amount: int
+    """The declined amount in the minor unit of the destination account currency.
+
+    For dollars, for example, this is cents.
+    """
+
+    creditor_name: str
+    """The name the sender of the transfer specified as the recipient of the transfer."""
+
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined
+    transfer's currency. This will always be "USD" for a Real-Time Payments
+    transfer.
+
+    - `CAD` - Canadian Dollar (CAD)
+    - `CHF` - Swiss Franc (CHF)
+    - `EUR` - Euro (EUR)
+    - `GBP` - British Pound (GBP)
+    - `JPY` - Japanese Yen (JPY)
+    - `USD` - US Dollar (USD)
+    """
+
+    debtor_account_number: str
+    """The account number of the account that sent the transfer."""
+
+    debtor_name: str
+    """The name provided by the sender of the transfer."""
+
+    debtor_routing_number: str
+    """The routing number of the account that sent the transfer."""
+
+    reason: Literal[
+        "account_number_canceled",
+        "account_number_disabled",
+        "account_restricted",
+        "group_locked",
+        "entity_not_active",
+        "real_time_payments_not_enabled",
+    ]
+    """Why the transfer was declined.
+
+    - `account_number_canceled` - The account number is canceled.
+    - `account_number_disabled` - The account number is disabled.
+    - `account_restricted` - Your account is restricted.
+    - `group_locked` - Your account is inactive.
+    - `entity_not_active` - The account's entity is not active.
+    - `real_time_payments_not_enabled` - Your account is not enabled to receive
+      Real-Time Payments transfers.
+    """
+
+    remittance_information: Optional[str] = None
+    """Additional information included with the transfer."""
+
+    transaction_identification: str
+    """The Real-Time Payments network identification of the declined transfer."""
+
+    transfer_id: str
+    """The identifier of the Real-Time Payments Transfer that led to this Transaction."""
+
 
 class SourceInboundWireReversal(BaseModel):
     amount: int
@@ -2207,6 +2273,7 @@ class Source(BaseModel):
         "inbound_ach_transfer_return_intention",
         "inbound_check_deposit_return_intention",
         "inbound_real_time_payments_transfer_confirmation",
+        "inbound_real_time_payments_transfer_decline",
         "inbound_wire_reversal",
         "inbound_wire_transfer",
         "inbound_wire_transfer_reversal",
@@ -2260,6 +2327,9 @@ class Source(BaseModel):
     - `inbound_real_time_payments_transfer_confirmation` - Inbound Real-Time
       Payments Transfer Confirmation: details will be under the
       `inbound_real_time_payments_transfer_confirmation` object.
+    - `inbound_real_time_payments_transfer_decline` - Inbound Real-Time Payments
+      Transfer Decline: details will be under the
+      `inbound_real_time_payments_transfer_decline` object.
     - `inbound_wire_reversal` - Inbound Wire Reversal: details will be under the
       `inbound_wire_reversal` object.
     - `inbound_wire_transfer` - Inbound Wire Transfer Intention: details will be
@@ -2322,6 +2392,13 @@ class Source(BaseModel):
 
     This field will be present in the JSON response if and only if `category` is
     equal to `inbound_real_time_payments_transfer_confirmation`.
+    """
+
+    inbound_real_time_payments_transfer_decline: Optional[SourceInboundRealTimePaymentsTransferDecline] = None
+    """An Inbound Real-Time Payments Transfer Decline object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `inbound_real_time_payments_transfer_decline`.
     """
 
     inbound_wire_reversal: Optional[SourceInboundWireReversal] = None
