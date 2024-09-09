@@ -25,10 +25,21 @@ __all__ = ["PendingTransactionsResource", "AsyncPendingTransactionsResource"]
 class PendingTransactionsResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> PendingTransactionsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
+        """
         return PendingTransactionsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> PendingTransactionsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
+        """
         return PendingTransactionsResourceWithStreamingResponse(self)
 
     def retrieve(
@@ -134,10 +145,21 @@ class PendingTransactionsResource(SyncAPIResource):
 class AsyncPendingTransactionsResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncPendingTransactionsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncPendingTransactionsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncPendingTransactionsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
+        """
         return AsyncPendingTransactionsResourceWithStreamingResponse(self)
 
     async def retrieve(

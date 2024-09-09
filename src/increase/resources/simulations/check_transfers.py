@@ -22,10 +22,21 @@ __all__ = ["CheckTransfersResource", "AsyncCheckTransfersResource"]
 class CheckTransfersResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> CheckTransfersResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
+        """
         return CheckTransfersResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> CheckTransfersResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
+        """
         return CheckTransfersResourceWithStreamingResponse(self)
 
     def mail(
@@ -76,10 +87,21 @@ class CheckTransfersResource(SyncAPIResource):
 class AsyncCheckTransfersResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncCheckTransfersResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncCheckTransfersResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncCheckTransfersResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
+        """
         return AsyncCheckTransfersResourceWithStreamingResponse(self)
 
     async def mail(

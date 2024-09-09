@@ -22,10 +22,21 @@ __all__ = ["IntrafiBalancesResource", "AsyncIntrafiBalancesResource"]
 class IntrafiBalancesResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> IntrafiBalancesResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
+        """
         return IntrafiBalancesResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> IntrafiBalancesResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
+        """
         return IntrafiBalancesResourceWithStreamingResponse(self)
 
     def retrieve(
@@ -67,10 +78,21 @@ class IntrafiBalancesResource(SyncAPIResource):
 class AsyncIntrafiBalancesResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncIntrafiBalancesResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncIntrafiBalancesResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncIntrafiBalancesResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
+        """
         return AsyncIntrafiBalancesResourceWithStreamingResponse(self)
 
     async def retrieve(

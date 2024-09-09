@@ -31,10 +31,21 @@ __all__ = ["InboundACHTransfersResource", "AsyncInboundACHTransfersResource"]
 class InboundACHTransfersResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> InboundACHTransfersResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
+        """
         return InboundACHTransfersResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> InboundACHTransfersResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
+        """
         return InboundACHTransfersResourceWithStreamingResponse(self)
 
     def create(
@@ -175,10 +186,21 @@ class InboundACHTransfersResource(SyncAPIResource):
 class AsyncInboundACHTransfersResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncInboundACHTransfersResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncInboundACHTransfersResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncInboundACHTransfersResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
+        """
         return AsyncInboundACHTransfersResourceWithStreamingResponse(self)
 
     async def create(

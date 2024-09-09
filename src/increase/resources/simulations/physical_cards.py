@@ -29,10 +29,21 @@ __all__ = ["PhysicalCardsResource", "AsyncPhysicalCardsResource"]
 class PhysicalCardsResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> PhysicalCardsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
+        """
         return PhysicalCardsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> PhysicalCardsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
+        """
         return PhysicalCardsResourceWithStreamingResponse(self)
 
     def advance_shipment(
@@ -102,10 +113,21 @@ class PhysicalCardsResource(SyncAPIResource):
 class AsyncPhysicalCardsResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncPhysicalCardsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncPhysicalCardsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncPhysicalCardsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
+        """
         return AsyncPhysicalCardsResourceWithStreamingResponse(self)
 
     async def advance_shipment(

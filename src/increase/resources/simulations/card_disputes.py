@@ -29,10 +29,21 @@ __all__ = ["CardDisputesResource", "AsyncCardDisputesResource"]
 class CardDisputesResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> CardDisputesResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
+        """
         return CardDisputesResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> CardDisputesResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
+        """
         return CardDisputesResourceWithStreamingResponse(self)
 
     def action(
@@ -105,10 +116,21 @@ class CardDisputesResource(SyncAPIResource):
 class AsyncCardDisputesResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncCardDisputesResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncCardDisputesResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncCardDisputesResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
+        """
         return AsyncCardDisputesResourceWithStreamingResponse(self)
 
     async def action(

@@ -760,6 +760,12 @@ class Source(BaseModel):
     equal to `inbound_real_time_payments_transfer_decline`.
     """
 
+    other: Optional[object] = None
+    """
+    If the category of this Transaction source is equal to `other`, this field will
+    contain an empty object, otherwise it will contain null.
+    """
+
     wire_decline: Optional[SourceWireDecline] = None
     """A Wire Decline object.
 

@@ -30,10 +30,21 @@ __all__ = ["ACHTransfersResource", "AsyncACHTransfersResource"]
 class ACHTransfersResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> ACHTransfersResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
+        """
         return ACHTransfersResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> ACHTransfersResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
+        """
         return ACHTransfersResourceWithStreamingResponse(self)
 
     def create(
@@ -375,10 +386,21 @@ class ACHTransfersResource(SyncAPIResource):
 class AsyncACHTransfersResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncACHTransfersResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncACHTransfersResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncACHTransfersResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
+        """
         return AsyncACHTransfersResourceWithStreamingResponse(self)
 
     async def create(
