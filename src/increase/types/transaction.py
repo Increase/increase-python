@@ -2429,6 +2429,12 @@ class Source(BaseModel):
     equal to `internal_source`.
     """
 
+    other: Optional[object] = None
+    """
+    If the category of this Transaction source is equal to `other`, this field will
+    contain an empty object, otherwise it will contain null.
+    """
+
     real_time_payments_transfer_acknowledgement: Optional[SourceRealTimePaymentsTransferAcknowledgement] = None
     """A Real-Time Payments Transfer Acknowledgement object.
 

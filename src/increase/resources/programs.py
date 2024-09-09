@@ -25,10 +25,21 @@ __all__ = ["ProgramsResource", "AsyncProgramsResource"]
 class ProgramsResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> ProgramsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
+        """
         return ProgramsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> ProgramsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
+        """
         return ProgramsResourceWithStreamingResponse(self)
 
     def retrieve(
@@ -118,10 +129,21 @@ class ProgramsResource(SyncAPIResource):
 class AsyncProgramsResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncProgramsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncProgramsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncProgramsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
+        """
         return AsyncProgramsResourceWithStreamingResponse(self)
 
     async def retrieve(

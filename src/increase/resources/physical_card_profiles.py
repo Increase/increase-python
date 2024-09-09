@@ -32,10 +32,21 @@ __all__ = ["PhysicalCardProfilesResource", "AsyncPhysicalCardProfilesResource"]
 class PhysicalCardProfilesResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> PhysicalCardProfilesResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
+        """
         return PhysicalCardProfilesResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> PhysicalCardProfilesResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
+        """
         return PhysicalCardProfilesResourceWithStreamingResponse(self)
 
     def create(
@@ -308,10 +319,21 @@ class PhysicalCardProfilesResource(SyncAPIResource):
 class AsyncPhysicalCardProfilesResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncPhysicalCardProfilesResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncPhysicalCardProfilesResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncPhysicalCardProfilesResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
+        """
         return AsyncPhysicalCardProfilesResourceWithStreamingResponse(self)
 
     async def create(

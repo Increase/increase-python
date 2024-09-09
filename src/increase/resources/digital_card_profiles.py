@@ -32,10 +32,21 @@ __all__ = ["DigitalCardProfilesResource", "AsyncDigitalCardProfilesResource"]
 class DigitalCardProfilesResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> DigitalCardProfilesResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
+        """
         return DigitalCardProfilesResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> DigitalCardProfilesResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
+        """
         return DigitalCardProfilesResourceWithStreamingResponse(self)
 
     def create(
@@ -343,10 +354,21 @@ class DigitalCardProfilesResource(SyncAPIResource):
 class AsyncDigitalCardProfilesResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncDigitalCardProfilesResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncDigitalCardProfilesResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncDigitalCardProfilesResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
+        """
         return AsyncDigitalCardProfilesResourceWithStreamingResponse(self)
 
     async def create(

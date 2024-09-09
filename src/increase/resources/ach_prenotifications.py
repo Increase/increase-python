@@ -32,10 +32,21 @@ __all__ = ["ACHPrenotificationsResource", "AsyncACHPrenotificationsResource"]
 class ACHPrenotificationsResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> ACHPrenotificationsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
+        """
         return ACHPrenotificationsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> ACHPrenotificationsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
+        """
         return ACHPrenotificationsResourceWithStreamingResponse(self)
 
     def create(
@@ -247,10 +258,21 @@ class ACHPrenotificationsResource(SyncAPIResource):
 class AsyncACHPrenotificationsResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncACHPrenotificationsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncACHPrenotificationsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncACHPrenotificationsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
+        """
         return AsyncACHPrenotificationsResourceWithStreamingResponse(self)
 
     async def create(

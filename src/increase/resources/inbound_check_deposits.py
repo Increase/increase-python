@@ -30,10 +30,21 @@ __all__ = ["InboundCheckDepositsResource", "AsyncInboundCheckDepositsResource"]
 class InboundCheckDepositsResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> InboundCheckDepositsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
+        """
         return InboundCheckDepositsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> InboundCheckDepositsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
+        """
         return InboundCheckDepositsResourceWithStreamingResponse(self)
 
     def retrieve(
@@ -242,10 +253,21 @@ class InboundCheckDepositsResource(SyncAPIResource):
 class AsyncInboundCheckDepositsResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncInboundCheckDepositsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncInboundCheckDepositsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncInboundCheckDepositsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
+        """
         return AsyncInboundCheckDepositsResourceWithStreamingResponse(self)
 
     async def retrieve(
