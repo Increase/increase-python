@@ -54,7 +54,6 @@ __all__ = [
     "SourceRealTimePaymentsTransferAcknowledgement",
     "SourceSampleFunds",
     "SourceWireTransferIntention",
-    "SourceWireTransferRejection",
 ]
 
 
@@ -2178,11 +2177,6 @@ class SourceWireTransferIntention(BaseModel):
     """The identifier of the Wire Transfer that led to this Transaction."""
 
 
-class SourceWireTransferRejection(BaseModel):
-    transfer_id: str
-    """The identifier of the Wire Transfer that led to this Transaction."""
-
-
 class Source(BaseModel):
     account_transfer_intention: Optional[SourceAccountTransferIntention] = None
     """An Account Transfer Intention object.
@@ -2282,7 +2276,6 @@ class Source(BaseModel):
         "real_time_payments_transfer_acknowledgement",
         "sample_funds",
         "wire_transfer_intention",
-        "wire_transfer_rejection",
         "other",
     ]
     """The type of the resource.
@@ -2347,8 +2340,6 @@ class Source(BaseModel):
       object.
     - `wire_transfer_intention` - Wire Transfer Intention: details will be under the
       `wire_transfer_intention` object.
-    - `wire_transfer_rejection` - Wire Transfer Rejection: details will be under the
-      `wire_transfer_rejection` object.
     - `other` - The Transaction was made for an undocumented or deprecated reason.
     """
 
@@ -2454,13 +2445,6 @@ class Source(BaseModel):
 
     This field will be present in the JSON response if and only if `category` is
     equal to `wire_transfer_intention`.
-    """
-
-    wire_transfer_rejection: Optional[SourceWireTransferRejection] = None
-    """A Wire Transfer Rejection object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `wire_transfer_rejection`.
     """
 
 
