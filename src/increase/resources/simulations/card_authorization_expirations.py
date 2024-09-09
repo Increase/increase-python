@@ -27,10 +27,21 @@ __all__ = ["CardAuthorizationExpirationsResource", "AsyncCardAuthorizationExpira
 class CardAuthorizationExpirationsResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> CardAuthorizationExpirationsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
+        """
         return CardAuthorizationExpirationsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> CardAuthorizationExpirationsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
+        """
         return CardAuthorizationExpirationsResourceWithStreamingResponse(self)
 
     def create(
@@ -81,10 +92,21 @@ class CardAuthorizationExpirationsResource(SyncAPIResource):
 class AsyncCardAuthorizationExpirationsResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncCardAuthorizationExpirationsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncCardAuthorizationExpirationsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncCardAuthorizationExpirationsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
+        """
         return AsyncCardAuthorizationExpirationsResourceWithStreamingResponse(self)
 
     async def create(

@@ -27,10 +27,21 @@ __all__ = ["RealTimePaymentsTransfersResource", "AsyncRealTimePaymentsTransfersR
 class RealTimePaymentsTransfersResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> RealTimePaymentsTransfersResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
+        """
         return RealTimePaymentsTransfersResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> RealTimePaymentsTransfersResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
+        """
         return RealTimePaymentsTransfersResourceWithStreamingResponse(self)
 
     def complete(
@@ -90,10 +101,21 @@ class RealTimePaymentsTransfersResource(SyncAPIResource):
 class AsyncRealTimePaymentsTransfersResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncRealTimePaymentsTransfersResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncRealTimePaymentsTransfersResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncRealTimePaymentsTransfersResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
+        """
         return AsyncRealTimePaymentsTransfersResourceWithStreamingResponse(self)
 
     async def complete(

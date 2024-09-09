@@ -25,10 +25,21 @@ __all__ = ["DeclinedTransactionsResource", "AsyncDeclinedTransactionsResource"]
 class DeclinedTransactionsResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> DeclinedTransactionsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
+        """
         return DeclinedTransactionsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> DeclinedTransactionsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
+        """
         return DeclinedTransactionsResourceWithStreamingResponse(self)
 
     def retrieve(
@@ -132,10 +143,21 @@ class DeclinedTransactionsResource(SyncAPIResource):
 class AsyncDeclinedTransactionsResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncDeclinedTransactionsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncDeclinedTransactionsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncDeclinedTransactionsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
+        """
         return AsyncDeclinedTransactionsResourceWithStreamingResponse(self)
 
     async def retrieve(

@@ -30,10 +30,21 @@ __all__ = ["InterestPaymentsResource", "AsyncInterestPaymentsResource"]
 class InterestPaymentsResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> InterestPaymentsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
+        """
         return InterestPaymentsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> InterestPaymentsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
+        """
         return InterestPaymentsResourceWithStreamingResponse(self)
 
     def create(
@@ -100,10 +111,21 @@ class InterestPaymentsResource(SyncAPIResource):
 class AsyncInterestPaymentsResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncInterestPaymentsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncInterestPaymentsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncInterestPaymentsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
+        """
         return AsyncInterestPaymentsResourceWithStreamingResponse(self)
 
     async def create(

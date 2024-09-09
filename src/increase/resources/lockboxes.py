@@ -30,10 +30,21 @@ __all__ = ["LockboxesResource", "AsyncLockboxesResource"]
 class LockboxesResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> LockboxesResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
+        """
         return LockboxesResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> LockboxesResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
+        """
         return LockboxesResourceWithStreamingResponse(self)
 
     def create(
@@ -254,10 +265,21 @@ class LockboxesResource(SyncAPIResource):
 class AsyncLockboxesResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncLockboxesResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncLockboxesResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncLockboxesResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
+        """
         return AsyncLockboxesResourceWithStreamingResponse(self)
 
     async def create(

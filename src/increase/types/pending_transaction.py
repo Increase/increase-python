@@ -633,6 +633,12 @@ class Source(BaseModel):
     equal to `inbound_funds_hold`.
     """
 
+    other: Optional[object] = None
+    """
+    If the category of this Transaction source is equal to `other`, this field will
+    contain an empty object, otherwise it will contain null.
+    """
+
     real_time_payments_transfer_instruction: Optional[SourceRealTimePaymentsTransferInstruction] = None
     """A Real-Time Payments Transfer Instruction object.
 

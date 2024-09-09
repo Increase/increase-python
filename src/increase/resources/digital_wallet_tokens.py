@@ -25,10 +25,21 @@ __all__ = ["DigitalWalletTokensResource", "AsyncDigitalWalletTokensResource"]
 class DigitalWalletTokensResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> DigitalWalletTokensResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
+        """
         return DigitalWalletTokensResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> DigitalWalletTokensResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
+        """
         return DigitalWalletTokensResourceWithStreamingResponse(self)
 
     def retrieve(
@@ -126,10 +137,21 @@ class DigitalWalletTokensResource(SyncAPIResource):
 class AsyncDigitalWalletTokensResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncDigitalWalletTokensResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncDigitalWalletTokensResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncDigitalWalletTokensResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
+        """
         return AsyncDigitalWalletTokensResourceWithStreamingResponse(self)
 
     async def retrieve(

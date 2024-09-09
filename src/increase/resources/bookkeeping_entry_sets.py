@@ -31,10 +31,21 @@ __all__ = ["BookkeepingEntrySetsResource", "AsyncBookkeepingEntrySetsResource"]
 class BookkeepingEntrySetsResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> BookkeepingEntrySetsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
+        """
         return BookkeepingEntrySetsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> BookkeepingEntrySetsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
+        """
         return BookkeepingEntrySetsResourceWithStreamingResponse(self)
 
     def create(
@@ -192,10 +203,21 @@ class BookkeepingEntrySetsResource(SyncAPIResource):
 class AsyncBookkeepingEntrySetsResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncBookkeepingEntrySetsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncBookkeepingEntrySetsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncBookkeepingEntrySetsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
+        """
         return AsyncBookkeepingEntrySetsResourceWithStreamingResponse(self)
 
     async def create(
