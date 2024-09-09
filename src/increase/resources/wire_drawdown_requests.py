@@ -30,10 +30,21 @@ __all__ = ["WireDrawdownRequestsResource", "AsyncWireDrawdownRequestsResource"]
 class WireDrawdownRequestsResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> WireDrawdownRequestsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
+        """
         return WireDrawdownRequestsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> WireDrawdownRequestsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
+        """
         return WireDrawdownRequestsResourceWithStreamingResponse(self)
 
     def create(
@@ -245,10 +256,21 @@ class WireDrawdownRequestsResource(SyncAPIResource):
 class AsyncWireDrawdownRequestsResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncWireDrawdownRequestsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncWireDrawdownRequestsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncWireDrawdownRequestsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
+        """
         return AsyncWireDrawdownRequestsResourceWithStreamingResponse(self)
 
     async def create(

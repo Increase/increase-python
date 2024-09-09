@@ -34,10 +34,21 @@ __all__ = ["AccountNumbersResource", "AsyncAccountNumbersResource"]
 class AccountNumbersResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AccountNumbersResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
+        """
         return AccountNumbersResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AccountNumbersResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
+        """
         return AccountNumbersResourceWithStreamingResponse(self)
 
     def create(
@@ -282,10 +293,21 @@ class AccountNumbersResource(SyncAPIResource):
 class AsyncAccountNumbersResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncAccountNumbersResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncAccountNumbersResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncAccountNumbersResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
+        """
         return AsyncAccountNumbersResourceWithStreamingResponse(self)
 
     async def create(

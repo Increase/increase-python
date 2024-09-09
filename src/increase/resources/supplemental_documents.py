@@ -28,10 +28,21 @@ __all__ = ["SupplementalDocumentsResource", "AsyncSupplementalDocumentsResource"
 class SupplementalDocumentsResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> SupplementalDocumentsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
+        """
         return SupplementalDocumentsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> SupplementalDocumentsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
+        """
         return SupplementalDocumentsResourceWithStreamingResponse(self)
 
     def create(
@@ -147,10 +158,21 @@ class SupplementalDocumentsResource(SyncAPIResource):
 class AsyncSupplementalDocumentsResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncSupplementalDocumentsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncSupplementalDocumentsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncSupplementalDocumentsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
+        """
         return AsyncSupplementalDocumentsResourceWithStreamingResponse(self)
 
     async def create(

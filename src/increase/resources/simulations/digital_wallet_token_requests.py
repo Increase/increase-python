@@ -27,10 +27,21 @@ __all__ = ["DigitalWalletTokenRequestsResource", "AsyncDigitalWalletTokenRequest
 class DigitalWalletTokenRequestsResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> DigitalWalletTokenRequestsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
+        """
         return DigitalWalletTokenRequestsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> DigitalWalletTokenRequestsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
+        """
         return DigitalWalletTokenRequestsResourceWithStreamingResponse(self)
 
     def create(
@@ -81,10 +92,21 @@ class DigitalWalletTokenRequestsResource(SyncAPIResource):
 class AsyncDigitalWalletTokenRequestsResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncDigitalWalletTokenRequestsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncDigitalWalletTokenRequestsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncDigitalWalletTokenRequestsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
+        """
         return AsyncDigitalWalletTokenRequestsResourceWithStreamingResponse(self)
 
     async def create(

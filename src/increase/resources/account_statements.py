@@ -25,10 +25,21 @@ __all__ = ["AccountStatementsResource", "AsyncAccountStatementsResource"]
 class AccountStatementsResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AccountStatementsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
+        """
         return AccountStatementsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AccountStatementsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
+        """
         return AccountStatementsResourceWithStreamingResponse(self)
 
     def retrieve(
@@ -126,10 +137,21 @@ class AccountStatementsResource(SyncAPIResource):
 class AsyncAccountStatementsResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncAccountStatementsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncAccountStatementsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncAccountStatementsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
+        """
         return AsyncAccountStatementsResourceWithStreamingResponse(self)
 
     async def retrieve(

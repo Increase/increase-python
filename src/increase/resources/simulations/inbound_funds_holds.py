@@ -22,10 +22,21 @@ __all__ = ["InboundFundsHoldsResource", "AsyncInboundFundsHoldsResource"]
 class InboundFundsHoldsResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> InboundFundsHoldsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
+        """
         return InboundFundsHoldsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> InboundFundsHoldsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
+        """
         return InboundFundsHoldsResourceWithStreamingResponse(self)
 
     def release(
@@ -77,10 +88,21 @@ class InboundFundsHoldsResource(SyncAPIResource):
 class AsyncInboundFundsHoldsResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncInboundFundsHoldsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncInboundFundsHoldsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncInboundFundsHoldsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
+        """
         return AsyncInboundFundsHoldsResourceWithStreamingResponse(self)
 
     async def release(

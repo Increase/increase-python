@@ -2531,6 +2531,12 @@ class Element(BaseModel):
     the card payment element was created.
     """
 
+    other: Optional[object] = None
+    """
+    If the category of this Transaction source is equal to `other`, this field will
+    contain an empty object, otherwise it will contain null.
+    """
+
 
 class State(BaseModel):
     authorized_amount: int
