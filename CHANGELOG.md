@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.114.0 (2024-09-09)
+
+Full Changelog: [v0.113.0...v0.114.0](https://github.com/Increase/increase-python/compare/v0.113.0...v0.114.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#663](https://github.com/Increase/increase-python/issues/663)) ([5067c7d](https://github.com/Increase/increase-python/commit/5067c7d9170bbec6d176440edd26a8739173ca5b))
+
 ## 0.113.0 (2024-09-09)
 
 Full Changelog: [v0.112.0...v0.113.0](https://github.com/Increase/increase-python/compare/v0.112.0...v0.113.0)
