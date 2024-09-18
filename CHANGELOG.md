@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.116.0 (2024-09-18)
+
+Full Changelog: [v0.115.0...v0.116.0](https://github.com/Increase/increase-python/compare/v0.115.0...v0.116.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#673](https://github.com/Increase/increase-python/issues/673)) ([6952b17](https://github.com/Increase/increase-python/commit/6952b17a25220df853f030bc82db98aac35ad9ba))
+
+
+### Chores
+
+* **internal:** bump pyright / mypy version ([#672](https://github.com/Increase/increase-python/issues/672)) ([96445fd](https://github.com/Increase/increase-python/commit/96445fd7b298245eb38256b257dc8d8f4bd23738))
+* **internal:** bump ruff ([#671](https://github.com/Increase/increase-python/issues/671)) ([5f2bed4](https://github.com/Increase/increase-python/commit/5f2bed40a26bfe1c93de2751267f19de7cf31703))
+
+
+### Documentation
+
+* update CONTRIBUTING.md ([#669](https://github.com/Increase/increase-python/issues/669)) ([3a59208](https://github.com/Increase/increase-python/commit/3a5920808e849976af6ba0da18f762cd0a350367))
+
 ## 0.115.0 (2024-09-17)
 
 Full Changelog: [v0.114.0...v0.115.0](https://github.com/Increase/increase-python/compare/v0.114.0...v0.115.0)
