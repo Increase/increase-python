@@ -114,13 +114,15 @@ class InboundCheckDeposit(BaseModel):
     front_image_file_id: Optional[str] = None
     """The ID for the File containing the image of the front of the check."""
 
-    status: Literal["pending", "accepted", "declined", "returned"]
+    status: Literal["pending", "accepted", "declined", "returned", "requires_attention"]
     """The status of the Inbound Check Deposit.
 
     - `pending` - The Inbound Check Deposit is pending.
     - `accepted` - The Inbound Check Deposit was accepted.
     - `declined` - The Inbound Check Deposit was rejected.
     - `returned` - The Inbound Check Deposit was returned.
+    - `requires_attention` - The Inbound Check Deposit requires attention from an
+      Increase operator.
     """
 
     transaction_id: Optional[str] = None
