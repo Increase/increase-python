@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.117.1 (2024-09-19)
+
+Full Changelog: [v0.117.0...v0.117.1](https://github.com/Increase/increase-python/compare/v0.117.0...v0.117.1)
+
+### Bug Fixes
+
+* **client:** handle domains with underscores ([#678](https://github.com/Increase/increase-python/issues/678)) ([1db9a23](https://github.com/Increase/increase-python/commit/1db9a2340da8fa6ee270f95a20efb043c4861249))
+
 ## 0.117.0 (2024-09-19)
 
 Full Changelog: [v0.116.0...v0.117.0](https://github.com/Increase/increase-python/compare/v0.116.0...v0.117.0)
