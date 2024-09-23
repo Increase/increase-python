@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.118.0 (2024-09-23)
+
+Full Changelog: [v0.117.1...v0.118.0](https://github.com/Increase/increase-python/compare/v0.117.1...v0.118.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#683](https://github.com/Increase/increase-python/issues/683)) ([75f01f4](https://github.com/Increase/increase-python/commit/75f01f42575af8214d06925845bc8064855c8e8c))
+* **client:** send retry count header ([#681](https://github.com/Increase/increase-python/issues/681)) ([bf4af4b](https://github.com/Increase/increase-python/commit/bf4af4bf0f33a36be3b7894484f640a0cfc2570c))
+
 ## 0.117.1 (2024-09-19)
 
 Full Changelog: [v0.117.0...v0.117.1](https://github.com/Increase/increase-python/compare/v0.117.0...v0.117.1)
