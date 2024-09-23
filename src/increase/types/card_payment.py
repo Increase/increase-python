@@ -1544,7 +1544,7 @@ class ElementCardReversal(BaseModel):
     merchant_city: Optional[str] = None
     """The city the merchant resides in."""
 
-    merchant_country: str
+    merchant_country: Optional[str] = None
     """The country the merchant resides in."""
 
     merchant_descriptor: str
