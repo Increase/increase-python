@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.119.0 (2024-09-23)
+
+Full Changelog: [v0.118.0...v0.119.0](https://github.com/Increase/increase-python/compare/v0.118.0...v0.119.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#687](https://github.com/Increase/increase-python/issues/687)) ([d81f195](https://github.com/Increase/increase-python/commit/d81f195f0d31d21d46a74637823700dbce8f0fde))
+
+
+### Chores
+
+* **internal:** update pydantic v1 compat helpers ([#685](https://github.com/Increase/increase-python/issues/685)) ([7c76386](https://github.com/Increase/increase-python/commit/7c763860535b70f115931f500a4df57d116751f3))
+
 ## 0.118.0 (2024-09-23)
 
 Full Changelog: [v0.117.1...v0.118.0](https://github.com/Increase/increase-python/compare/v0.117.1...v0.118.0)
