@@ -155,14 +155,22 @@ class TestInboundACHTransfers:
     @parametrize
     def test_method_decline(self, client: Increase) -> None:
         inbound_ach_transfer = client.inbound_ach_transfers.decline(
-            "inbound_ach_transfer_id",
+            inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
+        )
+        assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
+
+    @parametrize
+    def test_method_decline_with_all_params(self, client: Increase) -> None:
+        inbound_ach_transfer = client.inbound_ach_transfers.decline(
+            inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
+            reason="insufficient_funds",
         )
         assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
 
     @parametrize
     def test_raw_response_decline(self, client: Increase) -> None:
         response = client.inbound_ach_transfers.with_raw_response.decline(
-            "inbound_ach_transfer_id",
+            inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
         )
 
         assert response.is_closed is True
@@ -173,7 +181,7 @@ class TestInboundACHTransfers:
     @parametrize
     def test_streaming_response_decline(self, client: Increase) -> None:
         with client.inbound_ach_transfers.with_streaming_response.decline(
-            "inbound_ach_transfer_id",
+            inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -189,7 +197,7 @@ class TestInboundACHTransfers:
             ValueError, match=r"Expected a non-empty value for `inbound_ach_transfer_id` but received ''"
         ):
             client.inbound_ach_transfers.with_raw_response.decline(
-                "",
+                inbound_ach_transfer_id="",
             )
 
     @parametrize
@@ -374,14 +382,22 @@ class TestAsyncInboundACHTransfers:
     @parametrize
     async def test_method_decline(self, async_client: AsyncIncrease) -> None:
         inbound_ach_transfer = await async_client.inbound_ach_transfers.decline(
-            "inbound_ach_transfer_id",
+            inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
+        )
+        assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
+
+    @parametrize
+    async def test_method_decline_with_all_params(self, async_client: AsyncIncrease) -> None:
+        inbound_ach_transfer = await async_client.inbound_ach_transfers.decline(
+            inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
+            reason="insufficient_funds",
         )
         assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
 
     @parametrize
     async def test_raw_response_decline(self, async_client: AsyncIncrease) -> None:
         response = await async_client.inbound_ach_transfers.with_raw_response.decline(
-            "inbound_ach_transfer_id",
+            inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
         )
 
         assert response.is_closed is True
@@ -392,7 +408,7 @@ class TestAsyncInboundACHTransfers:
     @parametrize
     async def test_streaming_response_decline(self, async_client: AsyncIncrease) -> None:
         async with async_client.inbound_ach_transfers.with_streaming_response.decline(
-            "inbound_ach_transfer_id",
+            inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -408,7 +424,7 @@ class TestAsyncInboundACHTransfers:
             ValueError, match=r"Expected a non-empty value for `inbound_ach_transfer_id` but received ''"
         ):
             await async_client.inbound_ach_transfers.with_raw_response.decline(
-                "",
+                inbound_ach_transfer_id="",
             )
 
     @parametrize
