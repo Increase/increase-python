@@ -55,9 +55,18 @@ class SourceACHDecline(BaseModel):
         "breaches_limit",
         "entity_not_active",
         "group_locked",
-        "insufficient_funds",
         "transaction_not_allowed",
         "user_initiated",
+        "insufficient_funds",
+        "returned_per_odfi_request",
+        "authorization_revoked_by_customer",
+        "payment_stopped",
+        "customer_advised_unauthorized_improper_ineligible_or_incomplete",
+        "representative_payee_deceased_or_unable_to_continue_in_that_capacity",
+        "beneficiary_or_account_holder_deceased",
+        "credit_entry_refused_by_receiver",
+        "duplicate_entry",
+        "corporate_customer_advised_not_authorized",
     ]
     """Why the ACH transfer was declined.
 
@@ -67,10 +76,26 @@ class SourceACHDecline(BaseModel):
       exceeded.
     - `entity_not_active` - The account's entity is not active.
     - `group_locked` - Your account is inactive.
-    - `insufficient_funds` - Your account contains insufficient funds.
     - `transaction_not_allowed` - The transaction is not allowed per Increase's
       terms.
     - `user_initiated` - Your integration declined this transfer via the API.
+    - `insufficient_funds` - Your account contains insufficient funds.
+    - `returned_per_odfi_request` - The originating financial institution asked for
+      this transfer to be returned. The receiving bank is complying with the
+      request.
+    - `authorization_revoked_by_customer` - The customer no longer authorizes this
+      transaction.
+    - `payment_stopped` - The customer asked for the payment to be stopped.
+    - `customer_advised_unauthorized_improper_ineligible_or_incomplete` - The
+      customer advises that the debit was unauthorized.
+    - `representative_payee_deceased_or_unable_to_continue_in_that_capacity` - The
+      payee is deceased.
+    - `beneficiary_or_account_holder_deceased` - The account holder is deceased.
+    - `credit_entry_refused_by_receiver` - The customer refused a credit entry.
+    - `duplicate_entry` - The account holder identified this transaction as a
+      duplicate.
+    - `corporate_customer_advised_not_authorized` - The corporate customer no longer
+      authorizes this transaction.
     """
 
     receiver_id_number: Optional[str] = None
