@@ -28,6 +28,15 @@ class TestCardDisputes:
         assert_matches_type(CardDispute, card_dispute, path=["response"])
 
     @parametrize
+    def test_method_create_with_all_params(self, client: Increase) -> None:
+        card_dispute = client.card_disputes.create(
+            disputed_transaction_id="transaction_uyrp7fld2ium70oa7oi",
+            explanation="Unauthorized recurring transaction.",
+            amount=1,
+        )
+        assert_matches_type(CardDispute, card_dispute, path=["response"])
+
+    @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
         response = client.card_disputes.with_raw_response.create(
             disputed_transaction_id="transaction_uyrp7fld2ium70oa7oi",
@@ -141,6 +150,15 @@ class TestAsyncCardDisputes:
         card_dispute = await async_client.card_disputes.create(
             disputed_transaction_id="transaction_uyrp7fld2ium70oa7oi",
             explanation="Unauthorized recurring transaction.",
+        )
+        assert_matches_type(CardDispute, card_dispute, path=["response"])
+
+    @parametrize
+    async def test_method_create_with_all_params(self, async_client: AsyncIncrease) -> None:
+        card_dispute = await async_client.card_disputes.create(
+            disputed_transaction_id="transaction_uyrp7fld2ium70oa7oi",
+            explanation="Unauthorized recurring transaction.",
+            amount=1,
         )
         assert_matches_type(CardDispute, card_dispute, path=["response"])
 
