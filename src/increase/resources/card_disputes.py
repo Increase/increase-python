@@ -50,6 +50,7 @@ class CardDisputesResource(SyncAPIResource):
         *,
         disputed_transaction_id: str,
         explanation: str,
+        amount: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -67,6 +68,11 @@ class CardDisputesResource(SyncAPIResource):
 
           explanation: Why you are disputing this Transaction.
 
+          amount: The monetary amount of the part of the transaction that is being disputed. This
+              is optional and will default to the full amount of the transaction if not
+              provided. If provided, the amount must be less than or equal to the amount of
+              the transaction.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -83,6 +89,7 @@ class CardDisputesResource(SyncAPIResource):
                 {
                     "disputed_transaction_id": disputed_transaction_id,
                     "explanation": explanation,
+                    "amount": amount,
                 },
                 card_dispute_create_params.CardDisputeCreateParams,
             ),
@@ -216,6 +223,7 @@ class AsyncCardDisputesResource(AsyncAPIResource):
         *,
         disputed_transaction_id: str,
         explanation: str,
+        amount: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -233,6 +241,11 @@ class AsyncCardDisputesResource(AsyncAPIResource):
 
           explanation: Why you are disputing this Transaction.
 
+          amount: The monetary amount of the part of the transaction that is being disputed. This
+              is optional and will default to the full amount of the transaction if not
+              provided. If provided, the amount must be less than or equal to the amount of
+              the transaction.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -249,6 +262,7 @@ class AsyncCardDisputesResource(AsyncAPIResource):
                 {
                     "disputed_transaction_id": disputed_transaction_id,
                     "explanation": explanation,
+                    "amount": amount,
                 },
                 card_dispute_create_params.CardDisputeCreateParams,
             ),
