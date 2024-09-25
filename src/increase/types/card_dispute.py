@@ -81,6 +81,9 @@ class CardDispute(BaseModel):
     successful dispute.
     """
 
+    amount: Optional[int] = None
+    """The amount of the dispute, if provided, or the transaction amount otherwise."""
+
     created_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
