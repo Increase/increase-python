@@ -6,27 +6,7 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["InboundMailItem", "ReturnAddress"]
-
-
-class ReturnAddress(BaseModel):
-    city: Optional[str] = None
-    """The return address city."""
-
-    line1: Optional[str] = None
-    """The return address line1."""
-
-    line2: Optional[str] = None
-    """The return address line2."""
-
-    name: Optional[str] = None
-    """The return address name."""
-
-    postal_code: Optional[str] = None
-    """The return address postal code."""
-
-    state: Optional[str] = None
-    """The return address state."""
+__all__ = ["InboundMailItem"]
 
 
 class InboundMailItem(BaseModel):
@@ -59,9 +39,6 @@ class InboundMailItem(BaseModel):
     - `no_check` - The mail item does not contain a check.
     - `lockbox_not_active` - The Lockbox or its associataed Account is not active.
     """
-
-    return_address: Optional[ReturnAddress] = None
-    """The return address as written on the mail item."""
 
     status: Literal["pending", "processed", "rejected"]
     """If the mail item has been processed.
