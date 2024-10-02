@@ -1,12 +1,30 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Optional
+from typing import List, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["InboundCheckDeposit", "DepositReturn"]
+__all__ = ["InboundCheckDeposit", "Adjustment", "DepositReturn"]
+
+
+class Adjustment(BaseModel):
+    adjusted_at: datetime
+    """The time at which the return adjustment was received."""
+
+    amount: int
+    """The amount of the adjustment."""
+
+    reason: Literal["late_return"]
+    """The reason for the adjustment.
+
+    - `late_return` - The return was initiated too late and the receiving
+      institution has responded with a Late Return Claim.
+    """
+
+    transaction_id: str
+    """The id of the transaction for the adjustment."""
 
 
 class DepositReturn(BaseModel):
@@ -49,6 +67,12 @@ class InboundCheckDeposit(BaseModel):
 
     account_number_id: Optional[str] = None
     """The Account Number the check is being deposited against."""
+
+    adjustments: List[Adjustment]
+    """
+    If the deposit or the return was adjusted by the sending institution, this will
+    contain details of the adjustments.
+    """
 
     amount: int
     """The deposited amount in the minor unit of the destination account currency.
