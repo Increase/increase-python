@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing_extensions import Literal
+
 import httpx
 
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
@@ -50,6 +52,7 @@ class CardAuthorizationsResource(SyncAPIResource):
         amount: int,
         card_id: str | NotGiven = NOT_GIVEN,
         digital_wallet_token_id: str | NotGiven = NOT_GIVEN,
+        direction: Literal["settlement", "refund"] | NotGiven = NOT_GIVEN,
         event_subscription_id: str | NotGiven = NOT_GIVEN,
         merchant_acceptor_id: str | NotGiven = NOT_GIVEN,
         merchant_category_code: str | NotGiven = NOT_GIVEN,
@@ -81,6 +84,14 @@ class CardAuthorizationsResource(SyncAPIResource):
           card_id: The identifier of the Card to be authorized.
 
           digital_wallet_token_id: The identifier of the Digital Wallet Token to be authorized.
+
+          direction: The direction describes the direction the funds will move, either from the
+              cardholder to the merchant or from the merchant to the cardholder.
+
+              - `settlement` - A regular card authorization where funds are debited from the
+                cardholder.
+              - `refund` - A refund card authorization, sometimes referred to as a credit
+                voucher authorization, where funds are credited to the cardholder.
 
           event_subscription_id: The identifier of the Event Subscription to use. If provided, will override the
               default real time event subscription. Because you can only create one real time
@@ -118,6 +129,7 @@ class CardAuthorizationsResource(SyncAPIResource):
                     "amount": amount,
                     "card_id": card_id,
                     "digital_wallet_token_id": digital_wallet_token_id,
+                    "direction": direction,
                     "event_subscription_id": event_subscription_id,
                     "merchant_acceptor_id": merchant_acceptor_id,
                     "merchant_category_code": merchant_category_code,
@@ -165,6 +177,7 @@ class AsyncCardAuthorizationsResource(AsyncAPIResource):
         amount: int,
         card_id: str | NotGiven = NOT_GIVEN,
         digital_wallet_token_id: str | NotGiven = NOT_GIVEN,
+        direction: Literal["settlement", "refund"] | NotGiven = NOT_GIVEN,
         event_subscription_id: str | NotGiven = NOT_GIVEN,
         merchant_acceptor_id: str | NotGiven = NOT_GIVEN,
         merchant_category_code: str | NotGiven = NOT_GIVEN,
@@ -196,6 +209,14 @@ class AsyncCardAuthorizationsResource(AsyncAPIResource):
           card_id: The identifier of the Card to be authorized.
 
           digital_wallet_token_id: The identifier of the Digital Wallet Token to be authorized.
+
+          direction: The direction describes the direction the funds will move, either from the
+              cardholder to the merchant or from the merchant to the cardholder.
+
+              - `settlement` - A regular card authorization where funds are debited from the
+                cardholder.
+              - `refund` - A refund card authorization, sometimes referred to as a credit
+                voucher authorization, where funds are credited to the cardholder.
 
           event_subscription_id: The identifier of the Event Subscription to use. If provided, will override the
               default real time event subscription. Because you can only create one real time
@@ -233,6 +254,7 @@ class AsyncCardAuthorizationsResource(AsyncAPIResource):
                     "amount": amount,
                     "card_id": card_id,
                     "digital_wallet_token_id": digital_wallet_token_id,
+                    "direction": direction,
                     "event_subscription_id": event_subscription_id,
                     "merchant_acceptor_id": merchant_acceptor_id,
                     "merchant_category_code": merchant_category_code,
