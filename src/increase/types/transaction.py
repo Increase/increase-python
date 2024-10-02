@@ -2266,6 +2266,7 @@ class Source(BaseModel):
         "inbound_ach_transfer",
         "inbound_ach_transfer_return_intention",
         "inbound_check_deposit_return_intention",
+        "inbound_check_adjustment",
         "inbound_real_time_payments_transfer_confirmation",
         "inbound_real_time_payments_transfer_decline",
         "inbound_wire_reversal",
@@ -2317,6 +2318,8 @@ class Source(BaseModel):
     - `inbound_check_deposit_return_intention` - Inbound Check Deposit Return
       Intention: details will be under the `inbound_check_deposit_return_intention`
       object.
+    - `inbound_check_adjustment` - Inbound Check Adjustment: details will be under
+      the `inbound_check_adjustment` object.
     - `inbound_real_time_payments_transfer_confirmation` - Inbound Real-Time
       Payments Transfer Confirmation: details will be under the
       `inbound_real_time_payments_transfer_confirmation` object.
