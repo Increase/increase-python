@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing_extensions import Required, TypedDict
+from typing_extensions import Literal, Required, TypedDict
 
 __all__ = ["CardAuthorizationCreateParams"]
 
@@ -16,6 +16,17 @@ class CardAuthorizationCreateParams(TypedDict, total=False):
 
     digital_wallet_token_id: str
     """The identifier of the Digital Wallet Token to be authorized."""
+
+    direction: Literal["settlement", "refund"]
+    """
+    The direction describes the direction the funds will move, either from the
+    cardholder to the merchant or from the merchant to the cardholder.
+
+    - `settlement` - A regular card authorization where funds are debited from the
+      cardholder.
+    - `refund` - A refund card authorization, sometimes referred to as a credit
+      voucher authorization, where funds are credited to the cardholder.
+    """
 
     event_subscription_id: str
     """The identifier of the Event Subscription to use.
