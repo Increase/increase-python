@@ -66,6 +66,7 @@ class TestRealTimeDecisions:
     def test_method_action_with_all_params(self, client: Increase) -> None:
         real_time_decision = client.real_time_decisions.action(
             real_time_decision_id="real_time_decision_j76n2e810ezcg3zh5qtn",
+            card_authentication={"decision": "approve"},
             card_authorization={"decision": "approve"},
             digital_wallet_authentication={"result": "success"},
             digital_wallet_token={
@@ -162,6 +163,7 @@ class TestAsyncRealTimeDecisions:
     async def test_method_action_with_all_params(self, async_client: AsyncIncrease) -> None:
         real_time_decision = await async_client.real_time_decisions.action(
             real_time_decision_id="real_time_decision_j76n2e810ezcg3zh5qtn",
+            card_authentication={"decision": "approve"},
             card_authorization={"decision": "approve"},
             digital_wallet_authentication={"result": "success"},
             digital_wallet_token={
