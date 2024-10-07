@@ -7,6 +7,7 @@ from typing_extensions import Literal, Required, TypedDict
 __all__ = [
     "RealTimeDecisionActionParams",
     "CardAuthentication",
+    "CardAuthenticationChallenge",
     "CardAuthorization",
     "DigitalWalletAuthentication",
     "DigitalWalletToken",
@@ -20,6 +21,12 @@ class RealTimeDecisionActionParams(TypedDict, total=False):
     """
     If the Real-Time Decision relates to a 3DS card authentication attempt, this
     object contains your response to the authentication.
+    """
+
+    card_authentication_challenge: CardAuthenticationChallenge
+    """
+    If the Real-Time Decision relates to 3DS card authentication challenge delivery,
+    this object contains your response.
     """
 
     card_authorization: CardAuthorization
@@ -49,6 +56,19 @@ class CardAuthentication(TypedDict, total=False):
     - `challenge` - Request further validation before approving the authentication
       attempt.
     - `deny` - Deny the authentication attempt.
+    """
+
+
+class CardAuthenticationChallenge(TypedDict, total=False):
+    result: Required[Literal["success", "failure"]]
+    """
+    Whether the card authentication challenge was successfully delivered to the
+    cardholder.
+
+    - `success` - Your application successfully delivered the one-time code to the
+      cardholder.
+    - `failure` - Your application was unable to deliver the one-time code to the
+      cardholder.
     """
 
 
