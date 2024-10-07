@@ -86,6 +86,8 @@ class RealTimeDecisionsResource(SyncAPIResource):
         real_time_decision_id: str,
         *,
         card_authentication: real_time_decision_action_params.CardAuthentication | NotGiven = NOT_GIVEN,
+        card_authentication_challenge: real_time_decision_action_params.CardAuthenticationChallenge
+        | NotGiven = NOT_GIVEN,
         card_authorization: real_time_decision_action_params.CardAuthorization | NotGiven = NOT_GIVEN,
         digital_wallet_authentication: real_time_decision_action_params.DigitalWalletAuthentication
         | NotGiven = NOT_GIVEN,
@@ -106,6 +108,9 @@ class RealTimeDecisionsResource(SyncAPIResource):
 
           card_authentication: If the Real-Time Decision relates to a 3DS card authentication attempt, this
               object contains your response to the authentication.
+
+          card_authentication_challenge: If the Real-Time Decision relates to 3DS card authentication challenge delivery,
+              this object contains your response.
 
           card_authorization: If the Real-Time Decision relates to a card authorization attempt, this object
               contains your response to the authorization.
@@ -135,6 +140,7 @@ class RealTimeDecisionsResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "card_authentication": card_authentication,
+                    "card_authentication_challenge": card_authentication_challenge,
                     "card_authorization": card_authorization,
                     "digital_wallet_authentication": digital_wallet_authentication,
                     "digital_wallet_token": digital_wallet_token,
@@ -214,6 +220,8 @@ class AsyncRealTimeDecisionsResource(AsyncAPIResource):
         real_time_decision_id: str,
         *,
         card_authentication: real_time_decision_action_params.CardAuthentication | NotGiven = NOT_GIVEN,
+        card_authentication_challenge: real_time_decision_action_params.CardAuthenticationChallenge
+        | NotGiven = NOT_GIVEN,
         card_authorization: real_time_decision_action_params.CardAuthorization | NotGiven = NOT_GIVEN,
         digital_wallet_authentication: real_time_decision_action_params.DigitalWalletAuthentication
         | NotGiven = NOT_GIVEN,
@@ -234,6 +242,9 @@ class AsyncRealTimeDecisionsResource(AsyncAPIResource):
 
           card_authentication: If the Real-Time Decision relates to a 3DS card authentication attempt, this
               object contains your response to the authentication.
+
+          card_authentication_challenge: If the Real-Time Decision relates to 3DS card authentication challenge delivery,
+              this object contains your response.
 
           card_authorization: If the Real-Time Decision relates to a card authorization attempt, this object
               contains your response to the authorization.
@@ -263,6 +274,7 @@ class AsyncRealTimeDecisionsResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "card_authentication": card_authentication,
+                    "card_authentication_challenge": card_authentication_challenge,
                     "card_authorization": card_authorization,
                     "digital_wallet_authentication": digital_wallet_authentication,
                     "digital_wallet_token": digital_wallet_token,
