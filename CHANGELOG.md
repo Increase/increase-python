@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.129.0 (2024-10-07)
+
+Full Changelog: [v0.128.1...v0.129.0](https://github.com/Increase/increase-python/compare/v0.128.1...v0.129.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#729](https://github.com/Increase/increase-python/issues/729)) ([35f2a4e](https://github.com/Increase/increase-python/commit/35f2a4ea5f63d623014f9bc634385630604fecb9))
+
+
+### Chores
+
+* add repr to PageInfo class ([#727](https://github.com/Increase/increase-python/issues/727)) ([f141c3e](https://github.com/Increase/increase-python/commit/f141c3e10cae79172a38ff083e19b8abda5db270))
+
 ## 0.128.1 (2024-10-07)
 
 Full Changelog: [v0.128.0...v0.128.1](https://github.com/Increase/increase-python/compare/v0.128.0...v0.128.1)
