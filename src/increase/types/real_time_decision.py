@@ -8,6 +8,7 @@ from .._models import BaseModel
 
 __all__ = [
     "RealTimeDecision",
+    "CardAuthentication",
     "CardAuthorization",
     "CardAuthorizationNetworkDetails",
     "CardAuthorizationNetworkDetailsVisa",
@@ -20,6 +21,29 @@ __all__ = [
     "DigitalWalletAuthentication",
     "DigitalWalletToken",
 ]
+
+
+class CardAuthentication(BaseModel):
+    account_id: str
+    """The identifier of the Account the card belongs to."""
+
+    card_id: str
+    """The identifier of the Card that is being tokenized."""
+
+    decision: Optional[Literal["approve", "challenge", "deny"]] = None
+    """Whether or not the authentication attempt was approved.
+
+    - `approve` - Approve the authentication attempt without triggering a challenge.
+    - `challenge` - Request further validation before approving the authentication
+      attempt.
+    - `deny` - Deny the authentication attempt.
+    """
+
+    upcoming_card_payment_id: str
+    """The identifier of the Card Payment this authentication attempt will belong to.
+
+    Available in the API once the card authentication has completed.
+    """
 
 
 class CardAuthorizationNetworkDetailsVisa(BaseModel):
@@ -445,15 +469,22 @@ class RealTimeDecision(BaseModel):
     id: str
     """The Real-Time Decision identifier."""
 
+    card_authentication: Optional[CardAuthentication] = None
+    """Fields related to a 3DS authentication attempt."""
+
     card_authorization: Optional[CardAuthorization] = None
     """Fields related to a card authorization."""
 
     category: Literal[
-        "card_authorization_requested", "digital_wallet_token_requested", "digital_wallet_authentication_requested"
+        "card_authorization_requested",
+        "card_authentication_requested",
+        "digital_wallet_token_requested",
+        "digital_wallet_authentication_requested",
     ]
     """The category of the Real-Time Decision.
 
     - `card_authorization_requested` - A card is being authorized.
+    - `card_authentication_requested` - 3DS authentication is requested.
     - `digital_wallet_token_requested` - A card is being loaded into a digital
       wallet.
     - `digital_wallet_authentication_requested` - A card is being loaded into a
