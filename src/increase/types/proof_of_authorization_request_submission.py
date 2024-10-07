@@ -48,12 +48,14 @@ class ProofOfAuthorizationRequestSubmission(BaseModel):
     proof_of_authorization_request_id: str
     """ID of the proof of authorization request."""
 
-    status: Literal["pending_review", "rejected", "pending_sending", "sent"]
+    status: Literal["pending_review", "rejected", "canceled", "pending_sending", "sent"]
     """Status of the proof of authorization request submission.
 
     - `pending_review` - The proof of authorization request submission is pending
       review.
     - `rejected` - The proof of authorization request submission was rejected.
+    - `canceled` - The proof of authorization request submission was canceled and
+      replaced with another.
     - `pending_sending` - The proof of authorization request submission is pending
       sending.
     - `sent` - The proof of authorization request submission was sent.
