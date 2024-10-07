@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.128.1 (2024-10-07)
+
+Full Changelog: [v0.128.0...v0.128.1](https://github.com/Increase/increase-python/compare/v0.128.0...v0.128.1)
+
+### Bug Fixes
+
+* **client:** avoid OverflowError with very large retry counts ([#725](https://github.com/Increase/increase-python/issues/725)) ([4d37a1b](https://github.com/Increase/increase-python/commit/4d37a1bc80d4c05f3cdea9a472607fd99e213b59))
+
+
+### Chores
+
+* **internal:** add support for parsing bool response content ([#723](https://github.com/Increase/increase-python/issues/723)) ([714ec91](https://github.com/Increase/increase-python/commit/714ec91f8d0ac10cd35eb38f9c894c87e26478fc))
+
 ## 0.128.0 (2024-10-07)
 
 Full Changelog: [v0.127.0...v0.128.0](https://github.com/Increase/increase-python/compare/v0.127.0...v0.128.0)
