@@ -9,6 +9,7 @@ from .._models import BaseModel
 __all__ = [
     "RealTimeDecision",
     "CardAuthentication",
+    "CardAuthenticationChallenge",
     "CardAuthorization",
     "CardAuthorizationNetworkDetails",
     "CardAuthorizationNetworkDetailsVisa",
@@ -43,6 +44,32 @@ class CardAuthentication(BaseModel):
     """The identifier of the Card Payment this authentication attempt will belong to.
 
     Available in the API once the card authentication has completed.
+    """
+
+
+class CardAuthenticationChallenge(BaseModel):
+    account_id: str
+    """The identifier of the Account the card belongs to."""
+
+    card_id: str
+    """The identifier of the Card that is being tokenized."""
+
+    card_payment_id: str
+    """
+    The identifier of the Card Payment this authentication challenge attempt belongs
+    to.
+    """
+
+    one_time_code: str
+    """The one-time code delivered to the cardholder."""
+
+    result: Optional[Literal["success", "failure"]] = None
+    """Whether or not the challenge was delivered to the cardholder.
+
+    - `success` - Your application successfully delivered the one-time code to the
+      cardholder.
+    - `failure` - Your application was unable to deliver the one-time code to the
+      cardholder.
     """
 
 
@@ -472,12 +499,16 @@ class RealTimeDecision(BaseModel):
     card_authentication: Optional[CardAuthentication] = None
     """Fields related to a 3DS authentication attempt."""
 
+    card_authentication_challenge: Optional[CardAuthenticationChallenge] = None
+    """Fields related to a 3DS authentication attempt."""
+
     card_authorization: Optional[CardAuthorization] = None
     """Fields related to a card authorization."""
 
     category: Literal[
         "card_authorization_requested",
         "card_authentication_requested",
+        "card_authentication_challenge_requested",
         "digital_wallet_token_requested",
         "digital_wallet_authentication_requested",
     ]
@@ -485,6 +516,8 @@ class RealTimeDecision(BaseModel):
 
     - `card_authorization_requested` - A card is being authorized.
     - `card_authentication_requested` - 3DS authentication is requested.
+    - `card_authentication_challenge_requested` - 3DS authentication challenge
+      requires cardholder involvement.
     - `digital_wallet_token_requested` - A card is being loaded into a digital
       wallet.
     - `digital_wallet_authentication_requested` - A card is being loaded into a
