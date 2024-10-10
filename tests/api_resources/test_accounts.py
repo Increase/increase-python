@@ -166,6 +166,7 @@ class TestAccounts:
             idempotency_key="x",
             informational_entity_id="informational_entity_id",
             limit=1,
+            program_id="program_id",
             status="open",
         )
         assert_matches_type(SyncPage[Account], account, path=["response"])
@@ -422,6 +423,7 @@ class TestAsyncAccounts:
             idempotency_key="x",
             informational_entity_id="informational_entity_id",
             limit=1,
+            program_id="program_id",
             status="open",
         )
         assert_matches_type(AsyncPage[Account], account, path=["response"])
