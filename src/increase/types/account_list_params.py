@@ -37,6 +37,9 @@ class AccountListParams(TypedDict, total=False):
     The default (and maximum) is 100 objects.
     """
 
+    program_id: str
+    """Filter Accounts for those in a specific Program."""
+
     status: Literal["open", "closed"]
     """Filter Accounts for those with the specified status.
 
