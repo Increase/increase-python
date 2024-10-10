@@ -139,6 +139,14 @@ class ACHTransferCreateParams(TypedDict, total=False):
     - `internet_initiated` - Internet Initiated (WEB).
     """
 
+    transaction_timing: Literal["synchronous", "asynchronous"]
+    """The timing of the transaction.
+
+    - `synchronous` - A Transaction will be created immediately.
+    - `asynchronous` - A Transaction will be created when the funds settle at the
+      Federal Reserve.
+    """
+
 
 class AddendaFreeformEntry(TypedDict, total=False):
     payment_related_information: Required[str]
