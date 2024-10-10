@@ -10,6 +10,7 @@ __all__ = [
     "CardAuthenticationChallenge",
     "CardAuthorization",
     "DigitalWalletAuthentication",
+    "DigitalWalletAuthenticationSuccess",
     "DigitalWalletToken",
     "DigitalWalletTokenApproval",
     "DigitalWalletTokenDecline",
@@ -81,6 +82,17 @@ class CardAuthorization(TypedDict, total=False):
     """
 
 
+class DigitalWalletAuthenticationSuccess(TypedDict, total=False):
+    email: str
+    """The email address that was used to verify the cardholder via one-time passcode."""
+
+    phone: str
+    """
+    The phone number that was used to verify the cardholder via one-time passcode
+    over SMS.
+    """
+
+
 class DigitalWalletAuthentication(TypedDict, total=False):
     result: Required[Literal["success", "failure"]]
     """Whether your application was able to deliver the one-time passcode.
@@ -90,6 +102,8 @@ class DigitalWalletAuthentication(TypedDict, total=False):
     - `failure` - Your application failed to deliver the one-time passcode to the
       cardholder.
     """
+
+    success: DigitalWalletAuthenticationSuccess
 
 
 class DigitalWalletTokenApproval(TypedDict, total=False):

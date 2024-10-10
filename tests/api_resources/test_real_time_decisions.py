@@ -69,7 +69,13 @@ class TestRealTimeDecisions:
             card_authentication={"decision": "approve"},
             card_authentication_challenge={"result": "success"},
             card_authorization={"decision": "approve"},
-            digital_wallet_authentication={"result": "success"},
+            digital_wallet_authentication={
+                "result": "success",
+                "success": {
+                    "email": "x",
+                    "phone": "x",
+                },
+            },
             digital_wallet_token={
                 "approval": {
                     "email": "x",
@@ -167,7 +173,13 @@ class TestAsyncRealTimeDecisions:
             card_authentication={"decision": "approve"},
             card_authentication_challenge={"result": "success"},
             card_authorization={"decision": "approve"},
-            digital_wallet_authentication={"result": "success"},
+            digital_wallet_authentication={
+                "result": "success",
+                "success": {
+                    "email": "x",
+                    "phone": "x",
+                },
+            },
             digital_wallet_token={
                 "approval": {
                     "email": "x",
