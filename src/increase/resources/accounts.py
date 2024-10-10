@@ -205,6 +205,7 @@ class AccountsResource(SyncAPIResource):
         idempotency_key: str | NotGiven = NOT_GIVEN,
         informational_entity_id: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
+        program_id: str | NotGiven = NOT_GIVEN,
         status: Literal["open", "closed"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -230,6 +231,8 @@ class AccountsResource(SyncAPIResource):
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
+
+          program_id: Filter Accounts for those in a specific Program.
 
           status: Filter Accounts for those with the specified status.
 
@@ -260,6 +263,7 @@ class AccountsResource(SyncAPIResource):
                         "idempotency_key": idempotency_key,
                         "informational_entity_id": informational_entity_id,
                         "limit": limit,
+                        "program_id": program_id,
                         "status": status,
                     },
                     account_list_params.AccountListParams,
@@ -524,6 +528,7 @@ class AsyncAccountsResource(AsyncAPIResource):
         idempotency_key: str | NotGiven = NOT_GIVEN,
         informational_entity_id: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
+        program_id: str | NotGiven = NOT_GIVEN,
         status: Literal["open", "closed"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -549,6 +554,8 @@ class AsyncAccountsResource(AsyncAPIResource):
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
+
+          program_id: Filter Accounts for those in a specific Program.
 
           status: Filter Accounts for those with the specified status.
 
@@ -579,6 +586,7 @@ class AsyncAccountsResource(AsyncAPIResource):
                         "idempotency_key": idempotency_key,
                         "informational_entity_id": informational_entity_id,
                         "limit": limit,
+                        "program_id": program_id,
                         "status": status,
                     },
                     account_list_params.AccountListParams,
