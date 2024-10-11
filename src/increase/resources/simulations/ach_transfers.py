@@ -474,6 +474,51 @@ class ACHTransfersResource(SyncAPIResource):
             cast_to=ACHTransfer,
         )
 
+    def settle(
+        self,
+        ach_transfer_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> ACHTransfer:
+        """
+        Simulates the settlement of an [ACH Transfer](#ach-transfers) by the Federal
+        Reserve. This transfer must first have a `status` of `submitted`. Without this
+        simulation the transfer will eventually settle on its own following the same
+        Federal Reserve timeline as in production.
+
+        Args:
+          ach_transfer_id: The identifier of the ACH Transfer you wish to become settled.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not ach_transfer_id:
+            raise ValueError(f"Expected a non-empty value for `ach_transfer_id` but received {ach_transfer_id!r}")
+        return self._post(
+            f"/simulations/ach_transfers/{ach_transfer_id}/settle",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=ACHTransfer,
+        )
+
     def submit(
         self,
         ach_transfer_id: str,
@@ -970,6 +1015,51 @@ class AsyncACHTransfersResource(AsyncAPIResource):
             cast_to=ACHTransfer,
         )
 
+    async def settle(
+        self,
+        ach_transfer_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> ACHTransfer:
+        """
+        Simulates the settlement of an [ACH Transfer](#ach-transfers) by the Federal
+        Reserve. This transfer must first have a `status` of `submitted`. Without this
+        simulation the transfer will eventually settle on its own following the same
+        Federal Reserve timeline as in production.
+
+        Args:
+          ach_transfer_id: The identifier of the ACH Transfer you wish to become settled.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not ach_transfer_id:
+            raise ValueError(f"Expected a non-empty value for `ach_transfer_id` but received {ach_transfer_id!r}")
+        return await self._post(
+            f"/simulations/ach_transfers/{ach_transfer_id}/settle",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=ACHTransfer,
+        )
+
     async def submit(
         self,
         ach_transfer_id: str,
@@ -1031,6 +1121,9 @@ class ACHTransfersResourceWithRawResponse:
         self.return_ = to_raw_response_wrapper(
             ach_transfers.return_,
         )
+        self.settle = to_raw_response_wrapper(
+            ach_transfers.settle,
+        )
         self.submit = to_raw_response_wrapper(
             ach_transfers.submit,
         )
@@ -1048,6 +1141,9 @@ class AsyncACHTransfersResourceWithRawResponse:
         )
         self.return_ = async_to_raw_response_wrapper(
             ach_transfers.return_,
+        )
+        self.settle = async_to_raw_response_wrapper(
+            ach_transfers.settle,
         )
         self.submit = async_to_raw_response_wrapper(
             ach_transfers.submit,
@@ -1067,6 +1163,9 @@ class ACHTransfersResourceWithStreamingResponse:
         self.return_ = to_streamed_response_wrapper(
             ach_transfers.return_,
         )
+        self.settle = to_streamed_response_wrapper(
+            ach_transfers.settle,
+        )
         self.submit = to_streamed_response_wrapper(
             ach_transfers.submit,
         )
@@ -1084,6 +1183,9 @@ class AsyncACHTransfersResourceWithStreamingResponse:
         )
         self.return_ = async_to_streamed_response_wrapper(
             ach_transfers.return_,
+        )
+        self.settle = async_to_streamed_response_wrapper(
+            ach_transfers.settle,
         )
         self.submit = async_to_streamed_response_wrapper(
             ach_transfers.submit,
