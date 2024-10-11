@@ -144,9 +144,12 @@ class PhysicalCheckReturnAddress(BaseModel):
 
 
 class PhysicalCheckTrackingUpdate(BaseModel):
-    category: Literal["returned_to_sender"]
+    category: Literal["in_transit", "processed_for_delivery", "delivered", "returned_to_sender"]
     """The type of tracking event.
 
+    - `in_transit` - The check is in transit.
+    - `processed_for_delivery` - The check has been processed for delivery.
+    - `delivered` - The check has been delivered.
     - `returned_to_sender` - Delivery failed and the check was returned to sender.
     """
 
