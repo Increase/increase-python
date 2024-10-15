@@ -26,6 +26,7 @@ __all__ = [
     "NotificationsOfChange",
     "PreferredEffectiveDate",
     "Return",
+    "Settlement",
     "Submission",
 ]
 
@@ -560,6 +561,14 @@ class Return(BaseModel):
     """The identifier of the ACH Transfer associated with this return."""
 
 
+class Settlement(BaseModel):
+    settled_at: datetime.datetime
+    """
+    When the funds for this transfer have settled at the destination bank at the
+    Federal Reserve.
+    """
+
+
 class Submission(BaseModel):
     effective_date: datetime.date
     """The ACH transfer's effective date as sent to the Federal Reserve.
@@ -747,6 +756,12 @@ class ACHTransfer(BaseModel):
 
     routing_number: str
     """The American Bankers' Association (ABA) Routing Transit Number (RTN)."""
+
+    settlement: Optional[Settlement] = None
+    """
+    A subhash containing information about when and how the transfer settled at the
+    Federal Reserve.
+    """
 
     standard_entry_class_code: Literal[
         "corporate_credit_or_debit",
