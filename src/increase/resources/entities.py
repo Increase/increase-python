@@ -68,6 +68,7 @@ class EntitiesResource(SyncAPIResource):
         joint: entity_create_params.Joint | NotGiven = NOT_GIVEN,
         natural_person: entity_create_params.NaturalPerson | NotGiven = NOT_GIVEN,
         supplemental_documents: Iterable[entity_create_params.SupplementalDocument] | NotGiven = NOT_GIVEN,
+        third_party_verification: entity_create_params.ThirdPartyVerification | NotGiven = NOT_GIVEN,
         trust: entity_create_params.Trust | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -107,6 +108,9 @@ class EntitiesResource(SyncAPIResource):
 
           supplemental_documents: Additional documentation associated with the entity.
 
+          third_party_verification: A reference to data stored in a third-party verification service. Your
+              integration may or may not use this field.
+
           trust: Details of the trust entity to create. Required if `structure` is equal to
               `trust`.
 
@@ -131,6 +135,7 @@ class EntitiesResource(SyncAPIResource):
                     "joint": joint,
                     "natural_person": natural_person,
                     "supplemental_documents": supplemental_documents,
+                    "third_party_verification": third_party_verification,
                     "trust": trust,
                 },
                 entity_create_params.EntityCreateParams,
@@ -621,6 +626,7 @@ class AsyncEntitiesResource(AsyncAPIResource):
         joint: entity_create_params.Joint | NotGiven = NOT_GIVEN,
         natural_person: entity_create_params.NaturalPerson | NotGiven = NOT_GIVEN,
         supplemental_documents: Iterable[entity_create_params.SupplementalDocument] | NotGiven = NOT_GIVEN,
+        third_party_verification: entity_create_params.ThirdPartyVerification | NotGiven = NOT_GIVEN,
         trust: entity_create_params.Trust | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -660,6 +666,9 @@ class AsyncEntitiesResource(AsyncAPIResource):
 
           supplemental_documents: Additional documentation associated with the entity.
 
+          third_party_verification: A reference to data stored in a third-party verification service. Your
+              integration may or may not use this field.
+
           trust: Details of the trust entity to create. Required if `structure` is equal to
               `trust`.
 
@@ -684,6 +693,7 @@ class AsyncEntitiesResource(AsyncAPIResource):
                     "joint": joint,
                     "natural_person": natural_person,
                     "supplemental_documents": supplemental_documents,
+                    "third_party_verification": third_party_verification,
                     "trust": trust,
                 },
                 entity_create_params.EntityCreateParams,
