@@ -12,7 +12,7 @@ class WireTransferCreateParams(TypedDict, total=False):
     """The identifier for the account that will send the transfer."""
 
     amount: Required[int]
-    """The transfer amount in cents."""
+    """The transfer amount in USD cents."""
 
     beneficiary_name: Required[str]
     """The beneficiary's name."""

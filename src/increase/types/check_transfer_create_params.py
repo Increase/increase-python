@@ -18,7 +18,7 @@ class CheckTransferCreateParams(TypedDict, total=False):
     """The identifier for the account that will send the transfer."""
 
     amount: Required[int]
-    """The transfer amount in cents."""
+    """The transfer amount in USD cents."""
 
     source_account_number_id: Required[str]
     """
