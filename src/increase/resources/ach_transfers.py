@@ -89,7 +89,7 @@ class ACHTransfersResource(SyncAPIResource):
         Args:
           account_id: The Increase identifier for the account that will send the transfer.
 
-          amount: The transfer amount in cents. A positive amount originates a credit transfer
+          amount: The transfer amount in USD cents. A positive amount originates a credit transfer
               pushing funds to the receiving account. A negative amount originates a debit
               transfer pulling funds from the receiving account.
 
@@ -453,7 +453,7 @@ class AsyncACHTransfersResource(AsyncAPIResource):
         Args:
           account_id: The Increase identifier for the account that will send the transfer.
 
-          amount: The transfer amount in cents. A positive amount originates a credit transfer
+          amount: The transfer amount in USD cents. A positive amount originates a credit transfer
               pushing funds to the receiving account. A negative amount originates a debit
               transfer pulling funds from the receiving account.
 

@@ -52,10 +52,7 @@ class SourceAccountTransferInstruction(BaseModel):
 
 class SourceACHTransferInstruction(BaseModel):
     amount: int
-    """The pending amount in the minor unit of the transaction's currency.
-
-    For dollars, for example, this is cents.
-    """
+    """The pending amount in USD cents."""
 
     transfer_id: str
     """The identifier of the ACH Transfer that led to this Pending Transaction."""
@@ -400,10 +397,7 @@ class SourceCardAuthorization(BaseModel):
 
 class SourceCheckDepositInstruction(BaseModel):
     amount: int
-    """The pending amount in the minor unit of the transaction's currency.
-
-    For dollars, for example, this is cents.
-    """
+    """The pending amount in USD cents."""
 
     back_image_file_id: Optional[str] = None
     """
@@ -436,10 +430,7 @@ class SourceCheckDepositInstruction(BaseModel):
 
 class SourceCheckTransferInstruction(BaseModel):
     amount: int
-    """The pending amount in the minor unit of the transaction's currency.
-
-    For dollars, for example, this is cents.
-    """
+    """The transfer amount in USD cents."""
 
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
@@ -518,10 +509,7 @@ class SourceInboundFundsHold(BaseModel):
 
 class SourceRealTimePaymentsTransferInstruction(BaseModel):
     amount: int
-    """The pending amount in the minor unit of the transaction's currency.
-
-    For dollars, for example, this is cents.
-    """
+    """The transfer amount in USD cents."""
 
     transfer_id: str
     """
@@ -535,10 +523,7 @@ class SourceWireTransferInstruction(BaseModel):
     """The account number for the destination account."""
 
     amount: int
-    """The pending amount in the minor unit of the transaction's currency.
-
-    For dollars, for example, this is cents.
-    """
+    """The transfer amount in USD cents."""
 
     message_to_recipient: str
     """The message that will show on the recipient's bank statement."""

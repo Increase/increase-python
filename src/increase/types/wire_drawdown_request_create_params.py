@@ -12,7 +12,7 @@ class WireDrawdownRequestCreateParams(TypedDict, total=False):
     """The Account Number to which the recipient should send funds."""
 
     amount: Required[int]
-    """The amount requested from the recipient, in cents."""
+    """The amount requested from the recipient, in USD cents."""
 
     message_to_recipient: Required[str]
     """A message the recipient will see as part of the request."""

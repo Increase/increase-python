@@ -12,10 +12,7 @@ class CheckDepositCreateParams(TypedDict, total=False):
     """The identifier for the Account to deposit the check in."""
 
     amount: Required[int]
-    """The deposit amount in the minor unit of the account currency.
-
-    For dollars, for example, this is cents.
-    """
+    """The deposit amount in USD cents."""
 
     back_image_file_id: Required[str]
     """The File containing the check's back image."""

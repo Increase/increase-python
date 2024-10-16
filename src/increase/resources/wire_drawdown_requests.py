@@ -77,7 +77,7 @@ class WireDrawdownRequestsResource(SyncAPIResource):
         Args:
           account_number_id: The Account Number to which the recipient should send funds.
 
-          amount: The amount requested from the recipient, in cents.
+          amount: The amount requested from the recipient, in USD cents.
 
           message_to_recipient: A message the recipient will see as part of the request.
 
@@ -303,7 +303,7 @@ class AsyncWireDrawdownRequestsResource(AsyncAPIResource):
         Args:
           account_number_id: The Account Number to which the recipient should send funds.
 
-          amount: The amount requested from the recipient, in cents.
+          amount: The amount requested from the recipient, in USD cents.
 
           message_to_recipient: A message the recipient will see as part of the request.
 

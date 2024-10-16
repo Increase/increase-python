@@ -29,10 +29,7 @@ class SourceACHDecline(BaseModel):
     """The ACH Decline's identifier."""
 
     amount: int
-    """The declined amount in the minor unit of the destination account currency.
-
-    For dollars, for example, this is cents.
-    """
+    """The declined amount in USD cents."""
 
     inbound_ach_transfer_id: str
     """The identifier of the Inbound ACH Transfer object associated with this decline."""
@@ -486,10 +483,7 @@ class SourceCardDecline(BaseModel):
 
 class SourceCheckDecline(BaseModel):
     amount: int
-    """The declined amount in the minor unit of the destination account currency.
-
-    For dollars, for example, this is cents.
-    """
+    """The declined amount in USD cents."""
 
     auxiliary_on_us: Optional[str] = None
     """

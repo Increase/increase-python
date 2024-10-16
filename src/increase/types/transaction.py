@@ -1573,10 +1573,7 @@ class SourceCheckDepositAcceptance(BaseModel):
 
 class SourceCheckDepositReturn(BaseModel):
     amount: int
-    """The amount in the minor unit of the transaction's currency.
-
-    For dollars, for example, this is cents.
-    """
+    """The returned amount in USD cents."""
 
     check_deposit_id: str
     """The identifier of the Check Deposit that was returned."""
@@ -1762,10 +1759,7 @@ class SourceInboundACHTransfer(BaseModel):
     """Additional information sent from the originator."""
 
     amount: int
-    """The amount in the minor unit of the destination account currency.
-
-    For dollars, for example, this is cents.
-    """
+    """The transfer amount in USD cents."""
 
     originator_company_descriptive_date: Optional[str] = None
     """The description of the date of the transfer, usually in the format `YYMMDD`."""
