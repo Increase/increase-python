@@ -75,7 +75,7 @@ class CheckTransfersResource(SyncAPIResource):
         Args:
           account_id: The identifier for the account that will send the transfer.
 
-          amount: The transfer amount in cents.
+          amount: The transfer amount in USD cents.
 
           source_account_number_id: The identifier of the Account Number from which to send the transfer and print
               on the check.
@@ -406,7 +406,7 @@ class AsyncCheckTransfersResource(AsyncAPIResource):
         Args:
           account_id: The identifier for the account that will send the transfer.
 
-          amount: The transfer amount in cents.
+          amount: The transfer amount in USD cents.
 
           source_account_number_id: The identifier of the Account Number from which to send the transfer and print
               on the check.

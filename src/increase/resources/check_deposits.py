@@ -67,8 +67,7 @@ class CheckDepositsResource(SyncAPIResource):
         Args:
           account_id: The identifier for the Account to deposit the check in.
 
-          amount: The deposit amount in the minor unit of the account currency. For dollars, for
-              example, this is cents.
+          amount: The deposit amount in USD cents.
 
           back_image_file_id: The File containing the check's back image.
 
@@ -247,8 +246,7 @@ class AsyncCheckDepositsResource(AsyncAPIResource):
         Args:
           account_id: The identifier for the Account to deposit the check in.
 
-          amount: The deposit amount in the minor unit of the account currency. For dollars, for
-              example, this is cents.
+          amount: The deposit amount in USD cents.
 
           back_image_file_id: The File containing the check's back image.
 

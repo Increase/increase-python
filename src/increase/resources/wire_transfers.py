@@ -77,7 +77,7 @@ class WireTransfersResource(SyncAPIResource):
         Args:
           account_id: The identifier for the account that will send the transfer.
 
-          amount: The transfer amount in cents.
+          amount: The transfer amount in USD cents.
 
           beneficiary_name: The beneficiary's name.
 
@@ -390,7 +390,7 @@ class AsyncWireTransfersResource(AsyncAPIResource):
         Args:
           account_id: The identifier for the account that will send the transfer.
 
-          amount: The transfer amount in cents.
+          amount: The transfer amount in USD cents.
 
           beneficiary_name: The beneficiary's name.
 

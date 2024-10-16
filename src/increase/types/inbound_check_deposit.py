@@ -77,10 +77,7 @@ class InboundCheckDeposit(BaseModel):
     """
 
     amount: int
-    """The deposited amount in the minor unit of the destination account currency.
-
-    For dollars, for example, this is cents.
-    """
+    """The deposited amount in USD cents."""
 
     back_image_file_id: Optional[str] = None
     """The ID for the File containing the image of the back of the check."""
