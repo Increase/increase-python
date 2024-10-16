@@ -50,6 +50,7 @@ class CardAuthorizationsResource(SyncAPIResource):
         self,
         *,
         amount: int,
+        authenticated_card_payment_id: str | NotGiven = NOT_GIVEN,
         card_id: str | NotGiven = NOT_GIVEN,
         decline_reason: Literal[
             "card_not_active",
@@ -98,6 +99,9 @@ class CardAuthorizationsResource(SyncAPIResource):
 
         Args:
           amount: The authorization amount in cents.
+
+          authenticated_card_payment_id: The identifier of a Card Payment with a `card_authentication` if you want to
+              simulate an authenticated authorization.
 
           card_id: The identifier of the Card to be authorized.
 
@@ -171,6 +175,7 @@ class CardAuthorizationsResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "amount": amount,
+                    "authenticated_card_payment_id": authenticated_card_payment_id,
                     "card_id": card_id,
                     "decline_reason": decline_reason,
                     "digital_wallet_token_id": digital_wallet_token_id,
@@ -220,6 +225,7 @@ class AsyncCardAuthorizationsResource(AsyncAPIResource):
         self,
         *,
         amount: int,
+        authenticated_card_payment_id: str | NotGiven = NOT_GIVEN,
         card_id: str | NotGiven = NOT_GIVEN,
         decline_reason: Literal[
             "card_not_active",
@@ -268,6 +274,9 @@ class AsyncCardAuthorizationsResource(AsyncAPIResource):
 
         Args:
           amount: The authorization amount in cents.
+
+          authenticated_card_payment_id: The identifier of a Card Payment with a `card_authentication` if you want to
+              simulate an authenticated authorization.
 
           card_id: The identifier of the Card to be authorized.
 
@@ -341,6 +350,7 @@ class AsyncCardAuthorizationsResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "amount": amount,
+                    "authenticated_card_payment_id": authenticated_card_payment_id,
                     "card_id": card_id,
                     "decline_reason": decline_reason,
                     "digital_wallet_token_id": digital_wallet_token_id,
