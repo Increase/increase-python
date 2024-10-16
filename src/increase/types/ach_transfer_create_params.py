@@ -24,7 +24,7 @@ class ACHTransferCreateParams(TypedDict, total=False):
     """The Increase identifier for the account that will send the transfer."""
 
     amount: Required[int]
-    """The transfer amount in cents.
+    """The transfer amount in USD cents.
 
     A positive amount originates a credit transfer pushing funds to the receiving
     account. A negative amount originates a debit transfer pulling funds from the
