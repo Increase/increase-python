@@ -243,6 +243,10 @@ class TestEntities:
                 "confirmed_no_us_tax_id": True,
             },
             supplemental_documents=[{"file_id": "file_makxrc67oh9l6sg7w9yc"}],
+            third_party_verification={
+                "reference": "x",
+                "vendor": "alloy",
+            },
             trust={
                 "address": {
                     "city": "x",
@@ -1212,6 +1216,10 @@ class TestAsyncEntities:
                 "confirmed_no_us_tax_id": True,
             },
             supplemental_documents=[{"file_id": "file_makxrc67oh9l6sg7w9yc"}],
+            third_party_verification={
+                "reference": "x",
+                "vendor": "alloy",
+            },
             trust={
                 "address": {
                     "city": "x",

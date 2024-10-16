@@ -36,6 +36,7 @@ __all__ = [
     "NaturalPersonIdentificationOther",
     "NaturalPersonIdentificationPassport",
     "SupplementalDocument",
+    "ThirdPartyVerification",
     "Trust",
     "TrustAddress",
     "TrustTrustee",
@@ -96,6 +97,12 @@ class EntityCreateParams(TypedDict, total=False):
 
     supplemental_documents: Iterable[SupplementalDocument]
     """Additional documentation associated with the entity."""
+
+    third_party_verification: ThirdPartyVerification
+    """A reference to data stored in a third-party verification service.
+
+    Your integration may or may not use this field.
+    """
 
     trust: Trust
     """Details of the trust entity to create.
@@ -652,6 +659,17 @@ class NaturalPerson(TypedDict, total=False):
 class SupplementalDocument(TypedDict, total=False):
     file_id: Required[str]
     """The identifier of the File containing the document."""
+
+
+class ThirdPartyVerification(TypedDict, total=False):
+    reference: Required[str]
+    """The reference identifier for the third party verification."""
+
+    vendor: Required[Literal["alloy"]]
+    """The vendor that was used to perform the verification.
+
+    - `alloy` - Alloy
+    """
 
 
 class TrustAddress(TypedDict, total=False):
