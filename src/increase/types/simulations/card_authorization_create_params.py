@@ -11,6 +11,12 @@ class CardAuthorizationCreateParams(TypedDict, total=False):
     amount: Required[int]
     """The authorization amount in cents."""
 
+    authenticated_card_payment_id: str
+    """
+    The identifier of a Card Payment with a `card_authentication` if you want to
+    simulate an authenticated authorization.
+    """
+
     card_id: str
     """The identifier of the Card to be authorized."""
 

@@ -28,6 +28,7 @@ class TestCardAuthorizations:
     def test_method_create_with_all_params(self, client: Increase) -> None:
         card_authorization = client.simulations.card_authorizations.create(
             amount=1000,
+            authenticated_card_payment_id="authenticated_card_payment_id",
             card_id="card_oubs0hwk5rn6knuecxg2",
             decline_reason="card_not_active",
             digital_wallet_token_id="digital_wallet_token_id",
@@ -81,6 +82,7 @@ class TestAsyncCardAuthorizations:
     async def test_method_create_with_all_params(self, async_client: AsyncIncrease) -> None:
         card_authorization = await async_client.simulations.card_authorizations.create(
             amount=1000,
+            authenticated_card_payment_id="authenticated_card_payment_id",
             card_id="card_oubs0hwk5rn6knuecxg2",
             decline_reason="card_not_active",
             digital_wallet_token_id="digital_wallet_token_id",
