@@ -25,6 +25,7 @@ __all__ = [
     "NaturalPerson",
     "NaturalPersonAddress",
     "NaturalPersonIdentification",
+    "ThirdPartyVerification",
     "Trust",
     "TrustAddress",
     "TrustGrantor",
@@ -333,6 +334,17 @@ class NaturalPerson(BaseModel):
     """The person's legal name."""
 
 
+class ThirdPartyVerification(BaseModel):
+    reference: str
+    """The reference identifier for the third party verification."""
+
+    vendor: Literal["alloy"]
+    """The vendor that was used to perform the verification.
+
+    - `alloy` - Alloy
+    """
+
+
 class TrustAddress(BaseModel):
     city: str
     """The city of the address."""
@@ -587,6 +599,12 @@ class Entity(BaseModel):
     This is limited to the first 10 documents for an entity. If an entity has more
     than 10 documents, use the GET /entity_supplemental_documents list endpoint to
     retrieve them.
+    """
+
+    third_party_verification: Optional[ThirdPartyVerification] = None
+    """A reference to data stored in a third-party verification service.
+
+    Your integration may or may not use this field.
     """
 
     trust: Optional[Trust] = None
