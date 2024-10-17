@@ -47,6 +47,7 @@ _CategoryReservedKeywords = TypedDict(
                 "inbound_funds_hold",
                 "real_time_payments_transfer_instruction",
                 "wire_transfer_instruction",
+                "inbound_wire_transfer_reversal",
                 "other",
             ]
         ],
