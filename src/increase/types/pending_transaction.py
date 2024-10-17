@@ -569,6 +569,7 @@ class Source(BaseModel):
         "inbound_funds_hold",
         "real_time_payments_transfer_instruction",
         "wire_transfer_instruction",
+        "inbound_wire_transfer_reversal",
         "other",
     ]
     """The type of the resource.
@@ -593,6 +594,8 @@ class Source(BaseModel):
       `real_time_payments_transfer_instruction` object.
     - `wire_transfer_instruction` - Wire Transfer Instruction: details will be under
       the `wire_transfer_instruction` object.
+    - `inbound_wire_transfer_reversal` - Inbound Wire Transfer Reversal: details
+      will be under the `inbound_wire_transfer_reversal` object.
     - `other` - The Pending Transaction was made for an undocumented or deprecated
       reason.
     """
