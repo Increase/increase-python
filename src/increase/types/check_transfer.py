@@ -159,6 +159,9 @@ class PhysicalCheckTrackingUpdate(BaseModel):
     the tracking event took place.
     """
 
+    postal_code: str
+    """The postal code where the event took place."""
+
 
 class PhysicalCheck(BaseModel):
     mailing_address: PhysicalCheckMailingAddress
