@@ -1732,6 +1732,9 @@ class SourceFeePayment(BaseModel):
     fee_period_start: date
     """The start of this payment's fee period, usually the first day of a month."""
 
+    program_id: Optional[str] = None
+    """The Program for which this fee was incurred."""
+
 
 class SourceInboundACHTransferAddendaFreeformEntry(BaseModel):
     payment_related_information: str
