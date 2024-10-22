@@ -285,25 +285,25 @@ class RealTimePaymentsTransfer(BaseModel):
         "pending_approval",
         "canceled",
         "pending_reviewing",
+        "requires_attention",
+        "rejected",
         "pending_submission",
         "submitted",
         "complete",
-        "rejected",
-        "requires_attention",
     ]
     """The lifecycle status of the transfer.
 
     - `pending_approval` - The transfer is pending approval.
     - `canceled` - The transfer has been canceled.
     - `pending_reviewing` - The transfer is pending review by Increase.
+    - `requires_attention` - The transfer requires attention from an Increase
+      operator.
+    - `rejected` - The transfer was rejected by the network or the recipient's bank.
     - `pending_submission` - The transfer is queued to be submitted to Real-Time
       Payments.
     - `submitted` - The transfer has been submitted and is pending a response from
       Real-Time Payments.
     - `complete` - The transfer has been sent successfully and is complete.
-    - `rejected` - The transfer was rejected by the network or the recipient's bank.
-    - `requires_attention` - The transfer requires attention from an Increase
-      operator.
     """
 
     submission: Optional[Submission] = None
