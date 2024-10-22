@@ -63,6 +63,7 @@ class WireTransfersResource(SyncAPIResource):
         originator_name: str | NotGiven = NOT_GIVEN,
         require_approval: bool | NotGiven = NOT_GIVEN,
         routing_number: str | NotGiven = NOT_GIVEN,
+        source_account_number_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -111,6 +112,8 @@ class WireTransfersResource(SyncAPIResource):
           routing_number: The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
               destination account.
 
+          source_account_number_id: The ID of an Account Number that will be passed to the wire's recipient
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -140,6 +143,7 @@ class WireTransfersResource(SyncAPIResource):
                     "originator_name": originator_name,
                     "require_approval": require_approval,
                     "routing_number": routing_number,
+                    "source_account_number_id": source_account_number_id,
                 },
                 wire_transfer_create_params.WireTransferCreateParams,
             ),
@@ -376,6 +380,7 @@ class AsyncWireTransfersResource(AsyncAPIResource):
         originator_name: str | NotGiven = NOT_GIVEN,
         require_approval: bool | NotGiven = NOT_GIVEN,
         routing_number: str | NotGiven = NOT_GIVEN,
+        source_account_number_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -424,6 +429,8 @@ class AsyncWireTransfersResource(AsyncAPIResource):
           routing_number: The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
               destination account.
 
+          source_account_number_id: The ID of an Account Number that will be passed to the wire's recipient
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -453,6 +460,7 @@ class AsyncWireTransfersResource(AsyncAPIResource):
                     "originator_name": originator_name,
                     "require_approval": require_approval,
                     "routing_number": routing_number,
+                    "source_account_number_id": source_account_number_id,
                 },
                 wire_transfer_create_params.WireTransferCreateParams,
             ),
