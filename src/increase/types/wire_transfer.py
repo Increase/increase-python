@@ -264,6 +264,9 @@ class WireTransfer(BaseModel):
     routing_number: str
     """The American Bankers' Association (ABA) Routing Transit Number (RTN)."""
 
+    source_account_number_id: Optional[str] = None
+    """The Account Number that was passed to the wire's recipient."""
+
     status: Literal[
         "pending_approval",
         "canceled",
