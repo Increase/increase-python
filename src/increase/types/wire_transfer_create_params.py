@@ -75,3 +75,6 @@ class WireTransferCreateParams(TypedDict, total=False):
     The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
     destination account.
     """
+
+    source_account_number_id: str
+    """The ID of an Account Number that will be passed to the wire's recipient"""
