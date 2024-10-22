@@ -265,29 +265,29 @@ class WireTransfer(BaseModel):
     """The American Bankers' Association (ABA) Routing Transit Number (RTN)."""
 
     status: Literal[
-        "canceled",
-        "requires_attention",
-        "pending_reviewing",
         "pending_approval",
+        "canceled",
+        "pending_reviewing",
         "rejected",
+        "requires_attention",
+        "pending_creating",
         "reversed",
         "submitted",
         "complete",
-        "pending_creating",
     ]
     """The lifecycle status of the transfer.
 
+    - `pending_approval` - The transfer is pending approval.
     - `canceled` - The transfer has been canceled.
+    - `pending_reviewing` - The transfer is pending review by Increase.
+    - `rejected` - The transfer has been rejected by Increase.
     - `requires_attention` - The transfer requires attention from an Increase
       operator.
-    - `pending_reviewing` - The transfer is pending review by Increase.
-    - `pending_approval` - The transfer is pending approval.
-    - `rejected` - The transfer has been rejected by Increase.
+    - `pending_creating` - The transfer is pending creation.
     - `reversed` - The transfer has been reversed.
     - `submitted` - The transfer has been submitted to Fedwire.
     - `complete` - The transfer has been acknowledged by Fedwire and can be
       considered complete.
-    - `pending_creating` - The transfer is pending creation.
     """
 
     submission: Optional[Submission] = None
