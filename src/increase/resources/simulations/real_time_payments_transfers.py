@@ -58,9 +58,10 @@ class RealTimePaymentsTransfersResource(SyncAPIResource):
         idempotency_key: str | None = None,
     ) -> RealTimePaymentsTransfer:
         """
-        Simulates submission of a Real-Time Payments transfer and handling the response
-        from the destination financial institution. This transfer must first have a
-        `status` of `pending_submission`.
+        Simulates submission of a
+        [Real-Time Payments Transfer](#real-time-payments-transfers) and handling the
+        response from the destination financial institution. This transfer must first
+        have a `status` of `pending_submission`.
 
         Args:
           real_time_payments_transfer_id: The identifier of the Real-Time Payments Transfer you wish to complete.
@@ -132,9 +133,10 @@ class AsyncRealTimePaymentsTransfersResource(AsyncAPIResource):
         idempotency_key: str | None = None,
     ) -> RealTimePaymentsTransfer:
         """
-        Simulates submission of a Real-Time Payments transfer and handling the response
-        from the destination financial institution. This transfer must first have a
-        `status` of `pending_submission`.
+        Simulates submission of a
+        [Real-Time Payments Transfer](#real-time-payments-transfers) and handling the
+        response from the destination financial institution. This transfer must first
+        have a `status` of `pending_submission`.
 
         Args:
           real_time_payments_transfer_id: The identifier of the Real-Time Payments Transfer you wish to complete.
