@@ -52,7 +52,7 @@ class InboundFundsHoldsResource(SyncAPIResource):
         idempotency_key: str | None = None,
     ) -> InboundFundsHoldReleaseResponse:
         """
-        This endpoint simulates immediately releasing an inbound funds hold, which might
+        This endpoint simulates immediately releasing an Inbound Funds Hold, which might
         be created as a result of e.g., an ACH debit.
 
         Args:
@@ -118,7 +118,7 @@ class AsyncInboundFundsHoldsResource(AsyncAPIResource):
         idempotency_key: str | None = None,
     ) -> InboundFundsHoldReleaseResponse:
         """
-        This endpoint simulates immediately releasing an inbound funds hold, which might
+        This endpoint simulates immediately releasing an Inbound Funds Hold, which might
         be created as a result of e.g., an ACH debit.
 
         Args:
