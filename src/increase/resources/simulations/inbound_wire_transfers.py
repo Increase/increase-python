@@ -73,7 +73,7 @@ class InboundWireTransfersResource(SyncAPIResource):
         idempotency_key: str | None = None,
     ) -> InboundWireTransfer:
         """
-        Simulates an inbound Wire Transfer to your account.
+        Simulates an [Inbound Wire Transfer](#inbound-wire-transfers) to your account.
 
         Args:
           account_number_id: The identifier of the Account Number the inbound Wire Transfer is for.
@@ -219,7 +219,7 @@ class AsyncInboundWireTransfersResource(AsyncAPIResource):
         idempotency_key: str | None = None,
     ) -> InboundWireTransfer:
         """
-        Simulates an inbound Wire Transfer to your account.
+        Simulates an [Inbound Wire Transfer](#inbound-wire-transfers) to your account.
 
         Args:
           account_number_id: The identifier of the Account Number the inbound Wire Transfer is for.

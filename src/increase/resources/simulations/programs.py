@@ -56,11 +56,12 @@ class ProgramsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Program:
-        """Simulates a program being created in your group.
+        """Simulates a [Program](#programs) being created in your group.
 
-        By default, your group has one
-        program called Commercial Banking. Note that when your group operates more than
-        one program, `program_id` is a required field when creating accounts.
+        By default, your
+        group has one program called Commercial Banking. Note that when your group
+        operates more than one program, `program_id` is a required field when creating
+        accounts.
 
         Args:
           name: The name of the program being added.
@@ -121,11 +122,12 @@ class AsyncProgramsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> Program:
-        """Simulates a program being created in your group.
+        """Simulates a [Program](#programs) being created in your group.
 
-        By default, your group has one
-        program called Commercial Banking. Note that when your group operates more than
-        one program, `program_id` is a required field when creating accounts.
+        By default, your
+        group has one program called Commercial Banking. Note that when your group
+        operates more than one program, `program_id` is a required field when creating
+        accounts.
 
         Args:
           name: The name of the program being added.
