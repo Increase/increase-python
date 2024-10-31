@@ -57,7 +57,7 @@ class CardAuthorizationExpirationsResource(SyncAPIResource):
         idempotency_key: str | None = None,
     ) -> CardPayment:
         """
-        Simulates expiring a card authorization immediately.
+        Simulates expiring a Card Authorization immediately.
 
         Args:
           card_payment_id: The identifier of the Card Payment to expire.
@@ -122,7 +122,7 @@ class AsyncCardAuthorizationExpirationsResource(AsyncAPIResource):
         idempotency_key: str | None = None,
     ) -> CardPayment:
         """
-        Simulates expiring a card authorization immediately.
+        Simulates expiring a Card Authorization immediately.
 
         Args:
           card_payment_id: The identifier of the Card Payment to expire.

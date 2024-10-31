@@ -62,10 +62,10 @@ class InboundRealTimePaymentsTransfersResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> InboundRealTimePaymentsTransfer:
-        """Simulates an inbound Real-Time Payments transfer to your account.
-
-        Real-Time
-        Payments are a beta feature.
+        """
+        Simulates an
+        [Inbound Real-Time Payments Transfer](#inbound-real-time-payments-transfers) to
+        your account. Real-Time Payments are a beta feature.
 
         Args:
           account_number_id: The identifier of the Account Number the inbound Real-Time Payments Transfer is
@@ -156,10 +156,10 @@ class AsyncInboundRealTimePaymentsTransfersResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
     ) -> InboundRealTimePaymentsTransfer:
-        """Simulates an inbound Real-Time Payments transfer to your account.
-
-        Real-Time
-        Payments are a beta feature.
+        """
+        Simulates an
+        [Inbound Real-Time Payments Transfer](#inbound-real-time-payments-transfers) to
+        your account. Real-Time Payments are a beta feature.
 
         Args:
           account_number_id: The identifier of the Account Number the inbound Real-Time Payments Transfer is
