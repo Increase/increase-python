@@ -2,7 +2,7 @@
 
 [![PyPI version](https://img.shields.io/pypi/v/increase.svg)](https://pypi.org/project/increase/)
 
-The Increase Python library provides convenient access to the Increase REST API from any Python 3.7+
+The Increase Python library provides convenient access to the Increase REST API from any Python 3.8+
 application. The library includes type definitions for all request params and response fields,
 and offers both synchronous and asynchronous clients powered by [httpx](https://github.com/encode/httpx).
 
@@ -438,7 +438,7 @@ print(increase.__version__)
 
 ## Requirements
 
-Python 3.7 or higher.
+Python 3.8 or higher.
 
 ## Contributing
 
