@@ -116,10 +116,12 @@ class CardDispute(BaseModel):
     unsuccessful dispute.
     """
 
-    status: Literal["pending_reviewing", "accepted", "rejected", "lost", "won"]
+    status: Literal["pending_reviewing", "pending_user_information", "accepted", "rejected", "lost", "won"]
     """The results of the Dispute investigation.
 
     - `pending_reviewing` - The Card Dispute is pending review.
+    - `pending_user_information` - Increase has requested more information related
+      to the Card Dispute from you.
     - `accepted` - The Card Dispute has been accepted and your funds have been
       returned. The card dispute will eventually transition into `won` or `lost`
       depending on the outcome.

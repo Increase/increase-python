@@ -8,9 +8,11 @@ __all__ = ["CardDisputeActionParams"]
 
 
 class CardDisputeActionParams(TypedDict, total=False):
-    status: Required[Literal["accepted", "rejected", "lost", "won"]]
+    status: Required[Literal["pending_user_information", "accepted", "rejected", "lost", "won"]]
     """The status to move the dispute to.
 
+    - `pending_user_information` - Increase has requested more information related
+      to the Card Dispute from you.
     - `accepted` - The Card Dispute has been accepted and your funds have been
       returned. The card dispute will eventually transition into `won` or `lost`
       depending on the outcome.
