@@ -63,7 +63,7 @@ class CreatedAt(TypedDict, total=False):
 _StatusReservedKeywords = TypedDict(
     "_StatusReservedKeywords",
     {
-        "in": List[Literal["pending_reviewing", "accepted", "rejected", "lost", "won"]],
+        "in": List[Literal["pending_reviewing", "pending_user_information", "accepted", "rejected", "lost", "won"]],
     },
     total=False,
 )
