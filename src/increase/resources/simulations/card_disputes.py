@@ -50,7 +50,7 @@ class CardDisputesResource(SyncAPIResource):
         self,
         card_dispute_id: str,
         *,
-        status: Literal["accepted", "rejected", "lost", "won"],
+        status: Literal["pending_user_information", "accepted", "rejected", "lost", "won"],
         explanation: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -71,6 +71,8 @@ class CardDisputesResource(SyncAPIResource):
 
           status: The status to move the dispute to.
 
+              - `pending_user_information` - Increase has requested more information related
+                to the Card Dispute from you.
               - `accepted` - The Card Dispute has been accepted and your funds have been
                 returned. The card dispute will eventually transition into `won` or `lost`
                 depending on the outcome.
@@ -137,7 +139,7 @@ class AsyncCardDisputesResource(AsyncAPIResource):
         self,
         card_dispute_id: str,
         *,
-        status: Literal["accepted", "rejected", "lost", "won"],
+        status: Literal["pending_user_information", "accepted", "rejected", "lost", "won"],
         explanation: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -158,6 +160,8 @@ class AsyncCardDisputesResource(AsyncAPIResource):
 
           status: The status to move the dispute to.
 
+              - `pending_user_information` - Increase has requested more information related
+                to the Card Dispute from you.
               - `accepted` - The Card Dispute has been accepted and your funds have been
                 returned. The card dispute will eventually transition into `won` or `lost`
                 depending on the outcome.
