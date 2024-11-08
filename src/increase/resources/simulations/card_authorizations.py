@@ -79,6 +79,7 @@ class CardAuthorizationsResource(SyncAPIResource):
         merchant_country: str | NotGiven = NOT_GIVEN,
         merchant_descriptor: str | NotGiven = NOT_GIVEN,
         physical_card_id: str | NotGiven = NOT_GIVEN,
+        terminal_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -160,6 +161,9 @@ class CardAuthorizationsResource(SyncAPIResource):
 
           physical_card_id: The identifier of the Physical Card to be authorized.
 
+          terminal_id: The terminal identifier (commonly abbreviated as TID) of the terminal the card
+              is transacting with.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -187,6 +191,7 @@ class CardAuthorizationsResource(SyncAPIResource):
                     "merchant_country": merchant_country,
                     "merchant_descriptor": merchant_descriptor,
                     "physical_card_id": physical_card_id,
+                    "terminal_id": terminal_id,
                 },
                 card_authorization_create_params.CardAuthorizationCreateParams,
             ),
@@ -254,6 +259,7 @@ class AsyncCardAuthorizationsResource(AsyncAPIResource):
         merchant_country: str | NotGiven = NOT_GIVEN,
         merchant_descriptor: str | NotGiven = NOT_GIVEN,
         physical_card_id: str | NotGiven = NOT_GIVEN,
+        terminal_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -335,6 +341,9 @@ class AsyncCardAuthorizationsResource(AsyncAPIResource):
 
           physical_card_id: The identifier of the Physical Card to be authorized.
 
+          terminal_id: The terminal identifier (commonly abbreviated as TID) of the terminal the card
+              is transacting with.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -362,6 +371,7 @@ class AsyncCardAuthorizationsResource(AsyncAPIResource):
                     "merchant_country": merchant_country,
                     "merchant_descriptor": merchant_descriptor,
                     "physical_card_id": physical_card_id,
+                    "terminal_id": terminal_id,
                 },
                 card_authorization_create_params.CardAuthorizationCreateParams,
             ),
