@@ -110,3 +110,9 @@ class CardAuthorizationCreateParams(TypedDict, total=False):
 
     physical_card_id: str
     """The identifier of the Physical Card to be authorized."""
+
+    terminal_id: str
+    """
+    The terminal identifier (commonly abbreviated as TID) of the terminal the card
+    is transacting with.
+    """

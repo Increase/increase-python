@@ -508,6 +508,12 @@ class SourceCardDecline(BaseModel):
       reach out to support@increase.com for more information.
     """
 
+    terminal_id: Optional[str] = None
+    """
+    The terminal identifier (commonly abbreviated as TID) of the terminal the card
+    is transacting with.
+    """
+
     verification: SourceCardDeclineVerification
     """Fields related to verification of cardholder-provided values."""
 
