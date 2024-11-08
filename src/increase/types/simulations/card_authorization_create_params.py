@@ -108,6 +108,9 @@ class CardAuthorizationCreateParams(TypedDict, total=False):
     merchant_descriptor: str
     """The merchant descriptor of the merchant the card is transacting with."""
 
+    merchant_state: str
+    """The state the merchant resides in."""
+
     physical_card_id: str
     """The identifier of the Physical Card to be authorized."""
 
