@@ -39,6 +39,7 @@ class TestCardAuthorizations:
             merchant_city="New York",
             merchant_country="US",
             merchant_descriptor="AMAZON.COM",
+            merchant_state="NY",
             physical_card_id="physical_card_id",
             terminal_id="x",
         )
@@ -94,6 +95,7 @@ class TestAsyncCardAuthorizations:
             merchant_city="New York",
             merchant_country="US",
             merchant_descriptor="AMAZON.COM",
+            merchant_state="NY",
             physical_card_id="physical_card_id",
             terminal_id="x",
         )
