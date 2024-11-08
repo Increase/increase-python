@@ -419,6 +419,12 @@ class ElementCardAuthorization(BaseModel):
     transaction.
     """
 
+    terminal_id: Optional[str] = None
+    """
+    The terminal identifier (commonly abbreviated as TID) of the terminal the card
+    is transacting with.
+    """
+
     type: Literal["card_authorization"]
     """A constant representing the object's type.
 
@@ -863,6 +869,12 @@ class ElementCardDecline(BaseModel):
       incremental authorization does not exist.
     - `suspected_fraud` - The transaction was suspected to be fraudulent. Please
       reach out to support@increase.com for more information.
+    """
+
+    terminal_id: Optional[str] = None
+    """
+    The terminal identifier (commonly abbreviated as TID) of the terminal the card
+    is transacting with.
     """
 
     verification: ElementCardDeclineVerification
@@ -1665,6 +1677,12 @@ class ElementCardReversal(BaseModel):
     - `reversed_by_point_of_sale` - The Card Reversal was initiated by the point of
       sale device.
     - `partial_reversal` - The Card Reversal was a partial reversal, for any reason.
+    """
+
+    terminal_id: Optional[str] = None
+    """
+    The terminal identifier (commonly abbreviated as TID) of the terminal the card
+    is transacting with.
     """
 
     type: Literal["card_reversal"]
@@ -2516,6 +2534,12 @@ class ElementCardValidation(BaseModel):
     """
     The identifier of the Real-Time Decision sent to approve or decline this
     transaction.
+    """
+
+    terminal_id: Optional[str] = None
+    """
+    The terminal identifier (commonly abbreviated as TID) of the terminal the card
+    is transacting with.
     """
 
     type: Literal["card_validation"]
