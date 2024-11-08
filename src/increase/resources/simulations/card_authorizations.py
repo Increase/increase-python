@@ -78,6 +78,7 @@ class CardAuthorizationsResource(SyncAPIResource):
         merchant_city: str | NotGiven = NOT_GIVEN,
         merchant_country: str | NotGiven = NOT_GIVEN,
         merchant_descriptor: str | NotGiven = NOT_GIVEN,
+        merchant_state: str | NotGiven = NOT_GIVEN,
         physical_card_id: str | NotGiven = NOT_GIVEN,
         terminal_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -159,6 +160,8 @@ class CardAuthorizationsResource(SyncAPIResource):
 
           merchant_descriptor: The merchant descriptor of the merchant the card is transacting with.
 
+          merchant_state: The state the merchant resides in.
+
           physical_card_id: The identifier of the Physical Card to be authorized.
 
           terminal_id: The terminal identifier (commonly abbreviated as TID) of the terminal the card
@@ -190,6 +193,7 @@ class CardAuthorizationsResource(SyncAPIResource):
                     "merchant_city": merchant_city,
                     "merchant_country": merchant_country,
                     "merchant_descriptor": merchant_descriptor,
+                    "merchant_state": merchant_state,
                     "physical_card_id": physical_card_id,
                     "terminal_id": terminal_id,
                 },
@@ -258,6 +262,7 @@ class AsyncCardAuthorizationsResource(AsyncAPIResource):
         merchant_city: str | NotGiven = NOT_GIVEN,
         merchant_country: str | NotGiven = NOT_GIVEN,
         merchant_descriptor: str | NotGiven = NOT_GIVEN,
+        merchant_state: str | NotGiven = NOT_GIVEN,
         physical_card_id: str | NotGiven = NOT_GIVEN,
         terminal_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -339,6 +344,8 @@ class AsyncCardAuthorizationsResource(AsyncAPIResource):
 
           merchant_descriptor: The merchant descriptor of the merchant the card is transacting with.
 
+          merchant_state: The state the merchant resides in.
+
           physical_card_id: The identifier of the Physical Card to be authorized.
 
           terminal_id: The terminal identifier (commonly abbreviated as TID) of the terminal the card
@@ -370,6 +377,7 @@ class AsyncCardAuthorizationsResource(AsyncAPIResource):
                     "merchant_city": merchant_city,
                     "merchant_country": merchant_country,
                     "merchant_descriptor": merchant_descriptor,
+                    "merchant_state": merchant_state,
                     "physical_card_id": physical_card_id,
                     "terminal_id": terminal_id,
                 },
