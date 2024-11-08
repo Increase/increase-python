@@ -441,6 +441,12 @@ class CardAuthorization(BaseModel):
     transaction will be settled in.
     """
 
+    terminal_id: Optional[str] = None
+    """
+    The terminal identifier (commonly abbreviated as TID) of the terminal the card
+    is transacting with.
+    """
+
     upcoming_card_payment_id: str
     """The identifier of the Card Payment this authorization will belong to.
 

@@ -416,6 +416,12 @@ class SourceCardAuthorization(BaseModel):
     transaction.
     """
 
+    terminal_id: Optional[str] = None
+    """
+    The terminal identifier (commonly abbreviated as TID) of the terminal the card
+    is transacting with.
+    """
+
     type: Literal["card_authorization"]
     """A constant representing the object's type.
 
