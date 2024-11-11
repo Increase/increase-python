@@ -1,7 +1,7 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import List, Optional
-from datetime import datetime
+from datetime import date, datetime
 from typing_extensions import Literal
 
 from .._models import BaseModel
@@ -417,6 +417,13 @@ class InboundACHTransfer(BaseModel):
 
     - `credit` - Credit
     - `debit` - Debit
+    """
+
+    effective_date: date
+    """The effective date of the transfer.
+
+    This is sent by the sending bank and is a factor in determining funds
+    availability.
     """
 
     expected_settlement_schedule: Literal["same_day", "future_dated"]
