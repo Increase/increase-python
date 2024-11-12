@@ -26,8 +26,7 @@ import os
 from increase import Increase
 
 client = Increase(
-    # This is the default and can be omitted
-    api_key=os.environ.get("INCREASE_API_KEY"),
+    api_key=os.environ.get("INCREASE_API_KEY"),  # This is the default and can be omitted
     # defaults to "production".
     environment="sandbox",
 )
@@ -55,8 +54,7 @@ import asyncio
 from increase import AsyncIncrease
 
 client = AsyncIncrease(
-    # This is the default and can be omitted
-    api_key=os.environ.get("INCREASE_API_KEY"),
+    api_key=os.environ.get("INCREASE_API_KEY"),  # This is the default and can be omitted
     # defaults to "production".
     environment="sandbox",
 )
