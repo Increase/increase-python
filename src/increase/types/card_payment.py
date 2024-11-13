@@ -1533,7 +1533,7 @@ class ElementCardRefund(BaseModel):
     merchant_category_code: str
     """The 4-digit MCC describing the merchant's business."""
 
-    merchant_city: Optional[str] = None
+    merchant_city: str
     """The city the merchant resides in."""
 
     merchant_country: str
@@ -2194,7 +2194,7 @@ class ElementCardSettlement(BaseModel):
     merchant_category_code: str
     """The 4-digit MCC describing the merchant's business."""
 
-    merchant_city: Optional[str] = None
+    merchant_city: str
     """The city the merchant resides in."""
 
     merchant_country: str
