@@ -1524,7 +1524,7 @@ class ElementCardRefund(BaseModel):
     interchange: Optional[ElementCardRefundInterchange] = None
     """Interchange assessed as a part of this transaciton."""
 
-    merchant_acceptor_id: Optional[str] = None
+    merchant_acceptor_id: str
     """
     The merchant identifier (commonly abbreviated as MID) of the merchant the card
     is transacting with.
@@ -1539,7 +1539,7 @@ class ElementCardRefund(BaseModel):
     merchant_country: str
     """The country the merchant resides in."""
 
-    merchant_name: Optional[str] = None
+    merchant_name: str
     """The name of the merchant."""
 
     merchant_state: Optional[str] = None
@@ -2182,7 +2182,7 @@ class ElementCardSettlement(BaseModel):
     interchange: Optional[ElementCardSettlementInterchange] = None
     """Interchange assessed as a part of this transaciton."""
 
-    merchant_acceptor_id: Optional[str] = None
+    merchant_acceptor_id: str
     """
     The merchant identifier (commonly abbreviated as MID) of the merchant the card
     is transacting with.
@@ -2197,7 +2197,7 @@ class ElementCardSettlement(BaseModel):
     merchant_country: str
     """The country the merchant resides in."""
 
-    merchant_name: Optional[str] = None
+    merchant_name: str
     """The name of the merchant."""
 
     merchant_state: Optional[str] = None
