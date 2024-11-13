@@ -354,7 +354,7 @@ class CardAuthorization(BaseModel):
     card is transacting with.
     """
 
-    merchant_city: str
+    merchant_city: Optional[str] = None
     """The city the merchant resides in."""
 
     merchant_country: str
