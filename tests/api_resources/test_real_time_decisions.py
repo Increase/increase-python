@@ -68,7 +68,10 @@ class TestRealTimeDecisions:
             real_time_decision_id="real_time_decision_j76n2e810ezcg3zh5qtn",
             card_authentication={"decision": "approve"},
             card_authentication_challenge={"result": "success"},
-            card_authorization={"decision": "approve"},
+            card_authorization={
+                "decision": "approve",
+                "decline_reason": "insufficient_funds",
+            },
             digital_wallet_authentication={
                 "result": "success",
                 "success": {
@@ -172,7 +175,10 @@ class TestAsyncRealTimeDecisions:
             real_time_decision_id="real_time_decision_j76n2e810ezcg3zh5qtn",
             card_authentication={"decision": "approve"},
             card_authentication_challenge={"result": "success"},
-            card_authorization={"decision": "approve"},
+            card_authorization={
+                "decision": "approve",
+                "decline_reason": "insufficient_funds",
+            },
             digital_wallet_authentication={
                 "result": "success",
                 "success": {
