@@ -389,7 +389,7 @@ class SourceCardDecline(BaseModel):
     card is transacting with.
     """
 
-    merchant_city: Optional[str] = None
+    merchant_city: str
     """The city the merchant resides in."""
 
     merchant_country: str
