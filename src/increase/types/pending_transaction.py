@@ -333,7 +333,7 @@ class SourceCardAuthorization(BaseModel):
     is transacting with.
     """
 
-    merchant_category_code: Optional[str] = None
+    merchant_category_code: str
     """
     The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
     card is transacting with.
@@ -342,7 +342,7 @@ class SourceCardAuthorization(BaseModel):
     merchant_city: Optional[str] = None
     """The city the merchant resides in."""
 
-    merchant_country: Optional[str] = None
+    merchant_country: str
     """The country the merchant resides in."""
 
     merchant_descriptor: str
