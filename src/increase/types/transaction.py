@@ -883,7 +883,7 @@ class SourceCardRefund(BaseModel):
     interchange: Optional[SourceCardRefundInterchange] = None
     """Interchange assessed as a part of this transaciton."""
 
-    merchant_acceptor_id: Optional[str] = None
+    merchant_acceptor_id: str
     """
     The merchant identifier (commonly abbreviated as MID) of the merchant the card
     is transacting with.
@@ -898,7 +898,7 @@ class SourceCardRefund(BaseModel):
     merchant_country: str
     """The country the merchant resides in."""
 
-    merchant_name: Optional[str] = None
+    merchant_name: str
     """The name of the merchant."""
 
     merchant_state: Optional[str] = None
@@ -1446,7 +1446,7 @@ class SourceCardSettlement(BaseModel):
     interchange: Optional[SourceCardSettlementInterchange] = None
     """Interchange assessed as a part of this transaciton."""
 
-    merchant_acceptor_id: Optional[str] = None
+    merchant_acceptor_id: str
     """
     The merchant identifier (commonly abbreviated as MID) of the merchant the card
     is transacting with.
@@ -1461,7 +1461,7 @@ class SourceCardSettlement(BaseModel):
     merchant_country: str
     """The country the merchant resides in."""
 
-    merchant_name: Optional[str] = None
+    merchant_name: str
     """The name of the merchant."""
 
     merchant_state: Optional[str] = None
