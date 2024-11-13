@@ -342,7 +342,7 @@ class ElementCardAuthorization(BaseModel):
     card is transacting with.
     """
 
-    merchant_city: str
+    merchant_city: Optional[str] = None
     """The city the merchant resides in."""
 
     merchant_country: str
@@ -752,7 +752,7 @@ class ElementCardDecline(BaseModel):
     card is transacting with.
     """
 
-    merchant_city: str
+    merchant_city: Optional[str] = None
     """The city the merchant resides in."""
 
     merchant_country: str
@@ -2498,7 +2498,7 @@ class ElementCardValidation(BaseModel):
     card is transacting with.
     """
 
-    merchant_city: str
+    merchant_city: Optional[str] = None
     """The city the merchant resides in."""
 
     merchant_country: str
