@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.155.0 (2024-11-13)
+
+Full Changelog: [v0.154.0...v0.155.0](https://github.com/Increase/increase-python/compare/v0.154.0...v0.155.0)
+
+### Features
+
+* **api:** api update ([#812](https://github.com/Increase/increase-python/issues/812)) ([22cb186](https://github.com/Increase/increase-python/commit/22cb186cbf4f7bfa5fe52ada13c63fd4f4c021ad))
+
+
+### Chores
+
+* rebuild project due to codegen change ([#809](https://github.com/Increase/increase-python/issues/809)) ([1c68d06](https://github.com/Increase/increase-python/commit/1c68d065d05fe5dd4b70748eebd6da7ac6160067))
+* rebuild project due to codegen change ([#811](https://github.com/Increase/increase-python/issues/811)) ([8935013](https://github.com/Increase/increase-python/commit/893501345954f3cddf62c67640b7e1e546ddf904))
+
 ## 0.154.0 (2024-11-11)
 
 Full Changelog: [v0.153.0...v0.154.0](https://github.com/Increase/increase-python/compare/v0.153.0...v0.154.0)
