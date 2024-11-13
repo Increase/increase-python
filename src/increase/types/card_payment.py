@@ -1542,6 +1542,9 @@ class ElementCardRefund(BaseModel):
     merchant_name: str
     """The name of the merchant."""
 
+    merchant_postal_code: Optional[str] = None
+    """The merchant's postal code. For US merchants this is always a 5-digit ZIP code."""
+
     merchant_state: Optional[str] = None
     """The state the merchant resides in."""
 
@@ -2199,6 +2202,9 @@ class ElementCardSettlement(BaseModel):
 
     merchant_name: str
     """The name of the merchant."""
+
+    merchant_postal_code: Optional[str] = None
+    """The merchant's postal code. For US merchants this is always a 5-digit ZIP code."""
 
     merchant_state: Optional[str] = None
     """The state the merchant resides in."""
