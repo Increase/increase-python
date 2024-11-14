@@ -58,6 +58,7 @@ class FilesResource(SyncAPIResource):
             "check_image_front",
             "check_image_back",
             "mailed_check_image",
+            "check_voucher_image",
             "form_ss_4",
             "identity_document",
             "other",
@@ -95,6 +96,8 @@ class FilesResource(SyncAPIResource):
                 deposits.
               - `check_image_back` - An image of the back of a check, used for check deposits.
               - `mailed_check_image` - An image of a check that was mailed to a recipient.
+              - `check_voucher_image` - An image to be printed on the bottom or voucher of a
+                check that you've requested Increase print.
               - `form_ss_4` - IRS Form SS-4.
               - `identity_document` - An image of a government-issued ID.
               - `other` - A file purpose not covered by any of the other cases.
@@ -275,6 +278,7 @@ class AsyncFilesResource(AsyncAPIResource):
             "check_image_front",
             "check_image_back",
             "mailed_check_image",
+            "check_voucher_image",
             "form_ss_4",
             "identity_document",
             "other",
@@ -312,6 +316,8 @@ class AsyncFilesResource(AsyncAPIResource):
                 deposits.
               - `check_image_back` - An image of the back of a check, used for check deposits.
               - `mailed_check_image` - An image of a check that was mailed to a recipient.
+              - `check_voucher_image` - An image to be printed on the bottom or voucher of a
+                check that you've requested Increase print.
               - `form_ss_4` - IRS Form SS-4.
               - `identity_document` - An image of a government-issued ID.
               - `other` - A file purpose not covered by any of the other cases.
