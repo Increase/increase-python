@@ -66,7 +66,7 @@ class TestTransactions:
     def test_method_list_with_all_params(self, client: Increase) -> None:
         transaction = client.transactions.list(
             account_id="account_id",
-            category={"in": ["account_transfer_intention", "ach_transfer_intention", "ach_transfer_rejection"]},
+            category={"in": ["account_transfer_intention"]},
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -150,7 +150,7 @@ class TestAsyncTransactions:
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
         transaction = await async_client.transactions.list(
             account_id="account_id",
-            category={"in": ["account_transfer_intention", "ach_transfer_intention", "ach_transfer_rejection"]},
+            category={"in": ["account_transfer_intention"]},
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),

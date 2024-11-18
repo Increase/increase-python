@@ -117,7 +117,7 @@ class TestCardDisputes:
             cursor="cursor",
             idempotency_key="x",
             limit=1,
-            status={"in": ["pending_reviewing", "pending_user_information", "accepted"]},
+            status={"in": ["pending_reviewing"]},
         )
         assert_matches_type(SyncPage[CardDispute], card_dispute, path=["response"])
 
@@ -243,7 +243,7 @@ class TestAsyncCardDisputes:
             cursor="cursor",
             idempotency_key="x",
             limit=1,
-            status={"in": ["pending_reviewing", "pending_user_information", "accepted"]},
+            status={"in": ["pending_reviewing"]},
         )
         assert_matches_type(AsyncPage[CardDispute], card_dispute, path=["response"])
 

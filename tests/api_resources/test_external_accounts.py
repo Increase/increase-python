@@ -167,7 +167,7 @@ class TestExternalAccounts:
             idempotency_key="x",
             limit=1,
             routing_number="xxxxxxxxx",
-            status={"in": ["active", "archived"]},
+            status={"in": ["active"]},
         )
         assert_matches_type(SyncPage[ExternalAccount], external_account, path=["response"])
 
@@ -342,7 +342,7 @@ class TestAsyncExternalAccounts:
             idempotency_key="x",
             limit=1,
             routing_number="xxxxxxxxx",
-            status={"in": ["active", "archived"]},
+            status={"in": ["active"]},
         )
         assert_matches_type(AsyncPage[ExternalAccount], external_account, path=["response"])
 

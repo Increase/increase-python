@@ -58,7 +58,7 @@ class TestExports:
                     "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
                 },
             },
-            entity_csv={"status": {"in": ["active", "archived", "disabled"]}},
+            entity_csv={"status": {"in": ["active"]}},
             transaction_csv={
                 "account_id": "account_in71c4amph0vgo2qllky",
                 "created_at": {
@@ -143,7 +143,7 @@ class TestExports:
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
         export = client.exports.list(
-            category={"in": ["account_statement_ofx", "transaction_csv", "balance_csv"]},
+            category={"in": ["account_statement_ofx"]},
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -153,7 +153,7 @@ class TestExports:
             cursor="cursor",
             idempotency_key="x",
             limit=1,
-            status={"in": ["pending", "complete", "failed"]},
+            status={"in": ["pending"]},
         )
         assert_matches_type(SyncPage[Export], export, path=["response"])
 
@@ -220,7 +220,7 @@ class TestAsyncExports:
                     "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
                 },
             },
-            entity_csv={"status": {"in": ["active", "archived", "disabled"]}},
+            entity_csv={"status": {"in": ["active"]}},
             transaction_csv={
                 "account_id": "account_in71c4amph0vgo2qllky",
                 "created_at": {
@@ -305,7 +305,7 @@ class TestAsyncExports:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
         export = await async_client.exports.list(
-            category={"in": ["account_statement_ofx", "transaction_csv", "balance_csv"]},
+            category={"in": ["account_statement_ofx"]},
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -315,7 +315,7 @@ class TestAsyncExports:
             cursor="cursor",
             idempotency_key="x",
             limit=1,
-            status={"in": ["pending", "complete", "failed"]},
+            status={"in": ["pending"]},
         )
         assert_matches_type(AsyncPage[Export], export, path=["response"])
 
