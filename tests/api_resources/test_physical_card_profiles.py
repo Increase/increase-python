@@ -111,7 +111,7 @@ class TestPhysicalCardProfiles:
             cursor="cursor",
             idempotency_key="x",
             limit=1,
-            status={"in": ["pending_creating", "pending_reviewing", "rejected"]},
+            status={"in": ["pending_creating"]},
         )
         assert_matches_type(SyncPage[PhysicalCardProfile], physical_card_profile, path=["response"])
 
@@ -325,7 +325,7 @@ class TestAsyncPhysicalCardProfiles:
             cursor="cursor",
             idempotency_key="x",
             limit=1,
-            status={"in": ["pending_creating", "pending_reviewing", "rejected"]},
+            status={"in": ["pending_creating"]},
         )
         assert_matches_type(AsyncPage[PhysicalCardProfile], physical_card_profile, path=["response"])
 

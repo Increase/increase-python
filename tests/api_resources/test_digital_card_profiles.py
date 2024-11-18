@@ -133,7 +133,7 @@ class TestDigitalCardProfiles:
             cursor="cursor",
             idempotency_key="x",
             limit=1,
-            status={"in": ["pending", "rejected", "active"]},
+            status={"in": ["pending"]},
         )
         assert_matches_type(SyncPage[DigitalCardProfile], digital_card_profile, path=["response"])
 
@@ -374,7 +374,7 @@ class TestAsyncDigitalCardProfiles:
             cursor="cursor",
             idempotency_key="x",
             limit=1,
-            status={"in": ["pending", "rejected", "active"]},
+            status={"in": ["pending"]},
         )
         assert_matches_type(AsyncPage[DigitalCardProfile], digital_card_profile, path=["response"])
 
