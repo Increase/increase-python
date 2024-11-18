@@ -66,7 +66,7 @@ class TestEvents:
     def test_method_list_with_all_params(self, client: Increase) -> None:
         event = client.events.list(
             associated_object_id="associated_object_id",
-            category={"in": ["account.created", "account.updated", "account_number.created"]},
+            category={"in": ["account.created"]},
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -149,7 +149,7 @@ class TestAsyncEvents:
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
         event = await async_client.events.list(
             associated_object_id="associated_object_id",
-            category={"in": ["account.created", "account.updated", "account_number.created"]},
+            category={"in": ["account.created"]},
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),

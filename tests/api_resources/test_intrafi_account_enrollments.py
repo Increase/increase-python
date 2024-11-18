@@ -106,7 +106,7 @@ class TestIntrafiAccountEnrollments:
             cursor="cursor",
             idempotency_key="x",
             limit=1,
-            status={"in": ["pending_enrolling", "enrolled", "pending_unenrolling"]},
+            status={"in": ["pending_enrolling"]},
         )
         assert_matches_type(SyncPage[IntrafiAccountEnrollment], intrafi_account_enrollment, path=["response"])
 
@@ -260,7 +260,7 @@ class TestAsyncIntrafiAccountEnrollments:
             cursor="cursor",
             idempotency_key="x",
             limit=1,
-            status={"in": ["pending_enrolling", "enrolled", "pending_unenrolling"]},
+            status={"in": ["pending_enrolling"]},
         )
         assert_matches_type(AsyncPage[IntrafiAccountEnrollment], intrafi_account_enrollment, path=["response"])
 

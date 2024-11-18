@@ -65,7 +65,7 @@ class TestDocuments:
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
         document = client.documents.list(
-            category={"in": ["form_1099_int", "proof_of_authorization", "company_information"]},
+            category={"in": ["form_1099_int"]},
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -148,7 +148,7 @@ class TestAsyncDocuments:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
         document = await async_client.documents.list(
-            category={"in": ["form_1099_int", "proof_of_authorization", "company_information"]},
+            category={"in": ["form_1099_int"]},
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
