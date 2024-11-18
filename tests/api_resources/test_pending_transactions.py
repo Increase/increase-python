@@ -68,7 +68,7 @@ class TestPendingTransactions:
     def test_method_list_with_all_params(self, client: Increase) -> None:
         pending_transaction = client.pending_transactions.list(
             account_id="account_id",
-            category={"in": ["account_transfer_instruction", "ach_transfer_instruction", "card_authorization"]},
+            category={"in": ["account_transfer_instruction"]},
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -78,7 +78,7 @@ class TestPendingTransactions:
             cursor="cursor",
             limit=1,
             route_id="route_id",
-            status={"in": ["pending", "complete"]},
+            status={"in": ["pending"]},
         )
         assert_matches_type(SyncPage[PendingTransaction], pending_transaction, path=["response"])
 
@@ -155,7 +155,7 @@ class TestAsyncPendingTransactions:
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
         pending_transaction = await async_client.pending_transactions.list(
             account_id="account_id",
-            category={"in": ["account_transfer_instruction", "ach_transfer_instruction", "card_authorization"]},
+            category={"in": ["account_transfer_instruction"]},
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -165,7 +165,7 @@ class TestAsyncPendingTransactions:
             cursor="cursor",
             limit=1,
             route_id="route_id",
-            status={"in": ["pending", "complete"]},
+            status={"in": ["pending"]},
         )
         assert_matches_type(AsyncPage[PendingTransaction], pending_transaction, path=["response"])
 

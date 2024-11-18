@@ -37,27 +37,13 @@ class TestACHTransfers:
             account_number="987654321",
             addenda={
                 "category": "freeform",
-                "freeform": {
-                    "entries": [
-                        {"payment_related_information": "x"},
-                        {"payment_related_information": "x"},
-                        {"payment_related_information": "x"},
-                    ]
-                },
+                "freeform": {"entries": [{"payment_related_information": "x"}]},
                 "payment_order_remittance_advice": {
                     "invoices": [
                         {
                             "invoice_number": "x",
                             "paid_amount": 0,
-                        },
-                        {
-                            "invoice_number": "x",
-                            "paid_amount": 0,
-                        },
-                        {
-                            "invoice_number": "x",
-                            "paid_amount": 0,
-                        },
+                        }
                     ]
                 },
             },
@@ -287,27 +273,13 @@ class TestAsyncACHTransfers:
             account_number="987654321",
             addenda={
                 "category": "freeform",
-                "freeform": {
-                    "entries": [
-                        {"payment_related_information": "x"},
-                        {"payment_related_information": "x"},
-                        {"payment_related_information": "x"},
-                    ]
-                },
+                "freeform": {"entries": [{"payment_related_information": "x"}]},
                 "payment_order_remittance_advice": {
                     "invoices": [
                         {
                             "invoice_number": "x",
                             "paid_amount": 0,
-                        },
-                        {
-                            "invoice_number": "x",
-                            "paid_amount": 0,
-                        },
-                        {
-                            "invoice_number": "x",
-                            "paid_amount": 0,
-                        },
+                        }
                     ]
                 },
             },
