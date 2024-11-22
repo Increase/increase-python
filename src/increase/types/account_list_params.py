@@ -40,11 +40,11 @@ class AccountListParams(TypedDict, total=False):
     program_id: str
     """Filter Accounts for those in a specific Program."""
 
-    status: Literal["open", "closed"]
+    status: Literal["closed", "open"]
     """Filter Accounts for those with the specified status.
 
-    - `open` - Open Accounts that are ready to use.
     - `closed` - Closed Accounts on which no new activity can occur.
+    - `open` - Open Accounts that are ready to use.
     """
 
 
