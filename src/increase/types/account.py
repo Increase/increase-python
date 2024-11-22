@@ -91,11 +91,11 @@ class Account(BaseModel):
     this Account.
     """
 
-    status: Literal["open", "closed"]
+    status: Literal["closed", "open"]
     """The status of the Account.
 
-    - `open` - Open Accounts that are ready to use.
     - `closed` - Closed Accounts on which no new activity can occur.
+    - `open` - Open Accounts that are ready to use.
     """
 
     type: Literal["account"]
