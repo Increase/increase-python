@@ -167,7 +167,7 @@ class TestAccounts:
             informational_entity_id="informational_entity_id",
             limit=1,
             program_id="program_id",
-            status="open",
+            status="closed",
         )
         assert_matches_type(SyncPage[Account], account, path=["response"])
 
@@ -424,7 +424,7 @@ class TestAsyncAccounts:
             informational_entity_id="informational_entity_id",
             limit=1,
             program_id="program_id",
-            status="open",
+            status="closed",
         )
         assert_matches_type(AsyncPage[Account], account, path=["response"])
 

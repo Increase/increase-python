@@ -206,7 +206,7 @@ class AccountsResource(SyncAPIResource):
         informational_entity_id: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         program_id: str | NotGiven = NOT_GIVEN,
-        status: Literal["open", "closed"] | NotGiven = NOT_GIVEN,
+        status: Literal["closed", "open"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -236,8 +236,8 @@ class AccountsResource(SyncAPIResource):
 
           status: Filter Accounts for those with the specified status.
 
-              - `open` - Open Accounts that are ready to use.
               - `closed` - Closed Accounts on which no new activity can occur.
+              - `open` - Open Accounts that are ready to use.
 
           extra_headers: Send extra headers
 
@@ -529,7 +529,7 @@ class AsyncAccountsResource(AsyncAPIResource):
         informational_entity_id: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         program_id: str | NotGiven = NOT_GIVEN,
-        status: Literal["open", "closed"] | NotGiven = NOT_GIVEN,
+        status: Literal["closed", "open"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -559,8 +559,8 @@ class AsyncAccountsResource(AsyncAPIResource):
 
           status: Filter Accounts for those with the specified status.
 
-              - `open` - Open Accounts that are ready to use.
               - `closed` - Closed Accounts on which no new activity can occur.
+              - `open` - Open Accounts that are ready to use.
 
           extra_headers: Send extra headers
 
