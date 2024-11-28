@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.165.1 (2024-11-28)
+
+Full Changelog: [v0.165.0...v0.165.1](https://github.com/Increase/increase-python/compare/v0.165.0...v0.165.1)
+
+### Bug Fixes
+
+* **client:** compat with new httpx 0.28.0 release ([#852](https://github.com/Increase/increase-python/issues/852)) ([28d4060](https://github.com/Increase/increase-python/commit/28d40602c4ee66322c57d44422514e113b86be10))
+
+
+### Chores
+
+* **internal:** codegen related update ([#851](https://github.com/Increase/increase-python/issues/851)) ([8613769](https://github.com/Increase/increase-python/commit/86137695ae922047e266fc8e4250354f1d9af9c5))
+* **internal:** fix compat model_dump method when warnings are passed ([#847](https://github.com/Increase/increase-python/issues/847)) ([c3addcd](https://github.com/Increase/increase-python/commit/c3addcd6b36e6420247c985a65edbb91b863bd5b))
+* remove now unused `cached-property` dep ([#850](https://github.com/Increase/increase-python/issues/850)) ([8bb79b8](https://github.com/Increase/increase-python/commit/8bb79b8606840f609a6b86fe3442802ab398c4d8))
+
+
+### Documentation
+
+* add info log level to readme ([#849](https://github.com/Increase/increase-python/issues/849)) ([3f7c52a](https://github.com/Increase/increase-python/commit/3f7c52a47537d6b750d373fa1d8c604526458d1e))
+
 ## 0.165.0 (2024-11-22)
 
 Full Changelog: [v0.164.0...v0.165.0](https://github.com/Increase/increase-python/compare/v0.164.0...v0.165.0)
