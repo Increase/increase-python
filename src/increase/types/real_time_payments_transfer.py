@@ -8,6 +8,7 @@ from .._models import BaseModel
 
 __all__ = [
     "RealTimePaymentsTransfer",
+    "Acknowledgement",
     "Approval",
     "Cancellation",
     "CreatedBy",
@@ -17,6 +18,11 @@ __all__ = [
     "Rejection",
     "Submission",
 ]
+
+
+class Acknowledgement(BaseModel):
+    acknowledged_at: datetime
+    """When the transfer was acknowledged."""
 
 
 class Approval(BaseModel):
@@ -191,6 +197,12 @@ class RealTimePaymentsTransfer(BaseModel):
 
     account_id: str
     """The Account from which the transfer was sent."""
+
+    acknowledgement: Optional[Acknowledgement] = None
+    """
+    If the transfer is acknowledged by the recipient bank, this will contain
+    supplemental details.
+    """
 
     amount: int
     """The transfer amount in USD cents."""
