@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.166.0 (2024-12-04)
+
+Full Changelog: [v0.165.1...v0.166.0](https://github.com/Increase/increase-python/compare/v0.165.1...v0.166.0)
+
+### Features
+
+* **api:** api update ([#857](https://github.com/Increase/increase-python/issues/857)) ([d57f9f2](https://github.com/Increase/increase-python/commit/d57f9f2c3df5e7fd69cba167d259d535989bddd5))
+
+
+### Chores
+
+* **internal:** bump pyright ([#854](https://github.com/Increase/increase-python/issues/854)) ([9864983](https://github.com/Increase/increase-python/commit/9864983dea855e3020afd63004a52cb0fc8c8697))
+* make the `Omit` type public ([#856](https://github.com/Increase/increase-python/issues/856)) ([b194c78](https://github.com/Increase/increase-python/commit/b194c784d2209ea7b5e7473a33c9d72f78a836b3))
+
 ## 0.165.1 (2024-11-28)
 
 Full Changelog: [v0.165.0...v0.165.1](https://github.com/Increase/increase-python/compare/v0.165.0...v0.165.1)
