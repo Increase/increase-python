@@ -82,6 +82,7 @@ class BookkeepingEntriesResource(SyncAPIResource):
     def list(
         self,
         *,
+        account_id: str | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -95,6 +96,8 @@ class BookkeepingEntriesResource(SyncAPIResource):
         List Bookkeeping Entries
 
         Args:
+          account_id: The identifier for the Bookkeeping Account to filter by.
+
           cursor: Return the page of entries after this one.
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
@@ -118,6 +121,7 @@ class BookkeepingEntriesResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "account_id": account_id,
                         "cursor": cursor,
                         "limit": limit,
                     },
@@ -188,6 +192,7 @@ class AsyncBookkeepingEntriesResource(AsyncAPIResource):
     def list(
         self,
         *,
+        account_id: str | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -201,6 +206,8 @@ class AsyncBookkeepingEntriesResource(AsyncAPIResource):
         List Bookkeeping Entries
 
         Args:
+          account_id: The identifier for the Bookkeeping Account to filter by.
+
           cursor: Return the page of entries after this one.
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
@@ -224,6 +231,7 @@ class AsyncBookkeepingEntriesResource(AsyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "account_id": account_id,
                         "cursor": cursor,
                         "limit": limit,
                     },
