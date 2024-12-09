@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.167.0 (2024-12-09)
+
+Full Changelog: [v0.166.0...v0.167.0](https://github.com/Increase/increase-python/compare/v0.166.0...v0.167.0)
+
+### Features
+
+* **api:** api update ([#862](https://github.com/Increase/increase-python/issues/862)) ([16f7ea2](https://github.com/Increase/increase-python/commit/16f7ea203f2a33d3b9f40a7d2a71c535c78d2536))
+
+
+### Chores
+
+* **internal:** bump pydantic dependency ([#859](https://github.com/Increase/increase-python/issues/859)) ([9671540](https://github.com/Increase/increase-python/commit/96715402bb54430a3e37a000f9fa3a092e310e9e))
+
+
+### Documentation
+
+* **readme:** fix http client proxies example ([#861](https://github.com/Increase/increase-python/issues/861)) ([426b32c](https://github.com/Increase/increase-python/commit/426b32c2e60f38f123d05d40a3a8ec5db4fc0aee))
+
 ## 0.166.0 (2024-12-04)
 
 Full Changelog: [v0.165.1...v0.166.0](https://github.com/Increase/increase-python/compare/v0.165.1...v0.166.0)
