@@ -64,6 +64,7 @@ class TestBookkeepingEntries:
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
         bookkeeping_entry = client.bookkeeping_entries.list(
+            account_id="account_id",
             cursor="cursor",
             limit=1,
         )
@@ -139,6 +140,7 @@ class TestAsyncBookkeepingEntries:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
         bookkeeping_entry = await async_client.bookkeeping_entries.list(
+            account_id="account_id",
             cursor="cursor",
             limit=1,
         )

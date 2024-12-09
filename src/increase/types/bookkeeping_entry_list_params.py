@@ -8,6 +8,9 @@ __all__ = ["BookkeepingEntryListParams"]
 
 
 class BookkeepingEntryListParams(TypedDict, total=False):
+    account_id: str
+    """The identifier for the Bookkeeping Account to filter by."""
+
     cursor: str
     """Return the page of entries after this one."""
 
