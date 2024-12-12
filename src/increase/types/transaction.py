@@ -16,6 +16,7 @@ __all__ = [
     "SourceCardDisputeAcceptance",
     "SourceCardDisputeLoss",
     "SourceCardRefund",
+    "SourceCardRefundCashback",
     "SourceCardRefundInterchange",
     "SourceCardRefundNetworkIdentifiers",
     "SourceCardRefundPurchaseDetails",
@@ -27,6 +28,7 @@ __all__ = [
     "SourceCardRefundPurchaseDetailsTravelTripLeg",
     "SourceCardRevenuePayment",
     "SourceCardSettlement",
+    "SourceCardSettlementCashback",
     "SourceCardSettlementInterchange",
     "SourceCardSettlementNetworkIdentifiers",
     "SourceCardSettlementPurchaseDetails",
@@ -402,6 +404,26 @@ class SourceCardDisputeLoss(BaseModel):
     """
     The identifier of the Transaction that was created to debit the disputed funds
     from your account.
+    """
+
+
+class SourceCardRefundCashback(BaseModel):
+    amount: str
+    """The cashback amount given as a string containing a decimal number.
+
+    The amount is a positive number if it will be credited to you (e.g.,
+    settlements) and a negative number if it will be debited (e.g., refunds).
+    """
+
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
+    """The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
+
+    - `CAD` - Canadian Dollar (CAD)
+    - `CHF` - Swiss Franc (CHF)
+    - `EUR` - Euro (EUR)
+    - `GBP` - British Pound (GBP)
+    - `JPY` - Japanese Yen (JPY)
+    - `USD` - US Dollar (USD)
     """
 
 
@@ -867,6 +889,12 @@ class SourceCardRefund(BaseModel):
     card_payment_id: str
     """The ID of the Card Payment this transaction belongs to."""
 
+    cashback: Optional[SourceCardRefundCashback] = None
+    """Cashback debited for this transaction, if eligible.
+
+    Cashback is paid out in aggregate, monthly.
+    """
+
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
@@ -963,6 +991,26 @@ class SourceCardRevenuePayment(BaseModel):
 
     transacted_on_account_id: Optional[str] = None
     """The account the card belonged to."""
+
+
+class SourceCardSettlementCashback(BaseModel):
+    amount: str
+    """The cashback amount given as a string containing a decimal number.
+
+    The amount is a positive number if it will be credited to you (e.g.,
+    settlements) and a negative number if it will be debited (e.g., refunds).
+    """
+
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
+    """The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
+
+    - `CAD` - Canadian Dollar (CAD)
+    - `CHF` - Swiss Franc (CHF)
+    - `EUR` - Euro (EUR)
+    - `GBP` - British Pound (GBP)
+    - `JPY` - Japanese Yen (JPY)
+    - `USD` - US Dollar (USD)
+    """
 
 
 class SourceCardSettlementInterchange(BaseModel):
@@ -1432,6 +1480,12 @@ class SourceCardSettlement(BaseModel):
 
     card_payment_id: str
     """The ID of the Card Payment this transaction belongs to."""
+
+    cashback: Optional[SourceCardSettlementCashback] = None
+    """Cashback earned on this transaction, if eligible.
+
+    Cashback is paid out in aggregate, monthly.
+    """
 
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
