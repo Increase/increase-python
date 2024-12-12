@@ -29,6 +29,7 @@ __all__ = [
     "ElementCardIncrement",
     "ElementCardIncrementNetworkIdentifiers",
     "ElementCardRefund",
+    "ElementCardRefundCashback",
     "ElementCardRefundInterchange",
     "ElementCardRefundNetworkIdentifiers",
     "ElementCardRefundPurchaseDetails",
@@ -41,6 +42,7 @@ __all__ = [
     "ElementCardReversal",
     "ElementCardReversalNetworkIdentifiers",
     "ElementCardSettlement",
+    "ElementCardSettlementCashback",
     "ElementCardSettlementInterchange",
     "ElementCardSettlementNetworkIdentifiers",
     "ElementCardSettlementPurchaseDetails",
@@ -1074,6 +1076,26 @@ class ElementCardIncrement(BaseModel):
     """
 
 
+class ElementCardRefundCashback(BaseModel):
+    amount: str
+    """The cashback amount given as a string containing a decimal number.
+
+    The amount is a positive number if it will be credited to you (e.g.,
+    settlements) and a negative number if it will be debited (e.g., refunds).
+    """
+
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
+    """The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
+
+    - `CAD` - Canadian Dollar (CAD)
+    - `CHF` - Swiss Franc (CHF)
+    - `EUR` - Euro (EUR)
+    - `GBP` - British Pound (GBP)
+    - `JPY` - Japanese Yen (JPY)
+    - `USD` - US Dollar (USD)
+    """
+
+
 class ElementCardRefundInterchange(BaseModel):
     amount: str
     """The interchange amount given as a string containing a decimal number.
@@ -1536,6 +1558,12 @@ class ElementCardRefund(BaseModel):
     card_payment_id: str
     """The ID of the Card Payment this transaction belongs to."""
 
+    cashback: Optional[ElementCardRefundCashback] = None
+    """Cashback debited for this transaction, if eligible.
+
+    Cashback is paid out in aggregate, monthly.
+    """
+
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
@@ -1726,6 +1754,26 @@ class ElementCardReversal(BaseModel):
     """
     The amount left pending on the Card Authorization in the minor unit of the
     transaction's currency. For dollars, for example, this is cents.
+    """
+
+
+class ElementCardSettlementCashback(BaseModel):
+    amount: str
+    """The cashback amount given as a string containing a decimal number.
+
+    The amount is a positive number if it will be credited to you (e.g.,
+    settlements) and a negative number if it will be debited (e.g., refunds).
+    """
+
+    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
+    """The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the cashback.
+
+    - `CAD` - Canadian Dollar (CAD)
+    - `CHF` - Swiss Franc (CHF)
+    - `EUR` - Euro (EUR)
+    - `GBP` - British Pound (GBP)
+    - `JPY` - Japanese Yen (JPY)
+    - `USD` - US Dollar (USD)
     """
 
 
@@ -2196,6 +2244,12 @@ class ElementCardSettlement(BaseModel):
 
     card_payment_id: str
     """The ID of the Card Payment this transaction belongs to."""
+
+    cashback: Optional[ElementCardSettlementCashback] = None
+    """Cashback earned on this transaction, if eligible.
+
+    Cashback is paid out in aggregate, monthly.
+    """
 
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
