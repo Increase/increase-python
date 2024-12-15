@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.169.0 (2024-12-15)
+
+Full Changelog: [v0.168.0...v0.169.0](https://github.com/Increase/increase-python/compare/v0.168.0...v0.169.0)
+
+### Features
+
+* **api:** api update ([#872](https://github.com/Increase/increase-python/issues/872)) ([eb06aec](https://github.com/Increase/increase-python/commit/eb06aecf9606831bd097092360925eb91b8c72bc))
+
+
+### Chores
+
+* **internal:** add support for TypeAliasType ([#869](https://github.com/Increase/increase-python/issues/869)) ([674c6f9](https://github.com/Increase/increase-python/commit/674c6f9d0af4d32e23deb75a7888f95e4d931d3a))
+* **internal:** bump pyright ([#867](https://github.com/Increase/increase-python/issues/867)) ([dddbd13](https://github.com/Increase/increase-python/commit/dddbd13d159a4e5a795f5ab74083f5dccca5195b))
+* **internal:** updated imports ([#870](https://github.com/Increase/increase-python/issues/870)) ([3d44da0](https://github.com/Increase/increase-python/commit/3d44da0c95f8c612866c2c2f9758098e7670ff4b))
+
 ## 0.168.0 (2024-12-12)
 
 Full Changelog: [v0.167.0...v0.168.0](https://github.com/Increase/increase-python/compare/v0.167.0...v0.168.0)
