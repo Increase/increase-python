@@ -47,6 +47,7 @@ _CategoryReservedKeywords = TypedDict(
                 "bookkeeping_account_balance_csv",
                 "entity_csv",
                 "vendor_csv",
+                "dashboard_table_csv",
             ]
         ],
     },
