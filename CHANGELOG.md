@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.170.0 (2024-12-20)
+
+Full Changelog: [v0.169.0...v0.170.0](https://github.com/Increase/increase-python/compare/v0.169.0...v0.170.0)
+
+### Features
+
+* **api:** api update ([#877](https://github.com/Increase/increase-python/issues/877)) ([3dae254](https://github.com/Increase/increase-python/commit/3dae254ec87ef969fa958805b31db1a7588f8571))
+
+
+### Chores
+
+* **internal:** fix some typos ([#876](https://github.com/Increase/increase-python/issues/876)) ([1e35645](https://github.com/Increase/increase-python/commit/1e356453f816e1f43516ae3bf010f4ad045881b1))
+
+
+### Documentation
+
+* **readme:** example snippet for client context manager ([#874](https://github.com/Increase/increase-python/issues/874)) ([271192d](https://github.com/Increase/increase-python/commit/271192dfafe6cb6df3d27b565a56e836b58bf2ca))
+
 ## 0.169.0 (2024-12-15)
 
 Full Changelog: [v0.168.0...v0.169.0](https://github.com/Increase/increase-python/compare/v0.168.0...v0.169.0)
