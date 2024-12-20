@@ -1501,7 +1501,7 @@ class SourceCardSettlement(BaseModel):
     """
 
     interchange: Optional[SourceCardSettlementInterchange] = None
-    """Interchange assessed as a part of this transaciton."""
+    """Interchange assessed as a part of this transaction."""
 
     merchant_acceptor_id: str
     """

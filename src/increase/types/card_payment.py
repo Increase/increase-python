@@ -2265,7 +2265,7 @@ class ElementCardSettlement(BaseModel):
     """
 
     interchange: Optional[ElementCardSettlementInterchange] = None
-    """Interchange assessed as a part of this transaciton."""
+    """Interchange assessed as a part of this transaction."""
 
     merchant_acceptor_id: str
     """
