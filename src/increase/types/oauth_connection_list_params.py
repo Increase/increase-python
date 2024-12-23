@@ -19,7 +19,10 @@ class OAuthConnectionListParams(TypedDict, total=False):
     """
 
     oauth_application_id: str
-    """The identifier of the OAuth Application to filter by."""
+    """
+    Filter results to only include OAuth Connections for a specific OAuth
+    Application.
+    """
 
     status: Status
 
