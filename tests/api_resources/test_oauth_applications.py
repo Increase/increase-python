@@ -10,6 +10,7 @@ import pytest
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
 from increase.types import OAuthApplication
+from increase._utils import parse_datetime
 from increase.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -64,8 +65,15 @@ class TestOAuthApplications:
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
         oauth_application = client.oauth_applications.list(
+            created_at={
+                "after": parse_datetime("2019-12-27T18:11:19.117Z"),
+                "before": parse_datetime("2019-12-27T18:11:19.117Z"),
+                "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
+                "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
+            },
             cursor="cursor",
             limit=1,
+            status={"in": ["active"]},
         )
         assert_matches_type(SyncPage[OAuthApplication], oauth_application, path=["response"])
 
@@ -139,8 +147,15 @@ class TestAsyncOAuthApplications:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
         oauth_application = await async_client.oauth_applications.list(
+            created_at={
+                "after": parse_datetime("2019-12-27T18:11:19.117Z"),
+                "before": parse_datetime("2019-12-27T18:11:19.117Z"),
+                "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
+                "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
+            },
             cursor="cursor",
             limit=1,
+            status={"in": ["active"]},
         )
         assert_matches_type(AsyncPage[OAuthApplication], oauth_application, path=["response"])
 
