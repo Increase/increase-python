@@ -654,6 +654,19 @@ Methods:
 
 - <code title="get /groups/current">client.groups.<a href="./src/increase/resources/groups.py">retrieve</a>() -> <a href="./src/increase/types/group.py">Group</a></code>
 
+# OAuthApplications
+
+Types:
+
+```python
+from increase.types import OAuthApplication
+```
+
+Methods:
+
+- <code title="get /oauth_applications/{oauth_application_id}">client.oauth_applications.<a href="./src/increase/resources/oauth_applications.py">retrieve</a>(oauth_application_id) -> <a href="./src/increase/types/oauth_application.py">OAuthApplication</a></code>
+- <code title="get /oauth_applications">client.oauth_applications.<a href="./src/increase/resources/oauth_applications.py">list</a>(\*\*<a href="src/increase/types/oauth_application_list_params.py">params</a>) -> <a href="./src/increase/types/oauth_application.py">SyncPage[OAuthApplication]</a></code>
+
 # OAuthConnections
 
 Types:
