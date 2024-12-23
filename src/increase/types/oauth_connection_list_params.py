@@ -18,6 +18,9 @@ class OAuthConnectionListParams(TypedDict, total=False):
     The default (and maximum) is 100 objects.
     """
 
+    oauth_application_id: str
+    """The identifier of the OAuth Application to filter by."""
+
     status: Status
 
 

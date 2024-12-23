@@ -28,6 +28,9 @@ class OAuthConnection(BaseModel):
     group_id: str
     """The identifier of the Group that has authorized your OAuth application."""
 
+    oauth_application_id: str
+    """The identifier of the OAuth application this connection is for."""
+
     status: Literal["active", "inactive"]
     """Whether the connection is active.
 

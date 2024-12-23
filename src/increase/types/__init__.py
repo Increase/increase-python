@@ -35,6 +35,7 @@ from .bookkeeping_entry import BookkeepingEntry as BookkeepingEntry
 from .event_list_params import EventListParams as EventListParams
 from .inbound_mail_item import InboundMailItem as InboundMailItem
 from .intrafi_exclusion import IntrafiExclusion as IntrafiExclusion
+from .oauth_application import OAuthApplication as OAuthApplication
 from .card_create_params import CardCreateParams as CardCreateParams
 from .card_update_params import CardUpdateParams as CardUpdateParams
 from .entity_list_params import EntityListParams as EntityListParams
@@ -101,6 +102,7 @@ from .bookkeeping_entry_list_params import BookkeepingEntryListParams as Bookkee
 from .inbound_mail_item_list_params import InboundMailItemListParams as InboundMailItemListParams
 from .inbound_wire_drawdown_request import InboundWireDrawdownRequest as InboundWireDrawdownRequest
 from .intrafi_exclusion_list_params import IntrafiExclusionListParams as IntrafiExclusionListParams
+from .oauth_application_list_params import OAuthApplicationListParams as OAuthApplicationListParams
 from .account_transfer_create_params import AccountTransferCreateParams as AccountTransferCreateParams
 from .event_subscription_list_params import EventSubscriptionListParams as EventSubscriptionListParams
 from .external_account_create_params import ExternalAccountCreateParams as ExternalAccountCreateParams
