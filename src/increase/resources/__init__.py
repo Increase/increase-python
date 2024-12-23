@@ -233,6 +233,14 @@ from .intrafi_exclusions import (
     IntrafiExclusionsResourceWithStreamingResponse,
     AsyncIntrafiExclusionsResourceWithStreamingResponse,
 )
+from .oauth_applications import (
+    OAuthApplicationsResource,
+    AsyncOAuthApplicationsResource,
+    OAuthApplicationsResourceWithRawResponse,
+    AsyncOAuthApplicationsResourceWithRawResponse,
+    OAuthApplicationsResourceWithStreamingResponse,
+    AsyncOAuthApplicationsResourceWithStreamingResponse,
+)
 from .bookkeeping_entries import (
     BookkeepingEntriesResource,
     AsyncBookkeepingEntriesResource,
@@ -705,6 +713,12 @@ __all__ = [
     "AsyncGroupsResourceWithRawResponse",
     "GroupsResourceWithStreamingResponse",
     "AsyncGroupsResourceWithStreamingResponse",
+    "OAuthApplicationsResource",
+    "AsyncOAuthApplicationsResource",
+    "OAuthApplicationsResourceWithRawResponse",
+    "AsyncOAuthApplicationsResourceWithRawResponse",
+    "OAuthApplicationsResourceWithStreamingResponse",
+    "AsyncOAuthApplicationsResourceWithStreamingResponse",
     "OAuthConnectionsResource",
     "AsyncOAuthConnectionsResource",
     "OAuthConnectionsResourceWithRawResponse",

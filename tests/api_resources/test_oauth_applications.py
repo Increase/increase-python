@@ -9,161 +9,157 @@ import pytest
 
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
-from increase.types import OAuthConnection
+from increase.types import OAuthApplication
 from increase.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
 
-class TestOAuthConnections:
+class TestOAuthApplications:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
-        oauth_connection = client.oauth_connections.retrieve(
-            "oauth_connection_id",
+        oauth_application = client.oauth_applications.retrieve(
+            "oauth_application_id",
         )
-        assert_matches_type(OAuthConnection, oauth_connection, path=["response"])
+        assert_matches_type(OAuthApplication, oauth_application, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
-        response = client.oauth_connections.with_raw_response.retrieve(
-            "oauth_connection_id",
+        response = client.oauth_applications.with_raw_response.retrieve(
+            "oauth_application_id",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        oauth_connection = response.parse()
-        assert_matches_type(OAuthConnection, oauth_connection, path=["response"])
+        oauth_application = response.parse()
+        assert_matches_type(OAuthApplication, oauth_application, path=["response"])
 
     @parametrize
     def test_streaming_response_retrieve(self, client: Increase) -> None:
-        with client.oauth_connections.with_streaming_response.retrieve(
-            "oauth_connection_id",
+        with client.oauth_applications.with_streaming_response.retrieve(
+            "oauth_application_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            oauth_connection = response.parse()
-            assert_matches_type(OAuthConnection, oauth_connection, path=["response"])
+            oauth_application = response.parse()
+            assert_matches_type(OAuthApplication, oauth_application, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_path_params_retrieve(self, client: Increase) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `oauth_connection_id` but received ''"):
-            client.oauth_connections.with_raw_response.retrieve(
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `oauth_application_id` but received ''"):
+            client.oauth_applications.with_raw_response.retrieve(
                 "",
             )
 
     @parametrize
     def test_method_list(self, client: Increase) -> None:
-        oauth_connection = client.oauth_connections.list()
-        assert_matches_type(SyncPage[OAuthConnection], oauth_connection, path=["response"])
+        oauth_application = client.oauth_applications.list()
+        assert_matches_type(SyncPage[OAuthApplication], oauth_application, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
-        oauth_connection = client.oauth_connections.list(
+        oauth_application = client.oauth_applications.list(
             cursor="cursor",
             limit=1,
-            oauth_application_id="oauth_application_id",
-            status={"in": ["active"]},
         )
-        assert_matches_type(SyncPage[OAuthConnection], oauth_connection, path=["response"])
+        assert_matches_type(SyncPage[OAuthApplication], oauth_application, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
-        response = client.oauth_connections.with_raw_response.list()
+        response = client.oauth_applications.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        oauth_connection = response.parse()
-        assert_matches_type(SyncPage[OAuthConnection], oauth_connection, path=["response"])
+        oauth_application = response.parse()
+        assert_matches_type(SyncPage[OAuthApplication], oauth_application, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Increase) -> None:
-        with client.oauth_connections.with_streaming_response.list() as response:
+        with client.oauth_applications.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            oauth_connection = response.parse()
-            assert_matches_type(SyncPage[OAuthConnection], oauth_connection, path=["response"])
+            oauth_application = response.parse()
+            assert_matches_type(SyncPage[OAuthApplication], oauth_application, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
 
-class TestAsyncOAuthConnections:
+class TestAsyncOAuthApplications:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
-        oauth_connection = await async_client.oauth_connections.retrieve(
-            "oauth_connection_id",
+        oauth_application = await async_client.oauth_applications.retrieve(
+            "oauth_application_id",
         )
-        assert_matches_type(OAuthConnection, oauth_connection, path=["response"])
+        assert_matches_type(OAuthApplication, oauth_application, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
-        response = await async_client.oauth_connections.with_raw_response.retrieve(
-            "oauth_connection_id",
+        response = await async_client.oauth_applications.with_raw_response.retrieve(
+            "oauth_application_id",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        oauth_connection = await response.parse()
-        assert_matches_type(OAuthConnection, oauth_connection, path=["response"])
+        oauth_application = await response.parse()
+        assert_matches_type(OAuthApplication, oauth_application, path=["response"])
 
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
-        async with async_client.oauth_connections.with_streaming_response.retrieve(
-            "oauth_connection_id",
+        async with async_client.oauth_applications.with_streaming_response.retrieve(
+            "oauth_application_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            oauth_connection = await response.parse()
-            assert_matches_type(OAuthConnection, oauth_connection, path=["response"])
+            oauth_application = await response.parse()
+            assert_matches_type(OAuthApplication, oauth_application, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_path_params_retrieve(self, async_client: AsyncIncrease) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `oauth_connection_id` but received ''"):
-            await async_client.oauth_connections.with_raw_response.retrieve(
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `oauth_application_id` but received ''"):
+            await async_client.oauth_applications.with_raw_response.retrieve(
                 "",
             )
 
     @parametrize
     async def test_method_list(self, async_client: AsyncIncrease) -> None:
-        oauth_connection = await async_client.oauth_connections.list()
-        assert_matches_type(AsyncPage[OAuthConnection], oauth_connection, path=["response"])
+        oauth_application = await async_client.oauth_applications.list()
+        assert_matches_type(AsyncPage[OAuthApplication], oauth_application, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
-        oauth_connection = await async_client.oauth_connections.list(
+        oauth_application = await async_client.oauth_applications.list(
             cursor="cursor",
             limit=1,
-            oauth_application_id="oauth_application_id",
-            status={"in": ["active"]},
         )
-        assert_matches_type(AsyncPage[OAuthConnection], oauth_connection, path=["response"])
+        assert_matches_type(AsyncPage[OAuthApplication], oauth_application, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
-        response = await async_client.oauth_connections.with_raw_response.list()
+        response = await async_client.oauth_applications.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        oauth_connection = await response.parse()
-        assert_matches_type(AsyncPage[OAuthConnection], oauth_connection, path=["response"])
+        oauth_application = await response.parse()
+        assert_matches_type(AsyncPage[OAuthApplication], oauth_application, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncIncrease) -> None:
-        async with async_client.oauth_connections.with_streaming_response.list() as response:
+        async with async_client.oauth_applications.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            oauth_connection = await response.parse()
-            assert_matches_type(AsyncPage[OAuthConnection], oauth_connection, path=["response"])
+            oauth_application = await response.parse()
+            assert_matches_type(AsyncPage[OAuthApplication], oauth_application, path=["response"])
 
         assert cast(Any, response.is_closed) is True

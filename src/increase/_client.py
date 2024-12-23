@@ -55,6 +55,7 @@ from .resources import (
     account_statements,
     inbound_mail_items,
     intrafi_exclusions,
+    oauth_applications,
     bookkeeping_entries,
     event_subscriptions,
     real_time_decisions,
@@ -156,6 +157,7 @@ class Increase(SyncAPIClient):
     bookkeeping_entry_sets: bookkeeping_entry_sets.BookkeepingEntrySetsResource
     bookkeeping_entries: bookkeeping_entries.BookkeepingEntriesResource
     groups: groups.GroupsResource
+    oauth_applications: oauth_applications.OAuthApplicationsResource
     oauth_connections: oauth_connections.OAuthConnectionsResource
     oauth_tokens: oauth_tokens.OAuthTokensResource
     intrafi_account_enrollments: intrafi_account_enrollments.IntrafiAccountEnrollmentsResource
@@ -309,6 +311,7 @@ class Increase(SyncAPIClient):
         self.bookkeeping_entry_sets = bookkeeping_entry_sets.BookkeepingEntrySetsResource(self)
         self.bookkeeping_entries = bookkeeping_entries.BookkeepingEntriesResource(self)
         self.groups = groups.GroupsResource(self)
+        self.oauth_applications = oauth_applications.OAuthApplicationsResource(self)
         self.oauth_connections = oauth_connections.OAuthConnectionsResource(self)
         self.oauth_tokens = oauth_tokens.OAuthTokensResource(self)
         self.intrafi_account_enrollments = intrafi_account_enrollments.IntrafiAccountEnrollmentsResource(self)
@@ -527,6 +530,7 @@ class AsyncIncrease(AsyncAPIClient):
     bookkeeping_entry_sets: bookkeeping_entry_sets.AsyncBookkeepingEntrySetsResource
     bookkeeping_entries: bookkeeping_entries.AsyncBookkeepingEntriesResource
     groups: groups.AsyncGroupsResource
+    oauth_applications: oauth_applications.AsyncOAuthApplicationsResource
     oauth_connections: oauth_connections.AsyncOAuthConnectionsResource
     oauth_tokens: oauth_tokens.AsyncOAuthTokensResource
     intrafi_account_enrollments: intrafi_account_enrollments.AsyncIntrafiAccountEnrollmentsResource
@@ -682,6 +686,7 @@ class AsyncIncrease(AsyncAPIClient):
         self.bookkeeping_entry_sets = bookkeeping_entry_sets.AsyncBookkeepingEntrySetsResource(self)
         self.bookkeeping_entries = bookkeeping_entries.AsyncBookkeepingEntriesResource(self)
         self.groups = groups.AsyncGroupsResource(self)
+        self.oauth_applications = oauth_applications.AsyncOAuthApplicationsResource(self)
         self.oauth_connections = oauth_connections.AsyncOAuthConnectionsResource(self)
         self.oauth_tokens = oauth_tokens.AsyncOAuthTokensResource(self)
         self.intrafi_account_enrollments = intrafi_account_enrollments.AsyncIntrafiAccountEnrollmentsResource(self)
@@ -951,6 +956,7 @@ class IncreaseWithRawResponse:
             client.bookkeeping_entries
         )
         self.groups = groups.GroupsResourceWithRawResponse(client.groups)
+        self.oauth_applications = oauth_applications.OAuthApplicationsResourceWithRawResponse(client.oauth_applications)
         self.oauth_connections = oauth_connections.OAuthConnectionsResourceWithRawResponse(client.oauth_connections)
         self.oauth_tokens = oauth_tokens.OAuthTokensResourceWithRawResponse(client.oauth_tokens)
         self.intrafi_account_enrollments = intrafi_account_enrollments.IntrafiAccountEnrollmentsResourceWithRawResponse(
@@ -1074,6 +1080,9 @@ class AsyncIncreaseWithRawResponse:
             client.bookkeeping_entries
         )
         self.groups = groups.AsyncGroupsResourceWithRawResponse(client.groups)
+        self.oauth_applications = oauth_applications.AsyncOAuthApplicationsResourceWithRawResponse(
+            client.oauth_applications
+        )
         self.oauth_connections = oauth_connections.AsyncOAuthConnectionsResourceWithRawResponse(
             client.oauth_connections
         )
@@ -1203,6 +1212,9 @@ class IncreaseWithStreamedResponse:
             client.bookkeeping_entries
         )
         self.groups = groups.GroupsResourceWithStreamingResponse(client.groups)
+        self.oauth_applications = oauth_applications.OAuthApplicationsResourceWithStreamingResponse(
+            client.oauth_applications
+        )
         self.oauth_connections = oauth_connections.OAuthConnectionsResourceWithStreamingResponse(
             client.oauth_connections
         )
@@ -1334,6 +1346,9 @@ class AsyncIncreaseWithStreamedResponse:
             client.bookkeeping_entries
         )
         self.groups = groups.AsyncGroupsResourceWithStreamingResponse(client.groups)
+        self.oauth_applications = oauth_applications.AsyncOAuthApplicationsResourceWithStreamingResponse(
+            client.oauth_applications
+        )
         self.oauth_connections = oauth_connections.AsyncOAuthConnectionsResourceWithStreamingResponse(
             client.oauth_connections
         )
