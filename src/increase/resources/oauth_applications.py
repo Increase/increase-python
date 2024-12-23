@@ -82,8 +82,10 @@ class OAuthApplicationsResource(SyncAPIResource):
     def list(
         self,
         *,
+        created_at: oauth_application_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
+        status: oauth_application_list_params.Status | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -118,8 +120,10 @@ class OAuthApplicationsResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "created_at": created_at,
                         "cursor": cursor,
                         "limit": limit,
+                        "status": status,
                     },
                     oauth_application_list_params.OAuthApplicationListParams,
                 ),
@@ -188,8 +192,10 @@ class AsyncOAuthApplicationsResource(AsyncAPIResource):
     def list(
         self,
         *,
+        created_at: oauth_application_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
+        status: oauth_application_list_params.Status | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -224,8 +230,10 @@ class AsyncOAuthApplicationsResource(AsyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "created_at": created_at,
                         "cursor": cursor,
                         "limit": limit,
+                        "status": status,
                     },
                     oauth_application_list_params.OAuthApplicationListParams,
                 ),
