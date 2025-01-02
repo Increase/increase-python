@@ -2107,7 +2107,7 @@ class SourceInboundWireTransfer(BaseModel):
 
 
 class SourceInterestPayment(BaseModel):
-    accrued_on_account_id: Optional[str] = None
+    accrued_on_account_id: str
     """The account on which the interest was accrued."""
 
     amount: int
