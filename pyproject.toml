@@ -1,6 +1,6 @@
 [project]
 name = "increase"
-version = "0.176.0"
+version = "0.176.1"
 description = "The official Python library for the increase API"
 dynamic = ["readme"]
 license = "Apache-2.0"
