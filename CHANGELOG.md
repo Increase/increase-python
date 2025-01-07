@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.176.1 (2025-01-07)
+
+Full Changelog: [v0.176.0...v0.176.1](https://github.com/Increase/increase-python/compare/v0.176.0...v0.176.1)
+
+### Bug Fixes
+
+* **client:** only call .close() when needed ([#901](https://github.com/Increase/increase-python/issues/901)) ([ddb9128](https://github.com/Increase/increase-python/commit/ddb912885847512f44f3e8a6469c74372f444d67))
+
+
+### Chores
+
+* add missing isclass check ([#898](https://github.com/Increase/increase-python/issues/898)) ([664358c](https://github.com/Increase/increase-python/commit/664358c615c460abbe5f7b886342cea8dc39748d))
+* **internal:** bump httpx dependency ([#900](https://github.com/Increase/increase-python/issues/900)) ([4922758](https://github.com/Increase/increase-python/commit/4922758971a874d0f4a802241126586bc86bf555))
+
 ## 0.176.0 (2025-01-02)
 
 Full Changelog: [v0.175.0...v0.176.0](https://github.com/Increase/increase-python/compare/v0.175.0...v0.176.0)
