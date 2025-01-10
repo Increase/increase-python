@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.176.2 (2025-01-10)
+
+Full Changelog: [v0.176.1...v0.176.2](https://github.com/Increase/increase-python/compare/v0.176.1...v0.176.2)
+
+### Bug Fixes
+
+* correctly handle deserialising `cls` fields ([#906](https://github.com/Increase/increase-python/issues/906)) ([38c9a6d](https://github.com/Increase/increase-python/commit/38c9a6df14ed001be40456a262a3a82633189bda))
+
+
+### Chores
+
+* **internal:** codegen related update ([#905](https://github.com/Increase/increase-python/issues/905)) ([297c7d7](https://github.com/Increase/increase-python/commit/297c7d736a1fe0924b3ff0688d6c9931e0d9dd58))
+
+
+### Documentation
+
+* fix typos ([#903](https://github.com/Increase/increase-python/issues/903)) ([260dd28](https://github.com/Increase/increase-python/commit/260dd2814749688c73811b96959b42cc7db859d0))
+
 ## 0.176.1 (2025-01-07)
 
 Full Changelog: [v0.176.0...v0.176.1](https://github.com/Increase/increase-python/compare/v0.176.0...v0.176.1)
