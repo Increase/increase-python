@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.177.1 (2025-01-15)
+
+Full Changelog: [v0.177.0...v0.177.1](https://github.com/Increase/increase-python/compare/v0.177.0...v0.177.1)
+
+### Chores
+
+* **internal:** bump pyright dependency ([#912](https://github.com/Increase/increase-python/issues/912)) ([b855922](https://github.com/Increase/increase-python/commit/b85592231974a4b1de78c1169d7eaada609c6720))
+
 ## 0.177.0 (2025-01-14)
 
 Full Changelog: [v0.176.2...v0.177.0](https://github.com/Increase/increase-python/compare/v0.176.2...v0.177.0)
