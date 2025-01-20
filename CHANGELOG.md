@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.177.1 (2025-01-20)
+
+Full Changelog: [v0.177.0...v0.177.1](https://github.com/Increase/increase-python/compare/v0.177.0...v0.177.1)
+
+### Bug Fixes
+
+* **tests:** make test_get_platform less flaky ([#915](https://github.com/Increase/increase-python/issues/915)) ([190d629](https://github.com/Increase/increase-python/commit/190d6297f458a6ef4087e0b2637f0b8755e0dd05))
+
+
+### Chores
+
+* **internal:** bump pyright dependency ([#912](https://github.com/Increase/increase-python/issues/912)) ([b855922](https://github.com/Increase/increase-python/commit/b85592231974a4b1de78c1169d7eaada609c6720))
+
+
+### Documentation
+
+* **raw responses:** fix duplicate `the` ([#914](https://github.com/Increase/increase-python/issues/914)) ([e0d35cb](https://github.com/Increase/increase-python/commit/e0d35cbc3cc25d522e4a33fa1a9aac79d48e9c07))
+
 ## 0.177.0 (2025-01-14)
 
 Full Changelog: [v0.176.2...v0.177.0](https://github.com/Increase/increase-python/compare/v0.176.2...v0.177.0)
