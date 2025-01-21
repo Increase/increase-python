@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.178.0 (2025-01-21)
+
+Full Changelog: [v0.177.1...v0.178.0](https://github.com/Increase/increase-python/compare/v0.177.1...v0.178.0)
+
+### Features
+
+* **api:** api update ([#920](https://github.com/Increase/increase-python/issues/920)) ([1d47b66](https://github.com/Increase/increase-python/commit/1d47b66ddc6f13615c23b2f07876c4f1c3f86a99))
+
+
+### Chores
+
+* **internal:** avoid pytest-asyncio deprecation warning ([#917](https://github.com/Increase/increase-python/issues/917)) ([5319a20](https://github.com/Increase/increase-python/commit/5319a205632cdf1de1ba7b63a05456e5589ee5c8))
+* **internal:** minor style changes ([#919](https://github.com/Increase/increase-python/issues/919)) ([1fc8a52](https://github.com/Increase/increase-python/commit/1fc8a52b940b4c60634574847aebc680c8330e57))
+
 ## 0.177.1 (2025-01-20)
 
 Full Changelog: [v0.177.0...v0.177.1](https://github.com/Increase/increase-python/compare/v0.177.0...v0.177.1)
