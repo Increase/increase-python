@@ -53,6 +53,7 @@ class File(BaseModel):
         "processed_check_image_back",
         "mailed_check_image",
         "check_voucher_image",
+        "check_attachment_image",
         "inbound_mail_item",
         "form_1099_int",
         "form_ss_4",
@@ -86,6 +87,8 @@ class File(BaseModel):
     - `mailed_check_image` - An image of a check that was mailed to a recipient.
     - `check_voucher_image` - An image to be printed on the bottom or voucher of a
       check that you've requested Increase print.
+    - `check_attachment_image` - An image to be printed on an additional page and
+      mailed with a check that you've requested Increase print.
     - `inbound_mail_item` - A scanned mail item sent to Increase.
     - `form_1099_int` - IRS Form 1099-INT.
     - `form_ss_4` - IRS Form SS-4.
