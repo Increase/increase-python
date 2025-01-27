@@ -32,7 +32,7 @@ class DocumentListParams(TypedDict, total=False):
 _CategoryReservedKeywords = TypedDict(
     "_CategoryReservedKeywords",
     {
-        "in": List[Literal["form_1099_int", "proof_of_authorization", "company_information"]],
+        "in": List[Literal["form_1099_int", "form_1099_misc", "proof_of_authorization", "company_information"]],
     },
     total=False,
 )

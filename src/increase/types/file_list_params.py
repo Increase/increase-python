@@ -74,6 +74,7 @@ _PurposeReservedKeywords = TypedDict(
                 "check_attachment_image",
                 "inbound_mail_item",
                 "form_1099_int",
+                "form_1099_misc",
                 "form_ss_4",
                 "identity_document",
                 "increase_statement",
