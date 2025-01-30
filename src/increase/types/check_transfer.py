@@ -102,6 +102,9 @@ class Mailing(BaseModel):
     the check was mailed.
     """
 
+    tracking_number: Optional[str] = None
+    """The tracking number of the shipment, if available for the shipping method."""
+
 
 class PhysicalCheckMailingAddress(BaseModel):
     city: Optional[str] = None
