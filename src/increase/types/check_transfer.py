@@ -182,6 +182,13 @@ class PhysicalCheck(BaseModel):
     return_address: Optional[PhysicalCheckReturnAddress] = None
     """The return address to be printed on the check."""
 
+    shipping_method: Optional[Literal["usps_first_class", "fedex_overnight"]] = None
+    """The shipping method for the check.
+
+    - `usps_first_class` - USPS First Class
+    - `fedex_overnight` - FedEx Overnight
+    """
+
     signature_text: Optional[str] = None
     """The text that will appear as the signature on the check in cursive font.
 
