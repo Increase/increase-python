@@ -26,6 +26,7 @@ class TestCheckTransfers:
         check_transfer = client.check_transfers.create(
             account_id="account_in71c4amph0vgo2qllky",
             amount=1000,
+            fulfillment_method="physical_check",
             source_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
         )
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
@@ -35,8 +36,8 @@ class TestCheckTransfers:
         check_transfer = client.check_transfers.create(
             account_id="account_in71c4amph0vgo2qllky",
             amount=1000,
-            source_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
             fulfillment_method="physical_check",
+            source_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
             physical_check={
                 "mailing_address": {
                     "city": "New York",
@@ -69,6 +70,7 @@ class TestCheckTransfers:
         response = client.check_transfers.with_raw_response.create(
             account_id="account_in71c4amph0vgo2qllky",
             amount=1000,
+            fulfillment_method="physical_check",
             source_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
         )
 
@@ -82,6 +84,7 @@ class TestCheckTransfers:
         with client.check_transfers.with_streaming_response.create(
             account_id="account_in71c4amph0vgo2qllky",
             amount=1000,
+            fulfillment_method="physical_check",
             source_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
         ) as response:
             assert not response.is_closed
@@ -302,6 +305,7 @@ class TestAsyncCheckTransfers:
         check_transfer = await async_client.check_transfers.create(
             account_id="account_in71c4amph0vgo2qllky",
             amount=1000,
+            fulfillment_method="physical_check",
             source_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
         )
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
@@ -311,8 +315,8 @@ class TestAsyncCheckTransfers:
         check_transfer = await async_client.check_transfers.create(
             account_id="account_in71c4amph0vgo2qllky",
             amount=1000,
-            source_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
             fulfillment_method="physical_check",
+            source_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
             physical_check={
                 "mailing_address": {
                     "city": "New York",
@@ -345,6 +349,7 @@ class TestAsyncCheckTransfers:
         response = await async_client.check_transfers.with_raw_response.create(
             account_id="account_in71c4amph0vgo2qllky",
             amount=1000,
+            fulfillment_method="physical_check",
             source_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
         )
 
@@ -358,6 +363,7 @@ class TestAsyncCheckTransfers:
         async with async_client.check_transfers.with_streaming_response.create(
             account_id="account_in71c4amph0vgo2qllky",
             amount=1000,
+            fulfillment_method="physical_check",
             source_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
         ) as response:
             assert not response.is_closed

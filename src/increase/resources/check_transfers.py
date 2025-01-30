@@ -56,8 +56,8 @@ class CheckTransfersResource(SyncAPIResource):
         *,
         account_id: str,
         amount: int,
+        fulfillment_method: Literal["physical_check", "third_party"],
         source_account_number_id: str,
-        fulfillment_method: Literal["physical_check", "third_party"] | NotGiven = NOT_GIVEN,
         physical_check: check_transfer_create_params.PhysicalCheck | NotGiven = NOT_GIVEN,
         require_approval: bool | NotGiven = NOT_GIVEN,
         third_party: check_transfer_create_params.ThirdParty | NotGiven = NOT_GIVEN,
@@ -77,15 +77,15 @@ class CheckTransfersResource(SyncAPIResource):
 
           amount: The transfer amount in USD cents.
 
-          source_account_number_id: The identifier of the Account Number from which to send the transfer and print
-              on the check.
-
           fulfillment_method: Whether Increase will print and mail the check or if you will do it yourself.
 
               - `physical_check` - Increase will print and mail a physical check.
               - `third_party` - Increase will not print a check; you are responsible for
                 printing and mailing a check with the provided account number, routing number,
                 check number, and amount.
+
+          source_account_number_id: The identifier of the Account Number from which to send the transfer and print
+              on the check.
 
           physical_check: Details relating to the physical check that Increase will print and mail. This
               is required if `fulfillment_method` is equal to `physical_check`. It must not be
@@ -113,8 +113,8 @@ class CheckTransfersResource(SyncAPIResource):
                 {
                     "account_id": account_id,
                     "amount": amount,
-                    "source_account_number_id": source_account_number_id,
                     "fulfillment_method": fulfillment_method,
+                    "source_account_number_id": source_account_number_id,
                     "physical_check": physical_check,
                     "require_approval": require_approval,
                     "third_party": third_party,
@@ -387,8 +387,8 @@ class AsyncCheckTransfersResource(AsyncAPIResource):
         *,
         account_id: str,
         amount: int,
+        fulfillment_method: Literal["physical_check", "third_party"],
         source_account_number_id: str,
-        fulfillment_method: Literal["physical_check", "third_party"] | NotGiven = NOT_GIVEN,
         physical_check: check_transfer_create_params.PhysicalCheck | NotGiven = NOT_GIVEN,
         require_approval: bool | NotGiven = NOT_GIVEN,
         third_party: check_transfer_create_params.ThirdParty | NotGiven = NOT_GIVEN,
@@ -408,15 +408,15 @@ class AsyncCheckTransfersResource(AsyncAPIResource):
 
           amount: The transfer amount in USD cents.
 
-          source_account_number_id: The identifier of the Account Number from which to send the transfer and print
-              on the check.
-
           fulfillment_method: Whether Increase will print and mail the check or if you will do it yourself.
 
               - `physical_check` - Increase will print and mail a physical check.
               - `third_party` - Increase will not print a check; you are responsible for
                 printing and mailing a check with the provided account number, routing number,
                 check number, and amount.
+
+          source_account_number_id: The identifier of the Account Number from which to send the transfer and print
+              on the check.
 
           physical_check: Details relating to the physical check that Increase will print and mail. This
               is required if `fulfillment_method` is equal to `physical_check`. It must not be
@@ -444,8 +444,8 @@ class AsyncCheckTransfersResource(AsyncAPIResource):
                 {
                     "account_id": account_id,
                     "amount": amount,
-                    "source_account_number_id": source_account_number_id,
                     "fulfillment_method": fulfillment_method,
+                    "source_account_number_id": source_account_number_id,
                     "physical_check": physical_check,
                     "require_approval": require_approval,
                     "third_party": third_party,
