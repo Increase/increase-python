@@ -9,6 +9,9 @@ from .._models import BaseModel
 __all__ = [
     "CardPayment",
     "Element",
+    "ElementCardAuthentication",
+    "ElementCardAuthenticationChallenge",
+    "ElementCardAuthenticationChallengeAttempt",
     "ElementCardAuthorization",
     "ElementCardAuthorizationNetworkDetails",
     "ElementCardAuthorizationNetworkDetailsVisa",
@@ -61,6 +64,173 @@ __all__ = [
     "ElementCardValidationVerificationCardholderAddress",
     "State",
 ]
+
+
+class ElementCardAuthenticationChallengeAttempt(BaseModel):
+    created_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time of the Card
+    Authentication Challenge Attempt.
+    """
+
+    outcome: Literal["successful", "failed"]
+    """The outcome of the Card Authentication Challenge Attempt.
+
+    - `successful` - The attempt was successful.
+    - `failed` - The attempt was unsuccessful.
+    """
+
+
+class ElementCardAuthenticationChallenge(BaseModel):
+    attempts: List[ElementCardAuthenticationChallengeAttempt]
+    """Details about the challenge verification attempts, if any happened."""
+
+    created_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Card
+    Authentication Challenge was started.
+    """
+
+    one_time_code: str
+    """The one-time code used for the Card Authentication Challenge."""
+
+    verification_method: Literal["text_message", "email", "none_available"]
+    """The method used to verify the Card Authentication Challenge.
+
+    - `text_message` - The one-time code was sent via text message.
+    - `email` - The one-time code was sent via email.
+    - `none_available` - The one-time code was not successfully delievered.
+    """
+
+    verification_value: Optional[str] = None
+    """
+    E.g., the email address or phone number used for the Card Authentication
+    Challenge.
+    """
+
+
+class ElementCardAuthentication(BaseModel):
+    id: str
+    """The Card Authentication identifier."""
+
+    card_id: str
+    """The identifier of the Card."""
+
+    card_payment_id: str
+    """The ID of the Card Payment this transaction belongs to."""
+
+    category: Optional[Literal["payment_authentication", "non_payment_authentication"]] = None
+    """The category of the card authentication attempt.
+
+    - `payment_authentication` - The authentication attempt is for a payment.
+    - `non_payment_authentication` - The authentication attempt is not for a
+      payment.
+    """
+
+    challenge: Optional[ElementCardAuthenticationChallenge] = None
+    """Details about the challenge, if one was requested."""
+
+    created_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Card
+    Authentication was attempted.
+    """
+
+    deny_reason: Optional[
+        Literal[
+            "group_locked",
+            "card_not_active",
+            "entity_not_active",
+            "transaction_not_allowed",
+            "webhook_denied",
+            "webhook_timed_out",
+        ]
+    ] = None
+    """The reason why this authentication attempt was denied, if it was.
+
+    - `group_locked` - The group was locked.
+    - `card_not_active` - The card was not active.
+    - `entity_not_active` - The entity was not active.
+    - `transaction_not_allowed` - The transaction was not allowed.
+    - `webhook_denied` - The webhook was denied.
+    - `webhook_timed_out` - The webhook timed out.
+    """
+
+    device_channel: Optional[Literal["app", "browser", "three_ds_requestor_initiated"]] = None
+    """The device channel of the card authentication attempt.
+
+    - `app` - The authentication attempt was made from an app.
+    - `browser` - The authentication attempt was made from a browser.
+    - `three_ds_requestor_initiated` - The authentication attempt was initiated by
+      the 3DS Requestor.
+    """
+
+    merchant_acceptor_id: str
+    """
+    The merchant identifier (commonly abbreviated as MID) of the merchant the card
+    is transacting with.
+    """
+
+    merchant_category_code: str
+    """
+    The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
+    card is transacting with.
+    """
+
+    merchant_country: str
+    """The country the merchant resides in."""
+
+    merchant_name: str
+    """The name of the merchant."""
+
+    purchase_amount: Optional[int] = None
+    """The purchase amount in minor units."""
+
+    purchase_currency: Optional[str] = None
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+    authentication attempt's purchase currency.
+    """
+
+    real_time_decision_id: Optional[str] = None
+    """
+    The identifier of the Real-Time Decision sent to approve or decline this
+    authentication attempt.
+    """
+
+    status: Literal[
+        "denied",
+        "authenticated_with_challenge",
+        "authenticated_without_challenge",
+        "awaiting_challenge",
+        "validating_challenge",
+        "canceled",
+        "timed_out_awaiting_challenge",
+        "errored",
+        "exceeded_attempt_threshold",
+    ]
+    """The status of the card authentication.
+
+    - `denied` - The authentication attempt was denied.
+    - `authenticated_with_challenge` - The authentication attempt was authenticated
+      with a challenge.
+    - `authenticated_without_challenge` - The authentication attempt was
+      authenticated without a challenge.
+    - `awaiting_challenge` - The authentication attempt is awaiting a challenge.
+    - `validating_challenge` - The authentication attempt is validating a challenge.
+    - `canceled` - The authentication attempt was canceled.
+    - `timed_out_awaiting_challenge` - The authentication attempt timed out while
+      awaiting a challenge.
+    - `errored` - The authentication attempt errored.
+    - `exceeded_attempt_threshold` - The authentication attempt exceeded the attempt
+      threshold.
+    """
+
+    type: Literal["card_authentication"]
+    """A constant representing the object's type.
+
+    For this resource it will always be `card_authentication`.
+    """
 
 
 class ElementCardAuthorizationNetworkDetailsVisa(BaseModel):
@@ -2653,6 +2823,13 @@ class ElementCardValidation(BaseModel):
 
 
 class Element(BaseModel):
+    card_authentication: Optional[ElementCardAuthentication] = None
+    """A Card Authentication object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `card_authentication`.
+    """
+
     card_authorization: Optional[ElementCardAuthorization] = None
     """A Card Authorization object.
 
