@@ -47,10 +47,14 @@ __all__ = [
     "SourceInboundACHTransferAddenda",
     "SourceInboundACHTransferAddendaFreeform",
     "SourceInboundACHTransferAddendaFreeformEntry",
+    "SourceInboundACHTransferReturnIntention",
+    "SourceInboundCheckAdjustment",
+    "SourceInboundCheckDepositReturnIntention",
     "SourceInboundRealTimePaymentsTransferConfirmation",
     "SourceInboundRealTimePaymentsTransferDecline",
     "SourceInboundWireReversal",
     "SourceInboundWireTransfer",
+    "SourceInboundWireTransferReversal",
     "SourceInterestPayment",
     "SourceInternalSource",
     "SourceRealTimePaymentsTransferAcknowledgement",
@@ -1865,6 +1869,38 @@ class SourceInboundACHTransfer(BaseModel):
     """The Inbound ACH Transfer's identifier."""
 
 
+class SourceInboundACHTransferReturnIntention(BaseModel):
+    inbound_ach_transfer_id: str
+    """The ID of the Inbound ACH Transfer that is being returned."""
+
+
+class SourceInboundCheckAdjustment(BaseModel):
+    adjusted_transaction_id: str
+    """The ID of the transaction that was adjusted."""
+
+    amount: int
+    """The amount of the check adjustment."""
+
+    reason: Literal["late_return", "wrong_payee_credit", "adjusted_amount"]
+    """The reason for the adjustment.
+
+    - `late_return` - The return was initiated too late and the receiving
+      institution has responded with a Late Return Claim.
+    - `wrong_payee_credit` - The check was deposited to the wrong payee and the
+      depositing institution has reimbursed the funds with a Wrong Payee Credit.
+    - `adjusted_amount` - The check was deposited with a different amount than what
+      was written on the check.
+    """
+
+
+class SourceInboundCheckDepositReturnIntention(BaseModel):
+    inbound_check_deposit_id: str
+    """The ID of the Inbound Check Deposit that is being returned."""
+
+    transfer_id: Optional[str] = None
+    """The identifier of the Check Transfer object that was deposited."""
+
+
 class SourceInboundRealTimePaymentsTransferConfirmation(BaseModel):
     amount: int
     """The amount in the minor unit of the transfer's currency.
@@ -2104,6 +2140,11 @@ class SourceInboundWireTransfer(BaseModel):
 
     transfer_id: str
     """The ID of the Inbound Wire Transfer object that resulted in this Transaction."""
+
+
+class SourceInboundWireTransferReversal(BaseModel):
+    inbound_wire_transfer_id: str
+    """The ID of the Inbound Wire Transfer that is being reversed."""
 
 
 class SourceInterestPayment(BaseModel):
@@ -2438,6 +2479,27 @@ class Source(BaseModel):
     equal to `inbound_ach_transfer`.
     """
 
+    inbound_ach_transfer_return_intention: Optional[SourceInboundACHTransferReturnIntention] = None
+    """An Inbound ACH Transfer Return Intention object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `inbound_ach_transfer_return_intention`.
+    """
+
+    inbound_check_adjustment: Optional[SourceInboundCheckAdjustment] = None
+    """An Inbound Check Adjustment object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `inbound_check_adjustment`.
+    """
+
+    inbound_check_deposit_return_intention: Optional[SourceInboundCheckDepositReturnIntention] = None
+    """An Inbound Check Deposit Return Intention object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `inbound_check_deposit_return_intention`.
+    """
+
     inbound_real_time_payments_transfer_confirmation: Optional[SourceInboundRealTimePaymentsTransferConfirmation] = None
     """An Inbound Real-Time Payments Transfer Confirmation object.
 
@@ -2464,6 +2526,13 @@ class Source(BaseModel):
 
     This field will be present in the JSON response if and only if `category` is
     equal to `inbound_wire_transfer`.
+    """
+
+    inbound_wire_transfer_reversal: Optional[SourceInboundWireTransferReversal] = None
+    """An Inbound Wire Transfer Reversal Intention object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `inbound_wire_transfer_reversal`.
     """
 
     interest_payment: Optional[SourceInterestPayment] = None
