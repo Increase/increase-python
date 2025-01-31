@@ -2827,21 +2827,24 @@ class Element(BaseModel):
     """A Card Authentication object.
 
     This field will be present in the JSON response if and only if `category` is
-    equal to `card_authentication`.
+    equal to `card_authentication`. Card Authentications are attempts to
+    authenticate a transaction or a card with 3DS.
     """
 
     card_authorization: Optional[ElementCardAuthorization] = None
     """A Card Authorization object.
 
     This field will be present in the JSON response if and only if `category` is
-    equal to `card_authorization`.
+    equal to `card_authorization`. Card Authorizations are temporary holds placed on
+    a customers funds with the intent to later clear a transaction.
     """
 
     card_authorization_expiration: Optional[ElementCardAuthorizationExpiration] = None
     """A Card Authorization Expiration object.
 
     This field will be present in the JSON response if and only if `category` is
-    equal to `card_authorization_expiration`.
+    equal to `card_authorization_expiration`. Card Authorization Expirations are
+    cancellations of authorizations that were never settled by the acquirer.
     """
 
     card_decline: Optional[ElementCardDecline] = None
@@ -2855,42 +2858,51 @@ class Element(BaseModel):
     """A Card Fuel Confirmation object.
 
     This field will be present in the JSON response if and only if `category` is
-    equal to `card_fuel_confirmation`.
+    equal to `card_fuel_confirmation`. Card Fuel Confirmations update the amount of
+    a Card Authorization after a fuel pump transaction is completed.
     """
 
     card_increment: Optional[ElementCardIncrement] = None
     """A Card Increment object.
 
     This field will be present in the JSON response if and only if `category` is
-    equal to `card_increment`.
+    equal to `card_increment`. Card Increments increase the pending amount of an
+    authorized transaction.
     """
 
     card_refund: Optional[ElementCardRefund] = None
     """A Card Refund object.
 
     This field will be present in the JSON response if and only if `category` is
-    equal to `card_refund`.
+    equal to `card_refund`. Card Refunds move money back to the cardholder. While
+    they are usually connected to a Card Settlement an acquirer can also refund
+    money directly to a card without relation to a transaction.
     """
 
     card_reversal: Optional[ElementCardReversal] = None
     """A Card Reversal object.
 
     This field will be present in the JSON response if and only if `category` is
-    equal to `card_reversal`.
+    equal to `card_reversal`. Card Reversals cancel parts of or the entirety of an
+    existing Card Authorization.
     """
 
     card_settlement: Optional[ElementCardSettlement] = None
     """A Card Settlement object.
 
     This field will be present in the JSON response if and only if `category` is
-    equal to `card_settlement`.
+    equal to `card_settlement`. Card Settlements are card transactions that have
+    cleared and settled. While a settlement is usually preceded by an authorization,
+    an acquirer can also directly clear a transaction without first authorizing it.
     """
 
     card_validation: Optional[ElementCardValidation] = None
     """A Card Validation object.
 
     This field will be present in the JSON response if and only if `category` is
-    equal to `card_validation`.
+    equal to `card_validation`. Card Validations are requests from a merchant to
+    verify that a card number and optionally its address and/or Card Verification
+    Value are valid.
     """
 
     category: Literal[
