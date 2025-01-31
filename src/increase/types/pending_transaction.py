@@ -21,6 +21,7 @@ __all__ = [
     "SourceCheckDepositInstruction",
     "SourceCheckTransferInstruction",
     "SourceInboundFundsHold",
+    "SourceInboundWireTransferReversal",
     "SourceRealTimePaymentsTransferInstruction",
     "SourceWireTransferInstruction",
 ]
@@ -548,6 +549,11 @@ class SourceInboundFundsHold(BaseModel):
     """
 
 
+class SourceInboundWireTransferReversal(BaseModel):
+    inbound_wire_transfer_id: str
+    """The ID of the Inbound Wire Transfer that is being reversed."""
+
+
 class SourceRealTimePaymentsTransferInstruction(BaseModel):
     amount: int
     """The transfer amount in USD cents."""
@@ -660,6 +666,13 @@ class Source(BaseModel):
 
     This field will be present in the JSON response if and only if `category` is
     equal to `inbound_funds_hold`.
+    """
+
+    inbound_wire_transfer_reversal: Optional[SourceInboundWireTransferReversal] = None
+    """An Inbound Wire Transfer Reversal object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `inbound_wire_transfer_reversal`.
     """
 
     other: Optional[object] = None
