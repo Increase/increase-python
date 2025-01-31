@@ -604,7 +604,8 @@ class Source(BaseModel):
     """A Card Authorization object.
 
     This field will be present in the JSON response if and only if `category` is
-    equal to `card_authorization`.
+    equal to `card_authorization`. Card Authorizations are temporary holds placed on
+    a customers funds with the intent to later clear a transaction.
     """
 
     category: Literal[
@@ -665,14 +666,18 @@ class Source(BaseModel):
     """An Inbound Funds Hold object.
 
     This field will be present in the JSON response if and only if `category` is
-    equal to `inbound_funds_hold`.
+    equal to `inbound_funds_hold`. We hold funds for certain transaction types to
+    account for return windows where funds might still be clawed back by the sending
+    institution.
     """
 
     inbound_wire_transfer_reversal: Optional[SourceInboundWireTransferReversal] = None
     """An Inbound Wire Transfer Reversal object.
 
     This field will be present in the JSON response if and only if `category` is
-    equal to `inbound_wire_transfer_reversal`.
+    equal to `inbound_wire_transfer_reversal`. An Inbound Wire Transfer Reversal is
+    created when Increase has received a wire and the User requests that it be
+    reversed.
     """
 
     other: Optional[object] = None
