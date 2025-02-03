@@ -409,6 +409,12 @@ class InboundACHTransfer(BaseModel):
     automatically_resolves_at: datetime
     """The time at which the transfer will be automatically resolved."""
 
+    created_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+    the inbound ACH transfer was created.
+    """
+
     decline: Optional[Decline] = None
     """If your transfer is declined, this will contain details of the decline."""
 
