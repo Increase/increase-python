@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.186.0 (2025-02-03)
+
+Full Changelog: [v0.185.0...v0.186.0](https://github.com/Increase/increase-python/compare/v0.185.0...v0.186.0)
+
+### Features
+
+* **api:** api update ([#947](https://github.com/Increase/increase-python/issues/947)) ([ebc6366](https://github.com/Increase/increase-python/commit/ebc6366684c351e67a475b06b896b1eb6fa1cdbc))
+
+
+### Chores
+
+* **internal:** bummp ruff dependency ([#946](https://github.com/Increase/increase-python/issues/946)) ([05366ec](https://github.com/Increase/increase-python/commit/05366ec5dd9db014cad46d13038886b51a114ae7))
+* **internal:** change default timeout to an int ([#944](https://github.com/Increase/increase-python/issues/944)) ([6b0d00d](https://github.com/Increase/increase-python/commit/6b0d00da37b507b8d5b95ebe971a8eaa59629792))
+
 ## 0.185.0 (2025-01-31)
 
 Full Changelog: [v0.184.0...v0.185.0](https://github.com/Increase/increase-python/compare/v0.184.0...v0.185.0)
