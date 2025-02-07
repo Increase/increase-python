@@ -717,7 +717,7 @@ from increase.types import IntrafiBalance
 
 Methods:
 
-- <code title="get /intrafi_balances/{account_id}">client.intrafi_balances.<a href="./src/increase/resources/intrafi_balances.py">retrieve</a>(account_id) -> <a href="./src/increase/types/intrafi_balance.py">IntrafiBalance</a></code>
+- <code title="get /accounts/{account_id}/intrafi_balance">client.intrafi_balances.<a href="./src/increase/resources/intrafi_balances.py">intrafi_balance</a>(account_id) -> <a href="./src/increase/types/intrafi_balance.py">IntrafiBalance</a></code>
 
 # IntrafiExclusions
 
