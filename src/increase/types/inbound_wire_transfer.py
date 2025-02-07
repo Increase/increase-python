@@ -1,6 +1,7 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import Optional
+from datetime import datetime
 from typing_extensions import Literal
 
 from .._models import BaseModel
@@ -35,6 +36,12 @@ class InboundWireTransfer(BaseModel):
 
     beneficiary_reference: Optional[str] = None
     """A free-form reference string set by the sender, to help identify the transfer."""
+
+    created_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+    the inbound wire transfer was created.
+    """
 
     description: str
     """An Increase-constructed description of the transfer."""

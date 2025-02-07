@@ -1,6 +1,7 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import Optional
+from datetime import datetime
 from typing_extensions import Literal
 
 from .._models import BaseModel
@@ -28,6 +29,12 @@ class WireDrawdownRequest(BaseModel):
 
     amount: int
     """The amount being requested in cents."""
+
+    created_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+    the wire drawdown request was created.
+    """
 
     currency: str
     """
