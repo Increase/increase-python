@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.188.0 (2025-02-07)
+
+Full Changelog: [v0.187.0...v0.188.0](https://github.com/Increase/increase-python/compare/v0.187.0...v0.188.0)
+
+### Features
+
+* **api:** api update ([#956](https://github.com/Increase/increase-python/issues/956)) ([256d107](https://github.com/Increase/increase-python/commit/256d1075464dace95b926dc88f93864ffab19efe))
+* **api:** api update ([#957](https://github.com/Increase/increase-python/issues/957)) ([a8dfd3d](https://github.com/Increase/increase-python/commit/a8dfd3d326b715980f58ff983dd322082262bce5))
+* **client:** send `X-Stainless-Read-Timeout` header ([#952](https://github.com/Increase/increase-python/issues/952)) ([56c1cba](https://github.com/Increase/increase-python/commit/56c1cbac74b219e2a82d4c4088f6caae31fee502))
+
+
+### Chores
+
+* **internal:** fix type traversing dictionary params ([#954](https://github.com/Increase/increase-python/issues/954)) ([e0cc599](https://github.com/Increase/increase-python/commit/e0cc599129b55a5826bb3b61baab5c9973aee63f))
+* **internal:** minor type handling changes ([#955](https://github.com/Increase/increase-python/issues/955)) ([11f8788](https://github.com/Increase/increase-python/commit/11f87883da72091548389e386fa26203f6928199))
+
 ## 0.187.0 (2025-02-04)
 
 Full Changelog: [v0.186.0...v0.187.0](https://github.com/Increase/increase-python/compare/v0.186.0...v0.187.0)
