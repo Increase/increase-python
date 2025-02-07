@@ -16,6 +16,12 @@ class IntrafiExclusion(BaseModel):
     bank_name: str
     """The name of the excluded institution."""
 
+    created_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+    the exclusion was created.
+    """
+
     entity_id: str
     """The entity for which this institution is excluded."""
 
