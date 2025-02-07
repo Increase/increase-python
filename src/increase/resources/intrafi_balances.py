@@ -39,7 +39,7 @@ class IntrafiBalancesResource(SyncAPIResource):
         """
         return IntrafiBalancesResourceWithStreamingResponse(self)
 
-    def retrieve(
+    def intrafi_balance(
         self,
         account_id: str,
         *,
@@ -67,7 +67,7 @@ class IntrafiBalancesResource(SyncAPIResource):
         if not account_id:
             raise ValueError(f"Expected a non-empty value for `account_id` but received {account_id!r}")
         return self._get(
-            f"/intrafi_balances/{account_id}",
+            f"/accounts/{account_id}/intrafi_balance",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -95,7 +95,7 @@ class AsyncIntrafiBalancesResource(AsyncAPIResource):
         """
         return AsyncIntrafiBalancesResourceWithStreamingResponse(self)
 
-    async def retrieve(
+    async def intrafi_balance(
         self,
         account_id: str,
         *,
@@ -123,7 +123,7 @@ class AsyncIntrafiBalancesResource(AsyncAPIResource):
         if not account_id:
             raise ValueError(f"Expected a non-empty value for `account_id` but received {account_id!r}")
         return await self._get(
-            f"/intrafi_balances/{account_id}",
+            f"/accounts/{account_id}/intrafi_balance",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -135,8 +135,8 @@ class IntrafiBalancesResourceWithRawResponse:
     def __init__(self, intrafi_balances: IntrafiBalancesResource) -> None:
         self._intrafi_balances = intrafi_balances
 
-        self.retrieve = to_raw_response_wrapper(
-            intrafi_balances.retrieve,
+        self.intrafi_balance = to_raw_response_wrapper(
+            intrafi_balances.intrafi_balance,
         )
 
 
@@ -144,8 +144,8 @@ class AsyncIntrafiBalancesResourceWithRawResponse:
     def __init__(self, intrafi_balances: AsyncIntrafiBalancesResource) -> None:
         self._intrafi_balances = intrafi_balances
 
-        self.retrieve = async_to_raw_response_wrapper(
-            intrafi_balances.retrieve,
+        self.intrafi_balance = async_to_raw_response_wrapper(
+            intrafi_balances.intrafi_balance,
         )
 
 
@@ -153,8 +153,8 @@ class IntrafiBalancesResourceWithStreamingResponse:
     def __init__(self, intrafi_balances: IntrafiBalancesResource) -> None:
         self._intrafi_balances = intrafi_balances
 
-        self.retrieve = to_streamed_response_wrapper(
-            intrafi_balances.retrieve,
+        self.intrafi_balance = to_streamed_response_wrapper(
+            intrafi_balances.intrafi_balance,
         )
 
 
@@ -162,6 +162,6 @@ class AsyncIntrafiBalancesResourceWithStreamingResponse:
     def __init__(self, intrafi_balances: AsyncIntrafiBalancesResource) -> None:
         self._intrafi_balances = intrafi_balances
 
-        self.retrieve = async_to_streamed_response_wrapper(
-            intrafi_balances.retrieve,
+        self.intrafi_balance = async_to_streamed_response_wrapper(
+            intrafi_balances.intrafi_balance,
         )

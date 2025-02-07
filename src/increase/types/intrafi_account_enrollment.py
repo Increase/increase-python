@@ -1,6 +1,7 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import Optional
+from datetime import datetime
 from typing_extensions import Literal
 
 from .._models import BaseModel
@@ -14,6 +15,12 @@ class IntrafiAccountEnrollment(BaseModel):
 
     account_id: str
     """The identifier of the Increase Account being swept into the network."""
+
+    created_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+    the enrollment was created.
+    """
 
     idempotency_key: Optional[str] = None
     """The idempotency key you chose for this object.
