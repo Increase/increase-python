@@ -285,7 +285,8 @@ class AccountsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> BalanceLookup:
         """
-        Retrieve an Account Balance
+        Retrieve the current and available balances for an account in minor units of the
+        account's currency. Learn more about [account balances](/documentation/balance).
 
         Args:
           account_id: The identifier of the Account to retrieve.
@@ -608,7 +609,8 @@ class AsyncAccountsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> BalanceLookup:
         """
-        Retrieve an Account Balance
+        Retrieve the current and available balances for an account in minor units of the
+        account's currency. Learn more about [account balances](/documentation/balance).
 
         Args:
           account_id: The identifier of the Account to retrieve.
