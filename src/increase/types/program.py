@@ -13,10 +13,9 @@ class Program(BaseModel):
     id: str
     """The Program identifier."""
 
-    bank: Literal["blue_ridge_bank", "core_bank", "first_internet_bank", "grasshopper_bank"]
+    bank: Literal["core_bank", "first_internet_bank", "grasshopper_bank"]
     """The Bank the Program is with.
 
-    - `blue_ridge_bank` - Blue Ridge Bank, N.A.
     - `core_bank` - Core Bank
     - `first_internet_bank` - First Internet Bank of Indiana
     - `grasshopper_bank` - Grasshopper Bank
