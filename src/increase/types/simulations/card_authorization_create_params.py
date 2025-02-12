@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing_extensions import Literal, Required, TypedDict
 
-__all__ = ["CardAuthorizationCreateParams"]
+__all__ = ["CardAuthorizationCreateParams", "NetworkDetails", "NetworkDetailsVisa"]
 
 
 class CardAuthorizationCreateParams(TypedDict, total=False):
@@ -111,6 +111,9 @@ class CardAuthorizationCreateParams(TypedDict, total=False):
     merchant_state: str
     """The state the merchant resides in."""
 
+    network_details: NetworkDetails
+    """Fields specific to a given card network."""
+
     physical_card_id: str
     """The identifier of the Physical Card to be authorized."""
 
@@ -119,3 +122,40 @@ class CardAuthorizationCreateParams(TypedDict, total=False):
     The terminal identifier (commonly abbreviated as TID) of the terminal the card
     is transacting with.
     """
+
+
+class NetworkDetailsVisa(TypedDict, total=False):
+    stand_in_processing_reason: Literal[
+        "issuer_error",
+        "invalid_physical_card",
+        "invalid_cardholder_authentication_verification_value",
+        "internal_visa_error",
+        "merchant_transaction_advisory_service_authentication_required",
+        "payment_fraud_disruption_acquirer_block",
+        "other",
+    ]
+    """The reason code for the stand-in processing.
+
+    - `issuer_error` - Increase failed to process the authorization in a timely
+      manner.
+    - `invalid_physical_card` - The physical card read had an invalid CVV, dCVV, or
+      authorization request cryptogram.
+    - `invalid_cardholder_authentication_verification_value` - The 3DS cardholder
+      authentication verification value was invalid.
+    - `internal_visa_error` - An internal Visa error occurred. Visa uses this reason
+      code for certain expected occurrences as well, such as Application Transaction
+      Counter (ATC) replays.
+    - `merchant_transaction_advisory_service_authentication_required` - The merchant
+      has enabled Visa's Transaction Advisory Service and requires further
+      authentication to perform the transaction. In practice this is often utilized
+      at fuel pumps to tell the cardholder to see the cashier.
+    - `payment_fraud_disruption_acquirer_block` - The transaction was blocked by
+      Visa's Payment Fraud Disruption service due to fraudulent Acquirer behavior,
+      such as card testing.
+    - `other` - An unspecific reason for stand-in processing.
+    """
+
+
+class NetworkDetails(TypedDict, total=False):
+    visa: Required[NetworkDetailsVisa]
+    """Fields specific to the Visa network."""
