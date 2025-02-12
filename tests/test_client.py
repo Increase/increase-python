@@ -23,6 +23,7 @@ from pydantic import ValidationError
 
 from increase import Increase, AsyncIncrease, APIResponseValidationError
 from increase._types import Omit
+from increase._utils import maybe_transform
 from increase._models import BaseModel, FinalRequestOptions
 from increase._constants import RAW_RESPONSE_HEADER
 from increase._exceptions import IncreaseError, APIStatusError, APITimeoutError, APIResponseValidationError
@@ -32,6 +33,7 @@ from increase._base_client import (
     BaseClient,
     make_request_options,
 )
+from increase.types.account_create_params import AccountCreateParams
 
 from .utils import update_env
 
@@ -760,10 +762,13 @@ class TestIncrease:
                 "/accounts",
                 body=cast(
                     object,
-                    dict(
-                        name="New Account!",
-                        entity_id="entity_n8y8tnk2p9339ti393yi",
-                        program_id="program_i2v2os4mwza1oetokh9i",
+                    maybe_transform(
+                        dict(
+                            name="New Account!",
+                            entity_id="entity_n8y8tnk2p9339ti393yi",
+                            program_id="program_i2v2os4mwza1oetokh9i",
+                        ),
+                        AccountCreateParams,
                     ),
                 ),
                 cast_to=httpx.Response,
@@ -782,10 +787,13 @@ class TestIncrease:
                 "/accounts",
                 body=cast(
                     object,
-                    dict(
-                        name="New Account!",
-                        entity_id="entity_n8y8tnk2p9339ti393yi",
-                        program_id="program_i2v2os4mwza1oetokh9i",
+                    maybe_transform(
+                        dict(
+                            name="New Account!",
+                            entity_id="entity_n8y8tnk2p9339ti393yi",
+                            program_id="program_i2v2os4mwza1oetokh9i",
+                        ),
+                        AccountCreateParams,
                     ),
                 ),
                 cast_to=httpx.Response,
@@ -1595,10 +1603,13 @@ class TestAsyncIncrease:
                 "/accounts",
                 body=cast(
                     object,
-                    dict(
-                        name="New Account!",
-                        entity_id="entity_n8y8tnk2p9339ti393yi",
-                        program_id="program_i2v2os4mwza1oetokh9i",
+                    maybe_transform(
+                        dict(
+                            name="New Account!",
+                            entity_id="entity_n8y8tnk2p9339ti393yi",
+                            program_id="program_i2v2os4mwza1oetokh9i",
+                        ),
+                        AccountCreateParams,
                     ),
                 ),
                 cast_to=httpx.Response,
@@ -1617,10 +1628,13 @@ class TestAsyncIncrease:
                 "/accounts",
                 body=cast(
                     object,
-                    dict(
-                        name="New Account!",
-                        entity_id="entity_n8y8tnk2p9339ti393yi",
-                        program_id="program_i2v2os4mwza1oetokh9i",
+                    maybe_transform(
+                        dict(
+                            name="New Account!",
+                            entity_id="entity_n8y8tnk2p9339ti393yi",
+                            program_id="program_i2v2os4mwza1oetokh9i",
+                        ),
+                        AccountCreateParams,
                     ),
                 ),
                 cast_to=httpx.Response,
