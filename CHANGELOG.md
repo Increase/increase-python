@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.191.0 (2025-02-12)
+
+Full Changelog: [v0.190.0...v0.191.0](https://github.com/Increase/increase-python/compare/v0.190.0...v0.191.0)
+
+### Features
+
+* **api:** api update ([#967](https://github.com/Increase/increase-python/issues/967)) ([d451149](https://github.com/Increase/increase-python/commit/d451149b25fbc96abe741b37fa53660e2580d0d3))
+
+
+### Chores
+
+* **internal:** update client tests ([#965](https://github.com/Increase/increase-python/issues/965)) ([90021f2](https://github.com/Increase/increase-python/commit/90021f217d112066dc15d0291ba9d6e300de2cf3))
+
 ## 0.190.0 (2025-02-11)
 
 Full Changelog: [v0.189.0...v0.190.0](https://github.com/Increase/increase-python/compare/v0.189.0...v0.190.0)
