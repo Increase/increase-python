@@ -16,7 +16,7 @@ class Adjustment(BaseModel):
     amount: int
     """The amount of the adjustment."""
 
-    reason: Literal["late_return", "wrong_payee_credit", "adjusted_amount"]
+    reason: Literal["late_return", "wrong_payee_credit", "adjusted_amount", "non_conforming_item"]
     """The reason for the adjustment.
 
     - `late_return` - The return was initiated too late and the receiving
@@ -25,6 +25,8 @@ class Adjustment(BaseModel):
       depositing institution has reimbursed the funds with a Wrong Payee Credit.
     - `adjusted_amount` - The check was deposited with a different amount than what
       was written on the check.
+    - `non_conforming_item` - The recipient was not able to process the check. This
+      usually happens for e.g., low quality images.
     """
 
     transaction_id: str
