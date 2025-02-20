@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.193.0 (2025-02-20)
+
+Full Changelog: [v0.192.0...v0.193.0](https://github.com/Increase/increase-python/compare/v0.192.0...v0.193.0)
+
+### Features
+
+* **client:** allow passing `NotGiven` for body ([#974](https://github.com/Increase/increase-python/issues/974)) ([6328c5b](https://github.com/Increase/increase-python/commit/6328c5b61634cc45f3e5a00f162649283b098dc1))
+
+
+### Bug Fixes
+
+* **client:** mark some request bodies as optional ([6328c5b](https://github.com/Increase/increase-python/commit/6328c5b61634cc45f3e5a00f162649283b098dc1))
+
+
+### Chores
+
+* **internal:** codegen related update ([#972](https://github.com/Increase/increase-python/issues/972)) ([381d705](https://github.com/Increase/increase-python/commit/381d705f5abedb48d6c06a9414d584d7eeb2a437))
+
 ## 0.192.0 (2025-02-19)
 
 Full Changelog: [v0.191.0...v0.192.0](https://github.com/Increase/increase-python/compare/v0.191.0...v0.192.0)
