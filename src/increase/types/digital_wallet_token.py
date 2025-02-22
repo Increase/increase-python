@@ -1,11 +1,30 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+from typing import List
 from datetime import datetime
 from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["DigitalWalletToken"]
+__all__ = ["DigitalWalletToken", "Update"]
+
+
+class Update(BaseModel):
+    status: Literal["active", "inactive", "suspended", "deactivated"]
+    """The status the update changed this Digital Wallet Token to.
+
+    - `active` - The digital wallet token is active.
+    - `inactive` - The digital wallet token has been created but not successfully
+      activated via two-factor authentication yet.
+    - `suspended` - The digital wallet token has been temporarily paused.
+    - `deactivated` - The digital wallet token has been permanently canceled.
+    """
+
+    timestamp: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+    the update happened.
+    """
 
 
 class DigitalWalletToken(BaseModel):
@@ -18,7 +37,7 @@ class DigitalWalletToken(BaseModel):
     created_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-    the Card was created.
+    the Digital Wallet Token was created.
     """
 
     status: Literal["active", "inactive", "suspended", "deactivated"]
@@ -45,3 +64,6 @@ class DigitalWalletToken(BaseModel):
 
     For this resource it will always be `digital_wallet_token`.
     """
+
+    updates: List[Update]
+    """Updates to the Digital Wallet Token."""
