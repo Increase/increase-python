@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.194.0 (2025-02-22)
+
+Full Changelog: [v0.193.0...v0.194.0](https://github.com/Increase/increase-python/compare/v0.193.0...v0.194.0)
+
+### Features
+
+* **api:** api update ([#978](https://github.com/Increase/increase-python/issues/978)) ([ffd13d5](https://github.com/Increase/increase-python/commit/ffd13d503079c732557dee600cd10b33406fdf2f))
+
+
+### Chores
+
+* **internal:** fix devcontainers setup ([#976](https://github.com/Increase/increase-python/issues/976)) ([25451ad](https://github.com/Increase/increase-python/commit/25451ad3e978daeae53904fe2d0b6eca69f9f1d2))
+
 ## 0.193.0 (2025-02-20)
 
 Full Changelog: [v0.192.0...v0.193.0](https://github.com/Increase/increase-python/compare/v0.192.0...v0.193.0)
