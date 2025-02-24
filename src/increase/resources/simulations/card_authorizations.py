@@ -53,6 +53,7 @@ class CardAuthorizationsResource(SyncAPIResource):
         authenticated_card_payment_id: str | NotGiven = NOT_GIVEN,
         card_id: str | NotGiven = NOT_GIVEN,
         decline_reason: Literal[
+            "account_closed",
             "card_not_active",
             "physical_card_not_active",
             "entity_not_active",
@@ -111,6 +112,7 @@ class CardAuthorizationsResource(SyncAPIResource):
           decline_reason: Forces a card decline with a specific reason. No real time decision will be
               sent.
 
+              - `account_closed` - The account has been closed.
               - `card_not_active` - The Card was not active.
               - `physical_card_not_active` - The Physical Card was not active.
               - `entity_not_active` - The account's entity was not active.
@@ -241,6 +243,7 @@ class AsyncCardAuthorizationsResource(AsyncAPIResource):
         authenticated_card_payment_id: str | NotGiven = NOT_GIVEN,
         card_id: str | NotGiven = NOT_GIVEN,
         decline_reason: Literal[
+            "account_closed",
             "card_not_active",
             "physical_card_not_active",
             "entity_not_active",
@@ -299,6 +302,7 @@ class AsyncCardAuthorizationsResource(AsyncAPIResource):
           decline_reason: Forces a card decline with a specific reason. No real time decision will be
               sent.
 
+              - `account_closed` - The account has been closed.
               - `card_not_active` - The Card was not active.
               - `physical_card_not_active` - The Physical Card was not active.
               - `entity_not_active` - The account's entity was not active.
