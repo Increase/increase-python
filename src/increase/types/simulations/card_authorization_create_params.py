@@ -21,6 +21,7 @@ class CardAuthorizationCreateParams(TypedDict, total=False):
     """The identifier of the Card to be authorized."""
 
     decline_reason: Literal[
+        "account_closed",
         "card_not_active",
         "physical_card_not_active",
         "entity_not_active",
@@ -41,6 +42,7 @@ class CardAuthorizationCreateParams(TypedDict, total=False):
 
     No real time decision will be sent.
 
+    - `account_closed` - The account has been closed.
     - `card_not_active` - The Card was not active.
     - `physical_card_not_active` - The Physical Card was not active.
     - `entity_not_active` - The account's entity was not active.
