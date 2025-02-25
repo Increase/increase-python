@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.195.1 (2025-02-25)
+
+Full Changelog: [v0.195.0...v0.195.1](https://github.com/Increase/increase-python/compare/v0.195.0...v0.195.1)
+
+### Chores
+
+* **internal:** properly set __pydantic_private__ ([#983](https://github.com/Increase/increase-python/issues/983)) ([205e301](https://github.com/Increase/increase-python/commit/205e301b786c31f8d1e3bdfdfcbe7b396f53c743))
+
 ## 0.195.0 (2025-02-24)
 
 Full Changelog: [v0.194.0...v0.195.0](https://github.com/Increase/increase-python/compare/v0.194.0...v0.195.0)
