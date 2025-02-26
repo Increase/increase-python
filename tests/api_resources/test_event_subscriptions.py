@@ -31,7 +31,7 @@ class TestEventSubscriptions:
     def test_method_create_with_all_params(self, client: Increase) -> None:
         event_subscription = client.event_subscriptions.create(
             url="https://website.com/webhooks",
-            oauth_connection_id="oauth_connection_id",
+            oauth_connection_id="x",
             selected_event_category="account.created",
             shared_secret="x",
         )
@@ -194,7 +194,7 @@ class TestAsyncEventSubscriptions:
     async def test_method_create_with_all_params(self, async_client: AsyncIncrease) -> None:
         event_subscription = await async_client.event_subscriptions.create(
             url="https://website.com/webhooks",
-            oauth_connection_id="oauth_connection_id",
+            oauth_connection_id="x",
             selected_event_category="account.created",
             shared_secret="x",
         )
