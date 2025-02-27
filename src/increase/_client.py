@@ -202,7 +202,7 @@ class Increase(SyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new synchronous increase client instance.
+        """Construct a new synchronous Increase client instance.
 
         This automatically infers the following arguments from their corresponding environment variables if they are not provided:
         - `api_key` from `INCREASE_API_KEY`
@@ -575,7 +575,7 @@ class AsyncIncrease(AsyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new async increase client instance.
+        """Construct a new async AsyncIncrease client instance.
 
         This automatically infers the following arguments from their corresponding environment variables if they are not provided:
         - `api_key` from `INCREASE_API_KEY`
