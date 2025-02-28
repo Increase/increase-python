@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 
-from typing import Union
+from typing import List, Union
 from datetime import datetime
 from typing_extensions import Literal, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
-__all__ = ["AccountListParams", "CreatedAt"]
+__all__ = ["AccountListParams", "CreatedAt", "Status"]
 
 
 class AccountListParams(TypedDict, total=False):
@@ -40,12 +40,7 @@ class AccountListParams(TypedDict, total=False):
     program_id: str
     """Filter Accounts for those in a specific Program."""
 
-    status: Literal["closed", "open"]
-    """Filter Accounts for those with the specified status.
-
-    - `closed` - Closed Accounts on which no new activity can occur.
-    - `open` - Open Accounts that are ready to use.
-    """
+    status: Status
 
 
 class CreatedAt(TypedDict, total=False):
@@ -72,3 +67,16 @@ class CreatedAt(TypedDict, total=False):
     Return results on or before this
     [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
     """
+
+
+_StatusReservedKeywords = TypedDict(
+    "_StatusReservedKeywords",
+    {
+        "in": List[Literal["closed", "open"]],
+    },
+    total=False,
+)
+
+
+class Status(_StatusReservedKeywords, total=False):
+    pass
