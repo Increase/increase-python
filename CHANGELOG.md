@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.197.0 (2025-02-28)
+
+Full Changelog: [v0.196.0...v0.197.0](https://github.com/Increase/increase-python/compare/v0.196.0...v0.197.0)
+
+### Features
+
+* **api:** api update ([#990](https://github.com/Increase/increase-python/issues/990)) ([e938254](https://github.com/Increase/increase-python/commit/e93825436cdcaebc3df000dc932dbe7a6e3f2221))
+
+
+### Chores
+
+* **docs:** update client docstring ([#989](https://github.com/Increase/increase-python/issues/989)) ([4cdb976](https://github.com/Increase/increase-python/commit/4cdb97608cb2b0ea3a803e3d387fa0c67bf73594))
+
+
+### Documentation
+
+* update URLs from stainlessapi.com to stainless.com ([#987](https://github.com/Increase/increase-python/issues/987)) ([2e77ad2](https://github.com/Increase/increase-python/commit/2e77ad270e3eebe335d631e69c5e156e64af859c))
+
 ## 0.196.0 (2025-02-26)
 
 Full Changelog: [v0.195.0...v0.196.0](https://github.com/Increase/increase-python/compare/v0.195.0...v0.196.0)
