@@ -2,10 +2,9 @@
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import Literal, TypedDict
 
-__all__ = ["WireDrawdownRequestListParams", "Status"]
+__all__ = ["WireDrawdownRequestListParams"]
 
 
 class WireDrawdownRequestListParams(TypedDict, total=False):
@@ -26,17 +25,13 @@ class WireDrawdownRequestListParams(TypedDict, total=False):
     The default (and maximum) is 100 objects.
     """
 
-    status: Status
+    status: Literal["pending_submission", "pending_response", "fulfilled", "refused"]
+    """Filter Wire Drawdown Requests for those with the specified status.
 
-
-_StatusReservedKeywords = TypedDict(
-    "_StatusReservedKeywords",
-    {
-        "in": List[Literal["pending_submission", "pending_response", "fulfilled", "refused"]],
-    },
-    total=False,
-)
-
-
-class Status(_StatusReservedKeywords, total=False):
-    pass
+    - `pending_submission` - The drawdown request is queued to be submitted to
+      Fedwire.
+    - `pending_response` - The drawdown request has been sent and the recipient
+      should respond in some way.
+    - `fulfilled` - The drawdown request has been fulfilled by the recipient.
+    - `refused` - The drawdown request has been refused by the recipient.
+    """

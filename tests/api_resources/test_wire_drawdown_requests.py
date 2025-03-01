@@ -134,7 +134,7 @@ class TestWireDrawdownRequests:
             cursor="cursor",
             idempotency_key="x",
             limit=1,
-            status={"in": ["pending_submission"]},
+            status="pending_submission",
         )
         assert_matches_type(SyncPage[WireDrawdownRequest], wire_drawdown_request, path=["response"])
 
@@ -278,7 +278,7 @@ class TestAsyncWireDrawdownRequests:
             cursor="cursor",
             idempotency_key="x",
             limit=1,
-            status={"in": ["pending_submission"]},
+            status="pending_submission",
         )
         assert_matches_type(AsyncPage[WireDrawdownRequest], wire_drawdown_request, path=["response"])
 

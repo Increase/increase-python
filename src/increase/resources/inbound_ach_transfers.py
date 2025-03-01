@@ -97,7 +97,7 @@ class InboundACHTransfersResource(SyncAPIResource):
         created_at: inbound_ach_transfer_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
-        status: inbound_ach_transfer_list_params.Status | NotGiven = NOT_GIVEN,
+        status: Literal["pending", "declined", "accepted", "returned"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -109,14 +109,22 @@ class InboundACHTransfersResource(SyncAPIResource):
         List Inbound ACH Transfers
 
         Args:
-          account_id: Filter Inbound ACH Transfers to ones belonging to the specified Account.
+          account_id: Filter Inbound ACH Tranfers to ones belonging to the specified Account.
 
-          account_number_id: Filter Inbound ACH Transfers to ones belonging to the specified Account Number.
+          account_number_id: Filter Inbound ACH Tranfers to ones belonging to the specified Account Number.
 
           cursor: Return the page of entries after this one.
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
+
+          status: Filter Inbound ACH Transfers to those with the specified status.
+
+              - `pending` - The Inbound ACH Transfer is awaiting action, will transition
+                automatically if no action is taken.
+              - `declined` - The Inbound ACH Transfer has been declined.
+              - `accepted` - The Inbound ACH Transfer is accepted.
+              - `returned` - The Inbound ACH Transfer has been returned.
 
           extra_headers: Send extra headers
 
@@ -446,7 +454,7 @@ class AsyncInboundACHTransfersResource(AsyncAPIResource):
         created_at: inbound_ach_transfer_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
-        status: inbound_ach_transfer_list_params.Status | NotGiven = NOT_GIVEN,
+        status: Literal["pending", "declined", "accepted", "returned"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -458,14 +466,22 @@ class AsyncInboundACHTransfersResource(AsyncAPIResource):
         List Inbound ACH Transfers
 
         Args:
-          account_id: Filter Inbound ACH Transfers to ones belonging to the specified Account.
+          account_id: Filter Inbound ACH Tranfers to ones belonging to the specified Account.
 
-          account_number_id: Filter Inbound ACH Transfers to ones belonging to the specified Account Number.
+          account_number_id: Filter Inbound ACH Tranfers to ones belonging to the specified Account Number.
 
           cursor: Return the page of entries after this one.
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
+
+          status: Filter Inbound ACH Transfers to those with the specified status.
+
+              - `pending` - The Inbound ACH Transfer is awaiting action, will transition
+                automatically if no action is taken.
+              - `declined` - The Inbound ACH Transfer has been declined.
+              - `accepted` - The Inbound ACH Transfer is accepted.
+              - `returned` - The Inbound ACH Transfer has been returned.
 
           extra_headers: Send extra headers
 
