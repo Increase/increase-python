@@ -77,7 +77,7 @@ class TestInboundWireTransfers:
             },
             cursor="cursor",
             limit=1,
-            status="pending",
+            status={"in": ["pending"]},
         )
         assert_matches_type(SyncPage[InboundWireTransfer], inbound_wire_transfer, path=["response"])
 
@@ -163,7 +163,7 @@ class TestAsyncInboundWireTransfers:
             },
             cursor="cursor",
             limit=1,
-            status="pending",
+            status={"in": ["pending"]},
         )
         assert_matches_type(AsyncPage[InboundWireTransfer], inbound_wire_transfer, path=["response"])
 
