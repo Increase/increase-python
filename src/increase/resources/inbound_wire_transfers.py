@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing_extensions import Literal
-
 import httpx
 
 from ..types import inbound_wire_transfer_list_params
@@ -89,7 +87,7 @@ class InboundWireTransfersResource(SyncAPIResource):
         created_at: inbound_wire_transfer_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
-        status: Literal["pending", "accepted", "declined", "reversed"] | NotGiven = NOT_GIVEN,
+        status: inbound_wire_transfer_list_params.Status | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -101,22 +99,14 @@ class InboundWireTransfersResource(SyncAPIResource):
         List Inbound Wire Transfers
 
         Args:
-          account_id: Filter Inbound Wire Tranfers to ones belonging to the specified Account.
+          account_id: Filter Inbound Wire Transfers to ones belonging to the specified Account.
 
-          account_number_id: Filter Inbound Wire Tranfers to ones belonging to the specified Account Number.
+          account_number_id: Filter Inbound Wire Transfers to ones belonging to the specified Account Number.
 
           cursor: Return the page of entries after this one.
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
-
-          status: Filter Inbound Wire Transfers to those with the specified status.
-
-              - `pending` - The Inbound Wire Transfer is awaiting action, will transition
-                automatically if no action is taken.
-              - `accepted` - The Inbound Wire Transfer is accepted.
-              - `declined` - The Inbound Wire Transfer was declined.
-              - `reversed` - The Inbound Wire Transfer was reversed.
 
           extra_headers: Send extra headers
 
@@ -215,7 +205,7 @@ class AsyncInboundWireTransfersResource(AsyncAPIResource):
         created_at: inbound_wire_transfer_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
-        status: Literal["pending", "accepted", "declined", "reversed"] | NotGiven = NOT_GIVEN,
+        status: inbound_wire_transfer_list_params.Status | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -227,22 +217,14 @@ class AsyncInboundWireTransfersResource(AsyncAPIResource):
         List Inbound Wire Transfers
 
         Args:
-          account_id: Filter Inbound Wire Tranfers to ones belonging to the specified Account.
+          account_id: Filter Inbound Wire Transfers to ones belonging to the specified Account.
 
-          account_number_id: Filter Inbound Wire Tranfers to ones belonging to the specified Account Number.
+          account_number_id: Filter Inbound Wire Transfers to ones belonging to the specified Account Number.
 
           cursor: Return the page of entries after this one.
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
-
-          status: Filter Inbound Wire Transfers to those with the specified status.
-
-              - `pending` - The Inbound Wire Transfer is awaiting action, will transition
-                automatically if no action is taken.
-              - `accepted` - The Inbound Wire Transfer is accepted.
-              - `declined` - The Inbound Wire Transfer was declined.
-              - `reversed` - The Inbound Wire Transfer was reversed.
 
           extra_headers: Send extra headers
 
