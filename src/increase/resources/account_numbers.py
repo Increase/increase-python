@@ -217,12 +217,12 @@ class AccountNumbersResource(SyncAPIResource):
         self,
         *,
         account_id: str | NotGiven = NOT_GIVEN,
-        ach_debit_status: Literal["allowed", "blocked"] | NotGiven = NOT_GIVEN,
+        ach_debit_status: account_number_list_params.ACHDebitStatus | NotGiven = NOT_GIVEN,
         created_at: account_number_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         idempotency_key: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
-        status: Literal["active", "disabled", "canceled"] | NotGiven = NOT_GIVEN,
+        status: account_number_list_params.Status | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -236,11 +236,6 @@ class AccountNumbersResource(SyncAPIResource):
         Args:
           account_id: Filter Account Numbers to those belonging to the specified Account.
 
-          ach_debit_status: The ACH Debit status to retrieve Account Numbers for.
-
-              - `allowed` - ACH Debits are allowed.
-              - `blocked` - ACH Debits are blocked.
-
           cursor: Return the page of entries after this one.
 
           idempotency_key: Filter records to the one with the specified `idempotency_key` you chose for
@@ -250,12 +245,6 @@ class AccountNumbersResource(SyncAPIResource):
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
-
-          status: The status to retrieve Account Numbers for.
-
-              - `active` - The account number is active.
-              - `disabled` - The account number is temporarily disabled.
-              - `canceled` - The account number is permanently disabled.
 
           extra_headers: Send extra headers
 
@@ -476,12 +465,12 @@ class AsyncAccountNumbersResource(AsyncAPIResource):
         self,
         *,
         account_id: str | NotGiven = NOT_GIVEN,
-        ach_debit_status: Literal["allowed", "blocked"] | NotGiven = NOT_GIVEN,
+        ach_debit_status: account_number_list_params.ACHDebitStatus | NotGiven = NOT_GIVEN,
         created_at: account_number_list_params.CreatedAt | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         idempotency_key: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
-        status: Literal["active", "disabled", "canceled"] | NotGiven = NOT_GIVEN,
+        status: account_number_list_params.Status | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -495,11 +484,6 @@ class AsyncAccountNumbersResource(AsyncAPIResource):
         Args:
           account_id: Filter Account Numbers to those belonging to the specified Account.
 
-          ach_debit_status: The ACH Debit status to retrieve Account Numbers for.
-
-              - `allowed` - ACH Debits are allowed.
-              - `blocked` - ACH Debits are blocked.
-
           cursor: Return the page of entries after this one.
 
           idempotency_key: Filter records to the one with the specified `idempotency_key` you chose for
@@ -509,12 +493,6 @@ class AsyncAccountNumbersResource(AsyncAPIResource):
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
-
-          status: The status to retrieve Account Numbers for.
-
-              - `active` - The account number is active.
-              - `disabled` - The account number is temporarily disabled.
-              - `canceled` - The account number is permanently disabled.
 
           extra_headers: Send extra headers
 
