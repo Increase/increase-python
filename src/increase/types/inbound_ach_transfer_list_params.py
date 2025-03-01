@@ -2,21 +2,21 @@
 
 from __future__ import annotations
 
-from typing import Union
+from typing import List, Union
 from datetime import datetime
 from typing_extensions import Literal, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
-__all__ = ["InboundACHTransferListParams", "CreatedAt"]
+__all__ = ["InboundACHTransferListParams", "CreatedAt", "Status"]
 
 
 class InboundACHTransferListParams(TypedDict, total=False):
     account_id: str
-    """Filter Inbound ACH Tranfers to ones belonging to the specified Account."""
+    """Filter Inbound ACH Transfers to ones belonging to the specified Account."""
 
     account_number_id: str
-    """Filter Inbound ACH Tranfers to ones belonging to the specified Account Number."""
+    """Filter Inbound ACH Transfers to ones belonging to the specified Account Number."""
 
     created_at: CreatedAt
 
@@ -29,15 +29,7 @@ class InboundACHTransferListParams(TypedDict, total=False):
     The default (and maximum) is 100 objects.
     """
 
-    status: Literal["pending", "declined", "accepted", "returned"]
-    """Filter Inbound ACH Transfers to those with the specified status.
-
-    - `pending` - The Inbound ACH Transfer is awaiting action, will transition
-      automatically if no action is taken.
-    - `declined` - The Inbound ACH Transfer has been declined.
-    - `accepted` - The Inbound ACH Transfer is accepted.
-    - `returned` - The Inbound ACH Transfer has been returned.
-    """
+    status: Status
 
 
 class CreatedAt(TypedDict, total=False):
@@ -64,3 +56,16 @@ class CreatedAt(TypedDict, total=False):
     Return results on or before this
     [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
     """
+
+
+_StatusReservedKeywords = TypedDict(
+    "_StatusReservedKeywords",
+    {
+        "in": List[Literal["pending", "declined", "accepted", "returned"]],
+    },
+    total=False,
+)
+
+
+class Status(_StatusReservedKeywords, total=False):
+    pass
