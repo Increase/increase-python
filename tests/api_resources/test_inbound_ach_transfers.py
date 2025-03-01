@@ -79,7 +79,7 @@ class TestInboundACHTransfers:
             },
             cursor="cursor",
             limit=1,
-            status={"in": ["pending"]},
+            status="pending",
         )
         assert_matches_type(SyncPage[InboundACHTransfer], inbound_ach_transfer, path=["response"])
 
@@ -306,7 +306,7 @@ class TestAsyncInboundACHTransfers:
             },
             cursor="cursor",
             limit=1,
-            status={"in": ["pending"]},
+            status="pending",
         )
         assert_matches_type(AsyncPage[InboundACHTransfer], inbound_ach_transfer, path=["response"])
 

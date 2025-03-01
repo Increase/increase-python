@@ -2,23 +2,21 @@
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 from datetime import datetime
 from typing_extensions import Literal, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
-__all__ = ["InboundWireTransferListParams", "CreatedAt", "Status"]
+__all__ = ["InboundWireTransferListParams", "CreatedAt"]
 
 
 class InboundWireTransferListParams(TypedDict, total=False):
     account_id: str
-    """Filter Inbound Wire Transfers to ones belonging to the specified Account."""
+    """Filter Inbound Wire Tranfers to ones belonging to the specified Account."""
 
     account_number_id: str
-    """
-    Filter Inbound Wire Transfers to ones belonging to the specified Account Number.
-    """
+    """Filter Inbound Wire Tranfers to ones belonging to the specified Account Number."""
 
     created_at: CreatedAt
 
@@ -31,7 +29,15 @@ class InboundWireTransferListParams(TypedDict, total=False):
     The default (and maximum) is 100 objects.
     """
 
-    status: Status
+    status: Literal["pending", "accepted", "declined", "reversed"]
+    """Filter Inbound Wire Transfers to those with the specified status.
+
+    - `pending` - The Inbound Wire Transfer is awaiting action, will transition
+      automatically if no action is taken.
+    - `accepted` - The Inbound Wire Transfer is accepted.
+    - `declined` - The Inbound Wire Transfer was declined.
+    - `reversed` - The Inbound Wire Transfer was reversed.
+    """
 
 
 class CreatedAt(TypedDict, total=False):
@@ -58,16 +64,3 @@ class CreatedAt(TypedDict, total=False):
     Return results on or before this
     [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
     """
-
-
-_StatusReservedKeywords = TypedDict(
-    "_StatusReservedKeywords",
-    {
-        "in": List[Literal["pending", "accepted", "declined", "reversed"]],
-    },
-    total=False,
-)
-
-
-class Status(_StatusReservedKeywords, total=False):
-    pass
