@@ -2,20 +2,25 @@
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 from datetime import datetime
 from typing_extensions import Literal, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
-__all__ = ["AccountNumberListParams", "ACHDebitStatus", "CreatedAt", "Status"]
+__all__ = ["AccountNumberListParams", "CreatedAt"]
 
 
 class AccountNumberListParams(TypedDict, total=False):
     account_id: str
     """Filter Account Numbers to those belonging to the specified Account."""
 
-    ach_debit_status: ACHDebitStatus
+    ach_debit_status: Literal["allowed", "blocked"]
+    """The ACH Debit status to retrieve Account Numbers for.
+
+    - `allowed` - ACH Debits are allowed.
+    - `blocked` - ACH Debits are blocked.
+    """
 
     created_at: CreatedAt
 
@@ -36,20 +41,13 @@ class AccountNumberListParams(TypedDict, total=False):
     The default (and maximum) is 100 objects.
     """
 
-    status: Status
+    status: Literal["active", "disabled", "canceled"]
+    """The status to retrieve Account Numbers for.
 
-
-_ACHDebitStatusReservedKeywords = TypedDict(
-    "_ACHDebitStatusReservedKeywords",
-    {
-        "in": List[Literal["allowed", "blocked"]],
-    },
-    total=False,
-)
-
-
-class ACHDebitStatus(_ACHDebitStatusReservedKeywords, total=False):
-    pass
+    - `active` - The account number is active.
+    - `disabled` - The account number is temporarily disabled.
+    - `canceled` - The account number is permanently disabled.
+    """
 
 
 class CreatedAt(TypedDict, total=False):
@@ -76,16 +74,3 @@ class CreatedAt(TypedDict, total=False):
     Return results on or before this
     [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
     """
-
-
-_StatusReservedKeywords = TypedDict(
-    "_StatusReservedKeywords",
-    {
-        "in": List[Literal["active", "disabled", "canceled"]],
-    },
-    total=False,
-)
-
-
-class Status(_StatusReservedKeywords, total=False):
-    pass
