@@ -187,6 +187,7 @@ class TestCards:
             cursor="cursor",
             idempotency_key="x",
             limit=1,
+            status={"in": ["active"]},
         )
         assert_matches_type(SyncPage[Card], card, path=["response"])
 
@@ -420,6 +421,7 @@ class TestAsyncCards:
             cursor="cursor",
             idempotency_key="x",
             limit=1,
+            status={"in": ["active"]},
         )
         assert_matches_type(AsyncPage[Card], card, path=["response"])
 
