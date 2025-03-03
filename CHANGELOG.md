@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.201.0 (2025-03-03)
+
+Full Changelog: [v0.200.0...v0.201.0](https://github.com/Increase/increase-python/compare/v0.200.0...v0.201.0)
+
+### Features
+
+* **api:** api update ([#1003](https://github.com/Increase/increase-python/issues/1003)) ([fbf7fdb](https://github.com/Increase/increase-python/commit/fbf7fdb355be413902a52d4e2c58a2f8169005fb))
+
+
+### Chores
+
+* **internal:** remove unused http client options forwarding ([#1001](https://github.com/Increase/increase-python/issues/1001)) ([e2dd741](https://github.com/Increase/increase-python/commit/e2dd74105c3394df41a3cc1a1f300bb4992506df))
+
 ## 0.200.0 (2025-03-01)
 
 Full Changelog: [v0.199.0...v0.200.0](https://github.com/Increase/increase-python/compare/v0.199.0...v0.200.0)
