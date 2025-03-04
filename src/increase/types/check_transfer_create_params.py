@@ -69,12 +69,6 @@ class PhysicalCheckMailingAddress(TypedDict, total=False):
     line2: str
     """The second line of the address component of the check's destination address."""
 
-    name: str
-    """The name component of the check's destination address.
-
-    Defaults to the provided `recipient_name` parameter.
-    """
-
 
 class PhysicalCheckReturnAddress(TypedDict, total=False):
     city: Required[str]
