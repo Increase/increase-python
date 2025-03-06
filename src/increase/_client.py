@@ -77,7 +77,6 @@ from .resources import (
     inbound_wire_drawdown_requests,
     proof_of_authorization_requests,
     inbound_real_time_payments_transfers,
-    real_time_payments_request_for_payments,
     proof_of_authorization_request_submissions,
 )
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
@@ -162,9 +161,6 @@ class Increase(SyncAPIClient):
     intrafi_account_enrollments: intrafi_account_enrollments.IntrafiAccountEnrollmentsResource
     intrafi_balances: intrafi_balances.IntrafiBalancesResource
     intrafi_exclusions: intrafi_exclusions.IntrafiExclusionsResource
-    real_time_payments_request_for_payments: (
-        real_time_payments_request_for_payments.RealTimePaymentsRequestForPaymentsResource
-    )
     simulations: simulations.SimulationsResource
     with_raw_response: IncreaseWithRawResponse
     with_streaming_response: IncreaseWithStreamedResponse
@@ -315,9 +311,6 @@ class Increase(SyncAPIClient):
         self.intrafi_account_enrollments = intrafi_account_enrollments.IntrafiAccountEnrollmentsResource(self)
         self.intrafi_balances = intrafi_balances.IntrafiBalancesResource(self)
         self.intrafi_exclusions = intrafi_exclusions.IntrafiExclusionsResource(self)
-        self.real_time_payments_request_for_payments = (
-            real_time_payments_request_for_payments.RealTimePaymentsRequestForPaymentsResource(self)
-        )
         self.simulations = simulations.SimulationsResource(self)
         self.with_raw_response = IncreaseWithRawResponse(self)
         self.with_streaming_response = IncreaseWithStreamedResponse(self)
@@ -533,9 +526,6 @@ class AsyncIncrease(AsyncAPIClient):
     intrafi_account_enrollments: intrafi_account_enrollments.AsyncIntrafiAccountEnrollmentsResource
     intrafi_balances: intrafi_balances.AsyncIntrafiBalancesResource
     intrafi_exclusions: intrafi_exclusions.AsyncIntrafiExclusionsResource
-    real_time_payments_request_for_payments: (
-        real_time_payments_request_for_payments.AsyncRealTimePaymentsRequestForPaymentsResource
-    )
     simulations: simulations.AsyncSimulationsResource
     with_raw_response: AsyncIncreaseWithRawResponse
     with_streaming_response: AsyncIncreaseWithStreamedResponse
@@ -688,9 +678,6 @@ class AsyncIncrease(AsyncAPIClient):
         self.intrafi_account_enrollments = intrafi_account_enrollments.AsyncIntrafiAccountEnrollmentsResource(self)
         self.intrafi_balances = intrafi_balances.AsyncIntrafiBalancesResource(self)
         self.intrafi_exclusions = intrafi_exclusions.AsyncIntrafiExclusionsResource(self)
-        self.real_time_payments_request_for_payments = (
-            real_time_payments_request_for_payments.AsyncRealTimePaymentsRequestForPaymentsResource(self)
-        )
         self.simulations = simulations.AsyncSimulationsResource(self)
         self.with_raw_response = AsyncIncreaseWithRawResponse(self)
         self.with_streaming_response = AsyncIncreaseWithStreamedResponse(self)
@@ -959,11 +946,6 @@ class IncreaseWithRawResponse:
         )
         self.intrafi_balances = intrafi_balances.IntrafiBalancesResourceWithRawResponse(client.intrafi_balances)
         self.intrafi_exclusions = intrafi_exclusions.IntrafiExclusionsResourceWithRawResponse(client.intrafi_exclusions)
-        self.real_time_payments_request_for_payments = (
-            real_time_payments_request_for_payments.RealTimePaymentsRequestForPaymentsResourceWithRawResponse(
-                client.real_time_payments_request_for_payments
-            )
-        )
         self.simulations = simulations.SimulationsResourceWithRawResponse(client.simulations)
 
 
@@ -1091,11 +1073,6 @@ class AsyncIncreaseWithRawResponse:
         self.intrafi_exclusions = intrafi_exclusions.AsyncIntrafiExclusionsResourceWithRawResponse(
             client.intrafi_exclusions
         )
-        self.real_time_payments_request_for_payments = (
-            real_time_payments_request_for_payments.AsyncRealTimePaymentsRequestForPaymentsResourceWithRawResponse(
-                client.real_time_payments_request_for_payments
-            )
-        )
         self.simulations = simulations.AsyncSimulationsResourceWithRawResponse(client.simulations)
 
 
@@ -1222,11 +1199,6 @@ class IncreaseWithStreamedResponse:
         self.intrafi_balances = intrafi_balances.IntrafiBalancesResourceWithStreamingResponse(client.intrafi_balances)
         self.intrafi_exclusions = intrafi_exclusions.IntrafiExclusionsResourceWithStreamingResponse(
             client.intrafi_exclusions
-        )
-        self.real_time_payments_request_for_payments = (
-            real_time_payments_request_for_payments.RealTimePaymentsRequestForPaymentsResourceWithStreamingResponse(
-                client.real_time_payments_request_for_payments
-            )
         )
         self.simulations = simulations.SimulationsResourceWithStreamingResponse(client.simulations)
 
@@ -1358,9 +1330,6 @@ class AsyncIncreaseWithStreamedResponse:
         )
         self.intrafi_exclusions = intrafi_exclusions.AsyncIntrafiExclusionsResourceWithStreamingResponse(
             client.intrafi_exclusions
-        )
-        self.real_time_payments_request_for_payments = real_time_payments_request_for_payments.AsyncRealTimePaymentsRequestForPaymentsResourceWithStreamingResponse(
-            client.real_time_payments_request_for_payments
         )
         self.simulations = simulations.AsyncSimulationsResourceWithStreamingResponse(client.simulations)
 

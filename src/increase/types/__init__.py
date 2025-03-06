@@ -151,9 +151,6 @@ from .entity_archive_beneficial_owner_params import (
 from .intrafi_account_enrollment_list_params import (
     IntrafiAccountEnrollmentListParams as IntrafiAccountEnrollmentListParams,
 )
-from .real_time_payments_request_for_payment import (
-    RealTimePaymentsRequestForPayment as RealTimePaymentsRequestForPayment,
-)
 from .real_time_payments_transfer_list_params import (
     RealTimePaymentsTransferListParams as RealTimePaymentsTransferListParams,
 )
@@ -180,12 +177,6 @@ from .entity_update_beneficial_owner_address_params import (
 )
 from .inbound_real_time_payments_transfer_list_params import (
     InboundRealTimePaymentsTransferListParams as InboundRealTimePaymentsTransferListParams,
-)
-from .real_time_payments_request_for_payment_list_params import (
-    RealTimePaymentsRequestForPaymentListParams as RealTimePaymentsRequestForPaymentListParams,
-)
-from .real_time_payments_request_for_payment_create_params import (
-    RealTimePaymentsRequestForPaymentCreateParams as RealTimePaymentsRequestForPaymentCreateParams,
 )
 from .proof_of_authorization_request_submission_list_params import (
     ProofOfAuthorizationRequestSubmissionListParams as ProofOfAuthorizationRequestSubmissionListParams,
