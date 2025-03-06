@@ -64,6 +64,7 @@ from .programs import (
     ProgramsResourceWithStreamingResponse,
     AsyncProgramsResourceWithStreamingResponse,
 )
+from .webhooks import Webhooks, AsyncWebhooks
 from .documents import (
     DocumentsResource,
     AsyncDocumentsResource,
@@ -536,6 +537,8 @@ __all__ = [
     "AsyncInboundACHTransfersResourceWithRawResponse",
     "InboundACHTransfersResourceWithStreamingResponse",
     "AsyncInboundACHTransfersResourceWithStreamingResponse",
+    "Webhooks",
+    "AsyncWebhooks",
     "WireTransfersResource",
     "AsyncWireTransfersResource",
     "WireTransfersResourceWithRawResponse",

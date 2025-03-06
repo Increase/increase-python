@@ -1,5 +1,1804 @@
 # Changelog
 
+## 0.203.0 (2025-03-04)
+
+Full Changelog: [v0.202.0...v0.203.0](https://github.com/Increase/increase-python/compare/v0.202.0...v0.203.0)
+
+### Features
+
+* **api:** api update ([#1008](https://github.com/Increase/increase-python/issues/1008)) ([7631ad2](https://github.com/Increase/increase-python/commit/7631ad24981d11fda220363286ff7dfbba74e300))
+
+## 0.202.0 (2025-03-04)
+
+Full Changelog: [v0.201.0...v0.202.0](https://github.com/Increase/increase-python/compare/v0.201.0...v0.202.0)
+
+### Features
+
+* **api:** api update ([#1005](https://github.com/Increase/increase-python/issues/1005)) ([3e7403e](https://github.com/Increase/increase-python/commit/3e7403ecdaa9f019e4e32f2f8b98bfceb6c00951))
+
+## 0.201.0 (2025-03-03)
+
+Full Changelog: [v0.200.0...v0.201.0](https://github.com/Increase/increase-python/compare/v0.200.0...v0.201.0)
+
+### Features
+
+* **api:** api update ([#1003](https://github.com/Increase/increase-python/issues/1003)) ([fbf7fdb](https://github.com/Increase/increase-python/commit/fbf7fdb355be413902a52d4e2c58a2f8169005fb))
+
+
+### Chores
+
+* **internal:** remove unused http client options forwarding ([#1001](https://github.com/Increase/increase-python/issues/1001)) ([e2dd741](https://github.com/Increase/increase-python/commit/e2dd74105c3394df41a3cc1a1f300bb4992506df))
+
+## 0.200.0 (2025-03-01)
+
+Full Changelog: [v0.199.0...v0.200.0](https://github.com/Increase/increase-python/compare/v0.199.0...v0.200.0)
+
+### Features
+
+* **api:** api update ([#998](https://github.com/Increase/increase-python/issues/998)) ([078074e](https://github.com/Increase/increase-python/commit/078074e7457cd643e562615e1e9d8c14a1ff03df))
+
+## 0.199.0 (2025-03-01)
+
+Full Changelog: [v0.198.0...v0.199.0](https://github.com/Increase/increase-python/compare/v0.198.0...v0.199.0)
+
+### Features
+
+* **api:** api update ([#995](https://github.com/Increase/increase-python/issues/995)) ([55f3816](https://github.com/Increase/increase-python/commit/55f38166ff2d50e726ed17dff2b3e1f83cb61bc9))
+
+## 0.198.0 (2025-03-01)
+
+Full Changelog: [v0.197.0...v0.198.0](https://github.com/Increase/increase-python/compare/v0.197.0...v0.198.0)
+
+### Features
+
+* **api:** api update ([#992](https://github.com/Increase/increase-python/issues/992)) ([f4bb58b](https://github.com/Increase/increase-python/commit/f4bb58b419a80fef7973feecd10463f033413ce1))
+
+## 0.197.0 (2025-02-28)
+
+Full Changelog: [v0.196.0...v0.197.0](https://github.com/Increase/increase-python/compare/v0.196.0...v0.197.0)
+
+### Features
+
+* **api:** api update ([#990](https://github.com/Increase/increase-python/issues/990)) ([e938254](https://github.com/Increase/increase-python/commit/e93825436cdcaebc3df000dc932dbe7a6e3f2221))
+
+
+### Chores
+
+* **docs:** update client docstring ([#989](https://github.com/Increase/increase-python/issues/989)) ([4cdb976](https://github.com/Increase/increase-python/commit/4cdb97608cb2b0ea3a803e3d387fa0c67bf73594))
+
+
+### Documentation
+
+* update URLs from stainlessapi.com to stainless.com ([#987](https://github.com/Increase/increase-python/issues/987)) ([2e77ad2](https://github.com/Increase/increase-python/commit/2e77ad270e3eebe335d631e69c5e156e64af859c))
+
+## 0.196.0 (2025-02-26)
+
+Full Changelog: [v0.195.0...v0.196.0](https://github.com/Increase/increase-python/compare/v0.195.0...v0.196.0)
+
+### Features
+
+* **api:** api update ([#985](https://github.com/Increase/increase-python/issues/985)) ([81f6b10](https://github.com/Increase/increase-python/commit/81f6b105c54e0c4819f2b73796d4c9732f0eff78))
+
+
+### Chores
+
+* **internal:** properly set __pydantic_private__ ([#983](https://github.com/Increase/increase-python/issues/983)) ([205e301](https://github.com/Increase/increase-python/commit/205e301b786c31f8d1e3bdfdfcbe7b396f53c743))
+
+## 0.195.0 (2025-02-24)
+
+Full Changelog: [v0.194.0...v0.195.0](https://github.com/Increase/increase-python/compare/v0.194.0...v0.195.0)
+
+### Features
+
+* **api:** api update ([#980](https://github.com/Increase/increase-python/issues/980)) ([327dd31](https://github.com/Increase/increase-python/commit/327dd314e50476aa9a7852375d73deed9da790be))
+
+## 0.194.0 (2025-02-22)
+
+Full Changelog: [v0.193.0...v0.194.0](https://github.com/Increase/increase-python/compare/v0.193.0...v0.194.0)
+
+### Features
+
+* **api:** api update ([#978](https://github.com/Increase/increase-python/issues/978)) ([ffd13d5](https://github.com/Increase/increase-python/commit/ffd13d503079c732557dee600cd10b33406fdf2f))
+
+
+### Chores
+
+* **internal:** fix devcontainers setup ([#976](https://github.com/Increase/increase-python/issues/976)) ([25451ad](https://github.com/Increase/increase-python/commit/25451ad3e978daeae53904fe2d0b6eca69f9f1d2))
+
+## 0.193.0 (2025-02-20)
+
+Full Changelog: [v0.192.0...v0.193.0](https://github.com/Increase/increase-python/compare/v0.192.0...v0.193.0)
+
+### Features
+
+* **client:** allow passing `NotGiven` for body ([#974](https://github.com/Increase/increase-python/issues/974)) ([6328c5b](https://github.com/Increase/increase-python/commit/6328c5b61634cc45f3e5a00f162649283b098dc1))
+
+
+### Bug Fixes
+
+* **client:** mark some request bodies as optional ([6328c5b](https://github.com/Increase/increase-python/commit/6328c5b61634cc45f3e5a00f162649283b098dc1))
+
+
+### Chores
+
+* **internal:** codegen related update ([#972](https://github.com/Increase/increase-python/issues/972)) ([381d705](https://github.com/Increase/increase-python/commit/381d705f5abedb48d6c06a9414d584d7eeb2a437))
+
+## 0.192.0 (2025-02-19)
+
+Full Changelog: [v0.191.0...v0.192.0](https://github.com/Increase/increase-python/compare/v0.191.0...v0.192.0)
+
+### Features
+
+* **api:** api update ([#969](https://github.com/Increase/increase-python/issues/969)) ([bb5a401](https://github.com/Increase/increase-python/commit/bb5a40124caa8c29873de8ae861d2e9c15a6e395))
+
+## 0.191.0 (2025-02-12)
+
+Full Changelog: [v0.190.0...v0.191.0](https://github.com/Increase/increase-python/compare/v0.190.0...v0.191.0)
+
+### Features
+
+* **api:** api update ([#967](https://github.com/Increase/increase-python/issues/967)) ([d451149](https://github.com/Increase/increase-python/commit/d451149b25fbc96abe741b37fa53660e2580d0d3))
+
+
+### Chores
+
+* **internal:** update client tests ([#965](https://github.com/Increase/increase-python/issues/965)) ([90021f2](https://github.com/Increase/increase-python/commit/90021f217d112066dc15d0291ba9d6e300de2cf3))
+
+## 0.190.0 (2025-02-11)
+
+Full Changelog: [v0.189.0...v0.190.0](https://github.com/Increase/increase-python/compare/v0.189.0...v0.190.0)
+
+### Features
+
+* **api:** api update ([#962](https://github.com/Increase/increase-python/issues/962)) ([d686a64](https://github.com/Increase/increase-python/commit/d686a64e80c2648a5a2ce460a98fcbab632a2214))
+
+## 0.189.0 (2025-02-10)
+
+Full Changelog: [v0.188.0...v0.189.0](https://github.com/Increase/increase-python/compare/v0.188.0...v0.189.0)
+
+### Features
+
+* **api:** api update ([#959](https://github.com/Increase/increase-python/issues/959)) ([af6e73f](https://github.com/Increase/increase-python/commit/af6e73f2670ff3bf3b7bb07ecac7c325ef6f2f2c))
+
+## 0.188.0 (2025-02-07)
+
+Full Changelog: [v0.187.0...v0.188.0](https://github.com/Increase/increase-python/compare/v0.187.0...v0.188.0)
+
+### Features
+
+* **api:** api update ([#956](https://github.com/Increase/increase-python/issues/956)) ([256d107](https://github.com/Increase/increase-python/commit/256d1075464dace95b926dc88f93864ffab19efe))
+* **api:** api update ([#957](https://github.com/Increase/increase-python/issues/957)) ([a8dfd3d](https://github.com/Increase/increase-python/commit/a8dfd3d326b715980f58ff983dd322082262bce5))
+* **client:** send `X-Stainless-Read-Timeout` header ([#952](https://github.com/Increase/increase-python/issues/952)) ([56c1cba](https://github.com/Increase/increase-python/commit/56c1cbac74b219e2a82d4c4088f6caae31fee502))
+
+
+### Chores
+
+* **internal:** fix type traversing dictionary params ([#954](https://github.com/Increase/increase-python/issues/954)) ([e0cc599](https://github.com/Increase/increase-python/commit/e0cc599129b55a5826bb3b61baab5c9973aee63f))
+* **internal:** minor type handling changes ([#955](https://github.com/Increase/increase-python/issues/955)) ([11f8788](https://github.com/Increase/increase-python/commit/11f87883da72091548389e386fa26203f6928199))
+
+## 0.187.0 (2025-02-04)
+
+Full Changelog: [v0.186.0...v0.187.0](https://github.com/Increase/increase-python/compare/v0.186.0...v0.187.0)
+
+### Features
+
+* **api:** api update ([#949](https://github.com/Increase/increase-python/issues/949)) ([cb02b70](https://github.com/Increase/increase-python/commit/cb02b708ab3e039fa38a48480f5da851a73e36aa))
+
+## 0.186.0 (2025-02-03)
+
+Full Changelog: [v0.185.0...v0.186.0](https://github.com/Increase/increase-python/compare/v0.185.0...v0.186.0)
+
+### Features
+
+* **api:** api update ([#947](https://github.com/Increase/increase-python/issues/947)) ([ebc6366](https://github.com/Increase/increase-python/commit/ebc6366684c351e67a475b06b896b1eb6fa1cdbc))
+
+
+### Chores
+
+* **internal:** bummp ruff dependency ([#946](https://github.com/Increase/increase-python/issues/946)) ([05366ec](https://github.com/Increase/increase-python/commit/05366ec5dd9db014cad46d13038886b51a114ae7))
+* **internal:** change default timeout to an int ([#944](https://github.com/Increase/increase-python/issues/944)) ([6b0d00d](https://github.com/Increase/increase-python/commit/6b0d00da37b507b8d5b95ebe971a8eaa59629792))
+
+## 0.185.0 (2025-01-31)
+
+Full Changelog: [v0.184.0...v0.185.0](https://github.com/Increase/increase-python/compare/v0.184.0...v0.185.0)
+
+### Features
+
+* **api:** api update ([#941](https://github.com/Increase/increase-python/issues/941)) ([4c8a190](https://github.com/Increase/increase-python/commit/4c8a1903b7caee3fa8edf285415e7e95b914a4a1))
+
+## 0.184.0 (2025-01-31)
+
+Full Changelog: [v0.183.0...v0.184.0](https://github.com/Increase/increase-python/compare/v0.183.0...v0.184.0)
+
+### Features
+
+* **api:** api update ([#938](https://github.com/Increase/increase-python/issues/938)) ([3105b18](https://github.com/Increase/increase-python/commit/3105b18e5163f9adcf1ba9a6fad7da4e66679924))
+
+## 0.183.0 (2025-01-30)
+
+Full Changelog: [v0.182.0...v0.183.0](https://github.com/Increase/increase-python/compare/v0.182.0...v0.183.0)
+
+### Features
+
+* **api:** api update ([#935](https://github.com/Increase/increase-python/issues/935)) ([274426b](https://github.com/Increase/increase-python/commit/274426b1f2aa958f2fbd3b282275411512ede76a))
+
+## 0.182.0 (2025-01-30)
+
+Full Changelog: [v0.181.0...v0.182.0](https://github.com/Increase/increase-python/compare/v0.181.0...v0.182.0)
+
+### Features
+
+* **api:** api update ([#932](https://github.com/Increase/increase-python/issues/932)) ([d9f48c2](https://github.com/Increase/increase-python/commit/d9f48c227f107e0b979a3f5dee3f5f0f76f5f3c8))
+
+## 0.181.0 (2025-01-30)
+
+Full Changelog: [v0.180.0...v0.181.0](https://github.com/Increase/increase-python/compare/v0.180.0...v0.181.0)
+
+### Features
+
+* **api:** api update ([#929](https://github.com/Increase/increase-python/issues/929)) ([36f5948](https://github.com/Increase/increase-python/commit/36f594809e2114adcd7bcdf73a6a239266781560))
+
+## 0.180.0 (2025-01-27)
+
+Full Changelog: [v0.179.0...v0.180.0](https://github.com/Increase/increase-python/compare/v0.179.0...v0.180.0)
+
+### Features
+
+* **api:** api update ([#926](https://github.com/Increase/increase-python/issues/926)) ([a1a83b9](https://github.com/Increase/increase-python/commit/a1a83b93bbca68da844fde53b04f82fa2deb1347))
+
+## 0.179.0 (2025-01-27)
+
+Full Changelog: [v0.178.0...v0.179.0](https://github.com/Increase/increase-python/compare/v0.178.0...v0.179.0)
+
+### Features
+
+* **api:** api update ([#924](https://github.com/Increase/increase-python/issues/924)) ([6f7f95e](https://github.com/Increase/increase-python/commit/6f7f95e14a81eecd391db6cb8f24db5961e98ce9))
+
+
+### Chores
+
+* **internal:** minor formatting changes ([#922](https://github.com/Increase/increase-python/issues/922)) ([36c27fd](https://github.com/Increase/increase-python/commit/36c27fd1eaba8230c703f98f3c8b619ea5ce1b31))
+
+## 0.178.0 (2025-01-21)
+
+Full Changelog: [v0.177.1...v0.178.0](https://github.com/Increase/increase-python/compare/v0.177.1...v0.178.0)
+
+### Features
+
+* **api:** api update ([#920](https://github.com/Increase/increase-python/issues/920)) ([1d47b66](https://github.com/Increase/increase-python/commit/1d47b66ddc6f13615c23b2f07876c4f1c3f86a99))
+
+
+### Chores
+
+* **internal:** avoid pytest-asyncio deprecation warning ([#917](https://github.com/Increase/increase-python/issues/917)) ([5319a20](https://github.com/Increase/increase-python/commit/5319a205632cdf1de1ba7b63a05456e5589ee5c8))
+* **internal:** minor style changes ([#919](https://github.com/Increase/increase-python/issues/919)) ([1fc8a52](https://github.com/Increase/increase-python/commit/1fc8a52b940b4c60634574847aebc680c8330e57))
+
+## 0.177.1 (2025-01-20)
+
+Full Changelog: [v0.177.0...v0.177.1](https://github.com/Increase/increase-python/compare/v0.177.0...v0.177.1)
+
+### Bug Fixes
+
+* **tests:** make test_get_platform less flaky ([#915](https://github.com/Increase/increase-python/issues/915)) ([190d629](https://github.com/Increase/increase-python/commit/190d6297f458a6ef4087e0b2637f0b8755e0dd05))
+
+
+### Chores
+
+* **internal:** bump pyright dependency ([#912](https://github.com/Increase/increase-python/issues/912)) ([b855922](https://github.com/Increase/increase-python/commit/b85592231974a4b1de78c1169d7eaada609c6720))
+
+
+### Documentation
+
+* **raw responses:** fix duplicate `the` ([#914](https://github.com/Increase/increase-python/issues/914)) ([e0d35cb](https://github.com/Increase/increase-python/commit/e0d35cbc3cc25d522e4a33fa1a9aac79d48e9c07))
+
+## 0.177.0 (2025-01-14)
+
+Full Changelog: [v0.176.2...v0.177.0](https://github.com/Increase/increase-python/compare/v0.176.2...v0.177.0)
+
+### Features
+
+* **api:** api update ([#910](https://github.com/Increase/increase-python/issues/910)) ([5eec787](https://github.com/Increase/increase-python/commit/5eec787e3b83883554179aa5e038ca8e857bb9d3))
+
+
+### Chores
+
+* **internal:** update deps ([#908](https://github.com/Increase/increase-python/issues/908)) ([9131e2d](https://github.com/Increase/increase-python/commit/9131e2dfcbda437331aabc5f43a997efa6d8c705))
+
+## 0.176.2 (2025-01-10)
+
+Full Changelog: [v0.176.1...v0.176.2](https://github.com/Increase/increase-python/compare/v0.176.1...v0.176.2)
+
+### Bug Fixes
+
+* correctly handle deserialising `cls` fields ([#906](https://github.com/Increase/increase-python/issues/906)) ([38c9a6d](https://github.com/Increase/increase-python/commit/38c9a6df14ed001be40456a262a3a82633189bda))
+
+
+### Chores
+
+* **internal:** codegen related update ([#905](https://github.com/Increase/increase-python/issues/905)) ([297c7d7](https://github.com/Increase/increase-python/commit/297c7d736a1fe0924b3ff0688d6c9931e0d9dd58))
+
+
+### Documentation
+
+* fix typos ([#903](https://github.com/Increase/increase-python/issues/903)) ([260dd28](https://github.com/Increase/increase-python/commit/260dd2814749688c73811b96959b42cc7db859d0))
+
+## 0.176.1 (2025-01-07)
+
+Full Changelog: [v0.176.0...v0.176.1](https://github.com/Increase/increase-python/compare/v0.176.0...v0.176.1)
+
+### Bug Fixes
+
+* **client:** only call .close() when needed ([#901](https://github.com/Increase/increase-python/issues/901)) ([ddb9128](https://github.com/Increase/increase-python/commit/ddb912885847512f44f3e8a6469c74372f444d67))
+
+
+### Chores
+
+* add missing isclass check ([#898](https://github.com/Increase/increase-python/issues/898)) ([664358c](https://github.com/Increase/increase-python/commit/664358c615c460abbe5f7b886342cea8dc39748d))
+* **internal:** bump httpx dependency ([#900](https://github.com/Increase/increase-python/issues/900)) ([4922758](https://github.com/Increase/increase-python/commit/4922758971a874d0f4a802241126586bc86bf555))
+
+## 0.176.0 (2025-01-02)
+
+Full Changelog: [v0.175.0...v0.176.0](https://github.com/Increase/increase-python/compare/v0.175.0...v0.176.0)
+
+### Features
+
+* **api:** api update ([#895](https://github.com/Increase/increase-python/issues/895)) ([646f96e](https://github.com/Increase/increase-python/commit/646f96eec6e5f2a43cecad116610c02b49f6e2a2))
+
+## 0.175.0 (2025-01-01)
+
+Full Changelog: [v0.174.0...v0.175.0](https://github.com/Increase/increase-python/compare/v0.174.0...v0.175.0)
+
+### Features
+
+* **api:** api update ([#893](https://github.com/Increase/increase-python/issues/893)) ([24180cc](https://github.com/Increase/increase-python/commit/24180ccc1c1f71bcf4c53e14091bdaf87e6fc72f))
+
+
+### Chores
+
+* **internal:** codegen related update ([#891](https://github.com/Increase/increase-python/issues/891)) ([22f7702](https://github.com/Increase/increase-python/commit/22f770251e25834ad3b890b44cf5c34f0062408b))
+
+## 0.174.0 (2024-12-23)
+
+Full Changelog: [v0.173.0...v0.174.0](https://github.com/Increase/increase-python/compare/v0.173.0...v0.174.0)
+
+### Features
+
+* **api:** api update ([#888](https://github.com/Increase/increase-python/issues/888)) ([dec57fe](https://github.com/Increase/increase-python/commit/dec57fe28b60e2ad34af8ca1a2ea52887e095b1a))
+
+## 0.173.0 (2024-12-23)
+
+Full Changelog: [v0.172.0...v0.173.0](https://github.com/Increase/increase-python/compare/v0.172.0...v0.173.0)
+
+### Features
+
+* **api:** api update ([#885](https://github.com/Increase/increase-python/issues/885)) ([63efedb](https://github.com/Increase/increase-python/commit/63efedb5dcf1660a5724c5ce090905362026a2ad))
+
+## 0.172.0 (2024-12-23)
+
+Full Changelog: [v0.171.0...v0.172.0](https://github.com/Increase/increase-python/compare/v0.171.0...v0.172.0)
+
+### Features
+
+* **api:** api update ([#882](https://github.com/Increase/increase-python/issues/882)) ([271aa05](https://github.com/Increase/increase-python/commit/271aa059c9314c402911e3a54caecefb80f4a00a))
+
+## 0.171.0 (2024-12-20)
+
+Full Changelog: [v0.170.0...v0.171.0](https://github.com/Increase/increase-python/compare/v0.170.0...v0.171.0)
+
+### Features
+
+* **api:** api update ([#879](https://github.com/Increase/increase-python/issues/879)) ([772b85a](https://github.com/Increase/increase-python/commit/772b85a03e57649c08b380c1af23fb6dc78f5b96))
+
+## 0.170.0 (2024-12-20)
+
+Full Changelog: [v0.169.0...v0.170.0](https://github.com/Increase/increase-python/compare/v0.169.0...v0.170.0)
+
+### Features
+
+* **api:** api update ([#877](https://github.com/Increase/increase-python/issues/877)) ([3dae254](https://github.com/Increase/increase-python/commit/3dae254ec87ef969fa958805b31db1a7588f8571))
+
+
+### Chores
+
+* **internal:** fix some typos ([#876](https://github.com/Increase/increase-python/issues/876)) ([1e35645](https://github.com/Increase/increase-python/commit/1e356453f816e1f43516ae3bf010f4ad045881b1))
+
+
+### Documentation
+
+* **readme:** example snippet for client context manager ([#874](https://github.com/Increase/increase-python/issues/874)) ([271192d](https://github.com/Increase/increase-python/commit/271192dfafe6cb6df3d27b565a56e836b58bf2ca))
+
+## 0.169.0 (2024-12-15)
+
+Full Changelog: [v0.168.0...v0.169.0](https://github.com/Increase/increase-python/compare/v0.168.0...v0.169.0)
+
+### Features
+
+* **api:** api update ([#872](https://github.com/Increase/increase-python/issues/872)) ([eb06aec](https://github.com/Increase/increase-python/commit/eb06aecf9606831bd097092360925eb91b8c72bc))
+
+
+### Chores
+
+* **internal:** add support for TypeAliasType ([#869](https://github.com/Increase/increase-python/issues/869)) ([674c6f9](https://github.com/Increase/increase-python/commit/674c6f9d0af4d32e23deb75a7888f95e4d931d3a))
+* **internal:** bump pyright ([#867](https://github.com/Increase/increase-python/issues/867)) ([dddbd13](https://github.com/Increase/increase-python/commit/dddbd13d159a4e5a795f5ab74083f5dccca5195b))
+* **internal:** updated imports ([#870](https://github.com/Increase/increase-python/issues/870)) ([3d44da0](https://github.com/Increase/increase-python/commit/3d44da0c95f8c612866c2c2f9758098e7670ff4b))
+
+## 0.168.0 (2024-12-12)
+
+Full Changelog: [v0.167.0...v0.168.0](https://github.com/Increase/increase-python/compare/v0.167.0...v0.168.0)
+
+### Features
+
+* **api:** api update ([#864](https://github.com/Increase/increase-python/issues/864)) ([c27ce52](https://github.com/Increase/increase-python/commit/c27ce52316a68734d75d4d8ddaa384be3678206a))
+
+## 0.167.0 (2024-12-09)
+
+Full Changelog: [v0.166.0...v0.167.0](https://github.com/Increase/increase-python/compare/v0.166.0...v0.167.0)
+
+### Features
+
+* **api:** api update ([#862](https://github.com/Increase/increase-python/issues/862)) ([16f7ea2](https://github.com/Increase/increase-python/commit/16f7ea203f2a33d3b9f40a7d2a71c535c78d2536))
+
+
+### Chores
+
+* **internal:** bump pydantic dependency ([#859](https://github.com/Increase/increase-python/issues/859)) ([9671540](https://github.com/Increase/increase-python/commit/96715402bb54430a3e37a000f9fa3a092e310e9e))
+
+
+### Documentation
+
+* **readme:** fix http client proxies example ([#861](https://github.com/Increase/increase-python/issues/861)) ([426b32c](https://github.com/Increase/increase-python/commit/426b32c2e60f38f123d05d40a3a8ec5db4fc0aee))
+
+## 0.166.0 (2024-12-04)
+
+Full Changelog: [v0.165.1...v0.166.0](https://github.com/Increase/increase-python/compare/v0.165.1...v0.166.0)
+
+### Features
+
+* **api:** api update ([#857](https://github.com/Increase/increase-python/issues/857)) ([d57f9f2](https://github.com/Increase/increase-python/commit/d57f9f2c3df5e7fd69cba167d259d535989bddd5))
+
+
+### Chores
+
+* **internal:** bump pyright ([#854](https://github.com/Increase/increase-python/issues/854)) ([9864983](https://github.com/Increase/increase-python/commit/9864983dea855e3020afd63004a52cb0fc8c8697))
+* make the `Omit` type public ([#856](https://github.com/Increase/increase-python/issues/856)) ([b194c78](https://github.com/Increase/increase-python/commit/b194c784d2209ea7b5e7473a33c9d72f78a836b3))
+
+## 0.165.1 (2024-11-28)
+
+Full Changelog: [v0.165.0...v0.165.1](https://github.com/Increase/increase-python/compare/v0.165.0...v0.165.1)
+
+### Bug Fixes
+
+* **client:** compat with new httpx 0.28.0 release ([#852](https://github.com/Increase/increase-python/issues/852)) ([28d4060](https://github.com/Increase/increase-python/commit/28d40602c4ee66322c57d44422514e113b86be10))
+
+
+### Chores
+
+* **internal:** codegen related update ([#851](https://github.com/Increase/increase-python/issues/851)) ([8613769](https://github.com/Increase/increase-python/commit/86137695ae922047e266fc8e4250354f1d9af9c5))
+* **internal:** fix compat model_dump method when warnings are passed ([#847](https://github.com/Increase/increase-python/issues/847)) ([c3addcd](https://github.com/Increase/increase-python/commit/c3addcd6b36e6420247c985a65edbb91b863bd5b))
+* remove now unused `cached-property` dep ([#850](https://github.com/Increase/increase-python/issues/850)) ([8bb79b8](https://github.com/Increase/increase-python/commit/8bb79b8606840f609a6b86fe3442802ab398c4d8))
+
+
+### Documentation
+
+* add info log level to readme ([#849](https://github.com/Increase/increase-python/issues/849)) ([3f7c52a](https://github.com/Increase/increase-python/commit/3f7c52a47537d6b750d373fa1d8c604526458d1e))
+
+## 0.165.0 (2024-11-22)
+
+Full Changelog: [v0.164.0...v0.165.0](https://github.com/Increase/increase-python/compare/v0.164.0...v0.165.0)
+
+### Features
+
+* **api:** api update ([#845](https://github.com/Increase/increase-python/issues/845)) ([0185e52](https://github.com/Increase/increase-python/commit/0185e52a90d5996888fbb55d4723d716cd78f053))
+
+
+### Chores
+
+* rebuild project due to codegen change ([#842](https://github.com/Increase/increase-python/issues/842)) ([b8debd2](https://github.com/Increase/increase-python/commit/b8debd216824e08c18fe7c4fb723bd29cdb22182))
+* rebuild project due to codegen change ([#844](https://github.com/Increase/increase-python/issues/844)) ([444f544](https://github.com/Increase/increase-python/commit/444f54490e20b448fd2ff4347bded5f14f09a5f1))
+
+## 0.164.0 (2024-11-14)
+
+Full Changelog: [v0.163.0...v0.164.0](https://github.com/Increase/increase-python/compare/v0.163.0...v0.164.0)
+
+### Features
+
+* **api:** api update ([#839](https://github.com/Increase/increase-python/issues/839)) ([921c644](https://github.com/Increase/increase-python/commit/921c6443f40f0b0ed90ffd54b789f9aa0bdd2f5f))
+
+## 0.163.0 (2024-11-14)
+
+Full Changelog: [v0.162.0...v0.163.0](https://github.com/Increase/increase-python/compare/v0.162.0...v0.163.0)
+
+### Features
+
+* **api:** api update ([#836](https://github.com/Increase/increase-python/issues/836)) ([1e75802](https://github.com/Increase/increase-python/commit/1e75802248f306092936d15a69dbb0f0d5050b93))
+
+## 0.162.0 (2024-11-14)
+
+Full Changelog: [v0.161.0...v0.162.0](https://github.com/Increase/increase-python/compare/v0.161.0...v0.162.0)
+
+### Features
+
+* **api:** api update ([#834](https://github.com/Increase/increase-python/issues/834)) ([f93ac81](https://github.com/Increase/increase-python/commit/f93ac81523e64bdc97c0bd5e03b2088bee69e4c1))
+
+
+### Chores
+
+* rebuild project due to codegen change ([#832](https://github.com/Increase/increase-python/issues/832)) ([e4b5291](https://github.com/Increase/increase-python/commit/e4b52917dbf8bdc764693a8bd426b8b8ce34be50))
+
+## 0.161.0 (2024-11-13)
+
+Full Changelog: [v0.160.0...v0.161.0](https://github.com/Increase/increase-python/compare/v0.160.0...v0.161.0)
+
+### Features
+
+* **api:** api update ([#829](https://github.com/Increase/increase-python/issues/829)) ([25b1e0e](https://github.com/Increase/increase-python/commit/25b1e0e9891df0d6f45e947c9e3ddf9b90c2d8e6))
+
+## 0.160.0 (2024-11-13)
+
+Full Changelog: [v0.159.0...v0.160.0](https://github.com/Increase/increase-python/compare/v0.159.0...v0.160.0)
+
+### Features
+
+* **api:** api update ([#826](https://github.com/Increase/increase-python/issues/826)) ([3430675](https://github.com/Increase/increase-python/commit/343067545de71886d8f0e73cbe6bd50f1daf0f9c))
+
+## 0.159.0 (2024-11-13)
+
+Full Changelog: [v0.158.0...v0.159.0](https://github.com/Increase/increase-python/compare/v0.158.0...v0.159.0)
+
+### Features
+
+* **api:** api update ([#823](https://github.com/Increase/increase-python/issues/823)) ([f455b5f](https://github.com/Increase/increase-python/commit/f455b5f23acd2f396f348b26734b9d8b994c7028))
+
+## 0.158.0 (2024-11-13)
+
+Full Changelog: [v0.157.0...v0.158.0](https://github.com/Increase/increase-python/compare/v0.157.0...v0.158.0)
+
+### Features
+
+* **api:** api update ([#820](https://github.com/Increase/increase-python/issues/820)) ([6dea3f0](https://github.com/Increase/increase-python/commit/6dea3f05278e2fac58dee194384fd367c82c3e69))
+
+## 0.157.0 (2024-11-13)
+
+Full Changelog: [v0.156.0...v0.157.0](https://github.com/Increase/increase-python/compare/v0.156.0...v0.157.0)
+
+### Features
+
+* **api:** api update ([#817](https://github.com/Increase/increase-python/issues/817)) ([5fd50fc](https://github.com/Increase/increase-python/commit/5fd50fcbc4fdabdeddbd6b5a5328951108a61955))
+
+## 0.156.0 (2024-11-13)
+
+Full Changelog: [v0.155.0...v0.156.0](https://github.com/Increase/increase-python/compare/v0.155.0...v0.156.0)
+
+### Features
+
+* **api:** api update ([#814](https://github.com/Increase/increase-python/issues/814)) ([fea3d8a](https://github.com/Increase/increase-python/commit/fea3d8ae7604c9ef23fb902470f1c89fee0ac28d))
+
+## 0.155.0 (2024-11-13)
+
+Full Changelog: [v0.154.0...v0.155.0](https://github.com/Increase/increase-python/compare/v0.154.0...v0.155.0)
+
+### Features
+
+* **api:** api update ([#812](https://github.com/Increase/increase-python/issues/812)) ([22cb186](https://github.com/Increase/increase-python/commit/22cb186cbf4f7bfa5fe52ada13c63fd4f4c021ad))
+
+
+### Chores
+
+* rebuild project due to codegen change ([#809](https://github.com/Increase/increase-python/issues/809)) ([1c68d06](https://github.com/Increase/increase-python/commit/1c68d065d05fe5dd4b70748eebd6da7ac6160067))
+* rebuild project due to codegen change ([#811](https://github.com/Increase/increase-python/issues/811)) ([8935013](https://github.com/Increase/increase-python/commit/893501345954f3cddf62c67640b7e1e546ddf904))
+
+## 0.154.0 (2024-11-11)
+
+Full Changelog: [v0.153.0...v0.154.0](https://github.com/Increase/increase-python/compare/v0.153.0...v0.154.0)
+
+### Features
+
+* **api:** api update ([#806](https://github.com/Increase/increase-python/issues/806)) ([61f99e2](https://github.com/Increase/increase-python/commit/61f99e2e55980f64f55996a7f6ff9c15a76884a0))
+
+## 0.153.0 (2024-11-09)
+
+Full Changelog: [v0.152.0...v0.153.0](https://github.com/Increase/increase-python/compare/v0.152.0...v0.153.0)
+
+### Features
+
+* **api:** api update ([#803](https://github.com/Increase/increase-python/issues/803)) ([27a0ddd](https://github.com/Increase/increase-python/commit/27a0ddd84da9fbfc787c13a04c112575cc784c42))
+
+## 0.152.0 (2024-11-08)
+
+Full Changelog: [v0.151.0...v0.152.0](https://github.com/Increase/increase-python/compare/v0.151.0...v0.152.0)
+
+### Features
+
+* **api:** api update ([#800](https://github.com/Increase/increase-python/issues/800)) ([e3669d4](https://github.com/Increase/increase-python/commit/e3669d4c5ea7fb1057e3fcaecac9e3e0fcbe6045))
+
+## 0.151.0 (2024-11-08)
+
+Full Changelog: [v0.150.0...v0.151.0](https://github.com/Increase/increase-python/compare/v0.150.0...v0.151.0)
+
+### Features
+
+* **api:** api update ([#798](https://github.com/Increase/increase-python/issues/798)) ([a79225b](https://github.com/Increase/increase-python/commit/a79225b0650339a5ba4549523051f600769e43aa))
+
+
+### Chores
+
+* rebuild project due to codegen change ([#795](https://github.com/Increase/increase-python/issues/795)) ([4638890](https://github.com/Increase/increase-python/commit/4638890429ad2615ccc1d55de2819cf20c4b0444))
+* rebuild project due to codegen change ([#797](https://github.com/Increase/increase-python/issues/797)) ([81d3a25](https://github.com/Increase/increase-python/commit/81d3a2569114e85a2ffef79d7f09484c483cb9ce))
+
+## 0.150.0 (2024-11-05)
+
+Full Changelog: [v0.149.0...v0.150.0](https://github.com/Increase/increase-python/compare/v0.149.0...v0.150.0)
+
+### Features
+
+* **api:** api update ([#792](https://github.com/Increase/increase-python/issues/792)) ([cf7bb25](https://github.com/Increase/increase-python/commit/cf7bb251a6f3d0b3544b377d8208b32a558296f3))
+
+## 0.149.0 (2024-11-04)
+
+Full Changelog: [v0.148.0...v0.149.0](https://github.com/Increase/increase-python/compare/v0.148.0...v0.149.0)
+
+### Features
+
+* **api:** api update ([#789](https://github.com/Increase/increase-python/issues/789)) ([e8ddc23](https://github.com/Increase/increase-python/commit/e8ddc23b0e1804c81ebec791eb0b124f0206cfae))
+
+## 0.148.0 (2024-10-31)
+
+Full Changelog: [v0.147.0...v0.148.0](https://github.com/Increase/increase-python/compare/v0.147.0...v0.148.0)
+
+### Features
+
+* **api:** api update ([#786](https://github.com/Increase/increase-python/issues/786)) ([81e5a12](https://github.com/Increase/increase-python/commit/81e5a12e8c233d4aa802fca92752f48358dee95e))
+
+## 0.147.0 (2024-10-22)
+
+Full Changelog: [v0.146.0...v0.147.0](https://github.com/Increase/increase-python/compare/v0.146.0...v0.147.0)
+
+### Features
+
+* **api:** api update ([#782](https://github.com/Increase/increase-python/issues/782)) ([4d95286](https://github.com/Increase/increase-python/commit/4d952864791854fbbc919462b44f93735fd91b2d))
+
+## 0.146.0 (2024-10-22)
+
+Full Changelog: [v0.145.0...v0.146.0](https://github.com/Increase/increase-python/compare/v0.145.0...v0.146.0)
+
+### Features
+
+* **api:** api update ([#779](https://github.com/Increase/increase-python/issues/779)) ([7d8962d](https://github.com/Increase/increase-python/commit/7d8962d409e5449d90e165e8e461f06a07da5c1e))
+
+## 0.145.0 (2024-10-21)
+
+Full Changelog: [v0.144.0...v0.145.0](https://github.com/Increase/increase-python/compare/v0.144.0...v0.145.0)
+
+### Features
+
+* **api:** api update ([#776](https://github.com/Increase/increase-python/issues/776)) ([63172df](https://github.com/Increase/increase-python/commit/63172df6b1850fade4a97d020ce2946576b706ed))
+
+## 0.144.0 (2024-10-17)
+
+Full Changelog: [v0.143.0...v0.144.0](https://github.com/Increase/increase-python/compare/v0.143.0...v0.144.0)
+
+### Features
+
+* **api:** api update ([#773](https://github.com/Increase/increase-python/issues/773)) ([07d4ac2](https://github.com/Increase/increase-python/commit/07d4ac29bc5a67d6f6410067b5d2f09583d450b7))
+
+## 0.143.0 (2024-10-17)
+
+Full Changelog: [v0.142.0...v0.143.0](https://github.com/Increase/increase-python/compare/v0.142.0...v0.143.0)
+
+### Features
+
+* **api:** api update ([#770](https://github.com/Increase/increase-python/issues/770)) ([5238c0d](https://github.com/Increase/increase-python/commit/5238c0d9f3673e6b9854180cb9ca97e3cfecbfb4))
+
+## 0.142.0 (2024-10-17)
+
+Full Changelog: [v0.141.0...v0.142.0](https://github.com/Increase/increase-python/compare/v0.141.0...v0.142.0)
+
+### Features
+
+* **api:** api update ([#767](https://github.com/Increase/increase-python/issues/767)) ([2bdb4cc](https://github.com/Increase/increase-python/commit/2bdb4cc8d39f61e09c875b7ea9ede6fe682b2193))
+
+## 0.141.0 (2024-10-16)
+
+Full Changelog: [v0.140.0...v0.141.0](https://github.com/Increase/increase-python/compare/v0.140.0...v0.141.0)
+
+### Features
+
+* **api:** api update ([#764](https://github.com/Increase/increase-python/issues/764)) ([e3c00b6](https://github.com/Increase/increase-python/commit/e3c00b6cac3ae6426636b264babfdc2038da7007))
+
+## 0.140.0 (2024-10-16)
+
+Full Changelog: [v0.139.0...v0.140.0](https://github.com/Increase/increase-python/compare/v0.139.0...v0.140.0)
+
+### Features
+
+* **api:** api update ([#761](https://github.com/Increase/increase-python/issues/761)) ([6c13563](https://github.com/Increase/increase-python/commit/6c1356354677dbcf6144d496e08675054493a9dd))
+
+## 0.139.0 (2024-10-16)
+
+Full Changelog: [v0.138.0...v0.139.0](https://github.com/Increase/increase-python/compare/v0.138.0...v0.139.0)
+
+### Features
+
+* **api:** api update ([#758](https://github.com/Increase/increase-python/issues/758)) ([7d5b922](https://github.com/Increase/increase-python/commit/7d5b922bd376b6be12de5a87cdfa6256f6f112e0))
+
+## 0.138.0 (2024-10-16)
+
+Full Changelog: [v0.137.0...v0.138.0](https://github.com/Increase/increase-python/compare/v0.137.0...v0.138.0)
+
+### Features
+
+* **api:** api update ([#755](https://github.com/Increase/increase-python/issues/755)) ([d585105](https://github.com/Increase/increase-python/commit/d58510523f093c12bb46c7bb16dbd5755384ac13))
+
+## 0.137.0 (2024-10-15)
+
+Full Changelog: [v0.136.0...v0.137.0](https://github.com/Increase/increase-python/compare/v0.136.0...v0.137.0)
+
+### Features
+
+* **api:** api update ([#752](https://github.com/Increase/increase-python/issues/752)) ([5eb56f1](https://github.com/Increase/increase-python/commit/5eb56f137a7af05c4e5d510e71b96511f32521df))
+
+## 0.136.0 (2024-10-14)
+
+Full Changelog: [v0.135.0...v0.136.0](https://github.com/Increase/increase-python/compare/v0.135.0...v0.136.0)
+
+### Features
+
+* **api:** api update ([#749](https://github.com/Increase/increase-python/issues/749)) ([c3ec193](https://github.com/Increase/increase-python/commit/c3ec1937e9d36f7be6d5c5c27c7114fdf294519b))
+
+## 0.135.0 (2024-10-11)
+
+Full Changelog: [v0.134.0...v0.135.0](https://github.com/Increase/increase-python/compare/v0.134.0...v0.135.0)
+
+### Features
+
+* **api:** api update ([#746](https://github.com/Increase/increase-python/issues/746)) ([b0990f6](https://github.com/Increase/increase-python/commit/b0990f6255761f8db62cedba50565444fb27dde8))
+
+## 0.134.0 (2024-10-11)
+
+Full Changelog: [v0.133.0...v0.134.0](https://github.com/Increase/increase-python/compare/v0.133.0...v0.134.0)
+
+### Features
+
+* **api:** api update ([#743](https://github.com/Increase/increase-python/issues/743)) ([27027e4](https://github.com/Increase/increase-python/commit/27027e444583ae2fca409894cb241881bdc48511))
+
+## 0.133.0 (2024-10-10)
+
+Full Changelog: [v0.132.0...v0.133.0](https://github.com/Increase/increase-python/compare/v0.132.0...v0.133.0)
+
+### Features
+
+* **api:** api update ([#740](https://github.com/Increase/increase-python/issues/740)) ([70688f0](https://github.com/Increase/increase-python/commit/70688f0a8f21f461d902d4a5e13de2fee2ed5a7f))
+
+## 0.132.0 (2024-10-10)
+
+Full Changelog: [v0.131.0...v0.132.0](https://github.com/Increase/increase-python/compare/v0.131.0...v0.132.0)
+
+### Features
+
+* **api:** api update ([#737](https://github.com/Increase/increase-python/issues/737)) ([f6e1c39](https://github.com/Increase/increase-python/commit/f6e1c399a119318cf13acf1cf7f24f2db757c61d))
+
+## 0.131.0 (2024-10-10)
+
+Full Changelog: [v0.130.0...v0.131.0](https://github.com/Increase/increase-python/compare/v0.130.0...v0.131.0)
+
+### Features
+
+* **api:** api update ([#734](https://github.com/Increase/increase-python/issues/734)) ([db183ae](https://github.com/Increase/increase-python/commit/db183aecc0b35df0bcc48d46cb4b4d1753c0b00a))
+
+## 0.130.0 (2024-10-07)
+
+Full Changelog: [v0.129.0...v0.130.0](https://github.com/Increase/increase-python/compare/v0.129.0...v0.130.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#731](https://github.com/Increase/increase-python/issues/731)) ([59a19bc](https://github.com/Increase/increase-python/commit/59a19bc103d4f9d19ddd720e27911f6f1f5b78e2))
+
+## 0.129.0 (2024-10-07)
+
+Full Changelog: [v0.128.1...v0.129.0](https://github.com/Increase/increase-python/compare/v0.128.1...v0.129.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#729](https://github.com/Increase/increase-python/issues/729)) ([35f2a4e](https://github.com/Increase/increase-python/commit/35f2a4ea5f63d623014f9bc634385630604fecb9))
+
+
+### Chores
+
+* add repr to PageInfo class ([#727](https://github.com/Increase/increase-python/issues/727)) ([f141c3e](https://github.com/Increase/increase-python/commit/f141c3e10cae79172a38ff083e19b8abda5db270))
+
+## 0.128.1 (2024-10-07)
+
+Full Changelog: [v0.128.0...v0.128.1](https://github.com/Increase/increase-python/compare/v0.128.0...v0.128.1)
+
+### Bug Fixes
+
+* **client:** avoid OverflowError with very large retry counts ([#725](https://github.com/Increase/increase-python/issues/725)) ([4d37a1b](https://github.com/Increase/increase-python/commit/4d37a1bc80d4c05f3cdea9a472607fd99e213b59))
+
+
+### Chores
+
+* **internal:** add support for parsing bool response content ([#723](https://github.com/Increase/increase-python/issues/723)) ([714ec91](https://github.com/Increase/increase-python/commit/714ec91f8d0ac10cd35eb38f9c894c87e26478fc))
+
+## 0.128.0 (2024-10-07)
+
+Full Changelog: [v0.127.0...v0.128.0](https://github.com/Increase/increase-python/compare/v0.127.0...v0.128.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#720](https://github.com/Increase/increase-python/issues/720)) ([6d7a4a9](https://github.com/Increase/increase-python/commit/6d7a4a9f2ddba5e852993c372ba4d2836d4f018c))
+
+## 0.127.0 (2024-10-03)
+
+Full Changelog: [v0.126.0...v0.127.0](https://github.com/Increase/increase-python/compare/v0.126.0...v0.127.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#717](https://github.com/Increase/increase-python/issues/717)) ([e9e2925](https://github.com/Increase/increase-python/commit/e9e29257b7275282d3fe35b4d97df8596823f0f9))
+
+## 0.126.0 (2024-10-03)
+
+Full Changelog: [v0.125.0...v0.126.0](https://github.com/Increase/increase-python/compare/v0.125.0...v0.126.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#714](https://github.com/Increase/increase-python/issues/714)) ([274507e](https://github.com/Increase/increase-python/commit/274507e9bd579a817469b4d4dae93634886fdfb0))
+
+## 0.125.0 (2024-10-02)
+
+Full Changelog: [v0.124.0...v0.125.0](https://github.com/Increase/increase-python/compare/v0.124.0...v0.125.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#711](https://github.com/Increase/increase-python/issues/711)) ([7d23e4c](https://github.com/Increase/increase-python/commit/7d23e4ca6e57400f71eb7e6d46ba848e18538dd1))
+
+## 0.124.0 (2024-10-02)
+
+Full Changelog: [v0.123.0...v0.124.0](https://github.com/Increase/increase-python/compare/v0.123.0...v0.124.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#709](https://github.com/Increase/increase-python/issues/709)) ([e20ef78](https://github.com/Increase/increase-python/commit/e20ef788d7511995a82647c2971b3c6860ff71e6))
+
+
+### Chores
+
+* **internal:** codegen related update ([#706](https://github.com/Increase/increase-python/issues/706)) ([db11055](https://github.com/Increase/increase-python/commit/db11055694eecf3faac085eca5a1665e599c4f16))
+* **internal:** codegen related update ([#708](https://github.com/Increase/increase-python/issues/708)) ([384542e](https://github.com/Increase/increase-python/commit/384542e519ea76db6e930854108254908f1f09f9))
+
+## 0.123.0 (2024-10-02)
+
+Full Changelog: [v0.122.0...v0.123.0](https://github.com/Increase/increase-python/compare/v0.122.0...v0.123.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#704](https://github.com/Increase/increase-python/issues/704)) ([2f0d7ae](https://github.com/Increase/increase-python/commit/2f0d7aea05b92277d12ec53e909c9c1309e8064d))
+
+
+### Chores
+
+* **internal:** codegen related update ([#701](https://github.com/Increase/increase-python/issues/701)) ([8430214](https://github.com/Increase/increase-python/commit/8430214ebb6c3d2c28adabd2c5b23e1cc45f247e))
+
+## 0.122.0 (2024-09-26)
+
+Full Changelog: [v0.121.0...v0.122.0](https://github.com/Increase/increase-python/compare/v0.121.0...v0.122.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#696](https://github.com/Increase/increase-python/issues/696)) ([e894aa5](https://github.com/Increase/increase-python/commit/e894aa5db49e26af5a843099e5f42c04a9119824))
+
+## 0.121.0 (2024-09-25)
+
+Full Changelog: [v0.120.0...v0.121.0](https://github.com/Increase/increase-python/compare/v0.120.0...v0.121.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#693](https://github.com/Increase/increase-python/issues/693)) ([8697fe2](https://github.com/Increase/increase-python/commit/8697fe277328e814c25d7b5d64e84f2c16bcfcad))
+
+## 0.120.0 (2024-09-24)
+
+Full Changelog: [v0.119.0...v0.120.0](https://github.com/Increase/increase-python/compare/v0.119.0...v0.120.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#691](https://github.com/Increase/increase-python/issues/691)) ([7f87401](https://github.com/Increase/increase-python/commit/7f874018b46ae9114c5404be24b875284a735685))
+
+
+### Chores
+
+* **internal:** temporary docs change ([#689](https://github.com/Increase/increase-python/issues/689)) ([5531431](https://github.com/Increase/increase-python/commit/5531431c8f8a21ce6d7bcbfb71e95e29d8ecc840))
+
+## 0.119.0 (2024-09-23)
+
+Full Changelog: [v0.118.0...v0.119.0](https://github.com/Increase/increase-python/compare/v0.118.0...v0.119.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#687](https://github.com/Increase/increase-python/issues/687)) ([d81f195](https://github.com/Increase/increase-python/commit/d81f195f0d31d21d46a74637823700dbce8f0fde))
+
+
+### Chores
+
+* **internal:** update pydantic v1 compat helpers ([#685](https://github.com/Increase/increase-python/issues/685)) ([7c76386](https://github.com/Increase/increase-python/commit/7c763860535b70f115931f500a4df57d116751f3))
+
+## 0.118.0 (2024-09-23)
+
+Full Changelog: [v0.117.1...v0.118.0](https://github.com/Increase/increase-python/compare/v0.117.1...v0.118.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#683](https://github.com/Increase/increase-python/issues/683)) ([75f01f4](https://github.com/Increase/increase-python/commit/75f01f42575af8214d06925845bc8064855c8e8c))
+* **client:** send retry count header ([#681](https://github.com/Increase/increase-python/issues/681)) ([bf4af4b](https://github.com/Increase/increase-python/commit/bf4af4bf0f33a36be3b7894484f640a0cfc2570c))
+
+## 0.117.1 (2024-09-19)
+
+Full Changelog: [v0.117.0...v0.117.1](https://github.com/Increase/increase-python/compare/v0.117.0...v0.117.1)
+
+### Bug Fixes
+
+* **client:** handle domains with underscores ([#678](https://github.com/Increase/increase-python/issues/678)) ([1db9a23](https://github.com/Increase/increase-python/commit/1db9a2340da8fa6ee270f95a20efb043c4861249))
+
+## 0.117.0 (2024-09-19)
+
+Full Changelog: [v0.116.0...v0.117.0](https://github.com/Increase/increase-python/compare/v0.116.0...v0.117.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#675](https://github.com/Increase/increase-python/issues/675)) ([1702ff5](https://github.com/Increase/increase-python/commit/1702ff533440628512e1878d65fef2d2c47fb84f))
+
+## 0.116.0 (2024-09-18)
+
+Full Changelog: [v0.115.0...v0.116.0](https://github.com/Increase/increase-python/compare/v0.115.0...v0.116.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#673](https://github.com/Increase/increase-python/issues/673)) ([6952b17](https://github.com/Increase/increase-python/commit/6952b17a25220df853f030bc82db98aac35ad9ba))
+
+
+### Chores
+
+* **internal:** bump pyright / mypy version ([#672](https://github.com/Increase/increase-python/issues/672)) ([96445fd](https://github.com/Increase/increase-python/commit/96445fd7b298245eb38256b257dc8d8f4bd23738))
+* **internal:** bump ruff ([#671](https://github.com/Increase/increase-python/issues/671)) ([5f2bed4](https://github.com/Increase/increase-python/commit/5f2bed40a26bfe1c93de2751267f19de7cf31703))
+
+
+### Documentation
+
+* update CONTRIBUTING.md ([#669](https://github.com/Increase/increase-python/issues/669)) ([3a59208](https://github.com/Increase/increase-python/commit/3a5920808e849976af6ba0da18f762cd0a350367))
+
+## 0.115.0 (2024-09-17)
+
+Full Changelog: [v0.114.0...v0.115.0](https://github.com/Increase/increase-python/compare/v0.114.0...v0.115.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#666](https://github.com/Increase/increase-python/issues/666)) ([93916b0](https://github.com/Increase/increase-python/commit/93916b09bd37f9e1f35a206b710375b52849a5de))
+
+## 0.114.0 (2024-09-09)
+
+Full Changelog: [v0.113.0...v0.114.0](https://github.com/Increase/increase-python/compare/v0.113.0...v0.114.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#663](https://github.com/Increase/increase-python/issues/663)) ([5067c7d](https://github.com/Increase/increase-python/commit/5067c7d9170bbec6d176440edd26a8739173ca5b))
+
+## 0.113.0 (2024-09-09)
+
+Full Changelog: [v0.112.0...v0.113.0](https://github.com/Increase/increase-python/compare/v0.112.0...v0.113.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#660](https://github.com/Increase/increase-python/issues/660)) ([a00c2e4](https://github.com/Increase/increase-python/commit/a00c2e4235e3bb1c4a6a7188665d6f1980972389))
+
+## 0.112.0 (2024-09-09)
+
+Full Changelog: [v0.111.0...v0.112.0](https://github.com/Increase/increase-python/compare/v0.111.0...v0.112.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#657](https://github.com/Increase/increase-python/issues/657)) ([ed36ac5](https://github.com/Increase/increase-python/commit/ed36ac552e2363debd411bbfe323228a189ce6a4))
+
+## 0.111.0 (2024-09-09)
+
+Full Changelog: [v0.110.0...v0.111.0](https://github.com/Increase/increase-python/compare/v0.110.0...v0.111.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#654](https://github.com/Increase/increase-python/issues/654)) ([e6babd9](https://github.com/Increase/increase-python/commit/e6babd99423d7ba633c2dc9a7fe771e0779a3269))
+
+## 0.110.0 (2024-09-09)
+
+Full Changelog: [v0.109.0...v0.110.0](https://github.com/Increase/increase-python/compare/v0.109.0...v0.110.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#651](https://github.com/Increase/increase-python/issues/651)) ([07fcd21](https://github.com/Increase/increase-python/commit/07fcd2166ef7de92cabb461d4e7b499fff209d45))
+
+## 0.109.0 (2024-09-09)
+
+Full Changelog: [v0.108.0...v0.109.0](https://github.com/Increase/increase-python/compare/v0.108.0...v0.109.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#648](https://github.com/Increase/increase-python/issues/648)) ([8fc2377](https://github.com/Increase/increase-python/commit/8fc2377a787b7241c07d6f559832bcbcdf6d86ff))
+
+## 0.108.0 (2024-09-06)
+
+Full Changelog: [v0.107.0...v0.108.0](https://github.com/Increase/increase-python/compare/v0.107.0...v0.108.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#645](https://github.com/Increase/increase-python/issues/645)) ([e169dab](https://github.com/Increase/increase-python/commit/e169dab089826d201a41125538d10856338c1091))
+
+## 0.107.0 (2024-09-06)
+
+Full Changelog: [v0.106.0...v0.107.0](https://github.com/Increase/increase-python/compare/v0.106.0...v0.107.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#642](https://github.com/Increase/increase-python/issues/642)) ([1c99129](https://github.com/Increase/increase-python/commit/1c9912902e2592fa22dba42874f948a4b41fa866))
+
+## 0.106.0 (2024-09-05)
+
+Full Changelog: [v0.105.0...v0.106.0](https://github.com/Increase/increase-python/compare/v0.105.0...v0.106.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#639](https://github.com/Increase/increase-python/issues/639)) ([4159de2](https://github.com/Increase/increase-python/commit/4159de2d47846f9fe1a4983229549dffd53681db))
+
+## 0.105.0 (2024-09-05)
+
+Full Changelog: [v0.104.0...v0.105.0](https://github.com/Increase/increase-python/compare/v0.104.0...v0.105.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#636](https://github.com/Increase/increase-python/issues/636)) ([e3219a2](https://github.com/Increase/increase-python/commit/e3219a2b06cf257956cc9f39793c9c80677fc507))
+
+## 0.104.0 (2024-09-05)
+
+Full Changelog: [v0.103.0...v0.104.0](https://github.com/Increase/increase-python/compare/v0.103.0...v0.104.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#634](https://github.com/Increase/increase-python/issues/634)) ([4d95e0b](https://github.com/Increase/increase-python/commit/4d95e0bf243ae1dd18847d06fab04746fc83c22b))
+
+
+### Chores
+
+* pyproject.toml formatting changes ([#632](https://github.com/Increase/increase-python/issues/632)) ([d6d74cb](https://github.com/Increase/increase-python/commit/d6d74cb295d3d97561f6c6362ac23e367ffcb863))
+
+## 0.103.0 (2024-09-04)
+
+Full Changelog: [v0.102.0...v0.103.0](https://github.com/Increase/increase-python/compare/v0.102.0...v0.103.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#629](https://github.com/Increase/increase-python/issues/629)) ([f4a639e](https://github.com/Increase/increase-python/commit/f4a639ebb4f5434f1369185347cf645203445ba6))
+* **api:** OpenAPI spec update via Stainless API ([#630](https://github.com/Increase/increase-python/issues/630)) ([dfcfac9](https://github.com/Increase/increase-python/commit/dfcfac9e8d11ee9a69e85b1af6941cb7bafde4a9))
+
+
+### Chores
+
+* fix repo names ([#628](https://github.com/Increase/increase-python/issues/628)) ([ab0f940](https://github.com/Increase/increase-python/commit/ab0f9402a41ce06b11738e88e8cbd49a70689bba))
+* **internal:** version bump ([#625](https://github.com/Increase/increase-python/issues/625)) ([2d12dab](https://github.com/Increase/increase-python/commit/2d12dab22ebf9e18aec8c205fc8c72fc079264bf))
+
+## 0.102.0 (2024-08-30)
+
+Full Changelog: [v0.101.0...v0.102.0](https://github.com/Increase/increase-python/compare/v0.101.0...v0.102.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#622](https://github.com/Increase/increase-python/issues/622)) ([f8ef7c3](https://github.com/Increase/increase-python/commit/f8ef7c3dd9ee8c246715f2c69d192004820f8f02))
+
+## 0.101.0 (2024-08-27)
+
+Full Changelog: [v0.100.0...v0.101.0](https://github.com/Increase/increase-python/compare/v0.100.0...v0.101.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#619](https://github.com/Increase/increase-python/issues/619)) ([4a2c548](https://github.com/Increase/increase-python/commit/4a2c54885e4d180fb2981144f8923661d0a3cff1))
+
+## 0.100.0 (2024-08-26)
+
+Full Changelog: [v0.99.0...v0.100.0](https://github.com/Increase/increase-python/compare/v0.99.0...v0.100.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#616](https://github.com/Increase/increase-python/issues/616)) ([a60d6a3](https://github.com/Increase/increase-python/commit/a60d6a37f0107cfccb2bfd08c0dab6a48adaa27d))
+
+## 0.99.0 (2024-08-26)
+
+Full Changelog: [v0.98.0...v0.99.0](https://github.com/Increase/increase-python/compare/v0.98.0...v0.99.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#614](https://github.com/Increase/increase-python/issues/614)) ([52f50cf](https://github.com/Increase/increase-python/commit/52f50cf1469d1c113f9283c3a60de6805746c630))
+
+
+### Chores
+
+* reorder properties ([#612](https://github.com/Increase/increase-python/issues/612)) ([00029ce](https://github.com/Increase/increase-python/commit/00029ce17ffc3592e2e68b69adf6747505d07645))
+
+## 0.98.0 (2024-08-21)
+
+Full Changelog: [v0.97.0...v0.98.0](https://github.com/Increase/increase-python/compare/v0.97.0...v0.98.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#609](https://github.com/Increase/increase-python/issues/609)) ([f393fe7](https://github.com/Increase/increase-python/commit/f393fe737549c54772ecd9bd18fee6f106061c26))
+
+## 0.97.0 (2024-08-21)
+
+Full Changelog: [v0.96.0...v0.97.0](https://github.com/Increase/increase-python/compare/v0.96.0...v0.97.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#605](https://github.com/Increase/increase-python/issues/605)) ([dd93d96](https://github.com/Increase/increase-python/commit/dd93d967bd089850f39d53994a0db12c18bc8c37))
+* **api:** OpenAPI spec update via Stainless API ([#607](https://github.com/Increase/increase-python/issues/607)) ([c2ced0d](https://github.com/Increase/increase-python/commit/c2ced0d023d5609b546ac0225fe32c943b30daff))
+
+## 0.96.0 (2024-08-20)
+
+Full Changelog: [v0.95.0...v0.96.0](https://github.com/Increase/increase-python/compare/v0.95.0...v0.96.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#602](https://github.com/Increase/increase-python/issues/602)) ([75fe35f](https://github.com/Increase/increase-python/commit/75fe35f2f9b59b92c587473513129fdbe1883a2d))
+* **api:** OpenAPI spec update via Stainless API ([#603](https://github.com/Increase/increase-python/issues/603)) ([5f50ffb](https://github.com/Increase/increase-python/commit/5f50ffbd80d9376808c5988c14a4bc852f8a91b3))
+
+
+### Chores
+
+* **ci:** also run pydantic v1 tests ([#600](https://github.com/Increase/increase-python/issues/600)) ([c0c038a](https://github.com/Increase/increase-python/commit/c0c038ac58fec9a89248a21cad8d670812d242ba))
+
+## 0.95.0 (2024-08-20)
+
+Full Changelog: [v0.94.0...v0.95.0](https://github.com/Increase/increase-python/compare/v0.94.0...v0.95.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#598](https://github.com/Increase/increase-python/issues/598)) ([d76954e](https://github.com/Increase/increase-python/commit/d76954e8c829792647261aee4cc6523271404fdb))
+
+
+### Chores
+
+* **client:** fix parsing union responses when non-json is returned ([#596](https://github.com/Increase/increase-python/issues/596)) ([efbcf43](https://github.com/Increase/increase-python/commit/efbcf43df2641c89feeca5efd7ececf4e7d3d24e))
+
+## 0.94.0 (2024-08-19)
+
+Full Changelog: [v0.93.0...v0.94.0](https://github.com/Increase/increase-python/compare/v0.93.0...v0.94.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#593](https://github.com/Increase/increase-python/issues/593)) ([0913a8f](https://github.com/Increase/increase-python/commit/0913a8fce577a214bb55344319f89f68d2288dba))
+
+## 0.93.0 (2024-08-19)
+
+Full Changelog: [v0.92.0...v0.93.0](https://github.com/Increase/increase-python/compare/v0.92.0...v0.93.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#590](https://github.com/Increase/increase-python/issues/590)) ([d0164de](https://github.com/Increase/increase-python/commit/d0164dec92fe260a9b262edd8ae34d009d68d7d7))
+
+## 0.92.0 (2024-08-19)
+
+Full Changelog: [v0.91.0...v0.92.0](https://github.com/Increase/increase-python/compare/v0.91.0...v0.92.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#587](https://github.com/Increase/increase-python/issues/587)) ([7e51303](https://github.com/Increase/increase-python/commit/7e51303219b62a3b438cc5719f09f1459be1b482))
+
+## 0.91.0 (2024-08-16)
+
+Full Changelog: [v0.90.0...v0.91.0](https://github.com/Increase/increase-python/compare/v0.90.0...v0.91.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#585](https://github.com/Increase/increase-python/issues/585)) ([16c9c45](https://github.com/Increase/increase-python/commit/16c9c4503fdff8fb82cf332a4e0eb0d9a11c127f))
+
+
+### Chores
+
+* **internal:** use different 32bit detection method ([#583](https://github.com/Increase/increase-python/issues/583)) ([e1c98ea](https://github.com/Increase/increase-python/commit/e1c98ea87111b911ff110ed76caab4a13d179db9))
+
+## 0.90.0 (2024-08-16)
+
+Full Changelog: [v0.89.0...v0.90.0](https://github.com/Increase/increase-python/compare/v0.89.0...v0.90.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#580](https://github.com/Increase/increase-python/issues/580)) ([862f1a0](https://github.com/Increase/increase-python/commit/862f1a0599473576466bc4f7b3f4bc59f0210052))
+
+## 0.89.0 (2024-08-15)
+
+Full Changelog: [v0.88.0...v0.89.0](https://github.com/Increase/increase-python/compare/v0.88.0...v0.89.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#577](https://github.com/Increase/increase-python/issues/577)) ([87cd5ac](https://github.com/Increase/increase-python/commit/87cd5ac045ac0b0ec3076f4902c5aecdc6cd79ec))
+
+## 0.88.0 (2024-08-15)
+
+Full Changelog: [v0.87.0...v0.88.0](https://github.com/Increase/increase-python/compare/v0.87.0...v0.88.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#574](https://github.com/Increase/increase-python/issues/574)) ([f214c41](https://github.com/Increase/increase-python/commit/f214c41e1ea90746b7b93dc76523063fc3f36c9f))
+
+## 0.87.0 (2024-08-14)
+
+Full Changelog: [v0.86.0...v0.87.0](https://github.com/Increase/increase-python/compare/v0.86.0...v0.87.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#571](https://github.com/Increase/increase-python/issues/571)) ([12da1e4](https://github.com/Increase/increase-python/commit/12da1e45ba614ce889d7666e14a8d0819551d734))
+
+## 0.86.0 (2024-08-13)
+
+Full Changelog: [v0.85.0...v0.86.0](https://github.com/Increase/increase-python/compare/v0.85.0...v0.86.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#568](https://github.com/Increase/increase-python/issues/568)) ([913aaa1](https://github.com/Increase/increase-python/commit/913aaa13f6516f8aba225f946eab016f350a6301))
+
+## 0.85.0 (2024-08-13)
+
+Full Changelog: [v0.84.0...v0.85.0](https://github.com/Increase/increase-python/compare/v0.84.0...v0.85.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#566](https://github.com/Increase/increase-python/issues/566)) ([62e70a2](https://github.com/Increase/increase-python/commit/62e70a29e6e680f94677fd34e6267cbae612cf9e))
+
+
+### Chores
+
+* **examples:** minor formatting changes ([#564](https://github.com/Increase/increase-python/issues/564)) ([6e94345](https://github.com/Increase/increase-python/commit/6e943457db1f0f01922143656e71826404dc2328))
+
+## 0.84.0 (2024-08-13)
+
+Full Changelog: [v0.83.0...v0.84.0](https://github.com/Increase/increase-python/compare/v0.83.0...v0.84.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#562](https://github.com/Increase/increase-python/issues/562)) ([e7fc3da](https://github.com/Increase/increase-python/commit/e7fc3da029142e75264fecaf61f82d5bacd529b1))
+
+
+### Chores
+
+* **ci:** bump prism mock server version ([#559](https://github.com/Increase/increase-python/issues/559)) ([e65322f](https://github.com/Increase/increase-python/commit/e65322f69b0328ae5ac21735e917ba4bd0f9fb33))
+* **internal:** ensure package is importable in lint cmd ([#561](https://github.com/Increase/increase-python/issues/561)) ([8b7bd02](https://github.com/Increase/increase-python/commit/8b7bd023ed55ab7c83d9ba34d970a14c407c3678))
+
+## 0.83.0 (2024-08-09)
+
+Full Changelog: [v0.82.0...v0.83.0](https://github.com/Increase/increase-python/compare/v0.82.0...v0.83.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#556](https://github.com/Increase/increase-python/issues/556)) ([b7eae11](https://github.com/Increase/increase-python/commit/b7eae115eb546394eaa274ef337d539c41b358ea))
+
+## 0.82.0 (2024-08-08)
+
+Full Changelog: [v0.81.0...v0.82.0](https://github.com/Increase/increase-python/compare/v0.81.0...v0.82.0)
+
+### Features
+
+* **api:** api updates ([#548](https://github.com/Increase/increase-python/issues/548)) ([ac6e38a](https://github.com/Increase/increase-python/commit/ac6e38ae8c82a54b45a0ad11be66cfb4f7368892))
+* **api:** OpenAPI spec update via Stainless API ([#553](https://github.com/Increase/increase-python/issues/553)) ([b7b2a1e](https://github.com/Increase/increase-python/commit/b7b2a1e4d8ecc6d1de09d55a033cdca15598f833))
+* **api:** OpenAPI spec update via Stainless API ([#554](https://github.com/Increase/increase-python/issues/554)) ([7b87e2b](https://github.com/Increase/increase-python/commit/7b87e2be4768e0afc9ccc749cfe2880dff4c7602))
+
+
+### Chores
+
+* **internal:** add type construction helper ([#546](https://github.com/Increase/increase-python/issues/546)) ([c97137c](https://github.com/Increase/increase-python/commit/c97137c880e565298f6fdc16f9031556fa5fb50d))
+* **internal:** capitalize github org name ([#549](https://github.com/Increase/increase-python/issues/549)) ([fb004fe](https://github.com/Increase/increase-python/commit/fb004fe31b95f49a4ba5540b42b1eced757b393e))
+* **internal:** codegen related update ([#550](https://github.com/Increase/increase-python/issues/550)) ([fe6df52](https://github.com/Increase/increase-python/commit/fe6df5227b44741e28765a37e782762c58a2050c))
+* **internal:** remove deprecated ruff config ([#552](https://github.com/Increase/increase-python/issues/552)) ([d150801](https://github.com/Increase/increase-python/commit/d1508013d7adcc2f89cf1ddedac26d25edb81dd6))
+* **internal:** update pydantic compat helper function ([#551](https://github.com/Increase/increase-python/issues/551)) ([5cc4100](https://github.com/Increase/increase-python/commit/5cc4100a1aea68896f051785e9602b45998e7e4a))
+
+## 0.81.0 (2024-08-01)
+
+Full Changelog: [v0.80.0...v0.81.0](https://github.com/Increase/increase-python/compare/v0.80.0...v0.81.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#543](https://github.com/Increase/increase-python/issues/543)) ([59ccc3f](https://github.com/Increase/increase-python/commit/59ccc3f831f969d5f5907681502b51e20f8290d8))
+
+## 0.80.0 (2024-07-26)
+
+Full Changelog: [v0.79.0...v0.80.0](https://github.com/Increase/increase-python/compare/v0.79.0...v0.80.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#540](https://github.com/Increase/increase-python/issues/540)) ([7a4a150](https://github.com/Increase/increase-python/commit/7a4a1506f0e5644038d91cc9adecd1cf897ecd4f))
+
+## 0.79.0 (2024-07-25)
+
+Full Changelog: [v0.78.0...v0.79.0](https://github.com/Increase/increase-python/compare/v0.78.0...v0.79.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#537](https://github.com/Increase/increase-python/issues/537)) ([f7a6c56](https://github.com/Increase/increase-python/commit/f7a6c5676fd96df34be1715deba2468ea55f7b66))
+
+## 0.78.0 (2024-07-25)
+
+Full Changelog: [v0.77.0...v0.78.0](https://github.com/Increase/increase-python/compare/v0.77.0...v0.78.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#534](https://github.com/Increase/increase-python/issues/534)) ([ddf0b74](https://github.com/Increase/increase-python/commit/ddf0b74ac4f77b5e5752fc9fc5cf27667eafe313))
+
+## 0.77.0 (2024-07-25)
+
+Full Changelog: [v0.76.0...v0.77.0](https://github.com/Increase/increase-python/compare/v0.76.0...v0.77.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#531](https://github.com/Increase/increase-python/issues/531)) ([187f532](https://github.com/Increase/increase-python/commit/187f532e2b0ae5257b00e1570024527aa6785751))
+
+## 0.76.0 (2024-07-25)
+
+Full Changelog: [v0.75.0...v0.76.0](https://github.com/Increase/increase-python/compare/v0.75.0...v0.76.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#528](https://github.com/Increase/increase-python/issues/528)) ([f4822b8](https://github.com/Increase/increase-python/commit/f4822b80363e081c4fbfca06285cd4b25c79c896))
+
+## 0.75.0 (2024-07-23)
+
+Full Changelog: [v0.74.0...v0.75.0](https://github.com/Increase/increase-python/compare/v0.74.0...v0.75.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#526](https://github.com/Increase/increase-python/issues/526)) ([babdbbf](https://github.com/Increase/increase-python/commit/babdbbf7d9dd56f4f97c2d04e103619dde8107b6))
+
+
+### Chores
+
+* **tests:** update prism version ([#525](https://github.com/Increase/increase-python/issues/525)) ([57a985b](https://github.com/Increase/increase-python/commit/57a985bfca6775e2c3507e6e649f5bafe0a3b746))
+
+
+### Documentation
+
+* **readme:** fix example snippet imports ([#523](https://github.com/Increase/increase-python/issues/523)) ([8707697](https://github.com/Increase/increase-python/commit/8707697e3e673ea4a7016b59c81159cef20d8c7a))
+
+## 0.74.0 (2024-07-23)
+
+Full Changelog: [v0.73.0...v0.74.0](https://github.com/Increase/increase-python/compare/v0.73.0...v0.74.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#521](https://github.com/Increase/increase-python/issues/521)) ([8835a95](https://github.com/Increase/increase-python/commit/8835a95f4a77e1941f3179327859182571aaef8a))
+
+## 0.73.0 (2024-07-18)
+
+Full Changelog: [v0.72.0...v0.73.0](https://github.com/Increase/increase-python/compare/v0.72.0...v0.73.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#517](https://github.com/Increase/increase-python/issues/517)) ([b7d8e7b](https://github.com/Increase/increase-python/commit/b7d8e7b8c036536ad7e9c1a5e09ff24fe17dc571))
+* **api:** OpenAPI spec update via Stainless API ([#519](https://github.com/Increase/increase-python/issues/519)) ([41cf0fd](https://github.com/Increase/increase-python/commit/41cf0fd367dcd6e0945461867b448a491b724bf0))
+
+## 0.72.0 (2024-07-15)
+
+Full Changelog: [v0.71.0...v0.72.0](https://github.com/Increase/increase-python/compare/v0.71.0...v0.72.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#515](https://github.com/Increase/increase-python/issues/515)) ([64a9c74](https://github.com/Increase/increase-python/commit/64a9c7499126d630fc3af4d3341209ea706bfc99))
+
+
+### Chores
+
+* fixes ([2d25caf](https://github.com/Increase/increase-python/commit/2d25caf4b1ae7db9af67e43e18f4fd7d8840c843))
+* **internal:** update OpenAPI spec ([73e2951](https://github.com/Increase/increase-python/commit/73e295102224aafa4770e04c2986e04b1c3b5ab8))
+* **internal:** version bump ([#508](https://github.com/Increase/increase-python/issues/508)) ([ac9aef6](https://github.com/Increase/increase-python/commit/ac9aef63aa090766f4bda5c022adb6bb596f8a8d))
+* sync changes ([#512](https://github.com/Increase/increase-python/issues/512)) ([1838f80](https://github.com/Increase/increase-python/commit/1838f8061aa95f3419abdcd1db324e287bf1c574))
+* sync changes ([#514](https://github.com/Increase/increase-python/issues/514)) ([6dbc057](https://github.com/Increase/increase-python/commit/6dbc057e32a6c23c7fe6c91950093eb477ca7a4d))
+
+## 0.71.0 (2024-07-14)
+
+Full Changelog: [v0.70.0...v0.71.0](https://github.com/Increase/increase-python/compare/v0.70.0...v0.71.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#501](https://github.com/Increase/increase-python/issues/501)) ([84cb3f7](https://github.com/Increase/increase-python/commit/84cb3f723c5b33b539f54321febd871cd69a0a05))
+* **api:** OpenAPI spec update via Stainless API ([#503](https://github.com/Increase/increase-python/issues/503)) ([acefe6d](https://github.com/Increase/increase-python/commit/acefe6db327a77f94ef1b1230ca2d500c1531246))
+
+
+### Chores
+
+* **ci:** also run workflows for PRs targeting `next` ([#498](https://github.com/Increase/increase-python/issues/498)) ([5969495](https://github.com/Increase/increase-python/commit/59694952b523823729f6f8a3b0b73cf44e17433a))
+* **internal:** add helper function ([#496](https://github.com/Increase/increase-python/issues/496)) ([bb4516d](https://github.com/Increase/increase-python/commit/bb4516dfa3fa6c0988e078181a237d51e754ebcd))
+* **internal:** minor import restructuring ([#499](https://github.com/Increase/increase-python/issues/499)) ([25e8279](https://github.com/Increase/increase-python/commit/25e8279c0c4f12faf742e04b383ea76acaa7cdc5))
+* **internal:** minor request options handling changes ([#493](https://github.com/Increase/increase-python/issues/493)) ([88c7dfb](https://github.com/Increase/increase-python/commit/88c7dfb64d0ee8720bc3ad9d0d43a83a12aad885))
+* **internal:** update mypy ([#497](https://github.com/Increase/increase-python/issues/497)) ([0cbc9a2](https://github.com/Increase/increase-python/commit/0cbc9a2ff9b860976d1310863814b4186bba7437))
+
+
+### Documentation
+
+* **examples:** use named params more ([#500](https://github.com/Increase/increase-python/issues/500)) ([79f3c33](https://github.com/Increase/increase-python/commit/79f3c331ee5f42f3ae9e2824fe6a7e04b233531b))
+
+## 0.70.0 (2024-07-04)
+
+Full Changelog: [v0.69.1...v0.70.0](https://github.com/Increase/increase-python/compare/v0.69.1...v0.70.0)
+
+### Features
+
+* **api:** add property 'receiver identification number' to 'originator company entry description' ([#492](https://github.com/Increase/increase-python/issues/492)) ([3d4251a](https://github.com/Increase/increase-python/commit/3d4251aa3993095fac3428242f5e25cf047d9ebc))
+
+
+### Chores
+
+* **ci:** update rye to v0.35.0 ([#490](https://github.com/Increase/increase-python/issues/490)) ([75f534a](https://github.com/Increase/increase-python/commit/75f534a83a50e4013cbf104e9f0e08ed0104db96))
+
+## 0.69.1 (2024-07-02)
+
+Full Changelog: [v0.69.0...v0.69.1](https://github.com/Increase/increase-python/compare/v0.69.0...v0.69.1)
+
+### Bug Fixes
+
+* **client:** always respect content-type multipart/form-data if provided ([#488](https://github.com/Increase/increase-python/issues/488)) ([bbca671](https://github.com/Increase/increase-python/commit/bbca6719abcd4069383f4eabb21ac353e22e66c1))
+
+## 0.69.0 (2024-07-02)
+
+Full Changelog: [v0.68.0...v0.69.0](https://github.com/Increase/increase-python/compare/v0.68.0...v0.69.0)
+
+### Features
+
+* **api:** add deposit return property to inbound check deposit model ([#487](https://github.com/Increase/increase-python/issues/487)) ([2e23caf](https://github.com/Increase/increase-python/commit/2e23caffc78e2b17e86fc299bd1747d4a95fc183))
+
+
+### Chores
+
+* **internal:** add helper method for constructing `BaseModel`s ([#485](https://github.com/Increase/increase-python/issues/485)) ([2304960](https://github.com/Increase/increase-python/commit/23049601aec08c6da72fe3e6560d162817564f20))
+
+## 0.68.0 (2024-07-01)
+
+Full Changelog: [v0.67.0...v0.68.0](https://github.com/Increase/increase-python/compare/v0.67.0...v0.68.0)
+
+### Features
+
+* **api:** add method to simulate international ACH transfers ([#484](https://github.com/Increase/increase-python/issues/484)) ([6f95cb5](https://github.com/Increase/increase-python/commit/6f95cb5bf6d600879e78f92e80f800078f8022af))
+
+
+### Chores
+
+* **internal:** add rich as a dev dependency ([#482](https://github.com/Increase/increase-python/issues/482)) ([ebd373e](https://github.com/Increase/increase-python/commit/ebd373e694940a9fe9defd49fd5a7a112befd536))
+
+## 0.67.0 (2024-06-28)
+
+Full Changelog: [v0.66.4...v0.67.0](https://github.com/Increase/increase-python/compare/v0.66.4...v0.67.0)
+
+### Features
+
+* **api:** updates ([#481](https://github.com/Increase/increase-python/issues/481)) ([e5eb90e](https://github.com/Increase/increase-python/commit/e5eb90e678aad4e312088f01d2681fc5b621b04c))
+
+
+### Chores
+
+* **deps:** bump anyio to v4.4.0 ([#477](https://github.com/Increase/increase-python/issues/477)) ([56b114d](https://github.com/Increase/increase-python/commit/56b114d00c07db9d75ec43f5c43c7b986cb07966))
+* gitignore test server logs ([#480](https://github.com/Increase/increase-python/issues/480)) ([131baa2](https://github.com/Increase/increase-python/commit/131baa20540f9786ca4b38dfd850730fb64f3d94))
+* **internal:** add reflection helper function ([#479](https://github.com/Increase/increase-python/issues/479)) ([d57bd9c](https://github.com/Increase/increase-python/commit/d57bd9c30e0321ab1a50b7d6d22a8923e6eceee9))
+
+## 0.66.4 (2024-06-27)
+
+Full Changelog: [v0.66.3...v0.66.4](https://github.com/Increase/increase-python/compare/v0.66.3...v0.66.4)
+
+### Bug Fixes
+
+* **build:** include more files in sdist builds ([#475](https://github.com/Increase/increase-python/issues/475)) ([cafa0f9](https://github.com/Increase/increase-python/commit/cafa0f94a22c2265ad866cc23f1e046f76938618))
+
+## 0.66.3 (2024-06-26)
+
+Full Changelog: [v0.66.2...v0.66.3](https://github.com/Increase/increase-python/compare/v0.66.2...v0.66.3)
+
+### Bug Fixes
+
+* temporarily patch upstream version to fix broken release flow ([#473](https://github.com/Increase/increase-python/issues/473)) ([46426eb](https://github.com/Increase/increase-python/commit/46426eb8ecb9b771b8ba30671a78cae2dbb884b0))
+
+## 0.66.2 (2024-06-25)
+
+Full Changelog: [v0.66.1...v0.66.2](https://github.com/Increase/increase-python/compare/v0.66.1...v0.66.2)
+
+### Bug Fixes
+
+* **docs:** fix link to advanced python httpx docs ([#471](https://github.com/Increase/increase-python/issues/471)) ([bea586d](https://github.com/Increase/increase-python/commit/bea586d543c67477073a53c9fc874a230c778c0a))
+
+## 0.66.1 (2024-06-19)
+
+Full Changelog: [v0.66.0...v0.66.1](https://github.com/Increase/increase-python/compare/v0.66.0...v0.66.1)
+
+### Bug Fixes
+
+* **client/async:** avoid blocking io call for platform headers ([#470](https://github.com/Increase/increase-python/issues/470)) ([869d2f7](https://github.com/Increase/increase-python/commit/869d2f71aff8ffed1ed2ee34707873d958754a00))
+
+
+### Chores
+
+* **internal:** add a `default_query` method ([#468](https://github.com/Increase/increase-python/issues/468)) ([5d5cbee](https://github.com/Increase/increase-python/commit/5d5cbeed75b1c9865f2f59259a6f37e616496cb0))
+
+## 0.66.0 (2024-06-04)
+
+Full Changelog: [v0.65.0...v0.66.0](https://github.com/Increase/increase-python/compare/v0.65.0...v0.66.0)
+
+### Features
+
+* **api:** add `default_digital_card_profile_id` property ([#466](https://github.com/Increase/increase-python/issues/466)) ([1216c65](https://github.com/Increase/increase-python/commit/1216c650031459810ada88d0a7c2c23c22fd8219))
+
+## 0.65.0 (2024-06-03)
+
+Full Changelog: [v0.64.0...v0.65.0](https://github.com/Increase/increase-python/compare/v0.64.0...v0.65.0)
+
+### Features
+
+* **api:** updates ([#464](https://github.com/Increase/increase-python/issues/464)) ([8fe313f](https://github.com/Increase/increase-python/commit/8fe313f3f5394a45ebbe010009a67e44888680e5))
+
+## 0.64.0 (2024-05-29)
+
+Full Changelog: [v0.63.0...v0.64.0](https://github.com/Increase/increase-python/compare/v0.63.0...v0.64.0)
+
+### Features
+
+* **api:** add trace number to ach transfer returns ([#463](https://github.com/Increase/increase-python/issues/463)) ([fd42796](https://github.com/Increase/increase-python/commit/fd4279689444b716ddbe0af7536a522989a7139a))
+
+
+### Chores
+
+* **internal:** bump pyright ([#459](https://github.com/Increase/increase-python/issues/459)) ([96580ed](https://github.com/Increase/increase-python/commit/96580ed04b0e690e17ae1d9e34523df87d836158))
+* **internal:** update bootstrap script ([#462](https://github.com/Increase/increase-python/issues/462)) ([608499b](https://github.com/Increase/increase-python/commit/608499b0e6a893b565e9a589fbc1f9f5fdddac74))
+
+
+### Documentation
+
+* **contributing:** update references to rye-up.com ([#461](https://github.com/Increase/increase-python/issues/461)) ([329f03c](https://github.com/Increase/increase-python/commit/329f03c96b226f0959ddabb7d917004aa65d64f3))
+
+## 0.63.0 (2024-05-23)
+
+Full Changelog: [v0.62.0...v0.63.0](https://github.com/Increase/increase-python/compare/v0.62.0...v0.63.0)
+
+### Features
+
+* **api:** realtime decision updates ([#458](https://github.com/Increase/increase-python/issues/458)) ([70f1aa6](https://github.com/Increase/increase-python/commit/70f1aa6903950a868cc2aa68f312ef7f346abce2))
+
+
+### Chores
+
+* **ci:** update rye install location ([#455](https://github.com/Increase/increase-python/issues/455)) ([91339ae](https://github.com/Increase/increase-python/commit/91339ae65c772dd7c77e4482db18756d5a2e7159))
+* **ci:** update rye install location ([#457](https://github.com/Increase/increase-python/issues/457)) ([d4d40a3](https://github.com/Increase/increase-python/commit/d4d40a3a220b359852510decd5c1cc7a07762ab7))
+
+## 0.62.0 (2024-05-15)
+
+Full Changelog: [v0.61.0...v0.62.0](https://github.com/Increase/increase-python/compare/v0.61.0...v0.62.0)
+
+### Features
+
+* **api:** updates ([#454](https://github.com/Increase/increase-python/issues/454)) ([8bb9e1d](https://github.com/Increase/increase-python/commit/8bb9e1d747b8d07767ea6d6235e1799e842f5fcf))
+
+
+### Chores
+
+* **docs:** add SECURITY.md ([#449](https://github.com/Increase/increase-python/issues/449)) ([443f77f](https://github.com/Increase/increase-python/commit/443f77ff5bb7fbc482709367860a2292c94f2377))
+* **internal:** add slightly better logging to scripts ([#453](https://github.com/Increase/increase-python/issues/453)) ([c5bf320](https://github.com/Increase/increase-python/commit/c5bf320fa2b5bc4cc1991857d29353c8b3112700))
+* **internal:** bump pydantic dependency ([#451](https://github.com/Increase/increase-python/issues/451)) ([0b051ab](https://github.com/Increase/increase-python/commit/0b051abd999f2399c012f0e564fe7853f92fc079))
+
+
+### Documentation
+
+* **api:** update examples & docstrings ([#452](https://github.com/Increase/increase-python/issues/452)) ([62c69aa](https://github.com/Increase/increase-python/commit/62c69aa9ec450d02397237d34ba10b5ec1c49df8))
+
+## 0.61.0 (2024-05-10)
+
+Full Changelog: [v0.60.0...v0.61.0](https://github.com/Increase/increase-python/compare/v0.60.0...v0.61.0)
+
+### Features
+
+* **api:** enhance API with extended transaction details and new entity types ([#448](https://github.com/Increase/increase-python/issues/448)) ([6a6825b](https://github.com/Increase/increase-python/commit/6a6825bb45e25ec14641ab631d380f9d1a6e7956))
+
+
+### Documentation
+
+* **readme:** fix misleading timeout example value ([#445](https://github.com/Increase/increase-python/issues/445)) ([a1eb1d6](https://github.com/Increase/increase-python/commit/a1eb1d6c59fbddab4c2e1f663d0f430458786154))
+
+## 0.60.0 (2024-05-01)
+
+Full Changelog: [v0.59.0...v0.60.0](https://github.com/Increase/increase-python/compare/v0.59.0...v0.60.0)
+
+### Features
+
+* **api:** updates ([#444](https://github.com/Increase/increase-python/issues/444)) ([26bb8d1](https://github.com/Increase/increase-python/commit/26bb8d1f82630556535bcda94fd7fbfffe5375fa))
+
+
+### Chores
+
+* **client:** log response headers in debug mode ([#440](https://github.com/Increase/increase-python/issues/440)) ([2bd167c](https://github.com/Increase/increase-python/commit/2bd167c215a5db79ea4400f1565d28e0fcff1f89))
+* **internal:** add link to openapi spec ([#441](https://github.com/Increase/increase-python/issues/441)) ([44b4cf6](https://github.com/Increase/increase-python/commit/44b4cf6f53bc31ae07366ff62dc5915f76a8e13d))
+* **internal:** add scripts/test, scripts/mock and add ci job ([#442](https://github.com/Increase/increase-python/issues/442)) ([cd07b70](https://github.com/Increase/increase-python/commit/cd07b708c27839b87f198eec2cd85f0a008b88fd))
+* **internal:** bump mock server version to ~5.8.0 ([#443](https://github.com/Increase/increase-python/issues/443)) ([4b507ff](https://github.com/Increase/increase-python/commit/4b507ff339c9026b445fcd7b15cda90f071827b0))
+* **internal:** minor reformatting ([#439](https://github.com/Increase/increase-python/issues/439)) ([462a2a4](https://github.com/Increase/increase-python/commit/462a2a4509fe2eccf056e2a5a4c43bdb9df56c57))
+* **internal:** reformat imports ([#437](https://github.com/Increase/increase-python/issues/437)) ([b11ab6f](https://github.com/Increase/increase-python/commit/b11ab6f4ea3a5e82beb63be7c250f1d1a1daad70))
+
+## 0.59.0 (2024-04-25)
+
+Full Changelog: [v0.58.1...v0.59.0](https://github.com/Increase/increase-python/compare/v0.58.1...v0.59.0)
+
+### ⚠ BREAKING CHANGES
+
+* require account ID for creating an ACH prenotification ([#435](https://github.com/Increase/increase-python/issues/435))
+
+### Bug Fixes
+
+* require account ID for creating an ACH prenotification ([#435](https://github.com/Increase/increase-python/issues/435)) ([772c15e](https://github.com/Increase/increase-python/commit/772c15ee82539ff4f85067cdb8e4961fa8e2a807))
+
+## 0.58.1 (2024-04-25)
+
+Full Changelog: [v0.58.0...v0.58.1](https://github.com/Increase/increase-python/compare/v0.58.0...v0.58.1)
+
+### Bug Fixes
+
+* **docs:** doc improvements ([#432](https://github.com/Increase/increase-python/issues/432)) ([1a8ce4d](https://github.com/Increase/increase-python/commit/1a8ce4da1f14059629e94ff4153c1df729ba550b))
+
+
+### Chores
+
+* **internal:** restructure imports ([#430](https://github.com/Increase/increase-python/issues/430)) ([19249ee](https://github.com/Increase/increase-python/commit/19249eed9683bea8d89da11bab49a7a8b3a636d3))
+* **internal:** update test helper function ([#434](https://github.com/Increase/increase-python/issues/434)) ([fb6f221](https://github.com/Increase/increase-python/commit/fb6f221aac13c9a2ffd48204c7458a8e62127f15))
+* **internal:** use actions/checkout@v4 for codeflow ([#433](https://github.com/Increase/increase-python/issues/433)) ([a1bb4f7](https://github.com/Increase/increase-python/commit/a1bb4f75b737ca668a40792978aa0ee719dc61e9))
+
+## 0.58.0 (2024-04-23)
+
+Full Changelog: [v0.57.0...v0.58.0](https://github.com/Increase/increase-python/compare/v0.57.0...v0.58.0)
+
+### Features
+
+* **api:** remove inbound_wire_drawdown_payment_reversal ([#428](https://github.com/Increase/increase-python/issues/428)) ([1dfbb27](https://github.com/Increase/increase-python/commit/1dfbb276e778fb86a4ac8b79b41a5f51b8c01ea9))
+
+## 0.57.0 (2024-04-19)
+
+Full Changelog: [v0.56.0...v0.57.0](https://github.com/Increase/increase-python/compare/v0.56.0...v0.57.0)
+
+### Features
+
+* **api:** add account_id param to ach_prenotification and third_party to check_transfer ([#427](https://github.com/Increase/increase-python/issues/427)) ([754d8ca](https://github.com/Increase/increase-python/commit/754d8ca9c336677d208ab3a0f456d0b319e84108))
+
+
+### Chores
+
+* **internal:** bump pyright to 1.1.359 ([#425](https://github.com/Increase/increase-python/issues/425)) ([152578d](https://github.com/Increase/increase-python/commit/152578dcfa004f43ae301fbd3adba68a4ca655df))
+
+## 0.56.0 (2024-04-18)
+
+Full Changelog: [v0.55.0...v0.56.0](https://github.com/Increase/increase-python/compare/v0.55.0...v0.56.0)
+
+### Features
+
+* **api:** add inbound_check_deposits decline endpoint ([#424](https://github.com/Increase/increase-python/issues/424)) ([2ef9da1](https://github.com/Increase/increase-python/commit/2ef9da1d224c3c957f44419b8112527e2491c3f4))
+
+
+### Chores
+
+* **internal:** add lru_cache helper function ([#421](https://github.com/Increase/increase-python/issues/421)) ([72bc6e0](https://github.com/Increase/increase-python/commit/72bc6e0c25276258d46307e3d48755ae3f442e5b))
+* **internal:** ban usage of lru_cache ([#423](https://github.com/Increase/increase-python/issues/423)) ([22216bb](https://github.com/Increase/increase-python/commit/22216bb96a1090a7c9c0bcfab3b167f52948b78c))
+
+## 0.55.0 (2024-04-17)
+
+Full Changelog: [v0.54.0...v0.55.0](https://github.com/Increase/increase-python/compare/v0.54.0...v0.55.0)
+
+### Features
+
+* **api:** add altered_or_fictitious check decline reason ([#419](https://github.com/Increase/increase-python/issues/419)) ([9e2c713](https://github.com/Increase/increase-python/commit/9e2c7134a38b16880ca3e399b4c75334be3d9b46))
+
+## 0.54.0 (2024-04-16)
+
+Full Changelog: [v0.53.0...v0.54.0](https://github.com/Increase/increase-python/compare/v0.53.0...v0.54.0)
+
+### Features
+
+* **api:** remove deposit field from check transfer ([#417](https://github.com/Increase/increase-python/issues/417)) ([dd230c2](https://github.com/Increase/increase-python/commit/dd230c247fd9cd6339208978f15b7308d26a1d52))
+
+## 0.53.0 (2024-04-16)
+
+Full Changelog: [v0.52.1...v0.53.0](https://github.com/Increase/increase-python/compare/v0.52.1...v0.53.0)
+
+### Features
+
+* **api:** add /inbound_check_deposits endpoints ([#416](https://github.com/Increase/increase-python/issues/416)) ([cd76944](https://github.com/Increase/increase-python/commit/cd769447ea8b6bd278f390a2ab74951f2164aeff))
+
+
+### Chores
+
+* **internal:** formatting ([#414](https://github.com/Increase/increase-python/issues/414)) ([542ed1e](https://github.com/Increase/increase-python/commit/542ed1e2ea39d5164f43694f3bf6209e3a269c88))
+
+## 0.52.1 (2024-04-11)
+
+Full Changelog: [v0.52.0...v0.52.1](https://github.com/Increase/increase-python/compare/v0.52.0...v0.52.1)
+
+### Bug Fixes
+
+* **types:** mark physical card cardholder as required ([#412](https://github.com/Increase/increase-python/issues/412)) ([a55c07f](https://github.com/Increase/increase-python/commit/a55c07f6005548e453336ae385e49c4161518098))
+
+## 0.52.0 (2024-04-10)
+
+Full Changelog: [v0.51.0...v0.52.0](https://github.com/Increase/increase-python/compare/v0.51.0...v0.52.0)
+
+### Features
+
+* **api:** updates ([#411](https://github.com/Increase/increase-python/issues/411)) ([af8a36a](https://github.com/Increase/increase-python/commit/af8a36a54f8101695d1a1b700d6c8c4c86d298ea))
+* **client:** add DefaultHttpxClient and DefaultAsyncHttpxClient ([#406](https://github.com/Increase/increase-python/issues/406)) ([58720b5](https://github.com/Increase/increase-python/commit/58720b59fe550b47f93db0a8bb6fb82cf41387b0))
+* **models:** add to_dict & to_json helper methods ([#409](https://github.com/Increase/increase-python/issues/409)) ([3d570ac](https://github.com/Increase/increase-python/commit/3d570acf49833b02d577865ccce4128af570ef3c))
+
+
+### Chores
+
+* fix typo ([#410](https://github.com/Increase/increase-python/issues/410)) ([a19b95c](https://github.com/Increase/increase-python/commit/a19b95c2966f75a82bd27b093674b98f5ca0659d))
+
+
+### Documentation
+
+* **api:** update links to NAICS classification codes ([#408](https://github.com/Increase/increase-python/issues/408)) ([74fa33a](https://github.com/Increase/increase-python/commit/74fa33aa3fede949953b77b5550881aac273e150))
+
+## 0.51.0 (2024-04-05)
+
+Full Changelog: [v0.50.0...v0.51.0](https://github.com/Increase/increase-python/compare/v0.50.0...v0.51.0)
+
+### Features
+
+* **api:** add inbound check deposit return intention ([#404](https://github.com/Increase/increase-python/issues/404)) ([5a88443](https://github.com/Increase/increase-python/commit/5a8844371d1d0f27a0ad210769e2cd66c2e50d64))
+
+## 0.50.0 (2024-04-04)
+
+Full Changelog: [v0.49.0...v0.50.0](https://github.com/Increase/increase-python/compare/v0.49.0...v0.50.0)
+
+### Features
+
+* **api:** remove inbound_check category, rename check_deposit_mail_item, add inbound_mail_item ([#403](https://github.com/Increase/increase-python/issues/403)) ([c133bfc](https://github.com/Increase/increase-python/commit/c133bfc3961556dd9b79c45cb625e29cb5aa7b67))
+
+
+### Chores
+
+* **internal:** defer model build for import latency ([#400](https://github.com/Increase/increase-python/issues/400)) ([71b7d82](https://github.com/Increase/increase-python/commit/71b7d82c686789ee08bc82576b806a47d544e676))
+* **internal:** streaming updates ([#402](https://github.com/Increase/increase-python/issues/402)) ([d049f48](https://github.com/Increase/increase-python/commit/d049f487f54caf7a0a7da0f860f11713b5a5c7d0))
+
+## 0.49.0 (2024-04-02)
+
+Full Changelog: [v0.48.0...v0.49.0](https://github.com/Increase/increase-python/compare/v0.48.0...v0.49.0)
+
+### Features
+
+* **api:** filter OAuth connections by their status ([#399](https://github.com/Increase/increase-python/issues/399)) ([888c3d4](https://github.com/Increase/increase-python/commit/888c3d47b068f572a935bd8c045e61d8e68cdda0))
+
+
+### Chores
+
+* **client:** validate that max_retries is not None ([#397](https://github.com/Increase/increase-python/issues/397)) ([28e1e1f](https://github.com/Increase/increase-python/commit/28e1e1f949f7c18e3f9acb27c928e39f9e8a7aaf))
+
+## 0.48.0 (2024-03-29)
+
+Full Changelog: [v0.47.1...v0.48.0](https://github.com/Increase/increase-python/compare/v0.47.1...v0.48.0)
+
+### Features
+
+* **api:** remove check transfer intention ([#394](https://github.com/Increase/increase-python/issues/394)) ([e94957a](https://github.com/Increase/increase-python/commit/e94957a282ad6fb57b28476ee9bcb69e9ee71c0f))
+
+## 0.47.1 (2024-03-29)
+
+Full Changelog: [v0.47.0...v0.47.1](https://github.com/Increase/increase-python/compare/v0.47.0...v0.47.1)
+
+### Bug Fixes
+
+* **project:** use absolute github links on PyPi ([#392](https://github.com/Increase/increase-python/issues/392)) ([2697c0d](https://github.com/Increase/increase-python/commit/2697c0d4f60cd1d9568350ff3e08256be2c4a078))
+
+## 0.47.0 (2024-03-29)
+
+Full Changelog: [v0.46.0...v0.47.0](https://github.com/Increase/increase-python/compare/v0.46.0...v0.47.0)
+
+### Features
+
+* **api:** updates ([#391](https://github.com/Increase/increase-python/issues/391)) ([a64d9ee](https://github.com/Increase/increase-python/commit/a64d9eebc28d65f2a44591107f116923b8908bee))
+* **package:** export default constants ([#390](https://github.com/Increase/increase-python/issues/390)) ([d5d14bf](https://github.com/Increase/increase-python/commit/d5d14bf3703964894862131acff1368f1118cfb6))
+
+
+### Chores
+
+* revert temporary commit ([13ba51e](https://github.com/Increase/increase-python/commit/13ba51e82696e7a6180346c4b7d431e72aac0ad3))
+* temporary commit ([#388](https://github.com/Increase/increase-python/issues/388)) ([4600b05](https://github.com/Increase/increase-python/commit/4600b057fb9a95ee4f2804d083898e2fedc42ab6))
+
 ## 0.46.0 (2024-03-27)
 
 Full Changelog: [v0.45.0...v0.46.0](https://github.com/Increase/increase-python/compare/v0.45.0...v0.46.0)

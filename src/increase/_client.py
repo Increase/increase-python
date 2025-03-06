@@ -34,6 +34,7 @@ from .resources import (
     accounts,
     entities,
     programs,
+    webhooks,
     documents,
     lockboxes,
     oauth_tokens,
@@ -166,6 +167,7 @@ class Increase(SyncAPIClient):
         real_time_payments_request_for_payments.RealTimePaymentsRequestForPaymentsResource
     )
     simulations: simulations.SimulationsResource
+    webhooks: webhooks.Webhooks
     with_raw_response: IncreaseWithRawResponse
     with_streaming_response: IncreaseWithStreamedResponse
 
@@ -319,6 +321,7 @@ class Increase(SyncAPIClient):
             real_time_payments_request_for_payments.RealTimePaymentsRequestForPaymentsResource(self)
         )
         self.simulations = simulations.SimulationsResource(self)
+        self.webhooks = webhooks.Webhooks(self)
         self.with_raw_response = IncreaseWithRawResponse(self)
         self.with_streaming_response = IncreaseWithStreamedResponse(self)
 
@@ -537,6 +540,7 @@ class AsyncIncrease(AsyncAPIClient):
         real_time_payments_request_for_payments.AsyncRealTimePaymentsRequestForPaymentsResource
     )
     simulations: simulations.AsyncSimulationsResource
+    webhooks: webhooks.AsyncWebhooks
     with_raw_response: AsyncIncreaseWithRawResponse
     with_streaming_response: AsyncIncreaseWithStreamedResponse
 
@@ -692,6 +696,7 @@ class AsyncIncrease(AsyncAPIClient):
             real_time_payments_request_for_payments.AsyncRealTimePaymentsRequestForPaymentsResource(self)
         )
         self.simulations = simulations.AsyncSimulationsResource(self)
+        self.webhooks = webhooks.AsyncWebhooks(self)
         self.with_raw_response = AsyncIncreaseWithRawResponse(self)
         self.with_streaming_response = AsyncIncreaseWithStreamedResponse(self)
 
