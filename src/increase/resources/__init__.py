@@ -417,14 +417,6 @@ from .inbound_real_time_payments_transfers import (
     InboundRealTimePaymentsTransfersResourceWithStreamingResponse,
     AsyncInboundRealTimePaymentsTransfersResourceWithStreamingResponse,
 )
-from .real_time_payments_request_for_payments import (
-    RealTimePaymentsRequestForPaymentsResource,
-    AsyncRealTimePaymentsRequestForPaymentsResource,
-    RealTimePaymentsRequestForPaymentsResourceWithRawResponse,
-    AsyncRealTimePaymentsRequestForPaymentsResourceWithRawResponse,
-    RealTimePaymentsRequestForPaymentsResourceWithStreamingResponse,
-    AsyncRealTimePaymentsRequestForPaymentsResourceWithStreamingResponse,
-)
 from .proof_of_authorization_request_submissions import (
     ProofOfAuthorizationRequestSubmissionsResource,
     AsyncProofOfAuthorizationRequestSubmissionsResource,
@@ -749,12 +741,6 @@ __all__ = [
     "AsyncIntrafiExclusionsResourceWithRawResponse",
     "IntrafiExclusionsResourceWithStreamingResponse",
     "AsyncIntrafiExclusionsResourceWithStreamingResponse",
-    "RealTimePaymentsRequestForPaymentsResource",
-    "AsyncRealTimePaymentsRequestForPaymentsResource",
-    "RealTimePaymentsRequestForPaymentsResourceWithRawResponse",
-    "AsyncRealTimePaymentsRequestForPaymentsResourceWithRawResponse",
-    "RealTimePaymentsRequestForPaymentsResourceWithStreamingResponse",
-    "AsyncRealTimePaymentsRequestForPaymentsResourceWithStreamingResponse",
     "SimulationsResource",
     "AsyncSimulationsResource",
     "SimulationsResourceWithRawResponse",
