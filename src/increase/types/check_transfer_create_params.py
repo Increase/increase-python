@@ -100,6 +100,14 @@ class PhysicalCheck(TypedDict, total=False):
     recipient_name: Required[str]
     """The name that will be printed on the check in the 'To:' field."""
 
+    check_number: str
+    """The check number Increase should print on the check.
+
+    This should not contain leading zeroes and must be unique across the
+    `source_account_number`. If this is omitted, Increase will generate a check
+    number for you.
+    """
+
     note: str
     """The descriptor that will be printed on the letter included with the check."""
 
