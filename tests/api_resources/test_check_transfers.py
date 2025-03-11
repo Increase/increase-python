@@ -48,6 +48,7 @@ class TestCheckTransfers:
                 },
                 "memo": "Check payment",
                 "recipient_name": "Ian Crease",
+                "check_number": "x",
                 "note": "x",
                 "return_address": {
                     "city": "x",
@@ -326,6 +327,7 @@ class TestAsyncCheckTransfers:
                 },
                 "memo": "Check payment",
                 "recipient_name": "Ian Crease",
+                "check_number": "x",
                 "note": "x",
                 "return_address": {
                     "city": "x",
