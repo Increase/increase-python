@@ -151,6 +151,7 @@ class TestCheckTransfers:
             cursor="cursor",
             idempotency_key="x",
             limit=1,
+            status={"in": ["pending_approval"]},
         )
         assert_matches_type(SyncPage[CheckTransfer], check_transfer, path=["response"])
 
@@ -430,6 +431,7 @@ class TestAsyncCheckTransfers:
             cursor="cursor",
             idempotency_key="x",
             limit=1,
+            status={"in": ["pending_approval"]},
         )
         assert_matches_type(AsyncPage[CheckTransfer], check_transfer, path=["response"])
 
