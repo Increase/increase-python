@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.206.0 (2025-03-13)
+
+Full Changelog: [v0.205.0...v0.206.0](https://github.com/Increase/increase-python/compare/v0.205.0...v0.206.0)
+
+### Features
+
+* **api:** api update ([#1022](https://github.com/Increase/increase-python/issues/1022)) ([437e696](https://github.com/Increase/increase-python/commit/437e69676994ef9e987feaae8823999493b54986))
+
+
+### Chores
+
+* **internal:** remove extra empty newlines ([#1020](https://github.com/Increase/increase-python/issues/1020)) ([5889f24](https://github.com/Increase/increase-python/commit/5889f2402d12142cd9cdb5917ede650427a651fc))
+
 ## 0.205.0 (2025-03-12)
 
 Full Changelog: [v0.204.0...v0.205.0](https://github.com/Increase/increase-python/compare/v0.204.0...v0.205.0)
