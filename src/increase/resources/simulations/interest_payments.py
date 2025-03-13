@@ -52,6 +52,7 @@ class InterestPaymentsResource(SyncAPIResource):
         *,
         account_id: str,
         amount: int,
+        accrued_on_account_id: str | NotGiven = NOT_GIVEN,
         period_end: Union[str, datetime] | NotGiven = NOT_GIVEN,
         period_start: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -68,9 +69,11 @@ class InterestPaymentsResource(SyncAPIResource):
         automatically on the first of each month.
 
         Args:
-          account_id: The identifier of the Account Number the Interest Payment is for.
+          account_id: The identifier of the Account the Interest Payment should be paid to is for.
 
           amount: The interest amount in cents. Must be positive.
+
+          accrued_on_account_id: The identifier of the Account the Interest accrued on. Defaults to `account_id`.
 
           period_end: The end of the interest period. If not provided, defaults to the current time.
 
@@ -92,6 +95,7 @@ class InterestPaymentsResource(SyncAPIResource):
                 {
                     "account_id": account_id,
                     "amount": amount,
+                    "accrued_on_account_id": accrued_on_account_id,
                     "period_end": period_end,
                     "period_start": period_start,
                 },
@@ -133,6 +137,7 @@ class AsyncInterestPaymentsResource(AsyncAPIResource):
         *,
         account_id: str,
         amount: int,
+        accrued_on_account_id: str | NotGiven = NOT_GIVEN,
         period_end: Union[str, datetime] | NotGiven = NOT_GIVEN,
         period_start: Union[str, datetime] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -149,9 +154,11 @@ class AsyncInterestPaymentsResource(AsyncAPIResource):
         automatically on the first of each month.
 
         Args:
-          account_id: The identifier of the Account Number the Interest Payment is for.
+          account_id: The identifier of the Account the Interest Payment should be paid to is for.
 
           amount: The interest amount in cents. Must be positive.
+
+          accrued_on_account_id: The identifier of the Account the Interest accrued on. Defaults to `account_id`.
 
           period_end: The end of the interest period. If not provided, defaults to the current time.
 
@@ -173,6 +180,7 @@ class AsyncInterestPaymentsResource(AsyncAPIResource):
                 {
                     "account_id": account_id,
                     "amount": amount,
+                    "accrued_on_account_id": accrued_on_account_id,
                     "period_end": period_end,
                     "period_start": period_start,
                 },
