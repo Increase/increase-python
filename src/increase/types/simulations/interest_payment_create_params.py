@@ -13,10 +13,16 @@ __all__ = ["InterestPaymentCreateParams"]
 
 class InterestPaymentCreateParams(TypedDict, total=False):
     account_id: Required[str]
-    """The identifier of the Account Number the Interest Payment is for."""
+    """The identifier of the Account the Interest Payment should be paid to is for."""
 
     amount: Required[int]
     """The interest amount in cents. Must be positive."""
+
+    accrued_on_account_id: str
+    """The identifier of the Account the Interest accrued on.
+
+    Defaults to `account_id`.
+    """
 
     period_end: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
     """The end of the interest period. If not provided, defaults to the current time."""

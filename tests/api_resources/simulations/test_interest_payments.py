@@ -31,6 +31,7 @@ class TestInterestPayments:
         interest_payment = client.simulations.interest_payments.create(
             account_id="account_in71c4amph0vgo2qllky",
             amount=1000,
+            accrued_on_account_id="accrued_on_account_id",
             period_end=parse_datetime("2019-12-27T18:11:19.117Z"),
             period_start=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
@@ -79,6 +80,7 @@ class TestAsyncInterestPayments:
         interest_payment = await async_client.simulations.interest_payments.create(
             account_id="account_in71c4amph0vgo2qllky",
             amount=1000,
+            accrued_on_account_id="accrued_on_account_id",
             period_end=parse_datetime("2019-12-27T18:11:19.117Z"),
             period_start=parse_datetime("2019-12-27T18:11:19.117Z"),
         )
