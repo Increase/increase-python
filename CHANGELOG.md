@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.207.1 (2025-03-14)
+
+Full Changelog: [v0.207.0...v0.207.1](https://github.com/Increase/increase-python/compare/v0.207.0...v0.207.1)
+
+### Bug Fixes
+
+* **types:** handle more discriminated union shapes ([#1030](https://github.com/Increase/increase-python/issues/1030)) ([38c5c0d](https://github.com/Increase/increase-python/commit/38c5c0d931b4d5074050d1a0f57e6fbddda82af2))
+
+
+### Chores
+
+* **internal:** bump rye to 0.44.0 ([#1027](https://github.com/Increase/increase-python/issues/1027)) ([e4e1df8](https://github.com/Increase/increase-python/commit/e4e1df8b572a35355a5e4d73760441f618e4e487))
+* **internal:** codegen related update ([#1029](https://github.com/Increase/increase-python/issues/1029)) ([28c9378](https://github.com/Increase/increase-python/commit/28c93782c1acdd795ff2d4c4fb9c3d09c38fb58e))
+
 ## 0.207.0 (2025-03-14)
 
 Full Changelog: [v0.206.0...v0.207.0](https://github.com/Increase/increase-python/compare/v0.206.0...v0.207.0)
