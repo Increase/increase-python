@@ -13,6 +13,9 @@ class ProofOfAuthorizationRequestSubmission(BaseModel):
     id: str
     """The Proof of Authorization Request Submission identifier."""
 
+    additional_evidence_file_id: Optional[str] = None
+    """File containing additional evidence."""
+
     authorization_terms: str
     """Terms of authorization."""
 

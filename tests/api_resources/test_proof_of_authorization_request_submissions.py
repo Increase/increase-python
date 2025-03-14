@@ -50,6 +50,7 @@ class TestProofOfAuthorizationRequestSubmissions:
             validated_account_ownership_via_credential=True,
             validated_account_ownership_with_account_statement=True,
             validated_account_ownership_with_microdeposit=True,
+            additional_evidence_file_id="file_makxrc67oh9l6sg7w9yc",
             authorizer_company="National Phonograph Company",
             authorizer_ip_address="x",
         )
@@ -235,6 +236,7 @@ class TestAsyncProofOfAuthorizationRequestSubmissions:
                 validated_account_ownership_via_credential=True,
                 validated_account_ownership_with_account_statement=True,
                 validated_account_ownership_with_microdeposit=True,
+                additional_evidence_file_id="file_makxrc67oh9l6sg7w9yc",
                 authorizer_company="National Phonograph Company",
                 authorizer_ip_address="x",
             )
