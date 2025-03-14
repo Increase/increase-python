@@ -71,6 +71,7 @@ class FilesResource(SyncAPIResource):
             "document_request",
             "entity_supplemental_document",
             "unusual_activity_report_attachment",
+            "proof_of_authorization_request_submission",
         ],
         description: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -119,6 +120,8 @@ class FilesResource(SyncAPIResource):
                 Entity.
               - `unusual_activity_report_attachment` - An attachment to an Unusual Activity
                 Report.
+              - `proof_of_authorization_request_submission` - A file containing additional
+                evidence for a Proof of Authorization Request Submission.
 
           description: The description you choose to give the File.
 
@@ -294,6 +297,7 @@ class AsyncFilesResource(AsyncAPIResource):
             "document_request",
             "entity_supplemental_document",
             "unusual_activity_report_attachment",
+            "proof_of_authorization_request_submission",
         ],
         description: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -342,6 +346,8 @@ class AsyncFilesResource(AsyncAPIResource):
                 Entity.
               - `unusual_activity_report_attachment` - An attachment to an Unusual Activity
                 Report.
+              - `proof_of_authorization_request_submission` - A file containing additional
+                evidence for a Proof of Authorization Request Submission.
 
           description: The description you choose to give the File.
 
