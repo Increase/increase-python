@@ -72,6 +72,7 @@ class File(BaseModel):
         "export",
         "unusual_activity_report_attachment",
         "deposit_account_control_agreement",
+        "proof_of_authorization_request_submission",
     ]
     """What the File will be used for.
 
@@ -116,6 +117,8 @@ class File(BaseModel):
       Report.
     - `deposit_account_control_agreement` - A document granting another entity
       access to the funds into your account.
+    - `proof_of_authorization_request_submission` - A file containing additional
+      evidence for a Proof of Authorization Request Submission.
     """
 
     type: Literal["file"]

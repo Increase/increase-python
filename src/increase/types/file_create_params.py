@@ -36,6 +36,7 @@ class FileCreateParams(TypedDict, total=False):
             "document_request",
             "entity_supplemental_document",
             "unusual_activity_report_attachment",
+            "proof_of_authorization_request_submission",
         ]
     ]
     """What the File will be used for in Increase's systems.
@@ -66,6 +67,8 @@ class FileCreateParams(TypedDict, total=False):
       Entity.
     - `unusual_activity_report_attachment` - An attachment to an Unusual Activity
       Report.
+    - `proof_of_authorization_request_submission` - A file containing additional
+      evidence for a Proof of Authorization Request Submission.
     """
 
     description: str
