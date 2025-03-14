@@ -63,6 +63,7 @@ class ProofOfAuthorizationRequestSubmissionsResource(SyncAPIResource):
         validated_account_ownership_via_credential: bool,
         validated_account_ownership_with_account_statement: bool,
         validated_account_ownership_with_microdeposit: bool,
+        additional_evidence_file_id: str | NotGiven = NOT_GIVEN,
         authorizer_company: str | NotGiven = NOT_GIVEN,
         authorizer_ip_address: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -95,6 +96,8 @@ class ProofOfAuthorizationRequestSubmissionsResource(SyncAPIResource):
 
           validated_account_ownership_with_microdeposit: Whether the account ownership was validated with a microdeposit.
 
+          additional_evidence_file_id: The File containing the check's front image.
+
           authorizer_company: Company of the authorizer.
 
           authorizer_ip_address: IP address of the authorizer.
@@ -122,6 +125,7 @@ class ProofOfAuthorizationRequestSubmissionsResource(SyncAPIResource):
                     "validated_account_ownership_via_credential": validated_account_ownership_via_credential,
                     "validated_account_ownership_with_account_statement": validated_account_ownership_with_account_statement,
                     "validated_account_ownership_with_microdeposit": validated_account_ownership_with_microdeposit,
+                    "additional_evidence_file_id": additional_evidence_file_id,
                     "authorizer_company": authorizer_company,
                     "authorizer_ip_address": authorizer_ip_address,
                 },
@@ -266,6 +270,7 @@ class AsyncProofOfAuthorizationRequestSubmissionsResource(AsyncAPIResource):
         validated_account_ownership_via_credential: bool,
         validated_account_ownership_with_account_statement: bool,
         validated_account_ownership_with_microdeposit: bool,
+        additional_evidence_file_id: str | NotGiven = NOT_GIVEN,
         authorizer_company: str | NotGiven = NOT_GIVEN,
         authorizer_ip_address: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -298,6 +303,8 @@ class AsyncProofOfAuthorizationRequestSubmissionsResource(AsyncAPIResource):
 
           validated_account_ownership_with_microdeposit: Whether the account ownership was validated with a microdeposit.
 
+          additional_evidence_file_id: The File containing the check's front image.
+
           authorizer_company: Company of the authorizer.
 
           authorizer_ip_address: IP address of the authorizer.
@@ -325,6 +332,7 @@ class AsyncProofOfAuthorizationRequestSubmissionsResource(AsyncAPIResource):
                     "validated_account_ownership_via_credential": validated_account_ownership_via_credential,
                     "validated_account_ownership_with_account_statement": validated_account_ownership_with_account_statement,
                     "validated_account_ownership_with_microdeposit": validated_account_ownership_with_microdeposit,
+                    "additional_evidence_file_id": additional_evidence_file_id,
                     "authorizer_company": authorizer_company,
                     "authorizer_ip_address": authorizer_ip_address,
                 },

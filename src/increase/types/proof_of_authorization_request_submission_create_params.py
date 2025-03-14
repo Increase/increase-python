@@ -39,6 +39,9 @@ class ProofOfAuthorizationRequestSubmissionCreateParams(TypedDict, total=False):
     validated_account_ownership_with_microdeposit: Required[bool]
     """Whether the account ownership was validated with a microdeposit."""
 
+    additional_evidence_file_id: str
+    """The File containing the check's front image."""
+
     authorizer_company: str
     """Company of the authorizer."""
 
