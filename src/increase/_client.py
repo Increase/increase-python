@@ -37,6 +37,7 @@ from .resources import (
     webhooks,
     documents,
     lockboxes,
+    file_links,
     oauth_tokens,
     transactions,
     ach_transfers,
@@ -147,6 +148,7 @@ class Increase(SyncAPIClient):
     )
     account_statements: account_statements.AccountStatementsResource
     files: files.FilesResource
+    file_links: file_links.FileLinksResource
     documents: documents.DocumentsResource
     exports: exports.ExportsResource
     events: events.EventsResource
@@ -298,6 +300,7 @@ class Increase(SyncAPIClient):
         )
         self.account_statements = account_statements.AccountStatementsResource(self)
         self.files = files.FilesResource(self)
+        self.file_links = file_links.FileLinksResource(self)
         self.documents = documents.DocumentsResource(self)
         self.exports = exports.ExportsResource(self)
         self.events = events.EventsResource(self)
@@ -514,6 +517,7 @@ class AsyncIncrease(AsyncAPIClient):
     )
     account_statements: account_statements.AsyncAccountStatementsResource
     files: files.AsyncFilesResource
+    file_links: file_links.AsyncFileLinksResource
     documents: documents.AsyncDocumentsResource
     exports: exports.AsyncExportsResource
     events: events.AsyncEventsResource
@@ -667,6 +671,7 @@ class AsyncIncrease(AsyncAPIClient):
         )
         self.account_statements = account_statements.AsyncAccountStatementsResource(self)
         self.files = files.AsyncFilesResource(self)
+        self.file_links = file_links.AsyncFileLinksResource(self)
         self.documents = documents.AsyncDocumentsResource(self)
         self.exports = exports.AsyncExportsResource(self)
         self.events = events.AsyncEventsResource(self)
@@ -924,6 +929,7 @@ class IncreaseWithRawResponse:
         )
         self.account_statements = account_statements.AccountStatementsResourceWithRawResponse(client.account_statements)
         self.files = files.FilesResourceWithRawResponse(client.files)
+        self.file_links = file_links.FileLinksResourceWithRawResponse(client.file_links)
         self.documents = documents.DocumentsResourceWithRawResponse(client.documents)
         self.exports = exports.ExportsResourceWithRawResponse(client.exports)
         self.events = events.EventsResourceWithRawResponse(client.events)
@@ -1043,6 +1049,7 @@ class AsyncIncreaseWithRawResponse:
             client.account_statements
         )
         self.files = files.AsyncFilesResourceWithRawResponse(client.files)
+        self.file_links = file_links.AsyncFileLinksResourceWithRawResponse(client.file_links)
         self.documents = documents.AsyncDocumentsResourceWithRawResponse(client.documents)
         self.exports = exports.AsyncExportsResourceWithRawResponse(client.exports)
         self.events = events.AsyncEventsResourceWithRawResponse(client.events)
@@ -1170,6 +1177,7 @@ class IncreaseWithStreamedResponse:
             client.account_statements
         )
         self.files = files.FilesResourceWithStreamingResponse(client.files)
+        self.file_links = file_links.FileLinksResourceWithStreamingResponse(client.file_links)
         self.documents = documents.DocumentsResourceWithStreamingResponse(client.documents)
         self.exports = exports.ExportsResourceWithStreamingResponse(client.exports)
         self.events = events.EventsResourceWithStreamingResponse(client.events)
@@ -1299,6 +1307,7 @@ class AsyncIncreaseWithStreamedResponse:
             client.account_statements
         )
         self.files = files.AsyncFilesResourceWithStreamingResponse(client.files)
+        self.file_links = file_links.AsyncFileLinksResourceWithStreamingResponse(client.file_links)
         self.documents = documents.AsyncDocumentsResourceWithStreamingResponse(client.documents)
         self.exports = exports.AsyncExportsResourceWithStreamingResponse(client.exports)
         self.events = events.AsyncEventsResourceWithStreamingResponse(client.events)
