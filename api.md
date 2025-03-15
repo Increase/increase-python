@@ -543,8 +543,6 @@ from increase.types import FileLink
 Methods:
 
 - <code title="post /file_links">client.file_links.<a href="./src/increase/resources/file_links.py">create</a>(\*\*<a href="src/increase/types/file_link_create_params.py">params</a>) -> <a href="./src/increase/types/file_link.py">FileLink</a></code>
-- <code title="get /file_links/{file_link_id}">client.file_links.<a href="./src/increase/resources/file_links.py">retrieve</a>(file_link_id) -> <a href="./src/increase/types/file_link.py">FileLink</a></code>
-- <code title="get /file_links">client.file_links.<a href="./src/increase/resources/file_links.py">list</a>(\*\*<a href="src/increase/types/file_link_list_params.py">params</a>) -> <a href="./src/increase/types/file_link.py">SyncPage[FileLink]</a></code>
 
 # Documents
 
