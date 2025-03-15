@@ -12,6 +12,7 @@ from .account import Account as Account
 from .lockbox import Lockbox as Lockbox
 from .program import Program as Program
 from .document import Document as Document
+from .file_link import FileLink as FileLink
 from .oauth_token import OAuthToken as OAuthToken
 from .transaction import Transaction as Transaction
 from .ach_transfer import ACHTransfer as ACHTransfer
@@ -60,6 +61,7 @@ from .account_create_params import AccountCreateParams as AccountCreateParams
 from .account_update_params import AccountUpdateParams as AccountUpdateParams
 from .bookkeeping_entry_set import BookkeepingEntrySet as BookkeepingEntrySet
 from .entity_confirm_params import EntityConfirmParams as EntityConfirmParams
+from .file_link_list_params import FileLinkListParams as FileLinkListParams
 from .inbound_check_deposit import InboundCheckDeposit as InboundCheckDeposit
 from .inbound_wire_transfer import InboundWireTransfer as InboundWireTransfer
 from .lockbox_create_params import LockboxCreateParams as LockboxCreateParams
@@ -67,6 +69,7 @@ from .lockbox_update_params import LockboxUpdateParams as LockboxUpdateParams
 from .physical_card_profile import PhysicalCardProfile as PhysicalCardProfile
 from .wire_drawdown_request import WireDrawdownRequest as WireDrawdownRequest
 from .account_balance_params import AccountBalanceParams as AccountBalanceParams
+from .file_link_create_params import FileLinkCreateParams as FileLinkCreateParams
 from .transaction_list_params import TransactionListParams as TransactionListParams
 from .ach_transfer_list_params import ACHTransferListParams as ACHTransferListParams
 from .card_dispute_list_params import CardDisputeListParams as CardDisputeListParams
