@@ -36,15 +36,15 @@ class FileLink(BaseModel):
     [idempotency](https://increase.com/documentation/idempotency-keys).
     """
 
-    public_download_url: str
-    """A URL where the File can be downloaded.
-
-    The URL will expire after the `expires_at` time. This URL is unauthenticated and
-    can be used to download the File without an Increase API key.
-    """
-
     type: Literal["file_link"]
     """A constant representing the object's type.
 
     For this resource it will always be `file_link`.
+    """
+
+    unauthenticated_url: str
+    """A URL where the File can be downloaded.
+
+    The URL will expire after the `expires_at` time. This URL is unauthenticated and
+    can be used to download the File without an Increase API key.
     """
