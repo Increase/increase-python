@@ -29,7 +29,9 @@ class File(BaseModel):
     download_url: Optional[str] = None
     """A URL from where the File can be downloaded at this point in time.
 
-    The location of this URL may change over time.
+    The location of this URL may change over time. This URL requires authentication
+    with your Increase API key. If you need a URL that does not require
+    authentication, create a File Link instead.
     """
 
     filename: Optional[str] = None

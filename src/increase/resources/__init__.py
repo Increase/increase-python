@@ -80,6 +80,14 @@ from .lockboxes import (
     LockboxesResourceWithStreamingResponse,
     AsyncLockboxesResourceWithStreamingResponse,
 )
+from .file_links import (
+    FileLinksResource,
+    AsyncFileLinksResource,
+    FileLinksResourceWithRawResponse,
+    AsyncFileLinksResourceWithRawResponse,
+    FileLinksResourceWithStreamingResponse,
+    AsyncFileLinksResourceWithStreamingResponse,
+)
 from .simulations import (
     SimulationsResource,
     AsyncSimulationsResource,
@@ -648,6 +656,12 @@ __all__ = [
     "AsyncFilesResourceWithRawResponse",
     "FilesResourceWithStreamingResponse",
     "AsyncFilesResourceWithStreamingResponse",
+    "FileLinksResource",
+    "AsyncFileLinksResource",
+    "FileLinksResourceWithRawResponse",
+    "AsyncFileLinksResourceWithRawResponse",
+    "FileLinksResourceWithStreamingResponse",
+    "AsyncFileLinksResourceWithStreamingResponse",
     "DocumentsResource",
     "AsyncDocumentsResource",
     "DocumentsResourceWithRawResponse",
