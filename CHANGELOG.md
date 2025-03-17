@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.209.2 (2025-03-17)
+
+Full Changelog: [v0.209.1...v0.209.2](https://github.com/Increase/increase-python/compare/v0.209.1...v0.209.2)
+
+### Bug Fixes
+
+* **ci:** remove publishing patch ([#1041](https://github.com/Increase/increase-python/issues/1041)) ([68a3dde](https://github.com/Increase/increase-python/commit/68a3dde737a60dc5586194c06673f10955515398))
+
 ## 0.209.1 (2025-03-17)
 
 Full Changelog: [v0.209.0...v0.209.1](https://github.com/Increase/increase-python/compare/v0.209.0...v0.209.1)
