@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.209.1 (2025-03-17)
+
+Full Changelog: [v0.209.0...v0.209.1](https://github.com/Increase/increase-python/compare/v0.209.0...v0.209.1)
+
+### Bug Fixes
+
+* **ci:** ensure pip is always available ([#1038](https://github.com/Increase/increase-python/issues/1038)) ([ec41993](https://github.com/Increase/increase-python/commit/ec4199394ccffb472b43e31950c330101fda2962))
+
 ## 0.209.0 (2025-03-15)
 
 Full Changelog: [v0.208.0...v0.209.0](https://github.com/Increase/increase-python/compare/v0.208.0...v0.209.0)
