@@ -40,7 +40,7 @@ class ProofOfAuthorizationRequestSubmissionCreateParams(TypedDict, total=False):
     """Whether the account ownership was validated with a microdeposit."""
 
     additional_evidence_file_id: str
-    """The File containing the check's front image."""
+    """File containing additional evidence."""
 
     authorizer_company: str
     """Company of the authorizer."""
