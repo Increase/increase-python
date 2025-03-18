@@ -96,7 +96,7 @@ class ProofOfAuthorizationRequestSubmissionsResource(SyncAPIResource):
 
           validated_account_ownership_with_microdeposit: Whether the account ownership was validated with a microdeposit.
 
-          additional_evidence_file_id: The File containing the check's front image.
+          additional_evidence_file_id: File containing additional evidence.
 
           authorizer_company: Company of the authorizer.
 
@@ -303,7 +303,7 @@ class AsyncProofOfAuthorizationRequestSubmissionsResource(AsyncAPIResource):
 
           validated_account_ownership_with_microdeposit: Whether the account ownership was validated with a microdeposit.
 
-          additional_evidence_file_id: The File containing the check's front image.
+          additional_evidence_file_id: File containing additional evidence.
 
           authorizer_company: Company of the authorizer.
 
