@@ -23,8 +23,6 @@ class FileCreateParams(TypedDict, total=False):
             "check_image_front",
             "check_image_back",
             "mailed_check_image",
-            "check_voucher_image",
-            "check_attachment_image",
             "check_attachment",
             "form_ss_4",
             "identity_document",
@@ -46,10 +44,6 @@ class FileCreateParams(TypedDict, total=False):
       deposits.
     - `check_image_back` - An image of the back of a check, used for check deposits.
     - `mailed_check_image` - An image of a check that was mailed to a recipient.
-    - `check_voucher_image` - An image to be printed on the bottom or voucher of a
-      check that you've requested Increase print.
-    - `check_attachment_image` - A document to be printed on an additional page and
-      mailed with a check that you've requested Increase print.
     - `check_attachment` - A document to be printed on an additional page and mailed
       with a check that you've requested Increase print.
     - `form_ss_4` - IRS Form SS-4.
