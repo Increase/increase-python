@@ -46,8 +46,6 @@ class File(BaseModel):
         "processed_check_image_front",
         "processed_check_image_back",
         "mailed_check_image",
-        "check_voucher_image",
-        "check_attachment_image",
         "check_attachment",
         "inbound_mail_item",
         "form_1099_int",
@@ -82,10 +80,6 @@ class File(BaseModel):
     - `processed_check_image_back` - An image of the back of a deposited check after
       processing by Increase and submission to the Federal Reserve.
     - `mailed_check_image` - An image of a check that was mailed to a recipient.
-    - `check_voucher_image` - An image to be printed on the bottom or voucher of a
-      check that you've requested Increase print.
-    - `check_attachment_image` - A document to be printed on an additional page and
-      mailed with a check that you've requested Increase print.
     - `check_attachment` - A document to be printed on an additional page and mailed
       with a check that you've requested Increase print.
     - `inbound_mail_item` - A scanned mail item sent to Increase.
