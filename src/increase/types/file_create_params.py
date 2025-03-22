@@ -25,6 +25,7 @@ class FileCreateParams(TypedDict, total=False):
             "mailed_check_image",
             "check_voucher_image",
             "check_attachment_image",
+            "check_attachment",
             "form_ss_4",
             "identity_document",
             "other",
@@ -47,8 +48,10 @@ class FileCreateParams(TypedDict, total=False):
     - `mailed_check_image` - An image of a check that was mailed to a recipient.
     - `check_voucher_image` - An image to be printed on the bottom or voucher of a
       check that you've requested Increase print.
-    - `check_attachment_image` - An image to be printed on an additional page and
+    - `check_attachment_image` - A document to be printed on an additional page and
       mailed with a check that you've requested Increase print.
+    - `check_attachment` - A document to be printed on an additional page and mailed
+      with a check that you've requested Increase print.
     - `form_ss_4` - IRS Form SS-4.
     - `identity_document` - An image of a government-issued ID.
     - `other` - A file purpose not covered by any of the other cases.
