@@ -152,6 +152,7 @@ class TestACHTransfers:
             external_account_id="external_account_id",
             idempotency_key="x",
             limit=1,
+            status={"in": ["pending_approval"]},
         )
         assert_matches_type(SyncPage[ACHTransfer], ach_transfer, path=["response"])
 
@@ -388,6 +389,7 @@ class TestAsyncACHTransfers:
             external_account_id="external_account_id",
             idempotency_key="x",
             limit=1,
+            status={"in": ["pending_approval"]},
         )
         assert_matches_type(AsyncPage[ACHTransfer], ach_transfer, path=["response"])
 

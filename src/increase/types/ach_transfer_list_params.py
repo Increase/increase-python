@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 
-from typing import Union
+from typing import List, Union
 from datetime import datetime
-from typing_extensions import Annotated, TypedDict
+from typing_extensions import Literal, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
-__all__ = ["ACHTransferListParams", "CreatedAt"]
+__all__ = ["ACHTransferListParams", "CreatedAt", "Status"]
 
 
 class ACHTransferListParams(TypedDict, total=False):
@@ -37,6 +37,8 @@ class ACHTransferListParams(TypedDict, total=False):
     The default (and maximum) is 100 objects.
     """
 
+    status: Status
+
 
 class CreatedAt(TypedDict, total=False):
     after: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
@@ -62,3 +64,28 @@ class CreatedAt(TypedDict, total=False):
     Return results on or before this
     [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
     """
+
+
+_StatusReservedKeywords = TypedDict(
+    "_StatusReservedKeywords",
+    {
+        "in": List[
+            Literal[
+                "pending_approval",
+                "pending_transfer_session_confirmation",
+                "canceled",
+                "pending_submission",
+                "pending_reviewing",
+                "requires_attention",
+                "rejected",
+                "submitted",
+                "returned",
+            ]
+        ],
+    },
+    total=False,
+)
+
+
+class Status(_StatusReservedKeywords, total=False):
+    pass
