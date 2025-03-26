@@ -137,6 +137,7 @@ class TestRealTimePaymentsTransfers:
             external_account_id="external_account_id",
             idempotency_key="x",
             limit=1,
+            status={"in": ["pending_approval"]},
         )
         assert_matches_type(SyncPage[RealTimePaymentsTransfer], real_time_payments_transfer, path=["response"])
 
@@ -280,6 +281,7 @@ class TestAsyncRealTimePaymentsTransfers:
             external_account_id="external_account_id",
             idempotency_key="x",
             limit=1,
+            status={"in": ["pending_approval"]},
         )
         assert_matches_type(AsyncPage[RealTimePaymentsTransfer], real_time_payments_transfer, path=["response"])
 
