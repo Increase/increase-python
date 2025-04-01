@@ -44,11 +44,12 @@ class TestEntities:
                     {
                         "individual": {
                             "address": {
-                                "city": "New York",
+                                "country": "x",
                                 "line1": "33 Liberty Street",
+                                "city": "New York",
+                                "line2": "x",
                                 "state": "NY",
                                 "zip": "10045",
-                                "line2": "x",
                             },
                             "date_of_birth": parse_date("1970-01-31"),
                             "identification": {
@@ -505,10 +506,8 @@ class TestEntities:
             beneficial_owner={
                 "individual": {
                     "address": {
-                        "city": "New York",
+                        "country": "US",
                         "line1": "33 Liberty Street",
-                        "state": "NY",
-                        "zip": "10045",
                     },
                     "date_of_birth": parse_date("1970-01-31"),
                     "identification": {
@@ -529,11 +528,12 @@ class TestEntities:
             beneficial_owner={
                 "individual": {
                     "address": {
-                        "city": "New York",
+                        "country": "US",
                         "line1": "33 Liberty Street",
+                        "city": "New York",
+                        "line2": "x",
                         "state": "NY",
                         "zip": "10045",
-                        "line2": "x",
                     },
                     "date_of_birth": parse_date("1970-01-31"),
                     "identification": {
@@ -574,10 +574,8 @@ class TestEntities:
             beneficial_owner={
                 "individual": {
                     "address": {
-                        "city": "New York",
+                        "country": "US",
                         "line1": "33 Liberty Street",
-                        "state": "NY",
-                        "zip": "10045",
                     },
                     "date_of_birth": parse_date("1970-01-31"),
                     "identification": {
@@ -602,10 +600,8 @@ class TestEntities:
             beneficial_owner={
                 "individual": {
                     "address": {
-                        "city": "New York",
+                        "country": "US",
                         "line1": "33 Liberty Street",
-                        "state": "NY",
-                        "zip": "10045",
                     },
                     "date_of_birth": parse_date("1970-01-31"),
                     "identification": {
@@ -633,10 +629,8 @@ class TestEntities:
                 beneficial_owner={
                     "individual": {
                         "address": {
-                            "city": "New York",
+                            "country": "US",
                             "line1": "33 Liberty Street",
-                            "state": "NY",
-                            "zip": "10045",
                         },
                         "date_of_birth": parse_date("1970-01-31"),
                         "identification": {
@@ -730,10 +724,8 @@ class TestEntities:
         entity = client.entities.update_beneficial_owner_address(
             entity_id="entity_n8y8tnk2p9339ti393yi",
             address={
-                "city": "New York",
+                "country": "US",
                 "line1": "33 Liberty Street",
-                "state": "NY",
-                "zip": "10045",
             },
             beneficial_owner_id="entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7",
         )
@@ -744,11 +736,12 @@ class TestEntities:
         entity = client.entities.update_beneficial_owner_address(
             entity_id="entity_n8y8tnk2p9339ti393yi",
             address={
-                "city": "New York",
+                "country": "US",
                 "line1": "33 Liberty Street",
+                "city": "New York",
+                "line2": "Unit 2",
                 "state": "NY",
                 "zip": "10045",
-                "line2": "Unit 2",
             },
             beneficial_owner_id="entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7",
         )
@@ -759,10 +752,8 @@ class TestEntities:
         response = client.entities.with_raw_response.update_beneficial_owner_address(
             entity_id="entity_n8y8tnk2p9339ti393yi",
             address={
-                "city": "New York",
+                "country": "US",
                 "line1": "33 Liberty Street",
-                "state": "NY",
-                "zip": "10045",
             },
             beneficial_owner_id="entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7",
         )
@@ -777,10 +768,8 @@ class TestEntities:
         with client.entities.with_streaming_response.update_beneficial_owner_address(
             entity_id="entity_n8y8tnk2p9339ti393yi",
             address={
-                "city": "New York",
+                "country": "US",
                 "line1": "33 Liberty Street",
-                "state": "NY",
-                "zip": "10045",
             },
             beneficial_owner_id="entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7",
         ) as response:
@@ -798,10 +787,8 @@ class TestEntities:
             client.entities.with_raw_response.update_beneficial_owner_address(
                 entity_id="",
                 address={
-                    "city": "New York",
+                    "country": "US",
                     "line1": "33 Liberty Street",
-                    "state": "NY",
-                    "zip": "10045",
                 },
                 beneficial_owner_id="entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7",
             )
@@ -875,11 +862,12 @@ class TestAsyncEntities:
                     {
                         "individual": {
                             "address": {
-                                "city": "New York",
+                                "country": "x",
                                 "line1": "33 Liberty Street",
+                                "city": "New York",
+                                "line2": "x",
                                 "state": "NY",
                                 "zip": "10045",
-                                "line2": "x",
                             },
                             "date_of_birth": parse_date("1970-01-31"),
                             "identification": {
@@ -1336,10 +1324,8 @@ class TestAsyncEntities:
             beneficial_owner={
                 "individual": {
                     "address": {
-                        "city": "New York",
+                        "country": "US",
                         "line1": "33 Liberty Street",
-                        "state": "NY",
-                        "zip": "10045",
                     },
                     "date_of_birth": parse_date("1970-01-31"),
                     "identification": {
@@ -1360,11 +1346,12 @@ class TestAsyncEntities:
             beneficial_owner={
                 "individual": {
                     "address": {
-                        "city": "New York",
+                        "country": "US",
                         "line1": "33 Liberty Street",
+                        "city": "New York",
+                        "line2": "x",
                         "state": "NY",
                         "zip": "10045",
-                        "line2": "x",
                     },
                     "date_of_birth": parse_date("1970-01-31"),
                     "identification": {
@@ -1405,10 +1392,8 @@ class TestAsyncEntities:
             beneficial_owner={
                 "individual": {
                     "address": {
-                        "city": "New York",
+                        "country": "US",
                         "line1": "33 Liberty Street",
-                        "state": "NY",
-                        "zip": "10045",
                     },
                     "date_of_birth": parse_date("1970-01-31"),
                     "identification": {
@@ -1433,10 +1418,8 @@ class TestAsyncEntities:
             beneficial_owner={
                 "individual": {
                     "address": {
-                        "city": "New York",
+                        "country": "US",
                         "line1": "33 Liberty Street",
-                        "state": "NY",
-                        "zip": "10045",
                     },
                     "date_of_birth": parse_date("1970-01-31"),
                     "identification": {
@@ -1464,10 +1447,8 @@ class TestAsyncEntities:
                 beneficial_owner={
                     "individual": {
                         "address": {
-                            "city": "New York",
+                            "country": "US",
                             "line1": "33 Liberty Street",
-                            "state": "NY",
-                            "zip": "10045",
                         },
                         "date_of_birth": parse_date("1970-01-31"),
                         "identification": {
@@ -1561,10 +1542,8 @@ class TestAsyncEntities:
         entity = await async_client.entities.update_beneficial_owner_address(
             entity_id="entity_n8y8tnk2p9339ti393yi",
             address={
-                "city": "New York",
+                "country": "US",
                 "line1": "33 Liberty Street",
-                "state": "NY",
-                "zip": "10045",
             },
             beneficial_owner_id="entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7",
         )
@@ -1575,11 +1554,12 @@ class TestAsyncEntities:
         entity = await async_client.entities.update_beneficial_owner_address(
             entity_id="entity_n8y8tnk2p9339ti393yi",
             address={
-                "city": "New York",
+                "country": "US",
                 "line1": "33 Liberty Street",
+                "city": "New York",
+                "line2": "Unit 2",
                 "state": "NY",
                 "zip": "10045",
-                "line2": "Unit 2",
             },
             beneficial_owner_id="entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7",
         )
@@ -1590,10 +1570,8 @@ class TestAsyncEntities:
         response = await async_client.entities.with_raw_response.update_beneficial_owner_address(
             entity_id="entity_n8y8tnk2p9339ti393yi",
             address={
-                "city": "New York",
+                "country": "US",
                 "line1": "33 Liberty Street",
-                "state": "NY",
-                "zip": "10045",
             },
             beneficial_owner_id="entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7",
         )
@@ -1608,10 +1586,8 @@ class TestAsyncEntities:
         async with async_client.entities.with_streaming_response.update_beneficial_owner_address(
             entity_id="entity_n8y8tnk2p9339ti393yi",
             address={
-                "city": "New York",
+                "country": "US",
                 "line1": "33 Liberty Street",
-                "state": "NY",
-                "zip": "10045",
             },
             beneficial_owner_id="entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7",
         ) as response:
@@ -1629,10 +1605,8 @@ class TestAsyncEntities:
             await async_client.entities.with_raw_response.update_beneficial_owner_address(
                 entity_id="",
                 address={
-                    "city": "New York",
+                    "country": "US",
                     "line1": "33 Liberty Street",
-                    "state": "NY",
-                    "zip": "10045",
                 },
                 beneficial_owner_id="entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7",
             )

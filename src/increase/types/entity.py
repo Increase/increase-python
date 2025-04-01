@@ -59,8 +59,11 @@ class CorporationAddress(BaseModel):
 
 
 class CorporationBeneficialOwnerIndividualAddress(BaseModel):
-    city: str
-    """The city of the address."""
+    city: Optional[str] = None
+    """The city, district, town, or village of the address."""
+
+    country: str
+    """The two-letter ISO 3166-1 alpha-2 code for the country of the address."""
 
     line1: str
     """The first line of the address."""
@@ -68,14 +71,14 @@ class CorporationBeneficialOwnerIndividualAddress(BaseModel):
     line2: Optional[str] = None
     """The second line of the address."""
 
-    state: str
+    state: Optional[str] = None
     """
-    The two-letter United States Postal Service (USPS) abbreviation for the state of
-    the address.
+    The two-letter United States Postal Service (USPS) abbreviation for the US
+    state, province, or region of the address.
     """
 
-    zip: str
-    """The ZIP code of the address."""
+    zip: Optional[str] = None
+    """The ZIP or postal code of the address."""
 
 
 class CorporationBeneficialOwnerIndividualIdentification(BaseModel):
