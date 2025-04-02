@@ -21,6 +21,7 @@ __all__ = [
     "CardAuthorizationVerificationCardholderAddress",
     "DigitalWalletAuthentication",
     "DigitalWalletToken",
+    "DigitalWalletTokenDevice",
 ]
 
 
@@ -503,6 +504,11 @@ class DigitalWalletAuthentication(BaseModel):
     """
 
 
+class DigitalWalletTokenDevice(BaseModel):
+    identifier: Optional[str] = None
+    """ID assigned to the device by the digital wallet provider."""
+
+
 class DigitalWalletToken(BaseModel):
     card_id: str
     """The identifier of the Card that is being tokenized."""
@@ -522,6 +528,9 @@ class DigitalWalletToken(BaseModel):
     - `approve` - Approve the provisioning request.
     - `decline` - Decline the provisioning request.
     """
+
+    device: DigitalWalletTokenDevice
+    """Device that is being used to provision the digital wallet token."""
 
     digital_wallet: Literal["apple_pay", "google_pay", "samsung_pay", "unknown"]
     """The digital wallet app being used.
