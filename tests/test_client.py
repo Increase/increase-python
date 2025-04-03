@@ -1739,7 +1739,7 @@ class TestAsyncIncrease:
         import threading
 
         from increase._utils import asyncify
-        from increase._base_client import get_platform 
+        from increase._base_client import get_platform
 
         async def test_main() -> None:
             result = await asyncify(get_platform)()
