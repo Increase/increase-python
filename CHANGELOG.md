@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.219.0 (2025-04-04)
+
+Full Changelog: [v0.218.0...v0.219.0](https://github.com/Increase/increase-python/compare/v0.218.0...v0.219.0)
+
+### Features
+
+* **api:** api update ([#1075](https://github.com/Increase/increase-python/issues/1075)) ([9c5683a](https://github.com/Increase/increase-python/commit/9c5683a2bb84799108f5c77fb57c39e30da7ade3))
+
+
+### Chores
+
+* **internal:** remove trailing character ([#1073](https://github.com/Increase/increase-python/issues/1073)) ([be91b0d](https://github.com/Increase/increase-python/commit/be91b0d09dd9e8ee713e750ead0b4f57b3a360f8))
+
 ## 0.218.0 (2025-04-02)
 
 Full Changelog: [v0.217.0...v0.218.0](https://github.com/Increase/increase-python/compare/v0.217.0...v0.218.0)
