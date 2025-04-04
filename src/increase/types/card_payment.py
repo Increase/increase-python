@@ -99,7 +99,7 @@ class ElementCardAuthenticationChallenge(BaseModel):
 
     - `text_message` - The one-time code was sent via text message.
     - `email` - The one-time code was sent via email.
-    - `none_available` - The one-time code was not successfully delievered.
+    - `none_available` - The one-time code was not successfully delivered.
     """
 
     verification_value: Optional[str] = None
@@ -420,7 +420,7 @@ class ElementCardAuthorizationVerificationCardholderAddress(BaseModel):
     ]
     """The address verification result returned to the card network.
 
-    - `not_checked` - No adress was provided in the authorization request.
+    - `not_checked` - No address was provided in the authorization request.
     - `postal_code_match_address_not_checked` - Postal code matches, but the street
       address was not verified.
     - `postal_code_match_address_no_match` - Postal code matches, but the street
@@ -837,7 +837,7 @@ class ElementCardDeclineVerificationCardholderAddress(BaseModel):
     ]
     """The address verification result returned to the card network.
 
-    - `not_checked` - No adress was provided in the authorization request.
+    - `not_checked` - No address was provided in the authorization request.
     - `postal_code_match_address_not_checked` - Postal code matches, but the street
       address was not verified.
     - `postal_code_match_address_no_match` - Postal code matches, but the street
@@ -2691,7 +2691,7 @@ class ElementCardValidationVerificationCardholderAddress(BaseModel):
     ]
     """The address verification result returned to the card network.
 
-    - `not_checked` - No adress was provided in the authorization request.
+    - `not_checked` - No address was provided in the authorization request.
     - `postal_code_match_address_not_checked` - Postal code matches, but the street
       address was not verified.
     - `postal_code_match_address_no_match` - Postal code matches, but the street
