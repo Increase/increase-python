@@ -19,3 +19,6 @@ class PhysicalCardProfileCreateParams(TypedDict, total=False):
 
     front_image_file_id: Required[str]
     """The identifier of the File containing the physical card's front image."""
+
+    program_id: Required[str]
+    """The identifier for the Program that this Physical Card Profile falls under."""
