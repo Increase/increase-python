@@ -27,6 +27,7 @@ class TestPhysicalCardProfiles:
             contact_phone="+16505046304",
             description="My Card Profile",
             front_image_file_id="file_o6aex13wm1jcc36sgcj1",
+            program_id="program_i2v2os4mwza1oetokh9i",
         )
         assert_matches_type(PhysicalCardProfile, physical_card_profile, path=["response"])
 
@@ -37,6 +38,7 @@ class TestPhysicalCardProfiles:
             contact_phone="+16505046304",
             description="My Card Profile",
             front_image_file_id="file_o6aex13wm1jcc36sgcj1",
+            program_id="program_i2v2os4mwza1oetokh9i",
         )
 
         assert response.is_closed is True
@@ -51,6 +53,7 @@ class TestPhysicalCardProfiles:
             contact_phone="+16505046304",
             description="My Card Profile",
             front_image_file_id="file_o6aex13wm1jcc36sgcj1",
+            program_id="program_i2v2os4mwza1oetokh9i",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -241,6 +244,7 @@ class TestAsyncPhysicalCardProfiles:
             contact_phone="+16505046304",
             description="My Card Profile",
             front_image_file_id="file_o6aex13wm1jcc36sgcj1",
+            program_id="program_i2v2os4mwza1oetokh9i",
         )
         assert_matches_type(PhysicalCardProfile, physical_card_profile, path=["response"])
 
@@ -251,6 +255,7 @@ class TestAsyncPhysicalCardProfiles:
             contact_phone="+16505046304",
             description="My Card Profile",
             front_image_file_id="file_o6aex13wm1jcc36sgcj1",
+            program_id="program_i2v2os4mwza1oetokh9i",
         )
 
         assert response.is_closed is True
@@ -265,6 +270,7 @@ class TestAsyncPhysicalCardProfiles:
             contact_phone="+16505046304",
             description="My Card Profile",
             front_image_file_id="file_o6aex13wm1jcc36sgcj1",
+            program_id="program_i2v2os4mwza1oetokh9i",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
