@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.220.0 (2025-04-08)
+
+Full Changelog: [v0.219.0...v0.220.0](https://github.com/Increase/increase-python/compare/v0.219.0...v0.220.0)
+
+### Features
+
+* **api:** api update ([#1081](https://github.com/Increase/increase-python/issues/1081)) ([bf9f1d2](https://github.com/Increase/increase-python/commit/bf9f1d28e4f7e9b8049099d1259157fc2d6e9678))
+
+
+### Chores
+
+* **internal:** slight transform perf improvement ([#1077](https://github.com/Increase/increase-python/issues/1077)) ([1b09823](https://github.com/Increase/increase-python/commit/1b0982301aed716c628e012da48a4254ce533d34))
+* slight wording improvement in README ([#1080](https://github.com/Increase/increase-python/issues/1080)) ([6e5b894](https://github.com/Increase/increase-python/commit/6e5b894a04dd5df1666606216a2951a3bab0877e))
+* **tests:** improve enum examples ([#1079](https://github.com/Increase/increase-python/issues/1079)) ([5e0510e](https://github.com/Increase/increase-python/commit/5e0510e200ce2ed2cffe7ddd57fd98ae89f742db))
+
 ## 0.219.0 (2025-04-04)
 
 Full Changelog: [v0.218.0...v0.219.0](https://github.com/Increase/increase-python/compare/v0.218.0...v0.219.0)
