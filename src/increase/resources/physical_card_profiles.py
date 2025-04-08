@@ -56,6 +56,7 @@ class PhysicalCardProfilesResource(SyncAPIResource):
         contact_phone: str,
         description: str,
         front_image_file_id: str,
+        program_id: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -76,6 +77,8 @@ class PhysicalCardProfilesResource(SyncAPIResource):
 
           front_image_file_id: The identifier of the File containing the physical card's front image.
 
+          program_id: The identifier for the Program that this Physical Card Profile falls under.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -94,6 +97,7 @@ class PhysicalCardProfilesResource(SyncAPIResource):
                     "contact_phone": contact_phone,
                     "description": description,
                     "front_image_file_id": front_image_file_id,
+                    "program_id": program_id,
                 },
                 physical_card_profile_create_params.PhysicalCardProfileCreateParams,
             ),
@@ -343,6 +347,7 @@ class AsyncPhysicalCardProfilesResource(AsyncAPIResource):
         contact_phone: str,
         description: str,
         front_image_file_id: str,
+        program_id: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -363,6 +368,8 @@ class AsyncPhysicalCardProfilesResource(AsyncAPIResource):
 
           front_image_file_id: The identifier of the File containing the physical card's front image.
 
+          program_id: The identifier for the Program that this Physical Card Profile falls under.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -381,6 +388,7 @@ class AsyncPhysicalCardProfilesResource(AsyncAPIResource):
                     "contact_phone": contact_phone,
                     "description": description,
                     "front_image_file_id": front_image_file_id,
+                    "program_id": program_id,
                 },
                 physical_card_profile_create_params.PhysicalCardProfileCreateParams,
             ),
