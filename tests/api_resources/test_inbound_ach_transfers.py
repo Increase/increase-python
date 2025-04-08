@@ -163,7 +163,7 @@ class TestInboundACHTransfers:
     def test_method_decline_with_all_params(self, client: Increase) -> None:
         inbound_ach_transfer = client.inbound_ach_transfers.decline(
             inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
-            reason="insufficient_funds",
+            reason="payment_stopped",
         )
         assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
 
@@ -204,7 +204,7 @@ class TestInboundACHTransfers:
     def test_method_transfer_return(self, client: Increase) -> None:
         inbound_ach_transfer = client.inbound_ach_transfers.transfer_return(
             inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
-            reason="insufficient_funds",
+            reason="payment_stopped",
         )
         assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
 
@@ -212,7 +212,7 @@ class TestInboundACHTransfers:
     def test_raw_response_transfer_return(self, client: Increase) -> None:
         response = client.inbound_ach_transfers.with_raw_response.transfer_return(
             inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
-            reason="insufficient_funds",
+            reason="payment_stopped",
         )
 
         assert response.is_closed is True
@@ -224,7 +224,7 @@ class TestInboundACHTransfers:
     def test_streaming_response_transfer_return(self, client: Increase) -> None:
         with client.inbound_ach_transfers.with_streaming_response.transfer_return(
             inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
-            reason="insufficient_funds",
+            reason="payment_stopped",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -241,7 +241,7 @@ class TestInboundACHTransfers:
         ):
             client.inbound_ach_transfers.with_raw_response.transfer_return(
                 inbound_ach_transfer_id="",
-                reason="insufficient_funds",
+                reason="payment_stopped",
             )
 
 
@@ -390,7 +390,7 @@ class TestAsyncInboundACHTransfers:
     async def test_method_decline_with_all_params(self, async_client: AsyncIncrease) -> None:
         inbound_ach_transfer = await async_client.inbound_ach_transfers.decline(
             inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
-            reason="insufficient_funds",
+            reason="payment_stopped",
         )
         assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
 
@@ -431,7 +431,7 @@ class TestAsyncInboundACHTransfers:
     async def test_method_transfer_return(self, async_client: AsyncIncrease) -> None:
         inbound_ach_transfer = await async_client.inbound_ach_transfers.transfer_return(
             inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
-            reason="insufficient_funds",
+            reason="payment_stopped",
         )
         assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
 
@@ -439,7 +439,7 @@ class TestAsyncInboundACHTransfers:
     async def test_raw_response_transfer_return(self, async_client: AsyncIncrease) -> None:
         response = await async_client.inbound_ach_transfers.with_raw_response.transfer_return(
             inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
-            reason="insufficient_funds",
+            reason="payment_stopped",
         )
 
         assert response.is_closed is True
@@ -451,7 +451,7 @@ class TestAsyncInboundACHTransfers:
     async def test_streaming_response_transfer_return(self, async_client: AsyncIncrease) -> None:
         async with async_client.inbound_ach_transfers.with_streaming_response.transfer_return(
             inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
-            reason="insufficient_funds",
+            reason="payment_stopped",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -468,5 +468,5 @@ class TestAsyncInboundACHTransfers:
         ):
             await async_client.inbound_ach_transfers.with_raw_response.transfer_return(
                 inbound_ach_transfer_id="",
-                reason="insufficient_funds",
+                reason="payment_stopped",
             )

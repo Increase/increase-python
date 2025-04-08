@@ -77,7 +77,7 @@ class TestEntities:
                             "name": "Ian Crease",
                             "confirmed_no_us_tax_id": True,
                         },
-                        "prongs": ["ownership"],
+                        "prongs": ["control"],
                         "company_title": "CEO",
                     }
                 ],
@@ -516,7 +516,7 @@ class TestEntities:
                     },
                     "name": "Ian Crease",
                 },
-                "prongs": ["ownership"],
+                "prongs": ["control"],
             },
         )
         assert_matches_type(Entity, entity, path=["response"])
@@ -561,7 +561,7 @@ class TestEntities:
                     "name": "Ian Crease",
                     "confirmed_no_us_tax_id": True,
                 },
-                "prongs": ["ownership"],
+                "prongs": ["control"],
                 "company_title": "CEO",
             },
         )
@@ -584,7 +584,7 @@ class TestEntities:
                     },
                     "name": "Ian Crease",
                 },
-                "prongs": ["ownership"],
+                "prongs": ["control"],
             },
         )
 
@@ -610,7 +610,7 @@ class TestEntities:
                     },
                     "name": "Ian Crease",
                 },
-                "prongs": ["ownership"],
+                "prongs": ["control"],
             },
         ) as response:
             assert not response.is_closed
@@ -639,7 +639,7 @@ class TestEntities:
                         },
                         "name": "Ian Crease",
                     },
-                    "prongs": ["ownership"],
+                    "prongs": ["control"],
                 },
             )
 
@@ -895,7 +895,7 @@ class TestAsyncEntities:
                             "name": "Ian Crease",
                             "confirmed_no_us_tax_id": True,
                         },
-                        "prongs": ["ownership"],
+                        "prongs": ["control"],
                         "company_title": "CEO",
                     }
                 ],
@@ -1334,7 +1334,7 @@ class TestAsyncEntities:
                     },
                     "name": "Ian Crease",
                 },
-                "prongs": ["ownership"],
+                "prongs": ["control"],
             },
         )
         assert_matches_type(Entity, entity, path=["response"])
@@ -1379,7 +1379,7 @@ class TestAsyncEntities:
                     "name": "Ian Crease",
                     "confirmed_no_us_tax_id": True,
                 },
-                "prongs": ["ownership"],
+                "prongs": ["control"],
                 "company_title": "CEO",
             },
         )
@@ -1402,7 +1402,7 @@ class TestAsyncEntities:
                     },
                     "name": "Ian Crease",
                 },
-                "prongs": ["ownership"],
+                "prongs": ["control"],
             },
         )
 
@@ -1428,7 +1428,7 @@ class TestAsyncEntities:
                     },
                     "name": "Ian Crease",
                 },
-                "prongs": ["ownership"],
+                "prongs": ["control"],
             },
         ) as response:
             assert not response.is_closed
@@ -1457,7 +1457,7 @@ class TestAsyncEntities:
                         },
                         "name": "Ian Crease",
                     },
-                    "prongs": ["ownership"],
+                    "prongs": ["control"],
                 },
             )
 
