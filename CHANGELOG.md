@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.222.0 (2025-04-11)
+
+Full Changelog: [v0.221.0...v0.222.0](https://github.com/Increase/increase-python/compare/v0.221.0...v0.222.0)
+
+### Features
+
+* **api:** api update ([882f23a](https://github.com/Increase/increase-python/commit/882f23a04c5e1ffcd70ad8e0606ff239d6f8e4e3))
+* **api:** api update ([37aea5f](https://github.com/Increase/increase-python/commit/37aea5f7013dc8ab8d62af04f2b7242ff865ee6b))
+
+
+### Bug Fixes
+
+* **perf:** optimize some hot paths ([47997d9](https://github.com/Increase/increase-python/commit/47997d9c45f371f53d270ec5b1e2259b4463af9d))
+* **perf:** skip traversing types for NotGiven values ([b49443b](https://github.com/Increase/increase-python/commit/b49443b68419103351123fb86ec38abf3de3d7b2))
+
+
+### Chores
+
+* **internal:** expand CI branch coverage ([#1084](https://github.com/Increase/increase-python/issues/1084)) ([871f3bc](https://github.com/Increase/increase-python/commit/871f3bc1ff3e534707be922b49f1b6c8045cfa30))
+* **internal:** reduce CI branch coverage ([a32531a](https://github.com/Increase/increase-python/commit/a32531a5579b47fe22960e93b8107904a2c84139))
+
 ## 0.221.0 (2025-04-08)
 
 Full Changelog: [v0.220.0...v0.221.0](https://github.com/Increase/increase-python/compare/v0.220.0...v0.221.0)

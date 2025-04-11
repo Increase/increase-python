@@ -48,6 +48,7 @@ class TestCheckTransfers:
                 },
                 "memo": "Check payment",
                 "recipient_name": "Ian Crease",
+                "attachment_file_id": "attachment_file_id",
                 "check_number": "x",
                 "note": "x",
                 "return_address": {
@@ -58,6 +59,7 @@ class TestCheckTransfers:
                     "state": "x",
                     "line2": "x",
                 },
+                "shipping_method": "usps_first_class",
                 "signature_text": "Ian Crease",
             },
             require_approval=True,
@@ -331,6 +333,7 @@ class TestAsyncCheckTransfers:
                 },
                 "memo": "Check payment",
                 "recipient_name": "Ian Crease",
+                "attachment_file_id": "attachment_file_id",
                 "check_number": "x",
                 "note": "x",
                 "return_address": {
@@ -341,6 +344,7 @@ class TestAsyncCheckTransfers:
                     "state": "x",
                     "line2": "x",
                 },
+                "shipping_method": "usps_first_class",
                 "signature_text": "Ian Crease",
             },
             require_approval=True,
