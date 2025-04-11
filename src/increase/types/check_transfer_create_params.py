@@ -100,6 +100,14 @@ class PhysicalCheck(TypedDict, total=False):
     recipient_name: Required[str]
     """The name that will be printed on the check in the 'To:' field."""
 
+    attachment_file_id: str
+    """The ID of a File to be attached to the check.
+
+    This must have `purpose: check_attachment`. For details on pricing and
+    restrictions, see
+    https://increase.com/documentation/originating-checks#printing-checks .
+    """
+
     check_number: str
     """The check number Increase should print on the check.
 
@@ -116,6 +124,16 @@ class PhysicalCheck(TypedDict, total=False):
 
     If omitted this will default to an Increase-owned address that will mark checks
     as delivery failed and shred them.
+    """
+
+    shipping_method: Literal["usps_first_class", "fedex_overnight"]
+    """How to ship the check.
+
+    For details on pricing, timing, and restrictions, see
+    https://increase.com/documentation/originating-checks#printing-checks .
+
+    - `usps_first_class` - USPS First Class
+    - `fedex_overnight` - FedEx Overnight
     """
 
     signature_text: str
