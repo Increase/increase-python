@@ -63,10 +63,7 @@ class TestCheckTransfers:
                 "signature_text": "Ian Crease",
             },
             require_approval=True,
-            third_party={
-                "check_number": "x",
-                "recipient_name": "x",
-            },
+            third_party={"recipient_name": "x"},
         )
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
@@ -348,10 +345,7 @@ class TestAsyncCheckTransfers:
                 "signature_text": "Ian Crease",
             },
             require_approval=True,
-            third_party={
-                "check_number": "x",
-                "recipient_name": "x",
-            },
+            third_party={"recipient_name": "x"},
         )
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 

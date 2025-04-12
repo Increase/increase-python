@@ -144,14 +144,6 @@ class PhysicalCheck(TypedDict, total=False):
 
 
 class ThirdParty(TypedDict, total=False):
-    check_number: str
-    """The check number you will print on the check.
-
-    This should not contain leading zeroes. If this is omitted, Increase will
-    generate a check number for you; you should inspect the response and use that
-    check number.
-    """
-
     recipient_name: str
     """The pay-to name you will print on the check.
 
