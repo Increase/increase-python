@@ -55,6 +55,9 @@ class PhysicalCardProfile(BaseModel):
     group.
     """
 
+    program_id: str
+    """The identifier for the Program this Physical Card Profile belongs to."""
+
     status: Literal["pending_creating", "pending_reviewing", "rejected", "pending_submitting", "active", "archived"]
     """The status of the Physical Card Profile.
 
