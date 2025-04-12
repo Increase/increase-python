@@ -168,6 +168,9 @@ class PhysicalCheckTrackingUpdate(BaseModel):
 
 
 class PhysicalCheck(BaseModel):
+    attachment_file_id: Optional[str] = None
+    """The ID of the file for the check attachment."""
+
     mailing_address: PhysicalCheckMailingAddress
     """Details for where Increase will mail the check."""
 
