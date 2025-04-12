@@ -271,9 +271,6 @@ class Submission(BaseModel):
 
 
 class ThirdParty(BaseModel):
-    check_number: Optional[str] = None
-    """The check number that you will print on the check."""
-
     recipient_name: Optional[str] = None
     """The name that you will print on the check."""
 
