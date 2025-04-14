@@ -658,6 +658,9 @@ class ACHTransfer(BaseModel):
     company_entry_description: Optional[str] = None
     """The description of the transfer you set to be shown to the recipient."""
 
+    company_id: str
+    """The company ID associated with the transfer."""
+
     company_name: Optional[str] = None
     """The name by which the recipient knows you."""
 
