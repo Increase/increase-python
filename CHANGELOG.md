@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.224.0 (2025-04-14)
+
+Full Changelog: [v0.223.0...v0.224.0](https://github.com/Increase/increase-python/compare/v0.223.0...v0.224.0)
+
+### Features
+
+* **api:** api update ([7a32701](https://github.com/Increase/increase-python/commit/7a3270141a750ea64166f8e983d5fcf25c74744d))
+
+
+### Bug Fixes
+
+* **client:** correctly reuse idempotency key ([2b430d3](https://github.com/Increase/increase-python/commit/2b430d3d9885b3f6d4ca636f0fbe874bfc6f6e9d))
+
+
+### Chores
+
+* **internal:** update pyright settings ([c86db1f](https://github.com/Increase/increase-python/commit/c86db1fd22aebec5c5555b1432e872b614d6840e))
+
 ## 0.223.0 (2025-04-12)
 
 Full Changelog: [v0.222.0...v0.223.0](https://github.com/Increase/increase-python/compare/v0.222.0...v0.223.0)
