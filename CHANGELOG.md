@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.225.0 (2025-04-17)
+
+Full Changelog: [v0.224.0...v0.225.0](https://github.com/Increase/increase-python/compare/v0.224.0...v0.225.0)
+
+### Features
+
+* **api:** api update ([22145b2](https://github.com/Increase/increase-python/commit/22145b2d5206b998b000083892696e314c5d0abf))
+
+
+### Chores
+
+* **internal:** base client updates ([b2b089f](https://github.com/Increase/increase-python/commit/b2b089fd061dd300e1dd4fc7654ae980242b46fb))
+* **internal:** bump pyright version ([f4c56e7](https://github.com/Increase/increase-python/commit/f4c56e78793efe52e052f408bdd8408d81f69b24))
+
 ## 0.224.0 (2025-04-14)
 
 Full Changelog: [v0.223.0...v0.224.0](https://github.com/Increase/increase-python/compare/v0.223.0...v0.224.0)

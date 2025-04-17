@@ -1,20 +1,25 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Optional
+from typing import List, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["ProofOfAuthorizationRequestSubmission"]
+__all__ = ["ProofOfAuthorizationRequestSubmission", "AdditionalEvidenceFile"]
+
+
+class AdditionalEvidenceFile(BaseModel):
+    file_id: str
+    """The File identifier."""
 
 
 class ProofOfAuthorizationRequestSubmission(BaseModel):
     id: str
     """The Proof of Authorization Request Submission identifier."""
 
-    additional_evidence_file_id: Optional[str] = None
-    """File containing additional evidence."""
+    additional_evidence_files: List[AdditionalEvidenceFile]
+    """Files containing additional evidence."""
 
     authorization_terms: str
     """Terms of authorization."""
