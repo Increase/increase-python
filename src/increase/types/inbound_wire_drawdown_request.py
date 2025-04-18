@@ -49,7 +49,7 @@ class InboundWireDrawdownRequest(BaseModel):
     message_to_recipient: Optional[str] = None
     """A message from the drawdown request's originator."""
 
-    originator_account_number: str
+    originator_account_number: Optional[str] = None
     """The drawdown request's originator's account number."""
 
     originator_address_line1: Optional[str] = None
