@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.227.0 (2025-04-22)
+
+Full Changelog: [v0.226.0...v0.227.0](https://github.com/Increase/increase-python/compare/v0.226.0...v0.227.0)
+
+### Features
+
+* **api:** api update ([5e98192](https://github.com/Increase/increase-python/commit/5e98192ea7dffc0febf40ec3012a89363be2b309))
+
+
+### Bug Fixes
+
+* **pydantic v1:** more robust ModelField.annotation check ([cd0a860](https://github.com/Increase/increase-python/commit/cd0a860cd80ae601aabc9f6696d8ae9febddd964))
+
+
+### Chores
+
+* **ci:** add timeout thresholds for CI jobs ([bc084c1](https://github.com/Increase/increase-python/commit/bc084c1938920a7f65b7666e1574723927a8e6ff))
+* **internal:** fix list file params ([070f8cb](https://github.com/Increase/increase-python/commit/070f8cb3c8862e81c49567a9dfabc79da6584d4d))
+* **internal:** import reformatting ([f897ac6](https://github.com/Increase/increase-python/commit/f897ac686513263d5df50c643d6794adfde6bbf5))
+* **internal:** refactor retries to not use recursion ([74659c4](https://github.com/Increase/increase-python/commit/74659c434aa4d928d7038f5560eab5be7d609026))
+
 ## 0.226.0 (2025-04-18)
 
 Full Changelog: [v0.225.0...v0.226.0](https://github.com/Increase/increase-python/compare/v0.225.0...v0.226.0)
