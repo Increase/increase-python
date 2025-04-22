@@ -109,7 +109,6 @@ from .account_transfer_create_params import AccountTransferCreateParams as Accou
 from .event_subscription_list_params import EventSubscriptionListParams as EventSubscriptionListParams
 from .external_account_create_params import ExternalAccountCreateParams as ExternalAccountCreateParams
 from .external_account_update_params import ExternalAccountUpdateParams as ExternalAccountUpdateParams
-from .proof_of_authorization_request import ProofOfAuthorizationRequest as ProofOfAuthorizationRequest
 from .ach_prenotification_list_params import ACHPrenotificationListParams as ACHPrenotificationListParams
 from .bookkeeping_account_list_params import BookkeepingAccountListParams as BookkeepingAccountListParams
 from .intrafi_exclusion_create_params import IntrafiExclusionCreateParams as IntrafiExclusionCreateParams
@@ -162,14 +161,8 @@ from .intrafi_account_enrollment_create_params import (
 from .inbound_wire_drawdown_request_list_params import (
     InboundWireDrawdownRequestListParams as InboundWireDrawdownRequestListParams,
 )
-from .proof_of_authorization_request_submission import (
-    ProofOfAuthorizationRequestSubmission as ProofOfAuthorizationRequestSubmission,
-)
 from .real_time_payments_transfer_create_params import (
     RealTimePaymentsTransferCreateParams as RealTimePaymentsTransferCreateParams,
-)
-from .proof_of_authorization_request_list_params import (
-    ProofOfAuthorizationRequestListParams as ProofOfAuthorizationRequestListParams,
 )
 from .inbound_ach_transfer_transfer_return_params import (
     InboundACHTransferTransferReturnParams as InboundACHTransferTransferReturnParams,
@@ -179,12 +172,6 @@ from .entity_update_beneficial_owner_address_params import (
 )
 from .inbound_real_time_payments_transfer_list_params import (
     InboundRealTimePaymentsTransferListParams as InboundRealTimePaymentsTransferListParams,
-)
-from .proof_of_authorization_request_submission_list_params import (
-    ProofOfAuthorizationRequestSubmissionListParams as ProofOfAuthorizationRequestSubmissionListParams,
-)
-from .proof_of_authorization_request_submission_create_params import (
-    ProofOfAuthorizationRequestSubmissionCreateParams as ProofOfAuthorizationRequestSubmissionCreateParams,
 )
 from .inbound_ach_transfer_create_notification_of_change_params import (
     InboundACHTransferCreateNotificationOfChangeParams as InboundACHTransferCreateNotificationOfChangeParams,
