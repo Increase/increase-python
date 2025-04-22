@@ -409,14 +409,6 @@ from .inbound_wire_drawdown_requests import (
     InboundWireDrawdownRequestsResourceWithStreamingResponse,
     AsyncInboundWireDrawdownRequestsResourceWithStreamingResponse,
 )
-from .proof_of_authorization_requests import (
-    ProofOfAuthorizationRequestsResource,
-    AsyncProofOfAuthorizationRequestsResource,
-    ProofOfAuthorizationRequestsResourceWithRawResponse,
-    AsyncProofOfAuthorizationRequestsResourceWithRawResponse,
-    ProofOfAuthorizationRequestsResourceWithStreamingResponse,
-    AsyncProofOfAuthorizationRequestsResourceWithStreamingResponse,
-)
 from .inbound_real_time_payments_transfers import (
     InboundRealTimePaymentsTransfersResource,
     AsyncInboundRealTimePaymentsTransfersResource,
@@ -424,14 +416,6 @@ from .inbound_real_time_payments_transfers import (
     AsyncInboundRealTimePaymentsTransfersResourceWithRawResponse,
     InboundRealTimePaymentsTransfersResourceWithStreamingResponse,
     AsyncInboundRealTimePaymentsTransfersResourceWithStreamingResponse,
-)
-from .proof_of_authorization_request_submissions import (
-    ProofOfAuthorizationRequestSubmissionsResource,
-    AsyncProofOfAuthorizationRequestSubmissionsResource,
-    ProofOfAuthorizationRequestSubmissionsResourceWithRawResponse,
-    AsyncProofOfAuthorizationRequestSubmissionsResourceWithRawResponse,
-    ProofOfAuthorizationRequestSubmissionsResourceWithStreamingResponse,
-    AsyncProofOfAuthorizationRequestSubmissionsResourceWithStreamingResponse,
 )
 
 __all__ = [
@@ -635,18 +619,6 @@ __all__ = [
     "AsyncProgramsResourceWithRawResponse",
     "ProgramsResourceWithStreamingResponse",
     "AsyncProgramsResourceWithStreamingResponse",
-    "ProofOfAuthorizationRequestsResource",
-    "AsyncProofOfAuthorizationRequestsResource",
-    "ProofOfAuthorizationRequestsResourceWithRawResponse",
-    "AsyncProofOfAuthorizationRequestsResourceWithRawResponse",
-    "ProofOfAuthorizationRequestsResourceWithStreamingResponse",
-    "AsyncProofOfAuthorizationRequestsResourceWithStreamingResponse",
-    "ProofOfAuthorizationRequestSubmissionsResource",
-    "AsyncProofOfAuthorizationRequestSubmissionsResource",
-    "ProofOfAuthorizationRequestSubmissionsResourceWithRawResponse",
-    "AsyncProofOfAuthorizationRequestSubmissionsResourceWithRawResponse",
-    "ProofOfAuthorizationRequestSubmissionsResourceWithStreamingResponse",
-    "AsyncProofOfAuthorizationRequestSubmissionsResourceWithStreamingResponse",
     "AccountStatementsResource",
     "AsyncAccountStatementsResource",
     "AccountStatementsResourceWithRawResponse",
