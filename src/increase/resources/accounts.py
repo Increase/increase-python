@@ -7,17 +7,9 @@ from datetime import datetime
 
 import httpx
 
-from ..types import (
-    account_list_params,
-    account_create_params,
-    account_update_params,
-    account_balance_params,
-)
+from ..types import account_list_params, account_create_params, account_update_params, account_balance_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from .._utils import (
-    maybe_transform,
-    async_maybe_transform,
-)
+from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
