@@ -76,9 +76,7 @@ from .resources import (
     intrafi_account_enrollments,
     real_time_payments_transfers,
     inbound_wire_drawdown_requests,
-    proof_of_authorization_requests,
     inbound_real_time_payments_transfers,
-    proof_of_authorization_request_submissions,
 )
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
 from ._exceptions import IncreaseError, APIStatusError
@@ -141,10 +139,6 @@ class Increase(SyncAPIClient):
     entities: entities.EntitiesResource
     supplemental_documents: supplemental_documents.SupplementalDocumentsResource
     programs: programs.ProgramsResource
-    proof_of_authorization_requests: proof_of_authorization_requests.ProofOfAuthorizationRequestsResource
-    proof_of_authorization_request_submissions: (
-        proof_of_authorization_request_submissions.ProofOfAuthorizationRequestSubmissionsResource
-    )
     account_statements: account_statements.AccountStatementsResource
     files: files.FilesResource
     file_links: file_links.FileLinksResource
@@ -290,12 +284,6 @@ class Increase(SyncAPIClient):
         self.entities = entities.EntitiesResource(self)
         self.supplemental_documents = supplemental_documents.SupplementalDocumentsResource(self)
         self.programs = programs.ProgramsResource(self)
-        self.proof_of_authorization_requests = proof_of_authorization_requests.ProofOfAuthorizationRequestsResource(
-            self
-        )
-        self.proof_of_authorization_request_submissions = (
-            proof_of_authorization_request_submissions.ProofOfAuthorizationRequestSubmissionsResource(self)
-        )
         self.account_statements = account_statements.AccountStatementsResource(self)
         self.files = files.FilesResource(self)
         self.file_links = file_links.FileLinksResource(self)
@@ -508,10 +496,6 @@ class AsyncIncrease(AsyncAPIClient):
     entities: entities.AsyncEntitiesResource
     supplemental_documents: supplemental_documents.AsyncSupplementalDocumentsResource
     programs: programs.AsyncProgramsResource
-    proof_of_authorization_requests: proof_of_authorization_requests.AsyncProofOfAuthorizationRequestsResource
-    proof_of_authorization_request_submissions: (
-        proof_of_authorization_request_submissions.AsyncProofOfAuthorizationRequestSubmissionsResource
-    )
     account_statements: account_statements.AsyncAccountStatementsResource
     files: files.AsyncFilesResource
     file_links: file_links.AsyncFileLinksResource
@@ -659,12 +643,6 @@ class AsyncIncrease(AsyncAPIClient):
         self.entities = entities.AsyncEntitiesResource(self)
         self.supplemental_documents = supplemental_documents.AsyncSupplementalDocumentsResource(self)
         self.programs = programs.AsyncProgramsResource(self)
-        self.proof_of_authorization_requests = (
-            proof_of_authorization_requests.AsyncProofOfAuthorizationRequestsResource(self)
-        )
-        self.proof_of_authorization_request_submissions = (
-            proof_of_authorization_request_submissions.AsyncProofOfAuthorizationRequestSubmissionsResource(self)
-        )
         self.account_statements = account_statements.AsyncAccountStatementsResource(self)
         self.files = files.AsyncFilesResource(self)
         self.file_links = file_links.AsyncFileLinksResource(self)
@@ -912,16 +890,6 @@ class IncreaseWithRawResponse:
             client.supplemental_documents
         )
         self.programs = programs.ProgramsResourceWithRawResponse(client.programs)
-        self.proof_of_authorization_requests = (
-            proof_of_authorization_requests.ProofOfAuthorizationRequestsResourceWithRawResponse(
-                client.proof_of_authorization_requests
-            )
-        )
-        self.proof_of_authorization_request_submissions = (
-            proof_of_authorization_request_submissions.ProofOfAuthorizationRequestSubmissionsResourceWithRawResponse(
-                client.proof_of_authorization_request_submissions
-            )
-        )
         self.account_statements = account_statements.AccountStatementsResourceWithRawResponse(client.account_statements)
         self.files = files.FilesResourceWithRawResponse(client.files)
         self.file_links = file_links.FileLinksResourceWithRawResponse(client.file_links)
@@ -1032,14 +1000,6 @@ class AsyncIncreaseWithRawResponse:
             client.supplemental_documents
         )
         self.programs = programs.AsyncProgramsResourceWithRawResponse(client.programs)
-        self.proof_of_authorization_requests = (
-            proof_of_authorization_requests.AsyncProofOfAuthorizationRequestsResourceWithRawResponse(
-                client.proof_of_authorization_requests
-            )
-        )
-        self.proof_of_authorization_request_submissions = proof_of_authorization_request_submissions.AsyncProofOfAuthorizationRequestSubmissionsResourceWithRawResponse(
-            client.proof_of_authorization_request_submissions
-        )
         self.account_statements = account_statements.AsyncAccountStatementsResourceWithRawResponse(
             client.account_statements
         )
@@ -1160,14 +1120,6 @@ class IncreaseWithStreamedResponse:
             client.supplemental_documents
         )
         self.programs = programs.ProgramsResourceWithStreamingResponse(client.programs)
-        self.proof_of_authorization_requests = (
-            proof_of_authorization_requests.ProofOfAuthorizationRequestsResourceWithStreamingResponse(
-                client.proof_of_authorization_requests
-            )
-        )
-        self.proof_of_authorization_request_submissions = proof_of_authorization_request_submissions.ProofOfAuthorizationRequestSubmissionsResourceWithStreamingResponse(
-            client.proof_of_authorization_request_submissions
-        )
         self.account_statements = account_statements.AccountStatementsResourceWithStreamingResponse(
             client.account_statements
         )
@@ -1290,14 +1242,6 @@ class AsyncIncreaseWithStreamedResponse:
             client.supplemental_documents
         )
         self.programs = programs.AsyncProgramsResourceWithStreamingResponse(client.programs)
-        self.proof_of_authorization_requests = (
-            proof_of_authorization_requests.AsyncProofOfAuthorizationRequestsResourceWithStreamingResponse(
-                client.proof_of_authorization_requests
-            )
-        )
-        self.proof_of_authorization_request_submissions = proof_of_authorization_request_submissions.AsyncProofOfAuthorizationRequestSubmissionsResourceWithStreamingResponse(
-            client.proof_of_authorization_request_submissions
-        )
         self.account_statements = account_statements.AsyncAccountStatementsResourceWithStreamingResponse(
             client.account_statements
         )

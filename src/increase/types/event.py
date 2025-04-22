@@ -91,8 +91,6 @@ class Event(BaseModel):
         "physical_card_profile.updated",
         "proof_of_authorization_request.created",
         "proof_of_authorization_request.updated",
-        "proof_of_authorization_request_submission.created",
-        "proof_of_authorization_request_submission.updated",
         "real_time_decision.card_authorization_requested",
         "real_time_decision.digital_wallet_token_requested",
         "real_time_decision.digital_wallet_authentication_requested",
@@ -218,10 +216,6 @@ class Event(BaseModel):
       Authorization Request is created.
     - `proof_of_authorization_request.updated` - Occurs whenever a Proof of
       Authorization Request is updated.
-    - `proof_of_authorization_request_submission.created` - Occurs whenever a Proof
-      of Authorization Request Submission is created.
-    - `proof_of_authorization_request_submission.updated` - Occurs whenever a Proof
-      of Authorization Request Submission is updated.
     - `real_time_decision.card_authorization_requested` - Occurs whenever a
       Real-Time Decision is created in response to a card authorization.
     - `real_time_decision.digital_wallet_token_requested` - Occurs whenever a
