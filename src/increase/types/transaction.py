@@ -59,6 +59,7 @@ __all__ = [
     "SourceInternalSource",
     "SourceRealTimePaymentsTransferAcknowledgement",
     "SourceSampleFunds",
+    "SourceSwiftTransferIntention",
     "SourceWireTransferIntention",
 ]
 
@@ -2262,6 +2263,11 @@ class SourceSampleFunds(BaseModel):
     """Where the sample funds came from."""
 
 
+class SourceSwiftTransferIntention(BaseModel):
+    transfer_id: str
+    """The identifier of the Swift Transfer that led to this Transaction."""
+
+
 class SourceWireTransferIntention(BaseModel):
     account_number: str
     """The destination account number."""
@@ -2396,6 +2402,7 @@ class Source(BaseModel):
         "real_time_payments_transfer_acknowledgement",
         "sample_funds",
         "wire_transfer_intention",
+        "swift_transfer_intention",
         "other",
     ]
     """The type of the resource.
@@ -2462,6 +2469,8 @@ class Source(BaseModel):
       object.
     - `wire_transfer_intention` - Wire Transfer Intention: details will be under the
       `wire_transfer_intention` object.
+    - `swift_transfer_intention` - Swift Transfer Intention: details will be under
+      the `swift_transfer_intention` object.
     - `other` - The Transaction was made for an undocumented or deprecated reason.
     """
 
@@ -2614,6 +2623,13 @@ class Source(BaseModel):
 
     This field will be present in the JSON response if and only if `category` is
     equal to `sample_funds`. Sample funds for testing purposes.
+    """
+
+    swift_transfer_intention: Optional[SourceSwiftTransferIntention] = None
+    """A Swift Transfer Intention object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `swift_transfer_intention`. A Swift Transfer initiated via Increase.
     """
 
     wire_transfer_intention: Optional[SourceWireTransferIntention] = None

@@ -68,6 +68,7 @@ _CategoryReservedKeywords = TypedDict(
                 "real_time_payments_transfer_acknowledgement",
                 "sample_funds",
                 "wire_transfer_intention",
+                "swift_transfer_intention",
                 "other",
             ]
         ],

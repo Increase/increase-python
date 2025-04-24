@@ -23,6 +23,7 @@ __all__ = [
     "SourceInboundFundsHold",
     "SourceInboundWireTransferReversal",
     "SourceRealTimePaymentsTransferInstruction",
+    "SourceSwiftTransferInstruction",
     "SourceWireTransferInstruction",
 ]
 
@@ -565,6 +566,11 @@ class SourceRealTimePaymentsTransferInstruction(BaseModel):
     """
 
 
+class SourceSwiftTransferInstruction(BaseModel):
+    transfer_id: str
+    """The identifier of the Swift Transfer that led to this Pending Transaction."""
+
+
 class SourceWireTransferInstruction(BaseModel):
     account_number: str
     """The account number for the destination account."""
@@ -618,6 +624,7 @@ class Source(BaseModel):
         "real_time_payments_transfer_instruction",
         "wire_transfer_instruction",
         "inbound_wire_transfer_reversal",
+        "swift_transfer_instruction",
         "other",
     ]
     """The type of the resource.
@@ -644,6 +651,8 @@ class Source(BaseModel):
       the `wire_transfer_instruction` object.
     - `inbound_wire_transfer_reversal` - Inbound Wire Transfer Reversal: details
       will be under the `inbound_wire_transfer_reversal` object.
+    - `swift_transfer_instruction` - Swift Transfer Instruction: details will be
+      under the `swift_transfer_instruction` object.
     - `other` - The Pending Transaction was made for an undocumented or deprecated
       reason.
     """
@@ -691,6 +700,13 @@ class Source(BaseModel):
 
     This field will be present in the JSON response if and only if `category` is
     equal to `real_time_payments_transfer_instruction`.
+    """
+
+    swift_transfer_instruction: Optional[SourceSwiftTransferInstruction] = None
+    """A Swift Transfer Instruction object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `swift_transfer_instruction`.
     """
 
     wire_transfer_instruction: Optional[SourceWireTransferInstruction] = None
