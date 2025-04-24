@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.228.0 (2025-04-24)
+
+Full Changelog: [v0.227.0...v0.228.0](https://github.com/Increase/increase-python/compare/v0.227.0...v0.228.0)
+
+### Features
+
+* **api:** api update ([1139166](https://github.com/Increase/increase-python/commit/11391665c27d358de5f7284b250ae7ad50d118b5))
+
+
+### Chores
+
+* broadly detect json family of content-type headers ([69ebf3e](https://github.com/Increase/increase-python/commit/69ebf3e22c0fa7df80edb1c38c1d58f0268e046d))
+* **ci:** only use depot for staging repos ([ae8012c](https://github.com/Increase/increase-python/commit/ae8012cb06b7e02cf663da86cbf3cc38d325abb1))
+* **ci:** run on more branches and use depot runners ([35c441c](https://github.com/Increase/increase-python/commit/35c441c24490df240abe9ae49dd831f2e37942f1))
+
 ## 0.227.0 (2025-04-22)
 
 Full Changelog: [v0.226.0...v0.227.0](https://github.com/Increase/increase-python/compare/v0.226.0...v0.227.0)
