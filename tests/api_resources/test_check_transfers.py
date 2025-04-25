@@ -38,6 +38,7 @@ class TestCheckTransfers:
             amount=1000,
             fulfillment_method="physical_check",
             source_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
+            check_number="x",
             physical_check={
                 "mailing_address": {
                     "city": "New York",
@@ -49,7 +50,6 @@ class TestCheckTransfers:
                 "memo": "Check payment",
                 "recipient_name": "Ian Crease",
                 "attachment_file_id": "attachment_file_id",
-                "check_number": "x",
                 "note": "x",
                 "return_address": {
                     "city": "x",
@@ -320,6 +320,7 @@ class TestAsyncCheckTransfers:
             amount=1000,
             fulfillment_method="physical_check",
             source_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
+            check_number="x",
             physical_check={
                 "mailing_address": {
                     "city": "New York",
@@ -331,7 +332,6 @@ class TestAsyncCheckTransfers:
                 "memo": "Check payment",
                 "recipient_name": "Ian Crease",
                 "attachment_file_id": "attachment_file_id",
-                "check_number": "x",
                 "note": "x",
                 "return_address": {
                     "city": "x",
