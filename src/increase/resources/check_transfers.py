@@ -51,6 +51,7 @@ class CheckTransfersResource(SyncAPIResource):
         amount: int,
         fulfillment_method: Literal["physical_check", "third_party"],
         source_account_number_id: str,
+        check_number: str | NotGiven = NOT_GIVEN,
         physical_check: check_transfer_create_params.PhysicalCheck | NotGiven = NOT_GIVEN,
         require_approval: bool | NotGiven = NOT_GIVEN,
         third_party: check_transfer_create_params.ThirdParty | NotGiven = NOT_GIVEN,
@@ -80,6 +81,10 @@ class CheckTransfersResource(SyncAPIResource):
           source_account_number_id: The identifier of the Account Number from which to send the transfer and print
               on the check.
 
+          check_number: The check number Increase should use for the check. This should not contain
+              leading zeroes and must be unique across the `source_account_number`. If this is
+              omitted, Increase will generate a check number for you.
+
           physical_check: Details relating to the physical check that Increase will print and mail. This
               is required if `fulfillment_method` is equal to `physical_check`. It must not be
               included if any other `fulfillment_method` is provided.
@@ -108,6 +113,7 @@ class CheckTransfersResource(SyncAPIResource):
                     "amount": amount,
                     "fulfillment_method": fulfillment_method,
                     "source_account_number_id": source_account_number_id,
+                    "check_number": check_number,
                     "physical_check": physical_check,
                     "require_approval": require_approval,
                     "third_party": third_party,
@@ -384,6 +390,7 @@ class AsyncCheckTransfersResource(AsyncAPIResource):
         amount: int,
         fulfillment_method: Literal["physical_check", "third_party"],
         source_account_number_id: str,
+        check_number: str | NotGiven = NOT_GIVEN,
         physical_check: check_transfer_create_params.PhysicalCheck | NotGiven = NOT_GIVEN,
         require_approval: bool | NotGiven = NOT_GIVEN,
         third_party: check_transfer_create_params.ThirdParty | NotGiven = NOT_GIVEN,
@@ -413,6 +420,10 @@ class AsyncCheckTransfersResource(AsyncAPIResource):
           source_account_number_id: The identifier of the Account Number from which to send the transfer and print
               on the check.
 
+          check_number: The check number Increase should use for the check. This should not contain
+              leading zeroes and must be unique across the `source_account_number`. If this is
+              omitted, Increase will generate a check number for you.
+
           physical_check: Details relating to the physical check that Increase will print and mail. This
               is required if `fulfillment_method` is equal to `physical_check`. It must not be
               included if any other `fulfillment_method` is provided.
@@ -441,6 +452,7 @@ class AsyncCheckTransfersResource(AsyncAPIResource):
                     "amount": amount,
                     "fulfillment_method": fulfillment_method,
                     "source_account_number_id": source_account_number_id,
+                    "check_number": check_number,
                     "physical_check": physical_check,
                     "require_approval": require_approval,
                     "third_party": third_party,

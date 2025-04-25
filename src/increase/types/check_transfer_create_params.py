@@ -35,6 +35,14 @@ class CheckTransferCreateParams(TypedDict, total=False):
     on the check.
     """
 
+    check_number: str
+    """The check number Increase should use for the check.
+
+    This should not contain leading zeroes and must be unique across the
+    `source_account_number`. If this is omitted, Increase will generate a check
+    number for you.
+    """
+
     physical_check: PhysicalCheck
     """Details relating to the physical check that Increase will print and mail.
 
@@ -106,14 +114,6 @@ class PhysicalCheck(TypedDict, total=False):
     This must have `purpose: check_attachment`. For details on pricing and
     restrictions, see
     https://increase.com/documentation/originating-checks#printing-checks .
-    """
-
-    check_number: str
-    """The check number Increase should print on the check.
-
-    This should not contain leading zeroes and must be unique across the
-    `source_account_number`. If this is omitted, Increase will generate a check
-    number for you.
     """
 
     note: str
