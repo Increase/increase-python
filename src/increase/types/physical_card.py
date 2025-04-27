@@ -1,12 +1,12 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Optional
+from typing import List, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["PhysicalCard", "Cardholder", "Shipment", "ShipmentAddress", "ShipmentTracking"]
+__all__ = ["PhysicalCard", "Cardholder", "Shipment", "ShipmentAddress", "ShipmentTracking", "ShipmentTrackingUpdate"]
 
 
 class Cardholder(BaseModel):
@@ -40,6 +40,27 @@ class ShipmentAddress(BaseModel):
     """The US state of the shipping address."""
 
 
+class ShipmentTrackingUpdate(BaseModel):
+    category: Literal["in_transit", "processed_for_delivery", "delivered", "returned_to_sender"]
+    """The type of tracking event.
+
+    - `in_transit` - The physical card is in transit.
+    - `processed_for_delivery` - The physical card has been processed for delivery.
+    - `delivered` - The physical card has been delivered.
+    - `returned_to_sender` - Delivery failed and the physical card was returned to
+      sender.
+    """
+
+    created_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+    the tracking event took place.
+    """
+
+    postal_code: str
+    """The postal code where the event took place."""
+
+
 class ShipmentTracking(BaseModel):
     number: str
     """The tracking number."""
@@ -56,6 +77,9 @@ class ShipmentTracking(BaseModel):
     the fulfillment provider marked the card as ready for pick-up by the shipment
     carrier.
     """
+
+    updates: List[ShipmentTrackingUpdate]
+    """Tracking updates relating to the physical card's delivery."""
 
 
 class Shipment(BaseModel):
