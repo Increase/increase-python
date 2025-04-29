@@ -6,7 +6,23 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["InboundWireTransfer"]
+__all__ = ["InboundWireTransfer", "Reversal"]
+
+
+class Reversal(BaseModel):
+    reason: Literal["duplicate", "creditor_request"]
+    """The reason for the reversal.
+
+    - `duplicate` - The inbound wire transfer was a duplicate.
+    - `creditor_request` - The recipient of the wire transfer requested the funds be
+      returned to the sender.
+    """
+
+    reversed_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+    the transfer was reversed.
+    """
 
 
 class InboundWireTransfer(BaseModel):
@@ -85,6 +101,12 @@ class InboundWireTransfer(BaseModel):
 
     originator_to_beneficiary_information_line4: Optional[str] = None
     """A free-form message set by the wire originator."""
+
+    reversal: Optional[Reversal] = None
+    """
+    Information about the reversal of the inbound wire transfer if it has been
+    reversed.
+    """
 
     sender_reference: Optional[str] = None
     """The sending bank's reference number for the wire transfer."""

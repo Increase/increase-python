@@ -2,11 +2,13 @@
 
 from __future__ import annotations
 
+from typing_extensions import Literal
+
 import httpx
 
-from ..types import inbound_wire_transfer_list_params
+from ..types import inbound_wire_transfer_list_params, inbound_wire_transfer_reverse_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from .._utils import maybe_transform
+from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -139,6 +141,60 @@ class InboundWireTransfersResource(SyncAPIResource):
             model=InboundWireTransfer,
         )
 
+    def reverse(
+        self,
+        inbound_wire_transfer_id: str,
+        *,
+        reason: Literal["duplicate", "creditor_request"],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> InboundWireTransfer:
+        """
+        Reverse an Inbound Wire Transfer
+
+        Args:
+          inbound_wire_transfer_id: The identifier of the Inbound Wire Transfer to reverse.
+
+          reason: Reason for the reversal.
+
+              - `duplicate` - The inbound wire transfer was a duplicate.
+              - `creditor_request` - The recipient of the wire transfer requested the funds be
+                returned to the sender.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not inbound_wire_transfer_id:
+            raise ValueError(
+                f"Expected a non-empty value for `inbound_wire_transfer_id` but received {inbound_wire_transfer_id!r}"
+            )
+        return self._post(
+            f"/inbound_wire_transfers/{inbound_wire_transfer_id}/reverse",
+            body=maybe_transform(
+                {"reason": reason}, inbound_wire_transfer_reverse_params.InboundWireTransferReverseParams
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=InboundWireTransfer,
+        )
+
 
 class AsyncInboundWireTransfersResource(AsyncAPIResource):
     @cached_property
@@ -257,6 +313,60 @@ class AsyncInboundWireTransfersResource(AsyncAPIResource):
             model=InboundWireTransfer,
         )
 
+    async def reverse(
+        self,
+        inbound_wire_transfer_id: str,
+        *,
+        reason: Literal["duplicate", "creditor_request"],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> InboundWireTransfer:
+        """
+        Reverse an Inbound Wire Transfer
+
+        Args:
+          inbound_wire_transfer_id: The identifier of the Inbound Wire Transfer to reverse.
+
+          reason: Reason for the reversal.
+
+              - `duplicate` - The inbound wire transfer was a duplicate.
+              - `creditor_request` - The recipient of the wire transfer requested the funds be
+                returned to the sender.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not inbound_wire_transfer_id:
+            raise ValueError(
+                f"Expected a non-empty value for `inbound_wire_transfer_id` but received {inbound_wire_transfer_id!r}"
+            )
+        return await self._post(
+            f"/inbound_wire_transfers/{inbound_wire_transfer_id}/reverse",
+            body=await async_maybe_transform(
+                {"reason": reason}, inbound_wire_transfer_reverse_params.InboundWireTransferReverseParams
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=InboundWireTransfer,
+        )
+
 
 class InboundWireTransfersResourceWithRawResponse:
     def __init__(self, inbound_wire_transfers: InboundWireTransfersResource) -> None:
@@ -267,6 +377,9 @@ class InboundWireTransfersResourceWithRawResponse:
         )
         self.list = to_raw_response_wrapper(
             inbound_wire_transfers.list,
+        )
+        self.reverse = to_raw_response_wrapper(
+            inbound_wire_transfers.reverse,
         )
 
 
@@ -280,6 +393,9 @@ class AsyncInboundWireTransfersResourceWithRawResponse:
         self.list = async_to_raw_response_wrapper(
             inbound_wire_transfers.list,
         )
+        self.reverse = async_to_raw_response_wrapper(
+            inbound_wire_transfers.reverse,
+        )
 
 
 class InboundWireTransfersResourceWithStreamingResponse:
@@ -292,6 +408,9 @@ class InboundWireTransfersResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             inbound_wire_transfers.list,
         )
+        self.reverse = to_streamed_response_wrapper(
+            inbound_wire_transfers.reverse,
+        )
 
 
 class AsyncInboundWireTransfersResourceWithStreamingResponse:
@@ -303,4 +422,7 @@ class AsyncInboundWireTransfersResourceWithStreamingResponse:
         )
         self.list = async_to_streamed_response_wrapper(
             inbound_wire_transfers.list,
+        )
+        self.reverse = async_to_streamed_response_wrapper(
+            inbound_wire_transfers.reverse,
         )
