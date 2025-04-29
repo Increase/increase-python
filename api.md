@@ -275,6 +275,7 @@ Methods:
 
 - <code title="get /inbound_wire_transfers/{inbound_wire_transfer_id}">client.inbound_wire_transfers.<a href="./src/increase/resources/inbound_wire_transfers.py">retrieve</a>(inbound_wire_transfer_id) -> <a href="./src/increase/types/inbound_wire_transfer.py">InboundWireTransfer</a></code>
 - <code title="get /inbound_wire_transfers">client.inbound_wire_transfers.<a href="./src/increase/resources/inbound_wire_transfers.py">list</a>(\*\*<a href="src/increase/types/inbound_wire_transfer_list_params.py">params</a>) -> <a href="./src/increase/types/inbound_wire_transfer.py">SyncPage[InboundWireTransfer]</a></code>
+- <code title="post /inbound_wire_transfers/{inbound_wire_transfer_id}/reverse">client.inbound_wire_transfers.<a href="./src/increase/resources/inbound_wire_transfers.py">reverse</a>(inbound_wire_transfer_id, \*\*<a href="src/increase/types/inbound_wire_transfer_reverse_params.py">params</a>) -> <a href="./src/increase/types/inbound_wire_transfer.py">InboundWireTransfer</a></code>
 
 # WireDrawdownRequests
 
