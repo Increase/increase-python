@@ -51,14 +51,20 @@ class ShipmentTrackingUpdate(BaseModel):
       sender.
     """
 
+    city: Optional[str] = None
+    """The city where the event took place."""
+
     created_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the tracking event took place.
     """
 
-    postal_code: str
+    postal_code: Optional[str] = None
     """The postal code where the event took place."""
+
+    state: Optional[str] = None
+    """The state where the event took place."""
 
 
 class ShipmentTracking(BaseModel):
