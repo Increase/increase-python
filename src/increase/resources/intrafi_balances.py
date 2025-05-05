@@ -50,8 +50,11 @@ class IntrafiBalancesResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> IntrafiBalance:
-        """
-        Get IntraFi balances by bank
+        """Returns the IntraFi balance for the given account.
+
+        IntraFi may sweep funds to
+        multiple banks. This endpoint will include both the total balance and the amount
+        swept to each institution.
 
         Args:
           account_id: The identifier of the Account to get balances for.
@@ -106,8 +109,11 @@ class AsyncIntrafiBalancesResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> IntrafiBalance:
-        """
-        Get IntraFi balances by bank
+        """Returns the IntraFi balance for the given account.
+
+        IntraFi may sweep funds to
+        multiple banks. This endpoint will include both the total balance and the amount
+        swept to each institution.
 
         Args:
           account_id: The identifier of the Account to get balances for.
