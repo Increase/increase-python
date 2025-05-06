@@ -41,6 +41,12 @@ class ShipmentAddress(BaseModel):
 
 
 class ShipmentTrackingUpdate(BaseModel):
+    carrier_estimated_delivery_at: Optional[datetime] = None
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time when the
+    carrier expects the card to be delivered.
+    """
+
     category: Literal["in_transit", "processed_for_delivery", "delivered", "returned_to_sender"]
     """The type of tracking event.
 
