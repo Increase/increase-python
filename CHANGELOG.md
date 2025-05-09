@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.236.1 (2025-05-09)
+
+Full Changelog: [v0.236.0...v0.236.1](https://github.com/Increase/increase-python/compare/v0.236.0...v0.236.1)
+
+### Bug Fixes
+
+* **package:** support direct resource imports ([15bc5e4](https://github.com/Increase/increase-python/commit/15bc5e45b482d4d63ad5122aef6cff7e30e0ecb8))
+
+
+### Chores
+
+* **internal:** avoid errors for isinstance checks on proxies ([4c21372](https://github.com/Increase/increase-python/commit/4c2137212fa8dc577c9fec8393a52c41309702f8))
+
+
+### Documentation
+
+* remove or fix invalid readme examples ([d76e9fa](https://github.com/Increase/increase-python/commit/d76e9fab6e2ad92f3f2775747f3b54439f684496))
+
 ## 0.236.0 (2025-05-07)
 
 Full Changelog: [v0.235.0...v0.236.0](https://github.com/Increase/increase-python/compare/v0.235.0...v0.236.0)
