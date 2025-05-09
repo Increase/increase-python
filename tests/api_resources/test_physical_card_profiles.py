@@ -32,6 +32,21 @@ class TestPhysicalCardProfiles:
         assert_matches_type(PhysicalCardProfile, physical_card_profile, path=["response"])
 
     @parametrize
+    def test_method_create_with_all_params(self, client: Increase) -> None:
+        physical_card_profile = client.physical_card_profiles.create(
+            carrier_image_file_id="file_h6v7mtipe119os47ehlu",
+            contact_phone="+16505046304",
+            description="My Card Profile",
+            front_image_file_id="file_o6aex13wm1jcc36sgcj1",
+            program_id="program_i2v2os4mwza1oetokh9i",
+            front_text={
+                "line1": "x",
+                "line2": "x",
+            },
+        )
+        assert_matches_type(PhysicalCardProfile, physical_card_profile, path=["response"])
+
+    @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
         response = client.physical_card_profiles.with_raw_response.create(
             carrier_image_file_id="file_h6v7mtipe119os47ehlu",
@@ -245,6 +260,21 @@ class TestAsyncPhysicalCardProfiles:
             description="My Card Profile",
             front_image_file_id="file_o6aex13wm1jcc36sgcj1",
             program_id="program_i2v2os4mwza1oetokh9i",
+        )
+        assert_matches_type(PhysicalCardProfile, physical_card_profile, path=["response"])
+
+    @parametrize
+    async def test_method_create_with_all_params(self, async_client: AsyncIncrease) -> None:
+        physical_card_profile = await async_client.physical_card_profiles.create(
+            carrier_image_file_id="file_h6v7mtipe119os47ehlu",
+            contact_phone="+16505046304",
+            description="My Card Profile",
+            front_image_file_id="file_o6aex13wm1jcc36sgcj1",
+            program_id="program_i2v2os4mwza1oetokh9i",
+            front_text={
+                "line1": "x",
+                "line2": "x",
+            },
         )
         assert_matches_type(PhysicalCardProfile, physical_card_profile, path=["response"])
 

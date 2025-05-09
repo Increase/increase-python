@@ -54,6 +54,7 @@ class PhysicalCardProfilesResource(SyncAPIResource):
         description: str,
         front_image_file_id: str,
         program_id: str,
+        front_text: physical_card_profile_create_params.FrontText | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -76,6 +77,9 @@ class PhysicalCardProfilesResource(SyncAPIResource):
 
           program_id: The identifier for the Program that this Physical Card Profile falls under.
 
+          front_text: Text printed on the front of the card. Reach out to
+              [support@increase.com](mailto:support@increase.com) for more information.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -95,6 +99,7 @@ class PhysicalCardProfilesResource(SyncAPIResource):
                     "description": description,
                     "front_image_file_id": front_image_file_id,
                     "program_id": program_id,
+                    "front_text": front_text,
                 },
                 physical_card_profile_create_params.PhysicalCardProfileCreateParams,
             ),
@@ -345,6 +350,7 @@ class AsyncPhysicalCardProfilesResource(AsyncAPIResource):
         description: str,
         front_image_file_id: str,
         program_id: str,
+        front_text: physical_card_profile_create_params.FrontText | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -367,6 +373,9 @@ class AsyncPhysicalCardProfilesResource(AsyncAPIResource):
 
           program_id: The identifier for the Program that this Physical Card Profile falls under.
 
+          front_text: Text printed on the front of the card. Reach out to
+              [support@increase.com](mailto:support@increase.com) for more information.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -386,6 +395,7 @@ class AsyncPhysicalCardProfilesResource(AsyncAPIResource):
                     "description": description,
                     "front_image_file_id": front_image_file_id,
                     "program_id": program_id,
+                    "front_text": front_text,
                 },
                 physical_card_profile_create_params.PhysicalCardProfileCreateParams,
             ),
