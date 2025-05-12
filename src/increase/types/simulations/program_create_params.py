@@ -10,3 +10,6 @@ __all__ = ["ProgramCreateParams"]
 class ProgramCreateParams(TypedDict, total=False):
     name: Required[str]
     """The name of the program being added."""
+
+    reserve_account_id: str
+    """The identifier of the Account the Program should be added to is for."""

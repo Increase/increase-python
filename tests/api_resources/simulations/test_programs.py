@@ -25,6 +25,14 @@ class TestPrograms:
         assert_matches_type(Program, program, path=["response"])
 
     @parametrize
+    def test_method_create_with_all_params(self, client: Increase) -> None:
+        program = client.simulations.programs.create(
+            name="For Benefit Of",
+            reserve_account_id="reserve_account_id",
+        )
+        assert_matches_type(Program, program, path=["response"])
+
+    @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
         response = client.simulations.programs.with_raw_response.create(
             name="For Benefit Of",
@@ -56,6 +64,14 @@ class TestAsyncPrograms:
     async def test_method_create(self, async_client: AsyncIncrease) -> None:
         program = await async_client.simulations.programs.create(
             name="For Benefit Of",
+        )
+        assert_matches_type(Program, program, path=["response"])
+
+    @parametrize
+    async def test_method_create_with_all_params(self, async_client: AsyncIncrease) -> None:
+        program = await async_client.simulations.programs.create(
+            name="For Benefit Of",
+            reserve_account_id="reserve_account_id",
         )
         assert_matches_type(Program, program, path=["response"])
 

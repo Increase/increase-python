@@ -45,6 +45,7 @@ class ProgramsResource(SyncAPIResource):
         self,
         *,
         name: str,
+        reserve_account_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -63,6 +64,8 @@ class ProgramsResource(SyncAPIResource):
         Args:
           name: The name of the program being added.
 
+          reserve_account_id: The identifier of the Account the Program should be added to is for.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -75,7 +78,13 @@ class ProgramsResource(SyncAPIResource):
         """
         return self._post(
             "/simulations/programs",
-            body=maybe_transform({"name": name}, program_create_params.ProgramCreateParams),
+            body=maybe_transform(
+                {
+                    "name": name,
+                    "reserve_account_id": reserve_account_id,
+                },
+                program_create_params.ProgramCreateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -111,6 +120,7 @@ class AsyncProgramsResource(AsyncAPIResource):
         self,
         *,
         name: str,
+        reserve_account_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -129,6 +139,8 @@ class AsyncProgramsResource(AsyncAPIResource):
         Args:
           name: The name of the program being added.
 
+          reserve_account_id: The identifier of the Account the Program should be added to is for.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -141,7 +153,13 @@ class AsyncProgramsResource(AsyncAPIResource):
         """
         return await self._post(
             "/simulations/programs",
-            body=await async_maybe_transform({"name": name}, program_create_params.ProgramCreateParams),
+            body=await async_maybe_transform(
+                {
+                    "name": name,
+                    "reserve_account_id": reserve_account_id,
+                },
+                program_create_params.ProgramCreateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
