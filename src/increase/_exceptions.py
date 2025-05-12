@@ -166,12 +166,15 @@ class MalformedRequestError(BadRequestError):
 class InvalidAPIKeyError(AuthenticationError):
     detail: Optional[str] = None
 
-    reason: Literal["deleted_credential", "expired_credential", "no_credential", "no_header", "wrong_environment"]
+    reason: Literal[
+        "deleted_credential", "expired_credential", "no_credential", "no_header", "no_api_access", "wrong_environment"
+    ]
     """
     - `deleted_credential` - deleted_credential
     - `expired_credential` - expired_credential
     - `no_credential` - no_credential
     - `no_header` - no_header
+    - `no_api_access` - no_api_access
     - `wrong_environment` - wrong_environment
     """
 
@@ -192,7 +195,12 @@ class InvalidAPIKeyError(AuthenticationError):
             Any,
             construct_type(
                 type_=Literal[
-                    "deleted_credential", "expired_credential", "no_credential", "no_header", "wrong_environment"
+                    "deleted_credential",
+                    "expired_credential",
+                    "no_credential",
+                    "no_header",
+                    "no_api_access",
+                    "wrong_environment",
                 ],
                 value=data.get("reason"),
             ),
