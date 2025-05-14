@@ -157,8 +157,10 @@ class AddendaFreeform(TypedDict, total=False):
     entries: Required[Iterable[AddendaFreeformEntry]]
     """Each entry represents an addendum sent with the transfer.
 
-    Please reach out to [support@increase.com](mailto:support@increase.com) to send
-    more than one addendum.
+    In general, you should send at most one addendum–most ACH recipients cannot
+    access beyond the first 80 characters sent. Please reach out to
+    [support@increase.com](mailto:support@increase.com) to send 2 or more addenda to
+    a recipient expecting a specific addendum format.
     """
 
 
