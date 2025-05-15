@@ -341,11 +341,12 @@ class ThirdPartyVerification(BaseModel):
     reference: str
     """The reference identifier for the third party verification."""
 
-    vendor: Literal["alloy", "middesk"]
+    vendor: Literal["alloy", "middesk", "oscilar"]
     """The vendor that was used to perform the verification.
 
     - `alloy` - Alloy. See https://alloy.com for more information.
     - `middesk` - Middesk. See https://middesk.com for more information.
+    - `oscilar` - Oscilar. See https://oscilar.com for more information.
     """
 
 
