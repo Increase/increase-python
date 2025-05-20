@@ -22,6 +22,7 @@ __all__ = [
     "SourceCheckTransferInstruction",
     "SourceInboundFundsHold",
     "SourceInboundWireTransferReversal",
+    "SourceOutboundCardPushTransferInstruction",
     "SourceRealTimePaymentsTransferInstruction",
     "SourceSwiftTransferInstruction",
     "SourceWireTransferInstruction",
@@ -555,6 +556,17 @@ class SourceInboundWireTransferReversal(BaseModel):
     """The ID of the Inbound Wire Transfer that is being reversed."""
 
 
+class SourceOutboundCardPushTransferInstruction(BaseModel):
+    amount: int
+    """The transfer amount in USD cents."""
+
+    transfer_id: str
+    """
+    The identifier of the Outbound Card Push Transfer that led to this Pending
+    Transaction.
+    """
+
+
 class SourceRealTimePaymentsTransferInstruction(BaseModel):
     amount: int
     """The transfer amount in USD cents."""
@@ -625,6 +637,7 @@ class Source(BaseModel):
         "wire_transfer_instruction",
         "inbound_wire_transfer_reversal",
         "swift_transfer_instruction",
+        "outbound_card_push_transfer_instruction",
         "other",
     ]
     """The type of the resource.
@@ -653,6 +666,9 @@ class Source(BaseModel):
       will be under the `inbound_wire_transfer_reversal` object.
     - `swift_transfer_instruction` - Swift Transfer Instruction: details will be
       under the `swift_transfer_instruction` object.
+    - `outbound_card_push_transfer_instruction` - Outbound Card Push Transfer
+      Instruction: details will be under the
+      `outbound_card_push_transfer_instruction` object.
     - `other` - The Pending Transaction was made for an undocumented or deprecated
       reason.
     """
@@ -693,6 +709,13 @@ class Source(BaseModel):
     """
     If the category of this Transaction source is equal to `other`, this field will
     contain an empty object, otherwise it will contain null.
+    """
+
+    outbound_card_push_transfer_instruction: Optional[SourceOutboundCardPushTransferInstruction] = None
+    """An Outbound Card Push Transfer Instruction object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `outbound_card_push_transfer_instruction`.
     """
 
     real_time_payments_transfer_instruction: Optional[SourceRealTimePaymentsTransferInstruction] = None
