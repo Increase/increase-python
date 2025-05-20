@@ -57,6 +57,7 @@ __all__ = [
     "SourceInboundWireTransferReversal",
     "SourceInterestPayment",
     "SourceInternalSource",
+    "SourceOutboundCardPushTransferAcceptance",
     "SourceRealTimePaymentsTransferAcknowledgement",
     "SourceSampleFunds",
     "SourceSwiftTransferIntention",
@@ -2253,6 +2254,14 @@ class SourceInternalSource(BaseModel):
     """
 
 
+class SourceOutboundCardPushTransferAcceptance(BaseModel):
+    amount: int
+    """The transfer amount in USD cents."""
+
+    transfer_id: str
+    """The identifier of the Outbound Card Push Transfer that led to this Transaction."""
+
+
 class SourceRealTimePaymentsTransferAcknowledgement(BaseModel):
     amount: int
     """The transfer amount in USD cents."""
@@ -2415,6 +2424,7 @@ class Source(BaseModel):
         "sample_funds",
         "wire_transfer_intention",
         "swift_transfer_intention",
+        "outbound_card_push_transfer_acceptance",
         "other",
     ]
     """The type of the resource.
@@ -2483,6 +2493,9 @@ class Source(BaseModel):
       `wire_transfer_intention` object.
     - `swift_transfer_intention` - Swift Transfer Intention: details will be under
       the `swift_transfer_intention` object.
+    - `outbound_card_push_transfer_acceptance` - Outbound Card Push Transfer
+      Acceptance: details will be under the `outbound_card_push_transfer_acceptance`
+      object.
     - `other` - The Transaction was made for an undocumented or deprecated reason.
     """
 
@@ -2619,6 +2632,15 @@ class Source(BaseModel):
     """
     If the category of this Transaction source is equal to `other`, this field will
     contain an empty object, otherwise it will contain null.
+    """
+
+    outbound_card_push_transfer_acceptance: Optional[SourceOutboundCardPushTransferAcceptance] = None
+    """An Outbound Card Push Transfer Acceptance object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `outbound_card_push_transfer_acceptance`. An Outbound Card Push
+    Transfer Acceptance is created when an Outbound Card Push Transfer sent from
+    Increase is accepted by the receiving bank.
     """
 
     real_time_payments_transfer_acknowledgement: Optional[SourceRealTimePaymentsTransferAcknowledgement] = None

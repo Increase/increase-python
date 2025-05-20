@@ -98,6 +98,8 @@ _CategoryReservedKeywords = TypedDict(
                 "lockbox.updated",
                 "oauth_connection.created",
                 "oauth_connection.deactivated",
+                "outbound_card_push_transfer.created",
+                "outbound_card_push_transfer.updated",
                 "pending_transaction.created",
                 "pending_transaction.updated",
                 "physical_card.created",
