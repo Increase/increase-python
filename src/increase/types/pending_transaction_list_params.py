@@ -49,6 +49,7 @@ _CategoryReservedKeywords = TypedDict(
                 "wire_transfer_instruction",
                 "inbound_wire_transfer_reversal",
                 "swift_transfer_instruction",
+                "outbound_card_push_transfer_instruction",
                 "other",
             ]
         ],
