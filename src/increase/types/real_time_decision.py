@@ -411,7 +411,13 @@ class CardAuthorization(BaseModel):
     """
 
     processing_category: Literal[
-        "account_funding", "automatic_fuel_dispenser", "bill_payment", "purchase", "quasi_cash", "refund"
+        "account_funding",
+        "automatic_fuel_dispenser",
+        "bill_payment",
+        "original_credit",
+        "purchase",
+        "quasi_cash",
+        "refund",
     ]
     """
     The processing category describes the intent behind the authorization, such as
@@ -424,6 +430,8 @@ class CardAuthorization(BaseModel):
       being known. They are followed by an advice message that updates the amount of
       the pending transaction.
     - `bill_payment` - A transaction used to pay a bill.
+    - `original_credit` - Original credit transactions are used to send money to a
+      cardholder.
     - `purchase` - A regular purchase.
     - `quasi_cash` - Quasi-cash transactions represent purchases of items which may
       be convertible to cash.
