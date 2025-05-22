@@ -31,6 +31,10 @@ class TestInboundACHTransfers:
         inbound_ach_transfer = client.simulations.inbound_ach_transfers.create(
             account_number_id="account_number_v18nkfqm6afpsrvy82b2",
             amount=1000,
+            addenda={
+                "category": "freeform",
+                "freeform": {"entries": [{"payment_related_information": "x"}]},
+            },
             company_descriptive_date="x",
             company_discretionary_data="x",
             company_entry_description="x",
@@ -86,6 +90,10 @@ class TestAsyncInboundACHTransfers:
         inbound_ach_transfer = await async_client.simulations.inbound_ach_transfers.create(
             account_number_id="account_number_v18nkfqm6afpsrvy82b2",
             amount=1000,
+            addenda={
+                "category": "freeform",
+                "freeform": {"entries": [{"payment_related_information": "x"}]},
+            },
             company_descriptive_date="x",
             company_discretionary_data="x",
             company_entry_description="x",
