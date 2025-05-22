@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
 
-__all__ = ["InboundACHTransferCreateParams"]
+__all__ = ["InboundACHTransferCreateParams", "Addenda", "AddendaFreeform", "AddendaFreeformEntry"]
 
 
 class InboundACHTransferCreateParams(TypedDict, total=False):
@@ -22,6 +22,9 @@ class InboundACHTransferCreateParams(TypedDict, total=False):
     account. A negative amount originates a debit transfer pulling funds from the
     receiving account.
     """
+
+    addenda: Addenda
+    """Additional information to include in the transfer."""
 
     company_descriptive_date: str
     """The description of the date of the transfer."""
@@ -87,3 +90,25 @@ class InboundACHTransferCreateParams(TypedDict, total=False):
     - `destroyed_check` - Destroyed Check (XCK).
     - `international_ach_transaction` - International ACH Transaction (IAT).
     """
+
+
+class AddendaFreeformEntry(TypedDict, total=False):
+    payment_related_information: Required[str]
+    """The payment related information passed in the addendum."""
+
+
+class AddendaFreeform(TypedDict, total=False):
+    entries: Required[Iterable[AddendaFreeformEntry]]
+    """Each entry represents an addendum sent with the transfer."""
+
+
+class Addenda(TypedDict, total=False):
+    category: Required[Literal["freeform"]]
+    """The type of addenda to simulate being sent with the transfer.
+
+    - `freeform` - Unstructured `payment_related_information` passed through with
+      the transfer.
+    """
+
+    freeform: AddendaFreeform
+    """Unstructured `payment_related_information` passed through with the transfer."""
