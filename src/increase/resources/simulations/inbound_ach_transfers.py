@@ -50,6 +50,7 @@ class InboundACHTransfersResource(SyncAPIResource):
         *,
         account_number_id: str,
         amount: int,
+        addenda: inbound_ach_transfer_create_params.Addenda | NotGiven = NOT_GIVEN,
         company_descriptive_date: str | NotGiven = NOT_GIVEN,
         company_discretionary_data: str | NotGiven = NOT_GIVEN,
         company_entry_description: str | NotGiven = NOT_GIVEN,
@@ -104,6 +105,8 @@ class InboundACHTransfersResource(SyncAPIResource):
           amount: The transfer amount in cents. A positive amount originates a credit transfer
               pushing funds to the receiving account. A negative amount originates a debit
               transfer pulling funds from the receiving account.
+
+          addenda: Additional information to include in the transfer.
 
           company_descriptive_date: The description of the date of the transfer.
 
@@ -157,6 +160,7 @@ class InboundACHTransfersResource(SyncAPIResource):
                 {
                     "account_number_id": account_number_id,
                     "amount": amount,
+                    "addenda": addenda,
                     "company_descriptive_date": company_descriptive_date,
                     "company_discretionary_data": company_discretionary_data,
                     "company_entry_description": company_entry_description,
@@ -205,6 +209,7 @@ class AsyncInboundACHTransfersResource(AsyncAPIResource):
         *,
         account_number_id: str,
         amount: int,
+        addenda: inbound_ach_transfer_create_params.Addenda | NotGiven = NOT_GIVEN,
         company_descriptive_date: str | NotGiven = NOT_GIVEN,
         company_discretionary_data: str | NotGiven = NOT_GIVEN,
         company_entry_description: str | NotGiven = NOT_GIVEN,
@@ -260,6 +265,8 @@ class AsyncInboundACHTransfersResource(AsyncAPIResource):
               pushing funds to the receiving account. A negative amount originates a debit
               transfer pulling funds from the receiving account.
 
+          addenda: Additional information to include in the transfer.
+
           company_descriptive_date: The description of the date of the transfer.
 
           company_discretionary_data: Data associated with the transfer set by the sender.
@@ -312,6 +319,7 @@ class AsyncInboundACHTransfersResource(AsyncAPIResource):
                 {
                     "account_number_id": account_number_id,
                     "amount": amount,
+                    "addenda": addenda,
                     "company_descriptive_date": company_descriptive_date,
                     "company_discretionary_data": company_discretionary_data,
                     "company_entry_description": company_entry_description,
