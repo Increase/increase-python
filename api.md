@@ -787,6 +787,7 @@ Methods:
 Methods:
 
 - <code title="post /simulations/physical_cards/{physical_card_id}/advance_shipment">client.simulations.physical_cards.<a href="./src/increase/resources/simulations/physical_cards.py">advance_shipment</a>(physical_card_id, \*\*<a href="src/increase/types/simulations/physical_card_advance_shipment_params.py">params</a>) -> <a href="./src/increase/types/physical_card.py">PhysicalCard</a></code>
+- <code title="post /simulations/physical_cards/{physical_card_id}/tracking_updates">client.simulations.physical_cards.<a href="./src/increase/resources/simulations/physical_cards.py">tracking_updates</a>(physical_card_id, \*\*<a href="src/increase/types/simulations/physical_card_tracking_updates_params.py">params</a>) -> <a href="./src/increase/types/physical_card.py">PhysicalCard</a></code>
 
 ## DigitalWalletTokenRequests
 

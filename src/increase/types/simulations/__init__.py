@@ -23,6 +23,9 @@ from .card_fuel_confirmation_create_params import CardFuelConfirmationCreatePara
 from .physical_card_advance_shipment_params import (
     PhysicalCardAdvanceShipmentParams as PhysicalCardAdvanceShipmentParams,
 )
+from .physical_card_tracking_updates_params import (
+    PhysicalCardTrackingUpdatesParams as PhysicalCardTrackingUpdatesParams,
+)
 from .digital_wallet_token_request_create_params import (
     DigitalWalletTokenRequestCreateParams as DigitalWalletTokenRequestCreateParams,
 )
