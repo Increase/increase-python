@@ -728,6 +728,12 @@ Methods:
 
 - <code title="post /simulations/interest_payments">client.simulations.interest_payments.<a href="./src/increase/resources/simulations/interest_payments.py">create</a>(\*\*<a href="src/increase/types/simulations/interest_payment_create_params.py">params</a>) -> <a href="./src/increase/types/transaction.py">Transaction</a></code>
 
+## FeePayments
+
+Methods:
+
+- <code title="post /simulations/fee_payments">client.simulations.fee_payments.<a href="./src/increase/resources/simulations/fee_payments.py">create</a>(\*\*<a href="src/increase/types/simulations/fee_payment_create_params.py">params</a>) -> <a href="./src/increase/types/transaction.py">Transaction</a></code>
+
 ## CardAuthorizations
 
 Types:
