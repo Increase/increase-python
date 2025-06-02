@@ -74,6 +74,7 @@ class TestDocuments:
             },
             cursor="cursor",
             entity_id="entity_id",
+            idempotency_key="x",
             limit=1,
         )
         assert_matches_type(SyncPage[Document], document, path=["response"])
@@ -157,6 +158,7 @@ class TestAsyncDocuments:
             },
             cursor="cursor",
             entity_id="entity_id",
+            idempotency_key="x",
             limit=1,
         )
         assert_matches_type(AsyncPage[Document], document, path=["response"])
