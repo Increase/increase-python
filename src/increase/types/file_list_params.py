@@ -90,6 +90,7 @@ _PurposeReservedKeywords = TypedDict(
                 "unusual_activity_report_attachment",
                 "deposit_account_control_agreement",
                 "proof_of_authorization_request_submission",
+                "account_verification_letter",
             ]
         ],
     },
