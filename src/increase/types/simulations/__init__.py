@@ -5,7 +5,6 @@ from __future__ import annotations
 from .program_create_params import ProgramCreateParams as ProgramCreateParams
 from .document_create_params import DocumentCreateParams as DocumentCreateParams
 from .card_refund_create_params import CardRefundCreateParams as CardRefundCreateParams
-from .fee_payment_create_params import FeePaymentCreateParams as FeePaymentCreateParams
 from .ach_transfer_return_params import ACHTransferReturnParams as ACHTransferReturnParams
 from .card_dispute_action_params import CardDisputeActionParams as CardDisputeActionParams
 from .card_reversal_create_params import CardReversalCreateParams as CardReversalCreateParams
