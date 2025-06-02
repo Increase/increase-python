@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.246.0 (2025-06-02)
+
+Full Changelog: [v0.245.0...v0.246.0](https://github.com/Increase/increase-python/compare/v0.245.0...v0.246.0)
+
+### Features
+
+* **api:** api update ([9121c49](https://github.com/Increase/increase-python/commit/9121c49ecf46d9ab638a0897653932808820c7ff))
+* **api:** api update ([7f5ed31](https://github.com/Increase/increase-python/commit/7f5ed31ed20f90a098f5d76a0cd81be874af454e))
+* **api:** api update ([48c9bda](https://github.com/Increase/increase-python/commit/48c9bdabfc0f8b811d1374beefec2f74722cdb94))
+* **client:** add follow_redirects request option ([876b0f9](https://github.com/Increase/increase-python/commit/876b0f90e79c4fa69e6c5aae5bed17edefabe9c3))
+
+
+### Chores
+
+* **docs:** remove reference to rye shell ([598a01e](https://github.com/Increase/increase-python/commit/598a01e10a3e624e1f3e7d0625f57dbca74400d3))
+
 ## 0.245.0 (2025-05-28)
 
 Full Changelog: [v0.244.0...v0.245.0](https://github.com/Increase/increase-python/compare/v0.244.0...v0.245.0)
