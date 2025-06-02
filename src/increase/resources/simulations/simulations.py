@@ -28,6 +28,14 @@ from .card_refunds import (
     CardRefundsResourceWithStreamingResponse,
     AsyncCardRefundsResourceWithStreamingResponse,
 )
+from .fee_payments import (
+    FeePaymentsResource,
+    AsyncFeePaymentsResource,
+    FeePaymentsResourceWithRawResponse,
+    AsyncFeePaymentsResourceWithRawResponse,
+    FeePaymentsResourceWithStreamingResponse,
+    AsyncFeePaymentsResourceWithStreamingResponse,
+)
 from .ach_transfers import (
     ACHTransfersResource,
     AsyncACHTransfersResource,
@@ -230,6 +238,10 @@ class SimulationsResource(SyncAPIResource):
         return InterestPaymentsResource(self._client)
 
     @cached_property
+    def fee_payments(self) -> FeePaymentsResource:
+        return FeePaymentsResource(self._client)
+
+    @cached_property
     def card_authorizations(self) -> CardAuthorizationsResource:
         return CardAuthorizationsResource(self._client)
 
@@ -357,6 +369,10 @@ class AsyncSimulationsResource(AsyncAPIResource):
     @cached_property
     def interest_payments(self) -> AsyncInterestPaymentsResource:
         return AsyncInterestPaymentsResource(self._client)
+
+    @cached_property
+    def fee_payments(self) -> AsyncFeePaymentsResource:
+        return AsyncFeePaymentsResource(self._client)
 
     @cached_property
     def card_authorizations(self) -> AsyncCardAuthorizationsResource:
@@ -491,6 +507,10 @@ class SimulationsResourceWithRawResponse:
         return InterestPaymentsResourceWithRawResponse(self._simulations.interest_payments)
 
     @cached_property
+    def fee_payments(self) -> FeePaymentsResourceWithRawResponse:
+        return FeePaymentsResourceWithRawResponse(self._simulations.fee_payments)
+
+    @cached_property
     def card_authorizations(self) -> CardAuthorizationsResourceWithRawResponse:
         return CardAuthorizationsResourceWithRawResponse(self._simulations.card_authorizations)
 
@@ -604,6 +624,10 @@ class AsyncSimulationsResourceWithRawResponse:
     @cached_property
     def interest_payments(self) -> AsyncInterestPaymentsResourceWithRawResponse:
         return AsyncInterestPaymentsResourceWithRawResponse(self._simulations.interest_payments)
+
+    @cached_property
+    def fee_payments(self) -> AsyncFeePaymentsResourceWithRawResponse:
+        return AsyncFeePaymentsResourceWithRawResponse(self._simulations.fee_payments)
 
     @cached_property
     def card_authorizations(self) -> AsyncCardAuthorizationsResourceWithRawResponse:
@@ -723,6 +747,10 @@ class SimulationsResourceWithStreamingResponse:
         return InterestPaymentsResourceWithStreamingResponse(self._simulations.interest_payments)
 
     @cached_property
+    def fee_payments(self) -> FeePaymentsResourceWithStreamingResponse:
+        return FeePaymentsResourceWithStreamingResponse(self._simulations.fee_payments)
+
+    @cached_property
     def card_authorizations(self) -> CardAuthorizationsResourceWithStreamingResponse:
         return CardAuthorizationsResourceWithStreamingResponse(self._simulations.card_authorizations)
 
@@ -840,6 +868,10 @@ class AsyncSimulationsResourceWithStreamingResponse:
     @cached_property
     def interest_payments(self) -> AsyncInterestPaymentsResourceWithStreamingResponse:
         return AsyncInterestPaymentsResourceWithStreamingResponse(self._simulations.interest_payments)
+
+    @cached_property
+    def fee_payments(self) -> AsyncFeePaymentsResourceWithStreamingResponse:
+        return AsyncFeePaymentsResourceWithStreamingResponse(self._simulations.fee_payments)
 
     @cached_property
     def card_authorizations(self) -> AsyncCardAuthorizationsResourceWithStreamingResponse:
