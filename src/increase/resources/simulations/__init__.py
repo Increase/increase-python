@@ -32,6 +32,14 @@ from .card_refunds import (
     CardRefundsResourceWithStreamingResponse,
     AsyncCardRefundsResourceWithStreamingResponse,
 )
+from .fee_payments import (
+    FeePaymentsResource,
+    AsyncFeePaymentsResource,
+    FeePaymentsResourceWithRawResponse,
+    AsyncFeePaymentsResourceWithRawResponse,
+    FeePaymentsResourceWithStreamingResponse,
+    AsyncFeePaymentsResourceWithStreamingResponse,
+)
 from .ach_transfers import (
     ACHTransfersResource,
     AsyncACHTransfersResource,
@@ -232,6 +240,12 @@ __all__ = [
     "AsyncInterestPaymentsResourceWithRawResponse",
     "InterestPaymentsResourceWithStreamingResponse",
     "AsyncInterestPaymentsResourceWithStreamingResponse",
+    "FeePaymentsResource",
+    "AsyncFeePaymentsResource",
+    "FeePaymentsResourceWithRawResponse",
+    "AsyncFeePaymentsResourceWithRawResponse",
+    "FeePaymentsResourceWithStreamingResponse",
+    "AsyncFeePaymentsResourceWithStreamingResponse",
     "CardAuthorizationsResource",
     "AsyncCardAuthorizationsResource",
     "CardAuthorizationsResourceWithRawResponse",
