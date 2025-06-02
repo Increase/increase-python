@@ -66,6 +66,7 @@ class File(BaseModel):
         "unusual_activity_report_attachment",
         "deposit_account_control_agreement",
         "proof_of_authorization_request_submission",
+        "account_verification_letter",
     ]
     """What the File will be used for.
 
@@ -110,6 +111,7 @@ class File(BaseModel):
       access to the funds into your account.
     - `proof_of_authorization_request_submission` - A file containing additional
       evidence for a Proof of Authorization Request Submission.
+    - `account_verification_letter` - An account verification letter.
     """
 
     type: Literal["file"]

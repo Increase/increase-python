@@ -22,6 +22,14 @@ class DocumentListParams(TypedDict, total=False):
     entity_id: str
     """Filter Documents to ones belonging to the specified Entity."""
 
+    idempotency_key: str
+    """
+    Filter records to the one with the specified `idempotency_key` you chose for
+    that object. This value is unique across Increase and is used to ensure that a
+    request is only processed once. Learn more about
+    [idempotency](https://increase.com/documentation/idempotency-keys).
+    """
+
     limit: int
     """Limit the size of the list that is returned.
 
@@ -32,7 +40,15 @@ class DocumentListParams(TypedDict, total=False):
 _CategoryReservedKeywords = TypedDict(
     "_CategoryReservedKeywords",
     {
-        "in": List[Literal["form_1099_int", "form_1099_misc", "proof_of_authorization", "company_information"]],
+        "in": List[
+            Literal[
+                "form_1099_int",
+                "form_1099_misc",
+                "proof_of_authorization",
+                "company_information",
+                "account_verification_letter",
+            ]
+        ],
     },
     total=False,
 )
