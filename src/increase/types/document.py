@@ -6,12 +6,20 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["Document"]
+__all__ = ["Document", "AccountVerificationLetter"]
+
+
+class AccountVerificationLetter(BaseModel):
+    account_number_id: str
+    """The identifier of the Account Number the document was generated for."""
 
 
 class Document(BaseModel):
     id: str
     """The Document identifier."""
+
+    account_verification_letter: Optional[AccountVerificationLetter] = None
+    """Properties of an account verification letter document."""
 
     category: Literal[
         "form_1099_int",
