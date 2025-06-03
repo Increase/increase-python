@@ -528,6 +528,7 @@ from increase.types import Document
 
 Methods:
 
+- <code title="post /documents">client.documents.<a href="./src/increase/resources/documents.py">create</a>(\*\*<a href="src/increase/types/document_create_params.py">params</a>) -> <a href="./src/increase/types/document.py">Document</a></code>
 - <code title="get /documents/{document_id}">client.documents.<a href="./src/increase/resources/documents.py">retrieve</a>(document_id) -> <a href="./src/increase/types/document.py">Document</a></code>
 - <code title="get /documents">client.documents.<a href="./src/increase/resources/documents.py">list</a>(\*\*<a href="src/increase/types/document_list_params.py">params</a>) -> <a href="./src/increase/types/document.py">SyncPage[Document]</a></code>
 
