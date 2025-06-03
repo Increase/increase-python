@@ -68,6 +68,7 @@ from .lockbox_update_params import LockboxUpdateParams as LockboxUpdateParams
 from .physical_card_profile import PhysicalCardProfile as PhysicalCardProfile
 from .wire_drawdown_request import WireDrawdownRequest as WireDrawdownRequest
 from .account_balance_params import AccountBalanceParams as AccountBalanceParams
+from .document_create_params import DocumentCreateParams as DocumentCreateParams
 from .file_link_create_params import FileLinkCreateParams as FileLinkCreateParams
 from .transaction_list_params import TransactionListParams as TransactionListParams
 from .ach_transfer_list_params import ACHTransferListParams as ACHTransferListParams

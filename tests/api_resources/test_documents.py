@@ -10,7 +10,7 @@ import pytest
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
 from increase.types import Document
-from increase._utils import parse_datetime
+from increase._utils import parse_date, parse_datetime
 from increase.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -18,6 +18,48 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
 class TestDocuments:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
+
+    @parametrize
+    def test_method_create(self, client: Increase) -> None:
+        document = client.documents.create(
+            category="account_verification_letter",
+        )
+        assert_matches_type(Document, document, path=["response"])
+
+    @parametrize
+    def test_method_create_with_all_params(self, client: Increase) -> None:
+        document = client.documents.create(
+            category="account_verification_letter",
+            account_verification_letter={
+                "account_number_id": "account_number_v18nkfqm6afpsrvy82b2",
+                "balance_date": parse_date("2024-12-31"),
+            },
+        )
+        assert_matches_type(Document, document, path=["response"])
+
+    @parametrize
+    def test_raw_response_create(self, client: Increase) -> None:
+        response = client.documents.with_raw_response.create(
+            category="account_verification_letter",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        document = response.parse()
+        assert_matches_type(Document, document, path=["response"])
+
+    @parametrize
+    def test_streaming_response_create(self, client: Increase) -> None:
+        with client.documents.with_streaming_response.create(
+            category="account_verification_letter",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            document = response.parse()
+            assert_matches_type(Document, document, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
@@ -102,6 +144,48 @@ class TestDocuments:
 
 class TestAsyncDocuments:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+
+    @parametrize
+    async def test_method_create(self, async_client: AsyncIncrease) -> None:
+        document = await async_client.documents.create(
+            category="account_verification_letter",
+        )
+        assert_matches_type(Document, document, path=["response"])
+
+    @parametrize
+    async def test_method_create_with_all_params(self, async_client: AsyncIncrease) -> None:
+        document = await async_client.documents.create(
+            category="account_verification_letter",
+            account_verification_letter={
+                "account_number_id": "account_number_v18nkfqm6afpsrvy82b2",
+                "balance_date": parse_date("2024-12-31"),
+            },
+        )
+        assert_matches_type(Document, document, path=["response"])
+
+    @parametrize
+    async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
+        response = await async_client.documents.with_raw_response.create(
+            category="account_verification_letter",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        document = await response.parse()
+        assert_matches_type(Document, document, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_create(self, async_client: AsyncIncrease) -> None:
+        async with async_client.documents.with_streaming_response.create(
+            category="account_verification_letter",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            document = await response.parse()
+            assert_matches_type(Document, document, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
