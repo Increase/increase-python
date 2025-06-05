@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.248.0 (2025-06-05)
+
+Full Changelog: [v0.247.0...v0.248.0](https://github.com/Increase/increase-python/compare/v0.247.0...v0.248.0)
+
+### Features
+
+* **api:** api update ([5b82f0d](https://github.com/Increase/increase-python/commit/5b82f0d040519670b40df828522470b9fc0cd481))
+
+
+### Chores
+
+* fix idempotency ([f374872](https://github.com/Increase/increase-python/commit/f3748723a0384bb7272af9fee0a898c2f7a81c24))
+
 ## 0.247.0 (2025-06-03)
 
 Full Changelog: [v0.246.0...v0.247.0](https://github.com/Increase/increase-python/compare/v0.246.0...v0.247.0)
