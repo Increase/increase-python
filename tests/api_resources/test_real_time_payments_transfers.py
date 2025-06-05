@@ -161,6 +161,86 @@ class TestRealTimePaymentsTransfers:
 
         assert cast(Any, response.is_closed) is True
 
+    @parametrize
+    def test_method_approve(self, client: Increase) -> None:
+        real_time_payments_transfer = client.real_time_payments_transfers.approve(
+            "real_time_payments_transfer_id",
+        )
+        assert_matches_type(RealTimePaymentsTransfer, real_time_payments_transfer, path=["response"])
+
+    @parametrize
+    def test_raw_response_approve(self, client: Increase) -> None:
+        response = client.real_time_payments_transfers.with_raw_response.approve(
+            "real_time_payments_transfer_id",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        real_time_payments_transfer = response.parse()
+        assert_matches_type(RealTimePaymentsTransfer, real_time_payments_transfer, path=["response"])
+
+    @parametrize
+    def test_streaming_response_approve(self, client: Increase) -> None:
+        with client.real_time_payments_transfers.with_streaming_response.approve(
+            "real_time_payments_transfer_id",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            real_time_payments_transfer = response.parse()
+            assert_matches_type(RealTimePaymentsTransfer, real_time_payments_transfer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_approve(self, client: Increase) -> None:
+        with pytest.raises(
+            ValueError, match=r"Expected a non-empty value for `real_time_payments_transfer_id` but received ''"
+        ):
+            client.real_time_payments_transfers.with_raw_response.approve(
+                "",
+            )
+
+    @parametrize
+    def test_method_cancel(self, client: Increase) -> None:
+        real_time_payments_transfer = client.real_time_payments_transfers.cancel(
+            "real_time_payments_transfer_id",
+        )
+        assert_matches_type(RealTimePaymentsTransfer, real_time_payments_transfer, path=["response"])
+
+    @parametrize
+    def test_raw_response_cancel(self, client: Increase) -> None:
+        response = client.real_time_payments_transfers.with_raw_response.cancel(
+            "real_time_payments_transfer_id",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        real_time_payments_transfer = response.parse()
+        assert_matches_type(RealTimePaymentsTransfer, real_time_payments_transfer, path=["response"])
+
+    @parametrize
+    def test_streaming_response_cancel(self, client: Increase) -> None:
+        with client.real_time_payments_transfers.with_streaming_response.cancel(
+            "real_time_payments_transfer_id",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            real_time_payments_transfer = response.parse()
+            assert_matches_type(RealTimePaymentsTransfer, real_time_payments_transfer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_cancel(self, client: Increase) -> None:
+        with pytest.raises(
+            ValueError, match=r"Expected a non-empty value for `real_time_payments_transfer_id` but received ''"
+        ):
+            client.real_time_payments_transfers.with_raw_response.cancel(
+                "",
+            )
+
 
 class TestAsyncRealTimePaymentsTransfers:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
@@ -304,3 +384,83 @@ class TestAsyncRealTimePaymentsTransfers:
             assert_matches_type(AsyncPage[RealTimePaymentsTransfer], real_time_payments_transfer, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_approve(self, async_client: AsyncIncrease) -> None:
+        real_time_payments_transfer = await async_client.real_time_payments_transfers.approve(
+            "real_time_payments_transfer_id",
+        )
+        assert_matches_type(RealTimePaymentsTransfer, real_time_payments_transfer, path=["response"])
+
+    @parametrize
+    async def test_raw_response_approve(self, async_client: AsyncIncrease) -> None:
+        response = await async_client.real_time_payments_transfers.with_raw_response.approve(
+            "real_time_payments_transfer_id",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        real_time_payments_transfer = await response.parse()
+        assert_matches_type(RealTimePaymentsTransfer, real_time_payments_transfer, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_approve(self, async_client: AsyncIncrease) -> None:
+        async with async_client.real_time_payments_transfers.with_streaming_response.approve(
+            "real_time_payments_transfer_id",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            real_time_payments_transfer = await response.parse()
+            assert_matches_type(RealTimePaymentsTransfer, real_time_payments_transfer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_approve(self, async_client: AsyncIncrease) -> None:
+        with pytest.raises(
+            ValueError, match=r"Expected a non-empty value for `real_time_payments_transfer_id` but received ''"
+        ):
+            await async_client.real_time_payments_transfers.with_raw_response.approve(
+                "",
+            )
+
+    @parametrize
+    async def test_method_cancel(self, async_client: AsyncIncrease) -> None:
+        real_time_payments_transfer = await async_client.real_time_payments_transfers.cancel(
+            "real_time_payments_transfer_id",
+        )
+        assert_matches_type(RealTimePaymentsTransfer, real_time_payments_transfer, path=["response"])
+
+    @parametrize
+    async def test_raw_response_cancel(self, async_client: AsyncIncrease) -> None:
+        response = await async_client.real_time_payments_transfers.with_raw_response.cancel(
+            "real_time_payments_transfer_id",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        real_time_payments_transfer = await response.parse()
+        assert_matches_type(RealTimePaymentsTransfer, real_time_payments_transfer, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_cancel(self, async_client: AsyncIncrease) -> None:
+        async with async_client.real_time_payments_transfers.with_streaming_response.cancel(
+            "real_time_payments_transfer_id",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            real_time_payments_transfer = await response.parse()
+            assert_matches_type(RealTimePaymentsTransfer, real_time_payments_transfer, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_cancel(self, async_client: AsyncIncrease) -> None:
+        with pytest.raises(
+            ValueError, match=r"Expected a non-empty value for `real_time_payments_transfer_id` but received ''"
+        ):
+            await async_client.real_time_payments_transfers.with_raw_response.cancel(
+                "",
+            )

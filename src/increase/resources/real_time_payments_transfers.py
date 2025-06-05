@@ -240,6 +240,94 @@ class RealTimePaymentsTransfersResource(SyncAPIResource):
             model=RealTimePaymentsTransfer,
         )
 
+    def approve(
+        self,
+        real_time_payments_transfer_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> RealTimePaymentsTransfer:
+        """
+        Approves an Real-Time Payments Transfer in a pending_approval state.
+
+        Args:
+          real_time_payments_transfer_id: The identifier of the Real-Time Payments Transfer to approve.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not real_time_payments_transfer_id:
+            raise ValueError(
+                f"Expected a non-empty value for `real_time_payments_transfer_id` but received {real_time_payments_transfer_id!r}"
+            )
+        return self._post(
+            f"/real_time_payments_transfers/{real_time_payments_transfer_id}/approve",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=RealTimePaymentsTransfer,
+        )
+
+    def cancel(
+        self,
+        real_time_payments_transfer_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> RealTimePaymentsTransfer:
+        """
+        Cancels an Real-Time Payments Transfer in a pending_approval state.
+
+        Args:
+          real_time_payments_transfer_id: The identifier of the pending Real-Time Payments Transfer to cancel.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not real_time_payments_transfer_id:
+            raise ValueError(
+                f"Expected a non-empty value for `real_time_payments_transfer_id` but received {real_time_payments_transfer_id!r}"
+            )
+        return self._post(
+            f"/real_time_payments_transfers/{real_time_payments_transfer_id}/cancel",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=RealTimePaymentsTransfer,
+        )
+
 
 class AsyncRealTimePaymentsTransfersResource(AsyncAPIResource):
     @cached_property
@@ -459,6 +547,94 @@ class AsyncRealTimePaymentsTransfersResource(AsyncAPIResource):
             model=RealTimePaymentsTransfer,
         )
 
+    async def approve(
+        self,
+        real_time_payments_transfer_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> RealTimePaymentsTransfer:
+        """
+        Approves an Real-Time Payments Transfer in a pending_approval state.
+
+        Args:
+          real_time_payments_transfer_id: The identifier of the Real-Time Payments Transfer to approve.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not real_time_payments_transfer_id:
+            raise ValueError(
+                f"Expected a non-empty value for `real_time_payments_transfer_id` but received {real_time_payments_transfer_id!r}"
+            )
+        return await self._post(
+            f"/real_time_payments_transfers/{real_time_payments_transfer_id}/approve",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=RealTimePaymentsTransfer,
+        )
+
+    async def cancel(
+        self,
+        real_time_payments_transfer_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> RealTimePaymentsTransfer:
+        """
+        Cancels an Real-Time Payments Transfer in a pending_approval state.
+
+        Args:
+          real_time_payments_transfer_id: The identifier of the pending Real-Time Payments Transfer to cancel.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not real_time_payments_transfer_id:
+            raise ValueError(
+                f"Expected a non-empty value for `real_time_payments_transfer_id` but received {real_time_payments_transfer_id!r}"
+            )
+        return await self._post(
+            f"/real_time_payments_transfers/{real_time_payments_transfer_id}/cancel",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=RealTimePaymentsTransfer,
+        )
+
 
 class RealTimePaymentsTransfersResourceWithRawResponse:
     def __init__(self, real_time_payments_transfers: RealTimePaymentsTransfersResource) -> None:
@@ -472,6 +648,12 @@ class RealTimePaymentsTransfersResourceWithRawResponse:
         )
         self.list = to_raw_response_wrapper(
             real_time_payments_transfers.list,
+        )
+        self.approve = to_raw_response_wrapper(
+            real_time_payments_transfers.approve,
+        )
+        self.cancel = to_raw_response_wrapper(
+            real_time_payments_transfers.cancel,
         )
 
 
@@ -488,6 +670,12 @@ class AsyncRealTimePaymentsTransfersResourceWithRawResponse:
         self.list = async_to_raw_response_wrapper(
             real_time_payments_transfers.list,
         )
+        self.approve = async_to_raw_response_wrapper(
+            real_time_payments_transfers.approve,
+        )
+        self.cancel = async_to_raw_response_wrapper(
+            real_time_payments_transfers.cancel,
+        )
 
 
 class RealTimePaymentsTransfersResourceWithStreamingResponse:
@@ -503,6 +691,12 @@ class RealTimePaymentsTransfersResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             real_time_payments_transfers.list,
         )
+        self.approve = to_streamed_response_wrapper(
+            real_time_payments_transfers.approve,
+        )
+        self.cancel = to_streamed_response_wrapper(
+            real_time_payments_transfers.cancel,
+        )
 
 
 class AsyncRealTimePaymentsTransfersResourceWithStreamingResponse:
@@ -517,4 +711,10 @@ class AsyncRealTimePaymentsTransfersResourceWithStreamingResponse:
         )
         self.list = async_to_streamed_response_wrapper(
             real_time_payments_transfers.list,
+        )
+        self.approve = async_to_streamed_response_wrapper(
+            real_time_payments_transfers.approve,
+        )
+        self.cancel = async_to_streamed_response_wrapper(
+            real_time_payments_transfers.cancel,
         )
