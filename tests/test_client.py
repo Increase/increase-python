@@ -555,7 +555,7 @@ class TestIncrease:
 
         header = response.request.headers.get("Idempotency-Key")
         assert header is not None
-        assert header.startswith("stainless-python-retry")
+        assert header.startswith("increase-python-retry")
 
         # explicit header
         response = self.client.post(
@@ -1409,7 +1409,7 @@ class TestAsyncIncrease:
 
         header = response.request.headers.get("Idempotency-Key")
         assert header is not None
-        assert header.startswith("stainless-python-retry")
+        assert header.startswith("increase-python-retry")
 
         # explicit header
         response = await self.client.post(
