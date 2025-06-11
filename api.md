@@ -169,8 +169,10 @@ from increase.types import PendingTransaction
 
 Methods:
 
+- <code title="post /pending_transactions">client.pending_transactions.<a href="./src/increase/resources/pending_transactions.py">create</a>(\*\*<a href="src/increase/types/pending_transaction_create_params.py">params</a>) -> <a href="./src/increase/types/pending_transaction.py">PendingTransaction</a></code>
 - <code title="get /pending_transactions/{pending_transaction_id}">client.pending_transactions.<a href="./src/increase/resources/pending_transactions.py">retrieve</a>(pending_transaction_id) -> <a href="./src/increase/types/pending_transaction.py">PendingTransaction</a></code>
 - <code title="get /pending_transactions">client.pending_transactions.<a href="./src/increase/resources/pending_transactions.py">list</a>(\*\*<a href="src/increase/types/pending_transaction_list_params.py">params</a>) -> <a href="./src/increase/types/pending_transaction.py">SyncPage[PendingTransaction]</a></code>
+- <code title="post /pending_transactions/{pending_transaction_id}/release">client.pending_transactions.<a href="./src/increase/resources/pending_transactions.py">release</a>(pending_transaction_id) -> <a href="./src/increase/types/pending_transaction.py">PendingTransaction</a></code>
 
 # DeclinedTransactions
 
