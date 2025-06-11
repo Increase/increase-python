@@ -20,7 +20,6 @@ __all__ = [
     "SourceCardAuthorizationVerificationCardholderAddress",
     "SourceCheckDepositInstruction",
     "SourceCheckTransferInstruction",
-    "SourceGroupInitiatedHold",
     "SourceInboundFundsHold",
     "SourceInboundWireTransferReversal",
     "SourceOutboundCardPushTransferInstruction",
@@ -502,11 +501,6 @@ class SourceCheckTransferInstruction(BaseModel):
     """The identifier of the Check Transfer that led to this Pending Transaction."""
 
 
-class SourceGroupInitiatedHold(BaseModel):
-    id: str
-    """The Group Initiated Hold identifier."""
-
-
 class SourceInboundFundsHold(BaseModel):
     id: str
     """The Inbound Funds Hold identifier."""
@@ -647,7 +641,7 @@ class Source(BaseModel):
         "check_deposit_instruction",
         "check_transfer_instruction",
         "inbound_funds_hold",
-        "group_initiated_hold",
+        "user_initiated_hold",
         "real_time_payments_transfer_instruction",
         "wire_transfer_instruction",
         "inbound_wire_transfer_reversal",
@@ -672,8 +666,8 @@ class Source(BaseModel):
       under the `check_transfer_instruction` object.
     - `inbound_funds_hold` - Inbound Funds Hold: details will be under the
       `inbound_funds_hold` object.
-    - `group_initiated_hold` - Group Initiated Hold Source: details will be under
-      the `group_initiated_hold` object.
+    - `user_initiated_hold` - User Initiated Hold: details will be under the
+      `user_initiated_hold` object.
     - `real_time_payments_transfer_instruction` - Real-Time Payments Transfer
       Instruction: details will be under the
       `real_time_payments_transfer_instruction` object.
@@ -702,13 +696,6 @@ class Source(BaseModel):
 
     This field will be present in the JSON response if and only if `category` is
     equal to `check_transfer_instruction`.
-    """
-
-    group_initiated_hold: Optional[SourceGroupInitiatedHold] = None
-    """A Group Initiated Hold Source object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `group_initiated_hold`.
     """
 
     inbound_funds_hold: Optional[SourceInboundFundsHold] = None
@@ -754,6 +741,14 @@ class Source(BaseModel):
 
     This field will be present in the JSON response if and only if `category` is
     equal to `swift_transfer_instruction`.
+    """
+
+    user_initiated_hold: Optional[object] = None
+    """An User Initiated Hold object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `user_initiated_hold`. Created when a user initiates a hold on funds in
+    their account.
     """
 
     wire_transfer_instruction: Optional[SourceWireTransferInstruction] = None
