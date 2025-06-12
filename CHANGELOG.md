@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.251.1 (2025-06-12)
+
+Full Changelog: [v0.251.0...v0.251.1](https://github.com/Increase/increase-python/compare/v0.251.0...v0.251.1)
+
+### Bug Fixes
+
+* **client:** correctly parse binary response | stream ([ba477c8](https://github.com/Increase/increase-python/commit/ba477c8d8d171fe820620d445979527afd408ade))
+
+
+### Chores
+
+* **tests:** run tests in parallel ([b395f04](https://github.com/Increase/increase-python/commit/b395f041094541b7a08aa9018f2903f796c1de44))
+
 ## 0.251.0 (2025-06-12)
 
 Full Changelog: [v0.250.0...v0.251.0](https://github.com/Increase/increase-python/compare/v0.250.0...v0.251.0)
