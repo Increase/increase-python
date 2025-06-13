@@ -49,7 +49,9 @@ class PhysicalCardsResource(SyncAPIResource):
         self,
         physical_card_id: str,
         *,
-        shipment_status: Literal["pending", "canceled", "submitted", "acknowledged", "rejected", "shipped", "returned"],
+        shipment_status: Literal[
+            "pending", "canceled", "submitted", "acknowledged", "rejected", "shipped", "returned", "requires_attention"
+        ],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -79,6 +81,8 @@ class PhysicalCardsResource(SyncAPIResource):
               - `shipped` - The physical card has been shipped.
               - `returned` - The physical card shipment was returned to the sender and
                 destroyed by the production facility.
+              - `requires_attention` - The physical card shipment requires attention from
+                Increase before progressing.
 
           extra_headers: Send extra headers
 
@@ -208,7 +212,9 @@ class AsyncPhysicalCardsResource(AsyncAPIResource):
         self,
         physical_card_id: str,
         *,
-        shipment_status: Literal["pending", "canceled", "submitted", "acknowledged", "rejected", "shipped", "returned"],
+        shipment_status: Literal[
+            "pending", "canceled", "submitted", "acknowledged", "rejected", "shipped", "returned", "requires_attention"
+        ],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -238,6 +244,8 @@ class AsyncPhysicalCardsResource(AsyncAPIResource):
               - `shipped` - The physical card has been shipped.
               - `returned` - The physical card shipment was returned to the sender and
                 destroyed by the production facility.
+              - `requires_attention` - The physical card shipment requires attention from
+                Increase before progressing.
 
           extra_headers: Send extra headers
 

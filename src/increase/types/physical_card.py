@@ -106,7 +106,9 @@ class Shipment(BaseModel):
     - `fedex_2_day` - FedEx 2-day.
     """
 
-    status: Literal["pending", "canceled", "submitted", "acknowledged", "rejected", "shipped", "returned"]
+    status: Literal[
+        "pending", "canceled", "submitted", "acknowledged", "rejected", "shipped", "returned", "requires_attention"
+    ]
     """The status of this shipment.
 
     - `pending` - The physical card has not yet been shipped.
@@ -120,6 +122,8 @@ class Shipment(BaseModel):
     - `shipped` - The physical card has been shipped.
     - `returned` - The physical card shipment was returned to the sender and
       destroyed by the production facility.
+    - `requires_attention` - The physical card shipment requires attention from
+      Increase before progressing.
     """
 
     tracking: Optional[ShipmentTracking] = None
