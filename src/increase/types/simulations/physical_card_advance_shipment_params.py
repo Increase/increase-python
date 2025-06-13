@@ -9,7 +9,9 @@ __all__ = ["PhysicalCardAdvanceShipmentParams"]
 
 class PhysicalCardAdvanceShipmentParams(TypedDict, total=False):
     shipment_status: Required[
-        Literal["pending", "canceled", "submitted", "acknowledged", "rejected", "shipped", "returned"]
+        Literal[
+            "pending", "canceled", "submitted", "acknowledged", "rejected", "shipped", "returned", "requires_attention"
+        ]
     ]
     """The shipment status to move the Physical Card to.
 
@@ -24,4 +26,6 @@ class PhysicalCardAdvanceShipmentParams(TypedDict, total=False):
     - `shipped` - The physical card has been shipped.
     - `returned` - The physical card shipment was returned to the sender and
       destroyed by the production facility.
+    - `requires_attention` - The physical card shipment requires attention from
+      Increase before progressing.
     """
