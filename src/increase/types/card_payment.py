@@ -2837,10 +2837,10 @@ class ElementCardValidation(BaseModel):
     is transacting with.
     """
 
-    type: Literal["card_validation"]
+    type: Literal["inbound_card_validation"]
     """A constant representing the object's type.
 
-    For this resource it will always be `card_validation`.
+    For this resource it will always be `inbound_card_validation`.
     """
 
     verification: ElementCardValidationVerification
@@ -2922,12 +2922,12 @@ class Element(BaseModel):
     """
 
     card_validation: Optional[ElementCardValidation] = None
-    """A Card Validation object.
+    """An Inbound Card Validation object.
 
     This field will be present in the JSON response if and only if `category` is
-    equal to `card_validation`. Card Validations are requests from a merchant to
-    verify that a card number and optionally its address and/or Card Verification
-    Value are valid.
+    equal to `card_validation`. Inbound Card Validations are requests from a
+    merchant to verify that a card number and optionally its address and/or Card
+    Verification Value are valid.
     """
 
     category: Literal[
@@ -2952,7 +2952,7 @@ class Element(BaseModel):
       `card_authorization` object.
     - `card_authentication` - Card Authentication: details will be under the
       `card_authentication` object.
-    - `card_validation` - Card Validation: details will be under the
+    - `card_validation` - Inbound Card Validation: details will be under the
       `card_validation` object.
     - `card_decline` - Card Decline: details will be under the `card_decline`
       object.
