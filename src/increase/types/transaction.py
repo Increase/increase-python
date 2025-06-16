@@ -15,6 +15,7 @@ __all__ = [
     "SourceACHTransferReturn",
     "SourceCardDisputeAcceptance",
     "SourceCardDisputeLoss",
+    "SourceCardPushTransferAcceptance",
     "SourceCardRefund",
     "SourceCardRefundCashback",
     "SourceCardRefundInterchange",
@@ -57,7 +58,6 @@ __all__ = [
     "SourceInboundWireTransferReversal",
     "SourceInterestPayment",
     "SourceInternalSource",
-    "SourceOutboundCardPushTransferAcceptance",
     "SourceRealTimePaymentsTransferAcknowledgement",
     "SourceSampleFunds",
     "SourceSwiftTransferIntention",
@@ -411,6 +411,14 @@ class SourceCardDisputeLoss(BaseModel):
     The identifier of the Transaction that was created to debit the disputed funds
     from your account.
     """
+
+
+class SourceCardPushTransferAcceptance(BaseModel):
+    amount: int
+    """The transfer amount in USD cents."""
+
+    transfer_id: str
+    """The identifier of the Card Push Transfer that led to this Transaction."""
 
 
 class SourceCardRefundCashback(BaseModel):
@@ -2254,14 +2262,6 @@ class SourceInternalSource(BaseModel):
     """
 
 
-class SourceOutboundCardPushTransferAcceptance(BaseModel):
-    amount: int
-    """The transfer amount in USD cents."""
-
-    transfer_id: str
-    """The identifier of the Outbound Card Push Transfer that led to this Transaction."""
-
-
 class SourceRealTimePaymentsTransferAcknowledgement(BaseModel):
     amount: int
     """The transfer amount in USD cents."""
@@ -2359,6 +2359,15 @@ class Source(BaseModel):
     equal to `card_dispute_loss`. Contains the details of a lost Card Dispute.
     """
 
+    card_push_transfer_acceptance: Optional[SourceCardPushTransferAcceptance] = None
+    """A Card Push Transfer Acceptance object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `card_push_transfer_acceptance`. A Card Push Transfer Acceptance is
+    created when an Outbound Card Push Transfer sent from Increase is accepted by
+    the receiving bank.
+    """
+
     card_refund: Optional[SourceCardRefund] = None
     """A Card Refund object.
 
@@ -2424,7 +2433,7 @@ class Source(BaseModel):
         "sample_funds",
         "wire_transfer_intention",
         "swift_transfer_intention",
-        "outbound_card_push_transfer_acceptance",
+        "card_push_transfer_acceptance",
         "other",
     ]
     """The type of the resource.
@@ -2493,9 +2502,8 @@ class Source(BaseModel):
       `wire_transfer_intention` object.
     - `swift_transfer_intention` - Swift Transfer Intention: details will be under
       the `swift_transfer_intention` object.
-    - `outbound_card_push_transfer_acceptance` - Outbound Card Push Transfer
-      Acceptance: details will be under the `outbound_card_push_transfer_acceptance`
-      object.
+    - `card_push_transfer_acceptance` - Card Push Transfer Acceptance: details will
+      be under the `card_push_transfer_acceptance` object.
     - `other` - The Transaction was made for an undocumented or deprecated reason.
     """
 
@@ -2632,15 +2640,6 @@ class Source(BaseModel):
     """
     If the category of this Transaction source is equal to `other`, this field will
     contain an empty object, otherwise it will contain null.
-    """
-
-    outbound_card_push_transfer_acceptance: Optional[SourceOutboundCardPushTransferAcceptance] = None
-    """An Outbound Card Push Transfer Acceptance object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `outbound_card_push_transfer_acceptance`. An Outbound Card Push
-    Transfer Acceptance is created when an Outbound Card Push Transfer sent from
-    Increase is accepted by the receiving bank.
     """
 
     real_time_payments_transfer_acknowledgement: Optional[SourceRealTimePaymentsTransferAcknowledgement] = None
