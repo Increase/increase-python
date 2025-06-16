@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.252.1 (2025-06-16)
+
+Full Changelog: [v0.252.0...v0.252.1](https://github.com/Increase/increase-python/compare/v0.252.0...v0.252.1)
+
+### Chores
+
+* **tests:** add tests for httpx client instantiation & proxies ([c021210](https://github.com/Increase/increase-python/commit/c0212102edb6286ac4563a65c3c7ebbe60284499))
+
 ## 0.252.0 (2025-06-13)
 
 Full Changelog: [v0.251.1...v0.252.0](https://github.com/Increase/increase-python/compare/v0.251.1...v0.252.0)
