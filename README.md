@@ -1,6 +1,6 @@
 # Increase Python API library
 
-[![PyPI version](https://img.shields.io/pypi/v/increase.svg)](https://pypi.org/project/increase/)
+[![PyPI version](<https://img.shields.io/pypi/v/increase.svg?label=pypi%20(stable)>)](https://pypi.org/project/increase/)
 
 The Increase Python library provides convenient access to the Increase REST API from any Python 3.8+
 application. The library includes type definitions for all request params and response fields,
