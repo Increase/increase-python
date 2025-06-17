@@ -23,9 +23,7 @@ from pydantic import ValidationError
 
 from increase import Increase, AsyncIncrease, APIResponseValidationError
 from increase._types import Omit
-from increase._utils import maybe_transform
 from increase._models import BaseModel, FinalRequestOptions
-from increase._constants import RAW_RESPONSE_HEADER
 from increase._exceptions import IncreaseError, APIStatusError, APITimeoutError, APIResponseValidationError
 from increase._base_client import (
     DEFAULT_TIMEOUT,
@@ -35,7 +33,6 @@ from increase._base_client import (
     DefaultAsyncHttpxClient,
     make_request_options,
 )
-from increase.types.account_create_params import AccountCreateParams
 
 from .utils import update_env
 
@@ -756,52 +753,21 @@ class TestIncrease:
 
     @mock.patch("increase._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
-    def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
+    def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter, client: Increase) -> None:
         respx_mock.post("/accounts").mock(side_effect=httpx.TimeoutException("Test timeout error"))
 
         with pytest.raises(APITimeoutError):
-            self.client.post(
-                "/accounts",
-                body=cast(
-                    object,
-                    maybe_transform(
-                        dict(
-                            name="New Account!",
-                            entity_id="entity_n8y8tnk2p9339ti393yi",
-                            program_id="program_i2v2os4mwza1oetokh9i",
-                        ),
-                        AccountCreateParams,
-                    ),
-                ),
-                cast_to=httpx.Response,
-                options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
-            )
+            client.accounts.with_streaming_response.create(name="New Account!").__enter__()
 
         assert _get_open_connections(self.client) == 0
 
     @mock.patch("increase._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
-    def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
+    def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter, client: Increase) -> None:
         respx_mock.post("/accounts").mock(return_value=httpx.Response(500))
 
         with pytest.raises(APIStatusError):
-            self.client.post(
-                "/accounts",
-                body=cast(
-                    object,
-                    maybe_transform(
-                        dict(
-                            name="New Account!",
-                            entity_id="entity_n8y8tnk2p9339ti393yi",
-                            program_id="program_i2v2os4mwza1oetokh9i",
-                        ),
-                        AccountCreateParams,
-                    ),
-                ),
-                cast_to=httpx.Response,
-                options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
-            )
-
+            client.accounts.with_streaming_response.create(name="New Account!").__enter__()
         assert _get_open_connections(self.client) == 0
 
     @pytest.mark.parametrize("failures_before_success", [0, 2, 4])
@@ -1646,52 +1612,25 @@ class TestAsyncIncrease:
 
     @mock.patch("increase._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
-    async def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
+    async def test_retrying_timeout_errors_doesnt_leak(
+        self, respx_mock: MockRouter, async_client: AsyncIncrease
+    ) -> None:
         respx_mock.post("/accounts").mock(side_effect=httpx.TimeoutException("Test timeout error"))
 
         with pytest.raises(APITimeoutError):
-            await self.client.post(
-                "/accounts",
-                body=cast(
-                    object,
-                    maybe_transform(
-                        dict(
-                            name="New Account!",
-                            entity_id="entity_n8y8tnk2p9339ti393yi",
-                            program_id="program_i2v2os4mwza1oetokh9i",
-                        ),
-                        AccountCreateParams,
-                    ),
-                ),
-                cast_to=httpx.Response,
-                options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
-            )
+            await async_client.accounts.with_streaming_response.create(name="New Account!").__aenter__()
 
         assert _get_open_connections(self.client) == 0
 
     @mock.patch("increase._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
-    async def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
+    async def test_retrying_status_errors_doesnt_leak(
+        self, respx_mock: MockRouter, async_client: AsyncIncrease
+    ) -> None:
         respx_mock.post("/accounts").mock(return_value=httpx.Response(500))
 
         with pytest.raises(APIStatusError):
-            await self.client.post(
-                "/accounts",
-                body=cast(
-                    object,
-                    maybe_transform(
-                        dict(
-                            name="New Account!",
-                            entity_id="entity_n8y8tnk2p9339ti393yi",
-                            program_id="program_i2v2os4mwza1oetokh9i",
-                        ),
-                        AccountCreateParams,
-                    ),
-                ),
-                cast_to=httpx.Response,
-                options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
-            )
-
+            await async_client.accounts.with_streaming_response.create(name="New Account!").__aenter__()
         assert _get_open_connections(self.client) == 0
 
     @pytest.mark.parametrize("failures_before_success", [0, 2, 4])
