@@ -130,7 +130,8 @@ class PhysicalCheck(TypedDict, total=False):
     """The payee of the check.
 
     This will be printed on the top-left portion of the check and defaults to the
-    return address if unspecified.
+    return address if unspecified. This should be an array of up to 4 elements, each
+    of which represents a line of the payee.
     """
 
     return_address: PhysicalCheckReturnAddress
