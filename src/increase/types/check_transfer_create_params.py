@@ -9,7 +9,7 @@ __all__ = [
     "CheckTransferCreateParams",
     "PhysicalCheck",
     "PhysicalCheckMailingAddress",
-    "PhysicalCheckPayee",
+    "PhysicalCheckPayer",
     "PhysicalCheckReturnAddress",
     "ThirdParty",
 ]
@@ -80,7 +80,7 @@ class PhysicalCheckMailingAddress(TypedDict, total=False):
     """The second line of the address component of the check's destination address."""
 
 
-class PhysicalCheckPayee(TypedDict, total=False):
+class PhysicalCheckPayer(TypedDict, total=False):
     contents: Required[str]
     """The contents of the line."""
 
@@ -126,12 +126,12 @@ class PhysicalCheck(TypedDict, total=False):
     note: str
     """The descriptor that will be printed on the letter included with the check."""
 
-    payee: Iterable[PhysicalCheckPayee]
-    """The payee of the check.
+    payer: Iterable[PhysicalCheckPayer]
+    """The payer of the check.
 
     This will be printed on the top-left portion of the check and defaults to the
     return address if unspecified. This should be an array of up to 4 elements, each
-    of which represents a line of the payee.
+    of which represents a line of the payer.
     """
 
     return_address: PhysicalCheckReturnAddress
@@ -163,6 +163,6 @@ class ThirdParty(TypedDict, total=False):
     """The pay-to name you will print on the check.
 
     If provided, this is used for [Positive Pay](/documentation/positive-pay). If
-    this is omitted, Increase will be unable to validate the payee name when the
+    this is omitted, Increase will be unable to validate the payer name when the
     check is deposited.
     """

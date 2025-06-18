@@ -51,7 +51,7 @@ class TestCheckTransfers:
                 "recipient_name": "Ian Crease",
                 "attachment_file_id": "attachment_file_id",
                 "note": "x",
-                "payee": [{"contents": "x"}],
+                "payer": [{"contents": "x"}],
                 "return_address": {
                     "city": "x",
                     "line1": "x",
@@ -334,7 +334,7 @@ class TestAsyncCheckTransfers:
                 "recipient_name": "Ian Crease",
                 "attachment_file_id": "attachment_file_id",
                 "note": "x",
-                "payee": [{"contents": "x"}],
+                "payer": [{"contents": "x"}],
                 "return_address": {
                     "city": "x",
                     "line1": "x",
