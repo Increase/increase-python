@@ -2,12 +2,14 @@
 
 from __future__ import annotations
 
+from typing import Iterable
 from typing_extensions import Literal, Required, TypedDict
 
 __all__ = [
     "CheckTransferCreateParams",
     "PhysicalCheck",
     "PhysicalCheckMailingAddress",
+    "PhysicalCheckPayee",
     "PhysicalCheckReturnAddress",
     "ThirdParty",
 ]
@@ -78,6 +80,11 @@ class PhysicalCheckMailingAddress(TypedDict, total=False):
     """The second line of the address component of the check's destination address."""
 
 
+class PhysicalCheckPayee(TypedDict, total=False):
+    contents: Required[str]
+    """The contents of the line."""
+
+
 class PhysicalCheckReturnAddress(TypedDict, total=False):
     city: Required[str]
     """The city of the return address."""
@@ -118,6 +125,13 @@ class PhysicalCheck(TypedDict, total=False):
 
     note: str
     """The descriptor that will be printed on the letter included with the check."""
+
+    payee: Iterable[PhysicalCheckPayee]
+    """The payee of the check.
+
+    This will be printed on the top-left portion of the check and defaults to the
+    return address if unspecified.
+    """
 
     return_address: PhysicalCheckReturnAddress
     """The return address to be printed on the check.
