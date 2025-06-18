@@ -17,6 +17,7 @@ __all__ = [
     "Mailing",
     "PhysicalCheck",
     "PhysicalCheckMailingAddress",
+    "PhysicalCheckPayee",
     "PhysicalCheckReturnAddress",
     "PhysicalCheckTrackingUpdate",
     "StopPaymentRequest",
@@ -127,6 +128,11 @@ class PhysicalCheckMailingAddress(BaseModel):
     """The state of the check's destination."""
 
 
+class PhysicalCheckPayee(BaseModel):
+    contents: str
+    """The contents of the line."""
+
+
 class PhysicalCheckReturnAddress(BaseModel):
     city: Optional[str] = None
     """The city of the check's destination."""
@@ -179,6 +185,13 @@ class PhysicalCheck(BaseModel):
 
     note: Optional[str] = None
     """The descriptor that will be printed on the letter included with the check."""
+
+    payee: List[PhysicalCheckPayee]
+    """The payee of the check.
+
+    This will be printed on the top-left portion of the check and defaults to the
+    return address if unspecified.
+    """
 
     recipient_name: str
     """The name that will be printed on the check."""
