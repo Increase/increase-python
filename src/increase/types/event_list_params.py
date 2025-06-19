@@ -123,6 +123,8 @@ _CategoryReservedKeywords = TypedDict(
                 "real_time_payments_transfer.updated",
                 "real_time_payments_request_for_payment.created",
                 "real_time_payments_request_for_payment.updated",
+                "swift_transfer.created",
+                "swift_transfer.updated",
                 "transaction.created",
                 "wire_drawdown_request.created",
                 "wire_drawdown_request.updated",
