@@ -48,7 +48,7 @@ from ._exceptions import (
     InsufficientPermissionsError,
     IdempotencyKeyAlreadyUsedError,
 )
-from ._base_client import DefaultHttpxClient, DefaultAsyncHttpxClient
+from ._base_client import DefaultHttpxClient, DefaultAioHttpClient, DefaultAsyncHttpxClient
 from ._utils._logs import setup_logging as _setup_logging
 
 __all__ = [
@@ -102,6 +102,7 @@ __all__ = [
     "DEFAULT_CONNECTION_LIMITS",
     "DefaultHttpxClient",
     "DefaultAsyncHttpxClient",
+    "DefaultAioHttpClient",
 ]
 
 if not _t.TYPE_CHECKING:
