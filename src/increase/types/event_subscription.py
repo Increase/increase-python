@@ -100,6 +100,10 @@ class EventSubscription(BaseModel):
             "outbound_card_push_transfer.updated",
             "outbound_card_validation.created",
             "outbound_card_validation.updated",
+            "card_push_transfer.created",
+            "card_push_transfer.updated",
+            "card_validation.created",
+            "card_validation.updated",
             "pending_transaction.created",
             "pending_transaction.updated",
             "physical_card.created",
@@ -117,6 +121,8 @@ class EventSubscription(BaseModel):
             "real_time_payments_transfer.updated",
             "real_time_payments_request_for_payment.created",
             "real_time_payments_request_for_payment.updated",
+            "swift_transfer.created",
+            "swift_transfer.updated",
             "transaction.created",
             "wire_drawdown_request.created",
             "wire_drawdown_request.updated",
@@ -219,14 +225,20 @@ class EventSubscription(BaseModel):
     - `oauth_connection.created` - Occurs whenever an OAuth Connection is created.
     - `oauth_connection.deactivated` - Occurs whenever an OAuth Connection is
       deactivated.
-    - `outbound_card_push_transfer.created` - Occurs whenever an Outbound Card Push
-      Transfer is created.
-    - `outbound_card_push_transfer.updated` - Occurs whenever an Outbound Card Push
-      Transfer is updated.
-    - `outbound_card_validation.created` - Occurs whenever an Outbound Card
-      Validation is created.
-    - `outbound_card_validation.updated` - Occurs whenever an Outbound Card
-      Validation is updated.
+    - `outbound_card_push_transfer.created` - Occurs whenever a Card Push Transfer
+      is created.
+    - `outbound_card_push_transfer.updated` - Occurs whenever a Card Push Transfer
+      is updated.
+    - `outbound_card_validation.created` - Occurs whenever a Card Validation is
+      created.
+    - `outbound_card_validation.updated` - Occurs whenever a Card Validation is
+      updated.
+    - `card_push_transfer.created` - Occurs whenever a Card Push Transfer is
+      created.
+    - `card_push_transfer.updated` - Occurs whenever a Card Push Transfer is
+      updated.
+    - `card_validation.created` - Occurs whenever a Card Validation is created.
+    - `card_validation.updated` - Occurs whenever a Card Validation is updated.
     - `pending_transaction.created` - Occurs whenever a Pending Transaction is
       created.
     - `pending_transaction.updated` - Occurs whenever a Pending Transaction is
@@ -261,6 +273,8 @@ class EventSubscription(BaseModel):
       Payments Request for Payment is created.
     - `real_time_payments_request_for_payment.updated` - Occurs whenever a Real-Time
       Payments Request for Payment is updated.
+    - `swift_transfer.created` - Occurs whenever a Swift Transfer is created.
+    - `swift_transfer.updated` - Occurs whenever a Swift Transfer is updated.
     - `transaction.created` - Occurs whenever a Transaction is created.
     - `wire_drawdown_request.created` - Occurs whenever a Wire Drawdown Request is
       created.

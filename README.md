@@ -1,6 +1,6 @@
 # Increase Python API library
 
-[![PyPI version](https://img.shields.io/pypi/v/increase.svg)](https://pypi.org/project/increase/)
+[![PyPI version](<https://img.shields.io/pypi/v/increase.svg?label=pypi%20(stable)>)](https://pypi.org/project/increase/)
 
 The Increase Python library provides convenient access to the Increase REST API from any Python 3.8+
 application. The library includes type definitions for all request params and response fields,
@@ -73,6 +73,42 @@ asyncio.run(main())
 ```
 
 Functionality between the synchronous and asynchronous clients is otherwise identical.
+
+### With aiohttp
+
+By default, the async client uses `httpx` for HTTP requests. However, for improved concurrency performance you may also use `aiohttp` as the HTTP backend.
+
+You can enable this by installing `aiohttp`:
+
+```sh
+# install from PyPI
+pip install increase[aiohttp]
+```
+
+Then you can enable it by instantiating the client with `http_client=DefaultAioHttpClient()`:
+
+```python
+import os
+import asyncio
+from increase import DefaultAioHttpClient
+from increase import AsyncIncrease
+
+
+async def main() -> None:
+    async with AsyncIncrease(
+        api_key=os.environ.get("INCREASE_API_KEY"),  # This is the default and can be omitted
+        http_client=DefaultAioHttpClient(),
+    ) as client:
+        account = await client.accounts.create(
+            name="New Account!",
+            entity_id="entity_n8y8tnk2p9339ti393yi",
+            program_id="program_i2v2os4mwza1oetokh9i",
+        )
+        print(account.id)
+
+
+asyncio.run(main())
+```
 
 ## Using types
 
@@ -235,7 +271,7 @@ client.with_options(max_retries=5).accounts.create(
 ### Timeouts
 
 By default requests time out after 1 minute. You can configure this with a `timeout` option,
-which accepts a float or an [`httpx.Timeout`](https://www.python-httpx.org/advanced/#fine-tuning-the-configuration) object:
+which accepts a float or an [`httpx.Timeout`](https://www.python-httpx.org/advanced/timeouts/#fine-tuning-the-configuration) object:
 
 ```python
 from increase import Increase

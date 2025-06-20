@@ -1,17 +1,31 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Optional
+from typing import List, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["InboundMailItem"]
+__all__ = ["InboundMailItem", "Check"]
+
+
+class Check(BaseModel):
+    amount: int
+    """The amount of the check."""
+
+    back_file_id: Optional[str] = None
+    """The identifier for the File containing the back of the check."""
+
+    front_file_id: Optional[str] = None
+    """The identifier for the File containing the front of the check."""
 
 
 class InboundMailItem(BaseModel):
     id: str
     """The Inbound Mail Item identifier."""
+
+    checks: List[Check]
+    """The checks in the mail item."""
 
     created_at: datetime
     """
