@@ -1,5 +1,39 @@
 # Changelog
 
+## 0.253.0 (2025-06-23)
+
+Full Changelog: [v0.252.1...v0.253.0](https://github.com/Increase/increase-python/compare/v0.252.1...v0.253.0)
+
+### Features
+
+* **api:** api update ([7df5de1](https://github.com/Increase/increase-python/commit/7df5de1517b8d28a43b8ffd9727f17f79d400a7c))
+* **api:** api update ([6ce25d3](https://github.com/Increase/increase-python/commit/6ce25d37a50ec3c630cfedc6122d4c998f781647))
+* **api:** api update ([0ab89ca](https://github.com/Increase/increase-python/commit/0ab89ca40d3bbdf7fb087b6c0650fbccec1f9dac))
+* **api:** api update ([5dbf5ae](https://github.com/Increase/increase-python/commit/5dbf5ae5008cf235dc056e2c7be298b27c413c99))
+* **api:** api update ([16bb632](https://github.com/Increase/increase-python/commit/16bb63236e8d75745170aceb37921863b28ae593))
+* **api:** api update ([97233f5](https://github.com/Increase/increase-python/commit/97233f556d5c90802fdd3d3239a16080499a92d5))
+* **api:** api update ([be18f16](https://github.com/Increase/increase-python/commit/be18f16941aa5d334f263a5e889af43a4e3cb3aa))
+* **api:** api update ([1f93845](https://github.com/Increase/increase-python/commit/1f9384500ddaccfb1aeb75d7d9796bc23fd066d0))
+* **client:** add support for aiohttp ([b5735d7](https://github.com/Increase/increase-python/commit/b5735d7f79f0722d6d1a0b43bb5ae24c9be7b0c7))
+
+
+### Bug Fixes
+
+* **tests:** fix: tests which call HTTP endpoints directly with the example parameters ([4b0013d](https://github.com/Increase/increase-python/commit/4b0013d8f731bc64cdbb8b5e8d5cdc577c573f94))
+
+
+### Chores
+
+* **ci:** enable for pull requests ([09b085c](https://github.com/Increase/increase-python/commit/09b085c24f28bca2ca2f34bd45d58601a5664344))
+* **internal:** update conftest.py ([e03d919](https://github.com/Increase/increase-python/commit/e03d9191b4d426a95b67cf1d907be6635ff57a3d))
+* **readme:** update badges ([4a734d4](https://github.com/Increase/increase-python/commit/4a734d462b653b48b5364b0febb25ac33ff309d6))
+* **tests:** skip some failing tests on the latest python versions ([43b9915](https://github.com/Increase/increase-python/commit/43b99150a209aa197c31315370c9271f32701351))
+
+
+### Documentation
+
+* **client:** fix httpx.Timeout documentation reference ([05bb5ca](https://github.com/Increase/increase-python/commit/05bb5ca50f06b071f5ceea8af3d41b6659076348))
+
 ## 0.252.1 (2025-06-16)
 
 Full Changelog: [v0.252.0...v0.252.1](https://github.com/Increase/increase-python/compare/v0.252.0...v0.252.1)
