@@ -15,6 +15,7 @@ __all__ = [
     "Decline",
     "InternationalAddenda",
     "NotificationOfChange",
+    "Settlement",
     "TransferReturn",
 ]
 
@@ -341,6 +342,21 @@ class NotificationOfChange(BaseModel):
     """The new account number provided in the notification of change."""
 
 
+class Settlement(BaseModel):
+    settled_at: datetime
+    """
+    When the funds for this transfer settle at the recipient bank at the Federal
+    Reserve.
+    """
+
+    settlement_schedule: Literal["same_day", "future_dated"]
+    """The settlement schedule this transfer follows.
+
+    - `same_day` - The transfer is expected to settle same-day.
+    - `future_dated` - The transfer is expected to settle on a future date.
+    """
+
+
 class TransferReturn(BaseModel):
     reason: Literal[
         "insufficient_funds",
@@ -432,13 +448,6 @@ class InboundACHTransfer(BaseModel):
     availability.
     """
 
-    expected_settlement_schedule: Literal["same_day", "future_dated"]
-    """The settlement schedule the transfer is expected to follow.
-
-    - `same_day` - The transfer is expected to settle same-day.
-    - `future_dated` - The transfer is expected to settle on a future date.
-    """
-
     international_addenda: Optional[InternationalAddenda] = None
     """
     If the Inbound ACH Transfer has a Standard Entry Class Code of IAT, this will
@@ -477,6 +486,12 @@ class InboundACHTransfer(BaseModel):
 
     receiver_name: Optional[str] = None
     """The name of the receiver of the transfer."""
+
+    settlement: Optional[Settlement] = None
+    """
+    A subhash containing information about when and how the transfer settled at the
+    Federal Reserve.
+    """
 
     standard_entry_class_code: Literal[
         "corporate_credit_or_debit",
