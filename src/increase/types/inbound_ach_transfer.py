@@ -487,7 +487,7 @@ class InboundACHTransfer(BaseModel):
     receiver_name: Optional[str] = None
     """The name of the receiver of the transfer."""
 
-    settlement: Optional[Settlement] = None
+    settlement: Settlement
     """
     A subhash containing information about when and how the transfer settled at the
     Federal Reserve.
