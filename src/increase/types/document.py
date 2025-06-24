@@ -6,10 +6,15 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["Document", "AccountVerificationLetter"]
+__all__ = ["Document", "AccountVerificationLetter", "FundingInstructions"]
 
 
 class AccountVerificationLetter(BaseModel):
+    account_number_id: str
+    """The identifier of the Account Number the document was generated for."""
+
+
+class FundingInstructions(BaseModel):
     account_number_id: str
     """The identifier of the Account Number the document was generated for."""
 
@@ -27,6 +32,7 @@ class Document(BaseModel):
         "proof_of_authorization",
         "company_information",
         "account_verification_letter",
+        "funding_instructions",
     ]
     """The type of document.
 
@@ -37,6 +43,7 @@ class Document(BaseModel):
     - `company_information` - Company information, such a policies or procedures,
       typically submitted during our due diligence process.
     - `account_verification_letter` - An account verification letter.
+    - `funding_instructions` - Funding instructions.
     """
 
     created_at: datetime
@@ -50,6 +57,9 @@ class Document(BaseModel):
 
     file_id: str
     """The identifier of the File containing the Document's contents."""
+
+    funding_instructions: Optional[FundingInstructions] = None
+    """Properties of a funding instructions document."""
 
     idempotency_key: Optional[str] = None
     """The idempotency key you chose for this object.

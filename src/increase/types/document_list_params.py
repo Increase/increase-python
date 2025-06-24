@@ -47,6 +47,7 @@ _CategoryReservedKeywords = TypedDict(
                 "proof_of_authorization",
                 "company_information",
                 "account_verification_letter",
+                "funding_instructions",
             ]
         ],
     },
