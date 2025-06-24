@@ -34,6 +34,7 @@ class TestDocuments:
                 "account_number_id": "account_number_v18nkfqm6afpsrvy82b2",
                 "balance_date": parse_date("2024-12-31"),
             },
+            funding_instructions={"account_number_id": "account_number_id"},
         )
         assert_matches_type(Document, document, path=["response"])
 
@@ -162,6 +163,7 @@ class TestAsyncDocuments:
                 "account_number_id": "account_number_v18nkfqm6afpsrvy82b2",
                 "balance_date": parse_date("2024-12-31"),
             },
+            funding_instructions={"account_number_id": "account_number_id"},
         )
         assert_matches_type(Document, document, path=["response"])
 

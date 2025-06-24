@@ -47,8 +47,9 @@ class DocumentsResource(SyncAPIResource):
     def create(
         self,
         *,
-        category: Literal["account_verification_letter"],
+        category: Literal["account_verification_letter", "funding_instructions"],
         account_verification_letter: document_create_params.AccountVerificationLetter | NotGiven = NOT_GIVEN,
+        funding_instructions: document_create_params.FundingInstructions | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -64,8 +65,11 @@ class DocumentsResource(SyncAPIResource):
           category: The type of document to create.
 
               - `account_verification_letter` - An account verification letter.
+              - `funding_instructions` - Funding instructions.
 
           account_verification_letter: An account verification letter.
+
+          funding_instructions: Funding instructions.
 
           extra_headers: Send extra headers
 
@@ -83,6 +87,7 @@ class DocumentsResource(SyncAPIResource):
                 {
                     "category": category,
                     "account_verification_letter": account_verification_letter,
+                    "funding_instructions": funding_instructions,
                 },
                 document_create_params.DocumentCreateParams,
             ),
@@ -218,8 +223,9 @@ class AsyncDocumentsResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        category: Literal["account_verification_letter"],
+        category: Literal["account_verification_letter", "funding_instructions"],
         account_verification_letter: document_create_params.AccountVerificationLetter | NotGiven = NOT_GIVEN,
+        funding_instructions: document_create_params.FundingInstructions | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -235,8 +241,11 @@ class AsyncDocumentsResource(AsyncAPIResource):
           category: The type of document to create.
 
               - `account_verification_letter` - An account verification letter.
+              - `funding_instructions` - Funding instructions.
 
           account_verification_letter: An account verification letter.
+
+          funding_instructions: Funding instructions.
 
           extra_headers: Send extra headers
 
@@ -254,6 +263,7 @@ class AsyncDocumentsResource(AsyncAPIResource):
                 {
                     "category": category,
                     "account_verification_letter": account_verification_letter,
+                    "funding_instructions": funding_instructions,
                 },
                 document_create_params.DocumentCreateParams,
             ),
