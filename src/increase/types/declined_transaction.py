@@ -519,6 +519,7 @@ class SourceCardDecline(BaseModel):
         "group_locked",
         "insufficient_funds",
         "cvv2_mismatch",
+        "pin_mismatch",
         "card_expiration_mismatch",
         "transaction_not_allowed",
         "breaches_limit",
@@ -541,6 +542,7 @@ class SourceCardDecline(BaseModel):
     - `insufficient_funds` - The Card's Account did not have a sufficient available
       balance.
     - `cvv2_mismatch` - The given CVV2 did not match the card's value.
+    - `pin_mismatch` - The given PIN did not match the card's value.
     - `card_expiration_mismatch` - The given expiration date did not match the
       card's value. Only applies when a CVV2 is present.
     - `transaction_not_allowed` - The attempted card transaction is not allowed per
