@@ -72,7 +72,7 @@ class BeneficialOwnerIndividualIdentificationOther(TypedDict, total=False):
     country: Required[str]
     """
     The two-character ISO 3166-1 code representing the country that issued the
-    document.
+    document (e.g., `US`).
     """
 
     description: Required[str]
@@ -93,7 +93,10 @@ class BeneficialOwnerIndividualIdentificationOther(TypedDict, total=False):
 
 class BeneficialOwnerIndividualIdentificationPassport(TypedDict, total=False):
     country: Required[str]
-    """The country that issued the passport."""
+    """
+    The two-character ISO 3166-1 code representing the country that issued the
+    document (e.g., `US`).
+    """
 
     expiration_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """The passport's expiration date in YYYY-MM-DD format."""

@@ -175,7 +175,7 @@ class CorporationBeneficialOwnerIndividualIdentificationOther(TypedDict, total=F
     country: Required[str]
     """
     The two-character ISO 3166-1 code representing the country that issued the
-    document.
+    document (e.g., `US`).
     """
 
     description: Required[str]
@@ -196,7 +196,10 @@ class CorporationBeneficialOwnerIndividualIdentificationOther(TypedDict, total=F
 
 class CorporationBeneficialOwnerIndividualIdentificationPassport(TypedDict, total=False):
     country: Required[str]
-    """The country that issued the passport."""
+    """
+    The two-character ISO 3166-1 code representing the country that issued the
+    document (e.g., `US`).
+    """
 
     expiration_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """The passport's expiration date in YYYY-MM-DD format."""
@@ -431,7 +434,7 @@ class JointIndividualIdentificationOther(TypedDict, total=False):
     country: Required[str]
     """
     The two-character ISO 3166-1 code representing the country that issued the
-    document.
+    document (e.g., `US`).
     """
 
     description: Required[str]
@@ -452,7 +455,10 @@ class JointIndividualIdentificationOther(TypedDict, total=False):
 
 class JointIndividualIdentificationPassport(TypedDict, total=False):
     country: Required[str]
-    """The country that issued the passport."""
+    """
+    The two-character ISO 3166-1 code representing the country that issued the
+    passport (e.g., `US`).
+    """
 
     expiration_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """The passport's expiration date in YYYY-MM-DD format."""
@@ -577,7 +583,7 @@ class NaturalPersonIdentificationOther(TypedDict, total=False):
     country: Required[str]
     """
     The two-character ISO 3166-1 code representing the country that issued the
-    document.
+    document (e.g., `US`).
     """
 
     description: Required[str]
@@ -598,7 +604,10 @@ class NaturalPersonIdentificationOther(TypedDict, total=False):
 
 class NaturalPersonIdentificationPassport(TypedDict, total=False):
     country: Required[str]
-    """The country that issued the passport."""
+    """
+    The two-character ISO 3166-1 code representing the country that issued the
+    passport (e.g., `US`).
+    """
 
     expiration_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """The passport's expiration date in YYYY-MM-DD format."""
@@ -753,7 +762,7 @@ class TrustTrusteeIndividualIdentificationOther(TypedDict, total=False):
     country: Required[str]
     """
     The two-character ISO 3166-1 code representing the country that issued the
-    document.
+    document (e.g., `US`).
     """
 
     description: Required[str]
@@ -774,7 +783,10 @@ class TrustTrusteeIndividualIdentificationOther(TypedDict, total=False):
 
 class TrustTrusteeIndividualIdentificationPassport(TypedDict, total=False):
     country: Required[str]
-    """The country that issued the passport."""
+    """
+    The two-character ISO 3166-1 code representing the country that issued the
+    passport (e.g., `US`).
+    """
 
     expiration_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """The passport's expiration date in YYYY-MM-DD format."""
@@ -905,7 +917,7 @@ class TrustGrantorIdentificationOther(TypedDict, total=False):
     country: Required[str]
     """
     The two-character ISO 3166-1 code representing the country that issued the
-    document.
+    document (e.g., `US`).
     """
 
     description: Required[str]
@@ -926,7 +938,10 @@ class TrustGrantorIdentificationOther(TypedDict, total=False):
 
 class TrustGrantorIdentificationPassport(TypedDict, total=False):
     country: Required[str]
-    """The country that issued the passport."""
+    """
+    The two-character ISO 3166-1 code representing the country that issued the
+    passport (e.g., `US`).
+    """
 
     expiration_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """The passport's expiration date in YYYY-MM-DD format."""
