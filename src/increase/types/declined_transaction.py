@@ -450,6 +450,8 @@ class SourceCardDecline(BaseModel):
         "purchase",
         "quasi_cash",
         "refund",
+        "cash_disbursement",
+        "unknown",
     ]
     """
     The processing category describes the intent behind the authorization, such as
@@ -469,6 +471,9 @@ class SourceCardDecline(BaseModel):
       be convertible to cash.
     - `refund` - A refund card authorization, sometimes referred to as a credit
       voucher authorization, where funds are credited to the cardholder.
+    - `cash_disbursement` - Cash disbursement transactions are used to withdraw cash
+      from an ATM or a point of sale.
+    - `unknown` - The processing category is unknown.
     """
 
     real_time_decision_id: Optional[str] = None
