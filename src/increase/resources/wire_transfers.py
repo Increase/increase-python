@@ -54,6 +54,7 @@ class WireTransfersResource(SyncAPIResource):
         beneficiary_address_line2: str | NotGiven = NOT_GIVEN,
         beneficiary_address_line3: str | NotGiven = NOT_GIVEN,
         external_account_id: str | NotGiven = NOT_GIVEN,
+        inbound_wire_drawdown_request_id: str | NotGiven = NOT_GIVEN,
         originator_address_line1: str | NotGiven = NOT_GIVEN,
         originator_address_line2: str | NotGiven = NOT_GIVEN,
         originator_address_line3: str | NotGiven = NOT_GIVEN,
@@ -91,6 +92,9 @@ class WireTransfersResource(SyncAPIResource):
 
           external_account_id: The ID of an External Account to initiate a transfer to. If this parameter is
               provided, `account_number` and `routing_number` must be absent.
+
+          inbound_wire_drawdown_request_id: The ID of an Inbound Wire Drawdown Request in response to which this transfer is
+              being sent.
 
           originator_address_line1: The originator's address line 1. This is only necessary if you're transferring
               from a commingled account. Otherwise, we'll use the associated entity's details.
@@ -134,6 +138,7 @@ class WireTransfersResource(SyncAPIResource):
                     "beneficiary_address_line2": beneficiary_address_line2,
                     "beneficiary_address_line3": beneficiary_address_line3,
                     "external_account_id": external_account_id,
+                    "inbound_wire_drawdown_request_id": inbound_wire_drawdown_request_id,
                     "originator_address_line1": originator_address_line1,
                     "originator_address_line2": originator_address_line2,
                     "originator_address_line3": originator_address_line3,
@@ -371,6 +376,7 @@ class AsyncWireTransfersResource(AsyncAPIResource):
         beneficiary_address_line2: str | NotGiven = NOT_GIVEN,
         beneficiary_address_line3: str | NotGiven = NOT_GIVEN,
         external_account_id: str | NotGiven = NOT_GIVEN,
+        inbound_wire_drawdown_request_id: str | NotGiven = NOT_GIVEN,
         originator_address_line1: str | NotGiven = NOT_GIVEN,
         originator_address_line2: str | NotGiven = NOT_GIVEN,
         originator_address_line3: str | NotGiven = NOT_GIVEN,
@@ -408,6 +414,9 @@ class AsyncWireTransfersResource(AsyncAPIResource):
 
           external_account_id: The ID of an External Account to initiate a transfer to. If this parameter is
               provided, `account_number` and `routing_number` must be absent.
+
+          inbound_wire_drawdown_request_id: The ID of an Inbound Wire Drawdown Request in response to which this transfer is
+              being sent.
 
           originator_address_line1: The originator's address line 1. This is only necessary if you're transferring
               from a commingled account. Otherwise, we'll use the associated entity's details.
@@ -451,6 +460,7 @@ class AsyncWireTransfersResource(AsyncAPIResource):
                     "beneficiary_address_line2": beneficiary_address_line2,
                     "beneficiary_address_line3": beneficiary_address_line3,
                     "external_account_id": external_account_id,
+                    "inbound_wire_drawdown_request_id": inbound_wire_drawdown_request_id,
                     "originator_address_line1": originator_address_line1,
                     "originator_address_line2": originator_address_line2,
                     "originator_address_line3": originator_address_line3,
