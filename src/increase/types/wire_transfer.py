@@ -232,6 +232,12 @@ class WireTransfer(BaseModel):
     [idempotency](https://increase.com/documentation/idempotency-keys).
     """
 
+    inbound_wire_drawdown_request_id: Optional[str] = None
+    """
+    The ID of an Inbound Wire Drawdown Request in response to which this transfer
+    was sent.
+    """
+
     message_to_recipient: Optional[str] = None
     """The message that will show on the recipient's bank statement."""
 

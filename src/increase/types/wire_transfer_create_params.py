@@ -39,6 +39,12 @@ class WireTransferCreateParams(TypedDict, total=False):
     absent.
     """
 
+    inbound_wire_drawdown_request_id: str
+    """
+    The ID of an Inbound Wire Drawdown Request in response to which this transfer is
+    being sent.
+    """
+
     originator_address_line1: str
     """The originator's address line 1.
 
