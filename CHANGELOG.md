@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.256.1 (2025-06-26)
+
+Full Changelog: [v0.256.0...v0.256.1](https://github.com/Increase/increase-python/compare/v0.256.0...v0.256.1)
+
+### Bug Fixes
+
+* **ci:** release-doctor — report correct token name ([4f6df5e](https://github.com/Increase/increase-python/commit/4f6df5e3b0eef18346da65ae56a532d88a5b84d8))
+
 ## 0.256.0 (2025-06-26)
 
 Full Changelog: [v0.255.0...v0.256.0](https://github.com/Increase/increase-python/compare/v0.255.0...v0.256.0)
