@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.256.2 (2025-06-29)
+
+Full Changelog: [v0.256.1...v0.256.2](https://github.com/Increase/increase-python/compare/v0.256.1...v0.256.2)
+
+### Bug Fixes
+
+* **ci:** correct conditional ([16df604](https://github.com/Increase/increase-python/commit/16df604cf7da3c37ffdfbd8d40a8f0995c612728))
+
+
+### Chores
+
+* **ci:** only run for pushes and fork pull requests ([a56c72d](https://github.com/Increase/increase-python/commit/a56c72d15148b87a57631ddcc79c05e9cc35e505))
+
 ## 0.256.1 (2025-06-26)
 
 Full Changelog: [v0.256.0...v0.256.1](https://github.com/Increase/increase-python/compare/v0.256.0...v0.256.1)
