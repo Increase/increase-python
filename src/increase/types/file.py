@@ -68,6 +68,7 @@ class File(BaseModel):
         "proof_of_authorization_request_submission",
         "account_verification_letter",
         "funding_instructions",
+        "hold_harmless_letter",
     ]
     """What the File will be used for.
 
@@ -114,6 +115,7 @@ class File(BaseModel):
       evidence for a Proof of Authorization Request Submission.
     - `account_verification_letter` - An account verification letter.
     - `funding_instructions` - Funding instructions.
+    - `hold_harmless_letter` - A Hold Harmless Letter.
     """
 
     type: Literal["file"]
