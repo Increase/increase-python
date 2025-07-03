@@ -62,6 +62,7 @@ class TestPhysicalCards:
                     "phone_number": "x",
                 },
                 "method": "usps",
+                "schedule": "next_day",
             },
             physical_card_profile_id="physical_card_profile_id",
         )
@@ -287,6 +288,7 @@ class TestAsyncPhysicalCards:
                     "phone_number": "x",
                 },
                 "method": "usps",
+                "schedule": "next_day",
             },
             physical_card_profile_id="physical_card_profile_id",
         )
