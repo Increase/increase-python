@@ -1081,6 +1081,7 @@ class ElementCardDecline(BaseModel):
         "invalid_physical_card",
         "missing_original_authorization",
         "failed_3ds_authentication",
+        "suspected_card_testing",
         "suspected_fraud",
     ]
     """Why the transaction was declined.
@@ -1110,6 +1111,8 @@ class ElementCardDecline(BaseModel):
       incremental authorization does not exist.
     - `failed_3ds_authentication` - The transaction was declined because the 3DS
       authentication failed.
+    - `suspected_card_testing` - The transaction was suspected to be used by a card
+      tester to test for valid card numbers.
     - `suspected_fraud` - The transaction was suspected to be fraudulent. Please
       reach out to support@increase.com for more information.
     """

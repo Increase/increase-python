@@ -68,6 +68,7 @@ class CardAuthorizationsResource(SyncAPIResource):
             "invalid_physical_card",
             "missing_original_authorization",
             "failed_3ds_authentication",
+            "suspected_card_testing",
             "suspected_fraud",
         ]
         | NotGiven = NOT_GIVEN,
@@ -138,6 +139,8 @@ class CardAuthorizationsResource(SyncAPIResource):
                 incremental authorization does not exist.
               - `failed_3ds_authentication` - The transaction was declined because the 3DS
                 authentication failed.
+              - `suspected_card_testing` - The transaction was suspected to be used by a card
+                tester to test for valid card numbers.
               - `suspected_fraud` - The transaction was suspected to be fraudulent. Please
                 reach out to support@increase.com for more information.
 
@@ -270,6 +273,7 @@ class AsyncCardAuthorizationsResource(AsyncAPIResource):
             "invalid_physical_card",
             "missing_original_authorization",
             "failed_3ds_authentication",
+            "suspected_card_testing",
             "suspected_fraud",
         ]
         | NotGiven = NOT_GIVEN,
@@ -340,6 +344,8 @@ class AsyncCardAuthorizationsResource(AsyncAPIResource):
                 incremental authorization does not exist.
               - `failed_3ds_authentication` - The transaction was declined because the 3DS
                 authentication failed.
+              - `suspected_card_testing` - The transaction was suspected to be used by a card
+                tester to test for valid card numbers.
               - `suspected_fraud` - The transaction was suspected to be fraudulent. Please
                 reach out to support@increase.com for more information.
 
