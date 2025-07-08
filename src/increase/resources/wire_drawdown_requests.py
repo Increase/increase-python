@@ -47,17 +47,13 @@ class WireDrawdownRequestsResource(SyncAPIResource):
         *,
         account_number_id: str,
         amount: int,
-        message_to_recipient: str,
-        recipient_account_number: str,
-        recipient_name: str,
-        recipient_routing_number: str,
-        originator_address_line1: str | NotGiven = NOT_GIVEN,
-        originator_address_line2: str | NotGiven = NOT_GIVEN,
-        originator_address_line3: str | NotGiven = NOT_GIVEN,
-        originator_name: str | NotGiven = NOT_GIVEN,
-        recipient_address_line1: str | NotGiven = NOT_GIVEN,
-        recipient_address_line2: str | NotGiven = NOT_GIVEN,
-        recipient_address_line3: str | NotGiven = NOT_GIVEN,
+        creditor_address: wire_drawdown_request_create_params.CreditorAddress,
+        creditor_name: str,
+        debtor_account_number: str,
+        debtor_address: wire_drawdown_request_create_params.DebtorAddress,
+        debtor_name: str,
+        debtor_routing_number: str,
+        unstructured_remittance_information: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -70,39 +66,23 @@ class WireDrawdownRequestsResource(SyncAPIResource):
         Create a Wire Drawdown Request
 
         Args:
-          account_number_id: The Account Number to which the recipient should send funds.
+          account_number_id: The Account Number to which the debtor should send funds.
 
-          amount: The amount requested from the recipient, in USD cents.
+          amount: The amount requested from the debtor, in USD cents.
 
-          message_to_recipient: A message the recipient will see as part of the request.
+          creditor_address: The creditor's address.
 
-          recipient_account_number: The drawdown request's recipient's account number.
+          creditor_name: The creditor's name.
 
-          recipient_name: The drawdown request's recipient's name.
+          debtor_account_number: The debtor's account number.
 
-          recipient_routing_number: The drawdown request's recipient's routing number.
+          debtor_address: The debtor's address.
 
-          originator_address_line1: The drawdown request originator's address line 1. This is only necessary if
-              you're requesting a payment to a commingled account. Otherwise, we'll use the
-              associated entity's details.
+          debtor_name: The debtor's name.
 
-          originator_address_line2: The drawdown request originator's address line 2. This is only necessary if
-              you're requesting a payment to a commingled account. Otherwise, we'll use the
-              associated entity's details.
+          debtor_routing_number: The debtor's routing number.
 
-          originator_address_line3: The drawdown request originator's address line 3. This is only necessary if
-              you're requesting a payment to a commingled account. Otherwise, we'll use the
-              associated entity's details.
-
-          originator_name: The drawdown request originator's name. This is only necessary if you're
-              requesting a payment to a commingled account. Otherwise, we'll use the
-              associated entity's details.
-
-          recipient_address_line1: Line 1 of the drawdown request's recipient's address.
-
-          recipient_address_line2: Line 2 of the drawdown request's recipient's address.
-
-          recipient_address_line3: Line 3 of the drawdown request's recipient's address.
+          unstructured_remittance_information: Remittance information the debtor will see as part of the request.
 
           extra_headers: Send extra headers
 
@@ -120,17 +100,13 @@ class WireDrawdownRequestsResource(SyncAPIResource):
                 {
                     "account_number_id": account_number_id,
                     "amount": amount,
-                    "message_to_recipient": message_to_recipient,
-                    "recipient_account_number": recipient_account_number,
-                    "recipient_name": recipient_name,
-                    "recipient_routing_number": recipient_routing_number,
-                    "originator_address_line1": originator_address_line1,
-                    "originator_address_line2": originator_address_line2,
-                    "originator_address_line3": originator_address_line3,
-                    "originator_name": originator_name,
-                    "recipient_address_line1": recipient_address_line1,
-                    "recipient_address_line2": recipient_address_line2,
-                    "recipient_address_line3": recipient_address_line3,
+                    "creditor_address": creditor_address,
+                    "creditor_name": creditor_name,
+                    "debtor_account_number": debtor_account_number,
+                    "debtor_address": debtor_address,
+                    "debtor_name": debtor_name,
+                    "debtor_routing_number": debtor_routing_number,
+                    "unstructured_remittance_information": unstructured_remittance_information,
                 },
                 wire_drawdown_request_create_params.WireDrawdownRequestCreateParams,
             ),
@@ -264,17 +240,13 @@ class AsyncWireDrawdownRequestsResource(AsyncAPIResource):
         *,
         account_number_id: str,
         amount: int,
-        message_to_recipient: str,
-        recipient_account_number: str,
-        recipient_name: str,
-        recipient_routing_number: str,
-        originator_address_line1: str | NotGiven = NOT_GIVEN,
-        originator_address_line2: str | NotGiven = NOT_GIVEN,
-        originator_address_line3: str | NotGiven = NOT_GIVEN,
-        originator_name: str | NotGiven = NOT_GIVEN,
-        recipient_address_line1: str | NotGiven = NOT_GIVEN,
-        recipient_address_line2: str | NotGiven = NOT_GIVEN,
-        recipient_address_line3: str | NotGiven = NOT_GIVEN,
+        creditor_address: wire_drawdown_request_create_params.CreditorAddress,
+        creditor_name: str,
+        debtor_account_number: str,
+        debtor_address: wire_drawdown_request_create_params.DebtorAddress,
+        debtor_name: str,
+        debtor_routing_number: str,
+        unstructured_remittance_information: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -287,39 +259,23 @@ class AsyncWireDrawdownRequestsResource(AsyncAPIResource):
         Create a Wire Drawdown Request
 
         Args:
-          account_number_id: The Account Number to which the recipient should send funds.
+          account_number_id: The Account Number to which the debtor should send funds.
 
-          amount: The amount requested from the recipient, in USD cents.
+          amount: The amount requested from the debtor, in USD cents.
 
-          message_to_recipient: A message the recipient will see as part of the request.
+          creditor_address: The creditor's address.
 
-          recipient_account_number: The drawdown request's recipient's account number.
+          creditor_name: The creditor's name.
 
-          recipient_name: The drawdown request's recipient's name.
+          debtor_account_number: The debtor's account number.
 
-          recipient_routing_number: The drawdown request's recipient's routing number.
+          debtor_address: The debtor's address.
 
-          originator_address_line1: The drawdown request originator's address line 1. This is only necessary if
-              you're requesting a payment to a commingled account. Otherwise, we'll use the
-              associated entity's details.
+          debtor_name: The debtor's name.
 
-          originator_address_line2: The drawdown request originator's address line 2. This is only necessary if
-              you're requesting a payment to a commingled account. Otherwise, we'll use the
-              associated entity's details.
+          debtor_routing_number: The debtor's routing number.
 
-          originator_address_line3: The drawdown request originator's address line 3. This is only necessary if
-              you're requesting a payment to a commingled account. Otherwise, we'll use the
-              associated entity's details.
-
-          originator_name: The drawdown request originator's name. This is only necessary if you're
-              requesting a payment to a commingled account. Otherwise, we'll use the
-              associated entity's details.
-
-          recipient_address_line1: Line 1 of the drawdown request's recipient's address.
-
-          recipient_address_line2: Line 2 of the drawdown request's recipient's address.
-
-          recipient_address_line3: Line 3 of the drawdown request's recipient's address.
+          unstructured_remittance_information: Remittance information the debtor will see as part of the request.
 
           extra_headers: Send extra headers
 
@@ -337,17 +293,13 @@ class AsyncWireDrawdownRequestsResource(AsyncAPIResource):
                 {
                     "account_number_id": account_number_id,
                     "amount": amount,
-                    "message_to_recipient": message_to_recipient,
-                    "recipient_account_number": recipient_account_number,
-                    "recipient_name": recipient_name,
-                    "recipient_routing_number": recipient_routing_number,
-                    "originator_address_line1": originator_address_line1,
-                    "originator_address_line2": originator_address_line2,
-                    "originator_address_line3": originator_address_line3,
-                    "originator_name": originator_name,
-                    "recipient_address_line1": recipient_address_line1,
-                    "recipient_address_line2": recipient_address_line2,
-                    "recipient_address_line3": recipient_address_line3,
+                    "creditor_address": creditor_address,
+                    "creditor_name": creditor_name,
+                    "debtor_account_number": debtor_account_number,
+                    "debtor_address": debtor_address,
+                    "debtor_name": debtor_name,
+                    "debtor_routing_number": debtor_routing_number,
+                    "unstructured_remittance_information": unstructured_remittance_information,
                 },
                 wire_drawdown_request_create_params.WireDrawdownRequestCreateParams,
             ),
