@@ -6,7 +6,55 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["WireDrawdownRequest", "Submission"]
+__all__ = ["WireDrawdownRequest", "CreditorAddress", "DebtorAddress", "Submission"]
+
+
+class CreditorAddress(BaseModel):
+    city: str
+    """The city, district, town, or village of the address."""
+
+    country: str
+    """
+    The two-letter
+    [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code for
+    the country of the address.
+    """
+
+    line1: str
+    """The first line of the address."""
+
+    line2: Optional[str] = None
+    """The second line of the address."""
+
+    postal_code: Optional[str] = None
+    """The ZIP code of the address."""
+
+    state: Optional[str] = None
+    """The address state."""
+
+
+class DebtorAddress(BaseModel):
+    city: str
+    """The city, district, town, or village of the address."""
+
+    country: str
+    """
+    The two-letter
+    [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code for
+    the country of the address.
+    """
+
+    line1: str
+    """The first line of the address."""
+
+    line2: Optional[str] = None
+    """The second line of the address."""
+
+    postal_code: Optional[str] = None
+    """The ZIP code of the address."""
+
+    state: Optional[str] = None
+    """The address state."""
 
 
 class Submission(BaseModel):
@@ -23,8 +71,8 @@ class WireDrawdownRequest(BaseModel):
 
     account_number_id: str
     """
-    The Account Number to which the recipient of this request is being requested to
-    send funds.
+    The Account Number to which the debtor—the recipient of this request—is being
+    requested to send funds.
     """
 
     amount: int
@@ -36,11 +84,29 @@ class WireDrawdownRequest(BaseModel):
     the wire drawdown request was created.
     """
 
+    creditor_address: CreditorAddress
+    """The creditor's address."""
+
+    creditor_name: str
+    """The creditor's name."""
+
     currency: str
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the amount being
     requested. Will always be "USD".
     """
+
+    debtor_account_number: str
+    """The debtor's account number."""
+
+    debtor_address: DebtorAddress
+    """The debtor's address."""
+
+    debtor_name: str
+    """The debtor's name."""
+
+    debtor_routing_number: str
+    """The debtor's routing number."""
 
     fulfillment_inbound_wire_transfer_id: Optional[str] = None
     """
@@ -55,39 +121,6 @@ class WireDrawdownRequest(BaseModel):
     only processed once. Learn more about
     [idempotency](https://increase.com/documentation/idempotency-keys).
     """
-
-    message_to_recipient: str
-    """The message the recipient will see as part of the drawdown request."""
-
-    originator_address_line1: Optional[str] = None
-    """The originator's address line 1."""
-
-    originator_address_line2: Optional[str] = None
-    """The originator's address line 2."""
-
-    originator_address_line3: Optional[str] = None
-    """The originator's address line 3."""
-
-    originator_name: Optional[str] = None
-    """The originator's name."""
-
-    recipient_account_number: str
-    """The drawdown request's recipient's account number."""
-
-    recipient_address_line1: Optional[str] = None
-    """Line 1 of the drawdown request's recipient's address."""
-
-    recipient_address_line2: Optional[str] = None
-    """Line 2 of the drawdown request's recipient's address."""
-
-    recipient_address_line3: Optional[str] = None
-    """Line 3 of the drawdown request's recipient's address."""
-
-    recipient_name: Optional[str] = None
-    """The drawdown request's recipient's name."""
-
-    recipient_routing_number: str
-    """The drawdown request's recipient's routing number."""
 
     status: Literal["pending_submission", "pending_response", "fulfilled", "refused"]
     """The lifecycle status of the drawdown request.
@@ -111,3 +144,6 @@ class WireDrawdownRequest(BaseModel):
 
     For this resource it will always be `wire_drawdown_request`.
     """
+
+    unstructured_remittance_information: str
+    """Remittance information the debtor will see as part of the drawdown request."""
