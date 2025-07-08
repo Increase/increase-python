@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.262.0 (2025-07-08)
+
+Full Changelog: [v0.261.0...v0.262.0](https://github.com/Increase/increase-python/compare/v0.261.0...v0.262.0)
+
+### Features
+
+* **api:** api update ([a10830d](https://github.com/Increase/increase-python/commit/a10830dcaefc3530895ec8bf53889365687fa038))
+
+
+### Chores
+
+* **internal:** bump pinned h11 dep ([f0f11b9](https://github.com/Increase/increase-python/commit/f0f11b93e5eb1a351b4b6440c61363ebc0e1fb4a))
+* **package:** mark python 3.13 as supported ([9dffb62](https://github.com/Increase/increase-python/commit/9dffb62a420775301b75cba78037c6b809ba1f28))
+
 ## 0.261.0 (2025-07-07)
 
 Full Changelog: [v0.260.0...v0.261.0](https://github.com/Increase/increase-python/compare/v0.260.0...v0.261.0)
