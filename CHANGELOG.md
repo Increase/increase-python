@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.263.0 (2025-07-09)
+
+Full Changelog: [v0.262.0...v0.263.0](https://github.com/Increase/increase-python/compare/v0.262.0...v0.263.0)
+
+### Features
+
+* **api:** api update ([2b55d1c](https://github.com/Increase/increase-python/commit/2b55d1cf2e50ac7462f61bbe33133df76cb94395))
+
+
+### Bug Fixes
+
+* **parsing:** correctly handle nested discriminated unions ([2c4b34f](https://github.com/Increase/increase-python/commit/2c4b34f5352fc8a3221dfd42bc5548f7f5fac84b))
+
 ## 0.262.0 (2025-07-08)
 
 Full Changelog: [v0.261.0...v0.262.0](https://github.com/Increase/increase-python/compare/v0.261.0...v0.262.0)
