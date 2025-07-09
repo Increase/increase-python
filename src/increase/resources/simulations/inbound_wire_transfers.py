@@ -61,6 +61,7 @@ class InboundWireTransfersResource(SyncAPIResource):
         originator_to_beneficiary_information_line3: str | NotGiven = NOT_GIVEN,
         originator_to_beneficiary_information_line4: str | NotGiven = NOT_GIVEN,
         sender_reference: str | NotGiven = NOT_GIVEN,
+        wire_drawdown_request_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -122,6 +123,9 @@ class InboundWireTransfersResource(SyncAPIResource):
           sender_reference: The sending bank will set sender_reference in production. You can simulate any
               value here.
 
+          wire_drawdown_request_id: The identifier of a Wire Drawdown Request the inbound Wire Transfer is
+              fulfilling.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -153,6 +157,7 @@ class InboundWireTransfersResource(SyncAPIResource):
                     "originator_to_beneficiary_information_line3": originator_to_beneficiary_information_line3,
                     "originator_to_beneficiary_information_line4": originator_to_beneficiary_information_line4,
                     "sender_reference": sender_reference,
+                    "wire_drawdown_request_id": wire_drawdown_request_id,
                 },
                 inbound_wire_transfer_create_params.InboundWireTransferCreateParams,
             ),
@@ -207,6 +212,7 @@ class AsyncInboundWireTransfersResource(AsyncAPIResource):
         originator_to_beneficiary_information_line3: str | NotGiven = NOT_GIVEN,
         originator_to_beneficiary_information_line4: str | NotGiven = NOT_GIVEN,
         sender_reference: str | NotGiven = NOT_GIVEN,
+        wire_drawdown_request_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -268,6 +274,9 @@ class AsyncInboundWireTransfersResource(AsyncAPIResource):
           sender_reference: The sending bank will set sender_reference in production. You can simulate any
               value here.
 
+          wire_drawdown_request_id: The identifier of a Wire Drawdown Request the inbound Wire Transfer is
+              fulfilling.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -299,6 +308,7 @@ class AsyncInboundWireTransfersResource(AsyncAPIResource):
                     "originator_to_beneficiary_information_line3": originator_to_beneficiary_information_line3,
                     "originator_to_beneficiary_information_line4": originator_to_beneficiary_information_line4,
                     "sender_reference": sender_reference,
+                    "wire_drawdown_request_id": wire_drawdown_request_id,
                 },
                 inbound_wire_transfer_create_params.InboundWireTransferCreateParams,
             ),

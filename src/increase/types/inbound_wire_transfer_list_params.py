@@ -33,6 +33,12 @@ class InboundWireTransferListParams(TypedDict, total=False):
 
     status: Status
 
+    wire_drawdown_request_id: str
+    """
+    Filter Inbound Wire Transfers to ones belonging to the specified Wire Drawdown
+    Request.
+    """
+
 
 class CreatedAt(TypedDict, total=False):
     after: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]

@@ -860,6 +860,12 @@ Methods:
 
 - <code title="post /simulations/inbound_wire_transfers">client.simulations.inbound_wire_transfers.<a href="./src/increase/resources/simulations/inbound_wire_transfers.py">create</a>(\*\*<a href="src/increase/types/simulations/inbound_wire_transfer_create_params.py">params</a>) -> <a href="./src/increase/types/inbound_wire_transfer.py">InboundWireTransfer</a></code>
 
+## WireDrawdownRequests
+
+Methods:
+
+- <code title="post /simulations/wire_drawdown_requests/{wire_drawdown_request_id}/refuse">client.simulations.wire_drawdown_requests.<a href="./src/increase/resources/simulations/wire_drawdown_requests.py">refuse</a>(wire_drawdown_request_id) -> <a href="./src/increase/types/wire_drawdown_request.py">WireDrawdownRequest</a></code>
+
 ## InboundWireDrawdownRequests
 
 Methods:

@@ -45,6 +45,7 @@ class TestInboundWireTransfers:
             originator_to_beneficiary_information_line3="x",
             originator_to_beneficiary_information_line4="x",
             sender_reference="x",
+            wire_drawdown_request_id="wire_drawdown_request_id",
         )
         assert_matches_type(InboundWireTransfer, inbound_wire_transfer, path=["response"])
 
@@ -108,6 +109,7 @@ class TestAsyncInboundWireTransfers:
             originator_to_beneficiary_information_line3="x",
             originator_to_beneficiary_information_line4="x",
             sender_reference="x",
+            wire_drawdown_request_id="wire_drawdown_request_id",
         )
         assert_matches_type(InboundWireTransfer, inbound_wire_transfer, path=["response"])
 
