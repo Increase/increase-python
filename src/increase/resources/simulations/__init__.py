@@ -176,6 +176,14 @@ from .inbound_wire_transfers import (
     InboundWireTransfersResourceWithStreamingResponse,
     AsyncInboundWireTransfersResourceWithStreamingResponse,
 )
+from .wire_drawdown_requests import (
+    WireDrawdownRequestsResource,
+    AsyncWireDrawdownRequestsResource,
+    WireDrawdownRequestsResourceWithRawResponse,
+    AsyncWireDrawdownRequestsResourceWithRawResponse,
+    WireDrawdownRequestsResourceWithStreamingResponse,
+    AsyncWireDrawdownRequestsResourceWithStreamingResponse,
+)
 from .card_fuel_confirmations import (
     CardFuelConfirmationsResource,
     AsyncCardFuelConfirmationsResource,
@@ -328,6 +336,12 @@ __all__ = [
     "AsyncInboundWireTransfersResourceWithRawResponse",
     "InboundWireTransfersResourceWithStreamingResponse",
     "AsyncInboundWireTransfersResourceWithStreamingResponse",
+    "WireDrawdownRequestsResource",
+    "AsyncWireDrawdownRequestsResource",
+    "WireDrawdownRequestsResourceWithRawResponse",
+    "AsyncWireDrawdownRequestsResourceWithRawResponse",
+    "WireDrawdownRequestsResourceWithStreamingResponse",
+    "AsyncWireDrawdownRequestsResourceWithStreamingResponse",
     "InboundWireDrawdownRequestsResource",
     "AsyncInboundWireDrawdownRequestsResource",
     "InboundWireDrawdownRequestsResourceWithRawResponse",

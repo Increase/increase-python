@@ -103,3 +103,9 @@ class InboundWireTransferCreateParams(TypedDict, total=False):
 
     You can simulate any value here.
     """
+
+    wire_drawdown_request_id: str
+    """
+    The identifier of a Wire Drawdown Request the inbound Wire Transfer is
+    fulfilling.
+    """

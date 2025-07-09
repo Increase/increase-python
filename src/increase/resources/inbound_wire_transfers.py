@@ -90,6 +90,7 @@ class InboundWireTransfersResource(SyncAPIResource):
         cursor: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         status: inbound_wire_transfer_list_params.Status | NotGiven = NOT_GIVEN,
+        wire_drawdown_request_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -109,6 +110,9 @@ class InboundWireTransfersResource(SyncAPIResource):
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
+
+          wire_drawdown_request_id: Filter Inbound Wire Transfers to ones belonging to the specified Wire Drawdown
+              Request.
 
           extra_headers: Send extra headers
 
@@ -134,6 +138,7 @@ class InboundWireTransfersResource(SyncAPIResource):
                         "cursor": cursor,
                         "limit": limit,
                         "status": status,
+                        "wire_drawdown_request_id": wire_drawdown_request_id,
                     },
                     inbound_wire_transfer_list_params.InboundWireTransferListParams,
                 ),
@@ -262,6 +267,7 @@ class AsyncInboundWireTransfersResource(AsyncAPIResource):
         cursor: str | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
         status: inbound_wire_transfer_list_params.Status | NotGiven = NOT_GIVEN,
+        wire_drawdown_request_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -281,6 +287,9 @@ class AsyncInboundWireTransfersResource(AsyncAPIResource):
 
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
+
+          wire_drawdown_request_id: Filter Inbound Wire Transfers to ones belonging to the specified Wire Drawdown
+              Request.
 
           extra_headers: Send extra headers
 
@@ -306,6 +315,7 @@ class AsyncInboundWireTransfersResource(AsyncAPIResource):
                         "cursor": cursor,
                         "limit": limit,
                         "status": status,
+                        "wire_drawdown_request_id": wire_drawdown_request_id,
                     },
                     inbound_wire_transfer_list_params.InboundWireTransferListParams,
                 ),
