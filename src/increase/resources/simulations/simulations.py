@@ -172,6 +172,14 @@ from .inbound_wire_transfers import (
     InboundWireTransfersResourceWithStreamingResponse,
     AsyncInboundWireTransfersResourceWithStreamingResponse,
 )
+from .wire_drawdown_requests import (
+    WireDrawdownRequestsResource,
+    AsyncWireDrawdownRequestsResource,
+    WireDrawdownRequestsResourceWithRawResponse,
+    AsyncWireDrawdownRequestsResourceWithRawResponse,
+    WireDrawdownRequestsResourceWithStreamingResponse,
+    AsyncWireDrawdownRequestsResourceWithStreamingResponse,
+)
 from .card_fuel_confirmations import (
     CardFuelConfirmationsResource,
     AsyncCardFuelConfirmationsResource,
@@ -292,6 +300,10 @@ class SimulationsResource(SyncAPIResource):
     @cached_property
     def inbound_wire_transfers(self) -> InboundWireTransfersResource:
         return InboundWireTransfersResource(self._client)
+
+    @cached_property
+    def wire_drawdown_requests(self) -> WireDrawdownRequestsResource:
+        return WireDrawdownRequestsResource(self._client)
 
     @cached_property
     def inbound_wire_drawdown_requests(self) -> InboundWireDrawdownRequestsResource:
@@ -421,6 +433,10 @@ class AsyncSimulationsResource(AsyncAPIResource):
     @cached_property
     def inbound_wire_transfers(self) -> AsyncInboundWireTransfersResource:
         return AsyncInboundWireTransfersResource(self._client)
+
+    @cached_property
+    def wire_drawdown_requests(self) -> AsyncWireDrawdownRequestsResource:
+        return AsyncWireDrawdownRequestsResource(self._client)
 
     @cached_property
     def inbound_wire_drawdown_requests(self) -> AsyncInboundWireDrawdownRequestsResource:
@@ -555,6 +571,10 @@ class SimulationsResourceWithRawResponse:
         return InboundWireTransfersResourceWithRawResponse(self._simulations.inbound_wire_transfers)
 
     @cached_property
+    def wire_drawdown_requests(self) -> WireDrawdownRequestsResourceWithRawResponse:
+        return WireDrawdownRequestsResourceWithRawResponse(self._simulations.wire_drawdown_requests)
+
+    @cached_property
     def inbound_wire_drawdown_requests(self) -> InboundWireDrawdownRequestsResourceWithRawResponse:
         return InboundWireDrawdownRequestsResourceWithRawResponse(self._simulations.inbound_wire_drawdown_requests)
 
@@ -672,6 +692,10 @@ class AsyncSimulationsResourceWithRawResponse:
         return AsyncInboundWireTransfersResourceWithRawResponse(self._simulations.inbound_wire_transfers)
 
     @cached_property
+    def wire_drawdown_requests(self) -> AsyncWireDrawdownRequestsResourceWithRawResponse:
+        return AsyncWireDrawdownRequestsResourceWithRawResponse(self._simulations.wire_drawdown_requests)
+
+    @cached_property
     def inbound_wire_drawdown_requests(self) -> AsyncInboundWireDrawdownRequestsResourceWithRawResponse:
         return AsyncInboundWireDrawdownRequestsResourceWithRawResponse(self._simulations.inbound_wire_drawdown_requests)
 
@@ -787,6 +811,10 @@ class SimulationsResourceWithStreamingResponse:
     @cached_property
     def inbound_wire_transfers(self) -> InboundWireTransfersResourceWithStreamingResponse:
         return InboundWireTransfersResourceWithStreamingResponse(self._simulations.inbound_wire_transfers)
+
+    @cached_property
+    def wire_drawdown_requests(self) -> WireDrawdownRequestsResourceWithStreamingResponse:
+        return WireDrawdownRequestsResourceWithStreamingResponse(self._simulations.wire_drawdown_requests)
 
     @cached_property
     def inbound_wire_drawdown_requests(self) -> InboundWireDrawdownRequestsResourceWithStreamingResponse:
@@ -908,6 +936,10 @@ class AsyncSimulationsResourceWithStreamingResponse:
     @cached_property
     def inbound_wire_transfers(self) -> AsyncInboundWireTransfersResourceWithStreamingResponse:
         return AsyncInboundWireTransfersResourceWithStreamingResponse(self._simulations.inbound_wire_transfers)
+
+    @cached_property
+    def wire_drawdown_requests(self) -> AsyncWireDrawdownRequestsResourceWithStreamingResponse:
+        return AsyncWireDrawdownRequestsResourceWithStreamingResponse(self._simulations.wire_drawdown_requests)
 
     @cached_property
     def inbound_wire_drawdown_requests(self) -> AsyncInboundWireDrawdownRequestsResourceWithStreamingResponse:
