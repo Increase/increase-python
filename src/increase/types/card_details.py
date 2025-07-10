@@ -17,6 +17,9 @@ class CardDetails(BaseModel):
     expiration_year: int
     """The year the card expires in YYYY format (e.g., 2025)."""
 
+    pin: str
+    """The 4-digit PIN for the card, for use with ATMs."""
+
     primary_account_number: str
     """The card number."""
 
