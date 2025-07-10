@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.264.0 (2025-07-10)
+
+Full Changelog: [v0.263.0...v0.264.0](https://github.com/Increase/increase-python/compare/v0.263.0...v0.264.0)
+
+### Features
+
+* **api:** api update ([b2aeeb0](https://github.com/Increase/increase-python/commit/b2aeeb0b3ba930aec3d5bd764c2fb642199a33b6))
+
+
+### Chores
+
+* **readme:** fix version rendering on pypi ([537b78a](https://github.com/Increase/increase-python/commit/537b78ab51073c10515ddcf75dbe5efb0bfe3acb))
+
 ## 0.263.0 (2025-07-09)
 
 Full Changelog: [v0.262.0...v0.263.0](https://github.com/Increase/increase-python/compare/v0.262.0...v0.263.0)
