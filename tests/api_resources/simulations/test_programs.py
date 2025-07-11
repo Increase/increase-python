@@ -28,6 +28,7 @@ class TestPrograms:
     def test_method_create_with_all_params(self, client: Increase) -> None:
         program = client.simulations.programs.create(
             name="For Benefit Of",
+            bank="blue_ridge_bank",
             reserve_account_id="reserve_account_id",
         )
         assert_matches_type(Program, program, path=["response"])
@@ -73,6 +74,7 @@ class TestAsyncPrograms:
     async def test_method_create_with_all_params(self, async_client: AsyncIncrease) -> None:
         program = await async_client.simulations.programs.create(
             name="For Benefit Of",
+            bank="blue_ridge_bank",
             reserve_account_id="reserve_account_id",
         )
         assert_matches_type(Program, program, path=["response"])
