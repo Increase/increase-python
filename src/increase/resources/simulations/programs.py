@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing_extensions import Literal
+
 import httpx
 
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
@@ -45,6 +47,10 @@ class ProgramsResource(SyncAPIResource):
         self,
         *,
         name: str,
+        bank: Literal[
+            "blue_ridge_bank", "core_bank", "first_internet_bank", "global_innovations_bank", "grasshopper_bank"
+        ]
+        | NotGiven = NOT_GIVEN,
         reserve_account_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -64,6 +70,14 @@ class ProgramsResource(SyncAPIResource):
         Args:
           name: The name of the program being added.
 
+          bank: The bank for the program's accounts, defaults to First Internet Bank.
+
+              - `blue_ridge_bank` - Blue Ridge Bank, N.A.
+              - `core_bank` - Core Bank
+              - `first_internet_bank` - First Internet Bank of Indiana
+              - `global_innovations_bank` - Global Innovations Bank
+              - `grasshopper_bank` - Grasshopper Bank
+
           reserve_account_id: The identifier of the Account the Program should be added to is for.
 
           extra_headers: Send extra headers
@@ -81,6 +95,7 @@ class ProgramsResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "name": name,
+                    "bank": bank,
                     "reserve_account_id": reserve_account_id,
                 },
                 program_create_params.ProgramCreateParams,
@@ -120,6 +135,10 @@ class AsyncProgramsResource(AsyncAPIResource):
         self,
         *,
         name: str,
+        bank: Literal[
+            "blue_ridge_bank", "core_bank", "first_internet_bank", "global_innovations_bank", "grasshopper_bank"
+        ]
+        | NotGiven = NOT_GIVEN,
         reserve_account_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -139,6 +158,14 @@ class AsyncProgramsResource(AsyncAPIResource):
         Args:
           name: The name of the program being added.
 
+          bank: The bank for the program's accounts, defaults to First Internet Bank.
+
+              - `blue_ridge_bank` - Blue Ridge Bank, N.A.
+              - `core_bank` - Core Bank
+              - `first_internet_bank` - First Internet Bank of Indiana
+              - `global_innovations_bank` - Global Innovations Bank
+              - `grasshopper_bank` - Grasshopper Bank
+
           reserve_account_id: The identifier of the Account the Program should be added to is for.
 
           extra_headers: Send extra headers
@@ -156,6 +183,7 @@ class AsyncProgramsResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "name": name,
+                    "bank": bank,
                     "reserve_account_id": reserve_account_id,
                 },
                 program_create_params.ProgramCreateParams,
