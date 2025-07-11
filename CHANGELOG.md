@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.265.0 (2025-07-11)
+
+Full Changelog: [v0.264.0...v0.265.0](https://github.com/Increase/increase-python/compare/v0.264.0...v0.265.0)
+
+### Features
+
+* **api:** api update ([be16bbc](https://github.com/Increase/increase-python/commit/be16bbced78ed0b436c24b7ccd50196c1c0fbf45))
+
+
+### Bug Fixes
+
+* **client:** don't send Content-Type header on GET requests ([da21209](https://github.com/Increase/increase-python/commit/da21209f9c88bcc9874f8c63ab7385c644c946a0))
+
 ## 0.264.0 (2025-07-10)
 
 Full Changelog: [v0.263.0...v0.264.0](https://github.com/Increase/increase-python/compare/v0.263.0...v0.264.0)
