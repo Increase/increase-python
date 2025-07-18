@@ -112,6 +112,7 @@ class TestAccounts:
     def test_method_update_with_all_params(self, client: Increase) -> None:
         account = client.accounts.update(
             account_id="account_in71c4amph0vgo2qllky",
+            credit_limit=0,
             name="My renamed account",
         )
         assert_matches_type(Account, account, path=["response"])
@@ -371,6 +372,7 @@ class TestAsyncAccounts:
     async def test_method_update_with_all_params(self, async_client: AsyncIncrease) -> None:
         account = await async_client.accounts.update(
             account_id="account_in71c4amph0vgo2qllky",
+            credit_limit=0,
             name="My renamed account",
         )
         assert_matches_type(Account, account, path=["response"])
