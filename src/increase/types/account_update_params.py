@@ -8,5 +8,11 @@ __all__ = ["AccountUpdateParams"]
 
 
 class AccountUpdateParams(TypedDict, total=False):
+    credit_limit: int
+    """
+    The new credit limit of the Account, if and only if the Account is a loan
+    account.
+    """
+
     name: str
     """The new name of the Account."""

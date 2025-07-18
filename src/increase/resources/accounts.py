@@ -145,6 +145,7 @@ class AccountsResource(SyncAPIResource):
         self,
         account_id: str,
         *,
+        credit_limit: int | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -159,6 +160,9 @@ class AccountsResource(SyncAPIResource):
 
         Args:
           account_id: The identifier of the Account to update.
+
+          credit_limit: The new credit limit of the Account, if and only if the Account is a loan
+              account.
 
           name: The new name of the Account.
 
@@ -176,7 +180,13 @@ class AccountsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `account_id` but received {account_id!r}")
         return self._patch(
             f"/accounts/{account_id}",
-            body=maybe_transform({"name": name}, account_update_params.AccountUpdateParams),
+            body=maybe_transform(
+                {
+                    "credit_limit": credit_limit,
+                    "name": name,
+                },
+                account_update_params.AccountUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -464,6 +474,7 @@ class AsyncAccountsResource(AsyncAPIResource):
         self,
         account_id: str,
         *,
+        credit_limit: int | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -478,6 +489,9 @@ class AsyncAccountsResource(AsyncAPIResource):
 
         Args:
           account_id: The identifier of the Account to update.
+
+          credit_limit: The new credit limit of the Account, if and only if the Account is a loan
+              account.
 
           name: The new name of the Account.
 
@@ -495,7 +509,13 @@ class AsyncAccountsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `account_id` but received {account_id!r}")
         return await self._patch(
             f"/accounts/{account_id}",
-            body=await async_maybe_transform({"name": name}, account_update_params.AccountUpdateParams),
+            body=await async_maybe_transform(
+                {
+                    "credit_limit": credit_limit,
+                    "name": name,
+                },
+                account_update_params.AccountUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
