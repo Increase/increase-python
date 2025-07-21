@@ -541,9 +541,6 @@ class Joint(TypedDict, total=False):
     individuals: Required[Iterable[JointIndividual]]
     """The two individuals that share control of the entity."""
 
-    name: str
-    """The name of the joint entity."""
-
 
 class NaturalPersonAddress(TypedDict, total=False):
     city: Required[str]
