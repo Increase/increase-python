@@ -139,8 +139,7 @@ class TestEntities:
                         "name": "x",
                         "confirmed_no_us_tax_id": True,
                     }
-                ],
-                "name": "x",
+                ]
             },
             natural_person={
                 "address": {
@@ -960,8 +959,7 @@ class TestAsyncEntities:
                         "name": "x",
                         "confirmed_no_us_tax_id": True,
                     }
-                ],
-                "name": "x",
+                ]
             },
             natural_person={
                 "address": {
