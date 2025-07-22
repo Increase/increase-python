@@ -46,7 +46,15 @@ class ShipmentAddress(TypedDict, total=False):
     """The postal code of the shipping address."""
 
     state: Required[str]
-    """The US state of the shipping address."""
+    """The state of the shipping address."""
+
+    country: str
+    """
+    The two-character ISO 3166-1 code of the country where the card should be
+    shipped (e.g., `US`). Please reach out to
+    [support@increase.com](mailto:support@increase.com) to ship cards
+    internationally.
+    """
 
     line2: str
     """The second line of the shipping address."""
@@ -62,12 +70,13 @@ class Shipment(TypedDict, total=False):
     address: Required[ShipmentAddress]
     """The address to where the card should be shipped."""
 
-    method: Required[Literal["usps", "fedex_priority_overnight", "fedex_2_day"]]
+    method: Required[Literal["usps", "fedex_priority_overnight", "fedex_2_day", "dhl_worldwide_express"]]
     """The shipping method to use.
 
-    - `usps` - USPS Post with tracking.
+    - `usps` - USPS Post.
     - `fedex_priority_overnight` - FedEx Priority Overnight, no signature.
     - `fedex_2_day` - FedEx 2-day.
+    - `dhl_worldwide_express` - DHL Worldwide Express, international shipping only.
     """
 
     schedule: Literal["next_day", "same_day"]
