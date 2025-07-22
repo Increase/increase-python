@@ -73,7 +73,6 @@ class CardAuthorizationsResource(SyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         digital_wallet_token_id: str | NotGiven = NOT_GIVEN,
-        direction: Literal["settlement", "refund"] | NotGiven = NOT_GIVEN,
         event_subscription_id: str | NotGiven = NOT_GIVEN,
         merchant_acceptor_id: str | NotGiven = NOT_GIVEN,
         merchant_category_code: str | NotGiven = NOT_GIVEN,
@@ -84,6 +83,7 @@ class CardAuthorizationsResource(SyncAPIResource):
         network_details: card_authorization_create_params.NetworkDetails | NotGiven = NOT_GIVEN,
         network_risk_score: int | NotGiven = NOT_GIVEN,
         physical_card_id: str | NotGiven = NOT_GIVEN,
+        processing_category: card_authorization_create_params.ProcessingCategory | NotGiven = NOT_GIVEN,
         terminal_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -146,14 +146,6 @@ class CardAuthorizationsResource(SyncAPIResource):
 
           digital_wallet_token_id: The identifier of the Digital Wallet Token to be authorized.
 
-          direction: The direction describes the direction the funds will move, either from the
-              cardholder to the merchant or from the merchant to the cardholder.
-
-              - `settlement` - A regular card authorization where funds are debited from the
-                cardholder.
-              - `refund` - A refund card authorization, sometimes referred to as a credit
-                voucher authorization, where funds are credited to the cardholder.
-
           event_subscription_id: The identifier of the Event Subscription to use. If provided, will override the
               default real time event subscription. Because you can only create one real time
               decision event subscription, you can use this field to route events to any
@@ -180,6 +172,9 @@ class CardAuthorizationsResource(SyncAPIResource):
 
           physical_card_id: The identifier of the Physical Card to be authorized.
 
+          processing_category: Fields specific to a specific type of authorization, such as Automatic Fuel
+              Dispensers, Refund Authorizations, or Cash Disbursements.
+
           terminal_id: The terminal identifier (commonly abbreviated as TID) of the terminal the card
               is transacting with.
 
@@ -202,7 +197,6 @@ class CardAuthorizationsResource(SyncAPIResource):
                     "card_id": card_id,
                     "decline_reason": decline_reason,
                     "digital_wallet_token_id": digital_wallet_token_id,
-                    "direction": direction,
                     "event_subscription_id": event_subscription_id,
                     "merchant_acceptor_id": merchant_acceptor_id,
                     "merchant_category_code": merchant_category_code,
@@ -213,6 +207,7 @@ class CardAuthorizationsResource(SyncAPIResource):
                     "network_details": network_details,
                     "network_risk_score": network_risk_score,
                     "physical_card_id": physical_card_id,
+                    "processing_category": processing_category,
                     "terminal_id": terminal_id,
                 },
                 card_authorization_create_params.CardAuthorizationCreateParams,
@@ -278,7 +273,6 @@ class AsyncCardAuthorizationsResource(AsyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         digital_wallet_token_id: str | NotGiven = NOT_GIVEN,
-        direction: Literal["settlement", "refund"] | NotGiven = NOT_GIVEN,
         event_subscription_id: str | NotGiven = NOT_GIVEN,
         merchant_acceptor_id: str | NotGiven = NOT_GIVEN,
         merchant_category_code: str | NotGiven = NOT_GIVEN,
@@ -289,6 +283,7 @@ class AsyncCardAuthorizationsResource(AsyncAPIResource):
         network_details: card_authorization_create_params.NetworkDetails | NotGiven = NOT_GIVEN,
         network_risk_score: int | NotGiven = NOT_GIVEN,
         physical_card_id: str | NotGiven = NOT_GIVEN,
+        processing_category: card_authorization_create_params.ProcessingCategory | NotGiven = NOT_GIVEN,
         terminal_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -351,14 +346,6 @@ class AsyncCardAuthorizationsResource(AsyncAPIResource):
 
           digital_wallet_token_id: The identifier of the Digital Wallet Token to be authorized.
 
-          direction: The direction describes the direction the funds will move, either from the
-              cardholder to the merchant or from the merchant to the cardholder.
-
-              - `settlement` - A regular card authorization where funds are debited from the
-                cardholder.
-              - `refund` - A refund card authorization, sometimes referred to as a credit
-                voucher authorization, where funds are credited to the cardholder.
-
           event_subscription_id: The identifier of the Event Subscription to use. If provided, will override the
               default real time event subscription. Because you can only create one real time
               decision event subscription, you can use this field to route events to any
@@ -385,6 +372,9 @@ class AsyncCardAuthorizationsResource(AsyncAPIResource):
 
           physical_card_id: The identifier of the Physical Card to be authorized.
 
+          processing_category: Fields specific to a specific type of authorization, such as Automatic Fuel
+              Dispensers, Refund Authorizations, or Cash Disbursements.
+
           terminal_id: The terminal identifier (commonly abbreviated as TID) of the terminal the card
               is transacting with.
 
@@ -407,7 +397,6 @@ class AsyncCardAuthorizationsResource(AsyncAPIResource):
                     "card_id": card_id,
                     "decline_reason": decline_reason,
                     "digital_wallet_token_id": digital_wallet_token_id,
-                    "direction": direction,
                     "event_subscription_id": event_subscription_id,
                     "merchant_acceptor_id": merchant_acceptor_id,
                     "merchant_category_code": merchant_category_code,
@@ -418,6 +407,7 @@ class AsyncCardAuthorizationsResource(AsyncAPIResource):
                     "network_details": network_details,
                     "network_risk_score": network_risk_score,
                     "physical_card_id": physical_card_id,
+                    "processing_category": processing_category,
                     "terminal_id": terminal_id,
                 },
                 card_authorization_create_params.CardAuthorizationCreateParams,
