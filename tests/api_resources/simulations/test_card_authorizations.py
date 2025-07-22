@@ -32,7 +32,6 @@ class TestCardAuthorizations:
             card_id="card_oubs0hwk5rn6knuecxg2",
             decline_reason="account_closed",
             digital_wallet_token_id="digital_wallet_token_id",
-            direction="settlement",
             event_subscription_id="event_subscription_001dzz0r20rcdxgb013zqb8m04g",
             merchant_acceptor_id="5665270011000168",
             merchant_category_code="5734",
@@ -43,6 +42,7 @@ class TestCardAuthorizations:
             network_details={"visa": {"stand_in_processing_reason": "issuer_error"}},
             network_risk_score=0,
             physical_card_id="physical_card_id",
+            processing_category={"category": "account_funding"},
             terminal_id="x",
         )
         assert_matches_type(CardAuthorizationCreateResponse, card_authorization, path=["response"])
@@ -92,7 +92,6 @@ class TestAsyncCardAuthorizations:
             card_id="card_oubs0hwk5rn6knuecxg2",
             decline_reason="account_closed",
             digital_wallet_token_id="digital_wallet_token_id",
-            direction="settlement",
             event_subscription_id="event_subscription_001dzz0r20rcdxgb013zqb8m04g",
             merchant_acceptor_id="5665270011000168",
             merchant_category_code="5734",
@@ -103,6 +102,7 @@ class TestAsyncCardAuthorizations:
             network_details={"visa": {"stand_in_processing_reason": "issuer_error"}},
             network_risk_score=0,
             physical_card_id="physical_card_id",
+            processing_category={"category": "account_funding"},
             terminal_id="x",
         )
         assert_matches_type(CardAuthorizationCreateResponse, card_authorization, path=["response"])
