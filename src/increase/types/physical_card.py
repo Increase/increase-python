@@ -21,6 +21,9 @@ class ShipmentAddress(BaseModel):
     city: str
     """The city of the shipping address."""
 
+    country: str
+    """The country of the shipping address."""
+
     line1: str
     """The first line of the shipping address."""
 
@@ -37,7 +40,7 @@ class ShipmentAddress(BaseModel):
     """The postal code of the shipping address."""
 
     state: str
-    """The US state of the shipping address."""
+    """The state of the shipping address."""
 
 
 class ShipmentTrackingUpdate(BaseModel):
@@ -98,12 +101,13 @@ class Shipment(BaseModel):
     address: ShipmentAddress
     """The location to where the card's packing label is addressed."""
 
-    method: Literal["usps", "fedex_priority_overnight", "fedex_2_day"]
+    method: Literal["usps", "fedex_priority_overnight", "fedex_2_day", "dhl_worldwide_express"]
     """The shipping method.
 
-    - `usps` - USPS Post with tracking.
+    - `usps` - USPS Post.
     - `fedex_priority_overnight` - FedEx Priority Overnight, no signature.
     - `fedex_2_day` - FedEx 2-day.
+    - `dhl_worldwide_express` - DHL Worldwide Express, international shipping only.
     """
 
     schedule: Literal["next_day", "same_day"]
