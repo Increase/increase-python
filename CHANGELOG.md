@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.269.0 (2025-07-22)
+
+Full Changelog: [v0.268.0...v0.269.0](https://github.com/Increase/increase-python/compare/v0.268.0...v0.269.0)
+
+### Features
+
+* **api:** api update ([887e448](https://github.com/Increase/increase-python/commit/887e44875b4811e50c3095eb11aa49b25707e6c3))
+
+
+### Bug Fixes
+
+* **parsing:** parse extra field types ([9904169](https://github.com/Increase/increase-python/commit/99041691c6c4e16d77cea36222105b7c811306e3))
+
 ## 0.268.0 (2025-07-21)
 
 Full Changelog: [v0.267.0...v0.268.0](https://github.com/Increase/increase-python/compare/v0.267.0...v0.268.0)
