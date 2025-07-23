@@ -326,7 +326,7 @@ class CheckTransfersResource(SyncAPIResource):
         idempotency_key: str | None = None,
     ) -> CheckTransfer:
         """
-        Request a stop payment on a Check Transfer
+        Stop payment on a Check Transfer
 
         Args:
           check_transfer_id: The identifier of the Check Transfer.
@@ -665,7 +665,7 @@ class AsyncCheckTransfersResource(AsyncAPIResource):
         idempotency_key: str | None = None,
     ) -> CheckTransfer:
         """
-        Request a stop payment on a Check Transfer
+        Stop payment on a Check Transfer
 
         Args:
           check_transfer_id: The identifier of the Check Transfer.
