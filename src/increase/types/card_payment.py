@@ -1933,10 +1933,22 @@ class ElementCardReversal(BaseModel):
     pending_transaction_id: Optional[str] = None
     """The identifier of the Pending Transaction associated with this Card Reversal."""
 
+    presentment_currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the reversal's
+    presentment currency.
+    """
+
     reversal_amount: int
     """The amount of this reversal in the minor unit of the transaction's currency.
 
     For dollars, for example, this is cents.
+    """
+
+    reversal_presentment_amount: int
+    """
+    The amount of this reversal in the minor unit of the transaction's presentment
+    currency. For dollars, for example, this is cents.
     """
 
     reversal_reason: Optional[
@@ -1971,6 +1983,12 @@ class ElementCardReversal(BaseModel):
     """
     The amount left pending on the Card Authorization in the minor unit of the
     transaction's currency. For dollars, for example, this is cents.
+    """
+
+    updated_authorization_presentment_amount: int
+    """
+    The amount left pending on the Card Authorization in the minor unit of the
+    transaction's presentment currency. For dollars, for example, this is cents.
     """
 
 
