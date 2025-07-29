@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.272.0 (2025-07-29)
+
+Full Changelog: [v0.271.0...v0.272.0](https://github.com/Increase/increase-python/compare/v0.271.0...v0.272.0)
+
+### Features
+
+* **api:** api update ([04322ae](https://github.com/Increase/increase-python/commit/04322ae0ae31fd7a121f067bbbb1083067cb6b38))
+
+
+### Chores
+
+* **project:** add settings file for vscode ([0aae372](https://github.com/Increase/increase-python/commit/0aae372fdf363e07b4f9f5cb35b24f53720d7270))
+
 ## 0.271.0 (2025-07-23)
 
 Full Changelog: [v0.270.0...v0.271.0](https://github.com/Increase/increase-python/compare/v0.270.0...v0.271.0)
