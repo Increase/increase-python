@@ -12,6 +12,16 @@ __all__ = [
     "SourceAccountTransferInstruction",
     "SourceACHTransferInstruction",
     "SourceCardAuthorization",
+    "SourceCardAuthorizationAdditionalAmounts",
+    "SourceCardAuthorizationAdditionalAmountsClinic",
+    "SourceCardAuthorizationAdditionalAmountsDental",
+    "SourceCardAuthorizationAdditionalAmountsPrescription",
+    "SourceCardAuthorizationAdditionalAmountsSurcharge",
+    "SourceCardAuthorizationAdditionalAmountsTotalCumulative",
+    "SourceCardAuthorizationAdditionalAmountsTotalHealthcare",
+    "SourceCardAuthorizationAdditionalAmountsTransit",
+    "SourceCardAuthorizationAdditionalAmountsUnknown",
+    "SourceCardAuthorizationAdditionalAmountsVision",
     "SourceCardAuthorizationNetworkDetails",
     "SourceCardAuthorizationNetworkDetailsVisa",
     "SourceCardAuthorizationNetworkIdentifiers",
@@ -59,6 +69,136 @@ class SourceACHTransferInstruction(BaseModel):
 
     transfer_id: str
     """The identifier of the ACH Transfer that led to this Pending Transaction."""
+
+
+class SourceCardAuthorizationAdditionalAmountsClinic(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class SourceCardAuthorizationAdditionalAmountsDental(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class SourceCardAuthorizationAdditionalAmountsPrescription(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class SourceCardAuthorizationAdditionalAmountsSurcharge(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class SourceCardAuthorizationAdditionalAmountsTotalCumulative(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class SourceCardAuthorizationAdditionalAmountsTotalHealthcare(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class SourceCardAuthorizationAdditionalAmountsTransit(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class SourceCardAuthorizationAdditionalAmountsUnknown(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class SourceCardAuthorizationAdditionalAmountsVision(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class SourceCardAuthorizationAdditionalAmounts(BaseModel):
+    clinic: Optional[SourceCardAuthorizationAdditionalAmountsClinic] = None
+    """The part of this transaction amount that was for clinic-related services."""
+
+    dental: Optional[SourceCardAuthorizationAdditionalAmountsDental] = None
+    """The part of this transaction amount that was for dental-related services."""
+
+    prescription: Optional[SourceCardAuthorizationAdditionalAmountsPrescription] = None
+    """The part of this transaction amount that was for healthcare prescriptions."""
+
+    surcharge: Optional[SourceCardAuthorizationAdditionalAmountsSurcharge] = None
+    """The surcharge amount charged for this transaction by the merchant."""
+
+    total_cumulative: Optional[SourceCardAuthorizationAdditionalAmountsTotalCumulative] = None
+    """
+    The total amount of a series of incremental authorizations, optionally provided.
+    """
+
+    total_healthcare: Optional[SourceCardAuthorizationAdditionalAmountsTotalHealthcare] = None
+    """The total amount of healthcare-related additional amounts."""
+
+    transit: Optional[SourceCardAuthorizationAdditionalAmountsTransit] = None
+    """The part of this transaction amount that was for transit-related services."""
+
+    unknown: Optional[SourceCardAuthorizationAdditionalAmountsUnknown] = None
+    """An unknown additional amount."""
+
+    vision: Optional[SourceCardAuthorizationAdditionalAmountsVision] = None
+    """The part of this transaction amount that was for vision-related services."""
 
 
 class SourceCardAuthorizationNetworkDetailsVisa(BaseModel):
@@ -287,6 +427,13 @@ class SourceCardAuthorization(BaseModel):
     - `increase` - This object was actioned by Increase without user intervention.
     - `network` - This object was actioned by the network, through stand-in
       processing.
+    """
+
+    additional_amounts: SourceCardAuthorizationAdditionalAmounts
+    """
+    Additional amounts associated with the card authorization, such as ATM
+    surcharges fees. These are usually a subset of the `amount` field and are used
+    to provide more detailed information about the transaction.
     """
 
     amount: int
