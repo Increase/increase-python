@@ -1273,6 +1273,18 @@ class ElementCardIncrement(BaseModel):
     pending_transaction_id: Optional[str] = None
     """The identifier of the Pending Transaction associated with this Card Increment."""
 
+    presentment_amount: int
+    """
+    The amount of this increment in the minor unit of the transaction's presentment
+    currency.
+    """
+
+    presentment_currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+    transaction's presentment currency.
+    """
+
     real_time_decision_id: Optional[str] = None
     """
     The identifier of the Real-Time Decision sent to approve or decline this
