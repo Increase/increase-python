@@ -13,6 +13,16 @@ __all__ = [
     "ElementCardAuthenticationChallenge",
     "ElementCardAuthenticationChallengeAttempt",
     "ElementCardAuthorization",
+    "ElementCardAuthorizationAdditionalAmounts",
+    "ElementCardAuthorizationAdditionalAmountsClinic",
+    "ElementCardAuthorizationAdditionalAmountsDental",
+    "ElementCardAuthorizationAdditionalAmountsPrescription",
+    "ElementCardAuthorizationAdditionalAmountsSurcharge",
+    "ElementCardAuthorizationAdditionalAmountsTotalCumulative",
+    "ElementCardAuthorizationAdditionalAmountsTotalHealthcare",
+    "ElementCardAuthorizationAdditionalAmountsTransit",
+    "ElementCardAuthorizationAdditionalAmountsUnknown",
+    "ElementCardAuthorizationAdditionalAmountsVision",
     "ElementCardAuthorizationNetworkDetails",
     "ElementCardAuthorizationNetworkDetailsVisa",
     "ElementCardAuthorizationNetworkIdentifiers",
@@ -21,6 +31,16 @@ __all__ = [
     "ElementCardAuthorizationVerificationCardholderAddress",
     "ElementCardAuthorizationExpiration",
     "ElementCardDecline",
+    "ElementCardDeclineAdditionalAmounts",
+    "ElementCardDeclineAdditionalAmountsClinic",
+    "ElementCardDeclineAdditionalAmountsDental",
+    "ElementCardDeclineAdditionalAmountsPrescription",
+    "ElementCardDeclineAdditionalAmountsSurcharge",
+    "ElementCardDeclineAdditionalAmountsTotalCumulative",
+    "ElementCardDeclineAdditionalAmountsTotalHealthcare",
+    "ElementCardDeclineAdditionalAmountsTransit",
+    "ElementCardDeclineAdditionalAmountsUnknown",
+    "ElementCardDeclineAdditionalAmountsVision",
     "ElementCardDeclineNetworkDetails",
     "ElementCardDeclineNetworkDetailsVisa",
     "ElementCardDeclineNetworkIdentifiers",
@@ -30,6 +50,16 @@ __all__ = [
     "ElementCardFuelConfirmation",
     "ElementCardFuelConfirmationNetworkIdentifiers",
     "ElementCardIncrement",
+    "ElementCardIncrementAdditionalAmounts",
+    "ElementCardIncrementAdditionalAmountsClinic",
+    "ElementCardIncrementAdditionalAmountsDental",
+    "ElementCardIncrementAdditionalAmountsPrescription",
+    "ElementCardIncrementAdditionalAmountsSurcharge",
+    "ElementCardIncrementAdditionalAmountsTotalCumulative",
+    "ElementCardIncrementAdditionalAmountsTotalHealthcare",
+    "ElementCardIncrementAdditionalAmountsTransit",
+    "ElementCardIncrementAdditionalAmountsUnknown",
+    "ElementCardIncrementAdditionalAmountsVision",
     "ElementCardIncrementNetworkIdentifiers",
     "ElementCardRefund",
     "ElementCardRefundCashback",
@@ -56,6 +86,16 @@ __all__ = [
     "ElementCardSettlementPurchaseDetailsTravelAncillaryService",
     "ElementCardSettlementPurchaseDetailsTravelTripLeg",
     "ElementCardValidation",
+    "ElementCardValidationAdditionalAmounts",
+    "ElementCardValidationAdditionalAmountsClinic",
+    "ElementCardValidationAdditionalAmountsDental",
+    "ElementCardValidationAdditionalAmountsPrescription",
+    "ElementCardValidationAdditionalAmountsSurcharge",
+    "ElementCardValidationAdditionalAmountsTotalCumulative",
+    "ElementCardValidationAdditionalAmountsTotalHealthcare",
+    "ElementCardValidationAdditionalAmountsTransit",
+    "ElementCardValidationAdditionalAmountsUnknown",
+    "ElementCardValidationAdditionalAmountsVision",
     "ElementCardValidationNetworkDetails",
     "ElementCardValidationNetworkDetailsVisa",
     "ElementCardValidationNetworkIdentifiers",
@@ -231,6 +271,136 @@ class ElementCardAuthentication(BaseModel):
 
     For this resource it will always be `card_authentication`.
     """
+
+
+class ElementCardAuthorizationAdditionalAmountsClinic(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class ElementCardAuthorizationAdditionalAmountsDental(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class ElementCardAuthorizationAdditionalAmountsPrescription(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class ElementCardAuthorizationAdditionalAmountsSurcharge(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class ElementCardAuthorizationAdditionalAmountsTotalCumulative(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class ElementCardAuthorizationAdditionalAmountsTotalHealthcare(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class ElementCardAuthorizationAdditionalAmountsTransit(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class ElementCardAuthorizationAdditionalAmountsUnknown(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class ElementCardAuthorizationAdditionalAmountsVision(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class ElementCardAuthorizationAdditionalAmounts(BaseModel):
+    clinic: Optional[ElementCardAuthorizationAdditionalAmountsClinic] = None
+    """The part of this transaction amount that was for clinic-related services."""
+
+    dental: Optional[ElementCardAuthorizationAdditionalAmountsDental] = None
+    """The part of this transaction amount that was for dental-related services."""
+
+    prescription: Optional[ElementCardAuthorizationAdditionalAmountsPrescription] = None
+    """The part of this transaction amount that was for healthcare prescriptions."""
+
+    surcharge: Optional[ElementCardAuthorizationAdditionalAmountsSurcharge] = None
+    """The surcharge amount charged for this transaction by the merchant."""
+
+    total_cumulative: Optional[ElementCardAuthorizationAdditionalAmountsTotalCumulative] = None
+    """
+    The total amount of a series of incremental authorizations, optionally provided.
+    """
+
+    total_healthcare: Optional[ElementCardAuthorizationAdditionalAmountsTotalHealthcare] = None
+    """The total amount of healthcare-related additional amounts."""
+
+    transit: Optional[ElementCardAuthorizationAdditionalAmountsTransit] = None
+    """The part of this transaction amount that was for transit-related services."""
+
+    unknown: Optional[ElementCardAuthorizationAdditionalAmountsUnknown] = None
+    """An unknown additional amount."""
+
+    vision: Optional[ElementCardAuthorizationAdditionalAmountsVision] = None
+    """The part of this transaction amount that was for vision-related services."""
 
 
 class ElementCardAuthorizationNetworkDetailsVisa(BaseModel):
@@ -461,6 +631,13 @@ class ElementCardAuthorization(BaseModel):
       processing.
     """
 
+    additional_amounts: ElementCardAuthorizationAdditionalAmounts
+    """
+    Additional amounts associated with the card authorization, such as ATM
+    surcharges fees. These are usually a subset of the `amount` field and are used
+    to provide more detailed information about the transaction.
+    """
+
     amount: int
     """The pending amount in the minor unit of the transaction's currency.
 
@@ -661,6 +838,136 @@ class ElementCardAuthorizationExpiration(BaseModel):
 
     For this resource it will always be `card_authorization_expiration`.
     """
+
+
+class ElementCardDeclineAdditionalAmountsClinic(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class ElementCardDeclineAdditionalAmountsDental(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class ElementCardDeclineAdditionalAmountsPrescription(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class ElementCardDeclineAdditionalAmountsSurcharge(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class ElementCardDeclineAdditionalAmountsTotalCumulative(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class ElementCardDeclineAdditionalAmountsTotalHealthcare(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class ElementCardDeclineAdditionalAmountsTransit(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class ElementCardDeclineAdditionalAmountsUnknown(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class ElementCardDeclineAdditionalAmountsVision(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class ElementCardDeclineAdditionalAmounts(BaseModel):
+    clinic: Optional[ElementCardDeclineAdditionalAmountsClinic] = None
+    """The part of this transaction amount that was for clinic-related services."""
+
+    dental: Optional[ElementCardDeclineAdditionalAmountsDental] = None
+    """The part of this transaction amount that was for dental-related services."""
+
+    prescription: Optional[ElementCardDeclineAdditionalAmountsPrescription] = None
+    """The part of this transaction amount that was for healthcare prescriptions."""
+
+    surcharge: Optional[ElementCardDeclineAdditionalAmountsSurcharge] = None
+    """The surcharge amount charged for this transaction by the merchant."""
+
+    total_cumulative: Optional[ElementCardDeclineAdditionalAmountsTotalCumulative] = None
+    """
+    The total amount of a series of incremental authorizations, optionally provided.
+    """
+
+    total_healthcare: Optional[ElementCardDeclineAdditionalAmountsTotalHealthcare] = None
+    """The total amount of healthcare-related additional amounts."""
+
+    transit: Optional[ElementCardDeclineAdditionalAmountsTransit] = None
+    """The part of this transaction amount that was for transit-related services."""
+
+    unknown: Optional[ElementCardDeclineAdditionalAmountsUnknown] = None
+    """An unknown additional amount."""
+
+    vision: Optional[ElementCardDeclineAdditionalAmountsVision] = None
+    """The part of this transaction amount that was for vision-related services."""
 
 
 class ElementCardDeclineNetworkDetailsVisa(BaseModel):
@@ -889,6 +1196,13 @@ class ElementCardDecline(BaseModel):
     - `increase` - This object was actioned by Increase without user intervention.
     - `network` - This object was actioned by the network, through stand-in
       processing.
+    """
+
+    additional_amounts: ElementCardDeclineAdditionalAmounts
+    """
+    Additional amounts associated with the card authorization, such as ATM
+    surcharges fees. These are usually a subset of the `amount` field and are used
+    to provide more detailed information about the transaction.
     """
 
     amount: int
@@ -1196,6 +1510,136 @@ class ElementCardFuelConfirmation(BaseModel):
     """
 
 
+class ElementCardIncrementAdditionalAmountsClinic(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class ElementCardIncrementAdditionalAmountsDental(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class ElementCardIncrementAdditionalAmountsPrescription(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class ElementCardIncrementAdditionalAmountsSurcharge(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class ElementCardIncrementAdditionalAmountsTotalCumulative(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class ElementCardIncrementAdditionalAmountsTotalHealthcare(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class ElementCardIncrementAdditionalAmountsTransit(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class ElementCardIncrementAdditionalAmountsUnknown(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class ElementCardIncrementAdditionalAmountsVision(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class ElementCardIncrementAdditionalAmounts(BaseModel):
+    clinic: Optional[ElementCardIncrementAdditionalAmountsClinic] = None
+    """The part of this transaction amount that was for clinic-related services."""
+
+    dental: Optional[ElementCardIncrementAdditionalAmountsDental] = None
+    """The part of this transaction amount that was for dental-related services."""
+
+    prescription: Optional[ElementCardIncrementAdditionalAmountsPrescription] = None
+    """The part of this transaction amount that was for healthcare prescriptions."""
+
+    surcharge: Optional[ElementCardIncrementAdditionalAmountsSurcharge] = None
+    """The surcharge amount charged for this transaction by the merchant."""
+
+    total_cumulative: Optional[ElementCardIncrementAdditionalAmountsTotalCumulative] = None
+    """
+    The total amount of a series of incremental authorizations, optionally provided.
+    """
+
+    total_healthcare: Optional[ElementCardIncrementAdditionalAmountsTotalHealthcare] = None
+    """The total amount of healthcare-related additional amounts."""
+
+    transit: Optional[ElementCardIncrementAdditionalAmountsTransit] = None
+    """The part of this transaction amount that was for transit-related services."""
+
+    unknown: Optional[ElementCardIncrementAdditionalAmountsUnknown] = None
+    """An unknown additional amount."""
+
+    vision: Optional[ElementCardIncrementAdditionalAmountsVision] = None
+    """The part of this transaction amount that was for vision-related services."""
+
+
 class ElementCardIncrementNetworkIdentifiers(BaseModel):
     retrieval_reference_number: Optional[str] = None
     """A life-cycle identifier used across e.g., an authorization and a reversal.
@@ -1230,6 +1674,13 @@ class ElementCardIncrement(BaseModel):
     - `increase` - This object was actioned by Increase without user intervention.
     - `network` - This object was actioned by the network, through stand-in
       processing.
+    """
+
+    additional_amounts: ElementCardIncrementAdditionalAmounts
+    """
+    Additional amounts associated with the card authorization, such as ATM
+    surcharges fees. These are usually a subset of the `amount` field and are used
+    to provide more detailed information about the transaction.
     """
 
     amount: int
@@ -2570,6 +3021,136 @@ class ElementCardSettlement(BaseModel):
     """
 
 
+class ElementCardValidationAdditionalAmountsClinic(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class ElementCardValidationAdditionalAmountsDental(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class ElementCardValidationAdditionalAmountsPrescription(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class ElementCardValidationAdditionalAmountsSurcharge(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class ElementCardValidationAdditionalAmountsTotalCumulative(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class ElementCardValidationAdditionalAmountsTotalHealthcare(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class ElementCardValidationAdditionalAmountsTransit(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class ElementCardValidationAdditionalAmountsUnknown(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class ElementCardValidationAdditionalAmountsVision(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class ElementCardValidationAdditionalAmounts(BaseModel):
+    clinic: Optional[ElementCardValidationAdditionalAmountsClinic] = None
+    """The part of this transaction amount that was for clinic-related services."""
+
+    dental: Optional[ElementCardValidationAdditionalAmountsDental] = None
+    """The part of this transaction amount that was for dental-related services."""
+
+    prescription: Optional[ElementCardValidationAdditionalAmountsPrescription] = None
+    """The part of this transaction amount that was for healthcare prescriptions."""
+
+    surcharge: Optional[ElementCardValidationAdditionalAmountsSurcharge] = None
+    """The surcharge amount charged for this transaction by the merchant."""
+
+    total_cumulative: Optional[ElementCardValidationAdditionalAmountsTotalCumulative] = None
+    """
+    The total amount of a series of incremental authorizations, optionally provided.
+    """
+
+    total_healthcare: Optional[ElementCardValidationAdditionalAmountsTotalHealthcare] = None
+    """The total amount of healthcare-related additional amounts."""
+
+    transit: Optional[ElementCardValidationAdditionalAmountsTransit] = None
+    """The part of this transaction amount that was for transit-related services."""
+
+    unknown: Optional[ElementCardValidationAdditionalAmountsUnknown] = None
+    """An unknown additional amount."""
+
+    vision: Optional[ElementCardValidationAdditionalAmountsVision] = None
+    """The part of this transaction amount that was for vision-related services."""
+
+
 class ElementCardValidationNetworkDetailsVisa(BaseModel):
     electronic_commerce_indicator: Optional[
         Literal[
@@ -2796,6 +3377,13 @@ class ElementCardValidation(BaseModel):
     - `increase` - This object was actioned by Increase without user intervention.
     - `network` - This object was actioned by the network, through stand-in
       processing.
+    """
+
+    additional_amounts: ElementCardValidationAdditionalAmounts
+    """
+    Additional amounts associated with the card authorization, such as ATM
+    surcharges fees. These are usually a subset of the `amount` field and are used
+    to provide more detailed information about the transaction.
     """
 
     card_payment_id: str

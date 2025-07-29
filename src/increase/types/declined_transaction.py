@@ -11,6 +11,16 @@ __all__ = [
     "Source",
     "SourceACHDecline",
     "SourceCardDecline",
+    "SourceCardDeclineAdditionalAmounts",
+    "SourceCardDeclineAdditionalAmountsClinic",
+    "SourceCardDeclineAdditionalAmountsDental",
+    "SourceCardDeclineAdditionalAmountsPrescription",
+    "SourceCardDeclineAdditionalAmountsSurcharge",
+    "SourceCardDeclineAdditionalAmountsTotalCumulative",
+    "SourceCardDeclineAdditionalAmountsTotalHealthcare",
+    "SourceCardDeclineAdditionalAmountsTransit",
+    "SourceCardDeclineAdditionalAmountsUnknown",
+    "SourceCardDeclineAdditionalAmountsVision",
     "SourceCardDeclineNetworkDetails",
     "SourceCardDeclineNetworkDetailsVisa",
     "SourceCardDeclineNetworkIdentifiers",
@@ -109,6 +119,136 @@ class SourceACHDecline(BaseModel):
 
     For this resource it will always be `ach_decline`.
     """
+
+
+class SourceCardDeclineAdditionalAmountsClinic(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class SourceCardDeclineAdditionalAmountsDental(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class SourceCardDeclineAdditionalAmountsPrescription(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class SourceCardDeclineAdditionalAmountsSurcharge(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class SourceCardDeclineAdditionalAmountsTotalCumulative(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class SourceCardDeclineAdditionalAmountsTotalHealthcare(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class SourceCardDeclineAdditionalAmountsTransit(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class SourceCardDeclineAdditionalAmountsUnknown(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class SourceCardDeclineAdditionalAmountsVision(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class SourceCardDeclineAdditionalAmounts(BaseModel):
+    clinic: Optional[SourceCardDeclineAdditionalAmountsClinic] = None
+    """The part of this transaction amount that was for clinic-related services."""
+
+    dental: Optional[SourceCardDeclineAdditionalAmountsDental] = None
+    """The part of this transaction amount that was for dental-related services."""
+
+    prescription: Optional[SourceCardDeclineAdditionalAmountsPrescription] = None
+    """The part of this transaction amount that was for healthcare prescriptions."""
+
+    surcharge: Optional[SourceCardDeclineAdditionalAmountsSurcharge] = None
+    """The surcharge amount charged for this transaction by the merchant."""
+
+    total_cumulative: Optional[SourceCardDeclineAdditionalAmountsTotalCumulative] = None
+    """
+    The total amount of a series of incremental authorizations, optionally provided.
+    """
+
+    total_healthcare: Optional[SourceCardDeclineAdditionalAmountsTotalHealthcare] = None
+    """The total amount of healthcare-related additional amounts."""
+
+    transit: Optional[SourceCardDeclineAdditionalAmountsTransit] = None
+    """The part of this transaction amount that was for transit-related services."""
+
+    unknown: Optional[SourceCardDeclineAdditionalAmountsUnknown] = None
+    """An unknown additional amount."""
+
+    vision: Optional[SourceCardDeclineAdditionalAmountsVision] = None
+    """The part of this transaction amount that was for vision-related services."""
 
 
 class SourceCardDeclineNetworkDetailsVisa(BaseModel):
@@ -337,6 +477,13 @@ class SourceCardDecline(BaseModel):
     - `increase` - This object was actioned by Increase without user intervention.
     - `network` - This object was actioned by the network, through stand-in
       processing.
+    """
+
+    additional_amounts: SourceCardDeclineAdditionalAmounts
+    """
+    Additional amounts associated with the card authorization, such as ATM
+    surcharges fees. These are usually a subset of the `amount` field and are used
+    to provide more detailed information about the transaction.
     """
 
     amount: int

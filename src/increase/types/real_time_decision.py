@@ -11,6 +11,16 @@ __all__ = [
     "CardAuthentication",
     "CardAuthenticationChallenge",
     "CardAuthorization",
+    "CardAuthorizationAdditionalAmounts",
+    "CardAuthorizationAdditionalAmountsClinic",
+    "CardAuthorizationAdditionalAmountsDental",
+    "CardAuthorizationAdditionalAmountsPrescription",
+    "CardAuthorizationAdditionalAmountsSurcharge",
+    "CardAuthorizationAdditionalAmountsTotalCumulative",
+    "CardAuthorizationAdditionalAmountsTotalHealthcare",
+    "CardAuthorizationAdditionalAmountsTransit",
+    "CardAuthorizationAdditionalAmountsUnknown",
+    "CardAuthorizationAdditionalAmountsVision",
     "CardAuthorizationNetworkDetails",
     "CardAuthorizationNetworkDetailsVisa",
     "CardAuthorizationNetworkIdentifiers",
@@ -72,6 +82,136 @@ class CardAuthenticationChallenge(BaseModel):
     - `failure` - Your application was unable to deliver the one-time code to the
       cardholder.
     """
+
+
+class CardAuthorizationAdditionalAmountsClinic(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class CardAuthorizationAdditionalAmountsDental(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class CardAuthorizationAdditionalAmountsPrescription(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class CardAuthorizationAdditionalAmountsSurcharge(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class CardAuthorizationAdditionalAmountsTotalCumulative(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class CardAuthorizationAdditionalAmountsTotalHealthcare(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class CardAuthorizationAdditionalAmountsTransit(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class CardAuthorizationAdditionalAmountsUnknown(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class CardAuthorizationAdditionalAmountsVision(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field."""
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class CardAuthorizationAdditionalAmounts(BaseModel):
+    clinic: Optional[CardAuthorizationAdditionalAmountsClinic] = None
+    """The part of this transaction amount that was for clinic-related services."""
+
+    dental: Optional[CardAuthorizationAdditionalAmountsDental] = None
+    """The part of this transaction amount that was for dental-related services."""
+
+    prescription: Optional[CardAuthorizationAdditionalAmountsPrescription] = None
+    """The part of this transaction amount that was for healthcare prescriptions."""
+
+    surcharge: Optional[CardAuthorizationAdditionalAmountsSurcharge] = None
+    """The surcharge amount charged for this transaction by the merchant."""
+
+    total_cumulative: Optional[CardAuthorizationAdditionalAmountsTotalCumulative] = None
+    """
+    The total amount of a series of incremental authorizations, optionally provided.
+    """
+
+    total_healthcare: Optional[CardAuthorizationAdditionalAmountsTotalHealthcare] = None
+    """The total amount of healthcare-related additional amounts."""
+
+    transit: Optional[CardAuthorizationAdditionalAmountsTransit] = None
+    """The part of this transaction amount that was for transit-related services."""
+
+    unknown: Optional[CardAuthorizationAdditionalAmountsUnknown] = None
+    """An unknown additional amount."""
+
+    vision: Optional[CardAuthorizationAdditionalAmountsVision] = None
+    """The part of this transaction amount that was for vision-related services."""
 
 
 class CardAuthorizationNetworkDetailsVisa(BaseModel):
@@ -319,6 +459,13 @@ class CardAuthorizationVerification(BaseModel):
 class CardAuthorization(BaseModel):
     account_id: str
     """The identifier of the Account the authorization will debit."""
+
+    additional_amounts: CardAuthorizationAdditionalAmounts
+    """
+    Additional amounts associated with the card authorization, such as ATM
+    surcharges fees. These are usually a subset of the `amount` field and are used
+    to provide more detailed information about the transaction.
+    """
 
     card_id: str
     """The identifier of the Card that is being authorized."""
