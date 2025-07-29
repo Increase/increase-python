@@ -528,6 +528,12 @@ class SourceCardDecline(BaseModel):
       voucher authorization, where funds are credited to the cardholder.
     """
 
+    incremented_card_authorization_id: Optional[str] = None
+    """
+    The identifier of the card authorization this request attempted to incrementally
+    authorize.
+    """
+
     merchant_acceptor_id: str
     """
     The merchant identifier (commonly abbreviated as MID) of the merchant the card
