@@ -212,6 +212,7 @@ class TestPhysicalCardProfiles:
                 "line1": "x",
                 "line2": "x",
             },
+            program_id="program_id",
         )
         assert_matches_type(PhysicalCardProfile, physical_card_profile, path=["response"])
 
@@ -446,6 +447,7 @@ class TestAsyncPhysicalCardProfiles:
                 "line1": "x",
                 "line2": "x",
             },
+            program_id="program_id",
         )
         assert_matches_type(PhysicalCardProfile, physical_card_profile, path=["response"])
 

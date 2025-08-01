@@ -260,6 +260,7 @@ class PhysicalCardProfilesResource(SyncAPIResource):
         description: str | NotGiven = NOT_GIVEN,
         front_image_file_id: str | NotGiven = NOT_GIVEN,
         front_text: physical_card_profile_clone_params.FrontText | NotGiven = NOT_GIVEN,
+        program_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -285,6 +286,8 @@ class PhysicalCardProfilesResource(SyncAPIResource):
           front_text: Text printed on the front of the card. Reach out to
               [support@increase.com](mailto:support@increase.com) for more information.
 
+          program_id: The identifier of the Program to use for the cloned Physical Card Profile.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -308,6 +311,7 @@ class PhysicalCardProfilesResource(SyncAPIResource):
                     "description": description,
                     "front_image_file_id": front_image_file_id,
                     "front_text": front_text,
+                    "program_id": program_id,
                 },
                 physical_card_profile_clone_params.PhysicalCardProfileCloneParams,
             ),
@@ -556,6 +560,7 @@ class AsyncPhysicalCardProfilesResource(AsyncAPIResource):
         description: str | NotGiven = NOT_GIVEN,
         front_image_file_id: str | NotGiven = NOT_GIVEN,
         front_text: physical_card_profile_clone_params.FrontText | NotGiven = NOT_GIVEN,
+        program_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -581,6 +586,8 @@ class AsyncPhysicalCardProfilesResource(AsyncAPIResource):
           front_text: Text printed on the front of the card. Reach out to
               [support@increase.com](mailto:support@increase.com) for more information.
 
+          program_id: The identifier of the Program to use for the cloned Physical Card Profile.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -604,6 +611,7 @@ class AsyncPhysicalCardProfilesResource(AsyncAPIResource):
                     "description": description,
                     "front_image_file_id": front_image_file_id,
                     "front_text": front_text,
+                    "program_id": program_id,
                 },
                 physical_card_profile_clone_params.PhysicalCardProfileCloneParams,
             ),
