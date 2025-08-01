@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.275.0 (2025-08-01)
+
+Full Changelog: [v0.274.0...v0.275.0](https://github.com/Increase/increase-python/compare/v0.274.0...v0.275.0)
+
+### Features
+
+* **api:** api update ([26aebdf](https://github.com/Increase/increase-python/commit/26aebdfc0bf005510b59bbb1b84cfff9974880f0))
+* **api:** api update ([c6db894](https://github.com/Increase/increase-python/commit/c6db8947279f38f9b8f9ba4013ec8667af887581))
+* **client:** support file upload requests ([f173973](https://github.com/Increase/increase-python/commit/f1739736717c6518de436f9122e22a2758a20a72))
+
 ## 0.274.0 (2025-07-29)
 
 Full Changelog: [v0.273.0...v0.274.0](https://github.com/Increase/increase-python/compare/v0.273.0...v0.274.0)
