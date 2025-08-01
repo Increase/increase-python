@@ -380,10 +380,13 @@ class GovernmentAuthority(TypedDict, total=False):
     authorized_persons: Required[Iterable[GovernmentAuthorityAuthorizedPerson]]
     """The identifying details of authorized officials acting on the entity's behalf."""
 
-    category: Required[Literal["municipality"]]
+    category: Required[Literal["municipality", "state_agency", "state_government", "federal_agency"]]
     """The category of the government authority.
 
-    - `municipality` - The Public Entity is a Municipality.
+    - `municipality` - A municipality.
+    - `state_agency` - A state agency.
+    - `state_government` - A state government.
+    - `federal_agency` - A federal agency.
     """
 
     name: Required[str]
