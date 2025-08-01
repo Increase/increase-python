@@ -27,6 +27,9 @@ class PhysicalCardProfileCloneParams(TypedDict, total=False):
     information.
     """
 
+    program_id: str
+    """The identifier of the Program to use for the cloned Physical Card Profile."""
+
 
 class FrontText(TypedDict, total=False):
     line1: Required[str]
