@@ -58,7 +58,7 @@ class ACHTransfersResource(SyncAPIResource):
         company_name: str | NotGiven = NOT_GIVEN,
         destination_account_holder: Literal["business", "individual", "unknown"] | NotGiven = NOT_GIVEN,
         external_account_id: str | NotGiven = NOT_GIVEN,
-        funding: Literal["checking", "savings"] | NotGiven = NOT_GIVEN,
+        funding: Literal["checking", "savings", "general_ledger"] | NotGiven = NOT_GIVEN,
         individual_id: str | NotGiven = NOT_GIVEN,
         individual_name: str | NotGiven = NOT_GIVEN,
         preferred_effective_date: ach_transfer_create_params.PreferredEffectiveDate | NotGiven = NOT_GIVEN,
@@ -128,6 +128,7 @@ class ACHTransfersResource(SyncAPIResource):
 
               - `checking` - A checking account.
               - `savings` - A savings account.
+              - `general_ledger` - A bank's general ledger. Uncommon.
 
           individual_id: Your identifier for the transfer recipient.
 
@@ -424,7 +425,7 @@ class AsyncACHTransfersResource(AsyncAPIResource):
         company_name: str | NotGiven = NOT_GIVEN,
         destination_account_holder: Literal["business", "individual", "unknown"] | NotGiven = NOT_GIVEN,
         external_account_id: str | NotGiven = NOT_GIVEN,
-        funding: Literal["checking", "savings"] | NotGiven = NOT_GIVEN,
+        funding: Literal["checking", "savings", "general_ledger"] | NotGiven = NOT_GIVEN,
         individual_id: str | NotGiven = NOT_GIVEN,
         individual_name: str | NotGiven = NOT_GIVEN,
         preferred_effective_date: ach_transfer_create_params.PreferredEffectiveDate | NotGiven = NOT_GIVEN,
@@ -494,6 +495,7 @@ class AsyncACHTransfersResource(AsyncAPIResource):
 
               - `checking` - A checking account.
               - `savings` - A savings account.
+              - `general_ledger` - A bank's general ledger. Uncommon.
 
           individual_id: Your identifier for the transfer recipient.
 
