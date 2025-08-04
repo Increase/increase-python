@@ -92,11 +92,12 @@ class ACHTransferCreateParams(TypedDict, total=False):
     must be absent.
     """
 
-    funding: Literal["checking", "savings"]
+    funding: Literal["checking", "savings", "general_ledger"]
     """The type of the account to which the transfer will be sent.
 
     - `checking` - A checking account.
     - `savings` - A savings account.
+    - `general_ledger` - A bank's general ledger. Uncommon.
     """
 
     individual_id: str

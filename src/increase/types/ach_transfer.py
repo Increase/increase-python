@@ -699,11 +699,12 @@ class ACHTransfer(BaseModel):
     external_account_id: Optional[str] = None
     """The identifier of the External Account the transfer was made to, if any."""
 
-    funding: Literal["checking", "savings"]
+    funding: Literal["checking", "savings", "general_ledger"]
     """The type of the account to which the transfer will be sent.
 
     - `checking` - A checking account.
     - `savings` - A savings account.
+    - `general_ledger` - A bank's general ledger. Uncommon.
     """
 
     idempotency_key: Optional[str] = None
