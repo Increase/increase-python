@@ -14,6 +14,8 @@ __all__ = [
     "SourceACHTransferRejection",
     "SourceACHTransferReturn",
     "SourceCardDisputeAcceptance",
+    "SourceCardDisputeFinancial",
+    "SourceCardDisputeFinancialVisa",
     "SourceCardDisputeLoss",
     "SourceCardPushTransferAcceptance",
     "SourceCardRefund",
@@ -390,6 +392,57 @@ class SourceCardDisputeAcceptance(BaseModel):
     """
     The identifier of the Transaction that was created to return the disputed funds
     to your account.
+    """
+
+
+class SourceCardDisputeFinancialVisa(BaseModel):
+    event_type: Literal[
+        "chargeback_submitted",
+        "merchant_prearbitration_declined",
+        "merchant_prearbitration_received",
+        "represented",
+        "user_prearbitration_declined",
+        "user_prearbitration_submitted",
+    ]
+    """The type of card dispute financial event.
+
+    - `chargeback_submitted` - The user's chargeback was submitted.
+    - `merchant_prearbitration_declined` - The user declined the merchant's request
+      for pre-arbitration.
+    - `merchant_prearbitration_received` - The merchant's request for
+      pre-arbitration was received.
+    - `represented` - The transaction was represented by the merchant.
+    - `user_prearbitration_declined` - The user's request for pre-arbitration was
+      declined.
+    - `user_prearbitration_submitted` - The user's request for pre-arbitration was
+      submitted.
+    """
+
+
+class SourceCardDisputeFinancial(BaseModel):
+    amount: int
+    """The amount of the financial event."""
+
+    card_dispute_id: str
+    """The identifier of the Card Dispute the financial event is associated with."""
+
+    network: Literal["visa"]
+    """The network that the Card Dispute is associated with.
+
+    - `visa` - Visa: details will be under the `visa` object.
+    """
+
+    transaction_id: str
+    """
+    The identifier of the Transaction that was created to credit or debit the
+    disputed funds to or from your account.
+    """
+
+    visa: Optional[SourceCardDisputeFinancialVisa] = None
+    """
+    Information for events related to card dispute for card payments processed over
+    Visa's network. This field will be present in the JSON response if and only if
+    `network` is equal to `visa`.
     """
 
 
@@ -2352,6 +2405,13 @@ class Source(BaseModel):
     Dispute.
     """
 
+    card_dispute_financial: Optional[SourceCardDisputeFinancial] = None
+    """A Card Dispute Financial object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `card_dispute_financial`. Financial event related to a Card Dispute.
+    """
+
     card_dispute_loss: Optional[SourceCardDisputeLoss] = None
     """A Card Dispute Loss object.
 
@@ -2410,6 +2470,7 @@ class Source(BaseModel):
         "ach_transfer_return",
         "cashback_payment",
         "card_dispute_acceptance",
+        "card_dispute_financial",
         "card_dispute_loss",
         "card_refund",
         "card_settlement",
@@ -2453,6 +2514,8 @@ class Source(BaseModel):
       `cashback_payment` object.
     - `card_dispute_acceptance` - Card Dispute Acceptance: details will be under the
       `card_dispute_acceptance` object.
+    - `card_dispute_financial` - Card Dispute Financial: details will be under the
+      `card_dispute_financial` object.
     - `card_dispute_loss` - Card Dispute Loss: details will be under the
       `card_dispute_loss` object.
     - `card_refund` - Card Refund: details will be under the `card_refund` object.
