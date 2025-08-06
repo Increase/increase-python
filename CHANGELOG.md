@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.277.0 (2025-08-06)
+
+Full Changelog: [v0.276.0...v0.277.0](https://github.com/Increase/increase-python/compare/v0.276.0...v0.277.0)
+
+### Features
+
+* **api:** api update ([63a695f](https://github.com/Increase/increase-python/commit/63a695f5c7052b20f50d05da436118593066b1e9))
+
+
+### Chores
+
+* **internal:** fix ruff target version ([3099e0b](https://github.com/Increase/increase-python/commit/3099e0be784c352c02fffb65b88495d30a0d1f2a))
+
 ## 0.276.0 (2025-08-04)
 
 Full Changelog: [v0.275.0...v0.276.0](https://github.com/Increase/increase-python/compare/v0.275.0...v0.276.0)
