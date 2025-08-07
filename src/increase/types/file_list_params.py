@@ -65,6 +65,7 @@ _PurposeReservedKeywords = TypedDict(
     {
         "in": List[
             Literal[
+                "card_dispute_attachment",
                 "check_image_front",
                 "check_image_back",
                 "processed_check_image_front",

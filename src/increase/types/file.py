@@ -41,6 +41,7 @@ class File(BaseModel):
     """The MIME type of the file."""
 
     purpose: Literal[
+        "card_dispute_attachment",
         "check_image_front",
         "check_image_back",
         "processed_check_image_front",
@@ -75,6 +76,7 @@ class File(BaseModel):
     We may add additional possible values for this enum over time; your application
     should be able to handle such additions gracefully.
 
+    - `card_dispute_attachment` - A file to be attached to a Card Dispute.
     - `check_image_front` - An image of the front of a check, used for check
       deposits.
     - `check_image_back` - An image of the back of a check, used for check deposits.
