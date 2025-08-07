@@ -20,6 +20,7 @@ class FileCreateParams(TypedDict, total=False):
 
     purpose: Required[
         Literal[
+            "card_dispute_attachment",
             "check_image_front",
             "check_image_back",
             "mailed_check_image",
@@ -40,6 +41,7 @@ class FileCreateParams(TypedDict, total=False):
     ]
     """What the File will be used for in Increase's systems.
 
+    - `card_dispute_attachment` - A file to be attached to a Card Dispute.
     - `check_image_front` - An image of the front of a check, used for check
       deposits.
     - `check_image_back` - An image of the back of a check, used for check deposits.

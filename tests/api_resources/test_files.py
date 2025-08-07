@@ -117,7 +117,7 @@ class TestFiles:
             cursor="cursor",
             idempotency_key="x",
             limit=1,
-            purpose={"in": ["check_image_front"]},
+            purpose={"in": ["card_dispute_attachment"]},
         )
         assert_matches_type(SyncPage[File], file, path=["response"])
 
@@ -245,7 +245,7 @@ class TestAsyncFiles:
             cursor="cursor",
             idempotency_key="x",
             limit=1,
-            purpose={"in": ["check_image_front"]},
+            purpose={"in": ["card_dispute_attachment"]},
         )
         assert_matches_type(AsyncPage[File], file, path=["response"])
 
