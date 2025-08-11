@@ -78,6 +78,8 @@ class EventSubscriptionCreateParams(TypedDict, total=False):
         "intrafi_account_enrollment.updated",
         "intrafi_exclusion.created",
         "intrafi_exclusion.updated",
+        "legacy_card_dispute.created",
+        "legacy_card_dispute.updated",
         "lockbox.created",
         "lockbox.updated",
         "oauth_connection.created",
@@ -207,6 +209,10 @@ class EventSubscriptionCreateParams(TypedDict, total=False):
       Enrollment is updated.
     - `intrafi_exclusion.created` - Occurs whenever an IntraFi Exclusion is created.
     - `intrafi_exclusion.updated` - Occurs whenever an IntraFi Exclusion is updated.
+    - `legacy_card_dispute.created` - Occurs whenever a Legacy Card Dispute is
+      created.
+    - `legacy_card_dispute.updated` - Occurs whenever a Legacy Card Dispute is
+      updated.
     - `lockbox.created` - Occurs whenever a Lockbox is created.
     - `lockbox.updated` - Occurs whenever a Lockbox is updated.
     - `oauth_connection.created` - Occurs whenever an OAuth Connection is created.
