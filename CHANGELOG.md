@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.281.0 (2025-08-11)
+
+Full Changelog: [v0.280.0...v0.281.0](https://github.com/Increase/increase-python/compare/v0.280.0...v0.281.0)
+
+### Features
+
+* **api:** api update ([a4ed733](https://github.com/Increase/increase-python/commit/a4ed7331f9fd41a6dc83c4603a31c2abaee13630))
+
+
+### Chores
+
+* **internal:** update comment in script ([ae51027](https://github.com/Increase/increase-python/commit/ae510276b7b6deeeece03ba8e2b1972d7c03144b))
+* update @stainless-api/prism-cli to v5.15.0 ([aa65262](https://github.com/Increase/increase-python/commit/aa6526296ff844c599caa4bb51b0a15b8bb00e4f))
+
 ## 0.280.0 (2025-08-07)
 
 Full Changelog: [v0.279.0...v0.280.0](https://github.com/Increase/increase-python/compare/v0.279.0...v0.280.0)
