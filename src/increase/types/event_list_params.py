@@ -94,6 +94,8 @@ _CategoryReservedKeywords = TypedDict(
                 "intrafi_account_enrollment.updated",
                 "intrafi_exclusion.created",
                 "intrafi_exclusion.updated",
+                "legacy_card_dispute.created",
+                "legacy_card_dispute.updated",
                 "lockbox.created",
                 "lockbox.updated",
                 "oauth_connection.created",
