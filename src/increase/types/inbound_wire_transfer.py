@@ -126,3 +126,6 @@ class InboundWireTransfer(BaseModel):
 
     For this resource it will always be `inbound_wire_transfer`.
     """
+
+    wire_drawdown_request_id: Optional[str] = None
+    """The wire drawdown request the inbound wire transfer is fulfilling."""
