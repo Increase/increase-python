@@ -123,6 +123,11 @@ class Reversal(BaseModel):
     the transfer.
     """
 
+    originator_to_beneficiary_information: Optional[str] = None
+    """
+    Additional information included in the wire reversal by the reversal originator.
+    """
+
     previous_message_input_cycle_date: date
     """
     The Fedwire cycle date for the wire transfer that is being reversed by this
