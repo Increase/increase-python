@@ -46,7 +46,7 @@ class Account(BaseModel):
     - `USD` - US Dollar (USD)
     """
 
-    entity_id: Optional[str] = None
+    entity_id: str
     """The identifier for the Entity the Account belongs to."""
 
     idempotency_key: Optional[str] = None
