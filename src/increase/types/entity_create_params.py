@@ -132,17 +132,14 @@ class CorporationAddress(TypedDict, total=False):
 
 
 class CorporationBeneficialOwnerIndividualAddress(TypedDict, total=False):
+    city: Required[str]
+    """The city, district, town, or village of the address."""
+
     country: Required[str]
     """The two-letter ISO 3166-1 alpha-2 code for the country of the address."""
 
     line1: Required[str]
     """The first line of the address. This is usually the street number and street."""
-
-    city: str
-    """The city, district, town, or village of the address.
-
-    Required in certain countries.
-    """
 
     line2: str
     """The second line of the address. This might be the floor or room number."""
