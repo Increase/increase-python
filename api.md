@@ -725,6 +725,50 @@ Methods:
 - <code title="get /intrafi_exclusions">client.intrafi_exclusions.<a href="./src/increase/resources/intrafi_exclusions.py">list</a>(\*\*<a href="src/increase/types/intrafi_exclusion_list_params.py">params</a>) -> <a href="./src/increase/types/intrafi_exclusion.py">SyncPage[IntrafiExclusion]</a></code>
 - <code title="post /intrafi_exclusions/{intrafi_exclusion_id}/archive">client.intrafi_exclusions.<a href="./src/increase/resources/intrafi_exclusions.py">archive</a>(intrafi_exclusion_id) -> <a href="./src/increase/types/intrafi_exclusion.py">IntrafiExclusion</a></code>
 
+# CardTokens
+
+Types:
+
+```python
+from increase.types import CardToken, CardTokenCapabilities
+```
+
+Methods:
+
+- <code title="get /card_tokens/{card_token_id}">client.card_tokens.<a href="./src/increase/resources/card_tokens.py">retrieve</a>(card_token_id) -> <a href="./src/increase/types/card_token.py">CardToken</a></code>
+- <code title="get /card_tokens">client.card_tokens.<a href="./src/increase/resources/card_tokens.py">list</a>(\*\*<a href="src/increase/types/card_token_list_params.py">params</a>) -> <a href="./src/increase/types/card_token.py">SyncPage[CardToken]</a></code>
+- <code title="get /card_tokens/{card_token_id}/capabilities">client.card_tokens.<a href="./src/increase/resources/card_tokens.py">capabilities</a>(card_token_id) -> <a href="./src/increase/types/card_token_capabilities.py">CardTokenCapabilities</a></code>
+
+# CardPushTransfers
+
+Types:
+
+```python
+from increase.types import CardPushTransfer
+```
+
+Methods:
+
+- <code title="post /card_push_transfers">client.card_push_transfers.<a href="./src/increase/resources/card_push_transfers.py">create</a>(\*\*<a href="src/increase/types/card_push_transfer_create_params.py">params</a>) -> <a href="./src/increase/types/card_push_transfer.py">CardPushTransfer</a></code>
+- <code title="get /card_push_transfers/{card_push_transfer_id}">client.card_push_transfers.<a href="./src/increase/resources/card_push_transfers.py">retrieve</a>(card_push_transfer_id) -> <a href="./src/increase/types/card_push_transfer.py">CardPushTransfer</a></code>
+- <code title="get /card_push_transfers">client.card_push_transfers.<a href="./src/increase/resources/card_push_transfers.py">list</a>(\*\*<a href="src/increase/types/card_push_transfer_list_params.py">params</a>) -> <a href="./src/increase/types/card_push_transfer.py">SyncPage[CardPushTransfer]</a></code>
+- <code title="post /card_push_transfers/{card_push_transfer_id}/approve">client.card_push_transfers.<a href="./src/increase/resources/card_push_transfers.py">approve</a>(card_push_transfer_id) -> <a href="./src/increase/types/card_push_transfer.py">CardPushTransfer</a></code>
+- <code title="post /card_push_transfers/{card_push_transfer_id}/cancel">client.card_push_transfers.<a href="./src/increase/resources/card_push_transfers.py">cancel</a>(card_push_transfer_id) -> <a href="./src/increase/types/card_push_transfer.py">CardPushTransfer</a></code>
+
+# CardValidations
+
+Types:
+
+```python
+from increase.types import CardValidation
+```
+
+Methods:
+
+- <code title="post /card_validations">client.card_validations.<a href="./src/increase/resources/card_validations.py">create</a>(\*\*<a href="src/increase/types/card_validation_create_params.py">params</a>) -> <a href="./src/increase/types/card_validation.py">CardValidation</a></code>
+- <code title="get /card_validations/{card_validation_id}">client.card_validations.<a href="./src/increase/resources/card_validations.py">retrieve</a>(card_validation_id) -> <a href="./src/increase/types/card_validation.py">CardValidation</a></code>
+- <code title="get /card_validations">client.card_validations.<a href="./src/increase/resources/card_validations.py">list</a>(\*\*<a href="src/increase/types/card_validation_list_params.py">params</a>) -> <a href="./src/increase/types/card_validation.py">SyncPage[CardValidation]</a></code>
+
 # Simulations
 
 ## InterestPayments
@@ -920,3 +964,9 @@ Methods:
 Methods:
 
 - <code title="post /simulations/documents">client.simulations.documents.<a href="./src/increase/resources/simulations/documents.py">create</a>(\*\*<a href="src/increase/types/simulations/document_create_params.py">params</a>) -> <a href="./src/increase/types/document.py">Document</a></code>
+
+## CardTokens
+
+Methods:
+
+- <code title="post /simulations/card_tokens">client.simulations.card_tokens.<a href="./src/increase/resources/simulations/card_tokens.py">create</a>(\*\*<a href="src/increase/types/simulations/card_token_create_params.py">params</a>) -> <a href="./src/increase/types/card_token.py">CardToken</a></code>

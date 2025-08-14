@@ -37,6 +37,7 @@ from .resources import (
     documents,
     lockboxes,
     file_links,
+    card_tokens,
     oauth_tokens,
     transactions,
     ach_transfers,
@@ -48,6 +49,7 @@ from .resources import (
     account_numbers,
     check_transfers,
     routing_numbers,
+    card_validations,
     intrafi_balances,
     account_transfers,
     external_accounts,
@@ -57,6 +59,7 @@ from .resources import (
     intrafi_exclusions,
     oauth_applications,
     bookkeeping_entries,
+    card_push_transfers,
     event_subscriptions,
     real_time_decisions,
     ach_prenotifications,
@@ -157,6 +160,9 @@ class Increase(SyncAPIClient):
     intrafi_account_enrollments: intrafi_account_enrollments.IntrafiAccountEnrollmentsResource
     intrafi_balances: intrafi_balances.IntrafiBalancesResource
     intrafi_exclusions: intrafi_exclusions.IntrafiExclusionsResource
+    card_tokens: card_tokens.CardTokensResource
+    card_push_transfers: card_push_transfers.CardPushTransfersResource
+    card_validations: card_validations.CardValidationsResource
     simulations: simulations.SimulationsResource
     with_raw_response: IncreaseWithRawResponse
     with_streaming_response: IncreaseWithStreamedResponse
@@ -302,6 +308,9 @@ class Increase(SyncAPIClient):
         self.intrafi_account_enrollments = intrafi_account_enrollments.IntrafiAccountEnrollmentsResource(self)
         self.intrafi_balances = intrafi_balances.IntrafiBalancesResource(self)
         self.intrafi_exclusions = intrafi_exclusions.IntrafiExclusionsResource(self)
+        self.card_tokens = card_tokens.CardTokensResource(self)
+        self.card_push_transfers = card_push_transfers.CardPushTransfersResource(self)
+        self.card_validations = card_validations.CardValidationsResource(self)
         self.simulations = simulations.SimulationsResource(self)
         self.with_raw_response = IncreaseWithRawResponse(self)
         self.with_streaming_response = IncreaseWithStreamedResponse(self)
@@ -514,6 +523,9 @@ class AsyncIncrease(AsyncAPIClient):
     intrafi_account_enrollments: intrafi_account_enrollments.AsyncIntrafiAccountEnrollmentsResource
     intrafi_balances: intrafi_balances.AsyncIntrafiBalancesResource
     intrafi_exclusions: intrafi_exclusions.AsyncIntrafiExclusionsResource
+    card_tokens: card_tokens.AsyncCardTokensResource
+    card_push_transfers: card_push_transfers.AsyncCardPushTransfersResource
+    card_validations: card_validations.AsyncCardValidationsResource
     simulations: simulations.AsyncSimulationsResource
     with_raw_response: AsyncIncreaseWithRawResponse
     with_streaming_response: AsyncIncreaseWithStreamedResponse
@@ -661,6 +673,9 @@ class AsyncIncrease(AsyncAPIClient):
         self.intrafi_account_enrollments = intrafi_account_enrollments.AsyncIntrafiAccountEnrollmentsResource(self)
         self.intrafi_balances = intrafi_balances.AsyncIntrafiBalancesResource(self)
         self.intrafi_exclusions = intrafi_exclusions.AsyncIntrafiExclusionsResource(self)
+        self.card_tokens = card_tokens.AsyncCardTokensResource(self)
+        self.card_push_transfers = card_push_transfers.AsyncCardPushTransfersResource(self)
+        self.card_validations = card_validations.AsyncCardValidationsResource(self)
         self.simulations = simulations.AsyncSimulationsResource(self)
         self.with_raw_response = AsyncIncreaseWithRawResponse(self)
         self.with_streaming_response = AsyncIncreaseWithStreamedResponse(self)
@@ -920,6 +935,11 @@ class IncreaseWithRawResponse:
         )
         self.intrafi_balances = intrafi_balances.IntrafiBalancesResourceWithRawResponse(client.intrafi_balances)
         self.intrafi_exclusions = intrafi_exclusions.IntrafiExclusionsResourceWithRawResponse(client.intrafi_exclusions)
+        self.card_tokens = card_tokens.CardTokensResourceWithRawResponse(client.card_tokens)
+        self.card_push_transfers = card_push_transfers.CardPushTransfersResourceWithRawResponse(
+            client.card_push_transfers
+        )
+        self.card_validations = card_validations.CardValidationsResourceWithRawResponse(client.card_validations)
         self.simulations = simulations.SimulationsResourceWithRawResponse(client.simulations)
 
 
@@ -1040,6 +1060,11 @@ class AsyncIncreaseWithRawResponse:
         self.intrafi_exclusions = intrafi_exclusions.AsyncIntrafiExclusionsResourceWithRawResponse(
             client.intrafi_exclusions
         )
+        self.card_tokens = card_tokens.AsyncCardTokensResourceWithRawResponse(client.card_tokens)
+        self.card_push_transfers = card_push_transfers.AsyncCardPushTransfersResourceWithRawResponse(
+            client.card_push_transfers
+        )
+        self.card_validations = card_validations.AsyncCardValidationsResourceWithRawResponse(client.card_validations)
         self.simulations = simulations.AsyncSimulationsResourceWithRawResponse(client.simulations)
 
 
@@ -1160,6 +1185,11 @@ class IncreaseWithStreamedResponse:
         self.intrafi_exclusions = intrafi_exclusions.IntrafiExclusionsResourceWithStreamingResponse(
             client.intrafi_exclusions
         )
+        self.card_tokens = card_tokens.CardTokensResourceWithStreamingResponse(client.card_tokens)
+        self.card_push_transfers = card_push_transfers.CardPushTransfersResourceWithStreamingResponse(
+            client.card_push_transfers
+        )
+        self.card_validations = card_validations.CardValidationsResourceWithStreamingResponse(client.card_validations)
         self.simulations = simulations.SimulationsResourceWithStreamingResponse(client.simulations)
 
 
@@ -1283,6 +1313,13 @@ class AsyncIncreaseWithStreamedResponse:
         )
         self.intrafi_exclusions = intrafi_exclusions.AsyncIntrafiExclusionsResourceWithStreamingResponse(
             client.intrafi_exclusions
+        )
+        self.card_tokens = card_tokens.AsyncCardTokensResourceWithStreamingResponse(client.card_tokens)
+        self.card_push_transfers = card_push_transfers.AsyncCardPushTransfersResourceWithStreamingResponse(
+            client.card_push_transfers
+        )
+        self.card_validations = card_validations.AsyncCardValidationsResourceWithStreamingResponse(
+            client.card_validations
         )
         self.simulations = simulations.AsyncSimulationsResourceWithStreamingResponse(client.simulations)
 
