@@ -28,10 +28,11 @@ class ExternalAccountCreateParams(TypedDict, total=False):
     - `unknown` - It's unknown what kind of entity owns the External Account.
     """
 
-    funding: Literal["checking", "savings", "other"]
+    funding: Literal["checking", "savings", "general_ledger", "other"]
     """The type of the destination account. Defaults to `checking`.
 
     - `checking` - A checking account.
     - `savings` - A savings account.
+    - `general_ledger` - A general ledger account.
     - `other` - A different type of account.
     """

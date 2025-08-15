@@ -51,7 +51,7 @@ class ExternalAccountsResource(SyncAPIResource):
         description: str,
         routing_number: str,
         account_holder: Literal["business", "individual", "unknown"] | NotGiven = NOT_GIVEN,
-        funding: Literal["checking", "savings", "other"] | NotGiven = NOT_GIVEN,
+        funding: Literal["checking", "savings", "general_ledger", "other"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -81,6 +81,7 @@ class ExternalAccountsResource(SyncAPIResource):
 
               - `checking` - A checking account.
               - `savings` - A savings account.
+              - `general_ledger` - A general ledger account.
               - `other` - A different type of account.
 
           extra_headers: Send extra headers
@@ -158,7 +159,7 @@ class ExternalAccountsResource(SyncAPIResource):
         *,
         account_holder: Literal["business", "individual"] | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
-        funding: Literal["checking", "savings", "other"] | NotGiven = NOT_GIVEN,
+        funding: Literal["checking", "savings", "general_ledger", "other"] | NotGiven = NOT_GIVEN,
         status: Literal["active", "archived"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -185,6 +186,7 @@ class ExternalAccountsResource(SyncAPIResource):
 
               - `checking` - A checking account.
               - `savings` - A savings account.
+              - `general_ledger` - A general ledger account.
               - `other` - A different type of account.
 
           status: The status of the External Account.
@@ -317,7 +319,7 @@ class AsyncExternalAccountsResource(AsyncAPIResource):
         description: str,
         routing_number: str,
         account_holder: Literal["business", "individual", "unknown"] | NotGiven = NOT_GIVEN,
-        funding: Literal["checking", "savings", "other"] | NotGiven = NOT_GIVEN,
+        funding: Literal["checking", "savings", "general_ledger", "other"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -347,6 +349,7 @@ class AsyncExternalAccountsResource(AsyncAPIResource):
 
               - `checking` - A checking account.
               - `savings` - A savings account.
+              - `general_ledger` - A general ledger account.
               - `other` - A different type of account.
 
           extra_headers: Send extra headers
@@ -424,7 +427,7 @@ class AsyncExternalAccountsResource(AsyncAPIResource):
         *,
         account_holder: Literal["business", "individual"] | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
-        funding: Literal["checking", "savings", "other"] | NotGiven = NOT_GIVEN,
+        funding: Literal["checking", "savings", "general_ledger", "other"] | NotGiven = NOT_GIVEN,
         status: Literal["active", "archived"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -451,6 +454,7 @@ class AsyncExternalAccountsResource(AsyncAPIResource):
 
               - `checking` - A checking account.
               - `savings` - A savings account.
+              - `general_ledger` - A general ledger account.
               - `other` - A different type of account.
 
           status: The status of the External Account.

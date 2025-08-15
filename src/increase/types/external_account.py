@@ -33,11 +33,12 @@ class ExternalAccount(BaseModel):
     description: str
     """The External Account's description for display purposes."""
 
-    funding: Literal["checking", "savings", "other"]
+    funding: Literal["checking", "savings", "general_ledger", "other"]
     """The type of the account to which the transfer will be sent.
 
     - `checking` - A checking account.
     - `savings` - A savings account.
+    - `general_ledger` - A general ledger account.
     - `other` - A different type of account.
     """
 
