@@ -29,14 +29,12 @@ class TestWireDrawdownRequests:
                 "line1": "33 Liberty Street",
             },
             creditor_name="National Phonograph Company",
-            debtor_account_number="987654321",
             debtor_address={
                 "city": "New York",
                 "country": "US",
                 "line1": "33 Liberty Street",
             },
             debtor_name="Ian Crease",
-            debtor_routing_number="101050001",
             unstructured_remittance_information="Invoice 29582",
         )
         assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
@@ -55,7 +53,6 @@ class TestWireDrawdownRequests:
                 "state": "NY",
             },
             creditor_name="National Phonograph Company",
-            debtor_account_number="987654321",
             debtor_address={
                 "city": "New York",
                 "country": "US",
@@ -65,8 +62,10 @@ class TestWireDrawdownRequests:
                 "state": "NY",
             },
             debtor_name="Ian Crease",
-            debtor_routing_number="101050001",
             unstructured_remittance_information="Invoice 29582",
+            debtor_account_number="987654321",
+            debtor_external_account_id="debtor_external_account_id",
+            debtor_routing_number="101050001",
         )
         assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
 
@@ -81,14 +80,12 @@ class TestWireDrawdownRequests:
                 "line1": "33 Liberty Street",
             },
             creditor_name="National Phonograph Company",
-            debtor_account_number="987654321",
             debtor_address={
                 "city": "New York",
                 "country": "US",
                 "line1": "33 Liberty Street",
             },
             debtor_name="Ian Crease",
-            debtor_routing_number="101050001",
             unstructured_remittance_information="Invoice 29582",
         )
 
@@ -108,14 +105,12 @@ class TestWireDrawdownRequests:
                 "line1": "33 Liberty Street",
             },
             creditor_name="National Phonograph Company",
-            debtor_account_number="987654321",
             debtor_address={
                 "city": "New York",
                 "country": "US",
                 "line1": "33 Liberty Street",
             },
             debtor_name="Ian Crease",
-            debtor_routing_number="101050001",
             unstructured_remittance_information="Invoice 29582",
         ) as response:
             assert not response.is_closed
@@ -218,14 +213,12 @@ class TestAsyncWireDrawdownRequests:
                 "line1": "33 Liberty Street",
             },
             creditor_name="National Phonograph Company",
-            debtor_account_number="987654321",
             debtor_address={
                 "city": "New York",
                 "country": "US",
                 "line1": "33 Liberty Street",
             },
             debtor_name="Ian Crease",
-            debtor_routing_number="101050001",
             unstructured_remittance_information="Invoice 29582",
         )
         assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
@@ -244,7 +237,6 @@ class TestAsyncWireDrawdownRequests:
                 "state": "NY",
             },
             creditor_name="National Phonograph Company",
-            debtor_account_number="987654321",
             debtor_address={
                 "city": "New York",
                 "country": "US",
@@ -254,8 +246,10 @@ class TestAsyncWireDrawdownRequests:
                 "state": "NY",
             },
             debtor_name="Ian Crease",
-            debtor_routing_number="101050001",
             unstructured_remittance_information="Invoice 29582",
+            debtor_account_number="987654321",
+            debtor_external_account_id="debtor_external_account_id",
+            debtor_routing_number="101050001",
         )
         assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
 
@@ -270,14 +264,12 @@ class TestAsyncWireDrawdownRequests:
                 "line1": "33 Liberty Street",
             },
             creditor_name="National Phonograph Company",
-            debtor_account_number="987654321",
             debtor_address={
                 "city": "New York",
                 "country": "US",
                 "line1": "33 Liberty Street",
             },
             debtor_name="Ian Crease",
-            debtor_routing_number="101050001",
             unstructured_remittance_information="Invoice 29582",
         )
 
@@ -297,14 +289,12 @@ class TestAsyncWireDrawdownRequests:
                 "line1": "33 Liberty Street",
             },
             creditor_name="National Phonograph Company",
-            debtor_account_number="987654321",
             debtor_address={
                 "city": "New York",
                 "country": "US",
                 "line1": "33 Liberty Street",
             },
             debtor_name="Ian Crease",
-            debtor_routing_number="101050001",
             unstructured_remittance_information="Invoice 29582",
         ) as response:
             assert not response.is_closed
