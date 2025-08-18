@@ -20,20 +20,27 @@ class WireDrawdownRequestCreateParams(TypedDict, total=False):
     creditor_name: Required[str]
     """The creditor's name."""
 
-    debtor_account_number: Required[str]
-    """The debtor's account number."""
-
     debtor_address: Required[DebtorAddress]
     """The debtor's address."""
 
     debtor_name: Required[str]
     """The debtor's name."""
 
-    debtor_routing_number: Required[str]
-    """The debtor's routing number."""
-
     unstructured_remittance_information: Required[str]
     """Remittance information the debtor will see as part of the request."""
+
+    debtor_account_number: str
+    """The debtor's account number."""
+
+    debtor_external_account_id: str
+    """The ID of an External Account to initiate a transfer to.
+
+    If this parameter is provided, `debtor_account_number` and
+    `debtor_routing_number` must be absent.
+    """
+
+    debtor_routing_number: str
+    """The debtor's routing number."""
 
 
 class CreditorAddress(TypedDict, total=False):
