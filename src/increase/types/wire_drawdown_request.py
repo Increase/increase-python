@@ -102,6 +102,9 @@ class WireDrawdownRequest(BaseModel):
     debtor_address: DebtorAddress
     """The debtor's address."""
 
+    debtor_external_account_id: Optional[str] = None
+    """The debtor's external account identifier."""
+
     debtor_name: str
     """The debtor's name."""
 
