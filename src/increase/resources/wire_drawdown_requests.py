@@ -49,11 +49,12 @@ class WireDrawdownRequestsResource(SyncAPIResource):
         amount: int,
         creditor_address: wire_drawdown_request_create_params.CreditorAddress,
         creditor_name: str,
-        debtor_account_number: str,
         debtor_address: wire_drawdown_request_create_params.DebtorAddress,
         debtor_name: str,
-        debtor_routing_number: str,
         unstructured_remittance_information: str,
+        debtor_account_number: str | NotGiven = NOT_GIVEN,
+        debtor_external_account_id: str | NotGiven = NOT_GIVEN,
+        debtor_routing_number: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -74,15 +75,18 @@ class WireDrawdownRequestsResource(SyncAPIResource):
 
           creditor_name: The creditor's name.
 
-          debtor_account_number: The debtor's account number.
-
           debtor_address: The debtor's address.
 
           debtor_name: The debtor's name.
 
-          debtor_routing_number: The debtor's routing number.
-
           unstructured_remittance_information: Remittance information the debtor will see as part of the request.
+
+          debtor_account_number: The debtor's account number.
+
+          debtor_external_account_id: The ID of an External Account to initiate a transfer to. If this parameter is
+              provided, `debtor_account_number` and `debtor_routing_number` must be absent.
+
+          debtor_routing_number: The debtor's routing number.
 
           extra_headers: Send extra headers
 
@@ -102,11 +106,12 @@ class WireDrawdownRequestsResource(SyncAPIResource):
                     "amount": amount,
                     "creditor_address": creditor_address,
                     "creditor_name": creditor_name,
-                    "debtor_account_number": debtor_account_number,
                     "debtor_address": debtor_address,
                     "debtor_name": debtor_name,
-                    "debtor_routing_number": debtor_routing_number,
                     "unstructured_remittance_information": unstructured_remittance_information,
+                    "debtor_account_number": debtor_account_number,
+                    "debtor_external_account_id": debtor_external_account_id,
+                    "debtor_routing_number": debtor_routing_number,
                 },
                 wire_drawdown_request_create_params.WireDrawdownRequestCreateParams,
             ),
@@ -242,11 +247,12 @@ class AsyncWireDrawdownRequestsResource(AsyncAPIResource):
         amount: int,
         creditor_address: wire_drawdown_request_create_params.CreditorAddress,
         creditor_name: str,
-        debtor_account_number: str,
         debtor_address: wire_drawdown_request_create_params.DebtorAddress,
         debtor_name: str,
-        debtor_routing_number: str,
         unstructured_remittance_information: str,
+        debtor_account_number: str | NotGiven = NOT_GIVEN,
+        debtor_external_account_id: str | NotGiven = NOT_GIVEN,
+        debtor_routing_number: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -267,15 +273,18 @@ class AsyncWireDrawdownRequestsResource(AsyncAPIResource):
 
           creditor_name: The creditor's name.
 
-          debtor_account_number: The debtor's account number.
-
           debtor_address: The debtor's address.
 
           debtor_name: The debtor's name.
 
-          debtor_routing_number: The debtor's routing number.
-
           unstructured_remittance_information: Remittance information the debtor will see as part of the request.
+
+          debtor_account_number: The debtor's account number.
+
+          debtor_external_account_id: The ID of an External Account to initiate a transfer to. If this parameter is
+              provided, `debtor_account_number` and `debtor_routing_number` must be absent.
+
+          debtor_routing_number: The debtor's routing number.
 
           extra_headers: Send extra headers
 
@@ -295,11 +304,12 @@ class AsyncWireDrawdownRequestsResource(AsyncAPIResource):
                     "amount": amount,
                     "creditor_address": creditor_address,
                     "creditor_name": creditor_name,
-                    "debtor_account_number": debtor_account_number,
                     "debtor_address": debtor_address,
                     "debtor_name": debtor_name,
-                    "debtor_routing_number": debtor_routing_number,
                     "unstructured_remittance_information": unstructured_remittance_information,
+                    "debtor_account_number": debtor_account_number,
+                    "debtor_external_account_id": debtor_external_account_id,
+                    "debtor_routing_number": debtor_routing_number,
                 },
                 wire_drawdown_request_create_params.WireDrawdownRequestCreateParams,
             ),
