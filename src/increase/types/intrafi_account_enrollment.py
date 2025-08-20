@@ -22,6 +22,9 @@ class IntrafiAccountEnrollment(BaseModel):
     the enrollment was created.
     """
 
+    email_address: Optional[str] = None
+    """The contact email for the account owner, to be shared with IntraFi."""
+
     idempotency_key: Optional[str] = None
     """The idempotency key you chose for this object.
 

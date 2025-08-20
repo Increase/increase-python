@@ -80,7 +80,7 @@ class ACHPrenotificationsResource(SyncAPIResource):
         Create an ACH Prenotification
 
         Args:
-          account_id: The Increase identifier for the account that will send the transfer.
+          account_id: The Increase identifier for the account that will send the ACH Prenotification.
 
           account_number: The account number for the destination account.
 
@@ -89,11 +89,11 @@ class ACHPrenotificationsResource(SyncAPIResource):
 
           addendum: Additional information that will be sent to the recipient.
 
-          company_descriptive_date: The description of the date of the transfer.
+          company_descriptive_date: The description of the date of the ACH Prenotification.
 
-          company_discretionary_data: The data you choose to associate with the transfer.
+          company_discretionary_data: The data you choose to associate with the ACH Prenotification.
 
-          company_entry_description: The description of the transfer you wish to be shown to the recipient.
+          company_entry_description: The description you wish to be shown to the recipient.
 
           company_name: The name by which the recipient knows you.
 
@@ -102,13 +102,13 @@ class ACHPrenotificationsResource(SyncAPIResource):
               - `credit` - The Prenotification is for an anticipated credit.
               - `debit` - The Prenotification is for an anticipated debit.
 
-          effective_date: The transfer effective date in
+          effective_date: The ACH Prenotification effective date in
               [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
 
-          individual_id: Your identifier for the transfer recipient.
+          individual_id: Your identifier for the recipient.
 
-          individual_name: The name of the transfer recipient. This value is information and not verified
-              by the recipient's bank.
+          individual_name: The name of therecipient. This value is informational and not verified by the
+              recipient's bank.
 
           standard_entry_class_code: The Standard Entry Class (SEC) code to use for the ACH Prenotification.
 
@@ -306,7 +306,7 @@ class AsyncACHPrenotificationsResource(AsyncAPIResource):
         Create an ACH Prenotification
 
         Args:
-          account_id: The Increase identifier for the account that will send the transfer.
+          account_id: The Increase identifier for the account that will send the ACH Prenotification.
 
           account_number: The account number for the destination account.
 
@@ -315,11 +315,11 @@ class AsyncACHPrenotificationsResource(AsyncAPIResource):
 
           addendum: Additional information that will be sent to the recipient.
 
-          company_descriptive_date: The description of the date of the transfer.
+          company_descriptive_date: The description of the date of the ACH Prenotification.
 
-          company_discretionary_data: The data you choose to associate with the transfer.
+          company_discretionary_data: The data you choose to associate with the ACH Prenotification.
 
-          company_entry_description: The description of the transfer you wish to be shown to the recipient.
+          company_entry_description: The description you wish to be shown to the recipient.
 
           company_name: The name by which the recipient knows you.
 
@@ -328,13 +328,13 @@ class AsyncACHPrenotificationsResource(AsyncAPIResource):
               - `credit` - The Prenotification is for an anticipated credit.
               - `debit` - The Prenotification is for an anticipated debit.
 
-          effective_date: The transfer effective date in
+          effective_date: The ACH Prenotification effective date in
               [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
 
-          individual_id: Your identifier for the transfer recipient.
+          individual_id: Your identifier for the recipient.
 
-          individual_name: The name of the transfer recipient. This value is information and not verified
-              by the recipient's bank.
+          individual_name: The name of therecipient. This value is informational and not verified by the
+              recipient's bank.
 
           standard_entry_class_code: The Standard Entry Class (SEC) code to use for the ACH Prenotification.
 
