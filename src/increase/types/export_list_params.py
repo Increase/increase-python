@@ -42,6 +42,7 @@ _CategoryReservedKeywords = TypedDict(
         "in": List[
             Literal[
                 "account_statement_ofx",
+                "account_statement_bai2",
                 "transaction_csv",
                 "balance_csv",
                 "bookkeeping_account_balance_csv",
