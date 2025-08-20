@@ -63,6 +63,7 @@ __all__ = [
     "SourceRealTimePaymentsTransferAcknowledgement",
     "SourceSampleFunds",
     "SourceSwiftTransferIntention",
+    "SourceSwiftTransferReturn",
     "SourceWireTransferIntention",
 ]
 
@@ -2348,6 +2349,11 @@ class SourceSwiftTransferIntention(BaseModel):
     """The identifier of the Swift Transfer that led to this Transaction."""
 
 
+class SourceSwiftTransferReturn(BaseModel):
+    transfer_id: str
+    """The identifier of the Swift Transfer that led to this Transaction."""
+
+
 class SourceWireTransferIntention(BaseModel):
     account_number: str
     """The destination account number."""
@@ -2500,6 +2506,7 @@ class Source(BaseModel):
         "sample_funds",
         "wire_transfer_intention",
         "swift_transfer_intention",
+        "swift_transfer_return",
         "card_push_transfer_acceptance",
         "other",
     ]
@@ -2571,6 +2578,8 @@ class Source(BaseModel):
       `wire_transfer_intention` object.
     - `swift_transfer_intention` - Swift Transfer Intention: details will be under
       the `swift_transfer_intention` object.
+    - `swift_transfer_return` - Swift Transfer Return: details will be under the
+      `swift_transfer_return` object.
     - `card_push_transfer_acceptance` - Card Push Transfer Acceptance: details will
       be under the `card_push_transfer_acceptance` object.
     - `other` - The Transaction was made for an undocumented or deprecated reason.
@@ -2732,6 +2741,14 @@ class Source(BaseModel):
 
     This field will be present in the JSON response if and only if `category` is
     equal to `swift_transfer_intention`. A Swift Transfer initiated via Increase.
+    """
+
+    swift_transfer_return: Optional[SourceSwiftTransferReturn] = None
+    """A Swift Transfer Return object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `swift_transfer_return`. A Swift Transfer Return is created when a
+    Swift Transfer is returned by the receiving bank.
     """
 
     wire_transfer_intention: Optional[SourceWireTransferIntention] = None
