@@ -70,6 +70,7 @@ _CategoryReservedKeywords = TypedDict(
                 "sample_funds",
                 "wire_transfer_intention",
                 "swift_transfer_intention",
+                "swift_transfer_return",
                 "card_push_transfer_acceptance",
                 "other",
             ]
