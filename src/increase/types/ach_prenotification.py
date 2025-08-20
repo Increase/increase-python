@@ -322,6 +322,9 @@ class ACHPrenotification(BaseModel):
     id: str
     """The ACH Prenotification's identifier."""
 
+    account_id: Optional[str] = None
+    """The account that sent the ACH Prenotification."""
+
     account_number: str
     """The destination account number."""
 
@@ -366,6 +369,15 @@ class ACHPrenotification(BaseModel):
     [idempotency](https://increase.com/documentation/idempotency-keys).
     """
 
+    individual_id: Optional[str] = None
+    """Your identifier for the recipient."""
+
+    individual_name: Optional[str] = None
+    """The name of the recipient.
+
+    This value is informational and not verified by the recipient's bank.
+    """
+
     notifications_of_change: List[NotificationsOfChange]
     """
     If the receiving bank notifies that future transfers should use different
@@ -377,6 +389,22 @@ class ACHPrenotification(BaseModel):
 
     routing_number: str
     """The American Bankers' Association (ABA) Routing Transit Number (RTN)."""
+
+    standard_entry_class_code: Optional[
+        Literal[
+            "corporate_credit_or_debit",
+            "corporate_trade_exchange",
+            "prearranged_payments_and_deposit",
+            "internet_initiated",
+        ]
+    ] = None
+    """The Standard Entry Class (SEC) code to use for the ACH Prenotification.
+
+    - `corporate_credit_or_debit` - Corporate Credit and Debit (CCD).
+    - `corporate_trade_exchange` - Corporate Trade Exchange (CTX).
+    - `prearranged_payments_and_deposit` - Prearranged Payments and Deposits (PPD).
+    - `internet_initiated` - Internet Initiated (WEB).
+    """
 
     status: Literal["pending_submitting", "requires_attention", "returned", "submitted"]
     """The lifecycle status of the ACH Prenotification.

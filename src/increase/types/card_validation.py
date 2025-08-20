@@ -293,6 +293,9 @@ class CardValidation(BaseModel):
     account_id: str
     """The identifier of the Account from which to send the validation."""
 
+    card_token_id: str
+    """The ID of the Card Token that was used to validate the card."""
+
     cardholder_first_name: Optional[str] = None
     """The cardholder's first name."""
 
