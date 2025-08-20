@@ -10,7 +10,7 @@ import pytest
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
 from increase.types import Export
-from increase._utils import parse_datetime
+from increase._utils import parse_date, parse_datetime
 from increase.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -30,6 +30,10 @@ class TestExports:
     def test_method_create_with_all_params(self, client: Increase) -> None:
         export = client.exports.create(
             category="transaction_csv",
+            account_statement_bai2={
+                "account_id": "account_id",
+                "effective_date": parse_date("2019-12-27"),
+            },
             account_statement_ofx={
                 "account_id": "account_id",
                 "created_at": {
@@ -194,6 +198,10 @@ class TestAsyncExports:
     async def test_method_create_with_all_params(self, async_client: AsyncIncrease) -> None:
         export = await async_client.exports.create(
             category="transaction_csv",
+            account_statement_bai2={
+                "account_id": "account_id",
+                "effective_date": parse_date("2019-12-27"),
+            },
             account_statement_ofx={
                 "account_id": "account_id",
                 "created_at": {

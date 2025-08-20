@@ -3,13 +3,14 @@
 from __future__ import annotations
 
 from typing import List, Union
-from datetime import datetime
+from datetime import date, datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
 __all__ = [
     "ExportCreateParams",
+    "AccountStatementBai2",
     "AccountStatementOfx",
     "AccountStatementOfxCreatedAt",
     "BalanceCsv",
@@ -27,6 +28,7 @@ class ExportCreateParams(TypedDict, total=False):
     category: Required[
         Literal[
             "account_statement_ofx",
+            "account_statement_bai2",
             "transaction_csv",
             "balance_csv",
             "bookkeeping_account_balance_csv",
@@ -38,6 +40,8 @@ class ExportCreateParams(TypedDict, total=False):
 
     - `account_statement_ofx` - Export an Open Financial Exchange (OFX) file of
       transactions and balances for a given time range and Account.
+    - `account_statement_bai2` - Export a BAI2 file of transactions and balances for
+      a given date and optional Account.
     - `transaction_csv` - Export a CSV of all transactions for a given time range.
     - `balance_csv` - Export a CSV of account balances for the dates in a given
       range.
@@ -46,6 +50,12 @@ class ExportCreateParams(TypedDict, total=False):
     - `entity_csv` - Export a CSV of entities with a given status.
     - `vendor_csv` - Export a CSV of vendors added to the third-party risk
       management dashboard.
+    """
+
+    account_statement_bai2: AccountStatementBai2
+    """Options for the created export.
+
+    Required if `category` is equal to `account_statement_bai2`.
     """
 
     account_statement_ofx: AccountStatementOfx
@@ -82,6 +92,22 @@ class ExportCreateParams(TypedDict, total=False):
     """Options for the created export.
 
     Required if `category` is equal to `vendor_csv`.
+    """
+
+
+class AccountStatementBai2(TypedDict, total=False):
+    account_id: str
+    """The Account to create a BAI2 report for.
+
+    If not provided, all open accounts will be included.
+    """
+
+    effective_date: Annotated[Union[str, date], PropertyInfo(format="iso8601")]
+    """The date to create a BAI2 report for.
+
+    If not provided, the current date will be used. The timezone is UTC. If the
+    current date is used, the report will include intraday balances, otherwise it
+    will include end-of-day balances for the provided date.
     """
 
 

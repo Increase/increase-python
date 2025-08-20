@@ -49,12 +49,14 @@ class ExportsResource(SyncAPIResource):
         *,
         category: Literal[
             "account_statement_ofx",
+            "account_statement_bai2",
             "transaction_csv",
             "balance_csv",
             "bookkeeping_account_balance_csv",
             "entity_csv",
             "vendor_csv",
         ],
+        account_statement_bai2: export_create_params.AccountStatementBai2 | NotGiven = NOT_GIVEN,
         account_statement_ofx: export_create_params.AccountStatementOfx | NotGiven = NOT_GIVEN,
         balance_csv: export_create_params.BalanceCsv | NotGiven = NOT_GIVEN,
         bookkeeping_account_balance_csv: export_create_params.BookkeepingAccountBalanceCsv | NotGiven = NOT_GIVEN,
@@ -77,6 +79,8 @@ class ExportsResource(SyncAPIResource):
 
               - `account_statement_ofx` - Export an Open Financial Exchange (OFX) file of
                 transactions and balances for a given time range and Account.
+              - `account_statement_bai2` - Export a BAI2 file of transactions and balances for
+                a given date and optional Account.
               - `transaction_csv` - Export a CSV of all transactions for a given time range.
               - `balance_csv` - Export a CSV of account balances for the dates in a given
                 range.
@@ -85,6 +89,9 @@ class ExportsResource(SyncAPIResource):
               - `entity_csv` - Export a CSV of entities with a given status.
               - `vendor_csv` - Export a CSV of vendors added to the third-party risk
                 management dashboard.
+
+          account_statement_bai2: Options for the created export. Required if `category` is equal to
+              `account_statement_bai2`.
 
           account_statement_ofx: Options for the created export. Required if `category` is equal to
               `account_statement_ofx`.
@@ -117,6 +124,7 @@ class ExportsResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "category": category,
+                    "account_statement_bai2": account_statement_bai2,
                     "account_statement_ofx": account_statement_ofx,
                     "balance_csv": balance_csv,
                     "bookkeeping_account_balance_csv": bookkeeping_account_balance_csv,
@@ -258,12 +266,14 @@ class AsyncExportsResource(AsyncAPIResource):
         *,
         category: Literal[
             "account_statement_ofx",
+            "account_statement_bai2",
             "transaction_csv",
             "balance_csv",
             "bookkeeping_account_balance_csv",
             "entity_csv",
             "vendor_csv",
         ],
+        account_statement_bai2: export_create_params.AccountStatementBai2 | NotGiven = NOT_GIVEN,
         account_statement_ofx: export_create_params.AccountStatementOfx | NotGiven = NOT_GIVEN,
         balance_csv: export_create_params.BalanceCsv | NotGiven = NOT_GIVEN,
         bookkeeping_account_balance_csv: export_create_params.BookkeepingAccountBalanceCsv | NotGiven = NOT_GIVEN,
@@ -286,6 +296,8 @@ class AsyncExportsResource(AsyncAPIResource):
 
               - `account_statement_ofx` - Export an Open Financial Exchange (OFX) file of
                 transactions and balances for a given time range and Account.
+              - `account_statement_bai2` - Export a BAI2 file of transactions and balances for
+                a given date and optional Account.
               - `transaction_csv` - Export a CSV of all transactions for a given time range.
               - `balance_csv` - Export a CSV of account balances for the dates in a given
                 range.
@@ -294,6 +306,9 @@ class AsyncExportsResource(AsyncAPIResource):
               - `entity_csv` - Export a CSV of entities with a given status.
               - `vendor_csv` - Export a CSV of vendors added to the third-party risk
                 management dashboard.
+
+          account_statement_bai2: Options for the created export. Required if `category` is equal to
+              `account_statement_bai2`.
 
           account_statement_ofx: Options for the created export. Required if `category` is equal to
               `account_statement_ofx`.
@@ -326,6 +341,7 @@ class AsyncExportsResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "category": category,
+                    "account_statement_bai2": account_statement_bai2,
                     "account_statement_ofx": account_statement_ofx,
                     "balance_csv": balance_csv,
                     "bookkeeping_account_balance_csv": bookkeeping_account_balance_csv,
