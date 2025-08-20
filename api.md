@@ -35,7 +35,7 @@ Methods:
 Types:
 
 ```python
-from increase.types import Card, CardDetails
+from increase.types import Card, CardDetails, CardIframeURL
 ```
 
 Methods:
@@ -44,6 +44,7 @@ Methods:
 - <code title="get /cards/{card_id}">client.cards.<a href="./src/increase/resources/cards.py">retrieve</a>(card_id) -> <a href="./src/increase/types/card.py">Card</a></code>
 - <code title="patch /cards/{card_id}">client.cards.<a href="./src/increase/resources/cards.py">update</a>(card_id, \*\*<a href="src/increase/types/card_update_params.py">params</a>) -> <a href="./src/increase/types/card.py">Card</a></code>
 - <code title="get /cards">client.cards.<a href="./src/increase/resources/cards.py">list</a>(\*\*<a href="src/increase/types/card_list_params.py">params</a>) -> <a href="./src/increase/types/card.py">SyncPage[Card]</a></code>
+- <code title="post /cards/{card_id}/create_details_iframe">client.cards.<a href="./src/increase/resources/cards.py">create_details_iframe</a>(card_id, \*\*<a href="src/increase/types/card_create_details_iframe_params.py">params</a>) -> <a href="./src/increase/types/card_iframe_url.py">CardIframeURL</a></code>
 - <code title="get /cards/{card_id}/details">client.cards.<a href="./src/increase/resources/cards.py">details</a>(card_id) -> <a href="./src/increase/types/card_details.py">CardDetails</a></code>
 
 # CardPayments

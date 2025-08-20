@@ -6,7 +6,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..types import card_list_params, card_create_params, card_update_params
+from ..types import card_list_params, card_create_params, card_update_params, card_create_details_iframe_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
@@ -21,6 +21,7 @@ from ..pagination import SyncPage, AsyncPage
 from ..types.card import Card
 from .._base_client import AsyncPaginator, make_request_options
 from ..types.card_details import CardDetails
+from ..types.card_iframe_url import CardIframeURL
 
 __all__ = ["CardsResource", "AsyncCardsResource"]
 
@@ -284,6 +285,57 @@ class CardsResource(SyncAPIResource):
             model=Card,
         )
 
+    def create_details_iframe(
+        self,
+        card_id: str,
+        *,
+        physical_card_id: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> CardIframeURL:
+        """Create an iframe URL for a Card to display the card details.
+
+        More details about
+        styling and usage can be found in the
+        [documentation](/documentation/embedded-card-component).
+
+        Args:
+          card_id: The identifier of the Card to retrieve details for.
+
+          physical_card_id: The identifier of the Physical Card to retrieve details for.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not card_id:
+            raise ValueError(f"Expected a non-empty value for `card_id` but received {card_id!r}")
+        return self._post(
+            f"/cards/{card_id}/create_details_iframe",
+            body=maybe_transform(
+                {"physical_card_id": physical_card_id}, card_create_details_iframe_params.CardCreateDetailsIframeParams
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=CardIframeURL,
+        )
+
     def details(
         self,
         card_id: str,
@@ -296,7 +348,8 @@ class CardsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> CardDetails:
         """
-        Retrieve sensitive details for a Card
+        Sensitive details for a Card include the primary account number, expiry, card
+        verification code, and PIN.
 
         Args:
           card_id: The identifier of the Card to retrieve details for.
@@ -579,6 +632,57 @@ class AsyncCardsResource(AsyncAPIResource):
             model=Card,
         )
 
+    async def create_details_iframe(
+        self,
+        card_id: str,
+        *,
+        physical_card_id: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> CardIframeURL:
+        """Create an iframe URL for a Card to display the card details.
+
+        More details about
+        styling and usage can be found in the
+        [documentation](/documentation/embedded-card-component).
+
+        Args:
+          card_id: The identifier of the Card to retrieve details for.
+
+          physical_card_id: The identifier of the Physical Card to retrieve details for.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not card_id:
+            raise ValueError(f"Expected a non-empty value for `card_id` but received {card_id!r}")
+        return await self._post(
+            f"/cards/{card_id}/create_details_iframe",
+            body=await async_maybe_transform(
+                {"physical_card_id": physical_card_id}, card_create_details_iframe_params.CardCreateDetailsIframeParams
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=CardIframeURL,
+        )
+
     async def details(
         self,
         card_id: str,
@@ -591,7 +695,8 @@ class AsyncCardsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> CardDetails:
         """
-        Retrieve sensitive details for a Card
+        Sensitive details for a Card include the primary account number, expiry, card
+        verification code, and PIN.
 
         Args:
           card_id: The identifier of the Card to retrieve details for.
@@ -631,6 +736,9 @@ class CardsResourceWithRawResponse:
         self.list = to_raw_response_wrapper(
             cards.list,
         )
+        self.create_details_iframe = to_raw_response_wrapper(
+            cards.create_details_iframe,
+        )
         self.details = to_raw_response_wrapper(
             cards.details,
         )
@@ -651,6 +759,9 @@ class AsyncCardsResourceWithRawResponse:
         )
         self.list = async_to_raw_response_wrapper(
             cards.list,
+        )
+        self.create_details_iframe = async_to_raw_response_wrapper(
+            cards.create_details_iframe,
         )
         self.details = async_to_raw_response_wrapper(
             cards.details,
@@ -673,6 +784,9 @@ class CardsResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             cards.list,
         )
+        self.create_details_iframe = to_streamed_response_wrapper(
+            cards.create_details_iframe,
+        )
         self.details = to_streamed_response_wrapper(
             cards.details,
         )
@@ -693,6 +807,9 @@ class AsyncCardsResourceWithStreamingResponse:
         )
         self.list = async_to_streamed_response_wrapper(
             cards.list,
+        )
+        self.create_details_iframe = async_to_streamed_response_wrapper(
+            cards.create_details_iframe,
         )
         self.details = async_to_streamed_response_wrapper(
             cards.details,
