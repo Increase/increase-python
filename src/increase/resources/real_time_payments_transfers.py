@@ -253,7 +253,7 @@ class RealTimePaymentsTransfersResource(SyncAPIResource):
         idempotency_key: str | None = None,
     ) -> RealTimePaymentsTransfer:
         """
-        Approves an Real-Time Payments Transfer in a pending_approval state.
+        Approves a Real-Time Payments Transfer in a pending_approval state.
 
         Args:
           real_time_payments_transfer_id: The identifier of the Real-Time Payments Transfer to approve.
@@ -297,7 +297,7 @@ class RealTimePaymentsTransfersResource(SyncAPIResource):
         idempotency_key: str | None = None,
     ) -> RealTimePaymentsTransfer:
         """
-        Cancels an Real-Time Payments Transfer in a pending_approval state.
+        Cancels a Real-Time Payments Transfer in a pending_approval state.
 
         Args:
           real_time_payments_transfer_id: The identifier of the pending Real-Time Payments Transfer to cancel.
@@ -560,7 +560,7 @@ class AsyncRealTimePaymentsTransfersResource(AsyncAPIResource):
         idempotency_key: str | None = None,
     ) -> RealTimePaymentsTransfer:
         """
-        Approves an Real-Time Payments Transfer in a pending_approval state.
+        Approves a Real-Time Payments Transfer in a pending_approval state.
 
         Args:
           real_time_payments_transfer_id: The identifier of the Real-Time Payments Transfer to approve.
@@ -604,7 +604,7 @@ class AsyncRealTimePaymentsTransfersResource(AsyncAPIResource):
         idempotency_key: str | None = None,
     ) -> RealTimePaymentsTransfer:
         """
-        Cancels an Real-Time Payments Transfer in a pending_approval state.
+        Cancels a Real-Time Payments Transfer in a pending_approval state.
 
         Args:
           real_time_payments_transfer_id: The identifier of the pending Real-Time Payments Transfer to cancel.
