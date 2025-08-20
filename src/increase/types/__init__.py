@@ -26,6 +26,7 @@ from .wire_transfer import WireTransfer as WireTransfer
 from .account_number import AccountNumber as AccountNumber
 from .balance_lookup import BalanceLookup as BalanceLookup
 from .check_transfer import CheckTransfer as CheckTransfer
+from .card_iframe_url import CardIframeURL as CardIframeURL
 from .card_validation import CardValidation as CardValidation
 from .intrafi_balance import IntrafiBalance as IntrafiBalance
 from .account_transfer import AccountTransfer as AccountTransfer
@@ -134,6 +135,7 @@ from .ach_prenotification_create_params import ACHPrenotificationCreateParams as
 from .bookkeeping_account_create_params import BookkeepingAccountCreateParams as BookkeepingAccountCreateParams
 from .bookkeeping_account_update_params import BookkeepingAccountUpdateParams as BookkeepingAccountUpdateParams
 from .bookkeeping_entry_set_list_params import BookkeepingEntrySetListParams as BookkeepingEntrySetListParams
+from .card_create_details_iframe_params import CardCreateDetailsIframeParams as CardCreateDetailsIframeParams
 from .digital_card_profile_clone_params import DigitalCardProfileCloneParams as DigitalCardProfileCloneParams
 from .inbound_check_deposit_list_params import InboundCheckDepositListParams as InboundCheckDepositListParams
 from .inbound_wire_transfer_list_params import InboundWireTransferListParams as InboundWireTransferListParams
