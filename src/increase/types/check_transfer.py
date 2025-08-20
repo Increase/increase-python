@@ -316,6 +316,15 @@ class CheckTransfer(BaseModel):
     identifier of the Inbound Check Deposit object with details of the deposit.
     """
 
+    balance_check: Optional[Literal["full", "none"]] = None
+    """How the account's available balance should be checked.
+
+    - `full` - The available balance of the account must be at least the amount of
+      the check, and a Pending Transaction will be created for the full amount.
+    - `none` - No balance check will performed; a zero-dollar Pending Transaction
+      will be created.
+    """
+
     cancellation: Optional[Cancellation] = None
     """
     If your account requires approvals for transfers and the transfer was not

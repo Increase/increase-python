@@ -13,7 +13,7 @@ __all__ = ["ACHPrenotificationCreateParams"]
 
 class ACHPrenotificationCreateParams(TypedDict, total=False):
     account_id: Required[str]
-    """The Increase identifier for the account that will send the transfer."""
+    """The Increase identifier for the account that will send the ACH Prenotification."""
 
     account_number: Required[str]
     """The account number for the destination account."""
@@ -28,13 +28,13 @@ class ACHPrenotificationCreateParams(TypedDict, total=False):
     """Additional information that will be sent to the recipient."""
 
     company_descriptive_date: str
-    """The description of the date of the transfer."""
+    """The description of the date of the ACH Prenotification."""
 
     company_discretionary_data: str
-    """The data you choose to associate with the transfer."""
+    """The data you choose to associate with the ACH Prenotification."""
 
     company_entry_description: str
-    """The description of the transfer you wish to be shown to the recipient."""
+    """The description you wish to be shown to the recipient."""
 
     company_name: str
     """The name by which the recipient knows you."""
@@ -48,17 +48,17 @@ class ACHPrenotificationCreateParams(TypedDict, total=False):
 
     effective_date: Annotated[Union[str, date], PropertyInfo(format="iso8601")]
     """
-    The transfer effective date in
+    The ACH Prenotification effective date in
     [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
     """
 
     individual_id: str
-    """Your identifier for the transfer recipient."""
+    """Your identifier for the recipient."""
 
     individual_name: str
-    """The name of the transfer recipient.
+    """The name of therecipient.
 
-    This value is information and not verified by the recipient's bank.
+    This value is informational and not verified by the recipient's bank.
     """
 
     standard_entry_class_code: Literal[
