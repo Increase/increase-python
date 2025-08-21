@@ -2166,23 +2166,35 @@ class SourceInboundWireTransfer(BaseModel):
     amount: int
     """The amount in USD cents."""
 
-    beneficiary_address_line1: Optional[str] = None
+    creditor_address_line1: Optional[str] = None
     """A free-form address field set by the sender."""
 
-    beneficiary_address_line2: Optional[str] = None
+    creditor_address_line2: Optional[str] = None
     """A free-form address field set by the sender."""
 
-    beneficiary_address_line3: Optional[str] = None
+    creditor_address_line3: Optional[str] = None
     """A free-form address field set by the sender."""
 
-    beneficiary_name: Optional[str] = None
+    creditor_name: Optional[str] = None
     """A name set by the sender."""
 
-    beneficiary_reference: Optional[str] = None
-    """A free-form reference string set by the sender, to help identify the transfer."""
+    debtor_address_line1: Optional[str] = None
+    """A free-form address field set by the sender."""
+
+    debtor_address_line2: Optional[str] = None
+    """A free-form address field set by the sender."""
+
+    debtor_address_line3: Optional[str] = None
+    """A free-form address field set by the sender."""
+
+    debtor_name: Optional[str] = None
+    """A name set by the sender."""
 
     description: str
     """An Increase-constructed description of the transfer."""
+
+    end_to_end_identification: Optional[str] = None
+    """A free-form reference string set by the sender, to help identify the transfer."""
 
     input_message_accountability_data: Optional[str] = None
     """
@@ -2191,41 +2203,27 @@ class SourceInboundWireTransfer(BaseModel):
     service and is helpful when debugging wires with the originating bank.
     """
 
-    originator_address_line1: Optional[str] = None
-    """The address of the wire originator, set by the sending bank."""
-
-    originator_address_line2: Optional[str] = None
-    """The address of the wire originator, set by the sending bank."""
-
-    originator_address_line3: Optional[str] = None
-    """The address of the wire originator, set by the sending bank."""
-
-    originator_name: Optional[str] = None
-    """The originator of the wire, set by the sending bank."""
-
-    originator_routing_number: Optional[str] = None
+    instructing_agent_routing_number: Optional[str] = None
     """
-    The American Banking Association (ABA) routing number of the bank originating
-    the transfer.
+    The American Banking Association (ABA) routing number of the bank that sent the
+    wire.
     """
 
-    originator_to_beneficiary_information: Optional[str] = None
-    """An Increase-created concatenation of the Originator-to-Beneficiary lines."""
-
-    originator_to_beneficiary_information_line1: Optional[str] = None
-    """A free-form message set by the wire originator."""
-
-    originator_to_beneficiary_information_line2: Optional[str] = None
-    """A free-form message set by the wire originator."""
-
-    originator_to_beneficiary_information_line3: Optional[str] = None
-    """A free-form message set by the wire originator."""
-
-    originator_to_beneficiary_information_line4: Optional[str] = None
-    """A free-form message set by the wire originator."""
+    instruction_identification: Optional[str] = None
+    """The sending bank's identifier for the wire transfer."""
 
     transfer_id: str
     """The ID of the Inbound Wire Transfer object that resulted in this Transaction."""
+
+    unique_end_to_end_transaction_reference: Optional[str] = None
+    """
+    The Unique End-to-end Transaction Reference
+    ([UETR](https://www.swift.com/payments/what-unique-end-end-transaction-reference-uetr))
+    of the transfer.
+    """
+
+    unstructured_remittance_information: Optional[str] = None
+    """A free-form message set by the sender."""
 
 
 class SourceInboundWireTransferReversal(BaseModel):
