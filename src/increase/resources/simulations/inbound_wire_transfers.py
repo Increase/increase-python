@@ -46,21 +46,19 @@ class InboundWireTransfersResource(SyncAPIResource):
         *,
         account_number_id: str,
         amount: int,
-        beneficiary_address_line1: str | NotGiven = NOT_GIVEN,
-        beneficiary_address_line2: str | NotGiven = NOT_GIVEN,
-        beneficiary_address_line3: str | NotGiven = NOT_GIVEN,
-        beneficiary_name: str | NotGiven = NOT_GIVEN,
-        beneficiary_reference: str | NotGiven = NOT_GIVEN,
-        originator_address_line1: str | NotGiven = NOT_GIVEN,
-        originator_address_line2: str | NotGiven = NOT_GIVEN,
-        originator_address_line3: str | NotGiven = NOT_GIVEN,
-        originator_name: str | NotGiven = NOT_GIVEN,
-        originator_routing_number: str | NotGiven = NOT_GIVEN,
-        originator_to_beneficiary_information_line1: str | NotGiven = NOT_GIVEN,
-        originator_to_beneficiary_information_line2: str | NotGiven = NOT_GIVEN,
-        originator_to_beneficiary_information_line3: str | NotGiven = NOT_GIVEN,
-        originator_to_beneficiary_information_line4: str | NotGiven = NOT_GIVEN,
-        sender_reference: str | NotGiven = NOT_GIVEN,
+        creditor_address_line1: str | NotGiven = NOT_GIVEN,
+        creditor_address_line2: str | NotGiven = NOT_GIVEN,
+        creditor_address_line3: str | NotGiven = NOT_GIVEN,
+        creditor_name: str | NotGiven = NOT_GIVEN,
+        debtor_address_line1: str | NotGiven = NOT_GIVEN,
+        debtor_address_line2: str | NotGiven = NOT_GIVEN,
+        debtor_address_line3: str | NotGiven = NOT_GIVEN,
+        debtor_name: str | NotGiven = NOT_GIVEN,
+        end_to_end_identification: str | NotGiven = NOT_GIVEN,
+        instructing_agent_routing_number: str | NotGiven = NOT_GIVEN,
+        instruction_identification: str | NotGiven = NOT_GIVEN,
+        unique_end_to_end_transaction_reference: str | NotGiven = NOT_GIVEN,
+        unstructured_remittance_information: str | NotGiven = NOT_GIVEN,
         wire_drawdown_request_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -78,50 +76,44 @@ class InboundWireTransfersResource(SyncAPIResource):
 
           amount: The transfer amount in cents. Must be positive.
 
-          beneficiary_address_line1: The sending bank will set beneficiary_address_line1 in production. You can
-              simulate any value here.
-
-          beneficiary_address_line2: The sending bank will set beneficiary_address_line2 in production. You can
-              simulate any value here.
-
-          beneficiary_address_line3: The sending bank will set beneficiary_address_line3 in production. You can
-              simulate any value here.
-
-          beneficiary_name: The sending bank will set beneficiary_name in production. You can simulate any
-              value here.
-
-          beneficiary_reference: The sending bank will set beneficiary_reference in production. You can simulate
+          creditor_address_line1: The sending bank will set creditor_address_line1 in production. You can simulate
               any value here.
 
-          originator_address_line1: The sending bank will set originator_address_line1 in production. You can
-              simulate any value here.
+          creditor_address_line2: The sending bank will set creditor_address_line2 in production. You can simulate
+              any value here.
 
-          originator_address_line2: The sending bank will set originator_address_line2 in production. You can
-              simulate any value here.
+          creditor_address_line3: The sending bank will set creditor_address_line3 in production. You can simulate
+              any value here.
 
-          originator_address_line3: The sending bank will set originator_address_line3 in production. You can
-              simulate any value here.
-
-          originator_name: The sending bank will set originator_name in production. You can simulate any
+          creditor_name: The sending bank will set creditor_name in production. You can simulate any
               value here.
 
-          originator_routing_number: The sending bank will set originator_routing_number in production. You can
+          debtor_address_line1: The sending bank will set debtor_address_line1 in production. You can simulate
+              any value here.
+
+          debtor_address_line2: The sending bank will set debtor_address_line2 in production. You can simulate
+              any value here.
+
+          debtor_address_line3: The sending bank will set debtor_address_line3 in production. You can simulate
+              any value here.
+
+          debtor_name: The sending bank will set debtor_name in production. You can simulate any value
+              here.
+
+          end_to_end_identification: The sending bank will set end_to_end_identification in production. You can
               simulate any value here.
 
-          originator_to_beneficiary_information_line1: The sending bank will set originator_to_beneficiary_information_line1 in
-              production. You can simulate any value here.
+          instructing_agent_routing_number: The sending bank will set instructing_agent_routing_number in production. You
+              can simulate any value here.
 
-          originator_to_beneficiary_information_line2: The sending bank will set originator_to_beneficiary_information_line2 in
-              production. You can simulate any value here.
+          instruction_identification: The sending bank will set instruction_identification in production. You can
+              simulate any value here.
 
-          originator_to_beneficiary_information_line3: The sending bank will set originator_to_beneficiary_information_line3 in
-              production. You can simulate any value here.
+          unique_end_to_end_transaction_reference: The sending bank will set unique_end_to_end_transaction_reference in production.
+              You can simulate any value here.
 
-          originator_to_beneficiary_information_line4: The sending bank will set originator_to_beneficiary_information_line4 in
-              production. You can simulate any value here.
-
-          sender_reference: The sending bank will set sender_reference in production. You can simulate any
-              value here.
+          unstructured_remittance_information: The sending bank will set unstructured_remittance_information in production. You
+              can simulate any value here.
 
           wire_drawdown_request_id: The identifier of a Wire Drawdown Request the inbound Wire Transfer is
               fulfilling.
@@ -142,21 +134,19 @@ class InboundWireTransfersResource(SyncAPIResource):
                 {
                     "account_number_id": account_number_id,
                     "amount": amount,
-                    "beneficiary_address_line1": beneficiary_address_line1,
-                    "beneficiary_address_line2": beneficiary_address_line2,
-                    "beneficiary_address_line3": beneficiary_address_line3,
-                    "beneficiary_name": beneficiary_name,
-                    "beneficiary_reference": beneficiary_reference,
-                    "originator_address_line1": originator_address_line1,
-                    "originator_address_line2": originator_address_line2,
-                    "originator_address_line3": originator_address_line3,
-                    "originator_name": originator_name,
-                    "originator_routing_number": originator_routing_number,
-                    "originator_to_beneficiary_information_line1": originator_to_beneficiary_information_line1,
-                    "originator_to_beneficiary_information_line2": originator_to_beneficiary_information_line2,
-                    "originator_to_beneficiary_information_line3": originator_to_beneficiary_information_line3,
-                    "originator_to_beneficiary_information_line4": originator_to_beneficiary_information_line4,
-                    "sender_reference": sender_reference,
+                    "creditor_address_line1": creditor_address_line1,
+                    "creditor_address_line2": creditor_address_line2,
+                    "creditor_address_line3": creditor_address_line3,
+                    "creditor_name": creditor_name,
+                    "debtor_address_line1": debtor_address_line1,
+                    "debtor_address_line2": debtor_address_line2,
+                    "debtor_address_line3": debtor_address_line3,
+                    "debtor_name": debtor_name,
+                    "end_to_end_identification": end_to_end_identification,
+                    "instructing_agent_routing_number": instructing_agent_routing_number,
+                    "instruction_identification": instruction_identification,
+                    "unique_end_to_end_transaction_reference": unique_end_to_end_transaction_reference,
+                    "unstructured_remittance_information": unstructured_remittance_information,
                     "wire_drawdown_request_id": wire_drawdown_request_id,
                 },
                 inbound_wire_transfer_create_params.InboundWireTransferCreateParams,
@@ -197,21 +187,19 @@ class AsyncInboundWireTransfersResource(AsyncAPIResource):
         *,
         account_number_id: str,
         amount: int,
-        beneficiary_address_line1: str | NotGiven = NOT_GIVEN,
-        beneficiary_address_line2: str | NotGiven = NOT_GIVEN,
-        beneficiary_address_line3: str | NotGiven = NOT_GIVEN,
-        beneficiary_name: str | NotGiven = NOT_GIVEN,
-        beneficiary_reference: str | NotGiven = NOT_GIVEN,
-        originator_address_line1: str | NotGiven = NOT_GIVEN,
-        originator_address_line2: str | NotGiven = NOT_GIVEN,
-        originator_address_line3: str | NotGiven = NOT_GIVEN,
-        originator_name: str | NotGiven = NOT_GIVEN,
-        originator_routing_number: str | NotGiven = NOT_GIVEN,
-        originator_to_beneficiary_information_line1: str | NotGiven = NOT_GIVEN,
-        originator_to_beneficiary_information_line2: str | NotGiven = NOT_GIVEN,
-        originator_to_beneficiary_information_line3: str | NotGiven = NOT_GIVEN,
-        originator_to_beneficiary_information_line4: str | NotGiven = NOT_GIVEN,
-        sender_reference: str | NotGiven = NOT_GIVEN,
+        creditor_address_line1: str | NotGiven = NOT_GIVEN,
+        creditor_address_line2: str | NotGiven = NOT_GIVEN,
+        creditor_address_line3: str | NotGiven = NOT_GIVEN,
+        creditor_name: str | NotGiven = NOT_GIVEN,
+        debtor_address_line1: str | NotGiven = NOT_GIVEN,
+        debtor_address_line2: str | NotGiven = NOT_GIVEN,
+        debtor_address_line3: str | NotGiven = NOT_GIVEN,
+        debtor_name: str | NotGiven = NOT_GIVEN,
+        end_to_end_identification: str | NotGiven = NOT_GIVEN,
+        instructing_agent_routing_number: str | NotGiven = NOT_GIVEN,
+        instruction_identification: str | NotGiven = NOT_GIVEN,
+        unique_end_to_end_transaction_reference: str | NotGiven = NOT_GIVEN,
+        unstructured_remittance_information: str | NotGiven = NOT_GIVEN,
         wire_drawdown_request_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -229,50 +217,44 @@ class AsyncInboundWireTransfersResource(AsyncAPIResource):
 
           amount: The transfer amount in cents. Must be positive.
 
-          beneficiary_address_line1: The sending bank will set beneficiary_address_line1 in production. You can
-              simulate any value here.
-
-          beneficiary_address_line2: The sending bank will set beneficiary_address_line2 in production. You can
-              simulate any value here.
-
-          beneficiary_address_line3: The sending bank will set beneficiary_address_line3 in production. You can
-              simulate any value here.
-
-          beneficiary_name: The sending bank will set beneficiary_name in production. You can simulate any
-              value here.
-
-          beneficiary_reference: The sending bank will set beneficiary_reference in production. You can simulate
+          creditor_address_line1: The sending bank will set creditor_address_line1 in production. You can simulate
               any value here.
 
-          originator_address_line1: The sending bank will set originator_address_line1 in production. You can
-              simulate any value here.
+          creditor_address_line2: The sending bank will set creditor_address_line2 in production. You can simulate
+              any value here.
 
-          originator_address_line2: The sending bank will set originator_address_line2 in production. You can
-              simulate any value here.
+          creditor_address_line3: The sending bank will set creditor_address_line3 in production. You can simulate
+              any value here.
 
-          originator_address_line3: The sending bank will set originator_address_line3 in production. You can
-              simulate any value here.
-
-          originator_name: The sending bank will set originator_name in production. You can simulate any
+          creditor_name: The sending bank will set creditor_name in production. You can simulate any
               value here.
 
-          originator_routing_number: The sending bank will set originator_routing_number in production. You can
+          debtor_address_line1: The sending bank will set debtor_address_line1 in production. You can simulate
+              any value here.
+
+          debtor_address_line2: The sending bank will set debtor_address_line2 in production. You can simulate
+              any value here.
+
+          debtor_address_line3: The sending bank will set debtor_address_line3 in production. You can simulate
+              any value here.
+
+          debtor_name: The sending bank will set debtor_name in production. You can simulate any value
+              here.
+
+          end_to_end_identification: The sending bank will set end_to_end_identification in production. You can
               simulate any value here.
 
-          originator_to_beneficiary_information_line1: The sending bank will set originator_to_beneficiary_information_line1 in
-              production. You can simulate any value here.
+          instructing_agent_routing_number: The sending bank will set instructing_agent_routing_number in production. You
+              can simulate any value here.
 
-          originator_to_beneficiary_information_line2: The sending bank will set originator_to_beneficiary_information_line2 in
-              production. You can simulate any value here.
+          instruction_identification: The sending bank will set instruction_identification in production. You can
+              simulate any value here.
 
-          originator_to_beneficiary_information_line3: The sending bank will set originator_to_beneficiary_information_line3 in
-              production. You can simulate any value here.
+          unique_end_to_end_transaction_reference: The sending bank will set unique_end_to_end_transaction_reference in production.
+              You can simulate any value here.
 
-          originator_to_beneficiary_information_line4: The sending bank will set originator_to_beneficiary_information_line4 in
-              production. You can simulate any value here.
-
-          sender_reference: The sending bank will set sender_reference in production. You can simulate any
-              value here.
+          unstructured_remittance_information: The sending bank will set unstructured_remittance_information in production. You
+              can simulate any value here.
 
           wire_drawdown_request_id: The identifier of a Wire Drawdown Request the inbound Wire Transfer is
               fulfilling.
@@ -293,21 +275,19 @@ class AsyncInboundWireTransfersResource(AsyncAPIResource):
                 {
                     "account_number_id": account_number_id,
                     "amount": amount,
-                    "beneficiary_address_line1": beneficiary_address_line1,
-                    "beneficiary_address_line2": beneficiary_address_line2,
-                    "beneficiary_address_line3": beneficiary_address_line3,
-                    "beneficiary_name": beneficiary_name,
-                    "beneficiary_reference": beneficiary_reference,
-                    "originator_address_line1": originator_address_line1,
-                    "originator_address_line2": originator_address_line2,
-                    "originator_address_line3": originator_address_line3,
-                    "originator_name": originator_name,
-                    "originator_routing_number": originator_routing_number,
-                    "originator_to_beneficiary_information_line1": originator_to_beneficiary_information_line1,
-                    "originator_to_beneficiary_information_line2": originator_to_beneficiary_information_line2,
-                    "originator_to_beneficiary_information_line3": originator_to_beneficiary_information_line3,
-                    "originator_to_beneficiary_information_line4": originator_to_beneficiary_information_line4,
-                    "sender_reference": sender_reference,
+                    "creditor_address_line1": creditor_address_line1,
+                    "creditor_address_line2": creditor_address_line2,
+                    "creditor_address_line3": creditor_address_line3,
+                    "creditor_name": creditor_name,
+                    "debtor_address_line1": debtor_address_line1,
+                    "debtor_address_line2": debtor_address_line2,
+                    "debtor_address_line3": debtor_address_line3,
+                    "debtor_name": debtor_name,
+                    "end_to_end_identification": end_to_end_identification,
+                    "instructing_agent_routing_number": instructing_agent_routing_number,
+                    "instruction_identification": instruction_identification,
+                    "unique_end_to_end_transaction_reference": unique_end_to_end_transaction_reference,
+                    "unstructured_remittance_information": unstructured_remittance_information,
                     "wire_drawdown_request_id": wire_drawdown_request_id,
                 },
                 inbound_wire_transfer_create_params.InboundWireTransferCreateParams,
