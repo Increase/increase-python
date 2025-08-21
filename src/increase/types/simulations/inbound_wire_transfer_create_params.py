@@ -14,92 +14,80 @@ class InboundWireTransferCreateParams(TypedDict, total=False):
     amount: Required[int]
     """The transfer amount in cents. Must be positive."""
 
-    beneficiary_address_line1: str
-    """The sending bank will set beneficiary_address_line1 in production.
+    creditor_address_line1: str
+    """The sending bank will set creditor_address_line1 in production.
 
     You can simulate any value here.
     """
 
-    beneficiary_address_line2: str
-    """The sending bank will set beneficiary_address_line2 in production.
+    creditor_address_line2: str
+    """The sending bank will set creditor_address_line2 in production.
 
     You can simulate any value here.
     """
 
-    beneficiary_address_line3: str
-    """The sending bank will set beneficiary_address_line3 in production.
+    creditor_address_line3: str
+    """The sending bank will set creditor_address_line3 in production.
 
     You can simulate any value here.
     """
 
-    beneficiary_name: str
-    """The sending bank will set beneficiary_name in production.
+    creditor_name: str
+    """The sending bank will set creditor_name in production.
 
     You can simulate any value here.
     """
 
-    beneficiary_reference: str
-    """The sending bank will set beneficiary_reference in production.
+    debtor_address_line1: str
+    """The sending bank will set debtor_address_line1 in production.
 
     You can simulate any value here.
     """
 
-    originator_address_line1: str
-    """The sending bank will set originator_address_line1 in production.
+    debtor_address_line2: str
+    """The sending bank will set debtor_address_line2 in production.
 
     You can simulate any value here.
     """
 
-    originator_address_line2: str
-    """The sending bank will set originator_address_line2 in production.
+    debtor_address_line3: str
+    """The sending bank will set debtor_address_line3 in production.
 
     You can simulate any value here.
     """
 
-    originator_address_line3: str
-    """The sending bank will set originator_address_line3 in production.
+    debtor_name: str
+    """The sending bank will set debtor_name in production.
 
     You can simulate any value here.
     """
 
-    originator_name: str
-    """The sending bank will set originator_name in production.
+    end_to_end_identification: str
+    """The sending bank will set end_to_end_identification in production.
 
     You can simulate any value here.
     """
 
-    originator_routing_number: str
-    """The sending bank will set originator_routing_number in production.
+    instructing_agent_routing_number: str
+    """The sending bank will set instructing_agent_routing_number in production.
 
     You can simulate any value here.
     """
 
-    originator_to_beneficiary_information_line1: str
-    """
-    The sending bank will set originator_to_beneficiary_information_line1 in
-    production. You can simulate any value here.
+    instruction_identification: str
+    """The sending bank will set instruction_identification in production.
+
+    You can simulate any value here.
     """
 
-    originator_to_beneficiary_information_line2: str
-    """
-    The sending bank will set originator_to_beneficiary_information_line2 in
-    production. You can simulate any value here.
+    unique_end_to_end_transaction_reference: str
+    """The sending bank will set unique_end_to_end_transaction_reference in production.
+
+    You can simulate any value here.
     """
 
-    originator_to_beneficiary_information_line3: str
-    """
-    The sending bank will set originator_to_beneficiary_information_line3 in
-    production. You can simulate any value here.
-    """
-
-    originator_to_beneficiary_information_line4: str
-    """
-    The sending bank will set originator_to_beneficiary_information_line4 in
-    production. You can simulate any value here.
-    """
-
-    sender_reference: str
-    """The sending bank will set sender_reference in production.
+    unstructured_remittance_information: str
+    """The sending bank will set unstructured_remittance_information in production.
 
     You can simulate any value here.
     """
