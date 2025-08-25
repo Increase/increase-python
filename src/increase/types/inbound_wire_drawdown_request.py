@@ -16,29 +16,29 @@ class InboundWireDrawdownRequest(BaseModel):
     amount: int
     """The amount being requested in cents."""
 
-    beneficiary_account_number: str
-    """The drawdown request's beneficiary's account number."""
-
-    beneficiary_address_line1: Optional[str] = None
-    """Line 1 of the drawdown request's beneficiary's address."""
-
-    beneficiary_address_line2: Optional[str] = None
-    """Line 2 of the drawdown request's beneficiary's address."""
-
-    beneficiary_address_line3: Optional[str] = None
-    """Line 3 of the drawdown request's beneficiary's address."""
-
-    beneficiary_name: Optional[str] = None
-    """The drawdown request's beneficiary's name."""
-
-    beneficiary_routing_number: str
-    """The drawdown request's beneficiary's routing number."""
-
     created_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the inbound wire drawdown requested was created.
     """
+
+    creditor_account_number: str
+    """The creditor's account number."""
+
+    creditor_address_line1: Optional[str] = None
+    """A free-form address field set by the sender."""
+
+    creditor_address_line2: Optional[str] = None
+    """A free-form address field set by the sender."""
+
+    creditor_address_line3: Optional[str] = None
+    """A free-form address field set by the sender."""
+
+    creditor_name: Optional[str] = None
+    """A name set by the sender."""
+
+    creditor_routing_number: str
+    """The creditor's routing number."""
 
     currency: str
     """
@@ -46,50 +46,33 @@ class InboundWireDrawdownRequest(BaseModel):
     requested. Will always be "USD".
     """
 
-    message_to_recipient: Optional[str] = None
-    """A message from the drawdown request's originator."""
+    debtor_address_line1: Optional[str] = None
+    """A free-form address field set by the sender."""
 
-    originator_account_number: Optional[str] = None
-    """The drawdown request's originator's account number."""
+    debtor_address_line2: Optional[str] = None
+    """A free-form address field set by the sender."""
 
-    originator_address_line1: Optional[str] = None
-    """Line 1 of the drawdown request's originator's address."""
+    debtor_address_line3: Optional[str] = None
+    """A free-form address field set by the sender."""
 
-    originator_address_line2: Optional[str] = None
-    """Line 2 of the drawdown request's originator's address."""
+    debtor_name: Optional[str] = None
+    """A name set by the sender."""
 
-    originator_address_line3: Optional[str] = None
-    """Line 3 of the drawdown request's originator's address."""
-
-    originator_name: Optional[str] = None
-    """The drawdown request's originator's name."""
-
-    originator_routing_number: str
-    """The drawdown request's originator's routing number."""
-
-    originator_to_beneficiary_information_line1: Optional[str] = None
+    end_to_end_identification: Optional[str] = None
     """
-    Line 1 of the information conveyed from the originator of the message to the
-    beneficiary.
+    A free-form reference string set by the sender, to help identify the drawdown
+    request.
     """
 
-    originator_to_beneficiary_information_line2: Optional[str] = None
+    input_message_accountability_data: Optional[str] = None
     """
-    Line 2 of the information conveyed from the originator of the message to the
-    beneficiary.
-    """
-
-    originator_to_beneficiary_information_line3: Optional[str] = None
-    """
-    Line 3 of the information conveyed from the originator of the message to the
-    beneficiary.
+    A unique identifier available to the originating and receiving banks, commonly
+    abbreviated as IMAD. It is created when the wire is submitted to the Fedwire
+    service and is helpful when debugging wires with the originating bank.
     """
 
-    originator_to_beneficiary_information_line4: Optional[str] = None
-    """
-    Line 4 of the information conveyed from the originator of the message to the
-    beneficiary.
-    """
+    instruction_identification: Optional[str] = None
+    """The sending bank's identifier for the drawdown request."""
 
     recipient_account_number_id: str
     """
@@ -102,3 +85,13 @@ class InboundWireDrawdownRequest(BaseModel):
 
     For this resource it will always be `inbound_wire_drawdown_request`.
     """
+
+    unique_end_to_end_transaction_reference: Optional[str] = None
+    """
+    The Unique End-to-end Transaction Reference
+    ([UETR](https://www.swift.com/payments/what-unique-end-end-transaction-reference-uetr))
+    of the drawdown request.
+    """
+
+    unstructured_remittance_information: Optional[str] = None
+    """A free-form message set by the sender."""

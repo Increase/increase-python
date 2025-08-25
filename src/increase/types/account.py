@@ -13,6 +13,13 @@ class Account(BaseModel):
     id: str
     """The Account identifier."""
 
+    account_revenue_rate: Optional[str] = None
+    """
+    The account revenue rate currently being earned on the account, as a string
+    containing a decimal number. For example, a 1% account revenue rate would be
+    represented as "0.01".
+    """
+
     bank: Literal["core_bank", "first_internet_bank", "grasshopper_bank"]
     """The bank the Account is with.
 
@@ -77,7 +84,7 @@ class Account(BaseModel):
 
     interest_rate: str
     """
-    The Interest Rate currently being earned on the account, as a string containing
+    The interest rate currently being earned on the account, as a string containing
     a decimal number. For example, a 1% interest rate would be represented as
     "0.01".
     """

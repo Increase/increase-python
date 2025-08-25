@@ -11,11 +11,11 @@ class InboundWireDrawdownRequestCreateParams(TypedDict, total=False):
     amount: Required[int]
     """The amount being requested in cents."""
 
-    beneficiary_account_number: Required[str]
-    """The drawdown request's beneficiary's account number."""
+    creditor_account_number: Required[str]
+    """The creditor's account number."""
 
-    beneficiary_routing_number: Required[str]
-    """The drawdown request's beneficiary's routing number."""
+    creditor_routing_number: Required[str]
+    """The creditor's routing number."""
 
     currency: Required[str]
     """
@@ -23,65 +23,69 @@ class InboundWireDrawdownRequestCreateParams(TypedDict, total=False):
     requested. Will always be "USD".
     """
 
-    message_to_recipient: Required[str]
-    """A message from the drawdown request's originator."""
-
-    originator_account_number: Required[str]
-    """The drawdown request's originator's account number."""
-
-    originator_routing_number: Required[str]
-    """The drawdown request's originator's routing number."""
-
     recipient_account_number_id: Required[str]
     """
     The Account Number to which the recipient of this request is being requested to
     send funds from.
     """
 
-    beneficiary_address_line1: str
-    """Line 1 of the drawdown request's beneficiary's address."""
-
-    beneficiary_address_line2: str
-    """Line 2 of the drawdown request's beneficiary's address."""
-
-    beneficiary_address_line3: str
-    """Line 3 of the drawdown request's beneficiary's address."""
-
-    beneficiary_name: str
-    """The drawdown request's beneficiary's name."""
-
-    originator_address_line1: str
-    """Line 1 of the drawdown request's originator's address."""
-
-    originator_address_line2: str
-    """Line 2 of the drawdown request's originator's address."""
-
-    originator_address_line3: str
-    """Line 3 of the drawdown request's originator's address."""
-
-    originator_name: str
-    """The drawdown request's originator's name."""
-
-    originator_to_beneficiary_information_line1: str
+    creditor_address_line1: str
     """
-    Line 1 of the information conveyed from the originator of the message to the
-    beneficiary.
+    A free-form address field set by the sender representing the first line of the
+    creditor's address.
     """
 
-    originator_to_beneficiary_information_line2: str
+    creditor_address_line2: str
     """
-    Line 2 of the information conveyed from the originator of the message to the
-    beneficiary.
-    """
-
-    originator_to_beneficiary_information_line3: str
-    """
-    Line 3 of the information conveyed from the originator of the message to the
-    beneficiary.
+    A free-form address field set by the sender representing the second line of the
+    creditor's address.
     """
 
-    originator_to_beneficiary_information_line4: str
+    creditor_address_line3: str
     """
-    Line 4 of the information conveyed from the originator of the message to the
-    beneficiary.
+    A free-form address field set by the sender representing the third line of the
+    creditor's address.
     """
+
+    creditor_name: str
+    """A free-form name field set by the sender representing the creditor's name."""
+
+    debtor_account_number: str
+    """The debtor's account number."""
+
+    debtor_address_line1: str
+    """
+    A free-form address field set by the sender representing the first line of the
+    debtor's address.
+    """
+
+    debtor_address_line2: str
+    """
+    A free-form address field set by the sender representing the second line of the
+    debtor's address.
+    """
+
+    debtor_address_line3: str
+    """A free-form address field set by the sender."""
+
+    debtor_name: str
+    """A free-form name field set by the sender representing the debtor's name."""
+
+    debtor_routing_number: str
+    """The debtor's routing number."""
+
+    end_to_end_identification: str
+    """A free-form reference string set by the sender, to help identify the transfer."""
+
+    instruction_identification: str
+    """The sending bank's identifier for the wire transfer."""
+
+    unique_end_to_end_transaction_reference: str
+    """
+    The Unique End-to-end Transaction Reference
+    ([UETR](https://www.swift.com/payments/what-unique-end-end-transaction-reference-uetr))
+    of the transfer.
+    """
+
+    unstructured_remittance_information: str
+    """A free-form message set by the sender."""

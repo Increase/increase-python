@@ -45,25 +45,24 @@ class InboundWireDrawdownRequestsResource(SyncAPIResource):
         self,
         *,
         amount: int,
-        beneficiary_account_number: str,
-        beneficiary_routing_number: str,
+        creditor_account_number: str,
+        creditor_routing_number: str,
         currency: str,
-        message_to_recipient: str,
-        originator_account_number: str,
-        originator_routing_number: str,
         recipient_account_number_id: str,
-        beneficiary_address_line1: str | NotGiven = NOT_GIVEN,
-        beneficiary_address_line2: str | NotGiven = NOT_GIVEN,
-        beneficiary_address_line3: str | NotGiven = NOT_GIVEN,
-        beneficiary_name: str | NotGiven = NOT_GIVEN,
-        originator_address_line1: str | NotGiven = NOT_GIVEN,
-        originator_address_line2: str | NotGiven = NOT_GIVEN,
-        originator_address_line3: str | NotGiven = NOT_GIVEN,
-        originator_name: str | NotGiven = NOT_GIVEN,
-        originator_to_beneficiary_information_line1: str | NotGiven = NOT_GIVEN,
-        originator_to_beneficiary_information_line2: str | NotGiven = NOT_GIVEN,
-        originator_to_beneficiary_information_line3: str | NotGiven = NOT_GIVEN,
-        originator_to_beneficiary_information_line4: str | NotGiven = NOT_GIVEN,
+        creditor_address_line1: str | NotGiven = NOT_GIVEN,
+        creditor_address_line2: str | NotGiven = NOT_GIVEN,
+        creditor_address_line3: str | NotGiven = NOT_GIVEN,
+        creditor_name: str | NotGiven = NOT_GIVEN,
+        debtor_account_number: str | NotGiven = NOT_GIVEN,
+        debtor_address_line1: str | NotGiven = NOT_GIVEN,
+        debtor_address_line2: str | NotGiven = NOT_GIVEN,
+        debtor_address_line3: str | NotGiven = NOT_GIVEN,
+        debtor_name: str | NotGiven = NOT_GIVEN,
+        debtor_routing_number: str | NotGiven = NOT_GIVEN,
+        end_to_end_identification: str | NotGiven = NOT_GIVEN,
+        instruction_identification: str | NotGiven = NOT_GIVEN,
+        unique_end_to_end_transaction_reference: str | NotGiven = NOT_GIVEN,
+        unstructured_remittance_information: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -79,49 +78,50 @@ class InboundWireDrawdownRequestsResource(SyncAPIResource):
         Args:
           amount: The amount being requested in cents.
 
-          beneficiary_account_number: The drawdown request's beneficiary's account number.
+          creditor_account_number: The creditor's account number.
 
-          beneficiary_routing_number: The drawdown request's beneficiary's routing number.
+          creditor_routing_number: The creditor's routing number.
 
           currency: The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the amount being
               requested. Will always be "USD".
 
-          message_to_recipient: A message from the drawdown request's originator.
-
-          originator_account_number: The drawdown request's originator's account number.
-
-          originator_routing_number: The drawdown request's originator's routing number.
-
           recipient_account_number_id: The Account Number to which the recipient of this request is being requested to
               send funds from.
 
-          beneficiary_address_line1: Line 1 of the drawdown request's beneficiary's address.
+          creditor_address_line1: A free-form address field set by the sender representing the first line of the
+              creditor's address.
 
-          beneficiary_address_line2: Line 2 of the drawdown request's beneficiary's address.
+          creditor_address_line2: A free-form address field set by the sender representing the second line of the
+              creditor's address.
 
-          beneficiary_address_line3: Line 3 of the drawdown request's beneficiary's address.
+          creditor_address_line3: A free-form address field set by the sender representing the third line of the
+              creditor's address.
 
-          beneficiary_name: The drawdown request's beneficiary's name.
+          creditor_name: A free-form name field set by the sender representing the creditor's name.
 
-          originator_address_line1: Line 1 of the drawdown request's originator's address.
+          debtor_account_number: The debtor's account number.
 
-          originator_address_line2: Line 2 of the drawdown request's originator's address.
+          debtor_address_line1: A free-form address field set by the sender representing the first line of the
+              debtor's address.
 
-          originator_address_line3: Line 3 of the drawdown request's originator's address.
+          debtor_address_line2: A free-form address field set by the sender representing the second line of the
+              debtor's address.
 
-          originator_name: The drawdown request's originator's name.
+          debtor_address_line3: A free-form address field set by the sender.
 
-          originator_to_beneficiary_information_line1: Line 1 of the information conveyed from the originator of the message to the
-              beneficiary.
+          debtor_name: A free-form name field set by the sender representing the debtor's name.
 
-          originator_to_beneficiary_information_line2: Line 2 of the information conveyed from the originator of the message to the
-              beneficiary.
+          debtor_routing_number: The debtor's routing number.
 
-          originator_to_beneficiary_information_line3: Line 3 of the information conveyed from the originator of the message to the
-              beneficiary.
+          end_to_end_identification: A free-form reference string set by the sender, to help identify the transfer.
 
-          originator_to_beneficiary_information_line4: Line 4 of the information conveyed from the originator of the message to the
-              beneficiary.
+          instruction_identification: The sending bank's identifier for the wire transfer.
+
+          unique_end_to_end_transaction_reference: The Unique End-to-end Transaction Reference
+              ([UETR](https://www.swift.com/payments/what-unique-end-end-transaction-reference-uetr))
+              of the transfer.
+
+          unstructured_remittance_information: A free-form message set by the sender.
 
           extra_headers: Send extra headers
 
@@ -138,25 +138,24 @@ class InboundWireDrawdownRequestsResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "amount": amount,
-                    "beneficiary_account_number": beneficiary_account_number,
-                    "beneficiary_routing_number": beneficiary_routing_number,
+                    "creditor_account_number": creditor_account_number,
+                    "creditor_routing_number": creditor_routing_number,
                     "currency": currency,
-                    "message_to_recipient": message_to_recipient,
-                    "originator_account_number": originator_account_number,
-                    "originator_routing_number": originator_routing_number,
                     "recipient_account_number_id": recipient_account_number_id,
-                    "beneficiary_address_line1": beneficiary_address_line1,
-                    "beneficiary_address_line2": beneficiary_address_line2,
-                    "beneficiary_address_line3": beneficiary_address_line3,
-                    "beneficiary_name": beneficiary_name,
-                    "originator_address_line1": originator_address_line1,
-                    "originator_address_line2": originator_address_line2,
-                    "originator_address_line3": originator_address_line3,
-                    "originator_name": originator_name,
-                    "originator_to_beneficiary_information_line1": originator_to_beneficiary_information_line1,
-                    "originator_to_beneficiary_information_line2": originator_to_beneficiary_information_line2,
-                    "originator_to_beneficiary_information_line3": originator_to_beneficiary_information_line3,
-                    "originator_to_beneficiary_information_line4": originator_to_beneficiary_information_line4,
+                    "creditor_address_line1": creditor_address_line1,
+                    "creditor_address_line2": creditor_address_line2,
+                    "creditor_address_line3": creditor_address_line3,
+                    "creditor_name": creditor_name,
+                    "debtor_account_number": debtor_account_number,
+                    "debtor_address_line1": debtor_address_line1,
+                    "debtor_address_line2": debtor_address_line2,
+                    "debtor_address_line3": debtor_address_line3,
+                    "debtor_name": debtor_name,
+                    "debtor_routing_number": debtor_routing_number,
+                    "end_to_end_identification": end_to_end_identification,
+                    "instruction_identification": instruction_identification,
+                    "unique_end_to_end_transaction_reference": unique_end_to_end_transaction_reference,
+                    "unstructured_remittance_information": unstructured_remittance_information,
                 },
                 inbound_wire_drawdown_request_create_params.InboundWireDrawdownRequestCreateParams,
             ),
@@ -195,25 +194,24 @@ class AsyncInboundWireDrawdownRequestsResource(AsyncAPIResource):
         self,
         *,
         amount: int,
-        beneficiary_account_number: str,
-        beneficiary_routing_number: str,
+        creditor_account_number: str,
+        creditor_routing_number: str,
         currency: str,
-        message_to_recipient: str,
-        originator_account_number: str,
-        originator_routing_number: str,
         recipient_account_number_id: str,
-        beneficiary_address_line1: str | NotGiven = NOT_GIVEN,
-        beneficiary_address_line2: str | NotGiven = NOT_GIVEN,
-        beneficiary_address_line3: str | NotGiven = NOT_GIVEN,
-        beneficiary_name: str | NotGiven = NOT_GIVEN,
-        originator_address_line1: str | NotGiven = NOT_GIVEN,
-        originator_address_line2: str | NotGiven = NOT_GIVEN,
-        originator_address_line3: str | NotGiven = NOT_GIVEN,
-        originator_name: str | NotGiven = NOT_GIVEN,
-        originator_to_beneficiary_information_line1: str | NotGiven = NOT_GIVEN,
-        originator_to_beneficiary_information_line2: str | NotGiven = NOT_GIVEN,
-        originator_to_beneficiary_information_line3: str | NotGiven = NOT_GIVEN,
-        originator_to_beneficiary_information_line4: str | NotGiven = NOT_GIVEN,
+        creditor_address_line1: str | NotGiven = NOT_GIVEN,
+        creditor_address_line2: str | NotGiven = NOT_GIVEN,
+        creditor_address_line3: str | NotGiven = NOT_GIVEN,
+        creditor_name: str | NotGiven = NOT_GIVEN,
+        debtor_account_number: str | NotGiven = NOT_GIVEN,
+        debtor_address_line1: str | NotGiven = NOT_GIVEN,
+        debtor_address_line2: str | NotGiven = NOT_GIVEN,
+        debtor_address_line3: str | NotGiven = NOT_GIVEN,
+        debtor_name: str | NotGiven = NOT_GIVEN,
+        debtor_routing_number: str | NotGiven = NOT_GIVEN,
+        end_to_end_identification: str | NotGiven = NOT_GIVEN,
+        instruction_identification: str | NotGiven = NOT_GIVEN,
+        unique_end_to_end_transaction_reference: str | NotGiven = NOT_GIVEN,
+        unstructured_remittance_information: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -229,49 +227,50 @@ class AsyncInboundWireDrawdownRequestsResource(AsyncAPIResource):
         Args:
           amount: The amount being requested in cents.
 
-          beneficiary_account_number: The drawdown request's beneficiary's account number.
+          creditor_account_number: The creditor's account number.
 
-          beneficiary_routing_number: The drawdown request's beneficiary's routing number.
+          creditor_routing_number: The creditor's routing number.
 
           currency: The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the amount being
               requested. Will always be "USD".
 
-          message_to_recipient: A message from the drawdown request's originator.
-
-          originator_account_number: The drawdown request's originator's account number.
-
-          originator_routing_number: The drawdown request's originator's routing number.
-
           recipient_account_number_id: The Account Number to which the recipient of this request is being requested to
               send funds from.
 
-          beneficiary_address_line1: Line 1 of the drawdown request's beneficiary's address.
+          creditor_address_line1: A free-form address field set by the sender representing the first line of the
+              creditor's address.
 
-          beneficiary_address_line2: Line 2 of the drawdown request's beneficiary's address.
+          creditor_address_line2: A free-form address field set by the sender representing the second line of the
+              creditor's address.
 
-          beneficiary_address_line3: Line 3 of the drawdown request's beneficiary's address.
+          creditor_address_line3: A free-form address field set by the sender representing the third line of the
+              creditor's address.
 
-          beneficiary_name: The drawdown request's beneficiary's name.
+          creditor_name: A free-form name field set by the sender representing the creditor's name.
 
-          originator_address_line1: Line 1 of the drawdown request's originator's address.
+          debtor_account_number: The debtor's account number.
 
-          originator_address_line2: Line 2 of the drawdown request's originator's address.
+          debtor_address_line1: A free-form address field set by the sender representing the first line of the
+              debtor's address.
 
-          originator_address_line3: Line 3 of the drawdown request's originator's address.
+          debtor_address_line2: A free-form address field set by the sender representing the second line of the
+              debtor's address.
 
-          originator_name: The drawdown request's originator's name.
+          debtor_address_line3: A free-form address field set by the sender.
 
-          originator_to_beneficiary_information_line1: Line 1 of the information conveyed from the originator of the message to the
-              beneficiary.
+          debtor_name: A free-form name field set by the sender representing the debtor's name.
 
-          originator_to_beneficiary_information_line2: Line 2 of the information conveyed from the originator of the message to the
-              beneficiary.
+          debtor_routing_number: The debtor's routing number.
 
-          originator_to_beneficiary_information_line3: Line 3 of the information conveyed from the originator of the message to the
-              beneficiary.
+          end_to_end_identification: A free-form reference string set by the sender, to help identify the transfer.
 
-          originator_to_beneficiary_information_line4: Line 4 of the information conveyed from the originator of the message to the
-              beneficiary.
+          instruction_identification: The sending bank's identifier for the wire transfer.
+
+          unique_end_to_end_transaction_reference: The Unique End-to-end Transaction Reference
+              ([UETR](https://www.swift.com/payments/what-unique-end-end-transaction-reference-uetr))
+              of the transfer.
+
+          unstructured_remittance_information: A free-form message set by the sender.
 
           extra_headers: Send extra headers
 
@@ -288,25 +287,24 @@ class AsyncInboundWireDrawdownRequestsResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "amount": amount,
-                    "beneficiary_account_number": beneficiary_account_number,
-                    "beneficiary_routing_number": beneficiary_routing_number,
+                    "creditor_account_number": creditor_account_number,
+                    "creditor_routing_number": creditor_routing_number,
                     "currency": currency,
-                    "message_to_recipient": message_to_recipient,
-                    "originator_account_number": originator_account_number,
-                    "originator_routing_number": originator_routing_number,
                     "recipient_account_number_id": recipient_account_number_id,
-                    "beneficiary_address_line1": beneficiary_address_line1,
-                    "beneficiary_address_line2": beneficiary_address_line2,
-                    "beneficiary_address_line3": beneficiary_address_line3,
-                    "beneficiary_name": beneficiary_name,
-                    "originator_address_line1": originator_address_line1,
-                    "originator_address_line2": originator_address_line2,
-                    "originator_address_line3": originator_address_line3,
-                    "originator_name": originator_name,
-                    "originator_to_beneficiary_information_line1": originator_to_beneficiary_information_line1,
-                    "originator_to_beneficiary_information_line2": originator_to_beneficiary_information_line2,
-                    "originator_to_beneficiary_information_line3": originator_to_beneficiary_information_line3,
-                    "originator_to_beneficiary_information_line4": originator_to_beneficiary_information_line4,
+                    "creditor_address_line1": creditor_address_line1,
+                    "creditor_address_line2": creditor_address_line2,
+                    "creditor_address_line3": creditor_address_line3,
+                    "creditor_name": creditor_name,
+                    "debtor_account_number": debtor_account_number,
+                    "debtor_address_line1": debtor_address_line1,
+                    "debtor_address_line2": debtor_address_line2,
+                    "debtor_address_line3": debtor_address_line3,
+                    "debtor_name": debtor_name,
+                    "debtor_routing_number": debtor_routing_number,
+                    "end_to_end_identification": end_to_end_identification,
+                    "instruction_identification": instruction_identification,
+                    "unique_end_to_end_transaction_reference": unique_end_to_end_transaction_reference,
+                    "unstructured_remittance_information": unstructured_remittance_information,
                 },
                 inbound_wire_drawdown_request_create_params.InboundWireDrawdownRequestCreateParams,
             ),

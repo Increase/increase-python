@@ -60,7 +60,6 @@ _CategoryReservedKeywords = TypedDict(
                 "inbound_check_deposit_return_intention",
                 "inbound_check_adjustment",
                 "inbound_real_time_payments_transfer_confirmation",
-                "inbound_real_time_payments_transfer_decline",
                 "inbound_wire_reversal",
                 "inbound_wire_transfer",
                 "inbound_wire_transfer_reversal",
