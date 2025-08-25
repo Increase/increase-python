@@ -903,6 +903,7 @@ Methods:
 Methods:
 
 - <code title="post /simulations/wire_drawdown_requests/{wire_drawdown_request_id}/refuse">client.simulations.wire_drawdown_requests.<a href="./src/increase/resources/simulations/wire_drawdown_requests.py">refuse</a>(wire_drawdown_request_id) -> <a href="./src/increase/types/wire_drawdown_request.py">WireDrawdownRequest</a></code>
+- <code title="post /simulations/wire_drawdown_requests/{wire_drawdown_request_id}/submit">client.simulations.wire_drawdown_requests.<a href="./src/increase/resources/simulations/wire_drawdown_requests.py">submit</a>(wire_drawdown_request_id) -> <a href="./src/increase/types/wire_drawdown_request.py">WireDrawdownRequest</a></code>
 
 ## InboundWireDrawdownRequests
 

@@ -83,6 +83,50 @@ class WireDrawdownRequestsResource(SyncAPIResource):
             cast_to=WireDrawdownRequest,
         )
 
+    def submit(
+        self,
+        wire_drawdown_request_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> WireDrawdownRequest:
+        """
+        Simulates a Wire Drawdown Request being submitted to Fedwire.
+
+        Args:
+          wire_drawdown_request_id: The identifier of the Wire Drawdown Request you wish to submit.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not wire_drawdown_request_id:
+            raise ValueError(
+                f"Expected a non-empty value for `wire_drawdown_request_id` but received {wire_drawdown_request_id!r}"
+            )
+        return self._post(
+            f"/simulations/wire_drawdown_requests/{wire_drawdown_request_id}/submit",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=WireDrawdownRequest,
+        )
+
 
 class AsyncWireDrawdownRequestsResource(AsyncAPIResource):
     @cached_property
@@ -148,6 +192,50 @@ class AsyncWireDrawdownRequestsResource(AsyncAPIResource):
             cast_to=WireDrawdownRequest,
         )
 
+    async def submit(
+        self,
+        wire_drawdown_request_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> WireDrawdownRequest:
+        """
+        Simulates a Wire Drawdown Request being submitted to Fedwire.
+
+        Args:
+          wire_drawdown_request_id: The identifier of the Wire Drawdown Request you wish to submit.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not wire_drawdown_request_id:
+            raise ValueError(
+                f"Expected a non-empty value for `wire_drawdown_request_id` but received {wire_drawdown_request_id!r}"
+            )
+        return await self._post(
+            f"/simulations/wire_drawdown_requests/{wire_drawdown_request_id}/submit",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=WireDrawdownRequest,
+        )
+
 
 class WireDrawdownRequestsResourceWithRawResponse:
     def __init__(self, wire_drawdown_requests: WireDrawdownRequestsResource) -> None:
@@ -155,6 +243,9 @@ class WireDrawdownRequestsResourceWithRawResponse:
 
         self.refuse = to_raw_response_wrapper(
             wire_drawdown_requests.refuse,
+        )
+        self.submit = to_raw_response_wrapper(
+            wire_drawdown_requests.submit,
         )
 
 
@@ -165,6 +256,9 @@ class AsyncWireDrawdownRequestsResourceWithRawResponse:
         self.refuse = async_to_raw_response_wrapper(
             wire_drawdown_requests.refuse,
         )
+        self.submit = async_to_raw_response_wrapper(
+            wire_drawdown_requests.submit,
+        )
 
 
 class WireDrawdownRequestsResourceWithStreamingResponse:
@@ -174,6 +268,9 @@ class WireDrawdownRequestsResourceWithStreamingResponse:
         self.refuse = to_streamed_response_wrapper(
             wire_drawdown_requests.refuse,
         )
+        self.submit = to_streamed_response_wrapper(
+            wire_drawdown_requests.submit,
+        )
 
 
 class AsyncWireDrawdownRequestsResourceWithStreamingResponse:
@@ -182,4 +279,7 @@ class AsyncWireDrawdownRequestsResourceWithStreamingResponse:
 
         self.refuse = async_to_streamed_response_wrapper(
             wire_drawdown_requests.refuse,
+        )
+        self.submit = async_to_streamed_response_wrapper(
+            wire_drawdown_requests.submit,
         )
