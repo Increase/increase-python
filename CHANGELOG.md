@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.298.0 (2025-08-25)
+
+Full Changelog: [v0.297.0...v0.298.0](https://github.com/Increase/increase-python/compare/v0.297.0...v0.298.0)
+
+### Features
+
+* **api:** api update ([2f99575](https://github.com/Increase/increase-python/commit/2f995756e809f840847f978c81d47f6a19834ac9))
+* **api:** api update ([cd71c6e](https://github.com/Increase/increase-python/commit/cd71c6e5fb9db33e4d84cfb6b4e07cb8acea0e57))
+* **api:** api update ([5cef34f](https://github.com/Increase/increase-python/commit/5cef34f7fe43f7a82f315a53e0f59938c4bb7885))
+* **api:** api update ([58beb3f](https://github.com/Increase/increase-python/commit/58beb3f7aa0d89787f2aac817926b89eb74e212d))
+
+
+### Chores
+
+* **internal:** change ci workflow machines ([37b5b77](https://github.com/Increase/increase-python/commit/37b5b77126340c76eae6b65bea5312d33f9cf4c0))
+* update github action ([72a863f](https://github.com/Increase/increase-python/commit/72a863f01af3fea1e41f0d0dc5e0571a5b88c246))
+
 ## 0.297.0 (2025-08-21)
 
 Full Changelog: [v0.296.0...v0.297.0](https://github.com/Increase/increase-python/compare/v0.296.0...v0.297.0)
