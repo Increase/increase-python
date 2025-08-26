@@ -14,34 +14,34 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
-from ...types.simulations.inbound_funds_hold_release_response import InboundFundsHoldReleaseResponse
+from ...types.pending_transaction import PendingTransaction
 
-__all__ = ["InboundFundsHoldsResource", "AsyncInboundFundsHoldsResource"]
+__all__ = ["PendingTransactionsResource", "AsyncPendingTransactionsResource"]
 
 
-class InboundFundsHoldsResource(SyncAPIResource):
+class PendingTransactionsResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> InboundFundsHoldsResourceWithRawResponse:
+    def with_raw_response(self) -> PendingTransactionsResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
         For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
         """
-        return InboundFundsHoldsResourceWithRawResponse(self)
+        return PendingTransactionsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> InboundFundsHoldsResourceWithStreamingResponse:
+    def with_streaming_response(self) -> PendingTransactionsResourceWithStreamingResponse:
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
         For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
         """
-        return InboundFundsHoldsResourceWithStreamingResponse(self)
+        return PendingTransactionsResourceWithStreamingResponse(self)
 
-    def release(
+    def release_inbound_funds_hold(
         self,
-        inbound_funds_hold_id: str,
+        pending_transaction_id: str,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -50,13 +50,14 @@ class InboundFundsHoldsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> InboundFundsHoldReleaseResponse:
+    ) -> PendingTransaction:
         """
         This endpoint simulates immediately releasing an Inbound Funds Hold, which might
-        be created as a result of e.g., an ACH debit.
+        be created as a result of, for example, an ACH debit.
 
         Args:
-          inbound_funds_hold_id: The inbound funds hold to release.
+          pending_transaction_id: The pending transaction to release. The pending transaction must have a
+              `inbound_funds_hold` source.
 
           extra_headers: Send extra headers
 
@@ -68,12 +69,12 @@ class InboundFundsHoldsResource(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
-        if not inbound_funds_hold_id:
+        if not pending_transaction_id:
             raise ValueError(
-                f"Expected a non-empty value for `inbound_funds_hold_id` but received {inbound_funds_hold_id!r}"
+                f"Expected a non-empty value for `pending_transaction_id` but received {pending_transaction_id!r}"
             )
         return self._post(
-            f"/simulations/inbound_funds_holds/{inbound_funds_hold_id}/release",
+            f"/simulations/pending_transactions/{pending_transaction_id}/release_inbound_funds_hold",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -81,33 +82,33 @@ class InboundFundsHoldsResource(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=InboundFundsHoldReleaseResponse,
+            cast_to=PendingTransaction,
         )
 
 
-class AsyncInboundFundsHoldsResource(AsyncAPIResource):
+class AsyncPendingTransactionsResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncInboundFundsHoldsResourceWithRawResponse:
+    def with_raw_response(self) -> AsyncPendingTransactionsResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
         For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
         """
-        return AsyncInboundFundsHoldsResourceWithRawResponse(self)
+        return AsyncPendingTransactionsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncInboundFundsHoldsResourceWithStreamingResponse:
+    def with_streaming_response(self) -> AsyncPendingTransactionsResourceWithStreamingResponse:
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
         For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
         """
-        return AsyncInboundFundsHoldsResourceWithStreamingResponse(self)
+        return AsyncPendingTransactionsResourceWithStreamingResponse(self)
 
-    async def release(
+    async def release_inbound_funds_hold(
         self,
-        inbound_funds_hold_id: str,
+        pending_transaction_id: str,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -116,13 +117,14 @@ class AsyncInboundFundsHoldsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
         idempotency_key: str | None = None,
-    ) -> InboundFundsHoldReleaseResponse:
+    ) -> PendingTransaction:
         """
         This endpoint simulates immediately releasing an Inbound Funds Hold, which might
-        be created as a result of e.g., an ACH debit.
+        be created as a result of, for example, an ACH debit.
 
         Args:
-          inbound_funds_hold_id: The inbound funds hold to release.
+          pending_transaction_id: The pending transaction to release. The pending transaction must have a
+              `inbound_funds_hold` source.
 
           extra_headers: Send extra headers
 
@@ -134,12 +136,12 @@ class AsyncInboundFundsHoldsResource(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
-        if not inbound_funds_hold_id:
+        if not pending_transaction_id:
             raise ValueError(
-                f"Expected a non-empty value for `inbound_funds_hold_id` but received {inbound_funds_hold_id!r}"
+                f"Expected a non-empty value for `pending_transaction_id` but received {pending_transaction_id!r}"
             )
         return await self._post(
-            f"/simulations/inbound_funds_holds/{inbound_funds_hold_id}/release",
+            f"/simulations/pending_transactions/{pending_transaction_id}/release_inbound_funds_hold",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -147,41 +149,41 @@ class AsyncInboundFundsHoldsResource(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=InboundFundsHoldReleaseResponse,
+            cast_to=PendingTransaction,
         )
 
 
-class InboundFundsHoldsResourceWithRawResponse:
-    def __init__(self, inbound_funds_holds: InboundFundsHoldsResource) -> None:
-        self._inbound_funds_holds = inbound_funds_holds
+class PendingTransactionsResourceWithRawResponse:
+    def __init__(self, pending_transactions: PendingTransactionsResource) -> None:
+        self._pending_transactions = pending_transactions
 
-        self.release = to_raw_response_wrapper(
-            inbound_funds_holds.release,
+        self.release_inbound_funds_hold = to_raw_response_wrapper(
+            pending_transactions.release_inbound_funds_hold,
         )
 
 
-class AsyncInboundFundsHoldsResourceWithRawResponse:
-    def __init__(self, inbound_funds_holds: AsyncInboundFundsHoldsResource) -> None:
-        self._inbound_funds_holds = inbound_funds_holds
+class AsyncPendingTransactionsResourceWithRawResponse:
+    def __init__(self, pending_transactions: AsyncPendingTransactionsResource) -> None:
+        self._pending_transactions = pending_transactions
 
-        self.release = async_to_raw_response_wrapper(
-            inbound_funds_holds.release,
+        self.release_inbound_funds_hold = async_to_raw_response_wrapper(
+            pending_transactions.release_inbound_funds_hold,
         )
 
 
-class InboundFundsHoldsResourceWithStreamingResponse:
-    def __init__(self, inbound_funds_holds: InboundFundsHoldsResource) -> None:
-        self._inbound_funds_holds = inbound_funds_holds
+class PendingTransactionsResourceWithStreamingResponse:
+    def __init__(self, pending_transactions: PendingTransactionsResource) -> None:
+        self._pending_transactions = pending_transactions
 
-        self.release = to_streamed_response_wrapper(
-            inbound_funds_holds.release,
+        self.release_inbound_funds_hold = to_streamed_response_wrapper(
+            pending_transactions.release_inbound_funds_hold,
         )
 
 
-class AsyncInboundFundsHoldsResourceWithStreamingResponse:
-    def __init__(self, inbound_funds_holds: AsyncInboundFundsHoldsResource) -> None:
-        self._inbound_funds_holds = inbound_funds_holds
+class AsyncPendingTransactionsResourceWithStreamingResponse:
+    def __init__(self, pending_transactions: AsyncPendingTransactionsResource) -> None:
+        self._pending_transactions = pending_transactions
 
-        self.release = async_to_streamed_response_wrapper(
-            inbound_funds_holds.release,
+        self.release_inbound_funds_hold = async_to_streamed_response_wrapper(
+            pending_transactions.release_inbound_funds_hold,
         )
