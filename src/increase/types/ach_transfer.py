@@ -156,9 +156,6 @@ class CreatedBy(BaseModel):
 
 
 class InboundFundsHold(BaseModel):
-    id: str
-    """The Inbound Funds Hold identifier."""
-
     amount: int
     """The held amount in the minor unit of the account's currency.
 
