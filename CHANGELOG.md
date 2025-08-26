@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.298.1 (2025-08-26)
+
+Full Changelog: [v0.298.0...v0.298.1](https://github.com/Increase/increase-python/compare/v0.298.0...v0.298.1)
+
+### Bug Fixes
+
+* avoid newer type syntax ([d6f35f3](https://github.com/Increase/increase-python/commit/d6f35f3e8dad2bbd4a18c26b8a3d34c3851a6253))
+
 ## 0.298.0 (2025-08-25)
 
 Full Changelog: [v0.297.0...v0.298.0](https://github.com/Increase/increase-python/compare/v0.297.0...v0.298.0)
