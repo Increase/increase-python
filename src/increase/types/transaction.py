@@ -2068,19 +2068,19 @@ class SourceInboundWireReversal(BaseModel):
     Additional information included in the wire reversal by the reversal originator.
     """
 
-    previous_message_input_cycle_date: date
+    previous_message_input_cycle_date: Optional[date] = None
     """
     The Fedwire cycle date for the wire transfer that is being reversed by this
     message.
     """
 
-    previous_message_input_message_accountability_data: str
+    previous_message_input_message_accountability_data: Optional[str] = None
     """The Fedwire transaction identifier for the wire transfer that was reversed."""
 
     previous_message_input_sequence_number: str
     """The Fedwire sequence number for the wire transfer that was reversed."""
 
-    previous_message_input_source: str
+    previous_message_input_source: Optional[str] = None
     """The Fedwire input source identifier for the wire transfer that was reversed."""
 
     receiver_financial_institution_information: Optional[str] = None
