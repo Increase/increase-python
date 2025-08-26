@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.301.0 (2025-08-26)
+
+Full Changelog: [v0.300.0...v0.301.0](https://github.com/Increase/increase-python/compare/v0.300.0...v0.301.0)
+
+### Features
+
+* **api:** api update ([5591091](https://github.com/Increase/increase-python/commit/55910913cc6c2ab91564cd9a3449956d068ce654))
+
+
+### Chores
+
+* **internal:** update pyright exclude list ([ab37786](https://github.com/Increase/increase-python/commit/ab37786fa3bb4c75a4e96119895b4ee561a1c32c))
+
 ## 0.300.0 (2025-08-26)
 
 Full Changelog: [v0.299.0...v0.300.0](https://github.com/Increase/increase-python/compare/v0.299.0...v0.300.0)
