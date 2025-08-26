@@ -851,17 +851,11 @@ Methods:
 
 - <code title="post /simulations/digital_wallet_token_requests">client.simulations.digital_wallet_token_requests.<a href="./src/increase/resources/simulations/digital_wallet_token_requests.py">create</a>(\*\*<a href="src/increase/types/simulations/digital_wallet_token_request_create_params.py">params</a>) -> <a href="./src/increase/types/simulations/digital_wallet_token_request_create_response.py">DigitalWalletTokenRequestCreateResponse</a></code>
 
-## InboundFundsHolds
-
-Types:
-
-```python
-from increase.types.simulations import InboundFundsHoldReleaseResponse
-```
+## PendingTransactions
 
 Methods:
 
-- <code title="post /simulations/inbound_funds_holds/{inbound_funds_hold_id}/release">client.simulations.inbound_funds_holds.<a href="./src/increase/resources/simulations/inbound_funds_holds.py">release</a>(inbound_funds_hold_id) -> <a href="./src/increase/types/simulations/inbound_funds_hold_release_response.py">InboundFundsHoldReleaseResponse</a></code>
+- <code title="post /simulations/pending_transactions/{pending_transaction_id}/release_inbound_funds_hold">client.simulations.pending_transactions.<a href="./src/increase/resources/simulations/pending_transactions.py">release_inbound_funds_hold</a>(pending_transaction_id) -> <a href="./src/increase/types/pending_transaction.py">PendingTransaction</a></code>
 
 ## AccountTransfers
 

@@ -148,13 +148,13 @@ from .card_authorizations import (
     CardAuthorizationsResourceWithStreamingResponse,
     AsyncCardAuthorizationsResourceWithStreamingResponse,
 )
-from .inbound_funds_holds import (
-    InboundFundsHoldsResource,
-    AsyncInboundFundsHoldsResource,
-    InboundFundsHoldsResourceWithRawResponse,
-    AsyncInboundFundsHoldsResourceWithRawResponse,
-    InboundFundsHoldsResourceWithStreamingResponse,
-    AsyncInboundFundsHoldsResourceWithStreamingResponse,
+from .pending_transactions import (
+    PendingTransactionsResource,
+    AsyncPendingTransactionsResource,
+    PendingTransactionsResourceWithRawResponse,
+    AsyncPendingTransactionsResourceWithRawResponse,
+    PendingTransactionsResourceWithStreamingResponse,
+    AsyncPendingTransactionsResourceWithStreamingResponse,
 )
 from .inbound_ach_transfers import (
     InboundACHTransfersResource,
@@ -286,8 +286,8 @@ class SimulationsResource(SyncAPIResource):
         return DigitalWalletTokenRequestsResource(self._client)
 
     @cached_property
-    def inbound_funds_holds(self) -> InboundFundsHoldsResource:
-        return InboundFundsHoldsResource(self._client)
+    def pending_transactions(self) -> PendingTransactionsResource:
+        return PendingTransactionsResource(self._client)
 
     @cached_property
     def account_transfers(self) -> AccountTransfersResource:
@@ -423,8 +423,8 @@ class AsyncSimulationsResource(AsyncAPIResource):
         return AsyncDigitalWalletTokenRequestsResource(self._client)
 
     @cached_property
-    def inbound_funds_holds(self) -> AsyncInboundFundsHoldsResource:
-        return AsyncInboundFundsHoldsResource(self._client)
+    def pending_transactions(self) -> AsyncPendingTransactionsResource:
+        return AsyncPendingTransactionsResource(self._client)
 
     @cached_property
     def account_transfers(self) -> AsyncAccountTransfersResource:
@@ -563,8 +563,8 @@ class SimulationsResourceWithRawResponse:
         return DigitalWalletTokenRequestsResourceWithRawResponse(self._simulations.digital_wallet_token_requests)
 
     @cached_property
-    def inbound_funds_holds(self) -> InboundFundsHoldsResourceWithRawResponse:
-        return InboundFundsHoldsResourceWithRawResponse(self._simulations.inbound_funds_holds)
+    def pending_transactions(self) -> PendingTransactionsResourceWithRawResponse:
+        return PendingTransactionsResourceWithRawResponse(self._simulations.pending_transactions)
 
     @cached_property
     def account_transfers(self) -> AccountTransfersResourceWithRawResponse:
@@ -688,8 +688,8 @@ class AsyncSimulationsResourceWithRawResponse:
         return AsyncDigitalWalletTokenRequestsResourceWithRawResponse(self._simulations.digital_wallet_token_requests)
 
     @cached_property
-    def inbound_funds_holds(self) -> AsyncInboundFundsHoldsResourceWithRawResponse:
-        return AsyncInboundFundsHoldsResourceWithRawResponse(self._simulations.inbound_funds_holds)
+    def pending_transactions(self) -> AsyncPendingTransactionsResourceWithRawResponse:
+        return AsyncPendingTransactionsResourceWithRawResponse(self._simulations.pending_transactions)
 
     @cached_property
     def account_transfers(self) -> AsyncAccountTransfersResourceWithRawResponse:
@@ -813,8 +813,8 @@ class SimulationsResourceWithStreamingResponse:
         return DigitalWalletTokenRequestsResourceWithStreamingResponse(self._simulations.digital_wallet_token_requests)
 
     @cached_property
-    def inbound_funds_holds(self) -> InboundFundsHoldsResourceWithStreamingResponse:
-        return InboundFundsHoldsResourceWithStreamingResponse(self._simulations.inbound_funds_holds)
+    def pending_transactions(self) -> PendingTransactionsResourceWithStreamingResponse:
+        return PendingTransactionsResourceWithStreamingResponse(self._simulations.pending_transactions)
 
     @cached_property
     def account_transfers(self) -> AccountTransfersResourceWithStreamingResponse:
@@ -942,8 +942,8 @@ class AsyncSimulationsResourceWithStreamingResponse:
         )
 
     @cached_property
-    def inbound_funds_holds(self) -> AsyncInboundFundsHoldsResourceWithStreamingResponse:
-        return AsyncInboundFundsHoldsResourceWithStreamingResponse(self._simulations.inbound_funds_holds)
+    def pending_transactions(self) -> AsyncPendingTransactionsResourceWithStreamingResponse:
+        return AsyncPendingTransactionsResourceWithStreamingResponse(self._simulations.pending_transactions)
 
     @cached_property
     def account_transfers(self) -> AsyncAccountTransfersResourceWithStreamingResponse:
