@@ -71,6 +71,7 @@ _CategoryReservedKeywords = TypedDict(
                 "swift_transfer_intention",
                 "swift_transfer_return",
                 "card_push_transfer_acceptance",
+                "account_revenue_payment",
                 "other",
             ]
         ],
