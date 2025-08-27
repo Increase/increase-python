@@ -2039,13 +2039,13 @@ class SourceInboundWireReversal(BaseModel):
     the reversal was created.
     """
 
+    debtor_routing_number: Optional[str] = None
+    """The debtor's routing number."""
+
     description: str
     """
     The description on the reversal message from Fedwire, set by the reversing bank.
     """
-
-    financial_institution_to_financial_institution_information: Optional[str] = None
-    """Additional financial institution information included in the wire reversal."""
 
     input_cycle_date: date
     """The Fedwire cycle date for the wire reversal.
@@ -2063,40 +2063,11 @@ class SourceInboundWireReversal(BaseModel):
     input_source: str
     """The Fedwire input source identifier."""
 
-    originator_routing_number: Optional[str] = None
-    """
-    The American Banking Association (ABA) routing number of the bank originating
-    the transfer.
-    """
+    instruction_identification: Optional[str] = None
+    """The sending bank's identifier for the reversal."""
 
-    originator_to_beneficiary_information: Optional[str] = None
-    """
-    Additional information included in the wire reversal by the reversal originator.
-    """
-
-    previous_message_input_cycle_date: Optional[date] = None
-    """
-    The Fedwire cycle date for the wire transfer that is being reversed by this
-    message.
-    """
-
-    previous_message_input_message_accountability_data: Optional[str] = None
-    """The Fedwire transaction identifier for the wire transfer that was reversed."""
-
-    previous_message_input_sequence_number: str
-    """The Fedwire sequence number for the wire transfer that was reversed."""
-
-    previous_message_input_source: Optional[str] = None
-    """The Fedwire input source identifier for the wire transfer that was reversed."""
-
-    receiver_financial_institution_information: Optional[str] = None
-    """
-    Information included in the wire reversal for the receiving financial
-    institution.
-    """
-
-    sender_reference: Optional[str] = None
-    """The sending bank's reference number for the wire reversal."""
+    return_reason_additional_information: Optional[str] = None
+    """Additional information about the reason for the reversal."""
 
     transaction_id: str
     """The ID for the Transaction associated with the transfer reversal."""
