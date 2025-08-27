@@ -17,7 +17,8 @@ class Account(BaseModel):
     """
     The account revenue rate currently being earned on the account, as a string
     containing a decimal number. For example, a 1% account revenue rate would be
-    represented as "0.01".
+    represented as "0.01". Account revenue is a type of non-interest income accrued
+    on the account.
     """
 
     bank: Literal["core_bank", "first_internet_bank", "grasshopper_bank"]

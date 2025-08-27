@@ -9,6 +9,7 @@ from .._models import BaseModel
 __all__ = [
     "Transaction",
     "Source",
+    "SourceAccountRevenuePayment",
     "SourceAccountTransferIntention",
     "SourceACHTransferIntention",
     "SourceACHTransferRejection",
@@ -65,6 +66,17 @@ __all__ = [
     "SourceSwiftTransferReturn",
     "SourceWireTransferIntention",
 ]
+
+
+class SourceAccountRevenuePayment(BaseModel):
+    accrued_on_account_id: str
+    """The account on which the account revenue was accrued."""
+
+    period_end: datetime
+    """The end of the period for which this transaction paid account revenue."""
+
+    period_start: datetime
+    """The start of the period for which this transaction paid account revenue."""
 
 
 class SourceAccountTransferIntention(BaseModel):
@@ -2284,6 +2296,15 @@ class SourceWireTransferIntention(BaseModel):
 
 
 class Source(BaseModel):
+    account_revenue_payment: Optional[SourceAccountRevenuePayment] = None
+    """An Account Revenue Payment object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `account_revenue_payment`. A Account Revenue Payment represents a
+    payment made to an account from the bank. Account revenue is a type of
+    non-interest income.
+    """
+
     account_transfer_intention: Optional[SourceAccountTransferIntention] = None
     """An Account Transfer Intention object.
 
@@ -2419,6 +2440,7 @@ class Source(BaseModel):
         "swift_transfer_intention",
         "swift_transfer_return",
         "card_push_transfer_acceptance",
+        "account_revenue_payment",
         "other",
     ]
     """The type of the resource.
@@ -2490,6 +2512,8 @@ class Source(BaseModel):
       `swift_transfer_return` object.
     - `card_push_transfer_acceptance` - Card Push Transfer Acceptance: details will
       be under the `card_push_transfer_acceptance` object.
+    - `account_revenue_payment` - Account Revenue Payment: details will be under the
+      `account_revenue_payment` object.
     - `other` - The Transaction was made for an undocumented or deprecated reason.
     """
 
