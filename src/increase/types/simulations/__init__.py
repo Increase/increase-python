@@ -7,6 +7,7 @@ from .document_create_params import DocumentCreateParams as DocumentCreateParams
 from .card_token_create_params import CardTokenCreateParams as CardTokenCreateParams
 from .card_refund_create_params import CardRefundCreateParams as CardRefundCreateParams
 from .ach_transfer_return_params import ACHTransferReturnParams as ACHTransferReturnParams
+from .ach_transfer_settle_params import ACHTransferSettleParams as ACHTransferSettleParams
 from .card_dispute_action_params import CardDisputeActionParams as CardDisputeActionParams
 from .card_reversal_create_params import CardReversalCreateParams as CardReversalCreateParams
 from .card_increment_create_params import CardIncrementCreateParams as CardIncrementCreateParams

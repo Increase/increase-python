@@ -17,7 +17,11 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
-from ...types.simulations import ach_transfer_return_params, ach_transfer_create_notification_of_change_params
+from ...types.simulations import (
+    ach_transfer_return_params,
+    ach_transfer_settle_params,
+    ach_transfer_create_notification_of_change_params,
+)
 from ...types.ach_transfer import ACHTransfer
 
 __all__ = ["ACHTransfersResource", "AsyncACHTransfersResource"]
@@ -475,6 +479,8 @@ class ACHTransfersResource(SyncAPIResource):
         self,
         ach_transfer_id: str,
         *,
+        inbound_funds_hold_behavior: Literal["release_immediately", "release_on_default_schedule"]
+        | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -489,10 +495,21 @@ class ACHTransfersResource(SyncAPIResource):
         `submitted`. For convenience, if the transfer is in `status`:
         `pending_submission`, the simulation will also submit the transfer. Without this
         simulation the transfer will eventually settle on its own following the same
-        Federal Reserve timeline as in production.
+        Federal Reserve timeline as in production. Additionally, you can specify the
+        behavior of the inbound funds hold that is created when the ACH Transfer is
+        settled. If no behavior is specified, the inbound funds hold will be released
+        immediately in order for the funds to be available for use.
 
         Args:
           ach_transfer_id: The identifier of the ACH Transfer you wish to become settled.
+
+          inbound_funds_hold_behavior: The behavior of the inbound funds hold that is created when the ACH Transfer is
+              settled. If no behavior is specified, the inbound funds hold will be released
+              immediately in order for the funds to be available for use.
+
+              - `release_immediately` - Release the inbound funds hold immediately.
+              - `release_on_default_schedule` - Release the inbound funds hold on the default
+                schedule.
 
           extra_headers: Send extra headers
 
@@ -508,6 +525,10 @@ class ACHTransfersResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `ach_transfer_id` but received {ach_transfer_id!r}")
         return self._post(
             f"/simulations/ach_transfers/{ach_transfer_id}/settle",
+            body=maybe_transform(
+                {"inbound_funds_hold_behavior": inbound_funds_hold_behavior},
+                ach_transfer_settle_params.ACHTransferSettleParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -1018,6 +1039,8 @@ class AsyncACHTransfersResource(AsyncAPIResource):
         self,
         ach_transfer_id: str,
         *,
+        inbound_funds_hold_behavior: Literal["release_immediately", "release_on_default_schedule"]
+        | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1032,10 +1055,21 @@ class AsyncACHTransfersResource(AsyncAPIResource):
         `submitted`. For convenience, if the transfer is in `status`:
         `pending_submission`, the simulation will also submit the transfer. Without this
         simulation the transfer will eventually settle on its own following the same
-        Federal Reserve timeline as in production.
+        Federal Reserve timeline as in production. Additionally, you can specify the
+        behavior of the inbound funds hold that is created when the ACH Transfer is
+        settled. If no behavior is specified, the inbound funds hold will be released
+        immediately in order for the funds to be available for use.
 
         Args:
           ach_transfer_id: The identifier of the ACH Transfer you wish to become settled.
+
+          inbound_funds_hold_behavior: The behavior of the inbound funds hold that is created when the ACH Transfer is
+              settled. If no behavior is specified, the inbound funds hold will be released
+              immediately in order for the funds to be available for use.
+
+              - `release_immediately` - Release the inbound funds hold immediately.
+              - `release_on_default_schedule` - Release the inbound funds hold on the default
+                schedule.
 
           extra_headers: Send extra headers
 
@@ -1051,6 +1085,10 @@ class AsyncACHTransfersResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `ach_transfer_id` but received {ach_transfer_id!r}")
         return await self._post(
             f"/simulations/ach_transfers/{ach_transfer_id}/settle",
+            body=await async_maybe_transform(
+                {"inbound_funds_hold_behavior": inbound_funds_hold_behavior},
+                ach_transfer_settle_params.ACHTransferSettleParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
