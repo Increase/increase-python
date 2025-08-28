@@ -2223,6 +2223,7 @@ class SourceInternalSource(BaseModel):
         "negative_balance_forgiveness",
         "sample_funds",
         "sample_funds_return",
+        "account_revenue_payment_distribution",
     ]
     """An Internal Source is a transaction between you and Increase.
 
@@ -2243,6 +2244,7 @@ class SourceInternalSource(BaseModel):
     - `negative_balance_forgiveness` - Negative balance forgiveness
     - `sample_funds` - Sample funds
     - `sample_funds_return` - Sample funds return
+    - `account_revenue_payment_distribution` - Account revenue payment distribution
     """
 
 
