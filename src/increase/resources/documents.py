@@ -67,9 +67,11 @@ class DocumentsResource(SyncAPIResource):
               - `account_verification_letter` - An account verification letter.
               - `funding_instructions` - Funding instructions.
 
-          account_verification_letter: An account verification letter.
+          account_verification_letter: An account verification letter. Required if and only if `category` is
+              `account_verification_letter`.
 
-          funding_instructions: Funding instructions.
+          funding_instructions: Funding instructions. Required if and only if `category` is
+              `funding_instructions`.
 
           extra_headers: Send extra headers
 
@@ -243,9 +245,11 @@ class AsyncDocumentsResource(AsyncAPIResource):
               - `account_verification_letter` - An account verification letter.
               - `funding_instructions` - Funding instructions.
 
-          account_verification_letter: An account verification letter.
+          account_verification_letter: An account verification letter. Required if and only if `category` is
+              `account_verification_letter`.
 
-          funding_instructions: Funding instructions.
+          funding_instructions: Funding instructions. Required if and only if `category` is
+              `funding_instructions`.
 
           extra_headers: Send extra headers
 
