@@ -93,7 +93,7 @@ class EntitiesResource(SyncAPIResource):
           description: The description you choose to give the entity.
 
           government_authority: Details of the Government Authority entity to create. Required if `structure` is
-              equal to `Government Authority`.
+              equal to `government_authority`.
 
           joint: Details of the joint entity to create. Required if `structure` is equal to
               `joint`.
@@ -651,7 +651,7 @@ class AsyncEntitiesResource(AsyncAPIResource):
           description: The description you choose to give the entity.
 
           government_authority: Details of the Government Authority entity to create. Required if `structure` is
-              equal to `Government Authority`.
+              equal to `government_authority`.
 
           joint: Details of the joint entity to create. Required if `structure` is equal to
               `joint`.
