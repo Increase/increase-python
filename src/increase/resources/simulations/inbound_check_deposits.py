@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing_extensions import Literal
+
 import httpx
 
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
@@ -47,6 +49,7 @@ class InboundCheckDepositsResource(SyncAPIResource):
         account_number_id: str,
         amount: int,
         check_number: str,
+        payee_name_analysis: Literal["name_matches", "does_not_match", "not_evaluated"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -71,6 +74,16 @@ class InboundCheckDepositsResource(SyncAPIResource):
 
           check_number: The check number on the check to be deposited.
 
+          payee_name_analysis: Simulate the outcome of
+              [payee name checking](https://increase.com/documentation/positive-pay#payee-name-mismatches).
+              Defaults to `not_evaluated`.
+
+              - `name_matches` - The details on the check match the recipient name of the
+                check transfer.
+              - `does_not_match` - The details on the check do not match the recipient name of
+                the check transfer.
+              - `not_evaluated` - The payee name analysis was not evaluated.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -88,6 +101,7 @@ class InboundCheckDepositsResource(SyncAPIResource):
                     "account_number_id": account_number_id,
                     "amount": amount,
                     "check_number": check_number,
+                    "payee_name_analysis": payee_name_analysis,
                 },
                 inbound_check_deposit_create_params.InboundCheckDepositCreateParams,
             ),
@@ -128,6 +142,7 @@ class AsyncInboundCheckDepositsResource(AsyncAPIResource):
         account_number_id: str,
         amount: int,
         check_number: str,
+        payee_name_analysis: Literal["name_matches", "does_not_match", "not_evaluated"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -152,6 +167,16 @@ class AsyncInboundCheckDepositsResource(AsyncAPIResource):
 
           check_number: The check number on the check to be deposited.
 
+          payee_name_analysis: Simulate the outcome of
+              [payee name checking](https://increase.com/documentation/positive-pay#payee-name-mismatches).
+              Defaults to `not_evaluated`.
+
+              - `name_matches` - The details on the check match the recipient name of the
+                check transfer.
+              - `does_not_match` - The details on the check do not match the recipient name of
+                the check transfer.
+              - `not_evaluated` - The payee name analysis was not evaluated.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -169,6 +194,7 @@ class AsyncInboundCheckDepositsResource(AsyncAPIResource):
                     "account_number_id": account_number_id,
                     "amount": amount,
                     "check_number": check_number,
+                    "payee_name_analysis": payee_name_analysis,
                 },
                 inbound_check_deposit_create_params.InboundCheckDepositCreateParams,
             ),
