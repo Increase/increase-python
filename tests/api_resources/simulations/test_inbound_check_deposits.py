@@ -27,6 +27,16 @@ class TestInboundCheckDeposits:
         assert_matches_type(InboundCheckDeposit, inbound_check_deposit, path=["response"])
 
     @parametrize
+    def test_method_create_with_all_params(self, client: Increase) -> None:
+        inbound_check_deposit = client.simulations.inbound_check_deposits.create(
+            account_number_id="account_number_v18nkfqm6afpsrvy82b2",
+            amount=1000,
+            check_number="1234567890",
+            payee_name_analysis="name_matches",
+        )
+        assert_matches_type(InboundCheckDeposit, inbound_check_deposit, path=["response"])
+
+    @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
         response = client.simulations.inbound_check_deposits.with_raw_response.create(
             account_number_id="account_number_v18nkfqm6afpsrvy82b2",
@@ -66,6 +76,16 @@ class TestAsyncInboundCheckDeposits:
             account_number_id="account_number_v18nkfqm6afpsrvy82b2",
             amount=1000,
             check_number="1234567890",
+        )
+        assert_matches_type(InboundCheckDeposit, inbound_check_deposit, path=["response"])
+
+    @parametrize
+    async def test_method_create_with_all_params(self, async_client: AsyncIncrease) -> None:
+        inbound_check_deposit = await async_client.simulations.inbound_check_deposits.create(
+            account_number_id="account_number_v18nkfqm6afpsrvy82b2",
+            amount=1000,
+            check_number="1234567890",
+            payee_name_analysis="name_matches",
         )
         assert_matches_type(InboundCheckDeposit, inbound_check_deposit, path=["response"])
 
