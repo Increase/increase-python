@@ -2081,6 +2081,16 @@ class SourceInboundWireReversal(BaseModel):
     return_reason_additional_information: Optional[str] = None
     """Additional information about the reason for the reversal."""
 
+    return_reason_code: Optional[str] = None
+    """A code provided by the sending bank giving a reason for the reversal.
+
+    It will generally be one of the codes defined in the ISO20022
+    `ExternalReturnReason1Code` code set, but this is not enforced by the network.
+    """
+
+    return_reason_code_description: Optional[str] = None
+    """An Increase-generated description of the `return_reason_code`."""
+
     transaction_id: str
     """The ID for the Transaction associated with the transfer reversal."""
 
