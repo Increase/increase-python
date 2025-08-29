@@ -78,7 +78,7 @@ class EntityCreateParams(TypedDict, total=False):
     government_authority: GovernmentAuthority
     """Details of the Government Authority entity to create.
 
-    Required if `structure` is equal to `Government Authority`.
+    Required if `structure` is equal to `government_authority`.
     """
 
     joint: Joint
@@ -872,7 +872,8 @@ class TrustTrustee(TypedDict, total=False):
     individual: TrustTrusteeIndividual
     """Details of the individual trustee.
 
-    Required when the trustee `structure` is equal to `individual`.
+    Within the trustee object, this is required if `structure` is equal to
+    `individual`.
     """
 
 

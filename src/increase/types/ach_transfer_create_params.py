@@ -193,13 +193,17 @@ class Addenda(TypedDict, total=False):
     """
 
     freeform: AddendaFreeform
-    """Unstructured `payment_related_information` passed through with the transfer."""
+    """Unstructured `payment_related_information` passed through with the transfer.
+
+    Required if and only if `category` is `freeform`.
+    """
 
     payment_order_remittance_advice: AddendaPaymentOrderRemittanceAdvice
     """Structured ASC X12 820 remittance advice records.
 
     Please reach out to [support@increase.com](mailto:support@increase.com) for more
-    information.
+    information. Required if and only if `category` is
+    `payment_order_remittance_advice`.
     """
 
 

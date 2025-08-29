@@ -20,10 +20,16 @@ class DocumentCreateParams(TypedDict, total=False):
     """
 
     account_verification_letter: AccountVerificationLetter
-    """An account verification letter."""
+    """An account verification letter.
+
+    Required if and only if `category` is `account_verification_letter`.
+    """
 
     funding_instructions: FundingInstructions
-    """Funding instructions."""
+    """Funding instructions.
+
+    Required if and only if `category` is `funding_instructions`.
+    """
 
 
 class AccountVerificationLetter(TypedDict, total=False):
