@@ -11,6 +11,7 @@ import httpx
 from ..types import (
     entity_list_params,
     entity_create_params,
+    entity_update_params,
     entity_confirm_params,
     entity_update_address_params,
     entity_update_industry_code_params,
@@ -64,6 +65,7 @@ class EntitiesResource(SyncAPIResource):
         government_authority: entity_create_params.GovernmentAuthority | NotGiven = NOT_GIVEN,
         joint: entity_create_params.Joint | NotGiven = NOT_GIVEN,
         natural_person: entity_create_params.NaturalPerson | NotGiven = NOT_GIVEN,
+        risk_rating: entity_create_params.RiskRating | NotGiven = NOT_GIVEN,
         supplemental_documents: Iterable[entity_create_params.SupplementalDocument] | NotGiven = NOT_GIVEN,
         third_party_verification: entity_create_params.ThirdPartyVerification | NotGiven = NOT_GIVEN,
         trust: entity_create_params.Trust | NotGiven = NOT_GIVEN,
@@ -103,6 +105,9 @@ class EntitiesResource(SyncAPIResource):
               `social_security_number` or `individual_taxpayer_identification_number`
               identification methods.
 
+          risk_rating: An assessment of the entity’s potential risk of involvement in financial crimes,
+              such as money laundering.
+
           supplemental_documents: Additional documentation associated with the entity.
 
           third_party_verification: A reference to data stored in a third-party verification service. Your
@@ -131,6 +136,7 @@ class EntitiesResource(SyncAPIResource):
                     "government_authority": government_authority,
                     "joint": joint,
                     "natural_person": natural_person,
+                    "risk_rating": risk_rating,
                     "supplemental_documents": supplemental_documents,
                     "third_party_verification": third_party_verification,
                     "trust": trust,
@@ -178,6 +184,53 @@ class EntitiesResource(SyncAPIResource):
             f"/entities/{entity_id}",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=Entity,
+        )
+
+    def update(
+        self,
+        entity_id: str,
+        *,
+        risk_rating: entity_update_params.RiskRating | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> Entity:
+        """
+        Update an Entity
+
+        Args:
+          entity_id: The entity identifier.
+
+          risk_rating: An assessment of the entity’s potential risk of involvement in financial crimes,
+              such as money laundering.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not entity_id:
+            raise ValueError(f"Expected a non-empty value for `entity_id` but received {entity_id!r}")
+        return self._patch(
+            f"/entities/{entity_id}",
+            body=maybe_transform({"risk_rating": risk_rating}, entity_update_params.EntityUpdateParams),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
             ),
             cast_to=Entity,
         )
@@ -622,6 +675,7 @@ class AsyncEntitiesResource(AsyncAPIResource):
         government_authority: entity_create_params.GovernmentAuthority | NotGiven = NOT_GIVEN,
         joint: entity_create_params.Joint | NotGiven = NOT_GIVEN,
         natural_person: entity_create_params.NaturalPerson | NotGiven = NOT_GIVEN,
+        risk_rating: entity_create_params.RiskRating | NotGiven = NOT_GIVEN,
         supplemental_documents: Iterable[entity_create_params.SupplementalDocument] | NotGiven = NOT_GIVEN,
         third_party_verification: entity_create_params.ThirdPartyVerification | NotGiven = NOT_GIVEN,
         trust: entity_create_params.Trust | NotGiven = NOT_GIVEN,
@@ -661,6 +715,9 @@ class AsyncEntitiesResource(AsyncAPIResource):
               `social_security_number` or `individual_taxpayer_identification_number`
               identification methods.
 
+          risk_rating: An assessment of the entity’s potential risk of involvement in financial crimes,
+              such as money laundering.
+
           supplemental_documents: Additional documentation associated with the entity.
 
           third_party_verification: A reference to data stored in a third-party verification service. Your
@@ -689,6 +746,7 @@ class AsyncEntitiesResource(AsyncAPIResource):
                     "government_authority": government_authority,
                     "joint": joint,
                     "natural_person": natural_person,
+                    "risk_rating": risk_rating,
                     "supplemental_documents": supplemental_documents,
                     "third_party_verification": third_party_verification,
                     "trust": trust,
@@ -736,6 +794,53 @@ class AsyncEntitiesResource(AsyncAPIResource):
             f"/entities/{entity_id}",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=Entity,
+        )
+
+    async def update(
+        self,
+        entity_id: str,
+        *,
+        risk_rating: entity_update_params.RiskRating | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        idempotency_key: str | None = None,
+    ) -> Entity:
+        """
+        Update an Entity
+
+        Args:
+          entity_id: The entity identifier.
+
+          risk_rating: An assessment of the entity’s potential risk of involvement in financial crimes,
+              such as money laundering.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not entity_id:
+            raise ValueError(f"Expected a non-empty value for `entity_id` but received {entity_id!r}")
+        return await self._patch(
+            f"/entities/{entity_id}",
+            body=await async_maybe_transform({"risk_rating": risk_rating}, entity_update_params.EntityUpdateParams),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
             ),
             cast_to=Entity,
         )
@@ -1163,6 +1268,9 @@ class EntitiesResourceWithRawResponse:
         self.retrieve = to_raw_response_wrapper(
             entities.retrieve,
         )
+        self.update = to_raw_response_wrapper(
+            entities.update,
+        )
         self.list = to_raw_response_wrapper(
             entities.list,
         )
@@ -1198,6 +1306,9 @@ class AsyncEntitiesResourceWithRawResponse:
         )
         self.retrieve = async_to_raw_response_wrapper(
             entities.retrieve,
+        )
+        self.update = async_to_raw_response_wrapper(
+            entities.update,
         )
         self.list = async_to_raw_response_wrapper(
             entities.list,
@@ -1235,6 +1346,9 @@ class EntitiesResourceWithStreamingResponse:
         self.retrieve = to_streamed_response_wrapper(
             entities.retrieve,
         )
+        self.update = to_streamed_response_wrapper(
+            entities.update,
+        )
         self.list = to_streamed_response_wrapper(
             entities.list,
         )
@@ -1270,6 +1384,9 @@ class AsyncEntitiesResourceWithStreamingResponse:
         )
         self.retrieve = async_to_streamed_response_wrapper(
             entities.retrieve,
+        )
+        self.update = async_to_streamed_response_wrapper(
+            entities.update,
         )
         self.list = async_to_streamed_response_wrapper(
             entities.list,

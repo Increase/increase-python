@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from typing import List, Union, Iterable
-from datetime import date
+from datetime import date, datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
@@ -35,6 +35,7 @@ __all__ = [
     "NaturalPersonIdentificationDriversLicense",
     "NaturalPersonIdentificationOther",
     "NaturalPersonIdentificationPassport",
+    "RiskRating",
     "SupplementalDocument",
     "ThirdPartyVerification",
     "Trust",
@@ -93,6 +94,12 @@ class EntityCreateParams(TypedDict, total=False):
     Required if `structure` is equal to `natural_person`. Natural people entities
     should be submitted with `social_security_number` or
     `individual_taxpayer_identification_number` identification methods.
+    """
+
+    risk_rating: RiskRating
+    """
+    An assessment of the entity’s potential risk of involvement in financial crimes,
+    such as money laundering.
     """
 
     supplemental_documents: Iterable[SupplementalDocument]
@@ -680,6 +687,22 @@ class NaturalPerson(TypedDict, total=False):
     license, or other document if you've confirmed the individual does not have a US
     tax id (either a Social Security Number or Individual Taxpayer Identification
     Number).
+    """
+
+
+class RiskRating(TypedDict, total=False):
+    rated_at: Required[Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]]
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the risk
+    rating was performed.
+    """
+
+    rating: Required[Literal["low", "medium", "high"]]
+    """The rating given to this entity.
+
+    - `low` - Low
+    - `medium` - Medium
+    - `high` - High
     """
 
 
