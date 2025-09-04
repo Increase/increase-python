@@ -193,6 +193,7 @@ class EntitiesResource(SyncAPIResource):
         entity_id: str,
         *,
         risk_rating: entity_update_params.RiskRating | NotGiven = NOT_GIVEN,
+        third_party_verification: entity_update_params.ThirdPartyVerification | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -210,6 +211,9 @@ class EntitiesResource(SyncAPIResource):
           risk_rating: An assessment of the entity’s potential risk of involvement in financial crimes,
               such as money laundering.
 
+          third_party_verification: A reference to data stored in a third-party verification service. Your
+              integration may or may not use this field.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -224,7 +228,13 @@ class EntitiesResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `entity_id` but received {entity_id!r}")
         return self._patch(
             f"/entities/{entity_id}",
-            body=maybe_transform({"risk_rating": risk_rating}, entity_update_params.EntityUpdateParams),
+            body=maybe_transform(
+                {
+                    "risk_rating": risk_rating,
+                    "third_party_verification": third_party_verification,
+                },
+                entity_update_params.EntityUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -803,6 +813,7 @@ class AsyncEntitiesResource(AsyncAPIResource):
         entity_id: str,
         *,
         risk_rating: entity_update_params.RiskRating | NotGiven = NOT_GIVEN,
+        third_party_verification: entity_update_params.ThirdPartyVerification | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -820,6 +831,9 @@ class AsyncEntitiesResource(AsyncAPIResource):
           risk_rating: An assessment of the entity’s potential risk of involvement in financial crimes,
               such as money laundering.
 
+          third_party_verification: A reference to data stored in a third-party verification service. Your
+              integration may or may not use this field.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -834,7 +848,13 @@ class AsyncEntitiesResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `entity_id` but received {entity_id!r}")
         return await self._patch(
             f"/entities/{entity_id}",
-            body=await async_maybe_transform({"risk_rating": risk_rating}, entity_update_params.EntityUpdateParams),
+            body=await async_maybe_transform(
+                {
+                    "risk_rating": risk_rating,
+                    "third_party_verification": third_party_verification,
+                },
+                entity_update_params.EntityUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
