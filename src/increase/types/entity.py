@@ -25,6 +25,7 @@ __all__ = [
     "NaturalPerson",
     "NaturalPersonAddress",
     "NaturalPersonIdentification",
+    "RiskRating",
     "ThirdPartyVerification",
     "Trust",
     "TrustAddress",
@@ -340,6 +341,22 @@ class NaturalPerson(BaseModel):
     """The person's legal name."""
 
 
+class RiskRating(BaseModel):
+    rated_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the risk
+    rating was performed.
+    """
+
+    rating: Literal["low", "medium", "high"]
+    """The rating given to this entity.
+
+    - `low` - Low
+    - `medium` - Medium
+    - `high` - High
+    """
+
+
 class ThirdPartyVerification(BaseModel):
     reference: str
     """The reference identifier for the third party verification."""
@@ -579,6 +596,12 @@ class Entity(BaseModel):
     """Details of the natural person entity.
 
     Will be present if `structure` is equal to `natural_person`.
+    """
+
+    risk_rating: Optional[RiskRating] = None
+    """
+    An assessment of the entity’s potential risk of involvement in financial crimes,
+    such as money laundering.
     """
 
     status: Literal["active", "archived", "disabled"]
