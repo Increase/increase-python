@@ -23,6 +23,18 @@ class PhysicalCardProfileCreateParams(TypedDict, total=False):
     program_id: Required[str]
     """The identifier for the Program that this Physical Card Profile falls under."""
 
+    card_stock_reference: str
+    """A reference ID provided by the fulfillment provider for the card stock used.
+
+    Only used if you've ordered card stock separately.
+    """
+
+    carrier_stock_reference: str
+    """A reference ID provided by the fulfillment provider for the carrier stock used.
+
+    Only used if you've ordered carrier stock separately.
+    """
+
     front_text: FrontText
     """Text printed on the front of the card.
 
