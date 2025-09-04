@@ -351,6 +351,10 @@ class TestEntities:
                 "rated_at": parse_datetime("2020-01-31T23:59:59Z"),
                 "rating": "low",
             },
+            third_party_verification={
+                "reference": "x",
+                "vendor": "alloy",
+            },
         )
         assert_matches_type(Entity, entity, path=["response"])
 
@@ -1231,6 +1235,10 @@ class TestAsyncEntities:
             risk_rating={
                 "rated_at": parse_datetime("2020-01-31T23:59:59Z"),
                 "rating": "low",
+            },
+            third_party_verification={
+                "reference": "x",
+                "vendor": "alloy",
             },
         )
         assert_matches_type(Entity, entity, path=["response"])
