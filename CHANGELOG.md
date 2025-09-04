@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.312.0 (2025-09-04)
+
+Full Changelog: [v0.311.0...v0.312.0](https://github.com/Increase/increase-python/compare/v0.311.0...v0.312.0)
+
+### Features
+
+* **api:** api update ([9cebb8c](https://github.com/Increase/increase-python/commit/9cebb8c59e4832a68fdee8d4c5af645c14006346))
+* improve future compat with pydantic v3 ([cbeb8ab](https://github.com/Increase/increase-python/commit/cbeb8ab1960ddb402ee4b3a31dbbb5534e74035f))
+* **types:** replace List[str] with SequenceNotStr in params ([e93da45](https://github.com/Increase/increase-python/commit/e93da45e669b4fb9e9e760ec776cec0bd815f1ab))
+
+
+### Chores
+
+* **internal:** move mypy configurations to `pyproject.toml` file ([c13608d](https://github.com/Increase/increase-python/commit/c13608d03a75d75f247803db6db56c5e0735977f))
+
 ## 0.311.0 (2025-08-29)
 
 Full Changelog: [v0.310.0...v0.311.0](https://github.com/Increase/increase-python/compare/v0.310.0...v0.311.0)
