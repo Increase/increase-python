@@ -30,6 +30,22 @@ Methods:
 - <code title="patch /account_numbers/{account_number_id}">client.account_numbers.<a href="./src/increase/resources/account_numbers.py">update</a>(account_number_id, \*\*<a href="src/increase/types/account_number_update_params.py">params</a>) -> <a href="./src/increase/types/account_number.py">AccountNumber</a></code>
 - <code title="get /account_numbers">client.account_numbers.<a href="./src/increase/resources/account_numbers.py">list</a>(\*\*<a href="src/increase/types/account_number_list_params.py">params</a>) -> <a href="./src/increase/types/account_number.py">SyncPage[AccountNumber]</a></code>
 
+# AccountTransfers
+
+Types:
+
+```python
+from increase.types import AccountTransfer
+```
+
+Methods:
+
+- <code title="post /account_transfers">client.account_transfers.<a href="./src/increase/resources/account_transfers.py">create</a>(\*\*<a href="src/increase/types/account_transfer_create_params.py">params</a>) -> <a href="./src/increase/types/account_transfer.py">AccountTransfer</a></code>
+- <code title="get /account_transfers/{account_transfer_id}">client.account_transfers.<a href="./src/increase/resources/account_transfers.py">retrieve</a>(account_transfer_id) -> <a href="./src/increase/types/account_transfer.py">AccountTransfer</a></code>
+- <code title="get /account_transfers">client.account_transfers.<a href="./src/increase/resources/account_transfers.py">list</a>(\*\*<a href="src/increase/types/account_transfer_list_params.py">params</a>) -> <a href="./src/increase/types/account_transfer.py">SyncPage[AccountTransfer]</a></code>
+- <code title="post /account_transfers/{account_transfer_id}/approve">client.account_transfers.<a href="./src/increase/resources/account_transfers.py">approve</a>(account_transfer_id) -> <a href="./src/increase/types/account_transfer.py">AccountTransfer</a></code>
+- <code title="post /account_transfers/{account_transfer_id}/cancel">client.account_transfers.<a href="./src/increase/resources/account_transfers.py">cancel</a>(account_transfer_id) -> <a href="./src/increase/types/account_transfer.py">AccountTransfer</a></code>
+
 # Cards
 
 Types:
@@ -187,22 +203,6 @@ Methods:
 
 - <code title="get /declined_transactions/{declined_transaction_id}">client.declined_transactions.<a href="./src/increase/resources/declined_transactions.py">retrieve</a>(declined_transaction_id) -> <a href="./src/increase/types/declined_transaction.py">DeclinedTransaction</a></code>
 - <code title="get /declined_transactions">client.declined_transactions.<a href="./src/increase/resources/declined_transactions.py">list</a>(\*\*<a href="src/increase/types/declined_transaction_list_params.py">params</a>) -> <a href="./src/increase/types/declined_transaction.py">SyncPage[DeclinedTransaction]</a></code>
-
-# AccountTransfers
-
-Types:
-
-```python
-from increase.types import AccountTransfer
-```
-
-Methods:
-
-- <code title="post /account_transfers">client.account_transfers.<a href="./src/increase/resources/account_transfers.py">create</a>(\*\*<a href="src/increase/types/account_transfer_create_params.py">params</a>) -> <a href="./src/increase/types/account_transfer.py">AccountTransfer</a></code>
-- <code title="get /account_transfers/{account_transfer_id}">client.account_transfers.<a href="./src/increase/resources/account_transfers.py">retrieve</a>(account_transfer_id) -> <a href="./src/increase/types/account_transfer.py">AccountTransfer</a></code>
-- <code title="get /account_transfers">client.account_transfers.<a href="./src/increase/resources/account_transfers.py">list</a>(\*\*<a href="src/increase/types/account_transfer_list_params.py">params</a>) -> <a href="./src/increase/types/account_transfer.py">SyncPage[AccountTransfer]</a></code>
-- <code title="post /account_transfers/{account_transfer_id}/approve">client.account_transfers.<a href="./src/increase/resources/account_transfers.py">approve</a>(account_transfer_id) -> <a href="./src/increase/types/account_transfer.py">AccountTransfer</a></code>
-- <code title="post /account_transfers/{account_transfer_id}/cancel">client.account_transfers.<a href="./src/increase/resources/account_transfers.py">cancel</a>(account_transfer_id) -> <a href="./src/increase/types/account_transfer.py">AccountTransfer</a></code>
 
 # ACHTransfers
 
@@ -779,6 +779,12 @@ Methods:
 
 - <code title="post /simulations/interest_payments">client.simulations.interest_payments.<a href="./src/increase/resources/simulations/interest_payments.py">create</a>(\*\*<a href="src/increase/types/simulations/interest_payment_create_params.py">params</a>) -> <a href="./src/increase/types/transaction.py">Transaction</a></code>
 
+## AccountTransfers
+
+Methods:
+
+- <code title="post /simulations/account_transfers/{account_transfer_id}/complete">client.simulations.account_transfers.<a href="./src/increase/resources/simulations/account_transfers.py">complete</a>(account_transfer_id) -> <a href="./src/increase/types/account_transfer.py">AccountTransfer</a></code>
+
 ## CardAuthorizations
 
 Types:
@@ -857,12 +863,6 @@ Methods:
 Methods:
 
 - <code title="post /simulations/pending_transactions/{pending_transaction_id}/release_inbound_funds_hold">client.simulations.pending_transactions.<a href="./src/increase/resources/simulations/pending_transactions.py">release_inbound_funds_hold</a>(pending_transaction_id) -> <a href="./src/increase/types/pending_transaction.py">PendingTransaction</a></code>
-
-## AccountTransfers
-
-Methods:
-
-- <code title="post /simulations/account_transfers/{account_transfer_id}/complete">client.simulations.account_transfers.<a href="./src/increase/resources/simulations/account_transfers.py">complete</a>(account_transfer_id) -> <a href="./src/increase/types/account_transfer.py">AccountTransfer</a></code>
 
 ## ACHTransfers
 
