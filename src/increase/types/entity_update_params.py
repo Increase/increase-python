@@ -21,13 +21,25 @@ __all__ = [
 
 class EntityUpdateParams(TypedDict, total=False):
     corporation: Corporation
-    """Details of the corporation entity to update."""
+    """Details of the corporation entity to update.
+
+    If you specify this parameter and the entity is not a corporation, the request
+    will fail.
+    """
 
     government_authority: GovernmentAuthority
-    """Details of the government authority entity to update."""
+    """Details of the government authority entity to update.
+
+    If you specify this parameter and the entity is not a government authority, the
+    request will fail.
+    """
 
     natural_person: NaturalPerson
-    """Details of the natural person entity to update."""
+    """Details of the natural person entity to update.
+
+    If you specify this parameter and the entity is not a natural person, the
+    request will fail.
+    """
 
     risk_rating: RiskRating
     """
@@ -42,7 +54,11 @@ class EntityUpdateParams(TypedDict, total=False):
     """
 
     trust: Trust
-    """Details of the trust entity to update."""
+    """Details of the trust entity to update.
+
+    If you specify this parameter and the entity is not a trust, the request will
+    fail.
+    """
 
 
 class Corporation(TypedDict, total=False):
