@@ -212,11 +212,14 @@ class EntitiesResource(SyncAPIResource):
         Args:
           entity_id: The entity identifier.
 
-          corporation: Details of the corporation entity to update.
+          corporation: Details of the corporation entity to update. If you specify this parameter and
+              the entity is not a corporation, the request will fail.
 
-          government_authority: Details of the government authority entity to update.
+          government_authority: Details of the government authority entity to update. If you specify this
+              parameter and the entity is not a government authority, the request will fail.
 
-          natural_person: Details of the natural person entity to update.
+          natural_person: Details of the natural person entity to update. If you specify this parameter
+              and the entity is not a natural person, the request will fail.
 
           risk_rating: An assessment of the entity’s potential risk of involvement in financial crimes,
               such as money laundering.
@@ -224,7 +227,8 @@ class EntitiesResource(SyncAPIResource):
           third_party_verification: A reference to data stored in a third-party verification service. Your
               integration may or may not use this field.
 
-          trust: Details of the trust entity to update.
+          trust: Details of the trust entity to update. If you specify this parameter and the
+              entity is not a trust, the request will fail.
 
           extra_headers: Send extra headers
 
@@ -848,11 +852,14 @@ class AsyncEntitiesResource(AsyncAPIResource):
         Args:
           entity_id: The entity identifier.
 
-          corporation: Details of the corporation entity to update.
+          corporation: Details of the corporation entity to update. If you specify this parameter and
+              the entity is not a corporation, the request will fail.
 
-          government_authority: Details of the government authority entity to update.
+          government_authority: Details of the government authority entity to update. If you specify this
+              parameter and the entity is not a government authority, the request will fail.
 
-          natural_person: Details of the natural person entity to update.
+          natural_person: Details of the natural person entity to update. If you specify this parameter
+              and the entity is not a natural person, the request will fail.
 
           risk_rating: An assessment of the entity’s potential risk of involvement in financial crimes,
               such as money laundering.
@@ -860,7 +867,8 @@ class AsyncEntitiesResource(AsyncAPIResource):
           third_party_verification: A reference to data stored in a third-party verification service. Your
               integration may or may not use this field.
 
-          trust: Details of the trust entity to update.
+          trust: Details of the trust entity to update. If you specify this parameter and the
+              entity is not a trust, the request will fail.
 
           extra_headers: Send extra headers
 
