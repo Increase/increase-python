@@ -8,10 +8,27 @@ from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
-__all__ = ["EntityUpdateParams", "RiskRating", "ThirdPartyVerification"]
+__all__ = [
+    "EntityUpdateParams",
+    "Corporation",
+    "GovernmentAuthority",
+    "NaturalPerson",
+    "RiskRating",
+    "ThirdPartyVerification",
+    "Trust",
+]
 
 
 class EntityUpdateParams(TypedDict, total=False):
+    corporation: Corporation
+    """Details of the corporation entity to update."""
+
+    government_authority: GovernmentAuthority
+    """Details of the government authority entity to update."""
+
+    natural_person: NaturalPerson
+    """Details of the natural person entity to update."""
+
     risk_rating: RiskRating
     """
     An assessment of the entity’s potential risk of involvement in financial crimes,
@@ -23,6 +40,24 @@ class EntityUpdateParams(TypedDict, total=False):
 
     Your integration may or may not use this field.
     """
+
+    trust: Trust
+    """Details of the trust entity to update."""
+
+
+class Corporation(TypedDict, total=False):
+    name: str
+    """The legal name of the corporation."""
+
+
+class GovernmentAuthority(TypedDict, total=False):
+    name: str
+    """The legal name of the government authority."""
+
+
+class NaturalPerson(TypedDict, total=False):
+    name: str
+    """The legal name of the natural person."""
 
 
 class RiskRating(TypedDict, total=False):
@@ -52,3 +87,8 @@ class ThirdPartyVerification(TypedDict, total=False):
     - `middesk` - Middesk. See https://middesk.com for more information.
     - `oscilar` - Oscilar. See https://oscilar.com for more information.
     """
+
+
+class Trust(TypedDict, total=False):
+    name: str
+    """The legal name of the trust."""
