@@ -112,6 +112,7 @@ ENVIRONMENTS: Dict[str, str] = {
 class Increase(SyncAPIClient):
     accounts: accounts.AccountsResource
     account_numbers: account_numbers.AccountNumbersResource
+    account_transfers: account_transfers.AccountTransfersResource
     cards: cards.CardsResource
     card_payments: card_payments.CardPaymentsResource
     card_purchase_supplements: card_purchase_supplements.CardPurchaseSupplementsResource
@@ -123,7 +124,6 @@ class Increase(SyncAPIClient):
     transactions: transactions.TransactionsResource
     pending_transactions: pending_transactions.PendingTransactionsResource
     declined_transactions: declined_transactions.DeclinedTransactionsResource
-    account_transfers: account_transfers.AccountTransfersResource
     ach_transfers: ach_transfers.ACHTransfersResource
     ach_prenotifications: ach_prenotifications.ACHPrenotificationsResource
     inbound_ach_transfers: inbound_ach_transfers.InboundACHTransfersResource
@@ -259,6 +259,7 @@ class Increase(SyncAPIClient):
 
         self.accounts = accounts.AccountsResource(self)
         self.account_numbers = account_numbers.AccountNumbersResource(self)
+        self.account_transfers = account_transfers.AccountTransfersResource(self)
         self.cards = cards.CardsResource(self)
         self.card_payments = card_payments.CardPaymentsResource(self)
         self.card_purchase_supplements = card_purchase_supplements.CardPurchaseSupplementsResource(self)
@@ -270,7 +271,6 @@ class Increase(SyncAPIClient):
         self.transactions = transactions.TransactionsResource(self)
         self.pending_transactions = pending_transactions.PendingTransactionsResource(self)
         self.declined_transactions = declined_transactions.DeclinedTransactionsResource(self)
-        self.account_transfers = account_transfers.AccountTransfersResource(self)
         self.ach_transfers = ach_transfers.ACHTransfersResource(self)
         self.ach_prenotifications = ach_prenotifications.ACHPrenotificationsResource(self)
         self.inbound_ach_transfers = inbound_ach_transfers.InboundACHTransfersResource(self)
@@ -475,6 +475,7 @@ class Increase(SyncAPIClient):
 class AsyncIncrease(AsyncAPIClient):
     accounts: accounts.AsyncAccountsResource
     account_numbers: account_numbers.AsyncAccountNumbersResource
+    account_transfers: account_transfers.AsyncAccountTransfersResource
     cards: cards.AsyncCardsResource
     card_payments: card_payments.AsyncCardPaymentsResource
     card_purchase_supplements: card_purchase_supplements.AsyncCardPurchaseSupplementsResource
@@ -486,7 +487,6 @@ class AsyncIncrease(AsyncAPIClient):
     transactions: transactions.AsyncTransactionsResource
     pending_transactions: pending_transactions.AsyncPendingTransactionsResource
     declined_transactions: declined_transactions.AsyncDeclinedTransactionsResource
-    account_transfers: account_transfers.AsyncAccountTransfersResource
     ach_transfers: ach_transfers.AsyncACHTransfersResource
     ach_prenotifications: ach_prenotifications.AsyncACHPrenotificationsResource
     inbound_ach_transfers: inbound_ach_transfers.AsyncInboundACHTransfersResource
@@ -624,6 +624,7 @@ class AsyncIncrease(AsyncAPIClient):
 
         self.accounts = accounts.AsyncAccountsResource(self)
         self.account_numbers = account_numbers.AsyncAccountNumbersResource(self)
+        self.account_transfers = account_transfers.AsyncAccountTransfersResource(self)
         self.cards = cards.AsyncCardsResource(self)
         self.card_payments = card_payments.AsyncCardPaymentsResource(self)
         self.card_purchase_supplements = card_purchase_supplements.AsyncCardPurchaseSupplementsResource(self)
@@ -635,7 +636,6 @@ class AsyncIncrease(AsyncAPIClient):
         self.transactions = transactions.AsyncTransactionsResource(self)
         self.pending_transactions = pending_transactions.AsyncPendingTransactionsResource(self)
         self.declined_transactions = declined_transactions.AsyncDeclinedTransactionsResource(self)
-        self.account_transfers = account_transfers.AsyncAccountTransfersResource(self)
         self.ach_transfers = ach_transfers.AsyncACHTransfersResource(self)
         self.ach_prenotifications = ach_prenotifications.AsyncACHPrenotificationsResource(self)
         self.inbound_ach_transfers = inbound_ach_transfers.AsyncInboundACHTransfersResource(self)
@@ -843,6 +843,7 @@ class IncreaseWithRawResponse:
     def __init__(self, client: Increase) -> None:
         self.accounts = accounts.AccountsResourceWithRawResponse(client.accounts)
         self.account_numbers = account_numbers.AccountNumbersResourceWithRawResponse(client.account_numbers)
+        self.account_transfers = account_transfers.AccountTransfersResourceWithRawResponse(client.account_transfers)
         self.cards = cards.CardsResourceWithRawResponse(client.cards)
         self.card_payments = card_payments.CardPaymentsResourceWithRawResponse(client.card_payments)
         self.card_purchase_supplements = card_purchase_supplements.CardPurchaseSupplementsResourceWithRawResponse(
@@ -866,7 +867,6 @@ class IncreaseWithRawResponse:
         self.declined_transactions = declined_transactions.DeclinedTransactionsResourceWithRawResponse(
             client.declined_transactions
         )
-        self.account_transfers = account_transfers.AccountTransfersResourceWithRawResponse(client.account_transfers)
         self.ach_transfers = ach_transfers.ACHTransfersResourceWithRawResponse(client.ach_transfers)
         self.ach_prenotifications = ach_prenotifications.ACHPrenotificationsResourceWithRawResponse(
             client.ach_prenotifications
@@ -952,6 +952,9 @@ class AsyncIncreaseWithRawResponse:
     def __init__(self, client: AsyncIncrease) -> None:
         self.accounts = accounts.AsyncAccountsResourceWithRawResponse(client.accounts)
         self.account_numbers = account_numbers.AsyncAccountNumbersResourceWithRawResponse(client.account_numbers)
+        self.account_transfers = account_transfers.AsyncAccountTransfersResourceWithRawResponse(
+            client.account_transfers
+        )
         self.cards = cards.AsyncCardsResourceWithRawResponse(client.cards)
         self.card_payments = card_payments.AsyncCardPaymentsResourceWithRawResponse(client.card_payments)
         self.card_purchase_supplements = card_purchase_supplements.AsyncCardPurchaseSupplementsResourceWithRawResponse(
@@ -974,9 +977,6 @@ class AsyncIncreaseWithRawResponse:
         )
         self.declined_transactions = declined_transactions.AsyncDeclinedTransactionsResourceWithRawResponse(
             client.declined_transactions
-        )
-        self.account_transfers = account_transfers.AsyncAccountTransfersResourceWithRawResponse(
-            client.account_transfers
         )
         self.ach_transfers = ach_transfers.AsyncACHTransfersResourceWithRawResponse(client.ach_transfers)
         self.ach_prenotifications = ach_prenotifications.AsyncACHPrenotificationsResourceWithRawResponse(
@@ -1077,6 +1077,9 @@ class IncreaseWithStreamedResponse:
     def __init__(self, client: Increase) -> None:
         self.accounts = accounts.AccountsResourceWithStreamingResponse(client.accounts)
         self.account_numbers = account_numbers.AccountNumbersResourceWithStreamingResponse(client.account_numbers)
+        self.account_transfers = account_transfers.AccountTransfersResourceWithStreamingResponse(
+            client.account_transfers
+        )
         self.cards = cards.CardsResourceWithStreamingResponse(client.cards)
         self.card_payments = card_payments.CardPaymentsResourceWithStreamingResponse(client.card_payments)
         self.card_purchase_supplements = card_purchase_supplements.CardPurchaseSupplementsResourceWithStreamingResponse(
@@ -1099,9 +1102,6 @@ class IncreaseWithStreamedResponse:
         )
         self.declined_transactions = declined_transactions.DeclinedTransactionsResourceWithStreamingResponse(
             client.declined_transactions
-        )
-        self.account_transfers = account_transfers.AccountTransfersResourceWithStreamingResponse(
-            client.account_transfers
         )
         self.ach_transfers = ach_transfers.ACHTransfersResourceWithStreamingResponse(client.ach_transfers)
         self.ach_prenotifications = ach_prenotifications.ACHPrenotificationsResourceWithStreamingResponse(
@@ -1202,6 +1202,9 @@ class AsyncIncreaseWithStreamedResponse:
     def __init__(self, client: AsyncIncrease) -> None:
         self.accounts = accounts.AsyncAccountsResourceWithStreamingResponse(client.accounts)
         self.account_numbers = account_numbers.AsyncAccountNumbersResourceWithStreamingResponse(client.account_numbers)
+        self.account_transfers = account_transfers.AsyncAccountTransfersResourceWithStreamingResponse(
+            client.account_transfers
+        )
         self.cards = cards.AsyncCardsResourceWithStreamingResponse(client.cards)
         self.card_payments = card_payments.AsyncCardPaymentsResourceWithStreamingResponse(client.card_payments)
         self.card_purchase_supplements = (
@@ -1226,9 +1229,6 @@ class AsyncIncreaseWithStreamedResponse:
         )
         self.declined_transactions = declined_transactions.AsyncDeclinedTransactionsResourceWithStreamingResponse(
             client.declined_transactions
-        )
-        self.account_transfers = account_transfers.AsyncAccountTransfersResourceWithStreamingResponse(
-            client.account_transfers
         )
         self.ach_transfers = ach_transfers.AsyncACHTransfersResourceWithStreamingResponse(client.ach_transfers)
         self.ach_prenotifications = ach_prenotifications.AsyncACHPrenotificationsResourceWithStreamingResponse(

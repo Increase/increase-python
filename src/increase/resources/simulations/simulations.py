@@ -246,6 +246,10 @@ class SimulationsResource(SyncAPIResource):
         return InterestPaymentsResource(self._client)
 
     @cached_property
+    def account_transfers(self) -> AccountTransfersResource:
+        return AccountTransfersResource(self._client)
+
+    @cached_property
     def card_authorizations(self) -> CardAuthorizationsResource:
         return CardAuthorizationsResource(self._client)
 
@@ -288,10 +292,6 @@ class SimulationsResource(SyncAPIResource):
     @cached_property
     def pending_transactions(self) -> PendingTransactionsResource:
         return PendingTransactionsResource(self._client)
-
-    @cached_property
-    def account_transfers(self) -> AccountTransfersResource:
-        return AccountTransfersResource(self._client)
 
     @cached_property
     def ach_transfers(self) -> ACHTransfersResource:
@@ -383,6 +383,10 @@ class AsyncSimulationsResource(AsyncAPIResource):
         return AsyncInterestPaymentsResource(self._client)
 
     @cached_property
+    def account_transfers(self) -> AsyncAccountTransfersResource:
+        return AsyncAccountTransfersResource(self._client)
+
+    @cached_property
     def card_authorizations(self) -> AsyncCardAuthorizationsResource:
         return AsyncCardAuthorizationsResource(self._client)
 
@@ -425,10 +429,6 @@ class AsyncSimulationsResource(AsyncAPIResource):
     @cached_property
     def pending_transactions(self) -> AsyncPendingTransactionsResource:
         return AsyncPendingTransactionsResource(self._client)
-
-    @cached_property
-    def account_transfers(self) -> AsyncAccountTransfersResource:
-        return AsyncAccountTransfersResource(self._client)
 
     @cached_property
     def ach_transfers(self) -> AsyncACHTransfersResource:
@@ -523,6 +523,10 @@ class SimulationsResourceWithRawResponse:
         return InterestPaymentsResourceWithRawResponse(self._simulations.interest_payments)
 
     @cached_property
+    def account_transfers(self) -> AccountTransfersResourceWithRawResponse:
+        return AccountTransfersResourceWithRawResponse(self._simulations.account_transfers)
+
+    @cached_property
     def card_authorizations(self) -> CardAuthorizationsResourceWithRawResponse:
         return CardAuthorizationsResourceWithRawResponse(self._simulations.card_authorizations)
 
@@ -565,10 +569,6 @@ class SimulationsResourceWithRawResponse:
     @cached_property
     def pending_transactions(self) -> PendingTransactionsResourceWithRawResponse:
         return PendingTransactionsResourceWithRawResponse(self._simulations.pending_transactions)
-
-    @cached_property
-    def account_transfers(self) -> AccountTransfersResourceWithRawResponse:
-        return AccountTransfersResourceWithRawResponse(self._simulations.account_transfers)
 
     @cached_property
     def ach_transfers(self) -> ACHTransfersResourceWithRawResponse:
@@ -646,6 +646,10 @@ class AsyncSimulationsResourceWithRawResponse:
         return AsyncInterestPaymentsResourceWithRawResponse(self._simulations.interest_payments)
 
     @cached_property
+    def account_transfers(self) -> AsyncAccountTransfersResourceWithRawResponse:
+        return AsyncAccountTransfersResourceWithRawResponse(self._simulations.account_transfers)
+
+    @cached_property
     def card_authorizations(self) -> AsyncCardAuthorizationsResourceWithRawResponse:
         return AsyncCardAuthorizationsResourceWithRawResponse(self._simulations.card_authorizations)
 
@@ -690,10 +694,6 @@ class AsyncSimulationsResourceWithRawResponse:
     @cached_property
     def pending_transactions(self) -> AsyncPendingTransactionsResourceWithRawResponse:
         return AsyncPendingTransactionsResourceWithRawResponse(self._simulations.pending_transactions)
-
-    @cached_property
-    def account_transfers(self) -> AsyncAccountTransfersResourceWithRawResponse:
-        return AsyncAccountTransfersResourceWithRawResponse(self._simulations.account_transfers)
 
     @cached_property
     def ach_transfers(self) -> AsyncACHTransfersResourceWithRawResponse:
@@ -771,6 +771,10 @@ class SimulationsResourceWithStreamingResponse:
         return InterestPaymentsResourceWithStreamingResponse(self._simulations.interest_payments)
 
     @cached_property
+    def account_transfers(self) -> AccountTransfersResourceWithStreamingResponse:
+        return AccountTransfersResourceWithStreamingResponse(self._simulations.account_transfers)
+
+    @cached_property
     def card_authorizations(self) -> CardAuthorizationsResourceWithStreamingResponse:
         return CardAuthorizationsResourceWithStreamingResponse(self._simulations.card_authorizations)
 
@@ -815,10 +819,6 @@ class SimulationsResourceWithStreamingResponse:
     @cached_property
     def pending_transactions(self) -> PendingTransactionsResourceWithStreamingResponse:
         return PendingTransactionsResourceWithStreamingResponse(self._simulations.pending_transactions)
-
-    @cached_property
-    def account_transfers(self) -> AccountTransfersResourceWithStreamingResponse:
-        return AccountTransfersResourceWithStreamingResponse(self._simulations.account_transfers)
 
     @cached_property
     def ach_transfers(self) -> ACHTransfersResourceWithStreamingResponse:
@@ -898,6 +898,10 @@ class AsyncSimulationsResourceWithStreamingResponse:
         return AsyncInterestPaymentsResourceWithStreamingResponse(self._simulations.interest_payments)
 
     @cached_property
+    def account_transfers(self) -> AsyncAccountTransfersResourceWithStreamingResponse:
+        return AsyncAccountTransfersResourceWithStreamingResponse(self._simulations.account_transfers)
+
+    @cached_property
     def card_authorizations(self) -> AsyncCardAuthorizationsResourceWithStreamingResponse:
         return AsyncCardAuthorizationsResourceWithStreamingResponse(self._simulations.card_authorizations)
 
@@ -944,10 +948,6 @@ class AsyncSimulationsResourceWithStreamingResponse:
     @cached_property
     def pending_transactions(self) -> AsyncPendingTransactionsResourceWithStreamingResponse:
         return AsyncPendingTransactionsResourceWithStreamingResponse(self._simulations.pending_transactions)
-
-    @cached_property
-    def account_transfers(self) -> AsyncAccountTransfersResourceWithStreamingResponse:
-        return AsyncAccountTransfersResourceWithStreamingResponse(self._simulations.account_transfers)
 
     @cached_property
     def ach_transfers(self) -> AsyncACHTransfersResourceWithStreamingResponse:
