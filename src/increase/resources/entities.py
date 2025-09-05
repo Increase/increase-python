@@ -192,8 +192,12 @@ class EntitiesResource(SyncAPIResource):
         self,
         entity_id: str,
         *,
+        corporation: entity_update_params.Corporation | NotGiven = NOT_GIVEN,
+        government_authority: entity_update_params.GovernmentAuthority | NotGiven = NOT_GIVEN,
+        natural_person: entity_update_params.NaturalPerson | NotGiven = NOT_GIVEN,
         risk_rating: entity_update_params.RiskRating | NotGiven = NOT_GIVEN,
         third_party_verification: entity_update_params.ThirdPartyVerification | NotGiven = NOT_GIVEN,
+        trust: entity_update_params.Trust | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -208,11 +212,19 @@ class EntitiesResource(SyncAPIResource):
         Args:
           entity_id: The entity identifier.
 
+          corporation: Details of the corporation entity to update.
+
+          government_authority: Details of the government authority entity to update.
+
+          natural_person: Details of the natural person entity to update.
+
           risk_rating: An assessment of the entity’s potential risk of involvement in financial crimes,
               such as money laundering.
 
           third_party_verification: A reference to data stored in a third-party verification service. Your
               integration may or may not use this field.
+
+          trust: Details of the trust entity to update.
 
           extra_headers: Send extra headers
 
@@ -230,8 +242,12 @@ class EntitiesResource(SyncAPIResource):
             f"/entities/{entity_id}",
             body=maybe_transform(
                 {
+                    "corporation": corporation,
+                    "government_authority": government_authority,
+                    "natural_person": natural_person,
                     "risk_rating": risk_rating,
                     "third_party_verification": third_party_verification,
+                    "trust": trust,
                 },
                 entity_update_params.EntityUpdateParams,
             ),
@@ -812,8 +828,12 @@ class AsyncEntitiesResource(AsyncAPIResource):
         self,
         entity_id: str,
         *,
+        corporation: entity_update_params.Corporation | NotGiven = NOT_GIVEN,
+        government_authority: entity_update_params.GovernmentAuthority | NotGiven = NOT_GIVEN,
+        natural_person: entity_update_params.NaturalPerson | NotGiven = NOT_GIVEN,
         risk_rating: entity_update_params.RiskRating | NotGiven = NOT_GIVEN,
         third_party_verification: entity_update_params.ThirdPartyVerification | NotGiven = NOT_GIVEN,
+        trust: entity_update_params.Trust | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -828,11 +848,19 @@ class AsyncEntitiesResource(AsyncAPIResource):
         Args:
           entity_id: The entity identifier.
 
+          corporation: Details of the corporation entity to update.
+
+          government_authority: Details of the government authority entity to update.
+
+          natural_person: Details of the natural person entity to update.
+
           risk_rating: An assessment of the entity’s potential risk of involvement in financial crimes,
               such as money laundering.
 
           third_party_verification: A reference to data stored in a third-party verification service. Your
               integration may or may not use this field.
+
+          trust: Details of the trust entity to update.
 
           extra_headers: Send extra headers
 
@@ -850,8 +878,12 @@ class AsyncEntitiesResource(AsyncAPIResource):
             f"/entities/{entity_id}",
             body=await async_maybe_transform(
                 {
+                    "corporation": corporation,
+                    "government_authority": government_authority,
+                    "natural_person": natural_person,
                     "risk_rating": risk_rating,
                     "third_party_verification": third_party_verification,
+                    "trust": trust,
                 },
                 entity_update_params.EntityUpdateParams,
             ),
