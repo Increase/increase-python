@@ -355,6 +355,7 @@ class TestEntities:
                     "zip": "10045",
                     "line2": "Unit 2",
                 },
+                "industry_code": "x",
                 "name": "x",
             },
             government_authority={
@@ -1280,6 +1281,7 @@ class TestAsyncEntities:
                     "zip": "10045",
                     "line2": "Unit 2",
                 },
+                "industry_code": "x",
                 "name": "x",
             },
             government_authority={
