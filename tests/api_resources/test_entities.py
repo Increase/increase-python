@@ -347,9 +347,36 @@ class TestEntities:
     def test_method_update_with_all_params(self, client: Increase) -> None:
         entity = client.entities.update(
             entity_id="entity_n8y8tnk2p9339ti393yi",
-            corporation={"name": "x"},
-            government_authority={"name": "x"},
-            natural_person={"name": "x"},
+            corporation={
+                "address": {
+                    "city": "New York",
+                    "line1": "33 Liberty Street",
+                    "state": "NY",
+                    "zip": "10045",
+                    "line2": "Unit 2",
+                },
+                "name": "x",
+            },
+            government_authority={
+                "address": {
+                    "city": "x",
+                    "line1": "x",
+                    "state": "x",
+                    "zip": "x",
+                    "line2": "x",
+                },
+                "name": "x",
+            },
+            natural_person={
+                "address": {
+                    "city": "x",
+                    "line1": "x",
+                    "state": "x",
+                    "zip": "x",
+                    "line2": "x",
+                },
+                "name": "x",
+            },
             risk_rating={
                 "rated_at": parse_datetime("2020-01-31T23:59:59Z"),
                 "rating": "low",
@@ -358,7 +385,16 @@ class TestEntities:
                 "reference": "x",
                 "vendor": "alloy",
             },
-            trust={"name": "x"},
+            trust={
+                "address": {
+                    "city": "x",
+                    "line1": "x",
+                    "state": "x",
+                    "zip": "x",
+                    "line2": "x",
+                },
+                "name": "x",
+            },
         )
         assert_matches_type(Entity, entity, path=["response"])
 
@@ -1236,9 +1272,36 @@ class TestAsyncEntities:
     async def test_method_update_with_all_params(self, async_client: AsyncIncrease) -> None:
         entity = await async_client.entities.update(
             entity_id="entity_n8y8tnk2p9339ti393yi",
-            corporation={"name": "x"},
-            government_authority={"name": "x"},
-            natural_person={"name": "x"},
+            corporation={
+                "address": {
+                    "city": "New York",
+                    "line1": "33 Liberty Street",
+                    "state": "NY",
+                    "zip": "10045",
+                    "line2": "Unit 2",
+                },
+                "name": "x",
+            },
+            government_authority={
+                "address": {
+                    "city": "x",
+                    "line1": "x",
+                    "state": "x",
+                    "zip": "x",
+                    "line2": "x",
+                },
+                "name": "x",
+            },
+            natural_person={
+                "address": {
+                    "city": "x",
+                    "line1": "x",
+                    "state": "x",
+                    "zip": "x",
+                    "line2": "x",
+                },
+                "name": "x",
+            },
             risk_rating={
                 "rated_at": parse_datetime("2020-01-31T23:59:59Z"),
                 "rating": "low",
@@ -1247,7 +1310,16 @@ class TestAsyncEntities:
                 "reference": "x",
                 "vendor": "alloy",
             },
-            trust={"name": "x"},
+            trust={
+                "address": {
+                    "city": "x",
+                    "line1": "x",
+                    "state": "x",
+                    "zip": "x",
+                    "line2": "x",
+                },
+                "name": "x",
+            },
         )
         assert_matches_type(Entity, entity, path=["response"])
 
