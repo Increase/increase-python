@@ -52,9 +52,10 @@ class EntityUpdateParams(TypedDict, total=False):
     """
 
     third_party_verification: ThirdPartyVerification
-    """A reference to data stored in a third-party verification service.
-
-    Your integration may or may not use this field.
+    """
+    If you are using a third-party service for identity verification, you can use
+    this field to associate this Entity with the identifier that represents them in
+    that service.
     """
 
     trust: Trust
@@ -176,9 +177,9 @@ class RiskRating(TypedDict, total=False):
     rating: Required[Literal["low", "medium", "high"]]
     """The rating given to this entity.
 
-    - `low` - Low
-    - `medium` - Medium
-    - `high` - High
+    - `low` - Minimal risk of involvement in financial crime.
+    - `medium` - Moderate risk of involvement in financial crime.
+    - `high` - Elevated risk of involvement in financial crime.
     """
 
 
