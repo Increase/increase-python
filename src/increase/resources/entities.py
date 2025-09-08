@@ -110,8 +110,9 @@ class EntitiesResource(SyncAPIResource):
 
           supplemental_documents: Additional documentation associated with the entity.
 
-          third_party_verification: A reference to data stored in a third-party verification service. Your
-              integration may or may not use this field.
+          third_party_verification: If you are using a third-party service for identity verification, you can use
+              this field to associate this Entity with the identifier that represents them in
+              that service.
 
           trust: Details of the trust entity to create. Required if `structure` is equal to
               `trust`.
@@ -224,8 +225,9 @@ class EntitiesResource(SyncAPIResource):
           risk_rating: An assessment of the entity’s potential risk of involvement in financial crimes,
               such as money laundering.
 
-          third_party_verification: A reference to data stored in a third-party verification service. Your
-              integration may or may not use this field.
+          third_party_verification: If you are using a third-party service for identity verification, you can use
+              this field to associate this Entity with the identifier that represents them in
+              that service.
 
           trust: Details of the trust entity to update. If you specify this parameter and the
               entity is not a trust, the request will fail.
@@ -750,8 +752,9 @@ class AsyncEntitiesResource(AsyncAPIResource):
 
           supplemental_documents: Additional documentation associated with the entity.
 
-          third_party_verification: A reference to data stored in a third-party verification service. Your
-              integration may or may not use this field.
+          third_party_verification: If you are using a third-party service for identity verification, you can use
+              this field to associate this Entity with the identifier that represents them in
+              that service.
 
           trust: Details of the trust entity to create. Required if `structure` is equal to
               `trust`.
@@ -864,8 +867,9 @@ class AsyncEntitiesResource(AsyncAPIResource):
           risk_rating: An assessment of the entity’s potential risk of involvement in financial crimes,
               such as money laundering.
 
-          third_party_verification: A reference to data stored in a third-party verification service. Your
-              integration may or may not use this field.
+          third_party_verification: If you are using a third-party service for identity verification, you can use
+              this field to associate this Entity with the identifier that represents them in
+              that service.
 
           trust: Details of the trust entity to update. If you specify this parameter and the
               entity is not a trust, the request will fail.
