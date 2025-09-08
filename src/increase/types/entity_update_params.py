@@ -31,6 +31,13 @@ class EntityUpdateParams(TypedDict, total=False):
     will fail.
     """
 
+    details_confirmed_at: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
+    """When your user last confirmed the Entity's details.
+
+    Depending on your program, you may be required to affirmatively confirm details
+    with your users on an annual basis.
+    """
+
     government_authority: GovernmentAuthority
     """Details of the government authority entity to update.
 

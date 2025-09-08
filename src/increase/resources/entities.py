@@ -194,6 +194,7 @@ class EntitiesResource(SyncAPIResource):
         entity_id: str,
         *,
         corporation: entity_update_params.Corporation | NotGiven = NOT_GIVEN,
+        details_confirmed_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
         government_authority: entity_update_params.GovernmentAuthority | NotGiven = NOT_GIVEN,
         natural_person: entity_update_params.NaturalPerson | NotGiven = NOT_GIVEN,
         risk_rating: entity_update_params.RiskRating | NotGiven = NOT_GIVEN,
@@ -215,6 +216,10 @@ class EntitiesResource(SyncAPIResource):
 
           corporation: Details of the corporation entity to update. If you specify this parameter and
               the entity is not a corporation, the request will fail.
+
+          details_confirmed_at: When your user last confirmed the Entity's details. Depending on your program,
+              you may be required to affirmatively confirm details with your users on an
+              annual basis.
 
           government_authority: Details of the government authority entity to update. If you specify this
               parameter and the entity is not a government authority, the request will fail.
@@ -249,6 +254,7 @@ class EntitiesResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "corporation": corporation,
+                    "details_confirmed_at": details_confirmed_at,
                     "government_authority": government_authority,
                     "natural_person": natural_person,
                     "risk_rating": risk_rating,
@@ -836,6 +842,7 @@ class AsyncEntitiesResource(AsyncAPIResource):
         entity_id: str,
         *,
         corporation: entity_update_params.Corporation | NotGiven = NOT_GIVEN,
+        details_confirmed_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
         government_authority: entity_update_params.GovernmentAuthority | NotGiven = NOT_GIVEN,
         natural_person: entity_update_params.NaturalPerson | NotGiven = NOT_GIVEN,
         risk_rating: entity_update_params.RiskRating | NotGiven = NOT_GIVEN,
@@ -857,6 +864,10 @@ class AsyncEntitiesResource(AsyncAPIResource):
 
           corporation: Details of the corporation entity to update. If you specify this parameter and
               the entity is not a corporation, the request will fail.
+
+          details_confirmed_at: When your user last confirmed the Entity's details. Depending on your program,
+              you may be required to affirmatively confirm details with your users on an
+              annual basis.
 
           government_authority: Details of the government authority entity to update. If you specify this
               parameter and the entity is not a government authority, the request will fail.
@@ -891,6 +902,7 @@ class AsyncEntitiesResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "corporation": corporation,
+                    "details_confirmed_at": details_confirmed_at,
                     "government_authority": government_authority,
                     "natural_person": natural_person,
                     "risk_rating": risk_rating,
