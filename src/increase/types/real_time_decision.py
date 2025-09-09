@@ -21,6 +21,7 @@ __all__ = [
     "CardAuthorizationAdditionalAmountsTransit",
     "CardAuthorizationAdditionalAmountsUnknown",
     "CardAuthorizationAdditionalAmountsVision",
+    "CardAuthorizationDecline",
     "CardAuthorizationNetworkDetails",
     "CardAuthorizationNetworkDetailsVisa",
     "CardAuthorizationNetworkIdentifiers",
@@ -212,6 +213,11 @@ class CardAuthorizationAdditionalAmounts(BaseModel):
 
     vision: Optional[CardAuthorizationAdditionalAmountsVision] = None
     """The part of this transaction amount that was for vision-related services."""
+
+
+class CardAuthorizationDecline(BaseModel):
+    reason: str
+    """The reason the authorization was declined."""
 
 
 class CardAuthorizationNetworkDetailsVisa(BaseModel):
@@ -422,23 +428,24 @@ class CardAuthorizationVerificationCardholderAddress(BaseModel):
 
     result: Literal[
         "not_checked",
-        "postal_code_match_address_not_checked",
         "postal_code_match_address_no_match",
         "postal_code_no_match_address_match",
         "match",
         "no_match",
+        "postal_code_match_address_not_checked",
     ]
     """The address verification result returned to the card network.
 
-    - `not_checked` - No address was provided in the authorization request.
-    - `postal_code_match_address_not_checked` - Postal code matches, but the street
-      address was not verified.
+    - `not_checked` - No address information was provided in the authorization
+      request.
     - `postal_code_match_address_no_match` - Postal code matches, but the street
-      address does not match.
+      address does not match or was not provided.
     - `postal_code_no_match_address_match` - Postal code does not match, but the
-      street address matches.
+      street address matches or was not provided.
     - `match` - Postal code and street address match.
     - `no_match` - Postal code and street address do not match.
+    - `postal_code_match_address_not_checked` - Postal code matches, but the street
+      address was not verified. (deprecated)
     """
 
 
@@ -475,6 +482,12 @@ class CardAuthorization(BaseModel):
 
     - `approve` - Approve the authorization.
     - `decline` - Decline the authorization.
+    """
+
+    decline: Optional[CardAuthorizationDecline] = None
+    """Present if and only if `decision` is `decline`.
+
+    Contains information related to the reason the authorization was declined.
     """
 
     digital_wallet_token_id: Optional[str] = None

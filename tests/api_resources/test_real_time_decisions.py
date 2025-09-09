@@ -70,6 +70,13 @@ class TestRealTimeDecisions:
             card_authentication_challenge={"result": "success"},
             card_authorization={
                 "decision": "approve",
+                "approval": {
+                    "cardholder_address_verification_result": {
+                        "line1": "match",
+                        "postal_code": "no_match",
+                    }
+                },
+                "decline": {"reason": "insufficient_funds"},
                 "decline_reason": "insufficient_funds",
             },
             digital_wallet_authentication={
@@ -179,6 +186,13 @@ class TestAsyncRealTimeDecisions:
             card_authentication_challenge={"result": "success"},
             card_authorization={
                 "decision": "approve",
+                "approval": {
+                    "cardholder_address_verification_result": {
+                        "line1": "match",
+                        "postal_code": "no_match",
+                    }
+                },
+                "decline": {"reason": "insufficient_funds"},
                 "decline_reason": "insufficient_funds",
             },
             digital_wallet_authentication={
