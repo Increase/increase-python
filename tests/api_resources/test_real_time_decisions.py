@@ -77,7 +77,6 @@ class TestRealTimeDecisions:
                     }
                 },
                 "decline": {"reason": "insufficient_funds"},
-                "decline_reason": "insufficient_funds",
             },
             digital_wallet_authentication={
                 "result": "success",
@@ -193,7 +192,6 @@ class TestAsyncRealTimeDecisions:
                     }
                 },
                 "decline": {"reason": "insufficient_funds"},
-                "decline_reason": "insufficient_funds",
             },
             digital_wallet_authentication={
                 "result": "success",
