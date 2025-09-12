@@ -44,6 +44,7 @@ _CategoryReservedKeywords = TypedDict(
                 "card_authorization",
                 "check_deposit_instruction",
                 "check_transfer_instruction",
+                "fed_now_transfer_instruction",
                 "inbound_funds_hold",
                 "user_initiated_hold",
                 "real_time_payments_transfer_instruction",
