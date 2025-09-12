@@ -46,6 +46,7 @@ __all__ = [
     "SourceCheckDepositAcceptance",
     "SourceCheckDepositReturn",
     "SourceCheckTransferDeposit",
+    "SourceFedNowTransferAcknowledgement",
     "SourceFeePayment",
     "SourceInboundACHTransfer",
     "SourceInboundACHTransferAddenda",
@@ -1869,6 +1870,11 @@ class SourceCheckTransferDeposit(BaseModel):
     """
 
 
+class SourceFedNowTransferAcknowledgement(BaseModel):
+    transfer_id: str
+    """The identifier of the FedNow Transfer that led to this Transaction."""
+
+
 class SourceFeePayment(BaseModel):
     amount: int
     """The amount in the minor unit of the transaction's currency.
@@ -2434,6 +2440,7 @@ class Source(BaseModel):
         "card_revenue_payment",
         "check_deposit_acceptance",
         "check_deposit_return",
+        "fed_now_transfer_acknowledgement",
         "check_transfer_deposit",
         "fee_payment",
         "inbound_ach_transfer",
@@ -2485,6 +2492,8 @@ class Source(BaseModel):
       the `check_deposit_acceptance` object.
     - `check_deposit_return` - Check Deposit Return: details will be under the
       `check_deposit_return` object.
+    - `fed_now_transfer_acknowledgement` - FedNow Transfer Acknowledgement: details
+      will be under the `fed_now_transfer_acknowledgement` object.
     - `check_transfer_deposit` - Check Transfer Deposit: details will be under the
       `check_transfer_deposit` object.
     - `fee_payment` - Fee Payment: details will be under the `fee_payment` object.
@@ -2556,6 +2565,15 @@ class Source(BaseModel):
     equal to `check_transfer_deposit`. An Inbound Check is a check drawn on an
     Increase account that has been deposited by an external bank account. These
     types of checks are not pre-registered.
+    """
+
+    fed_now_transfer_acknowledgement: Optional[SourceFedNowTransferAcknowledgement] = None
+    """A FedNow Transfer Acknowledgement object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `fed_now_transfer_acknowledgement`. A FedNow Transfer Acknowledgement
+    is created when a FedNow Transfer sent from Increase is acknowledged by the
+    receiving bank.
     """
 
     fee_payment: Optional[SourceFeePayment] = None
