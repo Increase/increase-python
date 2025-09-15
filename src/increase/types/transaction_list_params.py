@@ -53,7 +53,7 @@ _CategoryReservedKeywords = TypedDict(
                 "card_revenue_payment",
                 "check_deposit_acceptance",
                 "check_deposit_return",
-                "fed_now_transfer_acknowledgement",
+                "fednow_transfer_acknowledgement",
                 "check_transfer_deposit",
                 "fee_payment",
                 "inbound_ach_transfer",
