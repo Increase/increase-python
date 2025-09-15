@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.326.0 (2025-09-15)
+
+Full Changelog: [v0.325.0...v0.326.0](https://github.com/Increase/increase-python/compare/v0.325.0...v0.326.0)
+
+### Features
+
+* **api:** api update ([4c7695d](https://github.com/Increase/increase-python/commit/4c7695d7a4204629982ce79d96532c8948f04b15))
+
 ## 0.325.0 (2025-09-12)
 
 Full Changelog: [v0.324.0...v0.325.0](https://github.com/Increase/increase-python/compare/v0.324.0...v0.325.0)
