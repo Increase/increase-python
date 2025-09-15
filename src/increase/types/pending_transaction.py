@@ -31,7 +31,7 @@ __all__ = [
     "SourceCardPushTransferInstruction",
     "SourceCheckDepositInstruction",
     "SourceCheckTransferInstruction",
-    "SourceFedNowTransferInstruction",
+    "SourceFednowTransferInstruction",
     "SourceInboundFundsHold",
     "SourceInboundWireTransferReversal",
     "SourceRealTimePaymentsTransferInstruction",
@@ -663,7 +663,7 @@ class SourceCheckTransferInstruction(BaseModel):
     """The identifier of the Check Transfer that led to this Pending Transaction."""
 
 
-class SourceFedNowTransferInstruction(BaseModel):
+class SourceFednowTransferInstruction(BaseModel):
     transfer_id: str
     """The identifier of the FedNow Transfer that led to this Pending Transaction."""
 
@@ -800,7 +800,7 @@ class Source(BaseModel):
         "card_authorization",
         "check_deposit_instruction",
         "check_transfer_instruction",
-        "fed_now_transfer_instruction",
+        "fednow_transfer_instruction",
         "inbound_funds_hold",
         "user_initiated_hold",
         "real_time_payments_transfer_instruction",
@@ -825,8 +825,8 @@ class Source(BaseModel):
       the `check_deposit_instruction` object.
     - `check_transfer_instruction` - Check Transfer Instruction: details will be
       under the `check_transfer_instruction` object.
-    - `fed_now_transfer_instruction` - FedNow Transfer Instruction: details will be
-      under the `fed_now_transfer_instruction` object.
+    - `fednow_transfer_instruction` - FedNow Transfer Instruction: details will be
+      under the `fednow_transfer_instruction` object.
     - `inbound_funds_hold` - Inbound Funds Hold: details will be under the
       `inbound_funds_hold` object.
     - `user_initiated_hold` - User Initiated Hold: details will be under the
@@ -860,11 +860,11 @@ class Source(BaseModel):
     equal to `check_transfer_instruction`.
     """
 
-    fed_now_transfer_instruction: Optional[SourceFedNowTransferInstruction] = None
+    fednow_transfer_instruction: Optional[SourceFednowTransferInstruction] = None
     """A FedNow Transfer Instruction object.
 
     This field will be present in the JSON response if and only if `category` is
-    equal to `fed_now_transfer_instruction`.
+    equal to `fednow_transfer_instruction`.
     """
 
     inbound_funds_hold: Optional[SourceInboundFundsHold] = None
