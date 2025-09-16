@@ -74,6 +74,8 @@ _CategoryReservedKeywords = TypedDict(
                 "export.updated",
                 "external_account.created",
                 "external_account.updated",
+                "fednow_transfer.created",
+                "fednow_transfer.updated",
                 "file.created",
                 "group.updated",
                 "group.heartbeat",
