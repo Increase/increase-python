@@ -1,7 +1,7 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+import datetime
 from typing import Optional
-from datetime import date, datetime
 from typing_extensions import Literal
 
 from .._models import BaseModel
@@ -14,13 +14,16 @@ __all__ = [
     "CreatedByAPIKey",
     "CreatedByOAuthApplication",
     "CreatedByUser",
+    "Remittance",
+    "RemittanceTax",
+    "RemittanceUnstructured",
     "Reversal",
     "Submission",
 ]
 
 
 class Approval(BaseModel):
-    approved_at: datetime
+    approved_at: datetime.datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the transfer was approved.
@@ -34,7 +37,7 @@ class Approval(BaseModel):
 
 
 class Cancellation(BaseModel):
-    canceled_at: datetime
+    canceled_at: datetime.datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the Transfer was canceled.
@@ -83,11 +86,56 @@ class CreatedBy(BaseModel):
     """If present, details about the User that created the transfer."""
 
 
+class RemittanceTax(BaseModel):
+    date: datetime.date
+    """The month and year the tax payment is for, in YYYY-MM-DD format.
+
+    The day is ignored.
+    """
+
+    identification_number: str
+    """
+    The 9-digit Tax Identification Number (TIN) or Employer Identification Number
+    (EIN).
+    """
+
+    type_code: str
+    """The 5-character tax type code."""
+
+
+class RemittanceUnstructured(BaseModel):
+    message: str
+    """The message to the beneficiary."""
+
+
+class Remittance(BaseModel):
+    category: Literal["unstructured", "tax"]
+    """The type of remittance information being passed.
+
+    - `unstructured` - The wire transfer contains unstructured remittance
+      information.
+    - `tax` - The wire transfer is for tax payment purposes to the Internal Revenue
+      Service (IRS).
+    """
+
+    tax: Optional[RemittanceTax] = None
+    """Internal Revenue Service (IRS) tax repayment information.
+
+    Required if `category` is equal to `tax`.
+    """
+
+    unstructured: Optional[RemittanceUnstructured] = None
+    """Unstructured remittance information.
+
+    Required if `category` is equal to `unstructured`.
+    """
+
+
 class Reversal(BaseModel):
     amount: int
     """The amount that was reversed in USD cents."""
 
-    created_at: datetime
+    created_at: datetime.datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the reversal was created.
@@ -101,7 +149,7 @@ class Reversal(BaseModel):
     The description on the reversal message from Fedwire, set by the reversing bank.
     """
 
-    input_cycle_date: date
+    input_cycle_date: datetime.date
     """The Fedwire cycle date for the wire reversal.
 
     The "Fedwire day" begins at 9:00 PM Eastern Time on the evening before the
@@ -144,7 +192,7 @@ class Submission(BaseModel):
     input_message_accountability_data: str
     """The accountability data for the submission."""
 
-    submitted_at: datetime
+    submitted_at: datetime.datetime
     """When this wire transfer was submitted to Fedwire."""
 
 
@@ -185,7 +233,7 @@ class WireTransfer(BaseModel):
     approved, this will contain details of the cancellation.
     """
 
-    created_at: datetime
+    created_at: datetime.datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the transfer was created.
@@ -224,7 +272,7 @@ class WireTransfer(BaseModel):
     was sent.
     """
 
-    message_to_recipient: Optional[str] = None
+    message_to_recipient: str
     """The message that will show on the recipient's bank statement."""
 
     network: Literal["wire"]
@@ -249,6 +297,9 @@ class WireTransfer(BaseModel):
     [requires approval](https://increase.com/documentation/transfer-approvals#transfer-approvals)
     by someone else in your organization.
     """
+
+    remittance: Optional[Remittance] = None
+    """Remittance information sent with the wire transfer."""
 
     reversal: Optional[Reversal] = None
     """If your transfer is reversed, this will contain details of the reversal."""
