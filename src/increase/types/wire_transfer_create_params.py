@@ -2,9 +2,13 @@
 
 from __future__ import annotations
 
-from typing_extensions import Required, TypedDict
+import datetime
+from typing import Union
+from typing_extensions import Literal, Required, Annotated, TypedDict
 
-__all__ = ["WireTransferCreateParams"]
+from .._utils import PropertyInfo
+
+__all__ = ["WireTransferCreateParams", "Remittance", "RemittanceTax", "RemittanceUnstructured"]
 
 
 class WireTransferCreateParams(TypedDict, total=False):
@@ -16,9 +20,6 @@ class WireTransferCreateParams(TypedDict, total=False):
 
     beneficiary_name: Required[str]
     """The beneficiary's name."""
-
-    message_to_recipient: Required[str]
-    """The message that will show on the recipient's bank statement."""
 
     account_number: str
     """The account number for the destination account."""
@@ -73,6 +74,9 @@ class WireTransferCreateParams(TypedDict, total=False):
     Otherwise, we'll use the associated entity's details.
     """
 
+    remittance: Remittance
+    """Additional remittance information related to the wire transfer."""
+
     require_approval: bool
     """Whether the transfer requires explicit approval via the dashboard or API."""
 
@@ -84,3 +88,48 @@ class WireTransferCreateParams(TypedDict, total=False):
 
     source_account_number_id: str
     """The ID of an Account Number that will be passed to the wire's recipient"""
+
+
+class RemittanceTax(TypedDict, total=False):
+    date: Required[Annotated[Union[str, datetime.date], PropertyInfo(format="iso8601")]]
+    """The month and year the tax payment is for, in YYYY-MM-DD format.
+
+    The day is ignored.
+    """
+
+    identification_number: Required[str]
+    """
+    The 9-digit Tax Identification Number (TIN) or Employer Identification Number
+    (EIN).
+    """
+
+    type_code: Required[str]
+    """The 5-character tax type code."""
+
+
+class RemittanceUnstructured(TypedDict, total=False):
+    message: Required[str]
+    """The message to the beneficiary."""
+
+
+class Remittance(TypedDict, total=False):
+    category: Required[Literal["unstructured", "tax"]]
+    """The type of remittance information being passed.
+
+    - `unstructured` - The wire transfer contains unstructured remittance
+      information.
+    - `tax` - The wire transfer is for tax payment purposes to the Internal Revenue
+      Service (IRS).
+    """
+
+    tax: RemittanceTax
+    """Internal Revenue Service (IRS) tax repayment information.
+
+    Required if `category` is equal to `tax`.
+    """
+
+    unstructured: RemittanceUnstructured
+    """Unstructured remittance information.
+
+    Required if `category` is equal to `unstructured`.
+    """
