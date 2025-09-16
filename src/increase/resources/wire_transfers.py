@@ -48,7 +48,6 @@ class WireTransfersResource(SyncAPIResource):
         account_id: str,
         amount: int,
         beneficiary_name: str,
-        message_to_recipient: str,
         account_number: str | NotGiven = NOT_GIVEN,
         beneficiary_address_line1: str | NotGiven = NOT_GIVEN,
         beneficiary_address_line2: str | NotGiven = NOT_GIVEN,
@@ -59,6 +58,7 @@ class WireTransfersResource(SyncAPIResource):
         originator_address_line2: str | NotGiven = NOT_GIVEN,
         originator_address_line3: str | NotGiven = NOT_GIVEN,
         originator_name: str | NotGiven = NOT_GIVEN,
+        remittance: wire_transfer_create_params.Remittance | NotGiven = NOT_GIVEN,
         require_approval: bool | NotGiven = NOT_GIVEN,
         routing_number: str | NotGiven = NOT_GIVEN,
         source_account_number_id: str | NotGiven = NOT_GIVEN,
@@ -79,8 +79,6 @@ class WireTransfersResource(SyncAPIResource):
           amount: The transfer amount in USD cents.
 
           beneficiary_name: The beneficiary's name.
-
-          message_to_recipient: The message that will show on the recipient's bank statement.
 
           account_number: The account number for the destination account.
 
@@ -108,6 +106,8 @@ class WireTransfersResource(SyncAPIResource):
           originator_name: The originator's name. This is only necessary if you're transferring from a
               commingled account. Otherwise, we'll use the associated entity's details.
 
+          remittance: Additional remittance information related to the wire transfer.
+
           require_approval: Whether the transfer requires explicit approval via the dashboard or API.
 
           routing_number: The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
@@ -132,7 +132,6 @@ class WireTransfersResource(SyncAPIResource):
                     "account_id": account_id,
                     "amount": amount,
                     "beneficiary_name": beneficiary_name,
-                    "message_to_recipient": message_to_recipient,
                     "account_number": account_number,
                     "beneficiary_address_line1": beneficiary_address_line1,
                     "beneficiary_address_line2": beneficiary_address_line2,
@@ -143,6 +142,7 @@ class WireTransfersResource(SyncAPIResource):
                     "originator_address_line2": originator_address_line2,
                     "originator_address_line3": originator_address_line3,
                     "originator_name": originator_name,
+                    "remittance": remittance,
                     "require_approval": require_approval,
                     "routing_number": routing_number,
                     "source_account_number_id": source_account_number_id,
@@ -370,7 +370,6 @@ class AsyncWireTransfersResource(AsyncAPIResource):
         account_id: str,
         amount: int,
         beneficiary_name: str,
-        message_to_recipient: str,
         account_number: str | NotGiven = NOT_GIVEN,
         beneficiary_address_line1: str | NotGiven = NOT_GIVEN,
         beneficiary_address_line2: str | NotGiven = NOT_GIVEN,
@@ -381,6 +380,7 @@ class AsyncWireTransfersResource(AsyncAPIResource):
         originator_address_line2: str | NotGiven = NOT_GIVEN,
         originator_address_line3: str | NotGiven = NOT_GIVEN,
         originator_name: str | NotGiven = NOT_GIVEN,
+        remittance: wire_transfer_create_params.Remittance | NotGiven = NOT_GIVEN,
         require_approval: bool | NotGiven = NOT_GIVEN,
         routing_number: str | NotGiven = NOT_GIVEN,
         source_account_number_id: str | NotGiven = NOT_GIVEN,
@@ -401,8 +401,6 @@ class AsyncWireTransfersResource(AsyncAPIResource):
           amount: The transfer amount in USD cents.
 
           beneficiary_name: The beneficiary's name.
-
-          message_to_recipient: The message that will show on the recipient's bank statement.
 
           account_number: The account number for the destination account.
 
@@ -430,6 +428,8 @@ class AsyncWireTransfersResource(AsyncAPIResource):
           originator_name: The originator's name. This is only necessary if you're transferring from a
               commingled account. Otherwise, we'll use the associated entity's details.
 
+          remittance: Additional remittance information related to the wire transfer.
+
           require_approval: Whether the transfer requires explicit approval via the dashboard or API.
 
           routing_number: The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
@@ -454,7 +454,6 @@ class AsyncWireTransfersResource(AsyncAPIResource):
                     "account_id": account_id,
                     "amount": amount,
                     "beneficiary_name": beneficiary_name,
-                    "message_to_recipient": message_to_recipient,
                     "account_number": account_number,
                     "beneficiary_address_line1": beneficiary_address_line1,
                     "beneficiary_address_line2": beneficiary_address_line2,
@@ -465,6 +464,7 @@ class AsyncWireTransfersResource(AsyncAPIResource):
                     "originator_address_line2": originator_address_line2,
                     "originator_address_line3": originator_address_line3,
                     "originator_name": originator_name,
+                    "remittance": remittance,
                     "require_approval": require_approval,
                     "routing_number": routing_number,
                     "source_account_number_id": source_account_number_id,

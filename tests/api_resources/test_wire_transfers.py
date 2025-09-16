@@ -10,7 +10,7 @@ import pytest
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
 from increase.types import WireTransfer
-from increase._utils import parse_datetime
+from increase._utils import parse_date, parse_datetime
 from increase.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -25,7 +25,6 @@ class TestWireTransfers:
             account_id="account_in71c4amph0vgo2qllky",
             amount=100,
             beneficiary_name="Ian Crease",
-            message_to_recipient="New account transfer",
         )
         assert_matches_type(WireTransfer, wire_transfer, path=["response"])
 
@@ -35,7 +34,6 @@ class TestWireTransfers:
             account_id="account_in71c4amph0vgo2qllky",
             amount=100,
             beneficiary_name="Ian Crease",
-            message_to_recipient="New account transfer",
             account_number="987654321",
             beneficiary_address_line1="33 Liberty Street",
             beneficiary_address_line2="New York",
@@ -46,6 +44,15 @@ class TestWireTransfers:
             originator_address_line2="x",
             originator_address_line3="x",
             originator_name="x",
+            remittance={
+                "category": "unstructured",
+                "tax": {
+                    "date": parse_date("2019-12-27"),
+                    "identification_number": "xxxxxxxxx",
+                    "type_code": "xxxxx",
+                },
+                "unstructured": {"message": "New account transfer"},
+            },
             require_approval=True,
             routing_number="101050001",
             source_account_number_id="source_account_number_id",
@@ -58,7 +65,6 @@ class TestWireTransfers:
             account_id="account_in71c4amph0vgo2qllky",
             amount=100,
             beneficiary_name="Ian Crease",
-            message_to_recipient="New account transfer",
         )
 
         assert response.is_closed is True
@@ -72,7 +78,6 @@ class TestWireTransfers:
             account_id="account_in71c4amph0vgo2qllky",
             amount=100,
             beneficiary_name="Ian Crease",
-            message_to_recipient="New account transfer",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -250,7 +255,6 @@ class TestAsyncWireTransfers:
             account_id="account_in71c4amph0vgo2qllky",
             amount=100,
             beneficiary_name="Ian Crease",
-            message_to_recipient="New account transfer",
         )
         assert_matches_type(WireTransfer, wire_transfer, path=["response"])
 
@@ -260,7 +264,6 @@ class TestAsyncWireTransfers:
             account_id="account_in71c4amph0vgo2qllky",
             amount=100,
             beneficiary_name="Ian Crease",
-            message_to_recipient="New account transfer",
             account_number="987654321",
             beneficiary_address_line1="33 Liberty Street",
             beneficiary_address_line2="New York",
@@ -271,6 +274,15 @@ class TestAsyncWireTransfers:
             originator_address_line2="x",
             originator_address_line3="x",
             originator_name="x",
+            remittance={
+                "category": "unstructured",
+                "tax": {
+                    "date": parse_date("2019-12-27"),
+                    "identification_number": "xxxxxxxxx",
+                    "type_code": "xxxxx",
+                },
+                "unstructured": {"message": "New account transfer"},
+            },
             require_approval=True,
             routing_number="101050001",
             source_account_number_id="source_account_number_id",
@@ -283,7 +295,6 @@ class TestAsyncWireTransfers:
             account_id="account_in71c4amph0vgo2qllky",
             amount=100,
             beneficiary_name="Ian Crease",
-            message_to_recipient="New account transfer",
         )
 
         assert response.is_closed is True
@@ -297,7 +308,6 @@ class TestAsyncWireTransfers:
             account_id="account_in71c4amph0vgo2qllky",
             amount=100,
             beneficiary_name="Ian Crease",
-            message_to_recipient="New account transfer",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
