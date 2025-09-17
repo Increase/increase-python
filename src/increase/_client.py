@@ -41,7 +41,6 @@ from .resources import (
     oauth_tokens,
     transactions,
     ach_transfers,
-    card_disputes,
     card_payments,
     check_deposits,
     physical_cards,
@@ -115,7 +114,6 @@ class Increase(SyncAPIClient):
     cards: cards.CardsResource
     card_payments: card_payments.CardPaymentsResource
     card_purchase_supplements: card_purchase_supplements.CardPurchaseSupplementsResource
-    card_disputes: card_disputes.CardDisputesResource
     physical_cards: physical_cards.PhysicalCardsResource
     digital_card_profiles: digital_card_profiles.DigitalCardProfilesResource
     physical_card_profiles: physical_card_profiles.PhysicalCardProfilesResource
@@ -261,7 +259,6 @@ class Increase(SyncAPIClient):
         self.cards = cards.CardsResource(self)
         self.card_payments = card_payments.CardPaymentsResource(self)
         self.card_purchase_supplements = card_purchase_supplements.CardPurchaseSupplementsResource(self)
-        self.card_disputes = card_disputes.CardDisputesResource(self)
         self.physical_cards = physical_cards.PhysicalCardsResource(self)
         self.digital_card_profiles = digital_card_profiles.DigitalCardProfilesResource(self)
         self.physical_card_profiles = physical_card_profiles.PhysicalCardProfilesResource(self)
@@ -476,7 +473,6 @@ class AsyncIncrease(AsyncAPIClient):
     cards: cards.AsyncCardsResource
     card_payments: card_payments.AsyncCardPaymentsResource
     card_purchase_supplements: card_purchase_supplements.AsyncCardPurchaseSupplementsResource
-    card_disputes: card_disputes.AsyncCardDisputesResource
     physical_cards: physical_cards.AsyncPhysicalCardsResource
     digital_card_profiles: digital_card_profiles.AsyncDigitalCardProfilesResource
     physical_card_profiles: physical_card_profiles.AsyncPhysicalCardProfilesResource
@@ -624,7 +620,6 @@ class AsyncIncrease(AsyncAPIClient):
         self.cards = cards.AsyncCardsResource(self)
         self.card_payments = card_payments.AsyncCardPaymentsResource(self)
         self.card_purchase_supplements = card_purchase_supplements.AsyncCardPurchaseSupplementsResource(self)
-        self.card_disputes = card_disputes.AsyncCardDisputesResource(self)
         self.physical_cards = physical_cards.AsyncPhysicalCardsResource(self)
         self.digital_card_profiles = digital_card_profiles.AsyncDigitalCardProfilesResource(self)
         self.physical_card_profiles = physical_card_profiles.AsyncPhysicalCardProfilesResource(self)
@@ -844,7 +839,6 @@ class IncreaseWithRawResponse:
         self.card_purchase_supplements = card_purchase_supplements.CardPurchaseSupplementsResourceWithRawResponse(
             client.card_purchase_supplements
         )
-        self.card_disputes = card_disputes.CardDisputesResourceWithRawResponse(client.card_disputes)
         self.physical_cards = physical_cards.PhysicalCardsResourceWithRawResponse(client.physical_cards)
         self.digital_card_profiles = digital_card_profiles.DigitalCardProfilesResourceWithRawResponse(
             client.digital_card_profiles
@@ -955,7 +949,6 @@ class AsyncIncreaseWithRawResponse:
         self.card_purchase_supplements = card_purchase_supplements.AsyncCardPurchaseSupplementsResourceWithRawResponse(
             client.card_purchase_supplements
         )
-        self.card_disputes = card_disputes.AsyncCardDisputesResourceWithRawResponse(client.card_disputes)
         self.physical_cards = physical_cards.AsyncPhysicalCardsResourceWithRawResponse(client.physical_cards)
         self.digital_card_profiles = digital_card_profiles.AsyncDigitalCardProfilesResourceWithRawResponse(
             client.digital_card_profiles
@@ -1080,7 +1073,6 @@ class IncreaseWithStreamedResponse:
         self.card_purchase_supplements = card_purchase_supplements.CardPurchaseSupplementsResourceWithStreamingResponse(
             client.card_purchase_supplements
         )
-        self.card_disputes = card_disputes.CardDisputesResourceWithStreamingResponse(client.card_disputes)
         self.physical_cards = physical_cards.PhysicalCardsResourceWithStreamingResponse(client.physical_cards)
         self.digital_card_profiles = digital_card_profiles.DigitalCardProfilesResourceWithStreamingResponse(
             client.digital_card_profiles
@@ -1207,7 +1199,6 @@ class AsyncIncreaseWithStreamedResponse:
                 client.card_purchase_supplements
             )
         )
-        self.card_disputes = card_disputes.AsyncCardDisputesResourceWithStreamingResponse(client.card_disputes)
         self.physical_cards = physical_cards.AsyncPhysicalCardsResourceWithStreamingResponse(client.physical_cards)
         self.digital_card_profiles = digital_card_profiles.AsyncDigitalCardProfilesResourceWithStreamingResponse(
             client.digital_card_profiles

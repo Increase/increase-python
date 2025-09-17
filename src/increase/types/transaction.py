@@ -399,9 +399,6 @@ class SourceCardDisputeAcceptance(BaseModel):
     the Card Dispute was accepted.
     """
 
-    card_dispute_id: str
-    """The identifier of the Card Dispute that was accepted."""
-
     transaction_id: str
     """
     The identifier of the Transaction that was created to return the disputed funds
@@ -438,9 +435,6 @@ class SourceCardDisputeFinancial(BaseModel):
     amount: int
     """The amount of the financial event."""
 
-    card_dispute_id: str
-    """The identifier of the Card Dispute the financial event is associated with."""
-
     network: Literal["visa"]
     """The network that the Card Dispute is associated with.
 
@@ -462,9 +456,6 @@ class SourceCardDisputeFinancial(BaseModel):
 
 
 class SourceCardDisputeLoss(BaseModel):
-    card_dispute_id: str
-    """The identifier of the Card Dispute that was lost."""
-
     explanation: str
     """Why the Card Dispute was lost."""
 
