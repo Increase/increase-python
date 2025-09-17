@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.329.0 (2025-09-17)
+
+Full Changelog: [v0.328.0...v0.329.0](https://github.com/Increase/increase-python/compare/v0.328.0...v0.329.0)
+
+### Features
+
+* **api:** api update ([9ca82f2](https://github.com/Increase/increase-python/commit/9ca82f2dcd1a9133d67c88990edb16ffc8221c8c))
+
+
+### Chores
+
+* **internal:** update pydantic dependency ([5b20dc0](https://github.com/Increase/increase-python/commit/5b20dc034ac27e1b21ce98b370362b40d98971b8))
+
 ## 0.328.0 (2025-09-16)
 
 Full Changelog: [v0.327.0...v0.328.0](https://github.com/Increase/increase-python/compare/v0.327.0...v0.328.0)
