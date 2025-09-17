@@ -89,20 +89,6 @@ Methods:
 - <code title="get /card_purchase_supplements/{card_purchase_supplement_id}">client.card_purchase_supplements.<a href="./src/increase/resources/card_purchase_supplements.py">retrieve</a>(card_purchase_supplement_id) -> <a href="./src/increase/types/card_purchase_supplement.py">CardPurchaseSupplement</a></code>
 - <code title="get /card_purchase_supplements">client.card_purchase_supplements.<a href="./src/increase/resources/card_purchase_supplements.py">list</a>(\*\*<a href="src/increase/types/card_purchase_supplement_list_params.py">params</a>) -> <a href="./src/increase/types/card_purchase_supplement.py">SyncPage[CardPurchaseSupplement]</a></code>
 
-# CardDisputes
-
-Types:
-
-```python
-from increase.types import CardDispute
-```
-
-Methods:
-
-- <code title="post /card_disputes">client.card_disputes.<a href="./src/increase/resources/card_disputes.py">create</a>(\*\*<a href="src/increase/types/card_dispute_create_params.py">params</a>) -> <a href="./src/increase/types/card_dispute.py">CardDispute</a></code>
-- <code title="get /card_disputes/{card_dispute_id}">client.card_disputes.<a href="./src/increase/resources/card_disputes.py">retrieve</a>(card_dispute_id) -> <a href="./src/increase/types/card_dispute.py">CardDispute</a></code>
-- <code title="get /card_disputes">client.card_disputes.<a href="./src/increase/resources/card_disputes.py">list</a>(\*\*<a href="src/increase/types/card_dispute_list_params.py">params</a>) -> <a href="./src/increase/types/card_dispute.py">SyncPage[CardDispute]</a></code>
-
 # PhysicalCards
 
 Types:
@@ -839,12 +825,6 @@ Methods:
 Methods:
 
 - <code title="post /simulations/card_refunds">client.simulations.card_refunds.<a href="./src/increase/resources/simulations/card_refunds.py">create</a>(\*\*<a href="src/increase/types/simulations/card_refund_create_params.py">params</a>) -> <a href="./src/increase/types/transaction.py">Transaction</a></code>
-
-## CardDisputes
-
-Methods:
-
-- <code title="post /simulations/card_disputes/{card_dispute_id}/action">client.simulations.card_disputes.<a href="./src/increase/resources/simulations/card_disputes.py">action</a>(card_dispute_id, \*\*<a href="src/increase/types/simulations/card_dispute_action_params.py">params</a>) -> <a href="./src/increase/types/card_dispute.py">CardDispute</a></code>
 
 ## PhysicalCards
 
