@@ -18,7 +18,6 @@ from .oauth_token import OAuthToken as OAuthToken
 from .transaction import Transaction as Transaction
 from .ach_transfer import ACHTransfer as ACHTransfer
 from .card_details import CardDetails as CardDetails
-from .card_dispute import CardDispute as CardDispute
 from .card_payment import CardPayment as CardPayment
 from .check_deposit import CheckDeposit as CheckDeposit
 from .physical_card import PhysicalCard as PhysicalCard
@@ -79,7 +78,6 @@ from .card_token_capabilities import CardTokenCapabilities as CardTokenCapabilit
 from .file_link_create_params import FileLinkCreateParams as FileLinkCreateParams
 from .transaction_list_params import TransactionListParams as TransactionListParams
 from .ach_transfer_list_params import ACHTransferListParams as ACHTransferListParams
-from .card_dispute_list_params import CardDisputeListParams as CardDisputeListParams
 from .card_payment_list_params import CardPaymentListParams as CardPaymentListParams
 from .card_purchase_supplement import CardPurchaseSupplement as CardPurchaseSupplement
 from .check_deposit_list_params import CheckDepositListParams as CheckDepositListParams
@@ -89,7 +87,6 @@ from .wire_transfer_list_params import WireTransferListParams as WireTransferLis
 from .account_number_list_params import AccountNumberListParams as AccountNumberListParams
 from .ach_transfer_create_params import ACHTransferCreateParams as ACHTransferCreateParams
 from .bookkeeping_balance_lookup import BookkeepingBalanceLookup as BookkeepingBalanceLookup
-from .card_dispute_create_params import CardDisputeCreateParams as CardDisputeCreateParams
 from .check_transfer_list_params import CheckTransferListParams as CheckTransferListParams
 from .intrafi_account_enrollment import IntrafiAccountEnrollment as IntrafiAccountEnrollment
 from .routing_number_list_params import RoutingNumberListParams as RoutingNumberListParams
