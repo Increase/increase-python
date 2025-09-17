@@ -29,6 +29,7 @@ __all__ = [
     "SourceCardDeclineVerificationCardholderAddress",
     "SourceCheckDecline",
     "SourceCheckDepositRejection",
+    "SourceInboundFednowTransferDecline",
     "SourceInboundRealTimePaymentsTransferDecline",
     "SourceWireDecline",
 ]
@@ -871,6 +872,30 @@ class SourceCheckDepositRejection(BaseModel):
     """
 
 
+class SourceInboundFednowTransferDecline(BaseModel):
+    reason: Literal[
+        "account_number_canceled",
+        "account_number_disabled",
+        "account_restricted",
+        "group_locked",
+        "entity_not_active",
+        "fednow_not_enabled",
+    ]
+    """Why the transfer was declined.
+
+    - `account_number_canceled` - The account number is canceled.
+    - `account_number_disabled` - The account number is disabled.
+    - `account_restricted` - Your account is restricted.
+    - `group_locked` - Your account is inactive.
+    - `entity_not_active` - The account's entity is not active.
+    - `fednow_not_enabled` - Your account is not enabled to receive FedNow
+      transfers.
+    """
+
+    transfer_id: str
+    """The identifier of the FedNow Transfer that led to this declined transaction."""
+
+
 class SourceInboundRealTimePaymentsTransferDecline(BaseModel):
     amount: int
     """The declined amount in the minor unit of the destination account currency.
@@ -977,6 +1002,7 @@ class Source(BaseModel):
         "card_decline",
         "check_decline",
         "inbound_real_time_payments_transfer_decline",
+        "inbound_fednow_transfer_decline",
         "wire_decline",
         "check_deposit_rejection",
         "other",
@@ -994,6 +1020,8 @@ class Source(BaseModel):
     - `inbound_real_time_payments_transfer_decline` - Inbound Real-Time Payments
       Transfer Decline: details will be under the
       `inbound_real_time_payments_transfer_decline` object.
+    - `inbound_fednow_transfer_decline` - Inbound FedNow Transfer Decline: details
+      will be under the `inbound_fednow_transfer_decline` object.
     - `wire_decline` - Wire Decline: details will be under the `wire_decline`
       object.
     - `check_deposit_rejection` - Check Deposit Rejection: details will be under the
@@ -1014,6 +1042,13 @@ class Source(BaseModel):
 
     This field will be present in the JSON response if and only if `category` is
     equal to `check_deposit_rejection`.
+    """
+
+    inbound_fednow_transfer_decline: Optional[SourceInboundFednowTransferDecline] = None
+    """An Inbound FedNow Transfer Decline object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `inbound_fednow_transfer_decline`.
     """
 
     inbound_real_time_payments_transfer_decline: Optional[SourceInboundRealTimePaymentsTransferDecline] = None
