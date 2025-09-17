@@ -55,6 +55,7 @@ __all__ = [
     "SourceInboundACHTransferReturnIntention",
     "SourceInboundCheckAdjustment",
     "SourceInboundCheckDepositReturnIntention",
+    "SourceInboundFednowTransferConfirmation",
     "SourceInboundRealTimePaymentsTransferConfirmation",
     "SourceInboundWireReversal",
     "SourceInboundWireTransfer",
@@ -2005,6 +2006,11 @@ class SourceInboundCheckDepositReturnIntention(BaseModel):
     """The identifier of the Check Transfer object that was deposited."""
 
 
+class SourceInboundFednowTransferConfirmation(BaseModel):
+    transfer_id: str
+    """The identifier of the FedNow Transfer that led to this Transaction."""
+
+
 class SourceInboundRealTimePaymentsTransferConfirmation(BaseModel):
     amount: int
     """The amount in the minor unit of the transfer's currency.
@@ -2447,6 +2453,7 @@ class Source(BaseModel):
         "inbound_ach_transfer_return_intention",
         "inbound_check_deposit_return_intention",
         "inbound_check_adjustment",
+        "inbound_fednow_transfer_confirmation",
         "inbound_real_time_payments_transfer_confirmation",
         "inbound_wire_reversal",
         "inbound_wire_transfer",
@@ -2507,6 +2514,8 @@ class Source(BaseModel):
       object.
     - `inbound_check_adjustment` - Inbound Check Adjustment: details will be under
       the `inbound_check_adjustment` object.
+    - `inbound_fednow_transfer_confirmation` - Inbound FedNow Transfer Confirmation:
+      details will be under the `inbound_fednow_transfer_confirmation` object.
     - `inbound_real_time_payments_transfer_confirmation` - Inbound Real-Time
       Payments Transfer Confirmation: details will be under the
       `inbound_real_time_payments_transfer_confirmation` object.
@@ -2615,6 +2624,15 @@ class Source(BaseModel):
     equal to `inbound_check_deposit_return_intention`. An Inbound Check Deposit
     Return Intention is created when Increase receives an Inbound Check and the User
     requests that it be returned.
+    """
+
+    inbound_fednow_transfer_confirmation: Optional[SourceInboundFednowTransferConfirmation] = None
+    """An Inbound FedNow Transfer Confirmation object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `inbound_fednow_transfer_confirmation`. An Inbound FedNow Transfer
+    Confirmation is created when a FedNow transfer is initiated at another bank and
+    received by Increase.
     """
 
     inbound_real_time_payments_transfer_confirmation: Optional[SourceInboundRealTimePaymentsTransferConfirmation] = None
