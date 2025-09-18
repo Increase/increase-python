@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import httpx
 
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -46,26 +46,26 @@ class InboundWireTransfersResource(SyncAPIResource):
         *,
         account_number_id: str,
         amount: int,
-        creditor_address_line1: str | NotGiven = NOT_GIVEN,
-        creditor_address_line2: str | NotGiven = NOT_GIVEN,
-        creditor_address_line3: str | NotGiven = NOT_GIVEN,
-        creditor_name: str | NotGiven = NOT_GIVEN,
-        debtor_address_line1: str | NotGiven = NOT_GIVEN,
-        debtor_address_line2: str | NotGiven = NOT_GIVEN,
-        debtor_address_line3: str | NotGiven = NOT_GIVEN,
-        debtor_name: str | NotGiven = NOT_GIVEN,
-        end_to_end_identification: str | NotGiven = NOT_GIVEN,
-        instructing_agent_routing_number: str | NotGiven = NOT_GIVEN,
-        instruction_identification: str | NotGiven = NOT_GIVEN,
-        unique_end_to_end_transaction_reference: str | NotGiven = NOT_GIVEN,
-        unstructured_remittance_information: str | NotGiven = NOT_GIVEN,
-        wire_drawdown_request_id: str | NotGiven = NOT_GIVEN,
+        creditor_address_line1: str | Omit = omit,
+        creditor_address_line2: str | Omit = omit,
+        creditor_address_line3: str | Omit = omit,
+        creditor_name: str | Omit = omit,
+        debtor_address_line1: str | Omit = omit,
+        debtor_address_line2: str | Omit = omit,
+        debtor_address_line3: str | Omit = omit,
+        debtor_name: str | Omit = omit,
+        end_to_end_identification: str | Omit = omit,
+        instructing_agent_routing_number: str | Omit = omit,
+        instruction_identification: str | Omit = omit,
+        unique_end_to_end_transaction_reference: str | Omit = omit,
+        unstructured_remittance_information: str | Omit = omit,
+        wire_drawdown_request_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> InboundWireTransfer:
         """
@@ -187,26 +187,26 @@ class AsyncInboundWireTransfersResource(AsyncAPIResource):
         *,
         account_number_id: str,
         amount: int,
-        creditor_address_line1: str | NotGiven = NOT_GIVEN,
-        creditor_address_line2: str | NotGiven = NOT_GIVEN,
-        creditor_address_line3: str | NotGiven = NOT_GIVEN,
-        creditor_name: str | NotGiven = NOT_GIVEN,
-        debtor_address_line1: str | NotGiven = NOT_GIVEN,
-        debtor_address_line2: str | NotGiven = NOT_GIVEN,
-        debtor_address_line3: str | NotGiven = NOT_GIVEN,
-        debtor_name: str | NotGiven = NOT_GIVEN,
-        end_to_end_identification: str | NotGiven = NOT_GIVEN,
-        instructing_agent_routing_number: str | NotGiven = NOT_GIVEN,
-        instruction_identification: str | NotGiven = NOT_GIVEN,
-        unique_end_to_end_transaction_reference: str | NotGiven = NOT_GIVEN,
-        unstructured_remittance_information: str | NotGiven = NOT_GIVEN,
-        wire_drawdown_request_id: str | NotGiven = NOT_GIVEN,
+        creditor_address_line1: str | Omit = omit,
+        creditor_address_line2: str | Omit = omit,
+        creditor_address_line3: str | Omit = omit,
+        creditor_name: str | Omit = omit,
+        debtor_address_line1: str | Omit = omit,
+        debtor_address_line2: str | Omit = omit,
+        debtor_address_line3: str | Omit = omit,
+        debtor_name: str | Omit = omit,
+        end_to_end_identification: str | Omit = omit,
+        instructing_agent_routing_number: str | Omit = omit,
+        instruction_identification: str | Omit = omit,
+        unique_end_to_end_transaction_reference: str | Omit = omit,
+        unstructured_remittance_information: str | Omit = omit,
+        wire_drawdown_request_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> InboundWireTransfer:
         """

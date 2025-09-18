@@ -7,7 +7,7 @@ from typing_extensions import Literal
 import httpx
 
 from ..types import card_list_params, card_create_params, card_update_params, card_create_details_iframe_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -50,16 +50,16 @@ class CardsResource(SyncAPIResource):
         self,
         *,
         account_id: str,
-        billing_address: card_create_params.BillingAddress | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        digital_wallet: card_create_params.DigitalWallet | NotGiven = NOT_GIVEN,
-        entity_id: str | NotGiven = NOT_GIVEN,
+        billing_address: card_create_params.BillingAddress | Omit = omit,
+        description: str | Omit = omit,
+        digital_wallet: card_create_params.DigitalWallet | Omit = omit,
+        entity_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Card:
         """
@@ -122,7 +122,7 @@ class CardsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Card:
         """
         Retrieve a Card
@@ -152,17 +152,17 @@ class CardsResource(SyncAPIResource):
         self,
         card_id: str,
         *,
-        billing_address: card_update_params.BillingAddress | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        digital_wallet: card_update_params.DigitalWallet | NotGiven = NOT_GIVEN,
-        entity_id: str | NotGiven = NOT_GIVEN,
-        status: Literal["active", "disabled", "canceled"] | NotGiven = NOT_GIVEN,
+        billing_address: card_update_params.BillingAddress | Omit = omit,
+        description: str | Omit = omit,
+        digital_wallet: card_update_params.DigitalWallet | Omit = omit,
+        entity_id: str | Omit = omit,
+        status: Literal["active", "disabled", "canceled"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Card:
         """
@@ -225,18 +225,18 @@ class CardsResource(SyncAPIResource):
     def list(
         self,
         *,
-        account_id: str | NotGiven = NOT_GIVEN,
-        created_at: card_list_params.CreatedAt | NotGiven = NOT_GIVEN,
-        cursor: str | NotGiven = NOT_GIVEN,
-        idempotency_key: str | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        status: card_list_params.Status | NotGiven = NOT_GIVEN,
+        account_id: str | Omit = omit,
+        created_at: card_list_params.CreatedAt | Omit = omit,
+        cursor: str | Omit = omit,
+        idempotency_key: str | Omit = omit,
+        limit: int | Omit = omit,
+        status: card_list_params.Status | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[Card]:
         """
         List Cards
@@ -289,13 +289,13 @@ class CardsResource(SyncAPIResource):
         self,
         card_id: str,
         *,
-        physical_card_id: str | NotGiven = NOT_GIVEN,
+        physical_card_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> CardIframeURL:
         """Create an iframe URL for a Card to display the card details.
@@ -345,7 +345,7 @@ class CardsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CardDetails:
         """
         Sensitive details for a Card include the primary account number, expiry, card
@@ -397,16 +397,16 @@ class AsyncCardsResource(AsyncAPIResource):
         self,
         *,
         account_id: str,
-        billing_address: card_create_params.BillingAddress | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        digital_wallet: card_create_params.DigitalWallet | NotGiven = NOT_GIVEN,
-        entity_id: str | NotGiven = NOT_GIVEN,
+        billing_address: card_create_params.BillingAddress | Omit = omit,
+        description: str | Omit = omit,
+        digital_wallet: card_create_params.DigitalWallet | Omit = omit,
+        entity_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Card:
         """
@@ -469,7 +469,7 @@ class AsyncCardsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Card:
         """
         Retrieve a Card
@@ -499,17 +499,17 @@ class AsyncCardsResource(AsyncAPIResource):
         self,
         card_id: str,
         *,
-        billing_address: card_update_params.BillingAddress | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        digital_wallet: card_update_params.DigitalWallet | NotGiven = NOT_GIVEN,
-        entity_id: str | NotGiven = NOT_GIVEN,
-        status: Literal["active", "disabled", "canceled"] | NotGiven = NOT_GIVEN,
+        billing_address: card_update_params.BillingAddress | Omit = omit,
+        description: str | Omit = omit,
+        digital_wallet: card_update_params.DigitalWallet | Omit = omit,
+        entity_id: str | Omit = omit,
+        status: Literal["active", "disabled", "canceled"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Card:
         """
@@ -572,18 +572,18 @@ class AsyncCardsResource(AsyncAPIResource):
     def list(
         self,
         *,
-        account_id: str | NotGiven = NOT_GIVEN,
-        created_at: card_list_params.CreatedAt | NotGiven = NOT_GIVEN,
-        cursor: str | NotGiven = NOT_GIVEN,
-        idempotency_key: str | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        status: card_list_params.Status | NotGiven = NOT_GIVEN,
+        account_id: str | Omit = omit,
+        created_at: card_list_params.CreatedAt | Omit = omit,
+        cursor: str | Omit = omit,
+        idempotency_key: str | Omit = omit,
+        limit: int | Omit = omit,
+        status: card_list_params.Status | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[Card, AsyncPage[Card]]:
         """
         List Cards
@@ -636,13 +636,13 @@ class AsyncCardsResource(AsyncAPIResource):
         self,
         card_id: str,
         *,
-        physical_card_id: str | NotGiven = NOT_GIVEN,
+        physical_card_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> CardIframeURL:
         """Create an iframe URL for a Card to display the card details.
@@ -692,7 +692,7 @@ class AsyncCardsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CardDetails:
         """
         Sensitive details for a Card include the primary account number, expiry, card

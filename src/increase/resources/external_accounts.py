@@ -7,7 +7,7 @@ from typing_extensions import Literal
 import httpx
 
 from ..types import external_account_list_params, external_account_create_params, external_account_update_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -50,14 +50,14 @@ class ExternalAccountsResource(SyncAPIResource):
         account_number: str,
         description: str,
         routing_number: str,
-        account_holder: Literal["business", "individual", "unknown"] | NotGiven = NOT_GIVEN,
-        funding: Literal["checking", "savings", "general_ledger", "other"] | NotGiven = NOT_GIVEN,
+        account_holder: Literal["business", "individual", "unknown"] | Omit = omit,
+        funding: Literal["checking", "savings", "general_ledger", "other"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> ExternalAccount:
         """
@@ -125,7 +125,7 @@ class ExternalAccountsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ExternalAccount:
         """
         Retrieve an External Account
@@ -157,16 +157,16 @@ class ExternalAccountsResource(SyncAPIResource):
         self,
         external_account_id: str,
         *,
-        account_holder: Literal["business", "individual"] | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        funding: Literal["checking", "savings", "general_ledger", "other"] | NotGiven = NOT_GIVEN,
-        status: Literal["active", "archived"] | NotGiven = NOT_GIVEN,
+        account_holder: Literal["business", "individual"] | Omit = omit,
+        description: str | Omit = omit,
+        funding: Literal["checking", "savings", "general_ledger", "other"] | Omit = omit,
+        status: Literal["active", "archived"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> ExternalAccount:
         """
@@ -233,17 +233,17 @@ class ExternalAccountsResource(SyncAPIResource):
     def list(
         self,
         *,
-        cursor: str | NotGiven = NOT_GIVEN,
-        idempotency_key: str | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        routing_number: str | NotGiven = NOT_GIVEN,
-        status: external_account_list_params.Status | NotGiven = NOT_GIVEN,
+        cursor: str | Omit = omit,
+        idempotency_key: str | Omit = omit,
+        limit: int | Omit = omit,
+        routing_number: str | Omit = omit,
+        status: external_account_list_params.Status | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[ExternalAccount]:
         """
         List External Accounts
@@ -318,14 +318,14 @@ class AsyncExternalAccountsResource(AsyncAPIResource):
         account_number: str,
         description: str,
         routing_number: str,
-        account_holder: Literal["business", "individual", "unknown"] | NotGiven = NOT_GIVEN,
-        funding: Literal["checking", "savings", "general_ledger", "other"] | NotGiven = NOT_GIVEN,
+        account_holder: Literal["business", "individual", "unknown"] | Omit = omit,
+        funding: Literal["checking", "savings", "general_ledger", "other"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> ExternalAccount:
         """
@@ -393,7 +393,7 @@ class AsyncExternalAccountsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ExternalAccount:
         """
         Retrieve an External Account
@@ -425,16 +425,16 @@ class AsyncExternalAccountsResource(AsyncAPIResource):
         self,
         external_account_id: str,
         *,
-        account_holder: Literal["business", "individual"] | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        funding: Literal["checking", "savings", "general_ledger", "other"] | NotGiven = NOT_GIVEN,
-        status: Literal["active", "archived"] | NotGiven = NOT_GIVEN,
+        account_holder: Literal["business", "individual"] | Omit = omit,
+        description: str | Omit = omit,
+        funding: Literal["checking", "savings", "general_ledger", "other"] | Omit = omit,
+        status: Literal["active", "archived"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> ExternalAccount:
         """
@@ -501,17 +501,17 @@ class AsyncExternalAccountsResource(AsyncAPIResource):
     def list(
         self,
         *,
-        cursor: str | NotGiven = NOT_GIVEN,
-        idempotency_key: str | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        routing_number: str | NotGiven = NOT_GIVEN,
-        status: external_account_list_params.Status | NotGiven = NOT_GIVEN,
+        cursor: str | Omit = omit,
+        idempotency_key: str | Omit = omit,
+        limit: int | Omit = omit,
+        routing_number: str | Omit = omit,
+        status: external_account_list_params.Status | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[ExternalAccount, AsyncPage[ExternalAccount]]:
         """
         List External Accounts

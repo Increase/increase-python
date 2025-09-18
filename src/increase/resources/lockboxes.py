@@ -7,7 +7,7 @@ from typing_extensions import Literal
 import httpx
 
 from ..types import lockbox_list_params, lockbox_create_params, lockbox_update_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -48,14 +48,14 @@ class LockboxesResource(SyncAPIResource):
         self,
         *,
         account_id: str,
-        description: str | NotGiven = NOT_GIVEN,
-        recipient_name: str | NotGiven = NOT_GIVEN,
+        description: str | Omit = omit,
+        recipient_name: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Lockbox:
         """
@@ -107,7 +107,7 @@ class LockboxesResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Lockbox:
         """
         Retrieve a Lockbox
@@ -137,15 +137,15 @@ class LockboxesResource(SyncAPIResource):
         self,
         lockbox_id: str,
         *,
-        description: str | NotGiven = NOT_GIVEN,
-        recipient_name: str | NotGiven = NOT_GIVEN,
-        status: Literal["active", "inactive"] | NotGiven = NOT_GIVEN,
+        description: str | Omit = omit,
+        recipient_name: str | Omit = omit,
+        status: Literal["active", "inactive"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Lockbox:
         """
@@ -200,17 +200,17 @@ class LockboxesResource(SyncAPIResource):
     def list(
         self,
         *,
-        account_id: str | NotGiven = NOT_GIVEN,
-        created_at: lockbox_list_params.CreatedAt | NotGiven = NOT_GIVEN,
-        cursor: str | NotGiven = NOT_GIVEN,
-        idempotency_key: str | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
+        account_id: str | Omit = omit,
+        created_at: lockbox_list_params.CreatedAt | Omit = omit,
+        cursor: str | Omit = omit,
+        idempotency_key: str | Omit = omit,
+        limit: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[Lockbox]:
         """
         List Lockboxes
@@ -283,14 +283,14 @@ class AsyncLockboxesResource(AsyncAPIResource):
         self,
         *,
         account_id: str,
-        description: str | NotGiven = NOT_GIVEN,
-        recipient_name: str | NotGiven = NOT_GIVEN,
+        description: str | Omit = omit,
+        recipient_name: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Lockbox:
         """
@@ -342,7 +342,7 @@ class AsyncLockboxesResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Lockbox:
         """
         Retrieve a Lockbox
@@ -372,15 +372,15 @@ class AsyncLockboxesResource(AsyncAPIResource):
         self,
         lockbox_id: str,
         *,
-        description: str | NotGiven = NOT_GIVEN,
-        recipient_name: str | NotGiven = NOT_GIVEN,
-        status: Literal["active", "inactive"] | NotGiven = NOT_GIVEN,
+        description: str | Omit = omit,
+        recipient_name: str | Omit = omit,
+        status: Literal["active", "inactive"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Lockbox:
         """
@@ -435,17 +435,17 @@ class AsyncLockboxesResource(AsyncAPIResource):
     def list(
         self,
         *,
-        account_id: str | NotGiven = NOT_GIVEN,
-        created_at: lockbox_list_params.CreatedAt | NotGiven = NOT_GIVEN,
-        cursor: str | NotGiven = NOT_GIVEN,
-        idempotency_key: str | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
+        account_id: str | Omit = omit,
+        created_at: lockbox_list_params.CreatedAt | Omit = omit,
+        cursor: str | Omit = omit,
+        idempotency_key: str | Omit = omit,
+        limit: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[Lockbox, AsyncPage[Lockbox]]:
         """
         List Lockboxes

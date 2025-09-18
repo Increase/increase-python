@@ -5,7 +5,7 @@ from __future__ import annotations
 import httpx
 
 from ..types import wire_drawdown_request_list_params, wire_drawdown_request_create_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -52,15 +52,15 @@ class WireDrawdownRequestsResource(SyncAPIResource):
         debtor_address: wire_drawdown_request_create_params.DebtorAddress,
         debtor_name: str,
         unstructured_remittance_information: str,
-        debtor_account_number: str | NotGiven = NOT_GIVEN,
-        debtor_external_account_id: str | NotGiven = NOT_GIVEN,
-        debtor_routing_number: str | NotGiven = NOT_GIVEN,
+        debtor_account_number: str | Omit = omit,
+        debtor_external_account_id: str | Omit = omit,
+        debtor_routing_number: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> WireDrawdownRequest:
         """
@@ -134,7 +134,7 @@ class WireDrawdownRequestsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> WireDrawdownRequest:
         """
         Retrieve a Wire Drawdown Request
@@ -165,16 +165,16 @@ class WireDrawdownRequestsResource(SyncAPIResource):
     def list(
         self,
         *,
-        cursor: str | NotGiven = NOT_GIVEN,
-        idempotency_key: str | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        status: wire_drawdown_request_list_params.Status | NotGiven = NOT_GIVEN,
+        cursor: str | Omit = omit,
+        idempotency_key: str | Omit = omit,
+        limit: int | Omit = omit,
+        status: wire_drawdown_request_list_params.Status | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[WireDrawdownRequest]:
         """
         List Wire Drawdown Requests
@@ -250,15 +250,15 @@ class AsyncWireDrawdownRequestsResource(AsyncAPIResource):
         debtor_address: wire_drawdown_request_create_params.DebtorAddress,
         debtor_name: str,
         unstructured_remittance_information: str,
-        debtor_account_number: str | NotGiven = NOT_GIVEN,
-        debtor_external_account_id: str | NotGiven = NOT_GIVEN,
-        debtor_routing_number: str | NotGiven = NOT_GIVEN,
+        debtor_account_number: str | Omit = omit,
+        debtor_external_account_id: str | Omit = omit,
+        debtor_routing_number: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> WireDrawdownRequest:
         """
@@ -332,7 +332,7 @@ class AsyncWireDrawdownRequestsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> WireDrawdownRequest:
         """
         Retrieve a Wire Drawdown Request
@@ -363,16 +363,16 @@ class AsyncWireDrawdownRequestsResource(AsyncAPIResource):
     def list(
         self,
         *,
-        cursor: str | NotGiven = NOT_GIVEN,
-        idempotency_key: str | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        status: wire_drawdown_request_list_params.Status | NotGiven = NOT_GIVEN,
+        cursor: str | Omit = omit,
+        idempotency_key: str | Omit = omit,
+        limit: int | Omit = omit,
+        status: wire_drawdown_request_list_params.Status | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[WireDrawdownRequest, AsyncPage[WireDrawdownRequest]]:
         """
         List Wire Drawdown Requests

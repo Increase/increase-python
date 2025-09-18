@@ -8,7 +8,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -57,7 +57,7 @@ class PhysicalCardsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> PhysicalCard:
         """
@@ -117,16 +117,16 @@ class PhysicalCardsResource(SyncAPIResource):
         physical_card_id: str,
         *,
         category: Literal["in_transit", "processed_for_delivery", "delivered", "returned_to_sender"],
-        carrier_estimated_delivery_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        city: str | NotGiven = NOT_GIVEN,
-        postal_code: str | NotGiven = NOT_GIVEN,
-        state: str | NotGiven = NOT_GIVEN,
+        carrier_estimated_delivery_at: Union[str, datetime] | Omit = omit,
+        city: str | Omit = omit,
+        postal_code: str | Omit = omit,
+        state: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> PhysicalCard:
         """
@@ -220,7 +220,7 @@ class AsyncPhysicalCardsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> PhysicalCard:
         """
@@ -280,16 +280,16 @@ class AsyncPhysicalCardsResource(AsyncAPIResource):
         physical_card_id: str,
         *,
         category: Literal["in_transit", "processed_for_delivery", "delivered", "returned_to_sender"],
-        carrier_estimated_delivery_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        city: str | NotGiven = NOT_GIVEN,
-        postal_code: str | NotGiven = NOT_GIVEN,
-        state: str | NotGiven = NOT_GIVEN,
+        carrier_estimated_delivery_at: Union[str, datetime] | Omit = omit,
+        city: str | Omit = omit,
+        postal_code: str | Omit = omit,
+        state: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> PhysicalCard:
         """

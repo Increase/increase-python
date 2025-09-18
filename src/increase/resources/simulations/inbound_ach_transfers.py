@@ -8,7 +8,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -50,15 +50,15 @@ class InboundACHTransfersResource(SyncAPIResource):
         *,
         account_number_id: str,
         amount: int,
-        addenda: inbound_ach_transfer_create_params.Addenda | NotGiven = NOT_GIVEN,
-        company_descriptive_date: str | NotGiven = NOT_GIVEN,
-        company_discretionary_data: str | NotGiven = NOT_GIVEN,
-        company_entry_description: str | NotGiven = NOT_GIVEN,
-        company_id: str | NotGiven = NOT_GIVEN,
-        company_name: str | NotGiven = NOT_GIVEN,
-        receiver_id_number: str | NotGiven = NOT_GIVEN,
-        receiver_name: str | NotGiven = NOT_GIVEN,
-        resolve_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        addenda: inbound_ach_transfer_create_params.Addenda | Omit = omit,
+        company_descriptive_date: str | Omit = omit,
+        company_discretionary_data: str | Omit = omit,
+        company_entry_description: str | Omit = omit,
+        company_id: str | Omit = omit,
+        company_name: str | Omit = omit,
+        receiver_id_number: str | Omit = omit,
+        receiver_name: str | Omit = omit,
+        resolve_at: Union[str, datetime] | Omit = omit,
         standard_entry_class_code: Literal[
             "corporate_credit_or_debit",
             "corporate_trade_exchange",
@@ -77,13 +77,13 @@ class InboundACHTransfersResource(SyncAPIResource):
             "destroyed_check",
             "international_ach_transaction",
         ]
-        | NotGiven = NOT_GIVEN,
+        | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> InboundACHTransfer:
         """Simulates an inbound ACH transfer to your account.
@@ -209,15 +209,15 @@ class AsyncInboundACHTransfersResource(AsyncAPIResource):
         *,
         account_number_id: str,
         amount: int,
-        addenda: inbound_ach_transfer_create_params.Addenda | NotGiven = NOT_GIVEN,
-        company_descriptive_date: str | NotGiven = NOT_GIVEN,
-        company_discretionary_data: str | NotGiven = NOT_GIVEN,
-        company_entry_description: str | NotGiven = NOT_GIVEN,
-        company_id: str | NotGiven = NOT_GIVEN,
-        company_name: str | NotGiven = NOT_GIVEN,
-        receiver_id_number: str | NotGiven = NOT_GIVEN,
-        receiver_name: str | NotGiven = NOT_GIVEN,
-        resolve_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        addenda: inbound_ach_transfer_create_params.Addenda | Omit = omit,
+        company_descriptive_date: str | Omit = omit,
+        company_discretionary_data: str | Omit = omit,
+        company_entry_description: str | Omit = omit,
+        company_id: str | Omit = omit,
+        company_name: str | Omit = omit,
+        receiver_id_number: str | Omit = omit,
+        receiver_name: str | Omit = omit,
+        resolve_at: Union[str, datetime] | Omit = omit,
         standard_entry_class_code: Literal[
             "corporate_credit_or_debit",
             "corporate_trade_exchange",
@@ -236,13 +236,13 @@ class AsyncInboundACHTransfersResource(AsyncAPIResource):
             "destroyed_check",
             "international_ach_transaction",
         ]
-        | NotGiven = NOT_GIVEN,
+        | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> InboundACHTransfer:
         """Simulates an inbound ACH transfer to your account.

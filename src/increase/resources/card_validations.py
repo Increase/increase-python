@@ -5,7 +5,7 @@ from __future__ import annotations
 import httpx
 
 from ..types import card_validation_list_params, card_validation_create_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -52,17 +52,17 @@ class CardValidationsResource(SyncAPIResource):
         merchant_name: str,
         merchant_postal_code: str,
         merchant_state: str,
-        cardholder_first_name: str | NotGiven = NOT_GIVEN,
-        cardholder_last_name: str | NotGiven = NOT_GIVEN,
-        cardholder_middle_name: str | NotGiven = NOT_GIVEN,
-        cardholder_postal_code: str | NotGiven = NOT_GIVEN,
-        cardholder_street_address: str | NotGiven = NOT_GIVEN,
+        cardholder_first_name: str | Omit = omit,
+        cardholder_last_name: str | Omit = omit,
+        cardholder_middle_name: str | Omit = omit,
+        cardholder_postal_code: str | Omit = omit,
+        cardholder_street_address: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> CardValidation:
         """
@@ -144,7 +144,7 @@ class CardValidationsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CardValidation:
         """
         Retrieve a Card Validation
@@ -173,18 +173,18 @@ class CardValidationsResource(SyncAPIResource):
     def list(
         self,
         *,
-        account_id: str | NotGiven = NOT_GIVEN,
-        created_at: card_validation_list_params.CreatedAt | NotGiven = NOT_GIVEN,
-        cursor: str | NotGiven = NOT_GIVEN,
-        idempotency_key: str | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        status: card_validation_list_params.Status | NotGiven = NOT_GIVEN,
+        account_id: str | Omit = omit,
+        created_at: card_validation_list_params.CreatedAt | Omit = omit,
+        cursor: str | Omit = omit,
+        idempotency_key: str | Omit = omit,
+        limit: int | Omit = omit,
+        status: card_validation_list_params.Status | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[CardValidation]:
         """
         List Card Validations
@@ -264,17 +264,17 @@ class AsyncCardValidationsResource(AsyncAPIResource):
         merchant_name: str,
         merchant_postal_code: str,
         merchant_state: str,
-        cardholder_first_name: str | NotGiven = NOT_GIVEN,
-        cardholder_last_name: str | NotGiven = NOT_GIVEN,
-        cardholder_middle_name: str | NotGiven = NOT_GIVEN,
-        cardholder_postal_code: str | NotGiven = NOT_GIVEN,
-        cardholder_street_address: str | NotGiven = NOT_GIVEN,
+        cardholder_first_name: str | Omit = omit,
+        cardholder_last_name: str | Omit = omit,
+        cardholder_middle_name: str | Omit = omit,
+        cardholder_postal_code: str | Omit = omit,
+        cardholder_street_address: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> CardValidation:
         """
@@ -356,7 +356,7 @@ class AsyncCardValidationsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CardValidation:
         """
         Retrieve a Card Validation
@@ -385,18 +385,18 @@ class AsyncCardValidationsResource(AsyncAPIResource):
     def list(
         self,
         *,
-        account_id: str | NotGiven = NOT_GIVEN,
-        created_at: card_validation_list_params.CreatedAt | NotGiven = NOT_GIVEN,
-        cursor: str | NotGiven = NOT_GIVEN,
-        idempotency_key: str | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        status: card_validation_list_params.Status | NotGiven = NOT_GIVEN,
+        account_id: str | Omit = omit,
+        created_at: card_validation_list_params.CreatedAt | Omit = omit,
+        cursor: str | Omit = omit,
+        idempotency_key: str | Omit = omit,
+        limit: int | Omit = omit,
+        status: card_validation_list_params.Status | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[CardValidation, AsyncPage[CardValidation]]:
         """
         List Card Validations

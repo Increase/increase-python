@@ -5,7 +5,7 @@ from __future__ import annotations
 import httpx
 
 from ..types import real_time_decision_action_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -50,7 +50,7 @@ class RealTimeDecisionsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RealTimeDecision:
         """
         Retrieve a Real-Time Decision
@@ -82,19 +82,17 @@ class RealTimeDecisionsResource(SyncAPIResource):
         self,
         real_time_decision_id: str,
         *,
-        card_authentication: real_time_decision_action_params.CardAuthentication | NotGiven = NOT_GIVEN,
-        card_authentication_challenge: real_time_decision_action_params.CardAuthenticationChallenge
-        | NotGiven = NOT_GIVEN,
-        card_authorization: real_time_decision_action_params.CardAuthorization | NotGiven = NOT_GIVEN,
-        digital_wallet_authentication: real_time_decision_action_params.DigitalWalletAuthentication
-        | NotGiven = NOT_GIVEN,
-        digital_wallet_token: real_time_decision_action_params.DigitalWalletToken | NotGiven = NOT_GIVEN,
+        card_authentication: real_time_decision_action_params.CardAuthentication | Omit = omit,
+        card_authentication_challenge: real_time_decision_action_params.CardAuthenticationChallenge | Omit = omit,
+        card_authorization: real_time_decision_action_params.CardAuthorization | Omit = omit,
+        digital_wallet_authentication: real_time_decision_action_params.DigitalWalletAuthentication | Omit = omit,
+        digital_wallet_token: real_time_decision_action_params.DigitalWalletToken | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> RealTimeDecision:
         """
@@ -184,7 +182,7 @@ class AsyncRealTimeDecisionsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RealTimeDecision:
         """
         Retrieve a Real-Time Decision
@@ -216,19 +214,17 @@ class AsyncRealTimeDecisionsResource(AsyncAPIResource):
         self,
         real_time_decision_id: str,
         *,
-        card_authentication: real_time_decision_action_params.CardAuthentication | NotGiven = NOT_GIVEN,
-        card_authentication_challenge: real_time_decision_action_params.CardAuthenticationChallenge
-        | NotGiven = NOT_GIVEN,
-        card_authorization: real_time_decision_action_params.CardAuthorization | NotGiven = NOT_GIVEN,
-        digital_wallet_authentication: real_time_decision_action_params.DigitalWalletAuthentication
-        | NotGiven = NOT_GIVEN,
-        digital_wallet_token: real_time_decision_action_params.DigitalWalletToken | NotGiven = NOT_GIVEN,
+        card_authentication: real_time_decision_action_params.CardAuthentication | Omit = omit,
+        card_authentication_challenge: real_time_decision_action_params.CardAuthenticationChallenge | Omit = omit,
+        card_authorization: real_time_decision_action_params.CardAuthorization | Omit = omit,
+        digital_wallet_authentication: real_time_decision_action_params.DigitalWalletAuthentication | Omit = omit,
+        digital_wallet_token: real_time_decision_action_params.DigitalWalletToken | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> RealTimeDecision:
         """
