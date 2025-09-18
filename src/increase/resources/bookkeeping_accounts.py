@@ -14,7 +14,7 @@ from ..types import (
     bookkeeping_account_update_params,
     bookkeeping_account_balance_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -56,15 +56,15 @@ class BookkeepingAccountsResource(SyncAPIResource):
         self,
         *,
         name: str,
-        account_id: str | NotGiven = NOT_GIVEN,
-        compliance_category: Literal["commingled_cash", "customer_balance"] | NotGiven = NOT_GIVEN,
-        entity_id: str | NotGiven = NOT_GIVEN,
+        account_id: str | Omit = omit,
+        compliance_category: Literal["commingled_cash", "customer_balance"] | Omit = omit,
+        entity_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> BookkeepingAccount:
         """
@@ -123,7 +123,7 @@ class BookkeepingAccountsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> BookkeepingAccount:
         """
@@ -164,15 +164,15 @@ class BookkeepingAccountsResource(SyncAPIResource):
     def list(
         self,
         *,
-        cursor: str | NotGiven = NOT_GIVEN,
-        idempotency_key: str | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
+        cursor: str | Omit = omit,
+        idempotency_key: str | Omit = omit,
+        limit: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[BookkeepingAccount]:
         """
         List Bookkeeping Accounts
@@ -220,13 +220,13 @@ class BookkeepingAccountsResource(SyncAPIResource):
         self,
         bookkeeping_account_id: str,
         *,
-        at_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        at_time: Union[str, datetime] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BookkeepingBalanceLookup:
         """
         Retrieve a Bookkeeping Account Balance
@@ -287,15 +287,15 @@ class AsyncBookkeepingAccountsResource(AsyncAPIResource):
         self,
         *,
         name: str,
-        account_id: str | NotGiven = NOT_GIVEN,
-        compliance_category: Literal["commingled_cash", "customer_balance"] | NotGiven = NOT_GIVEN,
-        entity_id: str | NotGiven = NOT_GIVEN,
+        account_id: str | Omit = omit,
+        compliance_category: Literal["commingled_cash", "customer_balance"] | Omit = omit,
+        entity_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> BookkeepingAccount:
         """
@@ -354,7 +354,7 @@ class AsyncBookkeepingAccountsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> BookkeepingAccount:
         """
@@ -397,15 +397,15 @@ class AsyncBookkeepingAccountsResource(AsyncAPIResource):
     def list(
         self,
         *,
-        cursor: str | NotGiven = NOT_GIVEN,
-        idempotency_key: str | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
+        cursor: str | Omit = omit,
+        idempotency_key: str | Omit = omit,
+        limit: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[BookkeepingAccount, AsyncPage[BookkeepingAccount]]:
         """
         List Bookkeeping Accounts
@@ -453,13 +453,13 @@ class AsyncBookkeepingAccountsResource(AsyncAPIResource):
         self,
         bookkeeping_account_id: str,
         *,
-        at_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        at_time: Union[str, datetime] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BookkeepingBalanceLookup:
         """
         Retrieve a Bookkeeping Account Balance

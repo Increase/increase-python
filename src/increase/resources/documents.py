@@ -7,7 +7,7 @@ from typing_extensions import Literal
 import httpx
 
 from ..types import document_list_params, document_create_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -48,14 +48,14 @@ class DocumentsResource(SyncAPIResource):
         self,
         *,
         category: Literal["account_verification_letter", "funding_instructions"],
-        account_verification_letter: document_create_params.AccountVerificationLetter | NotGiven = NOT_GIVEN,
-        funding_instructions: document_create_params.FundingInstructions | NotGiven = NOT_GIVEN,
+        account_verification_letter: document_create_params.AccountVerificationLetter | Omit = omit,
+        funding_instructions: document_create_params.FundingInstructions | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Document:
         """
@@ -112,7 +112,7 @@ class DocumentsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Document:
         """
         Retrieve a Document
@@ -141,18 +141,18 @@ class DocumentsResource(SyncAPIResource):
     def list(
         self,
         *,
-        category: document_list_params.Category | NotGiven = NOT_GIVEN,
-        created_at: document_list_params.CreatedAt | NotGiven = NOT_GIVEN,
-        cursor: str | NotGiven = NOT_GIVEN,
-        entity_id: str | NotGiven = NOT_GIVEN,
-        idempotency_key: str | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
+        category: document_list_params.Category | Omit = omit,
+        created_at: document_list_params.CreatedAt | Omit = omit,
+        cursor: str | Omit = omit,
+        entity_id: str | Omit = omit,
+        idempotency_key: str | Omit = omit,
+        limit: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[Document]:
         """
         List Documents
@@ -226,14 +226,14 @@ class AsyncDocumentsResource(AsyncAPIResource):
         self,
         *,
         category: Literal["account_verification_letter", "funding_instructions"],
-        account_verification_letter: document_create_params.AccountVerificationLetter | NotGiven = NOT_GIVEN,
-        funding_instructions: document_create_params.FundingInstructions | NotGiven = NOT_GIVEN,
+        account_verification_letter: document_create_params.AccountVerificationLetter | Omit = omit,
+        funding_instructions: document_create_params.FundingInstructions | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Document:
         """
@@ -290,7 +290,7 @@ class AsyncDocumentsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Document:
         """
         Retrieve a Document
@@ -319,18 +319,18 @@ class AsyncDocumentsResource(AsyncAPIResource):
     def list(
         self,
         *,
-        category: document_list_params.Category | NotGiven = NOT_GIVEN,
-        created_at: document_list_params.CreatedAt | NotGiven = NOT_GIVEN,
-        cursor: str | NotGiven = NOT_GIVEN,
-        entity_id: str | NotGiven = NOT_GIVEN,
-        idempotency_key: str | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
+        category: document_list_params.Category | Omit = omit,
+        created_at: document_list_params.CreatedAt | Omit = omit,
+        cursor: str | Omit = omit,
+        entity_id: str | Omit = omit,
+        idempotency_key: str | Omit = omit,
+        limit: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[Document, AsyncPage[Document]]:
         """
         List Documents

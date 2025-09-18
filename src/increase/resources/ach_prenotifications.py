@@ -9,7 +9,7 @@ from typing_extensions import Literal
 import httpx
 
 from ..types import ach_prenotification_list_params, ach_prenotification_create_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -52,28 +52,28 @@ class ACHPrenotificationsResource(SyncAPIResource):
         account_id: str,
         account_number: str,
         routing_number: str,
-        addendum: str | NotGiven = NOT_GIVEN,
-        company_descriptive_date: str | NotGiven = NOT_GIVEN,
-        company_discretionary_data: str | NotGiven = NOT_GIVEN,
-        company_entry_description: str | NotGiven = NOT_GIVEN,
-        company_name: str | NotGiven = NOT_GIVEN,
-        credit_debit_indicator: Literal["credit", "debit"] | NotGiven = NOT_GIVEN,
-        effective_date: Union[str, date] | NotGiven = NOT_GIVEN,
-        individual_id: str | NotGiven = NOT_GIVEN,
-        individual_name: str | NotGiven = NOT_GIVEN,
+        addendum: str | Omit = omit,
+        company_descriptive_date: str | Omit = omit,
+        company_discretionary_data: str | Omit = omit,
+        company_entry_description: str | Omit = omit,
+        company_name: str | Omit = omit,
+        credit_debit_indicator: Literal["credit", "debit"] | Omit = omit,
+        effective_date: Union[str, date] | Omit = omit,
+        individual_id: str | Omit = omit,
+        individual_name: str | Omit = omit,
         standard_entry_class_code: Literal[
             "corporate_credit_or_debit",
             "corporate_trade_exchange",
             "prearranged_payments_and_deposit",
             "internet_initiated",
         ]
-        | NotGiven = NOT_GIVEN,
+        | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> ACHPrenotification:
         """
@@ -166,7 +166,7 @@ class ACHPrenotificationsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ACHPrenotification:
         """
         Retrieve an ACH Prenotification
@@ -197,16 +197,16 @@ class ACHPrenotificationsResource(SyncAPIResource):
     def list(
         self,
         *,
-        created_at: ach_prenotification_list_params.CreatedAt | NotGiven = NOT_GIVEN,
-        cursor: str | NotGiven = NOT_GIVEN,
-        idempotency_key: str | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
+        created_at: ach_prenotification_list_params.CreatedAt | Omit = omit,
+        cursor: str | Omit = omit,
+        idempotency_key: str | Omit = omit,
+        limit: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[ACHPrenotification]:
         """
         List ACH Prenotifications
@@ -278,28 +278,28 @@ class AsyncACHPrenotificationsResource(AsyncAPIResource):
         account_id: str,
         account_number: str,
         routing_number: str,
-        addendum: str | NotGiven = NOT_GIVEN,
-        company_descriptive_date: str | NotGiven = NOT_GIVEN,
-        company_discretionary_data: str | NotGiven = NOT_GIVEN,
-        company_entry_description: str | NotGiven = NOT_GIVEN,
-        company_name: str | NotGiven = NOT_GIVEN,
-        credit_debit_indicator: Literal["credit", "debit"] | NotGiven = NOT_GIVEN,
-        effective_date: Union[str, date] | NotGiven = NOT_GIVEN,
-        individual_id: str | NotGiven = NOT_GIVEN,
-        individual_name: str | NotGiven = NOT_GIVEN,
+        addendum: str | Omit = omit,
+        company_descriptive_date: str | Omit = omit,
+        company_discretionary_data: str | Omit = omit,
+        company_entry_description: str | Omit = omit,
+        company_name: str | Omit = omit,
+        credit_debit_indicator: Literal["credit", "debit"] | Omit = omit,
+        effective_date: Union[str, date] | Omit = omit,
+        individual_id: str | Omit = omit,
+        individual_name: str | Omit = omit,
         standard_entry_class_code: Literal[
             "corporate_credit_or_debit",
             "corporate_trade_exchange",
             "prearranged_payments_and_deposit",
             "internet_initiated",
         ]
-        | NotGiven = NOT_GIVEN,
+        | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> ACHPrenotification:
         """
@@ -392,7 +392,7 @@ class AsyncACHPrenotificationsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ACHPrenotification:
         """
         Retrieve an ACH Prenotification
@@ -423,16 +423,16 @@ class AsyncACHPrenotificationsResource(AsyncAPIResource):
     def list(
         self,
         *,
-        created_at: ach_prenotification_list_params.CreatedAt | NotGiven = NOT_GIVEN,
-        cursor: str | NotGiven = NOT_GIVEN,
-        idempotency_key: str | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
+        created_at: ach_prenotification_list_params.CreatedAt | Omit = omit,
+        cursor: str | Omit = omit,
+        idempotency_key: str | Omit = omit,
+        limit: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[ACHPrenotification, AsyncPage[ACHPrenotification]]:
         """
         List ACH Prenotifications

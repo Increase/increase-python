@@ -7,7 +7,7 @@ from datetime import date
 
 import httpx
 
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -47,17 +47,17 @@ class CardTokensResource(SyncAPIResource):
     def create(
         self,
         *,
-        capabilities: Iterable[card_token_create_params.Capability] | NotGiven = NOT_GIVEN,
-        expiration: Union[str, date] | NotGiven = NOT_GIVEN,
-        last4: str | NotGiven = NOT_GIVEN,
-        prefix: str | NotGiven = NOT_GIVEN,
-        primary_account_number_length: int | NotGiven = NOT_GIVEN,
+        capabilities: Iterable[card_token_create_params.Capability] | Omit = omit,
+        expiration: Union[str, date] | Omit = omit,
+        last4: str | Omit = omit,
+        prefix: str | Omit = omit,
+        primary_account_number_length: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> CardToken:
         """
@@ -130,17 +130,17 @@ class AsyncCardTokensResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        capabilities: Iterable[card_token_create_params.Capability] | NotGiven = NOT_GIVEN,
-        expiration: Union[str, date] | NotGiven = NOT_GIVEN,
-        last4: str | NotGiven = NOT_GIVEN,
-        prefix: str | NotGiven = NOT_GIVEN,
-        primary_account_number_length: int | NotGiven = NOT_GIVEN,
+        capabilities: Iterable[card_token_create_params.Capability] | Omit = omit,
+        expiration: Union[str, date] | Omit = omit,
+        last4: str | Omit = omit,
+        prefix: str | Omit = omit,
+        primary_account_number_length: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> CardToken:
         """

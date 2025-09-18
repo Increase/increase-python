@@ -7,7 +7,7 @@ from typing_extensions import Literal
 import httpx
 
 from ..types import ach_transfer_list_params, ach_transfer_create_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -50,34 +50,34 @@ class ACHTransfersResource(SyncAPIResource):
         account_id: str,
         amount: int,
         statement_descriptor: str,
-        account_number: str | NotGiven = NOT_GIVEN,
-        addenda: ach_transfer_create_params.Addenda | NotGiven = NOT_GIVEN,
-        company_descriptive_date: str | NotGiven = NOT_GIVEN,
-        company_discretionary_data: str | NotGiven = NOT_GIVEN,
-        company_entry_description: str | NotGiven = NOT_GIVEN,
-        company_name: str | NotGiven = NOT_GIVEN,
-        destination_account_holder: Literal["business", "individual", "unknown"] | NotGiven = NOT_GIVEN,
-        external_account_id: str | NotGiven = NOT_GIVEN,
-        funding: Literal["checking", "savings", "general_ledger"] | NotGiven = NOT_GIVEN,
-        individual_id: str | NotGiven = NOT_GIVEN,
-        individual_name: str | NotGiven = NOT_GIVEN,
-        preferred_effective_date: ach_transfer_create_params.PreferredEffectiveDate | NotGiven = NOT_GIVEN,
-        require_approval: bool | NotGiven = NOT_GIVEN,
-        routing_number: str | NotGiven = NOT_GIVEN,
+        account_number: str | Omit = omit,
+        addenda: ach_transfer_create_params.Addenda | Omit = omit,
+        company_descriptive_date: str | Omit = omit,
+        company_discretionary_data: str | Omit = omit,
+        company_entry_description: str | Omit = omit,
+        company_name: str | Omit = omit,
+        destination_account_holder: Literal["business", "individual", "unknown"] | Omit = omit,
+        external_account_id: str | Omit = omit,
+        funding: Literal["checking", "savings", "general_ledger"] | Omit = omit,
+        individual_id: str | Omit = omit,
+        individual_name: str | Omit = omit,
+        preferred_effective_date: ach_transfer_create_params.PreferredEffectiveDate | Omit = omit,
+        require_approval: bool | Omit = omit,
+        routing_number: str | Omit = omit,
         standard_entry_class_code: Literal[
             "corporate_credit_or_debit",
             "corporate_trade_exchange",
             "prearranged_payments_and_deposit",
             "internet_initiated",
         ]
-        | NotGiven = NOT_GIVEN,
-        transaction_timing: Literal["synchronous", "asynchronous"] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        transaction_timing: Literal["synchronous", "asynchronous"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> ACHTransfer:
         """
@@ -213,7 +213,7 @@ class ACHTransfersResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ACHTransfer:
         """
         Retrieve an ACH Transfer
@@ -242,19 +242,19 @@ class ACHTransfersResource(SyncAPIResource):
     def list(
         self,
         *,
-        account_id: str | NotGiven = NOT_GIVEN,
-        created_at: ach_transfer_list_params.CreatedAt | NotGiven = NOT_GIVEN,
-        cursor: str | NotGiven = NOT_GIVEN,
-        external_account_id: str | NotGiven = NOT_GIVEN,
-        idempotency_key: str | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        status: ach_transfer_list_params.Status | NotGiven = NOT_GIVEN,
+        account_id: str | Omit = omit,
+        created_at: ach_transfer_list_params.CreatedAt | Omit = omit,
+        cursor: str | Omit = omit,
+        external_account_id: str | Omit = omit,
+        idempotency_key: str | Omit = omit,
+        limit: int | Omit = omit,
+        status: ach_transfer_list_params.Status | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[ACHTransfer]:
         """
         List ACH Transfers
@@ -315,7 +315,7 @@ class ACHTransfersResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> ACHTransfer:
         """
@@ -357,7 +357,7 @@ class ACHTransfersResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> ACHTransfer:
         """
@@ -417,34 +417,34 @@ class AsyncACHTransfersResource(AsyncAPIResource):
         account_id: str,
         amount: int,
         statement_descriptor: str,
-        account_number: str | NotGiven = NOT_GIVEN,
-        addenda: ach_transfer_create_params.Addenda | NotGiven = NOT_GIVEN,
-        company_descriptive_date: str | NotGiven = NOT_GIVEN,
-        company_discretionary_data: str | NotGiven = NOT_GIVEN,
-        company_entry_description: str | NotGiven = NOT_GIVEN,
-        company_name: str | NotGiven = NOT_GIVEN,
-        destination_account_holder: Literal["business", "individual", "unknown"] | NotGiven = NOT_GIVEN,
-        external_account_id: str | NotGiven = NOT_GIVEN,
-        funding: Literal["checking", "savings", "general_ledger"] | NotGiven = NOT_GIVEN,
-        individual_id: str | NotGiven = NOT_GIVEN,
-        individual_name: str | NotGiven = NOT_GIVEN,
-        preferred_effective_date: ach_transfer_create_params.PreferredEffectiveDate | NotGiven = NOT_GIVEN,
-        require_approval: bool | NotGiven = NOT_GIVEN,
-        routing_number: str | NotGiven = NOT_GIVEN,
+        account_number: str | Omit = omit,
+        addenda: ach_transfer_create_params.Addenda | Omit = omit,
+        company_descriptive_date: str | Omit = omit,
+        company_discretionary_data: str | Omit = omit,
+        company_entry_description: str | Omit = omit,
+        company_name: str | Omit = omit,
+        destination_account_holder: Literal["business", "individual", "unknown"] | Omit = omit,
+        external_account_id: str | Omit = omit,
+        funding: Literal["checking", "savings", "general_ledger"] | Omit = omit,
+        individual_id: str | Omit = omit,
+        individual_name: str | Omit = omit,
+        preferred_effective_date: ach_transfer_create_params.PreferredEffectiveDate | Omit = omit,
+        require_approval: bool | Omit = omit,
+        routing_number: str | Omit = omit,
         standard_entry_class_code: Literal[
             "corporate_credit_or_debit",
             "corporate_trade_exchange",
             "prearranged_payments_and_deposit",
             "internet_initiated",
         ]
-        | NotGiven = NOT_GIVEN,
-        transaction_timing: Literal["synchronous", "asynchronous"] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        transaction_timing: Literal["synchronous", "asynchronous"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> ACHTransfer:
         """
@@ -580,7 +580,7 @@ class AsyncACHTransfersResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ACHTransfer:
         """
         Retrieve an ACH Transfer
@@ -609,19 +609,19 @@ class AsyncACHTransfersResource(AsyncAPIResource):
     def list(
         self,
         *,
-        account_id: str | NotGiven = NOT_GIVEN,
-        created_at: ach_transfer_list_params.CreatedAt | NotGiven = NOT_GIVEN,
-        cursor: str | NotGiven = NOT_GIVEN,
-        external_account_id: str | NotGiven = NOT_GIVEN,
-        idempotency_key: str | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        status: ach_transfer_list_params.Status | NotGiven = NOT_GIVEN,
+        account_id: str | Omit = omit,
+        created_at: ach_transfer_list_params.CreatedAt | Omit = omit,
+        cursor: str | Omit = omit,
+        external_account_id: str | Omit = omit,
+        idempotency_key: str | Omit = omit,
+        limit: int | Omit = omit,
+        status: ach_transfer_list_params.Status | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[ACHTransfer, AsyncPage[ACHTransfer]]:
         """
         List ACH Transfers
@@ -682,7 +682,7 @@ class AsyncACHTransfersResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> ACHTransfer:
         """
@@ -724,7 +724,7 @@ class AsyncACHTransfersResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> ACHTransfer:
         """

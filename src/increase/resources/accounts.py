@@ -8,7 +8,7 @@ from datetime import datetime
 import httpx
 
 from ..types import account_list_params, account_create_params, account_update_params, account_balance_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -50,15 +50,15 @@ class AccountsResource(SyncAPIResource):
         self,
         *,
         name: str,
-        entity_id: str | NotGiven = NOT_GIVEN,
-        informational_entity_id: str | NotGiven = NOT_GIVEN,
-        program_id: str | NotGiven = NOT_GIVEN,
+        entity_id: str | Omit = omit,
+        informational_entity_id: str | Omit = omit,
+        program_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Account:
         """
@@ -115,7 +115,7 @@ class AccountsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Account:
         """
         Retrieve an Account
@@ -145,14 +145,14 @@ class AccountsResource(SyncAPIResource):
         self,
         account_id: str,
         *,
-        credit_limit: int | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
+        credit_limit: int | Omit = omit,
+        name: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Account:
         """
@@ -200,20 +200,20 @@ class AccountsResource(SyncAPIResource):
     def list(
         self,
         *,
-        created_at: account_list_params.CreatedAt | NotGiven = NOT_GIVEN,
-        cursor: str | NotGiven = NOT_GIVEN,
-        entity_id: str | NotGiven = NOT_GIVEN,
-        idempotency_key: str | NotGiven = NOT_GIVEN,
-        informational_entity_id: str | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        program_id: str | NotGiven = NOT_GIVEN,
-        status: account_list_params.Status | NotGiven = NOT_GIVEN,
+        created_at: account_list_params.CreatedAt | Omit = omit,
+        cursor: str | Omit = omit,
+        entity_id: str | Omit = omit,
+        idempotency_key: str | Omit = omit,
+        informational_entity_id: str | Omit = omit,
+        limit: int | Omit = omit,
+        program_id: str | Omit = omit,
+        status: account_list_params.Status | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[Account]:
         """
         List Accounts
@@ -272,13 +272,13 @@ class AccountsResource(SyncAPIResource):
         self,
         account_id: str,
         *,
-        at_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        at_time: Union[str, datetime] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BalanceLookup:
         """
         Retrieve the current and available balances for an account in minor units of the
@@ -320,7 +320,7 @@ class AccountsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Account:
         """Close an Account
@@ -379,15 +379,15 @@ class AsyncAccountsResource(AsyncAPIResource):
         self,
         *,
         name: str,
-        entity_id: str | NotGiven = NOT_GIVEN,
-        informational_entity_id: str | NotGiven = NOT_GIVEN,
-        program_id: str | NotGiven = NOT_GIVEN,
+        entity_id: str | Omit = omit,
+        informational_entity_id: str | Omit = omit,
+        program_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Account:
         """
@@ -444,7 +444,7 @@ class AsyncAccountsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Account:
         """
         Retrieve an Account
@@ -474,14 +474,14 @@ class AsyncAccountsResource(AsyncAPIResource):
         self,
         account_id: str,
         *,
-        credit_limit: int | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
+        credit_limit: int | Omit = omit,
+        name: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Account:
         """
@@ -529,20 +529,20 @@ class AsyncAccountsResource(AsyncAPIResource):
     def list(
         self,
         *,
-        created_at: account_list_params.CreatedAt | NotGiven = NOT_GIVEN,
-        cursor: str | NotGiven = NOT_GIVEN,
-        entity_id: str | NotGiven = NOT_GIVEN,
-        idempotency_key: str | NotGiven = NOT_GIVEN,
-        informational_entity_id: str | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        program_id: str | NotGiven = NOT_GIVEN,
-        status: account_list_params.Status | NotGiven = NOT_GIVEN,
+        created_at: account_list_params.CreatedAt | Omit = omit,
+        cursor: str | Omit = omit,
+        entity_id: str | Omit = omit,
+        idempotency_key: str | Omit = omit,
+        informational_entity_id: str | Omit = omit,
+        limit: int | Omit = omit,
+        program_id: str | Omit = omit,
+        status: account_list_params.Status | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[Account, AsyncPage[Account]]:
         """
         List Accounts
@@ -601,13 +601,13 @@ class AsyncAccountsResource(AsyncAPIResource):
         self,
         account_id: str,
         *,
-        at_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        at_time: Union[str, datetime] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BalanceLookup:
         """
         Retrieve the current and available balances for an account in minor units of the
@@ -649,7 +649,7 @@ class AsyncAccountsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Account:
         """Close an Account

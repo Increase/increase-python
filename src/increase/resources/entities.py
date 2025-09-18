@@ -19,7 +19,7 @@ from ..types import (
     entity_archive_beneficial_owner_params,
     entity_update_beneficial_owner_address_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -60,21 +60,21 @@ class EntitiesResource(SyncAPIResource):
         self,
         *,
         structure: Literal["corporation", "natural_person", "joint", "trust", "government_authority"],
-        corporation: entity_create_params.Corporation | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        government_authority: entity_create_params.GovernmentAuthority | NotGiven = NOT_GIVEN,
-        joint: entity_create_params.Joint | NotGiven = NOT_GIVEN,
-        natural_person: entity_create_params.NaturalPerson | NotGiven = NOT_GIVEN,
-        risk_rating: entity_create_params.RiskRating | NotGiven = NOT_GIVEN,
-        supplemental_documents: Iterable[entity_create_params.SupplementalDocument] | NotGiven = NOT_GIVEN,
-        third_party_verification: entity_create_params.ThirdPartyVerification | NotGiven = NOT_GIVEN,
-        trust: entity_create_params.Trust | NotGiven = NOT_GIVEN,
+        corporation: entity_create_params.Corporation | Omit = omit,
+        description: str | Omit = omit,
+        government_authority: entity_create_params.GovernmentAuthority | Omit = omit,
+        joint: entity_create_params.Joint | Omit = omit,
+        natural_person: entity_create_params.NaturalPerson | Omit = omit,
+        risk_rating: entity_create_params.RiskRating | Omit = omit,
+        supplemental_documents: Iterable[entity_create_params.SupplementalDocument] | Omit = omit,
+        third_party_verification: entity_create_params.ThirdPartyVerification | Omit = omit,
+        trust: entity_create_params.Trust | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Entity:
         """
@@ -163,7 +163,7 @@ class EntitiesResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Entity:
         """
         Retrieve an Entity
@@ -193,19 +193,19 @@ class EntitiesResource(SyncAPIResource):
         self,
         entity_id: str,
         *,
-        corporation: entity_update_params.Corporation | NotGiven = NOT_GIVEN,
-        details_confirmed_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        government_authority: entity_update_params.GovernmentAuthority | NotGiven = NOT_GIVEN,
-        natural_person: entity_update_params.NaturalPerson | NotGiven = NOT_GIVEN,
-        risk_rating: entity_update_params.RiskRating | NotGiven = NOT_GIVEN,
-        third_party_verification: entity_update_params.ThirdPartyVerification | NotGiven = NOT_GIVEN,
-        trust: entity_update_params.Trust | NotGiven = NOT_GIVEN,
+        corporation: entity_update_params.Corporation | Omit = omit,
+        details_confirmed_at: Union[str, datetime] | Omit = omit,
+        government_authority: entity_update_params.GovernmentAuthority | Omit = omit,
+        natural_person: entity_update_params.NaturalPerson | Omit = omit,
+        risk_rating: entity_update_params.RiskRating | Omit = omit,
+        third_party_verification: entity_update_params.ThirdPartyVerification | Omit = omit,
+        trust: entity_update_params.Trust | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Entity:
         """
@@ -276,17 +276,17 @@ class EntitiesResource(SyncAPIResource):
     def list(
         self,
         *,
-        created_at: entity_list_params.CreatedAt | NotGiven = NOT_GIVEN,
-        cursor: str | NotGiven = NOT_GIVEN,
-        idempotency_key: str | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        status: entity_list_params.Status | NotGiven = NOT_GIVEN,
+        created_at: entity_list_params.CreatedAt | Omit = omit,
+        cursor: str | Omit = omit,
+        idempotency_key: str | Omit = omit,
+        limit: int | Omit = omit,
+        status: entity_list_params.Status | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[Entity]:
         """
         List Entities
@@ -341,7 +341,7 @@ class EntitiesResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Entity:
         """Archive an Entity
@@ -386,7 +386,7 @@ class EntitiesResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Entity:
         """
@@ -431,13 +431,13 @@ class EntitiesResource(SyncAPIResource):
         self,
         entity_id: str,
         *,
-        confirmed_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        confirmed_at: Union[str, datetime] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Entity:
         """
@@ -486,7 +486,7 @@ class EntitiesResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Entity:
         """
@@ -536,7 +536,7 @@ class EntitiesResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Entity:
         """
@@ -584,7 +584,7 @@ class EntitiesResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Entity:
         """
@@ -641,7 +641,7 @@ class EntitiesResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Entity:
         """
@@ -708,21 +708,21 @@ class AsyncEntitiesResource(AsyncAPIResource):
         self,
         *,
         structure: Literal["corporation", "natural_person", "joint", "trust", "government_authority"],
-        corporation: entity_create_params.Corporation | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        government_authority: entity_create_params.GovernmentAuthority | NotGiven = NOT_GIVEN,
-        joint: entity_create_params.Joint | NotGiven = NOT_GIVEN,
-        natural_person: entity_create_params.NaturalPerson | NotGiven = NOT_GIVEN,
-        risk_rating: entity_create_params.RiskRating | NotGiven = NOT_GIVEN,
-        supplemental_documents: Iterable[entity_create_params.SupplementalDocument] | NotGiven = NOT_GIVEN,
-        third_party_verification: entity_create_params.ThirdPartyVerification | NotGiven = NOT_GIVEN,
-        trust: entity_create_params.Trust | NotGiven = NOT_GIVEN,
+        corporation: entity_create_params.Corporation | Omit = omit,
+        description: str | Omit = omit,
+        government_authority: entity_create_params.GovernmentAuthority | Omit = omit,
+        joint: entity_create_params.Joint | Omit = omit,
+        natural_person: entity_create_params.NaturalPerson | Omit = omit,
+        risk_rating: entity_create_params.RiskRating | Omit = omit,
+        supplemental_documents: Iterable[entity_create_params.SupplementalDocument] | Omit = omit,
+        third_party_verification: entity_create_params.ThirdPartyVerification | Omit = omit,
+        trust: entity_create_params.Trust | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Entity:
         """
@@ -811,7 +811,7 @@ class AsyncEntitiesResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Entity:
         """
         Retrieve an Entity
@@ -841,19 +841,19 @@ class AsyncEntitiesResource(AsyncAPIResource):
         self,
         entity_id: str,
         *,
-        corporation: entity_update_params.Corporation | NotGiven = NOT_GIVEN,
-        details_confirmed_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        government_authority: entity_update_params.GovernmentAuthority | NotGiven = NOT_GIVEN,
-        natural_person: entity_update_params.NaturalPerson | NotGiven = NOT_GIVEN,
-        risk_rating: entity_update_params.RiskRating | NotGiven = NOT_GIVEN,
-        third_party_verification: entity_update_params.ThirdPartyVerification | NotGiven = NOT_GIVEN,
-        trust: entity_update_params.Trust | NotGiven = NOT_GIVEN,
+        corporation: entity_update_params.Corporation | Omit = omit,
+        details_confirmed_at: Union[str, datetime] | Omit = omit,
+        government_authority: entity_update_params.GovernmentAuthority | Omit = omit,
+        natural_person: entity_update_params.NaturalPerson | Omit = omit,
+        risk_rating: entity_update_params.RiskRating | Omit = omit,
+        third_party_verification: entity_update_params.ThirdPartyVerification | Omit = omit,
+        trust: entity_update_params.Trust | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Entity:
         """
@@ -924,17 +924,17 @@ class AsyncEntitiesResource(AsyncAPIResource):
     def list(
         self,
         *,
-        created_at: entity_list_params.CreatedAt | NotGiven = NOT_GIVEN,
-        cursor: str | NotGiven = NOT_GIVEN,
-        idempotency_key: str | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        status: entity_list_params.Status | NotGiven = NOT_GIVEN,
+        created_at: entity_list_params.CreatedAt | Omit = omit,
+        cursor: str | Omit = omit,
+        idempotency_key: str | Omit = omit,
+        limit: int | Omit = omit,
+        status: entity_list_params.Status | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[Entity, AsyncPage[Entity]]:
         """
         List Entities
@@ -989,7 +989,7 @@ class AsyncEntitiesResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Entity:
         """Archive an Entity
@@ -1034,7 +1034,7 @@ class AsyncEntitiesResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Entity:
         """
@@ -1079,13 +1079,13 @@ class AsyncEntitiesResource(AsyncAPIResource):
         self,
         entity_id: str,
         *,
-        confirmed_at: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        confirmed_at: Union[str, datetime] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Entity:
         """
@@ -1134,7 +1134,7 @@ class AsyncEntitiesResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Entity:
         """
@@ -1184,7 +1184,7 @@ class AsyncEntitiesResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Entity:
         """
@@ -1234,7 +1234,7 @@ class AsyncEntitiesResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Entity:
         """
@@ -1291,7 +1291,7 @@ class AsyncEntitiesResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Entity:
         """
