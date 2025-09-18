@@ -15,6 +15,13 @@ class RoutingNumberListResponse(BaseModel):
     - `not_supported` - The routing number cannot receive this transfer type.
     """
 
+    fednow_transfers: Literal["supported", "not_supported"]
+    """This routing number's support for FedNow Transfers.
+
+    - `supported` - The routing number can receive this transfer type.
+    - `not_supported` - The routing number cannot receive this transfer type.
+    """
+
     name: str
     """The name of the financial institution belonging to a routing number."""
 
