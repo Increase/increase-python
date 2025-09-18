@@ -7,7 +7,7 @@ from typing_extensions import Literal
 import httpx
 
 from ..types import export_list_params, export_create_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -56,19 +56,19 @@ class ExportsResource(SyncAPIResource):
             "entity_csv",
             "vendor_csv",
         ],
-        account_statement_bai2: export_create_params.AccountStatementBai2 | NotGiven = NOT_GIVEN,
-        account_statement_ofx: export_create_params.AccountStatementOfx | NotGiven = NOT_GIVEN,
-        balance_csv: export_create_params.BalanceCsv | NotGiven = NOT_GIVEN,
-        bookkeeping_account_balance_csv: export_create_params.BookkeepingAccountBalanceCsv | NotGiven = NOT_GIVEN,
-        entity_csv: export_create_params.EntityCsv | NotGiven = NOT_GIVEN,
-        transaction_csv: export_create_params.TransactionCsv | NotGiven = NOT_GIVEN,
-        vendor_csv: object | NotGiven = NOT_GIVEN,
+        account_statement_bai2: export_create_params.AccountStatementBai2 | Omit = omit,
+        account_statement_ofx: export_create_params.AccountStatementOfx | Omit = omit,
+        balance_csv: export_create_params.BalanceCsv | Omit = omit,
+        bookkeeping_account_balance_csv: export_create_params.BookkeepingAccountBalanceCsv | Omit = omit,
+        entity_csv: export_create_params.EntityCsv | Omit = omit,
+        transaction_csv: export_create_params.TransactionCsv | Omit = omit,
+        vendor_csv: object | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Export:
         """
@@ -153,7 +153,7 @@ class ExportsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Export:
         """
         Retrieve an Export
@@ -182,18 +182,18 @@ class ExportsResource(SyncAPIResource):
     def list(
         self,
         *,
-        category: export_list_params.Category | NotGiven = NOT_GIVEN,
-        created_at: export_list_params.CreatedAt | NotGiven = NOT_GIVEN,
-        cursor: str | NotGiven = NOT_GIVEN,
-        idempotency_key: str | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        status: export_list_params.Status | NotGiven = NOT_GIVEN,
+        category: export_list_params.Category | Omit = omit,
+        created_at: export_list_params.CreatedAt | Omit = omit,
+        cursor: str | Omit = omit,
+        idempotency_key: str | Omit = omit,
+        limit: int | Omit = omit,
+        status: export_list_params.Status | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[Export]:
         """
         List Exports
@@ -273,19 +273,19 @@ class AsyncExportsResource(AsyncAPIResource):
             "entity_csv",
             "vendor_csv",
         ],
-        account_statement_bai2: export_create_params.AccountStatementBai2 | NotGiven = NOT_GIVEN,
-        account_statement_ofx: export_create_params.AccountStatementOfx | NotGiven = NOT_GIVEN,
-        balance_csv: export_create_params.BalanceCsv | NotGiven = NOT_GIVEN,
-        bookkeeping_account_balance_csv: export_create_params.BookkeepingAccountBalanceCsv | NotGiven = NOT_GIVEN,
-        entity_csv: export_create_params.EntityCsv | NotGiven = NOT_GIVEN,
-        transaction_csv: export_create_params.TransactionCsv | NotGiven = NOT_GIVEN,
-        vendor_csv: object | NotGiven = NOT_GIVEN,
+        account_statement_bai2: export_create_params.AccountStatementBai2 | Omit = omit,
+        account_statement_ofx: export_create_params.AccountStatementOfx | Omit = omit,
+        balance_csv: export_create_params.BalanceCsv | Omit = omit,
+        bookkeeping_account_balance_csv: export_create_params.BookkeepingAccountBalanceCsv | Omit = omit,
+        entity_csv: export_create_params.EntityCsv | Omit = omit,
+        transaction_csv: export_create_params.TransactionCsv | Omit = omit,
+        vendor_csv: object | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Export:
         """
@@ -370,7 +370,7 @@ class AsyncExportsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Export:
         """
         Retrieve an Export
@@ -399,18 +399,18 @@ class AsyncExportsResource(AsyncAPIResource):
     def list(
         self,
         *,
-        category: export_list_params.Category | NotGiven = NOT_GIVEN,
-        created_at: export_list_params.CreatedAt | NotGiven = NOT_GIVEN,
-        cursor: str | NotGiven = NOT_GIVEN,
-        idempotency_key: str | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        status: export_list_params.Status | NotGiven = NOT_GIVEN,
+        category: export_list_params.Category | Omit = omit,
+        created_at: export_list_params.CreatedAt | Omit = omit,
+        cursor: str | Omit = omit,
+        idempotency_key: str | Omit = omit,
+        limit: int | Omit = omit,
+        status: export_list_params.Status | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[Export, AsyncPage[Export]]:
         """
         List Exports

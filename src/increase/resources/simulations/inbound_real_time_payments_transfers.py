@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import httpx
 
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -46,17 +46,17 @@ class InboundRealTimePaymentsTransfersResource(SyncAPIResource):
         *,
         account_number_id: str,
         amount: int,
-        debtor_account_number: str | NotGiven = NOT_GIVEN,
-        debtor_name: str | NotGiven = NOT_GIVEN,
-        debtor_routing_number: str | NotGiven = NOT_GIVEN,
-        remittance_information: str | NotGiven = NOT_GIVEN,
-        request_for_payment_id: str | NotGiven = NOT_GIVEN,
+        debtor_account_number: str | Omit = omit,
+        debtor_name: str | Omit = omit,
+        debtor_routing_number: str | Omit = omit,
+        remittance_information: str | Omit = omit,
+        request_for_payment_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> InboundRealTimePaymentsTransfer:
         """
@@ -140,17 +140,17 @@ class AsyncInboundRealTimePaymentsTransfersResource(AsyncAPIResource):
         *,
         account_number_id: str,
         amount: int,
-        debtor_account_number: str | NotGiven = NOT_GIVEN,
-        debtor_name: str | NotGiven = NOT_GIVEN,
-        debtor_routing_number: str | NotGiven = NOT_GIVEN,
-        remittance_information: str | NotGiven = NOT_GIVEN,
-        request_for_payment_id: str | NotGiven = NOT_GIVEN,
+        debtor_account_number: str | Omit = omit,
+        debtor_name: str | Omit = omit,
+        debtor_routing_number: str | Omit = omit,
+        remittance_information: str | Omit = omit,
+        request_for_payment_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> InboundRealTimePaymentsTransfer:
         """

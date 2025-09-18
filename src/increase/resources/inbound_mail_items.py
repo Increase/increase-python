@@ -5,7 +5,7 @@ from __future__ import annotations
 import httpx
 
 from ..types import inbound_mail_item_list_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from .._utils import maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -51,7 +51,7 @@ class InboundMailItemsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> InboundMailItem:
         """
         Retrieve an Inbound Mail Item
@@ -82,16 +82,16 @@ class InboundMailItemsResource(SyncAPIResource):
     def list(
         self,
         *,
-        created_at: inbound_mail_item_list_params.CreatedAt | NotGiven = NOT_GIVEN,
-        cursor: str | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        lockbox_id: str | NotGiven = NOT_GIVEN,
+        created_at: inbound_mail_item_list_params.CreatedAt | Omit = omit,
+        cursor: str | Omit = omit,
+        limit: int | Omit = omit,
+        lockbox_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[InboundMailItem]:
         """
         List Inbound Mail Items
@@ -163,7 +163,7 @@ class AsyncInboundMailItemsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> InboundMailItem:
         """
         Retrieve an Inbound Mail Item
@@ -194,16 +194,16 @@ class AsyncInboundMailItemsResource(AsyncAPIResource):
     def list(
         self,
         *,
-        created_at: inbound_mail_item_list_params.CreatedAt | NotGiven = NOT_GIVEN,
-        cursor: str | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        lockbox_id: str | NotGiven = NOT_GIVEN,
+        created_at: inbound_mail_item_list_params.CreatedAt | Omit = omit,
+        cursor: str | Omit = omit,
+        limit: int | Omit = omit,
+        lockbox_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[InboundMailItem, AsyncPage[InboundMailItem]]:
         """
         List Inbound Mail Items

@@ -9,7 +9,7 @@ from ..types import (
     digital_card_profile_clone_params,
     digital_card_profile_create_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -54,16 +54,16 @@ class DigitalCardProfilesResource(SyncAPIResource):
         card_description: str,
         description: str,
         issuer_name: str,
-        contact_email: str | NotGiven = NOT_GIVEN,
-        contact_phone: str | NotGiven = NOT_GIVEN,
-        contact_website: str | NotGiven = NOT_GIVEN,
-        text_color: digital_card_profile_create_params.TextColor | NotGiven = NOT_GIVEN,
+        contact_email: str | Omit = omit,
+        contact_phone: str | Omit = omit,
+        contact_website: str | Omit = omit,
+        text_color: digital_card_profile_create_params.TextColor | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> DigitalCardProfile:
         """
@@ -133,7 +133,7 @@ class DigitalCardProfilesResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DigitalCardProfile:
         """
         Retrieve a Digital Card Profile
@@ -164,16 +164,16 @@ class DigitalCardProfilesResource(SyncAPIResource):
     def list(
         self,
         *,
-        cursor: str | NotGiven = NOT_GIVEN,
-        idempotency_key: str | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        status: digital_card_profile_list_params.Status | NotGiven = NOT_GIVEN,
+        cursor: str | Omit = omit,
+        idempotency_key: str | Omit = omit,
+        limit: int | Omit = omit,
+        status: digital_card_profile_list_params.Status | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[DigitalCardProfile]:
         """
         List Card Profiles
@@ -227,7 +227,7 @@ class DigitalCardProfilesResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> DigitalCardProfile:
         """
@@ -266,21 +266,21 @@ class DigitalCardProfilesResource(SyncAPIResource):
         self,
         digital_card_profile_id: str,
         *,
-        app_icon_file_id: str | NotGiven = NOT_GIVEN,
-        background_image_file_id: str | NotGiven = NOT_GIVEN,
-        card_description: str | NotGiven = NOT_GIVEN,
-        contact_email: str | NotGiven = NOT_GIVEN,
-        contact_phone: str | NotGiven = NOT_GIVEN,
-        contact_website: str | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        issuer_name: str | NotGiven = NOT_GIVEN,
-        text_color: digital_card_profile_clone_params.TextColor | NotGiven = NOT_GIVEN,
+        app_icon_file_id: str | Omit = omit,
+        background_image_file_id: str | Omit = omit,
+        card_description: str | Omit = omit,
+        contact_email: str | Omit = omit,
+        contact_phone: str | Omit = omit,
+        contact_website: str | Omit = omit,
+        description: str | Omit = omit,
+        issuer_name: str | Omit = omit,
+        text_color: digital_card_profile_clone_params.TextColor | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> DigitalCardProfile:
         """
@@ -376,16 +376,16 @@ class AsyncDigitalCardProfilesResource(AsyncAPIResource):
         card_description: str,
         description: str,
         issuer_name: str,
-        contact_email: str | NotGiven = NOT_GIVEN,
-        contact_phone: str | NotGiven = NOT_GIVEN,
-        contact_website: str | NotGiven = NOT_GIVEN,
-        text_color: digital_card_profile_create_params.TextColor | NotGiven = NOT_GIVEN,
+        contact_email: str | Omit = omit,
+        contact_phone: str | Omit = omit,
+        contact_website: str | Omit = omit,
+        text_color: digital_card_profile_create_params.TextColor | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> DigitalCardProfile:
         """
@@ -455,7 +455,7 @@ class AsyncDigitalCardProfilesResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DigitalCardProfile:
         """
         Retrieve a Digital Card Profile
@@ -486,16 +486,16 @@ class AsyncDigitalCardProfilesResource(AsyncAPIResource):
     def list(
         self,
         *,
-        cursor: str | NotGiven = NOT_GIVEN,
-        idempotency_key: str | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        status: digital_card_profile_list_params.Status | NotGiven = NOT_GIVEN,
+        cursor: str | Omit = omit,
+        idempotency_key: str | Omit = omit,
+        limit: int | Omit = omit,
+        status: digital_card_profile_list_params.Status | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[DigitalCardProfile, AsyncPage[DigitalCardProfile]]:
         """
         List Card Profiles
@@ -549,7 +549,7 @@ class AsyncDigitalCardProfilesResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> DigitalCardProfile:
         """
@@ -588,21 +588,21 @@ class AsyncDigitalCardProfilesResource(AsyncAPIResource):
         self,
         digital_card_profile_id: str,
         *,
-        app_icon_file_id: str | NotGiven = NOT_GIVEN,
-        background_image_file_id: str | NotGiven = NOT_GIVEN,
-        card_description: str | NotGiven = NOT_GIVEN,
-        contact_email: str | NotGiven = NOT_GIVEN,
-        contact_phone: str | NotGiven = NOT_GIVEN,
-        contact_website: str | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        issuer_name: str | NotGiven = NOT_GIVEN,
-        text_color: digital_card_profile_clone_params.TextColor | NotGiven = NOT_GIVEN,
+        app_icon_file_id: str | Omit = omit,
+        background_image_file_id: str | Omit = omit,
+        card_description: str | Omit = omit,
+        contact_email: str | Omit = omit,
+        contact_phone: str | Omit = omit,
+        contact_website: str | Omit = omit,
+        description: str | Omit = omit,
+        issuer_name: str | Omit = omit,
+        text_color: digital_card_profile_clone_params.TextColor | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> DigitalCardProfile:
         """

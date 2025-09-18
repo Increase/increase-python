@@ -5,7 +5,7 @@ from __future__ import annotations
 import httpx
 
 from ..types import wire_transfer_list_params, wire_transfer_create_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -48,26 +48,26 @@ class WireTransfersResource(SyncAPIResource):
         account_id: str,
         amount: int,
         beneficiary_name: str,
-        account_number: str | NotGiven = NOT_GIVEN,
-        beneficiary_address_line1: str | NotGiven = NOT_GIVEN,
-        beneficiary_address_line2: str | NotGiven = NOT_GIVEN,
-        beneficiary_address_line3: str | NotGiven = NOT_GIVEN,
-        external_account_id: str | NotGiven = NOT_GIVEN,
-        inbound_wire_drawdown_request_id: str | NotGiven = NOT_GIVEN,
-        originator_address_line1: str | NotGiven = NOT_GIVEN,
-        originator_address_line2: str | NotGiven = NOT_GIVEN,
-        originator_address_line3: str | NotGiven = NOT_GIVEN,
-        originator_name: str | NotGiven = NOT_GIVEN,
-        remittance: wire_transfer_create_params.Remittance | NotGiven = NOT_GIVEN,
-        require_approval: bool | NotGiven = NOT_GIVEN,
-        routing_number: str | NotGiven = NOT_GIVEN,
-        source_account_number_id: str | NotGiven = NOT_GIVEN,
+        account_number: str | Omit = omit,
+        beneficiary_address_line1: str | Omit = omit,
+        beneficiary_address_line2: str | Omit = omit,
+        beneficiary_address_line3: str | Omit = omit,
+        external_account_id: str | Omit = omit,
+        inbound_wire_drawdown_request_id: str | Omit = omit,
+        originator_address_line1: str | Omit = omit,
+        originator_address_line2: str | Omit = omit,
+        originator_address_line3: str | Omit = omit,
+        originator_name: str | Omit = omit,
+        remittance: wire_transfer_create_params.Remittance | Omit = omit,
+        require_approval: bool | Omit = omit,
+        routing_number: str | Omit = omit,
+        source_account_number_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> WireTransfer:
         """
@@ -168,7 +168,7 @@ class WireTransfersResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> WireTransfer:
         """
         Retrieve a Wire Transfer
@@ -197,18 +197,18 @@ class WireTransfersResource(SyncAPIResource):
     def list(
         self,
         *,
-        account_id: str | NotGiven = NOT_GIVEN,
-        created_at: wire_transfer_list_params.CreatedAt | NotGiven = NOT_GIVEN,
-        cursor: str | NotGiven = NOT_GIVEN,
-        external_account_id: str | NotGiven = NOT_GIVEN,
-        idempotency_key: str | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
+        account_id: str | Omit = omit,
+        created_at: wire_transfer_list_params.CreatedAt | Omit = omit,
+        cursor: str | Omit = omit,
+        external_account_id: str | Omit = omit,
+        idempotency_key: str | Omit = omit,
+        limit: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[WireTransfer]:
         """
         List Wire Transfers
@@ -268,7 +268,7 @@ class WireTransfersResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> WireTransfer:
         """
@@ -310,7 +310,7 @@ class WireTransfersResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> WireTransfer:
         """
@@ -370,26 +370,26 @@ class AsyncWireTransfersResource(AsyncAPIResource):
         account_id: str,
         amount: int,
         beneficiary_name: str,
-        account_number: str | NotGiven = NOT_GIVEN,
-        beneficiary_address_line1: str | NotGiven = NOT_GIVEN,
-        beneficiary_address_line2: str | NotGiven = NOT_GIVEN,
-        beneficiary_address_line3: str | NotGiven = NOT_GIVEN,
-        external_account_id: str | NotGiven = NOT_GIVEN,
-        inbound_wire_drawdown_request_id: str | NotGiven = NOT_GIVEN,
-        originator_address_line1: str | NotGiven = NOT_GIVEN,
-        originator_address_line2: str | NotGiven = NOT_GIVEN,
-        originator_address_line3: str | NotGiven = NOT_GIVEN,
-        originator_name: str | NotGiven = NOT_GIVEN,
-        remittance: wire_transfer_create_params.Remittance | NotGiven = NOT_GIVEN,
-        require_approval: bool | NotGiven = NOT_GIVEN,
-        routing_number: str | NotGiven = NOT_GIVEN,
-        source_account_number_id: str | NotGiven = NOT_GIVEN,
+        account_number: str | Omit = omit,
+        beneficiary_address_line1: str | Omit = omit,
+        beneficiary_address_line2: str | Omit = omit,
+        beneficiary_address_line3: str | Omit = omit,
+        external_account_id: str | Omit = omit,
+        inbound_wire_drawdown_request_id: str | Omit = omit,
+        originator_address_line1: str | Omit = omit,
+        originator_address_line2: str | Omit = omit,
+        originator_address_line3: str | Omit = omit,
+        originator_name: str | Omit = omit,
+        remittance: wire_transfer_create_params.Remittance | Omit = omit,
+        require_approval: bool | Omit = omit,
+        routing_number: str | Omit = omit,
+        source_account_number_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> WireTransfer:
         """
@@ -490,7 +490,7 @@ class AsyncWireTransfersResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> WireTransfer:
         """
         Retrieve a Wire Transfer
@@ -519,18 +519,18 @@ class AsyncWireTransfersResource(AsyncAPIResource):
     def list(
         self,
         *,
-        account_id: str | NotGiven = NOT_GIVEN,
-        created_at: wire_transfer_list_params.CreatedAt | NotGiven = NOT_GIVEN,
-        cursor: str | NotGiven = NOT_GIVEN,
-        external_account_id: str | NotGiven = NOT_GIVEN,
-        idempotency_key: str | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
+        account_id: str | Omit = omit,
+        created_at: wire_transfer_list_params.CreatedAt | Omit = omit,
+        cursor: str | Omit = omit,
+        external_account_id: str | Omit = omit,
+        idempotency_key: str | Omit = omit,
+        limit: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[WireTransfer, AsyncPage[WireTransfer]]:
         """
         List Wire Transfers
@@ -590,7 +590,7 @@ class AsyncWireTransfersResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> WireTransfer:
         """
@@ -632,7 +632,7 @@ class AsyncWireTransfersResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> WireTransfer:
         """

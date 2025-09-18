@@ -5,7 +5,7 @@ from __future__ import annotations
 import httpx
 
 from ..types import real_time_payments_transfer_list_params, real_time_payments_transfer_create_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -49,19 +49,19 @@ class RealTimePaymentsTransfersResource(SyncAPIResource):
         creditor_name: str,
         remittance_information: str,
         source_account_number_id: str,
-        debtor_name: str | NotGiven = NOT_GIVEN,
-        destination_account_number: str | NotGiven = NOT_GIVEN,
-        destination_routing_number: str | NotGiven = NOT_GIVEN,
-        external_account_id: str | NotGiven = NOT_GIVEN,
-        require_approval: bool | NotGiven = NOT_GIVEN,
-        ultimate_creditor_name: str | NotGiven = NOT_GIVEN,
-        ultimate_debtor_name: str | NotGiven = NOT_GIVEN,
+        debtor_name: str | Omit = omit,
+        destination_account_number: str | Omit = omit,
+        destination_routing_number: str | Omit = omit,
+        external_account_id: str | Omit = omit,
+        require_approval: bool | Omit = omit,
+        ultimate_creditor_name: str | Omit = omit,
+        ultimate_debtor_name: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> RealTimePaymentsTransfer:
         """
@@ -144,7 +144,7 @@ class RealTimePaymentsTransfersResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RealTimePaymentsTransfer:
         """
         Retrieve a Real-Time Payments Transfer
@@ -175,19 +175,19 @@ class RealTimePaymentsTransfersResource(SyncAPIResource):
     def list(
         self,
         *,
-        account_id: str | NotGiven = NOT_GIVEN,
-        created_at: real_time_payments_transfer_list_params.CreatedAt | NotGiven = NOT_GIVEN,
-        cursor: str | NotGiven = NOT_GIVEN,
-        external_account_id: str | NotGiven = NOT_GIVEN,
-        idempotency_key: str | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        status: real_time_payments_transfer_list_params.Status | NotGiven = NOT_GIVEN,
+        account_id: str | Omit = omit,
+        created_at: real_time_payments_transfer_list_params.CreatedAt | Omit = omit,
+        cursor: str | Omit = omit,
+        external_account_id: str | Omit = omit,
+        idempotency_key: str | Omit = omit,
+        limit: int | Omit = omit,
+        status: real_time_payments_transfer_list_params.Status | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[RealTimePaymentsTransfer]:
         """
         List Real-Time Payments Transfers
@@ -249,7 +249,7 @@ class RealTimePaymentsTransfersResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> RealTimePaymentsTransfer:
         """
@@ -293,7 +293,7 @@ class RealTimePaymentsTransfersResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> RealTimePaymentsTransfer:
         """
@@ -356,19 +356,19 @@ class AsyncRealTimePaymentsTransfersResource(AsyncAPIResource):
         creditor_name: str,
         remittance_information: str,
         source_account_number_id: str,
-        debtor_name: str | NotGiven = NOT_GIVEN,
-        destination_account_number: str | NotGiven = NOT_GIVEN,
-        destination_routing_number: str | NotGiven = NOT_GIVEN,
-        external_account_id: str | NotGiven = NOT_GIVEN,
-        require_approval: bool | NotGiven = NOT_GIVEN,
-        ultimate_creditor_name: str | NotGiven = NOT_GIVEN,
-        ultimate_debtor_name: str | NotGiven = NOT_GIVEN,
+        debtor_name: str | Omit = omit,
+        destination_account_number: str | Omit = omit,
+        destination_routing_number: str | Omit = omit,
+        external_account_id: str | Omit = omit,
+        require_approval: bool | Omit = omit,
+        ultimate_creditor_name: str | Omit = omit,
+        ultimate_debtor_name: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> RealTimePaymentsTransfer:
         """
@@ -451,7 +451,7 @@ class AsyncRealTimePaymentsTransfersResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RealTimePaymentsTransfer:
         """
         Retrieve a Real-Time Payments Transfer
@@ -482,19 +482,19 @@ class AsyncRealTimePaymentsTransfersResource(AsyncAPIResource):
     def list(
         self,
         *,
-        account_id: str | NotGiven = NOT_GIVEN,
-        created_at: real_time_payments_transfer_list_params.CreatedAt | NotGiven = NOT_GIVEN,
-        cursor: str | NotGiven = NOT_GIVEN,
-        external_account_id: str | NotGiven = NOT_GIVEN,
-        idempotency_key: str | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        status: real_time_payments_transfer_list_params.Status | NotGiven = NOT_GIVEN,
+        account_id: str | Omit = omit,
+        created_at: real_time_payments_transfer_list_params.CreatedAt | Omit = omit,
+        cursor: str | Omit = omit,
+        external_account_id: str | Omit = omit,
+        idempotency_key: str | Omit = omit,
+        limit: int | Omit = omit,
+        status: real_time_payments_transfer_list_params.Status | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[RealTimePaymentsTransfer, AsyncPage[RealTimePaymentsTransfer]]:
         """
         List Real-Time Payments Transfers
@@ -556,7 +556,7 @@ class AsyncRealTimePaymentsTransfersResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> RealTimePaymentsTransfer:
         """
@@ -600,7 +600,7 @@ class AsyncRealTimePaymentsTransfersResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> RealTimePaymentsTransfer:
         """

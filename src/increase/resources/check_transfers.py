@@ -7,7 +7,7 @@ from typing_extensions import Literal
 import httpx
 
 from ..types import check_transfer_list_params, check_transfer_create_params, check_transfer_stop_payment_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -51,16 +51,16 @@ class CheckTransfersResource(SyncAPIResource):
         amount: int,
         fulfillment_method: Literal["physical_check", "third_party"],
         source_account_number_id: str,
-        check_number: str | NotGiven = NOT_GIVEN,
-        physical_check: check_transfer_create_params.PhysicalCheck | NotGiven = NOT_GIVEN,
-        require_approval: bool | NotGiven = NOT_GIVEN,
-        third_party: check_transfer_create_params.ThirdParty | NotGiven = NOT_GIVEN,
+        check_number: str | Omit = omit,
+        physical_check: check_transfer_create_params.PhysicalCheck | Omit = omit,
+        require_approval: bool | Omit = omit,
+        third_party: check_transfer_create_params.ThirdParty | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> CheckTransfer:
         """
@@ -139,7 +139,7 @@ class CheckTransfersResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CheckTransfer:
         """
         Retrieve a Check Transfer
@@ -168,18 +168,18 @@ class CheckTransfersResource(SyncAPIResource):
     def list(
         self,
         *,
-        account_id: str | NotGiven = NOT_GIVEN,
-        created_at: check_transfer_list_params.CreatedAt | NotGiven = NOT_GIVEN,
-        cursor: str | NotGiven = NOT_GIVEN,
-        idempotency_key: str | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        status: check_transfer_list_params.Status | NotGiven = NOT_GIVEN,
+        account_id: str | Omit = omit,
+        created_at: check_transfer_list_params.CreatedAt | Omit = omit,
+        cursor: str | Omit = omit,
+        idempotency_key: str | Omit = omit,
+        limit: int | Omit = omit,
+        status: check_transfer_list_params.Status | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[CheckTransfer]:
         """
         List Check Transfers
@@ -237,7 +237,7 @@ class CheckTransfersResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> CheckTransfer:
         """
@@ -279,7 +279,7 @@ class CheckTransfersResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> CheckTransfer:
         """
@@ -316,13 +316,13 @@ class CheckTransfersResource(SyncAPIResource):
         self,
         check_transfer_id: str,
         *,
-        reason: Literal["mail_delivery_failed", "not_authorized", "unknown"] | NotGiven = NOT_GIVEN,
+        reason: Literal["mail_delivery_failed", "not_authorized", "unknown"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> CheckTransfer:
         """
@@ -390,16 +390,16 @@ class AsyncCheckTransfersResource(AsyncAPIResource):
         amount: int,
         fulfillment_method: Literal["physical_check", "third_party"],
         source_account_number_id: str,
-        check_number: str | NotGiven = NOT_GIVEN,
-        physical_check: check_transfer_create_params.PhysicalCheck | NotGiven = NOT_GIVEN,
-        require_approval: bool | NotGiven = NOT_GIVEN,
-        third_party: check_transfer_create_params.ThirdParty | NotGiven = NOT_GIVEN,
+        check_number: str | Omit = omit,
+        physical_check: check_transfer_create_params.PhysicalCheck | Omit = omit,
+        require_approval: bool | Omit = omit,
+        third_party: check_transfer_create_params.ThirdParty | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> CheckTransfer:
         """
@@ -478,7 +478,7 @@ class AsyncCheckTransfersResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CheckTransfer:
         """
         Retrieve a Check Transfer
@@ -507,18 +507,18 @@ class AsyncCheckTransfersResource(AsyncAPIResource):
     def list(
         self,
         *,
-        account_id: str | NotGiven = NOT_GIVEN,
-        created_at: check_transfer_list_params.CreatedAt | NotGiven = NOT_GIVEN,
-        cursor: str | NotGiven = NOT_GIVEN,
-        idempotency_key: str | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        status: check_transfer_list_params.Status | NotGiven = NOT_GIVEN,
+        account_id: str | Omit = omit,
+        created_at: check_transfer_list_params.CreatedAt | Omit = omit,
+        cursor: str | Omit = omit,
+        idempotency_key: str | Omit = omit,
+        limit: int | Omit = omit,
+        status: check_transfer_list_params.Status | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[CheckTransfer, AsyncPage[CheckTransfer]]:
         """
         List Check Transfers
@@ -576,7 +576,7 @@ class AsyncCheckTransfersResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> CheckTransfer:
         """
@@ -618,7 +618,7 @@ class AsyncCheckTransfersResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> CheckTransfer:
         """
@@ -655,13 +655,13 @@ class AsyncCheckTransfersResource(AsyncAPIResource):
         self,
         check_transfer_id: str,
         *,
-        reason: Literal["mail_delivery_failed", "not_authorized", "unknown"] | NotGiven = NOT_GIVEN,
+        reason: Literal["mail_delivery_failed", "not_authorized", "unknown"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> CheckTransfer:
         """

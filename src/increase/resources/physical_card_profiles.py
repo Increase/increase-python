@@ -11,7 +11,7 @@ from ..types import (
     physical_card_profile_clone_params,
     physical_card_profile_create_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -56,17 +56,17 @@ class PhysicalCardProfilesResource(SyncAPIResource):
         description: str,
         front_image_file_id: str,
         program_id: str,
-        back_color: Literal["black", "white"] | NotGiven = NOT_GIVEN,
-        card_stock_reference: str | NotGiven = NOT_GIVEN,
-        carrier_stock_reference: str | NotGiven = NOT_GIVEN,
-        front_color: Literal["black", "white"] | NotGiven = NOT_GIVEN,
-        front_text: physical_card_profile_create_params.FrontText | NotGiven = NOT_GIVEN,
+        back_color: Literal["black", "white"] | Omit = omit,
+        card_stock_reference: str | Omit = omit,
+        carrier_stock_reference: str | Omit = omit,
+        front_color: Literal["black", "white"] | Omit = omit,
+        front_text: physical_card_profile_create_params.FrontText | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> PhysicalCardProfile:
         """
@@ -148,7 +148,7 @@ class PhysicalCardProfilesResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PhysicalCardProfile:
         """
         Retrieve a Card Profile
@@ -179,16 +179,16 @@ class PhysicalCardProfilesResource(SyncAPIResource):
     def list(
         self,
         *,
-        cursor: str | NotGiven = NOT_GIVEN,
-        idempotency_key: str | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        status: physical_card_profile_list_params.Status | NotGiven = NOT_GIVEN,
+        cursor: str | Omit = omit,
+        idempotency_key: str | Omit = omit,
+        limit: int | Omit = omit,
+        status: physical_card_profile_list_params.Status | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncPage[PhysicalCardProfile]:
         """
         List Physical Card Profiles
@@ -242,7 +242,7 @@ class PhysicalCardProfilesResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> PhysicalCardProfile:
         """
@@ -281,18 +281,18 @@ class PhysicalCardProfilesResource(SyncAPIResource):
         self,
         physical_card_profile_id: str,
         *,
-        carrier_image_file_id: str | NotGiven = NOT_GIVEN,
-        contact_phone: str | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        front_image_file_id: str | NotGiven = NOT_GIVEN,
-        front_text: physical_card_profile_clone_params.FrontText | NotGiven = NOT_GIVEN,
-        program_id: str | NotGiven = NOT_GIVEN,
+        carrier_image_file_id: str | Omit = omit,
+        contact_phone: str | Omit = omit,
+        description: str | Omit = omit,
+        front_image_file_id: str | Omit = omit,
+        front_text: physical_card_profile_clone_params.FrontText | Omit = omit,
+        program_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> PhysicalCardProfile:
         """
@@ -380,17 +380,17 @@ class AsyncPhysicalCardProfilesResource(AsyncAPIResource):
         description: str,
         front_image_file_id: str,
         program_id: str,
-        back_color: Literal["black", "white"] | NotGiven = NOT_GIVEN,
-        card_stock_reference: str | NotGiven = NOT_GIVEN,
-        carrier_stock_reference: str | NotGiven = NOT_GIVEN,
-        front_color: Literal["black", "white"] | NotGiven = NOT_GIVEN,
-        front_text: physical_card_profile_create_params.FrontText | NotGiven = NOT_GIVEN,
+        back_color: Literal["black", "white"] | Omit = omit,
+        card_stock_reference: str | Omit = omit,
+        carrier_stock_reference: str | Omit = omit,
+        front_color: Literal["black", "white"] | Omit = omit,
+        front_text: physical_card_profile_create_params.FrontText | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> PhysicalCardProfile:
         """
@@ -472,7 +472,7 @@ class AsyncPhysicalCardProfilesResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PhysicalCardProfile:
         """
         Retrieve a Card Profile
@@ -503,16 +503,16 @@ class AsyncPhysicalCardProfilesResource(AsyncAPIResource):
     def list(
         self,
         *,
-        cursor: str | NotGiven = NOT_GIVEN,
-        idempotency_key: str | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        status: physical_card_profile_list_params.Status | NotGiven = NOT_GIVEN,
+        cursor: str | Omit = omit,
+        idempotency_key: str | Omit = omit,
+        limit: int | Omit = omit,
+        status: physical_card_profile_list_params.Status | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[PhysicalCardProfile, AsyncPage[PhysicalCardProfile]]:
         """
         List Physical Card Profiles
@@ -566,7 +566,7 @@ class AsyncPhysicalCardProfilesResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> PhysicalCardProfile:
         """
@@ -605,18 +605,18 @@ class AsyncPhysicalCardProfilesResource(AsyncAPIResource):
         self,
         physical_card_profile_id: str,
         *,
-        carrier_image_file_id: str | NotGiven = NOT_GIVEN,
-        contact_phone: str | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        front_image_file_id: str | NotGiven = NOT_GIVEN,
-        front_text: physical_card_profile_clone_params.FrontText | NotGiven = NOT_GIVEN,
-        program_id: str | NotGiven = NOT_GIVEN,
+        carrier_image_file_id: str | Omit = omit,
+        contact_phone: str | Omit = omit,
+        description: str | Omit = omit,
+        front_image_file_id: str | Omit = omit,
+        front_text: physical_card_profile_clone_params.FrontText | Omit = omit,
+        program_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> PhysicalCardProfile:
         """

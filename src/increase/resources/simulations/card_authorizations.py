@@ -6,7 +6,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -47,8 +47,8 @@ class CardAuthorizationsResource(SyncAPIResource):
         self,
         *,
         amount: int,
-        authenticated_card_payment_id: str | NotGiven = NOT_GIVEN,
-        card_id: str | NotGiven = NOT_GIVEN,
+        authenticated_card_payment_id: str | Omit = omit,
+        card_id: str | Omit = omit,
         decline_reason: Literal[
             "account_closed",
             "card_not_active",
@@ -71,26 +71,26 @@ class CardAuthorizationsResource(SyncAPIResource):
             "suspected_card_testing",
             "suspected_fraud",
         ]
-        | NotGiven = NOT_GIVEN,
-        digital_wallet_token_id: str | NotGiven = NOT_GIVEN,
-        event_subscription_id: str | NotGiven = NOT_GIVEN,
-        merchant_acceptor_id: str | NotGiven = NOT_GIVEN,
-        merchant_category_code: str | NotGiven = NOT_GIVEN,
-        merchant_city: str | NotGiven = NOT_GIVEN,
-        merchant_country: str | NotGiven = NOT_GIVEN,
-        merchant_descriptor: str | NotGiven = NOT_GIVEN,
-        merchant_state: str | NotGiven = NOT_GIVEN,
-        network_details: card_authorization_create_params.NetworkDetails | NotGiven = NOT_GIVEN,
-        network_risk_score: int | NotGiven = NOT_GIVEN,
-        physical_card_id: str | NotGiven = NOT_GIVEN,
-        processing_category: card_authorization_create_params.ProcessingCategory | NotGiven = NOT_GIVEN,
-        terminal_id: str | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        digital_wallet_token_id: str | Omit = omit,
+        event_subscription_id: str | Omit = omit,
+        merchant_acceptor_id: str | Omit = omit,
+        merchant_category_code: str | Omit = omit,
+        merchant_city: str | Omit = omit,
+        merchant_country: str | Omit = omit,
+        merchant_descriptor: str | Omit = omit,
+        merchant_state: str | Omit = omit,
+        network_details: card_authorization_create_params.NetworkDetails | Omit = omit,
+        network_risk_score: int | Omit = omit,
+        physical_card_id: str | Omit = omit,
+        processing_category: card_authorization_create_params.ProcessingCategory | Omit = omit,
+        terminal_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> CardAuthorizationCreateResponse:
         """Simulates a purchase authorization on a [Card](#cards).
@@ -247,8 +247,8 @@ class AsyncCardAuthorizationsResource(AsyncAPIResource):
         self,
         *,
         amount: int,
-        authenticated_card_payment_id: str | NotGiven = NOT_GIVEN,
-        card_id: str | NotGiven = NOT_GIVEN,
+        authenticated_card_payment_id: str | Omit = omit,
+        card_id: str | Omit = omit,
         decline_reason: Literal[
             "account_closed",
             "card_not_active",
@@ -271,26 +271,26 @@ class AsyncCardAuthorizationsResource(AsyncAPIResource):
             "suspected_card_testing",
             "suspected_fraud",
         ]
-        | NotGiven = NOT_GIVEN,
-        digital_wallet_token_id: str | NotGiven = NOT_GIVEN,
-        event_subscription_id: str | NotGiven = NOT_GIVEN,
-        merchant_acceptor_id: str | NotGiven = NOT_GIVEN,
-        merchant_category_code: str | NotGiven = NOT_GIVEN,
-        merchant_city: str | NotGiven = NOT_GIVEN,
-        merchant_country: str | NotGiven = NOT_GIVEN,
-        merchant_descriptor: str | NotGiven = NOT_GIVEN,
-        merchant_state: str | NotGiven = NOT_GIVEN,
-        network_details: card_authorization_create_params.NetworkDetails | NotGiven = NOT_GIVEN,
-        network_risk_score: int | NotGiven = NOT_GIVEN,
-        physical_card_id: str | NotGiven = NOT_GIVEN,
-        processing_category: card_authorization_create_params.ProcessingCategory | NotGiven = NOT_GIVEN,
-        terminal_id: str | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        digital_wallet_token_id: str | Omit = omit,
+        event_subscription_id: str | Omit = omit,
+        merchant_acceptor_id: str | Omit = omit,
+        merchant_category_code: str | Omit = omit,
+        merchant_city: str | Omit = omit,
+        merchant_country: str | Omit = omit,
+        merchant_descriptor: str | Omit = omit,
+        merchant_state: str | Omit = omit,
+        network_details: card_authorization_create_params.NetworkDetails | Omit = omit,
+        network_risk_score: int | Omit = omit,
+        physical_card_id: str | Omit = omit,
+        processing_category: card_authorization_create_params.ProcessingCategory | Omit = omit,
+        terminal_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> CardAuthorizationCreateResponse:
         """Simulates a purchase authorization on a [Card](#cards).
