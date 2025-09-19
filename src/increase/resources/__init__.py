@@ -105,6 +105,14 @@ from .simulations import (
     SimulationsResourceWithStreamingResponse,
     AsyncSimulationsResourceWithStreamingResponse,
 )
+from .card_details import (
+    CardDetailsResource,
+    AsyncCardDetailsResource,
+    CardDetailsResourceWithRawResponse,
+    AsyncCardDetailsResourceWithRawResponse,
+    CardDetailsResourceWithStreamingResponse,
+    AsyncCardDetailsResourceWithStreamingResponse,
+)
 from .oauth_tokens import (
     OAuthTokensResource,
     AsyncOAuthTokensResource,
@@ -459,6 +467,12 @@ __all__ = [
     "AsyncCardsResourceWithRawResponse",
     "CardsResourceWithStreamingResponse",
     "AsyncCardsResourceWithStreamingResponse",
+    "CardDetailsResource",
+    "AsyncCardDetailsResource",
+    "CardDetailsResourceWithRawResponse",
+    "AsyncCardDetailsResourceWithRawResponse",
+    "CardDetailsResourceWithStreamingResponse",
+    "AsyncCardDetailsResourceWithStreamingResponse",
     "CardPaymentsResource",
     "AsyncCardPaymentsResource",
     "CardPaymentsResourceWithRawResponse",

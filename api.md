@@ -51,7 +51,7 @@ Methods:
 Types:
 
 ```python
-from increase.types import Card, CardDetails, CardIframeURL
+from increase.types import Card
 ```
 
 Methods:
@@ -60,8 +60,20 @@ Methods:
 - <code title="get /cards/{card_id}">client.cards.<a href="./src/increase/resources/cards.py">retrieve</a>(card_id) -> <a href="./src/increase/types/card.py">Card</a></code>
 - <code title="patch /cards/{card_id}">client.cards.<a href="./src/increase/resources/cards.py">update</a>(card_id, \*\*<a href="src/increase/types/card_update_params.py">params</a>) -> <a href="./src/increase/types/card.py">Card</a></code>
 - <code title="get /cards">client.cards.<a href="./src/increase/resources/cards.py">list</a>(\*\*<a href="src/increase/types/card_list_params.py">params</a>) -> <a href="./src/increase/types/card.py">SyncPage[Card]</a></code>
-- <code title="post /cards/{card_id}/create_details_iframe">client.cards.<a href="./src/increase/resources/cards.py">create_details_iframe</a>(card_id, \*\*<a href="src/increase/types/card_create_details_iframe_params.py">params</a>) -> <a href="./src/increase/types/card_iframe_url.py">CardIframeURL</a></code>
-- <code title="get /cards/{card_id}/details">client.cards.<a href="./src/increase/resources/cards.py">details</a>(card_id) -> <a href="./src/increase/types/card_details.py">CardDetails</a></code>
+
+# CardDetails
+
+Types:
+
+```python
+from increase.types import CardDetails, CardIframeURL
+```
+
+Methods:
+
+- <code title="patch /cards/{card_id}/details">client.card_details.<a href="./src/increase/resources/card_details.py">update</a>(card_id, \*\*<a href="src/increase/types/card_detail_update_params.py">params</a>) -> <a href="./src/increase/types/card_details.py">CardDetails</a></code>
+- <code title="post /cards/{card_id}/create_details_iframe">client.card_details.<a href="./src/increase/resources/card_details.py">create_details_iframe</a>(card_id, \*\*<a href="src/increase/types/card_detail_create_details_iframe_params.py">params</a>) -> <a href="./src/increase/types/card_iframe_url.py">CardIframeURL</a></code>
+- <code title="get /cards/{card_id}/details">client.card_details.<a href="./src/increase/resources/card_details.py">details</a>(card_id) -> <a href="./src/increase/types/card_details.py">CardDetails</a></code>
 
 # CardPayments
 
@@ -830,8 +842,8 @@ Methods:
 
 Methods:
 
+- <code title="post /simulations/physical_cards/{physical_card_id}/tracking_updates">client.simulations.physical_cards.<a href="./src/increase/resources/simulations/physical_cards.py">create</a>(physical_card_id, \*\*<a href="src/increase/types/simulations/physical_card_create_params.py">params</a>) -> <a href="./src/increase/types/physical_card.py">PhysicalCard</a></code>
 - <code title="post /simulations/physical_cards/{physical_card_id}/advance_shipment">client.simulations.physical_cards.<a href="./src/increase/resources/simulations/physical_cards.py">advance_shipment</a>(physical_card_id, \*\*<a href="src/increase/types/simulations/physical_card_advance_shipment_params.py">params</a>) -> <a href="./src/increase/types/physical_card.py">PhysicalCard</a></code>
-- <code title="post /simulations/physical_cards/{physical_card_id}/tracking_updates">client.simulations.physical_cards.<a href="./src/increase/resources/simulations/physical_cards.py">tracking_updates</a>(physical_card_id, \*\*<a href="src/increase/types/simulations/physical_card_tracking_updates_params.py">params</a>) -> <a href="./src/increase/types/physical_card.py">PhysicalCard</a></code>
 
 ## DigitalWalletTokenRequests
 

@@ -4,9 +4,9 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-__all__ = ["CardCreateDetailsIframeParams"]
+__all__ = ["CardDetailCreateDetailsIframeParams"]
 
 
-class CardCreateDetailsIframeParams(TypedDict, total=False):
+class CardDetailCreateDetailsIframeParams(TypedDict, total=False):
     physical_card_id: str
     """The identifier of the Physical Card to retrieve details for."""

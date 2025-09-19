@@ -8,10 +8,10 @@ from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
 
-__all__ = ["PhysicalCardTrackingUpdatesParams"]
+__all__ = ["PhysicalCardCreateParams"]
 
 
-class PhysicalCardTrackingUpdatesParams(TypedDict, total=False):
+class PhysicalCardCreateParams(TypedDict, total=False):
     category: Required[Literal["in_transit", "processed_for_delivery", "delivered", "returned_to_sender"]]
     """The type of tracking event.
 
