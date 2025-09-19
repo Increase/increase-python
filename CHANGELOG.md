@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.333.0 (2025-09-19)
+
+Full Changelog: [v0.332.0...v0.333.0](https://github.com/Increase/increase-python/compare/v0.332.0...v0.333.0)
+
+### Features
+
+* **api:** api update ([30dbad1](https://github.com/Increase/increase-python/commit/30dbad15f8b552e52e70c3b75a619f121abe89ff))
+
+
+### Chores
+
+* do not install brew dependencies in ./scripts/bootstrap by default ([a03616d](https://github.com/Increase/increase-python/commit/a03616d1719be5e408433ec751cd7d3aba5aa291))
+
 ## 0.332.0 (2025-09-19)
 
 Full Changelog: [v0.331.0...v0.332.0](https://github.com/Increase/increase-python/compare/v0.331.0...v0.332.0)
