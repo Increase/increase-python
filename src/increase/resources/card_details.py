@@ -56,7 +56,7 @@ class CardDetailsResource(SyncAPIResource):
         idempotency_key: str | None = None,
     ) -> CardDetails:
         """
-        Update a Card's Details
+        Update a Card's PIN
 
         Args:
           card_id: The card identifier.
@@ -211,7 +211,7 @@ class AsyncCardDetailsResource(AsyncAPIResource):
         idempotency_key: str | None = None,
     ) -> CardDetails:
         """
-        Update a Card's Details
+        Update a Card's PIN
 
         Args:
           card_id: The card identifier.
