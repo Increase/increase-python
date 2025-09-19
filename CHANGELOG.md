@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.332.0 (2025-09-19)
+
+Full Changelog: [v0.331.0...v0.332.0](https://github.com/Increase/increase-python/compare/v0.331.0...v0.332.0)
+
+### Features
+
+* **api:** api update ([d42ab79](https://github.com/Increase/increase-python/commit/d42ab79de47b81539079356c37f68fe4fa43b0cb))
+
+
+### Chores
+
+* **types:** change optional parameter type from NotGiven to Omit ([6196521](https://github.com/Increase/increase-python/commit/619652113ce900fb38479ab84721de29169172e8))
+
 ## 0.331.0 (2025-09-18)
 
 Full Changelog: [v0.330.0...v0.331.0](https://github.com/Increase/increase-python/compare/v0.330.0...v0.331.0)
