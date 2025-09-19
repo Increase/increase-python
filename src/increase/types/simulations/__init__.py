@@ -9,6 +9,7 @@ from .card_refund_create_params import CardRefundCreateParams as CardRefundCreat
 from .ach_transfer_return_params import ACHTransferReturnParams as ACHTransferReturnParams
 from .ach_transfer_settle_params import ACHTransferSettleParams as ACHTransferSettleParams
 from .card_reversal_create_params import CardReversalCreateParams as CardReversalCreateParams
+from .physical_card_create_params import PhysicalCardCreateParams as PhysicalCardCreateParams
 from .card_increment_create_params import CardIncrementCreateParams as CardIncrementCreateParams
 from .card_settlement_create_params import CardSettlementCreateParams as CardSettlementCreateParams
 from .interest_payment_create_params import InterestPaymentCreateParams as InterestPaymentCreateParams
@@ -22,9 +23,6 @@ from .inbound_wire_transfer_create_params import InboundWireTransferCreateParams
 from .card_fuel_confirmation_create_params import CardFuelConfirmationCreateParams as CardFuelConfirmationCreateParams
 from .physical_card_advance_shipment_params import (
     PhysicalCardAdvanceShipmentParams as PhysicalCardAdvanceShipmentParams,
-)
-from .physical_card_tracking_updates_params import (
-    PhysicalCardTrackingUpdatesParams as PhysicalCardTrackingUpdatesParams,
 )
 from .digital_wallet_token_request_create_params import (
     DigitalWalletTokenRequestCreateParams as DigitalWalletTokenRequestCreateParams,
