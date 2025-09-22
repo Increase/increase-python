@@ -85,6 +85,7 @@ __all__ = [
     "ElementCardSettlementPurchaseDetailsTravelAncillary",
     "ElementCardSettlementPurchaseDetailsTravelAncillaryService",
     "ElementCardSettlementPurchaseDetailsTravelTripLeg",
+    "ElementCardSettlementSurcharge",
     "ElementCardValidation",
     "ElementCardValidationAdditionalAmounts",
     "ElementCardValidationAdditionalAmountsClinic",
@@ -2933,6 +2934,19 @@ class ElementCardSettlementPurchaseDetails(BaseModel):
     """Fields specific to travel."""
 
 
+class ElementCardSettlementSurcharge(BaseModel):
+    amount: int
+    """
+    The surcharge amount in the minor unit of the transaction's settlement currency.
+    """
+
+    presentment_amount: int
+    """
+    The surcharge amount in the minor unit of the transaction's presentment
+    currency.
+    """
+
+
 class ElementCardSettlement(BaseModel):
     id: str
     """The Card Settlement identifier."""
@@ -3023,6 +3037,14 @@ class ElementCardSettlement(BaseModel):
     """
     Additional details about the card purchase, such as tax and industry-specific
     fields.
+    """
+
+    surcharge: Optional[ElementCardSettlementSurcharge] = None
+    """Surcharge amount details, if applicable.
+
+    The amounts positive if the surcharge is added to to the overall transaction
+    amount (surcharge), and negative if the surcharge is deducted from the overall
+    transaction amount (discount).
     """
 
     transaction_id: str
