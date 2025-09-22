@@ -22,14 +22,14 @@ class TestDigitalWalletTokens:
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         digital_wallet_token = client.digital_wallet_tokens.retrieve(
-            "digital_wallet_token_id",
+            "digital_wallet_token_izi62go3h51p369jrie0",
         )
         assert_matches_type(DigitalWalletToken, digital_wallet_token, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
         response = client.digital_wallet_tokens.with_raw_response.retrieve(
-            "digital_wallet_token_id",
+            "digital_wallet_token_izi62go3h51p369jrie0",
         )
 
         assert response.is_closed is True
@@ -40,7 +40,7 @@ class TestDigitalWalletTokens:
     @parametrize
     def test_streaming_response_retrieve(self, client: Increase) -> None:
         with client.digital_wallet_tokens.with_streaming_response.retrieve(
-            "digital_wallet_token_id",
+            "digital_wallet_token_izi62go3h51p369jrie0",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -108,14 +108,14 @@ class TestAsyncDigitalWalletTokens:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
         digital_wallet_token = await async_client.digital_wallet_tokens.retrieve(
-            "digital_wallet_token_id",
+            "digital_wallet_token_izi62go3h51p369jrie0",
         )
         assert_matches_type(DigitalWalletToken, digital_wallet_token, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.digital_wallet_tokens.with_raw_response.retrieve(
-            "digital_wallet_token_id",
+            "digital_wallet_token_izi62go3h51p369jrie0",
         )
 
         assert response.is_closed is True
@@ -126,7 +126,7 @@ class TestAsyncDigitalWalletTokens:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
         async with async_client.digital_wallet_tokens.with_streaming_response.retrieve(
-            "digital_wallet_token_id",
+            "digital_wallet_token_izi62go3h51p369jrie0",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

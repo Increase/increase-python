@@ -22,14 +22,14 @@ class TestInboundRealTimePaymentsTransfers:
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         inbound_real_time_payments_transfer = client.inbound_real_time_payments_transfers.retrieve(
-            "inbound_real_time_payments_transfer_id",
+            "inbound_real_time_payments_transfer_63hlz498vcxg644hcrzr",
         )
         assert_matches_type(InboundRealTimePaymentsTransfer, inbound_real_time_payments_transfer, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
         response = client.inbound_real_time_payments_transfers.with_raw_response.retrieve(
-            "inbound_real_time_payments_transfer_id",
+            "inbound_real_time_payments_transfer_63hlz498vcxg644hcrzr",
         )
 
         assert response.is_closed is True
@@ -40,7 +40,7 @@ class TestInboundRealTimePaymentsTransfers:
     @parametrize
     def test_streaming_response_retrieve(self, client: Increase) -> None:
         with client.inbound_real_time_payments_transfers.with_streaming_response.retrieve(
-            "inbound_real_time_payments_transfer_id",
+            "inbound_real_time_payments_transfer_63hlz498vcxg644hcrzr",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -117,14 +117,14 @@ class TestAsyncInboundRealTimePaymentsTransfers:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
         inbound_real_time_payments_transfer = await async_client.inbound_real_time_payments_transfers.retrieve(
-            "inbound_real_time_payments_transfer_id",
+            "inbound_real_time_payments_transfer_63hlz498vcxg644hcrzr",
         )
         assert_matches_type(InboundRealTimePaymentsTransfer, inbound_real_time_payments_transfer, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.inbound_real_time_payments_transfers.with_raw_response.retrieve(
-            "inbound_real_time_payments_transfer_id",
+            "inbound_real_time_payments_transfer_63hlz498vcxg644hcrzr",
         )
 
         assert response.is_closed is True
@@ -135,7 +135,7 @@ class TestAsyncInboundRealTimePaymentsTransfers:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
         async with async_client.inbound_real_time_payments_transfers.with_streaming_response.retrieve(
-            "inbound_real_time_payments_transfer_id",
+            "inbound_real_time_payments_transfer_63hlz498vcxg644hcrzr",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

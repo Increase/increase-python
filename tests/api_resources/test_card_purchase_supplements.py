@@ -22,14 +22,14 @@ class TestCardPurchaseSupplements:
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         card_purchase_supplement = client.card_purchase_supplements.retrieve(
-            "card_purchase_supplement_id",
+            "card_purchase_supplement_ijuc45iym4jchnh2sfk3",
         )
         assert_matches_type(CardPurchaseSupplement, card_purchase_supplement, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
         response = client.card_purchase_supplements.with_raw_response.retrieve(
-            "card_purchase_supplement_id",
+            "card_purchase_supplement_ijuc45iym4jchnh2sfk3",
         )
 
         assert response.is_closed is True
@@ -40,7 +40,7 @@ class TestCardPurchaseSupplements:
     @parametrize
     def test_streaming_response_retrieve(self, client: Increase) -> None:
         with client.card_purchase_supplements.with_streaming_response.retrieve(
-            "card_purchase_supplement_id",
+            "card_purchase_supplement_ijuc45iym4jchnh2sfk3",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -108,14 +108,14 @@ class TestAsyncCardPurchaseSupplements:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
         card_purchase_supplement = await async_client.card_purchase_supplements.retrieve(
-            "card_purchase_supplement_id",
+            "card_purchase_supplement_ijuc45iym4jchnh2sfk3",
         )
         assert_matches_type(CardPurchaseSupplement, card_purchase_supplement, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.card_purchase_supplements.with_raw_response.retrieve(
-            "card_purchase_supplement_id",
+            "card_purchase_supplement_ijuc45iym4jchnh2sfk3",
         )
 
         assert response.is_closed is True
@@ -126,7 +126,7 @@ class TestAsyncCardPurchaseSupplements:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
         async with async_client.card_purchase_supplements.with_streaming_response.retrieve(
-            "card_purchase_supplement_id",
+            "card_purchase_supplement_ijuc45iym4jchnh2sfk3",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

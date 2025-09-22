@@ -21,14 +21,14 @@ class TestOAuthConnections:
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         oauth_connection = client.oauth_connections.retrieve(
-            "x",
+            "connection_dauknoksyr4wilz4e6my",
         )
         assert_matches_type(OAuthConnection, oauth_connection, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
         response = client.oauth_connections.with_raw_response.retrieve(
-            "x",
+            "connection_dauknoksyr4wilz4e6my",
         )
 
         assert response.is_closed is True
@@ -39,7 +39,7 @@ class TestOAuthConnections:
     @parametrize
     def test_streaming_response_retrieve(self, client: Increase) -> None:
         with client.oauth_connections.with_streaming_response.retrieve(
-            "x",
+            "connection_dauknoksyr4wilz4e6my",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -100,14 +100,14 @@ class TestAsyncOAuthConnections:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
         oauth_connection = await async_client.oauth_connections.retrieve(
-            "x",
+            "connection_dauknoksyr4wilz4e6my",
         )
         assert_matches_type(OAuthConnection, oauth_connection, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.oauth_connections.with_raw_response.retrieve(
-            "x",
+            "connection_dauknoksyr4wilz4e6my",
         )
 
         assert response.is_closed is True
@@ -118,7 +118,7 @@ class TestAsyncOAuthConnections:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
         async with async_client.oauth_connections.with_streaming_response.retrieve(
-            "x",
+            "connection_dauknoksyr4wilz4e6my",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

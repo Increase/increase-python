@@ -22,14 +22,14 @@ class TestEvents:
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         event = client.events.retrieve(
-            "event_id",
+            "event_001dzz0r20rzr4zrhrr1364hy80",
         )
         assert_matches_type(Event, event, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
         response = client.events.with_raw_response.retrieve(
-            "event_id",
+            "event_001dzz0r20rzr4zrhrr1364hy80",
         )
 
         assert response.is_closed is True
@@ -40,7 +40,7 @@ class TestEvents:
     @parametrize
     def test_streaming_response_retrieve(self, client: Increase) -> None:
         with client.events.with_streaming_response.retrieve(
-            "event_id",
+            "event_001dzz0r20rzr4zrhrr1364hy80",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -107,14 +107,14 @@ class TestAsyncEvents:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
         event = await async_client.events.retrieve(
-            "event_id",
+            "event_001dzz0r20rzr4zrhrr1364hy80",
         )
         assert_matches_type(Event, event, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.events.with_raw_response.retrieve(
-            "event_id",
+            "event_001dzz0r20rzr4zrhrr1364hy80",
         )
 
         assert response.is_closed is True
@@ -125,7 +125,7 @@ class TestAsyncEvents:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
         async with async_client.events.with_streaming_response.retrieve(
-            "event_id",
+            "event_001dzz0r20rzr4zrhrr1364hy80",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

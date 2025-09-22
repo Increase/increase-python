@@ -20,14 +20,14 @@ class TestIntrafiBalances:
     @parametrize
     def test_method_intrafi_balance(self, client: Increase) -> None:
         intrafi_balance = client.intrafi_balances.intrafi_balance(
-            "account_id",
+            "account_in71c4amph0vgo2qllky",
         )
         assert_matches_type(IntrafiBalance, intrafi_balance, path=["response"])
 
     @parametrize
     def test_raw_response_intrafi_balance(self, client: Increase) -> None:
         response = client.intrafi_balances.with_raw_response.intrafi_balance(
-            "account_id",
+            "account_in71c4amph0vgo2qllky",
         )
 
         assert response.is_closed is True
@@ -38,7 +38,7 @@ class TestIntrafiBalances:
     @parametrize
     def test_streaming_response_intrafi_balance(self, client: Increase) -> None:
         with client.intrafi_balances.with_streaming_response.intrafi_balance(
-            "account_id",
+            "account_in71c4amph0vgo2qllky",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -64,14 +64,14 @@ class TestAsyncIntrafiBalances:
     @parametrize
     async def test_method_intrafi_balance(self, async_client: AsyncIncrease) -> None:
         intrafi_balance = await async_client.intrafi_balances.intrafi_balance(
-            "account_id",
+            "account_in71c4amph0vgo2qllky",
         )
         assert_matches_type(IntrafiBalance, intrafi_balance, path=["response"])
 
     @parametrize
     async def test_raw_response_intrafi_balance(self, async_client: AsyncIncrease) -> None:
         response = await async_client.intrafi_balances.with_raw_response.intrafi_balance(
-            "account_id",
+            "account_in71c4amph0vgo2qllky",
         )
 
         assert response.is_closed is True
@@ -82,7 +82,7 @@ class TestAsyncIntrafiBalances:
     @parametrize
     async def test_streaming_response_intrafi_balance(self, async_client: AsyncIncrease) -> None:
         async with async_client.intrafi_balances.with_streaming_response.intrafi_balance(
-            "account_id",
+            "account_in71c4amph0vgo2qllky",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

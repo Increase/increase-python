@@ -20,14 +20,14 @@ class TestPendingTransactions:
     @parametrize
     def test_method_release_inbound_funds_hold(self, client: Increase) -> None:
         pending_transaction = client.simulations.pending_transactions.release_inbound_funds_hold(
-            "pending_transaction_id",
+            "pending_transaction_k1sfetcau2qbvjbzgju4",
         )
         assert_matches_type(PendingTransaction, pending_transaction, path=["response"])
 
     @parametrize
     def test_raw_response_release_inbound_funds_hold(self, client: Increase) -> None:
         response = client.simulations.pending_transactions.with_raw_response.release_inbound_funds_hold(
-            "pending_transaction_id",
+            "pending_transaction_k1sfetcau2qbvjbzgju4",
         )
 
         assert response.is_closed is True
@@ -38,7 +38,7 @@ class TestPendingTransactions:
     @parametrize
     def test_streaming_response_release_inbound_funds_hold(self, client: Increase) -> None:
         with client.simulations.pending_transactions.with_streaming_response.release_inbound_funds_hold(
-            "pending_transaction_id",
+            "pending_transaction_k1sfetcau2qbvjbzgju4",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -66,14 +66,14 @@ class TestAsyncPendingTransactions:
     @parametrize
     async def test_method_release_inbound_funds_hold(self, async_client: AsyncIncrease) -> None:
         pending_transaction = await async_client.simulations.pending_transactions.release_inbound_funds_hold(
-            "pending_transaction_id",
+            "pending_transaction_k1sfetcau2qbvjbzgju4",
         )
         assert_matches_type(PendingTransaction, pending_transaction, path=["response"])
 
     @parametrize
     async def test_raw_response_release_inbound_funds_hold(self, async_client: AsyncIncrease) -> None:
         response = await async_client.simulations.pending_transactions.with_raw_response.release_inbound_funds_hold(
-            "pending_transaction_id",
+            "pending_transaction_k1sfetcau2qbvjbzgju4",
         )
 
         assert response.is_closed is True
@@ -84,7 +84,7 @@ class TestAsyncPendingTransactions:
     @parametrize
     async def test_streaming_response_release_inbound_funds_hold(self, async_client: AsyncIncrease) -> None:
         async with async_client.simulations.pending_transactions.with_streaming_response.release_inbound_funds_hold(
-            "pending_transaction_id",
+            "pending_transaction_k1sfetcau2qbvjbzgju4",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

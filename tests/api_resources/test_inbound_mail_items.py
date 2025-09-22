@@ -22,14 +22,14 @@ class TestInboundMailItems:
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         inbound_mail_item = client.inbound_mail_items.retrieve(
-            "inbound_mail_item_id",
+            "inbound_mail_item_q6rrg7mmqpplx80zceev",
         )
         assert_matches_type(InboundMailItem, inbound_mail_item, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
         response = client.inbound_mail_items.with_raw_response.retrieve(
-            "inbound_mail_item_id",
+            "inbound_mail_item_q6rrg7mmqpplx80zceev",
         )
 
         assert response.is_closed is True
@@ -40,7 +40,7 @@ class TestInboundMailItems:
     @parametrize
     def test_streaming_response_retrieve(self, client: Increase) -> None:
         with client.inbound_mail_items.with_streaming_response.retrieve(
-            "inbound_mail_item_id",
+            "inbound_mail_item_q6rrg7mmqpplx80zceev",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -106,14 +106,14 @@ class TestAsyncInboundMailItems:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
         inbound_mail_item = await async_client.inbound_mail_items.retrieve(
-            "inbound_mail_item_id",
+            "inbound_mail_item_q6rrg7mmqpplx80zceev",
         )
         assert_matches_type(InboundMailItem, inbound_mail_item, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.inbound_mail_items.with_raw_response.retrieve(
-            "inbound_mail_item_id",
+            "inbound_mail_item_q6rrg7mmqpplx80zceev",
         )
 
         assert response.is_closed is True
@@ -124,7 +124,7 @@ class TestAsyncInboundMailItems:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
         async with async_client.inbound_mail_items.with_streaming_response.retrieve(
-            "inbound_mail_item_id",
+            "inbound_mail_item_q6rrg7mmqpplx80zceev",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
