@@ -301,14 +301,14 @@ class TestEntities:
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         entity = client.entities.retrieve(
-            "entity_id",
+            "entity_n8y8tnk2p9339ti393yi",
         )
         assert_matches_type(Entity, entity, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
         response = client.entities.with_raw_response.retrieve(
-            "entity_id",
+            "entity_n8y8tnk2p9339ti393yi",
         )
 
         assert response.is_closed is True
@@ -319,7 +319,7 @@ class TestEntities:
     @parametrize
     def test_streaming_response_retrieve(self, client: Increase) -> None:
         with client.entities.with_streaming_response.retrieve(
-            "entity_id",
+            "entity_n8y8tnk2p9339ti393yi",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -475,14 +475,14 @@ class TestEntities:
     @parametrize
     def test_method_archive(self, client: Increase) -> None:
         entity = client.entities.archive(
-            "entity_id",
+            "entity_n8y8tnk2p9339ti393yi",
         )
         assert_matches_type(Entity, entity, path=["response"])
 
     @parametrize
     def test_raw_response_archive(self, client: Increase) -> None:
         response = client.entities.with_raw_response.archive(
-            "entity_id",
+            "entity_n8y8tnk2p9339ti393yi",
         )
 
         assert response.is_closed is True
@@ -493,7 +493,7 @@ class TestEntities:
     @parametrize
     def test_streaming_response_archive(self, client: Increase) -> None:
         with client.entities.with_streaming_response.archive(
-            "entity_id",
+            "entity_n8y8tnk2p9339ti393yi",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1228,14 +1228,14 @@ class TestAsyncEntities:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
         entity = await async_client.entities.retrieve(
-            "entity_id",
+            "entity_n8y8tnk2p9339ti393yi",
         )
         assert_matches_type(Entity, entity, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.entities.with_raw_response.retrieve(
-            "entity_id",
+            "entity_n8y8tnk2p9339ti393yi",
         )
 
         assert response.is_closed is True
@@ -1246,7 +1246,7 @@ class TestAsyncEntities:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
         async with async_client.entities.with_streaming_response.retrieve(
-            "entity_id",
+            "entity_n8y8tnk2p9339ti393yi",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1402,14 +1402,14 @@ class TestAsyncEntities:
     @parametrize
     async def test_method_archive(self, async_client: AsyncIncrease) -> None:
         entity = await async_client.entities.archive(
-            "entity_id",
+            "entity_n8y8tnk2p9339ti393yi",
         )
         assert_matches_type(Entity, entity, path=["response"])
 
     @parametrize
     async def test_raw_response_archive(self, async_client: AsyncIncrease) -> None:
         response = await async_client.entities.with_raw_response.archive(
-            "entity_id",
+            "entity_n8y8tnk2p9339ti393yi",
         )
 
         assert response.is_closed is True
@@ -1420,7 +1420,7 @@ class TestAsyncEntities:
     @parametrize
     async def test_streaming_response_archive(self, async_client: AsyncIncrease) -> None:
         async with async_client.entities.with_streaming_response.archive(
-            "entity_id",
+            "entity_n8y8tnk2p9339ti393yi",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

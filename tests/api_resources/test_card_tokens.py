@@ -22,14 +22,14 @@ class TestCardTokens:
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         card_token = client.card_tokens.retrieve(
-            "card_token_id",
+            "outbound_card_token_zlt0ml6youq3q7vcdlg0",
         )
         assert_matches_type(CardToken, card_token, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
         response = client.card_tokens.with_raw_response.retrieve(
-            "card_token_id",
+            "outbound_card_token_zlt0ml6youq3q7vcdlg0",
         )
 
         assert response.is_closed is True
@@ -40,7 +40,7 @@ class TestCardTokens:
     @parametrize
     def test_streaming_response_retrieve(self, client: Increase) -> None:
         with client.card_tokens.with_streaming_response.retrieve(
-            "card_token_id",
+            "outbound_card_token_zlt0ml6youq3q7vcdlg0",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -99,14 +99,14 @@ class TestCardTokens:
     @parametrize
     def test_method_capabilities(self, client: Increase) -> None:
         card_token = client.card_tokens.capabilities(
-            "card_token_id",
+            "outbound_card_token_zlt0ml6youq3q7vcdlg0",
         )
         assert_matches_type(CardTokenCapabilities, card_token, path=["response"])
 
     @parametrize
     def test_raw_response_capabilities(self, client: Increase) -> None:
         response = client.card_tokens.with_raw_response.capabilities(
-            "card_token_id",
+            "outbound_card_token_zlt0ml6youq3q7vcdlg0",
         )
 
         assert response.is_closed is True
@@ -117,7 +117,7 @@ class TestCardTokens:
     @parametrize
     def test_streaming_response_capabilities(self, client: Increase) -> None:
         with client.card_tokens.with_streaming_response.capabilities(
-            "card_token_id",
+            "outbound_card_token_zlt0ml6youq3q7vcdlg0",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -143,14 +143,14 @@ class TestAsyncCardTokens:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
         card_token = await async_client.card_tokens.retrieve(
-            "card_token_id",
+            "outbound_card_token_zlt0ml6youq3q7vcdlg0",
         )
         assert_matches_type(CardToken, card_token, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.card_tokens.with_raw_response.retrieve(
-            "card_token_id",
+            "outbound_card_token_zlt0ml6youq3q7vcdlg0",
         )
 
         assert response.is_closed is True
@@ -161,7 +161,7 @@ class TestAsyncCardTokens:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
         async with async_client.card_tokens.with_streaming_response.retrieve(
-            "card_token_id",
+            "outbound_card_token_zlt0ml6youq3q7vcdlg0",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -220,14 +220,14 @@ class TestAsyncCardTokens:
     @parametrize
     async def test_method_capabilities(self, async_client: AsyncIncrease) -> None:
         card_token = await async_client.card_tokens.capabilities(
-            "card_token_id",
+            "outbound_card_token_zlt0ml6youq3q7vcdlg0",
         )
         assert_matches_type(CardTokenCapabilities, card_token, path=["response"])
 
     @parametrize
     async def test_raw_response_capabilities(self, async_client: AsyncIncrease) -> None:
         response = await async_client.card_tokens.with_raw_response.capabilities(
-            "card_token_id",
+            "outbound_card_token_zlt0ml6youq3q7vcdlg0",
         )
 
         assert response.is_closed is True
@@ -238,7 +238,7 @@ class TestAsyncCardTokens:
     @parametrize
     async def test_streaming_response_capabilities(self, async_client: AsyncIncrease) -> None:
         async with async_client.card_tokens.with_streaming_response.capabilities(
-            "card_token_id",
+            "outbound_card_token_zlt0ml6youq3q7vcdlg0",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

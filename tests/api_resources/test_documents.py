@@ -65,14 +65,14 @@ class TestDocuments:
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         document = client.documents.retrieve(
-            "document_id",
+            "document_qjtqc6s4c14ve2q89izm",
         )
         assert_matches_type(Document, document, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
         response = client.documents.with_raw_response.retrieve(
-            "document_id",
+            "document_qjtqc6s4c14ve2q89izm",
         )
 
         assert response.is_closed is True
@@ -83,7 +83,7 @@ class TestDocuments:
     @parametrize
     def test_streaming_response_retrieve(self, client: Increase) -> None:
         with client.documents.with_streaming_response.retrieve(
-            "document_id",
+            "document_qjtqc6s4c14ve2q89izm",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -194,14 +194,14 @@ class TestAsyncDocuments:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
         document = await async_client.documents.retrieve(
-            "document_id",
+            "document_qjtqc6s4c14ve2q89izm",
         )
         assert_matches_type(Document, document, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.documents.with_raw_response.retrieve(
-            "document_id",
+            "document_qjtqc6s4c14ve2q89izm",
         )
 
         assert response.is_closed is True
@@ -212,7 +212,7 @@ class TestAsyncDocuments:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
         async with async_client.documents.with_streaming_response.retrieve(
-            "document_id",
+            "document_qjtqc6s4c14ve2q89izm",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

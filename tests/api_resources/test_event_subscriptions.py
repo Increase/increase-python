@@ -64,14 +64,14 @@ class TestEventSubscriptions:
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         event_subscription = client.event_subscriptions.retrieve(
-            "event_subscription_id",
+            "event_subscription_001dzz0r20rcdxgb013zqb8m04g",
         )
         assert_matches_type(EventSubscription, event_subscription, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
         response = client.event_subscriptions.with_raw_response.retrieve(
-            "event_subscription_id",
+            "event_subscription_001dzz0r20rcdxgb013zqb8m04g",
         )
 
         assert response.is_closed is True
@@ -82,7 +82,7 @@ class TestEventSubscriptions:
     @parametrize
     def test_streaming_response_retrieve(self, client: Increase) -> None:
         with client.event_subscriptions.with_streaming_response.retrieve(
-            "event_subscription_id",
+            "event_subscription_001dzz0r20rcdxgb013zqb8m04g",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -229,14 +229,14 @@ class TestAsyncEventSubscriptions:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
         event_subscription = await async_client.event_subscriptions.retrieve(
-            "event_subscription_id",
+            "event_subscription_001dzz0r20rcdxgb013zqb8m04g",
         )
         assert_matches_type(EventSubscription, event_subscription, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.event_subscriptions.with_raw_response.retrieve(
-            "event_subscription_id",
+            "event_subscription_001dzz0r20rcdxgb013zqb8m04g",
         )
 
         assert response.is_closed is True
@@ -247,7 +247,7 @@ class TestAsyncEventSubscriptions:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
         async with async_client.event_subscriptions.with_streaming_response.retrieve(
-            "event_subscription_id",
+            "event_subscription_001dzz0r20rcdxgb013zqb8m04g",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

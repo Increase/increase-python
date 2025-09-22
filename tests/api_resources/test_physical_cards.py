@@ -124,14 +124,14 @@ class TestPhysicalCards:
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         physical_card = client.physical_cards.retrieve(
-            "physical_card_id",
+            "physical_card_ode8duyq5v2ynhjoharl",
         )
         assert_matches_type(PhysicalCard, physical_card, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
         response = client.physical_cards.with_raw_response.retrieve(
-            "physical_card_id",
+            "physical_card_ode8duyq5v2ynhjoharl",
         )
 
         assert response.is_closed is True
@@ -142,7 +142,7 @@ class TestPhysicalCards:
     @parametrize
     def test_streaming_response_retrieve(self, client: Increase) -> None:
         with client.physical_cards.with_streaming_response.retrieve(
-            "physical_card_id",
+            "physical_card_ode8duyq5v2ynhjoharl",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -351,14 +351,14 @@ class TestAsyncPhysicalCards:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
         physical_card = await async_client.physical_cards.retrieve(
-            "physical_card_id",
+            "physical_card_ode8duyq5v2ynhjoharl",
         )
         assert_matches_type(PhysicalCard, physical_card, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.physical_cards.with_raw_response.retrieve(
-            "physical_card_id",
+            "physical_card_ode8duyq5v2ynhjoharl",
         )
 
         assert response.is_closed is True
@@ -369,7 +369,7 @@ class TestAsyncPhysicalCards:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
         async with async_client.physical_cards.with_streaming_response.retrieve(
-            "physical_card_id",
+            "physical_card_ode8duyq5v2ynhjoharl",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

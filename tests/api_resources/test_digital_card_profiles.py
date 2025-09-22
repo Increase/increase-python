@@ -85,14 +85,14 @@ class TestDigitalCardProfiles:
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         digital_card_profile = client.digital_card_profiles.retrieve(
-            "digital_card_profile_id",
+            "digital_card_profile_s3puplu90f04xhcwkiga",
         )
         assert_matches_type(DigitalCardProfile, digital_card_profile, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
         response = client.digital_card_profiles.with_raw_response.retrieve(
-            "digital_card_profile_id",
+            "digital_card_profile_s3puplu90f04xhcwkiga",
         )
 
         assert response.is_closed is True
@@ -103,7 +103,7 @@ class TestDigitalCardProfiles:
     @parametrize
     def test_streaming_response_retrieve(self, client: Increase) -> None:
         with client.digital_card_profiles.with_streaming_response.retrieve(
-            "digital_card_profile_id",
+            "digital_card_profile_s3puplu90f04xhcwkiga",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -160,14 +160,14 @@ class TestDigitalCardProfiles:
     @parametrize
     def test_method_archive(self, client: Increase) -> None:
         digital_card_profile = client.digital_card_profiles.archive(
-            "digital_card_profile_id",
+            "digital_card_profile_s3puplu90f04xhcwkiga",
         )
         assert_matches_type(DigitalCardProfile, digital_card_profile, path=["response"])
 
     @parametrize
     def test_raw_response_archive(self, client: Increase) -> None:
         response = client.digital_card_profiles.with_raw_response.archive(
-            "digital_card_profile_id",
+            "digital_card_profile_s3puplu90f04xhcwkiga",
         )
 
         assert response.is_closed is True
@@ -178,7 +178,7 @@ class TestDigitalCardProfiles:
     @parametrize
     def test_streaming_response_archive(self, client: Increase) -> None:
         with client.digital_card_profiles.with_streaming_response.archive(
-            "digital_card_profile_id",
+            "digital_card_profile_s3puplu90f04xhcwkiga",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -328,14 +328,14 @@ class TestAsyncDigitalCardProfiles:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
         digital_card_profile = await async_client.digital_card_profiles.retrieve(
-            "digital_card_profile_id",
+            "digital_card_profile_s3puplu90f04xhcwkiga",
         )
         assert_matches_type(DigitalCardProfile, digital_card_profile, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.digital_card_profiles.with_raw_response.retrieve(
-            "digital_card_profile_id",
+            "digital_card_profile_s3puplu90f04xhcwkiga",
         )
 
         assert response.is_closed is True
@@ -346,7 +346,7 @@ class TestAsyncDigitalCardProfiles:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
         async with async_client.digital_card_profiles.with_streaming_response.retrieve(
-            "digital_card_profile_id",
+            "digital_card_profile_s3puplu90f04xhcwkiga",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -403,14 +403,14 @@ class TestAsyncDigitalCardProfiles:
     @parametrize
     async def test_method_archive(self, async_client: AsyncIncrease) -> None:
         digital_card_profile = await async_client.digital_card_profiles.archive(
-            "digital_card_profile_id",
+            "digital_card_profile_s3puplu90f04xhcwkiga",
         )
         assert_matches_type(DigitalCardProfile, digital_card_profile, path=["response"])
 
     @parametrize
     async def test_raw_response_archive(self, async_client: AsyncIncrease) -> None:
         response = await async_client.digital_card_profiles.with_raw_response.archive(
-            "digital_card_profile_id",
+            "digital_card_profile_s3puplu90f04xhcwkiga",
         )
 
         assert response.is_closed is True
@@ -421,7 +421,7 @@ class TestAsyncDigitalCardProfiles:
     @parametrize
     async def test_streaming_response_archive(self, async_client: AsyncIncrease) -> None:
         async with async_client.digital_card_profiles.with_streaming_response.archive(
-            "digital_card_profile_id",
+            "digital_card_profile_s3puplu90f04xhcwkiga",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

@@ -20,14 +20,14 @@ class TestCheckTransfers:
     @parametrize
     def test_method_mail(self, client: Increase) -> None:
         check_transfer = client.simulations.check_transfers.mail(
-            "check_transfer_id",
+            "check_transfer_30b43acfu9vw8fyc4f5",
         )
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
     @parametrize
     def test_raw_response_mail(self, client: Increase) -> None:
         response = client.simulations.check_transfers.with_raw_response.mail(
-            "check_transfer_id",
+            "check_transfer_30b43acfu9vw8fyc4f5",
         )
 
         assert response.is_closed is True
@@ -38,7 +38,7 @@ class TestCheckTransfers:
     @parametrize
     def test_streaming_response_mail(self, client: Increase) -> None:
         with client.simulations.check_transfers.with_streaming_response.mail(
-            "check_transfer_id",
+            "check_transfer_30b43acfu9vw8fyc4f5",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -64,14 +64,14 @@ class TestAsyncCheckTransfers:
     @parametrize
     async def test_method_mail(self, async_client: AsyncIncrease) -> None:
         check_transfer = await async_client.simulations.check_transfers.mail(
-            "check_transfer_id",
+            "check_transfer_30b43acfu9vw8fyc4f5",
         )
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
     @parametrize
     async def test_raw_response_mail(self, async_client: AsyncIncrease) -> None:
         response = await async_client.simulations.check_transfers.with_raw_response.mail(
-            "check_transfer_id",
+            "check_transfer_30b43acfu9vw8fyc4f5",
         )
 
         assert response.is_closed is True
@@ -82,7 +82,7 @@ class TestAsyncCheckTransfers:
     @parametrize
     async def test_streaming_response_mail(self, async_client: AsyncIncrease) -> None:
         async with async_client.simulations.check_transfers.with_streaming_response.mail(
-            "check_transfer_id",
+            "check_transfer_30b43acfu9vw8fyc4f5",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

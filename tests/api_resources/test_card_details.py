@@ -111,14 +111,14 @@ class TestCardDetails:
     @parametrize
     def test_method_details(self, client: Increase) -> None:
         card_detail = client.card_details.details(
-            "card_id",
+            "card_oubs0hwk5rn6knuecxg2",
         )
         assert_matches_type(CardDetails, card_detail, path=["response"])
 
     @parametrize
     def test_raw_response_details(self, client: Increase) -> None:
         response = client.card_details.with_raw_response.details(
-            "card_id",
+            "card_oubs0hwk5rn6knuecxg2",
         )
 
         assert response.is_closed is True
@@ -129,7 +129,7 @@ class TestCardDetails:
     @parametrize
     def test_streaming_response_details(self, client: Increase) -> None:
         with client.card_details.with_streaming_response.details(
-            "card_id",
+            "card_oubs0hwk5rn6knuecxg2",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -243,14 +243,14 @@ class TestAsyncCardDetails:
     @parametrize
     async def test_method_details(self, async_client: AsyncIncrease) -> None:
         card_detail = await async_client.card_details.details(
-            "card_id",
+            "card_oubs0hwk5rn6knuecxg2",
         )
         assert_matches_type(CardDetails, card_detail, path=["response"])
 
     @parametrize
     async def test_raw_response_details(self, async_client: AsyncIncrease) -> None:
         response = await async_client.card_details.with_raw_response.details(
-            "card_id",
+            "card_oubs0hwk5rn6knuecxg2",
         )
 
         assert response.is_closed is True
@@ -261,7 +261,7 @@ class TestAsyncCardDetails:
     @parametrize
     async def test_streaming_response_details(self, async_client: AsyncIncrease) -> None:
         async with async_client.card_details.with_streaming_response.details(
-            "card_id",
+            "card_oubs0hwk5rn6knuecxg2",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

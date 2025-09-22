@@ -62,14 +62,14 @@ class TestLockboxes:
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         lockbox = client.lockboxes.retrieve(
-            "lockbox_id",
+            "lockbox_3xt21ok13q19advds4t5",
         )
         assert_matches_type(Lockbox, lockbox, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
         response = client.lockboxes.with_raw_response.retrieve(
-            "lockbox_id",
+            "lockbox_3xt21ok13q19advds4t5",
         )
 
         assert response.is_closed is True
@@ -80,7 +80,7 @@ class TestLockboxes:
     @parametrize
     def test_streaming_response_retrieve(self, client: Increase) -> None:
         with client.lockboxes.with_streaming_response.retrieve(
-            "lockbox_id",
+            "lockbox_3xt21ok13q19advds4t5",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -235,14 +235,14 @@ class TestAsyncLockboxes:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
         lockbox = await async_client.lockboxes.retrieve(
-            "lockbox_id",
+            "lockbox_3xt21ok13q19advds4t5",
         )
         assert_matches_type(Lockbox, lockbox, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.lockboxes.with_raw_response.retrieve(
-            "lockbox_id",
+            "lockbox_3xt21ok13q19advds4t5",
         )
 
         assert response.is_closed is True
@@ -253,7 +253,7 @@ class TestAsyncLockboxes:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
         async with async_client.lockboxes.with_streaming_response.retrieve(
-            "lockbox_id",
+            "lockbox_3xt21ok13q19advds4t5",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

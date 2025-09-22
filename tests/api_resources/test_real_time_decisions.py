@@ -20,14 +20,14 @@ class TestRealTimeDecisions:
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         real_time_decision = client.real_time_decisions.retrieve(
-            "real_time_decision_id",
+            "real_time_decision_j76n2e810ezcg3zh5qtn",
         )
         assert_matches_type(RealTimeDecision, real_time_decision, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
         response = client.real_time_decisions.with_raw_response.retrieve(
-            "real_time_decision_id",
+            "real_time_decision_j76n2e810ezcg3zh5qtn",
         )
 
         assert response.is_closed is True
@@ -38,7 +38,7 @@ class TestRealTimeDecisions:
     @parametrize
     def test_streaming_response_retrieve(self, client: Increase) -> None:
         with client.real_time_decisions.with_streaming_response.retrieve(
-            "real_time_decision_id",
+            "real_time_decision_j76n2e810ezcg3zh5qtn",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -135,14 +135,14 @@ class TestAsyncRealTimeDecisions:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
         real_time_decision = await async_client.real_time_decisions.retrieve(
-            "real_time_decision_id",
+            "real_time_decision_j76n2e810ezcg3zh5qtn",
         )
         assert_matches_type(RealTimeDecision, real_time_decision, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.real_time_decisions.with_raw_response.retrieve(
-            "real_time_decision_id",
+            "real_time_decision_j76n2e810ezcg3zh5qtn",
         )
 
         assert response.is_closed is True
@@ -153,7 +153,7 @@ class TestAsyncRealTimeDecisions:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
         async with async_client.real_time_decisions.with_streaming_response.retrieve(
-            "real_time_decision_id",
+            "real_time_decision_j76n2e810ezcg3zh5qtn",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

@@ -73,14 +73,14 @@ class TestCheckDeposits:
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         check_deposit = client.check_deposits.retrieve(
-            "check_deposit_id",
+            "check_deposit_f06n9gpg7sxn8t19lfc1",
         )
         assert_matches_type(CheckDeposit, check_deposit, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
         response = client.check_deposits.with_raw_response.retrieve(
-            "check_deposit_id",
+            "check_deposit_f06n9gpg7sxn8t19lfc1",
         )
 
         assert response.is_closed is True
@@ -91,7 +91,7 @@ class TestCheckDeposits:
     @parametrize
     def test_streaming_response_retrieve(self, client: Increase) -> None:
         with client.check_deposits.with_streaming_response.retrieve(
-            "check_deposit_id",
+            "check_deposit_f06n9gpg7sxn8t19lfc1",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -209,14 +209,14 @@ class TestAsyncCheckDeposits:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
         check_deposit = await async_client.check_deposits.retrieve(
-            "check_deposit_id",
+            "check_deposit_f06n9gpg7sxn8t19lfc1",
         )
         assert_matches_type(CheckDeposit, check_deposit, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.check_deposits.with_raw_response.retrieve(
-            "check_deposit_id",
+            "check_deposit_f06n9gpg7sxn8t19lfc1",
         )
 
         assert response.is_closed is True
@@ -227,7 +227,7 @@ class TestAsyncCheckDeposits:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
         async with async_client.check_deposits.with_streaming_response.retrieve(
-            "check_deposit_id",
+            "check_deposit_f06n9gpg7sxn8t19lfc1",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

@@ -22,14 +22,14 @@ class TestDeclinedTransactions:
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         declined_transaction = client.declined_transactions.retrieve(
-            "declined_transaction_id",
+            "declined_transaction_17jbn0yyhvkt4v4ooym8",
         )
         assert_matches_type(DeclinedTransaction, declined_transaction, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
         response = client.declined_transactions.with_raw_response.retrieve(
-            "declined_transaction_id",
+            "declined_transaction_17jbn0yyhvkt4v4ooym8",
         )
 
         assert response.is_closed is True
@@ -40,7 +40,7 @@ class TestDeclinedTransactions:
     @parametrize
     def test_streaming_response_retrieve(self, client: Increase) -> None:
         with client.declined_transactions.with_streaming_response.retrieve(
-            "declined_transaction_id",
+            "declined_transaction_17jbn0yyhvkt4v4ooym8",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -110,14 +110,14 @@ class TestAsyncDeclinedTransactions:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
         declined_transaction = await async_client.declined_transactions.retrieve(
-            "declined_transaction_id",
+            "declined_transaction_17jbn0yyhvkt4v4ooym8",
         )
         assert_matches_type(DeclinedTransaction, declined_transaction, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.declined_transactions.with_raw_response.retrieve(
-            "declined_transaction_id",
+            "declined_transaction_17jbn0yyhvkt4v4ooym8",
         )
 
         assert response.is_closed is True
@@ -128,7 +128,7 @@ class TestAsyncDeclinedTransactions:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
         async with async_client.declined_transactions.with_streaming_response.retrieve(
-            "declined_transaction_id",
+            "declined_transaction_17jbn0yyhvkt4v4ooym8",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

@@ -74,14 +74,14 @@ class TestCards:
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         card = client.cards.retrieve(
-            "card_id",
+            "card_oubs0hwk5rn6knuecxg2",
         )
         assert_matches_type(Card, card, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
         response = client.cards.with_raw_response.retrieve(
-            "card_id",
+            "card_oubs0hwk5rn6knuecxg2",
         )
 
         assert response.is_closed is True
@@ -92,7 +92,7 @@ class TestCards:
     @parametrize
     def test_streaming_response_retrieve(self, client: Increase) -> None:
         with client.cards.with_streaming_response.retrieve(
-            "card_id",
+            "card_oubs0hwk5rn6knuecxg2",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -273,14 +273,14 @@ class TestAsyncCards:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
         card = await async_client.cards.retrieve(
-            "card_id",
+            "card_oubs0hwk5rn6knuecxg2",
         )
         assert_matches_type(Card, card, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.cards.with_raw_response.retrieve(
-            "card_id",
+            "card_oubs0hwk5rn6knuecxg2",
         )
 
         assert response.is_closed is True
@@ -291,7 +291,7 @@ class TestAsyncCards:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
         async with async_client.cards.with_streaming_response.retrieve(
-            "card_id",
+            "card_oubs0hwk5rn6knuecxg2",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

@@ -21,14 +21,14 @@ class TestBookkeepingEntries:
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         bookkeeping_entry = client.bookkeeping_entries.retrieve(
-            "bookkeeping_entry_id",
+            "bookkeeping_entry_ctjpajsj3ks2blx10375",
         )
         assert_matches_type(BookkeepingEntry, bookkeeping_entry, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
         response = client.bookkeeping_entries.with_raw_response.retrieve(
-            "bookkeeping_entry_id",
+            "bookkeeping_entry_ctjpajsj3ks2blx10375",
         )
 
         assert response.is_closed is True
@@ -39,7 +39,7 @@ class TestBookkeepingEntries:
     @parametrize
     def test_streaming_response_retrieve(self, client: Increase) -> None:
         with client.bookkeeping_entries.with_streaming_response.retrieve(
-            "bookkeeping_entry_id",
+            "bookkeeping_entry_ctjpajsj3ks2blx10375",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -99,14 +99,14 @@ class TestAsyncBookkeepingEntries:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
         bookkeeping_entry = await async_client.bookkeeping_entries.retrieve(
-            "bookkeeping_entry_id",
+            "bookkeeping_entry_ctjpajsj3ks2blx10375",
         )
         assert_matches_type(BookkeepingEntry, bookkeeping_entry, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.bookkeeping_entries.with_raw_response.retrieve(
-            "bookkeeping_entry_id",
+            "bookkeeping_entry_ctjpajsj3ks2blx10375",
         )
 
         assert response.is_closed is True
@@ -117,7 +117,7 @@ class TestAsyncBookkeepingEntries:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
         async with async_client.bookkeeping_entries.with_streaming_response.retrieve(
-            "bookkeeping_entry_id",
+            "bookkeeping_entry_ctjpajsj3ks2blx10375",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
