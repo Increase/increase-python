@@ -22,14 +22,14 @@ class TestTransactions:
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         transaction = client.transactions.retrieve(
-            "transaction_id",
+            "transaction_uyrp7fld2ium70oa7oi",
         )
         assert_matches_type(Transaction, transaction, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
         response = client.transactions.with_raw_response.retrieve(
-            "transaction_id",
+            "transaction_uyrp7fld2ium70oa7oi",
         )
 
         assert response.is_closed is True
@@ -40,7 +40,7 @@ class TestTransactions:
     @parametrize
     def test_streaming_response_retrieve(self, client: Increase) -> None:
         with client.transactions.with_streaming_response.retrieve(
-            "transaction_id",
+            "transaction_uyrp7fld2ium70oa7oi",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -108,14 +108,14 @@ class TestAsyncTransactions:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
         transaction = await async_client.transactions.retrieve(
-            "transaction_id",
+            "transaction_uyrp7fld2ium70oa7oi",
         )
         assert_matches_type(Transaction, transaction, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.transactions.with_raw_response.retrieve(
-            "transaction_id",
+            "transaction_uyrp7fld2ium70oa7oi",
         )
 
         assert response.is_closed is True
@@ -126,7 +126,7 @@ class TestAsyncTransactions:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
         async with async_client.transactions.with_streaming_response.retrieve(
-            "transaction_id",
+            "transaction_uyrp7fld2ium70oa7oi",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

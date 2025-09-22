@@ -22,14 +22,14 @@ class TestInboundWireTransfers:
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         inbound_wire_transfer = client.inbound_wire_transfers.retrieve(
-            "inbound_wire_transfer_id",
+            "inbound_wire_transfer_f228m6bmhtcxjco9pwp0",
         )
         assert_matches_type(InboundWireTransfer, inbound_wire_transfer, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
         response = client.inbound_wire_transfers.with_raw_response.retrieve(
-            "inbound_wire_transfer_id",
+            "inbound_wire_transfer_f228m6bmhtcxjco9pwp0",
         )
 
         assert response.is_closed is True
@@ -40,7 +40,7 @@ class TestInboundWireTransfers:
     @parametrize
     def test_streaming_response_retrieve(self, client: Increase) -> None:
         with client.inbound_wire_transfers.with_streaming_response.retrieve(
-            "inbound_wire_transfer_id",
+            "inbound_wire_transfer_f228m6bmhtcxjco9pwp0",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -155,14 +155,14 @@ class TestAsyncInboundWireTransfers:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
         inbound_wire_transfer = await async_client.inbound_wire_transfers.retrieve(
-            "inbound_wire_transfer_id",
+            "inbound_wire_transfer_f228m6bmhtcxjco9pwp0",
         )
         assert_matches_type(InboundWireTransfer, inbound_wire_transfer, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.inbound_wire_transfers.with_raw_response.retrieve(
-            "inbound_wire_transfer_id",
+            "inbound_wire_transfer_f228m6bmhtcxjco9pwp0",
         )
 
         assert response.is_closed is True
@@ -173,7 +173,7 @@ class TestAsyncInboundWireTransfers:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
         async with async_client.inbound_wire_transfers.with_streaming_response.retrieve(
-            "inbound_wire_transfer_id",
+            "inbound_wire_transfer_f228m6bmhtcxjco9pwp0",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

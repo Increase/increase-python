@@ -121,14 +121,14 @@ class TestCardPushTransfers:
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         card_push_transfer = client.card_push_transfers.retrieve(
-            "card_push_transfer_id",
+            "outbound_card_push_transfer_e0z9rdpamraczh4tvwye",
         )
         assert_matches_type(CardPushTransfer, card_push_transfer, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
         response = client.card_push_transfers.with_raw_response.retrieve(
-            "card_push_transfer_id",
+            "outbound_card_push_transfer_e0z9rdpamraczh4tvwye",
         )
 
         assert response.is_closed is True
@@ -139,7 +139,7 @@ class TestCardPushTransfers:
     @parametrize
     def test_streaming_response_retrieve(self, client: Increase) -> None:
         with client.card_push_transfers.with_streaming_response.retrieve(
-            "card_push_transfer_id",
+            "outbound_card_push_transfer_e0z9rdpamraczh4tvwye",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -201,14 +201,14 @@ class TestCardPushTransfers:
     @parametrize
     def test_method_approve(self, client: Increase) -> None:
         card_push_transfer = client.card_push_transfers.approve(
-            "card_push_transfer_id",
+            "outbound_card_push_transfer_e0z9rdpamraczh4tvwye",
         )
         assert_matches_type(CardPushTransfer, card_push_transfer, path=["response"])
 
     @parametrize
     def test_raw_response_approve(self, client: Increase) -> None:
         response = client.card_push_transfers.with_raw_response.approve(
-            "card_push_transfer_id",
+            "outbound_card_push_transfer_e0z9rdpamraczh4tvwye",
         )
 
         assert response.is_closed is True
@@ -219,7 +219,7 @@ class TestCardPushTransfers:
     @parametrize
     def test_streaming_response_approve(self, client: Increase) -> None:
         with client.card_push_transfers.with_streaming_response.approve(
-            "card_push_transfer_id",
+            "outbound_card_push_transfer_e0z9rdpamraczh4tvwye",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -239,14 +239,14 @@ class TestCardPushTransfers:
     @parametrize
     def test_method_cancel(self, client: Increase) -> None:
         card_push_transfer = client.card_push_transfers.cancel(
-            "card_push_transfer_id",
+            "outbound_card_push_transfer_e0z9rdpamraczh4tvwye",
         )
         assert_matches_type(CardPushTransfer, card_push_transfer, path=["response"])
 
     @parametrize
     def test_raw_response_cancel(self, client: Increase) -> None:
         response = client.card_push_transfers.with_raw_response.cancel(
-            "card_push_transfer_id",
+            "outbound_card_push_transfer_e0z9rdpamraczh4tvwye",
         )
 
         assert response.is_closed is True
@@ -257,7 +257,7 @@ class TestCardPushTransfers:
     @parametrize
     def test_streaming_response_cancel(self, client: Increase) -> None:
         with client.card_push_transfers.with_streaming_response.cancel(
-            "card_push_transfer_id",
+            "outbound_card_push_transfer_e0z9rdpamraczh4tvwye",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -382,14 +382,14 @@ class TestAsyncCardPushTransfers:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
         card_push_transfer = await async_client.card_push_transfers.retrieve(
-            "card_push_transfer_id",
+            "outbound_card_push_transfer_e0z9rdpamraczh4tvwye",
         )
         assert_matches_type(CardPushTransfer, card_push_transfer, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.card_push_transfers.with_raw_response.retrieve(
-            "card_push_transfer_id",
+            "outbound_card_push_transfer_e0z9rdpamraczh4tvwye",
         )
 
         assert response.is_closed is True
@@ -400,7 +400,7 @@ class TestAsyncCardPushTransfers:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
         async with async_client.card_push_transfers.with_streaming_response.retrieve(
-            "card_push_transfer_id",
+            "outbound_card_push_transfer_e0z9rdpamraczh4tvwye",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -462,14 +462,14 @@ class TestAsyncCardPushTransfers:
     @parametrize
     async def test_method_approve(self, async_client: AsyncIncrease) -> None:
         card_push_transfer = await async_client.card_push_transfers.approve(
-            "card_push_transfer_id",
+            "outbound_card_push_transfer_e0z9rdpamraczh4tvwye",
         )
         assert_matches_type(CardPushTransfer, card_push_transfer, path=["response"])
 
     @parametrize
     async def test_raw_response_approve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.card_push_transfers.with_raw_response.approve(
-            "card_push_transfer_id",
+            "outbound_card_push_transfer_e0z9rdpamraczh4tvwye",
         )
 
         assert response.is_closed is True
@@ -480,7 +480,7 @@ class TestAsyncCardPushTransfers:
     @parametrize
     async def test_streaming_response_approve(self, async_client: AsyncIncrease) -> None:
         async with async_client.card_push_transfers.with_streaming_response.approve(
-            "card_push_transfer_id",
+            "outbound_card_push_transfer_e0z9rdpamraczh4tvwye",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -500,14 +500,14 @@ class TestAsyncCardPushTransfers:
     @parametrize
     async def test_method_cancel(self, async_client: AsyncIncrease) -> None:
         card_push_transfer = await async_client.card_push_transfers.cancel(
-            "card_push_transfer_id",
+            "outbound_card_push_transfer_e0z9rdpamraczh4tvwye",
         )
         assert_matches_type(CardPushTransfer, card_push_transfer, path=["response"])
 
     @parametrize
     async def test_raw_response_cancel(self, async_client: AsyncIncrease) -> None:
         response = await async_client.card_push_transfers.with_raw_response.cancel(
-            "card_push_transfer_id",
+            "outbound_card_push_transfer_e0z9rdpamraczh4tvwye",
         )
 
         assert response.is_closed is True
@@ -518,7 +518,7 @@ class TestAsyncCardPushTransfers:
     @parametrize
     async def test_streaming_response_cancel(self, async_client: AsyncIncrease) -> None:
         async with async_client.card_push_transfers.with_streaming_response.cancel(
-            "card_push_transfer_id",
+            "outbound_card_push_transfer_e0z9rdpamraczh4tvwye",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

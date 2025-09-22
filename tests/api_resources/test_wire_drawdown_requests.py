@@ -124,14 +124,14 @@ class TestWireDrawdownRequests:
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         wire_drawdown_request = client.wire_drawdown_requests.retrieve(
-            "wire_drawdown_request_id",
+            "wire_drawdown_request_q6lmocus3glo0lr2bfv3",
         )
         assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
         response = client.wire_drawdown_requests.with_raw_response.retrieve(
-            "wire_drawdown_request_id",
+            "wire_drawdown_request_q6lmocus3glo0lr2bfv3",
         )
 
         assert response.is_closed is True
@@ -142,7 +142,7 @@ class TestWireDrawdownRequests:
     @parametrize
     def test_streaming_response_retrieve(self, client: Increase) -> None:
         with client.wire_drawdown_requests.with_streaming_response.retrieve(
-            "wire_drawdown_request_id",
+            "wire_drawdown_request_q6lmocus3glo0lr2bfv3",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -308,14 +308,14 @@ class TestAsyncWireDrawdownRequests:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
         wire_drawdown_request = await async_client.wire_drawdown_requests.retrieve(
-            "wire_drawdown_request_id",
+            "wire_drawdown_request_q6lmocus3glo0lr2bfv3",
         )
         assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.wire_drawdown_requests.with_raw_response.retrieve(
-            "wire_drawdown_request_id",
+            "wire_drawdown_request_q6lmocus3glo0lr2bfv3",
         )
 
         assert response.is_closed is True
@@ -326,7 +326,7 @@ class TestAsyncWireDrawdownRequests:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
         async with async_client.wire_drawdown_requests.with_streaming_response.retrieve(
-            "wire_drawdown_request_id",
+            "wire_drawdown_request_q6lmocus3glo0lr2bfv3",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

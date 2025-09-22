@@ -71,14 +71,14 @@ class TestExternalAccounts:
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         external_account = client.external_accounts.retrieve(
-            "external_account_id",
+            "external_account_ukk55lr923a3ac0pp7iv",
         )
         assert_matches_type(ExternalAccount, external_account, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
         response = client.external_accounts.with_raw_response.retrieve(
-            "external_account_id",
+            "external_account_ukk55lr923a3ac0pp7iv",
         )
 
         assert response.is_closed is True
@@ -89,7 +89,7 @@ class TestExternalAccounts:
     @parametrize
     def test_streaming_response_retrieve(self, client: Increase) -> None:
         with client.external_accounts.with_streaming_response.retrieve(
-            "external_account_id",
+            "external_account_ukk55lr923a3ac0pp7iv",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -248,14 +248,14 @@ class TestAsyncExternalAccounts:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
         external_account = await async_client.external_accounts.retrieve(
-            "external_account_id",
+            "external_account_ukk55lr923a3ac0pp7iv",
         )
         assert_matches_type(ExternalAccount, external_account, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.external_accounts.with_raw_response.retrieve(
-            "external_account_id",
+            "external_account_ukk55lr923a3ac0pp7iv",
         )
 
         assert response.is_closed is True
@@ -266,7 +266,7 @@ class TestAsyncExternalAccounts:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
         async with async_client.external_accounts.with_streaming_response.retrieve(
-            "external_account_id",
+            "external_account_ukk55lr923a3ac0pp7iv",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

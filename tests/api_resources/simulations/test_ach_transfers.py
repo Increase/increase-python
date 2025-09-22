@@ -20,14 +20,14 @@ class TestACHTransfers:
     @parametrize
     def test_method_acknowledge(self, client: Increase) -> None:
         ach_transfer = client.simulations.ach_transfers.acknowledge(
-            "ach_transfer_id",
+            "ach_transfer_uoxatyh3lt5evrsdvo7q",
         )
         assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
 
     @parametrize
     def test_raw_response_acknowledge(self, client: Increase) -> None:
         response = client.simulations.ach_transfers.with_raw_response.acknowledge(
-            "ach_transfer_id",
+            "ach_transfer_uoxatyh3lt5evrsdvo7q",
         )
 
         assert response.is_closed is True
@@ -38,7 +38,7 @@ class TestACHTransfers:
     @parametrize
     def test_streaming_response_acknowledge(self, client: Increase) -> None:
         with client.simulations.ach_transfers.with_streaming_response.acknowledge(
-            "ach_transfer_id",
+            "ach_transfer_uoxatyh3lt5evrsdvo7q",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -196,14 +196,14 @@ class TestACHTransfers:
     @parametrize
     def test_method_submit(self, client: Increase) -> None:
         ach_transfer = client.simulations.ach_transfers.submit(
-            "ach_transfer_id",
+            "ach_transfer_uoxatyh3lt5evrsdvo7q",
         )
         assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
 
     @parametrize
     def test_raw_response_submit(self, client: Increase) -> None:
         response = client.simulations.ach_transfers.with_raw_response.submit(
-            "ach_transfer_id",
+            "ach_transfer_uoxatyh3lt5evrsdvo7q",
         )
 
         assert response.is_closed is True
@@ -214,7 +214,7 @@ class TestACHTransfers:
     @parametrize
     def test_streaming_response_submit(self, client: Increase) -> None:
         with client.simulations.ach_transfers.with_streaming_response.submit(
-            "ach_transfer_id",
+            "ach_transfer_uoxatyh3lt5evrsdvo7q",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -240,14 +240,14 @@ class TestAsyncACHTransfers:
     @parametrize
     async def test_method_acknowledge(self, async_client: AsyncIncrease) -> None:
         ach_transfer = await async_client.simulations.ach_transfers.acknowledge(
-            "ach_transfer_id",
+            "ach_transfer_uoxatyh3lt5evrsdvo7q",
         )
         assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
 
     @parametrize
     async def test_raw_response_acknowledge(self, async_client: AsyncIncrease) -> None:
         response = await async_client.simulations.ach_transfers.with_raw_response.acknowledge(
-            "ach_transfer_id",
+            "ach_transfer_uoxatyh3lt5evrsdvo7q",
         )
 
         assert response.is_closed is True
@@ -258,7 +258,7 @@ class TestAsyncACHTransfers:
     @parametrize
     async def test_streaming_response_acknowledge(self, async_client: AsyncIncrease) -> None:
         async with async_client.simulations.ach_transfers.with_streaming_response.acknowledge(
-            "ach_transfer_id",
+            "ach_transfer_uoxatyh3lt5evrsdvo7q",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -416,14 +416,14 @@ class TestAsyncACHTransfers:
     @parametrize
     async def test_method_submit(self, async_client: AsyncIncrease) -> None:
         ach_transfer = await async_client.simulations.ach_transfers.submit(
-            "ach_transfer_id",
+            "ach_transfer_uoxatyh3lt5evrsdvo7q",
         )
         assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
 
     @parametrize
     async def test_raw_response_submit(self, async_client: AsyncIncrease) -> None:
         response = await async_client.simulations.ach_transfers.with_raw_response.submit(
-            "ach_transfer_id",
+            "ach_transfer_uoxatyh3lt5evrsdvo7q",
         )
 
         assert response.is_closed is True
@@ -434,7 +434,7 @@ class TestAsyncACHTransfers:
     @parametrize
     async def test_streaming_response_submit(self, async_client: AsyncIncrease) -> None:
         async with async_client.simulations.ach_transfers.with_streaming_response.submit(
-            "ach_transfer_id",
+            "ach_transfer_uoxatyh3lt5evrsdvo7q",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
