@@ -276,7 +276,11 @@ class ElementCardAuthentication(BaseModel):
 
 class ElementCardAuthorizationAdditionalAmountsClinic(BaseModel):
     amount: int
-    """The amount in minor units of the `currency` field."""
+    """The amount in minor units of the `currency` field.
+
+    The amount is positive if it is added to the amount (such as an ATM surcharge
+    fee) and negative if it is subtracted from the amount (such as a discount).
+    """
 
     currency: str
     """
@@ -287,7 +291,11 @@ class ElementCardAuthorizationAdditionalAmountsClinic(BaseModel):
 
 class ElementCardAuthorizationAdditionalAmountsDental(BaseModel):
     amount: int
-    """The amount in minor units of the `currency` field."""
+    """The amount in minor units of the `currency` field.
+
+    The amount is positive if it is added to the amount (such as an ATM surcharge
+    fee) and negative if it is subtracted from the amount (such as a discount).
+    """
 
     currency: str
     """
@@ -298,7 +306,11 @@ class ElementCardAuthorizationAdditionalAmountsDental(BaseModel):
 
 class ElementCardAuthorizationAdditionalAmountsPrescription(BaseModel):
     amount: int
-    """The amount in minor units of the `currency` field."""
+    """The amount in minor units of the `currency` field.
+
+    The amount is positive if it is added to the amount (such as an ATM surcharge
+    fee) and negative if it is subtracted from the amount (such as a discount).
+    """
 
     currency: str
     """
@@ -309,7 +321,11 @@ class ElementCardAuthorizationAdditionalAmountsPrescription(BaseModel):
 
 class ElementCardAuthorizationAdditionalAmountsSurcharge(BaseModel):
     amount: int
-    """The amount in minor units of the `currency` field."""
+    """The amount in minor units of the `currency` field.
+
+    The amount is positive if it is added to the amount (such as an ATM surcharge
+    fee) and negative if it is subtracted from the amount (such as a discount).
+    """
 
     currency: str
     """
@@ -320,7 +336,11 @@ class ElementCardAuthorizationAdditionalAmountsSurcharge(BaseModel):
 
 class ElementCardAuthorizationAdditionalAmountsTotalCumulative(BaseModel):
     amount: int
-    """The amount in minor units of the `currency` field."""
+    """The amount in minor units of the `currency` field.
+
+    The amount is positive if it is added to the amount (such as an ATM surcharge
+    fee) and negative if it is subtracted from the amount (such as a discount).
+    """
 
     currency: str
     """
@@ -331,7 +351,11 @@ class ElementCardAuthorizationAdditionalAmountsTotalCumulative(BaseModel):
 
 class ElementCardAuthorizationAdditionalAmountsTotalHealthcare(BaseModel):
     amount: int
-    """The amount in minor units of the `currency` field."""
+    """The amount in minor units of the `currency` field.
+
+    The amount is positive if it is added to the amount (such as an ATM surcharge
+    fee) and negative if it is subtracted from the amount (such as a discount).
+    """
 
     currency: str
     """
@@ -342,7 +366,11 @@ class ElementCardAuthorizationAdditionalAmountsTotalHealthcare(BaseModel):
 
 class ElementCardAuthorizationAdditionalAmountsTransit(BaseModel):
     amount: int
-    """The amount in minor units of the `currency` field."""
+    """The amount in minor units of the `currency` field.
+
+    The amount is positive if it is added to the amount (such as an ATM surcharge
+    fee) and negative if it is subtracted from the amount (such as a discount).
+    """
 
     currency: str
     """
@@ -353,7 +381,11 @@ class ElementCardAuthorizationAdditionalAmountsTransit(BaseModel):
 
 class ElementCardAuthorizationAdditionalAmountsUnknown(BaseModel):
     amount: int
-    """The amount in minor units of the `currency` field."""
+    """The amount in minor units of the `currency` field.
+
+    The amount is positive if it is added to the amount (such as an ATM surcharge
+    fee) and negative if it is subtracted from the amount (such as a discount).
+    """
 
     currency: str
     """
@@ -364,7 +396,11 @@ class ElementCardAuthorizationAdditionalAmountsUnknown(BaseModel):
 
 class ElementCardAuthorizationAdditionalAmountsVision(BaseModel):
     amount: int
-    """The amount in minor units of the `currency` field."""
+    """The amount in minor units of the `currency` field.
+
+    The amount is positive if it is added to the amount (such as an ATM surcharge
+    fee) and negative if it is subtracted from the amount (such as a discount).
+    """
 
     currency: str
     """
@@ -844,7 +880,11 @@ class ElementCardAuthorizationExpiration(BaseModel):
 
 class ElementCardDeclineAdditionalAmountsClinic(BaseModel):
     amount: int
-    """The amount in minor units of the `currency` field."""
+    """The amount in minor units of the `currency` field.
+
+    The amount is positive if it is added to the amount (such as an ATM surcharge
+    fee) and negative if it is subtracted from the amount (such as a discount).
+    """
 
     currency: str
     """
@@ -855,7 +895,11 @@ class ElementCardDeclineAdditionalAmountsClinic(BaseModel):
 
 class ElementCardDeclineAdditionalAmountsDental(BaseModel):
     amount: int
-    """The amount in minor units of the `currency` field."""
+    """The amount in minor units of the `currency` field.
+
+    The amount is positive if it is added to the amount (such as an ATM surcharge
+    fee) and negative if it is subtracted from the amount (such as a discount).
+    """
 
     currency: str
     """
@@ -866,7 +910,11 @@ class ElementCardDeclineAdditionalAmountsDental(BaseModel):
 
 class ElementCardDeclineAdditionalAmountsPrescription(BaseModel):
     amount: int
-    """The amount in minor units of the `currency` field."""
+    """The amount in minor units of the `currency` field.
+
+    The amount is positive if it is added to the amount (such as an ATM surcharge
+    fee) and negative if it is subtracted from the amount (such as a discount).
+    """
 
     currency: str
     """
@@ -877,7 +925,11 @@ class ElementCardDeclineAdditionalAmountsPrescription(BaseModel):
 
 class ElementCardDeclineAdditionalAmountsSurcharge(BaseModel):
     amount: int
-    """The amount in minor units of the `currency` field."""
+    """The amount in minor units of the `currency` field.
+
+    The amount is positive if it is added to the amount (such as an ATM surcharge
+    fee) and negative if it is subtracted from the amount (such as a discount).
+    """
 
     currency: str
     """
@@ -888,7 +940,11 @@ class ElementCardDeclineAdditionalAmountsSurcharge(BaseModel):
 
 class ElementCardDeclineAdditionalAmountsTotalCumulative(BaseModel):
     amount: int
-    """The amount in minor units of the `currency` field."""
+    """The amount in minor units of the `currency` field.
+
+    The amount is positive if it is added to the amount (such as an ATM surcharge
+    fee) and negative if it is subtracted from the amount (such as a discount).
+    """
 
     currency: str
     """
@@ -899,7 +955,11 @@ class ElementCardDeclineAdditionalAmountsTotalCumulative(BaseModel):
 
 class ElementCardDeclineAdditionalAmountsTotalHealthcare(BaseModel):
     amount: int
-    """The amount in minor units of the `currency` field."""
+    """The amount in minor units of the `currency` field.
+
+    The amount is positive if it is added to the amount (such as an ATM surcharge
+    fee) and negative if it is subtracted from the amount (such as a discount).
+    """
 
     currency: str
     """
@@ -910,7 +970,11 @@ class ElementCardDeclineAdditionalAmountsTotalHealthcare(BaseModel):
 
 class ElementCardDeclineAdditionalAmountsTransit(BaseModel):
     amount: int
-    """The amount in minor units of the `currency` field."""
+    """The amount in minor units of the `currency` field.
+
+    The amount is positive if it is added to the amount (such as an ATM surcharge
+    fee) and negative if it is subtracted from the amount (such as a discount).
+    """
 
     currency: str
     """
@@ -921,7 +985,11 @@ class ElementCardDeclineAdditionalAmountsTransit(BaseModel):
 
 class ElementCardDeclineAdditionalAmountsUnknown(BaseModel):
     amount: int
-    """The amount in minor units of the `currency` field."""
+    """The amount in minor units of the `currency` field.
+
+    The amount is positive if it is added to the amount (such as an ATM surcharge
+    fee) and negative if it is subtracted from the amount (such as a discount).
+    """
 
     currency: str
     """
@@ -932,7 +1000,11 @@ class ElementCardDeclineAdditionalAmountsUnknown(BaseModel):
 
 class ElementCardDeclineAdditionalAmountsVision(BaseModel):
     amount: int
-    """The amount in minor units of the `currency` field."""
+    """The amount in minor units of the `currency` field.
+
+    The amount is positive if it is added to the amount (such as an ATM surcharge
+    fee) and negative if it is subtracted from the amount (such as a discount).
+    """
 
     currency: str
     """
@@ -1521,7 +1593,11 @@ class ElementCardFuelConfirmation(BaseModel):
 
 class ElementCardIncrementAdditionalAmountsClinic(BaseModel):
     amount: int
-    """The amount in minor units of the `currency` field."""
+    """The amount in minor units of the `currency` field.
+
+    The amount is positive if it is added to the amount (such as an ATM surcharge
+    fee) and negative if it is subtracted from the amount (such as a discount).
+    """
 
     currency: str
     """
@@ -1532,7 +1608,11 @@ class ElementCardIncrementAdditionalAmountsClinic(BaseModel):
 
 class ElementCardIncrementAdditionalAmountsDental(BaseModel):
     amount: int
-    """The amount in minor units of the `currency` field."""
+    """The amount in minor units of the `currency` field.
+
+    The amount is positive if it is added to the amount (such as an ATM surcharge
+    fee) and negative if it is subtracted from the amount (such as a discount).
+    """
 
     currency: str
     """
@@ -1543,7 +1623,11 @@ class ElementCardIncrementAdditionalAmountsDental(BaseModel):
 
 class ElementCardIncrementAdditionalAmountsPrescription(BaseModel):
     amount: int
-    """The amount in minor units of the `currency` field."""
+    """The amount in minor units of the `currency` field.
+
+    The amount is positive if it is added to the amount (such as an ATM surcharge
+    fee) and negative if it is subtracted from the amount (such as a discount).
+    """
 
     currency: str
     """
@@ -1554,7 +1638,11 @@ class ElementCardIncrementAdditionalAmountsPrescription(BaseModel):
 
 class ElementCardIncrementAdditionalAmountsSurcharge(BaseModel):
     amount: int
-    """The amount in minor units of the `currency` field."""
+    """The amount in minor units of the `currency` field.
+
+    The amount is positive if it is added to the amount (such as an ATM surcharge
+    fee) and negative if it is subtracted from the amount (such as a discount).
+    """
 
     currency: str
     """
@@ -1565,7 +1653,11 @@ class ElementCardIncrementAdditionalAmountsSurcharge(BaseModel):
 
 class ElementCardIncrementAdditionalAmountsTotalCumulative(BaseModel):
     amount: int
-    """The amount in minor units of the `currency` field."""
+    """The amount in minor units of the `currency` field.
+
+    The amount is positive if it is added to the amount (such as an ATM surcharge
+    fee) and negative if it is subtracted from the amount (such as a discount).
+    """
 
     currency: str
     """
@@ -1576,7 +1668,11 @@ class ElementCardIncrementAdditionalAmountsTotalCumulative(BaseModel):
 
 class ElementCardIncrementAdditionalAmountsTotalHealthcare(BaseModel):
     amount: int
-    """The amount in minor units of the `currency` field."""
+    """The amount in minor units of the `currency` field.
+
+    The amount is positive if it is added to the amount (such as an ATM surcharge
+    fee) and negative if it is subtracted from the amount (such as a discount).
+    """
 
     currency: str
     """
@@ -1587,7 +1683,11 @@ class ElementCardIncrementAdditionalAmountsTotalHealthcare(BaseModel):
 
 class ElementCardIncrementAdditionalAmountsTransit(BaseModel):
     amount: int
-    """The amount in minor units of the `currency` field."""
+    """The amount in minor units of the `currency` field.
+
+    The amount is positive if it is added to the amount (such as an ATM surcharge
+    fee) and negative if it is subtracted from the amount (such as a discount).
+    """
 
     currency: str
     """
@@ -1598,7 +1698,11 @@ class ElementCardIncrementAdditionalAmountsTransit(BaseModel):
 
 class ElementCardIncrementAdditionalAmountsUnknown(BaseModel):
     amount: int
-    """The amount in minor units of the `currency` field."""
+    """The amount in minor units of the `currency` field.
+
+    The amount is positive if it is added to the amount (such as an ATM surcharge
+    fee) and negative if it is subtracted from the amount (such as a discount).
+    """
 
     currency: str
     """
@@ -1609,7 +1713,11 @@ class ElementCardIncrementAdditionalAmountsUnknown(BaseModel):
 
 class ElementCardIncrementAdditionalAmountsVision(BaseModel):
     amount: int
-    """The amount in minor units of the `currency` field."""
+    """The amount in minor units of the `currency` field.
+
+    The amount is positive if it is added to the amount (such as an ATM surcharge
+    fee) and negative if it is subtracted from the amount (such as a discount).
+    """
 
     currency: str
     """
@@ -3059,7 +3167,11 @@ class ElementCardSettlement(BaseModel):
 
 class ElementCardValidationAdditionalAmountsClinic(BaseModel):
     amount: int
-    """The amount in minor units of the `currency` field."""
+    """The amount in minor units of the `currency` field.
+
+    The amount is positive if it is added to the amount (such as an ATM surcharge
+    fee) and negative if it is subtracted from the amount (such as a discount).
+    """
 
     currency: str
     """
@@ -3070,7 +3182,11 @@ class ElementCardValidationAdditionalAmountsClinic(BaseModel):
 
 class ElementCardValidationAdditionalAmountsDental(BaseModel):
     amount: int
-    """The amount in minor units of the `currency` field."""
+    """The amount in minor units of the `currency` field.
+
+    The amount is positive if it is added to the amount (such as an ATM surcharge
+    fee) and negative if it is subtracted from the amount (such as a discount).
+    """
 
     currency: str
     """
@@ -3081,7 +3197,11 @@ class ElementCardValidationAdditionalAmountsDental(BaseModel):
 
 class ElementCardValidationAdditionalAmountsPrescription(BaseModel):
     amount: int
-    """The amount in minor units of the `currency` field."""
+    """The amount in minor units of the `currency` field.
+
+    The amount is positive if it is added to the amount (such as an ATM surcharge
+    fee) and negative if it is subtracted from the amount (such as a discount).
+    """
 
     currency: str
     """
@@ -3092,7 +3212,11 @@ class ElementCardValidationAdditionalAmountsPrescription(BaseModel):
 
 class ElementCardValidationAdditionalAmountsSurcharge(BaseModel):
     amount: int
-    """The amount in minor units of the `currency` field."""
+    """The amount in minor units of the `currency` field.
+
+    The amount is positive if it is added to the amount (such as an ATM surcharge
+    fee) and negative if it is subtracted from the amount (such as a discount).
+    """
 
     currency: str
     """
@@ -3103,7 +3227,11 @@ class ElementCardValidationAdditionalAmountsSurcharge(BaseModel):
 
 class ElementCardValidationAdditionalAmountsTotalCumulative(BaseModel):
     amount: int
-    """The amount in minor units of the `currency` field."""
+    """The amount in minor units of the `currency` field.
+
+    The amount is positive if it is added to the amount (such as an ATM surcharge
+    fee) and negative if it is subtracted from the amount (such as a discount).
+    """
 
     currency: str
     """
@@ -3114,7 +3242,11 @@ class ElementCardValidationAdditionalAmountsTotalCumulative(BaseModel):
 
 class ElementCardValidationAdditionalAmountsTotalHealthcare(BaseModel):
     amount: int
-    """The amount in minor units of the `currency` field."""
+    """The amount in minor units of the `currency` field.
+
+    The amount is positive if it is added to the amount (such as an ATM surcharge
+    fee) and negative if it is subtracted from the amount (such as a discount).
+    """
 
     currency: str
     """
@@ -3125,7 +3257,11 @@ class ElementCardValidationAdditionalAmountsTotalHealthcare(BaseModel):
 
 class ElementCardValidationAdditionalAmountsTransit(BaseModel):
     amount: int
-    """The amount in minor units of the `currency` field."""
+    """The amount in minor units of the `currency` field.
+
+    The amount is positive if it is added to the amount (such as an ATM surcharge
+    fee) and negative if it is subtracted from the amount (such as a discount).
+    """
 
     currency: str
     """
@@ -3136,7 +3272,11 @@ class ElementCardValidationAdditionalAmountsTransit(BaseModel):
 
 class ElementCardValidationAdditionalAmountsUnknown(BaseModel):
     amount: int
-    """The amount in minor units of the `currency` field."""
+    """The amount in minor units of the `currency` field.
+
+    The amount is positive if it is added to the amount (such as an ATM surcharge
+    fee) and negative if it is subtracted from the amount (such as a discount).
+    """
 
     currency: str
     """
@@ -3147,7 +3287,11 @@ class ElementCardValidationAdditionalAmountsUnknown(BaseModel):
 
 class ElementCardValidationAdditionalAmountsVision(BaseModel):
     amount: int
-    """The amount in minor units of the `currency` field."""
+    """The amount in minor units of the `currency` field.
+
+    The amount is positive if it is added to the amount (such as an ATM surcharge
+    fee) and negative if it is subtracted from the amount (such as a discount).
+    """
 
     currency: str
     """
