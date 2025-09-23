@@ -124,7 +124,11 @@ class SourceACHDecline(BaseModel):
 
 class SourceCardDeclineAdditionalAmountsClinic(BaseModel):
     amount: int
-    """The amount in minor units of the `currency` field."""
+    """The amount in minor units of the `currency` field.
+
+    The amount is positive if it is added to the amount (such as an ATM surcharge
+    fee) and negative if it is subtracted from the amount (such as a discount).
+    """
 
     currency: str
     """
@@ -135,7 +139,11 @@ class SourceCardDeclineAdditionalAmountsClinic(BaseModel):
 
 class SourceCardDeclineAdditionalAmountsDental(BaseModel):
     amount: int
-    """The amount in minor units of the `currency` field."""
+    """The amount in minor units of the `currency` field.
+
+    The amount is positive if it is added to the amount (such as an ATM surcharge
+    fee) and negative if it is subtracted from the amount (such as a discount).
+    """
 
     currency: str
     """
@@ -146,7 +154,11 @@ class SourceCardDeclineAdditionalAmountsDental(BaseModel):
 
 class SourceCardDeclineAdditionalAmountsPrescription(BaseModel):
     amount: int
-    """The amount in minor units of the `currency` field."""
+    """The amount in minor units of the `currency` field.
+
+    The amount is positive if it is added to the amount (such as an ATM surcharge
+    fee) and negative if it is subtracted from the amount (such as a discount).
+    """
 
     currency: str
     """
@@ -157,7 +169,11 @@ class SourceCardDeclineAdditionalAmountsPrescription(BaseModel):
 
 class SourceCardDeclineAdditionalAmountsSurcharge(BaseModel):
     amount: int
-    """The amount in minor units of the `currency` field."""
+    """The amount in minor units of the `currency` field.
+
+    The amount is positive if it is added to the amount (such as an ATM surcharge
+    fee) and negative if it is subtracted from the amount (such as a discount).
+    """
 
     currency: str
     """
@@ -168,7 +184,11 @@ class SourceCardDeclineAdditionalAmountsSurcharge(BaseModel):
 
 class SourceCardDeclineAdditionalAmountsTotalCumulative(BaseModel):
     amount: int
-    """The amount in minor units of the `currency` field."""
+    """The amount in minor units of the `currency` field.
+
+    The amount is positive if it is added to the amount (such as an ATM surcharge
+    fee) and negative if it is subtracted from the amount (such as a discount).
+    """
 
     currency: str
     """
@@ -179,7 +199,11 @@ class SourceCardDeclineAdditionalAmountsTotalCumulative(BaseModel):
 
 class SourceCardDeclineAdditionalAmountsTotalHealthcare(BaseModel):
     amount: int
-    """The amount in minor units of the `currency` field."""
+    """The amount in minor units of the `currency` field.
+
+    The amount is positive if it is added to the amount (such as an ATM surcharge
+    fee) and negative if it is subtracted from the amount (such as a discount).
+    """
 
     currency: str
     """
@@ -190,7 +214,11 @@ class SourceCardDeclineAdditionalAmountsTotalHealthcare(BaseModel):
 
 class SourceCardDeclineAdditionalAmountsTransit(BaseModel):
     amount: int
-    """The amount in minor units of the `currency` field."""
+    """The amount in minor units of the `currency` field.
+
+    The amount is positive if it is added to the amount (such as an ATM surcharge
+    fee) and negative if it is subtracted from the amount (such as a discount).
+    """
 
     currency: str
     """
@@ -201,7 +229,11 @@ class SourceCardDeclineAdditionalAmountsTransit(BaseModel):
 
 class SourceCardDeclineAdditionalAmountsUnknown(BaseModel):
     amount: int
-    """The amount in minor units of the `currency` field."""
+    """The amount in minor units of the `currency` field.
+
+    The amount is positive if it is added to the amount (such as an ATM surcharge
+    fee) and negative if it is subtracted from the amount (such as a discount).
+    """
 
     currency: str
     """
@@ -212,7 +244,11 @@ class SourceCardDeclineAdditionalAmountsUnknown(BaseModel):
 
 class SourceCardDeclineAdditionalAmountsVision(BaseModel):
     amount: int
-    """The amount in minor units of the `currency` field."""
+    """The amount in minor units of the `currency` field.
+
+    The amount is positive if it is added to the amount (such as an ATM surcharge
+    fee) and negative if it is subtracted from the amount (such as a discount).
+    """
 
     currency: str
     """
