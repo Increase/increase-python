@@ -1646,7 +1646,7 @@ class SourceCardSettlement(BaseModel):
     surcharge: Optional[SourceCardSettlementSurcharge] = None
     """Surcharge amount details, if applicable.
 
-    The amounts positive if the surcharge is added to to the overall transaction
+    The amount is positive if the surcharge is added to to the overall transaction
     amount (surcharge), and negative if the surcharge is deducted from the overall
     transaction amount (discount).
     """
