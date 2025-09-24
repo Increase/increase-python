@@ -4,9 +4,9 @@ from __future__ import annotations
 
 from typing_extensions import Required, TypedDict
 
-__all__ = ["CardDetailUpdateParams"]
+__all__ = ["CardUpdatePinParams"]
 
 
-class CardDetailUpdateParams(TypedDict, total=False):
+class CardUpdatePinParams(TypedDict, total=False):
     pin: Required[str]
     """The 4-digit PIN for the card, for use with ATMs."""
