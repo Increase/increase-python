@@ -73,6 +73,7 @@ from .physical_card_profile import PhysicalCardProfile as PhysicalCardProfile
 from .wire_drawdown_request import WireDrawdownRequest as WireDrawdownRequest
 from .account_balance_params import AccountBalanceParams as AccountBalanceParams
 from .card_token_list_params import CardTokenListParams as CardTokenListParams
+from .card_update_pin_params import CardUpdatePinParams as CardUpdatePinParams
 from .document_create_params import DocumentCreateParams as DocumentCreateParams
 from .card_token_capabilities import CardTokenCapabilities as CardTokenCapabilities
 from .file_link_create_params import FileLinkCreateParams as FileLinkCreateParams
@@ -80,7 +81,6 @@ from .transaction_list_params import TransactionListParams as TransactionListPar
 from .ach_transfer_list_params import ACHTransferListParams as ACHTransferListParams
 from .card_payment_list_params import CardPaymentListParams as CardPaymentListParams
 from .card_purchase_supplement import CardPurchaseSupplement as CardPurchaseSupplement
-from .card_detail_update_params import CardDetailUpdateParams as CardDetailUpdateParams
 from .check_deposit_list_params import CheckDepositListParams as CheckDepositListParams
 from .oauth_token_create_params import OAuthTokenCreateParams as OAuthTokenCreateParams
 from .physical_card_list_params import PhysicalCardListParams as PhysicalCardListParams
@@ -134,6 +134,7 @@ from .ach_prenotification_create_params import ACHPrenotificationCreateParams as
 from .bookkeeping_account_create_params import BookkeepingAccountCreateParams as BookkeepingAccountCreateParams
 from .bookkeeping_account_update_params import BookkeepingAccountUpdateParams as BookkeepingAccountUpdateParams
 from .bookkeeping_entry_set_list_params import BookkeepingEntrySetListParams as BookkeepingEntrySetListParams
+from .card_create_details_iframe_params import CardCreateDetailsIframeParams as CardCreateDetailsIframeParams
 from .digital_card_profile_clone_params import DigitalCardProfileCloneParams as DigitalCardProfileCloneParams
 from .inbound_check_deposit_list_params import InboundCheckDepositListParams as InboundCheckDepositListParams
 from .inbound_wire_transfer_list_params import InboundWireTransferListParams as InboundWireTransferListParams
@@ -166,9 +167,6 @@ from .intrafi_account_enrollment_list_params import (
 )
 from .real_time_payments_transfer_list_params import (
     RealTimePaymentsTransferListParams as RealTimePaymentsTransferListParams,
-)
-from .card_detail_create_details_iframe_params import (
-    CardDetailCreateDetailsIframeParams as CardDetailCreateDetailsIframeParams,
 )
 from .intrafi_account_enrollment_create_params import (
     IntrafiAccountEnrollmentCreateParams as IntrafiAccountEnrollmentCreateParams,

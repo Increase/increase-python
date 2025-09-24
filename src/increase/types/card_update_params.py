@@ -28,9 +28,6 @@ class CardUpdateParams(TypedDict, total=False):
     Account holder.
     """
 
-    pin: str
-    """The 4-digit PIN for the card, for use with ATMs."""
-
     status: Literal["active", "disabled", "canceled"]
     """The status to update the Card with.
 
