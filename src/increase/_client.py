@@ -39,7 +39,6 @@ from .resources import (
     lockboxes,
     file_links,
     card_tokens,
-    card_details,
     oauth_tokens,
     transactions,
     ach_transfers,
@@ -114,7 +113,6 @@ class Increase(SyncAPIClient):
     account_numbers: account_numbers.AccountNumbersResource
     account_transfers: account_transfers.AccountTransfersResource
     cards: cards.CardsResource
-    card_details: card_details.CardDetailsResource
     card_payments: card_payments.CardPaymentsResource
     card_purchase_supplements: card_purchase_supplements.CardPurchaseSupplementsResource
     physical_cards: physical_cards.PhysicalCardsResource
@@ -261,7 +259,6 @@ class Increase(SyncAPIClient):
         self.account_numbers = account_numbers.AccountNumbersResource(self)
         self.account_transfers = account_transfers.AccountTransfersResource(self)
         self.cards = cards.CardsResource(self)
-        self.card_details = card_details.CardDetailsResource(self)
         self.card_payments = card_payments.CardPaymentsResource(self)
         self.card_purchase_supplements = card_purchase_supplements.CardPurchaseSupplementsResource(self)
         self.physical_cards = physical_cards.PhysicalCardsResource(self)
@@ -477,7 +474,6 @@ class AsyncIncrease(AsyncAPIClient):
     account_numbers: account_numbers.AsyncAccountNumbersResource
     account_transfers: account_transfers.AsyncAccountTransfersResource
     cards: cards.AsyncCardsResource
-    card_details: card_details.AsyncCardDetailsResource
     card_payments: card_payments.AsyncCardPaymentsResource
     card_purchase_supplements: card_purchase_supplements.AsyncCardPurchaseSupplementsResource
     physical_cards: physical_cards.AsyncPhysicalCardsResource
@@ -626,7 +622,6 @@ class AsyncIncrease(AsyncAPIClient):
         self.account_numbers = account_numbers.AsyncAccountNumbersResource(self)
         self.account_transfers = account_transfers.AsyncAccountTransfersResource(self)
         self.cards = cards.AsyncCardsResource(self)
-        self.card_details = card_details.AsyncCardDetailsResource(self)
         self.card_payments = card_payments.AsyncCardPaymentsResource(self)
         self.card_purchase_supplements = card_purchase_supplements.AsyncCardPurchaseSupplementsResource(self)
         self.physical_cards = physical_cards.AsyncPhysicalCardsResource(self)
@@ -845,7 +840,6 @@ class IncreaseWithRawResponse:
         self.account_numbers = account_numbers.AccountNumbersResourceWithRawResponse(client.account_numbers)
         self.account_transfers = account_transfers.AccountTransfersResourceWithRawResponse(client.account_transfers)
         self.cards = cards.CardsResourceWithRawResponse(client.cards)
-        self.card_details = card_details.CardDetailsResourceWithRawResponse(client.card_details)
         self.card_payments = card_payments.CardPaymentsResourceWithRawResponse(client.card_payments)
         self.card_purchase_supplements = card_purchase_supplements.CardPurchaseSupplementsResourceWithRawResponse(
             client.card_purchase_supplements
@@ -956,7 +950,6 @@ class AsyncIncreaseWithRawResponse:
             client.account_transfers
         )
         self.cards = cards.AsyncCardsResourceWithRawResponse(client.cards)
-        self.card_details = card_details.AsyncCardDetailsResourceWithRawResponse(client.card_details)
         self.card_payments = card_payments.AsyncCardPaymentsResourceWithRawResponse(client.card_payments)
         self.card_purchase_supplements = card_purchase_supplements.AsyncCardPurchaseSupplementsResourceWithRawResponse(
             client.card_purchase_supplements
@@ -1081,7 +1074,6 @@ class IncreaseWithStreamedResponse:
             client.account_transfers
         )
         self.cards = cards.CardsResourceWithStreamingResponse(client.cards)
-        self.card_details = card_details.CardDetailsResourceWithStreamingResponse(client.card_details)
         self.card_payments = card_payments.CardPaymentsResourceWithStreamingResponse(client.card_payments)
         self.card_purchase_supplements = card_purchase_supplements.CardPurchaseSupplementsResourceWithStreamingResponse(
             client.card_purchase_supplements
@@ -1206,7 +1198,6 @@ class AsyncIncreaseWithStreamedResponse:
             client.account_transfers
         )
         self.cards = cards.AsyncCardsResourceWithStreamingResponse(client.cards)
-        self.card_details = card_details.AsyncCardDetailsResourceWithStreamingResponse(client.card_details)
         self.card_payments = card_payments.AsyncCardPaymentsResourceWithStreamingResponse(client.card_payments)
         self.card_purchase_supplements = (
             card_purchase_supplements.AsyncCardPurchaseSupplementsResourceWithStreamingResponse(

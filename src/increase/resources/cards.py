@@ -6,7 +6,13 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..types import card_list_params, card_create_params, card_update_params
+from ..types import (
+    card_list_params,
+    card_create_params,
+    card_update_params,
+    card_update_pin_params,
+    card_create_details_iframe_params,
+)
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
@@ -20,6 +26,8 @@ from .._response import (
 from ..pagination import SyncPage, AsyncPage
 from ..types.card import Card
 from .._base_client import AsyncPaginator, make_request_options
+from ..types.card_details import CardDetails
+from ..types.card_iframe_url import CardIframeURL
 
 __all__ = ["CardsResource", "AsyncCardsResource"]
 
@@ -154,7 +162,6 @@ class CardsResource(SyncAPIResource):
         description: str | Omit = omit,
         digital_wallet: card_update_params.DigitalWallet | Omit = omit,
         entity_id: str | Omit = omit,
-        pin: str | Omit = omit,
         status: Literal["active", "disabled", "canceled"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -180,8 +187,6 @@ class CardsResource(SyncAPIResource):
 
           entity_id: The Entity the card belongs to. You only need to supply this in rare situations
               when the card is not for the Account holder.
-
-          pin: The 4-digit PIN for the card, for use with ATMs.
 
           status: The status to update the Card with.
 
@@ -209,7 +214,6 @@ class CardsResource(SyncAPIResource):
                     "description": description,
                     "digital_wallet": digital_wallet,
                     "entity_id": entity_id,
-                    "pin": pin,
                     "status": status,
                 },
                 card_update_params.CardUpdateParams,
@@ -285,6 +289,140 @@ class CardsResource(SyncAPIResource):
                 ),
             ),
             model=Card,
+        )
+
+    def create_details_iframe(
+        self,
+        card_id: str,
+        *,
+        physical_card_id: str | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> CardIframeURL:
+        """Create an iframe URL for a Card to display the card details.
+
+        More details about
+        styling and usage can be found in the
+        [documentation](/documentation/embedded-card-component).
+
+        Args:
+          card_id: The identifier of the Card to create an iframe for.
+
+          physical_card_id: The identifier of the Physical Card to create an iframe for. This will inform
+              the appearance of the card rendered in the iframe.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not card_id:
+            raise ValueError(f"Expected a non-empty value for `card_id` but received {card_id!r}")
+        return self._post(
+            f"/cards/{card_id}/create_details_iframe",
+            body=maybe_transform(
+                {"physical_card_id": physical_card_id}, card_create_details_iframe_params.CardCreateDetailsIframeParams
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=CardIframeURL,
+        )
+
+    def details(
+        self,
+        card_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> CardDetails:
+        """
+        Sensitive details for a Card include the primary account number, expiry, card
+        verification code, and PIN.
+
+        Args:
+          card_id: The identifier of the Card to retrieve details for.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not card_id:
+            raise ValueError(f"Expected a non-empty value for `card_id` but received {card_id!r}")
+        return self._get(
+            f"/cards/{card_id}/details",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=CardDetails,
+        )
+
+    def update_pin(
+        self,
+        card_id: str,
+        *,
+        pin: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> CardDetails:
+        """
+        Update a Card's PIN
+
+        Args:
+          card_id: The identifier of the Card to update the PIN for.
+
+          pin: The 4-digit PIN for the card, for use with ATMs.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not card_id:
+            raise ValueError(f"Expected a non-empty value for `card_id` but received {card_id!r}")
+        return self._post(
+            f"/cards/{card_id}/update_pin",
+            body=maybe_transform({"pin": pin}, card_update_pin_params.CardUpdatePinParams),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=CardDetails,
         )
 
 
@@ -418,7 +556,6 @@ class AsyncCardsResource(AsyncAPIResource):
         description: str | Omit = omit,
         digital_wallet: card_update_params.DigitalWallet | Omit = omit,
         entity_id: str | Omit = omit,
-        pin: str | Omit = omit,
         status: Literal["active", "disabled", "canceled"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -444,8 +581,6 @@ class AsyncCardsResource(AsyncAPIResource):
 
           entity_id: The Entity the card belongs to. You only need to supply this in rare situations
               when the card is not for the Account holder.
-
-          pin: The 4-digit PIN for the card, for use with ATMs.
 
           status: The status to update the Card with.
 
@@ -473,7 +608,6 @@ class AsyncCardsResource(AsyncAPIResource):
                     "description": description,
                     "digital_wallet": digital_wallet,
                     "entity_id": entity_id,
-                    "pin": pin,
                     "status": status,
                 },
                 card_update_params.CardUpdateParams,
@@ -551,6 +685,140 @@ class AsyncCardsResource(AsyncAPIResource):
             model=Card,
         )
 
+    async def create_details_iframe(
+        self,
+        card_id: str,
+        *,
+        physical_card_id: str | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> CardIframeURL:
+        """Create an iframe URL for a Card to display the card details.
+
+        More details about
+        styling and usage can be found in the
+        [documentation](/documentation/embedded-card-component).
+
+        Args:
+          card_id: The identifier of the Card to create an iframe for.
+
+          physical_card_id: The identifier of the Physical Card to create an iframe for. This will inform
+              the appearance of the card rendered in the iframe.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not card_id:
+            raise ValueError(f"Expected a non-empty value for `card_id` but received {card_id!r}")
+        return await self._post(
+            f"/cards/{card_id}/create_details_iframe",
+            body=await async_maybe_transform(
+                {"physical_card_id": physical_card_id}, card_create_details_iframe_params.CardCreateDetailsIframeParams
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=CardIframeURL,
+        )
+
+    async def details(
+        self,
+        card_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> CardDetails:
+        """
+        Sensitive details for a Card include the primary account number, expiry, card
+        verification code, and PIN.
+
+        Args:
+          card_id: The identifier of the Card to retrieve details for.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not card_id:
+            raise ValueError(f"Expected a non-empty value for `card_id` but received {card_id!r}")
+        return await self._get(
+            f"/cards/{card_id}/details",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=CardDetails,
+        )
+
+    async def update_pin(
+        self,
+        card_id: str,
+        *,
+        pin: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> CardDetails:
+        """
+        Update a Card's PIN
+
+        Args:
+          card_id: The identifier of the Card to update the PIN for.
+
+          pin: The 4-digit PIN for the card, for use with ATMs.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not card_id:
+            raise ValueError(f"Expected a non-empty value for `card_id` but received {card_id!r}")
+        return await self._post(
+            f"/cards/{card_id}/update_pin",
+            body=await async_maybe_transform({"pin": pin}, card_update_pin_params.CardUpdatePinParams),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=CardDetails,
+        )
+
 
 class CardsResourceWithRawResponse:
     def __init__(self, cards: CardsResource) -> None:
@@ -567,6 +835,15 @@ class CardsResourceWithRawResponse:
         )
         self.list = to_raw_response_wrapper(
             cards.list,
+        )
+        self.create_details_iframe = to_raw_response_wrapper(
+            cards.create_details_iframe,
+        )
+        self.details = to_raw_response_wrapper(
+            cards.details,
+        )
+        self.update_pin = to_raw_response_wrapper(
+            cards.update_pin,
         )
 
 
@@ -586,6 +863,15 @@ class AsyncCardsResourceWithRawResponse:
         self.list = async_to_raw_response_wrapper(
             cards.list,
         )
+        self.create_details_iframe = async_to_raw_response_wrapper(
+            cards.create_details_iframe,
+        )
+        self.details = async_to_raw_response_wrapper(
+            cards.details,
+        )
+        self.update_pin = async_to_raw_response_wrapper(
+            cards.update_pin,
+        )
 
 
 class CardsResourceWithStreamingResponse:
@@ -604,6 +890,15 @@ class CardsResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             cards.list,
         )
+        self.create_details_iframe = to_streamed_response_wrapper(
+            cards.create_details_iframe,
+        )
+        self.details = to_streamed_response_wrapper(
+            cards.details,
+        )
+        self.update_pin = to_streamed_response_wrapper(
+            cards.update_pin,
+        )
 
 
 class AsyncCardsResourceWithStreamingResponse:
@@ -621,4 +916,13 @@ class AsyncCardsResourceWithStreamingResponse:
         )
         self.list = async_to_streamed_response_wrapper(
             cards.list,
+        )
+        self.create_details_iframe = async_to_streamed_response_wrapper(
+            cards.create_details_iframe,
+        )
+        self.details = async_to_streamed_response_wrapper(
+            cards.details,
+        )
+        self.update_pin = async_to_streamed_response_wrapper(
+            cards.update_pin,
         )
