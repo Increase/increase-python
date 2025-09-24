@@ -9,7 +9,7 @@ __all__ = ["AccountTransferCreateParams"]
 
 class AccountTransferCreateParams(TypedDict, total=False):
     account_id: Required[str]
-    """The identifier for the account that will send the transfer."""
+    """The identifier for the originating Account that will send the transfer."""
 
     amount: Required[int]
     """The transfer amount in the minor unit of the account currency.
@@ -18,10 +18,17 @@ class AccountTransferCreateParams(TypedDict, total=False):
     """
 
     description: Required[str]
-    """The description you choose to give the transfer."""
+    """
+    An internal-facing description for the transfer for display in the API and
+    dashboard. This will also show in the description of the created Transactions.
+    """
 
     destination_account_id: Required[str]
-    """The identifier for the account that will receive the transfer."""
+    """The identifier for the destination Account that will receive the transfer."""
 
     require_approval: bool
-    """Whether the transfer requires explicit approval via the dashboard or API."""
+    """Whether the transfer should require explicit approval via the dashboard or API.
+
+    For more information, see
+    [Transfer Approvals](/documentation/transfer-approvals).
+    """
