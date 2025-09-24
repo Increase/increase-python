@@ -83,15 +83,16 @@ class CreatedBy(BaseModel):
 
 class AccountTransfer(BaseModel):
     id: str
-    """The account transfer's identifier."""
+    """The Account Transfer's identifier."""
 
     account_id: str
-    """The Account to which the transfer belongs."""
+    """The Account from which the transfer originated."""
 
     amount: int
-    """The transfer amount in the minor unit of the destination account currency.
+    """The transfer amount in cents.
 
-    For dollars, for example, this is cents.
+    This will always be positive and indicates the amount of money leaving the
+    originating account.
     """
 
     approval: Optional[Approval] = None
@@ -117,8 +118,8 @@ class AccountTransfer(BaseModel):
 
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
-    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
-    account currency.
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
+    currency.
 
     - `CAD` - Canadian Dollar (CAD)
     - `CHF` - Swiss Franc (CHF)
@@ -129,13 +130,19 @@ class AccountTransfer(BaseModel):
     """
 
     description: str
-    """The description that will show on the transactions."""
+    """
+    An internal-facing description for the transfer for display in the API and
+    dashboard. This will also show in the description of the created Transactions.
+    """
 
     destination_account_id: str
-    """The destination account's identifier."""
+    """The destination Account's identifier."""
 
     destination_transaction_id: Optional[str] = None
-    """The ID for the transaction receiving the transfer."""
+    """
+    The identifier of the Transaction on the destination Account representing the
+    received funds.
+    """
 
     idempotency_key: Optional[str] = None
     """The idempotency key you chose for this object.
@@ -144,9 +151,6 @@ class AccountTransfer(BaseModel):
     only processed once. Learn more about
     [idempotency](https://increase.com/documentation/idempotency-keys).
     """
-
-    network: Literal["account"]
-    """The transfer's network."""
 
     pending_transaction_id: Optional[str] = None
     """The ID for the pending transaction representing the transfer.
@@ -159,13 +163,17 @@ class AccountTransfer(BaseModel):
     status: Literal["pending_approval", "canceled", "complete"]
     """The lifecycle status of the transfer.
 
-    - `pending_approval` - The transfer is pending approval.
-    - `canceled` - The transfer has been canceled.
+    - `pending_approval` - The transfer is pending approval from your team.
+    - `canceled` - The transfer was pending approval from your team and has been
+      canceled.
     - `complete` - The transfer has been completed.
     """
 
     transaction_id: Optional[str] = None
-    """The ID for the transaction funding the transfer."""
+    """
+    The identifier of the Transaction on the originating account representing the
+    transferred funds.
+    """
 
     type: Literal["account_transfer"]
     """A constant representing the object's type.
