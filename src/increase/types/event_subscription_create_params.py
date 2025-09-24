@@ -294,3 +294,11 @@ class EventSubscriptionCreateParams(TypedDict, total=False):
 
     If no value is passed, a random string will be used as default.
     """
+
+    status: Literal["active", "disabled"]
+    """The status of the event subscription. Defaults to `active` if not specified.
+
+    - `active` - The subscription is active and Events will be delivered normally.
+    - `disabled` - The subscription is temporarily disabled and Events will not be
+      delivered.
+    """

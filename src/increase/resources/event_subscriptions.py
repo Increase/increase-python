@@ -157,6 +157,7 @@ class EventSubscriptionsResource(SyncAPIResource):
         ]
         | Omit = omit,
         shared_secret: str | Omit = omit,
+        status: Literal["active", "disabled"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -341,6 +342,12 @@ class EventSubscriptionsResource(SyncAPIResource):
           shared_secret: The key that will be used to sign webhooks. If no value is passed, a random
               string will be used as default.
 
+          status: The status of the event subscription. Defaults to `active` if not specified.
+
+              - `active` - The subscription is active and Events will be delivered normally.
+              - `disabled` - The subscription is temporarily disabled and Events will not be
+                delivered.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -359,6 +366,7 @@ class EventSubscriptionsResource(SyncAPIResource):
                     "oauth_connection_id": oauth_connection_id,
                     "selected_event_category": selected_event_category,
                     "shared_secret": shared_secret,
+                    "status": status,
                 },
                 event_subscription_create_params.EventSubscriptionCreateParams,
             ),
@@ -652,6 +660,7 @@ class AsyncEventSubscriptionsResource(AsyncAPIResource):
         ]
         | Omit = omit,
         shared_secret: str | Omit = omit,
+        status: Literal["active", "disabled"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -836,6 +845,12 @@ class AsyncEventSubscriptionsResource(AsyncAPIResource):
           shared_secret: The key that will be used to sign webhooks. If no value is passed, a random
               string will be used as default.
 
+          status: The status of the event subscription. Defaults to `active` if not specified.
+
+              - `active` - The subscription is active and Events will be delivered normally.
+              - `disabled` - The subscription is temporarily disabled and Events will not be
+                delivered.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -854,6 +869,7 @@ class AsyncEventSubscriptionsResource(AsyncAPIResource):
                     "oauth_connection_id": oauth_connection_id,
                     "selected_event_category": selected_event_category,
                     "shared_secret": shared_secret,
+                    "status": status,
                 },
                 event_subscription_create_params.EventSubscriptionCreateParams,
             ),
