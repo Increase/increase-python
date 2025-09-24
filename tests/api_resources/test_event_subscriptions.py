@@ -34,6 +34,7 @@ class TestEventSubscriptions:
             oauth_connection_id="x",
             selected_event_category="account.created",
             shared_secret="x",
+            status="active",
         )
         assert_matches_type(EventSubscription, event_subscription, path=["response"])
 
@@ -199,6 +200,7 @@ class TestAsyncEventSubscriptions:
             oauth_connection_id="x",
             selected_event_category="account.created",
             shared_secret="x",
+            status="active",
         )
         assert_matches_type(EventSubscription, event_subscription, path=["response"])
 
