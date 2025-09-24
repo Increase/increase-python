@@ -62,16 +62,19 @@ class AccountTransfersResource(SyncAPIResource):
         Create an Account Transfer
 
         Args:
-          account_id: The identifier for the account that will send the transfer.
+          account_id: The identifier for the originating Account that will send the transfer.
 
           amount: The transfer amount in the minor unit of the account currency. For dollars, for
               example, this is cents.
 
-          description: The description you choose to give the transfer.
+          description: An internal-facing description for the transfer for display in the API and
+              dashboard. This will also show in the description of the created Transactions.
 
-          destination_account_id: The identifier for the account that will receive the transfer.
+          destination_account_id: The identifier for the destination Account that will receive the transfer.
 
-          require_approval: Whether the transfer requires explicit approval via the dashboard or API.
+          require_approval: Whether the transfer should require explicit approval via the dashboard or API.
+              For more information, see
+              [Transfer Approvals](/documentation/transfer-approvals).
 
           extra_headers: Send extra headers
 
@@ -216,7 +219,7 @@ class AccountTransfersResource(SyncAPIResource):
         idempotency_key: str | None = None,
     ) -> AccountTransfer:
         """
-        Approve an Account Transfer
+        Approves an Account Transfer in status `pending_approval`.
 
         Args:
           account_transfer_id: The identifier of the Account Transfer to approve.
@@ -260,7 +263,7 @@ class AccountTransfersResource(SyncAPIResource):
         idempotency_key: str | None = None,
     ) -> AccountTransfer:
         """
-        Cancel an Account Transfer
+        Cancels an Account Transfer in status `pending_approval`.
 
         Args:
           account_transfer_id: The identifier of the pending Account Transfer to cancel.
@@ -332,16 +335,19 @@ class AsyncAccountTransfersResource(AsyncAPIResource):
         Create an Account Transfer
 
         Args:
-          account_id: The identifier for the account that will send the transfer.
+          account_id: The identifier for the originating Account that will send the transfer.
 
           amount: The transfer amount in the minor unit of the account currency. For dollars, for
               example, this is cents.
 
-          description: The description you choose to give the transfer.
+          description: An internal-facing description for the transfer for display in the API and
+              dashboard. This will also show in the description of the created Transactions.
 
-          destination_account_id: The identifier for the account that will receive the transfer.
+          destination_account_id: The identifier for the destination Account that will receive the transfer.
 
-          require_approval: Whether the transfer requires explicit approval via the dashboard or API.
+          require_approval: Whether the transfer should require explicit approval via the dashboard or API.
+              For more information, see
+              [Transfer Approvals](/documentation/transfer-approvals).
 
           extra_headers: Send extra headers
 
@@ -486,7 +492,7 @@ class AsyncAccountTransfersResource(AsyncAPIResource):
         idempotency_key: str | None = None,
     ) -> AccountTransfer:
         """
-        Approve an Account Transfer
+        Approves an Account Transfer in status `pending_approval`.
 
         Args:
           account_transfer_id: The identifier of the Account Transfer to approve.
@@ -530,7 +536,7 @@ class AsyncAccountTransfersResource(AsyncAPIResource):
         idempotency_key: str | None = None,
     ) -> AccountTransfer:
         """
-        Cancel an Account Transfer
+        Cancels an Account Transfer in status `pending_approval`.
 
         Args:
           account_transfer_id: The identifier of the pending Account Transfer to cancel.
