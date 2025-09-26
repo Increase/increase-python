@@ -50,6 +50,7 @@ _CategoryReservedKeywords = TypedDict(
                 "card_dispute_loss",
                 "card_refund",
                 "card_settlement",
+                "card_financial",
                 "card_revenue_payment",
                 "check_deposit_acceptance",
                 "check_deposit_return",
