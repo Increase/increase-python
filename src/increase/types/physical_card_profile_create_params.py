@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing_extensions import Literal, Required, TypedDict
+from typing_extensions import Required, TypedDict
 
 __all__ = ["PhysicalCardProfileCreateParams", "FrontText"]
 
@@ -22,32 +22,6 @@ class PhysicalCardProfileCreateParams(TypedDict, total=False):
 
     program_id: Required[str]
     """The identifier for the Program that this Physical Card Profile falls under."""
-
-    back_color: Literal["black", "white"]
-    """The color of the text on the back of the card. Defaults to "black".
-
-    - `black` - Black personalization color.
-    - `white` - White personalization color.
-    """
-
-    card_stock_reference: str
-    """A reference ID provided by the fulfillment provider for the card stock used.
-
-    Only used if you've ordered card stock separately.
-    """
-
-    carrier_stock_reference: str
-    """A reference ID provided by the fulfillment provider for the carrier stock used.
-
-    Only used if you've ordered carrier stock separately.
-    """
-
-    front_color: Literal["black", "white"]
-    """The color of the design on the front of the card. Defaults to "black".
-
-    - `black` - Black personalization color.
-    - `white` - White personalization color.
-    """
 
     front_text: FrontText
     """Text printed on the front of the card.

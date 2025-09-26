@@ -39,10 +39,6 @@ class TestPhysicalCardProfiles:
             description="My Card Profile",
             front_image_file_id="file_o6aex13wm1jcc36sgcj1",
             program_id="program_i2v2os4mwza1oetokh9i",
-            back_color="black",
-            card_stock_reference="x",
-            carrier_stock_reference="x",
-            front_color="black",
             front_text={
                 "line1": "x",
                 "line2": "x",
@@ -278,10 +274,6 @@ class TestAsyncPhysicalCardProfiles:
             description="My Card Profile",
             front_image_file_id="file_o6aex13wm1jcc36sgcj1",
             program_id="program_i2v2os4mwza1oetokh9i",
-            back_color="black",
-            card_stock_reference="x",
-            carrier_stock_reference="x",
-            front_color="black",
             front_text={
                 "line1": "x",
                 "line2": "x",
