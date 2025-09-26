@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing_extensions import Literal
-
 import httpx
 
 from ..types import (
@@ -56,10 +54,6 @@ class PhysicalCardProfilesResource(SyncAPIResource):
         description: str,
         front_image_file_id: str,
         program_id: str,
-        back_color: Literal["black", "white"] | Omit = omit,
-        card_stock_reference: str | Omit = omit,
-        carrier_stock_reference: str | Omit = omit,
-        front_color: Literal["black", "white"] | Omit = omit,
         front_text: physical_card_profile_create_params.FrontText | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -83,22 +77,6 @@ class PhysicalCardProfilesResource(SyncAPIResource):
 
           program_id: The identifier for the Program that this Physical Card Profile falls under.
 
-          back_color: The color of the text on the back of the card. Defaults to "black".
-
-              - `black` - Black personalization color.
-              - `white` - White personalization color.
-
-          card_stock_reference: A reference ID provided by the fulfillment provider for the card stock used.
-              Only used if you've ordered card stock separately.
-
-          carrier_stock_reference: A reference ID provided by the fulfillment provider for the carrier stock used.
-              Only used if you've ordered carrier stock separately.
-
-          front_color: The color of the design on the front of the card. Defaults to "black".
-
-              - `black` - Black personalization color.
-              - `white` - White personalization color.
-
           front_text: Text printed on the front of the card. Reach out to
               [support@increase.com](mailto:support@increase.com) for more information.
 
@@ -121,10 +99,6 @@ class PhysicalCardProfilesResource(SyncAPIResource):
                     "description": description,
                     "front_image_file_id": front_image_file_id,
                     "program_id": program_id,
-                    "back_color": back_color,
-                    "card_stock_reference": card_stock_reference,
-                    "carrier_stock_reference": carrier_stock_reference,
-                    "front_color": front_color,
                     "front_text": front_text,
                 },
                 physical_card_profile_create_params.PhysicalCardProfileCreateParams,
@@ -380,10 +354,6 @@ class AsyncPhysicalCardProfilesResource(AsyncAPIResource):
         description: str,
         front_image_file_id: str,
         program_id: str,
-        back_color: Literal["black", "white"] | Omit = omit,
-        card_stock_reference: str | Omit = omit,
-        carrier_stock_reference: str | Omit = omit,
-        front_color: Literal["black", "white"] | Omit = omit,
         front_text: physical_card_profile_create_params.FrontText | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -407,22 +377,6 @@ class AsyncPhysicalCardProfilesResource(AsyncAPIResource):
 
           program_id: The identifier for the Program that this Physical Card Profile falls under.
 
-          back_color: The color of the text on the back of the card. Defaults to "black".
-
-              - `black` - Black personalization color.
-              - `white` - White personalization color.
-
-          card_stock_reference: A reference ID provided by the fulfillment provider for the card stock used.
-              Only used if you've ordered card stock separately.
-
-          carrier_stock_reference: A reference ID provided by the fulfillment provider for the carrier stock used.
-              Only used if you've ordered carrier stock separately.
-
-          front_color: The color of the design on the front of the card. Defaults to "black".
-
-              - `black` - Black personalization color.
-              - `white` - White personalization color.
-
           front_text: Text printed on the front of the card. Reach out to
               [support@increase.com](mailto:support@increase.com) for more information.
 
@@ -445,10 +399,6 @@ class AsyncPhysicalCardProfilesResource(AsyncAPIResource):
                     "description": description,
                     "front_image_file_id": front_image_file_id,
                     "program_id": program_id,
-                    "back_color": back_color,
-                    "card_stock_reference": card_stock_reference,
-                    "carrier_stock_reference": carrier_stock_reference,
-                    "front_color": front_color,
                     "front_text": front_text,
                 },
                 physical_card_profile_create_params.PhysicalCardProfileCreateParams,
