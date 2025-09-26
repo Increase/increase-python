@@ -19,16 +19,20 @@ class TestCardRefunds:
 
     @parametrize
     def test_method_create(self, client: Increase) -> None:
+        card_refund = client.simulations.card_refunds.create()
+        assert_matches_type(Transaction, card_refund, path=["response"])
+
+    @parametrize
+    def test_method_create_with_all_params(self, client: Increase) -> None:
         card_refund = client.simulations.card_refunds.create(
+            pending_transaction_id="pending_transaction_id",
             transaction_id="transaction_uyrp7fld2ium70oa7oi",
         )
         assert_matches_type(Transaction, card_refund, path=["response"])
 
     @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
-        response = client.simulations.card_refunds.with_raw_response.create(
-            transaction_id="transaction_uyrp7fld2ium70oa7oi",
-        )
+        response = client.simulations.card_refunds.with_raw_response.create()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -37,9 +41,7 @@ class TestCardRefunds:
 
     @parametrize
     def test_streaming_response_create(self, client: Increase) -> None:
-        with client.simulations.card_refunds.with_streaming_response.create(
-            transaction_id="transaction_uyrp7fld2ium70oa7oi",
-        ) as response:
+        with client.simulations.card_refunds.with_streaming_response.create() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -56,16 +58,20 @@ class TestAsyncCardRefunds:
 
     @parametrize
     async def test_method_create(self, async_client: AsyncIncrease) -> None:
+        card_refund = await async_client.simulations.card_refunds.create()
+        assert_matches_type(Transaction, card_refund, path=["response"])
+
+    @parametrize
+    async def test_method_create_with_all_params(self, async_client: AsyncIncrease) -> None:
         card_refund = await async_client.simulations.card_refunds.create(
+            pending_transaction_id="pending_transaction_id",
             transaction_id="transaction_uyrp7fld2ium70oa7oi",
         )
         assert_matches_type(Transaction, card_refund, path=["response"])
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
-        response = await async_client.simulations.card_refunds.with_raw_response.create(
-            transaction_id="transaction_uyrp7fld2ium70oa7oi",
-        )
+        response = await async_client.simulations.card_refunds.with_raw_response.create()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -74,9 +80,7 @@ class TestAsyncCardRefunds:
 
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncIncrease) -> None:
-        async with async_client.simulations.card_refunds.with_streaming_response.create(
-            transaction_id="transaction_uyrp7fld2ium70oa7oi",
-        ) as response:
+        async with async_client.simulations.card_refunds.with_streaming_response.create() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
