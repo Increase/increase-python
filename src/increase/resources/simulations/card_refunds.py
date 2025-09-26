@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import httpx
 
-from ..._types import Body, Query, Headers, NotGiven, not_given
+from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -44,7 +44,8 @@ class CardRefundsResource(SyncAPIResource):
     def create(
         self,
         *,
-        transaction_id: str,
+        pending_transaction_id: str | Omit = omit,
+        transaction_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -59,6 +60,10 @@ class CardRefundsResource(SyncAPIResource):
         transaction is refunded.
 
         Args:
+          pending_transaction_id: The identifier of the Pending Transaction for the refund authorization. If this
+              is provided, `transaction` must not be provided as a refund with a refund
+              authorized can not be linked to a regular transaction.
+
           transaction_id: The identifier for the Transaction to refund. The Transaction's source must have
               a category of card_settlement.
 
@@ -74,7 +79,13 @@ class CardRefundsResource(SyncAPIResource):
         """
         return self._post(
             "/simulations/card_refunds",
-            body=maybe_transform({"transaction_id": transaction_id}, card_refund_create_params.CardRefundCreateParams),
+            body=maybe_transform(
+                {
+                    "pending_transaction_id": pending_transaction_id,
+                    "transaction_id": transaction_id,
+                },
+                card_refund_create_params.CardRefundCreateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -109,7 +120,8 @@ class AsyncCardRefundsResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        transaction_id: str,
+        pending_transaction_id: str | Omit = omit,
+        transaction_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -124,6 +136,10 @@ class AsyncCardRefundsResource(AsyncAPIResource):
         transaction is refunded.
 
         Args:
+          pending_transaction_id: The identifier of the Pending Transaction for the refund authorization. If this
+              is provided, `transaction` must not be provided as a refund with a refund
+              authorized can not be linked to a regular transaction.
+
           transaction_id: The identifier for the Transaction to refund. The Transaction's source must have
               a category of card_settlement.
 
@@ -140,7 +156,11 @@ class AsyncCardRefundsResource(AsyncAPIResource):
         return await self._post(
             "/simulations/card_refunds",
             body=await async_maybe_transform(
-                {"transaction_id": transaction_id}, card_refund_create_params.CardRefundCreateParams
+                {
+                    "pending_transaction_id": pending_transaction_id,
+                    "transaction_id": transaction_id,
+                },
+                card_refund_create_params.CardRefundCreateParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers,
