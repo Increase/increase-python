@@ -77,8 +77,8 @@ class ShipmentTrackingUpdate(BaseModel):
 
 
 class ShipmentTracking(BaseModel):
-    number: str
-    """The tracking number."""
+    number: Optional[str] = None
+    """The tracking number. Not available for USPS shipments."""
 
     return_number: Optional[str] = None
     """For returned shipments, the tracking number of the return shipment."""
