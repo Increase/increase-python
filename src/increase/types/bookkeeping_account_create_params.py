@@ -12,7 +12,7 @@ class BookkeepingAccountCreateParams(TypedDict, total=False):
     """The name you choose for the account."""
 
     account_id: str
-    """The entity, if `compliance_category` is `commingled_cash`."""
+    """The account, if `compliance_category` is `commingled_cash`."""
 
     compliance_category: Literal["commingled_cash", "customer_balance"]
     """The account compliance category.
