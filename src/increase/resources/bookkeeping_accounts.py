@@ -73,7 +73,7 @@ class BookkeepingAccountsResource(SyncAPIResource):
         Args:
           name: The name you choose for the account.
 
-          account_id: The entity, if `compliance_category` is `commingled_cash`.
+          account_id: The account, if `compliance_category` is `commingled_cash`.
 
           compliance_category: The account compliance category.
 
@@ -304,7 +304,7 @@ class AsyncBookkeepingAccountsResource(AsyncAPIResource):
         Args:
           name: The name you choose for the account.
 
-          account_id: The entity, if `compliance_category` is `commingled_cash`.
+          account_id: The account, if `compliance_category` is `commingled_cash`.
 
           compliance_category: The account compliance category.
 
