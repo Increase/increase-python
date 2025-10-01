@@ -129,6 +129,14 @@ from .ach_transfers import (
     ACHTransfersResourceWithStreamingResponse,
     AsyncACHTransfersResourceWithStreamingResponse,
 )
+from .card_disputes import (
+    CardDisputesResource,
+    AsyncCardDisputesResource,
+    CardDisputesResourceWithRawResponse,
+    AsyncCardDisputesResourceWithRawResponse,
+    CardDisputesResourceWithStreamingResponse,
+    AsyncCardDisputesResourceWithStreamingResponse,
+)
 from .card_payments import (
     CardPaymentsResource,
     AsyncCardPaymentsResource,
@@ -471,6 +479,12 @@ __all__ = [
     "AsyncCardPurchaseSupplementsResourceWithRawResponse",
     "CardPurchaseSupplementsResourceWithStreamingResponse",
     "AsyncCardPurchaseSupplementsResourceWithStreamingResponse",
+    "CardDisputesResource",
+    "AsyncCardDisputesResource",
+    "CardDisputesResourceWithRawResponse",
+    "AsyncCardDisputesResourceWithRawResponse",
+    "CardDisputesResourceWithStreamingResponse",
+    "AsyncCardDisputesResourceWithStreamingResponse",
     "PhysicalCardsResource",
     "AsyncPhysicalCardsResource",
     "PhysicalCardsResourceWithRawResponse",

@@ -48,6 +48,14 @@ from .ach_transfers import (
     ACHTransfersResourceWithStreamingResponse,
     AsyncACHTransfersResourceWithStreamingResponse,
 )
+from .card_disputes import (
+    CardDisputesResource,
+    AsyncCardDisputesResource,
+    CardDisputesResourceWithRawResponse,
+    AsyncCardDisputesResourceWithRawResponse,
+    CardDisputesResourceWithStreamingResponse,
+    AsyncCardDisputesResourceWithStreamingResponse,
+)
 from .card_reversals import (
     CardReversalsResource,
     AsyncCardReversalsResource,
@@ -288,6 +296,12 @@ __all__ = [
     "AsyncCardRefundsResourceWithRawResponse",
     "CardRefundsResourceWithStreamingResponse",
     "AsyncCardRefundsResourceWithStreamingResponse",
+    "CardDisputesResource",
+    "AsyncCardDisputesResource",
+    "CardDisputesResourceWithRawResponse",
+    "AsyncCardDisputesResourceWithRawResponse",
+    "CardDisputesResourceWithStreamingResponse",
+    "AsyncCardDisputesResourceWithStreamingResponse",
     "PhysicalCardsResource",
     "AsyncPhysicalCardsResource",
     "PhysicalCardsResourceWithRawResponse",
