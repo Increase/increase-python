@@ -3816,6 +3816,12 @@ class State(BaseModel):
     transaction's currency. For dollars, for example, this is cents.
     """
 
+    refunded_amount: int
+    """The total refunded amount in the minor unit of the transaction's currency.
+
+    For dollars, for example, this is cents.
+    """
+
     reversed_amount: int
     """The total reversed amount in the minor unit of the transaction's currency.
 
@@ -3823,9 +3829,9 @@ class State(BaseModel):
     """
 
     settled_amount: int
-    """
-    The total settled or refunded amount in the minor unit of the transaction's
-    currency. For dollars, for example, this is cents.
+    """The total settled amount in the minor unit of the transaction's currency.
+
+    For dollars, for example, this is cents.
     """
 
 
