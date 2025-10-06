@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.350.1 (2025-10-06)
+
+Full Changelog: [v0.350.0...v0.350.1](https://github.com/Increase/increase-python/compare/v0.350.0...v0.350.1)
+
+### Bug Fixes
+
+* **client:** handle some Dispute objects as empty rather than unknown ([4f17295](https://github.com/Increase/increase-python/commit/4f172950ded31e0e26daba3af128417f72053874))
+
 ## 0.350.0 (2025-10-03)
 
 Full Changelog: [v0.349.0...v0.350.0](https://github.com/Increase/increase-python/compare/v0.349.0...v0.350.0)
