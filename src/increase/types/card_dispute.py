@@ -25,7 +25,6 @@ __all__ = [
     "VisaNetworkEventRepresentedCardholderNoLongerDisputes",
     "VisaNetworkEventRepresentedCreditOrReversalProcessed",
     "VisaNetworkEventRepresentedInvalidDispute",
-    "VisaNetworkEventRepresentedNonFiatCurrencyOrNonFungibleTokenAsDescribed",
     "VisaNetworkEventRepresentedNonFiatCurrencyOrNonFungibleTokenReceived",
     "VisaNetworkEventRepresentedProofOfCashDisbursement",
     "VisaNetworkEventRepresentedReversalIssued",
@@ -60,7 +59,6 @@ __all__ = [
     "VisaUserSubmissionChargebackConsumerMerchandiseNotReceivedDelayedReturned",
     "VisaUserSubmissionChargebackConsumerMerchandiseNotReceivedDeliveredToWrongLocation",
     "VisaUserSubmissionChargebackConsumerMerchandiseNotReceivedMerchantCancellation",
-    "VisaUserSubmissionChargebackConsumerNonReceiptOfCash",
     "VisaUserSubmissionChargebackConsumerOriginalCreditTransactionNotAccepted",
     "VisaUserSubmissionChargebackConsumerQualityMerchandise",
     "VisaUserSubmissionChargebackConsumerQualityMerchandiseOngoingNegotiations",
@@ -443,10 +441,6 @@ class VisaNetworkEventRepresentedInvalidDispute(BaseModel):
     """
 
 
-class VisaNetworkEventRepresentedNonFiatCurrencyOrNonFungibleTokenAsDescribed(BaseModel):
-    pass
-
-
 class VisaNetworkEventRepresentedNonFiatCurrencyOrNonFungibleTokenReceived(BaseModel):
     blockchain_transaction_hash: str
     """Blockchain transaction hash."""
@@ -487,9 +481,7 @@ class VisaNetworkEventRepresented(BaseModel):
     invalid_dispute: Optional[VisaNetworkEventRepresentedInvalidDispute] = None
     """Invalid dispute details. Present if and only if `reason` is `invalid_dispute`."""
 
-    non_fiat_currency_or_non_fungible_token_as_described: Optional[
-        VisaNetworkEventRepresentedNonFiatCurrencyOrNonFungibleTokenAsDescribed
-    ] = None
+    non_fiat_currency_or_non_fungible_token_as_described: Optional[object] = None
     """Non-fiat currency or non-fungible token as described details.
 
     Present if and only if `reason` is
@@ -1371,10 +1363,6 @@ class VisaUserSubmissionChargebackConsumerMerchandiseNotReceived(BaseModel):
     """Purchase information and explanation."""
 
 
-class VisaUserSubmissionChargebackConsumerNonReceiptOfCash(BaseModel):
-    pass
-
-
 class VisaUserSubmissionChargebackConsumerOriginalCreditTransactionNotAccepted(BaseModel):
     explanation: str
     """Explanation."""
@@ -1897,7 +1885,7 @@ class VisaUserSubmissionChargeback(BaseModel):
     Present if and only if `category` is `consumer_merchandise_not_received`.
     """
 
-    consumer_non_receipt_of_cash: Optional[VisaUserSubmissionChargebackConsumerNonReceiptOfCash] = None
+    consumer_non_receipt_of_cash: Optional[object] = None
     """Non-receipt of cash.
 
     Present if and only if `category` is `consumer_non_receipt_of_cash`.
