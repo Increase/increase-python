@@ -2269,7 +2269,10 @@ class SourceCashbackPayment(BaseModel):
 
 class SourceCheckDepositAcceptance(BaseModel):
     account_number: str
-    """The account number printed on the check."""
+    """The account number printed on the check.
+
+    This is an account at the bank that issued the check.
+    """
 
     amount: int
     """The amount to be deposited in the minor unit of the transaction's currency.
@@ -2300,7 +2303,10 @@ class SourceCheckDepositAcceptance(BaseModel):
     """
 
     routing_number: str
-    """The routing number printed on the check."""
+    """The routing number printed on the check.
+
+    This is a routing number for the bank that issued the check.
+    """
 
     serial_number: Optional[str] = None
     """The check serial number, if present, for consumer checks.
