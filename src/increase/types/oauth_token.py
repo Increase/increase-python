@@ -14,6 +14,9 @@ class OAuthToken(BaseModel):
     behalf.
     """
 
+    group_id: str
+    """The Group's identifier. A Group is the top-level organization in Increase."""
+
     token_type: Literal["bearer"]
     """The type of OAuth token."""
 
