@@ -567,7 +567,7 @@ class Settlement(BaseModel):
 
 
 class Submission(BaseModel):
-    administrative_returns_expected_by: Optional[datetime.datetime] = None
+    administrative_returns_expected_by: datetime.datetime
     """The timestamp by which any administrative returns are expected to be received
     by.
 
