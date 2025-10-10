@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.355.0 (2025-10-10)
+
+Full Changelog: [v0.354.0...v0.355.0](https://github.com/Increase/increase-python/compare/v0.354.0...v0.355.0)
+
+### Features
+
+* **api:** api update ([495bb1b](https://github.com/Increase/increase-python/commit/495bb1b75ef8712b237bce12c1717100f4deade6))
+
+
+### Chores
+
+* **internal:** detect missing future annotations with ruff ([be1ccbe](https://github.com/Increase/increase-python/commit/be1ccbea392021bc96c899820faf5903b269fc9a))
+
 ## 0.354.0 (2025-10-08)
 
 Full Changelog: [v0.353.0...v0.354.0](https://github.com/Increase/increase-python/compare/v0.353.0...v0.354.0)
