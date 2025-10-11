@@ -48,7 +48,12 @@ class ProgramsResource(SyncAPIResource):
         *,
         name: str,
         bank: Literal[
-            "blue_ridge_bank", "core_bank", "first_internet_bank", "global_innovations_bank", "grasshopper_bank"
+            "blue_ridge_bank",
+            "core_bank",
+            "first_internet_bank",
+            "global_innovations_bank",
+            "grasshopper_bank",
+            "twin_city_bank",
         ]
         | Omit = omit,
         reserve_account_id: str | Omit = omit,
@@ -77,6 +82,7 @@ class ProgramsResource(SyncAPIResource):
               - `first_internet_bank` - First Internet Bank of Indiana
               - `global_innovations_bank` - Global Innovations Bank
               - `grasshopper_bank` - Grasshopper Bank
+              - `twin_city_bank` - Twin City Bank
 
           reserve_account_id: The identifier of the Account the Program should be added to is for.
 
@@ -136,7 +142,12 @@ class AsyncProgramsResource(AsyncAPIResource):
         *,
         name: str,
         bank: Literal[
-            "blue_ridge_bank", "core_bank", "first_internet_bank", "global_innovations_bank", "grasshopper_bank"
+            "blue_ridge_bank",
+            "core_bank",
+            "first_internet_bank",
+            "global_innovations_bank",
+            "grasshopper_bank",
+            "twin_city_bank",
         ]
         | Omit = omit,
         reserve_account_id: str | Omit = omit,
@@ -165,6 +176,7 @@ class AsyncProgramsResource(AsyncAPIResource):
               - `first_internet_bank` - First Internet Bank of Indiana
               - `global_innovations_bank` - Global Innovations Bank
               - `grasshopper_bank` - Grasshopper Bank
+              - `twin_city_bank` - Twin City Bank
 
           reserve_account_id: The identifier of the Account the Program should be added to is for.
 
