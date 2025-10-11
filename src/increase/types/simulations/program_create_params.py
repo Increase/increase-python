@@ -11,7 +11,14 @@ class ProgramCreateParams(TypedDict, total=False):
     name: Required[str]
     """The name of the program being added."""
 
-    bank: Literal["blue_ridge_bank", "core_bank", "first_internet_bank", "global_innovations_bank", "grasshopper_bank"]
+    bank: Literal[
+        "blue_ridge_bank",
+        "core_bank",
+        "first_internet_bank",
+        "global_innovations_bank",
+        "grasshopper_bank",
+        "twin_city_bank",
+    ]
     """The bank for the program's accounts, defaults to First Internet Bank.
 
     - `blue_ridge_bank` - Blue Ridge Bank, N.A.
@@ -19,6 +26,7 @@ class ProgramCreateParams(TypedDict, total=False):
     - `first_internet_bank` - First Internet Bank of Indiana
     - `global_innovations_bank` - Global Innovations Bank
     - `grasshopper_bank` - Grasshopper Bank
+    - `twin_city_bank` - Twin City Bank
     """
 
     reserve_account_id: str
