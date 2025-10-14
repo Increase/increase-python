@@ -791,6 +791,12 @@ class SourceCardFinancialNetworkDetails(BaseModel):
 
 
 class SourceCardFinancialNetworkIdentifiers(BaseModel):
+    authorization_identification_response: Optional[str] = None
+    """
+    The randomly generated 6-character Authorization Identification Response code
+    sent back to the acquirer in an approved response.
+    """
+
     retrieval_reference_number: Optional[str] = None
     """A life-cycle identifier used across e.g., an authorization and a reversal.
 
@@ -1117,6 +1123,12 @@ class SourceCardRefundNetworkIdentifiers(BaseModel):
 
     acquirer_reference_number: str
     """A globally unique identifier for this settlement."""
+
+    authorization_identification_response: Optional[str] = None
+    """
+    The randomly generated 6-character Authorization Identification Response code
+    sent back to the acquirer in an approved response.
+    """
 
     transaction_id: Optional[str] = None
     """
@@ -1704,6 +1716,12 @@ class SourceCardSettlementNetworkIdentifiers(BaseModel):
 
     acquirer_reference_number: str
     """A globally unique identifier for this settlement."""
+
+    authorization_identification_response: Optional[str] = None
+    """
+    The randomly generated 6-character Authorization Identification Response code
+    sent back to the acquirer in an approved response.
+    """
 
     transaction_id: Optional[str] = None
     """
