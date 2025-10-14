@@ -559,11 +559,15 @@ class ElementCardAuthorizationNetworkDetailsVisa(BaseModel):
 
 
 class ElementCardAuthorizationNetworkDetails(BaseModel):
-    category: Literal["visa"]
+    category: Literal["visa", "pulse"]
     """The payment network used to process this card authorization.
 
     - `visa` - Visa
+    - `pulse` - Pulse
     """
+
+    pulse: Optional[object] = None
+    """Fields specific to the `pulse` network."""
 
     visa: Optional[ElementCardAuthorizationNetworkDetailsVisa] = None
     """Fields specific to the `visa` network."""
@@ -865,10 +869,11 @@ class ElementCardAuthorizationExpiration(BaseModel):
     transaction's currency. For dollars, for example, this is cents.
     """
 
-    network: Literal["visa"]
+    network: Literal["visa", "pulse"]
     """The card network used to process this card authorization.
 
     - `visa` - Visa
+    - `pulse` - Pulse
     """
 
     type: Literal["card_authorization_expiration"]
@@ -1163,11 +1168,15 @@ class ElementCardDeclineNetworkDetailsVisa(BaseModel):
 
 
 class ElementCardDeclineNetworkDetails(BaseModel):
-    category: Literal["visa"]
+    category: Literal["visa", "pulse"]
     """The payment network used to process this card authorization.
 
     - `visa` - Visa
+    - `pulse` - Pulse
     """
+
+    pulse: Optional[object] = None
+    """Fields specific to the `pulse` network."""
 
     visa: Optional[ElementCardDeclineNetworkDetailsVisa] = None
     """Fields specific to the `visa` network."""
@@ -1563,10 +1572,11 @@ class ElementCardFuelConfirmation(BaseModel):
     - `USD` - US Dollar (USD)
     """
 
-    network: Literal["visa"]
+    network: Literal["visa", "pulse"]
     """The card network used to process this card authorization.
 
     - `visa` - Visa
+    - `pulse` - Pulse
     """
 
     network_identifiers: ElementCardFuelConfirmationNetworkIdentifiers
@@ -1822,10 +1832,11 @@ class ElementCardIncrement(BaseModel):
     - `USD` - US Dollar (USD)
     """
 
-    network: Literal["visa"]
+    network: Literal["visa", "pulse"]
     """The card network used to process this card authorization.
 
     - `visa` - Visa
+    - `pulse` - Pulse
     """
 
     network_identifiers: ElementCardIncrementNetworkIdentifiers
@@ -2501,10 +2512,11 @@ class ElementCardReversal(BaseModel):
     merchant_state: Optional[str] = None
     """The state the merchant resides in."""
 
-    network: Literal["visa"]
+    network: Literal["visa", "pulse"]
     """The card network used to process this card authorization.
 
     - `visa` - Visa
+    - `pulse` - Pulse
     """
 
     network_identifiers: ElementCardReversalNetworkIdentifiers
@@ -3120,10 +3132,11 @@ class ElementCardSettlement(BaseModel):
     merchant_state: Optional[str] = None
     """The state the merchant resides in."""
 
-    network: Literal["visa"]
+    network: Literal["visa", "pulse"]
     """The card network on which this transaction was processed.
 
     - `visa` - Visa
+    - `pulse` - Pulse
     """
 
     network_identifiers: ElementCardSettlementNetworkIdentifiers
@@ -3450,11 +3463,15 @@ class ElementCardValidationNetworkDetailsVisa(BaseModel):
 
 
 class ElementCardValidationNetworkDetails(BaseModel):
-    category: Literal["visa"]
+    category: Literal["visa", "pulse"]
     """The payment network used to process this card authorization.
 
     - `visa` - Visa
+    - `pulse` - Pulse
     """
+
+    pulse: Optional[object] = None
+    """Fields specific to the `pulse` network."""
 
     visa: Optional[ElementCardValidationNetworkDetailsVisa] = None
     """Fields specific to the `visa` network."""

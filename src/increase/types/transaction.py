@@ -453,10 +453,11 @@ class SourceCardDisputeFinancial(BaseModel):
     amount: int
     """The amount of the financial event."""
 
-    network: Literal["visa"]
+    network: Literal["visa", "pulse"]
     """The network that the Card Dispute is associated with.
 
     - `visa` - Visa: details will be under the `visa` object.
+    - `pulse` - Pulse: details will be under the `pulse` object.
     """
 
     transaction_id: str
@@ -775,11 +776,15 @@ class SourceCardFinancialNetworkDetailsVisa(BaseModel):
 
 
 class SourceCardFinancialNetworkDetails(BaseModel):
-    category: Literal["visa"]
+    category: Literal["visa", "pulse"]
     """The payment network used to process this card authorization.
 
     - `visa` - Visa
+    - `pulse` - Pulse
     """
+
+    pulse: Optional[object] = None
+    """Fields specific to the `pulse` network."""
 
     visa: Optional[SourceCardFinancialNetworkDetailsVisa] = None
     """Fields specific to the `visa` network."""
@@ -2192,10 +2197,11 @@ class SourceCardSettlement(BaseModel):
     merchant_state: Optional[str] = None
     """The state the merchant resides in."""
 
-    network: Literal["visa"]
+    network: Literal["visa", "pulse"]
     """The card network on which this transaction was processed.
 
     - `visa` - Visa
+    - `pulse` - Pulse
     """
 
     network_identifiers: SourceCardSettlementNetworkIdentifiers
