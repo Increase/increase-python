@@ -357,11 +357,15 @@ class SourceCardAuthorizationNetworkDetailsVisa(BaseModel):
 
 
 class SourceCardAuthorizationNetworkDetails(BaseModel):
-    category: Literal["visa"]
+    category: Literal["visa", "pulse"]
     """The payment network used to process this card authorization.
 
     - `visa` - Visa
+    - `pulse` - Pulse
     """
+
+    pulse: Optional[object] = None
+    """Fields specific to the `pulse` network."""
 
     visa: Optional[SourceCardAuthorizationNetworkDetailsVisa] = None
     """Fields specific to the `visa` network."""

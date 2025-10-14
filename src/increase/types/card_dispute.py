@@ -2161,10 +2161,11 @@ class CardDispute(BaseModel):
     dispute.
     """
 
-    network: Literal["visa"]
+    network: Literal["visa", "pulse"]
     """The network that the Card Dispute is associated with.
 
     - `visa` - Visa: details will be under the `visa` object.
+    - `pulse` - Pulse: details will be under the `pulse` object.
     """
 
     status: Literal[
