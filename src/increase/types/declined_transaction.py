@@ -422,6 +422,12 @@ class SourceCardDeclineNetworkDetails(BaseModel):
 
 
 class SourceCardDeclineNetworkIdentifiers(BaseModel):
+    authorization_identification_response: Optional[str] = None
+    """
+    The randomly generated 6-character Authorization Identification Response code
+    sent back to the acquirer in an approved response.
+    """
+
     retrieval_reference_number: Optional[str] = None
     """A life-cycle identifier used across e.g., an authorization and a reversal.
 

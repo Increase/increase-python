@@ -574,6 +574,12 @@ class ElementCardAuthorizationNetworkDetails(BaseModel):
 
 
 class ElementCardAuthorizationNetworkIdentifiers(BaseModel):
+    authorization_identification_response: Optional[str] = None
+    """
+    The randomly generated 6-character Authorization Identification Response code
+    sent back to the acquirer in an approved response.
+    """
+
     retrieval_reference_number: Optional[str] = None
     """A life-cycle identifier used across e.g., an authorization and a reversal.
 
@@ -1183,6 +1189,12 @@ class ElementCardDeclineNetworkDetails(BaseModel):
 
 
 class ElementCardDeclineNetworkIdentifiers(BaseModel):
+    authorization_identification_response: Optional[str] = None
+    """
+    The randomly generated 6-character Authorization Identification Response code
+    sent back to the acquirer in an approved response.
+    """
+
     retrieval_reference_number: Optional[str] = None
     """A life-cycle identifier used across e.g., an authorization and a reversal.
 
@@ -1532,6 +1544,12 @@ class ElementCardDecline(BaseModel):
 
 
 class ElementCardFuelConfirmationNetworkIdentifiers(BaseModel):
+    authorization_identification_response: Optional[str] = None
+    """
+    The randomly generated 6-character Authorization Identification Response code
+    sent back to the acquirer in an approved response.
+    """
+
     retrieval_reference_number: Optional[str] = None
     """A life-cycle identifier used across e.g., an authorization and a reversal.
 
@@ -1768,6 +1786,12 @@ class ElementCardIncrementAdditionalAmounts(BaseModel):
 
 
 class ElementCardIncrementNetworkIdentifiers(BaseModel):
+    authorization_identification_response: Optional[str] = None
+    """
+    The randomly generated 6-character Authorization Identification Response code
+    sent back to the acquirer in an approved response.
+    """
+
     retrieval_reference_number: Optional[str] = None
     """A life-cycle identifier used across e.g., an authorization and a reversal.
 
@@ -1938,6 +1962,12 @@ class ElementCardRefundNetworkIdentifiers(BaseModel):
 
     acquirer_reference_number: str
     """A globally unique identifier for this settlement."""
+
+    authorization_identification_response: Optional[str] = None
+    """
+    The randomly generated 6-character Authorization Identification Response code
+    sent back to the acquirer in an approved response.
+    """
 
     transaction_id: Optional[str] = None
     """
@@ -2441,6 +2471,12 @@ class ElementCardRefund(BaseModel):
 
 
 class ElementCardReversalNetworkIdentifiers(BaseModel):
+    authorization_identification_response: Optional[str] = None
+    """
+    The randomly generated 6-character Authorization Identification Response code
+    sent back to the acquirer in an approved response.
+    """
+
     retrieval_reference_number: Optional[str] = None
     """A life-cycle identifier used across e.g., an authorization and a reversal.
 
@@ -2639,6 +2675,12 @@ class ElementCardSettlementNetworkIdentifiers(BaseModel):
 
     acquirer_reference_number: str
     """A globally unique identifier for this settlement."""
+
+    authorization_identification_response: Optional[str] = None
+    """
+    The randomly generated 6-character Authorization Identification Response code
+    sent back to the acquirer in an approved response.
+    """
 
     transaction_id: Optional[str] = None
     """
@@ -3478,6 +3520,12 @@ class ElementCardValidationNetworkDetails(BaseModel):
 
 
 class ElementCardValidationNetworkIdentifiers(BaseModel):
+    authorization_identification_response: Optional[str] = None
+    """
+    The randomly generated 6-character Authorization Identification Response code
+    sent back to the acquirer in an approved response.
+    """
+
     retrieval_reference_number: Optional[str] = None
     """A life-cycle identifier used across e.g., an authorization and a reversal.
 
