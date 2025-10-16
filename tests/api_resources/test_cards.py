@@ -44,7 +44,7 @@ class TestCards:
             description="Card for Ian Crease",
             digital_wallet={
                 "digital_card_profile_id": "digital_card_profile_id",
-                "email": "x",
+                "email": "dev@stainless.com",
                 "phone": "x",
             },
             entity_id="entity_id",
@@ -134,7 +134,7 @@ class TestCards:
             description="New description",
             digital_wallet={
                 "digital_card_profile_id": "digital_card_profile_id",
-                "email": "x",
+                "email": "dev@stainless.com",
                 "phone": "x",
             },
             entity_id="entity_id",
@@ -368,7 +368,7 @@ class TestAsyncCards:
             description="Card for Ian Crease",
             digital_wallet={
                 "digital_card_profile_id": "digital_card_profile_id",
-                "email": "x",
+                "email": "dev@stainless.com",
                 "phone": "x",
             },
             entity_id="entity_id",
@@ -458,7 +458,7 @@ class TestAsyncCards:
             description="New description",
             digital_wallet={
                 "digital_card_profile_id": "digital_card_profile_id",
-                "email": "x",
+                "email": "dev@stainless.com",
                 "phone": "x",
             },
             entity_id="entity_id",

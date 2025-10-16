@@ -81,13 +81,13 @@ class TestRealTimeDecisions:
             digital_wallet_authentication={
                 "result": "success",
                 "success": {
-                    "email": "x",
+                    "email": "dev@stainless.com",
                     "phone": "x",
                 },
             },
             digital_wallet_token={
                 "approval": {
-                    "email": "x",
+                    "email": "dev@stainless.com",
                     "phone": "x",
                 },
                 "decline": {"reason": "x"},
@@ -196,13 +196,13 @@ class TestAsyncRealTimeDecisions:
             digital_wallet_authentication={
                 "result": "success",
                 "success": {
-                    "email": "x",
+                    "email": "dev@stainless.com",
                     "phone": "x",
                 },
             },
             digital_wallet_token={
                 "approval": {
-                    "email": "x",
+                    "email": "dev@stainless.com",
                     "phone": "x",
                 },
                 "decline": {"reason": "x"},
