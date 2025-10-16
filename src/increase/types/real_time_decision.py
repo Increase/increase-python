@@ -732,13 +732,6 @@ class DigitalWalletToken(BaseModel):
     card_id: str
     """The identifier of the Card that is being tokenized."""
 
-    card_profile_id: Optional[str] = None
-    """The identifier of the Card Profile that was set via the real time decision.
-
-    This will be null until the real time decision is responded to or if the real
-    time decision did not set a card profile.
-    """
-
     decision: Optional[Literal["approve", "decline"]] = None
     """Whether or not the provisioning request was approved.
 
