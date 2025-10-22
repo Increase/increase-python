@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.362.0 (2025-10-22)
+
+Full Changelog: [v0.361.0...v0.362.0](https://github.com/Increase/increase-python/compare/v0.361.0...v0.362.0)
+
+### Features
+
+* **api:** api update ([b2ae7d0](https://github.com/Increase/increase-python/commit/b2ae7d0d96315189c6bd50f4c5e4b5837a87417e))
+
+
+### Chores
+
+* bump `httpx-aiohttp` version to 0.1.9 ([49a604f](https://github.com/Increase/increase-python/commit/49a604f718924639aa042d4d6b56b04dea1fa8fb))
+
 ## 0.361.0 (2025-10-16)
 
 Full Changelog: [v0.360.0...v0.361.0](https://github.com/Increase/increase-python/compare/v0.360.0...v0.361.0)
