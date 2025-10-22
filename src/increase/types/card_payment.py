@@ -3881,6 +3881,12 @@ class State(BaseModel):
     transaction's currency. For dollars, for example, this is cents.
     """
 
+    refund_authorized_amount: int
+    """
+    The total refund authorized amount in the minor unit of the transaction's
+    currency. For dollars, for example, this is cents.
+    """
+
     refunded_amount: int
     """The total refunded amount in the minor unit of the transaction's currency.
 
