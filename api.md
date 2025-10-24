@@ -371,6 +371,35 @@ Methods:
 - <code title="get /inbound_real_time_payments_transfers/{inbound_real_time_payments_transfer_id}">client.inbound_real_time_payments_transfers.<a href="./src/increase/resources/inbound_real_time_payments_transfers.py">retrieve</a>(inbound_real_time_payments_transfer_id) -> <a href="./src/increase/types/inbound_real_time_payments_transfer.py">InboundRealTimePaymentsTransfer</a></code>
 - <code title="get /inbound_real_time_payments_transfers">client.inbound_real_time_payments_transfers.<a href="./src/increase/resources/inbound_real_time_payments_transfers.py">list</a>(\*\*<a href="src/increase/types/inbound_real_time_payments_transfer_list_params.py">params</a>) -> <a href="./src/increase/types/inbound_real_time_payments_transfer.py">SyncPage[InboundRealTimePaymentsTransfer]</a></code>
 
+# FednowTransfers
+
+Types:
+
+```python
+from increase.types import FednowTransfer
+```
+
+Methods:
+
+- <code title="post /fednow_transfers">client.fednow_transfers.<a href="./src/increase/resources/fednow_transfers.py">create</a>(\*\*<a href="src/increase/types/fednow_transfer_create_params.py">params</a>) -> <a href="./src/increase/types/fednow_transfer.py">FednowTransfer</a></code>
+- <code title="get /fednow_transfers/{fednow_transfer_id}">client.fednow_transfers.<a href="./src/increase/resources/fednow_transfers.py">retrieve</a>(fednow_transfer_id) -> <a href="./src/increase/types/fednow_transfer.py">FednowTransfer</a></code>
+- <code title="get /fednow_transfers">client.fednow_transfers.<a href="./src/increase/resources/fednow_transfers.py">list</a>(\*\*<a href="src/increase/types/fednow_transfer_list_params.py">params</a>) -> <a href="./src/increase/types/fednow_transfer.py">SyncPage[FednowTransfer]</a></code>
+- <code title="post /fednow_transfers/{fednow_transfer_id}/approve">client.fednow_transfers.<a href="./src/increase/resources/fednow_transfers.py">approve</a>(fednow_transfer_id) -> <a href="./src/increase/types/fednow_transfer.py">FednowTransfer</a></code>
+- <code title="post /fednow_transfers/{fednow_transfer_id}/cancel">client.fednow_transfers.<a href="./src/increase/resources/fednow_transfers.py">cancel</a>(fednow_transfer_id) -> <a href="./src/increase/types/fednow_transfer.py">FednowTransfer</a></code>
+
+# InboundFednowTransfers
+
+Types:
+
+```python
+from increase.types import InboundFednowTransfer
+```
+
+Methods:
+
+- <code title="get /inbound_fednow_transfers/{inbound_fednow_transfer_id}">client.inbound_fednow_transfers.<a href="./src/increase/resources/inbound_fednow_transfers.py">retrieve</a>(inbound_fednow_transfer_id) -> <a href="./src/increase/types/inbound_fednow_transfer.py">InboundFednowTransfer</a></code>
+- <code title="get /inbound_fednow_transfers">client.inbound_fednow_transfers.<a href="./src/increase/resources/inbound_fednow_transfers.py">list</a>(\*\*<a href="src/increase/types/inbound_fednow_transfer_list_params.py">params</a>) -> <a href="./src/increase/types/inbound_fednow_transfer.py">SyncPage[InboundFednowTransfer]</a></code>
+
 # CheckDeposits
 
 Types:
@@ -932,6 +961,12 @@ Methods:
 Methods:
 
 - <code title="post /simulations/inbound_real_time_payments_transfers">client.simulations.inbound_real_time_payments_transfers.<a href="./src/increase/resources/simulations/inbound_real_time_payments_transfers.py">create</a>(\*\*<a href="src/increase/types/simulations/inbound_real_time_payments_transfer_create_params.py">params</a>) -> <a href="./src/increase/types/inbound_real_time_payments_transfer.py">InboundRealTimePaymentsTransfer</a></code>
+
+## InboundFednowTransfers
+
+Methods:
+
+- <code title="post /simulations/inbound_fednow_transfers">client.simulations.inbound_fednow_transfers.<a href="./src/increase/resources/simulations/inbound_fednow_transfers.py">create</a>(\*\*<a href="src/increase/types/simulations/inbound_fednow_transfer_create_params.py">params</a>) -> <a href="./src/increase/types/inbound_fednow_transfer.py">InboundFednowTransfer</a></code>
 
 ## CheckDeposits
 

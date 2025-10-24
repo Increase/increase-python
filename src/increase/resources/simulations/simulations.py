@@ -196,6 +196,14 @@ from .card_fuel_confirmations import (
     CardFuelConfirmationsResourceWithStreamingResponse,
     AsyncCardFuelConfirmationsResourceWithStreamingResponse,
 )
+from .inbound_fednow_transfers import (
+    InboundFednowTransfersResource,
+    AsyncInboundFednowTransfersResource,
+    InboundFednowTransfersResourceWithRawResponse,
+    AsyncInboundFednowTransfersResourceWithRawResponse,
+    InboundFednowTransfersResourceWithStreamingResponse,
+    AsyncInboundFednowTransfersResourceWithStreamingResponse,
+)
 from .real_time_payments_transfers import (
     RealTimePaymentsTransfersResource,
     AsyncRealTimePaymentsTransfersResource,
@@ -334,6 +342,10 @@ class SimulationsResource(SyncAPIResource):
         return InboundRealTimePaymentsTransfersResource(self._client)
 
     @cached_property
+    def inbound_fednow_transfers(self) -> InboundFednowTransfersResource:
+        return InboundFednowTransfersResource(self._client)
+
+    @cached_property
     def check_deposits(self) -> CheckDepositsResource:
         return CheckDepositsResource(self._client)
 
@@ -469,6 +481,10 @@ class AsyncSimulationsResource(AsyncAPIResource):
     @cached_property
     def inbound_real_time_payments_transfers(self) -> AsyncInboundRealTimePaymentsTransfersResource:
         return AsyncInboundRealTimePaymentsTransfersResource(self._client)
+
+    @cached_property
+    def inbound_fednow_transfers(self) -> AsyncInboundFednowTransfersResource:
+        return AsyncInboundFednowTransfersResource(self._client)
 
     @cached_property
     def check_deposits(self) -> AsyncCheckDepositsResource:
@@ -613,6 +629,10 @@ class SimulationsResourceWithRawResponse:
         )
 
     @cached_property
+    def inbound_fednow_transfers(self) -> InboundFednowTransfersResourceWithRawResponse:
+        return InboundFednowTransfersResourceWithRawResponse(self._simulations.inbound_fednow_transfers)
+
+    @cached_property
     def check_deposits(self) -> CheckDepositsResourceWithRawResponse:
         return CheckDepositsResourceWithRawResponse(self._simulations.check_deposits)
 
@@ -736,6 +756,10 @@ class AsyncSimulationsResourceWithRawResponse:
         return AsyncInboundRealTimePaymentsTransfersResourceWithRawResponse(
             self._simulations.inbound_real_time_payments_transfers
         )
+
+    @cached_property
+    def inbound_fednow_transfers(self) -> AsyncInboundFednowTransfersResourceWithRawResponse:
+        return AsyncInboundFednowTransfersResourceWithRawResponse(self._simulations.inbound_fednow_transfers)
 
     @cached_property
     def check_deposits(self) -> AsyncCheckDepositsResourceWithRawResponse:
@@ -863,6 +887,10 @@ class SimulationsResourceWithStreamingResponse:
         return InboundRealTimePaymentsTransfersResourceWithStreamingResponse(
             self._simulations.inbound_real_time_payments_transfers
         )
+
+    @cached_property
+    def inbound_fednow_transfers(self) -> InboundFednowTransfersResourceWithStreamingResponse:
+        return InboundFednowTransfersResourceWithStreamingResponse(self._simulations.inbound_fednow_transfers)
 
     @cached_property
     def check_deposits(self) -> CheckDepositsResourceWithStreamingResponse:
@@ -996,6 +1024,10 @@ class AsyncSimulationsResourceWithStreamingResponse:
         return AsyncInboundRealTimePaymentsTransfersResourceWithStreamingResponse(
             self._simulations.inbound_real_time_payments_transfers
         )
+
+    @cached_property
+    def inbound_fednow_transfers(self) -> AsyncInboundFednowTransfersResourceWithStreamingResponse:
+        return AsyncInboundFednowTransfersResourceWithStreamingResponse(self._simulations.inbound_fednow_transfers)
 
     @cached_property
     def check_deposits(self) -> AsyncCheckDepositsResourceWithStreamingResponse:

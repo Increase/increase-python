@@ -200,6 +200,14 @@ from .card_validations import (
     CardValidationsResourceWithStreamingResponse,
     AsyncCardValidationsResourceWithStreamingResponse,
 )
+from .fednow_transfers import (
+    FednowTransfersResource,
+    AsyncFednowTransfersResource,
+    FednowTransfersResourceWithRawResponse,
+    AsyncFednowTransfersResourceWithRawResponse,
+    FednowTransfersResourceWithStreamingResponse,
+    AsyncFednowTransfersResourceWithStreamingResponse,
+)
 from .intrafi_balances import (
     IntrafiBalancesResource,
     AsyncIntrafiBalancesResource,
@@ -400,6 +408,14 @@ from .wire_drawdown_requests import (
     WireDrawdownRequestsResourceWithStreamingResponse,
     AsyncWireDrawdownRequestsResourceWithStreamingResponse,
 )
+from .inbound_fednow_transfers import (
+    InboundFednowTransfersResource,
+    AsyncInboundFednowTransfersResource,
+    InboundFednowTransfersResourceWithRawResponse,
+    AsyncInboundFednowTransfersResourceWithRawResponse,
+    InboundFednowTransfersResourceWithStreamingResponse,
+    AsyncInboundFednowTransfersResourceWithStreamingResponse,
+)
 from .card_purchase_supplements import (
     CardPurchaseSupplementsResource,
     AsyncCardPurchaseSupplementsResource,
@@ -592,6 +608,18 @@ __all__ = [
     "AsyncInboundRealTimePaymentsTransfersResourceWithRawResponse",
     "InboundRealTimePaymentsTransfersResourceWithStreamingResponse",
     "AsyncInboundRealTimePaymentsTransfersResourceWithStreamingResponse",
+    "FednowTransfersResource",
+    "AsyncFednowTransfersResource",
+    "FednowTransfersResourceWithRawResponse",
+    "AsyncFednowTransfersResourceWithRawResponse",
+    "FednowTransfersResourceWithStreamingResponse",
+    "AsyncFednowTransfersResourceWithStreamingResponse",
+    "InboundFednowTransfersResource",
+    "AsyncInboundFednowTransfersResource",
+    "InboundFednowTransfersResourceWithRawResponse",
+    "AsyncInboundFednowTransfersResourceWithRawResponse",
+    "InboundFednowTransfersResourceWithStreamingResponse",
+    "AsyncInboundFednowTransfersResourceWithStreamingResponse",
     "CheckDepositsResource",
     "AsyncCheckDepositsResource",
     "CheckDepositsResourceWithRawResponse",

@@ -50,6 +50,7 @@ from .resources import (
     check_transfers,
     routing_numbers,
     card_validations,
+    fednow_transfers,
     intrafi_balances,
     account_transfers,
     external_accounts,
@@ -75,6 +76,7 @@ from .resources import (
     physical_card_profiles,
     supplemental_documents,
     wire_drawdown_requests,
+    inbound_fednow_transfers,
     card_purchase_supplements,
     intrafi_account_enrollments,
     real_time_payments_transfers,
@@ -134,6 +136,8 @@ class Increase(SyncAPIClient):
     inbound_check_deposits: inbound_check_deposits.InboundCheckDepositsResource
     real_time_payments_transfers: real_time_payments_transfers.RealTimePaymentsTransfersResource
     inbound_real_time_payments_transfers: inbound_real_time_payments_transfers.InboundRealTimePaymentsTransfersResource
+    fednow_transfers: fednow_transfers.FednowTransfersResource
+    inbound_fednow_transfers: inbound_fednow_transfers.InboundFednowTransfersResource
     check_deposits: check_deposits.CheckDepositsResource
     lockboxes: lockboxes.LockboxesResource
     inbound_mail_items: inbound_mail_items.InboundMailItemsResource
@@ -282,6 +286,8 @@ class Increase(SyncAPIClient):
         self.inbound_real_time_payments_transfers = (
             inbound_real_time_payments_transfers.InboundRealTimePaymentsTransfersResource(self)
         )
+        self.fednow_transfers = fednow_transfers.FednowTransfersResource(self)
+        self.inbound_fednow_transfers = inbound_fednow_transfers.InboundFednowTransfersResource(self)
         self.check_deposits = check_deposits.CheckDepositsResource(self)
         self.lockboxes = lockboxes.LockboxesResource(self)
         self.inbound_mail_items = inbound_mail_items.InboundMailItemsResource(self)
@@ -497,6 +503,8 @@ class AsyncIncrease(AsyncAPIClient):
     inbound_real_time_payments_transfers: (
         inbound_real_time_payments_transfers.AsyncInboundRealTimePaymentsTransfersResource
     )
+    fednow_transfers: fednow_transfers.AsyncFednowTransfersResource
+    inbound_fednow_transfers: inbound_fednow_transfers.AsyncInboundFednowTransfersResource
     check_deposits: check_deposits.AsyncCheckDepositsResource
     lockboxes: lockboxes.AsyncLockboxesResource
     inbound_mail_items: inbound_mail_items.AsyncInboundMailItemsResource
@@ -647,6 +655,8 @@ class AsyncIncrease(AsyncAPIClient):
         self.inbound_real_time_payments_transfers = (
             inbound_real_time_payments_transfers.AsyncInboundRealTimePaymentsTransfersResource(self)
         )
+        self.fednow_transfers = fednow_transfers.AsyncFednowTransfersResource(self)
+        self.inbound_fednow_transfers = inbound_fednow_transfers.AsyncInboundFednowTransfersResource(self)
         self.check_deposits = check_deposits.AsyncCheckDepositsResource(self)
         self.lockboxes = lockboxes.AsyncLockboxesResource(self)
         self.inbound_mail_items = inbound_mail_items.AsyncInboundMailItemsResource(self)
@@ -895,6 +905,10 @@ class IncreaseWithRawResponse:
                 client.inbound_real_time_payments_transfers
             )
         )
+        self.fednow_transfers = fednow_transfers.FednowTransfersResourceWithRawResponse(client.fednow_transfers)
+        self.inbound_fednow_transfers = inbound_fednow_transfers.InboundFednowTransfersResourceWithRawResponse(
+            client.inbound_fednow_transfers
+        )
         self.check_deposits = check_deposits.CheckDepositsResourceWithRawResponse(client.check_deposits)
         self.lockboxes = lockboxes.LockboxesResourceWithRawResponse(client.lockboxes)
         self.inbound_mail_items = inbound_mail_items.InboundMailItemsResourceWithRawResponse(client.inbound_mail_items)
@@ -1005,6 +1019,10 @@ class AsyncIncreaseWithRawResponse:
             inbound_real_time_payments_transfers.AsyncInboundRealTimePaymentsTransfersResourceWithRawResponse(
                 client.inbound_real_time_payments_transfers
             )
+        )
+        self.fednow_transfers = fednow_transfers.AsyncFednowTransfersResourceWithRawResponse(client.fednow_transfers)
+        self.inbound_fednow_transfers = inbound_fednow_transfers.AsyncInboundFednowTransfersResourceWithRawResponse(
+            client.inbound_fednow_transfers
         )
         self.check_deposits = check_deposits.AsyncCheckDepositsResourceWithRawResponse(client.check_deposits)
         self.lockboxes = lockboxes.AsyncLockboxesResourceWithRawResponse(client.lockboxes)
@@ -1131,6 +1149,10 @@ class IncreaseWithStreamedResponse:
                 client.inbound_real_time_payments_transfers
             )
         )
+        self.fednow_transfers = fednow_transfers.FednowTransfersResourceWithStreamingResponse(client.fednow_transfers)
+        self.inbound_fednow_transfers = inbound_fednow_transfers.InboundFednowTransfersResourceWithStreamingResponse(
+            client.inbound_fednow_transfers
+        )
         self.check_deposits = check_deposits.CheckDepositsResourceWithStreamingResponse(client.check_deposits)
         self.lockboxes = lockboxes.LockboxesResourceWithStreamingResponse(client.lockboxes)
         self.inbound_mail_items = inbound_mail_items.InboundMailItemsResourceWithStreamingResponse(
@@ -1256,6 +1278,14 @@ class AsyncIncreaseWithStreamedResponse:
         self.inbound_real_time_payments_transfers = (
             inbound_real_time_payments_transfers.AsyncInboundRealTimePaymentsTransfersResourceWithStreamingResponse(
                 client.inbound_real_time_payments_transfers
+            )
+        )
+        self.fednow_transfers = fednow_transfers.AsyncFednowTransfersResourceWithStreamingResponse(
+            client.fednow_transfers
+        )
+        self.inbound_fednow_transfers = (
+            inbound_fednow_transfers.AsyncInboundFednowTransfersResourceWithStreamingResponse(
+                client.inbound_fednow_transfers
             )
         )
         self.check_deposits = check_deposits.AsyncCheckDepositsResourceWithStreamingResponse(client.check_deposits)
