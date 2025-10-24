@@ -28,6 +28,7 @@ from .balance_lookup import BalanceLookup as BalanceLookup
 from .check_transfer import CheckTransfer as CheckTransfer
 from .card_iframe_url import CardIframeURL as CardIframeURL
 from .card_validation import CardValidation as CardValidation
+from .fednow_transfer import FednowTransfer as FednowTransfer
 from .intrafi_balance import IntrafiBalance as IntrafiBalance
 from .account_transfer import AccountTransfer as AccountTransfer
 from .card_list_params import CardListParams as CardListParams
@@ -78,6 +79,7 @@ from .card_update_pin_params import CardUpdatePinParams as CardUpdatePinParams
 from .document_create_params import DocumentCreateParams as DocumentCreateParams
 from .card_token_capabilities import CardTokenCapabilities as CardTokenCapabilities
 from .file_link_create_params import FileLinkCreateParams as FileLinkCreateParams
+from .inbound_fednow_transfer import InboundFednowTransfer as InboundFednowTransfer
 from .transaction_list_params import TransactionListParams as TransactionListParams
 from .ach_transfer_list_params import ACHTransferListParams as ACHTransferListParams
 from .card_dispute_list_params import CardDisputeListParams as CardDisputeListParams
@@ -96,6 +98,7 @@ from .intrafi_account_enrollment import IntrafiAccountEnrollment as IntrafiAccou
 from .routing_number_list_params import RoutingNumberListParams as RoutingNumberListParams
 from .card_validation_list_params import CardValidationListParams as CardValidationListParams
 from .check_deposit_create_params import CheckDepositCreateParams as CheckDepositCreateParams
+from .fednow_transfer_list_params import FednowTransferListParams as FednowTransferListParams
 from .physical_card_create_params import PhysicalCardCreateParams as PhysicalCardCreateParams
 from .physical_card_update_params import PhysicalCardUpdateParams as PhysicalCardUpdateParams
 from .real_time_payments_transfer import RealTimePaymentsTransfer as RealTimePaymentsTransfer
@@ -112,6 +115,7 @@ from .routing_number_list_response import RoutingNumberListResponse as RoutingNu
 from .account_statement_list_params import AccountStatementListParams as AccountStatementListParams
 from .bookkeeping_entry_list_params import BookkeepingEntryListParams as BookkeepingEntryListParams
 from .card_validation_create_params import CardValidationCreateParams as CardValidationCreateParams
+from .fednow_transfer_create_params import FednowTransferCreateParams as FednowTransferCreateParams
 from .inbound_mail_item_list_params import InboundMailItemListParams as InboundMailItemListParams
 from .inbound_wire_drawdown_request import InboundWireDrawdownRequest as InboundWireDrawdownRequest
 from .intrafi_exclusion_list_params import IntrafiExclusionListParams as IntrafiExclusionListParams
@@ -153,6 +157,7 @@ from .physical_card_profile_clone_params import PhysicalCardProfileCloneParams a
 from .bookkeeping_entry_set_create_params import BookkeepingEntrySetCreateParams as BookkeepingEntrySetCreateParams
 from .inbound_ach_transfer_decline_params import InboundACHTransferDeclineParams as InboundACHTransferDeclineParams
 from .inbound_check_deposit_return_params import InboundCheckDepositReturnParams as InboundCheckDepositReturnParams
+from .inbound_fednow_transfer_list_params import InboundFednowTransferListParams as InboundFednowTransferListParams
 from .inbound_real_time_payments_transfer import InboundRealTimePaymentsTransfer as InboundRealTimePaymentsTransfer
 from .physical_card_profile_create_params import PhysicalCardProfileCreateParams as PhysicalCardProfileCreateParams
 from .supplemental_document_create_params import SupplementalDocumentCreateParams as SupplementalDocumentCreateParams

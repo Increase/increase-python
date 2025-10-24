@@ -22,6 +22,9 @@ from .inbound_ach_transfer_create_params import InboundACHTransferCreateParams a
 from .inbound_check_deposit_create_params import InboundCheckDepositCreateParams as InboundCheckDepositCreateParams
 from .inbound_wire_transfer_create_params import InboundWireTransferCreateParams as InboundWireTransferCreateParams
 from .card_fuel_confirmation_create_params import CardFuelConfirmationCreateParams as CardFuelConfirmationCreateParams
+from .inbound_fednow_transfer_create_params import (
+    InboundFednowTransferCreateParams as InboundFednowTransferCreateParams,
+)
 from .physical_card_advance_shipment_params import (
     PhysicalCardAdvanceShipmentParams as PhysicalCardAdvanceShipmentParams,
 )
