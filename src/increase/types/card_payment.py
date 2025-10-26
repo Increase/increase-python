@@ -16,6 +16,7 @@ __all__ = [
     "ElementCardAuthorizationAdditionalAmounts",
     "ElementCardAuthorizationAdditionalAmountsClinic",
     "ElementCardAuthorizationAdditionalAmountsDental",
+    "ElementCardAuthorizationAdditionalAmountsOriginal",
     "ElementCardAuthorizationAdditionalAmountsPrescription",
     "ElementCardAuthorizationAdditionalAmountsSurcharge",
     "ElementCardAuthorizationAdditionalAmountsTotalCumulative",
@@ -34,6 +35,7 @@ __all__ = [
     "ElementCardDeclineAdditionalAmounts",
     "ElementCardDeclineAdditionalAmountsClinic",
     "ElementCardDeclineAdditionalAmountsDental",
+    "ElementCardDeclineAdditionalAmountsOriginal",
     "ElementCardDeclineAdditionalAmountsPrescription",
     "ElementCardDeclineAdditionalAmountsSurcharge",
     "ElementCardDeclineAdditionalAmountsTotalCumulative",
@@ -53,6 +55,7 @@ __all__ = [
     "ElementCardIncrementAdditionalAmounts",
     "ElementCardIncrementAdditionalAmountsClinic",
     "ElementCardIncrementAdditionalAmountsDental",
+    "ElementCardIncrementAdditionalAmountsOriginal",
     "ElementCardIncrementAdditionalAmountsPrescription",
     "ElementCardIncrementAdditionalAmountsSurcharge",
     "ElementCardIncrementAdditionalAmountsTotalCumulative",
@@ -90,6 +93,7 @@ __all__ = [
     "ElementCardValidationAdditionalAmounts",
     "ElementCardValidationAdditionalAmountsClinic",
     "ElementCardValidationAdditionalAmountsDental",
+    "ElementCardValidationAdditionalAmountsOriginal",
     "ElementCardValidationAdditionalAmountsPrescription",
     "ElementCardValidationAdditionalAmountsSurcharge",
     "ElementCardValidationAdditionalAmountsTotalCumulative",
@@ -304,6 +308,21 @@ class ElementCardAuthorizationAdditionalAmountsDental(BaseModel):
     """
 
 
+class ElementCardAuthorizationAdditionalAmountsOriginal(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field.
+
+    The amount is positive if it is added to the amount (such as an ATM surcharge
+    fee) and negative if it is subtracted from the amount (such as a discount).
+    """
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
 class ElementCardAuthorizationAdditionalAmountsPrescription(BaseModel):
     amount: int
     """The amount in minor units of the `currency` field.
@@ -415,6 +434,9 @@ class ElementCardAuthorizationAdditionalAmounts(BaseModel):
 
     dental: Optional[ElementCardAuthorizationAdditionalAmountsDental] = None
     """The part of this transaction amount that was for dental-related services."""
+
+    original: Optional[ElementCardAuthorizationAdditionalAmountsOriginal] = None
+    """The original pre-authorized amount."""
 
     prescription: Optional[ElementCardAuthorizationAdditionalAmountsPrescription] = None
     """The part of this transaction amount that was for healthcare prescriptions."""
@@ -920,6 +942,21 @@ class ElementCardDeclineAdditionalAmountsDental(BaseModel):
     """
 
 
+class ElementCardDeclineAdditionalAmountsOriginal(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field.
+
+    The amount is positive if it is added to the amount (such as an ATM surcharge
+    fee) and negative if it is subtracted from the amount (such as a discount).
+    """
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
 class ElementCardDeclineAdditionalAmountsPrescription(BaseModel):
     amount: int
     """The amount in minor units of the `currency` field.
@@ -1031,6 +1068,9 @@ class ElementCardDeclineAdditionalAmounts(BaseModel):
 
     dental: Optional[ElementCardDeclineAdditionalAmountsDental] = None
     """The part of this transaction amount that was for dental-related services."""
+
+    original: Optional[ElementCardDeclineAdditionalAmountsOriginal] = None
+    """The original pre-authorized amount."""
 
     prescription: Optional[ElementCardDeclineAdditionalAmountsPrescription] = None
     """The part of this transaction amount that was for healthcare prescriptions."""
@@ -1651,6 +1691,21 @@ class ElementCardIncrementAdditionalAmountsDental(BaseModel):
     """
 
 
+class ElementCardIncrementAdditionalAmountsOriginal(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field.
+
+    The amount is positive if it is added to the amount (such as an ATM surcharge
+    fee) and negative if it is subtracted from the amount (such as a discount).
+    """
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
 class ElementCardIncrementAdditionalAmountsPrescription(BaseModel):
     amount: int
     """The amount in minor units of the `currency` field.
@@ -1762,6 +1817,9 @@ class ElementCardIncrementAdditionalAmounts(BaseModel):
 
     dental: Optional[ElementCardIncrementAdditionalAmountsDental] = None
     """The part of this transaction amount that was for dental-related services."""
+
+    original: Optional[ElementCardIncrementAdditionalAmountsOriginal] = None
+    """The original pre-authorized amount."""
 
     prescription: Optional[ElementCardIncrementAdditionalAmountsPrescription] = None
     """The part of this transaction amount that was for healthcare prescriptions."""
@@ -3252,6 +3310,21 @@ class ElementCardValidationAdditionalAmountsDental(BaseModel):
     """
 
 
+class ElementCardValidationAdditionalAmountsOriginal(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field.
+
+    The amount is positive if it is added to the amount (such as an ATM surcharge
+    fee) and negative if it is subtracted from the amount (such as a discount).
+    """
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
 class ElementCardValidationAdditionalAmountsPrescription(BaseModel):
     amount: int
     """The amount in minor units of the `currency` field.
@@ -3363,6 +3436,9 @@ class ElementCardValidationAdditionalAmounts(BaseModel):
 
     dental: Optional[ElementCardValidationAdditionalAmountsDental] = None
     """The part of this transaction amount that was for dental-related services."""
+
+    original: Optional[ElementCardValidationAdditionalAmountsOriginal] = None
+    """The original pre-authorized amount."""
 
     prescription: Optional[ElementCardValidationAdditionalAmountsPrescription] = None
     """The part of this transaction amount that was for healthcare prescriptions."""
