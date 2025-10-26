@@ -14,6 +14,7 @@ __all__ = [
     "CardAuthorizationAdditionalAmounts",
     "CardAuthorizationAdditionalAmountsClinic",
     "CardAuthorizationAdditionalAmountsDental",
+    "CardAuthorizationAdditionalAmountsOriginal",
     "CardAuthorizationAdditionalAmountsPrescription",
     "CardAuthorizationAdditionalAmountsSurcharge",
     "CardAuthorizationAdditionalAmountsTotalCumulative",
@@ -101,6 +102,21 @@ class CardAuthorizationAdditionalAmountsClinic(BaseModel):
 
 
 class CardAuthorizationAdditionalAmountsDental(BaseModel):
+    amount: int
+    """The amount in minor units of the `currency` field.
+
+    The amount is positive if it is added to the amount (such as an ATM surcharge
+    fee) and negative if it is subtracted from the amount (such as a discount).
+    """
+
+    currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the additional
+    amount's currency.
+    """
+
+
+class CardAuthorizationAdditionalAmountsOriginal(BaseModel):
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -226,6 +242,9 @@ class CardAuthorizationAdditionalAmounts(BaseModel):
 
     dental: Optional[CardAuthorizationAdditionalAmountsDental] = None
     """The part of this transaction amount that was for dental-related services."""
+
+    original: Optional[CardAuthorizationAdditionalAmountsOriginal] = None
+    """The original pre-authorized amount."""
 
     prescription: Optional[CardAuthorizationAdditionalAmountsPrescription] = None
     """The part of this transaction amount that was for healthcare prescriptions."""
