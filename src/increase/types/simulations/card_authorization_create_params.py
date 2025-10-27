@@ -4,7 +4,13 @@ from __future__ import annotations
 
 from typing_extensions import Literal, Required, TypedDict
 
-__all__ = ["CardAuthorizationCreateParams", "NetworkDetails", "NetworkDetailsVisa", "ProcessingCategory"]
+__all__ = [
+    "CardAuthorizationCreateParams",
+    "NetworkDetails",
+    "NetworkDetailsVisa",
+    "ProcessingCategory",
+    "ProcessingCategoryRefund",
+]
 
 
 class CardAuthorizationCreateParams(TypedDict, total=False):
@@ -175,6 +181,11 @@ class NetworkDetails(TypedDict, total=False):
     """Fields specific to the Visa network."""
 
 
+class ProcessingCategoryRefund(TypedDict, total=False):
+    original_card_payment_id: str
+    """The card payment to link this refund to."""
+
+
 class ProcessingCategory(TypedDict, total=False):
     category: Required[
         Literal[
@@ -209,3 +220,6 @@ class ProcessingCategory(TypedDict, total=False):
     - `cash_disbursement` - Cash disbursement transactions are used to withdraw cash
       from an ATM or a point of sale.
     """
+
+    refund: ProcessingCategoryRefund
+    """Details related to refund authorizations."""
