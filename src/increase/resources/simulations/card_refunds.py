@@ -44,6 +44,7 @@ class CardRefundsResource(SyncAPIResource):
     def create(
         self,
         *,
+        amount: int | Omit = omit,
         pending_transaction_id: str | Omit = omit,
         transaction_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -60,6 +61,9 @@ class CardRefundsResource(SyncAPIResource):
         transaction is refunded.
 
         Args:
+          amount: The refund amount in cents. Pulled off the `pending_transaction` or the
+              `transaction` if not provided.
+
           pending_transaction_id: The identifier of the Pending Transaction for the refund authorization. If this
               is provided, `transaction` must not be provided as a refund with a refund
               authorized can not be linked to a regular transaction.
@@ -81,6 +85,7 @@ class CardRefundsResource(SyncAPIResource):
             "/simulations/card_refunds",
             body=maybe_transform(
                 {
+                    "amount": amount,
                     "pending_transaction_id": pending_transaction_id,
                     "transaction_id": transaction_id,
                 },
@@ -120,6 +125,7 @@ class AsyncCardRefundsResource(AsyncAPIResource):
     async def create(
         self,
         *,
+        amount: int | Omit = omit,
         pending_transaction_id: str | Omit = omit,
         transaction_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -136,6 +142,9 @@ class AsyncCardRefundsResource(AsyncAPIResource):
         transaction is refunded.
 
         Args:
+          amount: The refund amount in cents. Pulled off the `pending_transaction` or the
+              `transaction` if not provided.
+
           pending_transaction_id: The identifier of the Pending Transaction for the refund authorization. If this
               is provided, `transaction` must not be provided as a refund with a refund
               authorized can not be linked to a regular transaction.
@@ -157,6 +166,7 @@ class AsyncCardRefundsResource(AsyncAPIResource):
             "/simulations/card_refunds",
             body=await async_maybe_transform(
                 {
+                    "amount": amount,
                     "pending_transaction_id": pending_transaction_id,
                     "transaction_id": transaction_id,
                 },
