@@ -25,6 +25,7 @@ class TestCardRefunds:
     @parametrize
     def test_method_create_with_all_params(self, client: Increase) -> None:
         card_refund = client.simulations.card_refunds.create(
+            amount=1,
             pending_transaction_id="pending_transaction_id",
             transaction_id="transaction_uyrp7fld2ium70oa7oi",
         )
@@ -64,6 +65,7 @@ class TestAsyncCardRefunds:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncIncrease) -> None:
         card_refund = await async_client.simulations.card_refunds.create(
+            amount=1,
             pending_transaction_id="pending_transaction_id",
             transaction_id="transaction_uyrp7fld2ium70oa7oi",
         )
