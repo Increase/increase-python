@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.371.1 (2025-10-29)
+
+Full Changelog: [v0.371.0...v0.371.1](https://github.com/Increase/increase-python/compare/v0.371.0...v0.371.1)
+
+### Bug Fixes
+
+* **client:** close streams without requiring full consumption ([32690c8](https://github.com/Increase/increase-python/commit/32690c8d4196c62daef13298e023cb84c333134b))
+
 ## 0.371.0 (2025-10-29)
 
 Full Changelog: [v0.370.0...v0.371.0](https://github.com/Increase/increase-python/compare/v0.370.0...v0.371.0)
