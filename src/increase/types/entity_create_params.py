@@ -319,7 +319,7 @@ class Corporation(TypedDict, total=False):
     """The Employer Identification Number (EIN) for the corporation."""
 
     beneficial_ownership_exemption_reason: Literal[
-        "regulated_financial_institution", "publicly_traded_company", "public_entity"
+        "regulated_financial_institution", "publicly_traded_company", "public_entity", "other"
     ]
     """
     If the entity is exempt from the requirement to submit beneficial owners,
@@ -330,6 +330,9 @@ class Corporation(TypedDict, total=False):
     - `publicly_traded_company` - A publicly traded company.
     - `public_entity` - A public entity acting on behalf of the federal or a state
       government.
+    - `other` - Any other reason why this entity is exempt from the requirement to
+      submit beneficial owners. You can only use this exemption after approval from
+      your bank partner.
     """
 
     incorporation_state: str
