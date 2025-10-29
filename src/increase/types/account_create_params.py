@@ -17,7 +17,7 @@ class AccountCreateParams(TypedDict, total=False):
     informational_entity_id: str
     """
     The identifier of an Entity that, while not owning the Account, is associated
-    with its activity. Its relationship to your group must be `informational`.
+    with its activity. This is generally the beneficiary of the funds.
     """
 
     program_id: str
