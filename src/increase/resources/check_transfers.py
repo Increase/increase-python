@@ -51,6 +51,7 @@ class CheckTransfersResource(SyncAPIResource):
         amount: int,
         fulfillment_method: Literal["physical_check", "third_party"],
         source_account_number_id: str,
+        balance_check: Literal["full", "none"] | Omit = omit,
         check_number: str | Omit = omit,
         physical_check: check_transfer_create_params.PhysicalCheck | Omit = omit,
         require_approval: bool | Omit = omit,
@@ -80,6 +81,15 @@ class CheckTransfersResource(SyncAPIResource):
 
           source_account_number_id: The identifier of the Account Number from which to send the transfer and print
               on the check.
+
+          balance_check: How the account's available balance should be checked. Please contact
+              [support@increase.com](mailto:support@increase.com) to enable this parameter.
+
+              - `full` - The available balance of the account must be at least the amount of
+                the check, and a Pending Transaction will be created for the full amount.
+              - `none` - No balance check will performed when the check transfer is initiated.
+                A zero-dollar Pending Transaction will be created. The balance will still be
+                checked when the Inbound Check Deposit is created.
 
           check_number: The check number Increase should use for the check. This should not contain
               leading zeroes and must be unique across the `source_account_number`. If this is
@@ -113,6 +123,7 @@ class CheckTransfersResource(SyncAPIResource):
                     "amount": amount,
                     "fulfillment_method": fulfillment_method,
                     "source_account_number_id": source_account_number_id,
+                    "balance_check": balance_check,
                     "check_number": check_number,
                     "physical_check": physical_check,
                     "require_approval": require_approval,
@@ -390,6 +401,7 @@ class AsyncCheckTransfersResource(AsyncAPIResource):
         amount: int,
         fulfillment_method: Literal["physical_check", "third_party"],
         source_account_number_id: str,
+        balance_check: Literal["full", "none"] | Omit = omit,
         check_number: str | Omit = omit,
         physical_check: check_transfer_create_params.PhysicalCheck | Omit = omit,
         require_approval: bool | Omit = omit,
@@ -419,6 +431,15 @@ class AsyncCheckTransfersResource(AsyncAPIResource):
 
           source_account_number_id: The identifier of the Account Number from which to send the transfer and print
               on the check.
+
+          balance_check: How the account's available balance should be checked. Please contact
+              [support@increase.com](mailto:support@increase.com) to enable this parameter.
+
+              - `full` - The available balance of the account must be at least the amount of
+                the check, and a Pending Transaction will be created for the full amount.
+              - `none` - No balance check will performed when the check transfer is initiated.
+                A zero-dollar Pending Transaction will be created. The balance will still be
+                checked when the Inbound Check Deposit is created.
 
           check_number: The check number Increase should use for the check. This should not contain
               leading zeroes and must be unique across the `source_account_number`. If this is
@@ -452,6 +473,7 @@ class AsyncCheckTransfersResource(AsyncAPIResource):
                     "amount": amount,
                     "fulfillment_method": fulfillment_method,
                     "source_account_number_id": source_account_number_id,
+                    "balance_check": balance_check,
                     "check_number": check_number,
                     "physical_check": physical_check,
                     "require_approval": require_approval,
