@@ -8,7 +8,18 @@ from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
-__all__ = ["WireTransferCreateParams", "Remittance", "RemittanceTax", "RemittanceUnstructured"]
+__all__ = [
+    "WireTransferCreateParams",
+    "Creditor",
+    "CreditorAddress",
+    "CreditorAddressUnstructured",
+    "Remittance",
+    "RemittanceTax",
+    "RemittanceUnstructured",
+    "Debtor",
+    "DebtorAddress",
+    "DebtorAddressUnstructured",
+]
 
 
 class WireTransferCreateParams(TypedDict, total=False):
@@ -18,20 +29,21 @@ class WireTransferCreateParams(TypedDict, total=False):
     amount: Required[int]
     """The transfer amount in USD cents."""
 
-    beneficiary_name: Required[str]
-    """The beneficiary's name."""
+    creditor: Required[Creditor]
+    """The person or business that is receiving the funds from the transfer."""
+
+    remittance: Required[Remittance]
+    """Additional remittance information related to the wire transfer."""
 
     account_number: str
     """The account number for the destination account."""
 
-    beneficiary_address_line1: str
-    """The beneficiary's address line 1."""
+    debtor: Debtor
+    """The person or business whose funds are being transferred.
 
-    beneficiary_address_line2: str
-    """The beneficiary's address line 2."""
-
-    beneficiary_address_line3: str
-    """The beneficiary's address line 3."""
+    This is only necessary if you're transferring from a commingled account.
+    Otherwise, we'll use the associated entity's details.
+    """
 
     external_account_id: str
     """The ID of an External Account to initiate a transfer to.
@@ -46,37 +58,6 @@ class WireTransferCreateParams(TypedDict, total=False):
     being sent.
     """
 
-    originator_address_line1: str
-    """The originator's address line 1.
-
-    This is only necessary if you're transferring from a commingled account.
-    Otherwise, we'll use the associated entity's details.
-    """
-
-    originator_address_line2: str
-    """The originator's address line 2.
-
-    This is only necessary if you're transferring from a commingled account.
-    Otherwise, we'll use the associated entity's details.
-    """
-
-    originator_address_line3: str
-    """The originator's address line 3.
-
-    This is only necessary if you're transferring from a commingled account.
-    Otherwise, we'll use the associated entity's details.
-    """
-
-    originator_name: str
-    """The originator's name.
-
-    This is only necessary if you're transferring from a commingled account.
-    Otherwise, we'll use the associated entity's details.
-    """
-
-    remittance: Remittance
-    """Additional remittance information related to the wire transfer."""
-
     require_approval: bool
     """Whether the transfer requires explicit approval via the dashboard or API."""
 
@@ -88,6 +69,30 @@ class WireTransferCreateParams(TypedDict, total=False):
 
     source_account_number_id: str
     """The ID of an Account Number that will be passed to the wire's recipient"""
+
+
+class CreditorAddressUnstructured(TypedDict, total=False):
+    line1: Required[str]
+    """The address line 1."""
+
+    line2: str
+    """The address line 2."""
+
+    line3: str
+    """The address line 3."""
+
+
+class CreditorAddress(TypedDict, total=False):
+    unstructured: Required[CreditorAddressUnstructured]
+    """Unstructured address lines."""
+
+
+class Creditor(TypedDict, total=False):
+    name: Required[str]
+    """The person or business's name."""
+
+    address: CreditorAddress
+    """The person or business's address."""
 
 
 class RemittanceTax(TypedDict, total=False):
@@ -109,7 +114,7 @@ class RemittanceTax(TypedDict, total=False):
 
 class RemittanceUnstructured(TypedDict, total=False):
     message: Required[str]
-    """The message to the beneficiary."""
+    """The information."""
 
 
 class Remittance(TypedDict, total=False):
@@ -133,3 +138,27 @@ class Remittance(TypedDict, total=False):
 
     Required if `category` is equal to `unstructured`.
     """
+
+
+class DebtorAddressUnstructured(TypedDict, total=False):
+    line1: Required[str]
+    """The address line 1."""
+
+    line2: str
+    """The address line 2."""
+
+    line3: str
+    """The address line 3."""
+
+
+class DebtorAddress(TypedDict, total=False):
+    unstructured: Required[DebtorAddressUnstructured]
+    """Unstructured address lines."""
+
+
+class Debtor(TypedDict, total=False):
+    name: Required[str]
+    """The person or business's name."""
+
+    address: DebtorAddress
+    """The person or business's address."""
