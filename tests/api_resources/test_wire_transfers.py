@@ -24,7 +24,8 @@ class TestWireTransfers:
         wire_transfer = client.wire_transfers.create(
             account_id="account_in71c4amph0vgo2qllky",
             amount=100,
-            beneficiary_name="Ian Crease",
+            creditor={"name": "Ian Crease"},
+            remittance={"category": "unstructured"},
         )
         assert_matches_type(WireTransfer, wire_transfer, path=["response"])
 
@@ -33,17 +34,16 @@ class TestWireTransfers:
         wire_transfer = client.wire_transfers.create(
             account_id="account_in71c4amph0vgo2qllky",
             amount=100,
-            beneficiary_name="Ian Crease",
-            account_number="987654321",
-            beneficiary_address_line1="33 Liberty Street",
-            beneficiary_address_line2="New York",
-            beneficiary_address_line3="NY 10045",
-            external_account_id="external_account_id",
-            inbound_wire_drawdown_request_id="inbound_wire_drawdown_request_id",
-            originator_address_line1="x",
-            originator_address_line2="x",
-            originator_address_line3="x",
-            originator_name="x",
+            creditor={
+                "name": "Ian Crease",
+                "address": {
+                    "unstructured": {
+                        "line1": "33 Liberty Street",
+                        "line2": "New York",
+                        "line3": "NY 10045",
+                    }
+                },
+            },
             remittance={
                 "category": "unstructured",
                 "tax": {
@@ -53,6 +53,19 @@ class TestWireTransfers:
                 },
                 "unstructured": {"message": "New account transfer"},
             },
+            account_number="987654321",
+            debtor={
+                "name": "x",
+                "address": {
+                    "unstructured": {
+                        "line1": "x",
+                        "line2": "x",
+                        "line3": "x",
+                    }
+                },
+            },
+            external_account_id="external_account_id",
+            inbound_wire_drawdown_request_id="inbound_wire_drawdown_request_id",
             require_approval=True,
             routing_number="101050001",
             source_account_number_id="source_account_number_id",
@@ -64,7 +77,8 @@ class TestWireTransfers:
         response = client.wire_transfers.with_raw_response.create(
             account_id="account_in71c4amph0vgo2qllky",
             amount=100,
-            beneficiary_name="Ian Crease",
+            creditor={"name": "Ian Crease"},
+            remittance={"category": "unstructured"},
         )
 
         assert response.is_closed is True
@@ -77,7 +91,8 @@ class TestWireTransfers:
         with client.wire_transfers.with_streaming_response.create(
             account_id="account_in71c4amph0vgo2qllky",
             amount=100,
-            beneficiary_name="Ian Crease",
+            creditor={"name": "Ian Crease"},
+            remittance={"category": "unstructured"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -254,7 +269,8 @@ class TestAsyncWireTransfers:
         wire_transfer = await async_client.wire_transfers.create(
             account_id="account_in71c4amph0vgo2qllky",
             amount=100,
-            beneficiary_name="Ian Crease",
+            creditor={"name": "Ian Crease"},
+            remittance={"category": "unstructured"},
         )
         assert_matches_type(WireTransfer, wire_transfer, path=["response"])
 
@@ -263,17 +279,16 @@ class TestAsyncWireTransfers:
         wire_transfer = await async_client.wire_transfers.create(
             account_id="account_in71c4amph0vgo2qllky",
             amount=100,
-            beneficiary_name="Ian Crease",
-            account_number="987654321",
-            beneficiary_address_line1="33 Liberty Street",
-            beneficiary_address_line2="New York",
-            beneficiary_address_line3="NY 10045",
-            external_account_id="external_account_id",
-            inbound_wire_drawdown_request_id="inbound_wire_drawdown_request_id",
-            originator_address_line1="x",
-            originator_address_line2="x",
-            originator_address_line3="x",
-            originator_name="x",
+            creditor={
+                "name": "Ian Crease",
+                "address": {
+                    "unstructured": {
+                        "line1": "33 Liberty Street",
+                        "line2": "New York",
+                        "line3": "NY 10045",
+                    }
+                },
+            },
             remittance={
                 "category": "unstructured",
                 "tax": {
@@ -283,6 +298,19 @@ class TestAsyncWireTransfers:
                 },
                 "unstructured": {"message": "New account transfer"},
             },
+            account_number="987654321",
+            debtor={
+                "name": "x",
+                "address": {
+                    "unstructured": {
+                        "line1": "x",
+                        "line2": "x",
+                        "line3": "x",
+                    }
+                },
+            },
+            external_account_id="external_account_id",
+            inbound_wire_drawdown_request_id="inbound_wire_drawdown_request_id",
             require_approval=True,
             routing_number="101050001",
             source_account_number_id="source_account_number_id",
@@ -294,7 +322,8 @@ class TestAsyncWireTransfers:
         response = await async_client.wire_transfers.with_raw_response.create(
             account_id="account_in71c4amph0vgo2qllky",
             amount=100,
-            beneficiary_name="Ian Crease",
+            creditor={"name": "Ian Crease"},
+            remittance={"category": "unstructured"},
         )
 
         assert response.is_closed is True
@@ -307,7 +336,8 @@ class TestAsyncWireTransfers:
         async with async_client.wire_transfers.with_streaming_response.create(
             account_id="account_in71c4amph0vgo2qllky",
             amount=100,
-            beneficiary_name="Ian Crease",
+            creditor={"name": "Ian Crease"},
+            remittance={"category": "unstructured"},
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

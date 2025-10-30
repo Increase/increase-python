@@ -47,18 +47,12 @@ class WireTransfersResource(SyncAPIResource):
         *,
         account_id: str,
         amount: int,
-        beneficiary_name: str,
+        creditor: wire_transfer_create_params.Creditor,
+        remittance: wire_transfer_create_params.Remittance,
         account_number: str | Omit = omit,
-        beneficiary_address_line1: str | Omit = omit,
-        beneficiary_address_line2: str | Omit = omit,
-        beneficiary_address_line3: str | Omit = omit,
+        debtor: wire_transfer_create_params.Debtor | Omit = omit,
         external_account_id: str | Omit = omit,
         inbound_wire_drawdown_request_id: str | Omit = omit,
-        originator_address_line1: str | Omit = omit,
-        originator_address_line2: str | Omit = omit,
-        originator_address_line3: str | Omit = omit,
-        originator_name: str | Omit = omit,
-        remittance: wire_transfer_create_params.Remittance | Omit = omit,
         require_approval: bool | Omit = omit,
         routing_number: str | Omit = omit,
         source_account_number_id: str | Omit = omit,
@@ -78,35 +72,21 @@ class WireTransfersResource(SyncAPIResource):
 
           amount: The transfer amount in USD cents.
 
-          beneficiary_name: The beneficiary's name.
+          creditor: The person or business that is receiving the funds from the transfer.
+
+          remittance: Additional remittance information related to the wire transfer.
 
           account_number: The account number for the destination account.
 
-          beneficiary_address_line1: The beneficiary's address line 1.
-
-          beneficiary_address_line2: The beneficiary's address line 2.
-
-          beneficiary_address_line3: The beneficiary's address line 3.
+          debtor: The person or business whose funds are being transferred. This is only necessary
+              if you're transferring from a commingled account. Otherwise, we'll use the
+              associated entity's details.
 
           external_account_id: The ID of an External Account to initiate a transfer to. If this parameter is
               provided, `account_number` and `routing_number` must be absent.
 
           inbound_wire_drawdown_request_id: The ID of an Inbound Wire Drawdown Request in response to which this transfer is
               being sent.
-
-          originator_address_line1: The originator's address line 1. This is only necessary if you're transferring
-              from a commingled account. Otherwise, we'll use the associated entity's details.
-
-          originator_address_line2: The originator's address line 2. This is only necessary if you're transferring
-              from a commingled account. Otherwise, we'll use the associated entity's details.
-
-          originator_address_line3: The originator's address line 3. This is only necessary if you're transferring
-              from a commingled account. Otherwise, we'll use the associated entity's details.
-
-          originator_name: The originator's name. This is only necessary if you're transferring from a
-              commingled account. Otherwise, we'll use the associated entity's details.
-
-          remittance: Additional remittance information related to the wire transfer.
 
           require_approval: Whether the transfer requires explicit approval via the dashboard or API.
 
@@ -131,18 +111,12 @@ class WireTransfersResource(SyncAPIResource):
                 {
                     "account_id": account_id,
                     "amount": amount,
-                    "beneficiary_name": beneficiary_name,
+                    "creditor": creditor,
+                    "remittance": remittance,
                     "account_number": account_number,
-                    "beneficiary_address_line1": beneficiary_address_line1,
-                    "beneficiary_address_line2": beneficiary_address_line2,
-                    "beneficiary_address_line3": beneficiary_address_line3,
+                    "debtor": debtor,
                     "external_account_id": external_account_id,
                     "inbound_wire_drawdown_request_id": inbound_wire_drawdown_request_id,
-                    "originator_address_line1": originator_address_line1,
-                    "originator_address_line2": originator_address_line2,
-                    "originator_address_line3": originator_address_line3,
-                    "originator_name": originator_name,
-                    "remittance": remittance,
                     "require_approval": require_approval,
                     "routing_number": routing_number,
                     "source_account_number_id": source_account_number_id,
@@ -369,18 +343,12 @@ class AsyncWireTransfersResource(AsyncAPIResource):
         *,
         account_id: str,
         amount: int,
-        beneficiary_name: str,
+        creditor: wire_transfer_create_params.Creditor,
+        remittance: wire_transfer_create_params.Remittance,
         account_number: str | Omit = omit,
-        beneficiary_address_line1: str | Omit = omit,
-        beneficiary_address_line2: str | Omit = omit,
-        beneficiary_address_line3: str | Omit = omit,
+        debtor: wire_transfer_create_params.Debtor | Omit = omit,
         external_account_id: str | Omit = omit,
         inbound_wire_drawdown_request_id: str | Omit = omit,
-        originator_address_line1: str | Omit = omit,
-        originator_address_line2: str | Omit = omit,
-        originator_address_line3: str | Omit = omit,
-        originator_name: str | Omit = omit,
-        remittance: wire_transfer_create_params.Remittance | Omit = omit,
         require_approval: bool | Omit = omit,
         routing_number: str | Omit = omit,
         source_account_number_id: str | Omit = omit,
@@ -400,35 +368,21 @@ class AsyncWireTransfersResource(AsyncAPIResource):
 
           amount: The transfer amount in USD cents.
 
-          beneficiary_name: The beneficiary's name.
+          creditor: The person or business that is receiving the funds from the transfer.
+
+          remittance: Additional remittance information related to the wire transfer.
 
           account_number: The account number for the destination account.
 
-          beneficiary_address_line1: The beneficiary's address line 1.
-
-          beneficiary_address_line2: The beneficiary's address line 2.
-
-          beneficiary_address_line3: The beneficiary's address line 3.
+          debtor: The person or business whose funds are being transferred. This is only necessary
+              if you're transferring from a commingled account. Otherwise, we'll use the
+              associated entity's details.
 
           external_account_id: The ID of an External Account to initiate a transfer to. If this parameter is
               provided, `account_number` and `routing_number` must be absent.
 
           inbound_wire_drawdown_request_id: The ID of an Inbound Wire Drawdown Request in response to which this transfer is
               being sent.
-
-          originator_address_line1: The originator's address line 1. This is only necessary if you're transferring
-              from a commingled account. Otherwise, we'll use the associated entity's details.
-
-          originator_address_line2: The originator's address line 2. This is only necessary if you're transferring
-              from a commingled account. Otherwise, we'll use the associated entity's details.
-
-          originator_address_line3: The originator's address line 3. This is only necessary if you're transferring
-              from a commingled account. Otherwise, we'll use the associated entity's details.
-
-          originator_name: The originator's name. This is only necessary if you're transferring from a
-              commingled account. Otherwise, we'll use the associated entity's details.
-
-          remittance: Additional remittance information related to the wire transfer.
 
           require_approval: Whether the transfer requires explicit approval via the dashboard or API.
 
@@ -453,18 +407,12 @@ class AsyncWireTransfersResource(AsyncAPIResource):
                 {
                     "account_id": account_id,
                     "amount": amount,
-                    "beneficiary_name": beneficiary_name,
+                    "creditor": creditor,
+                    "remittance": remittance,
                     "account_number": account_number,
-                    "beneficiary_address_line1": beneficiary_address_line1,
-                    "beneficiary_address_line2": beneficiary_address_line2,
-                    "beneficiary_address_line3": beneficiary_address_line3,
+                    "debtor": debtor,
                     "external_account_id": external_account_id,
                     "inbound_wire_drawdown_request_id": inbound_wire_drawdown_request_id,
-                    "originator_address_line1": originator_address_line1,
-                    "originator_address_line2": originator_address_line2,
-                    "originator_address_line3": originator_address_line3,
-                    "originator_name": originator_name,
-                    "remittance": remittance,
                     "require_approval": require_approval,
                     "routing_number": routing_number,
                     "source_account_number_id": source_account_number_id,
