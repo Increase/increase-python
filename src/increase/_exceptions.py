@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Any, List, Mapping, Optional, cast
+from typing import Any, Dict, List, Mapping, Optional, cast
 from typing_extensions import Literal
 
 import httpx
@@ -122,7 +122,7 @@ class RateLimitError(APIStatusError):
 class InvalidParametersError(BadRequestError):
     detail: Optional[str] = None
 
-    errors: List[object]
+    errors: List[Dict[str, object]]
     """All errors related to parsing the request parameters."""
 
     status: Literal[400]
@@ -138,7 +138,7 @@ class InvalidParametersError(BadRequestError):
 
         self.title = title
         self.detail = cast(Any, construct_type(type_=Optional[str], value=data.get("detail")))
-        self.errors = cast(Any, construct_type(type_=List[object], value=data.get("errors")))
+        self.errors = cast(Any, construct_type(type_=List[Dict[str, object]], value=data.get("errors")))
         self.status = cast(Any, construct_type(type_=Literal[400], value=data.get("status")))
         self.type = cast(Any, construct_type(type_=Literal["invalid_parameters_error"], value=data.get("type")))
 
