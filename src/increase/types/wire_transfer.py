@@ -14,6 +14,12 @@ __all__ = [
     "CreatedByAPIKey",
     "CreatedByOAuthApplication",
     "CreatedByUser",
+    "Creditor",
+    "CreditorAddress",
+    "CreditorAddressUnstructured",
+    "Debtor",
+    "DebtorAddress",
+    "DebtorAddressUnstructured",
     "Remittance",
     "RemittanceTax",
     "RemittanceUnstructured",
@@ -84,6 +90,54 @@ class CreatedBy(BaseModel):
 
     user: Optional[CreatedByUser] = None
     """If present, details about the User that created the transfer."""
+
+
+class CreditorAddressUnstructured(BaseModel):
+    line1: Optional[str] = None
+    """The first line."""
+
+    line2: Optional[str] = None
+    """The second line."""
+
+    line3: Optional[str] = None
+    """The third line."""
+
+
+class CreditorAddress(BaseModel):
+    unstructured: Optional[CreditorAddressUnstructured] = None
+    """Unstructured address lines."""
+
+
+class Creditor(BaseModel):
+    address: Optional[CreditorAddress] = None
+    """The person or business's address."""
+
+    name: Optional[str] = None
+    """The person or business's name."""
+
+
+class DebtorAddressUnstructured(BaseModel):
+    line1: Optional[str] = None
+    """The first line."""
+
+    line2: Optional[str] = None
+    """The second line."""
+
+    line3: Optional[str] = None
+    """The third line."""
+
+
+class DebtorAddress(BaseModel):
+    unstructured: Optional[DebtorAddressUnstructured] = None
+    """Unstructured address lines."""
+
+
+class Debtor(BaseModel):
+    address: Optional[DebtorAddress] = None
+    """The person or business's address."""
+
+    name: Optional[str] = None
+    """The person or business's name."""
 
 
 class RemittanceTax(BaseModel):
@@ -215,18 +269,6 @@ class WireTransfer(BaseModel):
     this will contain details of the approval.
     """
 
-    beneficiary_address_line1: Optional[str] = None
-    """The beneficiary's address line 1."""
-
-    beneficiary_address_line2: Optional[str] = None
-    """The beneficiary's address line 2."""
-
-    beneficiary_address_line3: Optional[str] = None
-    """The beneficiary's address line 3."""
-
-    beneficiary_name: Optional[str] = None
-    """The beneficiary's name."""
-
     cancellation: Optional[Cancellation] = None
     """
     If your account requires approvals for transfers and the transfer was not
@@ -242,6 +284,9 @@ class WireTransfer(BaseModel):
     created_by: Optional[CreatedBy] = None
     """What object created the transfer, either via the API or the dashboard."""
 
+    creditor: Optional[Creditor] = None
+    """The person or business that is receiving the funds from the transfer."""
+
     currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
@@ -254,6 +299,9 @@ class WireTransfer(BaseModel):
     - `JPY` - Japanese Yen (JPY)
     - `USD` - US Dollar (USD)
     """
+
+    debtor: Optional[Debtor] = None
+    """The person or business whose funds are being transferred."""
 
     external_account_id: Optional[str] = None
     """The identifier of the External Account the transfer was made to, if any."""
@@ -272,23 +320,8 @@ class WireTransfer(BaseModel):
     was sent.
     """
 
-    message_to_recipient: str
-    """The message that will show on the recipient's bank statement."""
-
     network: Literal["wire"]
     """The transfer's network."""
-
-    originator_address_line1: Optional[str] = None
-    """The originator's address line 1."""
-
-    originator_address_line2: Optional[str] = None
-    """The originator's address line 2."""
-
-    originator_address_line3: Optional[str] = None
-    """The originator's address line 3."""
-
-    originator_name: Optional[str] = None
-    """The originator's name."""
 
     pending_transaction_id: Optional[str] = None
     """The ID for the pending transaction representing the transfer.
