@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.374.0 (2025-10-30)
+
+Full Changelog: [v0.373.0...v0.374.0](https://github.com/Increase/increase-python/compare/v0.373.0...v0.374.0)
+
+### Features
+
+* **api:** api update ([d705fa1](https://github.com/Increase/increase-python/commit/d705fa1a03274a1b31c73f40e5754445d4503184))
+* **api:** api update ([da7b55d](https://github.com/Increase/increase-python/commit/da7b55d2191378721e1ebf49acfde8e8b4dacbda))
+
+
+### Chores
+
+* **internal/tests:** avoid race condition with implicit client cleanup ([41a58d4](https://github.com/Increase/increase-python/commit/41a58d40928ab6392025af88b54b83a0ad2f37de))
+
 ## 0.373.0 (2025-10-29)
 
 Full Changelog: [v0.372.0...v0.373.0](https://github.com/Increase/increase-python/compare/v0.372.0...v0.373.0)
