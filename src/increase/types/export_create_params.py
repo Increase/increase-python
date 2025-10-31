@@ -21,6 +21,7 @@ __all__ = [
     "EntityCsvStatus",
     "TransactionCsv",
     "TransactionCsvCreatedAt",
+    "VendorCsv",
 ]
 
 
@@ -88,7 +89,7 @@ class ExportCreateParams(TypedDict, total=False):
     Required if `category` is equal to `transaction_csv`.
     """
 
-    vendor_csv: object
+    vendor_csv: VendorCsv
     """Options for the created export.
 
     Required if `category` is equal to `vendor_csv`.
@@ -275,3 +276,7 @@ class TransactionCsv(TypedDict, total=False):
 
     program_id: str
     """Filter exported Transactions to the specified Program."""
+
+
+class VendorCsv(TypedDict, total=False):
+    pass

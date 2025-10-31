@@ -12,6 +12,10 @@ __all__ = [
     "Visa",
     "VisaNetworkEvent",
     "VisaNetworkEventAttachmentFile",
+    "VisaNetworkEventChargebackAccepted",
+    "VisaNetworkEventChargebackSubmitted",
+    "VisaNetworkEventChargebackTimedOut",
+    "VisaNetworkEventMerchantPrearbitrationDeclineSubmitted",
     "VisaNetworkEventMerchantPrearbitrationReceived",
     "VisaNetworkEventMerchantPrearbitrationReceivedCardholderNoLongerDisputes",
     "VisaNetworkEventMerchantPrearbitrationReceivedCompellingEvidence",
@@ -21,19 +25,28 @@ __all__ = [
     "VisaNetworkEventMerchantPrearbitrationReceivedInvalidDispute",
     "VisaNetworkEventMerchantPrearbitrationReceivedNonFiatCurrencyOrNonFungibleTokenReceived",
     "VisaNetworkEventMerchantPrearbitrationReceivedPriorUndisputedNonFraudTransactions",
+    "VisaNetworkEventMerchantPrearbitrationTimedOut",
     "VisaNetworkEventRepresented",
     "VisaNetworkEventRepresentedCardholderNoLongerDisputes",
     "VisaNetworkEventRepresentedCreditOrReversalProcessed",
     "VisaNetworkEventRepresentedInvalidDispute",
+    "VisaNetworkEventRepresentedNonFiatCurrencyOrNonFungibleTokenAsDescribed",
     "VisaNetworkEventRepresentedNonFiatCurrencyOrNonFungibleTokenReceived",
     "VisaNetworkEventRepresentedProofOfCashDisbursement",
     "VisaNetworkEventRepresentedReversalIssued",
+    "VisaNetworkEventRepresentmentTimedOut",
+    "VisaNetworkEventUserPrearbitrationAccepted",
+    "VisaNetworkEventUserPrearbitrationDeclined",
+    "VisaNetworkEventUserPrearbitrationSubmitted",
+    "VisaNetworkEventUserPrearbitrationTimedOut",
+    "VisaNetworkEventUserWithdrawalSubmitted",
     "VisaUserSubmission",
     "VisaUserSubmissionAttachmentFile",
     "VisaUserSubmissionChargeback",
     "VisaUserSubmissionChargebackAuthorization",
     "VisaUserSubmissionChargebackConsumerCanceledMerchandise",
     "VisaUserSubmissionChargebackConsumerCanceledMerchandiseCardholderCancellation",
+    "VisaUserSubmissionChargebackConsumerCanceledMerchandiseNotReturned",
     "VisaUserSubmissionChargebackConsumerCanceledMerchandiseReturnAttempted",
     "VisaUserSubmissionChargebackConsumerCanceledMerchandiseReturned",
     "VisaUserSubmissionChargebackConsumerCanceledRecurringTransaction",
@@ -41,12 +54,16 @@ __all__ = [
     "VisaUserSubmissionChargebackConsumerCanceledServices",
     "VisaUserSubmissionChargebackConsumerCanceledServicesCardholderCancellation",
     "VisaUserSubmissionChargebackConsumerCanceledServicesGuaranteedReservation",
+    "VisaUserSubmissionChargebackConsumerCanceledServicesOther",
+    "VisaUserSubmissionChargebackConsumerCanceledServicesTimeshare",
     "VisaUserSubmissionChargebackConsumerCounterfeitMerchandise",
     "VisaUserSubmissionChargebackConsumerCreditNotProcessed",
     "VisaUserSubmissionChargebackConsumerDamagedOrDefectiveMerchandise",
+    "VisaUserSubmissionChargebackConsumerDamagedOrDefectiveMerchandiseNotReturned",
     "VisaUserSubmissionChargebackConsumerDamagedOrDefectiveMerchandiseReturnAttempted",
     "VisaUserSubmissionChargebackConsumerDamagedOrDefectiveMerchandiseReturned",
     "VisaUserSubmissionChargebackConsumerMerchandiseMisrepresentation",
+    "VisaUserSubmissionChargebackConsumerMerchandiseMisrepresentationNotReturned",
     "VisaUserSubmissionChargebackConsumerMerchandiseMisrepresentationReturnAttempted",
     "VisaUserSubmissionChargebackConsumerMerchandiseMisrepresentationReturned",
     "VisaUserSubmissionChargebackConsumerMerchandiseNotAsDescribed",
@@ -55,12 +72,16 @@ __all__ = [
     "VisaUserSubmissionChargebackConsumerMerchandiseNotReceived",
     "VisaUserSubmissionChargebackConsumerMerchandiseNotReceivedCardholderCancellationPriorToExpectedReceipt",
     "VisaUserSubmissionChargebackConsumerMerchandiseNotReceivedDelayed",
+    "VisaUserSubmissionChargebackConsumerMerchandiseNotReceivedDelayedNotReturned",
     "VisaUserSubmissionChargebackConsumerMerchandiseNotReceivedDelayedReturnAttempted",
     "VisaUserSubmissionChargebackConsumerMerchandiseNotReceivedDelayedReturned",
     "VisaUserSubmissionChargebackConsumerMerchandiseNotReceivedDeliveredToWrongLocation",
     "VisaUserSubmissionChargebackConsumerMerchandiseNotReceivedMerchantCancellation",
+    "VisaUserSubmissionChargebackConsumerMerchandiseNotReceivedNoCancellation",
+    "VisaUserSubmissionChargebackConsumerNonReceiptOfCash",
     "VisaUserSubmissionChargebackConsumerOriginalCreditTransactionNotAccepted",
     "VisaUserSubmissionChargebackConsumerQualityMerchandise",
+    "VisaUserSubmissionChargebackConsumerQualityMerchandiseNotReturned",
     "VisaUserSubmissionChargebackConsumerQualityMerchandiseOngoingNegotiations",
     "VisaUserSubmissionChargebackConsumerQualityMerchandiseReturnAttempted",
     "VisaUserSubmissionChargebackConsumerQualityMerchandiseReturned",
@@ -74,6 +95,7 @@ __all__ = [
     "VisaUserSubmissionChargebackConsumerServicesNotReceived",
     "VisaUserSubmissionChargebackConsumerServicesNotReceivedCardholderCancellationPriorToExpectedReceipt",
     "VisaUserSubmissionChargebackConsumerServicesNotReceivedMerchantCancellation",
+    "VisaUserSubmissionChargebackConsumerServicesNotReceivedNoCancellation",
     "VisaUserSubmissionChargebackFraud",
     "VisaUserSubmissionChargebackProcessingError",
     "VisaUserSubmissionChargebackProcessingErrorDuplicateTransaction",
@@ -104,6 +126,22 @@ class Loss(BaseModel):
 class VisaNetworkEventAttachmentFile(BaseModel):
     file_id: str
     """The ID of the file attached to the Card Dispute."""
+
+
+class VisaNetworkEventChargebackAccepted(BaseModel):
+    pass
+
+
+class VisaNetworkEventChargebackSubmitted(BaseModel):
+    pass
+
+
+class VisaNetworkEventChargebackTimedOut(BaseModel):
+    pass
+
+
+class VisaNetworkEventMerchantPrearbitrationDeclineSubmitted(BaseModel):
+    pass
 
 
 class VisaNetworkEventMerchantPrearbitrationReceivedCardholderNoLongerDisputes(BaseModel):
@@ -311,6 +349,10 @@ class VisaNetworkEventMerchantPrearbitrationReceived(BaseModel):
     """
 
 
+class VisaNetworkEventMerchantPrearbitrationTimedOut(BaseModel):
+    pass
+
+
 class VisaNetworkEventRepresentedCardholderNoLongerDisputes(BaseModel):
     explanation: Optional[str] = None
     """
@@ -441,6 +483,10 @@ class VisaNetworkEventRepresentedInvalidDispute(BaseModel):
     """
 
 
+class VisaNetworkEventRepresentedNonFiatCurrencyOrNonFungibleTokenAsDescribed(BaseModel):
+    pass
+
+
 class VisaNetworkEventRepresentedNonFiatCurrencyOrNonFungibleTokenReceived(BaseModel):
     blockchain_transaction_hash: str
     """Blockchain transaction hash."""
@@ -481,7 +527,9 @@ class VisaNetworkEventRepresented(BaseModel):
     invalid_dispute: Optional[VisaNetworkEventRepresentedInvalidDispute] = None
     """Invalid dispute details. Present if and only if `reason` is `invalid_dispute`."""
 
-    non_fiat_currency_or_non_fungible_token_as_described: Optional[object] = None
+    non_fiat_currency_or_non_fungible_token_as_described: Optional[
+        VisaNetworkEventRepresentedNonFiatCurrencyOrNonFungibleTokenAsDescribed
+    ] = None
     """Non-fiat currency or non-fungible token as described details.
 
     Present if and only if `reason` is
@@ -531,6 +579,30 @@ class VisaNetworkEventRepresented(BaseModel):
 
     Present if and only if `reason` is `reversal_issued`.
     """
+
+
+class VisaNetworkEventRepresentmentTimedOut(BaseModel):
+    pass
+
+
+class VisaNetworkEventUserPrearbitrationAccepted(BaseModel):
+    pass
+
+
+class VisaNetworkEventUserPrearbitrationDeclined(BaseModel):
+    pass
+
+
+class VisaNetworkEventUserPrearbitrationSubmitted(BaseModel):
+    pass
+
+
+class VisaNetworkEventUserPrearbitrationTimedOut(BaseModel):
+    pass
+
+
+class VisaNetworkEventUserWithdrawalSubmitted(BaseModel):
+    pass
 
 
 class VisaNetworkEvent(BaseModel):
@@ -592,7 +664,7 @@ class VisaNetworkEvent(BaseModel):
       Network Event: details will be under the `user_withdrawal_submitted` object.
     """
 
-    chargeback_accepted: Optional[object] = None
+    chargeback_accepted: Optional[VisaNetworkEventChargebackAccepted] = None
     """A Card Dispute Chargeback Accepted Visa Network Event object.
 
     This field will be present in the JSON response if and only if `category` is
@@ -601,7 +673,7 @@ class VisaNetworkEvent(BaseModel):
     been accepted by the merchant.
     """
 
-    chargeback_submitted: Optional[object] = None
+    chargeback_submitted: Optional[VisaNetworkEventChargebackSubmitted] = None
     """A Card Dispute Chargeback Submitted Visa Network Event object.
 
     This field will be present in the JSON response if and only if `category` is
@@ -610,7 +682,7 @@ class VisaNetworkEvent(BaseModel):
     has been submitted to the network.
     """
 
-    chargeback_timed_out: Optional[object] = None
+    chargeback_timed_out: Optional[VisaNetworkEventChargebackTimedOut] = None
     """A Card Dispute Chargeback Timed Out Visa Network Event object.
 
     This field will be present in the JSON response if and only if `category` is
@@ -628,7 +700,7 @@ class VisaNetworkEvent(BaseModel):
     dispute_financial_transaction_id: Optional[str] = None
     """The dispute financial transaction that resulted from the network event, if any."""
 
-    merchant_prearbitration_decline_submitted: Optional[object] = None
+    merchant_prearbitration_decline_submitted: Optional[VisaNetworkEventMerchantPrearbitrationDeclineSubmitted] = None
     """
     A Card Dispute Merchant Pre-Arbitration Decline Submitted Visa Network Event
     object. This field will be present in the JSON response if and only if
@@ -648,7 +720,7 @@ class VisaNetworkEvent(BaseModel):
     favor.
     """
 
-    merchant_prearbitration_timed_out: Optional[object] = None
+    merchant_prearbitration_timed_out: Optional[VisaNetworkEventMerchantPrearbitrationTimedOut] = None
     """A Card Dispute Merchant Pre-Arbitration Timed Out Visa Network Event object.
 
     This field will be present in the JSON response if and only if `category` is
@@ -667,7 +739,7 @@ class VisaNetworkEvent(BaseModel):
     user's chargeback and has re-presented the payment.
     """
 
-    representment_timed_out: Optional[object] = None
+    representment_timed_out: Optional[VisaNetworkEventRepresentmentTimedOut] = None
     """A Card Dispute Re-presentment Timed Out Visa Network Event object.
 
     This field will be present in the JSON response if and only if `category` is
@@ -677,7 +749,7 @@ class VisaNetworkEvent(BaseModel):
     limit.
     """
 
-    user_prearbitration_accepted: Optional[object] = None
+    user_prearbitration_accepted: Optional[VisaNetworkEventUserPrearbitrationAccepted] = None
     """A Card Dispute User Pre-Arbitration Accepted Visa Network Event object.
 
     This field will be present in the JSON response if and only if `category` is
@@ -686,7 +758,7 @@ class VisaNetworkEvent(BaseModel):
     the merchant has accepted the user's prearbitration request in the user's favor.
     """
 
-    user_prearbitration_declined: Optional[object] = None
+    user_prearbitration_declined: Optional[VisaNetworkEventUserPrearbitrationDeclined] = None
     """A Card Dispute User Pre-Arbitration Declined Visa Network Event object.
 
     This field will be present in the JSON response if and only if `category` is
@@ -695,7 +767,7 @@ class VisaNetworkEvent(BaseModel):
     the merchant has declined the user's prearbitration request.
     """
 
-    user_prearbitration_submitted: Optional[object] = None
+    user_prearbitration_submitted: Optional[VisaNetworkEventUserPrearbitrationSubmitted] = None
     """A Card Dispute User Pre-Arbitration Submitted Visa Network Event object.
 
     This field will be present in the JSON response if and only if `category` is
@@ -704,7 +776,7 @@ class VisaNetworkEvent(BaseModel):
     that the user's request for prearbitration has been submitted to the network.
     """
 
-    user_prearbitration_timed_out: Optional[object] = None
+    user_prearbitration_timed_out: Optional[VisaNetworkEventUserPrearbitrationTimedOut] = None
     """A Card Dispute User Pre-Arbitration Timed Out Visa Network Event object.
 
     This field will be present in the JSON response if and only if `category` is
@@ -713,7 +785,7 @@ class VisaNetworkEvent(BaseModel):
     that the merchant has timed out responding to the user's prearbitration request.
     """
 
-    user_withdrawal_submitted: Optional[object] = None
+    user_withdrawal_submitted: Optional[VisaNetworkEventUserWithdrawalSubmitted] = None
     """A Card Dispute User Withdrawal Submitted Visa Network Event object.
 
     This field will be present in the JSON response if and only if `category` is
@@ -758,6 +830,10 @@ class VisaUserSubmissionChargebackConsumerCanceledMerchandiseCardholderCancellat
 
     reason: str
     """Reason."""
+
+
+class VisaUserSubmissionChargebackConsumerCanceledMerchandiseNotReturned(BaseModel):
+    pass
 
 
 class VisaUserSubmissionChargebackConsumerCanceledMerchandiseReturnAttempted(BaseModel):
@@ -825,7 +901,7 @@ class VisaUserSubmissionChargebackConsumerCanceledMerchandise(BaseModel):
     - `prohibited_by_local_law` - Prohibited by local law.
     """
 
-    not_returned: Optional[object] = None
+    not_returned: Optional[VisaUserSubmissionChargebackConsumerCanceledMerchandiseNotReturned] = None
     """Not returned. Present if and only if `return_outcome` is `not_returned`."""
 
     purchase_explanation: str
@@ -920,6 +996,14 @@ class VisaUserSubmissionChargebackConsumerCanceledServicesGuaranteedReservation(
     """
 
 
+class VisaUserSubmissionChargebackConsumerCanceledServicesOther(BaseModel):
+    pass
+
+
+class VisaUserSubmissionChargebackConsumerCanceledServicesTimeshare(BaseModel):
+    pass
+
+
 class VisaUserSubmissionChargebackConsumerCanceledServices(BaseModel):
     cardholder_cancellation: VisaUserSubmissionChargebackConsumerCanceledServicesCardholderCancellation
     """Cardholder cancellation."""
@@ -940,7 +1024,7 @@ class VisaUserSubmissionChargebackConsumerCanceledServices(BaseModel):
     - `prohibited_by_local_law` - Prohibited by local law.
     """
 
-    other: Optional[object] = None
+    other: Optional[VisaUserSubmissionChargebackConsumerCanceledServicesOther] = None
     """Other service type explanation.
 
     Present if and only if `service_type` is `other`.
@@ -957,7 +1041,7 @@ class VisaUserSubmissionChargebackConsumerCanceledServices(BaseModel):
     - `timeshare` - Timeshare.
     """
 
-    timeshare: Optional[object] = None
+    timeshare: Optional[VisaUserSubmissionChargebackConsumerCanceledServicesTimeshare] = None
     """Timeshare explanation. Present if and only if `service_type` is `timeshare`."""
 
 
@@ -981,6 +1065,10 @@ class VisaUserSubmissionChargebackConsumerCreditNotProcessed(BaseModel):
 
     credit_expected_at: Optional[date] = None
     """Credit expected at."""
+
+
+class VisaUserSubmissionChargebackConsumerDamagedOrDefectiveMerchandiseNotReturned(BaseModel):
+    pass
 
 
 class VisaUserSubmissionChargebackConsumerDamagedOrDefectiveMerchandiseReturnAttempted(BaseModel):
@@ -1043,7 +1131,7 @@ class VisaUserSubmissionChargebackConsumerDamagedOrDefectiveMerchandise(BaseMode
     - `prohibited_by_local_law` - Prohibited by local law.
     """
 
-    not_returned: Optional[object] = None
+    not_returned: Optional[VisaUserSubmissionChargebackConsumerDamagedOrDefectiveMerchandiseNotReturned] = None
     """Not returned. Present if and only if `return_outcome` is `not_returned`."""
 
     order_and_issue_explanation: str
@@ -1068,6 +1156,10 @@ class VisaUserSubmissionChargebackConsumerDamagedOrDefectiveMerchandise(BaseMode
 
     returned: Optional[VisaUserSubmissionChargebackConsumerDamagedOrDefectiveMerchandiseReturned] = None
     """Returned. Present if and only if `return_outcome` is `returned`."""
+
+
+class VisaUserSubmissionChargebackConsumerMerchandiseMisrepresentationNotReturned(BaseModel):
+    pass
 
 
 class VisaUserSubmissionChargebackConsumerMerchandiseMisrepresentationReturnAttempted(BaseModel):
@@ -1133,7 +1225,7 @@ class VisaUserSubmissionChargebackConsumerMerchandiseMisrepresentation(BaseModel
     misrepresentation_explanation: str
     """Misrepresentation explanation."""
 
-    not_returned: Optional[object] = None
+    not_returned: Optional[VisaUserSubmissionChargebackConsumerMerchandiseMisrepresentationNotReturned] = None
     """Not returned. Present if and only if `return_outcome` is `not_returned`."""
 
     purchase_explanation: str
@@ -1248,6 +1340,10 @@ class VisaUserSubmissionChargebackConsumerMerchandiseNotReceivedCardholderCancel
     """Reason."""
 
 
+class VisaUserSubmissionChargebackConsumerMerchandiseNotReceivedDelayedNotReturned(BaseModel):
+    pass
+
+
 class VisaUserSubmissionChargebackConsumerMerchandiseNotReceivedDelayedReturnAttempted(BaseModel):
     attempted_at: date
     """Attempted at."""
@@ -1265,7 +1361,7 @@ class VisaUserSubmissionChargebackConsumerMerchandiseNotReceivedDelayed(BaseMode
     explanation: str
     """Explanation."""
 
-    not_returned: Optional[object] = None
+    not_returned: Optional[VisaUserSubmissionChargebackConsumerMerchandiseNotReceivedDelayedNotReturned] = None
     """Not returned. Present if and only if `return_outcome` is `not_returned`."""
 
     return_attempted: Optional[VisaUserSubmissionChargebackConsumerMerchandiseNotReceivedDelayedReturnAttempted] = None
@@ -1294,6 +1390,10 @@ class VisaUserSubmissionChargebackConsumerMerchandiseNotReceivedDeliveredToWrong
 class VisaUserSubmissionChargebackConsumerMerchandiseNotReceivedMerchantCancellation(BaseModel):
     canceled_at: date
     """Canceled at."""
+
+
+class VisaUserSubmissionChargebackConsumerMerchandiseNotReceivedNoCancellation(BaseModel):
+    pass
 
 
 class VisaUserSubmissionChargebackConsumerMerchandiseNotReceived(BaseModel):
@@ -1353,7 +1453,7 @@ class VisaUserSubmissionChargebackConsumerMerchandiseNotReceived(BaseModel):
     - `prohibited_by_local_law` - Prohibited by local law.
     """
 
-    no_cancellation: Optional[object] = None
+    no_cancellation: Optional[VisaUserSubmissionChargebackConsumerMerchandiseNotReceivedNoCancellation] = None
     """No cancellation.
 
     Present if and only if `cancellation_outcome` is `no_cancellation`.
@@ -1361,6 +1461,10 @@ class VisaUserSubmissionChargebackConsumerMerchandiseNotReceived(BaseModel):
 
     purchase_info_and_explanation: str
     """Purchase information and explanation."""
+
+
+class VisaUserSubmissionChargebackConsumerNonReceiptOfCash(BaseModel):
+    pass
 
 
 class VisaUserSubmissionChargebackConsumerOriginalCreditTransactionNotAccepted(BaseModel):
@@ -1374,6 +1478,10 @@ class VisaUserSubmissionChargebackConsumerOriginalCreditTransactionNotAccepted(B
       regulation.
     - `recipient_refused` - Recipient refused.
     """
+
+
+class VisaUserSubmissionChargebackConsumerQualityMerchandiseNotReturned(BaseModel):
+    pass
 
 
 class VisaUserSubmissionChargebackConsumerQualityMerchandiseOngoingNegotiations(BaseModel):
@@ -1453,7 +1561,7 @@ class VisaUserSubmissionChargebackConsumerQualityMerchandise(BaseModel):
     - `prohibited_by_local_law` - Prohibited by local law.
     """
 
-    not_returned: Optional[object] = None
+    not_returned: Optional[VisaUserSubmissionChargebackConsumerQualityMerchandiseNotReturned] = None
     """Not returned. Present if and only if `return_outcome` is `not_returned`."""
 
     ongoing_negotiations: Optional[VisaUserSubmissionChargebackConsumerQualityMerchandiseOngoingNegotiations] = None
@@ -1632,6 +1740,10 @@ class VisaUserSubmissionChargebackConsumerServicesNotReceivedMerchantCancellatio
     """Canceled at."""
 
 
+class VisaUserSubmissionChargebackConsumerServicesNotReceivedNoCancellation(BaseModel):
+    pass
+
+
 class VisaUserSubmissionChargebackConsumerServicesNotReceived(BaseModel):
     cancellation_outcome: Literal[
         "cardholder_cancellation_prior_to_expected_receipt", "merchant_cancellation", "no_cancellation"
@@ -1669,7 +1781,7 @@ class VisaUserSubmissionChargebackConsumerServicesNotReceived(BaseModel):
     - `prohibited_by_local_law` - Prohibited by local law.
     """
 
-    no_cancellation: Optional[object] = None
+    no_cancellation: Optional[VisaUserSubmissionChargebackConsumerServicesNotReceivedNoCancellation] = None
     """No cancellation.
 
     Present if and only if `cancellation_outcome` is `no_cancellation`.
@@ -1885,7 +1997,7 @@ class VisaUserSubmissionChargeback(BaseModel):
     Present if and only if `category` is `consumer_merchandise_not_received`.
     """
 
-    consumer_non_receipt_of_cash: Optional[object] = None
+    consumer_non_receipt_of_cash: Optional[VisaUserSubmissionChargebackConsumerNonReceiptOfCash] = None
     """Non-receipt of cash.
 
     Present if and only if `category` is `consumer_non_receipt_of_cash`.

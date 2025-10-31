@@ -25,6 +25,7 @@ __all__ = [
     "SourceCardDeclineAdditionalAmountsUnknown",
     "SourceCardDeclineAdditionalAmountsVision",
     "SourceCardDeclineNetworkDetails",
+    "SourceCardDeclineNetworkDetailsPulse",
     "SourceCardDeclineNetworkDetailsVisa",
     "SourceCardDeclineNetworkIdentifiers",
     "SourceCardDeclineVerification",
@@ -34,6 +35,7 @@ __all__ = [
     "SourceCheckDepositRejection",
     "SourceInboundFednowTransferDecline",
     "SourceInboundRealTimePaymentsTransferDecline",
+    "SourceOther",
     "SourceWireDecline",
 ]
 
@@ -321,6 +323,10 @@ class SourceCardDeclineAdditionalAmounts(BaseModel):
     """The part of this transaction amount that was for vision-related services."""
 
 
+class SourceCardDeclineNetworkDetailsPulse(BaseModel):
+    pass
+
+
 class SourceCardDeclineNetworkDetailsVisa(BaseModel):
     electronic_commerce_indicator: Optional[
         Literal[
@@ -447,7 +453,7 @@ class SourceCardDeclineNetworkDetails(BaseModel):
     - `pulse` - Pulse
     """
 
-    pulse: Optional[object] = None
+    pulse: Optional[SourceCardDeclineNetworkDetailsPulse] = None
     """Fields specific to the `pulse` network."""
 
     visa: Optional[SourceCardDeclineNetworkDetailsVisa] = None
@@ -1086,6 +1092,10 @@ class SourceInboundRealTimePaymentsTransferDecline(BaseModel):
     """The identifier of the Real-Time Payments Transfer that led to this Transaction."""
 
 
+class SourceOther(BaseModel):
+    pass
+
+
 class SourceWireDecline(BaseModel):
     inbound_wire_transfer_id: str
     """The identifier of the Inbound Wire Transfer that was declined."""
@@ -1198,7 +1208,7 @@ class Source(BaseModel):
     equal to `inbound_real_time_payments_transfer_decline`.
     """
 
-    other: Optional[object] = None
+    other: Optional[SourceOther] = None
     """
     If the category of this Transaction source is equal to `other`, this field will
     contain an empty object, otherwise it will contain null.

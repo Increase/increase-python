@@ -26,10 +26,12 @@ __all__ = [
     "CardAuthorizationAdditionalAmountsVision",
     "CardAuthorizationDecline",
     "CardAuthorizationNetworkDetails",
+    "CardAuthorizationNetworkDetailsPulse",
     "CardAuthorizationNetworkDetailsVisa",
     "CardAuthorizationNetworkIdentifiers",
     "CardAuthorizationRequestDetails",
     "CardAuthorizationRequestDetailsIncrementalAuthorization",
+    "CardAuthorizationRequestDetailsInitialAuthorization",
     "CardAuthorizationVerification",
     "CardAuthorizationVerificationCardVerificationCode",
     "CardAuthorizationVerificationCardholderAddress",
@@ -277,6 +279,10 @@ class CardAuthorizationDecline(BaseModel):
     """The reason the authorization was declined."""
 
 
+class CardAuthorizationNetworkDetailsPulse(BaseModel):
+    pass
+
+
 class CardAuthorizationNetworkDetailsVisa(BaseModel):
     electronic_commerce_indicator: Optional[
         Literal[
@@ -403,7 +409,7 @@ class CardAuthorizationNetworkDetails(BaseModel):
     - `pulse` - Pulse
     """
 
-    pulse: Optional[object] = None
+    pulse: Optional[CardAuthorizationNetworkDetailsPulse] = None
     """Fields specific to the `pulse` network."""
 
     visa: Optional[CardAuthorizationNetworkDetailsVisa] = None
@@ -448,6 +454,10 @@ class CardAuthorizationRequestDetailsIncrementalAuthorization(BaseModel):
     """
 
 
+class CardAuthorizationRequestDetailsInitialAuthorization(BaseModel):
+    pass
+
+
 class CardAuthorizationRequestDetails(BaseModel):
     category: Literal["initial_authorization", "incremental_authorization"]
     """
@@ -462,7 +472,7 @@ class CardAuthorizationRequestDetails(BaseModel):
     incremental_authorization: Optional[CardAuthorizationRequestDetailsIncrementalAuthorization] = None
     """Fields specific to the category `incremental_authorization`."""
 
-    initial_authorization: Optional[object] = None
+    initial_authorization: Optional[CardAuthorizationRequestDetailsInitialAuthorization] = None
     """Fields specific to the category `initial_authorization`."""
 
 
