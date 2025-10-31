@@ -110,6 +110,12 @@ class AccountStatementBai2(TypedDict, total=False):
     will include end-of-day balances for the provided date.
     """
 
+    program_id: str
+    """The Program to create a BAI2 report for.
+
+    If not provided, all open accounts will be included.
+    """
+
 
 class AccountStatementOfxCreatedAt(TypedDict, total=False):
     after: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]

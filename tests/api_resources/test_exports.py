@@ -33,6 +33,7 @@ class TestExports:
             account_statement_bai2={
                 "account_id": "account_id",
                 "effective_date": parse_date("2019-12-27"),
+                "program_id": "program_id",
             },
             account_statement_ofx={
                 "account_id": "account_id",
@@ -201,6 +202,7 @@ class TestAsyncExports:
             account_statement_bai2={
                 "account_id": "account_id",
                 "effective_date": parse_date("2019-12-27"),
+                "program_id": "program_id",
             },
             account_statement_ofx={
                 "account_id": "account_id",
