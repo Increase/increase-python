@@ -1134,17 +1134,6 @@ class PendingTransaction(BaseModel):
     For dollars, for example, this is cents.
     """
 
-    balance_impact: Literal["affects_available_balance", "none"]
-    """
-    How the Pending Transaction affects the balance of its Account while its status
-    is `pending`.
-
-    - `affects_available_balance` - This Pending Transaction will decrement the
-      available balance on the Account while its status is `pending`.
-    - `none` - This Pending Transaction does not affect the available balance on the
-      Account.
-    """
-
     completed_at: Optional[datetime] = None
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which the Pending
@@ -1176,6 +1165,13 @@ class PendingTransaction(BaseModel):
     For a Pending Transaction related to a transfer, this is the description you
     provide. For a Pending Transaction related to a payment, this is the description
     the vendor provides.
+    """
+
+    held_amount: int
+    """
+    The amount that this Pending Transaction decrements the available balance of its
+    Account. This is usually the same as `amount`, but will differ if the amount is
+    positive.
     """
 
     route_id: Optional[str] = None
