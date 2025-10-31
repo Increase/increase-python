@@ -40,11 +40,11 @@ class CheckTransferCreateParams(TypedDict, total=False):
     balance_check: Literal["full", "none"]
     """How the account's available balance should be checked.
 
-    Please contact [support@increase.com](mailto:support@increase.com) to enable
-    this parameter.
+    If omitted, the default behavior is `balance_check: full`.
 
     - `full` - The available balance of the account must be at least the amount of
-      the check, and a Pending Transaction will be created for the full amount.
+      the check, and a Pending Transaction will be created for the full amount. This
+      is the default behavior if `balance_check` is omitted.
     - `none` - No balance check will performed when the check transfer is initiated.
       A zero-dollar Pending Transaction will be created. The balance will still be
       checked when the Inbound Check Deposit is created.
