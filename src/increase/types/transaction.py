@@ -33,6 +33,7 @@ __all__ = [
     "SourceCardFinancialAdditionalAmountsUnknown",
     "SourceCardFinancialAdditionalAmountsVision",
     "SourceCardFinancialNetworkDetails",
+    "SourceCardFinancialNetworkDetailsPulse",
     "SourceCardFinancialNetworkDetailsVisa",
     "SourceCardFinancialNetworkIdentifiers",
     "SourceCardFinancialVerification",
@@ -83,6 +84,7 @@ __all__ = [
     "SourceInboundWireTransferReversal",
     "SourceInterestPayment",
     "SourceInternalSource",
+    "SourceOther",
     "SourceRealTimePaymentsTransferAcknowledgement",
     "SourceSampleFunds",
     "SourceSwiftTransferIntention",
@@ -774,6 +776,10 @@ class SourceCardFinancialAdditionalAmounts(BaseModel):
     """The part of this transaction amount that was for vision-related services."""
 
 
+class SourceCardFinancialNetworkDetailsPulse(BaseModel):
+    pass
+
+
 class SourceCardFinancialNetworkDetailsVisa(BaseModel):
     electronic_commerce_indicator: Optional[
         Literal[
@@ -900,7 +906,7 @@ class SourceCardFinancialNetworkDetails(BaseModel):
     - `pulse` - Pulse
     """
 
-    pulse: Optional[object] = None
+    pulse: Optional[SourceCardFinancialNetworkDetailsPulse] = None
     """Fields specific to the `pulse` network."""
 
     visa: Optional[SourceCardFinancialNetworkDetailsVisa] = None
@@ -3273,6 +3279,10 @@ class SourceInternalSource(BaseModel):
         __pydantic_extra__: Dict[str, object]
 
 
+class SourceOther(BaseModel):
+    pass
+
+
 class SourceRealTimePaymentsTransferAcknowledgement(BaseModel):
     amount: int
     """The transfer amount in USD cents."""
@@ -3761,7 +3771,7 @@ class Source(BaseModel):
     `reason` attribute for more information.
     """
 
-    other: Optional[object] = None
+    other: Optional[SourceOther] = None
     """
     If the category of this Transaction source is equal to `other`, this field will
     contain an empty object, otherwise it will contain null.

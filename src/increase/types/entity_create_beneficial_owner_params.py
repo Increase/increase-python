@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Dict, List, Union
 from datetime import date
-from typing_extensions import Literal, Required, Annotated, TypedDict
+from typing_extensions import Literal, Required, Annotated, TypeAlias, TypedDict
 
 from .._utils import PropertyInfo
 
@@ -102,7 +102,7 @@ class BeneficialOwnerIndividualIdentificationPassport(TypedDict, total=False):
     """The identifier of the File containing the passport."""
 
 
-class BeneficialOwnerIndividualIdentification(TypedDict, total=False):
+class BeneficialOwnerIndividualIdentificationTyped(TypedDict, total=False):
     method: Required[
         Literal[
             "social_security_number",
@@ -147,6 +147,11 @@ class BeneficialOwnerIndividualIdentification(TypedDict, total=False):
     """
 
 
+BeneficialOwnerIndividualIdentification: TypeAlias = Union[
+    BeneficialOwnerIndividualIdentificationTyped, Dict[str, object]
+]
+
+
 class BeneficialOwnerIndividual(TypedDict, total=False):
     address: Required[BeneficialOwnerIndividualAddress]
     """The individual's physical address.
@@ -172,7 +177,7 @@ class BeneficialOwnerIndividual(TypedDict, total=False):
     """
 
 
-class BeneficialOwner(TypedDict, total=False):
+class BeneficialOwnerTyped(TypedDict, total=False):
     individual: Required[BeneficialOwnerIndividual]
     """Personal details for the beneficial owner."""
 
@@ -185,3 +190,6 @@ class BeneficialOwner(TypedDict, total=False):
 
     company_title: str
     """This person's role or title within the entity."""
+
+
+BeneficialOwner: TypeAlias = Union[BeneficialOwnerTyped, Dict[str, object]]
