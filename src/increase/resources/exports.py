@@ -62,7 +62,7 @@ class ExportsResource(SyncAPIResource):
         bookkeeping_account_balance_csv: export_create_params.BookkeepingAccountBalanceCsv | Omit = omit,
         entity_csv: export_create_params.EntityCsv | Omit = omit,
         transaction_csv: export_create_params.TransactionCsv | Omit = omit,
-        vendor_csv: object | Omit = omit,
+        vendor_csv: export_create_params.VendorCsv | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -279,7 +279,7 @@ class AsyncExportsResource(AsyncAPIResource):
         bookkeeping_account_balance_csv: export_create_params.BookkeepingAccountBalanceCsv | Omit = omit,
         entity_csv: export_create_params.EntityCsv | Omit = omit,
         transaction_csv: export_create_params.TransactionCsv | Omit = omit,
-        vendor_csv: object | Omit = omit,
+        vendor_csv: export_create_params.VendorCsv | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,

@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-from typing import Iterable
-from typing_extensions import Literal, Required, TypedDict
+from typing import Dict, Union, Iterable
+from typing_extensions import Literal, Required, TypeAlias, TypedDict
 
 __all__ = [
     "CheckTransferCreateParams",
@@ -118,7 +118,7 @@ class PhysicalCheckReturnAddress(TypedDict, total=False):
     """The second line of the return address."""
 
 
-class PhysicalCheck(TypedDict, total=False):
+class PhysicalCheckTyped(TypedDict, total=False):
     mailing_address: Required[PhysicalCheckMailingAddress]
     """Details for where Increase will mail the check."""
 
@@ -171,7 +171,10 @@ class PhysicalCheck(TypedDict, total=False):
     """
 
 
-class ThirdParty(TypedDict, total=False):
+PhysicalCheck: TypeAlias = Union[PhysicalCheckTyped, Dict[str, object]]
+
+
+class ThirdPartyTyped(TypedDict, total=False):
     recipient_name: str
     """The pay-to name you will print on the check.
 
@@ -179,3 +182,6 @@ class ThirdParty(TypedDict, total=False):
     this is omitted, Increase will be unable to validate the payer name when the
     check is deposited.
     """
+
+
+ThirdParty: TypeAlias = Union[ThirdPartyTyped, Dict[str, object]]

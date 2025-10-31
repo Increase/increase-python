@@ -16,6 +16,7 @@ __all__ = [
     "VisaChargebackAuthorization",
     "VisaChargebackConsumerCanceledMerchandise",
     "VisaChargebackConsumerCanceledMerchandiseCardholderCancellation",
+    "VisaChargebackConsumerCanceledMerchandiseNotReturned",
     "VisaChargebackConsumerCanceledMerchandiseReturnAttempted",
     "VisaChargebackConsumerCanceledMerchandiseReturned",
     "VisaChargebackConsumerCanceledRecurringTransaction",
@@ -23,12 +24,16 @@ __all__ = [
     "VisaChargebackConsumerCanceledServices",
     "VisaChargebackConsumerCanceledServicesCardholderCancellation",
     "VisaChargebackConsumerCanceledServicesGuaranteedReservation",
+    "VisaChargebackConsumerCanceledServicesOther",
+    "VisaChargebackConsumerCanceledServicesTimeshare",
     "VisaChargebackConsumerCounterfeitMerchandise",
     "VisaChargebackConsumerCreditNotProcessed",
     "VisaChargebackConsumerDamagedOrDefectiveMerchandise",
+    "VisaChargebackConsumerDamagedOrDefectiveMerchandiseNotReturned",
     "VisaChargebackConsumerDamagedOrDefectiveMerchandiseReturnAttempted",
     "VisaChargebackConsumerDamagedOrDefectiveMerchandiseReturned",
     "VisaChargebackConsumerMerchandiseMisrepresentation",
+    "VisaChargebackConsumerMerchandiseMisrepresentationNotReturned",
     "VisaChargebackConsumerMerchandiseMisrepresentationReturnAttempted",
     "VisaChargebackConsumerMerchandiseMisrepresentationReturned",
     "VisaChargebackConsumerMerchandiseNotAsDescribed",
@@ -37,12 +42,16 @@ __all__ = [
     "VisaChargebackConsumerMerchandiseNotReceived",
     "VisaChargebackConsumerMerchandiseNotReceivedCardholderCancellationPriorToExpectedReceipt",
     "VisaChargebackConsumerMerchandiseNotReceivedDelayed",
+    "VisaChargebackConsumerMerchandiseNotReceivedDelayedNotReturned",
     "VisaChargebackConsumerMerchandiseNotReceivedDelayedReturnAttempted",
     "VisaChargebackConsumerMerchandiseNotReceivedDelayedReturned",
     "VisaChargebackConsumerMerchandiseNotReceivedDeliveredToWrongLocation",
     "VisaChargebackConsumerMerchandiseNotReceivedMerchantCancellation",
+    "VisaChargebackConsumerMerchandiseNotReceivedNoCancellation",
+    "VisaChargebackConsumerNonReceiptOfCash",
     "VisaChargebackConsumerOriginalCreditTransactionNotAccepted",
     "VisaChargebackConsumerQualityMerchandise",
+    "VisaChargebackConsumerQualityMerchandiseNotReturned",
     "VisaChargebackConsumerQualityMerchandiseOngoingNegotiations",
     "VisaChargebackConsumerQualityMerchandiseReturnAttempted",
     "VisaChargebackConsumerQualityMerchandiseReturned",
@@ -56,6 +65,7 @@ __all__ = [
     "VisaChargebackConsumerServicesNotReceived",
     "VisaChargebackConsumerServicesNotReceivedCardholderCancellationPriorToExpectedReceipt",
     "VisaChargebackConsumerServicesNotReceivedMerchantCancellation",
+    "VisaChargebackConsumerServicesNotReceivedNoCancellation",
     "VisaChargebackFraud",
     "VisaChargebackProcessingError",
     "VisaChargebackProcessingErrorDuplicateTransaction",
@@ -133,6 +143,10 @@ class VisaChargebackConsumerCanceledMerchandiseCardholderCancellation(TypedDict,
 
     reason: Required[str]
     """Reason."""
+
+
+class VisaChargebackConsumerCanceledMerchandiseNotReturned(TypedDict, total=False):
+    pass
 
 
 class VisaChargebackConsumerCanceledMerchandiseReturnAttempted(TypedDict, total=False):
@@ -214,7 +228,7 @@ class VisaChargebackConsumerCanceledMerchandise(TypedDict, total=False):
     cardholder_cancellation: VisaChargebackConsumerCanceledMerchandiseCardholderCancellation
     """Cardholder cancellation."""
 
-    not_returned: object
+    not_returned: VisaChargebackConsumerCanceledMerchandiseNotReturned
     """Not returned. Required if and only if `return_outcome` is `not_returned`."""
 
     return_attempted: VisaChargebackConsumerCanceledMerchandiseReturnAttempted
@@ -297,6 +311,14 @@ class VisaChargebackConsumerCanceledServicesGuaranteedReservation(TypedDict, tot
     """
 
 
+class VisaChargebackConsumerCanceledServicesOther(TypedDict, total=False):
+    pass
+
+
+class VisaChargebackConsumerCanceledServicesTimeshare(TypedDict, total=False):
+    pass
+
+
 class VisaChargebackConsumerCanceledServices(TypedDict, total=False):
     cardholder_cancellation: Required[VisaChargebackConsumerCanceledServicesCardholderCancellation]
     """Cardholder cancellation."""
@@ -328,13 +350,13 @@ class VisaChargebackConsumerCanceledServices(TypedDict, total=False):
     Required if and only if `service_type` is `guaranteed_reservation`.
     """
 
-    other: object
+    other: VisaChargebackConsumerCanceledServicesOther
     """Other service type explanation.
 
     Required if and only if `service_type` is `other`.
     """
 
-    timeshare: object
+    timeshare: VisaChargebackConsumerCanceledServicesTimeshare
     """Timeshare explanation. Required if and only if `service_type` is `timeshare`."""
 
 
@@ -358,6 +380,10 @@ class VisaChargebackConsumerCreditNotProcessed(TypedDict, total=False):
 
     credit_expected_at: Annotated[Union[str, date], PropertyInfo(format="iso8601")]
     """Credit expected at."""
+
+
+class VisaChargebackConsumerDamagedOrDefectiveMerchandiseNotReturned(TypedDict, total=False):
+    pass
 
 
 class VisaChargebackConsumerDamagedOrDefectiveMerchandiseReturnAttempted(TypedDict, total=False):
@@ -436,7 +462,7 @@ class VisaChargebackConsumerDamagedOrDefectiveMerchandise(TypedDict, total=False
     - `return_attempted` - Return attempted.
     """
 
-    not_returned: object
+    not_returned: VisaChargebackConsumerDamagedOrDefectiveMerchandiseNotReturned
     """Not returned. Required if and only if `return_outcome` is `not_returned`."""
 
     return_attempted: VisaChargebackConsumerDamagedOrDefectiveMerchandiseReturnAttempted
@@ -447,6 +473,10 @@ class VisaChargebackConsumerDamagedOrDefectiveMerchandise(TypedDict, total=False
 
     returned: VisaChargebackConsumerDamagedOrDefectiveMerchandiseReturned
     """Returned. Required if and only if `return_outcome` is `returned`."""
+
+
+class VisaChargebackConsumerMerchandiseMisrepresentationNotReturned(TypedDict, total=False):
+    pass
 
 
 class VisaChargebackConsumerMerchandiseMisrepresentationReturnAttempted(TypedDict, total=False):
@@ -528,7 +558,7 @@ class VisaChargebackConsumerMerchandiseMisrepresentation(TypedDict, total=False)
     - `return_attempted` - Return attempted.
     """
 
-    not_returned: object
+    not_returned: VisaChargebackConsumerMerchandiseMisrepresentationNotReturned
     """Not returned. Required if and only if `return_outcome` is `not_returned`."""
 
     return_attempted: VisaChargebackConsumerMerchandiseMisrepresentationReturnAttempted
@@ -631,6 +661,10 @@ class VisaChargebackConsumerMerchandiseNotReceivedCardholderCancellationPriorToE
     """Reason."""
 
 
+class VisaChargebackConsumerMerchandiseNotReceivedDelayedNotReturned(TypedDict, total=False):
+    pass
+
+
 class VisaChargebackConsumerMerchandiseNotReceivedDelayedReturnAttempted(TypedDict, total=False):
     attempted_at: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """Attempted at."""
@@ -656,7 +690,7 @@ class VisaChargebackConsumerMerchandiseNotReceivedDelayed(TypedDict, total=False
     - `return_attempted` - Return attempted.
     """
 
-    not_returned: object
+    not_returned: VisaChargebackConsumerMerchandiseNotReceivedDelayedNotReturned
     """Not returned. Required if and only if `return_outcome` is `not_returned`."""
 
     return_attempted: VisaChargebackConsumerMerchandiseNotReceivedDelayedReturnAttempted
@@ -677,6 +711,10 @@ class VisaChargebackConsumerMerchandiseNotReceivedDeliveredToWrongLocation(Typed
 class VisaChargebackConsumerMerchandiseNotReceivedMerchantCancellation(TypedDict, total=False):
     canceled_at: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """Canceled at."""
+
+
+class VisaChargebackConsumerMerchandiseNotReceivedNoCancellation(TypedDict, total=False):
+    pass
 
 
 class VisaChargebackConsumerMerchandiseNotReceived(TypedDict, total=False):
@@ -735,11 +773,15 @@ class VisaChargebackConsumerMerchandiseNotReceived(TypedDict, total=False):
     Required if and only if `cancellation_outcome` is `merchant_cancellation`.
     """
 
-    no_cancellation: object
+    no_cancellation: VisaChargebackConsumerMerchandiseNotReceivedNoCancellation
     """No cancellation.
 
     Required if and only if `cancellation_outcome` is `no_cancellation`.
     """
+
+
+class VisaChargebackConsumerNonReceiptOfCash(TypedDict, total=False):
+    pass
 
 
 class VisaChargebackConsumerOriginalCreditTransactionNotAccepted(TypedDict, total=False):
@@ -753,6 +795,10 @@ class VisaChargebackConsumerOriginalCreditTransactionNotAccepted(TypedDict, tota
       regulation.
     - `recipient_refused` - Recipient refused.
     """
+
+
+class VisaChargebackConsumerQualityMerchandiseNotReturned(TypedDict, total=False):
+    pass
 
 
 class VisaChargebackConsumerQualityMerchandiseOngoingNegotiations(TypedDict, total=False):
@@ -848,7 +894,7 @@ class VisaChargebackConsumerQualityMerchandise(TypedDict, total=False):
     - `return_attempted` - Return attempted.
     """
 
-    not_returned: object
+    not_returned: VisaChargebackConsumerQualityMerchandiseNotReturned
     """Not returned. Required if and only if `return_outcome` is `not_returned`."""
 
     ongoing_negotiations: VisaChargebackConsumerQualityMerchandiseOngoingNegotiations
@@ -1013,6 +1059,10 @@ class VisaChargebackConsumerServicesNotReceivedMerchantCancellation(TypedDict, t
     """Canceled at."""
 
 
+class VisaChargebackConsumerServicesNotReceivedNoCancellation(TypedDict, total=False):
+    pass
+
+
 class VisaChargebackConsumerServicesNotReceived(TypedDict, total=False):
     cancellation_outcome: Required[
         Literal["cardholder_cancellation_prior_to_expected_receipt", "merchant_cancellation", "no_cancellation"]
@@ -1053,7 +1103,7 @@ class VisaChargebackConsumerServicesNotReceived(TypedDict, total=False):
     Required if and only if `cancellation_outcome` is `merchant_cancellation`.
     """
 
-    no_cancellation: object
+    no_cancellation: VisaChargebackConsumerServicesNotReceivedNoCancellation
     """No cancellation.
 
     Required if and only if `cancellation_outcome` is `no_cancellation`.
@@ -1262,7 +1312,7 @@ class VisaChargeback(TypedDict, total=False):
     Required if and only if `category` is `consumer_merchandise_not_received`.
     """
 
-    consumer_non_receipt_of_cash: object
+    consumer_non_receipt_of_cash: VisaChargebackConsumerNonReceiptOfCash
     """Non-receipt of cash.
 
     Required if and only if `category` is `consumer_non_receipt_of_cash`.

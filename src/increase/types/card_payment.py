@@ -27,6 +27,7 @@ __all__ = [
     "ElementCardAuthorizationAdditionalAmountsUnknown",
     "ElementCardAuthorizationAdditionalAmountsVision",
     "ElementCardAuthorizationNetworkDetails",
+    "ElementCardAuthorizationNetworkDetailsPulse",
     "ElementCardAuthorizationNetworkDetailsVisa",
     "ElementCardAuthorizationNetworkIdentifiers",
     "ElementCardAuthorizationVerification",
@@ -46,6 +47,7 @@ __all__ = [
     "ElementCardDeclineAdditionalAmountsUnknown",
     "ElementCardDeclineAdditionalAmountsVision",
     "ElementCardDeclineNetworkDetails",
+    "ElementCardDeclineNetworkDetailsPulse",
     "ElementCardDeclineNetworkDetailsVisa",
     "ElementCardDeclineNetworkIdentifiers",
     "ElementCardDeclineVerification",
@@ -64,6 +66,7 @@ __all__ = [
     "ElementCardFinancialAdditionalAmountsUnknown",
     "ElementCardFinancialAdditionalAmountsVision",
     "ElementCardFinancialNetworkDetails",
+    "ElementCardFinancialNetworkDetailsPulse",
     "ElementCardFinancialNetworkDetailsVisa",
     "ElementCardFinancialNetworkIdentifiers",
     "ElementCardFinancialVerification",
@@ -122,11 +125,13 @@ __all__ = [
     "ElementCardValidationAdditionalAmountsUnknown",
     "ElementCardValidationAdditionalAmountsVision",
     "ElementCardValidationNetworkDetails",
+    "ElementCardValidationNetworkDetailsPulse",
     "ElementCardValidationNetworkDetailsVisa",
     "ElementCardValidationNetworkIdentifiers",
     "ElementCardValidationVerification",
     "ElementCardValidationVerificationCardVerificationCode",
     "ElementCardValidationVerificationCardholderAddress",
+    "ElementOther",
     "State",
 ]
 
@@ -494,6 +499,10 @@ class ElementCardAuthorizationAdditionalAmounts(BaseModel):
     """The part of this transaction amount that was for vision-related services."""
 
 
+class ElementCardAuthorizationNetworkDetailsPulse(BaseModel):
+    pass
+
+
 class ElementCardAuthorizationNetworkDetailsVisa(BaseModel):
     electronic_commerce_indicator: Optional[
         Literal[
@@ -620,7 +629,7 @@ class ElementCardAuthorizationNetworkDetails(BaseModel):
     - `pulse` - Pulse
     """
 
-    pulse: Optional[object] = None
+    pulse: Optional[ElementCardAuthorizationNetworkDetailsPulse] = None
     """Fields specific to the `pulse` network."""
 
     visa: Optional[ElementCardAuthorizationNetworkDetailsVisa] = None
@@ -1152,6 +1161,10 @@ class ElementCardDeclineAdditionalAmounts(BaseModel):
     """The part of this transaction amount that was for vision-related services."""
 
 
+class ElementCardDeclineNetworkDetailsPulse(BaseModel):
+    pass
+
+
 class ElementCardDeclineNetworkDetailsVisa(BaseModel):
     electronic_commerce_indicator: Optional[
         Literal[
@@ -1278,7 +1291,7 @@ class ElementCardDeclineNetworkDetails(BaseModel):
     - `pulse` - Pulse
     """
 
-    pulse: Optional[object] = None
+    pulse: Optional[ElementCardDeclineNetworkDetailsPulse] = None
     """Fields specific to the `pulse` network."""
 
     visa: Optional[ElementCardDeclineNetworkDetailsVisa] = None
@@ -1837,6 +1850,10 @@ class ElementCardFinancialAdditionalAmounts(BaseModel):
     """The part of this transaction amount that was for vision-related services."""
 
 
+class ElementCardFinancialNetworkDetailsPulse(BaseModel):
+    pass
+
+
 class ElementCardFinancialNetworkDetailsVisa(BaseModel):
     electronic_commerce_indicator: Optional[
         Literal[
@@ -1963,7 +1980,7 @@ class ElementCardFinancialNetworkDetails(BaseModel):
     - `pulse` - Pulse
     """
 
-    pulse: Optional[object] = None
+    pulse: Optional[ElementCardFinancialNetworkDetailsPulse] = None
     """Fields specific to the `pulse` network."""
 
     visa: Optional[ElementCardFinancialNetworkDetailsVisa] = None
@@ -4192,6 +4209,10 @@ class ElementCardValidationAdditionalAmounts(BaseModel):
     """The part of this transaction amount that was for vision-related services."""
 
 
+class ElementCardValidationNetworkDetailsPulse(BaseModel):
+    pass
+
+
 class ElementCardValidationNetworkDetailsVisa(BaseModel):
     electronic_commerce_indicator: Optional[
         Literal[
@@ -4318,7 +4339,7 @@ class ElementCardValidationNetworkDetails(BaseModel):
     - `pulse` - Pulse
     """
 
-    pulse: Optional[object] = None
+    pulse: Optional[ElementCardValidationNetworkDetailsPulse] = None
     """Fields specific to the `pulse` network."""
 
     visa: Optional[ElementCardValidationNetworkDetailsVisa] = None
@@ -4545,6 +4566,10 @@ class ElementCardValidation(BaseModel):
         __pydantic_extra__: Dict[str, object]
 
 
+class ElementOther(BaseModel):
+    pass
+
+
 class Element(BaseModel):
     card_authentication: Optional[ElementCardAuthentication] = None
     """A Card Authentication object.
@@ -4685,7 +4710,7 @@ class Element(BaseModel):
     the card payment element was created.
     """
 
-    other: Optional[object] = None
+    other: Optional[ElementOther] = None
     """
     If the category of this Transaction source is equal to `other`, this field will
     contain an empty object, otherwise it will contain null.
