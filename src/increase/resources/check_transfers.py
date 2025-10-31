@@ -82,11 +82,12 @@ class CheckTransfersResource(SyncAPIResource):
           source_account_number_id: The identifier of the Account Number from which to send the transfer and print
               on the check.
 
-          balance_check: How the account's available balance should be checked. Please contact
-              [support@increase.com](mailto:support@increase.com) to enable this parameter.
+          balance_check: How the account's available balance should be checked. If omitted, the default
+              behavior is `balance_check: full`.
 
               - `full` - The available balance of the account must be at least the amount of
-                the check, and a Pending Transaction will be created for the full amount.
+                the check, and a Pending Transaction will be created for the full amount. This
+                is the default behavior if `balance_check` is omitted.
               - `none` - No balance check will performed when the check transfer is initiated.
                 A zero-dollar Pending Transaction will be created. The balance will still be
                 checked when the Inbound Check Deposit is created.
@@ -432,11 +433,12 @@ class AsyncCheckTransfersResource(AsyncAPIResource):
           source_account_number_id: The identifier of the Account Number from which to send the transfer and print
               on the check.
 
-          balance_check: How the account's available balance should be checked. Please contact
-              [support@increase.com](mailto:support@increase.com) to enable this parameter.
+          balance_check: How the account's available balance should be checked. If omitted, the default
+              behavior is `balance_check: full`.
 
               - `full` - The available balance of the account must be at least the amount of
-                the check, and a Pending Transaction will be created for the full amount.
+                the check, and a Pending Transaction will be created for the full amount. This
+                is the default behavior if `balance_check` is omitted.
               - `none` - No balance check will performed when the check transfer is initiated.
                 A zero-dollar Pending Transaction will be created. The balance will still be
                 checked when the Inbound Check Deposit is created.
