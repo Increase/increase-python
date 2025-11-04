@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.380.0 (2025-11-04)
+
+Full Changelog: [v0.379.0...v0.380.0](https://github.com/Increase/increase-python/compare/v0.379.0...v0.380.0)
+
+### Features
+
+* **api:** api update ([e7c4e57](https://github.com/Increase/increase-python/commit/e7c4e57b6c1c7866ddfc4bf23b9ce14a1fc626ab))
+
+
+### Chores
+
+* **internal:** grammar fix (it's -&gt; its) ([ec095c7](https://github.com/Increase/increase-python/commit/ec095c776adc6f9de78da1982f4faa090b47d10c))
+
 ## 0.379.0 (2025-10-31)
 
 Full Changelog: [v0.378.0...v0.379.0](https://github.com/Increase/increase-python/compare/v0.378.0...v0.379.0)
