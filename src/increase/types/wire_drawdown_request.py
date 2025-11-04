@@ -125,14 +125,14 @@ class WireDrawdownRequest(BaseModel):
     [idempotency](https://increase.com/documentation/idempotency-keys).
     """
 
-    status: Literal["pending_submission", "pending_response", "fulfilled", "refused"]
+    status: Literal["pending_submission", "fulfilled", "pending_response", "refused"]
     """The lifecycle status of the drawdown request.
 
     - `pending_submission` - The drawdown request is queued to be submitted to
       Fedwire.
+    - `fulfilled` - The drawdown request has been fulfilled by the recipient.
     - `pending_response` - The drawdown request has been sent and the recipient
       should respond in some way.
-    - `fulfilled` - The drawdown request has been fulfilled by the recipient.
     - `refused` - The drawdown request has been refused by the recipient.
     """
 
