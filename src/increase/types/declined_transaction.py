@@ -582,16 +582,11 @@ class SourceCardDecline(BaseModel):
     card_payment_id: str
     """The ID of the Card Payment this transaction belongs to."""
 
-    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
+    currency: Literal["USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
     account currency.
 
-    - `CAD` - Canadian Dollar (CAD)
-    - `CHF` - Swiss Franc (CHF)
-    - `EUR` - Euro (EUR)
-    - `GBP` - British Pound (GBP)
-    - `JPY` - Japanese Yen (JPY)
     - `USD` - US Dollar (USD)
     """
 
@@ -928,16 +923,11 @@ class SourceCheckDepositRejection(BaseModel):
     check_deposit_id: str
     """The identifier of the Check Deposit that was rejected."""
 
-    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
+    currency: Literal["USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
     currency.
 
-    - `CAD` - Canadian Dollar (CAD)
-    - `CHF` - Swiss Franc (CHF)
-    - `EUR` - Euro (EUR)
-    - `GBP` - British Pound (GBP)
-    - `JPY` - Japanese Yen (JPY)
     - `USD` - US Dollar (USD)
     """
 
@@ -1040,17 +1030,12 @@ class SourceInboundRealTimePaymentsTransferDecline(BaseModel):
     creditor_name: str
     """The name the sender of the transfer specified as the recipient of the transfer."""
 
-    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
+    currency: Literal["USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code of the declined
     transfer's currency. This will always be "USD" for a Real-Time Payments
     transfer.
 
-    - `CAD` - Canadian Dollar (CAD)
-    - `CHF` - Swiss Franc (CHF)
-    - `EUR` - Euro (EUR)
-    - `GBP` - British Pound (GBP)
-    - `JPY` - Japanese Yen (JPY)
     - `USD` - US Dollar (USD)
     """
 
@@ -1253,17 +1238,12 @@ class DeclinedTransaction(BaseModel):
     Transaction occurred.
     """
 
-    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
+    currency: Literal["USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Declined
     Transaction's currency. This will match the currency on the Declined
     Transaction's Account.
 
-    - `CAD` - Canadian Dollar (CAD)
-    - `CHF` - Swiss Franc (CHF)
-    - `EUR` - Euro (EUR)
-    - `GBP` - British Pound (GBP)
-    - `JPY` - Japanese Yen (JPY)
     - `USD` - US Dollar (USD)
     """
 

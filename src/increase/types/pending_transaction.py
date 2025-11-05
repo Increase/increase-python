@@ -52,16 +52,11 @@ class SourceAccountTransferInstruction(BaseModel):
     For dollars, for example, this is cents.
     """
 
-    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
+    currency: Literal["USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the destination
     account currency.
 
-    - `CAD` - Canadian Dollar (CAD)
-    - `CHF` - Swiss Franc (CHF)
-    - `EUR` - Euro (EUR)
-    - `GBP` - British Pound (GBP)
-    - `JPY` - Japanese Yen (JPY)
     - `USD` - US Dollar (USD)
     """
 
@@ -544,16 +539,11 @@ class SourceCardAuthorization(BaseModel):
     card_payment_id: str
     """The ID of the Card Payment this transaction belongs to."""
 
-    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
+    currency: Literal["USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
     transaction's currency.
 
-    - `CAD` - Canadian Dollar (CAD)
-    - `CHF` - Swiss Franc (CHF)
-    - `EUR` - Euro (EUR)
-    - `GBP` - British Pound (GBP)
-    - `JPY` - Japanese Yen (JPY)
     - `USD` - US Dollar (USD)
     """
 
@@ -732,16 +722,11 @@ class SourceCheckDepositInstruction(BaseModel):
     check_deposit_id: Optional[str] = None
     """The identifier of the Check Deposit."""
 
-    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
+    currency: Literal["USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
     transaction's currency.
 
-    - `CAD` - Canadian Dollar (CAD)
-    - `CHF` - Swiss Franc (CHF)
-    - `EUR` - Euro (EUR)
-    - `GBP` - British Pound (GBP)
-    - `JPY` - Japanese Yen (JPY)
     - `USD` - US Dollar (USD)
     """
 
@@ -768,16 +753,11 @@ class SourceCheckTransferInstruction(BaseModel):
     amount: int
     """The transfer amount in USD cents."""
 
-    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
+    currency: Literal["USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
     currency.
 
-    - `CAD` - Canadian Dollar (CAD)
-    - `CHF` - Swiss Franc (CHF)
-    - `EUR` - Euro (EUR)
-    - `GBP` - British Pound (GBP)
-    - `JPY` - Japanese Yen (JPY)
     - `USD` - US Dollar (USD)
     """
 
@@ -833,16 +813,11 @@ class SourceInboundFundsHold(BaseModel):
     was created.
     """
 
-    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
+    currency: Literal["USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
     currency.
 
-    - `CAD` - Canadian Dollar (CAD)
-    - `CHF` - Swiss Franc (CHF)
-    - `EUR` - Euro (EUR)
-    - `GBP` - British Pound (GBP)
-    - `JPY` - Japanese Yen (JPY)
     - `USD` - US Dollar (USD)
     """
 
@@ -1156,17 +1131,12 @@ class PendingTransaction(BaseModel):
     Transaction occurred.
     """
 
-    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
+    currency: Literal["USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Pending
     Transaction's currency. This will match the currency on the Pending
     Transaction's Account.
 
-    - `CAD` - Canadian Dollar (CAD)
-    - `CHF` - Swiss Franc (CHF)
-    - `EUR` - Euro (EUR)
-    - `GBP` - British Pound (GBP)
-    - `JPY` - Japanese Yen (JPY)
     - `USD` - US Dollar (USD)
     """
 

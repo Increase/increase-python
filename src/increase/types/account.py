@@ -43,16 +43,11 @@ class Account(BaseModel):
     was created.
     """
 
-    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
+    currency: Literal["USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the Account
     currency.
 
-    - `CAD` - Canadian Dollar (CAD)
-    - `CHF` - Swiss Franc (CHF)
-    - `EUR` - Euro (EUR)
-    - `GBP` - British Pound (GBP)
-    - `JPY` - Japanese Yen (JPY)
     - `USD` - US Dollar (USD)
     """
 
