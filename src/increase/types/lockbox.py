@@ -50,6 +50,13 @@ class Lockbox(BaseModel):
     address: Address
     """The mailing address for the Lockbox."""
 
+    check_deposit_behavior: Literal["enabled", "disabled"]
+    """Indicates if checks mailed to this lockbox will be deposited.
+
+    - `enabled` - Checks mailed to this Lockbox will be deposited.
+    - `disabled` - Checks mailed to this Lockbox will not be deposited.
+    """
+
     created_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Lockbox
@@ -69,15 +76,6 @@ class Lockbox(BaseModel):
 
     recipient_name: Optional[str] = None
     """The recipient name you choose for the Lockbox."""
-
-    status: Literal["active", "inactive"]
-    """This indicates if mail can be sent to this address.
-
-    - `active` - This Lockbox is active. Checks mailed to it will be deposited
-      automatically.
-    - `inactive` - This Lockbox is inactive. Checks mailed to it will not be
-      deposited.
-    """
 
     type: Literal["lockbox"]
     """A constant representing the object's type.

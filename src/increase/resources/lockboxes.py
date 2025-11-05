@@ -137,9 +137,9 @@ class LockboxesResource(SyncAPIResource):
         self,
         lockbox_id: str,
         *,
+        check_deposit_behavior: Literal["enabled", "disabled"] | Omit = omit,
         description: str | Omit = omit,
         recipient_name: str | Omit = omit,
-        status: Literal["active", "inactive"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -154,16 +154,14 @@ class LockboxesResource(SyncAPIResource):
         Args:
           lockbox_id: The identifier of the Lockbox.
 
+          check_deposit_behavior: This indicates if checks mailed to this lockbox will be deposited.
+
+              - `enabled` - Checks mailed to this Lockbox will be deposited.
+              - `disabled` - Checks mailed to this Lockbox will not be deposited.
+
           description: The description you choose for the Lockbox.
 
           recipient_name: The recipient name you choose for the Lockbox.
-
-          status: This indicates if checks can be sent to the Lockbox.
-
-              - `active` - This Lockbox is active. Checks mailed to it will be deposited
-                automatically.
-              - `inactive` - This Lockbox is inactive. Checks mailed to it will not be
-                deposited.
 
           extra_headers: Send extra headers
 
@@ -181,9 +179,9 @@ class LockboxesResource(SyncAPIResource):
             f"/lockboxes/{lockbox_id}",
             body=maybe_transform(
                 {
+                    "check_deposit_behavior": check_deposit_behavior,
                     "description": description,
                     "recipient_name": recipient_name,
-                    "status": status,
                 },
                 lockbox_update_params.LockboxUpdateParams,
             ),
@@ -372,9 +370,9 @@ class AsyncLockboxesResource(AsyncAPIResource):
         self,
         lockbox_id: str,
         *,
+        check_deposit_behavior: Literal["enabled", "disabled"] | Omit = omit,
         description: str | Omit = omit,
         recipient_name: str | Omit = omit,
-        status: Literal["active", "inactive"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -389,16 +387,14 @@ class AsyncLockboxesResource(AsyncAPIResource):
         Args:
           lockbox_id: The identifier of the Lockbox.
 
+          check_deposit_behavior: This indicates if checks mailed to this lockbox will be deposited.
+
+              - `enabled` - Checks mailed to this Lockbox will be deposited.
+              - `disabled` - Checks mailed to this Lockbox will not be deposited.
+
           description: The description you choose for the Lockbox.
 
           recipient_name: The recipient name you choose for the Lockbox.
-
-          status: This indicates if checks can be sent to the Lockbox.
-
-              - `active` - This Lockbox is active. Checks mailed to it will be deposited
-                automatically.
-              - `inactive` - This Lockbox is inactive. Checks mailed to it will not be
-                deposited.
 
           extra_headers: Send extra headers
 
@@ -416,9 +412,9 @@ class AsyncLockboxesResource(AsyncAPIResource):
             f"/lockboxes/{lockbox_id}",
             body=await async_maybe_transform(
                 {
+                    "check_deposit_behavior": check_deposit_behavior,
                     "description": description,
                     "recipient_name": recipient_name,
-                    "status": status,
                 },
                 lockbox_update_params.LockboxUpdateParams,
             ),

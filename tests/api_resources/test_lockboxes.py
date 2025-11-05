@@ -108,9 +108,9 @@ class TestLockboxes:
     def test_method_update_with_all_params(self, client: Increase) -> None:
         lockbox = client.lockboxes.update(
             lockbox_id="lockbox_3xt21ok13q19advds4t5",
+            check_deposit_behavior="disabled",
             description="x",
             recipient_name="x",
-            status="inactive",
         )
         assert_matches_type(Lockbox, lockbox, path=["response"])
 
@@ -281,9 +281,9 @@ class TestAsyncLockboxes:
     async def test_method_update_with_all_params(self, async_client: AsyncIncrease) -> None:
         lockbox = await async_client.lockboxes.update(
             lockbox_id="lockbox_3xt21ok13q19advds4t5",
+            check_deposit_behavior="disabled",
             description="x",
             recipient_name="x",
-            status="inactive",
         )
         assert_matches_type(Lockbox, lockbox, path=["response"])
 
