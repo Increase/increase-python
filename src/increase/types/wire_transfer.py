@@ -301,16 +301,11 @@ class WireTransfer(BaseModel):
     creditor: Optional[Creditor] = None
     """The person or business that is receiving the funds from the transfer."""
 
-    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
+    currency: Literal["USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the transfer's
     currency. For wire transfers this is always equal to `usd`.
 
-    - `CAD` - Canadian Dollar (CAD)
-    - `CHF` - Swiss Franc (CHF)
-    - `EUR` - Euro (EUR)
-    - `GBP` - British Pound (GBP)
-    - `JPY` - Japanese Yen (JPY)
     - `USD` - US Dollar (USD)
     """
 

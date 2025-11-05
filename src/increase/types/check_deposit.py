@@ -40,16 +40,11 @@ class DepositAcceptance(BaseModel):
     check_deposit_id: str
     """The ID of the Check Deposit that was accepted."""
 
-    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
+    currency: Literal["USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
     transaction's currency.
 
-    - `CAD` - Canadian Dollar (CAD)
-    - `CHF` - Swiss Franc (CHF)
-    - `EUR` - Euro (EUR)
-    - `GBP` - British Pound (GBP)
-    - `JPY` - Japanese Yen (JPY)
     - `USD` - US Dollar (USD)
     """
 
@@ -89,16 +84,11 @@ class DepositRejection(BaseModel):
     check_deposit_id: str
     """The identifier of the Check Deposit that was rejected."""
 
-    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
+    currency: Literal["USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the check's
     currency.
 
-    - `CAD` - Canadian Dollar (CAD)
-    - `CHF` - Swiss Franc (CHF)
-    - `EUR` - Euro (EUR)
-    - `GBP` - British Pound (GBP)
-    - `JPY` - Japanese Yen (JPY)
     - `USD` - US Dollar (USD)
     """
 
@@ -162,16 +152,11 @@ class DepositReturn(BaseModel):
     check_deposit_id: str
     """The identifier of the Check Deposit that was returned."""
 
-    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
+    currency: Literal["USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
     transaction's currency.
 
-    - `CAD` - Canadian Dollar (CAD)
-    - `CHF` - Swiss Franc (CHF)
-    - `EUR` - Euro (EUR)
-    - `GBP` - British Pound (GBP)
-    - `JPY` - Japanese Yen (JPY)
     - `USD` - US Dollar (USD)
     """
 
@@ -315,16 +300,11 @@ class InboundFundsHold(BaseModel):
     was created.
     """
 
-    currency: Literal["CAD", "CHF", "EUR", "GBP", "JPY", "USD"]
+    currency: Literal["USD"]
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the hold's
     currency.
 
-    - `CAD` - Canadian Dollar (CAD)
-    - `CHF` - Swiss Franc (CHF)
-    - `EUR` - Euro (EUR)
-    - `GBP` - British Pound (GBP)
-    - `JPY` - Japanese Yen (JPY)
     - `USD` - US Dollar (USD)
     """
 
