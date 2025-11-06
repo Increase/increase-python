@@ -18,6 +18,9 @@ class Check(BaseModel):
     back_file_id: Optional[str] = None
     """The identifier for the File containing the back of the check."""
 
+    check_deposit_id: Optional[str] = None
+    """The identifier of the Check Deposit if this check was deposited."""
+
     front_file_id: Optional[str] = None
     """The identifier for the File containing the front of the check."""
 
