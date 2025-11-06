@@ -1,7 +1,7 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import TYPE_CHECKING, Dict, List, Optional
-from datetime import datetime
+from datetime import date, datetime
 from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
@@ -496,6 +496,14 @@ class CheckTransfer(BaseModel):
     """A constant representing the object's type.
 
     For this resource it will always be `check_transfer`.
+    """
+
+    valid_until_date: Optional[date] = None
+    """If set, the check will be valid on or before this date.
+
+    After this date, the check transfer will be stopped and deposits will not be
+    accepted. For checks printed by Increase, this date is included on the check as
+    its expiry.
     """
 
     if TYPE_CHECKING:
