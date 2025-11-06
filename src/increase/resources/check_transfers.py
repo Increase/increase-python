@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing import Union
+from datetime import date
 from typing_extensions import Literal
 
 import httpx
@@ -56,6 +58,7 @@ class CheckTransfersResource(SyncAPIResource):
         physical_check: check_transfer_create_params.PhysicalCheck | Omit = omit,
         require_approval: bool | Omit = omit,
         third_party: check_transfer_create_params.ThirdParty | Omit = omit,
+        valid_until_date: Union[str, date] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -106,6 +109,10 @@ class CheckTransfersResource(SyncAPIResource):
               `fulfillment_method` is equal to `third_party`. It must not be included if any
               other `fulfillment_method` is provided.
 
+          valid_until_date: If provided, the check will be valid on or before this date. After this date,
+              the check transfer will be stopped and deposits will not be accepted. For checks
+              printed by Increase, this date is included on the check as its expiry.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -129,6 +136,7 @@ class CheckTransfersResource(SyncAPIResource):
                     "physical_check": physical_check,
                     "require_approval": require_approval,
                     "third_party": third_party,
+                    "valid_until_date": valid_until_date,
                 },
                 check_transfer_create_params.CheckTransferCreateParams,
             ),
@@ -407,6 +415,7 @@ class AsyncCheckTransfersResource(AsyncAPIResource):
         physical_check: check_transfer_create_params.PhysicalCheck | Omit = omit,
         require_approval: bool | Omit = omit,
         third_party: check_transfer_create_params.ThirdParty | Omit = omit,
+        valid_until_date: Union[str, date] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -457,6 +466,10 @@ class AsyncCheckTransfersResource(AsyncAPIResource):
               `fulfillment_method` is equal to `third_party`. It must not be included if any
               other `fulfillment_method` is provided.
 
+          valid_until_date: If provided, the check will be valid on or before this date. After this date,
+              the check transfer will be stopped and deposits will not be accepted. For checks
+              printed by Increase, this date is included on the check as its expiry.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -480,6 +493,7 @@ class AsyncCheckTransfersResource(AsyncAPIResource):
                     "physical_check": physical_check,
                     "require_approval": require_approval,
                     "third_party": third_party,
+                    "valid_until_date": valid_until_date,
                 },
                 check_transfer_create_params.CheckTransferCreateParams,
             ),

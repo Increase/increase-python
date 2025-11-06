@@ -12,7 +12,7 @@ from tests.utils import assert_matches_type
 from increase.types import (
     CheckTransfer,
 )
-from increase._utils import parse_datetime
+from increase._utils import parse_date, parse_datetime
 from increase.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -66,6 +66,7 @@ class TestCheckTransfers:
             },
             require_approval=True,
             third_party={"recipient_name": "x"},
+            valid_until_date=parse_date("2019-12-27"),
         )
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
@@ -352,6 +353,7 @@ class TestAsyncCheckTransfers:
             },
             require_approval=True,
             third_party={"recipient_name": "x"},
+            valid_until_date=parse_date("2019-12-27"),
         )
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
