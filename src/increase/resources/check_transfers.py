@@ -302,8 +302,10 @@ class CheckTransfersResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> CheckTransfer:
-        """
-        Cancel a pending Check Transfer
+        """Cancel a Check Transfer with the `pending_approval` status.
+
+        See
+        [Transfer Approvals](/documentation/transfer-approvals) for more information.
 
         Args:
           check_transfer_id: The identifier of the pending Check Transfer to cancel.
@@ -659,8 +661,10 @@ class AsyncCheckTransfersResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> CheckTransfer:
-        """
-        Cancel a pending Check Transfer
+        """Cancel a Check Transfer with the `pending_approval` status.
+
+        See
+        [Transfer Approvals](/documentation/transfer-approvals) for more information.
 
         Args:
           check_transfer_id: The identifier of the pending Check Transfer to cancel.
