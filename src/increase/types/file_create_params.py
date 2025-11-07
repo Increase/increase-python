@@ -27,6 +27,7 @@ class FileCreateParams(TypedDict, total=False):
             "check_attachment",
             "form_ss_4",
             "identity_document",
+            "loan_application_supplemental_document",
             "other",
             "trust_formation_document",
             "digital_wallet_artwork",
@@ -50,6 +51,8 @@ class FileCreateParams(TypedDict, total=False):
       with a check that you've requested Increase print.
     - `form_ss_4` - IRS Form SS-4.
     - `identity_document` - An image of a government-issued ID.
+    - `loan_application_supplemental_document` - A supplemental document for a Loan
+      Application.
     - `other` - A file purpose not covered by any of the other cases.
     - `trust_formation_document` - A legal document forming a trust.
     - `digital_wallet_artwork` - A card image to be rendered inside digital wallet

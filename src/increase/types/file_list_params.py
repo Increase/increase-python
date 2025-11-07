@@ -78,6 +78,7 @@ _PurposeReservedKeywords = TypedDict(
                 "form_ss_4",
                 "identity_document",
                 "increase_statement",
+                "loan_application_supplemental_document",
                 "other",
                 "trust_formation_document",
                 "digital_wallet_artwork",
