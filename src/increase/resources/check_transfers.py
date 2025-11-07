@@ -110,8 +110,9 @@ class CheckTransfersResource(SyncAPIResource):
               other `fulfillment_method` is provided.
 
           valid_until_date: If provided, the check will be valid on or before this date. After this date,
-              the check transfer will be stopped and deposits will not be accepted. For checks
-              printed by Increase, this date is included on the check as its expiry.
+              the check transfer will be automatically stopped and deposits will not be
+              accepted. For checks printed by Increase, this date is included on the check as
+              its expiry.
 
           extra_headers: Send extra headers
 
@@ -338,7 +339,7 @@ class CheckTransfersResource(SyncAPIResource):
         self,
         check_transfer_id: str,
         *,
-        reason: Literal["mail_delivery_failed", "not_authorized", "unknown"] | Omit = omit,
+        reason: Literal["mail_delivery_failed", "not_authorized", "valid_until_date_passed", "unknown"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -357,6 +358,8 @@ class CheckTransfersResource(SyncAPIResource):
 
               - `mail_delivery_failed` - The check could not be delivered.
               - `not_authorized` - The check was not authorized.
+              - `valid_until_date_passed` - The check was stopped for `valid_until_date` being
+                in the past.
               - `unknown` - The check was stopped for another reason.
 
           extra_headers: Send extra headers
@@ -469,8 +472,9 @@ class AsyncCheckTransfersResource(AsyncAPIResource):
               other `fulfillment_method` is provided.
 
           valid_until_date: If provided, the check will be valid on or before this date. After this date,
-              the check transfer will be stopped and deposits will not be accepted. For checks
-              printed by Increase, this date is included on the check as its expiry.
+              the check transfer will be automatically stopped and deposits will not be
+              accepted. For checks printed by Increase, this date is included on the check as
+              its expiry.
 
           extra_headers: Send extra headers
 
@@ -697,7 +701,7 @@ class AsyncCheckTransfersResource(AsyncAPIResource):
         self,
         check_transfer_id: str,
         *,
-        reason: Literal["mail_delivery_failed", "not_authorized", "unknown"] | Omit = omit,
+        reason: Literal["mail_delivery_failed", "not_authorized", "valid_until_date_passed", "unknown"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -716,6 +720,8 @@ class AsyncCheckTransfersResource(AsyncAPIResource):
 
               - `mail_delivery_failed` - The check could not be delivered.
               - `not_authorized` - The check was not authorized.
+              - `valid_until_date_passed` - The check was stopped for `valid_until_date` being
+                in the past.
               - `unknown` - The check was stopped for another reason.
 
           extra_headers: Send extra headers
