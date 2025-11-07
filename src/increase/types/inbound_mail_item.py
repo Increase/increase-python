@@ -24,6 +24,14 @@ class Check(BaseModel):
     front_file_id: Optional[str] = None
     """The identifier for the File containing the front of the check."""
 
+    status: Optional[Literal["pending", "deposited", "ignored"]] = None
+    """The status of the Inbound Mail Item Check.
+
+    - `pending` - The check is pending processing.
+    - `deposited` - The check has been deposited.
+    - `ignored` - The check has been ignored.
+    """
+
 
 class InboundMailItem(BaseModel):
     id: str
