@@ -231,13 +231,17 @@ class PhysicalCheck(BaseModel):
 
 
 class StopPaymentRequest(BaseModel):
-    reason: Literal["mail_delivery_failed", "rejected_by_increase", "not_authorized", "unknown"]
+    reason: Literal[
+        "mail_delivery_failed", "rejected_by_increase", "not_authorized", "valid_until_date_passed", "unknown"
+    ]
     """The reason why this transfer was stopped.
 
     - `mail_delivery_failed` - The check could not be delivered.
     - `rejected_by_increase` - The check was canceled by an Increase operator who
       will provide details out-of-band.
     - `not_authorized` - The check was not authorized.
+    - `valid_until_date_passed` - The check was stopped for `valid_until_date` being
+      in the past.
     - `unknown` - The check was stopped for another reason.
     """
 
@@ -503,9 +507,9 @@ class CheckTransfer(BaseModel):
     valid_until_date: Optional[date] = None
     """If set, the check will be valid on or before this date.
 
-    After this date, the check transfer will be stopped and deposits will not be
-    accepted. For checks printed by Increase, this date is included on the check as
-    its expiry.
+    After this date, the check transfer will be automatically stopped and deposits
+    will not be accepted. For checks printed by Increase, this date is included on
+    the check as its expiry.
     """
 
     if TYPE_CHECKING:
