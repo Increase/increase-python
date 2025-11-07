@@ -66,7 +66,7 @@ class TestCheckTransfers:
             },
             require_approval=True,
             third_party={"recipient_name": "x"},
-            valid_until_date=parse_date("2019-12-27"),
+            valid_until_date=parse_date("2025-12-31"),
         )
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
@@ -353,7 +353,7 @@ class TestAsyncCheckTransfers:
             },
             require_approval=True,
             third_party={"recipient_name": "x"},
-            valid_until_date=parse_date("2019-12-27"),
+            valid_until_date=parse_date("2025-12-31"),
         )
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
