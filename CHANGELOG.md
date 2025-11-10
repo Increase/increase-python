@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.390.1 (2025-11-10)
+
+Full Changelog: [v0.390.0...v0.390.1](https://github.com/Increase/increase-python/compare/v0.390.0...v0.390.1)
+
+### Bug Fixes
+
+* compat with Python 3.14 ([67cbb08](https://github.com/Increase/increase-python/commit/67cbb089df80e3f8066bea42e81ef3253e8f167d))
+
+
+### Chores
+
+* **package:** drop Python 3.8 support ([36a4acb](https://github.com/Increase/increase-python/commit/36a4acb3d7e1613e8760487efc5f85c4c426a951))
+
 ## 0.390.0 (2025-11-07)
 
 Full Changelog: [v0.389.0...v0.390.0](https://github.com/Increase/increase-python/compare/v0.389.0...v0.390.0)
