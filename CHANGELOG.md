@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.391.1 (2025-11-11)
+
+Full Changelog: [v0.391.0...v0.391.1](https://github.com/Increase/increase-python/compare/v0.391.0...v0.391.1)
+
+### Bug Fixes
+
+* **compat:** update signatures of `model_dump` and `model_dump_json` for Pydantic v1 ([ab2e3a9](https://github.com/Increase/increase-python/commit/ab2e3a9cacddb538bde375884ec3e4ac8ce08357))
+
 ## 0.391.0 (2025-11-10)
 
 Full Changelog: [v0.390.1...v0.391.0](https://github.com/Increase/increase-python/compare/v0.390.1...v0.391.0)
