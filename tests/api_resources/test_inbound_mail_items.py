@@ -97,6 +97,48 @@ class TestInboundMailItems:
 
         assert cast(Any, response.is_closed) is True
 
+    @parametrize
+    def test_method_action(self, client: Increase) -> None:
+        inbound_mail_item = client.inbound_mail_items.action(
+            inbound_mail_item_id="inbound_mail_item_q6rrg7mmqpplx80zceev",
+            checks=[{"action": "deposit"}, {"action": "ignore"}],
+        )
+        assert_matches_type(InboundMailItem, inbound_mail_item, path=["response"])
+
+    @parametrize
+    def test_raw_response_action(self, client: Increase) -> None:
+        response = client.inbound_mail_items.with_raw_response.action(
+            inbound_mail_item_id="inbound_mail_item_q6rrg7mmqpplx80zceev",
+            checks=[{"action": "deposit"}, {"action": "ignore"}],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        inbound_mail_item = response.parse()
+        assert_matches_type(InboundMailItem, inbound_mail_item, path=["response"])
+
+    @parametrize
+    def test_streaming_response_action(self, client: Increase) -> None:
+        with client.inbound_mail_items.with_streaming_response.action(
+            inbound_mail_item_id="inbound_mail_item_q6rrg7mmqpplx80zceev",
+            checks=[{"action": "deposit"}, {"action": "ignore"}],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            inbound_mail_item = response.parse()
+            assert_matches_type(InboundMailItem, inbound_mail_item, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_action(self, client: Increase) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `inbound_mail_item_id` but received ''"):
+            client.inbound_mail_items.with_raw_response.action(
+                inbound_mail_item_id="",
+                checks=[{"action": "deposit"}, {"action": "ignore"}],
+            )
+
 
 class TestAsyncInboundMailItems:
     parametrize = pytest.mark.parametrize(
@@ -180,3 +222,45 @@ class TestAsyncInboundMailItems:
             assert_matches_type(AsyncPage[InboundMailItem], inbound_mail_item, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_action(self, async_client: AsyncIncrease) -> None:
+        inbound_mail_item = await async_client.inbound_mail_items.action(
+            inbound_mail_item_id="inbound_mail_item_q6rrg7mmqpplx80zceev",
+            checks=[{"action": "deposit"}, {"action": "ignore"}],
+        )
+        assert_matches_type(InboundMailItem, inbound_mail_item, path=["response"])
+
+    @parametrize
+    async def test_raw_response_action(self, async_client: AsyncIncrease) -> None:
+        response = await async_client.inbound_mail_items.with_raw_response.action(
+            inbound_mail_item_id="inbound_mail_item_q6rrg7mmqpplx80zceev",
+            checks=[{"action": "deposit"}, {"action": "ignore"}],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        inbound_mail_item = await response.parse()
+        assert_matches_type(InboundMailItem, inbound_mail_item, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_action(self, async_client: AsyncIncrease) -> None:
+        async with async_client.inbound_mail_items.with_streaming_response.action(
+            inbound_mail_item_id="inbound_mail_item_q6rrg7mmqpplx80zceev",
+            checks=[{"action": "deposit"}, {"action": "ignore"}],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            inbound_mail_item = await response.parse()
+            assert_matches_type(InboundMailItem, inbound_mail_item, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_action(self, async_client: AsyncIncrease) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `inbound_mail_item_id` but received ''"):
+            await async_client.inbound_mail_items.with_raw_response.action(
+                inbound_mail_item_id="",
+                checks=[{"action": "deposit"}, {"action": "ignore"}],
+            )
