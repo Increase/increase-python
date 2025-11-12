@@ -137,7 +137,7 @@ class LockboxesResource(SyncAPIResource):
         self,
         lockbox_id: str,
         *,
-        check_deposit_behavior: Literal["enabled", "disabled"] | Omit = omit,
+        check_deposit_behavior: Literal["enabled", "disabled", "pend_for_processing"] | Omit = omit,
         description: str | Omit = omit,
         recipient_name: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -158,6 +158,8 @@ class LockboxesResource(SyncAPIResource):
 
               - `enabled` - Checks mailed to this Lockbox will be deposited.
               - `disabled` - Checks mailed to this Lockbox will not be deposited.
+              - `pend_for_processing` - Checks mailed to this Lockbox will be pending until
+                actioned.
 
           description: The description you choose for the Lockbox.
 
@@ -370,7 +372,7 @@ class AsyncLockboxesResource(AsyncAPIResource):
         self,
         lockbox_id: str,
         *,
-        check_deposit_behavior: Literal["enabled", "disabled"] | Omit = omit,
+        check_deposit_behavior: Literal["enabled", "disabled", "pend_for_processing"] | Omit = omit,
         description: str | Omit = omit,
         recipient_name: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -391,6 +393,8 @@ class AsyncLockboxesResource(AsyncAPIResource):
 
               - `enabled` - Checks mailed to this Lockbox will be deposited.
               - `disabled` - Checks mailed to this Lockbox will not be deposited.
+              - `pend_for_processing` - Checks mailed to this Lockbox will be pending until
+                actioned.
 
           description: The description you choose for the Lockbox.
 

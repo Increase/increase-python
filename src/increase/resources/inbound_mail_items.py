@@ -2,11 +2,13 @@
 
 from __future__ import annotations
 
+from typing import Iterable
+
 import httpx
 
-from ..types import inbound_mail_item_list_params
+from ..types import inbound_mail_item_list_params, inbound_mail_item_action_params
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from .._utils import maybe_transform
+from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -133,6 +135,54 @@ class InboundMailItemsResource(SyncAPIResource):
             model=InboundMailItem,
         )
 
+    def action(
+        self,
+        inbound_mail_item_id: str,
+        *,
+        checks: Iterable[inbound_mail_item_action_params.Check],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> InboundMailItem:
+        """
+        Action a Inbound Mail Item
+
+        Args:
+          inbound_mail_item_id: The identifier of the Inbound Mail Item to action.
+
+          checks: The actions to perform on the Inbound Mail Item.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not inbound_mail_item_id:
+            raise ValueError(
+                f"Expected a non-empty value for `inbound_mail_item_id` but received {inbound_mail_item_id!r}"
+            )
+        return self._post(
+            f"/inbound_mail_items/{inbound_mail_item_id}/action",
+            body=maybe_transform({"checks": checks}, inbound_mail_item_action_params.InboundMailItemActionParams),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=InboundMailItem,
+        )
+
 
 class AsyncInboundMailItemsResource(AsyncAPIResource):
     @cached_property
@@ -245,6 +295,56 @@ class AsyncInboundMailItemsResource(AsyncAPIResource):
             model=InboundMailItem,
         )
 
+    async def action(
+        self,
+        inbound_mail_item_id: str,
+        *,
+        checks: Iterable[inbound_mail_item_action_params.Check],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> InboundMailItem:
+        """
+        Action a Inbound Mail Item
+
+        Args:
+          inbound_mail_item_id: The identifier of the Inbound Mail Item to action.
+
+          checks: The actions to perform on the Inbound Mail Item.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not inbound_mail_item_id:
+            raise ValueError(
+                f"Expected a non-empty value for `inbound_mail_item_id` but received {inbound_mail_item_id!r}"
+            )
+        return await self._post(
+            f"/inbound_mail_items/{inbound_mail_item_id}/action",
+            body=await async_maybe_transform(
+                {"checks": checks}, inbound_mail_item_action_params.InboundMailItemActionParams
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=InboundMailItem,
+        )
+
 
 class InboundMailItemsResourceWithRawResponse:
     def __init__(self, inbound_mail_items: InboundMailItemsResource) -> None:
@@ -255,6 +355,9 @@ class InboundMailItemsResourceWithRawResponse:
         )
         self.list = to_raw_response_wrapper(
             inbound_mail_items.list,
+        )
+        self.action = to_raw_response_wrapper(
+            inbound_mail_items.action,
         )
 
 
@@ -268,6 +371,9 @@ class AsyncInboundMailItemsResourceWithRawResponse:
         self.list = async_to_raw_response_wrapper(
             inbound_mail_items.list,
         )
+        self.action = async_to_raw_response_wrapper(
+            inbound_mail_items.action,
+        )
 
 
 class InboundMailItemsResourceWithStreamingResponse:
@@ -280,6 +386,9 @@ class InboundMailItemsResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             inbound_mail_items.list,
         )
+        self.action = to_streamed_response_wrapper(
+            inbound_mail_items.action,
+        )
 
 
 class AsyncInboundMailItemsResourceWithStreamingResponse:
@@ -291,4 +400,7 @@ class AsyncInboundMailItemsResourceWithStreamingResponse:
         )
         self.list = async_to_streamed_response_wrapper(
             inbound_mail_items.list,
+        )
+        self.action = async_to_streamed_response_wrapper(
+            inbound_mail_items.action,
         )
