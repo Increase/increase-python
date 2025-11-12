@@ -441,6 +441,7 @@ Methods:
 
 - <code title="get /inbound_mail_items/{inbound_mail_item_id}">client.inbound_mail_items.<a href="./src/increase/resources/inbound_mail_items.py">retrieve</a>(inbound_mail_item_id) -> <a href="./src/increase/types/inbound_mail_item.py">InboundMailItem</a></code>
 - <code title="get /inbound_mail_items">client.inbound_mail_items.<a href="./src/increase/resources/inbound_mail_items.py">list</a>(\*\*<a href="src/increase/types/inbound_mail_item_list_params.py">params</a>) -> <a href="./src/increase/types/inbound_mail_item.py">SyncPage[InboundMailItem]</a></code>
+- <code title="post /inbound_mail_items/{inbound_mail_item_id}/action">client.inbound_mail_items.<a href="./src/increase/resources/inbound_mail_items.py">action</a>(inbound_mail_item_id, \*\*<a href="src/increase/types/inbound_mail_item_action_params.py">params</a>) -> <a href="./src/increase/types/inbound_mail_item.py">InboundMailItem</a></code>
 
 # RoutingNumbers
 

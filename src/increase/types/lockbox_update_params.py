@@ -8,11 +8,13 @@ __all__ = ["LockboxUpdateParams"]
 
 
 class LockboxUpdateParams(TypedDict, total=False):
-    check_deposit_behavior: Literal["enabled", "disabled"]
+    check_deposit_behavior: Literal["enabled", "disabled", "pend_for_processing"]
     """This indicates if checks mailed to this lockbox will be deposited.
 
     - `enabled` - Checks mailed to this Lockbox will be deposited.
     - `disabled` - Checks mailed to this Lockbox will not be deposited.
+    - `pend_for_processing` - Checks mailed to this Lockbox will be pending until
+      actioned.
     """
 
     description: str
