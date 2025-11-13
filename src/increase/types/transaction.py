@@ -2818,7 +2818,7 @@ class SourceInboundCheckAdjustment(BaseModel):
     amount: int
     """The amount of the check adjustment."""
 
-    reason: Literal["late_return", "wrong_payee_credit", "adjusted_amount", "non_conforming_item"]
+    reason: Literal["late_return", "wrong_payee_credit", "adjusted_amount", "non_conforming_item", "paid"]
     """The reason for the adjustment.
 
     - `late_return` - The return was initiated too late and the receiving
@@ -2829,6 +2829,8 @@ class SourceInboundCheckAdjustment(BaseModel):
       was written on the check.
     - `non_conforming_item` - The recipient was not able to process the check. This
       usually happens for e.g., low quality images.
+    - `paid` - The check has already been deposited elsewhere and so this is a
+      duplicate.
     """
 
     if TYPE_CHECKING:
