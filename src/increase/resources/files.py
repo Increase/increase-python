@@ -108,7 +108,7 @@ class FilesResource(SyncAPIResource):
               - `digital_wallet_app_icon` - An icon for you app to be rendered inside digital
                 wallet apps. This must be a 100x100 pixel PNG.
               - `physical_card_front` - A card image to be printed on the front of a physical
-                card. This must be a 2100x1340 pixel PNG with no other color but black.
+                card. This must be a 2100x1344 pixel PNG with no other color but black.
               - `physical_card_carrier` - An image representing the entirety of the carrier
                 used for a physical card. This must be a 2550x3300 pixel PNG with no other
                 color but black.
@@ -336,7 +336,7 @@ class AsyncFilesResource(AsyncAPIResource):
               - `digital_wallet_app_icon` - An icon for you app to be rendered inside digital
                 wallet apps. This must be a 100x100 pixel PNG.
               - `physical_card_front` - A card image to be printed on the front of a physical
-                card. This must be a 2100x1340 pixel PNG with no other color but black.
+                card. This must be a 2100x1344 pixel PNG with no other color but black.
               - `physical_card_carrier` - An image representing the entirety of the carrier
                 used for a physical card. This must be a 2550x3300 pixel PNG with no other
                 color but black.
