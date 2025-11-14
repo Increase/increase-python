@@ -16,10 +16,16 @@ class PhysicalCardProfile(BaseModel):
     """The Card Profile identifier."""
 
     back_image_file_id: Optional[str] = None
-    """The identifier of the File containing the physical card's back image."""
+    """The identifier of the File containing the physical card's back image.
+
+    This will be missing until the image has been post-processed.
+    """
 
     carrier_image_file_id: Optional[str] = None
-    """The identifier of the File containing the physical card's carrier image."""
+    """The identifier of the File containing the physical card's carrier image.
+
+    This will be missing until the image has been post-processed.
+    """
 
     contact_phone: Optional[str] = None
     """A phone number the user can contact to receive support for their card."""
@@ -41,7 +47,10 @@ class PhysicalCardProfile(BaseModel):
     """A description you can use to identify the Physical Card Profile."""
 
     front_image_file_id: Optional[str] = None
-    """The identifier of the File containing the physical card's front image."""
+    """The identifier of the File containing the physical card's front image.
+
+    This will be missing until the image has been post-processed.
+    """
 
     idempotency_key: Optional[str] = None
     """The idempotency key you chose for this object.
