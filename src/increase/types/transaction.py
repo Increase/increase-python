@@ -1187,7 +1187,7 @@ class SourceCardFinancial(BaseModel):
 
 
 class SourceCardPushTransferAcceptance(BaseModel):
-    amount: int
+    settlement_amount: int
     """The transfer amount in USD cents."""
 
     transfer_id: str

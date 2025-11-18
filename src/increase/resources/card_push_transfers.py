@@ -47,7 +47,6 @@ class CardPushTransfersResource(SyncAPIResource):
     def create(
         self,
         *,
-        amount: int,
         business_application_identifier: Literal[
             "account_to_account",
             "business_to_business",
@@ -71,6 +70,7 @@ class CardPushTransfersResource(SyncAPIResource):
         merchant_name_prefix: str,
         merchant_postal_code: str,
         merchant_state: str,
+        presentment_amount: card_push_transfer_create_params.PresentmentAmount,
         recipient_name: str,
         sender_address_city: str,
         sender_address_line1: str,
@@ -87,13 +87,10 @@ class CardPushTransfersResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> CardPushTransfer:
-        """Create a Card Push Transfer
+        """
+        Create a Card Push Transfer
 
         Args:
-          amount: The transfer amount in USD cents.
-
-        For Card Push transfers, must be positive.
-
           business_application_identifier: The Business Application Identifier describes the type of transaction being
               performed. Your program must be approved for the specified Business Application
               Identifier in order to use it.
@@ -134,6 +131,10 @@ class CardPushTransfersResource(SyncAPIResource):
 
           merchant_state: The state of the merchant (generally your business) sending the transfer.
 
+          presentment_amount: The amount to transfer. The receiving bank will convert this to the cardholder's
+              currency. The amount that is applied to your Increase account matches the
+              currency of your account.
+
           recipient_name: The name of the funds recipient.
 
           sender_address_city: The city of the sender.
@@ -164,7 +165,6 @@ class CardPushTransfersResource(SyncAPIResource):
             "/card_push_transfers",
             body=maybe_transform(
                 {
-                    "amount": amount,
                     "business_application_identifier": business_application_identifier,
                     "card_token_id": card_token_id,
                     "merchant_category_code": merchant_category_code,
@@ -173,6 +173,7 @@ class CardPushTransfersResource(SyncAPIResource):
                     "merchant_name_prefix": merchant_name_prefix,
                     "merchant_postal_code": merchant_postal_code,
                     "merchant_state": merchant_state,
+                    "presentment_amount": presentment_amount,
                     "recipient_name": recipient_name,
                     "sender_address_city": sender_address_city,
                     "sender_address_line1": sender_address_line1,
@@ -406,7 +407,6 @@ class AsyncCardPushTransfersResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        amount: int,
         business_application_identifier: Literal[
             "account_to_account",
             "business_to_business",
@@ -430,6 +430,7 @@ class AsyncCardPushTransfersResource(AsyncAPIResource):
         merchant_name_prefix: str,
         merchant_postal_code: str,
         merchant_state: str,
+        presentment_amount: card_push_transfer_create_params.PresentmentAmount,
         recipient_name: str,
         sender_address_city: str,
         sender_address_line1: str,
@@ -446,13 +447,10 @@ class AsyncCardPushTransfersResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> CardPushTransfer:
-        """Create a Card Push Transfer
+        """
+        Create a Card Push Transfer
 
         Args:
-          amount: The transfer amount in USD cents.
-
-        For Card Push transfers, must be positive.
-
           business_application_identifier: The Business Application Identifier describes the type of transaction being
               performed. Your program must be approved for the specified Business Application
               Identifier in order to use it.
@@ -493,6 +491,10 @@ class AsyncCardPushTransfersResource(AsyncAPIResource):
 
           merchant_state: The state of the merchant (generally your business) sending the transfer.
 
+          presentment_amount: The amount to transfer. The receiving bank will convert this to the cardholder's
+              currency. The amount that is applied to your Increase account matches the
+              currency of your account.
+
           recipient_name: The name of the funds recipient.
 
           sender_address_city: The city of the sender.
@@ -523,7 +525,6 @@ class AsyncCardPushTransfersResource(AsyncAPIResource):
             "/card_push_transfers",
             body=await async_maybe_transform(
                 {
-                    "amount": amount,
                     "business_application_identifier": business_application_identifier,
                     "card_token_id": card_token_id,
                     "merchant_category_code": merchant_category_code,
@@ -532,6 +533,7 @@ class AsyncCardPushTransfersResource(AsyncAPIResource):
                     "merchant_name_prefix": merchant_name_prefix,
                     "merchant_postal_code": merchant_postal_code,
                     "merchant_state": merchant_state,
+                    "presentment_amount": presentment_amount,
                     "recipient_name": recipient_name,
                     "sender_address_city": sender_address_city,
                     "sender_address_line1": sender_address_line1,

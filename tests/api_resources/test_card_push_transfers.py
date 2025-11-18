@@ -22,7 +22,6 @@ class TestCardPushTransfers:
     @parametrize
     def test_method_create(self, client: Increase) -> None:
         card_push_transfer = client.card_push_transfers.create(
-            amount=100,
             business_application_identifier="funds_disbursement",
             card_token_id="outbound_card_token_zlt0ml6youq3q7vcdlg0",
             merchant_category_code="1234",
@@ -31,6 +30,10 @@ class TestCardPushTransfers:
             merchant_name_prefix="Acme",
             merchant_postal_code="10045",
             merchant_state="NY",
+            presentment_amount={
+                "currency": "USD",
+                "value": "1234.56",
+            },
             recipient_name="Ian Crease",
             sender_address_city="New York",
             sender_address_line1="33 Liberty Street",
@@ -44,7 +47,6 @@ class TestCardPushTransfers:
     @parametrize
     def test_method_create_with_all_params(self, client: Increase) -> None:
         card_push_transfer = client.card_push_transfers.create(
-            amount=100,
             business_application_identifier="funds_disbursement",
             card_token_id="outbound_card_token_zlt0ml6youq3q7vcdlg0",
             merchant_category_code="1234",
@@ -53,6 +55,10 @@ class TestCardPushTransfers:
             merchant_name_prefix="Acme",
             merchant_postal_code="10045",
             merchant_state="NY",
+            presentment_amount={
+                "currency": "USD",
+                "value": "1234.56",
+            },
             recipient_name="Ian Crease",
             sender_address_city="New York",
             sender_address_line1="33 Liberty Street",
@@ -67,7 +73,6 @@ class TestCardPushTransfers:
     @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
         response = client.card_push_transfers.with_raw_response.create(
-            amount=100,
             business_application_identifier="funds_disbursement",
             card_token_id="outbound_card_token_zlt0ml6youq3q7vcdlg0",
             merchant_category_code="1234",
@@ -76,6 +81,10 @@ class TestCardPushTransfers:
             merchant_name_prefix="Acme",
             merchant_postal_code="10045",
             merchant_state="NY",
+            presentment_amount={
+                "currency": "USD",
+                "value": "1234.56",
+            },
             recipient_name="Ian Crease",
             sender_address_city="New York",
             sender_address_line1="33 Liberty Street",
@@ -93,7 +102,6 @@ class TestCardPushTransfers:
     @parametrize
     def test_streaming_response_create(self, client: Increase) -> None:
         with client.card_push_transfers.with_streaming_response.create(
-            amount=100,
             business_application_identifier="funds_disbursement",
             card_token_id="outbound_card_token_zlt0ml6youq3q7vcdlg0",
             merchant_category_code="1234",
@@ -102,6 +110,10 @@ class TestCardPushTransfers:
             merchant_name_prefix="Acme",
             merchant_postal_code="10045",
             merchant_state="NY",
+            presentment_amount={
+                "currency": "USD",
+                "value": "1234.56",
+            },
             recipient_name="Ian Crease",
             sender_address_city="New York",
             sender_address_line1="33 Liberty Street",
@@ -283,7 +295,6 @@ class TestAsyncCardPushTransfers:
     @parametrize
     async def test_method_create(self, async_client: AsyncIncrease) -> None:
         card_push_transfer = await async_client.card_push_transfers.create(
-            amount=100,
             business_application_identifier="funds_disbursement",
             card_token_id="outbound_card_token_zlt0ml6youq3q7vcdlg0",
             merchant_category_code="1234",
@@ -292,6 +303,10 @@ class TestAsyncCardPushTransfers:
             merchant_name_prefix="Acme",
             merchant_postal_code="10045",
             merchant_state="NY",
+            presentment_amount={
+                "currency": "USD",
+                "value": "1234.56",
+            },
             recipient_name="Ian Crease",
             sender_address_city="New York",
             sender_address_line1="33 Liberty Street",
@@ -305,7 +320,6 @@ class TestAsyncCardPushTransfers:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncIncrease) -> None:
         card_push_transfer = await async_client.card_push_transfers.create(
-            amount=100,
             business_application_identifier="funds_disbursement",
             card_token_id="outbound_card_token_zlt0ml6youq3q7vcdlg0",
             merchant_category_code="1234",
@@ -314,6 +328,10 @@ class TestAsyncCardPushTransfers:
             merchant_name_prefix="Acme",
             merchant_postal_code="10045",
             merchant_state="NY",
+            presentment_amount={
+                "currency": "USD",
+                "value": "1234.56",
+            },
             recipient_name="Ian Crease",
             sender_address_city="New York",
             sender_address_line1="33 Liberty Street",
@@ -328,7 +346,6 @@ class TestAsyncCardPushTransfers:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
         response = await async_client.card_push_transfers.with_raw_response.create(
-            amount=100,
             business_application_identifier="funds_disbursement",
             card_token_id="outbound_card_token_zlt0ml6youq3q7vcdlg0",
             merchant_category_code="1234",
@@ -337,6 +354,10 @@ class TestAsyncCardPushTransfers:
             merchant_name_prefix="Acme",
             merchant_postal_code="10045",
             merchant_state="NY",
+            presentment_amount={
+                "currency": "USD",
+                "value": "1234.56",
+            },
             recipient_name="Ian Crease",
             sender_address_city="New York",
             sender_address_line1="33 Liberty Street",
@@ -354,7 +375,6 @@ class TestAsyncCardPushTransfers:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncIncrease) -> None:
         async with async_client.card_push_transfers.with_streaming_response.create(
-            amount=100,
             business_application_identifier="funds_disbursement",
             card_token_id="outbound_card_token_zlt0ml6youq3q7vcdlg0",
             merchant_category_code="1234",
@@ -363,6 +383,10 @@ class TestAsyncCardPushTransfers:
             merchant_name_prefix="Acme",
             merchant_postal_code="10045",
             merchant_state="NY",
+            presentment_amount={
+                "currency": "USD",
+                "value": "1234.56",
+            },
             recipient_name="Ian Crease",
             sender_address_city="New York",
             sender_address_line1="33 Liberty Street",
