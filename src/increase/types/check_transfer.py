@@ -123,6 +123,12 @@ class PhysicalCheckMailingAddress(BaseModel):
     name: Optional[str] = None
     """The name component of the check's mailing address."""
 
+    phone: Optional[str] = None
+    """
+    The phone number to be used in case of delivery issues at the check's mailing
+    address. Only used for FedEx overnight shipping.
+    """
+
     postal_code: Optional[str] = None
     """The postal code of the check's destination."""
 
