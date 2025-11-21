@@ -112,8 +112,9 @@ class PhysicalCheckMailingAddress(TypedDict, total=False):
     phone: str
     """The phone number to associate with the check's destination address.
 
-    Will be supplied to FedEx as the contact phone number for the recipient to be
-    used in case of delivery issues.
+    Only used if shipping method is `fedex_overnight`. Will be supplied to FedEx as
+    the contact phone number for the recipient to be used in case of delivery
+    issues.
     """
 
 
