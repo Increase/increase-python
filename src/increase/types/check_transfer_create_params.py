@@ -109,6 +109,13 @@ class PhysicalCheckMailingAddress(TypedDict, total=False):
     Defaults to the provided `recipient_name` parameter if `name` is not provided.
     """
 
+    phone: str
+    """The phone number to associate with the check's destination address.
+
+    Will be supplied to FedEx as the contact phone number for the recipient to be
+    used in case of delivery issues.
+    """
+
 
 class PhysicalCheckPayer(TypedDict, total=False):
     contents: Required[str]
