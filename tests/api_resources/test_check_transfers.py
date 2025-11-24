@@ -53,6 +53,7 @@ class TestCheckTransfers:
                 "memo": "Check payment",
                 "recipient_name": "Ian Crease",
                 "attachment_file_id": "attachment_file_id",
+                "check_voucher_image_file_id": "check_voucher_image_file_id",
                 "note": "x",
                 "payer": [{"contents": "x"}],
                 "return_address": {
@@ -342,6 +343,7 @@ class TestAsyncCheckTransfers:
                 "memo": "Check payment",
                 "recipient_name": "Ian Crease",
                 "attachment_file_id": "attachment_file_id",
+                "check_voucher_image_file_id": "check_voucher_image_file_id",
                 "note": "x",
                 "payer": [{"contents": "x"}],
                 "return_address": {
