@@ -161,6 +161,14 @@ class PhysicalCheckTyped(TypedDict, total=False):
     https://increase.com/documentation/originating-checks#printing-checks .
     """
 
+    check_voucher_image_file_id: str
+    """The ID of a File to be used as the check voucher image.
+
+    This must have `purpose: check_voucher_image`. For details on pricing and
+    restrictions, see
+    https://increase.com/documentation/originating-checks#printing-checks .
+    """
+
     note: str
     """The descriptor that will be printed on the letter included with the check."""
 
