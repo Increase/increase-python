@@ -185,6 +185,9 @@ class PhysicalCheck(BaseModel):
     attachment_file_id: Optional[str] = None
     """The ID of the file for the check attachment."""
 
+    check_voucher_image_file_id: Optional[str] = None
+    """The ID of the file for the check voucher image."""
+
     mailing_address: PhysicalCheckMailingAddress
     """Details for where Increase will mail the check."""
 
