@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.400.0 (2025-11-24)
+
+Full Changelog: [v0.399.0...v0.400.0](https://github.com/Increase/increase-python/compare/v0.399.0...v0.400.0)
+
+### Features
+
+* **api:** api update ([ef8c92f](https://github.com/Increase/increase-python/commit/ef8c92f7aa7a9e5078198e8db712742139323a53))
+
+
+### Chores
+
+* add Python 3.14 classifier and testing ([4960e57](https://github.com/Increase/increase-python/commit/4960e57589600e7b8b1f4f9eed59500d2b3bf444))
+
 ## 0.399.0 (2025-11-21)
 
 Full Changelog: [v0.398.0...v0.399.0](https://github.com/Increase/increase-python/compare/v0.398.0...v0.399.0)
