@@ -23,11 +23,11 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..pagination import SyncPage, AsyncPage
 from ..types.card import Card
-from .._base_client import AsyncPaginator, make_request_options
+from .._base_client import make_request_options
 from ..types.card_details import CardDetails
 from ..types.card_iframe_url import CardIframeURL
+from ..types.card_list_response import CardListResponse
 
 __all__ = ["CardsResource", "AsyncCardsResource"]
 
@@ -243,7 +243,7 @@ class CardsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SyncPage[Card]:
+    ) -> CardListResponse:
         """
         List Cards
 
@@ -268,9 +268,8 @@ class CardsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get_api_list(
+        return self._get(
             "/cards",
-            page=SyncPage[Card],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -288,7 +287,7 @@ class CardsResource(SyncAPIResource):
                     card_list_params.CardListParams,
                 ),
             ),
-            model=Card,
+            cast_to=CardListResponse,
         )
 
     def create_details_iframe(
@@ -622,7 +621,7 @@ class AsyncCardsResource(AsyncAPIResource):
             cast_to=Card,
         )
 
-    def list(
+    async def list(
         self,
         *,
         account_id: str | Omit = omit,
@@ -637,7 +636,7 @@ class AsyncCardsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AsyncPaginator[Card, AsyncPage[Card]]:
+    ) -> CardListResponse:
         """
         List Cards
 
@@ -662,15 +661,14 @@ class AsyncCardsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get_api_list(
+        return await self._get(
             "/cards",
-            page=AsyncPage[Card],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform(
+                query=await async_maybe_transform(
                     {
                         "account_id": account_id,
                         "created_at": created_at,
@@ -682,7 +680,7 @@ class AsyncCardsResource(AsyncAPIResource):
                     card_list_params.CardListParams,
                 ),
             ),
-            model=Card,
+            cast_to=CardListResponse,
         )
 
     async def create_details_iframe(

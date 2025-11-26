@@ -11,9 +11,9 @@ from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
 from increase.types import (
     AccountNumber,
+    AccountNumberListResponse,
 )
 from increase._utils import parse_datetime
-from increase.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -155,7 +155,7 @@ class TestAccountNumbers:
     @parametrize
     def test_method_list(self, client: Increase) -> None:
         account_number = client.account_numbers.list()
-        assert_matches_type(SyncPage[AccountNumber], account_number, path=["response"])
+        assert_matches_type(AccountNumberListResponse, account_number, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
@@ -173,7 +173,7 @@ class TestAccountNumbers:
             limit=1,
             status={"in": ["active"]},
         )
-        assert_matches_type(SyncPage[AccountNumber], account_number, path=["response"])
+        assert_matches_type(AccountNumberListResponse, account_number, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
@@ -182,7 +182,7 @@ class TestAccountNumbers:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         account_number = response.parse()
-        assert_matches_type(SyncPage[AccountNumber], account_number, path=["response"])
+        assert_matches_type(AccountNumberListResponse, account_number, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Increase) -> None:
@@ -191,7 +191,7 @@ class TestAccountNumbers:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             account_number = response.parse()
-            assert_matches_type(SyncPage[AccountNumber], account_number, path=["response"])
+            assert_matches_type(AccountNumberListResponse, account_number, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -335,7 +335,7 @@ class TestAsyncAccountNumbers:
     @parametrize
     async def test_method_list(self, async_client: AsyncIncrease) -> None:
         account_number = await async_client.account_numbers.list()
-        assert_matches_type(AsyncPage[AccountNumber], account_number, path=["response"])
+        assert_matches_type(AccountNumberListResponse, account_number, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
@@ -353,7 +353,7 @@ class TestAsyncAccountNumbers:
             limit=1,
             status={"in": ["active"]},
         )
-        assert_matches_type(AsyncPage[AccountNumber], account_number, path=["response"])
+        assert_matches_type(AccountNumberListResponse, account_number, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
@@ -362,7 +362,7 @@ class TestAsyncAccountNumbers:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         account_number = await response.parse()
-        assert_matches_type(AsyncPage[AccountNumber], account_number, path=["response"])
+        assert_matches_type(AccountNumberListResponse, account_number, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncIncrease) -> None:
@@ -371,6 +371,6 @@ class TestAsyncAccountNumbers:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             account_number = await response.parse()
-            assert_matches_type(AsyncPage[AccountNumber], account_number, path=["response"])
+            assert_matches_type(AccountNumberListResponse, account_number, path=["response"])
 
         assert cast(Any, response.is_closed) is True

@@ -17,9 +17,9 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..pagination import SyncPage, AsyncPage
-from .._base_client import AsyncPaginator, make_request_options
+from .._base_client import make_request_options
 from ..types.inbound_mail_item import InboundMailItem
+from ..types.inbound_mail_item_list_response import InboundMailItemListResponse
 
 __all__ = ["InboundMailItemsResource", "AsyncInboundMailItemsResource"]
 
@@ -94,7 +94,7 @@ class InboundMailItemsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SyncPage[InboundMailItem]:
+    ) -> InboundMailItemListResponse:
         """
         List Inbound Mail Items
 
@@ -114,9 +114,8 @@ class InboundMailItemsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get_api_list(
+        return self._get(
             "/inbound_mail_items",
-            page=SyncPage[InboundMailItem],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -132,7 +131,7 @@ class InboundMailItemsResource(SyncAPIResource):
                     inbound_mail_item_list_params.InboundMailItemListParams,
                 ),
             ),
-            model=InboundMailItem,
+            cast_to=InboundMailItemListResponse,
         )
 
     def action(
@@ -241,7 +240,7 @@ class AsyncInboundMailItemsResource(AsyncAPIResource):
             cast_to=InboundMailItem,
         )
 
-    def list(
+    async def list(
         self,
         *,
         created_at: inbound_mail_item_list_params.CreatedAt | Omit = omit,
@@ -254,7 +253,7 @@ class AsyncInboundMailItemsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AsyncPaginator[InboundMailItem, AsyncPage[InboundMailItem]]:
+    ) -> InboundMailItemListResponse:
         """
         List Inbound Mail Items
 
@@ -274,15 +273,14 @@ class AsyncInboundMailItemsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get_api_list(
+        return await self._get(
             "/inbound_mail_items",
-            page=AsyncPage[InboundMailItem],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform(
+                query=await async_maybe_transform(
                     {
                         "created_at": created_at,
                         "cursor": cursor,
@@ -292,7 +290,7 @@ class AsyncInboundMailItemsResource(AsyncAPIResource):
                     inbound_mail_item_list_params.InboundMailItemListParams,
                 ),
             ),
-            model=InboundMailItem,
+            cast_to=InboundMailItemListResponse,
         )
 
     async def action(

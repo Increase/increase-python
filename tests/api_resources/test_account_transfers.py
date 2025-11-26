@@ -9,9 +9,11 @@ import pytest
 
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
-from increase.types import AccountTransfer
+from increase.types import (
+    AccountTransfer,
+    AccountTransferListResponse,
+)
 from increase._utils import parse_datetime
-from increase.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -111,7 +113,7 @@ class TestAccountTransfers:
     @parametrize
     def test_method_list(self, client: Increase) -> None:
         account_transfer = client.account_transfers.list()
-        assert_matches_type(SyncPage[AccountTransfer], account_transfer, path=["response"])
+        assert_matches_type(AccountTransferListResponse, account_transfer, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
@@ -127,7 +129,7 @@ class TestAccountTransfers:
             idempotency_key="x",
             limit=1,
         )
-        assert_matches_type(SyncPage[AccountTransfer], account_transfer, path=["response"])
+        assert_matches_type(AccountTransferListResponse, account_transfer, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
@@ -136,7 +138,7 @@ class TestAccountTransfers:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         account_transfer = response.parse()
-        assert_matches_type(SyncPage[AccountTransfer], account_transfer, path=["response"])
+        assert_matches_type(AccountTransferListResponse, account_transfer, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Increase) -> None:
@@ -145,7 +147,7 @@ class TestAccountTransfers:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             account_transfer = response.parse()
-            assert_matches_type(SyncPage[AccountTransfer], account_transfer, path=["response"])
+            assert_matches_type(AccountTransferListResponse, account_transfer, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -323,7 +325,7 @@ class TestAsyncAccountTransfers:
     @parametrize
     async def test_method_list(self, async_client: AsyncIncrease) -> None:
         account_transfer = await async_client.account_transfers.list()
-        assert_matches_type(AsyncPage[AccountTransfer], account_transfer, path=["response"])
+        assert_matches_type(AccountTransferListResponse, account_transfer, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
@@ -339,7 +341,7 @@ class TestAsyncAccountTransfers:
             idempotency_key="x",
             limit=1,
         )
-        assert_matches_type(AsyncPage[AccountTransfer], account_transfer, path=["response"])
+        assert_matches_type(AccountTransferListResponse, account_transfer, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
@@ -348,7 +350,7 @@ class TestAsyncAccountTransfers:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         account_transfer = await response.parse()
-        assert_matches_type(AsyncPage[AccountTransfer], account_transfer, path=["response"])
+        assert_matches_type(AccountTransferListResponse, account_transfer, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncIncrease) -> None:
@@ -357,7 +359,7 @@ class TestAsyncAccountTransfers:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             account_transfer = await response.parse()
-            assert_matches_type(AsyncPage[AccountTransfer], account_transfer, path=["response"])
+            assert_matches_type(AccountTransferListResponse, account_transfer, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

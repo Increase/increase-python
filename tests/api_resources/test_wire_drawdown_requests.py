@@ -9,8 +9,10 @@ import pytest
 
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
-from increase.types import WireDrawdownRequest
-from increase.pagination import SyncPage, AsyncPage
+from increase.types import (
+    WireDrawdownRequest,
+    WireDrawdownRequestListResponse,
+)
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -164,7 +166,7 @@ class TestWireDrawdownRequests:
     @parametrize
     def test_method_list(self, client: Increase) -> None:
         wire_drawdown_request = client.wire_drawdown_requests.list()
-        assert_matches_type(SyncPage[WireDrawdownRequest], wire_drawdown_request, path=["response"])
+        assert_matches_type(WireDrawdownRequestListResponse, wire_drawdown_request, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
@@ -174,7 +176,7 @@ class TestWireDrawdownRequests:
             limit=1,
             status={"in": ["pending_submission"]},
         )
-        assert_matches_type(SyncPage[WireDrawdownRequest], wire_drawdown_request, path=["response"])
+        assert_matches_type(WireDrawdownRequestListResponse, wire_drawdown_request, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
@@ -183,7 +185,7 @@ class TestWireDrawdownRequests:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         wire_drawdown_request = response.parse()
-        assert_matches_type(SyncPage[WireDrawdownRequest], wire_drawdown_request, path=["response"])
+        assert_matches_type(WireDrawdownRequestListResponse, wire_drawdown_request, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Increase) -> None:
@@ -192,7 +194,7 @@ class TestWireDrawdownRequests:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             wire_drawdown_request = response.parse()
-            assert_matches_type(SyncPage[WireDrawdownRequest], wire_drawdown_request, path=["response"])
+            assert_matches_type(WireDrawdownRequestListResponse, wire_drawdown_request, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -348,7 +350,7 @@ class TestAsyncWireDrawdownRequests:
     @parametrize
     async def test_method_list(self, async_client: AsyncIncrease) -> None:
         wire_drawdown_request = await async_client.wire_drawdown_requests.list()
-        assert_matches_type(AsyncPage[WireDrawdownRequest], wire_drawdown_request, path=["response"])
+        assert_matches_type(WireDrawdownRequestListResponse, wire_drawdown_request, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
@@ -358,7 +360,7 @@ class TestAsyncWireDrawdownRequests:
             limit=1,
             status={"in": ["pending_submission"]},
         )
-        assert_matches_type(AsyncPage[WireDrawdownRequest], wire_drawdown_request, path=["response"])
+        assert_matches_type(WireDrawdownRequestListResponse, wire_drawdown_request, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
@@ -367,7 +369,7 @@ class TestAsyncWireDrawdownRequests:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         wire_drawdown_request = await response.parse()
-        assert_matches_type(AsyncPage[WireDrawdownRequest], wire_drawdown_request, path=["response"])
+        assert_matches_type(WireDrawdownRequestListResponse, wire_drawdown_request, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncIncrease) -> None:
@@ -376,6 +378,6 @@ class TestAsyncWireDrawdownRequests:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             wire_drawdown_request = await response.parse()
-            assert_matches_type(AsyncPage[WireDrawdownRequest], wire_drawdown_request, path=["response"])
+            assert_matches_type(WireDrawdownRequestListResponse, wire_drawdown_request, path=["response"])
 
         assert cast(Any, response.is_closed) is True

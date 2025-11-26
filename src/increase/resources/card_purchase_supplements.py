@@ -6,7 +6,7 @@ import httpx
 
 from ..types import card_purchase_supplement_list_params
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from .._utils import maybe_transform
+from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -15,9 +15,9 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..pagination import SyncPage, AsyncPage
-from .._base_client import AsyncPaginator, make_request_options
+from .._base_client import make_request_options
 from ..types.card_purchase_supplement import CardPurchaseSupplement
+from ..types.card_purchase_supplement_list_response import CardPurchaseSupplementListResponse
 
 __all__ = ["CardPurchaseSupplementsResource", "AsyncCardPurchaseSupplementsResource"]
 
@@ -92,7 +92,7 @@ class CardPurchaseSupplementsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SyncPage[CardPurchaseSupplement]:
+    ) -> CardPurchaseSupplementListResponse:
         """
         List Card Purchase Supplements
 
@@ -113,9 +113,8 @@ class CardPurchaseSupplementsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get_api_list(
+        return self._get(
             "/card_purchase_supplements",
-            page=SyncPage[CardPurchaseSupplement],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -131,7 +130,7 @@ class CardPurchaseSupplementsResource(SyncAPIResource):
                     card_purchase_supplement_list_params.CardPurchaseSupplementListParams,
                 ),
             ),
-            model=CardPurchaseSupplement,
+            cast_to=CardPurchaseSupplementListResponse,
         )
 
 
@@ -192,7 +191,7 @@ class AsyncCardPurchaseSupplementsResource(AsyncAPIResource):
             cast_to=CardPurchaseSupplement,
         )
 
-    def list(
+    async def list(
         self,
         *,
         card_payment_id: str | Omit = omit,
@@ -205,7 +204,7 @@ class AsyncCardPurchaseSupplementsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AsyncPaginator[CardPurchaseSupplement, AsyncPage[CardPurchaseSupplement]]:
+    ) -> CardPurchaseSupplementListResponse:
         """
         List Card Purchase Supplements
 
@@ -226,15 +225,14 @@ class AsyncCardPurchaseSupplementsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get_api_list(
+        return await self._get(
             "/card_purchase_supplements",
-            page=AsyncPage[CardPurchaseSupplement],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform(
+                query=await async_maybe_transform(
                     {
                         "card_payment_id": card_payment_id,
                         "created_at": created_at,
@@ -244,7 +242,7 @@ class AsyncCardPurchaseSupplementsResource(AsyncAPIResource):
                     card_purchase_supplement_list_params.CardPurchaseSupplementListParams,
                 ),
             ),
-            model=CardPurchaseSupplement,
+            cast_to=CardPurchaseSupplementListResponse,
         )
 
 

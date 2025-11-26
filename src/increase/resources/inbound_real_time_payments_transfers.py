@@ -6,7 +6,7 @@ import httpx
 
 from ..types import inbound_real_time_payments_transfer_list_params
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from .._utils import maybe_transform
+from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -15,9 +15,9 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..pagination import SyncPage, AsyncPage
-from .._base_client import AsyncPaginator, make_request_options
+from .._base_client import make_request_options
 from ..types.inbound_real_time_payments_transfer import InboundRealTimePaymentsTransfer
+from ..types.inbound_real_time_payments_transfer_list_response import InboundRealTimePaymentsTransferListResponse
 
 __all__ = ["InboundRealTimePaymentsTransfersResource", "AsyncInboundRealTimePaymentsTransfersResource"]
 
@@ -93,7 +93,7 @@ class InboundRealTimePaymentsTransfersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SyncPage[InboundRealTimePaymentsTransfer]:
+    ) -> InboundRealTimePaymentsTransferListResponse:
         """
         List Inbound Real-Time Payments Transfers
 
@@ -117,9 +117,8 @@ class InboundRealTimePaymentsTransfersResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get_api_list(
+        return self._get(
             "/inbound_real_time_payments_transfers",
-            page=SyncPage[InboundRealTimePaymentsTransfer],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -136,7 +135,7 @@ class InboundRealTimePaymentsTransfersResource(SyncAPIResource):
                     inbound_real_time_payments_transfer_list_params.InboundRealTimePaymentsTransferListParams,
                 ),
             ),
-            model=InboundRealTimePaymentsTransfer,
+            cast_to=InboundRealTimePaymentsTransferListResponse,
         )
 
 
@@ -197,7 +196,7 @@ class AsyncInboundRealTimePaymentsTransfersResource(AsyncAPIResource):
             cast_to=InboundRealTimePaymentsTransfer,
         )
 
-    def list(
+    async def list(
         self,
         *,
         account_id: str | Omit = omit,
@@ -211,7 +210,7 @@ class AsyncInboundRealTimePaymentsTransfersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AsyncPaginator[InboundRealTimePaymentsTransfer, AsyncPage[InboundRealTimePaymentsTransfer]]:
+    ) -> InboundRealTimePaymentsTransferListResponse:
         """
         List Inbound Real-Time Payments Transfers
 
@@ -235,15 +234,14 @@ class AsyncInboundRealTimePaymentsTransfersResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get_api_list(
+        return await self._get(
             "/inbound_real_time_payments_transfers",
-            page=AsyncPage[InboundRealTimePaymentsTransfer],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform(
+                query=await async_maybe_transform(
                     {
                         "account_id": account_id,
                         "account_number_id": account_number_id,
@@ -254,7 +252,7 @@ class AsyncInboundRealTimePaymentsTransfersResource(AsyncAPIResource):
                     inbound_real_time_payments_transfer_list_params.InboundRealTimePaymentsTransferListParams,
                 ),
             ),
-            model=InboundRealTimePaymentsTransfer,
+            cast_to=InboundRealTimePaymentsTransferListResponse,
         )
 
 

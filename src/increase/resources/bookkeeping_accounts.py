@@ -24,10 +24,10 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..pagination import SyncPage, AsyncPage
-from .._base_client import AsyncPaginator, make_request_options
+from .._base_client import make_request_options
 from ..types.bookkeeping_account import BookkeepingAccount
 from ..types.bookkeeping_balance_lookup import BookkeepingBalanceLookup
+from ..types.bookkeeping_account_list_response import BookkeepingAccountListResponse
 
 __all__ = ["BookkeepingAccountsResource", "AsyncBookkeepingAccountsResource"]
 
@@ -173,7 +173,7 @@ class BookkeepingAccountsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SyncPage[BookkeepingAccount]:
+    ) -> BookkeepingAccountListResponse:
         """
         List Bookkeeping Accounts
 
@@ -196,9 +196,8 @@ class BookkeepingAccountsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get_api_list(
+        return self._get(
             "/bookkeeping_accounts",
-            page=SyncPage[BookkeepingAccount],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -213,7 +212,7 @@ class BookkeepingAccountsResource(SyncAPIResource):
                     bookkeeping_account_list_params.BookkeepingAccountListParams,
                 ),
             ),
-            model=BookkeepingAccount,
+            cast_to=BookkeepingAccountListResponse,
         )
 
     def balance(
@@ -394,7 +393,7 @@ class AsyncBookkeepingAccountsResource(AsyncAPIResource):
             cast_to=BookkeepingAccount,
         )
 
-    def list(
+    async def list(
         self,
         *,
         cursor: str | Omit = omit,
@@ -406,7 +405,7 @@ class AsyncBookkeepingAccountsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AsyncPaginator[BookkeepingAccount, AsyncPage[BookkeepingAccount]]:
+    ) -> BookkeepingAccountListResponse:
         """
         List Bookkeeping Accounts
 
@@ -429,15 +428,14 @@ class AsyncBookkeepingAccountsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get_api_list(
+        return await self._get(
             "/bookkeeping_accounts",
-            page=AsyncPage[BookkeepingAccount],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform(
+                query=await async_maybe_transform(
                     {
                         "cursor": cursor,
                         "idempotency_key": idempotency_key,
@@ -446,7 +444,7 @@ class AsyncBookkeepingAccountsResource(AsyncAPIResource):
                     bookkeeping_account_list_params.BookkeepingAccountListParams,
                 ),
             ),
-            model=BookkeepingAccount,
+            cast_to=BookkeepingAccountListResponse,
         )
 
     async def balance(

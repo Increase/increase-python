@@ -9,8 +9,7 @@ import pytest
 
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
-from increase.types import Program
-from increase.pagination import SyncPage, AsyncPage
+from increase.types import Program, ProgramListResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -59,7 +58,7 @@ class TestPrograms:
     @parametrize
     def test_method_list(self, client: Increase) -> None:
         program = client.programs.list()
-        assert_matches_type(SyncPage[Program], program, path=["response"])
+        assert_matches_type(ProgramListResponse, program, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
@@ -67,7 +66,7 @@ class TestPrograms:
             cursor="cursor",
             limit=1,
         )
-        assert_matches_type(SyncPage[Program], program, path=["response"])
+        assert_matches_type(ProgramListResponse, program, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
@@ -76,7 +75,7 @@ class TestPrograms:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         program = response.parse()
-        assert_matches_type(SyncPage[Program], program, path=["response"])
+        assert_matches_type(ProgramListResponse, program, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Increase) -> None:
@@ -85,7 +84,7 @@ class TestPrograms:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             program = response.parse()
-            assert_matches_type(SyncPage[Program], program, path=["response"])
+            assert_matches_type(ProgramListResponse, program, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -136,7 +135,7 @@ class TestAsyncPrograms:
     @parametrize
     async def test_method_list(self, async_client: AsyncIncrease) -> None:
         program = await async_client.programs.list()
-        assert_matches_type(AsyncPage[Program], program, path=["response"])
+        assert_matches_type(ProgramListResponse, program, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
@@ -144,7 +143,7 @@ class TestAsyncPrograms:
             cursor="cursor",
             limit=1,
         )
-        assert_matches_type(AsyncPage[Program], program, path=["response"])
+        assert_matches_type(ProgramListResponse, program, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
@@ -153,7 +152,7 @@ class TestAsyncPrograms:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         program = await response.parse()
-        assert_matches_type(AsyncPage[Program], program, path=["response"])
+        assert_matches_type(ProgramListResponse, program, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncIncrease) -> None:
@@ -162,6 +161,6 @@ class TestAsyncPrograms:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             program = await response.parse()
-            assert_matches_type(AsyncPage[Program], program, path=["response"])
+            assert_matches_type(ProgramListResponse, program, path=["response"])
 
         assert cast(Any, response.is_closed) is True
