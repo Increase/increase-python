@@ -9,9 +9,8 @@ import pytest
 
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
-from increase.types import Transaction
+from increase.types import Transaction, TransactionListResponse
 from increase._utils import parse_datetime
-from increase.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -60,7 +59,7 @@ class TestTransactions:
     @parametrize
     def test_method_list(self, client: Increase) -> None:
         transaction = client.transactions.list()
-        assert_matches_type(SyncPage[Transaction], transaction, path=["response"])
+        assert_matches_type(TransactionListResponse, transaction, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
@@ -77,7 +76,7 @@ class TestTransactions:
             limit=1,
             route_id="route_id",
         )
-        assert_matches_type(SyncPage[Transaction], transaction, path=["response"])
+        assert_matches_type(TransactionListResponse, transaction, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
@@ -86,7 +85,7 @@ class TestTransactions:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         transaction = response.parse()
-        assert_matches_type(SyncPage[Transaction], transaction, path=["response"])
+        assert_matches_type(TransactionListResponse, transaction, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Increase) -> None:
@@ -95,7 +94,7 @@ class TestTransactions:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             transaction = response.parse()
-            assert_matches_type(SyncPage[Transaction], transaction, path=["response"])
+            assert_matches_type(TransactionListResponse, transaction, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -146,7 +145,7 @@ class TestAsyncTransactions:
     @parametrize
     async def test_method_list(self, async_client: AsyncIncrease) -> None:
         transaction = await async_client.transactions.list()
-        assert_matches_type(AsyncPage[Transaction], transaction, path=["response"])
+        assert_matches_type(TransactionListResponse, transaction, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
@@ -163,7 +162,7 @@ class TestAsyncTransactions:
             limit=1,
             route_id="route_id",
         )
-        assert_matches_type(AsyncPage[Transaction], transaction, path=["response"])
+        assert_matches_type(TransactionListResponse, transaction, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
@@ -172,7 +171,7 @@ class TestAsyncTransactions:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         transaction = await response.parse()
-        assert_matches_type(AsyncPage[Transaction], transaction, path=["response"])
+        assert_matches_type(TransactionListResponse, transaction, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncIncrease) -> None:
@@ -181,6 +180,6 @@ class TestAsyncTransactions:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             transaction = await response.parse()
-            assert_matches_type(AsyncPage[Transaction], transaction, path=["response"])
+            assert_matches_type(TransactionListResponse, transaction, path=["response"])
 
         assert cast(Any, response.is_closed) is True

@@ -9,9 +9,11 @@ import pytest
 
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
-from increase.types import InboundMailItem
+from increase.types import (
+    InboundMailItem,
+    InboundMailItemListResponse,
+)
 from increase._utils import parse_datetime
-from increase.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -60,7 +62,7 @@ class TestInboundMailItems:
     @parametrize
     def test_method_list(self, client: Increase) -> None:
         inbound_mail_item = client.inbound_mail_items.list()
-        assert_matches_type(SyncPage[InboundMailItem], inbound_mail_item, path=["response"])
+        assert_matches_type(InboundMailItemListResponse, inbound_mail_item, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
@@ -75,7 +77,7 @@ class TestInboundMailItems:
             limit=1,
             lockbox_id="lockbox_id",
         )
-        assert_matches_type(SyncPage[InboundMailItem], inbound_mail_item, path=["response"])
+        assert_matches_type(InboundMailItemListResponse, inbound_mail_item, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
@@ -84,7 +86,7 @@ class TestInboundMailItems:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         inbound_mail_item = response.parse()
-        assert_matches_type(SyncPage[InboundMailItem], inbound_mail_item, path=["response"])
+        assert_matches_type(InboundMailItemListResponse, inbound_mail_item, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Increase) -> None:
@@ -93,7 +95,7 @@ class TestInboundMailItems:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             inbound_mail_item = response.parse()
-            assert_matches_type(SyncPage[InboundMailItem], inbound_mail_item, path=["response"])
+            assert_matches_type(InboundMailItemListResponse, inbound_mail_item, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -186,7 +188,7 @@ class TestAsyncInboundMailItems:
     @parametrize
     async def test_method_list(self, async_client: AsyncIncrease) -> None:
         inbound_mail_item = await async_client.inbound_mail_items.list()
-        assert_matches_type(AsyncPage[InboundMailItem], inbound_mail_item, path=["response"])
+        assert_matches_type(InboundMailItemListResponse, inbound_mail_item, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
@@ -201,7 +203,7 @@ class TestAsyncInboundMailItems:
             limit=1,
             lockbox_id="lockbox_id",
         )
-        assert_matches_type(AsyncPage[InboundMailItem], inbound_mail_item, path=["response"])
+        assert_matches_type(InboundMailItemListResponse, inbound_mail_item, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
@@ -210,7 +212,7 @@ class TestAsyncInboundMailItems:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         inbound_mail_item = await response.parse()
-        assert_matches_type(AsyncPage[InboundMailItem], inbound_mail_item, path=["response"])
+        assert_matches_type(InboundMailItemListResponse, inbound_mail_item, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncIncrease) -> None:
@@ -219,7 +221,7 @@ class TestAsyncInboundMailItems:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             inbound_mail_item = await response.parse()
-            assert_matches_type(AsyncPage[InboundMailItem], inbound_mail_item, path=["response"])
+            assert_matches_type(InboundMailItemListResponse, inbound_mail_item, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

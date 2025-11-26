@@ -15,9 +15,9 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..pagination import SyncPage, AsyncPage
-from .._base_client import AsyncPaginator, make_request_options
+from .._base_client import make_request_options
 from ..types.real_time_payments_transfer import RealTimePaymentsTransfer
+from ..types.real_time_payments_transfer_list_response import RealTimePaymentsTransferListResponse
 
 __all__ = ["RealTimePaymentsTransfersResource", "AsyncRealTimePaymentsTransfersResource"]
 
@@ -188,7 +188,7 @@ class RealTimePaymentsTransfersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SyncPage[RealTimePaymentsTransfer]:
+    ) -> RealTimePaymentsTransferListResponse:
         """
         List Real-Time Payments Transfers
 
@@ -216,9 +216,8 @@ class RealTimePaymentsTransfersResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get_api_list(
+        return self._get(
             "/real_time_payments_transfers",
-            page=SyncPage[RealTimePaymentsTransfer],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -237,7 +236,7 @@ class RealTimePaymentsTransfersResource(SyncAPIResource):
                     real_time_payments_transfer_list_params.RealTimePaymentsTransferListParams,
                 ),
             ),
-            model=RealTimePaymentsTransfer,
+            cast_to=RealTimePaymentsTransferListResponse,
         )
 
     def approve(
@@ -479,7 +478,7 @@ class AsyncRealTimePaymentsTransfersResource(AsyncAPIResource):
             cast_to=RealTimePaymentsTransfer,
         )
 
-    def list(
+    async def list(
         self,
         *,
         account_id: str | Omit = omit,
@@ -495,7 +494,7 @@ class AsyncRealTimePaymentsTransfersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AsyncPaginator[RealTimePaymentsTransfer, AsyncPage[RealTimePaymentsTransfer]]:
+    ) -> RealTimePaymentsTransferListResponse:
         """
         List Real-Time Payments Transfers
 
@@ -523,15 +522,14 @@ class AsyncRealTimePaymentsTransfersResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get_api_list(
+        return await self._get(
             "/real_time_payments_transfers",
-            page=AsyncPage[RealTimePaymentsTransfer],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform(
+                query=await async_maybe_transform(
                     {
                         "account_id": account_id,
                         "created_at": created_at,
@@ -544,7 +542,7 @@ class AsyncRealTimePaymentsTransfersResource(AsyncAPIResource):
                     real_time_payments_transfer_list_params.RealTimePaymentsTransferListParams,
                 ),
             ),
-            model=RealTimePaymentsTransfer,
+            cast_to=RealTimePaymentsTransferListResponse,
         )
 
     async def approve(

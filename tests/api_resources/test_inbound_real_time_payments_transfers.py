@@ -9,9 +9,11 @@ import pytest
 
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
-from increase.types import InboundRealTimePaymentsTransfer
+from increase.types import (
+    InboundRealTimePaymentsTransfer,
+    InboundRealTimePaymentsTransferListResponse,
+)
 from increase._utils import parse_datetime
-from increase.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -63,7 +65,7 @@ class TestInboundRealTimePaymentsTransfers:
     def test_method_list(self, client: Increase) -> None:
         inbound_real_time_payments_transfer = client.inbound_real_time_payments_transfers.list()
         assert_matches_type(
-            SyncPage[InboundRealTimePaymentsTransfer], inbound_real_time_payments_transfer, path=["response"]
+            InboundRealTimePaymentsTransferListResponse, inbound_real_time_payments_transfer, path=["response"]
         )
 
     @parametrize
@@ -81,7 +83,7 @@ class TestInboundRealTimePaymentsTransfers:
             limit=1,
         )
         assert_matches_type(
-            SyncPage[InboundRealTimePaymentsTransfer], inbound_real_time_payments_transfer, path=["response"]
+            InboundRealTimePaymentsTransferListResponse, inbound_real_time_payments_transfer, path=["response"]
         )
 
     @parametrize
@@ -92,7 +94,7 @@ class TestInboundRealTimePaymentsTransfers:
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         inbound_real_time_payments_transfer = response.parse()
         assert_matches_type(
-            SyncPage[InboundRealTimePaymentsTransfer], inbound_real_time_payments_transfer, path=["response"]
+            InboundRealTimePaymentsTransferListResponse, inbound_real_time_payments_transfer, path=["response"]
         )
 
     @parametrize
@@ -103,7 +105,7 @@ class TestInboundRealTimePaymentsTransfers:
 
             inbound_real_time_payments_transfer = response.parse()
             assert_matches_type(
-                SyncPage[InboundRealTimePaymentsTransfer], inbound_real_time_payments_transfer, path=["response"]
+                InboundRealTimePaymentsTransferListResponse, inbound_real_time_payments_transfer, path=["response"]
             )
 
         assert cast(Any, response.is_closed) is True
@@ -158,7 +160,7 @@ class TestAsyncInboundRealTimePaymentsTransfers:
     async def test_method_list(self, async_client: AsyncIncrease) -> None:
         inbound_real_time_payments_transfer = await async_client.inbound_real_time_payments_transfers.list()
         assert_matches_type(
-            AsyncPage[InboundRealTimePaymentsTransfer], inbound_real_time_payments_transfer, path=["response"]
+            InboundRealTimePaymentsTransferListResponse, inbound_real_time_payments_transfer, path=["response"]
         )
 
     @parametrize
@@ -176,7 +178,7 @@ class TestAsyncInboundRealTimePaymentsTransfers:
             limit=1,
         )
         assert_matches_type(
-            AsyncPage[InboundRealTimePaymentsTransfer], inbound_real_time_payments_transfer, path=["response"]
+            InboundRealTimePaymentsTransferListResponse, inbound_real_time_payments_transfer, path=["response"]
         )
 
     @parametrize
@@ -187,7 +189,7 @@ class TestAsyncInboundRealTimePaymentsTransfers:
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         inbound_real_time_payments_transfer = await response.parse()
         assert_matches_type(
-            AsyncPage[InboundRealTimePaymentsTransfer], inbound_real_time_payments_transfer, path=["response"]
+            InboundRealTimePaymentsTransferListResponse, inbound_real_time_payments_transfer, path=["response"]
         )
 
     @parametrize
@@ -198,7 +200,7 @@ class TestAsyncInboundRealTimePaymentsTransfers:
 
             inbound_real_time_payments_transfer = await response.parse()
             assert_matches_type(
-                AsyncPage[InboundRealTimePaymentsTransfer], inbound_real_time_payments_transfer, path=["response"]
+                InboundRealTimePaymentsTransferListResponse, inbound_real_time_payments_transfer, path=["response"]
             )
 
         assert cast(Any, response.is_closed) is True

@@ -9,9 +9,11 @@ import pytest
 
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
-from increase.types import CardPushTransfer
+from increase.types import (
+    CardPushTransfer,
+    CardPushTransferListResponse,
+)
 from increase._utils import parse_datetime
-from increase.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -171,7 +173,7 @@ class TestCardPushTransfers:
     @parametrize
     def test_method_list(self, client: Increase) -> None:
         card_push_transfer = client.card_push_transfers.list()
-        assert_matches_type(SyncPage[CardPushTransfer], card_push_transfer, path=["response"])
+        assert_matches_type(CardPushTransferListResponse, card_push_transfer, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
@@ -188,7 +190,7 @@ class TestCardPushTransfers:
             limit=1,
             status={"in": ["pending_approval"]},
         )
-        assert_matches_type(SyncPage[CardPushTransfer], card_push_transfer, path=["response"])
+        assert_matches_type(CardPushTransferListResponse, card_push_transfer, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
@@ -197,7 +199,7 @@ class TestCardPushTransfers:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_push_transfer = response.parse()
-        assert_matches_type(SyncPage[CardPushTransfer], card_push_transfer, path=["response"])
+        assert_matches_type(CardPushTransferListResponse, card_push_transfer, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Increase) -> None:
@@ -206,7 +208,7 @@ class TestCardPushTransfers:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_push_transfer = response.parse()
-            assert_matches_type(SyncPage[CardPushTransfer], card_push_transfer, path=["response"])
+            assert_matches_type(CardPushTransferListResponse, card_push_transfer, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -444,7 +446,7 @@ class TestAsyncCardPushTransfers:
     @parametrize
     async def test_method_list(self, async_client: AsyncIncrease) -> None:
         card_push_transfer = await async_client.card_push_transfers.list()
-        assert_matches_type(AsyncPage[CardPushTransfer], card_push_transfer, path=["response"])
+        assert_matches_type(CardPushTransferListResponse, card_push_transfer, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
@@ -461,7 +463,7 @@ class TestAsyncCardPushTransfers:
             limit=1,
             status={"in": ["pending_approval"]},
         )
-        assert_matches_type(AsyncPage[CardPushTransfer], card_push_transfer, path=["response"])
+        assert_matches_type(CardPushTransferListResponse, card_push_transfer, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
@@ -470,7 +472,7 @@ class TestAsyncCardPushTransfers:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_push_transfer = await response.parse()
-        assert_matches_type(AsyncPage[CardPushTransfer], card_push_transfer, path=["response"])
+        assert_matches_type(CardPushTransferListResponse, card_push_transfer, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncIncrease) -> None:
@@ -479,7 +481,7 @@ class TestAsyncCardPushTransfers:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_push_transfer = await response.parse()
-            assert_matches_type(AsyncPage[CardPushTransfer], card_push_transfer, path=["response"])
+            assert_matches_type(CardPushTransferListResponse, card_push_transfer, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

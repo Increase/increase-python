@@ -9,9 +9,8 @@ import pytest
 
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
-from increase.types import Export
+from increase.types import Export, ExportListResponse
 from increase._utils import parse_date, parse_datetime
-from increase.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -143,7 +142,7 @@ class TestExports:
     @parametrize
     def test_method_list(self, client: Increase) -> None:
         export = client.exports.list()
-        assert_matches_type(SyncPage[Export], export, path=["response"])
+        assert_matches_type(ExportListResponse, export, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
@@ -160,7 +159,7 @@ class TestExports:
             limit=1,
             status={"in": ["pending"]},
         )
-        assert_matches_type(SyncPage[Export], export, path=["response"])
+        assert_matches_type(ExportListResponse, export, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
@@ -169,7 +168,7 @@ class TestExports:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         export = response.parse()
-        assert_matches_type(SyncPage[Export], export, path=["response"])
+        assert_matches_type(ExportListResponse, export, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Increase) -> None:
@@ -178,7 +177,7 @@ class TestExports:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             export = response.parse()
-            assert_matches_type(SyncPage[Export], export, path=["response"])
+            assert_matches_type(ExportListResponse, export, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -312,7 +311,7 @@ class TestAsyncExports:
     @parametrize
     async def test_method_list(self, async_client: AsyncIncrease) -> None:
         export = await async_client.exports.list()
-        assert_matches_type(AsyncPage[Export], export, path=["response"])
+        assert_matches_type(ExportListResponse, export, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
@@ -329,7 +328,7 @@ class TestAsyncExports:
             limit=1,
             status={"in": ["pending"]},
         )
-        assert_matches_type(AsyncPage[Export], export, path=["response"])
+        assert_matches_type(ExportListResponse, export, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
@@ -338,7 +337,7 @@ class TestAsyncExports:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         export = await response.parse()
-        assert_matches_type(AsyncPage[Export], export, path=["response"])
+        assert_matches_type(ExportListResponse, export, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncIncrease) -> None:
@@ -347,6 +346,6 @@ class TestAsyncExports:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             export = await response.parse()
-            assert_matches_type(AsyncPage[Export], export, path=["response"])
+            assert_matches_type(ExportListResponse, export, path=["response"])
 
         assert cast(Any, response.is_closed) is True

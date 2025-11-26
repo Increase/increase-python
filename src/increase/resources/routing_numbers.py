@@ -6,7 +6,7 @@ import httpx
 
 from ..types import routing_number_list_params
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from .._utils import maybe_transform
+from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -15,8 +15,7 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..pagination import SyncPage, AsyncPage
-from .._base_client import AsyncPaginator, make_request_options
+from .._base_client import make_request_options
 from ..types.routing_number_list_response import RoutingNumberListResponse
 
 __all__ = ["RoutingNumbersResource", "AsyncRoutingNumbersResource"]
@@ -54,7 +53,7 @@ class RoutingNumbersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SyncPage[RoutingNumberListResponse]:
+    ) -> RoutingNumberListResponse:
         """
         You can use this API to confirm if a routing number is valid, such as when a
         user is providing you with bank account details. Since routing numbers uniquely
@@ -77,9 +76,8 @@ class RoutingNumbersResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get_api_list(
+        return self._get(
             "/routing_numbers",
-            page=SyncPage[RoutingNumberListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -94,7 +92,7 @@ class RoutingNumbersResource(SyncAPIResource):
                     routing_number_list_params.RoutingNumberListParams,
                 ),
             ),
-            model=RoutingNumberListResponse,
+            cast_to=RoutingNumberListResponse,
         )
 
 
@@ -118,7 +116,7 @@ class AsyncRoutingNumbersResource(AsyncAPIResource):
         """
         return AsyncRoutingNumbersResourceWithStreamingResponse(self)
 
-    def list(
+    async def list(
         self,
         *,
         routing_number: str,
@@ -130,7 +128,7 @@ class AsyncRoutingNumbersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AsyncPaginator[RoutingNumberListResponse, AsyncPage[RoutingNumberListResponse]]:
+    ) -> RoutingNumberListResponse:
         """
         You can use this API to confirm if a routing number is valid, such as when a
         user is providing you with bank account details. Since routing numbers uniquely
@@ -153,15 +151,14 @@ class AsyncRoutingNumbersResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get_api_list(
+        return await self._get(
             "/routing_numbers",
-            page=AsyncPage[RoutingNumberListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform(
+                query=await async_maybe_transform(
                     {
                         "routing_number": routing_number,
                         "cursor": cursor,
@@ -170,7 +167,7 @@ class AsyncRoutingNumbersResource(AsyncAPIResource):
                     routing_number_list_params.RoutingNumberListParams,
                 ),
             ),
-            model=RoutingNumberListResponse,
+            cast_to=RoutingNumberListResponse,
         )
 
 

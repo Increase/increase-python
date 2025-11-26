@@ -17,9 +17,9 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..pagination import SyncPage, AsyncPage
-from .._base_client import AsyncPaginator, make_request_options
+from .._base_client import make_request_options
 from ..types.physical_card import PhysicalCard
+from ..types.physical_card_list_response import PhysicalCardListResponse
 
 __all__ = ["PhysicalCardsResource", "AsyncPhysicalCardsResource"]
 
@@ -202,7 +202,7 @@ class PhysicalCardsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SyncPage[PhysicalCard]:
+    ) -> PhysicalCardListResponse:
         """
         List Physical Cards
 
@@ -227,9 +227,8 @@ class PhysicalCardsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get_api_list(
+        return self._get(
             "/physical_cards",
-            page=SyncPage[PhysicalCard],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -246,7 +245,7 @@ class PhysicalCardsResource(SyncAPIResource):
                     physical_card_list_params.PhysicalCardListParams,
                 ),
             ),
-            model=PhysicalCard,
+            cast_to=PhysicalCardListResponse,
         )
 
 
@@ -414,7 +413,7 @@ class AsyncPhysicalCardsResource(AsyncAPIResource):
             cast_to=PhysicalCard,
         )
 
-    def list(
+    async def list(
         self,
         *,
         card_id: str | Omit = omit,
@@ -428,7 +427,7 @@ class AsyncPhysicalCardsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AsyncPaginator[PhysicalCard, AsyncPage[PhysicalCard]]:
+    ) -> PhysicalCardListResponse:
         """
         List Physical Cards
 
@@ -453,15 +452,14 @@ class AsyncPhysicalCardsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get_api_list(
+        return await self._get(
             "/physical_cards",
-            page=AsyncPage[PhysicalCard],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform(
+                query=await async_maybe_transform(
                     {
                         "card_id": card_id,
                         "created_at": created_at,
@@ -472,7 +470,7 @@ class AsyncPhysicalCardsResource(AsyncAPIResource):
                     physical_card_list_params.PhysicalCardListParams,
                 ),
             ),
-            model=PhysicalCard,
+            cast_to=PhysicalCardListResponse,
         )
 
 

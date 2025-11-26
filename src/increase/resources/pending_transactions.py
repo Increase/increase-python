@@ -15,9 +15,9 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..pagination import SyncPage, AsyncPage
-from .._base_client import AsyncPaginator, make_request_options
+from .._base_client import make_request_options
 from ..types.pending_transaction import PendingTransaction
+from ..types.pending_transaction_list_response import PendingTransactionListResponse
 
 __all__ = ["PendingTransactionsResource", "AsyncPendingTransactionsResource"]
 
@@ -155,7 +155,7 @@ class PendingTransactionsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SyncPage[PendingTransaction]:
+    ) -> PendingTransactionListResponse:
         """
         List Pending Transactions
 
@@ -177,9 +177,8 @@ class PendingTransactionsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get_api_list(
+        return self._get(
             "/pending_transactions",
-            page=SyncPage[PendingTransaction],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -198,7 +197,7 @@ class PendingTransactionsResource(SyncAPIResource):
                     pending_transaction_list_params.PendingTransactionListParams,
                 ),
             ),
-            model=PendingTransaction,
+            cast_to=PendingTransactionListResponse,
         )
 
     def release(
@@ -367,7 +366,7 @@ class AsyncPendingTransactionsResource(AsyncAPIResource):
             cast_to=PendingTransaction,
         )
 
-    def list(
+    async def list(
         self,
         *,
         account_id: str | Omit = omit,
@@ -383,7 +382,7 @@ class AsyncPendingTransactionsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AsyncPaginator[PendingTransaction, AsyncPage[PendingTransaction]]:
+    ) -> PendingTransactionListResponse:
         """
         List Pending Transactions
 
@@ -405,15 +404,14 @@ class AsyncPendingTransactionsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get_api_list(
+        return await self._get(
             "/pending_transactions",
-            page=AsyncPage[PendingTransaction],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform(
+                query=await async_maybe_transform(
                     {
                         "account_id": account_id,
                         "category": category,
@@ -426,7 +424,7 @@ class AsyncPendingTransactionsResource(AsyncAPIResource):
                     pending_transaction_list_params.PendingTransactionListParams,
                 ),
             ),
-            model=PendingTransaction,
+            cast_to=PendingTransactionListResponse,
         )
 
     async def release(

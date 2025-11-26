@@ -18,10 +18,10 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..pagination import SyncPage, AsyncPage
-from .._base_client import AsyncPaginator, make_request_options
+from .._base_client import make_request_options
 from ..types.account import Account
 from ..types.balance_lookup import BalanceLookup
+from ..types.account_list_response import AccountListResponse
 
 __all__ = ["AccountsResource", "AsyncAccountsResource"]
 
@@ -214,7 +214,7 @@ class AccountsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SyncPage[Account]:
+    ) -> AccountListResponse:
         """
         List Accounts
 
@@ -243,9 +243,8 @@ class AccountsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get_api_list(
+        return self._get(
             "/accounts",
-            page=SyncPage[Account],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -265,7 +264,7 @@ class AccountsResource(SyncAPIResource):
                     account_list_params.AccountListParams,
                 ),
             ),
-            model=Account,
+            cast_to=AccountListResponse,
         )
 
     def balance(
@@ -526,7 +525,7 @@ class AsyncAccountsResource(AsyncAPIResource):
             cast_to=Account,
         )
 
-    def list(
+    async def list(
         self,
         *,
         created_at: account_list_params.CreatedAt | Omit = omit,
@@ -543,7 +542,7 @@ class AsyncAccountsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AsyncPaginator[Account, AsyncPage[Account]]:
+    ) -> AccountListResponse:
         """
         List Accounts
 
@@ -572,15 +571,14 @@ class AsyncAccountsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get_api_list(
+        return await self._get(
             "/accounts",
-            page=AsyncPage[Account],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform(
+                query=await async_maybe_transform(
                     {
                         "created_at": created_at,
                         "cursor": cursor,
@@ -594,7 +592,7 @@ class AsyncAccountsResource(AsyncAPIResource):
                     account_list_params.AccountListParams,
                 ),
             ),
-            model=Account,
+            cast_to=AccountListResponse,
         )
 
     async def balance(

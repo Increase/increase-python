@@ -6,7 +6,7 @@ import httpx
 
 from ..types import card_payment_list_params
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from .._utils import maybe_transform
+from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -15,9 +15,9 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..pagination import SyncPage, AsyncPage
-from .._base_client import AsyncPaginator, make_request_options
+from .._base_client import make_request_options
 from ..types.card_payment import CardPayment
+from ..types.card_payment_list_response import CardPaymentListResponse
 
 __all__ = ["CardPaymentsResource", "AsyncCardPaymentsResource"]
 
@@ -91,7 +91,7 @@ class CardPaymentsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SyncPage[CardPayment]:
+    ) -> CardPaymentListResponse:
         """
         List Card Payments
 
@@ -113,9 +113,8 @@ class CardPaymentsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get_api_list(
+        return self._get(
             "/card_payments",
-            page=SyncPage[CardPayment],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -132,7 +131,7 @@ class CardPaymentsResource(SyncAPIResource):
                     card_payment_list_params.CardPaymentListParams,
                 ),
             ),
-            model=CardPayment,
+            cast_to=CardPaymentListResponse,
         )
 
 
@@ -191,7 +190,7 @@ class AsyncCardPaymentsResource(AsyncAPIResource):
             cast_to=CardPayment,
         )
 
-    def list(
+    async def list(
         self,
         *,
         account_id: str | Omit = omit,
@@ -205,7 +204,7 @@ class AsyncCardPaymentsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AsyncPaginator[CardPayment, AsyncPage[CardPayment]]:
+    ) -> CardPaymentListResponse:
         """
         List Card Payments
 
@@ -227,15 +226,14 @@ class AsyncCardPaymentsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get_api_list(
+        return await self._get(
             "/card_payments",
-            page=AsyncPage[CardPayment],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform(
+                query=await async_maybe_transform(
                     {
                         "account_id": account_id,
                         "card_id": card_id,
@@ -246,7 +244,7 @@ class AsyncCardPaymentsResource(AsyncAPIResource):
                     card_payment_list_params.CardPaymentListParams,
                 ),
             ),
-            model=CardPayment,
+            cast_to=CardPaymentListResponse,
         )
 
 

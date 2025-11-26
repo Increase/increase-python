@@ -6,7 +6,7 @@ import httpx
 
 from ..types import digital_wallet_token_list_params
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from .._utils import maybe_transform
+from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -15,9 +15,9 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..pagination import SyncPage, AsyncPage
-from .._base_client import AsyncPaginator, make_request_options
+from .._base_client import make_request_options
 from ..types.digital_wallet_token import DigitalWalletToken
+from ..types.digital_wallet_token_list_response import DigitalWalletTokenListResponse
 
 __all__ = ["DigitalWalletTokensResource", "AsyncDigitalWalletTokensResource"]
 
@@ -92,7 +92,7 @@ class DigitalWalletTokensResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SyncPage[DigitalWalletToken]:
+    ) -> DigitalWalletTokenListResponse:
         """
         List Digital Wallet Tokens
 
@@ -112,9 +112,8 @@ class DigitalWalletTokensResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get_api_list(
+        return self._get(
             "/digital_wallet_tokens",
-            page=SyncPage[DigitalWalletToken],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -130,7 +129,7 @@ class DigitalWalletTokensResource(SyncAPIResource):
                     digital_wallet_token_list_params.DigitalWalletTokenListParams,
                 ),
             ),
-            model=DigitalWalletToken,
+            cast_to=DigitalWalletTokenListResponse,
         )
 
 
@@ -191,7 +190,7 @@ class AsyncDigitalWalletTokensResource(AsyncAPIResource):
             cast_to=DigitalWalletToken,
         )
 
-    def list(
+    async def list(
         self,
         *,
         card_id: str | Omit = omit,
@@ -204,7 +203,7 @@ class AsyncDigitalWalletTokensResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AsyncPaginator[DigitalWalletToken, AsyncPage[DigitalWalletToken]]:
+    ) -> DigitalWalletTokenListResponse:
         """
         List Digital Wallet Tokens
 
@@ -224,15 +223,14 @@ class AsyncDigitalWalletTokensResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get_api_list(
+        return await self._get(
             "/digital_wallet_tokens",
-            page=AsyncPage[DigitalWalletToken],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform(
+                query=await async_maybe_transform(
                     {
                         "card_id": card_id,
                         "created_at": created_at,
@@ -242,7 +240,7 @@ class AsyncDigitalWalletTokensResource(AsyncAPIResource):
                     digital_wallet_token_list_params.DigitalWalletTokenListParams,
                 ),
             ),
-            model=DigitalWalletToken,
+            cast_to=DigitalWalletTokenListResponse,
         )
 
 

@@ -19,9 +19,9 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..pagination import SyncPage, AsyncPage
-from .._base_client import AsyncPaginator, make_request_options
+from .._base_client import make_request_options
 from ..types.check_transfer import CheckTransfer
+from ..types.check_transfer_list_response import CheckTransferListResponse
 
 __all__ = ["CheckTransfersResource", "AsyncCheckTransfersResource"]
 
@@ -201,7 +201,7 @@ class CheckTransfersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SyncPage[CheckTransfer]:
+    ) -> CheckTransferListResponse:
         """
         List Check Transfers
 
@@ -226,9 +226,8 @@ class CheckTransfersResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get_api_list(
+        return self._get(
             "/check_transfers",
-            page=SyncPage[CheckTransfer],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -246,7 +245,7 @@ class CheckTransfersResource(SyncAPIResource):
                     check_transfer_list_params.CheckTransferListParams,
                 ),
             ),
-            model=CheckTransfer,
+            cast_to=CheckTransferListResponse,
         )
 
     def approve(
@@ -548,7 +547,7 @@ class AsyncCheckTransfersResource(AsyncAPIResource):
             cast_to=CheckTransfer,
         )
 
-    def list(
+    async def list(
         self,
         *,
         account_id: str | Omit = omit,
@@ -563,7 +562,7 @@ class AsyncCheckTransfersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AsyncPaginator[CheckTransfer, AsyncPage[CheckTransfer]]:
+    ) -> CheckTransferListResponse:
         """
         List Check Transfers
 
@@ -588,15 +587,14 @@ class AsyncCheckTransfersResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get_api_list(
+        return await self._get(
             "/check_transfers",
-            page=AsyncPage[CheckTransfer],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform(
+                query=await async_maybe_transform(
                     {
                         "account_id": account_id,
                         "created_at": created_at,
@@ -608,7 +606,7 @@ class AsyncCheckTransfersResource(AsyncAPIResource):
                     check_transfer_list_params.CheckTransferListParams,
                 ),
             ),
-            model=CheckTransfer,
+            cast_to=CheckTransferListResponse,
         )
 
     async def approve(
