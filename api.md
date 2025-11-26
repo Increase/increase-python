@@ -3,7 +3,7 @@
 Types:
 
 ```python
-from increase.types import Account, BalanceLookup, AccountListResponse
+from increase.types import Account, BalanceLookup
 ```
 
 Methods:
@@ -11,7 +11,7 @@ Methods:
 - <code title="post /accounts">client.accounts.<a href="./src/increase/resources/accounts.py">create</a>(\*\*<a href="src/increase/types/account_create_params.py">params</a>) -> <a href="./src/increase/types/account.py">Account</a></code>
 - <code title="get /accounts/{account_id}">client.accounts.<a href="./src/increase/resources/accounts.py">retrieve</a>(account_id) -> <a href="./src/increase/types/account.py">Account</a></code>
 - <code title="patch /accounts/{account_id}">client.accounts.<a href="./src/increase/resources/accounts.py">update</a>(account_id, \*\*<a href="src/increase/types/account_update_params.py">params</a>) -> <a href="./src/increase/types/account.py">Account</a></code>
-- <code title="get /accounts">client.accounts.<a href="./src/increase/resources/accounts.py">list</a>(\*\*<a href="src/increase/types/account_list_params.py">params</a>) -> <a href="./src/increase/types/account_list_response.py">AccountListResponse</a></code>
+- <code title="get /accounts">client.accounts.<a href="./src/increase/resources/accounts.py">list</a>(\*\*<a href="src/increase/types/account_list_params.py">params</a>) -> <a href="./src/increase/types/account.py">SyncPage[Account]</a></code>
 - <code title="get /accounts/{account_id}/balance">client.accounts.<a href="./src/increase/resources/accounts.py">balance</a>(account_id, \*\*<a href="src/increase/types/account_balance_params.py">params</a>) -> <a href="./src/increase/types/balance_lookup.py">BalanceLookup</a></code>
 - <code title="post /accounts/{account_id}/close">client.accounts.<a href="./src/increase/resources/accounts.py">close</a>(account_id) -> <a href="./src/increase/types/account.py">Account</a></code>
 
@@ -20,7 +20,7 @@ Methods:
 Types:
 
 ```python
-from increase.types import AccountNumber, AccountNumberListResponse
+from increase.types import AccountNumber
 ```
 
 Methods:
@@ -28,21 +28,21 @@ Methods:
 - <code title="post /account_numbers">client.account_numbers.<a href="./src/increase/resources/account_numbers.py">create</a>(\*\*<a href="src/increase/types/account_number_create_params.py">params</a>) -> <a href="./src/increase/types/account_number.py">AccountNumber</a></code>
 - <code title="get /account_numbers/{account_number_id}">client.account_numbers.<a href="./src/increase/resources/account_numbers.py">retrieve</a>(account_number_id) -> <a href="./src/increase/types/account_number.py">AccountNumber</a></code>
 - <code title="patch /account_numbers/{account_number_id}">client.account_numbers.<a href="./src/increase/resources/account_numbers.py">update</a>(account_number_id, \*\*<a href="src/increase/types/account_number_update_params.py">params</a>) -> <a href="./src/increase/types/account_number.py">AccountNumber</a></code>
-- <code title="get /account_numbers">client.account_numbers.<a href="./src/increase/resources/account_numbers.py">list</a>(\*\*<a href="src/increase/types/account_number_list_params.py">params</a>) -> <a href="./src/increase/types/account_number_list_response.py">AccountNumberListResponse</a></code>
+- <code title="get /account_numbers">client.account_numbers.<a href="./src/increase/resources/account_numbers.py">list</a>(\*\*<a href="src/increase/types/account_number_list_params.py">params</a>) -> <a href="./src/increase/types/account_number.py">SyncPage[AccountNumber]</a></code>
 
 # AccountTransfers
 
 Types:
 
 ```python
-from increase.types import AccountTransfer, AccountTransferListResponse
+from increase.types import AccountTransfer
 ```
 
 Methods:
 
 - <code title="post /account_transfers">client.account_transfers.<a href="./src/increase/resources/account_transfers.py">create</a>(\*\*<a href="src/increase/types/account_transfer_create_params.py">params</a>) -> <a href="./src/increase/types/account_transfer.py">AccountTransfer</a></code>
 - <code title="get /account_transfers/{account_transfer_id}">client.account_transfers.<a href="./src/increase/resources/account_transfers.py">retrieve</a>(account_transfer_id) -> <a href="./src/increase/types/account_transfer.py">AccountTransfer</a></code>
-- <code title="get /account_transfers">client.account_transfers.<a href="./src/increase/resources/account_transfers.py">list</a>(\*\*<a href="src/increase/types/account_transfer_list_params.py">params</a>) -> <a href="./src/increase/types/account_transfer_list_response.py">AccountTransferListResponse</a></code>
+- <code title="get /account_transfers">client.account_transfers.<a href="./src/increase/resources/account_transfers.py">list</a>(\*\*<a href="src/increase/types/account_transfer_list_params.py">params</a>) -> <a href="./src/increase/types/account_transfer.py">SyncPage[AccountTransfer]</a></code>
 - <code title="post /account_transfers/{account_transfer_id}/approve">client.account_transfers.<a href="./src/increase/resources/account_transfers.py">approve</a>(account_transfer_id) -> <a href="./src/increase/types/account_transfer.py">AccountTransfer</a></code>
 - <code title="post /account_transfers/{account_transfer_id}/cancel">client.account_transfers.<a href="./src/increase/resources/account_transfers.py">cancel</a>(account_transfer_id) -> <a href="./src/increase/types/account_transfer.py">AccountTransfer</a></code>
 
@@ -51,7 +51,7 @@ Methods:
 Types:
 
 ```python
-from increase.types import Card, CardDetails, CardIframeURL, CardListResponse
+from increase.types import Card, CardDetails, CardIframeURL
 ```
 
 Methods:
@@ -59,7 +59,7 @@ Methods:
 - <code title="post /cards">client.cards.<a href="./src/increase/resources/cards.py">create</a>(\*\*<a href="src/increase/types/card_create_params.py">params</a>) -> <a href="./src/increase/types/card.py">Card</a></code>
 - <code title="get /cards/{card_id}">client.cards.<a href="./src/increase/resources/cards.py">retrieve</a>(card_id) -> <a href="./src/increase/types/card.py">Card</a></code>
 - <code title="patch /cards/{card_id}">client.cards.<a href="./src/increase/resources/cards.py">update</a>(card_id, \*\*<a href="src/increase/types/card_update_params.py">params</a>) -> <a href="./src/increase/types/card.py">Card</a></code>
-- <code title="get /cards">client.cards.<a href="./src/increase/resources/cards.py">list</a>(\*\*<a href="src/increase/types/card_list_params.py">params</a>) -> <a href="./src/increase/types/card_list_response.py">CardListResponse</a></code>
+- <code title="get /cards">client.cards.<a href="./src/increase/resources/cards.py">list</a>(\*\*<a href="src/increase/types/card_list_params.py">params</a>) -> <a href="./src/increase/types/card.py">SyncPage[Card]</a></code>
 - <code title="post /cards/{card_id}/create_details_iframe">client.cards.<a href="./src/increase/resources/cards.py">create_details_iframe</a>(card_id, \*\*<a href="src/increase/types/card_create_details_iframe_params.py">params</a>) -> <a href="./src/increase/types/card_iframe_url.py">CardIframeURL</a></code>
 - <code title="get /cards/{card_id}/details">client.cards.<a href="./src/increase/resources/cards.py">details</a>(card_id) -> <a href="./src/increase/types/card_details.py">CardDetails</a></code>
 - <code title="post /cards/{card_id}/update_pin">client.cards.<a href="./src/increase/resources/cards.py">update_pin</a>(card_id, \*\*<a href="src/increase/types/card_update_pin_params.py">params</a>) -> <a href="./src/increase/types/card_details.py">CardDetails</a></code>
@@ -69,40 +69,40 @@ Methods:
 Types:
 
 ```python
-from increase.types import CardPayment, CardPaymentListResponse
+from increase.types import CardPayment
 ```
 
 Methods:
 
 - <code title="get /card_payments/{card_payment_id}">client.card_payments.<a href="./src/increase/resources/card_payments.py">retrieve</a>(card_payment_id) -> <a href="./src/increase/types/card_payment.py">CardPayment</a></code>
-- <code title="get /card_payments">client.card_payments.<a href="./src/increase/resources/card_payments.py">list</a>(\*\*<a href="src/increase/types/card_payment_list_params.py">params</a>) -> <a href="./src/increase/types/card_payment_list_response.py">CardPaymentListResponse</a></code>
+- <code title="get /card_payments">client.card_payments.<a href="./src/increase/resources/card_payments.py">list</a>(\*\*<a href="src/increase/types/card_payment_list_params.py">params</a>) -> <a href="./src/increase/types/card_payment.py">SyncPage[CardPayment]</a></code>
 
 # CardPurchaseSupplements
 
 Types:
 
 ```python
-from increase.types import CardPurchaseSupplement, CardPurchaseSupplementListResponse
+from increase.types import CardPurchaseSupplement
 ```
 
 Methods:
 
 - <code title="get /card_purchase_supplements/{card_purchase_supplement_id}">client.card_purchase_supplements.<a href="./src/increase/resources/card_purchase_supplements.py">retrieve</a>(card_purchase_supplement_id) -> <a href="./src/increase/types/card_purchase_supplement.py">CardPurchaseSupplement</a></code>
-- <code title="get /card_purchase_supplements">client.card_purchase_supplements.<a href="./src/increase/resources/card_purchase_supplements.py">list</a>(\*\*<a href="src/increase/types/card_purchase_supplement_list_params.py">params</a>) -> <a href="./src/increase/types/card_purchase_supplement_list_response.py">CardPurchaseSupplementListResponse</a></code>
+- <code title="get /card_purchase_supplements">client.card_purchase_supplements.<a href="./src/increase/resources/card_purchase_supplements.py">list</a>(\*\*<a href="src/increase/types/card_purchase_supplement_list_params.py">params</a>) -> <a href="./src/increase/types/card_purchase_supplement.py">SyncPage[CardPurchaseSupplement]</a></code>
 
 # CardDisputes
 
 Types:
 
 ```python
-from increase.types import CardDispute, CardDisputeListResponse
+from increase.types import CardDispute
 ```
 
 Methods:
 
 - <code title="post /card_disputes">client.card_disputes.<a href="./src/increase/resources/card_disputes.py">create</a>(\*\*<a href="src/increase/types/card_dispute_create_params.py">params</a>) -> <a href="./src/increase/types/card_dispute.py">CardDispute</a></code>
 - <code title="get /card_disputes/{card_dispute_id}">client.card_disputes.<a href="./src/increase/resources/card_disputes.py">retrieve</a>(card_dispute_id) -> <a href="./src/increase/types/card_dispute.py">CardDispute</a></code>
-- <code title="get /card_disputes">client.card_disputes.<a href="./src/increase/resources/card_disputes.py">list</a>(\*\*<a href="src/increase/types/card_dispute_list_params.py">params</a>) -> <a href="./src/increase/types/card_dispute_list_response.py">CardDisputeListResponse</a></code>
+- <code title="get /card_disputes">client.card_disputes.<a href="./src/increase/resources/card_disputes.py">list</a>(\*\*<a href="src/increase/types/card_dispute_list_params.py">params</a>) -> <a href="./src/increase/types/card_dispute.py">SyncPage[CardDispute]</a></code>
 - <code title="post /card_disputes/{card_dispute_id}/submit_user_submission">client.card_disputes.<a href="./src/increase/resources/card_disputes.py">submit_user_submission</a>(card_dispute_id, \*\*<a href="src/increase/types/card_dispute_submit_user_submission_params.py">params</a>) -> <a href="./src/increase/types/card_dispute.py">CardDispute</a></code>
 - <code title="post /card_disputes/{card_dispute_id}/withdraw">client.card_disputes.<a href="./src/increase/resources/card_disputes.py">withdraw</a>(card_dispute_id) -> <a href="./src/increase/types/card_dispute.py">CardDispute</a></code>
 
@@ -111,7 +111,7 @@ Methods:
 Types:
 
 ```python
-from increase.types import PhysicalCard, PhysicalCardListResponse
+from increase.types import PhysicalCard
 ```
 
 Methods:
@@ -119,21 +119,21 @@ Methods:
 - <code title="post /physical_cards">client.physical_cards.<a href="./src/increase/resources/physical_cards.py">create</a>(\*\*<a href="src/increase/types/physical_card_create_params.py">params</a>) -> <a href="./src/increase/types/physical_card.py">PhysicalCard</a></code>
 - <code title="get /physical_cards/{physical_card_id}">client.physical_cards.<a href="./src/increase/resources/physical_cards.py">retrieve</a>(physical_card_id) -> <a href="./src/increase/types/physical_card.py">PhysicalCard</a></code>
 - <code title="patch /physical_cards/{physical_card_id}">client.physical_cards.<a href="./src/increase/resources/physical_cards.py">update</a>(physical_card_id, \*\*<a href="src/increase/types/physical_card_update_params.py">params</a>) -> <a href="./src/increase/types/physical_card.py">PhysicalCard</a></code>
-- <code title="get /physical_cards">client.physical_cards.<a href="./src/increase/resources/physical_cards.py">list</a>(\*\*<a href="src/increase/types/physical_card_list_params.py">params</a>) -> <a href="./src/increase/types/physical_card_list_response.py">PhysicalCardListResponse</a></code>
+- <code title="get /physical_cards">client.physical_cards.<a href="./src/increase/resources/physical_cards.py">list</a>(\*\*<a href="src/increase/types/physical_card_list_params.py">params</a>) -> <a href="./src/increase/types/physical_card.py">SyncPage[PhysicalCard]</a></code>
 
 # DigitalCardProfiles
 
 Types:
 
 ```python
-from increase.types import DigitalCardProfile, DigitalCardProfileListResponse
+from increase.types import DigitalCardProfile
 ```
 
 Methods:
 
 - <code title="post /digital_card_profiles">client.digital_card_profiles.<a href="./src/increase/resources/digital_card_profiles.py">create</a>(\*\*<a href="src/increase/types/digital_card_profile_create_params.py">params</a>) -> <a href="./src/increase/types/digital_card_profile.py">DigitalCardProfile</a></code>
 - <code title="get /digital_card_profiles/{digital_card_profile_id}">client.digital_card_profiles.<a href="./src/increase/resources/digital_card_profiles.py">retrieve</a>(digital_card_profile_id) -> <a href="./src/increase/types/digital_card_profile.py">DigitalCardProfile</a></code>
-- <code title="get /digital_card_profiles">client.digital_card_profiles.<a href="./src/increase/resources/digital_card_profiles.py">list</a>(\*\*<a href="src/increase/types/digital_card_profile_list_params.py">params</a>) -> <a href="./src/increase/types/digital_card_profile_list_response.py">DigitalCardProfileListResponse</a></code>
+- <code title="get /digital_card_profiles">client.digital_card_profiles.<a href="./src/increase/resources/digital_card_profiles.py">list</a>(\*\*<a href="src/increase/types/digital_card_profile_list_params.py">params</a>) -> <a href="./src/increase/types/digital_card_profile.py">SyncPage[DigitalCardProfile]</a></code>
 - <code title="post /digital_card_profiles/{digital_card_profile_id}/archive">client.digital_card_profiles.<a href="./src/increase/resources/digital_card_profiles.py">archive</a>(digital_card_profile_id) -> <a href="./src/increase/types/digital_card_profile.py">DigitalCardProfile</a></code>
 - <code title="post /digital_card_profiles/{digital_card_profile_id}/clone">client.digital_card_profiles.<a href="./src/increase/resources/digital_card_profiles.py">clone</a>(digital_card_profile_id, \*\*<a href="src/increase/types/digital_card_profile_clone_params.py">params</a>) -> <a href="./src/increase/types/digital_card_profile.py">DigitalCardProfile</a></code>
 
@@ -142,14 +142,14 @@ Methods:
 Types:
 
 ```python
-from increase.types import PhysicalCardProfile, PhysicalCardProfileListResponse
+from increase.types import PhysicalCardProfile
 ```
 
 Methods:
 
 - <code title="post /physical_card_profiles">client.physical_card_profiles.<a href="./src/increase/resources/physical_card_profiles.py">create</a>(\*\*<a href="src/increase/types/physical_card_profile_create_params.py">params</a>) -> <a href="./src/increase/types/physical_card_profile.py">PhysicalCardProfile</a></code>
 - <code title="get /physical_card_profiles/{physical_card_profile_id}">client.physical_card_profiles.<a href="./src/increase/resources/physical_card_profiles.py">retrieve</a>(physical_card_profile_id) -> <a href="./src/increase/types/physical_card_profile.py">PhysicalCardProfile</a></code>
-- <code title="get /physical_card_profiles">client.physical_card_profiles.<a href="./src/increase/resources/physical_card_profiles.py">list</a>(\*\*<a href="src/increase/types/physical_card_profile_list_params.py">params</a>) -> <a href="./src/increase/types/physical_card_profile_list_response.py">PhysicalCardProfileListResponse</a></code>
+- <code title="get /physical_card_profiles">client.physical_card_profiles.<a href="./src/increase/resources/physical_card_profiles.py">list</a>(\*\*<a href="src/increase/types/physical_card_profile_list_params.py">params</a>) -> <a href="./src/increase/types/physical_card_profile.py">SyncPage[PhysicalCardProfile]</a></code>
 - <code title="post /physical_card_profiles/{physical_card_profile_id}/archive">client.physical_card_profiles.<a href="./src/increase/resources/physical_card_profiles.py">archive</a>(physical_card_profile_id) -> <a href="./src/increase/types/physical_card_profile.py">PhysicalCardProfile</a></code>
 - <code title="post /physical_card_profiles/{physical_card_profile_id}/clone">client.physical_card_profiles.<a href="./src/increase/resources/physical_card_profiles.py">clone</a>(physical_card_profile_id, \*\*<a href="src/increase/types/physical_card_profile_clone_params.py">params</a>) -> <a href="./src/increase/types/physical_card_profile.py">PhysicalCardProfile</a></code>
 
@@ -158,40 +158,40 @@ Methods:
 Types:
 
 ```python
-from increase.types import DigitalWalletToken, DigitalWalletTokenListResponse
+from increase.types import DigitalWalletToken
 ```
 
 Methods:
 
 - <code title="get /digital_wallet_tokens/{digital_wallet_token_id}">client.digital_wallet_tokens.<a href="./src/increase/resources/digital_wallet_tokens.py">retrieve</a>(digital_wallet_token_id) -> <a href="./src/increase/types/digital_wallet_token.py">DigitalWalletToken</a></code>
-- <code title="get /digital_wallet_tokens">client.digital_wallet_tokens.<a href="./src/increase/resources/digital_wallet_tokens.py">list</a>(\*\*<a href="src/increase/types/digital_wallet_token_list_params.py">params</a>) -> <a href="./src/increase/types/digital_wallet_token_list_response.py">DigitalWalletTokenListResponse</a></code>
+- <code title="get /digital_wallet_tokens">client.digital_wallet_tokens.<a href="./src/increase/resources/digital_wallet_tokens.py">list</a>(\*\*<a href="src/increase/types/digital_wallet_token_list_params.py">params</a>) -> <a href="./src/increase/types/digital_wallet_token.py">SyncPage[DigitalWalletToken]</a></code>
 
 # Transactions
 
 Types:
 
 ```python
-from increase.types import Transaction, TransactionListResponse
+from increase.types import Transaction
 ```
 
 Methods:
 
 - <code title="get /transactions/{transaction_id}">client.transactions.<a href="./src/increase/resources/transactions.py">retrieve</a>(transaction_id) -> <a href="./src/increase/types/transaction.py">Transaction</a></code>
-- <code title="get /transactions">client.transactions.<a href="./src/increase/resources/transactions.py">list</a>(\*\*<a href="src/increase/types/transaction_list_params.py">params</a>) -> <a href="./src/increase/types/transaction_list_response.py">TransactionListResponse</a></code>
+- <code title="get /transactions">client.transactions.<a href="./src/increase/resources/transactions.py">list</a>(\*\*<a href="src/increase/types/transaction_list_params.py">params</a>) -> <a href="./src/increase/types/transaction.py">SyncPage[Transaction]</a></code>
 
 # PendingTransactions
 
 Types:
 
 ```python
-from increase.types import PendingTransaction, PendingTransactionListResponse
+from increase.types import PendingTransaction
 ```
 
 Methods:
 
 - <code title="post /pending_transactions">client.pending_transactions.<a href="./src/increase/resources/pending_transactions.py">create</a>(\*\*<a href="src/increase/types/pending_transaction_create_params.py">params</a>) -> <a href="./src/increase/types/pending_transaction.py">PendingTransaction</a></code>
 - <code title="get /pending_transactions/{pending_transaction_id}">client.pending_transactions.<a href="./src/increase/resources/pending_transactions.py">retrieve</a>(pending_transaction_id) -> <a href="./src/increase/types/pending_transaction.py">PendingTransaction</a></code>
-- <code title="get /pending_transactions">client.pending_transactions.<a href="./src/increase/resources/pending_transactions.py">list</a>(\*\*<a href="src/increase/types/pending_transaction_list_params.py">params</a>) -> <a href="./src/increase/types/pending_transaction_list_response.py">PendingTransactionListResponse</a></code>
+- <code title="get /pending_transactions">client.pending_transactions.<a href="./src/increase/resources/pending_transactions.py">list</a>(\*\*<a href="src/increase/types/pending_transaction_list_params.py">params</a>) -> <a href="./src/increase/types/pending_transaction.py">SyncPage[PendingTransaction]</a></code>
 - <code title="post /pending_transactions/{pending_transaction_id}/release">client.pending_transactions.<a href="./src/increase/resources/pending_transactions.py">release</a>(pending_transaction_id) -> <a href="./src/increase/types/pending_transaction.py">PendingTransaction</a></code>
 
 # DeclinedTransactions
@@ -199,27 +199,27 @@ Methods:
 Types:
 
 ```python
-from increase.types import DeclinedTransaction, DeclinedTransactionListResponse
+from increase.types import DeclinedTransaction
 ```
 
 Methods:
 
 - <code title="get /declined_transactions/{declined_transaction_id}">client.declined_transactions.<a href="./src/increase/resources/declined_transactions.py">retrieve</a>(declined_transaction_id) -> <a href="./src/increase/types/declined_transaction.py">DeclinedTransaction</a></code>
-- <code title="get /declined_transactions">client.declined_transactions.<a href="./src/increase/resources/declined_transactions.py">list</a>(\*\*<a href="src/increase/types/declined_transaction_list_params.py">params</a>) -> <a href="./src/increase/types/declined_transaction_list_response.py">DeclinedTransactionListResponse</a></code>
+- <code title="get /declined_transactions">client.declined_transactions.<a href="./src/increase/resources/declined_transactions.py">list</a>(\*\*<a href="src/increase/types/declined_transaction_list_params.py">params</a>) -> <a href="./src/increase/types/declined_transaction.py">SyncPage[DeclinedTransaction]</a></code>
 
 # ACHTransfers
 
 Types:
 
 ```python
-from increase.types import ACHTransfer, ACHTransferListResponse
+from increase.types import ACHTransfer
 ```
 
 Methods:
 
 - <code title="post /ach_transfers">client.ach_transfers.<a href="./src/increase/resources/ach_transfers.py">create</a>(\*\*<a href="src/increase/types/ach_transfer_create_params.py">params</a>) -> <a href="./src/increase/types/ach_transfer.py">ACHTransfer</a></code>
 - <code title="get /ach_transfers/{ach_transfer_id}">client.ach_transfers.<a href="./src/increase/resources/ach_transfers.py">retrieve</a>(ach_transfer_id) -> <a href="./src/increase/types/ach_transfer.py">ACHTransfer</a></code>
-- <code title="get /ach_transfers">client.ach_transfers.<a href="./src/increase/resources/ach_transfers.py">list</a>(\*\*<a href="src/increase/types/ach_transfer_list_params.py">params</a>) -> <a href="./src/increase/types/ach_transfer_list_response.py">ACHTransferListResponse</a></code>
+- <code title="get /ach_transfers">client.ach_transfers.<a href="./src/increase/resources/ach_transfers.py">list</a>(\*\*<a href="src/increase/types/ach_transfer_list_params.py">params</a>) -> <a href="./src/increase/types/ach_transfer.py">SyncPage[ACHTransfer]</a></code>
 - <code title="post /ach_transfers/{ach_transfer_id}/approve">client.ach_transfers.<a href="./src/increase/resources/ach_transfers.py">approve</a>(ach_transfer_id) -> <a href="./src/increase/types/ach_transfer.py">ACHTransfer</a></code>
 - <code title="post /ach_transfers/{ach_transfer_id}/cancel">client.ach_transfers.<a href="./src/increase/resources/ach_transfers.py">cancel</a>(ach_transfer_id) -> <a href="./src/increase/types/ach_transfer.py">ACHTransfer</a></code>
 
@@ -228,27 +228,27 @@ Methods:
 Types:
 
 ```python
-from increase.types import ACHPrenotification, ACHPrenotificationListResponse
+from increase.types import ACHPrenotification
 ```
 
 Methods:
 
 - <code title="post /ach_prenotifications">client.ach_prenotifications.<a href="./src/increase/resources/ach_prenotifications.py">create</a>(\*\*<a href="src/increase/types/ach_prenotification_create_params.py">params</a>) -> <a href="./src/increase/types/ach_prenotification.py">ACHPrenotification</a></code>
 - <code title="get /ach_prenotifications/{ach_prenotification_id}">client.ach_prenotifications.<a href="./src/increase/resources/ach_prenotifications.py">retrieve</a>(ach_prenotification_id) -> <a href="./src/increase/types/ach_prenotification.py">ACHPrenotification</a></code>
-- <code title="get /ach_prenotifications">client.ach_prenotifications.<a href="./src/increase/resources/ach_prenotifications.py">list</a>(\*\*<a href="src/increase/types/ach_prenotification_list_params.py">params</a>) -> <a href="./src/increase/types/ach_prenotification_list_response.py">ACHPrenotificationListResponse</a></code>
+- <code title="get /ach_prenotifications">client.ach_prenotifications.<a href="./src/increase/resources/ach_prenotifications.py">list</a>(\*\*<a href="src/increase/types/ach_prenotification_list_params.py">params</a>) -> <a href="./src/increase/types/ach_prenotification.py">SyncPage[ACHPrenotification]</a></code>
 
 # InboundACHTransfers
 
 Types:
 
 ```python
-from increase.types import InboundACHTransfer, InboundACHTransferListResponse
+from increase.types import InboundACHTransfer
 ```
 
 Methods:
 
 - <code title="get /inbound_ach_transfers/{inbound_ach_transfer_id}">client.inbound_ach_transfers.<a href="./src/increase/resources/inbound_ach_transfers.py">retrieve</a>(inbound_ach_transfer_id) -> <a href="./src/increase/types/inbound_ach_transfer.py">InboundACHTransfer</a></code>
-- <code title="get /inbound_ach_transfers">client.inbound_ach_transfers.<a href="./src/increase/resources/inbound_ach_transfers.py">list</a>(\*\*<a href="src/increase/types/inbound_ach_transfer_list_params.py">params</a>) -> <a href="./src/increase/types/inbound_ach_transfer_list_response.py">InboundACHTransferListResponse</a></code>
+- <code title="get /inbound_ach_transfers">client.inbound_ach_transfers.<a href="./src/increase/resources/inbound_ach_transfers.py">list</a>(\*\*<a href="src/increase/types/inbound_ach_transfer_list_params.py">params</a>) -> <a href="./src/increase/types/inbound_ach_transfer.py">SyncPage[InboundACHTransfer]</a></code>
 - <code title="post /inbound_ach_transfers/{inbound_ach_transfer_id}/create_notification_of_change">client.inbound_ach_transfers.<a href="./src/increase/resources/inbound_ach_transfers.py">create_notification_of_change</a>(inbound_ach_transfer_id, \*\*<a href="src/increase/types/inbound_ach_transfer_create_notification_of_change_params.py">params</a>) -> <a href="./src/increase/types/inbound_ach_transfer.py">InboundACHTransfer</a></code>
 - <code title="post /inbound_ach_transfers/{inbound_ach_transfer_id}/decline">client.inbound_ach_transfers.<a href="./src/increase/resources/inbound_ach_transfers.py">decline</a>(inbound_ach_transfer_id, \*\*<a href="src/increase/types/inbound_ach_transfer_decline_params.py">params</a>) -> <a href="./src/increase/types/inbound_ach_transfer.py">InboundACHTransfer</a></code>
 - <code title="post /inbound_ach_transfers/{inbound_ach_transfer_id}/transfer_return">client.inbound_ach_transfers.<a href="./src/increase/resources/inbound_ach_transfers.py">transfer_return</a>(inbound_ach_transfer_id, \*\*<a href="src/increase/types/inbound_ach_transfer_transfer_return_params.py">params</a>) -> <a href="./src/increase/types/inbound_ach_transfer.py">InboundACHTransfer</a></code>
@@ -258,14 +258,14 @@ Methods:
 Types:
 
 ```python
-from increase.types import WireTransfer, WireTransferListResponse
+from increase.types import WireTransfer
 ```
 
 Methods:
 
 - <code title="post /wire_transfers">client.wire_transfers.<a href="./src/increase/resources/wire_transfers.py">create</a>(\*\*<a href="src/increase/types/wire_transfer_create_params.py">params</a>) -> <a href="./src/increase/types/wire_transfer.py">WireTransfer</a></code>
 - <code title="get /wire_transfers/{wire_transfer_id}">client.wire_transfers.<a href="./src/increase/resources/wire_transfers.py">retrieve</a>(wire_transfer_id) -> <a href="./src/increase/types/wire_transfer.py">WireTransfer</a></code>
-- <code title="get /wire_transfers">client.wire_transfers.<a href="./src/increase/resources/wire_transfers.py">list</a>(\*\*<a href="src/increase/types/wire_transfer_list_params.py">params</a>) -> <a href="./src/increase/types/wire_transfer_list_response.py">WireTransferListResponse</a></code>
+- <code title="get /wire_transfers">client.wire_transfers.<a href="./src/increase/resources/wire_transfers.py">list</a>(\*\*<a href="src/increase/types/wire_transfer_list_params.py">params</a>) -> <a href="./src/increase/types/wire_transfer.py">SyncPage[WireTransfer]</a></code>
 - <code title="post /wire_transfers/{wire_transfer_id}/approve">client.wire_transfers.<a href="./src/increase/resources/wire_transfers.py">approve</a>(wire_transfer_id) -> <a href="./src/increase/types/wire_transfer.py">WireTransfer</a></code>
 - <code title="post /wire_transfers/{wire_transfer_id}/cancel">client.wire_transfers.<a href="./src/increase/resources/wire_transfers.py">cancel</a>(wire_transfer_id) -> <a href="./src/increase/types/wire_transfer.py">WireTransfer</a></code>
 
@@ -274,13 +274,13 @@ Methods:
 Types:
 
 ```python
-from increase.types import InboundWireTransfer, InboundWireTransferListResponse
+from increase.types import InboundWireTransfer
 ```
 
 Methods:
 
 - <code title="get /inbound_wire_transfers/{inbound_wire_transfer_id}">client.inbound_wire_transfers.<a href="./src/increase/resources/inbound_wire_transfers.py">retrieve</a>(inbound_wire_transfer_id) -> <a href="./src/increase/types/inbound_wire_transfer.py">InboundWireTransfer</a></code>
-- <code title="get /inbound_wire_transfers">client.inbound_wire_transfers.<a href="./src/increase/resources/inbound_wire_transfers.py">list</a>(\*\*<a href="src/increase/types/inbound_wire_transfer_list_params.py">params</a>) -> <a href="./src/increase/types/inbound_wire_transfer_list_response.py">InboundWireTransferListResponse</a></code>
+- <code title="get /inbound_wire_transfers">client.inbound_wire_transfers.<a href="./src/increase/resources/inbound_wire_transfers.py">list</a>(\*\*<a href="src/increase/types/inbound_wire_transfer_list_params.py">params</a>) -> <a href="./src/increase/types/inbound_wire_transfer.py">SyncPage[InboundWireTransfer]</a></code>
 - <code title="post /inbound_wire_transfers/{inbound_wire_transfer_id}/reverse">client.inbound_wire_transfers.<a href="./src/increase/resources/inbound_wire_transfers.py">reverse</a>(inbound_wire_transfer_id, \*\*<a href="src/increase/types/inbound_wire_transfer_reverse_params.py">params</a>) -> <a href="./src/increase/types/inbound_wire_transfer.py">InboundWireTransfer</a></code>
 
 # WireDrawdownRequests
@@ -288,41 +288,41 @@ Methods:
 Types:
 
 ```python
-from increase.types import WireDrawdownRequest, WireDrawdownRequestListResponse
+from increase.types import WireDrawdownRequest
 ```
 
 Methods:
 
 - <code title="post /wire_drawdown_requests">client.wire_drawdown_requests.<a href="./src/increase/resources/wire_drawdown_requests.py">create</a>(\*\*<a href="src/increase/types/wire_drawdown_request_create_params.py">params</a>) -> <a href="./src/increase/types/wire_drawdown_request.py">WireDrawdownRequest</a></code>
 - <code title="get /wire_drawdown_requests/{wire_drawdown_request_id}">client.wire_drawdown_requests.<a href="./src/increase/resources/wire_drawdown_requests.py">retrieve</a>(wire_drawdown_request_id) -> <a href="./src/increase/types/wire_drawdown_request.py">WireDrawdownRequest</a></code>
-- <code title="get /wire_drawdown_requests">client.wire_drawdown_requests.<a href="./src/increase/resources/wire_drawdown_requests.py">list</a>(\*\*<a href="src/increase/types/wire_drawdown_request_list_params.py">params</a>) -> <a href="./src/increase/types/wire_drawdown_request_list_response.py">WireDrawdownRequestListResponse</a></code>
+- <code title="get /wire_drawdown_requests">client.wire_drawdown_requests.<a href="./src/increase/resources/wire_drawdown_requests.py">list</a>(\*\*<a href="src/increase/types/wire_drawdown_request_list_params.py">params</a>) -> <a href="./src/increase/types/wire_drawdown_request.py">SyncPage[WireDrawdownRequest]</a></code>
 
 # InboundWireDrawdownRequests
 
 Types:
 
 ```python
-from increase.types import InboundWireDrawdownRequest, InboundWireDrawdownRequestListResponse
+from increase.types import InboundWireDrawdownRequest
 ```
 
 Methods:
 
 - <code title="get /inbound_wire_drawdown_requests/{inbound_wire_drawdown_request_id}">client.inbound_wire_drawdown_requests.<a href="./src/increase/resources/inbound_wire_drawdown_requests.py">retrieve</a>(inbound_wire_drawdown_request_id) -> <a href="./src/increase/types/inbound_wire_drawdown_request.py">InboundWireDrawdownRequest</a></code>
-- <code title="get /inbound_wire_drawdown_requests">client.inbound_wire_drawdown_requests.<a href="./src/increase/resources/inbound_wire_drawdown_requests.py">list</a>(\*\*<a href="src/increase/types/inbound_wire_drawdown_request_list_params.py">params</a>) -> <a href="./src/increase/types/inbound_wire_drawdown_request_list_response.py">InboundWireDrawdownRequestListResponse</a></code>
+- <code title="get /inbound_wire_drawdown_requests">client.inbound_wire_drawdown_requests.<a href="./src/increase/resources/inbound_wire_drawdown_requests.py">list</a>(\*\*<a href="src/increase/types/inbound_wire_drawdown_request_list_params.py">params</a>) -> <a href="./src/increase/types/inbound_wire_drawdown_request.py">SyncPage[InboundWireDrawdownRequest]</a></code>
 
 # CheckTransfers
 
 Types:
 
 ```python
-from increase.types import CheckTransfer, CheckTransferListResponse
+from increase.types import CheckTransfer
 ```
 
 Methods:
 
 - <code title="post /check_transfers">client.check_transfers.<a href="./src/increase/resources/check_transfers.py">create</a>(\*\*<a href="src/increase/types/check_transfer_create_params.py">params</a>) -> <a href="./src/increase/types/check_transfer.py">CheckTransfer</a></code>
 - <code title="get /check_transfers/{check_transfer_id}">client.check_transfers.<a href="./src/increase/resources/check_transfers.py">retrieve</a>(check_transfer_id) -> <a href="./src/increase/types/check_transfer.py">CheckTransfer</a></code>
-- <code title="get /check_transfers">client.check_transfers.<a href="./src/increase/resources/check_transfers.py">list</a>(\*\*<a href="src/increase/types/check_transfer_list_params.py">params</a>) -> <a href="./src/increase/types/check_transfer_list_response.py">CheckTransferListResponse</a></code>
+- <code title="get /check_transfers">client.check_transfers.<a href="./src/increase/resources/check_transfers.py">list</a>(\*\*<a href="src/increase/types/check_transfer_list_params.py">params</a>) -> <a href="./src/increase/types/check_transfer.py">SyncPage[CheckTransfer]</a></code>
 - <code title="post /check_transfers/{check_transfer_id}/approve">client.check_transfers.<a href="./src/increase/resources/check_transfers.py">approve</a>(check_transfer_id) -> <a href="./src/increase/types/check_transfer.py">CheckTransfer</a></code>
 - <code title="post /check_transfers/{check_transfer_id}/cancel">client.check_transfers.<a href="./src/increase/resources/check_transfers.py">cancel</a>(check_transfer_id) -> <a href="./src/increase/types/check_transfer.py">CheckTransfer</a></code>
 - <code title="post /check_transfers/{check_transfer_id}/stop_payment">client.check_transfers.<a href="./src/increase/resources/check_transfers.py">stop_payment</a>(check_transfer_id, \*\*<a href="src/increase/types/check_transfer_stop_payment_params.py">params</a>) -> <a href="./src/increase/types/check_transfer.py">CheckTransfer</a></code>
@@ -332,13 +332,13 @@ Methods:
 Types:
 
 ```python
-from increase.types import InboundCheckDeposit, InboundCheckDepositListResponse
+from increase.types import InboundCheckDeposit
 ```
 
 Methods:
 
 - <code title="get /inbound_check_deposits/{inbound_check_deposit_id}">client.inbound_check_deposits.<a href="./src/increase/resources/inbound_check_deposits.py">retrieve</a>(inbound_check_deposit_id) -> <a href="./src/increase/types/inbound_check_deposit.py">InboundCheckDeposit</a></code>
-- <code title="get /inbound_check_deposits">client.inbound_check_deposits.<a href="./src/increase/resources/inbound_check_deposits.py">list</a>(\*\*<a href="src/increase/types/inbound_check_deposit_list_params.py">params</a>) -> <a href="./src/increase/types/inbound_check_deposit_list_response.py">InboundCheckDepositListResponse</a></code>
+- <code title="get /inbound_check_deposits">client.inbound_check_deposits.<a href="./src/increase/resources/inbound_check_deposits.py">list</a>(\*\*<a href="src/increase/types/inbound_check_deposit_list_params.py">params</a>) -> <a href="./src/increase/types/inbound_check_deposit.py">SyncPage[InboundCheckDeposit]</a></code>
 - <code title="post /inbound_check_deposits/{inbound_check_deposit_id}/decline">client.inbound_check_deposits.<a href="./src/increase/resources/inbound_check_deposits.py">decline</a>(inbound_check_deposit_id) -> <a href="./src/increase/types/inbound_check_deposit.py">InboundCheckDeposit</a></code>
 - <code title="post /inbound_check_deposits/{inbound_check_deposit_id}/return">client.inbound*check_deposits.<a href="./src/increase/resources/inbound_check_deposits.py">return*</a>(inbound_check_deposit_id, \*\*<a href="src/increase/types/inbound_check_deposit_return_params.py">params</a>) -> <a href="./src/increase/types/inbound_check_deposit.py">InboundCheckDeposit</a></code>
 
@@ -347,14 +347,14 @@ Methods:
 Types:
 
 ```python
-from increase.types import RealTimePaymentsTransfer, RealTimePaymentsTransferListResponse
+from increase.types import RealTimePaymentsTransfer
 ```
 
 Methods:
 
 - <code title="post /real_time_payments_transfers">client.real_time_payments_transfers.<a href="./src/increase/resources/real_time_payments_transfers.py">create</a>(\*\*<a href="src/increase/types/real_time_payments_transfer_create_params.py">params</a>) -> <a href="./src/increase/types/real_time_payments_transfer.py">RealTimePaymentsTransfer</a></code>
 - <code title="get /real_time_payments_transfers/{real_time_payments_transfer_id}">client.real_time_payments_transfers.<a href="./src/increase/resources/real_time_payments_transfers.py">retrieve</a>(real_time_payments_transfer_id) -> <a href="./src/increase/types/real_time_payments_transfer.py">RealTimePaymentsTransfer</a></code>
-- <code title="get /real_time_payments_transfers">client.real_time_payments_transfers.<a href="./src/increase/resources/real_time_payments_transfers.py">list</a>(\*\*<a href="src/increase/types/real_time_payments_transfer_list_params.py">params</a>) -> <a href="./src/increase/types/real_time_payments_transfer_list_response.py">RealTimePaymentsTransferListResponse</a></code>
+- <code title="get /real_time_payments_transfers">client.real_time_payments_transfers.<a href="./src/increase/resources/real_time_payments_transfers.py">list</a>(\*\*<a href="src/increase/types/real_time_payments_transfer_list_params.py">params</a>) -> <a href="./src/increase/types/real_time_payments_transfer.py">SyncPage[RealTimePaymentsTransfer]</a></code>
 - <code title="post /real_time_payments_transfers/{real_time_payments_transfer_id}/approve">client.real_time_payments_transfers.<a href="./src/increase/resources/real_time_payments_transfers.py">approve</a>(real_time_payments_transfer_id) -> <a href="./src/increase/types/real_time_payments_transfer.py">RealTimePaymentsTransfer</a></code>
 - <code title="post /real_time_payments_transfers/{real_time_payments_transfer_id}/cancel">client.real_time_payments_transfers.<a href="./src/increase/resources/real_time_payments_transfers.py">cancel</a>(real_time_payments_transfer_id) -> <a href="./src/increase/types/real_time_payments_transfer.py">RealTimePaymentsTransfer</a></code>
 
@@ -363,30 +363,27 @@ Methods:
 Types:
 
 ```python
-from increase.types import (
-    InboundRealTimePaymentsTransfer,
-    InboundRealTimePaymentsTransferListResponse,
-)
+from increase.types import InboundRealTimePaymentsTransfer
 ```
 
 Methods:
 
 - <code title="get /inbound_real_time_payments_transfers/{inbound_real_time_payments_transfer_id}">client.inbound_real_time_payments_transfers.<a href="./src/increase/resources/inbound_real_time_payments_transfers.py">retrieve</a>(inbound_real_time_payments_transfer_id) -> <a href="./src/increase/types/inbound_real_time_payments_transfer.py">InboundRealTimePaymentsTransfer</a></code>
-- <code title="get /inbound_real_time_payments_transfers">client.inbound_real_time_payments_transfers.<a href="./src/increase/resources/inbound_real_time_payments_transfers.py">list</a>(\*\*<a href="src/increase/types/inbound_real_time_payments_transfer_list_params.py">params</a>) -> <a href="./src/increase/types/inbound_real_time_payments_transfer_list_response.py">InboundRealTimePaymentsTransferListResponse</a></code>
+- <code title="get /inbound_real_time_payments_transfers">client.inbound_real_time_payments_transfers.<a href="./src/increase/resources/inbound_real_time_payments_transfers.py">list</a>(\*\*<a href="src/increase/types/inbound_real_time_payments_transfer_list_params.py">params</a>) -> <a href="./src/increase/types/inbound_real_time_payments_transfer.py">SyncPage[InboundRealTimePaymentsTransfer]</a></code>
 
 # FednowTransfers
 
 Types:
 
 ```python
-from increase.types import FednowTransfer, FednowTransferListResponse
+from increase.types import FednowTransfer
 ```
 
 Methods:
 
 - <code title="post /fednow_transfers">client.fednow_transfers.<a href="./src/increase/resources/fednow_transfers.py">create</a>(\*\*<a href="src/increase/types/fednow_transfer_create_params.py">params</a>) -> <a href="./src/increase/types/fednow_transfer.py">FednowTransfer</a></code>
 - <code title="get /fednow_transfers/{fednow_transfer_id}">client.fednow_transfers.<a href="./src/increase/resources/fednow_transfers.py">retrieve</a>(fednow_transfer_id) -> <a href="./src/increase/types/fednow_transfer.py">FednowTransfer</a></code>
-- <code title="get /fednow_transfers">client.fednow_transfers.<a href="./src/increase/resources/fednow_transfers.py">list</a>(\*\*<a href="src/increase/types/fednow_transfer_list_params.py">params</a>) -> <a href="./src/increase/types/fednow_transfer_list_response.py">FednowTransferListResponse</a></code>
+- <code title="get /fednow_transfers">client.fednow_transfers.<a href="./src/increase/resources/fednow_transfers.py">list</a>(\*\*<a href="src/increase/types/fednow_transfer_list_params.py">params</a>) -> <a href="./src/increase/types/fednow_transfer.py">SyncPage[FednowTransfer]</a></code>
 - <code title="post /fednow_transfers/{fednow_transfer_id}/approve">client.fednow_transfers.<a href="./src/increase/resources/fednow_transfers.py">approve</a>(fednow_transfer_id) -> <a href="./src/increase/types/fednow_transfer.py">FednowTransfer</a></code>
 - <code title="post /fednow_transfers/{fednow_transfer_id}/cancel">client.fednow_transfers.<a href="./src/increase/resources/fednow_transfers.py">cancel</a>(fednow_transfer_id) -> <a href="./src/increase/types/fednow_transfer.py">FednowTransfer</a></code>
 
@@ -395,34 +392,34 @@ Methods:
 Types:
 
 ```python
-from increase.types import InboundFednowTransfer, InboundFednowTransferListResponse
+from increase.types import InboundFednowTransfer
 ```
 
 Methods:
 
 - <code title="get /inbound_fednow_transfers/{inbound_fednow_transfer_id}">client.inbound_fednow_transfers.<a href="./src/increase/resources/inbound_fednow_transfers.py">retrieve</a>(inbound_fednow_transfer_id) -> <a href="./src/increase/types/inbound_fednow_transfer.py">InboundFednowTransfer</a></code>
-- <code title="get /inbound_fednow_transfers">client.inbound_fednow_transfers.<a href="./src/increase/resources/inbound_fednow_transfers.py">list</a>(\*\*<a href="src/increase/types/inbound_fednow_transfer_list_params.py">params</a>) -> <a href="./src/increase/types/inbound_fednow_transfer_list_response.py">InboundFednowTransferListResponse</a></code>
+- <code title="get /inbound_fednow_transfers">client.inbound_fednow_transfers.<a href="./src/increase/resources/inbound_fednow_transfers.py">list</a>(\*\*<a href="src/increase/types/inbound_fednow_transfer_list_params.py">params</a>) -> <a href="./src/increase/types/inbound_fednow_transfer.py">SyncPage[InboundFednowTransfer]</a></code>
 
 # CheckDeposits
 
 Types:
 
 ```python
-from increase.types import CheckDeposit, CheckDepositListResponse
+from increase.types import CheckDeposit
 ```
 
 Methods:
 
 - <code title="post /check_deposits">client.check_deposits.<a href="./src/increase/resources/check_deposits.py">create</a>(\*\*<a href="src/increase/types/check_deposit_create_params.py">params</a>) -> <a href="./src/increase/types/check_deposit.py">CheckDeposit</a></code>
 - <code title="get /check_deposits/{check_deposit_id}">client.check_deposits.<a href="./src/increase/resources/check_deposits.py">retrieve</a>(check_deposit_id) -> <a href="./src/increase/types/check_deposit.py">CheckDeposit</a></code>
-- <code title="get /check_deposits">client.check_deposits.<a href="./src/increase/resources/check_deposits.py">list</a>(\*\*<a href="src/increase/types/check_deposit_list_params.py">params</a>) -> <a href="./src/increase/types/check_deposit_list_response.py">CheckDepositListResponse</a></code>
+- <code title="get /check_deposits">client.check_deposits.<a href="./src/increase/resources/check_deposits.py">list</a>(\*\*<a href="src/increase/types/check_deposit_list_params.py">params</a>) -> <a href="./src/increase/types/check_deposit.py">SyncPage[CheckDeposit]</a></code>
 
 # Lockboxes
 
 Types:
 
 ```python
-from increase.types import Lockbox, LockboxListResponse
+from increase.types import Lockbox
 ```
 
 Methods:
@@ -430,20 +427,20 @@ Methods:
 - <code title="post /lockboxes">client.lockboxes.<a href="./src/increase/resources/lockboxes.py">create</a>(\*\*<a href="src/increase/types/lockbox_create_params.py">params</a>) -> <a href="./src/increase/types/lockbox.py">Lockbox</a></code>
 - <code title="get /lockboxes/{lockbox_id}">client.lockboxes.<a href="./src/increase/resources/lockboxes.py">retrieve</a>(lockbox_id) -> <a href="./src/increase/types/lockbox.py">Lockbox</a></code>
 - <code title="patch /lockboxes/{lockbox_id}">client.lockboxes.<a href="./src/increase/resources/lockboxes.py">update</a>(lockbox_id, \*\*<a href="src/increase/types/lockbox_update_params.py">params</a>) -> <a href="./src/increase/types/lockbox.py">Lockbox</a></code>
-- <code title="get /lockboxes">client.lockboxes.<a href="./src/increase/resources/lockboxes.py">list</a>(\*\*<a href="src/increase/types/lockbox_list_params.py">params</a>) -> <a href="./src/increase/types/lockbox_list_response.py">LockboxListResponse</a></code>
+- <code title="get /lockboxes">client.lockboxes.<a href="./src/increase/resources/lockboxes.py">list</a>(\*\*<a href="src/increase/types/lockbox_list_params.py">params</a>) -> <a href="./src/increase/types/lockbox.py">SyncPage[Lockbox]</a></code>
 
 # InboundMailItems
 
 Types:
 
 ```python
-from increase.types import InboundMailItem, InboundMailItemListResponse
+from increase.types import InboundMailItem
 ```
 
 Methods:
 
 - <code title="get /inbound_mail_items/{inbound_mail_item_id}">client.inbound_mail_items.<a href="./src/increase/resources/inbound_mail_items.py">retrieve</a>(inbound_mail_item_id) -> <a href="./src/increase/types/inbound_mail_item.py">InboundMailItem</a></code>
-- <code title="get /inbound_mail_items">client.inbound_mail_items.<a href="./src/increase/resources/inbound_mail_items.py">list</a>(\*\*<a href="src/increase/types/inbound_mail_item_list_params.py">params</a>) -> <a href="./src/increase/types/inbound_mail_item_list_response.py">InboundMailItemListResponse</a></code>
+- <code title="get /inbound_mail_items">client.inbound_mail_items.<a href="./src/increase/resources/inbound_mail_items.py">list</a>(\*\*<a href="src/increase/types/inbound_mail_item_list_params.py">params</a>) -> <a href="./src/increase/types/inbound_mail_item.py">SyncPage[InboundMailItem]</a></code>
 - <code title="post /inbound_mail_items/{inbound_mail_item_id}/action">client.inbound_mail_items.<a href="./src/increase/resources/inbound_mail_items.py">action</a>(inbound_mail_item_id, \*\*<a href="src/increase/types/inbound_mail_item_action_params.py">params</a>) -> <a href="./src/increase/types/inbound_mail_item.py">InboundMailItem</a></code>
 
 # RoutingNumbers
@@ -456,14 +453,14 @@ from increase.types import RoutingNumberListResponse
 
 Methods:
 
-- <code title="get /routing_numbers">client.routing_numbers.<a href="./src/increase/resources/routing_numbers.py">list</a>(\*\*<a href="src/increase/types/routing_number_list_params.py">params</a>) -> <a href="./src/increase/types/routing_number_list_response.py">RoutingNumberListResponse</a></code>
+- <code title="get /routing_numbers">client.routing_numbers.<a href="./src/increase/resources/routing_numbers.py">list</a>(\*\*<a href="src/increase/types/routing_number_list_params.py">params</a>) -> <a href="./src/increase/types/routing_number_list_response.py">SyncPage[RoutingNumberListResponse]</a></code>
 
 # ExternalAccounts
 
 Types:
 
 ```python
-from increase.types import ExternalAccount, ExternalAccountListResponse
+from increase.types import ExternalAccount
 ```
 
 Methods:
@@ -471,14 +468,14 @@ Methods:
 - <code title="post /external_accounts">client.external_accounts.<a href="./src/increase/resources/external_accounts.py">create</a>(\*\*<a href="src/increase/types/external_account_create_params.py">params</a>) -> <a href="./src/increase/types/external_account.py">ExternalAccount</a></code>
 - <code title="get /external_accounts/{external_account_id}">client.external_accounts.<a href="./src/increase/resources/external_accounts.py">retrieve</a>(external_account_id) -> <a href="./src/increase/types/external_account.py">ExternalAccount</a></code>
 - <code title="patch /external_accounts/{external_account_id}">client.external_accounts.<a href="./src/increase/resources/external_accounts.py">update</a>(external_account_id, \*\*<a href="src/increase/types/external_account_update_params.py">params</a>) -> <a href="./src/increase/types/external_account.py">ExternalAccount</a></code>
-- <code title="get /external_accounts">client.external_accounts.<a href="./src/increase/resources/external_accounts.py">list</a>(\*\*<a href="src/increase/types/external_account_list_params.py">params</a>) -> <a href="./src/increase/types/external_account_list_response.py">ExternalAccountListResponse</a></code>
+- <code title="get /external_accounts">client.external_accounts.<a href="./src/increase/resources/external_accounts.py">list</a>(\*\*<a href="src/increase/types/external_account_list_params.py">params</a>) -> <a href="./src/increase/types/external_account.py">SyncPage[ExternalAccount]</a></code>
 
 # Entities
 
 Types:
 
 ```python
-from increase.types import Entity, EntityListResponse
+from increase.types import Entity
 ```
 
 Methods:
@@ -486,7 +483,7 @@ Methods:
 - <code title="post /entities">client.entities.<a href="./src/increase/resources/entities.py">create</a>(\*\*<a href="src/increase/types/entity_create_params.py">params</a>) -> <a href="./src/increase/types/entity.py">Entity</a></code>
 - <code title="get /entities/{entity_id}">client.entities.<a href="./src/increase/resources/entities.py">retrieve</a>(entity_id) -> <a href="./src/increase/types/entity.py">Entity</a></code>
 - <code title="patch /entities/{entity_id}">client.entities.<a href="./src/increase/resources/entities.py">update</a>(entity_id, \*\*<a href="src/increase/types/entity_update_params.py">params</a>) -> <a href="./src/increase/types/entity.py">Entity</a></code>
-- <code title="get /entities">client.entities.<a href="./src/increase/resources/entities.py">list</a>(\*\*<a href="src/increase/types/entity_list_params.py">params</a>) -> <a href="./src/increase/types/entity_list_response.py">EntityListResponse</a></code>
+- <code title="get /entities">client.entities.<a href="./src/increase/resources/entities.py">list</a>(\*\*<a href="src/increase/types/entity_list_params.py">params</a>) -> <a href="./src/increase/types/entity.py">SyncPage[Entity]</a></code>
 - <code title="post /entities/{entity_id}/archive">client.entities.<a href="./src/increase/resources/entities.py">archive</a>(entity_id) -> <a href="./src/increase/types/entity.py">Entity</a></code>
 - <code title="post /entities/{entity_id}/archive_beneficial_owner">client.entities.<a href="./src/increase/resources/entities.py">archive_beneficial_owner</a>(entity_id, \*\*<a href="src/increase/types/entity_archive_beneficial_owner_params.py">params</a>) -> <a href="./src/increase/types/entity.py">Entity</a></code>
 - <code title="post /entities/{entity_id}/confirm">client.entities.<a href="./src/increase/resources/entities.py">confirm</a>(entity_id, \*\*<a href="src/increase/types/entity_confirm_params.py">params</a>) -> <a href="./src/increase/types/entity.py">Entity</a></code>
@@ -500,53 +497,53 @@ Methods:
 Types:
 
 ```python
-from increase.types import EntitySupplementalDocument, SupplementalDocumentListResponse
+from increase.types import EntitySupplementalDocument
 ```
 
 Methods:
 
 - <code title="post /entity_supplemental_documents">client.supplemental_documents.<a href="./src/increase/resources/supplemental_documents.py">create</a>(\*\*<a href="src/increase/types/supplemental_document_create_params.py">params</a>) -> <a href="./src/increase/types/entity_supplemental_document.py">EntitySupplementalDocument</a></code>
-- <code title="get /entity_supplemental_documents">client.supplemental_documents.<a href="./src/increase/resources/supplemental_documents.py">list</a>(\*\*<a href="src/increase/types/supplemental_document_list_params.py">params</a>) -> <a href="./src/increase/types/supplemental_document_list_response.py">SupplementalDocumentListResponse</a></code>
+- <code title="get /entity_supplemental_documents">client.supplemental_documents.<a href="./src/increase/resources/supplemental_documents.py">list</a>(\*\*<a href="src/increase/types/supplemental_document_list_params.py">params</a>) -> <a href="./src/increase/types/entity_supplemental_document.py">SyncPage[EntitySupplementalDocument]</a></code>
 
 # Programs
 
 Types:
 
 ```python
-from increase.types import Program, ProgramListResponse
+from increase.types import Program
 ```
 
 Methods:
 
 - <code title="get /programs/{program_id}">client.programs.<a href="./src/increase/resources/programs.py">retrieve</a>(program_id) -> <a href="./src/increase/types/program.py">Program</a></code>
-- <code title="get /programs">client.programs.<a href="./src/increase/resources/programs.py">list</a>(\*\*<a href="src/increase/types/program_list_params.py">params</a>) -> <a href="./src/increase/types/program_list_response.py">ProgramListResponse</a></code>
+- <code title="get /programs">client.programs.<a href="./src/increase/resources/programs.py">list</a>(\*\*<a href="src/increase/types/program_list_params.py">params</a>) -> <a href="./src/increase/types/program.py">SyncPage[Program]</a></code>
 
 # AccountStatements
 
 Types:
 
 ```python
-from increase.types import AccountStatement, AccountStatementListResponse
+from increase.types import AccountStatement
 ```
 
 Methods:
 
 - <code title="get /account_statements/{account_statement_id}">client.account_statements.<a href="./src/increase/resources/account_statements.py">retrieve</a>(account_statement_id) -> <a href="./src/increase/types/account_statement.py">AccountStatement</a></code>
-- <code title="get /account_statements">client.account_statements.<a href="./src/increase/resources/account_statements.py">list</a>(\*\*<a href="src/increase/types/account_statement_list_params.py">params</a>) -> <a href="./src/increase/types/account_statement_list_response.py">AccountStatementListResponse</a></code>
+- <code title="get /account_statements">client.account_statements.<a href="./src/increase/resources/account_statements.py">list</a>(\*\*<a href="src/increase/types/account_statement_list_params.py">params</a>) -> <a href="./src/increase/types/account_statement.py">SyncPage[AccountStatement]</a></code>
 
 # Files
 
 Types:
 
 ```python
-from increase.types import File, FileListResponse
+from increase.types import File
 ```
 
 Methods:
 
 - <code title="post /files">client.files.<a href="./src/increase/resources/files.py">create</a>(\*\*<a href="src/increase/types/file_create_params.py">params</a>) -> <a href="./src/increase/types/file.py">File</a></code>
 - <code title="get /files/{file_id}">client.files.<a href="./src/increase/resources/files.py">retrieve</a>(file_id) -> <a href="./src/increase/types/file.py">File</a></code>
-- <code title="get /files">client.files.<a href="./src/increase/resources/files.py">list</a>(\*\*<a href="src/increase/types/file_list_params.py">params</a>) -> <a href="./src/increase/types/file_list_response.py">FileListResponse</a></code>
+- <code title="get /files">client.files.<a href="./src/increase/resources/files.py">list</a>(\*\*<a href="src/increase/types/file_list_params.py">params</a>) -> <a href="./src/increase/types/file.py">SyncPage[File]</a></code>
 
 # FileLinks
 
@@ -565,48 +562,48 @@ Methods:
 Types:
 
 ```python
-from increase.types import Document, DocumentListResponse
+from increase.types import Document
 ```
 
 Methods:
 
 - <code title="post /documents">client.documents.<a href="./src/increase/resources/documents.py">create</a>(\*\*<a href="src/increase/types/document_create_params.py">params</a>) -> <a href="./src/increase/types/document.py">Document</a></code>
 - <code title="get /documents/{document_id}">client.documents.<a href="./src/increase/resources/documents.py">retrieve</a>(document_id) -> <a href="./src/increase/types/document.py">Document</a></code>
-- <code title="get /documents">client.documents.<a href="./src/increase/resources/documents.py">list</a>(\*\*<a href="src/increase/types/document_list_params.py">params</a>) -> <a href="./src/increase/types/document_list_response.py">DocumentListResponse</a></code>
+- <code title="get /documents">client.documents.<a href="./src/increase/resources/documents.py">list</a>(\*\*<a href="src/increase/types/document_list_params.py">params</a>) -> <a href="./src/increase/types/document.py">SyncPage[Document]</a></code>
 
 # Exports
 
 Types:
 
 ```python
-from increase.types import Export, ExportListResponse
+from increase.types import Export
 ```
 
 Methods:
 
 - <code title="post /exports">client.exports.<a href="./src/increase/resources/exports.py">create</a>(\*\*<a href="src/increase/types/export_create_params.py">params</a>) -> <a href="./src/increase/types/export.py">Export</a></code>
 - <code title="get /exports/{export_id}">client.exports.<a href="./src/increase/resources/exports.py">retrieve</a>(export_id) -> <a href="./src/increase/types/export.py">Export</a></code>
-- <code title="get /exports">client.exports.<a href="./src/increase/resources/exports.py">list</a>(\*\*<a href="src/increase/types/export_list_params.py">params</a>) -> <a href="./src/increase/types/export_list_response.py">ExportListResponse</a></code>
+- <code title="get /exports">client.exports.<a href="./src/increase/resources/exports.py">list</a>(\*\*<a href="src/increase/types/export_list_params.py">params</a>) -> <a href="./src/increase/types/export.py">SyncPage[Export]</a></code>
 
 # Events
 
 Types:
 
 ```python
-from increase.types import Event, EventListResponse
+from increase.types import Event
 ```
 
 Methods:
 
 - <code title="get /events/{event_id}">client.events.<a href="./src/increase/resources/events.py">retrieve</a>(event_id) -> <a href="./src/increase/types/event.py">Event</a></code>
-- <code title="get /events">client.events.<a href="./src/increase/resources/events.py">list</a>(\*\*<a href="src/increase/types/event_list_params.py">params</a>) -> <a href="./src/increase/types/event_list_response.py">EventListResponse</a></code>
+- <code title="get /events">client.events.<a href="./src/increase/resources/events.py">list</a>(\*\*<a href="src/increase/types/event_list_params.py">params</a>) -> <a href="./src/increase/types/event.py">SyncPage[Event]</a></code>
 
 # EventSubscriptions
 
 Types:
 
 ```python
-from increase.types import EventSubscription, EventSubscriptionListResponse
+from increase.types import EventSubscription
 ```
 
 Methods:
@@ -614,7 +611,7 @@ Methods:
 - <code title="post /event_subscriptions">client.event_subscriptions.<a href="./src/increase/resources/event_subscriptions.py">create</a>(\*\*<a href="src/increase/types/event_subscription_create_params.py">params</a>) -> <a href="./src/increase/types/event_subscription.py">EventSubscription</a></code>
 - <code title="get /event_subscriptions/{event_subscription_id}">client.event_subscriptions.<a href="./src/increase/resources/event_subscriptions.py">retrieve</a>(event_subscription_id) -> <a href="./src/increase/types/event_subscription.py">EventSubscription</a></code>
 - <code title="patch /event_subscriptions/{event_subscription_id}">client.event_subscriptions.<a href="./src/increase/resources/event_subscriptions.py">update</a>(event_subscription_id, \*\*<a href="src/increase/types/event_subscription_update_params.py">params</a>) -> <a href="./src/increase/types/event_subscription.py">EventSubscription</a></code>
-- <code title="get /event_subscriptions">client.event_subscriptions.<a href="./src/increase/resources/event_subscriptions.py">list</a>(\*\*<a href="src/increase/types/event_subscription_list_params.py">params</a>) -> <a href="./src/increase/types/event_subscription_list_response.py">EventSubscriptionListResponse</a></code>
+- <code title="get /event_subscriptions">client.event_subscriptions.<a href="./src/increase/resources/event_subscriptions.py">list</a>(\*\*<a href="src/increase/types/event_subscription_list_params.py">params</a>) -> <a href="./src/increase/types/event_subscription.py">SyncPage[EventSubscription]</a></code>
 
 # RealTimeDecisions
 
@@ -634,18 +631,14 @@ Methods:
 Types:
 
 ```python
-from increase.types import (
-    BookkeepingAccount,
-    BookkeepingBalanceLookup,
-    BookkeepingAccountListResponse,
-)
+from increase.types import BookkeepingAccount, BookkeepingBalanceLookup
 ```
 
 Methods:
 
 - <code title="post /bookkeeping_accounts">client.bookkeeping_accounts.<a href="./src/increase/resources/bookkeeping_accounts.py">create</a>(\*\*<a href="src/increase/types/bookkeeping_account_create_params.py">params</a>) -> <a href="./src/increase/types/bookkeeping_account.py">BookkeepingAccount</a></code>
 - <code title="patch /bookkeeping_accounts/{bookkeeping_account_id}">client.bookkeeping_accounts.<a href="./src/increase/resources/bookkeeping_accounts.py">update</a>(bookkeeping_account_id, \*\*<a href="src/increase/types/bookkeeping_account_update_params.py">params</a>) -> <a href="./src/increase/types/bookkeeping_account.py">BookkeepingAccount</a></code>
-- <code title="get /bookkeeping_accounts">client.bookkeeping_accounts.<a href="./src/increase/resources/bookkeeping_accounts.py">list</a>(\*\*<a href="src/increase/types/bookkeeping_account_list_params.py">params</a>) -> <a href="./src/increase/types/bookkeeping_account_list_response.py">BookkeepingAccountListResponse</a></code>
+- <code title="get /bookkeeping_accounts">client.bookkeeping_accounts.<a href="./src/increase/resources/bookkeeping_accounts.py">list</a>(\*\*<a href="src/increase/types/bookkeeping_account_list_params.py">params</a>) -> <a href="./src/increase/types/bookkeeping_account.py">SyncPage[BookkeepingAccount]</a></code>
 - <code title="get /bookkeeping_accounts/{bookkeeping_account_id}/balance">client.bookkeeping_accounts.<a href="./src/increase/resources/bookkeeping_accounts.py">balance</a>(bookkeeping_account_id, \*\*<a href="src/increase/types/bookkeeping_account_balance_params.py">params</a>) -> <a href="./src/increase/types/bookkeeping_balance_lookup.py">BookkeepingBalanceLookup</a></code>
 
 # BookkeepingEntrySets
@@ -653,27 +646,27 @@ Methods:
 Types:
 
 ```python
-from increase.types import BookkeepingEntrySet, BookkeepingEntrySetListResponse
+from increase.types import BookkeepingEntrySet
 ```
 
 Methods:
 
 - <code title="post /bookkeeping_entry_sets">client.bookkeeping_entry_sets.<a href="./src/increase/resources/bookkeeping_entry_sets.py">create</a>(\*\*<a href="src/increase/types/bookkeeping_entry_set_create_params.py">params</a>) -> <a href="./src/increase/types/bookkeeping_entry_set.py">BookkeepingEntrySet</a></code>
 - <code title="get /bookkeeping_entry_sets/{bookkeeping_entry_set_id}">client.bookkeeping_entry_sets.<a href="./src/increase/resources/bookkeeping_entry_sets.py">retrieve</a>(bookkeeping_entry_set_id) -> <a href="./src/increase/types/bookkeeping_entry_set.py">BookkeepingEntrySet</a></code>
-- <code title="get /bookkeeping_entry_sets">client.bookkeeping_entry_sets.<a href="./src/increase/resources/bookkeeping_entry_sets.py">list</a>(\*\*<a href="src/increase/types/bookkeeping_entry_set_list_params.py">params</a>) -> <a href="./src/increase/types/bookkeeping_entry_set_list_response.py">BookkeepingEntrySetListResponse</a></code>
+- <code title="get /bookkeeping_entry_sets">client.bookkeeping_entry_sets.<a href="./src/increase/resources/bookkeeping_entry_sets.py">list</a>(\*\*<a href="src/increase/types/bookkeeping_entry_set_list_params.py">params</a>) -> <a href="./src/increase/types/bookkeeping_entry_set.py">SyncPage[BookkeepingEntrySet]</a></code>
 
 # BookkeepingEntries
 
 Types:
 
 ```python
-from increase.types import BookkeepingEntry, BookkeepingEntryListResponse
+from increase.types import BookkeepingEntry
 ```
 
 Methods:
 
 - <code title="get /bookkeeping_entries/{bookkeeping_entry_id}">client.bookkeeping_entries.<a href="./src/increase/resources/bookkeeping_entries.py">retrieve</a>(bookkeeping_entry_id) -> <a href="./src/increase/types/bookkeeping_entry.py">BookkeepingEntry</a></code>
-- <code title="get /bookkeeping_entries">client.bookkeeping_entries.<a href="./src/increase/resources/bookkeeping_entries.py">list</a>(\*\*<a href="src/increase/types/bookkeeping_entry_list_params.py">params</a>) -> <a href="./src/increase/types/bookkeeping_entry_list_response.py">BookkeepingEntryListResponse</a></code>
+- <code title="get /bookkeeping_entries">client.bookkeeping_entries.<a href="./src/increase/resources/bookkeeping_entries.py">list</a>(\*\*<a href="src/increase/types/bookkeeping_entry_list_params.py">params</a>) -> <a href="./src/increase/types/bookkeeping_entry.py">SyncPage[BookkeepingEntry]</a></code>
 
 # Groups
 
@@ -692,26 +685,26 @@ Methods:
 Types:
 
 ```python
-from increase.types import OAuthApplication, OAuthApplicationListResponse
+from increase.types import OAuthApplication
 ```
 
 Methods:
 
 - <code title="get /oauth_applications/{oauth_application_id}">client.oauth_applications.<a href="./src/increase/resources/oauth_applications.py">retrieve</a>(oauth_application_id) -> <a href="./src/increase/types/oauth_application.py">OAuthApplication</a></code>
-- <code title="get /oauth_applications">client.oauth_applications.<a href="./src/increase/resources/oauth_applications.py">list</a>(\*\*<a href="src/increase/types/oauth_application_list_params.py">params</a>) -> <a href="./src/increase/types/oauth_application_list_response.py">OAuthApplicationListResponse</a></code>
+- <code title="get /oauth_applications">client.oauth_applications.<a href="./src/increase/resources/oauth_applications.py">list</a>(\*\*<a href="src/increase/types/oauth_application_list_params.py">params</a>) -> <a href="./src/increase/types/oauth_application.py">SyncPage[OAuthApplication]</a></code>
 
 # OAuthConnections
 
 Types:
 
 ```python
-from increase.types import OAuthConnection, OAuthConnectionListResponse
+from increase.types import OAuthConnection
 ```
 
 Methods:
 
 - <code title="get /oauth_connections/{oauth_connection_id}">client.oauth_connections.<a href="./src/increase/resources/oauth_connections.py">retrieve</a>(oauth_connection_id) -> <a href="./src/increase/types/oauth_connection.py">OAuthConnection</a></code>
-- <code title="get /oauth_connections">client.oauth_connections.<a href="./src/increase/resources/oauth_connections.py">list</a>(\*\*<a href="src/increase/types/oauth_connection_list_params.py">params</a>) -> <a href="./src/increase/types/oauth_connection_list_response.py">OAuthConnectionListResponse</a></code>
+- <code title="get /oauth_connections">client.oauth_connections.<a href="./src/increase/resources/oauth_connections.py">list</a>(\*\*<a href="src/increase/types/oauth_connection_list_params.py">params</a>) -> <a href="./src/increase/types/oauth_connection.py">SyncPage[OAuthConnection]</a></code>
 
 # OAuthTokens
 
@@ -730,14 +723,14 @@ Methods:
 Types:
 
 ```python
-from increase.types import IntrafiAccountEnrollment, IntrafiAccountEnrollmentListResponse
+from increase.types import IntrafiAccountEnrollment
 ```
 
 Methods:
 
 - <code title="post /intrafi_account_enrollments">client.intrafi_account_enrollments.<a href="./src/increase/resources/intrafi_account_enrollments.py">create</a>(\*\*<a href="src/increase/types/intrafi_account_enrollment_create_params.py">params</a>) -> <a href="./src/increase/types/intrafi_account_enrollment.py">IntrafiAccountEnrollment</a></code>
 - <code title="get /intrafi_account_enrollments/{intrafi_account_enrollment_id}">client.intrafi_account_enrollments.<a href="./src/increase/resources/intrafi_account_enrollments.py">retrieve</a>(intrafi_account_enrollment_id) -> <a href="./src/increase/types/intrafi_account_enrollment.py">IntrafiAccountEnrollment</a></code>
-- <code title="get /intrafi_account_enrollments">client.intrafi_account_enrollments.<a href="./src/increase/resources/intrafi_account_enrollments.py">list</a>(\*\*<a href="src/increase/types/intrafi_account_enrollment_list_params.py">params</a>) -> <a href="./src/increase/types/intrafi_account_enrollment_list_response.py">IntrafiAccountEnrollmentListResponse</a></code>
+- <code title="get /intrafi_account_enrollments">client.intrafi_account_enrollments.<a href="./src/increase/resources/intrafi_account_enrollments.py">list</a>(\*\*<a href="src/increase/types/intrafi_account_enrollment_list_params.py">params</a>) -> <a href="./src/increase/types/intrafi_account_enrollment.py">SyncPage[IntrafiAccountEnrollment]</a></code>
 - <code title="post /intrafi_account_enrollments/{intrafi_account_enrollment_id}/unenroll">client.intrafi_account_enrollments.<a href="./src/increase/resources/intrafi_account_enrollments.py">unenroll</a>(intrafi_account_enrollment_id) -> <a href="./src/increase/types/intrafi_account_enrollment.py">IntrafiAccountEnrollment</a></code>
 
 # IntrafiBalances
@@ -757,14 +750,14 @@ Methods:
 Types:
 
 ```python
-from increase.types import IntrafiExclusion, IntrafiExclusionListResponse
+from increase.types import IntrafiExclusion
 ```
 
 Methods:
 
 - <code title="post /intrafi_exclusions">client.intrafi_exclusions.<a href="./src/increase/resources/intrafi_exclusions.py">create</a>(\*\*<a href="src/increase/types/intrafi_exclusion_create_params.py">params</a>) -> <a href="./src/increase/types/intrafi_exclusion.py">IntrafiExclusion</a></code>
 - <code title="get /intrafi_exclusions/{intrafi_exclusion_id}">client.intrafi_exclusions.<a href="./src/increase/resources/intrafi_exclusions.py">retrieve</a>(intrafi_exclusion_id) -> <a href="./src/increase/types/intrafi_exclusion.py">IntrafiExclusion</a></code>
-- <code title="get /intrafi_exclusions">client.intrafi_exclusions.<a href="./src/increase/resources/intrafi_exclusions.py">list</a>(\*\*<a href="src/increase/types/intrafi_exclusion_list_params.py">params</a>) -> <a href="./src/increase/types/intrafi_exclusion_list_response.py">IntrafiExclusionListResponse</a></code>
+- <code title="get /intrafi_exclusions">client.intrafi_exclusions.<a href="./src/increase/resources/intrafi_exclusions.py">list</a>(\*\*<a href="src/increase/types/intrafi_exclusion_list_params.py">params</a>) -> <a href="./src/increase/types/intrafi_exclusion.py">SyncPage[IntrafiExclusion]</a></code>
 - <code title="post /intrafi_exclusions/{intrafi_exclusion_id}/archive">client.intrafi_exclusions.<a href="./src/increase/resources/intrafi_exclusions.py">archive</a>(intrafi_exclusion_id) -> <a href="./src/increase/types/intrafi_exclusion.py">IntrafiExclusion</a></code>
 
 # CardTokens
@@ -772,13 +765,13 @@ Methods:
 Types:
 
 ```python
-from increase.types import CardToken, CardTokenCapabilities, CardTokenListResponse
+from increase.types import CardToken, CardTokenCapabilities
 ```
 
 Methods:
 
 - <code title="get /card_tokens/{card_token_id}">client.card_tokens.<a href="./src/increase/resources/card_tokens.py">retrieve</a>(card_token_id) -> <a href="./src/increase/types/card_token.py">CardToken</a></code>
-- <code title="get /card_tokens">client.card_tokens.<a href="./src/increase/resources/card_tokens.py">list</a>(\*\*<a href="src/increase/types/card_token_list_params.py">params</a>) -> <a href="./src/increase/types/card_token_list_response.py">CardTokenListResponse</a></code>
+- <code title="get /card_tokens">client.card_tokens.<a href="./src/increase/resources/card_tokens.py">list</a>(\*\*<a href="src/increase/types/card_token_list_params.py">params</a>) -> <a href="./src/increase/types/card_token.py">SyncPage[CardToken]</a></code>
 - <code title="get /card_tokens/{card_token_id}/capabilities">client.card_tokens.<a href="./src/increase/resources/card_tokens.py">capabilities</a>(card_token_id) -> <a href="./src/increase/types/card_token_capabilities.py">CardTokenCapabilities</a></code>
 
 # CardPushTransfers
@@ -786,14 +779,14 @@ Methods:
 Types:
 
 ```python
-from increase.types import CardPushTransfer, CardPushTransferListResponse
+from increase.types import CardPushTransfer
 ```
 
 Methods:
 
 - <code title="post /card_push_transfers">client.card_push_transfers.<a href="./src/increase/resources/card_push_transfers.py">create</a>(\*\*<a href="src/increase/types/card_push_transfer_create_params.py">params</a>) -> <a href="./src/increase/types/card_push_transfer.py">CardPushTransfer</a></code>
 - <code title="get /card_push_transfers/{card_push_transfer_id}">client.card_push_transfers.<a href="./src/increase/resources/card_push_transfers.py">retrieve</a>(card_push_transfer_id) -> <a href="./src/increase/types/card_push_transfer.py">CardPushTransfer</a></code>
-- <code title="get /card_push_transfers">client.card_push_transfers.<a href="./src/increase/resources/card_push_transfers.py">list</a>(\*\*<a href="src/increase/types/card_push_transfer_list_params.py">params</a>) -> <a href="./src/increase/types/card_push_transfer_list_response.py">CardPushTransferListResponse</a></code>
+- <code title="get /card_push_transfers">client.card_push_transfers.<a href="./src/increase/resources/card_push_transfers.py">list</a>(\*\*<a href="src/increase/types/card_push_transfer_list_params.py">params</a>) -> <a href="./src/increase/types/card_push_transfer.py">SyncPage[CardPushTransfer]</a></code>
 - <code title="post /card_push_transfers/{card_push_transfer_id}/approve">client.card_push_transfers.<a href="./src/increase/resources/card_push_transfers.py">approve</a>(card_push_transfer_id) -> <a href="./src/increase/types/card_push_transfer.py">CardPushTransfer</a></code>
 - <code title="post /card_push_transfers/{card_push_transfer_id}/cancel">client.card_push_transfers.<a href="./src/increase/resources/card_push_transfers.py">cancel</a>(card_push_transfer_id) -> <a href="./src/increase/types/card_push_transfer.py">CardPushTransfer</a></code>
 
@@ -802,14 +795,14 @@ Methods:
 Types:
 
 ```python
-from increase.types import CardValidation, CardValidationListResponse
+from increase.types import CardValidation
 ```
 
 Methods:
 
 - <code title="post /card_validations">client.card_validations.<a href="./src/increase/resources/card_validations.py">create</a>(\*\*<a href="src/increase/types/card_validation_create_params.py">params</a>) -> <a href="./src/increase/types/card_validation.py">CardValidation</a></code>
 - <code title="get /card_validations/{card_validation_id}">client.card_validations.<a href="./src/increase/resources/card_validations.py">retrieve</a>(card_validation_id) -> <a href="./src/increase/types/card_validation.py">CardValidation</a></code>
-- <code title="get /card_validations">client.card_validations.<a href="./src/increase/resources/card_validations.py">list</a>(\*\*<a href="src/increase/types/card_validation_list_params.py">params</a>) -> <a href="./src/increase/types/card_validation_list_response.py">CardValidationListResponse</a></code>
+- <code title="get /card_validations">client.card_validations.<a href="./src/increase/resources/card_validations.py">list</a>(\*\*<a href="src/increase/types/card_validation_list_params.py">params</a>) -> <a href="./src/increase/types/card_validation.py">SyncPage[CardValidation]</a></code>
 
 # Simulations
 

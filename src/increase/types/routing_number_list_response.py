@@ -1,16 +1,13 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import TYPE_CHECKING, Dict, List, Optional
 from typing_extensions import Literal
-
-from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["RoutingNumberListResponse", "Data"]
+__all__ = ["RoutingNumberListResponse"]
 
 
-class Data(BaseModel):
+class RoutingNumberListResponse(BaseModel):
     ach_transfers: Literal["supported", "not_supported"]
     """This routing number's support for ACH Transfers.
 
@@ -50,23 +47,3 @@ class Data(BaseModel):
     - `supported` - The routing number can receive this transfer type.
     - `not_supported` - The routing number cannot receive this transfer type.
     """
-
-
-class RoutingNumberListResponse(BaseModel):
-    data: List[Data]
-    """The contents of the list."""
-
-    next_cursor: Optional[str] = None
-    """A pointer to a place in the list."""
-
-    if TYPE_CHECKING:
-        # Some versions of Pydantic <2.8.0 have a bug and don’t allow assigning a
-        # value to this field, so for compatibility we avoid doing it at runtime.
-        __pydantic_extra__: Dict[str, object] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
-
-        # Stub to indicate that arbitrary properties are accepted.
-        # To access properties that are not valid identifiers you can use `getattr`, e.g.
-        # `getattr(obj, '$type')`
-        def __getattr__(self, attr: str) -> object: ...
-    else:
-        __pydantic_extra__: Dict[str, object]

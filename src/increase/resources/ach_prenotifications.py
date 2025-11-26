@@ -19,9 +19,9 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncPage, AsyncPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.ach_prenotification import ACHPrenotification
-from ..types.ach_prenotification_list_response import ACHPrenotificationListResponse
 
 __all__ = ["ACHPrenotificationsResource", "AsyncACHPrenotificationsResource"]
 
@@ -207,7 +207,7 @@ class ACHPrenotificationsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ACHPrenotificationListResponse:
+    ) -> SyncPage[ACHPrenotification]:
         """
         List ACH Prenotifications
 
@@ -230,8 +230,9 @@ class ACHPrenotificationsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/ach_prenotifications",
+            page=SyncPage[ACHPrenotification],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -247,7 +248,7 @@ class ACHPrenotificationsResource(SyncAPIResource):
                     ach_prenotification_list_params.ACHPrenotificationListParams,
                 ),
             ),
-            cast_to=ACHPrenotificationListResponse,
+            model=ACHPrenotification,
         )
 
 
@@ -419,7 +420,7 @@ class AsyncACHPrenotificationsResource(AsyncAPIResource):
             cast_to=ACHPrenotification,
         )
 
-    async def list(
+    def list(
         self,
         *,
         created_at: ach_prenotification_list_params.CreatedAt | Omit = omit,
@@ -432,7 +433,7 @@ class AsyncACHPrenotificationsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ACHPrenotificationListResponse:
+    ) -> AsyncPaginator[ACHPrenotification, AsyncPage[ACHPrenotification]]:
         """
         List ACH Prenotifications
 
@@ -455,14 +456,15 @@ class AsyncACHPrenotificationsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/ach_prenotifications",
+            page=AsyncPage[ACHPrenotification],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "created_at": created_at,
                         "cursor": cursor,
@@ -472,7 +474,7 @@ class AsyncACHPrenotificationsResource(AsyncAPIResource):
                     ach_prenotification_list_params.ACHPrenotificationListParams,
                 ),
             ),
-            cast_to=ACHPrenotificationListResponse,
+            model=ACHPrenotification,
         )
 
 

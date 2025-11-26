@@ -19,9 +19,9 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncPage, AsyncPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.digital_card_profile import DigitalCardProfile
-from ..types.digital_card_profile_list_response import DigitalCardProfileListResponse
 
 __all__ = ["DigitalCardProfilesResource", "AsyncDigitalCardProfilesResource"]
 
@@ -174,7 +174,7 @@ class DigitalCardProfilesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> DigitalCardProfileListResponse:
+    ) -> SyncPage[DigitalCardProfile]:
         """
         List Card Profiles
 
@@ -197,8 +197,9 @@ class DigitalCardProfilesResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/digital_card_profiles",
+            page=SyncPage[DigitalCardProfile],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -214,7 +215,7 @@ class DigitalCardProfilesResource(SyncAPIResource):
                     digital_card_profile_list_params.DigitalCardProfileListParams,
                 ),
             ),
-            cast_to=DigitalCardProfileListResponse,
+            model=DigitalCardProfile,
         )
 
     def archive(
@@ -482,7 +483,7 @@ class AsyncDigitalCardProfilesResource(AsyncAPIResource):
             cast_to=DigitalCardProfile,
         )
 
-    async def list(
+    def list(
         self,
         *,
         cursor: str | Omit = omit,
@@ -495,7 +496,7 @@ class AsyncDigitalCardProfilesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> DigitalCardProfileListResponse:
+    ) -> AsyncPaginator[DigitalCardProfile, AsyncPage[DigitalCardProfile]]:
         """
         List Card Profiles
 
@@ -518,14 +519,15 @@ class AsyncDigitalCardProfilesResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/digital_card_profiles",
+            page=AsyncPage[DigitalCardProfile],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "cursor": cursor,
                         "idempotency_key": idempotency_key,
@@ -535,7 +537,7 @@ class AsyncDigitalCardProfilesResource(AsyncAPIResource):
                     digital_card_profile_list_params.DigitalCardProfileListParams,
                 ),
             ),
-            cast_to=DigitalCardProfileListResponse,
+            model=DigitalCardProfile,
         )
 
     async def archive(

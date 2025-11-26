@@ -9,11 +9,9 @@ import pytest
 
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
-from increase.types import (
-    Lockbox,
-    LockboxListResponse,
-)
+from increase.types import Lockbox
 from increase._utils import parse_datetime
+from increase.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -150,7 +148,7 @@ class TestLockboxes:
     @parametrize
     def test_method_list(self, client: Increase) -> None:
         lockbox = client.lockboxes.list()
-        assert_matches_type(LockboxListResponse, lockbox, path=["response"])
+        assert_matches_type(SyncPage[Lockbox], lockbox, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
@@ -166,7 +164,7 @@ class TestLockboxes:
             idempotency_key="x",
             limit=1,
         )
-        assert_matches_type(LockboxListResponse, lockbox, path=["response"])
+        assert_matches_type(SyncPage[Lockbox], lockbox, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
@@ -175,7 +173,7 @@ class TestLockboxes:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         lockbox = response.parse()
-        assert_matches_type(LockboxListResponse, lockbox, path=["response"])
+        assert_matches_type(SyncPage[Lockbox], lockbox, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Increase) -> None:
@@ -184,7 +182,7 @@ class TestLockboxes:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             lockbox = response.parse()
-            assert_matches_type(LockboxListResponse, lockbox, path=["response"])
+            assert_matches_type(SyncPage[Lockbox], lockbox, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -323,7 +321,7 @@ class TestAsyncLockboxes:
     @parametrize
     async def test_method_list(self, async_client: AsyncIncrease) -> None:
         lockbox = await async_client.lockboxes.list()
-        assert_matches_type(LockboxListResponse, lockbox, path=["response"])
+        assert_matches_type(AsyncPage[Lockbox], lockbox, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
@@ -339,7 +337,7 @@ class TestAsyncLockboxes:
             idempotency_key="x",
             limit=1,
         )
-        assert_matches_type(LockboxListResponse, lockbox, path=["response"])
+        assert_matches_type(AsyncPage[Lockbox], lockbox, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
@@ -348,7 +346,7 @@ class TestAsyncLockboxes:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         lockbox = await response.parse()
-        assert_matches_type(LockboxListResponse, lockbox, path=["response"])
+        assert_matches_type(AsyncPage[Lockbox], lockbox, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncIncrease) -> None:
@@ -357,6 +355,6 @@ class TestAsyncLockboxes:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             lockbox = await response.parse()
-            assert_matches_type(LockboxListResponse, lockbox, path=["response"])
+            assert_matches_type(AsyncPage[Lockbox], lockbox, path=["response"])
 
         assert cast(Any, response.is_closed) is True

@@ -9,7 +9,8 @@ import pytest
 
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
-from increase.types import BookkeepingEntry, BookkeepingEntryListResponse
+from increase.types import BookkeepingEntry
+from increase.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -58,7 +59,7 @@ class TestBookkeepingEntries:
     @parametrize
     def test_method_list(self, client: Increase) -> None:
         bookkeeping_entry = client.bookkeeping_entries.list()
-        assert_matches_type(BookkeepingEntryListResponse, bookkeeping_entry, path=["response"])
+        assert_matches_type(SyncPage[BookkeepingEntry], bookkeeping_entry, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
@@ -67,7 +68,7 @@ class TestBookkeepingEntries:
             cursor="cursor",
             limit=1,
         )
-        assert_matches_type(BookkeepingEntryListResponse, bookkeeping_entry, path=["response"])
+        assert_matches_type(SyncPage[BookkeepingEntry], bookkeeping_entry, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
@@ -76,7 +77,7 @@ class TestBookkeepingEntries:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         bookkeeping_entry = response.parse()
-        assert_matches_type(BookkeepingEntryListResponse, bookkeeping_entry, path=["response"])
+        assert_matches_type(SyncPage[BookkeepingEntry], bookkeeping_entry, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Increase) -> None:
@@ -85,7 +86,7 @@ class TestBookkeepingEntries:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             bookkeeping_entry = response.parse()
-            assert_matches_type(BookkeepingEntryListResponse, bookkeeping_entry, path=["response"])
+            assert_matches_type(SyncPage[BookkeepingEntry], bookkeeping_entry, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -136,7 +137,7 @@ class TestAsyncBookkeepingEntries:
     @parametrize
     async def test_method_list(self, async_client: AsyncIncrease) -> None:
         bookkeeping_entry = await async_client.bookkeeping_entries.list()
-        assert_matches_type(BookkeepingEntryListResponse, bookkeeping_entry, path=["response"])
+        assert_matches_type(AsyncPage[BookkeepingEntry], bookkeeping_entry, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
@@ -145,7 +146,7 @@ class TestAsyncBookkeepingEntries:
             cursor="cursor",
             limit=1,
         )
-        assert_matches_type(BookkeepingEntryListResponse, bookkeeping_entry, path=["response"])
+        assert_matches_type(AsyncPage[BookkeepingEntry], bookkeeping_entry, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
@@ -154,7 +155,7 @@ class TestAsyncBookkeepingEntries:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         bookkeeping_entry = await response.parse()
-        assert_matches_type(BookkeepingEntryListResponse, bookkeeping_entry, path=["response"])
+        assert_matches_type(AsyncPage[BookkeepingEntry], bookkeeping_entry, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncIncrease) -> None:
@@ -163,6 +164,6 @@ class TestAsyncBookkeepingEntries:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             bookkeeping_entry = await response.parse()
-            assert_matches_type(BookkeepingEntryListResponse, bookkeeping_entry, path=["response"])
+            assert_matches_type(AsyncPage[BookkeepingEntry], bookkeeping_entry, path=["response"])
 
         assert cast(Any, response.is_closed) is True

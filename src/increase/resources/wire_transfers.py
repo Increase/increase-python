@@ -15,9 +15,9 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncPage, AsyncPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.wire_transfer import WireTransfer
-from ..types.wire_transfer_list_response import WireTransferListResponse
 
 __all__ = ["WireTransfersResource", "AsyncWireTransfersResource"]
 
@@ -183,7 +183,7 @@ class WireTransfersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> WireTransferListResponse:
+    ) -> SyncPage[WireTransfer]:
         """
         List Wire Transfers
 
@@ -210,8 +210,9 @@ class WireTransfersResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/wire_transfers",
+            page=SyncPage[WireTransfer],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -229,7 +230,7 @@ class WireTransfersResource(SyncAPIResource):
                     wire_transfer_list_params.WireTransferListParams,
                 ),
             ),
-            cast_to=WireTransferListResponse,
+            model=WireTransfer,
         )
 
     def approve(
@@ -463,7 +464,7 @@ class AsyncWireTransfersResource(AsyncAPIResource):
             cast_to=WireTransfer,
         )
 
-    async def list(
+    def list(
         self,
         *,
         account_id: str | Omit = omit,
@@ -478,7 +479,7 @@ class AsyncWireTransfersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> WireTransferListResponse:
+    ) -> AsyncPaginator[WireTransfer, AsyncPage[WireTransfer]]:
         """
         List Wire Transfers
 
@@ -505,14 +506,15 @@ class AsyncWireTransfersResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/wire_transfers",
+            page=AsyncPage[WireTransfer],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "account_id": account_id,
                         "created_at": created_at,
@@ -524,7 +526,7 @@ class AsyncWireTransfersResource(AsyncAPIResource):
                     wire_transfer_list_params.WireTransferListParams,
                 ),
             ),
-            cast_to=WireTransferListResponse,
+            model=WireTransfer,
         )
 
     async def approve(

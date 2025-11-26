@@ -11,8 +11,8 @@ from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
 from increase.types import (
     PhysicalCardProfile,
-    PhysicalCardProfileListResponse,
 )
+from increase.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -121,7 +121,7 @@ class TestPhysicalCardProfiles:
     @parametrize
     def test_method_list(self, client: Increase) -> None:
         physical_card_profile = client.physical_card_profiles.list()
-        assert_matches_type(PhysicalCardProfileListResponse, physical_card_profile, path=["response"])
+        assert_matches_type(SyncPage[PhysicalCardProfile], physical_card_profile, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
@@ -131,7 +131,7 @@ class TestPhysicalCardProfiles:
             limit=1,
             status={"in": ["pending_creating"]},
         )
-        assert_matches_type(PhysicalCardProfileListResponse, physical_card_profile, path=["response"])
+        assert_matches_type(SyncPage[PhysicalCardProfile], physical_card_profile, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
@@ -140,7 +140,7 @@ class TestPhysicalCardProfiles:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         physical_card_profile = response.parse()
-        assert_matches_type(PhysicalCardProfileListResponse, physical_card_profile, path=["response"])
+        assert_matches_type(SyncPage[PhysicalCardProfile], physical_card_profile, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Increase) -> None:
@@ -149,7 +149,7 @@ class TestPhysicalCardProfiles:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             physical_card_profile = response.parse()
-            assert_matches_type(PhysicalCardProfileListResponse, physical_card_profile, path=["response"])
+            assert_matches_type(SyncPage[PhysicalCardProfile], physical_card_profile, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -356,7 +356,7 @@ class TestAsyncPhysicalCardProfiles:
     @parametrize
     async def test_method_list(self, async_client: AsyncIncrease) -> None:
         physical_card_profile = await async_client.physical_card_profiles.list()
-        assert_matches_type(PhysicalCardProfileListResponse, physical_card_profile, path=["response"])
+        assert_matches_type(AsyncPage[PhysicalCardProfile], physical_card_profile, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
@@ -366,7 +366,7 @@ class TestAsyncPhysicalCardProfiles:
             limit=1,
             status={"in": ["pending_creating"]},
         )
-        assert_matches_type(PhysicalCardProfileListResponse, physical_card_profile, path=["response"])
+        assert_matches_type(AsyncPage[PhysicalCardProfile], physical_card_profile, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
@@ -375,7 +375,7 @@ class TestAsyncPhysicalCardProfiles:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         physical_card_profile = await response.parse()
-        assert_matches_type(PhysicalCardProfileListResponse, physical_card_profile, path=["response"])
+        assert_matches_type(AsyncPage[PhysicalCardProfile], physical_card_profile, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncIncrease) -> None:
@@ -384,7 +384,7 @@ class TestAsyncPhysicalCardProfiles:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             physical_card_profile = await response.parse()
-            assert_matches_type(PhysicalCardProfileListResponse, physical_card_profile, path=["response"])
+            assert_matches_type(AsyncPage[PhysicalCardProfile], physical_card_profile, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
