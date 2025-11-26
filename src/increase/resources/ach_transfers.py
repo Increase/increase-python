@@ -17,9 +17,9 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncPage, AsyncPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.ach_transfer import ACHTransfer
-from ..types.ach_transfer_list_response import ACHTransferListResponse
 
 __all__ = ["ACHTransfersResource", "AsyncACHTransfersResource"]
 
@@ -255,7 +255,7 @@ class ACHTransfersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ACHTransferListResponse:
+    ) -> SyncPage[ACHTransfer]:
         """
         List ACH Transfers
 
@@ -282,8 +282,9 @@ class ACHTransfersResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/ach_transfers",
+            page=SyncPage[ACHTransfer],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -302,7 +303,7 @@ class ACHTransfersResource(SyncAPIResource):
                     ach_transfer_list_params.ACHTransferListParams,
                 ),
             ),
-            cast_to=ACHTransferListResponse,
+            model=ACHTransfer,
         )
 
     def approve(
@@ -605,7 +606,7 @@ class AsyncACHTransfersResource(AsyncAPIResource):
             cast_to=ACHTransfer,
         )
 
-    async def list(
+    def list(
         self,
         *,
         account_id: str | Omit = omit,
@@ -621,7 +622,7 @@ class AsyncACHTransfersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ACHTransferListResponse:
+    ) -> AsyncPaginator[ACHTransfer, AsyncPage[ACHTransfer]]:
         """
         List ACH Transfers
 
@@ -648,14 +649,15 @@ class AsyncACHTransfersResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/ach_transfers",
+            page=AsyncPage[ACHTransfer],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "account_id": account_id,
                         "created_at": created_at,
@@ -668,7 +670,7 @@ class AsyncACHTransfersResource(AsyncAPIResource):
                     ach_transfer_list_params.ACHTransferListParams,
                 ),
             ),
-            cast_to=ACHTransferListResponse,
+            model=ACHTransfer,
         )
 
     async def approve(

@@ -6,7 +6,7 @@ import httpx
 
 from ..types import bookkeeping_entry_list_params
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -15,9 +15,9 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncPage, AsyncPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.bookkeeping_entry import BookkeepingEntry
-from ..types.bookkeeping_entry_list_response import BookkeepingEntryListResponse
 
 __all__ = ["BookkeepingEntriesResource", "AsyncBookkeepingEntriesResource"]
 
@@ -91,7 +91,7 @@ class BookkeepingEntriesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> BookkeepingEntryListResponse:
+    ) -> SyncPage[BookkeepingEntry]:
         """
         List Bookkeeping Entries
 
@@ -111,8 +111,9 @@ class BookkeepingEntriesResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/bookkeeping_entries",
+            page=SyncPage[BookkeepingEntry],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -127,7 +128,7 @@ class BookkeepingEntriesResource(SyncAPIResource):
                     bookkeeping_entry_list_params.BookkeepingEntryListParams,
                 ),
             ),
-            cast_to=BookkeepingEntryListResponse,
+            model=BookkeepingEntry,
         )
 
 
@@ -188,7 +189,7 @@ class AsyncBookkeepingEntriesResource(AsyncAPIResource):
             cast_to=BookkeepingEntry,
         )
 
-    async def list(
+    def list(
         self,
         *,
         account_id: str | Omit = omit,
@@ -200,7 +201,7 @@ class AsyncBookkeepingEntriesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> BookkeepingEntryListResponse:
+    ) -> AsyncPaginator[BookkeepingEntry, AsyncPage[BookkeepingEntry]]:
         """
         List Bookkeeping Entries
 
@@ -220,14 +221,15 @@ class AsyncBookkeepingEntriesResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/bookkeeping_entries",
+            page=AsyncPage[BookkeepingEntry],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "account_id": account_id,
                         "cursor": cursor,
@@ -236,7 +238,7 @@ class AsyncBookkeepingEntriesResource(AsyncAPIResource):
                     bookkeeping_entry_list_params.BookkeepingEntryListParams,
                 ),
             ),
-            cast_to=BookkeepingEntryListResponse,
+            model=BookkeepingEntry,
         )
 
 

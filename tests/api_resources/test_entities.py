@@ -11,9 +11,9 @@ from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
 from increase.types import (
     Entity,
-    EntityListResponse,
 )
 from increase._utils import parse_date, parse_datetime
+from increase.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -434,7 +434,7 @@ class TestEntities:
     @parametrize
     def test_method_list(self, client: Increase) -> None:
         entity = client.entities.list()
-        assert_matches_type(EntityListResponse, entity, path=["response"])
+        assert_matches_type(SyncPage[Entity], entity, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
@@ -450,7 +450,7 @@ class TestEntities:
             limit=1,
             status={"in": ["active"]},
         )
-        assert_matches_type(EntityListResponse, entity, path=["response"])
+        assert_matches_type(SyncPage[Entity], entity, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
@@ -459,7 +459,7 @@ class TestEntities:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         entity = response.parse()
-        assert_matches_type(EntityListResponse, entity, path=["response"])
+        assert_matches_type(SyncPage[Entity], entity, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Increase) -> None:
@@ -468,7 +468,7 @@ class TestEntities:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             entity = response.parse()
-            assert_matches_type(EntityListResponse, entity, path=["response"])
+            assert_matches_type(SyncPage[Entity], entity, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1361,7 +1361,7 @@ class TestAsyncEntities:
     @parametrize
     async def test_method_list(self, async_client: AsyncIncrease) -> None:
         entity = await async_client.entities.list()
-        assert_matches_type(EntityListResponse, entity, path=["response"])
+        assert_matches_type(AsyncPage[Entity], entity, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
@@ -1377,7 +1377,7 @@ class TestAsyncEntities:
             limit=1,
             status={"in": ["active"]},
         )
-        assert_matches_type(EntityListResponse, entity, path=["response"])
+        assert_matches_type(AsyncPage[Entity], entity, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
@@ -1386,7 +1386,7 @@ class TestAsyncEntities:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         entity = await response.parse()
-        assert_matches_type(EntityListResponse, entity, path=["response"])
+        assert_matches_type(AsyncPage[Entity], entity, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncIncrease) -> None:
@@ -1395,7 +1395,7 @@ class TestAsyncEntities:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             entity = await response.parse()
-            assert_matches_type(EntityListResponse, entity, path=["response"])
+            assert_matches_type(AsyncPage[Entity], entity, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

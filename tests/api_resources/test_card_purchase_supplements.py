@@ -9,11 +9,9 @@ import pytest
 
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
-from increase.types import (
-    CardPurchaseSupplement,
-    CardPurchaseSupplementListResponse,
-)
+from increase.types import CardPurchaseSupplement
 from increase._utils import parse_datetime
+from increase.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -64,7 +62,7 @@ class TestCardPurchaseSupplements:
     @parametrize
     def test_method_list(self, client: Increase) -> None:
         card_purchase_supplement = client.card_purchase_supplements.list()
-        assert_matches_type(CardPurchaseSupplementListResponse, card_purchase_supplement, path=["response"])
+        assert_matches_type(SyncPage[CardPurchaseSupplement], card_purchase_supplement, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
@@ -79,7 +77,7 @@ class TestCardPurchaseSupplements:
             cursor="cursor",
             limit=1,
         )
-        assert_matches_type(CardPurchaseSupplementListResponse, card_purchase_supplement, path=["response"])
+        assert_matches_type(SyncPage[CardPurchaseSupplement], card_purchase_supplement, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
@@ -88,7 +86,7 @@ class TestCardPurchaseSupplements:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_purchase_supplement = response.parse()
-        assert_matches_type(CardPurchaseSupplementListResponse, card_purchase_supplement, path=["response"])
+        assert_matches_type(SyncPage[CardPurchaseSupplement], card_purchase_supplement, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Increase) -> None:
@@ -97,7 +95,7 @@ class TestCardPurchaseSupplements:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_purchase_supplement = response.parse()
-            assert_matches_type(CardPurchaseSupplementListResponse, card_purchase_supplement, path=["response"])
+            assert_matches_type(SyncPage[CardPurchaseSupplement], card_purchase_supplement, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -150,7 +148,7 @@ class TestAsyncCardPurchaseSupplements:
     @parametrize
     async def test_method_list(self, async_client: AsyncIncrease) -> None:
         card_purchase_supplement = await async_client.card_purchase_supplements.list()
-        assert_matches_type(CardPurchaseSupplementListResponse, card_purchase_supplement, path=["response"])
+        assert_matches_type(AsyncPage[CardPurchaseSupplement], card_purchase_supplement, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
@@ -165,7 +163,7 @@ class TestAsyncCardPurchaseSupplements:
             cursor="cursor",
             limit=1,
         )
-        assert_matches_type(CardPurchaseSupplementListResponse, card_purchase_supplement, path=["response"])
+        assert_matches_type(AsyncPage[CardPurchaseSupplement], card_purchase_supplement, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
@@ -174,7 +172,7 @@ class TestAsyncCardPurchaseSupplements:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_purchase_supplement = await response.parse()
-        assert_matches_type(CardPurchaseSupplementListResponse, card_purchase_supplement, path=["response"])
+        assert_matches_type(AsyncPage[CardPurchaseSupplement], card_purchase_supplement, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncIncrease) -> None:
@@ -183,6 +181,6 @@ class TestAsyncCardPurchaseSupplements:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_purchase_supplement = await response.parse()
-            assert_matches_type(CardPurchaseSupplementListResponse, card_purchase_supplement, path=["response"])
+            assert_matches_type(AsyncPage[CardPurchaseSupplement], card_purchase_supplement, path=["response"])
 
         assert cast(Any, response.is_closed) is True

@@ -6,7 +6,7 @@ import httpx
 
 from ..types import card_token_list_params
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -15,10 +15,10 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncPage, AsyncPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.card_token import CardToken
 from ..types.card_token_capabilities import CardTokenCapabilities
-from ..types.card_token_list_response import CardTokenListResponse
 
 __all__ = ["CardTokensResource", "AsyncCardTokensResource"]
 
@@ -90,7 +90,7 @@ class CardTokensResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CardTokenListResponse:
+    ) -> SyncPage[CardToken]:
         """
         List Card Tokens
 
@@ -108,8 +108,9 @@ class CardTokensResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/card_tokens",
+            page=SyncPage[CardToken],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -124,7 +125,7 @@ class CardTokensResource(SyncAPIResource):
                     card_token_list_params.CardTokenListParams,
                 ),
             ),
-            cast_to=CardTokenListResponse,
+            model=CardToken,
         )
 
     def capabilities(
@@ -220,7 +221,7 @@ class AsyncCardTokensResource(AsyncAPIResource):
             cast_to=CardToken,
         )
 
-    async def list(
+    def list(
         self,
         *,
         created_at: card_token_list_params.CreatedAt | Omit = omit,
@@ -232,7 +233,7 @@ class AsyncCardTokensResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CardTokenListResponse:
+    ) -> AsyncPaginator[CardToken, AsyncPage[CardToken]]:
         """
         List Card Tokens
 
@@ -250,14 +251,15 @@ class AsyncCardTokensResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/card_tokens",
+            page=AsyncPage[CardToken],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "created_at": created_at,
                         "cursor": cursor,
@@ -266,7 +268,7 @@ class AsyncCardTokensResource(AsyncAPIResource):
                     card_token_list_params.CardTokenListParams,
                 ),
             ),
-            cast_to=CardTokenListResponse,
+            model=CardToken,
         )
 
     async def capabilities(

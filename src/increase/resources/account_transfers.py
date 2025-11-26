@@ -15,9 +15,9 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncPage, AsyncPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.account_transfer import AccountTransfer
-from ..types.account_transfer_list_response import AccountTransferListResponse
 
 __all__ = ["AccountTransfersResource", "AsyncAccountTransfersResource"]
 
@@ -159,7 +159,7 @@ class AccountTransfersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AccountTransferListResponse:
+    ) -> SyncPage[AccountTransfer]:
         """
         List Account Transfers
 
@@ -184,8 +184,9 @@ class AccountTransfersResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/account_transfers",
+            page=SyncPage[AccountTransfer],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -202,7 +203,7 @@ class AccountTransfersResource(SyncAPIResource):
                     account_transfer_list_params.AccountTransferListParams,
                 ),
             ),
-            cast_to=AccountTransferListResponse,
+            model=AccountTransfer,
         )
 
     def approve(
@@ -417,7 +418,7 @@ class AsyncAccountTransfersResource(AsyncAPIResource):
             cast_to=AccountTransfer,
         )
 
-    async def list(
+    def list(
         self,
         *,
         account_id: str | Omit = omit,
@@ -431,7 +432,7 @@ class AsyncAccountTransfersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AccountTransferListResponse:
+    ) -> AsyncPaginator[AccountTransfer, AsyncPage[AccountTransfer]]:
         """
         List Account Transfers
 
@@ -456,14 +457,15 @@ class AsyncAccountTransfersResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/account_transfers",
+            page=AsyncPage[AccountTransfer],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "account_id": account_id,
                         "created_at": created_at,
@@ -474,7 +476,7 @@ class AsyncAccountTransfersResource(AsyncAPIResource):
                     account_transfer_list_params.AccountTransferListParams,
                 ),
             ),
-            cast_to=AccountTransferListResponse,
+            model=AccountTransfer,
         )
 
     async def approve(

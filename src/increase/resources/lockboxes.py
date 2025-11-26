@@ -17,9 +17,9 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncPage, AsyncPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.lockbox import Lockbox
-from ..types.lockbox_list_response import LockboxListResponse
 
 __all__ = ["LockboxesResource", "AsyncLockboxesResource"]
 
@@ -211,7 +211,7 @@ class LockboxesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> LockboxListResponse:
+    ) -> SyncPage[Lockbox]:
         """
         List Lockboxes
 
@@ -236,8 +236,9 @@ class LockboxesResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/lockboxes",
+            page=SyncPage[Lockbox],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -254,7 +255,7 @@ class LockboxesResource(SyncAPIResource):
                     lockbox_list_params.LockboxListParams,
                 ),
             ),
-            cast_to=LockboxListResponse,
+            model=Lockbox,
         )
 
 
@@ -431,7 +432,7 @@ class AsyncLockboxesResource(AsyncAPIResource):
             cast_to=Lockbox,
         )
 
-    async def list(
+    def list(
         self,
         *,
         account_id: str | Omit = omit,
@@ -445,7 +446,7 @@ class AsyncLockboxesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> LockboxListResponse:
+    ) -> AsyncPaginator[Lockbox, AsyncPage[Lockbox]]:
         """
         List Lockboxes
 
@@ -470,14 +471,15 @@ class AsyncLockboxesResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/lockboxes",
+            page=AsyncPage[Lockbox],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "account_id": account_id,
                         "created_at": created_at,
@@ -488,7 +490,7 @@ class AsyncLockboxesResource(AsyncAPIResource):
                     lockbox_list_params.LockboxListParams,
                 ),
             ),
-            cast_to=LockboxListResponse,
+            model=Lockbox,
         )
 
 

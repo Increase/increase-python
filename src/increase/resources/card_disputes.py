@@ -18,9 +18,9 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncPage, AsyncPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.card_dispute import CardDispute
-from ..types.card_dispute_list_response import CardDisputeListResponse
 
 __all__ = ["CardDisputesResource", "AsyncCardDisputesResource"]
 
@@ -164,7 +164,7 @@ class CardDisputesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CardDisputeListResponse:
+    ) -> SyncPage[CardDispute]:
         """
         List Card Disputes
 
@@ -187,8 +187,9 @@ class CardDisputesResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/card_disputes",
+            page=SyncPage[CardDispute],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -205,7 +206,7 @@ class CardDisputesResource(SyncAPIResource):
                     card_dispute_list_params.CardDisputeListParams,
                 ),
             ),
-            cast_to=CardDisputeListResponse,
+            model=CardDispute,
         )
 
     def submit_user_submission(
@@ -446,7 +447,7 @@ class AsyncCardDisputesResource(AsyncAPIResource):
             cast_to=CardDispute,
         )
 
-    async def list(
+    def list(
         self,
         *,
         created_at: card_dispute_list_params.CreatedAt | Omit = omit,
@@ -460,7 +461,7 @@ class AsyncCardDisputesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CardDisputeListResponse:
+    ) -> AsyncPaginator[CardDispute, AsyncPage[CardDispute]]:
         """
         List Card Disputes
 
@@ -483,14 +484,15 @@ class AsyncCardDisputesResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/card_disputes",
+            page=AsyncPage[CardDispute],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "created_at": created_at,
                         "cursor": cursor,
@@ -501,7 +503,7 @@ class AsyncCardDisputesResource(AsyncAPIResource):
                     card_dispute_list_params.CardDisputeListParams,
                 ),
             ),
-            cast_to=CardDisputeListResponse,
+            model=CardDispute,
         )
 
     async def submit_user_submission(

@@ -9,10 +9,8 @@ import pytest
 
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
-from increase.types import (
-    InboundWireDrawdownRequest,
-    InboundWireDrawdownRequestListResponse,
-)
+from increase.types import InboundWireDrawdownRequest
+from increase.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -63,7 +61,7 @@ class TestInboundWireDrawdownRequests:
     @parametrize
     def test_method_list(self, client: Increase) -> None:
         inbound_wire_drawdown_request = client.inbound_wire_drawdown_requests.list()
-        assert_matches_type(InboundWireDrawdownRequestListResponse, inbound_wire_drawdown_request, path=["response"])
+        assert_matches_type(SyncPage[InboundWireDrawdownRequest], inbound_wire_drawdown_request, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
@@ -71,7 +69,7 @@ class TestInboundWireDrawdownRequests:
             cursor="cursor",
             limit=1,
         )
-        assert_matches_type(InboundWireDrawdownRequestListResponse, inbound_wire_drawdown_request, path=["response"])
+        assert_matches_type(SyncPage[InboundWireDrawdownRequest], inbound_wire_drawdown_request, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
@@ -80,7 +78,7 @@ class TestInboundWireDrawdownRequests:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         inbound_wire_drawdown_request = response.parse()
-        assert_matches_type(InboundWireDrawdownRequestListResponse, inbound_wire_drawdown_request, path=["response"])
+        assert_matches_type(SyncPage[InboundWireDrawdownRequest], inbound_wire_drawdown_request, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Increase) -> None:
@@ -89,9 +87,7 @@ class TestInboundWireDrawdownRequests:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             inbound_wire_drawdown_request = response.parse()
-            assert_matches_type(
-                InboundWireDrawdownRequestListResponse, inbound_wire_drawdown_request, path=["response"]
-            )
+            assert_matches_type(SyncPage[InboundWireDrawdownRequest], inbound_wire_drawdown_request, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -144,7 +140,7 @@ class TestAsyncInboundWireDrawdownRequests:
     @parametrize
     async def test_method_list(self, async_client: AsyncIncrease) -> None:
         inbound_wire_drawdown_request = await async_client.inbound_wire_drawdown_requests.list()
-        assert_matches_type(InboundWireDrawdownRequestListResponse, inbound_wire_drawdown_request, path=["response"])
+        assert_matches_type(AsyncPage[InboundWireDrawdownRequest], inbound_wire_drawdown_request, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
@@ -152,7 +148,7 @@ class TestAsyncInboundWireDrawdownRequests:
             cursor="cursor",
             limit=1,
         )
-        assert_matches_type(InboundWireDrawdownRequestListResponse, inbound_wire_drawdown_request, path=["response"])
+        assert_matches_type(AsyncPage[InboundWireDrawdownRequest], inbound_wire_drawdown_request, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
@@ -161,7 +157,7 @@ class TestAsyncInboundWireDrawdownRequests:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         inbound_wire_drawdown_request = await response.parse()
-        assert_matches_type(InboundWireDrawdownRequestListResponse, inbound_wire_drawdown_request, path=["response"])
+        assert_matches_type(AsyncPage[InboundWireDrawdownRequest], inbound_wire_drawdown_request, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncIncrease) -> None:
@@ -170,8 +166,6 @@ class TestAsyncInboundWireDrawdownRequests:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             inbound_wire_drawdown_request = await response.parse()
-            assert_matches_type(
-                InboundWireDrawdownRequestListResponse, inbound_wire_drawdown_request, path=["response"]
-            )
+            assert_matches_type(AsyncPage[InboundWireDrawdownRequest], inbound_wire_drawdown_request, path=["response"])
 
         assert cast(Any, response.is_closed) is True
