@@ -17,9 +17,9 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..pagination import SyncPage, AsyncPage
-from .._base_client import AsyncPaginator, make_request_options
+from .._base_client import make_request_options
 from ..types.event_subscription import EventSubscription
+from ..types.event_subscription_list_response import EventSubscriptionListResponse
 
 __all__ = ["EventSubscriptionsResource", "AsyncEventSubscriptionsResource"]
 
@@ -471,7 +471,7 @@ class EventSubscriptionsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SyncPage[EventSubscription]:
+    ) -> EventSubscriptionListResponse:
         """
         List Event Subscriptions
 
@@ -494,9 +494,8 @@ class EventSubscriptionsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get_api_list(
+        return self._get(
             "/event_subscriptions",
-            page=SyncPage[EventSubscription],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -511,7 +510,7 @@ class EventSubscriptionsResource(SyncAPIResource):
                     event_subscription_list_params.EventSubscriptionListParams,
                 ),
             ),
-            model=EventSubscription,
+            cast_to=EventSubscriptionListResponse,
         )
 
 
@@ -952,7 +951,7 @@ class AsyncEventSubscriptionsResource(AsyncAPIResource):
             cast_to=EventSubscription,
         )
 
-    def list(
+    async def list(
         self,
         *,
         cursor: str | Omit = omit,
@@ -964,7 +963,7 @@ class AsyncEventSubscriptionsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AsyncPaginator[EventSubscription, AsyncPage[EventSubscription]]:
+    ) -> EventSubscriptionListResponse:
         """
         List Event Subscriptions
 
@@ -987,15 +986,14 @@ class AsyncEventSubscriptionsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get_api_list(
+        return await self._get(
             "/event_subscriptions",
-            page=AsyncPage[EventSubscription],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform(
+                query=await async_maybe_transform(
                     {
                         "cursor": cursor,
                         "idempotency_key": idempotency_key,
@@ -1004,7 +1002,7 @@ class AsyncEventSubscriptionsResource(AsyncAPIResource):
                     event_subscription_list_params.EventSubscriptionListParams,
                 ),
             ),
-            model=EventSubscription,
+            cast_to=EventSubscriptionListResponse,
         )
 
 

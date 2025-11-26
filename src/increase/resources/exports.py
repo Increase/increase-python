@@ -17,9 +17,9 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..pagination import SyncPage, AsyncPage
-from .._base_client import AsyncPaginator, make_request_options
+from .._base_client import make_request_options
 from ..types.export import Export
+from ..types.export_list_response import ExportListResponse
 
 __all__ = ["ExportsResource", "AsyncExportsResource"]
 
@@ -194,7 +194,7 @@ class ExportsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SyncPage[Export]:
+    ) -> ExportListResponse:
         """
         List Exports
 
@@ -217,9 +217,8 @@ class ExportsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get_api_list(
+        return self._get(
             "/exports",
-            page=SyncPage[Export],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -237,7 +236,7 @@ class ExportsResource(SyncAPIResource):
                     export_list_params.ExportListParams,
                 ),
             ),
-            model=Export,
+            cast_to=ExportListResponse,
         )
 
 
@@ -396,7 +395,7 @@ class AsyncExportsResource(AsyncAPIResource):
             cast_to=Export,
         )
 
-    def list(
+    async def list(
         self,
         *,
         category: export_list_params.Category | Omit = omit,
@@ -411,7 +410,7 @@ class AsyncExportsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AsyncPaginator[Export, AsyncPage[Export]]:
+    ) -> ExportListResponse:
         """
         List Exports
 
@@ -434,15 +433,14 @@ class AsyncExportsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get_api_list(
+        return await self._get(
             "/exports",
-            page=AsyncPage[Export],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform(
+                query=await async_maybe_transform(
                     {
                         "category": category,
                         "created_at": created_at,
@@ -454,7 +452,7 @@ class AsyncExportsResource(AsyncAPIResource):
                     export_list_params.ExportListParams,
                 ),
             ),
-            model=Export,
+            cast_to=ExportListResponse,
         )
 
 

@@ -6,7 +6,7 @@ import httpx
 
 from ..types import oauth_application_list_params
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from .._utils import maybe_transform
+from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -15,9 +15,9 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..pagination import SyncPage, AsyncPage
-from .._base_client import AsyncPaginator, make_request_options
+from .._base_client import make_request_options
 from ..types.oauth_application import OAuthApplication
+from ..types.oauth_application_list_response import OAuthApplicationListResponse
 
 __all__ = ["OAuthApplicationsResource", "AsyncOAuthApplicationsResource"]
 
@@ -92,7 +92,7 @@ class OAuthApplicationsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SyncPage[OAuthApplication]:
+    ) -> OAuthApplicationListResponse:
         """
         List OAuth Applications
 
@@ -110,9 +110,8 @@ class OAuthApplicationsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get_api_list(
+        return self._get(
             "/oauth_applications",
-            page=SyncPage[OAuthApplication],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -128,7 +127,7 @@ class OAuthApplicationsResource(SyncAPIResource):
                     oauth_application_list_params.OAuthApplicationListParams,
                 ),
             ),
-            model=OAuthApplication,
+            cast_to=OAuthApplicationListResponse,
         )
 
 
@@ -189,7 +188,7 @@ class AsyncOAuthApplicationsResource(AsyncAPIResource):
             cast_to=OAuthApplication,
         )
 
-    def list(
+    async def list(
         self,
         *,
         created_at: oauth_application_list_params.CreatedAt | Omit = omit,
@@ -202,7 +201,7 @@ class AsyncOAuthApplicationsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AsyncPaginator[OAuthApplication, AsyncPage[OAuthApplication]]:
+    ) -> OAuthApplicationListResponse:
         """
         List OAuth Applications
 
@@ -220,15 +219,14 @@ class AsyncOAuthApplicationsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get_api_list(
+        return await self._get(
             "/oauth_applications",
-            page=AsyncPage[OAuthApplication],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform(
+                query=await async_maybe_transform(
                     {
                         "created_at": created_at,
                         "cursor": cursor,
@@ -238,7 +236,7 @@ class AsyncOAuthApplicationsResource(AsyncAPIResource):
                     oauth_application_list_params.OAuthApplicationListParams,
                 ),
             ),
-            model=OAuthApplication,
+            cast_to=OAuthApplicationListResponse,
         )
 
 

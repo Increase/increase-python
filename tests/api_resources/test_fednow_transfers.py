@@ -9,9 +9,11 @@ import pytest
 
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
-from increase.types import FednowTransfer
+from increase.types import (
+    FednowTransfer,
+    FednowTransferListResponse,
+)
 from increase._utils import parse_datetime
-from increase.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -134,7 +136,7 @@ class TestFednowTransfers:
     @parametrize
     def test_method_list(self, client: Increase) -> None:
         fednow_transfer = client.fednow_transfers.list()
-        assert_matches_type(SyncPage[FednowTransfer], fednow_transfer, path=["response"])
+        assert_matches_type(FednowTransferListResponse, fednow_transfer, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
@@ -152,7 +154,7 @@ class TestFednowTransfers:
             limit=1,
             status={"in": ["pending_reviewing"]},
         )
-        assert_matches_type(SyncPage[FednowTransfer], fednow_transfer, path=["response"])
+        assert_matches_type(FednowTransferListResponse, fednow_transfer, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
@@ -161,7 +163,7 @@ class TestFednowTransfers:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         fednow_transfer = response.parse()
-        assert_matches_type(SyncPage[FednowTransfer], fednow_transfer, path=["response"])
+        assert_matches_type(FednowTransferListResponse, fednow_transfer, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Increase) -> None:
@@ -170,7 +172,7 @@ class TestFednowTransfers:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             fednow_transfer = response.parse()
-            assert_matches_type(SyncPage[FednowTransfer], fednow_transfer, path=["response"])
+            assert_matches_type(FednowTransferListResponse, fednow_transfer, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -371,7 +373,7 @@ class TestAsyncFednowTransfers:
     @parametrize
     async def test_method_list(self, async_client: AsyncIncrease) -> None:
         fednow_transfer = await async_client.fednow_transfers.list()
-        assert_matches_type(AsyncPage[FednowTransfer], fednow_transfer, path=["response"])
+        assert_matches_type(FednowTransferListResponse, fednow_transfer, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
@@ -389,7 +391,7 @@ class TestAsyncFednowTransfers:
             limit=1,
             status={"in": ["pending_reviewing"]},
         )
-        assert_matches_type(AsyncPage[FednowTransfer], fednow_transfer, path=["response"])
+        assert_matches_type(FednowTransferListResponse, fednow_transfer, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
@@ -398,7 +400,7 @@ class TestAsyncFednowTransfers:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         fednow_transfer = await response.parse()
-        assert_matches_type(AsyncPage[FednowTransfer], fednow_transfer, path=["response"])
+        assert_matches_type(FednowTransferListResponse, fednow_transfer, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncIncrease) -> None:
@@ -407,7 +409,7 @@ class TestAsyncFednowTransfers:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             fednow_transfer = await response.parse()
-            assert_matches_type(AsyncPage[FednowTransfer], fednow_transfer, path=["response"])
+            assert_matches_type(FednowTransferListResponse, fednow_transfer, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

@@ -9,9 +9,8 @@ import pytest
 
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
-from increase.types import Event
+from increase.types import Event, EventListResponse
 from increase._utils import parse_datetime
-from increase.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -60,7 +59,7 @@ class TestEvents:
     @parametrize
     def test_method_list(self, client: Increase) -> None:
         event = client.events.list()
-        assert_matches_type(SyncPage[Event], event, path=["response"])
+        assert_matches_type(EventListResponse, event, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
@@ -76,7 +75,7 @@ class TestEvents:
             cursor="cursor",
             limit=1,
         )
-        assert_matches_type(SyncPage[Event], event, path=["response"])
+        assert_matches_type(EventListResponse, event, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
@@ -85,7 +84,7 @@ class TestEvents:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         event = response.parse()
-        assert_matches_type(SyncPage[Event], event, path=["response"])
+        assert_matches_type(EventListResponse, event, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Increase) -> None:
@@ -94,7 +93,7 @@ class TestEvents:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             event = response.parse()
-            assert_matches_type(SyncPage[Event], event, path=["response"])
+            assert_matches_type(EventListResponse, event, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -145,7 +144,7 @@ class TestAsyncEvents:
     @parametrize
     async def test_method_list(self, async_client: AsyncIncrease) -> None:
         event = await async_client.events.list()
-        assert_matches_type(AsyncPage[Event], event, path=["response"])
+        assert_matches_type(EventListResponse, event, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
@@ -161,7 +160,7 @@ class TestAsyncEvents:
             cursor="cursor",
             limit=1,
         )
-        assert_matches_type(AsyncPage[Event], event, path=["response"])
+        assert_matches_type(EventListResponse, event, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
@@ -170,7 +169,7 @@ class TestAsyncEvents:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         event = await response.parse()
-        assert_matches_type(AsyncPage[Event], event, path=["response"])
+        assert_matches_type(EventListResponse, event, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncIncrease) -> None:
@@ -179,6 +178,6 @@ class TestAsyncEvents:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             event = await response.parse()
-            assert_matches_type(AsyncPage[Event], event, path=["response"])
+            assert_matches_type(EventListResponse, event, path=["response"])
 
         assert cast(Any, response.is_closed) is True

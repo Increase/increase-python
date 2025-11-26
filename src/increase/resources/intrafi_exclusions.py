@@ -15,9 +15,9 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..pagination import SyncPage, AsyncPage
-from .._base_client import AsyncPaginator, make_request_options
+from .._base_client import make_request_options
 from ..types.intrafi_exclusion import IntrafiExclusion
+from ..types.intrafi_exclusion_list_response import IntrafiExclusionListResponse
 
 __all__ = ["IntrafiExclusionsResource", "AsyncIntrafiExclusionsResource"]
 
@@ -142,7 +142,7 @@ class IntrafiExclusionsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SyncPage[IntrafiExclusion]:
+    ) -> IntrafiExclusionListResponse:
         """
         List IntraFi Exclusions
 
@@ -167,9 +167,8 @@ class IntrafiExclusionsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get_api_list(
+        return self._get(
             "/intrafi_exclusions",
-            page=SyncPage[IntrafiExclusion],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -185,7 +184,7 @@ class IntrafiExclusionsResource(SyncAPIResource):
                     intrafi_exclusion_list_params.IntrafiExclusionListParams,
                 ),
             ),
-            model=IntrafiExclusion,
+            cast_to=IntrafiExclusionListResponse,
         )
 
     def archive(
@@ -342,7 +341,7 @@ class AsyncIntrafiExclusionsResource(AsyncAPIResource):
             cast_to=IntrafiExclusion,
         )
 
-    def list(
+    async def list(
         self,
         *,
         cursor: str | Omit = omit,
@@ -355,7 +354,7 @@ class AsyncIntrafiExclusionsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AsyncPaginator[IntrafiExclusion, AsyncPage[IntrafiExclusion]]:
+    ) -> IntrafiExclusionListResponse:
         """
         List IntraFi Exclusions
 
@@ -380,15 +379,14 @@ class AsyncIntrafiExclusionsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get_api_list(
+        return await self._get(
             "/intrafi_exclusions",
-            page=AsyncPage[IntrafiExclusion],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform(
+                query=await async_maybe_transform(
                     {
                         "cursor": cursor,
                         "entity_id": entity_id,
@@ -398,7 +396,7 @@ class AsyncIntrafiExclusionsResource(AsyncAPIResource):
                     intrafi_exclusion_list_params.IntrafiExclusionListParams,
                 ),
             ),
-            model=IntrafiExclusion,
+            cast_to=IntrafiExclusionListResponse,
         )
 
     async def archive(

@@ -6,7 +6,7 @@ import httpx
 
 from ..types import inbound_fednow_transfer_list_params
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from .._utils import maybe_transform
+from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -15,9 +15,9 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..pagination import SyncPage, AsyncPage
-from .._base_client import AsyncPaginator, make_request_options
+from .._base_client import make_request_options
 from ..types.inbound_fednow_transfer import InboundFednowTransfer
+from ..types.inbound_fednow_transfer_list_response import InboundFednowTransferListResponse
 
 __all__ = ["InboundFednowTransfersResource", "AsyncInboundFednowTransfersResource"]
 
@@ -93,7 +93,7 @@ class InboundFednowTransfersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SyncPage[InboundFednowTransfer]:
+    ) -> InboundFednowTransferListResponse:
         """
         List Inbound FedNow Transfers
 
@@ -116,9 +116,8 @@ class InboundFednowTransfersResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get_api_list(
+        return self._get(
             "/inbound_fednow_transfers",
-            page=SyncPage[InboundFednowTransfer],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -135,7 +134,7 @@ class InboundFednowTransfersResource(SyncAPIResource):
                     inbound_fednow_transfer_list_params.InboundFednowTransferListParams,
                 ),
             ),
-            model=InboundFednowTransfer,
+            cast_to=InboundFednowTransferListResponse,
         )
 
 
@@ -196,7 +195,7 @@ class AsyncInboundFednowTransfersResource(AsyncAPIResource):
             cast_to=InboundFednowTransfer,
         )
 
-    def list(
+    async def list(
         self,
         *,
         account_id: str | Omit = omit,
@@ -210,7 +209,7 @@ class AsyncInboundFednowTransfersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AsyncPaginator[InboundFednowTransfer, AsyncPage[InboundFednowTransfer]]:
+    ) -> InboundFednowTransferListResponse:
         """
         List Inbound FedNow Transfers
 
@@ -233,15 +232,14 @@ class AsyncInboundFednowTransfersResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get_api_list(
+        return await self._get(
             "/inbound_fednow_transfers",
-            page=AsyncPage[InboundFednowTransfer],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform(
+                query=await async_maybe_transform(
                     {
                         "account_id": account_id,
                         "account_number_id": account_number_id,
@@ -252,7 +250,7 @@ class AsyncInboundFednowTransfersResource(AsyncAPIResource):
                     inbound_fednow_transfer_list_params.InboundFednowTransferListParams,
                 ),
             ),
-            model=InboundFednowTransfer,
+            cast_to=InboundFednowTransferListResponse,
         )
 
 

@@ -34,8 +34,6 @@ client = Increase(
 
 account = client.accounts.create(
     name="New Account!",
-    entity_id="entity_n8y8tnk2p9339ti393yi",
-    program_id="program_i2v2os4mwza1oetokh9i",
 )
 print(account.id)
 ```
@@ -64,8 +62,6 @@ client = AsyncIncrease(
 async def main() -> None:
     account = await client.accounts.create(
         name="New Account!",
-        entity_id="entity_n8y8tnk2p9339ti393yi",
-        program_id="program_i2v2os4mwza1oetokh9i",
     )
     print(account.id)
 
@@ -101,8 +97,6 @@ async def main() -> None:
     ) as client:
         account = await client.accounts.create(
             name="New Account!",
-            entity_id="entity_n8y8tnk2p9339ti393yi",
-            program_id="program_i2v2os4mwza1oetokh9i",
         )
         print(account.id)
 
@@ -118,69 +112,6 @@ Nested request parameters are [TypedDicts](https://docs.python.org/3/library/typ
 - Converting to a dictionary, `model.to_dict()`
 
 Typed requests and responses provide autocomplete and documentation within your editor. If you would like to see type errors in VS Code to help catch bugs earlier, set `python.analysis.typeCheckingMode` to `basic`.
-
-## Pagination
-
-List methods in the Increase API are paginated.
-
-This library provides auto-paginating iterators with each list response, so you do not have to request successive pages manually:
-
-```python
-from increase import Increase
-
-client = Increase()
-
-all_accounts = []
-# Automatically fetches more pages as needed.
-for account in client.accounts.list():
-    # Do something with account here
-    all_accounts.append(account)
-print(all_accounts)
-```
-
-Or, asynchronously:
-
-```python
-import asyncio
-from increase import AsyncIncrease
-
-client = AsyncIncrease()
-
-
-async def main() -> None:
-    all_accounts = []
-    # Iterate through items across all pages, issuing requests as needed.
-    async for account in client.accounts.list():
-        all_accounts.append(account)
-    print(all_accounts)
-
-
-asyncio.run(main())
-```
-
-Alternatively, you can use the `.has_next_page()`, `.next_page_info()`, or `.get_next_page()` methods for more granular control working with pages:
-
-```python
-first_page = await client.accounts.list()
-if first_page.has_next_page():
-    print(f"will fetch next page using these details: {first_page.next_page_info()}")
-    next_page = await first_page.get_next_page()
-    print(f"number of items we just fetched: {len(next_page.data)}")
-
-# Remove `await` for non-async usage.
-```
-
-Or just work directly with the returned data:
-
-```python
-first_page = await client.accounts.list()
-
-print(f"next page cursor: {first_page.next_cursor}")  # => "next page cursor: ..."
-for account in first_page.data:
-    print(account.id)
-
-# Remove `await` for non-async usage.
-```
 
 ## Nested params
 
@@ -278,8 +209,6 @@ client = Increase(
 # Or, configure per-request:
 client.with_options(max_retries=5).accounts.create(
     name="New Account!",
-    entity_id="entity_n8y8tnk2p9339ti393yi",
-    program_id="program_i2v2os4mwza1oetokh9i",
 )
 ```
 
@@ -305,8 +234,6 @@ client = Increase(
 # Override per-request:
 client.with_options(timeout=5.0).accounts.create(
     name="New Account!",
-    entity_id="entity_n8y8tnk2p9339ti393yi",
-    program_id="program_i2v2os4mwza1oetokh9i",
 )
 ```
 
@@ -350,8 +277,6 @@ from increase import Increase
 client = Increase()
 response = client.accounts.with_raw_response.create(
     name="New Account!",
-    entity_id="entity_n8y8tnk2p9339ti393yi",
-    program_id="program_i2v2os4mwza1oetokh9i",
 )
 print(response.headers.get('X-My-Header'))
 
@@ -372,8 +297,6 @@ To stream the response body, use `.with_streaming_response` instead, which requi
 ```python
 with client.accounts.with_streaming_response.create(
     name="New Account!",
-    entity_id="entity_n8y8tnk2p9339ti393yi",
-    program_id="program_i2v2os4mwza1oetokh9i",
 ) as response:
     print(response.headers.get("X-My-Header"))
 

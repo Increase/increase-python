@@ -22,9 +22,9 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..pagination import SyncPage, AsyncPage
-from .._base_client import AsyncPaginator, make_request_options
+from .._base_client import make_request_options
 from ..types.inbound_ach_transfer import InboundACHTransfer
+from ..types.inbound_ach_transfer_list_response import InboundACHTransferListResponse
 
 __all__ = ["InboundACHTransfersResource", "AsyncInboundACHTransfersResource"]
 
@@ -101,7 +101,7 @@ class InboundACHTransfersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SyncPage[InboundACHTransfer]:
+    ) -> InboundACHTransferListResponse:
         """
         List Inbound ACH Transfers
 
@@ -123,9 +123,8 @@ class InboundACHTransfersResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get_api_list(
+        return self._get(
             "/inbound_ach_transfers",
-            page=SyncPage[InboundACHTransfer],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -143,7 +142,7 @@ class InboundACHTransfersResource(SyncAPIResource):
                     inbound_ach_transfer_list_params.InboundACHTransferListParams,
                 ),
             ),
-            model=InboundACHTransfer,
+            cast_to=InboundACHTransferListResponse,
         )
 
     def create_notification_of_change(
@@ -431,7 +430,7 @@ class AsyncInboundACHTransfersResource(AsyncAPIResource):
             cast_to=InboundACHTransfer,
         )
 
-    def list(
+    async def list(
         self,
         *,
         account_id: str | Omit = omit,
@@ -446,7 +445,7 @@ class AsyncInboundACHTransfersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AsyncPaginator[InboundACHTransfer, AsyncPage[InboundACHTransfer]]:
+    ) -> InboundACHTransferListResponse:
         """
         List Inbound ACH Transfers
 
@@ -468,15 +467,14 @@ class AsyncInboundACHTransfersResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get_api_list(
+        return await self._get(
             "/inbound_ach_transfers",
-            page=AsyncPage[InboundACHTransfer],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform(
+                query=await async_maybe_transform(
                     {
                         "account_id": account_id,
                         "account_number_id": account_number_id,
@@ -488,7 +486,7 @@ class AsyncInboundACHTransfersResource(AsyncAPIResource):
                     inbound_ach_transfer_list_params.InboundACHTransferListParams,
                 ),
             ),
-            model=InboundACHTransfer,
+            cast_to=InboundACHTransferListResponse,
         )
 
     async def create_notification_of_change(
