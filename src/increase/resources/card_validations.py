@@ -15,9 +15,9 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncPage, AsyncPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.card_validation import CardValidation
-from ..types.card_validation_list_response import CardValidationListResponse
 
 __all__ = ["CardValidationsResource", "AsyncCardValidationsResource"]
 
@@ -185,7 +185,7 @@ class CardValidationsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CardValidationListResponse:
+    ) -> SyncPage[CardValidation]:
         """
         List Card Validations
 
@@ -210,8 +210,9 @@ class CardValidationsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/card_validations",
+            page=SyncPage[CardValidation],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -229,7 +230,7 @@ class CardValidationsResource(SyncAPIResource):
                     card_validation_list_params.CardValidationListParams,
                 ),
             ),
-            cast_to=CardValidationListResponse,
+            model=CardValidation,
         )
 
 
@@ -381,7 +382,7 @@ class AsyncCardValidationsResource(AsyncAPIResource):
             cast_to=CardValidation,
         )
 
-    async def list(
+    def list(
         self,
         *,
         account_id: str | Omit = omit,
@@ -396,7 +397,7 @@ class AsyncCardValidationsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CardValidationListResponse:
+    ) -> AsyncPaginator[CardValidation, AsyncPage[CardValidation]]:
         """
         List Card Validations
 
@@ -421,14 +422,15 @@ class AsyncCardValidationsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/card_validations",
+            page=AsyncPage[CardValidation],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "account_id": account_id,
                         "created_at": created_at,
@@ -440,7 +442,7 @@ class AsyncCardValidationsResource(AsyncAPIResource):
                     card_validation_list_params.CardValidationListParams,
                 ),
             ),
-            cast_to=CardValidationListResponse,
+            model=CardValidation,
         )
 
 

@@ -6,7 +6,7 @@ import httpx
 
 from ..types import event_list_params
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -15,9 +15,9 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
+from ..pagination import SyncPage, AsyncPage
 from ..types.event import Event
-from .._base_client import make_request_options
-from ..types.event_list_response import EventListResponse
+from .._base_client import AsyncPaginator, make_request_options
 
 __all__ = ["EventsResource", "AsyncEventsResource"]
 
@@ -91,7 +91,7 @@ class EventsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> EventListResponse:
+    ) -> SyncPage[Event]:
         """
         List Events
 
@@ -111,8 +111,9 @@ class EventsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/events",
+            page=SyncPage[Event],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -129,7 +130,7 @@ class EventsResource(SyncAPIResource):
                     event_list_params.EventListParams,
                 ),
             ),
-            cast_to=EventListResponse,
+            model=Event,
         )
 
 
@@ -188,7 +189,7 @@ class AsyncEventsResource(AsyncAPIResource):
             cast_to=Event,
         )
 
-    async def list(
+    def list(
         self,
         *,
         associated_object_id: str | Omit = omit,
@@ -202,7 +203,7 @@ class AsyncEventsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> EventListResponse:
+    ) -> AsyncPaginator[Event, AsyncPage[Event]]:
         """
         List Events
 
@@ -222,14 +223,15 @@ class AsyncEventsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/events",
+            page=AsyncPage[Event],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "associated_object_id": associated_object_id,
                         "category": category,
@@ -240,7 +242,7 @@ class AsyncEventsResource(AsyncAPIResource):
                     event_list_params.EventListParams,
                 ),
             ),
-            cast_to=EventListResponse,
+            model=Event,
         )
 
 

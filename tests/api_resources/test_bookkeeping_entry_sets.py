@@ -9,11 +9,9 @@ import pytest
 
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
-from increase.types import (
-    BookkeepingEntrySet,
-    BookkeepingEntrySetListResponse,
-)
+from increase.types import BookkeepingEntrySet
 from increase._utils import parse_datetime
+from increase.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -140,7 +138,7 @@ class TestBookkeepingEntrySets:
     @parametrize
     def test_method_list(self, client: Increase) -> None:
         bookkeeping_entry_set = client.bookkeeping_entry_sets.list()
-        assert_matches_type(BookkeepingEntrySetListResponse, bookkeeping_entry_set, path=["response"])
+        assert_matches_type(SyncPage[BookkeepingEntrySet], bookkeeping_entry_set, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
@@ -150,7 +148,7 @@ class TestBookkeepingEntrySets:
             limit=1,
             transaction_id="transaction_id",
         )
-        assert_matches_type(BookkeepingEntrySetListResponse, bookkeeping_entry_set, path=["response"])
+        assert_matches_type(SyncPage[BookkeepingEntrySet], bookkeeping_entry_set, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
@@ -159,7 +157,7 @@ class TestBookkeepingEntrySets:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         bookkeeping_entry_set = response.parse()
-        assert_matches_type(BookkeepingEntrySetListResponse, bookkeeping_entry_set, path=["response"])
+        assert_matches_type(SyncPage[BookkeepingEntrySet], bookkeeping_entry_set, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Increase) -> None:
@@ -168,7 +166,7 @@ class TestBookkeepingEntrySets:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             bookkeeping_entry_set = response.parse()
-            assert_matches_type(BookkeepingEntrySetListResponse, bookkeeping_entry_set, path=["response"])
+            assert_matches_type(SyncPage[BookkeepingEntrySet], bookkeeping_entry_set, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -297,7 +295,7 @@ class TestAsyncBookkeepingEntrySets:
     @parametrize
     async def test_method_list(self, async_client: AsyncIncrease) -> None:
         bookkeeping_entry_set = await async_client.bookkeeping_entry_sets.list()
-        assert_matches_type(BookkeepingEntrySetListResponse, bookkeeping_entry_set, path=["response"])
+        assert_matches_type(AsyncPage[BookkeepingEntrySet], bookkeeping_entry_set, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
@@ -307,7 +305,7 @@ class TestAsyncBookkeepingEntrySets:
             limit=1,
             transaction_id="transaction_id",
         )
-        assert_matches_type(BookkeepingEntrySetListResponse, bookkeeping_entry_set, path=["response"])
+        assert_matches_type(AsyncPage[BookkeepingEntrySet], bookkeeping_entry_set, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
@@ -316,7 +314,7 @@ class TestAsyncBookkeepingEntrySets:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         bookkeeping_entry_set = await response.parse()
-        assert_matches_type(BookkeepingEntrySetListResponse, bookkeeping_entry_set, path=["response"])
+        assert_matches_type(AsyncPage[BookkeepingEntrySet], bookkeeping_entry_set, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncIncrease) -> None:
@@ -325,6 +323,6 @@ class TestAsyncBookkeepingEntrySets:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             bookkeeping_entry_set = await response.parse()
-            assert_matches_type(BookkeepingEntrySetListResponse, bookkeeping_entry_set, path=["response"])
+            assert_matches_type(AsyncPage[BookkeepingEntrySet], bookkeeping_entry_set, path=["response"])
 
         assert cast(Any, response.is_closed) is True

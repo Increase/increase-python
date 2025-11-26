@@ -15,9 +15,9 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncPage, AsyncPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.check_deposit import CheckDeposit
-from ..types.check_deposit_list_response import CheckDepositListResponse
 
 __all__ = ["CheckDepositsResource", "AsyncCheckDepositsResource"]
 
@@ -153,7 +153,7 @@ class CheckDepositsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CheckDepositListResponse:
+    ) -> SyncPage[CheckDeposit]:
         """
         List Check Deposits
 
@@ -178,8 +178,9 @@ class CheckDepositsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/check_deposits",
+            page=SyncPage[CheckDeposit],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -196,7 +197,7 @@ class CheckDepositsResource(SyncAPIResource):
                     check_deposit_list_params.CheckDepositListParams,
                 ),
             ),
-            cast_to=CheckDepositListResponse,
+            model=CheckDeposit,
         )
 
 
@@ -317,7 +318,7 @@ class AsyncCheckDepositsResource(AsyncAPIResource):
             cast_to=CheckDeposit,
         )
 
-    async def list(
+    def list(
         self,
         *,
         account_id: str | Omit = omit,
@@ -331,7 +332,7 @@ class AsyncCheckDepositsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CheckDepositListResponse:
+    ) -> AsyncPaginator[CheckDeposit, AsyncPage[CheckDeposit]]:
         """
         List Check Deposits
 
@@ -356,14 +357,15 @@ class AsyncCheckDepositsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/check_deposits",
+            page=AsyncPage[CheckDeposit],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "account_id": account_id,
                         "created_at": created_at,
@@ -374,7 +376,7 @@ class AsyncCheckDepositsResource(AsyncAPIResource):
                     check_deposit_list_params.CheckDepositListParams,
                 ),
             ),
-            cast_to=CheckDepositListResponse,
+            model=CheckDeposit,
         )
 
 

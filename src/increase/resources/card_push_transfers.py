@@ -17,9 +17,9 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncPage, AsyncPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.card_push_transfer import CardPushTransfer
-from ..types.card_push_transfer_list_response import CardPushTransferListResponse
 
 __all__ = ["CardPushTransfersResource", "AsyncCardPushTransfersResource"]
 
@@ -247,7 +247,7 @@ class CardPushTransfersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CardPushTransferListResponse:
+    ) -> SyncPage[CardPushTransfer]:
         """
         List Card Push Transfers
 
@@ -272,8 +272,9 @@ class CardPushTransfersResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/card_push_transfers",
+            page=SyncPage[CardPushTransfer],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -291,7 +292,7 @@ class CardPushTransfersResource(SyncAPIResource):
                     card_push_transfer_list_params.CardPushTransferListParams,
                 ),
             ),
-            cast_to=CardPushTransferListResponse,
+            model=CardPushTransfer,
         )
 
     def approve(
@@ -591,7 +592,7 @@ class AsyncCardPushTransfersResource(AsyncAPIResource):
             cast_to=CardPushTransfer,
         )
 
-    async def list(
+    def list(
         self,
         *,
         account_id: str | Omit = omit,
@@ -606,7 +607,7 @@ class AsyncCardPushTransfersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CardPushTransferListResponse:
+    ) -> AsyncPaginator[CardPushTransfer, AsyncPage[CardPushTransfer]]:
         """
         List Card Push Transfers
 
@@ -631,14 +632,15 @@ class AsyncCardPushTransfersResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/card_push_transfers",
+            page=AsyncPage[CardPushTransfer],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "account_id": account_id,
                         "created_at": created_at,
@@ -650,7 +652,7 @@ class AsyncCardPushTransfersResource(AsyncAPIResource):
                     card_push_transfer_list_params.CardPushTransferListParams,
                 ),
             ),
-            cast_to=CardPushTransferListResponse,
+            model=CardPushTransfer,
         )
 
     async def approve(

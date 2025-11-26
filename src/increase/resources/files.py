@@ -18,9 +18,9 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
+from ..pagination import SyncPage, AsyncPage
 from ..types.file import File
-from .._base_client import make_request_options
-from ..types.file_list_response import FileListResponse
+from .._base_client import AsyncPaginator, make_request_options
 
 __all__ = ["FilesResource", "AsyncFilesResource"]
 
@@ -211,7 +211,7 @@ class FilesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> FileListResponse:
+    ) -> SyncPage[File]:
         """
         List Files
 
@@ -234,8 +234,9 @@ class FilesResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/files",
+            page=SyncPage[File],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -252,7 +253,7 @@ class FilesResource(SyncAPIResource):
                     file_list_params.FileListParams,
                 ),
             ),
-            cast_to=FileListResponse,
+            model=File,
         )
 
 
@@ -428,7 +429,7 @@ class AsyncFilesResource(AsyncAPIResource):
             cast_to=File,
         )
 
-    async def list(
+    def list(
         self,
         *,
         created_at: file_list_params.CreatedAt | Omit = omit,
@@ -442,7 +443,7 @@ class AsyncFilesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> FileListResponse:
+    ) -> AsyncPaginator[File, AsyncPage[File]]:
         """
         List Files
 
@@ -465,14 +466,15 @@ class AsyncFilesResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/files",
+            page=AsyncPage[File],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "created_at": created_at,
                         "cursor": cursor,
@@ -483,7 +485,7 @@ class AsyncFilesResource(AsyncAPIResource):
                     file_list_params.FileListParams,
                 ),
             ),
-            cast_to=FileListResponse,
+            model=File,
         )
 
 

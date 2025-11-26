@@ -6,7 +6,7 @@ import httpx
 
 from ..types import inbound_wire_drawdown_request_list_params
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -15,9 +15,9 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncPage, AsyncPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.inbound_wire_drawdown_request import InboundWireDrawdownRequest
-from ..types.inbound_wire_drawdown_request_list_response import InboundWireDrawdownRequestListResponse
 
 __all__ = ["InboundWireDrawdownRequestsResource", "AsyncInboundWireDrawdownRequestsResource"]
 
@@ -90,7 +90,7 @@ class InboundWireDrawdownRequestsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> InboundWireDrawdownRequestListResponse:
+    ) -> SyncPage[InboundWireDrawdownRequest]:
         """
         List Inbound Wire Drawdown Requests
 
@@ -108,8 +108,9 @@ class InboundWireDrawdownRequestsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/inbound_wire_drawdown_requests",
+            page=SyncPage[InboundWireDrawdownRequest],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -123,7 +124,7 @@ class InboundWireDrawdownRequestsResource(SyncAPIResource):
                     inbound_wire_drawdown_request_list_params.InboundWireDrawdownRequestListParams,
                 ),
             ),
-            cast_to=InboundWireDrawdownRequestListResponse,
+            model=InboundWireDrawdownRequest,
         )
 
 
@@ -184,7 +185,7 @@ class AsyncInboundWireDrawdownRequestsResource(AsyncAPIResource):
             cast_to=InboundWireDrawdownRequest,
         )
 
-    async def list(
+    def list(
         self,
         *,
         cursor: str | Omit = omit,
@@ -195,7 +196,7 @@ class AsyncInboundWireDrawdownRequestsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> InboundWireDrawdownRequestListResponse:
+    ) -> AsyncPaginator[InboundWireDrawdownRequest, AsyncPage[InboundWireDrawdownRequest]]:
         """
         List Inbound Wire Drawdown Requests
 
@@ -213,14 +214,15 @@ class AsyncInboundWireDrawdownRequestsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/inbound_wire_drawdown_requests",
+            page=AsyncPage[InboundWireDrawdownRequest],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "cursor": cursor,
                         "limit": limit,
@@ -228,7 +230,7 @@ class AsyncInboundWireDrawdownRequestsResource(AsyncAPIResource):
                     inbound_wire_drawdown_request_list_params.InboundWireDrawdownRequestListParams,
                 ),
             ),
-            cast_to=InboundWireDrawdownRequestListResponse,
+            model=InboundWireDrawdownRequest,
         )
 
 

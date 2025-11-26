@@ -11,8 +11,8 @@ from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
 from increase.types import (
     IntrafiAccountEnrollment,
-    IntrafiAccountEnrollmentListResponse,
 )
+from increase.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -97,7 +97,7 @@ class TestIntrafiAccountEnrollments:
     @parametrize
     def test_method_list(self, client: Increase) -> None:
         intrafi_account_enrollment = client.intrafi_account_enrollments.list()
-        assert_matches_type(IntrafiAccountEnrollmentListResponse, intrafi_account_enrollment, path=["response"])
+        assert_matches_type(SyncPage[IntrafiAccountEnrollment], intrafi_account_enrollment, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
@@ -108,7 +108,7 @@ class TestIntrafiAccountEnrollments:
             limit=1,
             status={"in": ["pending_enrolling"]},
         )
-        assert_matches_type(IntrafiAccountEnrollmentListResponse, intrafi_account_enrollment, path=["response"])
+        assert_matches_type(SyncPage[IntrafiAccountEnrollment], intrafi_account_enrollment, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
@@ -117,7 +117,7 @@ class TestIntrafiAccountEnrollments:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         intrafi_account_enrollment = response.parse()
-        assert_matches_type(IntrafiAccountEnrollmentListResponse, intrafi_account_enrollment, path=["response"])
+        assert_matches_type(SyncPage[IntrafiAccountEnrollment], intrafi_account_enrollment, path=["response"])
 
     @parametrize
     def test_streaming_response_list(self, client: Increase) -> None:
@@ -126,7 +126,7 @@ class TestIntrafiAccountEnrollments:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             intrafi_account_enrollment = response.parse()
-            assert_matches_type(IntrafiAccountEnrollmentListResponse, intrafi_account_enrollment, path=["response"])
+            assert_matches_type(SyncPage[IntrafiAccountEnrollment], intrafi_account_enrollment, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -253,7 +253,7 @@ class TestAsyncIntrafiAccountEnrollments:
     @parametrize
     async def test_method_list(self, async_client: AsyncIncrease) -> None:
         intrafi_account_enrollment = await async_client.intrafi_account_enrollments.list()
-        assert_matches_type(IntrafiAccountEnrollmentListResponse, intrafi_account_enrollment, path=["response"])
+        assert_matches_type(AsyncPage[IntrafiAccountEnrollment], intrafi_account_enrollment, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
@@ -264,7 +264,7 @@ class TestAsyncIntrafiAccountEnrollments:
             limit=1,
             status={"in": ["pending_enrolling"]},
         )
-        assert_matches_type(IntrafiAccountEnrollmentListResponse, intrafi_account_enrollment, path=["response"])
+        assert_matches_type(AsyncPage[IntrafiAccountEnrollment], intrafi_account_enrollment, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
@@ -273,7 +273,7 @@ class TestAsyncIntrafiAccountEnrollments:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         intrafi_account_enrollment = await response.parse()
-        assert_matches_type(IntrafiAccountEnrollmentListResponse, intrafi_account_enrollment, path=["response"])
+        assert_matches_type(AsyncPage[IntrafiAccountEnrollment], intrafi_account_enrollment, path=["response"])
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncIncrease) -> None:
@@ -282,7 +282,7 @@ class TestAsyncIntrafiAccountEnrollments:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             intrafi_account_enrollment = await response.parse()
-            assert_matches_type(IntrafiAccountEnrollmentListResponse, intrafi_account_enrollment, path=["response"])
+            assert_matches_type(AsyncPage[IntrafiAccountEnrollment], intrafi_account_enrollment, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

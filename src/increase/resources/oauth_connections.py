@@ -6,7 +6,7 @@ import httpx
 
 from ..types import oauth_connection_list_params
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -15,9 +15,9 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncPage, AsyncPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.oauth_connection import OAuthConnection
-from ..types.oauth_connection_list_response import OAuthConnectionListResponse
 
 __all__ = ["OAuthConnectionsResource", "AsyncOAuthConnectionsResource"]
 
@@ -92,7 +92,7 @@ class OAuthConnectionsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> OAuthConnectionListResponse:
+    ) -> SyncPage[OAuthConnection]:
         """
         List OAuth Connections
 
@@ -113,8 +113,9 @@ class OAuthConnectionsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/oauth_connections",
+            page=SyncPage[OAuthConnection],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -130,7 +131,7 @@ class OAuthConnectionsResource(SyncAPIResource):
                     oauth_connection_list_params.OAuthConnectionListParams,
                 ),
             ),
-            cast_to=OAuthConnectionListResponse,
+            model=OAuthConnection,
         )
 
 
@@ -191,7 +192,7 @@ class AsyncOAuthConnectionsResource(AsyncAPIResource):
             cast_to=OAuthConnection,
         )
 
-    async def list(
+    def list(
         self,
         *,
         cursor: str | Omit = omit,
@@ -204,7 +205,7 @@ class AsyncOAuthConnectionsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> OAuthConnectionListResponse:
+    ) -> AsyncPaginator[OAuthConnection, AsyncPage[OAuthConnection]]:
         """
         List OAuth Connections
 
@@ -225,14 +226,15 @@ class AsyncOAuthConnectionsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/oauth_connections",
+            page=AsyncPage[OAuthConnection],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "cursor": cursor,
                         "limit": limit,
@@ -242,7 +244,7 @@ class AsyncOAuthConnectionsResource(AsyncAPIResource):
                     oauth_connection_list_params.OAuthConnectionListParams,
                 ),
             ),
-            cast_to=OAuthConnectionListResponse,
+            model=OAuthConnection,
         )
 
 

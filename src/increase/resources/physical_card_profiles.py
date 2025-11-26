@@ -19,9 +19,9 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
+from ..pagination import SyncPage, AsyncPage
+from .._base_client import AsyncPaginator, make_request_options
 from ..types.physical_card_profile import PhysicalCardProfile
-from ..types.physical_card_profile_list_response import PhysicalCardProfileListResponse
 
 __all__ = ["PhysicalCardProfilesResource", "AsyncPhysicalCardProfilesResource"]
 
@@ -163,7 +163,7 @@ class PhysicalCardProfilesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PhysicalCardProfileListResponse:
+    ) -> SyncPage[PhysicalCardProfile]:
         """
         List Physical Card Profiles
 
@@ -186,8 +186,9 @@ class PhysicalCardProfilesResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/physical_card_profiles",
+            page=SyncPage[PhysicalCardProfile],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -203,7 +204,7 @@ class PhysicalCardProfilesResource(SyncAPIResource):
                     physical_card_profile_list_params.PhysicalCardProfileListParams,
                 ),
             ),
-            cast_to=PhysicalCardProfileListResponse,
+            model=PhysicalCardProfile,
         )
 
     def archive(
@@ -449,7 +450,7 @@ class AsyncPhysicalCardProfilesResource(AsyncAPIResource):
             cast_to=PhysicalCardProfile,
         )
 
-    async def list(
+    def list(
         self,
         *,
         cursor: str | Omit = omit,
@@ -462,7 +463,7 @@ class AsyncPhysicalCardProfilesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PhysicalCardProfileListResponse:
+    ) -> AsyncPaginator[PhysicalCardProfile, AsyncPage[PhysicalCardProfile]]:
         """
         List Physical Card Profiles
 
@@ -485,14 +486,15 @@ class AsyncPhysicalCardProfilesResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/physical_card_profiles",
+            page=AsyncPage[PhysicalCardProfile],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "cursor": cursor,
                         "idempotency_key": idempotency_key,
@@ -502,7 +504,7 @@ class AsyncPhysicalCardProfilesResource(AsyncAPIResource):
                     physical_card_profile_list_params.PhysicalCardProfileListParams,
                 ),
             ),
-            cast_to=PhysicalCardProfileListResponse,
+            model=PhysicalCardProfile,
         )
 
     async def archive(
