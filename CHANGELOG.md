@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.402.1 (2025-11-27)
+
+Full Changelog: [v0.402.0...v0.402.1](https://github.com/Increase/increase-python/compare/v0.402.0...v0.402.1)
+
+### Bug Fixes
+
+* ensure streams are always closed ([acccbef](https://github.com/Increase/increase-python/commit/acccbeff71f9a2de64a879a19ccfe797b0a717c9))
+
 ## 0.402.0 (2025-11-26)
 
 Full Changelog: [v0.401.0...v0.402.0](https://github.com/Increase/increase-python/compare/v0.401.0...v0.402.0)
