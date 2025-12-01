@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.403.0 (2025-12-01)
+
+Full Changelog: [v0.402.1...v0.403.0](https://github.com/Increase/increase-python/compare/v0.402.1...v0.403.0)
+
+### Features
+
+* **api:** api update ([b0fd6a1](https://github.com/Increase/increase-python/commit/b0fd6a1686eea6e154fcd18d1691c4f4fc49ad63))
+
+
+### Chores
+
+* **deps:** mypy 1.18.1 has a regression, pin to 1.17 ([10c021e](https://github.com/Increase/increase-python/commit/10c021ed4c6acd9cc1b2d6854fa27b062e03216b))
+
 ## 0.402.1 (2025-11-27)
 
 Full Changelog: [v0.402.0...v0.402.1](https://github.com/Increase/increase-python/compare/v0.402.0...v0.402.1)
