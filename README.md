@@ -89,6 +89,7 @@ pip install increase[aiohttp]
 Then you can enable it by instantiating the client with `http_client=DefaultAioHttpClient()`:
 
 ```python
+import os
 import asyncio
 from increase import DefaultAioHttpClient
 from increase import AsyncIncrease
@@ -96,7 +97,7 @@ from increase import AsyncIncrease
 
 async def main() -> None:
     async with AsyncIncrease(
-        api_key="My API Key",
+        api_key=os.environ.get("INCREASE_API_KEY"),  # This is the default and can be omitted
         http_client=DefaultAioHttpClient(),
     ) as client:
         account = await client.accounts.create(
