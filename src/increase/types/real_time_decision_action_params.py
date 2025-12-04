@@ -108,6 +108,14 @@ class CardAuthorizationApproval(TypedDict, total=False):
     guide.
     """
 
+    partial_amount: int
+    """
+    If the transaction supports partial approvals
+    (`partial_approval_capability: supported`) the `partial_amount` can be provided
+    in the transaction's settlement currency to approve a lower amount than was
+    requested.
+    """
+
 
 class CardAuthorizationDecline(TypedDict, total=False):
     reason: Required[

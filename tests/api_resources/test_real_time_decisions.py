@@ -74,7 +74,8 @@ class TestRealTimeDecisions:
                     "cardholder_address_verification_result": {
                         "line1": "match",
                         "postal_code": "no_match",
-                    }
+                    },
+                    "partial_amount": 1,
                 },
                 "decline": {"reason": "insufficient_funds"},
             },
@@ -189,7 +190,8 @@ class TestAsyncRealTimeDecisions:
                     "cardholder_address_verification_result": {
                         "line1": "match",
                         "postal_code": "no_match",
-                    }
+                    },
+                    "partial_amount": 1,
                 },
                 "decline": {"reason": "insufficient_funds"},
             },
