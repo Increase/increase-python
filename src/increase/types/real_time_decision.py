@@ -24,6 +24,7 @@ __all__ = [
     "CardAuthorizationAdditionalAmountsTransit",
     "CardAuthorizationAdditionalAmountsUnknown",
     "CardAuthorizationAdditionalAmountsVision",
+    "CardAuthorizationApproval",
     "CardAuthorizationDecline",
     "CardAuthorizationNetworkDetails",
     "CardAuthorizationNetworkDetailsPulse",
@@ -272,6 +273,14 @@ class CardAuthorizationAdditionalAmounts(BaseModel):
 
     vision: Optional[CardAuthorizationAdditionalAmountsVision] = None
     """The part of this transaction amount that was for vision-related services."""
+
+
+class CardAuthorizationApproval(BaseModel):
+    partial_amount: Optional[int] = None
+    """
+    If the authorization was partially approved, this field contains the approved
+    amount in the minor unit of the settlement currency.
+    """
 
 
 class CardAuthorizationDecline(BaseModel):
@@ -572,6 +581,12 @@ class CardAuthorization(BaseModel):
     to provide more detailed information about the transaction.
     """
 
+    approval: Optional[CardAuthorizationApproval] = None
+    """Present if and only if `decision` is `approve`.
+
+    Contains information related to the approval of the authorization.
+    """
+
     card_id: str
     """The identifier of the Card that is being authorized."""
 
@@ -648,6 +663,13 @@ class CardAuthorization(BaseModel):
     For Visa this is the Visa Advanced Authorization risk score, from 0 to 99, where
     99 is the riskiest. For Pulse the score is from 0 to 999, where 999 is the
     riskiest.
+    """
+
+    partial_approval_capability: Literal["supported", "not_supported"]
+    """Whether or not the authorization supports partial approvals.
+
+    - `supported` - This transaction supports partial approvals.
+    - `not_supported` - This transaction does not support partial approvals.
     """
 
     physical_card_id: Optional[str] = None
