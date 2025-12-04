@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.404.0 (2025-12-04)
+
+Full Changelog: [v0.403.0...v0.404.0](https://github.com/Increase/increase-python/compare/v0.403.0...v0.404.0)
+
+### Features
+
+* **api:** api update ([2f0a505](https://github.com/Increase/increase-python/commit/2f0a5057568f909b3fca37ec3404b8728d684a39))
+
+
+### Chores
+
+* **docs:** use environment variables for authentication in code snippets ([6597cb7](https://github.com/Increase/increase-python/commit/6597cb7ea5a7698345b505a09f191ab8cf355644))
+* update lockfile ([d29939b](https://github.com/Increase/increase-python/commit/d29939be35567c02153df62140700c2bec7b4e64))
+
 ## 0.403.0 (2025-12-01)
 
 Full Changelog: [v0.402.1...v0.403.0](https://github.com/Increase/increase-python/compare/v0.402.1...v0.403.0)
