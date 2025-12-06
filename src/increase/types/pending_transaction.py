@@ -642,6 +642,7 @@ class SourceCardAuthorization(BaseModel):
         "quasi_cash",
         "refund",
         "cash_disbursement",
+        "balance_inquiry",
         "unknown",
     ]
     """
@@ -664,6 +665,8 @@ class SourceCardAuthorization(BaseModel):
       voucher authorization, where funds are credited to the cardholder.
     - `cash_disbursement` - Cash disbursement transactions are used to withdraw cash
       from an ATM or a point of sale.
+    - `balance_inquiry` - A balance inquiry transaction is used to check the balance
+      of an account associated with a card.
     - `unknown` - The processing category is unknown.
     """
 
