@@ -197,6 +197,7 @@ class ProcessingCategory(TypedDict, total=False):
             "quasi_cash",
             "refund",
             "cash_disbursement",
+            "balance_inquiry",
         ]
     ]
     """
@@ -219,6 +220,8 @@ class ProcessingCategory(TypedDict, total=False):
       voucher authorization, where funds are credited to the cardholder.
     - `cash_disbursement` - Cash disbursement transactions are used to withdraw cash
       from an ATM or a point of sale.
+    - `balance_inquiry` - A balance inquiry transaction is used to check the balance
+      of an account associated with a card.
     """
 
     refund: ProcessingCategoryRefund
