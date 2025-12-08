@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.407.0 (2025-12-08)
+
+Full Changelog: [v0.406.1...v0.407.0](https://github.com/Increase/increase-python/compare/v0.406.1...v0.407.0)
+
+### Features
+
+* **api:** api update ([d38284a](https://github.com/Increase/increase-python/commit/d38284a761a03235551b4cb032c1dd5adb5d733c))
+
+
+### Chores
+
+* add missing docstrings ([e2fd2c9](https://github.com/Increase/increase-python/commit/e2fd2c91d9ac2705eff3f2cc2a8bf0164dd95744))
+
 ## 0.406.1 (2025-12-08)
 
 Full Changelog: [v0.406.0...v0.406.1](https://github.com/Increase/increase-python/compare/v0.406.0...v0.406.1)
