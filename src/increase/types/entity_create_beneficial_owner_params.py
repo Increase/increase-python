@@ -29,6 +29,11 @@ class EntityCreateBeneficialOwnerParams(TypedDict, total=False):
 
 
 class BeneficialOwnerIndividualAddress(TypedDict, total=False):
+    """The individual's physical address.
+
+    Mail receiving locations like PO Boxes and PMB's are disallowed.
+    """
+
     city: Required[str]
     """The city, district, town, or village of the address."""
 
@@ -52,6 +57,11 @@ class BeneficialOwnerIndividualAddress(TypedDict, total=False):
 
 
 class BeneficialOwnerIndividualIdentificationDriversLicense(TypedDict, total=False):
+    """Information about the United States driver's license used for identification.
+
+    Required if `method` is equal to `drivers_license`.
+    """
+
     expiration_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """The driver's license's expiration date in YYYY-MM-DD format."""
 
@@ -66,6 +76,11 @@ class BeneficialOwnerIndividualIdentificationDriversLicense(TypedDict, total=Fal
 
 
 class BeneficialOwnerIndividualIdentificationOther(TypedDict, total=False):
+    """Information about the identification document provided.
+
+    Required if `method` is equal to `other`.
+    """
+
     country: Required[str]
     """
     The two-character ISO 3166-1 code representing the country that issued the
@@ -89,6 +104,11 @@ class BeneficialOwnerIndividualIdentificationOther(TypedDict, total=False):
 
 
 class BeneficialOwnerIndividualIdentificationPassport(TypedDict, total=False):
+    """Information about the passport used for identification.
+
+    Required if `method` is equal to `passport`.
+    """
+
     country: Required[str]
     """
     The two-character ISO 3166-1 code representing the country that issued the
@@ -103,6 +123,8 @@ class BeneficialOwnerIndividualIdentificationPassport(TypedDict, total=False):
 
 
 class BeneficialOwnerIndividualIdentificationTyped(TypedDict, total=False):
+    """A means of verifying the person's identity."""
+
     method: Required[
         Literal[
             "social_security_number",
@@ -153,6 +175,8 @@ BeneficialOwnerIndividualIdentification: TypeAlias = Union[
 
 
 class BeneficialOwnerIndividual(TypedDict, total=False):
+    """Personal details for the beneficial owner."""
+
     address: Required[BeneficialOwnerIndividualAddress]
     """The individual's physical address.
 
@@ -178,6 +202,10 @@ class BeneficialOwnerIndividual(TypedDict, total=False):
 
 
 class BeneficialOwnerTyped(TypedDict, total=False):
+    """
+    The identifying details of anyone controlling or owning 25% or more of the corporation.
+    """
+
     individual: Required[BeneficialOwnerIndividual]
     """Personal details for the beneficial owner."""
 

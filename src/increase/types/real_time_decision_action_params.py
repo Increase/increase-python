@@ -54,6 +54,10 @@ class RealTimeDecisionActionParams(TypedDict, total=False):
 
 
 class CardAuthentication(TypedDict, total=False):
+    """
+    If the Real-Time Decision relates to a 3DS card authentication attempt, this object contains your response to the authentication.
+    """
+
     decision: Required[Literal["approve", "challenge", "deny"]]
     """Whether the card authentication attempt should be approved or declined.
 
@@ -65,6 +69,10 @@ class CardAuthentication(TypedDict, total=False):
 
 
 class CardAuthenticationChallenge(TypedDict, total=False):
+    """
+    If the Real-Time Decision relates to 3DS card authentication challenge delivery, this object contains your response.
+    """
+
     result: Required[Literal["success", "failure"]]
     """
     Whether the card authentication challenge was successfully delivered to the
@@ -78,6 +86,11 @@ class CardAuthenticationChallenge(TypedDict, total=False):
 
 
 class CardAuthorizationApprovalCardholderAddressVerificationResult(TypedDict, total=False):
+    """Your decisions on whether or not each provided address component is a match.
+
+    Your response here is evaluated against the customer's provided `postal_code` and `line1`, and an appropriate network response is generated. For more information, see our [Address Verification System Codes and Overrides](https://increase.com/documentation/address-verification-system-codes-and-overrides) guide.
+    """
+
     line1: Required[Literal["match", "no_match"]]
     """Your decision on the address line of the provided address.
 
@@ -98,6 +111,10 @@ class CardAuthorizationApprovalCardholderAddressVerificationResult(TypedDict, to
 
 
 class CardAuthorizationApproval(TypedDict, total=False):
+    """
+    If your application approves the authorization, this contains metadata about your decision to approve. Your response here is advisory to the acquiring bank. The bank may choose to reverse the authorization if you approve the transaction but indicate the address does not match.
+    """
+
     cardholder_address_verification_result: CardAuthorizationApprovalCardholderAddressVerificationResult
     """Your decisions on whether or not each provided address component is a match.
 
@@ -118,6 +135,10 @@ class CardAuthorizationApproval(TypedDict, total=False):
 
 
 class CardAuthorizationDecline(TypedDict, total=False):
+    """
+    If your application declines the authorization, this contains details about the decline.
+    """
+
     reason: Required[
         Literal[
             "insufficient_funds",
@@ -148,6 +169,10 @@ class CardAuthorizationDecline(TypedDict, total=False):
 
 
 class CardAuthorizationTyped(TypedDict, total=False):
+    """
+    If the Real-Time Decision relates to a card authorization attempt, this object contains your response to the authorization.
+    """
+
     decision: Required[Literal["approve", "decline"]]
     """Whether the card authorization should be approved or declined.
 
@@ -174,6 +199,10 @@ CardAuthorization: TypeAlias = Union[CardAuthorizationTyped, Dict[str, object]]
 
 
 class DigitalWalletAuthenticationSuccess(TypedDict, total=False):
+    """
+    If your application was able to deliver the one-time passcode, this contains metadata about the delivery. Exactly one of `phone` or `email` must be provided.
+    """
+
     email: str
     """The email address that was used to verify the cardholder via one-time passcode."""
 
@@ -185,6 +214,10 @@ class DigitalWalletAuthenticationSuccess(TypedDict, total=False):
 
 
 class DigitalWalletAuthentication(TypedDict, total=False):
+    """
+    If the Real-Time Decision relates to a digital wallet authentication attempt, this object contains your response to the authentication.
+    """
+
     result: Required[Literal["success", "failure"]]
     """Whether your application was able to deliver the one-time passcode.
 
@@ -202,6 +235,10 @@ class DigitalWalletAuthentication(TypedDict, total=False):
 
 
 class DigitalWalletTokenApproval(TypedDict, total=False):
+    """
+    If your application approves the provisioning attempt, this contains metadata about the digital wallet token that will be generated.
+    """
+
     email: str
     """
     An email address that can be used to verify the cardholder via one-time
@@ -216,6 +253,10 @@ class DigitalWalletTokenApproval(TypedDict, total=False):
 
 
 class DigitalWalletTokenDecline(TypedDict, total=False):
+    """
+    If your application declines the provisioning attempt, this contains details about the decline.
+    """
+
     reason: str
     """Why the tokenization attempt was declined.
 
@@ -224,6 +265,10 @@ class DigitalWalletTokenDecline(TypedDict, total=False):
 
 
 class DigitalWalletToken(TypedDict, total=False):
+    """
+    If the Real-Time Decision relates to a digital wallet token provisioning attempt, this object contains your response to the attempt.
+    """
+
     approval: DigitalWalletTokenApproval
     """
     If your application approves the provisioning attempt, this contains metadata

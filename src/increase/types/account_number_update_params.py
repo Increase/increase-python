@@ -30,6 +30,8 @@ class AccountNumberUpdateParams(TypedDict, total=False):
 
 
 class InboundACH(TypedDict, total=False):
+    """Options related to how this Account Number handles inbound ACH transfers."""
+
     debit_status: Literal["allowed", "blocked"]
     """Whether ACH debits are allowed against this Account Number.
 
@@ -42,6 +44,10 @@ class InboundACH(TypedDict, total=False):
 
 
 class InboundChecks(TypedDict, total=False):
+    """
+    Options related to how this Account Number should handle inbound check withdrawals.
+    """
+
     status: Required[Literal["allowed", "check_transfers_only"]]
     """How Increase should process checks with this account number printed on them.
 

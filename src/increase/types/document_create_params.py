@@ -33,6 +33,11 @@ class DocumentCreateParams(TypedDict, total=False):
 
 
 class AccountVerificationLetter(TypedDict, total=False):
+    """An account verification letter.
+
+    Required if and only if `category` is `account_verification_letter`.
+    """
+
     account_number_id: Required[str]
     """The Account Number the bank letter should be generated for."""
 
@@ -41,5 +46,10 @@ class AccountVerificationLetter(TypedDict, total=False):
 
 
 class FundingInstructions(TypedDict, total=False):
+    """Funding instructions.
+
+    Required if and only if `category` is `funding_instructions`.
+    """
+
     account_number_id: Required[str]
     """The Account Number the funding instructions should be generated for."""

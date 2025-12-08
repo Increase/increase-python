@@ -11,6 +11,8 @@ __all__ = ["CardAuthorizationCreateResponse"]
 
 
 class CardAuthorizationCreateResponse(BaseModel):
+    """The results of a Card Authorization simulation."""
+
     declined_transaction: Optional[DeclinedTransaction] = None
     """
     If the authorization attempt fails, this will contain the resulting

@@ -10,6 +10,8 @@ __all__ = ["DigitalCardProfile", "TextColor"]
 
 
 class TextColor(BaseModel):
+    """The Card's text color, specified as an RGB triple."""
+
     blue: int
     """The value of the blue channel in the RGB color."""
 
@@ -21,6 +23,10 @@ class TextColor(BaseModel):
 
 
 class DigitalCardProfile(BaseModel):
+    """
+    This contains artwork and metadata relating to a Card's appearance in digital wallet apps like Apple Pay and Google Pay. For more information, see our guide on [digital card artwork](https://increase.com/documentation/card-art).
+    """
+
     id: str
     """The Card Profile identifier."""
 

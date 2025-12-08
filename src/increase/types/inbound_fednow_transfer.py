@@ -12,6 +12,8 @@ __all__ = ["InboundFednowTransfer", "Confirmation", "Decline"]
 
 
 class Confirmation(BaseModel):
+    """If your transfer is confirmed, this will contain details of the confirmation."""
+
     transfer_id: str
     """The identifier of the FedNow Transfer that led to this Transaction."""
 
@@ -29,6 +31,8 @@ class Confirmation(BaseModel):
 
 
 class Decline(BaseModel):
+    """If your transfer is declined, this will contain details of the decline."""
+
     reason: Literal[
         "account_number_canceled",
         "account_number_disabled",
@@ -65,6 +69,10 @@ class Decline(BaseModel):
 
 
 class InboundFednowTransfer(BaseModel):
+    """
+    An Inbound FedNow Transfer is a FedNow transfer initiated outside of Increase to your account.
+    """
+
     id: str
     """The inbound FedNow transfer's identifier."""
 

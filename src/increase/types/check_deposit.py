@@ -19,6 +19,10 @@ __all__ = [
 
 
 class DepositAcceptance(BaseModel):
+    """
+    Once your deposit is successfully parsed and accepted by Increase, this will contain details of the parsed check.
+    """
+
     account_number: str
     """The account number printed on the check.
 
@@ -75,6 +79,10 @@ class DepositAcceptance(BaseModel):
 
 
 class DepositRejection(BaseModel):
+    """
+    If your deposit is rejected by Increase, this will contain details as to why it was rejected.
+    """
+
     amount: int
     """The rejected amount in the minor unit of check's currency.
 
@@ -146,6 +154,10 @@ class DepositRejection(BaseModel):
 
 
 class DepositReturn(BaseModel):
+    """
+    If your deposit is returned, this will contain details as to why it was returned.
+    """
+
     amount: int
     """The returned amount in USD cents."""
 
@@ -261,6 +273,11 @@ class DepositReturn(BaseModel):
 
 
 class DepositSubmission(BaseModel):
+    """After the check is parsed, it is submitted to the Check21 network for processing.
+
+    This will contain details of the submission.
+    """
+
     back_file_id: str
     """
     The ID for the File containing the check back image that was submitted to the
@@ -282,6 +299,11 @@ class DepositSubmission(BaseModel):
 
 
 class InboundFundsHold(BaseModel):
+    """Increase will sometimes hold the funds for Check Deposits.
+
+    If funds are held, this sub-object will contain details of the hold.
+    """
+
     amount: int
     """The held amount in the minor unit of the account's currency.
 
@@ -344,6 +366,8 @@ class InboundFundsHold(BaseModel):
 
 
 class CheckDeposit(BaseModel):
+    """Check Deposits allow you to deposit images of paper checks into your account."""
+
     id: str
     """The deposit's identifier."""
 

@@ -20,6 +20,10 @@ __all__ = [
 
 
 class Approval(BaseModel):
+    """
+    If your account requires approvals for transfers and the transfer was approved, this will contain details of the approval.
+    """
+
     approved_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -34,6 +38,10 @@ class Approval(BaseModel):
 
 
 class Cancellation(BaseModel):
+    """
+    If your account requires approvals for transfers and the transfer was not approved, this will contain details of the cancellation.
+    """
+
     canceled_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -48,21 +56,29 @@ class Cancellation(BaseModel):
 
 
 class CreatedByAPIKey(BaseModel):
+    """If present, details about the API key that created the transfer."""
+
     description: Optional[str] = None
     """The description set for the API key when it was created."""
 
 
 class CreatedByOAuthApplication(BaseModel):
+    """If present, details about the OAuth Application that created the transfer."""
+
     name: str
     """The name of the OAuth Application."""
 
 
 class CreatedByUser(BaseModel):
+    """If present, details about the User that created the transfer."""
+
     email: str
     """The email address of the User."""
 
 
 class CreatedBy(BaseModel):
+    """What object created the transfer, either via the API or the dashboard."""
+
     api_key: Optional[CreatedByAPIKey] = None
     """If present, details about the API key that created the transfer."""
 
@@ -84,6 +100,10 @@ class CreatedBy(BaseModel):
 
 
 class AccountTransfer(BaseModel):
+    """
+    Account transfers move funds between your own accounts at Increase (accounting systems often refer to these as Book Transfers). Account Transfers are free and synchronous. Upon creation they create two Transactions, one negative on the originating account and one positive on the destination account (unless the transfer requires approval, in which case the Transactions will be created when the transfer is approved).
+    """
+
     id: str
     """The Account Transfer's identifier."""
 

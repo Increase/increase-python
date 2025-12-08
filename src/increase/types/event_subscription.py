@@ -10,6 +10,11 @@ __all__ = ["EventSubscription"]
 
 
 class EventSubscription(BaseModel):
+    """Webhooks are event notifications we send to you by HTTPS POST requests.
+
+    Event Subscriptions are how you configure your application to listen for them. You can create an Event Subscription through your [developer dashboard](https://dashboard.increase.com/developers/webhooks) or the API. For more information, see our [webhooks guide](https://increase.com/documentation/webhooks).
+    """
+
     id: str
     """The event subscription identifier."""
 

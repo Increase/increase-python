@@ -9,6 +9,11 @@ __all__ = ["AccountStatement"]
 
 
 class AccountStatement(BaseModel):
+    """Account Statements are generated monthly for every active Account.
+
+    You can access the statement's data via the API or retrieve a PDF with its details via its associated File.
+    """
+
     id: str
     """The Account Statement identifier."""
 

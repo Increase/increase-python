@@ -10,6 +10,8 @@ __all__ = ["FileLink"]
 
 
 class FileLink(BaseModel):
+    """File Links let you generate a URL that can be used to download a File."""
+
     id: str
     """The File Link identifier."""
 

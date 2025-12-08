@@ -21,6 +21,11 @@ class Entry(BaseModel):
 
 
 class BookkeepingEntrySet(BaseModel):
+    """Entry Sets are accounting entries that are transactionally applied.
+
+    Your compliance setup might require annotating money movements using this API. Learn more in our [guide to Bookkeeping](https://increase.com/documentation/bookkeeping#bookkeeping).
+    """
+
     id: str
     """The entry set identifier."""
 

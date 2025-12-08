@@ -152,6 +152,8 @@ class ElementCardAuthenticationChallengeAttempt(BaseModel):
 
 
 class ElementCardAuthenticationChallenge(BaseModel):
+    """Details about the challenge, if one was requested."""
+
     attempts: List[ElementCardAuthenticationChallengeAttempt]
     """Details about the challenge verification attempts, if any happened."""
 
@@ -180,6 +182,11 @@ class ElementCardAuthenticationChallenge(BaseModel):
 
 
 class ElementCardAuthentication(BaseModel):
+    """A Card Authentication object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `card_authentication`. Card Authentications are attempts to authenticate a transaction or a card with 3DS.
+    """
+
     id: str
     """The Card Authentication identifier."""
 
@@ -316,6 +323,8 @@ class ElementCardAuthentication(BaseModel):
 
 
 class ElementCardAuthorizationAdditionalAmountsClinic(BaseModel):
+    """The part of this transaction amount that was for clinic-related services."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -331,6 +340,8 @@ class ElementCardAuthorizationAdditionalAmountsClinic(BaseModel):
 
 
 class ElementCardAuthorizationAdditionalAmountsDental(BaseModel):
+    """The part of this transaction amount that was for dental-related services."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -346,6 +357,8 @@ class ElementCardAuthorizationAdditionalAmountsDental(BaseModel):
 
 
 class ElementCardAuthorizationAdditionalAmountsOriginal(BaseModel):
+    """The original pre-authorized amount."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -361,6 +374,8 @@ class ElementCardAuthorizationAdditionalAmountsOriginal(BaseModel):
 
 
 class ElementCardAuthorizationAdditionalAmountsPrescription(BaseModel):
+    """The part of this transaction amount that was for healthcare prescriptions."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -376,6 +391,8 @@ class ElementCardAuthorizationAdditionalAmountsPrescription(BaseModel):
 
 
 class ElementCardAuthorizationAdditionalAmountsSurcharge(BaseModel):
+    """The surcharge amount charged for this transaction by the merchant."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -391,6 +408,10 @@ class ElementCardAuthorizationAdditionalAmountsSurcharge(BaseModel):
 
 
 class ElementCardAuthorizationAdditionalAmountsTotalCumulative(BaseModel):
+    """
+    The total amount of a series of incremental authorizations, optionally provided.
+    """
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -406,6 +427,8 @@ class ElementCardAuthorizationAdditionalAmountsTotalCumulative(BaseModel):
 
 
 class ElementCardAuthorizationAdditionalAmountsTotalHealthcare(BaseModel):
+    """The total amount of healthcare-related additional amounts."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -421,6 +444,8 @@ class ElementCardAuthorizationAdditionalAmountsTotalHealthcare(BaseModel):
 
 
 class ElementCardAuthorizationAdditionalAmountsTransit(BaseModel):
+    """The part of this transaction amount that was for transit-related services."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -436,6 +461,8 @@ class ElementCardAuthorizationAdditionalAmountsTransit(BaseModel):
 
 
 class ElementCardAuthorizationAdditionalAmountsUnknown(BaseModel):
+    """An unknown additional amount."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -451,6 +478,8 @@ class ElementCardAuthorizationAdditionalAmountsUnknown(BaseModel):
 
 
 class ElementCardAuthorizationAdditionalAmountsVision(BaseModel):
+    """The part of this transaction amount that was for vision-related services."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -466,6 +495,10 @@ class ElementCardAuthorizationAdditionalAmountsVision(BaseModel):
 
 
 class ElementCardAuthorizationAdditionalAmounts(BaseModel):
+    """
+    Additional amounts associated with the card authorization, such as ATM surcharges fees. These are usually a subset of the `amount` field and are used to provide more detailed information about the transaction.
+    """
+
     clinic: Optional[ElementCardAuthorizationAdditionalAmountsClinic] = None
     """The part of this transaction amount that was for clinic-related services."""
 
@@ -500,10 +533,14 @@ class ElementCardAuthorizationAdditionalAmounts(BaseModel):
 
 
 class ElementCardAuthorizationNetworkDetailsPulse(BaseModel):
+    """Fields specific to the `pulse` network."""
+
     pass
 
 
 class ElementCardAuthorizationNetworkDetailsVisa(BaseModel):
+    """Fields specific to the `visa` network."""
+
     electronic_commerce_indicator: Optional[
         Literal[
             "mail_phone_order",
@@ -622,6 +659,8 @@ class ElementCardAuthorizationNetworkDetailsVisa(BaseModel):
 
 
 class ElementCardAuthorizationNetworkDetails(BaseModel):
+    """Fields specific to the `network`."""
+
     category: Literal["visa", "pulse"]
     """The payment network used to process this card authorization.
 
@@ -637,6 +676,8 @@ class ElementCardAuthorizationNetworkDetails(BaseModel):
 
 
 class ElementCardAuthorizationNetworkIdentifiers(BaseModel):
+    """Network-specific identifiers for a specific request or transaction."""
+
     authorization_identification_response: Optional[str] = None
     """
     The randomly generated 6-character Authorization Identification Response code
@@ -664,6 +705,10 @@ class ElementCardAuthorizationNetworkIdentifiers(BaseModel):
 
 
 class ElementCardAuthorizationVerificationCardVerificationCode(BaseModel):
+    """
+    Fields related to verification of the Card Verification Code, a 3-digit code on the back of the card.
+    """
+
     result: Literal["not_checked", "match", "no_match"]
     """The result of verifying the Card Verification Code.
 
@@ -675,6 +720,10 @@ class ElementCardAuthorizationVerificationCardVerificationCode(BaseModel):
 
 
 class ElementCardAuthorizationVerificationCardholderAddress(BaseModel):
+    """
+    Cardholder address provided in the authorization request and the address on file we verified it against.
+    """
+
     actual_line1: Optional[str] = None
     """Line 1 of the address on file for the cardholder."""
 
@@ -714,6 +763,8 @@ class ElementCardAuthorizationVerificationCardholderAddress(BaseModel):
 
 
 class ElementCardAuthorizationVerification(BaseModel):
+    """Fields related to verification of cardholder-provided values."""
+
     card_verification_code: ElementCardAuthorizationVerificationCardVerificationCode
     """
     Fields related to verification of the Card Verification Code, a 3-digit code on
@@ -728,6 +779,11 @@ class ElementCardAuthorizationVerification(BaseModel):
 
 
 class ElementCardAuthorization(BaseModel):
+    """A Card Authorization object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `card_authorization`. Card Authorizations are temporary holds placed on a customers funds with the intent to later clear a transaction.
+    """
+
     id: str
     """The Card Authorization identifier."""
 
@@ -924,6 +980,11 @@ class ElementCardAuthorization(BaseModel):
 
 
 class ElementCardAuthorizationExpiration(BaseModel):
+    """A Card Authorization Expiration object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `card_authorization_expiration`. Card Authorization Expirations are cancellations of authorizations that were never settled by the acquirer.
+    """
+
     id: str
     """The Card Authorization Expiration identifier."""
 
@@ -971,6 +1032,8 @@ class ElementCardAuthorizationExpiration(BaseModel):
 
 
 class ElementCardDeclineAdditionalAmountsClinic(BaseModel):
+    """The part of this transaction amount that was for clinic-related services."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -986,6 +1049,8 @@ class ElementCardDeclineAdditionalAmountsClinic(BaseModel):
 
 
 class ElementCardDeclineAdditionalAmountsDental(BaseModel):
+    """The part of this transaction amount that was for dental-related services."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -1001,6 +1066,8 @@ class ElementCardDeclineAdditionalAmountsDental(BaseModel):
 
 
 class ElementCardDeclineAdditionalAmountsOriginal(BaseModel):
+    """The original pre-authorized amount."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -1016,6 +1083,8 @@ class ElementCardDeclineAdditionalAmountsOriginal(BaseModel):
 
 
 class ElementCardDeclineAdditionalAmountsPrescription(BaseModel):
+    """The part of this transaction amount that was for healthcare prescriptions."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -1031,6 +1100,8 @@ class ElementCardDeclineAdditionalAmountsPrescription(BaseModel):
 
 
 class ElementCardDeclineAdditionalAmountsSurcharge(BaseModel):
+    """The surcharge amount charged for this transaction by the merchant."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -1046,6 +1117,10 @@ class ElementCardDeclineAdditionalAmountsSurcharge(BaseModel):
 
 
 class ElementCardDeclineAdditionalAmountsTotalCumulative(BaseModel):
+    """
+    The total amount of a series of incremental authorizations, optionally provided.
+    """
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -1061,6 +1136,8 @@ class ElementCardDeclineAdditionalAmountsTotalCumulative(BaseModel):
 
 
 class ElementCardDeclineAdditionalAmountsTotalHealthcare(BaseModel):
+    """The total amount of healthcare-related additional amounts."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -1076,6 +1153,8 @@ class ElementCardDeclineAdditionalAmountsTotalHealthcare(BaseModel):
 
 
 class ElementCardDeclineAdditionalAmountsTransit(BaseModel):
+    """The part of this transaction amount that was for transit-related services."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -1091,6 +1170,8 @@ class ElementCardDeclineAdditionalAmountsTransit(BaseModel):
 
 
 class ElementCardDeclineAdditionalAmountsUnknown(BaseModel):
+    """An unknown additional amount."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -1106,6 +1187,8 @@ class ElementCardDeclineAdditionalAmountsUnknown(BaseModel):
 
 
 class ElementCardDeclineAdditionalAmountsVision(BaseModel):
+    """The part of this transaction amount that was for vision-related services."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -1121,6 +1204,10 @@ class ElementCardDeclineAdditionalAmountsVision(BaseModel):
 
 
 class ElementCardDeclineAdditionalAmounts(BaseModel):
+    """
+    Additional amounts associated with the card authorization, such as ATM surcharges fees. These are usually a subset of the `amount` field and are used to provide more detailed information about the transaction.
+    """
+
     clinic: Optional[ElementCardDeclineAdditionalAmountsClinic] = None
     """The part of this transaction amount that was for clinic-related services."""
 
@@ -1155,10 +1242,14 @@ class ElementCardDeclineAdditionalAmounts(BaseModel):
 
 
 class ElementCardDeclineNetworkDetailsPulse(BaseModel):
+    """Fields specific to the `pulse` network."""
+
     pass
 
 
 class ElementCardDeclineNetworkDetailsVisa(BaseModel):
+    """Fields specific to the `visa` network."""
+
     electronic_commerce_indicator: Optional[
         Literal[
             "mail_phone_order",
@@ -1277,6 +1368,8 @@ class ElementCardDeclineNetworkDetailsVisa(BaseModel):
 
 
 class ElementCardDeclineNetworkDetails(BaseModel):
+    """Fields specific to the `network`."""
+
     category: Literal["visa", "pulse"]
     """The payment network used to process this card authorization.
 
@@ -1292,6 +1385,8 @@ class ElementCardDeclineNetworkDetails(BaseModel):
 
 
 class ElementCardDeclineNetworkIdentifiers(BaseModel):
+    """Network-specific identifiers for a specific request or transaction."""
+
     authorization_identification_response: Optional[str] = None
     """
     The randomly generated 6-character Authorization Identification Response code
@@ -1319,6 +1414,10 @@ class ElementCardDeclineNetworkIdentifiers(BaseModel):
 
 
 class ElementCardDeclineVerificationCardVerificationCode(BaseModel):
+    """
+    Fields related to verification of the Card Verification Code, a 3-digit code on the back of the card.
+    """
+
     result: Literal["not_checked", "match", "no_match"]
     """The result of verifying the Card Verification Code.
 
@@ -1330,6 +1429,10 @@ class ElementCardDeclineVerificationCardVerificationCode(BaseModel):
 
 
 class ElementCardDeclineVerificationCardholderAddress(BaseModel):
+    """
+    Cardholder address provided in the authorization request and the address on file we verified it against.
+    """
+
     actual_line1: Optional[str] = None
     """Line 1 of the address on file for the cardholder."""
 
@@ -1369,6 +1472,8 @@ class ElementCardDeclineVerificationCardholderAddress(BaseModel):
 
 
 class ElementCardDeclineVerification(BaseModel):
+    """Fields related to verification of cardholder-provided values."""
+
     card_verification_code: ElementCardDeclineVerificationCardVerificationCode
     """
     Fields related to verification of the Card Verification Code, a 3-digit code on
@@ -1383,6 +1488,11 @@ class ElementCardDeclineVerification(BaseModel):
 
 
 class ElementCardDecline(BaseModel):
+    """A Card Decline object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `card_decline`.
+    """
+
     id: str
     """The Card Decline identifier."""
 
@@ -1658,6 +1768,8 @@ class ElementCardDecline(BaseModel):
 
 
 class ElementCardFinancialAdditionalAmountsClinic(BaseModel):
+    """The part of this transaction amount that was for clinic-related services."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -1673,6 +1785,8 @@ class ElementCardFinancialAdditionalAmountsClinic(BaseModel):
 
 
 class ElementCardFinancialAdditionalAmountsDental(BaseModel):
+    """The part of this transaction amount that was for dental-related services."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -1688,6 +1802,8 @@ class ElementCardFinancialAdditionalAmountsDental(BaseModel):
 
 
 class ElementCardFinancialAdditionalAmountsOriginal(BaseModel):
+    """The original pre-authorized amount."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -1703,6 +1819,8 @@ class ElementCardFinancialAdditionalAmountsOriginal(BaseModel):
 
 
 class ElementCardFinancialAdditionalAmountsPrescription(BaseModel):
+    """The part of this transaction amount that was for healthcare prescriptions."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -1718,6 +1836,8 @@ class ElementCardFinancialAdditionalAmountsPrescription(BaseModel):
 
 
 class ElementCardFinancialAdditionalAmountsSurcharge(BaseModel):
+    """The surcharge amount charged for this transaction by the merchant."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -1733,6 +1853,10 @@ class ElementCardFinancialAdditionalAmountsSurcharge(BaseModel):
 
 
 class ElementCardFinancialAdditionalAmountsTotalCumulative(BaseModel):
+    """
+    The total amount of a series of incremental authorizations, optionally provided.
+    """
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -1748,6 +1872,8 @@ class ElementCardFinancialAdditionalAmountsTotalCumulative(BaseModel):
 
 
 class ElementCardFinancialAdditionalAmountsTotalHealthcare(BaseModel):
+    """The total amount of healthcare-related additional amounts."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -1763,6 +1889,8 @@ class ElementCardFinancialAdditionalAmountsTotalHealthcare(BaseModel):
 
 
 class ElementCardFinancialAdditionalAmountsTransit(BaseModel):
+    """The part of this transaction amount that was for transit-related services."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -1778,6 +1906,8 @@ class ElementCardFinancialAdditionalAmountsTransit(BaseModel):
 
 
 class ElementCardFinancialAdditionalAmountsUnknown(BaseModel):
+    """An unknown additional amount."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -1793,6 +1923,8 @@ class ElementCardFinancialAdditionalAmountsUnknown(BaseModel):
 
 
 class ElementCardFinancialAdditionalAmountsVision(BaseModel):
+    """The part of this transaction amount that was for vision-related services."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -1808,6 +1940,10 @@ class ElementCardFinancialAdditionalAmountsVision(BaseModel):
 
 
 class ElementCardFinancialAdditionalAmounts(BaseModel):
+    """
+    Additional amounts associated with the card authorization, such as ATM surcharges fees. These are usually a subset of the `amount` field and are used to provide more detailed information about the transaction.
+    """
+
     clinic: Optional[ElementCardFinancialAdditionalAmountsClinic] = None
     """The part of this transaction amount that was for clinic-related services."""
 
@@ -1842,10 +1978,14 @@ class ElementCardFinancialAdditionalAmounts(BaseModel):
 
 
 class ElementCardFinancialNetworkDetailsPulse(BaseModel):
+    """Fields specific to the `pulse` network."""
+
     pass
 
 
 class ElementCardFinancialNetworkDetailsVisa(BaseModel):
+    """Fields specific to the `visa` network."""
+
     electronic_commerce_indicator: Optional[
         Literal[
             "mail_phone_order",
@@ -1964,6 +2104,8 @@ class ElementCardFinancialNetworkDetailsVisa(BaseModel):
 
 
 class ElementCardFinancialNetworkDetails(BaseModel):
+    """Fields specific to the `network`."""
+
     category: Literal["visa", "pulse"]
     """The payment network used to process this card authorization.
 
@@ -1979,6 +2121,8 @@ class ElementCardFinancialNetworkDetails(BaseModel):
 
 
 class ElementCardFinancialNetworkIdentifiers(BaseModel):
+    """Network-specific identifiers for a specific request or transaction."""
+
     authorization_identification_response: Optional[str] = None
     """
     The randomly generated 6-character Authorization Identification Response code
@@ -2006,6 +2150,10 @@ class ElementCardFinancialNetworkIdentifiers(BaseModel):
 
 
 class ElementCardFinancialVerificationCardVerificationCode(BaseModel):
+    """
+    Fields related to verification of the Card Verification Code, a 3-digit code on the back of the card.
+    """
+
     result: Literal["not_checked", "match", "no_match"]
     """The result of verifying the Card Verification Code.
 
@@ -2017,6 +2165,10 @@ class ElementCardFinancialVerificationCardVerificationCode(BaseModel):
 
 
 class ElementCardFinancialVerificationCardholderAddress(BaseModel):
+    """
+    Cardholder address provided in the authorization request and the address on file we verified it against.
+    """
+
     actual_line1: Optional[str] = None
     """Line 1 of the address on file for the cardholder."""
 
@@ -2056,6 +2208,8 @@ class ElementCardFinancialVerificationCardholderAddress(BaseModel):
 
 
 class ElementCardFinancialVerification(BaseModel):
+    """Fields related to verification of cardholder-provided values."""
+
     card_verification_code: ElementCardFinancialVerificationCardVerificationCode
     """
     Fields related to verification of the Card Verification Code, a 3-digit code on
@@ -2070,6 +2224,11 @@ class ElementCardFinancialVerification(BaseModel):
 
 
 class ElementCardFinancial(BaseModel):
+    """A Card Financial object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `card_financial`. Card Financials are temporary holds placed on a customers funds with the intent to later clear a transaction.
+    """
+
     id: str
     """The Card Financial identifier."""
 
@@ -2260,6 +2419,8 @@ class ElementCardFinancial(BaseModel):
 
 
 class ElementCardFuelConfirmationNetworkIdentifiers(BaseModel):
+    """Network-specific identifiers for a specific request or transaction."""
+
     authorization_identification_response: Optional[str] = None
     """
     The randomly generated 6-character Authorization Identification Response code
@@ -2287,6 +2448,11 @@ class ElementCardFuelConfirmationNetworkIdentifiers(BaseModel):
 
 
 class ElementCardFuelConfirmation(BaseModel):
+    """A Card Fuel Confirmation object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `card_fuel_confirmation`. Card Fuel Confirmations update the amount of a Card Authorization after a fuel pump transaction is completed.
+    """
+
     id: str
     """The Card Fuel Confirmation identifier."""
 
@@ -2343,6 +2509,8 @@ class ElementCardFuelConfirmation(BaseModel):
 
 
 class ElementCardIncrementAdditionalAmountsClinic(BaseModel):
+    """The part of this transaction amount that was for clinic-related services."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -2358,6 +2526,8 @@ class ElementCardIncrementAdditionalAmountsClinic(BaseModel):
 
 
 class ElementCardIncrementAdditionalAmountsDental(BaseModel):
+    """The part of this transaction amount that was for dental-related services."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -2373,6 +2543,8 @@ class ElementCardIncrementAdditionalAmountsDental(BaseModel):
 
 
 class ElementCardIncrementAdditionalAmountsOriginal(BaseModel):
+    """The original pre-authorized amount."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -2388,6 +2560,8 @@ class ElementCardIncrementAdditionalAmountsOriginal(BaseModel):
 
 
 class ElementCardIncrementAdditionalAmountsPrescription(BaseModel):
+    """The part of this transaction amount that was for healthcare prescriptions."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -2403,6 +2577,8 @@ class ElementCardIncrementAdditionalAmountsPrescription(BaseModel):
 
 
 class ElementCardIncrementAdditionalAmountsSurcharge(BaseModel):
+    """The surcharge amount charged for this transaction by the merchant."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -2418,6 +2594,10 @@ class ElementCardIncrementAdditionalAmountsSurcharge(BaseModel):
 
 
 class ElementCardIncrementAdditionalAmountsTotalCumulative(BaseModel):
+    """
+    The total amount of a series of incremental authorizations, optionally provided.
+    """
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -2433,6 +2613,8 @@ class ElementCardIncrementAdditionalAmountsTotalCumulative(BaseModel):
 
 
 class ElementCardIncrementAdditionalAmountsTotalHealthcare(BaseModel):
+    """The total amount of healthcare-related additional amounts."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -2448,6 +2630,8 @@ class ElementCardIncrementAdditionalAmountsTotalHealthcare(BaseModel):
 
 
 class ElementCardIncrementAdditionalAmountsTransit(BaseModel):
+    """The part of this transaction amount that was for transit-related services."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -2463,6 +2647,8 @@ class ElementCardIncrementAdditionalAmountsTransit(BaseModel):
 
 
 class ElementCardIncrementAdditionalAmountsUnknown(BaseModel):
+    """An unknown additional amount."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -2478,6 +2664,8 @@ class ElementCardIncrementAdditionalAmountsUnknown(BaseModel):
 
 
 class ElementCardIncrementAdditionalAmountsVision(BaseModel):
+    """The part of this transaction amount that was for vision-related services."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -2493,6 +2681,10 @@ class ElementCardIncrementAdditionalAmountsVision(BaseModel):
 
 
 class ElementCardIncrementAdditionalAmounts(BaseModel):
+    """
+    Additional amounts associated with the card authorization, such as ATM surcharges fees. These are usually a subset of the `amount` field and are used to provide more detailed information about the transaction.
+    """
+
     clinic: Optional[ElementCardIncrementAdditionalAmountsClinic] = None
     """The part of this transaction amount that was for clinic-related services."""
 
@@ -2527,6 +2719,8 @@ class ElementCardIncrementAdditionalAmounts(BaseModel):
 
 
 class ElementCardIncrementNetworkIdentifiers(BaseModel):
+    """Network-specific identifiers for a specific request or transaction."""
+
     authorization_identification_response: Optional[str] = None
     """
     The randomly generated 6-character Authorization Identification Response code
@@ -2554,6 +2748,11 @@ class ElementCardIncrementNetworkIdentifiers(BaseModel):
 
 
 class ElementCardIncrement(BaseModel):
+    """A Card Increment object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `card_increment`. Card Increments increase the pending amount of an authorized transaction.
+    """
+
     id: str
     """The Card Increment identifier."""
 
@@ -2656,6 +2855,11 @@ class ElementCardIncrement(BaseModel):
 
 
 class ElementCardRefundCashback(BaseModel):
+    """Cashback debited for this transaction, if eligible.
+
+    Cashback is paid out in aggregate, monthly.
+    """
+
     amount: str
     """The cashback amount given as a string containing a decimal number.
 
@@ -2671,6 +2875,8 @@ class ElementCardRefundCashback(BaseModel):
 
 
 class ElementCardRefundInterchange(BaseModel):
+    """Interchange assessed as a part of this transaciton."""
+
     amount: str
     """
     The interchange amount given as a string containing a decimal number in major
@@ -2692,6 +2898,8 @@ class ElementCardRefundInterchange(BaseModel):
 
 
 class ElementCardRefundNetworkIdentifiers(BaseModel):
+    """Network-specific identifiers for this refund."""
+
     acquirer_business_id: str
     """
     A network assigned business ID that identifies the acquirer that processed this
@@ -2715,6 +2923,8 @@ class ElementCardRefundNetworkIdentifiers(BaseModel):
 
 
 class ElementCardRefundPurchaseDetailsCarRental(BaseModel):
+    """Fields specific to car rentals."""
+
     car_class_code: Optional[str] = None
     """Code indicating the vehicle's class."""
 
@@ -2802,6 +3012,8 @@ class ElementCardRefundPurchaseDetailsCarRental(BaseModel):
 
 
 class ElementCardRefundPurchaseDetailsLodging(BaseModel):
+    """Fields specific to lodging."""
+
     check_in_date: Optional[date] = None
     """Date the customer checked in."""
 
@@ -2948,6 +3160,8 @@ class ElementCardRefundPurchaseDetailsTravelAncillaryService(BaseModel):
 
 
 class ElementCardRefundPurchaseDetailsTravelAncillary(BaseModel):
+    """Ancillary purchases in addition to the airfare."""
+
     connected_ticket_document_number: Optional[str] = None
     """
     If this purchase has a connection or relationship to another purchase, such as a
@@ -3009,6 +3223,8 @@ class ElementCardRefundPurchaseDetailsTravelTripLeg(BaseModel):
 
 
 class ElementCardRefundPurchaseDetailsTravel(BaseModel):
+    """Fields specific to travel."""
+
     ancillary: Optional[ElementCardRefundPurchaseDetailsTravelAncillary] = None
     """Ancillary purchases in addition to the airfare."""
 
@@ -3075,6 +3291,10 @@ class ElementCardRefundPurchaseDetailsTravel(BaseModel):
 
 
 class ElementCardRefundPurchaseDetails(BaseModel):
+    """
+    Additional details about the card purchase, such as tax and industry-specific fields.
+    """
+
     car_rental: Optional[ElementCardRefundPurchaseDetailsCarRental] = None
     """Fields specific to car rentals."""
 
@@ -3122,6 +3342,11 @@ class ElementCardRefundPurchaseDetails(BaseModel):
 
 
 class ElementCardRefund(BaseModel):
+    """A Card Refund object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `card_refund`. Card Refunds move money back to the cardholder. While they are usually connected to a Card Settlement an acquirer can also refund money directly to a card without relation to a transaction.
+    """
+
     id: str
     """The Card Refund identifier."""
 
@@ -3216,6 +3441,8 @@ class ElementCardRefund(BaseModel):
 
 
 class ElementCardReversalNetworkIdentifiers(BaseModel):
+    """Network-specific identifiers for a specific request or transaction."""
+
     authorization_identification_response: Optional[str] = None
     """
     The randomly generated 6-character Authorization Identification Response code
@@ -3243,6 +3470,11 @@ class ElementCardReversalNetworkIdentifiers(BaseModel):
 
 
 class ElementCardReversal(BaseModel):
+    """A Card Reversal object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `card_reversal`. Card Reversals cancel parts of or the entirety of an existing Card Authorization.
+    """
+
     id: str
     """The Card Reversal identifier."""
 
@@ -3373,6 +3605,11 @@ class ElementCardReversal(BaseModel):
 
 
 class ElementCardSettlementCashback(BaseModel):
+    """Cashback earned on this transaction, if eligible.
+
+    Cashback is paid out in aggregate, monthly.
+    """
+
     amount: str
     """The cashback amount given as a string containing a decimal number.
 
@@ -3388,6 +3625,8 @@ class ElementCardSettlementCashback(BaseModel):
 
 
 class ElementCardSettlementInterchange(BaseModel):
+    """Interchange assessed as a part of this transaction."""
+
     amount: str
     """
     The interchange amount given as a string containing a decimal number in major
@@ -3409,6 +3648,8 @@ class ElementCardSettlementInterchange(BaseModel):
 
 
 class ElementCardSettlementNetworkIdentifiers(BaseModel):
+    """Network-specific identifiers for this refund."""
+
     acquirer_business_id: str
     """
     A network assigned business ID that identifies the acquirer that processed this
@@ -3432,6 +3673,8 @@ class ElementCardSettlementNetworkIdentifiers(BaseModel):
 
 
 class ElementCardSettlementPurchaseDetailsCarRental(BaseModel):
+    """Fields specific to car rentals."""
+
     car_class_code: Optional[str] = None
     """Code indicating the vehicle's class."""
 
@@ -3519,6 +3762,8 @@ class ElementCardSettlementPurchaseDetailsCarRental(BaseModel):
 
 
 class ElementCardSettlementPurchaseDetailsLodging(BaseModel):
+    """Fields specific to lodging."""
+
     check_in_date: Optional[date] = None
     """Date the customer checked in."""
 
@@ -3665,6 +3910,8 @@ class ElementCardSettlementPurchaseDetailsTravelAncillaryService(BaseModel):
 
 
 class ElementCardSettlementPurchaseDetailsTravelAncillary(BaseModel):
+    """Ancillary purchases in addition to the airfare."""
+
     connected_ticket_document_number: Optional[str] = None
     """
     If this purchase has a connection or relationship to another purchase, such as a
@@ -3726,6 +3973,8 @@ class ElementCardSettlementPurchaseDetailsTravelTripLeg(BaseModel):
 
 
 class ElementCardSettlementPurchaseDetailsTravel(BaseModel):
+    """Fields specific to travel."""
+
     ancillary: Optional[ElementCardSettlementPurchaseDetailsTravelAncillary] = None
     """Ancillary purchases in addition to the airfare."""
 
@@ -3792,6 +4041,10 @@ class ElementCardSettlementPurchaseDetailsTravel(BaseModel):
 
 
 class ElementCardSettlementPurchaseDetails(BaseModel):
+    """
+    Additional details about the card purchase, such as tax and industry-specific fields.
+    """
+
     car_rental: Optional[ElementCardSettlementPurchaseDetailsCarRental] = None
     """Fields specific to car rentals."""
 
@@ -3839,6 +4092,11 @@ class ElementCardSettlementPurchaseDetails(BaseModel):
 
 
 class ElementCardSettlementSurcharge(BaseModel):
+    """Surcharge amount details, if applicable.
+
+    The amount is positive if the surcharge is added to to the overall transaction amount (surcharge), and negative if the surcharge is deducted from the overall transaction amount (discount).
+    """
+
     amount: int
     """
     The surcharge amount in the minor unit of the transaction's settlement currency.
@@ -3852,6 +4110,11 @@ class ElementCardSettlementSurcharge(BaseModel):
 
 
 class ElementCardSettlement(BaseModel):
+    """A Card Settlement object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `card_settlement`. Card Settlements are card transactions that have cleared and settled. While a settlement is usually preceded by an authorization, an acquirer can also directly clear a transaction without first authorizing it.
+    """
+
     id: str
     """The Card Settlement identifier."""
 
@@ -3970,6 +4233,8 @@ class ElementCardSettlement(BaseModel):
 
 
 class ElementCardValidationAdditionalAmountsClinic(BaseModel):
+    """The part of this transaction amount that was for clinic-related services."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -3985,6 +4250,8 @@ class ElementCardValidationAdditionalAmountsClinic(BaseModel):
 
 
 class ElementCardValidationAdditionalAmountsDental(BaseModel):
+    """The part of this transaction amount that was for dental-related services."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -4000,6 +4267,8 @@ class ElementCardValidationAdditionalAmountsDental(BaseModel):
 
 
 class ElementCardValidationAdditionalAmountsOriginal(BaseModel):
+    """The original pre-authorized amount."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -4015,6 +4284,8 @@ class ElementCardValidationAdditionalAmountsOriginal(BaseModel):
 
 
 class ElementCardValidationAdditionalAmountsPrescription(BaseModel):
+    """The part of this transaction amount that was for healthcare prescriptions."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -4030,6 +4301,8 @@ class ElementCardValidationAdditionalAmountsPrescription(BaseModel):
 
 
 class ElementCardValidationAdditionalAmountsSurcharge(BaseModel):
+    """The surcharge amount charged for this transaction by the merchant."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -4045,6 +4318,10 @@ class ElementCardValidationAdditionalAmountsSurcharge(BaseModel):
 
 
 class ElementCardValidationAdditionalAmountsTotalCumulative(BaseModel):
+    """
+    The total amount of a series of incremental authorizations, optionally provided.
+    """
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -4060,6 +4337,8 @@ class ElementCardValidationAdditionalAmountsTotalCumulative(BaseModel):
 
 
 class ElementCardValidationAdditionalAmountsTotalHealthcare(BaseModel):
+    """The total amount of healthcare-related additional amounts."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -4075,6 +4354,8 @@ class ElementCardValidationAdditionalAmountsTotalHealthcare(BaseModel):
 
 
 class ElementCardValidationAdditionalAmountsTransit(BaseModel):
+    """The part of this transaction amount that was for transit-related services."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -4090,6 +4371,8 @@ class ElementCardValidationAdditionalAmountsTransit(BaseModel):
 
 
 class ElementCardValidationAdditionalAmountsUnknown(BaseModel):
+    """An unknown additional amount."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -4105,6 +4388,8 @@ class ElementCardValidationAdditionalAmountsUnknown(BaseModel):
 
 
 class ElementCardValidationAdditionalAmountsVision(BaseModel):
+    """The part of this transaction amount that was for vision-related services."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -4120,6 +4405,10 @@ class ElementCardValidationAdditionalAmountsVision(BaseModel):
 
 
 class ElementCardValidationAdditionalAmounts(BaseModel):
+    """
+    Additional amounts associated with the card authorization, such as ATM surcharges fees. These are usually a subset of the `amount` field and are used to provide more detailed information about the transaction.
+    """
+
     clinic: Optional[ElementCardValidationAdditionalAmountsClinic] = None
     """The part of this transaction amount that was for clinic-related services."""
 
@@ -4154,10 +4443,14 @@ class ElementCardValidationAdditionalAmounts(BaseModel):
 
 
 class ElementCardValidationNetworkDetailsPulse(BaseModel):
+    """Fields specific to the `pulse` network."""
+
     pass
 
 
 class ElementCardValidationNetworkDetailsVisa(BaseModel):
+    """Fields specific to the `visa` network."""
+
     electronic_commerce_indicator: Optional[
         Literal[
             "mail_phone_order",
@@ -4276,6 +4569,8 @@ class ElementCardValidationNetworkDetailsVisa(BaseModel):
 
 
 class ElementCardValidationNetworkDetails(BaseModel):
+    """Fields specific to the `network`."""
+
     category: Literal["visa", "pulse"]
     """The payment network used to process this card authorization.
 
@@ -4291,6 +4586,8 @@ class ElementCardValidationNetworkDetails(BaseModel):
 
 
 class ElementCardValidationNetworkIdentifiers(BaseModel):
+    """Network-specific identifiers for a specific request or transaction."""
+
     authorization_identification_response: Optional[str] = None
     """
     The randomly generated 6-character Authorization Identification Response code
@@ -4318,6 +4615,10 @@ class ElementCardValidationNetworkIdentifiers(BaseModel):
 
 
 class ElementCardValidationVerificationCardVerificationCode(BaseModel):
+    """
+    Fields related to verification of the Card Verification Code, a 3-digit code on the back of the card.
+    """
+
     result: Literal["not_checked", "match", "no_match"]
     """The result of verifying the Card Verification Code.
 
@@ -4329,6 +4630,10 @@ class ElementCardValidationVerificationCardVerificationCode(BaseModel):
 
 
 class ElementCardValidationVerificationCardholderAddress(BaseModel):
+    """
+    Cardholder address provided in the authorization request and the address on file we verified it against.
+    """
+
     actual_line1: Optional[str] = None
     """Line 1 of the address on file for the cardholder."""
 
@@ -4368,6 +4673,8 @@ class ElementCardValidationVerificationCardholderAddress(BaseModel):
 
 
 class ElementCardValidationVerification(BaseModel):
+    """Fields related to verification of cardholder-provided values."""
+
     card_verification_code: ElementCardValidationVerificationCardVerificationCode
     """
     Fields related to verification of the Card Verification Code, a 3-digit code on
@@ -4382,6 +4689,11 @@ class ElementCardValidationVerification(BaseModel):
 
 
 class ElementCardValidation(BaseModel):
+    """An Inbound Card Validation object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `card_validation`. Inbound Card Validations are requests from a merchant to verify that a card number and optionally its address and/or Card Verification Value are valid.
+    """
+
     id: str
     """The Card Validation identifier."""
 
@@ -4506,6 +4818,10 @@ class ElementCardValidation(BaseModel):
 
 
 class ElementOther(BaseModel):
+    """
+    If the category of this Transaction source is equal to `other`, this field will contain an empty object, otherwise it will contain null.
+    """
+
     pass
 
 
@@ -4657,6 +4973,8 @@ class Element(BaseModel):
 
 
 class State(BaseModel):
+    """The summarized state of this card payment."""
+
     authorized_amount: int
     """The total authorized amount in the minor unit of the transaction's currency.
 
@@ -4701,6 +5019,10 @@ class State(BaseModel):
 
 
 class CardPayment(BaseModel):
+    """
+    Card Payments group together interactions related to a single card payment, such as an authorization and its corresponding settlement.
+    """
+
     id: str
     """The Card Payment identifier."""
 

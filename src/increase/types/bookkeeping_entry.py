@@ -9,6 +9,11 @@ __all__ = ["BookkeepingEntry"]
 
 
 class BookkeepingEntry(BaseModel):
+    """Entries are T-account entries recording debits and credits.
+
+    Your compliance setup might require annotating money movements using this API. Learn more in our [guide to Bookkeeping](https://increase.com/documentation/bookkeeping#bookkeeping).
+    """
+
     id: str
     """The entry identifier."""
 

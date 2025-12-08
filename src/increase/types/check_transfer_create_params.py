@@ -88,6 +88,8 @@ class CheckTransferCreateParams(TypedDict, total=False):
 
 
 class PhysicalCheckMailingAddress(TypedDict, total=False):
+    """Details for where Increase will mail the check."""
+
     city: Required[str]
     """The city component of the check's destination address."""
 
@@ -123,6 +125,11 @@ class PhysicalCheckPayer(TypedDict, total=False):
 
 
 class PhysicalCheckReturnAddress(TypedDict, total=False):
+    """The return address to be printed on the check.
+
+    If omitted this will default to an Increase-owned address that will mark checks as delivery failed and shred them.
+    """
+
     city: Required[str]
     """The city of the return address."""
 
@@ -143,6 +150,11 @@ class PhysicalCheckReturnAddress(TypedDict, total=False):
 
 
 class PhysicalCheckTyped(TypedDict, total=False):
+    """Details relating to the physical check that Increase will print and mail.
+
+    This is required if `fulfillment_method` is equal to `physical_check`. It must not be included if any other `fulfillment_method` is provided.
+    """
+
     mailing_address: Required[PhysicalCheckMailingAddress]
     """Details for where Increase will mail the check."""
 
@@ -207,6 +219,11 @@ PhysicalCheck: TypeAlias = Union[PhysicalCheckTyped, Dict[str, object]]
 
 
 class ThirdPartyTyped(TypedDict, total=False):
+    """Details relating to the custom fulfillment you will perform.
+
+    This is required if `fulfillment_method` is equal to `third_party`. It must not be included if any other `fulfillment_method` is provided.
+    """
+
     recipient_name: str
     """The pay-to name you will print on the check.
 

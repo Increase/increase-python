@@ -37,6 +37,8 @@ class DigitalCardProfileCloneParams(TypedDict, total=False):
 
 
 class TextColor(TypedDict, total=False):
+    """The Card's text color, specified as an RGB triple. The default is white."""
+
     blue: Required[int]
     """The value of the blue channel in the RGB color."""
 

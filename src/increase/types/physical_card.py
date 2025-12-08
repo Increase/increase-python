@@ -10,6 +10,8 @@ __all__ = ["PhysicalCard", "Cardholder", "Shipment", "ShipmentAddress", "Shipmen
 
 
 class Cardholder(BaseModel):
+    """Details about the cardholder, as it appears on the printed card."""
+
     first_name: str
     """The cardholder's first name."""
 
@@ -18,6 +20,8 @@ class Cardholder(BaseModel):
 
 
 class ShipmentAddress(BaseModel):
+    """The location to where the card's packing label is addressed."""
+
     city: str
     """The city of the shipping address."""
 
@@ -77,6 +81,8 @@ class ShipmentTrackingUpdate(BaseModel):
 
 
 class ShipmentTracking(BaseModel):
+    """Tracking details for the shipment."""
+
     number: Optional[str] = None
     """The tracking number. Not available for USPS shipments."""
 
@@ -98,6 +104,8 @@ class ShipmentTracking(BaseModel):
 
 
 class Shipment(BaseModel):
+    """The details used to ship this physical card."""
+
     address: ShipmentAddress
     """The location to where the card's packing label is addressed."""
 
@@ -151,6 +159,11 @@ class Shipment(BaseModel):
 
 
 class PhysicalCard(BaseModel):
+    """Custom physical Visa cards that are shipped to your customers.
+
+    The artwork is configurable by a connected [Card Profile](/documentation/api#card-profiles). The same Card can be used for multiple Physical Cards. Printing cards incurs a fee. Please contact [support@increase.com](mailto:support@increase.com) for pricing!
+    """
+
     id: str
     """The physical card identifier."""
 

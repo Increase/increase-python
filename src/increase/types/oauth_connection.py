@@ -10,6 +10,10 @@ __all__ = ["OAuthConnection"]
 
 
 class OAuthConnection(BaseModel):
+    """
+    When a user authorizes your OAuth application, an OAuth Connection object is created. Learn more about OAuth [here](https://increase.com/documentation/oauth).
+    """
+
     id: str
     """The OAuth Connection's identifier."""
 

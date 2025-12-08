@@ -155,6 +155,11 @@ class AddendaFreeformEntry(TypedDict, total=False):
 
 
 class AddendaFreeform(TypedDict, total=False):
+    """Unstructured `payment_related_information` passed through with the transfer.
+
+    Required if and only if `category` is `freeform`.
+    """
+
     entries: Required[Iterable[AddendaFreeformEntry]]
     """Each entry represents an addendum sent with the transfer.
 
@@ -177,11 +182,21 @@ class AddendaPaymentOrderRemittanceAdviceInvoice(TypedDict, total=False):
 
 
 class AddendaPaymentOrderRemittanceAdvice(TypedDict, total=False):
+    """Structured ASC X12 820 remittance advice records.
+
+    Please reach out to [support@increase.com](mailto:support@increase.com) for more information. Required if and only if `category` is `payment_order_remittance_advice`.
+    """
+
     invoices: Required[Iterable[AddendaPaymentOrderRemittanceAdviceInvoice]]
     """ASC X12 RMR records for this specific transfer."""
 
 
 class Addenda(TypedDict, total=False):
+    """Additional information that will be sent to the recipient.
+
+    This is included in the transfer data sent to the receiving bank.
+    """
+
     category: Required[Literal["freeform", "payment_order_remittance_advice"]]
     """The type of addenda to pass with the transfer.
 
@@ -208,6 +223,11 @@ class Addenda(TypedDict, total=False):
 
 
 class PreferredEffectiveDate(TypedDict, total=False):
+    """Configuration for how the effective date of the transfer will be set.
+
+    This determines same-day vs future-dated settlement timing. If not set, defaults to a `settlement_schedule` of `same_day`. If set, exactly one of the child attributes must be set.
+    """
+
     date: Annotated[Union[str, datetime.date], PropertyInfo(format="iso8601")]
     """
     A specific date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format to

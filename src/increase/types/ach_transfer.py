@@ -32,6 +32,10 @@ __all__ = [
 
 
 class Acknowledgement(BaseModel):
+    """
+    After the transfer is acknowledged by FedACH, this will contain supplemental details. The Federal Reserve sends an acknowledgement message for each file that Increase submits.
+    """
+
     acknowledged_at: str
     """
     When the Federal Reserve acknowledged the submitted file containing this
@@ -45,6 +49,8 @@ class AddendaFreeformEntry(BaseModel):
 
 
 class AddendaFreeform(BaseModel):
+    """Unstructured `payment_related_information` passed through with the transfer."""
+
     entries: List[AddendaFreeformEntry]
     """Each entry represents an addendum sent with the transfer."""
 
@@ -61,11 +67,18 @@ class AddendaPaymentOrderRemittanceAdviceInvoice(BaseModel):
 
 
 class AddendaPaymentOrderRemittanceAdvice(BaseModel):
+    """Structured ASC X12 820 remittance advice records.
+
+    Please reach out to [support@increase.com](mailto:support@increase.com) for more information.
+    """
+
     invoices: List[AddendaPaymentOrderRemittanceAdviceInvoice]
     """ASC X12 RMR records for this specific transfer."""
 
 
 class Addenda(BaseModel):
+    """Additional information that will be sent to the recipient."""
+
     category: Literal["freeform", "payment_order_remittance_advice", "other"]
     """The type of the resource.
 
@@ -92,6 +105,10 @@ class Addenda(BaseModel):
 
 
 class Approval(BaseModel):
+    """
+    If your account requires approvals for transfers and the transfer was approved, this will contain details of the approval.
+    """
+
     approved_at: datetime.datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -106,6 +123,10 @@ class Approval(BaseModel):
 
 
 class Cancellation(BaseModel):
+    """
+    If your account requires approvals for transfers and the transfer was not approved, this will contain details of the cancellation.
+    """
+
     canceled_at: datetime.datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -120,21 +141,29 @@ class Cancellation(BaseModel):
 
 
 class CreatedByAPIKey(BaseModel):
+    """If present, details about the API key that created the transfer."""
+
     description: Optional[str] = None
     """The description set for the API key when it was created."""
 
 
 class CreatedByOAuthApplication(BaseModel):
+    """If present, details about the OAuth Application that created the transfer."""
+
     name: str
     """The name of the OAuth Application."""
 
 
 class CreatedByUser(BaseModel):
+    """If present, details about the User that created the transfer."""
+
     email: str
     """The email address of the User."""
 
 
 class CreatedBy(BaseModel):
+    """What object created the transfer, either via the API or the dashboard."""
+
     api_key: Optional[CreatedByAPIKey] = None
     """If present, details about the API key that created the transfer."""
 
@@ -156,6 +185,11 @@ class CreatedBy(BaseModel):
 
 
 class InboundFundsHold(BaseModel):
+    """Increase will sometimes hold the funds for ACH debit transfers.
+
+    If funds are held, this sub-object will contain details of the hold.
+    """
+
     amount: int
     """The held amount in the minor unit of the account's currency.
 
@@ -296,6 +330,11 @@ class NotificationsOfChange(BaseModel):
 
 
 class PreferredEffectiveDate(BaseModel):
+    """Configuration for how the effective date of the transfer will be set.
+
+    This determines same-day vs future-dated settlement timing. If not set, defaults to a `settlement_schedule` of `same_day`. If set, exactly one of the child attributes must be set.
+    """
+
     date: Optional[datetime.date] = None
     """
     A specific date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format to
@@ -316,6 +355,8 @@ class PreferredEffectiveDate(BaseModel):
 
 
 class Return(BaseModel):
+    """If your transfer is returned, this will contain details of the return."""
+
     created_at: datetime.datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -578,6 +619,10 @@ class Return(BaseModel):
 
 
 class Settlement(BaseModel):
+    """
+    A subhash containing information about when and how the transfer settled at the Federal Reserve.
+    """
+
     settled_at: datetime.datetime
     """
     When the funds for this transfer have settled at the destination bank at the
@@ -586,6 +631,10 @@ class Settlement(BaseModel):
 
 
 class Submission(BaseModel):
+    """
+    After the transfer is submitted to FedACH, this will contain supplemental details. Increase batches transfers and submits a file to the Federal Reserve roughly every 30 minutes. The Federal Reserve processes ACH transfers during weekdays according to their [posted schedule](https://www.frbservices.org/resources/resource-centers/same-day-ach/fedach-processing-schedule.html).
+    """
+
     administrative_returns_expected_by: datetime.datetime
     """The timestamp by which any administrative returns are expected to be received
     by.
@@ -637,6 +686,10 @@ class Submission(BaseModel):
 
 
 class ACHTransfer(BaseModel):
+    """
+    ACH transfers move funds between your Increase account and any other account accessible by the Automated Clearing House (ACH).
+    """
+
     id: str
     """The ACH transfer's identifier."""
 

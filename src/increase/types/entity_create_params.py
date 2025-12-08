@@ -120,6 +120,11 @@ class EntityCreateParams(TypedDict, total=False):
 
 
 class CorporationAddress(TypedDict, total=False):
+    """The entity's physical address.
+
+    Mail receiving locations like PO Boxes and PMB's are disallowed.
+    """
+
     city: Required[str]
     """The city of the address."""
 
@@ -140,6 +145,11 @@ class CorporationAddress(TypedDict, total=False):
 
 
 class CorporationBeneficialOwnerIndividualAddress(TypedDict, total=False):
+    """The individual's physical address.
+
+    Mail receiving locations like PO Boxes and PMB's are disallowed.
+    """
+
     city: Required[str]
     """The city, district, town, or village of the address."""
 
@@ -163,6 +173,11 @@ class CorporationBeneficialOwnerIndividualAddress(TypedDict, total=False):
 
 
 class CorporationBeneficialOwnerIndividualIdentificationDriversLicense(TypedDict, total=False):
+    """Information about the United States driver's license used for identification.
+
+    Required if `method` is equal to `drivers_license`.
+    """
+
     expiration_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """The driver's license's expiration date in YYYY-MM-DD format."""
 
@@ -177,6 +192,11 @@ class CorporationBeneficialOwnerIndividualIdentificationDriversLicense(TypedDict
 
 
 class CorporationBeneficialOwnerIndividualIdentificationOther(TypedDict, total=False):
+    """Information about the identification document provided.
+
+    Required if `method` is equal to `other`.
+    """
+
     country: Required[str]
     """
     The two-character ISO 3166-1 code representing the country that issued the
@@ -200,6 +220,11 @@ class CorporationBeneficialOwnerIndividualIdentificationOther(TypedDict, total=F
 
 
 class CorporationBeneficialOwnerIndividualIdentificationPassport(TypedDict, total=False):
+    """Information about the passport used for identification.
+
+    Required if `method` is equal to `passport`.
+    """
+
     country: Required[str]
     """
     The two-character ISO 3166-1 code representing the country that issued the
@@ -214,6 +239,8 @@ class CorporationBeneficialOwnerIndividualIdentificationPassport(TypedDict, tota
 
 
 class CorporationBeneficialOwnerIndividualIdentificationTyped(TypedDict, total=False):
+    """A means of verifying the person's identity."""
+
     method: Required[
         Literal[
             "social_security_number",
@@ -264,6 +291,8 @@ CorporationBeneficialOwnerIndividualIdentification: TypeAlias = Union[
 
 
 class CorporationBeneficialOwnerIndividual(TypedDict, total=False):
+    """Personal details for the beneficial owner."""
+
     address: Required[CorporationBeneficialOwnerIndividualAddress]
     """The individual's physical address.
 
@@ -307,6 +336,11 @@ CorporationBeneficialOwner: TypeAlias = Union[CorporationBeneficialOwnerTyped, D
 
 
 class Corporation(TypedDict, total=False):
+    """Details of the corporation entity to create.
+
+    Required if `structure` is equal to `corporation`.
+    """
+
     address: Required[CorporationAddress]
     """The entity's physical address.
 
@@ -362,6 +396,11 @@ class Corporation(TypedDict, total=False):
 
 
 class GovernmentAuthorityAddress(TypedDict, total=False):
+    """The entity's physical address.
+
+    Mail receiving locations like PO Boxes and PMB's are disallowed.
+    """
+
     city: Required[str]
     """The city of the address."""
 
@@ -387,6 +426,11 @@ class GovernmentAuthorityAuthorizedPerson(TypedDict, total=False):
 
 
 class GovernmentAuthority(TypedDict, total=False):
+    """Details of the Government Authority entity to create.
+
+    Required if `structure` is equal to `government_authority`.
+    """
+
     address: Required[GovernmentAuthorityAddress]
     """The entity's physical address.
 
@@ -416,6 +460,11 @@ class GovernmentAuthority(TypedDict, total=False):
 
 
 class JointIndividualAddress(TypedDict, total=False):
+    """The individual's physical address.
+
+    Mail receiving locations like PO Boxes and PMB's are disallowed.
+    """
+
     city: Required[str]
     """The city of the address."""
 
@@ -436,6 +485,11 @@ class JointIndividualAddress(TypedDict, total=False):
 
 
 class JointIndividualIdentificationDriversLicense(TypedDict, total=False):
+    """Information about the United States driver's license used for identification.
+
+    Required if `method` is equal to `drivers_license`.
+    """
+
     expiration_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """The driver's license's expiration date in YYYY-MM-DD format."""
 
@@ -450,6 +504,11 @@ class JointIndividualIdentificationDriversLicense(TypedDict, total=False):
 
 
 class JointIndividualIdentificationOther(TypedDict, total=False):
+    """Information about the identification document provided.
+
+    Required if `method` is equal to `other`.
+    """
+
     country: Required[str]
     """
     The two-character ISO 3166-1 code representing the country that issued the
@@ -473,6 +532,11 @@ class JointIndividualIdentificationOther(TypedDict, total=False):
 
 
 class JointIndividualIdentificationPassport(TypedDict, total=False):
+    """Information about the passport used for identification.
+
+    Required if `method` is equal to `passport`.
+    """
+
     country: Required[str]
     """
     The two-character ISO 3166-1 code representing the country that issued the
@@ -487,6 +551,8 @@ class JointIndividualIdentificationPassport(TypedDict, total=False):
 
 
 class JointIndividualIdentificationTyped(TypedDict, total=False):
+    """A means of verifying the person's identity."""
+
     method: Required[
         Literal[
             "social_security_number",
@@ -560,11 +626,21 @@ class JointIndividual(TypedDict, total=False):
 
 
 class Joint(TypedDict, total=False):
+    """Details of the joint entity to create.
+
+    Required if `structure` is equal to `joint`.
+    """
+
     individuals: Required[Iterable[JointIndividual]]
     """The two individuals that share control of the entity."""
 
 
 class NaturalPersonAddress(TypedDict, total=False):
+    """The individual's physical address.
+
+    Mail receiving locations like PO Boxes and PMB's are disallowed.
+    """
+
     city: Required[str]
     """The city of the address."""
 
@@ -585,6 +661,11 @@ class NaturalPersonAddress(TypedDict, total=False):
 
 
 class NaturalPersonIdentificationDriversLicense(TypedDict, total=False):
+    """Information about the United States driver's license used for identification.
+
+    Required if `method` is equal to `drivers_license`.
+    """
+
     expiration_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """The driver's license's expiration date in YYYY-MM-DD format."""
 
@@ -599,6 +680,11 @@ class NaturalPersonIdentificationDriversLicense(TypedDict, total=False):
 
 
 class NaturalPersonIdentificationOther(TypedDict, total=False):
+    """Information about the identification document provided.
+
+    Required if `method` is equal to `other`.
+    """
+
     country: Required[str]
     """
     The two-character ISO 3166-1 code representing the country that issued the
@@ -622,6 +708,11 @@ class NaturalPersonIdentificationOther(TypedDict, total=False):
 
 
 class NaturalPersonIdentificationPassport(TypedDict, total=False):
+    """Information about the passport used for identification.
+
+    Required if `method` is equal to `passport`.
+    """
+
     country: Required[str]
     """
     The two-character ISO 3166-1 code representing the country that issued the
@@ -636,6 +727,8 @@ class NaturalPersonIdentificationPassport(TypedDict, total=False):
 
 
 class NaturalPersonIdentificationTyped(TypedDict, total=False):
+    """A means of verifying the person's identity."""
+
     method: Required[
         Literal[
             "social_security_number",
@@ -684,6 +777,11 @@ NaturalPersonIdentification: TypeAlias = Union[NaturalPersonIdentificationTyped,
 
 
 class NaturalPerson(TypedDict, total=False):
+    """Details of the natural person entity to create.
+
+    Required if `structure` is equal to `natural_person`. Natural people entities should be submitted with `social_security_number` or `individual_taxpayer_identification_number` identification methods.
+    """
+
     address: Required[NaturalPersonAddress]
     """The individual's physical address.
 
@@ -709,6 +807,10 @@ class NaturalPerson(TypedDict, total=False):
 
 
 class RiskRating(TypedDict, total=False):
+    """
+    An assessment of the entity’s potential risk of involvement in financial crimes, such as money laundering.
+    """
+
     rated_at: Required[Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]]
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the risk
@@ -730,6 +832,10 @@ class SupplementalDocument(TypedDict, total=False):
 
 
 class ThirdPartyVerification(TypedDict, total=False):
+    """
+    If you are using a third-party service for identity verification, you can use this field to associate this Entity with the identifier that represents them in that service.
+    """
+
     reference: Required[str]
     """The reference identifier for the third party verification."""
 
@@ -743,6 +849,11 @@ class ThirdPartyVerification(TypedDict, total=False):
 
 
 class TrustAddress(TypedDict, total=False):
+    """The trust's physical address.
+
+    Mail receiving locations like PO Boxes and PMB's are disallowed.
+    """
+
     city: Required[str]
     """The city of the address."""
 
@@ -763,6 +874,11 @@ class TrustAddress(TypedDict, total=False):
 
 
 class TrustTrusteeIndividualAddress(TypedDict, total=False):
+    """The individual's physical address.
+
+    Mail receiving locations like PO Boxes and PMB's are disallowed.
+    """
+
     city: Required[str]
     """The city of the address."""
 
@@ -783,6 +899,11 @@ class TrustTrusteeIndividualAddress(TypedDict, total=False):
 
 
 class TrustTrusteeIndividualIdentificationDriversLicense(TypedDict, total=False):
+    """Information about the United States driver's license used for identification.
+
+    Required if `method` is equal to `drivers_license`.
+    """
+
     expiration_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """The driver's license's expiration date in YYYY-MM-DD format."""
 
@@ -797,6 +918,11 @@ class TrustTrusteeIndividualIdentificationDriversLicense(TypedDict, total=False)
 
 
 class TrustTrusteeIndividualIdentificationOther(TypedDict, total=False):
+    """Information about the identification document provided.
+
+    Required if `method` is equal to `other`.
+    """
+
     country: Required[str]
     """
     The two-character ISO 3166-1 code representing the country that issued the
@@ -820,6 +946,11 @@ class TrustTrusteeIndividualIdentificationOther(TypedDict, total=False):
 
 
 class TrustTrusteeIndividualIdentificationPassport(TypedDict, total=False):
+    """Information about the passport used for identification.
+
+    Required if `method` is equal to `passport`.
+    """
+
     country: Required[str]
     """
     The two-character ISO 3166-1 code representing the country that issued the
@@ -834,6 +965,8 @@ class TrustTrusteeIndividualIdentificationPassport(TypedDict, total=False):
 
 
 class TrustTrusteeIndividualIdentificationTyped(TypedDict, total=False):
+    """A means of verifying the person's identity."""
+
     method: Required[
         Literal[
             "social_security_number",
@@ -882,6 +1015,11 @@ TrustTrusteeIndividualIdentification: TypeAlias = Union[TrustTrusteeIndividualId
 
 
 class TrustTrusteeIndividual(TypedDict, total=False):
+    """Details of the individual trustee.
+
+    Within the trustee object, this is required if `structure` is equal to `individual`.
+    """
+
     address: Required[TrustTrusteeIndividualAddress]
     """The individual's physical address.
 
@@ -922,6 +1060,11 @@ class TrustTrustee(TypedDict, total=False):
 
 
 class TrustGrantorAddress(TypedDict, total=False):
+    """The individual's physical address.
+
+    Mail receiving locations like PO Boxes and PMB's are disallowed.
+    """
+
     city: Required[str]
     """The city of the address."""
 
@@ -942,6 +1085,11 @@ class TrustGrantorAddress(TypedDict, total=False):
 
 
 class TrustGrantorIdentificationDriversLicense(TypedDict, total=False):
+    """Information about the United States driver's license used for identification.
+
+    Required if `method` is equal to `drivers_license`.
+    """
+
     expiration_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """The driver's license's expiration date in YYYY-MM-DD format."""
 
@@ -956,6 +1104,11 @@ class TrustGrantorIdentificationDriversLicense(TypedDict, total=False):
 
 
 class TrustGrantorIdentificationOther(TypedDict, total=False):
+    """Information about the identification document provided.
+
+    Required if `method` is equal to `other`.
+    """
+
     country: Required[str]
     """
     The two-character ISO 3166-1 code representing the country that issued the
@@ -979,6 +1132,11 @@ class TrustGrantorIdentificationOther(TypedDict, total=False):
 
 
 class TrustGrantorIdentificationPassport(TypedDict, total=False):
+    """Information about the passport used for identification.
+
+    Required if `method` is equal to `passport`.
+    """
+
     country: Required[str]
     """
     The two-character ISO 3166-1 code representing the country that issued the
@@ -993,6 +1151,8 @@ class TrustGrantorIdentificationPassport(TypedDict, total=False):
 
 
 class TrustGrantorIdentificationTyped(TypedDict, total=False):
+    """A means of verifying the person's identity."""
+
     method: Required[
         Literal[
             "social_security_number",
@@ -1041,6 +1201,8 @@ TrustGrantorIdentification: TypeAlias = Union[TrustGrantorIdentificationTyped, D
 
 
 class TrustGrantor(TypedDict, total=False):
+    """The grantor of the trust. Required if `category` is equal to `revocable`."""
+
     address: Required[TrustGrantorAddress]
     """The individual's physical address.
 
@@ -1066,6 +1228,11 @@ class TrustGrantor(TypedDict, total=False):
 
 
 class Trust(TypedDict, total=False):
+    """Details of the trust entity to create.
+
+    Required if `structure` is equal to `trust`.
+    """
+
     address: Required[TrustAddress]
     """The trust's physical address.
 

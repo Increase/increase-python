@@ -8,6 +8,10 @@ __all__ = ["CardDetails"]
 
 
 class CardDetails(BaseModel):
+    """
+    An object containing the sensitive details (card number, CVC, PIN, etc) for a Card. These details are not included in the Card object. If you'd prefer to never access these details directly, you can use the [embedded iframe](/documentation/embedded-card-component) to display the information to your users.
+    """
+
     card_id: str
     """The identifier for the Card for which sensitive details have been returned."""
 

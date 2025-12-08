@@ -8,6 +8,10 @@ __all__ = ["BalanceLookup"]
 
 
 class BalanceLookup(BaseModel):
+    """
+    Represents a request to lookup the balance of an Account at a given point in time.
+    """
+
     account_id: str
     """The identifier for the account for which the balance was queried."""
 

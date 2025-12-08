@@ -12,6 +12,10 @@ __all__ = ["InboundWireTransfer", "Reversal"]
 
 
 class Reversal(BaseModel):
+    """
+    Information about the reversal of the inbound wire transfer if it has been reversed.
+    """
+
     reason: Literal["duplicate", "creditor_request"]
     """The reason for the reversal.
 
@@ -28,6 +32,10 @@ class Reversal(BaseModel):
 
 
 class InboundWireTransfer(BaseModel):
+    """
+    An Inbound Wire Transfer is a wire transfer initiated outside of Increase to your account.
+    """
+
     id: str
     """The inbound wire transfer's identifier."""
 

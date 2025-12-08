@@ -19,26 +19,38 @@ __all__ = [
 
 
 class Acknowledgement(BaseModel):
+    """
+    If the transfer is acknowledged by the recipient bank, this will contain supplemental details.
+    """
+
     acknowledged_at: datetime
     """When the transfer was acknowledged."""
 
 
 class CreatedByAPIKey(BaseModel):
+    """If present, details about the API key that created the transfer."""
+
     description: Optional[str] = None
     """The description set for the API key when it was created."""
 
 
 class CreatedByOAuthApplication(BaseModel):
+    """If present, details about the OAuth Application that created the transfer."""
+
     name: str
     """The name of the OAuth Application."""
 
 
 class CreatedByUser(BaseModel):
+    """If present, details about the User that created the transfer."""
+
     email: str
     """The email address of the User."""
 
 
 class CreatedBy(BaseModel):
+    """What object created the transfer, either via the API or the dashboard."""
+
     api_key: Optional[CreatedByAPIKey] = None
     """If present, details about the API key that created the transfer."""
 
@@ -60,6 +72,10 @@ class CreatedBy(BaseModel):
 
 
 class Rejection(BaseModel):
+    """
+    If the transfer is rejected by FedNow or the destination financial institution, this will contain supplemental details.
+    """
+
     reject_reason_additional_information: Optional[str] = None
     """Additional information about the rejection provided by the recipient bank."""
 
@@ -123,6 +139,10 @@ class Rejection(BaseModel):
 
 
 class Submission(BaseModel):
+    """
+    After the transfer is submitted to FedNow, this will contain supplemental details.
+    """
+
     message_identification: str
     """The FedNow network identification of the message submitted."""
 
@@ -134,6 +154,10 @@ class Submission(BaseModel):
 
 
 class FednowTransfer(BaseModel):
+    """
+    FedNow transfers move funds, within seconds, between your Increase account and any other account supporting FedNow.
+    """
+
     id: str
     """The FedNow Transfer's identifier."""
 

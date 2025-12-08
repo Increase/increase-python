@@ -9,6 +9,11 @@ __all__ = ["Group"]
 
 
 class Group(BaseModel):
+    """Groups represent organizations using Increase.
+
+    You can retrieve information about your own organization via the API. More commonly, OAuth platforms can retrieve information about the organizations that have granted them access. Learn more about OAuth [here](https://increase.com/documentation/oauth).
+    """
+
     id: str
     """The Group identifier."""
 
