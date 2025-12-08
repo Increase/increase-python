@@ -74,6 +74,11 @@ class EntityUpdateParams(TypedDict, total=False):
 
 
 class CorporationAddress(TypedDict, total=False):
+    """The entity's physical address.
+
+    Mail receiving locations like PO Boxes and PMB's are disallowed.
+    """
+
     city: Required[str]
     """The city of the address."""
 
@@ -94,6 +99,11 @@ class CorporationAddress(TypedDict, total=False):
 
 
 class Corporation(TypedDict, total=False):
+    """Details of the corporation entity to update.
+
+    If you specify this parameter and the entity is not a corporation, the request will fail.
+    """
+
     address: CorporationAddress
     """The entity's physical address.
 
@@ -113,6 +123,11 @@ class Corporation(TypedDict, total=False):
 
 
 class GovernmentAuthorityAddress(TypedDict, total=False):
+    """The entity's physical address.
+
+    Mail receiving locations like PO Boxes and PMB's are disallowed.
+    """
+
     city: Required[str]
     """The city of the address."""
 
@@ -133,6 +148,11 @@ class GovernmentAuthorityAddress(TypedDict, total=False):
 
 
 class GovernmentAuthority(TypedDict, total=False):
+    """Details of the government authority entity to update.
+
+    If you specify this parameter and the entity is not a government authority, the request will fail.
+    """
+
     address: GovernmentAuthorityAddress
     """The entity's physical address.
 
@@ -144,6 +164,11 @@ class GovernmentAuthority(TypedDict, total=False):
 
 
 class NaturalPersonAddress(TypedDict, total=False):
+    """The entity's physical address.
+
+    Mail receiving locations like PO Boxes and PMB's are disallowed.
+    """
+
     city: Required[str]
     """The city of the address."""
 
@@ -164,6 +189,11 @@ class NaturalPersonAddress(TypedDict, total=False):
 
 
 class NaturalPerson(TypedDict, total=False):
+    """Details of the natural person entity to update.
+
+    If you specify this parameter and the entity is not a natural person, the request will fail.
+    """
+
     address: NaturalPersonAddress
     """The entity's physical address.
 
@@ -175,6 +205,10 @@ class NaturalPerson(TypedDict, total=False):
 
 
 class RiskRating(TypedDict, total=False):
+    """
+    An assessment of the entity’s potential risk of involvement in financial crimes, such as money laundering.
+    """
+
     rated_at: Required[Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]]
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the risk
@@ -191,6 +225,10 @@ class RiskRating(TypedDict, total=False):
 
 
 class ThirdPartyVerification(TypedDict, total=False):
+    """
+    If you are using a third-party service for identity verification, you can use this field to associate this Entity with the identifier that represents them in that service.
+    """
+
     reference: Required[str]
     """The reference identifier for the third party verification."""
 
@@ -204,6 +242,11 @@ class ThirdPartyVerification(TypedDict, total=False):
 
 
 class TrustAddress(TypedDict, total=False):
+    """The entity's physical address.
+
+    Mail receiving locations like PO Boxes and PMB's are disallowed.
+    """
+
     city: Required[str]
     """The city of the address."""
 
@@ -224,6 +267,11 @@ class TrustAddress(TypedDict, total=False):
 
 
 class Trust(TypedDict, total=False):
+    """Details of the trust entity to update.
+
+    If you specify this parameter and the entity is not a trust, the request will fail.
+    """
+
     address: TrustAddress
     """The entity's physical address.
 

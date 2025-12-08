@@ -30,6 +30,10 @@ __all__ = [
 
 
 class Approval(BaseModel):
+    """
+    If your account requires approvals for transfers and the transfer was approved, this will contain details of the approval.
+    """
+
     approved_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -44,6 +48,10 @@ class Approval(BaseModel):
 
 
 class Cancellation(BaseModel):
+    """
+    If your account requires approvals for transfers and the transfer was not approved, this will contain details of the cancellation.
+    """
+
     canceled_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -58,21 +66,29 @@ class Cancellation(BaseModel):
 
 
 class CreatedByAPIKey(BaseModel):
+    """If present, details about the API key that created the transfer."""
+
     description: Optional[str] = None
     """The description set for the API key when it was created."""
 
 
 class CreatedByOAuthApplication(BaseModel):
+    """If present, details about the OAuth Application that created the transfer."""
+
     name: str
     """The name of the OAuth Application."""
 
 
 class CreatedByUser(BaseModel):
+    """If present, details about the User that created the transfer."""
+
     email: str
     """The email address of the User."""
 
 
 class CreatedBy(BaseModel):
+    """What object created the transfer, either via the API or the dashboard."""
+
     api_key: Optional[CreatedByAPIKey] = None
     """If present, details about the API key that created the transfer."""
 
@@ -94,6 +110,10 @@ class CreatedBy(BaseModel):
 
 
 class Mailing(BaseModel):
+    """
+    If the check has been mailed by Increase, this will contain details of the shipment.
+    """
+
     image_id: Optional[str] = None
     """
     The ID of the file corresponding to an image of the check that was mailed, if
@@ -111,6 +131,8 @@ class Mailing(BaseModel):
 
 
 class PhysicalCheckMailingAddress(BaseModel):
+    """Details for where Increase will mail the check."""
+
     city: Optional[str] = None
     """The city of the check's destination."""
 
@@ -142,6 +164,8 @@ class PhysicalCheckPayer(BaseModel):
 
 
 class PhysicalCheckReturnAddress(BaseModel):
+    """The return address to be printed on the check."""
+
     city: Optional[str] = None
     """The city of the check's destination."""
 
@@ -182,6 +206,11 @@ class PhysicalCheckTrackingUpdate(BaseModel):
 
 
 class PhysicalCheck(BaseModel):
+    """Details relating to the physical check that Increase will print and mail.
+
+    Will be present if and only if `fulfillment_method` is equal to `physical_check`.
+    """
+
     attachment_file_id: Optional[str] = None
     """The ID of the file for the check attachment."""
 
@@ -240,6 +269,10 @@ class PhysicalCheck(BaseModel):
 
 
 class StopPaymentRequest(BaseModel):
+    """
+    After a stop-payment is requested on the check, this will contain supplemental details.
+    """
+
     reason: Literal[
         "mail_delivery_failed", "rejected_by_increase", "not_authorized", "valid_until_date_passed", "unknown"
     ]
@@ -280,6 +313,11 @@ class StopPaymentRequest(BaseModel):
 
 
 class SubmissionSubmittedAddress(BaseModel):
+    """The address we submitted to the printer.
+
+    This is what is physically printed on the check.
+    """
+
     city: str
     """The submitted address city."""
 
@@ -300,6 +338,8 @@ class SubmissionSubmittedAddress(BaseModel):
 
 
 class Submission(BaseModel):
+    """After the transfer is submitted, this will contain supplemental details."""
+
     address_correction_action: Literal["none", "standardization", "standardization_with_address_change", "error"]
     """
     Per USPS requirements, Increase will standardize the address to USPS standards
@@ -338,6 +378,11 @@ class Submission(BaseModel):
 
 
 class ThirdParty(BaseModel):
+    """Details relating to the custom fulfillment you will perform.
+
+    Will be present if and only if `fulfillment_method` is equal to `third_party`.
+    """
+
     recipient_name: Optional[str] = None
     """The name that you will print on the check."""
 
@@ -355,6 +400,10 @@ class ThirdParty(BaseModel):
 
 
 class CheckTransfer(BaseModel):
+    """
+    Check Transfers move funds from your Increase account by mailing a physical check.
+    """
+
     id: str
     """The Check transfer's identifier."""
 

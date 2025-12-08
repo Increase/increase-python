@@ -114,6 +114,8 @@ class AttachmentFile(TypedDict, total=False):
 
 
 class VisaChargebackAuthorization(TypedDict, total=False):
+    """Authorization. Required if and only if `category` is `authorization`."""
+
     account_status: Required[Literal["account_closed", "credit_problem", "fraud"]]
     """Account status.
 
@@ -124,6 +126,8 @@ class VisaChargebackAuthorization(TypedDict, total=False):
 
 
 class VisaChargebackConsumerCanceledMerchandiseCardholderCancellation(TypedDict, total=False):
+    """Cardholder cancellation."""
+
     canceled_at: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """Canceled at."""
 
@@ -146,10 +150,17 @@ class VisaChargebackConsumerCanceledMerchandiseCardholderCancellation(TypedDict,
 
 
 class VisaChargebackConsumerCanceledMerchandiseNotReturned(TypedDict, total=False):
+    """Not returned. Required if and only if `return_outcome` is `not_returned`."""
+
     pass
 
 
 class VisaChargebackConsumerCanceledMerchandiseReturnAttempted(TypedDict, total=False):
+    """Return attempted.
+
+    Required if and only if `return_outcome` is `return_attempted`.
+    """
+
     attempt_explanation: Required[str]
     """Attempt explanation."""
 
@@ -179,6 +190,8 @@ class VisaChargebackConsumerCanceledMerchandiseReturnAttempted(TypedDict, total=
 
 
 class VisaChargebackConsumerCanceledMerchandiseReturned(TypedDict, total=False):
+    """Returned. Required if and only if `return_outcome` is `returned`."""
+
     return_method: Required[Literal["dhl", "face_to_face", "fedex", "other", "postal_service", "ups"]]
     """Return method.
 
@@ -204,6 +217,11 @@ class VisaChargebackConsumerCanceledMerchandiseReturned(TypedDict, total=False):
 
 
 class VisaChargebackConsumerCanceledMerchandise(TypedDict, total=False):
+    """Canceled merchandise.
+
+    Required if and only if `category` is `consumer_canceled_merchandise`.
+    """
+
     merchant_resolution_attempted: Required[Literal["attempted", "prohibited_by_local_law"]]
     """Merchant resolution attempted.
 
@@ -242,6 +260,8 @@ class VisaChargebackConsumerCanceledMerchandise(TypedDict, total=False):
 
 
 class VisaChargebackConsumerCanceledRecurringTransactionMerchantContactMethods(TypedDict, total=False):
+    """Merchant contact methods."""
+
     application_name: str
     """Application name."""
 
@@ -262,6 +282,11 @@ class VisaChargebackConsumerCanceledRecurringTransactionMerchantContactMethods(T
 
 
 class VisaChargebackConsumerCanceledRecurringTransaction(TypedDict, total=False):
+    """Canceled recurring transaction.
+
+    Required if and only if `category` is `consumer_canceled_recurring_transaction`.
+    """
+
     cancellation_target: Required[Literal["account", "transaction"]]
     """Cancellation target.
 
@@ -280,6 +305,8 @@ class VisaChargebackConsumerCanceledRecurringTransaction(TypedDict, total=False)
 
 
 class VisaChargebackConsumerCanceledServicesCardholderCancellation(TypedDict, total=False):
+    """Cardholder cancellation."""
+
     canceled_at: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """Canceled at."""
 
@@ -295,6 +322,11 @@ class VisaChargebackConsumerCanceledServicesCardholderCancellation(TypedDict, to
 
 
 class VisaChargebackConsumerCanceledServicesGuaranteedReservation(TypedDict, total=False):
+    """Guaranteed reservation explanation.
+
+    Required if and only if `service_type` is `guaranteed_reservation`.
+    """
+
     explanation: Required[
         Literal[
             "cardholder_canceled_prior_to_service",
@@ -312,14 +344,26 @@ class VisaChargebackConsumerCanceledServicesGuaranteedReservation(TypedDict, tot
 
 
 class VisaChargebackConsumerCanceledServicesOther(TypedDict, total=False):
+    """Other service type explanation.
+
+    Required if and only if `service_type` is `other`.
+    """
+
     pass
 
 
 class VisaChargebackConsumerCanceledServicesTimeshare(TypedDict, total=False):
+    """Timeshare explanation. Required if and only if `service_type` is `timeshare`."""
+
     pass
 
 
 class VisaChargebackConsumerCanceledServices(TypedDict, total=False):
+    """Canceled services.
+
+    Required if and only if `category` is `consumer_canceled_services`.
+    """
+
     cardholder_cancellation: Required[VisaChargebackConsumerCanceledServicesCardholderCancellation]
     """Cardholder cancellation."""
 
@@ -361,6 +405,11 @@ class VisaChargebackConsumerCanceledServices(TypedDict, total=False):
 
 
 class VisaChargebackConsumerCounterfeitMerchandise(TypedDict, total=False):
+    """Counterfeit merchandise.
+
+    Required if and only if `category` is `consumer_counterfeit_merchandise`.
+    """
+
     counterfeit_explanation: Required[str]
     """Counterfeit explanation."""
 
@@ -375,6 +424,11 @@ class VisaChargebackConsumerCounterfeitMerchandise(TypedDict, total=False):
 
 
 class VisaChargebackConsumerCreditNotProcessed(TypedDict, total=False):
+    """Credit not processed.
+
+    Required if and only if `category` is `consumer_credit_not_processed`.
+    """
+
     canceled_or_returned_at: Annotated[Union[str, date], PropertyInfo(format="iso8601")]
     """Canceled or returned at."""
 
@@ -383,10 +437,17 @@ class VisaChargebackConsumerCreditNotProcessed(TypedDict, total=False):
 
 
 class VisaChargebackConsumerDamagedOrDefectiveMerchandiseNotReturned(TypedDict, total=False):
+    """Not returned. Required if and only if `return_outcome` is `not_returned`."""
+
     pass
 
 
 class VisaChargebackConsumerDamagedOrDefectiveMerchandiseReturnAttempted(TypedDict, total=False):
+    """Return attempted.
+
+    Required if and only if `return_outcome` is `return_attempted`.
+    """
+
     attempt_explanation: Required[str]
     """Attempt explanation."""
 
@@ -416,6 +477,8 @@ class VisaChargebackConsumerDamagedOrDefectiveMerchandiseReturnAttempted(TypedDi
 
 
 class VisaChargebackConsumerDamagedOrDefectiveMerchandiseReturned(TypedDict, total=False):
+    """Returned. Required if and only if `return_outcome` is `returned`."""
+
     return_method: Required[Literal["dhl", "face_to_face", "fedex", "other", "postal_service", "ups"]]
     """Return method.
 
@@ -441,6 +504,11 @@ class VisaChargebackConsumerDamagedOrDefectiveMerchandiseReturned(TypedDict, tot
 
 
 class VisaChargebackConsumerDamagedOrDefectiveMerchandise(TypedDict, total=False):
+    """Damaged or defective merchandise.
+
+    Required if and only if `category` is `consumer_damaged_or_defective_merchandise`.
+    """
+
     merchant_resolution_attempted: Required[Literal["attempted", "prohibited_by_local_law"]]
     """Merchant resolution attempted.
 
@@ -476,10 +544,17 @@ class VisaChargebackConsumerDamagedOrDefectiveMerchandise(TypedDict, total=False
 
 
 class VisaChargebackConsumerMerchandiseMisrepresentationNotReturned(TypedDict, total=False):
+    """Not returned. Required if and only if `return_outcome` is `not_returned`."""
+
     pass
 
 
 class VisaChargebackConsumerMerchandiseMisrepresentationReturnAttempted(TypedDict, total=False):
+    """Return attempted.
+
+    Required if and only if `return_outcome` is `return_attempted`.
+    """
+
     attempt_explanation: Required[str]
     """Attempt explanation."""
 
@@ -509,6 +584,8 @@ class VisaChargebackConsumerMerchandiseMisrepresentationReturnAttempted(TypedDic
 
 
 class VisaChargebackConsumerMerchandiseMisrepresentationReturned(TypedDict, total=False):
+    """Returned. Required if and only if `return_outcome` is `returned`."""
+
     return_method: Required[Literal["dhl", "face_to_face", "fedex", "other", "postal_service", "ups"]]
     """Return method.
 
@@ -534,6 +611,11 @@ class VisaChargebackConsumerMerchandiseMisrepresentationReturned(TypedDict, tota
 
 
 class VisaChargebackConsumerMerchandiseMisrepresentation(TypedDict, total=False):
+    """Merchandise misrepresentation.
+
+    Required if and only if `category` is `consumer_merchandise_misrepresentation`.
+    """
+
     merchant_resolution_attempted: Required[Literal["attempted", "prohibited_by_local_law"]]
     """Merchant resolution attempted.
 
@@ -572,6 +654,11 @@ class VisaChargebackConsumerMerchandiseMisrepresentation(TypedDict, total=False)
 
 
 class VisaChargebackConsumerMerchandiseNotAsDescribedReturnAttempted(TypedDict, total=False):
+    """Return attempted.
+
+    Required if and only if `return_outcome` is `return_attempted`.
+    """
+
     attempt_explanation: Required[str]
     """Attempt explanation."""
 
@@ -601,6 +688,8 @@ class VisaChargebackConsumerMerchandiseNotAsDescribedReturnAttempted(TypedDict, 
 
 
 class VisaChargebackConsumerMerchandiseNotAsDescribedReturned(TypedDict, total=False):
+    """Returned. Required if and only if `return_outcome` is `returned`."""
+
     return_method: Required[Literal["dhl", "face_to_face", "fedex", "other", "postal_service", "ups"]]
     """Return method.
 
@@ -626,6 +715,11 @@ class VisaChargebackConsumerMerchandiseNotAsDescribedReturned(TypedDict, total=F
 
 
 class VisaChargebackConsumerMerchandiseNotAsDescribed(TypedDict, total=False):
+    """Merchandise not as described.
+
+    Required if and only if `category` is `consumer_merchandise_not_as_described`.
+    """
+
     merchant_resolution_attempted: Required[Literal["attempted", "prohibited_by_local_law"]]
     """Merchant resolution attempted.
 
@@ -654,6 +748,11 @@ class VisaChargebackConsumerMerchandiseNotAsDescribed(TypedDict, total=False):
 
 
 class VisaChargebackConsumerMerchandiseNotReceivedCardholderCancellationPriorToExpectedReceipt(TypedDict, total=False):
+    """Cardholder cancellation prior to expected receipt.
+
+    Required if and only if `cancellation_outcome` is `cardholder_cancellation_prior_to_expected_receipt`.
+    """
+
     canceled_at: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """Canceled at."""
 
@@ -662,15 +761,24 @@ class VisaChargebackConsumerMerchandiseNotReceivedCardholderCancellationPriorToE
 
 
 class VisaChargebackConsumerMerchandiseNotReceivedDelayedNotReturned(TypedDict, total=False):
+    """Not returned. Required if and only if `return_outcome` is `not_returned`."""
+
     pass
 
 
 class VisaChargebackConsumerMerchandiseNotReceivedDelayedReturnAttempted(TypedDict, total=False):
+    """Return attempted.
+
+    Required if and only if `return_outcome` is `return_attempted`.
+    """
+
     attempted_at: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """Attempted at."""
 
 
 class VisaChargebackConsumerMerchandiseNotReceivedDelayedReturned(TypedDict, total=False):
+    """Returned. Required if and only if `return_outcome` is `returned`."""
+
     merchant_received_return_at: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """Merchant received return at."""
 
@@ -679,6 +787,8 @@ class VisaChargebackConsumerMerchandiseNotReceivedDelayedReturned(TypedDict, tot
 
 
 class VisaChargebackConsumerMerchandiseNotReceivedDelayed(TypedDict, total=False):
+    """Delayed. Required if and only if `delivery_issue` is `delayed`."""
+
     explanation: Required[str]
     """Explanation."""
 
@@ -704,20 +814,40 @@ class VisaChargebackConsumerMerchandiseNotReceivedDelayed(TypedDict, total=False
 
 
 class VisaChargebackConsumerMerchandiseNotReceivedDeliveredToWrongLocation(TypedDict, total=False):
+    """Delivered to wrong location.
+
+    Required if and only if `delivery_issue` is `delivered_to_wrong_location`.
+    """
+
     agreed_location: Required[str]
     """Agreed location."""
 
 
 class VisaChargebackConsumerMerchandiseNotReceivedMerchantCancellation(TypedDict, total=False):
+    """Merchant cancellation.
+
+    Required if and only if `cancellation_outcome` is `merchant_cancellation`.
+    """
+
     canceled_at: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """Canceled at."""
 
 
 class VisaChargebackConsumerMerchandiseNotReceivedNoCancellation(TypedDict, total=False):
+    """No cancellation.
+
+    Required if and only if `cancellation_outcome` is `no_cancellation`.
+    """
+
     pass
 
 
 class VisaChargebackConsumerMerchandiseNotReceived(TypedDict, total=False):
+    """Merchandise not received.
+
+    Required if and only if `category` is `consumer_merchandise_not_received`.
+    """
+
     cancellation_outcome: Required[
         Literal["cardholder_cancellation_prior_to_expected_receipt", "merchant_cancellation", "no_cancellation"]
     ]
@@ -781,10 +911,20 @@ class VisaChargebackConsumerMerchandiseNotReceived(TypedDict, total=False):
 
 
 class VisaChargebackConsumerNonReceiptOfCash(TypedDict, total=False):
+    """Non-receipt of cash.
+
+    Required if and only if `category` is `consumer_non_receipt_of_cash`.
+    """
+
     pass
 
 
 class VisaChargebackConsumerOriginalCreditTransactionNotAccepted(TypedDict, total=False):
+    """Original Credit Transaction (OCT) not accepted.
+
+    Required if and only if `category` is `consumer_original_credit_transaction_not_accepted`.
+    """
+
     explanation: Required[str]
     """Explanation."""
 
@@ -798,10 +938,14 @@ class VisaChargebackConsumerOriginalCreditTransactionNotAccepted(TypedDict, tota
 
 
 class VisaChargebackConsumerQualityMerchandiseNotReturned(TypedDict, total=False):
+    """Not returned. Required if and only if `return_outcome` is `not_returned`."""
+
     pass
 
 
 class VisaChargebackConsumerQualityMerchandiseOngoingNegotiations(TypedDict, total=False):
+    """Ongoing negotiations. Exclude if there is no evidence of ongoing negotiations."""
+
     explanation: Required[str]
     """
     Explanation of the previous ongoing negotiations between the cardholder and
@@ -816,6 +960,11 @@ class VisaChargebackConsumerQualityMerchandiseOngoingNegotiations(TypedDict, tot
 
 
 class VisaChargebackConsumerQualityMerchandiseReturnAttempted(TypedDict, total=False):
+    """Return attempted.
+
+    Required if and only if `return_outcome` is `return_attempted`.
+    """
+
     attempt_explanation: Required[str]
     """Attempt explanation."""
 
@@ -845,6 +994,8 @@ class VisaChargebackConsumerQualityMerchandiseReturnAttempted(TypedDict, total=F
 
 
 class VisaChargebackConsumerQualityMerchandiseReturned(TypedDict, total=False):
+    """Returned. Required if and only if `return_outcome` is `returned`."""
+
     return_method: Required[Literal["dhl", "face_to_face", "fedex", "other", "postal_service", "ups"]]
     """Return method.
 
@@ -870,6 +1021,11 @@ class VisaChargebackConsumerQualityMerchandiseReturned(TypedDict, total=False):
 
 
 class VisaChargebackConsumerQualityMerchandise(TypedDict, total=False):
+    """Merchandise quality issue.
+
+    Required if and only if `category` is `consumer_quality_merchandise`.
+    """
+
     expected_at: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """Expected at."""
 
@@ -911,6 +1067,8 @@ class VisaChargebackConsumerQualityMerchandise(TypedDict, total=False):
 
 
 class VisaChargebackConsumerQualityServicesCardholderCancellation(TypedDict, total=False):
+    """Cardholder cancellation."""
+
     accepted_by_merchant: Required[Literal["accepted", "not_accepted"]]
     """Accepted by merchant.
 
@@ -926,6 +1084,8 @@ class VisaChargebackConsumerQualityServicesCardholderCancellation(TypedDict, tot
 
 
 class VisaChargebackConsumerQualityServicesOngoingNegotiations(TypedDict, total=False):
+    """Ongoing negotiations. Exclude if there is no evidence of ongoing negotiations."""
+
     explanation: Required[str]
     """
     Explanation of the previous ongoing negotiations between the cardholder and
@@ -940,6 +1100,11 @@ class VisaChargebackConsumerQualityServicesOngoingNegotiations(TypedDict, total=
 
 
 class VisaChargebackConsumerQualityServices(TypedDict, total=False):
+    """Services quality issue.
+
+    Required if and only if `category` is `consumer_quality_services`.
+    """
+
     cardholder_cancellation: Required[VisaChargebackConsumerQualityServicesCardholderCancellation]
     """Cardholder cancellation."""
 
@@ -981,6 +1146,8 @@ class VisaChargebackConsumerQualityServices(TypedDict, total=False):
 
 
 class VisaChargebackConsumerServicesMisrepresentationCardholderCancellation(TypedDict, total=False):
+    """Cardholder cancellation."""
+
     accepted_by_merchant: Required[Literal["accepted", "not_accepted"]]
     """Accepted by merchant.
 
@@ -996,6 +1163,11 @@ class VisaChargebackConsumerServicesMisrepresentationCardholderCancellation(Type
 
 
 class VisaChargebackConsumerServicesMisrepresentation(TypedDict, total=False):
+    """Services misrepresentation.
+
+    Required if and only if `category` is `consumer_services_misrepresentation`.
+    """
+
     cardholder_cancellation: Required[VisaChargebackConsumerServicesMisrepresentationCardholderCancellation]
     """Cardholder cancellation."""
 
@@ -1017,6 +1189,8 @@ class VisaChargebackConsumerServicesMisrepresentation(TypedDict, total=False):
 
 
 class VisaChargebackConsumerServicesNotAsDescribedCardholderCancellation(TypedDict, total=False):
+    """Cardholder cancellation."""
+
     accepted_by_merchant: Required[Literal["accepted", "not_accepted"]]
     """Accepted by merchant.
 
@@ -1032,6 +1206,11 @@ class VisaChargebackConsumerServicesNotAsDescribedCardholderCancellation(TypedDi
 
 
 class VisaChargebackConsumerServicesNotAsDescribed(TypedDict, total=False):
+    """Services not as described.
+
+    Required if and only if `category` is `consumer_services_not_as_described`.
+    """
+
     cardholder_cancellation: Required[VisaChargebackConsumerServicesNotAsDescribedCardholderCancellation]
     """Cardholder cancellation."""
 
@@ -1047,6 +1226,11 @@ class VisaChargebackConsumerServicesNotAsDescribed(TypedDict, total=False):
 
 
 class VisaChargebackConsumerServicesNotReceivedCardholderCancellationPriorToExpectedReceipt(TypedDict, total=False):
+    """Cardholder cancellation prior to expected receipt.
+
+    Required if and only if `cancellation_outcome` is `cardholder_cancellation_prior_to_expected_receipt`.
+    """
+
     canceled_at: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """Canceled at."""
 
@@ -1055,15 +1239,30 @@ class VisaChargebackConsumerServicesNotReceivedCardholderCancellationPriorToExpe
 
 
 class VisaChargebackConsumerServicesNotReceivedMerchantCancellation(TypedDict, total=False):
+    """Merchant cancellation.
+
+    Required if and only if `cancellation_outcome` is `merchant_cancellation`.
+    """
+
     canceled_at: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
     """Canceled at."""
 
 
 class VisaChargebackConsumerServicesNotReceivedNoCancellation(TypedDict, total=False):
+    """No cancellation.
+
+    Required if and only if `cancellation_outcome` is `no_cancellation`.
+    """
+
     pass
 
 
 class VisaChargebackConsumerServicesNotReceived(TypedDict, total=False):
+    """Services not received.
+
+    Required if and only if `category` is `consumer_services_not_received`.
+    """
+
     cancellation_outcome: Required[
         Literal["cardholder_cancellation_prior_to_expected_receipt", "merchant_cancellation", "no_cancellation"]
     ]
@@ -1111,6 +1310,8 @@ class VisaChargebackConsumerServicesNotReceived(TypedDict, total=False):
 
 
 class VisaChargebackFraud(TypedDict, total=False):
+    """Fraud. Required if and only if `category` is `fraud`."""
+
     fraud_type: Required[
         Literal[
             "account_or_credentials_takeover",
@@ -1143,16 +1344,28 @@ class VisaChargebackFraud(TypedDict, total=False):
 
 
 class VisaChargebackProcessingErrorDuplicateTransaction(TypedDict, total=False):
+    """Duplicate transaction.
+
+    Required if and only if `error_reason` is `duplicate_transaction`.
+    """
+
     other_transaction_id: Required[str]
     """Other transaction ID."""
 
 
 class VisaChargebackProcessingErrorIncorrectAmount(TypedDict, total=False):
+    """Incorrect amount. Required if and only if `error_reason` is `incorrect_amount`."""
+
     expected_amount: Required[int]
     """Expected amount."""
 
 
 class VisaChargebackProcessingErrorPaidByOtherMeans(TypedDict, total=False):
+    """Paid by other means.
+
+    Required if and only if `error_reason` is `paid_by_other_means`.
+    """
+
     other_form_of_payment_evidence: Required[
         Literal["canceled_check", "card_transaction", "cash_receipt", "other", "statement", "voucher"]
     ]
@@ -1171,6 +1384,8 @@ class VisaChargebackProcessingErrorPaidByOtherMeans(TypedDict, total=False):
 
 
 class VisaChargebackProcessingError(TypedDict, total=False):
+    """Processing error. Required if and only if `category` is `processing_error`."""
+
     error_reason: Required[Literal["duplicate_transaction", "incorrect_amount", "paid_by_other_means"]]
     """Error reason.
 
@@ -1203,6 +1418,11 @@ class VisaChargebackProcessingError(TypedDict, total=False):
 
 
 class VisaChargeback(TypedDict, total=False):
+    """The chargeback details for the user submission.
+
+    Required if and only if `category` is `chargeback`.
+    """
+
     category: Required[
         Literal[
             "authorization",
@@ -1363,11 +1583,21 @@ class VisaChargeback(TypedDict, total=False):
 
 
 class VisaMerchantPrearbitrationDecline(TypedDict, total=False):
+    """The merchant pre-arbitration decline details for the user submission.
+
+    Required if and only if `category` is `merchant_prearbitration_decline`.
+    """
+
     reason: Required[str]
     """The reason for declining the merchant's pre-arbitration request."""
 
 
 class VisaUserPrearbitrationCategoryChange(TypedDict, total=False):
+    """Category change details for the pre-arbitration request.
+
+    Should only be populated if the category of the dispute is being changed as part of the pre-arbitration request.
+    """
+
     category: Required[
         Literal[
             "authorization",
@@ -1423,6 +1653,11 @@ class VisaUserPrearbitrationCategoryChange(TypedDict, total=False):
 
 
 class VisaUserPrearbitration(TypedDict, total=False):
+    """The user pre-arbitration details for the user submission.
+
+    Required if and only if `category` is `user_prearbitration`.
+    """
+
     reason: Required[str]
     """The reason for the pre-arbitration request."""
 
@@ -1435,6 +1670,11 @@ class VisaUserPrearbitration(TypedDict, total=False):
 
 
 class Visa(TypedDict, total=False):
+    """The Visa-specific parameters for the dispute.
+
+    Required if and only if `network` is `visa`.
+    """
+
     category: Required[Literal["chargeback", "merchant_prearbitration_decline", "user_prearbitration"]]
     """The category of the user submission.
 

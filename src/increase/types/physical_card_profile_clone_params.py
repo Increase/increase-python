@@ -32,6 +32,11 @@ class PhysicalCardProfileCloneParams(TypedDict, total=False):
 
 
 class FrontText(TypedDict, total=False):
+    """Text printed on the front of the card.
+
+    Reach out to [support@increase.com](mailto:support@increase.com) for more information.
+    """
+
     line1: Required[str]
     """The first line of text on the front of the card."""
 

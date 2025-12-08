@@ -12,6 +12,8 @@ __all__ = ["CardPurchaseSupplement", "Invoice", "LineItem"]
 
 
 class Invoice(BaseModel):
+    """Invoice-level information about the payment."""
+
     discount_amount: Optional[int] = None
     """Discount given to cardholder."""
 
@@ -173,6 +175,10 @@ class LineItem(BaseModel):
 
 
 class CardPurchaseSupplement(BaseModel):
+    """
+    Additional information about a card purchase (e.g., settlement or refund), such as level 3 line item data.
+    """
+
     id: str
     """The Card Purchase Supplement identifier."""
 

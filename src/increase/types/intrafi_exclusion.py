@@ -10,6 +10,10 @@ __all__ = ["IntrafiExclusion"]
 
 
 class IntrafiExclusion(BaseModel):
+    """
+    Certain institutions may be excluded per Entity when sweeping funds into the IntraFi network. This is useful when an Entity already has deposits at a particular bank, and does not want to sweep additional funds to it. It may take 5 business days for an exclusion to be processed.
+    """
+
     id: str
     """The identifier of this exclusion request."""
 

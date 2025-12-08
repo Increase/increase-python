@@ -88,6 +88,8 @@ class NotificationsOfChange(BaseModel):
 
 
 class PrenotificationReturn(BaseModel):
+    """If your prenotification is returned, this will contain details of the return."""
+
     created_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -319,6 +321,10 @@ class PrenotificationReturn(BaseModel):
 
 
 class ACHPrenotification(BaseModel):
+    """
+    ACH Prenotifications are one way you can verify account and routing numbers by Automated Clearing House (ACH).
+    """
+
     id: str
     """The ACH Prenotification's identifier."""
 

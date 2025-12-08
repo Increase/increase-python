@@ -145,6 +145,8 @@ class CardAuthorizationCreateParams(TypedDict, total=False):
 
 
 class NetworkDetailsVisa(TypedDict, total=False):
+    """Fields specific to the Visa network."""
+
     stand_in_processing_reason: Literal[
         "issuer_error",
         "invalid_physical_card",
@@ -177,16 +179,24 @@ class NetworkDetailsVisa(TypedDict, total=False):
 
 
 class NetworkDetails(TypedDict, total=False):
+    """Fields specific to a given card network."""
+
     visa: Required[NetworkDetailsVisa]
     """Fields specific to the Visa network."""
 
 
 class ProcessingCategoryRefund(TypedDict, total=False):
+    """Details related to refund authorizations."""
+
     original_card_payment_id: str
     """The card payment to link this refund to."""
 
 
 class ProcessingCategory(TypedDict, total=False):
+    """
+    Fields specific to a specific type of authorization, such as Automatic Fuel Dispensers, Refund Authorizations, or Cash Disbursements.
+    """
+
     category: Required[
         Literal[
             "account_funding",

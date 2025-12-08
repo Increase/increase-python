@@ -31,6 +31,10 @@ __all__ = [
 
 
 class Approval(BaseModel):
+    """
+    If your account requires approvals for transfers and the transfer was approved, this will contain details of the approval.
+    """
+
     approved_at: datetime.datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -45,6 +49,10 @@ class Approval(BaseModel):
 
 
 class Cancellation(BaseModel):
+    """
+    If your account requires approvals for transfers and the transfer was not approved, this will contain details of the cancellation.
+    """
+
     canceled_at: datetime.datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -59,21 +67,29 @@ class Cancellation(BaseModel):
 
 
 class CreatedByAPIKey(BaseModel):
+    """If present, details about the API key that created the transfer."""
+
     description: Optional[str] = None
     """The description set for the API key when it was created."""
 
 
 class CreatedByOAuthApplication(BaseModel):
+    """If present, details about the OAuth Application that created the transfer."""
+
     name: str
     """The name of the OAuth Application."""
 
 
 class CreatedByUser(BaseModel):
+    """If present, details about the User that created the transfer."""
+
     email: str
     """The email address of the User."""
 
 
 class CreatedBy(BaseModel):
+    """What object created the transfer, either via the API or the dashboard."""
+
     api_key: Optional[CreatedByAPIKey] = None
     """If present, details about the API key that created the transfer."""
 
@@ -95,6 +111,8 @@ class CreatedBy(BaseModel):
 
 
 class CreditorAddressUnstructured(BaseModel):
+    """Unstructured address lines."""
+
     line1: Optional[str] = None
     """The first line."""
 
@@ -106,11 +124,15 @@ class CreditorAddressUnstructured(BaseModel):
 
 
 class CreditorAddress(BaseModel):
+    """The person or business's address."""
+
     unstructured: Optional[CreditorAddressUnstructured] = None
     """Unstructured address lines."""
 
 
 class Creditor(BaseModel):
+    """The person or business that is receiving the funds from the transfer."""
+
     address: Optional[CreditorAddress] = None
     """The person or business's address."""
 
@@ -119,6 +141,8 @@ class Creditor(BaseModel):
 
 
 class DebtorAddressUnstructured(BaseModel):
+    """Unstructured address lines."""
+
     line1: Optional[str] = None
     """The first line."""
 
@@ -130,11 +154,15 @@ class DebtorAddressUnstructured(BaseModel):
 
 
 class DebtorAddress(BaseModel):
+    """The person or business's address."""
+
     unstructured: Optional[DebtorAddressUnstructured] = None
     """Unstructured address lines."""
 
 
 class Debtor(BaseModel):
+    """The person or business whose funds are being transferred."""
+
     address: Optional[DebtorAddress] = None
     """The person or business's address."""
 
@@ -143,6 +171,11 @@ class Debtor(BaseModel):
 
 
 class RemittanceTax(BaseModel):
+    """Internal Revenue Service (IRS) tax repayment information.
+
+    Required if `category` is equal to `tax`.
+    """
+
     date: datetime.date
     """The month and year the tax payment is for, in YYYY-MM-DD format.
 
@@ -160,11 +193,18 @@ class RemittanceTax(BaseModel):
 
 
 class RemittanceUnstructured(BaseModel):
+    """Unstructured remittance information.
+
+    Required if `category` is equal to `unstructured`.
+    """
+
     message: str
     """The message to the beneficiary."""
 
 
 class Remittance(BaseModel):
+    """Remittance information sent with the wire transfer."""
+
     category: Literal["unstructured", "tax"]
     """The type of remittance information being passed.
 
@@ -188,6 +228,8 @@ class Remittance(BaseModel):
 
 
 class Reversal(BaseModel):
+    """If your transfer is reversed, this will contain details of the reversal."""
+
     amount: int
     """The amount that was reversed in USD cents."""
 
@@ -257,6 +299,10 @@ class Reversal(BaseModel):
 
 
 class Submission(BaseModel):
+    """
+    After the transfer is submitted to Fedwire, this will contain supplemental details.
+    """
+
     input_message_accountability_data: str
     """The accountability data for the submission."""
 
@@ -265,6 +311,10 @@ class Submission(BaseModel):
 
 
 class WireTransfer(BaseModel):
+    """
+    Wire transfers move funds between your Increase account and any other account accessible by Fedwire.
+    """
+
     id: str
     """The wire transfer's identifier."""
 

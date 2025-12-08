@@ -9,6 +9,11 @@ __all__ = ["BookkeepingAccount"]
 
 
 class BookkeepingAccount(BaseModel):
+    """Accounts are T-accounts.
+
+    They can store accounting entries. Your compliance setup might require annotating money movements using this API. Learn more in our [guide to Bookkeeping](https://increase.com/documentation/bookkeeping#bookkeeping).
+    """
+
     id: str
     """The account identifier."""
 

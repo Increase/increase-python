@@ -42,6 +42,8 @@ __all__ = [
 
 
 class CorporationAddress(BaseModel):
+    """The corporation's address."""
+
     city: str
     """The city of the address."""
 
@@ -62,6 +64,8 @@ class CorporationAddress(BaseModel):
 
 
 class CorporationBeneficialOwnerIndividualAddress(BaseModel):
+    """The person's address."""
+
     city: Optional[str] = None
     """The city, district, town, or village of the address."""
 
@@ -85,6 +89,8 @@ class CorporationBeneficialOwnerIndividualAddress(BaseModel):
 
 
 class CorporationBeneficialOwnerIndividualIdentification(BaseModel):
+    """A means of verifying the person's identity."""
+
     method: Literal[
         "social_security_number", "individual_taxpayer_identification_number", "passport", "drivers_license", "other"
     ]
@@ -118,6 +124,8 @@ class CorporationBeneficialOwnerIndividualIdentification(BaseModel):
 
 
 class CorporationBeneficialOwnerIndividual(BaseModel):
+    """Personal details for the beneficial owner."""
+
     address: CorporationBeneficialOwnerIndividualAddress
     """The person's address."""
 
@@ -152,6 +160,11 @@ class CorporationBeneficialOwner(BaseModel):
 
 
 class Corporation(BaseModel):
+    """Details of the corporation entity.
+
+    Will be present if `structure` is equal to `corporation`.
+    """
+
     address: CorporationAddress
     """The corporation's address."""
 
@@ -184,6 +197,8 @@ class Corporation(BaseModel):
 
 
 class GovernmentAuthorityAddress(BaseModel):
+    """The government authority's address."""
+
     city: str
     """The city of the address."""
 
@@ -212,6 +227,11 @@ class GovernmentAuthorityAuthorizedPerson(BaseModel):
 
 
 class GovernmentAuthority(BaseModel):
+    """Details of the government authority entity.
+
+    Will be present if `structure` is equal to `government_authority`.
+    """
+
     address: GovernmentAuthorityAddress
     """The government authority's address."""
 
@@ -238,6 +258,8 @@ class GovernmentAuthority(BaseModel):
 
 
 class JointIndividualAddress(BaseModel):
+    """The person's address."""
+
     city: str
     """The city of the address."""
 
@@ -258,6 +280,8 @@ class JointIndividualAddress(BaseModel):
 
 
 class JointIndividualIdentification(BaseModel):
+    """A means of verifying the person's identity."""
+
     method: Literal[
         "social_security_number", "individual_taxpayer_identification_number", "passport", "drivers_license", "other"
     ]
@@ -305,6 +329,11 @@ class JointIndividual(BaseModel):
 
 
 class Joint(BaseModel):
+    """Details of the joint entity.
+
+    Will be present if `structure` is equal to `joint`.
+    """
+
     individuals: List[JointIndividual]
     """The two individuals that share control of the entity."""
 
@@ -313,6 +342,8 @@ class Joint(BaseModel):
 
 
 class NaturalPersonAddress(BaseModel):
+    """The person's address."""
+
     city: str
     """The city of the address."""
 
@@ -333,6 +364,8 @@ class NaturalPersonAddress(BaseModel):
 
 
 class NaturalPersonIdentification(BaseModel):
+    """A means of verifying the person's identity."""
+
     method: Literal[
         "social_security_number", "individual_taxpayer_identification_number", "passport", "drivers_license", "other"
     ]
@@ -366,6 +399,11 @@ class NaturalPersonIdentification(BaseModel):
 
 
 class NaturalPerson(BaseModel):
+    """Details of the natural person entity.
+
+    Will be present if `structure` is equal to `natural_person`.
+    """
+
     address: NaturalPersonAddress
     """The person's address."""
 
@@ -380,6 +418,10 @@ class NaturalPerson(BaseModel):
 
 
 class RiskRating(BaseModel):
+    """
+    An assessment of the entity’s potential risk of involvement in financial crimes, such as money laundering.
+    """
+
     rated_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the risk
@@ -396,6 +438,10 @@ class RiskRating(BaseModel):
 
 
 class ThirdPartyVerification(BaseModel):
+    """
+    If you are using a third-party service for identity verification, you can use this field to associate this Entity with the identifier that represents them in that service.
+    """
+
     reference: str
     """The reference identifier for the third party verification."""
 
@@ -409,6 +455,8 @@ class ThirdPartyVerification(BaseModel):
 
 
 class TrustAddress(BaseModel):
+    """The trust's address."""
+
     city: str
     """The city of the address."""
 
@@ -429,6 +477,8 @@ class TrustAddress(BaseModel):
 
 
 class TrustGrantorAddress(BaseModel):
+    """The person's address."""
+
     city: str
     """The city of the address."""
 
@@ -449,6 +499,8 @@ class TrustGrantorAddress(BaseModel):
 
 
 class TrustGrantorIdentification(BaseModel):
+    """A means of verifying the person's identity."""
+
     method: Literal[
         "social_security_number", "individual_taxpayer_identification_number", "passport", "drivers_license", "other"
     ]
@@ -482,6 +534,8 @@ class TrustGrantorIdentification(BaseModel):
 
 
 class TrustGrantor(BaseModel):
+    """The grantor of the trust. Will be present if the `category` is `revocable`."""
+
     address: TrustGrantorAddress
     """The person's address."""
 
@@ -496,6 +550,8 @@ class TrustGrantor(BaseModel):
 
 
 class TrustTrusteeIndividualAddress(BaseModel):
+    """The person's address."""
+
     city: str
     """The city of the address."""
 
@@ -516,6 +572,8 @@ class TrustTrusteeIndividualAddress(BaseModel):
 
 
 class TrustTrusteeIndividualIdentification(BaseModel):
+    """A means of verifying the person's identity."""
+
     method: Literal[
         "social_security_number", "individual_taxpayer_identification_number", "passport", "drivers_license", "other"
     ]
@@ -549,6 +607,11 @@ class TrustTrusteeIndividualIdentification(BaseModel):
 
 
 class TrustTrusteeIndividual(BaseModel):
+    """The individual trustee of the trust.
+
+    Will be present if the trustee's `structure` is equal to `individual`.
+    """
+
     address: TrustTrusteeIndividualAddress
     """The person's address."""
 
@@ -577,6 +640,11 @@ class TrustTrustee(BaseModel):
 
 
 class Trust(BaseModel):
+    """Details of the trust entity.
+
+    Will be present if `structure` is equal to `trust`.
+    """
+
     address: TrustAddress
     """The trust's address."""
 
@@ -610,6 +678,11 @@ class Trust(BaseModel):
 
 
 class Entity(BaseModel):
+    """Entities are the legal entities that own accounts.
+
+    They can be people, corporations, partnerships, government authorities, or trusts.
+    """
+
     id: str
     """The entity's identifier."""
 

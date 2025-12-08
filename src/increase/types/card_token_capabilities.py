@@ -32,6 +32,10 @@ class Route(BaseModel):
 
 
 class CardTokenCapabilities(BaseModel):
+    """
+    The capabilities of a Card Token describe whether the card can be used for specific operations, such as Card Push Transfers. The capabilities can change over time based on the issuing bank's configuration of the card range.
+    """
+
     routes: List[Route]
     """Each route represent a path e.g., a push transfer can take."""
 

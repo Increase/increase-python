@@ -24,6 +24,10 @@ __all__ = [
 
 
 class Acceptance(BaseModel):
+    """
+    If the transfer is accepted by the recipient bank, this will contain supplemental details.
+    """
+
     accepted_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -49,6 +53,10 @@ class Acceptance(BaseModel):
 
 
 class Approval(BaseModel):
+    """
+    If your account requires approvals for transfers and the transfer was approved, this will contain details of the approval.
+    """
+
     approved_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -63,6 +71,10 @@ class Approval(BaseModel):
 
 
 class Cancellation(BaseModel):
+    """
+    If your account requires approvals for transfers and the transfer was not approved, this will contain details of the cancellation.
+    """
+
     canceled_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -77,21 +89,29 @@ class Cancellation(BaseModel):
 
 
 class CreatedByAPIKey(BaseModel):
+    """If present, details about the API key that created the transfer."""
+
     description: Optional[str] = None
     """The description set for the API key when it was created."""
 
 
 class CreatedByOAuthApplication(BaseModel):
+    """If present, details about the OAuth Application that created the transfer."""
+
     name: str
     """The name of the OAuth Application."""
 
 
 class CreatedByUser(BaseModel):
+    """If present, details about the User that created the transfer."""
+
     email: str
     """The email address of the User."""
 
 
 class CreatedBy(BaseModel):
+    """What object created the transfer, either via the API or the dashboard."""
+
     api_key: Optional[CreatedByAPIKey] = None
     """If present, details about the API key that created the transfer."""
 
@@ -113,6 +133,10 @@ class CreatedBy(BaseModel):
 
 
 class Decline(BaseModel):
+    """
+    If the transfer is rejected by the card network or the destination financial institution, this will contain supplemental details.
+    """
+
     declined_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -245,6 +269,11 @@ class Decline(BaseModel):
 
 
 class PresentmentAmount(BaseModel):
+    """The amount that was transferred.
+
+    The receiving bank will have converted this to the cardholder's currency. The amount that is applied to your Increase account matches the currency of your account.
+    """
+
     currency: Literal[
         "AFN",
         "EUR",
@@ -579,6 +608,10 @@ class PresentmentAmount(BaseModel):
 
 
 class Submission(BaseModel):
+    """
+    After the transfer is submitted to the card network, this will contain supplemental details.
+    """
+
     retrieval_reference_number: str
     """A 12-digit retrieval reference number that identifies the transfer.
 
@@ -602,6 +635,8 @@ class Submission(BaseModel):
 
 
 class CardPushTransfer(BaseModel):
+    """Card Push Transfers send funds to a recipient's payment card in real-time."""
+
     id: str
     """The Card Push Transfer's identifier."""
 

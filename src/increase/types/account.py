@@ -12,6 +12,11 @@ __all__ = ["Account"]
 
 
 class Account(BaseModel):
+    """Accounts are your bank accounts with Increase.
+
+    They store money, receive transfers, and send payments. They earn interest and have depository insurance.
+    """
+
     id: str
     """The Account identifier."""
 

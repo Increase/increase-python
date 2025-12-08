@@ -10,6 +10,11 @@ __all__ = ["Program"]
 
 
 class Program(BaseModel):
+    """Programs determine the compliance and commercial terms of Accounts.
+
+    By default, you have a Commercial Banking program for managing your own funds. If you are lending or managing funds on behalf of your customers, or otherwise engaged in regulated activity, we will work together to create additional Programs for you.
+    """
+
     id: str
     """The Program identifier."""
 

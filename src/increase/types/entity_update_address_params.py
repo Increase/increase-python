@@ -16,6 +16,11 @@ class EntityUpdateAddressParams(TypedDict, total=False):
 
 
 class Address(TypedDict, total=False):
+    """The entity's physical address.
+
+    Mail receiving locations like PO Boxes and PMB's are disallowed.
+    """
+
     city: Required[str]
     """The city of the address."""
 

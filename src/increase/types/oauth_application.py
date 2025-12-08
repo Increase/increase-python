@@ -10,6 +10,10 @@ __all__ = ["OAuthApplication"]
 
 
 class OAuthApplication(BaseModel):
+    """
+    An OAuth Application lets you build an application for others to use with their Increase data. You can create an OAuth Application via the Dashboard and read information about it with the API. Learn more about OAuth [here](https://increase.com/documentation/oauth).
+    """
+
     id: str
     """The OAuth Application's identifier."""
 

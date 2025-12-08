@@ -10,6 +10,8 @@ __all__ = ["WireDrawdownRequest", "CreditorAddress", "DebtorAddress", "Submissio
 
 
 class CreditorAddress(BaseModel):
+    """The creditor's address."""
+
     city: str
     """The city, district, town, or village of the address."""
 
@@ -34,6 +36,8 @@ class CreditorAddress(BaseModel):
 
 
 class DebtorAddress(BaseModel):
+    """The debtor's address."""
+
     city: str
     """The city, district, town, or village of the address."""
 
@@ -58,6 +62,10 @@ class DebtorAddress(BaseModel):
 
 
 class Submission(BaseModel):
+    """
+    After the drawdown request is submitted to Fedwire, this will contain supplemental details.
+    """
+
     input_message_accountability_data: str
     """
     The input message accountability data (IMAD) uniquely identifying the submission
@@ -66,6 +74,11 @@ class Submission(BaseModel):
 
 
 class WireDrawdownRequest(BaseModel):
+    """Wire drawdown requests enable you to request that someone else send you a wire.
+
+    Because there is nuance to making sure your counterparty's bank processes these correctly, we ask that you reach out to [support@increase.com](mailto:support@increase.com) to enable this feature so we can help you plan your integration. For more information, see our [Wire Drawdown Requests documentation](/documentation/wire-drawdown-requests).
+    """
+
     id: str
     """The Wire drawdown request identifier."""
 

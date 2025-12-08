@@ -72,6 +72,8 @@ class WireTransferCreateParams(TypedDict, total=False):
 
 
 class CreditorAddressUnstructured(TypedDict, total=False):
+    """Unstructured address lines."""
+
     line1: Required[str]
     """The address line 1."""
 
@@ -83,11 +85,15 @@ class CreditorAddressUnstructured(TypedDict, total=False):
 
 
 class CreditorAddress(TypedDict, total=False):
+    """The person or business's address."""
+
     unstructured: Required[CreditorAddressUnstructured]
     """Unstructured address lines."""
 
 
 class Creditor(TypedDict, total=False):
+    """The person or business that is receiving the funds from the transfer."""
+
     name: Required[str]
     """The person or business's name."""
 
@@ -96,6 +102,11 @@ class Creditor(TypedDict, total=False):
 
 
 class RemittanceTax(TypedDict, total=False):
+    """Internal Revenue Service (IRS) tax repayment information.
+
+    Required if `category` is equal to `tax`.
+    """
+
     date: Required[Annotated[Union[str, datetime.date], PropertyInfo(format="iso8601")]]
     """The month and year the tax payment is for, in YYYY-MM-DD format.
 
@@ -113,11 +124,18 @@ class RemittanceTax(TypedDict, total=False):
 
 
 class RemittanceUnstructured(TypedDict, total=False):
+    """Unstructured remittance information.
+
+    Required if `category` is equal to `unstructured`.
+    """
+
     message: Required[str]
     """The information."""
 
 
 class Remittance(TypedDict, total=False):
+    """Additional remittance information related to the wire transfer."""
+
     category: Required[Literal["unstructured", "tax"]]
     """The type of remittance information being passed.
 
@@ -141,6 +159,8 @@ class Remittance(TypedDict, total=False):
 
 
 class DebtorAddressUnstructured(TypedDict, total=False):
+    """Unstructured address lines."""
+
     line1: Required[str]
     """The address line 1."""
 
@@ -152,11 +172,18 @@ class DebtorAddressUnstructured(TypedDict, total=False):
 
 
 class DebtorAddress(TypedDict, total=False):
+    """The person or business's address."""
+
     unstructured: Required[DebtorAddressUnstructured]
     """Unstructured address lines."""
 
 
 class Debtor(TypedDict, total=False):
+    """The person or business whose funds are being transferred.
+
+    This is only necessary if you're transferring from a commingled account. Otherwise, we'll use the associated entity's details.
+    """
+
     name: Required[str]
     """The person or business's name."""
 

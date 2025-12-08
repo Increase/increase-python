@@ -12,6 +12,8 @@ __all__ = ["InboundMailItem", "Check"]
 
 
 class Check(BaseModel):
+    """Inbound Mail Item Checks represent the checks in an Inbound Mail Item."""
+
     amount: int
     """The amount of the check."""
 
@@ -34,6 +36,8 @@ class Check(BaseModel):
 
 
 class InboundMailItem(BaseModel):
+    """Inbound Mail Items represent pieces of physical mail delivered to a Lockbox."""
+
     id: str
     """The Inbound Mail Item identifier."""
 

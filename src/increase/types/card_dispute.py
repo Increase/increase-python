@@ -109,6 +109,10 @@ __all__ = [
 
 
 class Loss(BaseModel):
+    """
+    If the Card Dispute's status is `lost`, this will contain details of the lost dispute.
+    """
+
     lost_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -129,22 +133,46 @@ class VisaNetworkEventAttachmentFile(BaseModel):
 
 
 class VisaNetworkEventChargebackAccepted(BaseModel):
+    """A Card Dispute Chargeback Accepted Visa Network Event object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `chargeback_accepted`. Contains the details specific to a chargeback accepted Visa Card Dispute Network Event, which represents that a chargeback has been accepted by the merchant.
+    """
+
     pass
 
 
 class VisaNetworkEventChargebackSubmitted(BaseModel):
+    """A Card Dispute Chargeback Submitted Visa Network Event object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `chargeback_submitted`. Contains the details specific to a chargeback submitted Visa Card Dispute Network Event, which represents that a chargeback has been submitted to the network.
+    """
+
     pass
 
 
 class VisaNetworkEventChargebackTimedOut(BaseModel):
+    """A Card Dispute Chargeback Timed Out Visa Network Event object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `chargeback_timed_out`. Contains the details specific to a chargeback timed out Visa Card Dispute Network Event, which represents that the chargeback has timed out in the user's favor.
+    """
+
     pass
 
 
 class VisaNetworkEventMerchantPrearbitrationDeclineSubmitted(BaseModel):
+    """
+    A Card Dispute Merchant Pre-Arbitration Decline Submitted Visa Network Event object. This field will be present in the JSON response if and only if `category` is equal to `merchant_prearbitration_decline_submitted`. Contains the details specific to a merchant prearbitration decline submitted Visa Card Dispute Network Event, which represents that the user has declined the merchant's request for a prearbitration request decision in their favor.
+    """
+
     pass
 
 
 class VisaNetworkEventMerchantPrearbitrationReceivedCardholderNoLongerDisputes(BaseModel):
+    """Cardholder no longer disputes details.
+
+    Present if and only if `reason` is `cardholder_no_longer_disputes`.
+    """
+
     explanation: Optional[str] = None
     """
     Explanation for why the merchant believes the cardholder no longer disputes the
@@ -153,6 +181,11 @@ class VisaNetworkEventMerchantPrearbitrationReceivedCardholderNoLongerDisputes(B
 
 
 class VisaNetworkEventMerchantPrearbitrationReceivedCompellingEvidence(BaseModel):
+    """Compelling evidence details.
+
+    Present if and only if `reason` is `compelling_evidence`.
+    """
+
     category: Literal[
         "authorized_signer",
         "delivery",
@@ -207,6 +240,11 @@ class VisaNetworkEventMerchantPrearbitrationReceivedCompellingEvidence(BaseModel
 
 
 class VisaNetworkEventMerchantPrearbitrationReceivedCreditOrReversalProcessed(BaseModel):
+    """Credit or reversal processed details.
+
+    Present if and only if `reason` is `credit_or_reversal_processed`.
+    """
+
     amount: int
     """The amount of the credit or reversal in the minor unit of its currency.
 
@@ -227,16 +265,28 @@ class VisaNetworkEventMerchantPrearbitrationReceivedCreditOrReversalProcessed(Ba
 
 
 class VisaNetworkEventMerchantPrearbitrationReceivedDelayedChargeTransaction(BaseModel):
+    """Delayed charge transaction details.
+
+    Present if and only if `reason` is `delayed_charge_transaction`.
+    """
+
     explanation: Optional[str] = None
     """Additional details about the delayed charge transaction."""
 
 
 class VisaNetworkEventMerchantPrearbitrationReceivedEvidenceOfImprint(BaseModel):
+    """Evidence of imprint details.
+
+    Present if and only if `reason` is `evidence_of_imprint`.
+    """
+
     explanation: Optional[str] = None
     """Explanation of the evidence of imprint."""
 
 
 class VisaNetworkEventMerchantPrearbitrationReceivedInvalidDispute(BaseModel):
+    """Invalid dispute details. Present if and only if `reason` is `invalid_dispute`."""
+
     explanation: Optional[str] = None
     """Explanation for why the dispute is considered invalid by the merchant."""
 
@@ -250,6 +300,11 @@ class VisaNetworkEventMerchantPrearbitrationReceivedInvalidDispute(BaseModel):
 
 
 class VisaNetworkEventMerchantPrearbitrationReceivedNonFiatCurrencyOrNonFungibleTokenReceived(BaseModel):
+    """Non-fiat currency or non-fungible token received details.
+
+    Present if and only if `reason` is `non_fiat_currency_or_non_fungible_token_received`.
+    """
+
     blockchain_transaction_hash: str
     """Blockchain transaction hash."""
 
@@ -261,6 +316,11 @@ class VisaNetworkEventMerchantPrearbitrationReceivedNonFiatCurrencyOrNonFungible
 
 
 class VisaNetworkEventMerchantPrearbitrationReceivedPriorUndisputedNonFraudTransactions(BaseModel):
+    """Prior undisputed non-fraud transactions details.
+
+    Present if and only if `reason` is `prior_undisputed_non_fraud_transactions`.
+    """
+
     explanation: Optional[str] = None
     """
     Explanation of the prior undisputed non-fraud transactions provided by the
@@ -269,6 +329,11 @@ class VisaNetworkEventMerchantPrearbitrationReceivedPriorUndisputedNonFraudTrans
 
 
 class VisaNetworkEventMerchantPrearbitrationReceived(BaseModel):
+    """A Card Dispute Merchant Pre-Arbitration Received Visa Network Event object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `merchant_prearbitration_received`. Contains the details specific to a merchant prearbitration received Visa Card Dispute Network Event, which represents that the merchant has issued a prearbitration request in the user's favor.
+    """
+
     cardholder_no_longer_disputes: Optional[
         VisaNetworkEventMerchantPrearbitrationReceivedCardholderNoLongerDisputes
     ] = None
@@ -350,10 +415,20 @@ class VisaNetworkEventMerchantPrearbitrationReceived(BaseModel):
 
 
 class VisaNetworkEventMerchantPrearbitrationTimedOut(BaseModel):
+    """A Card Dispute Merchant Pre-Arbitration Timed Out Visa Network Event object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `merchant_prearbitration_timed_out`. Contains the details specific to a merchant prearbitration timed out Visa Card Dispute Network Event, which represents that the user has timed out responding to the merchant's prearbitration request.
+    """
+
     pass
 
 
 class VisaNetworkEventRepresentedCardholderNoLongerDisputes(BaseModel):
+    """Cardholder no longer disputes details.
+
+    Present if and only if `reason` is `cardholder_no_longer_disputes`.
+    """
+
     explanation: Optional[str] = None
     """
     Explanation for why the merchant believes the cardholder no longer disputes the
@@ -362,6 +437,11 @@ class VisaNetworkEventRepresentedCardholderNoLongerDisputes(BaseModel):
 
 
 class VisaNetworkEventRepresentedCreditOrReversalProcessed(BaseModel):
+    """Credit or reversal processed details.
+
+    Present if and only if `reason` is `credit_or_reversal_processed`.
+    """
+
     amount: int
     """The amount of the credit or reversal in the minor unit of its currency.
 
@@ -382,6 +462,8 @@ class VisaNetworkEventRepresentedCreditOrReversalProcessed(BaseModel):
 
 
 class VisaNetworkEventRepresentedInvalidDispute(BaseModel):
+    """Invalid dispute details. Present if and only if `reason` is `invalid_dispute`."""
+
     explanation: Optional[str] = None
     """Explanation for why the dispute is considered invalid by the merchant."""
 
@@ -484,10 +566,20 @@ class VisaNetworkEventRepresentedInvalidDispute(BaseModel):
 
 
 class VisaNetworkEventRepresentedNonFiatCurrencyOrNonFungibleTokenAsDescribed(BaseModel):
+    """Non-fiat currency or non-fungible token as described details.
+
+    Present if and only if `reason` is `non_fiat_currency_or_non_fungible_token_as_described`.
+    """
+
     pass
 
 
 class VisaNetworkEventRepresentedNonFiatCurrencyOrNonFungibleTokenReceived(BaseModel):
+    """Non-fiat currency or non-fungible token received details.
+
+    Present if and only if `reason` is `non_fiat_currency_or_non_fungible_token_received`.
+    """
+
     blockchain_transaction_hash: str
     """Blockchain transaction hash."""
 
@@ -499,6 +591,11 @@ class VisaNetworkEventRepresentedNonFiatCurrencyOrNonFungibleTokenReceived(BaseM
 
 
 class VisaNetworkEventRepresentedProofOfCashDisbursement(BaseModel):
+    """Proof of cash disbursement details.
+
+    Present if and only if `reason` is `proof_of_cash_disbursement`.
+    """
+
     explanation: Optional[str] = None
     """
     Explanation for why the merchant believes the evidence provides proof of cash
@@ -507,11 +604,21 @@ class VisaNetworkEventRepresentedProofOfCashDisbursement(BaseModel):
 
 
 class VisaNetworkEventRepresentedReversalIssued(BaseModel):
+    """Reversal issued by merchant details.
+
+    Present if and only if `reason` is `reversal_issued`.
+    """
+
     explanation: Optional[str] = None
     """Explanation of the reversal issued by the merchant."""
 
 
 class VisaNetworkEventRepresented(BaseModel):
+    """A Card Dispute Re-presented Visa Network Event object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `represented`. Contains the details specific to a re-presented Visa Card Dispute Network Event, which represents that the merchant has declined the user's chargeback and has re-presented the payment.
+    """
+
     cardholder_no_longer_disputes: Optional[VisaNetworkEventRepresentedCardholderNoLongerDisputes] = None
     """Cardholder no longer disputes details.
 
@@ -582,26 +689,56 @@ class VisaNetworkEventRepresented(BaseModel):
 
 
 class VisaNetworkEventRepresentmentTimedOut(BaseModel):
+    """A Card Dispute Re-presentment Timed Out Visa Network Event object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `representment_timed_out`. Contains the details specific to a re-presentment time-out Visa Card Dispute Network Event, which represents that the user did not respond to the re-presentment by the merchant within the time limit.
+    """
+
     pass
 
 
 class VisaNetworkEventUserPrearbitrationAccepted(BaseModel):
+    """A Card Dispute User Pre-Arbitration Accepted Visa Network Event object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `user_prearbitration_accepted`. Contains the details specific to a user prearbitration accepted Visa Card Dispute Network Event, which represents that the merchant has accepted the user's prearbitration request in the user's favor.
+    """
+
     pass
 
 
 class VisaNetworkEventUserPrearbitrationDeclined(BaseModel):
+    """A Card Dispute User Pre-Arbitration Declined Visa Network Event object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `user_prearbitration_declined`. Contains the details specific to a user prearbitration declined Visa Card Dispute Network Event, which represents that the merchant has declined the user's prearbitration request.
+    """
+
     pass
 
 
 class VisaNetworkEventUserPrearbitrationSubmitted(BaseModel):
+    """A Card Dispute User Pre-Arbitration Submitted Visa Network Event object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `user_prearbitration_submitted`. Contains the details specific to a user prearbitration submitted Visa Card Dispute Network Event, which represents that the user's request for prearbitration has been submitted to the network.
+    """
+
     pass
 
 
 class VisaNetworkEventUserPrearbitrationTimedOut(BaseModel):
+    """A Card Dispute User Pre-Arbitration Timed Out Visa Network Event object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `user_prearbitration_timed_out`. Contains the details specific to a user prearbitration timed out Visa Card Dispute Network Event, which represents that the merchant has timed out responding to the user's prearbitration request.
+    """
+
     pass
 
 
 class VisaNetworkEventUserWithdrawalSubmitted(BaseModel):
+    """A Card Dispute User Withdrawal Submitted Visa Network Event object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `user_withdrawal_submitted`. Contains the details specific to a user withdrawal submitted Visa Card Dispute Network Event, which represents that the user's request to withdraw the dispute has been submitted to the network.
+    """
+
     pass
 
 
@@ -801,6 +938,8 @@ class VisaUserSubmissionAttachmentFile(BaseModel):
 
 
 class VisaUserSubmissionChargebackAuthorization(BaseModel):
+    """Authorization. Present if and only if `category` is `authorization`."""
+
     account_status: Literal["account_closed", "credit_problem", "fraud"]
     """Account status.
 
@@ -811,6 +950,8 @@ class VisaUserSubmissionChargebackAuthorization(BaseModel):
 
 
 class VisaUserSubmissionChargebackConsumerCanceledMerchandiseCardholderCancellation(BaseModel):
+    """Cardholder cancellation."""
+
     canceled_at: date
     """Canceled at."""
 
@@ -833,10 +974,17 @@ class VisaUserSubmissionChargebackConsumerCanceledMerchandiseCardholderCancellat
 
 
 class VisaUserSubmissionChargebackConsumerCanceledMerchandiseNotReturned(BaseModel):
+    """Not returned. Present if and only if `return_outcome` is `not_returned`."""
+
     pass
 
 
 class VisaUserSubmissionChargebackConsumerCanceledMerchandiseReturnAttempted(BaseModel):
+    """Return attempted.
+
+    Present if and only if `return_outcome` is `return_attempted`.
+    """
+
     attempt_explanation: str
     """Attempt explanation."""
 
@@ -864,6 +1012,8 @@ class VisaUserSubmissionChargebackConsumerCanceledMerchandiseReturnAttempted(Bas
 
 
 class VisaUserSubmissionChargebackConsumerCanceledMerchandiseReturned(BaseModel):
+    """Returned. Present if and only if `return_outcome` is `returned`."""
+
     merchant_received_return_at: Optional[date] = None
     """Merchant received return at."""
 
@@ -889,6 +1039,11 @@ class VisaUserSubmissionChargebackConsumerCanceledMerchandiseReturned(BaseModel)
 
 
 class VisaUserSubmissionChargebackConsumerCanceledMerchandise(BaseModel):
+    """Canceled merchandise.
+
+    Present if and only if `category` is `consumer_canceled_merchandise`.
+    """
+
     cardholder_cancellation: Optional[VisaUserSubmissionChargebackConsumerCanceledMerchandiseCardholderCancellation] = (
         None
     )
@@ -929,6 +1084,8 @@ class VisaUserSubmissionChargebackConsumerCanceledMerchandise(BaseModel):
 
 
 class VisaUserSubmissionChargebackConsumerCanceledRecurringTransactionMerchantContactMethods(BaseModel):
+    """Merchant contact methods."""
+
     application_name: Optional[str] = None
     """Application name."""
 
@@ -949,6 +1106,11 @@ class VisaUserSubmissionChargebackConsumerCanceledRecurringTransactionMerchantCo
 
 
 class VisaUserSubmissionChargebackConsumerCanceledRecurringTransaction(BaseModel):
+    """Canceled recurring transaction.
+
+    Present if and only if `category` is `consumer_canceled_recurring_transaction`.
+    """
+
     cancellation_target: Literal["account", "transaction"]
     """Cancellation target.
 
@@ -967,6 +1129,8 @@ class VisaUserSubmissionChargebackConsumerCanceledRecurringTransaction(BaseModel
 
 
 class VisaUserSubmissionChargebackConsumerCanceledServicesCardholderCancellation(BaseModel):
+    """Cardholder cancellation."""
+
     canceled_at: date
     """Canceled at."""
 
@@ -982,6 +1146,11 @@ class VisaUserSubmissionChargebackConsumerCanceledServicesCardholderCancellation
 
 
 class VisaUserSubmissionChargebackConsumerCanceledServicesGuaranteedReservation(BaseModel):
+    """Guaranteed reservation explanation.
+
+    Present if and only if `service_type` is `guaranteed_reservation`.
+    """
+
     explanation: Literal[
         "cardholder_canceled_prior_to_service",
         "cardholder_cancellation_attempt_within_24_hours_of_confirmation",
@@ -997,14 +1166,26 @@ class VisaUserSubmissionChargebackConsumerCanceledServicesGuaranteedReservation(
 
 
 class VisaUserSubmissionChargebackConsumerCanceledServicesOther(BaseModel):
+    """Other service type explanation.
+
+    Present if and only if `service_type` is `other`.
+    """
+
     pass
 
 
 class VisaUserSubmissionChargebackConsumerCanceledServicesTimeshare(BaseModel):
+    """Timeshare explanation. Present if and only if `service_type` is `timeshare`."""
+
     pass
 
 
 class VisaUserSubmissionChargebackConsumerCanceledServices(BaseModel):
+    """Canceled services.
+
+    Present if and only if `category` is `consumer_canceled_services`.
+    """
+
     cardholder_cancellation: VisaUserSubmissionChargebackConsumerCanceledServicesCardholderCancellation
     """Cardholder cancellation."""
 
@@ -1046,6 +1227,11 @@ class VisaUserSubmissionChargebackConsumerCanceledServices(BaseModel):
 
 
 class VisaUserSubmissionChargebackConsumerCounterfeitMerchandise(BaseModel):
+    """Counterfeit merchandise.
+
+    Present if and only if `category` is `consumer_counterfeit_merchandise`.
+    """
+
     counterfeit_explanation: str
     """Counterfeit explanation."""
 
@@ -1060,6 +1246,11 @@ class VisaUserSubmissionChargebackConsumerCounterfeitMerchandise(BaseModel):
 
 
 class VisaUserSubmissionChargebackConsumerCreditNotProcessed(BaseModel):
+    """Credit not processed.
+
+    Present if and only if `category` is `consumer_credit_not_processed`.
+    """
+
     canceled_or_returned_at: Optional[date] = None
     """Canceled or returned at."""
 
@@ -1068,10 +1259,17 @@ class VisaUserSubmissionChargebackConsumerCreditNotProcessed(BaseModel):
 
 
 class VisaUserSubmissionChargebackConsumerDamagedOrDefectiveMerchandiseNotReturned(BaseModel):
+    """Not returned. Present if and only if `return_outcome` is `not_returned`."""
+
     pass
 
 
 class VisaUserSubmissionChargebackConsumerDamagedOrDefectiveMerchandiseReturnAttempted(BaseModel):
+    """Return attempted.
+
+    Present if and only if `return_outcome` is `return_attempted`.
+    """
+
     attempt_explanation: str
     """Attempt explanation."""
 
@@ -1099,6 +1297,8 @@ class VisaUserSubmissionChargebackConsumerDamagedOrDefectiveMerchandiseReturnAtt
 
 
 class VisaUserSubmissionChargebackConsumerDamagedOrDefectiveMerchandiseReturned(BaseModel):
+    """Returned. Present if and only if `return_outcome` is `returned`."""
+
     merchant_received_return_at: Optional[date] = None
     """Merchant received return at."""
 
@@ -1124,6 +1324,11 @@ class VisaUserSubmissionChargebackConsumerDamagedOrDefectiveMerchandiseReturned(
 
 
 class VisaUserSubmissionChargebackConsumerDamagedOrDefectiveMerchandise(BaseModel):
+    """Damaged or defective merchandise.
+
+    Present if and only if `category` is `consumer_damaged_or_defective_merchandise`.
+    """
+
     merchant_resolution_attempted: Literal["attempted", "prohibited_by_local_law"]
     """Merchant resolution attempted.
 
@@ -1159,10 +1364,17 @@ class VisaUserSubmissionChargebackConsumerDamagedOrDefectiveMerchandise(BaseMode
 
 
 class VisaUserSubmissionChargebackConsumerMerchandiseMisrepresentationNotReturned(BaseModel):
+    """Not returned. Present if and only if `return_outcome` is `not_returned`."""
+
     pass
 
 
 class VisaUserSubmissionChargebackConsumerMerchandiseMisrepresentationReturnAttempted(BaseModel):
+    """Return attempted.
+
+    Present if and only if `return_outcome` is `return_attempted`.
+    """
+
     attempt_explanation: str
     """Attempt explanation."""
 
@@ -1190,6 +1402,8 @@ class VisaUserSubmissionChargebackConsumerMerchandiseMisrepresentationReturnAtte
 
 
 class VisaUserSubmissionChargebackConsumerMerchandiseMisrepresentationReturned(BaseModel):
+    """Returned. Present if and only if `return_outcome` is `returned`."""
+
     merchant_received_return_at: Optional[date] = None
     """Merchant received return at."""
 
@@ -1215,6 +1429,11 @@ class VisaUserSubmissionChargebackConsumerMerchandiseMisrepresentationReturned(B
 
 
 class VisaUserSubmissionChargebackConsumerMerchandiseMisrepresentation(BaseModel):
+    """Merchandise misrepresentation.
+
+    Present if and only if `category` is `consumer_merchandise_misrepresentation`.
+    """
+
     merchant_resolution_attempted: Literal["attempted", "prohibited_by_local_law"]
     """Merchant resolution attempted.
 
@@ -1253,6 +1472,11 @@ class VisaUserSubmissionChargebackConsumerMerchandiseMisrepresentation(BaseModel
 
 
 class VisaUserSubmissionChargebackConsumerMerchandiseNotAsDescribedReturnAttempted(BaseModel):
+    """Return attempted.
+
+    Present if and only if `return_outcome` is `return_attempted`.
+    """
+
     attempt_explanation: str
     """Attempt explanation."""
 
@@ -1280,6 +1504,8 @@ class VisaUserSubmissionChargebackConsumerMerchandiseNotAsDescribedReturnAttempt
 
 
 class VisaUserSubmissionChargebackConsumerMerchandiseNotAsDescribedReturned(BaseModel):
+    """Returned. Present if and only if `return_outcome` is `returned`."""
+
     merchant_received_return_at: Optional[date] = None
     """Merchant received return at."""
 
@@ -1305,6 +1531,11 @@ class VisaUserSubmissionChargebackConsumerMerchandiseNotAsDescribedReturned(Base
 
 
 class VisaUserSubmissionChargebackConsumerMerchandiseNotAsDescribed(BaseModel):
+    """Merchandise not as described.
+
+    Present if and only if `category` is `consumer_merchandise_not_as_described`.
+    """
+
     merchant_resolution_attempted: Literal["attempted", "prohibited_by_local_law"]
     """Merchant resolution attempted.
 
@@ -1333,6 +1564,11 @@ class VisaUserSubmissionChargebackConsumerMerchandiseNotAsDescribed(BaseModel):
 
 
 class VisaUserSubmissionChargebackConsumerMerchandiseNotReceivedCardholderCancellationPriorToExpectedReceipt(BaseModel):
+    """Cardholder cancellation prior to expected receipt.
+
+    Present if and only if `cancellation_outcome` is `cardholder_cancellation_prior_to_expected_receipt`.
+    """
+
     canceled_at: date
     """Canceled at."""
 
@@ -1341,15 +1577,24 @@ class VisaUserSubmissionChargebackConsumerMerchandiseNotReceivedCardholderCancel
 
 
 class VisaUserSubmissionChargebackConsumerMerchandiseNotReceivedDelayedNotReturned(BaseModel):
+    """Not returned. Present if and only if `return_outcome` is `not_returned`."""
+
     pass
 
 
 class VisaUserSubmissionChargebackConsumerMerchandiseNotReceivedDelayedReturnAttempted(BaseModel):
+    """Return attempted.
+
+    Present if and only if `return_outcome` is `return_attempted`.
+    """
+
     attempted_at: date
     """Attempted at."""
 
 
 class VisaUserSubmissionChargebackConsumerMerchandiseNotReceivedDelayedReturned(BaseModel):
+    """Returned. Present if and only if `return_outcome` is `returned`."""
+
     merchant_received_return_at: date
     """Merchant received return at."""
 
@@ -1358,6 +1603,8 @@ class VisaUserSubmissionChargebackConsumerMerchandiseNotReceivedDelayedReturned(
 
 
 class VisaUserSubmissionChargebackConsumerMerchandiseNotReceivedDelayed(BaseModel):
+    """Delayed. Present if and only if `delivery_issue` is `delayed`."""
+
     explanation: str
     """Explanation."""
 
@@ -1383,20 +1630,40 @@ class VisaUserSubmissionChargebackConsumerMerchandiseNotReceivedDelayed(BaseMode
 
 
 class VisaUserSubmissionChargebackConsumerMerchandiseNotReceivedDeliveredToWrongLocation(BaseModel):
+    """Delivered to wrong location.
+
+    Present if and only if `delivery_issue` is `delivered_to_wrong_location`.
+    """
+
     agreed_location: str
     """Agreed location."""
 
 
 class VisaUserSubmissionChargebackConsumerMerchandiseNotReceivedMerchantCancellation(BaseModel):
+    """Merchant cancellation.
+
+    Present if and only if `cancellation_outcome` is `merchant_cancellation`.
+    """
+
     canceled_at: date
     """Canceled at."""
 
 
 class VisaUserSubmissionChargebackConsumerMerchandiseNotReceivedNoCancellation(BaseModel):
+    """No cancellation.
+
+    Present if and only if `cancellation_outcome` is `no_cancellation`.
+    """
+
     pass
 
 
 class VisaUserSubmissionChargebackConsumerMerchandiseNotReceived(BaseModel):
+    """Merchandise not received.
+
+    Present if and only if `category` is `consumer_merchandise_not_received`.
+    """
+
     cancellation_outcome: Literal[
         "cardholder_cancellation_prior_to_expected_receipt", "merchant_cancellation", "no_cancellation"
     ]
@@ -1464,10 +1731,20 @@ class VisaUserSubmissionChargebackConsumerMerchandiseNotReceived(BaseModel):
 
 
 class VisaUserSubmissionChargebackConsumerNonReceiptOfCash(BaseModel):
+    """Non-receipt of cash.
+
+    Present if and only if `category` is `consumer_non_receipt_of_cash`.
+    """
+
     pass
 
 
 class VisaUserSubmissionChargebackConsumerOriginalCreditTransactionNotAccepted(BaseModel):
+    """Original Credit Transaction (OCT) not accepted.
+
+    Present if and only if `category` is `consumer_original_credit_transaction_not_accepted`.
+    """
+
     explanation: str
     """Explanation."""
 
@@ -1481,10 +1758,14 @@ class VisaUserSubmissionChargebackConsumerOriginalCreditTransactionNotAccepted(B
 
 
 class VisaUserSubmissionChargebackConsumerQualityMerchandiseNotReturned(BaseModel):
+    """Not returned. Present if and only if `return_outcome` is `not_returned`."""
+
     pass
 
 
 class VisaUserSubmissionChargebackConsumerQualityMerchandiseOngoingNegotiations(BaseModel):
+    """Ongoing negotiations. Exclude if there is no evidence of ongoing negotiations."""
+
     explanation: str
     """
     Explanation of the previous ongoing negotiations between the cardholder and
@@ -1499,6 +1780,11 @@ class VisaUserSubmissionChargebackConsumerQualityMerchandiseOngoingNegotiations(
 
 
 class VisaUserSubmissionChargebackConsumerQualityMerchandiseReturnAttempted(BaseModel):
+    """Return attempted.
+
+    Present if and only if `return_outcome` is `return_attempted`.
+    """
+
     attempt_explanation: str
     """Attempt explanation."""
 
@@ -1526,6 +1812,8 @@ class VisaUserSubmissionChargebackConsumerQualityMerchandiseReturnAttempted(Base
 
 
 class VisaUserSubmissionChargebackConsumerQualityMerchandiseReturned(BaseModel):
+    """Returned. Present if and only if `return_outcome` is `returned`."""
+
     merchant_received_return_at: Optional[date] = None
     """Merchant received return at."""
 
@@ -1551,6 +1839,11 @@ class VisaUserSubmissionChargebackConsumerQualityMerchandiseReturned(BaseModel):
 
 
 class VisaUserSubmissionChargebackConsumerQualityMerchandise(BaseModel):
+    """Merchandise quality issue.
+
+    Present if and only if `category` is `consumer_quality_merchandise`.
+    """
+
     expected_at: date
     """Expected at."""
 
@@ -1592,6 +1885,8 @@ class VisaUserSubmissionChargebackConsumerQualityMerchandise(BaseModel):
 
 
 class VisaUserSubmissionChargebackConsumerQualityServicesCardholderCancellation(BaseModel):
+    """Cardholder cancellation."""
+
     accepted_by_merchant: Literal["accepted", "not_accepted"]
     """Accepted by merchant.
 
@@ -1607,6 +1902,8 @@ class VisaUserSubmissionChargebackConsumerQualityServicesCardholderCancellation(
 
 
 class VisaUserSubmissionChargebackConsumerQualityServicesOngoingNegotiations(BaseModel):
+    """Ongoing negotiations. Exclude if there is no evidence of ongoing negotiations."""
+
     explanation: str
     """
     Explanation of the previous ongoing negotiations between the cardholder and
@@ -1621,6 +1918,11 @@ class VisaUserSubmissionChargebackConsumerQualityServicesOngoingNegotiations(Bas
 
 
 class VisaUserSubmissionChargebackConsumerQualityServices(BaseModel):
+    """Services quality issue.
+
+    Present if and only if `category` is `consumer_quality_services`.
+    """
+
     cardholder_cancellation: VisaUserSubmissionChargebackConsumerQualityServicesCardholderCancellation
     """Cardholder cancellation."""
 
@@ -1662,6 +1964,8 @@ class VisaUserSubmissionChargebackConsumerQualityServices(BaseModel):
 
 
 class VisaUserSubmissionChargebackConsumerServicesMisrepresentationCardholderCancellation(BaseModel):
+    """Cardholder cancellation."""
+
     accepted_by_merchant: Literal["accepted", "not_accepted"]
     """Accepted by merchant.
 
@@ -1677,6 +1981,11 @@ class VisaUserSubmissionChargebackConsumerServicesMisrepresentationCardholderCan
 
 
 class VisaUserSubmissionChargebackConsumerServicesMisrepresentation(BaseModel):
+    """Services misrepresentation.
+
+    Present if and only if `category` is `consumer_services_misrepresentation`.
+    """
+
     cardholder_cancellation: VisaUserSubmissionChargebackConsumerServicesMisrepresentationCardholderCancellation
     """Cardholder cancellation."""
 
@@ -1698,6 +2007,8 @@ class VisaUserSubmissionChargebackConsumerServicesMisrepresentation(BaseModel):
 
 
 class VisaUserSubmissionChargebackConsumerServicesNotAsDescribedCardholderCancellation(BaseModel):
+    """Cardholder cancellation."""
+
     accepted_by_merchant: Literal["accepted", "not_accepted"]
     """Accepted by merchant.
 
@@ -1713,6 +2024,11 @@ class VisaUserSubmissionChargebackConsumerServicesNotAsDescribedCardholderCancel
 
 
 class VisaUserSubmissionChargebackConsumerServicesNotAsDescribed(BaseModel):
+    """Services not as described.
+
+    Present if and only if `category` is `consumer_services_not_as_described`.
+    """
+
     cardholder_cancellation: VisaUserSubmissionChargebackConsumerServicesNotAsDescribedCardholderCancellation
     """Cardholder cancellation."""
 
@@ -1728,6 +2044,11 @@ class VisaUserSubmissionChargebackConsumerServicesNotAsDescribed(BaseModel):
 
 
 class VisaUserSubmissionChargebackConsumerServicesNotReceivedCardholderCancellationPriorToExpectedReceipt(BaseModel):
+    """Cardholder cancellation prior to expected receipt.
+
+    Present if and only if `cancellation_outcome` is `cardholder_cancellation_prior_to_expected_receipt`.
+    """
+
     canceled_at: date
     """Canceled at."""
 
@@ -1736,15 +2057,30 @@ class VisaUserSubmissionChargebackConsumerServicesNotReceivedCardholderCancellat
 
 
 class VisaUserSubmissionChargebackConsumerServicesNotReceivedMerchantCancellation(BaseModel):
+    """Merchant cancellation.
+
+    Present if and only if `cancellation_outcome` is `merchant_cancellation`.
+    """
+
     canceled_at: date
     """Canceled at."""
 
 
 class VisaUserSubmissionChargebackConsumerServicesNotReceivedNoCancellation(BaseModel):
+    """No cancellation.
+
+    Present if and only if `cancellation_outcome` is `no_cancellation`.
+    """
+
     pass
 
 
 class VisaUserSubmissionChargebackConsumerServicesNotReceived(BaseModel):
+    """Services not received.
+
+    Present if and only if `category` is `consumer_services_not_received`.
+    """
+
     cancellation_outcome: Literal[
         "cardholder_cancellation_prior_to_expected_receipt", "merchant_cancellation", "no_cancellation"
     ]
@@ -1792,6 +2128,8 @@ class VisaUserSubmissionChargebackConsumerServicesNotReceived(BaseModel):
 
 
 class VisaUserSubmissionChargebackFraud(BaseModel):
+    """Fraud. Present if and only if `category` is `fraud`."""
+
     fraud_type: Literal[
         "account_or_credentials_takeover",
         "card_not_received_as_issued",
@@ -1822,16 +2160,28 @@ class VisaUserSubmissionChargebackFraud(BaseModel):
 
 
 class VisaUserSubmissionChargebackProcessingErrorDuplicateTransaction(BaseModel):
+    """Duplicate transaction.
+
+    Present if and only if `error_reason` is `duplicate_transaction`.
+    """
+
     other_transaction_id: str
     """Other transaction ID."""
 
 
 class VisaUserSubmissionChargebackProcessingErrorIncorrectAmount(BaseModel):
+    """Incorrect amount. Present if and only if `error_reason` is `incorrect_amount`."""
+
     expected_amount: int
     """Expected amount."""
 
 
 class VisaUserSubmissionChargebackProcessingErrorPaidByOtherMeans(BaseModel):
+    """Paid by other means.
+
+    Present if and only if `error_reason` is `paid_by_other_means`.
+    """
+
     other_form_of_payment_evidence: Literal[
         "canceled_check", "card_transaction", "cash_receipt", "other", "statement", "voucher"
     ]
@@ -1850,6 +2200,8 @@ class VisaUserSubmissionChargebackProcessingErrorPaidByOtherMeans(BaseModel):
 
 
 class VisaUserSubmissionChargebackProcessingError(BaseModel):
+    """Processing error. Present if and only if `category` is `processing_error`."""
+
     duplicate_transaction: Optional[VisaUserSubmissionChargebackProcessingErrorDuplicateTransaction] = None
     """Duplicate transaction.
 
@@ -1882,6 +2234,11 @@ class VisaUserSubmissionChargebackProcessingError(BaseModel):
 
 
 class VisaUserSubmissionChargeback(BaseModel):
+    """A Visa Card Dispute Chargeback User Submission Chargeback Details object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `chargeback`. Contains the details specific to a Visa chargeback User Submission for a Card Dispute.
+    """
+
     authorization: Optional[VisaUserSubmissionChargebackAuthorization] = None
     """Authorization. Present if and only if `category` is `authorization`."""
 
@@ -2050,6 +2407,11 @@ class VisaUserSubmissionChargeback(BaseModel):
 
 
 class VisaUserSubmissionMerchantPrearbitrationDecline(BaseModel):
+    """A Visa Card Dispute Merchant Pre-Arbitration Decline User Submission object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `merchant_prearbitration_decline`. Contains the details specific to a merchant prearbitration decline Visa Card Dispute User Submission.
+    """
+
     reason: str
     """
     The reason the user declined the merchant's request for pre-arbitration in their
@@ -2058,6 +2420,8 @@ class VisaUserSubmissionMerchantPrearbitrationDecline(BaseModel):
 
 
 class VisaUserSubmissionUserPrearbitrationCategoryChange(BaseModel):
+    """Category change details for the pre-arbitration request, if requested."""
+
     category: Literal[
         "authorization",
         "consumer_canceled_merchandise",
@@ -2112,6 +2476,11 @@ class VisaUserSubmissionUserPrearbitrationCategoryChange(BaseModel):
 
 
 class VisaUserSubmissionUserPrearbitration(BaseModel):
+    """A Visa Card Dispute User-Initiated Pre-Arbitration User Submission object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `user_prearbitration`. Contains the details specific to a user-initiated pre-arbitration Visa Card Dispute User Submission.
+    """
+
     category_change: Optional[VisaUserSubmissionUserPrearbitrationCategoryChange] = None
     """Category change details for the pre-arbitration request, if requested."""
 
@@ -2210,6 +2579,11 @@ class VisaUserSubmission(BaseModel):
 
 
 class Visa(BaseModel):
+    """Card Dispute information for card payments processed over Visa's network.
+
+    This field will be present in the JSON response if and only if `network` is equal to `visa`.
+    """
+
     network_events: List[VisaNetworkEvent]
     """The network events for the Card Dispute."""
 
@@ -2233,6 +2607,10 @@ class Visa(BaseModel):
 
 
 class Win(BaseModel):
+    """
+    If the Card Dispute's status is `won`, this will contain details of the won dispute.
+    """
+
     won_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -2241,6 +2619,10 @@ class Win(BaseModel):
 
 
 class CardDispute(BaseModel):
+    """
+    If unauthorized activity occurs on a card, you can create a Card Dispute and we'll work with the card networks to return the funds if appropriate.
+    """
+
     id: str
     """The Card Dispute identifier."""
 

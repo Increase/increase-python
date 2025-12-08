@@ -8,6 +8,8 @@ __all__ = ["RoutingNumberListResponse"]
 
 
 class RoutingNumberListResponse(BaseModel):
+    """Routing numbers are used to identify your bank in a financial transaction."""
+
     ach_transfers: Literal["supported", "not_supported"]
     """This routing number's support for ACH Transfers.
 

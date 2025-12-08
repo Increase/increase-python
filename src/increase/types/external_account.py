@@ -12,6 +12,10 @@ __all__ = ["ExternalAccount"]
 
 
 class ExternalAccount(BaseModel):
+    """
+    External Accounts represent accounts at financial institutions other than Increase. You can use this API to store their details for reuse.
+    """
+
     id: str
     """The External Account's identifier."""
 

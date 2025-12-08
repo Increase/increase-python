@@ -50,6 +50,8 @@ class FednowTransferCreateParams(TypedDict, total=False):
 
 
 class CreditorAddress(TypedDict, total=False):
+    """The creditor's address."""
+
     city: Required[str]
     """The city, district, town, or village of the address."""
 
@@ -64,6 +66,8 @@ class CreditorAddress(TypedDict, total=False):
 
 
 class DebtorAddress(TypedDict, total=False):
+    """The debtor's address."""
+
     city: Required[str]
     """The city, district, town, or village of the address."""
 

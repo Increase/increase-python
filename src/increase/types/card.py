@@ -12,6 +12,8 @@ __all__ = ["Card", "BillingAddress", "DigitalWallet"]
 
 
 class BillingAddress(BaseModel):
+    """The Card's billing address."""
+
     city: Optional[str] = None
     """The city of the billing address."""
 
@@ -29,6 +31,10 @@ class BillingAddress(BaseModel):
 
 
 class DigitalWallet(BaseModel):
+    """
+    The contact information used in the two-factor steps for digital wallet card creation. At least one field must be present to complete the digital wallet steps.
+    """
+
     digital_card_profile_id: Optional[str] = None
     """The digital card profile assigned to this digital card.
 
@@ -49,6 +55,11 @@ class DigitalWallet(BaseModel):
 
 
 class Card(BaseModel):
+    """Cards are commercial credit cards.
+
+    They'll immediately work for online purchases after you create them. All cards maintain a credit limit of 100% of the Account’s available balance at the time of transaction. Funds are deducted from the Account upon transaction settlement.
+    """
+
     id: str
     """The card identifier."""
 

@@ -35,6 +35,8 @@ class CardCreateParams(TypedDict, total=False):
 
 
 class BillingAddress(TypedDict, total=False):
+    """The card's billing address."""
+
     city: Required[str]
     """The city of the billing address."""
 
@@ -52,6 +54,10 @@ class BillingAddress(TypedDict, total=False):
 
 
 class DigitalWallet(TypedDict, total=False):
+    """
+    The contact information used in the two-factor steps for digital wallet card creation. To add the card to a digital wallet, you may supply an email or phone number with this request. Otherwise, subscribe and then action a Real Time Decision with the category `digital_wallet_token_requested` or `digital_wallet_authentication_requested`.
+    """
+
     digital_card_profile_id: str
     """The digital card profile assigned to this digital card."""
 

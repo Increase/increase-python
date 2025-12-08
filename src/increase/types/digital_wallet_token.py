@@ -10,11 +10,15 @@ __all__ = ["DigitalWalletToken", "Cardholder", "Device", "Update"]
 
 
 class Cardholder(BaseModel):
+    """The cardholder information given when the Digital Wallet Token was created."""
+
     name: Optional[str] = None
     """Name of the cardholder, for example "John Smith"."""
 
 
 class Device(BaseModel):
+    """The device that was used to create the Digital Wallet Token."""
+
     device_type: Optional[
         Literal[
             "unknown",
@@ -70,6 +74,10 @@ class Update(BaseModel):
 
 
 class DigitalWalletToken(BaseModel):
+    """
+    A Digital Wallet Token is created when a user adds a Card to their Apple Pay or Google Pay app. The Digital Wallet Token can be used for purchases just like a Card.
+    """
+
     id: str
     """The Digital Wallet Token identifier."""
 

@@ -12,6 +12,10 @@ __all__ = ["InboundWireDrawdownRequest"]
 
 
 class InboundWireDrawdownRequest(BaseModel):
+    """
+    Inbound wire drawdown requests are requests from someone else to send them a wire. For more information, see our [Wire Drawdown Requests documentation](/documentation/wire-drawdown-requests).
+    """
+
     id: str
     """The Wire drawdown request identifier."""
 

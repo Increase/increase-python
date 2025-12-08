@@ -12,6 +12,11 @@ __all__ = ["PhysicalCardProfile"]
 
 
 class PhysicalCardProfile(BaseModel):
+    """This contains artwork and metadata relating to a Physical Card's appearance.
+
+    For more information, see our guide on [physical card artwork](https://increase.com/documentation/card-art-physical-cards).
+    """
+
     id: str
     """The Card Profile identifier."""
 

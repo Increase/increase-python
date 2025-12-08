@@ -10,6 +10,8 @@ __all__ = ["Lockbox", "Address"]
 
 
 class Address(BaseModel):
+    """The mailing address for the Lockbox."""
+
     city: str
     """The city of the address."""
 
@@ -38,6 +40,11 @@ class Address(BaseModel):
 
 
 class Lockbox(BaseModel):
+    """Lockboxes are physical locations that can receive mail containing paper checks.
+
+    Increase will automatically create a Check Deposit for checks received this way.
+    """
+
     id: str
     """The Lockbox identifier."""
 
