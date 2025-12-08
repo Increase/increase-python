@@ -85,6 +85,7 @@ class RealTimeDecisionsResource(SyncAPIResource):
         card_authentication: real_time_decision_action_params.CardAuthentication | Omit = omit,
         card_authentication_challenge: real_time_decision_action_params.CardAuthenticationChallenge | Omit = omit,
         card_authorization: real_time_decision_action_params.CardAuthorization | Omit = omit,
+        card_balance_inquiry: real_time_decision_action_params.CardBalanceInquiry | Omit = omit,
         digital_wallet_authentication: real_time_decision_action_params.DigitalWalletAuthentication | Omit = omit,
         digital_wallet_token: real_time_decision_action_params.DigitalWalletToken | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -109,6 +110,9 @@ class RealTimeDecisionsResource(SyncAPIResource):
 
           card_authorization: If the Real-Time Decision relates to a card authorization attempt, this object
               contains your response to the authorization.
+
+          card_balance_inquiry: If the Real-Time Decision relates to a card balance inquiry attempt, this object
+              contains your response to the inquiry.
 
           digital_wallet_authentication: If the Real-Time Decision relates to a digital wallet authentication attempt,
               this object contains your response to the authentication.
@@ -137,6 +141,7 @@ class RealTimeDecisionsResource(SyncAPIResource):
                     "card_authentication": card_authentication,
                     "card_authentication_challenge": card_authentication_challenge,
                     "card_authorization": card_authorization,
+                    "card_balance_inquiry": card_balance_inquiry,
                     "digital_wallet_authentication": digital_wallet_authentication,
                     "digital_wallet_token": digital_wallet_token,
                 },
@@ -217,6 +222,7 @@ class AsyncRealTimeDecisionsResource(AsyncAPIResource):
         card_authentication: real_time_decision_action_params.CardAuthentication | Omit = omit,
         card_authentication_challenge: real_time_decision_action_params.CardAuthenticationChallenge | Omit = omit,
         card_authorization: real_time_decision_action_params.CardAuthorization | Omit = omit,
+        card_balance_inquiry: real_time_decision_action_params.CardBalanceInquiry | Omit = omit,
         digital_wallet_authentication: real_time_decision_action_params.DigitalWalletAuthentication | Omit = omit,
         digital_wallet_token: real_time_decision_action_params.DigitalWalletToken | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -241,6 +247,9 @@ class AsyncRealTimeDecisionsResource(AsyncAPIResource):
 
           card_authorization: If the Real-Time Decision relates to a card authorization attempt, this object
               contains your response to the authorization.
+
+          card_balance_inquiry: If the Real-Time Decision relates to a card balance inquiry attempt, this object
+              contains your response to the inquiry.
 
           digital_wallet_authentication: If the Real-Time Decision relates to a digital wallet authentication attempt,
               this object contains your response to the authentication.
@@ -269,6 +278,7 @@ class AsyncRealTimeDecisionsResource(AsyncAPIResource):
                     "card_authentication": card_authentication,
                     "card_authentication_challenge": card_authentication_challenge,
                     "card_authorization": card_authorization,
+                    "card_balance_inquiry": card_balance_inquiry,
                     "digital_wallet_authentication": digital_wallet_authentication,
                     "digital_wallet_token": digital_wallet_token,
                 },

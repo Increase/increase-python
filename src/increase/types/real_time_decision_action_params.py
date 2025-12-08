@@ -13,6 +13,8 @@ __all__ = [
     "CardAuthorizationApproval",
     "CardAuthorizationApprovalCardholderAddressVerificationResult",
     "CardAuthorizationDecline",
+    "CardBalanceInquiry",
+    "CardBalanceInquiryApproval",
     "DigitalWalletAuthentication",
     "DigitalWalletAuthenticationSuccess",
     "DigitalWalletToken",
@@ -38,6 +40,12 @@ class RealTimeDecisionActionParams(TypedDict, total=False):
     """
     If the Real-Time Decision relates to a card authorization attempt, this object
     contains your response to the authorization.
+    """
+
+    card_balance_inquiry: CardBalanceInquiry
+    """
+    If the Real-Time Decision relates to a card balance inquiry attempt, this object
+    contains your response to the inquiry.
     """
 
     digital_wallet_authentication: DigitalWalletAuthentication
@@ -196,6 +204,34 @@ class CardAuthorizationTyped(TypedDict, total=False):
 
 
 CardAuthorization: TypeAlias = Union[CardAuthorizationTyped, Dict[str, object]]
+
+
+class CardBalanceInquiryApproval(TypedDict, total=False):
+    """
+    If your application approves the balance inquiry, this contains metadata about your decision to approve.
+    """
+
+    balance: Required[int]
+    """The balance on the card in the settlement currency of the transaction."""
+
+
+class CardBalanceInquiry(TypedDict, total=False):
+    """
+    If the Real-Time Decision relates to a card balance inquiry attempt, this object contains your response to the inquiry.
+    """
+
+    decision: Required[Literal["approve", "decline"]]
+    """Whether the card balance inquiry should be approved or declined.
+
+    - `approve` - Approve the authorization.
+    - `decline` - Decline the authorization.
+    """
+
+    approval: CardBalanceInquiryApproval
+    """
+    If your application approves the balance inquiry, this contains metadata about
+    your decision to approve.
+    """
 
 
 class DigitalWalletAuthenticationSuccess(TypedDict, total=False):

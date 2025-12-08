@@ -79,6 +79,10 @@ class TestRealTimeDecisions:
                 },
                 "decline": {"reason": "insufficient_funds"},
             },
+            card_balance_inquiry={
+                "decision": "approve",
+                "approval": {"balance": 0},
+            },
             digital_wallet_authentication={
                 "result": "success",
                 "success": {
@@ -194,6 +198,10 @@ class TestAsyncRealTimeDecisions:
                     "partial_amount": 1,
                 },
                 "decline": {"reason": "insufficient_funds"},
+            },
+            card_balance_inquiry={
+                "decision": "approve",
+                "approval": {"balance": 0},
             },
             digital_wallet_authentication={
                 "result": "success",
