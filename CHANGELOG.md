@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.406.1 (2025-12-08)
+
+Full Changelog: [v0.406.0...v0.406.1](https://github.com/Increase/increase-python/compare/v0.406.0...v0.406.1)
+
+### Bug Fixes
+
+* **types:** allow pyright to infer TypedDict types within SequenceNotStr ([7e2d906](https://github.com/Increase/increase-python/commit/7e2d906a29e5173da0fcac4d7c08805a4026d169))
+
 ## 0.406.0 (2025-12-06)
 
 Full Changelog: [v0.405.0...v0.406.0](https://github.com/Increase/increase-python/compare/v0.405.0...v0.406.0)
