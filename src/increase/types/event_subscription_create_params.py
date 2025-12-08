@@ -103,6 +103,7 @@ class EventSubscriptionCreateParams(TypedDict, total=False):
         "proof_of_authorization_request.created",
         "proof_of_authorization_request.updated",
         "real_time_decision.card_authorization_requested",
+        "real_time_decision.card_balance_inquiry_requested",
         "real_time_decision.digital_wallet_token_requested",
         "real_time_decision.digital_wallet_authentication_requested",
         "real_time_decision.card_authentication_requested",
@@ -248,6 +249,8 @@ class EventSubscriptionCreateParams(TypedDict, total=False):
       Authorization Request is updated.
     - `real_time_decision.card_authorization_requested` - Occurs whenever a
       Real-Time Decision is created in response to a card authorization.
+    - `real_time_decision.card_balance_inquiry_requested` - Occurs whenever a
+      Real-Time Decision is created in response to a card balance inquiry.
     - `real_time_decision.digital_wallet_token_requested` - Occurs whenever a
       Real-Time Decision is created in response to a digital wallet provisioning
       attempt.

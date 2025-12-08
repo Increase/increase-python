@@ -119,6 +119,7 @@ _CategoryReservedKeywords = TypedDict(
                 "proof_of_authorization_request.created",
                 "proof_of_authorization_request.updated",
                 "real_time_decision.card_authorization_requested",
+                "real_time_decision.card_balance_inquiry_requested",
                 "real_time_decision.digital_wallet_token_requested",
                 "real_time_decision.digital_wallet_authentication_requested",
                 "real_time_decision.card_authentication_requested",
