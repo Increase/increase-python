@@ -38,47 +38,102 @@ class CardDisputeActionParams(TypedDict, total=False):
 
 
 class VisaAcceptChargeback(TypedDict, total=False):
+    """The parameters for accepting the chargeback.
+
+    Required if and only if `action` is `accept_chargeback`.
+    """
+
     pass
 
 
 class VisaAcceptUserSubmission(TypedDict, total=False):
+    """The parameters for accepting the user submission.
+
+    Required if and only if `action` is `accept_user_submission`.
+    """
+
     pass
 
 
 class VisaDeclineUserPrearbitration(TypedDict, total=False):
+    """The parameters for declining the prearbitration.
+
+    Required if and only if `action` is `decline_user_prearbitration`.
+    """
+
     pass
 
 
 class VisaReceiveMerchantPrearbitration(TypedDict, total=False):
+    """The parameters for receiving the prearbitration.
+
+    Required if and only if `action` is `receive_merchant_prearbitration`.
+    """
+
     pass
 
 
 class VisaRepresent(TypedDict, total=False):
+    """The parameters for re-presenting the dispute.
+
+    Required if and only if `action` is `represent`.
+    """
+
     pass
 
 
 class VisaRequestFurtherInformation(TypedDict, total=False):
+    """The parameters for requesting further information from the user.
+
+    Required if and only if `action` is `request_further_information`.
+    """
+
     reason: Required[str]
     """The reason for requesting further information from the user."""
 
 
 class VisaTimeOutChargeback(TypedDict, total=False):
+    """The parameters for timing out the chargeback.
+
+    Required if and only if `action` is `time_out_chargeback`.
+    """
+
     pass
 
 
 class VisaTimeOutMerchantPrearbitration(TypedDict, total=False):
+    """The parameters for timing out the merchant prearbitration.
+
+    Required if and only if `action` is `time_out_merchant_prearbitration`.
+    """
+
     pass
 
 
 class VisaTimeOutRepresentment(TypedDict, total=False):
+    """The parameters for timing out the re-presentment.
+
+    Required if and only if `action` is `time_out_representment`.
+    """
+
     pass
 
 
 class VisaTimeOutUserPrearbitration(TypedDict, total=False):
+    """The parameters for timing out the user prearbitration.
+
+    Required if and only if `action` is `time_out_user_prearbitration`.
+    """
+
     pass
 
 
 class Visa(TypedDict, total=False):
+    """The Visa-specific parameters for the taking action on the dispute.
+
+    Required if and only if `network` is `visa`.
+    """
+
     action: Required[
         Literal[
             "accept_chargeback",

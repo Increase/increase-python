@@ -41,6 +41,11 @@ __all__ = [
 
 
 class SourceACHDecline(BaseModel):
+    """An ACH Decline object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `ach_decline`.
+    """
+
     id: str
     """The ACH Decline's identifier."""
 
@@ -140,6 +145,8 @@ class SourceACHDecline(BaseModel):
 
 
 class SourceCardDeclineAdditionalAmountsClinic(BaseModel):
+    """The part of this transaction amount that was for clinic-related services."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -155,6 +162,8 @@ class SourceCardDeclineAdditionalAmountsClinic(BaseModel):
 
 
 class SourceCardDeclineAdditionalAmountsDental(BaseModel):
+    """The part of this transaction amount that was for dental-related services."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -170,6 +179,8 @@ class SourceCardDeclineAdditionalAmountsDental(BaseModel):
 
 
 class SourceCardDeclineAdditionalAmountsOriginal(BaseModel):
+    """The original pre-authorized amount."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -185,6 +196,8 @@ class SourceCardDeclineAdditionalAmountsOriginal(BaseModel):
 
 
 class SourceCardDeclineAdditionalAmountsPrescription(BaseModel):
+    """The part of this transaction amount that was for healthcare prescriptions."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -200,6 +213,8 @@ class SourceCardDeclineAdditionalAmountsPrescription(BaseModel):
 
 
 class SourceCardDeclineAdditionalAmountsSurcharge(BaseModel):
+    """The surcharge amount charged for this transaction by the merchant."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -215,6 +230,10 @@ class SourceCardDeclineAdditionalAmountsSurcharge(BaseModel):
 
 
 class SourceCardDeclineAdditionalAmountsTotalCumulative(BaseModel):
+    """
+    The total amount of a series of incremental authorizations, optionally provided.
+    """
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -230,6 +249,8 @@ class SourceCardDeclineAdditionalAmountsTotalCumulative(BaseModel):
 
 
 class SourceCardDeclineAdditionalAmountsTotalHealthcare(BaseModel):
+    """The total amount of healthcare-related additional amounts."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -245,6 +266,8 @@ class SourceCardDeclineAdditionalAmountsTotalHealthcare(BaseModel):
 
 
 class SourceCardDeclineAdditionalAmountsTransit(BaseModel):
+    """The part of this transaction amount that was for transit-related services."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -260,6 +283,8 @@ class SourceCardDeclineAdditionalAmountsTransit(BaseModel):
 
 
 class SourceCardDeclineAdditionalAmountsUnknown(BaseModel):
+    """An unknown additional amount."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -275,6 +300,8 @@ class SourceCardDeclineAdditionalAmountsUnknown(BaseModel):
 
 
 class SourceCardDeclineAdditionalAmountsVision(BaseModel):
+    """The part of this transaction amount that was for vision-related services."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -290,6 +317,10 @@ class SourceCardDeclineAdditionalAmountsVision(BaseModel):
 
 
 class SourceCardDeclineAdditionalAmounts(BaseModel):
+    """
+    Additional amounts associated with the card authorization, such as ATM surcharges fees. These are usually a subset of the `amount` field and are used to provide more detailed information about the transaction.
+    """
+
     clinic: Optional[SourceCardDeclineAdditionalAmountsClinic] = None
     """The part of this transaction amount that was for clinic-related services."""
 
@@ -324,10 +355,14 @@ class SourceCardDeclineAdditionalAmounts(BaseModel):
 
 
 class SourceCardDeclineNetworkDetailsPulse(BaseModel):
+    """Fields specific to the `pulse` network."""
+
     pass
 
 
 class SourceCardDeclineNetworkDetailsVisa(BaseModel):
+    """Fields specific to the `visa` network."""
+
     electronic_commerce_indicator: Optional[
         Literal[
             "mail_phone_order",
@@ -446,6 +481,8 @@ class SourceCardDeclineNetworkDetailsVisa(BaseModel):
 
 
 class SourceCardDeclineNetworkDetails(BaseModel):
+    """Fields specific to the `network`."""
+
     category: Literal["visa", "pulse"]
     """The payment network used to process this card authorization.
 
@@ -461,6 +498,8 @@ class SourceCardDeclineNetworkDetails(BaseModel):
 
 
 class SourceCardDeclineNetworkIdentifiers(BaseModel):
+    """Network-specific identifiers for a specific request or transaction."""
+
     authorization_identification_response: Optional[str] = None
     """
     The randomly generated 6-character Authorization Identification Response code
@@ -488,6 +527,10 @@ class SourceCardDeclineNetworkIdentifiers(BaseModel):
 
 
 class SourceCardDeclineVerificationCardVerificationCode(BaseModel):
+    """
+    Fields related to verification of the Card Verification Code, a 3-digit code on the back of the card.
+    """
+
     result: Literal["not_checked", "match", "no_match"]
     """The result of verifying the Card Verification Code.
 
@@ -499,6 +542,10 @@ class SourceCardDeclineVerificationCardVerificationCode(BaseModel):
 
 
 class SourceCardDeclineVerificationCardholderAddress(BaseModel):
+    """
+    Cardholder address provided in the authorization request and the address on file we verified it against.
+    """
+
     actual_line1: Optional[str] = None
     """Line 1 of the address on file for the cardholder."""
 
@@ -538,6 +585,8 @@ class SourceCardDeclineVerificationCardholderAddress(BaseModel):
 
 
 class SourceCardDeclineVerification(BaseModel):
+    """Fields related to verification of cardholder-provided values."""
+
     card_verification_code: SourceCardDeclineVerificationCardVerificationCode
     """
     Fields related to verification of the Card Verification Code, a 3-digit code on
@@ -552,6 +601,11 @@ class SourceCardDeclineVerification(BaseModel):
 
 
 class SourceCardDecline(BaseModel):
+    """A Card Decline object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `card_decline`.
+    """
+
     id: str
     """The Card Decline identifier."""
 
@@ -827,6 +881,11 @@ class SourceCardDecline(BaseModel):
 
 
 class SourceCheckDecline(BaseModel):
+    """A Check Decline object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `check_decline`.
+    """
+
     amount: int
     """The declined amount in USD cents."""
 
@@ -917,6 +976,11 @@ class SourceCheckDecline(BaseModel):
 
 
 class SourceCheckDepositRejection(BaseModel):
+    """A Check Deposit Rejection object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `check_deposit_rejection`.
+    """
+
     amount: int
     """The rejected amount in the minor unit of check's currency.
 
@@ -988,6 +1052,11 @@ class SourceCheckDepositRejection(BaseModel):
 
 
 class SourceInboundFednowTransferDecline(BaseModel):
+    """An Inbound FedNow Transfer Decline object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `inbound_fednow_transfer_decline`.
+    """
+
     reason: Literal[
         "account_number_canceled",
         "account_number_disabled",
@@ -1024,6 +1093,11 @@ class SourceInboundFednowTransferDecline(BaseModel):
 
 
 class SourceInboundRealTimePaymentsTransferDecline(BaseModel):
+    """An Inbound Real-Time Payments Transfer Decline object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `inbound_real_time_payments_transfer_decline`.
+    """
+
     amount: int
     """The declined amount in the minor unit of the destination account currency.
 
@@ -1081,10 +1155,19 @@ class SourceInboundRealTimePaymentsTransferDecline(BaseModel):
 
 
 class SourceOther(BaseModel):
+    """
+    If the category of this Transaction source is equal to `other`, this field will contain an empty object, otherwise it will contain null.
+    """
+
     pass
 
 
 class SourceWireDecline(BaseModel):
+    """A Wire Decline object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `wire_decline`.
+    """
+
     inbound_wire_transfer_id: str
     """The identifier of the Inbound Wire Transfer that was declined."""
 
@@ -1121,6 +1204,10 @@ class SourceWireDecline(BaseModel):
 
 
 class Source(BaseModel):
+    """
+    This is an object giving more details on the network-level event that caused the Declined Transaction. For example, for a card transaction this lists the merchant's industry and location. Note that for backwards compatibility reasons, additional undocumented keys may appear in this object. These should be treated as deprecated and will be removed in the future.
+    """
+
     ach_decline: Optional[SourceACHDecline] = None
     """An ACH Decline object.
 
@@ -1223,6 +1310,10 @@ class Source(BaseModel):
 
 
 class DeclinedTransaction(BaseModel):
+    """
+    Declined Transactions are refused additions and removals of money from your bank account. For example, Declined Transactions are caused when your Account has an insufficient balance or your Limits are triggered.
+    """
+
     id: str
     """The Declined Transaction identifier."""
 

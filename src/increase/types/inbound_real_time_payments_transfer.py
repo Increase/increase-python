@@ -10,6 +10,8 @@ __all__ = ["InboundRealTimePaymentsTransfer", "Confirmation", "Decline"]
 
 
 class Confirmation(BaseModel):
+    """If your transfer is confirmed, this will contain details of the confirmation."""
+
     confirmed_at: datetime
     """The time at which the transfer was confirmed."""
 
@@ -18,6 +20,8 @@ class Confirmation(BaseModel):
 
 
 class Decline(BaseModel):
+    """If your transfer is declined, this will contain details of the decline."""
+
     declined_at: datetime
     """The time at which the transfer was declined."""
 
@@ -45,6 +49,10 @@ class Decline(BaseModel):
 
 
 class InboundRealTimePaymentsTransfer(BaseModel):
+    """
+    An Inbound Real-Time Payments Transfer is a Real-Time Payments transfer initiated outside of Increase to your account.
+    """
+
     id: str
     """The inbound Real-Time Payments transfer's identifier."""
 

@@ -46,6 +46,11 @@ __all__ = [
 
 
 class SourceAccountTransferInstruction(BaseModel):
+    """An Account Transfer Instruction object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `account_transfer_instruction`.
+    """
+
     amount: int
     """The pending amount in the minor unit of the transaction's currency.
 
@@ -77,6 +82,11 @@ class SourceAccountTransferInstruction(BaseModel):
 
 
 class SourceACHTransferInstruction(BaseModel):
+    """An ACH Transfer Instruction object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `ach_transfer_instruction`.
+    """
+
     amount: int
     """The pending amount in USD cents."""
 
@@ -97,6 +107,8 @@ class SourceACHTransferInstruction(BaseModel):
 
 
 class SourceCardAuthorizationAdditionalAmountsClinic(BaseModel):
+    """The part of this transaction amount that was for clinic-related services."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -112,6 +124,8 @@ class SourceCardAuthorizationAdditionalAmountsClinic(BaseModel):
 
 
 class SourceCardAuthorizationAdditionalAmountsDental(BaseModel):
+    """The part of this transaction amount that was for dental-related services."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -127,6 +141,8 @@ class SourceCardAuthorizationAdditionalAmountsDental(BaseModel):
 
 
 class SourceCardAuthorizationAdditionalAmountsOriginal(BaseModel):
+    """The original pre-authorized amount."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -142,6 +158,8 @@ class SourceCardAuthorizationAdditionalAmountsOriginal(BaseModel):
 
 
 class SourceCardAuthorizationAdditionalAmountsPrescription(BaseModel):
+    """The part of this transaction amount that was for healthcare prescriptions."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -157,6 +175,8 @@ class SourceCardAuthorizationAdditionalAmountsPrescription(BaseModel):
 
 
 class SourceCardAuthorizationAdditionalAmountsSurcharge(BaseModel):
+    """The surcharge amount charged for this transaction by the merchant."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -172,6 +192,10 @@ class SourceCardAuthorizationAdditionalAmountsSurcharge(BaseModel):
 
 
 class SourceCardAuthorizationAdditionalAmountsTotalCumulative(BaseModel):
+    """
+    The total amount of a series of incremental authorizations, optionally provided.
+    """
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -187,6 +211,8 @@ class SourceCardAuthorizationAdditionalAmountsTotalCumulative(BaseModel):
 
 
 class SourceCardAuthorizationAdditionalAmountsTotalHealthcare(BaseModel):
+    """The total amount of healthcare-related additional amounts."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -202,6 +228,8 @@ class SourceCardAuthorizationAdditionalAmountsTotalHealthcare(BaseModel):
 
 
 class SourceCardAuthorizationAdditionalAmountsTransit(BaseModel):
+    """The part of this transaction amount that was for transit-related services."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -217,6 +245,8 @@ class SourceCardAuthorizationAdditionalAmountsTransit(BaseModel):
 
 
 class SourceCardAuthorizationAdditionalAmountsUnknown(BaseModel):
+    """An unknown additional amount."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -232,6 +262,8 @@ class SourceCardAuthorizationAdditionalAmountsUnknown(BaseModel):
 
 
 class SourceCardAuthorizationAdditionalAmountsVision(BaseModel):
+    """The part of this transaction amount that was for vision-related services."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -247,6 +279,10 @@ class SourceCardAuthorizationAdditionalAmountsVision(BaseModel):
 
 
 class SourceCardAuthorizationAdditionalAmounts(BaseModel):
+    """
+    Additional amounts associated with the card authorization, such as ATM surcharges fees. These are usually a subset of the `amount` field and are used to provide more detailed information about the transaction.
+    """
+
     clinic: Optional[SourceCardAuthorizationAdditionalAmountsClinic] = None
     """The part of this transaction amount that was for clinic-related services."""
 
@@ -281,10 +317,14 @@ class SourceCardAuthorizationAdditionalAmounts(BaseModel):
 
 
 class SourceCardAuthorizationNetworkDetailsPulse(BaseModel):
+    """Fields specific to the `pulse` network."""
+
     pass
 
 
 class SourceCardAuthorizationNetworkDetailsVisa(BaseModel):
+    """Fields specific to the `visa` network."""
+
     electronic_commerce_indicator: Optional[
         Literal[
             "mail_phone_order",
@@ -403,6 +443,8 @@ class SourceCardAuthorizationNetworkDetailsVisa(BaseModel):
 
 
 class SourceCardAuthorizationNetworkDetails(BaseModel):
+    """Fields specific to the `network`."""
+
     category: Literal["visa", "pulse"]
     """The payment network used to process this card authorization.
 
@@ -418,6 +460,8 @@ class SourceCardAuthorizationNetworkDetails(BaseModel):
 
 
 class SourceCardAuthorizationNetworkIdentifiers(BaseModel):
+    """Network-specific identifiers for a specific request or transaction."""
+
     authorization_identification_response: Optional[str] = None
     """
     The randomly generated 6-character Authorization Identification Response code
@@ -445,6 +489,10 @@ class SourceCardAuthorizationNetworkIdentifiers(BaseModel):
 
 
 class SourceCardAuthorizationVerificationCardVerificationCode(BaseModel):
+    """
+    Fields related to verification of the Card Verification Code, a 3-digit code on the back of the card.
+    """
+
     result: Literal["not_checked", "match", "no_match"]
     """The result of verifying the Card Verification Code.
 
@@ -456,6 +504,10 @@ class SourceCardAuthorizationVerificationCardVerificationCode(BaseModel):
 
 
 class SourceCardAuthorizationVerificationCardholderAddress(BaseModel):
+    """
+    Cardholder address provided in the authorization request and the address on file we verified it against.
+    """
+
     actual_line1: Optional[str] = None
     """Line 1 of the address on file for the cardholder."""
 
@@ -495,6 +547,8 @@ class SourceCardAuthorizationVerificationCardholderAddress(BaseModel):
 
 
 class SourceCardAuthorizationVerification(BaseModel):
+    """Fields related to verification of cardholder-provided values."""
+
     card_verification_code: SourceCardAuthorizationVerificationCardVerificationCode
     """
     Fields related to verification of the Card Verification Code, a 3-digit code on
@@ -509,6 +563,11 @@ class SourceCardAuthorizationVerification(BaseModel):
 
 
 class SourceCardAuthorization(BaseModel):
+    """A Card Authorization object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `card_authorization`. Card Authorizations are temporary holds placed on a customers funds with the intent to later clear a transaction.
+    """
+
     id: str
     """The Card Authorization identifier."""
 
@@ -705,6 +764,11 @@ class SourceCardAuthorization(BaseModel):
 
 
 class SourceCardPushTransferInstruction(BaseModel):
+    """A Card Push Transfer Instruction object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `card_push_transfer_instruction`.
+    """
+
     amount: int
     """The transfer amount in USD cents."""
 
@@ -713,6 +777,11 @@ class SourceCardPushTransferInstruction(BaseModel):
 
 
 class SourceCheckDepositInstruction(BaseModel):
+    """A Check Deposit Instruction object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `check_deposit_instruction`.
+    """
+
     amount: int
     """The pending amount in USD cents."""
 
@@ -753,6 +822,11 @@ class SourceCheckDepositInstruction(BaseModel):
 
 
 class SourceCheckTransferInstruction(BaseModel):
+    """A Check Transfer Instruction object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `check_transfer_instruction`.
+    """
+
     amount: int
     """The transfer amount in USD cents."""
 
@@ -781,6 +855,11 @@ class SourceCheckTransferInstruction(BaseModel):
 
 
 class SourceFednowTransferInstruction(BaseModel):
+    """A FedNow Transfer Instruction object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `fednow_transfer_instruction`.
+    """
+
     transfer_id: str
     """The identifier of the FedNow Transfer that led to this Pending Transaction."""
 
@@ -798,6 +877,11 @@ class SourceFednowTransferInstruction(BaseModel):
 
 
 class SourceInboundFundsHold(BaseModel):
+    """An Inbound Funds Hold object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `inbound_funds_hold`. We hold funds for certain transaction types to account for return windows where funds might still be clawed back by the sending institution.
+    """
+
     amount: int
     """The held amount in the minor unit of the account's currency.
 
@@ -860,6 +944,11 @@ class SourceInboundFundsHold(BaseModel):
 
 
 class SourceInboundWireTransferReversal(BaseModel):
+    """An Inbound Wire Transfer Reversal object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `inbound_wire_transfer_reversal`. An Inbound Wire Transfer Reversal is created when Increase has received a wire and the User requests that it be reversed.
+    """
+
     inbound_wire_transfer_id: str
     """The ID of the Inbound Wire Transfer that is being reversed."""
 
@@ -877,10 +966,19 @@ class SourceInboundWireTransferReversal(BaseModel):
 
 
 class SourceOther(BaseModel):
+    """
+    If the category of this Transaction source is equal to `other`, this field will contain an empty object, otherwise it will contain null.
+    """
+
     pass
 
 
 class SourceRealTimePaymentsTransferInstruction(BaseModel):
+    """A Real-Time Payments Transfer Instruction object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `real_time_payments_transfer_instruction`.
+    """
+
     amount: int
     """The transfer amount in USD cents."""
 
@@ -892,6 +990,11 @@ class SourceRealTimePaymentsTransferInstruction(BaseModel):
 
 
 class SourceSwiftTransferInstruction(BaseModel):
+    """A Swift Transfer Instruction object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `swift_transfer_instruction`.
+    """
+
     transfer_id: str
     """The identifier of the Swift Transfer that led to this Pending Transaction."""
 
@@ -909,6 +1012,11 @@ class SourceSwiftTransferInstruction(BaseModel):
 
 
 class SourceWireTransferInstruction(BaseModel):
+    """A Wire Transfer Instruction object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `wire_transfer_instruction`.
+    """
+
     account_number: str
     """The account number for the destination account."""
 
@@ -941,6 +1049,10 @@ class SourceWireTransferInstruction(BaseModel):
 
 
 class Source(BaseModel):
+    """
+    This is an object giving more details on the network-level event that caused the Pending Transaction. For example, for a card transaction this lists the merchant's industry and location.
+    """
+
     account_transfer_instruction: Optional[SourceAccountTransferInstruction] = None
     """An Account Transfer Instruction object.
 
@@ -1110,6 +1222,10 @@ class Source(BaseModel):
 
 
 class PendingTransaction(BaseModel):
+    """
+    Pending Transactions are potential future additions and removals of money from your bank account. They impact your available balance, but not your current balance. To learn more, see [Transactions and Transfers](/documentation/transactions-transfers).
+    """
+
     id: str
     """The Pending Transaction identifier."""
 

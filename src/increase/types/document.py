@@ -10,16 +10,24 @@ __all__ = ["Document", "AccountVerificationLetter", "FundingInstructions"]
 
 
 class AccountVerificationLetter(BaseModel):
+    """Properties of an account verification letter document."""
+
     account_number_id: str
     """The identifier of the Account Number the document was generated for."""
 
 
 class FundingInstructions(BaseModel):
+    """Properties of a funding instructions document."""
+
     account_number_id: str
     """The identifier of the Account Number the document was generated for."""
 
 
 class Document(BaseModel):
+    """
+    Increase generates certain documents / forms automatically for your application; they can be listed here.
+    """
+
     id: str
     """The Document identifier."""
 

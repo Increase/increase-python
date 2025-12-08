@@ -9,6 +9,8 @@ __all__ = ["DigitalWalletTokenRequestCreateResponse"]
 
 
 class DigitalWalletTokenRequestCreateResponse(BaseModel):
+    """The results of a Digital Wallet Token simulation."""
+
     decline_reason: Optional[
         Literal["card_not_active", "no_verification_method", "webhook_timed_out", "webhook_declined"]
     ] = None

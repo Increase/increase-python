@@ -21,6 +21,8 @@ __all__ = [
 
 
 class Acceptance(BaseModel):
+    """If your transfer is accepted, this will contain details of the acceptance."""
+
     accepted_at: datetime
     """The time at which the transfer was accepted."""
 
@@ -34,11 +36,15 @@ class AddendaFreeformEntry(BaseModel):
 
 
 class AddendaFreeform(BaseModel):
+    """Unstructured `payment_related_information` passed through by the originator."""
+
     entries: List[AddendaFreeformEntry]
     """Each entry represents an addendum received from the originator."""
 
 
 class Addenda(BaseModel):
+    """Additional information sent from the originator."""
+
     category: Literal["freeform"]
     """The type of addendum.
 
@@ -50,6 +56,8 @@ class Addenda(BaseModel):
 
 
 class Decline(BaseModel):
+    """If your transfer is declined, this will contain details of the decline."""
+
     declined_at: datetime
     """The time at which the transfer was declined."""
 
@@ -107,6 +115,10 @@ class Decline(BaseModel):
 
 
 class InternationalAddenda(BaseModel):
+    """
+    If the Inbound ACH Transfer has a Standard Entry Class Code of IAT, this will contain fields pertaining to the International ACH Transaction.
+    """
+
     destination_country_code: str
     """
     The [ISO 3166](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2), Alpha-2
@@ -335,6 +347,10 @@ class InternationalAddenda(BaseModel):
 
 
 class NotificationOfChange(BaseModel):
+    """
+    If you initiate a notification of change in response to the transfer, this will contain its details.
+    """
+
     updated_account_number: Optional[str] = None
     """The new account number provided in the notification of change."""
 
@@ -343,6 +359,10 @@ class NotificationOfChange(BaseModel):
 
 
 class Settlement(BaseModel):
+    """
+    A subhash containing information about when and how the transfer settled at the Federal Reserve.
+    """
+
     settled_at: datetime
     """
     When the funds for this transfer settle at the recipient bank at the Federal
@@ -358,6 +378,8 @@ class Settlement(BaseModel):
 
 
 class TransferReturn(BaseModel):
+    """If your transfer is returned, this will contain details of the return."""
+
     reason: Literal[
         "insufficient_funds",
         "returned_per_odfi_request",
@@ -404,6 +426,10 @@ class TransferReturn(BaseModel):
 
 
 class InboundACHTransfer(BaseModel):
+    """
+    An Inbound ACH Transfer is an ACH transfer initiated outside of Increase to your account.
+    """
+
     id: str
     """The inbound ACH transfer's identifier."""
 

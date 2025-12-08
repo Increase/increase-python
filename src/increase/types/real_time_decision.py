@@ -43,6 +43,8 @@ __all__ = [
 
 
 class CardAuthentication(BaseModel):
+    """Fields related to a 3DS authentication attempt."""
+
     account_id: str
     """The identifier of the Account the card belongs to."""
 
@@ -66,6 +68,8 @@ class CardAuthentication(BaseModel):
 
 
 class CardAuthenticationChallenge(BaseModel):
+    """Fields related to a 3DS authentication attempt."""
+
     account_id: str
     """The identifier of the Account the card belongs to."""
 
@@ -92,6 +96,8 @@ class CardAuthenticationChallenge(BaseModel):
 
 
 class CardAuthorizationAdditionalAmountsClinic(BaseModel):
+    """The part of this transaction amount that was for clinic-related services."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -107,6 +113,8 @@ class CardAuthorizationAdditionalAmountsClinic(BaseModel):
 
 
 class CardAuthorizationAdditionalAmountsDental(BaseModel):
+    """The part of this transaction amount that was for dental-related services."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -122,6 +130,8 @@ class CardAuthorizationAdditionalAmountsDental(BaseModel):
 
 
 class CardAuthorizationAdditionalAmountsOriginal(BaseModel):
+    """The original pre-authorized amount."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -137,6 +147,8 @@ class CardAuthorizationAdditionalAmountsOriginal(BaseModel):
 
 
 class CardAuthorizationAdditionalAmountsPrescription(BaseModel):
+    """The part of this transaction amount that was for healthcare prescriptions."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -152,6 +164,8 @@ class CardAuthorizationAdditionalAmountsPrescription(BaseModel):
 
 
 class CardAuthorizationAdditionalAmountsSurcharge(BaseModel):
+    """The surcharge amount charged for this transaction by the merchant."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -167,6 +181,10 @@ class CardAuthorizationAdditionalAmountsSurcharge(BaseModel):
 
 
 class CardAuthorizationAdditionalAmountsTotalCumulative(BaseModel):
+    """
+    The total amount of a series of incremental authorizations, optionally provided.
+    """
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -182,6 +200,8 @@ class CardAuthorizationAdditionalAmountsTotalCumulative(BaseModel):
 
 
 class CardAuthorizationAdditionalAmountsTotalHealthcare(BaseModel):
+    """The total amount of healthcare-related additional amounts."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -197,6 +217,8 @@ class CardAuthorizationAdditionalAmountsTotalHealthcare(BaseModel):
 
 
 class CardAuthorizationAdditionalAmountsTransit(BaseModel):
+    """The part of this transaction amount that was for transit-related services."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -212,6 +234,8 @@ class CardAuthorizationAdditionalAmountsTransit(BaseModel):
 
 
 class CardAuthorizationAdditionalAmountsUnknown(BaseModel):
+    """An unknown additional amount."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -227,6 +251,8 @@ class CardAuthorizationAdditionalAmountsUnknown(BaseModel):
 
 
 class CardAuthorizationAdditionalAmountsVision(BaseModel):
+    """The part of this transaction amount that was for vision-related services."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -242,6 +268,10 @@ class CardAuthorizationAdditionalAmountsVision(BaseModel):
 
 
 class CardAuthorizationAdditionalAmounts(BaseModel):
+    """
+    Additional amounts associated with the card authorization, such as ATM surcharges fees. These are usually a subset of the `amount` field and are used to provide more detailed information about the transaction.
+    """
+
     clinic: Optional[CardAuthorizationAdditionalAmountsClinic] = None
     """The part of this transaction amount that was for clinic-related services."""
 
@@ -276,6 +306,11 @@ class CardAuthorizationAdditionalAmounts(BaseModel):
 
 
 class CardAuthorizationApproval(BaseModel):
+    """Present if and only if `decision` is `approve`.
+
+    Contains information related to the approval of the authorization.
+    """
+
     partial_amount: Optional[int] = None
     """
     If the authorization was partially approved, this field contains the approved
@@ -284,6 +319,11 @@ class CardAuthorizationApproval(BaseModel):
 
 
 class CardAuthorizationDecline(BaseModel):
+    """Present if and only if `decision` is `decline`.
+
+    Contains information related to the reason the authorization was declined.
+    """
+
     reason: Literal[
         "insufficient_funds",
         "transaction_never_allowed",
@@ -310,10 +350,14 @@ class CardAuthorizationDecline(BaseModel):
 
 
 class CardAuthorizationNetworkDetailsPulse(BaseModel):
+    """Fields specific to the `pulse` network."""
+
     pass
 
 
 class CardAuthorizationNetworkDetailsVisa(BaseModel):
+    """Fields specific to the `visa` network."""
+
     electronic_commerce_indicator: Optional[
         Literal[
             "mail_phone_order",
@@ -432,6 +476,8 @@ class CardAuthorizationNetworkDetailsVisa(BaseModel):
 
 
 class CardAuthorizationNetworkDetails(BaseModel):
+    """Fields specific to the `network`."""
+
     category: Literal["visa", "pulse"]
     """The payment network used to process this card authorization.
 
@@ -447,6 +493,8 @@ class CardAuthorizationNetworkDetails(BaseModel):
 
 
 class CardAuthorizationNetworkIdentifiers(BaseModel):
+    """Network-specific identifiers for a specific request or transaction."""
+
     authorization_identification_response: Optional[str] = None
     """
     The randomly generated 6-character Authorization Identification Response code
@@ -474,6 +522,8 @@ class CardAuthorizationNetworkIdentifiers(BaseModel):
 
 
 class CardAuthorizationRequestDetailsIncrementalAuthorization(BaseModel):
+    """Fields specific to the category `incremental_authorization`."""
+
     card_payment_id: str
     """The card payment for this authorization and increment."""
 
@@ -485,10 +535,14 @@ class CardAuthorizationRequestDetailsIncrementalAuthorization(BaseModel):
 
 
 class CardAuthorizationRequestDetailsInitialAuthorization(BaseModel):
+    """Fields specific to the category `initial_authorization`."""
+
     pass
 
 
 class CardAuthorizationRequestDetails(BaseModel):
+    """Fields specific to the type of request, such as an incremental authorization."""
+
     category: Literal["initial_authorization", "incremental_authorization"]
     """
     The type of this request (e.g., an initial authorization or an incremental
@@ -507,6 +561,10 @@ class CardAuthorizationRequestDetails(BaseModel):
 
 
 class CardAuthorizationVerificationCardVerificationCode(BaseModel):
+    """
+    Fields related to verification of the Card Verification Code, a 3-digit code on the back of the card.
+    """
+
     result: Literal["not_checked", "match", "no_match"]
     """The result of verifying the Card Verification Code.
 
@@ -518,6 +576,10 @@ class CardAuthorizationVerificationCardVerificationCode(BaseModel):
 
 
 class CardAuthorizationVerificationCardholderAddress(BaseModel):
+    """
+    Cardholder address provided in the authorization request and the address on file we verified it against.
+    """
+
     actual_line1: Optional[str] = None
     """Line 1 of the address on file for the cardholder."""
 
@@ -557,6 +619,8 @@ class CardAuthorizationVerificationCardholderAddress(BaseModel):
 
 
 class CardAuthorizationVerification(BaseModel):
+    """Fields related to verification of cardholder-provided values."""
+
     card_verification_code: CardAuthorizationVerificationCardVerificationCode
     """
     Fields related to verification of the Card Verification Code, a 3-digit code on
@@ -571,6 +635,8 @@ class CardAuthorizationVerification(BaseModel):
 
 
 class CardAuthorization(BaseModel):
+    """Fields related to a card authorization."""
+
     account_id: str
     """The identifier of the Account the authorization will debit."""
 
@@ -772,6 +838,8 @@ class CardAuthorization(BaseModel):
 
 
 class DigitalWalletAuthentication(BaseModel):
+    """Fields related to a digital wallet authentication attempt."""
+
     card_id: str
     """The identifier of the Card that is being tokenized."""
 
@@ -814,11 +882,15 @@ class DigitalWalletAuthentication(BaseModel):
 
 
 class DigitalWalletTokenDevice(BaseModel):
+    """Device that is being used to provision the digital wallet token."""
+
     identifier: Optional[str] = None
     """ID assigned to the device by the digital wallet provider."""
 
 
 class DigitalWalletToken(BaseModel):
+    """Fields related to a digital wallet token provisioning attempt."""
+
     card_id: str
     """The identifier of the Card that is being tokenized."""
 
@@ -845,6 +917,10 @@ class DigitalWalletToken(BaseModel):
 
 
 class RealTimeDecision(BaseModel):
+    """
+    Real Time Decisions are created when your application needs to take action in real-time to some event such as a card authorization. For more information, see our [Real-Time Decisions guide](https://increase.com/documentation/real-time-decisions).
+    """
+
     id: str
     """The Real-Time Decision identifier."""
 

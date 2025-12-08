@@ -9,6 +9,8 @@ __all__ = ["CardIframeURL"]
 
 
 class CardIframeURL(BaseModel):
+    """An object containing the iframe URL for a Card."""
+
     expires_at: datetime
     """The time the iframe URL will expire."""
 

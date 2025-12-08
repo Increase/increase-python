@@ -22,6 +22,11 @@ class EntityUpdateBeneficialOwnerAddressParams(TypedDict, total=False):
 
 
 class Address(TypedDict, total=False):
+    """The individual's physical address.
+
+    Mail receiving locations like PO Boxes and PMB's are disallowed.
+    """
+
     city: Required[str]
     """The city, district, town, or village of the address."""
 

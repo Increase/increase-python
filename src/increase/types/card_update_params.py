@@ -38,6 +38,8 @@ class CardUpdateParams(TypedDict, total=False):
 
 
 class BillingAddress(TypedDict, total=False):
+    """The card's updated billing address."""
+
     city: Required[str]
     """The city of the billing address."""
 
@@ -55,6 +57,10 @@ class BillingAddress(TypedDict, total=False):
 
 
 class DigitalWallet(TypedDict, total=False):
+    """
+    The contact information used in the two-factor steps for digital wallet card creation. At least one field must be present to complete the digital wallet steps.
+    """
+
     digital_card_profile_id: str
     """The digital card profile assigned to this digital card."""
 

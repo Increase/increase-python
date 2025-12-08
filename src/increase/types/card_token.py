@@ -9,6 +9,10 @@ __all__ = ["CardToken"]
 
 
 class CardToken(BaseModel):
+    """
+    Card Tokens represent a tokenized card number that can be used for Card Push Transfers and Card Validations.
+    """
+
     id: str
     """The Card Token's identifier."""
 

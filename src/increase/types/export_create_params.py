@@ -97,6 +97,11 @@ class ExportCreateParams(TypedDict, total=False):
 
 
 class AccountStatementBai2(TypedDict, total=False):
+    """Options for the created export.
+
+    Required if `category` is equal to `account_statement_bai2`.
+    """
+
     account_id: str
     """The Account to create a BAI2 report for.
 
@@ -119,6 +124,8 @@ class AccountStatementBai2(TypedDict, total=False):
 
 
 class AccountStatementOfxCreatedAt(TypedDict, total=False):
+    """Filter results by time range on the `created_at` attribute."""
+
     after: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
     """
     Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
@@ -145,6 +152,11 @@ class AccountStatementOfxCreatedAt(TypedDict, total=False):
 
 
 class AccountStatementOfx(TypedDict, total=False):
+    """Options for the created export.
+
+    Required if `category` is equal to `account_statement_ofx`.
+    """
+
     account_id: Required[str]
     """The Account to create a statement for."""
 
@@ -153,6 +165,8 @@ class AccountStatementOfx(TypedDict, total=False):
 
 
 class BalanceCsvCreatedAt(TypedDict, total=False):
+    """Filter results by time range on the `created_at` attribute."""
+
     after: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
     """
     Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
@@ -179,6 +193,11 @@ class BalanceCsvCreatedAt(TypedDict, total=False):
 
 
 class BalanceCsv(TypedDict, total=False):
+    """Options for the created export.
+
+    Required if `category` is equal to `balance_csv`.
+    """
+
     account_id: str
     """Filter exported Transactions to the specified Account."""
 
@@ -190,6 +209,8 @@ class BalanceCsv(TypedDict, total=False):
 
 
 class BookkeepingAccountBalanceCsvCreatedAt(TypedDict, total=False):
+    """Filter results by time range on the `created_at` attribute."""
+
     after: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
     """
     Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
@@ -216,6 +237,11 @@ class BookkeepingAccountBalanceCsvCreatedAt(TypedDict, total=False):
 
 
 class BookkeepingAccountBalanceCsv(TypedDict, total=False):
+    """Options for the created export.
+
+    Required if `category` is equal to `bookkeeping_account_balance_csv`.
+    """
+
     bookkeeping_account_id: str
     """Filter exported Transactions to the specified Bookkeeping Account."""
 
@@ -233,15 +259,24 @@ _EntityCsvStatusReservedKeywords = TypedDict(
 
 
 class EntityCsvStatus(_EntityCsvStatusReservedKeywords, total=False):
+    """Entity statuses to filter by."""
+
     pass
 
 
 class EntityCsv(TypedDict, total=False):
+    """Options for the created export.
+
+    Required if `category` is equal to `entity_csv`.
+    """
+
     status: EntityCsvStatus
     """Entity statuses to filter by."""
 
 
 class TransactionCsvCreatedAt(TypedDict, total=False):
+    """Filter results by time range on the `created_at` attribute."""
+
     after: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
     """
     Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
@@ -268,6 +303,11 @@ class TransactionCsvCreatedAt(TypedDict, total=False):
 
 
 class TransactionCsv(TypedDict, total=False):
+    """Options for the created export.
+
+    Required if `category` is equal to `transaction_csv`.
+    """
+
     account_id: str
     """Filter exported Transactions to the specified Account."""
 
@@ -279,4 +319,9 @@ class TransactionCsv(TypedDict, total=False):
 
 
 class VendorCsv(TypedDict, total=False):
+    """Options for the created export.
+
+    Required if `category` is equal to `vendor_csv`.
+    """
+
     pass

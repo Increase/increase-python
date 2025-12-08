@@ -13,6 +13,8 @@ class RealTimePaymentsTransferCompleteParams(TypedDict, total=False):
 
 
 class Rejection(TypedDict, total=False):
+    """If set, the simulation will reject the transfer."""
+
     reject_reason_code: Required[
         Literal[
             "account_closed",

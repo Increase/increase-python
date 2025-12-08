@@ -94,6 +94,11 @@ __all__ = [
 
 
 class SourceAccountRevenuePayment(BaseModel):
+    """An Account Revenue Payment object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `account_revenue_payment`. An Account Revenue Payment represents a payment made to an account from the bank. Account revenue is a type of non-interest income.
+    """
+
     accrued_on_account_id: str
     """The account on which the account revenue was accrued."""
 
@@ -117,6 +122,11 @@ class SourceAccountRevenuePayment(BaseModel):
 
 
 class SourceAccountTransferIntention(BaseModel):
+    """An Account Transfer Intention object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `account_transfer_intention`. Two Account Transfer Intentions are created from each Account Transfer. One decrements the source account, and the other increments the destination account.
+    """
+
     amount: int
     """The pending amount in the minor unit of the transaction's currency.
 
@@ -157,6 +167,11 @@ class SourceAccountTransferIntention(BaseModel):
 
 
 class SourceACHTransferIntention(BaseModel):
+    """An ACH Transfer Intention object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `ach_transfer_intention`. An ACH Transfer Intention is created from an ACH Transfer. It reflects the intention to move money into or out of an Increase account via the ACH network.
+    """
+
     account_number: str
     """The account number for the destination account."""
 
@@ -192,6 +207,11 @@ class SourceACHTransferIntention(BaseModel):
 
 
 class SourceACHTransferRejection(BaseModel):
+    """An ACH Transfer Rejection object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `ach_transfer_rejection`. An ACH Transfer Rejection is created when an ACH Transfer is rejected by Increase. It offsets the ACH Transfer Intention. These rejections are rare.
+    """
+
     transfer_id: str
     """The identifier of the ACH Transfer that led to this Transaction."""
 
@@ -209,6 +229,11 @@ class SourceACHTransferRejection(BaseModel):
 
 
 class SourceACHTransferReturn(BaseModel):
+    """An ACH Transfer Return object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `ach_transfer_return`. An ACH Transfer Return is created when an ACH Transfer is returned by the receiving bank. It offsets the ACH Transfer Intention. ACH Transfer Returns usually occur within the first two business days after the transfer is initiated, but can occur much later.
+    """
+
     created_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -471,6 +496,11 @@ class SourceACHTransferReturn(BaseModel):
 
 
 class SourceCardDisputeAcceptance(BaseModel):
+    """A Legacy Card Dispute Acceptance object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `card_dispute_acceptance`. Contains the details of a successful Card Dispute.
+    """
+
     accepted_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -497,6 +527,10 @@ class SourceCardDisputeAcceptance(BaseModel):
 
 
 class SourceCardDisputeFinancialVisa(BaseModel):
+    """
+    Information for events related to card dispute for card payments processed over Visa's network. This field will be present in the JSON response if and only if `network` is equal to `visa`.
+    """
+
     event_type: Literal[
         "chargeback_submitted",
         "merchant_prearbitration_decline_submitted",
@@ -522,6 +556,11 @@ class SourceCardDisputeFinancialVisa(BaseModel):
 
 
 class SourceCardDisputeFinancial(BaseModel):
+    """A Card Dispute Financial object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `card_dispute_financial`. Financial event related to a Card Dispute.
+    """
+
     amount: int
     """The amount of the financial event."""
 
@@ -559,6 +598,11 @@ class SourceCardDisputeFinancial(BaseModel):
 
 
 class SourceCardDisputeLoss(BaseModel):
+    """A Legacy Card Dispute Loss object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `card_dispute_loss`. Contains the details of a lost Card Dispute.
+    """
+
     explanation: str
     """Why the Card Dispute was lost."""
 
@@ -588,6 +632,8 @@ class SourceCardDisputeLoss(BaseModel):
 
 
 class SourceCardFinancialAdditionalAmountsClinic(BaseModel):
+    """The part of this transaction amount that was for clinic-related services."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -603,6 +649,8 @@ class SourceCardFinancialAdditionalAmountsClinic(BaseModel):
 
 
 class SourceCardFinancialAdditionalAmountsDental(BaseModel):
+    """The part of this transaction amount that was for dental-related services."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -618,6 +666,8 @@ class SourceCardFinancialAdditionalAmountsDental(BaseModel):
 
 
 class SourceCardFinancialAdditionalAmountsOriginal(BaseModel):
+    """The original pre-authorized amount."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -633,6 +683,8 @@ class SourceCardFinancialAdditionalAmountsOriginal(BaseModel):
 
 
 class SourceCardFinancialAdditionalAmountsPrescription(BaseModel):
+    """The part of this transaction amount that was for healthcare prescriptions."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -648,6 +700,8 @@ class SourceCardFinancialAdditionalAmountsPrescription(BaseModel):
 
 
 class SourceCardFinancialAdditionalAmountsSurcharge(BaseModel):
+    """The surcharge amount charged for this transaction by the merchant."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -663,6 +717,10 @@ class SourceCardFinancialAdditionalAmountsSurcharge(BaseModel):
 
 
 class SourceCardFinancialAdditionalAmountsTotalCumulative(BaseModel):
+    """
+    The total amount of a series of incremental authorizations, optionally provided.
+    """
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -678,6 +736,8 @@ class SourceCardFinancialAdditionalAmountsTotalCumulative(BaseModel):
 
 
 class SourceCardFinancialAdditionalAmountsTotalHealthcare(BaseModel):
+    """The total amount of healthcare-related additional amounts."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -693,6 +753,8 @@ class SourceCardFinancialAdditionalAmountsTotalHealthcare(BaseModel):
 
 
 class SourceCardFinancialAdditionalAmountsTransit(BaseModel):
+    """The part of this transaction amount that was for transit-related services."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -708,6 +770,8 @@ class SourceCardFinancialAdditionalAmountsTransit(BaseModel):
 
 
 class SourceCardFinancialAdditionalAmountsUnknown(BaseModel):
+    """An unknown additional amount."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -723,6 +787,8 @@ class SourceCardFinancialAdditionalAmountsUnknown(BaseModel):
 
 
 class SourceCardFinancialAdditionalAmountsVision(BaseModel):
+    """The part of this transaction amount that was for vision-related services."""
+
     amount: int
     """The amount in minor units of the `currency` field.
 
@@ -738,6 +804,10 @@ class SourceCardFinancialAdditionalAmountsVision(BaseModel):
 
 
 class SourceCardFinancialAdditionalAmounts(BaseModel):
+    """
+    Additional amounts associated with the card authorization, such as ATM surcharges fees. These are usually a subset of the `amount` field and are used to provide more detailed information about the transaction.
+    """
+
     clinic: Optional[SourceCardFinancialAdditionalAmountsClinic] = None
     """The part of this transaction amount that was for clinic-related services."""
 
@@ -772,10 +842,14 @@ class SourceCardFinancialAdditionalAmounts(BaseModel):
 
 
 class SourceCardFinancialNetworkDetailsPulse(BaseModel):
+    """Fields specific to the `pulse` network."""
+
     pass
 
 
 class SourceCardFinancialNetworkDetailsVisa(BaseModel):
+    """Fields specific to the `visa` network."""
+
     electronic_commerce_indicator: Optional[
         Literal[
             "mail_phone_order",
@@ -894,6 +968,8 @@ class SourceCardFinancialNetworkDetailsVisa(BaseModel):
 
 
 class SourceCardFinancialNetworkDetails(BaseModel):
+    """Fields specific to the `network`."""
+
     category: Literal["visa", "pulse"]
     """The payment network used to process this card authorization.
 
@@ -909,6 +985,8 @@ class SourceCardFinancialNetworkDetails(BaseModel):
 
 
 class SourceCardFinancialNetworkIdentifiers(BaseModel):
+    """Network-specific identifiers for a specific request or transaction."""
+
     authorization_identification_response: Optional[str] = None
     """
     The randomly generated 6-character Authorization Identification Response code
@@ -936,6 +1014,10 @@ class SourceCardFinancialNetworkIdentifiers(BaseModel):
 
 
 class SourceCardFinancialVerificationCardVerificationCode(BaseModel):
+    """
+    Fields related to verification of the Card Verification Code, a 3-digit code on the back of the card.
+    """
+
     result: Literal["not_checked", "match", "no_match"]
     """The result of verifying the Card Verification Code.
 
@@ -947,6 +1029,10 @@ class SourceCardFinancialVerificationCardVerificationCode(BaseModel):
 
 
 class SourceCardFinancialVerificationCardholderAddress(BaseModel):
+    """
+    Cardholder address provided in the authorization request and the address on file we verified it against.
+    """
+
     actual_line1: Optional[str] = None
     """Line 1 of the address on file for the cardholder."""
 
@@ -986,6 +1072,8 @@ class SourceCardFinancialVerificationCardholderAddress(BaseModel):
 
 
 class SourceCardFinancialVerification(BaseModel):
+    """Fields related to verification of cardholder-provided values."""
+
     card_verification_code: SourceCardFinancialVerificationCardVerificationCode
     """
     Fields related to verification of the Card Verification Code, a 3-digit code on
@@ -1000,6 +1088,11 @@ class SourceCardFinancialVerification(BaseModel):
 
 
 class SourceCardFinancial(BaseModel):
+    """A Card Financial object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `card_financial`. Card Financials are temporary holds placed on a customers funds with the intent to later clear a transaction.
+    """
+
     id: str
     """The Card Financial identifier."""
 
@@ -1190,6 +1283,11 @@ class SourceCardFinancial(BaseModel):
 
 
 class SourceCardPushTransferAcceptance(BaseModel):
+    """A Card Push Transfer Acceptance object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `card_push_transfer_acceptance`. A Card Push Transfer Acceptance is created when an Outbound Card Push Transfer sent from Increase is accepted by the receiving bank.
+    """
+
     settlement_amount: int
     """The transfer amount in USD cents."""
 
@@ -1210,6 +1308,11 @@ class SourceCardPushTransferAcceptance(BaseModel):
 
 
 class SourceCardRefundCashback(BaseModel):
+    """Cashback debited for this transaction, if eligible.
+
+    Cashback is paid out in aggregate, monthly.
+    """
+
     amount: str
     """The cashback amount given as a string containing a decimal number.
 
@@ -1225,6 +1328,8 @@ class SourceCardRefundCashback(BaseModel):
 
 
 class SourceCardRefundInterchange(BaseModel):
+    """Interchange assessed as a part of this transaciton."""
+
     amount: str
     """
     The interchange amount given as a string containing a decimal number in major
@@ -1246,6 +1351,8 @@ class SourceCardRefundInterchange(BaseModel):
 
 
 class SourceCardRefundNetworkIdentifiers(BaseModel):
+    """Network-specific identifiers for this refund."""
+
     acquirer_business_id: str
     """
     A network assigned business ID that identifies the acquirer that processed this
@@ -1269,6 +1376,8 @@ class SourceCardRefundNetworkIdentifiers(BaseModel):
 
 
 class SourceCardRefundPurchaseDetailsCarRental(BaseModel):
+    """Fields specific to car rentals."""
+
     car_class_code: Optional[str] = None
     """Code indicating the vehicle's class."""
 
@@ -1356,6 +1465,8 @@ class SourceCardRefundPurchaseDetailsCarRental(BaseModel):
 
 
 class SourceCardRefundPurchaseDetailsLodging(BaseModel):
+    """Fields specific to lodging."""
+
     check_in_date: Optional[date] = None
     """Date the customer checked in."""
 
@@ -1502,6 +1613,8 @@ class SourceCardRefundPurchaseDetailsTravelAncillaryService(BaseModel):
 
 
 class SourceCardRefundPurchaseDetailsTravelAncillary(BaseModel):
+    """Ancillary purchases in addition to the airfare."""
+
     connected_ticket_document_number: Optional[str] = None
     """
     If this purchase has a connection or relationship to another purchase, such as a
@@ -1563,6 +1676,8 @@ class SourceCardRefundPurchaseDetailsTravelTripLeg(BaseModel):
 
 
 class SourceCardRefundPurchaseDetailsTravel(BaseModel):
+    """Fields specific to travel."""
+
     ancillary: Optional[SourceCardRefundPurchaseDetailsTravelAncillary] = None
     """Ancillary purchases in addition to the airfare."""
 
@@ -1629,6 +1744,10 @@ class SourceCardRefundPurchaseDetailsTravel(BaseModel):
 
 
 class SourceCardRefundPurchaseDetails(BaseModel):
+    """
+    Additional details about the card purchase, such as tax and industry-specific fields.
+    """
+
     car_rental: Optional[SourceCardRefundPurchaseDetailsCarRental] = None
     """Fields specific to car rentals."""
 
@@ -1676,6 +1795,11 @@ class SourceCardRefundPurchaseDetails(BaseModel):
 
 
 class SourceCardRefund(BaseModel):
+    """A Card Refund object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `card_refund`. Card Refunds move money back to the cardholder. While they are usually connected to a Card Settlement an acquirer can also refund money directly to a card without relation to a transaction.
+    """
+
     id: str
     """The Card Refund identifier."""
 
@@ -1770,6 +1894,11 @@ class SourceCardRefund(BaseModel):
 
 
 class SourceCardRevenuePayment(BaseModel):
+    """A Card Revenue Payment object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `card_revenue_payment`. Card Revenue Payments reflect earnings from fees on card transactions.
+    """
+
     amount: int
     """The amount in the minor unit of the transaction's currency.
 
@@ -1807,6 +1936,11 @@ class SourceCardRevenuePayment(BaseModel):
 
 
 class SourceCardSettlementCashback(BaseModel):
+    """Cashback earned on this transaction, if eligible.
+
+    Cashback is paid out in aggregate, monthly.
+    """
+
     amount: str
     """The cashback amount given as a string containing a decimal number.
 
@@ -1822,6 +1956,8 @@ class SourceCardSettlementCashback(BaseModel):
 
 
 class SourceCardSettlementInterchange(BaseModel):
+    """Interchange assessed as a part of this transaction."""
+
     amount: str
     """
     The interchange amount given as a string containing a decimal number in major
@@ -1843,6 +1979,8 @@ class SourceCardSettlementInterchange(BaseModel):
 
 
 class SourceCardSettlementNetworkIdentifiers(BaseModel):
+    """Network-specific identifiers for this refund."""
+
     acquirer_business_id: str
     """
     A network assigned business ID that identifies the acquirer that processed this
@@ -1866,6 +2004,8 @@ class SourceCardSettlementNetworkIdentifiers(BaseModel):
 
 
 class SourceCardSettlementPurchaseDetailsCarRental(BaseModel):
+    """Fields specific to car rentals."""
+
     car_class_code: Optional[str] = None
     """Code indicating the vehicle's class."""
 
@@ -1953,6 +2093,8 @@ class SourceCardSettlementPurchaseDetailsCarRental(BaseModel):
 
 
 class SourceCardSettlementPurchaseDetailsLodging(BaseModel):
+    """Fields specific to lodging."""
+
     check_in_date: Optional[date] = None
     """Date the customer checked in."""
 
@@ -2099,6 +2241,8 @@ class SourceCardSettlementPurchaseDetailsTravelAncillaryService(BaseModel):
 
 
 class SourceCardSettlementPurchaseDetailsTravelAncillary(BaseModel):
+    """Ancillary purchases in addition to the airfare."""
+
     connected_ticket_document_number: Optional[str] = None
     """
     If this purchase has a connection or relationship to another purchase, such as a
@@ -2160,6 +2304,8 @@ class SourceCardSettlementPurchaseDetailsTravelTripLeg(BaseModel):
 
 
 class SourceCardSettlementPurchaseDetailsTravel(BaseModel):
+    """Fields specific to travel."""
+
     ancillary: Optional[SourceCardSettlementPurchaseDetailsTravelAncillary] = None
     """Ancillary purchases in addition to the airfare."""
 
@@ -2226,6 +2372,10 @@ class SourceCardSettlementPurchaseDetailsTravel(BaseModel):
 
 
 class SourceCardSettlementPurchaseDetails(BaseModel):
+    """
+    Additional details about the card purchase, such as tax and industry-specific fields.
+    """
+
     car_rental: Optional[SourceCardSettlementPurchaseDetailsCarRental] = None
     """Fields specific to car rentals."""
 
@@ -2273,6 +2423,11 @@ class SourceCardSettlementPurchaseDetails(BaseModel):
 
 
 class SourceCardSettlementSurcharge(BaseModel):
+    """Surcharge amount details, if applicable.
+
+    The amount is positive if the surcharge is added to to the overall transaction amount (surcharge), and negative if the surcharge is deducted from the overall transaction amount (discount).
+    """
+
     amount: int
     """
     The surcharge amount in the minor unit of the transaction's settlement currency.
@@ -2286,6 +2441,11 @@ class SourceCardSettlementSurcharge(BaseModel):
 
 
 class SourceCardSettlement(BaseModel):
+    """A Card Settlement object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `card_settlement`. Card Settlements are card transactions that have cleared and settled. While a settlement is usually preceded by an authorization, an acquirer can also directly clear a transaction without first authorizing it.
+    """
+
     id: str
     """The Card Settlement identifier."""
 
@@ -2404,6 +2564,11 @@ class SourceCardSettlement(BaseModel):
 
 
 class SourceCashbackPayment(BaseModel):
+    """A Cashback Payment object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `cashback_payment`. A Cashback Payment represents the cashback paid to a cardholder for a given period. Cashback is usually paid monthly for the prior month's transactions.
+    """
+
     accrued_on_card_id: Optional[str] = None
     """The card on which the cashback was accrued."""
 
@@ -2441,6 +2606,11 @@ class SourceCashbackPayment(BaseModel):
 
 
 class SourceCheckDepositAcceptance(BaseModel):
+    """A Check Deposit Acceptance object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `check_deposit_acceptance`. A Check Deposit Acceptance is created when a Check Deposit is processed and its details confirmed. Check Deposits may be returned by the receiving bank, which will appear as a Check Deposit Return.
+    """
+
     account_number: str
     """The account number printed on the check.
 
@@ -2497,6 +2667,11 @@ class SourceCheckDepositAcceptance(BaseModel):
 
 
 class SourceCheckDepositReturn(BaseModel):
+    """A Check Deposit Return object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `check_deposit_return`. A Check Deposit Return is created when a Check Deposit is returned by the bank holding the account it was drawn against. Check Deposits may be returned for a variety of reasons, including insufficient funds or a mismatched account number. Usually, checks are returned within the first 7 days after the deposit is made.
+    """
+
     amount: int
     """The returned amount in USD cents."""
 
@@ -2612,6 +2787,11 @@ class SourceCheckDepositReturn(BaseModel):
 
 
 class SourceCheckTransferDeposit(BaseModel):
+    """A Check Transfer Deposit object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `check_transfer_deposit`. An Inbound Check is a check drawn on an Increase account that has been deposited by an external bank account. These types of checks are not pre-registered.
+    """
+
     back_image_file_id: Optional[str] = None
     """
     The identifier of the API File object containing an image of the back of the
@@ -2666,6 +2846,11 @@ class SourceCheckTransferDeposit(BaseModel):
 
 
 class SourceFednowTransferAcknowledgement(BaseModel):
+    """A FedNow Transfer Acknowledgement object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `fednow_transfer_acknowledgement`. A FedNow Transfer Acknowledgement is created when a FedNow Transfer sent from Increase is acknowledged by the receiving bank.
+    """
+
     transfer_id: str
     """The identifier of the FedNow Transfer that led to this Transaction."""
 
@@ -2683,6 +2868,11 @@ class SourceFednowTransferAcknowledgement(BaseModel):
 
 
 class SourceFeePayment(BaseModel):
+    """A Fee Payment object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `fee_payment`. A Fee Payment represents a payment made to Increase.
+    """
+
     amount: int
     """The amount in the minor unit of the transaction's currency.
 
@@ -2722,11 +2912,15 @@ class SourceInboundACHTransferAddendaFreeformEntry(BaseModel):
 
 
 class SourceInboundACHTransferAddendaFreeform(BaseModel):
+    """Unstructured `payment_related_information` passed through by the originator."""
+
     entries: List[SourceInboundACHTransferAddendaFreeformEntry]
     """Each entry represents an addendum received from the originator."""
 
 
 class SourceInboundACHTransferAddenda(BaseModel):
+    """Additional information sent from the originator."""
+
     category: Literal["freeform"]
     """The type of addendum.
 
@@ -2738,6 +2932,11 @@ class SourceInboundACHTransferAddenda(BaseModel):
 
 
 class SourceInboundACHTransfer(BaseModel):
+    """An Inbound ACH Transfer Intention object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `inbound_ach_transfer`. An Inbound ACH Transfer Intention is created when an ACH transfer is initiated at another bank and received by Increase.
+    """
+
     addenda: Optional[SourceInboundACHTransferAddenda] = None
     """Additional information sent from the originator."""
 
@@ -2798,6 +2997,11 @@ class SourceInboundACHTransfer(BaseModel):
 
 
 class SourceInboundACHTransferReturnIntention(BaseModel):
+    """An Inbound ACH Transfer Return Intention object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `inbound_ach_transfer_return_intention`. An Inbound ACH Transfer Return Intention is created when an ACH transfer is initiated at another bank and returned by Increase.
+    """
+
     inbound_ach_transfer_id: str
     """The ID of the Inbound ACH Transfer that is being returned."""
 
@@ -2815,6 +3019,11 @@ class SourceInboundACHTransferReturnIntention(BaseModel):
 
 
 class SourceInboundCheckAdjustment(BaseModel):
+    """An Inbound Check Adjustment object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `inbound_check_adjustment`. An Inbound Check Adjustment is created when Increase receives an adjustment for a check or return deposited through Check21.
+    """
+
     adjusted_transaction_id: str
     """The ID of the transaction that was adjusted."""
 
@@ -2850,6 +3059,11 @@ class SourceInboundCheckAdjustment(BaseModel):
 
 
 class SourceInboundCheckDepositReturnIntention(BaseModel):
+    """An Inbound Check Deposit Return Intention object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `inbound_check_deposit_return_intention`. An Inbound Check Deposit Return Intention is created when Increase receives an Inbound Check and the User requests that it be returned.
+    """
+
     inbound_check_deposit_id: str
     """The ID of the Inbound Check Deposit that is being returned."""
 
@@ -2870,6 +3084,11 @@ class SourceInboundCheckDepositReturnIntention(BaseModel):
 
 
 class SourceInboundFednowTransferConfirmation(BaseModel):
+    """An Inbound FedNow Transfer Confirmation object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `inbound_fednow_transfer_confirmation`. An Inbound FedNow Transfer Confirmation is created when a FedNow transfer is initiated at another bank and received by Increase.
+    """
+
     transfer_id: str
     """The identifier of the FedNow Transfer that led to this Transaction."""
 
@@ -2887,6 +3106,11 @@ class SourceInboundFednowTransferConfirmation(BaseModel):
 
 
 class SourceInboundRealTimePaymentsTransferConfirmation(BaseModel):
+    """An Inbound Real-Time Payments Transfer Confirmation object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `inbound_real_time_payments_transfer_confirmation`. An Inbound Real-Time Payments Transfer Confirmation is created when a Real-Time Payments transfer is initiated at another bank and received by Increase.
+    """
+
     amount: int
     """The amount in the minor unit of the transfer's currency.
 
@@ -2936,6 +3160,11 @@ class SourceInboundRealTimePaymentsTransferConfirmation(BaseModel):
 
 
 class SourceInboundWireReversal(BaseModel):
+    """An Inbound Wire Reversal object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `inbound_wire_reversal`. An Inbound Wire Reversal represents a reversal of a wire transfer that was initiated via Increase. The other bank is sending the money back. This most often happens when the original destination account details were incorrect.
+    """
+
     amount: int
     """The amount that was reversed in USD cents."""
 
@@ -3005,6 +3234,11 @@ class SourceInboundWireReversal(BaseModel):
 
 
 class SourceInboundWireTransfer(BaseModel):
+    """An Inbound Wire Transfer Intention object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `inbound_wire_transfer`. An Inbound Wire Transfer Intention is created when a wire transfer is initiated at another bank and received by Increase.
+    """
+
     amount: int
     """The amount in USD cents."""
 
@@ -3081,6 +3315,11 @@ class SourceInboundWireTransfer(BaseModel):
 
 
 class SourceInboundWireTransferReversal(BaseModel):
+    """An Inbound Wire Transfer Reversal Intention object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `inbound_wire_transfer_reversal`. An Inbound Wire Transfer Reversal Intention is created when Increase has received a wire and the User requests that it be reversed.
+    """
+
     inbound_wire_transfer_id: str
     """The ID of the Inbound Wire Transfer that is being reversed."""
 
@@ -3098,6 +3337,11 @@ class SourceInboundWireTransferReversal(BaseModel):
 
 
 class SourceInterestPayment(BaseModel):
+    """An Interest Payment object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `interest_payment`. An Interest Payment represents a payment of interest on an account. Interest is usually paid monthly.
+    """
+
     accrued_on_account_id: str
     """The account on which the interest was accrued."""
 
@@ -3135,6 +3379,11 @@ class SourceInterestPayment(BaseModel):
 
 
 class SourceInternalSource(BaseModel):
+    """An Internal Source object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `internal_source`. A transaction between the user and Increase. See the `reason` attribute for more information.
+    """
+
     amount: int
     """The amount in the minor unit of the transaction's currency.
 
@@ -3205,10 +3454,19 @@ class SourceInternalSource(BaseModel):
 
 
 class SourceOther(BaseModel):
+    """
+    If the category of this Transaction source is equal to `other`, this field will contain an empty object, otherwise it will contain null.
+    """
+
     pass
 
 
 class SourceRealTimePaymentsTransferAcknowledgement(BaseModel):
+    """A Real-Time Payments Transfer Acknowledgement object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `real_time_payments_transfer_acknowledgement`. A Real-Time Payments Transfer Acknowledgement is created when a Real-Time Payments Transfer sent from Increase is acknowledged by the receiving bank.
+    """
+
     amount: int
     """The transfer amount in USD cents."""
 
@@ -3238,6 +3496,11 @@ class SourceRealTimePaymentsTransferAcknowledgement(BaseModel):
 
 
 class SourceSampleFunds(BaseModel):
+    """A Sample Funds object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `sample_funds`. Sample funds for testing purposes.
+    """
+
     originator: str
     """Where the sample funds came from."""
 
@@ -3255,6 +3518,11 @@ class SourceSampleFunds(BaseModel):
 
 
 class SourceSwiftTransferIntention(BaseModel):
+    """A Swift Transfer Intention object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `swift_transfer_intention`. A Swift Transfer initiated via Increase.
+    """
+
     transfer_id: str
     """The identifier of the Swift Transfer that led to this Transaction."""
 
@@ -3272,6 +3540,11 @@ class SourceSwiftTransferIntention(BaseModel):
 
 
 class SourceSwiftTransferReturn(BaseModel):
+    """A Swift Transfer Return object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `swift_transfer_return`. A Swift Transfer Return is created when a Swift Transfer is returned by the receiving bank.
+    """
+
     transfer_id: str
     """The identifier of the Swift Transfer that led to this Transaction."""
 
@@ -3289,6 +3562,11 @@ class SourceSwiftTransferReturn(BaseModel):
 
 
 class SourceWireTransferIntention(BaseModel):
+    """A Wire Transfer Intention object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `wire_transfer_intention`. A Wire Transfer initiated via Increase and sent to a different bank.
+    """
+
     account_number: str
     """The destination account number."""
 
@@ -3318,6 +3596,10 @@ class SourceWireTransferIntention(BaseModel):
 
 
 class Source(BaseModel):
+    """
+    This is an object giving more details on the network-level event that caused the Transaction. Note that for backwards compatibility reasons, additional undocumented keys may appear in this object. These should be treated as deprecated and will be removed in the future.
+    """
+
     account_revenue_payment: Optional[SourceAccountRevenuePayment] = None
     """An Account Revenue Payment object.
 
@@ -3755,6 +4037,10 @@ class Source(BaseModel):
 
 
 class Transaction(BaseModel):
+    """
+    Transactions are the immutable additions and removals of money from your bank account. They're the equivalent of line items on your bank statement. To learn more, see [Transactions and Transfers](/documentation/transactions-transfers).
+    """
+
     id: str
     """The Transaction identifier."""
 

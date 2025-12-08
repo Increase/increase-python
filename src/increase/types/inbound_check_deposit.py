@@ -36,6 +36,10 @@ class Adjustment(BaseModel):
 
 
 class DepositReturn(BaseModel):
+    """
+    If you requested a return of this deposit, this will contain details of the return.
+    """
+
     reason: Literal[
         "altered_or_fictitious",
         "not_authorized",
@@ -60,6 +64,10 @@ class DepositReturn(BaseModel):
 
 
 class InboundCheckDeposit(BaseModel):
+    """
+    Inbound Check Deposits are records of third-parties attempting to deposit checks against your account.
+    """
+
     id: str
     """The deposit's identifier."""
 

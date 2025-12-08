@@ -12,6 +12,8 @@ __all__ = ["AccountNumber", "InboundACH", "InboundChecks"]
 
 
 class InboundACH(BaseModel):
+    """Properties related to how this Account Number handles inbound ACH transfers."""
+
     debit_status: Literal["allowed", "blocked"]
     """Whether ACH debits are allowed against this Account Number.
 
@@ -24,6 +26,10 @@ class InboundACH(BaseModel):
 
 
 class InboundChecks(BaseModel):
+    """
+    Properties related to how this Account Number should handle inbound check withdrawals.
+    """
+
     status: Literal["allowed", "check_transfers_only"]
     """How Increase should process checks with this account number printed on them.
 
@@ -35,6 +41,11 @@ class InboundChecks(BaseModel):
 
 
 class AccountNumber(BaseModel):
+    """Each account can have multiple account and routing numbers.
+
+    We recommend that you use a set per vendor. This is similar to how you use different passwords for different websites. Account numbers can also be used to seamlessly reconcile inbound payments. Generating a unique account number per vendor ensures you always know the originator of an incoming payment.
+    """
+
     id: str
     """The Account Number identifier."""
 

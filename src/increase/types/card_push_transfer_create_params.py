@@ -116,6 +116,11 @@ class CardPushTransferCreateParams(TypedDict, total=False):
 
 
 class PresentmentAmount(TypedDict, total=False):
+    """The amount to transfer.
+
+    The receiving bank will convert this to the cardholder's currency. The amount that is applied to your Increase account matches the currency of your account.
+    """
+
     currency: Required[
         Literal[
             "AFN",

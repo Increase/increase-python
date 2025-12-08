@@ -10,6 +10,10 @@ __all__ = ["IntrafiAccountEnrollment"]
 
 
 class IntrafiAccountEnrollment(BaseModel):
+    """
+    IntraFi is a [network of financial institutions](https://www.intrafi.com/network-banks) that allows Increase users to sweep funds to multiple banks. This enables accounts to become eligible for additional Federal Deposit Insurance Corporation (FDIC) insurance. An IntraFi Account Enrollment object represents the status of an account in the network. Sweeping an account to IntraFi doesn't affect funds availability.
+    """
+
     id: str
     """The identifier of this enrollment at IntraFi."""
 

@@ -10,6 +10,10 @@ __all__ = ["EntitySupplementalDocument"]
 
 
 class EntitySupplementalDocument(BaseModel):
+    """
+    Supplemental Documents are uploaded files connected to an Entity during onboarding.
+    """
+
     created_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the

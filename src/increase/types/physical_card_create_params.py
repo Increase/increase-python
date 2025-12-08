@@ -25,6 +25,8 @@ class PhysicalCardCreateParams(TypedDict, total=False):
 
 
 class Cardholder(TypedDict, total=False):
+    """Details about the cardholder, as it will appear on the physical card."""
+
     first_name: Required[str]
     """The cardholder's first name."""
 
@@ -33,6 +35,8 @@ class Cardholder(TypedDict, total=False):
 
 
 class ShipmentAddress(TypedDict, total=False):
+    """The address to where the card should be shipped."""
+
     city: Required[str]
     """The city of the shipping address."""
 
@@ -67,6 +71,8 @@ class ShipmentAddress(TypedDict, total=False):
 
 
 class Shipment(TypedDict, total=False):
+    """The details used to ship this physical card."""
+
     address: Required[ShipmentAddress]
     """The address to where the card should be shipped."""
 

@@ -8,6 +8,10 @@ __all__ = ["OAuthToken"]
 
 
 class OAuthToken(BaseModel):
+    """
+    A token that is returned to your application when a user completes the OAuth flow and may be used to authenticate requests. Learn more about OAuth [here](/documentation/oauth).
+    """
+
     access_token: str
     """
     You may use this token in place of an API key to make OAuth requests on a user's

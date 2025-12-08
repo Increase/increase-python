@@ -10,6 +10,8 @@ __all__ = ["IntrafiBalance", "Balance", "BalanceBankLocation"]
 
 
 class BalanceBankLocation(BaseModel):
+    """The primary location of the bank."""
+
     city: str
     """The bank's city."""
 
@@ -39,6 +41,10 @@ class Balance(BaseModel):
 
 
 class IntrafiBalance(BaseModel):
+    """
+    When using IntraFi, each account's balance over the standard FDIC insurance amount is swept to various other institutions. Funds are rebalanced across banks as needed once per business day.
+    """
+
     id: str
     """The identifier of this balance."""
 
