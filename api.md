@@ -837,6 +837,12 @@ Methods:
 
 - <code title="post /simulations/card_authorizations">client.simulations.card_authorizations.<a href="./src/increase/resources/simulations/card_authorizations.py">create</a>(\*\*<a href="src/increase/types/simulations/card_authorization_create_params.py">params</a>) -> <a href="./src/increase/types/simulations/card_authorization_create_response.py">CardAuthorizationCreateResponse</a></code>
 
+## CardBalanceInquiries
+
+Methods:
+
+- <code title="post /simulations/card_balance_inquiries">client.simulations.card_balance_inquiries.<a href="./src/increase/resources/simulations/card_balance_inquiries.py">create</a>(\*\*<a href="src/increase/types/simulations/card_balance_inquiry_create_params.py">params</a>) -> <a href="./src/increase/types/card_payment.py">CardPayment</a></code>
+
 ## CardAuthorizationExpirations
 
 Methods:

@@ -164,6 +164,14 @@ from .inbound_ach_transfers import (
     InboundACHTransfersResourceWithStreamingResponse,
     AsyncInboundACHTransfersResourceWithStreamingResponse,
 )
+from .card_balance_inquiries import (
+    CardBalanceInquiriesResource,
+    AsyncCardBalanceInquiriesResource,
+    CardBalanceInquiriesResourceWithRawResponse,
+    AsyncCardBalanceInquiriesResourceWithRawResponse,
+    CardBalanceInquiriesResourceWithStreamingResponse,
+    AsyncCardBalanceInquiriesResourceWithStreamingResponse,
+)
 from .inbound_check_deposits import (
     InboundCheckDepositsResource,
     AsyncInboundCheckDepositsResource,
@@ -260,6 +268,10 @@ class SimulationsResource(SyncAPIResource):
     @cached_property
     def card_authorizations(self) -> CardAuthorizationsResource:
         return CardAuthorizationsResource(self._client)
+
+    @cached_property
+    def card_balance_inquiries(self) -> CardBalanceInquiriesResource:
+        return CardBalanceInquiriesResource(self._client)
 
     @cached_property
     def card_authorization_expirations(self) -> CardAuthorizationExpirationsResource:
@@ -401,6 +413,10 @@ class AsyncSimulationsResource(AsyncAPIResource):
     @cached_property
     def card_authorizations(self) -> AsyncCardAuthorizationsResource:
         return AsyncCardAuthorizationsResource(self._client)
+
+    @cached_property
+    def card_balance_inquiries(self) -> AsyncCardBalanceInquiriesResource:
+        return AsyncCardBalanceInquiriesResource(self._client)
 
     @cached_property
     def card_authorization_expirations(self) -> AsyncCardAuthorizationExpirationsResource:
@@ -547,6 +563,10 @@ class SimulationsResourceWithRawResponse:
         return CardAuthorizationsResourceWithRawResponse(self._simulations.card_authorizations)
 
     @cached_property
+    def card_balance_inquiries(self) -> CardBalanceInquiriesResourceWithRawResponse:
+        return CardBalanceInquiriesResourceWithRawResponse(self._simulations.card_balance_inquiries)
+
+    @cached_property
     def card_authorization_expirations(self) -> CardAuthorizationExpirationsResourceWithRawResponse:
         return CardAuthorizationExpirationsResourceWithRawResponse(self._simulations.card_authorization_expirations)
 
@@ -672,6 +692,10 @@ class AsyncSimulationsResourceWithRawResponse:
     @cached_property
     def card_authorizations(self) -> AsyncCardAuthorizationsResourceWithRawResponse:
         return AsyncCardAuthorizationsResourceWithRawResponse(self._simulations.card_authorizations)
+
+    @cached_property
+    def card_balance_inquiries(self) -> AsyncCardBalanceInquiriesResourceWithRawResponse:
+        return AsyncCardBalanceInquiriesResourceWithRawResponse(self._simulations.card_balance_inquiries)
 
     @cached_property
     def card_authorization_expirations(self) -> AsyncCardAuthorizationExpirationsResourceWithRawResponse:
@@ -803,6 +827,10 @@ class SimulationsResourceWithStreamingResponse:
         return CardAuthorizationsResourceWithStreamingResponse(self._simulations.card_authorizations)
 
     @cached_property
+    def card_balance_inquiries(self) -> CardBalanceInquiriesResourceWithStreamingResponse:
+        return CardBalanceInquiriesResourceWithStreamingResponse(self._simulations.card_balance_inquiries)
+
+    @cached_property
     def card_authorization_expirations(self) -> CardAuthorizationExpirationsResourceWithStreamingResponse:
         return CardAuthorizationExpirationsResourceWithStreamingResponse(
             self._simulations.card_authorization_expirations
@@ -932,6 +960,10 @@ class AsyncSimulationsResourceWithStreamingResponse:
     @cached_property
     def card_authorizations(self) -> AsyncCardAuthorizationsResourceWithStreamingResponse:
         return AsyncCardAuthorizationsResourceWithStreamingResponse(self._simulations.card_authorizations)
+
+    @cached_property
+    def card_balance_inquiries(self) -> AsyncCardBalanceInquiriesResourceWithStreamingResponse:
+        return AsyncCardBalanceInquiriesResourceWithStreamingResponse(self._simulations.card_balance_inquiries)
 
     @cached_property
     def card_authorization_expirations(self) -> AsyncCardAuthorizationExpirationsResourceWithStreamingResponse:
