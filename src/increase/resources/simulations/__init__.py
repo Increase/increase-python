@@ -168,6 +168,14 @@ from .inbound_ach_transfers import (
     InboundACHTransfersResourceWithStreamingResponse,
     AsyncInboundACHTransfersResourceWithStreamingResponse,
 )
+from .card_balance_inquiries import (
+    CardBalanceInquiriesResource,
+    AsyncCardBalanceInquiriesResource,
+    CardBalanceInquiriesResourceWithRawResponse,
+    AsyncCardBalanceInquiriesResourceWithRawResponse,
+    CardBalanceInquiriesResourceWithStreamingResponse,
+    AsyncCardBalanceInquiriesResourceWithStreamingResponse,
+)
 from .inbound_check_deposits import (
     InboundCheckDepositsResource,
     AsyncInboundCheckDepositsResource,
@@ -268,6 +276,12 @@ __all__ = [
     "AsyncCardAuthorizationsResourceWithRawResponse",
     "CardAuthorizationsResourceWithStreamingResponse",
     "AsyncCardAuthorizationsResourceWithStreamingResponse",
+    "CardBalanceInquiriesResource",
+    "AsyncCardBalanceInquiriesResource",
+    "CardBalanceInquiriesResourceWithRawResponse",
+    "AsyncCardBalanceInquiriesResourceWithRawResponse",
+    "CardBalanceInquiriesResourceWithStreamingResponse",
+    "AsyncCardBalanceInquiriesResourceWithStreamingResponse",
     "CardAuthorizationExpirationsResource",
     "AsyncCardAuthorizationExpirationsResource",
     "CardAuthorizationExpirationsResourceWithRawResponse",
