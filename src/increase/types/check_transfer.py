@@ -178,6 +178,12 @@ class PhysicalCheckReturnAddress(BaseModel):
     name: Optional[str] = None
     """The name component of the check's return address."""
 
+    phone: Optional[str] = None
+    """The shipper's phone number to be used in case of delivery issues.
+
+    Only used for FedEx overnight shipping.
+    """
+
     postal_code: Optional[str] = None
     """The postal code of the check's destination."""
 

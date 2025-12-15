@@ -114,8 +114,8 @@ class PhysicalCheckMailingAddress(TypedDict, total=False):
     phone: str
     """The phone number to associate with the check's destination address.
 
-    The number is only used when `shipping_method` is `fedex_overnight` and will be
-    supplied to FedEx to be used in case of delivery issues.
+    The phone number is only used when `shipping_method` is `fedex_overnight` and
+    will be supplied to FedEx to be used in case of delivery issues.
     """
 
 
@@ -147,6 +147,13 @@ class PhysicalCheckReturnAddress(TypedDict, total=False):
 
     line2: str
     """The second line of the return address."""
+
+    phone: str
+    """The phone number to associate with the shipper.
+
+    The phone number is only used when `shipping_method` is `fedex_overnight` and
+    will be supplied to FedEx to be used in case of delivery issues.
+    """
 
 
 class PhysicalCheckTyped(TypedDict, total=False):
