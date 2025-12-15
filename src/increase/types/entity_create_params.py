@@ -377,6 +377,12 @@ class Corporation(TypedDict, total=False):
       your bank partner.
     """
 
+    email: str
+    """An email address for the business.
+
+    Not every program requires an email for submitted Entities.
+    """
+
     incorporation_state: str
     """
     The two-letter United States Postal Service (USPS) abbreviation for the
