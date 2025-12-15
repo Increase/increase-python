@@ -110,6 +110,12 @@ class Corporation(TypedDict, total=False):
     Mail receiving locations like PO Boxes and PMB's are disallowed.
     """
 
+    email: str
+    """An email address for the business.
+
+    Not every program requires an email for submitted Entities.
+    """
+
     industry_code: str
     """
     The North American Industry Classification System (NAICS) code for the

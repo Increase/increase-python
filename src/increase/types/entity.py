@@ -174,6 +174,9 @@ class Corporation(BaseModel):
     corporation.
     """
 
+    email: Optional[str] = None
+    """An email address for the business."""
+
     incorporation_state: Optional[str] = None
     """
     The two-letter United States Postal Service (USPS) abbreviation for the
