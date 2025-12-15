@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.414.0 (2025-12-15)
+
+Full Changelog: [v0.413.0...v0.414.0](https://github.com/Increase/increase-python/compare/v0.413.0...v0.414.0)
+
+### Features
+
+* **api:** api update ([738e4c0](https://github.com/Increase/increase-python/commit/738e4c0544f79db744199c82257e0b01c04a8f7e))
+
+
+### Chores
+
+* **internal:** add missing files argument to base client ([ec17817](https://github.com/Increase/increase-python/commit/ec1781754ae406b2c3688d85b7d38b9ebb9a54d1))
+
 ## 0.413.0 (2025-12-15)
 
 Full Changelog: [v0.412.0...v0.413.0](https://github.com/Increase/increase-python/compare/v0.412.0...v0.413.0)
