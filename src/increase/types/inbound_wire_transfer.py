@@ -16,12 +16,13 @@ class Reversal(BaseModel):
     Information about the reversal of the inbound wire transfer if it has been reversed.
     """
 
-    reason: Literal["duplicate", "creditor_request"]
+    reason: Literal["duplicate", "creditor_request", "transaction_forbidden"]
     """The reason for the reversal.
 
     - `duplicate` - The inbound wire transfer was a duplicate.
     - `creditor_request` - The recipient of the wire transfer requested the funds be
       returned to the sender.
+    - `transaction_forbidden` - The account cannot currently receive inbound wires.
     """
 
     reversed_at: datetime
