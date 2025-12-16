@@ -272,8 +272,8 @@ class Reversal(BaseModel):
     return_reason_code: Optional[str] = None
     """A code provided by the sending bank giving a reason for the reversal.
 
-    It will generally be one of the codes defined in the ISO20022
-    `ExternalReturnReason1Code` code set, but this is not enforced by the network.
+    The common return reason codes are
+    [documented here](/documentation/wire-reversals#reversal-reason-codes).
     """
 
     return_reason_code_description: Optional[str] = None
