@@ -8,10 +8,11 @@ __all__ = ["InboundWireTransferReverseParams"]
 
 
 class InboundWireTransferReverseParams(TypedDict, total=False):
-    reason: Required[Literal["duplicate", "creditor_request"]]
+    reason: Required[Literal["duplicate", "creditor_request", "transaction_forbidden"]]
     """Reason for the reversal.
 
     - `duplicate` - The inbound wire transfer was a duplicate.
     - `creditor_request` - The recipient of the wire transfer requested the funds be
       returned to the sender.
+    - `transaction_forbidden` - The account cannot currently receive inbound wires.
     """

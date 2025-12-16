@@ -150,7 +150,7 @@ class InboundWireTransfersResource(SyncAPIResource):
         self,
         inbound_wire_transfer_id: str,
         *,
-        reason: Literal["duplicate", "creditor_request"],
+        reason: Literal["duplicate", "creditor_request", "transaction_forbidden"],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -170,6 +170,7 @@ class InboundWireTransfersResource(SyncAPIResource):
               - `duplicate` - The inbound wire transfer was a duplicate.
               - `creditor_request` - The recipient of the wire transfer requested the funds be
                 returned to the sender.
+              - `transaction_forbidden` - The account cannot currently receive inbound wires.
 
           extra_headers: Send extra headers
 
@@ -327,7 +328,7 @@ class AsyncInboundWireTransfersResource(AsyncAPIResource):
         self,
         inbound_wire_transfer_id: str,
         *,
-        reason: Literal["duplicate", "creditor_request"],
+        reason: Literal["duplicate", "creditor_request", "transaction_forbidden"],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -347,6 +348,7 @@ class AsyncInboundWireTransfersResource(AsyncAPIResource):
               - `duplicate` - The inbound wire transfer was a duplicate.
               - `creditor_request` - The recipient of the wire transfer requested the funds be
                 returned to the sender.
+              - `transaction_forbidden` - The account cannot currently receive inbound wires.
 
           extra_headers: Send extra headers
 
