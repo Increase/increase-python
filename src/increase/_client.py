@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import os
-from typing import Any, Dict, Mapping, cast
+from typing import TYPE_CHECKING, Any, Dict, Mapping, cast
 from typing_extensions import Self, Literal, override
 
 import httpx
@@ -24,65 +24,8 @@ from ._utils import (
     is_mapping,
     get_async_library,
 )
+from ._compat import cached_property
 from ._version import __version__
-from .resources import (
-    cards,
-    files,
-    events,
-    groups,
-    exports,
-    accounts,
-    entities,
-    programs,
-    documents,
-    lockboxes,
-    file_links,
-    card_tokens,
-    oauth_tokens,
-    transactions,
-    ach_transfers,
-    card_disputes,
-    card_payments,
-    check_deposits,
-    physical_cards,
-    wire_transfers,
-    account_numbers,
-    check_transfers,
-    routing_numbers,
-    card_validations,
-    fednow_transfers,
-    intrafi_balances,
-    account_transfers,
-    external_accounts,
-    oauth_connections,
-    account_statements,
-    inbound_mail_items,
-    intrafi_exclusions,
-    oauth_applications,
-    bookkeeping_entries,
-    card_push_transfers,
-    event_subscriptions,
-    real_time_decisions,
-    ach_prenotifications,
-    bookkeeping_accounts,
-    pending_transactions,
-    declined_transactions,
-    digital_card_profiles,
-    digital_wallet_tokens,
-    inbound_ach_transfers,
-    bookkeeping_entry_sets,
-    inbound_check_deposits,
-    inbound_wire_transfers,
-    physical_card_profiles,
-    supplemental_documents,
-    wire_drawdown_requests,
-    inbound_fednow_transfers,
-    card_purchase_supplements,
-    intrafi_account_enrollments,
-    real_time_payments_transfers,
-    inbound_wire_drawdown_requests,
-    inbound_real_time_payments_transfers,
-)
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
 from ._exceptions import IncreaseError, APIStatusError
 from ._base_client import (
@@ -90,7 +33,139 @@ from ._base_client import (
     SyncAPIClient,
     AsyncAPIClient,
 )
-from .resources.simulations import simulations
+
+if TYPE_CHECKING:
+    from .resources import (
+        cards,
+        files,
+        events,
+        groups,
+        exports,
+        accounts,
+        entities,
+        programs,
+        documents,
+        lockboxes,
+        file_links,
+        card_tokens,
+        simulations,
+        oauth_tokens,
+        transactions,
+        ach_transfers,
+        card_disputes,
+        card_payments,
+        check_deposits,
+        physical_cards,
+        wire_transfers,
+        account_numbers,
+        check_transfers,
+        routing_numbers,
+        card_validations,
+        fednow_transfers,
+        intrafi_balances,
+        account_transfers,
+        external_accounts,
+        oauth_connections,
+        account_statements,
+        inbound_mail_items,
+        intrafi_exclusions,
+        oauth_applications,
+        bookkeeping_entries,
+        card_push_transfers,
+        event_subscriptions,
+        real_time_decisions,
+        ach_prenotifications,
+        bookkeeping_accounts,
+        pending_transactions,
+        declined_transactions,
+        digital_card_profiles,
+        digital_wallet_tokens,
+        inbound_ach_transfers,
+        bookkeeping_entry_sets,
+        inbound_check_deposits,
+        inbound_wire_transfers,
+        physical_card_profiles,
+        supplemental_documents,
+        wire_drawdown_requests,
+        inbound_fednow_transfers,
+        card_purchase_supplements,
+        intrafi_account_enrollments,
+        real_time_payments_transfers,
+        inbound_wire_drawdown_requests,
+        inbound_real_time_payments_transfers,
+    )
+    from .resources.cards import CardsResource, AsyncCardsResource
+    from .resources.files import FilesResource, AsyncFilesResource
+    from .resources.events import EventsResource, AsyncEventsResource
+    from .resources.groups import GroupsResource, AsyncGroupsResource
+    from .resources.exports import ExportsResource, AsyncExportsResource
+    from .resources.accounts import AccountsResource, AsyncAccountsResource
+    from .resources.entities import EntitiesResource, AsyncEntitiesResource
+    from .resources.programs import ProgramsResource, AsyncProgramsResource
+    from .resources.documents import DocumentsResource, AsyncDocumentsResource
+    from .resources.lockboxes import LockboxesResource, AsyncLockboxesResource
+    from .resources.file_links import FileLinksResource, AsyncFileLinksResource
+    from .resources.card_tokens import CardTokensResource, AsyncCardTokensResource
+    from .resources.oauth_tokens import OAuthTokensResource, AsyncOAuthTokensResource
+    from .resources.transactions import TransactionsResource, AsyncTransactionsResource
+    from .resources.ach_transfers import ACHTransfersResource, AsyncACHTransfersResource
+    from .resources.card_disputes import CardDisputesResource, AsyncCardDisputesResource
+    from .resources.card_payments import CardPaymentsResource, AsyncCardPaymentsResource
+    from .resources.check_deposits import CheckDepositsResource, AsyncCheckDepositsResource
+    from .resources.physical_cards import PhysicalCardsResource, AsyncPhysicalCardsResource
+    from .resources.wire_transfers import WireTransfersResource, AsyncWireTransfersResource
+    from .resources.account_numbers import AccountNumbersResource, AsyncAccountNumbersResource
+    from .resources.check_transfers import CheckTransfersResource, AsyncCheckTransfersResource
+    from .resources.routing_numbers import RoutingNumbersResource, AsyncRoutingNumbersResource
+    from .resources.card_validations import CardValidationsResource, AsyncCardValidationsResource
+    from .resources.fednow_transfers import FednowTransfersResource, AsyncFednowTransfersResource
+    from .resources.intrafi_balances import IntrafiBalancesResource, AsyncIntrafiBalancesResource
+    from .resources.account_transfers import AccountTransfersResource, AsyncAccountTransfersResource
+    from .resources.external_accounts import ExternalAccountsResource, AsyncExternalAccountsResource
+    from .resources.oauth_connections import OAuthConnectionsResource, AsyncOAuthConnectionsResource
+    from .resources.account_statements import AccountStatementsResource, AsyncAccountStatementsResource
+    from .resources.inbound_mail_items import InboundMailItemsResource, AsyncInboundMailItemsResource
+    from .resources.intrafi_exclusions import IntrafiExclusionsResource, AsyncIntrafiExclusionsResource
+    from .resources.oauth_applications import OAuthApplicationsResource, AsyncOAuthApplicationsResource
+    from .resources.bookkeeping_entries import BookkeepingEntriesResource, AsyncBookkeepingEntriesResource
+    from .resources.card_push_transfers import CardPushTransfersResource, AsyncCardPushTransfersResource
+    from .resources.event_subscriptions import EventSubscriptionsResource, AsyncEventSubscriptionsResource
+    from .resources.real_time_decisions import RealTimeDecisionsResource, AsyncRealTimeDecisionsResource
+    from .resources.ach_prenotifications import ACHPrenotificationsResource, AsyncACHPrenotificationsResource
+    from .resources.bookkeeping_accounts import BookkeepingAccountsResource, AsyncBookkeepingAccountsResource
+    from .resources.pending_transactions import PendingTransactionsResource, AsyncPendingTransactionsResource
+    from .resources.declined_transactions import DeclinedTransactionsResource, AsyncDeclinedTransactionsResource
+    from .resources.digital_card_profiles import DigitalCardProfilesResource, AsyncDigitalCardProfilesResource
+    from .resources.digital_wallet_tokens import DigitalWalletTokensResource, AsyncDigitalWalletTokensResource
+    from .resources.inbound_ach_transfers import InboundACHTransfersResource, AsyncInboundACHTransfersResource
+    from .resources.bookkeeping_entry_sets import BookkeepingEntrySetsResource, AsyncBookkeepingEntrySetsResource
+    from .resources.inbound_check_deposits import InboundCheckDepositsResource, AsyncInboundCheckDepositsResource
+    from .resources.inbound_wire_transfers import InboundWireTransfersResource, AsyncInboundWireTransfersResource
+    from .resources.physical_card_profiles import PhysicalCardProfilesResource, AsyncPhysicalCardProfilesResource
+    from .resources.supplemental_documents import SupplementalDocumentsResource, AsyncSupplementalDocumentsResource
+    from .resources.wire_drawdown_requests import WireDrawdownRequestsResource, AsyncWireDrawdownRequestsResource
+    from .resources.simulations.simulations import SimulationsResource, AsyncSimulationsResource
+    from .resources.inbound_fednow_transfers import InboundFednowTransfersResource, AsyncInboundFednowTransfersResource
+    from .resources.card_purchase_supplements import (
+        CardPurchaseSupplementsResource,
+        AsyncCardPurchaseSupplementsResource,
+    )
+    from .resources.intrafi_account_enrollments import (
+        IntrafiAccountEnrollmentsResource,
+        AsyncIntrafiAccountEnrollmentsResource,
+    )
+    from .resources.real_time_payments_transfers import (
+        RealTimePaymentsTransfersResource,
+        AsyncRealTimePaymentsTransfersResource,
+    )
+    from .resources.inbound_wire_drawdown_requests import (
+        InboundWireDrawdownRequestsResource,
+        AsyncInboundWireDrawdownRequestsResource,
+    )
+    from .resources.inbound_real_time_payments_transfers import (
+        InboundRealTimePaymentsTransfersResource,
+        AsyncInboundRealTimePaymentsTransfersResource,
+    )
 
 __all__ = [
     "ENVIRONMENTS",
@@ -111,66 +186,6 @@ ENVIRONMENTS: Dict[str, str] = {
 
 
 class Increase(SyncAPIClient):
-    accounts: accounts.AccountsResource
-    account_numbers: account_numbers.AccountNumbersResource
-    account_transfers: account_transfers.AccountTransfersResource
-    cards: cards.CardsResource
-    card_payments: card_payments.CardPaymentsResource
-    card_purchase_supplements: card_purchase_supplements.CardPurchaseSupplementsResource
-    card_disputes: card_disputes.CardDisputesResource
-    physical_cards: physical_cards.PhysicalCardsResource
-    digital_card_profiles: digital_card_profiles.DigitalCardProfilesResource
-    physical_card_profiles: physical_card_profiles.PhysicalCardProfilesResource
-    digital_wallet_tokens: digital_wallet_tokens.DigitalWalletTokensResource
-    transactions: transactions.TransactionsResource
-    pending_transactions: pending_transactions.PendingTransactionsResource
-    declined_transactions: declined_transactions.DeclinedTransactionsResource
-    ach_transfers: ach_transfers.ACHTransfersResource
-    ach_prenotifications: ach_prenotifications.ACHPrenotificationsResource
-    inbound_ach_transfers: inbound_ach_transfers.InboundACHTransfersResource
-    wire_transfers: wire_transfers.WireTransfersResource
-    inbound_wire_transfers: inbound_wire_transfers.InboundWireTransfersResource
-    wire_drawdown_requests: wire_drawdown_requests.WireDrawdownRequestsResource
-    inbound_wire_drawdown_requests: inbound_wire_drawdown_requests.InboundWireDrawdownRequestsResource
-    check_transfers: check_transfers.CheckTransfersResource
-    inbound_check_deposits: inbound_check_deposits.InboundCheckDepositsResource
-    real_time_payments_transfers: real_time_payments_transfers.RealTimePaymentsTransfersResource
-    inbound_real_time_payments_transfers: inbound_real_time_payments_transfers.InboundRealTimePaymentsTransfersResource
-    fednow_transfers: fednow_transfers.FednowTransfersResource
-    inbound_fednow_transfers: inbound_fednow_transfers.InboundFednowTransfersResource
-    check_deposits: check_deposits.CheckDepositsResource
-    lockboxes: lockboxes.LockboxesResource
-    inbound_mail_items: inbound_mail_items.InboundMailItemsResource
-    routing_numbers: routing_numbers.RoutingNumbersResource
-    external_accounts: external_accounts.ExternalAccountsResource
-    entities: entities.EntitiesResource
-    supplemental_documents: supplemental_documents.SupplementalDocumentsResource
-    programs: programs.ProgramsResource
-    account_statements: account_statements.AccountStatementsResource
-    files: files.FilesResource
-    file_links: file_links.FileLinksResource
-    documents: documents.DocumentsResource
-    exports: exports.ExportsResource
-    events: events.EventsResource
-    event_subscriptions: event_subscriptions.EventSubscriptionsResource
-    real_time_decisions: real_time_decisions.RealTimeDecisionsResource
-    bookkeeping_accounts: bookkeeping_accounts.BookkeepingAccountsResource
-    bookkeeping_entry_sets: bookkeeping_entry_sets.BookkeepingEntrySetsResource
-    bookkeeping_entries: bookkeeping_entries.BookkeepingEntriesResource
-    groups: groups.GroupsResource
-    oauth_applications: oauth_applications.OAuthApplicationsResource
-    oauth_connections: oauth_connections.OAuthConnectionsResource
-    oauth_tokens: oauth_tokens.OAuthTokensResource
-    intrafi_account_enrollments: intrafi_account_enrollments.IntrafiAccountEnrollmentsResource
-    intrafi_balances: intrafi_balances.IntrafiBalancesResource
-    intrafi_exclusions: intrafi_exclusions.IntrafiExclusionsResource
-    card_tokens: card_tokens.CardTokensResource
-    card_push_transfers: card_push_transfers.CardPushTransfersResource
-    card_validations: card_validations.CardValidationsResource
-    simulations: simulations.SimulationsResource
-    with_raw_response: IncreaseWithRawResponse
-    with_streaming_response: IncreaseWithStreamedResponse
-
     # client options
     api_key: str
     webhook_secret: str | None
@@ -259,67 +274,355 @@ class Increase(SyncAPIClient):
 
         self._idempotency_header = "Idempotency-Key"
 
-        self.accounts = accounts.AccountsResource(self)
-        self.account_numbers = account_numbers.AccountNumbersResource(self)
-        self.account_transfers = account_transfers.AccountTransfersResource(self)
-        self.cards = cards.CardsResource(self)
-        self.card_payments = card_payments.CardPaymentsResource(self)
-        self.card_purchase_supplements = card_purchase_supplements.CardPurchaseSupplementsResource(self)
-        self.card_disputes = card_disputes.CardDisputesResource(self)
-        self.physical_cards = physical_cards.PhysicalCardsResource(self)
-        self.digital_card_profiles = digital_card_profiles.DigitalCardProfilesResource(self)
-        self.physical_card_profiles = physical_card_profiles.PhysicalCardProfilesResource(self)
-        self.digital_wallet_tokens = digital_wallet_tokens.DigitalWalletTokensResource(self)
-        self.transactions = transactions.TransactionsResource(self)
-        self.pending_transactions = pending_transactions.PendingTransactionsResource(self)
-        self.declined_transactions = declined_transactions.DeclinedTransactionsResource(self)
-        self.ach_transfers = ach_transfers.ACHTransfersResource(self)
-        self.ach_prenotifications = ach_prenotifications.ACHPrenotificationsResource(self)
-        self.inbound_ach_transfers = inbound_ach_transfers.InboundACHTransfersResource(self)
-        self.wire_transfers = wire_transfers.WireTransfersResource(self)
-        self.inbound_wire_transfers = inbound_wire_transfers.InboundWireTransfersResource(self)
-        self.wire_drawdown_requests = wire_drawdown_requests.WireDrawdownRequestsResource(self)
-        self.inbound_wire_drawdown_requests = inbound_wire_drawdown_requests.InboundWireDrawdownRequestsResource(self)
-        self.check_transfers = check_transfers.CheckTransfersResource(self)
-        self.inbound_check_deposits = inbound_check_deposits.InboundCheckDepositsResource(self)
-        self.real_time_payments_transfers = real_time_payments_transfers.RealTimePaymentsTransfersResource(self)
-        self.inbound_real_time_payments_transfers = (
-            inbound_real_time_payments_transfers.InboundRealTimePaymentsTransfersResource(self)
-        )
-        self.fednow_transfers = fednow_transfers.FednowTransfersResource(self)
-        self.inbound_fednow_transfers = inbound_fednow_transfers.InboundFednowTransfersResource(self)
-        self.check_deposits = check_deposits.CheckDepositsResource(self)
-        self.lockboxes = lockboxes.LockboxesResource(self)
-        self.inbound_mail_items = inbound_mail_items.InboundMailItemsResource(self)
-        self.routing_numbers = routing_numbers.RoutingNumbersResource(self)
-        self.external_accounts = external_accounts.ExternalAccountsResource(self)
-        self.entities = entities.EntitiesResource(self)
-        self.supplemental_documents = supplemental_documents.SupplementalDocumentsResource(self)
-        self.programs = programs.ProgramsResource(self)
-        self.account_statements = account_statements.AccountStatementsResource(self)
-        self.files = files.FilesResource(self)
-        self.file_links = file_links.FileLinksResource(self)
-        self.documents = documents.DocumentsResource(self)
-        self.exports = exports.ExportsResource(self)
-        self.events = events.EventsResource(self)
-        self.event_subscriptions = event_subscriptions.EventSubscriptionsResource(self)
-        self.real_time_decisions = real_time_decisions.RealTimeDecisionsResource(self)
-        self.bookkeeping_accounts = bookkeeping_accounts.BookkeepingAccountsResource(self)
-        self.bookkeeping_entry_sets = bookkeeping_entry_sets.BookkeepingEntrySetsResource(self)
-        self.bookkeeping_entries = bookkeeping_entries.BookkeepingEntriesResource(self)
-        self.groups = groups.GroupsResource(self)
-        self.oauth_applications = oauth_applications.OAuthApplicationsResource(self)
-        self.oauth_connections = oauth_connections.OAuthConnectionsResource(self)
-        self.oauth_tokens = oauth_tokens.OAuthTokensResource(self)
-        self.intrafi_account_enrollments = intrafi_account_enrollments.IntrafiAccountEnrollmentsResource(self)
-        self.intrafi_balances = intrafi_balances.IntrafiBalancesResource(self)
-        self.intrafi_exclusions = intrafi_exclusions.IntrafiExclusionsResource(self)
-        self.card_tokens = card_tokens.CardTokensResource(self)
-        self.card_push_transfers = card_push_transfers.CardPushTransfersResource(self)
-        self.card_validations = card_validations.CardValidationsResource(self)
-        self.simulations = simulations.SimulationsResource(self)
-        self.with_raw_response = IncreaseWithRawResponse(self)
-        self.with_streaming_response = IncreaseWithStreamedResponse(self)
+    @cached_property
+    def accounts(self) -> AccountsResource:
+        from .resources.accounts import AccountsResource
+
+        return AccountsResource(self)
+
+    @cached_property
+    def account_numbers(self) -> AccountNumbersResource:
+        from .resources.account_numbers import AccountNumbersResource
+
+        return AccountNumbersResource(self)
+
+    @cached_property
+    def account_transfers(self) -> AccountTransfersResource:
+        from .resources.account_transfers import AccountTransfersResource
+
+        return AccountTransfersResource(self)
+
+    @cached_property
+    def cards(self) -> CardsResource:
+        from .resources.cards import CardsResource
+
+        return CardsResource(self)
+
+    @cached_property
+    def card_payments(self) -> CardPaymentsResource:
+        from .resources.card_payments import CardPaymentsResource
+
+        return CardPaymentsResource(self)
+
+    @cached_property
+    def card_purchase_supplements(self) -> CardPurchaseSupplementsResource:
+        from .resources.card_purchase_supplements import CardPurchaseSupplementsResource
+
+        return CardPurchaseSupplementsResource(self)
+
+    @cached_property
+    def card_disputes(self) -> CardDisputesResource:
+        from .resources.card_disputes import CardDisputesResource
+
+        return CardDisputesResource(self)
+
+    @cached_property
+    def physical_cards(self) -> PhysicalCardsResource:
+        from .resources.physical_cards import PhysicalCardsResource
+
+        return PhysicalCardsResource(self)
+
+    @cached_property
+    def digital_card_profiles(self) -> DigitalCardProfilesResource:
+        from .resources.digital_card_profiles import DigitalCardProfilesResource
+
+        return DigitalCardProfilesResource(self)
+
+    @cached_property
+    def physical_card_profiles(self) -> PhysicalCardProfilesResource:
+        from .resources.physical_card_profiles import PhysicalCardProfilesResource
+
+        return PhysicalCardProfilesResource(self)
+
+    @cached_property
+    def digital_wallet_tokens(self) -> DigitalWalletTokensResource:
+        from .resources.digital_wallet_tokens import DigitalWalletTokensResource
+
+        return DigitalWalletTokensResource(self)
+
+    @cached_property
+    def transactions(self) -> TransactionsResource:
+        from .resources.transactions import TransactionsResource
+
+        return TransactionsResource(self)
+
+    @cached_property
+    def pending_transactions(self) -> PendingTransactionsResource:
+        from .resources.pending_transactions import PendingTransactionsResource
+
+        return PendingTransactionsResource(self)
+
+    @cached_property
+    def declined_transactions(self) -> DeclinedTransactionsResource:
+        from .resources.declined_transactions import DeclinedTransactionsResource
+
+        return DeclinedTransactionsResource(self)
+
+    @cached_property
+    def ach_transfers(self) -> ACHTransfersResource:
+        from .resources.ach_transfers import ACHTransfersResource
+
+        return ACHTransfersResource(self)
+
+    @cached_property
+    def ach_prenotifications(self) -> ACHPrenotificationsResource:
+        from .resources.ach_prenotifications import ACHPrenotificationsResource
+
+        return ACHPrenotificationsResource(self)
+
+    @cached_property
+    def inbound_ach_transfers(self) -> InboundACHTransfersResource:
+        from .resources.inbound_ach_transfers import InboundACHTransfersResource
+
+        return InboundACHTransfersResource(self)
+
+    @cached_property
+    def wire_transfers(self) -> WireTransfersResource:
+        from .resources.wire_transfers import WireTransfersResource
+
+        return WireTransfersResource(self)
+
+    @cached_property
+    def inbound_wire_transfers(self) -> InboundWireTransfersResource:
+        from .resources.inbound_wire_transfers import InboundWireTransfersResource
+
+        return InboundWireTransfersResource(self)
+
+    @cached_property
+    def wire_drawdown_requests(self) -> WireDrawdownRequestsResource:
+        from .resources.wire_drawdown_requests import WireDrawdownRequestsResource
+
+        return WireDrawdownRequestsResource(self)
+
+    @cached_property
+    def inbound_wire_drawdown_requests(self) -> InboundWireDrawdownRequestsResource:
+        from .resources.inbound_wire_drawdown_requests import InboundWireDrawdownRequestsResource
+
+        return InboundWireDrawdownRequestsResource(self)
+
+    @cached_property
+    def check_transfers(self) -> CheckTransfersResource:
+        from .resources.check_transfers import CheckTransfersResource
+
+        return CheckTransfersResource(self)
+
+    @cached_property
+    def inbound_check_deposits(self) -> InboundCheckDepositsResource:
+        from .resources.inbound_check_deposits import InboundCheckDepositsResource
+
+        return InboundCheckDepositsResource(self)
+
+    @cached_property
+    def real_time_payments_transfers(self) -> RealTimePaymentsTransfersResource:
+        from .resources.real_time_payments_transfers import RealTimePaymentsTransfersResource
+
+        return RealTimePaymentsTransfersResource(self)
+
+    @cached_property
+    def inbound_real_time_payments_transfers(self) -> InboundRealTimePaymentsTransfersResource:
+        from .resources.inbound_real_time_payments_transfers import InboundRealTimePaymentsTransfersResource
+
+        return InboundRealTimePaymentsTransfersResource(self)
+
+    @cached_property
+    def fednow_transfers(self) -> FednowTransfersResource:
+        from .resources.fednow_transfers import FednowTransfersResource
+
+        return FednowTransfersResource(self)
+
+    @cached_property
+    def inbound_fednow_transfers(self) -> InboundFednowTransfersResource:
+        from .resources.inbound_fednow_transfers import InboundFednowTransfersResource
+
+        return InboundFednowTransfersResource(self)
+
+    @cached_property
+    def check_deposits(self) -> CheckDepositsResource:
+        from .resources.check_deposits import CheckDepositsResource
+
+        return CheckDepositsResource(self)
+
+    @cached_property
+    def lockboxes(self) -> LockboxesResource:
+        from .resources.lockboxes import LockboxesResource
+
+        return LockboxesResource(self)
+
+    @cached_property
+    def inbound_mail_items(self) -> InboundMailItemsResource:
+        from .resources.inbound_mail_items import InboundMailItemsResource
+
+        return InboundMailItemsResource(self)
+
+    @cached_property
+    def routing_numbers(self) -> RoutingNumbersResource:
+        from .resources.routing_numbers import RoutingNumbersResource
+
+        return RoutingNumbersResource(self)
+
+    @cached_property
+    def external_accounts(self) -> ExternalAccountsResource:
+        from .resources.external_accounts import ExternalAccountsResource
+
+        return ExternalAccountsResource(self)
+
+    @cached_property
+    def entities(self) -> EntitiesResource:
+        from .resources.entities import EntitiesResource
+
+        return EntitiesResource(self)
+
+    @cached_property
+    def supplemental_documents(self) -> SupplementalDocumentsResource:
+        from .resources.supplemental_documents import SupplementalDocumentsResource
+
+        return SupplementalDocumentsResource(self)
+
+    @cached_property
+    def programs(self) -> ProgramsResource:
+        from .resources.programs import ProgramsResource
+
+        return ProgramsResource(self)
+
+    @cached_property
+    def account_statements(self) -> AccountStatementsResource:
+        from .resources.account_statements import AccountStatementsResource
+
+        return AccountStatementsResource(self)
+
+    @cached_property
+    def files(self) -> FilesResource:
+        from .resources.files import FilesResource
+
+        return FilesResource(self)
+
+    @cached_property
+    def file_links(self) -> FileLinksResource:
+        from .resources.file_links import FileLinksResource
+
+        return FileLinksResource(self)
+
+    @cached_property
+    def documents(self) -> DocumentsResource:
+        from .resources.documents import DocumentsResource
+
+        return DocumentsResource(self)
+
+    @cached_property
+    def exports(self) -> ExportsResource:
+        from .resources.exports import ExportsResource
+
+        return ExportsResource(self)
+
+    @cached_property
+    def events(self) -> EventsResource:
+        from .resources.events import EventsResource
+
+        return EventsResource(self)
+
+    @cached_property
+    def event_subscriptions(self) -> EventSubscriptionsResource:
+        from .resources.event_subscriptions import EventSubscriptionsResource
+
+        return EventSubscriptionsResource(self)
+
+    @cached_property
+    def real_time_decisions(self) -> RealTimeDecisionsResource:
+        from .resources.real_time_decisions import RealTimeDecisionsResource
+
+        return RealTimeDecisionsResource(self)
+
+    @cached_property
+    def bookkeeping_accounts(self) -> BookkeepingAccountsResource:
+        from .resources.bookkeeping_accounts import BookkeepingAccountsResource
+
+        return BookkeepingAccountsResource(self)
+
+    @cached_property
+    def bookkeeping_entry_sets(self) -> BookkeepingEntrySetsResource:
+        from .resources.bookkeeping_entry_sets import BookkeepingEntrySetsResource
+
+        return BookkeepingEntrySetsResource(self)
+
+    @cached_property
+    def bookkeeping_entries(self) -> BookkeepingEntriesResource:
+        from .resources.bookkeeping_entries import BookkeepingEntriesResource
+
+        return BookkeepingEntriesResource(self)
+
+    @cached_property
+    def groups(self) -> GroupsResource:
+        from .resources.groups import GroupsResource
+
+        return GroupsResource(self)
+
+    @cached_property
+    def oauth_applications(self) -> OAuthApplicationsResource:
+        from .resources.oauth_applications import OAuthApplicationsResource
+
+        return OAuthApplicationsResource(self)
+
+    @cached_property
+    def oauth_connections(self) -> OAuthConnectionsResource:
+        from .resources.oauth_connections import OAuthConnectionsResource
+
+        return OAuthConnectionsResource(self)
+
+    @cached_property
+    def oauth_tokens(self) -> OAuthTokensResource:
+        from .resources.oauth_tokens import OAuthTokensResource
+
+        return OAuthTokensResource(self)
+
+    @cached_property
+    def intrafi_account_enrollments(self) -> IntrafiAccountEnrollmentsResource:
+        from .resources.intrafi_account_enrollments import IntrafiAccountEnrollmentsResource
+
+        return IntrafiAccountEnrollmentsResource(self)
+
+    @cached_property
+    def intrafi_balances(self) -> IntrafiBalancesResource:
+        from .resources.intrafi_balances import IntrafiBalancesResource
+
+        return IntrafiBalancesResource(self)
+
+    @cached_property
+    def intrafi_exclusions(self) -> IntrafiExclusionsResource:
+        from .resources.intrafi_exclusions import IntrafiExclusionsResource
+
+        return IntrafiExclusionsResource(self)
+
+    @cached_property
+    def card_tokens(self) -> CardTokensResource:
+        from .resources.card_tokens import CardTokensResource
+
+        return CardTokensResource(self)
+
+    @cached_property
+    def card_push_transfers(self) -> CardPushTransfersResource:
+        from .resources.card_push_transfers import CardPushTransfersResource
+
+        return CardPushTransfersResource(self)
+
+    @cached_property
+    def card_validations(self) -> CardValidationsResource:
+        from .resources.card_validations import CardValidationsResource
+
+        return CardValidationsResource(self)
+
+    @cached_property
+    def simulations(self) -> SimulationsResource:
+        from .resources.simulations import SimulationsResource
+
+        return SimulationsResource(self)
+
+    @cached_property
+    def with_raw_response(self) -> IncreaseWithRawResponse:
+        return IncreaseWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> IncreaseWithStreamedResponse:
+        return IncreaseWithStreamedResponse(self)
 
     @property
     @override
@@ -476,68 +779,6 @@ class Increase(SyncAPIClient):
 
 
 class AsyncIncrease(AsyncAPIClient):
-    accounts: accounts.AsyncAccountsResource
-    account_numbers: account_numbers.AsyncAccountNumbersResource
-    account_transfers: account_transfers.AsyncAccountTransfersResource
-    cards: cards.AsyncCardsResource
-    card_payments: card_payments.AsyncCardPaymentsResource
-    card_purchase_supplements: card_purchase_supplements.AsyncCardPurchaseSupplementsResource
-    card_disputes: card_disputes.AsyncCardDisputesResource
-    physical_cards: physical_cards.AsyncPhysicalCardsResource
-    digital_card_profiles: digital_card_profiles.AsyncDigitalCardProfilesResource
-    physical_card_profiles: physical_card_profiles.AsyncPhysicalCardProfilesResource
-    digital_wallet_tokens: digital_wallet_tokens.AsyncDigitalWalletTokensResource
-    transactions: transactions.AsyncTransactionsResource
-    pending_transactions: pending_transactions.AsyncPendingTransactionsResource
-    declined_transactions: declined_transactions.AsyncDeclinedTransactionsResource
-    ach_transfers: ach_transfers.AsyncACHTransfersResource
-    ach_prenotifications: ach_prenotifications.AsyncACHPrenotificationsResource
-    inbound_ach_transfers: inbound_ach_transfers.AsyncInboundACHTransfersResource
-    wire_transfers: wire_transfers.AsyncWireTransfersResource
-    inbound_wire_transfers: inbound_wire_transfers.AsyncInboundWireTransfersResource
-    wire_drawdown_requests: wire_drawdown_requests.AsyncWireDrawdownRequestsResource
-    inbound_wire_drawdown_requests: inbound_wire_drawdown_requests.AsyncInboundWireDrawdownRequestsResource
-    check_transfers: check_transfers.AsyncCheckTransfersResource
-    inbound_check_deposits: inbound_check_deposits.AsyncInboundCheckDepositsResource
-    real_time_payments_transfers: real_time_payments_transfers.AsyncRealTimePaymentsTransfersResource
-    inbound_real_time_payments_transfers: (
-        inbound_real_time_payments_transfers.AsyncInboundRealTimePaymentsTransfersResource
-    )
-    fednow_transfers: fednow_transfers.AsyncFednowTransfersResource
-    inbound_fednow_transfers: inbound_fednow_transfers.AsyncInboundFednowTransfersResource
-    check_deposits: check_deposits.AsyncCheckDepositsResource
-    lockboxes: lockboxes.AsyncLockboxesResource
-    inbound_mail_items: inbound_mail_items.AsyncInboundMailItemsResource
-    routing_numbers: routing_numbers.AsyncRoutingNumbersResource
-    external_accounts: external_accounts.AsyncExternalAccountsResource
-    entities: entities.AsyncEntitiesResource
-    supplemental_documents: supplemental_documents.AsyncSupplementalDocumentsResource
-    programs: programs.AsyncProgramsResource
-    account_statements: account_statements.AsyncAccountStatementsResource
-    files: files.AsyncFilesResource
-    file_links: file_links.AsyncFileLinksResource
-    documents: documents.AsyncDocumentsResource
-    exports: exports.AsyncExportsResource
-    events: events.AsyncEventsResource
-    event_subscriptions: event_subscriptions.AsyncEventSubscriptionsResource
-    real_time_decisions: real_time_decisions.AsyncRealTimeDecisionsResource
-    bookkeeping_accounts: bookkeeping_accounts.AsyncBookkeepingAccountsResource
-    bookkeeping_entry_sets: bookkeeping_entry_sets.AsyncBookkeepingEntrySetsResource
-    bookkeeping_entries: bookkeeping_entries.AsyncBookkeepingEntriesResource
-    groups: groups.AsyncGroupsResource
-    oauth_applications: oauth_applications.AsyncOAuthApplicationsResource
-    oauth_connections: oauth_connections.AsyncOAuthConnectionsResource
-    oauth_tokens: oauth_tokens.AsyncOAuthTokensResource
-    intrafi_account_enrollments: intrafi_account_enrollments.AsyncIntrafiAccountEnrollmentsResource
-    intrafi_balances: intrafi_balances.AsyncIntrafiBalancesResource
-    intrafi_exclusions: intrafi_exclusions.AsyncIntrafiExclusionsResource
-    card_tokens: card_tokens.AsyncCardTokensResource
-    card_push_transfers: card_push_transfers.AsyncCardPushTransfersResource
-    card_validations: card_validations.AsyncCardValidationsResource
-    simulations: simulations.AsyncSimulationsResource
-    with_raw_response: AsyncIncreaseWithRawResponse
-    with_streaming_response: AsyncIncreaseWithStreamedResponse
-
     # client options
     api_key: str
     webhook_secret: str | None
@@ -626,69 +867,355 @@ class AsyncIncrease(AsyncAPIClient):
 
         self._idempotency_header = "Idempotency-Key"
 
-        self.accounts = accounts.AsyncAccountsResource(self)
-        self.account_numbers = account_numbers.AsyncAccountNumbersResource(self)
-        self.account_transfers = account_transfers.AsyncAccountTransfersResource(self)
-        self.cards = cards.AsyncCardsResource(self)
-        self.card_payments = card_payments.AsyncCardPaymentsResource(self)
-        self.card_purchase_supplements = card_purchase_supplements.AsyncCardPurchaseSupplementsResource(self)
-        self.card_disputes = card_disputes.AsyncCardDisputesResource(self)
-        self.physical_cards = physical_cards.AsyncPhysicalCardsResource(self)
-        self.digital_card_profiles = digital_card_profiles.AsyncDigitalCardProfilesResource(self)
-        self.physical_card_profiles = physical_card_profiles.AsyncPhysicalCardProfilesResource(self)
-        self.digital_wallet_tokens = digital_wallet_tokens.AsyncDigitalWalletTokensResource(self)
-        self.transactions = transactions.AsyncTransactionsResource(self)
-        self.pending_transactions = pending_transactions.AsyncPendingTransactionsResource(self)
-        self.declined_transactions = declined_transactions.AsyncDeclinedTransactionsResource(self)
-        self.ach_transfers = ach_transfers.AsyncACHTransfersResource(self)
-        self.ach_prenotifications = ach_prenotifications.AsyncACHPrenotificationsResource(self)
-        self.inbound_ach_transfers = inbound_ach_transfers.AsyncInboundACHTransfersResource(self)
-        self.wire_transfers = wire_transfers.AsyncWireTransfersResource(self)
-        self.inbound_wire_transfers = inbound_wire_transfers.AsyncInboundWireTransfersResource(self)
-        self.wire_drawdown_requests = wire_drawdown_requests.AsyncWireDrawdownRequestsResource(self)
-        self.inbound_wire_drawdown_requests = inbound_wire_drawdown_requests.AsyncInboundWireDrawdownRequestsResource(
-            self
-        )
-        self.check_transfers = check_transfers.AsyncCheckTransfersResource(self)
-        self.inbound_check_deposits = inbound_check_deposits.AsyncInboundCheckDepositsResource(self)
-        self.real_time_payments_transfers = real_time_payments_transfers.AsyncRealTimePaymentsTransfersResource(self)
-        self.inbound_real_time_payments_transfers = (
-            inbound_real_time_payments_transfers.AsyncInboundRealTimePaymentsTransfersResource(self)
-        )
-        self.fednow_transfers = fednow_transfers.AsyncFednowTransfersResource(self)
-        self.inbound_fednow_transfers = inbound_fednow_transfers.AsyncInboundFednowTransfersResource(self)
-        self.check_deposits = check_deposits.AsyncCheckDepositsResource(self)
-        self.lockboxes = lockboxes.AsyncLockboxesResource(self)
-        self.inbound_mail_items = inbound_mail_items.AsyncInboundMailItemsResource(self)
-        self.routing_numbers = routing_numbers.AsyncRoutingNumbersResource(self)
-        self.external_accounts = external_accounts.AsyncExternalAccountsResource(self)
-        self.entities = entities.AsyncEntitiesResource(self)
-        self.supplemental_documents = supplemental_documents.AsyncSupplementalDocumentsResource(self)
-        self.programs = programs.AsyncProgramsResource(self)
-        self.account_statements = account_statements.AsyncAccountStatementsResource(self)
-        self.files = files.AsyncFilesResource(self)
-        self.file_links = file_links.AsyncFileLinksResource(self)
-        self.documents = documents.AsyncDocumentsResource(self)
-        self.exports = exports.AsyncExportsResource(self)
-        self.events = events.AsyncEventsResource(self)
-        self.event_subscriptions = event_subscriptions.AsyncEventSubscriptionsResource(self)
-        self.real_time_decisions = real_time_decisions.AsyncRealTimeDecisionsResource(self)
-        self.bookkeeping_accounts = bookkeeping_accounts.AsyncBookkeepingAccountsResource(self)
-        self.bookkeeping_entry_sets = bookkeeping_entry_sets.AsyncBookkeepingEntrySetsResource(self)
-        self.bookkeeping_entries = bookkeeping_entries.AsyncBookkeepingEntriesResource(self)
-        self.groups = groups.AsyncGroupsResource(self)
-        self.oauth_applications = oauth_applications.AsyncOAuthApplicationsResource(self)
-        self.oauth_connections = oauth_connections.AsyncOAuthConnectionsResource(self)
-        self.oauth_tokens = oauth_tokens.AsyncOAuthTokensResource(self)
-        self.intrafi_account_enrollments = intrafi_account_enrollments.AsyncIntrafiAccountEnrollmentsResource(self)
-        self.intrafi_balances = intrafi_balances.AsyncIntrafiBalancesResource(self)
-        self.intrafi_exclusions = intrafi_exclusions.AsyncIntrafiExclusionsResource(self)
-        self.card_tokens = card_tokens.AsyncCardTokensResource(self)
-        self.card_push_transfers = card_push_transfers.AsyncCardPushTransfersResource(self)
-        self.card_validations = card_validations.AsyncCardValidationsResource(self)
-        self.simulations = simulations.AsyncSimulationsResource(self)
-        self.with_raw_response = AsyncIncreaseWithRawResponse(self)
-        self.with_streaming_response = AsyncIncreaseWithStreamedResponse(self)
+    @cached_property
+    def accounts(self) -> AsyncAccountsResource:
+        from .resources.accounts import AsyncAccountsResource
+
+        return AsyncAccountsResource(self)
+
+    @cached_property
+    def account_numbers(self) -> AsyncAccountNumbersResource:
+        from .resources.account_numbers import AsyncAccountNumbersResource
+
+        return AsyncAccountNumbersResource(self)
+
+    @cached_property
+    def account_transfers(self) -> AsyncAccountTransfersResource:
+        from .resources.account_transfers import AsyncAccountTransfersResource
+
+        return AsyncAccountTransfersResource(self)
+
+    @cached_property
+    def cards(self) -> AsyncCardsResource:
+        from .resources.cards import AsyncCardsResource
+
+        return AsyncCardsResource(self)
+
+    @cached_property
+    def card_payments(self) -> AsyncCardPaymentsResource:
+        from .resources.card_payments import AsyncCardPaymentsResource
+
+        return AsyncCardPaymentsResource(self)
+
+    @cached_property
+    def card_purchase_supplements(self) -> AsyncCardPurchaseSupplementsResource:
+        from .resources.card_purchase_supplements import AsyncCardPurchaseSupplementsResource
+
+        return AsyncCardPurchaseSupplementsResource(self)
+
+    @cached_property
+    def card_disputes(self) -> AsyncCardDisputesResource:
+        from .resources.card_disputes import AsyncCardDisputesResource
+
+        return AsyncCardDisputesResource(self)
+
+    @cached_property
+    def physical_cards(self) -> AsyncPhysicalCardsResource:
+        from .resources.physical_cards import AsyncPhysicalCardsResource
+
+        return AsyncPhysicalCardsResource(self)
+
+    @cached_property
+    def digital_card_profiles(self) -> AsyncDigitalCardProfilesResource:
+        from .resources.digital_card_profiles import AsyncDigitalCardProfilesResource
+
+        return AsyncDigitalCardProfilesResource(self)
+
+    @cached_property
+    def physical_card_profiles(self) -> AsyncPhysicalCardProfilesResource:
+        from .resources.physical_card_profiles import AsyncPhysicalCardProfilesResource
+
+        return AsyncPhysicalCardProfilesResource(self)
+
+    @cached_property
+    def digital_wallet_tokens(self) -> AsyncDigitalWalletTokensResource:
+        from .resources.digital_wallet_tokens import AsyncDigitalWalletTokensResource
+
+        return AsyncDigitalWalletTokensResource(self)
+
+    @cached_property
+    def transactions(self) -> AsyncTransactionsResource:
+        from .resources.transactions import AsyncTransactionsResource
+
+        return AsyncTransactionsResource(self)
+
+    @cached_property
+    def pending_transactions(self) -> AsyncPendingTransactionsResource:
+        from .resources.pending_transactions import AsyncPendingTransactionsResource
+
+        return AsyncPendingTransactionsResource(self)
+
+    @cached_property
+    def declined_transactions(self) -> AsyncDeclinedTransactionsResource:
+        from .resources.declined_transactions import AsyncDeclinedTransactionsResource
+
+        return AsyncDeclinedTransactionsResource(self)
+
+    @cached_property
+    def ach_transfers(self) -> AsyncACHTransfersResource:
+        from .resources.ach_transfers import AsyncACHTransfersResource
+
+        return AsyncACHTransfersResource(self)
+
+    @cached_property
+    def ach_prenotifications(self) -> AsyncACHPrenotificationsResource:
+        from .resources.ach_prenotifications import AsyncACHPrenotificationsResource
+
+        return AsyncACHPrenotificationsResource(self)
+
+    @cached_property
+    def inbound_ach_transfers(self) -> AsyncInboundACHTransfersResource:
+        from .resources.inbound_ach_transfers import AsyncInboundACHTransfersResource
+
+        return AsyncInboundACHTransfersResource(self)
+
+    @cached_property
+    def wire_transfers(self) -> AsyncWireTransfersResource:
+        from .resources.wire_transfers import AsyncWireTransfersResource
+
+        return AsyncWireTransfersResource(self)
+
+    @cached_property
+    def inbound_wire_transfers(self) -> AsyncInboundWireTransfersResource:
+        from .resources.inbound_wire_transfers import AsyncInboundWireTransfersResource
+
+        return AsyncInboundWireTransfersResource(self)
+
+    @cached_property
+    def wire_drawdown_requests(self) -> AsyncWireDrawdownRequestsResource:
+        from .resources.wire_drawdown_requests import AsyncWireDrawdownRequestsResource
+
+        return AsyncWireDrawdownRequestsResource(self)
+
+    @cached_property
+    def inbound_wire_drawdown_requests(self) -> AsyncInboundWireDrawdownRequestsResource:
+        from .resources.inbound_wire_drawdown_requests import AsyncInboundWireDrawdownRequestsResource
+
+        return AsyncInboundWireDrawdownRequestsResource(self)
+
+    @cached_property
+    def check_transfers(self) -> AsyncCheckTransfersResource:
+        from .resources.check_transfers import AsyncCheckTransfersResource
+
+        return AsyncCheckTransfersResource(self)
+
+    @cached_property
+    def inbound_check_deposits(self) -> AsyncInboundCheckDepositsResource:
+        from .resources.inbound_check_deposits import AsyncInboundCheckDepositsResource
+
+        return AsyncInboundCheckDepositsResource(self)
+
+    @cached_property
+    def real_time_payments_transfers(self) -> AsyncRealTimePaymentsTransfersResource:
+        from .resources.real_time_payments_transfers import AsyncRealTimePaymentsTransfersResource
+
+        return AsyncRealTimePaymentsTransfersResource(self)
+
+    @cached_property
+    def inbound_real_time_payments_transfers(self) -> AsyncInboundRealTimePaymentsTransfersResource:
+        from .resources.inbound_real_time_payments_transfers import AsyncInboundRealTimePaymentsTransfersResource
+
+        return AsyncInboundRealTimePaymentsTransfersResource(self)
+
+    @cached_property
+    def fednow_transfers(self) -> AsyncFednowTransfersResource:
+        from .resources.fednow_transfers import AsyncFednowTransfersResource
+
+        return AsyncFednowTransfersResource(self)
+
+    @cached_property
+    def inbound_fednow_transfers(self) -> AsyncInboundFednowTransfersResource:
+        from .resources.inbound_fednow_transfers import AsyncInboundFednowTransfersResource
+
+        return AsyncInboundFednowTransfersResource(self)
+
+    @cached_property
+    def check_deposits(self) -> AsyncCheckDepositsResource:
+        from .resources.check_deposits import AsyncCheckDepositsResource
+
+        return AsyncCheckDepositsResource(self)
+
+    @cached_property
+    def lockboxes(self) -> AsyncLockboxesResource:
+        from .resources.lockboxes import AsyncLockboxesResource
+
+        return AsyncLockboxesResource(self)
+
+    @cached_property
+    def inbound_mail_items(self) -> AsyncInboundMailItemsResource:
+        from .resources.inbound_mail_items import AsyncInboundMailItemsResource
+
+        return AsyncInboundMailItemsResource(self)
+
+    @cached_property
+    def routing_numbers(self) -> AsyncRoutingNumbersResource:
+        from .resources.routing_numbers import AsyncRoutingNumbersResource
+
+        return AsyncRoutingNumbersResource(self)
+
+    @cached_property
+    def external_accounts(self) -> AsyncExternalAccountsResource:
+        from .resources.external_accounts import AsyncExternalAccountsResource
+
+        return AsyncExternalAccountsResource(self)
+
+    @cached_property
+    def entities(self) -> AsyncEntitiesResource:
+        from .resources.entities import AsyncEntitiesResource
+
+        return AsyncEntitiesResource(self)
+
+    @cached_property
+    def supplemental_documents(self) -> AsyncSupplementalDocumentsResource:
+        from .resources.supplemental_documents import AsyncSupplementalDocumentsResource
+
+        return AsyncSupplementalDocumentsResource(self)
+
+    @cached_property
+    def programs(self) -> AsyncProgramsResource:
+        from .resources.programs import AsyncProgramsResource
+
+        return AsyncProgramsResource(self)
+
+    @cached_property
+    def account_statements(self) -> AsyncAccountStatementsResource:
+        from .resources.account_statements import AsyncAccountStatementsResource
+
+        return AsyncAccountStatementsResource(self)
+
+    @cached_property
+    def files(self) -> AsyncFilesResource:
+        from .resources.files import AsyncFilesResource
+
+        return AsyncFilesResource(self)
+
+    @cached_property
+    def file_links(self) -> AsyncFileLinksResource:
+        from .resources.file_links import AsyncFileLinksResource
+
+        return AsyncFileLinksResource(self)
+
+    @cached_property
+    def documents(self) -> AsyncDocumentsResource:
+        from .resources.documents import AsyncDocumentsResource
+
+        return AsyncDocumentsResource(self)
+
+    @cached_property
+    def exports(self) -> AsyncExportsResource:
+        from .resources.exports import AsyncExportsResource
+
+        return AsyncExportsResource(self)
+
+    @cached_property
+    def events(self) -> AsyncEventsResource:
+        from .resources.events import AsyncEventsResource
+
+        return AsyncEventsResource(self)
+
+    @cached_property
+    def event_subscriptions(self) -> AsyncEventSubscriptionsResource:
+        from .resources.event_subscriptions import AsyncEventSubscriptionsResource
+
+        return AsyncEventSubscriptionsResource(self)
+
+    @cached_property
+    def real_time_decisions(self) -> AsyncRealTimeDecisionsResource:
+        from .resources.real_time_decisions import AsyncRealTimeDecisionsResource
+
+        return AsyncRealTimeDecisionsResource(self)
+
+    @cached_property
+    def bookkeeping_accounts(self) -> AsyncBookkeepingAccountsResource:
+        from .resources.bookkeeping_accounts import AsyncBookkeepingAccountsResource
+
+        return AsyncBookkeepingAccountsResource(self)
+
+    @cached_property
+    def bookkeeping_entry_sets(self) -> AsyncBookkeepingEntrySetsResource:
+        from .resources.bookkeeping_entry_sets import AsyncBookkeepingEntrySetsResource
+
+        return AsyncBookkeepingEntrySetsResource(self)
+
+    @cached_property
+    def bookkeeping_entries(self) -> AsyncBookkeepingEntriesResource:
+        from .resources.bookkeeping_entries import AsyncBookkeepingEntriesResource
+
+        return AsyncBookkeepingEntriesResource(self)
+
+    @cached_property
+    def groups(self) -> AsyncGroupsResource:
+        from .resources.groups import AsyncGroupsResource
+
+        return AsyncGroupsResource(self)
+
+    @cached_property
+    def oauth_applications(self) -> AsyncOAuthApplicationsResource:
+        from .resources.oauth_applications import AsyncOAuthApplicationsResource
+
+        return AsyncOAuthApplicationsResource(self)
+
+    @cached_property
+    def oauth_connections(self) -> AsyncOAuthConnectionsResource:
+        from .resources.oauth_connections import AsyncOAuthConnectionsResource
+
+        return AsyncOAuthConnectionsResource(self)
+
+    @cached_property
+    def oauth_tokens(self) -> AsyncOAuthTokensResource:
+        from .resources.oauth_tokens import AsyncOAuthTokensResource
+
+        return AsyncOAuthTokensResource(self)
+
+    @cached_property
+    def intrafi_account_enrollments(self) -> AsyncIntrafiAccountEnrollmentsResource:
+        from .resources.intrafi_account_enrollments import AsyncIntrafiAccountEnrollmentsResource
+
+        return AsyncIntrafiAccountEnrollmentsResource(self)
+
+    @cached_property
+    def intrafi_balances(self) -> AsyncIntrafiBalancesResource:
+        from .resources.intrafi_balances import AsyncIntrafiBalancesResource
+
+        return AsyncIntrafiBalancesResource(self)
+
+    @cached_property
+    def intrafi_exclusions(self) -> AsyncIntrafiExclusionsResource:
+        from .resources.intrafi_exclusions import AsyncIntrafiExclusionsResource
+
+        return AsyncIntrafiExclusionsResource(self)
+
+    @cached_property
+    def card_tokens(self) -> AsyncCardTokensResource:
+        from .resources.card_tokens import AsyncCardTokensResource
+
+        return AsyncCardTokensResource(self)
+
+    @cached_property
+    def card_push_transfers(self) -> AsyncCardPushTransfersResource:
+        from .resources.card_push_transfers import AsyncCardPushTransfersResource
+
+        return AsyncCardPushTransfersResource(self)
+
+    @cached_property
+    def card_validations(self) -> AsyncCardValidationsResource:
+        from .resources.card_validations import AsyncCardValidationsResource
+
+        return AsyncCardValidationsResource(self)
+
+    @cached_property
+    def simulations(self) -> AsyncSimulationsResource:
+        from .resources.simulations import AsyncSimulationsResource
+
+        return AsyncSimulationsResource(self)
+
+    @cached_property
+    def with_raw_response(self) -> AsyncIncreaseWithRawResponse:
+        return AsyncIncreaseWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> AsyncIncreaseWithStreamedResponse:
+        return AsyncIncreaseWithStreamedResponse(self)
 
     @property
     @override
@@ -845,513 +1372,1459 @@ class AsyncIncrease(AsyncAPIClient):
 
 
 class IncreaseWithRawResponse:
+    _client: Increase
+
     def __init__(self, client: Increase) -> None:
-        self.accounts = accounts.AccountsResourceWithRawResponse(client.accounts)
-        self.account_numbers = account_numbers.AccountNumbersResourceWithRawResponse(client.account_numbers)
-        self.account_transfers = account_transfers.AccountTransfersResourceWithRawResponse(client.account_transfers)
-        self.cards = cards.CardsResourceWithRawResponse(client.cards)
-        self.card_payments = card_payments.CardPaymentsResourceWithRawResponse(client.card_payments)
-        self.card_purchase_supplements = card_purchase_supplements.CardPurchaseSupplementsResourceWithRawResponse(
-            client.card_purchase_supplements
+        self._client = client
+
+    @cached_property
+    def accounts(self) -> accounts.AccountsResourceWithRawResponse:
+        from .resources.accounts import AccountsResourceWithRawResponse
+
+        return AccountsResourceWithRawResponse(self._client.accounts)
+
+    @cached_property
+    def account_numbers(self) -> account_numbers.AccountNumbersResourceWithRawResponse:
+        from .resources.account_numbers import AccountNumbersResourceWithRawResponse
+
+        return AccountNumbersResourceWithRawResponse(self._client.account_numbers)
+
+    @cached_property
+    def account_transfers(self) -> account_transfers.AccountTransfersResourceWithRawResponse:
+        from .resources.account_transfers import AccountTransfersResourceWithRawResponse
+
+        return AccountTransfersResourceWithRawResponse(self._client.account_transfers)
+
+    @cached_property
+    def cards(self) -> cards.CardsResourceWithRawResponse:
+        from .resources.cards import CardsResourceWithRawResponse
+
+        return CardsResourceWithRawResponse(self._client.cards)
+
+    @cached_property
+    def card_payments(self) -> card_payments.CardPaymentsResourceWithRawResponse:
+        from .resources.card_payments import CardPaymentsResourceWithRawResponse
+
+        return CardPaymentsResourceWithRawResponse(self._client.card_payments)
+
+    @cached_property
+    def card_purchase_supplements(self) -> card_purchase_supplements.CardPurchaseSupplementsResourceWithRawResponse:
+        from .resources.card_purchase_supplements import CardPurchaseSupplementsResourceWithRawResponse
+
+        return CardPurchaseSupplementsResourceWithRawResponse(self._client.card_purchase_supplements)
+
+    @cached_property
+    def card_disputes(self) -> card_disputes.CardDisputesResourceWithRawResponse:
+        from .resources.card_disputes import CardDisputesResourceWithRawResponse
+
+        return CardDisputesResourceWithRawResponse(self._client.card_disputes)
+
+    @cached_property
+    def physical_cards(self) -> physical_cards.PhysicalCardsResourceWithRawResponse:
+        from .resources.physical_cards import PhysicalCardsResourceWithRawResponse
+
+        return PhysicalCardsResourceWithRawResponse(self._client.physical_cards)
+
+    @cached_property
+    def digital_card_profiles(self) -> digital_card_profiles.DigitalCardProfilesResourceWithRawResponse:
+        from .resources.digital_card_profiles import DigitalCardProfilesResourceWithRawResponse
+
+        return DigitalCardProfilesResourceWithRawResponse(self._client.digital_card_profiles)
+
+    @cached_property
+    def physical_card_profiles(self) -> physical_card_profiles.PhysicalCardProfilesResourceWithRawResponse:
+        from .resources.physical_card_profiles import PhysicalCardProfilesResourceWithRawResponse
+
+        return PhysicalCardProfilesResourceWithRawResponse(self._client.physical_card_profiles)
+
+    @cached_property
+    def digital_wallet_tokens(self) -> digital_wallet_tokens.DigitalWalletTokensResourceWithRawResponse:
+        from .resources.digital_wallet_tokens import DigitalWalletTokensResourceWithRawResponse
+
+        return DigitalWalletTokensResourceWithRawResponse(self._client.digital_wallet_tokens)
+
+    @cached_property
+    def transactions(self) -> transactions.TransactionsResourceWithRawResponse:
+        from .resources.transactions import TransactionsResourceWithRawResponse
+
+        return TransactionsResourceWithRawResponse(self._client.transactions)
+
+    @cached_property
+    def pending_transactions(self) -> pending_transactions.PendingTransactionsResourceWithRawResponse:
+        from .resources.pending_transactions import PendingTransactionsResourceWithRawResponse
+
+        return PendingTransactionsResourceWithRawResponse(self._client.pending_transactions)
+
+    @cached_property
+    def declined_transactions(self) -> declined_transactions.DeclinedTransactionsResourceWithRawResponse:
+        from .resources.declined_transactions import DeclinedTransactionsResourceWithRawResponse
+
+        return DeclinedTransactionsResourceWithRawResponse(self._client.declined_transactions)
+
+    @cached_property
+    def ach_transfers(self) -> ach_transfers.ACHTransfersResourceWithRawResponse:
+        from .resources.ach_transfers import ACHTransfersResourceWithRawResponse
+
+        return ACHTransfersResourceWithRawResponse(self._client.ach_transfers)
+
+    @cached_property
+    def ach_prenotifications(self) -> ach_prenotifications.ACHPrenotificationsResourceWithRawResponse:
+        from .resources.ach_prenotifications import ACHPrenotificationsResourceWithRawResponse
+
+        return ACHPrenotificationsResourceWithRawResponse(self._client.ach_prenotifications)
+
+    @cached_property
+    def inbound_ach_transfers(self) -> inbound_ach_transfers.InboundACHTransfersResourceWithRawResponse:
+        from .resources.inbound_ach_transfers import InboundACHTransfersResourceWithRawResponse
+
+        return InboundACHTransfersResourceWithRawResponse(self._client.inbound_ach_transfers)
+
+    @cached_property
+    def wire_transfers(self) -> wire_transfers.WireTransfersResourceWithRawResponse:
+        from .resources.wire_transfers import WireTransfersResourceWithRawResponse
+
+        return WireTransfersResourceWithRawResponse(self._client.wire_transfers)
+
+    @cached_property
+    def inbound_wire_transfers(self) -> inbound_wire_transfers.InboundWireTransfersResourceWithRawResponse:
+        from .resources.inbound_wire_transfers import InboundWireTransfersResourceWithRawResponse
+
+        return InboundWireTransfersResourceWithRawResponse(self._client.inbound_wire_transfers)
+
+    @cached_property
+    def wire_drawdown_requests(self) -> wire_drawdown_requests.WireDrawdownRequestsResourceWithRawResponse:
+        from .resources.wire_drawdown_requests import WireDrawdownRequestsResourceWithRawResponse
+
+        return WireDrawdownRequestsResourceWithRawResponse(self._client.wire_drawdown_requests)
+
+    @cached_property
+    def inbound_wire_drawdown_requests(
+        self,
+    ) -> inbound_wire_drawdown_requests.InboundWireDrawdownRequestsResourceWithRawResponse:
+        from .resources.inbound_wire_drawdown_requests import InboundWireDrawdownRequestsResourceWithRawResponse
+
+        return InboundWireDrawdownRequestsResourceWithRawResponse(self._client.inbound_wire_drawdown_requests)
+
+    @cached_property
+    def check_transfers(self) -> check_transfers.CheckTransfersResourceWithRawResponse:
+        from .resources.check_transfers import CheckTransfersResourceWithRawResponse
+
+        return CheckTransfersResourceWithRawResponse(self._client.check_transfers)
+
+    @cached_property
+    def inbound_check_deposits(self) -> inbound_check_deposits.InboundCheckDepositsResourceWithRawResponse:
+        from .resources.inbound_check_deposits import InboundCheckDepositsResourceWithRawResponse
+
+        return InboundCheckDepositsResourceWithRawResponse(self._client.inbound_check_deposits)
+
+    @cached_property
+    def real_time_payments_transfers(
+        self,
+    ) -> real_time_payments_transfers.RealTimePaymentsTransfersResourceWithRawResponse:
+        from .resources.real_time_payments_transfers import RealTimePaymentsTransfersResourceWithRawResponse
+
+        return RealTimePaymentsTransfersResourceWithRawResponse(self._client.real_time_payments_transfers)
+
+    @cached_property
+    def inbound_real_time_payments_transfers(
+        self,
+    ) -> inbound_real_time_payments_transfers.InboundRealTimePaymentsTransfersResourceWithRawResponse:
+        from .resources.inbound_real_time_payments_transfers import (
+            InboundRealTimePaymentsTransfersResourceWithRawResponse,
         )
-        self.card_disputes = card_disputes.CardDisputesResourceWithRawResponse(client.card_disputes)
-        self.physical_cards = physical_cards.PhysicalCardsResourceWithRawResponse(client.physical_cards)
-        self.digital_card_profiles = digital_card_profiles.DigitalCardProfilesResourceWithRawResponse(
-            client.digital_card_profiles
+
+        return InboundRealTimePaymentsTransfersResourceWithRawResponse(
+            self._client.inbound_real_time_payments_transfers
         )
-        self.physical_card_profiles = physical_card_profiles.PhysicalCardProfilesResourceWithRawResponse(
-            client.physical_card_profiles
-        )
-        self.digital_wallet_tokens = digital_wallet_tokens.DigitalWalletTokensResourceWithRawResponse(
-            client.digital_wallet_tokens
-        )
-        self.transactions = transactions.TransactionsResourceWithRawResponse(client.transactions)
-        self.pending_transactions = pending_transactions.PendingTransactionsResourceWithRawResponse(
-            client.pending_transactions
-        )
-        self.declined_transactions = declined_transactions.DeclinedTransactionsResourceWithRawResponse(
-            client.declined_transactions
-        )
-        self.ach_transfers = ach_transfers.ACHTransfersResourceWithRawResponse(client.ach_transfers)
-        self.ach_prenotifications = ach_prenotifications.ACHPrenotificationsResourceWithRawResponse(
-            client.ach_prenotifications
-        )
-        self.inbound_ach_transfers = inbound_ach_transfers.InboundACHTransfersResourceWithRawResponse(
-            client.inbound_ach_transfers
-        )
-        self.wire_transfers = wire_transfers.WireTransfersResourceWithRawResponse(client.wire_transfers)
-        self.inbound_wire_transfers = inbound_wire_transfers.InboundWireTransfersResourceWithRawResponse(
-            client.inbound_wire_transfers
-        )
-        self.wire_drawdown_requests = wire_drawdown_requests.WireDrawdownRequestsResourceWithRawResponse(
-            client.wire_drawdown_requests
-        )
-        self.inbound_wire_drawdown_requests = (
-            inbound_wire_drawdown_requests.InboundWireDrawdownRequestsResourceWithRawResponse(
-                client.inbound_wire_drawdown_requests
-            )
-        )
-        self.check_transfers = check_transfers.CheckTransfersResourceWithRawResponse(client.check_transfers)
-        self.inbound_check_deposits = inbound_check_deposits.InboundCheckDepositsResourceWithRawResponse(
-            client.inbound_check_deposits
-        )
-        self.real_time_payments_transfers = (
-            real_time_payments_transfers.RealTimePaymentsTransfersResourceWithRawResponse(
-                client.real_time_payments_transfers
-            )
-        )
-        self.inbound_real_time_payments_transfers = (
-            inbound_real_time_payments_transfers.InboundRealTimePaymentsTransfersResourceWithRawResponse(
-                client.inbound_real_time_payments_transfers
-            )
-        )
-        self.fednow_transfers = fednow_transfers.FednowTransfersResourceWithRawResponse(client.fednow_transfers)
-        self.inbound_fednow_transfers = inbound_fednow_transfers.InboundFednowTransfersResourceWithRawResponse(
-            client.inbound_fednow_transfers
-        )
-        self.check_deposits = check_deposits.CheckDepositsResourceWithRawResponse(client.check_deposits)
-        self.lockboxes = lockboxes.LockboxesResourceWithRawResponse(client.lockboxes)
-        self.inbound_mail_items = inbound_mail_items.InboundMailItemsResourceWithRawResponse(client.inbound_mail_items)
-        self.routing_numbers = routing_numbers.RoutingNumbersResourceWithRawResponse(client.routing_numbers)
-        self.external_accounts = external_accounts.ExternalAccountsResourceWithRawResponse(client.external_accounts)
-        self.entities = entities.EntitiesResourceWithRawResponse(client.entities)
-        self.supplemental_documents = supplemental_documents.SupplementalDocumentsResourceWithRawResponse(
-            client.supplemental_documents
-        )
-        self.programs = programs.ProgramsResourceWithRawResponse(client.programs)
-        self.account_statements = account_statements.AccountStatementsResourceWithRawResponse(client.account_statements)
-        self.files = files.FilesResourceWithRawResponse(client.files)
-        self.file_links = file_links.FileLinksResourceWithRawResponse(client.file_links)
-        self.documents = documents.DocumentsResourceWithRawResponse(client.documents)
-        self.exports = exports.ExportsResourceWithRawResponse(client.exports)
-        self.events = events.EventsResourceWithRawResponse(client.events)
-        self.event_subscriptions = event_subscriptions.EventSubscriptionsResourceWithRawResponse(
-            client.event_subscriptions
-        )
-        self.real_time_decisions = real_time_decisions.RealTimeDecisionsResourceWithRawResponse(
-            client.real_time_decisions
-        )
-        self.bookkeeping_accounts = bookkeeping_accounts.BookkeepingAccountsResourceWithRawResponse(
-            client.bookkeeping_accounts
-        )
-        self.bookkeeping_entry_sets = bookkeeping_entry_sets.BookkeepingEntrySetsResourceWithRawResponse(
-            client.bookkeeping_entry_sets
-        )
-        self.bookkeeping_entries = bookkeeping_entries.BookkeepingEntriesResourceWithRawResponse(
-            client.bookkeeping_entries
-        )
-        self.groups = groups.GroupsResourceWithRawResponse(client.groups)
-        self.oauth_applications = oauth_applications.OAuthApplicationsResourceWithRawResponse(client.oauth_applications)
-        self.oauth_connections = oauth_connections.OAuthConnectionsResourceWithRawResponse(client.oauth_connections)
-        self.oauth_tokens = oauth_tokens.OAuthTokensResourceWithRawResponse(client.oauth_tokens)
-        self.intrafi_account_enrollments = intrafi_account_enrollments.IntrafiAccountEnrollmentsResourceWithRawResponse(
-            client.intrafi_account_enrollments
-        )
-        self.intrafi_balances = intrafi_balances.IntrafiBalancesResourceWithRawResponse(client.intrafi_balances)
-        self.intrafi_exclusions = intrafi_exclusions.IntrafiExclusionsResourceWithRawResponse(client.intrafi_exclusions)
-        self.card_tokens = card_tokens.CardTokensResourceWithRawResponse(client.card_tokens)
-        self.card_push_transfers = card_push_transfers.CardPushTransfersResourceWithRawResponse(
-            client.card_push_transfers
-        )
-        self.card_validations = card_validations.CardValidationsResourceWithRawResponse(client.card_validations)
-        self.simulations = simulations.SimulationsResourceWithRawResponse(client.simulations)
+
+    @cached_property
+    def fednow_transfers(self) -> fednow_transfers.FednowTransfersResourceWithRawResponse:
+        from .resources.fednow_transfers import FednowTransfersResourceWithRawResponse
+
+        return FednowTransfersResourceWithRawResponse(self._client.fednow_transfers)
+
+    @cached_property
+    def inbound_fednow_transfers(self) -> inbound_fednow_transfers.InboundFednowTransfersResourceWithRawResponse:
+        from .resources.inbound_fednow_transfers import InboundFednowTransfersResourceWithRawResponse
+
+        return InboundFednowTransfersResourceWithRawResponse(self._client.inbound_fednow_transfers)
+
+    @cached_property
+    def check_deposits(self) -> check_deposits.CheckDepositsResourceWithRawResponse:
+        from .resources.check_deposits import CheckDepositsResourceWithRawResponse
+
+        return CheckDepositsResourceWithRawResponse(self._client.check_deposits)
+
+    @cached_property
+    def lockboxes(self) -> lockboxes.LockboxesResourceWithRawResponse:
+        from .resources.lockboxes import LockboxesResourceWithRawResponse
+
+        return LockboxesResourceWithRawResponse(self._client.lockboxes)
+
+    @cached_property
+    def inbound_mail_items(self) -> inbound_mail_items.InboundMailItemsResourceWithRawResponse:
+        from .resources.inbound_mail_items import InboundMailItemsResourceWithRawResponse
+
+        return InboundMailItemsResourceWithRawResponse(self._client.inbound_mail_items)
+
+    @cached_property
+    def routing_numbers(self) -> routing_numbers.RoutingNumbersResourceWithRawResponse:
+        from .resources.routing_numbers import RoutingNumbersResourceWithRawResponse
+
+        return RoutingNumbersResourceWithRawResponse(self._client.routing_numbers)
+
+    @cached_property
+    def external_accounts(self) -> external_accounts.ExternalAccountsResourceWithRawResponse:
+        from .resources.external_accounts import ExternalAccountsResourceWithRawResponse
+
+        return ExternalAccountsResourceWithRawResponse(self._client.external_accounts)
+
+    @cached_property
+    def entities(self) -> entities.EntitiesResourceWithRawResponse:
+        from .resources.entities import EntitiesResourceWithRawResponse
+
+        return EntitiesResourceWithRawResponse(self._client.entities)
+
+    @cached_property
+    def supplemental_documents(self) -> supplemental_documents.SupplementalDocumentsResourceWithRawResponse:
+        from .resources.supplemental_documents import SupplementalDocumentsResourceWithRawResponse
+
+        return SupplementalDocumentsResourceWithRawResponse(self._client.supplemental_documents)
+
+    @cached_property
+    def programs(self) -> programs.ProgramsResourceWithRawResponse:
+        from .resources.programs import ProgramsResourceWithRawResponse
+
+        return ProgramsResourceWithRawResponse(self._client.programs)
+
+    @cached_property
+    def account_statements(self) -> account_statements.AccountStatementsResourceWithRawResponse:
+        from .resources.account_statements import AccountStatementsResourceWithRawResponse
+
+        return AccountStatementsResourceWithRawResponse(self._client.account_statements)
+
+    @cached_property
+    def files(self) -> files.FilesResourceWithRawResponse:
+        from .resources.files import FilesResourceWithRawResponse
+
+        return FilesResourceWithRawResponse(self._client.files)
+
+    @cached_property
+    def file_links(self) -> file_links.FileLinksResourceWithRawResponse:
+        from .resources.file_links import FileLinksResourceWithRawResponse
+
+        return FileLinksResourceWithRawResponse(self._client.file_links)
+
+    @cached_property
+    def documents(self) -> documents.DocumentsResourceWithRawResponse:
+        from .resources.documents import DocumentsResourceWithRawResponse
+
+        return DocumentsResourceWithRawResponse(self._client.documents)
+
+    @cached_property
+    def exports(self) -> exports.ExportsResourceWithRawResponse:
+        from .resources.exports import ExportsResourceWithRawResponse
+
+        return ExportsResourceWithRawResponse(self._client.exports)
+
+    @cached_property
+    def events(self) -> events.EventsResourceWithRawResponse:
+        from .resources.events import EventsResourceWithRawResponse
+
+        return EventsResourceWithRawResponse(self._client.events)
+
+    @cached_property
+    def event_subscriptions(self) -> event_subscriptions.EventSubscriptionsResourceWithRawResponse:
+        from .resources.event_subscriptions import EventSubscriptionsResourceWithRawResponse
+
+        return EventSubscriptionsResourceWithRawResponse(self._client.event_subscriptions)
+
+    @cached_property
+    def real_time_decisions(self) -> real_time_decisions.RealTimeDecisionsResourceWithRawResponse:
+        from .resources.real_time_decisions import RealTimeDecisionsResourceWithRawResponse
+
+        return RealTimeDecisionsResourceWithRawResponse(self._client.real_time_decisions)
+
+    @cached_property
+    def bookkeeping_accounts(self) -> bookkeeping_accounts.BookkeepingAccountsResourceWithRawResponse:
+        from .resources.bookkeeping_accounts import BookkeepingAccountsResourceWithRawResponse
+
+        return BookkeepingAccountsResourceWithRawResponse(self._client.bookkeeping_accounts)
+
+    @cached_property
+    def bookkeeping_entry_sets(self) -> bookkeeping_entry_sets.BookkeepingEntrySetsResourceWithRawResponse:
+        from .resources.bookkeeping_entry_sets import BookkeepingEntrySetsResourceWithRawResponse
+
+        return BookkeepingEntrySetsResourceWithRawResponse(self._client.bookkeeping_entry_sets)
+
+    @cached_property
+    def bookkeeping_entries(self) -> bookkeeping_entries.BookkeepingEntriesResourceWithRawResponse:
+        from .resources.bookkeeping_entries import BookkeepingEntriesResourceWithRawResponse
+
+        return BookkeepingEntriesResourceWithRawResponse(self._client.bookkeeping_entries)
+
+    @cached_property
+    def groups(self) -> groups.GroupsResourceWithRawResponse:
+        from .resources.groups import GroupsResourceWithRawResponse
+
+        return GroupsResourceWithRawResponse(self._client.groups)
+
+    @cached_property
+    def oauth_applications(self) -> oauth_applications.OAuthApplicationsResourceWithRawResponse:
+        from .resources.oauth_applications import OAuthApplicationsResourceWithRawResponse
+
+        return OAuthApplicationsResourceWithRawResponse(self._client.oauth_applications)
+
+    @cached_property
+    def oauth_connections(self) -> oauth_connections.OAuthConnectionsResourceWithRawResponse:
+        from .resources.oauth_connections import OAuthConnectionsResourceWithRawResponse
+
+        return OAuthConnectionsResourceWithRawResponse(self._client.oauth_connections)
+
+    @cached_property
+    def oauth_tokens(self) -> oauth_tokens.OAuthTokensResourceWithRawResponse:
+        from .resources.oauth_tokens import OAuthTokensResourceWithRawResponse
+
+        return OAuthTokensResourceWithRawResponse(self._client.oauth_tokens)
+
+    @cached_property
+    def intrafi_account_enrollments(
+        self,
+    ) -> intrafi_account_enrollments.IntrafiAccountEnrollmentsResourceWithRawResponse:
+        from .resources.intrafi_account_enrollments import IntrafiAccountEnrollmentsResourceWithRawResponse
+
+        return IntrafiAccountEnrollmentsResourceWithRawResponse(self._client.intrafi_account_enrollments)
+
+    @cached_property
+    def intrafi_balances(self) -> intrafi_balances.IntrafiBalancesResourceWithRawResponse:
+        from .resources.intrafi_balances import IntrafiBalancesResourceWithRawResponse
+
+        return IntrafiBalancesResourceWithRawResponse(self._client.intrafi_balances)
+
+    @cached_property
+    def intrafi_exclusions(self) -> intrafi_exclusions.IntrafiExclusionsResourceWithRawResponse:
+        from .resources.intrafi_exclusions import IntrafiExclusionsResourceWithRawResponse
+
+        return IntrafiExclusionsResourceWithRawResponse(self._client.intrafi_exclusions)
+
+    @cached_property
+    def card_tokens(self) -> card_tokens.CardTokensResourceWithRawResponse:
+        from .resources.card_tokens import CardTokensResourceWithRawResponse
+
+        return CardTokensResourceWithRawResponse(self._client.card_tokens)
+
+    @cached_property
+    def card_push_transfers(self) -> card_push_transfers.CardPushTransfersResourceWithRawResponse:
+        from .resources.card_push_transfers import CardPushTransfersResourceWithRawResponse
+
+        return CardPushTransfersResourceWithRawResponse(self._client.card_push_transfers)
+
+    @cached_property
+    def card_validations(self) -> card_validations.CardValidationsResourceWithRawResponse:
+        from .resources.card_validations import CardValidationsResourceWithRawResponse
+
+        return CardValidationsResourceWithRawResponse(self._client.card_validations)
+
+    @cached_property
+    def simulations(self) -> simulations.SimulationsResourceWithRawResponse:
+        from .resources.simulations import SimulationsResourceWithRawResponse
+
+        return SimulationsResourceWithRawResponse(self._client.simulations)
 
 
 class AsyncIncreaseWithRawResponse:
+    _client: AsyncIncrease
+
     def __init__(self, client: AsyncIncrease) -> None:
-        self.accounts = accounts.AsyncAccountsResourceWithRawResponse(client.accounts)
-        self.account_numbers = account_numbers.AsyncAccountNumbersResourceWithRawResponse(client.account_numbers)
-        self.account_transfers = account_transfers.AsyncAccountTransfersResourceWithRawResponse(
-            client.account_transfers
+        self._client = client
+
+    @cached_property
+    def accounts(self) -> accounts.AsyncAccountsResourceWithRawResponse:
+        from .resources.accounts import AsyncAccountsResourceWithRawResponse
+
+        return AsyncAccountsResourceWithRawResponse(self._client.accounts)
+
+    @cached_property
+    def account_numbers(self) -> account_numbers.AsyncAccountNumbersResourceWithRawResponse:
+        from .resources.account_numbers import AsyncAccountNumbersResourceWithRawResponse
+
+        return AsyncAccountNumbersResourceWithRawResponse(self._client.account_numbers)
+
+    @cached_property
+    def account_transfers(self) -> account_transfers.AsyncAccountTransfersResourceWithRawResponse:
+        from .resources.account_transfers import AsyncAccountTransfersResourceWithRawResponse
+
+        return AsyncAccountTransfersResourceWithRawResponse(self._client.account_transfers)
+
+    @cached_property
+    def cards(self) -> cards.AsyncCardsResourceWithRawResponse:
+        from .resources.cards import AsyncCardsResourceWithRawResponse
+
+        return AsyncCardsResourceWithRawResponse(self._client.cards)
+
+    @cached_property
+    def card_payments(self) -> card_payments.AsyncCardPaymentsResourceWithRawResponse:
+        from .resources.card_payments import AsyncCardPaymentsResourceWithRawResponse
+
+        return AsyncCardPaymentsResourceWithRawResponse(self._client.card_payments)
+
+    @cached_property
+    def card_purchase_supplements(
+        self,
+    ) -> card_purchase_supplements.AsyncCardPurchaseSupplementsResourceWithRawResponse:
+        from .resources.card_purchase_supplements import AsyncCardPurchaseSupplementsResourceWithRawResponse
+
+        return AsyncCardPurchaseSupplementsResourceWithRawResponse(self._client.card_purchase_supplements)
+
+    @cached_property
+    def card_disputes(self) -> card_disputes.AsyncCardDisputesResourceWithRawResponse:
+        from .resources.card_disputes import AsyncCardDisputesResourceWithRawResponse
+
+        return AsyncCardDisputesResourceWithRawResponse(self._client.card_disputes)
+
+    @cached_property
+    def physical_cards(self) -> physical_cards.AsyncPhysicalCardsResourceWithRawResponse:
+        from .resources.physical_cards import AsyncPhysicalCardsResourceWithRawResponse
+
+        return AsyncPhysicalCardsResourceWithRawResponse(self._client.physical_cards)
+
+    @cached_property
+    def digital_card_profiles(self) -> digital_card_profiles.AsyncDigitalCardProfilesResourceWithRawResponse:
+        from .resources.digital_card_profiles import AsyncDigitalCardProfilesResourceWithRawResponse
+
+        return AsyncDigitalCardProfilesResourceWithRawResponse(self._client.digital_card_profiles)
+
+    @cached_property
+    def physical_card_profiles(self) -> physical_card_profiles.AsyncPhysicalCardProfilesResourceWithRawResponse:
+        from .resources.physical_card_profiles import AsyncPhysicalCardProfilesResourceWithRawResponse
+
+        return AsyncPhysicalCardProfilesResourceWithRawResponse(self._client.physical_card_profiles)
+
+    @cached_property
+    def digital_wallet_tokens(self) -> digital_wallet_tokens.AsyncDigitalWalletTokensResourceWithRawResponse:
+        from .resources.digital_wallet_tokens import AsyncDigitalWalletTokensResourceWithRawResponse
+
+        return AsyncDigitalWalletTokensResourceWithRawResponse(self._client.digital_wallet_tokens)
+
+    @cached_property
+    def transactions(self) -> transactions.AsyncTransactionsResourceWithRawResponse:
+        from .resources.transactions import AsyncTransactionsResourceWithRawResponse
+
+        return AsyncTransactionsResourceWithRawResponse(self._client.transactions)
+
+    @cached_property
+    def pending_transactions(self) -> pending_transactions.AsyncPendingTransactionsResourceWithRawResponse:
+        from .resources.pending_transactions import AsyncPendingTransactionsResourceWithRawResponse
+
+        return AsyncPendingTransactionsResourceWithRawResponse(self._client.pending_transactions)
+
+    @cached_property
+    def declined_transactions(self) -> declined_transactions.AsyncDeclinedTransactionsResourceWithRawResponse:
+        from .resources.declined_transactions import AsyncDeclinedTransactionsResourceWithRawResponse
+
+        return AsyncDeclinedTransactionsResourceWithRawResponse(self._client.declined_transactions)
+
+    @cached_property
+    def ach_transfers(self) -> ach_transfers.AsyncACHTransfersResourceWithRawResponse:
+        from .resources.ach_transfers import AsyncACHTransfersResourceWithRawResponse
+
+        return AsyncACHTransfersResourceWithRawResponse(self._client.ach_transfers)
+
+    @cached_property
+    def ach_prenotifications(self) -> ach_prenotifications.AsyncACHPrenotificationsResourceWithRawResponse:
+        from .resources.ach_prenotifications import AsyncACHPrenotificationsResourceWithRawResponse
+
+        return AsyncACHPrenotificationsResourceWithRawResponse(self._client.ach_prenotifications)
+
+    @cached_property
+    def inbound_ach_transfers(self) -> inbound_ach_transfers.AsyncInboundACHTransfersResourceWithRawResponse:
+        from .resources.inbound_ach_transfers import AsyncInboundACHTransfersResourceWithRawResponse
+
+        return AsyncInboundACHTransfersResourceWithRawResponse(self._client.inbound_ach_transfers)
+
+    @cached_property
+    def wire_transfers(self) -> wire_transfers.AsyncWireTransfersResourceWithRawResponse:
+        from .resources.wire_transfers import AsyncWireTransfersResourceWithRawResponse
+
+        return AsyncWireTransfersResourceWithRawResponse(self._client.wire_transfers)
+
+    @cached_property
+    def inbound_wire_transfers(self) -> inbound_wire_transfers.AsyncInboundWireTransfersResourceWithRawResponse:
+        from .resources.inbound_wire_transfers import AsyncInboundWireTransfersResourceWithRawResponse
+
+        return AsyncInboundWireTransfersResourceWithRawResponse(self._client.inbound_wire_transfers)
+
+    @cached_property
+    def wire_drawdown_requests(self) -> wire_drawdown_requests.AsyncWireDrawdownRequestsResourceWithRawResponse:
+        from .resources.wire_drawdown_requests import AsyncWireDrawdownRequestsResourceWithRawResponse
+
+        return AsyncWireDrawdownRequestsResourceWithRawResponse(self._client.wire_drawdown_requests)
+
+    @cached_property
+    def inbound_wire_drawdown_requests(
+        self,
+    ) -> inbound_wire_drawdown_requests.AsyncInboundWireDrawdownRequestsResourceWithRawResponse:
+        from .resources.inbound_wire_drawdown_requests import AsyncInboundWireDrawdownRequestsResourceWithRawResponse
+
+        return AsyncInboundWireDrawdownRequestsResourceWithRawResponse(self._client.inbound_wire_drawdown_requests)
+
+    @cached_property
+    def check_transfers(self) -> check_transfers.AsyncCheckTransfersResourceWithRawResponse:
+        from .resources.check_transfers import AsyncCheckTransfersResourceWithRawResponse
+
+        return AsyncCheckTransfersResourceWithRawResponse(self._client.check_transfers)
+
+    @cached_property
+    def inbound_check_deposits(self) -> inbound_check_deposits.AsyncInboundCheckDepositsResourceWithRawResponse:
+        from .resources.inbound_check_deposits import AsyncInboundCheckDepositsResourceWithRawResponse
+
+        return AsyncInboundCheckDepositsResourceWithRawResponse(self._client.inbound_check_deposits)
+
+    @cached_property
+    def real_time_payments_transfers(
+        self,
+    ) -> real_time_payments_transfers.AsyncRealTimePaymentsTransfersResourceWithRawResponse:
+        from .resources.real_time_payments_transfers import AsyncRealTimePaymentsTransfersResourceWithRawResponse
+
+        return AsyncRealTimePaymentsTransfersResourceWithRawResponse(self._client.real_time_payments_transfers)
+
+    @cached_property
+    def inbound_real_time_payments_transfers(
+        self,
+    ) -> inbound_real_time_payments_transfers.AsyncInboundRealTimePaymentsTransfersResourceWithRawResponse:
+        from .resources.inbound_real_time_payments_transfers import (
+            AsyncInboundRealTimePaymentsTransfersResourceWithRawResponse,
         )
-        self.cards = cards.AsyncCardsResourceWithRawResponse(client.cards)
-        self.card_payments = card_payments.AsyncCardPaymentsResourceWithRawResponse(client.card_payments)
-        self.card_purchase_supplements = card_purchase_supplements.AsyncCardPurchaseSupplementsResourceWithRawResponse(
-            client.card_purchase_supplements
+
+        return AsyncInboundRealTimePaymentsTransfersResourceWithRawResponse(
+            self._client.inbound_real_time_payments_transfers
         )
-        self.card_disputes = card_disputes.AsyncCardDisputesResourceWithRawResponse(client.card_disputes)
-        self.physical_cards = physical_cards.AsyncPhysicalCardsResourceWithRawResponse(client.physical_cards)
-        self.digital_card_profiles = digital_card_profiles.AsyncDigitalCardProfilesResourceWithRawResponse(
-            client.digital_card_profiles
-        )
-        self.physical_card_profiles = physical_card_profiles.AsyncPhysicalCardProfilesResourceWithRawResponse(
-            client.physical_card_profiles
-        )
-        self.digital_wallet_tokens = digital_wallet_tokens.AsyncDigitalWalletTokensResourceWithRawResponse(
-            client.digital_wallet_tokens
-        )
-        self.transactions = transactions.AsyncTransactionsResourceWithRawResponse(client.transactions)
-        self.pending_transactions = pending_transactions.AsyncPendingTransactionsResourceWithRawResponse(
-            client.pending_transactions
-        )
-        self.declined_transactions = declined_transactions.AsyncDeclinedTransactionsResourceWithRawResponse(
-            client.declined_transactions
-        )
-        self.ach_transfers = ach_transfers.AsyncACHTransfersResourceWithRawResponse(client.ach_transfers)
-        self.ach_prenotifications = ach_prenotifications.AsyncACHPrenotificationsResourceWithRawResponse(
-            client.ach_prenotifications
-        )
-        self.inbound_ach_transfers = inbound_ach_transfers.AsyncInboundACHTransfersResourceWithRawResponse(
-            client.inbound_ach_transfers
-        )
-        self.wire_transfers = wire_transfers.AsyncWireTransfersResourceWithRawResponse(client.wire_transfers)
-        self.inbound_wire_transfers = inbound_wire_transfers.AsyncInboundWireTransfersResourceWithRawResponse(
-            client.inbound_wire_transfers
-        )
-        self.wire_drawdown_requests = wire_drawdown_requests.AsyncWireDrawdownRequestsResourceWithRawResponse(
-            client.wire_drawdown_requests
-        )
-        self.inbound_wire_drawdown_requests = (
-            inbound_wire_drawdown_requests.AsyncInboundWireDrawdownRequestsResourceWithRawResponse(
-                client.inbound_wire_drawdown_requests
-            )
-        )
-        self.check_transfers = check_transfers.AsyncCheckTransfersResourceWithRawResponse(client.check_transfers)
-        self.inbound_check_deposits = inbound_check_deposits.AsyncInboundCheckDepositsResourceWithRawResponse(
-            client.inbound_check_deposits
-        )
-        self.real_time_payments_transfers = (
-            real_time_payments_transfers.AsyncRealTimePaymentsTransfersResourceWithRawResponse(
-                client.real_time_payments_transfers
-            )
-        )
-        self.inbound_real_time_payments_transfers = (
-            inbound_real_time_payments_transfers.AsyncInboundRealTimePaymentsTransfersResourceWithRawResponse(
-                client.inbound_real_time_payments_transfers
-            )
-        )
-        self.fednow_transfers = fednow_transfers.AsyncFednowTransfersResourceWithRawResponse(client.fednow_transfers)
-        self.inbound_fednow_transfers = inbound_fednow_transfers.AsyncInboundFednowTransfersResourceWithRawResponse(
-            client.inbound_fednow_transfers
-        )
-        self.check_deposits = check_deposits.AsyncCheckDepositsResourceWithRawResponse(client.check_deposits)
-        self.lockboxes = lockboxes.AsyncLockboxesResourceWithRawResponse(client.lockboxes)
-        self.inbound_mail_items = inbound_mail_items.AsyncInboundMailItemsResourceWithRawResponse(
-            client.inbound_mail_items
-        )
-        self.routing_numbers = routing_numbers.AsyncRoutingNumbersResourceWithRawResponse(client.routing_numbers)
-        self.external_accounts = external_accounts.AsyncExternalAccountsResourceWithRawResponse(
-            client.external_accounts
-        )
-        self.entities = entities.AsyncEntitiesResourceWithRawResponse(client.entities)
-        self.supplemental_documents = supplemental_documents.AsyncSupplementalDocumentsResourceWithRawResponse(
-            client.supplemental_documents
-        )
-        self.programs = programs.AsyncProgramsResourceWithRawResponse(client.programs)
-        self.account_statements = account_statements.AsyncAccountStatementsResourceWithRawResponse(
-            client.account_statements
-        )
-        self.files = files.AsyncFilesResourceWithRawResponse(client.files)
-        self.file_links = file_links.AsyncFileLinksResourceWithRawResponse(client.file_links)
-        self.documents = documents.AsyncDocumentsResourceWithRawResponse(client.documents)
-        self.exports = exports.AsyncExportsResourceWithRawResponse(client.exports)
-        self.events = events.AsyncEventsResourceWithRawResponse(client.events)
-        self.event_subscriptions = event_subscriptions.AsyncEventSubscriptionsResourceWithRawResponse(
-            client.event_subscriptions
-        )
-        self.real_time_decisions = real_time_decisions.AsyncRealTimeDecisionsResourceWithRawResponse(
-            client.real_time_decisions
-        )
-        self.bookkeeping_accounts = bookkeeping_accounts.AsyncBookkeepingAccountsResourceWithRawResponse(
-            client.bookkeeping_accounts
-        )
-        self.bookkeeping_entry_sets = bookkeeping_entry_sets.AsyncBookkeepingEntrySetsResourceWithRawResponse(
-            client.bookkeeping_entry_sets
-        )
-        self.bookkeeping_entries = bookkeeping_entries.AsyncBookkeepingEntriesResourceWithRawResponse(
-            client.bookkeeping_entries
-        )
-        self.groups = groups.AsyncGroupsResourceWithRawResponse(client.groups)
-        self.oauth_applications = oauth_applications.AsyncOAuthApplicationsResourceWithRawResponse(
-            client.oauth_applications
-        )
-        self.oauth_connections = oauth_connections.AsyncOAuthConnectionsResourceWithRawResponse(
-            client.oauth_connections
-        )
-        self.oauth_tokens = oauth_tokens.AsyncOAuthTokensResourceWithRawResponse(client.oauth_tokens)
-        self.intrafi_account_enrollments = (
-            intrafi_account_enrollments.AsyncIntrafiAccountEnrollmentsResourceWithRawResponse(
-                client.intrafi_account_enrollments
-            )
-        )
-        self.intrafi_balances = intrafi_balances.AsyncIntrafiBalancesResourceWithRawResponse(client.intrafi_balances)
-        self.intrafi_exclusions = intrafi_exclusions.AsyncIntrafiExclusionsResourceWithRawResponse(
-            client.intrafi_exclusions
-        )
-        self.card_tokens = card_tokens.AsyncCardTokensResourceWithRawResponse(client.card_tokens)
-        self.card_push_transfers = card_push_transfers.AsyncCardPushTransfersResourceWithRawResponse(
-            client.card_push_transfers
-        )
-        self.card_validations = card_validations.AsyncCardValidationsResourceWithRawResponse(client.card_validations)
-        self.simulations = simulations.AsyncSimulationsResourceWithRawResponse(client.simulations)
+
+    @cached_property
+    def fednow_transfers(self) -> fednow_transfers.AsyncFednowTransfersResourceWithRawResponse:
+        from .resources.fednow_transfers import AsyncFednowTransfersResourceWithRawResponse
+
+        return AsyncFednowTransfersResourceWithRawResponse(self._client.fednow_transfers)
+
+    @cached_property
+    def inbound_fednow_transfers(self) -> inbound_fednow_transfers.AsyncInboundFednowTransfersResourceWithRawResponse:
+        from .resources.inbound_fednow_transfers import AsyncInboundFednowTransfersResourceWithRawResponse
+
+        return AsyncInboundFednowTransfersResourceWithRawResponse(self._client.inbound_fednow_transfers)
+
+    @cached_property
+    def check_deposits(self) -> check_deposits.AsyncCheckDepositsResourceWithRawResponse:
+        from .resources.check_deposits import AsyncCheckDepositsResourceWithRawResponse
+
+        return AsyncCheckDepositsResourceWithRawResponse(self._client.check_deposits)
+
+    @cached_property
+    def lockboxes(self) -> lockboxes.AsyncLockboxesResourceWithRawResponse:
+        from .resources.lockboxes import AsyncLockboxesResourceWithRawResponse
+
+        return AsyncLockboxesResourceWithRawResponse(self._client.lockboxes)
+
+    @cached_property
+    def inbound_mail_items(self) -> inbound_mail_items.AsyncInboundMailItemsResourceWithRawResponse:
+        from .resources.inbound_mail_items import AsyncInboundMailItemsResourceWithRawResponse
+
+        return AsyncInboundMailItemsResourceWithRawResponse(self._client.inbound_mail_items)
+
+    @cached_property
+    def routing_numbers(self) -> routing_numbers.AsyncRoutingNumbersResourceWithRawResponse:
+        from .resources.routing_numbers import AsyncRoutingNumbersResourceWithRawResponse
+
+        return AsyncRoutingNumbersResourceWithRawResponse(self._client.routing_numbers)
+
+    @cached_property
+    def external_accounts(self) -> external_accounts.AsyncExternalAccountsResourceWithRawResponse:
+        from .resources.external_accounts import AsyncExternalAccountsResourceWithRawResponse
+
+        return AsyncExternalAccountsResourceWithRawResponse(self._client.external_accounts)
+
+    @cached_property
+    def entities(self) -> entities.AsyncEntitiesResourceWithRawResponse:
+        from .resources.entities import AsyncEntitiesResourceWithRawResponse
+
+        return AsyncEntitiesResourceWithRawResponse(self._client.entities)
+
+    @cached_property
+    def supplemental_documents(self) -> supplemental_documents.AsyncSupplementalDocumentsResourceWithRawResponse:
+        from .resources.supplemental_documents import AsyncSupplementalDocumentsResourceWithRawResponse
+
+        return AsyncSupplementalDocumentsResourceWithRawResponse(self._client.supplemental_documents)
+
+    @cached_property
+    def programs(self) -> programs.AsyncProgramsResourceWithRawResponse:
+        from .resources.programs import AsyncProgramsResourceWithRawResponse
+
+        return AsyncProgramsResourceWithRawResponse(self._client.programs)
+
+    @cached_property
+    def account_statements(self) -> account_statements.AsyncAccountStatementsResourceWithRawResponse:
+        from .resources.account_statements import AsyncAccountStatementsResourceWithRawResponse
+
+        return AsyncAccountStatementsResourceWithRawResponse(self._client.account_statements)
+
+    @cached_property
+    def files(self) -> files.AsyncFilesResourceWithRawResponse:
+        from .resources.files import AsyncFilesResourceWithRawResponse
+
+        return AsyncFilesResourceWithRawResponse(self._client.files)
+
+    @cached_property
+    def file_links(self) -> file_links.AsyncFileLinksResourceWithRawResponse:
+        from .resources.file_links import AsyncFileLinksResourceWithRawResponse
+
+        return AsyncFileLinksResourceWithRawResponse(self._client.file_links)
+
+    @cached_property
+    def documents(self) -> documents.AsyncDocumentsResourceWithRawResponse:
+        from .resources.documents import AsyncDocumentsResourceWithRawResponse
+
+        return AsyncDocumentsResourceWithRawResponse(self._client.documents)
+
+    @cached_property
+    def exports(self) -> exports.AsyncExportsResourceWithRawResponse:
+        from .resources.exports import AsyncExportsResourceWithRawResponse
+
+        return AsyncExportsResourceWithRawResponse(self._client.exports)
+
+    @cached_property
+    def events(self) -> events.AsyncEventsResourceWithRawResponse:
+        from .resources.events import AsyncEventsResourceWithRawResponse
+
+        return AsyncEventsResourceWithRawResponse(self._client.events)
+
+    @cached_property
+    def event_subscriptions(self) -> event_subscriptions.AsyncEventSubscriptionsResourceWithRawResponse:
+        from .resources.event_subscriptions import AsyncEventSubscriptionsResourceWithRawResponse
+
+        return AsyncEventSubscriptionsResourceWithRawResponse(self._client.event_subscriptions)
+
+    @cached_property
+    def real_time_decisions(self) -> real_time_decisions.AsyncRealTimeDecisionsResourceWithRawResponse:
+        from .resources.real_time_decisions import AsyncRealTimeDecisionsResourceWithRawResponse
+
+        return AsyncRealTimeDecisionsResourceWithRawResponse(self._client.real_time_decisions)
+
+    @cached_property
+    def bookkeeping_accounts(self) -> bookkeeping_accounts.AsyncBookkeepingAccountsResourceWithRawResponse:
+        from .resources.bookkeeping_accounts import AsyncBookkeepingAccountsResourceWithRawResponse
+
+        return AsyncBookkeepingAccountsResourceWithRawResponse(self._client.bookkeeping_accounts)
+
+    @cached_property
+    def bookkeeping_entry_sets(self) -> bookkeeping_entry_sets.AsyncBookkeepingEntrySetsResourceWithRawResponse:
+        from .resources.bookkeeping_entry_sets import AsyncBookkeepingEntrySetsResourceWithRawResponse
+
+        return AsyncBookkeepingEntrySetsResourceWithRawResponse(self._client.bookkeeping_entry_sets)
+
+    @cached_property
+    def bookkeeping_entries(self) -> bookkeeping_entries.AsyncBookkeepingEntriesResourceWithRawResponse:
+        from .resources.bookkeeping_entries import AsyncBookkeepingEntriesResourceWithRawResponse
+
+        return AsyncBookkeepingEntriesResourceWithRawResponse(self._client.bookkeeping_entries)
+
+    @cached_property
+    def groups(self) -> groups.AsyncGroupsResourceWithRawResponse:
+        from .resources.groups import AsyncGroupsResourceWithRawResponse
+
+        return AsyncGroupsResourceWithRawResponse(self._client.groups)
+
+    @cached_property
+    def oauth_applications(self) -> oauth_applications.AsyncOAuthApplicationsResourceWithRawResponse:
+        from .resources.oauth_applications import AsyncOAuthApplicationsResourceWithRawResponse
+
+        return AsyncOAuthApplicationsResourceWithRawResponse(self._client.oauth_applications)
+
+    @cached_property
+    def oauth_connections(self) -> oauth_connections.AsyncOAuthConnectionsResourceWithRawResponse:
+        from .resources.oauth_connections import AsyncOAuthConnectionsResourceWithRawResponse
+
+        return AsyncOAuthConnectionsResourceWithRawResponse(self._client.oauth_connections)
+
+    @cached_property
+    def oauth_tokens(self) -> oauth_tokens.AsyncOAuthTokensResourceWithRawResponse:
+        from .resources.oauth_tokens import AsyncOAuthTokensResourceWithRawResponse
+
+        return AsyncOAuthTokensResourceWithRawResponse(self._client.oauth_tokens)
+
+    @cached_property
+    def intrafi_account_enrollments(
+        self,
+    ) -> intrafi_account_enrollments.AsyncIntrafiAccountEnrollmentsResourceWithRawResponse:
+        from .resources.intrafi_account_enrollments import AsyncIntrafiAccountEnrollmentsResourceWithRawResponse
+
+        return AsyncIntrafiAccountEnrollmentsResourceWithRawResponse(self._client.intrafi_account_enrollments)
+
+    @cached_property
+    def intrafi_balances(self) -> intrafi_balances.AsyncIntrafiBalancesResourceWithRawResponse:
+        from .resources.intrafi_balances import AsyncIntrafiBalancesResourceWithRawResponse
+
+        return AsyncIntrafiBalancesResourceWithRawResponse(self._client.intrafi_balances)
+
+    @cached_property
+    def intrafi_exclusions(self) -> intrafi_exclusions.AsyncIntrafiExclusionsResourceWithRawResponse:
+        from .resources.intrafi_exclusions import AsyncIntrafiExclusionsResourceWithRawResponse
+
+        return AsyncIntrafiExclusionsResourceWithRawResponse(self._client.intrafi_exclusions)
+
+    @cached_property
+    def card_tokens(self) -> card_tokens.AsyncCardTokensResourceWithRawResponse:
+        from .resources.card_tokens import AsyncCardTokensResourceWithRawResponse
+
+        return AsyncCardTokensResourceWithRawResponse(self._client.card_tokens)
+
+    @cached_property
+    def card_push_transfers(self) -> card_push_transfers.AsyncCardPushTransfersResourceWithRawResponse:
+        from .resources.card_push_transfers import AsyncCardPushTransfersResourceWithRawResponse
+
+        return AsyncCardPushTransfersResourceWithRawResponse(self._client.card_push_transfers)
+
+    @cached_property
+    def card_validations(self) -> card_validations.AsyncCardValidationsResourceWithRawResponse:
+        from .resources.card_validations import AsyncCardValidationsResourceWithRawResponse
+
+        return AsyncCardValidationsResourceWithRawResponse(self._client.card_validations)
+
+    @cached_property
+    def simulations(self) -> simulations.AsyncSimulationsResourceWithRawResponse:
+        from .resources.simulations import AsyncSimulationsResourceWithRawResponse
+
+        return AsyncSimulationsResourceWithRawResponse(self._client.simulations)
 
 
 class IncreaseWithStreamedResponse:
+    _client: Increase
+
     def __init__(self, client: Increase) -> None:
-        self.accounts = accounts.AccountsResourceWithStreamingResponse(client.accounts)
-        self.account_numbers = account_numbers.AccountNumbersResourceWithStreamingResponse(client.account_numbers)
-        self.account_transfers = account_transfers.AccountTransfersResourceWithStreamingResponse(
-            client.account_transfers
+        self._client = client
+
+    @cached_property
+    def accounts(self) -> accounts.AccountsResourceWithStreamingResponse:
+        from .resources.accounts import AccountsResourceWithStreamingResponse
+
+        return AccountsResourceWithStreamingResponse(self._client.accounts)
+
+    @cached_property
+    def account_numbers(self) -> account_numbers.AccountNumbersResourceWithStreamingResponse:
+        from .resources.account_numbers import AccountNumbersResourceWithStreamingResponse
+
+        return AccountNumbersResourceWithStreamingResponse(self._client.account_numbers)
+
+    @cached_property
+    def account_transfers(self) -> account_transfers.AccountTransfersResourceWithStreamingResponse:
+        from .resources.account_transfers import AccountTransfersResourceWithStreamingResponse
+
+        return AccountTransfersResourceWithStreamingResponse(self._client.account_transfers)
+
+    @cached_property
+    def cards(self) -> cards.CardsResourceWithStreamingResponse:
+        from .resources.cards import CardsResourceWithStreamingResponse
+
+        return CardsResourceWithStreamingResponse(self._client.cards)
+
+    @cached_property
+    def card_payments(self) -> card_payments.CardPaymentsResourceWithStreamingResponse:
+        from .resources.card_payments import CardPaymentsResourceWithStreamingResponse
+
+        return CardPaymentsResourceWithStreamingResponse(self._client.card_payments)
+
+    @cached_property
+    def card_purchase_supplements(
+        self,
+    ) -> card_purchase_supplements.CardPurchaseSupplementsResourceWithStreamingResponse:
+        from .resources.card_purchase_supplements import CardPurchaseSupplementsResourceWithStreamingResponse
+
+        return CardPurchaseSupplementsResourceWithStreamingResponse(self._client.card_purchase_supplements)
+
+    @cached_property
+    def card_disputes(self) -> card_disputes.CardDisputesResourceWithStreamingResponse:
+        from .resources.card_disputes import CardDisputesResourceWithStreamingResponse
+
+        return CardDisputesResourceWithStreamingResponse(self._client.card_disputes)
+
+    @cached_property
+    def physical_cards(self) -> physical_cards.PhysicalCardsResourceWithStreamingResponse:
+        from .resources.physical_cards import PhysicalCardsResourceWithStreamingResponse
+
+        return PhysicalCardsResourceWithStreamingResponse(self._client.physical_cards)
+
+    @cached_property
+    def digital_card_profiles(self) -> digital_card_profiles.DigitalCardProfilesResourceWithStreamingResponse:
+        from .resources.digital_card_profiles import DigitalCardProfilesResourceWithStreamingResponse
+
+        return DigitalCardProfilesResourceWithStreamingResponse(self._client.digital_card_profiles)
+
+    @cached_property
+    def physical_card_profiles(self) -> physical_card_profiles.PhysicalCardProfilesResourceWithStreamingResponse:
+        from .resources.physical_card_profiles import PhysicalCardProfilesResourceWithStreamingResponse
+
+        return PhysicalCardProfilesResourceWithStreamingResponse(self._client.physical_card_profiles)
+
+    @cached_property
+    def digital_wallet_tokens(self) -> digital_wallet_tokens.DigitalWalletTokensResourceWithStreamingResponse:
+        from .resources.digital_wallet_tokens import DigitalWalletTokensResourceWithStreamingResponse
+
+        return DigitalWalletTokensResourceWithStreamingResponse(self._client.digital_wallet_tokens)
+
+    @cached_property
+    def transactions(self) -> transactions.TransactionsResourceWithStreamingResponse:
+        from .resources.transactions import TransactionsResourceWithStreamingResponse
+
+        return TransactionsResourceWithStreamingResponse(self._client.transactions)
+
+    @cached_property
+    def pending_transactions(self) -> pending_transactions.PendingTransactionsResourceWithStreamingResponse:
+        from .resources.pending_transactions import PendingTransactionsResourceWithStreamingResponse
+
+        return PendingTransactionsResourceWithStreamingResponse(self._client.pending_transactions)
+
+    @cached_property
+    def declined_transactions(self) -> declined_transactions.DeclinedTransactionsResourceWithStreamingResponse:
+        from .resources.declined_transactions import DeclinedTransactionsResourceWithStreamingResponse
+
+        return DeclinedTransactionsResourceWithStreamingResponse(self._client.declined_transactions)
+
+    @cached_property
+    def ach_transfers(self) -> ach_transfers.ACHTransfersResourceWithStreamingResponse:
+        from .resources.ach_transfers import ACHTransfersResourceWithStreamingResponse
+
+        return ACHTransfersResourceWithStreamingResponse(self._client.ach_transfers)
+
+    @cached_property
+    def ach_prenotifications(self) -> ach_prenotifications.ACHPrenotificationsResourceWithStreamingResponse:
+        from .resources.ach_prenotifications import ACHPrenotificationsResourceWithStreamingResponse
+
+        return ACHPrenotificationsResourceWithStreamingResponse(self._client.ach_prenotifications)
+
+    @cached_property
+    def inbound_ach_transfers(self) -> inbound_ach_transfers.InboundACHTransfersResourceWithStreamingResponse:
+        from .resources.inbound_ach_transfers import InboundACHTransfersResourceWithStreamingResponse
+
+        return InboundACHTransfersResourceWithStreamingResponse(self._client.inbound_ach_transfers)
+
+    @cached_property
+    def wire_transfers(self) -> wire_transfers.WireTransfersResourceWithStreamingResponse:
+        from .resources.wire_transfers import WireTransfersResourceWithStreamingResponse
+
+        return WireTransfersResourceWithStreamingResponse(self._client.wire_transfers)
+
+    @cached_property
+    def inbound_wire_transfers(self) -> inbound_wire_transfers.InboundWireTransfersResourceWithStreamingResponse:
+        from .resources.inbound_wire_transfers import InboundWireTransfersResourceWithStreamingResponse
+
+        return InboundWireTransfersResourceWithStreamingResponse(self._client.inbound_wire_transfers)
+
+    @cached_property
+    def wire_drawdown_requests(self) -> wire_drawdown_requests.WireDrawdownRequestsResourceWithStreamingResponse:
+        from .resources.wire_drawdown_requests import WireDrawdownRequestsResourceWithStreamingResponse
+
+        return WireDrawdownRequestsResourceWithStreamingResponse(self._client.wire_drawdown_requests)
+
+    @cached_property
+    def inbound_wire_drawdown_requests(
+        self,
+    ) -> inbound_wire_drawdown_requests.InboundWireDrawdownRequestsResourceWithStreamingResponse:
+        from .resources.inbound_wire_drawdown_requests import InboundWireDrawdownRequestsResourceWithStreamingResponse
+
+        return InboundWireDrawdownRequestsResourceWithStreamingResponse(self._client.inbound_wire_drawdown_requests)
+
+    @cached_property
+    def check_transfers(self) -> check_transfers.CheckTransfersResourceWithStreamingResponse:
+        from .resources.check_transfers import CheckTransfersResourceWithStreamingResponse
+
+        return CheckTransfersResourceWithStreamingResponse(self._client.check_transfers)
+
+    @cached_property
+    def inbound_check_deposits(self) -> inbound_check_deposits.InboundCheckDepositsResourceWithStreamingResponse:
+        from .resources.inbound_check_deposits import InboundCheckDepositsResourceWithStreamingResponse
+
+        return InboundCheckDepositsResourceWithStreamingResponse(self._client.inbound_check_deposits)
+
+    @cached_property
+    def real_time_payments_transfers(
+        self,
+    ) -> real_time_payments_transfers.RealTimePaymentsTransfersResourceWithStreamingResponse:
+        from .resources.real_time_payments_transfers import RealTimePaymentsTransfersResourceWithStreamingResponse
+
+        return RealTimePaymentsTransfersResourceWithStreamingResponse(self._client.real_time_payments_transfers)
+
+    @cached_property
+    def inbound_real_time_payments_transfers(
+        self,
+    ) -> inbound_real_time_payments_transfers.InboundRealTimePaymentsTransfersResourceWithStreamingResponse:
+        from .resources.inbound_real_time_payments_transfers import (
+            InboundRealTimePaymentsTransfersResourceWithStreamingResponse,
         )
-        self.cards = cards.CardsResourceWithStreamingResponse(client.cards)
-        self.card_payments = card_payments.CardPaymentsResourceWithStreamingResponse(client.card_payments)
-        self.card_purchase_supplements = card_purchase_supplements.CardPurchaseSupplementsResourceWithStreamingResponse(
-            client.card_purchase_supplements
+
+        return InboundRealTimePaymentsTransfersResourceWithStreamingResponse(
+            self._client.inbound_real_time_payments_transfers
         )
-        self.card_disputes = card_disputes.CardDisputesResourceWithStreamingResponse(client.card_disputes)
-        self.physical_cards = physical_cards.PhysicalCardsResourceWithStreamingResponse(client.physical_cards)
-        self.digital_card_profiles = digital_card_profiles.DigitalCardProfilesResourceWithStreamingResponse(
-            client.digital_card_profiles
-        )
-        self.physical_card_profiles = physical_card_profiles.PhysicalCardProfilesResourceWithStreamingResponse(
-            client.physical_card_profiles
-        )
-        self.digital_wallet_tokens = digital_wallet_tokens.DigitalWalletTokensResourceWithStreamingResponse(
-            client.digital_wallet_tokens
-        )
-        self.transactions = transactions.TransactionsResourceWithStreamingResponse(client.transactions)
-        self.pending_transactions = pending_transactions.PendingTransactionsResourceWithStreamingResponse(
-            client.pending_transactions
-        )
-        self.declined_transactions = declined_transactions.DeclinedTransactionsResourceWithStreamingResponse(
-            client.declined_transactions
-        )
-        self.ach_transfers = ach_transfers.ACHTransfersResourceWithStreamingResponse(client.ach_transfers)
-        self.ach_prenotifications = ach_prenotifications.ACHPrenotificationsResourceWithStreamingResponse(
-            client.ach_prenotifications
-        )
-        self.inbound_ach_transfers = inbound_ach_transfers.InboundACHTransfersResourceWithStreamingResponse(
-            client.inbound_ach_transfers
-        )
-        self.wire_transfers = wire_transfers.WireTransfersResourceWithStreamingResponse(client.wire_transfers)
-        self.inbound_wire_transfers = inbound_wire_transfers.InboundWireTransfersResourceWithStreamingResponse(
-            client.inbound_wire_transfers
-        )
-        self.wire_drawdown_requests = wire_drawdown_requests.WireDrawdownRequestsResourceWithStreamingResponse(
-            client.wire_drawdown_requests
-        )
-        self.inbound_wire_drawdown_requests = (
-            inbound_wire_drawdown_requests.InboundWireDrawdownRequestsResourceWithStreamingResponse(
-                client.inbound_wire_drawdown_requests
-            )
-        )
-        self.check_transfers = check_transfers.CheckTransfersResourceWithStreamingResponse(client.check_transfers)
-        self.inbound_check_deposits = inbound_check_deposits.InboundCheckDepositsResourceWithStreamingResponse(
-            client.inbound_check_deposits
-        )
-        self.real_time_payments_transfers = (
-            real_time_payments_transfers.RealTimePaymentsTransfersResourceWithStreamingResponse(
-                client.real_time_payments_transfers
-            )
-        )
-        self.inbound_real_time_payments_transfers = (
-            inbound_real_time_payments_transfers.InboundRealTimePaymentsTransfersResourceWithStreamingResponse(
-                client.inbound_real_time_payments_transfers
-            )
-        )
-        self.fednow_transfers = fednow_transfers.FednowTransfersResourceWithStreamingResponse(client.fednow_transfers)
-        self.inbound_fednow_transfers = inbound_fednow_transfers.InboundFednowTransfersResourceWithStreamingResponse(
-            client.inbound_fednow_transfers
-        )
-        self.check_deposits = check_deposits.CheckDepositsResourceWithStreamingResponse(client.check_deposits)
-        self.lockboxes = lockboxes.LockboxesResourceWithStreamingResponse(client.lockboxes)
-        self.inbound_mail_items = inbound_mail_items.InboundMailItemsResourceWithStreamingResponse(
-            client.inbound_mail_items
-        )
-        self.routing_numbers = routing_numbers.RoutingNumbersResourceWithStreamingResponse(client.routing_numbers)
-        self.external_accounts = external_accounts.ExternalAccountsResourceWithStreamingResponse(
-            client.external_accounts
-        )
-        self.entities = entities.EntitiesResourceWithStreamingResponse(client.entities)
-        self.supplemental_documents = supplemental_documents.SupplementalDocumentsResourceWithStreamingResponse(
-            client.supplemental_documents
-        )
-        self.programs = programs.ProgramsResourceWithStreamingResponse(client.programs)
-        self.account_statements = account_statements.AccountStatementsResourceWithStreamingResponse(
-            client.account_statements
-        )
-        self.files = files.FilesResourceWithStreamingResponse(client.files)
-        self.file_links = file_links.FileLinksResourceWithStreamingResponse(client.file_links)
-        self.documents = documents.DocumentsResourceWithStreamingResponse(client.documents)
-        self.exports = exports.ExportsResourceWithStreamingResponse(client.exports)
-        self.events = events.EventsResourceWithStreamingResponse(client.events)
-        self.event_subscriptions = event_subscriptions.EventSubscriptionsResourceWithStreamingResponse(
-            client.event_subscriptions
-        )
-        self.real_time_decisions = real_time_decisions.RealTimeDecisionsResourceWithStreamingResponse(
-            client.real_time_decisions
-        )
-        self.bookkeeping_accounts = bookkeeping_accounts.BookkeepingAccountsResourceWithStreamingResponse(
-            client.bookkeeping_accounts
-        )
-        self.bookkeeping_entry_sets = bookkeeping_entry_sets.BookkeepingEntrySetsResourceWithStreamingResponse(
-            client.bookkeeping_entry_sets
-        )
-        self.bookkeeping_entries = bookkeeping_entries.BookkeepingEntriesResourceWithStreamingResponse(
-            client.bookkeeping_entries
-        )
-        self.groups = groups.GroupsResourceWithStreamingResponse(client.groups)
-        self.oauth_applications = oauth_applications.OAuthApplicationsResourceWithStreamingResponse(
-            client.oauth_applications
-        )
-        self.oauth_connections = oauth_connections.OAuthConnectionsResourceWithStreamingResponse(
-            client.oauth_connections
-        )
-        self.oauth_tokens = oauth_tokens.OAuthTokensResourceWithStreamingResponse(client.oauth_tokens)
-        self.intrafi_account_enrollments = (
-            intrafi_account_enrollments.IntrafiAccountEnrollmentsResourceWithStreamingResponse(
-                client.intrafi_account_enrollments
-            )
-        )
-        self.intrafi_balances = intrafi_balances.IntrafiBalancesResourceWithStreamingResponse(client.intrafi_balances)
-        self.intrafi_exclusions = intrafi_exclusions.IntrafiExclusionsResourceWithStreamingResponse(
-            client.intrafi_exclusions
-        )
-        self.card_tokens = card_tokens.CardTokensResourceWithStreamingResponse(client.card_tokens)
-        self.card_push_transfers = card_push_transfers.CardPushTransfersResourceWithStreamingResponse(
-            client.card_push_transfers
-        )
-        self.card_validations = card_validations.CardValidationsResourceWithStreamingResponse(client.card_validations)
-        self.simulations = simulations.SimulationsResourceWithStreamingResponse(client.simulations)
+
+    @cached_property
+    def fednow_transfers(self) -> fednow_transfers.FednowTransfersResourceWithStreamingResponse:
+        from .resources.fednow_transfers import FednowTransfersResourceWithStreamingResponse
+
+        return FednowTransfersResourceWithStreamingResponse(self._client.fednow_transfers)
+
+    @cached_property
+    def inbound_fednow_transfers(self) -> inbound_fednow_transfers.InboundFednowTransfersResourceWithStreamingResponse:
+        from .resources.inbound_fednow_transfers import InboundFednowTransfersResourceWithStreamingResponse
+
+        return InboundFednowTransfersResourceWithStreamingResponse(self._client.inbound_fednow_transfers)
+
+    @cached_property
+    def check_deposits(self) -> check_deposits.CheckDepositsResourceWithStreamingResponse:
+        from .resources.check_deposits import CheckDepositsResourceWithStreamingResponse
+
+        return CheckDepositsResourceWithStreamingResponse(self._client.check_deposits)
+
+    @cached_property
+    def lockboxes(self) -> lockboxes.LockboxesResourceWithStreamingResponse:
+        from .resources.lockboxes import LockboxesResourceWithStreamingResponse
+
+        return LockboxesResourceWithStreamingResponse(self._client.lockboxes)
+
+    @cached_property
+    def inbound_mail_items(self) -> inbound_mail_items.InboundMailItemsResourceWithStreamingResponse:
+        from .resources.inbound_mail_items import InboundMailItemsResourceWithStreamingResponse
+
+        return InboundMailItemsResourceWithStreamingResponse(self._client.inbound_mail_items)
+
+    @cached_property
+    def routing_numbers(self) -> routing_numbers.RoutingNumbersResourceWithStreamingResponse:
+        from .resources.routing_numbers import RoutingNumbersResourceWithStreamingResponse
+
+        return RoutingNumbersResourceWithStreamingResponse(self._client.routing_numbers)
+
+    @cached_property
+    def external_accounts(self) -> external_accounts.ExternalAccountsResourceWithStreamingResponse:
+        from .resources.external_accounts import ExternalAccountsResourceWithStreamingResponse
+
+        return ExternalAccountsResourceWithStreamingResponse(self._client.external_accounts)
+
+    @cached_property
+    def entities(self) -> entities.EntitiesResourceWithStreamingResponse:
+        from .resources.entities import EntitiesResourceWithStreamingResponse
+
+        return EntitiesResourceWithStreamingResponse(self._client.entities)
+
+    @cached_property
+    def supplemental_documents(self) -> supplemental_documents.SupplementalDocumentsResourceWithStreamingResponse:
+        from .resources.supplemental_documents import SupplementalDocumentsResourceWithStreamingResponse
+
+        return SupplementalDocumentsResourceWithStreamingResponse(self._client.supplemental_documents)
+
+    @cached_property
+    def programs(self) -> programs.ProgramsResourceWithStreamingResponse:
+        from .resources.programs import ProgramsResourceWithStreamingResponse
+
+        return ProgramsResourceWithStreamingResponse(self._client.programs)
+
+    @cached_property
+    def account_statements(self) -> account_statements.AccountStatementsResourceWithStreamingResponse:
+        from .resources.account_statements import AccountStatementsResourceWithStreamingResponse
+
+        return AccountStatementsResourceWithStreamingResponse(self._client.account_statements)
+
+    @cached_property
+    def files(self) -> files.FilesResourceWithStreamingResponse:
+        from .resources.files import FilesResourceWithStreamingResponse
+
+        return FilesResourceWithStreamingResponse(self._client.files)
+
+    @cached_property
+    def file_links(self) -> file_links.FileLinksResourceWithStreamingResponse:
+        from .resources.file_links import FileLinksResourceWithStreamingResponse
+
+        return FileLinksResourceWithStreamingResponse(self._client.file_links)
+
+    @cached_property
+    def documents(self) -> documents.DocumentsResourceWithStreamingResponse:
+        from .resources.documents import DocumentsResourceWithStreamingResponse
+
+        return DocumentsResourceWithStreamingResponse(self._client.documents)
+
+    @cached_property
+    def exports(self) -> exports.ExportsResourceWithStreamingResponse:
+        from .resources.exports import ExportsResourceWithStreamingResponse
+
+        return ExportsResourceWithStreamingResponse(self._client.exports)
+
+    @cached_property
+    def events(self) -> events.EventsResourceWithStreamingResponse:
+        from .resources.events import EventsResourceWithStreamingResponse
+
+        return EventsResourceWithStreamingResponse(self._client.events)
+
+    @cached_property
+    def event_subscriptions(self) -> event_subscriptions.EventSubscriptionsResourceWithStreamingResponse:
+        from .resources.event_subscriptions import EventSubscriptionsResourceWithStreamingResponse
+
+        return EventSubscriptionsResourceWithStreamingResponse(self._client.event_subscriptions)
+
+    @cached_property
+    def real_time_decisions(self) -> real_time_decisions.RealTimeDecisionsResourceWithStreamingResponse:
+        from .resources.real_time_decisions import RealTimeDecisionsResourceWithStreamingResponse
+
+        return RealTimeDecisionsResourceWithStreamingResponse(self._client.real_time_decisions)
+
+    @cached_property
+    def bookkeeping_accounts(self) -> bookkeeping_accounts.BookkeepingAccountsResourceWithStreamingResponse:
+        from .resources.bookkeeping_accounts import BookkeepingAccountsResourceWithStreamingResponse
+
+        return BookkeepingAccountsResourceWithStreamingResponse(self._client.bookkeeping_accounts)
+
+    @cached_property
+    def bookkeeping_entry_sets(self) -> bookkeeping_entry_sets.BookkeepingEntrySetsResourceWithStreamingResponse:
+        from .resources.bookkeeping_entry_sets import BookkeepingEntrySetsResourceWithStreamingResponse
+
+        return BookkeepingEntrySetsResourceWithStreamingResponse(self._client.bookkeeping_entry_sets)
+
+    @cached_property
+    def bookkeeping_entries(self) -> bookkeeping_entries.BookkeepingEntriesResourceWithStreamingResponse:
+        from .resources.bookkeeping_entries import BookkeepingEntriesResourceWithStreamingResponse
+
+        return BookkeepingEntriesResourceWithStreamingResponse(self._client.bookkeeping_entries)
+
+    @cached_property
+    def groups(self) -> groups.GroupsResourceWithStreamingResponse:
+        from .resources.groups import GroupsResourceWithStreamingResponse
+
+        return GroupsResourceWithStreamingResponse(self._client.groups)
+
+    @cached_property
+    def oauth_applications(self) -> oauth_applications.OAuthApplicationsResourceWithStreamingResponse:
+        from .resources.oauth_applications import OAuthApplicationsResourceWithStreamingResponse
+
+        return OAuthApplicationsResourceWithStreamingResponse(self._client.oauth_applications)
+
+    @cached_property
+    def oauth_connections(self) -> oauth_connections.OAuthConnectionsResourceWithStreamingResponse:
+        from .resources.oauth_connections import OAuthConnectionsResourceWithStreamingResponse
+
+        return OAuthConnectionsResourceWithStreamingResponse(self._client.oauth_connections)
+
+    @cached_property
+    def oauth_tokens(self) -> oauth_tokens.OAuthTokensResourceWithStreamingResponse:
+        from .resources.oauth_tokens import OAuthTokensResourceWithStreamingResponse
+
+        return OAuthTokensResourceWithStreamingResponse(self._client.oauth_tokens)
+
+    @cached_property
+    def intrafi_account_enrollments(
+        self,
+    ) -> intrafi_account_enrollments.IntrafiAccountEnrollmentsResourceWithStreamingResponse:
+        from .resources.intrafi_account_enrollments import IntrafiAccountEnrollmentsResourceWithStreamingResponse
+
+        return IntrafiAccountEnrollmentsResourceWithStreamingResponse(self._client.intrafi_account_enrollments)
+
+    @cached_property
+    def intrafi_balances(self) -> intrafi_balances.IntrafiBalancesResourceWithStreamingResponse:
+        from .resources.intrafi_balances import IntrafiBalancesResourceWithStreamingResponse
+
+        return IntrafiBalancesResourceWithStreamingResponse(self._client.intrafi_balances)
+
+    @cached_property
+    def intrafi_exclusions(self) -> intrafi_exclusions.IntrafiExclusionsResourceWithStreamingResponse:
+        from .resources.intrafi_exclusions import IntrafiExclusionsResourceWithStreamingResponse
+
+        return IntrafiExclusionsResourceWithStreamingResponse(self._client.intrafi_exclusions)
+
+    @cached_property
+    def card_tokens(self) -> card_tokens.CardTokensResourceWithStreamingResponse:
+        from .resources.card_tokens import CardTokensResourceWithStreamingResponse
+
+        return CardTokensResourceWithStreamingResponse(self._client.card_tokens)
+
+    @cached_property
+    def card_push_transfers(self) -> card_push_transfers.CardPushTransfersResourceWithStreamingResponse:
+        from .resources.card_push_transfers import CardPushTransfersResourceWithStreamingResponse
+
+        return CardPushTransfersResourceWithStreamingResponse(self._client.card_push_transfers)
+
+    @cached_property
+    def card_validations(self) -> card_validations.CardValidationsResourceWithStreamingResponse:
+        from .resources.card_validations import CardValidationsResourceWithStreamingResponse
+
+        return CardValidationsResourceWithStreamingResponse(self._client.card_validations)
+
+    @cached_property
+    def simulations(self) -> simulations.SimulationsResourceWithStreamingResponse:
+        from .resources.simulations import SimulationsResourceWithStreamingResponse
+
+        return SimulationsResourceWithStreamingResponse(self._client.simulations)
 
 
 class AsyncIncreaseWithStreamedResponse:
+    _client: AsyncIncrease
+
     def __init__(self, client: AsyncIncrease) -> None:
-        self.accounts = accounts.AsyncAccountsResourceWithStreamingResponse(client.accounts)
-        self.account_numbers = account_numbers.AsyncAccountNumbersResourceWithStreamingResponse(client.account_numbers)
-        self.account_transfers = account_transfers.AsyncAccountTransfersResourceWithStreamingResponse(
-            client.account_transfers
+        self._client = client
+
+    @cached_property
+    def accounts(self) -> accounts.AsyncAccountsResourceWithStreamingResponse:
+        from .resources.accounts import AsyncAccountsResourceWithStreamingResponse
+
+        return AsyncAccountsResourceWithStreamingResponse(self._client.accounts)
+
+    @cached_property
+    def account_numbers(self) -> account_numbers.AsyncAccountNumbersResourceWithStreamingResponse:
+        from .resources.account_numbers import AsyncAccountNumbersResourceWithStreamingResponse
+
+        return AsyncAccountNumbersResourceWithStreamingResponse(self._client.account_numbers)
+
+    @cached_property
+    def account_transfers(self) -> account_transfers.AsyncAccountTransfersResourceWithStreamingResponse:
+        from .resources.account_transfers import AsyncAccountTransfersResourceWithStreamingResponse
+
+        return AsyncAccountTransfersResourceWithStreamingResponse(self._client.account_transfers)
+
+    @cached_property
+    def cards(self) -> cards.AsyncCardsResourceWithStreamingResponse:
+        from .resources.cards import AsyncCardsResourceWithStreamingResponse
+
+        return AsyncCardsResourceWithStreamingResponse(self._client.cards)
+
+    @cached_property
+    def card_payments(self) -> card_payments.AsyncCardPaymentsResourceWithStreamingResponse:
+        from .resources.card_payments import AsyncCardPaymentsResourceWithStreamingResponse
+
+        return AsyncCardPaymentsResourceWithStreamingResponse(self._client.card_payments)
+
+    @cached_property
+    def card_purchase_supplements(
+        self,
+    ) -> card_purchase_supplements.AsyncCardPurchaseSupplementsResourceWithStreamingResponse:
+        from .resources.card_purchase_supplements import AsyncCardPurchaseSupplementsResourceWithStreamingResponse
+
+        return AsyncCardPurchaseSupplementsResourceWithStreamingResponse(self._client.card_purchase_supplements)
+
+    @cached_property
+    def card_disputes(self) -> card_disputes.AsyncCardDisputesResourceWithStreamingResponse:
+        from .resources.card_disputes import AsyncCardDisputesResourceWithStreamingResponse
+
+        return AsyncCardDisputesResourceWithStreamingResponse(self._client.card_disputes)
+
+    @cached_property
+    def physical_cards(self) -> physical_cards.AsyncPhysicalCardsResourceWithStreamingResponse:
+        from .resources.physical_cards import AsyncPhysicalCardsResourceWithStreamingResponse
+
+        return AsyncPhysicalCardsResourceWithStreamingResponse(self._client.physical_cards)
+
+    @cached_property
+    def digital_card_profiles(self) -> digital_card_profiles.AsyncDigitalCardProfilesResourceWithStreamingResponse:
+        from .resources.digital_card_profiles import AsyncDigitalCardProfilesResourceWithStreamingResponse
+
+        return AsyncDigitalCardProfilesResourceWithStreamingResponse(self._client.digital_card_profiles)
+
+    @cached_property
+    def physical_card_profiles(self) -> physical_card_profiles.AsyncPhysicalCardProfilesResourceWithStreamingResponse:
+        from .resources.physical_card_profiles import AsyncPhysicalCardProfilesResourceWithStreamingResponse
+
+        return AsyncPhysicalCardProfilesResourceWithStreamingResponse(self._client.physical_card_profiles)
+
+    @cached_property
+    def digital_wallet_tokens(self) -> digital_wallet_tokens.AsyncDigitalWalletTokensResourceWithStreamingResponse:
+        from .resources.digital_wallet_tokens import AsyncDigitalWalletTokensResourceWithStreamingResponse
+
+        return AsyncDigitalWalletTokensResourceWithStreamingResponse(self._client.digital_wallet_tokens)
+
+    @cached_property
+    def transactions(self) -> transactions.AsyncTransactionsResourceWithStreamingResponse:
+        from .resources.transactions import AsyncTransactionsResourceWithStreamingResponse
+
+        return AsyncTransactionsResourceWithStreamingResponse(self._client.transactions)
+
+    @cached_property
+    def pending_transactions(self) -> pending_transactions.AsyncPendingTransactionsResourceWithStreamingResponse:
+        from .resources.pending_transactions import AsyncPendingTransactionsResourceWithStreamingResponse
+
+        return AsyncPendingTransactionsResourceWithStreamingResponse(self._client.pending_transactions)
+
+    @cached_property
+    def declined_transactions(self) -> declined_transactions.AsyncDeclinedTransactionsResourceWithStreamingResponse:
+        from .resources.declined_transactions import AsyncDeclinedTransactionsResourceWithStreamingResponse
+
+        return AsyncDeclinedTransactionsResourceWithStreamingResponse(self._client.declined_transactions)
+
+    @cached_property
+    def ach_transfers(self) -> ach_transfers.AsyncACHTransfersResourceWithStreamingResponse:
+        from .resources.ach_transfers import AsyncACHTransfersResourceWithStreamingResponse
+
+        return AsyncACHTransfersResourceWithStreamingResponse(self._client.ach_transfers)
+
+    @cached_property
+    def ach_prenotifications(self) -> ach_prenotifications.AsyncACHPrenotificationsResourceWithStreamingResponse:
+        from .resources.ach_prenotifications import AsyncACHPrenotificationsResourceWithStreamingResponse
+
+        return AsyncACHPrenotificationsResourceWithStreamingResponse(self._client.ach_prenotifications)
+
+    @cached_property
+    def inbound_ach_transfers(self) -> inbound_ach_transfers.AsyncInboundACHTransfersResourceWithStreamingResponse:
+        from .resources.inbound_ach_transfers import AsyncInboundACHTransfersResourceWithStreamingResponse
+
+        return AsyncInboundACHTransfersResourceWithStreamingResponse(self._client.inbound_ach_transfers)
+
+    @cached_property
+    def wire_transfers(self) -> wire_transfers.AsyncWireTransfersResourceWithStreamingResponse:
+        from .resources.wire_transfers import AsyncWireTransfersResourceWithStreamingResponse
+
+        return AsyncWireTransfersResourceWithStreamingResponse(self._client.wire_transfers)
+
+    @cached_property
+    def inbound_wire_transfers(self) -> inbound_wire_transfers.AsyncInboundWireTransfersResourceWithStreamingResponse:
+        from .resources.inbound_wire_transfers import AsyncInboundWireTransfersResourceWithStreamingResponse
+
+        return AsyncInboundWireTransfersResourceWithStreamingResponse(self._client.inbound_wire_transfers)
+
+    @cached_property
+    def wire_drawdown_requests(self) -> wire_drawdown_requests.AsyncWireDrawdownRequestsResourceWithStreamingResponse:
+        from .resources.wire_drawdown_requests import AsyncWireDrawdownRequestsResourceWithStreamingResponse
+
+        return AsyncWireDrawdownRequestsResourceWithStreamingResponse(self._client.wire_drawdown_requests)
+
+    @cached_property
+    def inbound_wire_drawdown_requests(
+        self,
+    ) -> inbound_wire_drawdown_requests.AsyncInboundWireDrawdownRequestsResourceWithStreamingResponse:
+        from .resources.inbound_wire_drawdown_requests import (
+            AsyncInboundWireDrawdownRequestsResourceWithStreamingResponse,
         )
-        self.cards = cards.AsyncCardsResourceWithStreamingResponse(client.cards)
-        self.card_payments = card_payments.AsyncCardPaymentsResourceWithStreamingResponse(client.card_payments)
-        self.card_purchase_supplements = (
-            card_purchase_supplements.AsyncCardPurchaseSupplementsResourceWithStreamingResponse(
-                client.card_purchase_supplements
-            )
+
+        return AsyncInboundWireDrawdownRequestsResourceWithStreamingResponse(
+            self._client.inbound_wire_drawdown_requests
         )
-        self.card_disputes = card_disputes.AsyncCardDisputesResourceWithStreamingResponse(client.card_disputes)
-        self.physical_cards = physical_cards.AsyncPhysicalCardsResourceWithStreamingResponse(client.physical_cards)
-        self.digital_card_profiles = digital_card_profiles.AsyncDigitalCardProfilesResourceWithStreamingResponse(
-            client.digital_card_profiles
+
+    @cached_property
+    def check_transfers(self) -> check_transfers.AsyncCheckTransfersResourceWithStreamingResponse:
+        from .resources.check_transfers import AsyncCheckTransfersResourceWithStreamingResponse
+
+        return AsyncCheckTransfersResourceWithStreamingResponse(self._client.check_transfers)
+
+    @cached_property
+    def inbound_check_deposits(self) -> inbound_check_deposits.AsyncInboundCheckDepositsResourceWithStreamingResponse:
+        from .resources.inbound_check_deposits import AsyncInboundCheckDepositsResourceWithStreamingResponse
+
+        return AsyncInboundCheckDepositsResourceWithStreamingResponse(self._client.inbound_check_deposits)
+
+    @cached_property
+    def real_time_payments_transfers(
+        self,
+    ) -> real_time_payments_transfers.AsyncRealTimePaymentsTransfersResourceWithStreamingResponse:
+        from .resources.real_time_payments_transfers import AsyncRealTimePaymentsTransfersResourceWithStreamingResponse
+
+        return AsyncRealTimePaymentsTransfersResourceWithStreamingResponse(self._client.real_time_payments_transfers)
+
+    @cached_property
+    def inbound_real_time_payments_transfers(
+        self,
+    ) -> inbound_real_time_payments_transfers.AsyncInboundRealTimePaymentsTransfersResourceWithStreamingResponse:
+        from .resources.inbound_real_time_payments_transfers import (
+            AsyncInboundRealTimePaymentsTransfersResourceWithStreamingResponse,
         )
-        self.physical_card_profiles = physical_card_profiles.AsyncPhysicalCardProfilesResourceWithStreamingResponse(
-            client.physical_card_profiles
+
+        return AsyncInboundRealTimePaymentsTransfersResourceWithStreamingResponse(
+            self._client.inbound_real_time_payments_transfers
         )
-        self.digital_wallet_tokens = digital_wallet_tokens.AsyncDigitalWalletTokensResourceWithStreamingResponse(
-            client.digital_wallet_tokens
-        )
-        self.transactions = transactions.AsyncTransactionsResourceWithStreamingResponse(client.transactions)
-        self.pending_transactions = pending_transactions.AsyncPendingTransactionsResourceWithStreamingResponse(
-            client.pending_transactions
-        )
-        self.declined_transactions = declined_transactions.AsyncDeclinedTransactionsResourceWithStreamingResponse(
-            client.declined_transactions
-        )
-        self.ach_transfers = ach_transfers.AsyncACHTransfersResourceWithStreamingResponse(client.ach_transfers)
-        self.ach_prenotifications = ach_prenotifications.AsyncACHPrenotificationsResourceWithStreamingResponse(
-            client.ach_prenotifications
-        )
-        self.inbound_ach_transfers = inbound_ach_transfers.AsyncInboundACHTransfersResourceWithStreamingResponse(
-            client.inbound_ach_transfers
-        )
-        self.wire_transfers = wire_transfers.AsyncWireTransfersResourceWithStreamingResponse(client.wire_transfers)
-        self.inbound_wire_transfers = inbound_wire_transfers.AsyncInboundWireTransfersResourceWithStreamingResponse(
-            client.inbound_wire_transfers
-        )
-        self.wire_drawdown_requests = wire_drawdown_requests.AsyncWireDrawdownRequestsResourceWithStreamingResponse(
-            client.wire_drawdown_requests
-        )
-        self.inbound_wire_drawdown_requests = (
-            inbound_wire_drawdown_requests.AsyncInboundWireDrawdownRequestsResourceWithStreamingResponse(
-                client.inbound_wire_drawdown_requests
-            )
-        )
-        self.check_transfers = check_transfers.AsyncCheckTransfersResourceWithStreamingResponse(client.check_transfers)
-        self.inbound_check_deposits = inbound_check_deposits.AsyncInboundCheckDepositsResourceWithStreamingResponse(
-            client.inbound_check_deposits
-        )
-        self.real_time_payments_transfers = (
-            real_time_payments_transfers.AsyncRealTimePaymentsTransfersResourceWithStreamingResponse(
-                client.real_time_payments_transfers
-            )
-        )
-        self.inbound_real_time_payments_transfers = (
-            inbound_real_time_payments_transfers.AsyncInboundRealTimePaymentsTransfersResourceWithStreamingResponse(
-                client.inbound_real_time_payments_transfers
-            )
-        )
-        self.fednow_transfers = fednow_transfers.AsyncFednowTransfersResourceWithStreamingResponse(
-            client.fednow_transfers
-        )
-        self.inbound_fednow_transfers = (
-            inbound_fednow_transfers.AsyncInboundFednowTransfersResourceWithStreamingResponse(
-                client.inbound_fednow_transfers
-            )
-        )
-        self.check_deposits = check_deposits.AsyncCheckDepositsResourceWithStreamingResponse(client.check_deposits)
-        self.lockboxes = lockboxes.AsyncLockboxesResourceWithStreamingResponse(client.lockboxes)
-        self.inbound_mail_items = inbound_mail_items.AsyncInboundMailItemsResourceWithStreamingResponse(
-            client.inbound_mail_items
-        )
-        self.routing_numbers = routing_numbers.AsyncRoutingNumbersResourceWithStreamingResponse(client.routing_numbers)
-        self.external_accounts = external_accounts.AsyncExternalAccountsResourceWithStreamingResponse(
-            client.external_accounts
-        )
-        self.entities = entities.AsyncEntitiesResourceWithStreamingResponse(client.entities)
-        self.supplemental_documents = supplemental_documents.AsyncSupplementalDocumentsResourceWithStreamingResponse(
-            client.supplemental_documents
-        )
-        self.programs = programs.AsyncProgramsResourceWithStreamingResponse(client.programs)
-        self.account_statements = account_statements.AsyncAccountStatementsResourceWithStreamingResponse(
-            client.account_statements
-        )
-        self.files = files.AsyncFilesResourceWithStreamingResponse(client.files)
-        self.file_links = file_links.AsyncFileLinksResourceWithStreamingResponse(client.file_links)
-        self.documents = documents.AsyncDocumentsResourceWithStreamingResponse(client.documents)
-        self.exports = exports.AsyncExportsResourceWithStreamingResponse(client.exports)
-        self.events = events.AsyncEventsResourceWithStreamingResponse(client.events)
-        self.event_subscriptions = event_subscriptions.AsyncEventSubscriptionsResourceWithStreamingResponse(
-            client.event_subscriptions
-        )
-        self.real_time_decisions = real_time_decisions.AsyncRealTimeDecisionsResourceWithStreamingResponse(
-            client.real_time_decisions
-        )
-        self.bookkeeping_accounts = bookkeeping_accounts.AsyncBookkeepingAccountsResourceWithStreamingResponse(
-            client.bookkeeping_accounts
-        )
-        self.bookkeeping_entry_sets = bookkeeping_entry_sets.AsyncBookkeepingEntrySetsResourceWithStreamingResponse(
-            client.bookkeeping_entry_sets
-        )
-        self.bookkeeping_entries = bookkeeping_entries.AsyncBookkeepingEntriesResourceWithStreamingResponse(
-            client.bookkeeping_entries
-        )
-        self.groups = groups.AsyncGroupsResourceWithStreamingResponse(client.groups)
-        self.oauth_applications = oauth_applications.AsyncOAuthApplicationsResourceWithStreamingResponse(
-            client.oauth_applications
-        )
-        self.oauth_connections = oauth_connections.AsyncOAuthConnectionsResourceWithStreamingResponse(
-            client.oauth_connections
-        )
-        self.oauth_tokens = oauth_tokens.AsyncOAuthTokensResourceWithStreamingResponse(client.oauth_tokens)
-        self.intrafi_account_enrollments = (
-            intrafi_account_enrollments.AsyncIntrafiAccountEnrollmentsResourceWithStreamingResponse(
-                client.intrafi_account_enrollments
-            )
-        )
-        self.intrafi_balances = intrafi_balances.AsyncIntrafiBalancesResourceWithStreamingResponse(
-            client.intrafi_balances
-        )
-        self.intrafi_exclusions = intrafi_exclusions.AsyncIntrafiExclusionsResourceWithStreamingResponse(
-            client.intrafi_exclusions
-        )
-        self.card_tokens = card_tokens.AsyncCardTokensResourceWithStreamingResponse(client.card_tokens)
-        self.card_push_transfers = card_push_transfers.AsyncCardPushTransfersResourceWithStreamingResponse(
-            client.card_push_transfers
-        )
-        self.card_validations = card_validations.AsyncCardValidationsResourceWithStreamingResponse(
-            client.card_validations
-        )
-        self.simulations = simulations.AsyncSimulationsResourceWithStreamingResponse(client.simulations)
+
+    @cached_property
+    def fednow_transfers(self) -> fednow_transfers.AsyncFednowTransfersResourceWithStreamingResponse:
+        from .resources.fednow_transfers import AsyncFednowTransfersResourceWithStreamingResponse
+
+        return AsyncFednowTransfersResourceWithStreamingResponse(self._client.fednow_transfers)
+
+    @cached_property
+    def inbound_fednow_transfers(
+        self,
+    ) -> inbound_fednow_transfers.AsyncInboundFednowTransfersResourceWithStreamingResponse:
+        from .resources.inbound_fednow_transfers import AsyncInboundFednowTransfersResourceWithStreamingResponse
+
+        return AsyncInboundFednowTransfersResourceWithStreamingResponse(self._client.inbound_fednow_transfers)
+
+    @cached_property
+    def check_deposits(self) -> check_deposits.AsyncCheckDepositsResourceWithStreamingResponse:
+        from .resources.check_deposits import AsyncCheckDepositsResourceWithStreamingResponse
+
+        return AsyncCheckDepositsResourceWithStreamingResponse(self._client.check_deposits)
+
+    @cached_property
+    def lockboxes(self) -> lockboxes.AsyncLockboxesResourceWithStreamingResponse:
+        from .resources.lockboxes import AsyncLockboxesResourceWithStreamingResponse
+
+        return AsyncLockboxesResourceWithStreamingResponse(self._client.lockboxes)
+
+    @cached_property
+    def inbound_mail_items(self) -> inbound_mail_items.AsyncInboundMailItemsResourceWithStreamingResponse:
+        from .resources.inbound_mail_items import AsyncInboundMailItemsResourceWithStreamingResponse
+
+        return AsyncInboundMailItemsResourceWithStreamingResponse(self._client.inbound_mail_items)
+
+    @cached_property
+    def routing_numbers(self) -> routing_numbers.AsyncRoutingNumbersResourceWithStreamingResponse:
+        from .resources.routing_numbers import AsyncRoutingNumbersResourceWithStreamingResponse
+
+        return AsyncRoutingNumbersResourceWithStreamingResponse(self._client.routing_numbers)
+
+    @cached_property
+    def external_accounts(self) -> external_accounts.AsyncExternalAccountsResourceWithStreamingResponse:
+        from .resources.external_accounts import AsyncExternalAccountsResourceWithStreamingResponse
+
+        return AsyncExternalAccountsResourceWithStreamingResponse(self._client.external_accounts)
+
+    @cached_property
+    def entities(self) -> entities.AsyncEntitiesResourceWithStreamingResponse:
+        from .resources.entities import AsyncEntitiesResourceWithStreamingResponse
+
+        return AsyncEntitiesResourceWithStreamingResponse(self._client.entities)
+
+    @cached_property
+    def supplemental_documents(self) -> supplemental_documents.AsyncSupplementalDocumentsResourceWithStreamingResponse:
+        from .resources.supplemental_documents import AsyncSupplementalDocumentsResourceWithStreamingResponse
+
+        return AsyncSupplementalDocumentsResourceWithStreamingResponse(self._client.supplemental_documents)
+
+    @cached_property
+    def programs(self) -> programs.AsyncProgramsResourceWithStreamingResponse:
+        from .resources.programs import AsyncProgramsResourceWithStreamingResponse
+
+        return AsyncProgramsResourceWithStreamingResponse(self._client.programs)
+
+    @cached_property
+    def account_statements(self) -> account_statements.AsyncAccountStatementsResourceWithStreamingResponse:
+        from .resources.account_statements import AsyncAccountStatementsResourceWithStreamingResponse
+
+        return AsyncAccountStatementsResourceWithStreamingResponse(self._client.account_statements)
+
+    @cached_property
+    def files(self) -> files.AsyncFilesResourceWithStreamingResponse:
+        from .resources.files import AsyncFilesResourceWithStreamingResponse
+
+        return AsyncFilesResourceWithStreamingResponse(self._client.files)
+
+    @cached_property
+    def file_links(self) -> file_links.AsyncFileLinksResourceWithStreamingResponse:
+        from .resources.file_links import AsyncFileLinksResourceWithStreamingResponse
+
+        return AsyncFileLinksResourceWithStreamingResponse(self._client.file_links)
+
+    @cached_property
+    def documents(self) -> documents.AsyncDocumentsResourceWithStreamingResponse:
+        from .resources.documents import AsyncDocumentsResourceWithStreamingResponse
+
+        return AsyncDocumentsResourceWithStreamingResponse(self._client.documents)
+
+    @cached_property
+    def exports(self) -> exports.AsyncExportsResourceWithStreamingResponse:
+        from .resources.exports import AsyncExportsResourceWithStreamingResponse
+
+        return AsyncExportsResourceWithStreamingResponse(self._client.exports)
+
+    @cached_property
+    def events(self) -> events.AsyncEventsResourceWithStreamingResponse:
+        from .resources.events import AsyncEventsResourceWithStreamingResponse
+
+        return AsyncEventsResourceWithStreamingResponse(self._client.events)
+
+    @cached_property
+    def event_subscriptions(self) -> event_subscriptions.AsyncEventSubscriptionsResourceWithStreamingResponse:
+        from .resources.event_subscriptions import AsyncEventSubscriptionsResourceWithStreamingResponse
+
+        return AsyncEventSubscriptionsResourceWithStreamingResponse(self._client.event_subscriptions)
+
+    @cached_property
+    def real_time_decisions(self) -> real_time_decisions.AsyncRealTimeDecisionsResourceWithStreamingResponse:
+        from .resources.real_time_decisions import AsyncRealTimeDecisionsResourceWithStreamingResponse
+
+        return AsyncRealTimeDecisionsResourceWithStreamingResponse(self._client.real_time_decisions)
+
+    @cached_property
+    def bookkeeping_accounts(self) -> bookkeeping_accounts.AsyncBookkeepingAccountsResourceWithStreamingResponse:
+        from .resources.bookkeeping_accounts import AsyncBookkeepingAccountsResourceWithStreamingResponse
+
+        return AsyncBookkeepingAccountsResourceWithStreamingResponse(self._client.bookkeeping_accounts)
+
+    @cached_property
+    def bookkeeping_entry_sets(self) -> bookkeeping_entry_sets.AsyncBookkeepingEntrySetsResourceWithStreamingResponse:
+        from .resources.bookkeeping_entry_sets import AsyncBookkeepingEntrySetsResourceWithStreamingResponse
+
+        return AsyncBookkeepingEntrySetsResourceWithStreamingResponse(self._client.bookkeeping_entry_sets)
+
+    @cached_property
+    def bookkeeping_entries(self) -> bookkeeping_entries.AsyncBookkeepingEntriesResourceWithStreamingResponse:
+        from .resources.bookkeeping_entries import AsyncBookkeepingEntriesResourceWithStreamingResponse
+
+        return AsyncBookkeepingEntriesResourceWithStreamingResponse(self._client.bookkeeping_entries)
+
+    @cached_property
+    def groups(self) -> groups.AsyncGroupsResourceWithStreamingResponse:
+        from .resources.groups import AsyncGroupsResourceWithStreamingResponse
+
+        return AsyncGroupsResourceWithStreamingResponse(self._client.groups)
+
+    @cached_property
+    def oauth_applications(self) -> oauth_applications.AsyncOAuthApplicationsResourceWithStreamingResponse:
+        from .resources.oauth_applications import AsyncOAuthApplicationsResourceWithStreamingResponse
+
+        return AsyncOAuthApplicationsResourceWithStreamingResponse(self._client.oauth_applications)
+
+    @cached_property
+    def oauth_connections(self) -> oauth_connections.AsyncOAuthConnectionsResourceWithStreamingResponse:
+        from .resources.oauth_connections import AsyncOAuthConnectionsResourceWithStreamingResponse
+
+        return AsyncOAuthConnectionsResourceWithStreamingResponse(self._client.oauth_connections)
+
+    @cached_property
+    def oauth_tokens(self) -> oauth_tokens.AsyncOAuthTokensResourceWithStreamingResponse:
+        from .resources.oauth_tokens import AsyncOAuthTokensResourceWithStreamingResponse
+
+        return AsyncOAuthTokensResourceWithStreamingResponse(self._client.oauth_tokens)
+
+    @cached_property
+    def intrafi_account_enrollments(
+        self,
+    ) -> intrafi_account_enrollments.AsyncIntrafiAccountEnrollmentsResourceWithStreamingResponse:
+        from .resources.intrafi_account_enrollments import AsyncIntrafiAccountEnrollmentsResourceWithStreamingResponse
+
+        return AsyncIntrafiAccountEnrollmentsResourceWithStreamingResponse(self._client.intrafi_account_enrollments)
+
+    @cached_property
+    def intrafi_balances(self) -> intrafi_balances.AsyncIntrafiBalancesResourceWithStreamingResponse:
+        from .resources.intrafi_balances import AsyncIntrafiBalancesResourceWithStreamingResponse
+
+        return AsyncIntrafiBalancesResourceWithStreamingResponse(self._client.intrafi_balances)
+
+    @cached_property
+    def intrafi_exclusions(self) -> intrafi_exclusions.AsyncIntrafiExclusionsResourceWithStreamingResponse:
+        from .resources.intrafi_exclusions import AsyncIntrafiExclusionsResourceWithStreamingResponse
+
+        return AsyncIntrafiExclusionsResourceWithStreamingResponse(self._client.intrafi_exclusions)
+
+    @cached_property
+    def card_tokens(self) -> card_tokens.AsyncCardTokensResourceWithStreamingResponse:
+        from .resources.card_tokens import AsyncCardTokensResourceWithStreamingResponse
+
+        return AsyncCardTokensResourceWithStreamingResponse(self._client.card_tokens)
+
+    @cached_property
+    def card_push_transfers(self) -> card_push_transfers.AsyncCardPushTransfersResourceWithStreamingResponse:
+        from .resources.card_push_transfers import AsyncCardPushTransfersResourceWithStreamingResponse
+
+        return AsyncCardPushTransfersResourceWithStreamingResponse(self._client.card_push_transfers)
+
+    @cached_property
+    def card_validations(self) -> card_validations.AsyncCardValidationsResourceWithStreamingResponse:
+        from .resources.card_validations import AsyncCardValidationsResourceWithStreamingResponse
+
+        return AsyncCardValidationsResourceWithStreamingResponse(self._client.card_validations)
+
+    @cached_property
+    def simulations(self) -> simulations.AsyncSimulationsResourceWithStreamingResponse:
+        from .resources.simulations import AsyncSimulationsResourceWithStreamingResponse
+
+        return AsyncSimulationsResourceWithStreamingResponse(self._client.simulations)
 
 
 Client = Increase
