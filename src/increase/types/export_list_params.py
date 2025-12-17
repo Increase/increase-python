@@ -49,6 +49,10 @@ _CategoryReservedKeywords = TypedDict(
                 "entity_csv",
                 "vendor_csv",
                 "dashboard_table_csv",
+                "account_verification_letter",
+                "funding_instructions",
+                "form_1099_int",
+                "form_1099_misc",
             ]
         ],
     },

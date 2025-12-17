@@ -27,6 +27,10 @@ class Export(BaseModel):
         "entity_csv",
         "vendor_csv",
         "dashboard_table_csv",
+        "account_verification_letter",
+        "funding_instructions",
+        "form_1099_int",
+        "form_1099_misc",
     ]
     """The category of the Export.
 
@@ -47,6 +51,10 @@ class Export(BaseModel):
       management dashboard.
     - `dashboard_table_csv` - Certain dashboard tables are available as CSV exports.
       This export cannot be created via the API.
+    - `account_verification_letter` - A PDF of an account verification letter.
+    - `funding_instructions` - A PDF of funding instructions.
+    - `form_1099_int` - A PDF of an Internal Revenue Service Form 1099-INT.
+    - `form_1099_misc` - A PDF of an Internal Revenue Service Form 1099-MISC.
     """
 
     created_at: datetime
