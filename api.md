@@ -1007,6 +1007,12 @@ Methods:
 
 - <code title="post /simulations/documents">client.simulations.documents.<a href="./src/increase/resources/simulations/documents.py">create</a>(\*\*<a href="src/increase/types/simulations/document_create_params.py">params</a>) -> <a href="./src/increase/types/document.py">Document</a></code>
 
+## Exports
+
+Methods:
+
+- <code title="post /simulations/exports">client.simulations.exports.<a href="./src/increase/resources/simulations/exports.py">create</a>(\*\*<a href="src/increase/types/simulations/export_create_params.py">params</a>) -> <a href="./src/increase/types/export.py">Export</a></code>
+
 ## CardTokens
 
 Methods:

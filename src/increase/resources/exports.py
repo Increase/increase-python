@@ -55,12 +55,16 @@ class ExportsResource(SyncAPIResource):
             "bookkeeping_account_balance_csv",
             "entity_csv",
             "vendor_csv",
+            "account_verification_letter",
+            "funding_instructions",
         ],
         account_statement_bai2: export_create_params.AccountStatementBai2 | Omit = omit,
         account_statement_ofx: export_create_params.AccountStatementOfx | Omit = omit,
+        account_verification_letter: export_create_params.AccountVerificationLetter | Omit = omit,
         balance_csv: export_create_params.BalanceCsv | Omit = omit,
         bookkeeping_account_balance_csv: export_create_params.BookkeepingAccountBalanceCsv | Omit = omit,
         entity_csv: export_create_params.EntityCsv | Omit = omit,
+        funding_instructions: export_create_params.FundingInstructions | Omit = omit,
         transaction_csv: export_create_params.TransactionCsv | Omit = omit,
         vendor_csv: export_create_params.VendorCsv | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -89,12 +93,17 @@ class ExportsResource(SyncAPIResource):
               - `entity_csv` - Export a CSV of entities with a given status.
               - `vendor_csv` - Export a CSV of vendors added to the third-party risk
                 management dashboard.
+              - `account_verification_letter` - A PDF of an account verification letter.
+              - `funding_instructions` - A PDF of funding instructions.
 
           account_statement_bai2: Options for the created export. Required if `category` is equal to
               `account_statement_bai2`.
 
           account_statement_ofx: Options for the created export. Required if `category` is equal to
               `account_statement_ofx`.
+
+          account_verification_letter: Options for the created export. Required if `category` is equal to
+              `account_verification_letter`.
 
           balance_csv: Options for the created export. Required if `category` is equal to
               `balance_csv`.
@@ -103,6 +112,9 @@ class ExportsResource(SyncAPIResource):
               `bookkeeping_account_balance_csv`.
 
           entity_csv: Options for the created export. Required if `category` is equal to `entity_csv`.
+
+          funding_instructions: Options for the created export. Required if `category` is equal to
+              `funding_instructions`.
 
           transaction_csv: Options for the created export. Required if `category` is equal to
               `transaction_csv`.
@@ -126,9 +138,11 @@ class ExportsResource(SyncAPIResource):
                     "category": category,
                     "account_statement_bai2": account_statement_bai2,
                     "account_statement_ofx": account_statement_ofx,
+                    "account_verification_letter": account_verification_letter,
                     "balance_csv": balance_csv,
                     "bookkeeping_account_balance_csv": bookkeeping_account_balance_csv,
                     "entity_csv": entity_csv,
+                    "funding_instructions": funding_instructions,
                     "transaction_csv": transaction_csv,
                     "vendor_csv": vendor_csv,
                 },
@@ -272,12 +286,16 @@ class AsyncExportsResource(AsyncAPIResource):
             "bookkeeping_account_balance_csv",
             "entity_csv",
             "vendor_csv",
+            "account_verification_letter",
+            "funding_instructions",
         ],
         account_statement_bai2: export_create_params.AccountStatementBai2 | Omit = omit,
         account_statement_ofx: export_create_params.AccountStatementOfx | Omit = omit,
+        account_verification_letter: export_create_params.AccountVerificationLetter | Omit = omit,
         balance_csv: export_create_params.BalanceCsv | Omit = omit,
         bookkeeping_account_balance_csv: export_create_params.BookkeepingAccountBalanceCsv | Omit = omit,
         entity_csv: export_create_params.EntityCsv | Omit = omit,
+        funding_instructions: export_create_params.FundingInstructions | Omit = omit,
         transaction_csv: export_create_params.TransactionCsv | Omit = omit,
         vendor_csv: export_create_params.VendorCsv | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -306,12 +324,17 @@ class AsyncExportsResource(AsyncAPIResource):
               - `entity_csv` - Export a CSV of entities with a given status.
               - `vendor_csv` - Export a CSV of vendors added to the third-party risk
                 management dashboard.
+              - `account_verification_letter` - A PDF of an account verification letter.
+              - `funding_instructions` - A PDF of funding instructions.
 
           account_statement_bai2: Options for the created export. Required if `category` is equal to
               `account_statement_bai2`.
 
           account_statement_ofx: Options for the created export. Required if `category` is equal to
               `account_statement_ofx`.
+
+          account_verification_letter: Options for the created export. Required if `category` is equal to
+              `account_verification_letter`.
 
           balance_csv: Options for the created export. Required if `category` is equal to
               `balance_csv`.
@@ -320,6 +343,9 @@ class AsyncExportsResource(AsyncAPIResource):
               `bookkeeping_account_balance_csv`.
 
           entity_csv: Options for the created export. Required if `category` is equal to `entity_csv`.
+
+          funding_instructions: Options for the created export. Required if `category` is equal to
+              `funding_instructions`.
 
           transaction_csv: Options for the created export. Required if `category` is equal to
               `transaction_csv`.
@@ -343,9 +369,11 @@ class AsyncExportsResource(AsyncAPIResource):
                     "category": category,
                     "account_statement_bai2": account_statement_bai2,
                     "account_statement_ofx": account_statement_ofx,
+                    "account_verification_letter": account_verification_letter,
                     "balance_csv": balance_csv,
                     "bookkeeping_account_balance_csv": bookkeeping_account_balance_csv,
                     "entity_csv": entity_csv,
+                    "funding_instructions": funding_instructions,
                     "transaction_csv": transaction_csv,
                     "vendor_csv": vendor_csv,
                 },

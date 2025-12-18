@@ -2,6 +2,14 @@
 
 from __future__ import annotations
 
+from .exports import (
+    ExportsResource,
+    AsyncExportsResource,
+    ExportsResourceWithRawResponse,
+    AsyncExportsResourceWithRawResponse,
+    ExportsResourceWithStreamingResponse,
+    AsyncExportsResourceWithStreamingResponse,
+)
 from .programs import (
     ProgramsResource,
     AsyncProgramsResource,
@@ -378,6 +386,10 @@ class SimulationsResource(SyncAPIResource):
         return DocumentsResource(self._client)
 
     @cached_property
+    def exports(self) -> ExportsResource:
+        return ExportsResource(self._client)
+
+    @cached_property
     def card_tokens(self) -> CardTokensResource:
         return CardTokensResource(self._client)
 
@@ -521,6 +533,10 @@ class AsyncSimulationsResource(AsyncAPIResource):
     @cached_property
     def documents(self) -> AsyncDocumentsResource:
         return AsyncDocumentsResource(self._client)
+
+    @cached_property
+    def exports(self) -> AsyncExportsResource:
+        return AsyncExportsResource(self._client)
 
     @cached_property
     def card_tokens(self) -> AsyncCardTokensResource:
@@ -673,6 +689,10 @@ class SimulationsResourceWithRawResponse:
         return DocumentsResourceWithRawResponse(self._simulations.documents)
 
     @cached_property
+    def exports(self) -> ExportsResourceWithRawResponse:
+        return ExportsResourceWithRawResponse(self._simulations.exports)
+
+    @cached_property
     def card_tokens(self) -> CardTokensResourceWithRawResponse:
         return CardTokensResourceWithRawResponse(self._simulations.card_tokens)
 
@@ -804,6 +824,10 @@ class AsyncSimulationsResourceWithRawResponse:
     @cached_property
     def documents(self) -> AsyncDocumentsResourceWithRawResponse:
         return AsyncDocumentsResourceWithRawResponse(self._simulations.documents)
+
+    @cached_property
+    def exports(self) -> AsyncExportsResourceWithRawResponse:
+        return AsyncExportsResourceWithRawResponse(self._simulations.exports)
 
     @cached_property
     def card_tokens(self) -> AsyncCardTokensResourceWithRawResponse:
@@ -939,6 +963,10 @@ class SimulationsResourceWithStreamingResponse:
     @cached_property
     def documents(self) -> DocumentsResourceWithStreamingResponse:
         return DocumentsResourceWithStreamingResponse(self._simulations.documents)
+
+    @cached_property
+    def exports(self) -> ExportsResourceWithStreamingResponse:
+        return ExportsResourceWithStreamingResponse(self._simulations.exports)
 
     @cached_property
     def card_tokens(self) -> CardTokensResourceWithStreamingResponse:
@@ -1080,6 +1108,10 @@ class AsyncSimulationsResourceWithStreamingResponse:
     @cached_property
     def documents(self) -> AsyncDocumentsResourceWithStreamingResponse:
         return AsyncDocumentsResourceWithStreamingResponse(self._simulations.documents)
+
+    @cached_property
+    def exports(self) -> AsyncExportsResourceWithStreamingResponse:
+        return AsyncExportsResourceWithStreamingResponse(self._simulations.exports)
 
     @cached_property
     def card_tokens(self) -> AsyncCardTokensResourceWithStreamingResponse:
