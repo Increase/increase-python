@@ -13,12 +13,14 @@ __all__ = [
     "AccountStatementBai2",
     "AccountStatementOfx",
     "AccountStatementOfxCreatedAt",
+    "AccountVerificationLetter",
     "BalanceCsv",
     "BalanceCsvCreatedAt",
     "BookkeepingAccountBalanceCsv",
     "BookkeepingAccountBalanceCsvCreatedAt",
     "EntityCsv",
     "EntityCsvStatus",
+    "FundingInstructions",
     "TransactionCsv",
     "TransactionCsvCreatedAt",
     "VendorCsv",
@@ -35,6 +37,8 @@ class ExportCreateParams(TypedDict, total=False):
             "bookkeeping_account_balance_csv",
             "entity_csv",
             "vendor_csv",
+            "account_verification_letter",
+            "funding_instructions",
         ]
     ]
     """The type of Export to create.
@@ -51,6 +55,8 @@ class ExportCreateParams(TypedDict, total=False):
     - `entity_csv` - Export a CSV of entities with a given status.
     - `vendor_csv` - Export a CSV of vendors added to the third-party risk
       management dashboard.
+    - `account_verification_letter` - A PDF of an account verification letter.
+    - `funding_instructions` - A PDF of funding instructions.
     """
 
     account_statement_bai2: AccountStatementBai2
@@ -63,6 +69,12 @@ class ExportCreateParams(TypedDict, total=False):
     """Options for the created export.
 
     Required if `category` is equal to `account_statement_ofx`.
+    """
+
+    account_verification_letter: AccountVerificationLetter
+    """Options for the created export.
+
+    Required if `category` is equal to `account_verification_letter`.
     """
 
     balance_csv: BalanceCsv
@@ -81,6 +93,12 @@ class ExportCreateParams(TypedDict, total=False):
     """Options for the created export.
 
     Required if `category` is equal to `entity_csv`.
+    """
+
+    funding_instructions: FundingInstructions
+    """Options for the created export.
+
+    Required if `category` is equal to `funding_instructions`.
     """
 
     transaction_csv: TransactionCsv
@@ -162,6 +180,19 @@ class AccountStatementOfx(TypedDict, total=False):
 
     created_at: AccountStatementOfxCreatedAt
     """Filter results by time range on the `created_at` attribute."""
+
+
+class AccountVerificationLetter(TypedDict, total=False):
+    """Options for the created export.
+
+    Required if `category` is equal to `account_verification_letter`.
+    """
+
+    account_number_id: Required[str]
+    """The Account Number to create a letter for."""
+
+    balance_date: Annotated[Union[str, date], PropertyInfo(format="iso8601")]
+    """The date of the balance to include in the letter. Defaults to the current date."""
 
 
 class BalanceCsvCreatedAt(TypedDict, total=False):
@@ -272,6 +303,16 @@ class EntityCsv(TypedDict, total=False):
 
     status: EntityCsvStatus
     """Entity statuses to filter by."""
+
+
+class FundingInstructions(TypedDict, total=False):
+    """Options for the created export.
+
+    Required if `category` is equal to `funding_instructions`.
+    """
+
+    account_number_id: Required[str]
+    """The Account Number to create funding instructions for."""
 
 
 class TransactionCsvCreatedAt(TypedDict, total=False):
