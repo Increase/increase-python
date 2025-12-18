@@ -65,14 +65,6 @@ from .programs import (
     AsyncProgramsResourceWithStreamingResponse,
 )
 from .webhooks import Webhooks, AsyncWebhooks
-from .documents import (
-    DocumentsResource,
-    AsyncDocumentsResource,
-    DocumentsResourceWithRawResponse,
-    AsyncDocumentsResourceWithRawResponse,
-    DocumentsResourceWithStreamingResponse,
-    AsyncDocumentsResourceWithStreamingResponse,
-)
 from .lockboxes import (
     LockboxesResource,
     AsyncLockboxesResource,
@@ -689,12 +681,6 @@ __all__ = [
     "AsyncFileLinksResourceWithRawResponse",
     "FileLinksResourceWithStreamingResponse",
     "AsyncFileLinksResourceWithStreamingResponse",
-    "DocumentsResource",
-    "AsyncDocumentsResource",
-    "DocumentsResourceWithRawResponse",
-    "AsyncDocumentsResourceWithRawResponse",
-    "DocumentsResourceWithStreamingResponse",
-    "AsyncDocumentsResourceWithStreamingResponse",
     "ExportsResource",
     "AsyncExportsResource",
     "ExportsResourceWithRawResponse",

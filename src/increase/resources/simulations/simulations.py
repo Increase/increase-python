@@ -19,14 +19,6 @@ from .programs import (
     AsyncProgramsResourceWithStreamingResponse,
 )
 from ..._compat import cached_property
-from .documents import (
-    DocumentsResource,
-    AsyncDocumentsResource,
-    DocumentsResourceWithRawResponse,
-    AsyncDocumentsResourceWithRawResponse,
-    DocumentsResourceWithStreamingResponse,
-    AsyncDocumentsResourceWithStreamingResponse,
-)
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from .card_tokens import (
     CardTokensResource,
@@ -382,10 +374,6 @@ class SimulationsResource(SyncAPIResource):
         return AccountStatementsResource(self._client)
 
     @cached_property
-    def documents(self) -> DocumentsResource:
-        return DocumentsResource(self._client)
-
-    @cached_property
     def exports(self) -> ExportsResource:
         return ExportsResource(self._client)
 
@@ -529,10 +517,6 @@ class AsyncSimulationsResource(AsyncAPIResource):
     @cached_property
     def account_statements(self) -> AsyncAccountStatementsResource:
         return AsyncAccountStatementsResource(self._client)
-
-    @cached_property
-    def documents(self) -> AsyncDocumentsResource:
-        return AsyncDocumentsResource(self._client)
 
     @cached_property
     def exports(self) -> AsyncExportsResource:
@@ -685,10 +669,6 @@ class SimulationsResourceWithRawResponse:
         return AccountStatementsResourceWithRawResponse(self._simulations.account_statements)
 
     @cached_property
-    def documents(self) -> DocumentsResourceWithRawResponse:
-        return DocumentsResourceWithRawResponse(self._simulations.documents)
-
-    @cached_property
     def exports(self) -> ExportsResourceWithRawResponse:
         return ExportsResourceWithRawResponse(self._simulations.exports)
 
@@ -820,10 +800,6 @@ class AsyncSimulationsResourceWithRawResponse:
     @cached_property
     def account_statements(self) -> AsyncAccountStatementsResourceWithRawResponse:
         return AsyncAccountStatementsResourceWithRawResponse(self._simulations.account_statements)
-
-    @cached_property
-    def documents(self) -> AsyncDocumentsResourceWithRawResponse:
-        return AsyncDocumentsResourceWithRawResponse(self._simulations.documents)
 
     @cached_property
     def exports(self) -> AsyncExportsResourceWithRawResponse:
@@ -959,10 +935,6 @@ class SimulationsResourceWithStreamingResponse:
     @cached_property
     def account_statements(self) -> AccountStatementsResourceWithStreamingResponse:
         return AccountStatementsResourceWithStreamingResponse(self._simulations.account_statements)
-
-    @cached_property
-    def documents(self) -> DocumentsResourceWithStreamingResponse:
-        return DocumentsResourceWithStreamingResponse(self._simulations.documents)
 
     @cached_property
     def exports(self) -> ExportsResourceWithStreamingResponse:
@@ -1104,10 +1076,6 @@ class AsyncSimulationsResourceWithStreamingResponse:
     @cached_property
     def account_statements(self) -> AsyncAccountStatementsResourceWithStreamingResponse:
         return AsyncAccountStatementsResourceWithStreamingResponse(self._simulations.account_statements)
-
-    @cached_property
-    def documents(self) -> AsyncDocumentsResourceWithStreamingResponse:
-        return AsyncDocumentsResourceWithStreamingResponse(self._simulations.documents)
 
     @cached_property
     def exports(self) -> AsyncExportsResourceWithStreamingResponse:

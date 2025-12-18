@@ -557,20 +557,6 @@ Methods:
 
 - <code title="post /file_links">client.file_links.<a href="./src/increase/resources/file_links.py">create</a>(\*\*<a href="src/increase/types/file_link_create_params.py">params</a>) -> <a href="./src/increase/types/file_link.py">FileLink</a></code>
 
-# Documents
-
-Types:
-
-```python
-from increase.types import Document
-```
-
-Methods:
-
-- <code title="post /documents">client.documents.<a href="./src/increase/resources/documents.py">create</a>(\*\*<a href="src/increase/types/document_create_params.py">params</a>) -> <a href="./src/increase/types/document.py">Document</a></code>
-- <code title="get /documents/{document_id}">client.documents.<a href="./src/increase/resources/documents.py">retrieve</a>(document_id) -> <a href="./src/increase/types/document.py">Document</a></code>
-- <code title="get /documents">client.documents.<a href="./src/increase/resources/documents.py">list</a>(\*\*<a href="src/increase/types/document_list_params.py">params</a>) -> <a href="./src/increase/types/document.py">SyncPage[Document]</a></code>
-
 # Exports
 
 Types:
@@ -1007,12 +993,6 @@ Methods:
 Methods:
 
 - <code title="post /simulations/account_statements">client.simulations.account_statements.<a href="./src/increase/resources/simulations/account_statements.py">create</a>(\*\*<a href="src/increase/types/simulations/account_statement_create_params.py">params</a>) -> <a href="./src/increase/types/account_statement.py">AccountStatement</a></code>
-
-## Documents
-
-Methods:
-
-- <code title="post /simulations/documents">client.simulations.documents.<a href="./src/increase/resources/simulations/documents.py">create</a>(\*\*<a href="src/increase/types/simulations/document_create_params.py">params</a>) -> <a href="./src/increase/types/document.py">Document</a></code>
 
 ## Exports
 
