@@ -10,9 +10,9 @@ __all__ = ["Export"]
 
 
 class Export(BaseModel):
-    """Exports are batch summaries of your Increase data.
+    """Exports are generated files.
 
-    You can make them from the API or dashboard. Since they can take a while, they are generated asynchronously. We send a webhook when they are ready. For more information, please read our [Exports documentation](https://increase.com/documentation/exports).
+    Some exports can contain a lot of data, like a CSV of your transactions. Others can be a single document, like a tax form. Since they can take a while, they are generated asynchronously. We send a webhook when they are ready. For more information, please read our [Exports documentation](https://increase.com/documentation/exports).
     """
 
     id: str
