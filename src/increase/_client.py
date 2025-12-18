@@ -100,14 +100,6 @@ if TYPE_CHECKING:
         AsyncProgramsResourceWithStreamingResponse,
     )
     from .resources.webhooks import Webhooks, AsyncWebhooks
-    from .resources.documents import (
-        DocumentsResource,
-        AsyncDocumentsResource,
-        DocumentsResourceWithRawResponse,
-        AsyncDocumentsResourceWithRawResponse,
-        DocumentsResourceWithStreamingResponse,
-        AsyncDocumentsResourceWithStreamingResponse,
-    )
     from .resources.lockboxes import (
         LockboxesResource,
         AsyncLockboxesResource,
@@ -829,12 +821,6 @@ class Increase(SyncAPIClient):
         return FileLinksResource(self)
 
     @cached_property
-    def documents(self) -> DocumentsResource:
-        from .resources.documents import DocumentsResource
-
-        return DocumentsResource(self)
-
-    @cached_property
     def exports(self) -> ExportsResource:
         from .resources.exports import ExportsResource
 
@@ -1428,12 +1414,6 @@ class AsyncIncrease(AsyncAPIClient):
         return AsyncFileLinksResource(self)
 
     @cached_property
-    def documents(self) -> AsyncDocumentsResource:
-        from .resources.documents import AsyncDocumentsResource
-
-        return AsyncDocumentsResource(self)
-
-    @cached_property
     def exports(self) -> AsyncExportsResource:
         from .resources.exports import AsyncExportsResource
 
@@ -1954,12 +1934,6 @@ class IncreaseWithRawResponse:
         return FileLinksResourceWithRawResponse(self._client.file_links)
 
     @cached_property
-    def documents(self) -> DocumentsResourceWithRawResponse:
-        from .resources.documents import DocumentsResourceWithRawResponse
-
-        return DocumentsResourceWithRawResponse(self._client.documents)
-
-    @cached_property
     def exports(self) -> ExportsResourceWithRawResponse:
         from .resources.exports import ExportsResourceWithRawResponse
 
@@ -2317,12 +2291,6 @@ class AsyncIncreaseWithRawResponse:
         return AsyncFileLinksResourceWithRawResponse(self._client.file_links)
 
     @cached_property
-    def documents(self) -> AsyncDocumentsResourceWithRawResponse:
-        from .resources.documents import AsyncDocumentsResourceWithRawResponse
-
-        return AsyncDocumentsResourceWithRawResponse(self._client.documents)
-
-    @cached_property
     def exports(self) -> AsyncExportsResourceWithRawResponse:
         from .resources.exports import AsyncExportsResourceWithRawResponse
 
@@ -2678,12 +2646,6 @@ class IncreaseWithStreamedResponse:
         from .resources.file_links import FileLinksResourceWithStreamingResponse
 
         return FileLinksResourceWithStreamingResponse(self._client.file_links)
-
-    @cached_property
-    def documents(self) -> DocumentsResourceWithStreamingResponse:
-        from .resources.documents import DocumentsResourceWithStreamingResponse
-
-        return DocumentsResourceWithStreamingResponse(self._client.documents)
 
     @cached_property
     def exports(self) -> ExportsResourceWithStreamingResponse:
@@ -3047,12 +3009,6 @@ class AsyncIncreaseWithStreamedResponse:
         from .resources.file_links import AsyncFileLinksResourceWithStreamingResponse
 
         return AsyncFileLinksResourceWithStreamingResponse(self._client.file_links)
-
-    @cached_property
-    def documents(self) -> AsyncDocumentsResourceWithStreamingResponse:
-        from .resources.documents import AsyncDocumentsResourceWithStreamingResponse
-
-        return AsyncDocumentsResourceWithStreamingResponse(self._client.documents)
 
     @cached_property
     def exports(self) -> AsyncExportsResourceWithStreamingResponse:

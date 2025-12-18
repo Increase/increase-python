@@ -16,14 +16,6 @@ from .programs import (
     ProgramsResourceWithStreamingResponse,
     AsyncProgramsResourceWithStreamingResponse,
 )
-from .documents import (
-    DocumentsResource,
-    AsyncDocumentsResource,
-    DocumentsResourceWithRawResponse,
-    AsyncDocumentsResourceWithRawResponse,
-    DocumentsResourceWithStreamingResponse,
-    AsyncDocumentsResourceWithStreamingResponse,
-)
 from .card_tokens import (
     CardTokensResource,
     AsyncCardTokensResource,
@@ -440,12 +432,6 @@ __all__ = [
     "AsyncAccountStatementsResourceWithRawResponse",
     "AccountStatementsResourceWithStreamingResponse",
     "AsyncAccountStatementsResourceWithStreamingResponse",
-    "DocumentsResource",
-    "AsyncDocumentsResource",
-    "DocumentsResourceWithRawResponse",
-    "AsyncDocumentsResourceWithRawResponse",
-    "DocumentsResourceWithStreamingResponse",
-    "AsyncDocumentsResourceWithStreamingResponse",
     "ExportsResource",
     "AsyncExportsResource",
     "ExportsResourceWithRawResponse",
