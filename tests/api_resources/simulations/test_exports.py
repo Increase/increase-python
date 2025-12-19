@@ -20,14 +20,22 @@ class TestExports:
     @parametrize
     def test_method_create(self, client: Increase) -> None:
         export = client.simulations.exports.create(
-            account_id="account_in71c4amph0vgo2qllky",
+            category="form_1099_int",
+        )
+        assert_matches_type(Export, export, path=["response"])
+
+    @parametrize
+    def test_method_create_with_all_params(self, client: Increase) -> None:
+        export = client.simulations.exports.create(
+            category="form_1099_int",
+            form_1099_int={"account_id": "account_in71c4amph0vgo2qllky"},
         )
         assert_matches_type(Export, export, path=["response"])
 
     @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
         response = client.simulations.exports.with_raw_response.create(
-            account_id="account_in71c4amph0vgo2qllky",
+            category="form_1099_int",
         )
 
         assert response.is_closed is True
@@ -38,7 +46,7 @@ class TestExports:
     @parametrize
     def test_streaming_response_create(self, client: Increase) -> None:
         with client.simulations.exports.with_streaming_response.create(
-            account_id="account_in71c4amph0vgo2qllky",
+            category="form_1099_int",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -57,14 +65,22 @@ class TestAsyncExports:
     @parametrize
     async def test_method_create(self, async_client: AsyncIncrease) -> None:
         export = await async_client.simulations.exports.create(
-            account_id="account_in71c4amph0vgo2qllky",
+            category="form_1099_int",
+        )
+        assert_matches_type(Export, export, path=["response"])
+
+    @parametrize
+    async def test_method_create_with_all_params(self, async_client: AsyncIncrease) -> None:
+        export = await async_client.simulations.exports.create(
+            category="form_1099_int",
+            form_1099_int={"account_id": "account_in71c4amph0vgo2qllky"},
         )
         assert_matches_type(Export, export, path=["response"])
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
         response = await async_client.simulations.exports.with_raw_response.create(
-            account_id="account_in71c4amph0vgo2qllky",
+            category="form_1099_int",
         )
 
         assert response.is_closed is True
@@ -75,7 +91,7 @@ class TestAsyncExports:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncIncrease) -> None:
         async with async_client.simulations.exports.with_streaming_response.create(
-            account_id="account_in71c4amph0vgo2qllky",
+            category="form_1099_int",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

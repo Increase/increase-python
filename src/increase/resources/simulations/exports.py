@@ -2,9 +2,11 @@
 
 from __future__ import annotations
 
+from typing_extensions import Literal
+
 import httpx
 
-from ..._types import Body, Query, Headers, NotGiven, not_given
+from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -44,7 +46,8 @@ class ExportsResource(SyncAPIResource):
     def create(
         self,
         *,
-        account_id: str,
+        category: Literal["form_1099_int"],
+        form_1099_int: export_create_params.Form1099Int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -53,11 +56,20 @@ class ExportsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Export:
-        """
-        Simulates a tax form export being generated.
+        """Many exports are created by you via POST /exports or in the Dashboard.
+
+        Some
+        exports are created automatically by Increase. For example, tax documents are
+        published once a year. In sandbox, you can trigger the arrival of an export that
+        would normally only be created automatically via this simulation.
 
         Args:
-          account_id: The identifier of the Account the tax document is for.
+          category: The type of Export to create.
+
+              - `form_1099_int` - A PDF of an Internal Revenue Service Form 1099-INT.
+
+          form_1099_int: Options for the created export. Required if `category` is equal to
+              `form_1099_int`.
 
           extra_headers: Send extra headers
 
@@ -71,7 +83,13 @@ class ExportsResource(SyncAPIResource):
         """
         return self._post(
             "/simulations/exports",
-            body=maybe_transform({"account_id": account_id}, export_create_params.ExportCreateParams),
+            body=maybe_transform(
+                {
+                    "category": category,
+                    "form_1099_int": form_1099_int,
+                },
+                export_create_params.ExportCreateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -106,7 +124,8 @@ class AsyncExportsResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        account_id: str,
+        category: Literal["form_1099_int"],
+        form_1099_int: export_create_params.Form1099Int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -115,11 +134,20 @@ class AsyncExportsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> Export:
-        """
-        Simulates a tax form export being generated.
+        """Many exports are created by you via POST /exports or in the Dashboard.
+
+        Some
+        exports are created automatically by Increase. For example, tax documents are
+        published once a year. In sandbox, you can trigger the arrival of an export that
+        would normally only be created automatically via this simulation.
 
         Args:
-          account_id: The identifier of the Account the tax document is for.
+          category: The type of Export to create.
+
+              - `form_1099_int` - A PDF of an Internal Revenue Service Form 1099-INT.
+
+          form_1099_int: Options for the created export. Required if `category` is equal to
+              `form_1099_int`.
 
           extra_headers: Send extra headers
 
@@ -133,7 +161,13 @@ class AsyncExportsResource(AsyncAPIResource):
         """
         return await self._post(
             "/simulations/exports",
-            body=await async_maybe_transform({"account_id": account_id}, export_create_params.ExportCreateParams),
+            body=await async_maybe_transform(
+                {
+                    "category": category,
+                    "form_1099_int": form_1099_int,
+                },
+                export_create_params.ExportCreateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
