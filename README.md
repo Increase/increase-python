@@ -240,13 +240,13 @@ app = Flask(__name__)
 #   - The `secret` argument to `webhooks.unwrap`
 client = Increase()
 
+
 @app.route("/webhook", methods=["POST"])
 def webhook():
     request_body = request.get_data(as_text=True)
 
     try:
-
-        event = client.webhooks.unwrap(request_body, request.headers, secret='your webhook secret')
+        event = client.webhooks.unwrap(request_body, request.headers, secret="your webhook secret")
 
         if event.type == "account.created":
             print("Account created:", event.data)
@@ -283,6 +283,7 @@ app = Flask(__name__)
 #   - The `webhook_secret` argument to the Increase client.
 #   - The `secret` argument to `webhooks.unwrap`
 client = Increase()
+
 
 @app.route("/webhook", methods=["POST"])
 def webhook():
