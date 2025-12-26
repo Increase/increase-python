@@ -1,5 +1,28 @@
 # Changelog
 
+## 0.417.0 (2025-12-26)
+
+Full Changelog: [v0.416.0...v0.417.0](https://github.com/Increase/increase-python/compare/v0.416.0...v0.417.0)
+
+### Features
+
+* **api:** api update ([e2b0365](https://github.com/Increase/increase-python/commit/e2b0365db5b62be17329c0c9b468f5ba5e99b6f9))
+* **api:** api update ([d6a0d4f](https://github.com/Increase/increase-python/commit/d6a0d4f554b965fd1f4960243a1d6446e5d33e33))
+* **api:** api update ([e858da5](https://github.com/Increase/increase-python/commit/e858da5079a61f75022728757ac00508f1e74946))
+* **api:** api update ([2c6557c](https://github.com/Increase/increase-python/commit/2c6557c60b60ee0e2535f29c05e00333ca09435d))
+* **api:** api update ([8894aea](https://github.com/Increase/increase-python/commit/8894aea5a61f7b9b1551827e6ceae12a8c8d9bef))
+
+
+### Bug Fixes
+
+* use async_to_httpx_files in patch method ([d547dac](https://github.com/Increase/increase-python/commit/d547dac930116c8b431a3f265753352f3f8fa38a))
+
+
+### Chores
+
+* **internal:** add `--fix` argument to lint script ([e301f82](https://github.com/Increase/increase-python/commit/e301f82596a7bc2cece91e7defe42df9d1f749d3))
+* speedup initial import ([d9fe2b3](https://github.com/Increase/increase-python/commit/d9fe2b30e763a7cbfb225e53df81e4e6f06b926d))
+
 ## 0.416.0 (2025-12-16)
 
 Full Changelog: [v0.415.0...v0.416.0](https://github.com/Increase/increase-python/compare/v0.415.0...v0.416.0)
