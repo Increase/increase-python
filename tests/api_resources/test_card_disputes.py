@@ -36,6 +36,7 @@ class TestCardDisputes:
             network="visa",
             amount=100,
             attachment_files=[{"file_id": "file_id"}],
+            explanation="x",
             visa={
                 "category": "fraud",
                 "authorization": {"account_status": "account_closed"},
@@ -400,6 +401,7 @@ class TestCardDisputes:
             network="visa",
             amount=1,
             attachment_files=[{"file_id": "file_id"}],
+            explanation="x",
             visa={
                 "category": "merchant_prearbitration_decline",
                 "chargeback": {
@@ -750,6 +752,7 @@ class TestAsyncCardDisputes:
             network="visa",
             amount=100,
             attachment_files=[{"file_id": "file_id"}],
+            explanation="x",
             visa={
                 "category": "fraud",
                 "authorization": {"account_status": "account_closed"},
@@ -1114,6 +1117,7 @@ class TestAsyncCardDisputes:
             network="visa",
             amount=1,
             attachment_files=[{"file_id": "file_id"}],
+            explanation="x",
             visa={
                 "category": "merchant_prearbitration_decline",
                 "chargeback": {

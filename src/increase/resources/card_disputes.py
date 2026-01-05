@@ -52,6 +52,7 @@ class CardDisputesResource(SyncAPIResource):
         network: Literal["visa"],
         amount: int | Omit = omit,
         attachment_files: Iterable[card_dispute_create_params.AttachmentFile] | Omit = omit,
+        explanation: str | Omit = omit,
         visa: card_dispute_create_params.Visa | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -80,6 +81,9 @@ class CardDisputesResource(SyncAPIResource):
 
           attachment_files: The files to be attached to the initial dispute submission.
 
+          explanation: The free-form explanation provided to Increase to provide more context for the
+              user submission. This field is not sent directly to the card networks.
+
           visa: The Visa-specific parameters for the dispute. Required if and only if `network`
               is `visa`.
 
@@ -101,6 +105,7 @@ class CardDisputesResource(SyncAPIResource):
                     "network": network,
                     "amount": amount,
                     "attachment_files": attachment_files,
+                    "explanation": explanation,
                     "visa": visa,
                 },
                 card_dispute_create_params.CardDisputeCreateParams,
@@ -216,6 +221,7 @@ class CardDisputesResource(SyncAPIResource):
         network: Literal["visa"],
         amount: int | Omit = omit,
         attachment_files: Iterable[card_dispute_submit_user_submission_params.AttachmentFile] | Omit = omit,
+        explanation: str | Omit = omit,
         visa: card_dispute_submit_user_submission_params.Visa | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -243,6 +249,9 @@ class CardDisputesResource(SyncAPIResource):
 
           attachment_files: The files to be attached to the user submission.
 
+          explanation: The free-form explanation provided to Increase to provide more context for the
+              user submission. This field is not sent directly to the card networks.
+
           visa: The Visa-specific parameters for the dispute. Required if and only if `network`
               is `visa`.
 
@@ -265,6 +274,7 @@ class CardDisputesResource(SyncAPIResource):
                     "network": network,
                     "amount": amount,
                     "attachment_files": attachment_files,
+                    "explanation": explanation,
                     "visa": visa,
                 },
                 card_dispute_submit_user_submission_params.CardDisputeSubmitUserSubmissionParams,
@@ -349,6 +359,7 @@ class AsyncCardDisputesResource(AsyncAPIResource):
         network: Literal["visa"],
         amount: int | Omit = omit,
         attachment_files: Iterable[card_dispute_create_params.AttachmentFile] | Omit = omit,
+        explanation: str | Omit = omit,
         visa: card_dispute_create_params.Visa | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -377,6 +388,9 @@ class AsyncCardDisputesResource(AsyncAPIResource):
 
           attachment_files: The files to be attached to the initial dispute submission.
 
+          explanation: The free-form explanation provided to Increase to provide more context for the
+              user submission. This field is not sent directly to the card networks.
+
           visa: The Visa-specific parameters for the dispute. Required if and only if `network`
               is `visa`.
 
@@ -398,6 +412,7 @@ class AsyncCardDisputesResource(AsyncAPIResource):
                     "network": network,
                     "amount": amount,
                     "attachment_files": attachment_files,
+                    "explanation": explanation,
                     "visa": visa,
                 },
                 card_dispute_create_params.CardDisputeCreateParams,
@@ -513,6 +528,7 @@ class AsyncCardDisputesResource(AsyncAPIResource):
         network: Literal["visa"],
         amount: int | Omit = omit,
         attachment_files: Iterable[card_dispute_submit_user_submission_params.AttachmentFile] | Omit = omit,
+        explanation: str | Omit = omit,
         visa: card_dispute_submit_user_submission_params.Visa | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -540,6 +556,9 @@ class AsyncCardDisputesResource(AsyncAPIResource):
 
           attachment_files: The files to be attached to the user submission.
 
+          explanation: The free-form explanation provided to Increase to provide more context for the
+              user submission. This field is not sent directly to the card networks.
+
           visa: The Visa-specific parameters for the dispute. Required if and only if `network`
               is `visa`.
 
@@ -562,6 +581,7 @@ class AsyncCardDisputesResource(AsyncAPIResource):
                     "network": network,
                     "amount": amount,
                     "attachment_files": attachment_files,
+                    "explanation": explanation,
                     "visa": visa,
                 },
                 card_dispute_submit_user_submission_params.CardDisputeSubmitUserSubmissionParams,

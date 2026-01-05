@@ -100,6 +100,12 @@ class CardDisputeCreateParams(TypedDict, total=False):
     attachment_files: Iterable[AttachmentFile]
     """The files to be attached to the initial dispute submission."""
 
+    explanation: str
+    """
+    The free-form explanation provided to Increase to provide more context for the
+    user submission. This field is not sent directly to the card networks.
+    """
+
     visa: Visa
     """The Visa-specific parameters for the dispute.
 

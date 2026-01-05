@@ -2533,6 +2533,12 @@ class VisaUserSubmission(BaseModel):
     the Visa Card Dispute User Submission was created.
     """
 
+    explanation: Optional[str] = None
+    """
+    The free-form explanation provided to Increase to provide more context for the
+    user submission. This field is not sent directly to the card networks.
+    """
+
     further_information_requested_at: Optional[datetime] = None
     """
     The date and time at which Increase requested further information from the user
