@@ -28,6 +28,7 @@ __all__ = [
     "NaturalPersonAddress",
     "NaturalPersonIdentification",
     "RiskRating",
+    "TermsAgreement",
     "ThirdPartyVerification",
     "Trust",
     "TrustAddress",
@@ -440,6 +441,20 @@ class RiskRating(BaseModel):
     """
 
 
+class TermsAgreement(BaseModel):
+    agreed_at: datetime
+    """The timestamp of when the Entity agreed to the terms."""
+
+    ip_address: str
+    """The IP address the Entity accessed reviewed the terms from."""
+
+    terms_url: str
+    """The URL of the terms agreement.
+
+    This link will be provided by your bank partner.
+    """
+
+
 class ThirdPartyVerification(BaseModel):
     """
     If you are using a third-party service for identity verification, you can use this field to associate this Entity with the identifier that represents them in that service.
@@ -769,6 +784,12 @@ class Entity(BaseModel):
     This is limited to the first 10 documents for an entity. If an entity has more
     than 10 documents, use the GET /entity_supplemental_documents list endpoint to
     retrieve them.
+    """
+
+    terms_agreements: List[TermsAgreement]
+    """The terms that the Entity agreed to.
+
+    Not all programs are required to submit this data.
     """
 
     third_party_verification: Optional[ThirdPartyVerification] = None

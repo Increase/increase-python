@@ -181,6 +181,13 @@ class TestEntities:
                 "rating": "low",
             },
             supplemental_documents=[{"file_id": "file_makxrc67oh9l6sg7w9yc"}],
+            terms_agreements=[
+                {
+                    "agreed_at": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "ip_address": "x",
+                    "terms_url": "x",
+                }
+            ],
             third_party_verification={
                 "reference": "x",
                 "vendor": "alloy",
@@ -1110,6 +1117,13 @@ class TestAsyncEntities:
                 "rating": "low",
             },
             supplemental_documents=[{"file_id": "file_makxrc67oh9l6sg7w9yc"}],
+            terms_agreements=[
+                {
+                    "agreed_at": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "ip_address": "x",
+                    "terms_url": "x",
+                }
+            ],
             third_party_verification={
                 "reference": "x",
                 "vendor": "alloy",

@@ -67,6 +67,7 @@ class EntitiesResource(SyncAPIResource):
         natural_person: entity_create_params.NaturalPerson | Omit = omit,
         risk_rating: entity_create_params.RiskRating | Omit = omit,
         supplemental_documents: Iterable[entity_create_params.SupplementalDocument] | Omit = omit,
+        terms_agreements: Iterable[entity_create_params.TermsAgreement] | Omit = omit,
         third_party_verification: entity_create_params.ThirdPartyVerification | Omit = omit,
         trust: entity_create_params.Trust | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -110,6 +111,9 @@ class EntitiesResource(SyncAPIResource):
 
           supplemental_documents: Additional documentation associated with the entity.
 
+          terms_agreements: The terms that the Entity agreed to. Not all programs are required to submit
+              this data.
+
           third_party_verification: If you are using a third-party service for identity verification, you can use
               this field to associate this Entity with the identifier that represents them in
               that service.
@@ -139,6 +143,7 @@ class EntitiesResource(SyncAPIResource):
                     "natural_person": natural_person,
                     "risk_rating": risk_rating,
                     "supplemental_documents": supplemental_documents,
+                    "terms_agreements": terms_agreements,
                     "third_party_verification": third_party_verification,
                     "trust": trust,
                 },
@@ -715,6 +720,7 @@ class AsyncEntitiesResource(AsyncAPIResource):
         natural_person: entity_create_params.NaturalPerson | Omit = omit,
         risk_rating: entity_create_params.RiskRating | Omit = omit,
         supplemental_documents: Iterable[entity_create_params.SupplementalDocument] | Omit = omit,
+        terms_agreements: Iterable[entity_create_params.TermsAgreement] | Omit = omit,
         third_party_verification: entity_create_params.ThirdPartyVerification | Omit = omit,
         trust: entity_create_params.Trust | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -758,6 +764,9 @@ class AsyncEntitiesResource(AsyncAPIResource):
 
           supplemental_documents: Additional documentation associated with the entity.
 
+          terms_agreements: The terms that the Entity agreed to. Not all programs are required to submit
+              this data.
+
           third_party_verification: If you are using a third-party service for identity verification, you can use
               this field to associate this Entity with the identifier that represents them in
               that service.
@@ -787,6 +796,7 @@ class AsyncEntitiesResource(AsyncAPIResource):
                     "natural_person": natural_person,
                     "risk_rating": risk_rating,
                     "supplemental_documents": supplemental_documents,
+                    "terms_agreements": terms_agreements,
                     "third_party_verification": third_party_verification,
                     "trust": trust,
                 },
