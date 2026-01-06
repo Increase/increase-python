@@ -167,11 +167,18 @@ class InvalidAPIKeyError(AuthenticationError):
     detail: Optional[str] = None
 
     reason: Literal[
-        "deleted_credential", "expired_credential", "no_credential", "no_header", "no_api_access", "wrong_environment"
+        "deleted_credential",
+        "expired_credential",
+        "ip_not_allowed",
+        "no_credential",
+        "no_header",
+        "no_api_access",
+        "wrong_environment",
     ]
     """
     - `deleted_credential` - deleted_credential
     - `expired_credential` - expired_credential
+    - `ip_not_allowed` - ip_not_allowed
     - `no_credential` - no_credential
     - `no_header` - no_header
     - `no_api_access` - no_api_access
@@ -197,6 +204,7 @@ class InvalidAPIKeyError(AuthenticationError):
                 type_=Literal[
                     "deleted_credential",
                     "expired_credential",
+                    "ip_not_allowed",
                     "no_credential",
                     "no_header",
                     "no_api_access",
