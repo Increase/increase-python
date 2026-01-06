@@ -37,6 +37,7 @@ __all__ = [
     "NaturalPersonIdentificationPassport",
     "RiskRating",
     "SupplementalDocument",
+    "TermsAgreement",
     "ThirdPartyVerification",
     "Trust",
     "TrustAddress",
@@ -104,6 +105,12 @@ class EntityCreateParams(TypedDict, total=False):
 
     supplemental_documents: Iterable[SupplementalDocument]
     """Additional documentation associated with the entity."""
+
+    terms_agreements: Iterable[TermsAgreement]
+    """The terms that the Entity agreed to.
+
+    Not all programs are required to submit this data.
+    """
 
     third_party_verification: ThirdPartyVerification
     """
@@ -835,6 +842,20 @@ class RiskRating(TypedDict, total=False):
 class SupplementalDocument(TypedDict, total=False):
     file_id: Required[str]
     """The identifier of the File containing the document."""
+
+
+class TermsAgreement(TypedDict, total=False):
+    agreed_at: Required[Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]]
+    """The timestamp of when the Entity agreed to the terms."""
+
+    ip_address: Required[str]
+    """The IP address the Entity accessed reviewed the terms from."""
+
+    terms_url: Required[str]
+    """The URL of the terms agreement.
+
+    This link will be provided by your bank partner.
+    """
 
 
 class ThirdPartyVerification(TypedDict, total=False):
