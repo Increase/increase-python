@@ -116,6 +116,12 @@ class Corporation(TypedDict, total=False):
     Not every program requires an email for submitted Entities.
     """
 
+    incorporation_state: str
+    """
+    The two-letter United States Postal Service (USPS) abbreviation for the
+    corporation's state of incorporation.
+    """
+
     industry_code: str
     """
     The North American Industry Classification System (NAICS) code for the
