@@ -2032,6 +2032,9 @@ class VisaUserSubmissionChargebackConsumerServicesNotAsDescribed(BaseModel):
     cardholder_cancellation: VisaUserSubmissionChargebackConsumerServicesNotAsDescribedCardholderCancellation
     """Cardholder cancellation."""
 
+    explanation: str
+    """Explanation of what was ordered and was not as described."""
+
     merchant_resolution_attempted: Literal["attempted", "prohibited_by_local_law"]
     """Merchant resolution attempted.
 

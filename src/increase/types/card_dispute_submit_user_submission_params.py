@@ -1220,6 +1220,9 @@ class VisaChargebackConsumerServicesNotAsDescribed(TypedDict, total=False):
     cardholder_cancellation: Required[VisaChargebackConsumerServicesNotAsDescribedCardholderCancellation]
     """Cardholder cancellation."""
 
+    explanation: Required[str]
+    """Explanation of what was ordered and was not as described."""
+
     merchant_resolution_attempted: Required[Literal["attempted", "prohibited_by_local_law"]]
     """Merchant resolution attempted.
 
