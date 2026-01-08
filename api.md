@@ -400,6 +400,22 @@ Methods:
 - <code title="get /inbound_fednow_transfers/{inbound_fednow_transfer_id}">client.inbound_fednow_transfers.<a href="./src/increase/resources/inbound_fednow_transfers.py">retrieve</a>(inbound_fednow_transfer_id) -> <a href="./src/increase/types/inbound_fednow_transfer.py">InboundFednowTransfer</a></code>
 - <code title="get /inbound_fednow_transfers">client.inbound_fednow_transfers.<a href="./src/increase/resources/inbound_fednow_transfers.py">list</a>(\*\*<a href="src/increase/types/inbound_fednow_transfer_list_params.py">params</a>) -> <a href="./src/increase/types/inbound_fednow_transfer.py">SyncPage[InboundFednowTransfer]</a></code>
 
+# SwiftTransfers
+
+Types:
+
+```python
+from increase.types import SwiftTransfer
+```
+
+Methods:
+
+- <code title="post /swift_transfers">client.swift_transfers.<a href="./src/increase/resources/swift_transfers.py">create</a>(\*\*<a href="src/increase/types/swift_transfer_create_params.py">params</a>) -> <a href="./src/increase/types/swift_transfer.py">SwiftTransfer</a></code>
+- <code title="get /swift_transfers/{swift_transfer_id}">client.swift_transfers.<a href="./src/increase/resources/swift_transfers.py">retrieve</a>(swift_transfer_id) -> <a href="./src/increase/types/swift_transfer.py">SwiftTransfer</a></code>
+- <code title="get /swift_transfers">client.swift_transfers.<a href="./src/increase/resources/swift_transfers.py">list</a>(\*\*<a href="src/increase/types/swift_transfer_list_params.py">params</a>) -> <a href="./src/increase/types/swift_transfer.py">SyncPage[SwiftTransfer]</a></code>
+- <code title="post /swift_transfers/{swift_transfer_id}/approve">client.swift_transfers.<a href="./src/increase/resources/swift_transfers.py">approve</a>(swift_transfer_id) -> <a href="./src/increase/types/swift_transfer.py">SwiftTransfer</a></code>
+- <code title="post /swift_transfers/{swift_transfer_id}/cancel">client.swift_transfers.<a href="./src/increase/resources/swift_transfers.py">cancel</a>(swift_transfer_id) -> <a href="./src/increase/types/swift_transfer.py">SwiftTransfer</a></code>
+
 # CheckDeposits
 
 Types:

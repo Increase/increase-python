@@ -59,6 +59,7 @@ if TYPE_CHECKING:
         account_numbers,
         check_transfers,
         routing_numbers,
+        swift_transfers,
         card_validations,
         fednow_transfers,
         intrafi_balances,
@@ -115,6 +116,7 @@ if TYPE_CHECKING:
     from .resources.account_numbers import AccountNumbersResource, AsyncAccountNumbersResource
     from .resources.check_transfers import CheckTransfersResource, AsyncCheckTransfersResource
     from .resources.routing_numbers import RoutingNumbersResource, AsyncRoutingNumbersResource
+    from .resources.swift_transfers import SwiftTransfersResource, AsyncSwiftTransfersResource
     from .resources.card_validations import CardValidationsResource, AsyncCardValidationsResource
     from .resources.fednow_transfers import FednowTransfersResource, AsyncFednowTransfersResource
     from .resources.intrafi_balances import IntrafiBalancesResource, AsyncIntrafiBalancesResource
@@ -433,6 +435,12 @@ class Increase(SyncAPIClient):
         from .resources.inbound_fednow_transfers import InboundFednowTransfersResource
 
         return InboundFednowTransfersResource(self)
+
+    @cached_property
+    def swift_transfers(self) -> SwiftTransfersResource:
+        from .resources.swift_transfers import SwiftTransfersResource
+
+        return SwiftTransfersResource(self)
 
     @cached_property
     def check_deposits(self) -> CheckDepositsResource:
@@ -1022,6 +1030,12 @@ class AsyncIncrease(AsyncAPIClient):
         return AsyncInboundFednowTransfersResource(self)
 
     @cached_property
+    def swift_transfers(self) -> AsyncSwiftTransfersResource:
+        from .resources.swift_transfers import AsyncSwiftTransfersResource
+
+        return AsyncSwiftTransfersResource(self)
+
+    @cached_property
     def check_deposits(self) -> AsyncCheckDepositsResource:
         from .resources.check_deposits import AsyncCheckDepositsResource
 
@@ -1536,6 +1550,12 @@ class IncreaseWithRawResponse:
         return InboundFednowTransfersResourceWithRawResponse(self._client.inbound_fednow_transfers)
 
     @cached_property
+    def swift_transfers(self) -> swift_transfers.SwiftTransfersResourceWithRawResponse:
+        from .resources.swift_transfers import SwiftTransfersResourceWithRawResponse
+
+        return SwiftTransfersResourceWithRawResponse(self._client.swift_transfers)
+
+    @cached_property
     def check_deposits(self) -> check_deposits.CheckDepositsResourceWithRawResponse:
         from .resources.check_deposits import CheckDepositsResourceWithRawResponse
 
@@ -1893,6 +1913,12 @@ class AsyncIncreaseWithRawResponse:
         return AsyncInboundFednowTransfersResourceWithRawResponse(self._client.inbound_fednow_transfers)
 
     @cached_property
+    def swift_transfers(self) -> swift_transfers.AsyncSwiftTransfersResourceWithRawResponse:
+        from .resources.swift_transfers import AsyncSwiftTransfersResourceWithRawResponse
+
+        return AsyncSwiftTransfersResourceWithRawResponse(self._client.swift_transfers)
+
+    @cached_property
     def check_deposits(self) -> check_deposits.AsyncCheckDepositsResourceWithRawResponse:
         from .resources.check_deposits import AsyncCheckDepositsResourceWithRawResponse
 
@@ -2248,6 +2274,12 @@ class IncreaseWithStreamedResponse:
         from .resources.inbound_fednow_transfers import InboundFednowTransfersResourceWithStreamingResponse
 
         return InboundFednowTransfersResourceWithStreamingResponse(self._client.inbound_fednow_transfers)
+
+    @cached_property
+    def swift_transfers(self) -> swift_transfers.SwiftTransfersResourceWithStreamingResponse:
+        from .resources.swift_transfers import SwiftTransfersResourceWithStreamingResponse
+
+        return SwiftTransfersResourceWithStreamingResponse(self._client.swift_transfers)
 
     @cached_property
     def check_deposits(self) -> check_deposits.CheckDepositsResourceWithStreamingResponse:
@@ -2611,6 +2643,12 @@ class AsyncIncreaseWithStreamedResponse:
         from .resources.inbound_fednow_transfers import AsyncInboundFednowTransfersResourceWithStreamingResponse
 
         return AsyncInboundFednowTransfersResourceWithStreamingResponse(self._client.inbound_fednow_transfers)
+
+    @cached_property
+    def swift_transfers(self) -> swift_transfers.AsyncSwiftTransfersResourceWithStreamingResponse:
+        from .resources.swift_transfers import AsyncSwiftTransfersResourceWithStreamingResponse
+
+        return AsyncSwiftTransfersResourceWithStreamingResponse(self._client.swift_transfers)
 
     @cached_property
     def check_deposits(self) -> check_deposits.AsyncCheckDepositsResourceWithStreamingResponse:
