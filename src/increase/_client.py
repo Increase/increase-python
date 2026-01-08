@@ -35,415 +35,118 @@ from ._base_client import (
 )
 
 if TYPE_CHECKING:
-    from .resources.cards import (
-        CardsResource,
-        AsyncCardsResource,
-        CardsResourceWithRawResponse,
-        AsyncCardsResourceWithRawResponse,
-        CardsResourceWithStreamingResponse,
-        AsyncCardsResourceWithStreamingResponse,
+    from .resources import (
+        cards,
+        files,
+        events,
+        groups,
+        exports,
+        accounts,
+        entities,
+        programs,
+        lockboxes,
+        file_links,
+        card_tokens,
+        simulations,
+        oauth_tokens,
+        transactions,
+        ach_transfers,
+        card_disputes,
+        card_payments,
+        check_deposits,
+        physical_cards,
+        wire_transfers,
+        account_numbers,
+        check_transfers,
+        routing_numbers,
+        swift_transfers,
+        card_validations,
+        fednow_transfers,
+        intrafi_balances,
+        account_transfers,
+        external_accounts,
+        oauth_connections,
+        account_statements,
+        inbound_mail_items,
+        intrafi_exclusions,
+        oauth_applications,
+        bookkeeping_entries,
+        card_push_transfers,
+        event_subscriptions,
+        real_time_decisions,
+        ach_prenotifications,
+        bookkeeping_accounts,
+        pending_transactions,
+        declined_transactions,
+        digital_card_profiles,
+        digital_wallet_tokens,
+        inbound_ach_transfers,
+        bookkeeping_entry_sets,
+        inbound_check_deposits,
+        inbound_wire_transfers,
+        physical_card_profiles,
+        supplemental_documents,
+        wire_drawdown_requests,
+        inbound_fednow_transfers,
+        card_purchase_supplements,
+        intrafi_account_enrollments,
+        real_time_payments_transfers,
+        inbound_wire_drawdown_requests,
+        inbound_real_time_payments_transfers,
     )
-    from .resources.files import (
-        FilesResource,
-        AsyncFilesResource,
-        FilesResourceWithRawResponse,
-        AsyncFilesResourceWithRawResponse,
-        FilesResourceWithStreamingResponse,
-        AsyncFilesResourceWithStreamingResponse,
-    )
-    from .resources.events import (
-        EventsResource,
-        AsyncEventsResource,
-        EventsResourceWithRawResponse,
-        AsyncEventsResourceWithRawResponse,
-        EventsResourceWithStreamingResponse,
-        AsyncEventsResourceWithStreamingResponse,
-    )
-    from .resources.groups import (
-        GroupsResource,
-        AsyncGroupsResource,
-        GroupsResourceWithRawResponse,
-        AsyncGroupsResourceWithRawResponse,
-        GroupsResourceWithStreamingResponse,
-        AsyncGroupsResourceWithStreamingResponse,
-    )
-    from .resources.exports import (
-        ExportsResource,
-        AsyncExportsResource,
-        ExportsResourceWithRawResponse,
-        AsyncExportsResourceWithRawResponse,
-        ExportsResourceWithStreamingResponse,
-        AsyncExportsResourceWithStreamingResponse,
-    )
-    from .resources.accounts import (
-        AccountsResource,
-        AsyncAccountsResource,
-        AccountsResourceWithRawResponse,
-        AsyncAccountsResourceWithRawResponse,
-        AccountsResourceWithStreamingResponse,
-        AsyncAccountsResourceWithStreamingResponse,
-    )
-    from .resources.entities import (
-        EntitiesResource,
-        AsyncEntitiesResource,
-        EntitiesResourceWithRawResponse,
-        AsyncEntitiesResourceWithRawResponse,
-        EntitiesResourceWithStreamingResponse,
-        AsyncEntitiesResourceWithStreamingResponse,
-    )
-    from .resources.programs import (
-        ProgramsResource,
-        AsyncProgramsResource,
-        ProgramsResourceWithRawResponse,
-        AsyncProgramsResourceWithRawResponse,
-        ProgramsResourceWithStreamingResponse,
-        AsyncProgramsResourceWithStreamingResponse,
-    )
+    from .resources.cards import CardsResource, AsyncCardsResource
+    from .resources.files import FilesResource, AsyncFilesResource
+    from .resources.events import EventsResource, AsyncEventsResource
+    from .resources.groups import GroupsResource, AsyncGroupsResource
+    from .resources.exports import ExportsResource, AsyncExportsResource
+    from .resources.accounts import AccountsResource, AsyncAccountsResource
+    from .resources.entities import EntitiesResource, AsyncEntitiesResource
+    from .resources.programs import ProgramsResource, AsyncProgramsResource
     from .resources.webhooks import Webhooks, AsyncWebhooks
-    from .resources.lockboxes import (
-        LockboxesResource,
-        AsyncLockboxesResource,
-        LockboxesResourceWithRawResponse,
-        AsyncLockboxesResourceWithRawResponse,
-        LockboxesResourceWithStreamingResponse,
-        AsyncLockboxesResourceWithStreamingResponse,
-    )
-    from .resources.file_links import (
-        FileLinksResource,
-        AsyncFileLinksResource,
-        FileLinksResourceWithRawResponse,
-        AsyncFileLinksResourceWithRawResponse,
-        FileLinksResourceWithStreamingResponse,
-        AsyncFileLinksResourceWithStreamingResponse,
-    )
-    from .resources.card_tokens import (
-        CardTokensResource,
-        AsyncCardTokensResource,
-        CardTokensResourceWithRawResponse,
-        AsyncCardTokensResourceWithRawResponse,
-        CardTokensResourceWithStreamingResponse,
-        AsyncCardTokensResourceWithStreamingResponse,
-    )
-    from .resources.oauth_tokens import (
-        OAuthTokensResource,
-        AsyncOAuthTokensResource,
-        OAuthTokensResourceWithRawResponse,
-        AsyncOAuthTokensResourceWithRawResponse,
-        OAuthTokensResourceWithStreamingResponse,
-        AsyncOAuthTokensResourceWithStreamingResponse,
-    )
-    from .resources.transactions import (
-        TransactionsResource,
-        AsyncTransactionsResource,
-        TransactionsResourceWithRawResponse,
-        AsyncTransactionsResourceWithRawResponse,
-        TransactionsResourceWithStreamingResponse,
-        AsyncTransactionsResourceWithStreamingResponse,
-    )
-    from .resources.ach_transfers import (
-        ACHTransfersResource,
-        AsyncACHTransfersResource,
-        ACHTransfersResourceWithRawResponse,
-        AsyncACHTransfersResourceWithRawResponse,
-        ACHTransfersResourceWithStreamingResponse,
-        AsyncACHTransfersResourceWithStreamingResponse,
-    )
-    from .resources.card_disputes import (
-        CardDisputesResource,
-        AsyncCardDisputesResource,
-        CardDisputesResourceWithRawResponse,
-        AsyncCardDisputesResourceWithRawResponse,
-        CardDisputesResourceWithStreamingResponse,
-        AsyncCardDisputesResourceWithStreamingResponse,
-    )
-    from .resources.card_payments import (
-        CardPaymentsResource,
-        AsyncCardPaymentsResource,
-        CardPaymentsResourceWithRawResponse,
-        AsyncCardPaymentsResourceWithRawResponse,
-        CardPaymentsResourceWithStreamingResponse,
-        AsyncCardPaymentsResourceWithStreamingResponse,
-    )
-    from .resources.check_deposits import (
-        CheckDepositsResource,
-        AsyncCheckDepositsResource,
-        CheckDepositsResourceWithRawResponse,
-        AsyncCheckDepositsResourceWithRawResponse,
-        CheckDepositsResourceWithStreamingResponse,
-        AsyncCheckDepositsResourceWithStreamingResponse,
-    )
-    from .resources.physical_cards import (
-        PhysicalCardsResource,
-        AsyncPhysicalCardsResource,
-        PhysicalCardsResourceWithRawResponse,
-        AsyncPhysicalCardsResourceWithRawResponse,
-        PhysicalCardsResourceWithStreamingResponse,
-        AsyncPhysicalCardsResourceWithStreamingResponse,
-    )
-    from .resources.wire_transfers import (
-        WireTransfersResource,
-        AsyncWireTransfersResource,
-        WireTransfersResourceWithRawResponse,
-        AsyncWireTransfersResourceWithRawResponse,
-        WireTransfersResourceWithStreamingResponse,
-        AsyncWireTransfersResourceWithStreamingResponse,
-    )
-    from .resources.account_numbers import (
-        AccountNumbersResource,
-        AsyncAccountNumbersResource,
-        AccountNumbersResourceWithRawResponse,
-        AsyncAccountNumbersResourceWithRawResponse,
-        AccountNumbersResourceWithStreamingResponse,
-        AsyncAccountNumbersResourceWithStreamingResponse,
-    )
-    from .resources.check_transfers import (
-        CheckTransfersResource,
-        AsyncCheckTransfersResource,
-        CheckTransfersResourceWithRawResponse,
-        AsyncCheckTransfersResourceWithRawResponse,
-        CheckTransfersResourceWithStreamingResponse,
-        AsyncCheckTransfersResourceWithStreamingResponse,
-    )
-    from .resources.routing_numbers import (
-        RoutingNumbersResource,
-        AsyncRoutingNumbersResource,
-        RoutingNumbersResourceWithRawResponse,
-        AsyncRoutingNumbersResourceWithRawResponse,
-        RoutingNumbersResourceWithStreamingResponse,
-        AsyncRoutingNumbersResourceWithStreamingResponse,
-    )
-    from .resources.card_validations import (
-        CardValidationsResource,
-        AsyncCardValidationsResource,
-        CardValidationsResourceWithRawResponse,
-        AsyncCardValidationsResourceWithRawResponse,
-        CardValidationsResourceWithStreamingResponse,
-        AsyncCardValidationsResourceWithStreamingResponse,
-    )
-    from .resources.fednow_transfers import (
-        FednowTransfersResource,
-        AsyncFednowTransfersResource,
-        FednowTransfersResourceWithRawResponse,
-        AsyncFednowTransfersResourceWithRawResponse,
-        FednowTransfersResourceWithStreamingResponse,
-        AsyncFednowTransfersResourceWithStreamingResponse,
-    )
-    from .resources.intrafi_balances import (
-        IntrafiBalancesResource,
-        AsyncIntrafiBalancesResource,
-        IntrafiBalancesResourceWithRawResponse,
-        AsyncIntrafiBalancesResourceWithRawResponse,
-        IntrafiBalancesResourceWithStreamingResponse,
-        AsyncIntrafiBalancesResourceWithStreamingResponse,
-    )
-    from .resources.account_transfers import (
-        AccountTransfersResource,
-        AsyncAccountTransfersResource,
-        AccountTransfersResourceWithRawResponse,
-        AsyncAccountTransfersResourceWithRawResponse,
-        AccountTransfersResourceWithStreamingResponse,
-        AsyncAccountTransfersResourceWithStreamingResponse,
-    )
-    from .resources.external_accounts import (
-        ExternalAccountsResource,
-        AsyncExternalAccountsResource,
-        ExternalAccountsResourceWithRawResponse,
-        AsyncExternalAccountsResourceWithRawResponse,
-        ExternalAccountsResourceWithStreamingResponse,
-        AsyncExternalAccountsResourceWithStreamingResponse,
-    )
-    from .resources.oauth_connections import (
-        OAuthConnectionsResource,
-        AsyncOAuthConnectionsResource,
-        OAuthConnectionsResourceWithRawResponse,
-        AsyncOAuthConnectionsResourceWithRawResponse,
-        OAuthConnectionsResourceWithStreamingResponse,
-        AsyncOAuthConnectionsResourceWithStreamingResponse,
-    )
-    from .resources.account_statements import (
-        AccountStatementsResource,
-        AsyncAccountStatementsResource,
-        AccountStatementsResourceWithRawResponse,
-        AsyncAccountStatementsResourceWithRawResponse,
-        AccountStatementsResourceWithStreamingResponse,
-        AsyncAccountStatementsResourceWithStreamingResponse,
-    )
-    from .resources.inbound_mail_items import (
-        InboundMailItemsResource,
-        AsyncInboundMailItemsResource,
-        InboundMailItemsResourceWithRawResponse,
-        AsyncInboundMailItemsResourceWithRawResponse,
-        InboundMailItemsResourceWithStreamingResponse,
-        AsyncInboundMailItemsResourceWithStreamingResponse,
-    )
-    from .resources.intrafi_exclusions import (
-        IntrafiExclusionsResource,
-        AsyncIntrafiExclusionsResource,
-        IntrafiExclusionsResourceWithRawResponse,
-        AsyncIntrafiExclusionsResourceWithRawResponse,
-        IntrafiExclusionsResourceWithStreamingResponse,
-        AsyncIntrafiExclusionsResourceWithStreamingResponse,
-    )
-    from .resources.oauth_applications import (
-        OAuthApplicationsResource,
-        AsyncOAuthApplicationsResource,
-        OAuthApplicationsResourceWithRawResponse,
-        AsyncOAuthApplicationsResourceWithRawResponse,
-        OAuthApplicationsResourceWithStreamingResponse,
-        AsyncOAuthApplicationsResourceWithStreamingResponse,
-    )
-    from .resources.bookkeeping_entries import (
-        BookkeepingEntriesResource,
-        AsyncBookkeepingEntriesResource,
-        BookkeepingEntriesResourceWithRawResponse,
-        AsyncBookkeepingEntriesResourceWithRawResponse,
-        BookkeepingEntriesResourceWithStreamingResponse,
-        AsyncBookkeepingEntriesResourceWithStreamingResponse,
-    )
-    from .resources.card_push_transfers import (
-        CardPushTransfersResource,
-        AsyncCardPushTransfersResource,
-        CardPushTransfersResourceWithRawResponse,
-        AsyncCardPushTransfersResourceWithRawResponse,
-        CardPushTransfersResourceWithStreamingResponse,
-        AsyncCardPushTransfersResourceWithStreamingResponse,
-    )
-    from .resources.event_subscriptions import (
-        EventSubscriptionsResource,
-        AsyncEventSubscriptionsResource,
-        EventSubscriptionsResourceWithRawResponse,
-        AsyncEventSubscriptionsResourceWithRawResponse,
-        EventSubscriptionsResourceWithStreamingResponse,
-        AsyncEventSubscriptionsResourceWithStreamingResponse,
-    )
-    from .resources.real_time_decisions import (
-        RealTimeDecisionsResource,
-        AsyncRealTimeDecisionsResource,
-        RealTimeDecisionsResourceWithRawResponse,
-        AsyncRealTimeDecisionsResourceWithRawResponse,
-        RealTimeDecisionsResourceWithStreamingResponse,
-        AsyncRealTimeDecisionsResourceWithStreamingResponse,
-    )
-    from .resources.ach_prenotifications import (
-        ACHPrenotificationsResource,
-        AsyncACHPrenotificationsResource,
-        ACHPrenotificationsResourceWithRawResponse,
-        AsyncACHPrenotificationsResourceWithRawResponse,
-        ACHPrenotificationsResourceWithStreamingResponse,
-        AsyncACHPrenotificationsResourceWithStreamingResponse,
-    )
-    from .resources.bookkeeping_accounts import (
-        BookkeepingAccountsResource,
-        AsyncBookkeepingAccountsResource,
-        BookkeepingAccountsResourceWithRawResponse,
-        AsyncBookkeepingAccountsResourceWithRawResponse,
-        BookkeepingAccountsResourceWithStreamingResponse,
-        AsyncBookkeepingAccountsResourceWithStreamingResponse,
-    )
-    from .resources.pending_transactions import (
-        PendingTransactionsResource,
-        AsyncPendingTransactionsResource,
-        PendingTransactionsResourceWithRawResponse,
-        AsyncPendingTransactionsResourceWithRawResponse,
-        PendingTransactionsResourceWithStreamingResponse,
-        AsyncPendingTransactionsResourceWithStreamingResponse,
-    )
-    from .resources.declined_transactions import (
-        DeclinedTransactionsResource,
-        AsyncDeclinedTransactionsResource,
-        DeclinedTransactionsResourceWithRawResponse,
-        AsyncDeclinedTransactionsResourceWithRawResponse,
-        DeclinedTransactionsResourceWithStreamingResponse,
-        AsyncDeclinedTransactionsResourceWithStreamingResponse,
-    )
-    from .resources.digital_card_profiles import (
-        DigitalCardProfilesResource,
-        AsyncDigitalCardProfilesResource,
-        DigitalCardProfilesResourceWithRawResponse,
-        AsyncDigitalCardProfilesResourceWithRawResponse,
-        DigitalCardProfilesResourceWithStreamingResponse,
-        AsyncDigitalCardProfilesResourceWithStreamingResponse,
-    )
-    from .resources.digital_wallet_tokens import (
-        DigitalWalletTokensResource,
-        AsyncDigitalWalletTokensResource,
-        DigitalWalletTokensResourceWithRawResponse,
-        AsyncDigitalWalletTokensResourceWithRawResponse,
-        DigitalWalletTokensResourceWithStreamingResponse,
-        AsyncDigitalWalletTokensResourceWithStreamingResponse,
-    )
-    from .resources.inbound_ach_transfers import (
-        InboundACHTransfersResource,
-        AsyncInboundACHTransfersResource,
-        InboundACHTransfersResourceWithRawResponse,
-        AsyncInboundACHTransfersResourceWithRawResponse,
-        InboundACHTransfersResourceWithStreamingResponse,
-        AsyncInboundACHTransfersResourceWithStreamingResponse,
-    )
-    from .resources.bookkeeping_entry_sets import (
-        BookkeepingEntrySetsResource,
-        AsyncBookkeepingEntrySetsResource,
-        BookkeepingEntrySetsResourceWithRawResponse,
-        AsyncBookkeepingEntrySetsResourceWithRawResponse,
-        BookkeepingEntrySetsResourceWithStreamingResponse,
-        AsyncBookkeepingEntrySetsResourceWithStreamingResponse,
-    )
-    from .resources.inbound_check_deposits import (
-        InboundCheckDepositsResource,
-        AsyncInboundCheckDepositsResource,
-        InboundCheckDepositsResourceWithRawResponse,
-        AsyncInboundCheckDepositsResourceWithRawResponse,
-        InboundCheckDepositsResourceWithStreamingResponse,
-        AsyncInboundCheckDepositsResourceWithStreamingResponse,
-    )
-    from .resources.inbound_wire_transfers import (
-        InboundWireTransfersResource,
-        AsyncInboundWireTransfersResource,
-        InboundWireTransfersResourceWithRawResponse,
-        AsyncInboundWireTransfersResourceWithRawResponse,
-        InboundWireTransfersResourceWithStreamingResponse,
-        AsyncInboundWireTransfersResourceWithStreamingResponse,
-    )
-    from .resources.physical_card_profiles import (
-        PhysicalCardProfilesResource,
-        AsyncPhysicalCardProfilesResource,
-        PhysicalCardProfilesResourceWithRawResponse,
-        AsyncPhysicalCardProfilesResourceWithRawResponse,
-        PhysicalCardProfilesResourceWithStreamingResponse,
-        AsyncPhysicalCardProfilesResourceWithStreamingResponse,
-    )
-    from .resources.supplemental_documents import (
-        SupplementalDocumentsResource,
-        AsyncSupplementalDocumentsResource,
-        SupplementalDocumentsResourceWithRawResponse,
-        AsyncSupplementalDocumentsResourceWithRawResponse,
-        SupplementalDocumentsResourceWithStreamingResponse,
-        AsyncSupplementalDocumentsResourceWithStreamingResponse,
-    )
-    from .resources.wire_drawdown_requests import (
-        WireDrawdownRequestsResource,
-        AsyncWireDrawdownRequestsResource,
-        WireDrawdownRequestsResourceWithRawResponse,
-        AsyncWireDrawdownRequestsResourceWithRawResponse,
-        WireDrawdownRequestsResourceWithStreamingResponse,
-        AsyncWireDrawdownRequestsResourceWithStreamingResponse,
-    )
-    from .resources.simulations.simulations import (
-        SimulationsResource,
-        AsyncSimulationsResource,
-        SimulationsResourceWithRawResponse,
-        AsyncSimulationsResourceWithRawResponse,
-        SimulationsResourceWithStreamingResponse,
-        AsyncSimulationsResourceWithStreamingResponse,
-    )
-    from .resources.inbound_fednow_transfers import (
-        InboundFednowTransfersResource,
-        AsyncInboundFednowTransfersResource,
-        InboundFednowTransfersResourceWithRawResponse,
-        AsyncInboundFednowTransfersResourceWithRawResponse,
-        InboundFednowTransfersResourceWithStreamingResponse,
-        AsyncInboundFednowTransfersResourceWithStreamingResponse,
-    )
+    from .resources.lockboxes import LockboxesResource, AsyncLockboxesResource
+    from .resources.file_links import FileLinksResource, AsyncFileLinksResource
+    from .resources.card_tokens import CardTokensResource, AsyncCardTokensResource
+    from .resources.oauth_tokens import OAuthTokensResource, AsyncOAuthTokensResource
+    from .resources.transactions import TransactionsResource, AsyncTransactionsResource
+    from .resources.ach_transfers import ACHTransfersResource, AsyncACHTransfersResource
+    from .resources.card_disputes import CardDisputesResource, AsyncCardDisputesResource
+    from .resources.card_payments import CardPaymentsResource, AsyncCardPaymentsResource
+    from .resources.check_deposits import CheckDepositsResource, AsyncCheckDepositsResource
+    from .resources.physical_cards import PhysicalCardsResource, AsyncPhysicalCardsResource
+    from .resources.wire_transfers import WireTransfersResource, AsyncWireTransfersResource
+    from .resources.account_numbers import AccountNumbersResource, AsyncAccountNumbersResource
+    from .resources.check_transfers import CheckTransfersResource, AsyncCheckTransfersResource
+    from .resources.routing_numbers import RoutingNumbersResource, AsyncRoutingNumbersResource
+    from .resources.swift_transfers import SwiftTransfersResource, AsyncSwiftTransfersResource
+    from .resources.card_validations import CardValidationsResource, AsyncCardValidationsResource
+    from .resources.fednow_transfers import FednowTransfersResource, AsyncFednowTransfersResource
+    from .resources.intrafi_balances import IntrafiBalancesResource, AsyncIntrafiBalancesResource
+    from .resources.account_transfers import AccountTransfersResource, AsyncAccountTransfersResource
+    from .resources.external_accounts import ExternalAccountsResource, AsyncExternalAccountsResource
+    from .resources.oauth_connections import OAuthConnectionsResource, AsyncOAuthConnectionsResource
+    from .resources.account_statements import AccountStatementsResource, AsyncAccountStatementsResource
+    from .resources.inbound_mail_items import InboundMailItemsResource, AsyncInboundMailItemsResource
+    from .resources.intrafi_exclusions import IntrafiExclusionsResource, AsyncIntrafiExclusionsResource
+    from .resources.oauth_applications import OAuthApplicationsResource, AsyncOAuthApplicationsResource
+    from .resources.bookkeeping_entries import BookkeepingEntriesResource, AsyncBookkeepingEntriesResource
+    from .resources.card_push_transfers import CardPushTransfersResource, AsyncCardPushTransfersResource
+    from .resources.event_subscriptions import EventSubscriptionsResource, AsyncEventSubscriptionsResource
+    from .resources.real_time_decisions import RealTimeDecisionsResource, AsyncRealTimeDecisionsResource
+    from .resources.ach_prenotifications import ACHPrenotificationsResource, AsyncACHPrenotificationsResource
+    from .resources.bookkeeping_accounts import BookkeepingAccountsResource, AsyncBookkeepingAccountsResource
+    from .resources.pending_transactions import PendingTransactionsResource, AsyncPendingTransactionsResource
+    from .resources.declined_transactions import DeclinedTransactionsResource, AsyncDeclinedTransactionsResource
+    from .resources.digital_card_profiles import DigitalCardProfilesResource, AsyncDigitalCardProfilesResource
+    from .resources.digital_wallet_tokens import DigitalWalletTokensResource, AsyncDigitalWalletTokensResource
+    from .resources.inbound_ach_transfers import InboundACHTransfersResource, AsyncInboundACHTransfersResource
+    from .resources.bookkeeping_entry_sets import BookkeepingEntrySetsResource, AsyncBookkeepingEntrySetsResource
+    from .resources.inbound_check_deposits import InboundCheckDepositsResource, AsyncInboundCheckDepositsResource
+    from .resources.inbound_wire_transfers import InboundWireTransfersResource, AsyncInboundWireTransfersResource
+    from .resources.physical_card_profiles import PhysicalCardProfilesResource, AsyncPhysicalCardProfilesResource
+    from .resources.supplemental_documents import SupplementalDocumentsResource, AsyncSupplementalDocumentsResource
+    from .resources.wire_drawdown_requests import WireDrawdownRequestsResource, AsyncWireDrawdownRequestsResource
+    from .resources.simulations.simulations import SimulationsResource, AsyncSimulationsResource
+    from .resources.inbound_fednow_transfers import InboundFednowTransfersResource, AsyncInboundFednowTransfersResource
     from .resources.card_purchase_supplements import (
         CardPurchaseSupplementsResource,
         AsyncCardPurchaseSupplementsResource,
@@ -753,6 +456,12 @@ class Increase(SyncAPIClient):
         from .resources.inbound_fednow_transfers import InboundFednowTransfersResource
 
         return InboundFednowTransfersResource(self)
+
+    @cached_property
+    def swift_transfers(self) -> SwiftTransfersResource:
+        from .resources.swift_transfers import SwiftTransfersResource
+
+        return SwiftTransfersResource(self)
 
     @cached_property
     def check_deposits(self) -> CheckDepositsResource:
@@ -1348,6 +1057,12 @@ class AsyncIncrease(AsyncAPIClient):
         return AsyncInboundFednowTransfersResource(self)
 
     @cached_property
+    def swift_transfers(self) -> AsyncSwiftTransfersResource:
+        from .resources.swift_transfers import AsyncSwiftTransfersResource
+
+        return AsyncSwiftTransfersResource(self)
+
+    @cached_property
     def check_deposits(self) -> AsyncCheckDepositsResource:
         from .resources.check_deposits import AsyncCheckDepositsResource
 
@@ -1868,6 +1583,12 @@ class IncreaseWithRawResponse:
         return InboundFednowTransfersResourceWithRawResponse(self._client.inbound_fednow_transfers)
 
     @cached_property
+    def swift_transfers(self) -> swift_transfers.SwiftTransfersResourceWithRawResponse:
+        from .resources.swift_transfers import SwiftTransfersResourceWithRawResponse
+
+        return SwiftTransfersResourceWithRawResponse(self._client.swift_transfers)
+
+    @cached_property
     def check_deposits(self) -> CheckDepositsResourceWithRawResponse:
         from .resources.check_deposits import CheckDepositsResourceWithRawResponse
 
@@ -2225,6 +1946,12 @@ class AsyncIncreaseWithRawResponse:
         return AsyncInboundFednowTransfersResourceWithRawResponse(self._client.inbound_fednow_transfers)
 
     @cached_property
+    def swift_transfers(self) -> swift_transfers.AsyncSwiftTransfersResourceWithRawResponse:
+        from .resources.swift_transfers import AsyncSwiftTransfersResourceWithRawResponse
+
+        return AsyncSwiftTransfersResourceWithRawResponse(self._client.swift_transfers)
+
+    @cached_property
     def check_deposits(self) -> AsyncCheckDepositsResourceWithRawResponse:
         from .resources.check_deposits import AsyncCheckDepositsResourceWithRawResponse
 
@@ -2580,6 +2307,12 @@ class IncreaseWithStreamedResponse:
         from .resources.inbound_fednow_transfers import InboundFednowTransfersResourceWithStreamingResponse
 
         return InboundFednowTransfersResourceWithStreamingResponse(self._client.inbound_fednow_transfers)
+
+    @cached_property
+    def swift_transfers(self) -> swift_transfers.SwiftTransfersResourceWithStreamingResponse:
+        from .resources.swift_transfers import SwiftTransfersResourceWithStreamingResponse
+
+        return SwiftTransfersResourceWithStreamingResponse(self._client.swift_transfers)
 
     @cached_property
     def check_deposits(self) -> CheckDepositsResourceWithStreamingResponse:
@@ -2943,6 +2676,12 @@ class AsyncIncreaseWithStreamedResponse:
         from .resources.inbound_fednow_transfers import AsyncInboundFednowTransfersResourceWithStreamingResponse
 
         return AsyncInboundFednowTransfersResourceWithStreamingResponse(self._client.inbound_fednow_transfers)
+
+    @cached_property
+    def swift_transfers(self) -> swift_transfers.AsyncSwiftTransfersResourceWithStreamingResponse:
+        from .resources.swift_transfers import AsyncSwiftTransfersResourceWithStreamingResponse
+
+        return AsyncSwiftTransfersResourceWithStreamingResponse(self._client.swift_transfers)
 
     @cached_property
     def check_deposits(self) -> AsyncCheckDepositsResourceWithStreamingResponse:

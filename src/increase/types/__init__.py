@@ -25,6 +25,7 @@ from .wire_transfer import WireTransfer as WireTransfer
 from .account_number import AccountNumber as AccountNumber
 from .balance_lookup import BalanceLookup as BalanceLookup
 from .check_transfer import CheckTransfer as CheckTransfer
+from .swift_transfer import SwiftTransfer as SwiftTransfer
 from .card_iframe_url import CardIframeURL as CardIframeURL
 from .card_validation import CardValidation as CardValidation
 from .fednow_transfer import FednowTransfer as FednowTransfer
@@ -93,6 +94,7 @@ from .card_dispute_create_params import CardDisputeCreateParams as CardDisputeCr
 from .check_transfer_list_params import CheckTransferListParams as CheckTransferListParams
 from .intrafi_account_enrollment import IntrafiAccountEnrollment as IntrafiAccountEnrollment
 from .routing_number_list_params import RoutingNumberListParams as RoutingNumberListParams
+from .swift_transfer_list_params import SwiftTransferListParams as SwiftTransferListParams
 from .card_validation_list_params import CardValidationListParams as CardValidationListParams
 from .check_deposit_create_params import CheckDepositCreateParams as CheckDepositCreateParams
 from .fednow_transfer_list_params import FednowTransferListParams as FednowTransferListParams
@@ -109,6 +111,7 @@ from .entity_update_address_params import EntityUpdateAddressParams as EntityUpd
 from .external_account_list_params import ExternalAccountListParams as ExternalAccountListParams
 from .oauth_connection_list_params import OAuthConnectionListParams as OAuthConnectionListParams
 from .routing_number_list_response import RoutingNumberListResponse as RoutingNumberListResponse
+from .swift_transfer_create_params import SwiftTransferCreateParams as SwiftTransferCreateParams
 from .account_statement_list_params import AccountStatementListParams as AccountStatementListParams
 from .bookkeeping_entry_list_params import BookkeepingEntryListParams as BookkeepingEntryListParams
 from .card_validation_create_params import CardValidationCreateParams as CardValidationCreateParams
