@@ -755,6 +755,12 @@ class Increase(SyncAPIClient):
         return InboundFednowTransfersResource(self)
 
     @cached_property
+    def swift_transfers(self) -> SwiftTransfersResource:
+        from .resources.swift_transfers import SwiftTransfersResource
+
+        return SwiftTransfersResource(self)
+
+    @cached_property
     def check_deposits(self) -> CheckDepositsResource:
         from .resources.check_deposits import CheckDepositsResource
 
@@ -1348,6 +1354,12 @@ class AsyncIncrease(AsyncAPIClient):
         return AsyncInboundFednowTransfersResource(self)
 
     @cached_property
+    def swift_transfers(self) -> AsyncSwiftTransfersResource:
+        from .resources.swift_transfers import AsyncSwiftTransfersResource
+
+        return AsyncSwiftTransfersResource(self)
+
+    @cached_property
     def check_deposits(self) -> AsyncCheckDepositsResource:
         from .resources.check_deposits import AsyncCheckDepositsResource
 
@@ -1868,6 +1880,12 @@ class IncreaseWithRawResponse:
         return InboundFednowTransfersResourceWithRawResponse(self._client.inbound_fednow_transfers)
 
     @cached_property
+    def swift_transfers(self) -> swift_transfers.SwiftTransfersResourceWithRawResponse:
+        from .resources.swift_transfers import SwiftTransfersResourceWithRawResponse
+
+        return SwiftTransfersResourceWithRawResponse(self._client.swift_transfers)
+
+    @cached_property
     def check_deposits(self) -> CheckDepositsResourceWithRawResponse:
         from .resources.check_deposits import CheckDepositsResourceWithRawResponse
 
@@ -2225,6 +2243,12 @@ class AsyncIncreaseWithRawResponse:
         return AsyncInboundFednowTransfersResourceWithRawResponse(self._client.inbound_fednow_transfers)
 
     @cached_property
+    def swift_transfers(self) -> swift_transfers.AsyncSwiftTransfersResourceWithRawResponse:
+        from .resources.swift_transfers import AsyncSwiftTransfersResourceWithRawResponse
+
+        return AsyncSwiftTransfersResourceWithRawResponse(self._client.swift_transfers)
+
+    @cached_property
     def check_deposits(self) -> AsyncCheckDepositsResourceWithRawResponse:
         from .resources.check_deposits import AsyncCheckDepositsResourceWithRawResponse
 
@@ -2580,6 +2604,12 @@ class IncreaseWithStreamedResponse:
         from .resources.inbound_fednow_transfers import InboundFednowTransfersResourceWithStreamingResponse
 
         return InboundFednowTransfersResourceWithStreamingResponse(self._client.inbound_fednow_transfers)
+
+    @cached_property
+    def swift_transfers(self) -> swift_transfers.SwiftTransfersResourceWithStreamingResponse:
+        from .resources.swift_transfers import SwiftTransfersResourceWithStreamingResponse
+
+        return SwiftTransfersResourceWithStreamingResponse(self._client.swift_transfers)
 
     @cached_property
     def check_deposits(self) -> CheckDepositsResourceWithStreamingResponse:
@@ -2943,6 +2973,12 @@ class AsyncIncreaseWithStreamedResponse:
         from .resources.inbound_fednow_transfers import AsyncInboundFednowTransfersResourceWithStreamingResponse
 
         return AsyncInboundFednowTransfersResourceWithStreamingResponse(self._client.inbound_fednow_transfers)
+
+    @cached_property
+    def swift_transfers(self) -> swift_transfers.AsyncSwiftTransfersResourceWithStreamingResponse:
+        from .resources.swift_transfers import AsyncSwiftTransfersResourceWithStreamingResponse
+
+        return AsyncSwiftTransfersResourceWithStreamingResponse(self._client.swift_transfers)
 
     @cached_property
     def check_deposits(self) -> AsyncCheckDepositsResourceWithStreamingResponse:
