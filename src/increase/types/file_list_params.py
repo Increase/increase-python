@@ -90,6 +90,7 @@ _PurposeReservedKeywords = TypedDict(
                 "document_request",
                 "entity_supplemental_document",
                 "export",
+                "fee_statement",
                 "unusual_activity_report_attachment",
                 "deposit_account_control_agreement",
                 "proof_of_authorization_request_submission",
