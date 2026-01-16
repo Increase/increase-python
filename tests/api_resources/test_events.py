@@ -4,8 +4,10 @@ from __future__ import annotations
 
 import os
 from typing import Any, cast
+from datetime import datetime, timezone
 
 import pytest
+import standardwebhooks
 
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
@@ -98,6 +100,34 @@ class TestEvents:
 
         assert cast(Any, response.is_closed) is True
 
+    def test_method_unwrap(self, client: Increase) -> None:
+        key = b"secret"
+        hook = standardwebhooks.Webhook(key)
+
+        data = """{}"""
+        msg_id = "1"
+        timestamp = datetime.now(tz=timezone.utc)
+        sig = hook.sign(msg_id=msg_id, timestamp=timestamp, data=data)
+        headers = {
+            "webhook-id": msg_id,
+            "webhook-timestamp": str(int(timestamp.timestamp())),
+            "webhook-signature": sig,
+        }
+
+        try:
+            _ = client.events.unwrap(data, headers=headers, key=key)
+        except standardwebhooks.WebhookVerificationError as e:
+            raise AssertionError("Failed to unwrap valid webhook") from e
+
+        bad_headers = [
+            {**headers, "webhook-signature": hook.sign(msg_id=msg_id, timestamp=timestamp, data="xxx")},
+            {**headers, "webhook-id": "bad"},
+            {**headers, "webhook-timestamp": "0"},
+        ]
+        for bad_header in bad_headers:
+            with pytest.raises(standardwebhooks.WebhookVerificationError):
+                _ = client.events.unwrap(data, headers=bad_header, key=key)
+
 
 class TestAsyncEvents:
     parametrize = pytest.mark.parametrize(
@@ -182,3 +212,31 @@ class TestAsyncEvents:
             assert_matches_type(AsyncPage[Event], event, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    def test_method_unwrap(self, client: Increase) -> None:
+        key = b"secret"
+        hook = standardwebhooks.Webhook(key)
+
+        data = """{}"""
+        msg_id = "1"
+        timestamp = datetime.now(tz=timezone.utc)
+        sig = hook.sign(msg_id=msg_id, timestamp=timestamp, data=data)
+        headers = {
+            "webhook-id": msg_id,
+            "webhook-timestamp": str(int(timestamp.timestamp())),
+            "webhook-signature": sig,
+        }
+
+        try:
+            _ = client.events.unwrap(data, headers=headers, key=key)
+        except standardwebhooks.WebhookVerificationError as e:
+            raise AssertionError("Failed to unwrap valid webhook") from e
+
+        bad_headers = [
+            {**headers, "webhook-signature": hook.sign(msg_id=msg_id, timestamp=timestamp, data="xxx")},
+            {**headers, "webhook-id": "bad"},
+            {**headers, "webhook-timestamp": "0"},
+        ]
+        for bad_header in bad_headers:
+            with pytest.raises(standardwebhooks.WebhookVerificationError):
+                _ = client.events.unwrap(data, headers=bad_header, key=key)

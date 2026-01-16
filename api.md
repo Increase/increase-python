@@ -592,7 +592,7 @@ Methods:
 Types:
 
 ```python
-from increase.types import Event
+from increase.types import Event, UnwrapWebhookEvent
 ```
 
 Methods:
