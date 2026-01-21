@@ -349,21 +349,6 @@ class SubmissionSubmittedAddress(BaseModel):
 class Submission(BaseModel):
     """After the transfer is submitted, this will contain supplemental details."""
 
-    address_correction_action: Literal["none", "standardization", "standardization_with_address_change", "error"]
-    """
-    Per USPS requirements, Increase will standardize the address to USPS standards
-    and check it against the USPS National Change of Address (NCOA) database before
-    mailing it. This indicates what modifications, if any, were made to the address
-    before printing and mailing the check.
-
-    - `none` - No address correction took place.
-    - `standardization` - The address was standardized.
-    - `standardization_with_address_change` - The address was first standardized and
-      then changed because the recipient moved.
-    - `error` - An error occurred while correcting the address. This typically means
-      the USPS could not find that address. The address was not changed.
-    """
-
     submitted_address: SubmissionSubmittedAddress
     """The address we submitted to the printer.
 
@@ -371,7 +356,7 @@ class Submission(BaseModel):
     """
 
     submitted_at: datetime
-    """When this check transfer was submitted to our check printer."""
+    """When this check was submitted to our check printer."""
 
     if TYPE_CHECKING:
         # Some versions of Pydantic <2.8.0 have a bug and don’t allow assigning a

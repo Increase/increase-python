@@ -114,6 +114,8 @@ _CategoryReservedKeywords = TypedDict(
                 "physical_card.updated",
                 "physical_card_profile.created",
                 "physical_card_profile.updated",
+                "physical_check.created",
+                "physical_check.updated",
                 "program.created",
                 "program.updated",
                 "proof_of_authorization_request.created",
