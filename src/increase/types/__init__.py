@@ -62,6 +62,7 @@ from .entity_create_params import EntityCreateParams as EntityCreateParams
 from .entity_update_params import EntityUpdateParams as EntityUpdateParams
 from .export_create_params import ExportCreateParams as ExportCreateParams
 from .inbound_ach_transfer import InboundACHTransfer as InboundACHTransfer
+from .unwrap_webhook_event import UnwrapWebhookEvent as UnwrapWebhookEvent
 from .account_create_params import AccountCreateParams as AccountCreateParams
 from .account_update_params import AccountUpdateParams as AccountUpdateParams
 from .bookkeeping_entry_set import BookkeepingEntrySet as BookkeepingEntrySet
