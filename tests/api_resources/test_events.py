@@ -104,7 +104,7 @@ class TestEvents:
         key = b"secret"
         hook = standardwebhooks.Webhook(key)
 
-        data = """{}"""
+        data = """{"id":"event_001dzz0r20rzr4zrhrr1364hy80","associated_object_id":"account_in71c4amph0vgo2qllky","associated_object_type":"account","category":"account.created","created_at":"2020-01-31T23:59:59Z","type":"event"}"""
         msg_id = "1"
         timestamp = datetime.now(tz=timezone.utc)
         sig = hook.sign(msg_id=msg_id, timestamp=timestamp, data=data)
@@ -217,7 +217,7 @@ class TestAsyncEvents:
         key = b"secret"
         hook = standardwebhooks.Webhook(key)
 
-        data = """{}"""
+        data = """{"id":"event_001dzz0r20rzr4zrhrr1364hy80","associated_object_id":"account_in71c4amph0vgo2qllky","associated_object_type":"account","category":"account.created","created_at":"2020-01-31T23:59:59Z","type":"event"}"""
         msg_id = "1"
         timestamp = datetime.now(tz=timezone.utc)
         sig = hook.sign(msg_id=msg_id, timestamp=timestamp, data=data)
