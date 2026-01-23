@@ -6,7 +6,7 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["DigitalWalletToken", "Cardholder", "Device", "Update"]
+__all__ = ["DigitalWalletToken", "Cardholder", "Device", "DynamicPrimaryAccountNumber", "Update"]
 
 
 class Cardholder(BaseModel):
@@ -55,6 +55,16 @@ class Device(BaseModel):
     """Name of the device, for example "My Work Phone"."""
 
 
+class DynamicPrimaryAccountNumber(BaseModel):
+    """The redacted Dynamic Primary Account Number."""
+
+    first6: str
+    """The first 6 digits of the token's Dynamic Primary Account Number."""
+
+    last4: str
+    """The last 4 digits of the token's Dynamic Primary Account Number."""
+
+
 class Update(BaseModel):
     status: Literal["active", "inactive", "suspended", "deactivated"]
     """The status the update changed this Digital Wallet Token to.
@@ -95,6 +105,9 @@ class DigitalWalletToken(BaseModel):
 
     device: Device
     """The device that was used to create the Digital Wallet Token."""
+
+    dynamic_primary_account_number: Optional[DynamicPrimaryAccountNumber] = None
+    """The redacted Dynamic Primary Account Number."""
 
     status: Literal["active", "inactive", "suspended", "deactivated"]
     """This indicates if payments can be made with the Digital Wallet Token.
