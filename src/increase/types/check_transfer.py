@@ -114,20 +114,23 @@ class Mailing(BaseModel):
     If the check has been mailed by Increase, this will contain details of the shipment.
     """
 
-    image_id: Optional[str] = None
-    """
-    The ID of the file corresponding to an image of the check that was mailed, if
-    available.
-    """
-
     mailed_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the check was mailed.
     """
 
-    tracking_number: Optional[str] = None
-    """The tracking number of the shipment, if available for the shipping method."""
+    if TYPE_CHECKING:
+        # Some versions of Pydantic <2.8.0 have a bug and don’t allow assigning a
+        # value to this field, so for compatibility we avoid doing it at runtime.
+        __pydantic_extra__: Dict[str, object] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
+
+        # Stub to indicate that arbitrary properties are accepted.
+        # To access properties that are not valid identifiers you can use `getattr`, e.g.
+        # `getattr(obj, '$type')`
+        def __getattr__(self, attr: str) -> object: ...
+    else:
+        __pydantic_extra__: Dict[str, object]
 
 
 class PhysicalCheckMailingAddress(BaseModel):
@@ -349,6 +352,12 @@ class SubmissionSubmittedAddress(BaseModel):
 class Submission(BaseModel):
     """After the transfer is submitted, this will contain supplemental details."""
 
+    preview_file_id: Optional[str] = None
+    """
+    The ID of the file corresponding to an image of the check that was mailed, if
+    available.
+    """
+
     submitted_address: SubmissionSubmittedAddress
     """The address we submitted to the printer.
 
@@ -357,6 +366,9 @@ class Submission(BaseModel):
 
     submitted_at: datetime
     """When this check was submitted to our check printer."""
+
+    tracking_number: Optional[str] = None
+    """The tracking number for the check shipment."""
 
     if TYPE_CHECKING:
         # Some versions of Pydantic <2.8.0 have a bug and don’t allow assigning a
