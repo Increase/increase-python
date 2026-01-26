@@ -194,6 +194,7 @@ class InboundCheckDepositsResource(SyncAPIResource):
             "duplicate_presentment",
             "endorsement_missing",
             "endorsement_irregular",
+            "refer_to_maker",
         ],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -216,6 +217,7 @@ class InboundCheckDepositsResource(SyncAPIResource):
               - `duplicate_presentment` - The check was a duplicate presentment.
               - `endorsement_missing` - The check was not endorsed.
               - `endorsement_irregular` - The check was not endorsed by the payee.
+              - `refer_to_maker` - The maker of the check requested its return.
 
           extra_headers: Send extra headers
 
@@ -417,6 +419,7 @@ class AsyncInboundCheckDepositsResource(AsyncAPIResource):
             "duplicate_presentment",
             "endorsement_missing",
             "endorsement_irregular",
+            "refer_to_maker",
         ],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -439,6 +442,7 @@ class AsyncInboundCheckDepositsResource(AsyncAPIResource):
               - `duplicate_presentment` - The check was a duplicate presentment.
               - `endorsement_missing` - The check was not endorsed.
               - `endorsement_irregular` - The check was not endorsed by the payee.
+              - `refer_to_maker` - The maker of the check requested its return.
 
           extra_headers: Send extra headers
 
