@@ -36,6 +36,7 @@ __all__ = [
     "CardAuthorizationVerification",
     "CardAuthorizationVerificationCardVerificationCode",
     "CardAuthorizationVerificationCardholderAddress",
+    "CardAuthorizationVerificationCardholderName",
     "CardBalanceInquiry",
     "CardBalanceInquiryAdditionalAmounts",
     "CardBalanceInquiryAdditionalAmountsClinic",
@@ -56,6 +57,7 @@ __all__ = [
     "CardBalanceInquiryVerification",
     "CardBalanceInquiryVerificationCardVerificationCode",
     "CardBalanceInquiryVerificationCardholderAddress",
+    "CardBalanceInquiryVerificationCardholderName",
     "DigitalWalletAuthentication",
     "DigitalWalletToken",
     "DigitalWalletTokenDevice",
@@ -638,6 +640,19 @@ class CardAuthorizationVerificationCardholderAddress(BaseModel):
     """
 
 
+class CardAuthorizationVerificationCardholderName(BaseModel):
+    """Cardholder name provided in the authorization request."""
+
+    provided_first_name: Optional[str] = None
+    """The first name provided for verification in the authorization request."""
+
+    provided_last_name: Optional[str] = None
+    """The last name provided for verification in the authorization request."""
+
+    provided_middle_name: Optional[str] = None
+    """The middle name provided for verification in the authorization request."""
+
+
 class CardAuthorizationVerification(BaseModel):
     """Fields related to verification of cardholder-provided values."""
 
@@ -652,6 +667,9 @@ class CardAuthorizationVerification(BaseModel):
     Cardholder address provided in the authorization request and the address on file
     we verified it against.
     """
+
+    cardholder_name: Optional[CardAuthorizationVerificationCardholderName] = None
+    """Cardholder name provided in the authorization request."""
 
 
 class CardAuthorization(BaseModel):
@@ -1310,6 +1328,19 @@ class CardBalanceInquiryVerificationCardholderAddress(BaseModel):
     """
 
 
+class CardBalanceInquiryVerificationCardholderName(BaseModel):
+    """Cardholder name provided in the authorization request."""
+
+    provided_first_name: Optional[str] = None
+    """The first name provided for verification in the authorization request."""
+
+    provided_last_name: Optional[str] = None
+    """The last name provided for verification in the authorization request."""
+
+    provided_middle_name: Optional[str] = None
+    """The middle name provided for verification in the authorization request."""
+
+
 class CardBalanceInquiryVerification(BaseModel):
     """Fields related to verification of cardholder-provided values."""
 
@@ -1324,6 +1355,9 @@ class CardBalanceInquiryVerification(BaseModel):
     Cardholder address provided in the authorization request and the address on file
     we verified it against.
     """
+
+    cardholder_name: Optional[CardBalanceInquiryVerificationCardholderName] = None
+    """Cardholder name provided in the authorization request."""
 
 
 class CardBalanceInquiry(BaseModel):
