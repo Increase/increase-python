@@ -31,6 +31,7 @@ __all__ = [
     "SourceCardDeclineVerification",
     "SourceCardDeclineVerificationCardVerificationCode",
     "SourceCardDeclineVerificationCardholderAddress",
+    "SourceCardDeclineVerificationCardholderName",
     "SourceCheckDecline",
     "SourceCheckDepositRejection",
     "SourceInboundFednowTransferDecline",
@@ -584,6 +585,19 @@ class SourceCardDeclineVerificationCardholderAddress(BaseModel):
     """
 
 
+class SourceCardDeclineVerificationCardholderName(BaseModel):
+    """Cardholder name provided in the authorization request."""
+
+    provided_first_name: Optional[str] = None
+    """The first name provided for verification in the authorization request."""
+
+    provided_last_name: Optional[str] = None
+    """The last name provided for verification in the authorization request."""
+
+    provided_middle_name: Optional[str] = None
+    """The middle name provided for verification in the authorization request."""
+
+
 class SourceCardDeclineVerification(BaseModel):
     """Fields related to verification of cardholder-provided values."""
 
@@ -598,6 +612,9 @@ class SourceCardDeclineVerification(BaseModel):
     Cardholder address provided in the authorization request and the address on file
     we verified it against.
     """
+
+    cardholder_name: Optional[SourceCardDeclineVerificationCardholderName] = None
+    """Cardholder name provided in the authorization request."""
 
 
 class SourceCardDecline(BaseModel):

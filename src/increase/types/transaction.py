@@ -39,6 +39,7 @@ __all__ = [
     "SourceCardFinancialVerification",
     "SourceCardFinancialVerificationCardVerificationCode",
     "SourceCardFinancialVerificationCardholderAddress",
+    "SourceCardFinancialVerificationCardholderName",
     "SourceCardPushTransferAcceptance",
     "SourceCardRefund",
     "SourceCardRefundCashback",
@@ -1071,6 +1072,19 @@ class SourceCardFinancialVerificationCardholderAddress(BaseModel):
     """
 
 
+class SourceCardFinancialVerificationCardholderName(BaseModel):
+    """Cardholder name provided in the authorization request."""
+
+    provided_first_name: Optional[str] = None
+    """The first name provided for verification in the authorization request."""
+
+    provided_last_name: Optional[str] = None
+    """The last name provided for verification in the authorization request."""
+
+    provided_middle_name: Optional[str] = None
+    """The middle name provided for verification in the authorization request."""
+
+
 class SourceCardFinancialVerification(BaseModel):
     """Fields related to verification of cardholder-provided values."""
 
@@ -1085,6 +1099,9 @@ class SourceCardFinancialVerification(BaseModel):
     Cardholder address provided in the authorization request and the address on file
     we verified it against.
     """
+
+    cardholder_name: Optional[SourceCardFinancialVerificationCardholderName] = None
+    """Cardholder name provided in the authorization request."""
 
 
 class SourceCardFinancial(BaseModel):
