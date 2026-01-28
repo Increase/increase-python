@@ -698,14 +698,22 @@ class TestCardDisputes:
     @parametrize
     def test_method_withdraw(self, client: Increase) -> None:
         card_dispute = client.card_disputes.withdraw(
-            "card_dispute_h9sc95nbl1cgltpp7men",
+            card_dispute_id="card_dispute_h9sc95nbl1cgltpp7men",
+        )
+        assert_matches_type(CardDispute, card_dispute, path=["response"])
+
+    @parametrize
+    def test_method_withdraw_with_all_params(self, client: Increase) -> None:
+        card_dispute = client.card_disputes.withdraw(
+            card_dispute_id="card_dispute_h9sc95nbl1cgltpp7men",
+            explanation="The explanation for withdrawing the Card Dispute.",
         )
         assert_matches_type(CardDispute, card_dispute, path=["response"])
 
     @parametrize
     def test_raw_response_withdraw(self, client: Increase) -> None:
         response = client.card_disputes.with_raw_response.withdraw(
-            "card_dispute_h9sc95nbl1cgltpp7men",
+            card_dispute_id="card_dispute_h9sc95nbl1cgltpp7men",
         )
 
         assert response.is_closed is True
@@ -716,7 +724,7 @@ class TestCardDisputes:
     @parametrize
     def test_streaming_response_withdraw(self, client: Increase) -> None:
         with client.card_disputes.with_streaming_response.withdraw(
-            "card_dispute_h9sc95nbl1cgltpp7men",
+            card_dispute_id="card_dispute_h9sc95nbl1cgltpp7men",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -730,7 +738,7 @@ class TestCardDisputes:
     def test_path_params_withdraw(self, client: Increase) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `card_dispute_id` but received ''"):
             client.card_disputes.with_raw_response.withdraw(
-                "",
+                card_dispute_id="",
             )
 
 
@@ -1416,14 +1424,22 @@ class TestAsyncCardDisputes:
     @parametrize
     async def test_method_withdraw(self, async_client: AsyncIncrease) -> None:
         card_dispute = await async_client.card_disputes.withdraw(
-            "card_dispute_h9sc95nbl1cgltpp7men",
+            card_dispute_id="card_dispute_h9sc95nbl1cgltpp7men",
+        )
+        assert_matches_type(CardDispute, card_dispute, path=["response"])
+
+    @parametrize
+    async def test_method_withdraw_with_all_params(self, async_client: AsyncIncrease) -> None:
+        card_dispute = await async_client.card_disputes.withdraw(
+            card_dispute_id="card_dispute_h9sc95nbl1cgltpp7men",
+            explanation="The explanation for withdrawing the Card Dispute.",
         )
         assert_matches_type(CardDispute, card_dispute, path=["response"])
 
     @parametrize
     async def test_raw_response_withdraw(self, async_client: AsyncIncrease) -> None:
         response = await async_client.card_disputes.with_raw_response.withdraw(
-            "card_dispute_h9sc95nbl1cgltpp7men",
+            card_dispute_id="card_dispute_h9sc95nbl1cgltpp7men",
         )
 
         assert response.is_closed is True
@@ -1434,7 +1450,7 @@ class TestAsyncCardDisputes:
     @parametrize
     async def test_streaming_response_withdraw(self, async_client: AsyncIncrease) -> None:
         async with async_client.card_disputes.with_streaming_response.withdraw(
-            "card_dispute_h9sc95nbl1cgltpp7men",
+            card_dispute_id="card_dispute_h9sc95nbl1cgltpp7men",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1448,5 +1464,5 @@ class TestAsyncCardDisputes:
     async def test_path_params_withdraw(self, async_client: AsyncIncrease) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `card_dispute_id` but received ''"):
             await async_client.card_disputes.with_raw_response.withdraw(
-                "",
+                card_dispute_id="",
             )

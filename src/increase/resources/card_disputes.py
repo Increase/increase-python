@@ -7,7 +7,12 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..types import card_dispute_list_params, card_dispute_create_params, card_dispute_submit_user_submission_params
+from ..types import (
+    card_dispute_list_params,
+    card_dispute_create_params,
+    card_dispute_withdraw_params,
+    card_dispute_submit_user_submission_params,
+)
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
@@ -293,6 +298,7 @@ class CardDisputesResource(SyncAPIResource):
         self,
         card_dispute_id: str,
         *,
+        explanation: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -306,6 +312,8 @@ class CardDisputesResource(SyncAPIResource):
 
         Args:
           card_dispute_id: The identifier of the Card Dispute to withdraw.
+
+          explanation: The explanation for withdrawing the Card Dispute.
 
           extra_headers: Send extra headers
 
@@ -321,6 +329,7 @@ class CardDisputesResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `card_dispute_id` but received {card_dispute_id!r}")
         return self._post(
             f"/card_disputes/{card_dispute_id}/withdraw",
+            body=maybe_transform({"explanation": explanation}, card_dispute_withdraw_params.CardDisputeWithdrawParams),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -600,6 +609,7 @@ class AsyncCardDisputesResource(AsyncAPIResource):
         self,
         card_dispute_id: str,
         *,
+        explanation: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -613,6 +623,8 @@ class AsyncCardDisputesResource(AsyncAPIResource):
 
         Args:
           card_dispute_id: The identifier of the Card Dispute to withdraw.
+
+          explanation: The explanation for withdrawing the Card Dispute.
 
           extra_headers: Send extra headers
 
@@ -628,6 +640,9 @@ class AsyncCardDisputesResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `card_dispute_id` but received {card_dispute_id!r}")
         return await self._post(
             f"/card_disputes/{card_dispute_id}/withdraw",
+            body=await async_maybe_transform(
+                {"explanation": explanation}, card_dispute_withdraw_params.CardDisputeWithdrawParams
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
