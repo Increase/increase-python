@@ -104,7 +104,7 @@ Methods:
 - <code title="get /card_disputes/{card_dispute_id}">client.card_disputes.<a href="./src/increase/resources/card_disputes.py">retrieve</a>(card_dispute_id) -> <a href="./src/increase/types/card_dispute.py">CardDispute</a></code>
 - <code title="get /card_disputes">client.card_disputes.<a href="./src/increase/resources/card_disputes.py">list</a>(\*\*<a href="src/increase/types/card_dispute_list_params.py">params</a>) -> <a href="./src/increase/types/card_dispute.py">SyncPage[CardDispute]</a></code>
 - <code title="post /card_disputes/{card_dispute_id}/submit_user_submission">client.card_disputes.<a href="./src/increase/resources/card_disputes.py">submit_user_submission</a>(card_dispute_id, \*\*<a href="src/increase/types/card_dispute_submit_user_submission_params.py">params</a>) -> <a href="./src/increase/types/card_dispute.py">CardDispute</a></code>
-- <code title="post /card_disputes/{card_dispute_id}/withdraw">client.card_disputes.<a href="./src/increase/resources/card_disputes.py">withdraw</a>(card_dispute_id) -> <a href="./src/increase/types/card_dispute.py">CardDispute</a></code>
+- <code title="post /card_disputes/{card_dispute_id}/withdraw">client.card_disputes.<a href="./src/increase/resources/card_disputes.py">withdraw</a>(card_dispute_id, \*\*<a href="src/increase/types/card_dispute_withdraw_params.py">params</a>) -> <a href="./src/increase/types/card_dispute.py">CardDispute</a></code>
 
 # PhysicalCards
 

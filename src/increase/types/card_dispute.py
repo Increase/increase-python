@@ -105,6 +105,7 @@ __all__ = [
     "VisaUserSubmissionUserPrearbitration",
     "VisaUserSubmissionUserPrearbitrationCategoryChange",
     "Win",
+    "Withdrawal",
 ]
 
 
@@ -2627,6 +2628,15 @@ class Win(BaseModel):
     """
 
 
+class Withdrawal(BaseModel):
+    """
+    If the Card Dispute has been withdrawn, this will contain details of the withdrawal.
+    """
+
+    explanation: Optional[str] = None
+    """The explanation for the withdrawal of the Card Dispute."""
+
+
 class CardDispute(BaseModel):
     """
     If unauthorized activity occurs on a card, you can create a Card Dispute and we'll work with the card networks to return the funds if appropriate.
@@ -2721,4 +2731,10 @@ class CardDispute(BaseModel):
     """
     If the Card Dispute's status is `won`, this will contain details of the won
     dispute.
+    """
+
+    withdrawal: Optional[Withdrawal] = None
+    """
+    If the Card Dispute has been withdrawn, this will contain details of the
+    withdrawal.
     """
