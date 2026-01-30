@@ -1,14 +1,19 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import TYPE_CHECKING, Dict, Optional
+from typing import Optional
 from datetime import datetime
 from typing_extensions import Literal
 
-from pydantic import Field as FieldInfo
-
 from .._models import BaseModel
 
-__all__ = ["Program"]
+__all__ = ["Program", "Lending"]
+
+
+class Lending(BaseModel):
+    """The lending details for the program."""
+
+    maximum_extendable_credit: int
+    """The maximum extendable credit of the program."""
 
 
 class Program(BaseModel):
@@ -47,6 +52,9 @@ class Program(BaseModel):
     represented as "0.01".
     """
 
+    lending: Optional[Lending] = None
+    """The lending details for the program."""
+
     name: str
     """The name of the Program."""
 
@@ -61,15 +69,3 @@ class Program(BaseModel):
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the Program
     was last updated.
     """
-
-    if TYPE_CHECKING:
-        # Some versions of Pydantic <2.8.0 have a bug and don’t allow assigning a
-        # value to this field, so for compatibility we avoid doing it at runtime.
-        __pydantic_extra__: Dict[str, object] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
-
-        # Stub to indicate that arbitrary properties are accepted.
-        # To access properties that are not valid identifiers you can use `getattr`, e.g.
-        # `getattr(obj, '$type')`
-        def __getattr__(self, attr: str) -> object: ...
-    else:
-        __pydantic_extra__: Dict[str, object]

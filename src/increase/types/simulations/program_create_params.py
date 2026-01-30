@@ -29,5 +29,8 @@ class ProgramCreateParams(TypedDict, total=False):
     - `twin_city_bank` - Twin City Bank
     """
 
+    lending_maximum_extendable_credit: int
+    """The maximum extendable credit of the program being added."""
+
     reserve_account_id: str
     """The identifier of the Account the Program should be added to is for."""

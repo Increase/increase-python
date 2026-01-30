@@ -29,6 +29,7 @@ class TestPrograms:
         program = client.simulations.programs.create(
             name="For Benefit Of",
             bank="blue_ridge_bank",
+            lending_maximum_extendable_credit=0,
             reserve_account_id="reserve_account_id",
         )
         assert_matches_type(Program, program, path=["response"])
@@ -75,6 +76,7 @@ class TestAsyncPrograms:
         program = await async_client.simulations.programs.create(
             name="For Benefit Of",
             bank="blue_ridge_bank",
+            lending_maximum_extendable_credit=0,
             reserve_account_id="reserve_account_id",
         )
         assert_matches_type(Program, program, path=["response"])
