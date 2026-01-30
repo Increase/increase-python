@@ -46,12 +46,14 @@ class IntrafiExclusion(BaseModel):
     [idempotency](https://increase.com/documentation/idempotency-keys).
     """
 
-    status: Literal["pending", "completed", "archived"]
+    status: Literal["pending", "completed", "archived", "ineligible"]
     """The status of the exclusion request.
 
     - `pending` - The exclusion is being added to the IntraFi network.
     - `completed` - The exclusion has been added to the IntraFi network.
     - `archived` - The exclusion has been removed from the IntraFi network.
+    - `ineligible` - The exclusion wasn't eligible to be added to the IntraFi
+      network.
     """
 
     submitted_at: Optional[datetime] = None
