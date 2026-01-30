@@ -8,8 +8,14 @@ __all__ = ["IntrafiExclusionCreateParams"]
 
 
 class IntrafiExclusionCreateParams(TypedDict, total=False):
-    bank_name: Required[str]
-    """The name of the financial institution to be excluded."""
-
     entity_id: Required[str]
     """The identifier of the Entity whose deposits will be excluded."""
+
+    fdic_certificate_number: Required[str]
+    """The FDIC certificate number of the financial institution to be excluded.
+
+    An FDIC certificate number uniquely identifies a financial institution, and is
+    different than a routing number. To find one, we recommend searching by Bank
+    Name using the
+    [FDIC's bankfind tool](https://banks.data.fdic.gov/bankfind-suite/bankfind).
+    """

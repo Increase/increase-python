@@ -17,7 +17,7 @@ class IntrafiExclusion(BaseModel):
     id: str
     """The identifier of this exclusion request."""
 
-    bank_name: str
+    bank_name: Optional[str] = None
     """The name of the excluded institution."""
 
     created_at: datetime
