@@ -56,6 +56,7 @@ class ProgramsResource(SyncAPIResource):
             "twin_city_bank",
         ]
         | Omit = omit,
+        lending_maximum_extendable_credit: int | Omit = omit,
         reserve_account_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -84,6 +85,8 @@ class ProgramsResource(SyncAPIResource):
               - `grasshopper_bank` - Grasshopper Bank
               - `twin_city_bank` - Twin City Bank
 
+          lending_maximum_extendable_credit: The maximum extendable credit of the program being added.
+
           reserve_account_id: The identifier of the Account the Program should be added to is for.
 
           extra_headers: Send extra headers
@@ -102,6 +105,7 @@ class ProgramsResource(SyncAPIResource):
                 {
                     "name": name,
                     "bank": bank,
+                    "lending_maximum_extendable_credit": lending_maximum_extendable_credit,
                     "reserve_account_id": reserve_account_id,
                 },
                 program_create_params.ProgramCreateParams,
@@ -150,6 +154,7 @@ class AsyncProgramsResource(AsyncAPIResource):
             "twin_city_bank",
         ]
         | Omit = omit,
+        lending_maximum_extendable_credit: int | Omit = omit,
         reserve_account_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -178,6 +183,8 @@ class AsyncProgramsResource(AsyncAPIResource):
               - `grasshopper_bank` - Grasshopper Bank
               - `twin_city_bank` - Twin City Bank
 
+          lending_maximum_extendable_credit: The maximum extendable credit of the program being added.
+
           reserve_account_id: The identifier of the Account the Program should be added to is for.
 
           extra_headers: Send extra headers
@@ -196,6 +203,7 @@ class AsyncProgramsResource(AsyncAPIResource):
                 {
                     "name": name,
                     "bank": bank,
+                    "lending_maximum_extendable_credit": lending_maximum_extendable_credit,
                     "reserve_account_id": reserve_account_id,
                 },
                 program_create_params.ProgramCreateParams,
