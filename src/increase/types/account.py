@@ -87,7 +87,7 @@ class Account(BaseModel):
     entity_id: str
     """The identifier for the Entity the Account belongs to."""
 
-    funding: Optional[Literal["loan", "deposits"]] = None
+    funding: Literal["loan", "deposits"]
     """Whether the Account is funded by a loan or by deposits.
 
     - `loan` - An account funded by a loan. Before opening a loan account, contact
