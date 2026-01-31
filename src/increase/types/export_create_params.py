@@ -230,13 +230,13 @@ class BalanceCsv(TypedDict, total=False):
     """
 
     account_id: str
-    """Filter exported Transactions to the specified Account."""
+    """Filter exported Balances to the specified Account."""
 
     created_at: BalanceCsvCreatedAt
     """Filter results by time range on the `created_at` attribute."""
 
     program_id: str
-    """Filter exported Transactions to the specified Program."""
+    """Filter exported Balances to the specified Program."""
 
 
 class BookkeepingAccountBalanceCsvCreatedAt(TypedDict, total=False):
@@ -274,7 +274,10 @@ class BookkeepingAccountBalanceCsv(TypedDict, total=False):
     """
 
     bookkeeping_account_id: str
-    """Filter exported Transactions to the specified Bookkeeping Account."""
+    """
+    Filter exported Bookkeeping Account Balances to the specified Bookkeeping
+    Account.
+    """
 
     created_at: BookkeepingAccountBalanceCsvCreatedAt
     """Filter results by time range on the `created_at` attribute."""
