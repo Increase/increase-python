@@ -67,7 +67,7 @@ class TestExports:
                     "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
                 },
             },
-            entity_csv={"status": {"in": ["active"]}},
+            entity_csv={},
             funding_instructions={"account_number_id": "account_number_id"},
             transaction_csv={
                 "account_id": "account_in71c4amph0vgo2qllky",
@@ -240,7 +240,7 @@ class TestAsyncExports:
                     "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
                 },
             },
-            entity_csv={"status": {"in": ["active"]}},
+            entity_csv={},
             funding_instructions={"account_number_id": "account_number_id"},
             transaction_csv={
                 "account_id": "account_in71c4amph0vgo2qllky",

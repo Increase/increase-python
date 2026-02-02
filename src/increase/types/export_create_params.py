@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 from datetime import date, datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
@@ -19,7 +19,6 @@ __all__ = [
     "BookkeepingAccountBalanceCsv",
     "BookkeepingAccountBalanceCsvCreatedAt",
     "EntityCsv",
-    "EntityCsvStatus",
     "FundingInstructions",
     "TransactionCsv",
     "TransactionCsvCreatedAt",
@@ -283,29 +282,13 @@ class BookkeepingAccountBalanceCsv(TypedDict, total=False):
     """Filter results by time range on the `created_at` attribute."""
 
 
-_EntityCsvStatusReservedKeywords = TypedDict(
-    "_EntityCsvStatusReservedKeywords",
-    {
-        "in": List[Literal["active", "archived", "disabled"]],
-    },
-    total=False,
-)
-
-
-class EntityCsvStatus(_EntityCsvStatusReservedKeywords, total=False):
-    """Entity statuses to filter by."""
-
-    pass
-
-
 class EntityCsv(TypedDict, total=False):
     """Options for the created export.
 
     Required if `category` is equal to `entity_csv`.
     """
 
-    status: EntityCsvStatus
-    """Entity statuses to filter by."""
+    pass
 
 
 class FundingInstructions(TypedDict, total=False):
