@@ -77,7 +77,6 @@ class TestExports:
                     "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
                 },
-                "program_id": "program_id",
             },
             vendor_csv={},
         )
@@ -251,7 +250,6 @@ class TestAsyncExports:
                     "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
                     "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
                 },
-                "program_id": "program_id",
             },
             vendor_csv={},
         )
