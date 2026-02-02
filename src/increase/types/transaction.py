@@ -16,6 +16,8 @@ __all__ = [
     "SourceACHTransferIntention",
     "SourceACHTransferRejection",
     "SourceACHTransferReturn",
+    "SourceBlockchainOfframpTransferSettlement",
+    "SourceBlockchainOnrampTransferIntention",
     "SourceCardDisputeAcceptance",
     "SourceCardDisputeFinancial",
     "SourceCardDisputeFinancialVisa",
@@ -482,6 +484,58 @@ class SourceACHTransferReturn(BaseModel):
 
     transfer_id: str
     """The identifier of the ACH Transfer associated with this return."""
+
+    if TYPE_CHECKING:
+        # Some versions of Pydantic <2.8.0 have a bug and don’t allow assigning a
+        # value to this field, so for compatibility we avoid doing it at runtime.
+        __pydantic_extra__: Dict[str, object] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
+
+        # Stub to indicate that arbitrary properties are accepted.
+        # To access properties that are not valid identifiers you can use `getattr`, e.g.
+        # `getattr(obj, '$type')`
+        def __getattr__(self, attr: str) -> object: ...
+    else:
+        __pydantic_extra__: Dict[str, object]
+
+
+class SourceBlockchainOfframpTransferSettlement(BaseModel):
+    """A Blockchain Off-Ramp Transfer Settlement object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `blockchain_offramp_transfer_settlement`.
+    """
+
+    source_blockchain_address_id: str
+    """The identifier of the Blockchain Address the funds were received at."""
+
+    transfer_id: str
+    """
+    The identifier of the Blockchain Off-Ramp Transfer that led to this Transaction.
+    """
+
+    if TYPE_CHECKING:
+        # Some versions of Pydantic <2.8.0 have a bug and don’t allow assigning a
+        # value to this field, so for compatibility we avoid doing it at runtime.
+        __pydantic_extra__: Dict[str, object] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
+
+        # Stub to indicate that arbitrary properties are accepted.
+        # To access properties that are not valid identifiers you can use `getattr`, e.g.
+        # `getattr(obj, '$type')`
+        def __getattr__(self, attr: str) -> object: ...
+    else:
+        __pydantic_extra__: Dict[str, object]
+
+
+class SourceBlockchainOnrampTransferIntention(BaseModel):
+    """A Blockchain On-Ramp Transfer Intention object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `blockchain_onramp_transfer_intention`.
+    """
+
+    destination_blockchain_address: str
+    """The blockchain address the funds were sent to."""
+
+    transfer_id: str
+    """The identifier of the Blockchain On-Ramp Transfer that led to this Transaction."""
 
     if TYPE_CHECKING:
         # Some versions of Pydantic <2.8.0 have a bug and don’t allow assigning a
@@ -3665,6 +3719,20 @@ class Source(BaseModel):
     after the transfer is initiated, but can occur much later.
     """
 
+    blockchain_offramp_transfer_settlement: Optional[SourceBlockchainOfframpTransferSettlement] = None
+    """A Blockchain Off-Ramp Transfer Settlement object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `blockchain_offramp_transfer_settlement`.
+    """
+
+    blockchain_onramp_transfer_intention: Optional[SourceBlockchainOnrampTransferIntention] = None
+    """A Blockchain On-Ramp Transfer Intention object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `blockchain_onramp_transfer_intention`.
+    """
+
     card_dispute_acceptance: Optional[SourceCardDisputeAcceptance] = None
     """A Legacy Card Dispute Acceptance object.
 
@@ -3775,6 +3843,8 @@ class Source(BaseModel):
         "swift_transfer_return",
         "card_push_transfer_acceptance",
         "account_revenue_payment",
+        "blockchain_onramp_transfer_intention",
+        "blockchain_offramp_transfer_settlement",
         "other",
     ]
     """The type of the resource.
@@ -3854,6 +3924,12 @@ class Source(BaseModel):
       be under the `card_push_transfer_acceptance` object.
     - `account_revenue_payment` - Account Revenue Payment: details will be under the
       `account_revenue_payment` object.
+    - `blockchain_onramp_transfer_intention` - Blockchain On-Ramp Transfer
+      Intention: details will be under the `blockchain_onramp_transfer_intention`
+      object.
+    - `blockchain_offramp_transfer_settlement` - Blockchain Off-Ramp Transfer
+      Settlement: details will be under the `blockchain_offramp_transfer_settlement`
+      object.
     - `other` - The Transaction was made for an undocumented or deprecated reason.
     """
 

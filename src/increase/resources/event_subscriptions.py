@@ -61,6 +61,12 @@ class EventSubscriptionsResource(SyncAPIResource):
             "ach_prenotification.updated",
             "ach_transfer.created",
             "ach_transfer.updated",
+            "blockchain_address.created",
+            "blockchain_address.updated",
+            "blockchain_offramp_transfer.created",
+            "blockchain_offramp_transfer.updated",
+            "blockchain_onramp_transfer.created",
+            "blockchain_onramp_transfer.updated",
             "bookkeeping_account.created",
             "bookkeeping_account.updated",
             "bookkeeping_entry_set.updated",
@@ -190,6 +196,18 @@ class EventSubscriptionsResource(SyncAPIResource):
                 updated.
               - `ach_transfer.created` - Occurs whenever an ACH Transfer is created.
               - `ach_transfer.updated` - Occurs whenever an ACH Transfer is updated.
+              - `blockchain_address.created` - Occurs whenever a Blockchain Address is
+                created.
+              - `blockchain_address.updated` - Occurs whenever a Blockchain Address is
+                updated.
+              - `blockchain_offramp_transfer.created` - Occurs whenever a Blockchain Off-Ramp
+                Transfer is created.
+              - `blockchain_offramp_transfer.updated` - Occurs whenever a Blockchain Off-Ramp
+                Transfer is updated.
+              - `blockchain_onramp_transfer.created` - Occurs whenever a Blockchain On-Ramp
+                Transfer is created.
+              - `blockchain_onramp_transfer.updated` - Occurs whenever a Blockchain On-Ramp
+                Transfer is updated.
               - `bookkeeping_account.created` - Occurs whenever a Bookkeeping Account is
                 created.
               - `bookkeeping_account.updated` - Occurs whenever a Bookkeeping Account is
@@ -559,6 +577,12 @@ class AsyncEventSubscriptionsResource(AsyncAPIResource):
             "ach_prenotification.updated",
             "ach_transfer.created",
             "ach_transfer.updated",
+            "blockchain_address.created",
+            "blockchain_address.updated",
+            "blockchain_offramp_transfer.created",
+            "blockchain_offramp_transfer.updated",
+            "blockchain_onramp_transfer.created",
+            "blockchain_onramp_transfer.updated",
             "bookkeeping_account.created",
             "bookkeeping_account.updated",
             "bookkeeping_entry_set.updated",
@@ -688,6 +712,18 @@ class AsyncEventSubscriptionsResource(AsyncAPIResource):
                 updated.
               - `ach_transfer.created` - Occurs whenever an ACH Transfer is created.
               - `ach_transfer.updated` - Occurs whenever an ACH Transfer is updated.
+              - `blockchain_address.created` - Occurs whenever a Blockchain Address is
+                created.
+              - `blockchain_address.updated` - Occurs whenever a Blockchain Address is
+                updated.
+              - `blockchain_offramp_transfer.created` - Occurs whenever a Blockchain Off-Ramp
+                Transfer is created.
+              - `blockchain_offramp_transfer.updated` - Occurs whenever a Blockchain Off-Ramp
+                Transfer is updated.
+              - `blockchain_onramp_transfer.created` - Occurs whenever a Blockchain On-Ramp
+                Transfer is created.
+              - `blockchain_onramp_transfer.updated` - Occurs whenever a Blockchain On-Ramp
+                Transfer is updated.
               - `bookkeeping_account.created` - Occurs whenever a Bookkeeping Account is
                 created.
               - `bookkeeping_account.updated` - Occurs whenever a Bookkeeping Account is
