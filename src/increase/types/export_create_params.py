@@ -358,9 +358,6 @@ class TransactionCsv(TypedDict, total=False):
     created_at: TransactionCsvCreatedAt
     """Filter results by time range on the `created_at` attribute."""
 
-    program_id: str
-    """Filter exported Transactions to the specified Program."""
-
 
 class VendorCsv(TypedDict, total=False):
     """Options for the created export.
