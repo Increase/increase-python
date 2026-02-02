@@ -234,9 +234,6 @@ class BalanceCsv(TypedDict, total=False):
     created_at: BalanceCsvCreatedAt
     """Filter results by time range on the `created_at` attribute."""
 
-    program_id: str
-    """Filter exported Balances to the specified Program."""
-
 
 class BookkeepingAccountBalanceCsvCreatedAt(TypedDict, total=False):
     """Filter results by time range on the `created_at` attribute."""
