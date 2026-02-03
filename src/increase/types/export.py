@@ -1,12 +1,223 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import Optional
-from datetime import datetime
+from datetime import date, datetime
 from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["Export"]
+__all__ = [
+    "Export",
+    "AccountStatementBai2",
+    "AccountStatementOfx",
+    "AccountStatementOfxCreatedAt",
+    "AccountVerificationLetter",
+    "BalanceCsv",
+    "BalanceCsvCreatedAt",
+    "BookkeepingAccountBalanceCsv",
+    "BookkeepingAccountBalanceCsvCreatedAt",
+    "DashboardTableCsv",
+    "EntityCsv",
+    "Form1099Int",
+    "Form1099Misc",
+    "FundingInstructions",
+    "TransactionCsv",
+    "TransactionCsvCreatedAt",
+    "VendorCsv",
+]
+
+
+class AccountStatementBai2(BaseModel):
+    """Details of the account statement BAI2 export.
+
+    This field will be present when the `category` is equal to `account_statement_bai2`.
+    """
+
+    account_id: Optional[str] = None
+    """Filter results by Account."""
+
+    effective_date: Optional[date] = None
+    """The date for which to retrieve the balance."""
+
+    program_id: Optional[str] = None
+    """Filter results by Program."""
+
+
+class AccountStatementOfxCreatedAt(BaseModel):
+    """Filter transactions by their created date."""
+
+    after: Optional[datetime] = None
+    """Filter results to transactions created after this time."""
+
+    before: Optional[datetime] = None
+    """Filter results to transactions created before this time."""
+
+
+class AccountStatementOfx(BaseModel):
+    """Details of the account statement OFX export.
+
+    This field will be present when the `category` is equal to `account_statement_ofx`.
+    """
+
+    account_id: str
+    """The Account to create a statement for."""
+
+    created_at: Optional[AccountStatementOfxCreatedAt] = None
+    """Filter transactions by their created date."""
+
+
+class AccountVerificationLetter(BaseModel):
+    """Details of the account verification letter export.
+
+    This field will be present when the `category` is equal to `account_verification_letter`.
+    """
+
+    account_number_id: str
+    """The Account Number to create a letter for."""
+
+    balance_date: Optional[date] = None
+    """The date of the balance to include in the letter."""
+
+
+class BalanceCsvCreatedAt(BaseModel):
+    """Filter balances by their created date."""
+
+    after: Optional[datetime] = None
+    """Filter balances created after this time."""
+
+    before: Optional[datetime] = None
+    """Filter balances created before this time."""
+
+
+class BalanceCsv(BaseModel):
+    """Details of the balance CSV export.
+
+    This field will be present when the `category` is equal to `balance_csv`.
+    """
+
+    account_id: Optional[str] = None
+    """Filter results by Account."""
+
+    created_at: Optional[BalanceCsvCreatedAt] = None
+    """Filter balances by their created date."""
+
+
+class BookkeepingAccountBalanceCsvCreatedAt(BaseModel):
+    """Filter balances by their created date."""
+
+    after: Optional[datetime] = None
+    """Filter balances created after this time."""
+
+    before: Optional[datetime] = None
+    """Filter balances created before this time."""
+
+
+class BookkeepingAccountBalanceCsv(BaseModel):
+    """Details of the bookkeeping account balance CSV export.
+
+    This field will be present when the `category` is equal to `bookkeeping_account_balance_csv`.
+    """
+
+    bookkeeping_account_id: Optional[str] = None
+    """Filter results by Bookkeeping Account."""
+
+    created_at: Optional[BookkeepingAccountBalanceCsvCreatedAt] = None
+    """Filter balances by their created date."""
+
+
+class DashboardTableCsv(BaseModel):
+    """Details of the dashboard table CSV export.
+
+    This field will be present when the `category` is equal to `dashboard_table_csv`.
+    """
+
+    pass
+
+
+class EntityCsv(BaseModel):
+    """Details of the entity CSV export.
+
+    This field will be present when the `category` is equal to `entity_csv`.
+    """
+
+    pass
+
+
+class Form1099Int(BaseModel):
+    """Details of the Form 1099-INT export.
+
+    This field will be present when the `category` is equal to `form_1099_int`.
+    """
+
+    account_id: str
+    """The Account the tax form is for."""
+
+    corrected: bool
+    """Whether the tax form is a corrected form."""
+
+    description: str
+    """A description of the tax form."""
+
+    year: int
+    """The tax year for the tax form."""
+
+
+class Form1099Misc(BaseModel):
+    """Details of the Form 1099-MISC export.
+
+    This field will be present when the `category` is equal to `form_1099_misc`.
+    """
+
+    account_id: str
+    """The Account the tax form is for."""
+
+    corrected: bool
+    """Whether the tax form is a corrected form."""
+
+    year: int
+    """The tax year for the tax form."""
+
+
+class FundingInstructions(BaseModel):
+    """Details of the funding instructions export.
+
+    This field will be present when the `category` is equal to `funding_instructions`.
+    """
+
+    account_number_id: str
+    """The Account Number to create funding instructions for."""
+
+
+class TransactionCsvCreatedAt(BaseModel):
+    """Filter transactions by their created date."""
+
+    after: Optional[datetime] = None
+    """Filter transactions created after this time."""
+
+    before: Optional[datetime] = None
+    """Filter transactions created before this time."""
+
+
+class TransactionCsv(BaseModel):
+    """Details of the transaction CSV export.
+
+    This field will be present when the `category` is equal to `transaction_csv`.
+    """
+
+    account_id: Optional[str] = None
+    """Filter results by Account."""
+
+    created_at: Optional[TransactionCsvCreatedAt] = None
+    """Filter transactions by their created date."""
+
+
+class VendorCsv(BaseModel):
+    """Details of the vendor CSV export.
+
+    This field will be present when the `category` is equal to `vendor_csv`.
+    """
+
+    pass
 
 
 class Export(BaseModel):
@@ -17,6 +228,40 @@ class Export(BaseModel):
 
     id: str
     """The Export identifier."""
+
+    account_statement_bai2: Optional[AccountStatementBai2] = None
+    """Details of the account statement BAI2 export.
+
+    This field will be present when the `category` is equal to
+    `account_statement_bai2`.
+    """
+
+    account_statement_ofx: Optional[AccountStatementOfx] = None
+    """Details of the account statement OFX export.
+
+    This field will be present when the `category` is equal to
+    `account_statement_ofx`.
+    """
+
+    account_verification_letter: Optional[AccountVerificationLetter] = None
+    """Details of the account verification letter export.
+
+    This field will be present when the `category` is equal to
+    `account_verification_letter`.
+    """
+
+    balance_csv: Optional[BalanceCsv] = None
+    """Details of the balance CSV export.
+
+    This field will be present when the `category` is equal to `balance_csv`.
+    """
+
+    bookkeeping_account_balance_csv: Optional[BookkeepingAccountBalanceCsv] = None
+    """Details of the bookkeeping account balance CSV export.
+
+    This field will be present when the `category` is equal to
+    `bookkeeping_account_balance_csv`.
+    """
 
     category: Literal[
         "account_statement_ofx",
@@ -60,6 +305,19 @@ class Export(BaseModel):
     created_at: datetime
     """The time the Export was created."""
 
+    dashboard_table_csv: Optional[DashboardTableCsv] = None
+    """Details of the dashboard table CSV export.
+
+    This field will be present when the `category` is equal to
+    `dashboard_table_csv`.
+    """
+
+    entity_csv: Optional[EntityCsv] = None
+    """Details of the entity CSV export.
+
+    This field will be present when the `category` is equal to `entity_csv`.
+    """
+
     file_download_url: Optional[str] = None
     """A URL at which the Export's file can be downloaded.
 
@@ -70,6 +328,25 @@ class Export(BaseModel):
     """The File containing the contents of the Export.
 
     This will be present when the Export's status transitions to `complete`.
+    """
+
+    form_1099_int: Optional[Form1099Int] = None
+    """Details of the Form 1099-INT export.
+
+    This field will be present when the `category` is equal to `form_1099_int`.
+    """
+
+    form_1099_misc: Optional[Form1099Misc] = None
+    """Details of the Form 1099-MISC export.
+
+    This field will be present when the `category` is equal to `form_1099_misc`.
+    """
+
+    funding_instructions: Optional[FundingInstructions] = None
+    """Details of the funding instructions export.
+
+    This field will be present when the `category` is equal to
+    `funding_instructions`.
     """
 
     idempotency_key: Optional[str] = None
@@ -89,8 +366,20 @@ class Export(BaseModel):
       resolve the issue.
     """
 
+    transaction_csv: Optional[TransactionCsv] = None
+    """Details of the transaction CSV export.
+
+    This field will be present when the `category` is equal to `transaction_csv`.
+    """
+
     type: Literal["export"]
     """A constant representing the object's type.
 
     For this resource it will always be `export`.
+    """
+
+    vendor_csv: Optional[VendorCsv] = None
+    """Details of the vendor CSV export.
+
+    This field will be present when the `category` is equal to `vendor_csv`.
     """
