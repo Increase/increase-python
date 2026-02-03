@@ -21,6 +21,7 @@ __all__ = [
     "Form1099Int",
     "Form1099Misc",
     "FundingInstructions",
+    "Result",
     "TransactionCsv",
     "TransactionCsvCreatedAt",
     "VendorCsv",
@@ -188,6 +189,16 @@ class FundingInstructions(BaseModel):
     """The Account Number to create funding instructions for."""
 
 
+class Result(BaseModel):
+    """The result of the Export.
+
+    This will be present when the Export's status transitions to `complete`.
+    """
+
+    file_id: str
+    """The File containing the contents of the Export."""
+
+
 class TransactionCsvCreatedAt(BaseModel):
     """Filter transactions by their created date."""
 
@@ -318,18 +329,6 @@ class Export(BaseModel):
     This field will be present when the `category` is equal to `entity_csv`.
     """
 
-    file_download_url: Optional[str] = None
-    """A URL at which the Export's file can be downloaded.
-
-    This will be present when the Export's status transitions to `complete`.
-    """
-
-    file_id: Optional[str] = None
-    """The File containing the contents of the Export.
-
-    This will be present when the Export's status transitions to `complete`.
-    """
-
     form_1099_int: Optional[Form1099Int] = None
     """Details of the Form 1099-INT export.
 
@@ -355,6 +354,12 @@ class Export(BaseModel):
     This value is unique across Increase and is used to ensure that a request is
     only processed once. Learn more about
     [idempotency](https://increase.com/documentation/idempotency-keys).
+    """
+
+    result: Optional[Result] = None
+    """The result of the Export.
+
+    This will be present when the Export's status transitions to `complete`.
     """
 
     status: Literal["pending", "complete", "failed"]
