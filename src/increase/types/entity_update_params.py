@@ -133,6 +133,9 @@ class Corporation(TypedDict, total=False):
     name: str
     """The legal name of the corporation."""
 
+    tax_identifier: str
+    """The Employer Identification Number (EIN) for the corporation."""
+
 
 class GovernmentAuthorityAddress(TypedDict, total=False):
     """The entity's physical address.

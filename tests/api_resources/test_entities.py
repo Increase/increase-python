@@ -367,6 +367,7 @@ class TestEntities:
                 "incorporation_state": "x",
                 "industry_code": "x",
                 "name": "x",
+                "tax_identifier": "x",
             },
             details_confirmed_at=parse_datetime("2019-12-27T18:11:19.117Z"),
             government_authority={
@@ -1304,6 +1305,7 @@ class TestAsyncEntities:
                 "incorporation_state": "x",
                 "industry_code": "x",
                 "name": "x",
+                "tax_identifier": "x",
             },
             details_confirmed_at=parse_datetime("2019-12-27T18:11:19.117Z"),
             government_authority={
