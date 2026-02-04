@@ -106,7 +106,7 @@ class EntitiesResource(SyncAPIResource):
               `social_security_number` or `individual_taxpayer_identification_number`
               identification methods.
 
-          risk_rating: An assessment of the entity’s potential risk of involvement in financial crimes,
+          risk_rating: An assessment of the entity's potential risk of involvement in financial crimes,
               such as money laundering.
 
           supplemental_documents: Additional documentation associated with the entity.
@@ -759,7 +759,7 @@ class AsyncEntitiesResource(AsyncAPIResource):
               `social_security_number` or `individual_taxpayer_identification_number`
               identification methods.
 
-          risk_rating: An assessment of the entity’s potential risk of involvement in financial crimes,
+          risk_rating: An assessment of the entity's potential risk of involvement in financial crimes,
               such as money laundering.
 
           supplemental_documents: Additional documentation associated with the entity.

@@ -99,7 +99,7 @@ class EntityCreateParams(TypedDict, total=False):
 
     risk_rating: RiskRating
     """
-    An assessment of the entity’s potential risk of involvement in financial crimes,
+    An assessment of the entity's potential risk of involvement in financial crimes,
     such as money laundering.
     """
 
@@ -821,7 +821,7 @@ class NaturalPerson(TypedDict, total=False):
 
 class RiskRating(TypedDict, total=False):
     """
-    An assessment of the entity’s potential risk of involvement in financial crimes, such as money laundering.
+    An assessment of the entity's potential risk of involvement in financial crimes, such as money laundering.
     """
 
     rated_at: Required[Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]]
