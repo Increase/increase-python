@@ -196,9 +196,25 @@ class ExportsResource(SyncAPIResource):
     def list(
         self,
         *,
-        category: export_list_params.Category | Omit = omit,
+        category: Literal[
+            "account_statement_ofx",
+            "account_statement_bai2",
+            "transaction_csv",
+            "balance_csv",
+            "bookkeeping_account_balance_csv",
+            "entity_csv",
+            "vendor_csv",
+            "dashboard_table_csv",
+            "account_verification_letter",
+            "funding_instructions",
+            "form_1099_int",
+            "form_1099_misc",
+        ]
+        | Omit = omit,
         created_at: export_list_params.CreatedAt | Omit = omit,
         cursor: str | Omit = omit,
+        form_1099_int: export_list_params.Form1099Int | Omit = omit,
+        form_1099_misc: export_list_params.Form1099Misc | Omit = omit,
         idempotency_key: str | Omit = omit,
         limit: int | Omit = omit,
         status: export_list_params.Status | Omit = omit,
@@ -213,6 +229,27 @@ class ExportsResource(SyncAPIResource):
         List Exports
 
         Args:
+          category: Filter Exports for those with the specified category.
+
+              - `account_statement_ofx` - Export an Open Financial Exchange (OFX) file of
+                transactions and balances for a given time range and Account.
+              - `account_statement_bai2` - Export a BAI2 file of transactions and balances for
+                a given date and optional Account.
+              - `transaction_csv` - Export a CSV of all transactions for a given time range.
+              - `balance_csv` - Export a CSV of account balances for the dates in a given
+                range.
+              - `bookkeeping_account_balance_csv` - Export a CSV of bookkeeping account
+                balances for the dates in a given range.
+              - `entity_csv` - Export a CSV of entities with a given status.
+              - `vendor_csv` - Export a CSV of vendors added to the third-party risk
+                management dashboard.
+              - `dashboard_table_csv` - Certain dashboard tables are available as CSV exports.
+                This export cannot be created via the API.
+              - `account_verification_letter` - A PDF of an account verification letter.
+              - `funding_instructions` - A PDF of funding instructions.
+              - `form_1099_int` - A PDF of an Internal Revenue Service Form 1099-INT.
+              - `form_1099_misc` - A PDF of an Internal Revenue Service Form 1099-MISC.
+
           cursor: Return the page of entries after this one.
 
           idempotency_key: Filter records to the one with the specified `idempotency_key` you chose for
@@ -244,6 +281,8 @@ class ExportsResource(SyncAPIResource):
                         "category": category,
                         "created_at": created_at,
                         "cursor": cursor,
+                        "form_1099_int": form_1099_int,
+                        "form_1099_misc": form_1099_misc,
                         "idempotency_key": idempotency_key,
                         "limit": limit,
                         "status": status,
@@ -427,9 +466,25 @@ class AsyncExportsResource(AsyncAPIResource):
     def list(
         self,
         *,
-        category: export_list_params.Category | Omit = omit,
+        category: Literal[
+            "account_statement_ofx",
+            "account_statement_bai2",
+            "transaction_csv",
+            "balance_csv",
+            "bookkeeping_account_balance_csv",
+            "entity_csv",
+            "vendor_csv",
+            "dashboard_table_csv",
+            "account_verification_letter",
+            "funding_instructions",
+            "form_1099_int",
+            "form_1099_misc",
+        ]
+        | Omit = omit,
         created_at: export_list_params.CreatedAt | Omit = omit,
         cursor: str | Omit = omit,
+        form_1099_int: export_list_params.Form1099Int | Omit = omit,
+        form_1099_misc: export_list_params.Form1099Misc | Omit = omit,
         idempotency_key: str | Omit = omit,
         limit: int | Omit = omit,
         status: export_list_params.Status | Omit = omit,
@@ -444,6 +499,27 @@ class AsyncExportsResource(AsyncAPIResource):
         List Exports
 
         Args:
+          category: Filter Exports for those with the specified category.
+
+              - `account_statement_ofx` - Export an Open Financial Exchange (OFX) file of
+                transactions and balances for a given time range and Account.
+              - `account_statement_bai2` - Export a BAI2 file of transactions and balances for
+                a given date and optional Account.
+              - `transaction_csv` - Export a CSV of all transactions for a given time range.
+              - `balance_csv` - Export a CSV of account balances for the dates in a given
+                range.
+              - `bookkeeping_account_balance_csv` - Export a CSV of bookkeeping account
+                balances for the dates in a given range.
+              - `entity_csv` - Export a CSV of entities with a given status.
+              - `vendor_csv` - Export a CSV of vendors added to the third-party risk
+                management dashboard.
+              - `dashboard_table_csv` - Certain dashboard tables are available as CSV exports.
+                This export cannot be created via the API.
+              - `account_verification_letter` - A PDF of an account verification letter.
+              - `funding_instructions` - A PDF of funding instructions.
+              - `form_1099_int` - A PDF of an Internal Revenue Service Form 1099-INT.
+              - `form_1099_misc` - A PDF of an Internal Revenue Service Form 1099-MISC.
+
           cursor: Return the page of entries after this one.
 
           idempotency_key: Filter records to the one with the specified `idempotency_key` you chose for
@@ -475,6 +551,8 @@ class AsyncExportsResource(AsyncAPIResource):
                         "category": category,
                         "created_at": created_at,
                         "cursor": cursor,
+                        "form_1099_int": form_1099_int,
+                        "form_1099_misc": form_1099_misc,
                         "idempotency_key": idempotency_key,
                         "limit": limit,
                         "status": status,

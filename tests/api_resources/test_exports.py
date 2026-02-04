@@ -151,7 +151,7 @@ class TestExports:
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
         export = client.exports.list(
-            category={"in": ["account_statement_ofx"]},
+            category="account_statement_ofx",
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -159,6 +159,8 @@ class TestExports:
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
             cursor="cursor",
+            form_1099_int={"account_id": "account_id"},
+            form_1099_misc={"account_id": "account_id"},
             idempotency_key="x",
             limit=1,
             status={"in": ["pending"]},
@@ -323,7 +325,7 @@ class TestAsyncExports:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
         export = await async_client.exports.list(
-            category={"in": ["account_statement_ofx"]},
+            category="account_statement_ofx",
             created_at={
                 "after": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "before": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -331,6 +333,8 @@ class TestAsyncExports:
                 "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
             },
             cursor="cursor",
+            form_1099_int={"account_id": "account_id"},
+            form_1099_misc={"account_id": "account_id"},
             idempotency_key="x",
             limit=1,
             status={"in": ["pending"]},
