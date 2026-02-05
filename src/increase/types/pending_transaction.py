@@ -13,6 +13,7 @@ __all__ = [
     "Source",
     "SourceAccountTransferInstruction",
     "SourceACHTransferInstruction",
+    "SourceBlockchainOfframpTransferInstruction",
     "SourceBlockchainOfframpTransferIntention",
     "SourceBlockchainOnrampTransferInstruction",
     "SourceCardAuthorization",
@@ -95,6 +96,33 @@ class SourceACHTransferInstruction(BaseModel):
 
     transfer_id: str
     """The identifier of the ACH Transfer that led to this Pending Transaction."""
+
+    if TYPE_CHECKING:
+        # Some versions of Pydantic <2.8.0 have a bug and don’t allow assigning a
+        # value to this field, so for compatibility we avoid doing it at runtime.
+        __pydantic_extra__: Dict[str, object] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
+
+        # Stub to indicate that arbitrary properties are accepted.
+        # To access properties that are not valid identifiers you can use `getattr`, e.g.
+        # `getattr(obj, '$type')`
+        def __getattr__(self, attr: str) -> object: ...
+    else:
+        __pydantic_extra__: Dict[str, object]
+
+
+class SourceBlockchainOfframpTransferInstruction(BaseModel):
+    """A Blockchain Off-Ramp Transfer Instruction object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `blockchain_offramp_transfer_instruction`.
+    """
+
+    source_blockchain_address_id: str
+    """The identifier of the Blockchain Address the funds were received at."""
+
+    transfer_id: str
+    """
+    The identifier of the Blockchain Off-Ramp Transfer that led to this Transaction.
+    """
 
     if TYPE_CHECKING:
         # Some versions of Pydantic <2.8.0 have a bug and don’t allow assigning a
@@ -1132,6 +1160,13 @@ class Source(BaseModel):
     equal to `ach_transfer_instruction`.
     """
 
+    blockchain_offramp_transfer_instruction: Optional[SourceBlockchainOfframpTransferInstruction] = None
+    """A Blockchain Off-Ramp Transfer Instruction object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `blockchain_offramp_transfer_instruction`.
+    """
+
     blockchain_offramp_transfer_intention: Optional[SourceBlockchainOfframpTransferIntention] = None
     """A Blockchain Off-Ramp Transfer Intention object.
 
@@ -1176,6 +1211,7 @@ class Source(BaseModel):
         "swift_transfer_instruction",
         "card_push_transfer_instruction",
         "blockchain_onramp_transfer_instruction",
+        "blockchain_offramp_transfer_instruction",
         "blockchain_offramp_transfer_intention",
         "other",
     ]
@@ -1214,6 +1250,9 @@ class Source(BaseModel):
     - `blockchain_onramp_transfer_instruction` - Blockchain On-Ramp Transfer
       Instruction: details will be under the
       `blockchain_onramp_transfer_instruction` object.
+    - `blockchain_offramp_transfer_instruction` - Blockchain Off-Ramp Transfer
+      Instruction: details will be under the
+      `blockchain_offramp_transfer_instruction` object.
     - `blockchain_offramp_transfer_intention` - Blockchain Off-Ramp Transfer
       Intention: details will be under the `blockchain_offramp_transfer_intention`
       object.
