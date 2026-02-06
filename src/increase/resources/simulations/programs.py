@@ -47,15 +47,7 @@ class ProgramsResource(SyncAPIResource):
         self,
         *,
         name: str,
-        bank: Literal[
-            "blue_ridge_bank",
-            "core_bank",
-            "first_internet_bank",
-            "global_innovations_bank",
-            "grasshopper_bank",
-            "twin_city_bank",
-        ]
-        | Omit = omit,
+        bank: Literal["core_bank", "first_internet_bank", "grasshopper_bank", "twin_city_bank"] | Omit = omit,
         lending_maximum_extendable_credit: int | Omit = omit,
         reserve_account_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -78,10 +70,8 @@ class ProgramsResource(SyncAPIResource):
 
           bank: The bank for the program's accounts, defaults to First Internet Bank.
 
-              - `blue_ridge_bank` - Blue Ridge Bank, N.A.
               - `core_bank` - Core Bank
               - `first_internet_bank` - First Internet Bank of Indiana
-              - `global_innovations_bank` - Global Innovations Bank
               - `grasshopper_bank` - Grasshopper Bank
               - `twin_city_bank` - Twin City Bank
 
@@ -145,15 +135,7 @@ class AsyncProgramsResource(AsyncAPIResource):
         self,
         *,
         name: str,
-        bank: Literal[
-            "blue_ridge_bank",
-            "core_bank",
-            "first_internet_bank",
-            "global_innovations_bank",
-            "grasshopper_bank",
-            "twin_city_bank",
-        ]
-        | Omit = omit,
+        bank: Literal["core_bank", "first_internet_bank", "grasshopper_bank", "twin_city_bank"] | Omit = omit,
         lending_maximum_extendable_credit: int | Omit = omit,
         reserve_account_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -176,10 +158,8 @@ class AsyncProgramsResource(AsyncAPIResource):
 
           bank: The bank for the program's accounts, defaults to First Internet Bank.
 
-              - `blue_ridge_bank` - Blue Ridge Bank, N.A.
               - `core_bank` - Core Bank
               - `first_internet_bank` - First Internet Bank of Indiana
-              - `global_innovations_bank` - Global Innovations Bank
               - `grasshopper_bank` - Grasshopper Bank
               - `twin_city_bank` - Twin City Bank
 
