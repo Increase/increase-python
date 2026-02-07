@@ -51,9 +51,6 @@ class CreatedByUser(BaseModel):
 class CreatedBy(BaseModel):
     """What object created the transfer, either via the API or the dashboard."""
 
-    api_key: Optional[CreatedByAPIKey] = None
-    """If present, details about the API key that created the transfer."""
-
     category: Literal["api_key", "oauth_application", "user"]
     """The type of object that created this transfer.
 
@@ -63,6 +60,9 @@ class CreatedBy(BaseModel):
     - `user` - A User in the Increase dashboard. Details will be under the `user`
       object.
     """
+
+    api_key: Optional[CreatedByAPIKey] = None
+    """If present, details about the API key that created the transfer."""
 
     oauth_application: Optional[CreatedByOAuthApplication] = None
     """If present, details about the OAuth Application that created the transfer."""

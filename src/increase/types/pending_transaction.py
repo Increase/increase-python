@@ -1118,49 +1118,6 @@ class Source(BaseModel):
     This is an object giving more details on the network-level event that caused the Pending Transaction. For example, for a card transaction this lists the merchant's industry and location.
     """
 
-    account_transfer_instruction: Optional[SourceAccountTransferInstruction] = None
-    """An Account Transfer Instruction object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `account_transfer_instruction`.
-    """
-
-    ach_transfer_instruction: Optional[SourceACHTransferInstruction] = None
-    """An ACH Transfer Instruction object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `ach_transfer_instruction`.
-    """
-
-    blockchain_offramp_transfer_instruction: Optional[SourceBlockchainOfframpTransferInstruction] = None
-    """A Blockchain Off-Ramp Transfer Instruction object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `blockchain_offramp_transfer_instruction`.
-    """
-
-    blockchain_onramp_transfer_instruction: Optional[SourceBlockchainOnrampTransferInstruction] = None
-    """A Blockchain On-Ramp Transfer Instruction object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `blockchain_onramp_transfer_instruction`.
-    """
-
-    card_authorization: Optional[SourceCardAuthorization] = None
-    """A Card Authorization object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `card_authorization`. Card Authorizations are temporary holds placed on
-    a customers funds with the intent to later clear a transaction.
-    """
-
-    card_push_transfer_instruction: Optional[SourceCardPushTransferInstruction] = None
-    """A Card Push Transfer Instruction object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `card_push_transfer_instruction`.
-    """
-
     category: Literal[
         "account_transfer_instruction",
         "ach_transfer_instruction",
@@ -1219,6 +1176,49 @@ class Source(BaseModel):
       `blockchain_offramp_transfer_instruction` object.
     - `other` - The Pending Transaction was made for an undocumented or deprecated
       reason.
+    """
+
+    account_transfer_instruction: Optional[SourceAccountTransferInstruction] = None
+    """An Account Transfer Instruction object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `account_transfer_instruction`.
+    """
+
+    ach_transfer_instruction: Optional[SourceACHTransferInstruction] = None
+    """An ACH Transfer Instruction object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `ach_transfer_instruction`.
+    """
+
+    blockchain_offramp_transfer_instruction: Optional[SourceBlockchainOfframpTransferInstruction] = None
+    """A Blockchain Off-Ramp Transfer Instruction object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `blockchain_offramp_transfer_instruction`.
+    """
+
+    blockchain_onramp_transfer_instruction: Optional[SourceBlockchainOnrampTransferInstruction] = None
+    """A Blockchain On-Ramp Transfer Instruction object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `blockchain_onramp_transfer_instruction`.
+    """
+
+    card_authorization: Optional[SourceCardAuthorization] = None
+    """A Card Authorization object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `card_authorization`. Card Authorizations are temporary holds placed on
+    a customers funds with the intent to later clear a transaction.
+    """
+
+    card_push_transfer_instruction: Optional[SourceCardPushTransferInstruction] = None
+    """A Card Push Transfer Instruction object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `card_push_transfer_instruction`.
     """
 
     check_deposit_instruction: Optional[SourceCheckDepositInstruction] = None

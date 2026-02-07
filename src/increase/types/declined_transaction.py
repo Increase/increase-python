@@ -1225,20 +1225,6 @@ class Source(BaseModel):
     This is an object giving more details on the network-level event that caused the Declined Transaction. For example, for a card transaction this lists the merchant's industry and location. Note that for backwards compatibility reasons, additional undocumented keys may appear in this object. These should be treated as deprecated and will be removed in the future.
     """
 
-    ach_decline: Optional[SourceACHDecline] = None
-    """An ACH Decline object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `ach_decline`.
-    """
-
-    card_decline: Optional[SourceCardDecline] = None
-    """A Card Decline object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `card_decline`.
-    """
-
     category: Literal[
         "ach_decline",
         "card_decline",
@@ -1270,6 +1256,20 @@ class Source(BaseModel):
       `check_deposit_rejection` object.
     - `other` - The Declined Transaction was made for an undocumented or deprecated
       reason.
+    """
+
+    ach_decline: Optional[SourceACHDecline] = None
+    """An ACH Decline object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `ach_decline`.
+    """
+
+    card_decline: Optional[SourceCardDecline] = None
+    """A Card Decline object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `card_decline`.
     """
 
     check_decline: Optional[SourceCheckDecline] = None
