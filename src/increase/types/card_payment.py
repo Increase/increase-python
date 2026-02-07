@@ -5510,6 +5510,58 @@ class ElementOther(BaseModel):
 
 
 class Element(BaseModel):
+    category: Literal[
+        "card_authorization",
+        "card_authentication",
+        "card_balance_inquiry",
+        "card_validation",
+        "card_decline",
+        "card_reversal",
+        "card_authorization_expiration",
+        "card_increment",
+        "card_settlement",
+        "card_refund",
+        "card_fuel_confirmation",
+        "card_financial",
+        "other",
+    ]
+    """The type of the resource.
+
+    We may add additional possible values for this enum over time; your application
+    should be able to handle such additions gracefully.
+
+    - `card_authorization` - Card Authorization: details will be under the
+      `card_authorization` object.
+    - `card_authentication` - Card Authentication: details will be under the
+      `card_authentication` object.
+    - `card_balance_inquiry` - Card Balance Inquiry: details will be under the
+      `card_balance_inquiry` object.
+    - `card_validation` - Inbound Card Validation: details will be under the
+      `card_validation` object.
+    - `card_decline` - Card Decline: details will be under the `card_decline`
+      object.
+    - `card_reversal` - Card Reversal: details will be under the `card_reversal`
+      object.
+    - `card_authorization_expiration` - Card Authorization Expiration: details will
+      be under the `card_authorization_expiration` object.
+    - `card_increment` - Card Increment: details will be under the `card_increment`
+      object.
+    - `card_settlement` - Card Settlement: details will be under the
+      `card_settlement` object.
+    - `card_refund` - Card Refund: details will be under the `card_refund` object.
+    - `card_fuel_confirmation` - Card Fuel Confirmation: details will be under the
+      `card_fuel_confirmation` object.
+    - `card_financial` - Card Financial: details will be under the `card_financial`
+      object.
+    - `other` - Unknown card payment element.
+    """
+
+    created_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+    the card payment element was created.
+    """
+
     card_authentication: Optional[ElementCardAuthentication] = None
     """A Card Authentication object.
 
@@ -5607,58 +5659,6 @@ class Element(BaseModel):
     equal to `card_validation`. Inbound Card Validations are requests from a
     merchant to verify that a card number and optionally its address and/or Card
     Verification Value are valid.
-    """
-
-    category: Literal[
-        "card_authorization",
-        "card_authentication",
-        "card_balance_inquiry",
-        "card_validation",
-        "card_decline",
-        "card_reversal",
-        "card_authorization_expiration",
-        "card_increment",
-        "card_settlement",
-        "card_refund",
-        "card_fuel_confirmation",
-        "card_financial",
-        "other",
-    ]
-    """The type of the resource.
-
-    We may add additional possible values for this enum over time; your application
-    should be able to handle such additions gracefully.
-
-    - `card_authorization` - Card Authorization: details will be under the
-      `card_authorization` object.
-    - `card_authentication` - Card Authentication: details will be under the
-      `card_authentication` object.
-    - `card_balance_inquiry` - Card Balance Inquiry: details will be under the
-      `card_balance_inquiry` object.
-    - `card_validation` - Inbound Card Validation: details will be under the
-      `card_validation` object.
-    - `card_decline` - Card Decline: details will be under the `card_decline`
-      object.
-    - `card_reversal` - Card Reversal: details will be under the `card_reversal`
-      object.
-    - `card_authorization_expiration` - Card Authorization Expiration: details will
-      be under the `card_authorization_expiration` object.
-    - `card_increment` - Card Increment: details will be under the `card_increment`
-      object.
-    - `card_settlement` - Card Settlement: details will be under the
-      `card_settlement` object.
-    - `card_refund` - Card Refund: details will be under the `card_refund` object.
-    - `card_fuel_confirmation` - Card Fuel Confirmation: details will be under the
-      `card_fuel_confirmation` object.
-    - `card_financial` - Card Financial: details will be under the `card_financial`
-      object.
-    - `other` - Unknown card payment element.
-    """
-
-    created_at: datetime
-    """
-    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-    the card payment element was created.
     """
 
     other: Optional[ElementOther] = None

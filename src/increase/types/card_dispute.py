@@ -802,6 +802,15 @@ class VisaNetworkEvent(BaseModel):
       Network Event: details will be under the `user_withdrawal_submitted` object.
     """
 
+    created_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+    the Visa Card Dispute Network Event was created.
+    """
+
+    dispute_financial_transaction_id: Optional[str] = None
+    """The dispute financial transaction that resulted from the network event, if any."""
+
     chargeback_accepted: Optional[VisaNetworkEventChargebackAccepted] = None
     """A Card Dispute Chargeback Accepted Visa Network Event object.
 
@@ -828,15 +837,6 @@ class VisaNetworkEvent(BaseModel):
     timed out Visa Card Dispute Network Event, which represents that the chargeback
     has timed out in the user's favor.
     """
-
-    created_at: datetime
-    """
-    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-    the Visa Card Dispute Network Event was created.
-    """
-
-    dispute_financial_transaction_id: Optional[str] = None
-    """The dispute financial transaction that resulted from the network event, if any."""
 
     merchant_prearbitration_decline_submitted: Optional[VisaNetworkEventMerchantPrearbitrationDeclineSubmitted] = None
     """
@@ -2523,14 +2523,6 @@ class VisaUserSubmission(BaseModel):
       Submission: details will be under the `user_prearbitration` object.
     """
 
-    chargeback: Optional[VisaUserSubmissionChargeback] = None
-    """A Visa Card Dispute Chargeback User Submission Chargeback Details object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `chargeback`. Contains the details specific to a Visa chargeback User
-    Submission for a Card Dispute.
-    """
-
     created_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
@@ -2555,14 +2547,6 @@ class VisaUserSubmission(BaseModel):
     Visa Card Dispute.
     """
 
-    merchant_prearbitration_decline: Optional[VisaUserSubmissionMerchantPrearbitrationDecline] = None
-    """A Visa Card Dispute Merchant Pre-Arbitration Decline User Submission object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `merchant_prearbitration_decline`. Contains the details specific to a
-    merchant prearbitration decline Visa Card Dispute User Submission.
-    """
-
     status: Literal["abandoned", "accepted", "further_information_requested", "pending_reviewing"]
     """The status of the Visa Card Dispute User Submission.
 
@@ -2577,6 +2561,22 @@ class VisaUserSubmission(BaseModel):
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the Visa Card Dispute User Submission was updated.
+    """
+
+    chargeback: Optional[VisaUserSubmissionChargeback] = None
+    """A Visa Card Dispute Chargeback User Submission Chargeback Details object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `chargeback`. Contains the details specific to a Visa chargeback User
+    Submission for a Card Dispute.
+    """
+
+    merchant_prearbitration_decline: Optional[VisaUserSubmissionMerchantPrearbitrationDecline] = None
+    """A Visa Card Dispute Merchant Pre-Arbitration Decline User Submission object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `merchant_prearbitration_decline`. Contains the details specific to a
+    merchant prearbitration decline Visa Card Dispute User Submission.
     """
 
     user_prearbitration: Optional[VisaUserSubmissionUserPrearbitration] = None

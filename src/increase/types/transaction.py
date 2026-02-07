@@ -3673,6 +3673,132 @@ class Source(BaseModel):
     This is an object giving more details on the network-level event that caused the Transaction. Note that for backwards compatibility reasons, additional undocumented keys may appear in this object. These should be treated as deprecated and will be removed in the future.
     """
 
+    category: Literal[
+        "account_transfer_intention",
+        "ach_transfer_intention",
+        "ach_transfer_rejection",
+        "ach_transfer_return",
+        "cashback_payment",
+        "card_dispute_acceptance",
+        "card_dispute_financial",
+        "card_dispute_loss",
+        "card_refund",
+        "card_settlement",
+        "card_financial",
+        "card_revenue_payment",
+        "check_deposit_acceptance",
+        "check_deposit_return",
+        "fednow_transfer_acknowledgement",
+        "check_transfer_deposit",
+        "fee_payment",
+        "inbound_ach_transfer",
+        "inbound_ach_transfer_return_intention",
+        "inbound_check_deposit_return_intention",
+        "inbound_check_adjustment",
+        "inbound_fednow_transfer_confirmation",
+        "inbound_real_time_payments_transfer_confirmation",
+        "inbound_wire_reversal",
+        "inbound_wire_transfer",
+        "inbound_wire_transfer_reversal",
+        "interest_payment",
+        "internal_source",
+        "real_time_payments_transfer_acknowledgement",
+        "sample_funds",
+        "wire_transfer_intention",
+        "swift_transfer_intention",
+        "swift_transfer_return",
+        "card_push_transfer_acceptance",
+        "account_revenue_payment",
+        "blockchain_onramp_transfer_intention",
+        "blockchain_offramp_transfer_settlement",
+        "other",
+    ]
+    """The type of the resource.
+
+    We may add additional possible values for this enum over time; your application
+    should be able to handle such additions gracefully.
+
+    - `account_transfer_intention` - Account Transfer Intention: details will be
+      under the `account_transfer_intention` object.
+    - `ach_transfer_intention` - ACH Transfer Intention: details will be under the
+      `ach_transfer_intention` object.
+    - `ach_transfer_rejection` - ACH Transfer Rejection: details will be under the
+      `ach_transfer_rejection` object.
+    - `ach_transfer_return` - ACH Transfer Return: details will be under the
+      `ach_transfer_return` object.
+    - `cashback_payment` - Cashback Payment: details will be under the
+      `cashback_payment` object.
+    - `card_dispute_acceptance` - Legacy Card Dispute Acceptance: details will be
+      under the `card_dispute_acceptance` object.
+    - `card_dispute_financial` - Card Dispute Financial: details will be under the
+      `card_dispute_financial` object.
+    - `card_dispute_loss` - Legacy Card Dispute Loss: details will be under the
+      `card_dispute_loss` object.
+    - `card_refund` - Card Refund: details will be under the `card_refund` object.
+    - `card_settlement` - Card Settlement: details will be under the
+      `card_settlement` object.
+    - `card_financial` - Card Financial: details will be under the `card_financial`
+      object.
+    - `card_revenue_payment` - Card Revenue Payment: details will be under the
+      `card_revenue_payment` object.
+    - `check_deposit_acceptance` - Check Deposit Acceptance: details will be under
+      the `check_deposit_acceptance` object.
+    - `check_deposit_return` - Check Deposit Return: details will be under the
+      `check_deposit_return` object.
+    - `fednow_transfer_acknowledgement` - FedNow Transfer Acknowledgement: details
+      will be under the `fednow_transfer_acknowledgement` object.
+    - `check_transfer_deposit` - Check Transfer Deposit: details will be under the
+      `check_transfer_deposit` object.
+    - `fee_payment` - Fee Payment: details will be under the `fee_payment` object.
+    - `inbound_ach_transfer` - Inbound ACH Transfer Intention: details will be under
+      the `inbound_ach_transfer` object.
+    - `inbound_ach_transfer_return_intention` - Inbound ACH Transfer Return
+      Intention: details will be under the `inbound_ach_transfer_return_intention`
+      object.
+    - `inbound_check_deposit_return_intention` - Inbound Check Deposit Return
+      Intention: details will be under the `inbound_check_deposit_return_intention`
+      object.
+    - `inbound_check_adjustment` - Inbound Check Adjustment: details will be under
+      the `inbound_check_adjustment` object.
+    - `inbound_fednow_transfer_confirmation` - Inbound FedNow Transfer Confirmation:
+      details will be under the `inbound_fednow_transfer_confirmation` object.
+    - `inbound_real_time_payments_transfer_confirmation` - Inbound Real-Time
+      Payments Transfer Confirmation: details will be under the
+      `inbound_real_time_payments_transfer_confirmation` object.
+    - `inbound_wire_reversal` - Inbound Wire Reversal: details will be under the
+      `inbound_wire_reversal` object.
+    - `inbound_wire_transfer` - Inbound Wire Transfer Intention: details will be
+      under the `inbound_wire_transfer` object.
+    - `inbound_wire_transfer_reversal` - Inbound Wire Transfer Reversal Intention:
+      details will be under the `inbound_wire_transfer_reversal` object.
+    - `interest_payment` - Interest Payment: details will be under the
+      `interest_payment` object.
+    - `internal_source` - Internal Source: details will be under the
+      `internal_source` object.
+    - `real_time_payments_transfer_acknowledgement` - Real-Time Payments Transfer
+      Acknowledgement: details will be under the
+      `real_time_payments_transfer_acknowledgement` object.
+    - `sample_funds` - Sample Funds: details will be under the `sample_funds`
+      object.
+    - `wire_transfer_intention` - Wire Transfer Intention: details will be under the
+      `wire_transfer_intention` object.
+    - `swift_transfer_intention` - Swift Transfer Intention: details will be under
+      the `swift_transfer_intention` object.
+    - `swift_transfer_return` - Swift Transfer Return: details will be under the
+      `swift_transfer_return` object.
+    - `card_push_transfer_acceptance` - Card Push Transfer Acceptance: details will
+      be under the `card_push_transfer_acceptance` object.
+    - `account_revenue_payment` - Account Revenue Payment: details will be under the
+      `account_revenue_payment` object.
+    - `blockchain_onramp_transfer_intention` - Blockchain On-Ramp Transfer
+      Intention: details will be under the `blockchain_onramp_transfer_intention`
+      object.
+    - `blockchain_offramp_transfer_settlement` - Blockchain Off-Ramp Transfer
+      Settlement: details will be under the `blockchain_offramp_transfer_settlement`
+      object.
+    - `other` - The Transaction was made for an undocumented or deprecated reason.
+    """
+
     account_revenue_payment: Optional[SourceAccountRevenuePayment] = None
     """An Account Revenue Payment object.
 
@@ -3805,132 +3931,6 @@ class Source(BaseModel):
     equal to `cashback_payment`. A Cashback Payment represents the cashback paid to
     a cardholder for a given period. Cashback is usually paid monthly for the prior
     month's transactions.
-    """
-
-    category: Literal[
-        "account_transfer_intention",
-        "ach_transfer_intention",
-        "ach_transfer_rejection",
-        "ach_transfer_return",
-        "cashback_payment",
-        "card_dispute_acceptance",
-        "card_dispute_financial",
-        "card_dispute_loss",
-        "card_refund",
-        "card_settlement",
-        "card_financial",
-        "card_revenue_payment",
-        "check_deposit_acceptance",
-        "check_deposit_return",
-        "fednow_transfer_acknowledgement",
-        "check_transfer_deposit",
-        "fee_payment",
-        "inbound_ach_transfer",
-        "inbound_ach_transfer_return_intention",
-        "inbound_check_deposit_return_intention",
-        "inbound_check_adjustment",
-        "inbound_fednow_transfer_confirmation",
-        "inbound_real_time_payments_transfer_confirmation",
-        "inbound_wire_reversal",
-        "inbound_wire_transfer",
-        "inbound_wire_transfer_reversal",
-        "interest_payment",
-        "internal_source",
-        "real_time_payments_transfer_acknowledgement",
-        "sample_funds",
-        "wire_transfer_intention",
-        "swift_transfer_intention",
-        "swift_transfer_return",
-        "card_push_transfer_acceptance",
-        "account_revenue_payment",
-        "blockchain_onramp_transfer_intention",
-        "blockchain_offramp_transfer_settlement",
-        "other",
-    ]
-    """The type of the resource.
-
-    We may add additional possible values for this enum over time; your application
-    should be able to handle such additions gracefully.
-
-    - `account_transfer_intention` - Account Transfer Intention: details will be
-      under the `account_transfer_intention` object.
-    - `ach_transfer_intention` - ACH Transfer Intention: details will be under the
-      `ach_transfer_intention` object.
-    - `ach_transfer_rejection` - ACH Transfer Rejection: details will be under the
-      `ach_transfer_rejection` object.
-    - `ach_transfer_return` - ACH Transfer Return: details will be under the
-      `ach_transfer_return` object.
-    - `cashback_payment` - Cashback Payment: details will be under the
-      `cashback_payment` object.
-    - `card_dispute_acceptance` - Legacy Card Dispute Acceptance: details will be
-      under the `card_dispute_acceptance` object.
-    - `card_dispute_financial` - Card Dispute Financial: details will be under the
-      `card_dispute_financial` object.
-    - `card_dispute_loss` - Legacy Card Dispute Loss: details will be under the
-      `card_dispute_loss` object.
-    - `card_refund` - Card Refund: details will be under the `card_refund` object.
-    - `card_settlement` - Card Settlement: details will be under the
-      `card_settlement` object.
-    - `card_financial` - Card Financial: details will be under the `card_financial`
-      object.
-    - `card_revenue_payment` - Card Revenue Payment: details will be under the
-      `card_revenue_payment` object.
-    - `check_deposit_acceptance` - Check Deposit Acceptance: details will be under
-      the `check_deposit_acceptance` object.
-    - `check_deposit_return` - Check Deposit Return: details will be under the
-      `check_deposit_return` object.
-    - `fednow_transfer_acknowledgement` - FedNow Transfer Acknowledgement: details
-      will be under the `fednow_transfer_acknowledgement` object.
-    - `check_transfer_deposit` - Check Transfer Deposit: details will be under the
-      `check_transfer_deposit` object.
-    - `fee_payment` - Fee Payment: details will be under the `fee_payment` object.
-    - `inbound_ach_transfer` - Inbound ACH Transfer Intention: details will be under
-      the `inbound_ach_transfer` object.
-    - `inbound_ach_transfer_return_intention` - Inbound ACH Transfer Return
-      Intention: details will be under the `inbound_ach_transfer_return_intention`
-      object.
-    - `inbound_check_deposit_return_intention` - Inbound Check Deposit Return
-      Intention: details will be under the `inbound_check_deposit_return_intention`
-      object.
-    - `inbound_check_adjustment` - Inbound Check Adjustment: details will be under
-      the `inbound_check_adjustment` object.
-    - `inbound_fednow_transfer_confirmation` - Inbound FedNow Transfer Confirmation:
-      details will be under the `inbound_fednow_transfer_confirmation` object.
-    - `inbound_real_time_payments_transfer_confirmation` - Inbound Real-Time
-      Payments Transfer Confirmation: details will be under the
-      `inbound_real_time_payments_transfer_confirmation` object.
-    - `inbound_wire_reversal` - Inbound Wire Reversal: details will be under the
-      `inbound_wire_reversal` object.
-    - `inbound_wire_transfer` - Inbound Wire Transfer Intention: details will be
-      under the `inbound_wire_transfer` object.
-    - `inbound_wire_transfer_reversal` - Inbound Wire Transfer Reversal Intention:
-      details will be under the `inbound_wire_transfer_reversal` object.
-    - `interest_payment` - Interest Payment: details will be under the
-      `interest_payment` object.
-    - `internal_source` - Internal Source: details will be under the
-      `internal_source` object.
-    - `real_time_payments_transfer_acknowledgement` - Real-Time Payments Transfer
-      Acknowledgement: details will be under the
-      `real_time_payments_transfer_acknowledgement` object.
-    - `sample_funds` - Sample Funds: details will be under the `sample_funds`
-      object.
-    - `wire_transfer_intention` - Wire Transfer Intention: details will be under the
-      `wire_transfer_intention` object.
-    - `swift_transfer_intention` - Swift Transfer Intention: details will be under
-      the `swift_transfer_intention` object.
-    - `swift_transfer_return` - Swift Transfer Return: details will be under the
-      `swift_transfer_return` object.
-    - `card_push_transfer_acceptance` - Card Push Transfer Acceptance: details will
-      be under the `card_push_transfer_acceptance` object.
-    - `account_revenue_payment` - Account Revenue Payment: details will be under the
-      `account_revenue_payment` object.
-    - `blockchain_onramp_transfer_intention` - Blockchain On-Ramp Transfer
-      Intention: details will be under the `blockchain_onramp_transfer_intention`
-      object.
-    - `blockchain_offramp_transfer_settlement` - Blockchain Off-Ramp Transfer
-      Settlement: details will be under the `blockchain_offramp_transfer_settlement`
-      object.
-    - `other` - The Transaction was made for an undocumented or deprecated reason.
     """
 
     check_deposit_acceptance: Optional[SourceCheckDepositAcceptance] = None
