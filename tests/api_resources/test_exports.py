@@ -78,6 +78,10 @@ class TestExports:
                 },
             },
             vendor_csv={},
+            voided_check={
+                "account_number_id": "account_number_id",
+                "payer": [{"line": "x"}],
+            },
         )
         assert_matches_type(Export, export, path=["response"])
 
@@ -252,6 +256,10 @@ class TestAsyncExports:
                 },
             },
             vendor_csv={},
+            voided_check={
+                "account_number_id": "account_number_id",
+                "payer": [{"line": "x"}],
+            },
         )
         assert_matches_type(Export, export, path=["response"])
 

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Union, Iterable
 from datetime import date, datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
@@ -23,6 +23,8 @@ __all__ = [
     "TransactionCsv",
     "TransactionCsvCreatedAt",
     "VendorCsv",
+    "VoidedCheck",
+    "VoidedCheckPayer",
 ]
 
 
@@ -38,6 +40,7 @@ class ExportCreateParams(TypedDict, total=False):
             "vendor_csv",
             "account_verification_letter",
             "funding_instructions",
+            "voided_check",
         ]
     ]
     """The type of Export to create.
@@ -56,6 +59,7 @@ class ExportCreateParams(TypedDict, total=False):
       management dashboard.
     - `account_verification_letter` - A PDF of an account verification letter.
     - `funding_instructions` - A PDF of funding instructions.
+    - `voided_check` - A PDF of a voided check.
     """
 
     account_statement_bai2: AccountStatementBai2
@@ -110,6 +114,12 @@ class ExportCreateParams(TypedDict, total=False):
     """Options for the created export.
 
     Required if `category` is equal to `vendor_csv`.
+    """
+
+    voided_check: VoidedCheck
+    """Options for the created export.
+
+    Required if `category` is equal to `voided_check`.
     """
 
 
@@ -346,3 +356,21 @@ class VendorCsv(TypedDict, total=False):
     """
 
     pass
+
+
+class VoidedCheckPayer(TypedDict, total=False):
+    line: Required[str]
+    """The contents of the line."""
+
+
+class VoidedCheck(TypedDict, total=False):
+    """Options for the created export.
+
+    Required if `category` is equal to `voided_check`.
+    """
+
+    account_number_id: Required[str]
+    """The Account Number for the voided check."""
+
+    payer: Iterable[VoidedCheckPayer]
+    """The payer information to be printed on the check."""
