@@ -20,6 +20,8 @@ __all__ = [
     "BookkeepingAccountBalanceCsvCreatedAt",
     "DashboardTableCsv",
     "EntityCsv",
+    "FeeCsv",
+    "FeeCsvCreatedAt",
     "Form1099Int",
     "Form1099Misc",
     "FundingInstructions",
@@ -146,6 +148,32 @@ class EntityCsv(BaseModel):
     """
 
     pass
+
+
+class FeeCsvCreatedAt(BaseModel):
+    """Filter fees by their created date.
+
+    The time range must not include any fees that are part of an open fee statement.
+    """
+
+    after: Optional[datetime] = None
+    """Filter fees created after this time."""
+
+    before: Optional[datetime] = None
+    """Filter fees created before this time."""
+
+
+class FeeCsv(BaseModel):
+    """Details of the fee CSV export.
+
+    This field will be present when the `category` is equal to `fee_csv`.
+    """
+
+    created_at: Optional[FeeCsvCreatedAt] = None
+    """Filter fees by their created date.
+
+    The time range must not include any fees that are part of an open fee statement.
+    """
 
 
 class Form1099Int(BaseModel):
@@ -309,6 +337,7 @@ class Export(BaseModel):
         "funding_instructions",
         "form_1099_int",
         "form_1099_misc",
+        "fee_csv",
         "voided_check",
     ]
     """The category of the Export.
@@ -334,6 +363,8 @@ class Export(BaseModel):
     - `funding_instructions` - A PDF of funding instructions.
     - `form_1099_int` - A PDF of an Internal Revenue Service Form 1099-INT.
     - `form_1099_misc` - A PDF of an Internal Revenue Service Form 1099-MISC.
+    - `fee_csv` - Export a CSV of fees. The time range must not include any fees
+      that are part of an open fee statement.
     - `voided_check` - A PDF of a voided check.
     """
 
@@ -351,6 +382,12 @@ class Export(BaseModel):
     """Details of the entity CSV export.
 
     This field will be present when the `category` is equal to `entity_csv`.
+    """
+
+    fee_csv: Optional[FeeCsv] = None
+    """Details of the fee CSV export.
+
+    This field will be present when the `category` is equal to `fee_csv`.
     """
 
     form_1099_int: Optional[Form1099Int] = None

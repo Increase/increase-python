@@ -25,6 +25,7 @@ class ExportListParams(TypedDict, total=False):
         "funding_instructions",
         "form_1099_int",
         "form_1099_misc",
+        "fee_csv",
         "voided_check",
     ]
     """Filter Exports for those with the specified category.
@@ -47,6 +48,8 @@ class ExportListParams(TypedDict, total=False):
     - `funding_instructions` - A PDF of funding instructions.
     - `form_1099_int` - A PDF of an Internal Revenue Service Form 1099-INT.
     - `form_1099_misc` - A PDF of an Internal Revenue Service Form 1099-MISC.
+    - `fee_csv` - Export a CSV of fees. The time range must not include any fees
+      that are part of an open fee statement.
     - `voided_check` - A PDF of a voided check.
     """
 
