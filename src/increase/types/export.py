@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import TYPE_CHECKING, Dict, Optional
+from typing import TYPE_CHECKING, Dict, List, Optional
 from datetime import date, datetime
 from typing_extensions import Literal
 
@@ -27,6 +27,8 @@ __all__ = [
     "TransactionCsv",
     "TransactionCsvCreatedAt",
     "VendorCsv",
+    "VoidedCheck",
+    "VoidedCheckPayer",
 ]
 
 
@@ -233,6 +235,24 @@ class VendorCsv(BaseModel):
     pass
 
 
+class VoidedCheckPayer(BaseModel):
+    line: str
+    """The contents of the line."""
+
+
+class VoidedCheck(BaseModel):
+    """Details of the voided check export.
+
+    This field will be present when the `category` is equal to `voided_check`.
+    """
+
+    account_number_id: str
+    """The Account Number for the voided check."""
+
+    payer: List[VoidedCheckPayer]
+    """The payer information printed on the check."""
+
+
 class Export(BaseModel):
     """Exports are generated files.
 
@@ -289,6 +309,7 @@ class Export(BaseModel):
         "funding_instructions",
         "form_1099_int",
         "form_1099_misc",
+        "voided_check",
     ]
     """The category of the Export.
 
@@ -313,6 +334,7 @@ class Export(BaseModel):
     - `funding_instructions` - A PDF of funding instructions.
     - `form_1099_int` - A PDF of an Internal Revenue Service Form 1099-INT.
     - `form_1099_misc` - A PDF of an Internal Revenue Service Form 1099-MISC.
+    - `voided_check` - A PDF of a voided check.
     """
 
     created_at: datetime
@@ -389,6 +411,12 @@ class Export(BaseModel):
     """Details of the vendor CSV export.
 
     This field will be present when the `category` is equal to `vendor_csv`.
+    """
+
+    voided_check: Optional[VoidedCheck] = None
+    """Details of the voided check export.
+
+    This field will be present when the `category` is equal to `voided_check`.
     """
 
     if TYPE_CHECKING:

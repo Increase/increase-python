@@ -57,6 +57,7 @@ class ExportsResource(SyncAPIResource):
             "vendor_csv",
             "account_verification_letter",
             "funding_instructions",
+            "voided_check",
         ],
         account_statement_bai2: export_create_params.AccountStatementBai2 | Omit = omit,
         account_statement_ofx: export_create_params.AccountStatementOfx | Omit = omit,
@@ -67,6 +68,7 @@ class ExportsResource(SyncAPIResource):
         funding_instructions: export_create_params.FundingInstructions | Omit = omit,
         transaction_csv: export_create_params.TransactionCsv | Omit = omit,
         vendor_csv: export_create_params.VendorCsv | Omit = omit,
+        voided_check: export_create_params.VoidedCheck | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -95,6 +97,7 @@ class ExportsResource(SyncAPIResource):
                 management dashboard.
               - `account_verification_letter` - A PDF of an account verification letter.
               - `funding_instructions` - A PDF of funding instructions.
+              - `voided_check` - A PDF of a voided check.
 
           account_statement_bai2: Options for the created export. Required if `category` is equal to
               `account_statement_bai2`.
@@ -121,6 +124,9 @@ class ExportsResource(SyncAPIResource):
 
           vendor_csv: Options for the created export. Required if `category` is equal to `vendor_csv`.
 
+          voided_check: Options for the created export. Required if `category` is equal to
+              `voided_check`.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -145,6 +151,7 @@ class ExportsResource(SyncAPIResource):
                     "funding_instructions": funding_instructions,
                     "transaction_csv": transaction_csv,
                     "vendor_csv": vendor_csv,
+                    "voided_check": voided_check,
                 },
                 export_create_params.ExportCreateParams,
             ),
@@ -209,6 +216,7 @@ class ExportsResource(SyncAPIResource):
             "funding_instructions",
             "form_1099_int",
             "form_1099_misc",
+            "voided_check",
         ]
         | Omit = omit,
         created_at: export_list_params.CreatedAt | Omit = omit,
@@ -249,6 +257,7 @@ class ExportsResource(SyncAPIResource):
               - `funding_instructions` - A PDF of funding instructions.
               - `form_1099_int` - A PDF of an Internal Revenue Service Form 1099-INT.
               - `form_1099_misc` - A PDF of an Internal Revenue Service Form 1099-MISC.
+              - `voided_check` - A PDF of a voided check.
 
           cursor: Return the page of entries after this one.
 
@@ -327,6 +336,7 @@ class AsyncExportsResource(AsyncAPIResource):
             "vendor_csv",
             "account_verification_letter",
             "funding_instructions",
+            "voided_check",
         ],
         account_statement_bai2: export_create_params.AccountStatementBai2 | Omit = omit,
         account_statement_ofx: export_create_params.AccountStatementOfx | Omit = omit,
@@ -337,6 +347,7 @@ class AsyncExportsResource(AsyncAPIResource):
         funding_instructions: export_create_params.FundingInstructions | Omit = omit,
         transaction_csv: export_create_params.TransactionCsv | Omit = omit,
         vendor_csv: export_create_params.VendorCsv | Omit = omit,
+        voided_check: export_create_params.VoidedCheck | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -365,6 +376,7 @@ class AsyncExportsResource(AsyncAPIResource):
                 management dashboard.
               - `account_verification_letter` - A PDF of an account verification letter.
               - `funding_instructions` - A PDF of funding instructions.
+              - `voided_check` - A PDF of a voided check.
 
           account_statement_bai2: Options for the created export. Required if `category` is equal to
               `account_statement_bai2`.
@@ -391,6 +403,9 @@ class AsyncExportsResource(AsyncAPIResource):
 
           vendor_csv: Options for the created export. Required if `category` is equal to `vendor_csv`.
 
+          voided_check: Options for the created export. Required if `category` is equal to
+              `voided_check`.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -415,6 +430,7 @@ class AsyncExportsResource(AsyncAPIResource):
                     "funding_instructions": funding_instructions,
                     "transaction_csv": transaction_csv,
                     "vendor_csv": vendor_csv,
+                    "voided_check": voided_check,
                 },
                 export_create_params.ExportCreateParams,
             ),
@@ -479,6 +495,7 @@ class AsyncExportsResource(AsyncAPIResource):
             "funding_instructions",
             "form_1099_int",
             "form_1099_misc",
+            "voided_check",
         ]
         | Omit = omit,
         created_at: export_list_params.CreatedAt | Omit = omit,
@@ -519,6 +536,7 @@ class AsyncExportsResource(AsyncAPIResource):
               - `funding_instructions` - A PDF of funding instructions.
               - `form_1099_int` - A PDF of an Internal Revenue Service Form 1099-INT.
               - `form_1099_misc` - A PDF of an Internal Revenue Service Form 1099-MISC.
+              - `voided_check` - A PDF of a voided check.
 
           cursor: Return the page of entries after this one.
 

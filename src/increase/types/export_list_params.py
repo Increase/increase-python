@@ -25,6 +25,7 @@ class ExportListParams(TypedDict, total=False):
         "funding_instructions",
         "form_1099_int",
         "form_1099_misc",
+        "voided_check",
     ]
     """Filter Exports for those with the specified category.
 
@@ -46,6 +47,7 @@ class ExportListParams(TypedDict, total=False):
     - `funding_instructions` - A PDF of funding instructions.
     - `form_1099_int` - A PDF of an Internal Revenue Service Form 1099-INT.
     - `form_1099_misc` - A PDF of an Internal Revenue Service Form 1099-MISC.
+    - `voided_check` - A PDF of a voided check.
     """
 
     created_at: CreatedAt
