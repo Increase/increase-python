@@ -1164,7 +1164,7 @@ class SourceCardFinancialVerification(BaseModel):
 class SourceCardFinancial(BaseModel):
     """A Card Financial object.
 
-    This field will be present in the JSON response if and only if `category` is equal to `card_financial`. Card Financials are temporary holds placed on a customers funds with the intent to later clear a transaction.
+    This field will be present in the JSON response if and only if `category` is equal to `card_financial`. Card Financials are temporary holds placed on a customer's funds with the intent to later clear a transaction.
     """
 
     id: str
@@ -1402,7 +1402,7 @@ class SourceCardRefundCashback(BaseModel):
 
 
 class SourceCardRefundInterchange(BaseModel):
-    """Interchange assessed as a part of this transaciton."""
+    """Interchange assessed as a part of this transaction."""
 
     amount: str
     """
@@ -1871,7 +1871,7 @@ class SourceCardRefundPurchaseDetails(BaseModel):
 class SourceCardRefund(BaseModel):
     """A Card Refund object.
 
-    This field will be present in the JSON response if and only if `category` is equal to `card_refund`. Card Refunds move money back to the cardholder. While they are usually connected to a Card Settlement an acquirer can also refund money directly to a card without relation to a transaction.
+    This field will be present in the JSON response if and only if `category` is equal to `card_refund`. Card Refunds move money back to the cardholder. While they are usually connected to a Card Settlement, an acquirer can also refund money directly to a card without relation to a transaction.
     """
 
     id: str
@@ -1901,7 +1901,7 @@ class SourceCardRefund(BaseModel):
     """
 
     interchange: Optional[SourceCardRefundInterchange] = None
-    """Interchange assessed as a part of this transaciton."""
+    """Interchange assessed as a part of this transaction."""
 
     merchant_acceptor_id: str
     """
@@ -2499,7 +2499,7 @@ class SourceCardSettlementPurchaseDetails(BaseModel):
 class SourceCardSettlementSurcharge(BaseModel):
     """Surcharge amount details, if applicable.
 
-    The amount is positive if the surcharge is added to to the overall transaction amount (surcharge), and negative if the surcharge is deducted from the overall transaction amount (discount).
+    The amount is positive if the surcharge is added to the overall transaction amount (surcharge), and negative if the surcharge is deducted from the overall transaction amount (discount).
     """
 
     amount: int
@@ -2610,7 +2610,7 @@ class SourceCardSettlement(BaseModel):
     surcharge: Optional[SourceCardSettlementSurcharge] = None
     """Surcharge amount details, if applicable.
 
-    The amount is positive if the surcharge is added to to the overall transaction
+    The amount is positive if the surcharge is added to the overall transaction
     amount (surcharge), and negative if the surcharge is deducted from the overall
     transaction amount (discount).
     """
@@ -3889,7 +3889,7 @@ class Source(BaseModel):
 
     This field will be present in the JSON response if and only if `category` is
     equal to `card_financial`. Card Financials are temporary holds placed on a
-    customers funds with the intent to later clear a transaction.
+    customer's funds with the intent to later clear a transaction.
     """
 
     card_push_transfer_acceptance: Optional[SourceCardPushTransferAcceptance] = None
@@ -3906,7 +3906,7 @@ class Source(BaseModel):
 
     This field will be present in the JSON response if and only if `category` is
     equal to `card_refund`. Card Refunds move money back to the cardholder. While
-    they are usually connected to a Card Settlement an acquirer can also refund
+    they are usually connected to a Card Settlement, an acquirer can also refund
     money directly to a card without relation to a transaction.
     """
 

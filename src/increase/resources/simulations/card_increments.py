@@ -63,7 +63,7 @@ class CardIncrementsResource(SyncAPIResource):
         Args:
           amount: The amount of the increment in minor units in the card authorization's currency.
 
-          card_payment_id: The identifier of the Card Payment to create a increment on.
+          card_payment_id: The identifier of the Card Payment to create an increment on.
 
           event_subscription_id: The identifier of the Event Subscription to use. If provided, will override the
               default real time event subscription. Because you can only create one real time
@@ -143,7 +143,7 @@ class AsyncCardIncrementsResource(AsyncAPIResource):
         Args:
           amount: The amount of the increment in minor units in the card authorization's currency.
 
-          card_payment_id: The identifier of the Card Payment to create a increment on.
+          card_payment_id: The identifier of the Card Payment to create an increment on.
 
           event_subscription_id: The identifier of the Event Subscription to use. If provided, will override the
               default real time event subscription. Because you can only create one real time

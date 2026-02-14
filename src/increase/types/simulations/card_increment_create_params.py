@@ -14,7 +14,7 @@ class CardIncrementCreateParams(TypedDict, total=False):
     """
 
     card_payment_id: Required[str]
-    """The identifier of the Card Payment to create a increment on."""
+    """The identifier of the Card Payment to create an increment on."""
 
     event_subscription_id: str
     """The identifier of the Event Subscription to use.

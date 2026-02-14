@@ -624,7 +624,7 @@ class Submission(BaseModel):
     submitted_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-    the transfer was submitted to card network.
+    the transfer was submitted to the card network.
     """
 
     trace_number: str

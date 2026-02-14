@@ -44,7 +44,7 @@ class AccountStatement(BaseModel):
     """
 
     ending_balance: int
-    """The Account's balance at the start of its statement period."""
+    """The Account's balance at the end of its statement period."""
 
     file_id: str
     """The identifier of the File containing a PDF of the statement."""

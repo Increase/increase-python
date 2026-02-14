@@ -821,7 +821,7 @@ class ElementCardAuthorizationVerification(BaseModel):
 class ElementCardAuthorization(BaseModel):
     """A Card Authorization object.
 
-    This field will be present in the JSON response if and only if `category` is equal to `card_authorization`. Card Authorizations are temporary holds placed on a customers funds with the intent to later clear a transaction.
+    This field will be present in the JSON response if and only if `category` is equal to `card_authorization`. Card Authorizations are temporary holds placed on a customer's funds with the intent to later clear a transaction.
     """
 
     id: str
@@ -2894,7 +2894,7 @@ class ElementCardFinancialVerification(BaseModel):
 class ElementCardFinancial(BaseModel):
     """A Card Financial object.
 
-    This field will be present in the JSON response if and only if `category` is equal to `card_financial`. Card Financials are temporary holds placed on a customers funds with the intent to later clear a transaction.
+    This field will be present in the JSON response if and only if `category` is equal to `card_financial`. Card Financials are temporary holds placed on a customer's funds with the intent to later clear a transaction.
     """
 
     id: str
@@ -3543,7 +3543,7 @@ class ElementCardRefundCashback(BaseModel):
 
 
 class ElementCardRefundInterchange(BaseModel):
-    """Interchange assessed as a part of this transaciton."""
+    """Interchange assessed as a part of this transaction."""
 
     amount: str
     """
@@ -4012,7 +4012,7 @@ class ElementCardRefundPurchaseDetails(BaseModel):
 class ElementCardRefund(BaseModel):
     """A Card Refund object.
 
-    This field will be present in the JSON response if and only if `category` is equal to `card_refund`. Card Refunds move money back to the cardholder. While they are usually connected to a Card Settlement an acquirer can also refund money directly to a card without relation to a transaction.
+    This field will be present in the JSON response if and only if `category` is equal to `card_refund`. Card Refunds move money back to the cardholder. While they are usually connected to a Card Settlement, an acquirer can also refund money directly to a card without relation to a transaction.
     """
 
     id: str
@@ -4042,7 +4042,7 @@ class ElementCardRefund(BaseModel):
     """
 
     interchange: Optional[ElementCardRefundInterchange] = None
-    """Interchange assessed as a part of this transaciton."""
+    """Interchange assessed as a part of this transaction."""
 
     merchant_acceptor_id: str
     """
@@ -4762,7 +4762,7 @@ class ElementCardSettlementPurchaseDetails(BaseModel):
 class ElementCardSettlementSurcharge(BaseModel):
     """Surcharge amount details, if applicable.
 
-    The amount is positive if the surcharge is added to to the overall transaction amount (surcharge), and negative if the surcharge is deducted from the overall transaction amount (discount).
+    The amount is positive if the surcharge is added to the overall transaction amount (surcharge), and negative if the surcharge is deducted from the overall transaction amount (discount).
     """
 
     amount: int
@@ -4873,7 +4873,7 @@ class ElementCardSettlement(BaseModel):
     surcharge: Optional[ElementCardSettlementSurcharge] = None
     """Surcharge amount details, if applicable.
 
-    The amount is positive if the surcharge is added to to the overall transaction
+    The amount is positive if the surcharge is added to the overall transaction
     amount (surcharge), and negative if the surcharge is deducted from the overall
     transaction amount (discount).
     """
@@ -5575,7 +5575,7 @@ class Element(BaseModel):
 
     This field will be present in the JSON response if and only if `category` is
     equal to `card_authorization`. Card Authorizations are temporary holds placed on
-    a customers funds with the intent to later clear a transaction.
+    a customer's funds with the intent to later clear a transaction.
     """
 
     card_authorization_expiration: Optional[ElementCardAuthorizationExpiration] = None
@@ -5607,7 +5607,7 @@ class Element(BaseModel):
 
     This field will be present in the JSON response if and only if `category` is
     equal to `card_financial`. Card Financials are temporary holds placed on a
-    customers funds with the intent to later clear a transaction.
+    customer's funds with the intent to later clear a transaction.
     """
 
     card_fuel_confirmation: Optional[ElementCardFuelConfirmation] = None
@@ -5631,7 +5631,7 @@ class Element(BaseModel):
 
     This field will be present in the JSON response if and only if `category` is
     equal to `card_refund`. Card Refunds move money back to the cardholder. While
-    they are usually connected to a Card Settlement an acquirer can also refund
+    they are usually connected to a Card Settlement, an acquirer can also refund
     money directly to a card without relation to a transaction.
     """
 

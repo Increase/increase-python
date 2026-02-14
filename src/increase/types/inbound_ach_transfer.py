@@ -357,7 +357,7 @@ class NotificationOfChange(BaseModel):
     """The new account number provided in the notification of change."""
 
     updated_routing_number: Optional[str] = None
-    """The new account number provided in the notification of change."""
+    """The new routing number provided in the notification of change."""
 
 
 class Settlement(BaseModel):

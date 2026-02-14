@@ -61,10 +61,10 @@ class ACHTransfersResource(SyncAPIResource):
     ) -> ACHTransfer:
         """
         Simulates the acknowledgement of an [ACH Transfer](#ach-transfers) by the
-        Federal Reserve. This transfer must first have a `status` of `submitted` . In
+        Federal Reserve. This transfer must first have a `status` of `submitted`. In
         production, the Federal Reserve generally acknowledges submitted ACH files
         within 30 minutes. Since sandbox ACH Transfers are not submitted to the Federal
-        Reserve, this endpoint allows you to skip that delay and add the acknowledgment
+        Reserve, this endpoint allows you to skip that delay and add the acknowledgement
         subresource to the ACH Transfer.
 
         Args:
@@ -623,10 +623,10 @@ class AsyncACHTransfersResource(AsyncAPIResource):
     ) -> ACHTransfer:
         """
         Simulates the acknowledgement of an [ACH Transfer](#ach-transfers) by the
-        Federal Reserve. This transfer must first have a `status` of `submitted` . In
+        Federal Reserve. This transfer must first have a `status` of `submitted`. In
         production, the Federal Reserve generally acknowledges submitted ACH files
         within 30 minutes. Since sandbox ACH Transfers are not submitted to the Federal
-        Reserve, this endpoint allows you to skip that delay and add the acknowledgment
+        Reserve, this endpoint allows you to skip that delay and add the acknowledgement
         subresource to the ACH Transfer.
 
         Args:

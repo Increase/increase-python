@@ -18,6 +18,6 @@ class FileLinkCreateParams(TypedDict, total=False):
     expires_at: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
     """The time at which the File Link will expire.
 
-    The default is 1 hour from the time of the request. The maxiumum is 1 day from
+    The default is 1 hour from the time of the request. The maximum is 1 day from
     the time of the request.
     """

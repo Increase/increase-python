@@ -149,7 +149,7 @@ class InboundMailItemsResource(SyncAPIResource):
         idempotency_key: str | None = None,
     ) -> InboundMailItem:
         """
-        Action a Inbound Mail Item
+        Action an Inbound Mail Item
 
         Args:
           inbound_mail_item_id: The identifier of the Inbound Mail Item to action.
@@ -309,7 +309,7 @@ class AsyncInboundMailItemsResource(AsyncAPIResource):
         idempotency_key: str | None = None,
     ) -> InboundMailItem:
         """
-        Action a Inbound Mail Item
+        Action an Inbound Mail Item
 
         Args:
           inbound_mail_item_id: The identifier of the Inbound Mail Item to action.

@@ -660,7 +660,7 @@ class Submission(BaseModel):
     expected_funds_settlement_at: datetime.datetime
     """When the transfer is expected to settle in the recipient's account.
 
-    Credits may be available sooner, at the receiving banks discretion. The FedACH
+    Credits may be available sooner, at the receiving bank's discretion. The FedACH
     schedule is published
     [here](https://www.frbservices.org/resources/resource-centers/same-day-ach/fedach-processing-schedule.html).
     """
@@ -805,7 +805,7 @@ class ACHTransfer(BaseModel):
     individual_name: Optional[str] = None
     """The name of the transfer recipient.
 
-    This value is information and not verified by the recipient's bank.
+    This value is informational and not verified by the recipient's bank.
     """
 
     network: Literal["ach"]
