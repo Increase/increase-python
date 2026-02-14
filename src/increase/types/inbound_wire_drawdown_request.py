@@ -25,7 +25,7 @@ class InboundWireDrawdownRequest(BaseModel):
     created_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-    the inbound wire drawdown requested was created.
+    the inbound wire drawdown request was created.
     """
 
     creditor_account_number: str

@@ -9,7 +9,7 @@ __all__ = ["BookkeepingBalanceLookup"]
 
 class BookkeepingBalanceLookup(BaseModel):
     """
-    Represents a request to lookup the balance of an Bookkeeping Account at a given point in time.
+    Represents a request to lookup the balance of a Bookkeeping Account at a given point in time.
     """
 
     balance: int

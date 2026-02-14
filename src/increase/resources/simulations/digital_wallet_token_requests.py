@@ -54,7 +54,7 @@ class DigitalWalletTokenRequestsResource(SyncAPIResource):
         idempotency_key: str | None = None,
     ) -> DigitalWalletTokenRequestCreateResponse:
         """
-        Simulates a user attempting add a [Card](#cards) to a digital wallet such as
+        Simulates a user attempting to add a [Card](#cards) to a digital wallet such as
         Apple Pay.
 
         Args:
@@ -119,7 +119,7 @@ class AsyncDigitalWalletTokenRequestsResource(AsyncAPIResource):
         idempotency_key: str | None = None,
     ) -> DigitalWalletTokenRequestCreateResponse:
         """
-        Simulates a user attempting add a [Card](#cards) to a digital wallet such as
+        Simulates a user attempting to add a [Card](#cards) to a digital wallet such as
         Apple Pay.
 
         Args:
