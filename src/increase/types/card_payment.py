@@ -681,6 +681,41 @@ class ElementCardAuthorizationNetworkDetailsVisa(BaseModel):
     - `other` - An unspecific reason for stand-in processing.
     """
 
+    terminal_entry_capability: Optional[
+        Literal[
+            "unknown",
+            "terminal_not_used",
+            "magnetic_stripe",
+            "barcode",
+            "optical_character_recognition",
+            "chip_or_contactless",
+            "contactless_only",
+            "no_capability",
+        ]
+    ] = None
+    """The capability of the terminal being used to read the card.
+
+    Shows whether a terminal can e.g., accept chip cards or if it only supports
+    magnetic stripe reads. This reflects the highest capability of the terminal —
+    for example, a terminal that supports both chip and magnetic stripe will be
+    identified as chip-capable.
+
+    - `unknown` - Unknown
+    - `terminal_not_used` - No terminal was used for this transaction.
+    - `magnetic_stripe` - The terminal can only read magnetic stripes and does not
+      have chip or contactless reading capability.
+    - `barcode` - The terminal can only read barcodes.
+    - `optical_character_recognition` - The terminal can only read cards via Optical
+      Character Recognition.
+    - `chip_or_contactless` - The terminal supports contact chip cards and can also
+      read the magnetic stripe. If contact chip is supported, this value is used
+      regardless of whether contactless is also supported.
+    - `contactless_only` - The terminal supports contactless reads but does not
+      support contact chip. Only used when the terminal lacks contact chip
+      capability.
+    - `no_capability` - The terminal has no card reading capability.
+    """
+
 
 class ElementCardAuthorizationNetworkDetails(BaseModel):
     """Fields specific to the `network`."""
@@ -1406,6 +1441,41 @@ class ElementCardBalanceInquiryNetworkDetailsVisa(BaseModel):
     - `other` - An unspecific reason for stand-in processing.
     """
 
+    terminal_entry_capability: Optional[
+        Literal[
+            "unknown",
+            "terminal_not_used",
+            "magnetic_stripe",
+            "barcode",
+            "optical_character_recognition",
+            "chip_or_contactless",
+            "contactless_only",
+            "no_capability",
+        ]
+    ] = None
+    """The capability of the terminal being used to read the card.
+
+    Shows whether a terminal can e.g., accept chip cards or if it only supports
+    magnetic stripe reads. This reflects the highest capability of the terminal —
+    for example, a terminal that supports both chip and magnetic stripe will be
+    identified as chip-capable.
+
+    - `unknown` - Unknown
+    - `terminal_not_used` - No terminal was used for this transaction.
+    - `magnetic_stripe` - The terminal can only read magnetic stripes and does not
+      have chip or contactless reading capability.
+    - `barcode` - The terminal can only read barcodes.
+    - `optical_character_recognition` - The terminal can only read cards via Optical
+      Character Recognition.
+    - `chip_or_contactless` - The terminal supports contact chip cards and can also
+      read the magnetic stripe. If contact chip is supported, this value is used
+      regardless of whether contactless is also supported.
+    - `contactless_only` - The terminal supports contactless reads but does not
+      support contact chip. Only used when the terminal lacks contact chip
+      capability.
+    - `no_capability` - The terminal has no card reading capability.
+    """
+
 
 class ElementCardBalanceInquiryNetworkDetails(BaseModel):
     """Fields specific to the `network`."""
@@ -2000,6 +2070,41 @@ class ElementCardDeclineNetworkDetailsVisa(BaseModel):
       Visa's Payment Fraud Disruption service due to fraudulent Acquirer behavior,
       such as card testing.
     - `other` - An unspecific reason for stand-in processing.
+    """
+
+    terminal_entry_capability: Optional[
+        Literal[
+            "unknown",
+            "terminal_not_used",
+            "magnetic_stripe",
+            "barcode",
+            "optical_character_recognition",
+            "chip_or_contactless",
+            "contactless_only",
+            "no_capability",
+        ]
+    ] = None
+    """The capability of the terminal being used to read the card.
+
+    Shows whether a terminal can e.g., accept chip cards or if it only supports
+    magnetic stripe reads. This reflects the highest capability of the terminal —
+    for example, a terminal that supports both chip and magnetic stripe will be
+    identified as chip-capable.
+
+    - `unknown` - Unknown
+    - `terminal_not_used` - No terminal was used for this transaction.
+    - `magnetic_stripe` - The terminal can only read magnetic stripes and does not
+      have chip or contactless reading capability.
+    - `barcode` - The terminal can only read barcodes.
+    - `optical_character_recognition` - The terminal can only read cards via Optical
+      Character Recognition.
+    - `chip_or_contactless` - The terminal supports contact chip cards and can also
+      read the magnetic stripe. If contact chip is supported, this value is used
+      regardless of whether contactless is also supported.
+    - `contactless_only` - The terminal supports contactless reads but does not
+      support contact chip. Only used when the terminal lacks contact chip
+      capability.
+    - `no_capability` - The terminal has no card reading capability.
     """
 
 
@@ -2752,6 +2857,41 @@ class ElementCardFinancialNetworkDetailsVisa(BaseModel):
       Visa's Payment Fraud Disruption service due to fraudulent Acquirer behavior,
       such as card testing.
     - `other` - An unspecific reason for stand-in processing.
+    """
+
+    terminal_entry_capability: Optional[
+        Literal[
+            "unknown",
+            "terminal_not_used",
+            "magnetic_stripe",
+            "barcode",
+            "optical_character_recognition",
+            "chip_or_contactless",
+            "contactless_only",
+            "no_capability",
+        ]
+    ] = None
+    """The capability of the terminal being used to read the card.
+
+    Shows whether a terminal can e.g., accept chip cards or if it only supports
+    magnetic stripe reads. This reflects the highest capability of the terminal —
+    for example, a terminal that supports both chip and magnetic stripe will be
+    identified as chip-capable.
+
+    - `unknown` - Unknown
+    - `terminal_not_used` - No terminal was used for this transaction.
+    - `magnetic_stripe` - The terminal can only read magnetic stripes and does not
+      have chip or contactless reading capability.
+    - `barcode` - The terminal can only read barcodes.
+    - `optical_character_recognition` - The terminal can only read cards via Optical
+      Character Recognition.
+    - `chip_or_contactless` - The terminal supports contact chip cards and can also
+      read the magnetic stripe. If contact chip is supported, this value is used
+      regardless of whether contactless is also supported.
+    - `contactless_only` - The terminal supports contactless reads but does not
+      support contact chip. Only used when the terminal lacks contact chip
+      capability.
+    - `no_capability` - The terminal has no card reading capability.
     """
 
 
@@ -5233,6 +5373,41 @@ class ElementCardValidationNetworkDetailsVisa(BaseModel):
       Visa's Payment Fraud Disruption service due to fraudulent Acquirer behavior,
       such as card testing.
     - `other` - An unspecific reason for stand-in processing.
+    """
+
+    terminal_entry_capability: Optional[
+        Literal[
+            "unknown",
+            "terminal_not_used",
+            "magnetic_stripe",
+            "barcode",
+            "optical_character_recognition",
+            "chip_or_contactless",
+            "contactless_only",
+            "no_capability",
+        ]
+    ] = None
+    """The capability of the terminal being used to read the card.
+
+    Shows whether a terminal can e.g., accept chip cards or if it only supports
+    magnetic stripe reads. This reflects the highest capability of the terminal —
+    for example, a terminal that supports both chip and magnetic stripe will be
+    identified as chip-capable.
+
+    - `unknown` - Unknown
+    - `terminal_not_used` - No terminal was used for this transaction.
+    - `magnetic_stripe` - The terminal can only read magnetic stripes and does not
+      have chip or contactless reading capability.
+    - `barcode` - The terminal can only read barcodes.
+    - `optical_character_recognition` - The terminal can only read cards via Optical
+      Character Recognition.
+    - `chip_or_contactless` - The terminal supports contact chip cards and can also
+      read the magnetic stripe. If contact chip is supported, this value is used
+      regardless of whether contactless is also supported.
+    - `contactless_only` - The terminal supports contactless reads but does not
+      support contact chip. Only used when the terminal lacks contact chip
+      capability.
+    - `no_capability` - The terminal has no card reading capability.
     """
 
 
