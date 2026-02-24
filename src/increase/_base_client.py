@@ -1042,6 +1042,7 @@ class SyncAPIClient(BaseClient[httpx.Client, Stream[Any]]):
                 response.reason_phrase,
                 response.headers,
             )
+            log.debug("idempotent_replayed: %s", response.headers.get("Idempotent-Replayed"))
 
             try:
                 response.raise_for_status()
@@ -1626,6 +1627,7 @@ class AsyncAPIClient(BaseClient[httpx.AsyncClient, AsyncStream[Any]]):
                 response.reason_phrase,
                 response.headers,
             )
+            log.debug("idempotent_replayed: %s", response.headers.get("Idempotent-Replayed"))
 
             try:
                 response.raise_for_status()
