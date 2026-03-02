@@ -148,6 +148,14 @@ from .card_authorizations import (
     CardAuthorizationsResourceWithStreamingResponse,
     AsyncCardAuthorizationsResourceWithStreamingResponse,
 )
+from .card_authentications import (
+    CardAuthenticationsResource,
+    AsyncCardAuthenticationsResource,
+    CardAuthenticationsResourceWithRawResponse,
+    AsyncCardAuthenticationsResourceWithRawResponse,
+    CardAuthenticationsResourceWithStreamingResponse,
+    AsyncCardAuthenticationsResourceWithStreamingResponse,
+)
 from .pending_transactions import (
     PendingTransactionsResource,
     AsyncPendingTransactionsResource,
@@ -298,6 +306,10 @@ class SimulationsResource(SyncAPIResource):
         return CardRefundsResource(self._client)
 
     @cached_property
+    def card_authentications(self) -> CardAuthenticationsResource:
+        return CardAuthenticationsResource(self._client)
+
+    @cached_property
     def card_disputes(self) -> CardDisputesResource:
         return CardDisputesResource(self._client)
 
@@ -441,6 +453,10 @@ class AsyncSimulationsResource(AsyncAPIResource):
     @cached_property
     def card_refunds(self) -> AsyncCardRefundsResource:
         return AsyncCardRefundsResource(self._client)
+
+    @cached_property
+    def card_authentications(self) -> AsyncCardAuthenticationsResource:
+        return AsyncCardAuthenticationsResource(self._client)
 
     @cached_property
     def card_disputes(self) -> AsyncCardDisputesResource:
@@ -591,6 +607,10 @@ class SimulationsResourceWithRawResponse:
         return CardRefundsResourceWithRawResponse(self._simulations.card_refunds)
 
     @cached_property
+    def card_authentications(self) -> CardAuthenticationsResourceWithRawResponse:
+        return CardAuthenticationsResourceWithRawResponse(self._simulations.card_authentications)
+
+    @cached_property
     def card_disputes(self) -> CardDisputesResourceWithRawResponse:
         return CardDisputesResourceWithRawResponse(self._simulations.card_disputes)
 
@@ -722,6 +742,10 @@ class AsyncSimulationsResourceWithRawResponse:
     @cached_property
     def card_refunds(self) -> AsyncCardRefundsResourceWithRawResponse:
         return AsyncCardRefundsResourceWithRawResponse(self._simulations.card_refunds)
+
+    @cached_property
+    def card_authentications(self) -> AsyncCardAuthenticationsResourceWithRawResponse:
+        return AsyncCardAuthenticationsResourceWithRawResponse(self._simulations.card_authentications)
 
     @cached_property
     def card_disputes(self) -> AsyncCardDisputesResourceWithRawResponse:
@@ -857,6 +881,10 @@ class SimulationsResourceWithStreamingResponse:
         return CardRefundsResourceWithStreamingResponse(self._simulations.card_refunds)
 
     @cached_property
+    def card_authentications(self) -> CardAuthenticationsResourceWithStreamingResponse:
+        return CardAuthenticationsResourceWithStreamingResponse(self._simulations.card_authentications)
+
+    @cached_property
     def card_disputes(self) -> CardDisputesResourceWithStreamingResponse:
         return CardDisputesResourceWithStreamingResponse(self._simulations.card_disputes)
 
@@ -990,6 +1018,10 @@ class AsyncSimulationsResourceWithStreamingResponse:
     @cached_property
     def card_refunds(self) -> AsyncCardRefundsResourceWithStreamingResponse:
         return AsyncCardRefundsResourceWithStreamingResponse(self._simulations.card_refunds)
+
+    @cached_property
+    def card_authentications(self) -> AsyncCardAuthenticationsResourceWithStreamingResponse:
+        return AsyncCardAuthenticationsResourceWithStreamingResponse(self._simulations.card_authentications)
 
     @cached_property
     def card_disputes(self) -> AsyncCardDisputesResourceWithStreamingResponse:
