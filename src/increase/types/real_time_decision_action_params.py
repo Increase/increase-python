@@ -9,6 +9,7 @@ __all__ = [
     "RealTimeDecisionActionParams",
     "CardAuthentication",
     "CardAuthenticationChallenge",
+    "CardAuthenticationChallengeSuccess",
     "CardAuthorization",
     "CardAuthorizationApproval",
     "CardAuthorizationApprovalCardholderAddressVerificationResult",
@@ -76,6 +77,21 @@ class CardAuthentication(TypedDict, total=False):
     """
 
 
+class CardAuthenticationChallengeSuccess(TypedDict, total=False):
+    """
+    If your application was able to deliver the one-time code, this contains metadata about the delivery.
+    """
+
+    email: str
+    """The email address that was used to deliver the one-time code to the cardholder."""
+
+    phone: str
+    """
+    The phone number that was used to deliver the one-time code to the cardholder
+    via SMS.
+    """
+
+
 class CardAuthenticationChallenge(TypedDict, total=False):
     """
     If the Real-Time Decision relates to 3DS card authentication challenge delivery, this object contains your response.
@@ -90,6 +106,12 @@ class CardAuthenticationChallenge(TypedDict, total=False):
       cardholder.
     - `failure` - Your application was unable to deliver the one-time code to the
       cardholder.
+    """
+
+    success: CardAuthenticationChallengeSuccess
+    """
+    If your application was able to deliver the one-time code, this contains
+    metadata about the delivery.
     """
 
 

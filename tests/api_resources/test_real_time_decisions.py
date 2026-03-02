@@ -67,7 +67,13 @@ class TestRealTimeDecisions:
         real_time_decision = client.real_time_decisions.action(
             real_time_decision_id="real_time_decision_j76n2e810ezcg3zh5qtn",
             card_authentication={"decision": "approve"},
-            card_authentication_challenge={"result": "success"},
+            card_authentication_challenge={
+                "result": "success",
+                "success": {
+                    "email": "dev@stainless.com",
+                    "phone": "x",
+                },
+            },
             card_authorization={
                 "decision": "approve",
                 "approval": {
@@ -187,7 +193,13 @@ class TestAsyncRealTimeDecisions:
         real_time_decision = await async_client.real_time_decisions.action(
             real_time_decision_id="real_time_decision_j76n2e810ezcg3zh5qtn",
             card_authentication={"decision": "approve"},
-            card_authentication_challenge={"result": "success"},
+            card_authentication_challenge={
+                "result": "success",
+                "success": {
+                    "email": "dev@stainless.com",
+                    "phone": "x",
+                },
+            },
             card_authorization={
                 "decision": "approve",
                 "approval": {
