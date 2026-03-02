@@ -18,6 +18,7 @@ from .interest_payment_create_params import InterestPaymentCreateParams as Inter
 from .account_statement_create_params import AccountStatementCreateParams as AccountStatementCreateParams
 from .inbound_mail_item_create_params import InboundMailItemCreateParams as InboundMailItemCreateParams
 from .card_authorization_create_params import CardAuthorizationCreateParams as CardAuthorizationCreateParams
+from .card_authentication_create_params import CardAuthenticationCreateParams as CardAuthenticationCreateParams
 from .card_authorization_create_response import CardAuthorizationCreateResponse as CardAuthorizationCreateResponse
 from .card_balance_inquiry_create_params import CardBalanceInquiryCreateParams as CardBalanceInquiryCreateParams
 from .inbound_ach_transfer_create_params import InboundACHTransferCreateParams as InboundACHTransferCreateParams
@@ -44,6 +45,9 @@ from .real_time_payments_transfer_complete_params import (
 )
 from .digital_wallet_token_request_create_response import (
     DigitalWalletTokenRequestCreateResponse as DigitalWalletTokenRequestCreateResponse,
+)
+from .card_authentication_challenge_attempts_params import (
+    CardAuthenticationChallengeAttemptsParams as CardAuthenticationChallengeAttemptsParams,
 )
 from .ach_transfer_create_notification_of_change_params import (
     ACHTransferCreateNotificationOfChangeParams as ACHTransferCreateNotificationOfChangeParams,

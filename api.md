@@ -874,6 +874,14 @@ Methods:
 
 - <code title="post /simulations/card_refunds">client.simulations.card_refunds.<a href="./src/increase/resources/simulations/card_refunds.py">create</a>(\*\*<a href="src/increase/types/simulations/card_refund_create_params.py">params</a>) -> <a href="./src/increase/types/transaction.py">Transaction</a></code>
 
+## CardAuthentications
+
+Methods:
+
+- <code title="post /simulations/card_authentications">client.simulations.card_authentications.<a href="./src/increase/resources/simulations/card_authentications.py">create</a>(\*\*<a href="src/increase/types/simulations/card_authentication_create_params.py">params</a>) -> <a href="./src/increase/types/card_payment.py">CardPayment</a></code>
+- <code title="post /simulations/card_authentications/{card_payment_id}/challenge_attempts">client.simulations.card_authentications.<a href="./src/increase/resources/simulations/card_authentications.py">challenge_attempts</a>(card_payment_id, \*\*<a href="src/increase/types/simulations/card_authentication_challenge_attempts_params.py">params</a>) -> <a href="./src/increase/types/card_payment.py">CardPayment</a></code>
+- <code title="post /simulations/card_authentications/{card_payment_id}/challenges">client.simulations.card_authentications.<a href="./src/increase/resources/simulations/card_authentications.py">challenges</a>(card_payment_id) -> <a href="./src/increase/types/card_payment.py">CardPayment</a></code>
+
 ## CardDisputes
 
 Methods:
