@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import TYPE_CHECKING, Dict, Optional
+from typing import TYPE_CHECKING, Dict, List, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -11,6 +11,7 @@ from .._models import BaseModel
 __all__ = [
     "CheckDeposit",
     "DepositAcceptance",
+    "DepositAdjustment",
     "DepositRejection",
     "DepositReturn",
     "DepositSubmission",
@@ -76,6 +77,32 @@ class DepositAcceptance(BaseModel):
         def __getattr__(self, attr: str) -> object: ...
     else:
         __pydantic_extra__: Dict[str, object]
+
+
+class DepositAdjustment(BaseModel):
+    adjusted_at: datetime
+    """The time at which the adjustment was received."""
+
+    amount: int
+    """The amount of the adjustment."""
+
+    reason: Literal["late_return", "wrong_payee_credit", "adjusted_amount", "non_conforming_item", "paid"]
+    """The reason for the adjustment.
+
+    - `late_return` - The return was initiated too late and the receiving
+      institution has responded with a Late Return Claim.
+    - `wrong_payee_credit` - The check was deposited to the wrong payee and the
+      depositing institution has reimbursed the funds with a Wrong Payee Credit.
+    - `adjusted_amount` - The check was deposited with a different amount than what
+      was written on the check.
+    - `non_conforming_item` - The recipient was not able to process the check. This
+      usually happens for e.g., low quality images.
+    - `paid` - The check has already been deposited elsewhere and so this is a
+      duplicate.
+    """
+
+    transaction_id: str
+    """The id of the transaction for the adjustment."""
 
 
 class DepositRejection(BaseModel):
@@ -393,6 +420,12 @@ class CheckDeposit(BaseModel):
     """
     Once your deposit is successfully parsed and accepted by Increase, this will
     contain details of the parsed check.
+    """
+
+    deposit_adjustments: List[DepositAdjustment]
+    """
+    If the deposit or the return was adjusted by the receiving institution, this
+    will contain details of the adjustments.
     """
 
     deposit_rejection: Optional[DepositRejection] = None
