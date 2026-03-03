@@ -221,6 +221,12 @@ class ElementCardAuthentication(BaseModel):
     card_payment_id: str
     """The ID of the Card Payment this transaction belongs to."""
 
+    cardholder_email: Optional[str] = None
+    """The email address of the cardholder."""
+
+    cardholder_name: Optional[str] = None
+    """The name of the cardholder."""
+
     category: Optional[Literal["payment_authentication", "non_payment_authentication"]] = None
     """The category of the card authentication attempt.
 
