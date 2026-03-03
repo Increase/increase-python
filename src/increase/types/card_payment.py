@@ -14,6 +14,8 @@ __all__ = [
     "ElementCardAuthentication",
     "ElementCardAuthenticationChallenge",
     "ElementCardAuthenticationChallengeAttempt",
+    "ElementCardAuthenticationDeviceChannel",
+    "ElementCardAuthenticationDeviceChannelBrowser",
     "ElementCardAuthorization",
     "ElementCardAuthorizationAdditionalAmounts",
     "ElementCardAuthorizationAdditionalAmountsClinic",
@@ -206,6 +208,45 @@ class ElementCardAuthenticationChallenge(BaseModel):
     """
 
 
+class ElementCardAuthenticationDeviceChannelBrowser(BaseModel):
+    """Fields specific to the browser device channel."""
+
+    accept_header: Optional[str] = None
+    """The accept header from the cardholder's browser."""
+
+    ip_address: Optional[str] = None
+    """The IP address of the cardholder's browser."""
+
+    javascript_enabled: Optional[Literal["enabled", "disabled"]] = None
+    """Whether JavaScript is enabled in the cardholder's browser.
+
+    - `enabled` - JavaScript is enabled in the cardholder's browser.
+    - `disabled` - JavaScript is not enabled in the cardholder's browser.
+    """
+
+    language: Optional[str] = None
+    """The language of the cardholder's browser."""
+
+    user_agent: Optional[str] = None
+    """The user agent of the cardholder's browser."""
+
+
+class ElementCardAuthenticationDeviceChannel(BaseModel):
+    """The device channel of the card authentication attempt."""
+
+    browser: Optional[ElementCardAuthenticationDeviceChannelBrowser] = None
+    """Fields specific to the browser device channel."""
+
+    category: Literal["app", "browser", "three_ds_requestor_initiated"]
+    """The category of the device channel.
+
+    - `app` - The authentication attempt was made from an app.
+    - `browser` - The authentication attempt was made from a browser.
+    - `three_ds_requestor_initiated` - The authentication attempt was initiated by
+      the 3DS Requestor.
+    """
+
+
 class ElementCardAuthentication(BaseModel):
     """A Card Authentication object.
 
@@ -306,14 +347,8 @@ class ElementCardAuthentication(BaseModel):
     - `webhook_timed_out` - The webhook timed out.
     """
 
-    device_channel: Optional[Literal["app", "browser", "three_ds_requestor_initiated"]] = None
-    """The device channel of the card authentication attempt.
-
-    - `app` - The authentication attempt was made from an app.
-    - `browser` - The authentication attempt was made from a browser.
-    - `three_ds_requestor_initiated` - The authentication attempt was initiated by
-      the 3DS Requestor.
-    """
+    device_channel: ElementCardAuthenticationDeviceChannel
+    """The device channel of the card authentication attempt."""
 
     merchant_acceptor_id: str
     """
