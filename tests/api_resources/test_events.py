@@ -100,9 +100,20 @@ class TestEvents:
 
         assert cast(Any, response.is_closed) is True
 
-    def test_method_unwrap(self, client: Increase) -> None:
-        key = b"secret"
-        hook = standardwebhooks.Webhook(key)
+    @pytest.mark.parametrize(
+        "client_opt,method_opt",
+        [
+            ("whsec_c2VjcmV0Cg==", None),
+            ("wrong", b"secret\n"),
+            ("wrong", "whsec_c2VjcmV0Cg=="),
+            (None, b"secret\n"),
+            (None, "whsec_c2VjcmV0Cg=="),
+        ],
+    )
+    def test_method_unwrap(self, client: Increase, client_opt: str | None, method_opt: str | bytes | None) -> None:
+        hook = standardwebhooks.Webhook(b"secret\n")
+
+        client = client.with_options(webhook_secret=client_opt)
 
         data = """{"id":"event_001dzz0r20rzr4zrhrr1364hy80","associated_object_id":"account_in71c4amph0vgo2qllky","associated_object_type":"account","category":"account.created","created_at":"2020-01-31T23:59:59Z","type":"event"}"""
         msg_id = "1"
@@ -115,7 +126,7 @@ class TestEvents:
         }
 
         try:
-            _ = client.events.unwrap(data, headers=headers, key=key)
+            _ = client.events.unwrap(data, headers=headers, key=method_opt)
         except standardwebhooks.WebhookVerificationError as e:
             raise AssertionError("Failed to unwrap valid webhook") from e
 
@@ -126,7 +137,7 @@ class TestEvents:
         ]
         for bad_header in bad_headers:
             with pytest.raises(standardwebhooks.WebhookVerificationError):
-                _ = client.events.unwrap(data, headers=bad_header, key=key)
+                _ = client.events.unwrap(data, headers=bad_header, key=method_opt)
 
 
 class TestAsyncEvents:
@@ -213,9 +224,22 @@ class TestAsyncEvents:
 
         assert cast(Any, response.is_closed) is True
 
-    def test_method_unwrap(self, client: Increase) -> None:
-        key = b"secret"
-        hook = standardwebhooks.Webhook(key)
+    @pytest.mark.parametrize(
+        "client_opt,method_opt",
+        [
+            ("whsec_c2VjcmV0Cg==", None),
+            ("wrong", b"secret\n"),
+            ("wrong", "whsec_c2VjcmV0Cg=="),
+            (None, b"secret\n"),
+            (None, "whsec_c2VjcmV0Cg=="),
+        ],
+    )
+    def test_method_unwrap(
+        self, async_client: Increase, client_opt: str | None, method_opt: str | bytes | None
+    ) -> None:
+        hook = standardwebhooks.Webhook(b"secret\n")
+
+        async_client = async_client.with_options(webhook_secret=client_opt)
 
         data = """{"id":"event_001dzz0r20rzr4zrhrr1364hy80","associated_object_id":"account_in71c4amph0vgo2qllky","associated_object_type":"account","category":"account.created","created_at":"2020-01-31T23:59:59Z","type":"event"}"""
         msg_id = "1"
@@ -228,7 +252,7 @@ class TestAsyncEvents:
         }
 
         try:
-            _ = client.events.unwrap(data, headers=headers, key=key)
+            _ = async_client.events.unwrap(data, headers=headers, key=method_opt)
         except standardwebhooks.WebhookVerificationError as e:
             raise AssertionError("Failed to unwrap valid webhook") from e
 
@@ -239,4 +263,4 @@ class TestAsyncEvents:
         ]
         for bad_header in bad_headers:
             with pytest.raises(standardwebhooks.WebhookVerificationError):
-                _ = client.events.unwrap(data, headers=bad_header, key=key)
+                _ = async_client.events.unwrap(data, headers=bad_header, key=method_opt)
