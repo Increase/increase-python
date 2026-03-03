@@ -215,6 +215,48 @@ class ElementCardAuthentication(BaseModel):
     id: str
     """The Card Authentication identifier."""
 
+    billing_address_city: Optional[str] = None
+    """
+    The city of the cardholder billing address associated with the card used for
+    this purchase.
+    """
+
+    billing_address_country: Optional[str] = None
+    """
+    The country of the cardholder billing address associated with the card used for
+    this purchase.
+    """
+
+    billing_address_line1: Optional[str] = None
+    """
+    The first line of the cardholder billing address associated with the card used
+    for this purchase.
+    """
+
+    billing_address_line2: Optional[str] = None
+    """
+    The second line of the cardholder billing address associated with the card used
+    for this purchase.
+    """
+
+    billing_address_line3: Optional[str] = None
+    """
+    The third line of the cardholder billing address associated with the card used
+    for this purchase.
+    """
+
+    billing_address_postal_code: Optional[str] = None
+    """
+    The postal code of the cardholder billing address associated with the card used
+    for this purchase.
+    """
+
+    billing_address_state: Optional[str] = None
+    """
+    The US state of the cardholder billing address associated with the card used for
+    this purchase.
+    """
+
     card_id: str
     """The identifier of the Card."""
 
