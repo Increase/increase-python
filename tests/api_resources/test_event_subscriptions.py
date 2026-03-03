@@ -32,7 +32,7 @@ class TestEventSubscriptions:
         event_subscription = client.event_subscriptions.create(
             url="https://website.com/webhooks",
             oauth_connection_id="x",
-            selected_event_category="account.created",
+            selected_event_categories=[{"event_category": "account.created"}],
             shared_secret="x",
             status="active",
         )
@@ -198,7 +198,7 @@ class TestAsyncEventSubscriptions:
         event_subscription = await async_client.event_subscriptions.create(
             url="https://website.com/webhooks",
             oauth_connection_id="x",
-            selected_event_category="account.created",
+            selected_event_categories=[{"event_category": "account.created"}],
             shared_secret="x",
             status="active",
         )
