@@ -970,6 +970,7 @@ Methods:
 Methods:
 
 - <code title="post /simulations/inbound_check_deposits">client.simulations.inbound_check_deposits.<a href="./src/increase/resources/simulations/inbound_check_deposits.py">create</a>(\*\*<a href="src/increase/types/simulations/inbound_check_deposit_create_params.py">params</a>) -> <a href="./src/increase/types/inbound_check_deposit.py">InboundCheckDeposit</a></code>
+- <code title="post /simulations/inbound_check_deposits/{inbound_check_deposit_id}/adjustment">client.simulations.inbound_check_deposits.<a href="./src/increase/resources/simulations/inbound_check_deposits.py">adjustment</a>(inbound_check_deposit_id, \*\*<a href="src/increase/types/simulations/inbound_check_deposit_adjustment_params.py">params</a>) -> <a href="./src/increase/types/inbound_check_deposit.py">InboundCheckDeposit</a></code>
 
 ## RealTimePaymentsTransfers
 
