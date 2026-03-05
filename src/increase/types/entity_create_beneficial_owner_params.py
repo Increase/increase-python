@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Union
+from typing import List, Union
 from datetime import date
-from typing_extensions import Literal, Required, Annotated, TypeAlias, TypedDict
+from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
@@ -122,7 +122,7 @@ class BeneficialOwnerIndividualIdentificationPassport(TypedDict, total=False):
     """The identifier of the File containing the passport."""
 
 
-class BeneficialOwnerIndividualIdentificationTyped(TypedDict, total=False):
+class BeneficialOwnerIndividualIdentification(TypedDict, total=False, extra_items=object):  # type: ignore[call-arg]
     """A means of verifying the person's identity."""
 
     method: Required[
@@ -169,11 +169,6 @@ class BeneficialOwnerIndividualIdentificationTyped(TypedDict, total=False):
     """
 
 
-BeneficialOwnerIndividualIdentification: TypeAlias = Union[
-    BeneficialOwnerIndividualIdentificationTyped, Dict[str, object]
-]
-
-
 class BeneficialOwnerIndividual(TypedDict, total=False):
     """Personal details for the beneficial owner."""
 
@@ -201,7 +196,7 @@ class BeneficialOwnerIndividual(TypedDict, total=False):
     """
 
 
-class BeneficialOwnerTyped(TypedDict, total=False):
+class BeneficialOwner(TypedDict, total=False, extra_items=object):  # type: ignore[call-arg]
     """
     The identifying details of anyone controlling or owning 25% or more of the corporation.
     """
@@ -218,6 +213,3 @@ class BeneficialOwnerTyped(TypedDict, total=False):
 
     company_title: str
     """This person's role or title within the entity."""
-
-
-BeneficialOwner: TypeAlias = Union[BeneficialOwnerTyped, Dict[str, object]]
