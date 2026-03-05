@@ -459,6 +459,7 @@ class SourceCardAuthorizationNetworkDetailsVisa(BaseModel):
         Literal[
             "issuer_error",
             "invalid_physical_card",
+            "invalid_cryptogram",
             "invalid_cardholder_authentication_verification_value",
             "internal_visa_error",
             "merchant_transaction_advisory_service_authentication_required",
@@ -473,8 +474,10 @@ class SourceCardAuthorizationNetworkDetailsVisa(BaseModel):
 
     - `issuer_error` - Increase failed to process the authorization in a timely
       manner.
-    - `invalid_physical_card` - The physical card read had an invalid CVV, dCVV, or
-      authorization request cryptogram.
+    - `invalid_physical_card` - The physical card read had an invalid CVV or dCVV.
+    - `invalid_cryptogram` - The card's authorization request cryptogram was
+      invalid. The cryptogram can be from a physical card or a Digital Wallet Token
+      purchase.
     - `invalid_cardholder_authentication_verification_value` - The 3DS cardholder
       authentication verification value was invalid.
     - `internal_visa_error` - An internal Visa error occurred. Visa uses this reason
