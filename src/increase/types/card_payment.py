@@ -16,6 +16,7 @@ __all__ = [
     "ElementCardAuthenticationChallengeAttempt",
     "ElementCardAuthenticationDeviceChannel",
     "ElementCardAuthenticationDeviceChannelBrowser",
+    "ElementCardAuthenticationDeviceChannelMerchantInitiated",
     "ElementCardAuthorization",
     "ElementCardAuthorizationAdditionalAmounts",
     "ElementCardAuthorizationAdditionalAmountsClinic",
@@ -231,6 +232,54 @@ class ElementCardAuthenticationDeviceChannelBrowser(BaseModel):
     """The user agent of the cardholder's browser."""
 
 
+class ElementCardAuthenticationDeviceChannelMerchantInitiated(BaseModel):
+    """Fields specific to merchant initiated transactions."""
+
+    indicator: Literal[
+        "recurring_transaction",
+        "installment_transaction",
+        "add_card",
+        "maintain_card_information",
+        "account_verification",
+        "split_delayed_shipment",
+        "top_up",
+        "mail_order",
+        "telephone_order",
+        "whitelist_status_check",
+        "other_payment",
+        "billing_agreement",
+        "device_binding_status_check",
+        "card_security_code_status_check",
+        "delayed_shipment",
+        "split_payment",
+        "fido_credential_deletion",
+        "fido_credential_registration",
+        "decoupled_authentication_fallback",
+    ]
+    """The merchant initiated indicator for the transaction.
+
+    - `recurring_transaction` - Recurring transaction.
+    - `installment_transaction` - Installment transaction.
+    - `add_card` - Add card.
+    - `maintain_card_information` - Maintain card information.
+    - `account_verification` - Account verification.
+    - `split_delayed_shipment` - Split or delayed shipment.
+    - `top_up` - Top up.
+    - `mail_order` - Mail order.
+    - `telephone_order` - Telephone order.
+    - `whitelist_status_check` - Whitelist status check.
+    - `other_payment` - Other payment.
+    - `billing_agreement` - Billing agreement.
+    - `device_binding_status_check` - Device binding status check.
+    - `card_security_code_status_check` - Card security code status check.
+    - `delayed_shipment` - Delayed shipment.
+    - `split_payment` - Split payment.
+    - `fido_credential_deletion` - FIDO credential deletion.
+    - `fido_credential_registration` - FIDO credential registration.
+    - `decoupled_authentication_fallback` - Decoupled authentication fallback.
+    """
+
+
 class ElementCardAuthenticationDeviceChannel(BaseModel):
     """The device channel of the card authentication attempt."""
 
@@ -246,6 +295,9 @@ class ElementCardAuthenticationDeviceChannel(BaseModel):
       the 3DS Requestor.
     """
 
+    merchant_initiated: Optional[ElementCardAuthenticationDeviceChannelMerchantInitiated] = None
+    """Fields specific to merchant initiated transactions."""
+
 
 class ElementCardAuthentication(BaseModel):
     """A Card Authentication object.
@@ -255,6 +307,12 @@ class ElementCardAuthentication(BaseModel):
 
     id: str
     """The Card Authentication identifier."""
+
+    access_control_server_transaction_id: str
+    """
+    A unique identifier assigned by the Access Control Server (us) for this
+    transaction.
+    """
 
     billing_address_city: Optional[str] = None
     """
@@ -349,6 +407,12 @@ class ElementCardAuthentication(BaseModel):
 
     device_channel: ElementCardAuthenticationDeviceChannel
     """The device channel of the card authentication attempt."""
+
+    directory_server_transaction_id: str
+    """
+    A unique identifier assigned by the Directory Server (the card network) for this
+    transaction.
+    """
 
     merchant_acceptor_id: str
     """
@@ -453,6 +517,27 @@ class ElementCardAuthentication(BaseModel):
     requestor_url: str
     """The URL of the 3DS requestor."""
 
+    shipping_address_city: Optional[str] = None
+    """The city of the shipping address associated with this purchase."""
+
+    shipping_address_country: Optional[str] = None
+    """The country of the shipping address associated with this purchase."""
+
+    shipping_address_line1: Optional[str] = None
+    """The first line of the shipping address associated with this purchase."""
+
+    shipping_address_line2: Optional[str] = None
+    """The second line of the shipping address associated with this purchase."""
+
+    shipping_address_line3: Optional[str] = None
+    """The third line of the shipping address associated with this purchase."""
+
+    shipping_address_postal_code: Optional[str] = None
+    """The postal code of the shipping address associated with this purchase."""
+
+    shipping_address_state: Optional[str] = None
+    """The US state of the shipping address associated with this purchase."""
+
     status: Literal[
         "denied",
         "authenticated_with_challenge",
@@ -479,6 +564,30 @@ class ElementCardAuthentication(BaseModel):
     - `errored` - The authentication attempt errored.
     - `exceeded_attempt_threshold` - The authentication attempt exceeded the attempt
       threshold.
+    """
+
+    three_d_secure_server_transaction_id: str
+    """
+    A unique identifier assigned by the 3DS Server initiating the authentication
+    attempt for this transaction.
+    """
+
+    transaction_type: Optional[
+        Literal[
+            "goods_service_purchase",
+            "check_acceptance",
+            "account_funding",
+            "quasi_cash_transaction",
+            "prepaid_activation_and_load",
+        ]
+    ] = None
+    """The type of transaction being authenticated.
+
+    - `goods_service_purchase` - Purchase of goods or services.
+    - `check_acceptance` - Check acceptance.
+    - `account_funding` - Account funding.
+    - `quasi_cash_transaction` - Quasi-cash transaction.
+    - `prepaid_activation_and_load` - Prepaid activation and load.
     """
 
     type: Literal["card_authentication"]
