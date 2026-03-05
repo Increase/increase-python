@@ -368,6 +368,12 @@ class ElementCardAuthentication(BaseModel):
     merchant_name: str
     """The name of the merchant."""
 
+    prior_card_authentication_id: Optional[str] = None
+    """
+    The ID of a prior Card Authentication that the requestor used to authenticate
+    this cardholder for a previous transaction.
+    """
+
     purchase_amount: Optional[int] = None
     """The purchase amount in minor units."""
 
