@@ -141,7 +141,7 @@ class CorporationBeneficialOwnerIndividual(BaseModel):
 
 
 class CorporationBeneficialOwner(BaseModel):
-    beneficial_owner_id: str
+    id: str
     """The identifier of this beneficial owner."""
 
     company_title: Optional[str] = None
