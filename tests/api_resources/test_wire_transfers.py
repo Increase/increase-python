@@ -159,6 +159,7 @@ class TestWireTransfers:
             external_account_id="external_account_id",
             idempotency_key="x",
             limit=1,
+            status={"in": ["pending_approval"]},
         )
         assert_matches_type(SyncPage[WireTransfer], wire_transfer, path=["response"])
 
@@ -404,6 +405,7 @@ class TestAsyncWireTransfers:
             external_account_id="external_account_id",
             idempotency_key="x",
             limit=1,
+            status={"in": ["pending_approval"]},
         )
         assert_matches_type(AsyncPage[WireTransfer], wire_transfer, path=["response"])
 

@@ -177,6 +177,7 @@ class WireTransfersResource(SyncAPIResource):
         external_account_id: str | Omit = omit,
         idempotency_key: str | Omit = omit,
         limit: int | Omit = omit,
+        status: wire_transfer_list_params.Status | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -226,6 +227,7 @@ class WireTransfersResource(SyncAPIResource):
                         "external_account_id": external_account_id,
                         "idempotency_key": idempotency_key,
                         "limit": limit,
+                        "status": status,
                     },
                     wire_transfer_list_params.WireTransferListParams,
                 ),
@@ -473,6 +475,7 @@ class AsyncWireTransfersResource(AsyncAPIResource):
         external_account_id: str | Omit = omit,
         idempotency_key: str | Omit = omit,
         limit: int | Omit = omit,
+        status: wire_transfer_list_params.Status | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -522,6 +525,7 @@ class AsyncWireTransfersResource(AsyncAPIResource):
                         "external_account_id": external_account_id,
                         "idempotency_key": idempotency_key,
                         "limit": limit,
+                        "status": status,
                     },
                     wire_transfer_list_params.WireTransferListParams,
                 ),
