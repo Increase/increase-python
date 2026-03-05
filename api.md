@@ -993,6 +993,7 @@ Methods:
 
 Methods:
 
+- <code title="post /simulations/check_deposits/{check_deposit_id}/adjustment">client.simulations.check_deposits.<a href="./src/increase/resources/simulations/check_deposits.py">adjustment</a>(check_deposit_id, \*\*<a href="src/increase/types/simulations/check_deposit_adjustment_params.py">params</a>) -> <a href="./src/increase/types/check_deposit.py">CheckDeposit</a></code>
 - <code title="post /simulations/check_deposits/{check_deposit_id}/reject">client.simulations.check_deposits.<a href="./src/increase/resources/simulations/check_deposits.py">reject</a>(check_deposit_id) -> <a href="./src/increase/types/check_deposit.py">CheckDeposit</a></code>
 - <code title="post /simulations/check_deposits/{check_deposit_id}/return">client.simulations.check*deposits.<a href="./src/increase/resources/simulations/check_deposits.py">return*</a>(check_deposit_id) -> <a href="./src/increase/types/check_deposit.py">CheckDeposit</a></code>
 - <code title="post /simulations/check_deposits/{check_deposit_id}/submit">client.simulations.check_deposits.<a href="./src/increase/resources/simulations/check_deposits.py">submit</a>(check_deposit_id, \*\*<a href="src/increase/types/simulations/check_deposit_submit_params.py">params</a>) -> <a href="./src/increase/types/check_deposit.py">CheckDeposit</a></code>
