@@ -2,8 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, Union
-from typing_extensions import Literal, Required, TypeAlias, TypedDict
+from typing_extensions import Literal, Required, TypedDict
 
 __all__ = [
     "RealTimeDecisionActionParams",
@@ -198,7 +197,7 @@ class CardAuthorizationDecline(TypedDict, total=False):
     """
 
 
-class CardAuthorizationTyped(TypedDict, total=False):
+class CardAuthorization(TypedDict, total=False, extra_items=object):  # type: ignore[call-arg]
     """
     If the Real-Time Decision relates to a card authorization attempt, this object contains your response to the authorization.
     """
@@ -223,9 +222,6 @@ class CardAuthorizationTyped(TypedDict, total=False):
     If your application declines the authorization, this contains details about the
     decline.
     """
-
-
-CardAuthorization: TypeAlias = Union[CardAuthorizationTyped, Dict[str, object]]
 
 
 class CardBalanceInquiryApproval(TypedDict, total=False):

@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from typing import Dict, Union, Iterable
+from typing import Union, Iterable
 from datetime import date
-from typing_extensions import Literal, Required, Annotated, TypeAlias, TypedDict
+from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
@@ -156,7 +156,7 @@ class PhysicalCheckReturnAddress(TypedDict, total=False):
     """
 
 
-class PhysicalCheckTyped(TypedDict, total=False):
+class PhysicalCheck(TypedDict, total=False, extra_items=object):  # type: ignore[call-arg]
     """Details relating to the physical check that Increase will print and mail.
 
     This is required if `fulfillment_method` is equal to `physical_check`. It must not be included if any other `fulfillment_method` is provided.
@@ -222,10 +222,7 @@ class PhysicalCheckTyped(TypedDict, total=False):
     """
 
 
-PhysicalCheck: TypeAlias = Union[PhysicalCheckTyped, Dict[str, object]]
-
-
-class ThirdPartyTyped(TypedDict, total=False):
+class ThirdParty(TypedDict, total=False, extra_items=object):  # type: ignore[call-arg]
     """Details relating to the custom fulfillment you will perform.
 
     This is required if `fulfillment_method` is equal to `third_party`. It must not be included if any other `fulfillment_method` is provided.
@@ -238,6 +235,3 @@ class ThirdPartyTyped(TypedDict, total=False):
     this is omitted, Increase will be unable to validate the payer name when the
     check is deposited.
     """
-
-
-ThirdParty: TypeAlias = Union[ThirdPartyTyped, Dict[str, object]]
