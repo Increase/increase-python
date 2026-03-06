@@ -11,6 +11,9 @@ from .._models import BaseModel
 __all__ = [
     "RealTimeDecision",
     "CardAuthentication",
+    "CardAuthenticationDeviceChannel",
+    "CardAuthenticationDeviceChannelBrowser",
+    "CardAuthenticationDeviceChannelMerchantInitiated",
     "CardAuthenticationChallenge",
     "CardAuthorization",
     "CardAuthorizationAdditionalAmounts",
@@ -64,14 +67,166 @@ __all__ = [
 ]
 
 
+class CardAuthenticationDeviceChannelBrowser(BaseModel):
+    """Fields specific to the browser device channel."""
+
+    accept_header: Optional[str] = None
+    """The accept header from the cardholder's browser."""
+
+    ip_address: Optional[str] = None
+    """The IP address of the cardholder's browser."""
+
+    javascript_enabled: Optional[Literal["enabled", "disabled"]] = None
+    """Whether JavaScript is enabled in the cardholder's browser.
+
+    - `enabled` - JavaScript is enabled in the cardholder's browser.
+    - `disabled` - JavaScript is not enabled in the cardholder's browser.
+    """
+
+    language: Optional[str] = None
+    """The language of the cardholder's browser."""
+
+    user_agent: Optional[str] = None
+    """The user agent of the cardholder's browser."""
+
+
+class CardAuthenticationDeviceChannelMerchantInitiated(BaseModel):
+    """Fields specific to merchant initiated transactions."""
+
+    indicator: Literal[
+        "recurring_transaction",
+        "installment_transaction",
+        "add_card",
+        "maintain_card_information",
+        "account_verification",
+        "split_delayed_shipment",
+        "top_up",
+        "mail_order",
+        "telephone_order",
+        "whitelist_status_check",
+        "other_payment",
+        "billing_agreement",
+        "device_binding_status_check",
+        "card_security_code_status_check",
+        "delayed_shipment",
+        "split_payment",
+        "fido_credential_deletion",
+        "fido_credential_registration",
+        "decoupled_authentication_fallback",
+    ]
+    """The merchant initiated indicator for the transaction.
+
+    - `recurring_transaction` - Recurring transaction.
+    - `installment_transaction` - Installment transaction.
+    - `add_card` - Add card.
+    - `maintain_card_information` - Maintain card information.
+    - `account_verification` - Account verification.
+    - `split_delayed_shipment` - Split or delayed shipment.
+    - `top_up` - Top up.
+    - `mail_order` - Mail order.
+    - `telephone_order` - Telephone order.
+    - `whitelist_status_check` - Whitelist status check.
+    - `other_payment` - Other payment.
+    - `billing_agreement` - Billing agreement.
+    - `device_binding_status_check` - Device binding status check.
+    - `card_security_code_status_check` - Card security code status check.
+    - `delayed_shipment` - Delayed shipment.
+    - `split_payment` - Split payment.
+    - `fido_credential_deletion` - FIDO credential deletion.
+    - `fido_credential_registration` - FIDO credential registration.
+    - `decoupled_authentication_fallback` - Decoupled authentication fallback.
+    """
+
+
+class CardAuthenticationDeviceChannel(BaseModel):
+    """The device channel of the card authentication attempt."""
+
+    browser: Optional[CardAuthenticationDeviceChannelBrowser] = None
+    """Fields specific to the browser device channel."""
+
+    category: Literal["app", "browser", "three_ds_requestor_initiated"]
+    """The category of the device channel.
+
+    - `app` - The authentication attempt was made from an app.
+    - `browser` - The authentication attempt was made from a browser.
+    - `three_ds_requestor_initiated` - The authentication attempt was initiated by
+      the 3DS Requestor.
+    """
+
+    merchant_initiated: Optional[CardAuthenticationDeviceChannelMerchantInitiated] = None
+    """Fields specific to merchant initiated transactions."""
+
+
 class CardAuthentication(BaseModel):
     """Fields related to a 3DS authentication attempt."""
+
+    access_control_server_transaction_id: str
+    """
+    A unique identifier assigned by the Access Control Server (us) for this
+    transaction.
+    """
 
     account_id: str
     """The identifier of the Account the card belongs to."""
 
+    billing_address_city: Optional[str] = None
+    """
+    The city of the cardholder billing address associated with the card used for
+    this purchase.
+    """
+
+    billing_address_country: Optional[str] = None
+    """
+    The country of the cardholder billing address associated with the card used for
+    this purchase.
+    """
+
+    billing_address_line1: Optional[str] = None
+    """
+    The first line of the cardholder billing address associated with the card used
+    for this purchase.
+    """
+
+    billing_address_line2: Optional[str] = None
+    """
+    The second line of the cardholder billing address associated with the card used
+    for this purchase.
+    """
+
+    billing_address_line3: Optional[str] = None
+    """
+    The third line of the cardholder billing address associated with the card used
+    for this purchase.
+    """
+
+    billing_address_postal_code: Optional[str] = None
+    """
+    The postal code of the cardholder billing address associated with the card used
+    for this purchase.
+    """
+
+    billing_address_state: Optional[str] = None
+    """
+    The US state of the cardholder billing address associated with the card used for
+    this purchase.
+    """
+
     card_id: str
-    """The identifier of the Card that is being tokenized."""
+    """The identifier of the Card."""
+
+    cardholder_email: Optional[str] = None
+    """The email address of the cardholder."""
+
+    cardholder_name: Optional[str] = None
+    """The name of the cardholder."""
+
+    category: Optional[Literal["payment_authentication", "non_payment_authentication"]] = None
+    """The category of the card authentication attempt.
+
+    - `payment_authentication` - The authentication attempt is for a payment.
+    - `non_payment_authentication` - The authentication attempt is not for a
+      payment.
+    """
 
     decision: Optional[Literal["approve", "challenge", "deny"]] = None
     """Whether or not the authentication attempt was approved.
@@ -80,6 +235,157 @@ class CardAuthentication(BaseModel):
     - `challenge` - Request further validation before approving the authentication
       attempt.
     - `deny` - Deny the authentication attempt.
+    """
+
+    device_channel: CardAuthenticationDeviceChannel
+    """The device channel of the card authentication attempt."""
+
+    directory_server_transaction_id: str
+    """
+    A unique identifier assigned by the Directory Server (the card network) for this
+    transaction.
+    """
+
+    merchant_acceptor_id: str
+    """
+    The merchant identifier (commonly abbreviated as MID) of the merchant the card
+    is transacting with.
+    """
+
+    merchant_category_code: str
+    """
+    The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
+    card is transacting with.
+    """
+
+    merchant_country: str
+    """The country the merchant resides in."""
+
+    merchant_name: str
+    """The name of the merchant."""
+
+    prior_card_authentication_id: Optional[str] = None
+    """
+    The ID of a prior Card Authentication that the requestor used to authenticate
+    this cardholder for a previous transaction.
+    """
+
+    purchase_amount: Optional[int] = None
+    """The purchase amount in minor units."""
+
+    purchase_currency: Optional[str] = None
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+    authentication attempt's purchase currency.
+    """
+
+    requestor_authentication_indicator: Optional[
+        Literal[
+            "payment_transaction",
+            "recurring_transaction",
+            "installment_transaction",
+            "add_card",
+            "maintain_card",
+            "emv_token_cardholder_verification",
+            "billing_agreement",
+        ]
+    ] = None
+    """
+    The 3DS requestor authentication indicator describes why the authentication
+    attempt is performed, such as for a recurring transaction.
+
+    - `payment_transaction` - The authentication is for a payment transaction.
+    - `recurring_transaction` - The authentication is for a recurring transaction.
+    - `installment_transaction` - The authentication is for an installment
+      transaction.
+    - `add_card` - The authentication is for adding a card.
+    - `maintain_card` - The authentication is for maintaining a card.
+    - `emv_token_cardholder_verification` - The authentication is for EMV token
+      cardholder verification.
+    - `billing_agreement` - The authentication is for a billing agreement.
+    """
+
+    requestor_challenge_indicator: Optional[
+        Literal[
+            "no_preference",
+            "no_challenge_requested",
+            "challenge_requested_3ds_requestor_preference",
+            "challenge_requested_mandate",
+            "no_challenge_requested_transactional_risk_analysis_already_performed",
+            "no_challenge_requested_data_share_only",
+            "no_challenge_requested_strong_consumer_authentication_already_performed",
+            "no_challenge_requested_utilize_whitelist_exemption_if_no_challenge_required",
+            "challenge_requested_whitelist_prompt_requested_if_challenge_required",
+        ]
+    ] = None
+    """Indicates whether a challenge is requested for this transaction.
+
+    - `no_preference` - No preference.
+    - `no_challenge_requested` - No challenge requested.
+    - `challenge_requested_3ds_requestor_preference` - Challenge requested, 3DS
+      Requestor preference.
+    - `challenge_requested_mandate` - Challenge requested, mandate.
+    - `no_challenge_requested_transactional_risk_analysis_already_performed` - No
+      challenge requested, transactional risk analysis already performed.
+    - `no_challenge_requested_data_share_only` - No challenge requested, data share
+      only.
+    - `no_challenge_requested_strong_consumer_authentication_already_performed` - No
+      challenge requested, strong consumer authentication already performed.
+    - `no_challenge_requested_utilize_whitelist_exemption_if_no_challenge_required` -
+      No challenge requested, utilize whitelist exemption if no challenge required.
+    - `challenge_requested_whitelist_prompt_requested_if_challenge_required` -
+      Challenge requested, whitelist prompt requested if challenge required.
+    """
+
+    requestor_name: str
+    """The name of the 3DS requestor."""
+
+    requestor_url: str
+    """The URL of the 3DS requestor."""
+
+    shipping_address_city: Optional[str] = None
+    """The city of the shipping address associated with this purchase."""
+
+    shipping_address_country: Optional[str] = None
+    """The country of the shipping address associated with this purchase."""
+
+    shipping_address_line1: Optional[str] = None
+    """The first line of the shipping address associated with this purchase."""
+
+    shipping_address_line2: Optional[str] = None
+    """The second line of the shipping address associated with this purchase."""
+
+    shipping_address_line3: Optional[str] = None
+    """The third line of the shipping address associated with this purchase."""
+
+    shipping_address_postal_code: Optional[str] = None
+    """The postal code of the shipping address associated with this purchase."""
+
+    shipping_address_state: Optional[str] = None
+    """The US state of the shipping address associated with this purchase."""
+
+    three_d_secure_server_transaction_id: str
+    """
+    A unique identifier assigned by the 3DS Server initiating the authentication
+    attempt for this transaction.
+    """
+
+    transaction_type: Optional[
+        Literal[
+            "goods_service_purchase",
+            "check_acceptance",
+            "account_funding",
+            "quasi_cash_transaction",
+            "prepaid_activation_and_load",
+        ]
+    ] = None
+    """The type of transaction being authenticated.
+
+    - `goods_service_purchase` - Purchase of goods or services.
+    - `check_acceptance` - Check acceptance.
+    - `account_funding` - Account funding.
+    - `quasi_cash_transaction` - Quasi-cash transaction.
+    - `prepaid_activation_and_load` - Prepaid activation and load.
     """
 
     upcoming_card_payment_id: str
