@@ -441,6 +441,12 @@ class ElementCardAuthentication(BaseModel):
     purchase_amount: Optional[int] = None
     """The purchase amount in minor units."""
 
+    purchase_amount_cardholder_estimated: Optional[int] = None
+    """
+    The purchase amount in the cardholder's currency (i.e., USD) estimated using
+    daily conversion rates from the card network.
+    """
+
     purchase_currency: Optional[str] = None
     """
     The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
