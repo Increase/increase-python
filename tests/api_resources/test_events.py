@@ -103,7 +103,7 @@ class TestEvents:
     @pytest.mark.parametrize(
         "client_opt,method_opt",
         [
-            ("whsec_c2VjcmV0Cg==", None),
+            ("secret\n", None),
             ("wrong", b"secret\n"),
             ("wrong", "whsec_c2VjcmV0Cg=="),
             (None, b"secret\n"),
@@ -227,7 +227,7 @@ class TestAsyncEvents:
     @pytest.mark.parametrize(
         "client_opt,method_opt",
         [
-            ("whsec_c2VjcmV0Cg==", None),
+            ("secret\n", None),
             ("wrong", b"secret\n"),
             ("wrong", "whsec_c2VjcmV0Cg=="),
             (None, b"secret\n"),
