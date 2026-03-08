@@ -57,6 +57,7 @@ class ExportsResource(SyncAPIResource):
             "vendor_csv",
             "account_verification_letter",
             "funding_instructions",
+            "voided_check",
         ],
         account_statement_bai2: export_create_params.AccountStatementBai2 | Omit = omit,
         account_statement_ofx: export_create_params.AccountStatementOfx | Omit = omit,
@@ -67,6 +68,7 @@ class ExportsResource(SyncAPIResource):
         funding_instructions: export_create_params.FundingInstructions | Omit = omit,
         transaction_csv: export_create_params.TransactionCsv | Omit = omit,
         vendor_csv: export_create_params.VendorCsv | Omit = omit,
+        voided_check: export_create_params.VoidedCheck | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -95,6 +97,7 @@ class ExportsResource(SyncAPIResource):
                 management dashboard.
               - `account_verification_letter` - A PDF of an account verification letter.
               - `funding_instructions` - A PDF of funding instructions.
+              - `voided_check` - A PDF of a voided check.
 
           account_statement_bai2: Options for the created export. Required if `category` is equal to
               `account_statement_bai2`.
@@ -121,6 +124,9 @@ class ExportsResource(SyncAPIResource):
 
           vendor_csv: Options for the created export. Required if `category` is equal to `vendor_csv`.
 
+          voided_check: Options for the created export. Required if `category` is equal to
+              `voided_check`.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -145,6 +151,7 @@ class ExportsResource(SyncAPIResource):
                     "funding_instructions": funding_instructions,
                     "transaction_csv": transaction_csv,
                     "vendor_csv": vendor_csv,
+                    "voided_check": voided_check,
                 },
                 export_create_params.ExportCreateParams,
             ),
@@ -196,9 +203,27 @@ class ExportsResource(SyncAPIResource):
     def list(
         self,
         *,
-        category: export_list_params.Category | Omit = omit,
+        category: Literal[
+            "account_statement_ofx",
+            "account_statement_bai2",
+            "transaction_csv",
+            "balance_csv",
+            "bookkeeping_account_balance_csv",
+            "entity_csv",
+            "vendor_csv",
+            "dashboard_table_csv",
+            "account_verification_letter",
+            "funding_instructions",
+            "form_1099_int",
+            "form_1099_misc",
+            "fee_csv",
+            "voided_check",
+        ]
+        | Omit = omit,
         created_at: export_list_params.CreatedAt | Omit = omit,
         cursor: str | Omit = omit,
+        form_1099_int: export_list_params.Form1099Int | Omit = omit,
+        form_1099_misc: export_list_params.Form1099Misc | Omit = omit,
         idempotency_key: str | Omit = omit,
         limit: int | Omit = omit,
         status: export_list_params.Status | Omit = omit,
@@ -213,6 +238,30 @@ class ExportsResource(SyncAPIResource):
         List Exports
 
         Args:
+          category: Filter Exports for those with the specified category.
+
+              - `account_statement_ofx` - Export an Open Financial Exchange (OFX) file of
+                transactions and balances for a given time range and Account.
+              - `account_statement_bai2` - Export a BAI2 file of transactions and balances for
+                a given date and optional Account.
+              - `transaction_csv` - Export a CSV of all transactions for a given time range.
+              - `balance_csv` - Export a CSV of account balances for the dates in a given
+                range.
+              - `bookkeeping_account_balance_csv` - Export a CSV of bookkeeping account
+                balances for the dates in a given range.
+              - `entity_csv` - Export a CSV of entities with a given status.
+              - `vendor_csv` - Export a CSV of vendors added to the third-party risk
+                management dashboard.
+              - `dashboard_table_csv` - Certain dashboard tables are available as CSV exports.
+                This export cannot be created via the API.
+              - `account_verification_letter` - A PDF of an account verification letter.
+              - `funding_instructions` - A PDF of funding instructions.
+              - `form_1099_int` - A PDF of an Internal Revenue Service Form 1099-INT.
+              - `form_1099_misc` - A PDF of an Internal Revenue Service Form 1099-MISC.
+              - `fee_csv` - Export a CSV of fees. The time range must not include any fees
+                that are part of an open fee statement.
+              - `voided_check` - A PDF of a voided check.
+
           cursor: Return the page of entries after this one.
 
           idempotency_key: Filter records to the one with the specified `idempotency_key` you chose for
@@ -244,6 +293,8 @@ class ExportsResource(SyncAPIResource):
                         "category": category,
                         "created_at": created_at,
                         "cursor": cursor,
+                        "form_1099_int": form_1099_int,
+                        "form_1099_misc": form_1099_misc,
                         "idempotency_key": idempotency_key,
                         "limit": limit,
                         "status": status,
@@ -288,6 +339,7 @@ class AsyncExportsResource(AsyncAPIResource):
             "vendor_csv",
             "account_verification_letter",
             "funding_instructions",
+            "voided_check",
         ],
         account_statement_bai2: export_create_params.AccountStatementBai2 | Omit = omit,
         account_statement_ofx: export_create_params.AccountStatementOfx | Omit = omit,
@@ -298,6 +350,7 @@ class AsyncExportsResource(AsyncAPIResource):
         funding_instructions: export_create_params.FundingInstructions | Omit = omit,
         transaction_csv: export_create_params.TransactionCsv | Omit = omit,
         vendor_csv: export_create_params.VendorCsv | Omit = omit,
+        voided_check: export_create_params.VoidedCheck | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -326,6 +379,7 @@ class AsyncExportsResource(AsyncAPIResource):
                 management dashboard.
               - `account_verification_letter` - A PDF of an account verification letter.
               - `funding_instructions` - A PDF of funding instructions.
+              - `voided_check` - A PDF of a voided check.
 
           account_statement_bai2: Options for the created export. Required if `category` is equal to
               `account_statement_bai2`.
@@ -352,6 +406,9 @@ class AsyncExportsResource(AsyncAPIResource):
 
           vendor_csv: Options for the created export. Required if `category` is equal to `vendor_csv`.
 
+          voided_check: Options for the created export. Required if `category` is equal to
+              `voided_check`.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -376,6 +433,7 @@ class AsyncExportsResource(AsyncAPIResource):
                     "funding_instructions": funding_instructions,
                     "transaction_csv": transaction_csv,
                     "vendor_csv": vendor_csv,
+                    "voided_check": voided_check,
                 },
                 export_create_params.ExportCreateParams,
             ),
@@ -427,9 +485,27 @@ class AsyncExportsResource(AsyncAPIResource):
     def list(
         self,
         *,
-        category: export_list_params.Category | Omit = omit,
+        category: Literal[
+            "account_statement_ofx",
+            "account_statement_bai2",
+            "transaction_csv",
+            "balance_csv",
+            "bookkeeping_account_balance_csv",
+            "entity_csv",
+            "vendor_csv",
+            "dashboard_table_csv",
+            "account_verification_letter",
+            "funding_instructions",
+            "form_1099_int",
+            "form_1099_misc",
+            "fee_csv",
+            "voided_check",
+        ]
+        | Omit = omit,
         created_at: export_list_params.CreatedAt | Omit = omit,
         cursor: str | Omit = omit,
+        form_1099_int: export_list_params.Form1099Int | Omit = omit,
+        form_1099_misc: export_list_params.Form1099Misc | Omit = omit,
         idempotency_key: str | Omit = omit,
         limit: int | Omit = omit,
         status: export_list_params.Status | Omit = omit,
@@ -444,6 +520,30 @@ class AsyncExportsResource(AsyncAPIResource):
         List Exports
 
         Args:
+          category: Filter Exports for those with the specified category.
+
+              - `account_statement_ofx` - Export an Open Financial Exchange (OFX) file of
+                transactions and balances for a given time range and Account.
+              - `account_statement_bai2` - Export a BAI2 file of transactions and balances for
+                a given date and optional Account.
+              - `transaction_csv` - Export a CSV of all transactions for a given time range.
+              - `balance_csv` - Export a CSV of account balances for the dates in a given
+                range.
+              - `bookkeeping_account_balance_csv` - Export a CSV of bookkeeping account
+                balances for the dates in a given range.
+              - `entity_csv` - Export a CSV of entities with a given status.
+              - `vendor_csv` - Export a CSV of vendors added to the third-party risk
+                management dashboard.
+              - `dashboard_table_csv` - Certain dashboard tables are available as CSV exports.
+                This export cannot be created via the API.
+              - `account_verification_letter` - A PDF of an account verification letter.
+              - `funding_instructions` - A PDF of funding instructions.
+              - `form_1099_int` - A PDF of an Internal Revenue Service Form 1099-INT.
+              - `form_1099_misc` - A PDF of an Internal Revenue Service Form 1099-MISC.
+              - `fee_csv` - Export a CSV of fees. The time range must not include any fees
+                that are part of an open fee statement.
+              - `voided_check` - A PDF of a voided check.
+
           cursor: Return the page of entries after this one.
 
           idempotency_key: Filter records to the one with the specified `idempotency_key` you chose for
@@ -475,6 +575,8 @@ class AsyncExportsResource(AsyncAPIResource):
                         "category": category,
                         "created_at": created_at,
                         "cursor": cursor,
+                        "form_1099_int": form_1099_int,
+                        "form_1099_misc": form_1099_misc,
                         "idempotency_key": idempotency_key,
                         "limit": limit,
                         "status": status,

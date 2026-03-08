@@ -16,6 +16,8 @@ __all__ = [
     "SourceACHTransferIntention",
     "SourceACHTransferRejection",
     "SourceACHTransferReturn",
+    "SourceBlockchainOfframpTransferSettlement",
+    "SourceBlockchainOnrampTransferIntention",
     "SourceCardDisputeAcceptance",
     "SourceCardDisputeFinancial",
     "SourceCardDisputeFinancialVisa",
@@ -39,6 +41,7 @@ __all__ = [
     "SourceCardFinancialVerification",
     "SourceCardFinancialVerificationCardVerificationCode",
     "SourceCardFinancialVerificationCardholderAddress",
+    "SourceCardFinancialVerificationCardholderName",
     "SourceCardPushTransferAcceptance",
     "SourceCardRefund",
     "SourceCardRefundCashback",
@@ -320,24 +323,28 @@ class SourceACHTransferReturn(BaseModel):
     This reason code is sent by the receiving bank back to Increase.
 
     - `insufficient_fund` - Code R01. Insufficient funds in the receiving account.
-      Sometimes abbreviated to NSF.
+      Sometimes abbreviated to "NSF."
     - `no_account` - Code R03. The account does not exist or the receiving bank was
       unable to locate it.
     - `account_closed` - Code R02. The account is closed at the receiving bank.
     - `invalid_account_number_structure` - Code R04. The account number is invalid
       at the receiving bank.
-    - `account_frozen_entry_returned_per_ofac_instruction` - Code R16. The account
-      at the receiving bank was frozen per the Office of Foreign Assets Control.
-    - `credit_entry_refused_by_receiver` - Code R23. The receiving bank account
-      refused a credit transfer.
+    - `account_frozen_entry_returned_per_ofac_instruction` - Code R16. This return
+      code has two separate meanings. (1) The receiving bank froze the account or
+      (2) the Office of Foreign Assets Control (OFAC) instructed the receiving bank
+      to return the entry.
+    - `credit_entry_refused_by_receiver` - Code R23. The receiving bank refused the
+      credit transfer.
     - `unauthorized_debit_to_consumer_account_using_corporate_sec_code` - Code R05.
       The receiving bank rejected because of an incorrect Standard Entry Class code.
+      Consumer accounts cannot be debited as `corporate_credit_or_debit` or
+      `corporate_trade_exchange`.
     - `corporate_customer_advised_not_authorized` - Code R29. The corporate customer
       at the receiving bank reversed the transfer.
     - `payment_stopped` - Code R08. The receiving bank stopped payment on this
       transfer.
-    - `non_transaction_account` - Code R20. The receiving bank account does not
-      perform transfers.
+    - `non_transaction_account` - Code R20. The account is not eligible for ACH,
+      such as a savings account with transaction limits.
     - `uncollected_funds` - Code R09. The receiving bank account does not have
       enough available balance for the transfer.
     - `routing_number_check_digit_error` - Code R28. The routing number is
@@ -345,14 +352,13 @@ class SourceACHTransferReturn(BaseModel):
     - `customer_advised_unauthorized_improper_ineligible_or_incomplete` - Code R10.
       The customer at the receiving bank reversed the transfer.
     - `amount_field_error` - Code R19. The amount field is incorrect or too large.
-    - `authorization_revoked_by_customer` - Code R07. The customer at the receiving
-      institution informed their bank that they have revoked authorization for a
-      previously authorized transfer.
+    - `authorization_revoked_by_customer` - Code R07. The customer revoked their
+      authorization for a previously authorized transfer.
     - `invalid_ach_routing_number` - Code R13. The routing number is invalid.
     - `file_record_edit_criteria` - Code R17. The receiving bank is unable to
       process a field in the transfer.
-    - `enr_invalid_individual_name` - Code R45. The individual name field was
-      invalid.
+    - `enr_invalid_individual_name` - Code R45. A rare return reason. The individual
+      name field was invalid.
     - `returned_per_odfi_request` - Code R06. The originating financial institution
       asked for this transfer to be returned. The receiving bank is complying with
       the request.
@@ -447,8 +453,8 @@ class SourceACHTransferReturn(BaseModel):
       a malformed credit entry.
     - `return_of_improper_debit_entry` - Code R35. A rare return reason. Return of a
       malformed debit entry.
-    - `return_of_xck_entry` - Code R33. A rare return reason. Return of a Destroyed
-      Check ("XKC") entry.
+    - `return_of_xck_entry` - Code R33. A rare return reason. Return of a destroyed
+      check ("XCK") entry.
     - `source_document_presented_for_payment` - Code R37. A rare return reason. The
       source document related to this ACH, usually an ACH check conversion, was
       presented to the bank.
@@ -481,6 +487,58 @@ class SourceACHTransferReturn(BaseModel):
 
     transfer_id: str
     """The identifier of the ACH Transfer associated with this return."""
+
+    if TYPE_CHECKING:
+        # Some versions of Pydantic <2.8.0 have a bug and don’t allow assigning a
+        # value to this field, so for compatibility we avoid doing it at runtime.
+        __pydantic_extra__: Dict[str, object] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
+
+        # Stub to indicate that arbitrary properties are accepted.
+        # To access properties that are not valid identifiers you can use `getattr`, e.g.
+        # `getattr(obj, '$type')`
+        def __getattr__(self, attr: str) -> object: ...
+    else:
+        __pydantic_extra__: Dict[str, object]
+
+
+class SourceBlockchainOfframpTransferSettlement(BaseModel):
+    """A Blockchain Off-Ramp Transfer Settlement object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `blockchain_offramp_transfer_settlement`.
+    """
+
+    source_blockchain_address_id: str
+    """The identifier of the Blockchain Address the funds were received at."""
+
+    transfer_id: str
+    """
+    The identifier of the Blockchain Off-Ramp Transfer that led to this Transaction.
+    """
+
+    if TYPE_CHECKING:
+        # Some versions of Pydantic <2.8.0 have a bug and don’t allow assigning a
+        # value to this field, so for compatibility we avoid doing it at runtime.
+        __pydantic_extra__: Dict[str, object] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
+
+        # Stub to indicate that arbitrary properties are accepted.
+        # To access properties that are not valid identifiers you can use `getattr`, e.g.
+        # `getattr(obj, '$type')`
+        def __getattr__(self, attr: str) -> object: ...
+    else:
+        __pydantic_extra__: Dict[str, object]
+
+
+class SourceBlockchainOnrampTransferIntention(BaseModel):
+    """A Blockchain On-Ramp Transfer Intention object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `blockchain_onramp_transfer_intention`.
+    """
+
+    destination_blockchain_address: str
+    """The blockchain address the funds were sent to."""
+
+    transfer_id: str
+    """The identifier of the Blockchain On-Ramp Transfer that led to this Transaction."""
 
     if TYPE_CHECKING:
         # Some versions of Pydantic <2.8.0 have a bug and don’t allow assigning a
@@ -935,6 +993,7 @@ class SourceCardFinancialNetworkDetailsVisa(BaseModel):
         Literal[
             "issuer_error",
             "invalid_physical_card",
+            "invalid_cryptogram",
             "invalid_cardholder_authentication_verification_value",
             "internal_visa_error",
             "merchant_transaction_advisory_service_authentication_required",
@@ -949,8 +1008,10 @@ class SourceCardFinancialNetworkDetailsVisa(BaseModel):
 
     - `issuer_error` - Increase failed to process the authorization in a timely
       manner.
-    - `invalid_physical_card` - The physical card read had an invalid CVV, dCVV, or
-      authorization request cryptogram.
+    - `invalid_physical_card` - The physical card read had an invalid CVV or dCVV.
+    - `invalid_cryptogram` - The card's authorization request cryptogram was
+      invalid. The cryptogram can be from a physical card or a Digital Wallet Token
+      purchase.
     - `invalid_cardholder_authentication_verification_value` - The 3DS cardholder
       authentication verification value was invalid.
     - `internal_visa_error` - An internal Visa error occurred. Visa uses this reason
@@ -964,6 +1025,41 @@ class SourceCardFinancialNetworkDetailsVisa(BaseModel):
       Visa's Payment Fraud Disruption service due to fraudulent Acquirer behavior,
       such as card testing.
     - `other` - An unspecific reason for stand-in processing.
+    """
+
+    terminal_entry_capability: Optional[
+        Literal[
+            "unknown",
+            "terminal_not_used",
+            "magnetic_stripe",
+            "barcode",
+            "optical_character_recognition",
+            "chip_or_contactless",
+            "contactless_only",
+            "no_capability",
+        ]
+    ] = None
+    """The capability of the terminal being used to read the card.
+
+    Shows whether a terminal can e.g., accept chip cards or if it only supports
+    magnetic stripe reads. This reflects the highest capability of the terminal —
+    for example, a terminal that supports both chip and magnetic stripe will be
+    identified as chip-capable.
+
+    - `unknown` - Unknown
+    - `terminal_not_used` - No terminal was used for this transaction.
+    - `magnetic_stripe` - The terminal can only read magnetic stripes and does not
+      have chip or contactless reading capability.
+    - `barcode` - The terminal can only read barcodes.
+    - `optical_character_recognition` - The terminal can only read cards via Optical
+      Character Recognition.
+    - `chip_or_contactless` - The terminal supports contact chip cards and can also
+      read the magnetic stripe. If contact chip is supported, this value is used
+      regardless of whether contactless is also supported.
+    - `contactless_only` - The terminal supports contactless reads but does not
+      support contact chip. Only used when the terminal lacks contact chip
+      capability.
+    - `no_capability` - The terminal has no card reading capability.
     """
 
 
@@ -1071,6 +1167,19 @@ class SourceCardFinancialVerificationCardholderAddress(BaseModel):
     """
 
 
+class SourceCardFinancialVerificationCardholderName(BaseModel):
+    """Cardholder name provided in the authorization request."""
+
+    provided_first_name: Optional[str] = None
+    """The first name provided for verification in the authorization request."""
+
+    provided_last_name: Optional[str] = None
+    """The last name provided for verification in the authorization request."""
+
+    provided_middle_name: Optional[str] = None
+    """The middle name provided for verification in the authorization request."""
+
+
 class SourceCardFinancialVerification(BaseModel):
     """Fields related to verification of cardholder-provided values."""
 
@@ -1086,11 +1195,14 @@ class SourceCardFinancialVerification(BaseModel):
     we verified it against.
     """
 
+    cardholder_name: Optional[SourceCardFinancialVerificationCardholderName] = None
+    """Cardholder name provided in the authorization request."""
+
 
 class SourceCardFinancial(BaseModel):
     """A Card Financial object.
 
-    This field will be present in the JSON response if and only if `category` is equal to `card_financial`. Card Financials are temporary holds placed on a customers funds with the intent to later clear a transaction.
+    This field will be present in the JSON response if and only if `category` is equal to `card_financial`. Card Financials are temporary holds placed on a customer's funds with the intent to later clear a transaction.
     """
 
     id: str
@@ -1328,7 +1440,7 @@ class SourceCardRefundCashback(BaseModel):
 
 
 class SourceCardRefundInterchange(BaseModel):
-    """Interchange assessed as a part of this transaciton."""
+    """Interchange assessed as a part of this transaction."""
 
     amount: str
     """
@@ -1797,7 +1909,7 @@ class SourceCardRefundPurchaseDetails(BaseModel):
 class SourceCardRefund(BaseModel):
     """A Card Refund object.
 
-    This field will be present in the JSON response if and only if `category` is equal to `card_refund`. Card Refunds move money back to the cardholder. While they are usually connected to a Card Settlement an acquirer can also refund money directly to a card without relation to a transaction.
+    This field will be present in the JSON response if and only if `category` is equal to `card_refund`. Card Refunds move money back to the cardholder. While they are usually connected to a Card Settlement, an acquirer can also refund money directly to a card without relation to a transaction.
     """
 
     id: str
@@ -1827,7 +1939,7 @@ class SourceCardRefund(BaseModel):
     """
 
     interchange: Optional[SourceCardRefundInterchange] = None
-    """Interchange assessed as a part of this transaciton."""
+    """Interchange assessed as a part of this transaction."""
 
     merchant_acceptor_id: str
     """
@@ -2425,7 +2537,7 @@ class SourceCardSettlementPurchaseDetails(BaseModel):
 class SourceCardSettlementSurcharge(BaseModel):
     """Surcharge amount details, if applicable.
 
-    The amount is positive if the surcharge is added to to the overall transaction amount (surcharge), and negative if the surcharge is deducted from the overall transaction amount (discount).
+    The amount is positive if the surcharge is added to the overall transaction amount (surcharge), and negative if the surcharge is deducted from the overall transaction amount (discount).
     """
 
     amount: int
@@ -2536,7 +2648,7 @@ class SourceCardSettlement(BaseModel):
     surcharge: Optional[SourceCardSettlementSurcharge] = None
     """Surcharge amount details, if applicable.
 
-    The amount is positive if the surcharge is added to to the overall transaction
+    The amount is positive if the surcharge is added to the overall transaction
     amount (surcharge), and negative if the surcharge is deducted from the overall
     transaction amount (discount).
     """
@@ -3412,6 +3524,7 @@ class SourceInternalSource(BaseModel):
         "error",
         "error_correction",
         "fees",
+        "general_ledger_transfer",
         "interest",
         "negative_balance_forgiveness",
         "sample_funds",
@@ -3434,6 +3547,7 @@ class SourceInternalSource(BaseModel):
     - `error` - Error
     - `error_correction` - Error correction
     - `fees` - Fees
+    - `general_ledger_transfer` - General ledger transfer
     - `interest` - Interest
     - `negative_balance_forgiveness` - Negative balance forgiveness
     - `sample_funds` - Sample funds
@@ -3600,126 +3714,6 @@ class Source(BaseModel):
     This is an object giving more details on the network-level event that caused the Transaction. Note that for backwards compatibility reasons, additional undocumented keys may appear in this object. These should be treated as deprecated and will be removed in the future.
     """
 
-    account_revenue_payment: Optional[SourceAccountRevenuePayment] = None
-    """An Account Revenue Payment object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `account_revenue_payment`. An Account Revenue Payment represents a
-    payment made to an account from the bank. Account revenue is a type of
-    non-interest income.
-    """
-
-    account_transfer_intention: Optional[SourceAccountTransferIntention] = None
-    """An Account Transfer Intention object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `account_transfer_intention`. Two Account Transfer Intentions are
-    created from each Account Transfer. One decrements the source account, and the
-    other increments the destination account.
-    """
-
-    ach_transfer_intention: Optional[SourceACHTransferIntention] = None
-    """An ACH Transfer Intention object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `ach_transfer_intention`. An ACH Transfer Intention is created from an
-    ACH Transfer. It reflects the intention to move money into or out of an Increase
-    account via the ACH network.
-    """
-
-    ach_transfer_rejection: Optional[SourceACHTransferRejection] = None
-    """An ACH Transfer Rejection object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `ach_transfer_rejection`. An ACH Transfer Rejection is created when an
-    ACH Transfer is rejected by Increase. It offsets the ACH Transfer Intention.
-    These rejections are rare.
-    """
-
-    ach_transfer_return: Optional[SourceACHTransferReturn] = None
-    """An ACH Transfer Return object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `ach_transfer_return`. An ACH Transfer Return is created when an ACH
-    Transfer is returned by the receiving bank. It offsets the ACH Transfer
-    Intention. ACH Transfer Returns usually occur within the first two business days
-    after the transfer is initiated, but can occur much later.
-    """
-
-    card_dispute_acceptance: Optional[SourceCardDisputeAcceptance] = None
-    """A Legacy Card Dispute Acceptance object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `card_dispute_acceptance`. Contains the details of a successful Card
-    Dispute.
-    """
-
-    card_dispute_financial: Optional[SourceCardDisputeFinancial] = None
-    """A Card Dispute Financial object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `card_dispute_financial`. Financial event related to a Card Dispute.
-    """
-
-    card_dispute_loss: Optional[SourceCardDisputeLoss] = None
-    """A Legacy Card Dispute Loss object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `card_dispute_loss`. Contains the details of a lost Card Dispute.
-    """
-
-    card_financial: Optional[SourceCardFinancial] = None
-    """A Card Financial object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `card_financial`. Card Financials are temporary holds placed on a
-    customers funds with the intent to later clear a transaction.
-    """
-
-    card_push_transfer_acceptance: Optional[SourceCardPushTransferAcceptance] = None
-    """A Card Push Transfer Acceptance object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `card_push_transfer_acceptance`. A Card Push Transfer Acceptance is
-    created when an Outbound Card Push Transfer sent from Increase is accepted by
-    the receiving bank.
-    """
-
-    card_refund: Optional[SourceCardRefund] = None
-    """A Card Refund object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `card_refund`. Card Refunds move money back to the cardholder. While
-    they are usually connected to a Card Settlement an acquirer can also refund
-    money directly to a card without relation to a transaction.
-    """
-
-    card_revenue_payment: Optional[SourceCardRevenuePayment] = None
-    """A Card Revenue Payment object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `card_revenue_payment`. Card Revenue Payments reflect earnings from
-    fees on card transactions.
-    """
-
-    card_settlement: Optional[SourceCardSettlement] = None
-    """A Card Settlement object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `card_settlement`. Card Settlements are card transactions that have
-    cleared and settled. While a settlement is usually preceded by an authorization,
-    an acquirer can also directly clear a transaction without first authorizing it.
-    """
-
-    cashback_payment: Optional[SourceCashbackPayment] = None
-    """A Cashback Payment object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `cashback_payment`. A Cashback Payment represents the cashback paid to
-    a cardholder for a given period. Cashback is usually paid monthly for the prior
-    month's transactions.
-    """
-
     category: Literal[
         "account_transfer_intention",
         "ach_transfer_intention",
@@ -3756,6 +3750,8 @@ class Source(BaseModel):
         "swift_transfer_return",
         "card_push_transfer_acceptance",
         "account_revenue_payment",
+        "blockchain_onramp_transfer_intention",
+        "blockchain_offramp_transfer_settlement",
         "other",
     ]
     """The type of the resource.
@@ -3835,7 +3831,147 @@ class Source(BaseModel):
       be under the `card_push_transfer_acceptance` object.
     - `account_revenue_payment` - Account Revenue Payment: details will be under the
       `account_revenue_payment` object.
+    - `blockchain_onramp_transfer_intention` - Blockchain On-Ramp Transfer
+      Intention: details will be under the `blockchain_onramp_transfer_intention`
+      object.
+    - `blockchain_offramp_transfer_settlement` - Blockchain Off-Ramp Transfer
+      Settlement: details will be under the `blockchain_offramp_transfer_settlement`
+      object.
     - `other` - The Transaction was made for an undocumented or deprecated reason.
+    """
+
+    account_revenue_payment: Optional[SourceAccountRevenuePayment] = None
+    """An Account Revenue Payment object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `account_revenue_payment`. An Account Revenue Payment represents a
+    payment made to an account from the bank. Account revenue is a type of
+    non-interest income.
+    """
+
+    account_transfer_intention: Optional[SourceAccountTransferIntention] = None
+    """An Account Transfer Intention object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `account_transfer_intention`. Two Account Transfer Intentions are
+    created from each Account Transfer. One decrements the source account, and the
+    other increments the destination account.
+    """
+
+    ach_transfer_intention: Optional[SourceACHTransferIntention] = None
+    """An ACH Transfer Intention object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `ach_transfer_intention`. An ACH Transfer Intention is created from an
+    ACH Transfer. It reflects the intention to move money into or out of an Increase
+    account via the ACH network.
+    """
+
+    ach_transfer_rejection: Optional[SourceACHTransferRejection] = None
+    """An ACH Transfer Rejection object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `ach_transfer_rejection`. An ACH Transfer Rejection is created when an
+    ACH Transfer is rejected by Increase. It offsets the ACH Transfer Intention.
+    These rejections are rare.
+    """
+
+    ach_transfer_return: Optional[SourceACHTransferReturn] = None
+    """An ACH Transfer Return object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `ach_transfer_return`. An ACH Transfer Return is created when an ACH
+    Transfer is returned by the receiving bank. It offsets the ACH Transfer
+    Intention. ACH Transfer Returns usually occur within the first two business days
+    after the transfer is initiated, but can occur much later.
+    """
+
+    blockchain_offramp_transfer_settlement: Optional[SourceBlockchainOfframpTransferSettlement] = None
+    """A Blockchain Off-Ramp Transfer Settlement object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `blockchain_offramp_transfer_settlement`.
+    """
+
+    blockchain_onramp_transfer_intention: Optional[SourceBlockchainOnrampTransferIntention] = None
+    """A Blockchain On-Ramp Transfer Intention object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `blockchain_onramp_transfer_intention`.
+    """
+
+    card_dispute_acceptance: Optional[SourceCardDisputeAcceptance] = None
+    """A Legacy Card Dispute Acceptance object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `card_dispute_acceptance`. Contains the details of a successful Card
+    Dispute.
+    """
+
+    card_dispute_financial: Optional[SourceCardDisputeFinancial] = None
+    """A Card Dispute Financial object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `card_dispute_financial`. Financial event related to a Card Dispute.
+    """
+
+    card_dispute_loss: Optional[SourceCardDisputeLoss] = None
+    """A Legacy Card Dispute Loss object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `card_dispute_loss`. Contains the details of a lost Card Dispute.
+    """
+
+    card_financial: Optional[SourceCardFinancial] = None
+    """A Card Financial object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `card_financial`. Card Financials are temporary holds placed on a
+    customer's funds with the intent to later clear a transaction.
+    """
+
+    card_push_transfer_acceptance: Optional[SourceCardPushTransferAcceptance] = None
+    """A Card Push Transfer Acceptance object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `card_push_transfer_acceptance`. A Card Push Transfer Acceptance is
+    created when an Outbound Card Push Transfer sent from Increase is accepted by
+    the receiving bank.
+    """
+
+    card_refund: Optional[SourceCardRefund] = None
+    """A Card Refund object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `card_refund`. Card Refunds move money back to the cardholder. While
+    they are usually connected to a Card Settlement, an acquirer can also refund
+    money directly to a card without relation to a transaction.
+    """
+
+    card_revenue_payment: Optional[SourceCardRevenuePayment] = None
+    """A Card Revenue Payment object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `card_revenue_payment`. Card Revenue Payments reflect earnings from
+    fees on card transactions.
+    """
+
+    card_settlement: Optional[SourceCardSettlement] = None
+    """A Card Settlement object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `card_settlement`. Card Settlements are card transactions that have
+    cleared and settled. While a settlement is usually preceded by an authorization,
+    an acquirer can also directly clear a transaction without first authorizing it.
+    """
+
+    cashback_payment: Optional[SourceCashbackPayment] = None
+    """A Cashback Payment object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `cashback_payment`. A Cashback Payment represents the cashback paid to
+    a cardholder for a given period. Cashback is usually paid monthly for the prior
+    month's transactions.
     """
 
     check_deposit_acceptance: Optional[SourceCheckDepositAcceptance] = None

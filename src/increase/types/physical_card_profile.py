@@ -38,7 +38,7 @@ class PhysicalCardProfile(BaseModel):
     created_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
-    the Card Dispute was created.
+    the Physical Card Profile was created.
     """
 
     creator: Literal["increase", "user"]

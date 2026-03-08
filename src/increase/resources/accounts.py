@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import Union
 from datetime import datetime
+from typing_extensions import Literal
 
 import httpx
 
@@ -51,7 +52,9 @@ class AccountsResource(SyncAPIResource):
         *,
         name: str,
         entity_id: str | Omit = omit,
+        funding: Literal["loan", "deposits"] | Omit = omit,
         informational_entity_id: str | Omit = omit,
+        loan: account_create_params.Loan | Omit = omit,
         program_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -69,8 +72,16 @@ class AccountsResource(SyncAPIResource):
 
           entity_id: The identifier for the Entity that will own the Account.
 
+          funding: Whether the Account is funded by a loan or by deposits.
+
+              - `loan` - An account funded by a loan. Before opening a loan account, contact
+                support@increase.com to set up a loan program.
+              - `deposits` - An account funded by deposits.
+
           informational_entity_id: The identifier of an Entity that, while not owning the Account, is associated
               with its activity. This is generally the beneficiary of the funds.
+
+          loan: The loan details for the account.
 
           program_id: The identifier for the Program that this Account falls under. Required if you
               operate more than one Program.
@@ -91,7 +102,9 @@ class AccountsResource(SyncAPIResource):
                 {
                     "name": name,
                     "entity_id": entity_id,
+                    "funding": funding,
                     "informational_entity_id": informational_entity_id,
+                    "loan": loan,
                     "program_id": program_id,
                 },
                 account_create_params.AccountCreateParams,
@@ -145,7 +158,7 @@ class AccountsResource(SyncAPIResource):
         self,
         account_id: str,
         *,
-        credit_limit: int | Omit = omit,
+        loan: account_update_params.Loan | Omit = omit,
         name: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -161,8 +174,7 @@ class AccountsResource(SyncAPIResource):
         Args:
           account_id: The identifier of the Account to update.
 
-          credit_limit: The new credit limit of the Account, if and only if the Account is a loan
-              account.
+          loan: The loan details for the account.
 
           name: The new name of the Account.
 
@@ -182,7 +194,7 @@ class AccountsResource(SyncAPIResource):
             f"/accounts/{account_id}",
             body=maybe_transform(
                 {
-                    "credit_limit": credit_limit,
+                    "loan": loan,
                     "name": name,
                 },
                 account_update_params.AccountUpdateParams,
@@ -380,7 +392,9 @@ class AsyncAccountsResource(AsyncAPIResource):
         *,
         name: str,
         entity_id: str | Omit = omit,
+        funding: Literal["loan", "deposits"] | Omit = omit,
         informational_entity_id: str | Omit = omit,
+        loan: account_create_params.Loan | Omit = omit,
         program_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -398,8 +412,16 @@ class AsyncAccountsResource(AsyncAPIResource):
 
           entity_id: The identifier for the Entity that will own the Account.
 
+          funding: Whether the Account is funded by a loan or by deposits.
+
+              - `loan` - An account funded by a loan. Before opening a loan account, contact
+                support@increase.com to set up a loan program.
+              - `deposits` - An account funded by deposits.
+
           informational_entity_id: The identifier of an Entity that, while not owning the Account, is associated
               with its activity. This is generally the beneficiary of the funds.
+
+          loan: The loan details for the account.
 
           program_id: The identifier for the Program that this Account falls under. Required if you
               operate more than one Program.
@@ -420,7 +442,9 @@ class AsyncAccountsResource(AsyncAPIResource):
                 {
                     "name": name,
                     "entity_id": entity_id,
+                    "funding": funding,
                     "informational_entity_id": informational_entity_id,
+                    "loan": loan,
                     "program_id": program_id,
                 },
                 account_create_params.AccountCreateParams,
@@ -474,7 +498,7 @@ class AsyncAccountsResource(AsyncAPIResource):
         self,
         account_id: str,
         *,
-        credit_limit: int | Omit = omit,
+        loan: account_update_params.Loan | Omit = omit,
         name: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -490,8 +514,7 @@ class AsyncAccountsResource(AsyncAPIResource):
         Args:
           account_id: The identifier of the Account to update.
 
-          credit_limit: The new credit limit of the Account, if and only if the Account is a loan
-              account.
+          loan: The loan details for the account.
 
           name: The new name of the Account.
 
@@ -511,7 +534,7 @@ class AsyncAccountsResource(AsyncAPIResource):
             f"/accounts/{account_id}",
             body=await async_maybe_transform(
                 {
-                    "credit_limit": credit_limit,
+                    "loan": loan,
                     "name": name,
                 },
                 account_update_params.AccountUpdateParams,

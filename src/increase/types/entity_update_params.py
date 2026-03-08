@@ -133,6 +133,9 @@ class Corporation(TypedDict, total=False):
     name: str
     """The legal name of the corporation."""
 
+    tax_identifier: str
+    """The Employer Identification Number (EIN) for the corporation."""
+
 
 class GovernmentAuthorityAddress(TypedDict, total=False):
     """The entity's physical address.
@@ -244,13 +247,14 @@ class ThirdPartyVerification(TypedDict, total=False):
     reference: Required[str]
     """The reference identifier for the third party verification."""
 
-    vendor: Required[Literal["alloy", "middesk", "oscilar", "persona"]]
+    vendor: Required[Literal["alloy", "middesk", "oscilar", "persona", "taktile"]]
     """The vendor that was used to perform the verification.
 
     - `alloy` - Alloy. See https://alloy.com for more information.
     - `middesk` - Middesk. See https://middesk.com for more information.
     - `oscilar` - Oscilar. See https://oscilar.com for more information.
     - `persona` - Persona. See https://withpersona.com for more information.
+    - `taktile` - Taktile. See https://taktile.com for more information.
     """
 
 

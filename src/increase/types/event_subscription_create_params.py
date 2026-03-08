@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 
+from typing import Iterable
 from typing_extensions import Literal, Required, TypedDict
 
-__all__ = ["EventSubscriptionCreateParams"]
+__all__ = ["EventSubscriptionCreateParams", "SelectedEventCategory"]
 
 
 class EventSubscriptionCreateParams(TypedDict, total=False):
@@ -17,112 +18,143 @@ class EventSubscriptionCreateParams(TypedDict, total=False):
     with the specified OAuth Connection.
     """
 
-    selected_event_category: Literal[
-        "account.created",
-        "account.updated",
-        "account_number.created",
-        "account_number.updated",
-        "account_statement.created",
-        "account_transfer.created",
-        "account_transfer.updated",
-        "ach_prenotification.created",
-        "ach_prenotification.updated",
-        "ach_transfer.created",
-        "ach_transfer.updated",
-        "bookkeeping_account.created",
-        "bookkeeping_account.updated",
-        "bookkeeping_entry_set.updated",
-        "card.created",
-        "card.updated",
-        "card_payment.created",
-        "card_payment.updated",
-        "card_profile.created",
-        "card_profile.updated",
-        "card_dispute.created",
-        "card_dispute.updated",
-        "check_deposit.created",
-        "check_deposit.updated",
-        "check_transfer.created",
-        "check_transfer.updated",
-        "declined_transaction.created",
-        "digital_card_profile.created",
-        "digital_card_profile.updated",
-        "digital_wallet_token.created",
-        "digital_wallet_token.updated",
-        "document.created",
-        "entity.created",
-        "entity.updated",
-        "event_subscription.created",
-        "event_subscription.updated",
-        "export.created",
-        "export.updated",
-        "external_account.created",
-        "external_account.updated",
-        "fednow_transfer.created",
-        "fednow_transfer.updated",
-        "file.created",
-        "group.updated",
-        "group.heartbeat",
-        "inbound_ach_transfer.created",
-        "inbound_ach_transfer.updated",
-        "inbound_ach_transfer_return.created",
-        "inbound_ach_transfer_return.updated",
-        "inbound_check_deposit.created",
-        "inbound_check_deposit.updated",
-        "inbound_fednow_transfer.created",
-        "inbound_fednow_transfer.updated",
-        "inbound_mail_item.created",
-        "inbound_mail_item.updated",
-        "inbound_real_time_payments_transfer.created",
-        "inbound_real_time_payments_transfer.updated",
-        "inbound_wire_drawdown_request.created",
-        "inbound_wire_transfer.created",
-        "inbound_wire_transfer.updated",
-        "intrafi_account_enrollment.created",
-        "intrafi_account_enrollment.updated",
-        "intrafi_exclusion.created",
-        "intrafi_exclusion.updated",
-        "legacy_card_dispute.created",
-        "legacy_card_dispute.updated",
-        "lockbox.created",
-        "lockbox.updated",
-        "oauth_connection.created",
-        "oauth_connection.deactivated",
-        "card_push_transfer.created",
-        "card_push_transfer.updated",
-        "card_validation.created",
-        "card_validation.updated",
-        "pending_transaction.created",
-        "pending_transaction.updated",
-        "physical_card.created",
-        "physical_card.updated",
-        "physical_card_profile.created",
-        "physical_card_profile.updated",
-        "program.created",
-        "program.updated",
-        "proof_of_authorization_request.created",
-        "proof_of_authorization_request.updated",
-        "real_time_decision.card_authorization_requested",
-        "real_time_decision.card_balance_inquiry_requested",
-        "real_time_decision.digital_wallet_token_requested",
-        "real_time_decision.digital_wallet_authentication_requested",
-        "real_time_decision.card_authentication_requested",
-        "real_time_decision.card_authentication_challenge_requested",
-        "real_time_payments_transfer.created",
-        "real_time_payments_transfer.updated",
-        "real_time_payments_request_for_payment.created",
-        "real_time_payments_request_for_payment.updated",
-        "swift_transfer.created",
-        "swift_transfer.updated",
-        "transaction.created",
-        "wire_drawdown_request.created",
-        "wire_drawdown_request.updated",
-        "wire_transfer.created",
-        "wire_transfer.updated",
-    ]
+    selected_event_categories: Iterable[SelectedEventCategory]
     """
     If specified, this subscription will only receive webhooks for Events with the
-    specified `category`.
+    specified `category`. If specifying a Real-Time Decision event category, only
+    one Event Category can be specified for the Event Subscription.
+    """
+
+    shared_secret: str
+    """The key that will be used to sign webhooks.
+
+    If no value is passed, a random string will be used as default.
+    """
+
+    status: Literal["active", "disabled"]
+    """The status of the event subscription. Defaults to `active` if not specified.
+
+    - `active` - The subscription is active and Events will be delivered normally.
+    - `disabled` - The subscription is temporarily disabled and Events will not be
+      delivered.
+    """
+
+
+class SelectedEventCategory(TypedDict, total=False):
+    event_category: Required[
+        Literal[
+            "account.created",
+            "account.updated",
+            "account_number.created",
+            "account_number.updated",
+            "account_statement.created",
+            "account_transfer.created",
+            "account_transfer.updated",
+            "ach_prenotification.created",
+            "ach_prenotification.updated",
+            "ach_transfer.created",
+            "ach_transfer.updated",
+            "blockchain_address.created",
+            "blockchain_address.updated",
+            "blockchain_offramp_transfer.created",
+            "blockchain_offramp_transfer.updated",
+            "blockchain_onramp_transfer.created",
+            "blockchain_onramp_transfer.updated",
+            "bookkeeping_account.created",
+            "bookkeeping_account.updated",
+            "bookkeeping_entry_set.updated",
+            "card.created",
+            "card.updated",
+            "card_payment.created",
+            "card_payment.updated",
+            "card_profile.created",
+            "card_profile.updated",
+            "card_dispute.created",
+            "card_dispute.updated",
+            "check_deposit.created",
+            "check_deposit.updated",
+            "check_transfer.created",
+            "check_transfer.updated",
+            "declined_transaction.created",
+            "digital_card_profile.created",
+            "digital_card_profile.updated",
+            "digital_wallet_token.created",
+            "digital_wallet_token.updated",
+            "document.created",
+            "entity.created",
+            "entity.updated",
+            "event_subscription.created",
+            "event_subscription.updated",
+            "export.created",
+            "export.updated",
+            "external_account.created",
+            "external_account.updated",
+            "fednow_transfer.created",
+            "fednow_transfer.updated",
+            "file.created",
+            "group.updated",
+            "group.heartbeat",
+            "inbound_ach_transfer.created",
+            "inbound_ach_transfer.updated",
+            "inbound_ach_transfer_return.created",
+            "inbound_ach_transfer_return.updated",
+            "inbound_check_deposit.created",
+            "inbound_check_deposit.updated",
+            "inbound_fednow_transfer.created",
+            "inbound_fednow_transfer.updated",
+            "inbound_mail_item.created",
+            "inbound_mail_item.updated",
+            "inbound_real_time_payments_transfer.created",
+            "inbound_real_time_payments_transfer.updated",
+            "inbound_wire_drawdown_request.created",
+            "inbound_wire_transfer.created",
+            "inbound_wire_transfer.updated",
+            "intrafi_account_enrollment.created",
+            "intrafi_account_enrollment.updated",
+            "intrafi_exclusion.created",
+            "intrafi_exclusion.updated",
+            "legacy_card_dispute.created",
+            "legacy_card_dispute.updated",
+            "lockbox.created",
+            "lockbox.updated",
+            "oauth_connection.created",
+            "oauth_connection.deactivated",
+            "card_push_transfer.created",
+            "card_push_transfer.updated",
+            "card_validation.created",
+            "card_validation.updated",
+            "pending_transaction.created",
+            "pending_transaction.updated",
+            "physical_card.created",
+            "physical_card.updated",
+            "physical_card_profile.created",
+            "physical_card_profile.updated",
+            "physical_check.created",
+            "physical_check.updated",
+            "program.created",
+            "program.updated",
+            "proof_of_authorization_request.created",
+            "proof_of_authorization_request.updated",
+            "real_time_decision.card_authorization_requested",
+            "real_time_decision.card_balance_inquiry_requested",
+            "real_time_decision.digital_wallet_token_requested",
+            "real_time_decision.digital_wallet_authentication_requested",
+            "real_time_decision.card_authentication_requested",
+            "real_time_decision.card_authentication_challenge_requested",
+            "real_time_payments_transfer.created",
+            "real_time_payments_transfer.updated",
+            "real_time_payments_request_for_payment.created",
+            "real_time_payments_request_for_payment.updated",
+            "swift_transfer.created",
+            "swift_transfer.updated",
+            "transaction.created",
+            "wire_drawdown_request.created",
+            "wire_drawdown_request.updated",
+            "wire_transfer.created",
+            "wire_transfer.updated",
+        ]
+    ]
+    """The category of the Event to subscribe to.
 
     - `account.created` - Occurs whenever an Account is created.
     - `account.updated` - Occurs whenever an Account is updated.
@@ -137,6 +169,18 @@ class EventSubscriptionCreateParams(TypedDict, total=False):
       updated.
     - `ach_transfer.created` - Occurs whenever an ACH Transfer is created.
     - `ach_transfer.updated` - Occurs whenever an ACH Transfer is updated.
+    - `blockchain_address.created` - Occurs whenever a Blockchain Address is
+      created.
+    - `blockchain_address.updated` - Occurs whenever a Blockchain Address is
+      updated.
+    - `blockchain_offramp_transfer.created` - Occurs whenever a Blockchain Off-Ramp
+      Transfer is created.
+    - `blockchain_offramp_transfer.updated` - Occurs whenever a Blockchain Off-Ramp
+      Transfer is updated.
+    - `blockchain_onramp_transfer.created` - Occurs whenever a Blockchain On-Ramp
+      Transfer is created.
+    - `blockchain_onramp_transfer.updated` - Occurs whenever a Blockchain On-Ramp
+      Transfer is updated.
     - `bookkeeping_account.created` - Occurs whenever a Bookkeeping Account is
       created.
     - `bookkeeping_account.updated` - Occurs whenever a Bookkeeping Account is
@@ -241,6 +285,8 @@ class EventSubscriptionCreateParams(TypedDict, total=False):
       created.
     - `physical_card_profile.updated` - Occurs whenever a Physical Card Profile is
       updated.
+    - `physical_check.created` - Occurs whenever a Physical Check is created.
+    - `physical_check.updated` - Occurs whenever a Physical Check is updated.
     - `program.created` - Occurs whenever a Program is created.
     - `program.updated` - Occurs whenever a Program is updated.
     - `proof_of_authorization_request.created` - Occurs whenever a Proof of
@@ -278,18 +324,4 @@ class EventSubscriptionCreateParams(TypedDict, total=False):
       updated.
     - `wire_transfer.created` - Occurs whenever a Wire Transfer is created.
     - `wire_transfer.updated` - Occurs whenever a Wire Transfer is updated.
-    """
-
-    shared_secret: str
-    """The key that will be used to sign webhooks.
-
-    If no value is passed, a random string will be used as default.
-    """
-
-    status: Literal["active", "disabled"]
-    """The status of the event subscription. Defaults to `active` if not specified.
-
-    - `active` - The subscription is active and Events will be delivered normally.
-    - `disabled` - The subscription is temporarily disabled and Events will not be
-      delivered.
     """

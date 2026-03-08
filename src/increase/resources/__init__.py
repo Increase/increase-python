@@ -185,6 +185,14 @@ from .routing_numbers import (
     RoutingNumbersResourceWithStreamingResponse,
     AsyncRoutingNumbersResourceWithStreamingResponse,
 )
+from .swift_transfers import (
+    SwiftTransfersResource,
+    AsyncSwiftTransfersResource,
+    SwiftTransfersResourceWithRawResponse,
+    AsyncSwiftTransfersResourceWithRawResponse,
+    SwiftTransfersResourceWithStreamingResponse,
+    AsyncSwiftTransfersResourceWithStreamingResponse,
+)
 from .card_validations import (
     CardValidationsResource,
     AsyncCardValidationsResource,
@@ -615,6 +623,12 @@ __all__ = [
     "AsyncInboundFednowTransfersResourceWithRawResponse",
     "InboundFednowTransfersResourceWithStreamingResponse",
     "AsyncInboundFednowTransfersResourceWithStreamingResponse",
+    "SwiftTransfersResource",
+    "AsyncSwiftTransfersResource",
+    "SwiftTransfersResourceWithRawResponse",
+    "AsyncSwiftTransfersResourceWithRawResponse",
+    "SwiftTransfersResourceWithStreamingResponse",
+    "AsyncSwiftTransfersResourceWithStreamingResponse",
     "CheckDepositsResource",
     "AsyncCheckDepositsResource",
     "CheckDepositsResourceWithRawResponse",

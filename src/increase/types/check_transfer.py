@@ -89,9 +89,6 @@ class CreatedByUser(BaseModel):
 class CreatedBy(BaseModel):
     """What object created the transfer, either via the API or the dashboard."""
 
-    api_key: Optional[CreatedByAPIKey] = None
-    """If present, details about the API key that created the transfer."""
-
     category: Literal["api_key", "oauth_application", "user"]
     """The type of object that created this transfer.
 
@@ -101,6 +98,9 @@ class CreatedBy(BaseModel):
     - `user` - A User in the Increase dashboard. Details will be under the `user`
       object.
     """
+
+    api_key: Optional[CreatedByAPIKey] = None
+    """If present, details about the API key that created the transfer."""
 
     oauth_application: Optional[CreatedByOAuthApplication] = None
     """If present, details about the OAuth Application that created the transfer."""
@@ -114,20 +114,23 @@ class Mailing(BaseModel):
     If the check has been mailed by Increase, this will contain details of the shipment.
     """
 
-    image_id: Optional[str] = None
-    """
-    The ID of the file corresponding to an image of the check that was mailed, if
-    available.
-    """
-
     mailed_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the check was mailed.
     """
 
-    tracking_number: Optional[str] = None
-    """The tracking number of the shipment, if available for the shipping method."""
+    if TYPE_CHECKING:
+        # Some versions of Pydantic <2.8.0 have a bug and don’t allow assigning a
+        # value to this field, so for compatibility we avoid doing it at runtime.
+        __pydantic_extra__: Dict[str, object] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
+
+        # Stub to indicate that arbitrary properties are accepted.
+        # To access properties that are not valid identifiers you can use `getattr`, e.g.
+        # `getattr(obj, '$type')`
+        def __getattr__(self, attr: str) -> object: ...
+    else:
+        __pydantic_extra__: Dict[str, object]
 
 
 class PhysicalCheckMailingAddress(BaseModel):
@@ -349,19 +352,10 @@ class SubmissionSubmittedAddress(BaseModel):
 class Submission(BaseModel):
     """After the transfer is submitted, this will contain supplemental details."""
 
-    address_correction_action: Literal["none", "standardization", "standardization_with_address_change", "error"]
+    preview_file_id: Optional[str] = None
     """
-    Per USPS requirements, Increase will standardize the address to USPS standards
-    and check it against the USPS National Change of Address (NCOA) database before
-    mailing it. This indicates what modifications, if any, were made to the address
-    before printing and mailing the check.
-
-    - `none` - No address correction took place.
-    - `standardization` - The address was standardized.
-    - `standardization_with_address_change` - The address was first standardized and
-      then changed because the recipient moved.
-    - `error` - An error occurred while correcting the address. This typically means
-      the USPS could not find that address. The address was not changed.
+    The ID of the file corresponding to an image of the check that was mailed, if
+    available.
     """
 
     submitted_address: SubmissionSubmittedAddress
@@ -371,7 +365,10 @@ class Submission(BaseModel):
     """
 
     submitted_at: datetime
-    """When this check transfer was submitted to our check printer."""
+    """When this check was submitted to our check printer."""
+
+    tracking_number: Optional[str] = None
+    """The tracking number for the check shipment."""
 
     if TYPE_CHECKING:
         # Some versions of Pydantic <2.8.0 have a bug and don’t allow assigning a

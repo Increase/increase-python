@@ -42,6 +42,12 @@ class WireDrawdownRequestCreateParams(TypedDict, total=False):
     debtor_routing_number: str
     """The debtor's routing number."""
 
+    end_to_end_identification: str
+    """
+    A free-form reference string set by the sender mirrored back in the subsequent
+    wire transfer.
+    """
+
 
 class CreditorAddress(TypedDict, total=False):
     """The creditor's address."""

@@ -8,13 +8,24 @@ from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["InboundWireTransfer", "Reversal"]
+__all__ = ["InboundWireTransfer", "Acceptance", "Reversal"]
+
+
+class Acceptance(BaseModel):
+    """If the transfer is accepted, this will contain details of the acceptance."""
+
+    accepted_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+    the transfer was accepted.
+    """
+
+    transaction_id: str
+    """The identifier of the transaction for the accepted transfer."""
 
 
 class Reversal(BaseModel):
-    """
-    Information about the reversal of the inbound wire transfer if it has been reversed.
-    """
+    """If the transfer is reversed, this will contain details of the reversal."""
 
     reason: Literal["duplicate", "creditor_request", "transaction_forbidden"]
     """The reason for the reversal.
@@ -39,6 +50,9 @@ class InboundWireTransfer(BaseModel):
 
     id: str
     """The inbound wire transfer's identifier."""
+
+    acceptance: Optional[Acceptance] = None
+    """If the transfer is accepted, this will contain details of the acceptance."""
 
     account_id: str
     """The Account to which the transfer belongs."""
@@ -102,10 +116,7 @@ class InboundWireTransfer(BaseModel):
     """The sending bank's identifier for the wire transfer."""
 
     reversal: Optional[Reversal] = None
-    """
-    Information about the reversal of the inbound wire transfer if it has been
-    reversed.
-    """
+    """If the transfer is reversed, this will contain details of the reversal."""
 
     status: Literal["pending", "accepted", "declined", "reversed"]
     """The status of the transfer.

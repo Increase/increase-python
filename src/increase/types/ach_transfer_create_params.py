@@ -64,9 +64,10 @@ class ACHTransferCreateParams(TypedDict, total=False):
     """
 
     company_entry_description: str
-    """A description of the transfer.
-
-    This is included in the transfer data sent to the receiving bank.
+    """
+    A description of the transfer, included in the transfer data sent to the
+    receiving bank. Standardized formatting may be required, for example `PAYROLL`
+    for payroll-related Prearranged Payments and Deposits (PPD) credit transfers.
     """
 
     company_name: str
@@ -132,12 +133,22 @@ class ACHTransferCreateParams(TypedDict, total=False):
         "prearranged_payments_and_deposit",
         "internet_initiated",
     ]
-    """The Standard Entry Class (SEC) code to use for the transfer.
+    """
+    The
+    [Standard Entry Class (SEC) code](/documentation/ach-standard-entry-class-codes)
+    to use for the transfer.
 
-    - `corporate_credit_or_debit` - Corporate Credit and Debit (CCD).
-    - `corporate_trade_exchange` - Corporate Trade Exchange (CTX).
-    - `prearranged_payments_and_deposit` - Prearranged Payments and Deposits (PPD).
-    - `internet_initiated` - Internet Initiated (WEB).
+    - `corporate_credit_or_debit` - Corporate Credit and Debit (CCD) is used for
+      business-to-business payments.
+    - `corporate_trade_exchange` - Corporate Trade Exchange (CTX) allows for
+      including extensive remittance information with business-to-business payments.
+    - `prearranged_payments_and_deposit` - Prearranged Payments and Deposits (PPD)
+      is used for credits or debits originated by an organization to a consumer,
+      such as payroll direct deposits.
+    - `internet_initiated` - Internet Initiated (WEB) is used for consumer payments
+      initiated or authorized via the Internet. Debits can only be initiated by
+      non-consumers to debit a consumer’s account. Credits can only be used for
+      consumer to consumer transactions.
     """
 
     transaction_timing: Literal["synchronous", "asynchronous"]

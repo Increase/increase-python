@@ -67,6 +67,7 @@ class CardAuthorizationsResource(SyncAPIResource):
             "declined_by_stand_in_processing",
             "invalid_physical_card",
             "missing_original_authorization",
+            "invalid_cryptogram",
             "failed_3ds_authentication",
             "suspected_card_testing",
             "suspected_fraud",
@@ -133,10 +134,12 @@ class CardAuthorizationsResource(SyncAPIResource):
               - `webhook_timed_out` - Your application webhook did not respond without the
                 required timeout.
               - `declined_by_stand_in_processing` - Declined by stand-in processing.
-              - `invalid_physical_card` - The card read had an invalid CVV, dCVV, or
-                authorization request cryptogram.
+              - `invalid_physical_card` - The card read had an invalid CVV or dCVV.
               - `missing_original_authorization` - The original card authorization for this
                 incremental authorization does not exist.
+              - `invalid_cryptogram` - The card's authorization request cryptogram was
+                invalid. The cryptogram can be from a physical card or a Digital Wallet Token
+                purchase.
               - `failed_3ds_authentication` - The transaction was declined because the 3DS
                 authentication failed.
               - `suspected_card_testing` - The transaction was suspected to be used by a card
@@ -267,6 +270,7 @@ class AsyncCardAuthorizationsResource(AsyncAPIResource):
             "declined_by_stand_in_processing",
             "invalid_physical_card",
             "missing_original_authorization",
+            "invalid_cryptogram",
             "failed_3ds_authentication",
             "suspected_card_testing",
             "suspected_fraud",
@@ -333,10 +337,12 @@ class AsyncCardAuthorizationsResource(AsyncAPIResource):
               - `webhook_timed_out` - Your application webhook did not respond without the
                 required timeout.
               - `declined_by_stand_in_processing` - Declined by stand-in processing.
-              - `invalid_physical_card` - The card read had an invalid CVV, dCVV, or
-                authorization request cryptogram.
+              - `invalid_physical_card` - The card read had an invalid CVV or dCVV.
               - `missing_original_authorization` - The original card authorization for this
                 incremental authorization does not exist.
+              - `invalid_cryptogram` - The card's authorization request cryptogram was
+                invalid. The cryptogram can be from a physical card or a Digital Wallet Token
+                purchase.
               - `failed_3ds_authentication` - The transaction was declined because the 3DS
                 authentication failed.
               - `suspected_card_testing` - The transaction was suspected to be used by a card

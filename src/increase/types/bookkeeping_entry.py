@@ -30,7 +30,7 @@ class BookkeepingEntry(BaseModel):
     """When the entry set was created."""
 
     entry_set_id: str
-    """The identifier for the Account the Entry belongs to."""
+    """The identifier for the Entry Set the Entry belongs to."""
 
     type: Literal["bookkeeping_entry"]
     """A constant representing the object's type.

@@ -13,7 +13,7 @@ from increase.types import (
     Account,
     BalanceLookup,
 )
-from increase._utils import parse_datetime
+from increase._utils import parse_date, parse_datetime
 from increase.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -34,7 +34,15 @@ class TestAccounts:
         account = client.accounts.create(
             name="New Account!",
             entity_id="entity_n8y8tnk2p9339ti393yi",
+            funding="loan",
             informational_entity_id="informational_entity_id",
+            loan={
+                "credit_limit": 0,
+                "grace_period_days": 0,
+                "statement_day_of_month": 1,
+                "statement_payment_type": "balance",
+                "maturity_date": parse_date("2019-12-27"),
+            },
             program_id="program_i2v2os4mwza1oetokh9i",
         )
         assert_matches_type(Account, account, path=["response"])
@@ -112,7 +120,7 @@ class TestAccounts:
     def test_method_update_with_all_params(self, client: Increase) -> None:
         account = client.accounts.update(
             account_id="account_in71c4amph0vgo2qllky",
-            credit_limit=0,
+            loan={"credit_limit": 0},
             name="My renamed account",
         )
         assert_matches_type(Account, account, path=["response"])
@@ -294,7 +302,15 @@ class TestAsyncAccounts:
         account = await async_client.accounts.create(
             name="New Account!",
             entity_id="entity_n8y8tnk2p9339ti393yi",
+            funding="loan",
             informational_entity_id="informational_entity_id",
+            loan={
+                "credit_limit": 0,
+                "grace_period_days": 0,
+                "statement_day_of_month": 1,
+                "statement_payment_type": "balance",
+                "maturity_date": parse_date("2019-12-27"),
+            },
             program_id="program_i2v2os4mwza1oetokh9i",
         )
         assert_matches_type(Account, account, path=["response"])
@@ -372,7 +388,7 @@ class TestAsyncAccounts:
     async def test_method_update_with_all_params(self, async_client: AsyncIncrease) -> None:
         account = await async_client.accounts.update(
             account_id="account_in71c4amph0vgo2qllky",
-            credit_limit=0,
+            loan={"credit_limit": 0},
             name="My renamed account",
         )
         assert_matches_type(Account, account, path=["response"])

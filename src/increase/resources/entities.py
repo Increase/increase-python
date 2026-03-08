@@ -12,9 +12,6 @@ from ..types import (
     entity_list_params,
     entity_create_params,
     entity_update_params,
-    entity_confirm_params,
-    entity_update_address_params,
-    entity_update_industry_code_params,
     entity_create_beneficial_owner_params,
     entity_archive_beneficial_owner_params,
     entity_update_beneficial_owner_address_params,
@@ -106,7 +103,7 @@ class EntitiesResource(SyncAPIResource):
               `social_security_number` or `individual_taxpayer_identification_number`
               identification methods.
 
-          risk_rating: An assessment of the entity’s potential risk of involvement in financial crimes,
+          risk_rating: An assessment of the entity's potential risk of involvement in financial crimes,
               such as money laundering.
 
           supplemental_documents: Additional documentation associated with the entity.
@@ -432,55 +429,6 @@ class EntitiesResource(SyncAPIResource):
             cast_to=Entity,
         )
 
-    def confirm(
-        self,
-        entity_id: str,
-        *,
-        confirmed_at: Union[str, datetime] | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-        idempotency_key: str | None = None,
-    ) -> Entity:
-        """
-        Depending on your program, you may be required to re-confirm an Entity's details
-        on a recurring basis. After making any required updates, call this endpoint to
-        record that your user confirmed their details.
-
-        Args:
-          entity_id: The identifier of the Entity to confirm the details of.
-
-          confirmed_at: When your user confirmed the Entity's details. If not provided, the current time
-              will be used.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-
-          idempotency_key: Specify a custom idempotency key for this request
-        """
-        if not entity_id:
-            raise ValueError(f"Expected a non-empty value for `entity_id` but received {entity_id!r}")
-        return self._post(
-            f"/entities/{entity_id}/confirm",
-            body=maybe_transform({"confirmed_at": confirmed_at}, entity_confirm_params.EntityConfirmParams),
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                idempotency_key=idempotency_key,
-            ),
-            cast_to=Entity,
-        )
-
     def create_beneficial_owner(
         self,
         entity_id: str,
@@ -521,53 +469,6 @@ class EntitiesResource(SyncAPIResource):
                 {"beneficial_owner": beneficial_owner},
                 entity_create_beneficial_owner_params.EntityCreateBeneficialOwnerParams,
             ),
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                idempotency_key=idempotency_key,
-            ),
-            cast_to=Entity,
-        )
-
-    def update_address(
-        self,
-        entity_id: str,
-        *,
-        address: entity_update_address_params.Address,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-        idempotency_key: str | None = None,
-    ) -> Entity:
-        """
-        Update a Natural Person or Corporation's address
-
-        Args:
-          entity_id: The identifier of the Entity whose address is being updated.
-
-          address: The entity's physical address. Mail receiving locations like PO Boxes and PMB's
-              are disallowed.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-
-          idempotency_key: Specify a custom idempotency key for this request
-        """
-        if not entity_id:
-            raise ValueError(f"Expected a non-empty value for `entity_id` but received {entity_id!r}")
-        return self._post(
-            f"/entities/{entity_id}/update_address",
-            body=maybe_transform({"address": address}, entity_update_address_params.EntityUpdateAddressParams),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -625,58 +526,6 @@ class EntitiesResource(SyncAPIResource):
                     "beneficial_owner_id": beneficial_owner_id,
                 },
                 entity_update_beneficial_owner_address_params.EntityUpdateBeneficialOwnerAddressParams,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                idempotency_key=idempotency_key,
-            ),
-            cast_to=Entity,
-        )
-
-    def update_industry_code(
-        self,
-        entity_id: str,
-        *,
-        industry_code: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-        idempotency_key: str | None = None,
-    ) -> Entity:
-        """
-        Update the industry code for a corporate Entity
-
-        Args:
-          entity_id: The identifier of the Entity to update. This endpoint only accepts `corporation`
-              entities.
-
-          industry_code: The North American Industry Classification System (NAICS) code for the
-              corporation's primary line of business. This is a number, like `5132` for
-              `Software Publishers`. A full list of classification codes is available
-              [here](https://increase.com/documentation/data-dictionary#north-american-industry-classification-system-codes).
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-
-          idempotency_key: Specify a custom idempotency key for this request
-        """
-        if not entity_id:
-            raise ValueError(f"Expected a non-empty value for `entity_id` but received {entity_id!r}")
-        return self._post(
-            f"/entities/{entity_id}/update_industry_code",
-            body=maybe_transform(
-                {"industry_code": industry_code}, entity_update_industry_code_params.EntityUpdateIndustryCodeParams
             ),
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -759,7 +608,7 @@ class AsyncEntitiesResource(AsyncAPIResource):
               `social_security_number` or `individual_taxpayer_identification_number`
               identification methods.
 
-          risk_rating: An assessment of the entity’s potential risk of involvement in financial crimes,
+          risk_rating: An assessment of the entity's potential risk of involvement in financial crimes,
               such as money laundering.
 
           supplemental_documents: Additional documentation associated with the entity.
@@ -1085,55 +934,6 @@ class AsyncEntitiesResource(AsyncAPIResource):
             cast_to=Entity,
         )
 
-    async def confirm(
-        self,
-        entity_id: str,
-        *,
-        confirmed_at: Union[str, datetime] | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-        idempotency_key: str | None = None,
-    ) -> Entity:
-        """
-        Depending on your program, you may be required to re-confirm an Entity's details
-        on a recurring basis. After making any required updates, call this endpoint to
-        record that your user confirmed their details.
-
-        Args:
-          entity_id: The identifier of the Entity to confirm the details of.
-
-          confirmed_at: When your user confirmed the Entity's details. If not provided, the current time
-              will be used.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-
-          idempotency_key: Specify a custom idempotency key for this request
-        """
-        if not entity_id:
-            raise ValueError(f"Expected a non-empty value for `entity_id` but received {entity_id!r}")
-        return await self._post(
-            f"/entities/{entity_id}/confirm",
-            body=await async_maybe_transform({"confirmed_at": confirmed_at}, entity_confirm_params.EntityConfirmParams),
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                idempotency_key=idempotency_key,
-            ),
-            cast_to=Entity,
-        )
-
     async def create_beneficial_owner(
         self,
         entity_id: str,
@@ -1173,55 +973,6 @@ class AsyncEntitiesResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {"beneficial_owner": beneficial_owner},
                 entity_create_beneficial_owner_params.EntityCreateBeneficialOwnerParams,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                idempotency_key=idempotency_key,
-            ),
-            cast_to=Entity,
-        )
-
-    async def update_address(
-        self,
-        entity_id: str,
-        *,
-        address: entity_update_address_params.Address,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-        idempotency_key: str | None = None,
-    ) -> Entity:
-        """
-        Update a Natural Person or Corporation's address
-
-        Args:
-          entity_id: The identifier of the Entity whose address is being updated.
-
-          address: The entity's physical address. Mail receiving locations like PO Boxes and PMB's
-              are disallowed.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-
-          idempotency_key: Specify a custom idempotency key for this request
-        """
-        if not entity_id:
-            raise ValueError(f"Expected a non-empty value for `entity_id` but received {entity_id!r}")
-        return await self._post(
-            f"/entities/{entity_id}/update_address",
-            body=await async_maybe_transform(
-                {"address": address}, entity_update_address_params.EntityUpdateAddressParams
             ),
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -1291,58 +1042,6 @@ class AsyncEntitiesResource(AsyncAPIResource):
             cast_to=Entity,
         )
 
-    async def update_industry_code(
-        self,
-        entity_id: str,
-        *,
-        industry_code: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-        idempotency_key: str | None = None,
-    ) -> Entity:
-        """
-        Update the industry code for a corporate Entity
-
-        Args:
-          entity_id: The identifier of the Entity to update. This endpoint only accepts `corporation`
-              entities.
-
-          industry_code: The North American Industry Classification System (NAICS) code for the
-              corporation's primary line of business. This is a number, like `5132` for
-              `Software Publishers`. A full list of classification codes is available
-              [here](https://increase.com/documentation/data-dictionary#north-american-industry-classification-system-codes).
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-
-          idempotency_key: Specify a custom idempotency key for this request
-        """
-        if not entity_id:
-            raise ValueError(f"Expected a non-empty value for `entity_id` but received {entity_id!r}")
-        return await self._post(
-            f"/entities/{entity_id}/update_industry_code",
-            body=await async_maybe_transform(
-                {"industry_code": industry_code}, entity_update_industry_code_params.EntityUpdateIndustryCodeParams
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                idempotency_key=idempotency_key,
-            ),
-            cast_to=Entity,
-        )
-
 
 class EntitiesResourceWithRawResponse:
     def __init__(self, entities: EntitiesResource) -> None:
@@ -1366,20 +1065,11 @@ class EntitiesResourceWithRawResponse:
         self.archive_beneficial_owner = to_raw_response_wrapper(
             entities.archive_beneficial_owner,
         )
-        self.confirm = to_raw_response_wrapper(
-            entities.confirm,
-        )
         self.create_beneficial_owner = to_raw_response_wrapper(
             entities.create_beneficial_owner,
         )
-        self.update_address = to_raw_response_wrapper(
-            entities.update_address,
-        )
         self.update_beneficial_owner_address = to_raw_response_wrapper(
             entities.update_beneficial_owner_address,
-        )
-        self.update_industry_code = to_raw_response_wrapper(
-            entities.update_industry_code,
         )
 
 
@@ -1405,20 +1095,11 @@ class AsyncEntitiesResourceWithRawResponse:
         self.archive_beneficial_owner = async_to_raw_response_wrapper(
             entities.archive_beneficial_owner,
         )
-        self.confirm = async_to_raw_response_wrapper(
-            entities.confirm,
-        )
         self.create_beneficial_owner = async_to_raw_response_wrapper(
             entities.create_beneficial_owner,
         )
-        self.update_address = async_to_raw_response_wrapper(
-            entities.update_address,
-        )
         self.update_beneficial_owner_address = async_to_raw_response_wrapper(
             entities.update_beneficial_owner_address,
-        )
-        self.update_industry_code = async_to_raw_response_wrapper(
-            entities.update_industry_code,
         )
 
 
@@ -1444,20 +1125,11 @@ class EntitiesResourceWithStreamingResponse:
         self.archive_beneficial_owner = to_streamed_response_wrapper(
             entities.archive_beneficial_owner,
         )
-        self.confirm = to_streamed_response_wrapper(
-            entities.confirm,
-        )
         self.create_beneficial_owner = to_streamed_response_wrapper(
             entities.create_beneficial_owner,
         )
-        self.update_address = to_streamed_response_wrapper(
-            entities.update_address,
-        )
         self.update_beneficial_owner_address = to_streamed_response_wrapper(
             entities.update_beneficial_owner_address,
-        )
-        self.update_industry_code = to_streamed_response_wrapper(
-            entities.update_industry_code,
         )
 
 
@@ -1483,18 +1155,9 @@ class AsyncEntitiesResourceWithStreamingResponse:
         self.archive_beneficial_owner = async_to_streamed_response_wrapper(
             entities.archive_beneficial_owner,
         )
-        self.confirm = async_to_streamed_response_wrapper(
-            entities.confirm,
-        )
         self.create_beneficial_owner = async_to_streamed_response_wrapper(
             entities.create_beneficial_owner,
         )
-        self.update_address = async_to_streamed_response_wrapper(
-            entities.update_address,
-        )
         self.update_beneficial_owner_address = async_to_streamed_response_wrapper(
             entities.update_beneficial_owner_address,
-        )
-        self.update_industry_code = async_to_streamed_response_wrapper(
-            entities.update_industry_code,
         )

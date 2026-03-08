@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union, Iterable
 from datetime import date, datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
@@ -19,11 +19,12 @@ __all__ = [
     "BookkeepingAccountBalanceCsv",
     "BookkeepingAccountBalanceCsvCreatedAt",
     "EntityCsv",
-    "EntityCsvStatus",
     "FundingInstructions",
     "TransactionCsv",
     "TransactionCsvCreatedAt",
     "VendorCsv",
+    "VoidedCheck",
+    "VoidedCheckPayer",
 ]
 
 
@@ -39,6 +40,7 @@ class ExportCreateParams(TypedDict, total=False):
             "vendor_csv",
             "account_verification_letter",
             "funding_instructions",
+            "voided_check",
         ]
     ]
     """The type of Export to create.
@@ -57,6 +59,7 @@ class ExportCreateParams(TypedDict, total=False):
       management dashboard.
     - `account_verification_letter` - A PDF of an account verification letter.
     - `funding_instructions` - A PDF of funding instructions.
+    - `voided_check` - A PDF of a voided check.
     """
 
     account_statement_bai2: AccountStatementBai2
@@ -111,6 +114,12 @@ class ExportCreateParams(TypedDict, total=False):
     """Options for the created export.
 
     Required if `category` is equal to `vendor_csv`.
+    """
+
+    voided_check: VoidedCheck
+    """Options for the created export.
+
+    Required if `category` is equal to `voided_check`.
     """
 
 
@@ -230,13 +239,10 @@ class BalanceCsv(TypedDict, total=False):
     """
 
     account_id: str
-    """Filter exported Transactions to the specified Account."""
+    """Filter exported Balances to the specified Account."""
 
     created_at: BalanceCsvCreatedAt
     """Filter results by time range on the `created_at` attribute."""
-
-    program_id: str
-    """Filter exported Transactions to the specified Program."""
 
 
 class BookkeepingAccountBalanceCsvCreatedAt(TypedDict, total=False):
@@ -274,25 +280,13 @@ class BookkeepingAccountBalanceCsv(TypedDict, total=False):
     """
 
     bookkeeping_account_id: str
-    """Filter exported Transactions to the specified Bookkeeping Account."""
+    """
+    Filter exported Bookkeeping Account Balances to the specified Bookkeeping
+    Account.
+    """
 
     created_at: BookkeepingAccountBalanceCsvCreatedAt
     """Filter results by time range on the `created_at` attribute."""
-
-
-_EntityCsvStatusReservedKeywords = TypedDict(
-    "_EntityCsvStatusReservedKeywords",
-    {
-        "in": List[Literal["active", "archived", "disabled"]],
-    },
-    total=False,
-)
-
-
-class EntityCsvStatus(_EntityCsvStatusReservedKeywords, total=False):
-    """Entity statuses to filter by."""
-
-    pass
 
 
 class EntityCsv(TypedDict, total=False):
@@ -301,8 +295,7 @@ class EntityCsv(TypedDict, total=False):
     Required if `category` is equal to `entity_csv`.
     """
 
-    status: EntityCsvStatus
-    """Entity statuses to filter by."""
+    pass
 
 
 class FundingInstructions(TypedDict, total=False):
@@ -355,9 +348,6 @@ class TransactionCsv(TypedDict, total=False):
     created_at: TransactionCsvCreatedAt
     """Filter results by time range on the `created_at` attribute."""
 
-    program_id: str
-    """Filter exported Transactions to the specified Program."""
-
 
 class VendorCsv(TypedDict, total=False):
     """Options for the created export.
@@ -366,3 +356,21 @@ class VendorCsv(TypedDict, total=False):
     """
 
     pass
+
+
+class VoidedCheckPayer(TypedDict, total=False):
+    line: Required[str]
+    """The contents of the line."""
+
+
+class VoidedCheck(TypedDict, total=False):
+    """Options for the created export.
+
+    Required if `category` is equal to `voided_check`.
+    """
+
+    account_number_id: Required[str]
+    """The Account Number for the voided check."""
+
+    payer: Iterable[VoidedCheckPayer]
+    """The payer information to be printed on the check."""

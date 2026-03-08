@@ -152,6 +152,7 @@ class BaseAPIResponse(Generic[R]):
                         ),
                         response=self.http_response,
                         client=cast(Any, self._client),
+                        options=self._options,
                     ),
                 )
 
@@ -162,6 +163,7 @@ class BaseAPIResponse(Generic[R]):
                         cast_to=extract_stream_chunk_type(self._stream_cls),
                         response=self.http_response,
                         client=cast(Any, self._client),
+                        options=self._options,
                     ),
                 )
 
@@ -175,6 +177,7 @@ class BaseAPIResponse(Generic[R]):
                     cast_to=cast_to,
                     response=self.http_response,
                     client=cast(Any, self._client),
+                    options=self._options,
                 ),
             )
 
@@ -268,6 +271,10 @@ class BaseAPIResponse(Generic[R]):
 
 
 class APIResponse(BaseAPIResponse[R]):
+    @property
+    def idempotent_replayed(self) -> str | None:
+        return self.http_response.headers.get("Idempotent-Replayed")  # type: ignore[no-any-return]
+
     @overload
     def parse(self, *, to: type[_T]) -> _T: ...
 
@@ -370,6 +377,10 @@ class APIResponse(BaseAPIResponse[R]):
 
 
 class AsyncAPIResponse(BaseAPIResponse[R]):
+    @property
+    def idempotent_replayed(self) -> str | None:
+        return self.http_response.headers.get("Idempotent-Replayed")  # type: ignore[no-any-return]
+
     @overload
     async def parse(self, *, to: type[_T]) -> _T: ...
 

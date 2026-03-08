@@ -1,41 +1,18 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Optional
+from typing import TYPE_CHECKING, Dict, List, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
+from pydantic import Field as FieldInfo
+
 from .._models import BaseModel
 
-__all__ = ["EventSubscription"]
+__all__ = ["EventSubscription", "SelectedEventCategory"]
 
 
-class EventSubscription(BaseModel):
-    """Webhooks are event notifications we send to you by HTTPS POST requests.
-
-    Event Subscriptions are how you configure your application to listen for them. You can create an Event Subscription through your [developer dashboard](https://dashboard.increase.com/developers/webhooks) or the API. For more information, see our [webhooks guide](https://increase.com/documentation/webhooks).
-    """
-
-    id: str
-    """The event subscription identifier."""
-
-    created_at: datetime
-    """The time the event subscription was created."""
-
-    idempotency_key: Optional[str] = None
-    """The idempotency key you chose for this object.
-
-    This value is unique across Increase and is used to ensure that a request is
-    only processed once. Learn more about
-    [idempotency](https://increase.com/documentation/idempotency-keys).
-    """
-
-    oauth_connection_id: Optional[str] = None
-    """
-    If specified, this subscription will only receive webhooks for Events associated
-    with this OAuth Connection.
-    """
-
-    selected_event_category: Optional[
+class SelectedEventCategory(BaseModel):
+    event_category: Optional[
         Literal[
             "account.created",
             "account.updated",
@@ -48,6 +25,12 @@ class EventSubscription(BaseModel):
             "ach_prenotification.updated",
             "ach_transfer.created",
             "ach_transfer.updated",
+            "blockchain_address.created",
+            "blockchain_address.updated",
+            "blockchain_offramp_transfer.created",
+            "blockchain_offramp_transfer.updated",
+            "blockchain_onramp_transfer.created",
+            "blockchain_onramp_transfer.updated",
             "bookkeeping_account.created",
             "bookkeeping_account.updated",
             "bookkeeping_entry_set.updated",
@@ -117,6 +100,8 @@ class EventSubscription(BaseModel):
             "physical_card.updated",
             "physical_card_profile.created",
             "physical_card_profile.updated",
+            "physical_check.created",
+            "physical_check.updated",
             "program.created",
             "program.updated",
             "proof_of_authorization_request.created",
@@ -140,9 +125,7 @@ class EventSubscription(BaseModel):
             "wire_transfer.updated",
         ]
     ] = None
-    """
-    If specified, this subscription will only receive webhooks for Events with the
-    specified `category`.
+    """The category of the Event.
 
     - `account.created` - Occurs whenever an Account is created.
     - `account.updated` - Occurs whenever an Account is updated.
@@ -157,6 +140,18 @@ class EventSubscription(BaseModel):
       updated.
     - `ach_transfer.created` - Occurs whenever an ACH Transfer is created.
     - `ach_transfer.updated` - Occurs whenever an ACH Transfer is updated.
+    - `blockchain_address.created` - Occurs whenever a Blockchain Address is
+      created.
+    - `blockchain_address.updated` - Occurs whenever a Blockchain Address is
+      updated.
+    - `blockchain_offramp_transfer.created` - Occurs whenever a Blockchain Off-Ramp
+      Transfer is created.
+    - `blockchain_offramp_transfer.updated` - Occurs whenever a Blockchain Off-Ramp
+      Transfer is updated.
+    - `blockchain_onramp_transfer.created` - Occurs whenever a Blockchain On-Ramp
+      Transfer is created.
+    - `blockchain_onramp_transfer.updated` - Occurs whenever a Blockchain On-Ramp
+      Transfer is updated.
     - `bookkeeping_account.created` - Occurs whenever a Bookkeeping Account is
       created.
     - `bookkeeping_account.updated` - Occurs whenever a Bookkeeping Account is
@@ -261,6 +256,8 @@ class EventSubscription(BaseModel):
       created.
     - `physical_card_profile.updated` - Occurs whenever a Physical Card Profile is
       updated.
+    - `physical_check.created` - Occurs whenever a Physical Check is created.
+    - `physical_check.updated` - Occurs whenever a Physical Check is updated.
     - `program.created` - Occurs whenever a Program is created.
     - `program.updated` - Occurs whenever a Program is updated.
     - `proof_of_authorization_request.created` - Occurs whenever a Proof of
@@ -300,6 +297,39 @@ class EventSubscription(BaseModel):
     - `wire_transfer.updated` - Occurs whenever a Wire Transfer is updated.
     """
 
+
+class EventSubscription(BaseModel):
+    """Webhooks are event notifications we send to you by HTTPS POST requests.
+
+    Event Subscriptions are how you configure your application to listen for them. You can create an Event Subscription through your [developer dashboard](https://dashboard.increase.com/developers/webhooks) or the API. For more information, see our [webhooks guide](https://increase.com/documentation/webhooks).
+    """
+
+    id: str
+    """The event subscription identifier."""
+
+    created_at: datetime
+    """The time the event subscription was created."""
+
+    idempotency_key: Optional[str] = None
+    """The idempotency key you chose for this object.
+
+    This value is unique across Increase and is used to ensure that a request is
+    only processed once. Learn more about
+    [idempotency](https://increase.com/documentation/idempotency-keys).
+    """
+
+    oauth_connection_id: Optional[str] = None
+    """
+    If specified, this subscription will only receive webhooks for Events associated
+    with this OAuth Connection.
+    """
+
+    selected_event_categories: Optional[List[SelectedEventCategory]] = None
+    """
+    If specified, this subscription will only receive webhooks for Events with the
+    specified `category`.
+    """
+
     status: Literal["active", "disabled", "deleted", "requires_attention"]
     """This indicates if we'll send notifications to this subscription.
 
@@ -320,3 +350,15 @@ class EventSubscription(BaseModel):
 
     url: str
     """The webhook url where we'll send notifications."""
+
+    if TYPE_CHECKING:
+        # Some versions of Pydantic <2.8.0 have a bug and don’t allow assigning a
+        # value to this field, so for compatibility we avoid doing it at runtime.
+        __pydantic_extra__: Dict[str, object] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
+
+        # Stub to indicate that arbitrary properties are accepted.
+        # To access properties that are not valid identifiers you can use `getattr`, e.g.
+        # `getattr(obj, '$type')`
+        def __getattr__(self, attr: str) -> object: ...
+    else:
+        __pydantic_extra__: Dict[str, object]

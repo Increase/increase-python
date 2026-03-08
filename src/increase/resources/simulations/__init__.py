@@ -152,6 +152,14 @@ from .card_authorizations import (
     CardAuthorizationsResourceWithStreamingResponse,
     AsyncCardAuthorizationsResourceWithStreamingResponse,
 )
+from .card_authentications import (
+    CardAuthenticationsResource,
+    AsyncCardAuthenticationsResource,
+    CardAuthenticationsResourceWithRawResponse,
+    AsyncCardAuthenticationsResourceWithRawResponse,
+    CardAuthenticationsResourceWithStreamingResponse,
+    AsyncCardAuthenticationsResourceWithStreamingResponse,
+)
 from .pending_transactions import (
     PendingTransactionsResource,
     AsyncPendingTransactionsResource,
@@ -318,6 +326,12 @@ __all__ = [
     "AsyncCardRefundsResourceWithRawResponse",
     "CardRefundsResourceWithStreamingResponse",
     "AsyncCardRefundsResourceWithStreamingResponse",
+    "CardAuthenticationsResource",
+    "AsyncCardAuthenticationsResource",
+    "CardAuthenticationsResourceWithRawResponse",
+    "AsyncCardAuthenticationsResourceWithRawResponse",
+    "CardAuthenticationsResourceWithStreamingResponse",
+    "AsyncCardAuthenticationsResourceWithStreamingResponse",
     "CardDisputesResource",
     "AsyncCardDisputesResource",
     "CardDisputesResourceWithRawResponse",

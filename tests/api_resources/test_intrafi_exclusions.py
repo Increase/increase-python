@@ -21,16 +21,16 @@ class TestIntrafiExclusions:
     @parametrize
     def test_method_create(self, client: Increase) -> None:
         intrafi_exclusion = client.intrafi_exclusions.create(
-            bank_name="Example Bank",
             entity_id="entity_n8y8tnk2p9339ti393yi",
+            fdic_certificate_number="314159",
         )
         assert_matches_type(IntrafiExclusion, intrafi_exclusion, path=["response"])
 
     @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
         response = client.intrafi_exclusions.with_raw_response.create(
-            bank_name="Example Bank",
             entity_id="entity_n8y8tnk2p9339ti393yi",
+            fdic_certificate_number="314159",
         )
 
         assert response.is_closed is True
@@ -41,8 +41,8 @@ class TestIntrafiExclusions:
     @parametrize
     def test_streaming_response_create(self, client: Increase) -> None:
         with client.intrafi_exclusions.with_streaming_response.create(
-            bank_name="Example Bank",
             entity_id="entity_n8y8tnk2p9339ti393yi",
+            fdic_certificate_number="314159",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -172,16 +172,16 @@ class TestAsyncIntrafiExclusions:
     @parametrize
     async def test_method_create(self, async_client: AsyncIncrease) -> None:
         intrafi_exclusion = await async_client.intrafi_exclusions.create(
-            bank_name="Example Bank",
             entity_id="entity_n8y8tnk2p9339ti393yi",
+            fdic_certificate_number="314159",
         )
         assert_matches_type(IntrafiExclusion, intrafi_exclusion, path=["response"])
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
         response = await async_client.intrafi_exclusions.with_raw_response.create(
-            bank_name="Example Bank",
             entity_id="entity_n8y8tnk2p9339ti393yi",
+            fdic_certificate_number="314159",
         )
 
         assert response.is_closed is True
@@ -192,8 +192,8 @@ class TestAsyncIntrafiExclusions:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncIncrease) -> None:
         async with async_client.intrafi_exclusions.with_streaming_response.create(
-            bank_name="Example Bank",
             entity_id="entity_n8y8tnk2p9339ti393yi",
+            fdic_certificate_number="314159",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

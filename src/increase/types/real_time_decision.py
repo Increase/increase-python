@@ -11,6 +11,9 @@ from .._models import BaseModel
 __all__ = [
     "RealTimeDecision",
     "CardAuthentication",
+    "CardAuthenticationDeviceChannel",
+    "CardAuthenticationDeviceChannelBrowser",
+    "CardAuthenticationDeviceChannelMerchantInitiated",
     "CardAuthenticationChallenge",
     "CardAuthorization",
     "CardAuthorizationAdditionalAmounts",
@@ -36,6 +39,7 @@ __all__ = [
     "CardAuthorizationVerification",
     "CardAuthorizationVerificationCardVerificationCode",
     "CardAuthorizationVerificationCardholderAddress",
+    "CardAuthorizationVerificationCardholderName",
     "CardBalanceInquiry",
     "CardBalanceInquiryAdditionalAmounts",
     "CardBalanceInquiryAdditionalAmountsClinic",
@@ -56,20 +60,173 @@ __all__ = [
     "CardBalanceInquiryVerification",
     "CardBalanceInquiryVerificationCardVerificationCode",
     "CardBalanceInquiryVerificationCardholderAddress",
+    "CardBalanceInquiryVerificationCardholderName",
     "DigitalWalletAuthentication",
     "DigitalWalletToken",
     "DigitalWalletTokenDevice",
 ]
 
 
+class CardAuthenticationDeviceChannelBrowser(BaseModel):
+    """Fields specific to the browser device channel."""
+
+    accept_header: Optional[str] = None
+    """The accept header from the cardholder's browser."""
+
+    ip_address: Optional[str] = None
+    """The IP address of the cardholder's browser."""
+
+    javascript_enabled: Optional[Literal["enabled", "disabled"]] = None
+    """Whether JavaScript is enabled in the cardholder's browser.
+
+    - `enabled` - JavaScript is enabled in the cardholder's browser.
+    - `disabled` - JavaScript is not enabled in the cardholder's browser.
+    """
+
+    language: Optional[str] = None
+    """The language of the cardholder's browser."""
+
+    user_agent: Optional[str] = None
+    """The user agent of the cardholder's browser."""
+
+
+class CardAuthenticationDeviceChannelMerchantInitiated(BaseModel):
+    """Fields specific to merchant initiated transactions."""
+
+    indicator: Literal[
+        "recurring_transaction",
+        "installment_transaction",
+        "add_card",
+        "maintain_card_information",
+        "account_verification",
+        "split_delayed_shipment",
+        "top_up",
+        "mail_order",
+        "telephone_order",
+        "whitelist_status_check",
+        "other_payment",
+        "billing_agreement",
+        "device_binding_status_check",
+        "card_security_code_status_check",
+        "delayed_shipment",
+        "split_payment",
+        "fido_credential_deletion",
+        "fido_credential_registration",
+        "decoupled_authentication_fallback",
+    ]
+    """The merchant initiated indicator for the transaction.
+
+    - `recurring_transaction` - Recurring transaction.
+    - `installment_transaction` - Installment transaction.
+    - `add_card` - Add card.
+    - `maintain_card_information` - Maintain card information.
+    - `account_verification` - Account verification.
+    - `split_delayed_shipment` - Split or delayed shipment.
+    - `top_up` - Top up.
+    - `mail_order` - Mail order.
+    - `telephone_order` - Telephone order.
+    - `whitelist_status_check` - Whitelist status check.
+    - `other_payment` - Other payment.
+    - `billing_agreement` - Billing agreement.
+    - `device_binding_status_check` - Device binding status check.
+    - `card_security_code_status_check` - Card security code status check.
+    - `delayed_shipment` - Delayed shipment.
+    - `split_payment` - Split payment.
+    - `fido_credential_deletion` - FIDO credential deletion.
+    - `fido_credential_registration` - FIDO credential registration.
+    - `decoupled_authentication_fallback` - Decoupled authentication fallback.
+    """
+
+
+class CardAuthenticationDeviceChannel(BaseModel):
+    """The device channel of the card authentication attempt."""
+
+    browser: Optional[CardAuthenticationDeviceChannelBrowser] = None
+    """Fields specific to the browser device channel."""
+
+    category: Literal["app", "browser", "three_ds_requestor_initiated"]
+    """The category of the device channel.
+
+    - `app` - The authentication attempt was made from an app.
+    - `browser` - The authentication attempt was made from a browser.
+    - `three_ds_requestor_initiated` - The authentication attempt was initiated by
+      the 3DS Requestor.
+    """
+
+    merchant_initiated: Optional[CardAuthenticationDeviceChannelMerchantInitiated] = None
+    """Fields specific to merchant initiated transactions."""
+
+
 class CardAuthentication(BaseModel):
     """Fields related to a 3DS authentication attempt."""
+
+    access_control_server_transaction_id: str
+    """
+    A unique identifier assigned by the Access Control Server (us) for this
+    transaction.
+    """
 
     account_id: str
     """The identifier of the Account the card belongs to."""
 
+    billing_address_city: Optional[str] = None
+    """
+    The city of the cardholder billing address associated with the card used for
+    this purchase.
+    """
+
+    billing_address_country: Optional[str] = None
+    """
+    The country of the cardholder billing address associated with the card used for
+    this purchase.
+    """
+
+    billing_address_line1: Optional[str] = None
+    """
+    The first line of the cardholder billing address associated with the card used
+    for this purchase.
+    """
+
+    billing_address_line2: Optional[str] = None
+    """
+    The second line of the cardholder billing address associated with the card used
+    for this purchase.
+    """
+
+    billing_address_line3: Optional[str] = None
+    """
+    The third line of the cardholder billing address associated with the card used
+    for this purchase.
+    """
+
+    billing_address_postal_code: Optional[str] = None
+    """
+    The postal code of the cardholder billing address associated with the card used
+    for this purchase.
+    """
+
+    billing_address_state: Optional[str] = None
+    """
+    The US state of the cardholder billing address associated with the card used for
+    this purchase.
+    """
+
     card_id: str
-    """The identifier of the Card that is being tokenized."""
+    """The identifier of the Card."""
+
+    cardholder_email: Optional[str] = None
+    """The email address of the cardholder."""
+
+    cardholder_name: Optional[str] = None
+    """The name of the cardholder."""
+
+    category: Optional[Literal["payment_authentication", "non_payment_authentication"]] = None
+    """The category of the card authentication attempt.
+
+    - `payment_authentication` - The authentication attempt is for a payment.
+    - `non_payment_authentication` - The authentication attempt is not for a
+      payment.
+    """
 
     decision: Optional[Literal["approve", "challenge", "deny"]] = None
     """Whether or not the authentication attempt was approved.
@@ -78,6 +235,163 @@ class CardAuthentication(BaseModel):
     - `challenge` - Request further validation before approving the authentication
       attempt.
     - `deny` - Deny the authentication attempt.
+    """
+
+    device_channel: CardAuthenticationDeviceChannel
+    """The device channel of the card authentication attempt."""
+
+    directory_server_transaction_id: str
+    """
+    A unique identifier assigned by the Directory Server (the card network) for this
+    transaction.
+    """
+
+    merchant_acceptor_id: str
+    """
+    The merchant identifier (commonly abbreviated as MID) of the merchant the card
+    is transacting with.
+    """
+
+    merchant_category_code: str
+    """
+    The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
+    card is transacting with.
+    """
+
+    merchant_country: str
+    """The country the merchant resides in."""
+
+    merchant_name: str
+    """The name of the merchant."""
+
+    prior_card_authentication_id: Optional[str] = None
+    """
+    The ID of a prior Card Authentication that the requestor used to authenticate
+    this cardholder for a previous transaction.
+    """
+
+    purchase_amount: Optional[int] = None
+    """The purchase amount in minor units."""
+
+    purchase_amount_cardholder_estimated: Optional[int] = None
+    """
+    The purchase amount in the cardholder's currency (i.e., USD) estimated using
+    daily conversion rates from the card network.
+    """
+
+    purchase_currency: Optional[str] = None
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+    authentication attempt's purchase currency.
+    """
+
+    requestor_authentication_indicator: Optional[
+        Literal[
+            "payment_transaction",
+            "recurring_transaction",
+            "installment_transaction",
+            "add_card",
+            "maintain_card",
+            "emv_token_cardholder_verification",
+            "billing_agreement",
+        ]
+    ] = None
+    """
+    The 3DS requestor authentication indicator describes why the authentication
+    attempt is performed, such as for a recurring transaction.
+
+    - `payment_transaction` - The authentication is for a payment transaction.
+    - `recurring_transaction` - The authentication is for a recurring transaction.
+    - `installment_transaction` - The authentication is for an installment
+      transaction.
+    - `add_card` - The authentication is for adding a card.
+    - `maintain_card` - The authentication is for maintaining a card.
+    - `emv_token_cardholder_verification` - The authentication is for EMV token
+      cardholder verification.
+    - `billing_agreement` - The authentication is for a billing agreement.
+    """
+
+    requestor_challenge_indicator: Optional[
+        Literal[
+            "no_preference",
+            "no_challenge_requested",
+            "challenge_requested_3ds_requestor_preference",
+            "challenge_requested_mandate",
+            "no_challenge_requested_transactional_risk_analysis_already_performed",
+            "no_challenge_requested_data_share_only",
+            "no_challenge_requested_strong_consumer_authentication_already_performed",
+            "no_challenge_requested_utilize_whitelist_exemption_if_no_challenge_required",
+            "challenge_requested_whitelist_prompt_requested_if_challenge_required",
+        ]
+    ] = None
+    """Indicates whether a challenge is requested for this transaction.
+
+    - `no_preference` - No preference.
+    - `no_challenge_requested` - No challenge requested.
+    - `challenge_requested_3ds_requestor_preference` - Challenge requested, 3DS
+      Requestor preference.
+    - `challenge_requested_mandate` - Challenge requested, mandate.
+    - `no_challenge_requested_transactional_risk_analysis_already_performed` - No
+      challenge requested, transactional risk analysis already performed.
+    - `no_challenge_requested_data_share_only` - No challenge requested, data share
+      only.
+    - `no_challenge_requested_strong_consumer_authentication_already_performed` - No
+      challenge requested, strong consumer authentication already performed.
+    - `no_challenge_requested_utilize_whitelist_exemption_if_no_challenge_required` -
+      No challenge requested, utilize whitelist exemption if no challenge required.
+    - `challenge_requested_whitelist_prompt_requested_if_challenge_required` -
+      Challenge requested, whitelist prompt requested if challenge required.
+    """
+
+    requestor_name: str
+    """The name of the 3DS requestor."""
+
+    requestor_url: str
+    """The URL of the 3DS requestor."""
+
+    shipping_address_city: Optional[str] = None
+    """The city of the shipping address associated with this purchase."""
+
+    shipping_address_country: Optional[str] = None
+    """The country of the shipping address associated with this purchase."""
+
+    shipping_address_line1: Optional[str] = None
+    """The first line of the shipping address associated with this purchase."""
+
+    shipping_address_line2: Optional[str] = None
+    """The second line of the shipping address associated with this purchase."""
+
+    shipping_address_line3: Optional[str] = None
+    """The third line of the shipping address associated with this purchase."""
+
+    shipping_address_postal_code: Optional[str] = None
+    """The postal code of the shipping address associated with this purchase."""
+
+    shipping_address_state: Optional[str] = None
+    """The US state of the shipping address associated with this purchase."""
+
+    three_d_secure_server_transaction_id: str
+    """
+    A unique identifier assigned by the 3DS Server initiating the authentication
+    attempt for this transaction.
+    """
+
+    transaction_type: Optional[
+        Literal[
+            "goods_service_purchase",
+            "check_acceptance",
+            "account_funding",
+            "quasi_cash_transaction",
+            "prepaid_activation_and_load",
+        ]
+    ] = None
+    """The type of transaction being authenticated.
+
+    - `goods_service_purchase` - Purchase of goods or services.
+    - `check_acceptance` - Check acceptance.
+    - `account_funding` - Account funding.
+    - `quasi_cash_transaction` - Quasi-cash transaction.
+    - `prepaid_activation_and_load` - Prepaid activation and load.
     """
 
     upcoming_card_payment_id: str
@@ -463,6 +777,7 @@ class CardAuthorizationNetworkDetailsVisa(BaseModel):
         Literal[
             "issuer_error",
             "invalid_physical_card",
+            "invalid_cryptogram",
             "invalid_cardholder_authentication_verification_value",
             "internal_visa_error",
             "merchant_transaction_advisory_service_authentication_required",
@@ -477,8 +792,10 @@ class CardAuthorizationNetworkDetailsVisa(BaseModel):
 
     - `issuer_error` - Increase failed to process the authorization in a timely
       manner.
-    - `invalid_physical_card` - The physical card read had an invalid CVV, dCVV, or
-      authorization request cryptogram.
+    - `invalid_physical_card` - The physical card read had an invalid CVV or dCVV.
+    - `invalid_cryptogram` - The card's authorization request cryptogram was
+      invalid. The cryptogram can be from a physical card or a Digital Wallet Token
+      purchase.
     - `invalid_cardholder_authentication_verification_value` - The 3DS cardholder
       authentication verification value was invalid.
     - `internal_visa_error` - An internal Visa error occurred. Visa uses this reason
@@ -492,6 +809,41 @@ class CardAuthorizationNetworkDetailsVisa(BaseModel):
       Visa's Payment Fraud Disruption service due to fraudulent Acquirer behavior,
       such as card testing.
     - `other` - An unspecific reason for stand-in processing.
+    """
+
+    terminal_entry_capability: Optional[
+        Literal[
+            "unknown",
+            "terminal_not_used",
+            "magnetic_stripe",
+            "barcode",
+            "optical_character_recognition",
+            "chip_or_contactless",
+            "contactless_only",
+            "no_capability",
+        ]
+    ] = None
+    """The capability of the terminal being used to read the card.
+
+    Shows whether a terminal can e.g., accept chip cards or if it only supports
+    magnetic stripe reads. This reflects the highest capability of the terminal —
+    for example, a terminal that supports both chip and magnetic stripe will be
+    identified as chip-capable.
+
+    - `unknown` - Unknown
+    - `terminal_not_used` - No terminal was used for this transaction.
+    - `magnetic_stripe` - The terminal can only read magnetic stripes and does not
+      have chip or contactless reading capability.
+    - `barcode` - The terminal can only read barcodes.
+    - `optical_character_recognition` - The terminal can only read cards via Optical
+      Character Recognition.
+    - `chip_or_contactless` - The terminal supports contact chip cards and can also
+      read the magnetic stripe. If contact chip is supported, this value is used
+      regardless of whether contactless is also supported.
+    - `contactless_only` - The terminal supports contactless reads but does not
+      support contact chip. Only used when the terminal lacks contact chip
+      capability.
+    - `no_capability` - The terminal has no card reading capability.
     """
 
 
@@ -638,6 +990,19 @@ class CardAuthorizationVerificationCardholderAddress(BaseModel):
     """
 
 
+class CardAuthorizationVerificationCardholderName(BaseModel):
+    """Cardholder name provided in the authorization request."""
+
+    provided_first_name: Optional[str] = None
+    """The first name provided for verification in the authorization request."""
+
+    provided_last_name: Optional[str] = None
+    """The last name provided for verification in the authorization request."""
+
+    provided_middle_name: Optional[str] = None
+    """The middle name provided for verification in the authorization request."""
+
+
 class CardAuthorizationVerification(BaseModel):
     """Fields related to verification of cardholder-provided values."""
 
@@ -652,6 +1017,9 @@ class CardAuthorizationVerification(BaseModel):
     Cardholder address provided in the authorization request and the address on file
     we verified it against.
     """
+
+    cardholder_name: Optional[CardAuthorizationVerificationCardholderName] = None
+    """Cardholder name provided in the authorization request."""
 
 
 class CardAuthorization(BaseModel):
@@ -1174,6 +1542,7 @@ class CardBalanceInquiryNetworkDetailsVisa(BaseModel):
         Literal[
             "issuer_error",
             "invalid_physical_card",
+            "invalid_cryptogram",
             "invalid_cardholder_authentication_verification_value",
             "internal_visa_error",
             "merchant_transaction_advisory_service_authentication_required",
@@ -1188,8 +1557,10 @@ class CardBalanceInquiryNetworkDetailsVisa(BaseModel):
 
     - `issuer_error` - Increase failed to process the authorization in a timely
       manner.
-    - `invalid_physical_card` - The physical card read had an invalid CVV, dCVV, or
-      authorization request cryptogram.
+    - `invalid_physical_card` - The physical card read had an invalid CVV or dCVV.
+    - `invalid_cryptogram` - The card's authorization request cryptogram was
+      invalid. The cryptogram can be from a physical card or a Digital Wallet Token
+      purchase.
     - `invalid_cardholder_authentication_verification_value` - The 3DS cardholder
       authentication verification value was invalid.
     - `internal_visa_error` - An internal Visa error occurred. Visa uses this reason
@@ -1203,6 +1574,41 @@ class CardBalanceInquiryNetworkDetailsVisa(BaseModel):
       Visa's Payment Fraud Disruption service due to fraudulent Acquirer behavior,
       such as card testing.
     - `other` - An unspecific reason for stand-in processing.
+    """
+
+    terminal_entry_capability: Optional[
+        Literal[
+            "unknown",
+            "terminal_not_used",
+            "magnetic_stripe",
+            "barcode",
+            "optical_character_recognition",
+            "chip_or_contactless",
+            "contactless_only",
+            "no_capability",
+        ]
+    ] = None
+    """The capability of the terminal being used to read the card.
+
+    Shows whether a terminal can e.g., accept chip cards or if it only supports
+    magnetic stripe reads. This reflects the highest capability of the terminal —
+    for example, a terminal that supports both chip and magnetic stripe will be
+    identified as chip-capable.
+
+    - `unknown` - Unknown
+    - `terminal_not_used` - No terminal was used for this transaction.
+    - `magnetic_stripe` - The terminal can only read magnetic stripes and does not
+      have chip or contactless reading capability.
+    - `barcode` - The terminal can only read barcodes.
+    - `optical_character_recognition` - The terminal can only read cards via Optical
+      Character Recognition.
+    - `chip_or_contactless` - The terminal supports contact chip cards and can also
+      read the magnetic stripe. If contact chip is supported, this value is used
+      regardless of whether contactless is also supported.
+    - `contactless_only` - The terminal supports contactless reads but does not
+      support contact chip. Only used when the terminal lacks contact chip
+      capability.
+    - `no_capability` - The terminal has no card reading capability.
     """
 
 
@@ -1310,6 +1716,19 @@ class CardBalanceInquiryVerificationCardholderAddress(BaseModel):
     """
 
 
+class CardBalanceInquiryVerificationCardholderName(BaseModel):
+    """Cardholder name provided in the authorization request."""
+
+    provided_first_name: Optional[str] = None
+    """The first name provided for verification in the authorization request."""
+
+    provided_last_name: Optional[str] = None
+    """The last name provided for verification in the authorization request."""
+
+    provided_middle_name: Optional[str] = None
+    """The middle name provided for verification in the authorization request."""
+
+
 class CardBalanceInquiryVerification(BaseModel):
     """Fields related to verification of cardholder-provided values."""
 
@@ -1324,6 +1743,9 @@ class CardBalanceInquiryVerification(BaseModel):
     Cardholder address provided in the authorization request and the address on file
     we verified it against.
     """
+
+    cardholder_name: Optional[CardBalanceInquiryVerificationCardholderName] = None
+    """Cardholder name provided in the authorization request."""
 
 
 class CardBalanceInquiry(BaseModel):

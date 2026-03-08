@@ -69,16 +69,22 @@ class APIResponseValidationError(APIError):
         self.status_code = response.status_code
 
 
+class APIWebhookValidationError(APIError):
+    pass
+
+
 class APIStatusError(APIError):
     """Raised when an API response has a status code of 4xx or 5xx."""
 
     response: httpx.Response
     status_code: int
+    idempotent_replayed: str | None
 
     def __init__(self, message: str, *, response: httpx.Response, body: object | None) -> None:
         super().__init__(message, response.request, body=body)
         self.response = response
         self.status_code = response.status_code
+        self.idempotent_replayed = response.headers.get("Idempotent-Replayed")
 
 
 class APIConnectionError(APIError):

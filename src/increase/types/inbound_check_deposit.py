@@ -46,6 +46,7 @@ class DepositReturn(BaseModel):
         "duplicate_presentment",
         "endorsement_missing",
         "endorsement_irregular",
+        "refer_to_maker",
     ]
     """The reason the deposit was returned.
 
@@ -54,6 +55,7 @@ class DepositReturn(BaseModel):
     - `duplicate_presentment` - The check was a duplicate presentment.
     - `endorsement_missing` - The check was not endorsed.
     - `endorsement_irregular` - The check was not endorsed by the payee.
+    - `refer_to_maker` - The maker of the check requested its return.
     """
 
     returned_at: datetime

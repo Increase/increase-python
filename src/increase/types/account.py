@@ -8,7 +8,35 @@ from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["Account"]
+__all__ = ["Account", "Loan"]
+
+
+class Loan(BaseModel):
+    """The Account's loan-related information, if the Account is a loan account."""
+
+    credit_limit: int
+    """The maximum amount of money that can be borrowed on the Account."""
+
+    grace_period_days: int
+    """
+    The number of days after the statement date that the Account can be past due
+    before being considered delinquent.
+    """
+
+    maturity_date: Optional[date] = None
+    """The date on which the loan matures."""
+
+    statement_day_of_month: int
+    """The day of the month on which the loan statement is generated."""
+
+    statement_payment_type: Literal["balance", "interest_until_maturity"]
+    """The type of payment for the loan.
+
+    - `balance` - The borrower must pay the full balance of the loan at the end of
+      the statement period.
+    - `interest_until_maturity` - The borrower must pay the accrued interest at the
+      end of the statement period.
+    """
 
 
 class Account(BaseModel):
@@ -59,6 +87,14 @@ class Account(BaseModel):
     entity_id: str
     """The identifier for the Entity the Account belongs to."""
 
+    funding: Literal["loan", "deposits"]
+    """Whether the Account is funded by a loan or by deposits.
+
+    - `loan` - An account funded by a loan. Before opening a loan account, contact
+      support@increase.com to set up a loan program.
+    - `deposits` - An account funded by deposits.
+    """
+
     idempotency_key: Optional[str] = None
     """The idempotency key you chose for this object.
 
@@ -91,6 +127,9 @@ class Account(BaseModel):
     a decimal number. For example, a 1% interest rate would be represented as
     "0.01".
     """
+
+    loan: Optional[Loan] = None
+    """The Account's loan-related information, if the Account is a loan account."""
 
     name: str
     """The name you choose for the Account."""

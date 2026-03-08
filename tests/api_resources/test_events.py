@@ -4,8 +4,10 @@ from __future__ import annotations
 
 import os
 from typing import Any, cast
+from datetime import datetime, timezone
 
 import pytest
+import standardwebhooks
 
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
@@ -98,6 +100,45 @@ class TestEvents:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.parametrize(
+        "client_opt,method_opt",
+        [
+            ("secret\n", None),
+            ("wrong", b"secret\n"),
+            ("wrong", "whsec_c2VjcmV0Cg=="),
+            (None, b"secret\n"),
+            (None, "whsec_c2VjcmV0Cg=="),
+        ],
+    )
+    def test_method_unwrap(self, client: Increase, client_opt: str | None, method_opt: str | bytes | None) -> None:
+        hook = standardwebhooks.Webhook(b"secret\n")
+
+        client = client.with_options(webhook_secret=client_opt)
+
+        data = """{"id":"event_001dzz0r20rzr4zrhrr1364hy80","associated_object_id":"account_in71c4amph0vgo2qllky","associated_object_type":"account","category":"account.created","created_at":"2020-01-31T23:59:59Z","type":"event"}"""
+        msg_id = "1"
+        timestamp = datetime.now(tz=timezone.utc)
+        sig = hook.sign(msg_id=msg_id, timestamp=timestamp, data=data)
+        headers = {
+            "webhook-id": msg_id,
+            "webhook-timestamp": str(int(timestamp.timestamp())),
+            "webhook-signature": sig,
+        }
+
+        try:
+            _ = client.events.unwrap(data, headers=headers, key=method_opt)
+        except standardwebhooks.WebhookVerificationError as e:
+            raise AssertionError("Failed to unwrap valid webhook") from e
+
+        bad_headers = [
+            {**headers, "webhook-signature": hook.sign(msg_id=msg_id, timestamp=timestamp, data="xxx")},
+            {**headers, "webhook-id": "bad"},
+            {**headers, "webhook-timestamp": "0"},
+        ]
+        for bad_header in bad_headers:
+            with pytest.raises(standardwebhooks.WebhookVerificationError):
+                _ = client.events.unwrap(data, headers=bad_header, key=method_opt)
+
 
 class TestAsyncEvents:
     parametrize = pytest.mark.parametrize(
@@ -182,3 +223,44 @@ class TestAsyncEvents:
             assert_matches_type(AsyncPage[Event], event, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.parametrize(
+        "client_opt,method_opt",
+        [
+            ("secret\n", None),
+            ("wrong", b"secret\n"),
+            ("wrong", "whsec_c2VjcmV0Cg=="),
+            (None, b"secret\n"),
+            (None, "whsec_c2VjcmV0Cg=="),
+        ],
+    )
+    def test_method_unwrap(
+        self, async_client: Increase, client_opt: str | None, method_opt: str | bytes | None
+    ) -> None:
+        hook = standardwebhooks.Webhook(b"secret\n")
+
+        async_client = async_client.with_options(webhook_secret=client_opt)
+
+        data = """{"id":"event_001dzz0r20rzr4zrhrr1364hy80","associated_object_id":"account_in71c4amph0vgo2qllky","associated_object_type":"account","category":"account.created","created_at":"2020-01-31T23:59:59Z","type":"event"}"""
+        msg_id = "1"
+        timestamp = datetime.now(tz=timezone.utc)
+        sig = hook.sign(msg_id=msg_id, timestamp=timestamp, data=data)
+        headers = {
+            "webhook-id": msg_id,
+            "webhook-timestamp": str(int(timestamp.timestamp())),
+            "webhook-signature": sig,
+        }
+
+        try:
+            _ = async_client.events.unwrap(data, headers=headers, key=method_opt)
+        except standardwebhooks.WebhookVerificationError as e:
+            raise AssertionError("Failed to unwrap valid webhook") from e
+
+        bad_headers = [
+            {**headers, "webhook-signature": hook.sign(msg_id=msg_id, timestamp=timestamp, data="xxx")},
+            {**headers, "webhook-id": "bad"},
+            {**headers, "webhook-timestamp": "0"},
+        ]
+        for bad_header in bad_headers:
+            with pytest.raises(standardwebhooks.WebhookVerificationError):
+                _ = async_client.events.unwrap(data, headers=bad_header, key=method_opt)

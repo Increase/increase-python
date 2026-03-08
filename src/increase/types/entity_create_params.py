@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Union, Iterable
+from typing import List, Union, Iterable
 from datetime import date, datetime
-from typing_extensions import Literal, Required, Annotated, TypeAlias, TypedDict
+from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
@@ -99,7 +99,7 @@ class EntityCreateParams(TypedDict, total=False):
 
     risk_rating: RiskRating
     """
-    An assessment of the entity’s potential risk of involvement in financial crimes,
+    An assessment of the entity's potential risk of involvement in financial crimes,
     such as money laundering.
     """
 
@@ -245,7 +245,7 @@ class CorporationBeneficialOwnerIndividualIdentificationPassport(TypedDict, tota
     """The identifier of the File containing the passport."""
 
 
-class CorporationBeneficialOwnerIndividualIdentificationTyped(TypedDict, total=False):
+class CorporationBeneficialOwnerIndividualIdentification(TypedDict, total=False, extra_items=object):  # type: ignore[call-arg]
     """A means of verifying the person's identity."""
 
     method: Required[
@@ -292,11 +292,6 @@ class CorporationBeneficialOwnerIndividualIdentificationTyped(TypedDict, total=F
     """
 
 
-CorporationBeneficialOwnerIndividualIdentification: TypeAlias = Union[
-    CorporationBeneficialOwnerIndividualIdentificationTyped, Dict[str, object]
-]
-
-
 class CorporationBeneficialOwnerIndividual(TypedDict, total=False):
     """Personal details for the beneficial owner."""
 
@@ -324,7 +319,7 @@ class CorporationBeneficialOwnerIndividual(TypedDict, total=False):
     """
 
 
-class CorporationBeneficialOwnerTyped(TypedDict, total=False):
+class CorporationBeneficialOwner(TypedDict, total=False, extra_items=object):  # type: ignore[call-arg]
     individual: Required[CorporationBeneficialOwnerIndividual]
     """Personal details for the beneficial owner."""
 
@@ -337,9 +332,6 @@ class CorporationBeneficialOwnerTyped(TypedDict, total=False):
 
     company_title: str
     """This person's role or title within the entity."""
-
-
-CorporationBeneficialOwner: TypeAlias = Union[CorporationBeneficialOwnerTyped, Dict[str, object]]
 
 
 class Corporation(TypedDict, total=False):
@@ -563,7 +555,7 @@ class JointIndividualIdentificationPassport(TypedDict, total=False):
     """The identifier of the File containing the passport."""
 
 
-class JointIndividualIdentificationTyped(TypedDict, total=False):
+class JointIndividualIdentification(TypedDict, total=False, extra_items=object):  # type: ignore[call-arg]
     """A means of verifying the person's identity."""
 
     method: Required[
@@ -608,9 +600,6 @@ class JointIndividualIdentificationTyped(TypedDict, total=False):
 
     Required if `method` is equal to `passport`.
     """
-
-
-JointIndividualIdentification: TypeAlias = Union[JointIndividualIdentificationTyped, Dict[str, object]]
 
 
 class JointIndividual(TypedDict, total=False):
@@ -739,7 +728,7 @@ class NaturalPersonIdentificationPassport(TypedDict, total=False):
     """The identifier of the File containing the passport."""
 
 
-class NaturalPersonIdentificationTyped(TypedDict, total=False):
+class NaturalPersonIdentification(TypedDict, total=False, extra_items=object):  # type: ignore[call-arg]
     """A means of verifying the person's identity."""
 
     method: Required[
@@ -786,9 +775,6 @@ class NaturalPersonIdentificationTyped(TypedDict, total=False):
     """
 
 
-NaturalPersonIdentification: TypeAlias = Union[NaturalPersonIdentificationTyped, Dict[str, object]]
-
-
 class NaturalPerson(TypedDict, total=False):
     """Details of the natural person entity to create.
 
@@ -821,7 +807,7 @@ class NaturalPerson(TypedDict, total=False):
 
 class RiskRating(TypedDict, total=False):
     """
-    An assessment of the entity’s potential risk of involvement in financial crimes, such as money laundering.
+    An assessment of the entity's potential risk of involvement in financial crimes, such as money laundering.
     """
 
     rated_at: Required[Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]]
@@ -866,13 +852,14 @@ class ThirdPartyVerification(TypedDict, total=False):
     reference: Required[str]
     """The reference identifier for the third party verification."""
 
-    vendor: Required[Literal["alloy", "middesk", "oscilar", "persona"]]
+    vendor: Required[Literal["alloy", "middesk", "oscilar", "persona", "taktile"]]
     """The vendor that was used to perform the verification.
 
     - `alloy` - Alloy. See https://alloy.com for more information.
     - `middesk` - Middesk. See https://middesk.com for more information.
     - `oscilar` - Oscilar. See https://oscilar.com for more information.
     - `persona` - Persona. See https://withpersona.com for more information.
+    - `taktile` - Taktile. See https://taktile.com for more information.
     """
 
 
@@ -992,7 +979,7 @@ class TrustTrusteeIndividualIdentificationPassport(TypedDict, total=False):
     """The identifier of the File containing the passport."""
 
 
-class TrustTrusteeIndividualIdentificationTyped(TypedDict, total=False):
+class TrustTrusteeIndividualIdentification(TypedDict, total=False, extra_items=object):  # type: ignore[call-arg]
     """A means of verifying the person's identity."""
 
     method: Required[
@@ -1037,9 +1024,6 @@ class TrustTrusteeIndividualIdentificationTyped(TypedDict, total=False):
 
     Required if `method` is equal to `passport`.
     """
-
-
-TrustTrusteeIndividualIdentification: TypeAlias = Union[TrustTrusteeIndividualIdentificationTyped, Dict[str, object]]
 
 
 class TrustTrusteeIndividual(TypedDict, total=False):
@@ -1178,7 +1162,7 @@ class TrustGrantorIdentificationPassport(TypedDict, total=False):
     """The identifier of the File containing the passport."""
 
 
-class TrustGrantorIdentificationTyped(TypedDict, total=False):
+class TrustGrantorIdentification(TypedDict, total=False, extra_items=object):  # type: ignore[call-arg]
     """A means of verifying the person's identity."""
 
     method: Required[
@@ -1223,9 +1207,6 @@ class TrustGrantorIdentificationTyped(TypedDict, total=False):
 
     Required if `method` is equal to `passport`.
     """
-
-
-TrustGrantorIdentification: TypeAlias = Union[TrustGrantorIdentificationTyped, Dict[str, object]]
 
 
 class TrustGrantor(TypedDict, total=False):

@@ -13,6 +13,7 @@ __all__ = [
     "CreatedByAPIKey",
     "CreatedByOAuthApplication",
     "CreatedByUser",
+    "CreditorAddress",
     "Rejection",
     "Submission",
 ]
@@ -51,9 +52,6 @@ class CreatedByUser(BaseModel):
 class CreatedBy(BaseModel):
     """What object created the transfer, either via the API or the dashboard."""
 
-    api_key: Optional[CreatedByAPIKey] = None
-    """If present, details about the API key that created the transfer."""
-
     category: Literal["api_key", "oauth_application", "user"]
     """The type of object that created this transfer.
 
@@ -64,11 +62,30 @@ class CreatedBy(BaseModel):
       object.
     """
 
+    api_key: Optional[CreatedByAPIKey] = None
+    """If present, details about the API key that created the transfer."""
+
     oauth_application: Optional[CreatedByOAuthApplication] = None
     """If present, details about the OAuth Application that created the transfer."""
 
     user: Optional[CreatedByUser] = None
     """If present, details about the User that created the transfer."""
+
+
+class CreditorAddress(BaseModel):
+    """The creditor's address."""
+
+    city: Optional[str] = None
+    """The city, district, town, or village of the address."""
+
+    line1: Optional[str] = None
+    """The first line of the address."""
+
+    postal_code: Optional[str] = None
+    """The ZIP code of the address."""
+
+    state: Optional[str] = None
+    """The address state."""
 
 
 class Rejection(BaseModel):
@@ -184,6 +201,9 @@ class FednowTransfer(BaseModel):
 
     created_by: Optional[CreatedBy] = None
     """What object created the transfer, either via the API or the dashboard."""
+
+    creditor_address: Optional[CreditorAddress] = None
+    """The creditor's address."""
 
     creditor_name: str
     """The name of the transfer's recipient.

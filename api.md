@@ -104,7 +104,7 @@ Methods:
 - <code title="get /card_disputes/{card_dispute_id}">client.card_disputes.<a href="./src/increase/resources/card_disputes.py">retrieve</a>(card_dispute_id) -> <a href="./src/increase/types/card_dispute.py">CardDispute</a></code>
 - <code title="get /card_disputes">client.card_disputes.<a href="./src/increase/resources/card_disputes.py">list</a>(\*\*<a href="src/increase/types/card_dispute_list_params.py">params</a>) -> <a href="./src/increase/types/card_dispute.py">SyncPage[CardDispute]</a></code>
 - <code title="post /card_disputes/{card_dispute_id}/submit_user_submission">client.card_disputes.<a href="./src/increase/resources/card_disputes.py">submit_user_submission</a>(card_dispute_id, \*\*<a href="src/increase/types/card_dispute_submit_user_submission_params.py">params</a>) -> <a href="./src/increase/types/card_dispute.py">CardDispute</a></code>
-- <code title="post /card_disputes/{card_dispute_id}/withdraw">client.card_disputes.<a href="./src/increase/resources/card_disputes.py">withdraw</a>(card_dispute_id) -> <a href="./src/increase/types/card_dispute.py">CardDispute</a></code>
+- <code title="post /card_disputes/{card_dispute_id}/withdraw">client.card_disputes.<a href="./src/increase/resources/card_disputes.py">withdraw</a>(card_dispute_id, \*\*<a href="src/increase/types/card_dispute_withdraw_params.py">params</a>) -> <a href="./src/increase/types/card_dispute.py">CardDispute</a></code>
 
 # PhysicalCards
 
@@ -400,6 +400,22 @@ Methods:
 - <code title="get /inbound_fednow_transfers/{inbound_fednow_transfer_id}">client.inbound_fednow_transfers.<a href="./src/increase/resources/inbound_fednow_transfers.py">retrieve</a>(inbound_fednow_transfer_id) -> <a href="./src/increase/types/inbound_fednow_transfer.py">InboundFednowTransfer</a></code>
 - <code title="get /inbound_fednow_transfers">client.inbound_fednow_transfers.<a href="./src/increase/resources/inbound_fednow_transfers.py">list</a>(\*\*<a href="src/increase/types/inbound_fednow_transfer_list_params.py">params</a>) -> <a href="./src/increase/types/inbound_fednow_transfer.py">SyncPage[InboundFednowTransfer]</a></code>
 
+# SwiftTransfers
+
+Types:
+
+```python
+from increase.types import SwiftTransfer
+```
+
+Methods:
+
+- <code title="post /swift_transfers">client.swift_transfers.<a href="./src/increase/resources/swift_transfers.py">create</a>(\*\*<a href="src/increase/types/swift_transfer_create_params.py">params</a>) -> <a href="./src/increase/types/swift_transfer.py">SwiftTransfer</a></code>
+- <code title="get /swift_transfers/{swift_transfer_id}">client.swift_transfers.<a href="./src/increase/resources/swift_transfers.py">retrieve</a>(swift_transfer_id) -> <a href="./src/increase/types/swift_transfer.py">SwiftTransfer</a></code>
+- <code title="get /swift_transfers">client.swift_transfers.<a href="./src/increase/resources/swift_transfers.py">list</a>(\*\*<a href="src/increase/types/swift_transfer_list_params.py">params</a>) -> <a href="./src/increase/types/swift_transfer.py">SyncPage[SwiftTransfer]</a></code>
+- <code title="post /swift_transfers/{swift_transfer_id}/approve">client.swift_transfers.<a href="./src/increase/resources/swift_transfers.py">approve</a>(swift_transfer_id) -> <a href="./src/increase/types/swift_transfer.py">SwiftTransfer</a></code>
+- <code title="post /swift_transfers/{swift_transfer_id}/cancel">client.swift_transfers.<a href="./src/increase/resources/swift_transfers.py">cancel</a>(swift_transfer_id) -> <a href="./src/increase/types/swift_transfer.py">SwiftTransfer</a></code>
+
 # CheckDeposits
 
 Types:
@@ -486,11 +502,8 @@ Methods:
 - <code title="get /entities">client.entities.<a href="./src/increase/resources/entities.py">list</a>(\*\*<a href="src/increase/types/entity_list_params.py">params</a>) -> <a href="./src/increase/types/entity.py">SyncPage[Entity]</a></code>
 - <code title="post /entities/{entity_id}/archive">client.entities.<a href="./src/increase/resources/entities.py">archive</a>(entity_id) -> <a href="./src/increase/types/entity.py">Entity</a></code>
 - <code title="post /entities/{entity_id}/archive_beneficial_owner">client.entities.<a href="./src/increase/resources/entities.py">archive_beneficial_owner</a>(entity_id, \*\*<a href="src/increase/types/entity_archive_beneficial_owner_params.py">params</a>) -> <a href="./src/increase/types/entity.py">Entity</a></code>
-- <code title="post /entities/{entity_id}/confirm">client.entities.<a href="./src/increase/resources/entities.py">confirm</a>(entity_id, \*\*<a href="src/increase/types/entity_confirm_params.py">params</a>) -> <a href="./src/increase/types/entity.py">Entity</a></code>
 - <code title="post /entities/{entity_id}/create_beneficial_owner">client.entities.<a href="./src/increase/resources/entities.py">create_beneficial_owner</a>(entity_id, \*\*<a href="src/increase/types/entity_create_beneficial_owner_params.py">params</a>) -> <a href="./src/increase/types/entity.py">Entity</a></code>
-- <code title="post /entities/{entity_id}/update_address">client.entities.<a href="./src/increase/resources/entities.py">update_address</a>(entity_id, \*\*<a href="src/increase/types/entity_update_address_params.py">params</a>) -> <a href="./src/increase/types/entity.py">Entity</a></code>
 - <code title="post /entities/{entity_id}/update_beneficial_owner_address">client.entities.<a href="./src/increase/resources/entities.py">update_beneficial_owner_address</a>(entity_id, \*\*<a href="src/increase/types/entity_update_beneficial_owner_address_params.py">params</a>) -> <a href="./src/increase/types/entity.py">Entity</a></code>
-- <code title="post /entities/{entity_id}/update_industry_code">client.entities.<a href="./src/increase/resources/entities.py">update_industry_code</a>(entity_id, \*\*<a href="src/increase/types/entity_update_industry_code_params.py">params</a>) -> <a href="./src/increase/types/entity.py">Entity</a></code>
 
 # SupplementalDocuments
 
@@ -576,7 +589,7 @@ Methods:
 Types:
 
 ```python
-from increase.types import Event
+from increase.types import Event, UnwrapWebhookEvent
 ```
 
 Methods:
@@ -865,6 +878,14 @@ Methods:
 
 - <code title="post /simulations/card_refunds">client.simulations.card_refunds.<a href="./src/increase/resources/simulations/card_refunds.py">create</a>(\*\*<a href="src/increase/types/simulations/card_refund_create_params.py">params</a>) -> <a href="./src/increase/types/transaction.py">Transaction</a></code>
 
+## CardAuthentications
+
+Methods:
+
+- <code title="post /simulations/card_authentications">client.simulations.card_authentications.<a href="./src/increase/resources/simulations/card_authentications.py">create</a>(\*\*<a href="src/increase/types/simulations/card_authentication_create_params.py">params</a>) -> <a href="./src/increase/types/card_payment.py">CardPayment</a></code>
+- <code title="post /simulations/card_authentications/{card_payment_id}/challenge_attempts">client.simulations.card_authentications.<a href="./src/increase/resources/simulations/card_authentications.py">challenge_attempts</a>(card_payment_id, \*\*<a href="src/increase/types/simulations/card_authentication_challenge_attempts_params.py">params</a>) -> <a href="./src/increase/types/card_payment.py">CardPayment</a></code>
+- <code title="post /simulations/card_authentications/{card_payment_id}/challenges">client.simulations.card_authentications.<a href="./src/increase/resources/simulations/card_authentications.py">challenges</a>(card_payment_id) -> <a href="./src/increase/types/card_payment.py">CardPayment</a></code>
+
 ## CardDisputes
 
 Methods:
@@ -949,6 +970,7 @@ Methods:
 Methods:
 
 - <code title="post /simulations/inbound_check_deposits">client.simulations.inbound_check_deposits.<a href="./src/increase/resources/simulations/inbound_check_deposits.py">create</a>(\*\*<a href="src/increase/types/simulations/inbound_check_deposit_create_params.py">params</a>) -> <a href="./src/increase/types/inbound_check_deposit.py">InboundCheckDeposit</a></code>
+- <code title="post /simulations/inbound_check_deposits/{inbound_check_deposit_id}/adjustment">client.simulations.inbound_check_deposits.<a href="./src/increase/resources/simulations/inbound_check_deposits.py">adjustment</a>(inbound_check_deposit_id, \*\*<a href="src/increase/types/simulations/inbound_check_deposit_adjustment_params.py">params</a>) -> <a href="./src/increase/types/inbound_check_deposit.py">InboundCheckDeposit</a></code>
 
 ## RealTimePaymentsTransfers
 
@@ -972,9 +994,10 @@ Methods:
 
 Methods:
 
+- <code title="post /simulations/check_deposits/{check_deposit_id}/adjustment">client.simulations.check_deposits.<a href="./src/increase/resources/simulations/check_deposits.py">adjustment</a>(check_deposit_id, \*\*<a href="src/increase/types/simulations/check_deposit_adjustment_params.py">params</a>) -> <a href="./src/increase/types/check_deposit.py">CheckDeposit</a></code>
 - <code title="post /simulations/check_deposits/{check_deposit_id}/reject">client.simulations.check_deposits.<a href="./src/increase/resources/simulations/check_deposits.py">reject</a>(check_deposit_id) -> <a href="./src/increase/types/check_deposit.py">CheckDeposit</a></code>
 - <code title="post /simulations/check_deposits/{check_deposit_id}/return">client.simulations.check*deposits.<a href="./src/increase/resources/simulations/check_deposits.py">return*</a>(check_deposit_id) -> <a href="./src/increase/types/check_deposit.py">CheckDeposit</a></code>
-- <code title="post /simulations/check_deposits/{check_deposit_id}/submit">client.simulations.check_deposits.<a href="./src/increase/resources/simulations/check_deposits.py">submit</a>(check_deposit_id) -> <a href="./src/increase/types/check_deposit.py">CheckDeposit</a></code>
+- <code title="post /simulations/check_deposits/{check_deposit_id}/submit">client.simulations.check_deposits.<a href="./src/increase/resources/simulations/check_deposits.py">submit</a>(check_deposit_id, \*\*<a href="src/increase/types/simulations/check_deposit_submit_params.py">params</a>) -> <a href="./src/increase/types/check_deposit.py">CheckDeposit</a></code>
 
 ## InboundMailItems
 

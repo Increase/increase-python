@@ -25,6 +25,7 @@ from .wire_transfer import WireTransfer as WireTransfer
 from .account_number import AccountNumber as AccountNumber
 from .balance_lookup import BalanceLookup as BalanceLookup
 from .check_transfer import CheckTransfer as CheckTransfer
+from .swift_transfer import SwiftTransfer as SwiftTransfer
 from .card_iframe_url import CardIframeURL as CardIframeURL
 from .card_validation import CardValidation as CardValidation
 from .fednow_transfer import FednowTransfer as FednowTransfer
@@ -61,10 +62,10 @@ from .entity_create_params import EntityCreateParams as EntityCreateParams
 from .entity_update_params import EntityUpdateParams as EntityUpdateParams
 from .export_create_params import ExportCreateParams as ExportCreateParams
 from .inbound_ach_transfer import InboundACHTransfer as InboundACHTransfer
+from .unwrap_webhook_event import UnwrapWebhookEvent as UnwrapWebhookEvent
 from .account_create_params import AccountCreateParams as AccountCreateParams
 from .account_update_params import AccountUpdateParams as AccountUpdateParams
 from .bookkeeping_entry_set import BookkeepingEntrySet as BookkeepingEntrySet
-from .entity_confirm_params import EntityConfirmParams as EntityConfirmParams
 from .inbound_check_deposit import InboundCheckDeposit as InboundCheckDeposit
 from .inbound_wire_transfer import InboundWireTransfer as InboundWireTransfer
 from .lockbox_create_params import LockboxCreateParams as LockboxCreateParams
@@ -93,6 +94,7 @@ from .card_dispute_create_params import CardDisputeCreateParams as CardDisputeCr
 from .check_transfer_list_params import CheckTransferListParams as CheckTransferListParams
 from .intrafi_account_enrollment import IntrafiAccountEnrollment as IntrafiAccountEnrollment
 from .routing_number_list_params import RoutingNumberListParams as RoutingNumberListParams
+from .swift_transfer_list_params import SwiftTransferListParams as SwiftTransferListParams
 from .card_validation_list_params import CardValidationListParams as CardValidationListParams
 from .check_deposit_create_params import CheckDepositCreateParams as CheckDepositCreateParams
 from .fednow_transfer_list_params import FednowTransferListParams as FednowTransferListParams
@@ -103,12 +105,13 @@ from .wire_transfer_create_params import WireTransferCreateParams as WireTransfe
 from .account_number_create_params import AccountNumberCreateParams as AccountNumberCreateParams
 from .account_number_update_params import AccountNumberUpdateParams as AccountNumberUpdateParams
 from .account_transfer_list_params import AccountTransferListParams as AccountTransferListParams
+from .card_dispute_withdraw_params import CardDisputeWithdrawParams as CardDisputeWithdrawParams
 from .check_transfer_create_params import CheckTransferCreateParams as CheckTransferCreateParams
 from .entity_supplemental_document import EntitySupplementalDocument as EntitySupplementalDocument
-from .entity_update_address_params import EntityUpdateAddressParams as EntityUpdateAddressParams
 from .external_account_list_params import ExternalAccountListParams as ExternalAccountListParams
 from .oauth_connection_list_params import OAuthConnectionListParams as OAuthConnectionListParams
 from .routing_number_list_response import RoutingNumberListResponse as RoutingNumberListResponse
+from .swift_transfer_create_params import SwiftTransferCreateParams as SwiftTransferCreateParams
 from .account_statement_list_params import AccountStatementListParams as AccountStatementListParams
 from .bookkeeping_entry_list_params import BookkeepingEntryListParams as BookkeepingEntryListParams
 from .card_validation_create_params import CardValidationCreateParams as CardValidationCreateParams
@@ -150,7 +153,6 @@ from .wire_drawdown_request_list_params import WireDrawdownRequestListParams as 
 from .bookkeeping_account_balance_params import BookkeepingAccountBalanceParams as BookkeepingAccountBalanceParams
 from .check_transfer_stop_payment_params import CheckTransferStopPaymentParams as CheckTransferStopPaymentParams
 from .digital_card_profile_create_params import DigitalCardProfileCreateParams as DigitalCardProfileCreateParams
-from .entity_update_industry_code_params import EntityUpdateIndustryCodeParams as EntityUpdateIndustryCodeParams
 from .physical_card_profile_clone_params import PhysicalCardProfileCloneParams as PhysicalCardProfileCloneParams
 from .bookkeeping_entry_set_create_params import BookkeepingEntrySetCreateParams as BookkeepingEntrySetCreateParams
 from .inbound_ach_transfer_decline_params import InboundACHTransferDeclineParams as InboundACHTransferDeclineParams

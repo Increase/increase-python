@@ -45,8 +45,8 @@ class IntrafiExclusionsResource(SyncAPIResource):
     def create(
         self,
         *,
-        bank_name: str,
         entity_id: str,
+        fdic_certificate_number: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -59,9 +59,12 @@ class IntrafiExclusionsResource(SyncAPIResource):
         Create an IntraFi Exclusion
 
         Args:
-          bank_name: The name of the financial institution to be excluded.
-
           entity_id: The identifier of the Entity whose deposits will be excluded.
+
+          fdic_certificate_number: The FDIC certificate number of the financial institution to be excluded. An FDIC
+              certificate number uniquely identifies a financial institution, and is different
+              than a routing number. To find one, we recommend searching by Bank Name using
+              the [FDIC's bankfind tool](https://banks.data.fdic.gov/bankfind-suite/bankfind).
 
           extra_headers: Send extra headers
 
@@ -77,8 +80,8 @@ class IntrafiExclusionsResource(SyncAPIResource):
             "/intrafi_exclusions",
             body=maybe_transform(
                 {
-                    "bank_name": bank_name,
                     "entity_id": entity_id,
+                    "fdic_certificate_number": fdic_certificate_number,
                 },
                 intrafi_exclusion_create_params.IntrafiExclusionCreateParams,
             ),
@@ -258,8 +261,8 @@ class AsyncIntrafiExclusionsResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        bank_name: str,
         entity_id: str,
+        fdic_certificate_number: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -272,9 +275,12 @@ class AsyncIntrafiExclusionsResource(AsyncAPIResource):
         Create an IntraFi Exclusion
 
         Args:
-          bank_name: The name of the financial institution to be excluded.
-
           entity_id: The identifier of the Entity whose deposits will be excluded.
+
+          fdic_certificate_number: The FDIC certificate number of the financial institution to be excluded. An FDIC
+              certificate number uniquely identifies a financial institution, and is different
+              than a routing number. To find one, we recommend searching by Bank Name using
+              the [FDIC's bankfind tool](https://banks.data.fdic.gov/bankfind-suite/bankfind).
 
           extra_headers: Send extra headers
 
@@ -290,8 +296,8 @@ class AsyncIntrafiExclusionsResource(AsyncAPIResource):
             "/intrafi_exclusions",
             body=await async_maybe_transform(
                 {
-                    "bank_name": bank_name,
                     "entity_id": entity_id,
+                    "fdic_certificate_number": fdic_certificate_number,
                 },
                 intrafi_exclusion_create_params.IntrafiExclusionCreateParams,
             ),

@@ -110,12 +110,21 @@ class ACHPrenotificationsResource(SyncAPIResource):
           individual_name: The name of therecipient. This value is informational and not verified by the
               recipient's bank.
 
-          standard_entry_class_code: The Standard Entry Class (SEC) code to use for the ACH Prenotification.
+          standard_entry_class_code: The
+              [Standard Entry Class (SEC) code](/documentation/ach-standard-entry-class-codes)
+              to use for the ACH Prenotification.
 
-              - `corporate_credit_or_debit` - Corporate Credit and Debit (CCD).
-              - `corporate_trade_exchange` - Corporate Trade Exchange (CTX).
-              - `prearranged_payments_and_deposit` - Prearranged Payments and Deposits (PPD).
-              - `internet_initiated` - Internet Initiated (WEB).
+              - `corporate_credit_or_debit` - Corporate Credit and Debit (CCD) is used for
+                business-to-business payments.
+              - `corporate_trade_exchange` - Corporate Trade Exchange (CTX) allows for
+                including extensive remittance information with business-to-business payments.
+              - `prearranged_payments_and_deposit` - Prearranged Payments and Deposits (PPD)
+                is used for credits or debits originated by an organization to a consumer,
+                such as payroll direct deposits.
+              - `internet_initiated` - Internet Initiated (WEB) is used for consumer payments
+                initiated or authorized via the Internet. Debits can only be initiated by
+                non-consumers to debit a consumer’s account. Credits can only be used for
+                consumer to consumer transactions.
 
           extra_headers: Send extra headers
 
@@ -336,12 +345,21 @@ class AsyncACHPrenotificationsResource(AsyncAPIResource):
           individual_name: The name of therecipient. This value is informational and not verified by the
               recipient's bank.
 
-          standard_entry_class_code: The Standard Entry Class (SEC) code to use for the ACH Prenotification.
+          standard_entry_class_code: The
+              [Standard Entry Class (SEC) code](/documentation/ach-standard-entry-class-codes)
+              to use for the ACH Prenotification.
 
-              - `corporate_credit_or_debit` - Corporate Credit and Debit (CCD).
-              - `corporate_trade_exchange` - Corporate Trade Exchange (CTX).
-              - `prearranged_payments_and_deposit` - Prearranged Payments and Deposits (PPD).
-              - `internet_initiated` - Internet Initiated (WEB).
+              - `corporate_credit_or_debit` - Corporate Credit and Debit (CCD) is used for
+                business-to-business payments.
+              - `corporate_trade_exchange` - Corporate Trade Exchange (CTX) allows for
+                including extensive remittance information with business-to-business payments.
+              - `prearranged_payments_and_deposit` - Prearranged Payments and Deposits (PPD)
+                is used for credits or debits originated by an organization to a consumer,
+                such as payroll direct deposits.
+              - `internet_initiated` - Internet Initiated (WEB) is used for consumer payments
+                initiated or authorized via the Internet. Debits can only be initiated by
+                non-consumers to debit a consumer’s account. Credits can only be used for
+                consumer to consumer transactions.
 
           extra_headers: Send extra headers
 

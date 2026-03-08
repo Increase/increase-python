@@ -14,6 +14,9 @@ __all__ = [
     "ElementCardAuthentication",
     "ElementCardAuthenticationChallenge",
     "ElementCardAuthenticationChallengeAttempt",
+    "ElementCardAuthenticationDeviceChannel",
+    "ElementCardAuthenticationDeviceChannelBrowser",
+    "ElementCardAuthenticationDeviceChannelMerchantInitiated",
     "ElementCardAuthorization",
     "ElementCardAuthorizationAdditionalAmounts",
     "ElementCardAuthorizationAdditionalAmountsClinic",
@@ -33,6 +36,7 @@ __all__ = [
     "ElementCardAuthorizationVerification",
     "ElementCardAuthorizationVerificationCardVerificationCode",
     "ElementCardAuthorizationVerificationCardholderAddress",
+    "ElementCardAuthorizationVerificationCardholderName",
     "ElementCardAuthorizationExpiration",
     "ElementCardBalanceInquiry",
     "ElementCardBalanceInquiryAdditionalAmounts",
@@ -53,6 +57,7 @@ __all__ = [
     "ElementCardBalanceInquiryVerification",
     "ElementCardBalanceInquiryVerificationCardVerificationCode",
     "ElementCardBalanceInquiryVerificationCardholderAddress",
+    "ElementCardBalanceInquiryVerificationCardholderName",
     "ElementCardDecline",
     "ElementCardDeclineAdditionalAmounts",
     "ElementCardDeclineAdditionalAmountsClinic",
@@ -72,6 +77,7 @@ __all__ = [
     "ElementCardDeclineVerification",
     "ElementCardDeclineVerificationCardVerificationCode",
     "ElementCardDeclineVerificationCardholderAddress",
+    "ElementCardDeclineVerificationCardholderName",
     "ElementCardFinancial",
     "ElementCardFinancialAdditionalAmounts",
     "ElementCardFinancialAdditionalAmountsClinic",
@@ -91,6 +97,7 @@ __all__ = [
     "ElementCardFinancialVerification",
     "ElementCardFinancialVerificationCardVerificationCode",
     "ElementCardFinancialVerificationCardholderAddress",
+    "ElementCardFinancialVerificationCardholderName",
     "ElementCardFuelConfirmation",
     "ElementCardFuelConfirmationNetworkIdentifiers",
     "ElementCardIncrement",
@@ -150,7 +157,9 @@ __all__ = [
     "ElementCardValidationVerification",
     "ElementCardValidationVerificationCardVerificationCode",
     "ElementCardValidationVerificationCardholderAddress",
+    "ElementCardValidationVerificationCardholderName",
     "ElementOther",
+    "SchemeFee",
     "State",
 ]
 
@@ -200,6 +209,96 @@ class ElementCardAuthenticationChallenge(BaseModel):
     """
 
 
+class ElementCardAuthenticationDeviceChannelBrowser(BaseModel):
+    """Fields specific to the browser device channel."""
+
+    accept_header: Optional[str] = None
+    """The accept header from the cardholder's browser."""
+
+    ip_address: Optional[str] = None
+    """The IP address of the cardholder's browser."""
+
+    javascript_enabled: Optional[Literal["enabled", "disabled"]] = None
+    """Whether JavaScript is enabled in the cardholder's browser.
+
+    - `enabled` - JavaScript is enabled in the cardholder's browser.
+    - `disabled` - JavaScript is not enabled in the cardholder's browser.
+    """
+
+    language: Optional[str] = None
+    """The language of the cardholder's browser."""
+
+    user_agent: Optional[str] = None
+    """The user agent of the cardholder's browser."""
+
+
+class ElementCardAuthenticationDeviceChannelMerchantInitiated(BaseModel):
+    """Fields specific to merchant initiated transactions."""
+
+    indicator: Literal[
+        "recurring_transaction",
+        "installment_transaction",
+        "add_card",
+        "maintain_card_information",
+        "account_verification",
+        "split_delayed_shipment",
+        "top_up",
+        "mail_order",
+        "telephone_order",
+        "whitelist_status_check",
+        "other_payment",
+        "billing_agreement",
+        "device_binding_status_check",
+        "card_security_code_status_check",
+        "delayed_shipment",
+        "split_payment",
+        "fido_credential_deletion",
+        "fido_credential_registration",
+        "decoupled_authentication_fallback",
+    ]
+    """The merchant initiated indicator for the transaction.
+
+    - `recurring_transaction` - Recurring transaction.
+    - `installment_transaction` - Installment transaction.
+    - `add_card` - Add card.
+    - `maintain_card_information` - Maintain card information.
+    - `account_verification` - Account verification.
+    - `split_delayed_shipment` - Split or delayed shipment.
+    - `top_up` - Top up.
+    - `mail_order` - Mail order.
+    - `telephone_order` - Telephone order.
+    - `whitelist_status_check` - Whitelist status check.
+    - `other_payment` - Other payment.
+    - `billing_agreement` - Billing agreement.
+    - `device_binding_status_check` - Device binding status check.
+    - `card_security_code_status_check` - Card security code status check.
+    - `delayed_shipment` - Delayed shipment.
+    - `split_payment` - Split payment.
+    - `fido_credential_deletion` - FIDO credential deletion.
+    - `fido_credential_registration` - FIDO credential registration.
+    - `decoupled_authentication_fallback` - Decoupled authentication fallback.
+    """
+
+
+class ElementCardAuthenticationDeviceChannel(BaseModel):
+    """The device channel of the card authentication attempt."""
+
+    browser: Optional[ElementCardAuthenticationDeviceChannelBrowser] = None
+    """Fields specific to the browser device channel."""
+
+    category: Literal["app", "browser", "three_ds_requestor_initiated"]
+    """The category of the device channel.
+
+    - `app` - The authentication attempt was made from an app.
+    - `browser` - The authentication attempt was made from a browser.
+    - `three_ds_requestor_initiated` - The authentication attempt was initiated by
+      the 3DS Requestor.
+    """
+
+    merchant_initiated: Optional[ElementCardAuthenticationDeviceChannelMerchantInitiated] = None
+    """Fields specific to merchant initiated transactions."""
+
+
 class ElementCardAuthentication(BaseModel):
     """A Card Authentication object.
 
@@ -209,11 +308,65 @@ class ElementCardAuthentication(BaseModel):
     id: str
     """The Card Authentication identifier."""
 
+    access_control_server_transaction_id: str
+    """
+    A unique identifier assigned by the Access Control Server (us) for this
+    transaction.
+    """
+
+    billing_address_city: Optional[str] = None
+    """
+    The city of the cardholder billing address associated with the card used for
+    this purchase.
+    """
+
+    billing_address_country: Optional[str] = None
+    """
+    The country of the cardholder billing address associated with the card used for
+    this purchase.
+    """
+
+    billing_address_line1: Optional[str] = None
+    """
+    The first line of the cardholder billing address associated with the card used
+    for this purchase.
+    """
+
+    billing_address_line2: Optional[str] = None
+    """
+    The second line of the cardholder billing address associated with the card used
+    for this purchase.
+    """
+
+    billing_address_line3: Optional[str] = None
+    """
+    The third line of the cardholder billing address associated with the card used
+    for this purchase.
+    """
+
+    billing_address_postal_code: Optional[str] = None
+    """
+    The postal code of the cardholder billing address associated with the card used
+    for this purchase.
+    """
+
+    billing_address_state: Optional[str] = None
+    """
+    The US state of the cardholder billing address associated with the card used for
+    this purchase.
+    """
+
     card_id: str
     """The identifier of the Card."""
 
     card_payment_id: str
     """The ID of the Card Payment this transaction belongs to."""
+
+    cardholder_email: Optional[str] = None
+    """The email address of the cardholder."""
+
+    cardholder_name: Optional[str] = None
+    """The name of the cardholder."""
 
     category: Optional[Literal["payment_authentication", "non_payment_authentication"]] = None
     """The category of the card authentication attempt.
@@ -252,13 +405,13 @@ class ElementCardAuthentication(BaseModel):
     - `webhook_timed_out` - The webhook timed out.
     """
 
-    device_channel: Optional[Literal["app", "browser", "three_ds_requestor_initiated"]] = None
-    """The device channel of the card authentication attempt.
+    device_channel: ElementCardAuthenticationDeviceChannel
+    """The device channel of the card authentication attempt."""
 
-    - `app` - The authentication attempt was made from an app.
-    - `browser` - The authentication attempt was made from a browser.
-    - `three_ds_requestor_initiated` - The authentication attempt was initiated by
-      the 3DS Requestor.
+    directory_server_transaction_id: str
+    """
+    A unique identifier assigned by the Directory Server (the card network) for this
+    transaction.
     """
 
     merchant_acceptor_id: str
@@ -279,8 +432,20 @@ class ElementCardAuthentication(BaseModel):
     merchant_name: str
     """The name of the merchant."""
 
+    prior_card_authentication_id: Optional[str] = None
+    """
+    The ID of a prior Card Authentication that the requestor used to authenticate
+    this cardholder for a previous transaction.
+    """
+
     purchase_amount: Optional[int] = None
     """The purchase amount in minor units."""
+
+    purchase_amount_cardholder_estimated: Optional[int] = None
+    """
+    The purchase amount in the cardholder's currency (i.e., USD) estimated using
+    daily conversion rates from the card network.
+    """
 
     purchase_currency: Optional[str] = None
     """
@@ -293,6 +458,91 @@ class ElementCardAuthentication(BaseModel):
     The identifier of the Real-Time Decision sent to approve or decline this
     authentication attempt.
     """
+
+    requestor_authentication_indicator: Optional[
+        Literal[
+            "payment_transaction",
+            "recurring_transaction",
+            "installment_transaction",
+            "add_card",
+            "maintain_card",
+            "emv_token_cardholder_verification",
+            "billing_agreement",
+        ]
+    ] = None
+    """
+    The 3DS requestor authentication indicator describes why the authentication
+    attempt is performed, such as for a recurring transaction.
+
+    - `payment_transaction` - The authentication is for a payment transaction.
+    - `recurring_transaction` - The authentication is for a recurring transaction.
+    - `installment_transaction` - The authentication is for an installment
+      transaction.
+    - `add_card` - The authentication is for adding a card.
+    - `maintain_card` - The authentication is for maintaining a card.
+    - `emv_token_cardholder_verification` - The authentication is for EMV token
+      cardholder verification.
+    - `billing_agreement` - The authentication is for a billing agreement.
+    """
+
+    requestor_challenge_indicator: Optional[
+        Literal[
+            "no_preference",
+            "no_challenge_requested",
+            "challenge_requested_3ds_requestor_preference",
+            "challenge_requested_mandate",
+            "no_challenge_requested_transactional_risk_analysis_already_performed",
+            "no_challenge_requested_data_share_only",
+            "no_challenge_requested_strong_consumer_authentication_already_performed",
+            "no_challenge_requested_utilize_whitelist_exemption_if_no_challenge_required",
+            "challenge_requested_whitelist_prompt_requested_if_challenge_required",
+        ]
+    ] = None
+    """Indicates whether a challenge is requested for this transaction.
+
+    - `no_preference` - No preference.
+    - `no_challenge_requested` - No challenge requested.
+    - `challenge_requested_3ds_requestor_preference` - Challenge requested, 3DS
+      Requestor preference.
+    - `challenge_requested_mandate` - Challenge requested, mandate.
+    - `no_challenge_requested_transactional_risk_analysis_already_performed` - No
+      challenge requested, transactional risk analysis already performed.
+    - `no_challenge_requested_data_share_only` - No challenge requested, data share
+      only.
+    - `no_challenge_requested_strong_consumer_authentication_already_performed` - No
+      challenge requested, strong consumer authentication already performed.
+    - `no_challenge_requested_utilize_whitelist_exemption_if_no_challenge_required` -
+      No challenge requested, utilize whitelist exemption if no challenge required.
+    - `challenge_requested_whitelist_prompt_requested_if_challenge_required` -
+      Challenge requested, whitelist prompt requested if challenge required.
+    """
+
+    requestor_name: str
+    """The name of the 3DS requestor."""
+
+    requestor_url: str
+    """The URL of the 3DS requestor."""
+
+    shipping_address_city: Optional[str] = None
+    """The city of the shipping address associated with this purchase."""
+
+    shipping_address_country: Optional[str] = None
+    """The country of the shipping address associated with this purchase."""
+
+    shipping_address_line1: Optional[str] = None
+    """The first line of the shipping address associated with this purchase."""
+
+    shipping_address_line2: Optional[str] = None
+    """The second line of the shipping address associated with this purchase."""
+
+    shipping_address_line3: Optional[str] = None
+    """The third line of the shipping address associated with this purchase."""
+
+    shipping_address_postal_code: Optional[str] = None
+    """The postal code of the shipping address associated with this purchase."""
+
+    shipping_address_state: Optional[str] = None
+    """The US state of the shipping address associated with this purchase."""
 
     status: Literal[
         "denied",
@@ -320,6 +570,30 @@ class ElementCardAuthentication(BaseModel):
     - `errored` - The authentication attempt errored.
     - `exceeded_attempt_threshold` - The authentication attempt exceeded the attempt
       threshold.
+    """
+
+    three_d_secure_server_transaction_id: str
+    """
+    A unique identifier assigned by the 3DS Server initiating the authentication
+    attempt for this transaction.
+    """
+
+    transaction_type: Optional[
+        Literal[
+            "goods_service_purchase",
+            "check_acceptance",
+            "account_funding",
+            "quasi_cash_transaction",
+            "prepaid_activation_and_load",
+        ]
+    ] = None
+    """The type of transaction being authenticated.
+
+    - `goods_service_purchase` - Purchase of goods or services.
+    - `check_acceptance` - Check acceptance.
+    - `account_funding` - Account funding.
+    - `quasi_cash_transaction` - Quasi-cash transaction.
+    - `prepaid_activation_and_load` - Prepaid activation and load.
     """
 
     type: Literal["card_authentication"]
@@ -645,6 +919,7 @@ class ElementCardAuthorizationNetworkDetailsVisa(BaseModel):
         Literal[
             "issuer_error",
             "invalid_physical_card",
+            "invalid_cryptogram",
             "invalid_cardholder_authentication_verification_value",
             "internal_visa_error",
             "merchant_transaction_advisory_service_authentication_required",
@@ -659,8 +934,10 @@ class ElementCardAuthorizationNetworkDetailsVisa(BaseModel):
 
     - `issuer_error` - Increase failed to process the authorization in a timely
       manner.
-    - `invalid_physical_card` - The physical card read had an invalid CVV, dCVV, or
-      authorization request cryptogram.
+    - `invalid_physical_card` - The physical card read had an invalid CVV or dCVV.
+    - `invalid_cryptogram` - The card's authorization request cryptogram was
+      invalid. The cryptogram can be from a physical card or a Digital Wallet Token
+      purchase.
     - `invalid_cardholder_authentication_verification_value` - The 3DS cardholder
       authentication verification value was invalid.
     - `internal_visa_error` - An internal Visa error occurred. Visa uses this reason
@@ -674,6 +951,41 @@ class ElementCardAuthorizationNetworkDetailsVisa(BaseModel):
       Visa's Payment Fraud Disruption service due to fraudulent Acquirer behavior,
       such as card testing.
     - `other` - An unspecific reason for stand-in processing.
+    """
+
+    terminal_entry_capability: Optional[
+        Literal[
+            "unknown",
+            "terminal_not_used",
+            "magnetic_stripe",
+            "barcode",
+            "optical_character_recognition",
+            "chip_or_contactless",
+            "contactless_only",
+            "no_capability",
+        ]
+    ] = None
+    """The capability of the terminal being used to read the card.
+
+    Shows whether a terminal can e.g., accept chip cards or if it only supports
+    magnetic stripe reads. This reflects the highest capability of the terminal —
+    for example, a terminal that supports both chip and magnetic stripe will be
+    identified as chip-capable.
+
+    - `unknown` - Unknown
+    - `terminal_not_used` - No terminal was used for this transaction.
+    - `magnetic_stripe` - The terminal can only read magnetic stripes and does not
+      have chip or contactless reading capability.
+    - `barcode` - The terminal can only read barcodes.
+    - `optical_character_recognition` - The terminal can only read cards via Optical
+      Character Recognition.
+    - `chip_or_contactless` - The terminal supports contact chip cards and can also
+      read the magnetic stripe. If contact chip is supported, this value is used
+      regardless of whether contactless is also supported.
+    - `contactless_only` - The terminal supports contactless reads but does not
+      support contact chip. Only used when the terminal lacks contact chip
+      capability.
+    - `no_capability` - The terminal has no card reading capability.
     """
 
 
@@ -781,6 +1093,19 @@ class ElementCardAuthorizationVerificationCardholderAddress(BaseModel):
     """
 
 
+class ElementCardAuthorizationVerificationCardholderName(BaseModel):
+    """Cardholder name provided in the authorization request."""
+
+    provided_first_name: Optional[str] = None
+    """The first name provided for verification in the authorization request."""
+
+    provided_last_name: Optional[str] = None
+    """The last name provided for verification in the authorization request."""
+
+    provided_middle_name: Optional[str] = None
+    """The middle name provided for verification in the authorization request."""
+
+
 class ElementCardAuthorizationVerification(BaseModel):
     """Fields related to verification of cardholder-provided values."""
 
@@ -796,11 +1121,14 @@ class ElementCardAuthorizationVerification(BaseModel):
     we verified it against.
     """
 
+    cardholder_name: Optional[ElementCardAuthorizationVerificationCardholderName] = None
+    """Cardholder name provided in the authorization request."""
+
 
 class ElementCardAuthorization(BaseModel):
     """A Card Authorization object.
 
-    This field will be present in the JSON response if and only if `category` is equal to `card_authorization`. Card Authorizations are temporary holds placed on a customers funds with the intent to later clear a transaction.
+    This field will be present in the JSON response if and only if `category` is equal to `card_authorization`. Card Authorizations are temporary holds placed on a customer's funds with the intent to later clear a transaction.
     """
 
     id: str
@@ -1354,6 +1682,7 @@ class ElementCardBalanceInquiryNetworkDetailsVisa(BaseModel):
         Literal[
             "issuer_error",
             "invalid_physical_card",
+            "invalid_cryptogram",
             "invalid_cardholder_authentication_verification_value",
             "internal_visa_error",
             "merchant_transaction_advisory_service_authentication_required",
@@ -1368,8 +1697,10 @@ class ElementCardBalanceInquiryNetworkDetailsVisa(BaseModel):
 
     - `issuer_error` - Increase failed to process the authorization in a timely
       manner.
-    - `invalid_physical_card` - The physical card read had an invalid CVV, dCVV, or
-      authorization request cryptogram.
+    - `invalid_physical_card` - The physical card read had an invalid CVV or dCVV.
+    - `invalid_cryptogram` - The card's authorization request cryptogram was
+      invalid. The cryptogram can be from a physical card or a Digital Wallet Token
+      purchase.
     - `invalid_cardholder_authentication_verification_value` - The 3DS cardholder
       authentication verification value was invalid.
     - `internal_visa_error` - An internal Visa error occurred. Visa uses this reason
@@ -1383,6 +1714,41 @@ class ElementCardBalanceInquiryNetworkDetailsVisa(BaseModel):
       Visa's Payment Fraud Disruption service due to fraudulent Acquirer behavior,
       such as card testing.
     - `other` - An unspecific reason for stand-in processing.
+    """
+
+    terminal_entry_capability: Optional[
+        Literal[
+            "unknown",
+            "terminal_not_used",
+            "magnetic_stripe",
+            "barcode",
+            "optical_character_recognition",
+            "chip_or_contactless",
+            "contactless_only",
+            "no_capability",
+        ]
+    ] = None
+    """The capability of the terminal being used to read the card.
+
+    Shows whether a terminal can e.g., accept chip cards or if it only supports
+    magnetic stripe reads. This reflects the highest capability of the terminal —
+    for example, a terminal that supports both chip and magnetic stripe will be
+    identified as chip-capable.
+
+    - `unknown` - Unknown
+    - `terminal_not_used` - No terminal was used for this transaction.
+    - `magnetic_stripe` - The terminal can only read magnetic stripes and does not
+      have chip or contactless reading capability.
+    - `barcode` - The terminal can only read barcodes.
+    - `optical_character_recognition` - The terminal can only read cards via Optical
+      Character Recognition.
+    - `chip_or_contactless` - The terminal supports contact chip cards and can also
+      read the magnetic stripe. If contact chip is supported, this value is used
+      regardless of whether contactless is also supported.
+    - `contactless_only` - The terminal supports contactless reads but does not
+      support contact chip. Only used when the terminal lacks contact chip
+      capability.
+    - `no_capability` - The terminal has no card reading capability.
     """
 
 
@@ -1490,6 +1856,19 @@ class ElementCardBalanceInquiryVerificationCardholderAddress(BaseModel):
     """
 
 
+class ElementCardBalanceInquiryVerificationCardholderName(BaseModel):
+    """Cardholder name provided in the authorization request."""
+
+    provided_first_name: Optional[str] = None
+    """The first name provided for verification in the authorization request."""
+
+    provided_last_name: Optional[str] = None
+    """The last name provided for verification in the authorization request."""
+
+    provided_middle_name: Optional[str] = None
+    """The middle name provided for verification in the authorization request."""
+
+
 class ElementCardBalanceInquiryVerification(BaseModel):
     """Fields related to verification of cardholder-provided values."""
 
@@ -1504,6 +1883,9 @@ class ElementCardBalanceInquiryVerification(BaseModel):
     Cardholder address provided in the authorization request and the address on file
     we verified it against.
     """
+
+    cardholder_name: Optional[ElementCardBalanceInquiryVerificationCardholderName] = None
+    """Cardholder name provided in the authorization request."""
 
 
 class ElementCardBalanceInquiry(BaseModel):
@@ -1934,6 +2316,7 @@ class ElementCardDeclineNetworkDetailsVisa(BaseModel):
         Literal[
             "issuer_error",
             "invalid_physical_card",
+            "invalid_cryptogram",
             "invalid_cardholder_authentication_verification_value",
             "internal_visa_error",
             "merchant_transaction_advisory_service_authentication_required",
@@ -1948,8 +2331,10 @@ class ElementCardDeclineNetworkDetailsVisa(BaseModel):
 
     - `issuer_error` - Increase failed to process the authorization in a timely
       manner.
-    - `invalid_physical_card` - The physical card read had an invalid CVV, dCVV, or
-      authorization request cryptogram.
+    - `invalid_physical_card` - The physical card read had an invalid CVV or dCVV.
+    - `invalid_cryptogram` - The card's authorization request cryptogram was
+      invalid. The cryptogram can be from a physical card or a Digital Wallet Token
+      purchase.
     - `invalid_cardholder_authentication_verification_value` - The 3DS cardholder
       authentication verification value was invalid.
     - `internal_visa_error` - An internal Visa error occurred. Visa uses this reason
@@ -1963,6 +2348,41 @@ class ElementCardDeclineNetworkDetailsVisa(BaseModel):
       Visa's Payment Fraud Disruption service due to fraudulent Acquirer behavior,
       such as card testing.
     - `other` - An unspecific reason for stand-in processing.
+    """
+
+    terminal_entry_capability: Optional[
+        Literal[
+            "unknown",
+            "terminal_not_used",
+            "magnetic_stripe",
+            "barcode",
+            "optical_character_recognition",
+            "chip_or_contactless",
+            "contactless_only",
+            "no_capability",
+        ]
+    ] = None
+    """The capability of the terminal being used to read the card.
+
+    Shows whether a terminal can e.g., accept chip cards or if it only supports
+    magnetic stripe reads. This reflects the highest capability of the terminal —
+    for example, a terminal that supports both chip and magnetic stripe will be
+    identified as chip-capable.
+
+    - `unknown` - Unknown
+    - `terminal_not_used` - No terminal was used for this transaction.
+    - `magnetic_stripe` - The terminal can only read magnetic stripes and does not
+      have chip or contactless reading capability.
+    - `barcode` - The terminal can only read barcodes.
+    - `optical_character_recognition` - The terminal can only read cards via Optical
+      Character Recognition.
+    - `chip_or_contactless` - The terminal supports contact chip cards and can also
+      read the magnetic stripe. If contact chip is supported, this value is used
+      regardless of whether contactless is also supported.
+    - `contactless_only` - The terminal supports contactless reads but does not
+      support contact chip. Only used when the terminal lacks contact chip
+      capability.
+    - `no_capability` - The terminal has no card reading capability.
     """
 
 
@@ -2070,6 +2490,19 @@ class ElementCardDeclineVerificationCardholderAddress(BaseModel):
     """
 
 
+class ElementCardDeclineVerificationCardholderName(BaseModel):
+    """Cardholder name provided in the authorization request."""
+
+    provided_first_name: Optional[str] = None
+    """The first name provided for verification in the authorization request."""
+
+    provided_last_name: Optional[str] = None
+    """The last name provided for verification in the authorization request."""
+
+    provided_middle_name: Optional[str] = None
+    """The middle name provided for verification in the authorization request."""
+
+
 class ElementCardDeclineVerification(BaseModel):
     """Fields related to verification of cardholder-provided values."""
 
@@ -2084,6 +2517,9 @@ class ElementCardDeclineVerification(BaseModel):
     Cardholder address provided in the authorization request and the address on file
     we verified it against.
     """
+
+    cardholder_name: Optional[ElementCardDeclineVerificationCardholderName] = None
+    """Cardholder name provided in the authorization request."""
 
 
 class ElementCardDecline(BaseModel):
@@ -2307,6 +2743,7 @@ class ElementCardDecline(BaseModel):
         "declined_by_stand_in_processing",
         "invalid_physical_card",
         "missing_original_authorization",
+        "invalid_cryptogram",
         "failed_3ds_authentication",
         "suspected_card_testing",
         "suspected_fraud",
@@ -2332,10 +2769,12 @@ class ElementCardDecline(BaseModel):
     - `webhook_timed_out` - Your application webhook did not respond without the
       required timeout.
     - `declined_by_stand_in_processing` - Declined by stand-in processing.
-    - `invalid_physical_card` - The card read had an invalid CVV, dCVV, or
-      authorization request cryptogram.
+    - `invalid_physical_card` - The card read had an invalid CVV or dCVV.
     - `missing_original_authorization` - The original card authorization for this
       incremental authorization does not exist.
+    - `invalid_cryptogram` - The card's authorization request cryptogram was
+      invalid. The cryptogram can be from a physical card or a Digital Wallet Token
+      purchase.
     - `failed_3ds_authentication` - The transaction was declined because the 3DS
       authentication failed.
     - `suspected_card_testing` - The transaction was suspected to be used by a card
@@ -2670,6 +3109,7 @@ class ElementCardFinancialNetworkDetailsVisa(BaseModel):
         Literal[
             "issuer_error",
             "invalid_physical_card",
+            "invalid_cryptogram",
             "invalid_cardholder_authentication_verification_value",
             "internal_visa_error",
             "merchant_transaction_advisory_service_authentication_required",
@@ -2684,8 +3124,10 @@ class ElementCardFinancialNetworkDetailsVisa(BaseModel):
 
     - `issuer_error` - Increase failed to process the authorization in a timely
       manner.
-    - `invalid_physical_card` - The physical card read had an invalid CVV, dCVV, or
-      authorization request cryptogram.
+    - `invalid_physical_card` - The physical card read had an invalid CVV or dCVV.
+    - `invalid_cryptogram` - The card's authorization request cryptogram was
+      invalid. The cryptogram can be from a physical card or a Digital Wallet Token
+      purchase.
     - `invalid_cardholder_authentication_verification_value` - The 3DS cardholder
       authentication verification value was invalid.
     - `internal_visa_error` - An internal Visa error occurred. Visa uses this reason
@@ -2699,6 +3141,41 @@ class ElementCardFinancialNetworkDetailsVisa(BaseModel):
       Visa's Payment Fraud Disruption service due to fraudulent Acquirer behavior,
       such as card testing.
     - `other` - An unspecific reason for stand-in processing.
+    """
+
+    terminal_entry_capability: Optional[
+        Literal[
+            "unknown",
+            "terminal_not_used",
+            "magnetic_stripe",
+            "barcode",
+            "optical_character_recognition",
+            "chip_or_contactless",
+            "contactless_only",
+            "no_capability",
+        ]
+    ] = None
+    """The capability of the terminal being used to read the card.
+
+    Shows whether a terminal can e.g., accept chip cards or if it only supports
+    magnetic stripe reads. This reflects the highest capability of the terminal —
+    for example, a terminal that supports both chip and magnetic stripe will be
+    identified as chip-capable.
+
+    - `unknown` - Unknown
+    - `terminal_not_used` - No terminal was used for this transaction.
+    - `magnetic_stripe` - The terminal can only read magnetic stripes and does not
+      have chip or contactless reading capability.
+    - `barcode` - The terminal can only read barcodes.
+    - `optical_character_recognition` - The terminal can only read cards via Optical
+      Character Recognition.
+    - `chip_or_contactless` - The terminal supports contact chip cards and can also
+      read the magnetic stripe. If contact chip is supported, this value is used
+      regardless of whether contactless is also supported.
+    - `contactless_only` - The terminal supports contactless reads but does not
+      support contact chip. Only used when the terminal lacks contact chip
+      capability.
+    - `no_capability` - The terminal has no card reading capability.
     """
 
 
@@ -2806,6 +3283,19 @@ class ElementCardFinancialVerificationCardholderAddress(BaseModel):
     """
 
 
+class ElementCardFinancialVerificationCardholderName(BaseModel):
+    """Cardholder name provided in the authorization request."""
+
+    provided_first_name: Optional[str] = None
+    """The first name provided for verification in the authorization request."""
+
+    provided_last_name: Optional[str] = None
+    """The last name provided for verification in the authorization request."""
+
+    provided_middle_name: Optional[str] = None
+    """The middle name provided for verification in the authorization request."""
+
+
 class ElementCardFinancialVerification(BaseModel):
     """Fields related to verification of cardholder-provided values."""
 
@@ -2821,11 +3311,14 @@ class ElementCardFinancialVerification(BaseModel):
     we verified it against.
     """
 
+    cardholder_name: Optional[ElementCardFinancialVerificationCardholderName] = None
+    """Cardholder name provided in the authorization request."""
+
 
 class ElementCardFinancial(BaseModel):
     """A Card Financial object.
 
-    This field will be present in the JSON response if and only if `category` is equal to `card_financial`. Card Financials are temporary holds placed on a customers funds with the intent to later clear a transaction.
+    This field will be present in the JSON response if and only if `category` is equal to `card_financial`. Card Financials are temporary holds placed on a customer's funds with the intent to later clear a transaction.
     """
 
     id: str
@@ -3474,7 +3967,7 @@ class ElementCardRefundCashback(BaseModel):
 
 
 class ElementCardRefundInterchange(BaseModel):
-    """Interchange assessed as a part of this transaciton."""
+    """Interchange assessed as a part of this transaction."""
 
     amount: str
     """
@@ -3943,7 +4436,7 @@ class ElementCardRefundPurchaseDetails(BaseModel):
 class ElementCardRefund(BaseModel):
     """A Card Refund object.
 
-    This field will be present in the JSON response if and only if `category` is equal to `card_refund`. Card Refunds move money back to the cardholder. While they are usually connected to a Card Settlement an acquirer can also refund money directly to a card without relation to a transaction.
+    This field will be present in the JSON response if and only if `category` is equal to `card_refund`. Card Refunds move money back to the cardholder. While they are usually connected to a Card Settlement, an acquirer can also refund money directly to a card without relation to a transaction.
     """
 
     id: str
@@ -3973,7 +4466,7 @@ class ElementCardRefund(BaseModel):
     """
 
     interchange: Optional[ElementCardRefundInterchange] = None
-    """Interchange assessed as a part of this transaciton."""
+    """Interchange assessed as a part of this transaction."""
 
     merchant_acceptor_id: str
     """
@@ -4693,7 +5186,7 @@ class ElementCardSettlementPurchaseDetails(BaseModel):
 class ElementCardSettlementSurcharge(BaseModel):
     """Surcharge amount details, if applicable.
 
-    The amount is positive if the surcharge is added to to the overall transaction amount (surcharge), and negative if the surcharge is deducted from the overall transaction amount (discount).
+    The amount is positive if the surcharge is added to the overall transaction amount (surcharge), and negative if the surcharge is deducted from the overall transaction amount (discount).
     """
 
     amount: int
@@ -4804,7 +5297,7 @@ class ElementCardSettlement(BaseModel):
     surcharge: Optional[ElementCardSettlementSurcharge] = None
     """Surcharge amount details, if applicable.
 
-    The amount is positive if the surcharge is added to to the overall transaction
+    The amount is positive if the surcharge is added to the overall transaction
     amount (surcharge), and negative if the surcharge is deducted from the overall
     transaction amount (discount).
     """
@@ -5135,6 +5628,7 @@ class ElementCardValidationNetworkDetailsVisa(BaseModel):
         Literal[
             "issuer_error",
             "invalid_physical_card",
+            "invalid_cryptogram",
             "invalid_cardholder_authentication_verification_value",
             "internal_visa_error",
             "merchant_transaction_advisory_service_authentication_required",
@@ -5149,8 +5643,10 @@ class ElementCardValidationNetworkDetailsVisa(BaseModel):
 
     - `issuer_error` - Increase failed to process the authorization in a timely
       manner.
-    - `invalid_physical_card` - The physical card read had an invalid CVV, dCVV, or
-      authorization request cryptogram.
+    - `invalid_physical_card` - The physical card read had an invalid CVV or dCVV.
+    - `invalid_cryptogram` - The card's authorization request cryptogram was
+      invalid. The cryptogram can be from a physical card or a Digital Wallet Token
+      purchase.
     - `invalid_cardholder_authentication_verification_value` - The 3DS cardholder
       authentication verification value was invalid.
     - `internal_visa_error` - An internal Visa error occurred. Visa uses this reason
@@ -5164,6 +5660,41 @@ class ElementCardValidationNetworkDetailsVisa(BaseModel):
       Visa's Payment Fraud Disruption service due to fraudulent Acquirer behavior,
       such as card testing.
     - `other` - An unspecific reason for stand-in processing.
+    """
+
+    terminal_entry_capability: Optional[
+        Literal[
+            "unknown",
+            "terminal_not_used",
+            "magnetic_stripe",
+            "barcode",
+            "optical_character_recognition",
+            "chip_or_contactless",
+            "contactless_only",
+            "no_capability",
+        ]
+    ] = None
+    """The capability of the terminal being used to read the card.
+
+    Shows whether a terminal can e.g., accept chip cards or if it only supports
+    magnetic stripe reads. This reflects the highest capability of the terminal —
+    for example, a terminal that supports both chip and magnetic stripe will be
+    identified as chip-capable.
+
+    - `unknown` - Unknown
+    - `terminal_not_used` - No terminal was used for this transaction.
+    - `magnetic_stripe` - The terminal can only read magnetic stripes and does not
+      have chip or contactless reading capability.
+    - `barcode` - The terminal can only read barcodes.
+    - `optical_character_recognition` - The terminal can only read cards via Optical
+      Character Recognition.
+    - `chip_or_contactless` - The terminal supports contact chip cards and can also
+      read the magnetic stripe. If contact chip is supported, this value is used
+      regardless of whether contactless is also supported.
+    - `contactless_only` - The terminal supports contactless reads but does not
+      support contact chip. Only used when the terminal lacks contact chip
+      capability.
+    - `no_capability` - The terminal has no card reading capability.
     """
 
 
@@ -5271,6 +5802,19 @@ class ElementCardValidationVerificationCardholderAddress(BaseModel):
     """
 
 
+class ElementCardValidationVerificationCardholderName(BaseModel):
+    """Cardholder name provided in the authorization request."""
+
+    provided_first_name: Optional[str] = None
+    """The first name provided for verification in the authorization request."""
+
+    provided_last_name: Optional[str] = None
+    """The last name provided for verification in the authorization request."""
+
+    provided_middle_name: Optional[str] = None
+    """The middle name provided for verification in the authorization request."""
+
+
 class ElementCardValidationVerification(BaseModel):
     """Fields related to verification of cardholder-provided values."""
 
@@ -5285,6 +5829,9 @@ class ElementCardValidationVerification(BaseModel):
     Cardholder address provided in the authorization request and the address on file
     we verified it against.
     """
+
+    cardholder_name: Optional[ElementCardValidationVerificationCardholderName] = None
+    """Cardholder name provided in the authorization request."""
 
 
 class ElementCardValidation(BaseModel):
@@ -5425,105 +5972,6 @@ class ElementOther(BaseModel):
 
 
 class Element(BaseModel):
-    card_authentication: Optional[ElementCardAuthentication] = None
-    """A Card Authentication object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `card_authentication`. Card Authentications are attempts to
-    authenticate a transaction or a card with 3DS.
-    """
-
-    card_authorization: Optional[ElementCardAuthorization] = None
-    """A Card Authorization object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `card_authorization`. Card Authorizations are temporary holds placed on
-    a customers funds with the intent to later clear a transaction.
-    """
-
-    card_authorization_expiration: Optional[ElementCardAuthorizationExpiration] = None
-    """A Card Authorization Expiration object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `card_authorization_expiration`. Card Authorization Expirations are
-    cancellations of authorizations that were never settled by the acquirer.
-    """
-
-    card_balance_inquiry: Optional[ElementCardBalanceInquiry] = None
-    """A Card Balance Inquiry object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `card_balance_inquiry`. Card Balance Inquiries are transactions that
-    allow merchants to check the available balance on a card without placing a hold
-    on funds, commonly used when a customer requests their balance at an ATM.
-    """
-
-    card_decline: Optional[ElementCardDecline] = None
-    """A Card Decline object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `card_decline`.
-    """
-
-    card_financial: Optional[ElementCardFinancial] = None
-    """A Card Financial object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `card_financial`. Card Financials are temporary holds placed on a
-    customers funds with the intent to later clear a transaction.
-    """
-
-    card_fuel_confirmation: Optional[ElementCardFuelConfirmation] = None
-    """A Card Fuel Confirmation object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `card_fuel_confirmation`. Card Fuel Confirmations update the amount of
-    a Card Authorization after a fuel pump transaction is completed.
-    """
-
-    card_increment: Optional[ElementCardIncrement] = None
-    """A Card Increment object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `card_increment`. Card Increments increase the pending amount of an
-    authorized transaction.
-    """
-
-    card_refund: Optional[ElementCardRefund] = None
-    """A Card Refund object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `card_refund`. Card Refunds move money back to the cardholder. While
-    they are usually connected to a Card Settlement an acquirer can also refund
-    money directly to a card without relation to a transaction.
-    """
-
-    card_reversal: Optional[ElementCardReversal] = None
-    """A Card Reversal object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `card_reversal`. Card Reversals cancel parts of or the entirety of an
-    existing Card Authorization.
-    """
-
-    card_settlement: Optional[ElementCardSettlement] = None
-    """A Card Settlement object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `card_settlement`. Card Settlements are card transactions that have
-    cleared and settled. While a settlement is usually preceded by an authorization,
-    an acquirer can also directly clear a transaction without first authorizing it.
-    """
-
-    card_validation: Optional[ElementCardValidation] = None
-    """An Inbound Card Validation object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `card_validation`. Inbound Card Validations are requests from a
-    merchant to verify that a card number and optionally its address and/or Card
-    Verification Value are valid.
-    """
-
     category: Literal[
         "card_authorization",
         "card_authentication",
@@ -5576,10 +6024,261 @@ class Element(BaseModel):
     the card payment element was created.
     """
 
+    card_authentication: Optional[ElementCardAuthentication] = None
+    """A Card Authentication object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `card_authentication`. Card Authentications are attempts to
+    authenticate a transaction or a card with 3DS.
+    """
+
+    card_authorization: Optional[ElementCardAuthorization] = None
+    """A Card Authorization object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `card_authorization`. Card Authorizations are temporary holds placed on
+    a customer's funds with the intent to later clear a transaction.
+    """
+
+    card_authorization_expiration: Optional[ElementCardAuthorizationExpiration] = None
+    """A Card Authorization Expiration object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `card_authorization_expiration`. Card Authorization Expirations are
+    cancellations of authorizations that were never settled by the acquirer.
+    """
+
+    card_balance_inquiry: Optional[ElementCardBalanceInquiry] = None
+    """A Card Balance Inquiry object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `card_balance_inquiry`. Card Balance Inquiries are transactions that
+    allow merchants to check the available balance on a card without placing a hold
+    on funds, commonly used when a customer requests their balance at an ATM.
+    """
+
+    card_decline: Optional[ElementCardDecline] = None
+    """A Card Decline object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `card_decline`.
+    """
+
+    card_financial: Optional[ElementCardFinancial] = None
+    """A Card Financial object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `card_financial`. Card Financials are temporary holds placed on a
+    customer's funds with the intent to later clear a transaction.
+    """
+
+    card_fuel_confirmation: Optional[ElementCardFuelConfirmation] = None
+    """A Card Fuel Confirmation object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `card_fuel_confirmation`. Card Fuel Confirmations update the amount of
+    a Card Authorization after a fuel pump transaction is completed.
+    """
+
+    card_increment: Optional[ElementCardIncrement] = None
+    """A Card Increment object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `card_increment`. Card Increments increase the pending amount of an
+    authorized transaction.
+    """
+
+    card_refund: Optional[ElementCardRefund] = None
+    """A Card Refund object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `card_refund`. Card Refunds move money back to the cardholder. While
+    they are usually connected to a Card Settlement, an acquirer can also refund
+    money directly to a card without relation to a transaction.
+    """
+
+    card_reversal: Optional[ElementCardReversal] = None
+    """A Card Reversal object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `card_reversal`. Card Reversals cancel parts of or the entirety of an
+    existing Card Authorization.
+    """
+
+    card_settlement: Optional[ElementCardSettlement] = None
+    """A Card Settlement object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `card_settlement`. Card Settlements are card transactions that have
+    cleared and settled. While a settlement is usually preceded by an authorization,
+    an acquirer can also directly clear a transaction without first authorizing it.
+    """
+
+    card_validation: Optional[ElementCardValidation] = None
+    """An Inbound Card Validation object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `card_validation`. Inbound Card Validations are requests from a
+    merchant to verify that a card number and optionally its address and/or Card
+    Verification Value are valid.
+    """
+
     other: Optional[ElementOther] = None
     """
     If the category of this Transaction source is equal to `other`, this field will
     contain an empty object, otherwise it will contain null.
+    """
+
+
+class SchemeFee(BaseModel):
+    amount: str
+    """The fee amount given as a string containing a decimal number."""
+
+    created_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the fee was
+    created.
+    """
+
+    currency: Literal["USD"]
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the fee
+    reimbursement.
+
+    - `USD` - US Dollar (USD)
+    """
+
+    fee_type: Literal[
+        "visa_international_service_assessment_single_currency",
+        "visa_international_service_assessment_cross_currency",
+        "visa_authorization_domestic_point_of_sale",
+        "visa_authorization_international_point_of_sale",
+        "visa_authorization_canada_point_of_sale",
+        "visa_authorization_reversal_point_of_sale",
+        "visa_authorization_reversal_international_point_of_sale",
+        "visa_authorization_address_verification_service",
+        "visa_advanced_authorization",
+        "visa_message_transmission",
+        "visa_account_verification_domestic",
+        "visa_account_verification_international",
+        "visa_account_verification_canada",
+        "visa_corporate_acceptance_fee",
+        "visa_consumer_debit_acceptance_fee",
+        "visa_business_debit_acceptance_fee",
+        "visa_purchasing_acceptance_fee",
+        "visa_purchase_domestic",
+        "visa_purchase_international",
+        "visa_credit_purchase_token",
+        "visa_debit_purchase_token",
+        "visa_clearing_transmission",
+        "visa_direct_authorization",
+        "visa_direct_transaction_domestic",
+        "visa_service_commercial_credit",
+        "visa_advertising_service_commercial_credit",
+        "visa_community_growth_acceleration_program",
+        "visa_processing_guarantee_commercial_credit",
+        "pulse_switch_fee",
+    ]
+    """The type of fee being assessed.
+
+    - `visa_international_service_assessment_single_currency` - International
+      Service Assessment (ISA) single-currency is a fee assessed by the card network
+      for cross-border transactions presented and settled in the same currency.
+    - `visa_international_service_assessment_cross_currency` - International Service
+      Assessment (ISA) cross-currency is a fee assessed by the card network for
+      cross-border transactions presented and settled in different currencies.
+    - `visa_authorization_domestic_point_of_sale` - Activity and charges for Visa
+      Settlement System processing for POS (Point-Of-Sale) authorization
+      transactions. Authorization is the process of approving or declining the
+      transaction amount specified. The fee is assessed to the Issuer.
+    - `visa_authorization_international_point_of_sale` - Activity and charges for
+      Visa Settlement System processing for POS (Point-Of-Sale) International
+      authorization transactions. Authorization is the process of approving or
+      declining the transaction amount specified. The fee is assessed to the Issuer.
+    - `visa_authorization_canada_point_of_sale` - Activity and charges for Visa
+      Settlement System processing for Canada Region POS (Point-of-Sale)
+      authorization transactions. Authorization is the process of approving or
+      declining the transaction amount specified.
+    - `visa_authorization_reversal_point_of_sale` - Activity only for Visa
+      Settlement System authorization processing of POS (Point-Of-Sale) reversal
+      transactions. Authorization reversal represents a VSS message that undoes the
+      complete or partial actions of a previous authorization request.
+    - `visa_authorization_reversal_international_point_of_sale` - Activity only for
+      Visa Settlement System authorization processing of POS (Point-Of-Sale)
+      International reversal transactions. Authorization reversal represents a VSS
+      message that undoes the complete or partial actions of a previous
+      authorization request.
+    - `visa_authorization_address_verification_service` - A per Address Verification
+      Service (AVS) result fee. Applies to all usable AVS result codes.
+    - `visa_advanced_authorization` - Advanced Authorization is a fraud detection
+      tool that monitors and risk evaluates 100 percent of US VisaNet authorizations
+      in real-time. Activity related to Purchase (includes Signature Authenticated
+      Visa and PIN Authenticated Visa Debit (PAVD) transactions).
+    - `visa_message_transmission` - Issuer Transactions Visa represents a charge
+      based on total actual monthly processing (Visa transactions only) through a
+      VisaNet Access Point (VAP). Charges are assessed to the processor for each
+      VisaNet Access Point.
+    - `visa_account_verification_domestic` - Activity, per inquiry, related to the
+      domestic Issuer for Account Number Verification.
+    - `visa_account_verification_international` - Activity, per inquiry, related to
+      the international Issuer for Account Number Verification.
+    - `visa_account_verification_canada` - Activity, per inquiry, related to the
+      US-Canada Issuer for Account Number Verification.
+    - `visa_corporate_acceptance_fee` - The Corporate Acceptance Fee is charged to
+      issuers and is based on the monthly sales volume on Commercial and Government
+      Debit, Prepaid, Credit, Charge, or Deferred Debit card transactions.
+    - `visa_consumer_debit_acceptance_fee` - The Consumer Debit Acceptance Fee is
+      charged to issuers and is based on the monthly sales volume of Consumer Debit
+      or Prepaid card transactions. The cashback portion of a Debit and Prepaid card
+      transaction is excluded from the sales volume calculation.
+    - `visa_business_debit_acceptance_fee` - The Business Acceptance Fee is charged
+      to issuers and is based on the monthly sales volume on Business Debit,
+      Prepaid, Credit, Charge, or Deferred Debit card transactions. The cashback
+      portion is included in the sales volume calculation with the exception of a
+      Debit and Prepaid card transactions.
+    - `visa_purchasing_acceptance_fee` - The Purchasing Card Acceptance Fee is
+      charged to issuers and is based on the monthly sales volume on Commercial and
+      Government Debit, Prepaid, Credit, Charge, or Deferred Debit card
+      transactions.
+    - `visa_purchase_domestic` - Activity and fees for the processing of a sales
+      draft original for a purchase transaction.
+    - `visa_purchase_international` - Activity and fees for the processing of an
+      international sales draft original for a purchase transaction.
+    - `visa_credit_purchase_token` - Apple Pay Credit Product Token Purchase
+      Original Transactions. This fee is billed by Visa on behalf of Apple Inc. for
+      Apple Pay transactions.
+    - `visa_debit_purchase_token` - Apple Pay Debit Product Token Purchase Original
+      Transactions. This fee is billed by Visa on behalf of Apple Inc. for Apple Pay
+      transactions.
+    - `visa_clearing_transmission` - A per transaction fee assessed for Base II
+      financial draft - Issuer.
+    - `visa_direct_authorization` - Issuer charge for Non-Financial OCT/AFT
+      Authorization 0100 and Declined Financial OCT/AFT 0200 transactions.
+    - `visa_direct_transaction_domestic` - Data processing charge for Visa Direct
+      OCTs for all business application identifiers (BAIs) other than money
+      transfer-bank initiated (BI). BASE II transactions.
+    - `visa_service_commercial_credit` - Issuer card service fee for Commercial
+      Credit cards.
+    - `visa_advertising_service_commercial_credit` - Issuer Advertising Service Fee
+      for Commercial Credit cards.
+    - `visa_community_growth_acceleration_program` - Issuer Community Growth
+      Acceleration Program Fee.
+    - `visa_processing_guarantee_commercial_credit` - Issuer Processing Guarantee
+      for Commercial Credit cards.
+    - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
+      for processing transactions on its network.
+    """
+
+    fixed_component: Optional[str] = None
+    """
+    The fixed component of the fee, if applicable, given in major units of the fee
+    amount.
+    """
+
+    variable_rate: Optional[str] = None
+    """
+    The variable rate component of the fee, if applicable, given as a decimal (e.g.,
+    0.015 for 1.5%).
     """
 
 
@@ -5657,6 +6356,9 @@ class CardPayment(BaseModel):
 
     physical_card_id: Optional[str] = None
     """The Physical Card identifier for this payment."""
+
+    scheme_fees: List[SchemeFee]
+    """The scheme fees associated with this card payment."""
 
     state: State
     """The summarized state of this card payment."""

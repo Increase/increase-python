@@ -10,13 +10,16 @@ from .ach_transfer_return_params import ACHTransferReturnParams as ACHTransferRe
 from .ach_transfer_settle_params import ACHTransferSettleParams as ACHTransferSettleParams
 from .card_dispute_action_params import CardDisputeActionParams as CardDisputeActionParams
 from .card_reversal_create_params import CardReversalCreateParams as CardReversalCreateParams
+from .check_deposit_submit_params import CheckDepositSubmitParams as CheckDepositSubmitParams
 from .physical_card_create_params import PhysicalCardCreateParams as PhysicalCardCreateParams
 from .card_increment_create_params import CardIncrementCreateParams as CardIncrementCreateParams
 from .card_settlement_create_params import CardSettlementCreateParams as CardSettlementCreateParams
 from .interest_payment_create_params import InterestPaymentCreateParams as InterestPaymentCreateParams
 from .account_statement_create_params import AccountStatementCreateParams as AccountStatementCreateParams
+from .check_deposit_adjustment_params import CheckDepositAdjustmentParams as CheckDepositAdjustmentParams
 from .inbound_mail_item_create_params import InboundMailItemCreateParams as InboundMailItemCreateParams
 from .card_authorization_create_params import CardAuthorizationCreateParams as CardAuthorizationCreateParams
+from .card_authentication_create_params import CardAuthenticationCreateParams as CardAuthenticationCreateParams
 from .card_authorization_create_response import CardAuthorizationCreateResponse as CardAuthorizationCreateResponse
 from .card_balance_inquiry_create_params import CardBalanceInquiryCreateParams as CardBalanceInquiryCreateParams
 from .inbound_ach_transfer_create_params import InboundACHTransferCreateParams as InboundACHTransferCreateParams
@@ -28,6 +31,9 @@ from .inbound_fednow_transfer_create_params import (
 )
 from .physical_card_advance_shipment_params import (
     PhysicalCardAdvanceShipmentParams as PhysicalCardAdvanceShipmentParams,
+)
+from .inbound_check_deposit_adjustment_params import (
+    InboundCheckDepositAdjustmentParams as InboundCheckDepositAdjustmentParams,
 )
 from .digital_wallet_token_request_create_params import (
     DigitalWalletTokenRequestCreateParams as DigitalWalletTokenRequestCreateParams,
@@ -43,6 +49,9 @@ from .real_time_payments_transfer_complete_params import (
 )
 from .digital_wallet_token_request_create_response import (
     DigitalWalletTokenRequestCreateResponse as DigitalWalletTokenRequestCreateResponse,
+)
+from .card_authentication_challenge_attempts_params import (
+    CardAuthenticationChallengeAttemptsParams as CardAuthenticationChallengeAttemptsParams,
 )
 from .ach_transfer_create_notification_of_change_params import (
     ACHTransferCreateNotificationOfChangeParams as ACHTransferCreateNotificationOfChangeParams,

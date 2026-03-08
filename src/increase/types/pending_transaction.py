@@ -13,6 +13,8 @@ __all__ = [
     "Source",
     "SourceAccountTransferInstruction",
     "SourceACHTransferInstruction",
+    "SourceBlockchainOfframpTransferInstruction",
+    "SourceBlockchainOnrampTransferInstruction",
     "SourceCardAuthorization",
     "SourceCardAuthorizationAdditionalAmounts",
     "SourceCardAuthorizationAdditionalAmountsClinic",
@@ -32,6 +34,7 @@ __all__ = [
     "SourceCardAuthorizationVerification",
     "SourceCardAuthorizationVerificationCardVerificationCode",
     "SourceCardAuthorizationVerificationCardholderAddress",
+    "SourceCardAuthorizationVerificationCardholderName",
     "SourceCardPushTransferInstruction",
     "SourceCheckDepositInstruction",
     "SourceCheckTransferInstruction",
@@ -104,6 +107,52 @@ class SourceACHTransferInstruction(BaseModel):
         def __getattr__(self, attr: str) -> object: ...
     else:
         __pydantic_extra__: Dict[str, object]
+
+
+class SourceBlockchainOfframpTransferInstruction(BaseModel):
+    """A Blockchain Off-Ramp Transfer Instruction object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `blockchain_offramp_transfer_instruction`.
+    """
+
+    source_blockchain_address_id: str
+    """The identifier of the Blockchain Address the funds were received at."""
+
+    transfer_id: str
+    """
+    The identifier of the Blockchain Off-Ramp Transfer that led to this Transaction.
+    """
+
+    if TYPE_CHECKING:
+        # Some versions of Pydantic <2.8.0 have a bug and don’t allow assigning a
+        # value to this field, so for compatibility we avoid doing it at runtime.
+        __pydantic_extra__: Dict[str, object] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
+
+        # Stub to indicate that arbitrary properties are accepted.
+        # To access properties that are not valid identifiers you can use `getattr`, e.g.
+        # `getattr(obj, '$type')`
+        def __getattr__(self, attr: str) -> object: ...
+    else:
+        __pydantic_extra__: Dict[str, object]
+
+
+class SourceBlockchainOnrampTransferInstruction(BaseModel):
+    """A Blockchain On-Ramp Transfer Instruction object.
+
+    This field will be present in the JSON response if and only if `category` is equal to `blockchain_onramp_transfer_instruction`.
+    """
+
+    amount: int
+    """The transfer amount in USD cents."""
+
+    destination_blockchain_address: str
+    """The blockchain address the funds are being sent to."""
+
+    transfer_id: str
+    """
+    The identifier of the Blockchain On-Ramp Transfer that led to this Pending
+    Transaction.
+    """
 
 
 class SourceCardAuthorizationAdditionalAmountsClinic(BaseModel):
@@ -410,6 +459,7 @@ class SourceCardAuthorizationNetworkDetailsVisa(BaseModel):
         Literal[
             "issuer_error",
             "invalid_physical_card",
+            "invalid_cryptogram",
             "invalid_cardholder_authentication_verification_value",
             "internal_visa_error",
             "merchant_transaction_advisory_service_authentication_required",
@@ -424,8 +474,10 @@ class SourceCardAuthorizationNetworkDetailsVisa(BaseModel):
 
     - `issuer_error` - Increase failed to process the authorization in a timely
       manner.
-    - `invalid_physical_card` - The physical card read had an invalid CVV, dCVV, or
-      authorization request cryptogram.
+    - `invalid_physical_card` - The physical card read had an invalid CVV or dCVV.
+    - `invalid_cryptogram` - The card's authorization request cryptogram was
+      invalid. The cryptogram can be from a physical card or a Digital Wallet Token
+      purchase.
     - `invalid_cardholder_authentication_verification_value` - The 3DS cardholder
       authentication verification value was invalid.
     - `internal_visa_error` - An internal Visa error occurred. Visa uses this reason
@@ -439,6 +491,41 @@ class SourceCardAuthorizationNetworkDetailsVisa(BaseModel):
       Visa's Payment Fraud Disruption service due to fraudulent Acquirer behavior,
       such as card testing.
     - `other` - An unspecific reason for stand-in processing.
+    """
+
+    terminal_entry_capability: Optional[
+        Literal[
+            "unknown",
+            "terminal_not_used",
+            "magnetic_stripe",
+            "barcode",
+            "optical_character_recognition",
+            "chip_or_contactless",
+            "contactless_only",
+            "no_capability",
+        ]
+    ] = None
+    """The capability of the terminal being used to read the card.
+
+    Shows whether a terminal can e.g., accept chip cards or if it only supports
+    magnetic stripe reads. This reflects the highest capability of the terminal —
+    for example, a terminal that supports both chip and magnetic stripe will be
+    identified as chip-capable.
+
+    - `unknown` - Unknown
+    - `terminal_not_used` - No terminal was used for this transaction.
+    - `magnetic_stripe` - The terminal can only read magnetic stripes and does not
+      have chip or contactless reading capability.
+    - `barcode` - The terminal can only read barcodes.
+    - `optical_character_recognition` - The terminal can only read cards via Optical
+      Character Recognition.
+    - `chip_or_contactless` - The terminal supports contact chip cards and can also
+      read the magnetic stripe. If contact chip is supported, this value is used
+      regardless of whether contactless is also supported.
+    - `contactless_only` - The terminal supports contactless reads but does not
+      support contact chip. Only used when the terminal lacks contact chip
+      capability.
+    - `no_capability` - The terminal has no card reading capability.
     """
 
 
@@ -546,6 +633,19 @@ class SourceCardAuthorizationVerificationCardholderAddress(BaseModel):
     """
 
 
+class SourceCardAuthorizationVerificationCardholderName(BaseModel):
+    """Cardholder name provided in the authorization request."""
+
+    provided_first_name: Optional[str] = None
+    """The first name provided for verification in the authorization request."""
+
+    provided_last_name: Optional[str] = None
+    """The last name provided for verification in the authorization request."""
+
+    provided_middle_name: Optional[str] = None
+    """The middle name provided for verification in the authorization request."""
+
+
 class SourceCardAuthorizationVerification(BaseModel):
     """Fields related to verification of cardholder-provided values."""
 
@@ -561,11 +661,14 @@ class SourceCardAuthorizationVerification(BaseModel):
     we verified it against.
     """
 
+    cardholder_name: Optional[SourceCardAuthorizationVerificationCardholderName] = None
+    """Cardholder name provided in the authorization request."""
+
 
 class SourceCardAuthorization(BaseModel):
     """A Card Authorization object.
 
-    This field will be present in the JSON response if and only if `category` is equal to `card_authorization`. Card Authorizations are temporary holds placed on a customers funds with the intent to later clear a transaction.
+    This field will be present in the JSON response if and only if `category` is equal to `card_authorization`. Card Authorizations are temporary holds placed on a customer's funds with the intent to later clear a transaction.
     """
 
     id: str
@@ -1053,35 +1156,6 @@ class Source(BaseModel):
     This is an object giving more details on the network-level event that caused the Pending Transaction. For example, for a card transaction this lists the merchant's industry and location.
     """
 
-    account_transfer_instruction: Optional[SourceAccountTransferInstruction] = None
-    """An Account Transfer Instruction object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `account_transfer_instruction`.
-    """
-
-    ach_transfer_instruction: Optional[SourceACHTransferInstruction] = None
-    """An ACH Transfer Instruction object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `ach_transfer_instruction`.
-    """
-
-    card_authorization: Optional[SourceCardAuthorization] = None
-    """A Card Authorization object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `card_authorization`. Card Authorizations are temporary holds placed on
-    a customers funds with the intent to later clear a transaction.
-    """
-
-    card_push_transfer_instruction: Optional[SourceCardPushTransferInstruction] = None
-    """A Card Push Transfer Instruction object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `card_push_transfer_instruction`.
-    """
-
     category: Literal[
         "account_transfer_instruction",
         "ach_transfer_instruction",
@@ -1096,6 +1170,8 @@ class Source(BaseModel):
         "inbound_wire_transfer_reversal",
         "swift_transfer_instruction",
         "card_push_transfer_instruction",
+        "blockchain_onramp_transfer_instruction",
+        "blockchain_offramp_transfer_instruction",
         "other",
     ]
     """The type of the resource.
@@ -1130,8 +1206,57 @@ class Source(BaseModel):
       under the `swift_transfer_instruction` object.
     - `card_push_transfer_instruction` - Card Push Transfer Instruction: details
       will be under the `card_push_transfer_instruction` object.
+    - `blockchain_onramp_transfer_instruction` - Blockchain On-Ramp Transfer
+      Instruction: details will be under the
+      `blockchain_onramp_transfer_instruction` object.
+    - `blockchain_offramp_transfer_instruction` - Blockchain Off-Ramp Transfer
+      Instruction: details will be under the
+      `blockchain_offramp_transfer_instruction` object.
     - `other` - The Pending Transaction was made for an undocumented or deprecated
       reason.
+    """
+
+    account_transfer_instruction: Optional[SourceAccountTransferInstruction] = None
+    """An Account Transfer Instruction object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `account_transfer_instruction`.
+    """
+
+    ach_transfer_instruction: Optional[SourceACHTransferInstruction] = None
+    """An ACH Transfer Instruction object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `ach_transfer_instruction`.
+    """
+
+    blockchain_offramp_transfer_instruction: Optional[SourceBlockchainOfframpTransferInstruction] = None
+    """A Blockchain Off-Ramp Transfer Instruction object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `blockchain_offramp_transfer_instruction`.
+    """
+
+    blockchain_onramp_transfer_instruction: Optional[SourceBlockchainOnrampTransferInstruction] = None
+    """A Blockchain On-Ramp Transfer Instruction object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `blockchain_onramp_transfer_instruction`.
+    """
+
+    card_authorization: Optional[SourceCardAuthorization] = None
+    """A Card Authorization object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `card_authorization`. Card Authorizations are temporary holds placed on
+    a customer's funds with the intent to later clear a transaction.
+    """
+
+    card_push_transfer_instruction: Optional[SourceCardPushTransferInstruction] = None
+    """A Card Push Transfer Instruction object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `card_push_transfer_instruction`.
     """
 
     check_deposit_instruction: Optional[SourceCheckDepositInstruction] = None

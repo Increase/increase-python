@@ -31,6 +31,7 @@ __all__ = [
     "SourceCardDeclineVerification",
     "SourceCardDeclineVerificationCardVerificationCode",
     "SourceCardDeclineVerificationCardholderAddress",
+    "SourceCardDeclineVerificationCardholderName",
     "SourceCheckDecline",
     "SourceCheckDepositRejection",
     "SourceInboundFednowTransferDecline",
@@ -448,6 +449,7 @@ class SourceCardDeclineNetworkDetailsVisa(BaseModel):
         Literal[
             "issuer_error",
             "invalid_physical_card",
+            "invalid_cryptogram",
             "invalid_cardholder_authentication_verification_value",
             "internal_visa_error",
             "merchant_transaction_advisory_service_authentication_required",
@@ -462,8 +464,10 @@ class SourceCardDeclineNetworkDetailsVisa(BaseModel):
 
     - `issuer_error` - Increase failed to process the authorization in a timely
       manner.
-    - `invalid_physical_card` - The physical card read had an invalid CVV, dCVV, or
-      authorization request cryptogram.
+    - `invalid_physical_card` - The physical card read had an invalid CVV or dCVV.
+    - `invalid_cryptogram` - The card's authorization request cryptogram was
+      invalid. The cryptogram can be from a physical card or a Digital Wallet Token
+      purchase.
     - `invalid_cardholder_authentication_verification_value` - The 3DS cardholder
       authentication verification value was invalid.
     - `internal_visa_error` - An internal Visa error occurred. Visa uses this reason
@@ -477,6 +481,41 @@ class SourceCardDeclineNetworkDetailsVisa(BaseModel):
       Visa's Payment Fraud Disruption service due to fraudulent Acquirer behavior,
       such as card testing.
     - `other` - An unspecific reason for stand-in processing.
+    """
+
+    terminal_entry_capability: Optional[
+        Literal[
+            "unknown",
+            "terminal_not_used",
+            "magnetic_stripe",
+            "barcode",
+            "optical_character_recognition",
+            "chip_or_contactless",
+            "contactless_only",
+            "no_capability",
+        ]
+    ] = None
+    """The capability of the terminal being used to read the card.
+
+    Shows whether a terminal can e.g., accept chip cards or if it only supports
+    magnetic stripe reads. This reflects the highest capability of the terminal —
+    for example, a terminal that supports both chip and magnetic stripe will be
+    identified as chip-capable.
+
+    - `unknown` - Unknown
+    - `terminal_not_used` - No terminal was used for this transaction.
+    - `magnetic_stripe` - The terminal can only read magnetic stripes and does not
+      have chip or contactless reading capability.
+    - `barcode` - The terminal can only read barcodes.
+    - `optical_character_recognition` - The terminal can only read cards via Optical
+      Character Recognition.
+    - `chip_or_contactless` - The terminal supports contact chip cards and can also
+      read the magnetic stripe. If contact chip is supported, this value is used
+      regardless of whether contactless is also supported.
+    - `contactless_only` - The terminal supports contactless reads but does not
+      support contact chip. Only used when the terminal lacks contact chip
+      capability.
+    - `no_capability` - The terminal has no card reading capability.
     """
 
 
@@ -584,6 +623,19 @@ class SourceCardDeclineVerificationCardholderAddress(BaseModel):
     """
 
 
+class SourceCardDeclineVerificationCardholderName(BaseModel):
+    """Cardholder name provided in the authorization request."""
+
+    provided_first_name: Optional[str] = None
+    """The first name provided for verification in the authorization request."""
+
+    provided_last_name: Optional[str] = None
+    """The last name provided for verification in the authorization request."""
+
+    provided_middle_name: Optional[str] = None
+    """The middle name provided for verification in the authorization request."""
+
+
 class SourceCardDeclineVerification(BaseModel):
     """Fields related to verification of cardholder-provided values."""
 
@@ -598,6 +650,9 @@ class SourceCardDeclineVerification(BaseModel):
     Cardholder address provided in the authorization request and the address on file
     we verified it against.
     """
+
+    cardholder_name: Optional[SourceCardDeclineVerificationCardholderName] = None
+    """Cardholder name provided in the authorization request."""
 
 
 class SourceCardDecline(BaseModel):
@@ -821,6 +876,7 @@ class SourceCardDecline(BaseModel):
         "declined_by_stand_in_processing",
         "invalid_physical_card",
         "missing_original_authorization",
+        "invalid_cryptogram",
         "failed_3ds_authentication",
         "suspected_card_testing",
         "suspected_fraud",
@@ -846,10 +902,12 @@ class SourceCardDecline(BaseModel):
     - `webhook_timed_out` - Your application webhook did not respond without the
       required timeout.
     - `declined_by_stand_in_processing` - Declined by stand-in processing.
-    - `invalid_physical_card` - The card read had an invalid CVV, dCVV, or
-      authorization request cryptogram.
+    - `invalid_physical_card` - The card read had an invalid CVV or dCVV.
     - `missing_original_authorization` - The original card authorization for this
       incremental authorization does not exist.
+    - `invalid_cryptogram` - The card's authorization request cryptogram was
+      invalid. The cryptogram can be from a physical card or a Digital Wallet Token
+      purchase.
     - `failed_3ds_authentication` - The transaction was declined because the 3DS
       authentication failed.
     - `suspected_card_testing` - The transaction was suspected to be used by a card
@@ -1012,6 +1070,7 @@ class SourceCheckDepositRejection(BaseModel):
         "suspected_fraud",
         "deposit_window_expired",
         "requested_by_user",
+        "international",
         "unknown",
     ]
     """Why the check deposit was rejected.
@@ -1029,6 +1088,8 @@ class SourceCheckDepositRejection(BaseModel):
     - `suspected_fraud` - This check is suspected to be fraudulent.
     - `deposit_window_expired` - This check's deposit window has expired.
     - `requested_by_user` - The check was rejected at the user's request.
+    - `international` - The check is not a U.S. domestic check and cannot be
+      processed.
     - `unknown` - The check was rejected for an unknown reason.
     """
 
@@ -1208,20 +1269,6 @@ class Source(BaseModel):
     This is an object giving more details on the network-level event that caused the Declined Transaction. For example, for a card transaction this lists the merchant's industry and location. Note that for backwards compatibility reasons, additional undocumented keys may appear in this object. These should be treated as deprecated and will be removed in the future.
     """
 
-    ach_decline: Optional[SourceACHDecline] = None
-    """An ACH Decline object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `ach_decline`.
-    """
-
-    card_decline: Optional[SourceCardDecline] = None
-    """A Card Decline object.
-
-    This field will be present in the JSON response if and only if `category` is
-    equal to `card_decline`.
-    """
-
     category: Literal[
         "ach_decline",
         "card_decline",
@@ -1253,6 +1300,20 @@ class Source(BaseModel):
       `check_deposit_rejection` object.
     - `other` - The Declined Transaction was made for an undocumented or deprecated
       reason.
+    """
+
+    ach_decline: Optional[SourceACHDecline] = None
+    """An ACH Decline object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `ach_decline`.
+    """
+
+    card_decline: Optional[SourceCardDecline] = None
+    """A Card Decline object.
+
+    This field will be present in the JSON response if and only if `category` is
+    equal to `card_decline`.
     """
 
     check_decline: Optional[SourceCheckDecline] = None

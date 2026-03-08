@@ -17,7 +17,7 @@ class IntrafiExclusion(BaseModel):
     id: str
     """The identifier of this exclusion request."""
 
-    bank_name: str
+    bank_name: Optional[str] = None
     """The name of the excluded institution."""
 
     created_at: datetime
@@ -46,12 +46,14 @@ class IntrafiExclusion(BaseModel):
     [idempotency](https://increase.com/documentation/idempotency-keys).
     """
 
-    status: Literal["pending", "completed", "archived"]
+    status: Literal["pending", "completed", "archived", "ineligible"]
     """The status of the exclusion request.
 
     - `pending` - The exclusion is being added to the IntraFi network.
     - `completed` - The exclusion has been added to the IntraFi network.
     - `archived` - The exclusion has been removed from the IntraFi network.
+    - `ineligible` - The exclusion wasn't eligible to be added to the IntraFi
+      network.
     """
 
     submitted_at: Optional[datetime] = None

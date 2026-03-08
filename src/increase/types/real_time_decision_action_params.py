@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 
-from typing import Dict, Union
-from typing_extensions import Literal, Required, TypeAlias, TypedDict
+from typing_extensions import Literal, Required, TypedDict
 
 __all__ = [
     "RealTimeDecisionActionParams",
     "CardAuthentication",
     "CardAuthenticationChallenge",
+    "CardAuthenticationChallengeSuccess",
     "CardAuthorization",
     "CardAuthorizationApproval",
     "CardAuthorizationApprovalCardholderAddressVerificationResult",
@@ -76,6 +76,21 @@ class CardAuthentication(TypedDict, total=False):
     """
 
 
+class CardAuthenticationChallengeSuccess(TypedDict, total=False):
+    """
+    If your application was able to deliver the one-time code, this contains metadata about the delivery.
+    """
+
+    email: str
+    """The email address that was used to deliver the one-time code to the cardholder."""
+
+    phone: str
+    """
+    The phone number that was used to deliver the one-time code to the cardholder
+    via SMS.
+    """
+
+
 class CardAuthenticationChallenge(TypedDict, total=False):
     """
     If the Real-Time Decision relates to 3DS card authentication challenge delivery, this object contains your response.
@@ -90,6 +105,12 @@ class CardAuthenticationChallenge(TypedDict, total=False):
       cardholder.
     - `failure` - Your application was unable to deliver the one-time code to the
       cardholder.
+    """
+
+    success: CardAuthenticationChallengeSuccess
+    """
+    If your application was able to deliver the one-time code, this contains
+    metadata about the delivery.
     """
 
 
@@ -176,7 +197,7 @@ class CardAuthorizationDecline(TypedDict, total=False):
     """
 
 
-class CardAuthorizationTyped(TypedDict, total=False):
+class CardAuthorization(TypedDict, total=False, extra_items=object):  # type: ignore[call-arg]
     """
     If the Real-Time Decision relates to a card authorization attempt, this object contains your response to the authorization.
     """
@@ -201,9 +222,6 @@ class CardAuthorizationTyped(TypedDict, total=False):
     If your application declines the authorization, this contains details about the
     decline.
     """
-
-
-CardAuthorization: TypeAlias = Union[CardAuthorizationTyped, Dict[str, object]]
 
 
 class CardBalanceInquiryApproval(TypedDict, total=False):
