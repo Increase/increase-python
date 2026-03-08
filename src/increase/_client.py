@@ -102,7 +102,6 @@ if TYPE_CHECKING:
     from .resources.accounts import AccountsResource, AsyncAccountsResource
     from .resources.entities import EntitiesResource, AsyncEntitiesResource
     from .resources.programs import ProgramsResource, AsyncProgramsResource
-    from .resources.webhooks import Webhooks, AsyncWebhooks
     from .resources.lockboxes import LockboxesResource, AsyncLockboxesResource
     from .resources.file_links import FileLinksResource, AsyncFileLinksResource
     from .resources.card_tokens import CardTokensResource, AsyncCardTokensResource
@@ -150,42 +149,22 @@ if TYPE_CHECKING:
     from .resources.card_purchase_supplements import (
         CardPurchaseSupplementsResource,
         AsyncCardPurchaseSupplementsResource,
-        CardPurchaseSupplementsResourceWithRawResponse,
-        AsyncCardPurchaseSupplementsResourceWithRawResponse,
-        CardPurchaseSupplementsResourceWithStreamingResponse,
-        AsyncCardPurchaseSupplementsResourceWithStreamingResponse,
     )
     from .resources.intrafi_account_enrollments import (
         IntrafiAccountEnrollmentsResource,
         AsyncIntrafiAccountEnrollmentsResource,
-        IntrafiAccountEnrollmentsResourceWithRawResponse,
-        AsyncIntrafiAccountEnrollmentsResourceWithRawResponse,
-        IntrafiAccountEnrollmentsResourceWithStreamingResponse,
-        AsyncIntrafiAccountEnrollmentsResourceWithStreamingResponse,
     )
     from .resources.real_time_payments_transfers import (
         RealTimePaymentsTransfersResource,
         AsyncRealTimePaymentsTransfersResource,
-        RealTimePaymentsTransfersResourceWithRawResponse,
-        AsyncRealTimePaymentsTransfersResourceWithRawResponse,
-        RealTimePaymentsTransfersResourceWithStreamingResponse,
-        AsyncRealTimePaymentsTransfersResourceWithStreamingResponse,
     )
     from .resources.inbound_wire_drawdown_requests import (
         InboundWireDrawdownRequestsResource,
         AsyncInboundWireDrawdownRequestsResource,
-        InboundWireDrawdownRequestsResourceWithRawResponse,
-        AsyncInboundWireDrawdownRequestsResourceWithRawResponse,
-        InboundWireDrawdownRequestsResourceWithStreamingResponse,
-        AsyncInboundWireDrawdownRequestsResourceWithStreamingResponse,
     )
     from .resources.inbound_real_time_payments_transfers import (
         InboundRealTimePaymentsTransfersResource,
         AsyncInboundRealTimePaymentsTransfersResource,
-        InboundRealTimePaymentsTransfersResourceWithRawResponse,
-        AsyncInboundRealTimePaymentsTransfersResourceWithRawResponse,
-        InboundRealTimePaymentsTransfersResourceWithStreamingResponse,
-        AsyncInboundRealTimePaymentsTransfersResourceWithStreamingResponse,
     )
 
 __all__ = [
@@ -636,12 +615,6 @@ class Increase(SyncAPIClient):
         from .resources.simulations import SimulationsResource
 
         return SimulationsResource(self)
-
-    @cached_property
-    def webhooks(self) -> Webhooks:
-        from .resources.webhooks import Webhooks
-
-        return Webhooks(self)
 
     @cached_property
     def with_raw_response(self) -> IncreaseWithRawResponse:
@@ -1237,12 +1210,6 @@ class AsyncIncrease(AsyncAPIClient):
         return AsyncSimulationsResource(self)
 
     @cached_property
-    def webhooks(self) -> AsyncWebhooks:
-        from .resources.webhooks import AsyncWebhooks
-
-        return AsyncWebhooks(self)
-
-    @cached_property
     def with_raw_response(self) -> AsyncIncreaseWithRawResponse:
         return AsyncIncreaseWithRawResponse(self)
 
@@ -1411,121 +1378,121 @@ class IncreaseWithRawResponse:
         self._client = client
 
     @cached_property
-    def accounts(self) -> AccountsResourceWithRawResponse:
+    def accounts(self) -> accounts.AccountsResourceWithRawResponse:
         from .resources.accounts import AccountsResourceWithRawResponse
 
         return AccountsResourceWithRawResponse(self._client.accounts)
 
     @cached_property
-    def account_numbers(self) -> AccountNumbersResourceWithRawResponse:
+    def account_numbers(self) -> account_numbers.AccountNumbersResourceWithRawResponse:
         from .resources.account_numbers import AccountNumbersResourceWithRawResponse
 
         return AccountNumbersResourceWithRawResponse(self._client.account_numbers)
 
     @cached_property
-    def account_transfers(self) -> AccountTransfersResourceWithRawResponse:
+    def account_transfers(self) -> account_transfers.AccountTransfersResourceWithRawResponse:
         from .resources.account_transfers import AccountTransfersResourceWithRawResponse
 
         return AccountTransfersResourceWithRawResponse(self._client.account_transfers)
 
     @cached_property
-    def cards(self) -> CardsResourceWithRawResponse:
+    def cards(self) -> cards.CardsResourceWithRawResponse:
         from .resources.cards import CardsResourceWithRawResponse
 
         return CardsResourceWithRawResponse(self._client.cards)
 
     @cached_property
-    def card_payments(self) -> CardPaymentsResourceWithRawResponse:
+    def card_payments(self) -> card_payments.CardPaymentsResourceWithRawResponse:
         from .resources.card_payments import CardPaymentsResourceWithRawResponse
 
         return CardPaymentsResourceWithRawResponse(self._client.card_payments)
 
     @cached_property
-    def card_purchase_supplements(self) -> CardPurchaseSupplementsResourceWithRawResponse:
+    def card_purchase_supplements(self) -> card_purchase_supplements.CardPurchaseSupplementsResourceWithRawResponse:
         from .resources.card_purchase_supplements import CardPurchaseSupplementsResourceWithRawResponse
 
         return CardPurchaseSupplementsResourceWithRawResponse(self._client.card_purchase_supplements)
 
     @cached_property
-    def card_disputes(self) -> CardDisputesResourceWithRawResponse:
+    def card_disputes(self) -> card_disputes.CardDisputesResourceWithRawResponse:
         from .resources.card_disputes import CardDisputesResourceWithRawResponse
 
         return CardDisputesResourceWithRawResponse(self._client.card_disputes)
 
     @cached_property
-    def physical_cards(self) -> PhysicalCardsResourceWithRawResponse:
+    def physical_cards(self) -> physical_cards.PhysicalCardsResourceWithRawResponse:
         from .resources.physical_cards import PhysicalCardsResourceWithRawResponse
 
         return PhysicalCardsResourceWithRawResponse(self._client.physical_cards)
 
     @cached_property
-    def digital_card_profiles(self) -> DigitalCardProfilesResourceWithRawResponse:
+    def digital_card_profiles(self) -> digital_card_profiles.DigitalCardProfilesResourceWithRawResponse:
         from .resources.digital_card_profiles import DigitalCardProfilesResourceWithRawResponse
 
         return DigitalCardProfilesResourceWithRawResponse(self._client.digital_card_profiles)
 
     @cached_property
-    def physical_card_profiles(self) -> PhysicalCardProfilesResourceWithRawResponse:
+    def physical_card_profiles(self) -> physical_card_profiles.PhysicalCardProfilesResourceWithRawResponse:
         from .resources.physical_card_profiles import PhysicalCardProfilesResourceWithRawResponse
 
         return PhysicalCardProfilesResourceWithRawResponse(self._client.physical_card_profiles)
 
     @cached_property
-    def digital_wallet_tokens(self) -> DigitalWalletTokensResourceWithRawResponse:
+    def digital_wallet_tokens(self) -> digital_wallet_tokens.DigitalWalletTokensResourceWithRawResponse:
         from .resources.digital_wallet_tokens import DigitalWalletTokensResourceWithRawResponse
 
         return DigitalWalletTokensResourceWithRawResponse(self._client.digital_wallet_tokens)
 
     @cached_property
-    def transactions(self) -> TransactionsResourceWithRawResponse:
+    def transactions(self) -> transactions.TransactionsResourceWithRawResponse:
         from .resources.transactions import TransactionsResourceWithRawResponse
 
         return TransactionsResourceWithRawResponse(self._client.transactions)
 
     @cached_property
-    def pending_transactions(self) -> PendingTransactionsResourceWithRawResponse:
+    def pending_transactions(self) -> pending_transactions.PendingTransactionsResourceWithRawResponse:
         from .resources.pending_transactions import PendingTransactionsResourceWithRawResponse
 
         return PendingTransactionsResourceWithRawResponse(self._client.pending_transactions)
 
     @cached_property
-    def declined_transactions(self) -> DeclinedTransactionsResourceWithRawResponse:
+    def declined_transactions(self) -> declined_transactions.DeclinedTransactionsResourceWithRawResponse:
         from .resources.declined_transactions import DeclinedTransactionsResourceWithRawResponse
 
         return DeclinedTransactionsResourceWithRawResponse(self._client.declined_transactions)
 
     @cached_property
-    def ach_transfers(self) -> ACHTransfersResourceWithRawResponse:
+    def ach_transfers(self) -> ach_transfers.ACHTransfersResourceWithRawResponse:
         from .resources.ach_transfers import ACHTransfersResourceWithRawResponse
 
         return ACHTransfersResourceWithRawResponse(self._client.ach_transfers)
 
     @cached_property
-    def ach_prenotifications(self) -> ACHPrenotificationsResourceWithRawResponse:
+    def ach_prenotifications(self) -> ach_prenotifications.ACHPrenotificationsResourceWithRawResponse:
         from .resources.ach_prenotifications import ACHPrenotificationsResourceWithRawResponse
 
         return ACHPrenotificationsResourceWithRawResponse(self._client.ach_prenotifications)
 
     @cached_property
-    def inbound_ach_transfers(self) -> InboundACHTransfersResourceWithRawResponse:
+    def inbound_ach_transfers(self) -> inbound_ach_transfers.InboundACHTransfersResourceWithRawResponse:
         from .resources.inbound_ach_transfers import InboundACHTransfersResourceWithRawResponse
 
         return InboundACHTransfersResourceWithRawResponse(self._client.inbound_ach_transfers)
 
     @cached_property
-    def wire_transfers(self) -> WireTransfersResourceWithRawResponse:
+    def wire_transfers(self) -> wire_transfers.WireTransfersResourceWithRawResponse:
         from .resources.wire_transfers import WireTransfersResourceWithRawResponse
 
         return WireTransfersResourceWithRawResponse(self._client.wire_transfers)
 
     @cached_property
-    def inbound_wire_transfers(self) -> InboundWireTransfersResourceWithRawResponse:
+    def inbound_wire_transfers(self) -> inbound_wire_transfers.InboundWireTransfersResourceWithRawResponse:
         from .resources.inbound_wire_transfers import InboundWireTransfersResourceWithRawResponse
 
         return InboundWireTransfersResourceWithRawResponse(self._client.inbound_wire_transfers)
 
     @cached_property
-    def wire_drawdown_requests(self) -> WireDrawdownRequestsResourceWithRawResponse:
+    def wire_drawdown_requests(self) -> wire_drawdown_requests.WireDrawdownRequestsResourceWithRawResponse:
         from .resources.wire_drawdown_requests import WireDrawdownRequestsResourceWithRawResponse
 
         return WireDrawdownRequestsResourceWithRawResponse(self._client.wire_drawdown_requests)
@@ -1533,19 +1500,19 @@ class IncreaseWithRawResponse:
     @cached_property
     def inbound_wire_drawdown_requests(
         self,
-    ) -> InboundWireDrawdownRequestsResourceWithRawResponse:
+    ) -> inbound_wire_drawdown_requests.InboundWireDrawdownRequestsResourceWithRawResponse:
         from .resources.inbound_wire_drawdown_requests import InboundWireDrawdownRequestsResourceWithRawResponse
 
         return InboundWireDrawdownRequestsResourceWithRawResponse(self._client.inbound_wire_drawdown_requests)
 
     @cached_property
-    def check_transfers(self) -> CheckTransfersResourceWithRawResponse:
+    def check_transfers(self) -> check_transfers.CheckTransfersResourceWithRawResponse:
         from .resources.check_transfers import CheckTransfersResourceWithRawResponse
 
         return CheckTransfersResourceWithRawResponse(self._client.check_transfers)
 
     @cached_property
-    def inbound_check_deposits(self) -> InboundCheckDepositsResourceWithRawResponse:
+    def inbound_check_deposits(self) -> inbound_check_deposits.InboundCheckDepositsResourceWithRawResponse:
         from .resources.inbound_check_deposits import InboundCheckDepositsResourceWithRawResponse
 
         return InboundCheckDepositsResourceWithRawResponse(self._client.inbound_check_deposits)
@@ -1553,7 +1520,7 @@ class IncreaseWithRawResponse:
     @cached_property
     def real_time_payments_transfers(
         self,
-    ) -> RealTimePaymentsTransfersResourceWithRawResponse:
+    ) -> real_time_payments_transfers.RealTimePaymentsTransfersResourceWithRawResponse:
         from .resources.real_time_payments_transfers import RealTimePaymentsTransfersResourceWithRawResponse
 
         return RealTimePaymentsTransfersResourceWithRawResponse(self._client.real_time_payments_transfers)
@@ -1561,7 +1528,7 @@ class IncreaseWithRawResponse:
     @cached_property
     def inbound_real_time_payments_transfers(
         self,
-    ) -> InboundRealTimePaymentsTransfersResourceWithRawResponse:
+    ) -> inbound_real_time_payments_transfers.InboundRealTimePaymentsTransfersResourceWithRawResponse:
         from .resources.inbound_real_time_payments_transfers import (
             InboundRealTimePaymentsTransfersResourceWithRawResponse,
         )
@@ -1571,13 +1538,13 @@ class IncreaseWithRawResponse:
         )
 
     @cached_property
-    def fednow_transfers(self) -> FednowTransfersResourceWithRawResponse:
+    def fednow_transfers(self) -> fednow_transfers.FednowTransfersResourceWithRawResponse:
         from .resources.fednow_transfers import FednowTransfersResourceWithRawResponse
 
         return FednowTransfersResourceWithRawResponse(self._client.fednow_transfers)
 
     @cached_property
-    def inbound_fednow_transfers(self) -> InboundFednowTransfersResourceWithRawResponse:
+    def inbound_fednow_transfers(self) -> inbound_fednow_transfers.InboundFednowTransfersResourceWithRawResponse:
         from .resources.inbound_fednow_transfers import InboundFednowTransfersResourceWithRawResponse
 
         return InboundFednowTransfersResourceWithRawResponse(self._client.inbound_fednow_transfers)
@@ -1589,133 +1556,133 @@ class IncreaseWithRawResponse:
         return SwiftTransfersResourceWithRawResponse(self._client.swift_transfers)
 
     @cached_property
-    def check_deposits(self) -> CheckDepositsResourceWithRawResponse:
+    def check_deposits(self) -> check_deposits.CheckDepositsResourceWithRawResponse:
         from .resources.check_deposits import CheckDepositsResourceWithRawResponse
 
         return CheckDepositsResourceWithRawResponse(self._client.check_deposits)
 
     @cached_property
-    def lockboxes(self) -> LockboxesResourceWithRawResponse:
+    def lockboxes(self) -> lockboxes.LockboxesResourceWithRawResponse:
         from .resources.lockboxes import LockboxesResourceWithRawResponse
 
         return LockboxesResourceWithRawResponse(self._client.lockboxes)
 
     @cached_property
-    def inbound_mail_items(self) -> InboundMailItemsResourceWithRawResponse:
+    def inbound_mail_items(self) -> inbound_mail_items.InboundMailItemsResourceWithRawResponse:
         from .resources.inbound_mail_items import InboundMailItemsResourceWithRawResponse
 
         return InboundMailItemsResourceWithRawResponse(self._client.inbound_mail_items)
 
     @cached_property
-    def routing_numbers(self) -> RoutingNumbersResourceWithRawResponse:
+    def routing_numbers(self) -> routing_numbers.RoutingNumbersResourceWithRawResponse:
         from .resources.routing_numbers import RoutingNumbersResourceWithRawResponse
 
         return RoutingNumbersResourceWithRawResponse(self._client.routing_numbers)
 
     @cached_property
-    def external_accounts(self) -> ExternalAccountsResourceWithRawResponse:
+    def external_accounts(self) -> external_accounts.ExternalAccountsResourceWithRawResponse:
         from .resources.external_accounts import ExternalAccountsResourceWithRawResponse
 
         return ExternalAccountsResourceWithRawResponse(self._client.external_accounts)
 
     @cached_property
-    def entities(self) -> EntitiesResourceWithRawResponse:
+    def entities(self) -> entities.EntitiesResourceWithRawResponse:
         from .resources.entities import EntitiesResourceWithRawResponse
 
         return EntitiesResourceWithRawResponse(self._client.entities)
 
     @cached_property
-    def supplemental_documents(self) -> SupplementalDocumentsResourceWithRawResponse:
+    def supplemental_documents(self) -> supplemental_documents.SupplementalDocumentsResourceWithRawResponse:
         from .resources.supplemental_documents import SupplementalDocumentsResourceWithRawResponse
 
         return SupplementalDocumentsResourceWithRawResponse(self._client.supplemental_documents)
 
     @cached_property
-    def programs(self) -> ProgramsResourceWithRawResponse:
+    def programs(self) -> programs.ProgramsResourceWithRawResponse:
         from .resources.programs import ProgramsResourceWithRawResponse
 
         return ProgramsResourceWithRawResponse(self._client.programs)
 
     @cached_property
-    def account_statements(self) -> AccountStatementsResourceWithRawResponse:
+    def account_statements(self) -> account_statements.AccountStatementsResourceWithRawResponse:
         from .resources.account_statements import AccountStatementsResourceWithRawResponse
 
         return AccountStatementsResourceWithRawResponse(self._client.account_statements)
 
     @cached_property
-    def files(self) -> FilesResourceWithRawResponse:
+    def files(self) -> files.FilesResourceWithRawResponse:
         from .resources.files import FilesResourceWithRawResponse
 
         return FilesResourceWithRawResponse(self._client.files)
 
     @cached_property
-    def file_links(self) -> FileLinksResourceWithRawResponse:
+    def file_links(self) -> file_links.FileLinksResourceWithRawResponse:
         from .resources.file_links import FileLinksResourceWithRawResponse
 
         return FileLinksResourceWithRawResponse(self._client.file_links)
 
     @cached_property
-    def exports(self) -> ExportsResourceWithRawResponse:
+    def exports(self) -> exports.ExportsResourceWithRawResponse:
         from .resources.exports import ExportsResourceWithRawResponse
 
         return ExportsResourceWithRawResponse(self._client.exports)
 
     @cached_property
-    def events(self) -> EventsResourceWithRawResponse:
+    def events(self) -> events.EventsResourceWithRawResponse:
         from .resources.events import EventsResourceWithRawResponse
 
         return EventsResourceWithRawResponse(self._client.events)
 
     @cached_property
-    def event_subscriptions(self) -> EventSubscriptionsResourceWithRawResponse:
+    def event_subscriptions(self) -> event_subscriptions.EventSubscriptionsResourceWithRawResponse:
         from .resources.event_subscriptions import EventSubscriptionsResourceWithRawResponse
 
         return EventSubscriptionsResourceWithRawResponse(self._client.event_subscriptions)
 
     @cached_property
-    def real_time_decisions(self) -> RealTimeDecisionsResourceWithRawResponse:
+    def real_time_decisions(self) -> real_time_decisions.RealTimeDecisionsResourceWithRawResponse:
         from .resources.real_time_decisions import RealTimeDecisionsResourceWithRawResponse
 
         return RealTimeDecisionsResourceWithRawResponse(self._client.real_time_decisions)
 
     @cached_property
-    def bookkeeping_accounts(self) -> BookkeepingAccountsResourceWithRawResponse:
+    def bookkeeping_accounts(self) -> bookkeeping_accounts.BookkeepingAccountsResourceWithRawResponse:
         from .resources.bookkeeping_accounts import BookkeepingAccountsResourceWithRawResponse
 
         return BookkeepingAccountsResourceWithRawResponse(self._client.bookkeeping_accounts)
 
     @cached_property
-    def bookkeeping_entry_sets(self) -> BookkeepingEntrySetsResourceWithRawResponse:
+    def bookkeeping_entry_sets(self) -> bookkeeping_entry_sets.BookkeepingEntrySetsResourceWithRawResponse:
         from .resources.bookkeeping_entry_sets import BookkeepingEntrySetsResourceWithRawResponse
 
         return BookkeepingEntrySetsResourceWithRawResponse(self._client.bookkeeping_entry_sets)
 
     @cached_property
-    def bookkeeping_entries(self) -> BookkeepingEntriesResourceWithRawResponse:
+    def bookkeeping_entries(self) -> bookkeeping_entries.BookkeepingEntriesResourceWithRawResponse:
         from .resources.bookkeeping_entries import BookkeepingEntriesResourceWithRawResponse
 
         return BookkeepingEntriesResourceWithRawResponse(self._client.bookkeeping_entries)
 
     @cached_property
-    def groups(self) -> GroupsResourceWithRawResponse:
+    def groups(self) -> groups.GroupsResourceWithRawResponse:
         from .resources.groups import GroupsResourceWithRawResponse
 
         return GroupsResourceWithRawResponse(self._client.groups)
 
     @cached_property
-    def oauth_applications(self) -> OAuthApplicationsResourceWithRawResponse:
+    def oauth_applications(self) -> oauth_applications.OAuthApplicationsResourceWithRawResponse:
         from .resources.oauth_applications import OAuthApplicationsResourceWithRawResponse
 
         return OAuthApplicationsResourceWithRawResponse(self._client.oauth_applications)
 
     @cached_property
-    def oauth_connections(self) -> OAuthConnectionsResourceWithRawResponse:
+    def oauth_connections(self) -> oauth_connections.OAuthConnectionsResourceWithRawResponse:
         from .resources.oauth_connections import OAuthConnectionsResourceWithRawResponse
 
         return OAuthConnectionsResourceWithRawResponse(self._client.oauth_connections)
 
     @cached_property
-    def oauth_tokens(self) -> OAuthTokensResourceWithRawResponse:
+    def oauth_tokens(self) -> oauth_tokens.OAuthTokensResourceWithRawResponse:
         from .resources.oauth_tokens import OAuthTokensResourceWithRawResponse
 
         return OAuthTokensResourceWithRawResponse(self._client.oauth_tokens)
@@ -1723,43 +1690,43 @@ class IncreaseWithRawResponse:
     @cached_property
     def intrafi_account_enrollments(
         self,
-    ) -> IntrafiAccountEnrollmentsResourceWithRawResponse:
+    ) -> intrafi_account_enrollments.IntrafiAccountEnrollmentsResourceWithRawResponse:
         from .resources.intrafi_account_enrollments import IntrafiAccountEnrollmentsResourceWithRawResponse
 
         return IntrafiAccountEnrollmentsResourceWithRawResponse(self._client.intrafi_account_enrollments)
 
     @cached_property
-    def intrafi_balances(self) -> IntrafiBalancesResourceWithRawResponse:
+    def intrafi_balances(self) -> intrafi_balances.IntrafiBalancesResourceWithRawResponse:
         from .resources.intrafi_balances import IntrafiBalancesResourceWithRawResponse
 
         return IntrafiBalancesResourceWithRawResponse(self._client.intrafi_balances)
 
     @cached_property
-    def intrafi_exclusions(self) -> IntrafiExclusionsResourceWithRawResponse:
+    def intrafi_exclusions(self) -> intrafi_exclusions.IntrafiExclusionsResourceWithRawResponse:
         from .resources.intrafi_exclusions import IntrafiExclusionsResourceWithRawResponse
 
         return IntrafiExclusionsResourceWithRawResponse(self._client.intrafi_exclusions)
 
     @cached_property
-    def card_tokens(self) -> CardTokensResourceWithRawResponse:
+    def card_tokens(self) -> card_tokens.CardTokensResourceWithRawResponse:
         from .resources.card_tokens import CardTokensResourceWithRawResponse
 
         return CardTokensResourceWithRawResponse(self._client.card_tokens)
 
     @cached_property
-    def card_push_transfers(self) -> CardPushTransfersResourceWithRawResponse:
+    def card_push_transfers(self) -> card_push_transfers.CardPushTransfersResourceWithRawResponse:
         from .resources.card_push_transfers import CardPushTransfersResourceWithRawResponse
 
         return CardPushTransfersResourceWithRawResponse(self._client.card_push_transfers)
 
     @cached_property
-    def card_validations(self) -> CardValidationsResourceWithRawResponse:
+    def card_validations(self) -> card_validations.CardValidationsResourceWithRawResponse:
         from .resources.card_validations import CardValidationsResourceWithRawResponse
 
         return CardValidationsResourceWithRawResponse(self._client.card_validations)
 
     @cached_property
-    def simulations(self) -> SimulationsResourceWithRawResponse:
+    def simulations(self) -> simulations.SimulationsResourceWithRawResponse:
         from .resources.simulations import SimulationsResourceWithRawResponse
 
         return SimulationsResourceWithRawResponse(self._client.simulations)
@@ -1772,31 +1739,31 @@ class AsyncIncreaseWithRawResponse:
         self._client = client
 
     @cached_property
-    def accounts(self) -> AsyncAccountsResourceWithRawResponse:
+    def accounts(self) -> accounts.AsyncAccountsResourceWithRawResponse:
         from .resources.accounts import AsyncAccountsResourceWithRawResponse
 
         return AsyncAccountsResourceWithRawResponse(self._client.accounts)
 
     @cached_property
-    def account_numbers(self) -> AsyncAccountNumbersResourceWithRawResponse:
+    def account_numbers(self) -> account_numbers.AsyncAccountNumbersResourceWithRawResponse:
         from .resources.account_numbers import AsyncAccountNumbersResourceWithRawResponse
 
         return AsyncAccountNumbersResourceWithRawResponse(self._client.account_numbers)
 
     @cached_property
-    def account_transfers(self) -> AsyncAccountTransfersResourceWithRawResponse:
+    def account_transfers(self) -> account_transfers.AsyncAccountTransfersResourceWithRawResponse:
         from .resources.account_transfers import AsyncAccountTransfersResourceWithRawResponse
 
         return AsyncAccountTransfersResourceWithRawResponse(self._client.account_transfers)
 
     @cached_property
-    def cards(self) -> AsyncCardsResourceWithRawResponse:
+    def cards(self) -> cards.AsyncCardsResourceWithRawResponse:
         from .resources.cards import AsyncCardsResourceWithRawResponse
 
         return AsyncCardsResourceWithRawResponse(self._client.cards)
 
     @cached_property
-    def card_payments(self) -> AsyncCardPaymentsResourceWithRawResponse:
+    def card_payments(self) -> card_payments.AsyncCardPaymentsResourceWithRawResponse:
         from .resources.card_payments import AsyncCardPaymentsResourceWithRawResponse
 
         return AsyncCardPaymentsResourceWithRawResponse(self._client.card_payments)
@@ -1804,91 +1771,91 @@ class AsyncIncreaseWithRawResponse:
     @cached_property
     def card_purchase_supplements(
         self,
-    ) -> AsyncCardPurchaseSupplementsResourceWithRawResponse:
+    ) -> card_purchase_supplements.AsyncCardPurchaseSupplementsResourceWithRawResponse:
         from .resources.card_purchase_supplements import AsyncCardPurchaseSupplementsResourceWithRawResponse
 
         return AsyncCardPurchaseSupplementsResourceWithRawResponse(self._client.card_purchase_supplements)
 
     @cached_property
-    def card_disputes(self) -> AsyncCardDisputesResourceWithRawResponse:
+    def card_disputes(self) -> card_disputes.AsyncCardDisputesResourceWithRawResponse:
         from .resources.card_disputes import AsyncCardDisputesResourceWithRawResponse
 
         return AsyncCardDisputesResourceWithRawResponse(self._client.card_disputes)
 
     @cached_property
-    def physical_cards(self) -> AsyncPhysicalCardsResourceWithRawResponse:
+    def physical_cards(self) -> physical_cards.AsyncPhysicalCardsResourceWithRawResponse:
         from .resources.physical_cards import AsyncPhysicalCardsResourceWithRawResponse
 
         return AsyncPhysicalCardsResourceWithRawResponse(self._client.physical_cards)
 
     @cached_property
-    def digital_card_profiles(self) -> AsyncDigitalCardProfilesResourceWithRawResponse:
+    def digital_card_profiles(self) -> digital_card_profiles.AsyncDigitalCardProfilesResourceWithRawResponse:
         from .resources.digital_card_profiles import AsyncDigitalCardProfilesResourceWithRawResponse
 
         return AsyncDigitalCardProfilesResourceWithRawResponse(self._client.digital_card_profiles)
 
     @cached_property
-    def physical_card_profiles(self) -> AsyncPhysicalCardProfilesResourceWithRawResponse:
+    def physical_card_profiles(self) -> physical_card_profiles.AsyncPhysicalCardProfilesResourceWithRawResponse:
         from .resources.physical_card_profiles import AsyncPhysicalCardProfilesResourceWithRawResponse
 
         return AsyncPhysicalCardProfilesResourceWithRawResponse(self._client.physical_card_profiles)
 
     @cached_property
-    def digital_wallet_tokens(self) -> AsyncDigitalWalletTokensResourceWithRawResponse:
+    def digital_wallet_tokens(self) -> digital_wallet_tokens.AsyncDigitalWalletTokensResourceWithRawResponse:
         from .resources.digital_wallet_tokens import AsyncDigitalWalletTokensResourceWithRawResponse
 
         return AsyncDigitalWalletTokensResourceWithRawResponse(self._client.digital_wallet_tokens)
 
     @cached_property
-    def transactions(self) -> AsyncTransactionsResourceWithRawResponse:
+    def transactions(self) -> transactions.AsyncTransactionsResourceWithRawResponse:
         from .resources.transactions import AsyncTransactionsResourceWithRawResponse
 
         return AsyncTransactionsResourceWithRawResponse(self._client.transactions)
 
     @cached_property
-    def pending_transactions(self) -> AsyncPendingTransactionsResourceWithRawResponse:
+    def pending_transactions(self) -> pending_transactions.AsyncPendingTransactionsResourceWithRawResponse:
         from .resources.pending_transactions import AsyncPendingTransactionsResourceWithRawResponse
 
         return AsyncPendingTransactionsResourceWithRawResponse(self._client.pending_transactions)
 
     @cached_property
-    def declined_transactions(self) -> AsyncDeclinedTransactionsResourceWithRawResponse:
+    def declined_transactions(self) -> declined_transactions.AsyncDeclinedTransactionsResourceWithRawResponse:
         from .resources.declined_transactions import AsyncDeclinedTransactionsResourceWithRawResponse
 
         return AsyncDeclinedTransactionsResourceWithRawResponse(self._client.declined_transactions)
 
     @cached_property
-    def ach_transfers(self) -> AsyncACHTransfersResourceWithRawResponse:
+    def ach_transfers(self) -> ach_transfers.AsyncACHTransfersResourceWithRawResponse:
         from .resources.ach_transfers import AsyncACHTransfersResourceWithRawResponse
 
         return AsyncACHTransfersResourceWithRawResponse(self._client.ach_transfers)
 
     @cached_property
-    def ach_prenotifications(self) -> AsyncACHPrenotificationsResourceWithRawResponse:
+    def ach_prenotifications(self) -> ach_prenotifications.AsyncACHPrenotificationsResourceWithRawResponse:
         from .resources.ach_prenotifications import AsyncACHPrenotificationsResourceWithRawResponse
 
         return AsyncACHPrenotificationsResourceWithRawResponse(self._client.ach_prenotifications)
 
     @cached_property
-    def inbound_ach_transfers(self) -> AsyncInboundACHTransfersResourceWithRawResponse:
+    def inbound_ach_transfers(self) -> inbound_ach_transfers.AsyncInboundACHTransfersResourceWithRawResponse:
         from .resources.inbound_ach_transfers import AsyncInboundACHTransfersResourceWithRawResponse
 
         return AsyncInboundACHTransfersResourceWithRawResponse(self._client.inbound_ach_transfers)
 
     @cached_property
-    def wire_transfers(self) -> AsyncWireTransfersResourceWithRawResponse:
+    def wire_transfers(self) -> wire_transfers.AsyncWireTransfersResourceWithRawResponse:
         from .resources.wire_transfers import AsyncWireTransfersResourceWithRawResponse
 
         return AsyncWireTransfersResourceWithRawResponse(self._client.wire_transfers)
 
     @cached_property
-    def inbound_wire_transfers(self) -> AsyncInboundWireTransfersResourceWithRawResponse:
+    def inbound_wire_transfers(self) -> inbound_wire_transfers.AsyncInboundWireTransfersResourceWithRawResponse:
         from .resources.inbound_wire_transfers import AsyncInboundWireTransfersResourceWithRawResponse
 
         return AsyncInboundWireTransfersResourceWithRawResponse(self._client.inbound_wire_transfers)
 
     @cached_property
-    def wire_drawdown_requests(self) -> AsyncWireDrawdownRequestsResourceWithRawResponse:
+    def wire_drawdown_requests(self) -> wire_drawdown_requests.AsyncWireDrawdownRequestsResourceWithRawResponse:
         from .resources.wire_drawdown_requests import AsyncWireDrawdownRequestsResourceWithRawResponse
 
         return AsyncWireDrawdownRequestsResourceWithRawResponse(self._client.wire_drawdown_requests)
@@ -1896,19 +1863,19 @@ class AsyncIncreaseWithRawResponse:
     @cached_property
     def inbound_wire_drawdown_requests(
         self,
-    ) -> AsyncInboundWireDrawdownRequestsResourceWithRawResponse:
+    ) -> inbound_wire_drawdown_requests.AsyncInboundWireDrawdownRequestsResourceWithRawResponse:
         from .resources.inbound_wire_drawdown_requests import AsyncInboundWireDrawdownRequestsResourceWithRawResponse
 
         return AsyncInboundWireDrawdownRequestsResourceWithRawResponse(self._client.inbound_wire_drawdown_requests)
 
     @cached_property
-    def check_transfers(self) -> AsyncCheckTransfersResourceWithRawResponse:
+    def check_transfers(self) -> check_transfers.AsyncCheckTransfersResourceWithRawResponse:
         from .resources.check_transfers import AsyncCheckTransfersResourceWithRawResponse
 
         return AsyncCheckTransfersResourceWithRawResponse(self._client.check_transfers)
 
     @cached_property
-    def inbound_check_deposits(self) -> AsyncInboundCheckDepositsResourceWithRawResponse:
+    def inbound_check_deposits(self) -> inbound_check_deposits.AsyncInboundCheckDepositsResourceWithRawResponse:
         from .resources.inbound_check_deposits import AsyncInboundCheckDepositsResourceWithRawResponse
 
         return AsyncInboundCheckDepositsResourceWithRawResponse(self._client.inbound_check_deposits)
@@ -1916,7 +1883,7 @@ class AsyncIncreaseWithRawResponse:
     @cached_property
     def real_time_payments_transfers(
         self,
-    ) -> AsyncRealTimePaymentsTransfersResourceWithRawResponse:
+    ) -> real_time_payments_transfers.AsyncRealTimePaymentsTransfersResourceWithRawResponse:
         from .resources.real_time_payments_transfers import AsyncRealTimePaymentsTransfersResourceWithRawResponse
 
         return AsyncRealTimePaymentsTransfersResourceWithRawResponse(self._client.real_time_payments_transfers)
@@ -1924,7 +1891,7 @@ class AsyncIncreaseWithRawResponse:
     @cached_property
     def inbound_real_time_payments_transfers(
         self,
-    ) -> AsyncInboundRealTimePaymentsTransfersResourceWithRawResponse:
+    ) -> inbound_real_time_payments_transfers.AsyncInboundRealTimePaymentsTransfersResourceWithRawResponse:
         from .resources.inbound_real_time_payments_transfers import (
             AsyncInboundRealTimePaymentsTransfersResourceWithRawResponse,
         )
@@ -1934,13 +1901,13 @@ class AsyncIncreaseWithRawResponse:
         )
 
     @cached_property
-    def fednow_transfers(self) -> AsyncFednowTransfersResourceWithRawResponse:
+    def fednow_transfers(self) -> fednow_transfers.AsyncFednowTransfersResourceWithRawResponse:
         from .resources.fednow_transfers import AsyncFednowTransfersResourceWithRawResponse
 
         return AsyncFednowTransfersResourceWithRawResponse(self._client.fednow_transfers)
 
     @cached_property
-    def inbound_fednow_transfers(self) -> AsyncInboundFednowTransfersResourceWithRawResponse:
+    def inbound_fednow_transfers(self) -> inbound_fednow_transfers.AsyncInboundFednowTransfersResourceWithRawResponse:
         from .resources.inbound_fednow_transfers import AsyncInboundFednowTransfersResourceWithRawResponse
 
         return AsyncInboundFednowTransfersResourceWithRawResponse(self._client.inbound_fednow_transfers)
@@ -1952,133 +1919,133 @@ class AsyncIncreaseWithRawResponse:
         return AsyncSwiftTransfersResourceWithRawResponse(self._client.swift_transfers)
 
     @cached_property
-    def check_deposits(self) -> AsyncCheckDepositsResourceWithRawResponse:
+    def check_deposits(self) -> check_deposits.AsyncCheckDepositsResourceWithRawResponse:
         from .resources.check_deposits import AsyncCheckDepositsResourceWithRawResponse
 
         return AsyncCheckDepositsResourceWithRawResponse(self._client.check_deposits)
 
     @cached_property
-    def lockboxes(self) -> AsyncLockboxesResourceWithRawResponse:
+    def lockboxes(self) -> lockboxes.AsyncLockboxesResourceWithRawResponse:
         from .resources.lockboxes import AsyncLockboxesResourceWithRawResponse
 
         return AsyncLockboxesResourceWithRawResponse(self._client.lockboxes)
 
     @cached_property
-    def inbound_mail_items(self) -> AsyncInboundMailItemsResourceWithRawResponse:
+    def inbound_mail_items(self) -> inbound_mail_items.AsyncInboundMailItemsResourceWithRawResponse:
         from .resources.inbound_mail_items import AsyncInboundMailItemsResourceWithRawResponse
 
         return AsyncInboundMailItemsResourceWithRawResponse(self._client.inbound_mail_items)
 
     @cached_property
-    def routing_numbers(self) -> AsyncRoutingNumbersResourceWithRawResponse:
+    def routing_numbers(self) -> routing_numbers.AsyncRoutingNumbersResourceWithRawResponse:
         from .resources.routing_numbers import AsyncRoutingNumbersResourceWithRawResponse
 
         return AsyncRoutingNumbersResourceWithRawResponse(self._client.routing_numbers)
 
     @cached_property
-    def external_accounts(self) -> AsyncExternalAccountsResourceWithRawResponse:
+    def external_accounts(self) -> external_accounts.AsyncExternalAccountsResourceWithRawResponse:
         from .resources.external_accounts import AsyncExternalAccountsResourceWithRawResponse
 
         return AsyncExternalAccountsResourceWithRawResponse(self._client.external_accounts)
 
     @cached_property
-    def entities(self) -> AsyncEntitiesResourceWithRawResponse:
+    def entities(self) -> entities.AsyncEntitiesResourceWithRawResponse:
         from .resources.entities import AsyncEntitiesResourceWithRawResponse
 
         return AsyncEntitiesResourceWithRawResponse(self._client.entities)
 
     @cached_property
-    def supplemental_documents(self) -> AsyncSupplementalDocumentsResourceWithRawResponse:
+    def supplemental_documents(self) -> supplemental_documents.AsyncSupplementalDocumentsResourceWithRawResponse:
         from .resources.supplemental_documents import AsyncSupplementalDocumentsResourceWithRawResponse
 
         return AsyncSupplementalDocumentsResourceWithRawResponse(self._client.supplemental_documents)
 
     @cached_property
-    def programs(self) -> AsyncProgramsResourceWithRawResponse:
+    def programs(self) -> programs.AsyncProgramsResourceWithRawResponse:
         from .resources.programs import AsyncProgramsResourceWithRawResponse
 
         return AsyncProgramsResourceWithRawResponse(self._client.programs)
 
     @cached_property
-    def account_statements(self) -> AsyncAccountStatementsResourceWithRawResponse:
+    def account_statements(self) -> account_statements.AsyncAccountStatementsResourceWithRawResponse:
         from .resources.account_statements import AsyncAccountStatementsResourceWithRawResponse
 
         return AsyncAccountStatementsResourceWithRawResponse(self._client.account_statements)
 
     @cached_property
-    def files(self) -> AsyncFilesResourceWithRawResponse:
+    def files(self) -> files.AsyncFilesResourceWithRawResponse:
         from .resources.files import AsyncFilesResourceWithRawResponse
 
         return AsyncFilesResourceWithRawResponse(self._client.files)
 
     @cached_property
-    def file_links(self) -> AsyncFileLinksResourceWithRawResponse:
+    def file_links(self) -> file_links.AsyncFileLinksResourceWithRawResponse:
         from .resources.file_links import AsyncFileLinksResourceWithRawResponse
 
         return AsyncFileLinksResourceWithRawResponse(self._client.file_links)
 
     @cached_property
-    def exports(self) -> AsyncExportsResourceWithRawResponse:
+    def exports(self) -> exports.AsyncExportsResourceWithRawResponse:
         from .resources.exports import AsyncExportsResourceWithRawResponse
 
         return AsyncExportsResourceWithRawResponse(self._client.exports)
 
     @cached_property
-    def events(self) -> AsyncEventsResourceWithRawResponse:
+    def events(self) -> events.AsyncEventsResourceWithRawResponse:
         from .resources.events import AsyncEventsResourceWithRawResponse
 
         return AsyncEventsResourceWithRawResponse(self._client.events)
 
     @cached_property
-    def event_subscriptions(self) -> AsyncEventSubscriptionsResourceWithRawResponse:
+    def event_subscriptions(self) -> event_subscriptions.AsyncEventSubscriptionsResourceWithRawResponse:
         from .resources.event_subscriptions import AsyncEventSubscriptionsResourceWithRawResponse
 
         return AsyncEventSubscriptionsResourceWithRawResponse(self._client.event_subscriptions)
 
     @cached_property
-    def real_time_decisions(self) -> AsyncRealTimeDecisionsResourceWithRawResponse:
+    def real_time_decisions(self) -> real_time_decisions.AsyncRealTimeDecisionsResourceWithRawResponse:
         from .resources.real_time_decisions import AsyncRealTimeDecisionsResourceWithRawResponse
 
         return AsyncRealTimeDecisionsResourceWithRawResponse(self._client.real_time_decisions)
 
     @cached_property
-    def bookkeeping_accounts(self) -> AsyncBookkeepingAccountsResourceWithRawResponse:
+    def bookkeeping_accounts(self) -> bookkeeping_accounts.AsyncBookkeepingAccountsResourceWithRawResponse:
         from .resources.bookkeeping_accounts import AsyncBookkeepingAccountsResourceWithRawResponse
 
         return AsyncBookkeepingAccountsResourceWithRawResponse(self._client.bookkeeping_accounts)
 
     @cached_property
-    def bookkeeping_entry_sets(self) -> AsyncBookkeepingEntrySetsResourceWithRawResponse:
+    def bookkeeping_entry_sets(self) -> bookkeeping_entry_sets.AsyncBookkeepingEntrySetsResourceWithRawResponse:
         from .resources.bookkeeping_entry_sets import AsyncBookkeepingEntrySetsResourceWithRawResponse
 
         return AsyncBookkeepingEntrySetsResourceWithRawResponse(self._client.bookkeeping_entry_sets)
 
     @cached_property
-    def bookkeeping_entries(self) -> AsyncBookkeepingEntriesResourceWithRawResponse:
+    def bookkeeping_entries(self) -> bookkeeping_entries.AsyncBookkeepingEntriesResourceWithRawResponse:
         from .resources.bookkeeping_entries import AsyncBookkeepingEntriesResourceWithRawResponse
 
         return AsyncBookkeepingEntriesResourceWithRawResponse(self._client.bookkeeping_entries)
 
     @cached_property
-    def groups(self) -> AsyncGroupsResourceWithRawResponse:
+    def groups(self) -> groups.AsyncGroupsResourceWithRawResponse:
         from .resources.groups import AsyncGroupsResourceWithRawResponse
 
         return AsyncGroupsResourceWithRawResponse(self._client.groups)
 
     @cached_property
-    def oauth_applications(self) -> AsyncOAuthApplicationsResourceWithRawResponse:
+    def oauth_applications(self) -> oauth_applications.AsyncOAuthApplicationsResourceWithRawResponse:
         from .resources.oauth_applications import AsyncOAuthApplicationsResourceWithRawResponse
 
         return AsyncOAuthApplicationsResourceWithRawResponse(self._client.oauth_applications)
 
     @cached_property
-    def oauth_connections(self) -> AsyncOAuthConnectionsResourceWithRawResponse:
+    def oauth_connections(self) -> oauth_connections.AsyncOAuthConnectionsResourceWithRawResponse:
         from .resources.oauth_connections import AsyncOAuthConnectionsResourceWithRawResponse
 
         return AsyncOAuthConnectionsResourceWithRawResponse(self._client.oauth_connections)
 
     @cached_property
-    def oauth_tokens(self) -> AsyncOAuthTokensResourceWithRawResponse:
+    def oauth_tokens(self) -> oauth_tokens.AsyncOAuthTokensResourceWithRawResponse:
         from .resources.oauth_tokens import AsyncOAuthTokensResourceWithRawResponse
 
         return AsyncOAuthTokensResourceWithRawResponse(self._client.oauth_tokens)
@@ -2086,43 +2053,43 @@ class AsyncIncreaseWithRawResponse:
     @cached_property
     def intrafi_account_enrollments(
         self,
-    ) -> AsyncIntrafiAccountEnrollmentsResourceWithRawResponse:
+    ) -> intrafi_account_enrollments.AsyncIntrafiAccountEnrollmentsResourceWithRawResponse:
         from .resources.intrafi_account_enrollments import AsyncIntrafiAccountEnrollmentsResourceWithRawResponse
 
         return AsyncIntrafiAccountEnrollmentsResourceWithRawResponse(self._client.intrafi_account_enrollments)
 
     @cached_property
-    def intrafi_balances(self) -> AsyncIntrafiBalancesResourceWithRawResponse:
+    def intrafi_balances(self) -> intrafi_balances.AsyncIntrafiBalancesResourceWithRawResponse:
         from .resources.intrafi_balances import AsyncIntrafiBalancesResourceWithRawResponse
 
         return AsyncIntrafiBalancesResourceWithRawResponse(self._client.intrafi_balances)
 
     @cached_property
-    def intrafi_exclusions(self) -> AsyncIntrafiExclusionsResourceWithRawResponse:
+    def intrafi_exclusions(self) -> intrafi_exclusions.AsyncIntrafiExclusionsResourceWithRawResponse:
         from .resources.intrafi_exclusions import AsyncIntrafiExclusionsResourceWithRawResponse
 
         return AsyncIntrafiExclusionsResourceWithRawResponse(self._client.intrafi_exclusions)
 
     @cached_property
-    def card_tokens(self) -> AsyncCardTokensResourceWithRawResponse:
+    def card_tokens(self) -> card_tokens.AsyncCardTokensResourceWithRawResponse:
         from .resources.card_tokens import AsyncCardTokensResourceWithRawResponse
 
         return AsyncCardTokensResourceWithRawResponse(self._client.card_tokens)
 
     @cached_property
-    def card_push_transfers(self) -> AsyncCardPushTransfersResourceWithRawResponse:
+    def card_push_transfers(self) -> card_push_transfers.AsyncCardPushTransfersResourceWithRawResponse:
         from .resources.card_push_transfers import AsyncCardPushTransfersResourceWithRawResponse
 
         return AsyncCardPushTransfersResourceWithRawResponse(self._client.card_push_transfers)
 
     @cached_property
-    def card_validations(self) -> AsyncCardValidationsResourceWithRawResponse:
+    def card_validations(self) -> card_validations.AsyncCardValidationsResourceWithRawResponse:
         from .resources.card_validations import AsyncCardValidationsResourceWithRawResponse
 
         return AsyncCardValidationsResourceWithRawResponse(self._client.card_validations)
 
     @cached_property
-    def simulations(self) -> AsyncSimulationsResourceWithRawResponse:
+    def simulations(self) -> simulations.AsyncSimulationsResourceWithRawResponse:
         from .resources.simulations import AsyncSimulationsResourceWithRawResponse
 
         return AsyncSimulationsResourceWithRawResponse(self._client.simulations)
@@ -2135,31 +2102,31 @@ class IncreaseWithStreamedResponse:
         self._client = client
 
     @cached_property
-    def accounts(self) -> AccountsResourceWithStreamingResponse:
+    def accounts(self) -> accounts.AccountsResourceWithStreamingResponse:
         from .resources.accounts import AccountsResourceWithStreamingResponse
 
         return AccountsResourceWithStreamingResponse(self._client.accounts)
 
     @cached_property
-    def account_numbers(self) -> AccountNumbersResourceWithStreamingResponse:
+    def account_numbers(self) -> account_numbers.AccountNumbersResourceWithStreamingResponse:
         from .resources.account_numbers import AccountNumbersResourceWithStreamingResponse
 
         return AccountNumbersResourceWithStreamingResponse(self._client.account_numbers)
 
     @cached_property
-    def account_transfers(self) -> AccountTransfersResourceWithStreamingResponse:
+    def account_transfers(self) -> account_transfers.AccountTransfersResourceWithStreamingResponse:
         from .resources.account_transfers import AccountTransfersResourceWithStreamingResponse
 
         return AccountTransfersResourceWithStreamingResponse(self._client.account_transfers)
 
     @cached_property
-    def cards(self) -> CardsResourceWithStreamingResponse:
+    def cards(self) -> cards.CardsResourceWithStreamingResponse:
         from .resources.cards import CardsResourceWithStreamingResponse
 
         return CardsResourceWithStreamingResponse(self._client.cards)
 
     @cached_property
-    def card_payments(self) -> CardPaymentsResourceWithStreamingResponse:
+    def card_payments(self) -> card_payments.CardPaymentsResourceWithStreamingResponse:
         from .resources.card_payments import CardPaymentsResourceWithStreamingResponse
 
         return CardPaymentsResourceWithStreamingResponse(self._client.card_payments)
@@ -2167,91 +2134,91 @@ class IncreaseWithStreamedResponse:
     @cached_property
     def card_purchase_supplements(
         self,
-    ) -> CardPurchaseSupplementsResourceWithStreamingResponse:
+    ) -> card_purchase_supplements.CardPurchaseSupplementsResourceWithStreamingResponse:
         from .resources.card_purchase_supplements import CardPurchaseSupplementsResourceWithStreamingResponse
 
         return CardPurchaseSupplementsResourceWithStreamingResponse(self._client.card_purchase_supplements)
 
     @cached_property
-    def card_disputes(self) -> CardDisputesResourceWithStreamingResponse:
+    def card_disputes(self) -> card_disputes.CardDisputesResourceWithStreamingResponse:
         from .resources.card_disputes import CardDisputesResourceWithStreamingResponse
 
         return CardDisputesResourceWithStreamingResponse(self._client.card_disputes)
 
     @cached_property
-    def physical_cards(self) -> PhysicalCardsResourceWithStreamingResponse:
+    def physical_cards(self) -> physical_cards.PhysicalCardsResourceWithStreamingResponse:
         from .resources.physical_cards import PhysicalCardsResourceWithStreamingResponse
 
         return PhysicalCardsResourceWithStreamingResponse(self._client.physical_cards)
 
     @cached_property
-    def digital_card_profiles(self) -> DigitalCardProfilesResourceWithStreamingResponse:
+    def digital_card_profiles(self) -> digital_card_profiles.DigitalCardProfilesResourceWithStreamingResponse:
         from .resources.digital_card_profiles import DigitalCardProfilesResourceWithStreamingResponse
 
         return DigitalCardProfilesResourceWithStreamingResponse(self._client.digital_card_profiles)
 
     @cached_property
-    def physical_card_profiles(self) -> PhysicalCardProfilesResourceWithStreamingResponse:
+    def physical_card_profiles(self) -> physical_card_profiles.PhysicalCardProfilesResourceWithStreamingResponse:
         from .resources.physical_card_profiles import PhysicalCardProfilesResourceWithStreamingResponse
 
         return PhysicalCardProfilesResourceWithStreamingResponse(self._client.physical_card_profiles)
 
     @cached_property
-    def digital_wallet_tokens(self) -> DigitalWalletTokensResourceWithStreamingResponse:
+    def digital_wallet_tokens(self) -> digital_wallet_tokens.DigitalWalletTokensResourceWithStreamingResponse:
         from .resources.digital_wallet_tokens import DigitalWalletTokensResourceWithStreamingResponse
 
         return DigitalWalletTokensResourceWithStreamingResponse(self._client.digital_wallet_tokens)
 
     @cached_property
-    def transactions(self) -> TransactionsResourceWithStreamingResponse:
+    def transactions(self) -> transactions.TransactionsResourceWithStreamingResponse:
         from .resources.transactions import TransactionsResourceWithStreamingResponse
 
         return TransactionsResourceWithStreamingResponse(self._client.transactions)
 
     @cached_property
-    def pending_transactions(self) -> PendingTransactionsResourceWithStreamingResponse:
+    def pending_transactions(self) -> pending_transactions.PendingTransactionsResourceWithStreamingResponse:
         from .resources.pending_transactions import PendingTransactionsResourceWithStreamingResponse
 
         return PendingTransactionsResourceWithStreamingResponse(self._client.pending_transactions)
 
     @cached_property
-    def declined_transactions(self) -> DeclinedTransactionsResourceWithStreamingResponse:
+    def declined_transactions(self) -> declined_transactions.DeclinedTransactionsResourceWithStreamingResponse:
         from .resources.declined_transactions import DeclinedTransactionsResourceWithStreamingResponse
 
         return DeclinedTransactionsResourceWithStreamingResponse(self._client.declined_transactions)
 
     @cached_property
-    def ach_transfers(self) -> ACHTransfersResourceWithStreamingResponse:
+    def ach_transfers(self) -> ach_transfers.ACHTransfersResourceWithStreamingResponse:
         from .resources.ach_transfers import ACHTransfersResourceWithStreamingResponse
 
         return ACHTransfersResourceWithStreamingResponse(self._client.ach_transfers)
 
     @cached_property
-    def ach_prenotifications(self) -> ACHPrenotificationsResourceWithStreamingResponse:
+    def ach_prenotifications(self) -> ach_prenotifications.ACHPrenotificationsResourceWithStreamingResponse:
         from .resources.ach_prenotifications import ACHPrenotificationsResourceWithStreamingResponse
 
         return ACHPrenotificationsResourceWithStreamingResponse(self._client.ach_prenotifications)
 
     @cached_property
-    def inbound_ach_transfers(self) -> InboundACHTransfersResourceWithStreamingResponse:
+    def inbound_ach_transfers(self) -> inbound_ach_transfers.InboundACHTransfersResourceWithStreamingResponse:
         from .resources.inbound_ach_transfers import InboundACHTransfersResourceWithStreamingResponse
 
         return InboundACHTransfersResourceWithStreamingResponse(self._client.inbound_ach_transfers)
 
     @cached_property
-    def wire_transfers(self) -> WireTransfersResourceWithStreamingResponse:
+    def wire_transfers(self) -> wire_transfers.WireTransfersResourceWithStreamingResponse:
         from .resources.wire_transfers import WireTransfersResourceWithStreamingResponse
 
         return WireTransfersResourceWithStreamingResponse(self._client.wire_transfers)
 
     @cached_property
-    def inbound_wire_transfers(self) -> InboundWireTransfersResourceWithStreamingResponse:
+    def inbound_wire_transfers(self) -> inbound_wire_transfers.InboundWireTransfersResourceWithStreamingResponse:
         from .resources.inbound_wire_transfers import InboundWireTransfersResourceWithStreamingResponse
 
         return InboundWireTransfersResourceWithStreamingResponse(self._client.inbound_wire_transfers)
 
     @cached_property
-    def wire_drawdown_requests(self) -> WireDrawdownRequestsResourceWithStreamingResponse:
+    def wire_drawdown_requests(self) -> wire_drawdown_requests.WireDrawdownRequestsResourceWithStreamingResponse:
         from .resources.wire_drawdown_requests import WireDrawdownRequestsResourceWithStreamingResponse
 
         return WireDrawdownRequestsResourceWithStreamingResponse(self._client.wire_drawdown_requests)
@@ -2259,19 +2226,19 @@ class IncreaseWithStreamedResponse:
     @cached_property
     def inbound_wire_drawdown_requests(
         self,
-    ) -> InboundWireDrawdownRequestsResourceWithStreamingResponse:
+    ) -> inbound_wire_drawdown_requests.InboundWireDrawdownRequestsResourceWithStreamingResponse:
         from .resources.inbound_wire_drawdown_requests import InboundWireDrawdownRequestsResourceWithStreamingResponse
 
         return InboundWireDrawdownRequestsResourceWithStreamingResponse(self._client.inbound_wire_drawdown_requests)
 
     @cached_property
-    def check_transfers(self) -> CheckTransfersResourceWithStreamingResponse:
+    def check_transfers(self) -> check_transfers.CheckTransfersResourceWithStreamingResponse:
         from .resources.check_transfers import CheckTransfersResourceWithStreamingResponse
 
         return CheckTransfersResourceWithStreamingResponse(self._client.check_transfers)
 
     @cached_property
-    def inbound_check_deposits(self) -> InboundCheckDepositsResourceWithStreamingResponse:
+    def inbound_check_deposits(self) -> inbound_check_deposits.InboundCheckDepositsResourceWithStreamingResponse:
         from .resources.inbound_check_deposits import InboundCheckDepositsResourceWithStreamingResponse
 
         return InboundCheckDepositsResourceWithStreamingResponse(self._client.inbound_check_deposits)
@@ -2279,7 +2246,7 @@ class IncreaseWithStreamedResponse:
     @cached_property
     def real_time_payments_transfers(
         self,
-    ) -> RealTimePaymentsTransfersResourceWithStreamingResponse:
+    ) -> real_time_payments_transfers.RealTimePaymentsTransfersResourceWithStreamingResponse:
         from .resources.real_time_payments_transfers import RealTimePaymentsTransfersResourceWithStreamingResponse
 
         return RealTimePaymentsTransfersResourceWithStreamingResponse(self._client.real_time_payments_transfers)
@@ -2287,7 +2254,7 @@ class IncreaseWithStreamedResponse:
     @cached_property
     def inbound_real_time_payments_transfers(
         self,
-    ) -> InboundRealTimePaymentsTransfersResourceWithStreamingResponse:
+    ) -> inbound_real_time_payments_transfers.InboundRealTimePaymentsTransfersResourceWithStreamingResponse:
         from .resources.inbound_real_time_payments_transfers import (
             InboundRealTimePaymentsTransfersResourceWithStreamingResponse,
         )
@@ -2297,13 +2264,13 @@ class IncreaseWithStreamedResponse:
         )
 
     @cached_property
-    def fednow_transfers(self) -> FednowTransfersResourceWithStreamingResponse:
+    def fednow_transfers(self) -> fednow_transfers.FednowTransfersResourceWithStreamingResponse:
         from .resources.fednow_transfers import FednowTransfersResourceWithStreamingResponse
 
         return FednowTransfersResourceWithStreamingResponse(self._client.fednow_transfers)
 
     @cached_property
-    def inbound_fednow_transfers(self) -> InboundFednowTransfersResourceWithStreamingResponse:
+    def inbound_fednow_transfers(self) -> inbound_fednow_transfers.InboundFednowTransfersResourceWithStreamingResponse:
         from .resources.inbound_fednow_transfers import InboundFednowTransfersResourceWithStreamingResponse
 
         return InboundFednowTransfersResourceWithStreamingResponse(self._client.inbound_fednow_transfers)
@@ -2315,133 +2282,133 @@ class IncreaseWithStreamedResponse:
         return SwiftTransfersResourceWithStreamingResponse(self._client.swift_transfers)
 
     @cached_property
-    def check_deposits(self) -> CheckDepositsResourceWithStreamingResponse:
+    def check_deposits(self) -> check_deposits.CheckDepositsResourceWithStreamingResponse:
         from .resources.check_deposits import CheckDepositsResourceWithStreamingResponse
 
         return CheckDepositsResourceWithStreamingResponse(self._client.check_deposits)
 
     @cached_property
-    def lockboxes(self) -> LockboxesResourceWithStreamingResponse:
+    def lockboxes(self) -> lockboxes.LockboxesResourceWithStreamingResponse:
         from .resources.lockboxes import LockboxesResourceWithStreamingResponse
 
         return LockboxesResourceWithStreamingResponse(self._client.lockboxes)
 
     @cached_property
-    def inbound_mail_items(self) -> InboundMailItemsResourceWithStreamingResponse:
+    def inbound_mail_items(self) -> inbound_mail_items.InboundMailItemsResourceWithStreamingResponse:
         from .resources.inbound_mail_items import InboundMailItemsResourceWithStreamingResponse
 
         return InboundMailItemsResourceWithStreamingResponse(self._client.inbound_mail_items)
 
     @cached_property
-    def routing_numbers(self) -> RoutingNumbersResourceWithStreamingResponse:
+    def routing_numbers(self) -> routing_numbers.RoutingNumbersResourceWithStreamingResponse:
         from .resources.routing_numbers import RoutingNumbersResourceWithStreamingResponse
 
         return RoutingNumbersResourceWithStreamingResponse(self._client.routing_numbers)
 
     @cached_property
-    def external_accounts(self) -> ExternalAccountsResourceWithStreamingResponse:
+    def external_accounts(self) -> external_accounts.ExternalAccountsResourceWithStreamingResponse:
         from .resources.external_accounts import ExternalAccountsResourceWithStreamingResponse
 
         return ExternalAccountsResourceWithStreamingResponse(self._client.external_accounts)
 
     @cached_property
-    def entities(self) -> EntitiesResourceWithStreamingResponse:
+    def entities(self) -> entities.EntitiesResourceWithStreamingResponse:
         from .resources.entities import EntitiesResourceWithStreamingResponse
 
         return EntitiesResourceWithStreamingResponse(self._client.entities)
 
     @cached_property
-    def supplemental_documents(self) -> SupplementalDocumentsResourceWithStreamingResponse:
+    def supplemental_documents(self) -> supplemental_documents.SupplementalDocumentsResourceWithStreamingResponse:
         from .resources.supplemental_documents import SupplementalDocumentsResourceWithStreamingResponse
 
         return SupplementalDocumentsResourceWithStreamingResponse(self._client.supplemental_documents)
 
     @cached_property
-    def programs(self) -> ProgramsResourceWithStreamingResponse:
+    def programs(self) -> programs.ProgramsResourceWithStreamingResponse:
         from .resources.programs import ProgramsResourceWithStreamingResponse
 
         return ProgramsResourceWithStreamingResponse(self._client.programs)
 
     @cached_property
-    def account_statements(self) -> AccountStatementsResourceWithStreamingResponse:
+    def account_statements(self) -> account_statements.AccountStatementsResourceWithStreamingResponse:
         from .resources.account_statements import AccountStatementsResourceWithStreamingResponse
 
         return AccountStatementsResourceWithStreamingResponse(self._client.account_statements)
 
     @cached_property
-    def files(self) -> FilesResourceWithStreamingResponse:
+    def files(self) -> files.FilesResourceWithStreamingResponse:
         from .resources.files import FilesResourceWithStreamingResponse
 
         return FilesResourceWithStreamingResponse(self._client.files)
 
     @cached_property
-    def file_links(self) -> FileLinksResourceWithStreamingResponse:
+    def file_links(self) -> file_links.FileLinksResourceWithStreamingResponse:
         from .resources.file_links import FileLinksResourceWithStreamingResponse
 
         return FileLinksResourceWithStreamingResponse(self._client.file_links)
 
     @cached_property
-    def exports(self) -> ExportsResourceWithStreamingResponse:
+    def exports(self) -> exports.ExportsResourceWithStreamingResponse:
         from .resources.exports import ExportsResourceWithStreamingResponse
 
         return ExportsResourceWithStreamingResponse(self._client.exports)
 
     @cached_property
-    def events(self) -> EventsResourceWithStreamingResponse:
+    def events(self) -> events.EventsResourceWithStreamingResponse:
         from .resources.events import EventsResourceWithStreamingResponse
 
         return EventsResourceWithStreamingResponse(self._client.events)
 
     @cached_property
-    def event_subscriptions(self) -> EventSubscriptionsResourceWithStreamingResponse:
+    def event_subscriptions(self) -> event_subscriptions.EventSubscriptionsResourceWithStreamingResponse:
         from .resources.event_subscriptions import EventSubscriptionsResourceWithStreamingResponse
 
         return EventSubscriptionsResourceWithStreamingResponse(self._client.event_subscriptions)
 
     @cached_property
-    def real_time_decisions(self) -> RealTimeDecisionsResourceWithStreamingResponse:
+    def real_time_decisions(self) -> real_time_decisions.RealTimeDecisionsResourceWithStreamingResponse:
         from .resources.real_time_decisions import RealTimeDecisionsResourceWithStreamingResponse
 
         return RealTimeDecisionsResourceWithStreamingResponse(self._client.real_time_decisions)
 
     @cached_property
-    def bookkeeping_accounts(self) -> BookkeepingAccountsResourceWithStreamingResponse:
+    def bookkeeping_accounts(self) -> bookkeeping_accounts.BookkeepingAccountsResourceWithStreamingResponse:
         from .resources.bookkeeping_accounts import BookkeepingAccountsResourceWithStreamingResponse
 
         return BookkeepingAccountsResourceWithStreamingResponse(self._client.bookkeeping_accounts)
 
     @cached_property
-    def bookkeeping_entry_sets(self) -> BookkeepingEntrySetsResourceWithStreamingResponse:
+    def bookkeeping_entry_sets(self) -> bookkeeping_entry_sets.BookkeepingEntrySetsResourceWithStreamingResponse:
         from .resources.bookkeeping_entry_sets import BookkeepingEntrySetsResourceWithStreamingResponse
 
         return BookkeepingEntrySetsResourceWithStreamingResponse(self._client.bookkeeping_entry_sets)
 
     @cached_property
-    def bookkeeping_entries(self) -> BookkeepingEntriesResourceWithStreamingResponse:
+    def bookkeeping_entries(self) -> bookkeeping_entries.BookkeepingEntriesResourceWithStreamingResponse:
         from .resources.bookkeeping_entries import BookkeepingEntriesResourceWithStreamingResponse
 
         return BookkeepingEntriesResourceWithStreamingResponse(self._client.bookkeeping_entries)
 
     @cached_property
-    def groups(self) -> GroupsResourceWithStreamingResponse:
+    def groups(self) -> groups.GroupsResourceWithStreamingResponse:
         from .resources.groups import GroupsResourceWithStreamingResponse
 
         return GroupsResourceWithStreamingResponse(self._client.groups)
 
     @cached_property
-    def oauth_applications(self) -> OAuthApplicationsResourceWithStreamingResponse:
+    def oauth_applications(self) -> oauth_applications.OAuthApplicationsResourceWithStreamingResponse:
         from .resources.oauth_applications import OAuthApplicationsResourceWithStreamingResponse
 
         return OAuthApplicationsResourceWithStreamingResponse(self._client.oauth_applications)
 
     @cached_property
-    def oauth_connections(self) -> OAuthConnectionsResourceWithStreamingResponse:
+    def oauth_connections(self) -> oauth_connections.OAuthConnectionsResourceWithStreamingResponse:
         from .resources.oauth_connections import OAuthConnectionsResourceWithStreamingResponse
 
         return OAuthConnectionsResourceWithStreamingResponse(self._client.oauth_connections)
 
     @cached_property
-    def oauth_tokens(self) -> OAuthTokensResourceWithStreamingResponse:
+    def oauth_tokens(self) -> oauth_tokens.OAuthTokensResourceWithStreamingResponse:
         from .resources.oauth_tokens import OAuthTokensResourceWithStreamingResponse
 
         return OAuthTokensResourceWithStreamingResponse(self._client.oauth_tokens)
@@ -2449,43 +2416,43 @@ class IncreaseWithStreamedResponse:
     @cached_property
     def intrafi_account_enrollments(
         self,
-    ) -> IntrafiAccountEnrollmentsResourceWithStreamingResponse:
+    ) -> intrafi_account_enrollments.IntrafiAccountEnrollmentsResourceWithStreamingResponse:
         from .resources.intrafi_account_enrollments import IntrafiAccountEnrollmentsResourceWithStreamingResponse
 
         return IntrafiAccountEnrollmentsResourceWithStreamingResponse(self._client.intrafi_account_enrollments)
 
     @cached_property
-    def intrafi_balances(self) -> IntrafiBalancesResourceWithStreamingResponse:
+    def intrafi_balances(self) -> intrafi_balances.IntrafiBalancesResourceWithStreamingResponse:
         from .resources.intrafi_balances import IntrafiBalancesResourceWithStreamingResponse
 
         return IntrafiBalancesResourceWithStreamingResponse(self._client.intrafi_balances)
 
     @cached_property
-    def intrafi_exclusions(self) -> IntrafiExclusionsResourceWithStreamingResponse:
+    def intrafi_exclusions(self) -> intrafi_exclusions.IntrafiExclusionsResourceWithStreamingResponse:
         from .resources.intrafi_exclusions import IntrafiExclusionsResourceWithStreamingResponse
 
         return IntrafiExclusionsResourceWithStreamingResponse(self._client.intrafi_exclusions)
 
     @cached_property
-    def card_tokens(self) -> CardTokensResourceWithStreamingResponse:
+    def card_tokens(self) -> card_tokens.CardTokensResourceWithStreamingResponse:
         from .resources.card_tokens import CardTokensResourceWithStreamingResponse
 
         return CardTokensResourceWithStreamingResponse(self._client.card_tokens)
 
     @cached_property
-    def card_push_transfers(self) -> CardPushTransfersResourceWithStreamingResponse:
+    def card_push_transfers(self) -> card_push_transfers.CardPushTransfersResourceWithStreamingResponse:
         from .resources.card_push_transfers import CardPushTransfersResourceWithStreamingResponse
 
         return CardPushTransfersResourceWithStreamingResponse(self._client.card_push_transfers)
 
     @cached_property
-    def card_validations(self) -> CardValidationsResourceWithStreamingResponse:
+    def card_validations(self) -> card_validations.CardValidationsResourceWithStreamingResponse:
         from .resources.card_validations import CardValidationsResourceWithStreamingResponse
 
         return CardValidationsResourceWithStreamingResponse(self._client.card_validations)
 
     @cached_property
-    def simulations(self) -> SimulationsResourceWithStreamingResponse:
+    def simulations(self) -> simulations.SimulationsResourceWithStreamingResponse:
         from .resources.simulations import SimulationsResourceWithStreamingResponse
 
         return SimulationsResourceWithStreamingResponse(self._client.simulations)
@@ -2498,31 +2465,31 @@ class AsyncIncreaseWithStreamedResponse:
         self._client = client
 
     @cached_property
-    def accounts(self) -> AsyncAccountsResourceWithStreamingResponse:
+    def accounts(self) -> accounts.AsyncAccountsResourceWithStreamingResponse:
         from .resources.accounts import AsyncAccountsResourceWithStreamingResponse
 
         return AsyncAccountsResourceWithStreamingResponse(self._client.accounts)
 
     @cached_property
-    def account_numbers(self) -> AsyncAccountNumbersResourceWithStreamingResponse:
+    def account_numbers(self) -> account_numbers.AsyncAccountNumbersResourceWithStreamingResponse:
         from .resources.account_numbers import AsyncAccountNumbersResourceWithStreamingResponse
 
         return AsyncAccountNumbersResourceWithStreamingResponse(self._client.account_numbers)
 
     @cached_property
-    def account_transfers(self) -> AsyncAccountTransfersResourceWithStreamingResponse:
+    def account_transfers(self) -> account_transfers.AsyncAccountTransfersResourceWithStreamingResponse:
         from .resources.account_transfers import AsyncAccountTransfersResourceWithStreamingResponse
 
         return AsyncAccountTransfersResourceWithStreamingResponse(self._client.account_transfers)
 
     @cached_property
-    def cards(self) -> AsyncCardsResourceWithStreamingResponse:
+    def cards(self) -> cards.AsyncCardsResourceWithStreamingResponse:
         from .resources.cards import AsyncCardsResourceWithStreamingResponse
 
         return AsyncCardsResourceWithStreamingResponse(self._client.cards)
 
     @cached_property
-    def card_payments(self) -> AsyncCardPaymentsResourceWithStreamingResponse:
+    def card_payments(self) -> card_payments.AsyncCardPaymentsResourceWithStreamingResponse:
         from .resources.card_payments import AsyncCardPaymentsResourceWithStreamingResponse
 
         return AsyncCardPaymentsResourceWithStreamingResponse(self._client.card_payments)
@@ -2530,91 +2497,91 @@ class AsyncIncreaseWithStreamedResponse:
     @cached_property
     def card_purchase_supplements(
         self,
-    ) -> AsyncCardPurchaseSupplementsResourceWithStreamingResponse:
+    ) -> card_purchase_supplements.AsyncCardPurchaseSupplementsResourceWithStreamingResponse:
         from .resources.card_purchase_supplements import AsyncCardPurchaseSupplementsResourceWithStreamingResponse
 
         return AsyncCardPurchaseSupplementsResourceWithStreamingResponse(self._client.card_purchase_supplements)
 
     @cached_property
-    def card_disputes(self) -> AsyncCardDisputesResourceWithStreamingResponse:
+    def card_disputes(self) -> card_disputes.AsyncCardDisputesResourceWithStreamingResponse:
         from .resources.card_disputes import AsyncCardDisputesResourceWithStreamingResponse
 
         return AsyncCardDisputesResourceWithStreamingResponse(self._client.card_disputes)
 
     @cached_property
-    def physical_cards(self) -> AsyncPhysicalCardsResourceWithStreamingResponse:
+    def physical_cards(self) -> physical_cards.AsyncPhysicalCardsResourceWithStreamingResponse:
         from .resources.physical_cards import AsyncPhysicalCardsResourceWithStreamingResponse
 
         return AsyncPhysicalCardsResourceWithStreamingResponse(self._client.physical_cards)
 
     @cached_property
-    def digital_card_profiles(self) -> AsyncDigitalCardProfilesResourceWithStreamingResponse:
+    def digital_card_profiles(self) -> digital_card_profiles.AsyncDigitalCardProfilesResourceWithStreamingResponse:
         from .resources.digital_card_profiles import AsyncDigitalCardProfilesResourceWithStreamingResponse
 
         return AsyncDigitalCardProfilesResourceWithStreamingResponse(self._client.digital_card_profiles)
 
     @cached_property
-    def physical_card_profiles(self) -> AsyncPhysicalCardProfilesResourceWithStreamingResponse:
+    def physical_card_profiles(self) -> physical_card_profiles.AsyncPhysicalCardProfilesResourceWithStreamingResponse:
         from .resources.physical_card_profiles import AsyncPhysicalCardProfilesResourceWithStreamingResponse
 
         return AsyncPhysicalCardProfilesResourceWithStreamingResponse(self._client.physical_card_profiles)
 
     @cached_property
-    def digital_wallet_tokens(self) -> AsyncDigitalWalletTokensResourceWithStreamingResponse:
+    def digital_wallet_tokens(self) -> digital_wallet_tokens.AsyncDigitalWalletTokensResourceWithStreamingResponse:
         from .resources.digital_wallet_tokens import AsyncDigitalWalletTokensResourceWithStreamingResponse
 
         return AsyncDigitalWalletTokensResourceWithStreamingResponse(self._client.digital_wallet_tokens)
 
     @cached_property
-    def transactions(self) -> AsyncTransactionsResourceWithStreamingResponse:
+    def transactions(self) -> transactions.AsyncTransactionsResourceWithStreamingResponse:
         from .resources.transactions import AsyncTransactionsResourceWithStreamingResponse
 
         return AsyncTransactionsResourceWithStreamingResponse(self._client.transactions)
 
     @cached_property
-    def pending_transactions(self) -> AsyncPendingTransactionsResourceWithStreamingResponse:
+    def pending_transactions(self) -> pending_transactions.AsyncPendingTransactionsResourceWithStreamingResponse:
         from .resources.pending_transactions import AsyncPendingTransactionsResourceWithStreamingResponse
 
         return AsyncPendingTransactionsResourceWithStreamingResponse(self._client.pending_transactions)
 
     @cached_property
-    def declined_transactions(self) -> AsyncDeclinedTransactionsResourceWithStreamingResponse:
+    def declined_transactions(self) -> declined_transactions.AsyncDeclinedTransactionsResourceWithStreamingResponse:
         from .resources.declined_transactions import AsyncDeclinedTransactionsResourceWithStreamingResponse
 
         return AsyncDeclinedTransactionsResourceWithStreamingResponse(self._client.declined_transactions)
 
     @cached_property
-    def ach_transfers(self) -> AsyncACHTransfersResourceWithStreamingResponse:
+    def ach_transfers(self) -> ach_transfers.AsyncACHTransfersResourceWithStreamingResponse:
         from .resources.ach_transfers import AsyncACHTransfersResourceWithStreamingResponse
 
         return AsyncACHTransfersResourceWithStreamingResponse(self._client.ach_transfers)
 
     @cached_property
-    def ach_prenotifications(self) -> AsyncACHPrenotificationsResourceWithStreamingResponse:
+    def ach_prenotifications(self) -> ach_prenotifications.AsyncACHPrenotificationsResourceWithStreamingResponse:
         from .resources.ach_prenotifications import AsyncACHPrenotificationsResourceWithStreamingResponse
 
         return AsyncACHPrenotificationsResourceWithStreamingResponse(self._client.ach_prenotifications)
 
     @cached_property
-    def inbound_ach_transfers(self) -> AsyncInboundACHTransfersResourceWithStreamingResponse:
+    def inbound_ach_transfers(self) -> inbound_ach_transfers.AsyncInboundACHTransfersResourceWithStreamingResponse:
         from .resources.inbound_ach_transfers import AsyncInboundACHTransfersResourceWithStreamingResponse
 
         return AsyncInboundACHTransfersResourceWithStreamingResponse(self._client.inbound_ach_transfers)
 
     @cached_property
-    def wire_transfers(self) -> AsyncWireTransfersResourceWithStreamingResponse:
+    def wire_transfers(self) -> wire_transfers.AsyncWireTransfersResourceWithStreamingResponse:
         from .resources.wire_transfers import AsyncWireTransfersResourceWithStreamingResponse
 
         return AsyncWireTransfersResourceWithStreamingResponse(self._client.wire_transfers)
 
     @cached_property
-    def inbound_wire_transfers(self) -> AsyncInboundWireTransfersResourceWithStreamingResponse:
+    def inbound_wire_transfers(self) -> inbound_wire_transfers.AsyncInboundWireTransfersResourceWithStreamingResponse:
         from .resources.inbound_wire_transfers import AsyncInboundWireTransfersResourceWithStreamingResponse
 
         return AsyncInboundWireTransfersResourceWithStreamingResponse(self._client.inbound_wire_transfers)
 
     @cached_property
-    def wire_drawdown_requests(self) -> AsyncWireDrawdownRequestsResourceWithStreamingResponse:
+    def wire_drawdown_requests(self) -> wire_drawdown_requests.AsyncWireDrawdownRequestsResourceWithStreamingResponse:
         from .resources.wire_drawdown_requests import AsyncWireDrawdownRequestsResourceWithStreamingResponse
 
         return AsyncWireDrawdownRequestsResourceWithStreamingResponse(self._client.wire_drawdown_requests)
@@ -2622,7 +2589,7 @@ class AsyncIncreaseWithStreamedResponse:
     @cached_property
     def inbound_wire_drawdown_requests(
         self,
-    ) -> AsyncInboundWireDrawdownRequestsResourceWithStreamingResponse:
+    ) -> inbound_wire_drawdown_requests.AsyncInboundWireDrawdownRequestsResourceWithStreamingResponse:
         from .resources.inbound_wire_drawdown_requests import (
             AsyncInboundWireDrawdownRequestsResourceWithStreamingResponse,
         )
@@ -2632,13 +2599,13 @@ class AsyncIncreaseWithStreamedResponse:
         )
 
     @cached_property
-    def check_transfers(self) -> AsyncCheckTransfersResourceWithStreamingResponse:
+    def check_transfers(self) -> check_transfers.AsyncCheckTransfersResourceWithStreamingResponse:
         from .resources.check_transfers import AsyncCheckTransfersResourceWithStreamingResponse
 
         return AsyncCheckTransfersResourceWithStreamingResponse(self._client.check_transfers)
 
     @cached_property
-    def inbound_check_deposits(self) -> AsyncInboundCheckDepositsResourceWithStreamingResponse:
+    def inbound_check_deposits(self) -> inbound_check_deposits.AsyncInboundCheckDepositsResourceWithStreamingResponse:
         from .resources.inbound_check_deposits import AsyncInboundCheckDepositsResourceWithStreamingResponse
 
         return AsyncInboundCheckDepositsResourceWithStreamingResponse(self._client.inbound_check_deposits)
@@ -2646,7 +2613,7 @@ class AsyncIncreaseWithStreamedResponse:
     @cached_property
     def real_time_payments_transfers(
         self,
-    ) -> AsyncRealTimePaymentsTransfersResourceWithStreamingResponse:
+    ) -> real_time_payments_transfers.AsyncRealTimePaymentsTransfersResourceWithStreamingResponse:
         from .resources.real_time_payments_transfers import AsyncRealTimePaymentsTransfersResourceWithStreamingResponse
 
         return AsyncRealTimePaymentsTransfersResourceWithStreamingResponse(self._client.real_time_payments_transfers)
@@ -2654,7 +2621,7 @@ class AsyncIncreaseWithStreamedResponse:
     @cached_property
     def inbound_real_time_payments_transfers(
         self,
-    ) -> AsyncInboundRealTimePaymentsTransfersResourceWithStreamingResponse:
+    ) -> inbound_real_time_payments_transfers.AsyncInboundRealTimePaymentsTransfersResourceWithStreamingResponse:
         from .resources.inbound_real_time_payments_transfers import (
             AsyncInboundRealTimePaymentsTransfersResourceWithStreamingResponse,
         )
@@ -2664,7 +2631,7 @@ class AsyncIncreaseWithStreamedResponse:
         )
 
     @cached_property
-    def fednow_transfers(self) -> AsyncFednowTransfersResourceWithStreamingResponse:
+    def fednow_transfers(self) -> fednow_transfers.AsyncFednowTransfersResourceWithStreamingResponse:
         from .resources.fednow_transfers import AsyncFednowTransfersResourceWithStreamingResponse
 
         return AsyncFednowTransfersResourceWithStreamingResponse(self._client.fednow_transfers)
@@ -2672,7 +2639,7 @@ class AsyncIncreaseWithStreamedResponse:
     @cached_property
     def inbound_fednow_transfers(
         self,
-    ) -> AsyncInboundFednowTransfersResourceWithStreamingResponse:
+    ) -> inbound_fednow_transfers.AsyncInboundFednowTransfersResourceWithStreamingResponse:
         from .resources.inbound_fednow_transfers import AsyncInboundFednowTransfersResourceWithStreamingResponse
 
         return AsyncInboundFednowTransfersResourceWithStreamingResponse(self._client.inbound_fednow_transfers)
@@ -2684,133 +2651,133 @@ class AsyncIncreaseWithStreamedResponse:
         return AsyncSwiftTransfersResourceWithStreamingResponse(self._client.swift_transfers)
 
     @cached_property
-    def check_deposits(self) -> AsyncCheckDepositsResourceWithStreamingResponse:
+    def check_deposits(self) -> check_deposits.AsyncCheckDepositsResourceWithStreamingResponse:
         from .resources.check_deposits import AsyncCheckDepositsResourceWithStreamingResponse
 
         return AsyncCheckDepositsResourceWithStreamingResponse(self._client.check_deposits)
 
     @cached_property
-    def lockboxes(self) -> AsyncLockboxesResourceWithStreamingResponse:
+    def lockboxes(self) -> lockboxes.AsyncLockboxesResourceWithStreamingResponse:
         from .resources.lockboxes import AsyncLockboxesResourceWithStreamingResponse
 
         return AsyncLockboxesResourceWithStreamingResponse(self._client.lockboxes)
 
     @cached_property
-    def inbound_mail_items(self) -> AsyncInboundMailItemsResourceWithStreamingResponse:
+    def inbound_mail_items(self) -> inbound_mail_items.AsyncInboundMailItemsResourceWithStreamingResponse:
         from .resources.inbound_mail_items import AsyncInboundMailItemsResourceWithStreamingResponse
 
         return AsyncInboundMailItemsResourceWithStreamingResponse(self._client.inbound_mail_items)
 
     @cached_property
-    def routing_numbers(self) -> AsyncRoutingNumbersResourceWithStreamingResponse:
+    def routing_numbers(self) -> routing_numbers.AsyncRoutingNumbersResourceWithStreamingResponse:
         from .resources.routing_numbers import AsyncRoutingNumbersResourceWithStreamingResponse
 
         return AsyncRoutingNumbersResourceWithStreamingResponse(self._client.routing_numbers)
 
     @cached_property
-    def external_accounts(self) -> AsyncExternalAccountsResourceWithStreamingResponse:
+    def external_accounts(self) -> external_accounts.AsyncExternalAccountsResourceWithStreamingResponse:
         from .resources.external_accounts import AsyncExternalAccountsResourceWithStreamingResponse
 
         return AsyncExternalAccountsResourceWithStreamingResponse(self._client.external_accounts)
 
     @cached_property
-    def entities(self) -> AsyncEntitiesResourceWithStreamingResponse:
+    def entities(self) -> entities.AsyncEntitiesResourceWithStreamingResponse:
         from .resources.entities import AsyncEntitiesResourceWithStreamingResponse
 
         return AsyncEntitiesResourceWithStreamingResponse(self._client.entities)
 
     @cached_property
-    def supplemental_documents(self) -> AsyncSupplementalDocumentsResourceWithStreamingResponse:
+    def supplemental_documents(self) -> supplemental_documents.AsyncSupplementalDocumentsResourceWithStreamingResponse:
         from .resources.supplemental_documents import AsyncSupplementalDocumentsResourceWithStreamingResponse
 
         return AsyncSupplementalDocumentsResourceWithStreamingResponse(self._client.supplemental_documents)
 
     @cached_property
-    def programs(self) -> AsyncProgramsResourceWithStreamingResponse:
+    def programs(self) -> programs.AsyncProgramsResourceWithStreamingResponse:
         from .resources.programs import AsyncProgramsResourceWithStreamingResponse
 
         return AsyncProgramsResourceWithStreamingResponse(self._client.programs)
 
     @cached_property
-    def account_statements(self) -> AsyncAccountStatementsResourceWithStreamingResponse:
+    def account_statements(self) -> account_statements.AsyncAccountStatementsResourceWithStreamingResponse:
         from .resources.account_statements import AsyncAccountStatementsResourceWithStreamingResponse
 
         return AsyncAccountStatementsResourceWithStreamingResponse(self._client.account_statements)
 
     @cached_property
-    def files(self) -> AsyncFilesResourceWithStreamingResponse:
+    def files(self) -> files.AsyncFilesResourceWithStreamingResponse:
         from .resources.files import AsyncFilesResourceWithStreamingResponse
 
         return AsyncFilesResourceWithStreamingResponse(self._client.files)
 
     @cached_property
-    def file_links(self) -> AsyncFileLinksResourceWithStreamingResponse:
+    def file_links(self) -> file_links.AsyncFileLinksResourceWithStreamingResponse:
         from .resources.file_links import AsyncFileLinksResourceWithStreamingResponse
 
         return AsyncFileLinksResourceWithStreamingResponse(self._client.file_links)
 
     @cached_property
-    def exports(self) -> AsyncExportsResourceWithStreamingResponse:
+    def exports(self) -> exports.AsyncExportsResourceWithStreamingResponse:
         from .resources.exports import AsyncExportsResourceWithStreamingResponse
 
         return AsyncExportsResourceWithStreamingResponse(self._client.exports)
 
     @cached_property
-    def events(self) -> AsyncEventsResourceWithStreamingResponse:
+    def events(self) -> events.AsyncEventsResourceWithStreamingResponse:
         from .resources.events import AsyncEventsResourceWithStreamingResponse
 
         return AsyncEventsResourceWithStreamingResponse(self._client.events)
 
     @cached_property
-    def event_subscriptions(self) -> AsyncEventSubscriptionsResourceWithStreamingResponse:
+    def event_subscriptions(self) -> event_subscriptions.AsyncEventSubscriptionsResourceWithStreamingResponse:
         from .resources.event_subscriptions import AsyncEventSubscriptionsResourceWithStreamingResponse
 
         return AsyncEventSubscriptionsResourceWithStreamingResponse(self._client.event_subscriptions)
 
     @cached_property
-    def real_time_decisions(self) -> AsyncRealTimeDecisionsResourceWithStreamingResponse:
+    def real_time_decisions(self) -> real_time_decisions.AsyncRealTimeDecisionsResourceWithStreamingResponse:
         from .resources.real_time_decisions import AsyncRealTimeDecisionsResourceWithStreamingResponse
 
         return AsyncRealTimeDecisionsResourceWithStreamingResponse(self._client.real_time_decisions)
 
     @cached_property
-    def bookkeeping_accounts(self) -> AsyncBookkeepingAccountsResourceWithStreamingResponse:
+    def bookkeeping_accounts(self) -> bookkeeping_accounts.AsyncBookkeepingAccountsResourceWithStreamingResponse:
         from .resources.bookkeeping_accounts import AsyncBookkeepingAccountsResourceWithStreamingResponse
 
         return AsyncBookkeepingAccountsResourceWithStreamingResponse(self._client.bookkeeping_accounts)
 
     @cached_property
-    def bookkeeping_entry_sets(self) -> AsyncBookkeepingEntrySetsResourceWithStreamingResponse:
+    def bookkeeping_entry_sets(self) -> bookkeeping_entry_sets.AsyncBookkeepingEntrySetsResourceWithStreamingResponse:
         from .resources.bookkeeping_entry_sets import AsyncBookkeepingEntrySetsResourceWithStreamingResponse
 
         return AsyncBookkeepingEntrySetsResourceWithStreamingResponse(self._client.bookkeeping_entry_sets)
 
     @cached_property
-    def bookkeeping_entries(self) -> AsyncBookkeepingEntriesResourceWithStreamingResponse:
+    def bookkeeping_entries(self) -> bookkeeping_entries.AsyncBookkeepingEntriesResourceWithStreamingResponse:
         from .resources.bookkeeping_entries import AsyncBookkeepingEntriesResourceWithStreamingResponse
 
         return AsyncBookkeepingEntriesResourceWithStreamingResponse(self._client.bookkeeping_entries)
 
     @cached_property
-    def groups(self) -> AsyncGroupsResourceWithStreamingResponse:
+    def groups(self) -> groups.AsyncGroupsResourceWithStreamingResponse:
         from .resources.groups import AsyncGroupsResourceWithStreamingResponse
 
         return AsyncGroupsResourceWithStreamingResponse(self._client.groups)
 
     @cached_property
-    def oauth_applications(self) -> AsyncOAuthApplicationsResourceWithStreamingResponse:
+    def oauth_applications(self) -> oauth_applications.AsyncOAuthApplicationsResourceWithStreamingResponse:
         from .resources.oauth_applications import AsyncOAuthApplicationsResourceWithStreamingResponse
 
         return AsyncOAuthApplicationsResourceWithStreamingResponse(self._client.oauth_applications)
 
     @cached_property
-    def oauth_connections(self) -> AsyncOAuthConnectionsResourceWithStreamingResponse:
+    def oauth_connections(self) -> oauth_connections.AsyncOAuthConnectionsResourceWithStreamingResponse:
         from .resources.oauth_connections import AsyncOAuthConnectionsResourceWithStreamingResponse
 
         return AsyncOAuthConnectionsResourceWithStreamingResponse(self._client.oauth_connections)
 
     @cached_property
-    def oauth_tokens(self) -> AsyncOAuthTokensResourceWithStreamingResponse:
+    def oauth_tokens(self) -> oauth_tokens.AsyncOAuthTokensResourceWithStreamingResponse:
         from .resources.oauth_tokens import AsyncOAuthTokensResourceWithStreamingResponse
 
         return AsyncOAuthTokensResourceWithStreamingResponse(self._client.oauth_tokens)
@@ -2818,43 +2785,43 @@ class AsyncIncreaseWithStreamedResponse:
     @cached_property
     def intrafi_account_enrollments(
         self,
-    ) -> AsyncIntrafiAccountEnrollmentsResourceWithStreamingResponse:
+    ) -> intrafi_account_enrollments.AsyncIntrafiAccountEnrollmentsResourceWithStreamingResponse:
         from .resources.intrafi_account_enrollments import AsyncIntrafiAccountEnrollmentsResourceWithStreamingResponse
 
         return AsyncIntrafiAccountEnrollmentsResourceWithStreamingResponse(self._client.intrafi_account_enrollments)
 
     @cached_property
-    def intrafi_balances(self) -> AsyncIntrafiBalancesResourceWithStreamingResponse:
+    def intrafi_balances(self) -> intrafi_balances.AsyncIntrafiBalancesResourceWithStreamingResponse:
         from .resources.intrafi_balances import AsyncIntrafiBalancesResourceWithStreamingResponse
 
         return AsyncIntrafiBalancesResourceWithStreamingResponse(self._client.intrafi_balances)
 
     @cached_property
-    def intrafi_exclusions(self) -> AsyncIntrafiExclusionsResourceWithStreamingResponse:
+    def intrafi_exclusions(self) -> intrafi_exclusions.AsyncIntrafiExclusionsResourceWithStreamingResponse:
         from .resources.intrafi_exclusions import AsyncIntrafiExclusionsResourceWithStreamingResponse
 
         return AsyncIntrafiExclusionsResourceWithStreamingResponse(self._client.intrafi_exclusions)
 
     @cached_property
-    def card_tokens(self) -> AsyncCardTokensResourceWithStreamingResponse:
+    def card_tokens(self) -> card_tokens.AsyncCardTokensResourceWithStreamingResponse:
         from .resources.card_tokens import AsyncCardTokensResourceWithStreamingResponse
 
         return AsyncCardTokensResourceWithStreamingResponse(self._client.card_tokens)
 
     @cached_property
-    def card_push_transfers(self) -> AsyncCardPushTransfersResourceWithStreamingResponse:
+    def card_push_transfers(self) -> card_push_transfers.AsyncCardPushTransfersResourceWithStreamingResponse:
         from .resources.card_push_transfers import AsyncCardPushTransfersResourceWithStreamingResponse
 
         return AsyncCardPushTransfersResourceWithStreamingResponse(self._client.card_push_transfers)
 
     @cached_property
-    def card_validations(self) -> AsyncCardValidationsResourceWithStreamingResponse:
+    def card_validations(self) -> card_validations.AsyncCardValidationsResourceWithStreamingResponse:
         from .resources.card_validations import AsyncCardValidationsResourceWithStreamingResponse
 
         return AsyncCardValidationsResourceWithStreamingResponse(self._client.card_validations)
 
     @cached_property
-    def simulations(self) -> AsyncSimulationsResourceWithStreamingResponse:
+    def simulations(self) -> simulations.AsyncSimulationsResourceWithStreamingResponse:
         from .resources.simulations import AsyncSimulationsResourceWithStreamingResponse
 
         return AsyncSimulationsResourceWithStreamingResponse(self._client.simulations)
