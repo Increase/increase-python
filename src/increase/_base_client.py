@@ -804,7 +804,7 @@ class BaseClient(Generic[_HttpxClientT, _DefaultStreamT]):
         return False
 
     def _idempotency_key(self) -> str:
-        return f"increase-python-retry-{uuid.uuid4()}"
+        return f"stainless-python-retry-{uuid.uuid4()}"
 
 
 class _DefaultHttpxClient(httpx.Client):

@@ -759,13 +759,6 @@ Methods:
 - <code title="get /intrafi_exclusions">client.intrafi_exclusions.<a href="./src/increase/resources/intrafi_exclusions.py">list</a>(\*\*<a href="src/increase/types/intrafi_exclusion_list_params.py">params</a>) -> <a href="./src/increase/types/intrafi_exclusion.py">SyncPage[IntrafiExclusion]</a></code>
 - <code title="post /intrafi_exclusions/{intrafi_exclusion_id}/archive">client.intrafi_exclusions.<a href="./src/increase/resources/intrafi_exclusions.py">archive</a>(intrafi_exclusion_id) -> <a href="./src/increase/types/intrafi_exclusion.py">IntrafiExclusion</a></code>
 
-# Webhooks
-
-Methods:
-
-- <code>client.webhooks.<a href="./src/increase/resources/webhooks.py">unwrap</a>(\*args) -> object</code>
-- <code>client.webhooks.<a href="./src/increase/resources/webhooks.py">verify_signature</a>(\*args) -> None</code>
-
 # CardTokens
 
 Types:
