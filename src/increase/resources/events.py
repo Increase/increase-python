@@ -146,11 +146,12 @@ class EventsResource(SyncAPIResource):
             raise IncreaseError("You need to install `increase[webhooks]` to use this method") from exc
 
         if key is None:
-            key = self._client.webhook_secret
-            if key is None:
+            raw_key = self._client.webhook_secret
+            if raw_key is None:
                 raise ValueError(
                     "Cannot verify a webhook without a key on either the client's webhook_secret or passed in as an argument"
                 )
+            key = raw_key.encode("utf-8")
 
         if not isinstance(headers, dict):
             headers = dict(headers)
@@ -284,11 +285,12 @@ class AsyncEventsResource(AsyncAPIResource):
             raise IncreaseError("You need to install `increase[webhooks]` to use this method") from exc
 
         if key is None:
-            key = self._client.webhook_secret
-            if key is None:
+            raw_key = self._client.webhook_secret
+            if raw_key is None:
                 raise ValueError(
                     "Cannot verify a webhook without a key on either the client's webhook_secret or passed in as an argument"
                 )
+            key = raw_key.encode("utf-8")
 
         if not isinstance(headers, dict):
             headers = dict(headers)
