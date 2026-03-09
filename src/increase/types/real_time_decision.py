@@ -14,6 +14,9 @@ __all__ = [
     "CardAuthenticationDeviceChannel",
     "CardAuthenticationDeviceChannelBrowser",
     "CardAuthenticationDeviceChannelMerchantInitiated",
+    "CardAuthenticationMessageCategory",
+    "CardAuthenticationMessageCategoryNonPayment",
+    "CardAuthenticationMessageCategoryPayment",
     "CardAuthenticationChallenge",
     "CardAuthorization",
     "CardAuthorizationAdditionalAmounts",
@@ -157,6 +160,67 @@ class CardAuthenticationDeviceChannel(BaseModel):
     """Fields specific to merchant initiated transactions."""
 
 
+class CardAuthenticationMessageCategoryNonPayment(BaseModel):
+    """Fields specific to non-payment authentication attempts."""
+
+    pass
+
+
+class CardAuthenticationMessageCategoryPayment(BaseModel):
+    """Fields specific to payment authentication attempts."""
+
+    purchase_amount: int
+    """The purchase amount in minor units."""
+
+    purchase_amount_cardholder_estimated: Optional[int] = None
+    """
+    The purchase amount in the cardholder's currency (i.e., USD) estimated using
+    daily conversion rates from the card network.
+    """
+
+    purchase_currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+    authentication attempt's purchase currency.
+    """
+
+    transaction_type: Optional[
+        Literal[
+            "goods_service_purchase",
+            "check_acceptance",
+            "account_funding",
+            "quasi_cash_transaction",
+            "prepaid_activation_and_load",
+        ]
+    ] = None
+    """The type of transaction being authenticated.
+
+    - `goods_service_purchase` - Purchase of goods or services.
+    - `check_acceptance` - Check acceptance.
+    - `account_funding` - Account funding.
+    - `quasi_cash_transaction` - Quasi-cash transaction.
+    - `prepaid_activation_and_load` - Prepaid activation and load.
+    """
+
+
+class CardAuthenticationMessageCategory(BaseModel):
+    """The message category of the card authentication attempt."""
+
+    category: Literal["payment_authentication", "non_payment_authentication"]
+    """The category of the card authentication attempt.
+
+    - `payment_authentication` - The authentication attempt is for a payment.
+    - `non_payment_authentication` - The authentication attempt is not for a
+      payment.
+    """
+
+    non_payment: Optional[CardAuthenticationMessageCategoryNonPayment] = None
+    """Fields specific to non-payment authentication attempts."""
+
+    payment: Optional[CardAuthenticationMessageCategoryPayment] = None
+    """Fields specific to payment authentication attempts."""
+
+
 class CardAuthentication(BaseModel):
     """Fields related to a 3DS authentication attempt."""
 
@@ -220,14 +284,6 @@ class CardAuthentication(BaseModel):
     cardholder_name: Optional[str] = None
     """The name of the cardholder."""
 
-    category: Optional[Literal["payment_authentication", "non_payment_authentication"]] = None
-    """The category of the card authentication attempt.
-
-    - `payment_authentication` - The authentication attempt is for a payment.
-    - `non_payment_authentication` - The authentication attempt is not for a
-      payment.
-    """
-
     decision: Optional[Literal["approve", "challenge", "deny"]] = None
     """Whether or not the authentication attempt was approved.
 
@@ -264,25 +320,13 @@ class CardAuthentication(BaseModel):
     merchant_name: Optional[str] = None
     """The name of the merchant."""
 
+    message_category: CardAuthenticationMessageCategory
+    """The message category of the card authentication attempt."""
+
     prior_authenticated_card_payment_id: Optional[str] = None
     """
     The ID of a prior Card Authentication that the requestor used to authenticate
     this cardholder for a previous transaction.
-    """
-
-    purchase_amount: Optional[int] = None
-    """The purchase amount in minor units."""
-
-    purchase_amount_cardholder_estimated: Optional[int] = None
-    """
-    The purchase amount in the cardholder's currency (i.e., USD) estimated using
-    daily conversion rates from the card network.
-    """
-
-    purchase_currency: Optional[str] = None
-    """
-    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-    authentication attempt's purchase currency.
     """
 
     requestor_authentication_indicator: Optional[
@@ -374,24 +418,6 @@ class CardAuthentication(BaseModel):
     """
     A unique identifier assigned by the 3DS Server initiating the authentication
     attempt for this transaction.
-    """
-
-    transaction_type: Optional[
-        Literal[
-            "goods_service_purchase",
-            "check_acceptance",
-            "account_funding",
-            "quasi_cash_transaction",
-            "prepaid_activation_and_load",
-        ]
-    ] = None
-    """The type of transaction being authenticated.
-
-    - `goods_service_purchase` - Purchase of goods or services.
-    - `check_acceptance` - Check acceptance.
-    - `account_funding` - Account funding.
-    - `quasi_cash_transaction` - Quasi-cash transaction.
-    - `prepaid_activation_and_load` - Prepaid activation and load.
     """
 
     upcoming_card_payment_id: str
