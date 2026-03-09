@@ -264,7 +264,7 @@ class CardAuthentication(BaseModel):
     merchant_name: Optional[str] = None
     """The name of the merchant."""
 
-    prior_card_authentication_id: Optional[str] = None
+    prior_authenticated_card_payment_id: Optional[str] = None
     """
     The ID of a prior Card Authentication that the requestor used to authenticate
     this cardholder for a previous transaction.
