@@ -17,6 +17,9 @@ __all__ = [
     "ElementCardAuthenticationDeviceChannel",
     "ElementCardAuthenticationDeviceChannelBrowser",
     "ElementCardAuthenticationDeviceChannelMerchantInitiated",
+    "ElementCardAuthenticationMessageCategory",
+    "ElementCardAuthenticationMessageCategoryNonPayment",
+    "ElementCardAuthenticationMessageCategoryPayment",
     "ElementCardAuthorization",
     "ElementCardAuthorizationAdditionalAmounts",
     "ElementCardAuthorizationAdditionalAmountsClinic",
@@ -299,6 +302,67 @@ class ElementCardAuthenticationDeviceChannel(BaseModel):
     """Fields specific to merchant initiated transactions."""
 
 
+class ElementCardAuthenticationMessageCategoryNonPayment(BaseModel):
+    """Fields specific to non-payment authentication attempts."""
+
+    pass
+
+
+class ElementCardAuthenticationMessageCategoryPayment(BaseModel):
+    """Fields specific to payment authentication attempts."""
+
+    purchase_amount: int
+    """The purchase amount in minor units."""
+
+    purchase_amount_cardholder_estimated: Optional[int] = None
+    """
+    The purchase amount in the cardholder's currency (i.e., USD) estimated using
+    daily conversion rates from the card network.
+    """
+
+    purchase_currency: str
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
+    authentication attempt's purchase currency.
+    """
+
+    transaction_type: Optional[
+        Literal[
+            "goods_service_purchase",
+            "check_acceptance",
+            "account_funding",
+            "quasi_cash_transaction",
+            "prepaid_activation_and_load",
+        ]
+    ] = None
+    """The type of transaction being authenticated.
+
+    - `goods_service_purchase` - Purchase of goods or services.
+    - `check_acceptance` - Check acceptance.
+    - `account_funding` - Account funding.
+    - `quasi_cash_transaction` - Quasi-cash transaction.
+    - `prepaid_activation_and_load` - Prepaid activation and load.
+    """
+
+
+class ElementCardAuthenticationMessageCategory(BaseModel):
+    """The message category of the card authentication attempt."""
+
+    category: Literal["payment_authentication", "non_payment_authentication"]
+    """The category of the card authentication attempt.
+
+    - `payment_authentication` - The authentication attempt is for a payment.
+    - `non_payment_authentication` - The authentication attempt is not for a
+      payment.
+    """
+
+    non_payment: Optional[ElementCardAuthenticationMessageCategoryNonPayment] = None
+    """Fields specific to non-payment authentication attempts."""
+
+    payment: Optional[ElementCardAuthenticationMessageCategoryPayment] = None
+    """Fields specific to payment authentication attempts."""
+
+
 class ElementCardAuthentication(BaseModel):
     """A Card Authentication object.
 
@@ -368,14 +432,6 @@ class ElementCardAuthentication(BaseModel):
     cardholder_name: Optional[str] = None
     """The name of the cardholder."""
 
-    category: Optional[Literal["payment_authentication", "non_payment_authentication"]] = None
-    """The category of the card authentication attempt.
-
-    - `payment_authentication` - The authentication attempt is for a payment.
-    - `non_payment_authentication` - The authentication attempt is not for a
-      payment.
-    """
-
     challenge: Optional[ElementCardAuthenticationChallenge] = None
     """Details about the challenge, if one was requested."""
 
@@ -432,25 +488,13 @@ class ElementCardAuthentication(BaseModel):
     merchant_name: Optional[str] = None
     """The name of the merchant."""
 
+    message_category: ElementCardAuthenticationMessageCategory
+    """The message category of the card authentication attempt."""
+
     prior_authenticated_card_payment_id: Optional[str] = None
     """
     The ID of a prior Card Authentication that the requestor used to authenticate
     this cardholder for a previous transaction.
-    """
-
-    purchase_amount: Optional[int] = None
-    """The purchase amount in minor units."""
-
-    purchase_amount_cardholder_estimated: Optional[int] = None
-    """
-    The purchase amount in the cardholder's currency (i.e., USD) estimated using
-    daily conversion rates from the card network.
-    """
-
-    purchase_currency: Optional[str] = None
-    """
-    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the
-    authentication attempt's purchase currency.
     """
 
     real_time_decision_id: Optional[str] = None
@@ -576,24 +620,6 @@ class ElementCardAuthentication(BaseModel):
     """
     A unique identifier assigned by the 3DS Server initiating the authentication
     attempt for this transaction.
-    """
-
-    transaction_type: Optional[
-        Literal[
-            "goods_service_purchase",
-            "check_acceptance",
-            "account_funding",
-            "quasi_cash_transaction",
-            "prepaid_activation_and_load",
-        ]
-    ] = None
-    """The type of transaction being authenticated.
-
-    - `goods_service_purchase` - Purchase of goods or services.
-    - `check_acceptance` - Check acceptance.
-    - `account_funding` - Account funding.
-    - `quasi_cash_transaction` - Quasi-cash transaction.
-    - `prepaid_activation_and_load` - Prepaid activation and load.
     """
 
     type: Literal["card_authentication"]
