@@ -414,22 +414,22 @@ class ElementCardAuthentication(BaseModel):
     transaction.
     """
 
-    merchant_acceptor_id: str
+    merchant_acceptor_id: Optional[str] = None
     """
     The merchant identifier (commonly abbreviated as MID) of the merchant the card
     is transacting with.
     """
 
-    merchant_category_code: str
+    merchant_category_code: Optional[str] = None
     """
     The Merchant Category Code (commonly abbreviated as MCC) of the merchant the
     card is transacting with.
     """
 
-    merchant_country: str
+    merchant_country: Optional[str] = None
     """The country the merchant resides in."""
 
-    merchant_name: str
+    merchant_name: Optional[str] = None
     """The name of the merchant."""
 
     prior_card_authentication_id: Optional[str] = None
