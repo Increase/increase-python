@@ -50,6 +50,7 @@ class CardTokensResource(SyncAPIResource):
         capabilities: Iterable[card_token_create_params.Capability] | Omit = omit,
         expiration: Union[str, date] | Omit = omit,
         last4: str | Omit = omit,
+        outcome: card_token_create_params.Outcome | Omit = omit,
         prefix: str | Omit = omit,
         primary_account_number_length: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -69,6 +70,8 @@ class CardTokensResource(SyncAPIResource):
           expiration: The expiration date of the card.
 
           last4: The last 4 digits of the card number.
+
+          outcome: The outcome to simulate for card push transfers using this token.
 
           prefix: The prefix of the card number, usually the first 8 digits.
 
@@ -91,6 +94,7 @@ class CardTokensResource(SyncAPIResource):
                     "capabilities": capabilities,
                     "expiration": expiration,
                     "last4": last4,
+                    "outcome": outcome,
                     "prefix": prefix,
                     "primary_account_number_length": primary_account_number_length,
                 },
@@ -133,6 +137,7 @@ class AsyncCardTokensResource(AsyncAPIResource):
         capabilities: Iterable[card_token_create_params.Capability] | Omit = omit,
         expiration: Union[str, date] | Omit = omit,
         last4: str | Omit = omit,
+        outcome: card_token_create_params.Outcome | Omit = omit,
         prefix: str | Omit = omit,
         primary_account_number_length: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -152,6 +157,8 @@ class AsyncCardTokensResource(AsyncAPIResource):
           expiration: The expiration date of the card.
 
           last4: The last 4 digits of the card number.
+
+          outcome: The outcome to simulate for card push transfers using this token.
 
           prefix: The prefix of the card number, usually the first 8 digits.
 
@@ -174,6 +181,7 @@ class AsyncCardTokensResource(AsyncAPIResource):
                     "capabilities": capabilities,
                     "expiration": expiration,
                     "last4": last4,
+                    "outcome": outcome,
                     "prefix": prefix,
                     "primary_account_number_length": primary_account_number_length,
                 },
