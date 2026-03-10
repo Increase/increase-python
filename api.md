@@ -505,6 +505,19 @@ Methods:
 - <code title="post /entities/{entity_id}/create_beneficial_owner">client.entities.<a href="./src/increase/resources/entities.py">create_beneficial_owner</a>(entity_id, \*\*<a href="src/increase/types/entity_create_beneficial_owner_params.py">params</a>) -> <a href="./src/increase/types/entity.py">Entity</a></code>
 - <code title="post /entities/{entity_id}/update_beneficial_owner_address">client.entities.<a href="./src/increase/resources/entities.py">update_beneficial_owner_address</a>(entity_id, \*\*<a href="src/increase/types/entity_update_beneficial_owner_address_params.py">params</a>) -> <a href="./src/increase/types/entity.py">Entity</a></code>
 
+# BeneficialOwners
+
+Types:
+
+```python
+from increase.types import EntityBeneficialOwner
+```
+
+Methods:
+
+- <code title="get /entity_beneficial_owners/{entity_beneficial_owner_id}">client.beneficial_owners.<a href="./src/increase/resources/beneficial_owners.py">retrieve</a>(entity_beneficial_owner_id) -> <a href="./src/increase/types/entity_beneficial_owner.py">EntityBeneficialOwner</a></code>
+- <code title="get /entity_beneficial_owners">client.beneficial_owners.<a href="./src/increase/resources/beneficial_owners.py">list</a>(\*\*<a href="src/increase/types/beneficial_owner_list_params.py">params</a>) -> <a href="./src/increase/types/entity_beneficial_owner.py">SyncPage[EntityBeneficialOwner]</a></code>
+
 # SupplementalDocuments
 
 Types:

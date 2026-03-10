@@ -224,6 +224,14 @@ from .account_transfers import (
     AccountTransfersResourceWithStreamingResponse,
     AsyncAccountTransfersResourceWithStreamingResponse,
 )
+from .beneficial_owners import (
+    BeneficialOwnersResource,
+    AsyncBeneficialOwnersResource,
+    BeneficialOwnersResourceWithRawResponse,
+    AsyncBeneficialOwnersResourceWithRawResponse,
+    BeneficialOwnersResourceWithStreamingResponse,
+    AsyncBeneficialOwnersResourceWithStreamingResponse,
+)
 from .external_accounts import (
     ExternalAccountsResource,
     AsyncExternalAccountsResource,
@@ -662,6 +670,12 @@ __all__ = [
     "AsyncEntitiesResourceWithRawResponse",
     "EntitiesResourceWithStreamingResponse",
     "AsyncEntitiesResourceWithStreamingResponse",
+    "BeneficialOwnersResource",
+    "AsyncBeneficialOwnersResource",
+    "BeneficialOwnersResourceWithRawResponse",
+    "AsyncBeneficialOwnersResourceWithRawResponse",
+    "BeneficialOwnersResourceWithStreamingResponse",
+    "AsyncBeneficialOwnersResourceWithStreamingResponse",
     "SupplementalDocumentsResource",
     "AsyncSupplementalDocumentsResource",
     "SupplementalDocumentsResourceWithRawResponse",

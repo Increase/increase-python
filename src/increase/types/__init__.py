@@ -76,6 +76,7 @@ from .account_balance_params import AccountBalanceParams as AccountBalanceParams
 from .card_token_list_params import CardTokenListParams as CardTokenListParams
 from .card_update_pin_params import CardUpdatePinParams as CardUpdatePinParams
 from .card_token_capabilities import CardTokenCapabilities as CardTokenCapabilities
+from .entity_beneficial_owner import EntityBeneficialOwner as EntityBeneficialOwner
 from .file_link_create_params import FileLinkCreateParams as FileLinkCreateParams
 from .inbound_fednow_transfer import InboundFednowTransfer as InboundFednowTransfer
 from .transaction_list_params import TransactionListParams as TransactionListParams
@@ -105,6 +106,7 @@ from .wire_transfer_create_params import WireTransferCreateParams as WireTransfe
 from .account_number_create_params import AccountNumberCreateParams as AccountNumberCreateParams
 from .account_number_update_params import AccountNumberUpdateParams as AccountNumberUpdateParams
 from .account_transfer_list_params import AccountTransferListParams as AccountTransferListParams
+from .beneficial_owner_list_params import BeneficialOwnerListParams as BeneficialOwnerListParams
 from .card_dispute_withdraw_params import CardDisputeWithdrawParams as CardDisputeWithdrawParams
 from .check_transfer_create_params import CheckTransferCreateParams as CheckTransferCreateParams
 from .entity_supplemental_document import EntitySupplementalDocument as EntitySupplementalDocument
