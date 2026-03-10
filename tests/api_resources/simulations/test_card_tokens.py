@@ -35,6 +35,10 @@ class TestCardTokens:
             ],
             expiration=parse_date("2019-12-27"),
             last4="1234",
+            outcome={
+                "result": "approve",
+                "decline": {"reason": "do_not_honor"},
+            },
             prefix="41234567",
             primary_account_number_length=16,
         )
@@ -83,6 +87,10 @@ class TestAsyncCardTokens:
             ],
             expiration=parse_date("2019-12-27"),
             last4="1234",
+            outcome={
+                "result": "approve",
+                "decline": {"reason": "do_not_honor"},
+            },
             prefix="41234567",
             primary_account_number_length=16,
         )
