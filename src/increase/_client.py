@@ -64,6 +64,7 @@ if TYPE_CHECKING:
         fednow_transfers,
         intrafi_balances,
         account_transfers,
+        beneficial_owners,
         external_accounts,
         oauth_connections,
         account_statements,
@@ -121,6 +122,7 @@ if TYPE_CHECKING:
     from .resources.fednow_transfers import FednowTransfersResource, AsyncFednowTransfersResource
     from .resources.intrafi_balances import IntrafiBalancesResource, AsyncIntrafiBalancesResource
     from .resources.account_transfers import AccountTransfersResource, AsyncAccountTransfersResource
+    from .resources.beneficial_owners import BeneficialOwnersResource, AsyncBeneficialOwnersResource
     from .resources.external_accounts import ExternalAccountsResource, AsyncExternalAccountsResource
     from .resources.oauth_connections import OAuthConnectionsResource, AsyncOAuthConnectionsResource
     from .resources.account_statements import AccountStatementsResource, AsyncAccountStatementsResource
@@ -477,6 +479,12 @@ class Increase(SyncAPIClient):
         from .resources.entities import EntitiesResource
 
         return EntitiesResource(self)
+
+    @cached_property
+    def beneficial_owners(self) -> BeneficialOwnersResource:
+        from .resources.beneficial_owners import BeneficialOwnersResource
+
+        return BeneficialOwnersResource(self)
 
     @cached_property
     def supplemental_documents(self) -> SupplementalDocumentsResource:
@@ -1072,6 +1080,12 @@ class AsyncIncrease(AsyncAPIClient):
         return AsyncEntitiesResource(self)
 
     @cached_property
+    def beneficial_owners(self) -> AsyncBeneficialOwnersResource:
+        from .resources.beneficial_owners import AsyncBeneficialOwnersResource
+
+        return AsyncBeneficialOwnersResource(self)
+
+    @cached_property
     def supplemental_documents(self) -> AsyncSupplementalDocumentsResource:
         from .resources.supplemental_documents import AsyncSupplementalDocumentsResource
 
@@ -1592,6 +1606,12 @@ class IncreaseWithRawResponse:
         return EntitiesResourceWithRawResponse(self._client.entities)
 
     @cached_property
+    def beneficial_owners(self) -> beneficial_owners.BeneficialOwnersResourceWithRawResponse:
+        from .resources.beneficial_owners import BeneficialOwnersResourceWithRawResponse
+
+        return BeneficialOwnersResourceWithRawResponse(self._client.beneficial_owners)
+
+    @cached_property
     def supplemental_documents(self) -> supplemental_documents.SupplementalDocumentsResourceWithRawResponse:
         from .resources.supplemental_documents import SupplementalDocumentsResourceWithRawResponse
 
@@ -1955,6 +1975,12 @@ class AsyncIncreaseWithRawResponse:
         return AsyncEntitiesResourceWithRawResponse(self._client.entities)
 
     @cached_property
+    def beneficial_owners(self) -> beneficial_owners.AsyncBeneficialOwnersResourceWithRawResponse:
+        from .resources.beneficial_owners import AsyncBeneficialOwnersResourceWithRawResponse
+
+        return AsyncBeneficialOwnersResourceWithRawResponse(self._client.beneficial_owners)
+
+    @cached_property
     def supplemental_documents(self) -> supplemental_documents.AsyncSupplementalDocumentsResourceWithRawResponse:
         from .resources.supplemental_documents import AsyncSupplementalDocumentsResourceWithRawResponse
 
@@ -2316,6 +2342,12 @@ class IncreaseWithStreamedResponse:
         from .resources.entities import EntitiesResourceWithStreamingResponse
 
         return EntitiesResourceWithStreamingResponse(self._client.entities)
+
+    @cached_property
+    def beneficial_owners(self) -> beneficial_owners.BeneficialOwnersResourceWithStreamingResponse:
+        from .resources.beneficial_owners import BeneficialOwnersResourceWithStreamingResponse
+
+        return BeneficialOwnersResourceWithStreamingResponse(self._client.beneficial_owners)
 
     @cached_property
     def supplemental_documents(self) -> supplemental_documents.SupplementalDocumentsResourceWithStreamingResponse:
@@ -2685,6 +2717,12 @@ class AsyncIncreaseWithStreamedResponse:
         from .resources.entities import AsyncEntitiesResourceWithStreamingResponse
 
         return AsyncEntitiesResourceWithStreamingResponse(self._client.entities)
+
+    @cached_property
+    def beneficial_owners(self) -> beneficial_owners.AsyncBeneficialOwnersResourceWithStreamingResponse:
+        from .resources.beneficial_owners import AsyncBeneficialOwnersResourceWithStreamingResponse
+
+        return AsyncBeneficialOwnersResourceWithStreamingResponse(self._client.beneficial_owners)
 
     @cached_property
     def supplemental_documents(self) -> supplemental_documents.AsyncSupplementalDocumentsResourceWithStreamingResponse:
