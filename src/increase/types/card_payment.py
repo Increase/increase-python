@@ -197,6 +197,9 @@ class ElementCardAuthenticationChallenge(BaseModel):
     one_time_code: str
     """The one-time code used for the Card Authentication Challenge."""
 
+    real_time_decision_id: Optional[str] = None
+    """The identifier of the Real-Time Decision used to deliver this challenge."""
+
     verification_method: Literal["text_message", "email", "none_available"]
     """The method used to verify the Card Authentication Challenge.
 
