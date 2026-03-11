@@ -10,6 +10,7 @@ import pytest
 from increase import Increase, AsyncIncrease
 from tests.utils import assert_matches_type
 from increase.types import EntityBeneficialOwner
+from increase._utils import parse_date
 from increase.pagination import SyncPage, AsyncPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -76,6 +77,29 @@ class TestBeneficialOwners:
                 "line2": "Unit 2",
                 "state": "NY",
                 "zip": "10045",
+            },
+            confirmed_no_us_tax_id=True,
+            identification={
+                "method": "social_security_number",
+                "number": "xxxx",
+                "drivers_license": {
+                    "expiration_date": parse_date("2019-12-27"),
+                    "file_id": "file_id",
+                    "state": "x",
+                    "back_file_id": "back_file_id",
+                },
+                "other": {
+                    "country": "x",
+                    "description": "x",
+                    "file_id": "file_id",
+                    "back_file_id": "back_file_id",
+                    "expiration_date": parse_date("2019-12-27"),
+                },
+                "passport": {
+                    "country": "x",
+                    "expiration_date": parse_date("2019-12-27"),
+                    "file_id": "file_id",
+                },
             },
         )
         assert_matches_type(EntityBeneficialOwner, beneficial_owner, path=["response"])
@@ -218,6 +242,29 @@ class TestAsyncBeneficialOwners:
                 "line2": "Unit 2",
                 "state": "NY",
                 "zip": "10045",
+            },
+            confirmed_no_us_tax_id=True,
+            identification={
+                "method": "social_security_number",
+                "number": "xxxx",
+                "drivers_license": {
+                    "expiration_date": parse_date("2019-12-27"),
+                    "file_id": "file_id",
+                    "state": "x",
+                    "back_file_id": "back_file_id",
+                },
+                "other": {
+                    "country": "x",
+                    "description": "x",
+                    "file_id": "file_id",
+                    "back_file_id": "back_file_id",
+                    "expiration_date": parse_date("2019-12-27"),
+                },
+                "passport": {
+                    "country": "x",
+                    "expiration_date": parse_date("2019-12-27"),
+                    "file_id": "file_id",
+                },
             },
         )
         assert_matches_type(EntityBeneficialOwner, beneficial_owner, path=["response"])
