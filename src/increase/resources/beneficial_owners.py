@@ -84,6 +84,8 @@ class BeneficialOwnersResource(SyncAPIResource):
         entity_beneficial_owner_id: str,
         *,
         address: beneficial_owner_update_params.Address | Omit = omit,
+        confirmed_no_us_tax_id: bool | Omit = omit,
+        identification: beneficial_owner_update_params.Identification | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -101,6 +103,13 @@ class BeneficialOwnersResource(SyncAPIResource):
           address: The individual's physical address. Mail receiving locations like PO Boxes and
               PMB's are disallowed.
 
+          confirmed_no_us_tax_id: The identification method for an individual can only be a passport, driver's
+              license, or other document if you've confirmed the individual does not have a US
+              tax id (either a Social Security Number or Individual Taxpayer Identification
+              Number).
+
+          identification: A means of verifying the person's identity.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -117,7 +126,14 @@ class BeneficialOwnersResource(SyncAPIResource):
             )
         return self._patch(
             f"/entity_beneficial_owners/{entity_beneficial_owner_id}",
-            body=maybe_transform({"address": address}, beneficial_owner_update_params.BeneficialOwnerUpdateParams),
+            body=maybe_transform(
+                {
+                    "address": address,
+                    "confirmed_no_us_tax_id": confirmed_no_us_tax_id,
+                    "identification": identification,
+                },
+                beneficial_owner_update_params.BeneficialOwnerUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -251,6 +267,8 @@ class AsyncBeneficialOwnersResource(AsyncAPIResource):
         entity_beneficial_owner_id: str,
         *,
         address: beneficial_owner_update_params.Address | Omit = omit,
+        confirmed_no_us_tax_id: bool | Omit = omit,
+        identification: beneficial_owner_update_params.Identification | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -267,6 +285,13 @@ class AsyncBeneficialOwnersResource(AsyncAPIResource):
 
           address: The individual's physical address. Mail receiving locations like PO Boxes and
               PMB's are disallowed.
+
+          confirmed_no_us_tax_id: The identification method for an individual can only be a passport, driver's
+              license, or other document if you've confirmed the individual does not have a US
+              tax id (either a Social Security Number or Individual Taxpayer Identification
+              Number).
+
+          identification: A means of verifying the person's identity.
 
           extra_headers: Send extra headers
 
@@ -285,7 +310,12 @@ class AsyncBeneficialOwnersResource(AsyncAPIResource):
         return await self._patch(
             f"/entity_beneficial_owners/{entity_beneficial_owner_id}",
             body=await async_maybe_transform(
-                {"address": address}, beneficial_owner_update_params.BeneficialOwnerUpdateParams
+                {
+                    "address": address,
+                    "confirmed_no_us_tax_id": confirmed_no_us_tax_id,
+                    "identification": identification,
+                },
+                beneficial_owner_update_params.BeneficialOwnerUpdateParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers,
