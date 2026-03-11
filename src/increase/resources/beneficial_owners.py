@@ -4,9 +4,9 @@ from __future__ import annotations
 
 import httpx
 
-from ..types import beneficial_owner_list_params
+from ..types import beneficial_owner_list_params, beneficial_owner_update_params
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from .._utils import maybe_transform
+from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -75,6 +75,55 @@ class BeneficialOwnersResource(SyncAPIResource):
             f"/entity_beneficial_owners/{entity_beneficial_owner_id}",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=EntityBeneficialOwner,
+        )
+
+    def update(
+        self,
+        entity_beneficial_owner_id: str,
+        *,
+        address: beneficial_owner_update_params.Address | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> EntityBeneficialOwner:
+        """
+        Update a Beneficial Owner
+
+        Args:
+          entity_beneficial_owner_id: The identifier of the Beneficial Owner to update.
+
+          address: The individual's physical address. Mail receiving locations like PO Boxes and
+              PMB's are disallowed.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not entity_beneficial_owner_id:
+            raise ValueError(
+                f"Expected a non-empty value for `entity_beneficial_owner_id` but received {entity_beneficial_owner_id!r}"
+            )
+        return self._patch(
+            f"/entity_beneficial_owners/{entity_beneficial_owner_id}",
+            body=maybe_transform({"address": address}, beneficial_owner_update_params.BeneficialOwnerUpdateParams),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
             ),
             cast_to=EntityBeneficialOwner,
         )
@@ -197,6 +246,57 @@ class AsyncBeneficialOwnersResource(AsyncAPIResource):
             cast_to=EntityBeneficialOwner,
         )
 
+    async def update(
+        self,
+        entity_beneficial_owner_id: str,
+        *,
+        address: beneficial_owner_update_params.Address | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> EntityBeneficialOwner:
+        """
+        Update a Beneficial Owner
+
+        Args:
+          entity_beneficial_owner_id: The identifier of the Beneficial Owner to update.
+
+          address: The individual's physical address. Mail receiving locations like PO Boxes and
+              PMB's are disallowed.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not entity_beneficial_owner_id:
+            raise ValueError(
+                f"Expected a non-empty value for `entity_beneficial_owner_id` but received {entity_beneficial_owner_id!r}"
+            )
+        return await self._patch(
+            f"/entity_beneficial_owners/{entity_beneficial_owner_id}",
+            body=await async_maybe_transform(
+                {"address": address}, beneficial_owner_update_params.BeneficialOwnerUpdateParams
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=EntityBeneficialOwner,
+        )
+
     def list(
         self,
         *,
@@ -265,6 +365,9 @@ class BeneficialOwnersResourceWithRawResponse:
         self.retrieve = to_raw_response_wrapper(
             beneficial_owners.retrieve,
         )
+        self.update = to_raw_response_wrapper(
+            beneficial_owners.update,
+        )
         self.list = to_raw_response_wrapper(
             beneficial_owners.list,
         )
@@ -276,6 +379,9 @@ class AsyncBeneficialOwnersResourceWithRawResponse:
 
         self.retrieve = async_to_raw_response_wrapper(
             beneficial_owners.retrieve,
+        )
+        self.update = async_to_raw_response_wrapper(
+            beneficial_owners.update,
         )
         self.list = async_to_raw_response_wrapper(
             beneficial_owners.list,
@@ -289,6 +395,9 @@ class BeneficialOwnersResourceWithStreamingResponse:
         self.retrieve = to_streamed_response_wrapper(
             beneficial_owners.retrieve,
         )
+        self.update = to_streamed_response_wrapper(
+            beneficial_owners.update,
+        )
         self.list = to_streamed_response_wrapper(
             beneficial_owners.list,
         )
@@ -300,6 +409,9 @@ class AsyncBeneficialOwnersResourceWithStreamingResponse:
 
         self.retrieve = async_to_streamed_response_wrapper(
             beneficial_owners.retrieve,
+        )
+        self.update = async_to_streamed_response_wrapper(
+            beneficial_owners.update,
         )
         self.list = async_to_streamed_response_wrapper(
             beneficial_owners.list,

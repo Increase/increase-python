@@ -516,6 +516,7 @@ from increase.types import EntityBeneficialOwner
 Methods:
 
 - <code title="get /entity_beneficial_owners/{entity_beneficial_owner_id}">client.beneficial_owners.<a href="./src/increase/resources/beneficial_owners.py">retrieve</a>(entity_beneficial_owner_id) -> <a href="./src/increase/types/entity_beneficial_owner.py">EntityBeneficialOwner</a></code>
+- <code title="patch /entity_beneficial_owners/{entity_beneficial_owner_id}">client.beneficial_owners.<a href="./src/increase/resources/beneficial_owners.py">update</a>(entity_beneficial_owner_id, \*\*<a href="src/increase/types/beneficial_owner_update_params.py">params</a>) -> <a href="./src/increase/types/entity_beneficial_owner.py">EntityBeneficialOwner</a></code>
 - <code title="get /entity_beneficial_owners">client.beneficial_owners.<a href="./src/increase/resources/beneficial_owners.py">list</a>(\*\*<a href="src/increase/types/beneficial_owner_list_params.py">params</a>) -> <a href="./src/increase/types/entity_beneficial_owner.py">SyncPage[EntityBeneficialOwner]</a></code>
 
 # SupplementalDocuments
