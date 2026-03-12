@@ -7,13 +7,16 @@ from typing_extensions import Literal
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
-from .entity_beneficial_owner import EntityBeneficialOwner
 from .entity_supplemental_document import EntitySupplementalDocument
 
 __all__ = [
     "Entity",
     "Corporation",
     "CorporationAddress",
+    "CorporationBeneficialOwner",
+    "CorporationBeneficialOwnerIndividual",
+    "CorporationBeneficialOwnerIndividualAddress",
+    "CorporationBeneficialOwnerIndividualIdentification",
     "GovernmentAuthority",
     "GovernmentAuthorityAddress",
     "GovernmentAuthorityAuthorizedPerson",
@@ -61,6 +64,108 @@ class CorporationAddress(BaseModel):
     """The ZIP code of the address."""
 
 
+class CorporationBeneficialOwnerIndividualAddress(BaseModel):
+    """The person's address."""
+
+    city: Optional[str] = None
+    """The city, district, town, or village of the address."""
+
+    country: str
+    """The two-letter ISO 3166-1 alpha-2 code for the country of the address."""
+
+    line1: str
+    """The first line of the address."""
+
+    line2: Optional[str] = None
+    """The second line of the address."""
+
+    state: Optional[str] = None
+    """
+    The two-letter United States Postal Service (USPS) abbreviation for the US
+    state, province, or region of the address.
+    """
+
+    zip: Optional[str] = None
+    """The ZIP or postal code of the address."""
+
+
+class CorporationBeneficialOwnerIndividualIdentification(BaseModel):
+    """A means of verifying the person's identity."""
+
+    method: Literal[
+        "social_security_number", "individual_taxpayer_identification_number", "passport", "drivers_license", "other"
+    ]
+    """A method that can be used to verify the individual's identity.
+
+    - `social_security_number` - A social security number.
+    - `individual_taxpayer_identification_number` - An individual taxpayer
+      identification number (ITIN).
+    - `passport` - A passport number.
+    - `drivers_license` - A driver's license number.
+    - `other` - Another identifying document.
+    """
+
+    number_last4: str
+    """
+    The last 4 digits of the identification number that can be used to verify the
+    individual's identity.
+    """
+
+    if TYPE_CHECKING:
+        # Some versions of Pydantic <2.8.0 have a bug and don’t allow assigning a
+        # value to this field, so for compatibility we avoid doing it at runtime.
+        __pydantic_extra__: Dict[str, object] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
+
+        # Stub to indicate that arbitrary properties are accepted.
+        # To access properties that are not valid identifiers you can use `getattr`, e.g.
+        # `getattr(obj, '$type')`
+        def __getattr__(self, attr: str) -> object: ...
+    else:
+        __pydantic_extra__: Dict[str, object]
+
+
+class CorporationBeneficialOwnerIndividual(BaseModel):
+    """Personal details for the beneficial owner."""
+
+    address: CorporationBeneficialOwnerIndividualAddress
+    """The person's address."""
+
+    date_of_birth: date
+    """The person's date of birth in YYYY-MM-DD format."""
+
+    identification: CorporationBeneficialOwnerIndividualIdentification
+    """A means of verifying the person's identity."""
+
+    name: str
+    """The person's legal name."""
+
+
+class CorporationBeneficialOwner(BaseModel):
+    id: str
+    """The identifier of this beneficial owner."""
+
+    company_title: Optional[str] = None
+    """This person's role or title within the entity."""
+
+    individual: CorporationBeneficialOwnerIndividual
+    """Personal details for the beneficial owner."""
+
+    prongs: List[Literal["ownership", "control"]]
+    """Why this person is considered a beneficial owner of the entity."""
+
+    if TYPE_CHECKING:
+        # Some versions of Pydantic <2.8.0 have a bug and don’t allow assigning a
+        # value to this field, so for compatibility we avoid doing it at runtime.
+        __pydantic_extra__: Dict[str, object] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
+
+        # Stub to indicate that arbitrary properties are accepted.
+        # To access properties that are not valid identifiers you can use `getattr`, e.g.
+        # `getattr(obj, '$type')`
+        def __getattr__(self, attr: str) -> object: ...
+    else:
+        __pydantic_extra__: Dict[str, object]
+
+
 class Corporation(BaseModel):
     """Details of the corporation entity.
 
@@ -70,7 +175,7 @@ class Corporation(BaseModel):
     address: CorporationAddress
     """The corporation's address."""
 
-    beneficial_owners: List[EntityBeneficialOwner]
+    beneficial_owners: List[CorporationBeneficialOwner]
     """
     The identifying details of anyone controlling or owning 25% or more of the
     corporation.
