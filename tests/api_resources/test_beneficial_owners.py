@@ -101,6 +101,7 @@ class TestBeneficialOwners:
                     "file_id": "file_id",
                 },
             },
+            name="x",
         )
         assert_matches_type(EntityBeneficialOwner, beneficial_owner, path=["response"])
 
@@ -266,6 +267,7 @@ class TestAsyncBeneficialOwners:
                     "file_id": "file_id",
                 },
             },
+            name="x",
         )
         assert_matches_type(EntityBeneficialOwner, beneficial_owner, path=["response"])
 
