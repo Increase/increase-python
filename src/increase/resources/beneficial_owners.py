@@ -208,6 +208,50 @@ class BeneficialOwnersResource(SyncAPIResource):
             model=EntityBeneficialOwner,
         )
 
+    def archive(
+        self,
+        entity_beneficial_owner_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> EntityBeneficialOwner:
+        """
+        Archive a Beneficial Owner
+
+        Args:
+          entity_beneficial_owner_id: The identifier of the Beneficial Owner to archive.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not entity_beneficial_owner_id:
+            raise ValueError(
+                f"Expected a non-empty value for `entity_beneficial_owner_id` but received {entity_beneficial_owner_id!r}"
+            )
+        return self._post(
+            f"/entity_beneficial_owners/{entity_beneficial_owner_id}/archive",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=EntityBeneficialOwner,
+        )
+
 
 class AsyncBeneficialOwnersResource(AsyncAPIResource):
     @cached_property
@@ -395,6 +439,50 @@ class AsyncBeneficialOwnersResource(AsyncAPIResource):
             model=EntityBeneficialOwner,
         )
 
+    async def archive(
+        self,
+        entity_beneficial_owner_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> EntityBeneficialOwner:
+        """
+        Archive a Beneficial Owner
+
+        Args:
+          entity_beneficial_owner_id: The identifier of the Beneficial Owner to archive.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        if not entity_beneficial_owner_id:
+            raise ValueError(
+                f"Expected a non-empty value for `entity_beneficial_owner_id` but received {entity_beneficial_owner_id!r}"
+            )
+        return await self._post(
+            f"/entity_beneficial_owners/{entity_beneficial_owner_id}/archive",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=EntityBeneficialOwner,
+        )
+
 
 class BeneficialOwnersResourceWithRawResponse:
     def __init__(self, beneficial_owners: BeneficialOwnersResource) -> None:
@@ -408,6 +496,9 @@ class BeneficialOwnersResourceWithRawResponse:
         )
         self.list = to_raw_response_wrapper(
             beneficial_owners.list,
+        )
+        self.archive = to_raw_response_wrapper(
+            beneficial_owners.archive,
         )
 
 
@@ -424,6 +515,9 @@ class AsyncBeneficialOwnersResourceWithRawResponse:
         self.list = async_to_raw_response_wrapper(
             beneficial_owners.list,
         )
+        self.archive = async_to_raw_response_wrapper(
+            beneficial_owners.archive,
+        )
 
 
 class BeneficialOwnersResourceWithStreamingResponse:
@@ -439,6 +533,9 @@ class BeneficialOwnersResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             beneficial_owners.list,
         )
+        self.archive = to_streamed_response_wrapper(
+            beneficial_owners.archive,
+        )
 
 
 class AsyncBeneficialOwnersResourceWithStreamingResponse:
@@ -453,4 +550,7 @@ class AsyncBeneficialOwnersResourceWithStreamingResponse:
         )
         self.list = async_to_streamed_response_wrapper(
             beneficial_owners.list,
+        )
+        self.archive = async_to_streamed_response_wrapper(
+            beneficial_owners.archive,
         )
