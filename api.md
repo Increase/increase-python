@@ -501,7 +501,6 @@ Methods:
 - <code title="patch /entities/{entity_id}">client.entities.<a href="./src/increase/resources/entities.py">update</a>(entity_id, \*\*<a href="src/increase/types/entity_update_params.py">params</a>) -> <a href="./src/increase/types/entity.py">Entity</a></code>
 - <code title="get /entities">client.entities.<a href="./src/increase/resources/entities.py">list</a>(\*\*<a href="src/increase/types/entity_list_params.py">params</a>) -> <a href="./src/increase/types/entity.py">SyncPage[Entity]</a></code>
 - <code title="post /entities/{entity_id}/archive">client.entities.<a href="./src/increase/resources/entities.py">archive</a>(entity_id) -> <a href="./src/increase/types/entity.py">Entity</a></code>
-- <code title="post /entities/{entity_id}/create_beneficial_owner">client.entities.<a href="./src/increase/resources/entities.py">create_beneficial_owner</a>(entity_id, \*\*<a href="src/increase/types/entity_create_beneficial_owner_params.py">params</a>) -> <a href="./src/increase/types/entity.py">Entity</a></code>
 
 # BeneficialOwners
 
