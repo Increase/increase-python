@@ -14,6 +14,7 @@ __all__ = [
     "PhysicalCheckMailingAddress",
     "PhysicalCheckPayer",
     "PhysicalCheckReturnAddress",
+    "PhysicalCheckSignature",
     "ThirdParty",
 ]
 
@@ -156,6 +157,22 @@ class PhysicalCheckReturnAddress(TypedDict, total=False):
     """
 
 
+class PhysicalCheckSignature(TypedDict, total=False):
+    """The signature that will appear on the check.
+
+    If not provided, the check will be printed with 'No Signature Required'. At most one of `text` and `image_file_id` may be provided.
+    """
+
+    image_file_id: str
+    """The ID of a File containing a PNG of the signature.
+
+    This must have `purpose: check_signature` and be a 1320x120 pixel PNG.
+    """
+
+    text: str
+    """The text that will appear as the signature on the check in cursive font."""
+
+
 class PhysicalCheck(TypedDict, total=False, extra_items=object):  # type: ignore[call-arg]
     """Details relating to the physical check that Increase will print and mail.
 
@@ -215,10 +232,11 @@ class PhysicalCheck(TypedDict, total=False, extra_items=object):  # type: ignore
     - `fedex_overnight` - FedEx Overnight
     """
 
-    signature_text: str
-    """The text that will appear as the signature on the check in cursive font.
+    signature: PhysicalCheckSignature
+    """The signature that will appear on the check.
 
-    If not provided, the check will be printed with 'No signature required'.
+    If not provided, the check will be printed with 'No Signature Required'. At most
+    one of `text` and `image_file_id` may be provided.
     """
 
 

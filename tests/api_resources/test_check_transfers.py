@@ -66,7 +66,10 @@ class TestCheckTransfers:
                     "phone": "x",
                 },
                 "shipping_method": "usps_first_class",
-                "signature_text": "Ian Crease",
+                "signature": {
+                    "image_file_id": "image_file_id",
+                    "text": "Ian Crease",
+                },
             },
             require_approval=True,
             third_party={"recipient_name": "x"},
@@ -357,7 +360,10 @@ class TestAsyncCheckTransfers:
                     "phone": "x",
                 },
                 "shipping_method": "usps_first_class",
-                "signature_text": "Ian Crease",
+                "signature": {
+                    "image_file_id": "image_file_id",
+                    "text": "Ian Crease",
+                },
             },
             require_approval=True,
             third_party={"recipient_name": "x"},

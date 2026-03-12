@@ -26,6 +26,7 @@ class FileCreateParams(TypedDict, total=False):
             "mailed_check_image",
             "check_attachment",
             "check_voucher_image",
+            "check_signature",
             "form_ss_4",
             "identity_document",
             "loan_application_supplemental_document",
@@ -54,6 +55,8 @@ class FileCreateParams(TypedDict, total=False):
     - `check_voucher_image` - An image to be used as the check voucher image, which
       is printed in the middle of the trifold area of a check. This must be a
       2550x1100 pixel PNG.
+    - `check_signature` - A signature image to be printed on a check. This must be a
+      1320x120 pixel PNG.
     - `form_ss_4` - IRS Form SS-4.
     - `identity_document` - An image of a government-issued ID.
     - `loan_application_supplemental_document` - A supplemental document for a Loan
