@@ -141,14 +141,14 @@ class TestBeneficialOwners:
     @parametrize
     def test_method_retrieve(self, client: Increase) -> None:
         beneficial_owner = client.beneficial_owners.retrieve(
-            "entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7",
+            "entity_beneficial_owner_vozma8szzu1sxezp5zq6",
         )
         assert_matches_type(EntityBeneficialOwner, beneficial_owner, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Increase) -> None:
         response = client.beneficial_owners.with_raw_response.retrieve(
-            "entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7",
+            "entity_beneficial_owner_vozma8szzu1sxezp5zq6",
         )
 
         assert response.is_closed is True
@@ -159,7 +159,7 @@ class TestBeneficialOwners:
     @parametrize
     def test_streaming_response_retrieve(self, client: Increase) -> None:
         with client.beneficial_owners.with_streaming_response.retrieve(
-            "entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7",
+            "entity_beneficial_owner_vozma8szzu1sxezp5zq6",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -181,14 +181,14 @@ class TestBeneficialOwners:
     @parametrize
     def test_method_update(self, client: Increase) -> None:
         beneficial_owner = client.beneficial_owners.update(
-            entity_beneficial_owner_id="entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7",
+            entity_beneficial_owner_id="entity_beneficial_owner_vozma8szzu1sxezp5zq6",
         )
         assert_matches_type(EntityBeneficialOwner, beneficial_owner, path=["response"])
 
     @parametrize
     def test_method_update_with_all_params(self, client: Increase) -> None:
         beneficial_owner = client.beneficial_owners.update(
-            entity_beneficial_owner_id="entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7",
+            entity_beneficial_owner_id="entity_beneficial_owner_vozma8szzu1sxezp5zq6",
             address={
                 "city": "New York",
                 "country": "US",
@@ -227,7 +227,7 @@ class TestBeneficialOwners:
     @parametrize
     def test_raw_response_update(self, client: Increase) -> None:
         response = client.beneficial_owners.with_raw_response.update(
-            entity_beneficial_owner_id="entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7",
+            entity_beneficial_owner_id="entity_beneficial_owner_vozma8szzu1sxezp5zq6",
         )
 
         assert response.is_closed is True
@@ -238,7 +238,7 @@ class TestBeneficialOwners:
     @parametrize
     def test_streaming_response_update(self, client: Increase) -> None:
         with client.beneficial_owners.with_streaming_response.update(
-            entity_beneficial_owner_id="entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7",
+            entity_beneficial_owner_id="entity_beneficial_owner_vozma8szzu1sxezp5zq6",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -301,14 +301,14 @@ class TestBeneficialOwners:
     @parametrize
     def test_method_archive(self, client: Increase) -> None:
         beneficial_owner = client.beneficial_owners.archive(
-            "entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7",
+            "entity_beneficial_owner_vozma8szzu1sxezp5zq6",
         )
         assert_matches_type(EntityBeneficialOwner, beneficial_owner, path=["response"])
 
     @parametrize
     def test_raw_response_archive(self, client: Increase) -> None:
         response = client.beneficial_owners.with_raw_response.archive(
-            "entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7",
+            "entity_beneficial_owner_vozma8szzu1sxezp5zq6",
         )
 
         assert response.is_closed is True
@@ -319,7 +319,7 @@ class TestBeneficialOwners:
     @parametrize
     def test_streaming_response_archive(self, client: Increase) -> None:
         with client.beneficial_owners.with_streaming_response.archive(
-            "entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7",
+            "entity_beneficial_owner_vozma8szzu1sxezp5zq6",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -464,14 +464,14 @@ class TestAsyncBeneficialOwners:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncIncrease) -> None:
         beneficial_owner = await async_client.beneficial_owners.retrieve(
-            "entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7",
+            "entity_beneficial_owner_vozma8szzu1sxezp5zq6",
         )
         assert_matches_type(EntityBeneficialOwner, beneficial_owner, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncIncrease) -> None:
         response = await async_client.beneficial_owners.with_raw_response.retrieve(
-            "entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7",
+            "entity_beneficial_owner_vozma8szzu1sxezp5zq6",
         )
 
         assert response.is_closed is True
@@ -482,7 +482,7 @@ class TestAsyncBeneficialOwners:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
         async with async_client.beneficial_owners.with_streaming_response.retrieve(
-            "entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7",
+            "entity_beneficial_owner_vozma8szzu1sxezp5zq6",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -504,14 +504,14 @@ class TestAsyncBeneficialOwners:
     @parametrize
     async def test_method_update(self, async_client: AsyncIncrease) -> None:
         beneficial_owner = await async_client.beneficial_owners.update(
-            entity_beneficial_owner_id="entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7",
+            entity_beneficial_owner_id="entity_beneficial_owner_vozma8szzu1sxezp5zq6",
         )
         assert_matches_type(EntityBeneficialOwner, beneficial_owner, path=["response"])
 
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncIncrease) -> None:
         beneficial_owner = await async_client.beneficial_owners.update(
-            entity_beneficial_owner_id="entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7",
+            entity_beneficial_owner_id="entity_beneficial_owner_vozma8szzu1sxezp5zq6",
             address={
                 "city": "New York",
                 "country": "US",
@@ -550,7 +550,7 @@ class TestAsyncBeneficialOwners:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncIncrease) -> None:
         response = await async_client.beneficial_owners.with_raw_response.update(
-            entity_beneficial_owner_id="entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7",
+            entity_beneficial_owner_id="entity_beneficial_owner_vozma8szzu1sxezp5zq6",
         )
 
         assert response.is_closed is True
@@ -561,7 +561,7 @@ class TestAsyncBeneficialOwners:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncIncrease) -> None:
         async with async_client.beneficial_owners.with_streaming_response.update(
-            entity_beneficial_owner_id="entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7",
+            entity_beneficial_owner_id="entity_beneficial_owner_vozma8szzu1sxezp5zq6",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -624,14 +624,14 @@ class TestAsyncBeneficialOwners:
     @parametrize
     async def test_method_archive(self, async_client: AsyncIncrease) -> None:
         beneficial_owner = await async_client.beneficial_owners.archive(
-            "entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7",
+            "entity_beneficial_owner_vozma8szzu1sxezp5zq6",
         )
         assert_matches_type(EntityBeneficialOwner, beneficial_owner, path=["response"])
 
     @parametrize
     async def test_raw_response_archive(self, async_client: AsyncIncrease) -> None:
         response = await async_client.beneficial_owners.with_raw_response.archive(
-            "entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7",
+            "entity_beneficial_owner_vozma8szzu1sxezp5zq6",
         )
 
         assert response.is_closed is True
@@ -642,7 +642,7 @@ class TestAsyncBeneficialOwners:
     @parametrize
     async def test_streaming_response_archive(self, async_client: AsyncIncrease) -> None:
         async with async_client.beneficial_owners.with_streaming_response.archive(
-            "entity_setup_beneficial_owner_submission_vgkyk7dj5eb4sfhdbkx7",
+            "entity_beneficial_owner_vozma8szzu1sxezp5zq6",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
