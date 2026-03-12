@@ -104,6 +104,9 @@ class EntityBeneficialOwner(BaseModel):
     Beneficial Owner was created.
     """
 
+    entity_id: str
+    """The identifier of the Entity to which this beneficial owner belongs."""
+
     idempotency_key: Optional[str] = None
     """The idempotency key you chose for this object.
 
