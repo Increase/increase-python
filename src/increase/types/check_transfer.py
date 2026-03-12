@@ -21,6 +21,7 @@ __all__ = [
     "PhysicalCheckMailingAddress",
     "PhysicalCheckPayer",
     "PhysicalCheckReturnAddress",
+    "PhysicalCheckSignature",
     "PhysicalCheckTrackingUpdate",
     "StopPaymentRequest",
     "Submission",
@@ -194,6 +195,16 @@ class PhysicalCheckReturnAddress(BaseModel):
     """The state of the check's destination."""
 
 
+class PhysicalCheckSignature(BaseModel):
+    """The signature that will appear on the check."""
+
+    image_file_id: Optional[str] = None
+    """The ID of a File containing a PNG of the signature."""
+
+    text: Optional[str] = None
+    """The text that will appear as the signature on the check in cursive font."""
+
+
 class PhysicalCheckTrackingUpdate(BaseModel):
     category: Literal["in_transit", "processed_for_delivery", "delivered", "delivery_issue", "returned_to_sender"]
     """The type of tracking event.
@@ -258,11 +269,8 @@ class PhysicalCheck(BaseModel):
     - `fedex_overnight` - FedEx Overnight
     """
 
-    signature_text: Optional[str] = None
-    """The text that will appear as the signature on the check in cursive font.
-
-    If blank, the check will be printed with 'No signature required'.
-    """
+    signature: PhysicalCheckSignature
+    """The signature that will appear on the check."""
 
     tracking_updates: List[PhysicalCheckTrackingUpdate]
     """Tracking updates relating to the physical check's delivery."""
