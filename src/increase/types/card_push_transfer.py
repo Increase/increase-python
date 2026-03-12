@@ -698,6 +698,9 @@ class CardPushTransfer(BaseModel):
     approved, this will contain details of the cancellation.
     """
 
+    card_token_id: str
+    """The ID of the Card Token that was used to validate the card."""
+
     created_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
