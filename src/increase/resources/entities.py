@@ -13,8 +13,6 @@ from ..types import (
     entity_create_params,
     entity_update_params,
     entity_create_beneficial_owner_params,
-    entity_archive_beneficial_owner_params,
-    entity_update_beneficial_owner_address_params,
 )
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
@@ -378,57 +376,6 @@ class EntitiesResource(SyncAPIResource):
             cast_to=Entity,
         )
 
-    def archive_beneficial_owner(
-        self,
-        entity_id: str,
-        *,
-        beneficial_owner_id: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-        idempotency_key: str | None = None,
-    ) -> Entity:
-        """
-        Archive a beneficial owner for a corporate Entity
-
-        Args:
-          entity_id: The identifier of the Entity associated with the Beneficial Owner that is being
-              archived.
-
-          beneficial_owner_id: The identifying details of anyone controlling or owning 25% or more of the
-              corporation.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-
-          idempotency_key: Specify a custom idempotency key for this request
-        """
-        if not entity_id:
-            raise ValueError(f"Expected a non-empty value for `entity_id` but received {entity_id!r}")
-        return self._post(
-            f"/entities/{entity_id}/archive_beneficial_owner",
-            body=maybe_transform(
-                {"beneficial_owner_id": beneficial_owner_id},
-                entity_archive_beneficial_owner_params.EntityArchiveBeneficialOwnerParams,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                idempotency_key=idempotency_key,
-            ),
-            cast_to=Entity,
-        )
-
     def create_beneficial_owner(
         self,
         entity_id: str,
@@ -468,64 +415,6 @@ class EntitiesResource(SyncAPIResource):
             body=maybe_transform(
                 {"beneficial_owner": beneficial_owner},
                 entity_create_beneficial_owner_params.EntityCreateBeneficialOwnerParams,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                idempotency_key=idempotency_key,
-            ),
-            cast_to=Entity,
-        )
-
-    def update_beneficial_owner_address(
-        self,
-        entity_id: str,
-        *,
-        address: entity_update_beneficial_owner_address_params.Address,
-        beneficial_owner_id: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-        idempotency_key: str | None = None,
-    ) -> Entity:
-        """
-        Update the address for a beneficial owner belonging to a corporate Entity
-
-        Args:
-          entity_id: The identifier of the Entity associated with the Beneficial Owner whose address
-              is being updated.
-
-          address: The individual's physical address. Mail receiving locations like PO Boxes and
-              PMB's are disallowed.
-
-          beneficial_owner_id: The identifying details of anyone controlling or owning 25% or more of the
-              corporation.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-
-          idempotency_key: Specify a custom idempotency key for this request
-        """
-        if not entity_id:
-            raise ValueError(f"Expected a non-empty value for `entity_id` but received {entity_id!r}")
-        return self._post(
-            f"/entities/{entity_id}/update_beneficial_owner_address",
-            body=maybe_transform(
-                {
-                    "address": address,
-                    "beneficial_owner_id": beneficial_owner_id,
-                },
-                entity_update_beneficial_owner_address_params.EntityUpdateBeneficialOwnerAddressParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -883,57 +772,6 @@ class AsyncEntitiesResource(AsyncAPIResource):
             cast_to=Entity,
         )
 
-    async def archive_beneficial_owner(
-        self,
-        entity_id: str,
-        *,
-        beneficial_owner_id: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-        idempotency_key: str | None = None,
-    ) -> Entity:
-        """
-        Archive a beneficial owner for a corporate Entity
-
-        Args:
-          entity_id: The identifier of the Entity associated with the Beneficial Owner that is being
-              archived.
-
-          beneficial_owner_id: The identifying details of anyone controlling or owning 25% or more of the
-              corporation.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-
-          idempotency_key: Specify a custom idempotency key for this request
-        """
-        if not entity_id:
-            raise ValueError(f"Expected a non-empty value for `entity_id` but received {entity_id!r}")
-        return await self._post(
-            f"/entities/{entity_id}/archive_beneficial_owner",
-            body=await async_maybe_transform(
-                {"beneficial_owner_id": beneficial_owner_id},
-                entity_archive_beneficial_owner_params.EntityArchiveBeneficialOwnerParams,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                idempotency_key=idempotency_key,
-            ),
-            cast_to=Entity,
-        )
-
     async def create_beneficial_owner(
         self,
         entity_id: str,
@@ -984,64 +822,6 @@ class AsyncEntitiesResource(AsyncAPIResource):
             cast_to=Entity,
         )
 
-    async def update_beneficial_owner_address(
-        self,
-        entity_id: str,
-        *,
-        address: entity_update_beneficial_owner_address_params.Address,
-        beneficial_owner_id: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-        idempotency_key: str | None = None,
-    ) -> Entity:
-        """
-        Update the address for a beneficial owner belonging to a corporate Entity
-
-        Args:
-          entity_id: The identifier of the Entity associated with the Beneficial Owner whose address
-              is being updated.
-
-          address: The individual's physical address. Mail receiving locations like PO Boxes and
-              PMB's are disallowed.
-
-          beneficial_owner_id: The identifying details of anyone controlling or owning 25% or more of the
-              corporation.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-
-          idempotency_key: Specify a custom idempotency key for this request
-        """
-        if not entity_id:
-            raise ValueError(f"Expected a non-empty value for `entity_id` but received {entity_id!r}")
-        return await self._post(
-            f"/entities/{entity_id}/update_beneficial_owner_address",
-            body=await async_maybe_transform(
-                {
-                    "address": address,
-                    "beneficial_owner_id": beneficial_owner_id,
-                },
-                entity_update_beneficial_owner_address_params.EntityUpdateBeneficialOwnerAddressParams,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                idempotency_key=idempotency_key,
-            ),
-            cast_to=Entity,
-        )
-
 
 class EntitiesResourceWithRawResponse:
     def __init__(self, entities: EntitiesResource) -> None:
@@ -1062,14 +842,8 @@ class EntitiesResourceWithRawResponse:
         self.archive = to_raw_response_wrapper(
             entities.archive,
         )
-        self.archive_beneficial_owner = to_raw_response_wrapper(
-            entities.archive_beneficial_owner,
-        )
         self.create_beneficial_owner = to_raw_response_wrapper(
             entities.create_beneficial_owner,
-        )
-        self.update_beneficial_owner_address = to_raw_response_wrapper(
-            entities.update_beneficial_owner_address,
         )
 
 
@@ -1092,14 +866,8 @@ class AsyncEntitiesResourceWithRawResponse:
         self.archive = async_to_raw_response_wrapper(
             entities.archive,
         )
-        self.archive_beneficial_owner = async_to_raw_response_wrapper(
-            entities.archive_beneficial_owner,
-        )
         self.create_beneficial_owner = async_to_raw_response_wrapper(
             entities.create_beneficial_owner,
-        )
-        self.update_beneficial_owner_address = async_to_raw_response_wrapper(
-            entities.update_beneficial_owner_address,
         )
 
 
@@ -1122,14 +890,8 @@ class EntitiesResourceWithStreamingResponse:
         self.archive = to_streamed_response_wrapper(
             entities.archive,
         )
-        self.archive_beneficial_owner = to_streamed_response_wrapper(
-            entities.archive_beneficial_owner,
-        )
         self.create_beneficial_owner = to_streamed_response_wrapper(
             entities.create_beneficial_owner,
-        )
-        self.update_beneficial_owner_address = to_streamed_response_wrapper(
-            entities.update_beneficial_owner_address,
         )
 
 
@@ -1152,12 +914,6 @@ class AsyncEntitiesResourceWithStreamingResponse:
         self.archive = async_to_streamed_response_wrapper(
             entities.archive,
         )
-        self.archive_beneficial_owner = async_to_streamed_response_wrapper(
-            entities.archive_beneficial_owner,
-        )
         self.create_beneficial_owner = async_to_streamed_response_wrapper(
             entities.create_beneficial_owner,
-        )
-        self.update_beneficial_owner_address = async_to_streamed_response_wrapper(
-            entities.update_beneficial_owner_address,
         )

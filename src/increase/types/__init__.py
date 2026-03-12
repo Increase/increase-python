@@ -170,9 +170,6 @@ from .inbound_wire_transfer_reverse_params import InboundWireTransferReversePara
 from .entity_create_beneficial_owner_params import (
     EntityCreateBeneficialOwnerParams as EntityCreateBeneficialOwnerParams,
 )
-from .entity_archive_beneficial_owner_params import (
-    EntityArchiveBeneficialOwnerParams as EntityArchiveBeneficialOwnerParams,
-)
 from .intrafi_account_enrollment_list_params import (
     IntrafiAccountEnrollmentListParams as IntrafiAccountEnrollmentListParams,
 )
@@ -193,9 +190,6 @@ from .card_dispute_submit_user_submission_params import (
 )
 from .inbound_ach_transfer_transfer_return_params import (
     InboundACHTransferTransferReturnParams as InboundACHTransferTransferReturnParams,
-)
-from .entity_update_beneficial_owner_address_params import (
-    EntityUpdateBeneficialOwnerAddressParams as EntityUpdateBeneficialOwnerAddressParams,
 )
 from .inbound_real_time_payments_transfer_list_params import (
     InboundRealTimePaymentsTransferListParams as InboundRealTimePaymentsTransferListParams,
