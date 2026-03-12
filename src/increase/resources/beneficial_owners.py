@@ -2,9 +2,12 @@
 
 from __future__ import annotations
 
+from typing import List
+from typing_extensions import Literal
+
 import httpx
 
-from ..types import beneficial_owner_list_params, beneficial_owner_update_params
+from ..types import beneficial_owner_list_params, beneficial_owner_create_params, beneficial_owner_update_params
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
@@ -41,6 +44,66 @@ class BeneficialOwnersResource(SyncAPIResource):
         For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
         """
         return BeneficialOwnersResourceWithStreamingResponse(self)
+
+    def create(
+        self,
+        *,
+        entity_id: str,
+        individual: beneficial_owner_create_params.Individual,
+        prongs: List[Literal["ownership", "control"]],
+        company_title: str | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> EntityBeneficialOwner:
+        """
+        Create a beneficial owner
+
+        Args:
+          entity_id: The identifier of the Entity to associate with the new Beneficial Owner.
+
+          individual: Personal details for the beneficial owner.
+
+          prongs: Why this person is considered a beneficial owner of the entity. At least one
+              option is required, if a person is both a control person and owner, submit an
+              array containing both.
+
+          company_title: This person's role or title within the entity.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        return self._post(
+            "/entity_beneficial_owners",
+            body=maybe_transform(
+                {
+                    "entity_id": entity_id,
+                    "individual": individual,
+                    "prongs": prongs,
+                    "company_title": company_title,
+                },
+                beneficial_owner_create_params.BeneficialOwnerCreateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=EntityBeneficialOwner,
+        )
 
     def retrieve(
         self,
@@ -273,6 +336,66 @@ class AsyncBeneficialOwnersResource(AsyncAPIResource):
         """
         return AsyncBeneficialOwnersResourceWithStreamingResponse(self)
 
+    async def create(
+        self,
+        *,
+        entity_id: str,
+        individual: beneficial_owner_create_params.Individual,
+        prongs: List[Literal["ownership", "control"]],
+        company_title: str | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        idempotency_key: str | None = None,
+    ) -> EntityBeneficialOwner:
+        """
+        Create a beneficial owner
+
+        Args:
+          entity_id: The identifier of the Entity to associate with the new Beneficial Owner.
+
+          individual: Personal details for the beneficial owner.
+
+          prongs: Why this person is considered a beneficial owner of the entity. At least one
+              option is required, if a person is both a control person and owner, submit an
+              array containing both.
+
+          company_title: This person's role or title within the entity.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+
+          idempotency_key: Specify a custom idempotency key for this request
+        """
+        return await self._post(
+            "/entity_beneficial_owners",
+            body=await async_maybe_transform(
+                {
+                    "entity_id": entity_id,
+                    "individual": individual,
+                    "prongs": prongs,
+                    "company_title": company_title,
+                },
+                beneficial_owner_create_params.BeneficialOwnerCreateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                idempotency_key=idempotency_key,
+            ),
+            cast_to=EntityBeneficialOwner,
+        )
+
     async def retrieve(
         self,
         entity_beneficial_owner_id: str,
@@ -488,6 +611,9 @@ class BeneficialOwnersResourceWithRawResponse:
     def __init__(self, beneficial_owners: BeneficialOwnersResource) -> None:
         self._beneficial_owners = beneficial_owners
 
+        self.create = to_raw_response_wrapper(
+            beneficial_owners.create,
+        )
         self.retrieve = to_raw_response_wrapper(
             beneficial_owners.retrieve,
         )
@@ -506,6 +632,9 @@ class AsyncBeneficialOwnersResourceWithRawResponse:
     def __init__(self, beneficial_owners: AsyncBeneficialOwnersResource) -> None:
         self._beneficial_owners = beneficial_owners
 
+        self.create = async_to_raw_response_wrapper(
+            beneficial_owners.create,
+        )
         self.retrieve = async_to_raw_response_wrapper(
             beneficial_owners.retrieve,
         )
@@ -524,6 +653,9 @@ class BeneficialOwnersResourceWithStreamingResponse:
     def __init__(self, beneficial_owners: BeneficialOwnersResource) -> None:
         self._beneficial_owners = beneficial_owners
 
+        self.create = to_streamed_response_wrapper(
+            beneficial_owners.create,
+        )
         self.retrieve = to_streamed_response_wrapper(
             beneficial_owners.retrieve,
         )
@@ -542,6 +674,9 @@ class AsyncBeneficialOwnersResourceWithStreamingResponse:
     def __init__(self, beneficial_owners: AsyncBeneficialOwnersResource) -> None:
         self._beneficial_owners = beneficial_owners
 
+        self.create = async_to_streamed_response_wrapper(
+            beneficial_owners.create,
+        )
         self.retrieve = async_to_streamed_response_wrapper(
             beneficial_owners.retrieve,
         )
