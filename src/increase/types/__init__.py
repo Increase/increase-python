@@ -168,9 +168,6 @@ from .supplemental_document_create_params import SupplementalDocumentCreateParam
 from .wire_drawdown_request_create_params import WireDrawdownRequestCreateParams as WireDrawdownRequestCreateParams
 from .card_purchase_supplement_list_params import CardPurchaseSupplementListParams as CardPurchaseSupplementListParams
 from .inbound_wire_transfer_reverse_params import InboundWireTransferReverseParams as InboundWireTransferReverseParams
-from .entity_create_beneficial_owner_params import (
-    EntityCreateBeneficialOwnerParams as EntityCreateBeneficialOwnerParams,
-)
 from .intrafi_account_enrollment_list_params import (
     IntrafiAccountEnrollmentListParams as IntrafiAccountEnrollmentListParams,
 )
