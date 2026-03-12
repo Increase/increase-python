@@ -86,6 +86,7 @@ class BeneficialOwnersResource(SyncAPIResource):
         address: beneficial_owner_update_params.Address | Omit = omit,
         confirmed_no_us_tax_id: bool | Omit = omit,
         identification: beneficial_owner_update_params.Identification | Omit = omit,
+        name: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -110,6 +111,8 @@ class BeneficialOwnersResource(SyncAPIResource):
 
           identification: A means of verifying the person's identity.
 
+          name: The individual's legal name.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -131,6 +134,7 @@ class BeneficialOwnersResource(SyncAPIResource):
                     "address": address,
                     "confirmed_no_us_tax_id": confirmed_no_us_tax_id,
                     "identification": identification,
+                    "name": name,
                 },
                 beneficial_owner_update_params.BeneficialOwnerUpdateParams,
             ),
@@ -269,6 +273,7 @@ class AsyncBeneficialOwnersResource(AsyncAPIResource):
         address: beneficial_owner_update_params.Address | Omit = omit,
         confirmed_no_us_tax_id: bool | Omit = omit,
         identification: beneficial_owner_update_params.Identification | Omit = omit,
+        name: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -293,6 +298,8 @@ class AsyncBeneficialOwnersResource(AsyncAPIResource):
 
           identification: A means of verifying the person's identity.
 
+          name: The individual's legal name.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -314,6 +321,7 @@ class AsyncBeneficialOwnersResource(AsyncAPIResource):
                     "address": address,
                     "confirmed_no_us_tax_id": confirmed_no_us_tax_id,
                     "identification": identification,
+                    "name": name,
                 },
                 beneficial_owner_update_params.BeneficialOwnerUpdateParams,
             ),

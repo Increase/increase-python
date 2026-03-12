@@ -36,6 +36,9 @@ class BeneficialOwnerUpdateParams(TypedDict, total=False):
     identification: Identification
     """A means of verifying the person's identity."""
 
+    name: str
+    """The individual's legal name."""
+
 
 class Address(TypedDict, total=False):
     """The individual's physical address.
