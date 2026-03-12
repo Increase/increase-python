@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.434.0 (2026-03-12)
+
+Full Changelog: [v0.433.0...v0.434.0](https://github.com/Increase/increase-python/compare/v0.433.0...v0.434.0)
+
+### Features
+
+* **api:** api update ([8d67129](https://github.com/Increase/increase-python/commit/8d6712948c91d398d995755da57bd09e8c36b38c))
+
 ## 0.433.0 (2026-03-12)
 
 Full Changelog: [v0.432.0...v0.433.0](https://github.com/Increase/increase-python/compare/v0.432.0...v0.433.0)
