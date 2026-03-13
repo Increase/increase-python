@@ -375,7 +375,7 @@ class ElementCardAuthentication(BaseModel):
     id: str
     """The Card Authentication identifier."""
 
-    access_control_server_transaction_id: str
+    access_control_server_transaction_identifier: str
     """
     A unique identifier assigned by the Access Control Server (us) for this
     transaction.
@@ -467,7 +467,7 @@ class ElementCardAuthentication(BaseModel):
     device_channel: ElementCardAuthenticationDeviceChannel
     """The device channel of the card authentication attempt."""
 
-    directory_server_transaction_id: str
+    directory_server_transaction_identifier: str
     """
     A unique identifier assigned by the Directory Server (the card network) for this
     transaction.
@@ -619,7 +619,7 @@ class ElementCardAuthentication(BaseModel):
       threshold.
     """
 
-    three_d_secure_server_transaction_id: str
+    three_d_secure_server_transaction_identifier: str
     """
     A unique identifier assigned by the 3DS Server initiating the authentication
     attempt for this transaction.
