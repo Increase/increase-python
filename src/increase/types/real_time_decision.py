@@ -224,7 +224,7 @@ class CardAuthenticationMessageCategory(BaseModel):
 class CardAuthentication(BaseModel):
     """Fields related to a 3DS authentication attempt."""
 
-    access_control_server_transaction_id: str
+    access_control_server_transaction_identifier: str
     """
     A unique identifier assigned by the Access Control Server (us) for this
     transaction.
@@ -296,7 +296,7 @@ class CardAuthentication(BaseModel):
     device_channel: CardAuthenticationDeviceChannel
     """The device channel of the card authentication attempt."""
 
-    directory_server_transaction_id: str
+    directory_server_transaction_identifier: str
     """
     A unique identifier assigned by the Directory Server (the card network) for this
     transaction.
@@ -414,7 +414,7 @@ class CardAuthentication(BaseModel):
     shipping_address_state: Optional[str] = None
     """The US state of the shipping address associated with this purchase."""
 
-    three_d_secure_server_transaction_id: str
+    three_d_secure_server_transaction_identifier: str
     """
     A unique identifier assigned by the 3DS Server initiating the authentication
     attempt for this transaction.
