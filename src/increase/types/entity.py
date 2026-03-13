@@ -39,6 +39,12 @@ __all__ = [
     "TrustTrusteeIndividual",
     "TrustTrusteeIndividualAddress",
     "TrustTrusteeIndividualIdentification",
+    "Validation",
+    "ValidationIssue",
+    "ValidationIssueBeneficialOwnerAddress",
+    "ValidationIssueBeneficialOwnerIdentity",
+    "ValidationIssueEntityAddress",
+    "ValidationIssueEntityTaxIdentifier",
 ]
 
 
@@ -703,10 +709,99 @@ class Trust(BaseModel):
     """The trustees of the trust."""
 
 
+class ValidationIssueBeneficialOwnerAddress(BaseModel):
+    """Details when the issue is with a beneficial owner's address."""
+
+    beneficial_owner_id: str
+    """The ID of the beneficial owner."""
+
+    reason: Literal["mailbox_address"]
+    """The reason the address is invalid.
+
+    - `mailbox_address` - The address is a mailbox or other non-physical address.
+    """
+
+
+class ValidationIssueBeneficialOwnerIdentity(BaseModel):
+    """Details when the issue is with a beneficial owner's identity verification."""
+
+    beneficial_owner_id: str
+    """The ID of the beneficial owner."""
+
+
+class ValidationIssueEntityAddress(BaseModel):
+    """Details when the issue is with the entity's address."""
+
+    reason: Literal["mailbox_address"]
+    """The reason the address is invalid.
+
+    - `mailbox_address` - The address is a mailbox or other non-physical address.
+    """
+
+
+class ValidationIssueEntityTaxIdentifier(BaseModel):
+    """Details when the issue is with the entity's tax ID."""
+
+    pass
+
+
+class ValidationIssue(BaseModel):
+    beneficial_owner_address: Optional[ValidationIssueBeneficialOwnerAddress] = None
+    """Details when the issue is with a beneficial owner's address."""
+
+    beneficial_owner_identity: Optional[ValidationIssueBeneficialOwnerIdentity] = None
+    """Details when the issue is with a beneficial owner's identity verification."""
+
+    category: Literal[
+        "entity_tax_identifier", "entity_address", "beneficial_owner_identity", "beneficial_owner_address"
+    ]
+    """The type of issue.
+
+    We may add additional possible values for this enum over time; your application
+    should be able to handle such additions gracefully.
+
+    - `entity_tax_identifier` - The entity's tax identifier could not be validated.
+      Update the tax ID with the
+      [update an entity API](/documentation/api/entities#update-an-entity.corporation.tax_identifier).
+    - `entity_address` - The entity's address could not be validated. Update the
+      address with the
+      [update an entity API](/documentation/api/entities#update-an-entity.corporation.address).
+    - `beneficial_owner_identity` - A beneficial owner's identity could not be
+      verified. Update the identification with the
+      [update a beneficial owner API](/documentation/api/beneficial-owners#update-a-beneficial-owner).
+    - `beneficial_owner_address` - A beneficial owner's address could not be
+      validated. Update the address with the
+      [update a beneficial owner API](/documentation/api/beneficial-owners#update-a-beneficial-owner).
+    """
+
+    entity_address: Optional[ValidationIssueEntityAddress] = None
+    """Details when the issue is with the entity's address."""
+
+    entity_tax_identifier: Optional[ValidationIssueEntityTaxIdentifier] = None
+    """Details when the issue is with the entity's tax ID."""
+
+
+class Validation(BaseModel):
+    """The validation results for the entity."""
+
+    issues: List[ValidationIssue]
+    """The list of issues that need to be addressed."""
+
+    status: Literal["pending", "valid", "invalid"]
+    """The validation status for the entity.
+
+    If the status is `invalid`, the `issues` array will be populated.
+
+    - `pending` - The submitted data is being validated.
+    - `valid` - The submitted data is valid.
+    - `invalid` - Additional information is required to validate the data.
+    """
+
+
 class Entity(BaseModel):
     """Entities are the legal entities that own accounts.
 
-    They can be people, corporations, partnerships, government authorities, or trusts.
+    They can be people, corporations, partnerships, government authorities, or trusts. To learn more, see [Entities](/documentation/entities).
     """
 
     id: str
@@ -817,6 +912,9 @@ class Entity(BaseModel):
 
     For this resource it will always be `entity`.
     """
+
+    validation: Optional[Validation] = None
+    """The validation results for the entity."""
 
     if TYPE_CHECKING:
         # Some versions of Pydantic <2.8.0 have a bug and don’t allow assigning a
