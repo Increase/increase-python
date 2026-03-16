@@ -782,7 +782,10 @@ class ValidationIssue(BaseModel):
 
 
 class Validation(BaseModel):
-    """The validation results for the entity."""
+    """The validation results for the entity.
+
+    Learn more about [validations](/documentation/entity-validation).
+    """
 
     issues: List[ValidationIssue]
     """The list of issues that need to be addressed."""
@@ -914,7 +917,10 @@ class Entity(BaseModel):
     """
 
     validation: Optional[Validation] = None
-    """The validation results for the entity."""
+    """The validation results for the entity.
+
+    Learn more about [validations](/documentation/entity-validation).
+    """
 
     if TYPE_CHECKING:
         # Some versions of Pydantic <2.8.0 have a bug and don’t allow assigning a
