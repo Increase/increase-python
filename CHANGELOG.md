@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.445.2 (2026-03-16)
+
+Full Changelog: [v0.445.1...v0.445.2](https://github.com/Increase/increase-python/compare/v0.445.1...v0.445.2)
+
+### Bug Fixes
+
+* **deps:** bump minimum typing-extensions version ([86c5f97](https://github.com/Increase/increase-python/commit/86c5f97b4c3f08d9149761616e0f953519aa9d35))
+
 ## 0.445.1 (2026-03-16)
 
 Full Changelog: [v0.445.0...v0.445.1](https://github.com/Increase/increase-python/compare/v0.445.0...v0.445.1)
