@@ -765,6 +765,13 @@ class CardPushTransfer(BaseModel):
     recipient_name: str
     """The name of the funds recipient."""
 
+    route: Literal["visa", "mastercard"]
+    """The card network route used for the transfer.
+
+    - `visa` - Visa and Interlink
+    - `mastercard` - Mastercard and Maestro
+    """
+
     sender_address_city: str
     """The city of the sender."""
 
