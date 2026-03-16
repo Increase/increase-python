@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.445.1 (2026-03-16)
+
+Full Changelog: [v0.445.0...v0.445.1](https://github.com/Increase/increase-python/compare/v0.445.0...v0.445.1)
+
+### Bug Fixes
+
+* **pydantic:** do not pass `by_alias` unless set ([a8d3f48](https://github.com/Increase/increase-python/commit/a8d3f484904e405da03895b7e8abbe6922612057))
+
 ## 0.445.0 (2026-03-16)
 
 Full Changelog: [v0.444.0...v0.445.0](https://github.com/Increase/increase-python/compare/v0.444.0...v0.445.0)
