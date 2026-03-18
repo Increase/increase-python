@@ -196,7 +196,6 @@ class Decline(BaseModel):
         "incorrect_pin",
         "allowable_number_of_pin_entry_tries_exceeded",
         "unable_to_locate_previous_message",
-        "data_inconsistent_with_original_message",
         "pin_error_found",
         "cannot_verify_pin",
         "verification_data_failed",
@@ -204,15 +203,11 @@ class Decline(BaseModel):
         "cash_service_not_available",
         "cashback_request_exceeds_issuer_limit",
         "transaction_amount_exceeds_pre_authorized_approval_amount",
-        "invalid_biller_information",
-        "pin_change_request_declined",
-        "unsafe_pin",
         "transaction_does_not_qualify_for_visa_pin",
         "offline_declined",
         "unable_to_go_online",
         "valid_account_but_amount_not_supported",
         "invalid_use_of_merchant_category_code_correct_and_reattempt",
-        "forward_to_issuer",
         "card_authentication_failed",
     ]
     """The reason why the transfer was declined.
@@ -302,8 +297,6 @@ class Decline(BaseModel):
       entry tries has been exceeded.
     - `unable_to_locate_previous_message` - The previous message associated with the
       transaction could not be located.
-    - `data_inconsistent_with_original_message` - The data in the transaction is
-      inconsistent with the original message.
     - `pin_error_found` - An error was found with the PIN associated with the
       transaction.
     - `cannot_verify_pin` - The PIN associated with the transaction could not be
@@ -318,9 +311,6 @@ class Decline(BaseModel):
       issuer limit.
     - `transaction_amount_exceeds_pre_authorized_approval_amount` - The transaction
       amount exceeds the pre-authorized approval amount.
-    - `invalid_biller_information` - The biller information provided is invalid.
-    - `pin_change_request_declined` - The PIN change request has been declined.
-    - `unsafe_pin` - The PIN provided is considered unsafe.
     - `transaction_does_not_qualify_for_visa_pin` - The transaction does not qualify
       for Visa PIN processing.
     - `offline_declined` - The transaction was declined offline.
@@ -330,8 +320,6 @@ class Decline(BaseModel):
       transaction amount is not supported.
     - `invalid_use_of_merchant_category_code_correct_and_reattempt` - The merchant
       category code was used incorrectly; correct it and reattempt the transaction.
-    - `forward_to_issuer` - The transaction should be forwarded to the issuer for
-      processing.
     - `card_authentication_failed` - The card authentication process has failed.
     """
 
