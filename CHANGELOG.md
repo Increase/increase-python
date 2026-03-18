@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.447.0 (2026-03-18)
+
+Full Changelog: [v0.446.0...v0.447.0](https://github.com/Increase/increase-python/compare/v0.446.0...v0.447.0)
+
+### Features
+
+* **api:** api update ([9321ecb](https://github.com/Increase/increase-python/commit/9321ecb342aa5f6003797a580699f108258ee859))
+
+
+### Chores
+
+* **internal:** tweak CI branches ([20e4795](https://github.com/Increase/increase-python/commit/20e4795db0d885e92369367c941f6b1ca218207f))
+
 ## 0.446.0 (2026-03-16)
 
 Full Changelog: [v0.445.2...v0.446.0](https://github.com/Increase/increase-python/compare/v0.445.2...v0.446.0)
