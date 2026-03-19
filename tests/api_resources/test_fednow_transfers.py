@@ -22,7 +22,6 @@ class TestFednowTransfers:
     @parametrize
     def test_method_create(self, client: Increase) -> None:
         fednow_transfer = client.fednow_transfers.create(
-            account_id="account_in71c4amph0vgo2qllky",
             amount=100,
             creditor_name="Ian Crease",
             debtor_name="National Phonograph Company",
@@ -34,7 +33,6 @@ class TestFednowTransfers:
     @parametrize
     def test_method_create_with_all_params(self, client: Increase) -> None:
         fednow_transfer = client.fednow_transfers.create(
-            account_id="account_in71c4amph0vgo2qllky",
             amount=100,
             creditor_name="Ian Crease",
             debtor_name="National Phonograph Company",
@@ -62,7 +60,6 @@ class TestFednowTransfers:
     @parametrize
     def test_raw_response_create(self, client: Increase) -> None:
         response = client.fednow_transfers.with_raw_response.create(
-            account_id="account_in71c4amph0vgo2qllky",
             amount=100,
             creditor_name="Ian Crease",
             debtor_name="National Phonograph Company",
@@ -78,7 +75,6 @@ class TestFednowTransfers:
     @parametrize
     def test_streaming_response_create(self, client: Increase) -> None:
         with client.fednow_transfers.with_streaming_response.create(
-            account_id="account_in71c4amph0vgo2qllky",
             amount=100,
             creditor_name="Ian Crease",
             debtor_name="National Phonograph Company",
@@ -259,7 +255,6 @@ class TestAsyncFednowTransfers:
     @parametrize
     async def test_method_create(self, async_client: AsyncIncrease) -> None:
         fednow_transfer = await async_client.fednow_transfers.create(
-            account_id="account_in71c4amph0vgo2qllky",
             amount=100,
             creditor_name="Ian Crease",
             debtor_name="National Phonograph Company",
@@ -271,7 +266,6 @@ class TestAsyncFednowTransfers:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncIncrease) -> None:
         fednow_transfer = await async_client.fednow_transfers.create(
-            account_id="account_in71c4amph0vgo2qllky",
             amount=100,
             creditor_name="Ian Crease",
             debtor_name="National Phonograph Company",
@@ -299,7 +293,6 @@ class TestAsyncFednowTransfers:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
         response = await async_client.fednow_transfers.with_raw_response.create(
-            account_id="account_in71c4amph0vgo2qllky",
             amount=100,
             creditor_name="Ian Crease",
             debtor_name="National Phonograph Company",
@@ -315,7 +308,6 @@ class TestAsyncFednowTransfers:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncIncrease) -> None:
         async with async_client.fednow_transfers.with_streaming_response.create(
-            account_id="account_in71c4amph0vgo2qllky",
             amount=100,
             creditor_name="Ian Crease",
             debtor_name="National Phonograph Company",

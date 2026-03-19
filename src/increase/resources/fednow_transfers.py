@@ -45,7 +45,6 @@ class FednowTransfersResource(SyncAPIResource):
     def create(
         self,
         *,
-        account_id: str,
         amount: int,
         creditor_name: str,
         debtor_name: str,
@@ -69,8 +68,6 @@ class FednowTransfersResource(SyncAPIResource):
         Create a FedNow Transfer
 
         Args:
-          account_id: The identifier for the account that will send the transfer.
-
           amount: The amount, in minor units, to send to the creditor.
 
           creditor_name: The creditor's name.
@@ -108,7 +105,6 @@ class FednowTransfersResource(SyncAPIResource):
             "/fednow_transfers",
             body=maybe_transform(
                 {
-                    "account_id": account_id,
                     "amount": amount,
                     "creditor_name": creditor_name,
                     "debtor_name": debtor_name,
@@ -343,7 +339,6 @@ class AsyncFednowTransfersResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        account_id: str,
         amount: int,
         creditor_name: str,
         debtor_name: str,
@@ -367,8 +362,6 @@ class AsyncFednowTransfersResource(AsyncAPIResource):
         Create a FedNow Transfer
 
         Args:
-          account_id: The identifier for the account that will send the transfer.
-
           amount: The amount, in minor units, to send to the creditor.
 
           creditor_name: The creditor's name.
@@ -406,7 +399,6 @@ class AsyncFednowTransfersResource(AsyncAPIResource):
             "/fednow_transfers",
             body=await async_maybe_transform(
                 {
-                    "account_id": account_id,
                     "amount": amount,
                     "creditor_name": creditor_name,
                     "debtor_name": debtor_name,
