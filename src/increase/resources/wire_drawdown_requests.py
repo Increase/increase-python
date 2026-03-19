@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing_extensions import Literal
+
 import httpx
 
 from ..types import wire_drawdown_request_list_params, wire_drawdown_request_create_params
@@ -52,6 +54,7 @@ class WireDrawdownRequestsResource(SyncAPIResource):
         debtor_address: wire_drawdown_request_create_params.DebtorAddress,
         debtor_name: str,
         unstructured_remittance_information: str,
+        charge_bearer: Literal["shared", "debtor", "creditor", "service_level"] | Omit = omit,
         debtor_account_number: str | Omit = omit,
         debtor_external_account_id: str | Omit = omit,
         debtor_routing_number: str | Omit = omit,
@@ -81,6 +84,14 @@ class WireDrawdownRequestsResource(SyncAPIResource):
           debtor_name: The debtor's name.
 
           unstructured_remittance_information: Remittance information the debtor will see as part of the request.
+
+          charge_bearer: Determines who bears the cost of the drawdown request. Defaults to `shared` if
+              not specified.
+
+              - `shared` - Charges are shared between the debtor and creditor.
+              - `debtor` - Charges are borne by the debtor.
+              - `creditor` - Charges are borne by the creditor.
+              - `service_level` - Charges are determined by the service level.
 
           debtor_account_number: The debtor's account number.
 
@@ -113,6 +124,7 @@ class WireDrawdownRequestsResource(SyncAPIResource):
                     "debtor_address": debtor_address,
                     "debtor_name": debtor_name,
                     "unstructured_remittance_information": unstructured_remittance_information,
+                    "charge_bearer": charge_bearer,
                     "debtor_account_number": debtor_account_number,
                     "debtor_external_account_id": debtor_external_account_id,
                     "debtor_routing_number": debtor_routing_number,
@@ -255,6 +267,7 @@ class AsyncWireDrawdownRequestsResource(AsyncAPIResource):
         debtor_address: wire_drawdown_request_create_params.DebtorAddress,
         debtor_name: str,
         unstructured_remittance_information: str,
+        charge_bearer: Literal["shared", "debtor", "creditor", "service_level"] | Omit = omit,
         debtor_account_number: str | Omit = omit,
         debtor_external_account_id: str | Omit = omit,
         debtor_routing_number: str | Omit = omit,
@@ -284,6 +297,14 @@ class AsyncWireDrawdownRequestsResource(AsyncAPIResource):
           debtor_name: The debtor's name.
 
           unstructured_remittance_information: Remittance information the debtor will see as part of the request.
+
+          charge_bearer: Determines who bears the cost of the drawdown request. Defaults to `shared` if
+              not specified.
+
+              - `shared` - Charges are shared between the debtor and creditor.
+              - `debtor` - Charges are borne by the debtor.
+              - `creditor` - Charges are borne by the creditor.
+              - `service_level` - Charges are determined by the service level.
 
           debtor_account_number: The debtor's account number.
 
@@ -316,6 +337,7 @@ class AsyncWireDrawdownRequestsResource(AsyncAPIResource):
                     "debtor_address": debtor_address,
                     "debtor_name": debtor_name,
                     "unstructured_remittance_information": unstructured_remittance_information,
+                    "charge_bearer": charge_bearer,
                     "debtor_account_number": debtor_account_number,
                     "debtor_external_account_id": debtor_external_account_id,
                     "debtor_routing_number": debtor_routing_number,
