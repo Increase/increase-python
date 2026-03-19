@@ -9,7 +9,7 @@ from typing_extensions import Literal
 import httpx
 
 from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from ..._utils import maybe_transform, async_maybe_transform
+from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -102,7 +102,9 @@ class PhysicalCardsResource(SyncAPIResource):
         if not physical_card_id:
             raise ValueError(f"Expected a non-empty value for `physical_card_id` but received {physical_card_id!r}")
         return self._post(
-            f"/simulations/physical_cards/{physical_card_id}/tracking_updates",
+            path_template(
+                "/simulations/physical_cards/{physical_card_id}/tracking_updates", physical_card_id=physical_card_id
+            ),
             body=maybe_transform(
                 {
                     "category": category,
@@ -175,7 +177,9 @@ class PhysicalCardsResource(SyncAPIResource):
         if not physical_card_id:
             raise ValueError(f"Expected a non-empty value for `physical_card_id` but received {physical_card_id!r}")
         return self._post(
-            f"/simulations/physical_cards/{physical_card_id}/advance_shipment",
+            path_template(
+                "/simulations/physical_cards/{physical_card_id}/advance_shipment", physical_card_id=physical_card_id
+            ),
             body=maybe_transform(
                 {"shipment_status": shipment_status},
                 physical_card_advance_shipment_params.PhysicalCardAdvanceShipmentParams,
@@ -268,7 +272,9 @@ class AsyncPhysicalCardsResource(AsyncAPIResource):
         if not physical_card_id:
             raise ValueError(f"Expected a non-empty value for `physical_card_id` but received {physical_card_id!r}")
         return await self._post(
-            f"/simulations/physical_cards/{physical_card_id}/tracking_updates",
+            path_template(
+                "/simulations/physical_cards/{physical_card_id}/tracking_updates", physical_card_id=physical_card_id
+            ),
             body=await async_maybe_transform(
                 {
                     "category": category,
@@ -341,7 +347,9 @@ class AsyncPhysicalCardsResource(AsyncAPIResource):
         if not physical_card_id:
             raise ValueError(f"Expected a non-empty value for `physical_card_id` but received {physical_card_id!r}")
         return await self._post(
-            f"/simulations/physical_cards/{physical_card_id}/advance_shipment",
+            path_template(
+                "/simulations/physical_cards/{physical_card_id}/advance_shipment", physical_card_id=physical_card_id
+            ),
             body=await async_maybe_transform(
                 {"shipment_status": shipment_status},
                 physical_card_advance_shipment_params.PhysicalCardAdvanceShipmentParams,

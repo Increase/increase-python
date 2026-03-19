@@ -5,6 +5,7 @@ from __future__ import annotations
 import httpx
 
 from ..._types import Body, Query, Headers, NotGiven, not_given
+from ..._utils import path_template
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -72,7 +73,10 @@ class WireDrawdownRequestsResource(SyncAPIResource):
                 f"Expected a non-empty value for `wire_drawdown_request_id` but received {wire_drawdown_request_id!r}"
             )
         return self._post(
-            f"/simulations/wire_drawdown_requests/{wire_drawdown_request_id}/refuse",
+            path_template(
+                "/simulations/wire_drawdown_requests/{wire_drawdown_request_id}/refuse",
+                wire_drawdown_request_id=wire_drawdown_request_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -116,7 +120,10 @@ class WireDrawdownRequestsResource(SyncAPIResource):
                 f"Expected a non-empty value for `wire_drawdown_request_id` but received {wire_drawdown_request_id!r}"
             )
         return self._post(
-            f"/simulations/wire_drawdown_requests/{wire_drawdown_request_id}/submit",
+            path_template(
+                "/simulations/wire_drawdown_requests/{wire_drawdown_request_id}/submit",
+                wire_drawdown_request_id=wire_drawdown_request_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -181,7 +188,10 @@ class AsyncWireDrawdownRequestsResource(AsyncAPIResource):
                 f"Expected a non-empty value for `wire_drawdown_request_id` but received {wire_drawdown_request_id!r}"
             )
         return await self._post(
-            f"/simulations/wire_drawdown_requests/{wire_drawdown_request_id}/refuse",
+            path_template(
+                "/simulations/wire_drawdown_requests/{wire_drawdown_request_id}/refuse",
+                wire_drawdown_request_id=wire_drawdown_request_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -225,7 +235,10 @@ class AsyncWireDrawdownRequestsResource(AsyncAPIResource):
                 f"Expected a non-empty value for `wire_drawdown_request_id` but received {wire_drawdown_request_id!r}"
             )
         return await self._post(
-            f"/simulations/wire_drawdown_requests/{wire_drawdown_request_id}/submit",
+            path_template(
+                "/simulations/wire_drawdown_requests/{wire_drawdown_request_id}/submit",
+                wire_drawdown_request_id=wire_drawdown_request_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

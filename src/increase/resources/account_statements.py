@@ -6,7 +6,7 @@ import httpx
 
 from ..types import account_statement_list_params
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from .._utils import maybe_transform
+from .._utils import path_template, maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -72,7 +72,7 @@ class AccountStatementsResource(SyncAPIResource):
                 f"Expected a non-empty value for `account_statement_id` but received {account_statement_id!r}"
             )
         return self._get(
-            f"/account_statements/{account_statement_id}",
+            path_template("/account_statements/{account_statement_id}", account_statement_id=account_statement_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -184,7 +184,7 @@ class AsyncAccountStatementsResource(AsyncAPIResource):
                 f"Expected a non-empty value for `account_statement_id` but received {account_statement_id!r}"
             )
         return await self._get(
-            f"/account_statements/{account_statement_id}",
+            path_template("/account_statements/{account_statement_id}", account_statement_id=account_statement_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

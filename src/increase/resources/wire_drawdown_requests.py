@@ -8,7 +8,7 @@ import httpx
 
 from ..types import wire_drawdown_request_list_params, wire_drawdown_request_create_params
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -172,7 +172,9 @@ class WireDrawdownRequestsResource(SyncAPIResource):
                 f"Expected a non-empty value for `wire_drawdown_request_id` but received {wire_drawdown_request_id!r}"
             )
         return self._get(
-            f"/wire_drawdown_requests/{wire_drawdown_request_id}",
+            path_template(
+                "/wire_drawdown_requests/{wire_drawdown_request_id}", wire_drawdown_request_id=wire_drawdown_request_id
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -385,7 +387,9 @@ class AsyncWireDrawdownRequestsResource(AsyncAPIResource):
                 f"Expected a non-empty value for `wire_drawdown_request_id` but received {wire_drawdown_request_id!r}"
             )
         return await self._get(
-            f"/wire_drawdown_requests/{wire_drawdown_request_id}",
+            path_template(
+                "/wire_drawdown_requests/{wire_drawdown_request_id}", wire_drawdown_request_id=wire_drawdown_request_id
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

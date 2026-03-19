@@ -7,7 +7,7 @@ from typing_extensions import Literal
 import httpx
 
 from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from ..._utils import maybe_transform, async_maybe_transform
+from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -83,7 +83,7 @@ class ACHTransfersResource(SyncAPIResource):
         if not ach_transfer_id:
             raise ValueError(f"Expected a non-empty value for `ach_transfer_id` but received {ach_transfer_id!r}")
         return self._post(
-            f"/simulations/ach_transfers/{ach_transfer_id}/acknowledge",
+            path_template("/simulations/ach_transfers/{ach_transfer_id}/acknowledge", ach_transfer_id=ach_transfer_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -188,7 +188,10 @@ class ACHTransfersResource(SyncAPIResource):
         if not ach_transfer_id:
             raise ValueError(f"Expected a non-empty value for `ach_transfer_id` but received {ach_transfer_id!r}")
         return self._post(
-            f"/simulations/ach_transfers/{ach_transfer_id}/create_notification_of_change",
+            path_template(
+                "/simulations/ach_transfers/{ach_transfer_id}/create_notification_of_change",
+                ach_transfer_id=ach_transfer_id,
+            ),
             body=maybe_transform(
                 {
                     "change_code": change_code,
@@ -466,7 +469,7 @@ class ACHTransfersResource(SyncAPIResource):
         if not ach_transfer_id:
             raise ValueError(f"Expected a non-empty value for `ach_transfer_id` but received {ach_transfer_id!r}")
         return self._post(
-            f"/simulations/ach_transfers/{ach_transfer_id}/return",
+            path_template("/simulations/ach_transfers/{ach_transfer_id}/return", ach_transfer_id=ach_transfer_id),
             body=maybe_transform({"reason": reason}, ach_transfer_return_params.ACHTransferReturnParams),
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -526,7 +529,7 @@ class ACHTransfersResource(SyncAPIResource):
         if not ach_transfer_id:
             raise ValueError(f"Expected a non-empty value for `ach_transfer_id` but received {ach_transfer_id!r}")
         return self._post(
-            f"/simulations/ach_transfers/{ach_transfer_id}/settle",
+            path_template("/simulations/ach_transfers/{ach_transfer_id}/settle", ach_transfer_id=ach_transfer_id),
             body=maybe_transform(
                 {"inbound_funds_hold_behavior": inbound_funds_hold_behavior},
                 ach_transfer_settle_params.ACHTransferSettleParams,
@@ -577,7 +580,7 @@ class ACHTransfersResource(SyncAPIResource):
         if not ach_transfer_id:
             raise ValueError(f"Expected a non-empty value for `ach_transfer_id` but received {ach_transfer_id!r}")
         return self._post(
-            f"/simulations/ach_transfers/{ach_transfer_id}/submit",
+            path_template("/simulations/ach_transfers/{ach_transfer_id}/submit", ach_transfer_id=ach_transfer_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -645,7 +648,7 @@ class AsyncACHTransfersResource(AsyncAPIResource):
         if not ach_transfer_id:
             raise ValueError(f"Expected a non-empty value for `ach_transfer_id` but received {ach_transfer_id!r}")
         return await self._post(
-            f"/simulations/ach_transfers/{ach_transfer_id}/acknowledge",
+            path_template("/simulations/ach_transfers/{ach_transfer_id}/acknowledge", ach_transfer_id=ach_transfer_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -750,7 +753,10 @@ class AsyncACHTransfersResource(AsyncAPIResource):
         if not ach_transfer_id:
             raise ValueError(f"Expected a non-empty value for `ach_transfer_id` but received {ach_transfer_id!r}")
         return await self._post(
-            f"/simulations/ach_transfers/{ach_transfer_id}/create_notification_of_change",
+            path_template(
+                "/simulations/ach_transfers/{ach_transfer_id}/create_notification_of_change",
+                ach_transfer_id=ach_transfer_id,
+            ),
             body=await async_maybe_transform(
                 {
                     "change_code": change_code,
@@ -1028,7 +1034,7 @@ class AsyncACHTransfersResource(AsyncAPIResource):
         if not ach_transfer_id:
             raise ValueError(f"Expected a non-empty value for `ach_transfer_id` but received {ach_transfer_id!r}")
         return await self._post(
-            f"/simulations/ach_transfers/{ach_transfer_id}/return",
+            path_template("/simulations/ach_transfers/{ach_transfer_id}/return", ach_transfer_id=ach_transfer_id),
             body=await async_maybe_transform({"reason": reason}, ach_transfer_return_params.ACHTransferReturnParams),
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -1088,7 +1094,7 @@ class AsyncACHTransfersResource(AsyncAPIResource):
         if not ach_transfer_id:
             raise ValueError(f"Expected a non-empty value for `ach_transfer_id` but received {ach_transfer_id!r}")
         return await self._post(
-            f"/simulations/ach_transfers/{ach_transfer_id}/settle",
+            path_template("/simulations/ach_transfers/{ach_transfer_id}/settle", ach_transfer_id=ach_transfer_id),
             body=await async_maybe_transform(
                 {"inbound_funds_hold_behavior": inbound_funds_hold_behavior},
                 ach_transfer_settle_params.ACHTransferSettleParams,
@@ -1139,7 +1145,7 @@ class AsyncACHTransfersResource(AsyncAPIResource):
         if not ach_transfer_id:
             raise ValueError(f"Expected a non-empty value for `ach_transfer_id` but received {ach_transfer_id!r}")
         return await self._post(
-            f"/simulations/ach_transfers/{ach_transfer_id}/submit",
+            path_template("/simulations/ach_transfers/{ach_transfer_id}/submit", ach_transfer_id=ach_transfer_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

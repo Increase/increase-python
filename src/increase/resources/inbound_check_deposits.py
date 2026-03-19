@@ -8,7 +8,7 @@ import httpx
 
 from ..types import inbound_check_deposit_list_params, inbound_check_deposit_return_params
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -74,7 +74,9 @@ class InboundCheckDepositsResource(SyncAPIResource):
                 f"Expected a non-empty value for `inbound_check_deposit_id` but received {inbound_check_deposit_id!r}"
             )
         return self._get(
-            f"/inbound_check_deposits/{inbound_check_deposit_id}",
+            path_template(
+                "/inbound_check_deposits/{inbound_check_deposit_id}", inbound_check_deposit_id=inbound_check_deposit_id
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -173,7 +175,10 @@ class InboundCheckDepositsResource(SyncAPIResource):
                 f"Expected a non-empty value for `inbound_check_deposit_id` but received {inbound_check_deposit_id!r}"
             )
         return self._post(
-            f"/inbound_check_deposits/{inbound_check_deposit_id}/decline",
+            path_template(
+                "/inbound_check_deposits/{inbound_check_deposit_id}/decline",
+                inbound_check_deposit_id=inbound_check_deposit_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -234,7 +239,10 @@ class InboundCheckDepositsResource(SyncAPIResource):
                 f"Expected a non-empty value for `inbound_check_deposit_id` but received {inbound_check_deposit_id!r}"
             )
         return self._post(
-            f"/inbound_check_deposits/{inbound_check_deposit_id}/return",
+            path_template(
+                "/inbound_check_deposits/{inbound_check_deposit_id}/return",
+                inbound_check_deposit_id=inbound_check_deposit_id,
+            ),
             body=maybe_transform(
                 {"reason": reason}, inbound_check_deposit_return_params.InboundCheckDepositReturnParams
             ),
@@ -299,7 +307,9 @@ class AsyncInboundCheckDepositsResource(AsyncAPIResource):
                 f"Expected a non-empty value for `inbound_check_deposit_id` but received {inbound_check_deposit_id!r}"
             )
         return await self._get(
-            f"/inbound_check_deposits/{inbound_check_deposit_id}",
+            path_template(
+                "/inbound_check_deposits/{inbound_check_deposit_id}", inbound_check_deposit_id=inbound_check_deposit_id
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -398,7 +408,10 @@ class AsyncInboundCheckDepositsResource(AsyncAPIResource):
                 f"Expected a non-empty value for `inbound_check_deposit_id` but received {inbound_check_deposit_id!r}"
             )
         return await self._post(
-            f"/inbound_check_deposits/{inbound_check_deposit_id}/decline",
+            path_template(
+                "/inbound_check_deposits/{inbound_check_deposit_id}/decline",
+                inbound_check_deposit_id=inbound_check_deposit_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -459,7 +472,10 @@ class AsyncInboundCheckDepositsResource(AsyncAPIResource):
                 f"Expected a non-empty value for `inbound_check_deposit_id` but received {inbound_check_deposit_id!r}"
             )
         return await self._post(
-            f"/inbound_check_deposits/{inbound_check_deposit_id}/return",
+            path_template(
+                "/inbound_check_deposits/{inbound_check_deposit_id}/return",
+                inbound_check_deposit_id=inbound_check_deposit_id,
+            ),
             body=await async_maybe_transform(
                 {"reason": reason}, inbound_check_deposit_return_params.InboundCheckDepositReturnParams
             ),

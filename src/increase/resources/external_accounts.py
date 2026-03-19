@@ -8,7 +8,7 @@ import httpx
 
 from ..types import external_account_list_params, external_account_create_params, external_account_update_params
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -146,7 +146,7 @@ class ExternalAccountsResource(SyncAPIResource):
                 f"Expected a non-empty value for `external_account_id` but received {external_account_id!r}"
             )
         return self._get(
-            f"/external_accounts/{external_account_id}",
+            path_template("/external_accounts/{external_account_id}", external_account_id=external_account_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -210,7 +210,7 @@ class ExternalAccountsResource(SyncAPIResource):
                 f"Expected a non-empty value for `external_account_id` but received {external_account_id!r}"
             )
         return self._patch(
-            f"/external_accounts/{external_account_id}",
+            path_template("/external_accounts/{external_account_id}", external_account_id=external_account_id),
             body=maybe_transform(
                 {
                     "account_holder": account_holder,
@@ -414,7 +414,7 @@ class AsyncExternalAccountsResource(AsyncAPIResource):
                 f"Expected a non-empty value for `external_account_id` but received {external_account_id!r}"
             )
         return await self._get(
-            f"/external_accounts/{external_account_id}",
+            path_template("/external_accounts/{external_account_id}", external_account_id=external_account_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -478,7 +478,7 @@ class AsyncExternalAccountsResource(AsyncAPIResource):
                 f"Expected a non-empty value for `external_account_id` but received {external_account_id!r}"
             )
         return await self._patch(
-            f"/external_accounts/{external_account_id}",
+            path_template("/external_accounts/{external_account_id}", external_account_id=external_account_id),
             body=await async_maybe_transform(
                 {
                     "account_holder": account_holder,

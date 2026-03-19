@@ -8,7 +8,7 @@ import httpx
 
 from ..types import inbound_wire_transfer_list_params, inbound_wire_transfer_reverse_params
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -74,7 +74,9 @@ class InboundWireTransfersResource(SyncAPIResource):
                 f"Expected a non-empty value for `inbound_wire_transfer_id` but received {inbound_wire_transfer_id!r}"
             )
         return self._get(
-            f"/inbound_wire_transfers/{inbound_wire_transfer_id}",
+            path_template(
+                "/inbound_wire_transfers/{inbound_wire_transfer_id}", inbound_wire_transfer_id=inbound_wire_transfer_id
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -187,7 +189,10 @@ class InboundWireTransfersResource(SyncAPIResource):
                 f"Expected a non-empty value for `inbound_wire_transfer_id` but received {inbound_wire_transfer_id!r}"
             )
         return self._post(
-            f"/inbound_wire_transfers/{inbound_wire_transfer_id}/reverse",
+            path_template(
+                "/inbound_wire_transfers/{inbound_wire_transfer_id}/reverse",
+                inbound_wire_transfer_id=inbound_wire_transfer_id,
+            ),
             body=maybe_transform(
                 {"reason": reason}, inbound_wire_transfer_reverse_params.InboundWireTransferReverseParams
             ),
@@ -252,7 +257,9 @@ class AsyncInboundWireTransfersResource(AsyncAPIResource):
                 f"Expected a non-empty value for `inbound_wire_transfer_id` but received {inbound_wire_transfer_id!r}"
             )
         return await self._get(
-            f"/inbound_wire_transfers/{inbound_wire_transfer_id}",
+            path_template(
+                "/inbound_wire_transfers/{inbound_wire_transfer_id}", inbound_wire_transfer_id=inbound_wire_transfer_id
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -365,7 +372,10 @@ class AsyncInboundWireTransfersResource(AsyncAPIResource):
                 f"Expected a non-empty value for `inbound_wire_transfer_id` but received {inbound_wire_transfer_id!r}"
             )
         return await self._post(
-            f"/inbound_wire_transfers/{inbound_wire_transfer_id}/reverse",
+            path_template(
+                "/inbound_wire_transfers/{inbound_wire_transfer_id}/reverse",
+                inbound_wire_transfer_id=inbound_wire_transfer_id,
+            ),
             body=await async_maybe_transform(
                 {"reason": reason}, inbound_wire_transfer_reverse_params.InboundWireTransferReverseParams
             ),
