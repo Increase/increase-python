@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing_extensions import Required, TypedDict
+from typing_extensions import Literal, Required, TypedDict
 
 __all__ = ["WireDrawdownRequestCreateParams", "CreditorAddress", "DebtorAddress"]
 
@@ -28,6 +28,17 @@ class WireDrawdownRequestCreateParams(TypedDict, total=False):
 
     unstructured_remittance_information: Required[str]
     """Remittance information the debtor will see as part of the request."""
+
+    charge_bearer: Literal["shared", "debtor", "creditor", "service_level"]
+    """Determines who bears the cost of the drawdown request.
+
+    Defaults to `shared` if not specified.
+
+    - `shared` - Charges are shared between the debtor and creditor.
+    - `debtor` - Charges are borne by the debtor.
+    - `creditor` - Charges are borne by the creditor.
+    - `service_level` - Charges are determined by the service level.
+    """
 
     debtor_account_number: str
     """The debtor's account number."""
