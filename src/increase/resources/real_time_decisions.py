@@ -6,7 +6,7 @@ import httpx
 
 from ..types import real_time_decision_action_params
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -71,7 +71,7 @@ class RealTimeDecisionsResource(SyncAPIResource):
                 f"Expected a non-empty value for `real_time_decision_id` but received {real_time_decision_id!r}"
             )
         return self._get(
-            f"/real_time_decisions/{real_time_decision_id}",
+            path_template("/real_time_decisions/{real_time_decision_id}", real_time_decision_id=real_time_decision_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -135,7 +135,9 @@ class RealTimeDecisionsResource(SyncAPIResource):
                 f"Expected a non-empty value for `real_time_decision_id` but received {real_time_decision_id!r}"
             )
         return self._post(
-            f"/real_time_decisions/{real_time_decision_id}/action",
+            path_template(
+                "/real_time_decisions/{real_time_decision_id}/action", real_time_decision_id=real_time_decision_id
+            ),
             body=maybe_transform(
                 {
                     "card_authentication": card_authentication,
@@ -208,7 +210,7 @@ class AsyncRealTimeDecisionsResource(AsyncAPIResource):
                 f"Expected a non-empty value for `real_time_decision_id` but received {real_time_decision_id!r}"
             )
         return await self._get(
-            f"/real_time_decisions/{real_time_decision_id}",
+            path_template("/real_time_decisions/{real_time_decision_id}", real_time_decision_id=real_time_decision_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -272,7 +274,9 @@ class AsyncRealTimeDecisionsResource(AsyncAPIResource):
                 f"Expected a non-empty value for `real_time_decision_id` but received {real_time_decision_id!r}"
             )
         return await self._post(
-            f"/real_time_decisions/{real_time_decision_id}/action",
+            path_template(
+                "/real_time_decisions/{real_time_decision_id}/action", real_time_decision_id=real_time_decision_id
+            ),
             body=await async_maybe_transform(
                 {
                     "card_authentication": card_authentication,

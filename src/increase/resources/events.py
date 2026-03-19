@@ -9,7 +9,7 @@ import httpx
 
 from ..types import event_list_params
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from .._utils import maybe_transform
+from .._utils import path_template, maybe_transform
 from .._compat import cached_property
 from .._models import construct_type
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -76,7 +76,7 @@ class EventsResource(SyncAPIResource):
         if not event_id:
             raise ValueError(f"Expected a non-empty value for `event_id` but received {event_id!r}")
         return self._get(
-            f"/events/{event_id}",
+            path_template("/events/{event_id}", event_id=event_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -215,7 +215,7 @@ class AsyncEventsResource(AsyncAPIResource):
         if not event_id:
             raise ValueError(f"Expected a non-empty value for `event_id` but received {event_id!r}")
         return await self._get(
-            f"/events/{event_id}",
+            path_template("/events/{event_id}", event_id=event_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

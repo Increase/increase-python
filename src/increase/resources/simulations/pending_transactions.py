@@ -5,6 +5,7 @@ from __future__ import annotations
 import httpx
 
 from ..._types import Body, Query, Headers, NotGiven, not_given
+from ..._utils import path_template
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -74,7 +75,10 @@ class PendingTransactionsResource(SyncAPIResource):
                 f"Expected a non-empty value for `pending_transaction_id` but received {pending_transaction_id!r}"
             )
         return self._post(
-            f"/simulations/pending_transactions/{pending_transaction_id}/release_inbound_funds_hold",
+            path_template(
+                "/simulations/pending_transactions/{pending_transaction_id}/release_inbound_funds_hold",
+                pending_transaction_id=pending_transaction_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -141,7 +145,10 @@ class AsyncPendingTransactionsResource(AsyncAPIResource):
                 f"Expected a non-empty value for `pending_transaction_id` but received {pending_transaction_id!r}"
             )
         return await self._post(
-            f"/simulations/pending_transactions/{pending_transaction_id}/release_inbound_funds_hold",
+            path_template(
+                "/simulations/pending_transactions/{pending_transaction_id}/release_inbound_funds_hold",
+                pending_transaction_id=pending_transaction_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

@@ -9,7 +9,7 @@ import httpx
 
 from ..types import beneficial_owner_list_params, beneficial_owner_create_params, beneficial_owner_update_params
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -135,7 +135,10 @@ class BeneficialOwnersResource(SyncAPIResource):
                 f"Expected a non-empty value for `entity_beneficial_owner_id` but received {entity_beneficial_owner_id!r}"
             )
         return self._get(
-            f"/entity_beneficial_owners/{entity_beneficial_owner_id}",
+            path_template(
+                "/entity_beneficial_owners/{entity_beneficial_owner_id}",
+                entity_beneficial_owner_id=entity_beneficial_owner_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -191,7 +194,10 @@ class BeneficialOwnersResource(SyncAPIResource):
                 f"Expected a non-empty value for `entity_beneficial_owner_id` but received {entity_beneficial_owner_id!r}"
             )
         return self._patch(
-            f"/entity_beneficial_owners/{entity_beneficial_owner_id}",
+            path_template(
+                "/entity_beneficial_owners/{entity_beneficial_owner_id}",
+                entity_beneficial_owner_id=entity_beneficial_owner_id,
+            ),
             body=maybe_transform(
                 {
                     "address": address,
@@ -304,7 +310,10 @@ class BeneficialOwnersResource(SyncAPIResource):
                 f"Expected a non-empty value for `entity_beneficial_owner_id` but received {entity_beneficial_owner_id!r}"
             )
         return self._post(
-            f"/entity_beneficial_owners/{entity_beneficial_owner_id}/archive",
+            path_template(
+                "/entity_beneficial_owners/{entity_beneficial_owner_id}/archive",
+                entity_beneficial_owner_id=entity_beneficial_owner_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -426,7 +435,10 @@ class AsyncBeneficialOwnersResource(AsyncAPIResource):
                 f"Expected a non-empty value for `entity_beneficial_owner_id` but received {entity_beneficial_owner_id!r}"
             )
         return await self._get(
-            f"/entity_beneficial_owners/{entity_beneficial_owner_id}",
+            path_template(
+                "/entity_beneficial_owners/{entity_beneficial_owner_id}",
+                entity_beneficial_owner_id=entity_beneficial_owner_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -482,7 +494,10 @@ class AsyncBeneficialOwnersResource(AsyncAPIResource):
                 f"Expected a non-empty value for `entity_beneficial_owner_id` but received {entity_beneficial_owner_id!r}"
             )
         return await self._patch(
-            f"/entity_beneficial_owners/{entity_beneficial_owner_id}",
+            path_template(
+                "/entity_beneficial_owners/{entity_beneficial_owner_id}",
+                entity_beneficial_owner_id=entity_beneficial_owner_id,
+            ),
             body=await async_maybe_transform(
                 {
                     "address": address,
@@ -595,7 +610,10 @@ class AsyncBeneficialOwnersResource(AsyncAPIResource):
                 f"Expected a non-empty value for `entity_beneficial_owner_id` but received {entity_beneficial_owner_id!r}"
             )
         return await self._post(
-            f"/entity_beneficial_owners/{entity_beneficial_owner_id}/archive",
+            path_template(
+                "/entity_beneficial_owners/{entity_beneficial_owner_id}/archive",
+                entity_beneficial_owner_id=entity_beneficial_owner_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

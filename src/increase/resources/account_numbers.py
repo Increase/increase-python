@@ -8,7 +8,7 @@ import httpx
 
 from ..types import account_number_list_params, account_number_create_params, account_number_update_params
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -131,7 +131,7 @@ class AccountNumbersResource(SyncAPIResource):
         if not account_number_id:
             raise ValueError(f"Expected a non-empty value for `account_number_id` but received {account_number_id!r}")
         return self._get(
-            f"/account_numbers/{account_number_id}",
+            path_template("/account_numbers/{account_number_id}", account_number_id=account_number_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -186,7 +186,7 @@ class AccountNumbersResource(SyncAPIResource):
         if not account_number_id:
             raise ValueError(f"Expected a non-empty value for `account_number_id` but received {account_number_id!r}")
         return self._patch(
-            f"/account_numbers/{account_number_id}",
+            path_template("/account_numbers/{account_number_id}", account_number_id=account_number_id),
             body=maybe_transform(
                 {
                     "inbound_ach": inbound_ach,
@@ -379,7 +379,7 @@ class AsyncAccountNumbersResource(AsyncAPIResource):
         if not account_number_id:
             raise ValueError(f"Expected a non-empty value for `account_number_id` but received {account_number_id!r}")
         return await self._get(
-            f"/account_numbers/{account_number_id}",
+            path_template("/account_numbers/{account_number_id}", account_number_id=account_number_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -434,7 +434,7 @@ class AsyncAccountNumbersResource(AsyncAPIResource):
         if not account_number_id:
             raise ValueError(f"Expected a non-empty value for `account_number_id` but received {account_number_id!r}")
         return await self._patch(
-            f"/account_numbers/{account_number_id}",
+            path_template("/account_numbers/{account_number_id}", account_number_id=account_number_id),
             body=await async_maybe_transform(
                 {
                     "inbound_ach": inbound_ach,

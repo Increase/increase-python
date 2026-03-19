@@ -10,7 +10,7 @@ from ..types import (
     physical_card_profile_create_params,
 )
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -143,7 +143,9 @@ class PhysicalCardProfilesResource(SyncAPIResource):
                 f"Expected a non-empty value for `physical_card_profile_id` but received {physical_card_profile_id!r}"
             )
         return self._get(
-            f"/physical_card_profiles/{physical_card_profile_id}",
+            path_template(
+                "/physical_card_profiles/{physical_card_profile_id}", physical_card_profile_id=physical_card_profile_id
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -240,7 +242,10 @@ class PhysicalCardProfilesResource(SyncAPIResource):
                 f"Expected a non-empty value for `physical_card_profile_id` but received {physical_card_profile_id!r}"
             )
         return self._post(
-            f"/physical_card_profiles/{physical_card_profile_id}/archive",
+            path_template(
+                "/physical_card_profiles/{physical_card_profile_id}/archive",
+                physical_card_profile_id=physical_card_profile_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -303,7 +308,10 @@ class PhysicalCardProfilesResource(SyncAPIResource):
                 f"Expected a non-empty value for `physical_card_profile_id` but received {physical_card_profile_id!r}"
             )
         return self._post(
-            f"/physical_card_profiles/{physical_card_profile_id}/clone",
+            path_template(
+                "/physical_card_profiles/{physical_card_profile_id}/clone",
+                physical_card_profile_id=physical_card_profile_id,
+            ),
             body=maybe_transform(
                 {
                     "carrier_image_file_id": carrier_image_file_id,
@@ -443,7 +451,9 @@ class AsyncPhysicalCardProfilesResource(AsyncAPIResource):
                 f"Expected a non-empty value for `physical_card_profile_id` but received {physical_card_profile_id!r}"
             )
         return await self._get(
-            f"/physical_card_profiles/{physical_card_profile_id}",
+            path_template(
+                "/physical_card_profiles/{physical_card_profile_id}", physical_card_profile_id=physical_card_profile_id
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -540,7 +550,10 @@ class AsyncPhysicalCardProfilesResource(AsyncAPIResource):
                 f"Expected a non-empty value for `physical_card_profile_id` but received {physical_card_profile_id!r}"
             )
         return await self._post(
-            f"/physical_card_profiles/{physical_card_profile_id}/archive",
+            path_template(
+                "/physical_card_profiles/{physical_card_profile_id}/archive",
+                physical_card_profile_id=physical_card_profile_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -603,7 +616,10 @@ class AsyncPhysicalCardProfilesResource(AsyncAPIResource):
                 f"Expected a non-empty value for `physical_card_profile_id` but received {physical_card_profile_id!r}"
             )
         return await self._post(
-            f"/physical_card_profiles/{physical_card_profile_id}/clone",
+            path_template(
+                "/physical_card_profiles/{physical_card_profile_id}/clone",
+                physical_card_profile_id=physical_card_profile_id,
+            ),
             body=await async_maybe_transform(
                 {
                     "carrier_image_file_id": carrier_image_file_id,

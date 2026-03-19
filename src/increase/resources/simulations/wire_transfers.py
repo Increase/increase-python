@@ -5,6 +5,7 @@ from __future__ import annotations
 import httpx
 
 from ..._types import Body, Query, Headers, NotGiven, not_given
+from ..._utils import path_template
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -73,7 +74,7 @@ class WireTransfersResource(SyncAPIResource):
         if not wire_transfer_id:
             raise ValueError(f"Expected a non-empty value for `wire_transfer_id` but received {wire_transfer_id!r}")
         return self._post(
-            f"/simulations/wire_transfers/{wire_transfer_id}/reverse",
+            path_template("/simulations/wire_transfers/{wire_transfer_id}/reverse", wire_transfer_id=wire_transfer_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -117,7 +118,7 @@ class WireTransfersResource(SyncAPIResource):
         if not wire_transfer_id:
             raise ValueError(f"Expected a non-empty value for `wire_transfer_id` but received {wire_transfer_id!r}")
         return self._post(
-            f"/simulations/wire_transfers/{wire_transfer_id}/submit",
+            path_template("/simulations/wire_transfers/{wire_transfer_id}/submit", wire_transfer_id=wire_transfer_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -183,7 +184,7 @@ class AsyncWireTransfersResource(AsyncAPIResource):
         if not wire_transfer_id:
             raise ValueError(f"Expected a non-empty value for `wire_transfer_id` but received {wire_transfer_id!r}")
         return await self._post(
-            f"/simulations/wire_transfers/{wire_transfer_id}/reverse",
+            path_template("/simulations/wire_transfers/{wire_transfer_id}/reverse", wire_transfer_id=wire_transfer_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -227,7 +228,7 @@ class AsyncWireTransfersResource(AsyncAPIResource):
         if not wire_transfer_id:
             raise ValueError(f"Expected a non-empty value for `wire_transfer_id` but received {wire_transfer_id!r}")
         return await self._post(
-            f"/simulations/wire_transfers/{wire_transfer_id}/submit",
+            path_template("/simulations/wire_transfers/{wire_transfer_id}/submit", wire_transfer_id=wire_transfer_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
