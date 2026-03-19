@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.450.1 (2026-03-19)
+
+Full Changelog: [v0.450.0...v0.450.1](https://github.com/Increase/increase-python/compare/v0.450.0...v0.450.1)
+
+### Bug Fixes
+
+* sanitize endpoint path params ([a6837bc](https://github.com/Increase/increase-python/commit/a6837bcb1f4ab0d357274b86f098ccd636ddb467))
+
 ## 0.450.0 (2026-03-19)
 
 Full Changelog: [v0.449.0...v0.450.0](https://github.com/Increase/increase-python/compare/v0.449.0...v0.450.0)
