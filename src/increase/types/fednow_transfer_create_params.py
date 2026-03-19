@@ -8,9 +8,6 @@ __all__ = ["FednowTransferCreateParams", "CreditorAddress", "DebtorAddress"]
 
 
 class FednowTransferCreateParams(TypedDict, total=False):
-    account_id: Required[str]
-    """The identifier for the account that will send the transfer."""
-
     amount: Required[int]
     """The amount, in minor units, to send to the creditor."""
 
