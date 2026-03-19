@@ -6,7 +6,7 @@ import httpx
 
 from ..types import inbound_real_time_payments_transfer_list_params
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from .._utils import maybe_transform
+from .._utils import path_template, maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -72,7 +72,10 @@ class InboundRealTimePaymentsTransfersResource(SyncAPIResource):
                 f"Expected a non-empty value for `inbound_real_time_payments_transfer_id` but received {inbound_real_time_payments_transfer_id!r}"
             )
         return self._get(
-            f"/inbound_real_time_payments_transfers/{inbound_real_time_payments_transfer_id}",
+            path_template(
+                "/inbound_real_time_payments_transfers/{inbound_real_time_payments_transfer_id}",
+                inbound_real_time_payments_transfer_id=inbound_real_time_payments_transfer_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -190,7 +193,10 @@ class AsyncInboundRealTimePaymentsTransfersResource(AsyncAPIResource):
                 f"Expected a non-empty value for `inbound_real_time_payments_transfer_id` but received {inbound_real_time_payments_transfer_id!r}"
             )
         return await self._get(
-            f"/inbound_real_time_payments_transfers/{inbound_real_time_payments_transfer_id}",
+            path_template(
+                "/inbound_real_time_payments_transfers/{inbound_real_time_payments_transfer_id}",
+                inbound_real_time_payments_transfer_id=inbound_real_time_payments_transfer_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

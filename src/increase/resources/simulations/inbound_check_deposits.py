@@ -7,7 +7,7 @@ from typing_extensions import Literal
 import httpx
 
 from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from ..._utils import maybe_transform, async_maybe_transform
+from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -169,7 +169,10 @@ class InboundCheckDepositsResource(SyncAPIResource):
                 f"Expected a non-empty value for `inbound_check_deposit_id` but received {inbound_check_deposit_id!r}"
             )
         return self._post(
-            f"/simulations/inbound_check_deposits/{inbound_check_deposit_id}/adjustment",
+            path_template(
+                "/simulations/inbound_check_deposits/{inbound_check_deposit_id}/adjustment",
+                inbound_check_deposit_id=inbound_check_deposit_id,
+            ),
             body=maybe_transform(
                 {
                     "amount": amount,
@@ -334,7 +337,10 @@ class AsyncInboundCheckDepositsResource(AsyncAPIResource):
                 f"Expected a non-empty value for `inbound_check_deposit_id` but received {inbound_check_deposit_id!r}"
             )
         return await self._post(
-            f"/simulations/inbound_check_deposits/{inbound_check_deposit_id}/adjustment",
+            path_template(
+                "/simulations/inbound_check_deposits/{inbound_check_deposit_id}/adjustment",
+                inbound_check_deposit_id=inbound_check_deposit_id,
+            ),
             body=await async_maybe_transform(
                 {
                     "amount": amount,

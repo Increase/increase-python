@@ -9,7 +9,7 @@ import httpx
 
 from ..types import event_subscription_list_params, event_subscription_create_params, event_subscription_update_params
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -145,7 +145,7 @@ class EventSubscriptionsResource(SyncAPIResource):
                 f"Expected a non-empty value for `event_subscription_id` but received {event_subscription_id!r}"
             )
         return self._get(
-            f"/event_subscriptions/{event_subscription_id}",
+            path_template("/event_subscriptions/{event_subscription_id}", event_subscription_id=event_subscription_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -194,7 +194,7 @@ class EventSubscriptionsResource(SyncAPIResource):
                 f"Expected a non-empty value for `event_subscription_id` but received {event_subscription_id!r}"
             )
         return self._patch(
-            f"/event_subscriptions/{event_subscription_id}",
+            path_template("/event_subscriptions/{event_subscription_id}", event_subscription_id=event_subscription_id),
             body=maybe_transform({"status": status}, event_subscription_update_params.EventSubscriptionUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -382,7 +382,7 @@ class AsyncEventSubscriptionsResource(AsyncAPIResource):
                 f"Expected a non-empty value for `event_subscription_id` but received {event_subscription_id!r}"
             )
         return await self._get(
-            f"/event_subscriptions/{event_subscription_id}",
+            path_template("/event_subscriptions/{event_subscription_id}", event_subscription_id=event_subscription_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -431,7 +431,7 @@ class AsyncEventSubscriptionsResource(AsyncAPIResource):
                 f"Expected a non-empty value for `event_subscription_id` but received {event_subscription_id!r}"
             )
         return await self._patch(
-            f"/event_subscriptions/{event_subscription_id}",
+            path_template("/event_subscriptions/{event_subscription_id}", event_subscription_id=event_subscription_id),
             body=await async_maybe_transform(
                 {"status": status}, event_subscription_update_params.EventSubscriptionUpdateParams
             ),

@@ -6,7 +6,7 @@ import httpx
 
 from ..types import intrafi_account_enrollment_list_params, intrafi_account_enrollment_create_params
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -122,7 +122,10 @@ class IntrafiAccountEnrollmentsResource(SyncAPIResource):
                 f"Expected a non-empty value for `intrafi_account_enrollment_id` but received {intrafi_account_enrollment_id!r}"
             )
         return self._get(
-            f"/intrafi_account_enrollments/{intrafi_account_enrollment_id}",
+            path_template(
+                "/intrafi_account_enrollments/{intrafi_account_enrollment_id}",
+                intrafi_account_enrollment_id=intrafi_account_enrollment_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -223,7 +226,10 @@ class IntrafiAccountEnrollmentsResource(SyncAPIResource):
                 f"Expected a non-empty value for `intrafi_account_enrollment_id` but received {intrafi_account_enrollment_id!r}"
             )
         return self._post(
-            f"/intrafi_account_enrollments/{intrafi_account_enrollment_id}/unenroll",
+            path_template(
+                "/intrafi_account_enrollments/{intrafi_account_enrollment_id}/unenroll",
+                intrafi_account_enrollment_id=intrafi_account_enrollment_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -335,7 +341,10 @@ class AsyncIntrafiAccountEnrollmentsResource(AsyncAPIResource):
                 f"Expected a non-empty value for `intrafi_account_enrollment_id` but received {intrafi_account_enrollment_id!r}"
             )
         return await self._get(
-            f"/intrafi_account_enrollments/{intrafi_account_enrollment_id}",
+            path_template(
+                "/intrafi_account_enrollments/{intrafi_account_enrollment_id}",
+                intrafi_account_enrollment_id=intrafi_account_enrollment_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -436,7 +445,10 @@ class AsyncIntrafiAccountEnrollmentsResource(AsyncAPIResource):
                 f"Expected a non-empty value for `intrafi_account_enrollment_id` but received {intrafi_account_enrollment_id!r}"
             )
         return await self._post(
-            f"/intrafi_account_enrollments/{intrafi_account_enrollment_id}/unenroll",
+            path_template(
+                "/intrafi_account_enrollments/{intrafi_account_enrollment_id}/unenroll",
+                intrafi_account_enrollment_id=intrafi_account_enrollment_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

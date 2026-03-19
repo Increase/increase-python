@@ -7,7 +7,7 @@ from typing_extensions import Literal
 import httpx
 
 from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from ..._utils import maybe_transform, async_maybe_transform
+from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -99,7 +99,9 @@ class CheckDepositsResource(SyncAPIResource):
         if not check_deposit_id:
             raise ValueError(f"Expected a non-empty value for `check_deposit_id` but received {check_deposit_id!r}")
         return self._post(
-            f"/simulations/check_deposits/{check_deposit_id}/adjustment",
+            path_template(
+                "/simulations/check_deposits/{check_deposit_id}/adjustment", check_deposit_id=check_deposit_id
+            ),
             body=maybe_transform(
                 {
                     "amount": amount,
@@ -150,7 +152,7 @@ class CheckDepositsResource(SyncAPIResource):
         if not check_deposit_id:
             raise ValueError(f"Expected a non-empty value for `check_deposit_id` but received {check_deposit_id!r}")
         return self._post(
-            f"/simulations/check_deposits/{check_deposit_id}/reject",
+            path_template("/simulations/check_deposits/{check_deposit_id}/reject", check_deposit_id=check_deposit_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -194,7 +196,7 @@ class CheckDepositsResource(SyncAPIResource):
         if not check_deposit_id:
             raise ValueError(f"Expected a non-empty value for `check_deposit_id` but received {check_deposit_id!r}")
         return self._post(
-            f"/simulations/check_deposits/{check_deposit_id}/return",
+            path_template("/simulations/check_deposits/{check_deposit_id}/return", check_deposit_id=check_deposit_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -240,7 +242,7 @@ class CheckDepositsResource(SyncAPIResource):
         if not check_deposit_id:
             raise ValueError(f"Expected a non-empty value for `check_deposit_id` but received {check_deposit_id!r}")
         return self._post(
-            f"/simulations/check_deposits/{check_deposit_id}/submit",
+            path_template("/simulations/check_deposits/{check_deposit_id}/submit", check_deposit_id=check_deposit_id),
             body=maybe_transform({"scan": scan}, check_deposit_submit_params.CheckDepositSubmitParams),
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -329,7 +331,9 @@ class AsyncCheckDepositsResource(AsyncAPIResource):
         if not check_deposit_id:
             raise ValueError(f"Expected a non-empty value for `check_deposit_id` but received {check_deposit_id!r}")
         return await self._post(
-            f"/simulations/check_deposits/{check_deposit_id}/adjustment",
+            path_template(
+                "/simulations/check_deposits/{check_deposit_id}/adjustment", check_deposit_id=check_deposit_id
+            ),
             body=await async_maybe_transform(
                 {
                     "amount": amount,
@@ -380,7 +384,7 @@ class AsyncCheckDepositsResource(AsyncAPIResource):
         if not check_deposit_id:
             raise ValueError(f"Expected a non-empty value for `check_deposit_id` but received {check_deposit_id!r}")
         return await self._post(
-            f"/simulations/check_deposits/{check_deposit_id}/reject",
+            path_template("/simulations/check_deposits/{check_deposit_id}/reject", check_deposit_id=check_deposit_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -424,7 +428,7 @@ class AsyncCheckDepositsResource(AsyncAPIResource):
         if not check_deposit_id:
             raise ValueError(f"Expected a non-empty value for `check_deposit_id` but received {check_deposit_id!r}")
         return await self._post(
-            f"/simulations/check_deposits/{check_deposit_id}/return",
+            path_template("/simulations/check_deposits/{check_deposit_id}/return", check_deposit_id=check_deposit_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -470,7 +474,7 @@ class AsyncCheckDepositsResource(AsyncAPIResource):
         if not check_deposit_id:
             raise ValueError(f"Expected a non-empty value for `check_deposit_id` but received {check_deposit_id!r}")
         return await self._post(
-            f"/simulations/check_deposits/{check_deposit_id}/submit",
+            path_template("/simulations/check_deposits/{check_deposit_id}/submit", check_deposit_id=check_deposit_id),
             body=await async_maybe_transform({"scan": scan}, check_deposit_submit_params.CheckDepositSubmitParams),
             options=make_request_options(
                 extra_headers=extra_headers,

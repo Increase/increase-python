@@ -6,7 +6,7 @@ import httpx
 
 from ..types import digital_wallet_token_list_params
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from .._utils import maybe_transform
+from .._utils import path_template, maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -72,7 +72,9 @@ class DigitalWalletTokensResource(SyncAPIResource):
                 f"Expected a non-empty value for `digital_wallet_token_id` but received {digital_wallet_token_id!r}"
             )
         return self._get(
-            f"/digital_wallet_tokens/{digital_wallet_token_id}",
+            path_template(
+                "/digital_wallet_tokens/{digital_wallet_token_id}", digital_wallet_token_id=digital_wallet_token_id
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -184,7 +186,9 @@ class AsyncDigitalWalletTokensResource(AsyncAPIResource):
                 f"Expected a non-empty value for `digital_wallet_token_id` but received {digital_wallet_token_id!r}"
             )
         return await self._get(
-            f"/digital_wallet_tokens/{digital_wallet_token_id}",
+            path_template(
+                "/digital_wallet_tokens/{digital_wallet_token_id}", digital_wallet_token_id=digital_wallet_token_id
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

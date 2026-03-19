@@ -8,7 +8,7 @@ import httpx
 
 from ..types import physical_card_list_params, physical_card_create_params, physical_card_update_params
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -131,7 +131,7 @@ class PhysicalCardsResource(SyncAPIResource):
         if not physical_card_id:
             raise ValueError(f"Expected a non-empty value for `physical_card_id` but received {physical_card_id!r}")
         return self._get(
-            f"/physical_cards/{physical_card_id}",
+            path_template("/physical_cards/{physical_card_id}", physical_card_id=physical_card_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -176,7 +176,7 @@ class PhysicalCardsResource(SyncAPIResource):
         if not physical_card_id:
             raise ValueError(f"Expected a non-empty value for `physical_card_id` but received {physical_card_id!r}")
         return self._patch(
-            f"/physical_cards/{physical_card_id}",
+            path_template("/physical_cards/{physical_card_id}", physical_card_id=physical_card_id),
             body=maybe_transform({"status": status}, physical_card_update_params.PhysicalCardUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -357,7 +357,7 @@ class AsyncPhysicalCardsResource(AsyncAPIResource):
         if not physical_card_id:
             raise ValueError(f"Expected a non-empty value for `physical_card_id` but received {physical_card_id!r}")
         return await self._get(
-            f"/physical_cards/{physical_card_id}",
+            path_template("/physical_cards/{physical_card_id}", physical_card_id=physical_card_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -402,7 +402,7 @@ class AsyncPhysicalCardsResource(AsyncAPIResource):
         if not physical_card_id:
             raise ValueError(f"Expected a non-empty value for `physical_card_id` but received {physical_card_id!r}")
         return await self._patch(
-            f"/physical_cards/{physical_card_id}",
+            path_template("/physical_cards/{physical_card_id}", physical_card_id=physical_card_id),
             body=await async_maybe_transform({"status": status}, physical_card_update_params.PhysicalCardUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers,

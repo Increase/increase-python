@@ -8,7 +8,7 @@ import httpx
 
 from ..types import swift_transfer_list_params, swift_transfer_create_params
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -172,7 +172,7 @@ class SwiftTransfersResource(SyncAPIResource):
         if not swift_transfer_id:
             raise ValueError(f"Expected a non-empty value for `swift_transfer_id` but received {swift_transfer_id!r}")
         return self._get(
-            f"/swift_transfers/{swift_transfer_id}",
+            path_template("/swift_transfers/{swift_transfer_id}", swift_transfer_id=swift_transfer_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -273,7 +273,7 @@ class SwiftTransfersResource(SyncAPIResource):
         if not swift_transfer_id:
             raise ValueError(f"Expected a non-empty value for `swift_transfer_id` but received {swift_transfer_id!r}")
         return self._post(
-            f"/swift_transfers/{swift_transfer_id}/approve",
+            path_template("/swift_transfers/{swift_transfer_id}/approve", swift_transfer_id=swift_transfer_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -315,7 +315,7 @@ class SwiftTransfersResource(SyncAPIResource):
         if not swift_transfer_id:
             raise ValueError(f"Expected a non-empty value for `swift_transfer_id` but received {swift_transfer_id!r}")
         return self._post(
-            f"/swift_transfers/{swift_transfer_id}/cancel",
+            path_template("/swift_transfers/{swift_transfer_id}/cancel", swift_transfer_id=swift_transfer_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -475,7 +475,7 @@ class AsyncSwiftTransfersResource(AsyncAPIResource):
         if not swift_transfer_id:
             raise ValueError(f"Expected a non-empty value for `swift_transfer_id` but received {swift_transfer_id!r}")
         return await self._get(
-            f"/swift_transfers/{swift_transfer_id}",
+            path_template("/swift_transfers/{swift_transfer_id}", swift_transfer_id=swift_transfer_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -576,7 +576,7 @@ class AsyncSwiftTransfersResource(AsyncAPIResource):
         if not swift_transfer_id:
             raise ValueError(f"Expected a non-empty value for `swift_transfer_id` but received {swift_transfer_id!r}")
         return await self._post(
-            f"/swift_transfers/{swift_transfer_id}/approve",
+            path_template("/swift_transfers/{swift_transfer_id}/approve", swift_transfer_id=swift_transfer_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -618,7 +618,7 @@ class AsyncSwiftTransfersResource(AsyncAPIResource):
         if not swift_transfer_id:
             raise ValueError(f"Expected a non-empty value for `swift_transfer_id` but received {swift_transfer_id!r}")
         return await self._post(
-            f"/swift_transfers/{swift_transfer_id}/cancel",
+            path_template("/swift_transfers/{swift_transfer_id}/cancel", swift_transfer_id=swift_transfer_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

@@ -10,7 +10,7 @@ from ..types import (
     digital_card_profile_create_params,
 )
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -154,7 +154,9 @@ class DigitalCardProfilesResource(SyncAPIResource):
                 f"Expected a non-empty value for `digital_card_profile_id` but received {digital_card_profile_id!r}"
             )
         return self._get(
-            f"/digital_card_profiles/{digital_card_profile_id}",
+            path_template(
+                "/digital_card_profiles/{digital_card_profile_id}", digital_card_profile_id=digital_card_profile_id
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -251,7 +253,10 @@ class DigitalCardProfilesResource(SyncAPIResource):
                 f"Expected a non-empty value for `digital_card_profile_id` but received {digital_card_profile_id!r}"
             )
         return self._post(
-            f"/digital_card_profiles/{digital_card_profile_id}/archive",
+            path_template(
+                "/digital_card_profiles/{digital_card_profile_id}/archive",
+                digital_card_profile_id=digital_card_profile_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -322,7 +327,10 @@ class DigitalCardProfilesResource(SyncAPIResource):
                 f"Expected a non-empty value for `digital_card_profile_id` but received {digital_card_profile_id!r}"
             )
         return self._post(
-            f"/digital_card_profiles/{digital_card_profile_id}/clone",
+            path_template(
+                "/digital_card_profiles/{digital_card_profile_id}/clone",
+                digital_card_profile_id=digital_card_profile_id,
+            ),
             body=maybe_transform(
                 {
                     "app_icon_file_id": app_icon_file_id,
@@ -476,7 +484,9 @@ class AsyncDigitalCardProfilesResource(AsyncAPIResource):
                 f"Expected a non-empty value for `digital_card_profile_id` but received {digital_card_profile_id!r}"
             )
         return await self._get(
-            f"/digital_card_profiles/{digital_card_profile_id}",
+            path_template(
+                "/digital_card_profiles/{digital_card_profile_id}", digital_card_profile_id=digital_card_profile_id
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -573,7 +583,10 @@ class AsyncDigitalCardProfilesResource(AsyncAPIResource):
                 f"Expected a non-empty value for `digital_card_profile_id` but received {digital_card_profile_id!r}"
             )
         return await self._post(
-            f"/digital_card_profiles/{digital_card_profile_id}/archive",
+            path_template(
+                "/digital_card_profiles/{digital_card_profile_id}/archive",
+                digital_card_profile_id=digital_card_profile_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -644,7 +657,10 @@ class AsyncDigitalCardProfilesResource(AsyncAPIResource):
                 f"Expected a non-empty value for `digital_card_profile_id` but received {digital_card_profile_id!r}"
             )
         return await self._post(
-            f"/digital_card_profiles/{digital_card_profile_id}/clone",
+            path_template(
+                "/digital_card_profiles/{digital_card_profile_id}/clone",
+                digital_card_profile_id=digital_card_profile_id,
+            ),
             body=await async_maybe_transform(
                 {
                     "app_icon_file_id": app_icon_file_id,

@@ -13,7 +13,7 @@ from ..types import (
     inbound_ach_transfer_create_notification_of_change_params,
 )
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -79,7 +79,9 @@ class InboundACHTransfersResource(SyncAPIResource):
                 f"Expected a non-empty value for `inbound_ach_transfer_id` but received {inbound_ach_transfer_id!r}"
             )
         return self._get(
-            f"/inbound_ach_transfers/{inbound_ach_transfer_id}",
+            path_template(
+                "/inbound_ach_transfers/{inbound_ach_transfer_id}", inbound_ach_transfer_id=inbound_ach_transfer_id
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -186,7 +188,10 @@ class InboundACHTransfersResource(SyncAPIResource):
                 f"Expected a non-empty value for `inbound_ach_transfer_id` but received {inbound_ach_transfer_id!r}"
             )
         return self._post(
-            f"/inbound_ach_transfers/{inbound_ach_transfer_id}/create_notification_of_change",
+            path_template(
+                "/inbound_ach_transfers/{inbound_ach_transfer_id}/create_notification_of_change",
+                inbound_ach_transfer_id=inbound_ach_transfer_id,
+            ),
             body=maybe_transform(
                 {
                     "updated_account_number": updated_account_number,
@@ -277,7 +282,10 @@ class InboundACHTransfersResource(SyncAPIResource):
                 f"Expected a non-empty value for `inbound_ach_transfer_id` but received {inbound_ach_transfer_id!r}"
             )
         return self._post(
-            f"/inbound_ach_transfers/{inbound_ach_transfer_id}/decline",
+            path_template(
+                "/inbound_ach_transfers/{inbound_ach_transfer_id}/decline",
+                inbound_ach_transfer_id=inbound_ach_transfer_id,
+            ),
             body=maybe_transform(
                 {"reason": reason}, inbound_ach_transfer_decline_params.InboundACHTransferDeclineParams
             ),
@@ -359,7 +367,10 @@ class InboundACHTransfersResource(SyncAPIResource):
                 f"Expected a non-empty value for `inbound_ach_transfer_id` but received {inbound_ach_transfer_id!r}"
             )
         return self._post(
-            f"/inbound_ach_transfers/{inbound_ach_transfer_id}/transfer_return",
+            path_template(
+                "/inbound_ach_transfers/{inbound_ach_transfer_id}/transfer_return",
+                inbound_ach_transfer_id=inbound_ach_transfer_id,
+            ),
             body=maybe_transform(
                 {"reason": reason}, inbound_ach_transfer_transfer_return_params.InboundACHTransferTransferReturnParams
             ),
@@ -424,7 +435,9 @@ class AsyncInboundACHTransfersResource(AsyncAPIResource):
                 f"Expected a non-empty value for `inbound_ach_transfer_id` but received {inbound_ach_transfer_id!r}"
             )
         return await self._get(
-            f"/inbound_ach_transfers/{inbound_ach_transfer_id}",
+            path_template(
+                "/inbound_ach_transfers/{inbound_ach_transfer_id}", inbound_ach_transfer_id=inbound_ach_transfer_id
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -531,7 +544,10 @@ class AsyncInboundACHTransfersResource(AsyncAPIResource):
                 f"Expected a non-empty value for `inbound_ach_transfer_id` but received {inbound_ach_transfer_id!r}"
             )
         return await self._post(
-            f"/inbound_ach_transfers/{inbound_ach_transfer_id}/create_notification_of_change",
+            path_template(
+                "/inbound_ach_transfers/{inbound_ach_transfer_id}/create_notification_of_change",
+                inbound_ach_transfer_id=inbound_ach_transfer_id,
+            ),
             body=await async_maybe_transform(
                 {
                     "updated_account_number": updated_account_number,
@@ -622,7 +638,10 @@ class AsyncInboundACHTransfersResource(AsyncAPIResource):
                 f"Expected a non-empty value for `inbound_ach_transfer_id` but received {inbound_ach_transfer_id!r}"
             )
         return await self._post(
-            f"/inbound_ach_transfers/{inbound_ach_transfer_id}/decline",
+            path_template(
+                "/inbound_ach_transfers/{inbound_ach_transfer_id}/decline",
+                inbound_ach_transfer_id=inbound_ach_transfer_id,
+            ),
             body=await async_maybe_transform(
                 {"reason": reason}, inbound_ach_transfer_decline_params.InboundACHTransferDeclineParams
             ),
@@ -704,7 +723,10 @@ class AsyncInboundACHTransfersResource(AsyncAPIResource):
                 f"Expected a non-empty value for `inbound_ach_transfer_id` but received {inbound_ach_transfer_id!r}"
             )
         return await self._post(
-            f"/inbound_ach_transfers/{inbound_ach_transfer_id}/transfer_return",
+            path_template(
+                "/inbound_ach_transfers/{inbound_ach_transfer_id}/transfer_return",
+                inbound_ach_transfer_id=inbound_ach_transfer_id,
+            ),
             body=await async_maybe_transform(
                 {"reason": reason}, inbound_ach_transfer_transfer_return_params.InboundACHTransferTransferReturnParams
             ),

@@ -5,7 +5,7 @@ from __future__ import annotations
 import httpx
 
 from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from ..._utils import maybe_transform, async_maybe_transform
+from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -80,7 +80,10 @@ class RealTimePaymentsTransfersResource(SyncAPIResource):
                 f"Expected a non-empty value for `real_time_payments_transfer_id` but received {real_time_payments_transfer_id!r}"
             )
         return self._post(
-            f"/simulations/real_time_payments_transfers/{real_time_payments_transfer_id}/complete",
+            path_template(
+                "/simulations/real_time_payments_transfers/{real_time_payments_transfer_id}/complete",
+                real_time_payments_transfer_id=real_time_payments_transfer_id,
+            ),
             body=maybe_transform(
                 {"rejection": rejection},
                 real_time_payments_transfer_complete_params.RealTimePaymentsTransferCompleteParams,
@@ -155,7 +158,10 @@ class AsyncRealTimePaymentsTransfersResource(AsyncAPIResource):
                 f"Expected a non-empty value for `real_time_payments_transfer_id` but received {real_time_payments_transfer_id!r}"
             )
         return await self._post(
-            f"/simulations/real_time_payments_transfers/{real_time_payments_transfer_id}/complete",
+            path_template(
+                "/simulations/real_time_payments_transfers/{real_time_payments_transfer_id}/complete",
+                real_time_payments_transfer_id=real_time_payments_transfer_id,
+            ),
             body=await async_maybe_transform(
                 {"rejection": rejection},
                 real_time_payments_transfer_complete_params.RealTimePaymentsTransferCompleteParams,
