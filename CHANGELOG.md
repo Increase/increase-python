@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.452.0 (2026-03-20)
+
+Full Changelog: [v0.451.0...v0.452.0](https://github.com/Increase/increase-python/compare/v0.451.0...v0.452.0)
+
+### Features
+
+* **api:** api update ([2f94602](https://github.com/Increase/increase-python/commit/2f94602a7f979b4c391bd0627002ae8b316a705d))
+
+
+### Chores
+
+* **tests:** bump steady to v0.19.4 ([f8f6aa7](https://github.com/Increase/increase-python/commit/f8f6aa7f3271de35512fc1a1898ff3b21ef9edc3))
+
+
+### Refactors
+
+* **tests:** switch from prism to steady ([c6856a8](https://github.com/Increase/increase-python/commit/c6856a82f9bff65092477dc8ce1a926520108cb2))
+
 ## 0.451.0 (2026-03-19)
 
 Full Changelog: [v0.450.1...v0.451.0](https://github.com/Increase/increase-python/compare/v0.450.1...v0.451.0)
