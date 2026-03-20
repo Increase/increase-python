@@ -26,8 +26,8 @@ class TestRealTimePaymentsTransfers:
         real_time_payments_transfer = client.real_time_payments_transfers.create(
             amount=100,
             creditor_name="Ian Crease",
-            remittance_information="Invoice 29582",
             source_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
+            unstructured_remittance_information="Invoice 29582",
         )
         assert_matches_type(RealTimePaymentsTransfer, real_time_payments_transfer, path=["response"])
 
@@ -36,13 +36,15 @@ class TestRealTimePaymentsTransfers:
         real_time_payments_transfer = client.real_time_payments_transfers.create(
             amount=100,
             creditor_name="Ian Crease",
-            remittance_information="Invoice 29582",
             source_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
+            unstructured_remittance_information="Invoice 29582",
+            account_number="987654321",
             debtor_name="x",
-            destination_account_number="987654321",
-            destination_routing_number="101050001",
+            destination_account_number="x",
+            destination_routing_number="xxxxxxxxx",
             external_account_id="external_account_id",
             require_approval=True,
+            routing_number="101050001",
             ultimate_creditor_name="x",
             ultimate_debtor_name="x",
         )
@@ -53,8 +55,8 @@ class TestRealTimePaymentsTransfers:
         response = client.real_time_payments_transfers.with_raw_response.create(
             amount=100,
             creditor_name="Ian Crease",
-            remittance_information="Invoice 29582",
             source_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
+            unstructured_remittance_information="Invoice 29582",
         )
 
         assert response.is_closed is True
@@ -67,8 +69,8 @@ class TestRealTimePaymentsTransfers:
         with client.real_time_payments_transfers.with_streaming_response.create(
             amount=100,
             creditor_name="Ian Crease",
-            remittance_information="Invoice 29582",
             source_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
+            unstructured_remittance_information="Invoice 29582",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -252,8 +254,8 @@ class TestAsyncRealTimePaymentsTransfers:
         real_time_payments_transfer = await async_client.real_time_payments_transfers.create(
             amount=100,
             creditor_name="Ian Crease",
-            remittance_information="Invoice 29582",
             source_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
+            unstructured_remittance_information="Invoice 29582",
         )
         assert_matches_type(RealTimePaymentsTransfer, real_time_payments_transfer, path=["response"])
 
@@ -262,13 +264,15 @@ class TestAsyncRealTimePaymentsTransfers:
         real_time_payments_transfer = await async_client.real_time_payments_transfers.create(
             amount=100,
             creditor_name="Ian Crease",
-            remittance_information="Invoice 29582",
             source_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
+            unstructured_remittance_information="Invoice 29582",
+            account_number="987654321",
             debtor_name="x",
-            destination_account_number="987654321",
-            destination_routing_number="101050001",
+            destination_account_number="x",
+            destination_routing_number="xxxxxxxxx",
             external_account_id="external_account_id",
             require_approval=True,
+            routing_number="101050001",
             ultimate_creditor_name="x",
             ultimate_debtor_name="x",
         )
@@ -279,8 +283,8 @@ class TestAsyncRealTimePaymentsTransfers:
         response = await async_client.real_time_payments_transfers.with_raw_response.create(
             amount=100,
             creditor_name="Ian Crease",
-            remittance_information="Invoice 29582",
             source_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
+            unstructured_remittance_information="Invoice 29582",
         )
 
         assert response.is_closed is True
@@ -293,8 +297,8 @@ class TestAsyncRealTimePaymentsTransfers:
         async with async_client.real_time_payments_transfers.with_streaming_response.create(
             amount=100,
             creditor_name="Ian Crease",
-            remittance_information="Invoice 29582",
             source_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
+            unstructured_remittance_information="Invoice 29582",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
