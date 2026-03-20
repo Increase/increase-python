@@ -232,6 +232,9 @@ class RealTimePaymentsTransfer(BaseModel):
     account_id: str
     """The Account from which the transfer was sent."""
 
+    account_number: str
+    """The destination account number."""
+
     acknowledgement: Optional[Acknowledgement] = None
     """
     If the transfer is acknowledged by the recipient bank, this will contain
@@ -282,15 +285,6 @@ class RealTimePaymentsTransfer(BaseModel):
     If not provided, defaults to the name of the account's entity.
     """
 
-    destination_account_number: str
-    """The destination account number."""
-
-    destination_routing_number: str
-    """
-    The destination American Bankers' Association (ABA) Routing Transit Number
-    (RTN).
-    """
-
     external_account_id: Optional[str] = None
     """The identifier of the External Account the transfer was made to, if any."""
 
@@ -316,8 +310,11 @@ class RealTimePaymentsTransfer(BaseModel):
     institution, this will contain supplemental details.
     """
 
-    remittance_information: str
-    """Unstructured information that will show on the recipient's bank statement."""
+    routing_number: str
+    """
+    The destination American Bankers' Association (ABA) Routing Transit Number
+    (RTN).
+    """
 
     source_account_number_id: str
     """The Account Number the recipient will see as having sent the transfer."""
@@ -375,6 +372,9 @@ class RealTimePaymentsTransfer(BaseModel):
     Set this if the funds are being sent on behalf of someone who is not the account
     holder at Increase.
     """
+
+    unstructured_remittance_information: str
+    """Unstructured information that will show on the recipient's bank statement."""
 
     if TYPE_CHECKING:
         # Some versions of Pydantic <2.8.0 have a bug and don’t allow assigning a

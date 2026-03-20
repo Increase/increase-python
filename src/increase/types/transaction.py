@@ -3249,14 +3249,14 @@ class SourceInboundRealTimePaymentsTransferConfirmation(BaseModel):
     debtor_routing_number: str
     """The routing number of the account that sent the transfer."""
 
-    remittance_information: Optional[str] = None
-    """Additional information included with the transfer."""
-
     transaction_identification: str
     """The Real-Time Payments network identification of the transfer."""
 
     transfer_id: str
     """The identifier of the Real-Time Payments Transfer that led to this Transaction."""
+
+    unstructured_remittance_information: Optional[str] = None
+    """Additional information included with the transfer."""
 
     if TYPE_CHECKING:
         # Some versions of Pydantic <2.8.0 have a bug and don’t allow assigning a
@@ -3581,20 +3581,20 @@ class SourceRealTimePaymentsTransferAcknowledgement(BaseModel):
     This field will be present in the JSON response if and only if `category` is equal to `real_time_payments_transfer_acknowledgement`. A Real-Time Payments Transfer Acknowledgement is created when a Real-Time Payments Transfer sent from Increase is acknowledged by the receiving bank.
     """
 
+    account_number: str
+    """The destination account number."""
+
     amount: int
     """The transfer amount in USD cents."""
 
-    destination_account_number: str
-    """The destination account number."""
-
-    destination_routing_number: str
+    routing_number: str
     """The American Bankers' Association (ABA) Routing Transit Number (RTN)."""
-
-    remittance_information: str
-    """Unstructured information that will show on the recipient's bank statement."""
 
     transfer_id: str
     """The identifier of the Real-Time Payments Transfer that led to this Transaction."""
+
+    unstructured_remittance_information: str
+    """Unstructured information that will show on the recipient's bank statement."""
 
     if TYPE_CHECKING:
         # Some versions of Pydantic <2.8.0 have a bug and don’t allow assigning a

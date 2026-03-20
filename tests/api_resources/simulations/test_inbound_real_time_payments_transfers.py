@@ -33,8 +33,8 @@ class TestInboundRealTimePaymentsTransfers:
             debtor_account_number="x",
             debtor_name="x",
             debtor_routing_number="xxxxxxxxx",
-            remittance_information="x",
             request_for_payment_id="real_time_payments_request_for_payment_28kcliz1oevcnqyn9qp7",
+            unstructured_remittance_information="x",
         )
         assert_matches_type(InboundRealTimePaymentsTransfer, inbound_real_time_payments_transfer, path=["response"])
 
@@ -89,8 +89,8 @@ class TestAsyncInboundRealTimePaymentsTransfers:
                 debtor_account_number="x",
                 debtor_name="x",
                 debtor_routing_number="xxxxxxxxx",
-                remittance_information="x",
                 request_for_payment_id="real_time_payments_request_for_payment_28kcliz1oevcnqyn9qp7",
+                unstructured_remittance_information="x",
             )
         )
         assert_matches_type(InboundRealTimePaymentsTransfer, inbound_real_time_payments_transfer, path=["response"])
