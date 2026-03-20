@@ -47,13 +47,15 @@ class RealTimePaymentsTransfersResource(SyncAPIResource):
         *,
         amount: int,
         creditor_name: str,
-        remittance_information: str,
         source_account_number_id: str,
+        unstructured_remittance_information: str,
+        account_number: str | Omit = omit,
         debtor_name: str | Omit = omit,
         destination_account_number: str | Omit = omit,
         destination_routing_number: str | Omit = omit,
         external_account_id: str | Omit = omit,
         require_approval: bool | Omit = omit,
+        routing_number: str | Omit = omit,
         ultimate_creditor_name: str | Omit = omit,
         ultimate_debtor_name: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -73,23 +75,22 @@ class RealTimePaymentsTransfersResource(SyncAPIResource):
 
           creditor_name: The name of the transfer's recipient.
 
-          remittance_information: Unstructured information that will show on the recipient's bank statement.
-
           source_account_number_id: The identifier of the Account Number from which to send the transfer.
+
+          unstructured_remittance_information: Unstructured information that will show on the recipient's bank statement.
+
+          account_number: The destination account number.
 
           debtor_name: The name of the transfer's sender. If not provided, defaults to the name of the
               account's entity.
 
-          destination_account_number: The destination account number.
-
-          destination_routing_number: The destination American Bankers' Association (ABA) Routing Transit Number
-              (RTN).
-
           external_account_id: The ID of an External Account to initiate a transfer to. If this parameter is
-              provided, `destination_account_number` and `destination_routing_number` must be
-              absent.
+              provided, `account_number` and `routing_number` must be absent.
 
           require_approval: Whether the transfer requires explicit approval via the dashboard or API.
+
+          routing_number: The destination American Bankers' Association (ABA) Routing Transit Number
+              (RTN).
 
           ultimate_creditor_name: The name of the ultimate recipient of the transfer. Set this if the creditor is
               an intermediary receiving the payment for someone else.
@@ -113,13 +114,15 @@ class RealTimePaymentsTransfersResource(SyncAPIResource):
                 {
                     "amount": amount,
                     "creditor_name": creditor_name,
-                    "remittance_information": remittance_information,
                     "source_account_number_id": source_account_number_id,
+                    "unstructured_remittance_information": unstructured_remittance_information,
+                    "account_number": account_number,
                     "debtor_name": debtor_name,
                     "destination_account_number": destination_account_number,
                     "destination_routing_number": destination_routing_number,
                     "external_account_id": external_account_id,
                     "require_approval": require_approval,
+                    "routing_number": routing_number,
                     "ultimate_creditor_name": ultimate_creditor_name,
                     "ultimate_debtor_name": ultimate_debtor_name,
                 },
@@ -363,13 +366,15 @@ class AsyncRealTimePaymentsTransfersResource(AsyncAPIResource):
         *,
         amount: int,
         creditor_name: str,
-        remittance_information: str,
         source_account_number_id: str,
+        unstructured_remittance_information: str,
+        account_number: str | Omit = omit,
         debtor_name: str | Omit = omit,
         destination_account_number: str | Omit = omit,
         destination_routing_number: str | Omit = omit,
         external_account_id: str | Omit = omit,
         require_approval: bool | Omit = omit,
+        routing_number: str | Omit = omit,
         ultimate_creditor_name: str | Omit = omit,
         ultimate_debtor_name: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -389,23 +394,22 @@ class AsyncRealTimePaymentsTransfersResource(AsyncAPIResource):
 
           creditor_name: The name of the transfer's recipient.
 
-          remittance_information: Unstructured information that will show on the recipient's bank statement.
-
           source_account_number_id: The identifier of the Account Number from which to send the transfer.
+
+          unstructured_remittance_information: Unstructured information that will show on the recipient's bank statement.
+
+          account_number: The destination account number.
 
           debtor_name: The name of the transfer's sender. If not provided, defaults to the name of the
               account's entity.
 
-          destination_account_number: The destination account number.
-
-          destination_routing_number: The destination American Bankers' Association (ABA) Routing Transit Number
-              (RTN).
-
           external_account_id: The ID of an External Account to initiate a transfer to. If this parameter is
-              provided, `destination_account_number` and `destination_routing_number` must be
-              absent.
+              provided, `account_number` and `routing_number` must be absent.
 
           require_approval: Whether the transfer requires explicit approval via the dashboard or API.
+
+          routing_number: The destination American Bankers' Association (ABA) Routing Transit Number
+              (RTN).
 
           ultimate_creditor_name: The name of the ultimate recipient of the transfer. Set this if the creditor is
               an intermediary receiving the payment for someone else.
@@ -429,13 +433,15 @@ class AsyncRealTimePaymentsTransfersResource(AsyncAPIResource):
                 {
                     "amount": amount,
                     "creditor_name": creditor_name,
-                    "remittance_information": remittance_information,
                     "source_account_number_id": source_account_number_id,
+                    "unstructured_remittance_information": unstructured_remittance_information,
+                    "account_number": account_number,
                     "debtor_name": debtor_name,
                     "destination_account_number": destination_account_number,
                     "destination_routing_number": destination_routing_number,
                     "external_account_id": external_account_id,
                     "require_approval": require_approval,
+                    "routing_number": routing_number,
                     "ultimate_creditor_name": ultimate_creditor_name,
                     "ultimate_debtor_name": ultimate_debtor_name,
                 },

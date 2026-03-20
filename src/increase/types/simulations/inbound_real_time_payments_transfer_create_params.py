@@ -26,10 +26,10 @@ class InboundRealTimePaymentsTransferCreateParams(TypedDict, total=False):
     debtor_routing_number: str
     """The routing number of the account that sent the transfer."""
 
-    remittance_information: str
-    """Additional information included with the transfer."""
-
     request_for_payment_id: str
     """
     The identifier of a pending Request for Payment that this transfer will fulfill.
     """
+
+    unstructured_remittance_information: str
+    """Additional information included with the transfer."""

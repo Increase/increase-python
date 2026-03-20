@@ -17,11 +17,14 @@ class RealTimePaymentsTransferCreateParams(TypedDict, total=False):
     creditor_name: Required[str]
     """The name of the transfer's recipient."""
 
-    remittance_information: Required[str]
-    """Unstructured information that will show on the recipient's bank statement."""
-
     source_account_number_id: Required[str]
     """The identifier of the Account Number from which to send the transfer."""
+
+    unstructured_remittance_information: Required[str]
+    """Unstructured information that will show on the recipient's bank statement."""
+
+    account_number: str
+    """The destination account number."""
 
     debtor_name: str
     """The name of the transfer's sender.
@@ -30,23 +33,24 @@ class RealTimePaymentsTransferCreateParams(TypedDict, total=False):
     """
 
     destination_account_number: str
-    """The destination account number."""
 
     destination_routing_number: str
-    """
-    The destination American Bankers' Association (ABA) Routing Transit Number
-    (RTN).
-    """
 
     external_account_id: str
     """The ID of an External Account to initiate a transfer to.
 
-    If this parameter is provided, `destination_account_number` and
-    `destination_routing_number` must be absent.
+    If this parameter is provided, `account_number` and `routing_number` must be
+    absent.
     """
 
     require_approval: bool
     """Whether the transfer requires explicit approval via the dashboard or API."""
+
+    routing_number: str
+    """
+    The destination American Bankers' Association (ABA) Routing Transit Number
+    (RTN).
+    """
 
     ultimate_creditor_name: str
     """The name of the ultimate recipient of the transfer.

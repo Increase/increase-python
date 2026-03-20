@@ -49,8 +49,8 @@ class InboundRealTimePaymentsTransfersResource(SyncAPIResource):
         debtor_account_number: str | Omit = omit,
         debtor_name: str | Omit = omit,
         debtor_routing_number: str | Omit = omit,
-        remittance_information: str | Omit = omit,
         request_for_payment_id: str | Omit = omit,
+        unstructured_remittance_information: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -76,9 +76,9 @@ class InboundRealTimePaymentsTransfersResource(SyncAPIResource):
 
           debtor_routing_number: The routing number of the account that sent the transfer.
 
-          remittance_information: Additional information included with the transfer.
-
           request_for_payment_id: The identifier of a pending Request for Payment that this transfer will fulfill.
+
+          unstructured_remittance_information: Additional information included with the transfer.
 
           extra_headers: Send extra headers
 
@@ -99,8 +99,8 @@ class InboundRealTimePaymentsTransfersResource(SyncAPIResource):
                     "debtor_account_number": debtor_account_number,
                     "debtor_name": debtor_name,
                     "debtor_routing_number": debtor_routing_number,
-                    "remittance_information": remittance_information,
                     "request_for_payment_id": request_for_payment_id,
+                    "unstructured_remittance_information": unstructured_remittance_information,
                 },
                 inbound_real_time_payments_transfer_create_params.InboundRealTimePaymentsTransferCreateParams,
             ),
@@ -143,8 +143,8 @@ class AsyncInboundRealTimePaymentsTransfersResource(AsyncAPIResource):
         debtor_account_number: str | Omit = omit,
         debtor_name: str | Omit = omit,
         debtor_routing_number: str | Omit = omit,
-        remittance_information: str | Omit = omit,
         request_for_payment_id: str | Omit = omit,
+        unstructured_remittance_information: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -170,9 +170,9 @@ class AsyncInboundRealTimePaymentsTransfersResource(AsyncAPIResource):
 
           debtor_routing_number: The routing number of the account that sent the transfer.
 
-          remittance_information: Additional information included with the transfer.
-
           request_for_payment_id: The identifier of a pending Request for Payment that this transfer will fulfill.
+
+          unstructured_remittance_information: Additional information included with the transfer.
 
           extra_headers: Send extra headers
 
@@ -193,8 +193,8 @@ class AsyncInboundRealTimePaymentsTransfersResource(AsyncAPIResource):
                     "debtor_account_number": debtor_account_number,
                     "debtor_name": debtor_name,
                     "debtor_routing_number": debtor_routing_number,
-                    "remittance_information": remittance_information,
                     "request_for_payment_id": request_for_payment_id,
+                    "unstructured_remittance_information": unstructured_remittance_information,
                 },
                 inbound_real_time_payments_transfer_create_params.InboundRealTimePaymentsTransferCreateParams,
             ),
