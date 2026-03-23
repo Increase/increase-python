@@ -23,6 +23,9 @@ class Route(BaseModel):
     - `not_supported` - The capability is not supported.
     """
 
+    issuer_country: str
+    """The ISO-3166-1 alpha-2 country code of the card's issuing bank."""
+
     route: Literal["visa", "mastercard"]
     """The card network route the capabilities apply to.
 
