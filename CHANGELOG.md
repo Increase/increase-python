@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.454.0 (2026-03-23)
+
+Full Changelog: [v0.453.0...v0.454.0](https://github.com/Increase/increase-python/compare/v0.453.0...v0.454.0)
+
+### Features
+
+* **api:** api update ([ca92641](https://github.com/Increase/increase-python/commit/ca926416ff4463a3c537b906c74c76d3fbbc3214))
+
+
+### Chores
+
+* **internal:** update gitignore ([99b195a](https://github.com/Increase/increase-python/commit/99b195aaf567a4cc9696dbf17151b7e7bbd8053f))
+* **tests:** bump steady to v0.19.6 ([74225f6](https://github.com/Increase/increase-python/commit/74225f65ba75c238f80e2d9dec4580f82b9771d5))
+
 ## 0.453.0 (2026-03-21)
 
 Full Changelog: [v0.452.0...v0.453.0](https://github.com/Increase/increase-python/compare/v0.452.0...v0.453.0)
