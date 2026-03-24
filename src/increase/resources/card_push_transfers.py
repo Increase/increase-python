@@ -78,6 +78,12 @@ class CardPushTransfersResource(SyncAPIResource):
         sender_address_state: str,
         sender_name: str,
         source_account_number_id: str,
+        merchant_legal_business_name: str | Omit = omit,
+        merchant_street_address: str | Omit = omit,
+        recipient_address_city: str | Omit = omit,
+        recipient_address_line1: str | Omit = omit,
+        recipient_address_postal_code: str | Omit = omit,
+        recipient_address_state: str | Omit = omit,
         require_approval: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -149,6 +155,22 @@ class CardPushTransfersResource(SyncAPIResource):
 
           source_account_number_id: The identifier of the Account Number from which to send the transfer.
 
+          merchant_legal_business_name: The legal business name of the merchant (generally your business) sending the
+              transfer. Required if the card is issued in Canada.
+
+          merchant_street_address: The street address of the merchant (generally your business) sending the
+              transfer. Required if the card is issued in Canada.
+
+          recipient_address_city: The city of the recipient. Required if the card is issued in Canada.
+
+          recipient_address_line1: The first line of the recipient's address. Required if the card is issued in
+              Canada.
+
+          recipient_address_postal_code: The postal code of the recipient. Required if the card is issued in Canada.
+
+          recipient_address_state: The state or province of the recipient. Required if the card is issued in
+              Canada.
+
           require_approval: Whether the transfer requires explicit approval via the dashboard or API.
 
           extra_headers: Send extra headers
@@ -181,6 +203,12 @@ class CardPushTransfersResource(SyncAPIResource):
                     "sender_address_state": sender_address_state,
                     "sender_name": sender_name,
                     "source_account_number_id": source_account_number_id,
+                    "merchant_legal_business_name": merchant_legal_business_name,
+                    "merchant_street_address": merchant_street_address,
+                    "recipient_address_city": recipient_address_city,
+                    "recipient_address_line1": recipient_address_line1,
+                    "recipient_address_postal_code": recipient_address_postal_code,
+                    "recipient_address_state": recipient_address_state,
                     "require_approval": require_approval,
                 },
                 card_push_transfer_create_params.CardPushTransferCreateParams,
@@ -442,6 +470,12 @@ class AsyncCardPushTransfersResource(AsyncAPIResource):
         sender_address_state: str,
         sender_name: str,
         source_account_number_id: str,
+        merchant_legal_business_name: str | Omit = omit,
+        merchant_street_address: str | Omit = omit,
+        recipient_address_city: str | Omit = omit,
+        recipient_address_line1: str | Omit = omit,
+        recipient_address_postal_code: str | Omit = omit,
+        recipient_address_state: str | Omit = omit,
         require_approval: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -513,6 +547,22 @@ class AsyncCardPushTransfersResource(AsyncAPIResource):
 
           source_account_number_id: The identifier of the Account Number from which to send the transfer.
 
+          merchant_legal_business_name: The legal business name of the merchant (generally your business) sending the
+              transfer. Required if the card is issued in Canada.
+
+          merchant_street_address: The street address of the merchant (generally your business) sending the
+              transfer. Required if the card is issued in Canada.
+
+          recipient_address_city: The city of the recipient. Required if the card is issued in Canada.
+
+          recipient_address_line1: The first line of the recipient's address. Required if the card is issued in
+              Canada.
+
+          recipient_address_postal_code: The postal code of the recipient. Required if the card is issued in Canada.
+
+          recipient_address_state: The state or province of the recipient. Required if the card is issued in
+              Canada.
+
           require_approval: Whether the transfer requires explicit approval via the dashboard or API.
 
           extra_headers: Send extra headers
@@ -545,6 +595,12 @@ class AsyncCardPushTransfersResource(AsyncAPIResource):
                     "sender_address_state": sender_address_state,
                     "sender_name": sender_name,
                     "source_account_number_id": source_account_number_id,
+                    "merchant_legal_business_name": merchant_legal_business_name,
+                    "merchant_street_address": merchant_street_address,
+                    "recipient_address_city": recipient_address_city,
+                    "recipient_address_line1": recipient_address_line1,
+                    "recipient_address_postal_code": recipient_address_postal_code,
+                    "recipient_address_state": recipient_address_state,
                     "require_approval": require_approval,
                 },
                 card_push_transfer_create_params.CardPushTransferCreateParams,
