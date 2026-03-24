@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.455.0 (2026-03-24)
+
+Full Changelog: [v0.454.0...v0.455.0](https://github.com/Increase/increase-python/compare/v0.454.0...v0.455.0)
+
+### Features
+
+* **api:** api update ([2309e83](https://github.com/Increase/increase-python/commit/2309e8314442e130cbb72545c3a2d32d0f08fd3b))
+
+
+### Chores
+
+* **ci:** skip lint on metadata-only changes ([0d24f96](https://github.com/Increase/increase-python/commit/0d24f96a805ebcf649fba6eb5d7cf1d7cc617a54))
+* **tests:** bump steady to v0.19.7 ([2e2288c](https://github.com/Increase/increase-python/commit/2e2288caecb277f9b41f6aea2023e0bb72f0ad8a))
+
 ## 0.454.0 (2026-03-23)
 
 Full Changelog: [v0.453.0...v0.454.0](https://github.com/Increase/increase-python/compare/v0.453.0...v0.454.0)
