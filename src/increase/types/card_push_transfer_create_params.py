@@ -111,6 +111,36 @@ class CardPushTransferCreateParams(TypedDict, total=False):
     source_account_number_id: Required[str]
     """The identifier of the Account Number from which to send the transfer."""
 
+    merchant_legal_business_name: str
+    """
+    The legal business name of the merchant (generally your business) sending the
+    transfer. Required if the card is issued in Canada.
+    """
+
+    merchant_street_address: str
+    """
+    The street address of the merchant (generally your business) sending the
+    transfer. Required if the card is issued in Canada.
+    """
+
+    recipient_address_city: str
+    """The city of the recipient. Required if the card is issued in Canada."""
+
+    recipient_address_line1: str
+    """The first line of the recipient's address.
+
+    Required if the card is issued in Canada.
+    """
+
+    recipient_address_postal_code: str
+    """The postal code of the recipient. Required if the card is issued in Canada."""
+
+    recipient_address_state: str
+    """The state or province of the recipient.
+
+    Required if the card is issued in Canada.
+    """
+
     require_approval: bool
     """Whether the transfer requires explicit approval via the dashboard or API."""
 
