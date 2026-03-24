@@ -32,10 +32,6 @@ class RealTimePaymentsTransferCreateParams(TypedDict, total=False):
     If not provided, defaults to the name of the account's entity.
     """
 
-    destination_account_number: str
-
-    destination_routing_number: str
-
     external_account_id: str
     """The ID of an External Account to initiate a transfer to.
 
