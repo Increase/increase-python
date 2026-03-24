@@ -545,7 +545,7 @@ class JointIndividualIdentificationPassport(TypedDict, total=False):
     country: Required[str]
     """
     The two-character ISO 3166-1 code representing the country that issued the
-    passport (e.g., `US`).
+    document (e.g., `US`).
     """
 
     expiration_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
@@ -718,7 +718,7 @@ class NaturalPersonIdentificationPassport(TypedDict, total=False):
     country: Required[str]
     """
     The two-character ISO 3166-1 code representing the country that issued the
-    passport (e.g., `US`).
+    document (e.g., `US`).
     """
 
     expiration_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
@@ -969,7 +969,7 @@ class TrustTrusteeIndividualIdentificationPassport(TypedDict, total=False):
     country: Required[str]
     """
     The two-character ISO 3166-1 code representing the country that issued the
-    passport (e.g., `US`).
+    document (e.g., `US`).
     """
 
     expiration_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
@@ -1152,7 +1152,7 @@ class TrustGrantorIdentificationPassport(TypedDict, total=False):
     country: Required[str]
     """
     The two-character ISO 3166-1 code representing the country that issued the
-    passport (e.g., `US`).
+    document (e.g., `US`).
     """
 
     expiration_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
