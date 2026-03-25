@@ -52,8 +52,11 @@ __all__ = [
 class CorporationAddress(BaseModel):
     """The corporation's address."""
 
-    city: str
-    """The city of the address."""
+    city: Optional[str] = None
+    """The city, district, town, or village of the address."""
+
+    country: str
+    """The two-letter ISO 3166-1 alpha-2 code for the country of the address."""
 
     line1: str
     """The first line of the address."""
@@ -61,14 +64,14 @@ class CorporationAddress(BaseModel):
     line2: Optional[str] = None
     """The second line of the address."""
 
-    state: str
+    state: Optional[str] = None
     """
-    The two-letter United States Postal Service (USPS) abbreviation for the state of
-    the address.
+    The two-letter United States Postal Service (USPS) abbreviation for the US
+    state, province, or region of the address.
     """
 
-    zip: str
-    """The ZIP code of the address."""
+    zip: Optional[str] = None
+    """The ZIP or postal code of the address."""
 
 
 class CorporationBeneficialOwnerIndividualAddress(BaseModel):
@@ -244,8 +247,11 @@ class Corporation(BaseModel):
 class GovernmentAuthorityAddress(BaseModel):
     """The government authority's address."""
 
-    city: str
-    """The city of the address."""
+    city: Optional[str] = None
+    """The city, district, town, or village of the address."""
+
+    country: str
+    """The two-letter ISO 3166-1 alpha-2 code for the country of the address."""
 
     line1: str
     """The first line of the address."""
@@ -253,14 +259,14 @@ class GovernmentAuthorityAddress(BaseModel):
     line2: Optional[str] = None
     """The second line of the address."""
 
-    state: str
+    state: Optional[str] = None
     """
-    The two-letter United States Postal Service (USPS) abbreviation for the state of
-    the address.
+    The two-letter United States Postal Service (USPS) abbreviation for the US
+    state, province, or region of the address.
     """
 
-    zip: str
-    """The ZIP code of the address."""
+    zip: Optional[str] = None
+    """The ZIP or postal code of the address."""
 
 
 class GovernmentAuthorityAuthorizedPerson(BaseModel):
@@ -305,8 +311,11 @@ class GovernmentAuthority(BaseModel):
 class JointIndividualAddress(BaseModel):
     """The person's address."""
 
-    city: str
-    """The city of the address."""
+    city: Optional[str] = None
+    """The city, district, town, or village of the address."""
+
+    country: str
+    """The two-letter ISO 3166-1 alpha-2 code for the country of the address."""
 
     line1: str
     """The first line of the address."""
@@ -314,14 +323,14 @@ class JointIndividualAddress(BaseModel):
     line2: Optional[str] = None
     """The second line of the address."""
 
-    state: str
+    state: Optional[str] = None
     """
-    The two-letter United States Postal Service (USPS) abbreviation for the state of
-    the address.
+    The two-letter United States Postal Service (USPS) abbreviation for the US
+    state, province, or region of the address.
     """
 
-    zip: str
-    """The ZIP code of the address."""
+    zip: Optional[str] = None
+    """The ZIP or postal code of the address."""
 
 
 class JointIndividualIdentification(BaseModel):
@@ -389,8 +398,11 @@ class Joint(BaseModel):
 class NaturalPersonAddress(BaseModel):
     """The person's address."""
 
-    city: str
-    """The city of the address."""
+    city: Optional[str] = None
+    """The city, district, town, or village of the address."""
+
+    country: str
+    """The two-letter ISO 3166-1 alpha-2 code for the country of the address."""
 
     line1: str
     """The first line of the address."""
@@ -398,14 +410,14 @@ class NaturalPersonAddress(BaseModel):
     line2: Optional[str] = None
     """The second line of the address."""
 
-    state: str
+    state: Optional[str] = None
     """
-    The two-letter United States Postal Service (USPS) abbreviation for the state of
-    the address.
+    The two-letter United States Postal Service (USPS) abbreviation for the US
+    state, province, or region of the address.
     """
 
-    zip: str
-    """The ZIP code of the address."""
+    zip: Optional[str] = None
+    """The ZIP or postal code of the address."""
 
 
 class NaturalPersonIdentification(BaseModel):
@@ -518,8 +530,11 @@ class ThirdPartyVerification(BaseModel):
 class TrustAddress(BaseModel):
     """The trust's address."""
 
-    city: str
-    """The city of the address."""
+    city: Optional[str] = None
+    """The city, district, town, or village of the address."""
+
+    country: str
+    """The two-letter ISO 3166-1 alpha-2 code for the country of the address."""
 
     line1: str
     """The first line of the address."""
@@ -527,21 +542,24 @@ class TrustAddress(BaseModel):
     line2: Optional[str] = None
     """The second line of the address."""
 
-    state: str
+    state: Optional[str] = None
     """
-    The two-letter United States Postal Service (USPS) abbreviation for the state of
-    the address.
+    The two-letter United States Postal Service (USPS) abbreviation for the US
+    state, province, or region of the address.
     """
 
-    zip: str
-    """The ZIP code of the address."""
+    zip: Optional[str] = None
+    """The ZIP or postal code of the address."""
 
 
 class TrustGrantorAddress(BaseModel):
     """The person's address."""
 
-    city: str
-    """The city of the address."""
+    city: Optional[str] = None
+    """The city, district, town, or village of the address."""
+
+    country: str
+    """The two-letter ISO 3166-1 alpha-2 code for the country of the address."""
 
     line1: str
     """The first line of the address."""
@@ -549,14 +567,14 @@ class TrustGrantorAddress(BaseModel):
     line2: Optional[str] = None
     """The second line of the address."""
 
-    state: str
+    state: Optional[str] = None
     """
-    The two-letter United States Postal Service (USPS) abbreviation for the state of
-    the address.
+    The two-letter United States Postal Service (USPS) abbreviation for the US
+    state, province, or region of the address.
     """
 
-    zip: str
-    """The ZIP code of the address."""
+    zip: Optional[str] = None
+    """The ZIP or postal code of the address."""
 
 
 class TrustGrantorIdentification(BaseModel):
@@ -613,8 +631,11 @@ class TrustGrantor(BaseModel):
 class TrustTrusteeIndividualAddress(BaseModel):
     """The person's address."""
 
-    city: str
-    """The city of the address."""
+    city: Optional[str] = None
+    """The city, district, town, or village of the address."""
+
+    country: str
+    """The two-letter ISO 3166-1 alpha-2 code for the country of the address."""
 
     line1: str
     """The first line of the address."""
@@ -622,14 +643,14 @@ class TrustTrusteeIndividualAddress(BaseModel):
     line2: Optional[str] = None
     """The second line of the address."""
 
-    state: str
+    state: Optional[str] = None
     """
-    The two-letter United States Postal Service (USPS) abbreviation for the state of
-    the address.
+    The two-letter United States Postal Service (USPS) abbreviation for the US
+    state, province, or region of the address.
     """
 
-    zip: str
-    """The ZIP code of the address."""
+    zip: Optional[str] = None
+    """The ZIP or postal code of the address."""
 
 
 class TrustTrusteeIndividualIdentification(BaseModel):

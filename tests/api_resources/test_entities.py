@@ -33,10 +33,11 @@ class TestEntities:
             corporation={
                 "address": {
                     "city": "New York",
+                    "country": "x",
                     "line1": "33 Liberty Street",
+                    "line2": "x",
                     "state": "NY",
                     "zip": "10045",
-                    "line2": "x",
                 },
                 "beneficial_owners": [
                     {
@@ -110,10 +111,11 @@ class TestEntities:
                     {
                         "address": {
                             "city": "x",
+                            "country": "x",
                             "line1": "x",
+                            "line2": "x",
                             "state": "x",
                             "zip": "x",
-                            "line2": "x",
                         },
                         "date_of_birth": parse_date("2019-12-27"),
                         "identification": {
@@ -146,10 +148,11 @@ class TestEntities:
             natural_person={
                 "address": {
                     "city": "x",
+                    "country": "x",
                     "line1": "x",
+                    "line2": "x",
                     "state": "x",
                     "zip": "x",
-                    "line2": "x",
                 },
                 "date_of_birth": parse_date("2019-12-27"),
                 "identification": {
@@ -209,10 +212,11 @@ class TestEntities:
                         "individual": {
                             "address": {
                                 "city": "x",
+                                "country": "x",
                                 "line1": "x",
+                                "line2": "x",
                                 "state": "x",
                                 "zip": "x",
-                                "line2": "x",
                             },
                             "date_of_birth": parse_date("2019-12-27"),
                             "identification": {
@@ -247,10 +251,11 @@ class TestEntities:
                 "grantor": {
                     "address": {
                         "city": "x",
+                        "country": "x",
                         "line1": "x",
+                        "line2": "x",
                         "state": "x",
                         "zip": "x",
-                        "line2": "x",
                     },
                     "date_of_birth": parse_date("2019-12-27"),
                     "identification": {
@@ -359,10 +364,11 @@ class TestEntities:
             corporation={
                 "address": {
                     "city": "New York",
+                    "country": "US",
                     "line1": "33 Liberty Street",
+                    "line2": "Unit 2",
                     "state": "NY",
                     "zip": "10045",
-                    "line2": "Unit 2",
                 },
                 "email": "dev@stainless.com",
                 "incorporation_state": "x",
@@ -384,10 +390,11 @@ class TestEntities:
             natural_person={
                 "address": {
                     "city": "x",
+                    "country": "x",
                     "line1": "x",
+                    "line2": "x",
                     "state": "x",
                     "zip": "x",
-                    "line2": "x",
                 },
                 "name": "x",
             },
@@ -542,10 +549,11 @@ class TestAsyncEntities:
             corporation={
                 "address": {
                     "city": "New York",
+                    "country": "x",
                     "line1": "33 Liberty Street",
+                    "line2": "x",
                     "state": "NY",
                     "zip": "10045",
-                    "line2": "x",
                 },
                 "beneficial_owners": [
                     {
@@ -619,10 +627,11 @@ class TestAsyncEntities:
                     {
                         "address": {
                             "city": "x",
+                            "country": "x",
                             "line1": "x",
+                            "line2": "x",
                             "state": "x",
                             "zip": "x",
-                            "line2": "x",
                         },
                         "date_of_birth": parse_date("2019-12-27"),
                         "identification": {
@@ -655,10 +664,11 @@ class TestAsyncEntities:
             natural_person={
                 "address": {
                     "city": "x",
+                    "country": "x",
                     "line1": "x",
+                    "line2": "x",
                     "state": "x",
                     "zip": "x",
-                    "line2": "x",
                 },
                 "date_of_birth": parse_date("2019-12-27"),
                 "identification": {
@@ -718,10 +728,11 @@ class TestAsyncEntities:
                         "individual": {
                             "address": {
                                 "city": "x",
+                                "country": "x",
                                 "line1": "x",
+                                "line2": "x",
                                 "state": "x",
                                 "zip": "x",
-                                "line2": "x",
                             },
                             "date_of_birth": parse_date("2019-12-27"),
                             "identification": {
@@ -756,10 +767,11 @@ class TestAsyncEntities:
                 "grantor": {
                     "address": {
                         "city": "x",
+                        "country": "x",
                         "line1": "x",
+                        "line2": "x",
                         "state": "x",
                         "zip": "x",
-                        "line2": "x",
                     },
                     "date_of_birth": parse_date("2019-12-27"),
                     "identification": {
@@ -868,10 +880,11 @@ class TestAsyncEntities:
             corporation={
                 "address": {
                     "city": "New York",
+                    "country": "US",
                     "line1": "33 Liberty Street",
+                    "line2": "Unit 2",
                     "state": "NY",
                     "zip": "10045",
-                    "line2": "Unit 2",
                 },
                 "email": "dev@stainless.com",
                 "incorporation_state": "x",
@@ -893,10 +906,11 @@ class TestAsyncEntities:
             natural_person={
                 "address": {
                     "city": "x",
+                    "country": "x",
                     "line1": "x",
+                    "line2": "x",
                     "state": "x",
                     "zip": "x",
-                    "line2": "x",
                 },
                 "name": "x",
             },
