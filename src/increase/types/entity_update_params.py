@@ -80,22 +80,25 @@ class CorporationAddress(TypedDict, total=False):
     """
 
     city: Required[str]
-    """The city of the address."""
+    """The city, district, town, or village of the address."""
+
+    country: Required[str]
+    """The two-letter ISO 3166-1 alpha-2 code for the country of the address."""
 
     line1: Required[str]
     """The first line of the address. This is usually the street number and street."""
 
-    state: Required[str]
-    """
-    The two-letter United States Postal Service (USPS) abbreviation for the state of
-    the address.
-    """
-
-    zip: Required[str]
-    """The ZIP code of the address."""
-
     line2: str
     """The second line of the address. This might be the floor or room number."""
+
+    state: str
+    """
+    The two-letter United States Postal Service (USPS) abbreviation for the US
+    state, province, or region of the address. Required in certain countries.
+    """
+
+    zip: str
+    """The ZIP or postal code of the address. Required in certain countries."""
 
 
 class Corporation(TypedDict, total=False):
@@ -185,22 +188,25 @@ class NaturalPersonAddress(TypedDict, total=False):
     """
 
     city: Required[str]
-    """The city of the address."""
+    """The city, district, town, or village of the address."""
+
+    country: Required[str]
+    """The two-letter ISO 3166-1 alpha-2 code for the country of the address."""
 
     line1: Required[str]
     """The first line of the address. This is usually the street number and street."""
 
-    state: Required[str]
-    """
-    The two-letter United States Postal Service (USPS) abbreviation for the state of
-    the address.
-    """
-
-    zip: Required[str]
-    """The ZIP code of the address."""
-
     line2: str
     """The second line of the address. This might be the floor or room number."""
+
+    state: str
+    """
+    The two-letter United States Postal Service (USPS) abbreviation for the US
+    state, province, or region of the address. Required in certain countries.
+    """
+
+    zip: str
+    """The ZIP or postal code of the address. Required in certain countries."""
 
 
 class NaturalPerson(TypedDict, total=False):
