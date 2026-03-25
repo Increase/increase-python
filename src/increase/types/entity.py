@@ -17,6 +17,7 @@ __all__ = [
     "CorporationBeneficialOwnerIndividual",
     "CorporationBeneficialOwnerIndividualAddress",
     "CorporationBeneficialOwnerIndividualIdentification",
+    "CorporationLegalIdentifier",
     "GovernmentAuthority",
     "GovernmentAuthorityAddress",
     "GovernmentAuthorityAuthorizedPerson",
@@ -172,6 +173,22 @@ class CorporationBeneficialOwner(BaseModel):
         __pydantic_extra__: Dict[str, object]
 
 
+class CorporationLegalIdentifier(BaseModel):
+    """The legal identifier of the corporation."""
+
+    category: Literal["us_employer_identification_number", "other"]
+    """The category of the legal identifier.
+
+    - `us_employer_identification_number` - The Employer Identification Number (EIN)
+      for the company. The EIN is a 9-digit number assigned by the IRS.
+    - `other` - A legal identifier issued by a foreign government, like a tax
+      identification number or registration number.
+    """
+
+    value: str
+    """The identifier of the legal identifier."""
+
+
 class Corporation(BaseModel):
     """Details of the corporation entity.
 
@@ -202,14 +219,26 @@ class Corporation(BaseModel):
     for the corporation.
     """
 
+    legal_identifier: Optional[CorporationLegalIdentifier] = None
+    """The legal identifier of the corporation."""
+
     name: str
     """The legal name of the corporation."""
 
-    tax_identifier: Optional[str] = None
-    """The Employer Identification Number (EIN) for the corporation."""
-
     website: Optional[str] = None
     """The website of the corporation."""
+
+    if TYPE_CHECKING:
+        # Some versions of Pydantic <2.8.0 have a bug and don’t allow assigning a
+        # value to this field, so for compatibility we avoid doing it at runtime.
+        __pydantic_extra__: Dict[str, object] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
+
+        # Stub to indicate that arbitrary properties are accepted.
+        # To access properties that are not valid identifiers you can use `getattr`, e.g.
+        # `getattr(obj, '$type')`
+        def __getattr__(self, attr: str) -> object: ...
+    else:
+        __pydantic_extra__: Dict[str, object]
 
 
 class GovernmentAuthorityAddress(BaseModel):

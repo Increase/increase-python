@@ -19,6 +19,7 @@ __all__ = [
     "CorporationBeneficialOwnerIndividualIdentificationDriversLicense",
     "CorporationBeneficialOwnerIndividualIdentificationOther",
     "CorporationBeneficialOwnerIndividualIdentificationPassport",
+    "CorporationLegalIdentifier",
     "GovernmentAuthority",
     "GovernmentAuthorityAddress",
     "GovernmentAuthorityAuthorizedPerson",
@@ -334,7 +335,28 @@ class CorporationBeneficialOwner(TypedDict, total=False, extra_items=object):  #
     """This person's role or title within the entity."""
 
 
-class Corporation(TypedDict, total=False):
+class CorporationLegalIdentifier(TypedDict, total=False):
+    """The legal identifier of the corporation.
+
+    This is usually the Employer Identification Number (EIN).
+    """
+
+    value: Required[str]
+    """The legal identifier."""
+
+    category: Literal["us_employer_identification_number", "other"]
+    """The category of the legal identifier.
+
+    If not provided, the default is `us_employer_identification_number`.
+
+    - `us_employer_identification_number` - The Employer Identification Number (EIN)
+      for the company. The EIN is a 9-digit number assigned by the IRS.
+    - `other` - A legal identifier issued by a foreign government, like a tax
+      identification number or registration number.
+    """
+
+
+class Corporation(TypedDict, total=False, extra_items=object):  # type: ignore[call-arg]
     """Details of the corporation entity to create.
 
     Required if `structure` is equal to `corporation`.
@@ -353,11 +375,14 @@ class Corporation(TypedDict, total=False):
     between 1 and 5 people to this list.
     """
 
+    legal_identifier: Required[CorporationLegalIdentifier]
+    """The legal identifier of the corporation.
+
+    This is usually the Employer Identification Number (EIN).
+    """
+
     name: Required[str]
     """The legal name of the corporation."""
-
-    tax_identifier: Required[str]
-    """The Employer Identification Number (EIN) for the corporation."""
 
     beneficial_ownership_exemption_reason: Literal[
         "regulated_financial_institution", "publicly_traded_company", "public_entity", "other"
