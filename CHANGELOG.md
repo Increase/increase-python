@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.461.0 (2026-03-26)
+
+Full Changelog: [v0.460.0...v0.461.0](https://github.com/Increase/increase-python/compare/v0.460.0...v0.461.0)
+
+### Features
+
+* **internal:** implement indices array format for query and form serialization ([be2c2f5](https://github.com/Increase/increase-python/commit/be2c2f533f972bd2074208cd62ddaa5daca911ee))
+
 ## 0.460.0 (2026-03-25)
 
 Full Changelog: [v0.459.0...v0.460.0](https://github.com/Increase/increase-python/compare/v0.459.0...v0.460.0)
