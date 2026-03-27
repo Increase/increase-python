@@ -12,6 +12,7 @@ __all__ = [
     "EntityUpdateParams",
     "Corporation",
     "CorporationAddress",
+    "CorporationLegalIdentifier",
     "GovernmentAuthority",
     "GovernmentAuthorityAddress",
     "NaturalPerson",
@@ -101,7 +102,26 @@ class CorporationAddress(TypedDict, total=False):
     """The ZIP or postal code of the address. Required in certain countries."""
 
 
-class Corporation(TypedDict, total=False):
+class CorporationLegalIdentifier(TypedDict, total=False):
+    """The legal identifier of the corporation.
+
+    This is usually the Employer Identification Number (EIN).
+    """
+
+    value: Required[str]
+    """The identifier of the legal identifier."""
+
+    category: Literal["us_employer_identification_number", "other"]
+    """The category of the legal identifier.
+
+    - `us_employer_identification_number` - The Employer Identification Number (EIN)
+      for the company. The EIN is a 9-digit number assigned by the IRS.
+    - `other` - A legal identifier issued by a foreign government, like a tax
+      identification number or registration number.
+    """
+
+
+class Corporation(TypedDict, total=False, extra_items=object):  # type: ignore[call-arg]
     """Details of the corporation entity to update.
 
     If you specify this parameter and the entity is not a corporation, the request will fail.
@@ -133,11 +153,14 @@ class Corporation(TypedDict, total=False):
     [here](https://increase.com/documentation/data-dictionary#north-american-industry-classification-system-codes).
     """
 
+    legal_identifier: CorporationLegalIdentifier
+    """The legal identifier of the corporation.
+
+    This is usually the Employer Identification Number (EIN).
+    """
+
     name: str
     """The legal name of the corporation."""
-
-    tax_identifier: str
-    """The Employer Identification Number (EIN) for the corporation."""
 
 
 class GovernmentAuthorityAddress(TypedDict, total=False):

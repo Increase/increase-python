@@ -373,8 +373,11 @@ class TestEntities:
                 "email": "dev@stainless.com",
                 "incorporation_state": "x",
                 "industry_code": "x",
+                "legal_identifier": {
+                    "value": "x",
+                    "category": "us_employer_identification_number",
+                },
                 "name": "x",
-                "tax_identifier": "x",
             },
             details_confirmed_at=parse_datetime("2019-12-27T18:11:19.117Z"),
             government_authority={
@@ -889,8 +892,11 @@ class TestAsyncEntities:
                 "email": "dev@stainless.com",
                 "incorporation_state": "x",
                 "industry_code": "x",
+                "legal_identifier": {
+                    "value": "x",
+                    "category": "us_employer_identification_number",
+                },
                 "name": "x",
-                "tax_identifier": "x",
             },
             details_confirmed_at=parse_datetime("2019-12-27T18:11:19.117Z"),
             government_authority={
