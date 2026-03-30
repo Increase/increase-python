@@ -36,6 +36,7 @@ __all__ = [
     "ElementCardAuthorizationNetworkDetailsPulse",
     "ElementCardAuthorizationNetworkDetailsVisa",
     "ElementCardAuthorizationNetworkIdentifiers",
+    "ElementCardAuthorizationSchemeFee",
     "ElementCardAuthorizationVerification",
     "ElementCardAuthorizationVerificationCardVerificationCode",
     "ElementCardAuthorizationVerificationCardholderAddress",
@@ -57,6 +58,7 @@ __all__ = [
     "ElementCardBalanceInquiryNetworkDetailsPulse",
     "ElementCardBalanceInquiryNetworkDetailsVisa",
     "ElementCardBalanceInquiryNetworkIdentifiers",
+    "ElementCardBalanceInquirySchemeFee",
     "ElementCardBalanceInquiryVerification",
     "ElementCardBalanceInquiryVerificationCardVerificationCode",
     "ElementCardBalanceInquiryVerificationCardholderAddress",
@@ -77,6 +79,7 @@ __all__ = [
     "ElementCardDeclineNetworkDetailsPulse",
     "ElementCardDeclineNetworkDetailsVisa",
     "ElementCardDeclineNetworkIdentifiers",
+    "ElementCardDeclineSchemeFee",
     "ElementCardDeclineVerification",
     "ElementCardDeclineVerificationCardVerificationCode",
     "ElementCardDeclineVerificationCardholderAddress",
@@ -97,12 +100,14 @@ __all__ = [
     "ElementCardFinancialNetworkDetailsPulse",
     "ElementCardFinancialNetworkDetailsVisa",
     "ElementCardFinancialNetworkIdentifiers",
+    "ElementCardFinancialSchemeFee",
     "ElementCardFinancialVerification",
     "ElementCardFinancialVerificationCardVerificationCode",
     "ElementCardFinancialVerificationCardholderAddress",
     "ElementCardFinancialVerificationCardholderName",
     "ElementCardFuelConfirmation",
     "ElementCardFuelConfirmationNetworkIdentifiers",
+    "ElementCardFuelConfirmationSchemeFee",
     "ElementCardIncrement",
     "ElementCardIncrementAdditionalAmounts",
     "ElementCardIncrementAdditionalAmountsClinic",
@@ -116,6 +121,7 @@ __all__ = [
     "ElementCardIncrementAdditionalAmountsUnknown",
     "ElementCardIncrementAdditionalAmountsVision",
     "ElementCardIncrementNetworkIdentifiers",
+    "ElementCardIncrementSchemeFee",
     "ElementCardRefund",
     "ElementCardRefundCashback",
     "ElementCardRefundInterchange",
@@ -127,8 +133,10 @@ __all__ = [
     "ElementCardRefundPurchaseDetailsTravelAncillary",
     "ElementCardRefundPurchaseDetailsTravelAncillaryService",
     "ElementCardRefundPurchaseDetailsTravelTripLeg",
+    "ElementCardRefundSchemeFee",
     "ElementCardReversal",
     "ElementCardReversalNetworkIdentifiers",
+    "ElementCardReversalSchemeFee",
     "ElementCardSettlement",
     "ElementCardSettlementCashback",
     "ElementCardSettlementInterchange",
@@ -140,6 +148,7 @@ __all__ = [
     "ElementCardSettlementPurchaseDetailsTravelAncillary",
     "ElementCardSettlementPurchaseDetailsTravelAncillaryService",
     "ElementCardSettlementPurchaseDetailsTravelTripLeg",
+    "ElementCardSettlementSchemeFee",
     "ElementCardSettlementSurcharge",
     "ElementCardValidation",
     "ElementCardValidationAdditionalAmounts",
@@ -157,12 +166,12 @@ __all__ = [
     "ElementCardValidationNetworkDetailsPulse",
     "ElementCardValidationNetworkDetailsVisa",
     "ElementCardValidationNetworkIdentifiers",
+    "ElementCardValidationSchemeFee",
     "ElementCardValidationVerification",
     "ElementCardValidationVerificationCardVerificationCode",
     "ElementCardValidationVerificationCardholderAddress",
     "ElementCardValidationVerificationCardholderName",
     "ElementOther",
-    "SchemeFee",
     "State",
 ]
 
@@ -1064,6 +1073,158 @@ class ElementCardAuthorizationNetworkIdentifiers(BaseModel):
     """
 
 
+class ElementCardAuthorizationSchemeFee(BaseModel):
+    amount: str
+    """The fee amount given as a string containing a decimal number."""
+
+    created_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the fee was
+    created.
+    """
+
+    currency: Literal["USD"]
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the fee
+    reimbursement.
+
+    - `USD` - US Dollar (USD)
+    """
+
+    fee_type: Literal[
+        "visa_international_service_assessment_single_currency",
+        "visa_international_service_assessment_cross_currency",
+        "visa_authorization_domestic_point_of_sale",
+        "visa_authorization_international_point_of_sale",
+        "visa_authorization_canada_point_of_sale",
+        "visa_authorization_reversal_point_of_sale",
+        "visa_authorization_reversal_international_point_of_sale",
+        "visa_authorization_address_verification_service",
+        "visa_advanced_authorization",
+        "visa_message_transmission",
+        "visa_account_verification_domestic",
+        "visa_account_verification_international",
+        "visa_account_verification_canada",
+        "visa_corporate_acceptance_fee",
+        "visa_consumer_debit_acceptance_fee",
+        "visa_business_debit_acceptance_fee",
+        "visa_purchasing_acceptance_fee",
+        "visa_purchase_domestic",
+        "visa_purchase_international",
+        "visa_credit_purchase_token",
+        "visa_debit_purchase_token",
+        "visa_clearing_transmission",
+        "visa_direct_authorization",
+        "visa_direct_transaction_domestic",
+        "visa_service_commercial_credit",
+        "visa_advertising_service_commercial_credit",
+        "visa_community_growth_acceleration_program",
+        "visa_processing_guarantee_commercial_credit",
+        "pulse_switch_fee",
+    ]
+    """The type of fee being assessed.
+
+    - `visa_international_service_assessment_single_currency` - International
+      Service Assessment (ISA) single-currency is a fee assessed by the card network
+      for cross-border transactions presented and settled in the same currency.
+    - `visa_international_service_assessment_cross_currency` - International Service
+      Assessment (ISA) cross-currency is a fee assessed by the card network for
+      cross-border transactions presented and settled in different currencies.
+    - `visa_authorization_domestic_point_of_sale` - Activity and charges for Visa
+      Settlement System processing for POS (Point-Of-Sale) authorization
+      transactions. Authorization is the process of approving or declining the
+      transaction amount specified. The fee is assessed to the Issuer.
+    - `visa_authorization_international_point_of_sale` - Activity and charges for
+      Visa Settlement System processing for POS (Point-Of-Sale) International
+      authorization transactions. Authorization is the process of approving or
+      declining the transaction amount specified. The fee is assessed to the Issuer.
+    - `visa_authorization_canada_point_of_sale` - Activity and charges for Visa
+      Settlement System processing for Canada Region POS (Point-of-Sale)
+      authorization transactions. Authorization is the process of approving or
+      declining the transaction amount specified.
+    - `visa_authorization_reversal_point_of_sale` - Activity only for Visa
+      Settlement System authorization processing of POS (Point-Of-Sale) reversal
+      transactions. Authorization reversal represents a VSS message that undoes the
+      complete or partial actions of a previous authorization request.
+    - `visa_authorization_reversal_international_point_of_sale` - Activity only for
+      Visa Settlement System authorization processing of POS (Point-Of-Sale)
+      International reversal transactions. Authorization reversal represents a VSS
+      message that undoes the complete or partial actions of a previous
+      authorization request.
+    - `visa_authorization_address_verification_service` - A per Address Verification
+      Service (AVS) result fee. Applies to all usable AVS result codes.
+    - `visa_advanced_authorization` - Advanced Authorization is a fraud detection
+      tool that monitors and risk evaluates 100 percent of US VisaNet authorizations
+      in real-time. Activity related to Purchase (includes Signature Authenticated
+      Visa and PIN Authenticated Visa Debit (PAVD) transactions).
+    - `visa_message_transmission` - Issuer Transactions Visa represents a charge
+      based on total actual monthly processing (Visa transactions only) through a
+      VisaNet Access Point (VAP). Charges are assessed to the processor for each
+      VisaNet Access Point.
+    - `visa_account_verification_domestic` - Activity, per inquiry, related to the
+      domestic Issuer for Account Number Verification.
+    - `visa_account_verification_international` - Activity, per inquiry, related to
+      the international Issuer for Account Number Verification.
+    - `visa_account_verification_canada` - Activity, per inquiry, related to the
+      US-Canada Issuer for Account Number Verification.
+    - `visa_corporate_acceptance_fee` - The Corporate Acceptance Fee is charged to
+      issuers and is based on the monthly sales volume on Commercial and Government
+      Debit, Prepaid, Credit, Charge, or Deferred Debit card transactions.
+    - `visa_consumer_debit_acceptance_fee` - The Consumer Debit Acceptance Fee is
+      charged to issuers and is based on the monthly sales volume of Consumer Debit
+      or Prepaid card transactions. The cashback portion of a Debit and Prepaid card
+      transaction is excluded from the sales volume calculation.
+    - `visa_business_debit_acceptance_fee` - The Business Acceptance Fee is charged
+      to issuers and is based on the monthly sales volume on Business Debit,
+      Prepaid, Credit, Charge, or Deferred Debit card transactions. The cashback
+      portion is included in the sales volume calculation with the exception of a
+      Debit and Prepaid card transactions.
+    - `visa_purchasing_acceptance_fee` - The Purchasing Card Acceptance Fee is
+      charged to issuers and is based on the monthly sales volume on Commercial and
+      Government Debit, Prepaid, Credit, Charge, or Deferred Debit card
+      transactions.
+    - `visa_purchase_domestic` - Activity and fees for the processing of a sales
+      draft original for a purchase transaction.
+    - `visa_purchase_international` - Activity and fees for the processing of an
+      international sales draft original for a purchase transaction.
+    - `visa_credit_purchase_token` - Apple Pay Credit Product Token Purchase
+      Original Transactions. This fee is billed by Visa on behalf of Apple Inc. for
+      Apple Pay transactions.
+    - `visa_debit_purchase_token` - Apple Pay Debit Product Token Purchase Original
+      Transactions. This fee is billed by Visa on behalf of Apple Inc. for Apple Pay
+      transactions.
+    - `visa_clearing_transmission` - A per transaction fee assessed for Base II
+      financial draft - Issuer.
+    - `visa_direct_authorization` - Issuer charge for Non-Financial OCT/AFT
+      Authorization 0100 and Declined Financial OCT/AFT 0200 transactions.
+    - `visa_direct_transaction_domestic` - Data processing charge for Visa Direct
+      OCTs for all business application identifiers (BAIs) other than money
+      transfer-bank initiated (BI). BASE II transactions.
+    - `visa_service_commercial_credit` - Issuer card service fee for Commercial
+      Credit cards.
+    - `visa_advertising_service_commercial_credit` - Issuer Advertising Service Fee
+      for Commercial Credit cards.
+    - `visa_community_growth_acceleration_program` - Issuer Community Growth
+      Acceleration Program Fee.
+    - `visa_processing_guarantee_commercial_credit` - Issuer Processing Guarantee
+      for Commercial Credit cards.
+    - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
+      for processing transactions on its network.
+    """
+
+    fixed_component: Optional[str] = None
+    """
+    The fixed component of the fee, if applicable, given in major units of the fee
+    amount.
+    """
+
+    variable_rate: Optional[str] = None
+    """
+    The variable rate component of the fee, if applicable, given as a decimal (e.g.,
+    0.015 for 1.5%).
+    """
+
+
 class ElementCardAuthorizationVerificationCardVerificationCode(BaseModel):
     """
     Fields related to verification of the Card Verification Code, a 3-digit code on the back of the card.
@@ -1326,6 +1487,9 @@ class ElementCardAuthorization(BaseModel):
     The identifier of the Real-Time Decision sent to approve or decline this
     transaction.
     """
+
+    scheme_fees: List[ElementCardAuthorizationSchemeFee]
+    """The scheme fees associated with this card authorization."""
 
     terminal_id: Optional[str] = None
     """
@@ -1827,6 +1991,158 @@ class ElementCardBalanceInquiryNetworkIdentifiers(BaseModel):
     """
 
 
+class ElementCardBalanceInquirySchemeFee(BaseModel):
+    amount: str
+    """The fee amount given as a string containing a decimal number."""
+
+    created_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the fee was
+    created.
+    """
+
+    currency: Literal["USD"]
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the fee
+    reimbursement.
+
+    - `USD` - US Dollar (USD)
+    """
+
+    fee_type: Literal[
+        "visa_international_service_assessment_single_currency",
+        "visa_international_service_assessment_cross_currency",
+        "visa_authorization_domestic_point_of_sale",
+        "visa_authorization_international_point_of_sale",
+        "visa_authorization_canada_point_of_sale",
+        "visa_authorization_reversal_point_of_sale",
+        "visa_authorization_reversal_international_point_of_sale",
+        "visa_authorization_address_verification_service",
+        "visa_advanced_authorization",
+        "visa_message_transmission",
+        "visa_account_verification_domestic",
+        "visa_account_verification_international",
+        "visa_account_verification_canada",
+        "visa_corporate_acceptance_fee",
+        "visa_consumer_debit_acceptance_fee",
+        "visa_business_debit_acceptance_fee",
+        "visa_purchasing_acceptance_fee",
+        "visa_purchase_domestic",
+        "visa_purchase_international",
+        "visa_credit_purchase_token",
+        "visa_debit_purchase_token",
+        "visa_clearing_transmission",
+        "visa_direct_authorization",
+        "visa_direct_transaction_domestic",
+        "visa_service_commercial_credit",
+        "visa_advertising_service_commercial_credit",
+        "visa_community_growth_acceleration_program",
+        "visa_processing_guarantee_commercial_credit",
+        "pulse_switch_fee",
+    ]
+    """The type of fee being assessed.
+
+    - `visa_international_service_assessment_single_currency` - International
+      Service Assessment (ISA) single-currency is a fee assessed by the card network
+      for cross-border transactions presented and settled in the same currency.
+    - `visa_international_service_assessment_cross_currency` - International Service
+      Assessment (ISA) cross-currency is a fee assessed by the card network for
+      cross-border transactions presented and settled in different currencies.
+    - `visa_authorization_domestic_point_of_sale` - Activity and charges for Visa
+      Settlement System processing for POS (Point-Of-Sale) authorization
+      transactions. Authorization is the process of approving or declining the
+      transaction amount specified. The fee is assessed to the Issuer.
+    - `visa_authorization_international_point_of_sale` - Activity and charges for
+      Visa Settlement System processing for POS (Point-Of-Sale) International
+      authorization transactions. Authorization is the process of approving or
+      declining the transaction amount specified. The fee is assessed to the Issuer.
+    - `visa_authorization_canada_point_of_sale` - Activity and charges for Visa
+      Settlement System processing for Canada Region POS (Point-of-Sale)
+      authorization transactions. Authorization is the process of approving or
+      declining the transaction amount specified.
+    - `visa_authorization_reversal_point_of_sale` - Activity only for Visa
+      Settlement System authorization processing of POS (Point-Of-Sale) reversal
+      transactions. Authorization reversal represents a VSS message that undoes the
+      complete or partial actions of a previous authorization request.
+    - `visa_authorization_reversal_international_point_of_sale` - Activity only for
+      Visa Settlement System authorization processing of POS (Point-Of-Sale)
+      International reversal transactions. Authorization reversal represents a VSS
+      message that undoes the complete or partial actions of a previous
+      authorization request.
+    - `visa_authorization_address_verification_service` - A per Address Verification
+      Service (AVS) result fee. Applies to all usable AVS result codes.
+    - `visa_advanced_authorization` - Advanced Authorization is a fraud detection
+      tool that monitors and risk evaluates 100 percent of US VisaNet authorizations
+      in real-time. Activity related to Purchase (includes Signature Authenticated
+      Visa and PIN Authenticated Visa Debit (PAVD) transactions).
+    - `visa_message_transmission` - Issuer Transactions Visa represents a charge
+      based on total actual monthly processing (Visa transactions only) through a
+      VisaNet Access Point (VAP). Charges are assessed to the processor for each
+      VisaNet Access Point.
+    - `visa_account_verification_domestic` - Activity, per inquiry, related to the
+      domestic Issuer for Account Number Verification.
+    - `visa_account_verification_international` - Activity, per inquiry, related to
+      the international Issuer for Account Number Verification.
+    - `visa_account_verification_canada` - Activity, per inquiry, related to the
+      US-Canada Issuer for Account Number Verification.
+    - `visa_corporate_acceptance_fee` - The Corporate Acceptance Fee is charged to
+      issuers and is based on the monthly sales volume on Commercial and Government
+      Debit, Prepaid, Credit, Charge, or Deferred Debit card transactions.
+    - `visa_consumer_debit_acceptance_fee` - The Consumer Debit Acceptance Fee is
+      charged to issuers and is based on the monthly sales volume of Consumer Debit
+      or Prepaid card transactions. The cashback portion of a Debit and Prepaid card
+      transaction is excluded from the sales volume calculation.
+    - `visa_business_debit_acceptance_fee` - The Business Acceptance Fee is charged
+      to issuers and is based on the monthly sales volume on Business Debit,
+      Prepaid, Credit, Charge, or Deferred Debit card transactions. The cashback
+      portion is included in the sales volume calculation with the exception of a
+      Debit and Prepaid card transactions.
+    - `visa_purchasing_acceptance_fee` - The Purchasing Card Acceptance Fee is
+      charged to issuers and is based on the monthly sales volume on Commercial and
+      Government Debit, Prepaid, Credit, Charge, or Deferred Debit card
+      transactions.
+    - `visa_purchase_domestic` - Activity and fees for the processing of a sales
+      draft original for a purchase transaction.
+    - `visa_purchase_international` - Activity and fees for the processing of an
+      international sales draft original for a purchase transaction.
+    - `visa_credit_purchase_token` - Apple Pay Credit Product Token Purchase
+      Original Transactions. This fee is billed by Visa on behalf of Apple Inc. for
+      Apple Pay transactions.
+    - `visa_debit_purchase_token` - Apple Pay Debit Product Token Purchase Original
+      Transactions. This fee is billed by Visa on behalf of Apple Inc. for Apple Pay
+      transactions.
+    - `visa_clearing_transmission` - A per transaction fee assessed for Base II
+      financial draft - Issuer.
+    - `visa_direct_authorization` - Issuer charge for Non-Financial OCT/AFT
+      Authorization 0100 and Declined Financial OCT/AFT 0200 transactions.
+    - `visa_direct_transaction_domestic` - Data processing charge for Visa Direct
+      OCTs for all business application identifiers (BAIs) other than money
+      transfer-bank initiated (BI). BASE II transactions.
+    - `visa_service_commercial_credit` - Issuer card service fee for Commercial
+      Credit cards.
+    - `visa_advertising_service_commercial_credit` - Issuer Advertising Service Fee
+      for Commercial Credit cards.
+    - `visa_community_growth_acceleration_program` - Issuer Community Growth
+      Acceleration Program Fee.
+    - `visa_processing_guarantee_commercial_credit` - Issuer Processing Guarantee
+      for Commercial Credit cards.
+    - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
+      for processing transactions on its network.
+    """
+
+    fixed_component: Optional[str] = None
+    """
+    The fixed component of the fee, if applicable, given in major units of the fee
+    amount.
+    """
+
+    variable_rate: Optional[str] = None
+    """
+    The variable rate component of the fee, if applicable, given as a decimal (e.g.,
+    0.015 for 1.5%).
+    """
+
+
 class ElementCardBalanceInquiryVerificationCardVerificationCode(BaseModel):
     """
     Fields related to verification of the Card Verification Code, a 3-digit code on the back of the card.
@@ -2012,6 +2328,9 @@ class ElementCardBalanceInquiry(BaseModel):
     The identifier of the Real-Time Decision sent to approve or decline this
     transaction.
     """
+
+    scheme_fees: List[ElementCardBalanceInquirySchemeFee]
+    """The scheme fees associated with this card balance inquiry."""
 
     terminal_id: Optional[str] = None
     """
@@ -2461,6 +2780,158 @@ class ElementCardDeclineNetworkIdentifiers(BaseModel):
     """
 
 
+class ElementCardDeclineSchemeFee(BaseModel):
+    amount: str
+    """The fee amount given as a string containing a decimal number."""
+
+    created_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the fee was
+    created.
+    """
+
+    currency: Literal["USD"]
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the fee
+    reimbursement.
+
+    - `USD` - US Dollar (USD)
+    """
+
+    fee_type: Literal[
+        "visa_international_service_assessment_single_currency",
+        "visa_international_service_assessment_cross_currency",
+        "visa_authorization_domestic_point_of_sale",
+        "visa_authorization_international_point_of_sale",
+        "visa_authorization_canada_point_of_sale",
+        "visa_authorization_reversal_point_of_sale",
+        "visa_authorization_reversal_international_point_of_sale",
+        "visa_authorization_address_verification_service",
+        "visa_advanced_authorization",
+        "visa_message_transmission",
+        "visa_account_verification_domestic",
+        "visa_account_verification_international",
+        "visa_account_verification_canada",
+        "visa_corporate_acceptance_fee",
+        "visa_consumer_debit_acceptance_fee",
+        "visa_business_debit_acceptance_fee",
+        "visa_purchasing_acceptance_fee",
+        "visa_purchase_domestic",
+        "visa_purchase_international",
+        "visa_credit_purchase_token",
+        "visa_debit_purchase_token",
+        "visa_clearing_transmission",
+        "visa_direct_authorization",
+        "visa_direct_transaction_domestic",
+        "visa_service_commercial_credit",
+        "visa_advertising_service_commercial_credit",
+        "visa_community_growth_acceleration_program",
+        "visa_processing_guarantee_commercial_credit",
+        "pulse_switch_fee",
+    ]
+    """The type of fee being assessed.
+
+    - `visa_international_service_assessment_single_currency` - International
+      Service Assessment (ISA) single-currency is a fee assessed by the card network
+      for cross-border transactions presented and settled in the same currency.
+    - `visa_international_service_assessment_cross_currency` - International Service
+      Assessment (ISA) cross-currency is a fee assessed by the card network for
+      cross-border transactions presented and settled in different currencies.
+    - `visa_authorization_domestic_point_of_sale` - Activity and charges for Visa
+      Settlement System processing for POS (Point-Of-Sale) authorization
+      transactions. Authorization is the process of approving or declining the
+      transaction amount specified. The fee is assessed to the Issuer.
+    - `visa_authorization_international_point_of_sale` - Activity and charges for
+      Visa Settlement System processing for POS (Point-Of-Sale) International
+      authorization transactions. Authorization is the process of approving or
+      declining the transaction amount specified. The fee is assessed to the Issuer.
+    - `visa_authorization_canada_point_of_sale` - Activity and charges for Visa
+      Settlement System processing for Canada Region POS (Point-of-Sale)
+      authorization transactions. Authorization is the process of approving or
+      declining the transaction amount specified.
+    - `visa_authorization_reversal_point_of_sale` - Activity only for Visa
+      Settlement System authorization processing of POS (Point-Of-Sale) reversal
+      transactions. Authorization reversal represents a VSS message that undoes the
+      complete or partial actions of a previous authorization request.
+    - `visa_authorization_reversal_international_point_of_sale` - Activity only for
+      Visa Settlement System authorization processing of POS (Point-Of-Sale)
+      International reversal transactions. Authorization reversal represents a VSS
+      message that undoes the complete or partial actions of a previous
+      authorization request.
+    - `visa_authorization_address_verification_service` - A per Address Verification
+      Service (AVS) result fee. Applies to all usable AVS result codes.
+    - `visa_advanced_authorization` - Advanced Authorization is a fraud detection
+      tool that monitors and risk evaluates 100 percent of US VisaNet authorizations
+      in real-time. Activity related to Purchase (includes Signature Authenticated
+      Visa and PIN Authenticated Visa Debit (PAVD) transactions).
+    - `visa_message_transmission` - Issuer Transactions Visa represents a charge
+      based on total actual monthly processing (Visa transactions only) through a
+      VisaNet Access Point (VAP). Charges are assessed to the processor for each
+      VisaNet Access Point.
+    - `visa_account_verification_domestic` - Activity, per inquiry, related to the
+      domestic Issuer for Account Number Verification.
+    - `visa_account_verification_international` - Activity, per inquiry, related to
+      the international Issuer for Account Number Verification.
+    - `visa_account_verification_canada` - Activity, per inquiry, related to the
+      US-Canada Issuer for Account Number Verification.
+    - `visa_corporate_acceptance_fee` - The Corporate Acceptance Fee is charged to
+      issuers and is based on the monthly sales volume on Commercial and Government
+      Debit, Prepaid, Credit, Charge, or Deferred Debit card transactions.
+    - `visa_consumer_debit_acceptance_fee` - The Consumer Debit Acceptance Fee is
+      charged to issuers and is based on the monthly sales volume of Consumer Debit
+      or Prepaid card transactions. The cashback portion of a Debit and Prepaid card
+      transaction is excluded from the sales volume calculation.
+    - `visa_business_debit_acceptance_fee` - The Business Acceptance Fee is charged
+      to issuers and is based on the monthly sales volume on Business Debit,
+      Prepaid, Credit, Charge, or Deferred Debit card transactions. The cashback
+      portion is included in the sales volume calculation with the exception of a
+      Debit and Prepaid card transactions.
+    - `visa_purchasing_acceptance_fee` - The Purchasing Card Acceptance Fee is
+      charged to issuers and is based on the monthly sales volume on Commercial and
+      Government Debit, Prepaid, Credit, Charge, or Deferred Debit card
+      transactions.
+    - `visa_purchase_domestic` - Activity and fees for the processing of a sales
+      draft original for a purchase transaction.
+    - `visa_purchase_international` - Activity and fees for the processing of an
+      international sales draft original for a purchase transaction.
+    - `visa_credit_purchase_token` - Apple Pay Credit Product Token Purchase
+      Original Transactions. This fee is billed by Visa on behalf of Apple Inc. for
+      Apple Pay transactions.
+    - `visa_debit_purchase_token` - Apple Pay Debit Product Token Purchase Original
+      Transactions. This fee is billed by Visa on behalf of Apple Inc. for Apple Pay
+      transactions.
+    - `visa_clearing_transmission` - A per transaction fee assessed for Base II
+      financial draft - Issuer.
+    - `visa_direct_authorization` - Issuer charge for Non-Financial OCT/AFT
+      Authorization 0100 and Declined Financial OCT/AFT 0200 transactions.
+    - `visa_direct_transaction_domestic` - Data processing charge for Visa Direct
+      OCTs for all business application identifiers (BAIs) other than money
+      transfer-bank initiated (BI). BASE II transactions.
+    - `visa_service_commercial_credit` - Issuer card service fee for Commercial
+      Credit cards.
+    - `visa_advertising_service_commercial_credit` - Issuer Advertising Service Fee
+      for Commercial Credit cards.
+    - `visa_community_growth_acceleration_program` - Issuer Community Growth
+      Acceleration Program Fee.
+    - `visa_processing_guarantee_commercial_credit` - Issuer Processing Guarantee
+      for Commercial Credit cards.
+    - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
+      for processing transactions on its network.
+    """
+
+    fixed_component: Optional[str] = None
+    """
+    The fixed component of the fee, if applicable, given in major units of the fee
+    amount.
+    """
+
+    variable_rate: Optional[str] = None
+    """
+    The variable rate component of the fee, if applicable, given as a decimal (e.g.,
+    0.015 for 1.5%).
+    """
+
+
 class ElementCardDeclineVerificationCardVerificationCode(BaseModel):
     """
     Fields related to verification of the Card Verification Code, a 3-digit code on the back of the card.
@@ -2811,6 +3282,9 @@ class ElementCardDecline(BaseModel):
     - `suspected_fraud` - The transaction was suspected to be fraudulent. Please
       reach out to support@increase.com for more information.
     """
+
+    scheme_fees: List[ElementCardDeclineSchemeFee]
+    """The scheme fees associated with this card decline."""
 
     terminal_id: Optional[str] = None
     """
@@ -3254,6 +3728,158 @@ class ElementCardFinancialNetworkIdentifiers(BaseModel):
     """
 
 
+class ElementCardFinancialSchemeFee(BaseModel):
+    amount: str
+    """The fee amount given as a string containing a decimal number."""
+
+    created_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the fee was
+    created.
+    """
+
+    currency: Literal["USD"]
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the fee
+    reimbursement.
+
+    - `USD` - US Dollar (USD)
+    """
+
+    fee_type: Literal[
+        "visa_international_service_assessment_single_currency",
+        "visa_international_service_assessment_cross_currency",
+        "visa_authorization_domestic_point_of_sale",
+        "visa_authorization_international_point_of_sale",
+        "visa_authorization_canada_point_of_sale",
+        "visa_authorization_reversal_point_of_sale",
+        "visa_authorization_reversal_international_point_of_sale",
+        "visa_authorization_address_verification_service",
+        "visa_advanced_authorization",
+        "visa_message_transmission",
+        "visa_account_verification_domestic",
+        "visa_account_verification_international",
+        "visa_account_verification_canada",
+        "visa_corporate_acceptance_fee",
+        "visa_consumer_debit_acceptance_fee",
+        "visa_business_debit_acceptance_fee",
+        "visa_purchasing_acceptance_fee",
+        "visa_purchase_domestic",
+        "visa_purchase_international",
+        "visa_credit_purchase_token",
+        "visa_debit_purchase_token",
+        "visa_clearing_transmission",
+        "visa_direct_authorization",
+        "visa_direct_transaction_domestic",
+        "visa_service_commercial_credit",
+        "visa_advertising_service_commercial_credit",
+        "visa_community_growth_acceleration_program",
+        "visa_processing_guarantee_commercial_credit",
+        "pulse_switch_fee",
+    ]
+    """The type of fee being assessed.
+
+    - `visa_international_service_assessment_single_currency` - International
+      Service Assessment (ISA) single-currency is a fee assessed by the card network
+      for cross-border transactions presented and settled in the same currency.
+    - `visa_international_service_assessment_cross_currency` - International Service
+      Assessment (ISA) cross-currency is a fee assessed by the card network for
+      cross-border transactions presented and settled in different currencies.
+    - `visa_authorization_domestic_point_of_sale` - Activity and charges for Visa
+      Settlement System processing for POS (Point-Of-Sale) authorization
+      transactions. Authorization is the process of approving or declining the
+      transaction amount specified. The fee is assessed to the Issuer.
+    - `visa_authorization_international_point_of_sale` - Activity and charges for
+      Visa Settlement System processing for POS (Point-Of-Sale) International
+      authorization transactions. Authorization is the process of approving or
+      declining the transaction amount specified. The fee is assessed to the Issuer.
+    - `visa_authorization_canada_point_of_sale` - Activity and charges for Visa
+      Settlement System processing for Canada Region POS (Point-of-Sale)
+      authorization transactions. Authorization is the process of approving or
+      declining the transaction amount specified.
+    - `visa_authorization_reversal_point_of_sale` - Activity only for Visa
+      Settlement System authorization processing of POS (Point-Of-Sale) reversal
+      transactions. Authorization reversal represents a VSS message that undoes the
+      complete or partial actions of a previous authorization request.
+    - `visa_authorization_reversal_international_point_of_sale` - Activity only for
+      Visa Settlement System authorization processing of POS (Point-Of-Sale)
+      International reversal transactions. Authorization reversal represents a VSS
+      message that undoes the complete or partial actions of a previous
+      authorization request.
+    - `visa_authorization_address_verification_service` - A per Address Verification
+      Service (AVS) result fee. Applies to all usable AVS result codes.
+    - `visa_advanced_authorization` - Advanced Authorization is a fraud detection
+      tool that monitors and risk evaluates 100 percent of US VisaNet authorizations
+      in real-time. Activity related to Purchase (includes Signature Authenticated
+      Visa and PIN Authenticated Visa Debit (PAVD) transactions).
+    - `visa_message_transmission` - Issuer Transactions Visa represents a charge
+      based on total actual monthly processing (Visa transactions only) through a
+      VisaNet Access Point (VAP). Charges are assessed to the processor for each
+      VisaNet Access Point.
+    - `visa_account_verification_domestic` - Activity, per inquiry, related to the
+      domestic Issuer for Account Number Verification.
+    - `visa_account_verification_international` - Activity, per inquiry, related to
+      the international Issuer for Account Number Verification.
+    - `visa_account_verification_canada` - Activity, per inquiry, related to the
+      US-Canada Issuer for Account Number Verification.
+    - `visa_corporate_acceptance_fee` - The Corporate Acceptance Fee is charged to
+      issuers and is based on the monthly sales volume on Commercial and Government
+      Debit, Prepaid, Credit, Charge, or Deferred Debit card transactions.
+    - `visa_consumer_debit_acceptance_fee` - The Consumer Debit Acceptance Fee is
+      charged to issuers and is based on the monthly sales volume of Consumer Debit
+      or Prepaid card transactions. The cashback portion of a Debit and Prepaid card
+      transaction is excluded from the sales volume calculation.
+    - `visa_business_debit_acceptance_fee` - The Business Acceptance Fee is charged
+      to issuers and is based on the monthly sales volume on Business Debit,
+      Prepaid, Credit, Charge, or Deferred Debit card transactions. The cashback
+      portion is included in the sales volume calculation with the exception of a
+      Debit and Prepaid card transactions.
+    - `visa_purchasing_acceptance_fee` - The Purchasing Card Acceptance Fee is
+      charged to issuers and is based on the monthly sales volume on Commercial and
+      Government Debit, Prepaid, Credit, Charge, or Deferred Debit card
+      transactions.
+    - `visa_purchase_domestic` - Activity and fees for the processing of a sales
+      draft original for a purchase transaction.
+    - `visa_purchase_international` - Activity and fees for the processing of an
+      international sales draft original for a purchase transaction.
+    - `visa_credit_purchase_token` - Apple Pay Credit Product Token Purchase
+      Original Transactions. This fee is billed by Visa on behalf of Apple Inc. for
+      Apple Pay transactions.
+    - `visa_debit_purchase_token` - Apple Pay Debit Product Token Purchase Original
+      Transactions. This fee is billed by Visa on behalf of Apple Inc. for Apple Pay
+      transactions.
+    - `visa_clearing_transmission` - A per transaction fee assessed for Base II
+      financial draft - Issuer.
+    - `visa_direct_authorization` - Issuer charge for Non-Financial OCT/AFT
+      Authorization 0100 and Declined Financial OCT/AFT 0200 transactions.
+    - `visa_direct_transaction_domestic` - Data processing charge for Visa Direct
+      OCTs for all business application identifiers (BAIs) other than money
+      transfer-bank initiated (BI). BASE II transactions.
+    - `visa_service_commercial_credit` - Issuer card service fee for Commercial
+      Credit cards.
+    - `visa_advertising_service_commercial_credit` - Issuer Advertising Service Fee
+      for Commercial Credit cards.
+    - `visa_community_growth_acceleration_program` - Issuer Community Growth
+      Acceleration Program Fee.
+    - `visa_processing_guarantee_commercial_credit` - Issuer Processing Guarantee
+      for Commercial Credit cards.
+    - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
+      for processing transactions on its network.
+    """
+
+    fixed_component: Optional[str] = None
+    """
+    The fixed component of the fee, if applicable, given in major units of the fee
+    amount.
+    """
+
+    variable_rate: Optional[str] = None
+    """
+    The variable rate component of the fee, if applicable, given as a decimal (e.g.,
+    0.015 for 1.5%).
+    """
+
+
 class ElementCardFinancialVerificationCardVerificationCode(BaseModel):
     """
     Fields related to verification of the Card Verification Code, a 3-digit code on the back of the card.
@@ -3508,6 +4134,9 @@ class ElementCardFinancial(BaseModel):
     transaction.
     """
 
+    scheme_fees: List[ElementCardFinancialSchemeFee]
+    """The scheme fees associated with this card financial."""
+
     terminal_id: Optional[str] = None
     """
     The terminal identifier (commonly abbreviated as TID) of the terminal the card
@@ -3568,6 +4197,158 @@ class ElementCardFuelConfirmationNetworkIdentifiers(BaseModel):
     """
 
 
+class ElementCardFuelConfirmationSchemeFee(BaseModel):
+    amount: str
+    """The fee amount given as a string containing a decimal number."""
+
+    created_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the fee was
+    created.
+    """
+
+    currency: Literal["USD"]
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the fee
+    reimbursement.
+
+    - `USD` - US Dollar (USD)
+    """
+
+    fee_type: Literal[
+        "visa_international_service_assessment_single_currency",
+        "visa_international_service_assessment_cross_currency",
+        "visa_authorization_domestic_point_of_sale",
+        "visa_authorization_international_point_of_sale",
+        "visa_authorization_canada_point_of_sale",
+        "visa_authorization_reversal_point_of_sale",
+        "visa_authorization_reversal_international_point_of_sale",
+        "visa_authorization_address_verification_service",
+        "visa_advanced_authorization",
+        "visa_message_transmission",
+        "visa_account_verification_domestic",
+        "visa_account_verification_international",
+        "visa_account_verification_canada",
+        "visa_corporate_acceptance_fee",
+        "visa_consumer_debit_acceptance_fee",
+        "visa_business_debit_acceptance_fee",
+        "visa_purchasing_acceptance_fee",
+        "visa_purchase_domestic",
+        "visa_purchase_international",
+        "visa_credit_purchase_token",
+        "visa_debit_purchase_token",
+        "visa_clearing_transmission",
+        "visa_direct_authorization",
+        "visa_direct_transaction_domestic",
+        "visa_service_commercial_credit",
+        "visa_advertising_service_commercial_credit",
+        "visa_community_growth_acceleration_program",
+        "visa_processing_guarantee_commercial_credit",
+        "pulse_switch_fee",
+    ]
+    """The type of fee being assessed.
+
+    - `visa_international_service_assessment_single_currency` - International
+      Service Assessment (ISA) single-currency is a fee assessed by the card network
+      for cross-border transactions presented and settled in the same currency.
+    - `visa_international_service_assessment_cross_currency` - International Service
+      Assessment (ISA) cross-currency is a fee assessed by the card network for
+      cross-border transactions presented and settled in different currencies.
+    - `visa_authorization_domestic_point_of_sale` - Activity and charges for Visa
+      Settlement System processing for POS (Point-Of-Sale) authorization
+      transactions. Authorization is the process of approving or declining the
+      transaction amount specified. The fee is assessed to the Issuer.
+    - `visa_authorization_international_point_of_sale` - Activity and charges for
+      Visa Settlement System processing for POS (Point-Of-Sale) International
+      authorization transactions. Authorization is the process of approving or
+      declining the transaction amount specified. The fee is assessed to the Issuer.
+    - `visa_authorization_canada_point_of_sale` - Activity and charges for Visa
+      Settlement System processing for Canada Region POS (Point-of-Sale)
+      authorization transactions. Authorization is the process of approving or
+      declining the transaction amount specified.
+    - `visa_authorization_reversal_point_of_sale` - Activity only for Visa
+      Settlement System authorization processing of POS (Point-Of-Sale) reversal
+      transactions. Authorization reversal represents a VSS message that undoes the
+      complete or partial actions of a previous authorization request.
+    - `visa_authorization_reversal_international_point_of_sale` - Activity only for
+      Visa Settlement System authorization processing of POS (Point-Of-Sale)
+      International reversal transactions. Authorization reversal represents a VSS
+      message that undoes the complete or partial actions of a previous
+      authorization request.
+    - `visa_authorization_address_verification_service` - A per Address Verification
+      Service (AVS) result fee. Applies to all usable AVS result codes.
+    - `visa_advanced_authorization` - Advanced Authorization is a fraud detection
+      tool that monitors and risk evaluates 100 percent of US VisaNet authorizations
+      in real-time. Activity related to Purchase (includes Signature Authenticated
+      Visa and PIN Authenticated Visa Debit (PAVD) transactions).
+    - `visa_message_transmission` - Issuer Transactions Visa represents a charge
+      based on total actual monthly processing (Visa transactions only) through a
+      VisaNet Access Point (VAP). Charges are assessed to the processor for each
+      VisaNet Access Point.
+    - `visa_account_verification_domestic` - Activity, per inquiry, related to the
+      domestic Issuer for Account Number Verification.
+    - `visa_account_verification_international` - Activity, per inquiry, related to
+      the international Issuer for Account Number Verification.
+    - `visa_account_verification_canada` - Activity, per inquiry, related to the
+      US-Canada Issuer for Account Number Verification.
+    - `visa_corporate_acceptance_fee` - The Corporate Acceptance Fee is charged to
+      issuers and is based on the monthly sales volume on Commercial and Government
+      Debit, Prepaid, Credit, Charge, or Deferred Debit card transactions.
+    - `visa_consumer_debit_acceptance_fee` - The Consumer Debit Acceptance Fee is
+      charged to issuers and is based on the monthly sales volume of Consumer Debit
+      or Prepaid card transactions. The cashback portion of a Debit and Prepaid card
+      transaction is excluded from the sales volume calculation.
+    - `visa_business_debit_acceptance_fee` - The Business Acceptance Fee is charged
+      to issuers and is based on the monthly sales volume on Business Debit,
+      Prepaid, Credit, Charge, or Deferred Debit card transactions. The cashback
+      portion is included in the sales volume calculation with the exception of a
+      Debit and Prepaid card transactions.
+    - `visa_purchasing_acceptance_fee` - The Purchasing Card Acceptance Fee is
+      charged to issuers and is based on the monthly sales volume on Commercial and
+      Government Debit, Prepaid, Credit, Charge, or Deferred Debit card
+      transactions.
+    - `visa_purchase_domestic` - Activity and fees for the processing of a sales
+      draft original for a purchase transaction.
+    - `visa_purchase_international` - Activity and fees for the processing of an
+      international sales draft original for a purchase transaction.
+    - `visa_credit_purchase_token` - Apple Pay Credit Product Token Purchase
+      Original Transactions. This fee is billed by Visa on behalf of Apple Inc. for
+      Apple Pay transactions.
+    - `visa_debit_purchase_token` - Apple Pay Debit Product Token Purchase Original
+      Transactions. This fee is billed by Visa on behalf of Apple Inc. for Apple Pay
+      transactions.
+    - `visa_clearing_transmission` - A per transaction fee assessed for Base II
+      financial draft - Issuer.
+    - `visa_direct_authorization` - Issuer charge for Non-Financial OCT/AFT
+      Authorization 0100 and Declined Financial OCT/AFT 0200 transactions.
+    - `visa_direct_transaction_domestic` - Data processing charge for Visa Direct
+      OCTs for all business application identifiers (BAIs) other than money
+      transfer-bank initiated (BI). BASE II transactions.
+    - `visa_service_commercial_credit` - Issuer card service fee for Commercial
+      Credit cards.
+    - `visa_advertising_service_commercial_credit` - Issuer Advertising Service Fee
+      for Commercial Credit cards.
+    - `visa_community_growth_acceleration_program` - Issuer Community Growth
+      Acceleration Program Fee.
+    - `visa_processing_guarantee_commercial_credit` - Issuer Processing Guarantee
+      for Commercial Credit cards.
+    - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
+      for processing transactions on its network.
+    """
+
+    fixed_component: Optional[str] = None
+    """
+    The fixed component of the fee, if applicable, given in major units of the fee
+    amount.
+    """
+
+    variable_rate: Optional[str] = None
+    """
+    The variable rate component of the fee, if applicable, given as a decimal (e.g.,
+    0.015 for 1.5%).
+    """
+
+
 class ElementCardFuelConfirmation(BaseModel):
     """A Card Fuel Confirmation object.
 
@@ -3603,6 +4384,9 @@ class ElementCardFuelConfirmation(BaseModel):
     The identifier of the Pending Transaction associated with this Card Fuel
     Confirmation.
     """
+
+    scheme_fees: List[ElementCardFuelConfirmationSchemeFee]
+    """The scheme fees associated with this card fuel confirmation."""
 
     type: Literal["card_fuel_confirmation"]
     """A constant representing the object's type.
@@ -3868,6 +4652,158 @@ class ElementCardIncrementNetworkIdentifiers(BaseModel):
     """
 
 
+class ElementCardIncrementSchemeFee(BaseModel):
+    amount: str
+    """The fee amount given as a string containing a decimal number."""
+
+    created_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the fee was
+    created.
+    """
+
+    currency: Literal["USD"]
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the fee
+    reimbursement.
+
+    - `USD` - US Dollar (USD)
+    """
+
+    fee_type: Literal[
+        "visa_international_service_assessment_single_currency",
+        "visa_international_service_assessment_cross_currency",
+        "visa_authorization_domestic_point_of_sale",
+        "visa_authorization_international_point_of_sale",
+        "visa_authorization_canada_point_of_sale",
+        "visa_authorization_reversal_point_of_sale",
+        "visa_authorization_reversal_international_point_of_sale",
+        "visa_authorization_address_verification_service",
+        "visa_advanced_authorization",
+        "visa_message_transmission",
+        "visa_account_verification_domestic",
+        "visa_account_verification_international",
+        "visa_account_verification_canada",
+        "visa_corporate_acceptance_fee",
+        "visa_consumer_debit_acceptance_fee",
+        "visa_business_debit_acceptance_fee",
+        "visa_purchasing_acceptance_fee",
+        "visa_purchase_domestic",
+        "visa_purchase_international",
+        "visa_credit_purchase_token",
+        "visa_debit_purchase_token",
+        "visa_clearing_transmission",
+        "visa_direct_authorization",
+        "visa_direct_transaction_domestic",
+        "visa_service_commercial_credit",
+        "visa_advertising_service_commercial_credit",
+        "visa_community_growth_acceleration_program",
+        "visa_processing_guarantee_commercial_credit",
+        "pulse_switch_fee",
+    ]
+    """The type of fee being assessed.
+
+    - `visa_international_service_assessment_single_currency` - International
+      Service Assessment (ISA) single-currency is a fee assessed by the card network
+      for cross-border transactions presented and settled in the same currency.
+    - `visa_international_service_assessment_cross_currency` - International Service
+      Assessment (ISA) cross-currency is a fee assessed by the card network for
+      cross-border transactions presented and settled in different currencies.
+    - `visa_authorization_domestic_point_of_sale` - Activity and charges for Visa
+      Settlement System processing for POS (Point-Of-Sale) authorization
+      transactions. Authorization is the process of approving or declining the
+      transaction amount specified. The fee is assessed to the Issuer.
+    - `visa_authorization_international_point_of_sale` - Activity and charges for
+      Visa Settlement System processing for POS (Point-Of-Sale) International
+      authorization transactions. Authorization is the process of approving or
+      declining the transaction amount specified. The fee is assessed to the Issuer.
+    - `visa_authorization_canada_point_of_sale` - Activity and charges for Visa
+      Settlement System processing for Canada Region POS (Point-of-Sale)
+      authorization transactions. Authorization is the process of approving or
+      declining the transaction amount specified.
+    - `visa_authorization_reversal_point_of_sale` - Activity only for Visa
+      Settlement System authorization processing of POS (Point-Of-Sale) reversal
+      transactions. Authorization reversal represents a VSS message that undoes the
+      complete or partial actions of a previous authorization request.
+    - `visa_authorization_reversal_international_point_of_sale` - Activity only for
+      Visa Settlement System authorization processing of POS (Point-Of-Sale)
+      International reversal transactions. Authorization reversal represents a VSS
+      message that undoes the complete or partial actions of a previous
+      authorization request.
+    - `visa_authorization_address_verification_service` - A per Address Verification
+      Service (AVS) result fee. Applies to all usable AVS result codes.
+    - `visa_advanced_authorization` - Advanced Authorization is a fraud detection
+      tool that monitors and risk evaluates 100 percent of US VisaNet authorizations
+      in real-time. Activity related to Purchase (includes Signature Authenticated
+      Visa and PIN Authenticated Visa Debit (PAVD) transactions).
+    - `visa_message_transmission` - Issuer Transactions Visa represents a charge
+      based on total actual monthly processing (Visa transactions only) through a
+      VisaNet Access Point (VAP). Charges are assessed to the processor for each
+      VisaNet Access Point.
+    - `visa_account_verification_domestic` - Activity, per inquiry, related to the
+      domestic Issuer for Account Number Verification.
+    - `visa_account_verification_international` - Activity, per inquiry, related to
+      the international Issuer for Account Number Verification.
+    - `visa_account_verification_canada` - Activity, per inquiry, related to the
+      US-Canada Issuer for Account Number Verification.
+    - `visa_corporate_acceptance_fee` - The Corporate Acceptance Fee is charged to
+      issuers and is based on the monthly sales volume on Commercial and Government
+      Debit, Prepaid, Credit, Charge, or Deferred Debit card transactions.
+    - `visa_consumer_debit_acceptance_fee` - The Consumer Debit Acceptance Fee is
+      charged to issuers and is based on the monthly sales volume of Consumer Debit
+      or Prepaid card transactions. The cashback portion of a Debit and Prepaid card
+      transaction is excluded from the sales volume calculation.
+    - `visa_business_debit_acceptance_fee` - The Business Acceptance Fee is charged
+      to issuers and is based on the monthly sales volume on Business Debit,
+      Prepaid, Credit, Charge, or Deferred Debit card transactions. The cashback
+      portion is included in the sales volume calculation with the exception of a
+      Debit and Prepaid card transactions.
+    - `visa_purchasing_acceptance_fee` - The Purchasing Card Acceptance Fee is
+      charged to issuers and is based on the monthly sales volume on Commercial and
+      Government Debit, Prepaid, Credit, Charge, or Deferred Debit card
+      transactions.
+    - `visa_purchase_domestic` - Activity and fees for the processing of a sales
+      draft original for a purchase transaction.
+    - `visa_purchase_international` - Activity and fees for the processing of an
+      international sales draft original for a purchase transaction.
+    - `visa_credit_purchase_token` - Apple Pay Credit Product Token Purchase
+      Original Transactions. This fee is billed by Visa on behalf of Apple Inc. for
+      Apple Pay transactions.
+    - `visa_debit_purchase_token` - Apple Pay Debit Product Token Purchase Original
+      Transactions. This fee is billed by Visa on behalf of Apple Inc. for Apple Pay
+      transactions.
+    - `visa_clearing_transmission` - A per transaction fee assessed for Base II
+      financial draft - Issuer.
+    - `visa_direct_authorization` - Issuer charge for Non-Financial OCT/AFT
+      Authorization 0100 and Declined Financial OCT/AFT 0200 transactions.
+    - `visa_direct_transaction_domestic` - Data processing charge for Visa Direct
+      OCTs for all business application identifiers (BAIs) other than money
+      transfer-bank initiated (BI). BASE II transactions.
+    - `visa_service_commercial_credit` - Issuer card service fee for Commercial
+      Credit cards.
+    - `visa_advertising_service_commercial_credit` - Issuer Advertising Service Fee
+      for Commercial Credit cards.
+    - `visa_community_growth_acceleration_program` - Issuer Community Growth
+      Acceleration Program Fee.
+    - `visa_processing_guarantee_commercial_credit` - Issuer Processing Guarantee
+      for Commercial Credit cards.
+    - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
+      for processing transactions on its network.
+    """
+
+    fixed_component: Optional[str] = None
+    """
+    The fixed component of the fee, if applicable, given in major units of the fee
+    amount.
+    """
+
+    variable_rate: Optional[str] = None
+    """
+    The variable rate component of the fee, if applicable, given as a decimal (e.g.,
+    0.015 for 1.5%).
+    """
+
+
 class ElementCardIncrement(BaseModel):
     """A Card Increment object.
 
@@ -3949,6 +4885,9 @@ class ElementCardIncrement(BaseModel):
     The identifier of the Real-Time Decision sent to approve or decline this
     incremental authorization.
     """
+
+    scheme_fees: List[ElementCardIncrementSchemeFee]
+    """The scheme fees associated with this card increment."""
 
     type: Literal["card_increment"]
     """A constant representing the object's type.
@@ -4462,6 +5401,158 @@ class ElementCardRefundPurchaseDetails(BaseModel):
     """Fields specific to travel."""
 
 
+class ElementCardRefundSchemeFee(BaseModel):
+    amount: str
+    """The fee amount given as a string containing a decimal number."""
+
+    created_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the fee was
+    created.
+    """
+
+    currency: Literal["USD"]
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the fee
+    reimbursement.
+
+    - `USD` - US Dollar (USD)
+    """
+
+    fee_type: Literal[
+        "visa_international_service_assessment_single_currency",
+        "visa_international_service_assessment_cross_currency",
+        "visa_authorization_domestic_point_of_sale",
+        "visa_authorization_international_point_of_sale",
+        "visa_authorization_canada_point_of_sale",
+        "visa_authorization_reversal_point_of_sale",
+        "visa_authorization_reversal_international_point_of_sale",
+        "visa_authorization_address_verification_service",
+        "visa_advanced_authorization",
+        "visa_message_transmission",
+        "visa_account_verification_domestic",
+        "visa_account_verification_international",
+        "visa_account_verification_canada",
+        "visa_corporate_acceptance_fee",
+        "visa_consumer_debit_acceptance_fee",
+        "visa_business_debit_acceptance_fee",
+        "visa_purchasing_acceptance_fee",
+        "visa_purchase_domestic",
+        "visa_purchase_international",
+        "visa_credit_purchase_token",
+        "visa_debit_purchase_token",
+        "visa_clearing_transmission",
+        "visa_direct_authorization",
+        "visa_direct_transaction_domestic",
+        "visa_service_commercial_credit",
+        "visa_advertising_service_commercial_credit",
+        "visa_community_growth_acceleration_program",
+        "visa_processing_guarantee_commercial_credit",
+        "pulse_switch_fee",
+    ]
+    """The type of fee being assessed.
+
+    - `visa_international_service_assessment_single_currency` - International
+      Service Assessment (ISA) single-currency is a fee assessed by the card network
+      for cross-border transactions presented and settled in the same currency.
+    - `visa_international_service_assessment_cross_currency` - International Service
+      Assessment (ISA) cross-currency is a fee assessed by the card network for
+      cross-border transactions presented and settled in different currencies.
+    - `visa_authorization_domestic_point_of_sale` - Activity and charges for Visa
+      Settlement System processing for POS (Point-Of-Sale) authorization
+      transactions. Authorization is the process of approving or declining the
+      transaction amount specified. The fee is assessed to the Issuer.
+    - `visa_authorization_international_point_of_sale` - Activity and charges for
+      Visa Settlement System processing for POS (Point-Of-Sale) International
+      authorization transactions. Authorization is the process of approving or
+      declining the transaction amount specified. The fee is assessed to the Issuer.
+    - `visa_authorization_canada_point_of_sale` - Activity and charges for Visa
+      Settlement System processing for Canada Region POS (Point-of-Sale)
+      authorization transactions. Authorization is the process of approving or
+      declining the transaction amount specified.
+    - `visa_authorization_reversal_point_of_sale` - Activity only for Visa
+      Settlement System authorization processing of POS (Point-Of-Sale) reversal
+      transactions. Authorization reversal represents a VSS message that undoes the
+      complete or partial actions of a previous authorization request.
+    - `visa_authorization_reversal_international_point_of_sale` - Activity only for
+      Visa Settlement System authorization processing of POS (Point-Of-Sale)
+      International reversal transactions. Authorization reversal represents a VSS
+      message that undoes the complete or partial actions of a previous
+      authorization request.
+    - `visa_authorization_address_verification_service` - A per Address Verification
+      Service (AVS) result fee. Applies to all usable AVS result codes.
+    - `visa_advanced_authorization` - Advanced Authorization is a fraud detection
+      tool that monitors and risk evaluates 100 percent of US VisaNet authorizations
+      in real-time. Activity related to Purchase (includes Signature Authenticated
+      Visa and PIN Authenticated Visa Debit (PAVD) transactions).
+    - `visa_message_transmission` - Issuer Transactions Visa represents a charge
+      based on total actual monthly processing (Visa transactions only) through a
+      VisaNet Access Point (VAP). Charges are assessed to the processor for each
+      VisaNet Access Point.
+    - `visa_account_verification_domestic` - Activity, per inquiry, related to the
+      domestic Issuer for Account Number Verification.
+    - `visa_account_verification_international` - Activity, per inquiry, related to
+      the international Issuer for Account Number Verification.
+    - `visa_account_verification_canada` - Activity, per inquiry, related to the
+      US-Canada Issuer for Account Number Verification.
+    - `visa_corporate_acceptance_fee` - The Corporate Acceptance Fee is charged to
+      issuers and is based on the monthly sales volume on Commercial and Government
+      Debit, Prepaid, Credit, Charge, or Deferred Debit card transactions.
+    - `visa_consumer_debit_acceptance_fee` - The Consumer Debit Acceptance Fee is
+      charged to issuers and is based on the monthly sales volume of Consumer Debit
+      or Prepaid card transactions. The cashback portion of a Debit and Prepaid card
+      transaction is excluded from the sales volume calculation.
+    - `visa_business_debit_acceptance_fee` - The Business Acceptance Fee is charged
+      to issuers and is based on the monthly sales volume on Business Debit,
+      Prepaid, Credit, Charge, or Deferred Debit card transactions. The cashback
+      portion is included in the sales volume calculation with the exception of a
+      Debit and Prepaid card transactions.
+    - `visa_purchasing_acceptance_fee` - The Purchasing Card Acceptance Fee is
+      charged to issuers and is based on the monthly sales volume on Commercial and
+      Government Debit, Prepaid, Credit, Charge, or Deferred Debit card
+      transactions.
+    - `visa_purchase_domestic` - Activity and fees for the processing of a sales
+      draft original for a purchase transaction.
+    - `visa_purchase_international` - Activity and fees for the processing of an
+      international sales draft original for a purchase transaction.
+    - `visa_credit_purchase_token` - Apple Pay Credit Product Token Purchase
+      Original Transactions. This fee is billed by Visa on behalf of Apple Inc. for
+      Apple Pay transactions.
+    - `visa_debit_purchase_token` - Apple Pay Debit Product Token Purchase Original
+      Transactions. This fee is billed by Visa on behalf of Apple Inc. for Apple Pay
+      transactions.
+    - `visa_clearing_transmission` - A per transaction fee assessed for Base II
+      financial draft - Issuer.
+    - `visa_direct_authorization` - Issuer charge for Non-Financial OCT/AFT
+      Authorization 0100 and Declined Financial OCT/AFT 0200 transactions.
+    - `visa_direct_transaction_domestic` - Data processing charge for Visa Direct
+      OCTs for all business application identifiers (BAIs) other than money
+      transfer-bank initiated (BI). BASE II transactions.
+    - `visa_service_commercial_credit` - Issuer card service fee for Commercial
+      Credit cards.
+    - `visa_advertising_service_commercial_credit` - Issuer Advertising Service Fee
+      for Commercial Credit cards.
+    - `visa_community_growth_acceleration_program` - Issuer Community Growth
+      Acceleration Program Fee.
+    - `visa_processing_guarantee_commercial_credit` - Issuer Processing Guarantee
+      for Commercial Credit cards.
+    - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
+      for processing transactions on its network.
+    """
+
+    fixed_component: Optional[str] = None
+    """
+    The fixed component of the fee, if applicable, given in major units of the fee
+    amount.
+    """
+
+    variable_rate: Optional[str] = None
+    """
+    The variable rate component of the fee, if applicable, given as a decimal (e.g.,
+    0.015 for 1.5%).
+    """
+
+
 class ElementCardRefund(BaseModel):
     """A Card Refund object.
 
@@ -4539,6 +5630,9 @@ class ElementCardRefund(BaseModel):
     fields.
     """
 
+    scheme_fees: List[ElementCardRefundSchemeFee]
+    """The scheme fees associated with this card refund."""
+
     transaction_id: str
     """The identifier of the Transaction associated with this Transaction."""
 
@@ -4587,6 +5681,158 @@ class ElementCardReversalNetworkIdentifiers(BaseModel):
     """
     A globally unique transaction identifier provided by the card network, used
     across multiple life-cycle requests.
+    """
+
+
+class ElementCardReversalSchemeFee(BaseModel):
+    amount: str
+    """The fee amount given as a string containing a decimal number."""
+
+    created_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the fee was
+    created.
+    """
+
+    currency: Literal["USD"]
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the fee
+    reimbursement.
+
+    - `USD` - US Dollar (USD)
+    """
+
+    fee_type: Literal[
+        "visa_international_service_assessment_single_currency",
+        "visa_international_service_assessment_cross_currency",
+        "visa_authorization_domestic_point_of_sale",
+        "visa_authorization_international_point_of_sale",
+        "visa_authorization_canada_point_of_sale",
+        "visa_authorization_reversal_point_of_sale",
+        "visa_authorization_reversal_international_point_of_sale",
+        "visa_authorization_address_verification_service",
+        "visa_advanced_authorization",
+        "visa_message_transmission",
+        "visa_account_verification_domestic",
+        "visa_account_verification_international",
+        "visa_account_verification_canada",
+        "visa_corporate_acceptance_fee",
+        "visa_consumer_debit_acceptance_fee",
+        "visa_business_debit_acceptance_fee",
+        "visa_purchasing_acceptance_fee",
+        "visa_purchase_domestic",
+        "visa_purchase_international",
+        "visa_credit_purchase_token",
+        "visa_debit_purchase_token",
+        "visa_clearing_transmission",
+        "visa_direct_authorization",
+        "visa_direct_transaction_domestic",
+        "visa_service_commercial_credit",
+        "visa_advertising_service_commercial_credit",
+        "visa_community_growth_acceleration_program",
+        "visa_processing_guarantee_commercial_credit",
+        "pulse_switch_fee",
+    ]
+    """The type of fee being assessed.
+
+    - `visa_international_service_assessment_single_currency` - International
+      Service Assessment (ISA) single-currency is a fee assessed by the card network
+      for cross-border transactions presented and settled in the same currency.
+    - `visa_international_service_assessment_cross_currency` - International Service
+      Assessment (ISA) cross-currency is a fee assessed by the card network for
+      cross-border transactions presented and settled in different currencies.
+    - `visa_authorization_domestic_point_of_sale` - Activity and charges for Visa
+      Settlement System processing for POS (Point-Of-Sale) authorization
+      transactions. Authorization is the process of approving or declining the
+      transaction amount specified. The fee is assessed to the Issuer.
+    - `visa_authorization_international_point_of_sale` - Activity and charges for
+      Visa Settlement System processing for POS (Point-Of-Sale) International
+      authorization transactions. Authorization is the process of approving or
+      declining the transaction amount specified. The fee is assessed to the Issuer.
+    - `visa_authorization_canada_point_of_sale` - Activity and charges for Visa
+      Settlement System processing for Canada Region POS (Point-of-Sale)
+      authorization transactions. Authorization is the process of approving or
+      declining the transaction amount specified.
+    - `visa_authorization_reversal_point_of_sale` - Activity only for Visa
+      Settlement System authorization processing of POS (Point-Of-Sale) reversal
+      transactions. Authorization reversal represents a VSS message that undoes the
+      complete or partial actions of a previous authorization request.
+    - `visa_authorization_reversal_international_point_of_sale` - Activity only for
+      Visa Settlement System authorization processing of POS (Point-Of-Sale)
+      International reversal transactions. Authorization reversal represents a VSS
+      message that undoes the complete or partial actions of a previous
+      authorization request.
+    - `visa_authorization_address_verification_service` - A per Address Verification
+      Service (AVS) result fee. Applies to all usable AVS result codes.
+    - `visa_advanced_authorization` - Advanced Authorization is a fraud detection
+      tool that monitors and risk evaluates 100 percent of US VisaNet authorizations
+      in real-time. Activity related to Purchase (includes Signature Authenticated
+      Visa and PIN Authenticated Visa Debit (PAVD) transactions).
+    - `visa_message_transmission` - Issuer Transactions Visa represents a charge
+      based on total actual monthly processing (Visa transactions only) through a
+      VisaNet Access Point (VAP). Charges are assessed to the processor for each
+      VisaNet Access Point.
+    - `visa_account_verification_domestic` - Activity, per inquiry, related to the
+      domestic Issuer for Account Number Verification.
+    - `visa_account_verification_international` - Activity, per inquiry, related to
+      the international Issuer for Account Number Verification.
+    - `visa_account_verification_canada` - Activity, per inquiry, related to the
+      US-Canada Issuer for Account Number Verification.
+    - `visa_corporate_acceptance_fee` - The Corporate Acceptance Fee is charged to
+      issuers and is based on the monthly sales volume on Commercial and Government
+      Debit, Prepaid, Credit, Charge, or Deferred Debit card transactions.
+    - `visa_consumer_debit_acceptance_fee` - The Consumer Debit Acceptance Fee is
+      charged to issuers and is based on the monthly sales volume of Consumer Debit
+      or Prepaid card transactions. The cashback portion of a Debit and Prepaid card
+      transaction is excluded from the sales volume calculation.
+    - `visa_business_debit_acceptance_fee` - The Business Acceptance Fee is charged
+      to issuers and is based on the monthly sales volume on Business Debit,
+      Prepaid, Credit, Charge, or Deferred Debit card transactions. The cashback
+      portion is included in the sales volume calculation with the exception of a
+      Debit and Prepaid card transactions.
+    - `visa_purchasing_acceptance_fee` - The Purchasing Card Acceptance Fee is
+      charged to issuers and is based on the monthly sales volume on Commercial and
+      Government Debit, Prepaid, Credit, Charge, or Deferred Debit card
+      transactions.
+    - `visa_purchase_domestic` - Activity and fees for the processing of a sales
+      draft original for a purchase transaction.
+    - `visa_purchase_international` - Activity and fees for the processing of an
+      international sales draft original for a purchase transaction.
+    - `visa_credit_purchase_token` - Apple Pay Credit Product Token Purchase
+      Original Transactions. This fee is billed by Visa on behalf of Apple Inc. for
+      Apple Pay transactions.
+    - `visa_debit_purchase_token` - Apple Pay Debit Product Token Purchase Original
+      Transactions. This fee is billed by Visa on behalf of Apple Inc. for Apple Pay
+      transactions.
+    - `visa_clearing_transmission` - A per transaction fee assessed for Base II
+      financial draft - Issuer.
+    - `visa_direct_authorization` - Issuer charge for Non-Financial OCT/AFT
+      Authorization 0100 and Declined Financial OCT/AFT 0200 transactions.
+    - `visa_direct_transaction_domestic` - Data processing charge for Visa Direct
+      OCTs for all business application identifiers (BAIs) other than money
+      transfer-bank initiated (BI). BASE II transactions.
+    - `visa_service_commercial_credit` - Issuer card service fee for Commercial
+      Credit cards.
+    - `visa_advertising_service_commercial_credit` - Issuer Advertising Service Fee
+      for Commercial Credit cards.
+    - `visa_community_growth_acceleration_program` - Issuer Community Growth
+      Acceleration Program Fee.
+    - `visa_processing_guarantee_commercial_credit` - Issuer Processing Guarantee
+      for Commercial Credit cards.
+    - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
+      for processing transactions on its network.
+    """
+
+    fixed_component: Optional[str] = None
+    """
+    The fixed component of the fee, if applicable, given in major units of the fee
+    amount.
+    """
+
+    variable_rate: Optional[str] = None
+    """
+    The variable rate component of the fee, if applicable, given as a decimal (e.g.,
+    0.015 for 1.5%).
     """
 
 
@@ -4687,6 +5933,9 @@ class ElementCardReversal(BaseModel):
       sale device.
     - `partial_reversal` - The Card Reversal was a partial reversal, for any reason.
     """
+
+    scheme_fees: List[ElementCardReversalSchemeFee]
+    """The scheme fees associated with this card reversal."""
 
     terminal_id: Optional[str] = None
     """
@@ -5212,6 +6461,158 @@ class ElementCardSettlementPurchaseDetails(BaseModel):
     """Fields specific to travel."""
 
 
+class ElementCardSettlementSchemeFee(BaseModel):
+    amount: str
+    """The fee amount given as a string containing a decimal number."""
+
+    created_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the fee was
+    created.
+    """
+
+    currency: Literal["USD"]
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the fee
+    reimbursement.
+
+    - `USD` - US Dollar (USD)
+    """
+
+    fee_type: Literal[
+        "visa_international_service_assessment_single_currency",
+        "visa_international_service_assessment_cross_currency",
+        "visa_authorization_domestic_point_of_sale",
+        "visa_authorization_international_point_of_sale",
+        "visa_authorization_canada_point_of_sale",
+        "visa_authorization_reversal_point_of_sale",
+        "visa_authorization_reversal_international_point_of_sale",
+        "visa_authorization_address_verification_service",
+        "visa_advanced_authorization",
+        "visa_message_transmission",
+        "visa_account_verification_domestic",
+        "visa_account_verification_international",
+        "visa_account_verification_canada",
+        "visa_corporate_acceptance_fee",
+        "visa_consumer_debit_acceptance_fee",
+        "visa_business_debit_acceptance_fee",
+        "visa_purchasing_acceptance_fee",
+        "visa_purchase_domestic",
+        "visa_purchase_international",
+        "visa_credit_purchase_token",
+        "visa_debit_purchase_token",
+        "visa_clearing_transmission",
+        "visa_direct_authorization",
+        "visa_direct_transaction_domestic",
+        "visa_service_commercial_credit",
+        "visa_advertising_service_commercial_credit",
+        "visa_community_growth_acceleration_program",
+        "visa_processing_guarantee_commercial_credit",
+        "pulse_switch_fee",
+    ]
+    """The type of fee being assessed.
+
+    - `visa_international_service_assessment_single_currency` - International
+      Service Assessment (ISA) single-currency is a fee assessed by the card network
+      for cross-border transactions presented and settled in the same currency.
+    - `visa_international_service_assessment_cross_currency` - International Service
+      Assessment (ISA) cross-currency is a fee assessed by the card network for
+      cross-border transactions presented and settled in different currencies.
+    - `visa_authorization_domestic_point_of_sale` - Activity and charges for Visa
+      Settlement System processing for POS (Point-Of-Sale) authorization
+      transactions. Authorization is the process of approving or declining the
+      transaction amount specified. The fee is assessed to the Issuer.
+    - `visa_authorization_international_point_of_sale` - Activity and charges for
+      Visa Settlement System processing for POS (Point-Of-Sale) International
+      authorization transactions. Authorization is the process of approving or
+      declining the transaction amount specified. The fee is assessed to the Issuer.
+    - `visa_authorization_canada_point_of_sale` - Activity and charges for Visa
+      Settlement System processing for Canada Region POS (Point-of-Sale)
+      authorization transactions. Authorization is the process of approving or
+      declining the transaction amount specified.
+    - `visa_authorization_reversal_point_of_sale` - Activity only for Visa
+      Settlement System authorization processing of POS (Point-Of-Sale) reversal
+      transactions. Authorization reversal represents a VSS message that undoes the
+      complete or partial actions of a previous authorization request.
+    - `visa_authorization_reversal_international_point_of_sale` - Activity only for
+      Visa Settlement System authorization processing of POS (Point-Of-Sale)
+      International reversal transactions. Authorization reversal represents a VSS
+      message that undoes the complete or partial actions of a previous
+      authorization request.
+    - `visa_authorization_address_verification_service` - A per Address Verification
+      Service (AVS) result fee. Applies to all usable AVS result codes.
+    - `visa_advanced_authorization` - Advanced Authorization is a fraud detection
+      tool that monitors and risk evaluates 100 percent of US VisaNet authorizations
+      in real-time. Activity related to Purchase (includes Signature Authenticated
+      Visa and PIN Authenticated Visa Debit (PAVD) transactions).
+    - `visa_message_transmission` - Issuer Transactions Visa represents a charge
+      based on total actual monthly processing (Visa transactions only) through a
+      VisaNet Access Point (VAP). Charges are assessed to the processor for each
+      VisaNet Access Point.
+    - `visa_account_verification_domestic` - Activity, per inquiry, related to the
+      domestic Issuer for Account Number Verification.
+    - `visa_account_verification_international` - Activity, per inquiry, related to
+      the international Issuer for Account Number Verification.
+    - `visa_account_verification_canada` - Activity, per inquiry, related to the
+      US-Canada Issuer for Account Number Verification.
+    - `visa_corporate_acceptance_fee` - The Corporate Acceptance Fee is charged to
+      issuers and is based on the monthly sales volume on Commercial and Government
+      Debit, Prepaid, Credit, Charge, or Deferred Debit card transactions.
+    - `visa_consumer_debit_acceptance_fee` - The Consumer Debit Acceptance Fee is
+      charged to issuers and is based on the monthly sales volume of Consumer Debit
+      or Prepaid card transactions. The cashback portion of a Debit and Prepaid card
+      transaction is excluded from the sales volume calculation.
+    - `visa_business_debit_acceptance_fee` - The Business Acceptance Fee is charged
+      to issuers and is based on the monthly sales volume on Business Debit,
+      Prepaid, Credit, Charge, or Deferred Debit card transactions. The cashback
+      portion is included in the sales volume calculation with the exception of a
+      Debit and Prepaid card transactions.
+    - `visa_purchasing_acceptance_fee` - The Purchasing Card Acceptance Fee is
+      charged to issuers and is based on the monthly sales volume on Commercial and
+      Government Debit, Prepaid, Credit, Charge, or Deferred Debit card
+      transactions.
+    - `visa_purchase_domestic` - Activity and fees for the processing of a sales
+      draft original for a purchase transaction.
+    - `visa_purchase_international` - Activity and fees for the processing of an
+      international sales draft original for a purchase transaction.
+    - `visa_credit_purchase_token` - Apple Pay Credit Product Token Purchase
+      Original Transactions. This fee is billed by Visa on behalf of Apple Inc. for
+      Apple Pay transactions.
+    - `visa_debit_purchase_token` - Apple Pay Debit Product Token Purchase Original
+      Transactions. This fee is billed by Visa on behalf of Apple Inc. for Apple Pay
+      transactions.
+    - `visa_clearing_transmission` - A per transaction fee assessed for Base II
+      financial draft - Issuer.
+    - `visa_direct_authorization` - Issuer charge for Non-Financial OCT/AFT
+      Authorization 0100 and Declined Financial OCT/AFT 0200 transactions.
+    - `visa_direct_transaction_domestic` - Data processing charge for Visa Direct
+      OCTs for all business application identifiers (BAIs) other than money
+      transfer-bank initiated (BI). BASE II transactions.
+    - `visa_service_commercial_credit` - Issuer card service fee for Commercial
+      Credit cards.
+    - `visa_advertising_service_commercial_credit` - Issuer Advertising Service Fee
+      for Commercial Credit cards.
+    - `visa_community_growth_acceleration_program` - Issuer Community Growth
+      Acceleration Program Fee.
+    - `visa_processing_guarantee_commercial_credit` - Issuer Processing Guarantee
+      for Commercial Credit cards.
+    - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
+      for processing transactions on its network.
+    """
+
+    fixed_component: Optional[str] = None
+    """
+    The fixed component of the fee, if applicable, given in major units of the fee
+    amount.
+    """
+
+    variable_rate: Optional[str] = None
+    """
+    The variable rate component of the fee, if applicable, given as a decimal (e.g.,
+    0.015 for 1.5%).
+    """
+
+
 class ElementCardSettlementSurcharge(BaseModel):
     """Surcharge amount details, if applicable.
 
@@ -5322,6 +6723,9 @@ class ElementCardSettlement(BaseModel):
     Additional details about the card purchase, such as tax and industry-specific
     fields.
     """
+
+    scheme_fees: List[ElementCardSettlementSchemeFee]
+    """The scheme fees associated with this card settlement."""
 
     surcharge: Optional[ElementCardSettlementSurcharge] = None
     """Surcharge amount details, if applicable.
@@ -5773,6 +7177,158 @@ class ElementCardValidationNetworkIdentifiers(BaseModel):
     """
 
 
+class ElementCardValidationSchemeFee(BaseModel):
+    amount: str
+    """The fee amount given as a string containing a decimal number."""
+
+    created_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the fee was
+    created.
+    """
+
+    currency: Literal["USD"]
+    """
+    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the fee
+    reimbursement.
+
+    - `USD` - US Dollar (USD)
+    """
+
+    fee_type: Literal[
+        "visa_international_service_assessment_single_currency",
+        "visa_international_service_assessment_cross_currency",
+        "visa_authorization_domestic_point_of_sale",
+        "visa_authorization_international_point_of_sale",
+        "visa_authorization_canada_point_of_sale",
+        "visa_authorization_reversal_point_of_sale",
+        "visa_authorization_reversal_international_point_of_sale",
+        "visa_authorization_address_verification_service",
+        "visa_advanced_authorization",
+        "visa_message_transmission",
+        "visa_account_verification_domestic",
+        "visa_account_verification_international",
+        "visa_account_verification_canada",
+        "visa_corporate_acceptance_fee",
+        "visa_consumer_debit_acceptance_fee",
+        "visa_business_debit_acceptance_fee",
+        "visa_purchasing_acceptance_fee",
+        "visa_purchase_domestic",
+        "visa_purchase_international",
+        "visa_credit_purchase_token",
+        "visa_debit_purchase_token",
+        "visa_clearing_transmission",
+        "visa_direct_authorization",
+        "visa_direct_transaction_domestic",
+        "visa_service_commercial_credit",
+        "visa_advertising_service_commercial_credit",
+        "visa_community_growth_acceleration_program",
+        "visa_processing_guarantee_commercial_credit",
+        "pulse_switch_fee",
+    ]
+    """The type of fee being assessed.
+
+    - `visa_international_service_assessment_single_currency` - International
+      Service Assessment (ISA) single-currency is a fee assessed by the card network
+      for cross-border transactions presented and settled in the same currency.
+    - `visa_international_service_assessment_cross_currency` - International Service
+      Assessment (ISA) cross-currency is a fee assessed by the card network for
+      cross-border transactions presented and settled in different currencies.
+    - `visa_authorization_domestic_point_of_sale` - Activity and charges for Visa
+      Settlement System processing for POS (Point-Of-Sale) authorization
+      transactions. Authorization is the process of approving or declining the
+      transaction amount specified. The fee is assessed to the Issuer.
+    - `visa_authorization_international_point_of_sale` - Activity and charges for
+      Visa Settlement System processing for POS (Point-Of-Sale) International
+      authorization transactions. Authorization is the process of approving or
+      declining the transaction amount specified. The fee is assessed to the Issuer.
+    - `visa_authorization_canada_point_of_sale` - Activity and charges for Visa
+      Settlement System processing for Canada Region POS (Point-of-Sale)
+      authorization transactions. Authorization is the process of approving or
+      declining the transaction amount specified.
+    - `visa_authorization_reversal_point_of_sale` - Activity only for Visa
+      Settlement System authorization processing of POS (Point-Of-Sale) reversal
+      transactions. Authorization reversal represents a VSS message that undoes the
+      complete or partial actions of a previous authorization request.
+    - `visa_authorization_reversal_international_point_of_sale` - Activity only for
+      Visa Settlement System authorization processing of POS (Point-Of-Sale)
+      International reversal transactions. Authorization reversal represents a VSS
+      message that undoes the complete or partial actions of a previous
+      authorization request.
+    - `visa_authorization_address_verification_service` - A per Address Verification
+      Service (AVS) result fee. Applies to all usable AVS result codes.
+    - `visa_advanced_authorization` - Advanced Authorization is a fraud detection
+      tool that monitors and risk evaluates 100 percent of US VisaNet authorizations
+      in real-time. Activity related to Purchase (includes Signature Authenticated
+      Visa and PIN Authenticated Visa Debit (PAVD) transactions).
+    - `visa_message_transmission` - Issuer Transactions Visa represents a charge
+      based on total actual monthly processing (Visa transactions only) through a
+      VisaNet Access Point (VAP). Charges are assessed to the processor for each
+      VisaNet Access Point.
+    - `visa_account_verification_domestic` - Activity, per inquiry, related to the
+      domestic Issuer for Account Number Verification.
+    - `visa_account_verification_international` - Activity, per inquiry, related to
+      the international Issuer for Account Number Verification.
+    - `visa_account_verification_canada` - Activity, per inquiry, related to the
+      US-Canada Issuer for Account Number Verification.
+    - `visa_corporate_acceptance_fee` - The Corporate Acceptance Fee is charged to
+      issuers and is based on the monthly sales volume on Commercial and Government
+      Debit, Prepaid, Credit, Charge, or Deferred Debit card transactions.
+    - `visa_consumer_debit_acceptance_fee` - The Consumer Debit Acceptance Fee is
+      charged to issuers and is based on the monthly sales volume of Consumer Debit
+      or Prepaid card transactions. The cashback portion of a Debit and Prepaid card
+      transaction is excluded from the sales volume calculation.
+    - `visa_business_debit_acceptance_fee` - The Business Acceptance Fee is charged
+      to issuers and is based on the monthly sales volume on Business Debit,
+      Prepaid, Credit, Charge, or Deferred Debit card transactions. The cashback
+      portion is included in the sales volume calculation with the exception of a
+      Debit and Prepaid card transactions.
+    - `visa_purchasing_acceptance_fee` - The Purchasing Card Acceptance Fee is
+      charged to issuers and is based on the monthly sales volume on Commercial and
+      Government Debit, Prepaid, Credit, Charge, or Deferred Debit card
+      transactions.
+    - `visa_purchase_domestic` - Activity and fees for the processing of a sales
+      draft original for a purchase transaction.
+    - `visa_purchase_international` - Activity and fees for the processing of an
+      international sales draft original for a purchase transaction.
+    - `visa_credit_purchase_token` - Apple Pay Credit Product Token Purchase
+      Original Transactions. This fee is billed by Visa on behalf of Apple Inc. for
+      Apple Pay transactions.
+    - `visa_debit_purchase_token` - Apple Pay Debit Product Token Purchase Original
+      Transactions. This fee is billed by Visa on behalf of Apple Inc. for Apple Pay
+      transactions.
+    - `visa_clearing_transmission` - A per transaction fee assessed for Base II
+      financial draft - Issuer.
+    - `visa_direct_authorization` - Issuer charge for Non-Financial OCT/AFT
+      Authorization 0100 and Declined Financial OCT/AFT 0200 transactions.
+    - `visa_direct_transaction_domestic` - Data processing charge for Visa Direct
+      OCTs for all business application identifiers (BAIs) other than money
+      transfer-bank initiated (BI). BASE II transactions.
+    - `visa_service_commercial_credit` - Issuer card service fee for Commercial
+      Credit cards.
+    - `visa_advertising_service_commercial_credit` - Issuer Advertising Service Fee
+      for Commercial Credit cards.
+    - `visa_community_growth_acceleration_program` - Issuer Community Growth
+      Acceleration Program Fee.
+    - `visa_processing_guarantee_commercial_credit` - Issuer Processing Guarantee
+      for Commercial Credit cards.
+    - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
+      for processing transactions on its network.
+    """
+
+    fixed_component: Optional[str] = None
+    """
+    The fixed component of the fee, if applicable, given in major units of the fee
+    amount.
+    """
+
+    variable_rate: Optional[str] = None
+    """
+    The variable rate component of the fee, if applicable, given as a decimal (e.g.,
+    0.015 for 1.5%).
+    """
+
+
 class ElementCardValidationVerificationCardVerificationCode(BaseModel):
     """
     Fields related to verification of the Card Verification Code, a 3-digit code on the back of the card.
@@ -5963,6 +7519,9 @@ class ElementCardValidation(BaseModel):
     The identifier of the Real-Time Decision sent to approve or decline this
     transaction.
     """
+
+    scheme_fees: List[ElementCardValidationSchemeFee]
+    """The scheme fees associated with this card validation."""
 
     terminal_id: Optional[str] = None
     """
@@ -6159,158 +7718,6 @@ class Element(BaseModel):
     """
 
 
-class SchemeFee(BaseModel):
-    amount: str
-    """The fee amount given as a string containing a decimal number."""
-
-    created_at: datetime
-    """
-    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) time at which the fee was
-    created.
-    """
-
-    currency: Literal["USD"]
-    """
-    The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) code for the fee
-    reimbursement.
-
-    - `USD` - US Dollar (USD)
-    """
-
-    fee_type: Literal[
-        "visa_international_service_assessment_single_currency",
-        "visa_international_service_assessment_cross_currency",
-        "visa_authorization_domestic_point_of_sale",
-        "visa_authorization_international_point_of_sale",
-        "visa_authorization_canada_point_of_sale",
-        "visa_authorization_reversal_point_of_sale",
-        "visa_authorization_reversal_international_point_of_sale",
-        "visa_authorization_address_verification_service",
-        "visa_advanced_authorization",
-        "visa_message_transmission",
-        "visa_account_verification_domestic",
-        "visa_account_verification_international",
-        "visa_account_verification_canada",
-        "visa_corporate_acceptance_fee",
-        "visa_consumer_debit_acceptance_fee",
-        "visa_business_debit_acceptance_fee",
-        "visa_purchasing_acceptance_fee",
-        "visa_purchase_domestic",
-        "visa_purchase_international",
-        "visa_credit_purchase_token",
-        "visa_debit_purchase_token",
-        "visa_clearing_transmission",
-        "visa_direct_authorization",
-        "visa_direct_transaction_domestic",
-        "visa_service_commercial_credit",
-        "visa_advertising_service_commercial_credit",
-        "visa_community_growth_acceleration_program",
-        "visa_processing_guarantee_commercial_credit",
-        "pulse_switch_fee",
-    ]
-    """The type of fee being assessed.
-
-    - `visa_international_service_assessment_single_currency` - International
-      Service Assessment (ISA) single-currency is a fee assessed by the card network
-      for cross-border transactions presented and settled in the same currency.
-    - `visa_international_service_assessment_cross_currency` - International Service
-      Assessment (ISA) cross-currency is a fee assessed by the card network for
-      cross-border transactions presented and settled in different currencies.
-    - `visa_authorization_domestic_point_of_sale` - Activity and charges for Visa
-      Settlement System processing for POS (Point-Of-Sale) authorization
-      transactions. Authorization is the process of approving or declining the
-      transaction amount specified. The fee is assessed to the Issuer.
-    - `visa_authorization_international_point_of_sale` - Activity and charges for
-      Visa Settlement System processing for POS (Point-Of-Sale) International
-      authorization transactions. Authorization is the process of approving or
-      declining the transaction amount specified. The fee is assessed to the Issuer.
-    - `visa_authorization_canada_point_of_sale` - Activity and charges for Visa
-      Settlement System processing for Canada Region POS (Point-of-Sale)
-      authorization transactions. Authorization is the process of approving or
-      declining the transaction amount specified.
-    - `visa_authorization_reversal_point_of_sale` - Activity only for Visa
-      Settlement System authorization processing of POS (Point-Of-Sale) reversal
-      transactions. Authorization reversal represents a VSS message that undoes the
-      complete or partial actions of a previous authorization request.
-    - `visa_authorization_reversal_international_point_of_sale` - Activity only for
-      Visa Settlement System authorization processing of POS (Point-Of-Sale)
-      International reversal transactions. Authorization reversal represents a VSS
-      message that undoes the complete or partial actions of a previous
-      authorization request.
-    - `visa_authorization_address_verification_service` - A per Address Verification
-      Service (AVS) result fee. Applies to all usable AVS result codes.
-    - `visa_advanced_authorization` - Advanced Authorization is a fraud detection
-      tool that monitors and risk evaluates 100 percent of US VisaNet authorizations
-      in real-time. Activity related to Purchase (includes Signature Authenticated
-      Visa and PIN Authenticated Visa Debit (PAVD) transactions).
-    - `visa_message_transmission` - Issuer Transactions Visa represents a charge
-      based on total actual monthly processing (Visa transactions only) through a
-      VisaNet Access Point (VAP). Charges are assessed to the processor for each
-      VisaNet Access Point.
-    - `visa_account_verification_domestic` - Activity, per inquiry, related to the
-      domestic Issuer for Account Number Verification.
-    - `visa_account_verification_international` - Activity, per inquiry, related to
-      the international Issuer for Account Number Verification.
-    - `visa_account_verification_canada` - Activity, per inquiry, related to the
-      US-Canada Issuer for Account Number Verification.
-    - `visa_corporate_acceptance_fee` - The Corporate Acceptance Fee is charged to
-      issuers and is based on the monthly sales volume on Commercial and Government
-      Debit, Prepaid, Credit, Charge, or Deferred Debit card transactions.
-    - `visa_consumer_debit_acceptance_fee` - The Consumer Debit Acceptance Fee is
-      charged to issuers and is based on the monthly sales volume of Consumer Debit
-      or Prepaid card transactions. The cashback portion of a Debit and Prepaid card
-      transaction is excluded from the sales volume calculation.
-    - `visa_business_debit_acceptance_fee` - The Business Acceptance Fee is charged
-      to issuers and is based on the monthly sales volume on Business Debit,
-      Prepaid, Credit, Charge, or Deferred Debit card transactions. The cashback
-      portion is included in the sales volume calculation with the exception of a
-      Debit and Prepaid card transactions.
-    - `visa_purchasing_acceptance_fee` - The Purchasing Card Acceptance Fee is
-      charged to issuers and is based on the monthly sales volume on Commercial and
-      Government Debit, Prepaid, Credit, Charge, or Deferred Debit card
-      transactions.
-    - `visa_purchase_domestic` - Activity and fees for the processing of a sales
-      draft original for a purchase transaction.
-    - `visa_purchase_international` - Activity and fees for the processing of an
-      international sales draft original for a purchase transaction.
-    - `visa_credit_purchase_token` - Apple Pay Credit Product Token Purchase
-      Original Transactions. This fee is billed by Visa on behalf of Apple Inc. for
-      Apple Pay transactions.
-    - `visa_debit_purchase_token` - Apple Pay Debit Product Token Purchase Original
-      Transactions. This fee is billed by Visa on behalf of Apple Inc. for Apple Pay
-      transactions.
-    - `visa_clearing_transmission` - A per transaction fee assessed for Base II
-      financial draft - Issuer.
-    - `visa_direct_authorization` - Issuer charge for Non-Financial OCT/AFT
-      Authorization 0100 and Declined Financial OCT/AFT 0200 transactions.
-    - `visa_direct_transaction_domestic` - Data processing charge for Visa Direct
-      OCTs for all business application identifiers (BAIs) other than money
-      transfer-bank initiated (BI). BASE II transactions.
-    - `visa_service_commercial_credit` - Issuer card service fee for Commercial
-      Credit cards.
-    - `visa_advertising_service_commercial_credit` - Issuer Advertising Service Fee
-      for Commercial Credit cards.
-    - `visa_community_growth_acceleration_program` - Issuer Community Growth
-      Acceleration Program Fee.
-    - `visa_processing_guarantee_commercial_credit` - Issuer Processing Guarantee
-      for Commercial Credit cards.
-    - `pulse_switch_fee` - Pulse Switch Fee is a fee charged by the Pulse network
-      for processing transactions on its network.
-    """
-
-    fixed_component: Optional[str] = None
-    """
-    The fixed component of the fee, if applicable, given in major units of the fee
-    amount.
-    """
-
-    variable_rate: Optional[str] = None
-    """
-    The variable rate component of the fee, if applicable, given as a decimal (e.g.,
-    0.015 for 1.5%).
-    """
-
-
 class State(BaseModel):
     """The summarized state of this card payment."""
 
@@ -6386,9 +7793,6 @@ class CardPayment(BaseModel):
     physical_card_id: Optional[str] = None
     """The Physical Card identifier for this payment."""
 
-    scheme_fees: List[SchemeFee]
-    """The scheme fees associated with this card payment."""
-
     state: State
     """The summarized state of this card payment."""
 
@@ -6397,3 +7801,15 @@ class CardPayment(BaseModel):
 
     For this resource it will always be `card_payment`.
     """
+
+    if TYPE_CHECKING:
+        # Some versions of Pydantic <2.8.0 have a bug and don’t allow assigning a
+        # value to this field, so for compatibility we avoid doing it at runtime.
+        __pydantic_extra__: Dict[str, object] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
+
+        # Stub to indicate that arbitrary properties are accepted.
+        # To access properties that are not valid identifiers you can use `getattr`, e.g.
+        # `getattr(obj, '$type')`
+        def __getattr__(self, attr: str) -> object: ...
+    else:
+        __pydantic_extra__: Dict[str, object]
