@@ -96,6 +96,8 @@ class UnwrapWebhookEvent(BaseModel):
         "intrafi_exclusion.updated",
         "legacy_card_dispute.created",
         "legacy_card_dispute.updated",
+        "lockbox_address.created",
+        "lockbox_address.updated",
         "lockbox.created",
         "lockbox.updated",
         "oauth_connection.created",
@@ -247,6 +249,8 @@ class UnwrapWebhookEvent(BaseModel):
       created.
     - `legacy_card_dispute.updated` - Occurs whenever a Legacy Card Dispute is
       updated.
+    - `lockbox_address.created` - Occurs whenever a Lockbox Address is created.
+    - `lockbox_address.updated` - Occurs whenever a Lockbox Address is updated.
     - `lockbox.created` - Occurs whenever a Lockbox is created.
     - `lockbox.updated` - Occurs whenever a Lockbox is updated.
     - `oauth_connection.created` - Occurs whenever an OAuth Connection is created.
