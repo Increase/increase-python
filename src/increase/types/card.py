@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import TYPE_CHECKING, Dict, Optional
+from typing import TYPE_CHECKING, Dict, List, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -8,7 +8,160 @@ from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["Card", "BillingAddress", "DigitalWallet"]
+__all__ = [
+    "Card",
+    "AuthorizationControls",
+    "AuthorizationControlsMaximumAuthorizationCount",
+    "AuthorizationControlsMerchantAcceptorIdentifier",
+    "AuthorizationControlsMerchantAcceptorIdentifierAllowed",
+    "AuthorizationControlsMerchantAcceptorIdentifierBlocked",
+    "AuthorizationControlsMerchantCategoryCode",
+    "AuthorizationControlsMerchantCategoryCodeAllowed",
+    "AuthorizationControlsMerchantCategoryCodeBlocked",
+    "AuthorizationControlsMerchantCountry",
+    "AuthorizationControlsMerchantCountryAllowed",
+    "AuthorizationControlsMerchantCountryBlocked",
+    "AuthorizationControlsSpendingLimit",
+    "AuthorizationControlsSpendingLimitMerchantCategoryCode",
+    "BillingAddress",
+    "DigitalWallet",
+]
+
+
+class AuthorizationControlsMaximumAuthorizationCount(BaseModel):
+    """Limits the number of authorizations that can be approved on this card."""
+
+    all_time: Optional[int] = None
+    """
+    The maximum number of authorizations that can be approved on this card over its
+    lifetime.
+    """
+
+
+class AuthorizationControlsMerchantAcceptorIdentifierAllowed(BaseModel):
+    identifier: str
+    """The Merchant Acceptor ID."""
+
+
+class AuthorizationControlsMerchantAcceptorIdentifierBlocked(BaseModel):
+    identifier: str
+    """The Merchant Acceptor ID."""
+
+
+class AuthorizationControlsMerchantAcceptorIdentifier(BaseModel):
+    """
+    Restricts which Merchant Acceptor IDs are allowed or blocked for authorizations on this card.
+    """
+
+    allowed: Optional[List[AuthorizationControlsMerchantAcceptorIdentifierAllowed]] = None
+    """The Merchant Acceptor IDs that are allowed for authorizations on this card."""
+
+    blocked: Optional[List[AuthorizationControlsMerchantAcceptorIdentifierBlocked]] = None
+    """The Merchant Acceptor IDs that are blocked for authorizations on this card."""
+
+
+class AuthorizationControlsMerchantCategoryCodeAllowed(BaseModel):
+    code: str
+    """The Merchant Category Code (MCC)."""
+
+
+class AuthorizationControlsMerchantCategoryCodeBlocked(BaseModel):
+    code: str
+    """The Merchant Category Code (MCC)."""
+
+
+class AuthorizationControlsMerchantCategoryCode(BaseModel):
+    """
+    Restricts which Merchant Category Codes are allowed or blocked for authorizations on this card.
+    """
+
+    allowed: Optional[List[AuthorizationControlsMerchantCategoryCodeAllowed]] = None
+    """The Merchant Category Codes that are allowed for authorizations on this card."""
+
+    blocked: Optional[List[AuthorizationControlsMerchantCategoryCodeBlocked]] = None
+    """The Merchant Category Codes that are blocked for authorizations on this card."""
+
+
+class AuthorizationControlsMerchantCountryAllowed(BaseModel):
+    country: str
+    """The ISO 3166-1 alpha-2 country code."""
+
+
+class AuthorizationControlsMerchantCountryBlocked(BaseModel):
+    country: str
+    """The ISO 3166-1 alpha-2 country code."""
+
+
+class AuthorizationControlsMerchantCountry(BaseModel):
+    """
+    Restricts which merchant countries are allowed or blocked for authorizations on this card.
+    """
+
+    allowed: Optional[List[AuthorizationControlsMerchantCountryAllowed]] = None
+    """The merchant countries that are allowed for authorizations on this card."""
+
+    blocked: Optional[List[AuthorizationControlsMerchantCountryBlocked]] = None
+    """The merchant countries that are blocked for authorizations on this card."""
+
+
+class AuthorizationControlsSpendingLimitMerchantCategoryCode(BaseModel):
+    code: str
+    """The Merchant Category Code (MCC)."""
+
+
+class AuthorizationControlsSpendingLimit(BaseModel):
+    interval: Literal["all_time", "per_transaction", "per_day", "per_week", "per_month"]
+    """The interval at which the spending limit is enforced.
+
+    - `all_time` - The spending limit applies over the lifetime of the card.
+    - `per_transaction` - The spending limit applies per transaction.
+    - `per_day` - The spending limit applies per day. Resets nightly at midnight
+      UTC.
+    - `per_week` - The spending limit applies per week. Resets weekly on Mondays at
+      midnight UTC.
+    - `per_month` - The spending limit applies per month. Resets on the first of the
+      month, midnight UTC.
+    """
+
+    merchant_category_codes: Optional[List[AuthorizationControlsSpendingLimitMerchantCategoryCode]] = None
+    """The Merchant Category Codes (MCCs) this spending limit applies to.
+
+    If not set, the limit applies to all transactions.
+    """
+
+    settlement_amount: int
+    """The maximum settlement amount permitted in the given interval."""
+
+
+class AuthorizationControls(BaseModel):
+    """Controls that restrict how this card can be used."""
+
+    maximum_authorization_count: Optional[AuthorizationControlsMaximumAuthorizationCount] = None
+    """Limits the number of authorizations that can be approved on this card."""
+
+    merchant_acceptor_identifier: Optional[AuthorizationControlsMerchantAcceptorIdentifier] = None
+    """
+    Restricts which Merchant Acceptor IDs are allowed or blocked for authorizations
+    on this card.
+    """
+
+    merchant_category_code: Optional[AuthorizationControlsMerchantCategoryCode] = None
+    """
+    Restricts which Merchant Category Codes are allowed or blocked for
+    authorizations on this card.
+    """
+
+    merchant_country: Optional[AuthorizationControlsMerchantCountry] = None
+    """
+    Restricts which merchant countries are allowed or blocked for authorizations on
+    this card.
+    """
+
+    spending_limits: Optional[List[AuthorizationControlsSpendingLimit]] = None
+    """Spending limits for this card.
+
+    The most restrictive limit is applied if multiple limits match.
+    """
 
 
 class BillingAddress(BaseModel):
@@ -65,6 +218,9 @@ class Card(BaseModel):
 
     account_id: str
     """The identifier for the account this card belongs to."""
+
+    authorization_controls: Optional[AuthorizationControls] = None
+    """Controls that restrict how this card can be used."""
 
     billing_address: BillingAddress
     """The Card's billing address."""
