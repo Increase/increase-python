@@ -109,18 +109,6 @@ class Account(BaseModel):
     with its activity.
     """
 
-    interest_accrued: str
-    """
-    The interest accrued but not yet paid, expressed as a string containing a
-    floating-point value.
-    """
-
-    interest_accrued_at: Optional[date] = None
-    """
-    The latest [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which
-    interest was accrued.
-    """
-
     interest_rate: str
     """
     The interest rate currently being earned on the account, as a string containing
