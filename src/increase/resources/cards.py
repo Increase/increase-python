@@ -56,6 +56,7 @@ class CardsResource(SyncAPIResource):
         self,
         *,
         account_id: str,
+        authorization_controls: card_create_params.AuthorizationControls | Omit = omit,
         billing_address: card_create_params.BillingAddress | Omit = omit,
         description: str | Omit = omit,
         digital_wallet: card_create_params.DigitalWallet | Omit = omit,
@@ -73,6 +74,8 @@ class CardsResource(SyncAPIResource):
 
         Args:
           account_id: The Account the card should belong to.
+
+          authorization_controls: Controls that restrict how this card can be used.
 
           billing_address: The card's billing address.
 
@@ -102,6 +105,7 @@ class CardsResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "account_id": account_id,
+                    "authorization_controls": authorization_controls,
                     "billing_address": billing_address,
                     "description": description,
                     "digital_wallet": digital_wallet,
@@ -158,6 +162,7 @@ class CardsResource(SyncAPIResource):
         self,
         card_id: str,
         *,
+        authorization_controls: card_update_params.AuthorizationControls | Omit = omit,
         billing_address: card_update_params.BillingAddress | Omit = omit,
         description: str | Omit = omit,
         digital_wallet: card_update_params.DigitalWallet | Omit = omit,
@@ -176,6 +181,8 @@ class CardsResource(SyncAPIResource):
 
         Args:
           card_id: The card identifier.
+
+          authorization_controls: Controls that restrict how this card can be used.
 
           billing_address: The card's updated billing address.
 
@@ -210,6 +217,7 @@ class CardsResource(SyncAPIResource):
             path_template("/cards/{card_id}", card_id=card_id),
             body=maybe_transform(
                 {
+                    "authorization_controls": authorization_controls,
                     "billing_address": billing_address,
                     "description": description,
                     "digital_wallet": digital_wallet,
@@ -450,6 +458,7 @@ class AsyncCardsResource(AsyncAPIResource):
         self,
         *,
         account_id: str,
+        authorization_controls: card_create_params.AuthorizationControls | Omit = omit,
         billing_address: card_create_params.BillingAddress | Omit = omit,
         description: str | Omit = omit,
         digital_wallet: card_create_params.DigitalWallet | Omit = omit,
@@ -467,6 +476,8 @@ class AsyncCardsResource(AsyncAPIResource):
 
         Args:
           account_id: The Account the card should belong to.
+
+          authorization_controls: Controls that restrict how this card can be used.
 
           billing_address: The card's billing address.
 
@@ -496,6 +507,7 @@ class AsyncCardsResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "account_id": account_id,
+                    "authorization_controls": authorization_controls,
                     "billing_address": billing_address,
                     "description": description,
                     "digital_wallet": digital_wallet,
@@ -552,6 +564,7 @@ class AsyncCardsResource(AsyncAPIResource):
         self,
         card_id: str,
         *,
+        authorization_controls: card_update_params.AuthorizationControls | Omit = omit,
         billing_address: card_update_params.BillingAddress | Omit = omit,
         description: str | Omit = omit,
         digital_wallet: card_update_params.DigitalWallet | Omit = omit,
@@ -570,6 +583,8 @@ class AsyncCardsResource(AsyncAPIResource):
 
         Args:
           card_id: The card identifier.
+
+          authorization_controls: Controls that restrict how this card can be used.
 
           billing_address: The card's updated billing address.
 
@@ -604,6 +619,7 @@ class AsyncCardsResource(AsyncAPIResource):
             path_template("/cards/{card_id}", card_id=card_id),
             body=await async_maybe_transform(
                 {
+                    "authorization_controls": authorization_controls,
                     "billing_address": billing_address,
                     "description": description,
                     "digital_wallet": digital_wallet,

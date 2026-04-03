@@ -34,6 +34,28 @@ class TestCards:
     def test_method_create_with_all_params(self, client: Increase) -> None:
         card = client.cards.create(
             account_id="account_in71c4amph0vgo2qllky",
+            authorization_controls={
+                "maximum_authorization_count": {"all_time": 0},
+                "merchant_acceptor_identifier": {
+                    "allowed": [{"identifier": "x"}],
+                    "blocked": [{"identifier": "x"}],
+                },
+                "merchant_category_code": {
+                    "allowed": [{"code": "xxxx"}],
+                    "blocked": [{"code": "xxxx"}],
+                },
+                "merchant_country": {
+                    "allowed": [{"country": "xx"}],
+                    "blocked": [{"country": "xx"}],
+                },
+                "spending_limits": [
+                    {
+                        "interval": "all_time",
+                        "settlement_amount": 0,
+                        "merchant_category_codes": [{"code": "x"}],
+                    }
+                ],
+            },
             billing_address={
                 "city": "x",
                 "line1": "x",
@@ -124,6 +146,28 @@ class TestCards:
     def test_method_update_with_all_params(self, client: Increase) -> None:
         card = client.cards.update(
             card_id="card_oubs0hwk5rn6knuecxg2",
+            authorization_controls={
+                "maximum_authorization_count": {"all_time": 0},
+                "merchant_acceptor_identifier": {
+                    "allowed": [{"identifier": "x"}],
+                    "blocked": [{"identifier": "x"}],
+                },
+                "merchant_category_code": {
+                    "allowed": [{"code": "xxxx"}],
+                    "blocked": [{"code": "xxxx"}],
+                },
+                "merchant_country": {
+                    "allowed": [{"country": "xx"}],
+                    "blocked": [{"country": "xx"}],
+                },
+                "spending_limits": [
+                    {
+                        "interval": "all_time",
+                        "settlement_amount": 0,
+                        "merchant_category_codes": [{"code": "x"}],
+                    }
+                ],
+            },
             billing_address={
                 "city": "x",
                 "line1": "x",
@@ -358,6 +402,28 @@ class TestAsyncCards:
     async def test_method_create_with_all_params(self, async_client: AsyncIncrease) -> None:
         card = await async_client.cards.create(
             account_id="account_in71c4amph0vgo2qllky",
+            authorization_controls={
+                "maximum_authorization_count": {"all_time": 0},
+                "merchant_acceptor_identifier": {
+                    "allowed": [{"identifier": "x"}],
+                    "blocked": [{"identifier": "x"}],
+                },
+                "merchant_category_code": {
+                    "allowed": [{"code": "xxxx"}],
+                    "blocked": [{"code": "xxxx"}],
+                },
+                "merchant_country": {
+                    "allowed": [{"country": "xx"}],
+                    "blocked": [{"country": "xx"}],
+                },
+                "spending_limits": [
+                    {
+                        "interval": "all_time",
+                        "settlement_amount": 0,
+                        "merchant_category_codes": [{"code": "x"}],
+                    }
+                ],
+            },
             billing_address={
                 "city": "x",
                 "line1": "x",
@@ -448,6 +514,28 @@ class TestAsyncCards:
     async def test_method_update_with_all_params(self, async_client: AsyncIncrease) -> None:
         card = await async_client.cards.update(
             card_id="card_oubs0hwk5rn6knuecxg2",
+            authorization_controls={
+                "maximum_authorization_count": {"all_time": 0},
+                "merchant_acceptor_identifier": {
+                    "allowed": [{"identifier": "x"}],
+                    "blocked": [{"identifier": "x"}],
+                },
+                "merchant_category_code": {
+                    "allowed": [{"code": "xxxx"}],
+                    "blocked": [{"code": "xxxx"}],
+                },
+                "merchant_country": {
+                    "allowed": [{"country": "xx"}],
+                    "blocked": [{"country": "xx"}],
+                },
+                "spending_limits": [
+                    {
+                        "interval": "all_time",
+                        "settlement_amount": 0,
+                        "merchant_category_codes": [{"code": "x"}],
+                    }
+                ],
+            },
             billing_address={
                 "city": "x",
                 "line1": "x",
