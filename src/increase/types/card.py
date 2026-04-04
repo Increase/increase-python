@@ -160,7 +160,7 @@ class AuthorizationControls(BaseModel):
     spending_limits: Optional[List[AuthorizationControlsSpendingLimit]] = None
     """Spending limits for this card.
 
-    The most restrictive limit is applied if multiple limits match.
+    The most restrictive limit applies if multiple limits match.
     """
 
 

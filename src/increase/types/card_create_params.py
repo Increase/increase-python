@@ -205,7 +205,7 @@ class AuthorizationControls(TypedDict, total=False):
     spending_limits: Iterable[AuthorizationControlsSpendingLimit]
     """Spending limits for this card.
 
-    The most restrictive limit is applied if multiple limits match.
+    The most restrictive limit applies if multiple limits match.
     """
 
 
