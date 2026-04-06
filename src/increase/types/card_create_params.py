@@ -8,7 +8,6 @@ from typing_extensions import Literal, Required, TypedDict
 __all__ = [
     "CardCreateParams",
     "AuthorizationControls",
-    "AuthorizationControlsMaximumAuthorizationCount",
     "AuthorizationControlsMerchantAcceptorIdentifier",
     "AuthorizationControlsMerchantAcceptorIdentifierAllowed",
     "AuthorizationControlsMerchantAcceptorIdentifierBlocked",
@@ -18,8 +17,12 @@ __all__ = [
     "AuthorizationControlsMerchantCountry",
     "AuthorizationControlsMerchantCountryAllowed",
     "AuthorizationControlsMerchantCountryBlocked",
-    "AuthorizationControlsSpendingLimit",
-    "AuthorizationControlsSpendingLimitMerchantCategoryCode",
+    "AuthorizationControlsUsage",
+    "AuthorizationControlsUsageMultiUse",
+    "AuthorizationControlsUsageMultiUseSpendingLimit",
+    "AuthorizationControlsUsageMultiUseSpendingLimitMerchantCategoryCode",
+    "AuthorizationControlsUsageSingleUse",
+    "AuthorizationControlsUsageSingleUseSettlementAmount",
     "BillingAddress",
     "DigitalWallet",
 ]
@@ -52,16 +55,6 @@ class CardCreateParams(TypedDict, total=False):
 
     You only need to supply this in rare situations when the card is not for the
     Account holder.
-    """
-
-
-class AuthorizationControlsMaximumAuthorizationCount(TypedDict, total=False):
-    """Limits the number of authorizations that can be approved on this card."""
-
-    all_time: Required[int]
-    """
-    The maximum number of authorizations that can be approved on this card over its
-    lifetime.
     """
 
 
@@ -149,12 +142,12 @@ class AuthorizationControlsMerchantCountry(TypedDict, total=False):
     """
 
 
-class AuthorizationControlsSpendingLimitMerchantCategoryCode(TypedDict, total=False):
+class AuthorizationControlsUsageMultiUseSpendingLimitMerchantCategoryCode(TypedDict, total=False):
     code: Required[str]
     """The Merchant Category Code."""
 
 
-class AuthorizationControlsSpendingLimit(TypedDict, total=False):
+class AuthorizationControlsUsageMultiUseSpendingLimit(TypedDict, total=False):
     interval: Required[Literal["all_time", "per_transaction", "per_day", "per_week", "per_month"]]
     """The interval at which the spending limit is enforced.
 
@@ -171,18 +164,76 @@ class AuthorizationControlsSpendingLimit(TypedDict, total=False):
     settlement_amount: Required[int]
     """The maximum settlement amount permitted in the given interval."""
 
-    merchant_category_codes: Iterable[AuthorizationControlsSpendingLimitMerchantCategoryCode]
+    merchant_category_codes: Iterable[AuthorizationControlsUsageMultiUseSpendingLimitMerchantCategoryCode]
     """The Merchant Category Codes this spending limit applies to.
 
     If not set, the limit applies to all transactions.
     """
 
 
+class AuthorizationControlsUsageMultiUse(TypedDict, total=False):
+    """Controls for multi-use cards.
+
+    Required if and only if `category` is `multi_use`.
+    """
+
+    spending_limits: Iterable[AuthorizationControlsUsageMultiUseSpendingLimit]
+    """Spending limits for this card.
+
+    The most restrictive limit applies if multiple limits match.
+    """
+
+
+class AuthorizationControlsUsageSingleUseSettlementAmount(TypedDict, total=False):
+    """The settlement amount constraint for this single-use card."""
+
+    comparison: Required[Literal["equals", "less_than_or_equals"]]
+    """The operator used to compare the settlement amount.
+
+    - `equals` - The settlement amount must be exactly the specified value.
+    - `less_than_or_equals` - The settlement amount must be less than or equal to
+      the specified value.
+    """
+
+    value: Required[int]
+    """The settlement amount value."""
+
+
+class AuthorizationControlsUsageSingleUse(TypedDict, total=False):
+    """Controls for single-use cards.
+
+    Required if and only if `category` is `single_use`.
+    """
+
+    settlement_amount: Required[AuthorizationControlsUsageSingleUseSettlementAmount]
+    """The settlement amount constraint for this single-use card."""
+
+
+class AuthorizationControlsUsage(TypedDict, total=False):
+    """Controls how many times this card can be used."""
+
+    category: Required[Literal["single_use", "multi_use"]]
+    """Whether the card is for a single use or multiple uses.
+
+    - `single_use` - The card can only be used for a single authorization.
+    - `multi_use` - The card can be used for multiple authorizations.
+    """
+
+    multi_use: AuthorizationControlsUsageMultiUse
+    """Controls for multi-use cards.
+
+    Required if and only if `category` is `multi_use`.
+    """
+
+    single_use: AuthorizationControlsUsageSingleUse
+    """Controls for single-use cards.
+
+    Required if and only if `category` is `single_use`.
+    """
+
+
 class AuthorizationControls(TypedDict, total=False):
     """Controls that restrict how this card can be used."""
-
-    maximum_authorization_count: AuthorizationControlsMaximumAuthorizationCount
-    """Limits the number of authorizations that can be approved on this card."""
 
     merchant_acceptor_identifier: AuthorizationControlsMerchantAcceptorIdentifier
     """
@@ -202,11 +253,8 @@ class AuthorizationControls(TypedDict, total=False):
     this card.
     """
 
-    spending_limits: Iterable[AuthorizationControlsSpendingLimit]
-    """Spending limits for this card.
-
-    The most restrictive limit applies if multiple limits match.
-    """
+    usage: AuthorizationControlsUsage
+    """Controls how many times this card can be used."""
 
 
 class BillingAddress(TypedDict, total=False):

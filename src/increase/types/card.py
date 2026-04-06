@@ -11,7 +11,6 @@ from .._models import BaseModel
 __all__ = [
     "Card",
     "AuthorizationControls",
-    "AuthorizationControlsMaximumAuthorizationCount",
     "AuthorizationControlsMerchantAcceptorIdentifier",
     "AuthorizationControlsMerchantAcceptorIdentifierAllowed",
     "AuthorizationControlsMerchantAcceptorIdentifierBlocked",
@@ -21,21 +20,15 @@ __all__ = [
     "AuthorizationControlsMerchantCountry",
     "AuthorizationControlsMerchantCountryAllowed",
     "AuthorizationControlsMerchantCountryBlocked",
-    "AuthorizationControlsSpendingLimit",
-    "AuthorizationControlsSpendingLimitMerchantCategoryCode",
+    "AuthorizationControlsUsage",
+    "AuthorizationControlsUsageMultiUse",
+    "AuthorizationControlsUsageMultiUseSpendingLimit",
+    "AuthorizationControlsUsageMultiUseSpendingLimitMerchantCategoryCode",
+    "AuthorizationControlsUsageSingleUse",
+    "AuthorizationControlsUsageSingleUseSettlementAmount",
     "BillingAddress",
     "DigitalWallet",
 ]
-
-
-class AuthorizationControlsMaximumAuthorizationCount(BaseModel):
-    """Limits the number of authorizations that can be approved on this card."""
-
-    all_time: Optional[int] = None
-    """
-    The maximum number of authorizations that can be approved on this card over its
-    lifetime.
-    """
 
 
 class AuthorizationControlsMerchantAcceptorIdentifierAllowed(BaseModel):
@@ -104,12 +97,12 @@ class AuthorizationControlsMerchantCountry(BaseModel):
     """The merchant countries that are blocked for authorizations on this card."""
 
 
-class AuthorizationControlsSpendingLimitMerchantCategoryCode(BaseModel):
+class AuthorizationControlsUsageMultiUseSpendingLimitMerchantCategoryCode(BaseModel):
     code: str
     """The Merchant Category Code (MCC)."""
 
 
-class AuthorizationControlsSpendingLimit(BaseModel):
+class AuthorizationControlsUsageMultiUseSpendingLimit(BaseModel):
     interval: Literal["all_time", "per_transaction", "per_day", "per_week", "per_month"]
     """The interval at which the spending limit is enforced.
 
@@ -123,7 +116,7 @@ class AuthorizationControlsSpendingLimit(BaseModel):
       month, midnight UTC.
     """
 
-    merchant_category_codes: Optional[List[AuthorizationControlsSpendingLimitMerchantCategoryCode]] = None
+    merchant_category_codes: Optional[List[AuthorizationControlsUsageMultiUseSpendingLimitMerchantCategoryCode]] = None
     """The Merchant Category Codes (MCCs) this spending limit applies to.
 
     If not set, the limit applies to all transactions.
@@ -133,11 +126,69 @@ class AuthorizationControlsSpendingLimit(BaseModel):
     """The maximum settlement amount permitted in the given interval."""
 
 
+class AuthorizationControlsUsageMultiUse(BaseModel):
+    """Controls for multi-use cards.
+
+    Required if and only if `category` is `multi_use`.
+    """
+
+    spending_limits: Optional[List[AuthorizationControlsUsageMultiUseSpendingLimit]] = None
+    """Spending limits for this card.
+
+    The most restrictive limit applies if multiple limits match.
+    """
+
+
+class AuthorizationControlsUsageSingleUseSettlementAmount(BaseModel):
+    """The settlement amount constraint for this single-use card."""
+
+    comparison: Literal["equals", "less_than_or_equals"]
+    """The operator used to compare the settlement amount.
+
+    - `equals` - The settlement amount must be exactly the specified value.
+    - `less_than_or_equals` - The settlement amount must be less than or equal to
+      the specified value.
+    """
+
+    value: int
+    """The settlement amount value."""
+
+
+class AuthorizationControlsUsageSingleUse(BaseModel):
+    """Controls for single-use cards.
+
+    Required if and only if `category` is `single_use`.
+    """
+
+    settlement_amount: AuthorizationControlsUsageSingleUseSettlementAmount
+    """The settlement amount constraint for this single-use card."""
+
+
+class AuthorizationControlsUsage(BaseModel):
+    """Controls how many times this card can be used."""
+
+    category: Literal["single_use", "multi_use"]
+    """Whether the card is for a single use or multiple uses.
+
+    - `single_use` - The card can only be used for a single authorization.
+    - `multi_use` - The card can be used for multiple authorizations.
+    """
+
+    multi_use: Optional[AuthorizationControlsUsageMultiUse] = None
+    """Controls for multi-use cards.
+
+    Required if and only if `category` is `multi_use`.
+    """
+
+    single_use: Optional[AuthorizationControlsUsageSingleUse] = None
+    """Controls for single-use cards.
+
+    Required if and only if `category` is `single_use`.
+    """
+
+
 class AuthorizationControls(BaseModel):
     """Controls that restrict how this card can be used."""
-
-    maximum_authorization_count: Optional[AuthorizationControlsMaximumAuthorizationCount] = None
-    """Limits the number of authorizations that can be approved on this card."""
 
     merchant_acceptor_identifier: Optional[AuthorizationControlsMerchantAcceptorIdentifier] = None
     """
@@ -157,11 +208,8 @@ class AuthorizationControls(BaseModel):
     this card.
     """
 
-    spending_limits: Optional[List[AuthorizationControlsSpendingLimit]] = None
-    """Spending limits for this card.
-
-    The most restrictive limit applies if multiple limits match.
-    """
+    usage: Optional[AuthorizationControlsUsage] = None
+    """Controls how many times this card can be used."""
 
 
 class BillingAddress(BaseModel):
