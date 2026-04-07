@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.473.1 (2026-04-07)
+
+Full Changelog: [v0.473.0...v0.473.1](https://github.com/Increase/increase-python/compare/v0.473.0...v0.473.1)
+
+### Bug Fixes
+
+* **client:** preserve hardcoded query params when merging with user params ([2cd001e](https://github.com/Increase/increase-python/commit/2cd001e4b3ece368b1687a90a45296f145736e19))
+
 ## 0.473.0 (2026-04-07)
 
 Full Changelog: [v0.472.0...v0.473.0](https://github.com/Increase/increase-python/compare/v0.472.0...v0.473.0)
