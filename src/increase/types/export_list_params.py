@@ -27,6 +27,7 @@ class ExportListParams(TypedDict, total=False):
         "form_1099_misc",
         "fee_csv",
         "voided_check",
+        "daily_account_balance_csv",
     ]
     """Filter Exports for those with the specified category.
 
@@ -51,6 +52,8 @@ class ExportListParams(TypedDict, total=False):
     - `fee_csv` - Export a CSV of fees. The time range must not include any fees
       that are part of an open fee statement.
     - `voided_check` - A PDF of a voided check.
+    - `daily_account_balance_csv` - Export a CSV of daily account balances with
+      starting and ending balances for a given date range.
     """
 
     created_at: CreatedAt
