@@ -531,6 +531,21 @@ Methods:
 - <code title="post /entity_supplemental_documents">client.supplemental_documents.<a href="./src/increase/resources/supplemental_documents.py">create</a>(\*\*<a href="src/increase/types/supplemental_document_create_params.py">params</a>) -> <a href="./src/increase/types/entity_supplemental_document.py">EntitySupplementalDocument</a></code>
 - <code title="get /entity_supplemental_documents">client.supplemental_documents.<a href="./src/increase/resources/supplemental_documents.py">list</a>(\*\*<a href="src/increase/types/supplemental_document_list_params.py">params</a>) -> <a href="./src/increase/types/entity_supplemental_document.py">SyncPage[EntitySupplementalDocument]</a></code>
 
+# EntityOnboardingSessions
+
+Types:
+
+```python
+from increase.types import EntityOnboardingSession
+```
+
+Methods:
+
+- <code title="post /entity_onboarding_sessions">client.entity_onboarding_sessions.<a href="./src/increase/resources/entity_onboarding_sessions.py">create</a>(\*\*<a href="src/increase/types/entity_onboarding_session_create_params.py">params</a>) -> <a href="./src/increase/types/entity_onboarding_session.py">EntityOnboardingSession</a></code>
+- <code title="get /entity_onboarding_sessions/{entity_onboarding_session_id}">client.entity_onboarding_sessions.<a href="./src/increase/resources/entity_onboarding_sessions.py">retrieve</a>(entity_onboarding_session_id) -> <a href="./src/increase/types/entity_onboarding_session.py">EntityOnboardingSession</a></code>
+- <code title="get /entity_onboarding_sessions">client.entity_onboarding_sessions.<a href="./src/increase/resources/entity_onboarding_sessions.py">list</a>(\*\*<a href="src/increase/types/entity_onboarding_session_list_params.py">params</a>) -> <a href="./src/increase/types/entity_onboarding_session.py">SyncPage[EntityOnboardingSession]</a></code>
+- <code title="post /entity_onboarding_sessions/{entity_onboarding_session_id}/expire">client.entity_onboarding_sessions.<a href="./src/increase/resources/entity_onboarding_sessions.py">expire</a>(entity_onboarding_session_id) -> <a href="./src/increase/types/entity_onboarding_session.py">EntityOnboardingSession</a></code>
+
 # Programs
 
 Types:
@@ -1010,6 +1025,12 @@ Methods:
 Methods:
 
 - <code title="post /simulations/inbound_mail_items">client.simulations.inbound_mail_items.<a href="./src/increase/resources/simulations/inbound_mail_items.py">create</a>(\*\*<a href="src/increase/types/simulations/inbound_mail_item_create_params.py">params</a>) -> <a href="./src/increase/types/inbound_mail_item.py">InboundMailItem</a></code>
+
+## EntityOnboardingSessions
+
+Methods:
+
+- <code title="post /simulations/entity_onboarding_sessions/{entity_onboarding_session_id}/submit">client.simulations.entity_onboarding_sessions.<a href="./src/increase/resources/simulations/entity_onboarding_sessions.py">submit</a>(entity_onboarding_session_id) -> <a href="./src/increase/types/entity_onboarding_session.py">EntityOnboardingSession</a></code>
 
 ## Programs
 
