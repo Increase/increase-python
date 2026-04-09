@@ -85,6 +85,7 @@ from .card_dispute_list_params import CardDisputeListParams as CardDisputeListPa
 from .card_payment_list_params import CardPaymentListParams as CardPaymentListParams
 from .card_purchase_supplement import CardPurchaseSupplement as CardPurchaseSupplement
 from .check_deposit_list_params import CheckDepositListParams as CheckDepositListParams
+from .entity_onboarding_session import EntityOnboardingSession as EntityOnboardingSession
 from .oauth_token_create_params import OAuthTokenCreateParams as OAuthTokenCreateParams
 from .physical_card_list_params import PhysicalCardListParams as PhysicalCardListParams
 from .wire_transfer_list_params import WireTransferListParams as WireTransferListParams
@@ -168,8 +169,14 @@ from .supplemental_document_create_params import SupplementalDocumentCreateParam
 from .wire_drawdown_request_create_params import WireDrawdownRequestCreateParams as WireDrawdownRequestCreateParams
 from .card_purchase_supplement_list_params import CardPurchaseSupplementListParams as CardPurchaseSupplementListParams
 from .inbound_wire_transfer_reverse_params import InboundWireTransferReverseParams as InboundWireTransferReverseParams
+from .entity_onboarding_session_list_params import (
+    EntityOnboardingSessionListParams as EntityOnboardingSessionListParams,
+)
 from .intrafi_account_enrollment_list_params import (
     IntrafiAccountEnrollmentListParams as IntrafiAccountEnrollmentListParams,
+)
+from .entity_onboarding_session_create_params import (
+    EntityOnboardingSessionCreateParams as EntityOnboardingSessionCreateParams,
 )
 from .real_time_payments_transfer_list_params import (
     RealTimePaymentsTransferListParams as RealTimePaymentsTransferListParams,
