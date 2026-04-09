@@ -432,6 +432,14 @@ from .card_purchase_supplements import (
     CardPurchaseSupplementsResourceWithStreamingResponse,
     AsyncCardPurchaseSupplementsResourceWithStreamingResponse,
 )
+from .entity_onboarding_sessions import (
+    EntityOnboardingSessionsResource,
+    AsyncEntityOnboardingSessionsResource,
+    EntityOnboardingSessionsResourceWithRawResponse,
+    AsyncEntityOnboardingSessionsResourceWithRawResponse,
+    EntityOnboardingSessionsResourceWithStreamingResponse,
+    AsyncEntityOnboardingSessionsResourceWithStreamingResponse,
+)
 from .intrafi_account_enrollments import (
     IntrafiAccountEnrollmentsResource,
     AsyncIntrafiAccountEnrollmentsResource,
@@ -682,6 +690,12 @@ __all__ = [
     "AsyncSupplementalDocumentsResourceWithRawResponse",
     "SupplementalDocumentsResourceWithStreamingResponse",
     "AsyncSupplementalDocumentsResourceWithStreamingResponse",
+    "EntityOnboardingSessionsResource",
+    "AsyncEntityOnboardingSessionsResource",
+    "EntityOnboardingSessionsResourceWithRawResponse",
+    "AsyncEntityOnboardingSessionsResourceWithRawResponse",
+    "EntityOnboardingSessionsResourceWithStreamingResponse",
+    "AsyncEntityOnboardingSessionsResourceWithStreamingResponse",
     "ProgramsResource",
     "AsyncProgramsResource",
     "ProgramsResourceWithRawResponse",

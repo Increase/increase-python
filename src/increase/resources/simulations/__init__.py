@@ -224,6 +224,14 @@ from .inbound_fednow_transfers import (
     InboundFednowTransfersResourceWithStreamingResponse,
     AsyncInboundFednowTransfersResourceWithStreamingResponse,
 )
+from .entity_onboarding_sessions import (
+    EntityOnboardingSessionsResource,
+    AsyncEntityOnboardingSessionsResource,
+    EntityOnboardingSessionsResourceWithRawResponse,
+    AsyncEntityOnboardingSessionsResourceWithRawResponse,
+    EntityOnboardingSessionsResourceWithStreamingResponse,
+    AsyncEntityOnboardingSessionsResourceWithStreamingResponse,
+)
 from .real_time_payments_transfers import (
     RealTimePaymentsTransfersResource,
     AsyncRealTimePaymentsTransfersResource,
@@ -434,6 +442,12 @@ __all__ = [
     "AsyncInboundMailItemsResourceWithRawResponse",
     "InboundMailItemsResourceWithStreamingResponse",
     "AsyncInboundMailItemsResourceWithStreamingResponse",
+    "EntityOnboardingSessionsResource",
+    "AsyncEntityOnboardingSessionsResource",
+    "EntityOnboardingSessionsResourceWithRawResponse",
+    "AsyncEntityOnboardingSessionsResourceWithRawResponse",
+    "EntityOnboardingSessionsResourceWithStreamingResponse",
+    "AsyncEntityOnboardingSessionsResourceWithStreamingResponse",
     "ProgramsResource",
     "AsyncProgramsResource",
     "ProgramsResourceWithRawResponse",

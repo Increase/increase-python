@@ -90,6 +90,7 @@ if TYPE_CHECKING:
         wire_drawdown_requests,
         inbound_fednow_transfers,
         card_purchase_supplements,
+        entity_onboarding_sessions,
         intrafi_account_enrollments,
         real_time_payments_transfers,
         inbound_wire_drawdown_requests,
@@ -151,6 +152,10 @@ if TYPE_CHECKING:
     from .resources.card_purchase_supplements import (
         CardPurchaseSupplementsResource,
         AsyncCardPurchaseSupplementsResource,
+    )
+    from .resources.entity_onboarding_sessions import (
+        EntityOnboardingSessionsResource,
+        AsyncEntityOnboardingSessionsResource,
     )
     from .resources.intrafi_account_enrollments import (
         IntrafiAccountEnrollmentsResource,
@@ -491,6 +496,12 @@ class Increase(SyncAPIClient):
         from .resources.supplemental_documents import SupplementalDocumentsResource
 
         return SupplementalDocumentsResource(self)
+
+    @cached_property
+    def entity_onboarding_sessions(self) -> EntityOnboardingSessionsResource:
+        from .resources.entity_onboarding_sessions import EntityOnboardingSessionsResource
+
+        return EntityOnboardingSessionsResource(self)
 
     @cached_property
     def programs(self) -> ProgramsResource:
@@ -1092,6 +1103,12 @@ class AsyncIncrease(AsyncAPIClient):
         return AsyncSupplementalDocumentsResource(self)
 
     @cached_property
+    def entity_onboarding_sessions(self) -> AsyncEntityOnboardingSessionsResource:
+        from .resources.entity_onboarding_sessions import AsyncEntityOnboardingSessionsResource
+
+        return AsyncEntityOnboardingSessionsResource(self)
+
+    @cached_property
     def programs(self) -> AsyncProgramsResource:
         from .resources.programs import AsyncProgramsResource
 
@@ -1618,6 +1635,12 @@ class IncreaseWithRawResponse:
         return SupplementalDocumentsResourceWithRawResponse(self._client.supplemental_documents)
 
     @cached_property
+    def entity_onboarding_sessions(self) -> entity_onboarding_sessions.EntityOnboardingSessionsResourceWithRawResponse:
+        from .resources.entity_onboarding_sessions import EntityOnboardingSessionsResourceWithRawResponse
+
+        return EntityOnboardingSessionsResourceWithRawResponse(self._client.entity_onboarding_sessions)
+
+    @cached_property
     def programs(self) -> programs.ProgramsResourceWithRawResponse:
         from .resources.programs import ProgramsResourceWithRawResponse
 
@@ -1987,6 +2010,14 @@ class AsyncIncreaseWithRawResponse:
         return AsyncSupplementalDocumentsResourceWithRawResponse(self._client.supplemental_documents)
 
     @cached_property
+    def entity_onboarding_sessions(
+        self,
+    ) -> entity_onboarding_sessions.AsyncEntityOnboardingSessionsResourceWithRawResponse:
+        from .resources.entity_onboarding_sessions import AsyncEntityOnboardingSessionsResourceWithRawResponse
+
+        return AsyncEntityOnboardingSessionsResourceWithRawResponse(self._client.entity_onboarding_sessions)
+
+    @cached_property
     def programs(self) -> programs.AsyncProgramsResourceWithRawResponse:
         from .resources.programs import AsyncProgramsResourceWithRawResponse
 
@@ -2354,6 +2385,14 @@ class IncreaseWithStreamedResponse:
         from .resources.supplemental_documents import SupplementalDocumentsResourceWithStreamingResponse
 
         return SupplementalDocumentsResourceWithStreamingResponse(self._client.supplemental_documents)
+
+    @cached_property
+    def entity_onboarding_sessions(
+        self,
+    ) -> entity_onboarding_sessions.EntityOnboardingSessionsResourceWithStreamingResponse:
+        from .resources.entity_onboarding_sessions import EntityOnboardingSessionsResourceWithStreamingResponse
+
+        return EntityOnboardingSessionsResourceWithStreamingResponse(self._client.entity_onboarding_sessions)
 
     @cached_property
     def programs(self) -> programs.ProgramsResourceWithStreamingResponse:
@@ -2729,6 +2768,14 @@ class AsyncIncreaseWithStreamedResponse:
         from .resources.supplemental_documents import AsyncSupplementalDocumentsResourceWithStreamingResponse
 
         return AsyncSupplementalDocumentsResourceWithStreamingResponse(self._client.supplemental_documents)
+
+    @cached_property
+    def entity_onboarding_sessions(
+        self,
+    ) -> entity_onboarding_sessions.AsyncEntityOnboardingSessionsResourceWithStreamingResponse:
+        from .resources.entity_onboarding_sessions import AsyncEntityOnboardingSessionsResourceWithStreamingResponse
+
+        return AsyncEntityOnboardingSessionsResourceWithStreamingResponse(self._client.entity_onboarding_sessions)
 
     @cached_property
     def programs(self) -> programs.AsyncProgramsResourceWithStreamingResponse:
