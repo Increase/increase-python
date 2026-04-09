@@ -18,6 +18,7 @@ __all__ = [
     "BalanceCsvCreatedAt",
     "BookkeepingAccountBalanceCsv",
     "BookkeepingAccountBalanceCsvCreatedAt",
+    "DailyAccountBalanceCsv",
     "DashboardTableCsv",
     "EntityCsv",
     "FeeCsv",
@@ -130,6 +131,22 @@ class BookkeepingAccountBalanceCsv(BaseModel):
 
     created_at: Optional[BookkeepingAccountBalanceCsvCreatedAt] = None
     """Filter balances by their created date."""
+
+
+class DailyAccountBalanceCsv(BaseModel):
+    """Details of the daily account balance CSV export.
+
+    This field will be present when the `category` is equal to `daily_account_balance_csv`.
+    """
+
+    account_id: Optional[str] = None
+    """Filter results by Account."""
+
+    on_or_after_date: Optional[date] = None
+    """Filter balances on or after this date."""
+
+    on_or_before_date: Optional[date] = None
+    """Filter balances on or before this date."""
 
 
 class DashboardTableCsv(BaseModel):
@@ -339,6 +356,7 @@ class Export(BaseModel):
         "form_1099_misc",
         "fee_csv",
         "voided_check",
+        "daily_account_balance_csv",
     ]
     """The category of the Export.
 
@@ -366,10 +384,19 @@ class Export(BaseModel):
     - `fee_csv` - Export a CSV of fees. The time range must not include any fees
       that are part of an open fee statement.
     - `voided_check` - A PDF of a voided check.
+    - `daily_account_balance_csv` - Export a CSV of daily account balances with
+      starting and ending balances for a given date range.
     """
 
     created_at: datetime
     """The time the Export was created."""
+
+    daily_account_balance_csv: Optional[DailyAccountBalanceCsv] = None
+    """Details of the daily account balance CSV export.
+
+    This field will be present when the `category` is equal to
+    `daily_account_balance_csv`.
+    """
 
     dashboard_table_csv: Optional[DashboardTableCsv] = None
     """Details of the dashboard table CSV export.
