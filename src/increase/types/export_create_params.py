@@ -18,6 +18,7 @@ __all__ = [
     "BalanceCsvCreatedAt",
     "BookkeepingAccountBalanceCsv",
     "BookkeepingAccountBalanceCsvCreatedAt",
+    "DailyAccountBalanceCsv",
     "EntityCsv",
     "FundingInstructions",
     "TransactionCsv",
@@ -41,6 +42,7 @@ class ExportCreateParams(TypedDict, total=False):
             "account_verification_letter",
             "funding_instructions",
             "voided_check",
+            "daily_account_balance_csv",
         ]
     ]
     """The type of Export to create.
@@ -60,6 +62,8 @@ class ExportCreateParams(TypedDict, total=False):
     - `account_verification_letter` - A PDF of an account verification letter.
     - `funding_instructions` - A PDF of funding instructions.
     - `voided_check` - A PDF of a voided check.
+    - `daily_account_balance_csv` - Export a CSV of daily account balances with
+      starting and ending balances for a given date range.
     """
 
     account_statement_bai2: AccountStatementBai2
@@ -90,6 +94,12 @@ class ExportCreateParams(TypedDict, total=False):
     """Options for the created export.
 
     Required if `category` is equal to `bookkeeping_account_balance_csv`.
+    """
+
+    daily_account_balance_csv: DailyAccountBalanceCsv
+    """Options for the created export.
+
+    Required if `category` is equal to `daily_account_balance_csv`.
     """
 
     entity_csv: EntityCsv
@@ -287,6 +297,22 @@ class BookkeepingAccountBalanceCsv(TypedDict, total=False):
 
     created_at: BookkeepingAccountBalanceCsvCreatedAt
     """Filter results by time range on the `created_at` attribute."""
+
+
+class DailyAccountBalanceCsv(TypedDict, total=False):
+    """Options for the created export.
+
+    Required if `category` is equal to `daily_account_balance_csv`.
+    """
+
+    account_id: str
+    """Filter exported Balances to the specified Account."""
+
+    on_or_after_date: Annotated[Union[str, date], PropertyInfo(format="iso8601")]
+    """Filter exported Balances to those on or after this date."""
+
+    on_or_before_date: Annotated[Union[str, date], PropertyInfo(format="iso8601")]
+    """Filter exported Balances to those on or before this date."""
 
 
 class EntityCsv(TypedDict, total=False):
