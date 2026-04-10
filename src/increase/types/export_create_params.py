@@ -160,32 +160,14 @@ class AccountStatementBai2(TypedDict, total=False):
     """
 
 
-class AccountStatementOfxCreatedAt(TypedDict, total=False):
-    """Filter results by time range on the `created_at` attribute."""
-
-    after: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
-    """
-    Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-    timestamp.
-    """
+class AccountStatementOfxCreatedAt(TypedDict, total=False, extra_items=object):  # type: ignore[call-arg]
+    """Filter transactions by their created date."""
 
     before: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
-    """
-    Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-    timestamp.
-    """
+    """Filter results to transactions created before this time."""
 
     on_or_after: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
-    """
-    Return results on or after this
-    [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-    """
-
-    on_or_before: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
-    """
-    Return results on or before this
-    [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-    """
+    """Filter results to transactions created on or after this time."""
 
 
 class AccountStatementOfx(TypedDict, total=False):
@@ -198,7 +180,7 @@ class AccountStatementOfx(TypedDict, total=False):
     """The Account to create a statement for."""
 
     created_at: AccountStatementOfxCreatedAt
-    """Filter results by time range on the `created_at` attribute."""
+    """Filter transactions by their created date."""
 
 
 class AccountVerificationLetter(TypedDict, total=False):
