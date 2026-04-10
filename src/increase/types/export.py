@@ -54,11 +54,11 @@ class AccountStatementBai2(BaseModel):
 class AccountStatementOfxCreatedAt(BaseModel):
     """Filter transactions by their created date."""
 
-    after: Optional[datetime] = None
-    """Filter results to transactions created after this time."""
-
     before: Optional[datetime] = None
     """Filter results to transactions created before this time."""
+
+    on_or_after: Optional[datetime] = None
+    """Filter results to transactions created on or after this time."""
 
 
 class AccountStatementOfx(BaseModel):
