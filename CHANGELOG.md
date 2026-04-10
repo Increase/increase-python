@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.475.1 (2026-04-10)
+
+Full Changelog: [v0.475.0...v0.475.1](https://github.com/Increase/increase-python/compare/v0.475.0...v0.475.1)
+
+### Bug Fixes
+
+* ensure file data are only sent as 1 parameter ([fd18a87](https://github.com/Increase/increase-python/commit/fd18a8751900131c922cf102dba6414ee184b3fb))
+
 ## 0.475.0 (2026-04-09)
 
 Full Changelog: [v0.474.0...v0.475.0](https://github.com/Increase/increase-python/compare/v0.474.0...v0.475.0)
