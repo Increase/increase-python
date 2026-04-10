@@ -17,7 +17,6 @@ __all__ = [
     "BalanceCsv",
     "BalanceCsvCreatedAt",
     "BookkeepingAccountBalanceCsv",
-    "BookkeepingAccountBalanceCsvCreatedAt",
     "DailyAccountBalanceCsv",
     "DashboardTableCsv",
     "EntityCsv",
@@ -110,16 +109,6 @@ class BalanceCsv(BaseModel):
     """Filter balances by their created date."""
 
 
-class BookkeepingAccountBalanceCsvCreatedAt(BaseModel):
-    """Filter balances by their created date."""
-
-    after: Optional[datetime] = None
-    """Filter balances created after this time."""
-
-    before: Optional[datetime] = None
-    """Filter balances created before this time."""
-
-
 class BookkeepingAccountBalanceCsv(BaseModel):
     """Details of the bookkeeping account balance CSV export.
 
@@ -129,8 +118,11 @@ class BookkeepingAccountBalanceCsv(BaseModel):
     bookkeeping_account_id: Optional[str] = None
     """Filter results by Bookkeeping Account."""
 
-    created_at: Optional[BookkeepingAccountBalanceCsvCreatedAt] = None
-    """Filter balances by their created date."""
+    on_or_after_date: Optional[date] = None
+    """Filter balances to those on or after this date."""
+
+    on_or_before_date: Optional[date] = None
+    """Filter balances to those on or before this date."""
 
 
 class DailyAccountBalanceCsv(BaseModel):
