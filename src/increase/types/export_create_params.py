@@ -17,7 +17,6 @@ __all__ = [
     "BalanceCsv",
     "BalanceCsvCreatedAt",
     "BookkeepingAccountBalanceCsv",
-    "BookkeepingAccountBalanceCsvCreatedAt",
     "DailyAccountBalanceCsv",
     "EntityCsv",
     "FundingInstructions",
@@ -237,34 +236,6 @@ class BalanceCsv(TypedDict, total=False):
     """Filter results by time range on the `created_at` attribute."""
 
 
-class BookkeepingAccountBalanceCsvCreatedAt(TypedDict, total=False):
-    """Filter results by time range on the `created_at` attribute."""
-
-    after: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
-    """
-    Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-    timestamp.
-    """
-
-    before: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
-    """
-    Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-    timestamp.
-    """
-
-    on_or_after: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
-    """
-    Return results on or after this
-    [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-    """
-
-    on_or_before: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
-    """
-    Return results on or before this
-    [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-    """
-
-
 class BookkeepingAccountBalanceCsv(TypedDict, total=False):
     """Options for the created export.
 
@@ -277,8 +248,11 @@ class BookkeepingAccountBalanceCsv(TypedDict, total=False):
     Account.
     """
 
-    created_at: BookkeepingAccountBalanceCsvCreatedAt
-    """Filter results by time range on the `created_at` attribute."""
+    on_or_after_date: Annotated[Union[str, date], PropertyInfo(format="iso8601")]
+    """Filter exported Balances to those on or after this date."""
+
+    on_or_before_date: Annotated[Union[str, date], PropertyInfo(format="iso8601")]
+    """Filter exported Balances to those on or before this date."""
 
 
 class DailyAccountBalanceCsv(TypedDict, total=False):
