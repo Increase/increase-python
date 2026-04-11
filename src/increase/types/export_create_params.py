@@ -14,8 +14,6 @@ __all__ = [
     "AccountStatementOfx",
     "AccountStatementOfxCreatedAt",
     "AccountVerificationLetter",
-    "BalanceCsv",
-    "BalanceCsvCreatedAt",
     "BookkeepingAccountBalanceCsv",
     "DailyAccountBalanceCsv",
     "EntityCsv",
@@ -81,12 +79,6 @@ class ExportCreateParams(TypedDict, total=False):
     """Options for the created export.
 
     Required if `category` is equal to `account_verification_letter`.
-    """
-
-    balance_csv: BalanceCsv
-    """Options for the created export.
-
-    Required if `category` is equal to `balance_csv`.
     """
 
     bookkeeping_account_balance_csv: BookkeepingAccountBalanceCsv
@@ -193,47 +185,6 @@ class AccountVerificationLetter(TypedDict, total=False):
 
     balance_date: Annotated[Union[str, date], PropertyInfo(format="iso8601")]
     """The date of the balance to include in the letter. Defaults to the current date."""
-
-
-class BalanceCsvCreatedAt(TypedDict, total=False):
-    """Filter results by time range on the `created_at` attribute."""
-
-    after: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
-    """
-    Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-    timestamp.
-    """
-
-    before: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
-    """
-    Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
-    timestamp.
-    """
-
-    on_or_after: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
-    """
-    Return results on or after this
-    [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-    """
-
-    on_or_before: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
-    """
-    Return results on or before this
-    [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
-    """
-
-
-class BalanceCsv(TypedDict, total=False):
-    """Options for the created export.
-
-    Required if `category` is equal to `balance_csv`.
-    """
-
-    account_id: str
-    """Filter exported Balances to the specified Account."""
-
-    created_at: BalanceCsvCreatedAt
-    """Filter results by time range on the `created_at` attribute."""
 
 
 class BookkeepingAccountBalanceCsv(TypedDict, total=False):

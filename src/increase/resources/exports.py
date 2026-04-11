@@ -63,7 +63,6 @@ class ExportsResource(SyncAPIResource):
         account_statement_bai2: export_create_params.AccountStatementBai2 | Omit = omit,
         account_statement_ofx: export_create_params.AccountStatementOfx | Omit = omit,
         account_verification_letter: export_create_params.AccountVerificationLetter | Omit = omit,
-        balance_csv: export_create_params.BalanceCsv | Omit = omit,
         bookkeeping_account_balance_csv: export_create_params.BookkeepingAccountBalanceCsv | Omit = omit,
         daily_account_balance_csv: export_create_params.DailyAccountBalanceCsv | Omit = omit,
         entity_csv: export_create_params.EntityCsv | Omit = omit,
@@ -112,9 +111,6 @@ class ExportsResource(SyncAPIResource):
           account_verification_letter: Options for the created export. Required if `category` is equal to
               `account_verification_letter`.
 
-          balance_csv: Options for the created export. Required if `category` is equal to
-              `balance_csv`.
-
           bookkeeping_account_balance_csv: Options for the created export. Required if `category` is equal to
               `bookkeeping_account_balance_csv`.
 
@@ -152,7 +148,6 @@ class ExportsResource(SyncAPIResource):
                     "account_statement_bai2": account_statement_bai2,
                     "account_statement_ofx": account_statement_ofx,
                     "account_verification_letter": account_verification_letter,
-                    "balance_csv": balance_csv,
                     "bookkeeping_account_balance_csv": bookkeeping_account_balance_csv,
                     "daily_account_balance_csv": daily_account_balance_csv,
                     "entity_csv": entity_csv,
@@ -356,7 +351,6 @@ class AsyncExportsResource(AsyncAPIResource):
         account_statement_bai2: export_create_params.AccountStatementBai2 | Omit = omit,
         account_statement_ofx: export_create_params.AccountStatementOfx | Omit = omit,
         account_verification_letter: export_create_params.AccountVerificationLetter | Omit = omit,
-        balance_csv: export_create_params.BalanceCsv | Omit = omit,
         bookkeeping_account_balance_csv: export_create_params.BookkeepingAccountBalanceCsv | Omit = omit,
         daily_account_balance_csv: export_create_params.DailyAccountBalanceCsv | Omit = omit,
         entity_csv: export_create_params.EntityCsv | Omit = omit,
@@ -405,9 +399,6 @@ class AsyncExportsResource(AsyncAPIResource):
           account_verification_letter: Options for the created export. Required if `category` is equal to
               `account_verification_letter`.
 
-          balance_csv: Options for the created export. Required if `category` is equal to
-              `balance_csv`.
-
           bookkeeping_account_balance_csv: Options for the created export. Required if `category` is equal to
               `bookkeeping_account_balance_csv`.
 
@@ -445,7 +436,6 @@ class AsyncExportsResource(AsyncAPIResource):
                     "account_statement_bai2": account_statement_bai2,
                     "account_statement_ofx": account_statement_ofx,
                     "account_verification_letter": account_verification_letter,
-                    "balance_csv": balance_csv,
                     "bookkeeping_account_balance_csv": bookkeeping_account_balance_csv,
                     "daily_account_balance_csv": daily_account_balance_csv,
                     "entity_csv": entity_csv,
