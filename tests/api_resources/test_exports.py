@@ -46,15 +46,6 @@ class TestExports:
                 "account_number_id": "account_number_id",
                 "balance_date": parse_date("2019-12-27"),
             },
-            balance_csv={
-                "account_id": "account_id",
-                "created_at": {
-                    "after": parse_datetime("2019-12-27T18:11:19.117Z"),
-                    "before": parse_datetime("2019-12-27T18:11:19.117Z"),
-                    "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
-                    "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
-                },
-            },
             bookkeeping_account_balance_csv={
                 "bookkeeping_account_id": "bookkeeping_account_id",
                 "on_or_after_date": parse_date("2019-12-27"),
@@ -222,15 +213,6 @@ class TestAsyncExports:
             account_verification_letter={
                 "account_number_id": "account_number_id",
                 "balance_date": parse_date("2019-12-27"),
-            },
-            balance_csv={
-                "account_id": "account_id",
-                "created_at": {
-                    "after": parse_datetime("2019-12-27T18:11:19.117Z"),
-                    "before": parse_datetime("2019-12-27T18:11:19.117Z"),
-                    "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
-                    "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
-                },
             },
             bookkeeping_account_balance_csv={
                 "bookkeeping_account_id": "bookkeeping_account_id",
