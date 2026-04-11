@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from typing import Union
-from datetime import datetime
+from datetime import date, datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
@@ -17,6 +17,10 @@ __all__ = [
     "GovernmentAuthorityAddress",
     "NaturalPerson",
     "NaturalPersonAddress",
+    "NaturalPersonIdentification",
+    "NaturalPersonIdentificationDriversLicense",
+    "NaturalPersonIdentificationOther",
+    "NaturalPersonIdentificationPassport",
     "RiskRating",
     "ThirdPartyVerification",
     "Trust",
@@ -232,6 +236,119 @@ class NaturalPersonAddress(TypedDict, total=False):
     """The ZIP or postal code of the address. Required in certain countries."""
 
 
+class NaturalPersonIdentificationDriversLicense(TypedDict, total=False):
+    """Information about the United States driver's license used for identification.
+
+    Required if `method` is equal to `drivers_license`.
+    """
+
+    expiration_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
+    """The driver's license's expiration date in YYYY-MM-DD format."""
+
+    file_id: Required[str]
+    """The identifier of the File containing the front of the driver's license."""
+
+    state: Required[str]
+    """The state that issued the provided driver's license."""
+
+    back_file_id: str
+    """The identifier of the File containing the back of the driver's license."""
+
+
+class NaturalPersonIdentificationOther(TypedDict, total=False):
+    """Information about the identification document provided.
+
+    Required if `method` is equal to `other`.
+    """
+
+    country: Required[str]
+    """
+    The two-character ISO 3166-1 code representing the country that issued the
+    document (e.g., `US`).
+    """
+
+    description: Required[str]
+    """A description of the document submitted."""
+
+    file_id: Required[str]
+    """The identifier of the File containing the front of the document."""
+
+    back_file_id: str
+    """The identifier of the File containing the back of the document.
+
+    Not every document has a reverse side.
+    """
+
+    expiration_date: Annotated[Union[str, date], PropertyInfo(format="iso8601")]
+    """The document's expiration date in YYYY-MM-DD format."""
+
+
+class NaturalPersonIdentificationPassport(TypedDict, total=False):
+    """Information about the passport used for identification.
+
+    Required if `method` is equal to `passport`.
+    """
+
+    country: Required[str]
+    """
+    The two-character ISO 3166-1 code representing the country that issued the
+    document (e.g., `US`).
+    """
+
+    expiration_date: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
+    """The passport's expiration date in YYYY-MM-DD format."""
+
+    file_id: Required[str]
+    """The identifier of the File containing the passport."""
+
+
+class NaturalPersonIdentification(TypedDict, total=False, extra_items=object):  # type: ignore[call-arg]
+    """A means of verifying the person's identity."""
+
+    method: Required[
+        Literal[
+            "social_security_number",
+            "individual_taxpayer_identification_number",
+            "passport",
+            "drivers_license",
+            "other",
+        ]
+    ]
+    """A method that can be used to verify the individual's identity.
+
+    - `social_security_number` - A social security number.
+    - `individual_taxpayer_identification_number` - An individual taxpayer
+      identification number (ITIN).
+    - `passport` - A passport number.
+    - `drivers_license` - A driver's license number.
+    - `other` - Another identifying document.
+    """
+
+    number: Required[str]
+    """
+    An identification number that can be used to verify the individual's identity,
+    such as a social security number.
+    """
+
+    drivers_license: NaturalPersonIdentificationDriversLicense
+    """Information about the United States driver's license used for identification.
+
+    Required if `method` is equal to `drivers_license`.
+    """
+
+    other: NaturalPersonIdentificationOther
+    """Information about the identification document provided.
+
+    Required if `method` is equal to `other`.
+    """
+
+    passport: NaturalPersonIdentificationPassport
+    """Information about the passport used for identification.
+
+    Required if `method` is equal to `passport`.
+    """
+
+
 class NaturalPerson(TypedDict, total=False):
     """Details of the natural person entity to update.
 
@@ -243,6 +360,17 @@ class NaturalPerson(TypedDict, total=False):
 
     Mail receiving locations like PO Boxes and PMB's are disallowed.
     """
+
+    confirmed_no_us_tax_id: bool
+    """
+    The identification method for an individual can only be a passport, driver's
+    license, or other document if you've confirmed the individual does not have a US
+    tax id (either a Social Security Number or Individual Taxpayer Identification
+    Number).
+    """
+
+    identification: NaturalPersonIdentification
+    """A means of verifying the person's identity."""
 
     name: str
     """The legal name of the natural person."""
