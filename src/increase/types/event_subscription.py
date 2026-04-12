@@ -38,6 +38,7 @@ class SelectedEventCategory(BaseModel):
             "card.updated",
             "card_payment.created",
             "card_payment.updated",
+            "card_purchase_supplement.created",
             "card_profile.created",
             "card_profile.updated",
             "card_dispute.created",
@@ -162,6 +163,8 @@ class SelectedEventCategory(BaseModel):
     - `card.updated` - Occurs whenever a Card is updated.
     - `card_payment.created` - Occurs whenever a Card Payment is created.
     - `card_payment.updated` - Occurs whenever a Card Payment is updated.
+    - `card_purchase_supplement.created` - Occurs whenever a Card Purchase
+      Supplement is created.
     - `card_profile.created` - Occurs whenever a Card Profile is created.
     - `card_profile.updated` - Occurs whenever a Card Profile is updated.
     - `card_dispute.created` - Occurs whenever a Card Dispute is created.

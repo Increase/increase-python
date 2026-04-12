@@ -58,6 +58,7 @@ _CategoryReservedKeywords = TypedDict(
                 "card.updated",
                 "card_payment.created",
                 "card_payment.updated",
+                "card_purchase_supplement.created",
                 "card_profile.created",
                 "card_profile.updated",
                 "card_dispute.created",
