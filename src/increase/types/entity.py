@@ -143,7 +143,7 @@ class CorporationBeneficialOwnerIndividual(BaseModel):
     date_of_birth: date
     """The person's date of birth in YYYY-MM-DD format."""
 
-    identification: CorporationBeneficialOwnerIndividualIdentification
+    identification: Optional[CorporationBeneficialOwnerIndividualIdentification] = None
     """A means of verifying the person's identity."""
 
     name: str
@@ -375,7 +375,7 @@ class JointIndividual(BaseModel):
     date_of_birth: date
     """The person's date of birth in YYYY-MM-DD format."""
 
-    identification: JointIndividualIdentification
+    identification: Optional[JointIndividualIdentification] = None
     """A means of verifying the person's identity."""
 
     name: str
@@ -467,7 +467,7 @@ class NaturalPerson(BaseModel):
     date_of_birth: date
     """The person's date of birth in YYYY-MM-DD format."""
 
-    identification: NaturalPersonIdentification
+    identification: Optional[NaturalPersonIdentification] = None
     """A means of verifying the person's identity."""
 
     name: str
@@ -621,7 +621,7 @@ class TrustGrantor(BaseModel):
     date_of_birth: date
     """The person's date of birth in YYYY-MM-DD format."""
 
-    identification: TrustGrantorIdentification
+    identification: Optional[TrustGrantorIdentification] = None
     """A means of verifying the person's identity."""
 
     name: str
@@ -700,7 +700,7 @@ class TrustTrusteeIndividual(BaseModel):
     date_of_birth: date
     """The person's date of birth in YYYY-MM-DD format."""
 
-    identification: TrustTrusteeIndividualIdentification
+    identification: Optional[TrustTrusteeIndividualIdentification] = None
     """A means of verifying the person's identity."""
 
     name: str

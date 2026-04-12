@@ -80,7 +80,7 @@ class Individual(BaseModel):
     date_of_birth: date
     """The person's date of birth in YYYY-MM-DD format."""
 
-    identification: IndividualIdentification
+    identification: Optional[IndividualIdentification] = None
     """A means of verifying the person's identity."""
 
     name: str
