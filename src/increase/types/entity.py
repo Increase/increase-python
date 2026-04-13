@@ -872,6 +872,12 @@ class Entity(BaseModel):
     was created.
     """
 
+    creating_entity_onboarding_session_id: Optional[str] = None
+    """
+    The identifier of the Entity Onboarding Session that was used to create this
+    Entity, if any.
+    """
+
     description: Optional[str] = None
     """The entity's description for display purposes."""
 
