@@ -901,6 +901,12 @@ Methods:
 - <code title="post /simulations/card_authentications/{card_payment_id}/challenge_attempts">client.simulations.card_authentications.<a href="./src/increase/resources/simulations/card_authentications.py">challenge_attempts</a>(card_payment_id, \*\*<a href="src/increase/types/simulations/card_authentication_challenge_attempts_params.py">params</a>) -> <a href="./src/increase/types/card_payment.py">CardPayment</a></code>
 - <code title="post /simulations/card_authentications/{card_payment_id}/challenges">client.simulations.card_authentications.<a href="./src/increase/resources/simulations/card_authentications.py">challenges</a>(card_payment_id) -> <a href="./src/increase/types/card_payment.py">CardPayment</a></code>
 
+## CardPurchaseSupplements
+
+Methods:
+
+- <code title="post /simulations/card_purchase_supplements">client.simulations.card_purchase_supplements.<a href="./src/increase/resources/simulations/card_purchase_supplements.py">create</a>(\*\*<a href="src/increase/types/simulations/card_purchase_supplement_create_params.py">params</a>) -> <a href="./src/increase/types/card_purchase_supplement.py">CardPurchaseSupplement</a></code>
+
 ## CardDisputes
 
 Methods:

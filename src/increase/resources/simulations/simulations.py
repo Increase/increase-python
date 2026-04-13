@@ -212,6 +212,14 @@ from .inbound_fednow_transfers import (
     InboundFednowTransfersResourceWithStreamingResponse,
     AsyncInboundFednowTransfersResourceWithStreamingResponse,
 )
+from .card_purchase_supplements import (
+    CardPurchaseSupplementsResource,
+    AsyncCardPurchaseSupplementsResource,
+    CardPurchaseSupplementsResourceWithRawResponse,
+    AsyncCardPurchaseSupplementsResourceWithRawResponse,
+    CardPurchaseSupplementsResourceWithStreamingResponse,
+    AsyncCardPurchaseSupplementsResourceWithStreamingResponse,
+)
 from .entity_onboarding_sessions import (
     EntityOnboardingSessionsResource,
     AsyncEntityOnboardingSessionsResource,
@@ -304,6 +312,10 @@ class SimulationsResource(SyncAPIResource):
     @cached_property
     def card_authentications(self) -> CardAuthenticationsResource:
         return CardAuthenticationsResource(self._client)
+
+    @cached_property
+    def card_purchase_supplements(self) -> CardPurchaseSupplementsResource:
+        return CardPurchaseSupplementsResource(self._client)
 
     @cached_property
     def card_disputes(self) -> CardDisputesResource:
@@ -453,6 +465,10 @@ class AsyncSimulationsResource(AsyncAPIResource):
     @cached_property
     def card_authentications(self) -> AsyncCardAuthenticationsResource:
         return AsyncCardAuthenticationsResource(self._client)
+
+    @cached_property
+    def card_purchase_supplements(self) -> AsyncCardPurchaseSupplementsResource:
+        return AsyncCardPurchaseSupplementsResource(self._client)
 
     @cached_property
     def card_disputes(self) -> AsyncCardDisputesResource:
@@ -607,6 +623,10 @@ class SimulationsResourceWithRawResponse:
         return CardAuthenticationsResourceWithRawResponse(self._simulations.card_authentications)
 
     @cached_property
+    def card_purchase_supplements(self) -> CardPurchaseSupplementsResourceWithRawResponse:
+        return CardPurchaseSupplementsResourceWithRawResponse(self._simulations.card_purchase_supplements)
+
+    @cached_property
     def card_disputes(self) -> CardDisputesResourceWithRawResponse:
         return CardDisputesResourceWithRawResponse(self._simulations.card_disputes)
 
@@ -742,6 +762,10 @@ class AsyncSimulationsResourceWithRawResponse:
     @cached_property
     def card_authentications(self) -> AsyncCardAuthenticationsResourceWithRawResponse:
         return AsyncCardAuthenticationsResourceWithRawResponse(self._simulations.card_authentications)
+
+    @cached_property
+    def card_purchase_supplements(self) -> AsyncCardPurchaseSupplementsResourceWithRawResponse:
+        return AsyncCardPurchaseSupplementsResourceWithRawResponse(self._simulations.card_purchase_supplements)
 
     @cached_property
     def card_disputes(self) -> AsyncCardDisputesResourceWithRawResponse:
@@ -881,6 +905,10 @@ class SimulationsResourceWithStreamingResponse:
         return CardAuthenticationsResourceWithStreamingResponse(self._simulations.card_authentications)
 
     @cached_property
+    def card_purchase_supplements(self) -> CardPurchaseSupplementsResourceWithStreamingResponse:
+        return CardPurchaseSupplementsResourceWithStreamingResponse(self._simulations.card_purchase_supplements)
+
+    @cached_property
     def card_disputes(self) -> CardDisputesResourceWithStreamingResponse:
         return CardDisputesResourceWithStreamingResponse(self._simulations.card_disputes)
 
@@ -1018,6 +1046,10 @@ class AsyncSimulationsResourceWithStreamingResponse:
     @cached_property
     def card_authentications(self) -> AsyncCardAuthenticationsResourceWithStreamingResponse:
         return AsyncCardAuthenticationsResourceWithStreamingResponse(self._simulations.card_authentications)
+
+    @cached_property
+    def card_purchase_supplements(self) -> AsyncCardPurchaseSupplementsResourceWithStreamingResponse:
+        return AsyncCardPurchaseSupplementsResourceWithStreamingResponse(self._simulations.card_purchase_supplements)
 
     @cached_property
     def card_disputes(self) -> AsyncCardDisputesResourceWithStreamingResponse:
