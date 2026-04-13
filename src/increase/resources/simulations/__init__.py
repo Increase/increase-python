@@ -112,14 +112,6 @@ from .card_settlements import (
     CardSettlementsResourceWithStreamingResponse,
     AsyncCardSettlementsResourceWithStreamingResponse,
 )
-from .account_transfers import (
-    AccountTransfersResource,
-    AsyncAccountTransfersResource,
-    AccountTransfersResourceWithRawResponse,
-    AsyncAccountTransfersResourceWithRawResponse,
-    AccountTransfersResourceWithStreamingResponse,
-    AsyncAccountTransfersResourceWithStreamingResponse,
-)
 from .interest_payments import (
     InterestPaymentsResource,
     AsyncInterestPaymentsResource,
@@ -280,12 +272,6 @@ __all__ = [
     "AsyncInterestPaymentsResourceWithRawResponse",
     "InterestPaymentsResourceWithStreamingResponse",
     "AsyncInterestPaymentsResourceWithStreamingResponse",
-    "AccountTransfersResource",
-    "AsyncAccountTransfersResource",
-    "AccountTransfersResourceWithRawResponse",
-    "AsyncAccountTransfersResourceWithRawResponse",
-    "AccountTransfersResourceWithStreamingResponse",
-    "AsyncAccountTransfersResourceWithStreamingResponse",
     "CardAuthorizationsResource",
     "AsyncCardAuthorizationsResource",
     "CardAuthorizationsResourceWithRawResponse",
