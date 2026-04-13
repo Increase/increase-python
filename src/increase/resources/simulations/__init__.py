@@ -216,6 +216,14 @@ from .inbound_fednow_transfers import (
     InboundFednowTransfersResourceWithStreamingResponse,
     AsyncInboundFednowTransfersResourceWithStreamingResponse,
 )
+from .card_purchase_supplements import (
+    CardPurchaseSupplementsResource,
+    AsyncCardPurchaseSupplementsResource,
+    CardPurchaseSupplementsResourceWithRawResponse,
+    AsyncCardPurchaseSupplementsResourceWithRawResponse,
+    CardPurchaseSupplementsResourceWithStreamingResponse,
+    AsyncCardPurchaseSupplementsResourceWithStreamingResponse,
+)
 from .entity_onboarding_sessions import (
     EntityOnboardingSessionsResource,
     AsyncEntityOnboardingSessionsResource,
@@ -326,6 +334,12 @@ __all__ = [
     "AsyncCardAuthenticationsResourceWithRawResponse",
     "CardAuthenticationsResourceWithStreamingResponse",
     "AsyncCardAuthenticationsResourceWithStreamingResponse",
+    "CardPurchaseSupplementsResource",
+    "AsyncCardPurchaseSupplementsResource",
+    "CardPurchaseSupplementsResourceWithRawResponse",
+    "AsyncCardPurchaseSupplementsResourceWithRawResponse",
+    "CardPurchaseSupplementsResourceWithStreamingResponse",
+    "AsyncCardPurchaseSupplementsResourceWithStreamingResponse",
     "CardDisputesResource",
     "AsyncCardDisputesResource",
     "CardDisputesResourceWithRawResponse",

@@ -32,6 +32,9 @@ from .inbound_fednow_transfer_create_params import (
 from .physical_card_advance_shipment_params import (
     PhysicalCardAdvanceShipmentParams as PhysicalCardAdvanceShipmentParams,
 )
+from .card_purchase_supplement_create_params import (
+    CardPurchaseSupplementCreateParams as CardPurchaseSupplementCreateParams,
+)
 from .inbound_check_deposit_adjustment_params import (
     InboundCheckDepositAdjustmentParams as InboundCheckDepositAdjustmentParams,
 )
