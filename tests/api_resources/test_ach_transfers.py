@@ -37,25 +37,25 @@ class TestACHTransfers:
             account_number="987654321",
             addenda={
                 "category": "freeform",
-                "freeform": {"entries": [{"payment_related_information": "x"}]},
+                "freeform": {"entries": [{"payment_related_information": "payment_related_information"}]},
                 "payment_order_remittance_advice": {
                     "invoices": [
                         {
-                            "invoice_number": "x",
+                            "invoice_number": "sq",
                             "paid_amount": 0,
                         }
                     ]
                 },
             },
-            company_descriptive_date="x",
-            company_discretionary_data="x",
-            company_entry_description="x",
-            company_name="x",
+            company_descriptive_date="J!",
+            company_discretionary_data="J!",
+            company_entry_description="J!",
+            company_name="company_name",
             destination_account_holder="business",
             external_account_id="external_account_id",
             funding="checking",
-            individual_id="x",
-            individual_name="x",
+            individual_id="individual_id",
+            individual_name="individual_name",
             preferred_effective_date={
                 "date": parse_date("2019-12-27"),
                 "settlement_schedule": "same_day",
@@ -276,25 +276,25 @@ class TestAsyncACHTransfers:
             account_number="987654321",
             addenda={
                 "category": "freeform",
-                "freeform": {"entries": [{"payment_related_information": "x"}]},
+                "freeform": {"entries": [{"payment_related_information": "payment_related_information"}]},
                 "payment_order_remittance_advice": {
                     "invoices": [
                         {
-                            "invoice_number": "x",
+                            "invoice_number": "sq",
                             "paid_amount": 0,
                         }
                     ]
                 },
             },
-            company_descriptive_date="x",
-            company_discretionary_data="x",
-            company_entry_description="x",
-            company_name="x",
+            company_descriptive_date="J!",
+            company_discretionary_data="J!",
+            company_entry_description="J!",
+            company_name="company_name",
             destination_account_holder="business",
             external_account_id="external_account_id",
             funding="checking",
-            individual_id="x",
-            individual_name="x",
+            individual_id="individual_id",
+            individual_name="individual_name",
             preferred_effective_date={
                 "date": parse_date("2019-12-27"),
                 "settlement_schedule": "same_day",

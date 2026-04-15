@@ -47,7 +47,7 @@ class TestFednowTransfers:
             },
             debtor_address={
                 "city": "x",
-                "postal_code": "x",
+                "postal_code": "21029-9469",
                 "state": "x",
                 "line1": "x",
             },
@@ -280,7 +280,7 @@ class TestAsyncFednowTransfers:
             },
             debtor_address={
                 "city": "x",
-                "postal_code": "x",
+                "postal_code": "21029-9469",
                 "state": "x",
                 "line1": "x",
             },
