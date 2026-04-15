@@ -67,7 +67,7 @@ class TestWireDrawdownRequests:
             debtor_account_number="987654321",
             debtor_external_account_id="debtor_external_account_id",
             debtor_routing_number="101050001",
-            end_to_end_identification="x",
+            end_to_end_identification="end_to_end_identification",
         )
         assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
 
@@ -253,7 +253,7 @@ class TestAsyncWireDrawdownRequests:
             debtor_account_number="987654321",
             debtor_external_account_id="debtor_external_account_id",
             debtor_routing_number="101050001",
-            end_to_end_identification="x",
+            end_to_end_identification="end_to_end_identification",
         )
         assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
 

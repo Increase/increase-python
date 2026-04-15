@@ -54,7 +54,7 @@ class TestSwiftTransfers:
                 "city": "Frankfurt",
                 "country": "DE",
                 "line1": "Sonnemannstrasse 20",
-                "line2": "x",
+                "line2": "line2",
                 "postal_code": "60314",
                 "state": "x",
             },
@@ -63,7 +63,7 @@ class TestSwiftTransfers:
                 "city": "New York",
                 "country": "US",
                 "line1": "33 Liberty Street",
-                "line2": "x",
+                "line2": "line2",
                 "postal_code": "10045",
                 "state": "NY",
             },
@@ -73,7 +73,7 @@ class TestSwiftTransfers:
             source_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
             unstructured_remittance_information="New Swift transfer",
             require_approval=True,
-            routing_number="x",
+            routing_number="sq",
         )
         assert_matches_type(SwiftTransfer, swift_transfer, path=["response"])
 
@@ -334,7 +334,7 @@ class TestAsyncSwiftTransfers:
                 "city": "Frankfurt",
                 "country": "DE",
                 "line1": "Sonnemannstrasse 20",
-                "line2": "x",
+                "line2": "line2",
                 "postal_code": "60314",
                 "state": "x",
             },
@@ -343,7 +343,7 @@ class TestAsyncSwiftTransfers:
                 "city": "New York",
                 "country": "US",
                 "line1": "33 Liberty Street",
-                "line2": "x",
+                "line2": "line2",
                 "postal_code": "10045",
                 "state": "NY",
             },
@@ -353,7 +353,7 @@ class TestAsyncSwiftTransfers:
             source_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
             unstructured_remittance_information="New Swift transfer",
             require_approval=True,
-            routing_number="x",
+            routing_number="sq",
         )
         assert_matches_type(SwiftTransfer, swift_transfer, path=["response"])
 
