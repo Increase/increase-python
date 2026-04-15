@@ -21,14 +21,14 @@ class TestRoutingNumbers:
     @parametrize
     def test_method_list(self, client: Increase) -> None:
         routing_number = client.routing_numbers.list(
-            routing_number="xxxxxxxxx",
+            routing_number="483310694",
         )
         assert_matches_type(SyncPage[RoutingNumberListResponse], routing_number, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Increase) -> None:
         routing_number = client.routing_numbers.list(
-            routing_number="xxxxxxxxx",
+            routing_number="483310694",
             cursor="cursor",
             limit=1,
         )
@@ -37,7 +37,7 @@ class TestRoutingNumbers:
     @parametrize
     def test_raw_response_list(self, client: Increase) -> None:
         response = client.routing_numbers.with_raw_response.list(
-            routing_number="xxxxxxxxx",
+            routing_number="483310694",
         )
 
         assert response.is_closed is True
@@ -48,7 +48,7 @@ class TestRoutingNumbers:
     @parametrize
     def test_streaming_response_list(self, client: Increase) -> None:
         with client.routing_numbers.with_streaming_response.list(
-            routing_number="xxxxxxxxx",
+            routing_number="483310694",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -67,14 +67,14 @@ class TestAsyncRoutingNumbers:
     @parametrize
     async def test_method_list(self, async_client: AsyncIncrease) -> None:
         routing_number = await async_client.routing_numbers.list(
-            routing_number="xxxxxxxxx",
+            routing_number="483310694",
         )
         assert_matches_type(AsyncPage[RoutingNumberListResponse], routing_number, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncIncrease) -> None:
         routing_number = await async_client.routing_numbers.list(
-            routing_number="xxxxxxxxx",
+            routing_number="483310694",
             cursor="cursor",
             limit=1,
         )
@@ -83,7 +83,7 @@ class TestAsyncRoutingNumbers:
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncIncrease) -> None:
         response = await async_client.routing_numbers.with_raw_response.list(
-            routing_number="xxxxxxxxx",
+            routing_number="483310694",
         )
 
         assert response.is_closed is True
@@ -94,7 +94,7 @@ class TestAsyncRoutingNumbers:
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncIncrease) -> None:
         async with async_client.routing_numbers.with_streaming_response.list(
-            routing_number="xxxxxxxxx",
+            routing_number="483310694",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

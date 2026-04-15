@@ -40,8 +40,8 @@ class TestCards:
                     "blocked": [{"identifier": "x"}],
                 },
                 "merchant_category_code": {
-                    "allowed": [{"code": "xxxx"}],
-                    "blocked": [{"code": "xxxx"}],
+                    "allowed": [{"code": "0253"}],
+                    "blocked": [{"code": "0253"}],
                 },
                 "merchant_country": {
                     "allowed": [{"country": "xx"}],
@@ -162,8 +162,8 @@ class TestCards:
                     "blocked": [{"identifier": "x"}],
                 },
                 "merchant_category_code": {
-                    "allowed": [{"code": "xxxx"}],
-                    "blocked": [{"code": "xxxx"}],
+                    "allowed": [{"code": "0253"}],
+                    "blocked": [{"code": "0253"}],
                 },
                 "merchant_country": {
                     "allowed": [{"country": "xx"}],
@@ -428,8 +428,8 @@ class TestAsyncCards:
                     "blocked": [{"identifier": "x"}],
                 },
                 "merchant_category_code": {
-                    "allowed": [{"code": "xxxx"}],
-                    "blocked": [{"code": "xxxx"}],
+                    "allowed": [{"code": "0253"}],
+                    "blocked": [{"code": "0253"}],
                 },
                 "merchant_country": {
                     "allowed": [{"country": "xx"}],
@@ -550,8 +550,8 @@ class TestAsyncCards:
                     "blocked": [{"identifier": "x"}],
                 },
                 "merchant_category_code": {
-                    "allowed": [{"code": "xxxx"}],
-                    "blocked": [{"code": "xxxx"}],
+                    "allowed": [{"code": "0253"}],
+                    "blocked": [{"code": "0253"}],
                 },
                 "merchant_country": {
                     "allowed": [{"country": "xx"}],
