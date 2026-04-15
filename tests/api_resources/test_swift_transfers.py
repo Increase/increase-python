@@ -56,7 +56,7 @@ class TestSwiftTransfers:
                 "line1": "Sonnemannstrasse 20",
                 "line2": "line2",
                 "postal_code": "60314",
-                "state": "x",
+                "state": "state",
             },
             creditor_name="Ian Crease",
             debtor_address={
@@ -336,7 +336,7 @@ class TestAsyncSwiftTransfers:
                 "line1": "Sonnemannstrasse 20",
                 "line2": "line2",
                 "postal_code": "60314",
-                "state": "x",
+                "state": "state",
             },
             creditor_name="Ian Crease",
             debtor_address={
