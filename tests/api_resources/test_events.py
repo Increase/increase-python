@@ -77,6 +77,10 @@ class TestEvents:
             },
             cursor="cursor",
             limit=1,
+            order_by={
+                "direction": "ascending",
+                "field": "created_at",
+            },
         )
         assert_matches_type(SyncPage[Event], event, path=["response"])
 
@@ -201,6 +205,10 @@ class TestAsyncEvents:
             },
             cursor="cursor",
             limit=1,
+            order_by={
+                "direction": "ascending",
+                "field": "created_at",
+            },
         )
         assert_matches_type(AsyncPage[Event], event, path=["response"])
 
