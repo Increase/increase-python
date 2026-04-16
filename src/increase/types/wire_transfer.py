@@ -443,6 +443,13 @@ class WireTransfer(BaseModel):
     For this resource it will always be `wire_transfer`.
     """
 
+    unique_end_to_end_transaction_reference: Optional[str] = None
+    """
+    The unique end-to-end transaction reference
+    ([UETR](https://www.swift.com/payments/what-unique-end-end-transaction-reference-uetr))
+    of the transfer.
+    """
+
     if TYPE_CHECKING:
         # Some versions of Pydantic <2.8.0 have a bug and don’t allow assigning a
         # value to this field, so for compatibility we avoid doing it at runtime.
