@@ -91,6 +91,7 @@ class EventsResource(SyncAPIResource):
         created_at: event_list_params.CreatedAt | Omit = omit,
         cursor: str | Omit = omit,
         limit: int | Omit = omit,
+        order_by: event_list_params.OrderBy | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -132,6 +133,7 @@ class EventsResource(SyncAPIResource):
                         "created_at": created_at,
                         "cursor": cursor,
                         "limit": limit,
+                        "order_by": order_by,
                     },
                     event_list_params.EventListParams,
                 ),
@@ -230,6 +232,7 @@ class AsyncEventsResource(AsyncAPIResource):
         created_at: event_list_params.CreatedAt | Omit = omit,
         cursor: str | Omit = omit,
         limit: int | Omit = omit,
+        order_by: event_list_params.OrderBy | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -271,6 +274,7 @@ class AsyncEventsResource(AsyncAPIResource):
                         "created_at": created_at,
                         "cursor": cursor,
                         "limit": limit,
+                        "order_by": order_by,
                     },
                     event_list_params.EventListParams,
                 ),
