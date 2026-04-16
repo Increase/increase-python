@@ -8,7 +8,7 @@ from typing_extensions import Literal, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
-__all__ = ["EventListParams", "Category", "CreatedAt"]
+__all__ = ["EventListParams", "Category", "CreatedAt", "OrderBy"]
 
 
 class EventListParams(TypedDict, total=False):
@@ -27,6 +27,8 @@ class EventListParams(TypedDict, total=False):
 
     The default (and maximum) is 100 objects.
     """
+
+    order_by: OrderBy
 
 
 _CategoryReservedKeywords = TypedDict(
@@ -178,4 +180,19 @@ class CreatedAt(TypedDict, total=False):
     """
     Return results on or before this
     [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+    """
+
+
+class OrderBy(TypedDict, total=False):
+    direction: Literal["ascending", "descending"]
+    """The direction to order in.
+
+    - `ascending` - Ascending in value.
+    - `descending` - Descending in value.
+    """
+
+    field: Literal["created_at"]
+    """The field to order by.
+
+    - `created_at` - The time the Event was created.
     """
