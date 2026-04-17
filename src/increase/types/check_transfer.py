@@ -218,6 +218,9 @@ class PhysicalCheckTrackingUpdate(BaseModel):
     - `returned_to_sender` - Delivery failed and the check was returned to sender.
     """
 
+    country: str
+    """The ISO 3166-1 alpha-2 country code for the country where the event took place."""
+
     created_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
