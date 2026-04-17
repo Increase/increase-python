@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.490.0 (2026-04-17)
+
+Full Changelog: [v0.489.0...v0.490.0](https://github.com/Increase/increase-python/compare/v0.489.0...v0.490.0)
+
+### Features
+
+* **api:** api update ([0518d17](https://github.com/Increase/increase-python/commit/0518d173f428dff40e9b3e19cdf460d97da88601))
+
+
+### Performance Improvements
+
+* **client:** optimize file structure copying in multipart requests ([5b07233](https://github.com/Increase/increase-python/commit/5b07233510aebec9ca677f3ddd71e78a644b8fe7))
+
 ## 0.489.0 (2026-04-17)
 
 Full Changelog: [v0.488.0...v0.489.0](https://github.com/Increase/increase-python/compare/v0.488.0...v0.489.0)
