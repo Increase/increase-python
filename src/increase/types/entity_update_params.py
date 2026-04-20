@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Union, Iterable
 from datetime import date, datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
@@ -22,6 +22,7 @@ __all__ = [
     "NaturalPersonIdentificationOther",
     "NaturalPersonIdentificationPassport",
     "RiskRating",
+    "TermsAgreement",
     "ThirdPartyVerification",
     "Trust",
     "TrustAddress",
@@ -61,6 +62,13 @@ class EntityUpdateParams(TypedDict, total=False):
     """
     An assessment of the entity’s potential risk of involvement in financial crimes,
     such as money laundering.
+    """
+
+    terms_agreements: Iterable[TermsAgreement]
+    """New terms that the Entity agreed to.
+
+    Not all programs are required to submit this data. This will not archive
+    previously submitted terms.
     """
 
     third_party_verification: ThirdPartyVerification
@@ -393,6 +401,20 @@ class RiskRating(TypedDict, total=False):
     - `low` - Minimal risk of involvement in financial crime.
     - `medium` - Moderate risk of involvement in financial crime.
     - `high` - Elevated risk of involvement in financial crime.
+    """
+
+
+class TermsAgreement(TypedDict, total=False):
+    agreed_at: Required[Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]]
+    """The timestamp of when the Entity agreed to the terms."""
+
+    ip_address: Required[str]
+    """The IP address the Entity accessed reviewed the terms from."""
+
+    terms_url: Required[str]
+    """The URL of the terms agreement.
+
+    This link will be provided by your bank partner.
     """
 
 
