@@ -428,6 +428,13 @@ class TestEntities:
                 "rated_at": parse_datetime("2020-01-31T23:59:59Z"),
                 "rating": "low",
             },
+            terms_agreements=[
+                {
+                    "agreed_at": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "ip_address": "x",
+                    "terms_url": "x",
+                }
+            ],
             third_party_verification={
                 "reference": "x",
                 "vendor": "alloy",
@@ -970,6 +977,13 @@ class TestAsyncEntities:
                 "rated_at": parse_datetime("2020-01-31T23:59:59Z"),
                 "rating": "low",
             },
+            terms_agreements=[
+                {
+                    "agreed_at": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "ip_address": "x",
+                    "terms_url": "x",
+                }
+            ],
             third_party_verification={
                 "reference": "x",
                 "vendor": "alloy",
