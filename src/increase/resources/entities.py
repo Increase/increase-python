@@ -193,6 +193,7 @@ class EntitiesResource(SyncAPIResource):
         government_authority: entity_update_params.GovernmentAuthority | Omit = omit,
         natural_person: entity_update_params.NaturalPerson | Omit = omit,
         risk_rating: entity_update_params.RiskRating | Omit = omit,
+        terms_agreements: Iterable[entity_update_params.TermsAgreement] | Omit = omit,
         third_party_verification: entity_update_params.ThirdPartyVerification | Omit = omit,
         trust: entity_update_params.Trust | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -225,6 +226,9 @@ class EntitiesResource(SyncAPIResource):
           risk_rating: An assessment of the entity’s potential risk of involvement in financial crimes,
               such as money laundering.
 
+          terms_agreements: New terms that the Entity agreed to. Not all programs are required to submit
+              this data. This will not archive previously submitted terms.
+
           third_party_verification: If you are using a third-party service for identity verification, you can use
               this field to associate this Entity with the identifier that represents them in
               that service.
@@ -253,6 +257,7 @@ class EntitiesResource(SyncAPIResource):
                     "government_authority": government_authority,
                     "natural_person": natural_person,
                     "risk_rating": risk_rating,
+                    "terms_agreements": terms_agreements,
                     "third_party_verification": third_party_verification,
                     "trust": trust,
                 },
@@ -539,6 +544,7 @@ class AsyncEntitiesResource(AsyncAPIResource):
         government_authority: entity_update_params.GovernmentAuthority | Omit = omit,
         natural_person: entity_update_params.NaturalPerson | Omit = omit,
         risk_rating: entity_update_params.RiskRating | Omit = omit,
+        terms_agreements: Iterable[entity_update_params.TermsAgreement] | Omit = omit,
         third_party_verification: entity_update_params.ThirdPartyVerification | Omit = omit,
         trust: entity_update_params.Trust | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -571,6 +577,9 @@ class AsyncEntitiesResource(AsyncAPIResource):
           risk_rating: An assessment of the entity’s potential risk of involvement in financial crimes,
               such as money laundering.
 
+          terms_agreements: New terms that the Entity agreed to. Not all programs are required to submit
+              this data. This will not archive previously submitted terms.
+
           third_party_verification: If you are using a third-party service for identity verification, you can use
               this field to associate this Entity with the identifier that represents them in
               that service.
@@ -599,6 +608,7 @@ class AsyncEntitiesResource(AsyncAPIResource):
                     "government_authority": government_authority,
                     "natural_person": natural_person,
                     "risk_rating": risk_rating,
+                    "terms_agreements": terms_agreements,
                     "third_party_verification": third_party_verification,
                     "trust": trust,
                 },
