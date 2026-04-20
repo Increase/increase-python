@@ -13,7 +13,7 @@ class InboundMailItemActionParams(TypedDict, total=False):
     """The actions to perform on the Inbound Mail Item."""
 
 
-class Check(TypedDict, total=False, extra_items=object):  # type: ignore[call-arg]
+class Check(TypedDict, total=False):
     action: Required[Literal["deposit", "ignore"]]
     """The action to perform on the Inbound Mail Item.
 
@@ -22,8 +22,4 @@ class Check(TypedDict, total=False, extra_items=object):  # type: ignore[call-ar
     """
 
     account_id: str
-    """The identifier of the Account to deposit the check into.
-
-    If not provided, the check will be deposited into the Account associated with
-    the Lockbox.
-    """
+    """The identifier of the Account to deposit the check into."""
