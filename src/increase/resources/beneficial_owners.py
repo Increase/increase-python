@@ -61,7 +61,7 @@ class BeneficialOwnersResource(SyncAPIResource):
         idempotency_key: str | None = None,
     ) -> EntityBeneficialOwner:
         """
-        Create a beneficial owner
+        Create a Beneficial Owner
 
         Args:
           entity_id: The identifier of the Entity to associate with the new Beneficial Owner.
@@ -361,7 +361,7 @@ class AsyncBeneficialOwnersResource(AsyncAPIResource):
         idempotency_key: str | None = None,
     ) -> EntityBeneficialOwner:
         """
-        Create a beneficial owner
+        Create a Beneficial Owner
 
         Args:
           entity_id: The identifier of the Entity to associate with the new Beneficial Owner.
