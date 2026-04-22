@@ -71,18 +71,15 @@ if TYPE_CHECKING:
         inbound_mail_items,
         intrafi_exclusions,
         oauth_applications,
-        bookkeeping_entries,
         card_push_transfers,
         event_subscriptions,
         real_time_decisions,
         ach_prenotifications,
-        bookkeeping_accounts,
         pending_transactions,
         declined_transactions,
         digital_card_profiles,
         digital_wallet_tokens,
         inbound_ach_transfers,
-        bookkeeping_entry_sets,
         inbound_check_deposits,
         inbound_wire_transfers,
         physical_card_profiles,
@@ -130,18 +127,15 @@ if TYPE_CHECKING:
     from .resources.inbound_mail_items import InboundMailItemsResource, AsyncInboundMailItemsResource
     from .resources.intrafi_exclusions import IntrafiExclusionsResource, AsyncIntrafiExclusionsResource
     from .resources.oauth_applications import OAuthApplicationsResource, AsyncOAuthApplicationsResource
-    from .resources.bookkeeping_entries import BookkeepingEntriesResource, AsyncBookkeepingEntriesResource
     from .resources.card_push_transfers import CardPushTransfersResource, AsyncCardPushTransfersResource
     from .resources.event_subscriptions import EventSubscriptionsResource, AsyncEventSubscriptionsResource
     from .resources.real_time_decisions import RealTimeDecisionsResource, AsyncRealTimeDecisionsResource
     from .resources.ach_prenotifications import ACHPrenotificationsResource, AsyncACHPrenotificationsResource
-    from .resources.bookkeeping_accounts import BookkeepingAccountsResource, AsyncBookkeepingAccountsResource
     from .resources.pending_transactions import PendingTransactionsResource, AsyncPendingTransactionsResource
     from .resources.declined_transactions import DeclinedTransactionsResource, AsyncDeclinedTransactionsResource
     from .resources.digital_card_profiles import DigitalCardProfilesResource, AsyncDigitalCardProfilesResource
     from .resources.digital_wallet_tokens import DigitalWalletTokensResource, AsyncDigitalWalletTokensResource
     from .resources.inbound_ach_transfers import InboundACHTransfersResource, AsyncInboundACHTransfersResource
-    from .resources.bookkeeping_entry_sets import BookkeepingEntrySetsResource, AsyncBookkeepingEntrySetsResource
     from .resources.inbound_check_deposits import InboundCheckDepositsResource, AsyncInboundCheckDepositsResource
     from .resources.inbound_wire_transfers import InboundWireTransfersResource, AsyncInboundWireTransfersResource
     from .resources.physical_card_profiles import PhysicalCardProfilesResource, AsyncPhysicalCardProfilesResource
@@ -550,24 +544,6 @@ class Increase(SyncAPIClient):
         from .resources.real_time_decisions import RealTimeDecisionsResource
 
         return RealTimeDecisionsResource(self)
-
-    @cached_property
-    def bookkeeping_accounts(self) -> BookkeepingAccountsResource:
-        from .resources.bookkeeping_accounts import BookkeepingAccountsResource
-
-        return BookkeepingAccountsResource(self)
-
-    @cached_property
-    def bookkeeping_entry_sets(self) -> BookkeepingEntrySetsResource:
-        from .resources.bookkeeping_entry_sets import BookkeepingEntrySetsResource
-
-        return BookkeepingEntrySetsResource(self)
-
-    @cached_property
-    def bookkeeping_entries(self) -> BookkeepingEntriesResource:
-        from .resources.bookkeeping_entries import BookkeepingEntriesResource
-
-        return BookkeepingEntriesResource(self)
 
     @cached_property
     def groups(self) -> GroupsResource:
@@ -1157,24 +1133,6 @@ class AsyncIncrease(AsyncAPIClient):
         return AsyncRealTimeDecisionsResource(self)
 
     @cached_property
-    def bookkeeping_accounts(self) -> AsyncBookkeepingAccountsResource:
-        from .resources.bookkeeping_accounts import AsyncBookkeepingAccountsResource
-
-        return AsyncBookkeepingAccountsResource(self)
-
-    @cached_property
-    def bookkeeping_entry_sets(self) -> AsyncBookkeepingEntrySetsResource:
-        from .resources.bookkeeping_entry_sets import AsyncBookkeepingEntrySetsResource
-
-        return AsyncBookkeepingEntrySetsResource(self)
-
-    @cached_property
-    def bookkeeping_entries(self) -> AsyncBookkeepingEntriesResource:
-        from .resources.bookkeeping_entries import AsyncBookkeepingEntriesResource
-
-        return AsyncBookkeepingEntriesResource(self)
-
-    @cached_property
     def groups(self) -> AsyncGroupsResource:
         from .resources.groups import AsyncGroupsResource
 
@@ -1689,24 +1647,6 @@ class IncreaseWithRawResponse:
         return RealTimeDecisionsResourceWithRawResponse(self._client.real_time_decisions)
 
     @cached_property
-    def bookkeeping_accounts(self) -> bookkeeping_accounts.BookkeepingAccountsResourceWithRawResponse:
-        from .resources.bookkeeping_accounts import BookkeepingAccountsResourceWithRawResponse
-
-        return BookkeepingAccountsResourceWithRawResponse(self._client.bookkeeping_accounts)
-
-    @cached_property
-    def bookkeeping_entry_sets(self) -> bookkeeping_entry_sets.BookkeepingEntrySetsResourceWithRawResponse:
-        from .resources.bookkeeping_entry_sets import BookkeepingEntrySetsResourceWithRawResponse
-
-        return BookkeepingEntrySetsResourceWithRawResponse(self._client.bookkeeping_entry_sets)
-
-    @cached_property
-    def bookkeeping_entries(self) -> bookkeeping_entries.BookkeepingEntriesResourceWithRawResponse:
-        from .resources.bookkeeping_entries import BookkeepingEntriesResourceWithRawResponse
-
-        return BookkeepingEntriesResourceWithRawResponse(self._client.bookkeeping_entries)
-
-    @cached_property
     def groups(self) -> groups.GroupsResourceWithRawResponse:
         from .resources.groups import GroupsResourceWithRawResponse
 
@@ -2066,24 +2006,6 @@ class AsyncIncreaseWithRawResponse:
         return AsyncRealTimeDecisionsResourceWithRawResponse(self._client.real_time_decisions)
 
     @cached_property
-    def bookkeeping_accounts(self) -> bookkeeping_accounts.AsyncBookkeepingAccountsResourceWithRawResponse:
-        from .resources.bookkeeping_accounts import AsyncBookkeepingAccountsResourceWithRawResponse
-
-        return AsyncBookkeepingAccountsResourceWithRawResponse(self._client.bookkeeping_accounts)
-
-    @cached_property
-    def bookkeeping_entry_sets(self) -> bookkeeping_entry_sets.AsyncBookkeepingEntrySetsResourceWithRawResponse:
-        from .resources.bookkeeping_entry_sets import AsyncBookkeepingEntrySetsResourceWithRawResponse
-
-        return AsyncBookkeepingEntrySetsResourceWithRawResponse(self._client.bookkeeping_entry_sets)
-
-    @cached_property
-    def bookkeeping_entries(self) -> bookkeeping_entries.AsyncBookkeepingEntriesResourceWithRawResponse:
-        from .resources.bookkeeping_entries import AsyncBookkeepingEntriesResourceWithRawResponse
-
-        return AsyncBookkeepingEntriesResourceWithRawResponse(self._client.bookkeeping_entries)
-
-    @cached_property
     def groups(self) -> groups.AsyncGroupsResourceWithRawResponse:
         from .resources.groups import AsyncGroupsResourceWithRawResponse
 
@@ -2441,24 +2363,6 @@ class IncreaseWithStreamedResponse:
         from .resources.real_time_decisions import RealTimeDecisionsResourceWithStreamingResponse
 
         return RealTimeDecisionsResourceWithStreamingResponse(self._client.real_time_decisions)
-
-    @cached_property
-    def bookkeeping_accounts(self) -> bookkeeping_accounts.BookkeepingAccountsResourceWithStreamingResponse:
-        from .resources.bookkeeping_accounts import BookkeepingAccountsResourceWithStreamingResponse
-
-        return BookkeepingAccountsResourceWithStreamingResponse(self._client.bookkeeping_accounts)
-
-    @cached_property
-    def bookkeeping_entry_sets(self) -> bookkeeping_entry_sets.BookkeepingEntrySetsResourceWithStreamingResponse:
-        from .resources.bookkeeping_entry_sets import BookkeepingEntrySetsResourceWithStreamingResponse
-
-        return BookkeepingEntrySetsResourceWithStreamingResponse(self._client.bookkeeping_entry_sets)
-
-    @cached_property
-    def bookkeeping_entries(self) -> bookkeeping_entries.BookkeepingEntriesResourceWithStreamingResponse:
-        from .resources.bookkeeping_entries import BookkeepingEntriesResourceWithStreamingResponse
-
-        return BookkeepingEntriesResourceWithStreamingResponse(self._client.bookkeeping_entries)
 
     @cached_property
     def groups(self) -> groups.GroupsResourceWithStreamingResponse:
@@ -2824,24 +2728,6 @@ class AsyncIncreaseWithStreamedResponse:
         from .resources.real_time_decisions import AsyncRealTimeDecisionsResourceWithStreamingResponse
 
         return AsyncRealTimeDecisionsResourceWithStreamingResponse(self._client.real_time_decisions)
-
-    @cached_property
-    def bookkeeping_accounts(self) -> bookkeeping_accounts.AsyncBookkeepingAccountsResourceWithStreamingResponse:
-        from .resources.bookkeeping_accounts import AsyncBookkeepingAccountsResourceWithStreamingResponse
-
-        return AsyncBookkeepingAccountsResourceWithStreamingResponse(self._client.bookkeeping_accounts)
-
-    @cached_property
-    def bookkeeping_entry_sets(self) -> bookkeeping_entry_sets.AsyncBookkeepingEntrySetsResourceWithStreamingResponse:
-        from .resources.bookkeeping_entry_sets import AsyncBookkeepingEntrySetsResourceWithStreamingResponse
-
-        return AsyncBookkeepingEntrySetsResourceWithStreamingResponse(self._client.bookkeeping_entry_sets)
-
-    @cached_property
-    def bookkeeping_entries(self) -> bookkeeping_entries.AsyncBookkeepingEntriesResourceWithStreamingResponse:
-        from .resources.bookkeeping_entries import AsyncBookkeepingEntriesResourceWithStreamingResponse
-
-        return AsyncBookkeepingEntriesResourceWithStreamingResponse(self._client.bookkeeping_entries)
 
     @cached_property
     def groups(self) -> groups.AsyncGroupsResourceWithStreamingResponse:
