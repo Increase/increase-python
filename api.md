@@ -653,48 +653,6 @@ Methods:
 - <code title="get /real_time_decisions/{real_time_decision_id}">client.real_time_decisions.<a href="./src/increase/resources/real_time_decisions.py">retrieve</a>(real_time_decision_id) -> <a href="./src/increase/types/real_time_decision.py">RealTimeDecision</a></code>
 - <code title="post /real_time_decisions/{real_time_decision_id}/action">client.real_time_decisions.<a href="./src/increase/resources/real_time_decisions.py">action</a>(real_time_decision_id, \*\*<a href="src/increase/types/real_time_decision_action_params.py">params</a>) -> <a href="./src/increase/types/real_time_decision.py">RealTimeDecision</a></code>
 
-# BookkeepingAccounts
-
-Types:
-
-```python
-from increase.types import BookkeepingAccount, BookkeepingBalanceLookup
-```
-
-Methods:
-
-- <code title="post /bookkeeping_accounts">client.bookkeeping_accounts.<a href="./src/increase/resources/bookkeeping_accounts.py">create</a>(\*\*<a href="src/increase/types/bookkeeping_account_create_params.py">params</a>) -> <a href="./src/increase/types/bookkeeping_account.py">BookkeepingAccount</a></code>
-- <code title="patch /bookkeeping_accounts/{bookkeeping_account_id}">client.bookkeeping_accounts.<a href="./src/increase/resources/bookkeeping_accounts.py">update</a>(bookkeeping_account_id, \*\*<a href="src/increase/types/bookkeeping_account_update_params.py">params</a>) -> <a href="./src/increase/types/bookkeeping_account.py">BookkeepingAccount</a></code>
-- <code title="get /bookkeeping_accounts">client.bookkeeping_accounts.<a href="./src/increase/resources/bookkeeping_accounts.py">list</a>(\*\*<a href="src/increase/types/bookkeeping_account_list_params.py">params</a>) -> <a href="./src/increase/types/bookkeeping_account.py">SyncPage[BookkeepingAccount]</a></code>
-- <code title="get /bookkeeping_accounts/{bookkeeping_account_id}/balance">client.bookkeeping_accounts.<a href="./src/increase/resources/bookkeeping_accounts.py">balance</a>(bookkeeping_account_id, \*\*<a href="src/increase/types/bookkeeping_account_balance_params.py">params</a>) -> <a href="./src/increase/types/bookkeeping_balance_lookup.py">BookkeepingBalanceLookup</a></code>
-
-# BookkeepingEntrySets
-
-Types:
-
-```python
-from increase.types import BookkeepingEntrySet
-```
-
-Methods:
-
-- <code title="post /bookkeeping_entry_sets">client.bookkeeping_entry_sets.<a href="./src/increase/resources/bookkeeping_entry_sets.py">create</a>(\*\*<a href="src/increase/types/bookkeeping_entry_set_create_params.py">params</a>) -> <a href="./src/increase/types/bookkeeping_entry_set.py">BookkeepingEntrySet</a></code>
-- <code title="get /bookkeeping_entry_sets/{bookkeeping_entry_set_id}">client.bookkeeping_entry_sets.<a href="./src/increase/resources/bookkeeping_entry_sets.py">retrieve</a>(bookkeeping_entry_set_id) -> <a href="./src/increase/types/bookkeeping_entry_set.py">BookkeepingEntrySet</a></code>
-- <code title="get /bookkeeping_entry_sets">client.bookkeeping_entry_sets.<a href="./src/increase/resources/bookkeeping_entry_sets.py">list</a>(\*\*<a href="src/increase/types/bookkeeping_entry_set_list_params.py">params</a>) -> <a href="./src/increase/types/bookkeeping_entry_set.py">SyncPage[BookkeepingEntrySet]</a></code>
-
-# BookkeepingEntries
-
-Types:
-
-```python
-from increase.types import BookkeepingEntry
-```
-
-Methods:
-
-- <code title="get /bookkeeping_entries/{bookkeeping_entry_id}">client.bookkeeping_entries.<a href="./src/increase/resources/bookkeeping_entries.py">retrieve</a>(bookkeeping_entry_id) -> <a href="./src/increase/types/bookkeeping_entry.py">BookkeepingEntry</a></code>
-- <code title="get /bookkeeping_entries">client.bookkeeping_entries.<a href="./src/increase/resources/bookkeeping_entries.py">list</a>(\*\*<a href="src/increase/types/bookkeeping_entry_list_params.py">params</a>) -> <a href="./src/increase/types/bookkeeping_entry.py">SyncPage[BookkeepingEntry]</a></code>
-
 # Groups
 
 Types:
