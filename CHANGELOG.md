@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.495.0 (2026-04-22)
+
+Full Changelog: [v0.494.0...v0.495.0](https://github.com/Increase/increase-python/compare/v0.494.0...v0.495.0)
+
+### Features
+
+* **api:** api update ([f129884](https://github.com/Increase/increase-python/commit/f1298848eba104cbea3d44c8d1d9cd5133f25212))
+
+
+### Chores
+
+* **internal:** more robust bootstrap script ([e08daa8](https://github.com/Increase/increase-python/commit/e08daa83e582d5cf8e3dead7b7567208a8c5fe37))
+
 ## 0.494.0 (2026-04-20)
 
 Full Changelog: [v0.493.0...v0.494.0](https://github.com/Increase/increase-python/compare/v0.493.0...v0.494.0)
