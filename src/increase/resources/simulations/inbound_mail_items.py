@@ -45,8 +45,9 @@ class InboundMailItemsResource(SyncAPIResource):
         self,
         *,
         amount: int,
-        lockbox_id: str,
         contents_file_id: str | Omit = omit,
+        lockbox_address_id: str | Omit = omit,
+        lockbox_recipient_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -62,10 +63,12 @@ class InboundMailItemsResource(SyncAPIResource):
         Args:
           amount: The amount of the check to be simulated, in cents.
 
-          lockbox_id: The identifier of the Lockbox to simulate inbound mail to.
-
           contents_file_id: The file containing the PDF contents. If not present, a default check image file
               will be used.
+
+          lockbox_address_id: The identifier of the Lockbox Address to simulate inbound mail to.
+
+          lockbox_recipient_id: The identifier of the Lockbox Recipient to simulate inbound mail to.
 
           extra_headers: Send extra headers
 
@@ -82,8 +85,9 @@ class InboundMailItemsResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "amount": amount,
-                    "lockbox_id": lockbox_id,
                     "contents_file_id": contents_file_id,
+                    "lockbox_address_id": lockbox_address_id,
+                    "lockbox_recipient_id": lockbox_recipient_id,
                 },
                 inbound_mail_item_create_params.InboundMailItemCreateParams,
             ),
@@ -122,8 +126,9 @@ class AsyncInboundMailItemsResource(AsyncAPIResource):
         self,
         *,
         amount: int,
-        lockbox_id: str,
         contents_file_id: str | Omit = omit,
+        lockbox_address_id: str | Omit = omit,
+        lockbox_recipient_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -139,10 +144,12 @@ class AsyncInboundMailItemsResource(AsyncAPIResource):
         Args:
           amount: The amount of the check to be simulated, in cents.
 
-          lockbox_id: The identifier of the Lockbox to simulate inbound mail to.
-
           contents_file_id: The file containing the PDF contents. If not present, a default check image file
               will be used.
+
+          lockbox_address_id: The identifier of the Lockbox Address to simulate inbound mail to.
+
+          lockbox_recipient_id: The identifier of the Lockbox Recipient to simulate inbound mail to.
 
           extra_headers: Send extra headers
 
@@ -159,8 +166,9 @@ class AsyncInboundMailItemsResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "amount": amount,
-                    "lockbox_id": lockbox_id,
                     "contents_file_id": contents_file_id,
+                    "lockbox_address_id": lockbox_address_id,
+                    "lockbox_recipient_id": lockbox_recipient_id,
                 },
                 inbound_mail_item_create_params.InboundMailItemCreateParams,
             ),

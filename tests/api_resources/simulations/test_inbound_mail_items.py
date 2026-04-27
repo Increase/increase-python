@@ -21,7 +21,6 @@ class TestInboundMailItems:
     def test_method_create(self, client: Increase) -> None:
         inbound_mail_item = client.simulations.inbound_mail_items.create(
             amount=1000,
-            lockbox_id="lockbox_3xt21ok13q19advds4t5",
         )
         assert_matches_type(InboundMailItem, inbound_mail_item, path=["response"])
 
@@ -29,8 +28,9 @@ class TestInboundMailItems:
     def test_method_create_with_all_params(self, client: Increase) -> None:
         inbound_mail_item = client.simulations.inbound_mail_items.create(
             amount=1000,
-            lockbox_id="lockbox_3xt21ok13q19advds4t5",
             contents_file_id="contents_file_id",
+            lockbox_address_id="lockbox_address_id",
+            lockbox_recipient_id="lockbox_3xt21ok13q19advds4t5",
         )
         assert_matches_type(InboundMailItem, inbound_mail_item, path=["response"])
 
@@ -38,7 +38,6 @@ class TestInboundMailItems:
     def test_raw_response_create(self, client: Increase) -> None:
         response = client.simulations.inbound_mail_items.with_raw_response.create(
             amount=1000,
-            lockbox_id="lockbox_3xt21ok13q19advds4t5",
         )
 
         assert response.is_closed is True
@@ -50,7 +49,6 @@ class TestInboundMailItems:
     def test_streaming_response_create(self, client: Increase) -> None:
         with client.simulations.inbound_mail_items.with_streaming_response.create(
             amount=1000,
-            lockbox_id="lockbox_3xt21ok13q19advds4t5",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -70,7 +68,6 @@ class TestAsyncInboundMailItems:
     async def test_method_create(self, async_client: AsyncIncrease) -> None:
         inbound_mail_item = await async_client.simulations.inbound_mail_items.create(
             amount=1000,
-            lockbox_id="lockbox_3xt21ok13q19advds4t5",
         )
         assert_matches_type(InboundMailItem, inbound_mail_item, path=["response"])
 
@@ -78,8 +75,9 @@ class TestAsyncInboundMailItems:
     async def test_method_create_with_all_params(self, async_client: AsyncIncrease) -> None:
         inbound_mail_item = await async_client.simulations.inbound_mail_items.create(
             amount=1000,
-            lockbox_id="lockbox_3xt21ok13q19advds4t5",
             contents_file_id="contents_file_id",
+            lockbox_address_id="lockbox_address_id",
+            lockbox_recipient_id="lockbox_3xt21ok13q19advds4t5",
         )
         assert_matches_type(InboundMailItem, inbound_mail_item, path=["response"])
 
@@ -87,7 +85,6 @@ class TestAsyncInboundMailItems:
     async def test_raw_response_create(self, async_client: AsyncIncrease) -> None:
         response = await async_client.simulations.inbound_mail_items.with_raw_response.create(
             amount=1000,
-            lockbox_id="lockbox_3xt21ok13q19advds4t5",
         )
 
         assert response.is_closed is True
@@ -99,7 +96,6 @@ class TestAsyncInboundMailItems:
     async def test_streaming_response_create(self, async_client: AsyncIncrease) -> None:
         async with async_client.simulations.inbound_mail_items.with_streaming_response.create(
             amount=1000,
-            lockbox_id="lockbox_3xt21ok13q19advds4t5",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

@@ -6,7 +6,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..types import lockbox_list_params, lockbox_create_params, lockbox_update_params
+from ..types import lockbox_recipient_list_params, lockbox_recipient_create_params, lockbox_recipient_update_params
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
@@ -19,35 +19,36 @@ from .._response import (
 )
 from ..pagination import SyncPage, AsyncPage
 from .._base_client import AsyncPaginator, make_request_options
-from ..types.lockbox import Lockbox
+from ..types.lockbox_recipient import LockboxRecipient
 
-__all__ = ["LockboxesResource", "AsyncLockboxesResource"]
+__all__ = ["LockboxRecipientsResource", "AsyncLockboxRecipientsResource"]
 
 
-class LockboxesResource(SyncAPIResource):
+class LockboxRecipientsResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> LockboxesResourceWithRawResponse:
+    def with_raw_response(self) -> LockboxRecipientsResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
         For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
         """
-        return LockboxesResourceWithRawResponse(self)
+        return LockboxRecipientsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> LockboxesResourceWithStreamingResponse:
+    def with_streaming_response(self) -> LockboxRecipientsResourceWithStreamingResponse:
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
         For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
         """
-        return LockboxesResourceWithStreamingResponse(self)
+        return LockboxRecipientsResourceWithStreamingResponse(self)
 
     def create(
         self,
         *,
         account_id: str,
+        lockbox_address_id: str,
         description: str | Omit = omit,
         recipient_name: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -57,16 +58,18 @@ class LockboxesResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
-    ) -> Lockbox:
+    ) -> LockboxRecipient:
         """
-        Create a Lockbox
+        Create a Lockbox Recipient
 
         Args:
-          account_id: The Account checks sent to this Lockbox should be deposited into.
+          account_id: The Account that checks sent to this Lockbox Recipient should be deposited into.
 
-          description: The description you choose for the Lockbox, for display purposes.
+          lockbox_address_id: The Lockbox Address where this Lockbox Recipient may receive mail.
 
-          recipient_name: The name of the recipient that will receive mail at this location.
+          description: The description you choose for the Lockbox Recipient.
+
+          recipient_name: The name of the Lockbox Recipient
 
           extra_headers: Send extra headers
 
@@ -79,14 +82,15 @@ class LockboxesResource(SyncAPIResource):
           idempotency_key: Specify a custom idempotency key for this request
         """
         return self._post(
-            "/lockboxes",
+            "/lockbox_recipients",
             body=maybe_transform(
                 {
                     "account_id": account_id,
+                    "lockbox_address_id": lockbox_address_id,
                     "description": description,
                     "recipient_name": recipient_name,
                 },
-                lockbox_create_params.LockboxCreateParams,
+                lockbox_recipient_create_params.LockboxRecipientCreateParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -95,12 +99,12 @@ class LockboxesResource(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=Lockbox,
+            cast_to=LockboxRecipient,
         )
 
     def retrieve(
         self,
-        lockbox_id: str,
+        lockbox_recipient_id: str,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -108,12 +112,12 @@ class LockboxesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> Lockbox:
+    ) -> LockboxRecipient:
         """
-        Retrieve a Lockbox
+        Retrieve a Lockbox Recipient
 
         Args:
-          lockbox_id: The identifier of the Lockbox to retrieve.
+          lockbox_recipient_id: The identifier of the Lockbox Recipient to retrieve.
 
           extra_headers: Send extra headers
 
@@ -123,23 +127,25 @@ class LockboxesResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not lockbox_id:
-            raise ValueError(f"Expected a non-empty value for `lockbox_id` but received {lockbox_id!r}")
+        if not lockbox_recipient_id:
+            raise ValueError(
+                f"Expected a non-empty value for `lockbox_recipient_id` but received {lockbox_recipient_id!r}"
+            )
         return self._get(
-            path_template("/lockboxes/{lockbox_id}", lockbox_id=lockbox_id),
+            path_template("/lockbox_recipients/{lockbox_recipient_id}", lockbox_recipient_id=lockbox_recipient_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Lockbox,
+            cast_to=LockboxRecipient,
         )
 
     def update(
         self,
-        lockbox_id: str,
+        lockbox_recipient_id: str,
         *,
-        check_deposit_behavior: Literal["enabled", "disabled", "pend_for_processing"] | Omit = omit,
         description: str | Omit = omit,
         recipient_name: str | Omit = omit,
+        status: Literal["active", "disabled", "canceled"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -147,23 +153,24 @@ class LockboxesResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
-    ) -> Lockbox:
+    ) -> LockboxRecipient:
         """
-        Update a Lockbox
+        Update a Lockbox Recipient
 
         Args:
-          lockbox_id: The identifier of the Lockbox.
+          lockbox_recipient_id: The identifier of the Lockbox Recipient.
 
-          check_deposit_behavior: This indicates if checks mailed to this lockbox will be deposited.
+          description: The description you choose for the Lockbox Recipient.
 
-              - `enabled` - Checks mailed to this Lockbox will be deposited.
-              - `disabled` - Checks mailed to this Lockbox will not be deposited.
-              - `pend_for_processing` - Checks mailed to this Lockbox will be pending until
-                actioned.
+          recipient_name: The name of the Lockbox Recipient.
 
-          description: The description you choose for the Lockbox.
+          status: The status of the Lockbox Recipient.
 
-          recipient_name: The recipient name you choose for the Lockbox.
+              - `active` - This Lockbox Recipient is active.
+              - `disabled` - This Lockbox Recipient is disabled. Checks mailed to this Lockbox
+                Recipient will be rejected.
+              - `canceled` - This Lockbox Recipient is canceled and cannot be modified. Checks
+                mailed to this Lockbox Recipient will be rejected.
 
           extra_headers: Send extra headers
 
@@ -175,17 +182,19 @@ class LockboxesResource(SyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
-        if not lockbox_id:
-            raise ValueError(f"Expected a non-empty value for `lockbox_id` but received {lockbox_id!r}")
+        if not lockbox_recipient_id:
+            raise ValueError(
+                f"Expected a non-empty value for `lockbox_recipient_id` but received {lockbox_recipient_id!r}"
+            )
         return self._patch(
-            path_template("/lockboxes/{lockbox_id}", lockbox_id=lockbox_id),
+            path_template("/lockbox_recipients/{lockbox_recipient_id}", lockbox_recipient_id=lockbox_recipient_id),
             body=maybe_transform(
                 {
-                    "check_deposit_behavior": check_deposit_behavior,
                     "description": description,
                     "recipient_name": recipient_name,
+                    "status": status,
                 },
-                lockbox_update_params.LockboxUpdateParams,
+                lockbox_recipient_update_params.LockboxRecipientUpdateParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -194,29 +203,30 @@ class LockboxesResource(SyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=Lockbox,
+            cast_to=LockboxRecipient,
         )
 
     def list(
         self,
         *,
         account_id: str | Omit = omit,
-        created_at: lockbox_list_params.CreatedAt | Omit = omit,
+        created_at: lockbox_recipient_list_params.CreatedAt | Omit = omit,
         cursor: str | Omit = omit,
         idempotency_key: str | Omit = omit,
         limit: int | Omit = omit,
+        lockbox_address_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SyncPage[Lockbox]:
+    ) -> SyncPage[LockboxRecipient]:
         """
-        List Lockboxes
+        List Lockbox Recipients
 
         Args:
-          account_id: Filter Lockboxes to those associated with the provided Account.
+          account_id: Filter Lockbox Recipients to those associated with the provided Account.
 
           cursor: Return the page of entries after this one.
 
@@ -228,6 +238,8 @@ class LockboxesResource(SyncAPIResource):
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
 
+          lockbox_address_id: Filter Lockbox Recipients to those associated with the provided Lockbox Address.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -237,8 +249,8 @@ class LockboxesResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get_api_list(
-            "/lockboxes",
-            page=SyncPage[Lockbox],
+            "/lockbox_recipients",
+            page=SyncPage[LockboxRecipient],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -251,38 +263,40 @@ class LockboxesResource(SyncAPIResource):
                         "cursor": cursor,
                         "idempotency_key": idempotency_key,
                         "limit": limit,
+                        "lockbox_address_id": lockbox_address_id,
                     },
-                    lockbox_list_params.LockboxListParams,
+                    lockbox_recipient_list_params.LockboxRecipientListParams,
                 ),
             ),
-            model=Lockbox,
+            model=LockboxRecipient,
         )
 
 
-class AsyncLockboxesResource(AsyncAPIResource):
+class AsyncLockboxRecipientsResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncLockboxesResourceWithRawResponse:
+    def with_raw_response(self) -> AsyncLockboxRecipientsResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
         For more information, see https://www.github.com/Increase/increase-python#accessing-raw-response-data-eg-headers
         """
-        return AsyncLockboxesResourceWithRawResponse(self)
+        return AsyncLockboxRecipientsResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncLockboxesResourceWithStreamingResponse:
+    def with_streaming_response(self) -> AsyncLockboxRecipientsResourceWithStreamingResponse:
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
         For more information, see https://www.github.com/Increase/increase-python#with_streaming_response
         """
-        return AsyncLockboxesResourceWithStreamingResponse(self)
+        return AsyncLockboxRecipientsResourceWithStreamingResponse(self)
 
     async def create(
         self,
         *,
         account_id: str,
+        lockbox_address_id: str,
         description: str | Omit = omit,
         recipient_name: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -292,16 +306,18 @@ class AsyncLockboxesResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
-    ) -> Lockbox:
+    ) -> LockboxRecipient:
         """
-        Create a Lockbox
+        Create a Lockbox Recipient
 
         Args:
-          account_id: The Account checks sent to this Lockbox should be deposited into.
+          account_id: The Account that checks sent to this Lockbox Recipient should be deposited into.
 
-          description: The description you choose for the Lockbox, for display purposes.
+          lockbox_address_id: The Lockbox Address where this Lockbox Recipient may receive mail.
 
-          recipient_name: The name of the recipient that will receive mail at this location.
+          description: The description you choose for the Lockbox Recipient.
+
+          recipient_name: The name of the Lockbox Recipient
 
           extra_headers: Send extra headers
 
@@ -314,14 +330,15 @@ class AsyncLockboxesResource(AsyncAPIResource):
           idempotency_key: Specify a custom idempotency key for this request
         """
         return await self._post(
-            "/lockboxes",
+            "/lockbox_recipients",
             body=await async_maybe_transform(
                 {
                     "account_id": account_id,
+                    "lockbox_address_id": lockbox_address_id,
                     "description": description,
                     "recipient_name": recipient_name,
                 },
-                lockbox_create_params.LockboxCreateParams,
+                lockbox_recipient_create_params.LockboxRecipientCreateParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -330,12 +347,12 @@ class AsyncLockboxesResource(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=Lockbox,
+            cast_to=LockboxRecipient,
         )
 
     async def retrieve(
         self,
-        lockbox_id: str,
+        lockbox_recipient_id: str,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -343,12 +360,12 @@ class AsyncLockboxesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> Lockbox:
+    ) -> LockboxRecipient:
         """
-        Retrieve a Lockbox
+        Retrieve a Lockbox Recipient
 
         Args:
-          lockbox_id: The identifier of the Lockbox to retrieve.
+          lockbox_recipient_id: The identifier of the Lockbox Recipient to retrieve.
 
           extra_headers: Send extra headers
 
@@ -358,23 +375,25 @@ class AsyncLockboxesResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not lockbox_id:
-            raise ValueError(f"Expected a non-empty value for `lockbox_id` but received {lockbox_id!r}")
+        if not lockbox_recipient_id:
+            raise ValueError(
+                f"Expected a non-empty value for `lockbox_recipient_id` but received {lockbox_recipient_id!r}"
+            )
         return await self._get(
-            path_template("/lockboxes/{lockbox_id}", lockbox_id=lockbox_id),
+            path_template("/lockbox_recipients/{lockbox_recipient_id}", lockbox_recipient_id=lockbox_recipient_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=Lockbox,
+            cast_to=LockboxRecipient,
         )
 
     async def update(
         self,
-        lockbox_id: str,
+        lockbox_recipient_id: str,
         *,
-        check_deposit_behavior: Literal["enabled", "disabled", "pend_for_processing"] | Omit = omit,
         description: str | Omit = omit,
         recipient_name: str | Omit = omit,
+        status: Literal["active", "disabled", "canceled"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -382,23 +401,24 @@ class AsyncLockboxesResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
-    ) -> Lockbox:
+    ) -> LockboxRecipient:
         """
-        Update a Lockbox
+        Update a Lockbox Recipient
 
         Args:
-          lockbox_id: The identifier of the Lockbox.
+          lockbox_recipient_id: The identifier of the Lockbox Recipient.
 
-          check_deposit_behavior: This indicates if checks mailed to this lockbox will be deposited.
+          description: The description you choose for the Lockbox Recipient.
 
-              - `enabled` - Checks mailed to this Lockbox will be deposited.
-              - `disabled` - Checks mailed to this Lockbox will not be deposited.
-              - `pend_for_processing` - Checks mailed to this Lockbox will be pending until
-                actioned.
+          recipient_name: The name of the Lockbox Recipient.
 
-          description: The description you choose for the Lockbox.
+          status: The status of the Lockbox Recipient.
 
-          recipient_name: The recipient name you choose for the Lockbox.
+              - `active` - This Lockbox Recipient is active.
+              - `disabled` - This Lockbox Recipient is disabled. Checks mailed to this Lockbox
+                Recipient will be rejected.
+              - `canceled` - This Lockbox Recipient is canceled and cannot be modified. Checks
+                mailed to this Lockbox Recipient will be rejected.
 
           extra_headers: Send extra headers
 
@@ -410,17 +430,19 @@ class AsyncLockboxesResource(AsyncAPIResource):
 
           idempotency_key: Specify a custom idempotency key for this request
         """
-        if not lockbox_id:
-            raise ValueError(f"Expected a non-empty value for `lockbox_id` but received {lockbox_id!r}")
+        if not lockbox_recipient_id:
+            raise ValueError(
+                f"Expected a non-empty value for `lockbox_recipient_id` but received {lockbox_recipient_id!r}"
+            )
         return await self._patch(
-            path_template("/lockboxes/{lockbox_id}", lockbox_id=lockbox_id),
+            path_template("/lockbox_recipients/{lockbox_recipient_id}", lockbox_recipient_id=lockbox_recipient_id),
             body=await async_maybe_transform(
                 {
-                    "check_deposit_behavior": check_deposit_behavior,
                     "description": description,
                     "recipient_name": recipient_name,
+                    "status": status,
                 },
-                lockbox_update_params.LockboxUpdateParams,
+                lockbox_recipient_update_params.LockboxRecipientUpdateParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -429,29 +451,30 @@ class AsyncLockboxesResource(AsyncAPIResource):
                 timeout=timeout,
                 idempotency_key=idempotency_key,
             ),
-            cast_to=Lockbox,
+            cast_to=LockboxRecipient,
         )
 
     def list(
         self,
         *,
         account_id: str | Omit = omit,
-        created_at: lockbox_list_params.CreatedAt | Omit = omit,
+        created_at: lockbox_recipient_list_params.CreatedAt | Omit = omit,
         cursor: str | Omit = omit,
         idempotency_key: str | Omit = omit,
         limit: int | Omit = omit,
+        lockbox_address_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AsyncPaginator[Lockbox, AsyncPage[Lockbox]]:
+    ) -> AsyncPaginator[LockboxRecipient, AsyncPage[LockboxRecipient]]:
         """
-        List Lockboxes
+        List Lockbox Recipients
 
         Args:
-          account_id: Filter Lockboxes to those associated with the provided Account.
+          account_id: Filter Lockbox Recipients to those associated with the provided Account.
 
           cursor: Return the page of entries after this one.
 
@@ -463,6 +486,8 @@ class AsyncLockboxesResource(AsyncAPIResource):
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
 
+          lockbox_address_id: Filter Lockbox Recipients to those associated with the provided Lockbox Address.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -472,8 +497,8 @@ class AsyncLockboxesResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get_api_list(
-            "/lockboxes",
-            page=AsyncPage[Lockbox],
+            "/lockbox_recipients",
+            page=AsyncPage[LockboxRecipient],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -486,81 +511,82 @@ class AsyncLockboxesResource(AsyncAPIResource):
                         "cursor": cursor,
                         "idempotency_key": idempotency_key,
                         "limit": limit,
+                        "lockbox_address_id": lockbox_address_id,
                     },
-                    lockbox_list_params.LockboxListParams,
+                    lockbox_recipient_list_params.LockboxRecipientListParams,
                 ),
             ),
-            model=Lockbox,
+            model=LockboxRecipient,
         )
 
 
-class LockboxesResourceWithRawResponse:
-    def __init__(self, lockboxes: LockboxesResource) -> None:
-        self._lockboxes = lockboxes
+class LockboxRecipientsResourceWithRawResponse:
+    def __init__(self, lockbox_recipients: LockboxRecipientsResource) -> None:
+        self._lockbox_recipients = lockbox_recipients
 
         self.create = to_raw_response_wrapper(
-            lockboxes.create,
+            lockbox_recipients.create,
         )
         self.retrieve = to_raw_response_wrapper(
-            lockboxes.retrieve,
+            lockbox_recipients.retrieve,
         )
         self.update = to_raw_response_wrapper(
-            lockboxes.update,
+            lockbox_recipients.update,
         )
         self.list = to_raw_response_wrapper(
-            lockboxes.list,
+            lockbox_recipients.list,
         )
 
 
-class AsyncLockboxesResourceWithRawResponse:
-    def __init__(self, lockboxes: AsyncLockboxesResource) -> None:
-        self._lockboxes = lockboxes
+class AsyncLockboxRecipientsResourceWithRawResponse:
+    def __init__(self, lockbox_recipients: AsyncLockboxRecipientsResource) -> None:
+        self._lockbox_recipients = lockbox_recipients
 
         self.create = async_to_raw_response_wrapper(
-            lockboxes.create,
+            lockbox_recipients.create,
         )
         self.retrieve = async_to_raw_response_wrapper(
-            lockboxes.retrieve,
+            lockbox_recipients.retrieve,
         )
         self.update = async_to_raw_response_wrapper(
-            lockboxes.update,
+            lockbox_recipients.update,
         )
         self.list = async_to_raw_response_wrapper(
-            lockboxes.list,
+            lockbox_recipients.list,
         )
 
 
-class LockboxesResourceWithStreamingResponse:
-    def __init__(self, lockboxes: LockboxesResource) -> None:
-        self._lockboxes = lockboxes
+class LockboxRecipientsResourceWithStreamingResponse:
+    def __init__(self, lockbox_recipients: LockboxRecipientsResource) -> None:
+        self._lockbox_recipients = lockbox_recipients
 
         self.create = to_streamed_response_wrapper(
-            lockboxes.create,
+            lockbox_recipients.create,
         )
         self.retrieve = to_streamed_response_wrapper(
-            lockboxes.retrieve,
+            lockbox_recipients.retrieve,
         )
         self.update = to_streamed_response_wrapper(
-            lockboxes.update,
+            lockbox_recipients.update,
         )
         self.list = to_streamed_response_wrapper(
-            lockboxes.list,
+            lockbox_recipients.list,
         )
 
 
-class AsyncLockboxesResourceWithStreamingResponse:
-    def __init__(self, lockboxes: AsyncLockboxesResource) -> None:
-        self._lockboxes = lockboxes
+class AsyncLockboxRecipientsResourceWithStreamingResponse:
+    def __init__(self, lockbox_recipients: AsyncLockboxRecipientsResource) -> None:
+        self._lockbox_recipients = lockbox_recipients
 
         self.create = async_to_streamed_response_wrapper(
-            lockboxes.create,
+            lockbox_recipients.create,
         )
         self.retrieve = async_to_streamed_response_wrapper(
-            lockboxes.retrieve,
+            lockbox_recipients.retrieve,
         )
         self.update = async_to_streamed_response_wrapper(
-            lockboxes.update,
+            lockbox_recipients.update,
         )
         self.list = async_to_streamed_response_wrapper(
-            lockboxes.list,
+            lockbox_recipients.list,
         )

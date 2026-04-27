@@ -64,14 +64,6 @@ from .programs import (
     ProgramsResourceWithStreamingResponse,
     AsyncProgramsResourceWithStreamingResponse,
 )
-from .lockboxes import (
-    LockboxesResource,
-    AsyncLockboxesResource,
-    LockboxesResourceWithRawResponse,
-    AsyncLockboxesResourceWithRawResponse,
-    LockboxesResourceWithStreamingResponse,
-    AsyncLockboxesResourceWithStreamingResponse,
-)
 from .file_links import (
     FileLinksResource,
     AsyncFileLinksResource,
@@ -240,6 +232,14 @@ from .external_accounts import (
     ExternalAccountsResourceWithStreamingResponse,
     AsyncExternalAccountsResourceWithStreamingResponse,
 )
+from .lockbox_addresses import (
+    LockboxAddressesResource,
+    AsyncLockboxAddressesResource,
+    LockboxAddressesResourceWithRawResponse,
+    AsyncLockboxAddressesResourceWithRawResponse,
+    LockboxAddressesResourceWithStreamingResponse,
+    AsyncLockboxAddressesResourceWithStreamingResponse,
+)
 from .oauth_connections import (
     OAuthConnectionsResource,
     AsyncOAuthConnectionsResource,
@@ -271,6 +271,14 @@ from .intrafi_exclusions import (
     AsyncIntrafiExclusionsResourceWithRawResponse,
     IntrafiExclusionsResourceWithStreamingResponse,
     AsyncIntrafiExclusionsResourceWithStreamingResponse,
+)
+from .lockbox_recipients import (
+    LockboxRecipientsResource,
+    AsyncLockboxRecipientsResource,
+    LockboxRecipientsResourceWithRawResponse,
+    AsyncLockboxRecipientsResourceWithRawResponse,
+    LockboxRecipientsResourceWithStreamingResponse,
+    AsyncLockboxRecipientsResourceWithStreamingResponse,
 )
 from .oauth_applications import (
     OAuthApplicationsResource,
@@ -624,12 +632,18 @@ __all__ = [
     "AsyncCheckDepositsResourceWithRawResponse",
     "CheckDepositsResourceWithStreamingResponse",
     "AsyncCheckDepositsResourceWithStreamingResponse",
-    "LockboxesResource",
-    "AsyncLockboxesResource",
-    "LockboxesResourceWithRawResponse",
-    "AsyncLockboxesResourceWithRawResponse",
-    "LockboxesResourceWithStreamingResponse",
-    "AsyncLockboxesResourceWithStreamingResponse",
+    "LockboxAddressesResource",
+    "AsyncLockboxAddressesResource",
+    "LockboxAddressesResourceWithRawResponse",
+    "AsyncLockboxAddressesResourceWithRawResponse",
+    "LockboxAddressesResourceWithStreamingResponse",
+    "AsyncLockboxAddressesResourceWithStreamingResponse",
+    "LockboxRecipientsResource",
+    "AsyncLockboxRecipientsResource",
+    "LockboxRecipientsResourceWithRawResponse",
+    "AsyncLockboxRecipientsResourceWithRawResponse",
+    "LockboxRecipientsResourceWithStreamingResponse",
+    "AsyncLockboxRecipientsResourceWithStreamingResponse",
     "InboundMailItemsResource",
     "AsyncInboundMailItemsResource",
     "InboundMailItemsResourceWithRawResponse",
