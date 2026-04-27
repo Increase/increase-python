@@ -22,6 +22,7 @@ from ._types import (
 from ._utils import (
     is_given,
     is_mapping,
+    is_mapping_t,
     get_async_library,
 )
 from ._compat import cached_property
@@ -263,6 +264,15 @@ class Increase(SyncAPIClient):
                 base_url = ENVIRONMENTS[environment]
             except KeyError as exc:
                 raise ValueError(f"Unknown environment: {environment}") from exc
+
+        custom_headers_env = os.environ.get("INCREASE_CUSTOM_HEADERS")
+        if custom_headers_env is not None:
+            parsed: dict[str, str] = {}
+            for line in custom_headers_env.split("\n"):
+                colon = line.find(":")
+                if colon >= 0:
+                    parsed[line[:colon].strip()] = line[colon + 1 :].strip()
+            default_headers = {**parsed, **(default_headers if is_mapping_t(default_headers) else {})}
 
         super().__init__(
             version=__version__,
@@ -856,6 +866,15 @@ class AsyncIncrease(AsyncAPIClient):
                 base_url = ENVIRONMENTS[environment]
             except KeyError as exc:
                 raise ValueError(f"Unknown environment: {environment}") from exc
+
+        custom_headers_env = os.environ.get("INCREASE_CUSTOM_HEADERS")
+        if custom_headers_env is not None:
+            parsed: dict[str, str] = {}
+            for line in custom_headers_env.split("\n"):
+                colon = line.find(":")
+                if colon >= 0:
+                    parsed[line[:colon].strip()] = line[colon + 1 :].strip()
+            default_headers = {**parsed, **(default_headers if is_mapping_t(default_headers) else {})}
 
         super().__init__(
             version=__version__,
