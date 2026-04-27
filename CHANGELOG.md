@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.498.0 (2026-04-27)
+
+Full Changelog: [v0.497.0...v0.498.0](https://github.com/Increase/increase-python/compare/v0.497.0...v0.498.0)
+
+### Features
+
+* support setting headers via env ([ae4500c](https://github.com/Increase/increase-python/commit/ae4500cfb7c6d4e734542e9371001cfe9b4750b3))
+
 ## 0.497.0 (2026-04-27)
 
 Full Changelog: [v0.496.0...v0.497.0](https://github.com/Increase/increase-python/compare/v0.496.0...v0.497.0)
