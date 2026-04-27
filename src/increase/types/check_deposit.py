@@ -469,10 +469,11 @@ class CheckDeposit(BaseModel):
     the identifier of the Inbound Mail Item.
     """
 
-    lockbox_id: Optional[str] = None
+    lockbox_recipient_id: Optional[str] = None
     """
-    If the Check Deposit was the result of an Inbound Mail Item, this will contain
-    the identifier of the Lockbox that received it.
+    If the Check Deposit was the result of an Inbound Mail Item routed to a Lockbox
+    Recipient, this will contain the identifier of the Lockbox Recipient that
+    received it.
     """
 
     status: Literal["pending", "submitted", "rejected", "returned"]

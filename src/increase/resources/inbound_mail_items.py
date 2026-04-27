@@ -87,7 +87,8 @@ class InboundMailItemsResource(SyncAPIResource):
         created_at: inbound_mail_item_list_params.CreatedAt | Omit = omit,
         cursor: str | Omit = omit,
         limit: int | Omit = omit,
-        lockbox_id: str | Omit = omit,
+        lockbox_address_id: str | Omit = omit,
+        lockbox_recipient_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -104,7 +105,9 @@ class InboundMailItemsResource(SyncAPIResource):
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
 
-          lockbox_id: Filter Inbound Mail Items to ones sent to the provided Lockbox.
+          lockbox_address_id: Filter Inbound Mail Items to ones sent to the provided Lockbox Address.
+
+          lockbox_recipient_id: Filter Inbound Mail Items to ones sent to the provided Lockbox Recipient.
 
           extra_headers: Send extra headers
 
@@ -127,7 +130,8 @@ class InboundMailItemsResource(SyncAPIResource):
                         "created_at": created_at,
                         "cursor": cursor,
                         "limit": limit,
-                        "lockbox_id": lockbox_id,
+                        "lockbox_address_id": lockbox_address_id,
+                        "lockbox_recipient_id": lockbox_recipient_id,
                     },
                     inbound_mail_item_list_params.InboundMailItemListParams,
                 ),
@@ -249,7 +253,8 @@ class AsyncInboundMailItemsResource(AsyncAPIResource):
         created_at: inbound_mail_item_list_params.CreatedAt | Omit = omit,
         cursor: str | Omit = omit,
         limit: int | Omit = omit,
-        lockbox_id: str | Omit = omit,
+        lockbox_address_id: str | Omit = omit,
+        lockbox_recipient_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -266,7 +271,9 @@ class AsyncInboundMailItemsResource(AsyncAPIResource):
           limit: Limit the size of the list that is returned. The default (and maximum) is 100
               objects.
 
-          lockbox_id: Filter Inbound Mail Items to ones sent to the provided Lockbox.
+          lockbox_address_id: Filter Inbound Mail Items to ones sent to the provided Lockbox Address.
+
+          lockbox_recipient_id: Filter Inbound Mail Items to ones sent to the provided Lockbox Recipient.
 
           extra_headers: Send extra headers
 
@@ -289,7 +296,8 @@ class AsyncInboundMailItemsResource(AsyncAPIResource):
                         "created_at": created_at,
                         "cursor": cursor,
                         "limit": limit,
-                        "lockbox_id": lockbox_id,
+                        "lockbox_address_id": lockbox_address_id,
+                        "lockbox_recipient_id": lockbox_recipient_id,
                     },
                     inbound_mail_item_list_params.InboundMailItemListParams,
                 ),

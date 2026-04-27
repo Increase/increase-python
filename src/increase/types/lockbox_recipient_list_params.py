@@ -8,14 +8,25 @@ from typing_extensions import Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
-__all__ = ["InboundMailItemListParams", "CreatedAt"]
+__all__ = ["LockboxRecipientListParams", "CreatedAt"]
 
 
-class InboundMailItemListParams(TypedDict, total=False):
+class LockboxRecipientListParams(TypedDict, total=False):
+    account_id: str
+    """Filter Lockbox Recipients to those associated with the provided Account."""
+
     created_at: CreatedAt
 
     cursor: str
     """Return the page of entries after this one."""
+
+    idempotency_key: str
+    """
+    Filter records to the one with the specified `idempotency_key` you chose for
+    that object. This value is unique across Increase and is used to ensure that a
+    request is only processed once. Learn more about
+    [idempotency](https://increase.com/documentation/idempotency-keys).
+    """
 
     limit: int
     """Limit the size of the list that is returned.
@@ -24,10 +35,9 @@ class InboundMailItemListParams(TypedDict, total=False):
     """
 
     lockbox_address_id: str
-    """Filter Inbound Mail Items to ones sent to the provided Lockbox Address."""
-
-    lockbox_recipient_id: str
-    """Filter Inbound Mail Items to ones sent to the provided Lockbox Recipient."""
+    """
+    Filter Lockbox Recipients to those associated with the provided Lockbox Address.
+    """
 
 
 class CreatedAt(TypedDict, total=False):

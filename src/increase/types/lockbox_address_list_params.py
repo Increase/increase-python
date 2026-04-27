@@ -8,13 +8,10 @@ from typing_extensions import Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
-__all__ = ["LockboxListParams", "CreatedAt"]
+__all__ = ["LockboxAddressListParams", "CreatedAt"]
 
 
-class LockboxListParams(TypedDict, total=False):
-    account_id: str
-    """Filter Lockboxes to those associated with the provided Account."""
-
+class LockboxAddressListParams(TypedDict, total=False):
     created_at: CreatedAt
 
     cursor: str
