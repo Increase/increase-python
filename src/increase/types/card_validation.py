@@ -437,11 +437,12 @@ class CardValidation(BaseModel):
     merchant_state: str
     """The U.S. state where the merchant (typically your business) is located."""
 
-    route: Literal["visa", "mastercard"]
+    route: Literal["visa", "mastercard", "pulse"]
     """The card network route used for the validation.
 
     - `visa` - Visa and Interlink
     - `mastercard` - Mastercard and Maestro
+    - `pulse` - Pulse
     """
 
     status: Literal["requires_attention", "pending_submission", "submitted", "complete", "declined"]
