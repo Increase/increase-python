@@ -44,7 +44,6 @@ if TYPE_CHECKING:
         accounts,
         entities,
         programs,
-        lockboxes,
         file_links,
         card_tokens,
         simulations,
@@ -66,10 +65,12 @@ if TYPE_CHECKING:
         account_transfers,
         beneficial_owners,
         external_accounts,
+        lockbox_addresses,
         oauth_connections,
         account_statements,
         inbound_mail_items,
         intrafi_exclusions,
+        lockbox_recipients,
         oauth_applications,
         card_push_transfers,
         event_subscriptions,
@@ -101,7 +102,6 @@ if TYPE_CHECKING:
     from .resources.accounts import AccountsResource, AsyncAccountsResource
     from .resources.entities import EntitiesResource, AsyncEntitiesResource
     from .resources.programs import ProgramsResource, AsyncProgramsResource
-    from .resources.lockboxes import LockboxesResource, AsyncLockboxesResource
     from .resources.file_links import FileLinksResource, AsyncFileLinksResource
     from .resources.card_tokens import CardTokensResource, AsyncCardTokensResource
     from .resources.oauth_tokens import OAuthTokensResource, AsyncOAuthTokensResource
@@ -122,10 +122,12 @@ if TYPE_CHECKING:
     from .resources.account_transfers import AccountTransfersResource, AsyncAccountTransfersResource
     from .resources.beneficial_owners import BeneficialOwnersResource, AsyncBeneficialOwnersResource
     from .resources.external_accounts import ExternalAccountsResource, AsyncExternalAccountsResource
+    from .resources.lockbox_addresses import LockboxAddressesResource, AsyncLockboxAddressesResource
     from .resources.oauth_connections import OAuthConnectionsResource, AsyncOAuthConnectionsResource
     from .resources.account_statements import AccountStatementsResource, AsyncAccountStatementsResource
     from .resources.inbound_mail_items import InboundMailItemsResource, AsyncInboundMailItemsResource
     from .resources.intrafi_exclusions import IntrafiExclusionsResource, AsyncIntrafiExclusionsResource
+    from .resources.lockbox_recipients import LockboxRecipientsResource, AsyncLockboxRecipientsResource
     from .resources.oauth_applications import OAuthApplicationsResource, AsyncOAuthApplicationsResource
     from .resources.card_push_transfers import CardPushTransfersResource, AsyncCardPushTransfersResource
     from .resources.event_subscriptions import EventSubscriptionsResource, AsyncEventSubscriptionsResource
@@ -450,10 +452,16 @@ class Increase(SyncAPIClient):
         return CheckDepositsResource(self)
 
     @cached_property
-    def lockboxes(self) -> LockboxesResource:
-        from .resources.lockboxes import LockboxesResource
+    def lockbox_addresses(self) -> LockboxAddressesResource:
+        from .resources.lockbox_addresses import LockboxAddressesResource
 
-        return LockboxesResource(self)
+        return LockboxAddressesResource(self)
+
+    @cached_property
+    def lockbox_recipients(self) -> LockboxRecipientsResource:
+        from .resources.lockbox_recipients import LockboxRecipientsResource
+
+        return LockboxRecipientsResource(self)
 
     @cached_property
     def inbound_mail_items(self) -> InboundMailItemsResource:
@@ -1037,10 +1045,16 @@ class AsyncIncrease(AsyncAPIClient):
         return AsyncCheckDepositsResource(self)
 
     @cached_property
-    def lockboxes(self) -> AsyncLockboxesResource:
-        from .resources.lockboxes import AsyncLockboxesResource
+    def lockbox_addresses(self) -> AsyncLockboxAddressesResource:
+        from .resources.lockbox_addresses import AsyncLockboxAddressesResource
 
-        return AsyncLockboxesResource(self)
+        return AsyncLockboxAddressesResource(self)
+
+    @cached_property
+    def lockbox_recipients(self) -> AsyncLockboxRecipientsResource:
+        from .resources.lockbox_recipients import AsyncLockboxRecipientsResource
+
+        return AsyncLockboxRecipientsResource(self)
 
     @cached_property
     def inbound_mail_items(self) -> AsyncInboundMailItemsResource:
@@ -1551,10 +1565,16 @@ class IncreaseWithRawResponse:
         return CheckDepositsResourceWithRawResponse(self._client.check_deposits)
 
     @cached_property
-    def lockboxes(self) -> lockboxes.LockboxesResourceWithRawResponse:
-        from .resources.lockboxes import LockboxesResourceWithRawResponse
+    def lockbox_addresses(self) -> lockbox_addresses.LockboxAddressesResourceWithRawResponse:
+        from .resources.lockbox_addresses import LockboxAddressesResourceWithRawResponse
 
-        return LockboxesResourceWithRawResponse(self._client.lockboxes)
+        return LockboxAddressesResourceWithRawResponse(self._client.lockbox_addresses)
+
+    @cached_property
+    def lockbox_recipients(self) -> lockbox_recipients.LockboxRecipientsResourceWithRawResponse:
+        from .resources.lockbox_recipients import LockboxRecipientsResourceWithRawResponse
+
+        return LockboxRecipientsResourceWithRawResponse(self._client.lockbox_recipients)
 
     @cached_property
     def inbound_mail_items(self) -> inbound_mail_items.InboundMailItemsResourceWithRawResponse:
@@ -1908,10 +1928,16 @@ class AsyncIncreaseWithRawResponse:
         return AsyncCheckDepositsResourceWithRawResponse(self._client.check_deposits)
 
     @cached_property
-    def lockboxes(self) -> lockboxes.AsyncLockboxesResourceWithRawResponse:
-        from .resources.lockboxes import AsyncLockboxesResourceWithRawResponse
+    def lockbox_addresses(self) -> lockbox_addresses.AsyncLockboxAddressesResourceWithRawResponse:
+        from .resources.lockbox_addresses import AsyncLockboxAddressesResourceWithRawResponse
 
-        return AsyncLockboxesResourceWithRawResponse(self._client.lockboxes)
+        return AsyncLockboxAddressesResourceWithRawResponse(self._client.lockbox_addresses)
+
+    @cached_property
+    def lockbox_recipients(self) -> lockbox_recipients.AsyncLockboxRecipientsResourceWithRawResponse:
+        from .resources.lockbox_recipients import AsyncLockboxRecipientsResourceWithRawResponse
+
+        return AsyncLockboxRecipientsResourceWithRawResponse(self._client.lockbox_recipients)
 
     @cached_property
     def inbound_mail_items(self) -> inbound_mail_items.AsyncInboundMailItemsResourceWithRawResponse:
@@ -2267,10 +2293,16 @@ class IncreaseWithStreamedResponse:
         return CheckDepositsResourceWithStreamingResponse(self._client.check_deposits)
 
     @cached_property
-    def lockboxes(self) -> lockboxes.LockboxesResourceWithStreamingResponse:
-        from .resources.lockboxes import LockboxesResourceWithStreamingResponse
+    def lockbox_addresses(self) -> lockbox_addresses.LockboxAddressesResourceWithStreamingResponse:
+        from .resources.lockbox_addresses import LockboxAddressesResourceWithStreamingResponse
 
-        return LockboxesResourceWithStreamingResponse(self._client.lockboxes)
+        return LockboxAddressesResourceWithStreamingResponse(self._client.lockbox_addresses)
+
+    @cached_property
+    def lockbox_recipients(self) -> lockbox_recipients.LockboxRecipientsResourceWithStreamingResponse:
+        from .resources.lockbox_recipients import LockboxRecipientsResourceWithStreamingResponse
+
+        return LockboxRecipientsResourceWithStreamingResponse(self._client.lockbox_recipients)
 
     @cached_property
     def inbound_mail_items(self) -> inbound_mail_items.InboundMailItemsResourceWithStreamingResponse:
@@ -2632,10 +2664,16 @@ class AsyncIncreaseWithStreamedResponse:
         return AsyncCheckDepositsResourceWithStreamingResponse(self._client.check_deposits)
 
     @cached_property
-    def lockboxes(self) -> lockboxes.AsyncLockboxesResourceWithStreamingResponse:
-        from .resources.lockboxes import AsyncLockboxesResourceWithStreamingResponse
+    def lockbox_addresses(self) -> lockbox_addresses.AsyncLockboxAddressesResourceWithStreamingResponse:
+        from .resources.lockbox_addresses import AsyncLockboxAddressesResourceWithStreamingResponse
 
-        return AsyncLockboxesResourceWithStreamingResponse(self._client.lockboxes)
+        return AsyncLockboxAddressesResourceWithStreamingResponse(self._client.lockbox_addresses)
+
+    @cached_property
+    def lockbox_recipients(self) -> lockbox_recipients.AsyncLockboxRecipientsResourceWithStreamingResponse:
+        from .resources.lockbox_recipients import AsyncLockboxRecipientsResourceWithStreamingResponse
+
+        return AsyncLockboxRecipientsResourceWithStreamingResponse(self._client.lockbox_recipients)
 
     @cached_property
     def inbound_mail_items(self) -> inbound_mail_items.AsyncInboundMailItemsResourceWithStreamingResponse:

@@ -9,7 +9,6 @@ from .group import Group as Group
 from .entity import Entity as Entity
 from .export import Export as Export
 from .account import Account as Account
-from .lockbox import Lockbox as Lockbox
 from .program import Program as Program
 from .file_link import FileLink as FileLink
 from .card_token import CardToken as CardToken
@@ -30,6 +29,7 @@ from .card_iframe_url import CardIframeURL as CardIframeURL
 from .card_validation import CardValidation as CardValidation
 from .fednow_transfer import FednowTransfer as FednowTransfer
 from .intrafi_balance import IntrafiBalance as IntrafiBalance
+from .lockbox_address import LockboxAddress as LockboxAddress
 from .account_transfer import AccountTransfer as AccountTransfer
 from .card_list_params import CardListParams as CardListParams
 from .external_account import ExternalAccount as ExternalAccount
@@ -39,6 +39,7 @@ from .account_statement import AccountStatement as AccountStatement
 from .event_list_params import EventListParams as EventListParams
 from .inbound_mail_item import InboundMailItem as InboundMailItem
 from .intrafi_exclusion import IntrafiExclusion as IntrafiExclusion
+from .lockbox_recipient import LockboxRecipient as LockboxRecipient
 from .oauth_application import OAuthApplication as OAuthApplication
 from .card_create_params import CardCreateParams as CardCreateParams
 from .card_push_transfer import CardPushTransfer as CardPushTransfer
@@ -50,7 +51,6 @@ from .file_create_params import FileCreateParams as FileCreateParams
 from .real_time_decision import RealTimeDecision as RealTimeDecision
 from .account_list_params import AccountListParams as AccountListParams
 from .ach_prenotification import ACHPrenotification as ACHPrenotification
-from .lockbox_list_params import LockboxListParams as LockboxListParams
 from .pending_transaction import PendingTransaction as PendingTransaction
 from .program_list_params import ProgramListParams as ProgramListParams
 from .declined_transaction import DeclinedTransaction as DeclinedTransaction
@@ -65,8 +65,6 @@ from .account_create_params import AccountCreateParams as AccountCreateParams
 from .account_update_params import AccountUpdateParams as AccountUpdateParams
 from .inbound_check_deposit import InboundCheckDeposit as InboundCheckDeposit
 from .inbound_wire_transfer import InboundWireTransfer as InboundWireTransfer
-from .lockbox_create_params import LockboxCreateParams as LockboxCreateParams
-from .lockbox_update_params import LockboxUpdateParams as LockboxUpdateParams
 from .physical_card_profile import PhysicalCardProfile as PhysicalCardProfile
 from .wire_drawdown_request import WireDrawdownRequest as WireDrawdownRequest
 from .account_balance_params import AccountBalanceParams as AccountBalanceParams
@@ -96,6 +94,7 @@ from .swift_transfer_list_params import SwiftTransferListParams as SwiftTransfer
 from .card_validation_list_params import CardValidationListParams as CardValidationListParams
 from .check_deposit_create_params import CheckDepositCreateParams as CheckDepositCreateParams
 from .fednow_transfer_list_params import FednowTransferListParams as FednowTransferListParams
+from .lockbox_address_list_params import LockboxAddressListParams as LockboxAddressListParams
 from .physical_card_create_params import PhysicalCardCreateParams as PhysicalCardCreateParams
 from .physical_card_update_params import PhysicalCardUpdateParams as PhysicalCardUpdateParams
 from .real_time_payments_transfer import RealTimePaymentsTransfer as RealTimePaymentsTransfer
@@ -117,6 +116,9 @@ from .fednow_transfer_create_params import FednowTransferCreateParams as FednowT
 from .inbound_mail_item_list_params import InboundMailItemListParams as InboundMailItemListParams
 from .inbound_wire_drawdown_request import InboundWireDrawdownRequest as InboundWireDrawdownRequest
 from .intrafi_exclusion_list_params import IntrafiExclusionListParams as IntrafiExclusionListParams
+from .lockbox_address_create_params import LockboxAddressCreateParams as LockboxAddressCreateParams
+from .lockbox_address_update_params import LockboxAddressUpdateParams as LockboxAddressUpdateParams
+from .lockbox_recipient_list_params import LockboxRecipientListParams as LockboxRecipientListParams
 from .oauth_application_list_params import OAuthApplicationListParams as OAuthApplicationListParams
 from .account_transfer_create_params import AccountTransferCreateParams as AccountTransferCreateParams
 from .beneficial_owner_create_params import BeneficialOwnerCreateParams as BeneficialOwnerCreateParams
@@ -128,6 +130,8 @@ from .external_account_update_params import ExternalAccountUpdateParams as Exter
 from .ach_prenotification_list_params import ACHPrenotificationListParams as ACHPrenotificationListParams
 from .inbound_mail_item_action_params import InboundMailItemActionParams as InboundMailItemActionParams
 from .intrafi_exclusion_create_params import IntrafiExclusionCreateParams as IntrafiExclusionCreateParams
+from .lockbox_recipient_create_params import LockboxRecipientCreateParams as LockboxRecipientCreateParams
+from .lockbox_recipient_update_params import LockboxRecipientUpdateParams as LockboxRecipientUpdateParams
 from .pending_transaction_list_params import PendingTransactionListParams as PendingTransactionListParams
 from .card_push_transfer_create_params import CardPushTransferCreateParams as CardPushTransferCreateParams
 from .declined_transaction_list_params import DeclinedTransactionListParams as DeclinedTransactionListParams

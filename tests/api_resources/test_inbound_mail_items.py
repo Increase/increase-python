@@ -73,7 +73,8 @@ class TestInboundMailItems:
             },
             cursor="cursor",
             limit=1,
-            lockbox_id="lockbox_id",
+            lockbox_address_id="lockbox_address_id",
+            lockbox_recipient_id="lockbox_recipient_id",
         )
         assert_matches_type(SyncPage[InboundMailItem], inbound_mail_item, path=["response"])
 
@@ -199,7 +200,8 @@ class TestAsyncInboundMailItems:
             },
             cursor="cursor",
             limit=1,
-            lockbox_id="lockbox_id",
+            lockbox_address_id="lockbox_address_id",
+            lockbox_recipient_id="lockbox_recipient_id",
         )
         assert_matches_type(AsyncPage[InboundMailItem], inbound_mail_item, path=["response"])
 
