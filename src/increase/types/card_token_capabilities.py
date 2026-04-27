@@ -26,11 +26,12 @@ class Route(BaseModel):
     issuer_country: str
     """The ISO-3166-1 alpha-2 country code of the card's issuing bank."""
 
-    route: Literal["visa", "mastercard"]
+    route: Literal["visa", "mastercard", "pulse"]
     """The card network route the capabilities apply to.
 
     - `visa` - Visa and Interlink
     - `mastercard` - Mastercard and Maestro
+    - `pulse` - Pulse
     """
 
 

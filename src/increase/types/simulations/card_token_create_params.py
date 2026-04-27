@@ -46,11 +46,12 @@ class Capability(TypedDict, total=False):
     - `not_supported` - The capability is not supported.
     """
 
-    route: Required[Literal["visa", "mastercard"]]
+    route: Required[Literal["visa", "mastercard", "pulse"]]
     """The route of the capability.
 
     - `visa` - Visa and Interlink
     - `mastercard` - Mastercard and Maestro
+    - `pulse` - Pulse
     """
 
 
