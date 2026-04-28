@@ -55,7 +55,7 @@ class InboundMailItem(BaseModel):
     file_id: str
     """The identifier for the File containing the scanned contents of the mail item."""
 
-    lockbox_address_id: Optional[str] = None
+    lockbox_address_id: str
     """The identifier for the Lockbox Address that received this mail item."""
 
     lockbox_recipient_id: Optional[str] = None
