@@ -812,6 +812,12 @@ Methods:
 
 - <code title="post /simulations/interest_payments">client.simulations.interest_payments.<a href="./src/increase/resources/simulations/interest_payments.py">create</a>(\*\*<a href="src/increase/types/simulations/interest_payment_create_params.py">params</a>) -> <a href="./src/increase/types/transaction.py">Transaction</a></code>
 
+## AccountRevenuePayments
+
+Methods:
+
+- <code title="post /simulations/account_revenue_payments">client.simulations.account_revenue_payments.<a href="./src/increase/resources/simulations/account_revenue_payments.py">create</a>(\*\*<a href="src/increase/types/simulations/account_revenue_payment_create_params.py">params</a>) -> <a href="./src/increase/types/transaction.py">Transaction</a></code>
+
 ## CardAuthorizations
 
 Types:
