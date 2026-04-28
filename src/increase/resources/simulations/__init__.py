@@ -208,6 +208,14 @@ from .card_fuel_confirmations import (
     CardFuelConfirmationsResourceWithStreamingResponse,
     AsyncCardFuelConfirmationsResourceWithStreamingResponse,
 )
+from .account_revenue_payments import (
+    AccountRevenuePaymentsResource,
+    AsyncAccountRevenuePaymentsResource,
+    AccountRevenuePaymentsResourceWithRawResponse,
+    AsyncAccountRevenuePaymentsResourceWithRawResponse,
+    AccountRevenuePaymentsResourceWithStreamingResponse,
+    AsyncAccountRevenuePaymentsResourceWithStreamingResponse,
+)
 from .inbound_fednow_transfers import (
     InboundFednowTransfersResource,
     AsyncInboundFednowTransfersResource,
@@ -280,6 +288,12 @@ __all__ = [
     "AsyncInterestPaymentsResourceWithRawResponse",
     "InterestPaymentsResourceWithStreamingResponse",
     "AsyncInterestPaymentsResourceWithStreamingResponse",
+    "AccountRevenuePaymentsResource",
+    "AsyncAccountRevenuePaymentsResource",
+    "AccountRevenuePaymentsResourceWithRawResponse",
+    "AsyncAccountRevenuePaymentsResourceWithRawResponse",
+    "AccountRevenuePaymentsResourceWithStreamingResponse",
+    "AsyncAccountRevenuePaymentsResourceWithStreamingResponse",
     "CardAuthorizationsResource",
     "AsyncCardAuthorizationsResource",
     "CardAuthorizationsResourceWithRawResponse",
