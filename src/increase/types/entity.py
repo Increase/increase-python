@@ -183,7 +183,8 @@ class CorporationLegalIdentifier(BaseModel):
     """The category of the legal identifier.
 
     - `us_employer_identification_number` - The Employer Identification Number (EIN)
-      for the company. The EIN is a 9-digit number assigned by the IRS.
+      for the company. The EIN is a 9-digit number assigned by the IRS; submit it as
+      nine digits with no dashes or other separators.
     - `other` - A legal identifier issued by a foreign government, like a tax
       identification number or registration number.
     """

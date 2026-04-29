@@ -159,7 +159,9 @@ class Identification(TypedDict, total=False, extra_items=object):  # type: ignor
     number: Required[str]
     """
     An identification number that can be used to verify the individual's identity,
-    such as a social security number.
+    such as a social security number. For Social Security Numbers and Individual
+    Taxpayer Identification Numbers, submit nine digits with no dashes or other
+    separators.
     """
 
     drivers_license: IdentificationDriversLicense

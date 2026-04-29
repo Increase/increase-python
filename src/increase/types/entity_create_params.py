@@ -274,7 +274,9 @@ class CorporationBeneficialOwnerIndividualIdentification(TypedDict, total=False,
     number: Required[str]
     """
     An identification number that can be used to verify the individual's identity,
-    such as a social security number.
+    such as a social security number. For Social Security Numbers and Individual
+    Taxpayer Identification Numbers, submit nine digits with no dashes or other
+    separators.
     """
 
     drivers_license: CorporationBeneficialOwnerIndividualIdentificationDriversLicense
@@ -345,7 +347,11 @@ class CorporationLegalIdentifier(TypedDict, total=False):
     """
 
     value: Required[str]
-    """The legal identifier."""
+    """The legal identifier.
+
+    For US Employer Identification Numbers, submit nine digits with no dashes or
+    other separators.
+    """
 
     category: Literal["us_employer_identification_number", "other"]
     """The category of the legal identifier.
@@ -353,7 +359,8 @@ class CorporationLegalIdentifier(TypedDict, total=False):
     If not provided, the default is `us_employer_identification_number`.
 
     - `us_employer_identification_number` - The Employer Identification Number (EIN)
-      for the company. The EIN is a 9-digit number assigned by the IRS.
+      for the company. The EIN is a 9-digit number assigned by the IRS; submit it as
+      nine digits with no dashes or other separators.
     - `other` - A legal identifier issued by a foreign government, like a tax
       identification number or registration number.
     """
@@ -486,7 +493,10 @@ class GovernmentAuthority(TypedDict, total=False):
     """The legal name of the government authority."""
 
     tax_identifier: Required[str]
-    """The Employer Identification Number (EIN) for the government authority."""
+    """The Employer Identification Number (EIN) for the government authority.
+
+    Submit nine digits with no dashes or other separators.
+    """
 
     website: str
     """The website of the government authority."""
@@ -611,7 +621,9 @@ class JointIndividualIdentification(TypedDict, total=False, extra_items=object):
     number: Required[str]
     """
     An identification number that can be used to verify the individual's identity,
-    such as a social security number.
+    such as a social security number. For Social Security Numbers and Individual
+    Taxpayer Identification Numbers, submit nine digits with no dashes or other
+    separators.
     """
 
     drivers_license: JointIndividualIdentificationDriversLicense
@@ -787,7 +799,9 @@ class NaturalPersonIdentification(TypedDict, total=False, extra_items=object):  
     number: Required[str]
     """
     An identification number that can be used to verify the individual's identity,
-    such as a social security number.
+    such as a social security number. For Social Security Numbers and Individual
+    Taxpayer Identification Numbers, submit nine digits with no dashes or other
+    separators.
     """
 
     drivers_license: NaturalPersonIdentificationDriversLicense
@@ -1041,7 +1055,9 @@ class TrustTrusteeIndividualIdentification(TypedDict, total=False, extra_items=o
     number: Required[str]
     """
     An identification number that can be used to verify the individual's identity,
-    such as a social security number.
+    such as a social security number. For Social Security Numbers and Individual
+    Taxpayer Identification Numbers, submit nine digits with no dashes or other
+    separators.
     """
 
     drivers_license: TrustTrusteeIndividualIdentificationDriversLicense
@@ -1227,7 +1243,9 @@ class TrustGrantorIdentification(TypedDict, total=False, extra_items=object):  #
     number: Required[str]
     """
     An identification number that can be used to verify the individual's identity,
-    such as a social security number.
+    such as a social security number. For Social Security Numbers and Individual
+    Taxpayer Identification Numbers, submit nine digits with no dashes or other
+    separators.
     """
 
     drivers_license: TrustGrantorIdentificationDriversLicense
@@ -1319,5 +1337,6 @@ class Trust(TypedDict, total=False):
     tax_identifier: str
     """The Employer Identification Number (EIN) for the trust.
 
-    Required if `category` is equal to `irrevocable`.
+    Submit nine digits with no dashes or other separators. Required if `category` is
+    equal to `irrevocable`.
     """
