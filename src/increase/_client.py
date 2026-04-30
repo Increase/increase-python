@@ -378,16 +378,16 @@ class Increase(SyncAPIClient):
         return ACHTransfersResource(self)
 
     @cached_property
-    def ach_prenotifications(self) -> ACHPrenotificationsResource:
-        from .resources.ach_prenotifications import ACHPrenotificationsResource
-
-        return ACHPrenotificationsResource(self)
-
-    @cached_property
     def inbound_ach_transfers(self) -> InboundACHTransfersResource:
         from .resources.inbound_ach_transfers import InboundACHTransfersResource
 
         return InboundACHTransfersResource(self)
+
+    @cached_property
+    def ach_prenotifications(self) -> ACHPrenotificationsResource:
+        from .resources.ach_prenotifications import ACHPrenotificationsResource
+
+        return ACHPrenotificationsResource(self)
 
     @cached_property
     def wire_transfers(self) -> WireTransfersResource:
@@ -980,16 +980,16 @@ class AsyncIncrease(AsyncAPIClient):
         return AsyncACHTransfersResource(self)
 
     @cached_property
-    def ach_prenotifications(self) -> AsyncACHPrenotificationsResource:
-        from .resources.ach_prenotifications import AsyncACHPrenotificationsResource
-
-        return AsyncACHPrenotificationsResource(self)
-
-    @cached_property
     def inbound_ach_transfers(self) -> AsyncInboundACHTransfersResource:
         from .resources.inbound_ach_transfers import AsyncInboundACHTransfersResource
 
         return AsyncInboundACHTransfersResource(self)
+
+    @cached_property
+    def ach_prenotifications(self) -> AsyncACHPrenotificationsResource:
+        from .resources.ach_prenotifications import AsyncACHPrenotificationsResource
+
+        return AsyncACHPrenotificationsResource(self)
 
     @cached_property
     def wire_transfers(self) -> AsyncWireTransfersResource:
@@ -1490,16 +1490,16 @@ class IncreaseWithRawResponse:
         return ACHTransfersResourceWithRawResponse(self._client.ach_transfers)
 
     @cached_property
-    def ach_prenotifications(self) -> ach_prenotifications.ACHPrenotificationsResourceWithRawResponse:
-        from .resources.ach_prenotifications import ACHPrenotificationsResourceWithRawResponse
-
-        return ACHPrenotificationsResourceWithRawResponse(self._client.ach_prenotifications)
-
-    @cached_property
     def inbound_ach_transfers(self) -> inbound_ach_transfers.InboundACHTransfersResourceWithRawResponse:
         from .resources.inbound_ach_transfers import InboundACHTransfersResourceWithRawResponse
 
         return InboundACHTransfersResourceWithRawResponse(self._client.inbound_ach_transfers)
+
+    @cached_property
+    def ach_prenotifications(self) -> ach_prenotifications.ACHPrenotificationsResourceWithRawResponse:
+        from .resources.ach_prenotifications import ACHPrenotificationsResourceWithRawResponse
+
+        return ACHPrenotificationsResourceWithRawResponse(self._client.ach_prenotifications)
 
     @cached_property
     def wire_transfers(self) -> wire_transfers.WireTransfersResourceWithRawResponse:
@@ -1853,16 +1853,16 @@ class AsyncIncreaseWithRawResponse:
         return AsyncACHTransfersResourceWithRawResponse(self._client.ach_transfers)
 
     @cached_property
-    def ach_prenotifications(self) -> ach_prenotifications.AsyncACHPrenotificationsResourceWithRawResponse:
-        from .resources.ach_prenotifications import AsyncACHPrenotificationsResourceWithRawResponse
-
-        return AsyncACHPrenotificationsResourceWithRawResponse(self._client.ach_prenotifications)
-
-    @cached_property
     def inbound_ach_transfers(self) -> inbound_ach_transfers.AsyncInboundACHTransfersResourceWithRawResponse:
         from .resources.inbound_ach_transfers import AsyncInboundACHTransfersResourceWithRawResponse
 
         return AsyncInboundACHTransfersResourceWithRawResponse(self._client.inbound_ach_transfers)
+
+    @cached_property
+    def ach_prenotifications(self) -> ach_prenotifications.AsyncACHPrenotificationsResourceWithRawResponse:
+        from .resources.ach_prenotifications import AsyncACHPrenotificationsResourceWithRawResponse
+
+        return AsyncACHPrenotificationsResourceWithRawResponse(self._client.ach_prenotifications)
 
     @cached_property
     def wire_transfers(self) -> wire_transfers.AsyncWireTransfersResourceWithRawResponse:
@@ -2218,16 +2218,16 @@ class IncreaseWithStreamedResponse:
         return ACHTransfersResourceWithStreamingResponse(self._client.ach_transfers)
 
     @cached_property
-    def ach_prenotifications(self) -> ach_prenotifications.ACHPrenotificationsResourceWithStreamingResponse:
-        from .resources.ach_prenotifications import ACHPrenotificationsResourceWithStreamingResponse
-
-        return ACHPrenotificationsResourceWithStreamingResponse(self._client.ach_prenotifications)
-
-    @cached_property
     def inbound_ach_transfers(self) -> inbound_ach_transfers.InboundACHTransfersResourceWithStreamingResponse:
         from .resources.inbound_ach_transfers import InboundACHTransfersResourceWithStreamingResponse
 
         return InboundACHTransfersResourceWithStreamingResponse(self._client.inbound_ach_transfers)
+
+    @cached_property
+    def ach_prenotifications(self) -> ach_prenotifications.ACHPrenotificationsResourceWithStreamingResponse:
+        from .resources.ach_prenotifications import ACHPrenotificationsResourceWithStreamingResponse
+
+        return ACHPrenotificationsResourceWithStreamingResponse(self._client.ach_prenotifications)
 
     @cached_property
     def wire_transfers(self) -> wire_transfers.WireTransfersResourceWithStreamingResponse:
@@ -2583,16 +2583,16 @@ class AsyncIncreaseWithStreamedResponse:
         return AsyncACHTransfersResourceWithStreamingResponse(self._client.ach_transfers)
 
     @cached_property
-    def ach_prenotifications(self) -> ach_prenotifications.AsyncACHPrenotificationsResourceWithStreamingResponse:
-        from .resources.ach_prenotifications import AsyncACHPrenotificationsResourceWithStreamingResponse
-
-        return AsyncACHPrenotificationsResourceWithStreamingResponse(self._client.ach_prenotifications)
-
-    @cached_property
     def inbound_ach_transfers(self) -> inbound_ach_transfers.AsyncInboundACHTransfersResourceWithStreamingResponse:
         from .resources.inbound_ach_transfers import AsyncInboundACHTransfersResourceWithStreamingResponse
 
         return AsyncInboundACHTransfersResourceWithStreamingResponse(self._client.inbound_ach_transfers)
+
+    @cached_property
+    def ach_prenotifications(self) -> ach_prenotifications.AsyncACHPrenotificationsResourceWithStreamingResponse:
+        from .resources.ach_prenotifications import AsyncACHPrenotificationsResourceWithStreamingResponse
+
+        return AsyncACHPrenotificationsResourceWithStreamingResponse(self._client.ach_prenotifications)
 
     @cached_property
     def wire_transfers(self) -> wire_transfers.AsyncWireTransfersResourceWithStreamingResponse:
