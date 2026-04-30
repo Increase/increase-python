@@ -223,20 +223,6 @@ Methods:
 - <code title="post /ach_transfers/{ach_transfer_id}/approve">client.ach_transfers.<a href="./src/increase/resources/ach_transfers.py">approve</a>(ach_transfer_id) -> <a href="./src/increase/types/ach_transfer.py">ACHTransfer</a></code>
 - <code title="post /ach_transfers/{ach_transfer_id}/cancel">client.ach_transfers.<a href="./src/increase/resources/ach_transfers.py">cancel</a>(ach_transfer_id) -> <a href="./src/increase/types/ach_transfer.py">ACHTransfer</a></code>
 
-# ACHPrenotifications
-
-Types:
-
-```python
-from increase.types import ACHPrenotification
-```
-
-Methods:
-
-- <code title="post /ach_prenotifications">client.ach_prenotifications.<a href="./src/increase/resources/ach_prenotifications.py">create</a>(\*\*<a href="src/increase/types/ach_prenotification_create_params.py">params</a>) -> <a href="./src/increase/types/ach_prenotification.py">ACHPrenotification</a></code>
-- <code title="get /ach_prenotifications/{ach_prenotification_id}">client.ach_prenotifications.<a href="./src/increase/resources/ach_prenotifications.py">retrieve</a>(ach_prenotification_id) -> <a href="./src/increase/types/ach_prenotification.py">ACHPrenotification</a></code>
-- <code title="get /ach_prenotifications">client.ach_prenotifications.<a href="./src/increase/resources/ach_prenotifications.py">list</a>(\*\*<a href="src/increase/types/ach_prenotification_list_params.py">params</a>) -> <a href="./src/increase/types/ach_prenotification.py">SyncPage[ACHPrenotification]</a></code>
-
 # InboundACHTransfers
 
 Types:
@@ -252,6 +238,20 @@ Methods:
 - <code title="post /inbound_ach_transfers/{inbound_ach_transfer_id}/create_notification_of_change">client.inbound_ach_transfers.<a href="./src/increase/resources/inbound_ach_transfers.py">create_notification_of_change</a>(inbound_ach_transfer_id, \*\*<a href="src/increase/types/inbound_ach_transfer_create_notification_of_change_params.py">params</a>) -> <a href="./src/increase/types/inbound_ach_transfer.py">InboundACHTransfer</a></code>
 - <code title="post /inbound_ach_transfers/{inbound_ach_transfer_id}/decline">client.inbound_ach_transfers.<a href="./src/increase/resources/inbound_ach_transfers.py">decline</a>(inbound_ach_transfer_id, \*\*<a href="src/increase/types/inbound_ach_transfer_decline_params.py">params</a>) -> <a href="./src/increase/types/inbound_ach_transfer.py">InboundACHTransfer</a></code>
 - <code title="post /inbound_ach_transfers/{inbound_ach_transfer_id}/transfer_return">client.inbound_ach_transfers.<a href="./src/increase/resources/inbound_ach_transfers.py">transfer_return</a>(inbound_ach_transfer_id, \*\*<a href="src/increase/types/inbound_ach_transfer_transfer_return_params.py">params</a>) -> <a href="./src/increase/types/inbound_ach_transfer.py">InboundACHTransfer</a></code>
+
+# ACHPrenotifications
+
+Types:
+
+```python
+from increase.types import ACHPrenotification
+```
+
+Methods:
+
+- <code title="post /ach_prenotifications">client.ach_prenotifications.<a href="./src/increase/resources/ach_prenotifications.py">create</a>(\*\*<a href="src/increase/types/ach_prenotification_create_params.py">params</a>) -> <a href="./src/increase/types/ach_prenotification.py">ACHPrenotification</a></code>
+- <code title="get /ach_prenotifications/{ach_prenotification_id}">client.ach_prenotifications.<a href="./src/increase/resources/ach_prenotifications.py">retrieve</a>(ach_prenotification_id) -> <a href="./src/increase/types/ach_prenotification.py">ACHPrenotification</a></code>
+- <code title="get /ach_prenotifications">client.ach_prenotifications.<a href="./src/increase/resources/ach_prenotifications.py">list</a>(\*\*<a href="src/increase/types/ach_prenotification_list_params.py">params</a>) -> <a href="./src/increase/types/ach_prenotification.py">SyncPage[ACHPrenotification]</a></code>
 
 # WireTransfers
 
