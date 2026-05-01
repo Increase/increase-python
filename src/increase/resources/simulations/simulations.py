@@ -10,6 +10,14 @@ from .exports import (
     ExportsResourceWithStreamingResponse,
     AsyncExportsResourceWithStreamingResponse,
 )
+from .entities import (
+    EntitiesResource,
+    AsyncEntitiesResource,
+    EntitiesResourceWithRawResponse,
+    AsyncEntitiesResourceWithRawResponse,
+    EntitiesResourceWithStreamingResponse,
+    AsyncEntitiesResourceWithStreamingResponse,
+)
 from .programs import (
     ProgramsResource,
     AsyncProgramsResource,
@@ -398,6 +406,10 @@ class SimulationsResource(SyncAPIResource):
         return InboundMailItemsResource(self._client)
 
     @cached_property
+    def entities(self) -> EntitiesResource:
+        return EntitiesResource(self._client)
+
+    @cached_property
     def entity_onboarding_sessions(self) -> EntityOnboardingSessionsResource:
         return EntityOnboardingSessionsResource(self._client)
 
@@ -553,6 +565,10 @@ class AsyncSimulationsResource(AsyncAPIResource):
     @cached_property
     def inbound_mail_items(self) -> AsyncInboundMailItemsResource:
         return AsyncInboundMailItemsResource(self._client)
+
+    @cached_property
+    def entities(self) -> AsyncEntitiesResource:
+        return AsyncEntitiesResource(self._client)
 
     @cached_property
     def entity_onboarding_sessions(self) -> AsyncEntityOnboardingSessionsResource:
@@ -717,6 +733,10 @@ class SimulationsResourceWithRawResponse:
         return InboundMailItemsResourceWithRawResponse(self._simulations.inbound_mail_items)
 
     @cached_property
+    def entities(self) -> EntitiesResourceWithRawResponse:
+        return EntitiesResourceWithRawResponse(self._simulations.entities)
+
+    @cached_property
     def entity_onboarding_sessions(self) -> EntityOnboardingSessionsResourceWithRawResponse:
         return EntityOnboardingSessionsResourceWithRawResponse(self._simulations.entity_onboarding_sessions)
 
@@ -860,6 +880,10 @@ class AsyncSimulationsResourceWithRawResponse:
     @cached_property
     def inbound_mail_items(self) -> AsyncInboundMailItemsResourceWithRawResponse:
         return AsyncInboundMailItemsResourceWithRawResponse(self._simulations.inbound_mail_items)
+
+    @cached_property
+    def entities(self) -> AsyncEntitiesResourceWithRawResponse:
+        return AsyncEntitiesResourceWithRawResponse(self._simulations.entities)
 
     @cached_property
     def entity_onboarding_sessions(self) -> AsyncEntityOnboardingSessionsResourceWithRawResponse:
@@ -1007,6 +1031,10 @@ class SimulationsResourceWithStreamingResponse:
     @cached_property
     def inbound_mail_items(self) -> InboundMailItemsResourceWithStreamingResponse:
         return InboundMailItemsResourceWithStreamingResponse(self._simulations.inbound_mail_items)
+
+    @cached_property
+    def entities(self) -> EntitiesResourceWithStreamingResponse:
+        return EntitiesResourceWithStreamingResponse(self._simulations.entities)
 
     @cached_property
     def entity_onboarding_sessions(self) -> EntityOnboardingSessionsResourceWithStreamingResponse:
@@ -1160,6 +1188,10 @@ class AsyncSimulationsResourceWithStreamingResponse:
     @cached_property
     def inbound_mail_items(self) -> AsyncInboundMailItemsResourceWithStreamingResponse:
         return AsyncInboundMailItemsResourceWithStreamingResponse(self._simulations.inbound_mail_items)
+
+    @cached_property
+    def entities(self) -> AsyncEntitiesResourceWithStreamingResponse:
+        return AsyncEntitiesResourceWithStreamingResponse(self._simulations.entities)
 
     @cached_property
     def entity_onboarding_sessions(self) -> AsyncEntityOnboardingSessionsResourceWithStreamingResponse:

@@ -1005,6 +1005,12 @@ Methods:
 
 - <code title="post /simulations/inbound_mail_items">client.simulations.inbound_mail_items.<a href="./src/increase/resources/simulations/inbound_mail_items.py">create</a>(\*\*<a href="src/increase/types/simulations/inbound_mail_item_create_params.py">params</a>) -> <a href="./src/increase/types/inbound_mail_item.py">InboundMailItem</a></code>
 
+## Entities
+
+Methods:
+
+- <code title="post /simulations/entities/{entity_id}/validation">client.simulations.entities.<a href="./src/increase/resources/simulations/entities.py">validation</a>(entity_id, \*\*<a href="src/increase/types/simulations/entity_validation_params.py">params</a>) -> <a href="./src/increase/types/entity.py">Entity</a></code>
+
 ## EntityOnboardingSessions
 
 Methods:
