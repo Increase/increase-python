@@ -66,11 +66,11 @@ class EntitiesResource(SyncAPIResource):
         developing, it can be helpful to override the behavior in Sandbox.
 
         Args:
-          entity_id: The identifier of the Entity to set the validation on.
+          entity_id: The identifier of the Entity whose validation status to update.
 
-          issues: The issues to attach to the new managed compliance validation.
+          issues: The validation issues to attach. Only allowed when `status` is `invalid`.
 
-          status: The status to set on the new managed compliance validation.
+          status: The validation status to set on the Entity.
 
               - `valid` - The submitted data is valid.
               - `invalid` - Additional information is required to validate the data.
@@ -150,11 +150,11 @@ class AsyncEntitiesResource(AsyncAPIResource):
         developing, it can be helpful to override the behavior in Sandbox.
 
         Args:
-          entity_id: The identifier of the Entity to set the validation on.
+          entity_id: The identifier of the Entity whose validation status to update.
 
-          issues: The issues to attach to the new managed compliance validation.
+          issues: The validation issues to attach. Only allowed when `status` is `invalid`.
 
-          status: The status to set on the new managed compliance validation.
+          status: The validation status to set on the Entity.
 
               - `valid` - The submitted data is valid.
               - `invalid` - Additional information is required to validate the data.
