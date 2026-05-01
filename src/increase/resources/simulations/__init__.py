@@ -8,6 +8,14 @@ from .exports import (
     ExportsResourceWithStreamingResponse,
     AsyncExportsResourceWithStreamingResponse,
 )
+from .entities import (
+    EntitiesResource,
+    AsyncEntitiesResource,
+    EntitiesResourceWithRawResponse,
+    AsyncEntitiesResourceWithRawResponse,
+    EntitiesResourceWithStreamingResponse,
+    AsyncEntitiesResourceWithStreamingResponse,
+)
 from .programs import (
     ProgramsResource,
     AsyncProgramsResource,
@@ -456,6 +464,12 @@ __all__ = [
     "AsyncInboundMailItemsResourceWithRawResponse",
     "InboundMailItemsResourceWithStreamingResponse",
     "AsyncInboundMailItemsResourceWithStreamingResponse",
+    "EntitiesResource",
+    "AsyncEntitiesResource",
+    "EntitiesResourceWithRawResponse",
+    "AsyncEntitiesResourceWithRawResponse",
+    "EntitiesResourceWithStreamingResponse",
+    "AsyncEntitiesResourceWithStreamingResponse",
     "EntityOnboardingSessionsResource",
     "AsyncEntityOnboardingSessionsResource",
     "EntityOnboardingSessionsResourceWithRawResponse",
