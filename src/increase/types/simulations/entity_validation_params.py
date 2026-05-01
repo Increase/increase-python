@@ -10,10 +10,10 @@ __all__ = ["EntityValidationParams", "Issue"]
 
 class EntityValidationParams(TypedDict, total=False):
     issues: Required[Iterable[Issue]]
-    """The issues to attach to the new managed compliance validation."""
+    """The validation issues to attach. Only allowed when `status` is `invalid`."""
 
     status: Required[Literal["valid", "invalid", "pending"]]
-    """The status to set on the new managed compliance validation.
+    """The validation status to set on the Entity.
 
     - `valid` - The submitted data is valid.
     - `invalid` - Additional information is required to validate the data.
@@ -25,7 +25,7 @@ class Issue(TypedDict, total=False):
     category: Required[
         Literal["entity_tax_identifier", "entity_address", "beneficial_owner_identity", "beneficial_owner_address"]
     ]
-    """The category of the issue.
+    """The type of issue.
 
     - `entity_tax_identifier` - The entity's tax identifier could not be validated.
       Update the tax ID with the
