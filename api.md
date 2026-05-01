@@ -1009,7 +1009,7 @@ Methods:
 
 Methods:
 
-- <code title="post /simulations/entities/{entity_id}/validation">client.simulations.entities.<a href="./src/increase/resources/simulations/entities.py">validation</a>(entity_id, \*\*<a href="src/increase/types/simulations/entity_validation_params.py">params</a>) -> <a href="./src/increase/types/entity.py">Entity</a></code>
+- <code title="post /simulations/entities/{entity_id}/update_validation">client.simulations.entities.<a href="./src/increase/resources/simulations/entities.py">update_validation</a>(entity_id, \*\*<a href="src/increase/types/simulations/entity_update_validation_params.py">params</a>) -> <a href="./src/increase/types/entity.py">Entity</a></code>
 
 ## EntityOnboardingSessions
 

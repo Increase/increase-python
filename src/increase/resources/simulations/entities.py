@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 from typing import Iterable
-from typing_extensions import Literal
 
 import httpx
 
@@ -19,7 +18,7 @@ from ..._response import (
 )
 from ..._base_client import make_request_options
 from ...types.entity import Entity
-from ...types.simulations import entity_validation_params
+from ...types.simulations import entity_update_validation_params
 
 __all__ = ["EntitiesResource", "AsyncEntitiesResource"]
 
@@ -44,12 +43,11 @@ class EntitiesResource(SyncAPIResource):
         """
         return EntitiesResourceWithStreamingResponse(self)
 
-    def validation(
+    def update_validation(
         self,
         entity_id: str,
         *,
-        issues: Iterable[entity_validation_params.Issue],
-        status: Literal["valid", "invalid", "pending"],
+        issues: Iterable[entity_update_validation_params.Issue],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -59,22 +57,18 @@ class EntitiesResource(SyncAPIResource):
         idempotency_key: str | None = None,
     ) -> Entity:
         """
-        Set the status for an
+        Simulate updates to an
         [Entity's validation](/documentation/api/entities#entity-object.validation). In
         production, Know Your Customer validations
-        [run automatically](/documentation/entity-validation#entity-validation). While
-        developing, it can be helpful to override the behavior in Sandbox.
+        [run automatically](/documentation/entity-validation#entity-validation) for
+        eligible programs. While developing, use this API to simulate issues with
+        information submissions.
 
         Args:
           entity_id: The identifier of the Entity whose validation status to update.
 
-          issues: The validation issues to attach. Only allowed when `status` is `invalid`.
-
-          status: The validation status to set on the Entity.
-
-              - `valid` - The submitted data is valid.
-              - `invalid` - Additional information is required to validate the data.
-              - `pending` - The submitted data is being validated.
+          issues: The validation issues to attach. If no issues are provided, the validation
+              status will be set to `valid`.
 
           extra_headers: Send extra headers
 
@@ -89,14 +83,8 @@ class EntitiesResource(SyncAPIResource):
         if not entity_id:
             raise ValueError(f"Expected a non-empty value for `entity_id` but received {entity_id!r}")
         return self._post(
-            path_template("/simulations/entities/{entity_id}/validation", entity_id=entity_id),
-            body=maybe_transform(
-                {
-                    "issues": issues,
-                    "status": status,
-                },
-                entity_validation_params.EntityValidationParams,
-            ),
+            path_template("/simulations/entities/{entity_id}/update_validation", entity_id=entity_id),
+            body=maybe_transform({"issues": issues}, entity_update_validation_params.EntityUpdateValidationParams),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -128,12 +116,11 @@ class AsyncEntitiesResource(AsyncAPIResource):
         """
         return AsyncEntitiesResourceWithStreamingResponse(self)
 
-    async def validation(
+    async def update_validation(
         self,
         entity_id: str,
         *,
-        issues: Iterable[entity_validation_params.Issue],
-        status: Literal["valid", "invalid", "pending"],
+        issues: Iterable[entity_update_validation_params.Issue],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -143,22 +130,18 @@ class AsyncEntitiesResource(AsyncAPIResource):
         idempotency_key: str | None = None,
     ) -> Entity:
         """
-        Set the status for an
+        Simulate updates to an
         [Entity's validation](/documentation/api/entities#entity-object.validation). In
         production, Know Your Customer validations
-        [run automatically](/documentation/entity-validation#entity-validation). While
-        developing, it can be helpful to override the behavior in Sandbox.
+        [run automatically](/documentation/entity-validation#entity-validation) for
+        eligible programs. While developing, use this API to simulate issues with
+        information submissions.
 
         Args:
           entity_id: The identifier of the Entity whose validation status to update.
 
-          issues: The validation issues to attach. Only allowed when `status` is `invalid`.
-
-          status: The validation status to set on the Entity.
-
-              - `valid` - The submitted data is valid.
-              - `invalid` - Additional information is required to validate the data.
-              - `pending` - The submitted data is being validated.
+          issues: The validation issues to attach. If no issues are provided, the validation
+              status will be set to `valid`.
 
           extra_headers: Send extra headers
 
@@ -173,13 +156,9 @@ class AsyncEntitiesResource(AsyncAPIResource):
         if not entity_id:
             raise ValueError(f"Expected a non-empty value for `entity_id` but received {entity_id!r}")
         return await self._post(
-            path_template("/simulations/entities/{entity_id}/validation", entity_id=entity_id),
+            path_template("/simulations/entities/{entity_id}/update_validation", entity_id=entity_id),
             body=await async_maybe_transform(
-                {
-                    "issues": issues,
-                    "status": status,
-                },
-                entity_validation_params.EntityValidationParams,
+                {"issues": issues}, entity_update_validation_params.EntityUpdateValidationParams
             ),
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -196,8 +175,8 @@ class EntitiesResourceWithRawResponse:
     def __init__(self, entities: EntitiesResource) -> None:
         self._entities = entities
 
-        self.validation = to_raw_response_wrapper(
-            entities.validation,
+        self.update_validation = to_raw_response_wrapper(
+            entities.update_validation,
         )
 
 
@@ -205,8 +184,8 @@ class AsyncEntitiesResourceWithRawResponse:
     def __init__(self, entities: AsyncEntitiesResource) -> None:
         self._entities = entities
 
-        self.validation = async_to_raw_response_wrapper(
-            entities.validation,
+        self.update_validation = async_to_raw_response_wrapper(
+            entities.update_validation,
         )
 
 
@@ -214,8 +193,8 @@ class EntitiesResourceWithStreamingResponse:
     def __init__(self, entities: EntitiesResource) -> None:
         self._entities = entities
 
-        self.validation = to_streamed_response_wrapper(
-            entities.validation,
+        self.update_validation = to_streamed_response_wrapper(
+            entities.update_validation,
         )
 
 
@@ -223,6 +202,6 @@ class AsyncEntitiesResourceWithStreamingResponse:
     def __init__(self, entities: AsyncEntitiesResource) -> None:
         self._entities = entities
 
-        self.validation = async_to_streamed_response_wrapper(
-            entities.validation,
+        self.update_validation = async_to_streamed_response_wrapper(
+            entities.update_validation,
         )
