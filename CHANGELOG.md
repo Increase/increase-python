@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.505.0 (2026-05-01)
+
+Full Changelog: [v0.504.0...v0.505.0](https://github.com/Increase/increase-python/compare/v0.504.0...v0.505.0)
+
+### Features
+
+* **api:** api update ([15fbe34](https://github.com/Increase/increase-python/commit/15fbe340cb30736c7ff9e9fca7f959d479f5585a))
+
+
+### Chores
+
+* **internal:** reformat pyproject.toml ([2a79116](https://github.com/Increase/increase-python/commit/2a7911612faff9b184125af63a7b262b9f999070))
+
 ## 0.504.0 (2026-04-30)
 
 Full Changelog: [v0.503.0...v0.504.0](https://github.com/Increase/increase-python/compare/v0.503.0...v0.504.0)
