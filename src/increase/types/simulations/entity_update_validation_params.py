@@ -5,19 +5,14 @@ from __future__ import annotations
 from typing import Iterable
 from typing_extensions import Literal, Required, TypedDict
 
-__all__ = ["EntityValidationParams", "Issue"]
+__all__ = ["EntityUpdateValidationParams", "Issue"]
 
 
-class EntityValidationParams(TypedDict, total=False):
+class EntityUpdateValidationParams(TypedDict, total=False):
     issues: Required[Iterable[Issue]]
-    """The validation issues to attach. Only allowed when `status` is `invalid`."""
+    """The validation issues to attach.
 
-    status: Required[Literal["valid", "invalid", "pending"]]
-    """The validation status to set on the Entity.
-
-    - `valid` - The submitted data is valid.
-    - `invalid` - Additional information is required to validate the data.
-    - `pending` - The submitted data is being validated.
+    If no issues are provided, the validation status will be set to `valid`.
     """
 
 
