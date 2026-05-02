@@ -179,6 +179,12 @@ class Corporation(TypedDict, total=False, extra_items=object):  # type: ignore[c
     name: str
     """The legal name of the corporation."""
 
+    website: str
+    """A website for the business.
+
+    Not every program requires a website for submitted Entities.
+    """
+
 
 class GovernmentAuthorityAddress(TypedDict, total=False):
     """The entity's physical address.

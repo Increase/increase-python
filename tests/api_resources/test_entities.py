@@ -378,6 +378,7 @@ class TestEntities:
                     "category": "us_employer_identification_number",
                 },
                 "name": "x",
+                "website": "website",
             },
             details_confirmed_at=parse_datetime("2019-12-27T18:11:19.117Z"),
             government_authority={
@@ -927,6 +928,7 @@ class TestAsyncEntities:
                     "category": "us_employer_identification_number",
                 },
                 "name": "x",
+                "website": "website",
             },
             details_confirmed_at=parse_datetime("2019-12-27T18:11:19.117Z"),
             government_authority={
