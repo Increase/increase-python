@@ -432,7 +432,10 @@ class Corporation(TypedDict, total=False, extra_items=object):  # type: ignore[c
     """
 
     website: str
-    """The website of the corporation."""
+    """A website for the business.
+
+    Not every program requires a website for submitted Entities.
+    """
 
 
 class GovernmentAuthorityAddress(TypedDict, total=False):
@@ -499,7 +502,10 @@ class GovernmentAuthority(TypedDict, total=False):
     """
 
     website: str
-    """The website of the government authority."""
+    """A website for the government authority.
+
+    Not every program requires a website for submitted Entities.
+    """
 
 
 class JointIndividualAddress(TypedDict, total=False):
