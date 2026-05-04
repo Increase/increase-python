@@ -62,7 +62,7 @@ class TestBeneficialOwners:
                     "drivers_license": {
                         "expiration_date": parse_date("2019-12-27"),
                         "file_id": "file_id",
-                        "state": "x",
+                        "state": "xx",
                         "back_file_id": "back_file_id",
                     },
                     "other": {
@@ -204,7 +204,7 @@ class TestBeneficialOwners:
                 "drivers_license": {
                     "expiration_date": parse_date("2019-12-27"),
                     "file_id": "file_id",
-                    "state": "x",
+                    "state": "xx",
                     "back_file_id": "back_file_id",
                 },
                 "other": {
@@ -385,7 +385,7 @@ class TestAsyncBeneficialOwners:
                     "drivers_license": {
                         "expiration_date": parse_date("2019-12-27"),
                         "file_id": "file_id",
-                        "state": "x",
+                        "state": "xx",
                         "back_file_id": "back_file_id",
                     },
                     "other": {
@@ -527,7 +527,7 @@ class TestAsyncBeneficialOwners:
                 "drivers_license": {
                     "expiration_date": parse_date("2019-12-27"),
                     "file_id": "file_id",
-                    "state": "x",
+                    "state": "xx",
                     "back_file_id": "back_file_id",
                 },
                 "other": {
