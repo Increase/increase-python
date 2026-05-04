@@ -233,7 +233,7 @@ client = Increase()
 
 try:
     client.accounts.create(
-        name="New Account!",
+        name="Oops",
     )
 except increase.APIConnectionError as e:
     print("The server could not be reached")
