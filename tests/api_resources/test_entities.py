@@ -57,7 +57,7 @@ class TestEntities:
                                 "drivers_license": {
                                     "expiration_date": parse_date("2019-12-27"),
                                     "file_id": "file_id",
-                                    "state": "x",
+                                    "state": "xx",
                                     "back_file_id": "back_file_id",
                                 },
                                 "other": {
@@ -96,7 +96,7 @@ class TestEntities:
                 "address": {
                     "city": "x",
                     "line1": "x",
-                    "state": "x",
+                    "state": "xx",
                     "zip": "x",
                     "line2": "x",
                 },
@@ -124,7 +124,7 @@ class TestEntities:
                             "drivers_license": {
                                 "expiration_date": parse_date("2019-12-27"),
                                 "file_id": "file_id",
-                                "state": "x",
+                                "state": "xx",
                                 "back_file_id": "back_file_id",
                             },
                             "other": {
@@ -161,7 +161,7 @@ class TestEntities:
                     "drivers_license": {
                         "expiration_date": parse_date("2019-12-27"),
                         "file_id": "file_id",
-                        "state": "x",
+                        "state": "xx",
                         "back_file_id": "back_file_id",
                     },
                     "other": {
@@ -200,7 +200,7 @@ class TestEntities:
                 "address": {
                     "city": "x",
                     "line1": "x",
-                    "state": "x",
+                    "state": "xx",
                     "zip": "x",
                     "line2": "x",
                 },
@@ -225,7 +225,7 @@ class TestEntities:
                                 "drivers_license": {
                                     "expiration_date": parse_date("2019-12-27"),
                                     "file_id": "file_id",
-                                    "state": "x",
+                                    "state": "xx",
                                     "back_file_id": "back_file_id",
                                 },
                                 "other": {
@@ -264,7 +264,7 @@ class TestEntities:
                         "drivers_license": {
                             "expiration_date": parse_date("2019-12-27"),
                             "file_id": "file_id",
-                            "state": "x",
+                            "state": "xx",
                             "back_file_id": "back_file_id",
                         },
                         "other": {
@@ -385,7 +385,7 @@ class TestEntities:
                 "address": {
                     "city": "x",
                     "line1": "x",
-                    "state": "x",
+                    "state": "xx",
                     "zip": "x",
                     "line2": "x",
                 },
@@ -407,7 +407,7 @@ class TestEntities:
                     "drivers_license": {
                         "expiration_date": parse_date("2019-12-27"),
                         "file_id": "file_id",
-                        "state": "x",
+                        "state": "xx",
                         "back_file_id": "back_file_id",
                     },
                     "other": {
@@ -444,7 +444,7 @@ class TestEntities:
                 "address": {
                     "city": "x",
                     "line1": "x",
-                    "state": "x",
+                    "state": "xx",
                     "zip": "x",
                     "line2": "x",
                 },
@@ -607,7 +607,7 @@ class TestAsyncEntities:
                                 "drivers_license": {
                                     "expiration_date": parse_date("2019-12-27"),
                                     "file_id": "file_id",
-                                    "state": "x",
+                                    "state": "xx",
                                     "back_file_id": "back_file_id",
                                 },
                                 "other": {
@@ -646,7 +646,7 @@ class TestAsyncEntities:
                 "address": {
                     "city": "x",
                     "line1": "x",
-                    "state": "x",
+                    "state": "xx",
                     "zip": "x",
                     "line2": "x",
                 },
@@ -674,7 +674,7 @@ class TestAsyncEntities:
                             "drivers_license": {
                                 "expiration_date": parse_date("2019-12-27"),
                                 "file_id": "file_id",
-                                "state": "x",
+                                "state": "xx",
                                 "back_file_id": "back_file_id",
                             },
                             "other": {
@@ -711,7 +711,7 @@ class TestAsyncEntities:
                     "drivers_license": {
                         "expiration_date": parse_date("2019-12-27"),
                         "file_id": "file_id",
-                        "state": "x",
+                        "state": "xx",
                         "back_file_id": "back_file_id",
                     },
                     "other": {
@@ -750,7 +750,7 @@ class TestAsyncEntities:
                 "address": {
                     "city": "x",
                     "line1": "x",
-                    "state": "x",
+                    "state": "xx",
                     "zip": "x",
                     "line2": "x",
                 },
@@ -775,7 +775,7 @@ class TestAsyncEntities:
                                 "drivers_license": {
                                     "expiration_date": parse_date("2019-12-27"),
                                     "file_id": "file_id",
-                                    "state": "x",
+                                    "state": "xx",
                                     "back_file_id": "back_file_id",
                                 },
                                 "other": {
@@ -814,7 +814,7 @@ class TestAsyncEntities:
                         "drivers_license": {
                             "expiration_date": parse_date("2019-12-27"),
                             "file_id": "file_id",
-                            "state": "x",
+                            "state": "xx",
                             "back_file_id": "back_file_id",
                         },
                         "other": {
@@ -935,7 +935,7 @@ class TestAsyncEntities:
                 "address": {
                     "city": "x",
                     "line1": "x",
-                    "state": "x",
+                    "state": "xx",
                     "zip": "x",
                     "line2": "x",
                 },
@@ -957,7 +957,7 @@ class TestAsyncEntities:
                     "drivers_license": {
                         "expiration_date": parse_date("2019-12-27"),
                         "file_id": "file_id",
-                        "state": "x",
+                        "state": "xx",
                         "back_file_id": "back_file_id",
                     },
                     "other": {
@@ -994,7 +994,7 @@ class TestAsyncEntities:
                 "address": {
                     "city": "x",
                     "line1": "x",
-                    "state": "x",
+                    "state": "xx",
                     "zip": "x",
                     "line2": "x",
                 },
