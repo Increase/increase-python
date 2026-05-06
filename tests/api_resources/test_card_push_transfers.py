@@ -24,7 +24,7 @@ class TestCardPushTransfers:
         card_push_transfer = client.card_push_transfers.create(
             business_application_identifier="funds_disbursement",
             card_token_id="outbound_card_token_zlt0ml6youq3q7vcdlg0",
-            merchant_category_code="1234",
+            merchant_category_code="5734",
             merchant_city_name="New York",
             merchant_name="Acme Corp",
             merchant_name_prefix="Acme",
@@ -49,7 +49,7 @@ class TestCardPushTransfers:
         card_push_transfer = client.card_push_transfers.create(
             business_application_identifier="funds_disbursement",
             card_token_id="outbound_card_token_zlt0ml6youq3q7vcdlg0",
-            merchant_category_code="1234",
+            merchant_category_code="5734",
             merchant_city_name="New York",
             merchant_name="Acme Corp",
             merchant_name_prefix="Acme",
@@ -81,7 +81,7 @@ class TestCardPushTransfers:
         response = client.card_push_transfers.with_raw_response.create(
             business_application_identifier="funds_disbursement",
             card_token_id="outbound_card_token_zlt0ml6youq3q7vcdlg0",
-            merchant_category_code="1234",
+            merchant_category_code="5734",
             merchant_city_name="New York",
             merchant_name="Acme Corp",
             merchant_name_prefix="Acme",
@@ -110,7 +110,7 @@ class TestCardPushTransfers:
         with client.card_push_transfers.with_streaming_response.create(
             business_application_identifier="funds_disbursement",
             card_token_id="outbound_card_token_zlt0ml6youq3q7vcdlg0",
-            merchant_category_code="1234",
+            merchant_category_code="5734",
             merchant_city_name="New York",
             merchant_name="Acme Corp",
             merchant_name_prefix="Acme",
@@ -303,7 +303,7 @@ class TestAsyncCardPushTransfers:
         card_push_transfer = await async_client.card_push_transfers.create(
             business_application_identifier="funds_disbursement",
             card_token_id="outbound_card_token_zlt0ml6youq3q7vcdlg0",
-            merchant_category_code="1234",
+            merchant_category_code="5734",
             merchant_city_name="New York",
             merchant_name="Acme Corp",
             merchant_name_prefix="Acme",
@@ -328,7 +328,7 @@ class TestAsyncCardPushTransfers:
         card_push_transfer = await async_client.card_push_transfers.create(
             business_application_identifier="funds_disbursement",
             card_token_id="outbound_card_token_zlt0ml6youq3q7vcdlg0",
-            merchant_category_code="1234",
+            merchant_category_code="5734",
             merchant_city_name="New York",
             merchant_name="Acme Corp",
             merchant_name_prefix="Acme",
@@ -360,7 +360,7 @@ class TestAsyncCardPushTransfers:
         response = await async_client.card_push_transfers.with_raw_response.create(
             business_application_identifier="funds_disbursement",
             card_token_id="outbound_card_token_zlt0ml6youq3q7vcdlg0",
-            merchant_category_code="1234",
+            merchant_category_code="5734",
             merchant_city_name="New York",
             merchant_name="Acme Corp",
             merchant_name_prefix="Acme",
@@ -389,7 +389,7 @@ class TestAsyncCardPushTransfers:
         async with async_client.card_push_transfers.with_streaming_response.create(
             business_application_identifier="funds_disbursement",
             card_token_id="outbound_card_token_zlt0ml6youq3q7vcdlg0",
-            merchant_category_code="1234",
+            merchant_category_code="5734",
             merchant_city_name="New York",
             merchant_name="Acme Corp",
             merchant_name_prefix="Acme",
