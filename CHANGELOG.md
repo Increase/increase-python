@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.515.0 (2026-05-08)
+
+Full Changelog: [v0.514.0...v0.515.0](https://github.com/Increase/increase-python/compare/v0.514.0...v0.515.0)
+
+### Features
+
+* **api:** api update ([2566081](https://github.com/Increase/increase-python/commit/2566081f0fab640ca0f944c04a3f78e20b15c942))
+* **api:** api update ([5559687](https://github.com/Increase/increase-python/commit/5559687ce4b00924f772480b48f3152e268b6555))
+* **api:** api update ([b347c83](https://github.com/Increase/increase-python/commit/b347c83bc2ffc000f7c306c331a6b74d6f42a325))
+
+
+### Bug Fixes
+
+* **client:** add missing f-string prefix in file type error message ([bab71ae](https://github.com/Increase/increase-python/commit/bab71ae7f5e297075b3f020b02d6467281d44e92))
+
 ## 0.514.0 (2026-05-04)
 
 Full Changelog: [v0.513.0...v0.514.0](https://github.com/Increase/increase-python/compare/v0.513.0...v0.514.0)
