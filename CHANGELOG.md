@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.516.0 (2026-05-11)
+
+Full Changelog: [v0.515.0...v0.516.0](https://github.com/Increase/increase-python/compare/v0.515.0...v0.516.0)
+
+### Features
+
+* **internal/types:** support eagerly validating pydantic iterators ([3adba1e](https://github.com/Increase/increase-python/commit/3adba1e7e8e4c2986eebc3d737d2776c34e5633e))
+
 ## 0.515.0 (2026-05-08)
 
 Full Changelog: [v0.514.0...v0.515.0](https://github.com/Increase/increase-python/compare/v0.514.0...v0.515.0)
