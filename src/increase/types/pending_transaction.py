@@ -13,7 +13,7 @@ __all__ = [
     "Source",
     "SourceAccountTransferInstruction",
     "SourceACHTransferInstruction",
-    "SourceBlockchainOfframpTransferInstruction",
+    "SourceBlockchainOfframpTransfer",
     "SourceBlockchainOnrampTransferInstruction",
     "SourceCardAuthorization",
     "SourceCardAuthorizationAdditionalAmounts",
@@ -110,31 +110,56 @@ class SourceACHTransferInstruction(BaseModel):
         __pydantic_extra__: Dict[str, object]
 
 
-class SourceBlockchainOfframpTransferInstruction(BaseModel):
-    """A Blockchain Off-Ramp Transfer Instruction object.
+class SourceBlockchainOfframpTransfer(BaseModel):
+    """A Blockchain Off-Ramp Transfer object.
 
-    This field will be present in the JSON response if and only if `category` is equal to `blockchain_offramp_transfer_instruction`.
+    This field will be present in the JSON response if and only if `category` is equal to `blockchain_offramp_transfer`. Blockchain Off-Ramp Transfers move funds from a Blockchain Address to an Account. They're automatically created when funds land in a Blockchain Address.
+    """
+
+    id: str
+    """The Blockchain Off-Ramp Transfer's identifier."""
+
+    token: Literal["usdc"]
+    """The token that was received.
+
+    - `usdc` - A USD stablecoin issued by Circle.
+    """
+
+    amount: int
+    """The transfer amount in USD cents."""
+
+    created_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+    the transfer was created.
+    """
+
+    destination_account_id: str
+    """The Account the funds were transferred into."""
+
+    initiating_transaction_hash: str
+    """
+    The transaction hash of the blockchain transaction that initiated this transfer.
     """
 
     source_blockchain_address_id: str
-    """The identifier of the Blockchain Address the funds were received at."""
+    """The Blockchain Address from which the transfer originated."""
 
-    transfer_id: str
+    status: Literal["pending_settlement", "settled"]
+    """The lifecycle status of the transfer.
+
+    - `pending_settlement` - The transfer is pending settlement at Increase.
+    - `settled` - The transfer has been settled and funds have been credited.
     """
-    The identifier of the Blockchain Off-Ramp Transfer that led to this Transaction.
+
+    transaction_id: Optional[str] = None
+    """The Transaction crediting the Account once the transfer is settled."""
+
+    type: Literal["blockchain_offramp_transfer"]
+    """A constant representing the object's type.
+
+    For this resource it will always be `blockchain_offramp_transfer`.
     """
-
-    if TYPE_CHECKING:
-        # Some versions of Pydantic <2.8.0 have a bug and don’t allow assigning a
-        # value to this field, so for compatibility we avoid doing it at runtime.
-        __pydantic_extra__: Dict[str, object] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
-
-        # Stub to indicate that arbitrary properties are accepted.
-        # To access properties that are not valid identifiers you can use `getattr`, e.g.
-        # `getattr(obj, '$type')`
-        def __getattr__(self, attr: str) -> object: ...
-    else:
-        __pydantic_extra__: Dict[str, object]
 
 
 class SourceBlockchainOnrampTransferInstruction(BaseModel):
@@ -1327,7 +1352,7 @@ class Source(BaseModel):
         "swift_transfer_instruction",
         "card_push_transfer_instruction",
         "blockchain_onramp_transfer_instruction",
-        "blockchain_offramp_transfer_instruction",
+        "blockchain_offramp_transfer",
         "other",
     ]
     """The type of the resource.
@@ -1365,9 +1390,8 @@ class Source(BaseModel):
     - `blockchain_onramp_transfer_instruction` - Blockchain On-Ramp Transfer
       Instruction: details will be under the
       `blockchain_onramp_transfer_instruction` object.
-    - `blockchain_offramp_transfer_instruction` - Blockchain Off-Ramp Transfer
-      Instruction: details will be under the
-      `blockchain_offramp_transfer_instruction` object.
+    - `blockchain_offramp_transfer` - Blockchain Off-Ramp Transfer: details will be
+      under the `blockchain_offramp_transfer` object.
     - `other` - The Pending Transaction was made for an undocumented or deprecated
       reason.
     """
@@ -1386,11 +1410,13 @@ class Source(BaseModel):
     equal to `ach_transfer_instruction`.
     """
 
-    blockchain_offramp_transfer_instruction: Optional[SourceBlockchainOfframpTransferInstruction] = None
-    """A Blockchain Off-Ramp Transfer Instruction object.
+    blockchain_offramp_transfer: Optional[SourceBlockchainOfframpTransfer] = None
+    """A Blockchain Off-Ramp Transfer object.
 
     This field will be present in the JSON response if and only if `category` is
-    equal to `blockchain_offramp_transfer_instruction`.
+    equal to `blockchain_offramp_transfer`. Blockchain Off-Ramp Transfers move funds
+    from a Blockchain Address to an Account. They're automatically created when
+    funds land in a Blockchain Address.
     """
 
     blockchain_onramp_transfer_instruction: Optional[SourceBlockchainOnrampTransferInstruction] = None
