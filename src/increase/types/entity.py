@@ -208,6 +208,22 @@ class Corporation(BaseModel):
     corporation.
     """
 
+    beneficial_ownership_exemption_reason: Optional[
+        Literal["regulated_financial_institution", "publicly_traded_company", "public_entity", "other"]
+    ] = None
+    """
+    If the entity is exempt from the requirement to submit beneficial owners, the
+    justification for the exemption.
+
+    - `regulated_financial_institution` - A regulated financial institution.
+    - `publicly_traded_company` - A publicly traded company.
+    - `public_entity` - A public entity acting on behalf of the federal or a state
+      government.
+    - `other` - Any other reason why this entity is exempt from the requirement to
+      submit beneficial owners. You can only use this exemption after approval from
+      your bank partner.
+    """
+
     email: Optional[str] = None
     """An email address for the business."""
 
