@@ -145,9 +145,10 @@ class SourceBlockchainOfframpTransfer(BaseModel):
     source_blockchain_address_id: str
     """The Blockchain Address from which the transfer originated."""
 
-    status: Literal["pending_settlement", "settled"]
+    status: Literal["canceled", "pending_settlement", "settled"]
     """The lifecycle status of the transfer.
 
+    - `canceled` - The transfer has been canceled.
     - `pending_settlement` - The transfer is pending settlement at Increase.
     - `settled` - The transfer has been settled and funds have been credited.
     """
