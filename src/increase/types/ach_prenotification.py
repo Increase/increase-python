@@ -1,8 +1,10 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import TYPE_CHECKING, Dict, List, Optional
 from datetime import datetime
 from typing_extensions import Literal
+
+from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
@@ -71,13 +73,27 @@ class NotificationsOfChange(BaseModel):
       financial institution.
     """
 
-    corrected_data: str
-    """The corrected data that should be used in future ACHs to this account.
+    corrected_account_funding: Optional[Literal["checking", "savings", "general_ledger"]] = None
+    """
+    The corrected account funding type that should be used in future ACHs to this
+    account. This is derived from the corrected transaction code.
 
-    This may contain the suggested new account number or routing number. When the
-    `change_code` is `incorrect_transaction_code`, this field contains an integer.
-    Numbers starting with a 2 encourage changing the `funding` parameter to
-    checking; numbers starting with a 3 encourage changing to savings.
+    - `checking` - A checking account.
+    - `savings` - A savings account.
+    - `general_ledger` - A bank's general ledger. Uncommon.
+    """
+
+    corrected_account_number: Optional[str] = None
+    """
+    The corrected account number that should be used in future ACHs to this account.
+    """
+
+    corrected_individual_id: Optional[str] = None
+    """The corrected individual identifier that should be used in future ACHs."""
+
+    corrected_routing_number: Optional[str] = None
+    """
+    The corrected routing number that should be used in future ACHs to this account.
     """
 
     created_at: datetime
@@ -85,6 +101,18 @@ class NotificationsOfChange(BaseModel):
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
     the notification occurred.
     """
+
+    if TYPE_CHECKING:
+        # Some versions of Pydantic <2.8.0 have a bug and don’t allow assigning a
+        # value to this field, so for compatibility we avoid doing it at runtime.
+        __pydantic_extra__: Dict[str, object] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
+
+        # Stub to indicate that arbitrary properties are accepted.
+        # To access properties that are not valid identifiers you can use `getattr`, e.g.
+        # `getattr(obj, '$type')`
+        def __getattr__(self, attr: str) -> object: ...
+    else:
+        __pydantic_extra__: Dict[str, object]
 
 
 class PrenotificationReturn(BaseModel):
