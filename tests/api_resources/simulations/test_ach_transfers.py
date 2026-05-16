@@ -59,8 +59,17 @@ class TestACHTransfers:
     def test_method_create_notification_of_change(self, client: Increase) -> None:
         ach_transfer = client.simulations.ach_transfers.create_notification_of_change(
             ach_transfer_id="ach_transfer_uoxatyh3lt5evrsdvo7q",
-            change_code="incorrect_routing_number",
-            corrected_data="123456789",
+        )
+        assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
+
+    @parametrize
+    def test_method_create_notification_of_change_with_all_params(self, client: Increase) -> None:
+        ach_transfer = client.simulations.ach_transfers.create_notification_of_change(
+            ach_transfer_id="ach_transfer_uoxatyh3lt5evrsdvo7q",
+            corrected_account_funding="checking",
+            corrected_account_number="x",
+            corrected_individual_id="x",
+            corrected_routing_number="123456789",
         )
         assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
 
@@ -68,8 +77,6 @@ class TestACHTransfers:
     def test_raw_response_create_notification_of_change(self, client: Increase) -> None:
         response = client.simulations.ach_transfers.with_raw_response.create_notification_of_change(
             ach_transfer_id="ach_transfer_uoxatyh3lt5evrsdvo7q",
-            change_code="incorrect_routing_number",
-            corrected_data="123456789",
         )
 
         assert response.is_closed is True
@@ -81,8 +88,6 @@ class TestACHTransfers:
     def test_streaming_response_create_notification_of_change(self, client: Increase) -> None:
         with client.simulations.ach_transfers.with_streaming_response.create_notification_of_change(
             ach_transfer_id="ach_transfer_uoxatyh3lt5evrsdvo7q",
-            change_code="incorrect_routing_number",
-            corrected_data="123456789",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -97,8 +102,6 @@ class TestACHTransfers:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `ach_transfer_id` but received ''"):
             client.simulations.ach_transfers.with_raw_response.create_notification_of_change(
                 ach_transfer_id="",
-                change_code="incorrect_routing_number",
-                corrected_data="123456789",
             )
 
     @parametrize
@@ -279,8 +282,17 @@ class TestAsyncACHTransfers:
     async def test_method_create_notification_of_change(self, async_client: AsyncIncrease) -> None:
         ach_transfer = await async_client.simulations.ach_transfers.create_notification_of_change(
             ach_transfer_id="ach_transfer_uoxatyh3lt5evrsdvo7q",
-            change_code="incorrect_routing_number",
-            corrected_data="123456789",
+        )
+        assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
+
+    @parametrize
+    async def test_method_create_notification_of_change_with_all_params(self, async_client: AsyncIncrease) -> None:
+        ach_transfer = await async_client.simulations.ach_transfers.create_notification_of_change(
+            ach_transfer_id="ach_transfer_uoxatyh3lt5evrsdvo7q",
+            corrected_account_funding="checking",
+            corrected_account_number="x",
+            corrected_individual_id="x",
+            corrected_routing_number="123456789",
         )
         assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
 
@@ -288,8 +300,6 @@ class TestAsyncACHTransfers:
     async def test_raw_response_create_notification_of_change(self, async_client: AsyncIncrease) -> None:
         response = await async_client.simulations.ach_transfers.with_raw_response.create_notification_of_change(
             ach_transfer_id="ach_transfer_uoxatyh3lt5evrsdvo7q",
-            change_code="incorrect_routing_number",
-            corrected_data="123456789",
         )
 
         assert response.is_closed is True
@@ -301,8 +311,6 @@ class TestAsyncACHTransfers:
     async def test_streaming_response_create_notification_of_change(self, async_client: AsyncIncrease) -> None:
         async with async_client.simulations.ach_transfers.with_streaming_response.create_notification_of_change(
             ach_transfer_id="ach_transfer_uoxatyh3lt5evrsdvo7q",
-            change_code="incorrect_routing_number",
-            corrected_data="123456789",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -317,8 +325,6 @@ class TestAsyncACHTransfers:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `ach_transfer_id` but received ''"):
             await async_client.simulations.ach_transfers.with_raw_response.create_notification_of_change(
                 ach_transfer_id="",
-                change_code="incorrect_routing_number",
-                corrected_data="123456789",
             )
 
     @parametrize
