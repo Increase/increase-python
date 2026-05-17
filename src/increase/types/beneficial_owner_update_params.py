@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Union
+from typing import List, Union
 from datetime import date
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
@@ -38,6 +38,14 @@ class BeneficialOwnerUpdateParams(TypedDict, total=False):
 
     name: str
     """The individual's legal name."""
+
+    prongs: List[Literal["ownership", "control"]]
+    """Why this person is considered a beneficial owner of the entity.
+
+    At least one option is required, if a person is both a control person and owner,
+    submit an array containing both. Providing this replaces the beneficial owner's
+    current prongs.
+    """
 
 
 class Address(TypedDict, total=False):

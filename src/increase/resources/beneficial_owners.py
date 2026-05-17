@@ -153,6 +153,7 @@ class BeneficialOwnersResource(SyncAPIResource):
         confirmed_no_us_tax_id: bool | Omit = omit,
         identification: beneficial_owner_update_params.Identification | Omit = omit,
         name: str | Omit = omit,
+        prongs: List[Literal["ownership", "control"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -179,6 +180,11 @@ class BeneficialOwnersResource(SyncAPIResource):
 
           name: The individual's legal name.
 
+          prongs: Why this person is considered a beneficial owner of the entity. At least one
+              option is required, if a person is both a control person and owner, submit an
+              array containing both. Providing this replaces the beneficial owner's current
+              prongs.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -204,6 +210,7 @@ class BeneficialOwnersResource(SyncAPIResource):
                     "confirmed_no_us_tax_id": confirmed_no_us_tax_id,
                     "identification": identification,
                     "name": name,
+                    "prongs": prongs,
                 },
                 beneficial_owner_update_params.BeneficialOwnerUpdateParams,
             ),
@@ -453,6 +460,7 @@ class AsyncBeneficialOwnersResource(AsyncAPIResource):
         confirmed_no_us_tax_id: bool | Omit = omit,
         identification: beneficial_owner_update_params.Identification | Omit = omit,
         name: str | Omit = omit,
+        prongs: List[Literal["ownership", "control"]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -479,6 +487,11 @@ class AsyncBeneficialOwnersResource(AsyncAPIResource):
 
           name: The individual's legal name.
 
+          prongs: Why this person is considered a beneficial owner of the entity. At least one
+              option is required, if a person is both a control person and owner, submit an
+              array containing both. Providing this replaces the beneficial owner's current
+              prongs.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -504,6 +517,7 @@ class AsyncBeneficialOwnersResource(AsyncAPIResource):
                     "confirmed_no_us_tax_id": confirmed_no_us_tax_id,
                     "identification": identification,
                     "name": name,
+                    "prongs": prongs,
                 },
                 beneficial_owner_update_params.BeneficialOwnerUpdateParams,
             ),
