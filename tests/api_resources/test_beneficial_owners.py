@@ -221,6 +221,7 @@ class TestBeneficialOwners:
                 },
             },
             name="x",
+            prongs=["ownership"],
         )
         assert_matches_type(EntityBeneficialOwner, beneficial_owner, path=["response"])
 
@@ -544,6 +545,7 @@ class TestAsyncBeneficialOwners:
                 },
             },
             name="x",
+            prongs=["ownership"],
         )
         assert_matches_type(EntityBeneficialOwner, beneficial_owner, path=["response"])
 
