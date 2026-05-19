@@ -8,7 +8,7 @@ from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["CardPurchaseSupplement", "Invoice", "LineItem"]
+__all__ = ["CardPurchaseSupplement", "Invoice", "LineItem", "Shipping"]
 
 
 class Invoice(BaseModel):
@@ -174,6 +174,70 @@ class LineItem(BaseModel):
     """Code indicating unit of measure (gallons, etc.)."""
 
 
+class Shipping(BaseModel):
+    """Shipping information for the purchase."""
+
+    customer_reference_number: Optional[str] = None
+    """The customer reference number."""
+
+    destination_address: Optional[str] = None
+    """Address of the destination."""
+
+    destination_country_code: Optional[str] = None
+    """Country code of the destination."""
+
+    destination_postal_code: Optional[str] = None
+    """Postal code of the destination."""
+
+    destination_receiver_name: Optional[str] = None
+    """Name of the receiver at the destination."""
+
+    discount_amount: Optional[int] = None
+    """Discount amount for the shipment."""
+
+    net_amount: Optional[int] = None
+    """Net shipping amount."""
+
+    number_of_packages: Optional[int] = None
+    """Number of packages shipped."""
+
+    origin_address: Optional[str] = None
+    """Address of the origin."""
+
+    origin_country_code: Optional[str] = None
+    """Country code of the origin."""
+
+    origin_postal_code: Optional[str] = None
+    """Postal code of the origin."""
+
+    origin_sender_name: Optional[str] = None
+    """Name of the sender at the origin."""
+
+    pick_up_date: Optional[date] = None
+    """Date the shipment should be picked up."""
+
+    service_description: Optional[str] = None
+    """Description of the shipping service."""
+
+    service_level_code: Optional[str] = None
+    """Service level code for the shipment."""
+
+    shipping_courier_name: Optional[str] = None
+    """Name of the shipping courier."""
+
+    tax_amount: Optional[int] = None
+    """Tax amount for the shipment."""
+
+    tracking_number: Optional[str] = None
+    """Tracking number for the shipment."""
+
+    unit_of_measure: Optional[str] = None
+    """Unit of measure for the shipment weight."""
+
+    weight: Optional[str] = None
+    """Weight of the shipment."""
+
+
 class CardPurchaseSupplement(BaseModel):
     """
     Additional information about a card purchase (e.g., settlement or refund), such as level 3 line item data.
@@ -190,6 +254,9 @@ class CardPurchaseSupplement(BaseModel):
 
     line_items: Optional[List[LineItem]] = None
     """Line item information, such as individual products purchased."""
+
+    shipping: Optional[Shipping] = None
+    """Shipping information for the purchase."""
 
     transaction_id: str
     """The ID of the transaction."""
