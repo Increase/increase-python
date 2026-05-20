@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.525.1](https://github.com/Increase/increase-python/compare/v0.525.0...v0.525.1) (2026-05-20)
+
+
+### Chores
+
+* add release workflow and migrate config to Increase/release-please fork ([#1410](https://github.com/Increase/increase-python/issues/1410)) ([bf39bc5](https://github.com/Increase/increase-python/commit/bf39bc5dac5d75abe86aedbfbaf0d3efe3efffdb))
+* collapse CI into a single job ([#1413](https://github.com/Increase/increase-python/issues/1413)) ([8a6cdd0](https://github.com/Increase/increase-python/commit/8a6cdd00fd99cf713c02289d8f1e93e506062dea))
+* cut over to Increase/release-please and prune Stainless CI cruft ([#1411](https://github.com/Increase/increase-python/issues/1411)) ([ebc923c](https://github.com/Increase/increase-python/commit/ebc923cf84fd1c5b51ee899d53fa01cc0cf5cd5e))
+
 ## 0.525.0 (2026-05-20)
 
 Full Changelog: [v0.524.0...v0.525.0](https://github.com/Increase/increase-python/compare/v0.524.0...v0.525.0)
