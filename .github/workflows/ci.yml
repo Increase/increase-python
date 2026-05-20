@@ -5,65 +5,28 @@ on:
   pull_request:
 
 jobs:
-  lint:
+  ci:
     timeout-minutes: 10
-    name: lint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/checkout@v6
 
       - name: Install Rye
         run: |
           curl -sSf https://rye.astral.sh/get | bash
           echo "$HOME/.rye/shims" >> $GITHUB_PATH
         env:
-          RYE_VERSION: '0.44.0'
-          RYE_INSTALL_OPTION: '--yes'
+          RYE_VERSION: "0.44.0"
+          RYE_INSTALL_OPTION: "--yes"
 
       - name: Install dependencies
         run: rye sync --all-features
 
-      - name: Run lints
+      - name: Lint
         run: ./scripts/lint
 
-  build:
-    timeout-minutes: 10
-    name: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-
-      - name: Install Rye
-        run: |
-          curl -sSf https://rye.astral.sh/get | bash
-          echo "$HOME/.rye/shims" >> $GITHUB_PATH
-        env:
-          RYE_VERSION: '0.44.0'
-          RYE_INSTALL_OPTION: '--yes'
-
-      - name: Install dependencies
-        run: rye sync --all-features
-
-      - name: Run build
+      - name: Build
         run: rye build
 
-  test:
-    timeout-minutes: 10
-    name: test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-
-      - name: Install Rye
-        run: |
-          curl -sSf https://rye.astral.sh/get | bash
-          echo "$HOME/.rye/shims" >> $GITHUB_PATH
-        env:
-          RYE_VERSION: '0.44.0'
-          RYE_INSTALL_OPTION: '--yes'
-
-      - name: Bootstrap
-        run: ./scripts/bootstrap
-
-      - name: Run tests
+      - name: Test
         run: ./scripts/test
