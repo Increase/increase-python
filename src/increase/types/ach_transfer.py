@@ -313,13 +313,14 @@ class NotificationsOfChange(BaseModel):
       financial institution.
     """
 
-    corrected_account_funding: Optional[Literal["checking", "savings", "general_ledger"]] = None
+    corrected_account_funding: Optional[Literal["checking", "savings", "loan", "general_ledger"]] = None
     """
     The corrected account funding type that should be used in future ACHs to this
     account. This is derived from the corrected transaction code.
 
     - `checking` - A checking account.
     - `savings` - A savings account.
+    - `loan` - A loan account used in a lender-borrower relationship. Uncommon.
     - `general_ledger` - A bank's general ledger. Uncommon.
     """
 
@@ -839,8 +840,8 @@ class ACHTransfer(BaseModel):
 
     notifications_of_change: List[NotificationsOfChange]
     """
-    If the receiving bank accepts the transfer but notifies that future transfers
-    should use different details, this will contain those details.
+    If the receiving bank notifies that future transfers should use different
+    details, this will contain those details.
     """
 
     pending_transaction_id: Optional[str] = None

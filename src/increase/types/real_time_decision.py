@@ -32,6 +32,7 @@ __all__ = [
     "CardAuthorizationAdditionalAmountsVision",
     "CardAuthorizationApproval",
     "CardAuthorizationDecline",
+    "CardAuthorizationHealthcare",
     "CardAuthorizationNetworkDetails",
     "CardAuthorizationNetworkDetailsPulse",
     "CardAuthorizationNetworkDetailsVisa",
@@ -709,6 +710,25 @@ class CardAuthorizationDecline(BaseModel):
     """
 
 
+class CardAuthorizationHealthcare(BaseModel):
+    """The healthcare-related fields for this authorization.
+
+    Only present for specific programs.
+    """
+
+    merchant_ninety_percent_eligibility: Literal["eligible", "not_eligible"]
+    """
+    The merchant's eligibility under the Internal Revenue Service's 90% Rule for
+    Flexible Spending Account (FSA) and Health Savings Account (HSA) eligible
+    products. The eligibility is determined based on the list of merchants
+    maintained by the Special Interest Group for IIAS Standards (SIGIS).
+
+    - `eligible` - The merchant is eligible for treatment under the 90% rule.
+    - `not_eligible` - The merchant is not eligible for treatment under the 90%
+      rule.
+    """
+
+
 class CardAuthorizationNetworkDetailsPulse(BaseModel):
     """Fields specific to the `pulse` network."""
 
@@ -1098,6 +1118,12 @@ class CardAuthorization(BaseModel):
       cardholder.
     - `refund` - A refund card authorization, sometimes referred to as a credit
       voucher authorization, where funds are credited to the cardholder.
+    """
+
+    healthcare: Optional[CardAuthorizationHealthcare] = None
+    """The healthcare-related fields for this authorization.
+
+    Only present for specific programs.
     """
 
     merchant_acceptor_id: str

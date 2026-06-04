@@ -12,7 +12,14 @@ class DigitalWalletTokenRequestCreateResponse(BaseModel):
     """The results of a Digital Wallet Token simulation."""
 
     decline_reason: Optional[
-        Literal["card_not_active", "no_verification_method", "webhook_timed_out", "webhook_declined"]
+        Literal[
+            "card_not_active",
+            "no_verification_method",
+            "webhook_timed_out",
+            "webhook_declined",
+            "incorrect_card_verification_code",
+            "declined_by_token_requestor",
+        ]
     ] = None
     """
     If the simulated tokenization attempt was declined, this field contains details
@@ -24,6 +31,10 @@ class DigitalWalletTokenRequestCreateResponse(BaseModel):
     - `webhook_timed_out` - Your webhook timed out when evaluating the token
       provisioning attempt.
     - `webhook_declined` - Your webhook declined the token provisioning attempt.
+    - `incorrect_card_verification_code` - The tokenization attempt failed because
+      the Card Verification Code (CVC) was incorrect.
+    - `declined_by_token_requestor` - The tokenization attempt was declined by the
+      token requestor.
     """
 
     digital_wallet_token_id: Optional[str] = None

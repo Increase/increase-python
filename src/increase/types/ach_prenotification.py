@@ -73,13 +73,14 @@ class NotificationsOfChange(BaseModel):
       financial institution.
     """
 
-    corrected_account_funding: Optional[Literal["checking", "savings", "general_ledger"]] = None
+    corrected_account_funding: Optional[Literal["checking", "savings", "loan", "general_ledger"]] = None
     """
     The corrected account funding type that should be used in future ACHs to this
     account. This is derived from the corrected transaction code.
 
     - `checking` - A checking account.
     - `savings` - A savings account.
+    - `loan` - A loan account used in a lender-borrower relationship. Uncommon.
     - `general_ledger` - A bank's general ledger. Uncommon.
     """
 
@@ -389,8 +390,8 @@ class ACHPrenotification(BaseModel):
     credit_debit_indicator: Optional[Literal["credit", "debit"]] = None
     """If the notification is for a future credit or debit.
 
-    - `credit` - The Prenotification is for an anticipated credit.
-    - `debit` - The Prenotification is for an anticipated debit.
+    - `credit` - Credit
+    - `debit` - Debit
     """
 
     effective_date: Optional[datetime] = None

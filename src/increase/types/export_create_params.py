@@ -17,6 +17,8 @@ __all__ = [
     "BookkeepingAccountBalanceCsv",
     "DailyAccountBalanceCsv",
     "EntityCsv",
+    "FeeCsv",
+    "FeeCsvCreatedAt",
     "FundingInstructions",
     "TransactionCsv",
     "TransactionCsvCreatedAt",
@@ -38,6 +40,7 @@ class ExportCreateParams(TypedDict, total=False):
             "vendor_csv",
             "account_verification_letter",
             "funding_instructions",
+            "fee_csv",
             "voided_check",
             "daily_account_balance_csv",
         ]
@@ -58,6 +61,8 @@ class ExportCreateParams(TypedDict, total=False):
       management dashboard.
     - `account_verification_letter` - A PDF of an account verification letter.
     - `funding_instructions` - A PDF of funding instructions.
+    - `fee_csv` - Export a CSV of fees. The time range must not include any fees
+      that are part of an open fee statement.
     - `voided_check` - A PDF of a voided check.
     - `daily_account_balance_csv` - Export a CSV of daily account balances with
       starting and ending balances for a given date range.
@@ -98,6 +103,9 @@ class ExportCreateParams(TypedDict, total=False):
 
     Required if `category` is equal to `entity_csv`.
     """
+
+    fee_csv: FeeCsv
+    """Options for the created export. Required if `category` is equal to `fee_csv`."""
 
     funding_instructions: FundingInstructions
     """Options for the created export.
@@ -229,6 +237,44 @@ class EntityCsv(TypedDict, total=False):
     """
 
     pass
+
+
+class FeeCsvCreatedAt(TypedDict, total=False):
+    """Filter results by time range on the `created_at` attribute."""
+
+    after: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
+    """
+    Return results after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+    timestamp.
+    """
+
+    before: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
+    """
+    Return results before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
+    timestamp.
+    """
+
+    on_or_after: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
+    """
+    Return results on or after this
+    [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+    """
+
+    on_or_before: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
+    """
+    Return results on or before this
+    [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp.
+    """
+
+
+class FeeCsv(TypedDict, total=False):
+    """Options for the created export. Required if `category` is equal to `fee_csv`."""
+
+    created_at: FeeCsvCreatedAt
+    """Filter results by time range on the `created_at` attribute."""
+
+    program_id: str
+    """Filter exported Fees to the specified Program."""
 
 
 class FundingInstructions(TypedDict, total=False):

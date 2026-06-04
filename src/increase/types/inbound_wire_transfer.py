@@ -115,6 +115,9 @@ class InboundWireTransfer(BaseModel):
     instruction_identification: Optional[str] = None
     """The sending bank's identifier for the wire transfer."""
 
+    purpose: Optional[str] = None
+    """The reason for the wire transfer, as set by the sender."""
+
     reversal: Optional[Reversal] = None
     """If the transfer is reversed, this will contain details of the reversal."""
 

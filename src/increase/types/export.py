@@ -171,6 +171,12 @@ class FeeCsvCreatedAt(BaseModel):
     before: Optional[datetime] = None
     """Filter fees created before this time."""
 
+    on_or_after: Optional[datetime] = None
+    """Filter fees created on or after this time."""
+
+    on_or_before: Optional[datetime] = None
+    """Filter fees created on or before this time."""
+
 
 class FeeCsv(BaseModel):
     """Details of the fee CSV export.

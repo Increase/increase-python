@@ -32,6 +32,7 @@ __all__ = [
     "ElementCardAuthorizationAdditionalAmountsTransit",
     "ElementCardAuthorizationAdditionalAmountsUnknown",
     "ElementCardAuthorizationAdditionalAmountsVision",
+    "ElementCardAuthorizationHealthcare",
     "ElementCardAuthorizationNetworkDetails",
     "ElementCardAuthorizationNetworkDetailsPulse",
     "ElementCardAuthorizationNetworkDetailsVisa",
@@ -863,6 +864,25 @@ class ElementCardAuthorizationAdditionalAmounts(BaseModel):
     """The part of this transaction amount that was for vision-related services."""
 
 
+class ElementCardAuthorizationHealthcare(BaseModel):
+    """The healthcare-related fields for this authorization.
+
+    Only present for specific programs.
+    """
+
+    merchant_ninety_percent_eligibility: Literal["eligible", "not_eligible"]
+    """
+    The merchant's eligibility under the Internal Revenue Service's 90% Rule for
+    Flexible Spending Account (FSA) and Health Savings Account (HSA) eligible
+    products. The eligibility is determined based on the list of merchants
+    maintained by the Special Interest Group for IIAS Standards (SIGIS).
+
+    - `eligible` - The merchant is eligible for treatment under the 90% rule.
+    - `not_eligible` - The merchant is not eligible for treatment under the 90%
+      rule.
+    """
+
+
 class ElementCardAuthorizationNetworkDetailsPulse(BaseModel):
     """Fields specific to the `pulse` network."""
 
@@ -1380,6 +1400,12 @@ class ElementCardAuthorization(BaseModel):
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) when this authorization
     will expire and the pending transaction will be released.
+    """
+
+    healthcare: Optional[ElementCardAuthorizationHealthcare] = None
+    """The healthcare-related fields for this authorization.
+
+    Only present for specific programs.
     """
 
     merchant_acceptor_id: str
@@ -3264,7 +3290,8 @@ class ElementCardDecline(BaseModel):
       card's value. Only applies when a CVV2 is present.
     - `transaction_not_allowed` - The attempted card transaction is not allowed per
       Increase's terms.
-    - `breaches_limit` - The transaction was blocked by a Limit.
+    - `breaches_limit` - The transaction was blocked by a limit or an authorization
+      control.
     - `webhook_declined` - Your application declined the transaction via webhook.
     - `webhook_timed_out` - Your application webhook did not respond without the
       required timeout.
@@ -3973,7 +4000,7 @@ class ElementCardFinancialVerification(BaseModel):
 class ElementCardFinancial(BaseModel):
     """A Card Financial object.
 
-    This field will be present in the JSON response if and only if `category` is equal to `card_financial`. Card Financials are temporary holds placed on a customer's funds with the intent to later clear a transaction.
+    This field will be present in the JSON response if and only if `category` is equal to `card_financial`. Card Financials are card transactions that have cleared and settled. Unlike a Card Settlement, which clears a previous authorization, a Card Financial is authorized and cleared in a single message.
     """
 
     id: str
@@ -7656,8 +7683,9 @@ class Element(BaseModel):
     """A Card Financial object.
 
     This field will be present in the JSON response if and only if `category` is
-    equal to `card_financial`. Card Financials are temporary holds placed on a
-    customer's funds with the intent to later clear a transaction.
+    equal to `card_financial`. Card Financials are card transactions that have
+    cleared and settled. Unlike a Card Settlement, which clears a previous
+    authorization, a Card Financial is authorized and cleared in a single message.
     """
 
     card_fuel_confirmation: Optional[ElementCardFuelConfirmation] = None
