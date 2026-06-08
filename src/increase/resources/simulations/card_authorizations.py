@@ -129,7 +129,8 @@ class CardAuthorizationsResource(SyncAPIResource):
                 card's value. Only applies when a CVV2 is present.
               - `transaction_not_allowed` - The attempted card transaction is not allowed per
                 Increase's terms.
-              - `breaches_limit` - The transaction was blocked by a Limit.
+              - `breaches_limit` - The transaction was blocked by a limit or an authorization
+                control.
               - `webhook_declined` - Your application declined the transaction via webhook.
               - `webhook_timed_out` - Your application webhook did not respond without the
                 required timeout.
@@ -332,7 +333,8 @@ class AsyncCardAuthorizationsResource(AsyncAPIResource):
                 card's value. Only applies when a CVV2 is present.
               - `transaction_not_allowed` - The attempted card transaction is not allowed per
                 Increase's terms.
-              - `breaches_limit` - The transaction was blocked by a Limit.
+              - `breaches_limit` - The transaction was blocked by a limit or an authorization
+                control.
               - `webhook_declined` - Your application declined the transaction via webhook.
               - `webhook_timed_out` - Your application webhook did not respond without the
                 required timeout.

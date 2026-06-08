@@ -228,6 +228,7 @@ class CheckDepositsResource(SyncAPIResource):
           check_deposit_id: The identifier of the Check Deposit you wish to submit.
 
           scan: If set, the simulation will use these values for the check's scanned MICR data.
+              If not set, the simulation will use random values.
 
           extra_headers: Send extra headers
 
@@ -460,6 +461,7 @@ class AsyncCheckDepositsResource(AsyncAPIResource):
           check_deposit_id: The identifier of the Check Deposit you wish to submit.
 
           scan: If set, the simulation will use these values for the check's scanned MICR data.
+              If not set, the simulation will use random values.
 
           extra_headers: Send extra headers
 
