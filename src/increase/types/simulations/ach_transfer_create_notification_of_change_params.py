@@ -8,11 +8,12 @@ __all__ = ["ACHTransferCreateNotificationOfChangeParams"]
 
 
 class ACHTransferCreateNotificationOfChangeParams(TypedDict, total=False):
-    corrected_account_funding: Literal["checking", "savings", "general_ledger"]
+    corrected_account_funding: Literal["checking", "savings", "loan", "general_ledger"]
     """The corrected account funding type.
 
     - `checking` - A checking account.
     - `savings` - A savings account.
+    - `loan` - A loan account used in a lender-borrower relationship. Uncommon.
     - `general_ledger` - A bank's general ledger. Uncommon.
     """
 

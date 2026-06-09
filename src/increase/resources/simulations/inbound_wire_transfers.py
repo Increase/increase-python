@@ -57,6 +57,7 @@ class InboundWireTransfersResource(SyncAPIResource):
         end_to_end_identification: str | Omit = omit,
         instructing_agent_routing_number: str | Omit = omit,
         instruction_identification: str | Omit = omit,
+        purpose: str | Omit = omit,
         unique_end_to_end_transaction_reference: str | Omit = omit,
         unstructured_remittance_information: str | Omit = omit,
         wire_drawdown_request_id: str | Omit = omit,
@@ -109,6 +110,9 @@ class InboundWireTransfersResource(SyncAPIResource):
           instruction_identification: The sending bank will set instruction_identification in production. You can
               simulate any value here.
 
+          purpose: The sending bank will set purpose in production. You can simulate any value
+              here.
+
           unique_end_to_end_transaction_reference: The sending bank will set unique_end_to_end_transaction_reference in production.
               You can simulate any value here.
 
@@ -145,6 +149,7 @@ class InboundWireTransfersResource(SyncAPIResource):
                     "end_to_end_identification": end_to_end_identification,
                     "instructing_agent_routing_number": instructing_agent_routing_number,
                     "instruction_identification": instruction_identification,
+                    "purpose": purpose,
                     "unique_end_to_end_transaction_reference": unique_end_to_end_transaction_reference,
                     "unstructured_remittance_information": unstructured_remittance_information,
                     "wire_drawdown_request_id": wire_drawdown_request_id,
@@ -198,6 +203,7 @@ class AsyncInboundWireTransfersResource(AsyncAPIResource):
         end_to_end_identification: str | Omit = omit,
         instructing_agent_routing_number: str | Omit = omit,
         instruction_identification: str | Omit = omit,
+        purpose: str | Omit = omit,
         unique_end_to_end_transaction_reference: str | Omit = omit,
         unstructured_remittance_information: str | Omit = omit,
         wire_drawdown_request_id: str | Omit = omit,
@@ -250,6 +256,9 @@ class AsyncInboundWireTransfersResource(AsyncAPIResource):
           instruction_identification: The sending bank will set instruction_identification in production. You can
               simulate any value here.
 
+          purpose: The sending bank will set purpose in production. You can simulate any value
+              here.
+
           unique_end_to_end_transaction_reference: The sending bank will set unique_end_to_end_transaction_reference in production.
               You can simulate any value here.
 
@@ -286,6 +295,7 @@ class AsyncInboundWireTransfersResource(AsyncAPIResource):
                     "end_to_end_identification": end_to_end_identification,
                     "instructing_agent_routing_number": instructing_agent_routing_number,
                     "instruction_identification": instruction_identification,
+                    "purpose": purpose,
                     "unique_end_to_end_transaction_reference": unique_end_to_end_transaction_reference,
                     "unstructured_remittance_information": unstructured_remittance_information,
                     "wire_drawdown_request_id": wire_drawdown_request_id,

@@ -791,6 +791,12 @@ class CardPushTransfer(BaseModel):
     merchant_city_name: str
     """The city name of the merchant (generally your business) sending the transfer."""
 
+    merchant_legal_business_name: Optional[str] = None
+    """
+    The legal business name of the merchant (generally your business) sending the
+    transfer.
+    """
+
     merchant_name: str
     """The merchant name shows up as the statement descriptor for the transfer.
 
@@ -810,12 +816,36 @@ class CardPushTransfer(BaseModel):
     merchant_state: str
     """The state of the merchant (generally your business) sending the transfer."""
 
+    merchant_street_address: Optional[str] = None
+    """
+    The street address of the merchant (generally your business) sending the
+    transfer.
+    """
+
     presentment_amount: PresentmentAmount
     """The amount that was transferred.
 
     The receiving bank will have converted this to the cardholder's currency. The
     amount that is applied to your Increase account matches the currency of your
     account.
+    """
+
+    recipient_address_city: Optional[str] = None
+    """The city of the recipient. Required if the card is issued in Canada."""
+
+    recipient_address_line1: Optional[str] = None
+    """The first line of the recipient's address.
+
+    Required if the card is issued in Canada.
+    """
+
+    recipient_address_postal_code: Optional[str] = None
+    """The postal code of the recipient. Required if the card is issued in Canada."""
+
+    recipient_address_state: Optional[str] = None
+    """The state or province of the recipient.
+
+    Required if the card is issued in Canada.
     """
 
     recipient_name: str

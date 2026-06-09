@@ -184,7 +184,7 @@ class TestEntities:
                 "rated_at": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "rating": "low",
             },
-            supplemental_documents=[{"file_id": "file_makxrc67oh9l6sg7w9yc"}],
+            supplemental_documents=[{"file_id": "file_id"}],
             terms_agreements=[
                 {
                     "agreed_at": parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -734,7 +734,7 @@ class TestAsyncEntities:
                 "rated_at": parse_datetime("2019-12-27T18:11:19.117Z"),
                 "rating": "low",
             },
-            supplemental_documents=[{"file_id": "file_makxrc67oh9l6sg7w9yc"}],
+            supplemental_documents=[{"file_id": "file_id"}],
             terms_agreements=[
                 {
                     "agreed_at": parse_datetime("2019-12-27T18:11:19.117Z"),

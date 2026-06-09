@@ -99,8 +99,8 @@ class ACHPrenotificationsResource(SyncAPIResource):
 
           credit_debit_indicator: Whether the Prenotification is for a future debit or credit.
 
-              - `credit` - The Prenotification is for an anticipated credit.
-              - `debit` - The Prenotification is for an anticipated debit.
+              - `credit` - Credit
+              - `debit` - Debit
 
           effective_date: The ACH Prenotification effective date in
               [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
@@ -336,8 +336,8 @@ class AsyncACHPrenotificationsResource(AsyncAPIResource):
 
           credit_debit_indicator: Whether the Prenotification is for a future debit or credit.
 
-              - `credit` - The Prenotification is for an anticipated credit.
-              - `debit` - The Prenotification is for an anticipated debit.
+              - `credit` - Credit
+              - `debit` - Debit
 
           effective_date: The ACH Prenotification effective date in
               [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.

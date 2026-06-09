@@ -14,6 +14,7 @@ __all__ = [
     "CreatedByOAuthApplication",
     "CreatedByUser",
     "CreditorAddress",
+    "DebtorAddress",
     "Rejection",
     "Submission",
 ]
@@ -74,6 +75,22 @@ class CreatedBy(BaseModel):
 
 class CreditorAddress(BaseModel):
     """The creditor's address."""
+
+    city: Optional[str] = None
+    """The city, district, town, or village of the address."""
+
+    line1: Optional[str] = None
+    """The first line of the address."""
+
+    postal_code: Optional[str] = None
+    """The ZIP code of the address."""
+
+    state: Optional[str] = None
+    """The address state."""
+
+
+class DebtorAddress(BaseModel):
+    """The debtor's address."""
 
     city: Optional[str] = None
     """The city, district, town, or village of the address."""
@@ -218,6 +235,9 @@ class FednowTransfer(BaseModel):
 
     - `USD` - US Dollar (USD)
     """
+
+    debtor_address: Optional[DebtorAddress] = None
+    """The debtor's address."""
 
     debtor_name: str
     """The name of the transfer's sender.

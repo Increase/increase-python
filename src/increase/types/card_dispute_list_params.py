@@ -72,6 +72,7 @@ _StatusReservedKeywords = TypedDict(
                 "pending_response",
                 "lost",
                 "won",
+                "rejected",
             ]
         ],
     },

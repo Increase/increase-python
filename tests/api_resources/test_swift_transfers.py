@@ -24,7 +24,7 @@ class TestSwiftTransfers:
         swift_transfer = client.swift_transfers.create(
             account_id="account_in71c4amph0vgo2qllky",
             account_number="987654321",
-            bank_identification_code="ECBFDEFFTPP",
+            bank_identification_code="FRNYUS33XXX",
             creditor_address={
                 "city": "Frankfurt",
                 "country": "DE",
@@ -49,7 +49,7 @@ class TestSwiftTransfers:
         swift_transfer = client.swift_transfers.create(
             account_id="account_in71c4amph0vgo2qllky",
             account_number="987654321",
-            bank_identification_code="ECBFDEFFTPP",
+            bank_identification_code="FRNYUS33XXX",
             creditor_address={
                 "city": "Frankfurt",
                 "country": "DE",
@@ -82,7 +82,7 @@ class TestSwiftTransfers:
         response = client.swift_transfers.with_raw_response.create(
             account_id="account_in71c4amph0vgo2qllky",
             account_number="987654321",
-            bank_identification_code="ECBFDEFFTPP",
+            bank_identification_code="FRNYUS33XXX",
             creditor_address={
                 "city": "Frankfurt",
                 "country": "DE",
@@ -111,7 +111,7 @@ class TestSwiftTransfers:
         with client.swift_transfers.with_streaming_response.create(
             account_id="account_in71c4amph0vgo2qllky",
             account_number="987654321",
-            bank_identification_code="ECBFDEFFTPP",
+            bank_identification_code="FRNYUS33XXX",
             creditor_address={
                 "city": "Frankfurt",
                 "country": "DE",
@@ -304,7 +304,7 @@ class TestAsyncSwiftTransfers:
         swift_transfer = await async_client.swift_transfers.create(
             account_id="account_in71c4amph0vgo2qllky",
             account_number="987654321",
-            bank_identification_code="ECBFDEFFTPP",
+            bank_identification_code="FRNYUS33XXX",
             creditor_address={
                 "city": "Frankfurt",
                 "country": "DE",
@@ -329,7 +329,7 @@ class TestAsyncSwiftTransfers:
         swift_transfer = await async_client.swift_transfers.create(
             account_id="account_in71c4amph0vgo2qllky",
             account_number="987654321",
-            bank_identification_code="ECBFDEFFTPP",
+            bank_identification_code="FRNYUS33XXX",
             creditor_address={
                 "city": "Frankfurt",
                 "country": "DE",
@@ -362,7 +362,7 @@ class TestAsyncSwiftTransfers:
         response = await async_client.swift_transfers.with_raw_response.create(
             account_id="account_in71c4amph0vgo2qllky",
             account_number="987654321",
-            bank_identification_code="ECBFDEFFTPP",
+            bank_identification_code="FRNYUS33XXX",
             creditor_address={
                 "city": "Frankfurt",
                 "country": "DE",
@@ -391,7 +391,7 @@ class TestAsyncSwiftTransfers:
         async with async_client.swift_transfers.with_streaming_response.create(
             account_id="account_in71c4amph0vgo2qllky",
             account_number="987654321",
-            bank_identification_code="ECBFDEFFTPP",
+            bank_identification_code="FRNYUS33XXX",
             creditor_address={
                 "city": "Frankfurt",
                 "country": "DE",

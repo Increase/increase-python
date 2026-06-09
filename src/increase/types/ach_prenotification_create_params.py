@@ -42,8 +42,8 @@ class ACHPrenotificationCreateParams(TypedDict, total=False):
     credit_debit_indicator: Literal["credit", "debit"]
     """Whether the Prenotification is for a future debit or credit.
 
-    - `credit` - The Prenotification is for an anticipated credit.
-    - `debit` - The Prenotification is for an anticipated debit.
+    - `credit` - Credit
+    - `debit` - Debit
     """
 
     effective_date: Annotated[Union[str, date], PropertyInfo(format="iso8601")]

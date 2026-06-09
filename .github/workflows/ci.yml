@@ -1,32 +1,57 @@
 name: CI
 on:
   push:
-    branches: [main]
+    branches:
+      - '**'
+      - '!integrated/**'
+      - '!stl-preview-head/**'
+      - '!stl-preview-base/**'
+      - '!generated'
+      - '!codegen/**'
+      - 'codegen/stl/**'
   pull_request:
+    branches-ignore:
+      - 'stl-preview-head/**'
+      - 'stl-preview-base/**'
 
 jobs:
-  ci:
+  lint:
     timeout-minutes: 10
+    name: lint
     runs-on: ubuntu-latest
+    if: (github.event_name == 'push' || github.event.pull_request.head.repo.fork) && (github.event_name != 'push' || github.event.head_commit.message != 'codegen metadata')
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
-      - name: Install Rye
-        run: |
-          curl -sSf https://rye.astral.sh/get | bash
-          echo "$HOME/.rye/shims" >> $GITHUB_PATH
-        env:
-          RYE_VERSION: "0.44.0"
-          RYE_INSTALL_OPTION: "--yes"
+      - name: Install uv
+        uses: astral-sh/setup-uv@d4b2f3b6ecc6e67c4457f6d3e41ec42d3d0fcb86 # v5.4.2
+        with:
+          version: '0.10.2'
 
       - name: Install dependencies
-        run: rye sync --all-features
+        run: uv sync --all-extras
 
-      - name: Lint
+      - name: Run lints
         run: ./scripts/lint
 
-      - name: Build
-        run: rye build
+  build:
+    if: (github.event_name == 'push' || github.event.pull_request.head.repo.fork) && (github.event_name != 'push' || github.event.head_commit.message != 'codegen metadata')
+    timeout-minutes: 10
+    name: build
+    permissions:
+      contents: read
+      id-token: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
-      - name: Test
-        run: ./scripts/test
+      - name: Install uv
+        uses: astral-sh/setup-uv@d4b2f3b6ecc6e67c4457f6d3e41ec42d3d0fcb86 # v5.4.2
+        with:
+          version: '0.10.2'
+
+      - name: Install dependencies
+        run: uv sync --all-extras
+
+      - name: Run build
+        run: uv build
