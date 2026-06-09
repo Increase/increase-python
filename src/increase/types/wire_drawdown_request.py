@@ -126,6 +126,12 @@ class WireDrawdownRequest(BaseModel):
     debtor_routing_number: str
     """The debtor's routing number."""
 
+    end_to_end_identification: Optional[str] = None
+    """
+    A free-form reference string set by the sender, to be mirrored back in the
+    subsequent wire transfer.
+    """
+
     fulfillment_inbound_wire_transfer_id: Optional[str] = None
     """
     If the recipient fulfills the drawdown request by sending funds, then this will
@@ -161,6 +167,13 @@ class WireDrawdownRequest(BaseModel):
     """A constant representing the object's type.
 
     For this resource it will always be `wire_drawdown_request`.
+    """
+
+    unique_end_to_end_transaction_reference: Optional[str] = None
+    """
+    The unique end-to-end transaction reference
+    ([UETR](https://www.swift.com/payments/what-unique-end-end-transaction-reference-uetr))
+    of the drawdown request.
     """
 
     unstructured_remittance_information: str

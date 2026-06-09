@@ -57,6 +57,15 @@ class TestExports:
                 "on_or_before_date": parse_date("2019-12-27"),
             },
             entity_csv={},
+            fee_csv={
+                "created_at": {
+                    "after": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "before": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
+                },
+                "program_id": "program_id",
+            },
             funding_instructions={"account_number_id": "account_number_id"},
             transaction_csv={
                 "account_id": "account_in71c4amph0vgo2qllky",
@@ -225,6 +234,15 @@ class TestAsyncExports:
                 "on_or_before_date": parse_date("2019-12-27"),
             },
             entity_csv={},
+            fee_csv={
+                "created_at": {
+                    "after": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "before": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "on_or_after": parse_datetime("2019-12-27T18:11:19.117Z"),
+                    "on_or_before": parse_datetime("2019-12-27T18:11:19.117Z"),
+                },
+                "program_id": "program_id",
+            },
             funding_instructions={"account_number_id": "account_number_id"},
             transaction_csv={
                 "account_id": "account_in71c4amph0vgo2qllky",
