@@ -1357,7 +1357,7 @@ class SourceCardFinancialVerification(BaseModel):
 class SourceCardFinancial(BaseModel):
     """A Card Financial object.
 
-    This field will be present in the JSON response if and only if `category` is equal to `card_financial`. Card Financials are temporary holds placed on a customer's funds with the intent to later clear a transaction.
+    This field will be present in the JSON response if and only if `category` is equal to `card_financial`. Card Financials are card transactions that have cleared and settled. Unlike a Card Settlement, which clears a previous authorization, a Card Financial is authorized and cleared in a single message.
     """
 
     id: str
@@ -3868,6 +3868,9 @@ class SourceInboundWireTransfer(BaseModel):
     instruction_identification: Optional[str] = None
     """The sending bank's identifier for the wire transfer."""
 
+    purpose: Optional[str] = None
+    """The reason for the wire transfer, as set by the sender."""
+
     transfer_id: str
     """The ID of the Inbound Wire Transfer object that resulted in this Transaction."""
 
@@ -4394,8 +4397,9 @@ class Source(BaseModel):
     """A Card Financial object.
 
     This field will be present in the JSON response if and only if `category` is
-    equal to `card_financial`. Card Financials are temporary holds placed on a
-    customer's funds with the intent to later clear a transaction.
+    equal to `card_financial`. Card Financials are card transactions that have
+    cleared and settled. Unlike a Card Settlement, which clears a previous
+    authorization, a Card Financial is authorized and cleared in a single message.
     """
 
     card_push_transfer_acceptance: Optional[SourceCardPushTransferAcceptance] = None

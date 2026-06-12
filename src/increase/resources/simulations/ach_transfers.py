@@ -98,7 +98,7 @@ class ACHTransfersResource(SyncAPIResource):
         self,
         ach_transfer_id: str,
         *,
-        corrected_account_funding: Literal["checking", "savings", "general_ledger"] | Omit = omit,
+        corrected_account_funding: Literal["checking", "savings", "loan", "general_ledger"] | Omit = omit,
         corrected_account_number: str | Omit = omit,
         corrected_individual_id: str | Omit = omit,
         corrected_routing_number: str | Omit = omit,
@@ -122,6 +122,7 @@ class ACHTransfersResource(SyncAPIResource):
 
               - `checking` - A checking account.
               - `savings` - A savings account.
+              - `loan` - A loan account used in a lender-borrower relationship. Uncommon.
               - `general_ledger` - A bank's general ledger. Uncommon.
 
           corrected_account_number: The corrected account number.
@@ -620,7 +621,7 @@ class AsyncACHTransfersResource(AsyncAPIResource):
         self,
         ach_transfer_id: str,
         *,
-        corrected_account_funding: Literal["checking", "savings", "general_ledger"] | Omit = omit,
+        corrected_account_funding: Literal["checking", "savings", "loan", "general_ledger"] | Omit = omit,
         corrected_account_number: str | Omit = omit,
         corrected_individual_id: str | Omit = omit,
         corrected_routing_number: str | Omit = omit,
@@ -644,6 +645,7 @@ class AsyncACHTransfersResource(AsyncAPIResource):
 
               - `checking` - A checking account.
               - `savings` - A savings account.
+              - `loan` - A loan account used in a lender-borrower relationship. Uncommon.
               - `general_ledger` - A bank's general ledger. Uncommon.
 
           corrected_account_number: The corrected account number.

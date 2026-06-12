@@ -1,14 +1,29 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import TYPE_CHECKING, Dict, Optional
+from typing import Optional
 from datetime import datetime
 from typing_extensions import Literal
 
-from pydantic import Field as FieldInfo
-
 from .._models import BaseModel
 
-__all__ = ["PhysicalCardProfile"]
+__all__ = ["PhysicalCardProfile", "FrontText"]
+
+
+class FrontText(BaseModel):
+    """Text printed on the front of the card.
+
+    Reach out to [support@increase.com](mailto:support@increase.com) for more information.
+    """
+
+    line1: str
+    """The first line of text on the front of the card."""
+
+    line2: Optional[str] = None
+    """The second line of text on the front of the card.
+
+    Providing a second line moves the first line slightly higher and prints the
+    second line in the spot where the first line would have otherwise been printed.
+    """
 
 
 class PhysicalCardProfile(BaseModel):
@@ -57,6 +72,13 @@ class PhysicalCardProfile(BaseModel):
     This will be missing until the image has been post-processed.
     """
 
+    front_text: Optional[FrontText] = None
+    """Text printed on the front of the card.
+
+    Reach out to [support@increase.com](mailto:support@increase.com) for more
+    information.
+    """
+
     idempotency_key: Optional[str] = None
     """The idempotency key you chose for this object.
 
@@ -93,15 +115,3 @@ class PhysicalCardProfile(BaseModel):
 
     For this resource it will always be `physical_card_profile`.
     """
-
-    if TYPE_CHECKING:
-        # Some versions of Pydantic <2.8.0 have a bug and don’t allow assigning a
-        # value to this field, so for compatibility we avoid doing it at runtime.
-        __pydantic_extra__: Dict[str, object] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
-
-        # Stub to indicate that arbitrary properties are accepted.
-        # To access properties that are not valid identifiers you can use `getattr`, e.g.
-        # `getattr(obj, '$type')`
-        def __getattr__(self, attr: str) -> object: ...
-    else:
-        __pydantic_extra__: Dict[str, object]

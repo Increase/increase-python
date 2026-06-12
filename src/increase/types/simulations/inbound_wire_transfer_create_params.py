@@ -80,6 +80,12 @@ class InboundWireTransferCreateParams(TypedDict, total=False):
     You can simulate any value here.
     """
 
+    purpose: str
+    """The sending bank will set purpose in production.
+
+    You can simulate any value here.
+    """
+
     unique_end_to_end_transaction_reference: str
     """The sending bank will set unique_end_to_end_transaction_reference in production.
 

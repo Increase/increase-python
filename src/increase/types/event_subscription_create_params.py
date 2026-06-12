@@ -113,6 +113,10 @@ class SelectedEventCategory(TypedDict, total=False):
             "intrafi_account_enrollment.updated",
             "intrafi_exclusion.created",
             "intrafi_exclusion.updated",
+            "loan_application.created",
+            "loan_application.updated",
+            "loan_offer.created",
+            "loan_offer.updated",
             "lockbox.created",
             "lockbox.updated",
             "oauth_connection.created",
@@ -259,6 +263,10 @@ class SelectedEventCategory(TypedDict, total=False):
       Enrollment is updated.
     - `intrafi_exclusion.created` - Occurs whenever an IntraFi Exclusion is created.
     - `intrafi_exclusion.updated` - Occurs whenever an IntraFi Exclusion is updated.
+    - `loan_application.created` - Occurs whenever a Loan Application is created.
+    - `loan_application.updated` - Occurs whenever a Loan Application is updated.
+    - `loan_offer.created` - Occurs whenever a Loan Offer is created.
+    - `loan_offer.updated` - Occurs whenever a Loan Offer is updated.
     - `lockbox.created` - Occurs whenever a Lockbox is created.
     - `lockbox.updated` - Occurs whenever a Lockbox is updated.
     - `oauth_connection.created` - Occurs whenever an OAuth Connection is created.

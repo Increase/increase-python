@@ -9,6 +9,7 @@ from .._models import BaseModel
 __all__ = [
     "CardDispute",
     "Loss",
+    "Rejection",
     "Visa",
     "VisaNetworkEvent",
     "VisaNetworkEventAttachmentFile",
@@ -125,6 +126,21 @@ class Loss(BaseModel):
 
     - `user_withdrawn` - The user withdrew the Card Dispute.
     - `loss` - The Card Dispute was lost according to network rules.
+    """
+
+
+class Rejection(BaseModel):
+    """
+    If the Card Dispute has been rejected, this will contain details of the rejection.
+    """
+
+    explanation: str
+    """Why the Card Dispute was rejected."""
+
+    rejected_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+    the Card Dispute was rejected.
     """
 
 
@@ -2681,6 +2697,12 @@ class CardDispute(BaseModel):
     - `pulse` - Pulse: details will be under the `pulse` object.
     """
 
+    rejection: Optional[Rejection] = None
+    """
+    If the Card Dispute has been rejected, this will contain details of the
+    rejection.
+    """
+
     status: Literal[
         "user_submission_required",
         "pending_user_submission_reviewing",
@@ -2689,6 +2711,7 @@ class CardDispute(BaseModel):
         "pending_response",
         "lost",
         "won",
+        "rejected",
     ]
     """The status of the Card Dispute.
 
@@ -2704,6 +2727,8 @@ class CardDispute(BaseModel):
     - `lost` - The Card Dispute has been lost and funds previously credited from the
       acceptance have been debited.
     - `won` - The Card Dispute has been won and no further action can be taken.
+    - `rejected` - The Card Dispute has been reviewed and rejected, please review
+      the explanation for more details.
     """
 
     type: Literal["card_dispute"]

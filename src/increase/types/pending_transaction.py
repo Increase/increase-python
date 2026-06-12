@@ -27,6 +27,7 @@ __all__ = [
     "SourceCardAuthorizationAdditionalAmountsTransit",
     "SourceCardAuthorizationAdditionalAmountsUnknown",
     "SourceCardAuthorizationAdditionalAmountsVision",
+    "SourceCardAuthorizationHealthcare",
     "SourceCardAuthorizationNetworkDetails",
     "SourceCardAuthorizationNetworkDetailsPulse",
     "SourceCardAuthorizationNetworkDetailsVisa",
@@ -389,6 +390,25 @@ class SourceCardAuthorizationAdditionalAmounts(BaseModel):
 
     vision: Optional[SourceCardAuthorizationAdditionalAmountsVision] = None
     """The part of this transaction amount that was for vision-related services."""
+
+
+class SourceCardAuthorizationHealthcare(BaseModel):
+    """The healthcare-related fields for this authorization.
+
+    Only present for specific programs.
+    """
+
+    merchant_ninety_percent_eligibility: Literal["eligible", "not_eligible"]
+    """
+    The merchant's eligibility under the Internal Revenue Service's 90% Rule for
+    Flexible Spending Account (FSA) and Health Savings Account (HSA) eligible
+    products. The eligibility is determined based on the list of merchants
+    maintained by the Special Interest Group for IIAS Standards (SIGIS).
+
+    - `eligible` - The merchant is eligible for treatment under the 90% rule.
+    - `not_eligible` - The merchant is not eligible for treatment under the 90%
+      rule.
+    """
 
 
 class SourceCardAuthorizationNetworkDetailsPulse(BaseModel):
@@ -908,6 +928,12 @@ class SourceCardAuthorization(BaseModel):
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) when this authorization
     will expire and the pending transaction will be released.
+    """
+
+    healthcare: Optional[SourceCardAuthorizationHealthcare] = None
+    """The healthcare-related fields for this authorization.
+
+    Only present for specific programs.
     """
 
     merchant_acceptor_id: str
