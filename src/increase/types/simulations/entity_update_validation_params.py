@@ -22,7 +22,7 @@ class Issue(TypedDict, total=False):
     ]
     """The type of issue.
 
-    - `entity_tax_identifier` - The entity's tax identifier could not be validated.
+    - `entity_tax_identifier` - The entity's tax identifier could not be verified.
       Update the tax ID with the
       [update an entity API](/documentation/api/entities#update-an-entity.corporation.legal_identifier).
     - `entity_address` - The entity's address could not be validated. Update the

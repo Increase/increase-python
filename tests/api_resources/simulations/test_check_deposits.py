@@ -155,6 +155,7 @@ class TestCheckDeposits:
                 "account_number": "x",
                 "routing_number": "x",
                 "auxiliary_on_us": "x",
+                "serial_number": "x",
             },
         )
         assert_matches_type(CheckDeposit, check_deposit, path=["response"])
@@ -334,6 +335,7 @@ class TestAsyncCheckDeposits:
                 "account_number": "x",
                 "routing_number": "x",
                 "auxiliary_on_us": "x",
+                "serial_number": "x",
             },
         )
         assert_matches_type(CheckDeposit, check_deposit, path=["response"])

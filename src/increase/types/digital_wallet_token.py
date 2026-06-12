@@ -6,7 +6,7 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["DigitalWalletToken", "Cardholder", "Device", "DynamicPrimaryAccountNumber", "Update"]
+__all__ = ["DigitalWalletToken", "Cardholder", "Decline", "Device", "DynamicPrimaryAccountNumber", "Update"]
 
 
 class Cardholder(BaseModel):
@@ -14,6 +14,34 @@ class Cardholder(BaseModel):
 
     name: Optional[str] = None
     """Name of the cardholder, for example "John Smith"."""
+
+
+class Decline(BaseModel):
+    """
+    If the Digital Wallet Token was declined during provisioning, details about the decline.
+    """
+
+    reason: Literal[
+        "card_not_active",
+        "no_verification_method",
+        "webhook_timed_out",
+        "webhook_declined",
+        "incorrect_card_verification_code",
+        "declined_by_token_requestor",
+    ]
+    """The reason the token provisioning was declined.
+
+    - `card_not_active` - The card is not active.
+    - `no_verification_method` - The card does not have a two-factor authentication
+      method.
+    - `webhook_timed_out` - Your webhook timed out when evaluating the token
+      provisioning attempt.
+    - `webhook_declined` - Your webhook declined the token provisioning attempt.
+    - `incorrect_card_verification_code` - The tokenization attempt failed because
+      the Card Verification Code (CVC) was incorrect.
+    - `declined_by_token_requestor` - The tokenization attempt was declined by the
+      token requestor.
+    """
 
 
 class Device(BaseModel):
@@ -66,7 +94,7 @@ class DynamicPrimaryAccountNumber(BaseModel):
 
 
 class Update(BaseModel):
-    status: Literal["active", "inactive", "suspended", "deactivated"]
+    status: Literal["active", "inactive", "suspended", "deactivated", "declined"]
     """The status the update changed this Digital Wallet Token to.
 
     - `active` - The digital wallet token is active.
@@ -74,6 +102,7 @@ class Update(BaseModel):
       activated via two-factor authentication yet.
     - `suspended` - The digital wallet token has been temporarily paused.
     - `deactivated` - The digital wallet token has been permanently canceled.
+    - `declined` - The digital wallet token was declined during provisioning.
     """
 
     timestamp: datetime
@@ -103,13 +132,19 @@ class DigitalWalletToken(BaseModel):
     the Digital Wallet Token was created.
     """
 
+    decline: Optional[Decline] = None
+    """
+    If the Digital Wallet Token was declined during provisioning, details about the
+    decline.
+    """
+
     device: Device
     """The device that was used to create the Digital Wallet Token."""
 
     dynamic_primary_account_number: Optional[DynamicPrimaryAccountNumber] = None
     """The redacted Dynamic Primary Account Number."""
 
-    status: Literal["active", "inactive", "suspended", "deactivated"]
+    status: Literal["active", "inactive", "suspended", "deactivated", "declined"]
     """This indicates if payments can be made with the Digital Wallet Token.
 
     - `active` - The digital wallet token is active.
@@ -117,6 +152,7 @@ class DigitalWalletToken(BaseModel):
       activated via two-factor authentication yet.
     - `suspended` - The digital wallet token has been temporarily paused.
     - `deactivated` - The digital wallet token has been permanently canceled.
+    - `declined` - The digital wallet token was declined during provisioning.
     """
 
     token_requestor: Literal["apple_pay", "google_pay", "samsung_pay", "unknown"]

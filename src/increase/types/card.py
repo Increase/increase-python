@@ -273,6 +273,9 @@ class Card(BaseModel):
     billing_address: BillingAddress
     """The Card's billing address."""
 
+    bin: str
+    """The Bank Identification Number (BIN) of the Card."""
+
     created_at: datetime
     """
     The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which

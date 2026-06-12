@@ -57,6 +57,7 @@ class ExportsResource(SyncAPIResource):
             "vendor_csv",
             "account_verification_letter",
             "funding_instructions",
+            "fee_csv",
             "voided_check",
             "daily_account_balance_csv",
         ],
@@ -66,6 +67,7 @@ class ExportsResource(SyncAPIResource):
         bookkeeping_account_balance_csv: export_create_params.BookkeepingAccountBalanceCsv | Omit = omit,
         daily_account_balance_csv: export_create_params.DailyAccountBalanceCsv | Omit = omit,
         entity_csv: export_create_params.EntityCsv | Omit = omit,
+        fee_csv: export_create_params.FeeCsv | Omit = omit,
         funding_instructions: export_create_params.FundingInstructions | Omit = omit,
         transaction_csv: export_create_params.TransactionCsv | Omit = omit,
         vendor_csv: export_create_params.VendorCsv | Omit = omit,
@@ -98,6 +100,8 @@ class ExportsResource(SyncAPIResource):
                 management dashboard.
               - `account_verification_letter` - A PDF of an account verification letter.
               - `funding_instructions` - A PDF of funding instructions.
+              - `fee_csv` - Export a CSV of fees. The time range must not include any fees
+                that are part of an open fee statement.
               - `voided_check` - A PDF of a voided check.
               - `daily_account_balance_csv` - Export a CSV of daily account balances with
                 starting and ending balances for a given date range.
@@ -118,6 +122,8 @@ class ExportsResource(SyncAPIResource):
               `daily_account_balance_csv`.
 
           entity_csv: Options for the created export. Required if `category` is equal to `entity_csv`.
+
+          fee_csv: Options for the created export. Required if `category` is equal to `fee_csv`.
 
           funding_instructions: Options for the created export. Required if `category` is equal to
               `funding_instructions`.
@@ -151,6 +157,7 @@ class ExportsResource(SyncAPIResource):
                     "bookkeeping_account_balance_csv": bookkeeping_account_balance_csv,
                     "daily_account_balance_csv": daily_account_balance_csv,
                     "entity_csv": entity_csv,
+                    "fee_csv": fee_csv,
                     "funding_instructions": funding_instructions,
                     "transaction_csv": transaction_csv,
                     "vendor_csv": vendor_csv,
@@ -345,6 +352,7 @@ class AsyncExportsResource(AsyncAPIResource):
             "vendor_csv",
             "account_verification_letter",
             "funding_instructions",
+            "fee_csv",
             "voided_check",
             "daily_account_balance_csv",
         ],
@@ -354,6 +362,7 @@ class AsyncExportsResource(AsyncAPIResource):
         bookkeeping_account_balance_csv: export_create_params.BookkeepingAccountBalanceCsv | Omit = omit,
         daily_account_balance_csv: export_create_params.DailyAccountBalanceCsv | Omit = omit,
         entity_csv: export_create_params.EntityCsv | Omit = omit,
+        fee_csv: export_create_params.FeeCsv | Omit = omit,
         funding_instructions: export_create_params.FundingInstructions | Omit = omit,
         transaction_csv: export_create_params.TransactionCsv | Omit = omit,
         vendor_csv: export_create_params.VendorCsv | Omit = omit,
@@ -386,6 +395,8 @@ class AsyncExportsResource(AsyncAPIResource):
                 management dashboard.
               - `account_verification_letter` - A PDF of an account verification letter.
               - `funding_instructions` - A PDF of funding instructions.
+              - `fee_csv` - Export a CSV of fees. The time range must not include any fees
+                that are part of an open fee statement.
               - `voided_check` - A PDF of a voided check.
               - `daily_account_balance_csv` - Export a CSV of daily account balances with
                 starting and ending balances for a given date range.
@@ -406,6 +417,8 @@ class AsyncExportsResource(AsyncAPIResource):
               `daily_account_balance_csv`.
 
           entity_csv: Options for the created export. Required if `category` is equal to `entity_csv`.
+
+          fee_csv: Options for the created export. Required if `category` is equal to `fee_csv`.
 
           funding_instructions: Options for the created export. Required if `category` is equal to
               `funding_instructions`.
@@ -439,6 +452,7 @@ class AsyncExportsResource(AsyncAPIResource):
                     "bookkeeping_account_balance_csv": bookkeeping_account_balance_csv,
                     "daily_account_balance_csv": daily_account_balance_csv,
                     "entity_csv": entity_csv,
+                    "fee_csv": fee_csv,
                     "funding_instructions": funding_instructions,
                     "transaction_csv": transaction_csv,
                     "vendor_csv": vendor_csv,

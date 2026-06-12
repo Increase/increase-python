@@ -73,7 +73,10 @@ class PhysicalCardsResource(SyncAPIResource):
 
               - `in_transit` - The physical card is in transit.
               - `processed_for_delivery` - The physical card has been processed for delivery.
-              - `delivered` - The physical card has been delivered.
+              - `delivered` - The physical card has been delivered. Note that some couriers
+                track delivery status based on driver location data rather than an explicit
+                scan. While uncommon, a single physical card may have more than one delivered
+                event.
               - `delivery_issue` - There is an issue preventing delivery. The delivery will be
                 attempted again if possible. If the issue cannot be resolved, the physical
                 card will be returned to sender.
@@ -243,7 +246,10 @@ class AsyncPhysicalCardsResource(AsyncAPIResource):
 
               - `in_transit` - The physical card is in transit.
               - `processed_for_delivery` - The physical card has been processed for delivery.
-              - `delivered` - The physical card has been delivered.
+              - `delivered` - The physical card has been delivered. Note that some couriers
+                track delivery status based on driver location data rather than an explicit
+                scan. While uncommon, a single physical card may have more than one delivered
+                event.
               - `delivery_issue` - There is an issue preventing delivery. The delivery will be
                 attempted again if possible. If the issue cannot be resolved, the physical
                 card will be returned to sender.
