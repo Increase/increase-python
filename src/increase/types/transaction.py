@@ -1484,6 +1484,7 @@ class SourceCardFinancial(BaseModel):
         "quasi_cash",
         "refund",
         "cash_disbursement",
+        "cash_deposit",
         "balance_inquiry",
         "unknown",
     ]
@@ -1507,6 +1508,8 @@ class SourceCardFinancial(BaseModel):
       voucher authorization, where funds are credited to the cardholder.
     - `cash_disbursement` - Cash disbursement transactions are used to withdraw cash
       from an ATM or a point of sale.
+    - `cash_deposit` - Cash deposit transactions are used to deposit cash at an ATM
+      or a point of sale.
     - `balance_inquiry` - A balance inquiry transaction is used to check the balance
       of an account associated with a card.
     - `unknown` - The processing category is unknown.
@@ -4663,8 +4666,8 @@ class Transaction(BaseModel):
 
     created_at: datetime
     """
-    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date on which the
-    Transaction occurred.
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+    the Transaction occurred.
     """
 
     currency: Literal["USD"]
