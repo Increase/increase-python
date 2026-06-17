@@ -58,7 +58,7 @@ class ACHTransfersResource(SyncAPIResource):
         company_name: str | Omit = omit,
         destination_account_holder: Literal["business", "individual", "unknown"] | Omit = omit,
         external_account_id: str | Omit = omit,
-        funding: Literal["checking", "savings", "general_ledger"] | Omit = omit,
+        funding: Literal["checking", "savings", "loan", "general_ledger"] | Omit = omit,
         individual_id: str | Omit = omit,
         individual_name: str | Omit = omit,
         preferred_effective_date: ach_transfer_create_params.PreferredEffectiveDate | Omit = omit,
@@ -129,6 +129,7 @@ class ACHTransfersResource(SyncAPIResource):
 
               - `checking` - A checking account.
               - `savings` - A savings account.
+              - `loan` - A loan account used in a lender-borrower relationship. Uncommon.
               - `general_ledger` - A bank's general ledger. Uncommon.
 
           individual_id: Your identifier for the transfer recipient.
@@ -435,7 +436,7 @@ class AsyncACHTransfersResource(AsyncAPIResource):
         company_name: str | Omit = omit,
         destination_account_holder: Literal["business", "individual", "unknown"] | Omit = omit,
         external_account_id: str | Omit = omit,
-        funding: Literal["checking", "savings", "general_ledger"] | Omit = omit,
+        funding: Literal["checking", "savings", "loan", "general_ledger"] | Omit = omit,
         individual_id: str | Omit = omit,
         individual_name: str | Omit = omit,
         preferred_effective_date: ach_transfer_create_params.PreferredEffectiveDate | Omit = omit,
@@ -506,6 +507,7 @@ class AsyncACHTransfersResource(AsyncAPIResource):
 
               - `checking` - A checking account.
               - `savings` - A savings account.
+              - `loan` - A loan account used in a lender-borrower relationship. Uncommon.
               - `general_ledger` - A bank's general ledger. Uncommon.
 
           individual_id: Your identifier for the transfer recipient.

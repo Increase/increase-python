@@ -216,6 +216,33 @@ client.files.create(
 
 The async client uses the exact same interface. If you pass a [`PathLike`](https://docs.python.org/3/library/os.html#os.PathLike) instance, the file contents will be read asynchronously automatically.
 
+## Webhook verification
+
+The SDK includes a helper for verifying webhook signatures, available via an optional dependency:
+
+```sh
+# install from PyPI
+pip install increase[webhooks]
+```
+
+Construct the client with your `webhook_secret` (read from the `INCREASE_WEBHOOK_SECRET` environment variable by default), then pass the raw request body and headers to `events.unwrap()`, which verifies the signature and parses the payload:
+
+```python
+import os
+from increase import Increase
+
+client = Increase(
+    webhook_secret=os.environ.get(
+        "INCREASE_WEBHOOK_SECRET"
+    ),  # This is the default and can be omitted
+)
+
+# In your webhook handler, with the raw (unparsed) request body and headers:
+event = client.events.unwrap(payload, headers=headers)
+```
+
+`standardwebhooks.WebhookVerificationError` is raised if the signature is invalid, so a webhook that unwraps without raising is guaranteed authentic.
+
 ## Handling errors
 
 When the library is unable to connect to the API (for example, due to network connection problems or a timeout), a subclass of `increase.APIConnectionError` is raised.

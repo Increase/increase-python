@@ -804,11 +804,12 @@ class ACHTransfer(BaseModel):
     external_account_id: Optional[str] = None
     """The identifier of the External Account the transfer was made to, if any."""
 
-    funding: Literal["checking", "savings", "general_ledger"]
+    funding: Literal["checking", "savings", "loan", "general_ledger"]
     """The type of the account to which the transfer will be sent.
 
     - `checking` - A checking account.
     - `savings` - A savings account.
+    - `loan` - A loan account used in a lender-borrower relationship. Uncommon.
     - `general_ledger` - A bank's general ledger. Uncommon.
     """
 
