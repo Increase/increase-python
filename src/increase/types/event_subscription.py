@@ -333,7 +333,7 @@ class EventSubscription(BaseModel):
     specified `category`.
     """
 
-    status: Literal["active", "disabled", "deleted", "requires_attention"]
+    status: Literal["active", "disabled", "deleted"]
     """This indicates if we'll send notifications to this subscription.
 
     - `active` - The subscription is active and Events will be delivered normally.
@@ -341,8 +341,6 @@ class EventSubscription(BaseModel):
       delivered.
     - `deleted` - The subscription is permanently disabled and Events will not be
       delivered.
-    - `requires_attention` - The subscription is temporarily disabled due to
-      delivery errors and Events will not be delivered.
     """
 
     type: Literal["event_subscription"]
