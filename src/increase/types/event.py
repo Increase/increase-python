@@ -96,8 +96,10 @@ class Event(BaseModel):
         "intrafi_exclusion.updated",
         "loan_application.created",
         "loan_application.updated",
+        "loan_distribution.created",
         "loan_offer.created",
         "loan_offer.updated",
+        "loan_purchase.created",
         "lockbox.created",
         "lockbox.updated",
         "oauth_connection.created",
@@ -248,8 +250,10 @@ class Event(BaseModel):
     - `intrafi_exclusion.updated` - Occurs whenever an IntraFi Exclusion is updated.
     - `loan_application.created` - Occurs whenever a Loan Application is created.
     - `loan_application.updated` - Occurs whenever a Loan Application is updated.
+    - `loan_distribution.created` - Occurs whenever a Loan Distribution is created.
     - `loan_offer.created` - Occurs whenever a Loan Offer is created.
     - `loan_offer.updated` - Occurs whenever a Loan Offer is updated.
+    - `loan_purchase.created` - Occurs whenever a Loan Purchase is created.
     - `lockbox.created` - Occurs whenever a Lockbox is created.
     - `lockbox.updated` - Occurs whenever a Lockbox is updated.
     - `oauth_connection.created` - Occurs whenever an OAuth Connection is created.
