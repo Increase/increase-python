@@ -6,7 +6,17 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["BalanceLookup", "Loan"]
+__all__ = ["BalanceLookup", "Loan", "LoanReceivables"]
+
+
+class LoanReceivables(BaseModel):
+    """The receivables balances for the loan."""
+
+    purchasable_balance: int
+    """The balance of seasoned receivables available to be purchased."""
+
+    purchased_balance: int
+    """The balance of receivables that have been purchased."""
 
 
 class Loan(BaseModel):
@@ -23,6 +33,9 @@ class Loan(BaseModel):
 
     past_due_balance: int
     """The amount past due on the loan."""
+
+    receivables: Optional[LoanReceivables] = None
+    """The receivables balances for the loan."""
 
 
 class BalanceLookup(BaseModel):

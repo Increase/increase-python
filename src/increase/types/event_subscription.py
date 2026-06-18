@@ -86,8 +86,10 @@ class SelectedEventCategory(BaseModel):
             "intrafi_exclusion.updated",
             "loan_application.created",
             "loan_application.updated",
+            "loan_distribution.created",
             "loan_offer.created",
             "loan_offer.updated",
+            "loan_purchase.created",
             "lockbox.created",
             "lockbox.updated",
             "oauth_connection.created",
@@ -236,8 +238,10 @@ class SelectedEventCategory(BaseModel):
     - `intrafi_exclusion.updated` - Occurs whenever an IntraFi Exclusion is updated.
     - `loan_application.created` - Occurs whenever a Loan Application is created.
     - `loan_application.updated` - Occurs whenever a Loan Application is updated.
+    - `loan_distribution.created` - Occurs whenever a Loan Distribution is created.
     - `loan_offer.created` - Occurs whenever a Loan Offer is created.
     - `loan_offer.updated` - Occurs whenever a Loan Offer is updated.
+    - `loan_purchase.created` - Occurs whenever a Loan Purchase is created.
     - `lockbox.created` - Occurs whenever a Lockbox is created.
     - `lockbox.updated` - Occurs whenever a Lockbox is updated.
     - `oauth_connection.created` - Occurs whenever an OAuth Connection is created.
@@ -333,7 +337,7 @@ class EventSubscription(BaseModel):
     specified `category`.
     """
 
-    status: Literal["active", "disabled", "deleted", "requires_attention"]
+    status: Literal["active", "disabled", "deleted"]
     """This indicates if we'll send notifications to this subscription.
 
     - `active` - The subscription is active and Events will be delivered normally.
@@ -341,8 +345,6 @@ class EventSubscription(BaseModel):
       delivered.
     - `deleted` - The subscription is permanently disabled and Events will not be
       delivered.
-    - `requires_attention` - The subscription is temporarily disabled due to
-      delivery errors and Events will not be delivered.
     """
 
     type: Literal["event_subscription"]

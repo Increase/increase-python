@@ -454,13 +454,13 @@ class ACHPrenotification(BaseModel):
       consumer to consumer transactions.
     """
 
-    status: Literal["pending_submitting", "requires_attention", "returned", "submitted"]
+    status: Literal["pending_submitting", "returned", "submitted", "requires_attention"]
     """The lifecycle status of the ACH Prenotification.
 
     - `pending_submitting` - The Prenotification is pending submission.
-    - `requires_attention` - The Prenotification requires attention.
     - `returned` - The Prenotification has been returned.
     - `submitted` - The Prenotification is complete.
+    - `requires_attention` - The Prenotification requires attention.
     """
 
     type: Literal["ach_prenotification"]

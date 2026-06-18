@@ -503,7 +503,7 @@ wheels = [
 
 [[package]]
 name = "increase"
-version = "0.526.0"
+version = "0.527.0"
 source = { editable = "." }
 dependencies = [
     { name = "anyio" },
