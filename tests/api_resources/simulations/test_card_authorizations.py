@@ -39,7 +39,14 @@ class TestCardAuthorizations:
             merchant_country="US",
             merchant_descriptor="AMAZON.COM",
             merchant_state="NY",
-            network_details={"visa": {"stand_in_processing_reason": "issuer_error"}},
+            network_details={
+                "visa": {
+                    "electronic_commerce_indicator": "mail_phone_order",
+                    "point_of_service_entry_mode": "unknown",
+                    "stand_in_processing_reason": "issuer_error",
+                    "terminal_entry_capability": "unknown",
+                }
+            },
             network_risk_score=0,
             physical_card_id="physical_card_id",
             processing_category={
@@ -102,7 +109,14 @@ class TestAsyncCardAuthorizations:
             merchant_country="US",
             merchant_descriptor="AMAZON.COM",
             merchant_state="NY",
-            network_details={"visa": {"stand_in_processing_reason": "issuer_error"}},
+            network_details={
+                "visa": {
+                    "electronic_commerce_indicator": "mail_phone_order",
+                    "point_of_service_entry_mode": "unknown",
+                    "stand_in_processing_reason": "issuer_error",
+                    "terminal_entry_capability": "unknown",
+                }
+            },
             network_risk_score=0,
             physical_card_id="physical_card_id",
             processing_category={
