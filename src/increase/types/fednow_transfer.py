@@ -186,6 +186,13 @@ class Submission(BaseModel):
     the transfer was submitted to FedNow.
     """
 
+    unique_end_to_end_transaction_reference: str
+    """
+    The Unique End-to-end Transaction Reference
+    ([UETR](https://www.swift.com/payments/what-unique-end-end-transaction-reference-uetr))
+    of the transfer.
+    """
+
 
 class FednowTransfer(BaseModel):
     """
