@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.529.0](https://github.com/Increase/increase-python/compare/v0.528.0...v0.529.0) (2026-06-22)
+
+
+### Features
+
+* **api:** add Visa network fields to card authorization simulations ([d82da90](https://github.com/Increase/increase-python/commit/d82da9056bb67e383fdbc2ce6ee1d4eb4a9389cc))
+
 ## [0.528.0](https://github.com/Increase/increase-python/compare/v0.527.0...v0.528.0) (2026-06-18)
 
 
