@@ -140,5 +140,12 @@ class InboundFednowTransfer(BaseModel):
     For this resource it will always be `inbound_fednow_transfer`.
     """
 
+    unique_end_to_end_transaction_reference: Optional[str] = None
+    """
+    The Unique End-to-end Transaction Reference
+    ([UETR](https://www.swift.com/payments/what-unique-end-end-transaction-reference-uetr))
+    of the transfer.
+    """
+
     unstructured_remittance_information: Optional[str] = None
     """Additional information included with the transfer."""
