@@ -137,7 +137,8 @@ class ACHTransferCreateParams(TypedDict, total=False):
     """
     The
     [Standard Entry Class (SEC) code](/documentation/ach-standard-entry-class-codes)
-    to use for the transfer.
+    to use for the transfer. If not provided, the default is
+    `corporate_credit_or_debit`.
 
     - `corporate_credit_or_debit` - Corporate Credit and Debit (CCD) is used for
       business-to-business payments.
