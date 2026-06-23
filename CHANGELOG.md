@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.530.0](https://github.com/Increase/increase-python/compare/v0.529.0...v0.530.0) (2026-06-23)
+
+
+### Features
+
+* **api:** add UETR field to inbound FedNow transfers ([c373898](https://github.com/Increase/increase-python/commit/c3738985402fb2f3cf055bde9cfa24f72e15fe05))
+
 ## [0.529.0](https://github.com/Increase/increase-python/compare/v0.528.0...v0.529.0) (2026-06-22)
 
 
