@@ -275,25 +275,25 @@ class FednowTransfer(BaseModel):
     """The Account Number the recipient will see as having sent the transfer."""
 
     status: Literal[
+        "pending_submitting",
         "pending_reviewing",
         "canceled",
         "reviewing_rejected",
         "requires_attention",
         "pending_approval",
-        "pending_submitting",
         "pending_response",
         "complete",
         "rejected",
     ]
     """The lifecycle status of the transfer.
 
+    - `pending_submitting` - The transfer is queued to be submitted to FedNow.
     - `pending_reviewing` - The transfer is pending review by Increase.
     - `canceled` - The transfer has been canceled.
     - `reviewing_rejected` - The transfer has been rejected by Increase.
     - `requires_attention` - The transfer requires attention from an Increase
       operator.
     - `pending_approval` - The transfer is pending approval.
-    - `pending_submitting` - The transfer is queued to be submitted to FedNow.
     - `pending_response` - The transfer has been submitted and is pending a response
       from FedNow.
     - `complete` - The transfer has been sent successfully and is complete.

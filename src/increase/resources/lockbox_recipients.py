@@ -65,7 +65,8 @@ class LockboxRecipientsResource(SyncAPIResource):
         Args:
           account_id: The Account that checks sent to this Lockbox Recipient should be deposited into.
 
-          lockbox_address_id: The Lockbox Address where this Lockbox Recipient may receive mail.
+          lockbox_address_id: The Lockbox Address where this Lockbox Recipient may receive mail. The Lockbox
+              Address must have a `status` of `active`.
 
           description: The description you choose for the Lockbox Recipient.
 
@@ -313,7 +314,8 @@ class AsyncLockboxRecipientsResource(AsyncAPIResource):
         Args:
           account_id: The Account that checks sent to this Lockbox Recipient should be deposited into.
 
-          lockbox_address_id: The Lockbox Address where this Lockbox Recipient may receive mail.
+          lockbox_address_id: The Lockbox Address where this Lockbox Recipient may receive mail. The Lockbox
+              Address must have a `status` of `active`.
 
           description: The description you choose for the Lockbox Recipient.
 

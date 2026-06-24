@@ -71,12 +71,12 @@ _StatusReservedKeywords = TypedDict(
     {
         "in": List[
             Literal[
+                "pending_submitting",
                 "pending_reviewing",
                 "canceled",
                 "reviewing_rejected",
                 "requires_attention",
                 "pending_approval",
-                "pending_submitting",
                 "pending_response",
                 "complete",
                 "rejected",
