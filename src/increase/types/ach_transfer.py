@@ -633,7 +633,11 @@ class Return(BaseModel):
     """The identifier of the Transaction associated with this return."""
 
     transfer_id: str
-    """The identifier of the ACH Transfer associated with this return."""
+    """The identifier of the ACH Transfer associated with this return.
+
+    This matches the original Transaction's
+    `source.ach_transfer_intention.transfer_id`.
+    """
 
     if TYPE_CHECKING:
         # Some versions of Pydantic <2.8.0 have a bug and don’t allow assigning a
@@ -923,7 +927,9 @@ class ACHTransfer(BaseModel):
     - `requires_attention` - The transfer requires attention from an Increase
       operator.
     - `rejected` - The transfer has been rejected.
-    - `submitted` - The transfer is complete.
+    - `submitted` - The transfer has been submitted to the Federal Reserve. When the
+      transfer settles, the status remains `submitted` and the `settlement`
+      sub-object is populated.
     - `returned` - The transfer has been returned.
     """
 

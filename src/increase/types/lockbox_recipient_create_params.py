@@ -14,7 +14,10 @@ class LockboxRecipientCreateParams(TypedDict, total=False):
     """
 
     lockbox_address_id: Required[str]
-    """The Lockbox Address where this Lockbox Recipient may receive mail."""
+    """The Lockbox Address where this Lockbox Recipient may receive mail.
+
+    The Lockbox Address must have a `status` of `active`.
+    """
 
     description: str
     """The description you choose for the Lockbox Recipient."""

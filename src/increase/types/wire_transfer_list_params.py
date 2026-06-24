@@ -73,10 +73,10 @@ _StatusReservedKeywords = TypedDict(
             Literal[
                 "pending_approval",
                 "canceled",
+                "pending_creating",
                 "pending_reviewing",
                 "rejected",
                 "requires_attention",
-                "pending_creating",
                 "reversed",
                 "submitted",
                 "complete",

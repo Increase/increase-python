@@ -83,8 +83,9 @@ class AccountsResource(SyncAPIResource):
 
           loan: The loan details for the account.
 
-          program_id: The identifier for the Program that this Account falls under. Required if you
-              operate more than one Program.
+          program_id: The identifier for the Program that this Account falls under. Required if your
+              Group operates more than one Program. List your [Programs](#programs) to find
+              their identifiers.
 
           extra_headers: Send extra headers
 
@@ -423,8 +424,9 @@ class AsyncAccountsResource(AsyncAPIResource):
 
           loan: The loan details for the account.
 
-          program_id: The identifier for the Program that this Account falls under. Required if you
-              operate more than one Program.
+          program_id: The identifier for the Program that this Account falls under. Required if your
+              Group operates more than one Program. List your [Programs](#programs) to find
+              their identifiers.
 
           extra_headers: Send extra headers
 

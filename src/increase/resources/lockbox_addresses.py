@@ -56,8 +56,12 @@ class LockboxAddressesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> LockboxAddress:
-        """
-        Create a Lockbox Address
+        """The Lockbox Address starts with a `pending` status and a null `address`.
+
+        Shortly
+        after creation, Increase generates the mailing address and the status becomes
+        `active`. You can only create Lockbox Recipients for an `active` Lockbox
+        Address.
 
         Args:
           description: The description you choose for the Lockbox Address.
@@ -271,8 +275,12 @@ class AsyncLockboxAddressesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
         idempotency_key: str | None = None,
     ) -> LockboxAddress:
-        """
-        Create a Lockbox Address
+        """The Lockbox Address starts with a `pending` status and a null `address`.
+
+        Shortly
+        after creation, Increase generates the mailing address and the status becomes
+        `active`. You can only create Lockbox Recipients for an `active` Lockbox
+        Address.
 
         Args:
           description: The description you choose for the Lockbox Address.

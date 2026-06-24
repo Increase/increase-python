@@ -58,7 +58,10 @@ class InboundMailItemsResource(SyncAPIResource):
     ) -> InboundMailItem:
         """
         Simulates an Inbound Mail Item to one of your Lockbox Addresses or Lockbox
-        Recipients, as if someone had mailed a physical check.
+        Recipients, as if someone had mailed a physical check. Increase automatically
+        deposits a check mailed to a Lockbox Recipient into the recipient's Account. A
+        check mailed to a Lockbox Address must be deposited or ignored with the
+        [Action an Inbound Mail Item](#inbound-mail-items) endpoint.
 
         Args:
           amount: The amount of the check to be simulated, in cents.
@@ -66,9 +69,11 @@ class InboundMailItemsResource(SyncAPIResource):
           contents_file_id: The file containing the PDF contents. If not present, a default check image file
               will be used.
 
-          lockbox_address_id: The identifier of the Lockbox Address to simulate inbound mail to.
+          lockbox_address_id: The identifier of the Lockbox Address to simulate inbound mail to. Exactly one
+              lockbox identifier parameter must be provided.
 
-          lockbox_recipient_id: The identifier of the Lockbox Recipient to simulate inbound mail to.
+          lockbox_recipient_id: The identifier of the Lockbox Recipient to simulate inbound mail to. Exactly one
+              lockbox identifier parameter must be provided.
 
           extra_headers: Send extra headers
 
@@ -139,7 +144,10 @@ class AsyncInboundMailItemsResource(AsyncAPIResource):
     ) -> InboundMailItem:
         """
         Simulates an Inbound Mail Item to one of your Lockbox Addresses or Lockbox
-        Recipients, as if someone had mailed a physical check.
+        Recipients, as if someone had mailed a physical check. Increase automatically
+        deposits a check mailed to a Lockbox Recipient into the recipient's Account. A
+        check mailed to a Lockbox Address must be deposited or ignored with the
+        [Action an Inbound Mail Item](#inbound-mail-items) endpoint.
 
         Args:
           amount: The amount of the check to be simulated, in cents.
@@ -147,9 +155,11 @@ class AsyncInboundMailItemsResource(AsyncAPIResource):
           contents_file_id: The file containing the PDF contents. If not present, a default check image file
               will be used.
 
-          lockbox_address_id: The identifier of the Lockbox Address to simulate inbound mail to.
+          lockbox_address_id: The identifier of the Lockbox Address to simulate inbound mail to. Exactly one
+              lockbox identifier parameter must be provided.
 
-          lockbox_recipient_id: The identifier of the Lockbox Recipient to simulate inbound mail to.
+          lockbox_recipient_id: The identifier of the Lockbox Recipient to simulate inbound mail to. Exactly one
+              lockbox identifier parameter must be provided.
 
           extra_headers: Send extra headers
 
