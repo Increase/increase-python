@@ -90,18 +90,14 @@ include = [
 packages = ["src/increase"]
 
 [tool.hatch.build.targets.sdist]
-# Basically everything except hidden files/directories (such as .github, .devcontainers, .python-version, etc)
+# Runtime package (src/) plus top-level metadata only.
+# Dev files (tests/, examples/, tooling) stay out of the published sdist.
 include = [
   "/*.toml",
   "/*.json",
   "/*.lock",
   "/*.md",
-  "/mypy.ini",
-  "/noxfile.py",
-  "bin/*",
-  "examples/*",
   "src/*",
-  "tests/*",
 ]
 
 [tool.hatch.metadata.hooks.fancy-pypi-readme]
