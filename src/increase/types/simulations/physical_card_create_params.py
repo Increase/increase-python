@@ -13,7 +13,14 @@ __all__ = ["PhysicalCardCreateParams"]
 
 class PhysicalCardCreateParams(TypedDict, total=False):
     category: Required[
-        Literal["in_transit", "processed_for_delivery", "delivered", "delivery_issue", "returned_to_sender"]
+        Literal[
+            "in_transit",
+            "processed_for_delivery",
+            "delivered",
+            "delivery_issue",
+            "returning_to_sender",
+            "returned_to_sender",
+        ]
     ]
     """The type of tracking event.
 
@@ -25,9 +32,11 @@ class PhysicalCardCreateParams(TypedDict, total=False):
       event.
     - `delivery_issue` - There is an issue preventing delivery. The delivery will be
       attempted again if possible. If the issue cannot be resolved, the physical
-      card will be returned to sender.
-    - `returned_to_sender` - Delivery failed and the physical card was returned to
-      sender.
+      card will be rerouted to the return address.
+    - `returning_to_sender` - The physical card has been rerouted to the return
+      address.
+    - `returned_to_sender` - The physical card has been delivered to the return
+      address.
     """
 
     carrier_estimated_delivery_at: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]

@@ -146,7 +146,7 @@ class TestFednowTransfers:
             external_account_id="external_account_id",
             idempotency_key="x",
             limit=1,
-            status={"in": ["pending_reviewing"]},
+            status={"in": ["pending_submitting"]},
         )
         assert_matches_type(SyncPage[FednowTransfer], fednow_transfer, path=["response"])
 
@@ -379,7 +379,7 @@ class TestAsyncFednowTransfers:
             external_account_id="external_account_id",
             idempotency_key="x",
             limit=1,
-            status={"in": ["pending_reviewing"]},
+            status={"in": ["pending_submitting"]},
         )
         assert_matches_type(AsyncPage[FednowTransfer], fednow_transfer, path=["response"])
 

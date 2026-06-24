@@ -237,7 +237,7 @@ class SourceACHTransferRejection(BaseModel):
 class SourceACHTransferReturn(BaseModel):
     """An ACH Transfer Return object.
 
-    This field will be present in the JSON response if and only if `category` is equal to `ach_transfer_return`. An ACH Transfer Return is created when an ACH Transfer is returned by the receiving bank. It offsets the ACH Transfer Intention. ACH Transfer Returns usually occur within the first two business days after the transfer is initiated, but can occur much later.
+    This field will be present in the JSON response if and only if `category` is equal to `ach_transfer_return`. An ACH Transfer Return is created when an ACH Transfer is returned by the receiving bank. It offsets the ACH Transfer Intention. ACH Transfer Returns usually occur within the first two business days after the transfer is initiated, but can occur much later. The return appears as a new posted Transaction; no Pending Transaction is created.
     """
 
     created_at: datetime
@@ -489,7 +489,11 @@ class SourceACHTransferReturn(BaseModel):
     """The identifier of the Transaction associated with this return."""
 
     transfer_id: str
-    """The identifier of the ACH Transfer associated with this return."""
+    """The identifier of the ACH Transfer associated with this return.
+
+    This matches the original Transaction's
+    `source.ach_transfer_intention.transfer_id`.
+    """
 
     if TYPE_CHECKING:
         # Some versions of Pydantic <2.8.0 have a bug and don’t allow assigning a
@@ -4357,7 +4361,8 @@ class Source(BaseModel):
     equal to `ach_transfer_return`. An ACH Transfer Return is created when an ACH
     Transfer is returned by the receiving bank. It offsets the ACH Transfer
     Intention. ACH Transfer Returns usually occur within the first two business days
-    after the transfer is initiated, but can occur much later.
+    after the transfer is initiated, but can occur much later. The return appears as
+    a new posted Transaction; no Pending Transaction is created.
     """
 
     blockchain_offramp_transfer_settlement: Optional[SourceBlockchainOfframpTransferSettlement] = None

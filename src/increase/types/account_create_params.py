@@ -38,7 +38,8 @@ class AccountCreateParams(TypedDict, total=False):
     program_id: str
     """The identifier for the Program that this Account falls under.
 
-    Required if you operate more than one Program.
+    Required if your Group operates more than one Program. List your
+    [Programs](#programs) to find their identifiers.
     """
 
 

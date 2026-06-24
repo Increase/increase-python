@@ -49,7 +49,14 @@ class PhysicalCardsResource(SyncAPIResource):
         self,
         physical_card_id: str,
         *,
-        category: Literal["in_transit", "processed_for_delivery", "delivered", "delivery_issue", "returned_to_sender"],
+        category: Literal[
+            "in_transit",
+            "processed_for_delivery",
+            "delivered",
+            "delivery_issue",
+            "returning_to_sender",
+            "returned_to_sender",
+        ],
         carrier_estimated_delivery_at: Union[str, datetime] | Omit = omit,
         city: str | Omit = omit,
         postal_code: str | Omit = omit,
@@ -79,9 +86,11 @@ class PhysicalCardsResource(SyncAPIResource):
                 event.
               - `delivery_issue` - There is an issue preventing delivery. The delivery will be
                 attempted again if possible. If the issue cannot be resolved, the physical
-                card will be returned to sender.
-              - `returned_to_sender` - Delivery failed and the physical card was returned to
-                sender.
+                card will be rerouted to the return address.
+              - `returning_to_sender` - The physical card has been rerouted to the return
+                address.
+              - `returned_to_sender` - The physical card has been delivered to the return
+                address.
 
           carrier_estimated_delivery_at: The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time when the
               carrier expects the card to be delivered.
@@ -222,7 +231,14 @@ class AsyncPhysicalCardsResource(AsyncAPIResource):
         self,
         physical_card_id: str,
         *,
-        category: Literal["in_transit", "processed_for_delivery", "delivered", "delivery_issue", "returned_to_sender"],
+        category: Literal[
+            "in_transit",
+            "processed_for_delivery",
+            "delivered",
+            "delivery_issue",
+            "returning_to_sender",
+            "returned_to_sender",
+        ],
         carrier_estimated_delivery_at: Union[str, datetime] | Omit = omit,
         city: str | Omit = omit,
         postal_code: str | Omit = omit,
@@ -252,9 +268,11 @@ class AsyncPhysicalCardsResource(AsyncAPIResource):
                 event.
               - `delivery_issue` - There is an issue preventing delivery. The delivery will be
                 attempted again if possible. If the issue cannot be resolved, the physical
-                card will be returned to sender.
-              - `returned_to_sender` - Delivery failed and the physical card was returned to
-                sender.
+                card will be rerouted to the return address.
+              - `returning_to_sender` - The physical card has been rerouted to the return
+                address.
+              - `returned_to_sender` - The physical card has been delivered to the return
+                address.
 
           carrier_estimated_delivery_at: The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time when the
               carrier expects the card to be delivered.

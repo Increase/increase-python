@@ -276,7 +276,8 @@ class CorporationBeneficialOwnerIndividualIdentification(TypedDict, total=False,
     An identification number that can be used to verify the individual's identity,
     such as a social security number. For Social Security Numbers and Individual
     Taxpayer Identification Numbers, submit nine digits with no dashes or other
-    separators.
+    separators. When testing in sandbox, use one of our
+    [sandbox test values](https://increase.com/documentation/sandbox-test-values).
     """
 
     drivers_license: CorporationBeneficialOwnerIndividualIdentificationDriversLicense
@@ -343,14 +344,15 @@ class CorporationBeneficialOwner(TypedDict, total=False, extra_items=object):  #
 class CorporationLegalIdentifier(TypedDict, total=False):
     """The legal identifier of the corporation.
 
-    This is usually the Employer Identification Number (EIN).
+    This is usually the Employer Identification Number (EIN). This replaces the deprecated `tax_identifier` field.
     """
 
     value: Required[str]
     """The legal identifier.
 
     For US Employer Identification Numbers, submit nine digits with no dashes or
-    other separators.
+    other separators. When testing in sandbox, use one of our
+    [sandbox test values](https://increase.com/documentation/sandbox-test-values).
     """
 
     category: Literal["us_employer_identification_number", "other"]
@@ -391,7 +393,8 @@ class Corporation(TypedDict, total=False, extra_items=object):  # type: ignore[c
     legal_identifier: Required[CorporationLegalIdentifier]
     """The legal identifier of the corporation.
 
-    This is usually the Employer Identification Number (EIN).
+    This is usually the Employer Identification Number (EIN). This replaces the
+    deprecated `tax_identifier` field.
     """
 
     name: Required[str]
@@ -632,7 +635,8 @@ class JointIndividualIdentification(TypedDict, total=False, extra_items=object):
     An identification number that can be used to verify the individual's identity,
     such as a social security number. For Social Security Numbers and Individual
     Taxpayer Identification Numbers, submit nine digits with no dashes or other
-    separators.
+    separators. When testing in sandbox, use one of our
+    [sandbox test values](https://increase.com/documentation/sandbox-test-values).
     """
 
     drivers_license: JointIndividualIdentificationDriversLicense
@@ -810,7 +814,8 @@ class NaturalPersonIdentification(TypedDict, total=False, extra_items=object):  
     An identification number that can be used to verify the individual's identity,
     such as a social security number. For Social Security Numbers and Individual
     Taxpayer Identification Numbers, submit nine digits with no dashes or other
-    separators.
+    separators. When testing in sandbox, use one of our
+    [sandbox test values](https://increase.com/documentation/sandbox-test-values).
     """
 
     drivers_license: NaturalPersonIdentificationDriversLicense
@@ -1066,7 +1071,8 @@ class TrustTrusteeIndividualIdentification(TypedDict, total=False, extra_items=o
     An identification number that can be used to verify the individual's identity,
     such as a social security number. For Social Security Numbers and Individual
     Taxpayer Identification Numbers, submit nine digits with no dashes or other
-    separators.
+    separators. When testing in sandbox, use one of our
+    [sandbox test values](https://increase.com/documentation/sandbox-test-values).
     """
 
     drivers_license: TrustTrusteeIndividualIdentificationDriversLicense
@@ -1254,7 +1260,8 @@ class TrustGrantorIdentification(TypedDict, total=False, extra_items=object):  #
     An identification number that can be used to verify the individual's identity,
     such as a social security number. For Social Security Numbers and Individual
     Taxpayer Identification Numbers, submit nine digits with no dashes or other
-    separators.
+    separators. When testing in sandbox, use one of our
+    [sandbox test values](https://increase.com/documentation/sandbox-test-values).
     """
 
     drivers_license: TrustGrantorIdentificationDriversLicense
