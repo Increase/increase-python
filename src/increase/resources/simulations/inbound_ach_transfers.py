@@ -116,7 +116,8 @@ class InboundACHTransfersResource(SyncAPIResource):
 
           company_id: The sender's company ID.
 
-          company_name: The name of the sender.
+          company_name: The name of the sender. This corresponds to the `originator_company_name` field
+              on the resulting Inbound ACH Transfer.
 
           receiver_id_number: The ID of the receiver of the transfer.
 
@@ -275,7 +276,8 @@ class AsyncInboundACHTransfersResource(AsyncAPIResource):
 
           company_id: The sender's company ID.
 
-          company_name: The name of the sender.
+          company_name: The name of the sender. This corresponds to the `originator_company_name` field
+              on the resulting Inbound ACH Transfer.
 
           receiver_id_number: The ID of the receiver of the transfer.
 

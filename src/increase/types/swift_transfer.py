@@ -189,9 +189,9 @@ class SwiftTransfer(BaseModel):
     status: Literal[
         "pending_approval",
         "canceled",
+        "pending_initiating",
         "pending_reviewing",
         "requires_attention",
-        "pending_initiating",
         "initiated",
         "rejected",
         "returned",
@@ -200,10 +200,10 @@ class SwiftTransfer(BaseModel):
 
     - `pending_approval` - The transfer is pending approval.
     - `canceled` - The transfer has been canceled.
+    - `pending_initiating` - The transfer is pending initiation.
     - `pending_reviewing` - The transfer is pending review by Increase.
     - `requires_attention` - The transfer requires attention from an Increase
       operator.
-    - `pending_initiating` - The transfer is pending initiation.
     - `initiated` - The transfer has been initiated.
     - `rejected` - The transfer has been rejected by Increase.
     - `returned` - The transfer has been returned.

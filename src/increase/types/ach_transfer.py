@@ -374,7 +374,7 @@ class PreferredEffectiveDate(BaseModel):
     - `same_day` - The chosen effective date will be the same as the ACH processing
       date on which the transfer is submitted. This is necessary, but not sufficient
       for the transfer to be settled same-day: it must also be submitted before the
-      last same-day cutoff and be less than or equal to $1,000.000.00.
+      last same-day cutoff and be less than or equal to $1,000,000.00.
     - `future_dated` - The chosen effective date will be the business day following
       the ACH processing date on which the transfer is submitted. The transfer will
       be settled on that future day.
@@ -633,7 +633,11 @@ class Return(BaseModel):
     """The identifier of the Transaction associated with this return."""
 
     transfer_id: str
-    """The identifier of the ACH Transfer associated with this return."""
+    """The identifier of the ACH Transfer associated with this return.
+
+    This matches the original Transaction's
+    `source.ach_transfer_intention.transfer_id`.
+    """
 
     if TYPE_CHECKING:
         # Some versions of Pydantic <2.8.0 have a bug and don’t allow assigning a
@@ -727,7 +731,7 @@ class ACHTransfer(BaseModel):
     """The Account to which the transfer belongs."""
 
     account_number: str
-    """The destination account number."""
+    """The receiver's account number."""
 
     acknowledgement: Optional[Acknowledgement] = None
     """
@@ -792,9 +796,7 @@ class ACHTransfer(BaseModel):
     """
 
     destination_account_holder: Literal["business", "individual", "unknown"]
-    """
-    The type of entity that owns the account to which the ACH Transfer is being
-    sent.
+    """The type of entity that owns the receiver's account.
 
     - `business` - The External Account is owned by a business.
     - `individual` - The External Account is owned by an individual.
@@ -805,7 +807,7 @@ class ACHTransfer(BaseModel):
     """The identifier of the External Account the transfer was made to, if any."""
 
     funding: Literal["checking", "savings", "loan", "general_ledger"]
-    """The type of the account to which the transfer will be sent.
+    """The type of the receiver's bank account.
 
     - `checking` - A checking account.
     - `savings` - A savings account.
@@ -828,7 +830,10 @@ class ACHTransfer(BaseModel):
     """
 
     individual_id: Optional[str] = None
-    """Your identifier for the transfer recipient."""
+    """Your internal identifier for the transfer recipient.
+
+    This value is informational and not verified by the recipient's bank.
+    """
 
     individual_name: Optional[str] = None
     """The name of the transfer recipient.
@@ -865,7 +870,10 @@ class ACHTransfer(BaseModel):
     """If your transfer is returned, this will contain details of the return."""
 
     routing_number: str
-    """The American Bankers' Association (ABA) Routing Transit Number (RTN)."""
+    """
+    The American Bankers' Association (ABA) Routing Transit Number (RTN) of the
+    receiver's bank.
+    """
 
     settlement: Optional[Settlement] = None
     """
@@ -923,7 +931,9 @@ class ACHTransfer(BaseModel):
     - `requires_attention` - The transfer requires attention from an Increase
       operator.
     - `rejected` - The transfer has been rejected.
-    - `submitted` - The transfer is complete.
+    - `submitted` - The transfer has been submitted to the Federal Reserve. When the
+      transfer settles, the status remains `submitted` and the `settlement`
+      sub-object is populated.
     - `returned` - The transfer has been returned.
     """
 

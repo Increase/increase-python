@@ -153,7 +153,9 @@ class InboundMailItemsResource(SyncAPIResource):
         idempotency_key: str | None = None,
     ) -> InboundMailItem:
         """
-        Action an Inbound Mail Item
+        Deposits or ignores each check contained in a pending Inbound Mail Item.
+        Depositing a check creates a [Check Deposit](#check-deposits) into the Account
+        you specify.
 
         Args:
           inbound_mail_item_id: The identifier of the Inbound Mail Item to action.
@@ -319,7 +321,9 @@ class AsyncInboundMailItemsResource(AsyncAPIResource):
         idempotency_key: str | None = None,
     ) -> InboundMailItem:
         """
-        Action an Inbound Mail Item
+        Deposits or ignores each check contained in a pending Inbound Mail Item.
+        Depositing a check creates a [Check Deposit](#check-deposits) into the Account
+        you specify.
 
         Args:
           inbound_mail_item_id: The identifier of the Inbound Mail Item to action.
