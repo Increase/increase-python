@@ -545,6 +545,7 @@ class CheckTransfer(BaseModel):
         "pending_approval",
         "canceled",
         "pending_submission",
+        "pending_reviewing",
         "requires_attention",
         "rejected",
         "pending_mailing",
@@ -558,6 +559,7 @@ class CheckTransfer(BaseModel):
     - `pending_approval` - The transfer is awaiting approval.
     - `canceled` - The transfer has been canceled.
     - `pending_submission` - The transfer is pending submission.
+    - `pending_reviewing` - The transfer is pending submission.
     - `requires_attention` - The transfer requires attention from an Increase
       operator.
     - `rejected` - The transfer has been rejected.
