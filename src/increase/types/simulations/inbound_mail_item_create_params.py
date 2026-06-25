@@ -18,7 +18,13 @@ class InboundMailItemCreateParams(TypedDict, total=False):
     """
 
     lockbox_address_id: str
-    """The identifier of the Lockbox Address to simulate inbound mail to."""
+    """The identifier of the Lockbox Address to simulate inbound mail to.
+
+    Exactly one lockbox identifier parameter must be provided.
+    """
 
     lockbox_recipient_id: str
-    """The identifier of the Lockbox Recipient to simulate inbound mail to."""
+    """The identifier of the Lockbox Recipient to simulate inbound mail to.
+
+    Exactly one lockbox identifier parameter must be provided.
+    """

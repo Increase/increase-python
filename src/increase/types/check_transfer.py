@@ -206,7 +206,14 @@ class PhysicalCheckSignature(BaseModel):
 
 
 class PhysicalCheckTrackingUpdate(BaseModel):
-    category: Literal["in_transit", "processed_for_delivery", "delivered", "delivery_issue", "returned_to_sender"]
+    category: Literal[
+        "in_transit",
+        "processed_for_delivery",
+        "delivered",
+        "delivery_issue",
+        "returning_to_sender",
+        "returned_to_sender",
+    ]
     """The type of tracking event.
 
     - `in_transit` - The check is in transit.
@@ -216,8 +223,9 @@ class PhysicalCheckTrackingUpdate(BaseModel):
       While uncommon, a single check may have more than one delivered event.
     - `delivery_issue` - There is an issue preventing delivery. The delivery will be
       attempted again if possible. If the issue cannot be resolved, the check will
-      be returned to sender.
-    - `returned_to_sender` - Delivery failed and the check was returned to sender.
+      be rerouted to the return address.
+    - `returning_to_sender` - The check has been rerouted to the return address.
+    - `returned_to_sender` - The check has been delivered to the return address.
     """
 
     country: str

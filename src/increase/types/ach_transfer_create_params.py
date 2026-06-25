@@ -43,43 +43,54 @@ class ACHTransferCreateParams(TypedDict, total=False):
     """
 
     account_number: str
-    """The account number for the destination account."""
+    """The receiver's account number.
+
+    For credit transfers (positive `amount`) this is the account that funds will be
+    sent to. For debit transfers (negative `amount`) this is the account that funds
+    will be pulled from.
+    """
 
     addenda: Addenda
-    """Additional information that will be sent to the recipient.
+    """Additional information passed through to the receiving bank with the transfer.
 
-    This is included in the transfer data sent to the receiving bank.
+    Most ACH transfers do not need this. Only set this if your recipient has asked
+    for addendum data, typically unstructured remittance information. Corporate
+    Trade Exchange (CTX) flows can carry structured X12 remittance advice instead.
     """
 
     company_descriptive_date: str
-    """The description of the date of the transfer, usually in the format `YYMMDD`.
-
-    This is included in the transfer data sent to the receiving bank.
+    """
+    A description of the transfer date (typically `YYMMDD`), sent in the company
+    batch header. This value is informational and does not affect funds movement,
+    settlement timing, or returns. Only set this if your recipient has asked for it.
     """
 
     company_discretionary_data: str
-    """The data you choose to associate with the transfer.
+    """Custom data sent in the company batch header.
 
-    This is included in the transfer data sent to the receiving bank.
+    This value is informational and does not affect funds movement, settlement
+    timing, or returns. Most ACH transfers do not need this. Only set this if your
+    recipient has asked for it.
     """
 
     company_entry_description: str
-    """
-    A description of the transfer, included in the transfer data sent to the
-    receiving bank. Standardized formatting may be required, for example `PAYROLL`
-    for payroll-related Prearranged Payments and Deposits (PPD) credit transfers.
+    """A short description sent in the company batch header.
+
+    Most receivers do not surface this. Only set this if your recipient has asked
+    for a specific value or if Nacha mandates one for your Standard Entry Class
+    (SEC) code and use case. For example, Prearranged Payment and Deposit (PPD)
+    payroll credits must use `PAYROLL`, and reversals must use `REVERSAL`.
     """
 
     company_name: str
-    """The name by which the recipient knows you.
+    """The name by which the recipient knows you, sent in the company batch header.
 
-    This is included in the transfer data sent to the receiving bank.
+    We recommend setting this on every transfer; if you do not, we fall back to the
+    ACH company name configured on your account.
     """
 
     destination_account_holder: Literal["business", "individual", "unknown"]
-    """
-    The type of entity that owns the account to which the ACH Transfer is being
-    sent.
+    """The type of entity that owns the receiver's account.
 
     - `business` - The External Account is owned by a business.
     - `individual` - The External Account is owned by an individual.
@@ -94,7 +105,7 @@ class ACHTransferCreateParams(TypedDict, total=False):
     """
 
     funding: Literal["checking", "savings", "loan", "general_ledger"]
-    """The type of the account to which the transfer will be sent.
+    """The type of the receiver's bank account.
 
     - `checking` - A checking account.
     - `savings` - A savings account.
@@ -103,7 +114,11 @@ class ACHTransferCreateParams(TypedDict, total=False):
     """
 
     individual_id: str
-    """Your identifier for the transfer recipient."""
+    """Your internal identifier for the transfer recipient.
+
+    This value is informational and not verified by the recipient's bank. Most
+    callers can leave this unset.
+    """
 
     individual_name: str
     """The name of the transfer recipient.
@@ -124,8 +139,8 @@ class ACHTransferCreateParams(TypedDict, total=False):
 
     routing_number: str
     """
-    The American Bankers' Association (ABA) Routing Transit Number (RTN) for the
-    destination account.
+    The American Bankers' Association (ABA) Routing Transit Number (RTN) of the
+    receiver's bank.
     """
 
     standard_entry_class_code: Literal[
@@ -137,7 +152,8 @@ class ACHTransferCreateParams(TypedDict, total=False):
     """
     The
     [Standard Entry Class (SEC) code](/documentation/ach-standard-entry-class-codes)
-    to use for the transfer.
+    to use for the transfer. If not provided, the default is
+    `corporate_credit_or_debit`.
 
     - `corporate_credit_or_debit` - Corporate Credit and Debit (CCD) is used for
       business-to-business payments.
@@ -202,9 +218,9 @@ class AddendaPaymentOrderRemittanceAdvice(TypedDict, total=False):
 
 
 class Addenda(TypedDict, total=False):
-    """Additional information that will be sent to the recipient.
+    """Additional information passed through to the receiving bank with the transfer.
 
-    This is included in the transfer data sent to the receiving bank.
+    Most ACH transfers do not need this. Only set this if your recipient has asked for addendum data, typically unstructured remittance information. Corporate Trade Exchange (CTX) flows can carry structured X12 remittance advice instead.
     """
 
     category: Required[Literal["freeform", "payment_order_remittance_advice"]]
@@ -250,7 +266,7 @@ class PreferredEffectiveDate(TypedDict, total=False):
     - `same_day` - The chosen effective date will be the same as the ACH processing
       date on which the transfer is submitted. This is necessary, but not sufficient
       for the transfer to be settled same-day: it must also be submitted before the
-      last same-day cutoff and be less than or equal to $1,000.000.00.
+      last same-day cutoff and be less than or equal to $1,000,000.00.
     - `future_dated` - The chosen effective date will be the business day following
       the ACH processing date on which the transfer is submitted. The transfer will
       be settled on that future day.

@@ -39,7 +39,11 @@ class InboundACHTransferCreateParams(TypedDict, total=False):
     """The sender's company ID."""
 
     company_name: str
-    """The name of the sender."""
+    """The name of the sender.
+
+    This corresponds to the `originator_company_name` field on the resulting Inbound
+    ACH Transfer.
+    """
 
     receiver_id_number: str
     """The ID of the receiver of the transfer."""
