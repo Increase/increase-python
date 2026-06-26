@@ -64,7 +64,8 @@ class BeneficialOwnersResource(SyncAPIResource):
         Create a Beneficial Owner
 
         Args:
-          entity_id: The identifier of the Entity to associate with the new Beneficial Owner.
+          entity_id: The identifier of the Entity to associate with the new Beneficial Owner. Only
+              `corporation` entities have beneficial owners.
 
           individual: Personal details for the beneficial owner.
 
@@ -371,7 +372,8 @@ class AsyncBeneficialOwnersResource(AsyncAPIResource):
         Create a Beneficial Owner
 
         Args:
-          entity_id: The identifier of the Entity to associate with the new Beneficial Owner.
+          entity_id: The identifier of the Entity to associate with the new Beneficial Owner. Only
+              `corporation` entities have beneficial owners.
 
           individual: Personal details for the beneficial owner.
 
