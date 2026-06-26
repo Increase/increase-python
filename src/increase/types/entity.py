@@ -177,7 +177,9 @@ class CorporationBeneficialOwner(BaseModel):
 
 
 class CorporationLegalIdentifier(BaseModel):
-    """The legal identifier of the corporation."""
+    """
+    The legal identifier of the corporation, like an Employer Identification Number (EIN).
+    """
 
     category: Literal["us_employer_identification_number", "other"]
     """The category of the legal identifier.
@@ -190,7 +192,7 @@ class CorporationLegalIdentifier(BaseModel):
     """
 
     value: str
-    """The identifier of the legal identifier."""
+    """The legal identifier itself."""
 
 
 class Corporation(BaseModel):
@@ -240,7 +242,10 @@ class Corporation(BaseModel):
     """
 
     legal_identifier: Optional[CorporationLegalIdentifier] = None
-    """The legal identifier of the corporation."""
+    """
+    The legal identifier of the corporation, like an Employer Identification Number
+    (EIN).
+    """
 
     name: str
     """The legal name of the corporation."""
@@ -871,7 +876,7 @@ class Validation(BaseModel):
 class Entity(BaseModel):
     """Entities are the legal entities that own accounts.
 
-    They can be people, corporations, partnerships, government authorities, or trusts. To learn more, see [Entities](/documentation/entities).
+    They can be people, corporations, joint accounts, trusts, or government authorities. To learn more, see [Entities](/documentation/entities).
     """
 
     id: str

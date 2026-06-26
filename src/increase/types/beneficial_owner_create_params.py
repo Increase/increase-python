@@ -21,7 +21,10 @@ __all__ = [
 
 class BeneficialOwnerCreateParams(TypedDict, total=False):
     entity_id: Required[str]
-    """The identifier of the Entity to associate with the new Beneficial Owner."""
+    """The identifier of the Entity to associate with the new Beneficial Owner.
+
+    Only `corporation` entities have beneficial owners.
+    """
 
     individual: Required[Individual]
     """Personal details for the beneficial owner."""
