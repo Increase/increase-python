@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.532.0](https://github.com/Increase/increase-python/compare/v0.531.0...v0.532.0) (2026-06-29)
+
+
+### Features
+
+* **api:** add pending_reviewing check transfer status ([0d4b7a8](https://github.com/Increase/increase-python/commit/0d4b7a85cb4eabe7c452086719403b3992057382))
+
 ## [0.531.0](https://github.com/Increase/increase-python/compare/v0.530.0...v0.531.0) (2026-06-25)
 
 
