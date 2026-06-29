@@ -348,7 +348,7 @@ class CorporationLegalIdentifier(TypedDict, total=False):
     """
 
     value: Required[str]
-    """The legal identifier.
+    """The legal identifier itself.
 
     For US Employer Identification Numbers, submit nine digits with no dashes or
     other separators. When testing in sandbox, use one of our
