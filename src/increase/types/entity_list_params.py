@@ -8,7 +8,7 @@ from typing_extensions import Literal, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
-__all__ = ["EntityListParams", "CreatedAt", "Status"]
+__all__ = ["EntityListParams", "CreatedAt", "Status", "ValidationStatus"]
 
 
 class EntityListParams(TypedDict, total=False):
@@ -32,6 +32,8 @@ class EntityListParams(TypedDict, total=False):
     """
 
     status: Status
+
+    validation_status: ValidationStatus
 
 
 class CreatedAt(TypedDict, total=False):
@@ -70,4 +72,17 @@ _StatusReservedKeywords = TypedDict(
 
 
 class Status(_StatusReservedKeywords, total=False):
+    pass
+
+
+_ValidationStatusReservedKeywords = TypedDict(
+    "_ValidationStatusReservedKeywords",
+    {
+        "in": List[Literal["pending", "valid", "invalid"]],
+    },
+    total=False,
+)
+
+
+class ValidationStatus(_ValidationStatusReservedKeywords, total=False):
     pass
