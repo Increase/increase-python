@@ -51,11 +51,15 @@ class TestCheckTransfers:
                     "phone": "+16505046304",
                 },
                 "memo": "Check payment",
+                "payer": [
+                    {"contents": "National Phonograph Company"},
+                    {"contents": "33 Liberty Street"},
+                    {"contents": "New York, NY 10045"},
+                ],
                 "recipient_name": "Ian Crease",
                 "attachment_file_id": "attachment_file_id",
                 "check_voucher_image_file_id": "check_voucher_image_file_id",
                 "note": "note",
-                "payer": [{"contents": "contents"}],
                 "return_address": {
                     "city": "city",
                     "line1": "line1",
@@ -345,11 +349,15 @@ class TestAsyncCheckTransfers:
                     "phone": "+16505046304",
                 },
                 "memo": "Check payment",
+                "payer": [
+                    {"contents": "National Phonograph Company"},
+                    {"contents": "33 Liberty Street"},
+                    {"contents": "New York, NY 10045"},
+                ],
                 "recipient_name": "Ian Crease",
                 "attachment_file_id": "attachment_file_id",
                 "check_voucher_image_file_id": "check_voucher_image_file_id",
                 "note": "note",
-                "payer": [{"contents": "contents"}],
                 "return_address": {
                     "city": "city",
                     "line1": "line1",

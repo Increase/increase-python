@@ -43,7 +43,7 @@ class AccountCreateParams(TypedDict, total=False):
     """
 
 
-class Loan(TypedDict, total=False):
+class Loan(TypedDict, total=False, extra_items=object):  # type: ignore[call-arg]
     """The loan details for the account."""
 
     credit_limit: Required[int]
