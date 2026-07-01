@@ -68,8 +68,8 @@ class PendingTransactionsResource(SyncAPIResource):
           account_id: The Account to place the hold on.
 
           amount: The amount to hold in the minor unit of the account's currency. For dollars, for
-              example, this is cents. This should be a negative amount - to hold $1.00 from
-              the account, you would pass -100.
+              example, this is cents. This should be a negative amount: To hold $1.00 from the
+              account, pass -100 as `amount`.
 
           description: The description you choose to give the hold.
 
@@ -301,8 +301,8 @@ class AsyncPendingTransactionsResource(AsyncAPIResource):
           account_id: The Account to place the hold on.
 
           amount: The amount to hold in the minor unit of the account's currency. For dollars, for
-              example, this is cents. This should be a negative amount - to hold $1.00 from
-              the account, you would pass -100.
+              example, this is cents. This should be a negative amount: To hold $1.00 from the
+              account, pass -100 as `amount`.
 
           description: The description you choose to give the hold.
 
