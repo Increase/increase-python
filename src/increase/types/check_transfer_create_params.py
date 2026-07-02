@@ -185,6 +185,13 @@ class PhysicalCheck(TypedDict, total=False, extra_items=object):  # type: ignore
     memo: Required[str]
     """The descriptor that will be printed on the memo field on the check."""
 
+    payer: Required[Iterable[PhysicalCheckPayer]]
+    """The payer of the check.
+
+    This will be printed on the top-left portion of the check. This should be an
+    array of up to 4 elements, each of which represents a line of the payer.
+    """
+
     recipient_name: Required[str]
     """The name that will be printed on the check in the 'To:' field."""
 
@@ -207,19 +214,17 @@ class PhysicalCheck(TypedDict, total=False, extra_items=object):  # type: ignore
     note: str
     """The descriptor that will be printed on the letter included with the check."""
 
-    payer: Iterable[PhysicalCheckPayer]
-    """The payer of the check.
-
-    This will be printed on the top-left portion of the check and defaults to the
-    return address if unspecified. This should be an array of up to 4 elements, each
-    of which represents a line of the payer.
-    """
-
     return_address: PhysicalCheckReturnAddress
     """The return address to be printed on the check.
 
     If omitted this will default to an Increase-owned address that will mark checks
     as delivery failed and shred them.
+    """
+
+    return_address_name: str
+    """A custom name to print above the default return address.
+
+    Cannot be provided together with `return_address`.
     """
 
     shipping_method: Literal["usps_first_class", "fedex_overnight"]

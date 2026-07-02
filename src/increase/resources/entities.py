@@ -281,6 +281,7 @@ class EntitiesResource(SyncAPIResource):
         idempotency_key: str | Omit = omit,
         limit: int | Omit = omit,
         status: entity_list_params.Status | Omit = omit,
+        validation_status: entity_list_params.ValidationStatus | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -325,6 +326,7 @@ class EntitiesResource(SyncAPIResource):
                         "idempotency_key": idempotency_key,
                         "limit": limit,
                         "status": status,
+                        "validation_status": validation_status,
                     },
                     entity_list_params.EntityListParams,
                 ),
@@ -632,6 +634,7 @@ class AsyncEntitiesResource(AsyncAPIResource):
         idempotency_key: str | Omit = omit,
         limit: int | Omit = omit,
         status: entity_list_params.Status | Omit = omit,
+        validation_status: entity_list_params.ValidationStatus | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -676,6 +679,7 @@ class AsyncEntitiesResource(AsyncAPIResource):
                         "idempotency_key": idempotency_key,
                         "limit": limit,
                         "status": status,
+                        "validation_status": validation_status,
                     },
                     entity_list_params.EntityListParams,
                 ),

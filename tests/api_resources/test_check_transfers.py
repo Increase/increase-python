@@ -51,11 +51,15 @@ class TestCheckTransfers:
                     "phone": "+16505046304",
                 },
                 "memo": "Check payment",
+                "payer": [
+                    {"contents": "National Phonograph Company"},
+                    {"contents": "33 Liberty Street"},
+                    {"contents": "New York, NY 10045"},
+                ],
                 "recipient_name": "Ian Crease",
                 "attachment_file_id": "attachment_file_id",
                 "check_voucher_image_file_id": "check_voucher_image_file_id",
                 "note": "note",
-                "payer": [{"contents": "contents"}],
                 "return_address": {
                     "city": "city",
                     "line1": "line1",
@@ -65,6 +69,7 @@ class TestCheckTransfers:
                     "line2": "line2",
                     "phone": "x",
                 },
+                "return_address_name": "return_address_name",
                 "shipping_method": "usps_first_class",
                 "signature": {
                     "image_file_id": "image_file_id",
@@ -345,11 +350,15 @@ class TestAsyncCheckTransfers:
                     "phone": "+16505046304",
                 },
                 "memo": "Check payment",
+                "payer": [
+                    {"contents": "National Phonograph Company"},
+                    {"contents": "33 Liberty Street"},
+                    {"contents": "New York, NY 10045"},
+                ],
                 "recipient_name": "Ian Crease",
                 "attachment_file_id": "attachment_file_id",
                 "check_voucher_image_file_id": "check_voucher_image_file_id",
                 "note": "note",
-                "payer": [{"contents": "contents"}],
                 "return_address": {
                     "city": "city",
                     "line1": "line1",
@@ -359,6 +368,7 @@ class TestAsyncCheckTransfers:
                     "line2": "line2",
                     "phone": "x",
                 },
+                "return_address_name": "return_address_name",
                 "shipping_method": "usps_first_class",
                 "signature": {
                     "image_file_id": "image_file_id",
