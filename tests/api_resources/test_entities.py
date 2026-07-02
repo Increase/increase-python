@@ -502,6 +502,7 @@ class TestEntities:
             idempotency_key="x",
             limit=1,
             status={"in": ["active"]},
+            validation_status={"in": ["pending"]},
         )
         assert_matches_type(SyncPage[Entity], entity, path=["response"])
 
@@ -1052,6 +1053,7 @@ class TestAsyncEntities:
             idempotency_key="x",
             limit=1,
             status={"in": ["active"]},
+            validation_status={"in": ["pending"]},
         )
         assert_matches_type(AsyncPage[Entity], entity, path=["response"])
 
