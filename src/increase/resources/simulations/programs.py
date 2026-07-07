@@ -47,7 +47,7 @@ class ProgramsResource(SyncAPIResource):
         self,
         *,
         name: str,
-        bank: Literal["core_bank", "first_internet_bank", "grasshopper_bank", "twin_city_bank"] | Omit = omit,
+        bank: Literal["core_bank", "first_internet_bank", "grasshopper_bank", "increase_bank"] | Omit = omit,
         lending_maximum_extendable_credit: int | Omit = omit,
         reserve_account_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -73,7 +73,7 @@ class ProgramsResource(SyncAPIResource):
               - `core_bank` - Core Bank
               - `first_internet_bank` - First Internet Bank of Indiana
               - `grasshopper_bank` - Grasshopper Bank
-              - `twin_city_bank` - Twin City Bank
+              - `increase_bank` - Twin City Bank
 
           lending_maximum_extendable_credit: The maximum extendable credit of the program being added.
 
@@ -135,7 +135,7 @@ class AsyncProgramsResource(AsyncAPIResource):
         self,
         *,
         name: str,
-        bank: Literal["core_bank", "first_internet_bank", "grasshopper_bank", "twin_city_bank"] | Omit = omit,
+        bank: Literal["core_bank", "first_internet_bank", "grasshopper_bank", "increase_bank"] | Omit = omit,
         lending_maximum_extendable_credit: int | Omit = omit,
         reserve_account_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -161,7 +161,7 @@ class AsyncProgramsResource(AsyncAPIResource):
               - `core_bank` - Core Bank
               - `first_internet_bank` - First Internet Bank of Indiana
               - `grasshopper_bank` - Grasshopper Bank
-              - `twin_city_bank` - Twin City Bank
+              - `increase_bank` - Twin City Bank
 
           lending_maximum_extendable_credit: The maximum extendable credit of the program being added.
 
