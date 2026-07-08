@@ -45,8 +45,8 @@ class CardSettlementsResource(SyncAPIResource):
         self,
         *,
         card_id: str,
-        pending_transaction_id: str,
         amount: int | Omit = omit,
+        pending_transaction_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -66,11 +66,12 @@ class CardSettlementsResource(SyncAPIResource):
         Args:
           card_id: The identifier of the Card to create a settlement on.
 
-          pending_transaction_id: The identifier of the Pending Transaction for the Card Authorization you wish to
-              settle.
-
           amount: The amount to be settled. This defaults to the amount of the Pending Transaction
-              being settled.
+              being settled, or a random amount if `pending_transaction_id` is not provided.
+
+          pending_transaction_id: The identifier of the Pending Transaction for the Card Authorization you wish to
+              settle. If not provided, the settlement will be force posted without a Card
+              Authorization.
 
           extra_headers: Send extra headers
 
@@ -87,8 +88,8 @@ class CardSettlementsResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "card_id": card_id,
-                    "pending_transaction_id": pending_transaction_id,
                     "amount": amount,
+                    "pending_transaction_id": pending_transaction_id,
                 },
                 card_settlement_create_params.CardSettlementCreateParams,
             ),
@@ -127,8 +128,8 @@ class AsyncCardSettlementsResource(AsyncAPIResource):
         self,
         *,
         card_id: str,
-        pending_transaction_id: str,
         amount: int | Omit = omit,
+        pending_transaction_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -148,11 +149,12 @@ class AsyncCardSettlementsResource(AsyncAPIResource):
         Args:
           card_id: The identifier of the Card to create a settlement on.
 
-          pending_transaction_id: The identifier of the Pending Transaction for the Card Authorization you wish to
-              settle.
-
           amount: The amount to be settled. This defaults to the amount of the Pending Transaction
-              being settled.
+              being settled, or a random amount if `pending_transaction_id` is not provided.
+
+          pending_transaction_id: The identifier of the Pending Transaction for the Card Authorization you wish to
+              settle. If not provided, the settlement will be force posted without a Card
+              Authorization.
 
           extra_headers: Send extra headers
 
@@ -169,8 +171,8 @@ class AsyncCardSettlementsResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "card_id": card_id,
-                    "pending_transaction_id": pending_transaction_id,
                     "amount": amount,
+                    "pending_transaction_id": pending_transaction_id,
                 },
                 card_settlement_create_params.CardSettlementCreateParams,
             ),
