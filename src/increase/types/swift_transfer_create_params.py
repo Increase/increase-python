@@ -51,6 +51,12 @@ class SwiftTransferCreateParams(TypedDict, total=False):
     unstructured_remittance_information: Required[str]
     """Unstructured remittance information to include in the transfer."""
 
+    intermediary_bank_identification_code: str
+    """
+    The bank identification code (BIC) of the intermediary bank, if the transfer
+    should be routed through one.
+    """
+
     require_approval: bool
     """Whether the transfer requires explicit approval via the dashboard or API."""
 
