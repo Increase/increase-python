@@ -97,6 +97,8 @@ _CategoryReservedKeywords = TypedDict(
                 "inbound_fednow_transfer.updated",
                 "inbound_mail_item.created",
                 "inbound_mail_item.updated",
+                "inbound_real_time_payments_request_for_payment.created",
+                "inbound_real_time_payments_request_for_payment.updated",
                 "inbound_real_time_payments_transfer.created",
                 "inbound_real_time_payments_transfer.updated",
                 "inbound_wire_drawdown_request.created",

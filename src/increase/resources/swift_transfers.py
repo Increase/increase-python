@@ -58,6 +58,7 @@ class SwiftTransfersResource(SyncAPIResource):
         instructed_currency: Literal["USD"],
         source_account_number_id: str,
         unstructured_remittance_information: str,
+        intermediary_bank_identification_code: str | Omit = omit,
         require_approval: bool | Omit = omit,
         routing_number: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -99,6 +100,9 @@ class SwiftTransfersResource(SyncAPIResource):
 
           unstructured_remittance_information: Unstructured remittance information to include in the transfer.
 
+          intermediary_bank_identification_code: The bank identification code (BIC) of the intermediary bank, if the transfer
+              should be routed through one.
+
           require_approval: Whether the transfer requires explicit approval via the dashboard or API.
 
           routing_number: The creditor's bank account routing or transit number. Required in certain
@@ -129,6 +133,7 @@ class SwiftTransfersResource(SyncAPIResource):
                     "instructed_currency": instructed_currency,
                     "source_account_number_id": source_account_number_id,
                     "unstructured_remittance_information": unstructured_remittance_information,
+                    "intermediary_bank_identification_code": intermediary_bank_identification_code,
                     "require_approval": require_approval,
                     "routing_number": routing_number,
                 },
@@ -361,6 +366,7 @@ class AsyncSwiftTransfersResource(AsyncAPIResource):
         instructed_currency: Literal["USD"],
         source_account_number_id: str,
         unstructured_remittance_information: str,
+        intermediary_bank_identification_code: str | Omit = omit,
         require_approval: bool | Omit = omit,
         routing_number: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -402,6 +408,9 @@ class AsyncSwiftTransfersResource(AsyncAPIResource):
 
           unstructured_remittance_information: Unstructured remittance information to include in the transfer.
 
+          intermediary_bank_identification_code: The bank identification code (BIC) of the intermediary bank, if the transfer
+              should be routed through one.
+
           require_approval: Whether the transfer requires explicit approval via the dashboard or API.
 
           routing_number: The creditor's bank account routing or transit number. Required in certain
@@ -432,6 +441,7 @@ class AsyncSwiftTransfersResource(AsyncAPIResource):
                     "instructed_currency": instructed_currency,
                     "source_account_number_id": source_account_number_id,
                     "unstructured_remittance_information": unstructured_remittance_information,
+                    "intermediary_bank_identification_code": intermediary_bank_identification_code,
                     "require_approval": require_approval,
                     "routing_number": routing_number,
                 },
