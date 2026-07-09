@@ -81,6 +81,9 @@ class InboundWireTransfer(BaseModel):
     creditor_name: Optional[str] = None
     """A name set by the sender."""
 
+    debtor_account_number: Optional[str] = None
+    """The account number of the sender."""
+
     debtor_address_line1: Optional[str] = None
     """A free-form address field set by the sender."""
 
@@ -92,6 +95,9 @@ class InboundWireTransfer(BaseModel):
 
     debtor_name: Optional[str] = None
     """A name set by the sender."""
+
+    debtor_routing_number: Optional[str] = None
+    """The American Banking Association (ABA) routing number of the sender."""
 
     description: str
     """An Increase-constructed description of the transfer."""

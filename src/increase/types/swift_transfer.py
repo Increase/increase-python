@@ -174,6 +174,12 @@ class SwiftTransfer(BaseModel):
     - `USD` - United States Dollar
     """
 
+    intermediary_bank_identification_code: Optional[str] = None
+    """
+    The bank identification code (BIC) of the intermediary bank, if the transfer is
+    routed through one.
+    """
+
     pending_transaction_id: Optional[str] = None
     """The ID for the pending transaction representing the transfer."""
 
