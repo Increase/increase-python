@@ -171,6 +171,7 @@ class ACHTransfersResource(SyncAPIResource):
         self,
         ach_transfer_id: str,
         *,
+        addenda_information: str | Omit = omit,
         reason: Literal[
             "insufficient_fund",
             "no_account",
@@ -260,6 +261,10 @@ class ACHTransfersResource(SyncAPIResource):
         Args:
           ach_transfer_id: The identifier of the ACH Transfer you wish to return.
 
+          addenda_information: Free-form information the returning bank includes in the return addenda. For a
+              `file_record_edit_criteria` (R17) return, set this to `QUESTIONABLE` to simulate
+              a return the bank believes was initiated under questionable circumstances.
+
           reason: The reason why the Federal Reserve or destination bank returned this transfer.
               Defaults to `no_account`.
 
@@ -296,8 +301,11 @@ class ACHTransfersResource(SyncAPIResource):
               - `authorization_revoked_by_customer` - Code R07. The customer revoked their
                 authorization for a previously authorized transfer.
               - `invalid_ach_routing_number` - Code R13. The routing number is invalid.
-              - `file_record_edit_criteria` - Code R17. The receiving bank is unable to
-                process a field in the transfer.
+              - `file_record_edit_criteria` - Code R17. This return code has multiple
+                meanings. The receiving bank was either unable to process a field in the
+                transfer, or believes the transfer was initiated under questionable
+                circumstances (such as fraud), or identified an improperly-initiated reversing
+                entry.
               - `enr_invalid_individual_name` - Code R45. A rare return reason. The individual
                 name field was invalid.
               - `returned_per_odfi_request` - Code R06. The originating financial institution
@@ -428,7 +436,13 @@ class ACHTransfersResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `ach_transfer_id` but received {ach_transfer_id!r}")
         return self._post(
             path_template("/simulations/ach_transfers/{ach_transfer_id}/return", ach_transfer_id=ach_transfer_id),
-            body=maybe_transform({"reason": reason}, ach_transfer_return_params.ACHTransferReturnParams),
+            body=maybe_transform(
+                {
+                    "addenda_information": addenda_information,
+                    "reason": reason,
+                },
+                ach_transfer_return_params.ACHTransferReturnParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -694,6 +708,7 @@ class AsyncACHTransfersResource(AsyncAPIResource):
         self,
         ach_transfer_id: str,
         *,
+        addenda_information: str | Omit = omit,
         reason: Literal[
             "insufficient_fund",
             "no_account",
@@ -783,6 +798,10 @@ class AsyncACHTransfersResource(AsyncAPIResource):
         Args:
           ach_transfer_id: The identifier of the ACH Transfer you wish to return.
 
+          addenda_information: Free-form information the returning bank includes in the return addenda. For a
+              `file_record_edit_criteria` (R17) return, set this to `QUESTIONABLE` to simulate
+              a return the bank believes was initiated under questionable circumstances.
+
           reason: The reason why the Federal Reserve or destination bank returned this transfer.
               Defaults to `no_account`.
 
@@ -819,8 +838,11 @@ class AsyncACHTransfersResource(AsyncAPIResource):
               - `authorization_revoked_by_customer` - Code R07. The customer revoked their
                 authorization for a previously authorized transfer.
               - `invalid_ach_routing_number` - Code R13. The routing number is invalid.
-              - `file_record_edit_criteria` - Code R17. The receiving bank is unable to
-                process a field in the transfer.
+              - `file_record_edit_criteria` - Code R17. This return code has multiple
+                meanings. The receiving bank was either unable to process a field in the
+                transfer, or believes the transfer was initiated under questionable
+                circumstances (such as fraud), or identified an improperly-initiated reversing
+                entry.
               - `enr_invalid_individual_name` - Code R45. A rare return reason. The individual
                 name field was invalid.
               - `returned_per_odfi_request` - Code R06. The originating financial institution
@@ -951,7 +973,13 @@ class AsyncACHTransfersResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `ach_transfer_id` but received {ach_transfer_id!r}")
         return await self._post(
             path_template("/simulations/ach_transfers/{ach_transfer_id}/return", ach_transfer_id=ach_transfer_id),
-            body=await async_maybe_transform({"reason": reason}, ach_transfer_return_params.ACHTransferReturnParams),
+            body=await async_maybe_transform(
+                {
+                    "addenda_information": addenda_information,
+                    "reason": reason,
+                },
+                ach_transfer_return_params.ACHTransferReturnParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

@@ -115,6 +115,7 @@ class TestACHTransfers:
     def test_method_return_with_all_params(self, client: Increase) -> None:
         ach_transfer = client.simulations.ach_transfers.return_(
             ach_transfer_id="ach_transfer_uoxatyh3lt5evrsdvo7q",
+            addenda_information="x",
             reason="insufficient_fund",
         )
         assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
@@ -338,6 +339,7 @@ class TestAsyncACHTransfers:
     async def test_method_return_with_all_params(self, async_client: AsyncIncrease) -> None:
         ach_transfer = await async_client.simulations.ach_transfers.return_(
             ach_transfer_id="ach_transfer_uoxatyh3lt5evrsdvo7q",
+            addenda_information="x",
             reason="insufficient_fund",
         )
         assert_matches_type(ACHTransfer, ach_transfer, path=["response"])
