@@ -289,7 +289,10 @@ class PhysicalCheck(BaseModel):
     """The signature that will appear on the check."""
 
     tracking_updates: List[PhysicalCheckTrackingUpdate]
-    """Tracking updates relating to the physical check's delivery."""
+    """Tracking updates relating to the physical check's delivery.
+
+    Sorted by `created_at` in ascending order.
+    """
 
     if TYPE_CHECKING:
         # Some versions of Pydantic <2.8.0 have a bug and don’t allow assigning a
