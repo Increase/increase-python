@@ -28,7 +28,6 @@ class TestBeneficialOwners:
             individual={
                 "address": {
                     "city": "New York",
-                    "country": "US",
                     "line1": "33 Liberty Street",
                 },
                 "date_of_birth": parse_date("1970-01-31"),
@@ -49,8 +48,8 @@ class TestBeneficialOwners:
             individual={
                 "address": {
                     "city": "New York",
-                    "country": "US",
                     "line1": "33 Liberty Street",
+                    "country": "US",
                     "line2": "x",
                     "state": "NY",
                     "zip": "10045",
@@ -93,7 +92,6 @@ class TestBeneficialOwners:
             individual={
                 "address": {
                     "city": "New York",
-                    "country": "US",
                     "line1": "33 Liberty Street",
                 },
                 "date_of_birth": parse_date("1970-01-31"),
@@ -118,7 +116,6 @@ class TestBeneficialOwners:
             individual={
                 "address": {
                     "city": "New York",
-                    "country": "US",
                     "line1": "33 Liberty Street",
                 },
                 "date_of_birth": parse_date("1970-01-31"),
@@ -191,8 +188,8 @@ class TestBeneficialOwners:
             entity_beneficial_owner_id="entity_beneficial_owner_vozma8szzu1sxezp5zq6",
             address={
                 "city": "New York",
-                "country": "US",
                 "line1": "33 Liberty Street",
+                "country": "US",
                 "line2": "Unit 2",
                 "state": "NY",
                 "zip": "10045",
@@ -352,7 +349,6 @@ class TestAsyncBeneficialOwners:
             individual={
                 "address": {
                     "city": "New York",
-                    "country": "US",
                     "line1": "33 Liberty Street",
                 },
                 "date_of_birth": parse_date("1970-01-31"),
@@ -373,8 +369,8 @@ class TestAsyncBeneficialOwners:
             individual={
                 "address": {
                     "city": "New York",
-                    "country": "US",
                     "line1": "33 Liberty Street",
+                    "country": "US",
                     "line2": "x",
                     "state": "NY",
                     "zip": "10045",
@@ -417,7 +413,6 @@ class TestAsyncBeneficialOwners:
             individual={
                 "address": {
                     "city": "New York",
-                    "country": "US",
                     "line1": "33 Liberty Street",
                 },
                 "date_of_birth": parse_date("1970-01-31"),
@@ -442,7 +437,6 @@ class TestAsyncBeneficialOwners:
             individual={
                 "address": {
                     "city": "New York",
-                    "country": "US",
                     "line1": "33 Liberty Street",
                 },
                 "date_of_birth": parse_date("1970-01-31"),
@@ -515,8 +509,8 @@ class TestAsyncBeneficialOwners:
             entity_beneficial_owner_id="entity_beneficial_owner_vozma8szzu1sxezp5zq6",
             address={
                 "city": "New York",
-                "country": "US",
                 "line1": "33 Liberty Street",
+                "country": "US",
                 "line2": "Unit 2",
                 "state": "NY",
                 "zip": "10045",
