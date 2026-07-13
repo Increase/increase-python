@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.534.0](https://github.com/Increase/increase-python/compare/v0.533.0...v0.534.0) (2026-07-13)
+
+
+### Features
+
+* **api:** api update ([#1470](https://github.com/Increase/increase-python/issues/1470)) ([384fd80](https://github.com/Increase/increase-python/commit/384fd8020a62c9bf2827c80ab28758bad4a0b9d6))
+
+
+### Bug Fixes
+
+* **api:** make address country optional, defaulting to US ([6420bf6](https://github.com/Increase/increase-python/commit/6420bf6b932c1e0044c5ec9f630bd4dc83bd357e))
+
 ## [0.533.0](https://github.com/Increase/increase-python/compare/v0.532.0...v0.533.0) (2026-07-02)
 
 
