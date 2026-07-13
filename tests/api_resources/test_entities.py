@@ -33,8 +33,8 @@ class TestEntities:
             corporation={
                 "address": {
                     "city": "New York",
-                    "country": "x",
                     "line1": "33 Liberty Street",
+                    "country": "x",
                     "line2": "x",
                     "state": "NY",
                     "zip": "10045",
@@ -44,8 +44,8 @@ class TestEntities:
                         "individual": {
                             "address": {
                                 "city": "New York",
-                                "country": "x",
                                 "line1": "33 Liberty Street",
+                                "country": "x",
                                 "line2": "x",
                                 "state": "NY",
                                 "zip": "10045",
@@ -111,8 +111,8 @@ class TestEntities:
                     {
                         "address": {
                             "city": "x",
-                            "country": "x",
                             "line1": "x",
+                            "country": "x",
                             "line2": "x",
                             "state": "x",
                             "zip": "x",
@@ -148,8 +148,8 @@ class TestEntities:
             natural_person={
                 "address": {
                     "city": "x",
-                    "country": "x",
                     "line1": "x",
+                    "country": "x",
                     "line2": "x",
                     "state": "x",
                     "zip": "x",
@@ -212,8 +212,8 @@ class TestEntities:
                         "individual": {
                             "address": {
                                 "city": "x",
-                                "country": "x",
                                 "line1": "x",
+                                "country": "x",
                                 "line2": "x",
                                 "state": "x",
                                 "zip": "x",
@@ -251,8 +251,8 @@ class TestEntities:
                 "grantor": {
                     "address": {
                         "city": "x",
-                        "country": "x",
                         "line1": "x",
+                        "country": "x",
                         "line2": "x",
                         "state": "x",
                         "zip": "x",
@@ -364,8 +364,8 @@ class TestEntities:
             corporation={
                 "address": {
                     "city": "New York",
-                    "country": "US",
                     "line1": "33 Liberty Street",
+                    "country": "US",
                     "line2": "Unit 2",
                     "state": "NY",
                     "zip": "10045",
@@ -394,8 +394,8 @@ class TestEntities:
             natural_person={
                 "address": {
                     "city": "x",
-                    "country": "x",
                     "line1": "x",
+                    "country": "x",
                     "line2": "x",
                     "state": "x",
                     "zip": "x",
@@ -584,8 +584,8 @@ class TestAsyncEntities:
             corporation={
                 "address": {
                     "city": "New York",
-                    "country": "x",
                     "line1": "33 Liberty Street",
+                    "country": "x",
                     "line2": "x",
                     "state": "NY",
                     "zip": "10045",
@@ -595,8 +595,8 @@ class TestAsyncEntities:
                         "individual": {
                             "address": {
                                 "city": "New York",
-                                "country": "x",
                                 "line1": "33 Liberty Street",
+                                "country": "x",
                                 "line2": "x",
                                 "state": "NY",
                                 "zip": "10045",
@@ -662,8 +662,8 @@ class TestAsyncEntities:
                     {
                         "address": {
                             "city": "x",
-                            "country": "x",
                             "line1": "x",
+                            "country": "x",
                             "line2": "x",
                             "state": "x",
                             "zip": "x",
@@ -699,8 +699,8 @@ class TestAsyncEntities:
             natural_person={
                 "address": {
                     "city": "x",
-                    "country": "x",
                     "line1": "x",
+                    "country": "x",
                     "line2": "x",
                     "state": "x",
                     "zip": "x",
@@ -763,8 +763,8 @@ class TestAsyncEntities:
                         "individual": {
                             "address": {
                                 "city": "x",
-                                "country": "x",
                                 "line1": "x",
+                                "country": "x",
                                 "line2": "x",
                                 "state": "x",
                                 "zip": "x",
@@ -802,8 +802,8 @@ class TestAsyncEntities:
                 "grantor": {
                     "address": {
                         "city": "x",
-                        "country": "x",
                         "line1": "x",
+                        "country": "x",
                         "line2": "x",
                         "state": "x",
                         "zip": "x",
@@ -915,8 +915,8 @@ class TestAsyncEntities:
             corporation={
                 "address": {
                     "city": "New York",
-                    "country": "US",
                     "line1": "33 Liberty Street",
+                    "country": "US",
                     "line2": "Unit 2",
                     "state": "NY",
                     "zip": "10045",
@@ -945,8 +945,8 @@ class TestAsyncEntities:
             natural_person={
                 "address": {
                     "city": "x",
-                    "country": "x",
                     "line1": "x",
+                    "country": "x",
                     "line2": "x",
                     "state": "x",
                     "zip": "x",
