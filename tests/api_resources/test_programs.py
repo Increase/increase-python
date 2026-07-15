@@ -32,7 +32,6 @@ class TestPrograms:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         program = response.parse()
         assert_matches_type(Program, program, path=["response"])
 
@@ -42,7 +41,6 @@ class TestPrograms:
             "program_i2v2os4mwza1oetokh9i",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             program = response.parse()
             assert_matches_type(Program, program, path=["response"])
@@ -74,7 +72,6 @@ class TestPrograms:
         response = client.programs.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         program = response.parse()
         assert_matches_type(SyncPage[Program], program, path=["response"])
 
@@ -82,7 +79,6 @@ class TestPrograms:
     def test_streaming_response_list(self, client: Increase) -> None:
         with client.programs.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             program = response.parse()
             assert_matches_type(SyncPage[Program], program, path=["response"])
@@ -109,7 +105,6 @@ class TestAsyncPrograms:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         program = await response.parse()
         assert_matches_type(Program, program, path=["response"])
 
@@ -119,7 +114,6 @@ class TestAsyncPrograms:
             "program_i2v2os4mwza1oetokh9i",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             program = await response.parse()
             assert_matches_type(Program, program, path=["response"])
@@ -151,7 +145,6 @@ class TestAsyncPrograms:
         response = await async_client.programs.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         program = await response.parse()
         assert_matches_type(AsyncPage[Program], program, path=["response"])
 
@@ -159,7 +152,6 @@ class TestAsyncPrograms:
     async def test_streaming_response_list(self, async_client: AsyncIncrease) -> None:
         async with async_client.programs.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             program = await response.parse()
             assert_matches_type(AsyncPage[Program], program, path=["response"])

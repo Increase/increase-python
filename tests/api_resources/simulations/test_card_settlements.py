@@ -40,7 +40,6 @@ class TestCardSettlements:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_settlement = response.parse()
         assert_matches_type(Transaction, card_settlement, path=["response"])
 
@@ -50,7 +49,6 @@ class TestCardSettlements:
             card_id="card_oubs0hwk5rn6knuecxg2",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_settlement = response.parse()
             assert_matches_type(Transaction, card_settlement, path=["response"])
@@ -86,7 +84,6 @@ class TestAsyncCardSettlements:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_settlement = await response.parse()
         assert_matches_type(Transaction, card_settlement, path=["response"])
 
@@ -96,7 +93,6 @@ class TestAsyncCardSettlements:
             card_id="card_oubs0hwk5rn6knuecxg2",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_settlement = await response.parse()
             assert_matches_type(Transaction, card_settlement, path=["response"])

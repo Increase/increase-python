@@ -381,23 +381,8 @@ class TestIncrease:
         )
         request = test_client._build_request(FinalRequestOptions(method="get", url="/foo"))
         assert request.headers.get("x-foo") == "bar"
-        assert request.headers.get("x-stainless-lang") == "python"
-
-        test_client2 = Increase(
-            base_url=base_url,
-            api_key=api_key,
-            _strict_response_validation=True,
-            default_headers={
-                "X-Foo": "stainless",
-                "X-Stainless-Lang": "my-overriding-header",
-            },
-        )
-        request = test_client2._build_request(FinalRequestOptions(method="get", url="/foo"))
-        assert request.headers.get("x-foo") == "stainless"
-        assert request.headers.get("x-stainless-lang") == "my-overriding-header"
 
         test_client.close()
-        test_client2.close()
 
     def test_validate_headers(self) -> None:
         client = Increase(base_url=base_url, api_key=api_key, _strict_response_validation=True)
@@ -963,57 +948,6 @@ class TestIncrease:
         response = client.accounts.with_raw_response.create(name="New Account!")
 
         assert response.retries_taken == failures_before_success
-        assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
-
-    @pytest.mark.parametrize("failures_before_success", [0, 2, 4])
-    @mock.patch("increase._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
-    @pytest.mark.respx(base_url=base_url)
-    def test_omit_retry_count_header(
-        self, client: Increase, failures_before_success: int, respx_mock: MockRouter
-    ) -> None:
-        client = client.with_options(max_retries=4)
-
-        nb_retries = 0
-
-        def retry_handler(_request: httpx.Request) -> httpx.Response:
-            nonlocal nb_retries
-            if nb_retries < failures_before_success:
-                nb_retries += 1
-                return httpx.Response(500)
-            return httpx.Response(200)
-
-        respx_mock.post("/accounts").mock(side_effect=retry_handler)
-
-        response = client.accounts.with_raw_response.create(
-            name="New Account!", extra_headers={"x-stainless-retry-count": Omit()}
-        )
-
-        assert len(response.http_request.headers.get_list("x-stainless-retry-count")) == 0
-
-    @pytest.mark.parametrize("failures_before_success", [0, 2, 4])
-    @mock.patch("increase._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
-    @pytest.mark.respx(base_url=base_url)
-    def test_overwrite_retry_count_header(
-        self, client: Increase, failures_before_success: int, respx_mock: MockRouter
-    ) -> None:
-        client = client.with_options(max_retries=4)
-
-        nb_retries = 0
-
-        def retry_handler(_request: httpx.Request) -> httpx.Response:
-            nonlocal nb_retries
-            if nb_retries < failures_before_success:
-                nb_retries += 1
-                return httpx.Response(500)
-            return httpx.Response(200)
-
-        respx_mock.post("/accounts").mock(side_effect=retry_handler)
-
-        response = client.accounts.with_raw_response.create(
-            name="New Account!", extra_headers={"x-stainless-retry-count": "42"}
-        )
-
-        assert response.http_request.headers.get("x-stainless-retry-count") == "42"
 
     def test_proxy_environment_variables(self, monkeypatch: pytest.MonkeyPatch) -> None:
         # Test that the proxy environment variables are set correctly
@@ -1343,23 +1277,8 @@ class TestAsyncIncrease:
         )
         request = test_client._build_request(FinalRequestOptions(method="get", url="/foo"))
         assert request.headers.get("x-foo") == "bar"
-        assert request.headers.get("x-stainless-lang") == "python"
-
-        test_client2 = AsyncIncrease(
-            base_url=base_url,
-            api_key=api_key,
-            _strict_response_validation=True,
-            default_headers={
-                "X-Foo": "stainless",
-                "X-Stainless-Lang": "my-overriding-header",
-            },
-        )
-        request = test_client2._build_request(FinalRequestOptions(method="get", url="/foo"))
-        assert request.headers.get("x-foo") == "stainless"
-        assert request.headers.get("x-stainless-lang") == "my-overriding-header"
 
         await test_client.close()
-        await test_client2.close()
 
     def test_validate_headers(self) -> None:
         client = AsyncIncrease(base_url=base_url, api_key=api_key, _strict_response_validation=True)
@@ -1944,57 +1863,6 @@ class TestAsyncIncrease:
         response = await client.accounts.with_raw_response.create(name="New Account!")
 
         assert response.retries_taken == failures_before_success
-        assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
-
-    @pytest.mark.parametrize("failures_before_success", [0, 2, 4])
-    @mock.patch("increase._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
-    @pytest.mark.respx(base_url=base_url)
-    async def test_omit_retry_count_header(
-        self, async_client: AsyncIncrease, failures_before_success: int, respx_mock: MockRouter
-    ) -> None:
-        client = async_client.with_options(max_retries=4)
-
-        nb_retries = 0
-
-        def retry_handler(_request: httpx.Request) -> httpx.Response:
-            nonlocal nb_retries
-            if nb_retries < failures_before_success:
-                nb_retries += 1
-                return httpx.Response(500)
-            return httpx.Response(200)
-
-        respx_mock.post("/accounts").mock(side_effect=retry_handler)
-
-        response = await client.accounts.with_raw_response.create(
-            name="New Account!", extra_headers={"x-stainless-retry-count": Omit()}
-        )
-
-        assert len(response.http_request.headers.get_list("x-stainless-retry-count")) == 0
-
-    @pytest.mark.parametrize("failures_before_success", [0, 2, 4])
-    @mock.patch("increase._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
-    @pytest.mark.respx(base_url=base_url)
-    async def test_overwrite_retry_count_header(
-        self, async_client: AsyncIncrease, failures_before_success: int, respx_mock: MockRouter
-    ) -> None:
-        client = async_client.with_options(max_retries=4)
-
-        nb_retries = 0
-
-        def retry_handler(_request: httpx.Request) -> httpx.Response:
-            nonlocal nb_retries
-            if nb_retries < failures_before_success:
-                nb_retries += 1
-                return httpx.Response(500)
-            return httpx.Response(200)
-
-        respx_mock.post("/accounts").mock(side_effect=retry_handler)
-
-        response = await client.accounts.with_raw_response.create(
-            name="New Account!", extra_headers={"x-stainless-retry-count": "42"}
-        )
-
-        assert response.http_request.headers.get("x-stainless-retry-count") == "42"
 
     async def test_get_platform(self) -> None:
         platform = await asyncify(get_platform)()

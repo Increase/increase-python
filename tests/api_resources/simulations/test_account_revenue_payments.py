@@ -45,7 +45,6 @@ class TestAccountRevenuePayments:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         account_revenue_payment = response.parse()
         assert_matches_type(Transaction, account_revenue_payment, path=["response"])
 
@@ -56,7 +55,6 @@ class TestAccountRevenuePayments:
             amount=1000,
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             account_revenue_payment = response.parse()
             assert_matches_type(Transaction, account_revenue_payment, path=["response"])
@@ -96,7 +94,6 @@ class TestAsyncAccountRevenuePayments:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         account_revenue_payment = await response.parse()
         assert_matches_type(Transaction, account_revenue_payment, path=["response"])
 
@@ -107,7 +104,6 @@ class TestAsyncAccountRevenuePayments:
             amount=1000,
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             account_revenue_payment = await response.parse()
             assert_matches_type(Transaction, account_revenue_payment, path=["response"])

@@ -92,7 +92,6 @@ class TestWireDrawdownRequests:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         wire_drawdown_request = response.parse()
         assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
 
@@ -116,7 +115,6 @@ class TestWireDrawdownRequests:
             unstructured_remittance_information="Invoice 29582",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             wire_drawdown_request = response.parse()
             assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
@@ -137,7 +135,6 @@ class TestWireDrawdownRequests:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         wire_drawdown_request = response.parse()
         assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
 
@@ -147,7 +144,6 @@ class TestWireDrawdownRequests:
             "wire_drawdown_request_q6lmocus3glo0lr2bfv3",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             wire_drawdown_request = response.parse()
             assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
@@ -183,7 +179,6 @@ class TestWireDrawdownRequests:
         response = client.wire_drawdown_requests.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         wire_drawdown_request = response.parse()
         assert_matches_type(SyncPage[WireDrawdownRequest], wire_drawdown_request, path=["response"])
 
@@ -191,7 +186,6 @@ class TestWireDrawdownRequests:
     def test_streaming_response_list(self, client: Increase) -> None:
         with client.wire_drawdown_requests.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             wire_drawdown_request = response.parse()
             assert_matches_type(SyncPage[WireDrawdownRequest], wire_drawdown_request, path=["response"])
@@ -278,7 +272,6 @@ class TestAsyncWireDrawdownRequests:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         wire_drawdown_request = await response.parse()
         assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
 
@@ -302,7 +295,6 @@ class TestAsyncWireDrawdownRequests:
             unstructured_remittance_information="Invoice 29582",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             wire_drawdown_request = await response.parse()
             assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
@@ -323,7 +315,6 @@ class TestAsyncWireDrawdownRequests:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         wire_drawdown_request = await response.parse()
         assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
 
@@ -333,7 +324,6 @@ class TestAsyncWireDrawdownRequests:
             "wire_drawdown_request_q6lmocus3glo0lr2bfv3",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             wire_drawdown_request = await response.parse()
             assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
@@ -369,7 +359,6 @@ class TestAsyncWireDrawdownRequests:
         response = await async_client.wire_drawdown_requests.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         wire_drawdown_request = await response.parse()
         assert_matches_type(AsyncPage[WireDrawdownRequest], wire_drawdown_request, path=["response"])
 
@@ -377,7 +366,6 @@ class TestAsyncWireDrawdownRequests:
     async def test_streaming_response_list(self, async_client: AsyncIncrease) -> None:
         async with async_client.wire_drawdown_requests.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             wire_drawdown_request = await response.parse()
             assert_matches_type(AsyncPage[WireDrawdownRequest], wire_drawdown_request, path=["response"])

@@ -600,6 +600,7 @@ Methods:
 - <code title="post /files">client.files.<a href="./src/increase/resources/files.py">create</a>(\*\*<a href="src/increase/types/file_create_params.py">params</a>) -> <a href="./src/increase/types/file.py">File</a></code>
 - <code title="get /files/{file_id}">client.files.<a href="./src/increase/resources/files.py">retrieve</a>(file_id) -> <a href="./src/increase/types/file.py">File</a></code>
 - <code title="get /files">client.files.<a href="./src/increase/resources/files.py">list</a>(\*\*<a href="src/increase/types/file_list_params.py">params</a>) -> <a href="./src/increase/types/file.py">SyncPage[File]</a></code>
+- <code title="get /files/{file_id}/contents">client.files.<a href="./src/increase/resources/files.py">contents</a>(file_id) -> BinaryAPIResponse</code>
 
 # FileLinks
 

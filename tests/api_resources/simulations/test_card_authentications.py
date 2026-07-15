@@ -45,7 +45,6 @@ class TestCardAuthentications:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_authentication = response.parse()
         assert_matches_type(CardPayment, card_authentication, path=["response"])
 
@@ -55,7 +54,6 @@ class TestCardAuthentications:
             card_id="card_oubs0hwk5rn6knuecxg2",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_authentication = response.parse()
             assert_matches_type(CardPayment, card_authentication, path=["response"])
@@ -78,7 +76,6 @@ class TestCardAuthentications:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_authentication = response.parse()
         assert_matches_type(CardPayment, card_authentication, path=["response"])
 
@@ -89,7 +86,6 @@ class TestCardAuthentications:
             one_time_code="123456",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_authentication = response.parse()
             assert_matches_type(CardPayment, card_authentication, path=["response"])
@@ -118,7 +114,6 @@ class TestCardAuthentications:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_authentication = response.parse()
         assert_matches_type(CardPayment, card_authentication, path=["response"])
 
@@ -128,7 +123,6 @@ class TestCardAuthentications:
             "card_payment_nd3k2kacrqjli8482ave",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_authentication = response.parse()
             assert_matches_type(CardPayment, card_authentication, path=["response"])
@@ -176,7 +170,6 @@ class TestAsyncCardAuthentications:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_authentication = await response.parse()
         assert_matches_type(CardPayment, card_authentication, path=["response"])
 
@@ -186,7 +179,6 @@ class TestAsyncCardAuthentications:
             card_id="card_oubs0hwk5rn6knuecxg2",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_authentication = await response.parse()
             assert_matches_type(CardPayment, card_authentication, path=["response"])
@@ -209,7 +201,6 @@ class TestAsyncCardAuthentications:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_authentication = await response.parse()
         assert_matches_type(CardPayment, card_authentication, path=["response"])
 
@@ -220,7 +211,6 @@ class TestAsyncCardAuthentications:
             one_time_code="123456",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_authentication = await response.parse()
             assert_matches_type(CardPayment, card_authentication, path=["response"])
@@ -249,7 +239,6 @@ class TestAsyncCardAuthentications:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_authentication = await response.parse()
         assert_matches_type(CardPayment, card_authentication, path=["response"])
 
@@ -259,7 +248,6 @@ class TestAsyncCardAuthentications:
             "card_payment_nd3k2kacrqjli8482ave",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_authentication = await response.parse()
             assert_matches_type(CardPayment, card_authentication, path=["response"])

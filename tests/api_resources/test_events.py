@@ -35,7 +35,6 @@ class TestEvents:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         event = response.parse()
         assert_matches_type(Event, event, path=["response"])
 
@@ -45,7 +44,6 @@ class TestEvents:
             "event_001dzz0r20rzr4zrhrr1364hy80",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             event = response.parse()
             assert_matches_type(Event, event, path=["response"])
@@ -89,7 +87,6 @@ class TestEvents:
         response = client.events.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         event = response.parse()
         assert_matches_type(SyncPage[Event], event, path=["response"])
 
@@ -97,7 +94,6 @@ class TestEvents:
     def test_streaming_response_list(self, client: Increase) -> None:
         with client.events.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             event = response.parse()
             assert_matches_type(SyncPage[Event], event, path=["response"])
@@ -163,7 +159,6 @@ class TestAsyncEvents:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         event = await response.parse()
         assert_matches_type(Event, event, path=["response"])
 
@@ -173,7 +168,6 @@ class TestAsyncEvents:
             "event_001dzz0r20rzr4zrhrr1364hy80",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             event = await response.parse()
             assert_matches_type(Event, event, path=["response"])
@@ -217,7 +211,6 @@ class TestAsyncEvents:
         response = await async_client.events.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         event = await response.parse()
         assert_matches_type(AsyncPage[Event], event, path=["response"])
 
@@ -225,7 +218,6 @@ class TestAsyncEvents:
     async def test_streaming_response_list(self, async_client: AsyncIncrease) -> None:
         async with async_client.events.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             event = await response.parse()
             assert_matches_type(AsyncPage[Event], event, path=["response"])

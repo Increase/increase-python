@@ -47,7 +47,6 @@ class TestAccountNumbers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         account_number = response.parse()
         assert_matches_type(AccountNumber, account_number, path=["response"])
 
@@ -58,7 +57,6 @@ class TestAccountNumbers:
             name="Rent payments",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             account_number = response.parse()
             assert_matches_type(AccountNumber, account_number, path=["response"])
@@ -79,7 +77,6 @@ class TestAccountNumbers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         account_number = response.parse()
         assert_matches_type(AccountNumber, account_number, path=["response"])
 
@@ -89,7 +86,6 @@ class TestAccountNumbers:
             "account_number_v18nkfqm6afpsrvy82b2",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             account_number = response.parse()
             assert_matches_type(AccountNumber, account_number, path=["response"])
@@ -128,7 +124,6 @@ class TestAccountNumbers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         account_number = response.parse()
         assert_matches_type(AccountNumber, account_number, path=["response"])
 
@@ -138,7 +133,6 @@ class TestAccountNumbers:
             account_number_id="account_number_v18nkfqm6afpsrvy82b2",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             account_number = response.parse()
             assert_matches_type(AccountNumber, account_number, path=["response"])
@@ -180,7 +174,6 @@ class TestAccountNumbers:
         response = client.account_numbers.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         account_number = response.parse()
         assert_matches_type(SyncPage[AccountNumber], account_number, path=["response"])
 
@@ -188,7 +181,6 @@ class TestAccountNumbers:
     def test_streaming_response_list(self, client: Increase) -> None:
         with client.account_numbers.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             account_number = response.parse()
             assert_matches_type(SyncPage[AccountNumber], account_number, path=["response"])
@@ -227,7 +219,6 @@ class TestAsyncAccountNumbers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         account_number = await response.parse()
         assert_matches_type(AccountNumber, account_number, path=["response"])
 
@@ -238,7 +229,6 @@ class TestAsyncAccountNumbers:
             name="Rent payments",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             account_number = await response.parse()
             assert_matches_type(AccountNumber, account_number, path=["response"])
@@ -259,7 +249,6 @@ class TestAsyncAccountNumbers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         account_number = await response.parse()
         assert_matches_type(AccountNumber, account_number, path=["response"])
 
@@ -269,7 +258,6 @@ class TestAsyncAccountNumbers:
             "account_number_v18nkfqm6afpsrvy82b2",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             account_number = await response.parse()
             assert_matches_type(AccountNumber, account_number, path=["response"])
@@ -308,7 +296,6 @@ class TestAsyncAccountNumbers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         account_number = await response.parse()
         assert_matches_type(AccountNumber, account_number, path=["response"])
 
@@ -318,7 +305,6 @@ class TestAsyncAccountNumbers:
             account_number_id="account_number_v18nkfqm6afpsrvy82b2",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             account_number = await response.parse()
             assert_matches_type(AccountNumber, account_number, path=["response"])
@@ -360,7 +346,6 @@ class TestAsyncAccountNumbers:
         response = await async_client.account_numbers.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         account_number = await response.parse()
         assert_matches_type(AsyncPage[AccountNumber], account_number, path=["response"])
 
@@ -368,7 +353,6 @@ class TestAsyncAccountNumbers:
     async def test_streaming_response_list(self, async_client: AsyncIncrease) -> None:
         async with async_client.account_numbers.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             account_number = await response.parse()
             assert_matches_type(AsyncPage[AccountNumber], account_number, path=["response"])

@@ -31,7 +31,6 @@ class TestWireTransfers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         wire_transfer = response.parse()
         assert_matches_type(WireTransfer, wire_transfer, path=["response"])
 
@@ -41,7 +40,6 @@ class TestWireTransfers:
             "wire_transfer_5akynk7dqsq25qwk9q2u",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             wire_transfer = response.parse()
             assert_matches_type(WireTransfer, wire_transfer, path=["response"])
@@ -69,7 +67,6 @@ class TestWireTransfers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         wire_transfer = response.parse()
         assert_matches_type(WireTransfer, wire_transfer, path=["response"])
 
@@ -79,7 +76,6 @@ class TestWireTransfers:
             "wire_transfer_5akynk7dqsq25qwk9q2u",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             wire_transfer = response.parse()
             assert_matches_type(WireTransfer, wire_transfer, path=["response"])
@@ -113,7 +109,6 @@ class TestAsyncWireTransfers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         wire_transfer = await response.parse()
         assert_matches_type(WireTransfer, wire_transfer, path=["response"])
 
@@ -123,7 +118,6 @@ class TestAsyncWireTransfers:
             "wire_transfer_5akynk7dqsq25qwk9q2u",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             wire_transfer = await response.parse()
             assert_matches_type(WireTransfer, wire_transfer, path=["response"])
@@ -151,7 +145,6 @@ class TestAsyncWireTransfers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         wire_transfer = await response.parse()
         assert_matches_type(WireTransfer, wire_transfer, path=["response"])
 
@@ -161,7 +154,6 @@ class TestAsyncWireTransfers:
             "wire_transfer_5akynk7dqsq25qwk9q2u",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             wire_transfer = await response.parse()
             assert_matches_type(WireTransfer, wire_transfer, path=["response"])

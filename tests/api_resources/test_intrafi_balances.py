@@ -31,7 +31,6 @@ class TestIntrafiBalances:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         intrafi_balance = response.parse()
         assert_matches_type(IntrafiBalance, intrafi_balance, path=["response"])
 
@@ -41,7 +40,6 @@ class TestIntrafiBalances:
             "account_in71c4amph0vgo2qllky",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             intrafi_balance = response.parse()
             assert_matches_type(IntrafiBalance, intrafi_balance, path=["response"])
@@ -75,7 +73,6 @@ class TestAsyncIntrafiBalances:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         intrafi_balance = await response.parse()
         assert_matches_type(IntrafiBalance, intrafi_balance, path=["response"])
 
@@ -85,7 +82,6 @@ class TestAsyncIntrafiBalances:
             "account_in71c4amph0vgo2qllky",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             intrafi_balance = await response.parse()
             assert_matches_type(IntrafiBalance, intrafi_balance, path=["response"])

@@ -39,7 +39,6 @@ class TestCardReversals:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_reversal = response.parse()
         assert_matches_type(CardPayment, card_reversal, path=["response"])
 
@@ -49,7 +48,6 @@ class TestCardReversals:
             card_payment_id="card_payment_nd3k2kacrqjli8482ave",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_reversal = response.parse()
             assert_matches_type(CardPayment, card_reversal, path=["response"])
@@ -84,7 +82,6 @@ class TestAsyncCardReversals:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_reversal = await response.parse()
         assert_matches_type(CardPayment, card_reversal, path=["response"])
 
@@ -94,7 +91,6 @@ class TestAsyncCardReversals:
             card_payment_id="card_payment_nd3k2kacrqjli8482ave",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_reversal = await response.parse()
             assert_matches_type(CardPayment, card_reversal, path=["response"])

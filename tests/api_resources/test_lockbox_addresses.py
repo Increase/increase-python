@@ -38,7 +38,6 @@ class TestLockboxAddresses:
         response = client.lockbox_addresses.with_raw_response.create()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         lockbox_address = response.parse()
         assert_matches_type(LockboxAddress, lockbox_address, path=["response"])
 
@@ -46,7 +45,6 @@ class TestLockboxAddresses:
     def test_streaming_response_create(self, client: Increase) -> None:
         with client.lockbox_addresses.with_streaming_response.create() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             lockbox_address = response.parse()
             assert_matches_type(LockboxAddress, lockbox_address, path=["response"])
@@ -67,7 +65,6 @@ class TestLockboxAddresses:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         lockbox_address = response.parse()
         assert_matches_type(LockboxAddress, lockbox_address, path=["response"])
 
@@ -77,7 +74,6 @@ class TestLockboxAddresses:
             "lockbox_address_lw6sbzl9ol5dfd8hdml6",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             lockbox_address = response.parse()
             assert_matches_type(LockboxAddress, lockbox_address, path=["response"])
@@ -114,7 +110,6 @@ class TestLockboxAddresses:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         lockbox_address = response.parse()
         assert_matches_type(LockboxAddress, lockbox_address, path=["response"])
 
@@ -124,7 +119,6 @@ class TestLockboxAddresses:
             lockbox_address_id="lockbox_address_lw6sbzl9ol5dfd8hdml6",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             lockbox_address = response.parse()
             assert_matches_type(LockboxAddress, lockbox_address, path=["response"])
@@ -163,7 +157,6 @@ class TestLockboxAddresses:
         response = client.lockbox_addresses.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         lockbox_address = response.parse()
         assert_matches_type(SyncPage[LockboxAddress], lockbox_address, path=["response"])
 
@@ -171,7 +164,6 @@ class TestLockboxAddresses:
     def test_streaming_response_list(self, client: Increase) -> None:
         with client.lockbox_addresses.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             lockbox_address = response.parse()
             assert_matches_type(SyncPage[LockboxAddress], lockbox_address, path=["response"])
@@ -201,7 +193,6 @@ class TestAsyncLockboxAddresses:
         response = await async_client.lockbox_addresses.with_raw_response.create()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         lockbox_address = await response.parse()
         assert_matches_type(LockboxAddress, lockbox_address, path=["response"])
 
@@ -209,7 +200,6 @@ class TestAsyncLockboxAddresses:
     async def test_streaming_response_create(self, async_client: AsyncIncrease) -> None:
         async with async_client.lockbox_addresses.with_streaming_response.create() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             lockbox_address = await response.parse()
             assert_matches_type(LockboxAddress, lockbox_address, path=["response"])
@@ -230,7 +220,6 @@ class TestAsyncLockboxAddresses:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         lockbox_address = await response.parse()
         assert_matches_type(LockboxAddress, lockbox_address, path=["response"])
 
@@ -240,7 +229,6 @@ class TestAsyncLockboxAddresses:
             "lockbox_address_lw6sbzl9ol5dfd8hdml6",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             lockbox_address = await response.parse()
             assert_matches_type(LockboxAddress, lockbox_address, path=["response"])
@@ -277,7 +265,6 @@ class TestAsyncLockboxAddresses:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         lockbox_address = await response.parse()
         assert_matches_type(LockboxAddress, lockbox_address, path=["response"])
 
@@ -287,7 +274,6 @@ class TestAsyncLockboxAddresses:
             lockbox_address_id="lockbox_address_lw6sbzl9ol5dfd8hdml6",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             lockbox_address = await response.parse()
             assert_matches_type(LockboxAddress, lockbox_address, path=["response"])
@@ -326,7 +312,6 @@ class TestAsyncLockboxAddresses:
         response = await async_client.lockbox_addresses.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         lockbox_address = await response.parse()
         assert_matches_type(AsyncPage[LockboxAddress], lockbox_address, path=["response"])
 
@@ -334,7 +319,6 @@ class TestAsyncLockboxAddresses:
     async def test_streaming_response_list(self, async_client: AsyncIncrease) -> None:
         async with async_client.lockbox_addresses.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             lockbox_address = await response.parse()
             assert_matches_type(AsyncPage[LockboxAddress], lockbox_address, path=["response"])

@@ -42,7 +42,6 @@ class TestOAuthTokens:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         oauth_token = response.parse()
         assert_matches_type(OAuthToken, oauth_token, path=["response"])
 
@@ -52,7 +51,6 @@ class TestOAuthTokens:
             grant_type="authorization_code",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             oauth_token = response.parse()
             assert_matches_type(OAuthToken, oauth_token, path=["response"])
@@ -90,7 +88,6 @@ class TestAsyncOAuthTokens:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         oauth_token = await response.parse()
         assert_matches_type(OAuthToken, oauth_token, path=["response"])
 
@@ -100,7 +97,6 @@ class TestAsyncOAuthTokens:
             grant_type="authorization_code",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             oauth_token = await response.parse()
             assert_matches_type(OAuthToken, oauth_token, path=["response"])

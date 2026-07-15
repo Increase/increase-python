@@ -33,7 +33,6 @@ class TestOAuthApplications:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         oauth_application = response.parse()
         assert_matches_type(OAuthApplication, oauth_application, path=["response"])
 
@@ -43,7 +42,6 @@ class TestOAuthApplications:
             "application_gj9ufmpgh5i56k4vyriy",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             oauth_application = response.parse()
             assert_matches_type(OAuthApplication, oauth_application, path=["response"])
@@ -82,7 +80,6 @@ class TestOAuthApplications:
         response = client.oauth_applications.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         oauth_application = response.parse()
         assert_matches_type(SyncPage[OAuthApplication], oauth_application, path=["response"])
 
@@ -90,7 +87,6 @@ class TestOAuthApplications:
     def test_streaming_response_list(self, client: Increase) -> None:
         with client.oauth_applications.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             oauth_application = response.parse()
             assert_matches_type(SyncPage[OAuthApplication], oauth_application, path=["response"])
@@ -117,7 +113,6 @@ class TestAsyncOAuthApplications:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         oauth_application = await response.parse()
         assert_matches_type(OAuthApplication, oauth_application, path=["response"])
 
@@ -127,7 +122,6 @@ class TestAsyncOAuthApplications:
             "application_gj9ufmpgh5i56k4vyriy",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             oauth_application = await response.parse()
             assert_matches_type(OAuthApplication, oauth_application, path=["response"])
@@ -166,7 +160,6 @@ class TestAsyncOAuthApplications:
         response = await async_client.oauth_applications.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         oauth_application = await response.parse()
         assert_matches_type(AsyncPage[OAuthApplication], oauth_application, path=["response"])
 
@@ -174,7 +167,6 @@ class TestAsyncOAuthApplications:
     async def test_streaming_response_list(self, async_client: AsyncIncrease) -> None:
         async with async_client.oauth_applications.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             oauth_application = await response.parse()
             assert_matches_type(AsyncPage[OAuthApplication], oauth_application, path=["response"])

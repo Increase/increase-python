@@ -54,7 +54,6 @@ class TestAccounts:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         account = response.parse()
         assert_matches_type(Account, account, path=["response"])
 
@@ -64,7 +63,6 @@ class TestAccounts:
             name="New Account!",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             account = response.parse()
             assert_matches_type(Account, account, path=["response"])
@@ -85,7 +83,6 @@ class TestAccounts:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         account = response.parse()
         assert_matches_type(Account, account, path=["response"])
 
@@ -95,7 +92,6 @@ class TestAccounts:
             "account_in71c4amph0vgo2qllky",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             account = response.parse()
             assert_matches_type(Account, account, path=["response"])
@@ -132,7 +128,6 @@ class TestAccounts:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         account = response.parse()
         assert_matches_type(Account, account, path=["response"])
 
@@ -142,7 +137,6 @@ class TestAccounts:
             account_id="account_in71c4amph0vgo2qllky",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             account = response.parse()
             assert_matches_type(Account, account, path=["response"])
@@ -185,7 +179,6 @@ class TestAccounts:
         response = client.accounts.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         account = response.parse()
         assert_matches_type(SyncPage[Account], account, path=["response"])
 
@@ -193,7 +186,6 @@ class TestAccounts:
     def test_streaming_response_list(self, client: Increase) -> None:
         with client.accounts.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             account = response.parse()
             assert_matches_type(SyncPage[Account], account, path=["response"])
@@ -222,7 +214,6 @@ class TestAccounts:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         account = response.parse()
         assert_matches_type(BalanceLookup, account, path=["response"])
 
@@ -232,7 +223,6 @@ class TestAccounts:
             account_id="account_in71c4amph0vgo2qllky",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             account = response.parse()
             assert_matches_type(BalanceLookup, account, path=["response"])
@@ -260,7 +250,6 @@ class TestAccounts:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         account = response.parse()
         assert_matches_type(Account, account, path=["response"])
 
@@ -270,7 +259,6 @@ class TestAccounts:
             "account_in71c4amph0vgo2qllky",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             account = response.parse()
             assert_matches_type(Account, account, path=["response"])
@@ -322,7 +310,6 @@ class TestAsyncAccounts:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         account = await response.parse()
         assert_matches_type(Account, account, path=["response"])
 
@@ -332,7 +319,6 @@ class TestAsyncAccounts:
             name="New Account!",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             account = await response.parse()
             assert_matches_type(Account, account, path=["response"])
@@ -353,7 +339,6 @@ class TestAsyncAccounts:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         account = await response.parse()
         assert_matches_type(Account, account, path=["response"])
 
@@ -363,7 +348,6 @@ class TestAsyncAccounts:
             "account_in71c4amph0vgo2qllky",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             account = await response.parse()
             assert_matches_type(Account, account, path=["response"])
@@ -400,7 +384,6 @@ class TestAsyncAccounts:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         account = await response.parse()
         assert_matches_type(Account, account, path=["response"])
 
@@ -410,7 +393,6 @@ class TestAsyncAccounts:
             account_id="account_in71c4amph0vgo2qllky",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             account = await response.parse()
             assert_matches_type(Account, account, path=["response"])
@@ -453,7 +435,6 @@ class TestAsyncAccounts:
         response = await async_client.accounts.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         account = await response.parse()
         assert_matches_type(AsyncPage[Account], account, path=["response"])
 
@@ -461,7 +442,6 @@ class TestAsyncAccounts:
     async def test_streaming_response_list(self, async_client: AsyncIncrease) -> None:
         async with async_client.accounts.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             account = await response.parse()
             assert_matches_type(AsyncPage[Account], account, path=["response"])
@@ -490,7 +470,6 @@ class TestAsyncAccounts:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         account = await response.parse()
         assert_matches_type(BalanceLookup, account, path=["response"])
 
@@ -500,7 +479,6 @@ class TestAsyncAccounts:
             account_id="account_in71c4amph0vgo2qllky",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             account = await response.parse()
             assert_matches_type(BalanceLookup, account, path=["response"])
@@ -528,7 +506,6 @@ class TestAsyncAccounts:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         account = await response.parse()
         assert_matches_type(Account, account, path=["response"])
 
@@ -538,7 +515,6 @@ class TestAsyncAccounts:
             "account_in71c4amph0vgo2qllky",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             account = await response.parse()
             assert_matches_type(Account, account, path=["response"])

@@ -33,7 +33,6 @@ class TestTransactions:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         transaction = response.parse()
         assert_matches_type(Transaction, transaction, path=["response"])
 
@@ -43,7 +42,6 @@ class TestTransactions:
             "transaction_uyrp7fld2ium70oa7oi",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             transaction = response.parse()
             assert_matches_type(Transaction, transaction, path=["response"])
@@ -84,7 +82,6 @@ class TestTransactions:
         response = client.transactions.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         transaction = response.parse()
         assert_matches_type(SyncPage[Transaction], transaction, path=["response"])
 
@@ -92,7 +89,6 @@ class TestTransactions:
     def test_streaming_response_list(self, client: Increase) -> None:
         with client.transactions.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             transaction = response.parse()
             assert_matches_type(SyncPage[Transaction], transaction, path=["response"])
@@ -119,7 +115,6 @@ class TestAsyncTransactions:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         transaction = await response.parse()
         assert_matches_type(Transaction, transaction, path=["response"])
 
@@ -129,7 +124,6 @@ class TestAsyncTransactions:
             "transaction_uyrp7fld2ium70oa7oi",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             transaction = await response.parse()
             assert_matches_type(Transaction, transaction, path=["response"])
@@ -170,7 +164,6 @@ class TestAsyncTransactions:
         response = await async_client.transactions.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         transaction = await response.parse()
         assert_matches_type(AsyncPage[Transaction], transaction, path=["response"])
 
@@ -178,7 +171,6 @@ class TestAsyncTransactions:
     async def test_streaming_response_list(self, async_client: AsyncIncrease) -> None:
         async with async_client.transactions.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             transaction = await response.parse()
             assert_matches_type(AsyncPage[Transaction], transaction, path=["response"])

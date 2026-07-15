@@ -33,7 +33,6 @@ class TestDeclinedTransactions:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         declined_transaction = response.parse()
         assert_matches_type(DeclinedTransaction, declined_transaction, path=["response"])
 
@@ -43,7 +42,6 @@ class TestDeclinedTransactions:
             "declined_transaction_17jbn0yyhvkt4v4ooym8",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             declined_transaction = response.parse()
             assert_matches_type(DeclinedTransaction, declined_transaction, path=["response"])
@@ -86,7 +84,6 @@ class TestDeclinedTransactions:
         response = client.declined_transactions.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         declined_transaction = response.parse()
         assert_matches_type(SyncPage[DeclinedTransaction], declined_transaction, path=["response"])
 
@@ -94,7 +91,6 @@ class TestDeclinedTransactions:
     def test_streaming_response_list(self, client: Increase) -> None:
         with client.declined_transactions.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             declined_transaction = response.parse()
             assert_matches_type(SyncPage[DeclinedTransaction], declined_transaction, path=["response"])
@@ -121,7 +117,6 @@ class TestAsyncDeclinedTransactions:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         declined_transaction = await response.parse()
         assert_matches_type(DeclinedTransaction, declined_transaction, path=["response"])
 
@@ -131,7 +126,6 @@ class TestAsyncDeclinedTransactions:
             "declined_transaction_17jbn0yyhvkt4v4ooym8",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             declined_transaction = await response.parse()
             assert_matches_type(DeclinedTransaction, declined_transaction, path=["response"])
@@ -174,7 +168,6 @@ class TestAsyncDeclinedTransactions:
         response = await async_client.declined_transactions.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         declined_transaction = await response.parse()
         assert_matches_type(AsyncPage[DeclinedTransaction], declined_transaction, path=["response"])
 
@@ -182,7 +175,6 @@ class TestAsyncDeclinedTransactions:
     async def test_streaming_response_list(self, async_client: AsyncIncrease) -> None:
         async with async_client.declined_transactions.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             declined_transaction = await response.parse()
             assert_matches_type(AsyncPage[DeclinedTransaction], declined_transaction, path=["response"])

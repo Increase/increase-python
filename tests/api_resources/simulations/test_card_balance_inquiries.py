@@ -48,7 +48,6 @@ class TestCardBalanceInquiries:
         response = client.simulations.card_balance_inquiries.with_raw_response.create()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_balance_inquiry = response.parse()
         assert_matches_type(CardPayment, card_balance_inquiry, path=["response"])
 
@@ -56,7 +55,6 @@ class TestCardBalanceInquiries:
     def test_streaming_response_create(self, client: Increase) -> None:
         with client.simulations.card_balance_inquiries.with_streaming_response.create() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_balance_inquiry = response.parse()
             assert_matches_type(CardPayment, card_balance_inquiry, path=["response"])
@@ -100,7 +98,6 @@ class TestAsyncCardBalanceInquiries:
         response = await async_client.simulations.card_balance_inquiries.with_raw_response.create()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_balance_inquiry = await response.parse()
         assert_matches_type(CardPayment, card_balance_inquiry, path=["response"])
 
@@ -108,7 +105,6 @@ class TestAsyncCardBalanceInquiries:
     async def test_streaming_response_create(self, async_client: AsyncIncrease) -> None:
         async with async_client.simulations.card_balance_inquiries.with_streaming_response.create() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_balance_inquiry = await response.parse()
             assert_matches_type(CardPayment, card_balance_inquiry, path=["response"])

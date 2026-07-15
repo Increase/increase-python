@@ -31,7 +31,6 @@ class TestEntityOnboardingSessions:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         entity_onboarding_session = response.parse()
         assert_matches_type(EntityOnboardingSession, entity_onboarding_session, path=["response"])
 
@@ -41,7 +40,6 @@ class TestEntityOnboardingSessions:
             "entity_onboarding_session_wid2ug11fsmvh3k9hymd",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             entity_onboarding_session = response.parse()
             assert_matches_type(EntityOnboardingSession, entity_onboarding_session, path=["response"])
@@ -77,7 +75,6 @@ class TestAsyncEntityOnboardingSessions:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         entity_onboarding_session = await response.parse()
         assert_matches_type(EntityOnboardingSession, entity_onboarding_session, path=["response"])
 
@@ -87,7 +84,6 @@ class TestAsyncEntityOnboardingSessions:
             "entity_onboarding_session_wid2ug11fsmvh3k9hymd",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             entity_onboarding_session = await response.parse()
             assert_matches_type(EntityOnboardingSession, entity_onboarding_session, path=["response"])

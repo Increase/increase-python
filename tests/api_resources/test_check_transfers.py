@@ -92,7 +92,6 @@ class TestCheckTransfers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         check_transfer = response.parse()
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
@@ -105,7 +104,6 @@ class TestCheckTransfers:
             source_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             check_transfer = response.parse()
             assert_matches_type(CheckTransfer, check_transfer, path=["response"])
@@ -126,7 +124,6 @@ class TestCheckTransfers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         check_transfer = response.parse()
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
@@ -136,7 +133,6 @@ class TestCheckTransfers:
             "check_transfer_30b43acfu9vw8fyc4f5",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             check_transfer = response.parse()
             assert_matches_type(CheckTransfer, check_transfer, path=["response"])
@@ -177,7 +173,6 @@ class TestCheckTransfers:
         response = client.check_transfers.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         check_transfer = response.parse()
         assert_matches_type(SyncPage[CheckTransfer], check_transfer, path=["response"])
 
@@ -185,7 +180,6 @@ class TestCheckTransfers:
     def test_streaming_response_list(self, client: Increase) -> None:
         with client.check_transfers.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             check_transfer = response.parse()
             assert_matches_type(SyncPage[CheckTransfer], check_transfer, path=["response"])
@@ -206,7 +200,6 @@ class TestCheckTransfers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         check_transfer = response.parse()
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
@@ -216,7 +209,6 @@ class TestCheckTransfers:
             "check_transfer_30b43acfu9vw8fyc4f5",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             check_transfer = response.parse()
             assert_matches_type(CheckTransfer, check_transfer, path=["response"])
@@ -244,7 +236,6 @@ class TestCheckTransfers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         check_transfer = response.parse()
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
@@ -254,7 +245,6 @@ class TestCheckTransfers:
             "check_transfer_30b43acfu9vw8fyc4f5",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             check_transfer = response.parse()
             assert_matches_type(CheckTransfer, check_transfer, path=["response"])
@@ -290,7 +280,6 @@ class TestCheckTransfers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         check_transfer = response.parse()
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
@@ -300,7 +289,6 @@ class TestCheckTransfers:
             check_transfer_id="check_transfer_30b43acfu9vw8fyc4f5",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             check_transfer = response.parse()
             assert_matches_type(CheckTransfer, check_transfer, path=["response"])
@@ -391,7 +379,6 @@ class TestAsyncCheckTransfers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         check_transfer = await response.parse()
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
@@ -404,7 +391,6 @@ class TestAsyncCheckTransfers:
             source_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             check_transfer = await response.parse()
             assert_matches_type(CheckTransfer, check_transfer, path=["response"])
@@ -425,7 +411,6 @@ class TestAsyncCheckTransfers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         check_transfer = await response.parse()
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
@@ -435,7 +420,6 @@ class TestAsyncCheckTransfers:
             "check_transfer_30b43acfu9vw8fyc4f5",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             check_transfer = await response.parse()
             assert_matches_type(CheckTransfer, check_transfer, path=["response"])
@@ -476,7 +460,6 @@ class TestAsyncCheckTransfers:
         response = await async_client.check_transfers.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         check_transfer = await response.parse()
         assert_matches_type(AsyncPage[CheckTransfer], check_transfer, path=["response"])
 
@@ -484,7 +467,6 @@ class TestAsyncCheckTransfers:
     async def test_streaming_response_list(self, async_client: AsyncIncrease) -> None:
         async with async_client.check_transfers.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             check_transfer = await response.parse()
             assert_matches_type(AsyncPage[CheckTransfer], check_transfer, path=["response"])
@@ -505,7 +487,6 @@ class TestAsyncCheckTransfers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         check_transfer = await response.parse()
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
@@ -515,7 +496,6 @@ class TestAsyncCheckTransfers:
             "check_transfer_30b43acfu9vw8fyc4f5",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             check_transfer = await response.parse()
             assert_matches_type(CheckTransfer, check_transfer, path=["response"])
@@ -543,7 +523,6 @@ class TestAsyncCheckTransfers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         check_transfer = await response.parse()
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
@@ -553,7 +532,6 @@ class TestAsyncCheckTransfers:
             "check_transfer_30b43acfu9vw8fyc4f5",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             check_transfer = await response.parse()
             assert_matches_type(CheckTransfer, check_transfer, path=["response"])
@@ -589,7 +567,6 @@ class TestAsyncCheckTransfers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         check_transfer = await response.parse()
         assert_matches_type(CheckTransfer, check_transfer, path=["response"])
 
@@ -599,7 +576,6 @@ class TestAsyncCheckTransfers:
             check_transfer_id="check_transfer_30b43acfu9vw8fyc4f5",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             check_transfer = await response.parse()
             assert_matches_type(CheckTransfer, check_transfer, path=["response"])

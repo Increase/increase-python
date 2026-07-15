@@ -50,7 +50,6 @@ class TestCheckDeposits:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         check_deposit = response.parse()
         assert_matches_type(CheckDeposit, check_deposit, path=["response"])
 
@@ -63,7 +62,6 @@ class TestCheckDeposits:
             front_image_file_id="file_hkv175ovmc2tb2v2zbrm",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             check_deposit = response.parse()
             assert_matches_type(CheckDeposit, check_deposit, path=["response"])
@@ -84,7 +82,6 @@ class TestCheckDeposits:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         check_deposit = response.parse()
         assert_matches_type(CheckDeposit, check_deposit, path=["response"])
 
@@ -94,7 +91,6 @@ class TestCheckDeposits:
             "check_deposit_f06n9gpg7sxn8t19lfc1",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             check_deposit = response.parse()
             assert_matches_type(CheckDeposit, check_deposit, path=["response"])
@@ -134,7 +130,6 @@ class TestCheckDeposits:
         response = client.check_deposits.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         check_deposit = response.parse()
         assert_matches_type(SyncPage[CheckDeposit], check_deposit, path=["response"])
 
@@ -142,7 +137,6 @@ class TestCheckDeposits:
     def test_streaming_response_list(self, client: Increase) -> None:
         with client.check_deposits.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             check_deposit = response.parse()
             assert_matches_type(SyncPage[CheckDeposit], check_deposit, path=["response"])
@@ -186,7 +180,6 @@ class TestAsyncCheckDeposits:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         check_deposit = await response.parse()
         assert_matches_type(CheckDeposit, check_deposit, path=["response"])
 
@@ -199,7 +192,6 @@ class TestAsyncCheckDeposits:
             front_image_file_id="file_hkv175ovmc2tb2v2zbrm",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             check_deposit = await response.parse()
             assert_matches_type(CheckDeposit, check_deposit, path=["response"])
@@ -220,7 +212,6 @@ class TestAsyncCheckDeposits:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         check_deposit = await response.parse()
         assert_matches_type(CheckDeposit, check_deposit, path=["response"])
 
@@ -230,7 +221,6 @@ class TestAsyncCheckDeposits:
             "check_deposit_f06n9gpg7sxn8t19lfc1",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             check_deposit = await response.parse()
             assert_matches_type(CheckDeposit, check_deposit, path=["response"])
@@ -270,7 +260,6 @@ class TestAsyncCheckDeposits:
         response = await async_client.check_deposits.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         check_deposit = await response.parse()
         assert_matches_type(AsyncPage[CheckDeposit], check_deposit, path=["response"])
 
@@ -278,7 +267,6 @@ class TestAsyncCheckDeposits:
     async def test_streaming_response_list(self, async_client: AsyncIncrease) -> None:
         async with async_client.check_deposits.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             check_deposit = await response.parse()
             assert_matches_type(AsyncPage[CheckDeposit], check_deposit, path=["response"])

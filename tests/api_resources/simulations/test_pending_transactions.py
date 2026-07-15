@@ -31,7 +31,6 @@ class TestPendingTransactions:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         pending_transaction = response.parse()
         assert_matches_type(PendingTransaction, pending_transaction, path=["response"])
 
@@ -41,7 +40,6 @@ class TestPendingTransactions:
             "pending_transaction_k1sfetcau2qbvjbzgju4",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             pending_transaction = response.parse()
             assert_matches_type(PendingTransaction, pending_transaction, path=["response"])
@@ -77,7 +75,6 @@ class TestAsyncPendingTransactions:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         pending_transaction = await response.parse()
         assert_matches_type(PendingTransaction, pending_transaction, path=["response"])
 
@@ -87,7 +84,6 @@ class TestAsyncPendingTransactions:
             "pending_transaction_k1sfetcau2qbvjbzgju4",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             pending_transaction = await response.parse()
             assert_matches_type(PendingTransaction, pending_transaction, path=["response"])

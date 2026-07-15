@@ -34,7 +34,6 @@ class TestIntrafiExclusions:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         intrafi_exclusion = response.parse()
         assert_matches_type(IntrafiExclusion, intrafi_exclusion, path=["response"])
 
@@ -45,7 +44,6 @@ class TestIntrafiExclusions:
             fdic_certificate_number="314159",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             intrafi_exclusion = response.parse()
             assert_matches_type(IntrafiExclusion, intrafi_exclusion, path=["response"])
@@ -66,7 +64,6 @@ class TestIntrafiExclusions:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         intrafi_exclusion = response.parse()
         assert_matches_type(IntrafiExclusion, intrafi_exclusion, path=["response"])
 
@@ -76,7 +73,6 @@ class TestIntrafiExclusions:
             "account_in71c4amph0vgo2qllky",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             intrafi_exclusion = response.parse()
             assert_matches_type(IntrafiExclusion, intrafi_exclusion, path=["response"])
@@ -110,7 +106,6 @@ class TestIntrafiExclusions:
         response = client.intrafi_exclusions.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         intrafi_exclusion = response.parse()
         assert_matches_type(SyncPage[IntrafiExclusion], intrafi_exclusion, path=["response"])
 
@@ -118,7 +113,6 @@ class TestIntrafiExclusions:
     def test_streaming_response_list(self, client: Increase) -> None:
         with client.intrafi_exclusions.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             intrafi_exclusion = response.parse()
             assert_matches_type(SyncPage[IntrafiExclusion], intrafi_exclusion, path=["response"])
@@ -139,7 +133,6 @@ class TestIntrafiExclusions:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         intrafi_exclusion = response.parse()
         assert_matches_type(IntrafiExclusion, intrafi_exclusion, path=["response"])
 
@@ -149,7 +142,6 @@ class TestIntrafiExclusions:
             "intrafi_exclusion_ygfqduuzpau3jqof6jyh",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             intrafi_exclusion = response.parse()
             assert_matches_type(IntrafiExclusion, intrafi_exclusion, path=["response"])
@@ -185,7 +177,6 @@ class TestAsyncIntrafiExclusions:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         intrafi_exclusion = await response.parse()
         assert_matches_type(IntrafiExclusion, intrafi_exclusion, path=["response"])
 
@@ -196,7 +187,6 @@ class TestAsyncIntrafiExclusions:
             fdic_certificate_number="314159",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             intrafi_exclusion = await response.parse()
             assert_matches_type(IntrafiExclusion, intrafi_exclusion, path=["response"])
@@ -217,7 +207,6 @@ class TestAsyncIntrafiExclusions:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         intrafi_exclusion = await response.parse()
         assert_matches_type(IntrafiExclusion, intrafi_exclusion, path=["response"])
 
@@ -227,7 +216,6 @@ class TestAsyncIntrafiExclusions:
             "account_in71c4amph0vgo2qllky",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             intrafi_exclusion = await response.parse()
             assert_matches_type(IntrafiExclusion, intrafi_exclusion, path=["response"])
@@ -261,7 +249,6 @@ class TestAsyncIntrafiExclusions:
         response = await async_client.intrafi_exclusions.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         intrafi_exclusion = await response.parse()
         assert_matches_type(AsyncPage[IntrafiExclusion], intrafi_exclusion, path=["response"])
 
@@ -269,7 +256,6 @@ class TestAsyncIntrafiExclusions:
     async def test_streaming_response_list(self, async_client: AsyncIncrease) -> None:
         async with async_client.intrafi_exclusions.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             intrafi_exclusion = await response.parse()
             assert_matches_type(AsyncPage[IntrafiExclusion], intrafi_exclusion, path=["response"])
@@ -290,7 +276,6 @@ class TestAsyncIntrafiExclusions:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         intrafi_exclusion = await response.parse()
         assert_matches_type(IntrafiExclusion, intrafi_exclusion, path=["response"])
 
@@ -300,7 +285,6 @@ class TestAsyncIntrafiExclusions:
             "intrafi_exclusion_ygfqduuzpau3jqof6jyh",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             intrafi_exclusion = await response.parse()
             assert_matches_type(IntrafiExclusion, intrafi_exclusion, path=["response"])

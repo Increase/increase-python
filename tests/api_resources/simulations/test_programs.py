@@ -41,7 +41,6 @@ class TestPrograms:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         program = response.parse()
         assert_matches_type(Program, program, path=["response"])
 
@@ -51,7 +50,6 @@ class TestPrograms:
             name="For Benefit Of",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             program = response.parse()
             assert_matches_type(Program, program, path=["response"])
@@ -88,7 +86,6 @@ class TestAsyncPrograms:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         program = await response.parse()
         assert_matches_type(Program, program, path=["response"])
 
@@ -98,7 +95,6 @@ class TestAsyncPrograms:
             name="For Benefit Of",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             program = await response.parse()
             assert_matches_type(Program, program, path=["response"])

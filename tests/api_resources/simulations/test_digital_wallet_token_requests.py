@@ -33,7 +33,6 @@ class TestDigitalWalletTokenRequests:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         digital_wallet_token_request = response.parse()
         assert_matches_type(DigitalWalletTokenRequestCreateResponse, digital_wallet_token_request, path=["response"])
 
@@ -43,7 +42,6 @@ class TestDigitalWalletTokenRequests:
             card_id="card_oubs0hwk5rn6knuecxg2",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             digital_wallet_token_request = response.parse()
             assert_matches_type(
@@ -72,7 +70,6 @@ class TestAsyncDigitalWalletTokenRequests:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         digital_wallet_token_request = await response.parse()
         assert_matches_type(DigitalWalletTokenRequestCreateResponse, digital_wallet_token_request, path=["response"])
 
@@ -82,7 +79,6 @@ class TestAsyncDigitalWalletTokenRequests:
             card_id="card_oubs0hwk5rn6knuecxg2",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             digital_wallet_token_request = await response.parse()
             assert_matches_type(

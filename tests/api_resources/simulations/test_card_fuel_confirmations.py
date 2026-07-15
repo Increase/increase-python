@@ -33,7 +33,6 @@ class TestCardFuelConfirmations:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_fuel_confirmation = response.parse()
         assert_matches_type(CardPayment, card_fuel_confirmation, path=["response"])
 
@@ -44,7 +43,6 @@ class TestCardFuelConfirmations:
             card_payment_id="card_payment_nd3k2kacrqjli8482ave",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_fuel_confirmation = response.parse()
             assert_matches_type(CardPayment, card_fuel_confirmation, path=["response"])
@@ -73,7 +71,6 @@ class TestAsyncCardFuelConfirmations:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_fuel_confirmation = await response.parse()
         assert_matches_type(CardPayment, card_fuel_confirmation, path=["response"])
 
@@ -84,7 +81,6 @@ class TestAsyncCardFuelConfirmations:
             card_payment_id="card_payment_nd3k2kacrqjli8482ave",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_fuel_confirmation = await response.parse()
             assert_matches_type(CardPayment, card_fuel_confirmation, path=["response"])

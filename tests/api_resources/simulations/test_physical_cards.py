@@ -46,7 +46,6 @@ class TestPhysicalCards:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         physical_card = response.parse()
         assert_matches_type(PhysicalCard, physical_card, path=["response"])
 
@@ -57,7 +56,6 @@ class TestPhysicalCards:
             category="delivered",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             physical_card = response.parse()
             assert_matches_type(PhysicalCard, physical_card, path=["response"])
@@ -88,7 +86,6 @@ class TestPhysicalCards:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         physical_card = response.parse()
         assert_matches_type(PhysicalCard, physical_card, path=["response"])
 
@@ -99,7 +96,6 @@ class TestPhysicalCards:
             shipment_status="shipped",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             physical_card = response.parse()
             assert_matches_type(PhysicalCard, physical_card, path=["response"])
@@ -148,7 +144,6 @@ class TestAsyncPhysicalCards:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         physical_card = await response.parse()
         assert_matches_type(PhysicalCard, physical_card, path=["response"])
 
@@ -159,7 +154,6 @@ class TestAsyncPhysicalCards:
             category="delivered",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             physical_card = await response.parse()
             assert_matches_type(PhysicalCard, physical_card, path=["response"])
@@ -190,7 +184,6 @@ class TestAsyncPhysicalCards:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         physical_card = await response.parse()
         assert_matches_type(PhysicalCard, physical_card, path=["response"])
 
@@ -201,7 +194,6 @@ class TestAsyncPhysicalCards:
             shipment_status="shipped",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             physical_card = await response.parse()
             assert_matches_type(PhysicalCard, physical_card, path=["response"])

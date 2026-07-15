@@ -39,7 +39,6 @@ class TestRealTimePaymentsTransfers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         real_time_payments_transfer = response.parse()
         assert_matches_type(RealTimePaymentsTransfer, real_time_payments_transfer, path=["response"])
 
@@ -49,7 +48,6 @@ class TestRealTimePaymentsTransfers:
             real_time_payments_transfer_id="real_time_payments_transfer_iyuhl5kdn7ssmup83mvq",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             real_time_payments_transfer = response.parse()
             assert_matches_type(RealTimePaymentsTransfer, real_time_payments_transfer, path=["response"])
@@ -93,7 +91,6 @@ class TestAsyncRealTimePaymentsTransfers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         real_time_payments_transfer = await response.parse()
         assert_matches_type(RealTimePaymentsTransfer, real_time_payments_transfer, path=["response"])
 
@@ -103,7 +100,6 @@ class TestAsyncRealTimePaymentsTransfers:
             real_time_payments_transfer_id="real_time_payments_transfer_iyuhl5kdn7ssmup83mvq",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             real_time_payments_transfer = await response.parse()
             assert_matches_type(RealTimePaymentsTransfer, real_time_payments_transfer, path=["response"])

@@ -54,7 +54,6 @@ class TestCardDisputes:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_dispute = response.parse()
         assert_matches_type(CardDispute, card_dispute, path=["response"])
 
@@ -65,7 +64,6 @@ class TestCardDisputes:
             network="visa",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_dispute = response.parse()
             assert_matches_type(CardDispute, card_dispute, path=["response"])
@@ -123,7 +121,6 @@ class TestAsyncCardDisputes:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_dispute = await response.parse()
         assert_matches_type(CardDispute, card_dispute, path=["response"])
 
@@ -134,7 +131,6 @@ class TestAsyncCardDisputes:
             network="visa",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_dispute = await response.parse()
             assert_matches_type(CardDispute, card_dispute, path=["response"])

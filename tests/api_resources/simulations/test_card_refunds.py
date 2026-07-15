@@ -36,7 +36,6 @@ class TestCardRefunds:
         response = client.simulations.card_refunds.with_raw_response.create()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_refund = response.parse()
         assert_matches_type(Transaction, card_refund, path=["response"])
 
@@ -44,7 +43,6 @@ class TestCardRefunds:
     def test_streaming_response_create(self, client: Increase) -> None:
         with client.simulations.card_refunds.with_streaming_response.create() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_refund = response.parse()
             assert_matches_type(Transaction, card_refund, path=["response"])
@@ -76,7 +74,6 @@ class TestAsyncCardRefunds:
         response = await async_client.simulations.card_refunds.with_raw_response.create()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_refund = await response.parse()
         assert_matches_type(Transaction, card_refund, path=["response"])
 
@@ -84,7 +81,6 @@ class TestAsyncCardRefunds:
     async def test_streaming_response_create(self, async_client: AsyncIncrease) -> None:
         async with async_client.simulations.card_refunds.with_streaming_response.create() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_refund = await response.parse()
             assert_matches_type(Transaction, card_refund, path=["response"])

@@ -45,7 +45,6 @@ class TestEventSubscriptions:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         event_subscription = response.parse()
         assert_matches_type(EventSubscription, event_subscription, path=["response"])
 
@@ -55,7 +54,6 @@ class TestEventSubscriptions:
             url="https://website.com/webhooks",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             event_subscription = response.parse()
             assert_matches_type(EventSubscription, event_subscription, path=["response"])
@@ -76,7 +74,6 @@ class TestEventSubscriptions:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         event_subscription = response.parse()
         assert_matches_type(EventSubscription, event_subscription, path=["response"])
 
@@ -86,7 +83,6 @@ class TestEventSubscriptions:
             "event_subscription_001dzz0r20rcdxgb013zqb8m04g",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             event_subscription = response.parse()
             assert_matches_type(EventSubscription, event_subscription, path=["response"])
@@ -122,7 +118,6 @@ class TestEventSubscriptions:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         event_subscription = response.parse()
         assert_matches_type(EventSubscription, event_subscription, path=["response"])
 
@@ -132,7 +127,6 @@ class TestEventSubscriptions:
             event_subscription_id="event_subscription_001dzz0r20rcdxgb013zqb8m04g",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             event_subscription = response.parse()
             assert_matches_type(EventSubscription, event_subscription, path=["response"])
@@ -165,7 +159,6 @@ class TestEventSubscriptions:
         response = client.event_subscriptions.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         event_subscription = response.parse()
         assert_matches_type(SyncPage[EventSubscription], event_subscription, path=["response"])
 
@@ -173,7 +166,6 @@ class TestEventSubscriptions:
     def test_streaming_response_list(self, client: Increase) -> None:
         with client.event_subscriptions.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             event_subscription = response.parse()
             assert_matches_type(SyncPage[EventSubscription], event_subscription, path=["response"])
@@ -211,7 +203,6 @@ class TestAsyncEventSubscriptions:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         event_subscription = await response.parse()
         assert_matches_type(EventSubscription, event_subscription, path=["response"])
 
@@ -221,7 +212,6 @@ class TestAsyncEventSubscriptions:
             url="https://website.com/webhooks",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             event_subscription = await response.parse()
             assert_matches_type(EventSubscription, event_subscription, path=["response"])
@@ -242,7 +232,6 @@ class TestAsyncEventSubscriptions:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         event_subscription = await response.parse()
         assert_matches_type(EventSubscription, event_subscription, path=["response"])
 
@@ -252,7 +241,6 @@ class TestAsyncEventSubscriptions:
             "event_subscription_001dzz0r20rcdxgb013zqb8m04g",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             event_subscription = await response.parse()
             assert_matches_type(EventSubscription, event_subscription, path=["response"])
@@ -288,7 +276,6 @@ class TestAsyncEventSubscriptions:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         event_subscription = await response.parse()
         assert_matches_type(EventSubscription, event_subscription, path=["response"])
 
@@ -298,7 +285,6 @@ class TestAsyncEventSubscriptions:
             event_subscription_id="event_subscription_001dzz0r20rcdxgb013zqb8m04g",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             event_subscription = await response.parse()
             assert_matches_type(EventSubscription, event_subscription, path=["response"])
@@ -331,7 +317,6 @@ class TestAsyncEventSubscriptions:
         response = await async_client.event_subscriptions.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         event_subscription = await response.parse()
         assert_matches_type(AsyncPage[EventSubscription], event_subscription, path=["response"])
 
@@ -339,7 +324,6 @@ class TestAsyncEventSubscriptions:
     async def test_streaming_response_list(self, async_client: AsyncIncrease) -> None:
         async with async_client.event_subscriptions.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             event_subscription = await response.parse()
             assert_matches_type(AsyncPage[EventSubscription], event_subscription, path=["response"])

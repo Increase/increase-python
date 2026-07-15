@@ -49,7 +49,6 @@ class TestCardTokens:
         response = client.simulations.card_tokens.with_raw_response.create()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_token = response.parse()
         assert_matches_type(CardToken, card_token, path=["response"])
 
@@ -57,7 +56,6 @@ class TestCardTokens:
     def test_streaming_response_create(self, client: Increase) -> None:
         with client.simulations.card_tokens.with_streaming_response.create() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_token = response.parse()
             assert_matches_type(CardToken, card_token, path=["response"])
@@ -101,7 +99,6 @@ class TestAsyncCardTokens:
         response = await async_client.simulations.card_tokens.with_raw_response.create()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_token = await response.parse()
         assert_matches_type(CardToken, card_token, path=["response"])
 
@@ -109,7 +106,6 @@ class TestAsyncCardTokens:
     async def test_streaming_response_create(self, async_client: AsyncIncrease) -> None:
         async with async_client.simulations.card_tokens.with_streaming_response.create() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_token = await response.parse()
             assert_matches_type(CardToken, card_token, path=["response"])

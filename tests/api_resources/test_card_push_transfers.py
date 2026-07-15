@@ -101,7 +101,6 @@ class TestCardPushTransfers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_push_transfer = response.parse()
         assert_matches_type(CardPushTransfer, card_push_transfer, path=["response"])
 
@@ -129,7 +128,6 @@ class TestCardPushTransfers:
             source_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_push_transfer = response.parse()
             assert_matches_type(CardPushTransfer, card_push_transfer, path=["response"])
@@ -150,7 +148,6 @@ class TestCardPushTransfers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_push_transfer = response.parse()
         assert_matches_type(CardPushTransfer, card_push_transfer, path=["response"])
 
@@ -160,7 +157,6 @@ class TestCardPushTransfers:
             "outbound_card_push_transfer_e0z9rdpamraczh4tvwye",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_push_transfer = response.parse()
             assert_matches_type(CardPushTransfer, card_push_transfer, path=["response"])
@@ -201,7 +197,6 @@ class TestCardPushTransfers:
         response = client.card_push_transfers.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_push_transfer = response.parse()
         assert_matches_type(SyncPage[CardPushTransfer], card_push_transfer, path=["response"])
 
@@ -209,7 +204,6 @@ class TestCardPushTransfers:
     def test_streaming_response_list(self, client: Increase) -> None:
         with client.card_push_transfers.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_push_transfer = response.parse()
             assert_matches_type(SyncPage[CardPushTransfer], card_push_transfer, path=["response"])
@@ -230,7 +224,6 @@ class TestCardPushTransfers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_push_transfer = response.parse()
         assert_matches_type(CardPushTransfer, card_push_transfer, path=["response"])
 
@@ -240,7 +233,6 @@ class TestCardPushTransfers:
             "outbound_card_push_transfer_e0z9rdpamraczh4tvwye",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_push_transfer = response.parse()
             assert_matches_type(CardPushTransfer, card_push_transfer, path=["response"])
@@ -268,7 +260,6 @@ class TestCardPushTransfers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_push_transfer = response.parse()
         assert_matches_type(CardPushTransfer, card_push_transfer, path=["response"])
 
@@ -278,7 +269,6 @@ class TestCardPushTransfers:
             "outbound_card_push_transfer_e0z9rdpamraczh4tvwye",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_push_transfer = response.parse()
             assert_matches_type(CardPushTransfer, card_push_transfer, path=["response"])
@@ -380,7 +370,6 @@ class TestAsyncCardPushTransfers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_push_transfer = await response.parse()
         assert_matches_type(CardPushTransfer, card_push_transfer, path=["response"])
 
@@ -408,7 +397,6 @@ class TestAsyncCardPushTransfers:
             source_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_push_transfer = await response.parse()
             assert_matches_type(CardPushTransfer, card_push_transfer, path=["response"])
@@ -429,7 +417,6 @@ class TestAsyncCardPushTransfers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_push_transfer = await response.parse()
         assert_matches_type(CardPushTransfer, card_push_transfer, path=["response"])
 
@@ -439,7 +426,6 @@ class TestAsyncCardPushTransfers:
             "outbound_card_push_transfer_e0z9rdpamraczh4tvwye",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_push_transfer = await response.parse()
             assert_matches_type(CardPushTransfer, card_push_transfer, path=["response"])
@@ -480,7 +466,6 @@ class TestAsyncCardPushTransfers:
         response = await async_client.card_push_transfers.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_push_transfer = await response.parse()
         assert_matches_type(AsyncPage[CardPushTransfer], card_push_transfer, path=["response"])
 
@@ -488,7 +473,6 @@ class TestAsyncCardPushTransfers:
     async def test_streaming_response_list(self, async_client: AsyncIncrease) -> None:
         async with async_client.card_push_transfers.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_push_transfer = await response.parse()
             assert_matches_type(AsyncPage[CardPushTransfer], card_push_transfer, path=["response"])
@@ -509,7 +493,6 @@ class TestAsyncCardPushTransfers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_push_transfer = await response.parse()
         assert_matches_type(CardPushTransfer, card_push_transfer, path=["response"])
 
@@ -519,7 +502,6 @@ class TestAsyncCardPushTransfers:
             "outbound_card_push_transfer_e0z9rdpamraczh4tvwye",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_push_transfer = await response.parse()
             assert_matches_type(CardPushTransfer, card_push_transfer, path=["response"])
@@ -547,7 +529,6 @@ class TestAsyncCardPushTransfers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_push_transfer = await response.parse()
         assert_matches_type(CardPushTransfer, card_push_transfer, path=["response"])
 
@@ -557,7 +538,6 @@ class TestAsyncCardPushTransfers:
             "outbound_card_push_transfer_e0z9rdpamraczh4tvwye",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_push_transfer = await response.parse()
             assert_matches_type(CardPushTransfer, card_push_transfer, path=["response"])
