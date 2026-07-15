@@ -56,7 +56,6 @@ class TestACHPrenotifications:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         ach_prenotification = response.parse()
         assert_matches_type(ACHPrenotification, ach_prenotification, path=["response"])
 
@@ -68,7 +67,6 @@ class TestACHPrenotifications:
             routing_number="101050001",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             ach_prenotification = response.parse()
             assert_matches_type(ACHPrenotification, ach_prenotification, path=["response"])
@@ -89,7 +87,6 @@ class TestACHPrenotifications:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         ach_prenotification = response.parse()
         assert_matches_type(ACHPrenotification, ach_prenotification, path=["response"])
 
@@ -99,7 +96,6 @@ class TestACHPrenotifications:
             "ach_prenotification_ubjf9qqsxl3obbcn1u34",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             ach_prenotification = response.parse()
             assert_matches_type(ACHPrenotification, ach_prenotification, path=["response"])
@@ -140,7 +136,6 @@ class TestACHPrenotifications:
         response = client.ach_prenotifications.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         ach_prenotification = response.parse()
         assert_matches_type(SyncPage[ACHPrenotification], ach_prenotification, path=["response"])
 
@@ -148,7 +143,6 @@ class TestACHPrenotifications:
     def test_streaming_response_list(self, client: Increase) -> None:
         with client.ach_prenotifications.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             ach_prenotification = response.parse()
             assert_matches_type(SyncPage[ACHPrenotification], ach_prenotification, path=["response"])
@@ -198,7 +192,6 @@ class TestAsyncACHPrenotifications:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         ach_prenotification = await response.parse()
         assert_matches_type(ACHPrenotification, ach_prenotification, path=["response"])
 
@@ -210,7 +203,6 @@ class TestAsyncACHPrenotifications:
             routing_number="101050001",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             ach_prenotification = await response.parse()
             assert_matches_type(ACHPrenotification, ach_prenotification, path=["response"])
@@ -231,7 +223,6 @@ class TestAsyncACHPrenotifications:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         ach_prenotification = await response.parse()
         assert_matches_type(ACHPrenotification, ach_prenotification, path=["response"])
 
@@ -241,7 +232,6 @@ class TestAsyncACHPrenotifications:
             "ach_prenotification_ubjf9qqsxl3obbcn1u34",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             ach_prenotification = await response.parse()
             assert_matches_type(ACHPrenotification, ach_prenotification, path=["response"])
@@ -282,7 +272,6 @@ class TestAsyncACHPrenotifications:
         response = await async_client.ach_prenotifications.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         ach_prenotification = await response.parse()
         assert_matches_type(AsyncPage[ACHPrenotification], ach_prenotification, path=["response"])
 
@@ -290,7 +279,6 @@ class TestAsyncACHPrenotifications:
     async def test_streaming_response_list(self, async_client: AsyncIncrease) -> None:
         async with async_client.ach_prenotifications.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             ach_prenotification = await response.parse()
             assert_matches_type(AsyncPage[ACHPrenotification], ach_prenotification, path=["response"])

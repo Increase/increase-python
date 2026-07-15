@@ -42,7 +42,6 @@ class TestCardIncrements:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_increment = response.parse()
         assert_matches_type(CardPayment, card_increment, path=["response"])
 
@@ -53,7 +52,6 @@ class TestCardIncrements:
             card_payment_id="card_payment_nd3k2kacrqjli8482ave",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_increment = response.parse()
             assert_matches_type(CardPayment, card_increment, path=["response"])
@@ -91,7 +89,6 @@ class TestAsyncCardIncrements:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_increment = await response.parse()
         assert_matches_type(CardPayment, card_increment, path=["response"])
 
@@ -102,7 +99,6 @@ class TestAsyncCardIncrements:
             card_payment_id="card_payment_nd3k2kacrqjli8482ave",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_increment = await response.parse()
             assert_matches_type(CardPayment, card_increment, path=["response"])

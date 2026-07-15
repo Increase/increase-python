@@ -40,7 +40,6 @@ class TestFileLinks:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         file_link = response.parse()
         assert_matches_type(FileLink, file_link, path=["response"])
 
@@ -50,7 +49,6 @@ class TestFileLinks:
             file_id="file_makxrc67oh9l6sg7w9yc",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             file_link = response.parse()
             assert_matches_type(FileLink, file_link, path=["response"])
@@ -85,7 +83,6 @@ class TestAsyncFileLinks:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         file_link = await response.parse()
         assert_matches_type(FileLink, file_link, path=["response"])
 
@@ -95,7 +92,6 @@ class TestAsyncFileLinks:
             file_id="file_makxrc67oh9l6sg7w9yc",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             file_link = await response.parse()
             assert_matches_type(FileLink, file_link, path=["response"])

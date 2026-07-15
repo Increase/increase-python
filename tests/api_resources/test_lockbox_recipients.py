@@ -47,7 +47,6 @@ class TestLockboxRecipients:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         lockbox_recipient = response.parse()
         assert_matches_type(LockboxRecipient, lockbox_recipient, path=["response"])
 
@@ -58,7 +57,6 @@ class TestLockboxRecipients:
             lockbox_address_id="lockbox_address_lw6sbzl9ol5dfd8hdml6",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             lockbox_recipient = response.parse()
             assert_matches_type(LockboxRecipient, lockbox_recipient, path=["response"])
@@ -79,7 +77,6 @@ class TestLockboxRecipients:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         lockbox_recipient = response.parse()
         assert_matches_type(LockboxRecipient, lockbox_recipient, path=["response"])
 
@@ -89,7 +86,6 @@ class TestLockboxRecipients:
             "lockbox_3xt21ok13q19advds4t5",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             lockbox_recipient = response.parse()
             assert_matches_type(LockboxRecipient, lockbox_recipient, path=["response"])
@@ -127,7 +123,6 @@ class TestLockboxRecipients:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         lockbox_recipient = response.parse()
         assert_matches_type(LockboxRecipient, lockbox_recipient, path=["response"])
 
@@ -137,7 +132,6 @@ class TestLockboxRecipients:
             lockbox_recipient_id="lockbox_3xt21ok13q19advds4t5",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             lockbox_recipient = response.parse()
             assert_matches_type(LockboxRecipient, lockbox_recipient, path=["response"])
@@ -178,7 +172,6 @@ class TestLockboxRecipients:
         response = client.lockbox_recipients.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         lockbox_recipient = response.parse()
         assert_matches_type(SyncPage[LockboxRecipient], lockbox_recipient, path=["response"])
 
@@ -186,7 +179,6 @@ class TestLockboxRecipients:
     def test_streaming_response_list(self, client: Increase) -> None:
         with client.lockbox_recipients.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             lockbox_recipient = response.parse()
             assert_matches_type(SyncPage[LockboxRecipient], lockbox_recipient, path=["response"])
@@ -225,7 +217,6 @@ class TestAsyncLockboxRecipients:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         lockbox_recipient = await response.parse()
         assert_matches_type(LockboxRecipient, lockbox_recipient, path=["response"])
 
@@ -236,7 +227,6 @@ class TestAsyncLockboxRecipients:
             lockbox_address_id="lockbox_address_lw6sbzl9ol5dfd8hdml6",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             lockbox_recipient = await response.parse()
             assert_matches_type(LockboxRecipient, lockbox_recipient, path=["response"])
@@ -257,7 +247,6 @@ class TestAsyncLockboxRecipients:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         lockbox_recipient = await response.parse()
         assert_matches_type(LockboxRecipient, lockbox_recipient, path=["response"])
 
@@ -267,7 +256,6 @@ class TestAsyncLockboxRecipients:
             "lockbox_3xt21ok13q19advds4t5",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             lockbox_recipient = await response.parse()
             assert_matches_type(LockboxRecipient, lockbox_recipient, path=["response"])
@@ -305,7 +293,6 @@ class TestAsyncLockboxRecipients:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         lockbox_recipient = await response.parse()
         assert_matches_type(LockboxRecipient, lockbox_recipient, path=["response"])
 
@@ -315,7 +302,6 @@ class TestAsyncLockboxRecipients:
             lockbox_recipient_id="lockbox_3xt21ok13q19advds4t5",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             lockbox_recipient = await response.parse()
             assert_matches_type(LockboxRecipient, lockbox_recipient, path=["response"])
@@ -356,7 +342,6 @@ class TestAsyncLockboxRecipients:
         response = await async_client.lockbox_recipients.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         lockbox_recipient = await response.parse()
         assert_matches_type(AsyncPage[LockboxRecipient], lockbox_recipient, path=["response"])
 
@@ -364,7 +349,6 @@ class TestAsyncLockboxRecipients:
     async def test_streaming_response_list(self, async_client: AsyncIncrease) -> None:
         async with async_client.lockbox_recipients.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             lockbox_recipient = await response.parse()
             assert_matches_type(AsyncPage[LockboxRecipient], lockbox_recipient, path=["response"])

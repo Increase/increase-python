@@ -91,7 +91,6 @@ class TestExports:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         export = response.parse()
         assert_matches_type(Export, export, path=["response"])
 
@@ -101,7 +100,6 @@ class TestExports:
             category="transaction_csv",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             export = response.parse()
             assert_matches_type(Export, export, path=["response"])
@@ -122,7 +120,6 @@ class TestExports:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         export = response.parse()
         assert_matches_type(Export, export, path=["response"])
 
@@ -132,7 +129,6 @@ class TestExports:
             "export_8s4m48qz3bclzje0zwh9",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             export = response.parse()
             assert_matches_type(Export, export, path=["response"])
@@ -175,7 +171,6 @@ class TestExports:
         response = client.exports.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         export = response.parse()
         assert_matches_type(SyncPage[Export], export, path=["response"])
 
@@ -183,7 +178,6 @@ class TestExports:
     def test_streaming_response_list(self, client: Increase) -> None:
         with client.exports.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             export = response.parse()
             assert_matches_type(SyncPage[Export], export, path=["response"])
@@ -268,7 +262,6 @@ class TestAsyncExports:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         export = await response.parse()
         assert_matches_type(Export, export, path=["response"])
 
@@ -278,7 +271,6 @@ class TestAsyncExports:
             category="transaction_csv",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             export = await response.parse()
             assert_matches_type(Export, export, path=["response"])
@@ -299,7 +291,6 @@ class TestAsyncExports:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         export = await response.parse()
         assert_matches_type(Export, export, path=["response"])
 
@@ -309,7 +300,6 @@ class TestAsyncExports:
             "export_8s4m48qz3bclzje0zwh9",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             export = await response.parse()
             assert_matches_type(Export, export, path=["response"])
@@ -352,7 +342,6 @@ class TestAsyncExports:
         response = await async_client.exports.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         export = await response.parse()
         assert_matches_type(AsyncPage[Export], export, path=["response"])
 
@@ -360,7 +349,6 @@ class TestAsyncExports:
     async def test_streaming_response_list(self, async_client: AsyncIncrease) -> None:
         async with async_client.exports.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             export = await response.parse()
             assert_matches_type(AsyncPage[Export], export, path=["response"])

@@ -33,7 +33,6 @@ class TestInboundCheckDeposits:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         inbound_check_deposit = response.parse()
         assert_matches_type(InboundCheckDeposit, inbound_check_deposit, path=["response"])
 
@@ -43,7 +42,6 @@ class TestInboundCheckDeposits:
             "inbound_check_deposit_zoshvqybq0cjjm31mra",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             inbound_check_deposit = response.parse()
             assert_matches_type(InboundCheckDeposit, inbound_check_deposit, path=["response"])
@@ -85,7 +83,6 @@ class TestInboundCheckDeposits:
         response = client.inbound_check_deposits.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         inbound_check_deposit = response.parse()
         assert_matches_type(SyncPage[InboundCheckDeposit], inbound_check_deposit, path=["response"])
 
@@ -93,7 +90,6 @@ class TestInboundCheckDeposits:
     def test_streaming_response_list(self, client: Increase) -> None:
         with client.inbound_check_deposits.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             inbound_check_deposit = response.parse()
             assert_matches_type(SyncPage[InboundCheckDeposit], inbound_check_deposit, path=["response"])
@@ -114,7 +110,6 @@ class TestInboundCheckDeposits:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         inbound_check_deposit = response.parse()
         assert_matches_type(InboundCheckDeposit, inbound_check_deposit, path=["response"])
 
@@ -124,7 +119,6 @@ class TestInboundCheckDeposits:
             "inbound_check_deposit_zoshvqybq0cjjm31mra",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             inbound_check_deposit = response.parse()
             assert_matches_type(InboundCheckDeposit, inbound_check_deposit, path=["response"])
@@ -156,7 +150,6 @@ class TestInboundCheckDeposits:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         inbound_check_deposit = response.parse()
         assert_matches_type(InboundCheckDeposit, inbound_check_deposit, path=["response"])
 
@@ -167,7 +160,6 @@ class TestInboundCheckDeposits:
             reason="altered_or_fictitious",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             inbound_check_deposit = response.parse()
             assert_matches_type(InboundCheckDeposit, inbound_check_deposit, path=["response"])
@@ -204,7 +196,6 @@ class TestAsyncInboundCheckDeposits:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         inbound_check_deposit = await response.parse()
         assert_matches_type(InboundCheckDeposit, inbound_check_deposit, path=["response"])
 
@@ -214,7 +205,6 @@ class TestAsyncInboundCheckDeposits:
             "inbound_check_deposit_zoshvqybq0cjjm31mra",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             inbound_check_deposit = await response.parse()
             assert_matches_type(InboundCheckDeposit, inbound_check_deposit, path=["response"])
@@ -256,7 +246,6 @@ class TestAsyncInboundCheckDeposits:
         response = await async_client.inbound_check_deposits.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         inbound_check_deposit = await response.parse()
         assert_matches_type(AsyncPage[InboundCheckDeposit], inbound_check_deposit, path=["response"])
 
@@ -264,7 +253,6 @@ class TestAsyncInboundCheckDeposits:
     async def test_streaming_response_list(self, async_client: AsyncIncrease) -> None:
         async with async_client.inbound_check_deposits.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             inbound_check_deposit = await response.parse()
             assert_matches_type(AsyncPage[InboundCheckDeposit], inbound_check_deposit, path=["response"])
@@ -285,7 +273,6 @@ class TestAsyncInboundCheckDeposits:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         inbound_check_deposit = await response.parse()
         assert_matches_type(InboundCheckDeposit, inbound_check_deposit, path=["response"])
 
@@ -295,7 +282,6 @@ class TestAsyncInboundCheckDeposits:
             "inbound_check_deposit_zoshvqybq0cjjm31mra",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             inbound_check_deposit = await response.parse()
             assert_matches_type(InboundCheckDeposit, inbound_check_deposit, path=["response"])
@@ -327,7 +313,6 @@ class TestAsyncInboundCheckDeposits:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         inbound_check_deposit = await response.parse()
         assert_matches_type(InboundCheckDeposit, inbound_check_deposit, path=["response"])
 
@@ -338,7 +323,6 @@ class TestAsyncInboundCheckDeposits:
             reason="altered_or_fictitious",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             inbound_check_deposit = await response.parse()
             assert_matches_type(InboundCheckDeposit, inbound_check_deposit, path=["response"])

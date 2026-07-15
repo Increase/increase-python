@@ -41,7 +41,6 @@ class TestRoutingNumbers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         routing_number = response.parse()
         assert_matches_type(SyncPage[RoutingNumberListResponse], routing_number, path=["response"])
 
@@ -51,7 +50,6 @@ class TestRoutingNumbers:
             routing_number="483310694",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             routing_number = response.parse()
             assert_matches_type(SyncPage[RoutingNumberListResponse], routing_number, path=["response"])
@@ -87,7 +85,6 @@ class TestAsyncRoutingNumbers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         routing_number = await response.parse()
         assert_matches_type(AsyncPage[RoutingNumberListResponse], routing_number, path=["response"])
 
@@ -97,7 +94,6 @@ class TestAsyncRoutingNumbers:
             routing_number="483310694",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             routing_number = await response.parse()
             assert_matches_type(AsyncPage[RoutingNumberListResponse], routing_number, path=["response"])

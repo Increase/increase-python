@@ -31,7 +31,6 @@ class TestCardAuthorizationExpirations:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_authorization_expiration = response.parse()
         assert_matches_type(CardPayment, card_authorization_expiration, path=["response"])
 
@@ -41,7 +40,6 @@ class TestCardAuthorizationExpirations:
             card_payment_id="card_payment_nd3k2kacrqjli8482ave",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_authorization_expiration = response.parse()
             assert_matches_type(CardPayment, card_authorization_expiration, path=["response"])
@@ -68,7 +66,6 @@ class TestAsyncCardAuthorizationExpirations:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_authorization_expiration = await response.parse()
         assert_matches_type(CardPayment, card_authorization_expiration, path=["response"])
 
@@ -78,7 +75,6 @@ class TestAsyncCardAuthorizationExpirations:
             card_payment_id="card_payment_nd3k2kacrqjli8482ave",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_authorization_expiration = await response.parse()
             assert_matches_type(CardPayment, card_authorization_expiration, path=["response"])

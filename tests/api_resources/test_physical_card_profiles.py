@@ -57,7 +57,6 @@ class TestPhysicalCardProfiles:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         physical_card_profile = response.parse()
         assert_matches_type(PhysicalCardProfile, physical_card_profile, path=["response"])
 
@@ -71,7 +70,6 @@ class TestPhysicalCardProfiles:
             program_id="program_i2v2os4mwza1oetokh9i",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             physical_card_profile = response.parse()
             assert_matches_type(PhysicalCardProfile, physical_card_profile, path=["response"])
@@ -92,7 +90,6 @@ class TestPhysicalCardProfiles:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         physical_card_profile = response.parse()
         assert_matches_type(PhysicalCardProfile, physical_card_profile, path=["response"])
 
@@ -102,7 +99,6 @@ class TestPhysicalCardProfiles:
             "physical_card_profile_m534d5rn9qyy9ufqxoec",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             physical_card_profile = response.parse()
             assert_matches_type(PhysicalCardProfile, physical_card_profile, path=["response"])
@@ -138,7 +134,6 @@ class TestPhysicalCardProfiles:
         response = client.physical_card_profiles.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         physical_card_profile = response.parse()
         assert_matches_type(SyncPage[PhysicalCardProfile], physical_card_profile, path=["response"])
 
@@ -146,7 +141,6 @@ class TestPhysicalCardProfiles:
     def test_streaming_response_list(self, client: Increase) -> None:
         with client.physical_card_profiles.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             physical_card_profile = response.parse()
             assert_matches_type(SyncPage[PhysicalCardProfile], physical_card_profile, path=["response"])
@@ -167,7 +161,6 @@ class TestPhysicalCardProfiles:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         physical_card_profile = response.parse()
         assert_matches_type(PhysicalCardProfile, physical_card_profile, path=["response"])
 
@@ -177,7 +170,6 @@ class TestPhysicalCardProfiles:
             "physical_card_profile_m534d5rn9qyy9ufqxoec",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             physical_card_profile = response.parse()
             assert_matches_type(PhysicalCardProfile, physical_card_profile, path=["response"])
@@ -223,7 +215,6 @@ class TestPhysicalCardProfiles:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         physical_card_profile = response.parse()
         assert_matches_type(PhysicalCardProfile, physical_card_profile, path=["response"])
 
@@ -233,7 +224,6 @@ class TestPhysicalCardProfiles:
             physical_card_profile_id="physical_card_profile_m534d5rn9qyy9ufqxoec",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             physical_card_profile = response.parse()
             assert_matches_type(PhysicalCardProfile, physical_card_profile, path=["response"])
@@ -292,7 +282,6 @@ class TestAsyncPhysicalCardProfiles:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         physical_card_profile = await response.parse()
         assert_matches_type(PhysicalCardProfile, physical_card_profile, path=["response"])
 
@@ -306,7 +295,6 @@ class TestAsyncPhysicalCardProfiles:
             program_id="program_i2v2os4mwza1oetokh9i",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             physical_card_profile = await response.parse()
             assert_matches_type(PhysicalCardProfile, physical_card_profile, path=["response"])
@@ -327,7 +315,6 @@ class TestAsyncPhysicalCardProfiles:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         physical_card_profile = await response.parse()
         assert_matches_type(PhysicalCardProfile, physical_card_profile, path=["response"])
 
@@ -337,7 +324,6 @@ class TestAsyncPhysicalCardProfiles:
             "physical_card_profile_m534d5rn9qyy9ufqxoec",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             physical_card_profile = await response.parse()
             assert_matches_type(PhysicalCardProfile, physical_card_profile, path=["response"])
@@ -373,7 +359,6 @@ class TestAsyncPhysicalCardProfiles:
         response = await async_client.physical_card_profiles.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         physical_card_profile = await response.parse()
         assert_matches_type(AsyncPage[PhysicalCardProfile], physical_card_profile, path=["response"])
 
@@ -381,7 +366,6 @@ class TestAsyncPhysicalCardProfiles:
     async def test_streaming_response_list(self, async_client: AsyncIncrease) -> None:
         async with async_client.physical_card_profiles.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             physical_card_profile = await response.parse()
             assert_matches_type(AsyncPage[PhysicalCardProfile], physical_card_profile, path=["response"])
@@ -402,7 +386,6 @@ class TestAsyncPhysicalCardProfiles:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         physical_card_profile = await response.parse()
         assert_matches_type(PhysicalCardProfile, physical_card_profile, path=["response"])
 
@@ -412,7 +395,6 @@ class TestAsyncPhysicalCardProfiles:
             "physical_card_profile_m534d5rn9qyy9ufqxoec",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             physical_card_profile = await response.parse()
             assert_matches_type(PhysicalCardProfile, physical_card_profile, path=["response"])
@@ -458,7 +440,6 @@ class TestAsyncPhysicalCardProfiles:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         physical_card_profile = await response.parse()
         assert_matches_type(PhysicalCardProfile, physical_card_profile, path=["response"])
 
@@ -468,7 +449,6 @@ class TestAsyncPhysicalCardProfiles:
             physical_card_profile_id="physical_card_profile_m534d5rn9qyy9ufqxoec",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             physical_card_profile = await response.parse()
             assert_matches_type(PhysicalCardProfile, physical_card_profile, path=["response"])

@@ -28,6 +28,7 @@ class TestBeneficialOwners:
             individual={
                 "address": {
                     "city": "New York",
+                    "country": "US",
                     "line1": "33 Liberty Street",
                 },
                 "date_of_birth": parse_date("1970-01-31"),
@@ -48,8 +49,8 @@ class TestBeneficialOwners:
             individual={
                 "address": {
                     "city": "New York",
-                    "line1": "33 Liberty Street",
                     "country": "US",
+                    "line1": "33 Liberty Street",
                     "line2": "x",
                     "state": "NY",
                     "zip": "10045",
@@ -92,6 +93,7 @@ class TestBeneficialOwners:
             individual={
                 "address": {
                     "city": "New York",
+                    "country": "US",
                     "line1": "33 Liberty Street",
                 },
                 "date_of_birth": parse_date("1970-01-31"),
@@ -105,7 +107,6 @@ class TestBeneficialOwners:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         beneficial_owner = response.parse()
         assert_matches_type(EntityBeneficialOwner, beneficial_owner, path=["response"])
 
@@ -116,6 +117,7 @@ class TestBeneficialOwners:
             individual={
                 "address": {
                     "city": "New York",
+                    "country": "US",
                     "line1": "33 Liberty Street",
                 },
                 "date_of_birth": parse_date("1970-01-31"),
@@ -128,7 +130,6 @@ class TestBeneficialOwners:
             prongs=["control"],
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             beneficial_owner = response.parse()
             assert_matches_type(EntityBeneficialOwner, beneficial_owner, path=["response"])
@@ -149,7 +150,6 @@ class TestBeneficialOwners:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         beneficial_owner = response.parse()
         assert_matches_type(EntityBeneficialOwner, beneficial_owner, path=["response"])
 
@@ -159,7 +159,6 @@ class TestBeneficialOwners:
             "entity_beneficial_owner_vozma8szzu1sxezp5zq6",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             beneficial_owner = response.parse()
             assert_matches_type(EntityBeneficialOwner, beneficial_owner, path=["response"])
@@ -188,8 +187,8 @@ class TestBeneficialOwners:
             entity_beneficial_owner_id="entity_beneficial_owner_vozma8szzu1sxezp5zq6",
             address={
                 "city": "New York",
-                "line1": "33 Liberty Street",
                 "country": "US",
+                "line1": "33 Liberty Street",
                 "line2": "Unit 2",
                 "state": "NY",
                 "zip": "10045",
@@ -229,7 +228,6 @@ class TestBeneficialOwners:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         beneficial_owner = response.parse()
         assert_matches_type(EntityBeneficialOwner, beneficial_owner, path=["response"])
 
@@ -239,7 +237,6 @@ class TestBeneficialOwners:
             entity_beneficial_owner_id="entity_beneficial_owner_vozma8szzu1sxezp5zq6",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             beneficial_owner = response.parse()
             assert_matches_type(EntityBeneficialOwner, beneficial_owner, path=["response"])
@@ -279,7 +276,6 @@ class TestBeneficialOwners:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         beneficial_owner = response.parse()
         assert_matches_type(SyncPage[EntityBeneficialOwner], beneficial_owner, path=["response"])
 
@@ -289,7 +285,6 @@ class TestBeneficialOwners:
             entity_id="entity_id",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             beneficial_owner = response.parse()
             assert_matches_type(SyncPage[EntityBeneficialOwner], beneficial_owner, path=["response"])
@@ -310,7 +305,6 @@ class TestBeneficialOwners:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         beneficial_owner = response.parse()
         assert_matches_type(EntityBeneficialOwner, beneficial_owner, path=["response"])
 
@@ -320,7 +314,6 @@ class TestBeneficialOwners:
             "entity_beneficial_owner_vozma8szzu1sxezp5zq6",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             beneficial_owner = response.parse()
             assert_matches_type(EntityBeneficialOwner, beneficial_owner, path=["response"])
@@ -349,6 +342,7 @@ class TestAsyncBeneficialOwners:
             individual={
                 "address": {
                     "city": "New York",
+                    "country": "US",
                     "line1": "33 Liberty Street",
                 },
                 "date_of_birth": parse_date("1970-01-31"),
@@ -369,8 +363,8 @@ class TestAsyncBeneficialOwners:
             individual={
                 "address": {
                     "city": "New York",
-                    "line1": "33 Liberty Street",
                     "country": "US",
+                    "line1": "33 Liberty Street",
                     "line2": "x",
                     "state": "NY",
                     "zip": "10045",
@@ -413,6 +407,7 @@ class TestAsyncBeneficialOwners:
             individual={
                 "address": {
                     "city": "New York",
+                    "country": "US",
                     "line1": "33 Liberty Street",
                 },
                 "date_of_birth": parse_date("1970-01-31"),
@@ -426,7 +421,6 @@ class TestAsyncBeneficialOwners:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         beneficial_owner = await response.parse()
         assert_matches_type(EntityBeneficialOwner, beneficial_owner, path=["response"])
 
@@ -437,6 +431,7 @@ class TestAsyncBeneficialOwners:
             individual={
                 "address": {
                     "city": "New York",
+                    "country": "US",
                     "line1": "33 Liberty Street",
                 },
                 "date_of_birth": parse_date("1970-01-31"),
@@ -449,7 +444,6 @@ class TestAsyncBeneficialOwners:
             prongs=["control"],
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             beneficial_owner = await response.parse()
             assert_matches_type(EntityBeneficialOwner, beneficial_owner, path=["response"])
@@ -470,7 +464,6 @@ class TestAsyncBeneficialOwners:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         beneficial_owner = await response.parse()
         assert_matches_type(EntityBeneficialOwner, beneficial_owner, path=["response"])
 
@@ -480,7 +473,6 @@ class TestAsyncBeneficialOwners:
             "entity_beneficial_owner_vozma8szzu1sxezp5zq6",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             beneficial_owner = await response.parse()
             assert_matches_type(EntityBeneficialOwner, beneficial_owner, path=["response"])
@@ -509,8 +501,8 @@ class TestAsyncBeneficialOwners:
             entity_beneficial_owner_id="entity_beneficial_owner_vozma8szzu1sxezp5zq6",
             address={
                 "city": "New York",
-                "line1": "33 Liberty Street",
                 "country": "US",
+                "line1": "33 Liberty Street",
                 "line2": "Unit 2",
                 "state": "NY",
                 "zip": "10045",
@@ -550,7 +542,6 @@ class TestAsyncBeneficialOwners:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         beneficial_owner = await response.parse()
         assert_matches_type(EntityBeneficialOwner, beneficial_owner, path=["response"])
 
@@ -560,7 +551,6 @@ class TestAsyncBeneficialOwners:
             entity_beneficial_owner_id="entity_beneficial_owner_vozma8szzu1sxezp5zq6",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             beneficial_owner = await response.parse()
             assert_matches_type(EntityBeneficialOwner, beneficial_owner, path=["response"])
@@ -600,7 +590,6 @@ class TestAsyncBeneficialOwners:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         beneficial_owner = await response.parse()
         assert_matches_type(AsyncPage[EntityBeneficialOwner], beneficial_owner, path=["response"])
 
@@ -610,7 +599,6 @@ class TestAsyncBeneficialOwners:
             entity_id="entity_id",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             beneficial_owner = await response.parse()
             assert_matches_type(AsyncPage[EntityBeneficialOwner], beneficial_owner, path=["response"])
@@ -631,7 +619,6 @@ class TestAsyncBeneficialOwners:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         beneficial_owner = await response.parse()
         assert_matches_type(EntityBeneficialOwner, beneficial_owner, path=["response"])
 
@@ -641,7 +628,6 @@ class TestAsyncBeneficialOwners:
             "entity_beneficial_owner_vozma8szzu1sxezp5zq6",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             beneficial_owner = await response.parse()
             assert_matches_type(EntityBeneficialOwner, beneficial_owner, path=["response"])

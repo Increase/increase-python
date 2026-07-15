@@ -65,7 +65,6 @@ class TestCardPurchaseSupplements:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_purchase_supplement = response.parse()
         assert_matches_type(CardPurchaseSupplement, card_purchase_supplement, path=["response"])
 
@@ -75,7 +74,6 @@ class TestCardPurchaseSupplements:
             transaction_id="transaction_uyrp7fld2ium70oa7oi",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_purchase_supplement = response.parse()
             assert_matches_type(CardPurchaseSupplement, card_purchase_supplement, path=["response"])
@@ -135,7 +133,6 @@ class TestAsyncCardPurchaseSupplements:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_purchase_supplement = await response.parse()
         assert_matches_type(CardPurchaseSupplement, card_purchase_supplement, path=["response"])
 
@@ -145,7 +142,6 @@ class TestAsyncCardPurchaseSupplements:
             transaction_id="transaction_uyrp7fld2ium70oa7oi",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_purchase_supplement = await response.parse()
             assert_matches_type(CardPurchaseSupplement, card_purchase_supplement, path=["response"])

@@ -27,7 +27,6 @@ class TestGroups:
         response = client.groups.with_raw_response.retrieve()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         group = response.parse()
         assert_matches_type(Group, group, path=["response"])
 
@@ -35,7 +34,6 @@ class TestGroups:
     def test_streaming_response_retrieve(self, client: Increase) -> None:
         with client.groups.with_streaming_response.retrieve() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             group = response.parse()
             assert_matches_type(Group, group, path=["response"])
@@ -58,7 +56,6 @@ class TestAsyncGroups:
         response = await async_client.groups.with_raw_response.retrieve()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         group = await response.parse()
         assert_matches_type(Group, group, path=["response"])
 
@@ -66,7 +63,6 @@ class TestAsyncGroups:
     async def test_streaming_response_retrieve(self, async_client: AsyncIncrease) -> None:
         async with async_client.groups.with_streaming_response.retrieve() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             group = await response.parse()
             assert_matches_type(Group, group, path=["response"])

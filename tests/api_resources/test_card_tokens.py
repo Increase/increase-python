@@ -33,7 +33,6 @@ class TestCardTokens:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_token = response.parse()
         assert_matches_type(CardToken, card_token, path=["response"])
 
@@ -43,7 +42,6 @@ class TestCardTokens:
             "outbound_card_token_zlt0ml6youq3q7vcdlg0",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_token = response.parse()
             assert_matches_type(CardToken, card_token, path=["response"])
@@ -81,7 +79,6 @@ class TestCardTokens:
         response = client.card_tokens.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_token = response.parse()
         assert_matches_type(SyncPage[CardToken], card_token, path=["response"])
 
@@ -89,7 +86,6 @@ class TestCardTokens:
     def test_streaming_response_list(self, client: Increase) -> None:
         with client.card_tokens.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_token = response.parse()
             assert_matches_type(SyncPage[CardToken], card_token, path=["response"])
@@ -110,7 +106,6 @@ class TestCardTokens:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_token = response.parse()
         assert_matches_type(CardTokenCapabilities, card_token, path=["response"])
 
@@ -120,7 +115,6 @@ class TestCardTokens:
             "outbound_card_token_zlt0ml6youq3q7vcdlg0",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_token = response.parse()
             assert_matches_type(CardTokenCapabilities, card_token, path=["response"])
@@ -154,7 +148,6 @@ class TestAsyncCardTokens:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_token = await response.parse()
         assert_matches_type(CardToken, card_token, path=["response"])
 
@@ -164,7 +157,6 @@ class TestAsyncCardTokens:
             "outbound_card_token_zlt0ml6youq3q7vcdlg0",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_token = await response.parse()
             assert_matches_type(CardToken, card_token, path=["response"])
@@ -202,7 +194,6 @@ class TestAsyncCardTokens:
         response = await async_client.card_tokens.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_token = await response.parse()
         assert_matches_type(AsyncPage[CardToken], card_token, path=["response"])
 
@@ -210,7 +201,6 @@ class TestAsyncCardTokens:
     async def test_streaming_response_list(self, async_client: AsyncIncrease) -> None:
         async with async_client.card_tokens.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_token = await response.parse()
             assert_matches_type(AsyncPage[CardToken], card_token, path=["response"])
@@ -231,7 +221,6 @@ class TestAsyncCardTokens:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_token = await response.parse()
         assert_matches_type(CardTokenCapabilities, card_token, path=["response"])
 
@@ -241,7 +230,6 @@ class TestAsyncCardTokens:
             "outbound_card_token_zlt0ml6youq3q7vcdlg0",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_token = await response.parse()
             assert_matches_type(CardTokenCapabilities, card_token, path=["response"])

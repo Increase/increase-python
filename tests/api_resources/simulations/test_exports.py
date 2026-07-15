@@ -39,7 +39,6 @@ class TestExports:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         export = response.parse()
         assert_matches_type(Export, export, path=["response"])
 
@@ -49,7 +48,6 @@ class TestExports:
             category="form_1099_int",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             export = response.parse()
             assert_matches_type(Export, export, path=["response"])
@@ -84,7 +82,6 @@ class TestAsyncExports:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         export = await response.parse()
         assert_matches_type(Export, export, path=["response"])
 
@@ -94,7 +91,6 @@ class TestAsyncExports:
             category="form_1099_int",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             export = await response.parse()
             assert_matches_type(Export, export, path=["response"])

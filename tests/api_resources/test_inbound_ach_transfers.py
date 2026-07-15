@@ -35,7 +35,6 @@ class TestInboundACHTransfers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         inbound_ach_transfer = response.parse()
         assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
 
@@ -45,7 +44,6 @@ class TestInboundACHTransfers:
             "inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             inbound_ach_transfer = response.parse()
             assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
@@ -88,7 +86,6 @@ class TestInboundACHTransfers:
         response = client.inbound_ach_transfers.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         inbound_ach_transfer = response.parse()
         assert_matches_type(SyncPage[InboundACHTransfer], inbound_ach_transfer, path=["response"])
 
@@ -96,7 +93,6 @@ class TestInboundACHTransfers:
     def test_streaming_response_list(self, client: Increase) -> None:
         with client.inbound_ach_transfers.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             inbound_ach_transfer = response.parse()
             assert_matches_type(SyncPage[InboundACHTransfer], inbound_ach_transfer, path=["response"])
@@ -126,7 +122,6 @@ class TestInboundACHTransfers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         inbound_ach_transfer = response.parse()
         assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
 
@@ -136,7 +131,6 @@ class TestInboundACHTransfers:
             inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             inbound_ach_transfer = response.parse()
             assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
@@ -174,7 +168,6 @@ class TestInboundACHTransfers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         inbound_ach_transfer = response.parse()
         assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
 
@@ -184,7 +177,6 @@ class TestInboundACHTransfers:
             inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             inbound_ach_transfer = response.parse()
             assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
@@ -216,7 +208,6 @@ class TestInboundACHTransfers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         inbound_ach_transfer = response.parse()
         assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
 
@@ -227,7 +218,6 @@ class TestInboundACHTransfers:
             reason="payment_stopped",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             inbound_ach_transfer = response.parse()
             assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
@@ -264,7 +254,6 @@ class TestAsyncInboundACHTransfers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         inbound_ach_transfer = await response.parse()
         assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
 
@@ -274,7 +263,6 @@ class TestAsyncInboundACHTransfers:
             "inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             inbound_ach_transfer = await response.parse()
             assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
@@ -317,7 +305,6 @@ class TestAsyncInboundACHTransfers:
         response = await async_client.inbound_ach_transfers.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         inbound_ach_transfer = await response.parse()
         assert_matches_type(AsyncPage[InboundACHTransfer], inbound_ach_transfer, path=["response"])
 
@@ -325,7 +312,6 @@ class TestAsyncInboundACHTransfers:
     async def test_streaming_response_list(self, async_client: AsyncIncrease) -> None:
         async with async_client.inbound_ach_transfers.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             inbound_ach_transfer = await response.parse()
             assert_matches_type(AsyncPage[InboundACHTransfer], inbound_ach_transfer, path=["response"])
@@ -355,7 +341,6 @@ class TestAsyncInboundACHTransfers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         inbound_ach_transfer = await response.parse()
         assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
 
@@ -365,7 +350,6 @@ class TestAsyncInboundACHTransfers:
             inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             inbound_ach_transfer = await response.parse()
             assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
@@ -403,7 +387,6 @@ class TestAsyncInboundACHTransfers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         inbound_ach_transfer = await response.parse()
         assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
 
@@ -413,7 +396,6 @@ class TestAsyncInboundACHTransfers:
             inbound_ach_transfer_id="inbound_ach_transfer_tdrwqr3fq9gnnq49odev",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             inbound_ach_transfer = await response.parse()
             assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
@@ -445,7 +427,6 @@ class TestAsyncInboundACHTransfers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         inbound_ach_transfer = await response.parse()
         assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])
 
@@ -456,7 +437,6 @@ class TestAsyncInboundACHTransfers:
             reason="payment_stopped",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             inbound_ach_transfer = await response.parse()
             assert_matches_type(InboundACHTransfer, inbound_ach_transfer, path=["response"])

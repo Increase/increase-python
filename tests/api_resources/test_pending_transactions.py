@@ -44,7 +44,6 @@ class TestPendingTransactions:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         pending_transaction = response.parse()
         assert_matches_type(PendingTransaction, pending_transaction, path=["response"])
 
@@ -55,7 +54,6 @@ class TestPendingTransactions:
             amount=-1000,
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             pending_transaction = response.parse()
             assert_matches_type(PendingTransaction, pending_transaction, path=["response"])
@@ -76,7 +74,6 @@ class TestPendingTransactions:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         pending_transaction = response.parse()
         assert_matches_type(PendingTransaction, pending_transaction, path=["response"])
 
@@ -86,7 +83,6 @@ class TestPendingTransactions:
             "pending_transaction_k1sfetcau2qbvjbzgju4",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             pending_transaction = response.parse()
             assert_matches_type(PendingTransaction, pending_transaction, path=["response"])
@@ -130,7 +126,6 @@ class TestPendingTransactions:
         response = client.pending_transactions.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         pending_transaction = response.parse()
         assert_matches_type(SyncPage[PendingTransaction], pending_transaction, path=["response"])
 
@@ -138,7 +133,6 @@ class TestPendingTransactions:
     def test_streaming_response_list(self, client: Increase) -> None:
         with client.pending_transactions.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             pending_transaction = response.parse()
             assert_matches_type(SyncPage[PendingTransaction], pending_transaction, path=["response"])
@@ -159,7 +153,6 @@ class TestPendingTransactions:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         pending_transaction = response.parse()
         assert_matches_type(PendingTransaction, pending_transaction, path=["response"])
 
@@ -169,7 +162,6 @@ class TestPendingTransactions:
             "pending_transaction_k1sfetcau2qbvjbzgju4",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             pending_transaction = response.parse()
             assert_matches_type(PendingTransaction, pending_transaction, path=["response"])
@@ -216,7 +208,6 @@ class TestAsyncPendingTransactions:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         pending_transaction = await response.parse()
         assert_matches_type(PendingTransaction, pending_transaction, path=["response"])
 
@@ -227,7 +218,6 @@ class TestAsyncPendingTransactions:
             amount=-1000,
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             pending_transaction = await response.parse()
             assert_matches_type(PendingTransaction, pending_transaction, path=["response"])
@@ -248,7 +238,6 @@ class TestAsyncPendingTransactions:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         pending_transaction = await response.parse()
         assert_matches_type(PendingTransaction, pending_transaction, path=["response"])
 
@@ -258,7 +247,6 @@ class TestAsyncPendingTransactions:
             "pending_transaction_k1sfetcau2qbvjbzgju4",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             pending_transaction = await response.parse()
             assert_matches_type(PendingTransaction, pending_transaction, path=["response"])
@@ -302,7 +290,6 @@ class TestAsyncPendingTransactions:
         response = await async_client.pending_transactions.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         pending_transaction = await response.parse()
         assert_matches_type(AsyncPage[PendingTransaction], pending_transaction, path=["response"])
 
@@ -310,7 +297,6 @@ class TestAsyncPendingTransactions:
     async def test_streaming_response_list(self, async_client: AsyncIncrease) -> None:
         async with async_client.pending_transactions.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             pending_transaction = await response.parse()
             assert_matches_type(AsyncPage[PendingTransaction], pending_transaction, path=["response"])
@@ -331,7 +317,6 @@ class TestAsyncPendingTransactions:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         pending_transaction = await response.parse()
         assert_matches_type(PendingTransaction, pending_transaction, path=["response"])
 
@@ -341,7 +326,6 @@ class TestAsyncPendingTransactions:
             "pending_transaction_k1sfetcau2qbvjbzgju4",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             pending_transaction = await response.parse()
             assert_matches_type(PendingTransaction, pending_transaction, path=["response"])

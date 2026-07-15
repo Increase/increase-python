@@ -36,7 +36,6 @@ class TestSupplementalDocuments:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         supplemental_document = response.parse()
         assert_matches_type(EntitySupplementalDocument, supplemental_document, path=["response"])
 
@@ -47,7 +46,6 @@ class TestSupplementalDocuments:
             file_id="file_makxrc67oh9l6sg7w9yc",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             supplemental_document = response.parse()
             assert_matches_type(EntitySupplementalDocument, supplemental_document, path=["response"])
@@ -78,7 +76,6 @@ class TestSupplementalDocuments:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         supplemental_document = response.parse()
         assert_matches_type(SyncPage[EntitySupplementalDocument], supplemental_document, path=["response"])
 
@@ -88,7 +85,6 @@ class TestSupplementalDocuments:
             entity_id="entity_id",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             supplemental_document = response.parse()
             assert_matches_type(SyncPage[EntitySupplementalDocument], supplemental_document, path=["response"])
@@ -117,7 +113,6 @@ class TestAsyncSupplementalDocuments:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         supplemental_document = await response.parse()
         assert_matches_type(EntitySupplementalDocument, supplemental_document, path=["response"])
 
@@ -128,7 +123,6 @@ class TestAsyncSupplementalDocuments:
             file_id="file_makxrc67oh9l6sg7w9yc",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             supplemental_document = await response.parse()
             assert_matches_type(EntitySupplementalDocument, supplemental_document, path=["response"])
@@ -159,7 +153,6 @@ class TestAsyncSupplementalDocuments:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         supplemental_document = await response.parse()
         assert_matches_type(AsyncPage[EntitySupplementalDocument], supplemental_document, path=["response"])
 
@@ -169,7 +162,6 @@ class TestAsyncSupplementalDocuments:
             entity_id="entity_id",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             supplemental_document = await response.parse()
             assert_matches_type(AsyncPage[EntitySupplementalDocument], supplemental_document, path=["response"])

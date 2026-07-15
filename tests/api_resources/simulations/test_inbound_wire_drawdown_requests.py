@@ -64,7 +64,6 @@ class TestInboundWireDrawdownRequests:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         inbound_wire_drawdown_request = response.parse()
         assert_matches_type(InboundWireDrawdownRequest, inbound_wire_drawdown_request, path=["response"])
 
@@ -78,7 +77,6 @@ class TestInboundWireDrawdownRequests:
             recipient_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             inbound_wire_drawdown_request = response.parse()
             assert_matches_type(InboundWireDrawdownRequest, inbound_wire_drawdown_request, path=["response"])
@@ -138,7 +136,6 @@ class TestAsyncInboundWireDrawdownRequests:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         inbound_wire_drawdown_request = await response.parse()
         assert_matches_type(InboundWireDrawdownRequest, inbound_wire_drawdown_request, path=["response"])
 
@@ -152,7 +149,6 @@ class TestAsyncInboundWireDrawdownRequests:
             recipient_account_number_id="account_number_v18nkfqm6afpsrvy82b2",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             inbound_wire_drawdown_request = await response.parse()
             assert_matches_type(InboundWireDrawdownRequest, inbound_wire_drawdown_request, path=["response"])

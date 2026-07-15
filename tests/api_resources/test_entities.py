@@ -33,8 +33,8 @@ class TestEntities:
             corporation={
                 "address": {
                     "city": "New York",
-                    "line1": "33 Liberty Street",
                     "country": "x",
+                    "line1": "33 Liberty Street",
                     "line2": "x",
                     "state": "NY",
                     "zip": "10045",
@@ -44,8 +44,8 @@ class TestEntities:
                         "individual": {
                             "address": {
                                 "city": "New York",
-                                "line1": "33 Liberty Street",
                                 "country": "x",
+                                "line1": "33 Liberty Street",
                                 "line2": "x",
                                 "state": "NY",
                                 "zip": "10045",
@@ -111,8 +111,8 @@ class TestEntities:
                     {
                         "address": {
                             "city": "x",
-                            "line1": "x",
                             "country": "x",
+                            "line1": "x",
                             "line2": "x",
                             "state": "x",
                             "zip": "x",
@@ -148,8 +148,8 @@ class TestEntities:
             natural_person={
                 "address": {
                     "city": "x",
-                    "line1": "x",
                     "country": "x",
+                    "line1": "x",
                     "line2": "x",
                     "state": "x",
                     "zip": "x",
@@ -212,8 +212,8 @@ class TestEntities:
                         "individual": {
                             "address": {
                                 "city": "x",
-                                "line1": "x",
                                 "country": "x",
+                                "line1": "x",
                                 "line2": "x",
                                 "state": "x",
                                 "zip": "x",
@@ -251,8 +251,8 @@ class TestEntities:
                 "grantor": {
                     "address": {
                         "city": "x",
-                        "line1": "x",
                         "country": "x",
+                        "line1": "x",
                         "line2": "x",
                         "state": "x",
                         "zip": "x",
@@ -295,7 +295,6 @@ class TestEntities:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         entity = response.parse()
         assert_matches_type(Entity, entity, path=["response"])
 
@@ -305,7 +304,6 @@ class TestEntities:
             structure="corporation",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             entity = response.parse()
             assert_matches_type(Entity, entity, path=["response"])
@@ -326,7 +324,6 @@ class TestEntities:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         entity = response.parse()
         assert_matches_type(Entity, entity, path=["response"])
 
@@ -336,7 +333,6 @@ class TestEntities:
             "entity_n8y8tnk2p9339ti393yi",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             entity = response.parse()
             assert_matches_type(Entity, entity, path=["response"])
@@ -364,8 +360,8 @@ class TestEntities:
             corporation={
                 "address": {
                     "city": "New York",
-                    "line1": "33 Liberty Street",
                     "country": "US",
+                    "line1": "33 Liberty Street",
                     "line2": "Unit 2",
                     "state": "NY",
                     "zip": "10045",
@@ -394,8 +390,8 @@ class TestEntities:
             natural_person={
                 "address": {
                     "city": "x",
-                    "line1": "x",
                     "country": "x",
+                    "line1": "x",
                     "line2": "x",
                     "state": "x",
                     "zip": "x",
@@ -460,7 +456,6 @@ class TestEntities:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         entity = response.parse()
         assert_matches_type(Entity, entity, path=["response"])
 
@@ -470,7 +465,6 @@ class TestEntities:
             entity_id="entity_n8y8tnk2p9339ti393yi",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             entity = response.parse()
             assert_matches_type(Entity, entity, path=["response"])
@@ -511,7 +505,6 @@ class TestEntities:
         response = client.entities.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         entity = response.parse()
         assert_matches_type(SyncPage[Entity], entity, path=["response"])
 
@@ -519,7 +512,6 @@ class TestEntities:
     def test_streaming_response_list(self, client: Increase) -> None:
         with client.entities.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             entity = response.parse()
             assert_matches_type(SyncPage[Entity], entity, path=["response"])
@@ -540,7 +532,6 @@ class TestEntities:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         entity = response.parse()
         assert_matches_type(Entity, entity, path=["response"])
 
@@ -550,7 +541,6 @@ class TestEntities:
             "entity_n8y8tnk2p9339ti393yi",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             entity = response.parse()
             assert_matches_type(Entity, entity, path=["response"])
@@ -584,8 +574,8 @@ class TestAsyncEntities:
             corporation={
                 "address": {
                     "city": "New York",
-                    "line1": "33 Liberty Street",
                     "country": "x",
+                    "line1": "33 Liberty Street",
                     "line2": "x",
                     "state": "NY",
                     "zip": "10045",
@@ -595,8 +585,8 @@ class TestAsyncEntities:
                         "individual": {
                             "address": {
                                 "city": "New York",
-                                "line1": "33 Liberty Street",
                                 "country": "x",
+                                "line1": "33 Liberty Street",
                                 "line2": "x",
                                 "state": "NY",
                                 "zip": "10045",
@@ -662,8 +652,8 @@ class TestAsyncEntities:
                     {
                         "address": {
                             "city": "x",
-                            "line1": "x",
                             "country": "x",
+                            "line1": "x",
                             "line2": "x",
                             "state": "x",
                             "zip": "x",
@@ -699,8 +689,8 @@ class TestAsyncEntities:
             natural_person={
                 "address": {
                     "city": "x",
-                    "line1": "x",
                     "country": "x",
+                    "line1": "x",
                     "line2": "x",
                     "state": "x",
                     "zip": "x",
@@ -763,8 +753,8 @@ class TestAsyncEntities:
                         "individual": {
                             "address": {
                                 "city": "x",
-                                "line1": "x",
                                 "country": "x",
+                                "line1": "x",
                                 "line2": "x",
                                 "state": "x",
                                 "zip": "x",
@@ -802,8 +792,8 @@ class TestAsyncEntities:
                 "grantor": {
                     "address": {
                         "city": "x",
-                        "line1": "x",
                         "country": "x",
+                        "line1": "x",
                         "line2": "x",
                         "state": "x",
                         "zip": "x",
@@ -846,7 +836,6 @@ class TestAsyncEntities:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         entity = await response.parse()
         assert_matches_type(Entity, entity, path=["response"])
 
@@ -856,7 +845,6 @@ class TestAsyncEntities:
             structure="corporation",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             entity = await response.parse()
             assert_matches_type(Entity, entity, path=["response"])
@@ -877,7 +865,6 @@ class TestAsyncEntities:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         entity = await response.parse()
         assert_matches_type(Entity, entity, path=["response"])
 
@@ -887,7 +874,6 @@ class TestAsyncEntities:
             "entity_n8y8tnk2p9339ti393yi",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             entity = await response.parse()
             assert_matches_type(Entity, entity, path=["response"])
@@ -915,8 +901,8 @@ class TestAsyncEntities:
             corporation={
                 "address": {
                     "city": "New York",
-                    "line1": "33 Liberty Street",
                     "country": "US",
+                    "line1": "33 Liberty Street",
                     "line2": "Unit 2",
                     "state": "NY",
                     "zip": "10045",
@@ -945,8 +931,8 @@ class TestAsyncEntities:
             natural_person={
                 "address": {
                     "city": "x",
-                    "line1": "x",
                     "country": "x",
+                    "line1": "x",
                     "line2": "x",
                     "state": "x",
                     "zip": "x",
@@ -1011,7 +997,6 @@ class TestAsyncEntities:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         entity = await response.parse()
         assert_matches_type(Entity, entity, path=["response"])
 
@@ -1021,7 +1006,6 @@ class TestAsyncEntities:
             entity_id="entity_n8y8tnk2p9339ti393yi",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             entity = await response.parse()
             assert_matches_type(Entity, entity, path=["response"])
@@ -1062,7 +1046,6 @@ class TestAsyncEntities:
         response = await async_client.entities.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         entity = await response.parse()
         assert_matches_type(AsyncPage[Entity], entity, path=["response"])
 
@@ -1070,7 +1053,6 @@ class TestAsyncEntities:
     async def test_streaming_response_list(self, async_client: AsyncIncrease) -> None:
         async with async_client.entities.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             entity = await response.parse()
             assert_matches_type(AsyncPage[Entity], entity, path=["response"])
@@ -1091,7 +1073,6 @@ class TestAsyncEntities:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         entity = await response.parse()
         assert_matches_type(Entity, entity, path=["response"])
 
@@ -1101,7 +1082,6 @@ class TestAsyncEntities:
             "entity_n8y8tnk2p9339ti393yi",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             entity = await response.parse()
             assert_matches_type(Entity, entity, path=["response"])

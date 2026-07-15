@@ -103,7 +103,6 @@ class TestSwiftTransfers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         swift_transfer = response.parse()
         assert_matches_type(SwiftTransfer, swift_transfer, path=["response"])
 
@@ -131,7 +130,6 @@ class TestSwiftTransfers:
             unstructured_remittance_information="New Swift transfer",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             swift_transfer = response.parse()
             assert_matches_type(SwiftTransfer, swift_transfer, path=["response"])
@@ -152,7 +150,6 @@ class TestSwiftTransfers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         swift_transfer = response.parse()
         assert_matches_type(SwiftTransfer, swift_transfer, path=["response"])
 
@@ -162,7 +159,6 @@ class TestSwiftTransfers:
             "swift_transfer_29h21xkng03788zwd3fh",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             swift_transfer = response.parse()
             assert_matches_type(SwiftTransfer, swift_transfer, path=["response"])
@@ -203,7 +199,6 @@ class TestSwiftTransfers:
         response = client.swift_transfers.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         swift_transfer = response.parse()
         assert_matches_type(SyncPage[SwiftTransfer], swift_transfer, path=["response"])
 
@@ -211,7 +206,6 @@ class TestSwiftTransfers:
     def test_streaming_response_list(self, client: Increase) -> None:
         with client.swift_transfers.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             swift_transfer = response.parse()
             assert_matches_type(SyncPage[SwiftTransfer], swift_transfer, path=["response"])
@@ -232,7 +226,6 @@ class TestSwiftTransfers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         swift_transfer = response.parse()
         assert_matches_type(SwiftTransfer, swift_transfer, path=["response"])
 
@@ -242,7 +235,6 @@ class TestSwiftTransfers:
             "swift_transfer_29h21xkng03788zwd3fh",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             swift_transfer = response.parse()
             assert_matches_type(SwiftTransfer, swift_transfer, path=["response"])
@@ -270,7 +262,6 @@ class TestSwiftTransfers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         swift_transfer = response.parse()
         assert_matches_type(SwiftTransfer, swift_transfer, path=["response"])
 
@@ -280,7 +271,6 @@ class TestSwiftTransfers:
             "swift_transfer_29h21xkng03788zwd3fh",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             swift_transfer = response.parse()
             assert_matches_type(SwiftTransfer, swift_transfer, path=["response"])
@@ -384,7 +374,6 @@ class TestAsyncSwiftTransfers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         swift_transfer = await response.parse()
         assert_matches_type(SwiftTransfer, swift_transfer, path=["response"])
 
@@ -412,7 +401,6 @@ class TestAsyncSwiftTransfers:
             unstructured_remittance_information="New Swift transfer",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             swift_transfer = await response.parse()
             assert_matches_type(SwiftTransfer, swift_transfer, path=["response"])
@@ -433,7 +421,6 @@ class TestAsyncSwiftTransfers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         swift_transfer = await response.parse()
         assert_matches_type(SwiftTransfer, swift_transfer, path=["response"])
 
@@ -443,7 +430,6 @@ class TestAsyncSwiftTransfers:
             "swift_transfer_29h21xkng03788zwd3fh",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             swift_transfer = await response.parse()
             assert_matches_type(SwiftTransfer, swift_transfer, path=["response"])
@@ -484,7 +470,6 @@ class TestAsyncSwiftTransfers:
         response = await async_client.swift_transfers.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         swift_transfer = await response.parse()
         assert_matches_type(AsyncPage[SwiftTransfer], swift_transfer, path=["response"])
 
@@ -492,7 +477,6 @@ class TestAsyncSwiftTransfers:
     async def test_streaming_response_list(self, async_client: AsyncIncrease) -> None:
         async with async_client.swift_transfers.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             swift_transfer = await response.parse()
             assert_matches_type(AsyncPage[SwiftTransfer], swift_transfer, path=["response"])
@@ -513,7 +497,6 @@ class TestAsyncSwiftTransfers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         swift_transfer = await response.parse()
         assert_matches_type(SwiftTransfer, swift_transfer, path=["response"])
 
@@ -523,7 +506,6 @@ class TestAsyncSwiftTransfers:
             "swift_transfer_29h21xkng03788zwd3fh",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             swift_transfer = await response.parse()
             assert_matches_type(SwiftTransfer, swift_transfer, path=["response"])
@@ -551,7 +533,6 @@ class TestAsyncSwiftTransfers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         swift_transfer = await response.parse()
         assert_matches_type(SwiftTransfer, swift_transfer, path=["response"])
 
@@ -561,7 +542,6 @@ class TestAsyncSwiftTransfers:
             "swift_transfer_29h21xkng03788zwd3fh",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             swift_transfer = await response.parse()
             assert_matches_type(SwiftTransfer, swift_transfer, path=["response"])

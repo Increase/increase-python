@@ -68,7 +68,6 @@ class TestFednowTransfers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         fednow_transfer = response.parse()
         assert_matches_type(FednowTransfer, fednow_transfer, path=["response"])
 
@@ -82,7 +81,6 @@ class TestFednowTransfers:
             unstructured_remittance_information="Invoice 29582",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             fednow_transfer = response.parse()
             assert_matches_type(FednowTransfer, fednow_transfer, path=["response"])
@@ -103,7 +101,6 @@ class TestFednowTransfers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         fednow_transfer = response.parse()
         assert_matches_type(FednowTransfer, fednow_transfer, path=["response"])
 
@@ -113,7 +110,6 @@ class TestFednowTransfers:
             "fednow_transfer_4i0mptrdu1mueg1196bg",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             fednow_transfer = response.parse()
             assert_matches_type(FednowTransfer, fednow_transfer, path=["response"])
@@ -155,7 +151,6 @@ class TestFednowTransfers:
         response = client.fednow_transfers.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         fednow_transfer = response.parse()
         assert_matches_type(SyncPage[FednowTransfer], fednow_transfer, path=["response"])
 
@@ -163,7 +158,6 @@ class TestFednowTransfers:
     def test_streaming_response_list(self, client: Increase) -> None:
         with client.fednow_transfers.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             fednow_transfer = response.parse()
             assert_matches_type(SyncPage[FednowTransfer], fednow_transfer, path=["response"])
@@ -184,7 +178,6 @@ class TestFednowTransfers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         fednow_transfer = response.parse()
         assert_matches_type(FednowTransfer, fednow_transfer, path=["response"])
 
@@ -194,7 +187,6 @@ class TestFednowTransfers:
             "fednow_transfer_4i0mptrdu1mueg1196bg",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             fednow_transfer = response.parse()
             assert_matches_type(FednowTransfer, fednow_transfer, path=["response"])
@@ -222,7 +214,6 @@ class TestFednowTransfers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         fednow_transfer = response.parse()
         assert_matches_type(FednowTransfer, fednow_transfer, path=["response"])
 
@@ -232,7 +223,6 @@ class TestFednowTransfers:
             "fednow_transfer_4i0mptrdu1mueg1196bg",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             fednow_transfer = response.parse()
             assert_matches_type(FednowTransfer, fednow_transfer, path=["response"])
@@ -301,7 +291,6 @@ class TestAsyncFednowTransfers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         fednow_transfer = await response.parse()
         assert_matches_type(FednowTransfer, fednow_transfer, path=["response"])
 
@@ -315,7 +304,6 @@ class TestAsyncFednowTransfers:
             unstructured_remittance_information="Invoice 29582",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             fednow_transfer = await response.parse()
             assert_matches_type(FednowTransfer, fednow_transfer, path=["response"])
@@ -336,7 +324,6 @@ class TestAsyncFednowTransfers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         fednow_transfer = await response.parse()
         assert_matches_type(FednowTransfer, fednow_transfer, path=["response"])
 
@@ -346,7 +333,6 @@ class TestAsyncFednowTransfers:
             "fednow_transfer_4i0mptrdu1mueg1196bg",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             fednow_transfer = await response.parse()
             assert_matches_type(FednowTransfer, fednow_transfer, path=["response"])
@@ -388,7 +374,6 @@ class TestAsyncFednowTransfers:
         response = await async_client.fednow_transfers.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         fednow_transfer = await response.parse()
         assert_matches_type(AsyncPage[FednowTransfer], fednow_transfer, path=["response"])
 
@@ -396,7 +381,6 @@ class TestAsyncFednowTransfers:
     async def test_streaming_response_list(self, async_client: AsyncIncrease) -> None:
         async with async_client.fednow_transfers.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             fednow_transfer = await response.parse()
             assert_matches_type(AsyncPage[FednowTransfer], fednow_transfer, path=["response"])
@@ -417,7 +401,6 @@ class TestAsyncFednowTransfers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         fednow_transfer = await response.parse()
         assert_matches_type(FednowTransfer, fednow_transfer, path=["response"])
 
@@ -427,7 +410,6 @@ class TestAsyncFednowTransfers:
             "fednow_transfer_4i0mptrdu1mueg1196bg",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             fednow_transfer = await response.parse()
             assert_matches_type(FednowTransfer, fednow_transfer, path=["response"])
@@ -455,7 +437,6 @@ class TestAsyncFednowTransfers:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         fednow_transfer = await response.parse()
         assert_matches_type(FednowTransfer, fednow_transfer, path=["response"])
 
@@ -465,7 +446,6 @@ class TestAsyncFednowTransfers:
             "fednow_transfer_4i0mptrdu1mueg1196bg",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             fednow_transfer = await response.parse()
             assert_matches_type(FednowTransfer, fednow_transfer, path=["response"])

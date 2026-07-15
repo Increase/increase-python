@@ -64,7 +64,6 @@ class TestCardAuthorizations:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_authorization = response.parse()
         assert_matches_type(CardAuthorizationCreateResponse, card_authorization, path=["response"])
 
@@ -74,7 +73,6 @@ class TestCardAuthorizations:
             amount=1000,
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_authorization = response.parse()
             assert_matches_type(CardAuthorizationCreateResponse, card_authorization, path=["response"])
@@ -134,7 +132,6 @@ class TestAsyncCardAuthorizations:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_authorization = await response.parse()
         assert_matches_type(CardAuthorizationCreateResponse, card_authorization, path=["response"])
 
@@ -144,7 +141,6 @@ class TestAsyncCardAuthorizations:
             amount=1000,
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_authorization = await response.parse()
             assert_matches_type(CardAuthorizationCreateResponse, card_authorization, path=["response"])

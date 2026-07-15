@@ -31,7 +31,6 @@ class TestWireDrawdownRequests:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         wire_drawdown_request = response.parse()
         assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
 
@@ -41,7 +40,6 @@ class TestWireDrawdownRequests:
             "wire_drawdown_request_q6lmocus3glo0lr2bfv3",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             wire_drawdown_request = response.parse()
             assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
@@ -71,7 +69,6 @@ class TestWireDrawdownRequests:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         wire_drawdown_request = response.parse()
         assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
 
@@ -81,7 +78,6 @@ class TestWireDrawdownRequests:
             "wire_drawdown_request_q6lmocus3glo0lr2bfv3",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             wire_drawdown_request = response.parse()
             assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
@@ -117,7 +113,6 @@ class TestAsyncWireDrawdownRequests:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         wire_drawdown_request = await response.parse()
         assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
 
@@ -127,7 +122,6 @@ class TestAsyncWireDrawdownRequests:
             "wire_drawdown_request_q6lmocus3glo0lr2bfv3",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             wire_drawdown_request = await response.parse()
             assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
@@ -157,7 +151,6 @@ class TestAsyncWireDrawdownRequests:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         wire_drawdown_request = await response.parse()
         assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])
 
@@ -167,7 +160,6 @@ class TestAsyncWireDrawdownRequests:
             "wire_drawdown_request_q6lmocus3glo0lr2bfv3",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             wire_drawdown_request = await response.parse()
             assert_matches_type(WireDrawdownRequest, wire_drawdown_request, path=["response"])

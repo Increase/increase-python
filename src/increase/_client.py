@@ -19,12 +19,7 @@ from ._types import (
     RequestOptions,
     not_given,
 )
-from ._utils import (
-    is_given,
-    is_mapping,
-    is_mapping_t,
-    get_async_library,
-)
+from ._utils import is_given, is_mapping, is_mapping_t
 from ._compat import cached_property
 from ._version import __version__
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
@@ -653,7 +648,6 @@ class Increase(SyncAPIClient):
     def default_headers(self) -> dict[str, str | Omit]:
         return {
             **super().default_headers,
-            "X-Stainless-Async": "false",
             **self._custom_headers,
         }
 
@@ -1255,7 +1249,6 @@ class AsyncIncrease(AsyncAPIClient):
     def default_headers(self) -> dict[str, str | Omit]:
         return {
             **super().default_headers,
-            "X-Stainless-Async": f"async:{get_async_library()}",
             **self._custom_headers,
         }
 

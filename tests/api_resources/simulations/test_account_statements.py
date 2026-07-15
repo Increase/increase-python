@@ -31,7 +31,6 @@ class TestAccountStatements:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         account_statement = response.parse()
         assert_matches_type(AccountStatement, account_statement, path=["response"])
 
@@ -41,7 +40,6 @@ class TestAccountStatements:
             account_id="account_in71c4amph0vgo2qllky",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             account_statement = response.parse()
             assert_matches_type(AccountStatement, account_statement, path=["response"])
@@ -68,7 +66,6 @@ class TestAsyncAccountStatements:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         account_statement = await response.parse()
         assert_matches_type(AccountStatement, account_statement, path=["response"])
 
@@ -78,7 +75,6 @@ class TestAsyncAccountStatements:
             account_id="account_in71c4amph0vgo2qllky",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             account_statement = await response.parse()
             assert_matches_type(AccountStatement, account_statement, path=["response"])

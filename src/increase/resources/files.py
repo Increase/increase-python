@@ -14,10 +14,18 @@ from .._utils import extract_files, path_template, maybe_transform, async_maybe_
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
+    BinaryAPIResponse,
+    AsyncBinaryAPIResponse,
+    StreamedBinaryAPIResponse,
+    AsyncStreamedBinaryAPIResponse,
     to_raw_response_wrapper,
     to_streamed_response_wrapper,
     async_to_raw_response_wrapper,
+    to_custom_raw_response_wrapper,
     async_to_streamed_response_wrapper,
+    to_custom_streamed_response_wrapper,
+    async_to_custom_raw_response_wrapper,
+    async_to_custom_streamed_response_wrapper,
 )
 from ..pagination import SyncPage, AsyncPage
 from ..types.file import File
@@ -262,6 +270,50 @@ class FilesResource(SyncAPIResource):
             model=File,
         )
 
+    def contents(
+        self,
+        file_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> BinaryAPIResponse:
+        """Download the contents of a File.
+
+        Responds with a 307 redirect whose `Location`
+        header points at a short-lived, pre-signed URL. Our
+        [SDKs](/documentation/software-development-kits) follow the redirect and return
+        the File's contents; if you call the API directly, follow the redirect to
+        download it. The pre-signed URL serves the File with a `Content-Type` matching
+        its `mime` and a `Content-Disposition` header set to its `filename`. It expires
+        in 10 minutes. To share a File with someone who doesn't have access to your API
+        key, create a File Link.
+
+        Args:
+          file_id: The identifier of the File.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not file_id:
+            raise ValueError(f"Expected a non-empty value for `file_id` but received {file_id!r}")
+        extra_headers = {"Accept": "application/octet-stream", **(extra_headers or {})}
+        return self._get(
+            path_template("/files/{file_id}/contents", file_id=file_id),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=BinaryAPIResponse,
+        )
+
 
 class AsyncFilesResource(AsyncAPIResource):
     @cached_property
@@ -499,6 +551,50 @@ class AsyncFilesResource(AsyncAPIResource):
             model=File,
         )
 
+    async def contents(
+        self,
+        file_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> AsyncBinaryAPIResponse:
+        """Download the contents of a File.
+
+        Responds with a 307 redirect whose `Location`
+        header points at a short-lived, pre-signed URL. Our
+        [SDKs](/documentation/software-development-kits) follow the redirect and return
+        the File's contents; if you call the API directly, follow the redirect to
+        download it. The pre-signed URL serves the File with a `Content-Type` matching
+        its `mime` and a `Content-Disposition` header set to its `filename`. It expires
+        in 10 minutes. To share a File with someone who doesn't have access to your API
+        key, create a File Link.
+
+        Args:
+          file_id: The identifier of the File.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not file_id:
+            raise ValueError(f"Expected a non-empty value for `file_id` but received {file_id!r}")
+        extra_headers = {"Accept": "application/octet-stream", **(extra_headers or {})}
+        return await self._get(
+            path_template("/files/{file_id}/contents", file_id=file_id),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=AsyncBinaryAPIResponse,
+        )
+
 
 class FilesResourceWithRawResponse:
     def __init__(self, files: FilesResource) -> None:
@@ -512,6 +608,10 @@ class FilesResourceWithRawResponse:
         )
         self.list = to_raw_response_wrapper(
             files.list,
+        )
+        self.contents = to_custom_raw_response_wrapper(
+            files.contents,
+            BinaryAPIResponse,
         )
 
 
@@ -528,6 +628,10 @@ class AsyncFilesResourceWithRawResponse:
         self.list = async_to_raw_response_wrapper(
             files.list,
         )
+        self.contents = async_to_custom_raw_response_wrapper(
+            files.contents,
+            AsyncBinaryAPIResponse,
+        )
 
 
 class FilesResourceWithStreamingResponse:
@@ -543,6 +647,10 @@ class FilesResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             files.list,
         )
+        self.contents = to_custom_streamed_response_wrapper(
+            files.contents,
+            StreamedBinaryAPIResponse,
+        )
 
 
 class AsyncFilesResourceWithStreamingResponse:
@@ -557,4 +665,8 @@ class AsyncFilesResourceWithStreamingResponse:
         )
         self.list = async_to_streamed_response_wrapper(
             files.list,
+        )
+        self.contents = async_to_custom_streamed_response_wrapper(
+            files.contents,
+            AsyncStreamedBinaryAPIResponse,
         )

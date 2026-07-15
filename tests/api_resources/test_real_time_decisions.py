@@ -31,7 +31,6 @@ class TestRealTimeDecisions:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         real_time_decision = response.parse()
         assert_matches_type(RealTimeDecision, real_time_decision, path=["response"])
 
@@ -41,7 +40,6 @@ class TestRealTimeDecisions:
             "real_time_decision_j76n2e810ezcg3zh5qtn",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             real_time_decision = response.parse()
             assert_matches_type(RealTimeDecision, real_time_decision, path=["response"])
@@ -113,7 +111,6 @@ class TestRealTimeDecisions:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         real_time_decision = response.parse()
         assert_matches_type(RealTimeDecision, real_time_decision, path=["response"])
 
@@ -123,7 +120,6 @@ class TestRealTimeDecisions:
             real_time_decision_id="real_time_decision_j76n2e810ezcg3zh5qtn",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             real_time_decision = response.parse()
             assert_matches_type(RealTimeDecision, real_time_decision, path=["response"])
@@ -157,7 +153,6 @@ class TestAsyncRealTimeDecisions:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         real_time_decision = await response.parse()
         assert_matches_type(RealTimeDecision, real_time_decision, path=["response"])
 
@@ -167,7 +162,6 @@ class TestAsyncRealTimeDecisions:
             "real_time_decision_j76n2e810ezcg3zh5qtn",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             real_time_decision = await response.parse()
             assert_matches_type(RealTimeDecision, real_time_decision, path=["response"])
@@ -239,7 +233,6 @@ class TestAsyncRealTimeDecisions:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         real_time_decision = await response.parse()
         assert_matches_type(RealTimeDecision, real_time_decision, path=["response"])
 
@@ -249,7 +242,6 @@ class TestAsyncRealTimeDecisions:
             real_time_decision_id="real_time_decision_j76n2e810ezcg3zh5qtn",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             real_time_decision = await response.parse()
             assert_matches_type(RealTimeDecision, real_time_decision, path=["response"])

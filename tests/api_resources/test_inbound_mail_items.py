@@ -33,7 +33,6 @@ class TestInboundMailItems:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         inbound_mail_item = response.parse()
         assert_matches_type(InboundMailItem, inbound_mail_item, path=["response"])
 
@@ -43,7 +42,6 @@ class TestInboundMailItems:
             "inbound_mail_item_q6rrg7mmqpplx80zceev",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             inbound_mail_item = response.parse()
             assert_matches_type(InboundMailItem, inbound_mail_item, path=["response"])
@@ -83,7 +81,6 @@ class TestInboundMailItems:
         response = client.inbound_mail_items.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         inbound_mail_item = response.parse()
         assert_matches_type(SyncPage[InboundMailItem], inbound_mail_item, path=["response"])
 
@@ -91,7 +88,6 @@ class TestInboundMailItems:
     def test_streaming_response_list(self, client: Increase) -> None:
         with client.inbound_mail_items.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             inbound_mail_item = response.parse()
             assert_matches_type(SyncPage[InboundMailItem], inbound_mail_item, path=["response"])
@@ -114,7 +110,6 @@ class TestInboundMailItems:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         inbound_mail_item = response.parse()
         assert_matches_type(InboundMailItem, inbound_mail_item, path=["response"])
 
@@ -125,7 +120,6 @@ class TestInboundMailItems:
             checks=[{"action": "deposit"}, {"action": "ignore"}],
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             inbound_mail_item = response.parse()
             assert_matches_type(InboundMailItem, inbound_mail_item, path=["response"])
@@ -160,7 +154,6 @@ class TestAsyncInboundMailItems:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         inbound_mail_item = await response.parse()
         assert_matches_type(InboundMailItem, inbound_mail_item, path=["response"])
 
@@ -170,7 +163,6 @@ class TestAsyncInboundMailItems:
             "inbound_mail_item_q6rrg7mmqpplx80zceev",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             inbound_mail_item = await response.parse()
             assert_matches_type(InboundMailItem, inbound_mail_item, path=["response"])
@@ -210,7 +202,6 @@ class TestAsyncInboundMailItems:
         response = await async_client.inbound_mail_items.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         inbound_mail_item = await response.parse()
         assert_matches_type(AsyncPage[InboundMailItem], inbound_mail_item, path=["response"])
 
@@ -218,7 +209,6 @@ class TestAsyncInboundMailItems:
     async def test_streaming_response_list(self, async_client: AsyncIncrease) -> None:
         async with async_client.inbound_mail_items.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             inbound_mail_item = await response.parse()
             assert_matches_type(AsyncPage[InboundMailItem], inbound_mail_item, path=["response"])
@@ -241,7 +231,6 @@ class TestAsyncInboundMailItems:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         inbound_mail_item = await response.parse()
         assert_matches_type(InboundMailItem, inbound_mail_item, path=["response"])
 
@@ -252,7 +241,6 @@ class TestAsyncInboundMailItems:
             checks=[{"action": "deposit"}, {"action": "ignore"}],
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             inbound_mail_item = await response.parse()
             assert_matches_type(InboundMailItem, inbound_mail_item, path=["response"])

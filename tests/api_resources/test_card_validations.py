@@ -63,7 +63,6 @@ class TestCardValidations:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_validation = response.parse()
         assert_matches_type(CardValidation, card_validation, path=["response"])
 
@@ -79,7 +78,6 @@ class TestCardValidations:
             merchant_state="NY",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_validation = response.parse()
             assert_matches_type(CardValidation, card_validation, path=["response"])
@@ -100,7 +98,6 @@ class TestCardValidations:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_validation = response.parse()
         assert_matches_type(CardValidation, card_validation, path=["response"])
 
@@ -110,7 +107,6 @@ class TestCardValidations:
             "outbound_card_validation_qqlzagpc6v1x2gcdhe24",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_validation = response.parse()
             assert_matches_type(CardValidation, card_validation, path=["response"])
@@ -151,7 +147,6 @@ class TestCardValidations:
         response = client.card_validations.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_validation = response.parse()
         assert_matches_type(SyncPage[CardValidation], card_validation, path=["response"])
 
@@ -159,7 +154,6 @@ class TestCardValidations:
     def test_streaming_response_list(self, client: Increase) -> None:
         with client.card_validations.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_validation = response.parse()
             assert_matches_type(SyncPage[CardValidation], card_validation, path=["response"])
@@ -216,7 +210,6 @@ class TestAsyncCardValidations:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_validation = await response.parse()
         assert_matches_type(CardValidation, card_validation, path=["response"])
 
@@ -232,7 +225,6 @@ class TestAsyncCardValidations:
             merchant_state="NY",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_validation = await response.parse()
             assert_matches_type(CardValidation, card_validation, path=["response"])
@@ -253,7 +245,6 @@ class TestAsyncCardValidations:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_validation = await response.parse()
         assert_matches_type(CardValidation, card_validation, path=["response"])
 
@@ -263,7 +254,6 @@ class TestAsyncCardValidations:
             "outbound_card_validation_qqlzagpc6v1x2gcdhe24",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_validation = await response.parse()
             assert_matches_type(CardValidation, card_validation, path=["response"])
@@ -304,7 +294,6 @@ class TestAsyncCardValidations:
         response = await async_client.card_validations.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_validation = await response.parse()
         assert_matches_type(AsyncPage[CardValidation], card_validation, path=["response"])
 
@@ -312,7 +301,6 @@ class TestAsyncCardValidations:
     async def test_streaming_response_list(self, async_client: AsyncIncrease) -> None:
         async with async_client.card_validations.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_validation = await response.parse()
             assert_matches_type(AsyncPage[CardValidation], card_validation, path=["response"])

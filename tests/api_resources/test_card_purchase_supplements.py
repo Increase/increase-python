@@ -33,7 +33,6 @@ class TestCardPurchaseSupplements:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_purchase_supplement = response.parse()
         assert_matches_type(CardPurchaseSupplement, card_purchase_supplement, path=["response"])
 
@@ -43,7 +42,6 @@ class TestCardPurchaseSupplements:
             "card_purchase_supplement_ijuc45iym4jchnh2sfk3",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_purchase_supplement = response.parse()
             assert_matches_type(CardPurchaseSupplement, card_purchase_supplement, path=["response"])
@@ -84,7 +82,6 @@ class TestCardPurchaseSupplements:
         response = client.card_purchase_supplements.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_purchase_supplement = response.parse()
         assert_matches_type(SyncPage[CardPurchaseSupplement], card_purchase_supplement, path=["response"])
 
@@ -92,7 +89,6 @@ class TestCardPurchaseSupplements:
     def test_streaming_response_list(self, client: Increase) -> None:
         with client.card_purchase_supplements.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_purchase_supplement = response.parse()
             assert_matches_type(SyncPage[CardPurchaseSupplement], card_purchase_supplement, path=["response"])
@@ -119,7 +115,6 @@ class TestAsyncCardPurchaseSupplements:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_purchase_supplement = await response.parse()
         assert_matches_type(CardPurchaseSupplement, card_purchase_supplement, path=["response"])
 
@@ -129,7 +124,6 @@ class TestAsyncCardPurchaseSupplements:
             "card_purchase_supplement_ijuc45iym4jchnh2sfk3",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_purchase_supplement = await response.parse()
             assert_matches_type(CardPurchaseSupplement, card_purchase_supplement, path=["response"])
@@ -170,7 +164,6 @@ class TestAsyncCardPurchaseSupplements:
         response = await async_client.card_purchase_supplements.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         card_purchase_supplement = await response.parse()
         assert_matches_type(AsyncPage[CardPurchaseSupplement], card_purchase_supplement, path=["response"])
 
@@ -178,7 +171,6 @@ class TestAsyncCardPurchaseSupplements:
     async def test_streaming_response_list(self, async_client: AsyncIncrease) -> None:
         async with async_client.card_purchase_supplements.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             card_purchase_supplement = await response.parse()
             assert_matches_type(AsyncPage[CardPurchaseSupplement], card_purchase_supplement, path=["response"])

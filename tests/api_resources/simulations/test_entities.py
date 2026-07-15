@@ -33,7 +33,6 @@ class TestEntities:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         entity = response.parse()
         assert_matches_type(Entity, entity, path=["response"])
 
@@ -44,7 +43,6 @@ class TestEntities:
             issues=[{"category": "entity_tax_identifier"}],
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             entity = response.parse()
             assert_matches_type(Entity, entity, path=["response"])
@@ -81,7 +79,6 @@ class TestAsyncEntities:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         entity = await response.parse()
         assert_matches_type(Entity, entity, path=["response"])
 
@@ -92,7 +89,6 @@ class TestAsyncEntities:
             issues=[{"category": "entity_tax_identifier"}],
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             entity = await response.parse()
             assert_matches_type(Entity, entity, path=["response"])

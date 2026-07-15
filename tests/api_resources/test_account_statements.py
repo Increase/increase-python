@@ -33,7 +33,6 @@ class TestAccountStatements:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         account_statement = response.parse()
         assert_matches_type(AccountStatement, account_statement, path=["response"])
 
@@ -43,7 +42,6 @@ class TestAccountStatements:
             "account_statement_lkc03a4skm2k7f38vj15",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             account_statement = response.parse()
             assert_matches_type(AccountStatement, account_statement, path=["response"])
@@ -82,7 +80,6 @@ class TestAccountStatements:
         response = client.account_statements.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         account_statement = response.parse()
         assert_matches_type(SyncPage[AccountStatement], account_statement, path=["response"])
 
@@ -90,7 +87,6 @@ class TestAccountStatements:
     def test_streaming_response_list(self, client: Increase) -> None:
         with client.account_statements.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             account_statement = response.parse()
             assert_matches_type(SyncPage[AccountStatement], account_statement, path=["response"])
@@ -117,7 +113,6 @@ class TestAsyncAccountStatements:
         )
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         account_statement = await response.parse()
         assert_matches_type(AccountStatement, account_statement, path=["response"])
 
@@ -127,7 +122,6 @@ class TestAsyncAccountStatements:
             "account_statement_lkc03a4skm2k7f38vj15",
         ) as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             account_statement = await response.parse()
             assert_matches_type(AccountStatement, account_statement, path=["response"])
@@ -166,7 +160,6 @@ class TestAsyncAccountStatements:
         response = await async_client.account_statements.with_raw_response.list()
 
         assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         account_statement = await response.parse()
         assert_matches_type(AsyncPage[AccountStatement], account_statement, path=["response"])
 
@@ -174,7 +167,6 @@ class TestAsyncAccountStatements:
     async def test_streaming_response_list(self, async_client: AsyncIncrease) -> None:
         async with async_client.account_statements.with_streaming_response.list() as response:
             assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             account_statement = await response.parse()
             assert_matches_type(AsyncPage[AccountStatement], account_statement, path=["response"])
