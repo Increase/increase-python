@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.536.0](https://github.com/Increase/increase-python/compare/v0.535.0...v0.536.0) (2026-07-16)
+
+
+### Features
+
+* **api:** add physical_check_book event category ([7cfaae7](https://github.com/Increase/increase-python/commit/7cfaae7fd662aaa57cd206dca99d48faff15b7cf))
+
 ## [0.535.0](https://github.com/Increase/increase-python/compare/v0.534.0...v0.535.0) (2026-07-15)
 
 
