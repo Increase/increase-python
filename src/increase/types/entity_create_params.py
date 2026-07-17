@@ -1140,7 +1140,7 @@ class TrustTrustee(TypedDict, total=False):
 
 
 class TrustGrantorAddress(TypedDict, total=False):
-    """The individual's physical address.
+    """The grantor's physical address.
 
     Mail receiving locations like PO Boxes and PMB's are disallowed.
     """
@@ -1287,19 +1287,19 @@ class TrustGrantor(TypedDict, total=False):
     """The grantor of the trust. Required if `category` is equal to `revocable`."""
 
     address: Required[TrustGrantorAddress]
-    """The individual's physical address.
+    """The grantor's physical address.
 
     Mail receiving locations like PO Boxes and PMB's are disallowed.
     """
 
     date_of_birth: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
-    """The person's date of birth in YYYY-MM-DD format."""
+    """The grantor's date of birth in YYYY-MM-DD format."""
 
     identification: Required[TrustGrantorIdentification]
     """A means of verifying the person's identity."""
 
     name: Required[str]
-    """The person's legal name."""
+    """The grantor's legal name."""
 
     confirmed_no_us_tax_id: bool
     """
