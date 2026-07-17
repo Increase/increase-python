@@ -575,7 +575,7 @@ class TrustAddress(BaseModel):
 
 
 class TrustGrantorAddress(BaseModel):
-    """The person's address."""
+    """The grantor's address."""
 
     city: Optional[str] = None
     """The city, district, town, or village of the address."""
@@ -600,12 +600,12 @@ class TrustGrantorAddress(BaseModel):
 
 
 class TrustGrantorIdentification(BaseModel):
-    """A means of verifying the person's identity."""
+    """A means of verifying the grantor's identity."""
 
     method: Literal[
         "social_security_number", "individual_taxpayer_identification_number", "passport", "drivers_license", "other"
     ]
-    """A method that can be used to verify the individual's identity.
+    """A method that can be used to verify the grantor's identity.
 
     - `social_security_number` - A social security number.
     - `individual_taxpayer_identification_number` - An individual taxpayer
@@ -618,7 +618,7 @@ class TrustGrantorIdentification(BaseModel):
     number_last4: str
     """
     The last 4 digits of the identification number that can be used to verify the
-    individual's identity.
+    grantor's identity.
     """
 
     if TYPE_CHECKING:
@@ -637,17 +637,17 @@ class TrustGrantorIdentification(BaseModel):
 class TrustGrantor(BaseModel):
     """The grantor of the trust. Will be present if the `category` is `revocable`."""
 
-    address: TrustGrantorAddress
-    """The person's address."""
+    address: Optional[TrustGrantorAddress] = None
+    """The grantor's address."""
 
-    date_of_birth: date
-    """The person's date of birth in YYYY-MM-DD format."""
+    date_of_birth: Optional[date] = None
+    """The grantor's date of birth in YYYY-MM-DD format."""
 
     identification: Optional[TrustGrantorIdentification] = None
-    """A means of verifying the person's identity."""
+    """A means of verifying the grantor's identity."""
 
     name: str
-    """The person's legal name."""
+    """The grantor's legal name."""
 
 
 class TrustTrusteeIndividualAddress(BaseModel):
