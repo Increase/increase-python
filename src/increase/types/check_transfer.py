@@ -206,6 +206,12 @@ class PhysicalCheckSignature(BaseModel):
 
 
 class PhysicalCheckTrackingUpdate(BaseModel):
+    carrier_estimated_delivery_at: Optional[datetime] = None
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time when the
+    carrier expects the check to be delivered.
+    """
+
     category: Literal[
         "in_transit",
         "processed_for_delivery",
