@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.538.1](https://github.com/Increase/increase-python/compare/v0.538.0...v0.538.1) (2026-07-20)
+
+
+### Bug Fixes
+
+* **docs:** expand check transfer shipping method descriptions ([c9c707e](https://github.com/Increase/increase-python/commit/c9c707e85d0673d352fedac72d276f77972057e9))
+
 ## [0.538.0](https://github.com/Increase/increase-python/compare/v0.537.0...v0.538.0) (2026-07-17)
 
 
