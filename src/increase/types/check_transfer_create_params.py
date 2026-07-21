@@ -233,10 +233,8 @@ class PhysicalCheck(TypedDict, total=False, extra_items=object):  # type: ignore
     For details on pricing, timing, and restrictions, see
     https://increase.com/documentation/originating-checks#printing-checks .
 
-    - `usps_first_class` - Ship the checks via USPS First Class, which supports a
-      maximum of 1000 pages (checks and attachments combined).
-    - `fedex_overnight` - Ship the checks via FedEx Overnight, which supports a
-      maximum of 50 pages (checks and attachments combined).
+    - `usps_first_class` - USPS First Class
+    - `fedex_overnight` - FedEx Overnight
     """
 
     signature: PhysicalCheckSignature

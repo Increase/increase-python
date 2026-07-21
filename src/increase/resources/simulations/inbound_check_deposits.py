@@ -62,10 +62,11 @@ class InboundCheckDepositsResource(SyncAPIResource):
 
         This imitates someone
         depositing a check at their bank that was issued from your account. It may or
-        may not be associated with a Check Transfer. Increase will evaluate the Inbound
-        Check Deposit as we would in production and either create a Transaction or a
-        Declined Transaction as a result. You can inspect the resulting Inbound Check
-        Deposit object to see the result.
+        may not be associated with a Check Transfer. The resulting Inbound Check Deposit
+        will have a `status` of `pending`, and after an hour Increase will evaluate it
+        as we would in production and either create a Transaction or a Declined
+        Transaction as a result. To resolve it sooner, use the simulation to accept an
+        Inbound Check Deposit or the API to decline one.
 
         Args:
           account_number_id: The identifier of the Account Number the Inbound Check Deposit will be against.
@@ -230,10 +231,11 @@ class AsyncInboundCheckDepositsResource(AsyncAPIResource):
 
         This imitates someone
         depositing a check at their bank that was issued from your account. It may or
-        may not be associated with a Check Transfer. Increase will evaluate the Inbound
-        Check Deposit as we would in production and either create a Transaction or a
-        Declined Transaction as a result. You can inspect the resulting Inbound Check
-        Deposit object to see the result.
+        may not be associated with a Check Transfer. The resulting Inbound Check Deposit
+        will have a `status` of `pending`, and after an hour Increase will evaluate it
+        as we would in production and either create a Transaction or a Declined
+        Transaction as a result. To resolve it sooner, use the simulation to accept an
+        Inbound Check Deposit or the API to decline one.
 
         Args:
           account_number_id: The identifier of the Account Number the Inbound Check Deposit will be against.
