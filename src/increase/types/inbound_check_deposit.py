@@ -89,6 +89,13 @@ class InboundCheckDeposit(BaseModel):
     amount: int
     """The deposited amount in USD cents."""
 
+    automatically_resolves_at: datetime
+    """
+    The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time at which
+    the Inbound Check Deposit will be automatically resolved if it has not been
+    actioned by then.
+    """
+
     back_image_file_id: Optional[str] = None
     """The ID for the File containing the image of the back of the check."""
 
