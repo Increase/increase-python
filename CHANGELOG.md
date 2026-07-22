@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.539.0](https://github.com/Increase/increase-python/compare/v0.538.1...v0.539.0) (2026-07-22)
+
+
+### Features
+
+* **api:** add interest rate plan events and new fields ([b0352f8](https://github.com/Increase/increase-python/commit/b0352f86a03806bd83b5f63396a361aa167755b5))
+
 ## [0.538.1](https://github.com/Increase/increase-python/compare/v0.538.0...v0.538.1) (2026-07-20)
 
 
